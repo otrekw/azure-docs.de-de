@@ -1,0 +1,161 @@
+---
+title: Microsoft Azure Stack Edge-Netzkabel, technische Spezifikationen aufgrund des Standorts | Microsoft-Dokumentation
+description: Hier erfahren Sie etwas zu den technischen Spezifikationen für Ihre Azure Stack Edge-Netzkabel.
+services: databox
+author: priestlg
+ms.service: databox
+ms.subservice: edge
+ms.topic: article
+ms.date: 04/16/2020
+ms.author: v-grpr
+ms.openlocfilehash: 2fb28bcb1edb9a18b4d1628e211f87f2c772ef80
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83663248"
+---
+# <a name="azure-stack-edge-power-cord-specifications"></a>Azure Stack Edge-Netzkabelspezifikationen
+
+Ihr Azure Stack Edge-Gerät benötigt ein Netzkabel, das je nach Ihrer Azure-Region variieren kann.
+
+## <a name="supported-power-cords"></a>Unterstützte Netzkabel
+
+In der folgenden Tabelle finden Sie die richtigen Kabelspezifikationen für Ihre Region:
+
+| Country    | Nennspannung (V)| Nennstrom (A)| Kabelstandard |Eingangsstecker|Ausgangsstecker| Länge (mm) |  
+|------------|---------------|------------|----|--|----|--|--|--|
+|Albanien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Algerien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Angola|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Argentinien|250|10|H05VV-F 3x1.00|IRAM 2073|C13|2500|
+|Australien|250|10|H05VV-F 3x1.00|AS/NZS 3112|C13|2438|
+|Österreich|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Aserbaidschan|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Bahamas|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Bahrain|250|5|H05VV-F 3x0.75|BS1363 SS145/A|C13|1800|
+|Bangladesch|250|5|H05VV-F 3x0.75|BS1363 SS145/A|C13|1800|
+|Barbados|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Belarus|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Belgien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Bermudas|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Bolivien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Bosnien und Herzegowina|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Brasilien|250|10|H05Z1Z1-F 3x.75|NBR 14136|C13|1914|
+|Bulgarien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Kambodscha|250|10|H05VV-F 3X0.75|CEE 7/7|C13|1800|
+|Canada|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Kaimaninseln|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Chile|250|10|H05VV-F 3x0.75|CEI 23-50|C13|1800
+|China|250|10|RVV300/500 3X0,75|GB 2099.1|C13|2000|
+|Kolumbien|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Costa Rica|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Côte d'Ivoire (Elfenbeinküste)|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Kroatien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Zypern|250|5|H05VV-F 3x0,75|BS1363 SS145/A|C13|1800|
+|Tschechische Republik|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Dänemark|250|10|H05VV-F 3X0.75|SB107-2-DI|C13|1800|
+|Dominikanische Republik|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Ecuador|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Ägypten|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|El Salvador|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Estland|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Äthiopien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Finnland|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Frankreich|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Georgien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Deutschland|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Ghana|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Guayana|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Griechenland|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Guatemala|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Honduras|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Hongkong|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Ungarn|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Island|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Indien|250|10|IS694 3x0,75|IS 1293|C13|1830|
+|Indonesien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Irland|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Israel|250|2.5|H05VV-F 3x1.00|SI 32|C13|2000|
+|Italien|250|10|H05VV-F 3x0,75|CEI 23-50|C13|1800|
+|Jamaika|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Japan|125|15|VCTF 3x2.00|JIS C 8303|C13|2300|
+|Jordan|250|5|H05Z1Z1-F 3x0,75|BS 1363|C13|1830|
+|Kasachstan|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Kenia|250|5|H05VV-F 3x0,75|BS1363 SS145/A|C13|1800|
+|Kuwait|250|5|H05VV-F 3x0,75|BS1363 SS145/A|C13|1800|
+|Kirgisistan|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Lettland|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Libanon|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Liechtenstein|250|10|H05VV-F 3x0,75|SEV 1011|C13|1800|
+|Litauen|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Luxemburg|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Macau (SAR)|2250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Nordmazedonien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Malaysia|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Malta|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Mauritius|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Mexiko|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Moldau|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Monaco|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Mongolei|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Montenegro|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Marokko|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Namibia|250|10|H05VV-F 3x0,75|SANS 164-1|C13|1830|
+|Nepal|250|10|H05VV-F 3x0,75|SANS 164-1|C13|1830|
+|Niederlande|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Neuseeland|250|10|H05VV-F 3x1.00|AS/NZS 3112|C13|2438|
+|Nicaragua|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Nigeria|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Norwegen|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Oman|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Pakistan|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Panama|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Paraguay|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Peru|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Philippinen|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Polen|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Portugal|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Puerto Rico|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Katar|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Rumänien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Russland|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Ruanda|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|St. Kitts und Nevis|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Samoa|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Saudi-Arabien|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Senegal|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Serbien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Singapur|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Slowakei|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Slowenien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Südafrika|250|10|H05VV-F 3x0,75|SANS 164-1|C13|1830|
+|Südkorea|250|10|H05W-F 3x1,75|KS C 8305|C13|1830|
+|Spanien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Sri Lanka|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Schweden|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Schweiz|250|10|H05VV-F 3x0,75|SEV 1011|C13|1800|
+|Taiwan|125|10|VCTF 3x1,25|CNS10917|C13|2000|
+|Tadschikistan|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Tansania|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Thailand|250|10|H05VV-F 3x0,75|TI16S3|C13|1829|
+|Trinidad und Tobago|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Tunesien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Türkei|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Turkmenistan|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Uganda|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Ukraine|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Vereinigte Arabische Emirate|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|United Kingdom|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|USA|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Uruguay|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Usbekistan|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Venezuela|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
+|Vietnam|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
+|Jemen|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Sambia|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+|Simbabwe|250|5|H05VV-F 3x0,75|BS 1363 / SS145/A|C13|1800|
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Technische Spezifikationen für Azure Stack Edge](data-box-edge-technical-specifications-compliance.md)

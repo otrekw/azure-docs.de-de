@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 02/20/2020
-ms.openlocfilehash: fcebc7eb170239e5d7efd8a32599a6e782f630bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/20/2020
+ms.openlocfilehash: 2cf8ff446fe3441fc039ef3c2afef6308224666f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235240"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701223"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Bekannte Probleme/Einschränkungen bei Onlinemigrationen von Oracle zum Azure DB for PostgreSQL-Einzelserver
 
@@ -64,7 +64,7 @@ Außerdem werden leere BLOB-/CLOB-Spalten im Ziel NULL zugeordnet.
 
 ## <a name="known-issues-and-limitations"></a>Einschränkungen und bekannte Probleme
 
-- Kunden müssen SYSDBA verwenden, um eine Verbindung mit Oracle herzustellen.
+- Der Benutzer benötigt eine DBA-Berechtigung für den Oracle-Server.
 - Datenänderungen durch Vorgänge auf Partitions-/Unterpartitionsebene (ADD, DROP, EXCHANGE und TRUNCATE) werden nicht migriert und können folgende Fehler verursachen:
   - Bei ADD-Vorgängen kann durch Aktualisierungen und Löschungen der hinzugefügten Daten die Warnung „0 Zeilen betroffen“ zurückgegeben werden.
   - Bei DROP- und TRUNCATE-Vorgängen können neu eingefügte Daten Fehler aufgrund von Duplikaten verursachen.

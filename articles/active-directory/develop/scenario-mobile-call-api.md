@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 28f57c5657ce2f8537a654a7f67ed4481fab2c91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882691"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771739"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Aufrufen einer Web-API aus einer mobilen App
 
@@ -138,7 +138,7 @@ result = await app.AcquireTokenSilent("scopeApi2")
 Ein Interaktion ist in folgenden Fällen erforderlich:
 
 - Der Benutzer hat der ersten API zugestimmt, muss nun aber weiteren Bereichen zustimmen. In diesem Fall verwenden Sie inkrementelle Zustimmung.
-- Für die erste API ist keine mehrstufige Authentifizierung erforderlich, für die nächste API wird diese jedoch benötigt.
+- Für die erste API ist keine [mehrstufige Authentifizierung](../authentication/concept-mfa-howitworks.md) erforderlich, für die nächste API wird diese jedoch benötigt.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

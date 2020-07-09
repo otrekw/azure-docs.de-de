@@ -36,6 +36,8 @@
       items:
         - name: Funktionsweise von MFA
           href: concept-mfa-howitworks.md
+        - name: Aufforderungen und Sitzungslebensdauer
+          href: concepts-azure-multi-factor-authentication-prompts-session-lifetime.md
         - name: Datenresidenz
           href: concept-mfa-data-residency.md
         - name: Lizenzen
@@ -80,6 +82,8 @@
           href: howto-mfa-userstates.md
         - name: Konfigurieren von Authentifizierungsanbietern
           href: concept-mfa-authprovider.md
+        - name: Verwenden von App-Kennwörtern
+          href: howto-mfa-app-passwords.md
         - name: Verzeichnisverbund
           items:
             - name: AD FS-Adapter für Windows Server 2016
@@ -169,6 +173,8 @@
           href: howto-mfaserver-deploy-userportal.md
         - name: Webdienst der mobilen App
           href: howto-mfaserver-deploy-mobileapp.md
+        - name: Konfigurieren von Einstellungen
+          href: howto-mfa-server-settings.md
         - name: Konfigurieren von Hochverfügbarkeit
           href: howto-mfaserver-deploy-ha.md
         - name: Aktualisieren des MFA-Servers
@@ -219,6 +225,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell-Cmdlets
       href: /powershell/azure/overview
+    - name: Betaversion der Microsoft Graph-REST-API
+      href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: Dienstgrenzwerte und Einschränkungen
       href: ../users-groups-roles/directory-service-limits-restrictions.md
 - name: Ressourcen

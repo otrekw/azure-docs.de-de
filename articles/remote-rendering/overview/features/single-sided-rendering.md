@@ -5,29 +5,29 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 97e0456e274adee7d678e373cfd92b5003f3d801
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 1a9f80166e47b17644b37d4bc9b93e1abefe3432
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759097"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022759"
 ---
-# <a name="single-sided-rendering"></a>Einseitiges Rendering
+# <a name="no-loc-textsingle-sided-rendering"></a>:::no-loc text="Single-sided"::: Rendering
 
 Die meisten Renderer verwenden [Backface Culling](https://en.wikipedia.org/wiki/Back-face_culling), um die Leistung zu verbessern. Wenn die Gittermodelle jedoch mit [Schnittebenen](cut-planes.md) aufgeschnitten werden, sehen Benutzer häufig die Rückseite von Dreiecken. Wenn diese Dreiecke mit Culling entfernt werden, sieht das Ergebnis nicht überzeugend aus.
 
 Sie können dieses Problem zuverlässig vermeiden, indem Sie Dreiecke *doppelseitig* rendern. Da die Nichtverwendung von Backface Culling Auswirkungen auf die Leistung besitzt, schaltet Azure Remote Rendering standardmäßig nur zum doppelseitigen Rendering bei Gittermodelln um, die sich mit einer Schnittebene überschneiden.
 
-Mit der Einstellung für *einseitiges Rendering* können Sie dieses Verhalten anpassen.
+Mit der Einstellung für *:::no-loc text="single-sided"::: Rendering* können Sie dieses Verhalten anpassen.
 
 > [!CAUTION]
-> Die Einstellung für einseitiges Rendering ist ein experimentelles Feature. Möglicherweise wird es in Zukunft wieder entfernt. Ändern Sie die Standardeinstellung nicht, es sei denn, dies löst tatsächlich ein wichtiges Problem in Ihrer Anwendung.
+> Die Einstellung für :::no-loc text="single-sided"::: Rendering ist ein experimentelles Feature. Möglicherweise wird es in Zukunft wieder entfernt. Ändern Sie die Standardeinstellung nicht, es sei denn, dies löst tatsächlich ein wichtiges Problem in Ihrer Anwendung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Einstellung für einseitiges Rendering wirkt sich nur auf Gittermodelle aus, die [konvertiert wurden](../../how-tos/conversion/configure-model-conversion.md), wobei die Option `opaqueMaterialDefaultSidedness` auf `SingleSided` festgelegt wurde. Standardmäßig ist diese Option auf `DoubleSided` festgelegt.
+Die Einstellung für :::no-loc text="single-sided"::: Rendering wirkt sich nur auf Gittermodelle aus, die mit der auf `SingleSided` festgelegten Option `opaqueMaterialDefaultSidedness` [konvertiert wurden](../../how-tos/conversion/configure-model-conversion.md). Standardmäßig ist diese Option auf `DoubleSided` festgelegt.
 
-## <a name="single-sided-rendering-setting"></a>Einstellung für einseitiges Rendering
+## <a name="no-loc-textsingle-sided-rendering-setting"></a>Renderingeinstellung :::no-loc text="Single-sided":::
 
 Es gibt drei verschiedene Modi:
 
@@ -35,9 +35,9 @@ Es gibt drei verschiedene Modi:
 
 **DynamicDoubleSiding:** In diesem Modus wird automatisch in doppelseitiges Rendering umgeschaltet, wenn sich eine Schnittebene mit einem Gittermodell überschneidet. Dieser Modus ist der Standardmodus.
 
-**AlwaysDoubleSided:** Erzwingt, dass die gesamte einseitige Geometrie immer doppelseitig gerendert wird. Dieser Modus wird meistens verwendet. Sie können daher die Leistungseinbußen zwischen einseitigem und doppelseitigem Rendering problemlos vergleichen.
+**AlwaysDoubleSided:** Erzwingt, dass die gesamte einseitige Geometrie immer doppelseitig gerendert wird. Dieser Modus wird meistens verwendet. Sie können daher die Leistungseinbußen zwischen :::no-loc text="single-sided"::: und :::no-loc text="double-sided"::: Rendering problemlos vergleichen.
 
-Das Ändern der Einstellungen für einseitiges Rendering kann wie folgt erfolgen:
+Das Ändern der Einstellungen für :::no-loc text="single-sided"::: Rendering kann wie folgt erfolgen:
 
 ```cs
 void ChangeSingleSidedRendering(AzureSession session)

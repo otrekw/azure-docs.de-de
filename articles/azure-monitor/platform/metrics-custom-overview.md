@@ -5,14 +5,14 @@ author: ancav
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837310"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506972"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 
@@ -30,7 +30,7 @@ Benutzerdefinierte Metriken können über verschiedene Methoden an Azure Monitor
 - Installieren des [InfluxData Telegraf-Agents](collect-custom-metrics-linux-telegraf.md) auf Ihrer Azure-Linux-VM und Senden der Metriken mithilfe des Ausgabe-Plug-Ins von Azure Monitor
 - Senden von benutzerdefinierten Metriken [direkt an die Azure Monitor-REST-API](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
 
-## <a name="pricing-model-and-rentention"></a>Preismodell und Aufbewahrung
+## <a name="pricing-model-and-retention"></a>Preismodell und Aufbewahrung
 
 Details dazu, wann die Abrechnung für benutzerdefinierte Metriken und Metrikabfragen aktiviert wird, erfahren Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/). Bestimmte Preisdetails für alle Metriken, einschließlich benutzerdefinierter Metriken, und Metrikabfragen finden Sie auf dieser Seite. Zusammenfassend fallen keine Kosten für die Erfassung von Standardmetriken (Plattformmetriken) im Azure Monitor-Metrikspeicher an. Doch für benutzerdefinierte Metriken werden Kosten anfallen, sobald sie die Phase der allgemeinen Verfügbarkeit erreichen. Metrik-API-Abfragen verursachen Kosten.
 
@@ -189,27 +189,28 @@ Während der öffentlichen Vorschau ist die Möglichkeit, benutzerdefinierte Met
 |Azure-Region |Präfix des regionalen Endpunkts|
 |---|---|
 | **USA und Kanada** | |
-|USA, Westen-Mitte | https:\//westcentralus.monitoring.azure.com/ |
-|USA, Westen 2       | https:\//westus2.monitoring.azure.com/ |
+|USA, Westen-Mitte | https:\//westcentralus.monitoring.azure.com |
+|USA, Westen 2       | https:\//westus2.monitoring.azure.com |
 |USA Nord Mitte | https:\//northcentralus.monitoring.azure.com
-|USA Süd Mitte| https:\//southcentralus.monitoring.azure.com/ |
+|USA Süd Mitte| https:\//southcentralus.monitoring.azure.com |
 |USA (Mitte)      | https:\//centralus.monitoring.azure.com |
-|Kanada, Mitte | https:\//canadacentral.monitoring.azure.comc
-|East US| https:\//eastus.monitoring.azure.com/ |
+|Kanada, Mitte | https:\//canadacentral.monitoring.azure.com |
+|East US| https:\//eastus.monitoring.azure.com |
+|USA (Ost) 2 | https:\//eastus2.monitoring.azure.com |
 | **Europa** | |
-|Nordeuropa    | https:\//northeurope.monitoring.azure.com/ |
-|Europa, Westen     | https:\//westeurope.monitoring.azure.com/ |
+|Nordeuropa    | https:\//northeurope.monitoring.azure.com |
+|Europa, Westen     | https:\//westeurope.monitoring.azure.com |
 |UK, Süden | https:\//uksouth.monitoring.azure.com
 |Frankreich, Mitte | https:\//francecentral.monitoring.azure.com |
 | **Afrika** | |
-|Südafrika, Norden | https:\//southafricanorth.monitoring.azure.com
+|Südafrika, Norden | https:\//southafricanorth.monitoring.azure.com |
 | **Asien** | |
-|Indien, Mitte | https:\//centralindia.monitoring.azure.com
-|Australien (Osten) | https:\//australiaeast.monitoring.azure.com
-|Japan, Osten | https:\//japaneast.monitoring.azure.com
+|Indien, Mitte | https:\//centralindia.monitoring.azure.com |
+|Australien (Osten) | https:\//australiaeast.monitoring.azure.com |
+|Japan, Osten | https:\//japaneast.monitoring.azure.com |
 |Asien, Südosten  | https:\//southeastasia.monitoring.azure.com |
-|Asien, Osten | https:\//eastasia.monitoring.azure.com
-|Korea, Mitte   | https:\//koreacentral.monitoring.azure.com
+|Asien, Osten | https:\//eastasia.monitoring.azure.com |
+|Korea, Mitte   | https:\//koreacentral.monitoring.azure.com |
 
 ## <a name="latency-and-storage-retention"></a>Latenz und Aufbewahrungsdauer im Speicher
 

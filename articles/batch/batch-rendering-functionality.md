@@ -5,18 +5,18 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 867dfae570a1e2006b7eea568e3450050f485d9d
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 6e34e0ef9035882a32ff46222686db4a948d7997
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726467"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957459"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch-Renderingfunktionen
 
 Azure Batch-Standardfunktionen werden verwendet, um Renderingworkloads und -anwendungen auszuführen. Batch enthält zudem bestimmte Funktionen zur Unterstützung von Renderingworkloads.
 
-Eine Übersicht über Batch-Konzepte, z.B. Pools, Aufträge und Aufgaben, finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/batch/batch-api-basics).
+Eine Übersicht über Batch-Konzepte, z.B. Pools, Aufträge und Aufgaben, finden Sie in [diesem Artikel](./batch-service-workflow-features.md).
 
 ## <a name="batch-pools"></a>Batch-Pools
 
@@ -26,7 +26,7 @@ In der Poolkonfiguration kann ein Rendering-VM-Image von Azure Marketplace angeg
 
 Zur Verfügung stehen ein Windows 2016-Image und ein CentOS-Image.  Im [Azure Marketplace](https://azuremarketplace.microsoft.com) finden Sie die VM-Images, indem Sie nach „Batch-Rendering“ suchen.
 
-Ein Beispiel für eine Poolkonfiguration finden Sie im [Tutorial zum Rendern von Azure CLI](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  Das Azure-Portal und Batch Explorer umfassen GUI-Tools zum Auswählen eines Rendering-VM-Images beim Erstellen eines Pools.  Wenn Sie eine Batch-API verwenden, geben Sie beim Erstellen eines Pools die folgenden Eigenschaftswerte für [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) an:
+Ein Beispiel für eine Poolkonfiguration finden Sie im [Tutorial zum Rendern von Azure CLI](./tutorial-rendering-cli.md).  Das Azure-Portal und Batch Explorer umfassen GUI-Tools zum Auswählen eines Rendering-VM-Images beim Erstellen eines Pools.  Wenn Sie eine Batch-API verwenden, geben Sie beim Erstellen eines Pools die folgenden Eigenschaftswerte für [ImageReference](/rest/api/batchservice/pool/add#imagereference) an:
 
 | Herausgeber | Angebot | Sku | Version |
 |---------|---------|---------|--------|
@@ -37,16 +37,16 @@ Andere Optionen sind verfügbar, wenn weitere Anwendungen für die virtuellen Co
 
 * Ein benutzerdefiniertes Image aus Shared Image Gallery:
   * Diese Option ermöglicht das Konfigurieren Ihrer VM mit den genauen Anwendungen und den jeweiligen Versionen, die Sie benötigen. Weitere Informationen finden Sie unter [Erstellen eines Pools mit Shared Image Gallery](batch-sig-images.md). Arnold und V-Ray wurden von Autodesk bzw. Chaos Group für einen Azure Batch-Lizenzierungsdienst angepasst. Stellen Sie sicher, dass Sie über die Versionen dieser Anwendungen mit der entsprechenden Unterstützung verfügen, da die Lizenzierung mit nutzungsbasierter Bezahlung andernfalls nicht funktioniert. Für die aktuellen Versionen von Maya oder 3ds Max wird kein Lizenzserver benötigt, wenn die Ausführung monitorlos erfolgt (im Batch-/Befehlszeilenmodus). Wenden Sie sich an den Azure-Support, wenn Sie nicht sicher sind, wie Sie bei dieser Option vorgehen sollen.
-* [Anwendungspakete:](https://docs.microsoft.com/azure/batch/batch-application-packages)
+* [Anwendungspakete:](./batch-application-packages.md)
   * Packen Sie die Anwendungsdateien in einer oder mehreren ZIP-Dateien, laden Sie sie über das Azure-Portal hoch, und geben Sie das Paket in der Poolkonfiguration an. Wenn Pool-VMs erstellt werden, werden die ZIP-Dateien heruntergeladen und die Dateien extrahiert.
 * Ressourcendateien:
-  * Anwendungsdateien werden in Azure Blob Storage hochgeladen, und Sie geben Dateiverweise in der [StartTask für den Pool](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask) an. Wenn Pool-VMs erstellt werden, werden die Ressourcendateien auf die einzelnen virtuellen Computer heruntergeladen.
+  * Anwendungsdateien werden in Azure Blob Storage hochgeladen, und Sie geben Dateiverweise in der [StartTask für den Pool](/rest/api/batchservice/pool/add#starttask) an. Wenn Pool-VMs erstellt werden, werden die Ressourcendateien auf die einzelnen virtuellen Computer heruntergeladen.
 
 ### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>Nutzungsbasierte Lizenzierung für vorinstallierte Anwendungen
 
 Die Anwendungen, die verwendet werden und für die eine Lizenzgebühr anfällt, müssen in der Poolkonfiguration angegeben werden.
 
-* Geben Sie beim [Erstellen eines Pools](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body) die `applicationLicenses`-Eigenschaft an.  Die folgenden Werte können im Array von Zeichenfolgen angegeben werden: „vray“, „arnold“, „3dsmax“ und „maya“.
+* Geben Sie beim [Erstellen eines Pools](/rest/api/batchservice/pool/add#request-body) die `applicationLicenses`-Eigenschaft an.  Die folgenden Werte können im Array von Zeichenfolgen angegeben werden: „vray“, „arnold“, „3dsmax“ und „maya“.
 * Wenn Sie eine oder mehrere Anwendungen angeben, werden die Kosten für diese Anwendungen mit den Kosten der virtuellen Computer addiert.  Anwendungspreise sind auf der [Seite mit den Preisen für Azure Batch](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering) aufgeführt.
 
 > [!NOTE]
@@ -58,7 +58,7 @@ Wenn versucht wird, eine Anwendung zu verwenden, die Anwendung jedoch in der `ap
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>Umgebungsvariablen für vorinstallierte Anwendungen
 
-Um die Befehlszeile für Renderingaufgaben erstellen zu können, muss der Installationsspeicherort der ausführbaren Dateien der Renderinganwendung angegeben werden.  Für die VM-Images von Azure Marketplace wurden Systemumgebungsvariablen erstellt, die verwendet werden können, anstatt die eigentlichen Pfade angeben zu müssen.  Diese Umgebungsvariablen ergänzen die für jede Aufgabe erstellten [Batch-Standardumgebungsvariablen](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables).
+Um die Befehlszeile für Renderingaufgaben erstellen zu können, muss der Installationsspeicherort der ausführbaren Dateien der Renderinganwendung angegeben werden.  Für die VM-Images von Azure Marketplace wurden Systemumgebungsvariablen erstellt, die verwendet werden können, anstatt die eigentlichen Pfade angeben zu müssen.  Diese Umgebungsvariablen ergänzen die für jede Aufgabe erstellten [Batch-Standardumgebungsvariablen](./batch-compute-node-environment-variables.md).
 
 |Application|Ausführbare Datei der Anwendung|Umgebungsvariable|
 |---------|---------|---------|
@@ -75,13 +75,13 @@ Arnold 2017-Befehlszeile|kick.exe|ARNOLD_2017_EXEC|
 
 Wie bei anderen Workloads variieren die Systemanforderungen für Renderinganwendungen, und die Leistungsanforderungen fallen je nach Aufträgen und Projekten unterschiedlich aus.  Abhängig von Ihren Anforderungen (z.B. niedrigste Kosten, bestes Preis-Leistungs-Verhältnis, beste Leistung usw.) stehen in Azure verschiedenste VM-Familien zur Verfügung.
 Einige Renderinganwendungen, z.B. Arnold, sind CPU-basiert. In anderen wie V-Ray und Blender Cycles können CPUs und/oder GPUs verwendet werden.
-Eine Beschreibung der verfügbaren VM-Familien und VM-Größen finden Sie unter [Arten und Größen von virtuellen Computern](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+Eine Beschreibung der verfügbaren VM-Familien und VM-Größen finden Sie unter [Arten und Größen von virtuellen Computern](../virtual-machines/windows/sizes.md).
 
 ### <a name="low-priority-vms"></a>Virtuelle Computer mit niedriger Priorität
 
 Wie bei anderen Workloads können virtuelle Computer mit niedriger Priorität auch in Batch-Pools für das Rendering verwendet werden.  Virtuelle Computer mit niedriger Priorität weisen die gleiche Leistung wie reguläre dedizierte virtuelle Computer auf, nutzen jedoch überschüssige Kapazitäten in Azure und sind zu einem günstigen Rabattpreis erhältlich.  Die Verwendung von VMs mit niedriger Priorität hat jedoch auch Nachteile: Möglicherweise stehen diese VMs für eine Zuweisung gerade nicht zur Verfügung, und sie können jederzeit vorzeitig entfernt werden, je nach der verfügbaren Kapazität. Aus diesem Grund eignen sich virtuelle Computer mit niedriger Priorität nicht für alle Renderingaufträge. Wenn das Rendering von Images beispielsweise viele Stunden dauert, ist es wahrscheinlich, dass das Rendering der Images unterbrochen und dann neu gestartet werden muss, da die vorzeitige Entfernung der virtuellen Computer nicht akzeptabel ist.
 
-Weitere Informationen zu den Merkmalen von virtuellen Computern mit niedriger Priorität und den verschiedenen Möglichkeiten, diese mithilfe von Batch zu konfigurieren, finden Sie unter [Verwenden von VMs mit niedriger Priorität mit Batch](https://docs.microsoft.com/azure/batch/batch-low-pri-vms).
+Weitere Informationen zu den Merkmalen von virtuellen Computern mit niedriger Priorität und den verschiedenen Möglichkeiten, diese mithilfe von Batch zu konfigurieren, finden Sie unter [Verwenden von VMs mit niedriger Priorität mit Batch](./batch-low-pri-vms.md).
 
 ## <a name="jobs-and-tasks"></a>Aufträge und Aufgaben
 
@@ -92,5 +92,5 @@ Wenn die VM-Images von Azure Marketplace verwendet werden, empfiehlt es sich, de
 
 Beispiele für das Rendering mit Batch finden Sie in den folgenden beiden Tutorials:
 
-* [Tutorial: Rendern einer Szene mit Azure Batch](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Tutorial: Rendern einer Blender-Szene mithilfe von Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Tutorial: Rendern einer Szene mit Azure Batch](./tutorial-rendering-cli.md)
+* [Tutorial: Rendern einer Blender-Szene mithilfe von Batch Explorer](./tutorial-rendering-batchexplorer-blender.md)

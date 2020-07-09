@@ -6,20 +6,22 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/13/2020
+ms.date: 06/16/2020
 ms.author: banders
-ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5b0d30d31fbe65360c246282eb2dc2109a541a3f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199125"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888318"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Tutorial: Überprüfen Ihrer individuellen Azure-Rechnung
 
 Dieser Artikel unterstützt Sie beim besseren Verständnis sowie bei der Überprüfung Ihrer Azure-Rechnung. In der Regel erhalten Sie für jeden Abrechnungszeitraum eine Rechnung per E-Mail. Die Rechnung stellt Ihre Azure-Rechnung dar. Die Kosteninformationen auf der Rechnung sind auch im Azure-Portal verfügbar. In diesem Tutorial vergleichen Sie Ihre Rechnung mit der Datei, die die ausführlichen Angaben zur täglichen Nutzung enthält, sowie mit der Kostenanalyse im Azure-Portal.
 
 Dieses Tutorial ist nur für Azure-Kunden mit einem individuellen Abonnement relevant. Gängige individuelle Abonnements sind Abonnements mit nutzungsbasierter Bezahlung, die direkt über die Azure-Website erworben werden.
+
+Informationen zum besseren Verständnis von unerwarteten Gebühren finden Sie unter [Analysieren unerwarteter Gebühren](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges). Wenn Sie Ihr Azure-Abonnement kündigen möchten, finden Sie entsprechende Informationen unter [Kündigen Ihres Azure-Abonnements](../manage/cancel-azure-subscription.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -47,7 +49,7 @@ Für einen Nutzungs- und Kostenvergleich müssen Sie zunächst Ihre Rechnungs- u
 
 Geben Sie im Azure-Portal den Suchbegriff *Abonnements* in das Suchfeld ein, und klicken Sie anschließend auf [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
-![Navigieren zu Abonnements](./media/review-individual-bill/navigate-subscriptions.png)
+[![Navigieren zu Abonnements](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
 Klicken Sie in der Abonnementliste auf das Abonnement.
 
@@ -98,7 +100,7 @@ Der Abschnitt **Nutzungsgebühren** Ihrer Rechnung enthält den Gesamtwert (Kost
 
 ![Nutzungsgebühren (Rechnung)](./media/review-individual-bill/invoice-usage-charges.png)
 
-Filtern Sie in Ihrer CSV-Nutzungsdatei die Spalte *MeterName* nach der entsprechenden Ressource aus Ihrer Rechnung. Addieren Sie dann den Wert *Cost* (Kosten) für Elemente in der Spalte. Hier sehen Sie ein Beispiel.
+Filtern Sie in Ihrer CSV-Nutzungsdatei die Spalte *MeterName* nach der entsprechenden Ressource aus Ihrer Rechnung. Addieren Sie dann den Wert *Cost* (Kosten) für Elemente in der Spalte. Hier sehen Sie ein Beispiel für den Namen der Verbrauchseinheit (P10-Datenträger), der demselben Posten auf der Rechnung entspricht.
 
 ![Nutzungsdatei: Addierter Wert für „MeterName“](./media/review-individual-bill/usage-file-usage-charge-resource.png)
 
@@ -147,7 +149,7 @@ Für einen in Azure erstellten einzelnen virtuellen Computer können beispielswe
 
 Nachdem der virtuelle Computer erstellt wurde, beginnen diese Verbrauchseinheiten mit der Ausgabe von Nutzungsdatensätzen. Diese Nutzung und der Preis der Verbrauchseinheit werden im Azure-System zur Messung von Verbrauchseinheiten nachverfolgt.
 
-Die zur Berechnung Ihrer Rechnung verwendeten Verbrauchseinheiten werden in der CSV-Nutzungsdatei angezeigt.
+Die zur Berechnung Ihrer Rechnung verwendeten Verbrauchseinheiten werden in der CSV-Nutzungsdatei angezeigt (siehe Beispiel oben).
 
 ## <a name="pay-your-bill"></a><a name="payment"></a>Bezahlen Ihrer Rechnung
 

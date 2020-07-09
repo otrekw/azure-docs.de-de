@@ -1,20 +1,14 @@
 ---
 title: 'Schnellstart: Senden von Blob Storage-Ereignissen an einen Webendpunkt: Portal'
 description: 'Schnellstart: Verwenden Sie Azure Event Grid und das Azure-Portal, um das Blob Storage-Konto zu erstellen und dessen Ereignisse zu abonnieren. Senden Sie die Ereignisse an einen Webhook.'
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 04/16/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: ada451b6bb3578a2903e9bd832b98981d7029d1d
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: fe942a4daa877088bd354352aa994e4e283f9be5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605814"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103635"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Schnellstart: Weiterleiten von Blob Storage-Ereignissen an einen Webendpunkt über das Azure-Portal
 
@@ -86,12 +80,15 @@ Vor dem Abonnieren der Ereignisse für den Blobspeicher erstellen wir zunächst 
 Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten und wohin diese gesendet werden sollen.
 
 1. Navigieren Sie im Portal zu dem zuvor erstellten Azure Storage-Konto. Wählen Sie im linken Menü die Option **Alle Ressourcen** und anschließend Ihr Speicherkonto aus. 
-2. Wählen Sie auf der Seite **Speicherkonto** im linken Menü die Option **Ereignisse** aus.
+2. Wählen Sie auf der Seite **Speicherkonto** im linken Menü die Option **Ereignisse** aus. 
 1. Wählen Sie **Weitere Optionen** und dann **Webhook**. Sie verwenden einen Webhook für den Endpunkt, um Ereignisse an Ihre Viewer-App zu senden. 
 
    ![Auswählen von „Webhook“](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. Führen Sie auf der Seite **Ereignisabonnement erstellen** die folgenden Schritte aus: 
     1. Geben Sie unter **Name** einen Namen für das Ereignisabonnement an.
+    2. Geben Sie unter **Name** einen Namen für das **Systemthema** ein. Informationen zu Systemthemen finden Sie unter [Übersicht über Systemthemen](system-topics.md).
+
+       ![Eingeben von Namen für das Ereignisabonnement und das Systemthema](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
     2. Wählen Sie unter **Endpunkttyp** die Option **Webhook** aus. 
 
        ![Auswählen des Endpunkttyps „Webhook“](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)

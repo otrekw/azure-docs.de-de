@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15cdaba7d63d72aab25757e7ba6f5eadc48e026a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76512248"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554921"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>In Azure AD eingebundene Hybridgeräte
 
@@ -29,7 +29,7 @@ Unternehmen mit einem lokalen Fußabdruck nutzen normalerweise Verfahren für di
 
 Wenn Ihre Umgebung über einen lokalen AD-Fußabdruck verfügt und Sie zudem die Funktionen von Azure Active Directory nutzen möchten, können Sie in Azure AD eingebundene Hybridgeräte implementieren. Hierbei handelt es sich um Geräte, die in Ihre lokale Active Directory-Instanz eingebunden und dafür registriert sind.
 
-|   | Azure AD Hybrid Join |
+| Azure AD Hybrid Join | BESCHREIBUNG |
 | --- | --- |
 | **Definition** | Eingebunden in lokales AD und Azure AD, und es ist eine Anmeldung bei dem Gerät mit dem Organisationskonto erforderlich. |
 | **Hauptzielgruppe** | Geeignet für Hybridorganisationen mit vorhandener lokaler AD-Infrastruktur. |

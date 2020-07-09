@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: ace34cf4a72b871ba6646b279007b8ce21c03e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d312346accc4fb6781744343911158bb538c0ccf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324078"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln Ihrer App Configuration-Daten
 Azure App Configuration [verschlüsselt vertrauliche ruhende Informationen](../security/fundamentals/encryption-atrest.md). Die Verwendung von kundenseitig verwalteten Schlüsseln bietet einen verbesserten Datenschutz, da Sie so Ihre Verschlüsselungsschlüssel verwalten können.  Wenn die Verschlüsselung mit verwalteten Schlüsseln verwendet wird, werden alle vertraulichen Informationen in App Configuration mit einem vom Benutzer bereitgestellten Azure Key Vault-Schlüssel verschlüsselt.  Dadurch kann der Verschlüsselungsschlüssel bei Bedarf rotiert werden.  Außerdem bietet sich dadurch die Möglichkeit, den Zugriff von Azure App Configuration auf vertrauliche Informationen zu widerrufen, indem der Zugriff der App Configuration-Instanz auf den Schlüssel widerrufen wird.
@@ -75,7 +75,7 @@ Zu Beginn benötigen Sie eine ordnungsgemäß konfigurierte Azure App Configurat
 1. Erstellen Sie eine systemseitig zugewiesene verwaltete Identität mit der Azure-CLI, wobei Sie die Namen Ihrer App Configuration-Instanz und der Ressourcengruppe ersetzen, die Sie in den vorherigen Schritten verwendet haben. Die verwaltete Identität wird verwendet, um auf den verwalteten Schlüssel zuzugreifen. Wir verwenden `contoso-app-config`, um den Namen einer App Configuration-Instanz zu illustrieren:
     
     ```azurecli
-    az appconfig identity assign --na1. me contoso-app-config --group contoso-resource-group --identities [system]
+    az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
     Die Ausgabe dieses Befehls enthält die Prinzipal-ID ("principalId") und Mandanten-ID ("tenandId") der systemseitig zugewiesenen Identität.  Diese werden verwendet, um der Identität Zugriff auf den verwalteten Schlüssel zu gewähren.

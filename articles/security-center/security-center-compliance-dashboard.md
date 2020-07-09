@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 285245e499cfe8a5d7e365044c188191325e4267
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77604452"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782856"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Tutorial: Verbessern der Einhaltung gesetzlicher Vorschriften
 ---
@@ -103,4 +103,4 @@ Weitere Informationen:
 
 -   [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md): Es wird beschrieben, wie Sie Empfehlungen in Azure Security Center nutzen, um Ihre Azure-Ressourcen zu schützen.
 
--   [Verbessern des Secure Score in Azure Security Center](security-center-secure-score.md): Es wird beschrieben, wie Sie Sicherheitsrisiken und -empfehlungen priorisieren, um Ihren Sicherheitsstatus bestmöglich zu verbessern.
+-   [Verbessern des Secure Score in Azure Security Center](secure-score-security-controls.md): Es wird beschrieben, wie Sie Sicherheitsrisiken und -empfehlungen priorisieren, um Ihren Sicherheitsstatus bestmöglich zu verbessern.

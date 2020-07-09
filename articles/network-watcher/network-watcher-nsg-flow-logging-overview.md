@@ -401,7 +401,7 @@ Wenn Sie ein Speicherkonto hinter einer Firewall verwenden möchten, müssen Sie
 
 - Navigieren Sie zum Speicherkonto, indem Sie im Portal oder auf der Seite [Speicherkonten](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) den Namen des Speicherkontos in das Feld für die globale Suche eingeben.
 - Wählen Sie im Abschnitt **EINSTELLUNGEN** die Option **Firewalls und virtuelle Netzwerke** aus.
-- Wählen Sie unter **Zugriff erlauben von** die Option **Ausgewählte Netzwerke** aus. Aktivieren Sie anschließend unter **Ausnahmen** das Kontrollkästchen neben ****Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben****.
+- Wählen Sie unter **Zugriff erlauben von** die Option **Ausgewählte Netzwerke** aus. Aktivieren Sie anschließend unter **Ausnahmen** das Kontrollkästchen neben  ****Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben****
 - Falls die Option bereits ausgewählt ist, ist keine Änderung erforderlich.
 - Suchen Sie auf der Seite [NSG-Flussprotokolle: Übersicht](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) nach ihrer Ziel-NSG, und aktivieren Sie NSG-Flussprotokolle mit dem oben ausgewählten Speicherkonto.
 

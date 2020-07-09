@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie den Central Secrets Sto
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197761"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Central Secrets Store in Azure Service Fabric 

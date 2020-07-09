@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f08161daf1d9c1a4431d9e3fba3ca741d88b16
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 95d1ffec6a849cb97a6151717c3e30dc362b1403
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743347"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826603"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Gewusst wie: Aktivieren der Kennwortzurücksetzung über den Windows-Anmeldebildschirm
 
@@ -30,7 +30,7 @@ Für Computer, auf denen Windows 7, 8, 8.1 oder 10 ausgeführt wird, können Sie
 - Einige Anmeldeinformationsanbieter (Drittanbieter) haben bekanntermaßen Probleme mit dieser Funktion.
 - Das Deaktivieren der Benutzerkontensteuerung durch die Änderung des [Registrierungsschlüssels „EnableLUA“](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) verursacht bekanntermaßen Probleme.
 - Diese Funktion funktioniert nicht bei Netzwerken mit 802.1x-Netzwerkauthentifizierung und der Option „Unmittelbar vor der Benutzeranmeldung ausführen“. In Netzwerken mit 802.1x-Netzwerkauthentifizierung empfiehlt es sich, die Computerauthentifizierung zu verwenden, um dieses Feature zu aktivieren.
-- In Hybrid Azure AD eingebundene Computer müssen über eine direkte Netzwerkverbindung mit einem Domänencontroller verfügen, um das neue Kennwort verwenden und zwischengespeicherte Anmeldeinformationen aktualisieren zu können.
+- In Hybrid Azure AD eingebundene Computer müssen über eine direkte Netzwerkverbindung mit einem Domänencontroller verfügen, um das neue Kennwort verwenden und zwischengespeicherte Anmeldeinformationen aktualisieren zu können. Das heißt, die Geräte müssen sich im internen Unternehmensnetzwerk oder in einem VPN mit Netzwerkzugriff auf einen lokalen Domänencontroller befinden. 
 - Wenn Sie ein Image verwenden, stellen Sie vor dem Ausführen von Sysprep sicher, dass der Webcache für den integrierten Administrator vor der Durchführung des CopyProfile-Schritts gelöscht ist. Weitere Informationen zu diesem Schritt finden Sie im Supportartikel [Schlechte Leistung bei Verwendung eines benutzerdefinierten Standardbenutzerprofils](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - Bei den folgenden Einstellungen ist bekannt, dass sie die Möglichkeit zum Verwenden und Zurücksetzen von Kennwörtern auf Windows 10-Geräten beeinträchtigen:
     - Wenn in Windows 10-Versionen vor v1809 die Richtlinie STRG+ALT+ENTF vorschreibt, funktioniert **Kennwort zurücksetzen** nicht.

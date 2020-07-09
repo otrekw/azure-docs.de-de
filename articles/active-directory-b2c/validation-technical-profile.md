@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1eaf159149bb353b1cf0474aad5bc233decddc5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d4c538a9292698fecc8b44c055ab201748e292c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202992"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Validierungsprofils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ein technisches Validierungsprofil ist ein ganz einfaches technisches Profil aus jedem beliebigen Protokoll, z. B. [Azure Active Directory](active-directory-technical-profile.md) oder einer [REST-API](restful-technical-profile.md). Das technische Validierungsprofil gibt Ausgabeansprüche oder einen HTTP-Statuscode des Typs 4xx mit den folgenden Daten zurück. Weitere Informationen finden Sie unter [Zurückgeben einer Fehlermeldung.](restful-technical-profile.md#returning-error-message)
+Ein technisches Validierungsprofil ist ein ganz einfaches technisches Profil aus jedem beliebigen Protokoll, z. B. [Azure Active Directory](active-directory-technical-profile.md) oder einer [REST-API](restful-technical-profile.md). Das technische Validierungsprofil gibt Ausgabeansprüche oder einen HTTP-Statuscode des Typs 4xx mit den folgenden Daten zurück. Weitere Informationen finden Sie unter [Zurückgeben einer Fehlermeldung.](restful-technical-profile.md#returning-validation-error-message)
 
-```JSON
+```json
 {
     "version": "1.0.0",
     "status": 409,
@@ -87,7 +87,7 @@ Im folgenden Beispiel werden diese technischen Validierungsprofile verwendet:
 2. Das nächste technische Validierungsprofil wird nicht ausgeführt, wenn der „userType“-Anspruch nicht vorhanden ist oder wenn der Wert von „usertype“ `Partner` ist. Das technische Validierungsprofil versucht, das Benutzerprofil aus der internen Kundendatenbank zu lesen, und wird fortgesetzt, wenn ein Fehler auftritt, z.B. ein nicht verfügbarer REST-API-Dienst oder ein beliebiger interner Fehler.
 3. Das letzte technische Validierungsprofil wird nicht ausgeführt, wenn der „userType“-Anspruch nicht vorhanden war oder wenn der Wert von „usertype“ `Customer` ist. Das technische Validierungsprofil versucht, das Benutzerprofil aus der internen Partnerdatenbank zu lesen, und wird fortgesetzt, wenn ein Fehler auftritt, z.B. ein nicht verfügbarer REST-API-Dienst oder ein beliebiger interner Fehler.
 
-```XML
+```xml
 <ValidationTechnicalProfiles>
   <ValidationTechnicalProfile ReferenceId="login-NonInteractive" ContinueOnError="false" />
   <ValidationTechnicalProfile ReferenceId="REST-ReadProfileFromCustomertsDatabase" ContinueOnError="true" >

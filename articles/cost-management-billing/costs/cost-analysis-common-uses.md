@@ -3,20 +3,69 @@ title: Häufige Anwendungsbereiche der Kostenanalyse in Azure Cost Management
 description: In diesem Artikel wird erläutert, wie Sie in Azure Cost Management Ergebnisse für häufige Kostenanalyseaufgaben erhalten.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/10/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 2e0e222e636f694328835e20fda97deca1d9986a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 130d313c1ca549f3a4e6f1ec1bbac2a16a753709
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261493"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142503"
 ---
 # <a name="common-cost-analysis-uses"></a>Häufige Anwendungsbereiche der Kostenanalyse
 
 Benutzer von Azure Cost Management wünschen sich häufig Antworten auf Fragen, die auch viele andere stellen. In diesem Artikel wird Schritt für Schritt erläutert, wie Sie in Azure Cost Management Ergebnisse für häufige Kostenanalyseaufgaben erhalten.
+
+## <a name="view-forecasted-costs"></a>Anzeigen prognostizierter Kosten
+
+Prognostizierte Kosten werden in Kostenanalysebereichen für Flächen- und gestapelte Säulenansichten angezeigt. Die Prognose beruht auf Ihrer bisherigen Ressourcenverwendung. Änderungen an der Ressourcenverwendung wirken sich auf die prognostizierten Kosten aus.
+
+Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
+
+In der Standardansicht umfasst das obere Diagramm die Bereiche für tatsächliche/amortisierte Kosten und prognostizierte Kosten. Die Volltonfarbe des Diagramms zeigt die tatsächlichen/amortisierten Kosten an. Die schattierte Farbe zeigt die prognostizierten Kosten an.
+
+[![Prognostizierte Kosten](./media/cost-analysis-common-uses/enrollment-forecast.png)](./media/cost-analysis-common-uses/enrollment-forecast.png#lightbox)
+
+## <a name="view-forecasted-costs-grouped-by-service"></a>Anzeigen der prognostizierten Kosten gruppiert nach Dienst
+
+In der Standardansicht werden die prognostizierten Kostengruppen nicht nach Dienst angezeigt. Daher müssen Sie eine Auswahl für „Gruppieren nach“ hinzufügen.
+
+Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
+
+Wählen Sie **Gruppieren nach** > **Dienstname** aus.
+
+In der Ansicht werden die für jeden Dienst gruppierten Kosten angezeigt. Die prognostizierten Kosten werden nicht für jeden Dienst berechnet. Stattdessen werden die Kosten für die **Gesamtheit** Ihrer Dienste projiziert.
+
+[![Gruppierte prognostizierte Kosten](./media/cost-analysis-common-uses/forecast-group-by-service.png)](./media/cost-analysis-common-uses/forecast-group-by-service.png#lightbox)
+
+## <a name="view-forecasted-costs-for-a-service"></a>Anzeigen der prognostizierten Kosten für einen Dienst
+
+Sie können die nur auf einen einzelnen Dienst beschränkten prognostizierten Kosten anzeigen. Beispielsweise können Sie nur die prognostizierten Kosten für virtuelle Computer anzeigen.
+
+1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
+1. Wählen Sie **Filter hinzufügen** und dann **Dienstname** aus.
+1. Wählen Sie in der Liste **Auswählen** einen Dienst aus. Wählen Sie beispielsweise **Virtual Machines** aus.
+
+Überprüfen Sie die tatsächlichen Kosten und die prognostizierten Kosten für die Auswahl.
+
+Sie können der Ansicht weitere Anpassungen hinzufügen.
+
+1. Fügen Sie einen zweiten Filter für die **Verbrauchseinheit** hinzu, und wählen Sie einen zu filternden Wert für einen einzelnen Verbrauchseinheitstyp unter dem ausgewählten Dienstnamen aus.
+1. Gruppieren Sie nach **Ressource**, um die spezifischen Ressourcen anzuzeigen, für die Kosten anfallen. Die prognostizierten Kosten werden nicht für jeden Dienst berechnet. Stattdessen werden die Kosten für die **Gesamtheit** Ihrer Ressourcen projiziert.
+
+[![Prognostizierte Kosten für einen Dienst](./media/cost-analysis-common-uses/forecast-by-service.png)](./media/cost-analysis-common-uses/forecast-by-service.png#lightbox)
+
+## <a name="view-your-azure-and-aws-costs-together"></a>Anzeigen der Azure-Kosten zusammen mit den AWS-Kosten  
+
+Um Azure- und AWS-Kosten zusammen anzuzeigen, verwenden Sie Verwaltungsgruppenbereiche in Azure.
+
+1. Erstellen Sie eine Verwaltungsgruppe, oder wählen Sie eine vorhandene Gruppe aus.
+1. Weisen Sie der Verwaltungsgruppe die gewünschten vorhandenen Azure-Abonnements zu.
+1. Weisen Sie die *gleiche* Verwaltungsgruppe dem verknüpften Konto des Connectors zu.
+1. Navigieren Sie zu „Kostenanalyse“, und wählen Sie **Kumulierte Kosten** aus.
+1. Wählen Sie **Gruppieren nach** - **Anbieter** aus.
 
 ## <a name="view-cost-breakdown-by-azure-service"></a>Anzeigen der Kostenaufschlüsselung nach Azure-Dienst
 
@@ -37,7 +86,6 @@ Navigieren Sie zum Anzeigen der Rechnungsdetails im Azure-Portal zur Kostenanaly
 Wenn Sie die Rechnungsdetails anzeigen, können Sie den Dienst identifizieren, der unerwartete Kosten verursacht, und ermitteln, welche Ressourcen in der Kostenanalyse direkt mit der Ressource verknüpft sind. Wenn Sie beispielsweise die Gebühren für den Virtual Machines-Dienst analysieren möchten, navigieren Sie zur Ansicht **Kumulierte Kosten**. Legen Sie dann die Granularität auf **Täglich** fest, filtern Sie nach Gebühren für **Dienstname: Virtual Machines**, und gruppieren Sie die Gebühren nach **Ressource**.
 
 [![Beispiel für die akkumulierten Kosten für Virtual Machines](./media/cost-analysis-common-uses/virtual-machines.png)](./media/cost-analysis-common-uses/virtual-machines.png#lightbox)
-
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Anzeigen der Kostenaufschlüsselung nach Azure-Ressource
 

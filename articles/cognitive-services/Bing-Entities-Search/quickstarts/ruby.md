@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 69e4d992e2ef89b4d3d9408d6e50591fb8166c79
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9699bb0e75aac19a2d5c5c68d07e85b1c17c7cbc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75385778"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650198"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Schnellstart für die Bing-Entitätssuche-API mit Ruby
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-ruby"></a>Schnellstart: Senden einer Suchanforderung an die Bing-Entitätssuche-REST-API mithilfe von Ruby
 
 Verwenden Sie diese Schnellstartanleitung, um die Bing-Entitätssuche-API zum ersten Mal aufzurufen und die JSON-Antwort anzuzeigen. Diese einfache Ruby-Anwendung sendet eine Nachrichtensuchabfrage an die API und zeigt die Antwort an. Der Quellcode für diese Anwendung ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb) verfügbar.
 
@@ -31,7 +31,7 @@ Diese Anwendung ist zwar in Ruby geschrieben, an sich ist die API aber ein RESTf
 
 ## <a name="create-and-initialize-the-application"></a>Erstellen und Initialisieren der Anwendung
 
-1. Erstellen Sie in Ihrer bevorzugten IDE oder einem beliebigen Code-Editor eine Ruby-Nachrichtendatei, und importieren Sie die folgenden Pakete.
+1. Erstellen Sie in Ihrer bevorzugten IDE oder einem beliebigen Code-Editor eine Ruby-Nachrichtendatei, und importieren Sie die folgenden Pakete:
 
     ```ruby
     require 'net/https'
@@ -39,7 +39,7 @@ Diese Anwendung ist zwar in Ruby geschrieben, an sich ist die API aber ein RESTf
     require 'json'
     ```
 
-2. Erstellen Sie Variablen für Ihren API-Endpunkt, die News-Suche-URL, Ihren Abonnementschlüssel und eine Suchabfrage. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
+2. Erstellen Sie Variablen für Ihren API-Endpunkt, die News-Suche-URL, Ihren Abonnementschlüssel und die Suchabfrage. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
     
     ```ruby
     host = 'https://api.cognitive.microsoft.com'
@@ -65,7 +65,7 @@ Diese Anwendung ist zwar in Ruby geschrieben, an sich ist die API aber ein RESTf
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-3. Senden der Anforderung und Ausgeben der Antwort
+3. Senden der Anforderung und Ausgeben der Antwort.
 
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -146,4 +146,4 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 > [Erstellen einer Einzelseiten-Web-App](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Was ist die Bing-Entitätssuche-API?](../search-the-web.md)
-* [Referenz zur Bing-Entitätssuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Referenz zur Bing-Entitätssuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

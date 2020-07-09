@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 40352b7ae1f3fb6b1178f2dfe70cdca9871c76b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d18258d62267c931a39947611dda038ff6e65205
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603769"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84718698"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Stärken Ihres Sicherheitsstatus mit Azure Security Center
 Dieser Artikel hilft Ihnen dabei, Ihren Sicherheitsstatus zu stärken. Stellen Sie mithilfe der Überwachungsfunktionen von Azure Security Center möglichst hohe Ressourcensicherheit sicher, und überwachen Sie die Einhaltung von Richtlinien.
@@ -34,7 +34,7 @@ Sie können den Sicherheitsstatus Ihrer Ressourcen sowie ggf. vorliegende Proble
 - Weitere Informationen zum Überwachen Ihrer Netzwerkressourcen (z.B. virtuelle Computer, Netzwerksicherheitsgruppen und Endpunkte) sowie zum Abrufen von Empfehlungen zur Verbesserung der Sicherheit finden Sie unter [Schützen Ihres Netzwerks in Azure Security Center](security-center-network-recommendations.md). 
 - Weitere Informationen zum Überwachen Ihrer Daten- und Speicherressourcen (z.B. SQL-Server und Speicherkonten) sowie zum Abrufen von Empfehlungen zur Verbesserung der Sicherheit finden Sie unter [Schützen des Azure SQL-Diensts und Ihrer Daten in Azure Security Center](security-center-sql-service-recommendations.md). 
 - Weitere Informationen zum Überwachen Ihrer Identitäts- und Zugriffsressourcen, einschließlich MFA und Kontoberechtigungen, sowie zum Abrufen von Empfehlungen zur Verbesserung der Sicherheit finden Sie unter [Überwachen von Identität und Zugriff in Azure Security Center](security-center-identity-access.md). 
-- Weitere Informationen zum Überwachen des Just-In-Time-Zugriffs auf Ihre Ressourcen finden Sie unter [Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features](security-center-just-in-time.md). 
+- Weitere Informationen zum Überwachen des Just-In-Time-Zugriffs auf Ihre Ressourcen finden Sie unter [Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features](security-center-just-in-time.md).
 
 
 Weitere Informationen zur Anwendung der Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).

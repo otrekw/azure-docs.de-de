@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 5c8808450f8baa6d395ee9c24dbc59dfa919b66d
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: b88b6d1ea4b9d9fc2b33849157968ee1c2f8c620
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801007"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170459"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. Sie können in einem Abonnement bis zu 2.000 Aktionsgruppen konfigurieren.
@@ -118,7 +118,7 @@ Mithilfe der Aktion „Aktionsgruppenwebhook“ können Sie Azure Active Directo
     > Sie müssen Mitglied der [Rolle „Azure AD-Anwendungsadministrator“](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) sein, um dieses Skript ausführen zu können.
     
     - Ändern Sie den Connect-AzureAD-Befehl des PowerShell-Skripts so, dass Ihre Azure AD-Mandanten-ID verwendet wird.
-    - Ändern Sie die $myAzureADApplicationObjectId-Variable des PowerShell-Skripts so, dass die Objekt-ID Ihrer Azure AD-Anwendung verwendet wird.
+    - Ändern Sie die Variable „$myAzureADApplicationObjectId“ des PowerShell-Skripts, um die Objekt-ID Ihrer Azure AD-Anwendung zu verwenden.
     - Führen Sie das geänderte Skript aus.
     
 1. Konfigurieren Sie die Aktion für den sicheren Aktionsgruppen-Webhook.
@@ -201,9 +201,9 @@ Weitere wichtige Informationen finden Sie in den Artikeln zu [Ratenlimits](./../
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von SMS-Aktionen verfügen.
 
 > [!NOTE]
-> Wenn Sie auf der Benutzeroberfläche für die Aktionsgruppe im Azure-Portal Ihren Ländercode nicht auswählen können, wird SMS für Ihr Land nicht unterstützt.  Wenn Ihr Ländercode nicht verfügbar ist, können Sie über das [Benutzerfeedback](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice) dafür stimmen, dass Ihr Land hinzugefügt wird. In der Zwischenzeit besteht eine Umgehungslösung darin, dass Ihre Aktionsgruppe einen Webhook bei einem anderen SMS-Anbieter mit Unterstützung in Ihrem Land anruft.  
+> Wenn Sie auf der Benutzeroberfläche für die Aktionsgruppe im Azure-Portal Ihren Länder-/Regionscode nicht auswählen können, wird SMS für Ihr Land bzw. Ihre Region nicht unterstützt.  Wenn Ihr Länder-/Regionscode nicht verfügbar ist, können Sie über das [Benutzerfeedback](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice) dafür stimmen, dass Ihr Land bzw. Ihre Region hinzugefügt wird. In der Zwischenzeit besteht eine Umgehungslösung darin, dass Ihre Aktionsgruppe einen Webhook bei einem anderen SMS-Anbieter mit Unterstützung in Ihrem Land bzw. Ihrer Region anruft.  
 
-Die Preise für unterstützte Länder sind auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) aufgeführt.
+Die Preise für unterstützte Länder/Regionen sind auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) aufgeführt.
   
 
 ### <a name="voice"></a>Sprache
@@ -212,9 +212,9 @@ Weitere wichtige Informationen finden Sie im Artikeln zu [Ratenlimits](./../../a
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Sprachaktionen verfügen.
 
 > [!NOTE]
-> Wenn Sie auf der Benutzeroberfläche für die Aktionsgruppe im Azure-Portal Ihren Ländercode nicht auswählen können, werden Sprachanrufe für Ihr Land nicht unterstützt. Wenn Ihr Ländercode nicht verfügbar ist, können Sie über das [Benutzerfeedback](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice) dafür stimmen, dass Ihr Land hinzugefügt wird.  In der Zwischenzeit besteht eine Umgehungslösung darin, dass Ihre Aktionsgruppe einen Webhook bei einem anderen Anbieter von Sprachanrufen mit Unterstützung in Ihrem Land anruft.  
+> Wenn Sie auf der Benutzeroberfläche für die Aktionsgruppe im Azure-Portal Ihren Länder-/Regionscode nicht auswählen können, werden Sprachanrufe für Ihr Land bzw. Ihre Region nicht unterstützt. Wenn Ihr Länder-/Regionscode nicht verfügbar ist, können Sie über das [Benutzerfeedback](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice) dafür stimmen, dass Ihr Land bzw. Ihre Region hinzugefügt wird.  In der Zwischenzeit besteht eine Umgehungslösung darin, dass Ihre Aktionsgruppe einen Webhook bei einem anderen Anbieter von Sprachanrufen mit Unterstützung in Ihrem Land bzw. Ihrer Region anruft.  
 
-Die Preise für unterstützte Länder sind auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) aufgeführt.
+Die Preise für unterstützte Länder/Regionen sind auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) aufgeführt.
 
 ### <a name="webhook"></a>Webhook
 Webhooks werden mit den folgenden Regeln abgerufen. Es wird maximal zweimal versucht, den Webhookaufruf durchzuführen, wenn der HTTP-Statuscode 408, 429, 503 oder 504 zurückgegeben wird oder der HTTP-Endpunkt nicht reagiert. Der erste Wiederholungsversuch erfolgt nach 10 Sekunden. Der zweite Wiederholungsversuch erfolgt nach 100 Sekunden. Nach zwei Ausfällen wird der Endpunkt 30 Minuten lang von keiner Aktionsgruppe aufgerufen. 
@@ -245,7 +245,7 @@ Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von We
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [SMS-Warnungsverhalten in Aktionsgruppen](../../azure-monitor/platform/alerts-sms-behavior.md).  
 * Erweitern Sie Ihr [Verständnis des Webhookschemas für Aktivitätsprotokollwarnungen](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
-* Erfahren Sie mehr über den [ITSM-Connector](../../azure-monitor/platform/itsmc-overview.md).
+* Weitere Informationen zum ITSM-Connector finden Sie [hier](../../azure-monitor/platform/itsmc-overview.md).
 * Weitere Informationen zu [Ratenlimits](../../azure-monitor/platform/alerts-rate-limiting.md) für Warnungen.
 * Verschaffen Sie sich eine [Übersicht über Aktivitätsprotokollwarnungen](../../azure-monitor/platform/alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
 * Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).

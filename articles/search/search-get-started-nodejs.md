@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/25/2020
-ms.openlocfilehash: 8761a8f6daf0e15a00dc989e77339fea9536b330
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.date: 06/23/2020
+ms.openlocfilehash: bd64faf46f91c3b73d58f7c226748cd0ac083701
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801279"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562147"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Node.js mit REST-APIs
 > [!div class="op_single_selector"]
@@ -280,7 +280,7 @@ class AzureSearchClient {
         // The query key is used for read-only requests and so can be distributed with less risk of abuse.
         this.queryKey = queryKey;
         this.indexName = indexName;
-        this.apiVersion = '2019-05-06';
+        this.apiVersion = '2020-06-30';
     }
 
     // All methods go inside class body here!
@@ -289,7 +289,7 @@ class AzureSearchClient {
 module.exports = AzureSearchClient;
 ```
 
-Die Hauptaufgabe der Klasse besteht darin, URLs zu erstellen, an die die verschiedenen Anforderungen gesendet werden sollen. Erstellen Sie diese URLs mit Instanzmethoden, die die an den Klassenkonstruktor übergebenen Konfigurationsdaten verwenden. Beachten Sie, dass die konstruierte URL speziell für eine API-Version gilt und über ein Argument verfügen muss, das diese Version angibt (in dieser Anwendung: `2019-05-06`). 
+Die Hauptaufgabe der Klasse besteht darin, URLs zu erstellen, an die die verschiedenen Anforderungen gesendet werden sollen. Erstellen Sie diese URLs mit Instanzmethoden, die die an den Klassenkonstruktor übergebenen Konfigurationsdaten verwenden. Beachten Sie, dass die konstruierte URL speziell für eine API-Version gilt und über ein Argument verfügen muss, das diese Version angibt (in dieser Anwendung: `2020-06-30`). 
 
 Die erste dieser Methode gibt die URL für den Index selbst zurück. Fügen Sie die folgende Methode im Hauptteil der Klasse hinzu:
 

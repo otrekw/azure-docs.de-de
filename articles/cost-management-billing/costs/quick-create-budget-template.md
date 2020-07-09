@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 04/22/2020
+ms.date: 06/10/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: de24895334ec4c864e6daae84a6aab47a47d7b9b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: dc37039d6777a77f9de247808329930f1621ee82
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82103632"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686408"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Budgets mit einer Azure Resource Manager-Vorlage
 
@@ -39,21 +39,23 @@ Die folgenden Azure-Berechtigungen (oder Bereich) werden pro Abonnement für Bud
 
 Weitere Informationen zum Zuweisen der Berechtigung für Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Daten in Cost Management](assign-access-acm-data.md).
 
-## <a name="review-the-template"></a>Überprüfen der Vorlage
+## <a name="create-a-budget"></a>Erstellen eines Budgets
+
+### <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/create-budget).
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
 
 In der Vorlage ist eine einzelne Azure-Ressource definiert:
 
 * [Microsoft.Consumption/budgets](/azure/templates/microsoft.consumption/budgets) (zum Erstellen eines Azure-Budgets).
 
-## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage dient zum Erstellen eines Budgets.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json"><img src="./media/quick-create-budget-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
 
 2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 
@@ -72,7 +74,7 @@ In der Vorlage ist eine einzelne Azure-Ressource definiert:
     * **Schwellenwert**: Geben Sie einen Schwellenwert für die Benachrichtigung ein. Eine Benachrichtigung wird gesendet, wenn die Kosten den Schwellenwert übersteigen. Hierbei handelt es sich immer um einen Prozentwert, und er muss zwischen „0“ und „1.000“ liegen.
     * **Contact Emails** (Kontakt-E-Mail-Adressen): Geben Sie eine Liste von E-Mail-Adressen ein, an die die Budgetbenachrichtigung gesendet werden soll, wenn der Schwellenwert überschritten wird. Erwartetes Format: `["user1@domain.com","user2@domain.com"]`.
     * **Contact Roles** (Kontaktrollen): Geben Sie die Liste der Kontaktrollen ein, an die die Budgetbenachrichtigung gesendet werden soll, wenn der Schwellenwert überschritten wird. Standardwerte sind „Besitzer“, „Mitwirkender“ und „Leser“. Erwartetes Format: `["Owner","Contributor","Reader"]`.
-    * **Contact Groups** (Kontaktgruppen): Geben Sie eine Liste von Aktionsgruppen ein, an die die Budgetbenachrichtigung gesendet werden soll, wenn der Schwellenwert überschritten wird. Für diese Angabe wird ein Zeichenfolgenarray akzeptiert. Erwartetes Format: `["Action Group Name1","Action Group Name2"]`. Falls Sie keine Aktionsgruppen verwenden möchten, geben Sie `[]` ein.
+    * **Contact Groups** (Kontaktgruppen): Geben Sie eine Liste von Aktionsgruppenressourcen-IDs ein, an die die Budgetbenachrichtigung gesendet werden soll, wenn der Schwellenwert überschritten wird. Für diese Angabe wird ein Zeichenfolgenarray akzeptiert. Erwartetes Format: `["action group resource ID1","action group resource ID2"]`. Falls Sie keine Aktionsgruppen verwenden möchten, geben Sie `[]` ein.
     * **Resources Filter** (Ressourcenfilter): Geben Sie eine Liste mit Filtern für Ressourcen ein. Erwartetes Format: `["Resource Filter Name1","Resource Filter Name2"]`. Falls Sie keinen Filter anwenden möchten, geben Sie `[]` ein. Bei Eingabe eines Ressourcenfilters müssen auch Werte für **Meters Filter** (Verbrauchseinheitenfilter) eingegeben werden.
     * **Meters Filter** (Verbrauchseinheitenfilter): Geben Sie eine Liste mit auf Verbrauchseinheiten basierenden Filtern ein. Diese Angabe ist bei der Budgetkategorie **Nutzung** obligatorisch. Erwartetes Format: `["Meter Filter Name1","Meter Filter Name2"]`. Sollten Sie keinen **Ressourcenfilter** eingegeben haben, geben Sie `[]` ein.
     * **Ich stimme den oben genannten Geschäftsbedingungen zu**: Aktivieren Sie dieses Kontrollkästchen.
@@ -97,6 +99,37 @@ az consumption budget list
 
 ```azurepowershell-interactive
 Get-AzConsumptionBudget
+```
+
+---
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie ein Budget nicht mehr benötigen, löschen Sie es mithilfe einer der folgenden Methoden:
+
+### <a name="azure-portal"></a>Azure-Portal
+
+Navigieren Sie zu **Kostenverwaltung + Abrechnung**, und wählen Sie einen Abrechnungsbereich aus. Dann klicken Sie auf **Budgets**, und wählen Sie ein Budget aus. Anschließend wählen Sie **Budget löschen** aus.
+
+### <a name="command-line"></a>Befehlszeile
+
+Sie können das Budget mithilfe der Azure CLI oder mit Azure PowerShell entfernen.
+
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the budget name:" &&
+read budgetName &&
+az consumption budget delete --budget-name $budgetName &&
+echo "Press [ENTER] to continue ..."
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$budgetName = Read-Host -Prompt "Enter the budget name"
+Remove-AzConsumptionBudget -Name $budgetName
+Write-Host "Press [ENTER] to continue..."
 ```
 
 ---

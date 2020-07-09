@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 670020d276b9d4a868f24eb4a3f522581060adca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5f4a90859831e6134530b94dfa80c11eb740301a
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "72754973"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113312"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB-API für MongoDB
 
@@ -24,7 +24,7 @@ Azure Cosmos DB implementiert Wire Protocols von gängigen NoSQL-Datenbanken, ei
 
 Die mithilfe der Azure Cosmos DB-API für MongoDB erstellten neuen Konten sind standardmäßig mit MongoDB Wire Protocol Version 3.6 kompatibel. Alle MongoDB-Clienttreiber, die diese Protokollversionen unterstützen, sollten nativ eine Verbindung mit Cosmos DB herstellen können.
 
-![Azure Cosmos DB-API für MongoDB](./media/mongodb-introduction/cosmosdb-mongodb.png)
+:::image type="content" source="./media/mongodb-introduction/cosmosdb-mongodb.png" alt-text="MongoDB-API von Azure Cosmos DB" border="false":::
 
 ## <a name="key-benefits"></a>Hauptvorteile
 

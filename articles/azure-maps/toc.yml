@@ -59,6 +59,8 @@
           href: drawing-conversion-error-codes.md
     - name: Abdeckung
       items:
+        - name: Abdeckung
+          href: geographic-coverage.md
         - name: Abdeckung durch Geocodierung
           href: geocoding-coverage.md
         - name: Verkehrserschließung
@@ -89,6 +91,17 @@
           href: how-to-manage-account-keys.md
         - name: Verwalten der Authentifizierung
           href: how-to-manage-authentication.md
+          items:
+            - name: Schützen einer Daemon-Anwendung
+              href: how-to-secure-daemon-app.md
+            - name: Schützen einer Single-Page-Webanwendung für die interaktive Anmeldung
+              href: how-to-secure-spa-users.md
+            - name: Schützen einer Webanwendung
+              href: how-to-secure-webapp-users.md
+            - name: Schützen einer Single-Page-Webanwendung für die nicht interaktive Anmeldung
+              href: how-to-secure-spa-app.md
+            - name: Schützen einer eingabebeschränkten Anwendung
+              href: how-to-secure-device-code.md
         - name: Verwalten des Tarifs
           href: how-to-manage-pricing-tier.md
         - name: Verwalten von Creator
@@ -177,6 +190,14 @@
               href: map-get-information-from-coordinate.md
             - name: Anzeigen einer Wegbeschreibung von A nach B
               href: map-route.md
+        - name: Modul für Gebäudepläne
+          items:
+            - name: Modul für Gebäudepläne
+              href: how-to-use-indoor-module.md
+            - name: Dynamischer Stil für Gebäudepläne
+              href: indoor-map-dynamic-styling.md
+            - name: Schnellansicht für Zeichnungsfehler
+              href: drawing-error-visualizer.md
         - name: Räumliches IO-Modul
           items:
             - name: Verwenden des räumlichen IO-Moduls
@@ -211,25 +232,19 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Anzeigen von Datenverkehrsdaten
           href: how-to-show-traffic-android.md
-    - name: Entwickeln mit Creator-Gebäudeplänen
-      items:
-        - name: Modul für Gebäudepläne
-          href: how-to-use-indoor-module.md
-        - name: Dynamischer Stil für Gebäudepläne
-          href: indoor-map-dynamic-styling.md
-        - name: Schnellansicht für Zeichnungsfehler
-          href: drawing-error-visualizer.md
     - name: Bereitstellen von Datenfeedback
       href: how-to-use-feedback-tool.md
 - name: Verweis
   items:
     - name: API- und Parametererweiterungen
       items:
-        - name: Anforderungen an Zeichnungspakete
+        - name: Anforderungen für Zeichnungspakete
           href: drawing-requirements.md
+        - name: StylesObject für dynamische Karten
+          href: schema-stateset-stylesobject.md
         - name: Fahrzeugnutzungsmodell
           href: consumption-model.md
-        - name: GeoJSON-Format erweitern
+        - name: Erweitertes GeoJSON-Format
           href: extend-geojson.md
         - name: GEOJSON-Format des Geofence
           href: geofence-geojson.md
@@ -289,6 +304,8 @@
           href: 'https://aka.ms/am-indoor-module-websdk/'
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.maps/accounts
+    - name: Azure CLI
+      href: /cli/azure/maps
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
@@ -314,19 +331,15 @@
     - name: Azure IoT SDKs
       items:
         - name: IoT-Dienst-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT-Geräte-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Nutzungsbedingungen für Azure Maps
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps-Preise
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-maps'
-    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
-      href: 'https://docs.microsoft.com/answers/topics/azure-maps.html'
     - name: Azure Maps-Videos
       href: 'https://aka.ms/AzureMapsVideos'
     - name: Open Source-Projekte

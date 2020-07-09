@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: bbcbb19530aebe777a91cbe4c5487e1b50ace2e5
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559772"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82870041"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Erstellen einer Triggerabhängigkeit für ein rollierendes Fenster
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -82,15 +82,18 @@ Die folgende Tabelle enthält die Liste der Attribute, die zum Definieren einer 
 | **Eigenschaftenname** | **Beschreibung**  | **Typ** | **Erforderlich** |
 |---|---|---|---|
 | type  | In dieser Dropdownliste werden alle vorhandenen Trigger für rollierende Fenster angezeigt. Wählen Sie den Trigger aus, auf den sich die Abhängigkeit beziehen soll.  | TumblingWindowTriggerDependencyReference oder SelfDependencyTumblingWindowTriggerReference | Ja |
-| offset | Der Offset des Abhängigkeitstriggers. Geben Sie einen Wert im Format einer Zeitspanne an. Dabei sind positive und negative Offsets zulässig. Diese Eigenschaft ist obligatorisch, wenn der Trigger von sich selbst abhängig ist. In allen anderen Fällen ist sie optional. Die Selbstabhängigkeit muss immer ein negativer Offset sein. Wenn kein Wert angegeben wird, ist das Fenster identisch mit dem Trigger. | Timespan<br/>(hh:mm:ss) | Selbstabhängigkeit: Ja<br/>Sonstiges: Nein  |
-| size | Die Größe des abhängigen rollierenden Fensters. Geben Sie einen positiven Timespan-Wert an. Diese Eigenschaft ist optional. | Timespan<br/>(hh:mm:ss) | Nein   |
+| offset | Der Offset des Abhängigkeitstriggers. Geben Sie einen Wert im Format einer Zeitspanne an. Dabei sind positive und negative Offsets zulässig. Diese Eigenschaft ist obligatorisch, wenn der Trigger von sich selbst abhängig ist. In allen anderen Fällen ist sie optional. Die Selbstabhängigkeit muss immer ein negativer Offset sein. Wenn kein Wert angegeben wird, ist das Fenster identisch mit dem Trigger. | Timespan<br/>(hh:mm:ss) | Selbstabhängigkeit: Ja<br/>Sonstiges: Nein |
+| size | Die Größe des abhängigen rollierenden Fensters. Geben Sie einen positiven Timespan-Wert an. Diese Eigenschaft ist optional. | Timespan<br/>(hh:mm:ss) | Nein  |
 
 > [!NOTE]
 > Ein Trigger für ein rollierendes Fenster kann von maximal fünf anderen Triggern abhängig sein.
 
 ## <a name="tumbling-window-self-dependency-properties"></a>Eigenschaften der Selbstabhängigkeit für ein rollierendes Fenster
 
-In Szenarien, in denen der Trigger erst mit dem nächsten Fenster fortfahren soll, wenn das vorherige Fenster erfolgreich abgeschlossen ist, müssen Sie eine Selbstabhängigkeit erstellen. Ein Trigger mit Selbstabhängigkeit, der vom Erfolg der eigenen Ausführung innerhalb der letzten Stunde abhängig ist, weist die folgenden Eigenschaften auf:
+In Szenarien, in denen der Trigger mit dem nächsten Fenster erst fortfahren soll, wenn das vorhergehende Fenster erfolgreich abgeschlossen wurde, müssen Sie eine Selbstabhängigkeit erstellen. Ein Trigger mit Selbstabhängigkeit, der vom Erfolg eigener früherer Ausführungen innerhalb der vorangegangenen Stunde abhängig ist, hat die im folgenden Code angegebenen Eigenschaften.
+
+> [!NOTE]
+> Wenn Ihre ausgelöste Pipeline auf der Ausgabe von Pipelines in zuvor ausgelösten Fenstern basiert, empfehlen wir, nur die Selbstabhängigkeit eines rollierenden Fensters zu verwenden. Zur Einschränkung von parallelen Triggerausführungen legen Sie die maximale Triggerparallelität fest.
 
 ```json
 {

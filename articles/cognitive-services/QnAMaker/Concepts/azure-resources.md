@@ -3,12 +3,12 @@ title: 'Azure-Ressourcen: QnA Maker'
 description: In QnA Maker werden verschiedene Azure-Quellen verwendet, von denen jede einen anderen Zweck erfüllt. Wenn Sie wissen, wie sie einzeln verwendet werden, können Sie den richtigen Tarif planen und auswählen oder bestimmen, wann ein Tarifwechsel sinnvoll ist. Das Verständnis dafür, wie sie kombiniert verwendet werden, ermöglicht es Ihnen, auftretende Probleme zu finden und zu beheben.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 916f5b9b012d233c6a28d5cbb75ea0b4e073d064
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873904"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236089"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-Ressourcen für QnA Maker
 
@@ -172,7 +172,7 @@ Verwenden Sie diese Schlüssel, wenn Sie Anforderungen an den Dienst über APIs 
 
 ![Schlüsselverwaltung](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Name|Position|Zweck|
+|Name|Standort|Zweck|
 |--|--|--|
 |Erstellungsschlüssel|[Azure portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Diese Schlüssel werden verwendet, um auf die [QnA Maker-Verwaltungsdienst-APIs](https://go.microsoft.com/fwlink/?linkid=2092179) zuzugreifen. Mit diesen APIs können Sie die Fragen und Antworten in Ihrer Wissensdatenbank bearbeiten und Ihre Wissensdatenbank veröffentlichen. Diese Schlüssel werden erstellt, wenn Sie einen neuen QnA Maker-Dienst erstellen.<br><br>Sie finden diese Schlüssel in der Ressource **Cognitive Services** auf der Seite **Schlüssel**.|
 |Abfrageendpunktschlüssel|[QnA Maker-Portal](https://www.qnamaker.ai)|Diese Schlüssel werden zum Abfragen des Endpunkts der veröffentlichten Wissensdatenbank verwendet, um eine Antwort auf eine Benutzerfrage abzurufen. In der Regel verwenden Sie diesen Abfrageendpunkt in Ihrem Chatbot oder im Clientanwendungscode, der eine Verbindung mit dem QnA Maker-Dienst herstellt. Diese Schlüssel werden erstellt, wenn Sie Ihre QnA Maker-Wissensdatenbank veröffentlichen.<br><br>Sie finden diese Schlüssel auf der Seite **Diensteinstellungen**. Suchen Sie diese Seite im Menü des Benutzers in der oberen rechten Ecke der Seite im Dropdownmenü.|
@@ -182,6 +182,14 @@ Verwenden Sie diese Schlüssel, wenn Sie Anforderungen an den Dienst über APIs 
 Die Begriffe „Erstellungsschlüssel“ und „Abfrageendpunktschlüssel“ dienen der Berichtigung. Der vorherig verwendete Begriff lautete **Abonnementschlüssel**. Wenn in anderen Dokumenten der Dokumentation auf Abonnementschlüssel verwiesen wird, sind diese gleichbedeutend mit Erstellungs- und Abfrageendpunktschlüsseln (die in der Runtime verwendet werden).
 
 Sie müssen wissen, welchen Zweck der Zugriff mit dem Schlüssel verfolgt, die Verwaltung der Wissensdatenbank oder die Abfrage der Wissensdatenbank, damit Sie wissen, welcher Schlüssel gesucht werden muss.
+
+## <a name="recommended-settings-for-network-isolation"></a>Empfohlene Einstellungen für die Netzwerkisolation
+
+* Schützen Sie Cognitive Services-Ressourcen vor öffentlichem Zugriff, indem Sie [das virtuelle Netzwerk konfigurieren](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal).
+* Schützen von App Service (QnA-Runtime) vor öffentlichem Zugriff:
+    * Lassen Sie nur Datenverkehr von Cognitive Services-IP-Adressen zu. Diese sind im Diensttag „CognitiveServicesManagement“ bereits enthalten. Dies ist für die Erstellung von APIs (KB erstellen/aktualisieren) erforderlich, um die App Service-Instanz aufzurufen und den Azure Search-Dienst entsprechend zu aktualisieren.
+    * Stellen Sie außerdem sicher, dass Sie auch andere Einstiegspunkte, z. B. Bot Service, QnA Maker-Portal (ggf. Ihr Unternehmensnetzwerk) usw., für den Zugriff auf die „GenerateAnswer“-API zulassen, um Vorhersagen durchzuführen.
+    * Lesen Sie die [weiteren Informationen zu Diensttags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

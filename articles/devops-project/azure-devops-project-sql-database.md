@@ -168,7 +168,7 @@ Zum Herstellen einer Verbindung mit der Azure SQL-Datenbank benötigen Sie die e
 Beim Durchführen von Tests können Sie Gebühren vermeiden, indem Sie die Ressourcen bereinigen. Sie können die in diesem Tutorial erstellte Azure SQL-Datenbank und zugehörige Ressourcen löschen, wenn Sie sie nicht mehr benötigen. Verwenden Sie dazu die Funktion **Löschen** auf dem DevOps Starter-Dashboard.
 
 > [!IMPORTANT]
-> Mit dem folgenden Verfahren werden Ressourcen endgültig gelöscht. Mit der Funktion *Löschen* werden die Daten, die vom Projekt in DevOps Starter erstellt wurden, in Azure und Azure DevOps gelöscht. Diese Daten können anschließend nicht wiederhergestellt werden. Verwenden Sie dieses Verfahren nur, nachdem Sie die Anweisungen sorgfältig gelesen haben.
+> Mit dem folgenden Verfahren werden Ressourcen endgültig gelöscht. Mit der Funktion *Löschen* werden die Daten in Azure und Azure DevOps gelöscht, die vom Projekt in DevOps Starter erstellt wurden. Diese Daten können anschließend nicht wiederhergestellt werden. Verwenden Sie dieses Verfahren nur, nachdem Sie die Anweisungen sorgfältig gelesen haben.
 
 1. Navigieren Sie im Azure-Portal zum DevOps Starter-Dashboard.
 2. Wählen Sie oben rechts **Löschen** aus. 

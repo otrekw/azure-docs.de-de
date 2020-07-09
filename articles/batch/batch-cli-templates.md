@@ -1,21 +1,24 @@
 ---
 title: End-to-End-Ausführung von Aufträgen mithilfe von Vorlagen
 description: Allein mit CLI-Befehlen können Sie einen Pool erstellen, Eingabedaten hochladen, Aufträge und zugehörige Aufgaben erstellen und die resultierenden Ausgabedaten herunterladen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 634a0b66379d8c94988d5f974baffe475af94c2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1029d2e156d219c88100a035f2ed4a51afa6ba36
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117351"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815994"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung
 
-Indem Sie eine Azure Batch-Erweiterung für die Azure CLI verwenden, können Sie Batch-Aufträge ausführen, ohne Code schreiben zu müssen.
+Indem Sie eine Batch-Erweiterung für die Azure CLI verwenden, können Sie Batch-Aufträge ausführen, ohne Code schreiben zu müssen.
 
 Erstellen und verwenden Sie die JSON-Vorlagendateien mit der Azure CLI zum Erstellen von Batch-Pools, -Aufträgen und -Aufgaben. Verwenden Sie die Befehle der CLI-Erweiterung, um problemlos Auftragseingabedateien in das Speicherkonto hochzuladen, das dem Batch-Konto zugeordnet ist, und Auftragsausgabedateien herunterzuladen.
+
+> [!NOTE]
+> JSON-Dateien unterstützen nicht die gleiche Funktionalität wie [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md). Sie sind so formatiert wie der unformatierte REST-Anforderungstext. Die CLI-Erweiterung ändert keine vorhandenen Befehle, verfügt aber über eine ähnliche Vorlagenoption, die eine teilweise Azure Resource Manager-Vorlagen-Funktionalität hinzufügt. Weitere Informationen finden Sie unter [Azure Batch CLI Extensions for Windows, Mac and Linux](https://github.com/Azure/azure-batch-cli-extensions) (Azure Batch-CLI-Erweiterungen für Windows, Mac und Linux).
 
 ## <a name="overview"></a>Übersicht
 

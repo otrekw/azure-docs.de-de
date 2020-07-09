@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: b1eef510e6389b551e128877ffde723955a1084d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 72168c54bd7968ce9c0315d3f3e47bae09e45004
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734636"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052224"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Web-App für Benutzeranmeldungen: Codekonfiguration
 
@@ -29,7 +29,7 @@ Die folgenden Bibliotheken werden zum Schützen einer Web-App (und einer Web-API
 
 | Plattform | Bibliothek | BESCHREIBUNG |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_net.png) | [Identitätsmodellerweiterungen für .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Die Microsoft Identity-Modellerweiterung für .NET schlägt bei der direkten Verwendung durch ASP.NET und ASP.NET Core eine Reihe von DLLs vor, die unter .NET Framework und .NET Core ausgeführt werden. Über eine ASP.NET-/ASP.NET Core-Web-App können Sie mithilfe der **TokenValidationParameters**-Klasse die Tokenvalidierung steuern (insbesondere in einigen Partnerszenarien). |
+| ![.NET](media/sample-v2-code/logo_NET.png) | [Identitätsmodellerweiterungen für .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Die Microsoft Identity-Modellerweiterung für .NET schlägt bei der direkten Verwendung durch ASP.NET und ASP.NET Core eine Reihe von DLLs vor, die unter .NET Framework und .NET Core ausgeführt werden. Über eine ASP.NET-/ASP.NET Core-Web-App können Sie mithilfe der **TokenValidationParameters**-Klasse die Tokenvalidierung steuern (insbesondere in einigen Partnerszenarien). |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Unterstützung für Java-Webanwendungen |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Unterstützung für Python-Webanwendungen |
 
@@ -95,7 +95,7 @@ In ASP.NET Core befinden sich diese Einstellungen in der Datei [appsettings.json
     // Client ID (application ID) obtained from the Azure portal
     "ClientId": "[Enter the Client Id]",
     "CallbackPath": "/signin-oidc",
-    "SignedOutCallbackPath ": "/signout-callback-oidc"
+    "SignedOutCallbackPath ": "/signout-oidc"
   }
 }
 ```
@@ -134,7 +134,7 @@ In ASP.NET Core gibt es eine weitere Datei ([properties\launchSettings.json](htt
 
 Im Azure-Portal müssen die Antwort-URIs, die Sie auf der Seite **Authentifizierung** für Ihre Anwendung registrieren müssen, mit diesen URLs übereinstimmen. Für die beiden obigen Konfigurationsdateien wäre dies `https://localhost:44321/signin-oidc`. Der Grund hierfür ist, dass `applicationUrl` zwar `http://localhost:3110` ist, aber `sslPort` angegeben wird (44321). `CallbackPath` ist `/signin-oidc`, wie in `appsettings.json`definiert.
 
-Auf die gleiche Weise wird der Abmelde-URI auf `https://localhost:44321/signout-callback-oidc` festgelegt.
+Auf die gleiche Weise wird der Abmelde-URI auf `https://localhost:44321/signout-oidc` festgelegt.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

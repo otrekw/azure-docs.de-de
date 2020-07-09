@@ -1,29 +1,34 @@
 ---
 title: 'Zusammenarbeit an der Wissensdatenbank: QnA Maker'
-titleSuffix: Azure Cognitive Services
 description: QnA Maker ermöglicht mehreren Personen, an einer Wissensdatenbank zusammenzuarbeiten. Dieses Feature wird im Rahmen der rollenbasierten Zugriffssteuerung in Azure bereitgestellt.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/03/2020
-ms.author: diberry
-ms.openlocfilehash: b5adc7ebacde056a141ca3b361b9eb2ea7900a39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/17/2020
+ms.openlocfilehash: 1a2908b4b65017f427682627ce5d83b186956a58
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75660748"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650786"
 ---
-# <a name="collaborate-on-your-knowledge-base"></a>Zusammenarbeiten an einer Wissensdatenbank
+# <a name="collaboration-with-authors-and-editors"></a>Zusammenarbeit mit Autoren und Redakteuren
 
-Mit QnA Maker können mehrere Personen an allen Wissensdatenbanken in derselben QnA Maker-Ressource zusammenarbeiten. Diese Funktion wird im Rahmen der [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) in Azure bereitgestellt.
+Die Zusammenarbeit erfolgt auf der Ebene der QnA Maker-Ressource, um die Einschränkung des Zugriffs von Projektmitarbeitern auf der Grundlage ihrer Rolle zu ermöglichen. Weitere Informationen zu den Konzepten im Zusammenhang mit der Authentifizierung von QnA Maker-Projektmitarbeitern finden Sie [hier](../Concepts/role-based-access-control.md).
 
-Führen Sie die folgenden Schritte aus, um Ihren QnA Maker-Dienst für andere freizugeben:
+## <a name="add-role-based-access-rbac-to-your-qna-maker-resource"></a>Hinzufügen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) zu Ihrer QnA Maker-Ressource
 
-1. Melden Sie sich am Azure-Portal an, und navigieren Sie zu Ihrer QnA Maker-Ressource.
+Mit QnA Maker können mehrere Personen an allen Wissensdatenbanken in derselben QnA Maker-Ressource zusammenarbeiten. Diese Funktion wird im Rahmen der [rollenbasierten Zugriffssteuerung](../../../active-directory/role-based-access-control-configure.md) in Azure bereitgestellt.
+
+## <a name="access-at-the-qna-maker-resource-level"></a>Zugreifen auf der Ebene der QnA Maker-Ressource
+
+In einem QnA Maker-Dienst kann keine bestimmte Wissensdatenbank freigegeben werden. Sollten Sie eine differenzierte Zugriffssteuerung benötigen, verteilen Sie Ihre Wissensdatenbanken ggf. auf verschiedene QnA Maker-Ressourcen, und fügen Sie ihnen jeweils Rollen hinzu.
+
+## <a name="add-role-to-resource"></a>Hinzufügen einer Rolle zu einer Ressource
+
+### <a name="add-a-user-account-to-the-qna-maker-resource"></a>Hinzufügen eines Benutzerkontos zur QnA Maker-Ressource
+
+In den folgenden Schritten wird zwar die Rolle „Projektmitarbeiter“ verwendet, mit den gezeigten Schritten können jedoch auch andere [Rollen](../reference-role-based-access-control.md) hinzugefügt werden.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrer QnA Maker-Ressource.
 
     ![QnA Maker-Ressourcenliste](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
 
@@ -35,7 +40,15 @@ Führen Sie die folgenden Schritte aus, um Ihren QnA Maker-Dienst für andere fr
 
     ![Hinzufügen von IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
 
-1. Wählen Sie die Rolle **Besitzer** oder **Mitwirkender** aus. Durch die rollenbasierte Zugriffssteuerung können Sie keinen schreibgeschützten Zugriff gewähren. Die Rollen „Besitzer“ und „Mitwirkender“ haben Lese-/Schreibberechtigungen für den QnA Maker-Dienst.
+1. Wählen Sie eine Rolle aus der folgenden Liste aus:
+
+    |Rolle|
+    |--|
+    |Besitzer|
+    |Mitwirkender|
+    |QnA Maker-Leseberechtigter|
+    |QnA Maker-Editor|
+    |Cognitive Services-Benutzer|
 
     ![Hinzufügen einer IAM-Rolle in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 
@@ -43,11 +56,13 @@ Führen Sie die folgenden Schritte aus, um Ihren QnA Maker-Dienst für andere fr
 
     ![Hinzufügen einer E-Mail-Adresse für IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
 
-Wenn sich die Person, für die Sie Ihren QnA Maker-Dienst freigegeben haben, beim [QnA Maker-Portal](https://qnamaker.ai) anmeldet, sieht sie alle Wissensdatenbanken in diesem Dienst.
-
-Es ist nicht möglich, eine bestimmte Wissensdatenbank in einem QnA Maker-Dienst freizugeben. Wenn Sie eine differenzierte Zugriffssteuerung wünschen, verteilen Sie Ihre Wissensdatenbanken auf verschiedene QnA Maker-Dienste.
+Wenn sich die Person, für die Sie Ihren QnA Maker-Dienst freigegeben haben, beim [QnA Maker-Portal](https://qnamaker.ai) anmeldet, werden ihr basierend auf ihrer Rolle alle Wissensdatenbanken in diesem Dienst angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Testen einer Wissensdatenbank](./test-knowledge-base.md)
+
+Ausführlichere Informationen zur Zusammenarbeit finden Sie hier:
+* [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../../active-directory/role-based-access-control-configure.md)
+* [Zusammenarbeiten mit anderen Autoren und Redakteuren](../Concepts/role-based-access-control.md)

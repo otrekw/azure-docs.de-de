@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: f7198aeff5e9ef6d37e29c2336dc38e4eec0dda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79cd3ddd21af700fd36d0e565b9f5a1be1e56343
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023972"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015130"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>Migrieren eines HDInsight-Clusters zu einer neueren Version
 
@@ -51,7 +51,7 @@ Die folgenden Dokumente enthalten Anleitungen zum Migrieren bestimmter Workloads
 
 ## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
-Weitere Informationen zur Datenbanksicherung und -wiederherstellung finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank-Instanz mit automatisierten Datenbanksicherungen](../sql-database/sql-database-recovery-using-backups.md).
+Weitere Informationen zur Datenbanksicherung und -wiederherstellung finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank-Instanz mit automatisierten Datenbanksicherungen](../azure-sql/database/recovery-using-backups.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

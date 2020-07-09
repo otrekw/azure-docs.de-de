@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie die Durable Functions-Erweiterung für Azure 
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 6416ae4aba8b045c6c4fb0fe6557bdcd1efb3a9b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7eee3c36620d0cc9f5906e355b76e7418c61b477
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83120143"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807960"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Erstellen von dauerhaften Funktionen mit dem Azure-Portal
 
@@ -57,6 +57,8 @@ Wenn Sie Durable Functions in JavaScript erstellen, müssen Sie das [npm-Paket `
 4. Sobald Ihre `package.json` hochgeladen ist, führen Sie den `npm install`-Befehl in der Kudu-Remoteausführungskonsole aus.
 
    ![Ausführen von „npm install“ in Kudu](./media/durable-functions-create-portal/kudu-npm-install.png)
+   
+5. Schließlich [aktivieren Sie den Kompatibilitätsmodus](https://docs.microsoft.com/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1) durch Hinzufügen der App-Einstellung `FUNCTIONS_V2_COMPATIBILITY_MODE` mit dem Wert `true`.
 
 ## <a name="create-an-orchestrator-function"></a>Erstellen einer Orchestratorfunktion
 
@@ -81,7 +83,7 @@ Wenn Sie Durable Functions in JavaScript erstellen, müssen Sie das [npm-Paket `
 1. Verwenden Sie ein HTTP-Tool wie Postman oder cURL, um eine POST-Anforderung an die kopierte URL zu senden. Das folgende Beispiel zeigt einen cURL-Befehl, der eine POST-Anforderung an die dauerhafte Funktion sendet:
 
     ```bash
-    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence --header "Content-Length: 0"
     ```
 
     In diesem Beispiel ist `{your-function-app-name}` die Domäne, die den Namen Ihrer Funktions-App repräsentiert. Die Antwortnachricht enthält einen Satz aus URI-Endpunkten, die Sie zum Überwachen und Verwalten der Ausführung verwenden können. Sie sieht ähnlich wie im folgenden Beispiel aus:

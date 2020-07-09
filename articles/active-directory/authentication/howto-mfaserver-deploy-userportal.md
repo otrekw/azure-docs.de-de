@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1869fac973cd4cd68e1e91be89c25fdf1427f6a5
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e8b7d3945adaf75949ef36b50a5e56a02fde1548
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653207"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680921"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Benutzerportal für den Azure Multi-Factor Authentication-Server
 
@@ -105,7 +105,7 @@ Wenn Sie das Benutzerportal auf einem anderen Server als dem Azure Multi-Factor 
     * Suchen Sie den Schlüssel **"USE_WEB_SERVICE_SDK"** , und ändern Sie **value="false"** in **value="true"** .
     * Suchen Sie den Schlüssel **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** , und ändern Sie **value=""** in **value="DOMÄNE\Benutzer"** , wobei es sich bei „DOMÄNE\Benutzer“ um ein Dienstkonto handelt, das der Gruppe „PhoneFactor Admins“ angehört.
     * Suchen Sie den Schlüssel **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** , und ändern Sie **value=""** in **value="Kennwort"** , wobei es sich bei „Kennwort“ um das Kennwort für das Dienstkonto aus der vorherigen Zeile handelt.
-    * Suchen Sie den Wert **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** , und ändern Sie die Platzhalter-URL in die Webdienst-SDK-URL aus Schritt 2.
+    * Suchen Sie den Wert `https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx`, und ändern Sie die Platzhalter-URL in die URL des Webdienst-SDK, den Sie in Schritt 2 installiert haben.
     * Speichern Sie die Datei „Web.Config“, und schließen Sie den Editor.
 
 6. Öffnen Sie auf einem beliebigen Computer einen Webbrowser, und navigieren Sie zu der URL, unter der das Benutzerportal installiert wurde (Beispiel: `https://mfa.contoso.com/MultiFactorAuth`). Stellen Sie sicher, dass keine Zertifikatswarnungen oder -fehler angezeigt werden.

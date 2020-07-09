@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5a37ebba7dd0622db7e76ecef1c3eda24d72b27
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 262431cfcc906b6df1054aaa7dc2b9573c3b8833
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726399"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965245"
 ---
 # <a name="using-azure-batch-rendering"></a>Verwenden des Renderings mit Azure Batch
 
@@ -19,8 +19,8 @@ Es gibt mehrere Möglichkeiten, das Rendering mit Azure Batch zu verwenden:
 * APIs:
   * Schreiben Sie Code, indem Sie eine der Batch-APIs verwenden.  Entwickler können Azure Batch-Funktionen in ihre vorhandenen Anwendungen oder den Workflow integrieren (in der Cloud oder lokal).
 * Befehlszeilentools:
-  * Die [Azure-Befehlszeile](https://docs.microsoft.com/cli/azure/) oder [PowerShell](https://docs.microsoft.com/powershell/azure/overview) können verwendet werden, um Skripts für die Batch-Nutzung zu erstellen.
-  * Besonders die [Unterstützung für die Batch-CLI-Vorlage](https://docs.microsoft.com/azure/batch/batch-cli-templates) vereinfacht die Erstellung von Pools und die Übermittlung von Aufträgen.
+  * Die [Azure-Befehlszeile](/cli/azure/) oder [PowerShell](/powershell/azure/overview) können verwendet werden, um Skripts für die Batch-Nutzung zu erstellen.
+  * Besonders die [Unterstützung für die Batch-CLI-Vorlage](./batch-cli-templates.md) vereinfacht die Erstellung von Pools und die Übermittlung von Aufträgen.
 * Batch Explorer-Benutzeroberfläche:
   * [Batch Explorer](https://github.com/Azure/BatchLabs) ist ein plattformübergreifendes Clienttool, mit dem Batch-Konten verwaltet und überwacht werden können.
   * Für die einzelnen Renderinganwendungen werden verschiedene Pool- und Auftragsvorlagen bereitgestellt, die genutzt werden können, um auf einfache Weise Pools zu erstellen und Aufträge zu übermitteln.  Auf der Benutzeroberfläche der Anwendung sind einige Vorlagen aufgeführt, und auf die Vorlagendateien wird auf GitHub zugegriffen.
@@ -32,7 +32,7 @@ Die beste Möglichkeit zum Ausprobieren des Renderings mit Azure Batch und die e
 
 ## <a name="using-batch-explorer"></a>Verwenden von Batch Explorer
 
-Ein Schritt-für-Schritt-Tutorial zur Verwendung von Batch Explorer für das Rendering finden Sie im [Blender-Tutorial](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender).
+Ein Schritt-für-Schritt-Tutorial zur Verwendung von Batch Explorer für das Rendering finden Sie im [Blender-Tutorial](./tutorial-rendering-batchexplorer-blender.md).
 
 ### <a name="download-and-install"></a>Herunterladen und Installieren
 
@@ -65,5 +65,5 @@ Für einige Clientanwendungen sind Plug-Ins verfügbar.  Mit den Plug-Ins könne
 
 Beispiele für das Rendering mit Batch finden Sie in den folgenden beiden Tutorials:
 
-* [Tutorial: Rendern einer Szene mit Azure Batch](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Tutorial: Rendern einer Blender-Szene mithilfe von Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Tutorial: Rendern einer Szene mit Azure Batch](./tutorial-rendering-cli.md)
+* [Tutorial: Rendern einer Blender-Szene mithilfe von Batch Explorer](./tutorial-rendering-batchexplorer-blender.md)

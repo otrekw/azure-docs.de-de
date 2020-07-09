@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 25753ce4c313a60b06147ab06dbf0b5e3e05865f
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ce8534fae44549c20eceda16e0e12fb0adc52c6f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800512"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957765"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
@@ -26,7 +26,7 @@ Marketplace-Prämien sind darauf ausgelegt, Sie in Ihrer ganz persönlichen Wach
 
 Das Programm erzeugt eine positive Rückkopplung: Die Vorteile in den einzelnen Wachstumsphasen sind so konzipiert, dass Sie zur nächsten Phase fortschreiten können. Sie können so Ihr Unternehmen im Geschäftsfeld von Microsoft und über den Kanal von Microsoft auf Microsoft-Kunden ausweiten, indem Sie den kommerziellen Marketplace als Plattform nutzen. 
 
-Ihre Vorteile variieren in Abhängigkeit davon, ob es sich bei Ihrem Angebot um [List, Trial oder Transact](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option) handelt.
+Ihre Vorteile variieren in Abhängigkeit davon, ob es sich bei Ihrem Angebot um [List, Trial oder Transact](determine-your-listing-type.md#choose-a-publishing-option) handelt.
 
 Sie werden basierend auf Ihrer Berechtigung von einem Mitglied des Prämienteams kontaktiert, wenn Ihr Angebot veröffentlicht wird. 
 
@@ -101,7 +101,7 @@ Alle auf dieser Seite beschriebenen Aktivitäten werden von der [Marketplace-Her
 
 ### <a name="cancellation-policy"></a>Kündigung
 
-Herausgeber der Stufen [List und Trial](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) können sich pro Angebotsveröffentlichung für die Aktivitäten anmelden oder von diesen abmelden. Partner können sich jederzeit von jedem Engagement abmelden. 
+Herausgeber der Stufen [List und Trial](determine-your-listing-type.md) können sich pro Angebotsveröffentlichung für die Aktivitäten anmelden oder von diesen abmelden. Partner können sich jederzeit von jedem Engagement abmelden. 
 
 Microsoft behält sich vor, Marketplace-Prämienvorteile für Herausgeber zu widerrufen und zu beenden, für die Folgendes gilt: 
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 48b322f32bd6e8f2a2da0c5be8eb7b7987881f83
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 27cc1052a2f35382b2d6a93482b7af219a9a187a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204116"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015164"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight
 
@@ -232,7 +232,7 @@ Oozie-Workflowdefinitionen sind in der Sprache der Hadoop-Prozessdefinition (hPD
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. Bearbeiten Sie den Code unten so, dass `<serverName>` durch Ihren Azure SQL-Servername ersetzt wird, und `<sqlLogin>` durch die Azure SQL-Serveranmeldung.  Geben Sie den Befehl ein, um eine Verbindung mit der vorausgesetzten SQL-Datenbank herzustellen.  Geben Sie in der Eingabeaufforderung das Kennwort ein.
+2. Bearbeiten Sie den Code unten so, dass `<serverName>` durch den Namen Ihres [logischen SQL-Servers](../azure-sql/database/logical-servers.md) ersetzt wird und `<sqlLogin>` durch die Serveranmeldung.  Geben Sie den Befehl ein, um eine Verbindung mit der vorausgesetzten SQL-Datenbank herzustellen.  Geben Sie in der Eingabeaufforderung das Kennwort ein.
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest
@@ -449,7 +449,7 @@ Die folgenden Schritte verwenden den Oozie-Befehl zum Übermitteln und Verwalten
 
     Wenn Sie nach diesem Befehl den Status überprüfen, lautet dieser „Wird ausgeführt“, und Informationen für die Aktionen innerhalb des Auftrags werden zurückgegeben.  Die Ausführung des Auftrags nimmt einige Minuten in Anspruch.
 
-6. Bearbeiten Sie den Code unten so, dass `<serverName>` durch Ihren Azure SQL-Servername ersetzt wird, und `<sqlLogin>` durch die Azure SQL-Serveranmeldung.  *Sobald die Aufgabe erfolgreich abgeschlossen wurde*, können Sie mit dem folgenden Befehl überprüfen, ob die Daten generiert wurden und ob die SQL-Datenbanktabelle exportiert wurde.  Geben Sie in der Eingabeaufforderung das Kennwort ein.
+6. Bearbeiten Sie den Code unten so, dass `<serverName>` durch Ihren Servernamen ersetzt wird und `<sqlLogin>` durch die Serveranmeldung.  *Sobald die Aufgabe erfolgreich abgeschlossen wurde*, können Sie mit dem folgenden Befehl überprüfen, ob die Daten generiert wurden und ob die SQL-Datenbanktabelle exportiert wurde.  Geben Sie in der Eingabeaufforderung das Kennwort ein.
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest

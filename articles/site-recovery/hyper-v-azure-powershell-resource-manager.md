@@ -6,12 +6,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4140a0b22f7ca8164d50cf60fe57c861f826eb4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229166"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132502"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs mithilfe von PowerShell und Azure Resource Manager
 
@@ -25,7 +25,7 @@ Dieser Artikel beschreibt, wie Sie Windows PowerShell zusammen mit Azure Resourc
 
 Azure PowerShell stellt Cmdlets zum Verwalten von Azure mit Windows PowerShell zur Verfügung. Mit PowerShell-Cmdlets für Site Recovery, die mit Azure PowerShell für den Azure Resource Manager verfügbar sind, können Sie Ihre Server in Azure schützen und wiederherstellen.
 
-Sie müssen kein PowerShell-Experte sein, um diesen Artikel verwenden zu können. Sie müssen jedoch mit den grundlegenden Konzepten wie Modulen, Cmdlets und Sitzungen vertraut sein. Weitere Informationen finden Sie in der [PowerShell-Dokumentation](/powershell) und unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../powershell-azure-resource-manager.md).
+Sie müssen kein PowerShell-Experte sein, um diesen Artikel verwenden zu können. Sie müssen jedoch mit den grundlegenden Konzepten wie Modulen, Cmdlets und Sitzungen vertraut sein. Weitere Informationen finden Sie in der [PowerShell-Dokumentation](/powershell) und unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md).
 
 > [!NOTE]
 > Microsoft-Partner im CSP-Programm (Cloud Solution Provider, Cloud-Lösungsanbieter) können den Schutz der Server ihrer Kunden in den entsprechenden CSP-Abonnements (Mandantenabonnements) konfigurieren und verwalten.

@@ -8,25 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 05/20/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 68a6504668b9f180a421fe20c2c89d73b87bcc35
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 968f9f1d658e79fb5213355358b91e98c353b07f
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81404347"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985682"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Schnellstart: Generieren einer Miniaturansicht mit der Maschinelles Sehen-REST-API und Python
 
-In dieser Schnellstartanleitung verwenden Sie die Maschinelles Sehen-REST-API, um eine Miniaturansicht von einem Bild zu generieren. Mit der Methode [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) können Sie die gewünschte Höhe und Breite angeben. Maschinelles Sehen identifiziert dann mittels intelligentem Zuschneiden den gewünschten Bereich und generiert Zuschnittkoordinaten auf der Grundlage dieser Region.
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/try/cognitive-services/) erstellen, bevor Sie beginnen.
+In dieser Schnellstartanleitung verwenden Sie die Maschinelles Sehen-REST-API, um eine Miniaturansicht von einem Bild zu generieren. Mit der Methode [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f20c) können Sie die gewünschte Höhe und Breite angeben. Maschinelles Sehen identifiziert dann mittels intelligentem Zuschneiden den gewünschten Bereich und generiert Zuschnittkoordinaten auf der Grundlage dieser Region.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Alternativ gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten. [Erstellen Sie dann Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für die Schlüssel- und Dienstendpunkt-Zeichenfolge, und nennen Sie sie `COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT`.
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Erstellen einer Ressource für maschinelles Sehen"  target="_blank"> im Azure-Portal eine Ressource für maschinelles Sehen <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+    * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um eine Verbindung Ihrer Anwendung mit dem Dienst für maschinelles Sehen herzustellen. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
+    * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
+* [Erstellen Sie Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel und die Endpunkt-URL, die Sie `COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT` nennen.
 - Ein Code-Editor wie [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
@@ -37,46 +39,49 @@ Kopieren Sie zum Erstellen und Ausführen des Beispiels den folgenden Code in de
 import os
 import sys
 import requests
-# If you are using a Jupyter notebook, uncomment the following line.
+# If you are using a Jupyter notebook, uncomment the following lines.
 # %matplotlib inline
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
 
 # Add your Computer Vision subscription key and endpoint to your environment variables.
-if 'COMPUTER_VISION_SUBSCRIPTION_KEY' in os.environ:
-    subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
-else:
-    print("\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n**Restart your shell or IDE for changes to take effect.**")
-    sys.exit()
+subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
+endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-if 'COMPUTER_VISION_ENDPOINT' in os.environ:
-    endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
-
-thumbnail_url = endpoint + "vision/v2.1/generateThumbnail"
+thumbnail_url = endpoint + "vision/v3.0/generateThumbnail"
 
 # Set image_url to the URL of an image that you want to analyze.
 image_url = "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg"
 
+# Construct URL
 headers = {'Ocp-Apim-Subscription-Key': subscription_key}
 params = {'width': '50', 'height': '50', 'smartCropping': 'true'}
 data = {'url': image_url}
-response = requests.post(thumbnail_url, headers=headers,
-                         params=params, json=data)
+# Call API
+response = requests.post(thumbnail_url, headers=headers, params=params, json=data)
 response.raise_for_status()
 
+# Open the image from bytes
 thumbnail = Image.open(BytesIO(response.content))
-
-# Display the thumbnail.
-plt.imshow(thumbnail)
-plt.axis("off")
 
 # Verify the thumbnail size.
 print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
+
+# Save thumbnail to file
+thumbnail.save('thumbnail.png')
+
+# Display image
+thumbnail.show()
+
+# Optional. Display the thumbnail from Jupyter.
+# plt.imshow(thumbnail)
+# plt.axis("off")
 ```
 
 Gehen Sie anschließend wie folgt vor:
-1. Ersetzen Sie den Wert von `image_url` optional durch die URL eines anderen Bilds, für das Sie eine Miniaturansicht generieren möchten.
+
+1. (Optional) Ersetzen Sie den Wert von `image_url` durch die URL Ihres eigenen Bilds.
 1. Speichern Sie den Code als Datei mit der Erweiterung `.py`. Beispiel: `get-thumbnail.py`.
 1. Öffnen Sie ein Eingabeaufforderungsfenster.
 1. Verwenden Sie an der Eingabeaufforderung den Befehl `python`, um das Beispiel auszuführen. Beispiel: `python get-thumbnail.py`.
@@ -98,4 +103,4 @@ Lernen Sie als Nächstes eine Python-Anwendung kennen, die maschinelles Sehen ve
 > [!div class="nextstepaction"]
 > [Tutorial zur Maschinelles Sehen-API in Python](../Tutorials/PythonTutorial.md)
 
-* Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) aus.
+* Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f20c) aus.

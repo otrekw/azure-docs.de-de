@@ -36,9 +36,27 @@
       href: manage-dhcp.md
     - name: Notfallwiederherstellung
       href: disaster-recovery.md
+    - name: Bereitstellen einer VM über die Inhaltsbibliothek
+      href: deploy-vm-content-library.md
+    - name: Azure Backup Server für AVS
+      items:
+        - name: Einrichten von Azure Backup Server für AVS
+          href: set-up-mabs-for-avs.md
+        - name: Sichern von AVS-VMs mit Azure Backup Server
+          href: backup-avs-vms-with-mabs.md
+    - name: Native Azure-Integration
+      items:
+        - name: API Management
+          href: concepts-api-management.md
+        - name: Hub-and-Spoke-Modell
+          href: concepts-avs-hub-and-spoke-integration.md
 - name: Verweis
   items: null
 - name: Ressourcen
   items:
+    - name: Problembehandlung
+      items:
+        - name: Hilfe bei AVS-Bereitstellungsfehlern
+          href: fix-deployment-provisioning-failures.md
     - name: Häufig gestellte Fragen
       href: faq.md

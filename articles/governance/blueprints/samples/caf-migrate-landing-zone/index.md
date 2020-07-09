@@ -3,12 +3,12 @@ title: 'CAF-Blaupausenbeispiel für die Migrationslandezone: Übersicht'
 description: Übersicht und Architektur des Framework für die Cloudeinführung (Cloud Adoption Framework, CAF) für das Basisblaupausenbeispiel für die Azure-Migrationslandezone.
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: c4720ec3e94ee928553cd62017831e5158ac9b97
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 45479fd6fa3a49d2639e587d3dba2aaaf567d0b1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459864"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044820"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Übersicht über das Microsoft Cloud Adoption Framework-Blaupausenbeispiel für die Azure-Migrationslandezone
 
@@ -28,7 +28,7 @@ Diese Umgebung umfasst mehrere Azure-Dienste, die für die Bereitstellung einer 
 - [Log Analytics](../../../../azure-monitor/overview.md) wird bereitgestellt, um sicherzustellen, dass alle Aktionen und Dienste an einem zentralen Ort protokolliert werden, sobald Sie Ihre Migration starten.
 - [Azure Security Center](../../../../security-center/security-center-intro.md) (Standardversion) schützt Ihre migrierten Workloads vor Bedrohungen.
 - [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) bietet ein isoliertes Netzwerk sowie Subnetze für Ihren virtuellen Computer.
-- [Azure Migrate-Projekt](../../../..//migrate/migrate-overview.md) dient zur Ermittlung und Bewertung. Wir fügen Tools für die Serverbewertung, Servermigration, Datenbankbewertung und Datenbankmigration hinzu.  
+- [Azure Migrate-Projekt](../../../../migrate/migrate-services-overview.md) dient zur Ermittlung und Bewertung. Wir fügen Tools für die Serverbewertung, Servermigration, Datenbankbewertung und Datenbankmigration hinzu.  
 
 
 Für alle diese Elemente werden die bewährten Methoden befolgt, die unter [Azure Architecture Center: Referenzarchitekturen](/azure/architecture/reference-architectures/) veröffentlicht wurden.

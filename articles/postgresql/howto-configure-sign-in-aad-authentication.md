@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 91435c2c5ca825793988e002c1ab9f6caacf2b17
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 81d02b32bc1eb6edf22845a4d02ba2ba02536855
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652550"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236318"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit PostgreSQL
 
@@ -54,21 +54,19 @@ Zurzeit haben wir die folgenden Clients getestet:
 
 Dies sind die Schritte, die ein Benutzer oder eine Anwendung für die Authentifizierung mit Azure AD ausführen muss, die im Folgenden beschrieben werden:
 
+### <a name="prerequisites"></a>Voraussetzungen
+
+Sie können den Schritten in Azure Cloud Shell, auf einer Azure-VM oder auf Ihrem lokalen Computer folgen. Stellen Sie sicher, dass die [Azure CLI](/cli/azure/install-azure-cli) installiert ist.
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>Schritt 1: Authentifizierung über Azure AD
 
-Stellen Sie sicher, dass die [Azure CLI](/cli/azure/install-azure-cli) installiert ist.
+Authentifizieren Sie sich zunächst über Azure AD mithilfe des Azure CLI-Tools. Dieser Schritt ist in Azure Cloud Shell nicht erforderlich.
 
-Rufen Sie das Azure CLI-Tool auf, um sich über Azure AD zu authentifizieren. Sie müssen Ihre Azure AD-Benutzer-ID und das Kennwort angeben.
-
-```azurecli-interactive
+```
 az login
 ```
 
-Mit diesem Befehl wird ein Browserfenster auf der Seite „Azure AD-Authentifizierung“ gestartet.
-
-> [!NOTE]
-> Sie können auch Azure Cloud Shell verwenden, um diese Schritte auszuführen.
-> Beachten Sie, dass Sie beim Abrufen von Azure AD-Zugriffstoken in Azure Cloud Shell `az login` explizit aufrufen und sich erneut anmelden müssen (im separaten Fenster mit einem Code). Nach diesem Anmeldevorgang funktioniert der Befehl `get-access-token` wie erwartet.
+Mit dem Befehl wird ein Browserfenster auf der Seite „Azure AD-Authentifizierung“ gestartet. Sie müssen Ihre Azure AD-Benutzer-ID und das Kennwort angeben.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>Schritt 2: Abrufen eines Azure AD-Zugriffstokens
 

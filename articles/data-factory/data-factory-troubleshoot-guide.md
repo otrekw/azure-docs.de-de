@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: f07cc109b21010df89b105576cb9afcf93df774a
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744764"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836157"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problembehandlung für Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -1055,4 +1055,4 @@ Weitere Informationen zur Problembehandlung finden Sie in diesen Ressourcen:
 * [Stack Overflow-Forum für Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Twitter-Informationen über Data Factory](https://twitter.com/hashtag/DataFactory)
 * [Azure-Videos](https://azure.microsoft.com/resources/videos/index/)
-* [MSDN-Forum](https://social.msdn.microsoft.com/Forums/home)
+* [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-data-factory.html)

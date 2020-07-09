@@ -3,16 +3,16 @@ title: Reservierte Azure EA-VM-Instanzen
 description: In diesem Artikel erfahren Sie, wie Azure-Reservierungen für reservierte VM-Instanzen zur Senkung der Kosten für Ihre Unternehmensregistrierung beitragen können.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 06/11/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4321d2b48a3672b537cf0f50c5e02e3196e68ed8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a06f416ed1d4df33cc6777eba878eee2b4f6b047
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691164"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735420"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Reservierte Azure EA-VM-Instanzen
 
@@ -39,21 +39,30 @@ Preisinformationen finden Sie unter [Virtuelle Linux-Computer – Preise](https
 
 ## <a name="reserved-instances-api-support"></a>API-Unterstützung für reservierte Instanzen
 
-Mithilfe von Azure-APIs können Sie programmgesteuert Informationen für Ihre Organisation über Azure-Dienst- oder -Softwarereservierungen abrufen. Weitere Informationen finden Sie unter [APIs für die Automatisierung von Azure-Reservierungen](../reservations/reservation-apis.md).
+Verwenden Sie Azure-APIs, um programmgesteuert Informationen für Ihre Organisation über Azure-Dienst- oder -Softwarereservierungen abzurufen. Verwenden Sie die APIs beispielsweise für Folgendes:
+
+- Suchen nach zu kaufenden Reservierungen
+- Kaufen einer Reservierung
+- Anzeigen von erworbenen Reservierungen
+- Anzeigen und Verwalten des Reservierungszugriffs
+- Aufteilen oder Zusammenführen von Reservierungen
+- Ändern des Reservierungsumfangs
+
+Weitere Informationen finden Sie unter [APIs für die Automatisierung von Azure-Reservierungen](../reservations/reservation-apis.md).
 
 ## <a name="azure-reserved-virtual-machine-instances"></a>Reservierte Azure-VM-Instanzen
 
-Verglichen mit der nutzungsbasierten Bezahlung lassen sich die Kosten für alle virtuellen Computer durch reservierte Instanzen um bis zu 72 Prozent senken (in Kombination mit dem Azure-Hybridvorteil sogar um bis zu 82 Prozent). Mit einer Vorauszahlung für ein Jahr oder drei Jahre können Sie Ihre Workloads besser priorisieren sowie Ihre Budgetplanung und Ihre Prognosen verbessern. Außerdem können Sie Reservierungen umtauschen oder stornieren, um auf veränderte Geschäftsanforderungen zu reagieren.
+Verglichen mit der nutzungsbasierten Bezahlung lassen sich die Kosten für Ihre virtuellen Computer durch reservierte Instanzen um bis zu 72 Prozent senken. In Kombination mit dem Azure-Hybridvorteil lassen sie sich sogar um bis zu 82 Prozent senken. Mit reservierten Instanzen und einer Vorauszahlung für ein Jahr oder drei Jahre können Sie Ihre Workloads, Budgetplanung und Prognosen besser verwalten. Außerdem können Sie Reservierungen umtauschen oder stornieren, um auf veränderte Geschäftsanforderungen zu reagieren.
 
 ### <a name="how-to-buy-reserved-virtual-machine-instances"></a>So erwerben Sie reservierte VM-Instanzen
 
-Um eine reservierte Azure-VM-Instanz erwerben zu können, muss ein Enterprise Azure-Registrierungsadministrator im [Azure EA-Portal](https://ea.azure.com/) auf der Registerkarte _Registrierung_ im Abschnitt _Registrierungsdetails_ die Kaufoption _Reserve Instance_ (Instanz reservieren) aktivieren.
+Um eine reservierte Azure-VM-Instanz erwerben zu können, muss ein Enterprise Azure-Registrierungsadministrator die Kaufoption _Reserve Instance_ (Instanz reservieren) aktivieren. Die Option befindet sich im [Azure EA-Portal](https://ea.azure.com/) auf der Registerkarte _Registrierung_ im Abschnitt _Registrierungsdetails_.
 
 Nachdem die EA-Registrierung für das Hinzufügen reservierter Instanzen konfiguriert wurde, kann jeder Kontobesitzer mit einem aktiven, der EA-Registrierung zugeordneten Abonnement eine reservierte VM-Instanz über das [Azure-Portal](https://aka.ms/reservations) erwerben. Weitere Informationen finden Sie unter [Vorauszahlen für virtuelle Computer und Sparen von Kosten mit reservierten VM-Instanzen](https://go.microsoft.com/fwlink/?linkid=861721).
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>Anzeigen von Details zum Kauf reservierter Instanzen
 
-Details zum Kauf Ihrer reservierten Instanzen können links im [Azure-Portal](https://aka.ms/reservations) über das Menü _Reservierungen_ oder im [Azure EA-Portal](https://ea.azure.com/) angezeigt werden. Wählen Sie im linken Menü die Option **Berichte** aus, und scrollen Sie auf der Registerkarte _Verwendungszusammenfassung_ nach unten zum Abschnitt _Charges by Services_ (Gebühren nach Diensten). Scrollen Sie in dem Abschnitt ganz nach unten. Ihre erworbenen reservierten Instanzen werden am Ende aufgeführt, und der Dienstname ist wie im folgenden Beispiel entweder mit „1 year“ (1 Jahr) oder mit „3 years“ (3 Jahre) gekennzeichnet: „Standard_DS1_v2 eastus 1 year“ oder „Standard_D2s_v3 eastus2 3 years“.
+Details zum Kauf Ihrer reservierten Instanzen können links im [Azure-Portal](https://aka.ms/reservations) über das Menü _Reservierungen_ oder im [Azure EA-Portal](https://ea.azure.com/) angezeigt werden. Wählen Sie im linken Menü die Option **Berichte** aus, und scrollen Sie auf der Registerkarte _Verwendungszusammenfassung_ nach unten zum Abschnitt _Charges by Services_ (Gebühren nach Diensten). Scrollen Sie in dem Abschnitt ganz nach unten. Ihre erworbenen reservierten Instanzen und die Nutzung werden am Ende aufgeführt, und der Dienstname ist wie im folgenden Beispiel entweder mit `1 year` oder mit `3 years` gekennzeichnet: `Standard_DS1_v2 eastus 1 year` oder `Standard_D2s_v3 eastus2 3 years`.
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>Wie kann ich das Abonnement ändern, das der reservierten Instanz zugeordnet ist, oder meine Vorteile durch reservierte Instanzen auf ein Abonnement unter dem gleichen Konto übertragen?
 
@@ -66,11 +75,11 @@ Weitere Informationen zum Ändern des Bereichs einer Reservierung finden Sie unt
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>Anzeigen von Nutzungsdetails für reservierte Instanzen
 
-Sie können Ihre Nutzungsdetails für reservierte Instanzen im [Azure-Portal](https://aka.ms/reservations) oder im [Azure EA-Portal](https://ea.azure.com/) (für EA-Kunden, die Abrechnungsinformationen anzeigen können) unter _Berichte_ > _Verwendungszusammenfassung_ > _Charges by Services_ (Gebühren nach Diensten) anzeigen. Bei reservierten Instanzen enthält der Dienstname den Begriff „Reserviert“, wie in den folgenden Beispielen zu sehen: „Reservierte Basis-VM-Instanzen“ oder „Reservierte Windows Server-Instanzen (1 Kern)“.
+Sie können Ihre Nutzungsdetails für reservierte Instanzen im [Azure-Portal](https://aka.ms/reservations) oder im [Azure EA-Portal](https://ea.azure.com/) (für EA-Kunden, die Abrechnungsinformationen anzeigen können) unter _Berichte_ > _Verwendungszusammenfassung_ > _Charges by Services_ (Gebühren nach Diensten) anzeigen. Bei reservierten Instanzen enthalten die Dienstnamen den Begriff „Reserviert“, wie im folgenden Beispiel zu sehen: `Reservation-Base VM or Virtual Machines Reservation-Windows Svr (1 Core)`.
 
 Ihre Nutzungsdetails und die herunterladbare CSV-Datei mit dem erweiterten Bericht enthalten zusätzliche Informationen zur Nutzung reservierter Instanzen. Das Feld _Zusätzliche Informationen_ gibt Aufschluss über die Nutzung reservierter Instanzen.
 
-Wenn Sie reservierte Azure-VM-Instanzen ohne den Azure-Hybridvorteil erworben haben, werden für reservierte Instanzen zwei Verbrauchseinheiten (Hardware und Software) ausgegeben. Wenn Sie reservierte Instanzen mit dem Azure-Hybridvorteil erworben haben, ist die Software-Verbrauchseinheit in Ihren Nutzungsdetails für reservierte Instanzen nicht enthalten.
+Wenn Sie reservierte Azure-VM-Instanzen ohne den Azure-Hybridvorteil erworben haben, werden für reservierte Instanzen zwei Verbrauchseinheiten (Hardware und Software) ausgegeben. Wenn Sie reservierte Instanzen mit dem Azure-Hybridvorteil erworben haben, ist die Softwareverbrauchseinheit in Ihren Nutzungsdetails für reservierte Instanzen nicht enthalten.
 
 ### <a name="reserved-instance-billing"></a>Abrechnung reservierter Instanzen
 
@@ -83,6 +92,7 @@ Reservierte Instanzen können auch erworben werden, wenn Azure EA-Kunden ihren 
 30 Tage vor Ablauf der Reservierung sowie zum Zeitpunkt des Ablaufs erhalten Sie jeweils eine E-Mail-Benachrichtigung. Nach Ablauf der Reservierung werden bereitgestellte virtuelle Computer weiterhin ausgeführt und mit dem Satz für nutzungsbasierte Bezahlung in Rechnung gestellt. Weitere Informationen finden Sie unter [Reservierte Azure-VM-Instanzen (RIs)](https://azure.microsoft.com/pricing/reserved-vm-instances/).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Weitere Informationen zu Azure-Reservierungen finden Sie unter [Was sind Azure-Reservierungen?](../reservations/save-compute-costs-reservations.md).
 - Weitere Informationen zu Reservierungskosten und zur Nutzung für Unternehmen finden Sie unter [Abrufen von Reservierungskosten und Nutzung laut Enterprise Agreement](../reservations/understand-reserved-instance-usage-ea.md).
 - Preisinformationen finden Sie unter [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) bzw. unter [Virtuelle Windows-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).

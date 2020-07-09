@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels „FedRAMP High“
 description: Steuerungszuordnung des Blaupausenbeispiels „FedRAMP High“. Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 01/31/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: cceca23e4bdc749c553eaf41b5f9599be3c9bf7d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf9db71a18654f973306637831ae1bcdf8dbef9e
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77150611"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517200"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels „FedRAMP High“
 
@@ -118,9 +118,7 @@ Von Azure Monitor erfasste Protokolldaten werden in einem Log Analytics-Arbeitsb
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5): Prüfung, Analyse und Berichterstellung in Bezug auf die Überwachung | Integrations-, Scan- und Überwachungsfunktionen
 
-Mit dieser Blaupause werden Richtliniendefinitionen bereitgestellt, bei denen Datensätze mit einer Analyse der Sicherheitsrisikobewertung auf virtuellen Computern, in VM-Skalierungsgruppen, auf verwalteten SQL-Instanzen und auf SQL-Servern überwacht werden.
-Diese Richtliniendefinitionen überprüfen auch die Konfiguration von Diagnoseprotokollen, um Einblick in Vorgänge zu erhalten, die innerhalb von Azure-Ressourcen ausgeführt werden. Diese Erkenntnisse bieten Echtzeitinformationen zum Sicherheitsstatus Ihrer bereitgestellten Ressourcen und ermöglichen die Priorisierung von Aktionen zur Problembehebung.
-Zur Durchführung einer ausführlichen Überprüfung und Überwachung auf Sicherheitsrisiken empfehlen wir Ihnen, auch Azure Sentinel und Azure Security Center zu nutzen.
+Mit dieser Blaupause werden Richtliniendefinitionen bereitgestellt, bei denen Datensätze mit einer Analyse der Sicherheitsrisikobewertung auf virtuellen Computern, in VM-Skalierungsgruppen, auf SQL-Datenbank-Servern und auf Servern mit verwalteten SQL-Instanzen überwacht werden. Diese Richtliniendefinitionen überprüfen auch die Konfiguration von Diagnoseprotokollen, um Einblick in Vorgänge zu erhalten, die innerhalb von Azure-Ressourcen ausgeführt werden. Diese Erkenntnisse bieten Echtzeitinformationen zum Sicherheitsstatus Ihrer bereitgestellten Ressourcen und ermöglichen die Priorisierung von Aktionen zur Problembehebung. Zur Durchführung einer ausführlichen Überprüfung und Überwachung auf Sicherheitsrisiken empfehlen wir Ihnen, auch Azure Sentinel und Azure Security Center zu nutzen.
 
 - \[Vorschau\]: Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
 - \[Vorschau\]: Aktivieren von Azure Monitor für VMs

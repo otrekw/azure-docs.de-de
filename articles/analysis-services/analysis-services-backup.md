@@ -4,15 +4,15 @@ description: In diesem Artikel wird das Sichern und Wiederherstellen von Modellm
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 02ca7f268f2998d3b7d73ab9fc00bbd688b5f50c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582528"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871296"
 ---
 # <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
@@ -24,7 +24,7 @@ Das Sichern von Datenbanken für tabellarische Modelle in Azure Analysis Service
 > 
 
 > [!NOTE]
-> Wenn sich das Speicherkonto in einer anderen Region befindet, müssen die Firewalleinstellungen so konfiguriert werden, dass der Zugriff von **allen Netzwerken** aus möglich ist. Firewalleinstellungen, die für ausgewählte Netzwerke mit IP-Adressen in der Whitelist und der Ausnahme „Vertrauenswürdige Microsoft-Dienste zulassen“ konfiguriert sind, werden nicht unterstützt.
+> Wenn sich das Speicherkonto in einer anderen Region befindet, konfigurieren Sie die Firewalleinstellungen für das Speicherkonto so, dass der Zugriff über **ausgewählte Netzwerke** zulässig ist. Geben Sie im **Adressbereich** der Firewall den IP-Adressbereich für die Region an, in der sich der Analysis Services-Server befindet. Die Konfiguration der Firewalleinstellungen für das Speicherkonto wird unterstützt, um den Zugriff von allen Netzwerken zuzulassen. Allerdings wird die Auswahl bestimmter Netzwerke und die Angabe eines IP-Adressbereichs bevorzugt. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Netzwerkkonnektivität von Analysis Services](analysis-services-network-faq.md#backup-and-restore).
 
 Sicherungen werden mit der Erweiterung ABF gespeichert. Für tabellarische In-Memory-Modelle werden sowohl die Modelldaten als auch die Metadaten gespeichert. Für tabellarische DirectQuery-Modelle werden nur die Modellmetadaten gespeichert. Sicherungen können in Abhängigkeit von den gewählten Optionen komprimiert und verschlüsselt werden.
 

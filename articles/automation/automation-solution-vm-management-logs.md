@@ -1,20 +1,20 @@
 ---
-title: Abfragen von Protokollen aus der Lösung zum Starten/Beenden von VMs
-description: In diesem Artikel wird beschrieben, wie Sie aus Azure Monitor Protokolldaten abfragen, die von der Lösung zum Starten/Beenden von VMs generiert werden.
+title: Abfragen von Protokollen aus der Azure Automation-Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“
+description: In diesem Artikel erfahren Sie, wie Sie mit Azure Monitor Protokolldaten abfragen, die von der Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ generiert werden.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604725"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827555"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-solution"></a>Abfragen von Protokollen aus der Lösung zum Starten/Beenden von VMs
+# <a name="query-logs-from-startstop-vms-during-off-hours"></a>Abfragen von Protokollen über „VMs außerhalb der Geschäftszeiten starten/beenden“
 
-Azure Automation leitet zwei Arten von Datensätzen an den verknüpften Log Analytics-Arbeitsbereich weiter: Auftragsprotokolle und Auftragsdatenströme. Diese Daten stehen in Azure Monitor für [Abfragen](../azure-monitor/log-query/log-query-overview.md) zur Verfügung.
+Azure Automation leitet zwei Arten von Datensätzen an den verknüpften Log Analytics-Arbeitsbereich weiter: Auftragsprotokolle und Auftragsdatenströme. In diesem Artikel werden die für die [Abfrage](../azure-monitor/log-query/log-query-overview.md) in Azure Monitor verfügbaren Daten überprüft.
 
 ## <a name="job-logs"></a>Auftragsprotokolle
 
@@ -60,7 +60,7 @@ Wenn Sie Protokollsuchen durchführen, bei denen Kategoriedatensätze für **Job
 
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 
-Die folgende Tabelle enthält Beispiele für Protokollsuchen für Auftragsdatensätze, die mit dieser Lösung erfasst wurden.
+Die folgende Tabelle enthält Beispiele für Protokollsuchen für Auftragsdatensätze, die mit der Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ erfasst wurden:
 
 |Abfrage | BESCHREIBUNG|
 |----------|----------|
@@ -71,4 +71,6 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Auftragsdatens
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die Lösung **VMs außerhalb der Geschäftszeiten starten/beenden** umfasst keinen vordefinierten Satz von Warnungen. Informationen zum Erstellen von Warnungen bei fehlgeschlagenen Aufträgen zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Protokollwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-log.md).
+* Informationen zum Einrichten des Features finden Sie unter [Konfigurieren der Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“](automation-solution-vm-management-config.md).
+* Informationen zu Protokollwarnungen während der Featurebereitstellung finden Sie unter [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/platform/alerts-log.md).
+* Informationen zum Beheben von Problemen mit dem Feature finden Sie unter [Troubleshooting für „VMs außerhalb der Geschäftszeiten starten/beenden“](troubleshoot/start-stop-vm.md).

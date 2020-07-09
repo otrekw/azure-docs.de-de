@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: osamaz
-ms.openlocfilehash: 3603bc45b920dc62eb8bf6f2eb8557f98e21638e
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 6b9db450139c22fdf2df0875f36c65cdf684dfb3
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024811"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856698"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Beispiele für die Routerkonfiguration zum Einrichten und Verwalten des Routings
 Auf dieser Seite finden Sie Schnittstellen- und Routingkonfigurationsbeispiele für Cisco IOS XE-Router und Juniper-Router der MX-Serie, wenn Sie mit Azure ExpressRoute arbeiten.
@@ -40,78 +40,90 @@ Sie benötigen auf jedem Router, den Sie mit Microsoft verbinden, eine Unterschn
 
 Dieses Beispiel stellt die Unterschnittstellendefinition für eine Unterschnittstelle mit einer einzigen VLAN-ID bereit. Die VLAN-ID ist pro Peering eindeutig. Das letzte Oktett Ihrer IPv4-Adresse ist immer eine ungerade Zahl.
 
-    interface GigabitEthernet<Interface_Number>.<Number>
-     encapsulation dot1Q <VLAN_ID>
-     ip address <IPv4_Address><Subnet_Mask>
+```console
+interface GigabitEthernet<Interface_Number>.<Number>
+ encapsulation dot1Q <VLAN_ID>
+ ip address <IPv4_Address><Subnet_Mask>
+```
 
 **QinQ-Schnittstellendefinition**
 
 Dieses Beispiel stellt die Unterschnittstellendefinition für eine Unterschnittstelle mit zwei VLAN-IDs bereit. Falls die äußere VLAN-ID (s-Tag) verwendet wird, bleibt sie für alle Peerings gleich. Die innere VLAN-ID (c-Tag) ist pro Peering eindeutig. Das letzte Oktett Ihrer IPv4-Adresse ist immer eine ungerade Zahl.
 
-    interface GigabitEthernet<Interface_Number>.<Number>
-     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
-     ip address <IPv4_Address><Subnet_Mask>
+```console
+interface GigabitEthernet<Interface_Number>.<Number>
+ encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+ ip address <IPv4_Address><Subnet_Mask>
+```
 
 ### <a name="set-up-ebgp-sessions"></a>Einrichten von eBGP-Sitzungen
 Sie müssen für jedes Peering eine BGP-Sitzung bei Microsoft einrichten. Richten Sie eine BGP-Sitzung anhand des folgenden Beispiels ein. Wenn Sie für Ihre Unterschnittstelle die IPv4-Adresse „a.b.c.d“ verwendet haben, lautet die IP-Adresse des BGP-Nachbarn (Microsoft) „a.b.c.d+1“. Das letzte Oktett in der IPv4-Adresse des BGP-Nachbarn ist immer eine gerade Zahl.
 
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-     neighbor <IP#2_used_by_Azure> activate
-     exit-address-family
-    !
+```console
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+ neighbor <IP#2_used_by_Azure> activate
+ exit-address-family
+!
+```
 
 ### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>Einrichten von Präfixen für die Ankündigung über die BGP-Sitzung
 Konfigurieren Sie Ihren Router anhand des folgenden Beispiels so, dass Microsoft bestimmte Präfixe angekündigt werden.
 
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-      network <Prefix_to_be_advertised> mask <Subnet_mask>
-      neighbor <IP#2_used_by_Azure> activate
-     exit-address-family
-    !
+```console
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+  network <Prefix_to_be_advertised> mask <Subnet_mask>
+  neighbor <IP#2_used_by_Azure> activate
+ exit-address-family
+!
+```
 
 ### <a name="route-maps"></a>Routenzuordnungen
 Verwenden Sie Routenzuordnungen und Präfixlisten, um Präfixe zu filtern, die in Ihrem Netzwerk weitergegeben werden. Orientieren Sie sich am folgenden Beispiel, und stellen Sie sicher, dass Sie die entsprechenden Präfixlisten eingerichtet haben.
 
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-      network <Prefix_to_be_advertised> mask <Subnet_mask>
-      neighbor <IP#2_used_by_Azure> activate
-      neighbor <IP#2_used_by_Azure> route-map <MS_Prefixes_Inbound> in
-     exit-address-family
-    !
-    route-map <MS_Prefixes_Inbound> permit 10
-     match ip address prefix-list <MS_Prefixes>
-    !
+```console
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+  network <Prefix_to_be_advertised> mask <Subnet_mask>
+  neighbor <IP#2_used_by_Azure> activate
+  neighbor <IP#2_used_by_Azure> route-map <MS_Prefixes_Inbound> in
+ exit-address-family
+!
+route-map <MS_Prefixes_Inbound> permit 10
+ match ip address prefix-list <MS_Prefixes>
+!
+```
 
 ### <a name="configure-bfd"></a>Konfigurieren von BFD
 
 BFD wird an zwei Stellen konfiguriert: BFD auf der Schnittstellenebene und BFD auf BGP-Ebene. Das hier aufgeführte Beispiel gilt für die QinQ-Schnittstelle. 
 
-    interface GigabitEthernet<Interface_Number>.<Number>
-     bfd interval 300 min_rx 300 multiplier 3
-     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
-     ip address <IPv4_Address><Subnet_Mask>
-    
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-      neighbor <IP#2_used_by_Azure> activate
-      neighbor <IP#2_used_by_Azure> fall-over bfd
-     exit-address-family
-    !
+```console
+interface GigabitEthernet<Interface_Number>.<Number>
+ bfd interval 300 min_rx 300 multiplier 3
+ encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+ ip address <IPv4_Address><Subnet_Mask>
+
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+  neighbor <IP#2_used_by_Azure> activate
+  neighbor <IP#2_used_by_Azure> fall-over bfd
+ exit-address-family
+!
+```
 
 
 ## <a name="juniper-mx-series-routers"></a>Router der Juniper MX-Serie
@@ -123,6 +135,7 @@ Die Beispiele in diesem Abschnitt gelten für Juniper-Router der MX-Serie.
 
 Dieses Beispiel stellt die Unterschnittstellendefinition für eine Unterschnittstelle mit einer einzigen VLAN-ID bereit. Die VLAN-ID ist pro Peering eindeutig. Das letzte Oktett Ihrer IPv4-Adresse ist immer eine ungerade Zahl.
 
+```console
     interfaces {
         vlan-tagging;
         <Interface_Number> {
@@ -134,12 +147,14 @@ Dieses Beispiel stellt die Unterschnittstellendefinition für eine Unterschnitts
             }
         }
     }
+```
 
 
 **QinQ-Schnittstellendefinition**
 
 Dieses Beispiel stellt die Unterschnittstellendefinition für eine Unterschnittstelle mit zwei VLAN-IDs bereit. Falls die äußere VLAN-ID (s-Tag) verwendet wird, bleibt sie für alle Peerings gleich. Die innere VLAN-ID (c-Tag) ist pro Peering eindeutig. Das letzte Oktett Ihrer IPv4-Adresse ist immer eine ungerade Zahl.
 
+```console
     interfaces {
         <Interface_Number> {
             flexible-vlan-tagging;
@@ -151,10 +166,12 @@ Dieses Beispiel stellt die Unterschnittstellendefinition für eine Unterschnitts
             }                               
         }                                   
     }                           
+```
 
 ### <a name="set-up-ebgp-sessions"></a>Einrichten von eBGP-Sitzungen
 Sie müssen für jedes Peering eine BGP-Sitzung bei Microsoft einrichten. Richten Sie eine BGP-Sitzung anhand des folgenden Beispiels ein. Wenn Sie für Ihre Unterschnittstelle die IPv4-Adresse „a.b.c.d“ verwendet haben, lautet die IP-Adresse des BGP-Nachbarn (Microsoft) „a.b.c.d+1“. Das letzte Oktett in der IPv4-Adresse des BGP-Nachbarn ist immer eine gerade Zahl.
 
+```console
     routing-options {
         autonomous-system <Customer_ASN>;
     }
@@ -167,16 +184,18 @@ Sie müssen für jedes Peering eine BGP-Sitzung bei Microsoft einrichten. Richte
             }                               
         }                                   
     }
+```
 
 ### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>Einrichten von Präfixen für die Ankündigung über die BGP-Sitzung
 Konfigurieren Sie Ihren Router anhand des folgenden Beispiels so, dass Microsoft bestimmte Präfixe angekündigt werden.
 
+```console
     policy-options {
         policy-statement <Policy_Name> {
             term 1 {
                 from protocol OSPF;
-        route-filter 
-    <Prefix_to_be_advertised/Subnet_Mask> exact;
+                route-filter; 
+                <Prefix_to_be_advertised/Subnet_Mask> exact;
                 then {
                     accept;
                 }
@@ -186,17 +205,18 @@ Konfigurieren Sie Ihren Router anhand des folgenden Beispiels so, dass Microsoft
     protocols {
         bgp { 
             group <Group_Name> { 
-                export <Policy_Name>
+                export <Policy_Name>;
                 peer-as 12076;              
                 neighbor <IP#2_used_by_Azure>;
             }                               
         }                                   
     }
-
+```
 
 ### <a name="route-policies"></a>Routenrichtlinien
 Sie können Routenzuordnungen und Präfixlisten verwenden, um Präfixe zu filtern, die in Ihrem Netzwerk weitergegeben werden. Orientieren Sie sich am folgenden Beispiel, und stellen Sie sicher, dass Sie die entsprechenden Präfixlisten eingerichtet haben.
 
+```console
     policy-options {
         prefix-list MS_Prefixes {
             <IP_Prefix_1/Subnet_Mask>;
@@ -205,7 +225,7 @@ Sie können Routenzuordnungen und Präfixlisten verwenden, um Präfixe zu filter
         policy-statement <MS_Prefixes_Inbound> {
             term 1 {
                 from {
-                prefix-list MS_Prefixes;
+                    prefix-list MS_Prefixes;
                 }
                 then {
                     accept;
@@ -216,17 +236,19 @@ Sie können Routenzuordnungen und Präfixlisten verwenden, um Präfixe zu filter
     protocols {
         bgp { 
             group <Group_Name> { 
-                export <Policy_Name>
-                import <MS_Prefixes_Inbound>
+                export <Policy_Name>;
+                import <MS_Prefixes_Inbound>;
                 peer-as 12076;              
                 neighbor <IP#2_used_by_Azure>;
             }                               
         }                                   
     }
+```
 
 ### <a name="configure-bfd"></a>Konfigurieren von BFD
 Konfigurieren Sie BFD nur unter dem Abschnitt „protocols“ > „bgp“.
 
+```console
     protocols {
         bgp { 
             group <Group_Name> { 
@@ -239,7 +261,30 @@ Konfigurieren Sie BFD nur unter dem Abschnitt „protocols“ > „bgp“.
             }                               
         }                                   
     }
+```
 
+### <a name="configure-macsec"></a>Konfigurieren von MACsec
+Bei der MACSec-Konfiguration müssen der Konnektivitätszuordnungsschlüssel (Key Association Key, CAK) und der Konnektivitätszuordnungsschlüssel-Name (Connectivity Association Key Name, CKN) mit über PowerShell-Befehle konfigurierten Werten übereinstimmen.
+
+```console
+    security {
+        macsec {
+            connectivity-association <Connectivity_Association_Name> {
+                cipher-suite gcm-aes-xpn-128;
+                security-mode static-cak;
+                pre-shared-key {
+                    ckn <Connectivity_Association_Key_Name>;
+                    cak <Connectivity_Association_Key>; ## SECRET-DATA
+                }
+            }
+            interfaces {
+                <Interface_Number> {
+                    connectivity-association <Connectivity_Association_Name>;
+                }
+            }
+        }
+    }
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md) .

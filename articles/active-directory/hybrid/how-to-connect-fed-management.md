@@ -12,18 +12,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcbeedddc65a916f869a778616779917a9571181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58bc154f4ffb234df52faf3c02b5ed7ecaf77c2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331981"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830926"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
 In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) mit Azure Active Directory (Azure AD) Connect verwaltet und angepasst werden. Darüber hinaus werden andere gängige AD FS-Aufgaben behandelt, die Sie möglicherweise zur vollständigen Konfiguration einer AD FS-Farm benötigen.
@@ -192,7 +192,9 @@ Zum Ändern des auf der **Anmeldeseite** angezeigten Firmenlogos verwenden Sie d
 > [!NOTE]
 > Die empfohlene Größe für das Logo beträgt 260 × 35 \@ 96 dpi und einer Dateigröße von höchstens 10 KB.
 
-    Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
+```azurepowershell-interactive
+Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
+```
 
 > [!NOTE]
 > Der *TargetName* -Parameter ist erforderlich. Das mit AD FS veröffentlichte Standarddesign heißt „Standard“.
@@ -200,7 +202,9 @@ Zum Ändern des auf der **Anmeldeseite** angezeigten Firmenlogos verwenden Sie d
 ## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>Hinzufügen einer Anmeldebeschreibung 
 Zum Hinzufügen einer Beschreibung für die **Anmeldeseite**verwenden Sie das folgende Windows PowerShell-Cmdlet und die folgende Syntax:
 
-    Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
+```azurepowershell-interactive
+Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
+```
 
 ## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>Ändern von AD FS-Anspruchsregeln 
 AD FS unterstützt eine umfangreiche Sprache für Ansprüche, die Sie zum Erstellen von benutzerdefinierten Anspruchsregeln verwenden können. Weitere Informationen finden Sie unter [Rolle der Anspruchsregelsprache](https://technet.microsoft.com/library/dd807118.aspx).
@@ -214,8 +218,10 @@ Beispielsweise können Sie **ms-ds-consistencyguid** als Attribut für den Quell
 
 **Regel 1: Abfragen von Attributen**
 
-    c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
-    => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
+```claim-rule-language
+c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
+=> add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
+```
 
 Bei dieser Regel fragen Sie die Werte von **ms-ds-consistencyguid** und **objectGuid** für den Benutzer aus Active Directory ab. Ändern Sie den Speichernamen in einen passenden Speichernamen in Ihrer AD FS-Bereitstellung. Ändern Sie außerdem den Anspruchstyp in einen passenden Anspruchstyp für Ihren Verbund, wie Sie dies für **objectGuid** und **ms-ds-consistencyguid** definiert haben.
 
@@ -223,23 +229,29 @@ Durch die Verwendung von **add** anstelle von **issue** vermeiden Sie außerdem 
 
 **Regel 2: Überprüfen, ob „ms-ds-consistencyguid“ für den Benutzer vorhanden ist**
 
-    NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
-    => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
+```claim-rule-language
+NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
+=> add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
+```
 
 Diese Regel definiert das temporäre Flag **idflag**, das auf **useguid** festgelegt ist, wenn **ms-ds-concistencyguid** für den Benutzer nicht ausgefüllt ist. Die Logik dahinter ist die Tatsache, dass AD FS leere Ansprüche nicht zulässt. Wenn Sie also in der Regel 1 die Ansprüche `http://contoso.com/ws/2016/02/identity/claims/objectguid` und `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` hinzufügen, erhalten Sie den Anspruch **msdsconsistencyguid** nur, wenn der Wert für den Benutzer ausgefüllt ist. Wenn er nicht ausgefüllt ist, merkt AD FS, dass ein leerer Wert vorhanden ist, und verwirft ihn sofort. Alle Objekte verfügen über **objectGuid**, sodass dieser Anspruch immer vorhanden ist, nachdem Regel 1 ausgeführt wurde.
 
 **Regel 3: Ausgeben von „ms-ds-consistencyguid“ als unveränderliche ID, sofern vorhanden**
 
-    c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
-    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
+```claim-rule-language
+c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
+=> issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
+```
 
 Dies ist eine implizite **Exist** -Überprüfung. Wenn der Wert für den Anspruch vorhanden ist, geben Sie ihn als unveränderliche ID aus. Im vorherigen Beispiel wird der Anspruch **nameidentifier** verwendet. Sie müssen diesen in den entsprechenden Anspruchstyp für die unveränderliche ID in Ihrer Umgebung ändern.
 
 **Regel 4: Ausgeben von objectGuid als unveränderliche ID, wenn ms-ds-consistencyGuid nicht vorhanden ist**
 
-    c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
-    && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
-    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
+```claim-rule-language
+c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
+&& c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
+=> issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
+```
 
 In dieser Regel überprüfen Sie einfach das temporäre Flag **idflag**. Sie entscheiden, ob der Anspruch basierend auf dessen Wert ausgegeben werden soll.
 

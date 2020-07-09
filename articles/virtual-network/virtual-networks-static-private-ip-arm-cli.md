@@ -3,24 +3,25 @@ title: Konfigurieren privater IP-Adressen für virtuelle Computer – Azure-Bef
 description: Hier erfahren Sie, wie Sie private IP-Adressen für virtuelle Computer mithilfe der Azure-Befehlszeilenschnittstelle (CLI) konfigurieren.
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: asudbring
+manager: KumudD
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
-ms.author: kumud
-ms.openlocfilehash: f4643aae0b28861f4ddb99d8dace749e62f930b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: c34ab73422d8dd41feb9da542ed63fdba060fe3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78199477"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708160"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer mithilfe der Azure CLI
 
@@ -38,38 +39,7 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
 
 1. Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI](/cli/azure/install-azure-cli), und melden Sie sich mit [az login](/cli/azure/reference-index) bei einem Azure-Konto an.
 
-2. Erstellen Sie mit dem Befehl [az network public-ip create](/cli/azure/network/public-ip) eine öffentliche IP-Adresse für den virtuellen Computer. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
-
-    > [!NOTE]
-    > Möglicherweise benötigen Sie andere Werte für Ihre Argumente in diesem und den nachfolgenden Schritten. Dies ist von Ihrer Umgebung abhängig.
-
-    ```azurecli
-    az network public-ip create \
-    --name TestPIP \
-    --resource-group TestRG \
-    --location centralus \
-    --allocation-method Static
-    ```
-
-    Erwartete Ausgabe:
-
-   ```json
-   {
-        "publicIp": {
-            "idleTimeoutInMinutes": 4,
-            "ipAddress": "52.176.43.167",
-            "provisioningState": "Succeeded",
-            "publicIPAllocationMethod": "Static",
-            "resourceGuid": "79e8baa3-33ce-466a-846c-37af3c721ce1"
-        }
-    }
-    ```
-
-   * `--resource-group`: Name der Ressourcengruppe, in der die öffentliche IP-Adresse erstellt werden soll.
-   * `--name`: Name der öffentlichen IP-Adresse.
-   * `--location`: Azure-Region, in der die öffentliche IP-Adresse erstellt werden soll.
-
-3. Führen Sie den Befehl [az network nic create](/cli/azure/network/nic) aus, um eine NIC mit statischer privater IP-Adresse zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. 
+2. Führen Sie den Befehl [az network nic create](/cli/azure/network/nic) aus, um eine NIC mit statischer privater IP-Adresse zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. 
    
     ```azurecli
     az network nic create \
@@ -118,10 +88,10 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
     Parameter:
 
     * `--private-ip-address`: Statische private IP-Adresse für die Netzwerkkarte.
-    * `--vnet-name`: Der Name des VNet, in dem die Netzwerkkarte erstellt werden soll.
-    * `--subnet`: Der Name des Subnetzes, in dem die Netzwerkkarte erstellt werden soll.
+    * `--vnet-name`: Der Name des VNET, in dem die NIC erstellt werden soll.
+    * `--subnet`: Der Name des Subnetzes, in dem die NIC erstellt werden soll.
 
-4. Führen Sie den Befehl [azure vm create](/cli/azure/vm/nic) aus, um den virtuellen Computer unter Verwendung der zuvor erstellten öffentlichen IP-Adresse und Netzwerkkarte zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
+3. Führen Sie den Befehl [azure vm create](/cli/azure/vm/nic) aus, um den virtuellen Computer unter Verwendung der zuvor erstellten öffentlichen IP-Adresse und Netzwerkkarte zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
    
     ```azurecli
     az vm create \
@@ -151,7 +121,7 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
    
    Andere Parameter als die grundlegenden Parameter von [az vm create](/cli/azure/vm).
 
-   * `--nics`: Name der NIC, mit der der virtuelle Computer verknüpft wird.
+   * `--nics`: Der Name der NIC, mit der die VM verknüpft wird.
    
 Es wird davon abgeraten, die private IP-Adresse, die dem virtuellen Azure-Computer innerhalb des Betriebssystems einer VM zugewiesen ist, statisch zuzuweisen, sofern dies nicht erforderlich ist (z.B. beim [Zuweisen mehrerer IP-Adressen zu einer Windows-VM](virtual-network-multiple-ip-addresses-cli.md)). Wenn Sie die private IP-Adresse innerhalb des Betriebssystems manuell festlegen, sollten Sie sicherstellen, dass es sich um dieselbe Adresse wie die private IP-Adresse handelt, die der Azure-[Netzwerkschnittstelle](virtual-network-network-interface-addresses.md#change-ip-address-settings) zugewiesen ist. Andernfalls kann die Konnektivität mit dem virtuellen Computer verloren gehen. Erfahren Sie mehr über Einstellungen für [private IP-Adressen](virtual-network-network-interface-addresses.md#private).
 

@@ -10,10 +10,10 @@ ms.date: 01/24/2018
 ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 9335c45688752ea41801e988157740f4170cfcb4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683941"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Herstellen einer Verbindung zwischen Ihrem Raspberry Pi-Gerät und dem Solution Accelerator für die Remoteüberwachung (Node.js)
@@ -46,7 +46,7 @@ Sie benötigen einen SSH-Client auf Ihrem Desktopcomputer, um per Remotezugriff 
 
 Auf dem Raspberry Pi muss mindestens Node.js 4.0.0 installiert sein. Die folgenden Schritte zeigen, wie Sie Node.js v6 auf Ihrem Raspberry Pi installieren:
 
-1. Stellen Sie mithilfe von `ssh` eine Verbindung mit Ihrem Raspberry Pi her. Weitere Informationen finden Sie auf der [Raspberry Pi-Website](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) unter [SSH (Secure Shell)](https://www.raspberrypi.org/).
+1. Stellen Sie mithilfe von `ssh` eine Verbindung mit Ihrem Raspberry Pi her. Weitere Informationen finden Sie auf der [Raspberry Pi-Website](https://www.raspberrypi.org/) unter [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md).
 
 1. Verwenden Sie den folgenden Befehl aus, um Ihr Raspberry Pi zu aktualisieren:
 

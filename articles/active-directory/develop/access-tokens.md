@@ -1,5 +1,6 @@
 ---
-title: Referenz der Microsoft Identity Platform-Zugriffstoken | Azure
+title: Microsoft Identity Platform-Zugriffstoken | Azure
+titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie mehr über Zugriffstoken, die von den Azure AD v1.0- und Microsoft Identity Platform-Endpunkten (v2.0) ausgegeben werden.
 services: active-directory
 author: hpsin
@@ -8,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/27/2020
+ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ad0f82d4266c42e404200bf6c341623794a6c36e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3e1d000ed316a1a92e6dcdab0f9b7d577fd33d8b
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690347"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772232"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
-Zugriffstoken ermöglichen Clients das sichere Aufrufen von APIs, die durch Azure geschützt sind. Microsoft Identity Platform-Zugriffstoken sind [JSON Web Token](https://tools.ietf.org/html/rfc7519) (JWTs), d. h. von Azure signierte Base64-codierte JSON-Objekte. Clients sollten Zugriffstoken wie nicht transparente Zeichenfolgen behandeln, da der Inhalt des Tokens nur für die Ressource bestimmt ist. Zu Prüfungs- und Debugzwecken können Entwickler JWTs mit einer Website wie [jwt.ms](https://jwt.ms) decodieren. Ihr Client kann ein Zugriffstoken mit einer Vielzahl von Protokollen von den Endpunkten (v1.0 oder v2.0) abrufen.
+Zugriffstoken ermöglichen Clients das sichere Aufrufen von geschützten APIs. Microsoft Identity Platform-Zugriffstoken sind [JSON Web Token (JWTs)](https://tools.ietf.org/html/rfc7519), d. h. von der Microsoft Identity Platform signierte Base64-codierte JSON-Objekte. Clients sollten Zugriffstoken wie nicht transparente Zeichenfolgen behandeln, da der Inhalt des Tokens nur für die Ressource bestimmt ist. Zu Prüfungs- und Debugzwecken können Entwickler JSON Web Token (JWTs) mit einer Website wie [jwt.ms](https://jwt.ms) decodieren. Ihr Client kann ein Zugriffstoken mit einer Vielzahl von Protokollen von den Endpunkten (v1.0 oder v2.0) abrufen.
 
-Wenn Ihr Client ein Zugriffstoken anfordert, gibt Azure AD auch einige Metadaten zum Zugriffstoken zurück, die von Ihrer App genutzt werden können. Diese Informationen umfassen die Ablaufzeit eines Zugriffstokens und die Bereiche, für die es gilt. Die Daten ermöglichen Ihrer App das intelligente Zwischenspeichern von Zugriffstoken, ohne dass dabei das Zugriffstoken selbst analysiert werden muss.
+Wenn Ihr Client ein Zugriffstoken anfordert, gibt die Microsoft Identity Platform auch einige Metadaten zum Zugriffstoken zurück, die von Ihrer App genutzt werden können. Diese Informationen umfassen die Ablaufzeit eines Zugriffstokens und die Bereiche, für die es gilt. Die Daten ermöglichen Ihrer App das intelligente Zwischenspeichern von Zugriffstoken, ohne dass dabei das Zugriffstoken selbst analysiert werden muss.
 
 Wenn Ihre Anwendung eine Ressource (Web-API) ist, für die Clients den Zugriff anfordern können, bieten Zugriffstoken hilfreiche Informationen für die Authentifizierung und Autorisierung, beispielsweise den Benutzer, Client und Aussteller, Berechtigungen usw.
 
@@ -55,7 +56,7 @@ Zeigen Sie dieses v2.0-Token in [JWT.ms](https://jwt.ms/#access_token=eyJ0eXAiOi
 
 ## <a name="claims-in-access-tokens"></a>Ansprüche in Zugriffstoken
 
-JWTs sind in drei Teile unterteilt:
+JSON Web Token (JWTs) sind in drei Teile unterteilt:
 
 * **Header**: Enthält Informationen dazu, wie Sie das [Token überprüfen](#validating-tokens) können. Dazu zählen auch Informationen zum Typ des Tokens und zu seiner Signierung.
 * **Nutzlast**: Enthält alle wichtigen Daten über den Benutzer oder die App, der bzw. die Ihren Dienst aufzurufen versucht.
@@ -113,7 +114,7 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 
 **Gruppenüberschreitungsanspruch**
 
-Azure AD schränkt die Anzahl von Objekt-IDs im Gruppenanspruch ein, um sicherzustellen, dass die Tokengröße die Grenzwerte für HTTP-Header nicht übersteigt. Wenn ein Benutzer Mitglied mehrerer Gruppen als die zulässige Überschreitungsgrenze (150 für SAML-Token, 200 für JWT-Token) ist, gibt Azure AD den Gruppenanspruch nicht im Token aus. Stattdessen ist ein Überschreitungsanspruch im Token enthalten, der der Anwendung anzeigt, dass die Microsoft Graph-API abgefragt werden soll, um die Gruppenmitgliedschaft des Benutzers abzurufen.
+Um sicherzustellen, dass die Tokengröße die Grenzwerte für HTTP-Header nicht überschreitet, schränkt Azure AD die Anzahl der im Gruppenanspruch enthaltenen Objekt-IDs ein. Wenn ein Benutzer Mitglied mehrerer Gruppen als die zulässige Überschreitungsgrenze (150 für SAML-Token, 200 für JWT-Token) ist, gibt Azure AD den Gruppenanspruch nicht im Token aus. Stattdessen ist ein Überschreitungsanspruch im Token enthalten, der der Anwendung anzeigt, dass die Microsoft Graph-API abgefragt werden soll, um die Gruppenmitgliedschaft des Benutzers abzurufen.
 
 ```JSON
 {
@@ -161,7 +162,7 @@ Microsoft-Identitäten können auf verschiedene Arten authentifiziert werden, di
 | `otp` | Einmalkennung mit einer E-Mail oder SMS. |
 | `fed` | Eine Verbundauthentifizierungsassertion (z. B. JWT oder SAML) wurde verwendet. |
 | `wia` | Integrierte Windows-Authentifizierung |
-| `mfa` | Die mehrstufige Authentifizierung wurde verwendet. Wenn dieser Wert vorhanden ist, werden auch andere Authentifizierungsmethoden eingeschlossen. |
+| `mfa` | Die [mehrstufige Authentifizierung](../authentication/concept-mfa-howitworks.md) wurde verwendet. Wenn dieser Wert vorhanden ist, werden auch andere Authentifizierungsmethoden eingeschlossen. |
 | `ngcmfa` | Entspricht `mfa` und wird zum Bereitstellen bestimmter erweiterter Anmeldeinformationstypen verwendet. |
 | `wiaormfa`| Der Benutzer hat sich mit Windows oder MFA-Anmeldeinformationen authentifiziert. |
 | `none` | Es wurde keine Authentifizierung durchgeführt. |
@@ -210,7 +211,7 @@ Dieses Metadatendokument:
 > [!NOTE]
 > Der v1.0-Endpunkt gibt beide Ansprüche zurück, `x5t` und `kid`, der v2.0-Endpunkt dagegen antwortet nur mit Anspruch `kid`. Für das weitere Vorgehen wird empfohlen, Ihr Token mithilfe des Anspruchs `kid` zu überprüfen.
 
-Die Signaturüberprüfung wird in diesem Dokument nicht erläutert. Es stehen jedoch zahlreiche Open Source-Bibliotheken mit hilfreichen Informationen zur Verfügung.  Die Microsoft Identity Platform verfügt jedoch über eine Tokensignaturerweiterung für die Standards – benutzerdefinierte Signaturschlüssel.
+Die Ausführung der Signaturüberprüfung wird in diesem Dokument nicht erläutert. Es stehen jedoch viele Open-Source-Bibliotheken mit hilfreichen Informationen zur Verfügung, falls Sie dabei Unterstützung benötigen.  Die Microsoft Identity Platform verfügt jedoch über eine Tokensignaturerweiterung für die Standards – benutzerdefinierte Signaturschlüssel.
 
 Wenn Ihre App durch die Verwendung der Funktion [Anspruchszuordnung](active-directory-claims-mapping.md) über benutzerdefinierte Signaturschlüssel verfügt, müssen Sie einen `appid`-Abfrageparameter mit der App-ID anfügen, um einen `jwks_uri` abzurufen, der auf die Signaturschlüsselinformationen Ihrer App verweist, die für die Überprüfung verwendet werden sollen. Beispiel: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` enthält einen `jwks_uri` von `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 

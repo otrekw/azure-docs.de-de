@@ -6,14 +6,14 @@ author: jasonwhowell
 ms.author: jasonh
 ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/29/2018
-ms.openlocfilehash: 69a48952ef273acb8cf7eb0ec5968e12b962b622
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2e77e31049e2643f1488eb3f6be906de735ad2b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454362"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121417"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Verwalten von Azure Data Lake Analytics unter Verwendung der Azure-Befehlszeilenschnittstelle (CLI)
 
@@ -22,7 +22,7 @@ ms.locfileid: "79454362"
 Hier erfahren Sie, wie Sie Azure Data Lake Analytics-Konten, -Datenquellen, -Benutzer und -Aufträge mithilfe der Azure CLI verwalten. Klicken Sie oben auf die Auswahlregisterkarte, um Themen anzuzeigen, in denen die Verwaltung mit anderen Tools stattfindet.
 
 
-**Voraussetzungen**
+## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie folgende Ressourcen:
 
@@ -30,7 +30,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie folgende Ressourc
 
 * Azure-Befehlszeilenschnittstelle. Weitere Informationen finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-   * Laden Sie für diese Demo die **Vorabversion** der [Azure CLI-Tools](https://github.com/MicrosoftBigData/AzureDataLake/releases) herunter, und installieren Sie sie.
+  * Laden Sie für diese Demo die **Vorabversion** der [Azure CLI-Tools](https://github.com/MicrosoftBigData/AzureDataLake/releases) herunter, und installieren Sie sie.
 
 * Authentifizieren Sie sich mithilfe des Befehls `az login`, und wählen Sie das Abonnement aus, das Sie verwenden möchten. Weitere Informationen zur Authentifizierung mit einem Geschäfts- oder Schulkonto finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement über die Azure-Befehlszeilenschnittstelle](/cli/azure/authenticate-azure-cli).
 
@@ -111,7 +111,7 @@ Sie können das Data Lake Store-Standardkonto anzeigen, indem Sie den Befehl `az
 
 > [!NOTE]
 > Nur Blob-Speicherkurznamen werden unterstützt. Verwenden Sie keine vollqualifizierten Domänennamen wie etwa „myblob.blob.core.windows.net“.
-> 
+>
 
 ### <a name="add-additional-data-lake-store-accounts"></a>Hinzufügen zusätzlicher Data Lake-Speicherkonten
 
@@ -146,6 +146,7 @@ So listen Sie das Blobspeicherkonto auf:
 ![Data Lake Analytics-Datenquellenliste](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
 ### <a name="delete-data-sources"></a>Löschen von Datenquellen:
+
 So löschen Sie ein Data Lake-Speicherkonto:
 
    ```azurecli
@@ -159,6 +160,7 @@ So löschen Sie ein Blob-Speicherkonto:
    ```
 
 ## <a name="manage-jobs"></a>Aufträge verwalten
+
 Für das Erstellen eines Auftrags ist ein Data Lake Analytics-Konto erforderlich.  Weitere Informationen finden Sie unter [Verwalten von Data Lake Analytics-Konten](#manage-accounts).
 
 ### <a name="list-jobs"></a>Auflisten von Aufträgen
@@ -179,7 +181,7 @@ Für das Erstellen eines Auftrags ist ein Data Lake Analytics-Konto erforderli
 
 > [!NOTE]
 > Die Standardpriorität eines Auftrags ist 1000, und der Standardparallelitätsgrad eines Auftrag ist 1.
-> 
+>
 >    ```azurecli
 >    az dla job submit --account "<Data Lake Analytics account name>" --job-name "<Name of your job>" --script "<Script to submit>"
 >    ```
@@ -193,7 +195,7 @@ Suchen Sie mithilfe des Befehls „list“ nach der Auftrags-ID, und brechen Sie
 
 ## <a name="pipelines-and-recurrences"></a>Pipelines und Wiederholungen
 
-**Abrufen von Informationen zu Pipelines und Wiederholungen**
+### <a name="get-information-about-pipelines-and-recurrences"></a>Abrufen von Informationen zu Pipelines und Wiederholungen
 
 Verwenden Sie die Befehle `az dla job pipeline`, um die Pipelineinformationen für zuvor übermittelte Aufträge anzuzeigen.
 
@@ -211,9 +213,8 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
 * [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md)
 * [Überwachung und Problembehandlung von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-

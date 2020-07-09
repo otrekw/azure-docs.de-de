@@ -7,12 +7,12 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Schützen eines virtuellen Hubs
+    - name: 'Geschützter virtueller Hub: ARM-Vorlage'
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
 - name: Tutorials
   items:
-    - name: 'Schützen Ihres virtuellen WAN: Portal'
+    - name: 'Schützen Ihres virtuellen Hubs: Portal'
       href: secure-cloud-network.md
     - name: 'Schützen Ihres virtuellen Hubnetzwerks: Portal'
       href: secure-hybrid-network.md
@@ -24,18 +24,26 @@
       href: secured-virtual-hub.md
     - name: Allgemeiner Bereitstellungsprozess
       href: deployment-overview.md
-    - name: Vertrauenswürdige Sicherheitspartner
+    - name: Sicherheitspartneranbieter
       href: trusted-security-partners.md
+    - name: IP-Adressgruppen
+      href: ip-groups.md
     - name: Regelverarbeitungslogik
       href: rule-processing.md
     - name: Architekturoptionen
       href: vhubs-and-vnets.md
+    - name: Threat Intelligence-Einstellungen
+      href: threat-intelligence-settings.md
+    - name: FQDN in Netzwerkregeln
+      href: fqdn-filtering-network-rules.md
 - name: Anleitungen
   items:
-    - name: Bereitstellen vertrauenswürdiger Sicherheitspartner
+    - name: Bereitstellen von Sicherheitspartneranbietern
       href: deploy-trusted-security-partner.md
     - name: 'Migrieren zur Firewallrichtlinie: PowerShell'
       href: migrate-to-policy.md
+    - name: DNS-Einstellungen
+      href: dns-settings.md
 - name: Verweis
   items:
     - name: Azure CLI

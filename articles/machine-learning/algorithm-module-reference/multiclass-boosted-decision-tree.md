@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
-ms.openlocfilehash: cfe35f81526a729092edf522f693ccd18494d1ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 023b731216605746e838306ce1ab69ebe8c6c6fd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137823"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955776"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Verstärkte Entscheidungsstruktur mit mehreren Klassen
 
@@ -40,23 +40,23 @@ Diese Art von Modell kann mithilfe von [Modell trainieren](././train-model.md) t
 
 1. **Maximum number of leaves per tree** (Maximale Anzahl von Blättern pro Struktur) begrenzt die maximale Anzahl von Endknoten (Blättern), die in einer Struktur erstellt werden können.
     
-        By increasing this value, you potentially increase the size of the tree and achieve higher precision, at the risk of overfitting and longer training time.
+    Eine Erhöhung dieses Werts führt zu einer potenziell größeren Struktur und zu einer höheren Genauigkeit, kann aber auch eine Überanpassung und eine längere Trainingsdauer zur Folge haben.
   
 1. **Minimum number of samples per leaf node** (Minimale Anzahl von Stichproben pro Blattknoten) gibt die Anzahl von Fällen an, die zum Erstellen eines Endknotens (Blatt) in einer Struktur erforderlich sind.  
 
-         By increasing this value, you increase the threshold for creating new rules. For example, with the default value of 1, even a single case can cause a new rule to be created. If you increase the value to 5, the training data would have to contain at least five cases that meet the same conditions.
+    Wenn Sie diesen Wert heraufsetzen, erhöht sich der Schwellenwert für die Erstellung neuer Regeln. Bei Verwendung des Standardwerts „1“ reicht für die Erstellung einer neuen Regel beispielsweise bereits ein einzelner Fall aus. Wenn Sie den Wert auf „5“ erhöhen, müssen die Trainingsdaten mindestens fünf Fälle enthalten, die die gleichen Bedingungen erfüllen.
 
 1. **Lerngeschwindigkeit** definiert die Schrittgröße beim Lernen. Geben Sie eine Zahl zwischen 0 und 1 ein.
 
-         The learning rate determines how fast or slow the learner converges on an optimal solution. If the step size is too large, you might overshoot the optimal solution. If the step size is too small, training takes longer to converge on the best solution.
+    Die Lernrate bestimmt, wie schnell bzw. langsam sich das Lernmodell einer optimalen Lösung annähert. Ist die Schrittgröße zu groß, wird die optimale Lösung unter Umständen verfehlt. Ist die Schrittgröße zu klein, dauert die Annäherung an die beste Lösung länger.
 
 1. Geben Sie unter **Number of trees constructed** (Anzahl erstellter Strukturen) die Gesamtanzahl von Entscheidungsstrukturen an, die im Ensemble erstellt werden sollen. Mit einer höheren Anzahl von Entscheidungsbäumen erzielen Sie unter Umständen eine bessere Abdeckung, allerdings verlängert sich dadurch die Trainingsdauer.
 
 1. Geben Sie unter **Random number seed** (Zufälliger Ausgangswert) eine nicht negative ganze Zahl ein, die als zufälliger Ausgangswert verwendet werden soll. Die Angabe eines Startwerts gewährleistet Reproduzierbarkeit in verschiedenen Ausführungen, die auf den gleichen Daten und Parametern basieren.  
 
-         The random seed is set by default to 42. Successive runs using different random seeds can have different results.
+    Der zufällige Ausgangswert ist standardmäßig auf 42 festgelegt. Nachfolgende Ausführungen mit anderen zufälligen Ausgangswerten können abweichende Ergebnisse aufweisen.
 
-1. Trainieren Sie das Modell:
+1. Trainieren des Modells:
 
     + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie ein mit Tags versehenes Dataset und das Modul [Train Model](train-model.md) (Modell trainieren) verbinden.  
   

@@ -10,12 +10,12 @@ ms.date: 04/21/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: cea5fb507225f063e2d48c56fae254e123a8f72b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81771778"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84193403"
 ---
 # <a name="query-acceleration-sql-language-reference-preview"></a>Abfragebeschleunigung – SQL-Sprachreferenz (Vorschau)
 
@@ -54,7 +54,7 @@ Im folgenden Beispiel werden geeignete Offsets zum Aufteilen eines CSV-formatier
 SELECT sys.split(split_size)FROM BlobStorage
 ```
 
-<a id="data-types" />
+<a id="data-types"></a>
 
 ## <a name="data-types"></a>Datentypen
 
@@ -231,7 +231,7 @@ Eine SELECT-Anweisung kann entweder einen oder mehrere Projektionsausdrücke ode
 
 ``IS MISSING`` ist der einzige nicht standardmäßige Operator, der von der SQL-Sprache für die Abfragebeschleunigung unterstützt wird.  Wenn bei JSON-Daten in einem bestimmten Eingabedatensatz ein Feld fehlt, ergibt das Ausdrucksfeld ``IS MISSING`` den booleschen Wert „true“.
 
-<a id="table-descriptors" />
+<a id="table-descriptors"></a>
 
 ## <a name="table-descriptors"></a>Tabellendeskriptoren
 
@@ -302,7 +302,7 @@ SELECT weight,warehouses[0].longitude,id,tags[1] FROM BlobStorage[*]
 > [!NOTE]
 > BlobStorage und BlobStorage[\*] verweisen beide auf das gesamte Objekt. Wenn Sie jedoch einen Pfad in der FROM-Klausel angegeben haben, müssen Sie BlobStorage[\*].path verwenden.
 
-<a id="sys-split" />
+<a id="sys-split"></a>
 
 ## <a name="syssplit"></a>Sys.Split
 

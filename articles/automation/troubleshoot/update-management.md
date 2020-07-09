@@ -1,35 +1,29 @@
 ---
-title: Problembehandlung für die Azure Automation-Updateverwaltung
-description: Erfahren Sie, wie Sie Fehler und Probleme mit der Lösung für die Updateverwaltung in Azure Automation beheben können.
+title: Beheben von Problemen bei der Azure Automation-Updateverwaltung
+description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Azure Automation-Updateverwaltung beheben.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/17/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: f936b62349a534e6193a3c628c66c49d1a58b681
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 95e3fc12a77124c32e220d700a112f52cbad08fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790829"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801885"
 ---
-# <a name="troubleshoot-issues-with-the-update-management-solution"></a>Beheben von Problemen mit der Lösung für die Updateverwaltung
+# <a name="troubleshoot-update-management-issues"></a>Beheben von Problemen bei der Updateverwaltung
 
-In diesem Artikel werden Problemen beschrieben, die bei Verwendung der Lösung für die Updateverwaltung auftreten können. Es gibt eine Agent-Problembehandlung für den Hybrid Runbook Worker-Agent, mit dem das zugrunde liegende Problem bestimmt werden kann. Informationen dazu finden Sie unter [Beheben von Problemen mit dem Windows Update-Agent](update-agent-issues.md) und [Beheben von Problemen mit dem Linux Update-Agent](update-agent-issues-linux.md). Informationen zu anderen Onboardingproblemen finden Sie unter [Problembehandlung bei der Integration von Lösungen](onboarding.md).
-
->[!NOTE]
->Wenn Sie Probleme beim Onboarding der Lösung auf einem virtuellen Computer (VM) feststellen, sehen Sie auf dem virtuellen Computer das **Operations Manager**-Protokoll unter **Anwendungs- und Dienstprotokolle** ein. Suchen Sie nach Ereignissen mit der Ereignis-ID 4502 und Ereignisdetails, die `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` enthalten.
+In diesem Artikel werden Probleme beschrieben, die bei der Bereitstellung des Features für die Updateverwaltung auf Ihren Computern auftreten können. Es gibt eine Agent-Problembehandlung für den Hybrid Runbook Worker-Agent, mit dem das zugrunde liegende Problem bestimmt werden kann. Informationen dazu finden Sie unter [Beheben von Problemen mit dem Windows Update-Agent](update-agent-issues.md) und [Beheben von Problemen mit dem Linux Update-Agent](update-agent-issues-linux.md). Informationen zu anderen Problemen bei der Bereitstellung von Features finden Sie unter [Behandeln von Problemen beim Onboarding von Lösungen](onboarding.md).
 
 >[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) auf die neueste Version aktualisieren.
+>Wenn beim Bereitstellen der Updateverwaltung auf einem Windows-Computer Probleme auftreten, öffnen Sie die Windows-Ereignisanzeige, und sehen Sie sich auf dem lokalen Computer das **Operations Manager**-Ereignisprotokoll unter **Anwendungs- und Dienstprotokolle** an. Suchen Sie nach Ereignissen mit der Ereignis-ID 4502 und Ereignisdetails, die `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` enthalten.
 
-## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Szenario: Sie erhalten die Fehlermeldung „Fehler beim Aktivieren der Updatelösung“.
+## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>Szenario: Sie erhalten die Fehlermeldung „Fehler beim Aktivieren der Updatelösung“.
 
 ### <a name="issue"></a>Problem
 
-Wenn Sie versuchen, die Updateverwaltungslösung in Ihrem Automation-Konto zu aktivieren, wird der folgende Fehler ausgegeben:
+Wenn Sie versuchen, die Updateverwaltung in Ihrem Automation-Konto zu aktivieren, wird der folgende Fehler ausgegeben:
 
 ```error
 Error details: Failed to enable the Update solution
@@ -41,7 +35,7 @@ Dieser Fehler kann aus den folgenden Gründe auftreten:
 
 * Die Netzwerkfirewallanforderungen für den Log Analytics-Agent sind möglicherweise nicht ordnungsgemäß konfiguriert. Dadurch tritt beim Auflösen der DNS-URLs möglicherweise ein Fehler beim Agent auf.
 
-* Das Ziel der Lösung ist falsch konfiguriert, und der Computer empfängt keine Updates wie erwartet.
+* Das Ziel der Updateverwaltung ist falsch konfiguriert, und der Computer empfängt die Updates nicht wie erwartet.
 
 * Sie werden möglicherweise auch feststellen, dass der Computer den Status `Non-compliant` unter **Konformität** anzeigt. Gleichzeitig meldet **Agent Desktop Analytics** den Agent als `Disconnected`.
 
@@ -51,11 +45,9 @@ Dieser Fehler kann aus den folgenden Gründe auftreten:
 
 * Rufen Sie den Abschnitt [Netzwerkkonfiguration](../automation-hybrid-runbook-worker.md#network-planning) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit die Updateverwaltung funktioniert.  
 
-* Rufen Sie den Abschnitt [Netzwerkkonfiguration](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit der Log Analytics-Agent funktioniert.
+* Suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../automation-scope-configurations-update-management.md) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht in der Updateverwaltung angezeigt wird, müssen Sie die Bereichskonfiguration so festlegen, dass sie auf die Computer ausgerichtet ist. Weitere Informationen zur Bereichskonfiguration finden Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
-* Suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bestimmt, welche Computer für die Lösung konfiguriert werden. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht im **Updateverwaltungsportal angezeigt wird, müssen Sie die Bereichskonfiguration den Computern gemäß festlegen. Weitere Informationen zur Bereichskonfiguration finden Sie unter [Integrierte Computer im Arbeitsbereich](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
-
-* Entfernen Sie die Workerkonfiguration, indem Sie die Schritte in [Entfernen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) oder in [Entfernen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker) ausführen. 
+* Entfernen Sie die Workerkonfiguration, indem Sie die Schritte unter [Entfernen des Hybrid Runbook Workers von einem lokalen Windows-Computer](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) oder [Bereitstellen eines Linux-Hybrid Runbook Workers](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker) ausführen. 
 
 ## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Szenario: Ersetztes Update wird in der Updateverwaltung als fehlend angezeigt
 
@@ -122,9 +114,9 @@ Dieses Problem kann durch lokale Konfigurationsprobleme oder eine falsch konfigu
 
 4. Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein Problem mit der lokalen Konfiguration vor, und Sie sollten [den Agent neu installieren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). 
 
-5. Wenn Ihr Computer in den Abfrageergebnissen angezeigt wird, suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bestimmt, welche Computer für die Lösung konfiguriert werden. 
+5. Wenn Ihr Computer in den Abfrageergebnissen angezeigt wird, suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../automation-scope-configurations-update-management.md) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden. 
 
-6. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht in der Updateverwaltung angezeigt wird, müssen Sie die Bereichskonfiguration so festlegen, dass sie auf die Computer ausgerichtet ist. Informationen hierzu finden Sie unter [Integrieren von Computern in den Arbeitsbereich](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+6. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht in der Updateverwaltung angezeigt wird, müssen Sie die Bereichskonfiguration so festlegen, dass sie auf die Computer ausgerichtet ist. Informationen hierzu finden Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 7. Führen Sie in Ihrem Arbeitsbereich diese Abfrage aus.
 
@@ -142,7 +134,7 @@ Dieses Problem kann durch lokale Konfigurationsprobleme oder eine falsch konfigu
 
 ### <a name="issue"></a>Problem
 
-Beim Arbeiten mit Lösungen in Ihrem Automation-Konto tritt der folgende Fehler auf:
+Beim Arbeiten mit Featurebereitstellungen in Ihrem Automation-Konto tritt der folgende Fehler auf:
 
 ```error
 Error details: Unable to register Automation Resource Provider for subscriptions
@@ -220,7 +212,7 @@ Führen Sie das folgende Verfahren aus, wenn Ihr Abonnement für den Automation-
 
 ### <a name="issue"></a>Problem
 
-Virtuelle Computer für ausgewählte Bereiche einer dynamischen Gruppe werden nicht in der Vorschauliste des Azure-Portals angezeigt. Diese Liste enthält alle Computer, die mit einer ARG-Abfrage für die ausgewählten Bereiche abgerufen werden. Die Bereiche werden nach Computern gefiltert, auf denen Hybrid Runbook Worker installiert sind und für die Sie über Zugriffsberechtigungen verfügen. 
+VMs für ausgewählte Bereiche einer dynamischen Gruppe werden nicht in der Vorschauliste des Azure-Portals angezeigt. Diese Liste enthält alle Computer, die mit einer ARG-Abfrage für die ausgewählten Bereiche abgerufen werden. Die Bereiche werden nach Computern gefiltert, auf denen Hybrid Runbook Worker installiert sind und für die Sie über Zugriffsberechtigungen verfügen. 
 
 ### <a name="cause"></a>Ursache
  
@@ -281,11 +273,11 @@ Computer werden in Ergebnissen einer ARG-Abfrage aufgeführt, sie sind jedoch ni
 
 7. Wiederholen Sie die obigen Schritte für alle Computer, die nicht in der Vorschau angezeigt werden.
 
-## <a name="scenario-components-for-update-management-solution-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>Szenario: Komponenten für die Updateverwaltungslösung sind aktiviert, während die VM weiterhin als konfiguriert angezeigt wird.
+## <a name="scenario-update-management-components-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>Szenario: Komponenten für die Updateverwaltung sind aktiviert, während weiterhin angezeigt wird, dass die VM konfiguriert wird
 
 ### <a name="issue"></a>Problem
 
-Die folgende Meldung wird 15 Minuten nach dem Onboarding auf einer VM angezeigt:
+Die folgende Nachricht wird nach 15 Minuten nach Beginn der Bereitstellung auch weiterhin auf einem Computer angezeigt:
 
 ```error
 The components for the 'Update Management' solution have been enabled, and now this virtual machine is being configured. Please be patient, as this can sometimes take up to 15 minutes.
@@ -299,7 +291,7 @@ Dieser Fehler kann aus den folgenden Gründe auftreten:
 
 * Es ist ein doppelter Computername mit unterschiedlichen Quellcomputer-IDs vorhanden. Dieses Szenario tritt auf, wenn ein virtueller Computer mit einem bestimmten Computernamen in verschiedenen Ressourcengruppen erstellt wird und Meldungen an den gleichen Logistics Agent-Arbeitsbereich im Abonnement sendet.
 
-* Das zu integrierende VM-Image stammt möglicherweise von einem geklonten Computer, der nicht über die Systemvorbereitung (Sysprep) mit installiertem Log Analytics-Agent für Windows vorbereitet wurde.
+* Das bereitzustellende VM-Image stammt möglicherweise von einem geklonten Computer, der nicht über die Systemvorbereitung (Sysprep) mit installiertem Log Analytics-Agent für Windows vorbereitet wurde.
 
 ### <a name="resolution"></a>Lösung
 
@@ -319,7 +311,7 @@ Rufen Sie den Abschnitt [Netzwerkplanung](../automation-update-management.md#por
 
 Benennen Sie Ihre VMs um, um eindeutige Namen in ihrer Umgebung sicherzustellen.
 
-#### <a name="onboarded-image-from-cloned-machine"></a>Integriertes Image von geklontem Computer
+#### <a name="deployed-image-from-cloned-machine"></a>Bereitgestelltes Image von geklontem Computer
 
 Wenn Sie ein geklontes Image verwenden, weisen verschiedene Computernamen die gleiche Quellcomputer-ID auf. In diesem Fall:
 
@@ -443,7 +435,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="cause"></a>Ursache
 
-Der Computer wurde bereits in einen anderen Arbeitsbereich für die Updateverwaltung integriert.
+Der Computer wurde bereits in einem anderen Arbeitsbereich für die Updateverwaltung bereitgestellt.
 
 ### <a name="resolution"></a>Lösung
 

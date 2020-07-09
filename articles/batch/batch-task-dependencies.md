@@ -1,24 +1,24 @@
 ---
-title: Erstellen von Taskabhängigkeiten zum Ausführen von Tasks – Azure Batch
+title: Erstellen von Taskabhängigkeiten zum Ausführen von Tasks
 description: Erstellen Sie Tasks, die vom Abschluss anderer Tasks abhängig sind, um Vorgänge vom MapReduce-Typ und ähnliche Big Data-Workloads in Azure Batch zu verarbeiten.
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/22/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b3bc37a3d004f077e2e780d096b7bb2a8e5f773
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4aad67b4537befd251798aac7601bc4efcc276f2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116484"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965228"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Erstellen von Taskabhängigkeiten zum Ausführen von Tasks, die von anderen Tasks abhängen
 
 Sie können Taskabhängigkeiten definieren, um einen Task oder eine Gruppe von Tasks erst auszuführen, nachdem ein übergeordneter Task abgeschlossen wurde. Einige Szenarios, in denen Taskabhängigkeiten nützlich sind:
 
-* Workloads vom Typ MapReduce in der Cloud.
-* Aufträge, deren Datenverarbeitungstasks als gerichteter azyklischer Graph (DAG) ausgedrückt werden können.
-* Prozesse vor und nach dem Rendern, bei denen jeder Task abgeschlossen sein muss, bevor der nächste Task beginnen kann.
-* Alle anderen Aufträge, in denen nachgelagerte Tasks von der Ausgabe vorgelagerter Tasks abhängen.
+- Workloads vom Typ MapReduce in der Cloud.
+- Aufträge, deren Datenverarbeitungstasks als gerichteter azyklischer Graph (DAG) ausgedrückt werden können.
+- Prozesse vor und nach dem Rendern, bei denen jeder Task abgeschlossen sein muss, bevor der nächste Task beginnen kann.
+- Alle anderen Aufträge, in denen nachgelagerte Tasks von der Ausgabe vorgelagerter Tasks abhängen.
 
 Mit Taskabhängigkeiten in Batch können Sie Tasks erstellen, deren Ausführung auf Computeknoten erst nach dem Abschluss von mindestens einem weiteren übergeordneten Task geplant wird. Beispielsweise können Sie einen Auftrag erstellen, der jedes Einzelbild eines 3D-Films mit separaten, parallelen Tasks rendert. Der letzte Task – der „Zusammenführungstask“ – fügt die gerenderten Einzelbilder erst dann zu einem vollständigen Film zusammen, wenn alle Einzelbilder erfolgreich gerendert wurden.
 
@@ -27,9 +27,11 @@ Standardmäßig werden abhängige Tasks erst für die Ausführung eingeplant, na
 Sie können Tasks erstellen, die in einer 1:1- oder 1:n-Beziehung von anderen Tasks abhängen. Sie können auch eine Bereichsabhängigkeit erstellen, bei der ein Task vom Abschluss einer Gruppe von Tasks innerhalb eines bestimmten Task-ID-Bereichs abhängig ist. Sie können diese drei grundlegenden Szenarien auch kombinieren, um m:n-Beziehungen zu erstellen.
 
 ## <a name="task-dependencies-with-batch-net"></a>Taskabhängigkeiten bei Batch .NET
+
 In diesem Artikel wird beschrieben, wie Sie Taskabhängigkeiten mit der [Batch-Bibliothek für .NET][net_msdn] konfigurieren. Zuerst zeigen wir Ihnen, wie Sie die [Taskabhängigkeit in Ihren Aufträgen aktivieren](#enable-task-dependencies), danach erläutern wir, wie Sie [einen Task mit Abhängigkeiten konfigurieren](#create-dependent-tasks). Es wird auch beschrieben, wie Sie eine Abhängigkeitsaktion bestimmen, um abhängige Tasks auszuführen, wenn im übergeordneten Task ein Fehler auftritt. Zuletzt geht es um die von Batch unterstützten [Abhängigkeitsszenarien](#dependency-scenarios) .
 
 ## <a name="enable-task-dependencies"></a>Aktivieren von Taskabhängigkeiten
+
 Um Taskabhängigkeiten in der Batch-Anwendung verwenden zu können, müssen Sie zuerst den Auftrag für die Verwendung von Taskabhängigkeiten konfigurieren. Aktivieren Sie ihn in Batch .NET für Ihr [CloudJob][net_cloudjob]-Objekt, indem Sie die dazugehörige [UsesTaskDependencies][net_usestaskdependencies]-Eigenschaft auf `true` festlegen:
 
 ```csharp
@@ -43,6 +45,7 @@ unboundJob.UsesTaskDependencies = true;
 Im vorstehenden Codeausschnitt ist „batchClient“ eine Instanz der Klasse [BatchClient][net_batchclient].
 
 ## <a name="create-dependent-tasks"></a>Erstellen von abhängigen Tasks
+
 Zum Erstellen eines Tasks, der vom Abschluss eines oder mehrerer übergeordneter Tasks abhängig ist, können Sie angeben, dass der Task von anderen Tasks abhängig ist („depends on“). Konfigurieren Sie in Batch .NET die Eigenschaft [CloudTask][net_cloudtask].[DependsOn][net_dependson] mit einer Instanz der [TaskDependencies][net_taskdependencies]-Klasse:
 
 ```csharp
@@ -58,13 +61,12 @@ Dieser Codeausschnitt erstellt einen abhängigen Task mit der Task-ID „Flowers
 
 > [!NOTE]
 > Ein Task wird als erfolgreich abgeschlossen angesehen, wenn er den Zustand **abgeschlossen** aufweist und der **Exitcode** den Wert `0` hat. In Batch .NET bedeutet dies, dass der [CloudTask][net_cloudtask].[State][net_taskstate]-Eigenschaftswert `Completed` und der [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode]-Eigenschaftswert von „CloudTask“ `0` lautet. Informationen zum Ändern dieses Verhaltens finden Sie im Abschnitt [Abhängigkeitsaktionen](#dependency-actions).
-> 
-> 
 
 ## <a name="dependency-scenarios"></a>Abhängigkeitsszenarien
+
 Es gibt drei grundlegende Szenarien für Abhängigkeiten von Tasks, die Sie in Azure Batch verwenden können: 1:1, 1:n und Task-ID-Bereich. Diese können Sie kombinieren, um ein viertes Szenario zu schaffen, und zwar „m:n“.
 
-| Szenario&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Beispiel |  |
+| Szenario&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Beispiel | Abbildung |
 |:---:| --- | --- |
 |  [1:1](#one-to-one) |*TaskB* hängt von *TaskA* ab. <p/> *TaskB* wird erst ausgeführt, nachdem *TaskA* erfolgreich abgeschlossen wurde |![Diagramm: 1:1-Abhängigkeit von Tasks][1] |
 |  [1:n](#one-to-many) |*TaskC* hängt sowohl von *TaskA* als auch von *TaskB* ab. <p/> *TaskC* wird erst ausgeführt, nachdem *TaskA* und *TaskB* erfolgreich abgeschlossen wurden. |![Diagramm: 1:n-Abhängigkeit von Tasks][2] |
@@ -76,6 +78,7 @@ Es gibt drei grundlegende Szenarien für Abhängigkeiten von Tasks, die Sie in A
 > In den Beispielen in diesem Abschnitt wird ein abhängiger Task erst ausgeführt, nachdem die übergeordneten Tasks erfolgreich abgeschlossen wurden. Dieses Verhalten ist das Standardverhalten für einen abhängigen Task. Sie können einen abhängigen Task ausführen, wenn im übergeordneten Task ein Fehler auftritt, indem Sie eine Abhängigkeitsaktion angeben, um das Standardverhalten zu überschreiben. Weitere Informationen finden Sie im Abschnitt [Abhängigkeitsaktionen](#dependency-actions).
 
 ### <a name="one-to-one"></a>1:1
+
 In einer 1 : 1-Beziehung hängt ein Task vom erfolgreichen Abschluss eines übergeordneten Tasks ab. Um die Abhängigkeit zu erstellen, geben Sie eine einzelne Task-ID für die statische [TaskDependencies][net_taskdependencies].[OnId][net_onid]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
 
 ```csharp
@@ -90,6 +93,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 ```
 
 ### <a name="one-to-many"></a>1:n
+
 In einer 1 : n-Beziehung hängt ein Task vom Abschluss mehrerer übergeordneter Tasks ab. Um die Abhängigkeit zu erstellen, geben Sie mehrere Task-IDs für die statische [TaskDependencies][net_taskdependencies].[OnIds][net_onids]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
 
 ```csharp
@@ -106,17 +110,16 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 ``` 
 
 ### <a name="task-id-range"></a>Task-ID-Bereich
+
 Bei einer Abhängigkeit von einem Bereich von übergeordneten Tasks hängt ein Task vom Abschluss von Tasks ab, deren IDs innerhalb eines Bereichs liegen.
 Um die Abhängigkeit zu erstellen, geben Sie die IDs des ersten und letzten Tasks im Bereich für die statische [TaskDependencies][net_taskdependencies].[OnIdRange][net_onidrange]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
 
 > [!IMPORTANT]
 > Wenn Sie Task-ID-Bereiche für Ihre Abhängigkeiten verwenden, werden nur Tasks mit IDs, die Integerwerte darstellen, durch den Bereich ausgewählt. Der Bereich `1..10` wählt somit die Aufgaben `3` und `7` aus, aber nicht `5flamingoes`. 
-> 
+>
 > Führende Nullen haben für die Auswertung von Bereichsabhängigkeiten keine Bedeutung. Tasks mit den Zeichenfolgenbezeichnern `4`, `04` und `004` befinden sich daher alle *im* Bereich und werden alle als Task `4` behandelt, sodass der erste abgeschlossene Task die Abhängigkeit erfüllt.
-> 
+>
 > Jeder Task in dem Bereich muss die Abhängigkeit erfüllen. Dies kann durch erfolgreichen Abschluss geschehen oder durch Abschließen mit einem Fehler, der einer Abhängigkeitsaktion zugeordnet ist, die auf **Satisfy** (Erfüllen) festgelegt ist. Weitere Informationen finden Sie im Abschnitt [Abhängigkeitsaktionen](#dependency-actions).
->
->
 
 ```csharp
 // Tasks 1, 2, and 3 don't depend on any other tasks. Because
@@ -193,6 +196,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 ```
 
 ## <a name="code-sample"></a>Codebeispiel
+
 Das Beispielprojekt [TaskDependencies][github_taskdependencies] ist eines der [Azure Batch-Codebeispiele][github_samples] auf GitHub. Diese Visual Studio-Lösung veranschaulicht:
 
 - Wie Sie Taskabhängigkeit für einen Auftrag aktivieren
@@ -200,31 +204,29 @@ Das Beispielprojekt [TaskDependencies][github_taskdependencies] ist eines der [A
 - So führen Sie diese Tasks in einem Pool von Computeknoten aus
 
 ## <a name="next-steps"></a>Nächste Schritte
-### <a name="application-deployment"></a>Anwendungsbereitstellung
-Das Batch-Feature [Anwendungspakete](batch-application-packages.md) bietet eine einfache Möglichkeit zum Bereitstellen und Versionieren der Anwendungen, die von Ihren Tasks auf Computeknoten ausgeführt werden.
 
-### <a name="installing-applications-and-staging-data"></a>Installieren von Anwendungen und Bereitstellen von Daten (Staging)
-Eine Übersicht über die Methoden zum Vorbereiten Ihrer Knoten für die Ausführung von Tasks finden Sie im Azure Batch-Forum unter [Installieren von Anwendungen und Bereitstellen von Daten (Staging) auf Batch-Computeknoten][forum_post]. Der Beitrag wurde von einem Mitglied des Azure Batch-Teams verfasst und enthält alle relevanten Informationen, um sich mit den verschiedenen Vorgehensweisen vertraut zu machen, mit denen sich Anwendungen, Taskeingabedaten und andere Dateien auf Computeknoten kopieren lassen.
+- Das Batch-Feature [Anwendungspakete](batch-application-packages.md) bietet eine einfache Möglichkeit zum Bereitstellen und Versionieren der Anwendungen, die von Ihren Tasks auf Computeknoten ausgeführt werden.
+- Eine Übersicht über die Methoden zum Vorbereiten Ihrer Knoten für die Ausführung von Tasks finden Sie im Azure Batch-Forum unter [Installieren von Anwendungen und Bereitstellen von Daten (Staging) auf Batch-Computeknoten][forum_post]. Der Beitrag wurde von einem Mitglied des Azure Batch-Teams verfasst und enthält alle relevanten Informationen, um sich mit den verschiedenen Vorgehensweisen vertraut zu machen, mit denen sich Anwendungen, Taskeingabedaten und andere Dateien auf Computeknoten kopieren lassen.
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
-[net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
-[net_dependson]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.dependson.aspx
-[net_exitcode]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskexecutioninformation.exitcode.aspx
-[net_exitconditions]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitconditions
-[net_exitoptions]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions
-[net_dependencyaction]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions
-[net_msdn]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[net_onid]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onid.aspx
-[net_onids]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onids.aspx
-[net_onidrange]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onidrange.aspx
-[net_taskexecutioninformation]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskexecutioninformation.aspx
-[net_taskstate]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.common.taskstate.aspx
-[net_usestaskdependencies]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.usestaskdependencies.aspx
-[net_taskdependencies]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskdependencies.aspx
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_dependson]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_exitcode]: /dotnet/api/microsoft.azure.batch.taskexecutioninformation
+[net_exitconditions]: /dotnet/api/microsoft.azure.batch.exitconditions
+[net_exitoptions]: /dotnet/api/microsoft.azure.batch.exitoptions
+[net_dependencyaction]: /dotnet/api/microsoft.azure.batch.exitoptions
+[net_msdn]: /dotnet/api/microsoft.azure.batch
+[net_onid]: /dotnet/api/microsoft.azure.batch.taskdependencies
+[net_onids]: /dotnet/api/microsoft.azure.batch.taskdependencies
+[net_onidrange]: /dotnet/api/microsoft.azure.batch.taskdependencies
+[net_taskexecutioninformation]: /dotnet/api/microsoft.azure.batch.taskexecutioninformation
+[net_taskstate]: /dotnet/api/microsoft.azure.batch.common.taskstate
+[net_usestaskdependencies]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_taskdependencies]: /dotnet/api/microsoft.azure.batch.taskdependencies
 
 [1]: ./media/batch-task-dependency/01_one_to_one.png "Diagramm: 1:1-Abhängigkeit"
 [2]: ./media/batch-task-dependency/02_one_to_many.png "Diagramm: 1:n-Abhängigkeit"

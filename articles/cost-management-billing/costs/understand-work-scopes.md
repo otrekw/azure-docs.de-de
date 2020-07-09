@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: ebae9d1c66a721926ca07b21059ec57b05b99a0f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 2f61345cd55fc9541f9e1b707389d0b9d06685b0
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877931"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873430"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -67,9 +67,12 @@ Cost Management unterstützt für jeden der folgenden Bereiche die folgenden int
 
 „Cost Management-Mitwirkender“ ist die empfohlene Rolle mit geringstmöglichen Berechtigungen. Sie ermöglicht den Zugriff für die Erstellung und Verwaltung von Budgets und Exporten, um die Kosten effektiver zu überwachen und zu dokumentieren. Cost Management-Mitwirkende benötigen ggf. auch zusätzliche Rollen, um Kostenverwaltungsszenarien durchgängig unterstützen zu können. Betrachten Sie die folgenden Szenarien:
 
+- **Berichte zur Ressourcennutzung**: Azure Cost Management zeigt Kosten im Azure-Portal an. Dies umfasst auch die Nutzung in Bezug auf die Kosten in der API für vollständige Nutzung und Gebühren sowie den Download. Vielleicht möchten Sie aber auch detaillierte Nutzungsmetriken in Azure Monitor aufrufen, um ein tieferes Verständnis zu erhalten. Es empfiehlt sich, die Rolle [Überwachungsleser](../../role-based-access-control/built-in-roles.md#monitoring-reader) für jeden Bereich zu gewähren, in dem Sie auch Berichte zu detaillierten Nutzungsmetriken benötigen.
 - **Eingreifen bei Überschreitung von Budgets**: Cost Management-Mitwirkende benötigen auch Zugriff für das Erstellen und/oder Verwalten von Aktionsgruppen, um bei Überschreitungen automatisch zu reagieren. Erwägen Sie das Zuweisen der Rolle [Mitwirkender an der Überwachung](../../role-based-access-control/built-in-roles.md#monitoring-contributor) zu einer Ressourcengruppe, die die zu verwendende Aktionsgruppe enthält, wenn Budgetschwellenwerte überschritten werden. Die Automatisierung bestimmter Aktionen erfordert zusätzliche Rollen für die verwendeten spezifischen Dienste, wie z.B. Azure Automation und Azure Functions.
 - **Planen des Exports von Kostendaten**: Cost Management-Mitwirkende benötigen auch Zugriff für das Verwalten von Speicherkonten, um einen Export zum Kopieren von Daten in ein Speicherkonto zu planen. Erwägen Sie das Zuweisen der Rolle [Speicherkontomitwirkender](../../role-based-access-control/built-in-roles.md#storage-account-contributor) zu einer Ressourcengruppe, die das Speicherkonto enthält, in das Kostendaten exportiert werden.
 - **Anzeigen von Empfehlungen für Kosteneinsparungen**: Cost Management-Leser und Cost Management-Mitwirkende haben in der Standardeinstellung Zugriff auf die *Anzeige* von Empfehlungen. Der Zugriff auf die Kostenempfehlungen erfordert jedoch den Zugriff auf einzelne Ressourcen. Erwägen Sie, eine [dienstspezifische Rolle](../../role-based-access-control/built-in-roles.md#all) zuzulassen, wenn Sie auf eine kostenbasierte Empfehlung reagieren möchten.
+
+Verwaltungsgruppen werden nur unterstützt, wenn sie Abonnements mit Enterprise Agreement (EA), nutzungsbasierter Bezahlung (Pay-as-you-go, PAYG) oder interne Microsoft-Abonnements enthalten. Für Verwaltungsgruppen mit anderen Abonnementtypen (z. B. Abonnements mit Microsoft-Kundenvereinbarung oder Azure Active Directory-Abonnements) können keine Kosten angezeigt werden. Wenn Sie über eine Mischung von Abonnements verfügen, verschieben Sie die nicht unterstützten Abonnements in einen separaten Arm der Verwaltungsgruppenhierarchie, um Cost Management für die unterstützten Abonnements zu aktivieren. Erstellen Sie z. B. zwei Verwaltungsgruppen unter der Stammverwaltungsgruppe: **Azure AD** und **Meine Organisation**. Verschieben Sie das Azure AD-Abonnement in die Verwaltungsgruppe **Azure AD**, und verwenden Sie dann die Verwaltungsgruppe **Meine Organisation** zum Anzeigen und Verwalten von Kosten.
 
 ## <a name="enterprise-agreement-scopes"></a>Enterprise Agreement-Bereiche
 

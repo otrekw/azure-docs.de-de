@@ -6,25 +6,25 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d38c0df45da3a751a456846813543a4ce5de98eb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4dc054d26f0cb64a8f7faf2ffa4b2b688562f404
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416215"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213549"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Überwachen der Ressourcennutzung und Abfrageaktivität in Azure Synapse Analytics
 
-Azure Synapse Analytics bietet umfassende Überwachungsfunktionen im Azure-Portal, um Erkenntnisse zu Ihrer Data Warehouse-Workload zu gewinnen. Das Azure-Portal ist das empfohlene Tool zum Überwachen Ihrer Data Warehouse-Instanz, weil es eine konfigurierbare Aufbewahrungsdauer, Warnungen, Empfehlungen und anpassbare Diagramme und Dashboards für Metriken und Protokolle bietet. Das Portal ermöglicht außerdem eine Integration weiterer Azure-Überwachungsdienste – z. B. Azure Monitor (Protokolle) mit Log Analytics, um Ihnen eine umfassende und integrierte Überwachungsoberfläche für Data Warehouse sowie für Ihre gesamte Azure-Analyseplattform zu bieten. In dieser Dokumentation wird beschrieben, welche Überwachungsfunktionen zur Verfügung stehen, um Ihre Analyseplattform mit SQL Analytics zu optimieren und zu verwalten.
+Azure Synapse Analytics bietet umfassende Überwachungsfunktionen im Azure-Portal, um Erkenntnisse zu Ihrer Data Warehouse-Workload zu gewinnen. Das Azure-Portal ist das empfohlene Tool zum Überwachen Ihrer Data Warehouse-Instanz, weil es eine konfigurierbare Aufbewahrungsdauer, Warnungen, Empfehlungen und anpassbare Diagramme und Dashboards für Metriken und Protokolle bietet. Das Portal ermöglicht außerdem eine Integration weiterer Azure-Überwachungsdienste – z. B. Azure Monitor (Protokolle) mit Log Analytics, um Ihnen eine umfassende und integrierte Überwachungsoberfläche für Data Warehouse sowie für Ihre gesamte Azure-Analyseplattform zu bieten. In dieser Dokumentation wird beschrieben, welche Überwachungsfunktionen zur Verfügung stehen, um Ihre Analyseplattform mit Synapse SQL zu optimieren und zu verwalten.
 
 ## <a name="resource-utilization"></a>Ressourcenverwendung
 
-Im Azure-Portal stehen die folgenden Metriken für SQL Analytics zur Verfügung. Diese Metriken werden über [Azure Monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics) angegeben.
+Im Azure-Portal stehen die folgenden Metriken für Synapse SQL zur Verfügung. Diese Metriken werden über [Azure Monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics) angegeben.
 
 | Metrikname             | BESCHREIBUNG                                                  | Aggregationstyp |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -49,18 +49,18 @@ Im Azure-Portal stehen die folgenden Metriken für SQL Analytics zur Verfügung.
 Beim Anzeigen von Metriken und Festlegen von Warnungen zu berücksichtigende Aspekte:
 
 - Die verwendete DWU stellt nur eine **allgemeine Darstellung der Nutzung** im SQL-Pool dar und soll nicht als umfassender Indikator der Auslastung dienen. Um zu ermitteln, ob zentral hoch- oder herunterskaliert werden soll, sollten Sie alle Faktoren berücksichtigen, die von DWU betroffen sein können, etwa Parallelität, Arbeitsspeicher, tempdb und adaptive Cachekapazität. Es wird empfohlen, [ihre Workload mit verschiedenen DWU-Einstellungen](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) auszuführen, um zu ermitteln, was für Ihre Geschäftsziele am besten funktioniert.
-- Fehlerhafte und erfolgreiche Verbindungen werden für ein bestimmtes Data Warehouse gemeldet – nicht für den logischen Server.
+- Fehlerhafte und erfolgreiche Verbindungen werden für ein bestimmtes Data Warehouse gemeldet – nicht für den Server selbst.
 - Der Prozentsatz des Arbeitsspeichers spiegelt die Auslastung auch dann wider, wenn sich das Data Warehouse im Leerlauf befindet – er gibt nicht die Speichernutzung durch die aktive Workload wieder. Verwenden Sie diese Metrik zusammen mit anderen (tempdb, Gen2-Cache), und verfolgen Sie sie, um eine ganzheitliche Entscheidung darüber zu treffen, ob eine Skalierung auf zusätzliche Cache Kapazität die Workloadleistung entsprechend Ihren Anforderungen steigert.
 
 ## <a name="query-activity"></a>Abfrageaktivität
 
-Für eine programmgesteuerte Benutzeroberfläche bei der Überwachung von SQL Analytics über T-SQL bietet der Dienst einen Satz an dynamischen Verwaltungssichten (Dynamic Management Views, DMVs). Diese Sichten sind nützlich für die aktive Problembehandlung und das Identifizieren von Leistungsengpässen in Ihrer Workload.
+Für eine programmgesteuerte Benutzeroberfläche bei der Überwachung von Synapse SQL über T-SQL bietet der Dienst verschiedene dynamische Verwaltungssichten (Dynamic Management Views, DMVs). Diese Sichten sind nützlich für die aktive Problembehandlung und das Identifizieren von Leistungsengpässen in Ihrer Workload.
 
 Eine Liste der DMVs, die für Synapse SQL gelten, finden Sie in dieser [Dokumentation](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs). 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosedaten 
 
-Sowohl Metriken als auch Protokolle können in Azure Monitor exportiert werden, insbesondere die Komponente [Azure Monitor-Protokolle](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), und auf sie kann programmgesteuert über [Protokollabfragen](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) zugegriffen werden. Die Protokolllatenz für SQL Analytics beträgt ca. 10 – 15 Minuten. Weitere Informationen zu den Faktoren, die sich auf die Wartezeit auswirken, finden Sie in der folgenden Dokumentation.
+Sowohl Metriken als auch Protokolle können in Azure Monitor exportiert werden, insbesondere die Komponente [Azure Monitor-Protokolle](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), und auf sie kann programmgesteuert über [Protokollabfragen](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) zugegriffen werden. Die Protokollwartezeit für Synapse SQL beträgt ca. 10 bis 15 Minuten. Weitere Informationen zu den Faktoren, die sich auf die Wartezeit auswirken, finden Sie in der folgenden Dokumentation.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

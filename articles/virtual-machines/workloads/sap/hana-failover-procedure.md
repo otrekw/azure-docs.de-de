@@ -42,7 +42,7 @@ Wenn Sie für mehrere SAP HANA-Instanzen ein Failover ausführen möchten, führ
 Sie können das Notfallwiederherstellungs-Failover auch ohne Auswirkungen auf die tatsächliche Replikationsbeziehung testen. Um ein Testfailover auszuführen, befolgen Sie die Schritte unter „Perform a test DR failover – azure_hana_test_dr_failover“ (Ausführen eines Testfailovers für die Notfallwiederherstellung – azure_hana_test_dr_failover) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
 
 >[!IMPORTANT]
->Führen Sie auf der Instanz, die Sie am Standort der Notfallwiederherstellung beim *Testen eines Failovers* erstellt haben, **keine** Produktionstransaktionen durch. Der Befehl azure_hana_test_dr_failover erstellt einen Satz von Volumes, die keine Beziehung zum primären Standort haben. Eine Synchronisierung zurück an den primären Standort ist daher *nicht* möglich. 
+>Führen Sie auf der Instanz, die Sie am Standort der Notfallwiederherstellung beim **Testen eines Failovers** erstellt haben, *keine* Produktionstransaktionen durch. Der Befehl azure_hana_test_dr_failover erstellt einen Satz von Volumes, die keine Beziehung zum primären Standort haben. Eine Synchronisierung zurück an den primären Standort ist daher *nicht* möglich. 
 
 Wenn Sie Tests für mehrere SAP HANA-Instanzen durchführen möchten, führen Sie das Skript mehrfach aus. Geben Sie bei entsprechender Aufforderung die SAP HANA-SID der Instanz ein, die Sie für das Failover testen möchten. 
 
@@ -52,7 +52,7 @@ Wenn Sie Tests für mehrere SAP HANA-Instanzen durchführen möchten, führen Si
 1. Fahren Sie die nicht für die Produktion bestimmte Instanz von HANA auf der ausgeführten Einheit für die Notfallwiederherstellung von HANA (große Instanzen) herunter. Eine ruhende HANA-Produktionsinstanz ist vorinstalliert.
 1. Stellen Sie sicher, dass keine SAP HANA-Prozesse ausgeführt werden. Verwenden Sie für diese Überprüfung den folgenden Befehl:
 
-      [https://login.microsoftonline.com/consumers/](`/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`).
+      `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`.
 
       In der Ausgabe muss der Prozess **hdbdaemon** den Zustand „Beendet“ aufweisen, und es dürfen keine anderen HANA-Prozesse mit dem Zustand „Gestartet“ vorhanden sein.
 1. Überprüfen Sie, unter welchen Momentaufnahmenamen bzw. welcher SAP HANA-Sicherungs-ID der Standort für die Notfallwiederherstellung wiederhergestellt werden soll. In der Praxis handelt es sich dabei in der Regel um die neueste Momentaufnahme. Wenn Sie verlorene Daten wiederherstellen müssen, wählen Sie eine ältere Momentaufnahme.

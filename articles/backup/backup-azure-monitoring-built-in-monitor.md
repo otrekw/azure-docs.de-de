@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Be
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: de5a82f5ad1d8113b27c07484f2f08f4cf97c759
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c72c192f3bd12169703b70cbee76599b15eb560
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294935"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247052"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -59,7 +59,7 @@ Die folgenden Szenarios werden vom Dienst als solche definiert, in denen Warnung
 
 ### <a name="consolidated-alerts"></a>Konsolidierte Warnungen
 
-Für Azure-Workloadsicherungslösungen wie SQL und SAP Hana können Protokollsicherungen sehr häufig generiert werden (gemäß der Richtlinie bis zu alle 15 Minuten). Es ist also auch möglich, dass die Fehler bei der Protokollsicherung sehr häufig auftreten (bis zu alle 15 Minuten). In diesem Szenario ist der Endbenutzer überfordert, wenn für jeden auftretenden Fehler eine Warnung ausgelöst wird. Daher wird für das erste Vorkommen eine Warnung gesendet, und wenn die nachfolgenden Fehler aufgrund derselben Grundursache auftreten, werden keine weiteren Warnungen generiert. Die erste Warnung wird mit der Fehleranzahl aktualisiert. Wenn die Warnung jedoch vom Benutzer deaktiviert wird, löst das nächste Vorkommen eine andere Warnung aus, und diese wird als erste Warnung für dieses Vorkommen behandelt. Auf diese Weise führt Azure Backup eine Warnungskonsolidierung für SQL- und SAP Hana-Sicherungen durch.
+Für Azure-Workloadsicherungslösungen wie SQL und SAP Hana können Protokollsicherungen sehr häufig generiert werden (gemäß der Richtlinie bis zu alle 15 Minuten). Es ist also auch möglich, dass die Fehler bei der Protokollsicherung sehr häufig auftreten (bis zu alle 15 Minuten). In diesem Szenario ist der Endbenutzer überfordert, wenn für jeden auftretenden Fehler eine Warnung ausgelöst wird. Daher wird für das erste Vorkommen eine Warnung gesendet, und wenn spätere Fehler aufgrund derselben Grundursache auftreten, werden keine weiteren Warnungen generiert. Die erste Warnung wird mit der Fehleranzahl aktualisiert. Wenn die Warnung jedoch vom Benutzer deaktiviert wird, löst das nächste Vorkommen eine andere Warnung aus, und diese wird als erste Warnung für dieses Vorkommen behandelt. Auf diese Weise führt Azure Backup eine Warnungskonsolidierung für SQL- und SAP Hana-Sicherungen durch.
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Ausnahmen, bei denen keine Warnung ausgelöst wird
 
@@ -77,7 +77,7 @@ Diese Ausnahmen wurden eingeführt, weil das Ergebnis der oben aufgeführten Vor
 Je nach Schweregrad der Warnung werden diese drei Arten zugeordnet:
 
 - **Kritisch**: Im Prinzip führt jeder Fehler bei der Sicherung oder Wiederherstellung (geplant oder vom Benutzer ausgelöst) zu einer Warnung, die als „Kritisch“ angezeigt wird. Das gilt auch für destruktive Vorgänge wie das Löschen der Sicherung.
-- **Warnung:** Wenn der Sicherungsvorgang erfolgreich war, aber einige Warnungen auslöst werden, werden diese als „Warnung“ aufgeführt.
+- **Warnung:** Wenn der Sicherungsvorgang erfolgreich durchgeführt wurde, aber einige Warnungen auslöst werden, werden diese als „Warnung“ aufgeführt.
 - **Informativ:** Derzeit werden keine informativen Warnungen von Azure Backup generiert.
 
 ## <a name="notification-for-backup-alerts"></a>Benachrichtigungen für Azure Backup-Warnungen
@@ -89,7 +89,7 @@ Wenn eine Warnung ausgelöst wird, werden die Benutzer benachrichtigt. Azure Bac
 
 ![Im Recovery Services-Tresor integrierte E-Mail-Benachrichtigung](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
 
-Wenn Sie die Benachrichtigungen konfiguriert haben, erhalten Sie eine Begrüßungs-E-Mail bzw. eine einführende E-Mail. Dadurch wird bestätigt, dass Azure Backup E-Mails an diese Adressen senden kann, wenn eine Warnung ausgelöst wird.<br>
+Wenn Sie die Benachrichtigungen konfiguriert haben, erhalten Sie eine Begrüßungs-E-Mail bzw. eine Einführungs-E-Mail. Dadurch wird bestätigt, dass Azure Backup E-Mails an diese Adressen senden kann, wenn eine Warnung ausgelöst wird.<br>
 
 Wenn die Häufigkeit auf eine stündliche Übersicht festgelegt und eine Warnung innerhalb einer Stunde ausgelöst und behoben wurde, ist diese nicht in der stündlichen Übersicht enthalten.
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/22/2019
+ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 93d07ab1740da68298478ae2dcc2ab46d8d8362e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c27938227a13934de11dd6e88d58138c46c3f58e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884017"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204625"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Verarbeiten von MSAL-Ausnahmen und -Fehlern
 
@@ -49,7 +49,7 @@ Dies sind die häufigsten Ausnahmen, die ausgelöst werden könnten, und einige 
 | Ausnahme | Fehlercode | Minderung|
 | --- | --- | --- |
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: The user or administrator has not consented to use the application with ID '{appId}' named '{appName}'. (Der Benutzer oder Administrator hat nicht zugestimmt, die Anwendung mit der ID '{appId}' und dem Namen '{appName}' zu verwenden.) Send an interactive authorization request for this user and resource. (Senden Sie eine interaktive Autorisierungsanforderung für diesen Benutzer und die Ressource.)| Sie müssen zuerst die Zustimmung des Benutzers einholen. Wenn Sie nicht .NET Core verwenden (das keine Webbenutzeroberfläche aufweist), rufen Sie (einmalig) `AcquireTokeninteractive` auf. Wenn Sie .NET Core verwenden oder `AcquireTokenInteractive` nicht ausführen möchten, kann der Benutzer zu einer URL navigieren, um seine Zustimmung zu geben: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read`. Aufrufen von `AcquireTokenInteractive`: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: The user is required to use multi-factor authentication (MFA). (Der Benutzer muss mehrstufige Authentifizierung (MFA) verwenden.)| Es gibt keine Abhilfemaßnahme. Wenn MFA für Ihren Mandanten konfiguriert ist und Azure Active Directory (AAD) entscheidet, die Methode durchzusetzen, müssen Sie auf einen interaktiven Flow wie `AcquireTokenInteractive` oder `AcquireTokenByDeviceCode` ausweichen.|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: Der Benutzer muss die [mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)](../authentication/concept-mfa-howitworks.md) verwenden.| Es gibt keine Abhilfemaßnahme. Wenn MFA für Ihren Mandanten konfiguriert ist und Azure Active Directory (AAD) entscheidet, MFA zu erzwingen, müssen Sie auf einen interaktiven Flow wie `AcquireTokenInteractive` oder `AcquireTokenByDeviceCode` zurückgreifen.|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: The grant type is not supported over the */common* or */consumers* endpoints. (Der Gewährungstyp wird für den /common- oder /consumers-Endpunkt nicht unterstützt.) Use the */organizations* or tenant-specific endpoint. (Verwenden Sie den /organizations-Endpunkt oder mandantenspezifischen Endpunkt.) You used */common*. (Sie haben /common verwendet.)| Wie in der Azure AD-Meldung erläutert, muss die Autorität über einen Mandanten oder ansonsten über einen */organizations*-Endpunkt verfügen.|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: The request body must contain the following parameter: `client_secret or client_assertion`. (Der Anforderungstext muss den folgenden Parameter enthalten:)| Diese Ausnahme kann ausgelöst werden, wenn die Anwendung in Azure AD nicht als öffentliche Clientanwendung registriert wurde. Bearbeiten Sie im Azure-Portal das Manifest für Ihre Anwendung, und legen Sie `allowPublicClient` auf `true` fest. |
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| `unknown_user Message`: Could not identify logged in user. (Der angemeldete Benutzer konnte nicht identifiziert werden.)| Die Bibliothek war nicht in der Lage, den aktuellen, in Windows angemeldeten Benutzer abzufragen, oder der Benutzer ist nicht in AD oder AAD eingebunden (Benutzer, die über den Arbeitsplatz eingebunden sind, werden nicht unterstützt). Lösung 1: Vergewissern Sie sich auf der UWP, dass die Anwendung die folgenden Funktionen aufweist: Unternehmensauthentifizierung, private Netzwerke (Client und Server), Benutzerkonteninformationen. Lösung 2: Implementieren Sie eigene Logik zum Abrufen des Benutzernamens (z. B. john@contoso.com), und verwenden Sie die Methode in der Form `AcquireTokenByIntegratedWindowsAuth`, die den Benutzernamen annimmt.|
@@ -523,16 +523,20 @@ Beim automatischen Abruf von Token mit MSAL.js (und `acquireTokenSilent`) kann I
 Sie behandeln diesen Fehler in der Regel dadurch, dass Sie einen interaktiven Aufruf ausführen, um ein Token in MSAL.js abzurufen, z. B. mit `acquireTokenPopup` oder `acquireTokenRedirect`. Siehe folgendes Beispiel:
 
 ```javascript
-myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenResponse) {
+myMSALObj.acquireTokenSilent(accessTokenRequest).then(function(accessTokenResponse) {
     // call API
-}).catch( function (error) {
+}).catch(function(error) {
     if (error instanceof InteractionRequiredAuthError) {
-        // Extract claims from error message
-        accessTokenRequest.claimsRequest = extractClaims(error.errorMessage);
+    
+        // extract, if exists, claims from error message
+        if (error.ErrorMessage.claims) {
+            accessTokenRequest.claimsRequest = JSON.stringify(error.ErrorMessage.claims);
+        }
+        
         // call acquireTokenPopup in case of InteractionRequiredAuthError failure
-        myMSALObj.acquireTokenPopup(accessTokenRequest).then(function (accessTokenResponse) {
+        myMSALObj.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
             // call API
-        }).catch(function (error) {
+        }).catch(function(error) {
             console.log(error);
         });
     }

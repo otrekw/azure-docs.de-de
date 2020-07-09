@@ -3,23 +3,23 @@ title: Einbinden eines virtuellen Dateisystems in einen Pool
 description: Erfahren Sie, wie Sie ein virtuelles Dateisystem in einen Batch-Pool einbinden.
 ms.topic: how-to
 ms.date: 08/13/2019
-ms.openlocfilehash: 4e51e8a1f11d670515893a83398a0c6d7c6e9a46
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 80acf5df0cf5262249b2eac584152744a4224a35
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816028"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954671"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Einbinden eines virtuellen Dateisystems in einen Batch-Pool
 
 Azure Batch unterstützt jetzt die Einbindung von Cloudspeicher oder eines externen Dateisystems auf Windows- oder Linux-Computeknoten in Ihren Batch-Pools. Wenn ein Computeknoten einem Pool beitritt, wird das virtuelle Dateisystem eingebunden und als lokales Laufwerk auf diesem Knoten behandelt. Sie können Dateisysteme wie Azure Files, Azure Blob Storage, Network File System (NFS) einschließlich eines [Avere vFXT-Caches](../avere-vfxt/avere-vfxt-overview.md) oder Common Internet File System (CIFS) einbinden.
 
-In diesem Artikel erfahren Sie, wie Sie ein virtuelles Dateisystem mithilfe der [Azure Batch-Verwaltungsbibliothek für .NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet) in einen Pool von Computeknoten einbinden.
+In diesem Artikel erfahren Sie, wie Sie ein virtuelles Dateisystem mithilfe der [Azure Batch-Verwaltungsbibliothek für .NET](/dotnet/api/overview/azure/batch?view=azure-dotnet) in einen Pool von Computeknoten einbinden.
 
 > [!NOTE]
 > Das Einbinden eines virtuellen Dateisystems wird in Batch-Pools unterstützt, die am oder nach dem 19.08.2019 erstellt wurden. Von vor dem 19.08.2019 erstellten Batch-Pools wird diese Funktion nicht unterstützt.
 > 
-> Die APIs für die Einbindung von Dateisystemen auf einem Computeknoten sind Teil der [Batch .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet)-Bibliothek.
+> Die APIs für die Einbindung von Dateisystemen auf einem Computeknoten sind Teil der [Batch .NET](/dotnet/api/microsoft.azure.batch?view=azure-dotnet)-Bibliothek.
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>Vorteile der Einbindung in einen Pool
 
@@ -128,7 +128,7 @@ new PoolAddParameter
 
 ### <a name="common-internet-file-system"></a>Common Internet File System
 
-Common Internet File System (CIFS) kann auch auf Poolknoten eingebunden werden, sodass Azure Batch-Knoten problemlos auf herkömmliche Dateisysteme zugreifen können. CIFS ist ein Dateifreigabeprotokoll, das einen offenen und plattformübergreifenden Mechanismus zum Anfordern von Netzwerkserverdateien und -diensten bietet. CIFS basiert auf der erweiterten Version des Server Message Block-Protokolls (SMB) von Microsoft für die Internet- und Intranetdateifreigabe und wird zum Einbinden externer Dateisysteme auf Windows-Knoten verwendet. Weitere Informationen zu SMB finden Sie unter [Dateiserver und SMB](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview).
+Common Internet File System (CIFS) kann auch auf Poolknoten eingebunden werden, sodass Azure Batch-Knoten problemlos auf herkömmliche Dateisysteme zugreifen können. CIFS ist ein Dateifreigabeprotokoll, das einen offenen und plattformübergreifenden Mechanismus zum Anfordern von Netzwerkserverdateien und -diensten bietet. CIFS basiert auf der erweiterten Version des Server Message Block-Protokolls (SMB) von Microsoft für die Internet- und Intranetdateifreigabe und wird zum Einbinden externer Dateisysteme auf Windows-Knoten verwendet. Weitere Informationen zu SMB finden Sie unter [Dateiserver und SMB](/windows-server/storage/file-server/file-server-smb-overview).
 
 ```csharp
 new PoolAddParameter
@@ -153,7 +153,7 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>Diagnostizieren von Einbindungsfehlern
 
-Wenn bei einer Einbindungskonfiguration ein Fehler auftritt, führt dies zu einem Fehler des Computeknotens im Pool, und der Knoten weist dann den Status „Nicht verwendbar“ auf. Überprüfen Sie zum Diagnostizieren eines Einbindungskonfigurationsfehlers die [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)-Eigenschaft auf Details zum Fehler.
+Wenn bei einer Einbindungskonfiguration ein Fehler auftritt, führt dies zu einem Fehler des Computeknotens im Pool, und der Knoten weist dann den Status „Nicht verwendbar“ auf. Überprüfen Sie zum Diagnostizieren eines Einbindungskonfigurationsfehlers die [`ComputeNodeError`](/rest/api/batchservice/computenode/get#computenodeerror)-Eigenschaft auf Details zum Fehler.
 
 Wenn Sie die Protokolldateien für das Debuggen erhalten möchten, verwenden Sie [OutputFiles](batch-task-output-files.md), um die Protokolldateien (`*.log`) hochzuladen. Die Protokolldateien (`*.log`) enthalten Informationen zur Dateisystemeinbindung am Speicherort `AZ_BATCH_NODE_MOUNTS_DIR`. Einbindungsprotokolldateien weisen für jede Einbindung das Format `<type>-<mountDirOrDrive>.log` auf. Die zugehörige Einbindungsprotokolldatei einer `cifs`-Einbindung im Einbindungsverzeichnis `test` heißt beispielsweise `cifs-test.log`.
 
@@ -179,5 +179,5 @@ Wenn Sie die Protokolldateien für das Debuggen erhalten möchten, verwenden Sie
 
 - Erfahren Sie mehr über das Einbinden einer Azure Files-Freigabe mit [Windows](../storage/files/storage-how-to-use-files-windows.md) oder [Linux](../storage/files/storage-how-to-use-files-linux.md).
 - Erfahren Sie mehr über das Verwenden und Einbinden virtueller [blobfuse](https://github.com/Azure/azure-storage-fuse)-Dateisysteme.
-- Lesen Sie die [Übersicht über Network File System](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview), um mehr über NFS und die zugehörigen Anwendungen zu erfahren.
-- Lesen Sie die [Übersicht über das Microsoft-SMB-Protokoll und das CIFS-Protokoll](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview), um mehr über CIFS zu erfahren.
+- Lesen Sie die [Übersicht über Network File System](/windows-server/storage/nfs/nfs-overview), um mehr über NFS und die zugehörigen Anwendungen zu erfahren.
+- Lesen Sie die [Übersicht über das Microsoft-SMB-Protokoll und das CIFS-Protokoll](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview), um mehr über CIFS zu erfahren.

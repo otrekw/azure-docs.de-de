@@ -3,12 +3,12 @@ title: YAML-Referenz für Containergruppe
 description: Referenz für die von Azure Container Instances zum Konfigurieren einer Containergruppe unterstützte YAML-Datei
 ms.topic: article
 ms.date: 08/12/2019
-ms.openlocfilehash: 8497330a327201c4c64e9f7ae57e6fc4225b52de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be78c7d498187486a1502da17faa2b8faa5a0982
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74896571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84730525"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML-Referenz: Azure Container Instances
 
@@ -133,7 +133,7 @@ properties: # Properties of container group
 
 In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlegen müssen.
 
-<a id="Microsoft.ContainerInstance/containerGroups" />
+
 
 ### <a name="microsoftcontainerinstancecontainergroups-object"></a>Microsoft.ContainerInstance/containerGroups-Objekt
 
@@ -143,11 +143,11 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  apiVersion | enum | Ja | 2018-10-01 |
 |  location | Zeichenfolge | Nein | Der Ressourcenspeicherort. |
 |  tags | Objekt (object) | Nein | Die Ressourcentags. |
-|  identity | Objekt (object) | Nein | Die Identität der Containergruppe, sofern konfiguriert. - [-Objekt](#ContainerGroupIdentity) |
-|  properties | Objekt (object) | Ja | [ContainerGroupProperties-Objekt](#ContainerGroupProperties) |
+|  identity | Objekt (object) | Nein | Die Identität der Containergruppe, sofern konfiguriert. - [-Objekt](#containergroupidentity-object) |
+|  properties | Objekt (object) | Ja | [ContainerGroupProperties-Objekt](#containergroupproperties-object) |
 
 
-<a id="ContainerGroupIdentity" />
+
 
 ### <a name="containergroupidentity-object"></a>ContainerGroupIdentity-Objekt
 
@@ -157,34 +157,34 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  userAssignedIdentities | Objekt (object) | Nein | Die Liste der der Containergruppe zugeordneten Benutzeridentitäten. Die Schlüsselverweise des Benutzeridentitäts-Wörterbuchs sind Azure Resource Manager-Ressourcen-IDs im Format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. |
 
 
-<a id="ContainerGroupProperties" />
+
 
 ### <a name="containergroupproperties-object"></a>ContainerGroupProperties-Objekt
 
 |  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
-|  containers | array | Ja | Die Container innerhalb der Containergruppe. - [Container-Objekt](#Container) |
-|  imageRegistryCredentials | array | Nein | Die Anmeldeinformationen für die Imageregistrierung, mit denen die Containergruppe erstellt wird. - [ImageRegistryCredential-Objekt](#ImageRegistryCredential) |
+|  containers | array | Ja | Die Container innerhalb der Containergruppe. - [Container-Objekt](#container-object) |
+|  imageRegistryCredentials | array | Nein | Die Anmeldeinformationen für die Imageregistrierung, mit denen die Containergruppe erstellt wird. - [ImageRegistryCredential-Objekt](#imageregistrycredential-object) |
 |  restartPolicy | enum | Nein | Neustartrichtlinie für alle Container innerhalb der Containergruppe. - `Always` Immer neu starten- `OnFailure` Neustart bei Fehler- `Never` Nie neu starten. – Always, OnFailure, Never |
-|  ipAddress | Objekt (object) | Nein | Der IP-Adressentyp der Containergruppe. - [IpAddress-Objekt](#IpAddress) |
+|  ipAddress | Objekt (object) | Nein | Der IP-Adressentyp der Containergruppe. - [IpAddress-Objekt](#ipaddress-object) |
 |  osType | enum | Ja | Der für die Container in der Containergruppe erforderliche Betriebssystemtyp. – Windows oder Linux |
-|  volumes | array | Nein | Die Liste der Volumes, die von Containern in dieser Containergruppe eingebunden werden können. - [Volume-Objekt](#Volume) |
-|  Diagnose | Objekt (object) | Nein | Die Diagnoseinformationen für eine Containergruppe. - [ContainerGroupDiagnostics-Objekt](#ContainerGroupDiagnostics) |
-|  networkProfile | Objekt (object) | Nein | Die Netzwerkprofilinformationen für eine Containergruppe. - [ContainerGroupNetworkProfile-Objekt](#ContainerGroupNetworkProfile) |
-|  dnsConfig | Objekt (object) | Nein | Die DNS-Konfigurationsinformationen für eine Containergruppe. - [DnsConfiguration-Objekt](#DnsConfiguration) |
+|  volumes | array | Nein | Die Liste der Volumes, die von Containern in dieser Containergruppe eingebunden werden können. - [Volume-Objekt](#volume-object) |
+|  Diagnose | Objekt (object) | Nein | Die Diagnoseinformationen für eine Containergruppe. - [ContainerGroupDiagnostics-Objekt](#containergroupdiagnostics-object) |
+|  networkProfile | Objekt (object) | Nein | Die Netzwerkprofilinformationen für eine Containergruppe. - [ContainerGroupNetworkProfile-Objekt](#containergroupnetworkprofile-object) |
+|  dnsConfig | Objekt (object) | Nein | Die DNS-Konfigurationsinformationen für eine Containergruppe. - [DnsConfiguration-Objekt](#dnsconfiguration-object) |
 
 
-<a id="Container" />
+
 
 ### <a name="container-object"></a>Container-Objekt
 
 |  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  name | Zeichenfolge | Ja | Der vom Benutzer bereitgestellte Name der Containerinstanz. |
-|  properties | Objekt (object) | Ja | Der Eigenschaften der Containerinstanz. - [ContainerProperties-Objekt](#ContainerProperties) |
+|  properties | Objekt (object) | Ja | Der Eigenschaften der Containerinstanz. - [ContainerProperties-Objekt](#containerproperties-object) |
 
 
-<a id="ImageRegistryCredential" />
+
 
 ### <a name="imageregistrycredential-object"></a>ImageRegistryCredential-Objekt
 
@@ -195,41 +195,41 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  password | Zeichenfolge | Nein | Das Kennwort für die private Registrierung. |
 
 
-<a id="IpAddress" />
+
 
 ### <a name="ipaddress-object"></a>IpAddress-Objekt
 
 |  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
-|  ports | array | Ja | Die Liste der in der Containergruppe verfügbar gemachten Ports. - [Port-Objekte](#Port) |
+|  ports | array | Ja | Die Liste der in der Containergruppe verfügbar gemachten Ports. - [Port-Objekte](#port-object) |
 |  type | enum | Ja | Gibt an, ob die IP dem öffentlichen Internet oder dem privaten VNET verfügbar gemacht ist. – Public oder Private |
 |  ip | Zeichenfolge | Nein | Die dem öffentlichen Internet verfügbar gemachte IP-Adresse. |
 |  dnsNameLabel | Zeichenfolge | Nein | Die DNS-Namensbezeichnung für die IP-Adresse. |
 
 
-<a id="Volume" />
+
 
 ### <a name="volume-object"></a>Volume-Objekt
 
 |  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  name | Zeichenfolge | Ja | Der Name des Volumes. |
-|  azureFile | Objekt (object) | Nein | Das Azure File-Volume. - [AzureFileVolume-Objekt](#AzureFileVolume) |
+|  azureFile | Objekt (object) | Nein | Das Azure File-Volume. - [AzureFileVolume-Objekt](#azurefilevolume-object) |
 |  emptyDir | Objekt (object) | Nein | Das leere Verzeichnis-Volume. |
 |  secret | Objekt (object) | Nein | Das geheime Volume. |
-|  gitRepo | Objekt (object) | Nein | Das Git-Repository-Volume. - [GitRepoVolume-Objekt](#GitRepoVolume) |
+|  gitRepo | Objekt (object) | Nein | Das Git-Repository-Volume. - [GitRepoVolume-Objekt](#gitrepovolume-object) |
 
 
-<a id="ContainerGroupDiagnostics" />
+
 
 ### <a name="containergroupdiagnostics-object"></a>ContainerGroupDiagnostics-Objekt
 
 |  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
-|  logAnalytics | Objekt (object) | Nein | Containergruppen-Protokollanalyseinformationen. - [LogAnalytics-Objekt](#LogAnalytics) |
+|  logAnalytics | Objekt (object) | Nein | Containergruppen-Protokollanalyseinformationen. - [LogAnalytics-Objekt](#loganalytics-object) |
 
 
-<a id="ContainerGroupNetworkProfile" />
+
 
 ### <a name="containergroupnetworkprofile-object"></a>ContainerGroupNetworkProfile-Objekt
 
@@ -238,7 +238,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  id | Zeichenfolge | Ja | Der Bezeichner für ein Netzwerkprofil. |
 
 
-<a id="DnsConfiguration" />
+
 
 ### <a name="dnsconfiguration-object"></a>DnsConfiguration-Objekt
 
@@ -249,7 +249,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  Optionen | Zeichenfolge | Nein | Die DNS-Optionen für die Containergruppe. |
 
 
-<a id="ContainerProperties" />
+
 
 ### <a name="containerproperties-object"></a>ContainerProperties-Objekt
 
@@ -257,15 +257,15 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  ---- | ---- | ---- | ---- |
 |  image | Zeichenfolge | Ja | Der Name des zum Erstellen der Containerinstanz verwendeten Images. |
 |  command | array | Nein | Die innerhalb der Containerinstanz auszuführenden Befehle im EXEC-Format. – string |
-|  ports | array | Nein | Die in der Containerinstanz verfügbar gemachten Ports. - [ContainerPort-Objekt](#ContainerPort) |
-|  environmentVariables | array | Nein | Die in der Containerinstanz festzulegenden Umgebungsvariablen. - [EnvironmentVariable-Objekt](#EnvironmentVariable) |
-|  ressourcen | Objekt (object) | Ja | Die Ressourcenanforderungen der Containerinstanz. - [ResourceRequirements-Objekt](#ResourceRequirements) |
-|  volumeMounts | array | Nein | Die für die Containerinstanz verfügbaren Volumebereitstellungen. - [VolumeMount-Objekt](#VolumeMount) |
-|  livenessProbe | Objekt (object) | Nein | Der Livetest. - [ContainerProbe-Objekt](#ContainerProbe) |
-|  readinessProbe | Objekt (object) | Nein | Der Bereitschaftstest. - [ContainerProbe-Objekt](#ContainerProbe) |
+|  ports | array | Nein | Die in der Containerinstanz verfügbar gemachten Ports. - [ContainerPort-Objekt](#containerport-object) |
+|  environmentVariables | array | Nein | Die in der Containerinstanz festzulegenden Umgebungsvariablen. - [EnvironmentVariable-Objekt](#environmentvariable-object) |
+|  ressourcen | Objekt (object) | Ja | Die Ressourcenanforderungen der Containerinstanz. - [ResourceRequirements-Objekt](#resourcerequirements-object) |
+|  volumeMounts | array | Nein | Die für die Containerinstanz verfügbaren Volumebereitstellungen. - [VolumeMount-Objekt](#volumemount-object) |
+|  livenessProbe | Objekt (object) | Nein | Der Livetest. - [ContainerProbe-Objekt](#containerprobe-object) |
+|  readinessProbe | Objekt (object) | Nein | Der Bereitschaftstest. - [ContainerProbe-Objekt](#containerprobe-object) |
 
 
-<a id="Port" />
+
 
 ### <a name="port-object"></a>Port-Objekt
 
@@ -275,7 +275,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  port | integer | Ja | Die Portnummer. |
 
 
-<a id="AzureFileVolume" />
+
 
 ### <a name="azurefilevolume-object"></a>AzureFileVolume-Objekt
 
@@ -287,7 +287,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  storageAccountKey | Zeichenfolge | Nein | Der Zugriffsschlüssel des Speicherkontos, der für den Zugriff auf die Azure File-Freigabe verwendet wird. |
 
 
-<a id="GitRepoVolume" />
+
 
 ### <a name="gitrepovolume-object"></a>GitRepoVolume-Objekt
 
@@ -298,7 +298,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  revision | Zeichenfolge | Nein | Commit-Hash für die angegebene Revision. |
 
 
-<a id="LogAnalytics" />
+
 
 ### <a name="loganalytics-object"></a>LogAnalytics-Objekt
 
@@ -310,7 +310,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  metadata | Objekt (object) | Nein | Metadaten für Log Analytics. |
 
 
-<a id="ContainerPort" />
+
 
 ### <a name="containerport-object"></a>ContainerPort-Objekt
 
@@ -320,7 +320,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  port | integer | Ja | Die innerhalb der Containergruppe verfügbar gemachte Portnummer. |
 
 
-<a id="EnvironmentVariable" />
+
 
 ### <a name="environmentvariable-object"></a>EnvironmentVariable-Objekt
 
@@ -331,17 +331,17 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  secureValue | Zeichenfolge | Nein | Der Wert der sicheren Umgebungsvariablen. |
 
 
-<a id="ResourceRequirements" />
+
 
 ### <a name="resourcerequirements-object"></a>ResourceRequirements-Objekt
 
 |  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
-|  requests | Objekt (object) | Ja | Die Ressourcenanforderungen dieser Containerinstanz. - [ResourceRequests-Objekt](#ResourceRequests) |
-|  Grenzwerte | Objekt (object) | Nein | Die Ressourcenlimits dieser Containerinstanz. - [ResourceLimits-Objekt](#ResourceLimits) |
+|  requests | Objekt (object) | Ja | Die Ressourcenanforderungen dieser Containerinstanz. - [ResourceRequests-Objekt](#resourcerequests-object) |
+|  Grenzwerte | Objekt (object) | Nein | Die Ressourcenlimits dieser Containerinstanz. - [ResourceLimits-Objekt](#resourcelimits-object) |
 
 
-<a id="VolumeMount" />
+
 
 ### <a name="volumemount-object"></a>VolumeMount-Objekt
 
@@ -352,14 +352,14 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  readOnly | boolean | Nein | Das Flag, das anzeigt, ob die Volumebereitstellung schreibgeschützt ist. |
 
 
-<a id="ContainerProbe" />
+
 
 ### <a name="containerprobe-object"></a>ContainerProbe-Objekt
 
 |  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
-|  exec | Objekt (object) | Nein | Der zu testende Ausführungsbefehl – [ContainerExec-Objekt](#ContainerExec) |
-|  httpGet | Objekt (object) | Nein | Die zu testenden HTTP GET-Einstellungen – [ContainerHttpGet-Objekt](#ContainerHttpGet) |
+|  exec | Objekt (object) | Nein | Der zu testende Ausführungsbefehl – [ContainerExec-Objekt](#containerexec-object) |
+|  httpGet | Objekt (object) | Nein | Die zu testenden HTTP GET-Einstellungen – [ContainerHttpGet-Objekt](#containerhttpget-object) |
 |  initialDelaySeconds | integer | Nein | Die anfänglichen Verzögerungssekunden. |
 |  periodSeconds | integer | Nein | Die Zeitraumsekunden. |
 |  failureThreshold | integer | Nein | Der Fehlerschwellenwert. |
@@ -367,7 +367,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  timeoutSeconds | integer | Nein | Die Timeoutsekunden. |
 
 
-<a id="ResourceRequests" />
+
 
 ### <a name="resourcerequests-object"></a>ResourceRequests-Objekt
 
@@ -375,10 +375,10 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  ---- | ---- | ---- | ---- |
 |  memoryInGB | number | Ja | Die Arbeitsspeicheranforderung dieser Containerinstanz in GB. |
 |  cpu | number | Ja | Die CPU-Anforderungen dieser Containerinstanz. |
-|  gpu | Objekt (object) | Nein | Die GPU-Anforderungen dieser Containerinstanz. - [GpuResource-Objekt](#GpuResource) |
+|  gpu | Objekt (object) | Nein | Die GPU-Anforderungen dieser Containerinstanz. - [GpuResource-Objekt](#gpuresource-object) |
 
 
-<a id="ResourceLimits" />
+
 
 ### <a name="resourcelimits-object"></a>ResourceLimits-Objekt
 
@@ -386,10 +386,10 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  ---- | ---- | ---- | ---- |
 |  memoryInGB | number | Nein | Das Arbeitsspeicherlimit dieser Containerinstanz in GB. |
 |  cpu | number | Nein | Das CPU-Limit dieser Containerinstanz. |
-|  gpu | Objekt (object) | Nein | Das GPU-Limit dieser Containerinstanz. - [GpuResource-Objekt](#GpuResource) |
+|  gpu | Objekt (object) | Nein | Das GPU-Limit dieser Containerinstanz. - [GpuResource-Objekt](#gpuresource-object) |
 
 
-<a id="ContainerExec" />
+
 
 ### <a name="containerexec-object"></a>ContainerExec-Objekt
 
@@ -398,7 +398,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  command | array | Nein | Die innerhalb des Containers auszuführenden Befehle. – string |
 
 
-<a id="ContainerHttpGet" />
+
 
 ### <a name="containerhttpget-object"></a>ContainerHttpGet-Objekt
 
@@ -409,7 +409,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  scheme | enum | Nein | Das Schema. – HTTP oder HTTPS |
 
 
-<a id="GpuResource" />
+
 
 ### <a name="gpuresource-object"></a>GpuResource-Objekt
 

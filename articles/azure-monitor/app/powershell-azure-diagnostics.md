@@ -3,12 +3,12 @@ title: Einrichten von Application Insights in Azure mit PowerShell | Microsoft D
 description: Automatisieren der Konfiguration der Azure-Diagnose zum Senden von Daten an Application Insights
 ms.topic: conceptual
 ms.date: 08/06/2019
-ms.openlocfilehash: da1796c8af5b9463d8223615f4b0629ba65eb3e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 20f5a5c61c65b476a98c59b24283a2d15c39ddae
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669802"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111183"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Einrichten von Application Insights für Azure Cloud Services mit PowerShell
 
@@ -17,22 +17,24 @@ ms.locfileid: "77669802"
 ## <a name="azure-template"></a>Azure-Vorlage
 Wenn sich die Web-App in Azure befindet und Sie Ihre Ressourcen mit einer Azure Resource Manager-Vorlage erstellen, können Sie Application Insights konfigurieren, indem Sie dem Ressourcenknoten Folgendes hinzufügen:
 
+```json
+{
+  resources: [
+    /* Create Application Insights resource */
     {
-      resources: [
-        /* Create Application Insights resource */
-        {
-          "apiVersion": "2015-05-01",
-          "type": "microsoft.insights/components",
-          "name": "nameOfAIAppResource",
-          "location": "centralus",
-          "kind": "web",
-          "properties": { "ApplicationId": "nameOfAIAppResource" },
-          "dependsOn": [
-            "[concat('Microsoft.Web/sites/', myWebAppName)]"
-          ]
-        }
-       ]
-     } 
+      "apiVersion": "2015-05-01",
+      "type": "microsoft.insights/components",
+      "name": "nameOfAIAppResource",
+      "location": "centralus",
+      "kind": "web",
+      "properties": { "ApplicationId": "nameOfAIAppResource" },
+      "dependsOn": [
+        "[concat('Microsoft.Web/sites/', myWebAppName)]"
+      ]
+    }
+  ]
+}
+``` 
 
 * `nameOfAIAppResource` : Name für die Application Insights-Ressource
 * `myWebAppName`: die ID der Web-App
@@ -40,88 +42,84 @@ Wenn sich die Web-App in Azure befindet und Sie Ihre Ressourcen mit einer Azure 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Aktivieren der Diagnoseerweiterung bei der Bereitstellung eines Clouddiensts
 Das Cmdlet `New-AzureDeployment` hat den `ExtensionConfiguration`-Parameter, der ein Array von Diagnosekonfigurationen verwendet. Diese können mit dem Cmdlet `New-AzureServiceDiagnosticsExtensionConfig` erstellt werden. Beispiel:
 
-```ps
+```azurepowershell
+$service_package = "CloudService.cspkg"
+$service_config = "ServiceConfiguration.Cloud.cscfg"
+$diagnostics_storagename = "myservicediagnostics"
+$webrole_diagconfigpath = "MyService.WebRole.PubConfig.xml" 
+$workerrole_diagconfigpath = "MyService.WorkerRole.PubConfig.xml"
 
-    $service_package = "CloudService.cspkg"
-    $service_config = "ServiceConfiguration.Cloud.cscfg"
-    $diagnostics_storagename = "myservicediagnostics"
-    $webrole_diagconfigpath = "MyService.WebRole.PubConfig.xml" 
-    $workerrole_diagconfigpath = "MyService.WorkerRole.PubConfig.xml"
+$primary_storagekey = (Get-AzStorageKey `
+  -StorageAccountName "$diagnostics_storagename").Primary
+$storage_context = New-AzStorageContext `
+  -StorageAccountName $diagnostics_storagename `
+  -StorageAccountKey $primary_storagekey
 
-    $primary_storagekey = (Get-AzStorageKey `
-     -StorageAccountName "$diagnostics_storagename").Primary
-    $storage_context = New-AzStorageContext `
-       -StorageAccountName $diagnostics_storagename `
-       -StorageAccountKey $primary_storagekey
+$webrole_diagconfig = `
+  New-AzureServiceDiagnosticsExtensionConfig `
+    -Role "WebRole" -Storage_context $storageContext `
+    -DiagnosticsConfigurationPath $webrole_diagconfigpath
+$workerrole_diagconfig = `
+  New-AzureServiceDiagnosticsExtensionConfig `
+    -Role "WorkerRole" `
+    -StorageContext $storage_context `
+    -DiagnosticsConfigurationPath $workerrole_diagconfigpath
 
-    $webrole_diagconfig = `
-     New-AzureServiceDiagnosticsExtensionConfig `
-      -Role "WebRole" -Storage_context $storageContext `
-      -DiagnosticsConfigurationPath $webrole_diagconfigpath
-    $workerrole_diagconfig = `
-     New-AzureServiceDiagnosticsExtensionConfig `
-      -Role "WorkerRole" `
-      -StorageContext $storage_context `
-      -DiagnosticsConfigurationPath $workerrole_diagconfigpath
-
-    New-AzureDeployment `
-      -ServiceName $service_name `
-      -Slot Production `
-      -Package $service_package `
-      -Configuration $service_config `
-      -ExtensionConfiguration @($webrole_diagconfig,$workerrole_diagconfig)
-
+  New-AzureDeployment `
+    -ServiceName $service_name `
+    -Slot Production `
+    -Package $service_package `
+    -Configuration $service_config `
+    -ExtensionConfiguration @($webrole_diagconfig,$workerrole_diagconfig)
 ``` 
 
 ## <a name="enable-diagnostics-extension-on-an-existing-cloud-service"></a>Aktivieren der Diagnoseerweiterung für einen vorhandenen Clouddienst
 Verwenden Sie bei einem vorhandenen Dienst `Set-AzureServiceDiagnosticsExtension`.
 
-```ps
+```azurepowershell
+$service_name = "MyService"
+$diagnostics_storagename = "myservicediagnostics"
+$webrole_diagconfigpath = "MyService.WebRole.PubConfig.xml" 
+$workerrole_diagconfigpath = "MyService.WorkerRole.PubConfig.xml"
+$primary_storagekey = (Get-AzStorageKey `
+  -StorageAccountName "$diagnostics_storagename").Primary
+$storage_context = New-AzStorageContext `
+  -StorageAccountName $diagnostics_storagename `
+  -StorageAccountKey $primary_storagekey
 
-    $service_name = "MyService"
-    $diagnostics_storagename = "myservicediagnostics"
-    $webrole_diagconfigpath = "MyService.WebRole.PubConfig.xml" 
-    $workerrole_diagconfigpath = "MyService.WorkerRole.PubConfig.xml"
-    $primary_storagekey = (Get-AzStorageKey `
-         -StorageAccountName "$diagnostics_storagename").Primary
-    $storage_context = New-AzStorageContext `
-        -StorageAccountName $diagnostics_storagename `
-        -StorageAccountKey $primary_storagekey
-
-    Set-AzureServiceDiagnosticsExtension `
-        -StorageContext $storage_context `
-        -DiagnosticsConfigurationPath $webrole_diagconfigpath `
-        -ServiceName $service_name `
-        -Slot Production `
-        -Role "WebRole" 
-    Set-AzureServiceDiagnosticsExtension `
-        -StorageContext $storage_context `
-        -DiagnosticsConfigurationPath $workerrole_diagconfigpath `
-        -ServiceName $service_name `
-        -Slot Production `
-        -Role "WorkerRole"
+Set-AzureServiceDiagnosticsExtension `
+  -StorageContext $storage_context `
+  -DiagnosticsConfigurationPath $webrole_diagconfigpath `
+  -ServiceName $service_name `
+  -Slot Production `
+  -Role "WebRole" 
+Set-AzureServiceDiagnosticsExtension `
+  -StorageContext $storage_context `
+  -DiagnosticsConfigurationPath $workerrole_diagconfigpath `
+  -ServiceName $service_name `
+  -Slot Production `
+  -Role "WorkerRole"
 ```
 
 ## <a name="get-current-diagnostics-extension-configuration"></a>Abrufen der aktuellen Konfiguration der Diagnoseerweiterung
-```ps
 
-    Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
+```azurepowershell
+Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 
 ## <a name="remove-diagnostics-extension"></a>Entfernen der Diagnoseerweiterung
-```ps
 
-    Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
+```azurepowershell
+Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 Wenn Sie die Diagnoseerweiterung entweder mit `Set-AzureServiceDiagnosticsExtension` oder `New-AzureServiceDiagnosticsExtensionConfig` ohne den „Role“-Parameter aktiviert haben, können Sie die Erweiterung mit `Remove-AzureServiceDiagnosticsExtension` ohne den „Role“-Parameter entfernen. Wenn beim Aktivieren der Erweiterung der „Role“-Parameter verwendet wurde, muss er auch zum Entfernen der Erweiterung verwendet werden.
 
 So entfernen Sie die Diagnoseerweiterung aus jeder einzelnen Rolle
 
-```ps
-
-    Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
+```azurepowershell
+Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 ```
 
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: c04280bf1cffea08204e1ea5ab54dbb87c23cf9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0bc1890fd5ca9c045caa6325f474e85f1b85622
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193206"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022247"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Verwenden eines HDInsight Spark-Clusters zum Lesen und Schreiben von Daten in einer Azure SQL-Datenbank
 
@@ -23,13 +23,13 @@ Erfahren Sie, wie Sie eine Verbindung zwischen einem Apache Spark-Cluster in Azu
 
 * Azure HDInsight Spark-Cluster.  Befolgen Sie dazu die Anweisungen unter [Erstellen eines Apache Spark-Clusters in HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* Azure SQL-Datenbank. Befolgen Sie dazu die Anweisungen unter [Erstellen einer Azure SQL-Datenbank](../../sql-database/sql-database-get-started-portal.md). Stellen Sie sicher, dass Sie eine Datenbank mit dem **AdventureWorksLT**-Beispielschema und den zugehörigen Daten erstellen. Stellen Sie außerdem sicher, dass Sie eine Firewallregel auf Serverebene erstellen, sodass die IP-Adresse des Clients auf die SQL-Datenbank auf dem Server zugreifen kann. Die Anweisungen zum Hinzufügen der Firewallregel sind im gleichen Artikel enthalten. Halten Sie nach dem Erstellen der Azure SQL-Datenbank die folgenden Werte bereit. Sie benötigen sie, um über einen Spark-Cluster eine Verbindung mit der Datenbank herzustellen.
+* Azure SQL-Datenbank. Befolgen Sie dazu die Anweisungen unter [Erstellen einer Azure SQL-Datenbank](../../azure-sql/database/single-database-create-quickstart.md). Stellen Sie sicher, dass Sie eine Datenbank mit dem **AdventureWorksLT**-Beispielschema und den zugehörigen Daten erstellen. Stellen Sie außerdem sicher, dass Sie eine Firewallregel auf Serverebene erstellen, sodass die IP-Adresse des Clients auf die SQL-Datenbank auf dem Server zugreifen kann. Die Anweisungen zum Hinzufügen der Firewallregel sind im gleichen Artikel enthalten. Halten Sie nach dem Erstellen der Azure SQL-Datenbank die folgenden Werte bereit. Sie benötigen sie, um über einen Spark-Cluster eine Verbindung mit der Datenbank herzustellen.
 
     * Name des Servers, der die Azure SQL-Datenbank hostet.
     * Name der Azure SQL-Datenbank.
     * Benutzername/Kennwort des Azure SQL-Datenbankadministrators.
 
-* SQL Server Management Studio (SSMS). Befolgen Sie dazu die Anweisungen unter [Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](../../sql-database/sql-database-connect-query-ssms.md).
+* SQL Server Management Studio (SSMS). Befolgen Sie dazu die Anweisungen unter [Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](../../azure-sql/database/connect-query-ssms.md).
 
 ## <a name="create-a-jupyter-notebook"></a>Erstellen eines Jupyter Notebooks
 

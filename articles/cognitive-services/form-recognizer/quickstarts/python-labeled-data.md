@@ -7,14 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 0fa6785b2c4029dc5eb3f0397b1144616be357fe
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: tracking-python
+ms.openlocfilehash: b177063d4e50a310534ffa4c04557543c3354249
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594167"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028091"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mit der REST-API und Python
 
@@ -28,21 +29,24 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 - Wenn Sie das Beispiel lokal ausführen möchten, muss [Python](https://www.python.org/downloads/) installiert sein.
 - Einen Satz mit mindestens sechs Formularen desselben Typs. Diese Daten verwenden Sie zum Trainieren des Modells und zum Testen eines Formulars. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden. Laden Sie die Trainingsdateien in das Stammverzeichnis eines Blobspeichercontainers in einem Azure Storage-Konto hoch.
 
+> [!NOTE]
+> In dieser Schnellstartanleitung werden Remotedokumente verwendet, auf die über eine URL zugegriffen wird. Informationen zum Verwenden von lokalen Dateien finden Sie in der [Referenzdokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync).
+
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
 ## <a name="set-up-training-data"></a>Einrichten der Trainingsdaten
 
-Als Nächstes müssen Sie die erforderlichen Eingabedaten einrichten. Für das Feature für beschriftete Daten gelten über die Anforderungen zum Trainieren eines benutzerdefinierten Modells hinaus besondere Anforderungen an die Eingabe. 
+Als Nächstes müssen Sie die erforderlichen Eingabedaten einrichten. Für das Feature für beschriftete Daten gelten über die Anforderungen zum Trainieren eines benutzerdefinierten Modells ohne Bezeichnungen hinaus besondere Anforderungen an die Eingabe.
 
 Stellen Sie sicher, dass alle Trainingsdokumente im selben Format vorliegen. Wenn Ihre Formulare unterschiedliche Formate aufweisen, sortieren Sie sie in Unterordner für jeweils ein Format. Beim Trainieren müssen Sie für die API einen der Unterordner angeben.
 
 Um ein Modell mit beschrifteten Daten zu trainieren, benötigen Sie folgende Dateien als Eingaben im Unterordner. Im Folgenden erfahren Sie, wie Sie diese Dateien erstellen.
 
 * **Quellformulare**: Die Formulare, aus denen die Daten extrahiert werden sollen. Unterstützt werden die Typen JPEG, PNG, PDF und TIFF.
-* **OCR-Layoutdateien**: JSON-Dateien, die die Größe und Position jedes lesbaren Textelements in jedem Quellformular beschreiben. Zum Generieren dieser Dateien verwenden Sie die Layout-API der Formularerkennung. 
-* **Beschriftungsdateien**: JSON-Dateien, die Datenbeschriftungen beschreiben, die von einem Benutzer manuell eingegeben wurden.
+* **OCR-Layoutdateien**: Hierbei handelt es sich um JSON-Dateien, die die Größe und Position jedes lesbaren Textelements in jedem Quellformular beschreiben. Zum Generieren dieser Dateien verwenden Sie die Layout-API der Formularerkennung. 
+* **Beschriftungsdateien**: Hierbei handelt es sich um JSON-Dateien, die Datenbeschriftungen beschreiben, die von einem Benutzer manuell eingegeben wurden.
 
 All diese Dateien müssen sich im selben Unterordner befinden und das folgende Format aufweisen:
 
@@ -61,8 +65,8 @@ All diese Dateien müssen sich im selben Unterordner befinden und das folgende F
 
 Sie benötigen OCR-Ausgabedateien, damit der Dienst die entsprechenden Eingabedateien für das Training mit Beschriftungen berücksichtigen kann. Um OCR-Ergebnisse für ein bestimmtes Quellformular abzurufen, gehen Sie folgendermaßen vor:
 
-1. Rufen Sie die **[Analyze Layout](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** -API im Layoutcontainer für den Lesevorgang auf, und verwenden Sie dabei die Eingabedatei als Teil des Anforderungstexts. Speichern Sie die ID, die sich im **Operation-Location**-Header der Antwort befindet.
-1. Rufen Sie die **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** -API auf, und verwenden Sie dabei die Vorgangs-ID aus dem vorherigen Schritt.
+1. Rufen Sie die **[Analyze Layout](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)** -API im Layoutcontainer für den Lesevorgang auf, und verwenden Sie dabei die Eingabedatei als Teil des Anforderungstexts. Speichern Sie die ID, die sich im **Operation-Location**-Header der Antwort befindet.
+1. Rufen Sie die **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeLayoutResult)** -API auf, und verwenden Sie dabei die Vorgangs-ID aus dem vorherigen Schritt.
 1. Rufen Sie die Antwort ab, und schreiben Sie den Inhalt in eine Datei. Für jedes Quellformular muss die entsprechende OCR-Datei den ursprünglichen Dateinamen mit dem Anhang `.ocr.json` aufweisen. Die OCR-JSON-Ausgabe muss im folgenden Format vorliegen. Ein vollständiges Beispiel finden Sie in der [OCR-Beispieldatei](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json). 
 
     ```json
@@ -116,7 +120,7 @@ Sie benötigen OCR-Ausgabedateien, damit der Dienst die entsprechenden Eingabeda
 
 ### <a name="create-the-label-files"></a>Erstellen der Beschriftungsdateien
 
-Beschriftungsdateien enthalten Schlüssel-Wert-Zuordnungen, die von einem Benutzer manuell eingegeben wurden. Sie sind für das Trainieren von beschrifteten Daten erforderlich, aber nicht Quelldatei benötigt eine entsprechende Beschriftungsdatei. Quelldateien ohne Beschriftungen werden als gewöhnliche Trainingsdokumente behandelt. Um zuverlässige Trainingsergebnisse zu erzielen, werden mindestens fünf beschriftete Dateien empfohlen.
+Beschriftungsdateien enthalten Schlüssel-Wert-Zuordnungen, die von einem Benutzer manuell eingegeben wurden. Sie sind für das Trainieren von beschrifteten Daten erforderlich, aber nicht Quelldatei benötigt eine entsprechende Beschriftungsdatei. Quelldateien ohne Beschriftungen werden als gewöhnliche Trainingsdokumente behandelt. Um zuverlässige Trainingsergebnisse zu erzielen, werden mindestens fünf beschriftete Dateien empfohlen. Sie können ein Benutzeroberflächentool wie das [Tool für die Beschriftung von Beispielen](./label-tool.md) verwenden, um diese Dateien zu generieren.
 
 Beim Erstellen einer Beschriftungsdatei können Sie optional Regionen angeben – dies sind exakte Positionen von Werten im Dokument. Dadurch erhöht sich die Genauigkeit des Trainings. Regionen sind als Satz aus acht Werten formatiert, die vier X,Y-Koordinaten entsprechen: oben links, oben rechts, unten links und unten rechts. Koordinatenwerte liegen zwischen 0 (null) und 1 (eins) und sind auf die Maße der Seite skaliert.
 
@@ -187,13 +191,13 @@ Für jedes Quellformular muss die entsprechende Beschriftungsdatei den ursprüng
                 ...
 ```
 
-> [!NOTE]
-> Sie können jedem Textelement nur eine Beschriftung zuweisen, und jede Beschriftung kann nur ein Mal pro Seite angewendet werden. Zurzeit ist die Anwendung einer Beschriftung über mehrere Seiten hinweg nicht möglich.
+> [!IMPORTANT]
+> Sie können jedem Textelement nur eine Beschriftung zuweisen, und jede Beschriftung kann nur ein Mal pro Seite angewendet werden. Die Anwendung einer Beschriftung über mehrere Seiten hinweg ist nicht möglich.
 
 
 ## <a name="train-a-model-using-labeled-data"></a>Trainieren eines Modells mit beschrifteten Daten
 
-Um ein Modell mit beschrifteten Daten zu trainieren, rufen Sie die **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** -API auf, indem Sie den folgenden Python-Code ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Code ausführen:
+Um ein Modell mit beschrifteten Daten zu trainieren, rufen Sie die **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** -API auf, indem Sie den folgenden Python-Code ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Code ausführen:
 
 1. Ersetzen Sie `<Endpoint>` durch die Endpunkt-URL für Ihre Formularerkennungsressource.
 1. Ersetzen Sie `<SAS URL>` mit der Shared Access Signature-URL (SAS) des Azure Blob Storage-Containers. Um die SAS-URL abzurufen, öffnen Sie den Microsoft Azure Storage-Explorer, klicken mit der rechten Maustaste auf Ihren Container und wählen **Abrufen der Shared Access Signature** aus. Stellen Sie sicher, dass die Berechtigungen **Lesen** und **Auflisten**  aktiviert sind, und klicken Sie auf **Erstellen**. Kopieren Sie den Wert im **URL**-Abschnitt. Er muss das Format `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` aufweisen.
@@ -207,7 +211,7 @@ from requests import get, post
 
 # Endpoint URL
 endpoint = r"<Endpoint>"
-post_url = endpoint + r"/formrecognizer/v2.0-preview/custom/models"
+post_url = endpoint + r"/formrecognizer/v2.0/custom/models"
 source = r"<SAS URL>"
 prefix = "<Blob folder name>"
 includeSubFolders = False
@@ -554,4 +558,7 @@ Uns ist bewusst, dass ein solches Szenario von großer Bedeutung für unsere Kun
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie erfahren, wie Sie die Formularerkennungs-REST-API zusammen mit Python verwenden, um ein benutzerdefiniertes Modell mit manuell beschrifteten Daten zu trainieren. Lesen Sie als Nächstes die [API-Referenzdokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm), um die Formularerkennungs-API eingehender zu erkunden.
+In dieser Schnellstartanleitung haben Sie erfahren, wie Sie die Formularerkennungs-REST-API zusammen mit Python verwenden, um ein benutzerdefiniertes Modell mit manuell beschrifteten Daten zu trainieren. Lesen Sie als Nächstes die API-Referenzdokumentation, um die Formularerkennungs-API eingehender zu erkunden.
+
+> [!div class="nextstepaction"]
+> [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)

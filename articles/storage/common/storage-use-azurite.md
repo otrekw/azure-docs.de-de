@@ -3,20 +3,20 @@ title: Verwenden des Azurite-Emulators für die lokale Azure Storage-Entwicklung
 description: Der Azurite-Open-Source-Emulator (Vorschauversion) bietet eine kostenlose lokale Umgebung zum Testen Ihrer Azure Storage-Anwendungen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/31/2019
+ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
-ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76029925"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512134"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Verwenden des Azurite-Emulators für das lokale Entwickeln und Testen mit Azure Storage (Vorschauversion)
 
-Der Azurite-Open-Source-Emulator, Version 3.2, bietet eine kostenlose lokale Umgebung zum Testen Ihrer Azure-Blob- und -Warteschlangen-Speicheranwendungen. Wenn Sie mit der Funktion Ihrer Anwendung auf lokaler Ebene zufrieden sind, können Sie zur Verwendung eines Azure Storage-Kontos in der Cloud übergehen. Der Emulator bietet plattformübergreifenden Support für Windows, Linux und macOS. Azurite v3 unterstützt APIs, die vom Azure-Blob-Dienst implementiert wurden.
+Der Azurite-Open-Source-Emulator, Version 3.2, bietet eine kostenlose lokale Umgebung zum Testen Ihrer Azure-Blob- und -Warteschlangen-Speicheranwendungen. Wenn Sie mit der Funktion Ihrer Anwendung auf lokaler Ebene zufrieden sind, können Sie zur Verwendung eines Azure Storage-Kontos in der Cloud übergehen. Der Emulator bietet plattformübergreifende Unterstützung unter Windows, Linux und macOS. Azurite v3 unterstützt APIs, die vom Azure-Blob-Dienst implementiert wurden.
 
 Azurite ist die Speicheremulatorplattform der Zukunft. Azurite ersetzt den [Azure-Speicheremulator](storage-use-emulator.md). Azurite wird weiterhin aktualisiert, um die neuesten Versionen der Azure Storage-APIs zu unterstützen.
 
@@ -33,39 +33,44 @@ Wählen Sie in Visual Studio Code den Bereich **EXTENSIONS** aus, und suchen Sie
 
 ![Visual Studio Code-Marketplace für Erweiterungen](media/storage-use-azurite/azurite-vs-code-extension.png)
 
-Alternativ können Sie auch in Ihrem Browser den [VS Code-Marketplace für Erweiterungen](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) aufrufen. Wählen Sie die Schaltfläche **Installieren** aus, um Visual Studio Code zu öffnen, und wechseln Sie dann direkt zur Azurite-Erweiterungsseite.
+Sie können auch in Ihrem Browser zum [Visual Studio Code-Marketplace für Erweiterungen](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) navigieren. Wählen Sie die Schaltfläche **Installieren** aus, um Visual Studio Code zu öffnen, und wechseln Sie dann direkt zur Azurite-Erweiterungsseite.
 
-Sie können Azurite schnell starten oder schließen, indem Sie auf der VS Code-Statusleiste auf **Azurite Blob Service** (Azurite Blob-Dienst) oder **Azurite Queue Service** (Azurite-Warteschlangendienst) klicken oder die folgenden Befehle in der VS Code-Befehlspalette ausführen. Um die Befehlspalette zu öffnen, drücken Sie in VS Code **F1**.
+Sie können Azurite in der Visual Studio Code-Statusleiste schnell starten oder schließen. Klicken Sie auf **[Azurite Blob Service]** oder **[Azurite Queue Service]** .
 
-Die Erweiterung unterstützt die folgenden Visual Studio Code-Befehle:
+Die Erweiterung unterstützt die folgenden Visual Studio Code-Befehle. Drücken Sie in Visual Studio Code F1, um die Befehlspalette zu öffnen. 
 
-   * **Azurite: Starten** – alle Azurite-Dienste starten
-   * **Azurite: Schließen** – alle Azurite-Dienste schließen
-   * **Azurite: Bereinigen** – dauerhafte Daten aller Azurite-Dienste zurücksetzen
-   * **Azurite: Blob-Dienst starten** – Blob-Dienst starten
-   * **Azurite: Blob-Dienst schließen** – Blob-Dienst schließen
-   * **Azurite: Blob-Dienst bereinigen** – Blob-Dienst bereinigen
-   * **Azurite: Warteschlangendienst starten** – Warteschlangendienst starten
-   * **Azurite: Warteschlangendienst schließen** – Warteschlangendienst schließen
-   * **Azurite: Warteschlangendienst bereinigen** – Warteschlangendienst bereinigen
+   - **Azurite: Bereinigen** – dauerhafte Daten aller Azurite-Dienste zurücksetzen
+   - **Azurite: Blob-Dienst bereinigen** – Blob-Dienst bereinigen
+   - **Azurite: Warteschlangendienst bereinigen** – Warteschlangendienst bereinigen
+   - **Azurite: Schließen** – alle Azurite-Dienste schließen
+   - **Azurite: Blob-Dienst schließen** – Blob-Dienst schließen
+   - **Azurite: Warteschlangendienst schließen** – Warteschlangendienst schließen
+   - **Azurite: Starten** – alle Azurite-Dienste starten
+   - **Azurite: Blob-Dienst starten** – Blob-Dienst starten
+   - **Azurite: Warteschlangendienst starten** – Warteschlangendienst starten
 
-Um Azurite in Visual Studio Code zu konfigurieren, wählen Sie den Erweiterungsbereich aus. Wählen Sie das Symbol **Verwalten** (Zahnrad) für **Azurite** aus. Wählen Sie **Configure Extension Settings** (Erweiterungseinstellungen konfigurieren) aus.
+Um Azurite in Visual Studio Code zu konfigurieren, wählen Sie den Erweiterungsbereich aus. Wählen Sie das Symbol **Verwalten** (Zahnrad) für **Azurite** aus. Wählen Sie **Erweiterungseinstellungen** aus.
 
 ![Konfigurieren der Erweiterungseinstellungen für Azurite](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
 Die folgenden Einstellungen werden unterstützt:
 
-   * **Azurite: Blobhost** – der Lauschendpunkt des Blob-Diensts. Die Standardeinstellung ist 127.0.0.1.
-   * **Azurite: Blobport** – der Lauschport des Blob-Diensts. Der Standardport ist 10000.
-   * **Azurite: Debuggen** – Ausgabe des Debugprotokolls an den Azurite-Kanal. Der Standardwert ist **false**.
-   * **Azurite: Speicherort** – der Speicherpfad des Arbeitsbereichs. Der Standard ist der Arbeitsordner für Visual Studio Code.
-   * **Azurite: Warteschlangenhost** – der Lauschendpunkt des Warteschlangendiensts. Die Standardeinstellung ist 127.0.0.1.
-   * **Azurite: Warteschlangenport** – der Lauschport des Warteschlangendiensts. Der Standardport ist 10001.
-   * **Azurite: Lautlos** – Zugriffsprotokoll im Lautlosmodus deaktivieren. Der Standardwert ist **false**.
+   - **Azurite: Blobhost** – der Lauschendpunkt des Blob-Diensts. Die Standardeinstellung ist 127.0.0.1.
+   - **Azurite: Blobport** – der Lauschport des Blob-Diensts. Der Standardport ist 10000.
+   - **Azurite: Cert** – Pfad zu einem lokal vertrauenswürdigen PEM- oder PFX-Zertifikatdateipfad zum Aktivieren des HTTPS-Modus.
+   - **Azurite: Debuggen** – Ausgabe des Debugprotokolls an den Azurite-Kanal. Der Standardwert ist **false**.
+   - **Azurite: Key** – Pfad zu einer lokal vertrauenswürdigen PEM-Schlüsseldatei, die erforderlich ist, wenn **Azurite: Cert** auf eine PEM-Datei verweist.
+   - **Azurite: Speicherort** – der Speicherpfad des Arbeitsbereichs. Der Standard ist der Arbeitsordner für Visual Studio Code.
+   - **Azurite: Loose** – aktiviert den Loose-Modus, der nicht unterstützte Header und Parameter ignoriert.
+   - **Azurite: Oauth** – optionale OAuth-Ebene.
+   - **Azurite: Pwd** – Kennwort für die PFX-Datei. Erforderlich, wenn **Azurite: Cert** auf eine PFX-Datei verweist.
+   - **Azurite: Warteschlangenhost** – der Lauschendpunkt des Warteschlangendiensts. Die Standardeinstellung ist 127.0.0.1.
+   - **Azurite: Warteschlangenport** – der Lauschport des Warteschlangendiensts. Der Standardport ist 10001.
+   - **Azurite: Lautlos** – Zugriffsprotokoll im Lautlosmodus deaktivieren. Der Standardwert ist **false**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Installieren und Ausführen von Azurite mit NPM
 
-Diese Installationsmethode setzt voraus, dass Sie [mindestens Version 8.0 von Node.js](https://nodejs.org) installiert haben. **npm** ist das Paketverwaltungstool, das bei jeder Installation von Node.js enthalten ist. Führen Sie nach der Installation von Node.js den folgenden **npm**-Befehl aus, um Azurite zu installieren.
+Diese Installationsmethode setzt voraus, dass Sie [mindestens Version 8.0 von Node.js](https://nodejs.org) installiert haben. Node Package Manager (npm) ist das Paketverwaltungstool, das in jeder Installation von Node.js enthalten ist. Führen Sie nach der Installation von Node.js den folgenden `npm`-Befehl aus, um Azurite zu installieren.
 
 ```console
 npm install -g azurite
@@ -86,7 +91,8 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 Der folgende Befehl führt das Azurite-Docker-Image aus. Der Parameter `-p 10000:10000` leitet Anforderungen von Port 10000 des Hostcomputers an die Docker-Instanz weiter.
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 \
+    mcr.microsoft.com/azure-storage/azurite
 ```
 
 **Angeben des Speicherorts für den Arbeitsbereich:**
@@ -94,30 +100,15 @@ docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
 Im folgenden Beispiel ist im Parameter `-v c:/azurite:/data` der persistente Datenspeicherort *c:/azurite* für Azurite angegeben. Vor dem Ausführen des Docker-Befehls muss das Verzeichnis *c:/azurite* erstellt werden.
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 \
+    -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
 ```
 
 **Ausführen nur des Blob-Diensts**
 
 ```console
-docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite \
     azurite-blob --blobHost 0.0.0.0 --blobPort 10000
-```
-
-**Festlegen aller Azurite-Parameter:**
-
-Dieses Beispiel zeigt, wie Sie alle Befehlszeilenparameter festlegen. Alle folgenden Parameter sollten in einer einzigen Befehlszeile platziert werden.
-
-```console
-docker run -p 8888:8888
-           -p 9999:9999
-           -v c:/azurite:/workspace mcr.microsoft.com/azure-storage/azurite azurite
-           -l /workspace
-           -d /workspace/debug.log
-           --blobPort 8888
-           --blobHost 0.0.0.0
-           --queuePort 9999
-           --queueHost 0.0.0.0
 ```
 
 Weitere Informationen zum Konfigurieren von Azurite beim Start finden Sie unter [Befehlszeilenoptionen](#command-line-options).
@@ -143,32 +134,32 @@ Nachdem Sie Azurite installiert und erstellt haben, finden Sie weitere Informati
 ## <a name="run-azurite-from-a-command-line"></a>Ausführen von Azurite über die Befehlszeile
 
 > [!NOTE]
-> Azurite kann nicht über die Befehlszeile ausgeführt werden, wenn Sie nur die Visual Studio Code-Erweiterung installiert haben. Verwenden Sie stattdessen die VS Code-Befehlspalette. Weitere Informationen finden Sie unter [Installieren und Ausführen der Azurite-Erweiterung für Visual Studio Code](#install-and-run-the-azurite-visual-studio-code-extension).
+> Azurite kann nicht über die Befehlszeile ausgeführt werden, wenn Sie nur die Visual Studio Code-Erweiterung installiert haben. Verwenden Sie stattdessen die Visual Studio Code-Befehlspalette. Weitere Informationen finden Sie unter [Installieren und Ausführen der Azurite-Erweiterung für Visual Studio Code](#install-and-run-the-azurite-visual-studio-code-extension).
 
-Um sofort mit der Befehlszeile zu beginnen, erstellen Sie das Verzeichnis **c:\azurite**, und starten Sie dann Azurite mit dem folgenden Befehl:
+Um sofort mit der Befehlszeile zu beginnen, erstellen Sie das Verzeichnis *C:\azurite*, und starten Sie dann Azurite mit dem folgenden Befehl:
 
 ```console
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 ```
 
-Dieser Befehl weist Azurite an, alle Daten im Verzeichnis **c:\azurite** zu speichern. Wenn die Option **--location** weggelassen wird, wird das aktuelle Arbeitsverzeichnis verwendet.
+Dieser Befehl weist Azurite an, alle Daten im Verzeichnis *c:\azurite* zu speichern. Wenn die Option `--location` ausgelassen wird, wird das aktuelle Arbeitsverzeichnis verwendet.
 
 ## <a name="command-line-options"></a>Befehlszeilenoptionen
 
-Dieser Abschnitt beschreibt die Befehlszeilenoptionen, die zum Starten von Azurite verfügbar sind. Alle Befehlszeilenoptionen sind optional.
+Dieser Abschnitt beschreibt die Befehlszeilenoptionen, die zum Starten von Azurite verfügbar sind.
+
+### <a name="help"></a>Hilfe
+
+**Optional** – Abrufen von Befehlszeilenhilfe mit dem Switch `-h` oder `--help`.
 
 ```console
-C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>] 
-    [-d | --debug <log file path>] [-l | --location <workspace path>]
-    [--queueHost <IP address>] [--queuePort <port address>]
-    [-s | --silent] [-h | --help]
+azurite -h
+azurite --help
 ```
-
-**-d** ist eine Abkürzung für **--debug**, **-l** ist eine Abkürzung für **--location**, **-s** ist eine Abkürzung für **--silent** und **-h** ist eine Abkürzung für **--help**.
 
 ### <a name="blob-listening-host"></a>Bloblauschhost
 
-**Optional:** Standardmäßig lauscht Azurite an 127.0.0.1 als lokalem Server. Verwenden Sie die Option **--blobHost**, um die Adresse entsprechend Ihren Anforderungen festzulegen.
+**Optional** – Standardmäßig lauscht Azurite an 127.0.0.1 als lokaler Server. Verwenden Sie die Option `--blobHost`, um die Adresse entsprechend Ihren Anforderungen festzulegen.
 
 Nur Anforderungen auf dem lokalen Computer annehmen:
 
@@ -187,7 +178,7 @@ azurite --blobHost 0.0.0.0
 
 ### <a name="blob-listening-port-configuration"></a>Konfiguration des Bloblauschports
 
-**Optional:** Standardmäßig lauscht Azurite an Port 10000 auf den Blob-Dienst. Verwenden Sie die Option **--blobPort**, um den gewünschten Lauschport anzugeben.
+**Optional** – Standardmäßig lauscht Azurite an Port 10000 auf den Blob-Dienst. Verwenden Sie die Option `--blobPort`, um den erforderlichen Lauschport anzugeben.
 
 > [!NOTE]
 > Nachdem Sie einen benutzerdefinierten Port verwendet haben, müssen Sie die Verbindungszeichenfolge oder die entsprechende Konfiguration in Ihren Azure Storage-Tools oder -SDKs aktualisieren.
@@ -208,7 +199,7 @@ Der verwendete Port wird beim Start von Azurite angezeigt.
 
 ### <a name="queue-listening-host"></a>Warteschlangen-Lauschhost
 
-**Optional:** Standardmäßig lauscht Azurite an 127.0.0.1 als lokalem Server. Verwenden Sie die Option **--queueHost**, um die Adresse entsprechend Ihren Anforderungen festzulegen.
+**Optional** – Standardmäßig lauscht Azurite an 127.0.0.1 als lokaler Server. Verwenden Sie die Option `--queueHost`, um die Adresse entsprechend Ihren Anforderungen festzulegen.
 
 Nur Anforderungen auf dem lokalen Computer annehmen:
 
@@ -227,7 +218,7 @@ azurite --queueHost 0.0.0.0
 
 ### <a name="queue-listening-port-configuration"></a>Konfiguration des Warteschlangen-Lauschports
 
-**Optional:** Standardmäßig lauscht Azurite an Port 10001 auf den Warteschlangendienst. Verwenden Sie die Option **--queuePort**, um den gewünschten Lauschport anzugeben.
+**Optional** – Standardmäßig lauscht Azurite an Port 10001 auf den Warteschlangendienst. Verwenden Sie die Option `--queuePort`, um den erforderlichen Lauschport anzugeben.
 
 > [!NOTE]
 > Nachdem Sie einen benutzerdefinierten Port verwendet haben, müssen Sie die Verbindungszeichenfolge oder die entsprechende Konfiguration in Ihren Azure Storage-Tools oder -SDKs aktualisieren.
@@ -248,79 +239,90 @@ Der verwendete Port wird beim Start von Azurite angezeigt.
 
 ### <a name="workspace-path"></a>Arbeitsbereichspfad
 
-**Optional:** Azurite speichert während der Ausführung Daten auf dem lokalen Datenträger. Verwenden Sie die Option **--location**, um einen Pfad als Speicherort für den Arbeitsbereich anzugeben. Standardmäßig wird das Arbeitsverzeichnis des aktuellen Prozesses verwendet.
-
-```console
-azurite --location c:\azurite
-```
+**Optional** – Azurite speichert während der Ausführung Daten auf dem lokalen Datenträger. Verwenden Sie die Option `-l` oder `--location`, um einen Pfad als Speicherort für den Arbeitsbereich anzugeben. Standardmäßig wird das Arbeitsverzeichnis des aktuellen Prozesses verwendet. Beachten Sie den Kleinbuchstaben „l“.
 
 ```console
 azurite -l c:\azurite
+azurite --location c:\azurite
 ```
 
 ### <a name="access-log"></a>Zugriffsprotokoll
 
-**Optional:** Standardmäßig wird das Zugriffsprotokoll im Konsolenfenster angezeigt. Deaktivieren Sie die Anzeige des Zugriffsprotokolls mit der Option **--silent**.
-
-```console
-azurite --silent
-```
+**Optional** – Standardmäßig wird das Zugriffsprotokoll im Konsolenfenster angezeigt. Deaktivieren Sie die Anzeige des Zugriffsprotokolls mit der Option `-s` oder `--silent`.
 
 ```console
 azurite -s
+azurite --silent
 ```
-
 ### <a name="debug-log"></a>Debugprotokoll
 
-**Optional:** Das Debugprotokoll enthält ausführliche Informationen zu jeder Anforderung und jeder Ausnahmestapelüberwachung. Aktivieren Sie das Debugprotokoll, indem Sie für die Option **--debug** einen gültigen lokalen Dateipfad angeben.
-
-```console
-azurite --debug path/debug.log
-```
+**Optional** – Das Debugprotokoll enthält ausführliche Informationen zu jeder Anforderung und jeder Ausnahmestapelüberwachung. Aktivieren Sie das Debugprotokoll, indem Sie für die Option `-d` oder `--debug` einen gültigen lokalen Dateipfad angeben.
 
 ```console
 azurite -d path/debug.log
+azurite --debug path/debug.log
 ```
 
 ### <a name="loose-mode"></a>Loose-Modus
 
-**Optional:** Standardmäßig wendet Azurite den Strict-Modus an, um nicht unterstützte Anforderungsheader und Parameter zu blockieren. Der Strict-Modus kann mithilfe der Option **--loose** deaktiviert werden.
-
-```console
-azurite --loose
-```
-
-Es steht auch eine abgekürzte Variante in Form eines großen „L“ zur Verfügung:
+**Optional** – Standardmäßig wendet Azurite den Strict-Modus an, um nicht unterstützte Anforderungsheader und Parameter zu blockieren. Der Strict-Modus kann mithilfe der Option `-L` oder `--loose` deaktiviert werden. Beachten Sie den Großbuchstaben „L“.
 
 ```console
 azurite -L
+azurite --loose
 ```
+### <a name="version"></a>Version
+
+**Optional**: Anzeigen der installierten Azurite-Versionsnummer mit der Option `-v` oder `--version`.
+
+```console
+azurite -v
+azurite --version
+```
+
+### <a name="certificate-configuration-https"></a>Zertifikatkonfiguration (HTTPS)
+
+**Optional** – Standardmäßig verwendet Azurite das HTTP-Protokoll. Aktivieren Sie den HTTPS-Modus, indem Sie einen Pfad zu einer PEM- (Privacy Enhanced Mail) oder [PFX-Zertifikatdatei (Personal Information Exchange)](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files) für den Switch `--cert` angeben.
+
+Wenn `--cert` für eine PEM-Datei bereitgestellt wird, müssen Sie einen entsprechenden Switch `--key` angeben.
+
+```console
+azurite --cert path/server.pem --key path/key.pem
+```
+
+Wenn `--cert` für eine PFX-Datei bereitgestellt wird, müssen Sie einen entsprechenden Switch `--pwd` angeben.
+
+```console
+azurite --cert path/server.pfx --pwd pfxpassword
+```
+
+Ausführliche Informationen zum Erstellen von PEM- und PFX-Dateien finden Sie unter [HTTPS-Setup](https://github.com/Azure/Azurite/blob/master/README.md#https-setup).
+
+### <a name="oauth-configuration"></a>OAuth-Konfiguration
+
+**Optional** – Aktivieren von OAuth-Authentifizierung für Azurite mithilfe der Option `--oauth`.
+
+```console
+azurite --oauth basic --cert path/server.pem --key path/key.pem
+```
+
+> [!NOTE]
+> Für OAuth ist ein HTTPS-Endpunkt erforderlich. Stellen Sie sicher, dass HTTPS aktiviert ist, indem Sie den Switch `--cert` zusammen mit dem Switch `--oauth` angeben.
+
+Azurite unterstützt die Standardauthentifizierung durch Angabe des `basic`-Parameters für den Switch `--oauth`. Azurite führt Standardauthentifizierung aus, z. B. Überprüfen des eingehenden Bearertokens, Überprüfen des Ausstellers, der Zielgruppe und des Ablaufs. Azurite überprüft nicht die Tokensignatur oder -berechtigungen.
 
 ## <a name="authorization-for-tools-and-sdks"></a>Autorisierung für Tools und SDKs
 
-Stellen Sie über Azure Storage SDKs oder Tools wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) mithilfe einer beliebigen Authentifizierungsstrategie eine Verbindung mit Azurite her. Eine Authentifizierung ist erforderlich. Azurite unterstützt die Autorisierung mit gemeinsamem Schlüssel und Shared Access Signatures (SAS). Außerdem unterstützt Azurite anonymen Zugriff auf öffentliche Container.
+Stellen Sie über Azure Storage SDKs oder Tools wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) mithilfe einer beliebigen Authentifizierungsstrategie eine Verbindung mit Azurite her. Eine Authentifizierung ist erforderlich. Azurite unterstützt die Autorisierung mit OAuth, gemeinsamem Schlüssel und Shared Access Signatures (SAS). Außerdem unterstützt Azurite anonymen Zugriff auf öffentliche Container.
+
+Wenn Sie die Azure SDKs verwenden, starten Sie Azurite mit den `--oauth basic and --cert --key/--pwd`-Optionen.
 
 ### <a name="well-known-storage-account-and-key"></a>Bekannte Speicherkonten und Schlüssel
 
-Sie können den folgenden Kontonamen und Schlüssel mit Azurite verwenden. Dies ist dasselbe bekannte Konto und der Schlüssel, die auch vom älteren Azure-Speicheremulator verwendet werden.
+Azurite akzeptiert dasselbe bekannte Konto und den Schlüssel, die auch vom älteren Azure-Speicheremulator verwendet werden.
 
-* Kontoname: `devstoreaccount1`
-* Kontoschlüssel: `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
-
-> [!NOTE]
-> Zusätzlich zur SharedKey-Authentifizierung unterstützt Azurite auch die SAS-Authentifizierung mit Konten und Diensten. Außerdem ist anonymer Zugriff möglich, wenn für einen Container öffentlicher Zugriff zugelassen wird.
-
-### <a name="connection-string"></a>Verbindungszeichenfolge
-
-Am einfachsten können Sie über Ihre Anwendung eine Verbindung mit Azurite herstellen, indem Sie in der Konfigurationsdatei der Anwendung eine Verbindungszeichenfolge konfigurieren, die auf die Verknüpfung *UseDevelopmentStorage=true* verweist. Eine Verbindungszeichenfolge in der Datei *app.config* kann beispielsweise wie folgt aussehen:
-
-```xml
-<appSettings>
-  <add key="StorageConnectionString" value="UseDevelopmentStorage=true" />
-</appSettings>
-```
-
-Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
+- Kontoname: `devstoreaccount1`
+- Kontoschlüssel: `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
 
 ### <a name="custom-storage-accounts-and-keys"></a>Benutzerdefinierte Speicherkonten und Schlüssel
 
@@ -332,10 +334,18 @@ Verwenden Sie beispielsweise ein benutzerdefiniertes Speicherkonto mit einem ein
 set AZURITE_ACCOUNTS="account1:key1"
 ```
 
+```bash
+export AZURITE_ACCOUNTS="account1:key1"
+```
+
 Oder verwenden Sie mehrere Speicherkonten mit jeweils zwei Schlüsseln:
 
 ```cmd
 set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
+```
+
+```bash
+export AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
 ```
 
 Benutzerdefinierte Kontonamen und Schlüssel aus der Umgebungsvariablen werden von Azurite standardmäßig im Minutentakt aktualisiert. Mit diesem Feature können Sie den Kontoschlüssel dynamisch rotieren oder neue Speicherkonten hinzufügen, ohne Azurite neu zu starten.
@@ -343,15 +353,161 @@ Benutzerdefinierte Kontonamen und Schlüssel aus der Umgebungsvariablen werden v
 > [!NOTE]
 > Wenn Sie benutzerdefinierte Speicherkonten festlegen, wird das Standardspeicherkonto `devstoreaccount1` deaktiviert.
 
-> [!NOTE]
-> Aktualisieren Sie die Verbindungszeichenfolge entsprechend, wenn Sie benutzerdefinierte Kontonamen und Schlüssel verwenden.
+### <a name="connection-strings"></a>Verbindungszeichenfolgen
 
-> [!NOTE]
-> Verwenden Sie das Schlüsselwort `export`, um Umgebungsvariablen in einer Linux-Umgebung festzulegen, bzw. das Schlüsselwort `set` unter Windows.
+Am einfachsten können Sie über Ihre Anwendung eine Verbindung mit Azurite herstellen, indem Sie in der Konfigurationsdatei der Anwendung eine Verbindungszeichenfolge konfigurieren, die auf die Verknüpfung *UseDevelopmentStorage=true* verweist. Eine Verbindungszeichenfolge in der Datei *app.config* kann beispielsweise wie folgt aussehen:
 
-### <a name="storage-explorer"></a>Storage-Explorer
+```xml
+<appSettings>
+  <add key="StorageConnectionString" value="UseDevelopmentStorage=true" />
+</appSettings>
+```
 
-Stellen Sie in Azure Storage-Explorer eine Verbindung mit Azurite her, indem Sie auf das Symbol **Konto hinzufügen** klicken, dann **Attach to a local emulator** (An lokalen Emulator anfügen) auswählen und auf **Verbinden** klicken.
+#### <a name="http-connection-strings"></a>HTTP-Verbindungszeichenfolgen
+
+Sie können die folgenden Verbindungszeichenfolgen an das [Azure SDK](https://aka.ms/azsdk) oder Tools übergeben, etwa an die Azure CLI 2.0 oder Storage-Explorer.
+
+Die vollständige Verbindungszeichenfolge lautet:
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;`
+
+Zum Herstellen einer Verbindung nur mit dem Blob-Dienst lautet die Verbindungszeichenfolge wie folgt:
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;`
+
+Zum Herstellen einer Verbindung nur mit dem Warteschlangendienst lautet die Verbindungszeichenfolge wie folgt:
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;`
+
+#### <a name="https-connection-strings"></a>HTTPS-Verbindungszeichenfolgen
+
+Die vollständige HTTPS-Verbindungszeichenfolge lautet:
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;`
+
+Um nur den Blob-Dienst zu verwenden, lautet die HTTPS-Verbindungszeichenfolge wie folgt:
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;`
+
+Um nur den Warteschlangendienst zu verwenden, lautet die HTTPS-Verbindungszeichenfolge wie folgt:
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;`
+
+Wenn Sie `dotnet dev-certs` verwendet haben, um Ihr selbstsigniertes Zertifikat zu generieren, verwenden Sie die folgende Verbindungszeichenfolge.
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://localhost:10000/devstoreaccount1;QueueEndpoint=https://localhost:10001/devstoreaccount1;`
+
+Aktualisieren Sie die Verbindungszeichenfolge, wenn Sie [benutzerdefinierte Speicherkonten und Schlüssel](#custom-storage-accounts-and-keys) verwenden.
+
+Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
+
+### <a name="azure-sdks"></a>Azure SDKs
+
+Verwenden Sie die OAuth-und HTTPS-Optionen, um Azurite mit den [Azure SDKs](https://aka.ms/azsdk) zu verwenden:
+
+```console
+azurite --oauth basic --cert certname.pem --key certname-key.pem
+```
+
+#### <a name="azure-blob-storage"></a>Azure Blob Storage
+
+Anschließend können Sie einen BlobContainerClient, BlobServiceClient oder BlobClient instanziieren.
+
+```csharp
+// With container URL and DefaultAzureCredential
+var client = new BlobContainerClient(
+    new Uri("https://127.0.0.1:10000/devstoreaccount1/container-name"), new DefaultAzureCredential()
+  );
+
+// With connection string
+var client = new BlobContainerClient(
+    "DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;", "container-name"
+  );
+
+// With account name and key
+var client = new BlobContainerClient(
+    new Uri("https://127.0.0.1:10000/devstoreaccount1/container-name"),
+    new StorageSharedKeyCredential("devstoreaccount1", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==")
+  );
+```
+
+#### <a name="azure-queue-storage"></a>Azure Queue Storage
+
+Sie können auch einen QueueClient oder QueueServiceClient instanziieren.
+
+```csharp
+// With queue URL and DefaultAzureCredential
+var client = new QueueClient(
+    new Uri("https://127.0.0.1:10001/devstoreaccount1/queue-name"), new DefaultAzureCredential()
+  );
+
+// With connection string
+var client = new QueueClient(
+    "DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;", "queue-name"
+  );
+
+// With account name and key
+var client = new QueueClient(
+    new Uri("https://127.0.0.1:10001/devstoreaccount1/queue-name"),
+    new StorageSharedKeyCredential("devstoreaccount1", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==")
+  );
+```
+
+### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage-Explorer
+
+Sie können Storage-Explorer zum Anzeigen der in Azurite gespeicherten Daten verwenden.
+
+#### <a name="connect-to-azurite-using-http"></a>Herstellen einer Verbindung mit Azurite mithilfe von HTTP
+
+Stellen Sie in Storage-Explorer eine Verbindung mit Azurite her, indem Sie die folgenden Schritte ausführen:
+
+ 1. Wählen Sie das Symbol **Konten verwalten** aus.
+ 1. Wählen Sie **Konto hinzufügen** aus.
+ 1. Wählen Sie **An einen lokalen Emulator anfügen** aus.
+ 1. Wählen Sie **Weiter** aus.
+ 1. Bearbeiten Sie das Feld **Anzeigename**, indem Sie einen Namen Ihrer Wahl eingeben.
+ 1. Wählen Sie **Weiter** erneut aus.
+ 1. Wählen Sie **Verbinden** aus.
+
+#### <a name="connect-to-azurite-using-https"></a>Herstellen einer Verbindung mit Azurite mithilfe von HTTPS
+
+Standardmäßig öffnet Storage-Explorer keinen HTTPS-Endpunkt, der ein selbstsigniertes Zertifikat verwendet. Wenn Sie Azurite mit HTTPS ausführen, verwenden Sie wahrscheinlich ein selbstsigniertes Zertifikat. Importieren Sie in Storage-Explorer SSL-Zertifikate über das Dialogfeld **Bearbeiten** -> **SSL-Zertifikate** -> **Zertifikate importieren**.
+
+##### <a name="import-certificate-to-storage-explorer"></a>Importieren des Zertifikats in Storage-Explorer
+
+1. Suchen Sie auf dem lokalen Computer nach dem Zertifikat.
+1. Navigieren Sie in Storage-Explorer zu **Bearbeiten** -> **SSL-Zertifikate** -> **Zertifikate importieren**, und importieren Sie das Zertifikat.
+
+Wenn Sie kein Zertifikat importieren, erhalten Sie eine Fehlermeldung:
+
+`unable to verify the first certificate` oder `self signed certificate in chain`
+
+##### <a name="add-azurite-via-https-connection-string"></a>Hinzufügen von Azurite über eine HTTPS-Verbindungszeichenfolge
+
+Führen Sie die folgenden Schritte aus, um Storage-Explorer Azurite HTTPS hinzuzufügen:
+
+1. Wählen Sie **Explorer umschalten** aus.
+1. Wählen Sie **Lokal & angefügt** aus.
+1. Klicken Sie mit der rechten Maustaste auf **Speicherkonten**, und klicken Sie dann auf **Verbindung mit Azure Storage herstellen**.
+1. Wählen Sie **Verbindungszeichenfolge verwenden** aus.
+1. Wählen Sie **Weiter** aus.
+1. Geben Sie einen Wert in das Feld **Anzeigename** ein.
+1. Geben Sie die [HTTPS-Verbindungszeichenfolge](#https-connection-strings) aus dem vorherigen Abschnitt dieses Dokuments ein.
+1. Wählen Sie **Weiter** aus.
+1. Wählen Sie **Verbinden** aus.
+
+## <a name="workspace-structure"></a>Arbeitsbereichstruktur
+
+Die folgenden Dateien und Ordner können beim Initialisieren von Azurite am Arbeitsbereich-Speicherort erstellt werden.
+
+- `__blobstorage__`: Verzeichnis, das persistent gespeicherte Daten des Blob-Diensts von Azurite enthält.
+- `__queuestorage__`: Verzeichnis, das persistent gespeicherte Daten des Warteschlangendiensts von Azurite enthält.
+- `__azurite_db_blob__.json`: Metadatendatei des Blob-Diensts von Azurite.
+- `__azurite_db_blob_extent__.json`: Erweiterungsmetadatendatei des Blob-Diensts von Azurite.
+- `__azurite_db_queue__.json`: Metadatendatei des Warteschlangendiensts von Azurite.
+- `__azurite_db_queue_extent__.json`: Erweiterungsmetadatendatei des Warteschlangendiensts von Azurite.
+
+Wenn Sie Azurite bereinigen möchten, löschen Sie die oben aufgeführten Dateien und Ordner, und starten Sie den Emulator neu.
 
 ## <a name="differences-between-azurite-and-azure-storage"></a>Unterschiede zwischen Azurite und Azure Storage
 
@@ -379,7 +535,7 @@ Die folgende Adresse kann beispielsweise für den Zugriff auf ein Blob in Azurit
 
 ### <a name="scaling-and-performance"></a>Skalierung und Leistung
 
-Azurite ist kein skalierbarer Speicherdienst und unterstützt keine große Anzahl gleichzeitiger Clients. Es gibt keine Leistungsgarantie. Azurite ist für Entwicklungs- und Testzwecke ausgelegt.
+Azurite unterstützt keine große Anzahl verbundener Clients. Es gibt keine Leistungsgarantie. Azurite ist für Entwicklungs- und Testzwecke ausgelegt.
 
 ### <a name="error-handling"></a>Fehlerbehandlung
 
@@ -387,7 +543,7 @@ Azurite ist mit der Fehlerbehandlungslogik von Azure Storage abgestimmt, es gibt
 
 ### <a name="ra-grs"></a>RA-GRS
 
-Azurite unterstützt die georedundante Replikation mit Lesezugriff (Read-Access Geo-Redundant Replication, RA-GRS). Greifen Sie für Speicherressourcen auf den sekundären Speicherort zu, indem Sie **-secondary** an den Kontonamen anfügen. Beispielsweise kann die folgende Adresse mithilfe des schreibgeschützten sekundären Speicherorts in Azurite für den Zugriff auf ein Blob verwendet werden:
+Azurite unterstützt die georedundante Replikation mit Lesezugriff (Read-Access Geo-Redundant Replication, RA-GRS). Greifen Sie für Speicherressourcen auf den sekundären Speicherort zu, indem Sie `-secondary` an den Kontonamen anfügen. Beispielsweise kann die folgende Adresse mithilfe des schreibgeschützten sekundären Speicherorts in Azurite für den Zugriff auf ein Blob verwendet werden:
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 
@@ -397,5 +553,5 @@ Wir freuen uns über Beiträge und Vorschläge für Azurite. Auf der Seite des [
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Unter [Verwenden des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md) wird der veraltete Azure-Speicheremulator beschrieben, der durch Azurite ersetzt wird.
-* Unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md) finden Sie eine Erläuterung des Aufbaus einer gültigen Azure Storage-Verbindungszeichenfolge.
+- Unter [Verwenden des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md) wird der veraltete Azure-Speicheremulator beschrieben, der durch Azurite ersetzt wird.
+- Unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md) finden Sie eine Erläuterung des Aufbaus einer gültigen Azure Storage-Verbindungszeichenfolge.

@@ -9,16 +9,16 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: f68112095bc8a8fd9bcc1bd67ff77827d6d00fd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d4fa61f8290f3bf9e2f065ec841fa94d8ecaaac1
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195620"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267204"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Tutorial: Integrieren mehrerer Ressourcen für den plastischen Reader
 
-In der [Übersicht](./overview.md) haben Sie gelernt, was Plastischer Reader ist und wie das Tool bewährte Techniken implementiert, um das Leseverständnis von Sprachenlernenden, Leseanfängern und Schülern mit Lernunterschieden zu verbessern. In der [Schnellstartanleitung zu Node.js](./quickstart-nodejs.md) haben Sie erfahren, wie Sie den plastischen Reader mit einer einzelnen Ressource verwenden. In diesem Tutorial wird erläutert, wie Sie mehrere Ressourcen des plastischen Readers in dieselbe Anwendung integrieren. In diesem Tutorial lernen Sie Folgendes:
+In der [Übersicht](./overview.md) haben Sie gelernt, was Plastischer Reader ist und wie das Tool bewährte Techniken implementiert, um das Leseverständnis von Sprachenlernenden, Leseanfängern und Schülern mit Lernunterschieden zu verbessern. In der [Schnellstartanleitung zu Node.js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) haben Sie erfahren, wie Sie den plastischen Reader mit einer einzelnen Ressource verwenden. In diesem Tutorial wird erläutert, wie Sie mehrere Ressourcen des plastischen Readers in dieselbe Anwendung integrieren. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen von mehreren Ressourcen für den plastischen Reader unter einer vorhandenen Ressourcengruppe
@@ -28,7 +28,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Befolgen Sie die [Schnellstartanleitung](./quickstart-nodejs.md) zur Erstellung einer Web-App zum Starten des plastischen Readers mit NodeJS. In dieser Schnellstartanleitung konfigurieren Sie eine einzelne Ressource für den plastischen Reader. In diesem Tutorial bauen wir darauf auf.
+* Befolgen Sie die [Schnellstartanleitung](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) zur Erstellung einer Web-App zum Starten des plastischen Readers mit NodeJS. In dieser Schnellstartanleitung konfigurieren Sie eine einzelne Ressource für den plastischen Reader. In diesem Tutorial bauen wir darauf auf.
 
 ## <a name="create-the-immersive-reader-resources"></a>Erstellen der Ressourcen für den plastischen Reader
 

@@ -6,14 +6,14 @@ ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
-ms.topic: sample
+ms.topic: tutorial
 ms.date: 12/03/2019
-ms.openlocfilehash: f4d6e1bb0d5db0dbfc30e14abc58321bce8d0baf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2133b68bf942cee87548783fb40d08c9bfe876ff
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851628"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Erste Schritte mit der Azure Cosmos DB-Tabellen-API und Azure Table Storage mit .NET SDK
 
@@ -67,7 +67,7 @@ Führen Sie die folgenden Schritte aus, um die NuGet-Pakete abzurufen:
 
 1. Öffnen Sie einen der Bereiche **Verbindungszeichenfolge** oder **Zugriffsschlüssel**. Kopieren Sie mithilfe der Kopierschaltfläche im rechten Fensterbereich die **PRIMÄRE VERBINDUNGSZEICHENFOLGE**.
 
-   ![Anzeigen und Kopieren der primären Verbindungszeichenfolge im Bereich „Verbindungszeichenfolge“](./media/create-table-dotnet/connection-string.png)
+   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="Anzeigen und Kopieren der primären Verbindungszeichenfolge im Bereich „Verbindungszeichenfolge“":::
    
 1. Um Ihre Verbindungszeichenfolge zu konfigurieren, klicken Sie in Visual Studio mit der rechten Maustaste auf Ihr Projekt **CosmosTableSamples**.
 
@@ -255,7 +255,7 @@ Klicken Sie mit der rechten Maustaste auf Ihr Projekt **CosmosTableSamples**. W�
  }
 ```
 
-### <a name="get-an-entity-from-a-partition"></a>Abrufen einer Entität aus einer Partition
+## <a name="get-an-entity-from-a-partition"></a>Abrufen einer Entität aus einer Partition
 
 Sie können eine Entität von einer Partition abrufen, indem Sie die Retrieve-Methode der Klasse [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) verwenden. Das folgende Codebeispiel ruft den Zeilenschlüssel des Partitionsschlüssels, die E-Mail-Adresse und die Telefonnummer einer Kundenentität ab. Dieses Beispiel druckt auch die Anforderungseinheiten aus, die für die Abfrage nach der Entität benötigt werden. Um eine Entität abzufragen, fügen Sie den folgenden Code an die Datei **SamplesUtils.cs** an: 
 
@@ -422,7 +422,7 @@ namespace CosmosTableSamples
 
 Nun erstellen Sie die Projektmappe, und drücken F5, um das Projekt auszuführen. Wenn das Projekt ausgeführt wird, sehen Sie die folgende Ausgabe in der Eingabeaufforderung:
 
-![Ausgabe in der Eingabeaufforderung](./media/tutorial-develop-table-standard/output-from-sample.png)
+:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="Ausgabe in der Eingabeaufforderung":::
 
 Wenn der Fehler mit dem Hinweis angezeigt wird, dass die Datei „Settings.json“ beim Ausführen des Projekts nicht gefunden werden kann, können Sie das Problem lösen, indem Sie den Projekteinstellungen den folgenden XML-Eintrag hinzufügen. Klicken Sie mit der rechten Maustaste auf „CosmosTableSamples“, wählen Sie „CosmosTableSamples.csproj bearbeiten“ aus, und fügen Sie die folgende „itemGroup“ hinzu: 
 
@@ -435,7 +435,7 @@ Wenn der Fehler mit dem Hinweis angezeigt wird, dass die Datei „Settings.json�
 ```
 Jetzt können Sie sich beim Azure-Portal anmelden und überprüfen, ob die Daten in der Tabelle vorhanden sind. 
 
-![Ergebnisse im Portal](./media/tutorial-develop-table-standard/results-in-portal.png)
+:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="Ergebnisse im Portal":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

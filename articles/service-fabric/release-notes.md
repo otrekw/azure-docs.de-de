@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 3e0f6c78b6e5dd066cbfbac6805bb3c42068e66a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28870a197af07e964a50a06ffeef08f3b71451f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729597"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82891727"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric-Versionen
 
@@ -30,14 +30,14 @@ Aufgrund der aktuellen Corona-Pandemie und angesichts der vielen Herausforderung
 Sie können das Upgrade auf Version 7.1 über das [Azure-Portal](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) oder über eine [Azure Resource Manager-Bereitstellung](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#set-the-upgrade-mode-using-a-resource-manager-template) durchführen.
 
 Service Fabric-Cluster, für die automatische Upgrades aktiviert sind, empfangen das Upgrade auf Version 7.1 automatisch, sobald wir die Standardprozedur für das Rollout wieder aufnehmen. Wir werden den Start des Standardrollouts auf der [Website der Tech Community für Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) ankündigen.
-Wir haben [hier](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-versions) auch Updates zum Datum des Supportendes für Hauptversionen von 6.5 bis 7.1 veröffentlicht. 
+Wir haben [hier](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-versions) auch Updates zum Datum des Supportendes für Hauptversionen von 6.5 bis 7.1 veröffentlicht. 
 
 ## <a name="what-is-new-in-service-fabric-71"></a>Was ist neu in Service Fabric 7.1?
 Wir freuen uns, das nächste Release von Service Fabric ankündigen zu können. Dieses Release bietet eine Vielzahl von wichtigen Features und Verbesserungen. Hier sehen Sie einige der wichtigsten Features:
 ## <a name="key-announcements"></a>Wichtige Ankündigungen
 - **Allgemeine Verfügbarkeit** der [**verwalteten Service Fabric-Identitäten für Service Fabric-Anwendungen**](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
-- [**Unterstützung von Ubuntu 1804**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
- - [**Vorschau: Unterstützung für kurzlebige VMSS-Betriebssystemdatenträger**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)**: Bei kurzlebigen Betriebssystemdatenträgern handelt es sich um Speicher, der auf dem lokalen virtuellen Computer erstellt und nicht in der externen Azure Storage-Instanz gespeichert wird. Sie werden für alle Service Fabric-Knotentypen (primär und sekundär) empfohlen, da kurzlebige Betriebssystemdatenträger im Vergleich zu herkömmlichen persistenten Betriebssystemdatenträgern Folgendes ermöglichen:
+- [**Unterstützung von Ubuntu 18.04**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
+ - [**Vorschau: Unterstützung kurzlebiger Betriebssystemdatenträger für VM-Skalierungsgruppen**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)**: Bei kurzlebigen Betriebssystemdatenträgern handelt es sich um Speicher, der auf dem lokalen virtuellen Computer erstellt und nicht in der externen Azure Storage-Instanz gespeichert wird. Sie werden für alle Service Fabric-Knotentypen (primär und sekundär) empfohlen, da kurzlebige Betriebssystemdatenträger im Vergleich zu herkömmlichen persistenten Betriebssystemdatenträgern Folgendes ermöglichen:
       -  Reduzieren der Lese-/Schreibwartezeit auf dem Betriebssystemdatenträger
       -  Schnellere Vorgänge zum Zurücksetzen/Durchführen eines Re-Imagings für die Knotenverwaltung
       -  Senken der Gesamtkosten (Die Datenträger sind kostenlos, und es fallen keine zusätzlichen Speicherkosten an.)
@@ -61,7 +61,7 @@ Wir freuen uns, das nächste Release von Service Fabric ankündigen zu können. 
        
  ### <a name="reliable-collections-improvements"></a>Verbesserungen bei zuverlässigen Sammlungen
 
-- [**Unterstützung für reinen In-Memory-Speicher für zustandsbehaftete Dienste unter Verwendung von zuverlässigen Sammlungen**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections): Mithilfe von flüchtigen zuverlässigen Sammlungen können Daten zum Schutz vor umfangreichen Ausfällen dauerhaft auf einem Datenträger gespeichert werden. Diese Sammlungen können für Workloads wie replizierte Caches verwendet werden, beispielsweise dann, wenn gelegentliche Datenverluste toleriert werden können. Basierend auf den [Einschränkungen für flüchtige zuverlässige Sammlungen](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections) wird dieses Feature für Workloads, die keine Dauerhaftigkeit erfordern, sowie für Dienste empfohlen, die das seltene Auftreten von Quorumsverlusten verarbeiten.
+- [**Unterstützung für reinen In-Memory-Speicher für zustandsbehaftete Dienste unter Verwendung von zuverlässigen Sammlungen**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections): Flüchtige zuverlässige Sammlungen ermöglichen die persistente Speicherung von Daten auf einem Datenträger, um Dauerhaftigkeit gegenüber umfangreichen Ausfällen zu gewährleisten. Sie können z. B. für Workloads wie replizierten Cache verwendet werden, bei dem gelegentliche Datenverluste toleriert werden können. Basierend auf den [Einschränkungen flüchtiger zuverlässiger Sammlungen](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections) wird dies für Workloads empfohlen, die keine Persistenz benötigen, für Dienste, die die seltenen Vorkommen von Quorumverlusten behandeln.
 - [**Vorschau: Service Fabric-Sicherungs-Explorer**](https://github.com/microsoft/service-fabric-backup-explorer): Um die Verwaltung der Sicherungen von zuverlässigen Sammlungen für zustandsbehaftete Service Fabric-Anwendungen zu vereinfachen, ermöglicht der Service Fabric-Sicherungs-Explorer Folgendes:
     - Überwachen und Überprüfen der Inhalte von zuverlässigen Sammlungen
     - Aktualisieren des aktuellen Zustands in einer konsistenten Ansicht
@@ -89,7 +89,7 @@ Dies ist die neueste Version von Service Fabric mit wichtigen Features und umfan
   
 - [**Resourceneinschränkungen für Benutzerdienste**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance#enforcing-the-resource-limits-for-user-services): Benutzer können Ressourceneinschränkungen für die Benutzerdienste auf einem Knoten einrichten, um Szenarien wie die Erschöpfung von Ressourcen der Systemdienste von Service Fabric zu verhindern. 
   
-- [**Sehr hohe Dienstverschiebungskosten**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost) für einen Replikattyp. Replikate mit sehr hohen Verschiebungskosten werden nur verschoben, wenn eine Einschränkungsverletzung im Cluster vorliegt, die nicht auf andere Weise behoben werden kann. Weitere Informationen dazu, wann die Nutzung von „sehr hohen“ Verschiebungskosten angemessen ist, sowie weitere Überlegungen finden Sie in der Dokumentation.
+- [**Sehr hohe Dienstverschiebungskosten**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost) für einen Replikattyp. Replikate mit sehr hohen Verschiebungskosten werden nur verschoben, wenn eine Einschränkungsverletzung im Cluster vorliegt, die nicht auf andere Weise behoben werden kann. Weitere Informationen dazu, wann die Nutzung von „sehr hohen“ Verschiebungskosten angemessen ist, sowie weitere Überlegungen finden Sie im verknüpften Dokument.
   
 -  **Zusätzliche Clustersicherheitsüberprüfungen**: In diesem Release haben wir eine konfigurierbare Quorumsicherheitsüberprüfung für den Seedknoten eingeführt. Auf diese Weise können Sie anpassen, wie viele Seedknoten während des Lebenszyklus von Clustern und in Verwaltungsszenarien verfügbar sein müssen. Vorgänge, die den Cluster unter den konfigurierten Wert bringen würden, werden blockiert. Zurzeit ist der Standardwert immer ein Quorum der Seedknoten. Wenn Sie z.B. 7 Seedknoten verwenden, würde ein Vorgang, der Sie unter 5 Seedknoten bringen würde, standardmäßig blockiert. Mit dieser Änderung können Sie den minimal sicheren Wert auf 6 festlegen, sodass nur ein Seedknoten gleichzeitig ausfallen darf.
    

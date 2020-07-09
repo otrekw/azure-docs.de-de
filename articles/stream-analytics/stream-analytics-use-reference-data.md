@@ -6,17 +6,28 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/8/2019
-ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 5/11/2020
+ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232026"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196423"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Verwenden von Referenzdaten für Suchvorgänge in Stream Analytics
 
 Verweisdaten (auch als Nachschlagetabelle bezeichnet) stellen ein begrenztes statisches oder sich nur langsam veränderndes Dataset dar, das für die Suche oder die Erweiterung Ihrer Datenströme verwendet wird. In einem IoT-Szenario können Sie beispielsweise Metadaten zu Sensoren (die sich nicht oft ändern) in Verweisdaten speichern und mit IoT-Echtzeitdatenströmen verknüpfen. Azure Stream Analytics lädt Verweisdaten in den Arbeitsspeicher, um eine Streamverarbeitung mit geringer Wartezeit zu erreichen. Für den Einsatz von Verweisdaten in Ihrem Azure Stream Analytics-Auftrag verwenden Sie in der Regel [Verweisdaten für JOIN-Vorgänge](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) in Ihrer Abfrage. 
+
+## <a name="example"></a>Beispiel  
+Sie können beispielsweise in Echtzeit einen Ereignisdatenstrom generieren, wenn Fahrzeuge eine Mautstelle passieren. An der Mautstelle kann das Autokennzeichen in Echtzeit erfasst und mit einem statischen Dataset verknüpft werden, das über Registrierungsdetails verfügt. So lassen sich die abgelaufenen Kennzeichen identifizieren.  
+  
+```SQL  
+SELECT I1.EntryTime, I1.LicensePlate, I1.TollId, R.RegistrationId  
+FROM Input1 I1 TIMESTAMP BY EntryTime  
+JOIN Registration R  
+ON I1.LicensePlate = R.LicensePlate  
+WHERE R.Expired = '1'
+```  
 
 In Stream Analytics werden Azure Blob Storage und Azure SQL-Datenbank als Speicherebene für Verweisdaten unterstützt. Zudem können Sie Verweisdaten von Azure Data Factory in Blob Storage transformieren und/oder kopieren, um [eine beliebige Anzahl von cloudbasierten und lokalen Datenspeichern zu verwenden](../data-factory/copy-activity-overview.md).
 
@@ -34,9 +45,9 @@ Um die Verweisdaten zu konfigurieren, müssen Sie zunächst eine Eingabe vom Typ
 |Speicherkonto   | Der Name des Speicherkontos, in dem sich Ihre Blobs befinden. Wenn sich das Konto im gleichen Abonnement befindet wie Ihr Stream Analytics-Auftrag, können Sie es in der Dropdownliste auswählen.   |
 |Speicherkontoschlüssel   | Der geheime Schlüssel, der dem Speicherkonto zugeordnet ist. Dies wird automatisch aufgefüllt, wenn sich das Speicherkonto im selben Abonnement befindet wie Ihr Stream Analytics-Auftrag.   |
 |Speichercontainer   | Container stellen eine logische Gruppierung für Blobs bereit, die im Microsoft Azure-Blobdienst gespeichert sind. Wenn Sie ein Blob in den Blobdienst hochladen, müssen Sie einen Container für das Blob angeben.   |
-|Pfadmuster   | Der Pfad, der verwendet wird, um Ihre Blobs innerhalb des angegebenen Containers zu suchen. In dem Pfad können Sie mindestens eine Instanz der folgenden beiden Variablen angeben:<BR>{date}, {time}<BR>Beispiel 1: products/{date}/{time}/product-list.csv<BR>Beispiel 2: products/{date}/product-list.csv<BR>Beispiel 3: product-list.csv<BR><br> Wenn das Blob im angegebenen Pfad nicht vorhanden ist, wartet der Stream Analytics-Auftrag auf unbestimmte Zeit, bis das Blob verfügbar ist.   |
-|Datumsformat [optional]   | Wenn Sie innerhalb des von Ihnen angegebenen Pfadmusters „{date}“ verwendet haben, können Sie in der Dropdownliste mit den unterstützten Formaten das Datumsformat auswählen, in dem Ihre Blobs gespeichert werden sollen.<BR>Beispiele: YYYY/MM/DD, MM/DD/YYYY...   |
-|Zeitformat [optional]   | Wenn Sie innerhalb des von Ihnen angegebenen Pfadmusters „{time}“ verwendet haben, können Sie in der Dropdownliste mit den unterstützten Formaten das Zeitformat auswählen, in dem Ihre Blobs gespeichert werden sollen.<BR>Beispiele: HH, HH/mm, HH-mm  |
+|Pfadmuster   | Dies ist eine erforderliche Eigenschaft, mit der Ihre Blobs im angegebenen Container gesucht werden. In dem Pfad können Sie mindestens eine Instanz der folgenden beiden Variablen angeben:<BR>{date}, {time}<BR>Beispiel 1: products/{date}/{time}/product-list.csv<BR>Beispiel 2: products/{date}/product-list.csv<BR>Beispiel 3: product-list.csv<BR><br> Wenn das Blob im angegebenen Pfad nicht vorhanden ist, wartet der Stream Analytics-Auftrag auf unbestimmte Zeit, bis das Blob verfügbar ist.   |
+|Datumsformat [optional]   | Wenn Sie innerhalb des von Ihnen angegebenen Pfadmusters „{date}“ verwendet haben, können Sie in der Dropdownliste mit den unterstützten Formaten das Datumsformat auswählen, in dem Ihre Blobs gespeichert werden sollen.<BR>Beispiel: YYYY/MM/DD, MM/DD/YYYY...   |
+|Zeitformat [optional]   | Wenn Sie innerhalb des von Ihnen angegebenen Pfadmusters „{time}“ verwendet haben, können Sie in der Dropdownliste mit den unterstützten Formaten das Zeitformat auswählen, in dem Ihre Blobs gespeichert werden sollen.<BR>Beispiel: HH, HH/mm, HH-mm  |
 |Ereignisserialisierungsformat   | Um sicherzustellen, dass Ihre Abfragen wie erwartet funktionieren, muss Stream Analytics das Serialisierungsformat kennen, das Sie für eingehende Datenströme verwenden. Die unterstützten Formate für Verweisdaten sind CSV und JSON.  |
 |Codieren   | UTF-8 ist derzeit das einzige unterstützte Codierungsformat.  |
 
@@ -85,13 +96,13 @@ Mit der Deltaabfrage wird in Stream Analytics zunächst die Momentaufnahmeabfrag
 
 Um die SQL-Datenbank-Verweisdaten zu konfigurieren, müssen Sie zunächst eine Eingabe für **Verweisdaten** erstellen. Die folgende Tabelle enthält den Namen jeder Eigenschaft, die Sie beim Erstellen der Verweisdateneingabe angeben müssen, sowie die entsprechenden Beschreibungen. Weitere Informationen finden Sie unter [Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag](sql-reference-data.md).
 
-Sie können eine [verwaltete Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) als Verweisdateneingabe verwenden. Sie müssen einen [öffentlichen Endpunkt in der verwalteten Azure SQL-Datenbank-Instanz konfigurieren](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) und dann in Azure Stream Analytics die folgenden Einstellungen manuell konfigurieren. Für den virtuellen Azure-Computer mit SQL Server und einer angefügten Datenbank wird ebenfalls das manuelle Konfigurieren der folgenden Einstellungen unterstützt.
+Sie können eine [verwaltete Azure SQL-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) als Verweisdateneingabe verwenden. Sie müssen einen [öffentlichen Endpunkt in der verwalteten SQL-Instanz konfigurieren](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) und dann in Azure Stream Analytics manuell die folgenden Einstellungen konfigurieren. Für den virtuellen Azure-Computer mit SQL Server und einer angefügten Datenbank wird ebenfalls das manuelle Konfigurieren der folgenden Einstellungen unterstützt.
 
 |**Eigenschaftenname**|**Beschreibung**  |
 |---------|---------|
 |Eingabealias|Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen.|
 |Subscription|Auswählen Ihres Abonnements|
-|Datenbank|Die Azure SQL-Datenbank mit den Verweisdaten. Für die verwaltete Azure SQL-Datenbank-Instanz muss Port 3342 angegeben werden. Beispiel: *sampleserver.public.database.windows.net,3342*|
+|Datenbank|Die Azure SQL-Datenbank mit den Verweisdaten. Für eine verwaltete SQL-Instanz muss der Port 3342 angegeben werden. Beispiel: *sampleserver.public.database.windows.net,3342*|
 |Username|Der Benutzername, der Ihrer Azure SQL-Datenbank-Instanz zugeordnet ist.|
 |Kennwort|Das Kennwort, das Ihrer Azure SQL-Datenbank-Instanz zugeordnet ist.|
 |Regelmäßig aktualisieren|Mit dieser Option können Sie eine Aktualisierungsrate auswählen. Durch Auswählen von „Ein“ können Sie die Aktualisierungsrate im Format TT:HH:MM angeben.|
@@ -100,17 +111,32 @@ Sie können eine [verwaltete Azure SQL-Datenbank-Instanz](https://docs.microsoft
 
 ## <a name="size-limitation"></a>Größenbeschränkung
 
-Stream Analytics unterstützt Verweisdaten mit einer **Größe von bis zu 300 MB**. Der Grenzwert von 300 MB für die maximale Größe von Verweisdaten ist nur mit einfachen Abfragen erreichbar. Angesichts der zunehmenden Abfragekomplexität durch Einbeziehung der zustandsbehafteten Verarbeitung (beispielsweise in Form von Aggregaten im Fenstermodus, temporalen Joins oder temporalen Analysefunktionen) ist davon auszugehen, dass die unterstützte Maximalgröße für Verweisdaten abnimmt. Wenn Azure Stream Analytics die Verweisdaten nicht laden und keine komplexen Vorgänge ausführen kann, steht für den Auftrag nicht genügend Arbeitsspeicher zur Verfügung, und der Auftrag ist nicht erfolgreich. In solchen Fällen erreicht die Metrik „Nutzung der Speichereinheit in %“ den Wert „100 %“.    
+Es wird empfohlen, Verweisdatasets zu verwenden, die kleiner als 300 MB sind, um eine optimale Leistung zu erzielen. Die Verwendung von Verweisdatasets, die größer als 300 MB sind, wird in Aufträgen mit 6 oder mehr SUs unterstützt. Diese Funktion befindet sich in der Vorschauphase und darf nicht in der Produktion verwendet werden. Die Verwendung von sehr großen Verweisdatasets kann die Leistung Ihres Auftrags beeinflussen. Angesichts der zunehmenden Abfragekomplexität durch Einbeziehung der zustandsbehafteten Verarbeitung (beispielsweise in Form von Aggregaten im Fenstermodus, temporalen Joins oder temporalen Analysefunktionen) ist davon auszugehen, dass die unterstützte Maximalgröße für Verweisdaten abnimmt. Wenn Azure Stream Analytics die Verweisdaten nicht laden und keine komplexen Vorgänge ausführen kann, steht für den Auftrag nicht genügend Arbeitsspeicher zur Verfügung, und der Auftrag ist nicht erfolgreich. In solchen Fällen erreicht die Metrik „Nutzung der Speichereinheit in %“ den Wert „100 %“.    
 
-|**Anzahl von Streamingeinheiten**  |**Ungefähre unterstützte Maximalgröße (in MB)**  |
+|**Anzahl von Streamingeinheiten**  |**Empfohlene Größe**  |
 |---------|---------|
-|1   |50   |
-|3   |150   |
-|6 und mehr   |300   |
+|1   |50 MB oder weniger   |
+|3   |150 MB oder weniger   |
+|6 und mehr   |300 MB oder weniger Die Verwendung von Verweisdatasets, die größer als 300 MB sind, wird in der Vorschauphase unterstützt und kann die Leistung Ihres Auftrags beeinflussen.    |
 
-Ab einer Anzahl von sechs Streamingeinheiten für einen Auftrag erhöht sich die unterstützte Maximalgröße für Verweisdaten nicht weiter.
+Die Unterstützung der Komprimierung steht für Referenzdaten nicht zur Verfügung.
 
-Die Unterstützung der Komprimierung steht für Referenzdaten nicht zur Verfügung. 
+## <a name="joining-multiple-reference-datasets-in-a-job"></a>Verknüpfen mehrerer Verweisdatasets in einem Auftrag
+In einem einzelnen Schritt der Abfrage können Sie nur eine Datenflusseingabe mit einer Verweisdateneingabe verknüpfen. Wenn Sie die Abfrage in mehrere Schritte aufteilen, können Sie jedoch auch mehrere Verweisdatasets verknüpfen. Ein entsprechendes Beispiel ist nachfolgend dargestellt.
+
+```SQL  
+With Step1 as (
+    --JOIN input stream with reference data to get 'Desc'
+    SELECT streamInput.*, refData1.Desc as Desc
+    FROM    streamInput
+    JOIN    refData1 ON refData1.key = streamInput.key 
+)
+--Now Join Step1 with second reference data
+SELECT *
+INTO    output 
+FROM    Step1
+JOIN    refData2 ON refData2.Desc = Step1.Desc 
+``` 
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

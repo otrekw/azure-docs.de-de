@@ -1,62 +1,53 @@
 ---
-title: Konfiguration kundenseitig verwalteter Schlüssel in Azure Monitor
+title: Kundenseitig verwaltete Schlüssel in Azure Monitor
 description: Informationen und Schritte zum Konfigurieren kundenseitig verwalteter Schlüssel (Customer-Managed Key, CMK) für das Verschlüsseln von Daten in Ihren Log Analytics-Arbeitsbereichen mithilfe eines Azure Key Vault-Schlüssels.
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 04/12/2020
-ms.openlocfilehash: 25fdb0aefacbdd9c2630a69981a67821ac155786
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.date: 05/20/2020
+ms.openlocfilehash: 8bff8cf1111675446c1c9fb2e5dde8b19e2ef5c1
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758802"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310885"
 ---
-# <a name="azure-monitor-customer-managed-key-configuration"></a>Konfiguration kundenseitig verwalteter Schlüssel in Azure Monitor 
+# <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
-Dieser Artikel enthält Hintergrundinformationen und Schritte zum Konfigurieren kundenseitig verwalteter Schlüssel (Customer-Managed Key, CMK) für Ihre Log Analytics-Arbeitsbereiche und Application Insights-Komponenten. Nach der Konfiguration werden alle Daten, die an Ihre Arbeitsbereiche oder Komponenten gesendet werden, mit dem Azure Key Vault-Schlüssel verschlüsselt.
+Dieser Artikel enthält Hintergrundinformationen und Schritte zum Konfigurieren kundenseitig verwalteter Schlüssel (Customer-Managed Key, CMK) für Ihre Log Analytics-Arbeitsbereiche. Nach der Konfiguration werden alle Daten, die an Ihre Arbeitsbereiche gesendet werden, mit Ihrem Azure Key Vault-Schlüssel verschlüsselt.
 
-Es wird empfohlen, vor der Konfiguration die [Einschränkungen](#limitations-and-constraints) weiter unten zu überprüfen.
-
-## <a name="disclaimers"></a>Haftungsausschlüsse
-
-- Azure Monitor CMK ist ein Feature mit frühzeitigem Zugriff, das für registrierte Abonnements aktiviert ist.
-
-- Die in diesem Artikel beschriebene CMK-Bereitstellung erfolgt in Produktionsqualität und wird als solche unterstützt, obwohl es sich um ein Feature mit frühzeitigem Zugriff handelt.
-
-- Die CMK-Funktion wird in einem dedizierten Datenspeichercluster bereitgestellt. Hierbei handelt es sich um einen ADX-Cluster (Azure Data Explorer), der für Kunden geeignet ist, die mindestens 1 TB pro Tag senden. 
-
-- Das CMK-Preismodell ist derzeit nicht verfügbar und wird in diesem Artikel nicht behandelt. Ein Preismodell für dedizierte ADX-Cluster wird im zweiten Quartal des Kalenderjahres 2020 erwartet und gilt dann für alle bestehenden CMK-Bereitstellungen.
-
-- In diesem Artikel wird die CMK-Konfiguration für Log Analytics-Arbeitsbereiche beschrieben. CMK für Application Insights-Komponenten wird mit diesem Artikel ebenfalls unterstützt, wobei Unterschiede im Anhang aufgeführt sind.
-
-> [!NOTE]
-> Log Analytics und Application Insights verwenden die gleiche Datenspeicherplattform und Abfrage-Engine.
-> Diese beiden Speicher werden über die Integration von Application Insights in Log Analytics zusammengeführt, um unter Azure Monitor einen einzigen Speicher mit vereinheitlichten Protokollen zu erstellen. Diese Änderung ist für das zweite Quartal des Kalenderjahres 2020 geplant. Wenn Sie CMK bis dahin nicht für Ihre Application Insights-Daten bereitstellen müssen, empfiehlt es sich, bis zum Abschluss der Konsolidierung zu warten, da solche Bereitstellungen durch die Konsolidierung unterbrochen werden und Sie CMK nach der Migration zum Log Analytics-Arbeitsbereich neu konfigurieren müssen. Der Mindestwert von 1 TB pro Tag gilt auf Clusterebene, und bis die Konsolidierung im zweiten Quartal abgeschlossen ist, erfordern Application Insights und Log Analytics separate Cluster.
+Es wird empfohlen, vor der Konfiguration die [Einschränkungen](#limitationsandconstraints) weiter unten zu überprüfen.
 
 ## <a name="customer-managed-key-cmk-overview"></a>Übersicht über kundenseitig verwaltete Schlüssel (Customer-Managed Key, CMK)
 
-Die [Verschlüsselung ruhender Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) ist eine übliche Datenschutz- und Sicherheitsanforderung in Organisationen. Sie können die Verschlüsselung ruhender Daten vollständig von Azure verwalten lassen, wobei Ihnen verschiedene Optionen zum genauen Verwalten der Verschlüsselung oder Verschlüsselungsschlüssel bereitstehen.
+Die [Verschlüsselung ruhender Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) ist eine übliche Datenschutz- und Sicherheitsanforderung in Organisationen. Sie können die Verschlüsselung ruhender Daten vollständig von Azure verwalten lassen, wobei Ihnen verschiedene Optionen zum genauen Verwalten der Verschlüsselung oder Verschlüsselungsschlüssel bereitstehen.
 
-Der Azure Monitor-Datenspeicher stellt sicher, dass alle ruhenden Daten während der Speicherung in Azure Storage mit von Azure verwalteten Schlüsseln verschlüsselt werden. Azure Monitor bietet auch eine Option für die Datenverschlüsselung mithilfe eines eigenen Schlüssels, der in Ihrer [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)-Instanz gespeichert ist und auf den über die Authentifizierung der systemseitig zugewiesenen [verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zugegriffen wird. Dieser Schlüssel kann entweder durch [Software oder Hardware (HSM) geschützt](https://docs.microsoft.com/azure/key-vault/key-vault-overview) werden.
-Die Verwendung der Verschlüsselung durch Azure Monitor ist identisch mit der Funktionsweise der [Azure Storage-Verschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption).
+Azure Monitor stellt sicher, dass alle Daten im Ruhezustand mit von Azure verwalteten Schlüsseln verschlüsselt werden. Azure Monitor bietet auch eine Option für die Datenverschlüsselung mithilfe eines eigenen Schlüssels, der in Ihrer  [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)-Instanz gespeichert ist und auf den Storage über die Authentifizierung der systemseitig zugewiesenen  [verwalteten Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zugreift. Dieser Schlüssel kann entweder durch  [Software oder Hardware (HSM) geschützt](https://docs.microsoft.com/azure/key-vault/key-vault-overview) werden.
 
-Die Häufigkeit, mit der Azure Monitor Storage für Pack- und Entpackvorgänge auf Key Vault zugreift, liegt zwischen 6 und 60 Sekunden. In Azure Monitor Storage werden Änderungen der Schlüsselberechtigungen immer innerhalb einer Stunde berücksichtigt.
+Die Verwendung der Verschlüsselung durch Azure Monitor ist identisch mit der Funktionsweise der  [Azure Storage-Verschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption). 
 
-Die in den letzten 14 Tagen erfassten Daten werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Diese Daten sind unabhängig von der CMK-Konfiguration weiterhin mit Microsoft-Schlüsseln verschlüsselt, doch arbeiten wir daran, dass der SSD in der ersten Hälfte des Jahres 2020 mit CMK verschlüsselt wird.
+Mit CMK können Sie den Zugriff auf Ihre Daten steuern und jederzeit widerrufen. In Azure Monitor Storage werden Änderungen der Schlüsselberechtigungen immer innerhalb einer Stunde berücksichtigt. Daten, die in den letzten 14 Tagen erfasst wurden, werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Diese Daten bleiben unabhängig von der CMK-Konfiguration mit Microsoft-Schlüsseln verschlüsselt, aber Ihre Kontrolle über SSD-Daten entspricht der  [Schlüsselsperrung](#cmk-kek-revocation). Wir arbeiten daran, dass SSD-Daten in der zweiten Hälfte des Jahres 2020 mit CMK verschlüsselt werden.
+
+Die CMK-Funktion wird auf dedizierten Log Analytics-Clustern bereitgestellt. Um sicherzustellen, dass die erforderliche Kapazität in Ihrer Region vorhanden ist, muss Ihr Abonnement im Voraus in die Whitelist aufgenommen werden. Nutzen Sie Ihren Microsoft-Kontakt, um Ihr Abonnement in die Whitelist aufnehmen zu lassen, bevor Sie mit der Konfiguration von CMK beginnen.
+
+Beim  [Preismodell für Log Analytics-Cluster](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters) werden Kapazitätsreservierungen ab 1000 GB/Tag verwendet.
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Funktionsweise von CMK in Azure Monitor
 
-Azure Monitor nutzt eine systemseitig zugewiesene verwaltete Identität, um Zugriff auf Azure Key Vault zu gewähren. Eine systemseitig zugewiesene verwaltete Identität kann nur einer einzigen Azure-Ressource zugeordnet werden. Die Identität des Azure Monitor-Datenspeichers (ADX-Cluster) wird auf Clusterebene unterstützt. Dadurch ist vorgegeben, dass die CMK-Funktion in einem dedizierten ADX-Cluster bereitgestellt wird. Zur Unterstützung von CMK in mehreren Arbeitsbereichen wird eine neue Log Analytics-Ressource (*Cluster*) als temporäre Identitätsverbindung zwischen Key Vault und Log Analytics-Arbeitsbereichen eingesetzt. Dieses Konzept entspricht der Einschränkung der systemseitig zugewiesenen Identität, und die Identität wird zwischen dem ADX-Cluster und der Log Analytics-*Clusterressource* aufrechterhalten, während die Daten aller zugeordneten Arbeitsbereiche mit Ihrem Key Vault-Schlüssel geschützt werden. Der zugrunde liegende ADX-Clusterspeicher verwendet die der *Clusterressource* zugeordnete verwaltete Identität für die Authentifizierung und den Zugriff auf Azure Key Vault über Azure Active Directory.
+Azure Monitor nutzt eine systemseitig zugewiesene verwaltete Identität, um Zugriff auf Azure Key Vault zu gewähren. Eine systemseitig zugewiesene verwaltete Identität kann nur einer einzigen Azure-Ressource zugeordnet werden, während die Identität des Log Analytics Clusters auf Clusterebene unterstützt wird. Dadurch ist vorgegeben, dass die CMK-Funktion auf einem dedizierten Log Analytics-Cluster bereitgestellt wird. Zur Unterstützung von CMK in mehreren Arbeitsbereichen wird eine neue Log Analytics-*Clusterressource* als temporäre Identitätsverbindung zwischen Key Vault und Log Analytics-Arbeitsbereichen eingesetzt. Der Log Analytics-Clusterspeicher verwendet die der *Clusterressource* zugeordnete verwaltete Identität für die Authentifizierung bei Azure Key Vault über Azure Active Directory. 
+
+Nach der CMK-Konfiguration werden alle Daten, die in Arbeitsbereichen erfasst wurden, die Ihrer *Clusterressource* zugeordnet sind, mit Ihrem Schlüssel in Key Vault verschlüsselt. Sie können die Zuordnung von Arbeitsbereichen zur *Clusterressource* jederzeit aufheben. Neue Daten werden im Log Analytics-Speicher erfasst und mit dem Microsoft-Schlüssel verschlüsselt, während Sie die neuen und alten Daten nahtlos abfragen können.
+
 
 ![CMK-Übersicht](media/customer-managed-keys/cmk-overview-8bit.png)
-1.    Key Vault des Kunden.
-2.    Log Analytics-*Clusterressource* des Kunden mit verwalteter Identität und Berechtigungen für Key Vault. Die Identität wird auf Ebene des Datenspeichers (ADX-Cluster) unterstützt.
-3.    Dedizierter ADX-Cluster in Azure Monitor.
-4.    Arbeitsbereiche des Kunden, die der *Clusterressource* für die CMK-Verschlüsselung zugeordnet sind.
 
-## <a name="encryption-keys-management"></a>Verwaltung von Verschlüsselungsschlüsseln
+1. Key Vault
+2. Log Analytics-*Clusterressource* mit verwalteter Identität und Berechtigungen für Key Vault. Die Identität wird an den zugrunde liegenden dedizierten Log Analytics-Clusterspeicher weitergegeben.
+3. Dedizierter Log Analytics-Cluster
+4. Arbeitsbereiche, die der *Clusterressource* für die CMK-Verschlüsselung zugeordnet sind
+
+## <a name="encryption-keys-operation"></a>Vorgang für Verschlüsselungsschlüssel
 
 An der Speicherdatenverschlüsselung sind drei Arten von Schlüsseln beteiligt:
 
@@ -66,7 +57,7 @@ An der Speicherdatenverschlüsselung sind drei Arten von Schlüsseln beteiligt:
 
 Es gelten die folgenden Regeln:
 
-- Die ADX-Speicherkonten generieren einen eindeutigen Verschlüsselungsschlüssel für jedes Speicherkonto, der als AEK bezeichnet wird.
+- Die Speicherkonten im Log Analytics-Cluster generieren einen eindeutigen Verschlüsselungsschlüssel für jedes Speicherkonto, der als AEK bezeichnet wird.
 
 - Der AEK dient zum Ableiten von DEKs, bei denen es sich um die Schlüssel handelt, die zum Verschlüsseln der einzelnen, auf den Datenträger geschriebenen Datenblöcke verwendet werden.
 
@@ -78,14 +69,11 @@ Es gelten die folgenden Regeln:
 
 ## <a name="cmk-provisioning-procedure"></a>CMK-Bereitstellungsverfahren
 
-Befolgen Sie für die CMK-Konfiguration für Application Insights die Anweisungen im Anhang für die Schritte 3 und 6.
-
-1. Aufnahme in die Abonnement-Whitelist (für dieses Feature mit frühzeitigem Zugriff erforderlich)
+1. Aufnahme in die Abonnement-Whitelist. Die CMK-Funktion wird auf dedizierten Log Analytics-Clustern bereitgestellt. Um sicherzustellen, dass die erforderliche Kapazität in Ihrer Region vorhanden ist, muss Ihr Abonnement im Voraus in die Whitelist aufgenommen werden. Nutzen Sie Ihren Microsoft-Kontakt, um Ihr Abonnement in die Whitelist aufnehmen zu lassen.
 2. Erstellen von Azure Key Vault und Speichern des Schlüssels
 3. Erstellen einer *Clusterressource*
-4. Bereitstellung des Azure Monitor-Datenspeichers (ADX-Cluster)
-5. Gewähren von Berechtigungen für Key Vault
-6. Zuordnen von Log Analytics-Arbeitsbereichen
+4. Gewähren von Berechtigungen für Key Vault
+5. Zuordnen von Log Analytics-Arbeitsbereichen
 
 Das Verfahren wird derzeit auf der Benutzeroberfläche nicht unterstützt, und der Bereitstellungsprozess erfolgt über die REST-API.
 
@@ -135,6 +123,29 @@ Vorgang wird ausgeführt
 }
 ```
 
+Schlüsselbezeichner-Aktualisierungsvorgang wird ausgeführt
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Updating", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+}
+```
+
+Löschung einer *Clusterressource* wird ausgeführt. Wenn Sie eine *Clusterressource* löschen, der Arbeitsbereiche zugeordnet sind, wird für jeden Arbeitsbereich in asynchronen Vorgängen, die einige Zeit in Anspruch nehmen können, eine Aufhebung der Zuordnung durchgeführt.
+Dies trifft nicht zu, wenn Sie einen *Cluster* ohne zugeordneten Arbeitsbereich löschen. In diesem Fall wird die *Clusterressource* sofort gelöscht.
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Deleting", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+}
+```
+
 Vorgang ist abgeschlossen
 ```json
 {
@@ -163,7 +174,7 @@ Fehler beim Vorgang
 
 ### <a name="subscription-whitelisting"></a>Aufnahme in die Abonnement-Whitelist
 
-Die CMK-Funktion ist ein Feature mit frühzeitigem Zugriff. Die Abonnements, in denen Sie *Clusterressourcen* erstellen möchten, müssen vorab von der Azure-Produktgruppe in die Whitelist aufgenommen werden. Verwenden Sie Ihre Kontakte zu Microsoft zum Angeben Ihrer Abonnement-IDs.
+Die CMK-Funktion wird auf dedizierten Log Analytics-Clustern bereitgestellt. Um sicherzustellen, dass die erforderliche Kapazität in Ihrer Region vorhanden ist, muss Ihr Abonnement im Voraus in die Whitelist aufgenommen werden. Verwenden Sie Ihre Kontakte zu Microsoft zum Angeben Ihrer Abonnement-IDs.
 
 > [!IMPORTANT]
 > Die CMK-Funktion ist regional. Azure Key Vault, *Clusterressource* und zugehörige Log Analytics-Arbeitsbereiche müssen sich in der gleichen Region befinden, können jedoch in unterschiedlichen Abonnements enthalten sein.
@@ -180,18 +191,23 @@ Die folgenden Einstellungen sind über die CLI und PowerShell verfügbar:
 
 ### <a name="create-cluster-resource"></a>Erstellen einer *Clusterressource*
 
-Diese Ressource wird als eine temporäre Identitätsverbindung zwischen Key Vault und Ihren Log Analytics-Arbeitsbereichen verwendet. Nachdem Sie eine Bestätigung erhalten haben, dass Ihre Abonnements in die Whitelist aufgenommen wurden, erstellen Sie eine Log Analytics-*Clusterressource* in der Region, in der sich Ihre Arbeitsbereiche befinden. Application Insights und Log Analytics erfordern separate Typen von *Clusterressourcen*. Der Typ der *Clusterressource* wird zum Erstellungszeitpunkt definiert, indem die Eigenschaft *clusterType* entweder auf *LogAnalytics* oder *ApplicationInsights* festgelegt wird. Der Typ der Clusterressource kann danach nicht mehr geändert werden.
+Diese Ressource wird als eine temporäre Identitätsverbindung zwischen Key Vault und Ihren Log Analytics-Arbeitsbereichen verwendet. Nachdem Sie eine Bestätigung erhalten haben, dass Ihre Abonnements in die Whitelist aufgenommen wurden, erstellen Sie eine Log Analytics-*Clusterressource* in der Region, in der sich Ihre Arbeitsbereiche befinden.
 
-Befolgen Sie für die CMK-Konfiguration für Application Insights die Anweisungen im Anhang.
+Beim Erstellen einer *Clusterressource* müssen Sie die *Kapazitätsreservierungsebene* (sku) angeben. Die *Kapazitätsreservierungsebene* kann im Bereich von 1.000 bis 2.000 GB pro Tag liegen, und Sie können sie später in 100er Schritten aktualisieren. Wenn Sie eine Kapazitätsreservierungsebene von mehr als 2.000 GB pro Tag benötigen, wenden Sie sich an uns unter LAIngestionRate@microsoft.com. [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
 
-Beim Erstellen einer *Clusterressource* müssen Sie die Kapazitätsreservierungsebene (sku) angeben. Die Kapazitätsreservierungsebene kann im Bereich von 1.000 bis 2.000 GB pro Tag liegen, und Sie können sie später in 100er Schritten aktualisieren. Wenn Sie eine Kapazitätsreservierungsebene von mehr als 2.000 GB pro Tag benötigen, wenden Sie sich an Ihren Microsoft-Kontakt. Diese Eigenschaft hat derzeit keine Auswirkung auf die Abrechnung. Nach der Einführung des Preismodells für dedizierte Cluster werden alle vorhandenen CMK-Bereitstellungen abgerechnet.
+Die Eigenschaft *billingType* bestimmt die Abrechnungszuordnung für die *Clusterressource* und deren Daten:
+- *Cluster* (Standard): Die Kapazitätsreservierungskosten für Ihren Cluster werden der *Clusterressource* zugeordnet.
+- *Arbeitsbereiche*: Die Kapazitätsreservierungskosten für Ihren Cluster werden proportional den Arbeitsbereichen im Cluster zugeordnet. Wenn die Gesamtmenge der erfassten Daten unter der Kapazitätsreservierung liegt, wird ein Teil des Verbrauchs über die *Clusterressource* abgerechnet. Weitere Informationen zum Clusterpreismodell finden Sie unter [Dedizierte Log Analytics-Cluster](manage-cost-storage.md#log-analytics-dedicated-clusters). 
+
+> [!NOTE]
+> Nachdem Sie die *Clusterressource* erstellt haben, können Sie sie mithilfe der PATCH REST-Anforderung mit *sku*, *keyVaultProperties* oder *billingType* aktualisieren.
 
 **Erstellen**
 
 Diese Resource Manager-Anforderung ist ein asynchroner Vorgang.
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -204,26 +220,25 @@ Content-type: application/json
     "Capacity": 1000
     },
   "properties": {
-    "clusterType": "LogAnalytics",
+    "billingType": "cluster",
     },
   "location": "<region-name>",
 }
 ```
+
 Die Identität wird der *Clusterressource* zum Zeitpunkt der Erstellung zugewiesen.
 
 **Antwort**
 
 200 OK und Header.
-Während des Zeitraums des frühzeitigen Zugriffs auf das Feature wird der ADX-Cluster manuell bereitgestellt. Während die Bereitstellung des zugrunde liegenden ADX-Clusters eine Weile dauert, können Sie den Bereitstellungsstatus auf zwei Arten überprüfen:
+
+Während die Bereitstellung des Log Analytics-Clusters eine Weile dauert, können Sie den Bereitstellungsstatus auf zwei Arten überprüfen:
+
 1. Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
 2. Senden Sie eine GET-Anforderung für die *Clusterressource*, und überprüfen Sie den Wert für *provisioningState*. Während der Bereitstellung lautet dieser *ProvisioningAccount*, und nach Abschluss des Vorgangs lautet er *Succeeded*.
 
-### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Bereitstellung des Azure Monitor-Datenspeichers (ADX-Cluster)
-
-Während des Zeitraums des frühzeitigen Zugriffs auf das Feature wird der ADX-Cluster manuell vom Produktteam bereitgestellt, sobald die vorherigen Schritte abgeschlossen sind. Verwenden Sie für diesen Schritt Ihren Microsoft-Kanal, und geben Sie die Antwort der *Clusterressource* an. 
-
 ```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
@@ -246,7 +261,8 @@ Authorization: Bearer <token>
     },
   "properties": {
     "provisioningState": "ProvisioningAccount",
-    "clusterType": "LogAnalytics", 
+    "clusterType": "LogAnalytics",
+    "billingType": "cluster",
     "clusterId": "cluster-id"
     },
   "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
@@ -283,11 +299,11 @@ Aktualisieren Sie „KeyVaultProperties“ der *Clusterressource* mit Schlüssel
 
 Diese Resource Manager-Anforderung ist beim Aktualisieren der Schlüsselbezeichnerdetails ein asynchroner Vorgang, während sie beim Aktualisieren des Kapazitätswerts ein synchroner Vorgang ist.
 
-> [!Warning]
-> Sie müssen einen vollständigen Text in der Aktualisierung der *Clusterressource* angeben, der *identity*, *sku*, *KeyVaultProperties* und *location* enthält. Wenn die *KeyVaultProperties*-Angaben fehlen, wird der Schlüsselbezeichner aus der *Clusterressource* entfernt, und eine [Schlüsselsperrung](#cmk-kek-revocation) wird ausgelöst.
+> [!NOTE]
+> Sie können in der *Clusterressource* einen Teiltext zum Aktualisieren von *sku*, *keyVaultProperties* oder *billingType* bereitstellen.
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -300,15 +316,17 @@ Content-type: application/json
      "capacity": 1000
      },
    "properties": {
+    "billingType": "cluster",
      "KeyVaultProperties": {
-       KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
-       KeyName: "<key-name>",
-       KeyVersion: "<current-version>"
-       },
+       "KeyVaultUri": "https://<key-vault-name>.vault.azure.net",
+       "KeyName": "<key-name>",
+       "KeyVersion": "<current-version>"
+       }
    },
    "location":"<region-name>"
 }
 ```
+
 „KeyVaultProperties“ enthält die Details des Key Vault-Schlüsselbezeichners.
 
 **Antwort**
@@ -333,13 +351,14 @@ Nachdem die Aktualisierung des Schlüsselbezeichners abgeschlossen ist, sollte d
     "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
     },
   "properties": {
-    "KeyVaultProperties": {
-      KeyVaultUri: "https://key-vault-name.vault.azure.net",
-      KeyName: "key-name",
-      KeyVersion: "current-version"
+    "keyVaultProperties": {
+      "keyVaultUri": "https://key-vault-name.vault.azure.net",
+      "kyName": "key-name",
+      "keyVersion": "current-version"
       },
     "provisioningState": "Succeeded",
     "clusterType": "LogAnalytics", 
+    "billingType": "cluster",
     "clusterId": "cluster-id"
   },
   "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
@@ -350,7 +369,6 @@ Nachdem die Aktualisierung des Schlüsselbezeichners abgeschlossen ist, sollte d
 ```
 
 ### <a name="workspace-association-to-cluster-resource"></a>Arbeitsbereichszuordnung zur *Clusterressource*
-Befolgen Sie für die CMK-Konfiguration für Application Insights die Anweisungen im Anhang für diesen Schritt.
 
 Sie müssen über Schreibberechtigungen (write) sowohl für Ihren Arbeitsbereich als auch die *Clusterressource* verfügen, um diesen Vorgang auszuführen. Dies umfasst die folgenden Aktionen:
 
@@ -358,7 +376,7 @@ Sie müssen über Schreibberechtigungen (write) sowohl für Ihren Arbeitsbereich
 - Für die *Clusterressource*: Microsoft.OperationalInsights/clusters/write
 
 > [!IMPORTANT]
-> Dieser Schritt sollte nur nach Bereitstellung des ADX-Clusters ausgeführt werden. Wenn Sie vor der Bereitstellung Arbeitsbereiche zuordnen und Daten erfassen, werden die erfassten Daten gelöscht und können nicht wiederhergestellt werden.
+> Dieser Schritt sollte nur nach Abschluss der Log Analytics-Clusterbereitstellung ausgeführt werden. Wenn Sie vor der Bereitstellung Arbeitsbereiche zuordnen und Daten erfassen, werden die erfassten Daten gelöscht und können nicht wiederhergestellt werden.
 
 **Zuordnen eines Arbeitsbereichs**
 
@@ -379,12 +397,15 @@ Content-type: application/json
 **Antwort**
 
 200 OK und Header.
+
 Erfasste Daten werden nach dem Zuordnungsvorgang mit Ihrem verwalteten Schlüssel verschlüsselt gespeichert, was bis zu 90 Minuten dauern kann. Sie können den Zuordnungsstatus des Arbeitsbereichs auf zwei Arten überprüfen:
+
 1. Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
 2. Senden Sie eine Anforderung [Arbeitsbereiche – Get](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) und sehen Sie sich die Antwort an. Zugeordnete Arbeitsbereiche haben eine clusterResourceId unter „Features“.
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
+Authorization: Bearer <token>
 ```
 
 **Antwort**
@@ -399,7 +420,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
       "name": "pricing-tier-name",
       "lastSkuUpdate": "Tue, 28 Jan 2020 12:26:30 GMT"
     },
-    "retentionInDays": days,
+    "retentionInDays": 31,
     "features": {
       "legacy": 0,
       "searchVersion": 1,
@@ -421,64 +442,27 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 ## <a name="cmk-kek-revocation"></a>CMK-Widerruf (KEK)
 
-Sie können den Zugriff auf Ihre Daten widerrufen, indem Sie den Schlüssel deaktivieren oder die Zugriffsrichtlinie der *Clusterressource* in Ihrer Key Vault-Instanz löschen. In Azure Monitor Storage werden Änderungen der Schlüsselberechtigungen immer innerhalb einer Stunde (normalerweise früher) berücksichtigt, und Storage steht dann nicht mehr zur Verfügung. Alle Daten, die in Arbeitsbereichen erfasst wurden, die Ihrer *Clusterressource* zugeordnet sind, werden gelöscht, und Abfragen schlagen fehl. Auf zuvor erfasste Daten in Azure Monitor Storage kann nicht zugegriffen werden, solange die *Clusterressource* und Ihre Arbeitsbereiche nicht gelöscht wurden. Daten, auf die nicht zugegriffen werden kann, unterliegen der Datenaufbewahrungsrichtlinie und werden bereinigt, sobald der Aufbewahrungszeitraum abgelaufen ist.
+Sie können den Zugriff auf Daten widerrufen, indem Sie den Schlüssel deaktivieren oder die Zugriffsrichtlinie der *Clusterressource* in Ihrer Key Vault-Instanz löschen. Im Log Analytics-Clusterspeicher werden Änderungen der Schlüsselberechtigungen immer innerhalb einer Stunde oder früher berücksichtigt, und der Speicher steht dann nicht mehr zur Verfügung. Alle neuen Daten, die in Arbeitsbereichen erfasst wurden, die ihrer  *Clusterressource* zugeordnet sind, werden gelöscht und können nicht wiederhergestellt werden, auf die Daten kann nicht zugegriffen werden, und Abfragen an diese Arbeitsbereiche schlagen fehl. Zuvor erfasste Daten verbleiben im Speicher, solange die *Clusterressource* und Ihre Arbeitsbereiche nicht gelöscht werden. Daten, auf die nicht zugegriffen werden kann, unterliegen der Datenaufbewahrungsrichtlinie und werden bereinigt, sobald der Aufbewahrungszeitraum abgelaufen ist. 
+
+Die in den letzten 14 Tagen erfassten Daten werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Diese werden beim Schlüsselsperrungsvorgang gelöscht, und es kann dann ebenfalls nicht mehr darauf zugegriffen werden.
 
 Storage fragt Key Vault in regelmäßigen Abständen ab und versucht, den Verschlüsselungsschlüssel zu entpacken. Sobald der Zugriff erfolgt, werden Datenerfassung und Abfrage innerhalb von 30 Minuten fortgesetzt.
 
 ## <a name="cmk-kek-rotation"></a>CMK-Rotation (KEK)
 
-Die Rotation des CMK erfordert eine explizite Aktualisierung der *Clusterressource* mit der neuen Schlüsselversion in Azure Key Vault. Wenn Sie Azure Monitor mit der neuen Schlüsselversion aktualisieren möchten, befolgen Sie die Anweisungen im Schritt „Aktualisieren der *Clusterressource* mit Schlüsselbezeichnerdetails“. Wenn Sie die Schlüsselversion in Key Vault aktualisieren und die neuen Schlüsselbezeichnerdetails in der *Clusterressource* nicht aktualisieren, verwendet Azure Monitor Storage weiterhin den vorherigen Schlüssel.
-Nach der Schlüsselrotation kann auf alle Ihre Daten zugegriffen werden, einschließlich der vor und nach der Rotation erfassten Daten, da alle Daten mit dem Kontoverschlüsselungsschlüssel (Account Encryption Key, AEK) verschlüsselt bleiben, während AEK nun mit der neuen Version des Schlüsselverschlüsselungsschlüssels (Key Encryption Key, KEK) verschlüsselt wird.
+Die Rotation des CMK erfordert eine explizite Aktualisierung der *Clusterressource* mit der neuen Schlüsselversion in Azure Key Vault. Befolgen Sie die Anweisungen im Schritt „Aktualisieren der *Clusterressource* mit Schlüsselbezeichnerdetails“. Wenn Sie die neuen Schlüsselbezeichnerdetails in der *Clusterressource* nicht aktualisieren, verwendet der Log Analytics-Clusterspeicher weiterhin den vorherigen Schlüssel zur Verschlüsselung. Wenn Sie den alten Schlüssel deaktivieren oder löschen, bevor Sie den neuen Schlüssel in der *Clusterressource* aktualisieren, wird der Status der [Schlüsselsperrung](#cmk-kek-revocation) aktiv.
 
-## <a name="limitations-and-constraints"></a>Einschränkungen
+Nach der Schlüsselrotation kann auf alle Ihre Daten weiter zugegriffen werden, da Daten immer mit dem Kontoverschlüsselungsschlüssel (Account Encryption Key, AEK) verschlüsselt werden, während AEK nun mit der neuen Version des Schlüsselverschlüsselungsschlüssels (Key Encryption Key, KEK) in Key Vault verschlüsselt wird.
 
-- Das CMK-Feature wird auf Ebene des ADX-Clusters unterstützt und erfordert einen dedizierten Azure Monitor ADX-Cluster mit der Anforderung, 1 TB pro Tag oder mehr zu senden.
+## <a name="cmk-manage"></a>CMK-Verwaltung
 
-- Die maximale Anzahl von *Clusterressourcen* pro Abonnement ist auf zwei begrenzt.
-
-- Die Zuordnung der *Clusterressource* zum Arbeitsbereich sollte NUR ausgeführt werden, nachdem Sie sichergestellt haben, dass die Bereitstellung des ADX-Clusters abgeschlossen wurde. Daten, die vor Abschluss der Bereitstellung an Ihren Arbeitsbereich gesendet wurden, werden gelöscht und können nicht wiederhergestellt werden.
-
-- Die CMK-Verschlüsselung gilt für nach der CMK-Konfiguration neu erfasste Daten. Daten, die vor der CMK-Konfiguration erfasst wurden, bleiben mit dem Microsoft-Schlüssel verschlüsselt. Sie können vor und nach der CMK-Konfiguration erfasste Daten nahtlos abfragen.
-
-- Sie können die Zuordnung eines Arbeitsbereichs zu einer *Clusterressource* aufheben, wenn Sie entscheiden, dass CMK für einen bestimmten Arbeitsbereich nicht erforderlich ist. Nach dem Aufheben der Zuordnung werden neue erfasste Daten im freigegebenen Log Analytics-Speicher gespeichert, wie es auch vor der Zuordnung zur *Clusterressource* der Fall war. Sie können Daten, die vor und nach dem Aufheben der Zuordnung erfasst wurden, nahtlos abfragen, wenn Ihre *Clusterressource* mit gültigem Key Vault-Schlüssel bereitgestellt und konfiguriert wurde.
-
-- Azure Key Vault muss als wiederherstellbar konfiguriert werden. Die folgenden Eigenschaften sind standardmäßig nicht aktiviert und sollten mithilfe der CLI oder PowerShell konfiguriert werden:
-
-  - [Vorläufiges Löschen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) muss aktiviert werden.
-  - Der [Bereinigungsschutz](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) sollte aktiviert werden, wenn Sie sich auch nach dem vorläufigen Löschen vor dem erzwungenen Löschen des Geheimnis/Schlüsseltresors schützen möchten.
-
-- Application Insights und Log Analytics erfordern separate *Clusterressourcen*. Der Typ der *Clusterressource* wird zum Erstellungszeitpunkt definiert, indem die Eigenschaft „clusterType“ entweder auf „LogAnalytics“ oder „ApplicationInsights“ festgelegt wird. Der Typ der *Clusterressource* kann nicht geändert werden.
-
-- Das Verschieben einer *Clusterressource* in eine andere Ressourcengruppe oder ein anderes Abonnement wird derzeit nicht unterstützt.
-
-- Azure Key Vault, *Clusterressource* und zugehörige Arbeitsbereiche müssen sich in derselben Region und in demselben Azure Active Directory (Azure AD)-Mandanten befinden, können jedoch in unterschiedlichen Abonnements enthalten sein.
-
-- Die Arbeitsbereichszuordnung zur *Clusterressource* schlägt fehl, wenn sie einer anderen *Clusterressource* zugeordnet ist.
-
-## <a name="troubleshooting-and-management"></a>Problembehandlung und Verwaltung
-
-- Key Vault-Verfügbarkeit
-    - Im Normalbetrieb: Der AEK wird für kurze Zeiträume von Storage zwischengespeichert und in regelmäßigen Abständen zum Entpacken in Key Vault zurückgeführt.
-    
-    - Vorübergehende Verbindungsfehler: Storage handhabt vorübergehende Fehler (Timeouts, Verbindungsfehler, DNS-Probleme), indem Schlüssel für eine kurze Zeit im Cache verbleiben können und dadurch kurze Unterbrechungen der Verfügbarkeit überbrückt werden. Die Abfrage- und Erfassungsfunktionen werden ohne Unterbrechung fortgesetzt.
-    
-    - Livewebsite: Eine Nichtverfügbarkeit von ungefähr 30 Minuten führt dazu, dass das Speicherkonto nicht mehr zur Verfügung steht. Die Abfragefunktion ist nicht verfügbar, und erfasste Daten werden über mehrere Stunden mithilfe des Microsoft-Key zwischengespeichert, um Datenverluste zu vermeiden. Wenn der Zugriff auf Key Vault wiederhergestellt ist, steht die Abfragefunktion wieder zur Verfügung, und die temporär zwischengespeicherten Daten werden in den Datenspeicher aufgenommen und mit CMK verschlüsselt.
-
-- Wenn Sie eine *Clusterressource* erstellen und „KeyVaultProperties“ sofort angeben, tritt bei dem Vorgang möglicherweise ein Fehler auf, da die Zugriffsrichtlinie erst definiert werden kann, nachdem die Systemidentität der *Clusterressource* zugewiesen wurde.
-
-- Wenn Sie eine vorhandene *Clusterressource* mit „KeyVaultProperties“ aktualisieren und die Zugriffsrichtlinie für den Schlüsselabruf in Key Vault nicht vorhanden ist, schlägt der Vorgang fehl.
-
-- Wenn Sie versuchen, eine *Clusterressource* zu löschen, die einem Arbeitsbereich zugeordnet ist, tritt beim Löschvorgang ein Fehler auf.
-
-- Wenn beim Erstellen einer *Clusterressource* ein Konfliktfehler auftritt, haben Sie möglicherweise Ihre *Clusterressource* in den letzten 14 Tagen gelöscht und diese befindet sich nun im Zeitraum des vorläufigen Löschens. Der Name der *Clusterressource* bleibt während des Zeitraums des vorläufigen Löschens reserviert, und Sie können keinen neuen Cluster mit diesem Namen erstellen. Der Name wird nach Ablauf des Zeitraums des vorläufigen Löschens freigegeben, wenn die *Clusterressource* dauerhaft gelöscht wird.
-
-- Rufen Sie alle *Clusterressourcen* für eine Ressourcengruppe ab:
+- **Abrufen aller *Clusterressourcen* für eine Ressourcengruppe**
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
-    
+
   **Antwort**
   
   ```json
@@ -496,13 +480,14 @@ Nach der Schlüsselrotation kann auf alle Ihre Daten zugegriffen werden, einschl
           "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
           },
         "properties": {
-           "KeyVaultProperties": {
-              KeyVaultUri: "https://key-vault-name.vault.azure.net",
-              KeyName: "key-name",
-              KeyVersion: "current-version"
+           "keyVaultProperties": {
+              "keyVaultUri": "https://key-vault-name.vault.azure.net",
+              "keyName": "key-name",
+              "keyVersion": "current-version"
               },
           "provisioningState": "Succeeded",
           "clusterType": "LogAnalytics", 
+          "billingType": "cluster",
           "clusterId": "cluster-id"
         },
         "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
@@ -514,7 +499,7 @@ Nach der Schlüsselrotation kann auf alle Ihre Daten zugegriffen werden, einschl
   }
   ```
 
-- Rufen Sie alle *Clusterressourcen* für ein Abonnement ab:
+- **Abrufen aller *Clusterressourcen* für ein Abonnement**
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -525,9 +510,60 @@ Nach der Schlüsselrotation kann auf alle Ihre Daten zugegriffen werden, einschl
     
   Dieselbe Antwort wie bei *Clusterressourcen* für eine Ressourcengruppe, jedoch im Abonnementbereich.
 
-- Aktualisieren Sie die *Kapazitätsreservierung* für die *Clusterressource*: Wenn sich das Datenvolumen für die zugeordneten Arbeitsbereiche ändert und Sie die Kapazitätsreservierungsebene aus Abrechnungsgründen aktualisieren möchten, folgen Sie den Anweisungen zum [Aktualisieren einer *Clusterressource*](#update-cluster-resource-with-key-identifier-details), und geben Sie Ihren neuen Kapazitätswert an. Die Kapazitätsreservierungsebene kann im Bereich von 1.000 bis 2.000 GB pro Tag liegen und in 100er Schritten aktualisiert werden. Wenn Sie eine Ebene von mehr als 2.000 GB pro Tag benötigen, wenden Sie sich an Ihren Microsoft-Kontakt.
+- **Aktualisieren der *Kapazitätsreservierung* für eine *Clusterressource***
 
-- Löschen Sie die *Clusterressource*: Es wird ein vorläufiger Löschvorgang durchgeführt, um die Wiederherstellung der *Clusterressource*, einschließlich der Daten, innerhalb von 14 Tagen zu ermöglichen, unabhängig davon, ob der Löschvorgang versehentlich oder gezielt durchgeführt wurde. Der Name der *Clusterressource* bleibt während des Zeitraums des vorläufigen Löschens reserviert, und Sie können keinen neuen Cluster mit diesem Namen erstellen. Nach Ablauf des Zeitraums des vorläufigen Löschens wird der Name der *Clusterressource* freigegeben, und die *Clusterressource* sowie die Daten werden dauerhaft gelöscht und können nicht wiederhergestellt werden. Alle Zuordnungen von Arbeitsbereichen zur *Clusterressource* werden beim Löschvorgang aufgehoben. Neue erfasste Daten werden im freigegebenen Log Analytics-Speicher gespeichert und mit dem Microsoft-Schlüssel verschlüsselt. Das Aufheben der Zuordnung von Arbeitsbereichen ist ein asynchroner Vorgang.
+  Wenn sich das Datenvolumen Ihrer zugeordneten Arbeitsbereiche im Laufe der Zeit ändert und Sie die Kapazitätsreservierungsebene entsprechend aktualisieren möchten. Führen Sie die Schritte zum [Aktualisieren der *Clusterressource*](#update-cluster-resource-with-key-identifier-details) aus, und geben Sie den neuen Kapazitätswert an. Dieser kann im Bereich von 1.000 bis 2.000 GB pro Tag liegen und in 100er Schritten aktualisiert werden. Wenn Sie eine Ebene von mehr als 2.000 GB pro Tag benötigen, wenden Sie sich an Ihren Microsoft-Kontakt. Beachten Sie, dass Sie nicht den vollständigen REST-Anforderungstext angeben müssen und die SKU einschließen sollten:
+
+  **body**
+  ```json
+  {
+    "sku": {
+      "name": "capacityReservation",
+      "Capacity": 1000
+    }
+  }
+  ```
+
+- **Aktualisieren von *billingType* für eine *Clusterressource***
+
+  Die Eigenschaft *billingType* bestimmt die Abrechnungszuordnung für die *Clusterressource* und deren Daten:
+  - *Cluster* (Standard): Die Abrechnung wird dem Abonnement zugeordnet, das Ihre Clusterressource hostet.
+  - *Arbeitsbereiche*: Die Abrechnung wird den Abonnements zugeordnet, die Ihre Arbeitsbereiche proportional hosten.
+  
+  Führen Sie die Schritte zum [Aktualisieren der *Clusterressource*](#update-cluster-resource-with-key-identifier-details) aus, und geben Sie den neuen Wert für „billingType“ an. Beachten Sie, dass Sie nicht den vollständigen REST-Anforderungstext angeben müssen und *billingType* einschließen sollten:
+
+  **body**
+  ```json
+  {
+    "properties": {
+      "billingType": "cluster",
+      }  
+  }
+  ``` 
+
+- **Aufheben der Zuordnung eines Arbeitsbereichs**
+
+  Sie brauchen Schreibberechtigungen für den Arbeitsbereich und die *Clusterressource*, um diesen Vorgang auszuführen. Sie können die Zuordnung eines Arbeitsbereichs zur *Clusterressource* jederzeit aufheben. Neue erfasste Daten werden nach dem Aufheben der Zuordnung im Log Analytics-Speicher gespeichert und mit dem Microsoft-Schlüssel verschlüsselt. Sie können Daten, die vor und nach dem Aufheben der Zuordnung im Arbeitsbereich erfasst wurden, nahtlos abfragen, solange die *Clusterressource* mit gültigem Key Vault-Schlüssel bereitgestellt und konfiguriert wurde.
+
+  Diese Resource Manager-Anforderung ist ein asynchroner Vorgang.
+
+  ```rest
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview
+  Authorization: Bearer <token>
+  ```
+
+  **Antwort**
+
+  200 OK und Header.
+
+  Erfasste Daten werden nach dem Aufheben der Zuordnung im Log Analytics-Speicher gespeichert. Dieser Vorgang kann bis zu 90 Minuten dauern. Sie können den Zuordnungsstatus des Arbeitsbereichs auf zwei Arten überprüfen:
+
+  1. Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
+  2. Senden Sie eine [GET-Anforderung zum Abrufen von Arbeitsbereichen](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get), und sehen Sie sich die Antwort an. Für Arbeitsbereiche, deren Zuordnung aufgehoben wurde, wird die *clusterResourceId* nicht unter *features* aufgeführt.
+
+- **Löschen der *Clusterresource***
+
+  Sie brauchen Schreibberechtigungen für die *Clusterressource*, um diesen Vorgang auszuführen. Es wird ein vorläufiger Löschvorgang durchgeführt, um die Wiederherstellung Ihrer Ressource *Cluster*, einschließlich der Daten, innerhalb von 14 Tagen zu ermöglichen, unabhängig davon, ob der Löschvorgang versehentlich oder gezielt durchgeführt wurde. Der Name der *Clusterressource* bleibt während des Zeitraums des vorläufigen Löschens reserviert, und Sie können keinen neuen Cluster mit diesem Namen erstellen. Nach Ablauf des Zeitraums des vorläufigen Löschens wird der Name der *Clusterressource* freigegeben, und die *Clusterressource* sowie die Daten werden dauerhaft gelöscht und können nicht wiederhergestellt werden. Alle Zuordnungen von Arbeitsbereichen zur *Clusterressource* werden beim Löschvorgang aufgehoben. Neue erfasste Daten werden im Log Analytics-Speicher gespeichert und mit dem Microsoft-Schlüssel verschlüsselt. Das Aufheben der Zuordnung von Arbeitsbereichen ist ein asynchroner Vorgang und kann bis zu 90 Minuten dauern.
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -538,160 +574,54 @@ Nach der Schlüsselrotation kann auf alle Ihre Daten zugegriffen werden, einschl
 
   200 – OK
 
-- Stellen Sie die *Clusterressource* und die Daten wieder her: Eine *Clusterressource*, die in den letzten 14 Tagen gelöscht wurde, befindet sich im vorläufig gelöschten Zustand und kann wiederhergestellt werden. Dies wird derzeit manuell von der Produktgruppe durchgeführt. Verwenden Sie Ihren Microsoft-Kanal für Wiederherstellungsanfragen.
+- **Wiederherstellen der *Clusterressource* und Daten** 
+  
+  Eine *Clusterressource*, die in den letzten 14 Tagen gelöscht wurde, befindet sich im vorläufig gelöschten Zustand und kann zusammen mit den Daten wiederhergestellt werden. Da bei der Löschung der *Clusterressource* die Zuordnung aller Arbeitsbereiche zur *Clusterressource* aufgehoben wurde, müssen Sie die Arbeitsbereiche nach der Wiederherstellung für die CMK-Verschlüsselung neu zuordnen. Dieser Wiederherstellungsvorgang wird derzeit manuell von der Produktgruppe durchgeführt. Verwenden Sie Ihren Microsoft-Kanal für Wiederherstellungsanfragen.
 
-## <a name="appendix"></a>Anhang
+## <a name="limitationsandconstraints"></a>Einschränkungen
 
-CMK (Customer-Managed Key, kundenseitig verwalteter Schlüssel) für Application Insights wird ebenfalls unterstützt. Sie sollten jedoch beim Planen der Bereitstellung von CMK für Application Insight-Komponenten folgende Änderung beachten.
+- Der CMK wird auf dedizierten Log Analytics-Clustern unterstützt und eignet sich für Kunden, die 1 TB oder mehr pro Tag senden.
 
-Log Analytics und Application Insights verwenden die gleiche Datenspeicherplattform und Abfrage-Engine. Diese beiden Speicher werden über die Integration von Application Insights in Log Analytics zusammengeführt, um unter Azure Monitor einen einzigen Speicher mit vereinheitlichten Protokollen im zweiten Quartal bereitzustellen.
-2020. Durch diese Änderung werden Ihre Application Insight-Daten in Log Analytics-Arbeitsbereiche eingebunden sowie Abfragen, Einblicke und andere Verbesserungen ermöglicht, wobei die Konfiguration von CMK in Ihrem Arbeitsbereich auch auf Ihre Application Insights-Daten angewendet wird.
+- Die maximale Anzahl von *Clusterressourcen* pro Region und Abonnement beträgt 2.
 
-> [!NOTE]
-> Wenn Sie CMK vor der Integration nicht für Ihre Application Insights-Daten bereitstellen müssen, empfiehlt es sich, mit CMK für Application Insights zu warten, da solche Bereitstellungen durch die Integration unterbrochen werden und Sie CMK nach der Migration zum Log Analytics-Arbeitsbereich neu konfigurieren müssen. Der Mindestwert von 1 TB pro Tag gilt auf Clusterebene, und bis die Konsolidierung im zweiten Quartal abgeschlossen ist, erfordern Application Insights und Log Analytics separate Cluster.
+- Sie können Ihrer  *Clusterressource* einen Arbeitsbereich zuordnen und die Zuordnung dann aufheben, wenn CMK für den Arbeitsbereich nicht erforderlich ist. Die Anzahl der Zuordnungen eines bestimmten Arbeitsbereichs ist in einem Zeitraum von 30 Tagen auf 2 begrenzt.
 
-## <a name="application-insights-cmk-configuration"></a>CMK-Konfiguration für Application Insights
+- Die Zuordnung eines Arbeitsbereichs zu einer  *Clusterressource*  sollte NUR ausgeführt werden, nachdem Sie sichergestellt haben, dass die Log Analytics-Clusterbereitstellung abgeschlossen wurde. Daten, die vor dem Abschluss an den Arbeitsbereich gesendet wurden, werden gelöscht und können nicht wiederhergestellt werden.
 
-Die Konfiguration von CMK für Application Insights ist mit dem in diesem Artikel beschriebenen Prozess identisch, einschließlich Einschränkungen und Problembehandlung, jedoch mit Ausnahme der folgenden Schritten:
+- Die CMK-Verschlüsselung gilt für nach der CMK-Konfiguration     neu erfasste Daten. Daten, die vor der CMK-Konfiguration     erfasst wurden, bleiben mit dem Microsoft-Schlüssel verschlüsselt. Sie können     vor und nach der CMK-Konfiguration erfasste Daten nahtlos abfragen.
 
-- Erstellen einer *Clusterressource*
-- Zuordnen einer Komponente zu einer *Clusterressource*
+- Azure Key Vault muss als wiederherstellbar konfiguriert werden. Die folgenden Eigenschaften sind standardmäßig nicht aktiviert und sollten mithilfe der CLI oder PowerShell konfiguriert werden:   - [Vorläufiges Löschen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
+    muss aktiviert werden.   -Der  [Bereinigungsschutz](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)  sollte aktiviert werden, wenn Sie sich auch nach dem vorläufigen Löschen vor dem erzwungenen Löschen des Geheimnis/Schlüsseltresors schützen möchten.
 
-Wenn Sie CMK für Application Insights konfigurieren, verwenden Sie die folgenden Schritte anstelle der oben aufgeführten Schritte.
+-Das Verschieben einer  *Clusterressource* in eine andere Ressourcengruppe oder ein anderes Abonnement     wird derzeit nicht unterstützt.
 
-### <a name="create-a-cluster-resource"></a>Erstellen einer *Clusterressource*
+- Azure Key Vault,  *Clusterressource* und zugehörige Arbeitsbereiche müssen sich in derselben Region und in demselben Azure Active Directory (Azure AD)-Mandanten befinden, können jedoch in unterschiedlichen Abonnements enthalten sein.
 
-Diese Ressource wird als temporäre Identitätsverbindung zwischen Key Vault und Ihren Komponenten verwendet. NACHDEM Sie eine Bestätigung erhalten haben, dass Ihre Abonnements in die Whitelist aufgenommen wurden, erstellen Sie eine Log Analytics-*Clusterressource* in der Region, in der sich Ihre Komponenten befinden. Der Typ der *Clusterressource* wird zum Erstellungszeitpunkt definiert, indem die Eigenschaft *clusterType* entweder auf *LogAnalytics* oder *ApplicationInsights* festgelegt wird. Dieser sollte für Application Insights-CMK *ApplicationInsights* lauten. Die *clusterType*-Einstellung kann nach der Konfiguration nicht geändert werden.
+- Die Arbeitsbereichszuordnung zur  *Clusterressource* schlägt fehl, wenn sie     einer anderen  *Clusterressource* zugeordnet ist.
 
-**Erstellen**
+## <a name="troubleshooting"></a>Problembehandlung
 
-Diese Resource Manager-Anforderung ist ein asynchroner Vorgang.
+- Verhalten bei Key Vault-Verfügbarkeit
+  - Im Normalbetrieb: Der AEK wird für kurze Zeiträume von Storage zwischengespeichert und in regelmäßigen Abständen zum Entpacken in Key Vault zurückgeführt.
+    
+  - Vorübergehende Verbindungsfehler: Storage handhabt vorübergehende Fehler (Timeouts, Verbindungsfehler, DNS-Probleme), indem Schlüssel für eine kurze Zeit im Cache verbleiben können und dadurch kurze Unterbrechungen der Verfügbarkeit überbrückt werden. Die Abfrage- und Erfassungsfunktionen werden ohne Unterbrechung fortgesetzt.
+    
+  - Livewebsite: Eine Nichtverfügbarkeit von ungefähr 30 Minuten führt dazu, dass das Speicherkonto nicht mehr zur Verfügung steht. Die Abfragefunktion ist nicht verfügbar, und erfasste Daten werden über mehrere Stunden mithilfe des Microsoft-Key zwischengespeichert, um Datenverluste zu vermeiden. Wenn der Zugriff auf Key Vault wiederhergestellt ist, steht die Abfragefunktion wieder zur Verfügung, und die temporär zwischengespeicherten Daten werden in den Datenspeicher aufgenommen und mit CMK verschlüsselt.
 
-```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
-Authorization: Bearer <token>
-Content-type: application/json
+  - Key Vault-Zugriffsrate: Die Häufigkeit, mit der Azure Monitor Storage für Pack- und Entpackvorgänge auf Key Vault zugreift, liegt zwischen 6 und 60 Sekunden.
 
-{
-  "identity": {
-    "type": "systemAssigned"
-    },
-  "sku": {
-    "name": "capacityReservation",
-    "Capacity": 1000
-    },
-  "properties": {
-    "clusterType":"ApplicationInsights"
-    },
-  "location": "<region-name>"
-}
-```
+- Wenn Sie eine *Clusterressource* erstellen und „KeyVaultProperties“ sofort angeben, tritt bei dem Vorgang möglicherweise ein Fehler auf, da die Zugriffsrichtlinie erst definiert werden kann, nachdem die Systemidentität der *Clusterressource* zugewiesen wurde.
 
-**Antwort**
+- Wenn Sie eine vorhandene *Clusterressource* mit „KeyVaultProperties“ aktualisieren und die Zugriffsrichtlinie für den Schlüsselabruf in Key Vault nicht vorhanden ist, schlägt der Vorgang fehl.
 
-200 OK und Header.
-Während des Zeitraums des frühzeitigen Zugriffs auf das Feature wird der ADX-Cluster manuell bereitgestellt. Während die Bereitstellung des zugrunde liegenden ADX-Clusters eine Weile dauert, können Sie den Bereitstellungsstatus auf zwei Arten überprüfen:
-1. Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
-2. Senden Sie eine GET-Anforderung für die *Clusterressource*, und überprüfen Sie den Wert für *provisioningState*. Während der Bereitstellung lautet dieser *ProvisioningAccount*, und nach Abschluss des Vorgangs lautet er *Succeeded*.
+- Wenn Sie versuchen, eine *Clusterressource* zu löschen, die einem Arbeitsbereich zugeordnet ist, tritt beim Löschvorgang ein Fehler auf.
 
-### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Zuordnen einer Komponente zu einer *Clusterressource* mithilfe der API für [Komponenten: Erstellen oder aktualisieren](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
+- Wenn beim Erstellen einer *Clusterressource* ein Konfliktfehler auftritt, haben Sie möglicherweise Ihre *Clusterressource* in den letzten 14 Tagen gelöscht und diese befindet sich nun im Zeitraum des vorläufigen Löschens. Der Name der *Clusterressource* bleibt während des Zeitraums des vorläufigen Löschens reserviert, und Sie können keinen neuen Cluster mit diesem Namen erstellen. Der Name wird nach Ablauf des Zeitraums des vorläufigen Löschens freigegeben, wenn die *Clusterressource* dauerhaft gelöscht wird.
 
-Sie müssen über Schreibberechtigungen (write) sowohl für Ihre Komponente als auch die *Clusterressource* verfügen, um diesen Vorgang auszuführen. Dies umfasst die folgenden Aktionen:
+- Wenn Sie die Ressource *Cluster* aktualisieren, während ein Vorgang läuft, schlägt der Vorgang fehl.
 
-- Für die Komponente: Microsoft.Insights/component/write
-- Für die *Clusterressource*: Microsoft.OperationalInsights/clusters/write
+- Wenn Sie die *Clusterressource* nicht bereitstellen, vergewissern Sie sich, dass sich Azure Key Vault,  *Clusterressource* und zugeordnete Log Analytics-Arbeitsbereiche in der gleichen Region befinden. Sie können in unterschiedlichen Abonnements enthalten sein.
 
-> [!IMPORTANT]
-> Dieser Schritt sollte nur nach Bereitstellung des ADX-Clusters ausgeführt werden. Wenn Sie vor der Bereitstellung Komponenten zuordnen und Daten erfassen, werden die erfassten Daten gelöscht und können nicht wiederhergestellt werden.
-> Um zu überprüfen, ob der ADX-Cluster bereitgestellt wurde, führen Sie die GET REST-API der *Clusterresource* aus, und vergewissern Sie sich, das der *provisioningState*-Wert *Succeeded* lautet.
+- Wenn Sie die Schlüsselversion in Key Vault aktualisieren und die neuen Schlüsselbezeichnerdetails in der *Clusterressource* nicht aktualisieren, verwendet der Log Analytics-Cluster weiterhin den vorherigen Schlüssel, und auf die Daten kann nicht mehr zugegriffen werden. Aktualisieren Sie neue Schlüsselbezeichnerdetails in der *Clusterressource*, um mit der Datenerfassung fortzufahren und Daten abfragen zu können.
 
-```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
-Authorization: Bearer <token>
-```
-
-**Antwort**
-```json
-{
-  "identity": {
-    "type": "SystemAssigned",
-    "tenantId": "tenant-id",
-    "principalId": "principal-id"
-    },
-  "sku": {
-    "name": "capacityReservation",
-    "capacity": 1000,
-    "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
-    },
-  "properties": {
-    "KeyVaultProperties": {
-      KeyVaultUri: "https://key-vault-name.vault.azure.net",
-      KeyName: "key-name",
-      KeyVersion: "current-version"
-      },
-    "provisioningState": "Succeeded",
-    "clusterType": "ApplicationInsights", 
-    "clusterId": "cluster-id"
-    },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-  "name": "cluster-name",
-  "type": "Microsoft.OperationalInsights/clusters",
-  "location": "region-name"
-  }
-```
-
-> [!IMPORTANT]
-> Kopieren Sie die Antwort, und bewahren Sie sie auf, da Sie sie in den nächsten Schritten benötigen.
-
-**Zuordnen einer Komponente**
-
-```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01
-Authorization: Bearer <token>
-Content-type: application/json
-
-{
-  "properties": {
-    "clusterDefinitionId": "cluster-id"
-  },
-  "location": "<region-name>",
-  "kind": "<component-type>"
-}
-```
-„clusterDefinitionId“ ist der „clusterId“-Wert, der in der Antwort aus dem vorherigen Schritt bereitgestellt wurde.
-„kind“-Beispiel ist „web“.
-
-**Antwort**
-
-```json
-{
-  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.insights/components/component-name",
-  "name": "component-name",
-  "type": "Microsoft.Insights/components",
-  "location": "region-name",
-  "tags": "",
-  "kind": "",
-  "properties": {
-    "clusterDefinitionId": "cluster-id"
-    "ApplicationId": "",
-    "AppId": "",
-    "Application_Type": "",
-    "Flow_Type": "",
-    "Request_Source": "",
-    "InstrumentationKey": "",
-    "CreationDate": "",
-    "TenantId": "",
-    "HockeyAppId": "",
-    "HockeyAppToken": "",
-    "provisioningState": "",
-    "SamplingPercentage":,
-    "RetentionInDays":,
-    "ConnectionString": "",
-    "DisableIpMasking":,
-    "ImmediatePurgeDataOn30Days": 
-  }
-}
-```
-„clusterDefinitionId“ ist die *Cluster*-Ressourcen-ID, die dieser Komponente zugeordnet ist.
-
-Nach der Zuordnung werden Daten, die an Ihre Komponenten gesendet werden, mit dem verwalteten Schlüssel verschlüsselt gespeichert.
+- Wenn Sie Unterstützung und Hilfe im Zusammenhang mit kundenseitig verwalteten Schlüsseln benötigen, nutzen Sie Ihre Kontakte zu Microsoft.

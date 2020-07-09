@@ -2,24 +2,28 @@
 title: Bereitstellen von Ressourcen in einem Abonnement
 description: In diesem Artikel wird beschrieben, wie Sie eine Ressourcengruppe in einer Azure Resource Manager-Vorlage erstellen. Außerdem wird veranschaulicht, wie Sie Ressourcen für den Bereich des Azure-Abonnements bereitstellen.
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: 6bec29a07653ff5ad7d1e2f8317246049e127c8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/01/2020
+ms.openlocfilehash: ab39fed11ee53849e7d588d16749de96172b234d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605007"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832813"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene
 
-Zur Vereinfachung der Verwaltung von Ressourcen in Ihrem Azure-Abonnement können Sie [Richtlinien](../../governance/policy/overview.md) oder [rollenbasierte Zugriffssteuerungen](../../role-based-access-control/overview.md) im gesamten Abonnement definieren und zuweisen. Mit Vorlagen auf Abonnementebene können Sie Richtlinien deklarativ anwenden und Rollen im Abonnement zuweisen. Außerdem können Sie Ressourcengruppen erstellen und Ressourcen bereitstellen.
+Um die Verwaltung von Ressourcen zu vereinfachen, können Sie Ressourcen auf der Ebene Ihres Azure-Abonnements bereitstellen. Beispielsweise können Sie [Richtlinien](../../governance/policy/overview.md) und [rollenbasierte Zugriffssteuerungen](../../role-based-access-control/overview.md) für Ihr Abonnement bereitstellen, und diese Ressourcen werden dann in Ihrem gesamten Abonnement angewendet. Außerdem können Sie Ressourcengruppen erstellen und Ressourcen in diesen Ressourcengruppen bereitstellen.
 
-Um Vorlagen auf Abonnementebene bereitzustellen, verwenden Sie die Azure CLI, PowerShell oder die REST-API. Das Azure-Portal unterstützt keine Bereitstellung auf Abonnementebene.
+> [!NOTE]
+> In einer Bereitstellung auf Abonnementebene können Sie in 800 verschiedenen Ressourcengruppen bereitstellen.
+
+Um Vorlagen auf Abonnementebene bereitzustellen, verwenden Sie die Azure CLI, PowerShell oder die REST-API.
 
 ## <a name="supported-resources"></a>Unterstützte Ressourcen
 
 Sie können die folgenden Ressourcentypen auf der Abonnementebene bereitstellen:
 
+* [blueprints](/azure/templates/microsoft.blueprint/blueprints)
 * [budgets](/azure/templates/microsoft.consumption/budgets)
 * [Bereitstellungen:](/azure/templates/microsoft.resources/deployments) für geschachtelte Vorlagen, die auf Ressourcengruppen angewandt werden
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
@@ -34,6 +38,7 @@ Sie können die folgenden Ressourcentypen auf der Abonnementebene bereitstellen:
 * [scopeAssignments](/azure/templates/microsoft.managednetwork/scopeassignments)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
 * [Tags](/azure/templates/microsoft.resources/tags)
+* [workspacesettings](/azure/templates/microsoft.security/workspacesettings)
 
 ### <a name="schema"></a>Schema
 
@@ -95,11 +100,11 @@ Bei Bereitstellungen auf Abonnementebene müssen bei der Verwendung von Vorlagen
 * Verwenden Sie die Funktion [subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid), um die Ressourcen-ID für Ressourcen abzurufen, die auf Abonnementebene bereitgestellt werden.
 
   Verwenden Sie beispielsweise Folgendes, um die Ressourcen-ID für eine Richtliniendefinition abzurufen:
-  
+
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
   ```
-  
+
   Die zurückgegebene Ressourcen-ID hat das folgende Format:
 
   ```json
@@ -128,7 +133,7 @@ Mit der folgenden Vorlage wird eine leere Ressourcengruppe erstellt.
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
@@ -159,7 +164,7 @@ Verwenden Sie das [copy-Element](copy-resources.md) mit Ressourcengruppen, um me
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "location": "[parameters('rgLocation')]",
       "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
       "copy": {
@@ -177,7 +182,7 @@ Weitere Informationen zur Ressourceniteration finden Sie unter [Bereitstellen me
 
 ## <a name="resource-group-and-resources"></a>Ressourcengruppen und Ressourcen
 
-Verwenden Sie zum Erstellen der Ressourcengruppe und Bereitstellen von Ressourcen für diese eine geschachtelte Vorlage. Die geschachtelte Vorlage definiert die Ressourcen, die für die Ressourcengruppe bereitgestellt werden sollen. Legen Sie die geschachtelte Vorlage vor der Ressourcenbereitstellung als von der Ressourcengruppe abhängig fest, um sicherzustellen, dass die Ressourcengruppe vorhanden ist.
+Verwenden Sie zum Erstellen der Ressourcengruppe und Bereitstellen von Ressourcen für diese eine geschachtelte Vorlage. Die geschachtelte Vorlage definiert die Ressourcen, die für die Ressourcengruppe bereitgestellt werden sollen. Legen Sie die geschachtelte Vorlage vor der Ressourcenbereitstellung als von der Ressourcengruppe abhängig fest, um sicherzustellen, dass die Ressourcengruppe vorhanden ist. Sie können in bis zu 800 Ressourcengruppen bereitstellen.
 
 Das folgende Beispiel erstellt eine Ressourcengruppe und stellt ein Speicherkonto in der Ressourcengruppe bereit.
 
@@ -203,14 +208,14 @@ Das folgende Beispiel erstellt eine Ressourcengruppe und stellt ein Speicherkont
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2018-05-01",
-      "location": "[parameters('rgLocation')]",
+      "apiVersion": "2019-10-01",
       "name": "[parameters('rgName')]",
+      "location": "[parameters('rgLocation')]",
       "properties": {}
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "storageDeployment",
       "resourceGroup": "[parameters('rgName')]",
       "dependsOn": [
@@ -219,14 +224,14 @@ Das folgende Beispiel erstellt eine Ressourcengruppe und stellt ein Speicherkont
       "properties": {
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {},
           "variables": {},
           "resources": [
             {
               "type": "Microsoft.Storage/storageAccounts",
-              "apiVersion": "2017-10-01",
+              "apiVersion": "2019-06-01",
               "name": "[variables('storageName')]",
               "location": "[parameters('rgLocation')]",
               "sku": {
@@ -244,11 +249,11 @@ Das folgende Beispiel erstellt eine Ressourcengruppe und stellt ein Speicherkont
 }
 ```
 
-## <a name="create-policies"></a>Erstellen von Richtlinien
+## <a name="azure-policy"></a>Azure Policy
 
-### <a name="assign-policy"></a>Zuweisen der Richtlinie
+### <a name="assign-policy-definition"></a>Zuweisen einer Richtliniendefinition
 
-Im folgenden Beispiel wird dem Abonnement eine vorhandene Richtliniendefinition zugewiesen. Wenn die Richtlinie Parameter unterstützt, stellen Sie diese als Objekt bereit. Wenn die Richtlinie keine Parameter unterstützt, verwenden Sie das standardmäßige leere Objekt.
+Im folgenden Beispiel wird dem Abonnement eine vorhandene Richtliniendefinition zugewiesen. Wenn die Richtliniendefinition Parameter unterstützt, stellen Sie diese als Objekt bereit. Wenn die Richtliniendefinition keine Parameter unterstützt, verwenden Sie das standardmäßige leere Objekt.
 
 ```json
 {
@@ -285,7 +290,7 @@ Im folgenden Beispiel wird dem Abonnement eine vorhandene Richtliniendefinition 
 Stellen Sie diese Vorlage mit der Azure CLI wie folgt bereit:
 
 ```azurecli-interactive
-# Built-in policy that accepts parameters
+# Built-in policy definition that accepts parameters
 definition=$(az policy definition list --query "[?displayName=='Allowed locations'].id" --output tsv)
 
 az deployment sub create \
@@ -312,9 +317,9 @@ New-AzSubscriptionDeployment `
   -policyParameters $policyParams
 ```
 
-### <a name="define-and-assign-policy"></a>Definieren und Zuweisen einer Richtlinie
+### <a name="create-and-assign-policy-definitions"></a>Erstellen und Zuweisen von Richtliniendefinitionen
 
-Sie können eine Richtlinie in derselben Vorlage [definieren](../../governance/policy/concepts/definition-structure.md) und zuweisen.
+Sie können eine Richtliniendefinition in derselben Vorlage [definieren](../../governance/policy/concepts/definition-structure.md) und zuweisen.
 
 ```json
 {
@@ -357,7 +362,7 @@ Sie können eine Richtlinie in derselben Vorlage [definieren](../../governance/p
 }
 ```
 
-Mit dem folgenden CLI-Befehl können Sie die Richtliniendefinition im Abonnement erstellen und auf das Abonnement anwenden:
+Mit dem folgenden CLI-Befehl können Sie die Richtliniendefinition im Abonnement erstellen und auf dem Abonnement zuweisen:
 
 ```azurecli
 az deployment sub create \
@@ -375,14 +380,40 @@ New-AzSubscriptionDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
 ```
 
+## <a name="azure-blueprints"></a>Azure Blueprint
+
+### <a name="create-blueprint-definition"></a>Erstellen einer Blaupausendefinition
+
+Sie können eine Blaupausendefinition aus einer Vorlage [erstellen](../../governance/blueprints/tutorials/create-from-sample.md).
+
+:::code language="json" source="~/quickstart-templates/subscription-deployments/blueprints-new-blueprint/azuredeploy.json":::
+
+Mit dem folgenden CLI-Befehl können Sie die Blaupausendefinition in Ihrem Abonnement erstellen:
+
+```azurecli
+az deployment sub create \
+  --name demoDeployment \
+  --location centralus \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
+```
+
+Um diese Vorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```azurepowershell
+New-AzSubscriptionDeployment `
+  -Name demoDeployment `
+  -Location centralus `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
+```
+
 ## <a name="template-samples"></a>Vorlagenbeispiele
 
-* [Erstellen Sie eine Ressourcengruppe, sperren Sie sie, und gewähren Sie die Berechtigungen dafür](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
+* [Erstellen Sie eine Ressourcengruppe, sperren Sie sie, und gewähren Sie die Berechtigungen dafür](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment).
 * [Erstellen Sie eine Ressourcengruppe, eine Richtlinie und eine Richtlinienzuweisung](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen über das Zuweisen von Rollen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md).
 * Unter [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) finden Sie ein Beispiel für die Bereitstellung von Arbeitsbereichseinstellungen für Azure Security Center.
-* Ähnliche Beispielvorlagen sind auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments) verfügbar.
+* Ähnliche Beispielvorlagen sind auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments) verfügbar.
 * Sie können Vorlagen auch auf [Verwaltungsgruppenebene](deploy-to-management-group.md) und [Mandantenebene](deploy-to-tenant.md) bereitstellen.

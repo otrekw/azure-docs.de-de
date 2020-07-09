@@ -1,120 +1,138 @@
 ---
 title: Bezeichnen einer Entität in einer Beispieläußerung
-description: Hier erfahren Sie, wie Sie eine durch maschinelles Lernen erworbene Entität mit Unterkomponenten in einer Beispieläußerung auf einer Absichtsdetailseite des LUIS-Portals bezeichnen.
+description: Hier erfahren Sie, wie Sie eine Machine-Learning-Entität mit untergeordneten Entitäten in einer Beispieläußerung auf einer Absichtsdetailseite des LUIS-Portals bezeichnen.
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: ea5fbea902c9694d9a8a6a8a5bffcf5e7234bbbd
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 05/20/2020
+ms.openlocfilehash: 959b9c6b25a7a76a87112fcbd1a10e7da12db1dd
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382401"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722642"
 ---
-# <a name="label-machine-learned-entity-in-an-example-utterance"></a>Bezeichnen einer durch maschinelles Lernen erworbenen Entität in einer Beispieläußerung
+# <a name="label-machine-learning-entity-in-an-example-utterance"></a>Bezeichnen einer Machine-Learning-Entität in einer Beispieläußerung
 
 Die Bezeichnung einer Entität in einer Beispieläußerung bietet LUIS ein Beispiel der Entität und wo die Entität in der Äußerung auftauchen kann.
 
-## <a name="labeling-machine-learned-entity"></a>Bezeichnen einer durch maschinelles Lernen erworbenen Entität
+Sie können Bezeichnungen für (untergeordnete) Machine-Learning-Entitäten festlegen.
 
-Nehmen wir als Beispiel den Satz `hi, please I want a cheese pizza in 20 minutes`.
+Da es nicht möglich ist, Bezeichnungen für reguläre Ausdrücke, Listen oder vordefinierte Entitäten festzulegen, müssen Sie erst eine (untergeordnete) Entität erstellen und diese Elemente dann, wenn möglich, als Features zu dieser hinzufügen.
 
-1. Wählen Sie den am weitesten links stehenden Text und dann den Text ganz rechts in der Entität aus, und wählen Sie dann die Entität für die Bezeichnung aus (in diesem Fall „CompleteOrder“). In der folgenden Abbildung ist _CompleteOrder_ mit einer Bezeichnung versehen.
+## <a name="label-example-utterances-from-the-intent-detail-page"></a>Festlegen von Bezeichnungen für Beispieläußerungen auf der Seite mit den Absichtsdetails
+
+Wählen Sie die Absicht der Äußerung aus, um Bezeichnungen für Beispielentitäten in der Äußerung festzulegen.
+
+1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie Ihr **Abonnement** und Ihre **Erstellungsressource** aus, um die Apps anzuzeigen, die dieser Erstellungsressource zugewiesen sind.
+1. Öffnen Sie Ihre App, indem Sie auf der Seite **Meine Apps** den Namen der App auswählen.
+1. Wählen Sie die Absicht mit den Beispieläußerungen aus, für die Sie zur Extraktion mit einer Entität Bezeichnungen festlegen möchten.
+1. Wählen Sie erst den Text, für den Sie eine Bezeichnung festlegen möchten, und anschließend die Entität aus.
+
+## <a name="two-techniques-to-label-entities"></a>Zwei Techniken zum Bezeichnen von Entitäten
+
+Die Seite mit den Absichtsdetails unterstützt zwei Techniken zum Festlegen von Bezeichnungen.
+* Wählen Sie erst die entsprechende (untergeordnete) Entität aus der [Entitätenpalette](#label-with-the-entity-palette-visible) aus, und treffen Sie anschließend eine Auswahl innerhalb des Beispieltexts für die Äußerung. Es wird empfohlen, diese Technik zu verwenden, weil Sie dabei visuell überprüfen können, ob Sie gemäß Ihrem Schema mit der richtigen (untergeordneten) Entität arbeiten.
+* Treffen Sie zunächst eine Auswahl innerhalb des Beispieltexts für die Äußerung. Dann wird ein Popupmenü mit [möglichen Bezeichnungen](#how-to-label-entity-from-in-place-menu) geöffnet.
+
+## <a name="label-with-the-entity-palette-visible"></a>Festlegen von Bezeichnungen mit geöffneter Entitätenpalette
+
+Nachdem Sie einen [Plan für Ihr Schema mit Entitäten](luis-how-plan-your-app.md) erstellt haben, sollten Sie die **Entitätenpalette** nicht schließen, während Sie Bezeichnungen festlegen. Die **Entitätenpalette** soll als Erinnerung dafür dienen, welche Entitäten Sie laut Ihrem Plan noch extrahieren müssen.
+
+Wenn Sie die **Entitätenpalette** öffnen möchten, klicken Sie auf das Symbol **@** in der kontextbezogenen Symbolleiste, die sich oberhalb der Liste mit den Beispieläußerungen befindet.
+
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Entitätenpalette auf der Seite mit den Absichtsdetails](media/label-utterances/entity-palette-from-tool-bar.png)
+
+## <a name="how-to-label-entity-from-entity-palette"></a>Bezeichnen von Entitäten über die Entitätenpalette
+
+Die Entitätspalette stellt eine Alternative zur oben beschrieben Form der Bezeichnung dar. Sie können damit über Text streichen, um diesen sofort mit einer Entität zu bezeichnen.
+
+1. Öffnen Sie die Entitätenpalette, indem Sie rechts oben in der Tabelle mit den Äußerungen auf das Symbol **@** klicken.
+
+2. Wählen Sie aus der Palette eine Entität aus, für die Sie eine Bezeichnung festlegen möchten. Diese Aktion wird visuell durch einen neuen Cursor dargestellt. Der Cursor folgt dem Mauszeiger, wenn Sie ihn im LUIS-Portal bewegen.
+
+3. _Zeichnen_ Sie die Entität in der Beispieläußerung mithilfe des Cursors.
 
     > [!div class="mx-imgBorder"]
-    > ![Bezeichnen der vollständigen, durch maschinelles Lernen erworbenen Entität](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
+    > ![Entitätenpalette für Machine-Learning-Entitäten](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
 
-1. Wählen Sie die Entität im Popupfenster aus. Die bezeichnete Entität für die Pizzabestellung enthält alle Wörter (im Englischen von links nach rechts), die bezeichnet sind.
+## <a name="adding-entity-as-a-feature-from-the-entity-palette"></a>Hinzufügen einer Entität aus der Entitätenpalette als Feature
+
+Im unteren Bereich der Entitätenpalette können Sie Features zu der jeweils ausgewählten Entität hinzufügen. Sie können entweder aus den vorhanden Entitäten und Ausdruckslisten auswählen oder eine neue Ausdrucksliste erstellen.
+
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Entitätenpalette mit einer Entität als Feature](media/label-utterances/entity-palette-entity-as-a-feature.png)
+
+## <a name="labeling-entity-roles"></a>Beschriften von Entitätsrollen
+
+Entitätsrollen werden mithilfe der **Entitätenpalette** beschriftet.
+
+1. Wählen Sie auf der Detailseite der Absicht die **Entitätspalette** aus der Kontext-Symbolleiste aus.
+1. Wenn die Entitätspalette offen ist, wählen Sie aus der Liste die gewünschte Entität aus.
+1. Wählen Sie aus der Liste der Entitäten eine vorhandene Rolle aus.
+1. Beschriften Sie in der Beispieläußerung den Text mit der Entitätsrolle.
+
+## <a name="how-to-label-entity-from-in-place-menu"></a>Bezeichnen von Entitäten über das Direktmenü
+
+Es geht schneller, Bezeichnungen über das Direktmenü festzulegen, indem Sie den Text innerhalb der Äußerung auswählen. Sie können auch über den bezeichneten Text eine Machine-Learning-Entität oder eine Listenentität erstellen.
+
+Gehen Sie von der Beispieläußerung `hi, please I want a cheese pizza in 20 minutes` aus.
+
+Wählen Sie erst den am weitesten links stehenden Text und dann den Text ganz rechts in der Entität aus. Wählen Sie anschließend die Entität aus, für die Sie eine Bezeichnung festlegen möchten.
+
+> [!div class="mx-imgBorder"]
+> ![Bezeichnen der vollständigen Machine-Learning-Entität](media/label-utterances/label-steps-in-place-menu.png)
 
 ## <a name="review-labeled-text"></a>Überprüfen des bezeichneten Texts
 
 Überprüfen Sie nach der Bezeichnung die Beispieläußerung, und vergewissern Sie sich, dass der ausgewählte Textabschnitt mit der ausgewählten Entität unterstrichen ist. Die durchgezogene Linie gibt an, dass der Text bezeichnen wurde.
 
 > [!div class="mx-imgBorder"]
-> ![Bezeichnete, vollständige, durch maschinelles Lernen erworbene Entität](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
+> ![Bezeichnete, vollständige Machine-Learning-Entität](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
 
 ## <a name="confirm-predicted-entity"></a>Bestätigen der vorhergesagten Entität
 
-Wenn ein gepunkteter Rahmen um den Textabschnitt gezogen wurde und der Entitätsname über dem Ausdruck steht, bedeutet dies, dass der Text vorhergesagt, aber _noch nicht bezeichnet_ wurde. Wählen Sie die Zeile mit der Äußerung und anschließend **Entitätsvorhersagen bestätigen** aus, um aus der Vorhersage eine Bezeichnung zu machen.
+Wenn ein gepunkteter Rahmen um den Textabschnitt gezogen wird, bedeutet dies, dass der Text vorhergesagt, aber _noch nicht als Bezeichnung festgelegt_ wurde Wählen Sie die Zeile mit der Äußerung aus, und klicken Sie dann in der kontextbezogenen Symbolleiste auf **Confirm entities** (Entitäten bestätigen), um aus der Vorhersage eine Bezeichnung zu machen.
 
-> [!div class="mx-imgBorder"]
-> ![Vorhersagen der vollständigen, durch maschinelles Lernen erworbenen Entität](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
+## <a name="relabeling-over-existing-entities"></a>Neubezeichnen vorhandener Entitäten
 
-Alternativ können Sie den Entitätsnamen über dem Text und dann im angezeigten Menü **Vorhersage bestätigen** auswählen.
-
-> [!div class="mx-imgBorder"]
-> ![Vorhersagen der vollständigen, durch maschinelles Lernen erworbenen Entität mit Menü](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
-
-## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>Bezeichnen der Entität durch Zeichnen mit dem Entitätspalettencursor
-
-Die Entitätspalette stellt eine Alternative zur oben beschrieben Form der Bezeichnung dar. Sie können damit über Text streichen, um diesen sofort mit einer Entität zu bezeichnen.
-
-1. Sie öffnen die Entitätspalette, indem Sie rechts oben in der Tabelle mit den Äußerungen das Textmarkersymbol auswählen.
-
-    > [!div class="mx-imgBorder"]
-    > ![Entitätspalette für eine durch maschinelles Lernen erworbene Entität](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
-
-2. Wählen Sie die Entitätskomponente aus. Diese Aktion wird visuell durch einen neuen Cursor dargestellt. Der Cursor folgt dem Mauszeiger, wenn Sie ihn im Portal bewegen.
-
-    > [!div class="mx-imgBorder"]
-    > ![Entitätspalette für eine durch maschinelles Lernen erworbene Entität](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
-
-3. _Zeichnen_ Sie die Entität in der Beispieläußerung mithilfe des Cursors.
-
-    > [!div class="mx-imgBorder"]
-    > ![Entitätspalette für eine durch maschinelles Lernen erworbene Entität](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
-
-## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Bezeichnen von Unterkomponenten einer durch maschinelles Lernen erworbenen Entität
-
-Unterkomponenten in Entitäten werden auf genau die gleiche Weise wie Entitäten der obersten Ebene bezeichnet. Wenn Sie Text markieren, entsprechen die im Popupfenster verfügbaren Entitäten dem Kontext des Texts. Wenn Sie also beispielsweise über eine durch maschinelles Lernen erworbene Entität mit fünf Ebenen verfügen und Text auswählen, der auf der ersten und zweiten Ebene bezeichnet ist (angegeben durch einen Entitätsnamen unter der Beispieläußerung), sind die im Popupfenster verfügbaren Entitäten auf den Kontext der Komponenten der dritten Ebene beschränkt. Um den Text mit anderen Entitäten zu bezeichnen, wählen Sie die Option **Label as another entity** (Als andere Entität bezeichnen) aus.
-
-> [!div class="mx-imgBorder"]
-> ![Entitätspalette für eine durch maschinelles Lernen erworbene Entität](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
-
-Unterkomponenten können nur bezeichnet werden, wenn die übergeordnete Komponente ebenfalls bezeichnet ist.
-
-## <a name="labeling-entity-roles"></a>Beschriften von Entitätsrollen
-
-Entitätsrollen werden mithilfe der Entitätspalette beschriftet.
-
-1. Wählen Sie auf der Detailseite der Absicht die **Entitätspalette** aus der Kontext-Symbolleiste aus.
-1. Wenn die Entitätspalette offen ist, wählen Sie aus der Liste die gewünschte Entität aus.
-1. Wechseln Sie zur **Entitätsprüfung**, und wählen Sie eine vorhandene Rolle aus, oder erstellen Sie eine neue Rolle.
-1. Beschriften Sie in der Beispieläußerung den Text mit der Entitätsrolle.
+Wenn Sie Text, der bereits bezeichnet wurde, eine neue Bezeichnung hinzufügen möchten, können Sie mithilfe von LUIS vorhandene Bezeichnungen teilen oder zusammenführen.
 
 ## <a name="labeling-for-punctuation"></a>Bezeichnungen für Interpunktion
 
-Für Interpunktion sind keine Bezeichnungen erforderlich. Verwenden Sie [Anwendungseinstellungen](luis-reference-application-settings.md), um zu steuern, ob Interpunktion Auswirkungen auf Äußerungsvorhersagen hat.
+Für Interpunktion sind keine Bezeichnungen erforderlich. Über die [Anwendungseinstellungen](luis-reference-application-settings.md) können Sie steuern, welche Auswirkungen die Interpunktion auf Äußerungsvorhersagen hat.
 
 ## <a name="unlabel-entities"></a>Entitäten ohne Bezeichnung
 
-Um die Bezeichnung einer Entität aufzuheben, wählen Sie den Entitätsnamen unterhalb des Texts und dann **Unlabel** (Bezeichnung entfernen) aus. Wenn die Entität, deren Bezeichnung Sie entfernen möchten, über bezeichnete Unterkomponenten verfügt, müssen zuerst deren Bezeichnungen entfernt werden.
+> [!NOTE]
+> Nur die Bezeichnungen von Machine-Learning-Entitäten können entfernt werden. Für Entitäten für reguläre Ausdrücke, Listenentitäten oder vordefinierte Entitäten können weder Bezeichnungen festgelegt noch entfernt werden.
 
-## <a name="editing-labels-using-the-entity-palette"></a>Bearbeiten von Bezeichnungen mithilfe der Entitätspalette
+Wenn Sie die Bezeichnung einer Entität entfernen möchten, wählen Sie diese aus, und klicken Sie im Direktmenü auf **Bezeichnung entfernen**.
 
-Wenn Sie bei der Bezeichnung einen Fehler machen, können Sie mit der Entitätspalette schnelle Änderungen vornehmen. Wenn z. B. eine Entitätsbezeichnung versehentlich ein zusätzliches Wort einschließt und diese Entität bereits bezeichnete Unterkomponenten aufweist, können Sie mithilfe der Entitätspalette den gewünschten kürzeren Bereich von Wörtern markieren.
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Bezeichnung einer Entität entfernen](media/label-utterances/unlabel-entity-using-in-place-menu.png)
 
-Beispiel:
+## <a name="automatic-labeling-for-parent-and-child-entities"></a>Automatisches Bezeichnen von über- und untergeordneten Entitäten
 
-1. Die Unterkomponente „Pizza Type“ umfasst „cheese pizza with“, wobei das Wort „with“ fälschlicherweise einbezogen wurde.
+Wenn Sie eine Bezeichnung für eine übergeordnete Entität festlegen, wird auch für jede untergeordnete Entität, die basierend auf der aktuell trainierten Version vorhergesagt werden kann, eine Bezeichnung hinzugefügt.
 
-    > [!div class="mx-imgBorder"]
-    > ![Entitätspalette für eine durch maschinelles Lernen erworbene Entität](media/label-utterances/edit-label-with-palette-1.png)
+Wenn Sie eine Bezeichnung für eine untergeordnete Entität festlegen, wird auch automatisch für die übergeordnete Entität eine Bezeichnung hinzugefügt.
 
-2. Verwenden Sie die Entitätspalette, um „Pizza Type“ auszuwählen und „cheese pizza“ zu überzeichnen. Als Ergebnis wird nur noch „cheese pizza“ als Bezeichnung für „Pizza Type“ verwendet.
+## <a name="automatic-labeling-for-non-machine-learned-entities"></a>Automatisches Bezeichnen von Entitäten, die nicht auf Machine Learning basieren
 
-    > [!div class="mx-imgBorder"]
-    > ![Entitätspalette für eine durch maschinelles Lernen erworbene Entität](media/label-utterances/edit-label-with-palette-2.png)
+Entitäten, die nicht aus Machine Learning basieren, sind z. B. vordefinierte Entitäten, Entitäten für reguläre Ausdrücke, Listenentitäten und pattern.any-Entitäten. Diese werden automatisch von LUIS bezeichnet, sodass sie nicht manuell von den Benutzern bezeichnet werden müssen.
 
-## <a name="labels-for-matching-text-entities"></a>Bezeichnungen für Textentsprechungsentitäten
+## <a name="intent-prediction-errors"></a>Fehler bei Absichtsvorhersagen
 
-Zu den Textentsprechungsentitäten gehören vordefinierte Entitäten, RegEx-Entitäten, Listenentitäten und pattern.any-Entitäten. Diese werden automatisch von LUIS bezeichnet, sodass sie nicht manuell von den Benutzern bezeichnet werden müssen.
+Es wird ein Absichtsvorhersagefehler zurückgegeben, wenn die Beispieläußerung mit der aktuell trainierten App nicht für die Absicht vorhergesagt werden konnte.
+
+Informieren Sie sich, wie Sie diese Fehler auf der Seite mit den Absichtsdetails [abrufen](luis-how-to-add-intents.md#intent-prediction-errors) können.
 
 ## <a name="entity-prediction-errors"></a>Fehler bei der Entitätsvorhersage
 
 Vorhersagefehler bei Entitäten deuten darauf hin, dass die vorhergesagte Entität nicht der bezeichneten Entität entspricht. Dies wird mit durch einen Warnindikator neben der Äußerung verdeutlicht.
 
 > [!div class="mx-imgBorder"]
-> ![Entitätspalette für eine durch maschinelles Lernen erworbene Entität](media/label-utterances/example-utterance-indicates-prediction-error.png)
+> ![Entitätenpalette für Machine-Learning-Entitäten](media/label-utterances/example-utterance-indicates-prediction-error.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

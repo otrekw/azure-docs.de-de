@@ -1,22 +1,22 @@
 ---
-title: Standardvertrag | Azure Marketplace
-description: Standardvertrag für Azure Marketplace und AppSource
-author: dsindona
+title: Standardvertrag für den kommerziellen Microsoft-Marketplace
+description: Standardvertrag für den Azure Marketplace und AppSource in Partner Center
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: facb500299f7196e0e1387c3a7267a917d13a3a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+author: keferna
+ms.author: keferna
+ms.date: 05/20/2020
+ms.openlocfilehash: f7327079e365bcd8a99a8274828f7c14e2337a34
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681446"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121553"
 ---
-# <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standardvertrag für den kommerziellen Microsoft-Marketplace
+# <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Standardvertrag für den kommerziellen Microsoft-Marketplace
 
-Zur Vereinfachung des Beschaffungsprozesses für Kunden und zur Verringerung der rechtlichen Komplexität für Softwareanbieter stellt Microsoft die Vorlage „Standardvertrag“ für den kommerziellen Microsoft-Marketplace bereit, um eine Transaktion im Marketplace zu erleichtern. Statt benutzerdefinierte Geschäftsbedingungen zu erstellen, können Herausgeber im kommerziellen Marketplace ihre Software wahlweise unter dem Standardvertrag anbieten, den Kunden nur einmal überprüfen und akzeptieren müssen. Der Standardvertrag ist hier zu finden: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178).
+Microsoft bietet einen Standardvertrag für den kommerziellen Microsoft-Marketplace an. Dies vereinfacht den Beschaffungsprozess für Kunden, verringert die gesetzliche Komplexität für Softwareanbieter und erleichtert Transaktionen im Marketplace. Anstatt benutzerdefinierte Geschäftsbedingungen zu erstellen, können Sie als Herausgeber im kommerziellen Marketplace Ihre Software wahlweise unter dem [Standardvertrag](https://go.microsoft.com/fwlink/?linkid=2041178) anbieten, den Kunden nur einmal überprüfen und akzeptieren müssen.
 
 Die Geschäftsbedingungen für ein Angebot werden bei dessen Erstellung im Partner Center definiert. Sie können auswählen, ob Sie den Standardvertrag für den kommerziellen Microsoft-Marketplace verwenden möchten, anstatt Ihre eigenen benutzerdefinierten Geschäftsbedingungen bereitzustellen.
 
@@ -36,11 +36,11 @@ Für kommerzielle Marketplace-Herausgeber stehen zwei Arten von Zusatzvereinbaru
 >[!Note]
 >Diese beiden Arten von Zusatzvereinbarungen sind übereinander angeordnet. Kunden, für die benutzerdefinierte Zusatzvereinbarungen gelten, erhalten beim Kauf auch die universellen Zusatzvereinbarung für den Standardvertrag.
 
-Sie können den Standardvertrag für den kommerziellen Microsoft-Marketplace für die folgenden Angebotstypen nutzen:  Azure-Anwendungen (Lösungsvorlagen und verwaltete Anwendungen), virtuelle Computer, Container, Containeranwendungen, IoT Edge-Module und SaaS.
+Sie können den Standardvertrag für den kommerziellen Microsoft-Marketplace für die folgenden Angebotstypen nutzen:  Azure-Anwendungen (Lösungsvorlagen und verwaltete Anwendungen), virtuelle Computer und SaaS.
 
 ## <a name="customer-experience"></a>Benutzerfreundlichkeit
 
-Während des Ermittlungsvorgangs im Azure-Marketplace oder in der AppSource können Kunden die mit dem Angebot verbundenen Bedingungen als Standardvertrag für den kommerziellen Microsoft-Marketplace und alle universellen Zusatzvereinbarungen einsehen.
+Während des Ermittlungsvorgangs im Azure-Marketplace oder in AppSource können Kunden die mit dem Angebot verbundenen Bedingungen als Standardvertrag für den kommerziellen Microsoft-Marketplace und alle universellen Zusatzvereinbarungen einsehen.
 
 ![Ermittlungserlebnis der Kunden im Azure-Portal.](media/marketplace-publishers-guide/azure-discovery-process.png)
 

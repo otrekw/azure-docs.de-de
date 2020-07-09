@@ -10,6 +10,10 @@
       href: overview-iot-central-developer.md
     - name: Neueste Updates
       items:
+        - name: 'Mai 2020: Auftrags- und Metrikupdates'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
+        - name: Dashboardupdates vom Mai 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
         - name: "April\_2020: Neue Features"
           href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
         - name: "April\_2020: Updates"
@@ -57,6 +61,8 @@
       href: concepts-architecture.md
     - name: Was sind Anwendungsvorlagen?
       href: concepts-app-templates.md
+    - name: Was sind Gerätevorlagen?
+      href: concepts-device-templates.md
     - name: Gerätekonnektivität
       href: concepts-get-connected.md
     - name: Verbinden von IoT Edge-Geräten
@@ -87,8 +93,6 @@
           href: howto-manage-devices.md
         - name: Konfigurieren von Regeln
           href: howto-configure-rules.md
-        - name: Integrieren in andere Dienste mithilfe von Workflows
-          href: howto-configure-rules-advanced.md
         - name: Analysieren von Gerätedaten
           href: howto-create-analytics.md
         - name: Hinzufügen von Kacheln zu Ihrem Dashboard
@@ -103,12 +107,16 @@
           href: howto-export-data.md
         - name: Erstellen von Webhooks für Regeln
           href: howto-create-webhooks.md
+        - name: Integrieren in andere Dienste mithilfe von Workflows
+          href: howto-configure-rules-advanced.md
         - name: Verbinden von Azure Monitor-Aktionsgruppen für Regeln
           href: howto-use-action-groups.md
         - name: Benutzerdefinierte Regeln erstellen
           href: howto-create-custom-rules.md
         - name: Erstellen einer benutzerdefinierten Analyse mit Databricks
           href: howto-create-custom-analytics.md
+        - name: Visualisieren Ihrer Daten in Power BI
+          href: howto-connect-powerbi.md
     - name: Verwaltung
       items:
         - name: Verwalten Ihrer Anwendung
@@ -123,6 +131,10 @@
               href: howto-customize-ui.md
             - name: Exportieren Ihrer Anwendung
               href: howto-use-app-templates.md
+            - name: Überwachen der Anwendungsintegrität
+              href: howto-monitor-application-health.md
+            - name: Über Ihre Anwendung
+              href: howto-get-app-info.md
         - name: Verwalten von anderen Orten
           items:
             - name: Verwalten über das Azure-Portal
@@ -141,6 +153,10 @@
               href: howto-manage-preferences.md
             - name: Ein-/Ausschalten des Livechats
               href: howto-show-hide-chat.md
+- name: Verweis
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
@@ -176,9 +192,9 @@
     - name: Azure IoT SDKs
       items:
         - name: IoT-Dienst-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT-Geräte-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: API-Referenz für IoT Central
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Kundendatenanforderungen

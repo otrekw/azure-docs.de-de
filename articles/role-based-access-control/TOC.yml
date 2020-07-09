@@ -92,12 +92,17 @@
           href: custom-roles-cli.md
         - name: REST-API
           href: custom-roles-rest.md
+        - name: ARM-Vorlage
+          displayName: Resource Manager
+          href: custom-roles-template.md
     - name: Anzeigen von Aktivitätsprotokollen
       href: change-history-report.md
     - name: Erhöhen von Zugriffsrechten
       href: elevate-access-global-admin.md
     - name: Klassische Administratoren
       href: classic-administrators.md
+    - name: Übertragen eines Abonnements in ein anderes Verzeichnis (Vorschau)
+      href: transfer-subscription.md
     - name: Problembehandlung
       href: troubleshooting.md
 - name: Verweis
@@ -107,7 +112,7 @@
     - name: Ressourcenanbietervorgänge
       href: resource-provider-operations.md
     - name: Azure RBAC-Grenzwerte
-      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI

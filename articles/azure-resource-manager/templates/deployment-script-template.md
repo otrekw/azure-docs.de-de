@@ -5,21 +5,20 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 05/28/2020
 ms.author: jgao
-ms.openlocfilehash: f84707adfa406011989c8f9bfdf1e8d9270698a6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: e3f3301ac78480c4d8ebbf909bafcefa025ff395
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984792"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168572"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Verwenden von Bereitstellungsskripts in Vorlagen (Vorschauversion)
 
 Erfahren Sie, wie Sie Bereitstellungsskripts in Azure Resource Manager-Vorlagen verwenden. Bei einem neuen Ressourcentyp mit dem Namen `Microsoft.Resources/deploymentScripts` können Benutzer Bereitstellungsskripts in Vorlagenbereitstellungen ausführen und die Ausführungsergebnisse überprüfen. Diese Skripts können zum Ausführen benutzerdefinierter Schritte wie der folgenden verwendet werden:
 
 - Hinzufügen von Benutzern zu einem Verzeichnis
-- Erstellen einer App-Registrierung
 - Ausführen von Vorgängen auf Datenebene, z. B. Kopieren von Blobs oder Ausführen von Datenbankseeding
 - Suchen und Validieren eines Lizenzschlüssels
 - Erstellen eines selbstsignierten Zertifikats
@@ -37,14 +36,14 @@ Vorteile von Bereitstellungsskripts:
 Die Bereitstellungsskriptressource ist nur in den Regionen verfügbar, in denen Azure Container Instances verfügbar ist.  Informationen dazu finden Sie unter [Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen](../../container-instances/container-instances-region-availability.md).
 
 > [!IMPORTANT]
-> Zwei Bereitstellungsskriptressourcen – ein Speicherkonto und eine Containerinstanz – werden für die Skriptausführung und Problembehandlung in derselben Ressourcengruppe erstellt. Diese Ressourcen werden vom Skriptdienst normalerweise gelöscht, bevor die Ausführung des Bereitstellungsskripts beendet wird. Die Ressourcen werden Ihnen in Rechnung gestellt, bis sie gelöscht werden. Weitere Informationen finden Sie unter [Bereinigen von Bereitstellungsskriptressourcen](#clean-up-deployment-script-resources).
+> Für die Skriptausführung und Problembehandlung werden ein Speicherkonto und eine Containerinstanz benötigt. Sie haben die Möglichkeit, ein vorhandenes Speicherkonto anzugeben. Andernfalls wird das Speicherkonto zusammen mit der Containerinstanz vom Skriptdienst automatisch erstellt. Die beiden automatisch erstellten Ressourcen werden normalerweise vom Skriptdienst gelöscht, wenn die Ausführung des Bereitstellungsskripts beendet ist. Die Ressourcen werden Ihnen in Rechnung gestellt, bis sie gelöscht werden. Weitere Informationen finden Sie unter [Bereinigen von Bereitstellungsskriptressourcen](#clean-up-deployment-script-resources).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - **Benutzerseitig zugewiesene verwaltete Identität mit der Rolle „Mitwirkender“ für die Zielressourcengruppe.** . Diese Identität wird zum Ausführen von Bereitstellungsskripts verwendet. Zum Ausführen von Vorgängen außerhalb der Ressourcengruppe müssen Sie zusätzliche Berechtigungen erteilen. Weisen Sie die Identität beispielsweise der Abonnementebene zu, wenn Sie eine neue Ressourcengruppe erstellen möchten.
 
   > [!NOTE]
-  > Die Bereitstellungsskript-Engine erstellt im Hintergrund ein Speicherkonto und eine Containerinstanz.  Eine benutzerseitig zugewiesene verwaltete Identität mit der Rolle „Mitwirkender“ auf Abonnementebene ist erforderlich, wenn das Abonnement nicht die Ressourcenanbieter Azure-Speicherkonto (Microsoft.Storage) und Azure-Containerinstanz (Microsoft.ContainerInstance) registriert hat.
+  > Der Skriptdienst erstellt im Hintergrund ein Speicherkonto (es sei denn, Sie geben ein vorhandenes Speicherkonto an) und eine Containerinstanz.  Eine benutzerseitig zugewiesene verwaltete Identität mit der Rolle „Mitwirkender“ auf Abonnementebene ist erforderlich, wenn das Abonnement nicht die Ressourcenanbieter Azure-Speicherkonto (Microsoft.Storage) und Azure-Containerinstanz (Microsoft.ContainerInstance) registriert hat.
 
   Informationen zum Erstellen einer Identität finden Sie unter [Erstellen einer benutzerseitig zugewiesenen verwalteten Identität mithilfe des Azure-Portals](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), [... mithilfe der Azure-Befehlszeilenschnittstelle](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) und [... mithilfe von Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md). Sie benötigen die Identitäts-ID beim Bereitstellen der Vorlage. Das Format der Identität lautet:
 
@@ -61,7 +60,7 @@ Die Bereitstellungsskriptressource ist nur in den Regionen verfügbar, in denen 
   read resourceGroupName &&
   echo "Enter the managed identity name:" &&
   read idName &&
-  az identity show -g jgaoidentity1008rg -n jgaouami --query id
+  az identity show -g $resourceGroupName -n $idName --query id
   ```
 
   # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -101,6 +100,13 @@ Nachfolgend finden Sie ein JSON-Beispiel.  Das neueste Vorlagenschema finden Sie
   },
   "properties": {
     "forceUpdateTag": 1,
+    "containerSettings": {
+      "containerGroupName": "mycustomaci"
+    },
+    "storageAccountSettings": {
+      "storageAccountName": "myStorageAccount",
+      "storageAccountKey": "myKey"
+    },
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "environmentVariables": [
@@ -132,6 +138,8 @@ Details zu Eigenschaftswerten:
 - **Identität**: Der Bereitstellungsskriptdienst verwendet eine benutzerseitig zugewiesene verwaltete Identität, um die Skripts auszuführen. Zurzeit wird nur eine benutzerseitig zugewiesene verwaltete Identität unterstützt.
 - **kind:** Geben Sie den Typ des Skripts an. Zurzeit werden Azure PowerShell- und Azure CLI-Skripts unterstützt. Die Werte sind **AzurePowerShell** und **AzureCLI**.
 - **forceUpdateTag**: Wenn Sie diesen Wert zwischen Vorlagenbereitstellungen ändern, wird das Bereitstellungsskript erneut ausgeführt. Verwenden Sie eine der Funktionen newGuid() oder utcNow(), die als defaultValue eines Parameters festgelegt werden muss. Weitere Informationen finden Sie unter [Mehrmaliges Ausführen des Skripts](#run-script-more-than-once).
+- **containerSettings**: Geben Sie die Einstellungen zum Anpassen der Azure-Containerinstanz an.  **containerGroupName** dient zum Angeben des Namens der Containergruppe.  Falls nicht angegeben, wird der Gruppenname automatisch generiert.
+- **storageAccountSettings**: Geben Sie die Einstellungen zur Verwendung eines vorhandenen Speicherkontos an. Falls nicht angegeben, wird ein Speicherkonto automatisch erstellt. Weitere Informationen finden Sie unter [Verwenden eines vorhandenen Speicherkontos](#use-an-existing-storage-account).
 - **azPowerShellVersion**/**azCliVersion**: Geben Sie die zu verwendende Modulversion an. Eine Liste der unterstützten PowerShell- und CLI-Versionen finden Sie unter [Voraussetzungen](#prerequisites).
 - **arguments:** Geben Sie die Parameterwerte an. Die Werte werden durch Leerzeichen voneinander getrennt.
 - **environmentVariables**: Geben Sie die Umgebungsvariablen an, die an das Skript übergeben werden sollen. Weitere Informationen finden Sie unter [Entwickeln von Bereitstellungsskripts](#develop-deployment-scripts).
@@ -158,7 +166,7 @@ Für die folgende Vorlage wurde eine Ressource mit dem Typ `Microsoft.Resources/
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
 
 > [!NOTE]
-> Da die Inlinebereitstellungsskripts in doppelte Anführungszeichen eingeschlossen sind, müssen Zeichenfolgen innerhalb der Bereitstellungsskripts stattdessen in einfache Anführungszeichen eingeschlossen werden. Das Escapezeichen für PowerShell ist **&#92;** . Sie können auch, wie im vorherigen JSON-Beispiel gezeigt, eine Zeichenfolgenersetzung in Erwägung ziehen. Sehen Sie sich den Standardwert des Parameters an.
+> Da die Inlinebereitstellungsskripts in doppelte Anführungszeichen eingeschlossen sind, muss für Zeichenfolgen innerhalb der Bereitstellungsskripts **&#92;** als Escapezeichen verwendet werden, oder sie müssen in einfache Anführungszeichen eingeschlossen werden. Sie können auch, wie im vorherigen JSON-Beispiel gezeigt, eine Zeichenfolgenersetzung in Erwägung ziehen.
 
 Das Skript akzeptiert einen Parameter und gibt den Parameterwert aus. **DeploymentScriptOutputs** wird zum Speichern von Ausgaben verwendet.  Im Abschnitt „outputs“ zeigt die Zeile **value** an, wie auf die gespeicherten Werte zugegriffen wird. `Write-Output` wird zum Debuggen verwendet. Informationen zum Zugreifen auf die Ausgabedatei finden Sie unter [Debuggen von Bereitstellungsskripts](#debug-deployment-scripts).  Beschreibungen der Eigenschaften finden Sie unter [Beispielvorlagen](#sample-templates).
 
@@ -190,7 +198,7 @@ Neben Inlineskripts können Sie auch externe Skriptdateien verwenden. Es werden 
 
 Ein Beispiel finden Sie [hier](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
 
-Die externen Skriptdateien müssen zugänglich sein.  Informationen zum Schützen Ihrer Skriptdateien, die in Azure Storage-Konten gespeichert sind, finden Sie im [Tutorial: Schützen von Artefakten in Bereitstellungen per Azure Resource Manager-Vorlage](./template-tutorial-secure-artifacts.md).
+Die externen Skriptdateien müssen zugänglich sein.  Informationen zum Schützen Ihrer Skriptdateien, die in Azure Storage-Konten gespeichert sind, finden Sie unter [Bereitstellen einer privaten ARM-Vorlage mit SAS-Token](./secure-template-with-sas-token.md).
 
 Es ist Ihre Aufgabe, die Integrität der Skripts zu gewährleisten, auf die vom Bereitstellungsskript verwiesen wird, entweder **PrimaryScriptUri** oder **SupportingScriptUris**.  Verweisen Sie nur auf Skripts, denen Sie vertrauen.
 
@@ -241,15 +249,17 @@ Im vorherigen Beispiel wird [jq](https://stedolan.github.io/jq/) verwendet. Dies
 ### <a name="handle-non-terminating-errors"></a>Behandeln von Fehlern ohne Abbruch
 
 Sie können steuern, wie PowerShell auf Fehler ohne Abbruch reagiert, indem Sie die Variable [ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
-) in Ihrem Bereitstellungsskript verwenden. Die Bereitstellungsskript-Engine legt den Wert weder fest noch ändert sie ihn.  Trotz des Werts, den Sie für „$ErrorActionPreference“ festgelegt haben, legt das Bereitstellungsskript den Bereitstellungsstatus der Ressource auf *Fehler* fest, wenn bei dem Skript ein Fehler auftritt.
+) in Ihrem Bereitstellungsskript verwenden. Der Wert wird vom Skriptdienst nicht festgelegt bzw. geändert.  Trotz des Werts, den Sie für „$ErrorActionPreference“ festgelegt haben, legt das Bereitstellungsskript den Bereitstellungsstatus der Ressource auf *Fehler* fest, wenn bei dem Skript ein Fehler auftritt.
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Übergeben von sicheren Zeichenfolgen an Bereitstellungsskripts
 
 Das Festlegen von Umgebungsvariablen (EnvironmentVariable) in Ihren Containerinstanzen ermöglicht es Ihnen, eine dynamische Konfiguration der Anwendung oder des Skripts bereitzustellen, die bzw. das vom Container ausgeführt wird. Das Bereitstellungsskript verarbeitet nicht gesicherte und gesicherte Umgebungsvariablen auf dieselbe Weise wie Azure Container Instance. Weitere Informationen finden Sie unter [Festlegen von Umgebungsvariablen in Container Instances](../../container-instances/container-instances-environment-variables.md#secure-values).
 
+Die maximal zulässige Größe für Umgebungsvariablen beträgt 64 KB.
+
 ## <a name="debug-deployment-scripts"></a>Debuggen von Bereitstellungsskripts
 
-Der Skriptdienst erstellt ein [Speicherkonto](../../storage/common/storage-account-overview.md) und eine [Containerinstanz](../../container-instances/container-instances-overview.md) für die Skriptausführung. Beide Ressourcen haben das Suffix **azscripts** im Ressourcennamen.
+Der Skriptdienst erstellt für die Ausführung von Skripts im Hintergrund ein [Speicherkonto](../../storage/common/storage-account-overview.md) (es sei denn, Sie geben ein vorhandenes Speicherkonto an) und eine [Containerinstanz](../../container-instances/container-instances-overview.md). Wenn diese Ressourcen automatisch vom Skriptdienst erstellt werden, haben die Namen der Ressourcen das Suffix **azscripts**.
 
 ![Resource Manager-Vorlage: Namen von Bereitstellungsskriptressourcen](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
 
@@ -292,22 +302,66 @@ Wählen Sie im Portal die Option **Ausgeblendete Typen anzeigen** aus, um die de
 
 ![Resource Manager-Vorlage: Bereitstellungsskript, „Ausgeblendete Typen anzeigen“, Portal](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
 
+## <a name="use-an-existing-storage-account"></a>Verwenden eines vorhandenen Speicherkontos
+
+Für die Skriptausführung und Problembehandlung werden ein Speicherkonto und eine Containerinstanz benötigt. Sie haben die Möglichkeit, ein vorhandenes Speicherkonto anzugeben. Andernfalls wird das Speicherkonto zusammen mit der Containerinstanz vom Skriptdienst automatisch erstellt. Die Voraussetzungen für die Verwendung eines vorhandenen Speicherkontos:
+
+- Unterstützte Speicherkontotypen:
+
+    | SKU             | Unterstützte Typen     |
+    |-----------------|--------------------|
+    | Premium_LRS     | FileStorage        |
+    | Premium_ZRS     | FileStorage        |
+    | Standard_GRS    | Storage, StorageV2 |
+    | Standard_GZRS   | StorageV2          |
+    | Standard_LRS    | Storage, StorageV2 |
+    | Standard_RAGRS  | Storage, StorageV2 |
+    | Standard_RAGZRS | StorageV2          |
+    | Standard_ZRS    | StorageV2          |
+
+    Diese Kombinationen unterstützen Dateifreigaben.  Weitere Informationen finden Sie unter [Erstellen einer Azure-Dateifreigabe](../../storage/files/storage-how-to-create-file-share.md) und [Speicherkontoübersicht](../../storage/common/storage-account-overview.md).
+- Firewallregeln für Speicherkonten werden noch nicht unterstützt. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../../storage/common/storage-network-security.md).
+- Die vom Benutzer zugewiesene verwaltete Identität des Bereitstellungsskripts muss über Berechtigungen zum Verwalten des Speicherkontos verfügen, was das Lesen, Erstellen und Löschen von Dateifreigaben umfasst.
+
+Um ein vorhandenes Speicherkonto anzugeben, fügen Sie den folgenden JSON-Code zum Eigenschaftselement von `Microsoft.Resources/deploymentScripts` hinzu:
+
+```json
+"storageAccountSettings": {
+  "storageAccountName": "myStorageAccount",
+  "storageAccountKey": "myKey"
+},
+```
+
+- **storageAccountName**: Geben Sie den Namen des Speicherkontos an.
+- **storageAccountKey**: Geben Sie einen der Speicherkontoschlüssel an. Sie können den Schlüssel mit der [`listKeys()`](./template-functions-resource.md#listkeys)-Funktion abrufen. Beispiel:
+
+    ```json
+    "storageAccountSettings": {
+        "storageAccountName": "[variables('storageAccountName')]",
+        "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+    }
+    ```
+
+Ein vollständiges Beispiel für die Definition von `Microsoft.Resources/deploymentScripts` finden Sie unter [Beispielvorlagen](#sample-templates).
+
+Wenn ein vorhandenes Speicherkonto zum Einsatz kommt, erstellt der Skriptdienst eine Dateifreigabe mit einem eindeutigen Namen. Informationen dazu, wie der Skriptdienst die Dateifreigabe bereinigt, finden Sie unter [Bereinigen von Ressourcen für Bereitstellungsskripts](#clean-up-deployment-script-resources).
+
 ## <a name="clean-up-deployment-script-resources"></a>Bereinigen von Bereitstellungsskriptressourcen
 
-Das Bereitstellungsskript erstellt ein Speicherkonto und eine Containerinstanz, die zum Ausführen von Bereitstellungsskripts und zum Speichern von Debuginformationen verwendet werden. Diese beiden Ressourcen werden in derselben Ressourcengruppe wie die bereitgestellten Ressourcen erstellt und nach Ablauf des Skripts vom Skriptdienst gelöscht. Sie können den Lebenszyklus dieser Ressourcen steuern.  Beide Ressourcen werden Ihnen bis zu ihrer Löschung in Rechnung gestellt. Preisinformationen finden Sie unter [Container Instances – Preise](https://azure.microsoft.com/pricing/details/container-instances/) und [Azure Storage – Preise](https://azure.microsoft.com/pricing/details/storage/).
+Für die Skriptausführung und Problembehandlung werden ein Speicherkonto und eine Containerinstanz benötigt. Sie haben die Möglichkeit, ein vorhandenes Speicherkonto anzugeben. Andernfalls wird ein Speicherkonto zusammen mit einer Containerinstanz vom Skriptdienst automatisch erstellt. Die beiden automatisch erstellten Ressourcen werden vom Skriptdienst gelöscht, sobald die Ausführung des Bereitstellungsskripts beendet ist. Die Ressourcen werden Ihnen in Rechnung gestellt, bis sie gelöscht werden. Preisinformationen finden Sie unter [Container Instances – Preise](https://azure.microsoft.com/pricing/details/container-instances/) und [Azure Storage – Preise](https://azure.microsoft.com/pricing/details/storage/).
 
 Der Lebenszyklus dieser Ressourcen wird durch die folgenden Eigenschaften in der Vorlage gesteuert:
 
-- **cleanupPreference**: Dies ist die Einstellung für die Bereinigung, wenn die Skriptausführung einen Beendigungszustand erreicht.  Die unterstützten Werte sind:
+- **cleanupPreference**: Dies ist die Einstellung für die Bereinigung, wenn die Skriptausführung einen Beendigungszustand erreicht. Die unterstützten Werte sind:
 
-  - **Always:** Die Ressourcen werden gelöscht, wenn die Skriptausführung einen Beendigungszustand erreicht. Da die deploymentScripts-Ressource nach dem Bereinigen der Ressourcen noch vorhanden sein kann, kopiert das Systemskript die Ausführungsergebnisse des Skripts, z. B. stdout, Ausgaben, Rückgabewert usw., vor dem Löschen der Ressourcen in die Datenbank.
-  - **OnSuccess:** Die Ressourcen werden nur gelöscht, wenn die Skriptausführung erfolgreich war. Sie können weiterhin auf die Ressourcen zugreifen, um Debuginformationen zu finden.
-  - **OnExpiration:** Die Ressourcen werden nur gelöscht, wenn die Einstellung **retentionInterval** abgelaufen ist. Diese Eigenschaft ist derzeit deaktiviert.
+  - **Always:** Die Ressourcen werden gelöscht, sobald die Skriptausführung beendet ist. Wenn ein vorhandenes Speicherkonto zum Einsatz kommt, löscht der Skriptdienst die im Speicherkonto erstellte Dateifreigabe. Da die Ressource deploymentScripts auch nach Bereinigung der Ressourcen noch vorhanden sein kann, speichern die Skriptdienste die Ergebnisse der Skriptausführung, z. B. stdout, Ausgaben, Rückgabewerte usw., ehe die Ressourcen gelöscht werden.
+  - **OnSuccess:** Die Ressourcen werden automatisch gelöscht, wenn die Skriptausführung erfolgreich war. Wenn ein vorhandenes Speicherkonto verwendet wird, entfernt der Skriptdienst die Dateifreigabe nur bei erfolgreicher Skriptausführung. Sie können weiterhin auf die Ressourcen zugreifen, um Debuginformationen zu finden.
+  - **OnExpiration:** Die Ressourcen werden automatisch gelöscht, wenn die Einstellung **retentionInterval** abgelaufen ist. Wenn ein vorhandenes Speicherkonto zum Einsatz kommt, entfernt der Skriptdienst die Dateifreigabe und behält das Speicherkonto bei.
 
 - **retentionInterval**: Geben Sie das Zeitintervall an, für das eine Skriptressource aufbewahrt wird und nach dem sie als abgelaufen gilt und gelöscht wird.
 
 > [!NOTE]
-> Es wird nicht empfohlen, die Bereitstellungsskriptressourcen für andere Zwecke zu verwenden.
+> Es wird nicht empfohlen, das Speicherkonto und die Containerinstanz zu verwenden, die vom Skriptdienst für andere Zwecke generiert werden. Die beiden Ressourcen werden abhängig vom Lebenszyklus des Skripts möglicherweise entfernt.
 
 ## <a name="run-script-more-than-once"></a>Mehrmaliges Ausführen des Skripts
 

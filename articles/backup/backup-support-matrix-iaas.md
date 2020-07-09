@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: d86ce94c62ec9f25b364e9fdc963e3043b274722
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: b331fe757fc18029aa270f805c72150161a38f47
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389289"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849415"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -48,7 +48,7 @@ Sicherung von Datenträgern nach Migration zu verwalteten Datenträgern | Unters
 Sicherung von verwalteten Datenträgern nach Aktivierung einer Ressourcengruppensperre | Wird nicht unterstützt.<br/><br/> Die älteren Wiederherstellungspunkte können von Azure Backup nicht gelöscht werden, und bei Sicherungen treten Fehler auf, wenn die maximale Anzahl von Wiederherstellungspunkten erreicht ist.
 Ändern der Sicherungsrichtlinie für einen virtuellen Computer | Unterstützt.<br/><br/> Der virtuelle Computer wird unter Verwendung der Zeitplan- und Aufbewahrungseinstellungen der neuen Richtlinie gesichert. Wenn die Aufbewahrungseinstellungen erweitert werden, werden vorhandene Wiederherstellungspunkte markiert und beibehalten. Wenn die Einstellungen reduziert werden, werden vorhandene Wiederherstellungspunkte im nächsten Bereinigungsauftrag gelöscht und schließlich endgültig entfernt.
 Abbrechen eines Sicherungsauftrags| Wird während des Prozesses der Momentaufnahme unterstützt.<br/><br/> Wird nicht unterstützt, wenn die Momentaufnahme in den Tresor übertragen wird.
-Sicherung des virtuellen Computers in einer anderen Region oder einem anderen Abonnement |Wird nicht unterstützt.
+Sicherung des virtuellen Computers in einer anderen Region oder einem anderen Abonnement |Wird nicht unterstützt.<br><br>Damit die Sicherung erfolgreich ausgeführt werden kann, müssen sich die virtuellen Computer im gleichen Abonnement wie der Tresor für die Sicherung befinden.
 Sicherungen pro Tag (über die Azure-VM-Erweiterung) | Eine geplante Sicherung pro Tag<br/><br/>Der Azure Backup-Dienst unterstützt bis zu neun bedarfsgesteuerte Sicherungen pro Tag. Microsoft empfiehlt jedoch nicht mehr als vier bedarfsgesteuerte Sicherungen pro Tag, um eine optimale Leistung zu gewährleisten.
 Sicherungen pro Tag (über den MARS-Agent) | Drei geplante Sicherungen pro Tag
 Sicherungen pro Tag (über DPM/MABS) | Zwei geplante Sicherungen pro Tag
@@ -158,17 +158,24 @@ Gen2-VMS | Unterstützt <br> Azure Backup unterstützt die Sicherung und Wiederh
 
 **Komponente** | **Unterstützung**
 --- | ---
-Azure-VM-Datenträger (für Daten) | Sichern eines virtuellen Computers mit maximal 16 Datenträgern.<BR> Wenn Sie sich für die private Vorschauversion von virtuellen Computern mit mehr als 16 Datenträgern (bis zu 32 Datenträger) registrieren möchten, senden Sie eine E-Mail an AskAzureBackupTeam@microsoft.com.
+Azure-VM-Datenträger (für Daten) | Die Unterstützung der Sicherung virtueller Azure-Computer mit bis zu 32 Datenträgern befindet sich in [diesen Regionen](#backup-of-azure-virtual-machines-with-up-to-32-disks) in der öffentlichen Vorschau.<br><br> Die Unterstützung für die Sicherung virtueller Azure-Computer mit nicht verwalteten Datenträgern oder klassischer VMs umfasst nur bis zu 16 Datenträger.
 Datenträgergröße | Die Größe einzelner Datenträger kann bis zu 32 TB und maximal 256 TB für alle Datenträger in einer VM betragen.
 Speichertyp | HDD Standard, SSD Standard, SSD Premium.
 Verwaltete Datenträger | Unterstützt.
 Verschlüsselte Datenträger | Unterstützt.<br/><br/> Virtuelle Azure-Computer mit aktiviertem Azure Disk Encryption können (mit oder ohne Azure AD-App) gesichert werden.<br/><br/> Verschlüsselte VMs können nicht auf Datei- oder Ordnerebene wiederhergestellt werden. Stattdessen muss die gesamte VM wiederhergestellt werden.<br/><br/> Sie können die Verschlüsselung auf virtuellen Computern aktivieren, die bereits durch Azure Backup geschützt werden.
-Datenträger mit aktivierter Schreibbeschleunigung | Wird nicht unterstützt.<br/><br/> Azure Backup schließt Datenträger mit aktivierter Schreibbeschleunigung bei der Sicherung automatisch aus. Da sie nicht gesichert werden, können Sie diese Datenträger nicht über Wiederherstellungspunkte der VM wiederherstellen.
+Datenträger mit aktivierter Schreibbeschleunigung | Wird nicht unterstützt.<br/><br/> Azure Backup schließt Datenträger mit aktivierter Schreibbeschleunigung (Write Accelerator, WA) bei der Sicherung automatisch aus. Da sie nicht gesichert werden, können Sie diese Datenträger nicht über Wiederherstellungspunkte der VM wiederherstellen. <br><br> **Wichtiger Hinweis**: Virtuelle Computer mit WA-Datenträgern benötigen eine Internetverbindung für eine erfolgreiche Sicherung (auch wenn diese Datenträger von der Sicherung ausgeschlossen sind).
 Sichern und Wiederherstellen von deduplizierten VMs/Datenträgern | Azure Backup unterstützt nicht die Deduplizierung. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support). <br/> <br/>  – Azure Backup dedupliziert nicht VM-übergreifend im Recovery Services-Tresor. <br/> <br/>  – Wenn es während der Wiederherstellung VMs im Deduplizierungsstatus gibt, können die Dateien nicht wieder hergestellt werden, da der Tresor das Format nicht versteht. Allerdings können Sie die vollständige VM-Wiederherstellung erfolgreich ausführen.
 Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstützt.
 Ändern der Datenträgergröße auf geschütztem virtuellen Computer | Unterstützt.
 Freigegebener Speicher| Das Sichern von VMs mit Cluster Shared Volume (CSV) oder Dateiservern mit horizontaler Skalierung wird nicht unterstützt. Bei CSV-Schreibern treten während der Sicherung voraussichtlich Fehler auf. Bei der Wiederherstellung werden Datenträger, die CSV-Volumes enthalten, möglicherweise nicht hochgefahren.
 [Freigegebene Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | Wird nicht unterstützt.
+
+### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>Sicherung virtueller Azure-Computer mit bis zu 32 Datenträgern
+
+Azure Backup unterstützt jetzt die Sicherung von virtuellen Azure-Computern mit bis zu 32 angeschlossenen Datenträgern.  Diese Funktion befindet sich in den folgenden Regionen in der öffentlichen Vorschau: USA, Westen-Mitte; Kanada, Mitte; Asien, Südosten; Brasilien, Süden; Kanada, Osten; Frankreich, Mitte; Frankreich, Süden; Indien, Mitte; Indien, Süden; Japan, Osten; Japan, Westen; Südkorea, Mitte; Südkorea, Süden; Südafrika, Norden, Vereinigtes Königreich, Süden, Vereinigtes Königreich, Westen; Australien, Osten.  Wenn Sie an diesem Feature in anderen Regionen interessiert sind, registrieren Sie sich für die eingeschränkte Vorschau, indem Sie an AskAzureBackupTeam@microsoft.com schreiben.  
+
+>[!NOTE]
+>Azure Backup unterstützt nur bis zu 16 Datenträger für virtuelle Azure-Computer mit nicht verwalteten Datenträgern oder klassische VMs.
 
 ## <a name="vm-network-support"></a>Netzwerkunterstützung bei virtuellen Computern
 

@@ -1,17 +1,17 @@
 ---
 title: Aktivieren von privatem Websitezugriff für Azure Functions
 description: Hier erfahren Sie, wie Sie den privaten Websitezugriff von virtuellen Azure-Netzwerken für Azure Functions einrichten.
-author: mcollier
-ms.author: mcollier
+author: craigshoemaker
+ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 02/15/2020
-ms.openlocfilehash: ada08de182791c6ecb2b83ef3b924bf40975e1ee
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 06/17/2020
+ms.openlocfilehash: 8e37876e0e9666097c3cf16589e64929c670b14a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78852015"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390277"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Tutorial: Einrichten von privatem Websitezugriff für Azure Functions
 
@@ -53,106 +53,107 @@ Im ersten Schritt dieses Tutorials wird ein neuer virtueller Computer in einem v
 
 1. Wählen Sie die Schaltfläche **Ressource erstellen** aus.
 
-2. Geben Sie `Windows Server` in das Suchfeld ein, und wählen Sie in den Suchergebnissen die Option **Windows Server** aus.
+1. Geben Sie in das Suchfeld **Windows Server** ein, und wählen Sie in den Suchergebnissen **Windows Server** aus.
 
-3. Wählen Sie in der Liste mit den Windows Server-Optionen **Windows Server 2019 Datacenter** und anschließend die Schaltfläche **Erstellen** aus.
+1. Wählen Sie in der Liste mit den Windows Server-Optionen **Windows Server 2019 Datacenter** und anschließend die Schaltfläche **Erstellen** aus.
 
-4. Verwenden Sie auf der Registerkarte **Grundlagen** die VM-Einstellungen, die Sie in der Tabelle unterhalb der Abbildung finden:
+1. Verwenden Sie auf der Registerkarte _Grundlagen_ die VM-Einstellungen, die Sie in der Tabelle unterhalb der Abbildung finden:
 
     >[!div class="mx-imgBorder"]
     >![Registerkarte „Grundeinstellungen“ für einen neuen virtuellen Windows-Computer](./media/functions-create-private-site-access/create-vm-3.png)
 
     | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
-    | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. |
-    | [**Ressourcengruppe**](../azure-resource-manager/management/overview.md) | myResourceGroup | Wählen Sie die Ressourcengruppe aus, die die Ressourcen für dieses Tutorial enthalten soll.  Die Verwendung der gleichen Ressourcengruppe vereinfacht die Bereinigung der Ressourcen am Ende des Tutorials. |
-    | **Name des virtuellen Computers** | myVM | Der VM-Name muss in der Ressourcengruppe eindeutig sein. |
-    | [**Region**](https://azure.microsoft.com/regions/) | (US) „USA, Norden-Mitte“ | Wählen Sie eine Region in Ihrer Nähe oder in der Nähe der Funktionen aus, auf die zugegriffen werden soll. |
-    | **Öffentliche Eingangsports** | Keine | Wählen Sie **Keine** aus, um sicherzustellen, dass keine eingehende Internetkonnektivität für den virtuellen Computer vorhanden ist. Der Remotezugriff auf den virtuellen Computer wird über den Azure Bastion-Dienst konfiguriert. |
+    | _Abonnement_ | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. |
+    | [_Ressourcengruppe_](../azure-resource-manager/management/overview.md) | myResourceGroup | Wählen Sie die Ressourcengruppe aus, die die Ressourcen für dieses Tutorial enthalten soll.  Die Verwendung der gleichen Ressourcengruppe vereinfacht die Bereinigung der Ressourcen am Ende des Tutorials. |
+    | _Name des virtuellen Computers_ | myVM | Der VM-Name muss in der Ressourcengruppe eindeutig sein. |
+    | [_Region_](https://azure.microsoft.com/regions/) | (US) „USA, Norden-Mitte“ | Wählen Sie eine Region in Ihrer Nähe oder in der Nähe der Funktionen aus, auf die zugegriffen werden soll. |
+    | _Öffentliche Eingangsports_ | Keine | Wählen Sie **Keine** aus, um sicherzustellen, dass keine eingehende Internetkonnektivität für den virtuellen Computer vorhanden ist. Der Remotezugriff auf den virtuellen Computer wird über den Azure Bastion-Dienst konfiguriert. |
 
-5. Wählen Sie die Registerkarte **Netzwerk** und anschließend **Neu erstellen** aus, um ein neues virtuelles Netzwerk zu konfigurieren.
+1. Wählen Sie die Registerkarte _Netzwerk_ und anschließend **Neu erstellen** aus, um ein neues virtuelles Netzwerk zu konfigurieren.
 
     >[!div class="mx-imgBorder"]
     >![Erstellen eines neuen virtuellen Netzwerks für den neuen virtuellen Computer](./media/functions-create-private-site-access/create-vm-networking.png)
 
-6. Verwenden Sie unter **Virtuelles Netzwerk erstellen** die Einstellungen in der Tabelle unterhalb der Abbildung:
+1. Verwenden Sie unter _Virtuelles Netzwerk erstellen_ die Einstellungen in der Tabelle unterhalb der Abbildung:
 
     >[!div class="mx-imgBorder"]
     >![Erstellen eines neuen virtuellen Netzwerks für den neuen virtuellen Computer](./media/functions-create-private-site-access/create-vm-vnet-1.png)
 
     | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
-    | **Name** | myResourceGroup-vnet | Sie können den für Ihr virtuelles Netzwerk generierten Standardnamen verwenden. |
-    | **Adressbereich** | 10.10.0.0/16 | Verwenden Sie einen einzelnen Adressbereich für das virtuelle Netzwerk. |
-    | **Subnetzname** | Lernprogramm | Der Name des Subnetzes. |
-    | **Adressbereich** (Subnetz) | 10.10.1.0/24 | Die Subnetzgröße definiert, wie viele Schnittstellen zum Subnetz hinzugefügt werden können. Dieses Subnetz wird von dem virtuellen Computer verwendet. Ein `/24`-Subnetz bietet 254 Hostadressen. |
+    | _Name_ | myResourceGroup-vnet | Sie können den für Ihr virtuelles Netzwerk generierten Standardnamen verwenden. |
+    | _Adressbereich_ | 10.10.0.0/16 | Verwenden Sie einen einzelnen Adressbereich für das virtuelle Netzwerk. |
+    | _Subnetzname_ | Lernprogramm | Der Name des Subnetzes. |
+    | _Adressbereich_ (Subnetz) | 10.10.1.0/24 | Die Subnetzgröße definiert, wie viele Schnittstellen zum Subnetz hinzugefügt werden können. Dieses Subnetz wird von dem virtuellen Computer verwendet. Ein /24-Subnetz bietet 254 Hostadressen. |
 
-7. Klicken Sie auf **OK**, um das virtuelle Netzwerk zu erstellen.
-8. Vergewissern Sie sich auf der Registerkarte **Netzwerk**, dass für **Öffentliche IP** die Option **Keine** ausgewählt ist.
-9. Wählen Sie die Registerkarte **Verwaltung** und anschließend unter **Diagnosespeicherkonto** die Option **Neu erstellen** aus, um ein neues Speicherkonto zu erstellen.
-10. Behalten Sie für **Identität**, **Automatisch herunterfahren** und **Sicherung** die Standardwerte bei.
-11. Klicken Sie auf **Überprüfen + erstellen**. Wenn die Überprüfung abgeschlossen ist, wählen Sie **Erstellen** aus. Der Vorgang der VM-Erstellung dauert einige Minuten.
+1. Klicken Sie auf **OK**, um das virtuelle Netzwerk zu erstellen.
+1. Vergewissern Sie sich auf der Registerkarte _Netzwerk_, dass für _Öffentliche IP_ die Option **Keine** ausgewählt ist.
+1. Wählen Sie die Registerkarte _Verwaltung_ und anschließend unter _Diagnosespeicherkonto_ die Option **Neu erstellen** aus, um ein neues Speicherkonto zu erstellen.
+1. Behalten Sie für _Identität_, _Automatisch herunterfahren_ und _Sicherung_ die Standardwerte bei.
+1. Klicken Sie auf _Überprüfen + erstellen_. Wenn die Überprüfung abgeschlossen ist, wählen Sie **Erstellen** aus. Der Vorgang der VM-Erstellung dauert einige Minuten.
 
 ## <a name="configure-azure-bastion"></a>Konfigurieren von Azure Bastion
 
 [Azure Bastion](https://azure.microsoft.com/services/azure-bastion/) ist ein vollständig verwalteter Azure-Dienst für sicheren RDP- und SSH-Zugriff auf virtuelle Computer direkt über das Azure-Portal. Bei Verwendung des Azure Bastion-Diensts müssen keine Netzwerkeinstellungen für den RDP-Zugriff konfiguriert werden.
 
 1. Wählen Sie im Portal im oberen Bereich der Ressourcengruppenansicht die Option **Hinzufügen** aus.
-2. Geben Sie „Bastion“ in das Suchfeld ein.  Wählen Sie „Bastion“ aus.
-3. Wählen Sie **Erstellen** aus, um mit der Erstellung einer neuen Azure Bastion-Ressource zu beginnen. Im Abschnitt **Virtuelles Netzwerk** wird eine Fehlermeldung angezeigt, da noch kein Subnetz vom Typ `AzureBastionSubnet` vorhanden ist. Das Subnetz wird in den folgenden Schritten erstellt. Verwenden Sie die Einstellungen aus der Tabelle unterhalb der Abbildung:
+1. Geben Sie in das Suchfeld **Bastion** ein.
+1. Wählen Sie in den Suchergebnissen **Bastion** aus.
+1. Wählen Sie **Erstellen** aus, um mit der Erstellung einer neuen Azure Bastion-Ressource zu beginnen. Im Abschnitt _Virtuelles Netzwerk_ wird eine Fehlermeldung angezeigt, da noch kein AzureBastionSubnet-Subnetz vorhanden ist. Das Subnetz wird in den folgenden Schritten erstellt. Verwenden Sie die Einstellungen aus der Tabelle unterhalb der Abbildung:
 
     >[!div class="mx-imgBorder"]
     >![Beginn der Azure Bastion-Erstellung](./media/functions-create-private-site-access/create-bastion-basics-1.png)
 
     | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
-    | **Name** | myBastion | Der Name der neuen Bastion-Ressource. |
-    | **Region** | USA Nord Mitte | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe oder in der Nähe von anderen Diensten aus, auf die Ihre Funktionen zugreifen. |
-    | **Virtuelles Netzwerk** | myResourceGroup-vnet | Das virtuelle Netzwerk, in dem die Bastion-Ressource erstellt wird. |
-    | **Subnetz** | AzureBastionSubnet | Das Subnetz in Ihrem virtuellen Netzwerk, in dem die neue Bastion-Hostressource bereitgestellt wird. Erstellen Sie ein Subnetz mit dem Namen `AzureBastionSubnet`. Dadurch weiß Azure, in welchem Subnetz die Bastion-Ressourcen bereitgestellt werden sollen. Verwenden Sie ein Subnetz mit `/27` oder mehr (`/27`, `/26` usw.). |
+    | _Name_ | myBastion | Der Name der neuen Bastion-Ressource. |
+    | _Region_ | USA Nord Mitte | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe oder in der Nähe von anderen Diensten aus, auf die Ihre Funktionen zugreifen. |
+    | _Virtuelles Netzwerk_ | myResourceGroup-vnet | Das virtuelle Netzwerk, in dem die Bastion-Ressource erstellt wird. |
+    | _Subnetz_ | AzureBastionSubnet | Das Subnetz in Ihrem virtuellen Netzwerk, in dem die neue Bastion-Hostressource bereitgestellt wird. Sie müssen ein Subnetz mit dem Namen **AzureBastionSubnet** erstellen. Dadurch weiß Azure, in welchem Subnetz die Bastion-Ressourcen bereitgestellt werden sollen. Sie müssen ein Subnetz von mindestens **/27** oder größer („/27“, „/26“ usw.) verwenden. |
 
     > [!NOTE]
     > Eine ausführliche Schritt-für-Schritt-Anleitung zum Erstellen einer Azure Bastion-Ressource finden Sie im Tutorial [Erstellen eines Azure Bastion-Hosts](../bastion/bastion-create-host-portal.md).
 
-4. Erstellen Sie ein Subnetz, in dem Azure den Azure Bastion-Host bereitstellen kann. Wenn Sie **Subnetzkonfiguration verwalten** auswählen, wird ein neuer Bereich geöffnet, in dem Sie ein neues Subnetz definieren können.  Wählen Sie **+ Subnetz** aus, um ein neues Subnetz zu erstellen.
-5. Das Subnetz muss den Namen `AzureBastionSubnet` haben, und das Subnetzpräfix muss mindestens `/27` sein.  Klicken Sie auf **OK**, um das Subnetz zu erstellen.
+1. Erstellen Sie ein Subnetz, in dem Azure den Azure Bastion-Host bereitstellen kann. Wenn Sie **Subnetzkonfiguration verwalten** auswählen, wird ein neuer Bereich geöffnet, in dem Sie ein neues Subnetz definieren können.  Wählen Sie **+ Subnetz** aus, um ein neues Subnetz zu erstellen.
+1. Das Subnetz muss den Namen **AzureBastionSubnet** haben, und das Subnetzpräfix muss mindestens **/27** sein.  Klicken Sie auf **OK**, um das Subnetz zu erstellen.
 
     >[!div class="mx-imgBorder"]
     >![Erstellen eines Subnetzes für einen Azure Bastion-Host](./media/functions-create-private-site-access/create-bastion-subnet-2.png)
 
-6. Wählen Sie auf der Seite **Bastion-Instanz erstellen** in der Liste mit den verfügbaren Subnetzen das neu erstellte Subnetz `AzureBastionSubnet` aus.
+1. Wählen Sie auf der Seite _Bastion-Instanz erstellen_ in der Liste mit den verfügbaren Subnetzen das neu erstellte **AzureBastionSubnet**-Subnetz aus.
 
     >[!div class="mx-imgBorder"]
     >![Erstellen eines Azure Bastion-Hosts mit einem bestimmten Subnetz](./media/functions-create-private-site-access/create-bastion-basics-2.png)
 
-7. Wählen Sie **Überprüfen + erstellen** aus. Wählen Sie nach Abschluss der Überprüfung **Erstellen** aus. Die Erstellung der Azure Bastion-Ressource dauert einige Minuten.
+1. Wählen Sie **Überprüfen + erstellen** aus. Wählen Sie nach Abschluss der Überprüfung **Erstellen** aus. Die Erstellung der Azure Bastion-Ressource dauert einige Minuten.
 
 ## <a name="create-an-azure-functions-app"></a>Erstellen einer Azure Functions-App
 
 Im nächsten Schritt wird in Azure eine Funktions-App mit [Verbrauchsplan](functions-scale.md#consumption-plan) erstellt. Später in diesem Tutorial wird Ihr Funktionscode für diese Ressource bereitgestellt.
 
 1. Wählen Sie im Portal im oberen Bereich der Ressourcengruppenansicht die Option **Hinzufügen** aus.
-2. Wählen Sie **Compute > Funktions-App** aus.
-3. Verwenden Sie im Abschnitt **Grundeinstellungen** die Funktions-App-Einstellungen aus der folgenden Tabelle:
+1. Wählen Sie **Compute > Funktions-App** aus.
+1. Verwenden Sie im Abschnitt _Grundeinstellungen_ die Funktions-App-Einstellungen aus der folgenden Tabelle:
 
     | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
-    | **Ressourcengruppe** | myResourceGroup | Wählen Sie die Ressourcengruppe aus, die die Ressourcen für dieses Tutorial enthalten soll.  Die Verwendung der gleichen Ressourcengruppe für die Funktions-App und den virtuellen Computer vereinfacht die Bereinigung der Ressourcen am Ende des Tutorials. |
-    | **Name der Funktions-App** | Global eindeutiger Name | Der Name, der Ihre neue Funktionen-App bezeichnet Gültige Zeichen sind a–z (unabhängig von der Groß-/Kleinschreibung), 0–9 und -. |
-    | **Veröffentlichen** | Code | Option zum Veröffentlichen von Codedateien oder eines Docker-Containers. |
-    | **Laufzeitstapel** | Bevorzugte Sprache | Wählen Sie eine Runtime aus, die Ihre bevorzugte Programmiersprache für Funktionen unterstützt. |
-    | **Region** | USA Nord Mitte | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe oder in der Nähe von anderen Diensten aus, auf die Ihre Funktionen zugreifen. |
+    | _Ressourcengruppe_ | myResourceGroup | Wählen Sie die Ressourcengruppe aus, die die Ressourcen für dieses Tutorial enthalten soll.  Die Verwendung der gleichen Ressourcengruppe für die Funktions-App und den virtuellen Computer vereinfacht die Bereinigung der Ressourcen am Ende des Tutorials. |
+    | _Name der Funktions-App_ | Global eindeutiger Name | Der Name, der Ihre neue Funktionen-App bezeichnet Gültige Zeichen sind a–z (unabhängig von der Groß-/Kleinschreibung), 0–9 und -. |
+    | _Veröffentlichen_ | Code | Option zum Veröffentlichen von Codedateien oder eines Docker-Containers. |
+    | _Laufzeitstapel_ | Bevorzugte Sprache | Wählen Sie eine Runtime aus, die Ihre bevorzugte Programmiersprache für Funktionen unterstützt. |
+    | _Region_ | USA Nord Mitte | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe oder in der Nähe von anderen Diensten aus, auf die Ihre Funktionen zugreifen. |
 
     Wählen Sie unten auf der Seite die Schaltfläche **Next: Hosting >** aus.
-4. Wählen Sie im Abschnitt **Hosting** die passenden Werte für **Speicherkonto**, **Betriebssystem** und **Tarif** aus. Orientieren Sie sich dabei an den Angaben in der folgenden Tabelle:
+1. Wählen Sie im Abschnitt _Hosting_ die passenden Werte für _Speicherkonto_, _Betriebssystem_ und _Tarif_ aus. Orientieren Sie sich dabei an den Angaben in der folgenden Tabelle.
 
     | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
-    | **Speicherkonto** | Global eindeutiger Name | Erstellen Sie ein Speicherkonto, das von Ihrer Funktions-App verwendet wird. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Sie können auch ein vorhandenes Konto verwenden, das die [Anforderungen an das Speicherkonto](./functions-scale.md#storage-account-requirements) erfüllen muss. |
-    | **Betriebssystem** | Bevorzugtes Betriebssystem | Ein Betriebssystem ist für Sie basierend auf Ihrer Runtimestapelauswahl vorab ausgewählt, aber Sie können die Einstellung ggf. ändern. |
-    | **Planen** | Nutzung | Der [Hostingplan](./functions-scale.md) bestimmt die Skalierung der Funktions-App und die Ressourcenverfügbarkeit für die jeweilige Instanz. |
-5. Wählen Sie **Überprüfen + erstellen** aus, um die App-Konfigurationsauswahl zu überprüfen.
-6. Klicken Sie auf **Erstellen**, um die Funktionen-App bereitzustellen.
+    | _Speicherkonto_ | Global eindeutiger Name | Erstellen Sie ein Speicherkonto, das von Ihrer Funktions-App verwendet wird. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Sie können auch ein vorhandenes Konto verwenden, das die [Anforderungen an das Speicherkonto](./functions-scale.md#storage-account-requirements) erfüllen muss. |
+    | _Betriebssystem_ | Bevorzugtes Betriebssystem | Ein Betriebssystem ist für Sie basierend auf Ihrer Runtimestapelauswahl vorab ausgewählt, aber Sie können die Einstellung ggf. ändern. |
+    | _Planen_ | Nutzung | Der [Hostingplan](./functions-scale.md) bestimmt die Skalierung der Funktions-App und die Ressourcenverfügbarkeit für die jeweilige Instanz. |
+1. Wählen Sie **Überprüfen + erstellen** aus, um die App-Konfigurationsauswahl zu überprüfen.
+1. Klicken Sie auf **Erstellen**, um die Funktionen-App bereitzustellen.
 
 ## <a name="configure-access-restrictions"></a>Konfigurieren der Zugriffseinschränkungen
 
@@ -160,26 +161,32 @@ Im nächsten Schritt werden [Zugriffseinschränkungen](../app-service/app-servic
 
 Zur Ermöglichung von [privatem Websitezugriff](functions-networking-options.md#private-site-access) wird ein Azure Virtual Network-[Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) zwischen der Funktions-App und dem angegebenen virtuellen Netzwerk erstellt. Zugriffseinschränkungen werden mithilfe von Dienstendpunkten implementiert. Dienstendpunkte sorgen dafür, dass nur von Datenverkehr aus dem angegebenen virtuellen Netzwerk auf die angegebene Ressource zugegriffen werden kann. In diesem Fall ist die Azure-Funktion die angegebene Ressource.
 
-1. Navigieren Sie in der Funktions-App zur Registerkarte **Plattformfeatures**. Wählen Sie unter der Überschrift des Abschnitts *Netzwerk* den Link **Netzwerk** aus, um den Abschnitt „Netzwerkfeaturestatus“ zu öffnen.
-2. Die Seite **Netzwerkfeaturestatus** ist der Ausgangspunkt für die Konfiguration von Azure Front Door, Azure CDN und Zugriffseinschränkungen. Wählen Sie **Zugriffseinschränkungen konfigurieren** aus, um den privaten Websitezugriff zu konfigurieren.
-3. Auf der Seite **Zugriffseinschränkungen** ist zunächst nur die Standardeinschränkung vorhanden. Die Standardeinschränkung bewirkt keinerlei Zugriffseinschränkungen für die Funktions-App.  Wählen Sie **Regel hinzufügen** aus, um eine Einschränkungskonfiguration für den privaten Websitezugriff zu erstellen.
-4. Wählen Sie im Bereich **Zugriffseinschränkung hinzufügen** im Dropdownfeld **Typ** die Option **Virtuelles Netzwerk** und anschließend das zuvor erstellte virtuelle Netzwerk und das Subnetz aus.
-5. Auf der Seite **Zugriffseinschränkungen** wird nun angezeigt, dass eine neue Einschränkung vorhanden ist. Es kann einige Sekunden dauern, bis der Wert von **Endpunktstatus** von `Disabled` über `Provisioning` zu `Enabled` wechselt.
+1. Wählen Sie in der Funktions-App den Link **Netzwerk** unter der Abschnittsüberschrift _Einstellungen_ aus.
+1. Die Seite _Netzwerk_ ist der Ausgangspunkt für die Konfiguration von Azure Front Door, Azure CDN und Zugriffseinschränkungen.
+1. Wählen Sie **Zugriffseinschränkungen konfigurieren** aus, um den privaten Websitezugriff zu konfigurieren.
+1. Auf der Seite _Zugriffseinschränkungen_ ist zunächst nur die Standardeinschränkung vorhanden. Die Standardeinschränkung bewirkt keinerlei Zugriffseinschränkungen für die Funktions-App.  Wählen Sie **Regel hinzufügen** aus, um eine Einschränkungskonfiguration für den privaten Websitezugriff zu erstellen.
+1. Geben Sie im Bereich _Zugriffsbeschränkung hinzufügen_ einen _Namen_, eine _Priorität_ und eine _Beschreibung_ für die neue Regel an.
+1. Wählen Sie im Dropdownfeld _Typ_ die Option **Virtuelles Netzwerk** und anschließend das zuvor erstellte virtuelle Netzwerk und anschließend das **Tutorial**-Subnetz aus. 
+    > [!NOTE]
+    > Es kann einige Minuten dauern, bis der Dienstendpunkt aktiviert wird.
+1. Auf der Seite _Zugriffseinschränkungen_ wird nun angezeigt, dass eine neue Einschränkung vorhanden ist. Es kann einige Sekunden dauern, bis der Wert von _Endpunktstatus_ von „Deaktiviert“ über „Bereitstellung“ zu „Aktiviert“ wechselt.
 
     >[!IMPORTANT]
-    > Jede Funktions-App verfügt über eine [Kudu-Website](../app-service/app-service-ip-restrictions.md#scm-site) mit erweiterten Tools zur Verwaltung von Funktions-App-Bereitstellungen. Auf diese Website wird über eine URL wie die folgende zugegriffen: `<FUNCTION_APP_NAME>.scm.azurewebsites.net`. Da für diese Bereitstellungswebsite keine Zugriffseinschränkungen aktiviert wurden, können Sie Ihren Projektcode weiterhin über eine lokale Entwicklerarbeitsstation oder über einen lokalen Builddienst bereitstellen, ohne einen Agent im virtuellen Netzwerk bereitstellen zu müssen.
+    > Jede Funktions-App verfügt über eine [Kudu-Website](../app-service/app-service-ip-restrictions.md#scm-site) mit erweiterten Tools zur Verwaltung von Funktions-App-Bereitstellungen. Auf diese Website wird über eine URL wie die folgende zugegriffen: `<FUNCTION_APP_NAME>.scm.azurewebsites.net`. Durch das Aktivieren von Zugriffsbeschränkungen auf der Kudu-Website wird verhindert, dass der Projektcode von einer lokalen Entwicklerarbeitsstation aus bereitgestellt wird. Anschließend wird ein Agent innerhalb des virtuellen Netzwerks benötigt, um die Bereitstellung auszuführen.
 
 ## <a name="access-the-functions-app"></a>Zugreifen auf die Funktions-App
 
-1. Kehren Sie zu der zuvor erstellten Funktions-App zurück.  Kopieren Sie im Abschnitt **Übersicht** die URL.
+1. Kehren Sie zu der zuvor erstellten Funktions-App zurück.  Kopieren Sie im Abschnitt _Übersicht_ die URL.
 
     >[!div class="mx-imgBorder"]
     >![Abrufen der URL der Funktions-App](./media/functions-create-private-site-access/access-function-overview.png)
 
-2. Wenn Sie nun auf Ihrem Computer außerhalb des virtuellen Netzwerks versuchen, auf die Funktions-App zuzugreifen, wird eine HTTP 403-Seite mit dem Hinweis angezeigt, dass die App beendet wurde.  Die App wurde jedoch nicht beendet. Bei der Antwort handelt es sich vielmehr um den HTTP-Status 403 (unzulässige IP-Adresse).
-3. Als Nächstes greifen Sie auf Ihre Funktion über den zuvor erstellten virtuellen Computer zu, der mit Ihrem virtuellen Netzwerk verbunden ist. Um von dem virtuellen Computer aus auf die Website zugreifen zu können, müssen Sie über den Azure Bastion-Dienst eine Verbindung mit dem virtuellen Computer herstellen.  Wählen Sie zuerst **Verbinden** und dann **Bastion** aus.
-4. Geben Sie den erforderlichen Benutzernamen und das entsprechende Kennwort an, um sich bei dem virtuellen Computer anzumelden.  Wählen Sie **Verbinden**. Daraufhin wird ein neues Browserfenster angezeigt, in dem Sie mit dem virtuellen Computer interagieren können.
-5. Da dieser virtuelle Computer über das virtuelle Netzwerk auf die Funktion zugreift, kann über den Webbrowser des virtuellen Computers auf die Website zugegriffen werden.  Wichtig: Auf die Funktions-App kann zwar nur innerhalb des angegebenen virtuellen Netzwerks zugegriffen werden, es ist jedoch weiterhin ein öffentlicher DNS-Eintrag vorhanden. Wie oben gezeigt, führt der Versuch, auf die Website zuzugreifen, zu einer HTTP 403-Antwort.
+    Wenn Sie nun auf Ihrem Computer außerhalb des virtuellen Netzwerks versuchen, auf die Funktions-App zuzugreifen, wird eine HTTP 403-Seite mit dem Hinweis angezeigt, dass der Zugriff unzulässig ist.
+1. Wechseln Sie zurück zur Ressourcengruppe, und wählen Sie den zuvor erstellten virtuellen Computer aus. Um von dem virtuellen Computer aus auf die Website zugreifen zu können, müssen Sie über den Azure Bastion-Dienst eine Verbindung mit dem virtuellen Computer herstellen.
+1. Wählen Sie **Verbinden** und dann **Bastion** aus.
+1. Geben Sie den erforderlichen Benutzernamen und das entsprechende Kennwort an, um sich bei dem virtuellen Computer anzumelden.
+1. Wählen Sie **Verbinden**. Daraufhin wird ein neues Browserfenster angezeigt, in dem Sie mit dem virtuellen Computer interagieren können.
+Es ist möglich, über den Webbrowser des virtuellen Computers auf die Website zuzugreifen, weil der virtuelle Computer über das virtuelle Netzwerk auf die Website zugreift.  Zwar kann nur innerhalb des angegebenen virtuellen Netzwerks zugegriffen werden, doch bleibt weiterhin ein öffentlicher DNS-Eintrag vorhanden.
 
 ## <a name="create-a-function"></a>Erstellen einer Funktion
 
@@ -192,23 +199,20 @@ Im nächsten Schritt dieses Tutorials wird eine Azure-Funktion mit HTTP-Trigger 
     * [Befehlszeile](./functions-create-first-azure-function-azure-cli.md)
     * [Maven (Java)](./functions-create-first-java-maven.md)
 
-2. Wählen Sie beim Veröffentlichen Ihres Azure Functions-Projekts die Funktions-App-Ressource aus, die Sie weiter oben in diesem Tutorial erstellt haben.
-3. Vergewissern Sie sich, dass die Funktion bereitgestellt wurde.
+1. Wählen Sie beim Veröffentlichen Ihres Azure Functions-Projekts die Funktions-App-Ressource aus, die Sie weiter oben in diesem Tutorial erstellt haben.
+1. Vergewissern Sie sich, dass die Funktion bereitgestellt wurde.
 
     >[!div class="mx-imgBorder"]
     >![Bereitgestellte Funktion in der Liste der Funktionen](./media/functions-create-private-site-access/verify-deployed-function.png)
 
 ## <a name="invoke-the-function-directly"></a>Direktes Aufrufen der Funktion
 
-1. Um den Zugriff auf die Funktion zu testen, müssen Sie die URL der Funktion kopieren. Wählen Sie die bereitgestellte Funktion und anschließend **</> Funktions-URL abrufen** aus. Klicken Sie auf die Schaltfläche **Kopieren**, um die URL in die Zwischenablage zu kopieren.
+1. Um den Zugriff auf die Funktion zu testen, müssen Sie die URL der Funktion kopieren. Wählen Sie die bereitgestellte Funktion und anschließend **Funktions-URL abrufen** aus. Klicken Sie auf die Schaltfläche **Kopieren**, um die URL in die Zwischenablage zu kopieren.
 
     >[!div class="mx-imgBorder"]
     >![Kopieren Sie die Funktions-URL](./media/functions-create-private-site-access/get-function-url.png)
 
-    > [!NOTE]
-    > Wenn die Funktion ausgeführt wird, wird im Portal ein Laufzeitfehler mit dem Hinweis angezeigt, dass die Funktionslaufzeit nicht gestartet werden kann. Die Funktions-App wird jedoch trotzdem ausgeführt. Der Fehler ist auf die neuen Zugriffseinschränkungen zurückzuführen, die dafür sorgen, dass das Portal keine Abfragen zur Überprüfung der Laufzeit ausführen kann.
-
-2. Fügen Sie die URL in den Webbrowser ein. Wenn Sie nun auf einem Computer außerhalb Ihres virtuellen Netzwerks versuchen, auf die Funktions-App zuzugreifen, wird eine HTTP 403-Antwort mit dem Hinweis angezeigt, dass die App beendet wurde.
+1. Fügen Sie die URL in den Webbrowser ein. Wenn Sie nun auf einem Computer außerhalb Ihres virtuellen Netzwerks versuchen, auf die Funktions-App zuzugreifen, wird eine HTTP 403-Antwort mit dem Hinweis angezeigt, dass der Zugriff auf die App unzulässig ist.
 
 ## <a name="invoke-the-function-from-the-virtual-network"></a>Aufrufen der Funktion innerhalb des virtuellen Netzwerks
 

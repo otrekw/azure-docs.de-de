@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: de869fd9beb66a4122c1204648d17cff480e4b7f
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: f90782dc2edc9ce21b82c6b18e4efe014d160c20
+  ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78206485"
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86086737"
 landingContent:
 - title: Informationen zur Formularerkennung
   linkLists:
@@ -37,9 +37,13 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Verwenden des .NET SDK
-      url: quickstarts/dotnet-sdk.md
-    - text: Mithilfe der REST-API (Python)
-      url: quickstarts/python-train-extract.md
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: Verwenden des Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: Verwenden des Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: Verwenden des JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: Mithilfe der REST-API (cURL)
       url: quickstarts/curl-train-extract.md
   - linkListType: tutorial
@@ -68,14 +72,32 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Mithilfe der REST-API (Python)
-      url: quickstarts/python-receipts.md
+    - text: Verwenden des .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: Verwenden des Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: Verwenden des Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: Verwenden des JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: Mithilfe der REST-API (cURL)
+      url: quickstarts/curl-train-extract.md
     - text: Mithilfe der REST-API (cURL)
       url: quickstarts/curl-receipts.md
 - title: Abrufen von Textlayoutinformationen
   linkLists:
   - linkListType: quickstart
     links:
+    - text: Verwenden des .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: Verwenden des Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: Verwenden des Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: Verwenden des JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: Mithilfe der REST-API (cURL)
+      url: quickstarts/curl-train-extract.md
     - text: Mithilfe der REST-API (Python)
       url: quickstarts/python-layout.md
 - title: Verwenden von Containern
@@ -97,15 +119,15 @@ landingContent:
   - linkListType: reference
     links:
     - text: Formularerkennungs-API Version 2.0
-      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm
     - text: Formularerkennungs-API Version 1.0
       url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel
     - text: .NET SDK
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer
     - text: Azure PowerShell
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure-Befehlszeilenschnittstelle (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list
 - title: Hilfe und Feedback
   linkLists:
   - linkListType: reference

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
-ms.openlocfilehash: 152168bbadd5815659bc5f70c91bd2a28f5e049d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57e13f3ed619fa88f29397fe44b783bd3650f636
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481958"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759165"
 ---
 # <a name="monitor-identity-and-access"></a>Überwachen der Identität und des Zugriffs
 
@@ -58,7 +58,7 @@ Alle Empfehlungen für Identität und Zugriff sind innerhalb von zwei Sicherheit
 
 Zum Aktivieren von MFA sind [Berechtigungen für Azure Active Directory (AD)-Mandanten](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) erforderlich. 
 
-- Wenn Sie über eine Premium-Edition von AD verfügen, aktivieren Sie MFA unter Verwendung des [bedingten Zugriffs](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
+- Wenn Sie eine Premium-Edition von AD besitzen, können Sie MFA über den [bedingten Zugriff](../active-directory/conditional-access/concept-conditional-access-policy-common.md) aktivieren.
 
 - Benutzer der AD Free-Edition können **Sicherheitsstandards** in Azure Active Directory aktivieren, wie in der [AD-Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) beschrieben, aber die Security Center-Empfehlung zum Aktivieren von MFA wird weiterhin angezeigt.
 

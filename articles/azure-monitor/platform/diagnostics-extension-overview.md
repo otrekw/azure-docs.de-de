@@ -6,18 +6,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672377"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635953"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Übersicht zur Azure-Diagnoseerweiterung
 Die Azure-Diagnoseerweiterung ist ein [Agent in Azure Monitor](agents-overview.md), der Überwachungsdaten vom Gastbetriebssystem von Azure-Computeressourcen inklusive VMs sammelt. Dieser Artikel bietet eine Übersicht zur Azure-Diagnoseerweiterung einschließlich spezifischer Funktionen, die unterstützt werden, sowie Optionen für die Installation und Konfiguration. 
 
 > [!NOTE]
-> Die Azure-Diagnoseerweiterung ist einer der Agents, die zum Erfassen von Überwachungsdaten aus dem Gastbetriebssystem von Computeressourcen verfügbar sind. Unter [Übersicht über die Azure Monitor Agents](agents-overview.md) finden Sie eine Beschreibung der verschiedenen Agents und Anleitungen zum Auswählen der geeigneten Agents für Ihre Anforderungen.
+> Die Azure-Diagnoseerweiterung ist einer der Agents, die zum Erfassen von Überwachungsdaten aus dem Gastbetriebssystem von Computeressourcen verfügbar sind. Unter [Übersicht über die Azure Monitor-Agents](agents-overview.md) finden Sie eine Beschreibung der verschiedenen Agents sowie Informationen zur Wahl der geeigneten Agents für Ihre Anforderungen.
+
+## <a name="primary-scenarios"></a>Primäre Szenarien
+Die folgenden primären Szenarien werden von der Diagnoseerweiterung abgedeckt:
+
+- Erfassen von Gastmetriken in Azure Monitor-Metriken
+- Senden von Gastprotokollen und -metriken an Azure-Speicher zur Archivierung
+- Senden von Gastprotokollen und -metriken an Azure Event Hubs, um sie außerhalb von Azure nutzen zu können
+
 
 ## <a name="comparison-to-log-analytics-agent"></a>Vergleich mit Log Analytics-Agent
 Der Log Analytics-Agent in Azure Monitor kann auch zum Sammeln von Überwachungsdaten aus dem Gastbetriebssystem virtueller Computer verwendet werden. Je nach Ihren Anforderungen können Sie eine der Möglichkeiten oder beide nutzen. Einen ausführlichen Vergleich der Azure Monitor-Agents finden Sie unter [Übersicht über die Azure Monitor-Agents](agents-overview.md). 

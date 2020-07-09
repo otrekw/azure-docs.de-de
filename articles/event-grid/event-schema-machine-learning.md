@@ -1,18 +1,14 @@
 ---
 title: Azure Machine Learning als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Machine Learning-Arbeitsbereichsereignisse bereitgestellt werden.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 07/07/2020
+ms.openlocfilehash: 11d8c38ee041ac9278e08166c4c060cdad87655f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928872"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102496"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning als Event Grid-Quelle
 

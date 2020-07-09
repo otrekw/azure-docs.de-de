@@ -8,17 +8,18 @@ author: asudbring
 manager: KumudD
 Customer intent: I want to test a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 06/11/2020
 ms.author: allensu
-ms.openlocfilehash: b3e10b3abbe5c9815e51ce67786882dbd294df3f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 717a9e9d3cc1dec350d0b4ace54687590f741768
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202219"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737290"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Tutorial: Erstellen eines NAT-Gateways mit der Azure CLI und Testen des NAT-Diensts
 
@@ -42,6 +43,7 @@ Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen **myResourceGroup
   az group create \
     --name myResourceGroupNAT \
     --location eastus2
+    
 ```
 
 ## <a name="create-the-nat-gateway"></a>Erstellen des NAT-Gateways
@@ -55,6 +57,7 @@ Für den Zugriff auf das öffentliche Internet benötigen Sie mindestens eine ö
   --resource-group myResourceGroupNAT \
   --name myPublicIPsource \
   --sku standard
+  
 ```
 
 ### <a name="create-a-public-ip-prefix"></a>Erstellen des Präfixes für öffentliche IP-Adressen
@@ -66,6 +69,7 @@ Sie können für ein NAT-Gateway mehrere Ressourcen bzw. Präfixressourcen für 
   --resource-group myResourceGroupNAT \
   --name myPublicIPprefixsource \
   --length 31
+  
 ```
 
 ### <a name="create-a-nat-gateway-resource"></a>Erstellen einer NAT-Gatewayressource
@@ -83,6 +87,7 @@ Erstellen Sie mit [az network nat gateway create](https://docs.microsoft.com/cli
     --public-ip-addresses myPublicIPsource \
     --public-ip-prefixes myPublicIPprefixsource \
     --idle-timeout 10       
+    
   ```
 
 Das NAT-Gateway ist nun verwendungsbereit, und Sie müssen nur noch konfigurieren, welche Subnetze eines virtuellen Netzwerks das Gateway verwenden sollen.
@@ -100,11 +105,11 @@ Erstellen Sie das virtuelle Netzwerk **myVnetsource** mit einem Subnetz namens *
 ```azurecli-interactive
   az network vnet create \
     --resource-group myResourceGroupNAT \
-    --location eastus2 \
     --name myVnetsource \
     --address-prefix 192.168.0.0/16 \
     --subnet-name mySubnetsource \
     --subnet-prefix 192.168.0.0/24
+    
 ```
 
 ### <a name="configure-nat-service-for-source-subnet"></a>Konfigurieren des NAT-Diensts für das Quellsubnetz
@@ -117,6 +122,7 @@ Konfigurieren Sie das Quellsubnetz **mySubnetsource** im virtuellen Netzwerk **m
     --vnet-name myVnetsource \
     --name mySubnetsource \
     --nat-gateway myNATgateway
+    
 ```
 
 Der gesamte ausgehende Datenverkehr an Ziele im Internet verwendet jetzt den NAT-Dienst.  Eine UDR muss nicht konfiguriert werden.
@@ -134,6 +140,7 @@ Sie erstellen eine öffentliche IP-Adresse, die für den Zugriff auf den virtuel
     --resource-group myResourceGroupNAT \
     --name myPublicIPsourceVM \
     --sku standard
+    
 ```
 
 ### <a name="create-an-nsg-for-source-vm"></a>Erstellen einer NSG für den virtuellen Quellcomputer
@@ -144,6 +151,7 @@ Da öffentliche Standard-IP-Adressen standardmäßig sicher sind, müssen Sie ei
   az network nsg create \
     --resource-group myResourceGroupNAT \
     --name myNSGsource 
+    
 ```
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>Verfügbarmachen des SSH-Endpunkts auf einem virtuellen Quellcomputer
@@ -161,6 +169,7 @@ Sie erstellen eine Regel in der NSG für den SSH-Zugriff auf den virtuellen Quel
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 22
+    
 ```
 
 ### <a name="create-nic-for-source-vm"></a>Erstellen einer NIC für den virtuellen Quellcomputer
@@ -175,6 +184,7 @@ Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az-network-nic-
     --subnet mySubnetsource \
     --public-ip-address myPublicIPSourceVM \
     --network-security-group myNSGsource
+    
 ```
 
 ### <a name="create-a-source-vm"></a>Erstellen eines virtuellen Quellcomputers
@@ -189,6 +199,7 @@ Erstellen Sie den virtuellen Computer mit [az vm create](/cli/azure/vm#az-vm-cre
     --image UbuntuLTS \
     --generate-ssh-keys \
     --no-wait
+    
 ```
 
 Die Rückgabe des Befehls erfolgt zwar sofort, aber es kann einige Minuten dauern, bis die VM bereitgestellt wird.
@@ -206,11 +217,11 @@ Erstellen Sie das virtuelle Netzwerk **myVnetdestination** mit einem Subnetz nam
 ```azurecli-interactive
   az network vnet create \
     --resource-group myResourceGroupNAT \
-    --location westus \
     --name myVnetdestination \
     --address-prefix 192.168.0.0/16 \
     --subnet-name mySubnetdestination \
     --subnet-prefix 192.168.0.0/24
+    
 ```
 
 ### <a name="create-public-ip-for-destination-vm"></a>Erstellen einer öffentlichen IP-Adresse für den virtuellen Zielcomputer
@@ -221,8 +232,8 @@ Sie erstellen eine öffentliche IP-Adresse, die für den Zugriff auf den virtuel
   az network public-ip create \
   --resource-group myResourceGroupNAT \
   --name myPublicIPdestinationVM \
-  --sku standard \
-  --location westus
+  --sku standard
+  
 ```
 
 ### <a name="create-an-nsg-for-destination-vm"></a>Erstellen einer NSG für den virtuellen Zielcomputer
@@ -232,8 +243,8 @@ Da öffentliche Standard-IP-Adressen standardmäßig sicher sind, müssen Sie ei
 ```azurecli-interactive
     az network nsg create \
     --resource-group myResourceGroupNAT \
-    --name myNSGdestination \
-    --location westus
+    --name myNSGdestination
+    
 ```
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>Verfügbarmachen des SSH-Endpunkts auf dem virtuellen Zielcomputer
@@ -251,6 +262,7 @@ Sie erstellen eine Regel in der NSG für den SSH-Zugriff auf den virtuellen Ziel
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 22
+    
 ```
 
 ### <a name="expose-http-endpoint-on-destination-vm"></a>Verfügbarmachen des HTTP-Endpunkts auf dem virtuellen Zielcomputer
@@ -268,6 +280,7 @@ Sie erstellen in der NSG eine Regel für den HTTP-Zugriff auf den virtuellen Zie
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 80
+    
 ```
 
 ### <a name="create-nic-for-destination-vm"></a>Erstellen einer NIC für den virtuellen Zielcomputer
@@ -281,8 +294,8 @@ Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az-network-nic-
     --vnet-name myVnetdestination \
     --subnet mySubnetdestination \
     --public-ip-address myPublicIPdestinationVM \
-    --network-security-group myNSGdestination \
-    --location westus
+    --network-security-group myNSGdestination
+    
 ```
 
 ### <a name="create-a-destination-vm"></a>Erstellen eines virtuellen Zielcomputers
@@ -296,8 +309,8 @@ Erstellen Sie den virtuellen Computer mit [az vm create](/cli/azure/vm#az-vm-cre
     --nics myNicdestination \
     --image UbuntuLTS \
     --generate-ssh-keys \
-    --no-wait \
-    --location westus
+    --no-wait
+    
 ```
 Die Rückgabe des Befehls erfolgt zwar sofort, aber es kann einige Minuten dauern, bis die VM bereitgestellt wird.
 
@@ -311,6 +324,7 @@ Als Erstes müssen Sie die IP-Adresse des virtuellen Zielcomputers ermitteln.  R
     --name myPublicIPdestinationVM \
     --query [ipAddress] \
     --output tsv
+    
 ``` 
 
 >[!IMPORTANT]
@@ -327,16 +341,14 @@ ssh <ip-address-destination>
 Kopieren Sie die folgenden Befehle, und fügen Sie sie ein, nachdem Sie sich angemeldet haben.  
 
 ```bash
-sudo apt-get -y update && \
-sudo apt-get -y upgrade && \
-sudo apt-get -y dist-upgrade && \
-sudo apt-get -y autoremove && \
-sudo apt-get -y autoclean && \
-sudo apt-get -y install nginx && \
+sudo apt -y update && \
+sudo apt -y upgrade && \
+sudo apt -y install nginx && \
 sudo ln -sf /dev/null /var/log/nginx/access.log && \
 sudo touch /var/www/html/index.html && \
 sudo rm /var/www/html/index.nginx-debian.html && \
 sudo dd if=/dev/zero of=/var/www/html/100k bs=1024 count=100
+
 ```
 
 Mit diesen Befehlen wird der virtuelle Computer aktualisiert, nginx installiert und eine Datei mit 100 KB erstellt. Diese Datei wird mit dem NAT-Dienst vom virtuellen Quellcomputer abgerufen.
@@ -353,6 +365,7 @@ Als Erstes müssen Sie die IP-Adresse des virtuellen Quellcomputers ermitteln.  
     --name myPublicIPsourceVM \
     --query [ipAddress] \
     --output tsv
+    
 ``` 
 
 >[!IMPORTANT]
@@ -369,12 +382,9 @@ ssh <ip-address-source>
 Kopieren Sie die folgenden Befehle, und fügen Sie sie ein, um den Test des NAT-Diensts vorzubereiten.
 
 ```bash
-sudo apt-get -y update && \
-sudo apt-get -y upgrade && \
-sudo apt-get -y dist-upgrade && \
-sudo apt-get -y autoremove && \
-sudo apt-get -y autoclean && \
-sudo apt-get install -y nload golang && \
+sudo apt -y update && \
+sudo apt -y upgrade && \
+sudo apt install -y nload golang && \
 echo 'export GOPATH=${HOME}/go' >> .bashrc && \
 echo 'export PATH=${PATH}:${GOPATH}/bin' >> .bashrc && \
 . ~/.bashrc &&
@@ -396,7 +406,7 @@ Verwenden Sie cURL, um die 100-KB-Datei abzurufen.  Ersetzen Sie **\<ip-address-
 curl http://<ip-address-destination>/100k --output /dev/null
 ```
 
-Sie können auch eine Reihe von Anforderungen generieren, indem Sie **hey** verwenden. Ersetzen Sie erneut **\<ip-address-destination>** durch die IP-Zieladresse, die Sie weiter oben kopiert haben.
+Sie können auch eine Reihe von Anforderungen generieren, indem Sie **hey** verwenden. Ersetzen Sie **\<ip-address-destination>** erneut durch die IP-Zieladresse, die Sie weiter oben kopiert haben.
 
 ```bash
 hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
@@ -410,6 +420,7 @@ Wenn die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benö
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupNAT
+  
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

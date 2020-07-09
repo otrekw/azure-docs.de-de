@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 39b543c5f886b22d488198873b75cf76555692fa
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 005c035468a4225f96e8ef69b2ef31a82bf7eedb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731643"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682815"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -51,7 +51,7 @@ So rufen Sie Anmeldeinformationen mithilfe der Azure CLI ab
 az acr credential show -n myRegistry
 ```
 
-Mit Azure PowerShell:
+Verwenden von Azure PowerShell:
 
 ```powershell
 Invoke-AzureRmResourceAction -Action listCredentials -ResourceType Microsoft.ContainerRegistry/registries -ResourceGroupName myResourceGroup -ResourceName myRegistry
@@ -119,7 +119,7 @@ Bash:
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
-PowerShell:
+Mit PowerShell:
 
 ```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
@@ -435,7 +435,7 @@ Wenden Sie sich an Ihren Netzwerkadministrator, oder überprüfen Sie Ihre Netzw
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Warum schlägt meine Pull- oder Pushanforderung mit einem unzulässigen Vorgang fehl?
 
 Hier finden Sie einige Szenarios, bei denen Vorgänge möglicherweise nicht zulässig sind:
-* Klassische Registrierungen werden nicht mehr unterstützt. Führen Sie mithilfe von [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) oder im Azure-Portal ein Upgrade auf eine unterstützte [SKU](https://aka.ms/acr/skus) durch.
+* Klassische Registrierungen werden nicht mehr unterstützt. Führen Sie mithilfe von [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) oder im Azure-Portal ein Upgrade auf einen unterstützten [Tarif](https://aka.ms/acr/skus) durch.
 * Das Image oder Repository ist möglicherweise gesperrt, sodass es nicht gelöscht oder aktualisiert werden kann. Sie können den Befehl [az acr show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) verwenden, um aktuelle Attribute anzuzeigen.
 * Einige Vorgänge sind nicht zulässig, wenn das Image in Quarantäne gestellt wird. Weitere Informationen zur Quarantäne finden Sie [hier](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 

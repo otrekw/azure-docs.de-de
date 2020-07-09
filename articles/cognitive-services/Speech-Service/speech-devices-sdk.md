@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ec153a9c770b0001888c972dc44414470e3ddbf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370643"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730304"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Was ist das Speech Devices SDK?
 
@@ -37,7 +37,11 @@ Das Speech Devices SDK erleichtert die Entwicklung verschiedenster stimmaktivier
 
 ### <a name="android"></a>Android
 
-Für Android-Geräte laden Sie die neueste Version des [Speech-Geräte-SDK für Android](https://aka.ms/sdsdk-download-android) herunter.
+Das Speech Devices SDK für Android unterstützt das [Roobo v1](speech-devices-sdk-roobo-v1.md) und gleichwertige Geräte. Laden Sie für diese die aktuellste Version des [Android Speech Devices SDK](https://aka.ms/sdsdk-download-android) herunter.
+
+
+Wenn Sie über ein anderes Android-Gerät verfügen, etwa über ein Smartphone oder Tablet, beginnen Sie mit dem [Android Speech SDK](speech-sdk.md)
+
 
 ### <a name="windows"></a>Windows
 
@@ -49,7 +53,7 @@ Die Anwendung wird mit dem Speech SDK-Paket und der Eclipse Java-IDE (v4) unter 
 Für Linux wird die Beispielanwendung als plattformübergreifende Java-Anwendung bereitgestellt. Laden Sie die neueste Version des [Speech-Geräte-SDK für die JRE](https://aka.ms/sdsdk-download-JRE) herunter.
 Die Anwendung wird mit dem Speech SDK-Paket und der Eclipse Java-IDE (v4) unter 64-Bit-Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8) erstellt. Sie wird in einer 64-Bit Java 8-JRE (Runtime Environment) ausgeführt.
 
-Zusätzliche Binärdateien werden bereitgestellt, um zukünftige Geräte, [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2), [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter) und [GGEC Speaker](https://aka.ms/sdsdk-download-speaker) zu unterstützen.
+Zusätzliche Binärdateien werden bereitgestellt, um zukünftige Geräte, [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2), [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter), [GGEC Speaker](https://aka.ms/sdsdk-download-speaker), [Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32) und [Linux ARM64](https://aka.ms/sdsdk-download-linux-arm64). zu unterstützen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

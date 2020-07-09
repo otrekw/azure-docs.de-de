@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: ab3f596000216e8555bb84d0d47aff9a6e969eeb
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d52f4ad7be6ce31fd2d01208536945c1f9ab2d7d
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76169898"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986723"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Beispiel: Analysieren von Videos in Echtzeit
 
@@ -201,13 +201,12 @@ In den meisten Modi kommt es zu einer sichtbaren Verzögerung zwischen den Live-
 
 Führen Sie diese Schritte aus, um mit diesem Beispiel zu beginnen:
 
-1. Rufen Sie die API-Schlüssel für die Bildanalyse-APIs unter [Abonnements](https://azure.microsoft.com/try/cognitive-services/) ab. Für die Analyse von Videoframes gelten die folgenden APIs:
-    - [Maschinelles Sehen-API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Gesichtserkennungs-API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
-
-2. Klonen des GitHub-Repositorys [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)
-
-3. Öffnen Sie das Beispiel in Visual Studio 2015, erstellen Sie die Beispielanwendungen, und führen Sie sie aus:
+1. [Erstellen eines Azure-Kontos](https://azure.microsoft.com/free/cognitive-services/). Wenn Sie bereits ein Konto besitzen, können Sie mit dem nächsten Schritt fortfahren.
+2. Erstellen von Ressourcen für maschinelles Sehen und Gesichtserkennung im Azure-Portal, um Ihren Schlüssel und Ihren Endpunkt abzurufen. Achten Sie darauf, beim Setup den Free-Tarif (F0) auszuwählen.
+   - [Maschinelles Sehen](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
+   - [Gesichtserkennung](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Klicken Sie nach dem Bereitstellen der Ressourcen auf **Zu Ressource wechseln**, um für jede Ressource Ihren Schlüssel und Endpunkt zu erfassen. 
+3. Klonen Sie das GitHub-Repository [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
+4. Öffnen Sie das Beispiel in Visual Studio, erstellen Sie die Beispielanwendungen, und führen Sie sie aus:
     - Für BasicConsoleSample ist der Schlüssel für die Gesichtserkennung direkt in  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) hartcodiert.
     - Für LiveCameraSample sollten die Schlüssel im Bereich „Einstellungen“ der App eingegeben werden. Sie werden sitzungsübergreifend als Benutzerdaten beibehalten.
         
@@ -216,7 +215,7 @@ Wenn Sie zum Integrieren bereit sind, können Sie **in Ihren eigenen Projekten a
 
 ## <a name="summary"></a>Zusammenfassung
 
-In diesem Leitfaden wurde beschrieben, wie Sie nahezu in Echtzeit eine Analyse für Live-Videodatenströme durchführen, indem Sie die APIs für Gesichtserkennung, Maschinelles Sehen und Emotionen verwenden, und wie Sie erste Schritte mit unserem Beispielcode ausführen. Auf der [Registrierungsseite für Azure Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) können Sie mit dem Erstellen Ihrer App beginnen, indem Sie kostenlose API-Schlüssel verwenden. 
+In diesem Leitfaden wurde beschrieben, wie Sie nahezu in Echtzeit eine Analyse für Live-Videodatenströme durchführen, indem Sie die APIs für Gesichtserkennung, Maschinelles Sehen und Emotionen verwenden, und wie Sie erste Schritte mit unserem Beispielcode ausführen.
 
 Wir freuen uns über Feedback und Vorschläge im [GitHub-Repository](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) und über allgemeineres Feedback zu den APIs über unsere  [UserVoice-Website](https://cognitive.uservoice.com/).
 

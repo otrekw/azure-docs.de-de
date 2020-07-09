@@ -3,17 +3,17 @@ title: Optimieren der Cloudinvestitionen mit Azure Cost Management
 description: Dieser Artikel bietet Informationen dazu, wie Sie Ihre Cloudinvestitionen optimal ausschöpfen, Ihre Kosten senken und auswerten, wofür genau Ihr Geld ausgegeben wird.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/04/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f328f17b1d64bc9b8f0be35321aecaba0cb85fa6
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791611"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142417"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Optimieren der Cloudinvestitionen mit Azure Cost Management
 
@@ -131,14 +131,39 @@ Weitere Informationen finden Sie unter [Azure Migrate](https://docs.microsoft.co
 
 Bleiben Sie auf dem Laufenden über die langfristige Kostenentwicklung in Ihrer Organisation. Wenden Sie die folgenden Techniken an, um Ihre Ausgaben genau zu kennen und zu verwalten.
 
-### <a name="organize-and-tag-your-resources"></a>Organisieren und Kennzeichnen von Ressourcen
+### <a name="organize-resources-to-maximize-cost-insights-and-accountability"></a>Organisieren von Ressourcen zur Maximierung von Kosteneinblicken und Verantwortlichkeit
 
-Organisieren Sie Ihre Ressourcen mit Blick auf die Kosten. Wenn Sie Abonnements und Ressourcengruppen erstellen, bedenken Sie, welche Teams für die damit verbundenen Kosten verantwortlich sein sollen. Stellen Sie sicher, dass bei der Berichterstellung die Organisation im Mittelpunkt steht. Abonnements und Ressourcengruppen sind geeignete Elemente, um die Ausgaben über die gesamte Organisation hinweg zu organisieren und zuzuordnen. Tags bieten eine gute Möglichkeit für die Kostenzuordnung. Sie können Tags als Filter verwenden. Sie können Sie auch zum Gruppieren verwenden, wenn Sie Daten analysieren und Kosten untersuchen. Enterprise Agreement-Kunden können auch Abteilungen erstellen und Abonnements in diesen platzieren. Eine kostenbasierte Organisation in Azure hilft dabei, den relevanten Personen in Ihrer Organisation die Verantwortung für die Senkung der Ausgaben ihres Teams zu übertragen.
+Mit einer gut geplanten Organisationsstruktur für Ihre Azure-Abrechnungs- und -Ressourcenhierarchien haben Sie die Kosten stets im Griff, wenn Sie Ihre Cloudinfrastruktur erstellen. Sehen Sie sich das Video [Setting up entity hierarchies](https://www.youtube.com/watch?v=n3TLRaYJ1NY) (Einrichten von Entitätshierarchien) an, um ein besseres Verständnis der verfügbaren Organisationstools und ihrer Nutzungsmöglichkeiten zu erhalten. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
-Sehen Sie sich das Video zum [Überprüfen der Tagrichtlinien mit Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) an, um die Tools zu verstehen, die Ihnen zur Durchsetzung einer skalierbaren Ressourcenkennzeichnung in Ihrer Organisation zur Verfügung stehen. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
+
+Wenn Sie eine Hierarchie auswerten und erstellen, die Ihren Anforderungen entspricht, stellen Sie sich die folgenden Fragen.
+
+*Welche Abrechnungshierarchie steht mir zur Verfügung, und welche unterschiedlichen Bereiche kann ich verwenden?*
+
+Identifizieren Sie das Abrechnungsarrangement für Ihre Organisation, indem Sie Ihren Azure-Angebotstyp bestimmen. Die verfügbaren Bereiche für jedes Azure-Abrechnungsarrangement sind unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md) dokumentiert.
+
+*Wie kann ich meine Abonnements und Ressourcengruppen organisieren, wenn ich mehrere Teams habe?*
+
+Das Erstellen eines Abonnements oder einer Ressourcengruppe für jedes Team ist eine gängige Vorgehensweise. Damit können Sie Kosten differenzieren und die Verantwortlichkeit der Teams sicherstellen. Die Kosten sind jedoch an das Abonnement oder die Ressourcengruppe gebunden.
+
+Wenn Sie bereits über Teams mit mehreren Abonnements verfügen, sollten Sie die Abonnements in Verwaltungsgruppen gruppieren, um die Kosten zusammen zu analysieren. Verwaltungsgruppen, Abonnements und Ressourcengruppen sind Teil der Azure RBAC-Hierarchie. Verwenden Sie sie gemeinsam zur Zugriffssteuerung in Ihren Teams.
+
+Ressourcen können sich über mehrere Bereiche erstrecken, insbesondere dann, wenn sie von mehreren Teams oder Workloads gemeinsam genutzt werden. Sie sollten Ressourcen mit Tags identifizieren. Tags werden im nächsten Abschnitt ausführlicher erläutert.
+
+*Habe ich Entwicklungs- und Produktionsumgebungen?*
+
+Ziehen Sie in Erwägung, Dev/Test-Abonnements für Ihre Entwicklungsumgebungen zu erstellen, um reduzierte Preise zu nutzen. Wenn die Workloads mehrere Teams oder Azure-Bereiche umfassen, sollten Sie erwägen, sie mit Tags zu identifizieren.
+
+### <a name="tag-shared-resources"></a>Kennzeichnen gemeinsam genutzter Ressourcen
+
+Tags sind eine effektive Möglichkeit, um mehrere Teams und Azure-Bereiche übergreifende Kosten zu verstehen. Beispielsweise könnten Sie über eine Ressource verfügen, die viele Teams verwenden, etwa einen E-Mail-Server. Sie können eine freigegebene Ressource, z. B. den E-Mail-Server, in einem Abonnement platzieren, das für freigegebene Ressourcen reserviert ist, oder sie in einem vorhandenen Abonnement platzieren. Wenn Sie sie in einem vorhandenen Abonnement ablegen, möchte der Besitzer des Abonnements möglicherweise nicht, dass ihre Kosten jeden Monat seinem Team angerechnet werden. In diesem Beispiel können Sie ein Tag verwenden, um die Ressource als freigegeben zu identifizieren.
+
+Auf ähnliche Weise könnten Sie auch Web-Apps oder Umgebungen, wie z. B. für Test oder Produktion, verwenden, die Ressourcen mehrere, im Besitz verschiedener Teams befindliche Abonnements übergreifend verwenden. Um die vollständigen Kosten der Workloads besser zu verstehen, kennzeichnen Sie die Ressourcen, die sie verwenden. Wenn Tags ordnungsgemäß angewendet werden, können Sie sie als Filter in der Kostenanalyse anwenden, um Trends besser zu verstehen.
+
+Nachdem Sie das Kennzeichnen von Ressourcen geplant haben, können Sie eine Azure-Richtlinie konfigurieren, um das Kennzeichnen von Ressourcen zu erzwingen. Sehen Sie sich das Video zum [Überprüfen der Tagrichtlinien mit Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) an, um die Tools zu verstehen, die Ihnen zur Durchsetzung einer skalierbaren Ressourcenkennzeichnung zur Verfügung stehen. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
-
 
 ### <a name="use-cost-analysis"></a>Verwenden der Kostenanalyse
 

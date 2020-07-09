@@ -1,21 +1,17 @@
 ---
 title: Verwenden von Azure PowerShell zum Erstellen einer Service Bus-Warteschlange
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell eine Service Bus-Warteschlange erstellen. Anschließend nutzen Sie eine Beispielanwendung, um Nachrichten an die Warteschlange zu senden und Nachrichten von der Warteschlange zu empfangen.
-services: service-bus-messaging
 author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 12/20/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 890e8d3a7592a6794fd19ac28b6ca613ac7201c6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f1fecfd7ba9f35d06b680d43248bf82aeb54a27b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75426937"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337251"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Schnellstart: Verwenden von Azure PowerShell zum Erstellen einer Service Bus-Warteschlange
 In dieser Schnellstartanleitung wird beschrieben, wie Sie Nachrichten an eine Service Bus-Warteschlange senden und von dieser empfangen. Sie verwenden Azure PowerShell, um einen Messaging-Namespace und eine Warteschlange innerhalb dieses Namespace zu erstellen und die Anmeldeinformationen dieses Namespace für die Autorisierung zu beschaffen. Anschließend wird gezeigt, wie Sie für diese Warteschlange das Senden und Empfangen von Nachrichten über die [.NET-Standardbibliothek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) durchführen.

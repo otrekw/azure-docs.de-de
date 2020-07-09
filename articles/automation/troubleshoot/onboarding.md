@@ -1,23 +1,20 @@
 ---
-title: Behandeln von Problemen beim Onboarding von Azure Automation-Verwaltungslösungen
-description: Erfahren Sie, wie Sie Probleme beim Onboarding von Azure Automation-Lösungen behandeln.
+title: Beheben von Problemen bei der Azure Automation-Featurebereitstellung
+description: In diesem Artikel erfahren Sie, wie Sie Probleme lösen, die beim Bereitstellen von Azure Automation-Features auftreten können.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 05/22/2019
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 371094ecba5168fd32a7af9fb81a71eb722efc91
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836528"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801028"
 ---
-# <a name="troubleshoot-solution-onboarding"></a>Behandeln von Problemen beim Onboarding von Lösungen
+# <a name="troubleshoot-feature-deployment-issues"></a>Beheben von Problemen bei der Featurebereitstellung
 
-Beim Onboarding der Lösungen „Updateverwaltung“, „Änderungsnachverfolgung“ oder „Bestand“ von Azure Automation erhalten Sie ggf. Fehlermeldungen. In diesem Artikel wird beschrieben, welche Fehler auftreten und wie diese behoben werden können.
+Möglicherweise erhalten Sie beim Bereitstellen des Azure Automation-Features für die Updateverwaltung, die Änderungsnachverfolgung und den Bestand für Ihre VMs eine Fehlermeldung. In diesem Artikel werden die Fehler beschrieben, die auftreten können, und wie diese gelöst werden.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -39,7 +36,7 @@ Heben Sie die Registrierung des Knotens in Azure Automation State Configuration 
 
 #### <a name="issue"></a>Problem
 
-Beim Herstellen einer Verbindung über eine Proxylösung, die den HTTPS-Datenverkehr beendet und dann den Datenverkehr mit einem neuen Zertifikat erneut verschlüsselt, lässt der Dienst die Verbindung nicht zu.
+Beim Herstellen einer Verbindung über einen Proxy, der den HTTPS-Datenverkehr beendet und dann den Datenverkehr mit einem neuen Zertifikat erneut verschlüsselt, lässt der Dienst die Verbindung nicht zu.
 
 #### <a name="cause"></a>Ursache
 
@@ -51,11 +48,11 @@ Für dieses Problem gibt es derzeit keine Problemumgehung.
 
 ## <a name="general-errors"></a>Allgemeine Fehler
 
-### <a name="scenario-onboarding-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Szenario: Fehler beim Onboarding mit der Meldung, dass die Lösung nicht aktiviert werden kann
+### <a name="scenario-feature-deployment-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Szenario: Die Featurebereitstellung schlägt mit der Meldung „The solution cannot be enabled“ (Die Lösung kann nicht aktiviert werden) fehl.
 
 #### <a name="issue"></a>Problem
 
-Eine der folgenden Meldungen wird angezeigt, wenn Sie versuchen, einen virtuellen Computer in eine Lösung zu integrieren (Onboarding):
+Wenn Sie versuchen, ein Feature für eine VM zu aktivieren, wird eine der folgenden Meldungen angezeigt:
 
 ```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
@@ -71,13 +68,13 @@ Dieser Fehler wird durch falsche oder fehlende Berechtigungen auf dem virtuellen
 
 #### <a name="resolution"></a>Lösung
 
-Stellen Sie sicher, dass Sie über die richtigen [Berechtigungen verfügen, die für das Onboarding von Computern erforderlich sind](../automation-role-based-access-control.md#onboarding-permissions), und wiederholen Sie dann das Onboarding der Lösung. Wenn Sie die Fehlermeldung `The solution cannot be enabled on this VM because the permission to read the workspace is missing` erhalten, stellen Sie sicher, dass Sie über die Berechtigung `Microsoft.OperationalInsights/workspaces/read` verfügen, um herausfinden zu können, ob die VM in einen Arbeitsbereich integriert ist.
+Stellen Sie sicher, dass Sie über die richtigen [Featurebereitstellungsberechtigungen](../automation-role-based-access-control.md#feature-setup-permissions) verfügen, und versuchen Sie dann nochmal, das Feature bereitzustellen. Sollte die Fehlermeldung `The solution cannot be enabled on this VM because the permission to read the workspace is missing` angezeigt werden, berücksichtigen Sie die folgenden [Informationen zur Problembehandlung](update-management.md#failed-to-enable-error).
 
-### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Szenario: Fehler beim Onboarding mit der Meldung „Fehler beim Konfigurieren eines Automation-Kontos für die Diagnoseprotokollierung“
+### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Szenario: Die Featurebereitstellung schlägt mit der Meldung „Fehler beim Konfigurieren eines Automation-Kontos für die Diagnoseprotokollierung“ fehl.
 
 #### <a name="issue"></a>Problem
 
-Die folgende Meldung wird angezeigt, wenn Sie versuchen, einen virtuellen Computer in eine Lösung zu integrieren (Onboarding):
+Die folgende Meldung wird angezeigt, wenn Sie versuchen, ein Feature für eine VM zu aktivieren:
 
 ```error
 Failed to configure automation account for diagnostic logging
@@ -89,13 +86,13 @@ Dieser Fehler kann auftreten, wenn der Tarif nicht mit dem Abrechnungsmodell des
 
 #### <a name="resolution"></a>Lösung
 
-Erstellen Sie Ihren Log Analytics-Arbeitsbereich manuell, und wiederholen Sie den Onboardingprozess, um den erstellten Arbeitsbereich auszuwählen.
+Erstellen Sie Ihren Log Analytics-Arbeitsbereich manuell, und wiederholen Sie den Prozess für die Featurebereitstellung, um den erstellten Arbeitsbereich auszuwählen.
 
 ### <a name="scenario-computergroupqueryformaterror"></a><a name="computer-group-query-format-error"></a>Szenario: ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>Problem
 
-Dieser Fehlercode bedeutet, dass die Abfrage einer gespeicherten Suchcomputergruppe für die Ziellösung nicht ordnungsgemäß formatiert ist. 
+Dieser Fehlercode bedeutet, dass die Abfrage einer gespeicherten Suchcomputergruppe für das Zielfeature nicht ordnungsgemäß formatiert ist. 
 
 #### <a name="cause"></a>Ursache
 
@@ -103,7 +100,7 @@ Möglicherweise haben Sie oder das System die Abfrage geändert.
 
 #### <a name="resolution"></a>Lösung
 
-Sie können die Abfrage für die Lösung löschen und dann ein erneutes Onboarding der Lösung durchführen, wodurch die Abfrage neu erstellt wird. Die Abfrage finden Sie in Ihrem Arbeitsbereich unter **Gespeicherte Suchvorgänge**. Der Name der Abfrage lautet **MicrosoftDefaultComputerGroup**, und die Kategorie der Abfrage ist der Name der zugeordneten Lösung. Wenn mehrere Lösungen aktiviert sind, wird die Abfrage **MicrosoftDefaultComputerGroup** unter **Speicherte Suchvorgänge** mehrfach angezeigt.
+Sie können die Abfrage für das Feature löschen und das Feature dann wieder aktivieren, wodurch die Abfrage neu erstellt wird. Die Abfrage finden Sie in Ihrem Arbeitsbereich unter **Gespeicherte Suchvorgänge**. Der Name der Abfrage lautet **MicrosoftDefaultComputerGroup**, und die Kategorie der Abfrage ist der Name des zugeordneten Features. Wenn mehrere Features aktiviert sind, wird die Abfrage **MicrosoftDefaultComputerGroup** unter **Gespeicherte Suchvorgänge** mehrmals angezeigt.
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Szenario: PolicyViolation
 
@@ -117,10 +114,10 @@ Eine Richtlinie blockiert den Abschluss des Vorgangs.
 
 #### <a name="resolution"></a>Lösung
 
-Für eine erfolgreiche Bereitstellung der Lösung müssen Sie eine Änderung der angegebenen Richtlinie in Betracht ziehen. Da viele verschiedene Richtlinientypen definiert werden können, hängen die erforderlichen Änderungen von der Richtlinie ab, gegen die verstoßen wurde. Wenn z. B. eine Richtlinie für eine Ressourcengruppe definiert ist, die die Berechtigung zum Ändern des Inhalts einiger enthaltener Ressourcen verweigert, können Sie eine der folgenden Korrekturen auswählen:
+Für eine erfolgreiche Bereitstellung des Features müssen Sie eine Änderung der angegebenen Richtlinie in Betracht ziehen. Da viele verschiedene Richtlinientypen definiert werden können, hängen die erforderlichen Änderungen von der Richtlinie ab, gegen die verstoßen wurde. Wenn z. B. eine Richtlinie für eine Ressourcengruppe definiert ist, die die Berechtigung zum Ändern des Inhalts einiger enthaltener Ressourcen verweigert, können Sie eine der folgenden Korrekturen auswählen:
 
 * Entfernen Sie die Richtlinie vollständig.
-* Versuchen Sie, das Onboarding der Lösung in einer anderen Ressourcengruppe durchzuführen.
+* Versuchen Sie, das Feature für eine andere Ressourcengruppe zu aktivieren.
 * Wählen Sie als neues Ziel der Richtlinie eine andere spezifische Ressource aus, z. B. ein Automation-Konto.
 * Überarbeiten Sie die Gruppe der Ressourcen, für deren Ablehnung diese Richtlinie konfiguriert wurde.
 
@@ -138,26 +135,26 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>Ursache
 
-Dieser Fehler tritt auf, wenn Sie noch über aktive Lösungen in Ihrem Log Analytics-Arbeitsbereich verfügen, die davon abhängig sind, dass Ihr Automation-Konto und Ihr Log Analytics-Arbeitsbereich verknüpft sind.
+Dieser Fehler tritt auf, wenn Sie noch über aktive Features in Ihrem Log Analytics-Arbeitsbereich verfügen, die davon abhängig sind, dass Ihr Automation-Konto und Ihr Log Analytics-Arbeitsbereich verknüpft sind.
 
 ### <a name="resolution"></a>Lösung
 
-Entfernen Sie die folgenden Lösungen aus Ihrem Arbeitsbereich, sofern Sie sie verwenden:
+Entfernen Sie die Ressourcen für die folgenden Features aus Ihrem Arbeitsbereich, wenn Sie sie verwenden:
 
 * Updateverwaltung
 * Änderungsnachverfolgung und Bestand
 * Starten/Beenden von VMs außerhalb der Kernzeit
 
-Nachdem Sie die Lösungen entfernt haben, können Sie die Verknüpfung mit Ihrem Arbeitsbereich aufheben. Es ist wichtig, alle vorhandenen Artefakte dieser Lösungen aus Ihrem Arbeitsbereich und Ihrem Automation-Konto zu entfernen:
+Nachdem Sie die Featureressourcen entfernt haben, können Sie die Verknüpfung mit Ihrem Arbeitsbereich aufheben. Es ist wichtig, alle vorhandenen Artefakte dieser Features aus Ihrem Arbeitsbereich und Ihrem Automation-Konto zu entfernen:
 
 * Für „Updateverwaltung“ entfernen Sie **Updatebereitstellungen (Zeitpläne)** aus Ihrem Automation-Konto.
-* Für „VMs außerhalb der Geschäftszeiten starten/beenden“ entfernen Sie alle Sperren für die Komponenten der Lösung in Ihrem Automation-Konto unter **Einstellungen** > **Sperren**. Weitere Informationen finden Sie unter [Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“](../automation-solution-vm-management.md#remove-the-solution).
+* Für „VMs außerhalb der Geschäftszeiten starten/beenden“ entfernen Sie alle Sperren für die Komponenten des Features in Ihrem Automation-Konto unter **Einstellungen** > **Sperren**. Weitere Informationen finden Sie unter [Entfernen von Features](../automation-solution-vm-management.md#remove-the-feature).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Fehler der Log Analytics für Windows-Erweiterung
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Eine Installation des Log Analytics-Agents für die Windows-Erweiterung kann aus einer Vielzahl von Gründen fehlschlagen. Im folgenden Abschnitt werden die Onboardingprobleme beschrieben, die während der Bereitstellung des Log Analytics-Agents für die Windows-Erweiterung Fehler verursachen können.
+Eine Installation des Log Analytics-Agents für die Windows-Erweiterung kann aus einer Vielzahl von Gründen fehlschlagen. Im folgenden Abschnitt werden die Probleme bei der Featurebereitstellung beschrieben, die während der Bereitstellung des Log Analytics-Agents für die Windows-Erweiterung Fehler verursachen können.
 
 >[!NOTE]
 >„Log Analytics-Agent für Windows“ ist der Name, der aktuell in Azure Automation für den Microsoft Monitoring Agent (MMA) verwendet wird.

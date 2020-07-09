@@ -9,17 +9,17 @@ manager: KumudD
 ms.service: virtual-network
 Customer intent: As an IT administrator, I want to troubleshoot Virtual Network NAT.
 ms.devlang: na
-ms.topic: overview
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/28/2020
+ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: c9b5aaefeb8ab21eed850f5bf291d38981239aab
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508427"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688280"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Problembehandlung für Azure Virtual Network NAT-Konnektivität
 
@@ -31,6 +31,7 @@ In diesem Artikel erhalten Administratoren Hilfe beim Diagnostizieren und Behebe
 * [Fehler bei ICMP-Ping](#icmp-ping-is-failing)
 * [Konnektivitätsfehler](#connectivity-failures)
 * [IPv6-Koexistenz](#ipv6-coexistence)
+* [Verbindung stammt nicht von den IP-Adressen des NAT Gateways](#connection-doesnt-originate-from-nat-gateway-ips)
 
 Führen Sie die Schritte im folgenden Abschnitt aus, um diese Probleme zu beheben.
 
@@ -61,10 +62,10 @@ _**Lösung:**_ Nutzen geeigneter Muster und bewährter Methoden
 - Per DNS können viele einzelne Datenflüsse mit großen Datenmengen genutzt werden, wenn der Client das Ergebnis der DNS-Auflösung nicht zwischenspeichert. Verwenden Sie die Zwischenspeicherung.
 - Bei UDP-Datenflüssen (z. B. DNS-Suchen) werden für die Dauer des Leerlauftimeouts SNAT-Ports zugeordnet. Je länger der Leerlauftimeout dauert, desto höher ist der Druck auf die SNAT-Ports. Verwenden Sie ein kurzes Leerlauftimeout (z. B. vier Minuten).
 - Nutzen Sie Verbindungspools, um Ihre Verbindungsdatenmenge zu steuern.
-- Vermeiden Sie den Abbruch eines TCP-Datenflusses im Hintergrund, und verlassen Sie sich nicht darauf, dass dies über TCP-Timer bereinigt wird. Wenn Sie die explizite Verbindungstrennung durch TCP nicht zulassen, bleibt der Zuordnungszustand bei Zwischensystemen und -endpunkten erhalten, und SNAT-Ports stehen nicht für andere Verbindungen zur Verfügung. Aus diesem Grund kann es zu einer Auslösung von Anwendungsausfällen und zu einer SNAT-Überlastung kommen. 
+- Vermeiden Sie den Abbruch eines TCP-Datenflusses im Hintergrund, und verlassen Sie sich nicht darauf, dass dies über TCP-Timer bereinigt wird. Wenn Sie die explizite Verbindungstrennung durch TCP nicht zulassen, bleibt der Zuordnungszustand bei Zwischensystemen und -endpunkten erhalten, und SNAT-Ports stehen nicht für andere Verbindungen zur Verfügung. Dieses Muster kann zu einer Auslösung von Anwendungsausfällen und zu einer SNAT-Überlastung führen. 
 - Ändern Sie Timerwerte für die TCP-Verbindungstrennung auf der Betriebssystemebene nur, wenn Sie mit den Auswirkungen vertraut sind, die sich dadurch ergeben. Der TCP-Stapel wird zwar wiederhergestellt, Ihre Anwendungsleistung kann aber beeinträchtigt werden, wenn für die Endpunkte einer Verbindung unterschiedliche Erwartungen bestehen. Der Wunsch nach einer Änderung von Timern ist normalerweise ein Zeichen für ein zugrunde liegendes Entwurfsproblem. Sehen Sie sich die folgenden Empfehlungen an.
 
-Die SNAT-Überlastung wird häufig auch durch andere Antimuster in der zugrunde liegenden Anwendung verstärkt. Informieren Sie sich über diese zusätzlichen Muster und bewährten Methoden, um die Skalierbarkeit und Zuverlässigkeit Ihres Diensts zu verbessern.
+Die SNAT-Überlastung kann auch durch andere Antimuster in der zugrunde liegenden Anwendung verstärkt werden. Informieren Sie sich über diese zusätzlichen Muster und bewährten Methoden, um die Skalierbarkeit und Zuverlässigkeit Ihres Diensts zu verbessern.
 
 - Untersuchen Sie die Auswirkungen einer Verringerung des [TCP-Leerlauftimeouts](nat-gateway-resource.md#timers) (einschließlich des standardmäßigen Leerlauftimeouts von vier Minuten), um SNAT-Ports früher freizugeben.
 - Erwägen Sie die Nutzung von [asynchronen Abrufmustern](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) für zeitintensive Vorgänge, um Verbindungsressourcen für andere Vorgänge freizuhalten.
@@ -116,7 +117,7 @@ Verwenden Sie Tools wie die folgenden, um die Konnektivität zu überprüfen. [I
 
 #### <a name="configuration"></a>Konfiguration
 
-Überprüfen Sie folgende Punkte:
+Überprüfen Sie Ihre Konfiguration:
 1. Verfügt die NAT-Gatewayressource über mindestens eine öffentliche IP-Ressource oder eine Präfixressource für öffentliche IP-Adressen? Dem NAT-Gateway muss mindestens eine IP-Adresse zugeordnet sein, damit es ausgehende Verbindungen bereitstellen kann.
 2. Ist das Subnetz des virtuellen Netzwerks zur Verwendung des NAT-Gateways konfiguriert?
 3. Verwenden Sie die benutzerdefinierte Route (User-Defined Route, UDR), und setzen Sie das Ziel außer Kraft?  NAT-Gatewayressourcen werden zur Standardroute (0/0) in konfigurierten Subnetzen.
@@ -182,6 +183,18 @@ _**Lösung:**_
 _**Lösung:**_ Stellen Sie das NAT-Gateway in einem Subnetz ohne IPv6-Präfix bereit.
 
 Sie können Ihr Interesse an zusätzlichen Funktionen über [UserVoice für Virtual Network NAT](https://aka.ms/natuservoice) kommunizieren.
+
+### <a name="connection-doesnt-originate-from-nat-gateway-ips"></a>Verbindung stammt nicht von den IP-Adressen des NAT Gateways
+
+Sie konfigurieren das NAT Gateway, die zu verwendende(n) IP-Adresse(n) und welches Subnetz eine NAT Gateway-Ressource verwenden soll. Bei Verbindungen von Instanzen virtueller Computer, die bereits vor der Bereitstellung des NAT Gateways bestanden, werden die IP-Adressen jedoch nicht verwendet.  Sie scheinen IP-Adressen zu verwenden, die nicht mit der NAT Gateway-Ressource verwendet werden.
+
+_**Lösung:**_
+
+[Virtual Network NAT](nat-overview.md) ersetzt die ausgehende Konnektivität für das Subnetz, in dem es konfiguriert ist. Beim Übergang von Standard-SNAT oder SNAT in ausgehender Richtung für den Lastenausgleich zur Verwendung von NAT Gateways beginnen neue Verbindungen sofort mit der Verwendung der IP-Adressen, die der NAT Gateway-Ressource zugeordnet sind.  Wenn jedoch ein virtueller Computer während des Wechsels zur NAT Gateway-Ressource immer noch eine bestehende Verbindung aufweist, verwendet die Verbindung weiterhin die alte SNAT-IP-Adresse, die beim Herstellen der Verbindung zugewiesen wurde.  Stellen Sie sicher, dass Sie wirklich eine neue Verbindung herstellen, anstatt eine bereits bestehende Verbindung wiederzuverwenden, da das Betriebssystem oder der Browser die Verbindungen in einem Verbindungspool zwischengespeichert hat.  Wenn Sie z. B. _curl_ in PowerShell verwenden, stellen Sie sicher, dass Sie den Parameter _-DisableKeepalive_ angeben, um eine neue Verbindung zu erzwingen.  Wenn Sie einen Browser verwenden, können die Verbindungen auch gepoolt werden.
+
+Es ist nicht erforderlich, einen virtuellen Computer neu zu starten, der ein Subnetz für eine NAT Gateway-Ressource konfiguriert.  Wenn allerdings ein virtueller Computer neu gestartet wird, wird der Verbindungsstatus geleert.  Wenn der Verbindungsstatus geleert wurde, beginnen alle Verbindungen mit der Verwendung der IP-Adresse(n) der NAT Gateway-Ressource.  Dies ist jedoch ein Nebeneffekt des Neustarts des virtuellen Computers und kein Hinweis darauf, dass ein Neustart erforderlich ist.
+
+Wenn Sie weiterhin Probleme haben, öffnen Sie eine Supportanfrage zur weiteren Problembehandlung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

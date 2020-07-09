@@ -5,15 +5,15 @@ description: Erfahren Sie, wie Sie ein selbstsigniertes Azure Application Gatewa
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: de580d8f94292ae65769c696aa232f5b660bf414
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81311944"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806755"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generieren eines selbstsignierten Azure Application Gateway-Zertifikats mit einer benutzerdefinierten Stammzertifizierungsstelle
 
@@ -67,7 +67,7 @@ Erstellen Sie Ihr Stammzertifikat der Zertifizierungsstelle mit OpenSSL.
    ```
    Mit den vorherigen Befehlen wird das Stammzertifikat erstellt. Sie verwenden dieses Zertifikat, um Ihr Serverzertifikat zu signieren.
 
-1. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort für den Stammschlüssel und die organisatorischen Informationen für die benutzerdefinierte Zertifizierungsstelle, z. B. Land, Bundesland/Region, Organisation, Abteilung, und den vollqualifizierten Domänennamen (dies ist die Domäne des Zertifikatausstellers) ein.
+1. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort für den Stammschlüssel und die Organisationsinformationen für die benutzerdefinierte Zertifizierungsstelle, z. B. Land, Bundesland/Region, Organisation, Organisationseinheit, und den vollqualifizierten Domänennamen (dies ist die Domäne des Zertifikatausstellers) ein.
 
    ![Stammzertifikat erstellen](media/self-signed-certificates/root-cert.png)
 
@@ -97,7 +97,7 @@ Die Zertifikatsignieranforderung ist ein öffentlicher Schlüssel, der einer Zer
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort für den Stammschlüssel sowie die organisatorischen Informationen für die benutzerdefinierte Zertifizierungsstelle ein: Land, Bundesland/Region, Organisation, Abteilung und der vollqualifizierte Domänenname. Dies ist die Domäne der Website, und diese Domäne muss sich vom Aussteller unterscheiden.
+1. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort für den Stammschlüssel sowie die organisatorischen Informationen für die benutzerdefinierte Zertifizierungsstelle ein: Land, Bundesland/Region, Organisation, Organisationseinheit und der vollqualifizierte Domänenname. Dies ist die Domäne der Website, und diese Domäne muss sich vom Aussteller unterscheiden.
 
    ![Serverzertifikat](media/self-signed-certificates/server-cert.png)
 

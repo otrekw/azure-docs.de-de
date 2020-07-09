@@ -2,19 +2,17 @@
 title: include file
 description: include file
 documentationcenter: partner-center-commercial-marketplace
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
-ms.date: 10/09/2019
-ms.author: dsindona
+ms.date: 06/01/2020
 ms.custom: include file
-ms.openlocfilehash: f79b25c98ae2e764f607fc5a12bc311ed0edacae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38f97f8f3397eb1737c2414f5bbbccf99503711e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286182"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121882"
 ---
 Nehmen Sie direkt Kontakt zu Kunden auf, indem Sie Ihr Angebot in Marketplaces auflisten und Ihr CRM-System (Customer Relationship Management) einbinden. So erhalten Sie Kundenkontaktinformationen sofort, nachdem ein Kunde Interesse bekundet oder Ihr Produkt bereitgestellt hat.
 
@@ -22,7 +20,6 @@ Nehmen Sie direkt Kontakt zu Kunden auf, indem Sie Ihr Angebot in Marketplaces a
 
 Das Partner Center unterstützt die Leadverwaltung für die folgenden CRM-Systeme. Klicken Sie auf den Link, um Anweisungen zur Einrichtung zu erhalten.
 
-- [Azure-Blob:](../commercial-marketplace-lead-management-instructions-azure-blob.md) Geben Sie die E-Mail-Adresse, den Containernamen und die Verbindungszeichenfolge für das Speicherkonto ein. 
 - [Azure-Tabelle:](../commercial-marketplace-lead-management-instructions-azure-table.md) Geben Sie die E-Mail-Kontaktadresse und die Verbindungszeichenfolge für das Speicherkonto an. 
 - [Dynamics CRM Online:](../commercial-marketplace-lead-management-instructions-dynamics.md) Geben Sie die E-Mail-Kontaktadresse, die URL und den Authentifizierungsmodus (Office 365 oder Azure Active Directory) an.
 - [HTTPS-Endpunkt:](../commercial-marketplace-lead-management-instructions-https.md) Geben Sie die E-Mail-Kontaktadresse und die URL des HTTPS-Endpunkts an. 

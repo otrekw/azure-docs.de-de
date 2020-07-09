@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie die Bulk Executor-Bibliothek verwendet wird
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86d88787d024029b11d9718f8dbc834ae7217707
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982702"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260643"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Verwenden der Bulk Executor-.NET-Graphbibliothek zum Ausführen von Massenvorgängen in der Gremlin-API von Azure Cosmos DB
 
@@ -115,7 +115,7 @@ e.AddProperty("customProperty", "value");
 
 ### <a name="prerequisites"></a>Voraussetzungen
 * Visual Studio 2019 mit der Workload „Azure-Entwicklung“. Mit der [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) können Sie kostenlos beginnen.
-* ein Azure-Abonnement Sie können [hier ein kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Alternativ können Sie mit [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/) ein Cosmos-Datenbankkonto ohne Azure-Abonnement erstellen.
+* Ein Azure-Abonnement. Sie können [hier ein kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Alternativ können Sie mit [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/) ein Cosmos-Datenbankkonto ohne Azure-Abonnement erstellen.
 * Eine Gremlin-API-Datenbank von Azure Cosmos DB mit einer **unbegrenzten Sammlung**. Diese Anleitung zeigt die ersten Schritte mit [der Gremlin-API von Azure Cosmos DB in .NET](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet).
 * Git. Weitere Informationen finden Sie auf der [Git-Downloadseite](https://git-scm.com/downloads).
 

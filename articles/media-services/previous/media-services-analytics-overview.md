@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: ab1eba3de474d9ff985e62f491c24fa63be0fa63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9efb1e9256bccd04a76b4f63edaaf7c2c6ac708
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77069624"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955215"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics auf der Media Services-Plattform 
 
@@ -85,52 +85,58 @@ In diesem Abschnitt sind alle Media Analytics-Medienprozessoren (MP) aufgeführt
 ### <a name="net"></a>.NET
 Die folgende Funktion verwendet einen der angegebenen MP-Namen und gibt ein MP-Objekt zurück.
 
-    static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-    {
-        var processor = _context.MediaProcessors
-            .Where(p => p.Name == mediaProcessorName)
-            .ToList()
-            .OrderBy(p => new Version(p.Version))
-            .LastOrDefault();
+```csharp
+static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+{
+    var processor = _context.MediaProcessors
+        .Where(p => p.Name == mediaProcessorName)
+        .ToList()
+        .OrderBy(p => new Version(p.Version))
+        .LastOrDefault();
 
-        if (processor == null)
-            throw new ArgumentException(string.Format("Unknown media processor",
-                                                       mediaProcessorName));
+    if (processor == null)
+        throw new ArgumentException(string.Format("Unknown media processor",
+                                                  mediaProcessorName));
 
-        return processor;
-    }
+    return processor;
+}
+```
 
 
 ### <a name="rest"></a>REST
 Anforderung:
 
-    GET https://media.windows.net/api/MediaProcessors()?$filter=Name%20eq%20'Azure%20Media%20OCR' HTTP/1.1
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Accept: application/json
-    Accept-Charset: UTF-8
-    User-Agent: Microsoft ADO.NET Data Services
-    Authorization: Bearer <token>
-    x-ms-version: 2.19
-    Host: media.windows.net
+```http
+GET https://media.windows.net/api/MediaProcessors()?$filter=Name%20eq%20'Azure%20Media%20OCR' HTTP/1.1
+DataServiceVersion: 1.0;NetFx
+MaxDataServiceVersion: 3.0;NetFx
+Accept: application/json
+Accept-Charset: UTF-8
+User-Agent: Microsoft ADO.NET Data Services
+Authorization: Bearer <token>
+x-ms-version: 2.19
+Host: media.windows.net
+```
 
 Antwort:
 
-    . . .
+```http
+. . .
 
-    {  
-       "odata.metadata":"https://media.windows.net/api/$metadata#MediaProcessors",
-       "value":[  
-          {  
-             "Id":"nb:mpid:UUID:074c3899-d9fb-448f-9ae1-4ebcbe633056",
-             "Description":"Azure Media OCR",
-             "Name":"Azure Media OCR",
-             "Sku":"",
-             "Vendor":"Microsoft",
-             "Version":"1.1"
-          }
-       ]
-    }
+{  
+    "odata.metadata":"https://media.windows.net/api/$metadata#MediaProcessors",
+    "value":[  
+        {  
+            "Id":"nb:mpid:UUID:074c3899-d9fb-448f-9ae1-4ebcbe633056",
+            "Description":"Azure Media OCR",
+            "Name":"Azure Media OCR",
+            "Sku":"",
+            "Vendor":"Microsoft",
+            "Version":"1.1"
+        }
+    ]
+}
+```
 
 ## <a name="demos"></a>Demos
 Siehe [Azure Media Analytics-Demos](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).

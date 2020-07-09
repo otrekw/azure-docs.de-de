@@ -4,19 +4,19 @@ description: Verwenden des reinen Berichtsmodus des bedingten Zugriffs zur Unter
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 05/01/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb13eb699f770d4d7f896b8179888d1514b1c46d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 46a00d55c58992be1009da1de5441ebe4e589a70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83994968"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Konfigurieren einer Richtlinie für bedingten Zugriff im reinen Berichtsmodus
 

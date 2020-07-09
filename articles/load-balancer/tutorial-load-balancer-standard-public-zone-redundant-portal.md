@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: f521cc68476e2f9df1cc8288cf41156da3851cd0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251877"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057006"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Verfügbarkeitszonenübergreifender Lastenausgleich für VMs mit einer Load Balancer Standard-Instanz im Azure-Portal
 
@@ -77,10 +77,10 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupLBAZ (Wählen Sie die vorhandene Ressourcengruppe aus.) |
 | **\<virtual-network-name>** | myVNet          |
-| **\<Regionsname>**          | Europa, Westen      |
-| **\<IPv4-address-space>**   | 10.0.0.0\16          |
+| **\<region-name>**          | Europa, Westen      |
+| **\<IPv4-address-space>**   | 10.0.0.0/16          |
 | **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.0.0.0\24          |
+| **\<subnet-address-range>** | 10.0.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -140,9 +140,6 @@ Erstellen Sie virtuelle Computer in unterschiedlichen Zonen (Zone 1, Zone 2 und 
     - *myNetworkSecurityGroup*: Für den Namen der Netzwerksicherheitsgruppe (Firewall).
 5. Klicken Sie auf **Deaktiviert**, um die Startdiagnose zu deaktivieren.
 6. Klicken Sie auf **OK**, überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **Erstellen**.
-  
-   ![Erstellen eines virtuellen Computers](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
-
 7. Erstellen Sie anhand der Schritte 1–6 in Zone 2 eine zweite VM namens *VM2* und in Zone 3 eine dritte VM mit *myVnet* als virtuelles Netzwerk, *myBackendSubnet* als Subnetz und **myNetworkSecurityGroup* als Netzwerksicherheitsgruppe.
 
 ### <a name="install-iis-on-vms"></a>Installieren von IIS auf VMs

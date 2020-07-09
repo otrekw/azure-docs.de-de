@@ -12,16 +12,16 @@ ms.date: 02/12/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: has-adal-ref
-ms.openlocfilehash: 74c6951a718d15a9ca7b84e92662272ba1bfd182
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c3efd94e741124d5e662ac17e9c1daaf66d4c1c5
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610291"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168808"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Sicherer Zugriff auf lokale APIs mit dem Azure AD-Anwendungsproxy
 
-Möglicherweise verfügen Sie über Geschäftslogik-APIs, die lokal ausgeführt oder auf virtuellen Computern in der Cloud gehostet werden. Ihre nativen Android-, iOS-, Mac- oder Windows-Apps müssen mit den API-Endpunkten interagieren, um Daten zu verwenden oder Benutzerinteraktionen bereitzustellen. Der Azure AD-Anwendungsproxy und die [Azure Active Directory-Authentifizierungsbibliotheken (ADAL)](/azure/active-directory/develop/active-directory-authentication-libraries) ermöglichen Ihren nativen Apps den sicheren Zugriff auf Ihre lokalen APIs. Der Azure Active Directory-Anwendungsproxy ist eine schnellere und sicherere Lösung als das Öffnen von Firewallports und das Steuern von Authentifizierung und Autorisierung auf Anwendungsebene.
+Möglicherweise verfügen Sie über Geschäftslogik-APIs, die lokal ausgeführt oder auf virtuellen Computern in der Cloud gehostet werden. Ihre nativen Android-, iOS-, Mac- oder Windows-Apps müssen mit den API-Endpunkten interagieren, um Daten zu verwenden oder Benutzerinteraktionen bereitzustellen. Der Azure AD-Anwendungsproxy und die [Microsoft-Authentifizierungsbibliothek (MSAL, Microsoft Authentication Library)](/azure/active-directory/develop/active-directory-authentication-libraries) ermöglichen Ihren nativen Apps den sicheren Zugriff auf Ihre lokalen APIs. Der Azure Active Directory-Anwendungsproxy ist eine schnellere und sicherere Lösung als das Öffnen von Firewallports und das Steuern von Authentifizierung und Autorisierung auf Anwendungsebene.
 
 Dieser Artikel führt Sie durch schrittweise die Einrichtung einer Azure AD-Anwendungsproxylösung für das Hosting eines Web-API-Diensts, auf den native Apps zugreifen können.
 
@@ -113,7 +113,7 @@ So registrieren Sie die native AppProxyNativeAppSample-App:
 
    1. Wählen Sie unter **Unterstützte Kontotypen** **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
 
-   1. Wählen Sie in der Dropdownliste **Umleitungs-URL** die Option **Öffentlicher Client (Mobilgerät und Desktop)** aus, und geben Sie dann *https:\//appproxynativeapp* ein.
+   1. Wählen Sie in der Dropdownliste **Umleitungs-URL** die Option **Öffentlicher Client (Mobilgerät und Desktop)** aus, und geben Sie dann *https://login.microsoftonline.com/common/oauth2/nativeclient* ein.
 
    1. Wählen Sie **Registrieren** aus, und warten Sie, bis die App erfolgreich registriert wurde.
 
@@ -139,22 +139,38 @@ Sie haben die AppProxyNativeAppSample-App jetzt in Azure Active Directory regist
 
 Der letzte Schritt besteht im Konfigurieren der nativen App. Der folgende Codeausschnitt aus der Datei *Form1.cs* in der NativeClient-Beispiel-App bewirkt, dass die ADAL-Bibliothek das Token für die Anforderung des API-Aufrufs abruft und als Bearer an den App-Header anfügt.
 
-   ```csharp
-       AuthenticationResult result = null;
-       HttpClient httpClient = new HttpClient();
-       authContext = new AuthenticationContext(authority);
-       result = await authContext.AcquireTokenAsync(todoListResourceId, clientId, redirectUri, new PlatformParameters(PromptBehavior.Auto));
-
-       // Append the token as bearer in the request header.
-       httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-
-       // Call the API.
-       HttpResponseMessage response = await httpClient.GetAsync(todoListBaseAddress + "/api/values/4");
-
-       // MessageBox.Show(response.RequestMessage.ToString());
-       string s = await response.Content.ReadAsStringAsync();
-       MessageBox.Show(s);
    ```
+   // Acquire Access Token from AAD for Proxy Application
+ IPublicClientApplication clientApp = PublicClientApplicationBuilder
+.Create(<App ID of the Native app>)
+.WithDefaultRedirectUri() // will automatically use the default Uri for native app
+.WithAuthority("https://login.microsoftonline.com/{<Tenant ID>}")
+.Build();
+
+AuthenticationResult authResult = null;
+var accounts = await clientApp.GetAccountsAsync();
+IAccount account = accounts.FirstOrDefault();
+
+IEnumerable<string> scopes = new string[] {"<Scope>"};
+
+try
+ {
+    authResult = await clientApp.AcquireTokenSilent(scopes, account).ExecuteAsync();
+ }
+    catch (MsalUiRequiredException ex)
+ {
+     authResult = await clientApp.AcquireTokenInteractive(scopes).ExecuteAsync();                
+ }
+ 
+if (authResult != null)
+ {
+  //Use the Access Token to access the Proxy Application
+  
+  HttpClient httpClient = new HttpClient();
+  HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
+  HttpResponseMessage response = await httpClient.GetAsync("<Proxy App Url>");
+ }
+```
 
 Um die native App so zu konfigurieren, dass sie eine Verbindung mit Azure Active Directory herstellt und den API-App-Proxy aufruft, aktualisieren Sie die Platzhalterwerte in der Datei *App.config* der NativeClient-Beispiel-App mit Werten aus Azure AD:
 

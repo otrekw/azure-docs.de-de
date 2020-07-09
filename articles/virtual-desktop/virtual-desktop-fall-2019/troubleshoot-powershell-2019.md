@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: de3933b1686b433a720e78d89bd3e50c0ce5e5dd
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82614291"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop: PowerShell
@@ -62,7 +62,7 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 
 **Ursache:** Parameter -TenantName
 
-**Behebung:** Geben Sie „Get-RdsDiagnosticActivities“ mit „-TenantName \<Mandantenname>“ aus.
+**Behebung:** Geben Sie Get-RdsDiagnosticActivities mit -TenantName \<TenantName> aus.
 
 ### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Error: Get-RdsDiagnosticActivities: Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen.
 
@@ -72,7 +72,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 
 **Ursache:** Verwendung des Schalters -Deployment.
 
-**Behebung:** Der Schalter -Deployment kann nur von Bereitstellungsadministratoren verwendet werden. Diese Administratoren sind in der Regel Mitglieder des Teams für Remotedesktopdienste/Windows Virtual Desktop. Ersetzen Sie den Schalter „-Deployment“ durch „-TenantName \<Mandantenname>“.
+**Behebung:** Der Schalter -Deployment kann nur von Bereitstellungsadministratoren verwendet werden. Diese Administratoren sind in der Regel Mitglieder des Teams für Remotedesktopdienste/Windows Virtual Desktop. Ersetzen Sie den Schalter -Deployment durch -TenantName \<TenantName>.
 
 ### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Error: New-RdsRoleAssignment: Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Profit.co SAML App | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Profit.co SAML App konfigurieren.
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Profit.co | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Profit.co konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/27/2020
+ms.date: 04/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 564ca97210d85c5118901f30261abe3de9df1053
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: e39a797257b2f06f102a6b774f567b7b3060ccdd
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770920"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871338"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-profitco-saml-app"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Profit.co SAML App
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-profitco"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Profit.co
 
-In diesem Tutorial erfahren Sie, wie Sie Profit.co SAML App in Azure Active Directory (Azure AD) integrieren. Die Integration von Profit.co SAML App in Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie Profit.co in Azure Active Directory (Azure AD) integrieren. Die Integration von Profit.co in Azure AD ermöglicht Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf Profit.co SAML App hat.
-* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Profit.co SAML App anzumelden.
+* Steuern Sie in Azure AD, wer Zugriff auf Profit.co hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Profit.co anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) mit Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
@@ -37,45 +37,45 @@ Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) mit 
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein Profit.co SAML App-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Ein Profit.co-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Profit.co SAML App unterstützt IDP-initiiertes einmaliges Anmelden.
+* Profit.co unterstützt IDP-initiiertes einmaliges Anmelden.
 
-* Nach dem Konfigurieren von Profit.co SAML App können Sie die Sitzungssteuerung erzwingen. Diese schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Nach dem Konfigurieren von Profit.co können Sie die Sitzungssteuerung erzwingen. Diese schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
-## <a name="add-profitco-saml-app-from-the-gallery"></a>Hinzufügen von Profit.co SAML App aus dem Katalog
+## <a name="add-profitco-from-the-gallery"></a>Hinzufügen von Profit.co aus dem Katalog
 
-Zum Konfigurieren der Integration von Profit.co SAML App in Azure AD müssen Sie Profit.co SAML App aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Profit.co in Azure AD müssen Sie Profit.co aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
-1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Profit.co SAML App** in das Suchfeld ein.
-1. Wählen Sie im Ergebnisbereich **Profit.co SAML App** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Profit.co** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Profit.co** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-profitco-saml-app"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Profit.co SAML App
+## <a name="configure-and-test-azure-ad-single-sign-on-for-profitco"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Profit.co
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Profit.co SAML App mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, richten Sie eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Profit.co SAML App ein.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Profit.co mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, richten Sie eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Profit.co ein.
 
-Nachfolgend sind die allgemeinen Schritte zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Profit.co SAML App aufgeführt:
+Nachfolgend sind die allgemeinen Schritte zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Profit.co aufgeführt:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für Profit.co SAML App](#configure-profitco-saml-app-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Profit.co SAML App-Testbenutzers](#create-a-profitco-saml-app-test-user)** , um eine Entsprechung von B. Simon in Profit.co SAML App zu erhalten Diese Entsprechung ist mit der Benutzerdarstellung in Azure AD verknüpft.
+1. **[Konfigurieren des einmaligen Anmeldens für Profit.co](#configure-profitco-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Profit.co-Testbenutzers](#create-a-profitco-test-user)** , um eine Entsprechung von B. Simon in Profit.co zu erhalten Diese Entsprechung ist mit der Benutzerdarstellung in Azure AD verknüpft.
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Profit.co SAML App** zum Abschnitt **Verwalten**. Wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Profit.co** zum Abschnitt **Verwalten**. Wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten.
 
@@ -101,10 +101,10 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer namens B.Si
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Profit.co SAML App gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Profit.co gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
-1. Wählen Sie in der Anwendungsliste **Profit.co SAML App** aus.
+1. Wählen Sie in der Anwendungsliste **Profit.co** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Screenshot: Abschnitt „Verwalten“ mit hervorgehobener Option „Benutzer und Gruppen“](common/users-groups-blade.png)
@@ -117,19 +117,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie dann unten auf dem Bildschirm die Schaltfläche **Auswählen** aus.
 1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
-## <a name="configure-profitco-saml-app-sso"></a>Konfigurieren des einmaligen Anmeldens für Profit.co SAML App
+## <a name="configure-profitco-sso"></a>Konfigurieren des einmaligen Anmeldens für Profit.co
 
-Um einmaliges Anmelden aufseiten von Profit.co SAML App zu konfigurieren, müssen Sie die App-Verbundmetadaten-URL an das [Profit.co SAML App-Supportteam](mailto:support@profit.co) senden. Das Team konfiguriert diese Einstellung, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Um einmaliges Anmelden aufseiten von Profit.co zu konfigurieren, müssen Sie die App-Verbundmetadaten-URL an das [Profit.co-Supportteam](mailto:support@profit.co) senden. Das Team konfiguriert diese Einstellung, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
-### <a name="create-a-profitco-saml-app-test-user"></a>Erstellen eines Profit.co SAML App-Testbenutzers
+### <a name="create-a-profitco-test-user"></a>Erstellen eines Profit.co-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Profit.co SAML App einen Benutzer mit dem Namen B. Simon. Wenden Sie sich an das  [Profit.co SAML App-Supportteam](mailto:support@profit.co), um die Benutzer auf der Profit.co SAML App-Plattform hinzuzufügen. Sie können einmaliges Anmelden erst verwenden, wenn Sie Benutzer erstellt und aktiviert haben.
+In diesem Abschnitt erstellen Sie in Profit.co einen Benutzer mit dem Namen B. Simon. Wenden Sie sich an das [Profit.co-Supportteam](mailto:support@profit.co), um die Benutzer auf der Profit.co-Plattform hinzuzufügen. Sie können einmaliges Anmelden erst verwenden, wenn Sie Benutzer erstellt und aktiviert haben.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich die Kachel „Profit.co SAML App“ auswählen, sollten Sie automatisch bei der Profit.co SAML App-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich die Kachel „Profit.co“ auswählen, sollten Sie automatisch bei der Profit.co-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -139,7 +139,7 @@ Wenn Sie im Zugriffsbereich die Kachel „Profit.co SAML App“ auswählen, so
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Profit.co SAML App mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+- [Profit.co mit Azure AD ausprobieren](https://aad.portal.azure.com/)
 
 - [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

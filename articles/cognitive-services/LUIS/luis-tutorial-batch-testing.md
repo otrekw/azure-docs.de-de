@@ -3,12 +3,12 @@ title: 'Tutorial: Batchtests zur Fehlersuche: LUIS'
 description: In diesem Tutorial wird veranschaulicht, wie Sie Batchtests nutzen, um die Qualität Ihrer LUIS-App (Language Understanding) zu überprüfen.
 ms.topic: tutorial
 ms.date: 05/07/2020
-ms.openlocfilehash: c823cbd854c28ab356dd9968e6f8f1a12b6421be
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592592"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681627"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Tutorial: Testen von Datasets in Batches
 
@@ -49,13 +49,13 @@ Importieren Sie eine App, mit der eine Pizzabestellung angenommen wird, z. B. `
 
 ## <a name="what-should-the-batch-file-utterances-include"></a>Inhalt der Batchdatei mit den Äußerungen
 
-Die Batchdatei sollte Äußerungen mit bezeichneten Entitäten der obersten Ebene enthalten, die per maschinellem Lernen trainiert wurden, einschließlich Start- und Endposition. Die Äußerungen sollten nicht Teil der Beispiele sein, die bereits in der App enthalten sind. Es sollte sich um Äußerungen handeln, für die Sie in Bezug auf Absichten und Entitäten positive Vorhersagen treffen möchten.
+Die Batchdatei sollte Äußerungen mit bezeichneten Machine Learning-Entitäten der obersten Ebene enthalten, einschließlich Start- und Endposition. Die Äußerungen sollten nicht Teil der Beispiele sein, die bereits in der App enthalten sind. Es sollte sich um Äußerungen handeln, für die Sie in Bezug auf Absichten und Entitäten positive Vorhersagen treffen möchten.
 
 Sie können Tests nach Absicht bzw. Entität unterteilen oder alle Tests (maximal 1.000 Äußerungen) in derselben Datei vorhalten.
 
 ## <a name="batch-file"></a>Batchdatei
 
-Der JSON-Beispielcode enthält eine Äußerung mit einer bezeichneten Entität, um darzustellen, wie eine Testdatei aussieht. Für Ihre eigenen Tests sollten Sie viele Äußerungen mit der richtigen Absicht und einer bezeichneten Entität verwenden, die per maschinellem Lernen trainiert wurde.
+Der JSON-Beispielcode enthält eine Äußerung mit einer bezeichneten Entität, um darzustellen, wie eine Testdatei aussieht. Für Ihre eigenen Tests sollten Sie viele Äußerungen mit der richtigen Absicht und einer bezeichneten Machine Learning-Entität verwenden.
 
 1. Erstellen Sie `pizza-with-machine-learned-entity-test.json` in einem Text-Editor, oder [laden Sie](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) es herunter.
 

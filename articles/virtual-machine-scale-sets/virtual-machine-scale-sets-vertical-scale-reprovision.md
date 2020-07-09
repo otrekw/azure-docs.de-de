@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 69c613de02b9601966cae2d36c13428ca6c7becc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 565d98bd5f27351f16ff523aa017c4b980fbdd53
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120996"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827265"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikale automatische Skalierung mit VM-Skalierungsgruppen
 
@@ -153,8 +153,8 @@ Add-AzMetricAlertRule  -Name  $alertName `
 
 Weitere Informationen zum Erstellen von Warnungen finden Sie in den folgenden Artikeln:
 
-* [Azure Monitor – PowerShell-Schnellstartbeispiele](../azure-monitor/platform/powershell-quickstart-samples.md)
-* [Azure Monitor – Schnellstartbeispiele für die plattformübergreifende CLI](../azure-monitor/platform/cli-samples.md)
+* [Beispiele zu PowerShell in Azure Monitor](../azure-monitor/samples/powershell-samples.md)
+* [CLI-Beispiele für Azure Monitor](../azure-monitor/samples/cli-samples.md)
 
 ## <a name="summary"></a>Zusammenfassung
 

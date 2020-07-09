@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 54379c65850fa210e5523b53a64fe89705ed1f15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f998cc238b997f2dfb8e8043693379e4c5a53546
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532109"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170408"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Azure Database for MariaDB
 
@@ -24,7 +24,7 @@ Zum Erstellen einer VNET-Regel benötigen Sie ein [virtuelles Netzwerk][vm-virtu
 > [!NOTE]
 > Dieses Feature steht in allen Regionen von Azure zur Verfügung, in denen Azure Database for MariaDB für universelle und arbeitsspeicheroptimierte Server bereitgestellt wird.
 
-<a name="anch-terminology-and-description-82f" />
+<a name="anch-terminology-and-description-82f"></a>
 
 ## <a name="terminology-and-description"></a>Terminologie und Beschreibung
 
@@ -44,7 +44,7 @@ Eine VNET-Regel weist Ihren Azure Database for MariaDB-Server an, Nachrichten vo
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-benefits-of-a-vnet-rule-68b"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Vorteile einer VNET-Regel
 
@@ -68,7 +68,7 @@ Würde sich Ihr **Microsoft.Sql**-Server auf einem Knoten in einem Subnetz in Ih
 
 Allerdings gehört der Azure Database for MariaDB-Dienst noch nicht zu den Diensten, die einem Subnetz direkt zugewiesen werden können (Stand August 2018).
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>Details zu VNET-Regeln
 

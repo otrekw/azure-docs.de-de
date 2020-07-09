@@ -2,18 +2,19 @@
 title: 'Schnellstart: Erstellen und Verwalten einer Wissensdatenbank mithilfe des SDK – QnA Maker'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihre Wissensdatenbank mit dem Client-SDK erstellen und verwalten.
 ms.topic: quickstart
-ms.date: 04/27/2020
+ms.date: 06/18/2020
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 350020069edc2ae01f1716b1e6166da43054b24b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f158fd0f9bfa6b2580e36b6588626afa05d1c19f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204017"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114526"
 ---
-# <a name="quickstart-create-and-manage-knowledge-base"></a>Schnellstart: Erstellen und Verwalten einer Wissensdatenbank
+# <a name="quickstart-qna-maker-client-library"></a>Schnellstart: QnA Maker-Clientbibliothek
 
-Führen Sie erste Schritte mit der QnA Maker-Clientbibliothek aus. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben.  Mit QnA Maker können Sie einen Frage-und-Antwort-Dienst auf der Grundlage Ihrer teilweise strukturierten Inhalte bereitstellen. Bei solchen Inhalten kann es sich beispielsweise um FAQ-Dokumente, URLs und Produkthandbücher handeln.
+Führen Sie erste Schritte mit der QnA Maker-Clientbibliothek aus. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# and REST](../includes/quickstart-sdk-csharp.md)]
@@ -27,6 +28,13 @@ Führen Sie erste Schritte mit der QnA Maker-Clientbibliothek aus. Führen Sie d
 [!INCLUDE [Get intent with Python and REST](../includes/quickstart-sdk-python.md)]
 ::: zone-end
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind.
+
+* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure-Befehlszeilenschnittstelle](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
@@ -35,3 +43,4 @@ Führen Sie erste Schritte mit der QnA Maker-Clientbibliothek aus. Führen Sie d
 * [Was ist die QnA Maker-API?](../Overview/overview.md)
 * [Bearbeiten einer Knowledge Base](../how-to/edit-knowledge-base.md)
 * [Abrufen von Nutzungsanalysen](../how-to/get-analytics-knowledge-base.md)
+

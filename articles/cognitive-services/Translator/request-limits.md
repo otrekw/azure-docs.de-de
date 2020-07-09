@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 06/29/2020
 ms.author: swmachan
-ms.openlocfilehash: 386f34e001457da4c5ae0e170ab2c090725ad5b7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592235"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561469"
 ---
 # <a name="request-limits-for-translator"></a>Anforderungsgrenzwerte für Translator
 
@@ -27,14 +27,14 @@ Jede Übersetzungsanforderung ist auf 5.000 Zeichen in allen von Ihnen verwende
 
 In der folgenden Tabelle sind Arrayelement- und Zeichengrenzwerte für jeden Vorgang von Translator aufgeführt.
 
-| Vorgang | Maximale Größe des Arrayelements |   Maximale Anzahl von Arrayelementen |  Maximale Anforderungsgröße (Zeichen) |
+| Vorgang | Maximale Größe des Arrayelements |    Maximale Anzahl von Arrayelementen |    Maximale Anforderungsgröße (Zeichen) |
 |:----|:----|:----|:----|
-| Translate | 5\.000 | 100   | 5\.000 |
-| Transliterate | 5\.000 | 10    | 5\.000 |
-| Detect | 10.000 | 100 |   50.000 |
-| BreakSentence | 10.000    | 100 | 50.000 |
-| Wörterbuchsuche| 100 |  10  | 1\.000 |
-| Wörterbuchbeispiele | 100 für Text und 100 für Übersetzung (200 insgesamt)| 10|   2\.000 |
+| Translate | 5\.000    | 100    | 5\.000 |
+| Transliterate | 5\.000    | 10    | 5\.000 |
+| Detect | 10.000 |    100 |    50.000 |
+| BreakSentence | 10.000    | 100 |    50.000 |
+| Wörterbuchsuche| 100 |    10    | 1\.000 |
+| Wörterbuchbeispiele | 100 für Text und 100 für Übersetzung (200 insgesamt)| 10|    2\.000 |
 
 ## <a name="character-limits-per-hour"></a>Zeichengrenzwerte pro Stunde
 
@@ -66,14 +66,13 @@ Bei Verwendung der [BreakSentence](https://docs.microsoft.com/azure/cognitive-se
 
 | Sprache | Code | Zeichengrenzwert |
 |----------|------|-----------------|
-| Chinesisch | zh | 132 |
-| Deutsch | de | 290 |
-| Italienisch | it | 280 |
-| Japanisch | ja | 150 |
-| Portugiesisch | pt | 290 |
-| Spanisch | es | 280 |
-| Italienisch | it | 280 |
-| Thailändisch | th | 258 |
+| Chinesisch | zh | 166 |
+| Deutsch | de | 800 |
+| Italienisch | it | 800 |
+| Japanisch | ja | 166 |
+| Portugiesisch | pt | 800 |
+| Spanisch | es | 800 |
+| Thailändisch | th | 180 |
 
 > [!NOTE]
 > Dieser Grenzwert gilt nicht für Übersetzungen.

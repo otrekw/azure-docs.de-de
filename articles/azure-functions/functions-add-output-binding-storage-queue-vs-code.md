@@ -3,13 +3,14 @@ title: Verbinden von Azure Functions mit Azure Storage mithilfe von Visual Studi
 description: Erfahren Sie, wie Sie Azure Functions mit einer Azure Storage-Warteschlange verbinden können, indem Sie eine Ausgabebindung zu Ihrem Visual Studio Code-Projekt hinzufügen.
 ms.date: 02/07/2020
 ms.topic: quickstart
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: d41c018e07f792fd0af4027229449d8352aa6c55
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673450"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849991"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Verbinden von Azure Functions mit Azure Storage mithilfe von Visual Studio Code
 
@@ -56,7 +57,7 @@ Da Sie eine Queue Storage-Ausgabebindung verwenden, müssen Sie vor dem Ausführ
 
 Ihr Projekt wurde für die Verwendung von [Erweiterungsbündeln](functions-bindings-register.md#extension-bundles) konfiguriert, wodurch automatisch ein vordefinierter Satz von Erweiterungspaketen installiert wird. 
 
-Erweiterungspakete sind in der Datei „host.json“ im Stammverzeichnis des Projekts aktiviert. Dies sieht etwa wie folgt aus:
+Die Nutzung von Erweiterungspaketen ist in der Datei „host.json“ im Stammverzeichnis des Projekts aktiviert. Dies sieht wie folgt aus:
 
 :::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
@@ -67,7 +68,7 @@ Erweiterungspakete sind in der Datei „host.json“ im Stammverzeichnis des Pro
 Mit Ausnahme von HTTP- und Timertriggern werden Bindungen als Erweiterungspakete implementiert. Führen Sie den folgenden [dotnet add package](/dotnet/core/tools/dotnet-add-package)-Befehl im Terminalfenster aus, um Ihrem Projekt das Storage-Erweiterungspaket hinzuzufügen.
 
 ```bash
-dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
+dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage
 ```
 
 ::: zone-end
@@ -200,7 +201,7 @@ Nun ist es an der Zeit, die aktualisierte Funktions-App erneut in Azure zu verö
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-*Ressourcen* bezieht sich im Zusammenhang mit Azure auf Funktions-Apps, Funktionen, Speicherkonten und Ähnliches. Sie werden in *Ressourcengruppen* zusammengefasst, und sämtliche Inhalte einer Gruppe können durch Löschen der Gruppe gelöscht werden.
+In Azure wird die Bezeichnung *Ressourcen* für Funktions-Apps, Funktionen, Speicherkonten usw. verwendet. Sie werden in *Ressourcengruppen* zusammengefasst, und sämtliche Inhalte einer Gruppe können durch das Löschen der Gruppe gelöscht werden.
 
 Im Rahmen dieser Schnellstartanleitungen haben Sie Ressourcen erstellt. Für diese Ressourcen fallen je nach [Kontostatus](https://azure.microsoft.com/account/) und [Dienstpreisen](https://azure.microsoft.com/pricing/) unter Umständen Kosten an. Nicht mehr benötigte Ressourcen können wie folgt gelöscht werden:
 

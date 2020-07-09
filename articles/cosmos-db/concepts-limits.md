@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: e4d578596471153e4fc0e37d3ca093685326ecc7
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 296f212e26d066613c54f7d69802654e5f7b5090
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791764"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391841"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -37,10 +37,11 @@ Nach der Erstellung eines Azure Cosmos-Kontos unter Ihrem Abonnement können Sie
 > Informationen zu bewährten Methoden für die Verwaltung von Workloads, bei denen Partitionsschlüssel höhere Grenzwerte für Speicher oder Durchsatz erfordern, finden Sie unter [Erstellen eines synthetischen Partitionsschlüssels](synthetic-partition-keys.md).
 >
 
-Ein Cosmos-Container (oder eine Datenbank mit gemeinsam genutztem Durchsatz) muss einen Mindestdurchsatz von 400 RUs aufweisen. Mit zunehmendem Wachstum des Containers hängt der unterstützte Mindestdurchsatz auch von folgenden Faktoren ab:
+Ein Cosmos-Container (oder eine Datenbank mit gemeinsam genutztem Durchsatz) muss einen Mindestdurchsatz von 400 RU/s haben. Mit zunehmendem Wachstum des Containers hängt der unterstützte Mindestdurchsatz auch von folgenden Faktoren ab:
 
-* Der minimale Durchsatz, den Sie für einen Container festlegen können, hängt vom maximalen Durchsatz ab, der jemals für den Container bereitgestellt wurde. Wenn z.B. der Durchsatz auf 10.000 RUs erhöht wurde, würde der niedrigstmögliche bereitgestellte Durchsatz 1.000 RUs betragen
-* Der minimale Durchsatz für eine freigegebene Durchsatzdatenbank hängt von der Gesamtzahl der Container ab, die Sie jemals in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben, gemessen in 100 RUs pro Container. Wenn Sie z.B. fünf Container in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben, muss der Durchsatz mindestens 500 RUs betragen
+* Der maximale Durchsatz, der jemals im Container bereitgestellt wurde. Wenn der Durchsatz beispielsweise auf 50.000 RU/s erhöht wurde, liegt der niedrigstmögliche bereitgestellte Durchsatz bei 500 RU/s.
+* Der aktuelle Speicher im Container (in GB). Wenn Ihr Container beispielsweise über 100 GB Speicher verfügt, liegt der niedrigstmögliche bereitgestellte Durchsatz bei 1.000 RU/s.
+* Der Mindestdurchsatz für eine Datenbank mit gemeinsam genutztem Durchsatz hängt von der Gesamtanzahl von Containern ab, die Sie jemals in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben (gemessen in 100 RU/s pro Container). Wenn Sie also beispielsweise fünf Container in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben, muss der Durchsatz mindestens 500 RU/s betragen.
 
 Der aktuelle und minimale Durchsatz eines Containers oder einer Datenbank kann über das Azure-Portal oder die SDKs abgerufen werden. Weitere Informationen finden Sie unter [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md). 
 
@@ -112,11 +113,11 @@ Abhängig von der API, die Sie verwenden, kann ein Azure Cosmos-Element ein Doku
 | Maximale Länge des Zeichenfolgen-Eigenschaftswerts | Praktisch unbegrenzt |
 | Maximale Länge des numerischen Eigenschaftswerts | IEEE754 mit doppelter Genauigkeit 64-Bit |
 
-Es gibt keine Einschränkungen für die Elementnutzlasten wie z.B. Anzahl von Eigenschaften und Schachtelungstiefe, mit Ausnahme von Längeneinschränkungen bei Partitionsschlüssel- und ID-Werten und der Einschränkung der gesamten Größe auf 2MB. Sie müssen möglicherweise eine Indizierungsrichtlinie für Container mit großen oder komplexen Elementstrukturen konfigurieren, um den RU-Verbrauch zu reduzieren. Unter [Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels](how-to-model-partition-example.md) finden Sie ein praktisches Beispiel und Muster zum Verwalten großer Elemente.
+Mit Ausnahme von Längeneinschränkungen bei Partitionsschlüssel- und ID-Werten sowie der Einschränkung der Gesamtgröße auf 2 MB gibt es bei den Elementnutzlasten keine Einschränkungen (also etwa für die Anzahl von Eigenschaften und die Schachtelungstiefe). Sie müssen möglicherweise eine Indizierungsrichtlinie für Container mit großen oder komplexen Elementstrukturen konfigurieren, um den RU-Verbrauch zu reduzieren. Unter [Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels](how-to-model-partition-example.md) finden Sie ein praktisches Beispiel und Muster zum Verwalten großer Elemente.
 
 ## <a name="per-request-limits"></a>Grenzwerte pro Anforderung
 
-Azure Cosmos DB unterstützt [CRUD- und Abfragevorgänge](https://docs.microsoft.com/rest/api/cosmos-db/) für Ressourcen wie Container, Elemente und Datenbanken. Außerdem werden [transaktionale Batchanforderungen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) für mehrere Elemente mit demselben Partitionsschlüssel in einem Container unterstützt.
+Azure Cosmos DB unterstützt [CRUD- und Abfragevorgänge](/rest/api/cosmos-db/) für Ressourcen wie Container, Elemente und Datenbanken. Außerdem werden [transaktionale Batchanforderungen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) für mehrere Elemente mit demselben Partitionsschlüssel in einem Container unterstützt.
 
 | Resource | Standardlimit |
 | --- | --- |
@@ -140,7 +141,16 @@ Cosmos DB unterstützt die Ausführung von Triggern während Schreibvorgängen. 
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Grenzwerte für den per Autoskalierung bereitgestellten Durchsatz
 
-Im Artikel [Autoskalierung](provision-throughput-autoscale.md#autoscale-limits) finden Sie die Grenzwerte für Durchsatz und Speicher bei Autoskalierung.
+Die Durchsatz- und Speichergrenzwerte im Zusammenhang mit der Autoskalierung werden im [Artikel zur Autoskalierung](provision-throughput-autoscale.md#autoscale-limits) sowie in den [häufig gestellten Fragen](autoscale-faq.md#lowering-the-max-rus) ausführlicher erläutert.
+
+| Resource | Standardlimit |
+| --- | --- |
+| Maximale Anzahl von RU/s, auf die das System skaliert werden kann |  `Tmax`, die vom Benutzer festgelegte maximale Anzahl von RU/s für die Autoskalierung|
+| Minimale Anzahl von RU/s, auf die das System skaliert werden kann | `0.1 * Tmax`|
+| Aktuelle Anzahl von RU/s, auf die das System skaliert ist  |  `0.1*Tmax <= T <= Tmax`, basierend auf der Nutzung|
+| Minimale Anzahl abrechenbarer RU/s pro Stunde| `0.1 * Tmax` <br></br>Die Abrechnung erfolgt auf Stundenbasis. Ihnen wird entweder die höchste Anzahl von RU/s, auf die das System in der Stunde skaliert wurde, oder `0.1*Tmax` berechnet (je nachdem, welcher Wert höher ist). |
+| Mindestwert für die maximale Anzahl von RU/s für die Autoskalierung für einen Container  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)`, gerundet auf volle 1.000 RU/s |
+| Mindestwert für die maximale Anzahl von RU/s für die Autoskalierung für eine Datenbank  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))`, gerundet auf volle 1000 RU/s <br></br>Hinweis: Wenn Ihre Datenbank mehr als 25 Container umfasst, erhöht sich der Mindestwert für die maximale Anzahl von RU/s für die Autoskalierung pro zusätzlichem Container um jeweils 1.000 RU/s. Wenn Sie also beispielsweise über 30 Container verfügen, müssen für die maximale Anzahl von RU/s für die Autoskalierung mindestens 9.000 RU/s (Skalierung zwischen 900 und 9.000 RU/s) festgelegt werden.
 
 ## <a name="sql-query-limits"></a>Grenzwerte für SQL-Abfragen
 
@@ -178,7 +188,7 @@ Die folgende Tabelle enthält die Grenzwerte für die [Azure Cosmos DB kostenlos
 
 | Resource | Standardlimit |
 | --- | --- |
-| Dauer der Testversion | 30 Tage (kann beliebig oft erneuert werden) |
+| Dauer der Testversion | 30 Tage (danach kann eine neue Testversion angefordert werden) <br> Nach dem Ablauf werden die gespeicherten Informationen gelöscht. |
 | Maximale Anzahl Container pro Abonnement (SQL, Gremlin, Tabellen-API) | 1 |
 | Maximale Anzahl Container pro Abonnement (MongoDB-API) | 3 |
 | Maximaler Durchsatz pro Container | 5\.000 |

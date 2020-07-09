@@ -6,21 +6,19 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/14/2020
+ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: 4d8da7d2bc51c4fc4ebc8d71f230f24f20b3aa24
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: a8ac208c77a3c25d03b09e0c70eb5edcd9bd0383
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368477"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416380"
 ---
+[Referenzdokumentation](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45) | [Beispiel](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/python-model-with-rest/model.py)
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure Language Understanding: Ressourcenschlüssel mit 32 Zeichen und Endpunkt-URL für die Erstellung. Führen Sie die Erstellung mit dem [Azure-Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) oder der [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli) durch.
-* Importieren Sie die App [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) aus dem GitHub-Repository „cognitive-services-language-understanding“.
-* Die LUIS-Anwendungs-ID für die importierte TravelAgent-App. Die Anwendungs-ID wird auf dem Anwendungsdashboard angezeigt.
-* Die Versions-ID der Anwendung, die die Äußerungen empfängt. Die Standard-ID lautet „0.1“.
 * [Python 3.6](https://www.python.org/downloads/) oder höher
 * [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -28,19 +26,23 @@ ms.locfileid: "77368477"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
+## <a name="create-pizza-app"></a>Erstellen Sie die Pizza-App
+
+[!INCLUDE [Create pizza app](get-started-get-model-create-pizza-app.md)]
+
 ## <a name="change-model-programmatically"></a>Programmgesteuertes Ändern des Modells
 
 1. Erstellen Sie eine neue Datei mit dem Namen `model.py`. Fügen Sie den folgenden Code hinzu:
 
-    [!code-python[Add example utterances to Language Understanding in python](~/samples-luis/documentation-samples/quickstarts/change-model/python/3.x/add-utterances-3-6.py)]
+    [!code-python[Add example utterances to Language Understanding in python](~/cognitive-services-quickstart-code/python/LUIS/python-model-with-rest/model.py)]
 
 1. Ersetzen Sie die Werte, die mit `YOUR-` beginnen, durch Ihre eigenen Werte.
 
     |Information|Zweck|
     |--|--|
-    |`YOUR-KEY`|Ihr Erstellungsschlüssel mit 32 Zeichen.|
-    |`YOUR-ENDPOINT`| Ihr URL-Endpunkt für die Erstellung. Beispiel: `replace-with-your-resource-name.api.cognitive.microsoft.com`. Sie haben Ihren Ressourcennamen festgelegt, als Sie die Ressource erstellt haben.|
     |`YOUR-APP-ID`| Ihre LUIS-App-ID. |
+    |`YOUR-AUTHORING-KEY`|Ihr Erstellungsschlüssel mit 32 Zeichen.|
+    |`YOUR-AUTHORING-ENDPOINT`| Ihr URL-Endpunkt für die Erstellung. Beispiel: `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. Sie haben Ihren Ressourcennamen festgelegt, als Sie die Ressource erstellt haben.|
 
     Zugewiesene Schlüssel und Ressourcen werden im LUIS-Portal auf der Seite **Azure-Ressourcen** im Abschnitt „Verwalten“ angezeigt. Die App-ID wird auf der Seite **Anwendungseinstellungen** ebenfalls im Abschnitt „Verwalten“ angezeigt.
 
@@ -48,6 +50,110 @@ ms.locfileid: "77368477"
 
     ```console
     python model.py
+    ```
+
+1. Überprüfen Sie die Erstellungsantwort:
+
+    ```console
+    Add the list of utterances:
+    [{'value': {'ExampleId': 1137150691, 'UtteranceText': 'order a pizza'}, 'hasError': False}, {'value': {'ExampleId': 1137150692, 'UtteranceText': 'order a large pepperoni pizza'}, 'hasError': False}, {'value': {'ExampleId': 1137150693, 'UtteranceText': 'i want two large pepperoni pizzas on thin crust'}, 'hasError': False}]
+    Request training:
+    {'statusId': 9, 'status': 'Queued'}
+    Request training status:
+    [{'modelId': 'edb46abf-0000-41ab-beb2-a41a0fe1630f', 'details': {'statusId': 3, 'status': 'InProgress', 'exampleCount': 0, 'progressSubstatus': 'CollectingData'}}, {'modelId': 'a5030be2-616c-4648-bf2f-380fa9417d37', 'details': {'statusId': 3, 'status': 'InProgress', 'exampleCount': 0, 'progressSubstatus': 'CollectingData'}}, {'modelId': '3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9', 'details': {'statusId': 3, 'status': 'InProgress', 'exampleCount': 0, 'progressSubstatus': 'CollectingData'}}, {'modelId': 'e4b6704b-1636-474c-9459-fe9ccbeba51c', 'details': {'statusId': 3, 'status': 'InProgress', 'exampleCount': 0, 'progressSubstatus': 'CollectingData'}}, {'modelId': '031d3777-2a00-4a7a-9323-9a3280a30000', 'details': {'statusId': 3, 'status': 'InProgress', 'exampleCount': 0, 'progressSubstatus': 'CollectingData'}}, {'modelId': '9250e7a1-06eb-4413-9432-ae132ed32583', 'details': {'statusId': 3, 'status': 'InProgress', 'exampleCount': 0, 'progressSubstatus': 'CollectingData'}}]
+    ```
+
+    Hier sehen Sie die zur besseren Lesbarkeit formatierte Ausgabe:
+
+    ```json
+    Add the list of utterances:
+    [
+      {
+        'value': {
+          'ExampleId': 1137150691,
+          'UtteranceText': 'order a pizza'
+        },
+        'hasError': False
+      },
+      {
+        'value': {
+          'ExampleId': 1137150692,
+          'UtteranceText': 'order a large pepperoni pizza'
+        },
+        'hasError': False
+      },
+      {
+        'value': {
+          'ExampleId': 1137150693,
+          'UtteranceText': 'i want two large pepperoni pizzas on thin crust'
+        },
+        'hasError': False
+      }
+    ]
+
+    Request training:
+    {
+      'statusId': 9,
+      'status': 'Queued'
+    }
+
+    Request training status:
+    [
+      {
+        'modelId': 'edb46abf-0000-41ab-beb2-a41a0fe1630f',
+        'details': {
+          'statusId': 3,
+          'status': 'InProgress',
+          'exampleCount': 0,
+          'progressSubstatus': 'CollectingData'
+        }
+      },
+      {
+        'modelId': 'a5030be2-616c-4648-bf2f-380fa9417d37',
+        'details': {
+          'statusId': 3,
+          'status': 'InProgress',
+          'exampleCount': 0,
+          'progressSubstatus': 'CollectingData'
+        }
+      },
+      {
+        'modelId': '3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9',
+        'details': {
+          'statusId': 3,
+          'status': 'InProgress',
+          'exampleCount': 0,
+          'progressSubstatus': 'CollectingData'
+        }
+      },
+      {
+        'modelId': 'e4b6704b-1636-474c-9459-fe9ccbeba51c',
+        'details': {
+          'statusId': 3,
+          'status': 'InProgress',
+          'exampleCount': 0,
+          'progressSubstatus': 'CollectingData'
+        }
+      },
+      {
+        'modelId': '031d3777-2a00-4a7a-9323-9a3280a30000',
+        'details': {
+          'statusId': 3,
+          'status': 'InProgress',
+          'exampleCount': 0,
+          'progressSubstatus': 'CollectingData'
+        }
+      },
+      {
+        'modelId': '9250e7a1-06eb-4413-9432-ae132ed32583',
+        'details': {
+          'statusId': 3,
+          'status': 'InProgress',
+          'exampleCount': 0,
+          'progressSubstatus': 'CollectingData'
+        }
+      }
+    ]
     ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

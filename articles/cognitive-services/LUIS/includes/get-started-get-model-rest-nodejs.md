@@ -6,21 +6,19 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: bbb2ae0b10af795d71f0a78c045bec0c216ee378
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: a1a72d9be339ed1ee0a1c525ee426047b1768f2f
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368417"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416381"
 ---
+[Referenzdokumentation](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45) | [Beispiel](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-model-with-rest/model.js)
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure Language Understanding: Ressourcenschlüssel mit 32 Zeichen und Endpunkt-URL für die Erstellung. Führen Sie die Erstellung mit dem [Azure-Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) oder der [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli) durch.
-* Importieren Sie die App [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) aus dem GitHub-Repository „cognitive-services-language-understanding“.
-* Die LUIS-Anwendungs-ID für die importierte TravelAgent-App. Die Anwendungs-ID wird auf dem Anwendungsdashboard angezeigt.
-* Die Versions-ID der Anwendung, die die Äußerungen empfängt. Die Standard-ID lautet „0.1“.
 * Programmiersprache [Node.js](https://nodejs.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -28,106 +26,137 @@ ms.locfileid: "77368417"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
+## <a name="create-the-nodejs-project"></a>Erstellen des Node.js-Projekts
+
+1. Erstellen Sie einen neuen Ordner zur Aufnahme Ihres Node.js-Projekts, beispielsweise `node-model-with-rest`.
+
+1. Öffnen Sie eine neue Eingabeaufforderung, navigieren Sie zu dem erstellten Ordner, und führen Sie den folgenden Befehl aus:
+
+    ```console
+    npm init
+    ```
+
+    Drücken Sie an jeder Eingabeaufforderung die EINGABETASTE, um die Standardeinstellungen zu übernehmen.
+
+1. Installieren Sie das Request-Promise-Modul, indem Sie den folgenden Befehl eingeben:
+
+    ```console
+    npm install --save request
+    npm install --save request-promise
+    npm install --save querystring
+    ```
 
 ## <a name="change-model-programmatically"></a>Programmgesteuertes Ändern des Modells
 
 1. Erstellen Sie eine neue Datei mit dem Namen `model.js`. Fügen Sie den folgenden Code hinzu:
 
-    ```javascript
-    var request = require('request');
-    var requestpromise = require('request-promise');
-
-    // 32 character key value
-    const LUIS_authoringKey = "YOUR-KEY";
-
-    // endpoint example: your-resource-name.api.cognitive.microsoft.com
-    const LUIS_endpoint = "YOUR-ENDPOINT";
-    const LUIS_appId = "YOUR-APP-ID";
-    const LUIS_versionId = "0.1";
-    const addUtterancesURI = `https://${LUIS_endpoint}/luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/examples`;
-    const addTrainURI = `https://${LUIS_endpoint}/luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/train`;
-
-    const utterances = [
-            {
-              'text': 'go to Seattle today',
-              'intentName': 'BookFlight',
-              'entityLabels': [
-                {
-                  'entityName': 'Location::LocationTo',
-                  'startCharIndex': 6,
-                  'endCharIndex': 12
-                }
-              ]
-            },
-            {
-                'text': 'a barking dog is annoying',
-                'intentName': 'None',
-                'entityLabels': []
-            }
-          ];
-
-    const main = async() =>{
-
-
-        await addUtterance();
-        await train("POST");
-        await trainStatus("GET");
-
-    }
-    const addUtterance = async () => {
-
-        const options = {
-            uri: addUtterancesURI,
-            method: 'POST',
-            headers: {
-                'Ocp-Apim-Subscription-Key': LUIS_authoringKey
-            },
-            json: true,
-            body: utterances
-        };
-
-        const response = await requestpromise(options)
-        console.log(response.body);
-    }
-    const train = async (verb) => {
-
-        const options = {
-            uri: addTrainURI,
-            method: verb,
-            headers: {
-                'Ocp-Apim-Subscription-Key': LUIS_authoringKey
-            },
-            json: true,
-            body: null // The body can be empty for a training request
-        };
-
-        const response = await requestpromise(options)
-        console.log(response.body);
-    }
-
-    // MAIN
-    main().then(() => console.log("done")).catch((err)=> console.log(err returned));
-    ```
+    [!code-javascript[Code snippet](~/cognitive-services-quickstart-code/javascript/LUIS/node-model-with-rest/model.js)]
 
 1. Ersetzen Sie die Werte, die mit `YOUR-` beginnen, durch Ihre eigenen Werte.
 
     |Information|Zweck|
     |--|--|
-    |`YOUR-KEY`|Ihr Erstellungsschlüssel mit 32 Zeichen.|
-    |`YOUR-ENDPOINT`| Ihr URL-Endpunkt für die Erstellung. Beispiel: `replace-with-your-resource-name.api.cognitive.microsoft.com`. Sie haben Ihren Ressourcennamen festgelegt, als Sie die Ressource erstellt haben.|
     |`YOUR-APP-ID`| Ihre LUIS-App-ID. |
+    |`YOUR-AUTHORING-KEY`|Ihr Erstellungsschlüssel mit 32 Zeichen.|
+    |`YOUR-AUTHORING-ENDPOINT`| Ihr URL-Endpunkt für die Erstellung. Beispiel: `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. Sie haben Ihren Ressourcennamen festgelegt, als Sie die Ressource erstellt haben.|
 
     Zugewiesene Schlüssel und Ressourcen werden im LUIS-Portal auf der Seite **Azure-Ressourcen** im Abschnitt „Verwalten“ angezeigt. Die App-ID wird auf der Seite **Anwendungseinstellungen** ebenfalls im Abschnitt „Verwalten“ angezeigt.
 
-1. Geben Sie in dem Verzeichnis, in dem Sie die Datei erstellt haben, an einer Eingabeaufforderung den folgenden Befehl ein, um die Datei auszuführen:
+1. Geben Sie an der Eingabeaufforderung den folgenden Befehl ein, um das Projekt auszuführen:
 
     ```console
     node model.js
     ```
 
+1. Überprüfen Sie die Erstellungsantwort:
+
+    ```json
+    addUtterance:
+    [
+      {
+        "value": {
+          "ExampleId": 1137150691,
+          "UtteranceText": "order a pizza"
+        },
+        "hasError": false
+      },
+      {
+        "value": {
+          "ExampleId": 1137150692,
+          "UtteranceText": "order a large pepperoni pizza"
+        },
+        "hasError": false
+      },
+      {
+        "value": {
+          "ExampleId": 1137150693,
+          "UtteranceText": "i want two large pepperoni pizzas on thin crust"
+        },
+        "hasError": false
+      }
+    ]
+    train POST:
+    {
+      "statusId": 9,
+      "status": "Queued"
+    }
+    train GET:
+    [
+      {
+        "modelId": "edb46abf-0000-41ab-beb2-a41a0fe1630f",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "a5030be2-616c-4648-bf2f-380fa9417d37",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "e4b6704b-1636-474c-9459-fe9ccbeba51c",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "031d3777-2a00-4a7a-9323-9a3280a30000",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "9250e7a1-06eb-4413-9432-ae132ed32583",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      }
+    ]
+    done
+    ```
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben.
+Löschen Sie den Projektordner aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

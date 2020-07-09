@@ -3,12 +3,12 @@ title: Problembehandlung bei Sicherungsfehlern in SAP HANA-Datenbanken
 description: Beschreibt, wie häufige Fehler behoben werden, die auftreten können, wenn Sie SAP HANA-Datenbanken mithilfe von Azure Backup sichern.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 6520f106011b632da2725f456aeb278c7748ddc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c1ad55a86e80808b9055fd1b34a2d72209464a2
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79459309"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697068"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken in Azure
 
@@ -62,19 +62,12 @@ Informationen finden Sie in den Abschnitten zu den [Voraussetzungen](tutorial-ba
 | **Mögliche Ursachen**    | Das Protokollsicherungsziel wurde möglicherweise von backint in das Dateisystem geändert, oder die ausführbare backint-Datei wurde geändert. |
 | **Empfohlene Maßnahme** | Lösen Sie eine vollständige Sicherung aus, um das Problem zu beheben.                   |
 
-### <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore
-
-| Fehlermeldung      | <span style="font-weight:normal">Das Quell- und das Zielsystem für die Wiederherstellung sind nicht kompatibel.</span>    |
-| ------------------ | ------------------------------------------------------------ |
-| **Mögliche Ursachen**    | Das Zielsystem für die Wiederherstellung ist nicht mit dem Quellsystem kompatibel. |
-| **Empfohlene Maßnahme** | Informationen zu den derzeit unterstützten Wiederherstellungstypen finden Sie im SAP-Hinweis [1642148](https://launchpad.support.sap.com/#/notes/1642148). |
-
 ### <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected
 
 | Fehlermeldung      | <span style="font-weight:normal">Upgrade von SDC auf MDC erkannt.</span>                                   |
 | ------------------ | ------------------------------------------------------------ |
 | **Mögliche Ursachen**    | Es wurde ein Upgrade der SAP HANA-Instanz von SDC auf MDC ausgeführt. Sicherungen können nach dem Upgrade nicht mehr ausgeführt werden. |
-| **Empfohlene Maßnahme** | Führen Sie die Schritte im Abschnitt [Upgrade von SAP HANA 1.0 auf 2.0](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) aus, um das Problem zu beheben. |
+| **Empfohlene Maßnahme** | Führen Sie die unter [Upgrade von SDC zu MDC ](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid) aufgeführten Schritte aus, um das Problem zu beheben. |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
@@ -82,6 +75,13 @@ Informationen finden Sie in den Abschnitten zu den [Voraussetzungen](tutorial-ba
 | ------------------ | ------------------------------------------------------------ |
 | **Mögliche Ursachen**    | Die backint-Parameter sind nicht ordnungsgemäß für Azure Backup angegeben. |
 | **Empfohlene Maßnahme** | Überprüfen Sie, ob die folgenden backint-Parameter festgelegt sind:<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>Wenn in HOST backint-Parameter vorhanden sind, entfernen Sie sie. Wenn Parameter auf HOST-Ebene nicht vorhanden sind, aber auf Datenbankebene manuell geändert wurden, setzen Sie sie wie oben beschrieben auf die entsprechenden Werte zurück. Oder führen Sie im Azure-Portal [Schutz beenden und Sicherungsdaten beibehalten](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) aus, und wählen Sie dann **Sicherung fortsetzen** aus. |
+
+### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
+
+|Fehlermeldung  |Das Quell- und das Zielsystem für die Wiederherstellung sind nicht kompatibel.  |
+|---------|---------|
+|Mögliche Ursachen   | Das ausgewählte Quellsystem und das ausgewählte Zielsystem für die Wiederherstellung sind nicht kompatibel.        |
+|Empfohlene Maßnahme   |   Stellen Sie sicher, dass das Wiederherstellungsszenario nicht in der folgenden Liste möglicher inkompatibler Wiederherstellungen enthalten ist: <br><br>   **Fall 1:** SYSTEMDB kann während der Wiederherstellung nicht umbenannt werden.  <br><br> **Fall 2:** Quelle = SDC und Ziel = MDC: Die Quelldatenbank kann auf dem Ziel nicht als SYSTEMDB oder Mandanten-DB wiederhergestellt werden. <br><br> **Fall 3:** Quelle = MDC und Ziel = SDC: Die Quelldatenbank (SYSTEMDB oder Mandanten-DB) kann auf dem Ziel nicht wiederhergestellt werden. <br><br>  Weitere Informationen finden Sie in Hinweis **1642148** im [SAP Support Launchpad](https://launchpad.support.sap.com). |
 
 ## <a name="restore-checks"></a>Wiederherstellungsprüfungen
 
@@ -104,25 +104,83 @@ Beachten Sie folgende Punkte:
 
 In Datenbanken mit mehreren Containern (MDC) für HANA ist die Standardkonfiguration „SYSTEMDB + 1 oder mehr Mandantendatenbanken“. Das Wiederherstellen einer vollständigen SAP HANA-Instanz bedeutet, dass sowohl SYSTEMDB als auch die Mandantendatenbanken wiederhergestellt werden. Zuerst wird SYSTEMDB wiederhergestellt, und dann wird die Wiederherstellung für die Mandantendatenbank fortgesetzt. Systemdatenbank bedeutet im Wesentlichen, dass die Systeminformationen für das ausgewählte Ziel überschrieben werden. Bei dieser Wiederherstellung werden auch die BackInt-bezogenen Informationen in der Zielinstanz überschrieben. Nachdem die Systemdatenbank auf einer Zielinstanz wiederhergestellt wurde, führen Sie das Vorregistrierungsskript erneut aus. Nur dann ist die nachfolgende Wiederherstellung der Mandantendatenbanken erfolgreich.
 
-## <a name="upgrading-from-sap-hana-10-to-20"></a>Upgrade von SAP HANA 1.0 auf 2.0
+## <a name="back-up-a-replicated-vm"></a>Sichern eines replizierten virtuellen Computers
 
-Wenn Sie SAP HANA 1.0-Datenbanken schützen und ein Upgrade auf 2.0 durchführen möchten, führen Sie die folgenden Schritte aus:
+### <a name="scenario-1"></a>Szenario 1
 
-- [Beenden Sie den Schutz](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) mit Beibehaltung der Daten für die alte SDC-Datenbank.
-- Führen Sie das Upgrade durch. Nach Abschluss des Vorgangs ist die HANA-Instanz eine MDC-Instanz mit einer Systemdatenbank und mindestens einer Mandantendatenbank.
-- Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) mit den richtigen Details (SID und MDC) erneut aus.
-- Registrieren Sie die Erweiterung im Azure-Portal erneut für den gleichen Computer (wählen Sie unter „Sicherung“ die Option „Details anzeigen“ aus, wählen Sie die entsprechende Azure-VM aus, und klicken Sie auf „Erneut registrieren“).
-- Klicken Sie auf „Datenbanken neu ermitteln“ für denselben virtuellen Computer. Durch diese Aktion sollten die neuen Datenbanken in Schritt 2 mit den richtigen Details (Systemdatenbank und Mandantendatenbank, nicht SDC) angezeigt werden.
-- Konfigurieren Sie die Sicherung für diese neuen Datenbanken.
+Der ursprüngliche virtuelle Computer wurde mithilfe von Azure Site Recovery oder einer Azure-VM-Sicherung repliziert. Der neue virtuelle Computer wurde erstellt, um den alten virtuellen Computer zu simulieren. Das heißt, die Einstellungen sind identisch. (Das liegt daran, dass der ursprüngliche virtuelle Computer gelöscht wurde und die Wiederherstellung aus der VM-Sicherung oder über Azure Site Recovery erfolgte).
 
-## <a name="upgrading-without-an-sid-change"></a>Upgrade ohne SID-Änderung
+Für dieses Szenario gibt es zwei mögliche Anwendungsfälle. Erfahren Sie, wie Sie den replizierten virtuellen Computer in diesen beiden Fällen sichern:
 
-Upgrades auf OS oder SAP HANA, die keine SID-Änderung bewirken, können wie unten beschrieben behandelt werden:
+1. Der neu erstellte virtuelle Computer hat den gleichen Namen und befindet sich in der gleichen Ressourcengruppe und im gleichen Abonnement wie der gelöschte virtuelle Computer.
 
+    - Die Erweiterung ist auf dem virtuellen Computer bereits vorhanden, ist aber für keinen der Dienste sichtbar.
+    - Führen Sie das Vorregistrierungsskript aus.
+    - Registrieren Sie die Erweiterung im Azure-Portal erneut für den gleichen Computer (**Sicherung** -> **Details anzeigen** -> entsprechende Azure-VM auswählen -> erneut registrieren).
+    - Die Sicherung der bereits vorhandenen gesicherten Datenbanken (vom gelöschten virtuellen Computer) sollte dann erfolgreich gestartet werden.
+
+2. Der neu erstellte virtuelle Computer hat entweder:
+
+    - einen anderen Name als der gelöschte virtuelle Computer
+    - oder den gleichen Namen wie der gelöschte virtuelle Computers, befindet sich jedoch in einer anderen Ressourcengruppe bzw. einem anderen Abonnement als der gelöschte virtuellen Computer
+
+    Ist dies der Fall, führen Sie die folgenden Schritte aus:
+
+    - Die Erweiterung ist auf dem virtuellen Computer bereits vorhanden, ist aber für keinen der Dienste sichtbar.
+    - Führen Sie das Vorregistrierungsskript aus.
+    - Wenn Sie die neuen Datenbanken ermitteln und schützen, werden im Portal doppelte aktive Datenbanken angezeigt. Um dies zu vermeiden, [beenden Sie den Schutz mit Beibehaltung der Daten](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) für die alten Datenbanken. Fahren Sie dann mit den verbleibenden Schritten fort.
+    - Ermitteln Sie die Datenbanken zum Aktivieren der Sicherung.
+    - Aktivieren Sie Sicherungen für diese Datenbanken.
+    - Die bereits vorhandenen gesicherten Datenbanken (vom gelöschten virtuellen Computer) werden weiterhin im Tresor gespeichert (ihre Sicherungen werden gemäß der Richtlinie aufbewahrt).
+
+### <a name="scenario-2"></a>Szenario 2
+
+Der ursprüngliche virtuelle Computer wurde mithilfe von Azure Site Recovery oder einer Azure-VM-Sicherung repliziert. Der neue virtuelle Computer wurde aus dem Inhalt erstellt, das als Vorlage verwendet werden soll. Dabei handelt es sich um einen neuen virtuellen Computer mit einer neuen SID.
+
+Führen Sie die folgenden Schritte aus, um Sicherungen auf dem neuen virtuellen Computer zu aktivieren:
+
+- Die Erweiterung ist auf dem virtuellen Computer bereits vorhanden, ist aber für keinen der Dienste sichtbar.
+- Führen Sie das Vorregistrierungsskript aus. Basierend auf der SID des neuen virtuellen Computers sind zwei Szenarien denkbar:
+  - Der ursprüngliche virtuelle Computer und der neue virtuelle Computer haben dieselbe SID. Das Vorregistrierungsskript wird erfolgreich ausgeführt.
+  - Der ursprüngliche virtuelle Computer und der neue virtuelle Computer haben unterschiedliche SIDs. Das Vorregistrierungsskript schlägt fehl. Kontaktieren Sie den Support, um Hilfe in diesem Szenario zu erhalten.
+- Ermitteln der Datenbanken, die Sie sichern möchten
+- Aktivieren der Sicherungen für diese Datenbanken
+
+## <a name="sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm"></a>Upgrade der SDC-Version oder Upgrade der MDC-Version auf demselben virtuellen Computer
+
+Upgrades des Betriebssystems oder Änderungen der SDC- oder MDC-Version, die keine SID-Änderung auslösen, können wie folgt behandelt werden:
+
+- Stellen Sie sicher, dass die neue Betriebssystem-, SDC- oder MDC-Version aktuell von [Azure Backup unterstützt wird](sap-hana-backup-support-matrix.md#scenario-support).
 - [Beenden Sie den Schutz](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) mit Beibehaltung der Daten für die Datenbank.
-- Führen Sie das Upgrade durch.
-- Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) erneut aus. Beim Upgradeprozess werden in der Regel die erforderlichen Rollen entfernt. Durch Ausführen des Vorregistrierungsskripts werden alle erforderlichen Rollen überprüft.
-- [Setzen Sie den Schutz](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) für die Datenbank fort.
+- Führen Sie das Upgrade oder Update durch.
+- Führen Sie das Vorregistrierungsskript erneut aus. Beim Upgradeprozess werden in der Regel die erforderlichen Rollen entfernt. Durch Ausführen des Vorregistrierungsskripts werden alle erforderlichen Rollen überprüft.
+- Setzen Sie den Schutz für die Datenbank fort.
+
+## <a name="sdc-to-mdc-upgrade-with-no-change-in-sid"></a>Upgrade von SDC zu MDC ohne SID-Änderung
+
+Upgrades von SDC auf MDC, die keine SID-Änderung verursachen, können wie folgt behandelt werden:
+
+- Stellen Sie sicher, dass die neue MDC-Version aktuell von [Azure Backup unterstützt wird](sap-hana-backup-support-matrix.md#scenario-support).
+- [Beenden Sie den Schutz mit Beibehaltung der Daten](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) für die alte SDC-Datenbank.
+- Führen Sie das Upgrade durch. Nach Abschluss des Vorgangs ist die HANA-System nun eine MDC-Instanz mit einer Systemdatenbank und einer Mandantendatenbank.
+- Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) erneut aus.
+- Registrieren Sie die Erweiterung im Azure-Portal erneut für den gleichen Computer (**Sicherung** -> **Details anzeigen** -> entsprechende Azure-VM auswählen -> erneut registrieren).
+- Klicken Sie auf **Datenbanken neu ermitteln** für denselben virtuellen Computer. Durch diese Aktion sollten die neuen Datenbanken in Schritt 3 als SYSTEMDB und Mandantendatenbank (nicht SDC) angezeigt werden.
+- Die ältere SDC-Datenbank ist weiterhin im Tresor vorhanden, und die alten gesicherten Daten werden gemäß der Richtlinie aufbewahrt.
+- Konfigurieren der Sicherung für diese Datenbanken
+
+## <a name="sdc-to-mdc-upgrade-with-a-change-in-sid"></a>Upgrade von SDC zu MDC mit SID-Änderung
+
+Upgrades von SDC auf MDC, die eine SID-Änderung verursachen, können wie folgt behandelt werden:
+
+- Stellen Sie sicher, dass die neue MDC-Version aktuell von [Azure Backup unterstützt wird](sap-hana-backup-support-matrix.md#scenario-support).
+- **Beenden Sie den Schutz mit Beibehaltung der Daten** für die alte SDC-Datenbank.
+- Führen Sie das Upgrade durch. Nach Abschluss des Vorgangs ist die HANA-System nun eine MDC-Instanz mit einer Systemdatenbank und einer Mandantendatenbank.
+- Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) mit den richtigen Details (neue SID und MDC) erneut aus. Aufgrund einer Änderung der SID treten möglicherweise Probleme bei der Ausführung des Skripts auf. Wenden Sie sich an Azure Backup-Support, wenn Probleme auftreten.
+- Registrieren Sie die Erweiterung im Azure-Portal erneut für den gleichen Computer (**Sicherung** -> **Details anzeigen** -> entsprechende Azure-VM auswählen -> erneut registrieren).
+- Klicken Sie auf **Datenbanken neu ermitteln** für denselben virtuellen Computer. Durch diese Aktion sollten die neuen Datenbanken in Schritt 3 als SYSTEMDB und Mandantendatenbank (nicht SDC) angezeigt werden.
+- Die ältere SDC-Datenbank ist weiterhin im Tresor vorhanden, und die alten gesicherten Daten werden gemäß der Richtlinie aufbewahrt.
+- Konfigurieren der Sicherung für diese Datenbanken
 
 ## <a name="re-registration-failures"></a>Fehler bei der erneuten Registrierung
 

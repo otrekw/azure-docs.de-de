@@ -7,7 +7,12 @@
 - name: Schnellstarts
   items:
     - name: Konfigurieren von Warnungen für Service Health-Ereignisse
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
+      items:
+        - name: Azure-Portal
+          href: alerts-activity-log-service-notifications-portal.md
+        - name: ARM-Vorlage
+          displayName: Resource Manager
+          href: alerts-activity-log-service-notifications-arm.md
 - name: Konzepte
   items:
     - name: Azure-Statusseite
@@ -30,9 +35,9 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: Senden von Warnungen an OpsGenie
       href: service-health-alert-webhook-opsgenie.md
-    - name: Abrufen von Integritätsereignissen mit REST
-      href: service-health-rest.md
-    - name: Konfigurieren von Warnungen für Ereignisse zur Ressourcenintegrität
+    - name: Konfigurieren von Ressourcenintegritätswarnungen mithilfe des Azure-Portals
+      href: resource-health-alert-monitor-guide.md
+    - name: Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
       href: resource-health-alert-arm-template-guide.md
 - name: Verweis
   items:

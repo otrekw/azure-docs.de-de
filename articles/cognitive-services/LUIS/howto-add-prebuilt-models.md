@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 653882db4b62d7731123faf7b177da44dbd74e3f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: abf149d621d283744a71e08ea4ac2199a1994d57
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584993"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680954"
 ---
 # <a name="add-prebuilt-models-for-common-usage-scenarios"></a>Hinzufügen vordefinierter Modelle für gängige Verwendungsszenarien
 
@@ -40,7 +40,7 @@ LUIS umfasst einen Satz von vordefinierten Modellen zum schnellen Hinzufügen vo
 
 1. Wählen Sie auf der Seite **Absichten** auf der Symbolleiste über der Absichtenliste **Vordefinierte Absicht hinzufügen** aus.
 
-1. Wählen Sie die Absicht **Utilities.Cancel** im Popupdialogfeld aus.
+1. Wählen Sie im Popupdialogfeld eine Absicht aus.
 
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen der vordefinierten Absicht](./media/luis-prebuilt-domains/add-prebuilt-domain-intents.png)
@@ -61,13 +61,24 @@ LUIS umfasst einen Satz von vordefinierten Modellen zum schnellen Hinzufügen vo
 
 1. Wählen Sie **Fertig**aus. Nachdem die Entität hinzugefügt wurde, müssen Sie die App nicht trainieren.
 
+## <a name="add-a-prebuilt-domain-entity"></a>Hinzufügen einer vordefinierten Domänenentität
+1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie Ihr **Abonnement** und Ihre **Erstellungsressource** aus, um die Apps anzuzeigen, die dieser Erstellungsressource zugewiesen sind.
+1. Öffnen Sie Ihre App, indem Sie auf der Seite **Meine Apps** den Namen der App auswählen.
+1. Klicken Sie auf der linken Seite auf **Entitäten**.
+
+1. Wählen Sie auf der Seite **Entitäten** die Option **Vorgefertigte Domänenentität hinzufügen** aus.
+
+1. Wählen Sie im Dialogfeld **Vorgefertigte Domänenmodelle hinzufügen** die vordefinierte Domänenentität aus.
+
+1. Wählen Sie **Fertig**aus. Nachdem die Entität hinzugefügt wurde, müssen Sie die App nicht trainieren.
+
 ## <a name="publish-to-view-prebuilt-model-from-prediction-endpoint"></a>Veröffentlichen Sie sie, um ein vordefiniertes Modell vom Vorhersageendpunkt anzuzeigen
 
 Die einfachste Möglichkeit, den Wert eines vordefinierten Modells anzuzeigen, ist eine Abfrage an den veröffentlichten Endpunkt.
 
 ## <a name="entities-containing-a-prebuilt-entity-token"></a>Entitäten mit einem vordefinierten Entitätstoken
 
-Wenn Sie über eine durch maschinelles Lernen erworbene Entität verfügen, die ein erforderliches Feature einer vordefinierten Entität benötigt, fügen Sie der durch maschinelles Lernen erworbenen Entität eine Unterkomponente und anschließend ein _erforderliches_ Feature einer vorgefertigten Entität hinzu.
+Wenn Sie über eine durch maschinelles Lernen erworbene Entität verfügen, die ein erforderliches Feature einer vordefinierten Entität benötigt, fügen Sie der durch maschinelles Lernen erworbenen Entität eine untergeordnete Entität und anschließend ein _erforderliches_ Feature einer vorgefertigten Entität hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

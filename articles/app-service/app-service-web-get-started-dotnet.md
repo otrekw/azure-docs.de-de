@@ -5,12 +5,12 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 6c7ab1290033792cf356c4882811670011df5efe
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: b7566260786b6fcfa639f244e2eff0cc8304ed9e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086044"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205793"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Schnellstart: Erstellen von ASP.NET Core-Web-Apps in Azure
 
@@ -109,7 +109,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Web-App zu aktualisieren und ern
 
 1. Ersetzen Sie das gesamte `<div>`-Tag durch den folgenden Code:
 
-   ```HTML
+   ```html
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
        <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
@@ -150,3 +150,6 @@ Fahren Sie mit dem nächsten Artikel fort, um sich darüber zu informieren, wie 
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core mit SQL-Datenbank](app-service-web-tutorial-dotnetcore-sqldb.md)
+
+> [!div class="nextstepaction"]
+> [Konfigurieren der ASP.NET Core-App](configure-language-dotnetcore.md)

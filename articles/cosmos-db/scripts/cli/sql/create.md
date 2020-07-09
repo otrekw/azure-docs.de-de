@@ -1,24 +1,24 @@
 ---
-title: Erstellen einer Datenbank und eines Containers für die SQL-API (Core-API) für Azure Cosmos DB
-description: Erstellen einer Datenbank und eines Containers für die SQL-API (Core-API) für Azure Cosmos DB
+title: Erstellen einer Datenbank und eines Containers für die Core-API (SQL) für Azure Cosmos DB
+description: Erstellen einer Datenbank und eines Containers für die Core-API (SQL) für Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: ae958c7e48b1c4a93a09c607d5a2e51abf49a8ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/03/2020
+ms.openlocfilehash: 416da39df9bfb49d6323ee789d5e67b1743a1cd7
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71275027"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509388"
 ---
-# <a name="create-an-azure-cosmos-sql-core-api-account-database-and-container-using-azure-cli"></a>Erstellen eines Kontos, einer Datenbank und eines Containers für die SQL-API (Core-API) für Azure Cosmos mit der Azure-Befehlszeilenschnittstelle (Azure CLI)
+# <a name="create-an-azure-cosmos-core-sql-api-account-database-and-container-using-azure-cli"></a>Erstellen eines Kontos, einer Datenbank und eines Containers für die Core-API (SQL) für Azure Cosmos mit der Azure-Befehlszeilenschnittstelle (Azure CLI)
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, ist es für dieses Thema erforderlich, die Azure CLI-Version 2.0.73 oder höher auszuführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, ist es für dieses Thema erforderlich, die Azure CLI-Version 2.0.73 oder höher auszuführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Beispielskript
 

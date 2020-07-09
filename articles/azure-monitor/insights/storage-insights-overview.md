@@ -1,25 +1,25 @@
 ---
-title: Überwachen von Azure-Speicherdiensten mit Azure Monitor für Storage (Vorschauversion) | Microsoft-Dokumentation
+title: Überwachen von Azure Storage-Diensten mit Azure Monitor für Storage | Microsoft-Dokumentation
 description: In diesem Artikel wird das Azure Monitor für Storage-Feature beschrieben, das Speicheradministratoren ein schnelles Verständnis der Leistungs- und Nutzungsprobleme bei ihren Azure Storage-Konten ermöglicht.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/15/2019
-ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: e69e00eb9db43a76af1d6e541f44f750452cf858
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691109"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800069"
 ---
-# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage (Vorschauversion)
+# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage
 
-Azure Monitor für Storage (Vorschauversion) ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. Sie können die Speicherkapazität und Leistung auf zwei Arten beobachten: direktes Anzeigen in einem Speicherkonto oder Anzeigen verschiedener Gruppen von Speicherkonten in Azure Monitor. 
+Azure Monitor für Storage ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. Sie können die Speicherkapazität und Leistung auf zwei Arten beobachten: direktes Anzeigen in einem Speicherkonto oder Anzeigen verschiedener Gruppen von Speicherkonten in Azure Monitor. 
 
-Dieser Artikel soll Ihnen verwertbares Wissen zur Oberfläche von Azure Monitor für Storage (Vorschauversion) liefern und zeigen, was sie im Hinblick auf Integrität und Leistung von Speicherkonten im gewünschten Umfang bietet, wobei Sie sich auf Hotspots sowie die Diagnose von Latenz, Drosselung und Verfügbarkeitsproblemen konzentrieren können.
+Dieser Artikel soll Ihnen verwertbares Wissen zur Oberfläche von Azure Monitor für Storage liefern und zeigen, was sie im Hinblick auf Integrität und Leistung von Storage-Konten im gewünschten Umfang bietet, wobei Sie sich auf Hotspots sowie die Diagnose von Wartezeit, Drosselung und Verfügbarkeitsproblemen konzentrieren können.
 
-## <a name="introduction-to-azure-monitor-for-storage-preview"></a>Einführung in Azure Monitor für Storage (Vorschauversion)
+## <a name="introduction-to-azure-monitor-for-storage"></a>Einführung in Azure Monitor für Storage
 
 Bevor Sie sich mit der Oberfläche genauer befassen, sollten Sie nachvollziehen können, wie sie Informationen darstellt und visualisiert. Unabhängig davon, ob Sie das Storage-Feature direkt aus einem Speicherkonto oder in Azure Monitor auswählen, stellt Azure Monitor für Storage eine einheitliche Oberfläche bereit. 
 
@@ -48,7 +48,7 @@ Führen Sie die folgenden Schritte aus, um die Nutzung und Verfügbarkeit Ihrer 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Wählen Sie im linken Bereich des Azure-Portals **Überwachen** und im Abschnitt **Insights** die Option **Speicherkonten (Vorschau)** aus.
+2. Wählen Sie im linken Bereich des Azure-Portals **Überwachen** und im Abschnitt **Insights** die Option **Speicherkonten** aus.
 
     ![Ansicht mehrerer Speicherkonten](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
@@ -92,7 +92,7 @@ Gehen Sie wie folgt vor, um direkt über ein Speicherkonto auf Azure Monitor fü
 
 1. Wählen Sie im Azure-Portal „Speicherkonten“ aus.
 
-2. Wählen Sie in der Liste ein Speicherkonto aus. Wählen Sie im Abschnitt „Überwachung“ die Option „Insights (Vorschau)“.
+2. Wählen Sie in der Liste ein Speicherkonto aus. Wählen Sie im Abschnitt „Überwachung“ die Option „Insights“ aus.
 
     ![Seite „Übersicht“ für das ausgewählte Speicherkonto](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
@@ -138,7 +138,7 @@ Die Arbeitsmappen **Übersicht** oder **Kapazität** für Mehrfachabonnement und
 
 ![Beispiel für das Exportieren von Ergebnissen aus dem Raster einer Arbeitsmappe](./media/storage-insights-overview/workbook-export-example.png)
 
-## <a name="customize-azure-monitor-for-storage-preview"></a>Anpassen von Azure Monitor für Storage (Vorschauversion)
+## <a name="customize-azure-monitor-for-storage"></a>Anpassen von Azure Monitor für Storage
 
 In diesem Abschnitt werden gängige Szenarien für die Bearbeitung der Arbeitsmappe erläutert, um sie zur Unterstützung Ihrer Datenanalyseanforderungen anzupassen:
 
@@ -155,7 +155,7 @@ Die Anpassungen werden in einer benutzerdefinierten Arbeitsmappe gespeichert, um
 
 Sie können die Arbeitsmappen **Übersicht** oder **Kapazität** für Mehrfachabonnement und Speicherkonto bei jeder Ausführung auf den Bereich eines bestimmten Abonnements/von bestimmten Abonnements oder eines bestimmten Speicherkontos/von bestimmten Speicherkonten konfigurieren. Führen Sie dazu die folgenden Schritte aus:
 
-1. Wählen Sie im Portal **Überwachen** und dann im linken Bereich **Speicherkonten (Vorschau)** aus.
+1. Wählen Sie im Portal **Überwachen** und dann im linken Bereich **Speicherkonten** aus.
 
 2. Wählen Sie in der Arbeitsmappe **Übersicht** in der Befehlsleiste den Befehl **Bearbeiten** aus.
 
@@ -176,7 +176,7 @@ In unserem Beispiel arbeiten wir mit der Arbeitsmappe „Kapazität“ für Mehr
 
 Sie können bei jeder der vordefinierten Arbeitsmappen **Fehler**, **Leistung**, **Verfügbarkeit** und **Kapazität** dieselben Änderungen ausführen.
 
-1. Wählen Sie im Portal **Überwachen** und dann im linken Bereich **Speicherkonten (Vorschau)** aus.
+1. Wählen Sie im Portal **Überwachen** und dann im linken Bereich **Speicherkonten** aus.
 
 2. Wählen Sie **Kapazität** aus, um zur Arbeitsmappe „Kapazität“ zu wechseln, und wählen Sie in der Befehlsleiste den Befehl **Bearbeiten** aus.
 
@@ -210,7 +210,7 @@ In diesem Beispiel arbeiten wir mit der Arbeitsmappe „Kapazität“ des Speich
 
 1. Wählen Sie im Portal **Speicherkonten** und dann ein Speicherkonto aus der Liste aus.
 
-2. Wählen Sie im linken Bereich **Insights (Vorschauversion)** aus.
+2. Wählen Sie im linken Bereich **Insights** aus.
 
 3. Wählen Sie in der Arbeitsmappe **Verfügbarkeit** aus, um zur Arbeitsmappe „Verfügbarkeit“ zu wechseln. Wählen Sie dann in der Befehlsleiste den Befehl **Bearbeiten** aus. 
 
@@ -228,11 +228,11 @@ In diesem Beispiel arbeiten wir mit der Arbeitsmappe „Kapazität“ des Speich
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Dieser Abschnitt wird Sie bei der Diagnose und Behandlung einiger bekannter Probleme unterstützen, die auftreten können, wenn Sie Azure Monitor für Storage (Vorschauversion) verwenden. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
+Dieser Abschnitt wird Sie bei der Diagnose und Behandlung einiger bekannter Probleme unterstützen, die bei der Verwendung von Azure Monitor für Storage auftreten können. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>Beheben von Leistungs-, Kapazitäts-oder Verfügbarkeitsproblemen
 
-Informationen zur Problembehandlung bei speicherbezogenen Problemen, die Sie mit Azure Monitor für Storage (Vorschauversion) identifizieren, finden Sie in [Anleitungen zur Problembehandlung](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance) für Azure Storage.  
+Informationen zur Problembehandlung bei speicherbezogenen Problemen, die Sie im Zusammenhang mit Azure Monitor für Storage ermitteln, finden Sie in den [Anleitungen zur Problembehandlung](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance) für Azure Storage.  
 
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>Warum kann ich nur 200 Speicherkonten sehen?
 
@@ -318,6 +318,6 @@ Wählen Sie „Edit“ (Bearbeiten) in diesem Schritt aus, und klicken Sie dann 
 
 * Konfigurieren Sie [Metrikwarnungen](../platform/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sein können.
 
-* Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../app/usage-workbooks.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
+* Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
 
 * Eine ausführliche Anleitung zum Verwenden der Speicheranalyse sowie weiterer Tools, um Azure Storage-bezogene Probleme zu identifizieren, zu diagnostizieren und zu beheben, finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md).

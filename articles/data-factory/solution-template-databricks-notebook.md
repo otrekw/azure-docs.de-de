@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: 3d55e37078d7bbbcd84684f43ef12810ef01e10e
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 04/27/2020
+ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627754"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857647"
 ---
 # <a name="transformation-with-azure-databricks"></a>Transformation mit Azure Databricks
 
@@ -153,6 +153,9 @@ In der neuen Pipeline sind die meisten Einstellungen automatisch mit den jeweili
 1. Überprüfen Sie, ob die **Pipelineparameter** mit der Anzeige im folgenden Screenshot übereinstimmen: ![Pipelineparameter](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. Stellen Sie eine Verbindung mit den Datasets her.
+
+    >[!NOTE]
+    >In den folgenden Datasets wurde der Dateipfad in der Vorlage automatisch angegeben. Wenn Änderungen erforderlich sind, stellen Sie sicher, dass Sie den Pfad sowohl für **Container** als auch für **Verzeichnis** angeben, falls ein Verbindungsfehler auftreten sollte.
 
    - **SourceAvailabilityDataset**: Um zu überprüfen, ob die Quelldaten verfügbar sind.
 

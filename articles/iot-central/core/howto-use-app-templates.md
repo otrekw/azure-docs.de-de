@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f50c7e8dcb33fd2ed95829286aaf815926d9fb3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39bb129d6edba168ed1ed45b1de205a206c83ed2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157612"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678170"
 ---
 # <a name="export-your-application"></a>Exportieren Ihrer Anwendung
-
-
 
 In diesem Artikel wird beschrieben, wie Sie als Lösungsmanager eine IoT Central-Anwendung exportieren, um sie wiederverwenden zu können.
 
@@ -61,7 +59,6 @@ Die folgenden Elemente sind nicht enthalten, wenn Sie eine Anwendungsvorlage ers
 
 - Geräte
 - Benutzer
-- Auftragsdefinitionen
 - Definitionen für den kontinuierlichen Datenexport
 
 Diese Elemente müssen allen von einer Anwendungsvorlage erstellten Anwendungen manuell hinzugefügt werden.
@@ -93,4 +90,4 @@ Um Ihre Anwendungsvorlage zu aktualisieren, ändern Sie auf der Seite zum **Expo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie wissen jetzt, wie Sie Anwendungsvorlagen verwenden. Informieren Sie sich als Nächstes, wie Sie [IoT Central über das Azure-Portal verwalten](howto-manage-iot-central-from-portal.md).
+Sie wissen jetzt, wie Sie Anwendungsvorlagen verwenden. Lernen Sie als Nächstes, wie Sie [die Gesamtintegrität der Geräte überwachen, die mit einer IoT Central-Anwendung verbunden sind](howto-monitor-application-health.md).

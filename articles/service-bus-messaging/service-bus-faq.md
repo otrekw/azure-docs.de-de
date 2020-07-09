@@ -1,20 +1,14 @@
 ---
 title: Häufig gestellte Fragen (FAQ) zu Azure Service Bus | Microsoft-Dokumentation
 description: Dieser Artikel bietet Antworten auf einige häufig gestellte Fragen (FAQ) zu Azure Service Bus.
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 35721d174ec4b840185727efe5fb384015040b80
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760248"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341463"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Service Bus
 
@@ -63,7 +57,7 @@ Um die richtigen IP-Adressen für die Whitelist für Ihre Verbindungen zu ermitt
 1. Führen Sie den folgenden Befehl an einer Eingabeaufforderung aus: 
 
     ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
+    nslookup <YourNamespaceName>.cloudapp.net
     ```
 2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. Diese IP-Adresse ist statisch. Sie würde sich nur dann ändern, wenn Sie den Namespace auf einem anderen Cluster wiederherstellen.
 
@@ -72,14 +66,14 @@ Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige z
 1. Führen Sie zunächst nslookup für den Namespace aus.
 
     ```
-    nslookup <yournamespace>.servicebus.windows.net
+    nslookup <yournamespace>.cloudapp.net
     ```
 2. Notieren Sie sich den Namen im Abschnitt **non-authoritative answer** (nicht autorisierende Antwort), der in einem der folgenden Formate vorliegt: 
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
     ```
 3. Führen Sie den Befehl „nslookup“ für jeden Namen mit den Suffixen s1, s2 und s3 aus, um die IP-Adressen aller drei Instanzen zu erhalten, die in drei Verfügbarkeitszonen ausgeführt werden. 
 
@@ -122,13 +116,6 @@ Beachten Sie, dass es sich hierbei nicht um neue Gebühren handelt, d. h., sie 
 ## <a name="quotas"></a>Kontingente
 
 Eine Liste mit Service Bus-Grenzwerten und -Kontingenten finden Sie unter [Übersicht über Service Bus-Kontingente][Quotas overview].
-
-### <a name="does-service-bus-have-any-usage-quotas"></a>Gibt es für Service Bus Nutzungskontingente?
-Microsoft legt für jeden Clouddienst standardmäßig ein aggregiertes monatliches Nutzungskontingent fest, das abonnementübergreifend für einen Kunden berechnet wird. Falls Ihr Bedarf diese Höchstwerte überschreitet, können Sie sich jederzeit an den Kundendienst wenden, um Ihren Bedarf einzuschätzen und diese Werte entsprechend anzupassen. Für Service Bus liegt das aggregierte Nutzungskontingent bei 5 Milliarden Nachrichten pro Monat.
-
-Microsoft behält sich das Recht vor, ein Kundenkonto zu deaktivieren, das die Nutzungskontingente in einem Monat überschritten hat. Wir informieren den Kunden per E-Mail und unternehmen mehrere Versuche, ihn zu kontaktieren, bevor wir Maßnahmen ergreifen. Kunden, die diese Kontingente überschreiten, haben die Kosten für die Überschreitung zu tragen.
-
-Genau wie andere Dienste in Azure setzt Service Bus eine Reihe spezifischer Kontingente durch, die eine faire Nutzung der Ressourcen sicherstellen. Ausführlichere Informationen zu diesen Kontingenten finden Sie in der [Übersicht über Service Bus-Kontingente][Quotas overview].
 
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>Wie werden Nachrichten mit einer Größe über 1 MB behandelt?
 Service Bus-Messagingdienste (Warteschlangen und Themen/Abonnements) ermöglichen Anwendungen, Nachrichten mit einer Größe bis zu 256 KB (Standard-Tarif) oder 1 MB (Premium-Tarif) zu senden. Wenn Ihre Nachrichten eine Größe über 1 MB aufweisen, verwenden Sie das [in diesem Blogbeitrag](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern) beschriebene Anspruchsprüfungsmuster.

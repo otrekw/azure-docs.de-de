@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d6902b2b076df86012cec6941be417ad0f0c7660
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0c55cc6e0fc15b663667a5131e2dd333106418cd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426678"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957061"
 ---
 # <a name="optimizing-transactions-in-sql-pool"></a>Optimieren von Transaktionen im SQL-Pool
 
@@ -44,7 +44,7 @@ Die Sicherheitslimits für Transaktionen gelten nur für Vorgänge mit vollstän
 
 Eine minimale Protokollierung ist für folgende Vorgänge möglich:
 
-* CREATE TABLE AS SELECT ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+* CREATE TABLE AS SELECT ([CTAS])(../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 * INSERT..SELECT
 * CREATE INDEX
 * ALTER INDEX REBUILD

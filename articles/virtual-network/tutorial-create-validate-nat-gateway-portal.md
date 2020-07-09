@@ -8,18 +8,19 @@ author: asudbring
 manager: KumundD
 Customer intent: I want to test a NAT Gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: ceadbb4297ad0c5ce28470dd75b3f3496c9c5152
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: d798725892a9586c17cd7023863fe5cf7df05cb6
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084742"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417836"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Tutorial: Erstellen eines NAT-Gateways mit dem Azure-Portal und Testen des NAT-Diensts
 
@@ -43,12 +44,12 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
 
 | Parameter                   | Wert                |
 |-----------------------------|----------------------|
-| **\<Ressourcengruppenname>**  | myResourceGroupNAT |
+| **\<resource-group-name>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNetsource          |
 | **\<region-name>**          | USA (Ost) 2      |
-| **\<IPv4-Adressraum>**   | 192.168.0.0/16          |
-| **\<Subnetzname>**          | mySubnetsource        |
-| **\<Subnetzadressbereich>** | 192.168.0.0/24          |
+| **\<IPv4-address-space>**   | 192.168.0.0/16          |
+| **\<subnet-name>**          | mySubnetsource        |
+| **\<subnet-address-range>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -166,12 +167,12 @@ In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten w
 
 | Parameter                   | Wert                |
 |-----------------------------|----------------------|
-| **\<Ressourcengruppenname>**  | myResourceGroupNAT |
+| **\<resource-group-name>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNetdestination          |
 | **\<region-name>**          | USA (Ost) 2      |
-| **\<IPv4-Adressraum>**   | 192.168.0.0/16          |
-| **\<Subnetzname>**          | mySubnetdestination        |
-| **\<Subnetzadressbereich>** | 192.168.0.0/24          |
+| **\<IPv4-address-space>**   | 10.1.0.0/16          |
+| **\<subnet-name>**          | mySubnetdestination        |
+| **\<subnet-address-range>** | 10.1.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 

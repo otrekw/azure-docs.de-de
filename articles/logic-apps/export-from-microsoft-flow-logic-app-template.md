@@ -3,24 +3,26 @@ title: Exportieren von Flows aus Power Automate in Azure Logic Apps
 description: Migrieren von Flows aus Power Automate zu Azure Logic Apps durch Exportieren als Azure Resource Manager-Vorlagen
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b30a2ae8d90a193e23229dc6743c7e92ebf83b52
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75428879"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298719"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Exportieren von Flows aus Power Automate und Bereitstellen in Azure Logic Apps
 
 Sie können diesen Flow aus [Microsoft Flow](https://flow.microsoft.com) zu [Power Automate](../logic-apps/logic-apps-overview.md) migrieren, um die Funktionen des Flows zu erweitern. Sie können den Flow als Azure Resource Manager-Vorlage für eine Logik-App exportieren, diese Logik-App-Vorlage in einer Azure-Ressourcengruppe bereitstellen und dann die Logik-App im Logik-App-Designer öffnen.
 
 > [!NOTE]
-> Nicht alle Power Automate-Connectors sind in Azure Logic Apps verfügbar. Sie können Flows importieren, die in Azure Logic Apps über [äquivalente Konnektoren](../connectors/apis-list.md) verfügen. Beispielsweise sind der Trigger „Schaltfläche“, der Connector „Genehmigung“ und der Connector „Benachrichtigung“ spezifisch für Power Automate.
+> Nicht alle Power Automate-Connectors sind in Azure Logic Apps verfügbar. Sie können nur Power Automate-Flows migrieren, die in Azure Logic Apps über äquivalente Connectors verfügen. Beispielsweise sind der Trigger „Schaltfläche“, der Connector „Genehmigung“ und der Connector „Benachrichtigung“ spezifisch für Power Automate. Aktuell werden der Export und die Bereitstellung von auf OpenAPI basierenden Flows in Power Automate als Vorlagen für Logik-Apps nicht unterstützt.
 >
-> Auf OpenAPI basierende Flows, die aus Power Automate exportiert wurden, werden derzeit nicht für die Bereitstellung als Vorlagen für Logik-Apps unterstützt. 
+> * Informationen dazu, welche Power Automate-Connectors keine Logic Apps-Entsprechungen besitzen, finden Sie unter [Power Automate-Connectors](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors).
+>
+> * Informationen dazu, welche Logic Apps-Connectors keine Power Automate-Entsprechungen besitzen, finden Sie unter [Logic Apps-Connectors](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

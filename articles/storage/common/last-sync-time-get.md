@@ -1,27 +1,27 @@
 ---
 title: Überprüfen der Eigenschaft „Letzte Synchronisierung“ für ein Speicherkonto
 titleSuffix: Azure Storage
-description: Erfahren Sie, wie Sie die Eigenschaft **Letzte Synchronisierung** für ein Speicherkonto mit Georeplikation überprüfen. Die Eigenschaft **Letzte Synchronisierung** gibt den Zeitpunkt der letzten erfolgreichen Schreibvorgänge aus der primären Region in die sekundäre Region an.
+description: Erfahren Sie, wie Sie die Eigenschaft „Letzte Synchronisierung“ für ein Speicherkonto mit Georeplikation überprüfen. Die Eigenschaft „Letzte Synchronisierung“ gibt den Zeitpunkt der letzten erfolgreichen Schreibvorgänge aus der primären Region in die sekundäre Region an.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/16/2019
+ms.date: 05/28/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3a406ce6db060b9ff5be7bcadecb6c7ff7e65a1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4309f1dc63ac7dd96e22f4564a32aae6ed59ad84
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77163811"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195808"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>Überprüfen der Eigenschaft „Letzte Synchronisierung“ für ein Speicherkonto
 
 Wenn Sie ein Speicherkonto konfigurieren, können Sie angeben, dass Ihre Daten in eine sekundäre Region kopiert werden, die Hunderte Kilometer von der primären Region entfernt ist. Die Georeplikation bietet Dauerhaftigkeit für Ihre Daten im Fall eines signifikanten Ausfalls in der primären Region, z. B. bei einer Naturkatastrophe. Wenn Sie darüber hinaus Lesezugriff auf die sekundäre Region aktivieren, bleiben Ihre Daten auch dann noch für Lesevorgänge verfügbar, wenn die primäre Region nicht mehr verfügbar ist. Sie können Ihre Anwendung so entwerfen, dass sie nahtlos zum Lesen aus der sekundären Region wechselt, wenn die primäre Region nicht reagiert.
 
-Georedundanter Speicher (GRS) und geozonenredundanter Speicher (GZRS, Vorschau) replizieren Ihre Daten asynchron in eine sekundäre Region. Für den Lesezugriff in der sekundären Region aktivieren Sie georedundanten Speicher mit Lesezugriff (RA-GRS) oder geozonenredundanten Speicher mit Lesezugriff (RA-GZRS). Weitere Informationen zu den verschiedenen Redundanzoptionen, die von Azure Storage angeboten werden, finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).
+Georedundanter Speicher (GRS) und geozonenredundanter Speicher (GZRS) replizieren Ihre Daten asynchron in eine sekundäre Region. Für den Lesezugriff in der sekundären Region aktivieren Sie georedundanten Speicher mit Lesezugriff (RA-GRS) oder geozonenredundanten Speicher mit Lesezugriff (RA-GZRS). Weitere Informationen zu den verschiedenen Redundanzoptionen, die von Azure Storage angeboten werden, finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).
 
 In diesem Artikel wird beschrieben, wie Sie die Eigenschaft **Letzte Synchronisierung** für Ihr Speicherkonto überprüfen, um mögliche Abweichungen zwischen der primären und der sekundären Region auswerten zu können.
 
@@ -37,13 +37,7 @@ Sie können PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden, um d
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Um die letzte Synchronisierungszeit für das Speicherkonto mit PowerShell abzurufen, installieren Sie ein Azure Storage-Vorschaumodul, das das Abrufen von Georeplikationsstatistiken unterstützt. Beispiel:
-
-```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
-```
-
-Überprüfen Sie dann die Eigenschaft **GeoReplicationStats.LastSyncTime** des Speicherkontos. Denken Sie daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen:
+Wenn Sie den Zeitpunkt der letzten Synchronisierung für das Speicherkonto mit PowerShell abrufen möchten, installieren Sie Version 1.11.0 oder höher des [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage)-Moduls. Überprüfen Sie dann die Eigenschaft **GeoReplicationStats.LastSyncTime** des Speicherkontos. Denken Sie daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen:
 
 ```powershell
 $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -70,4 +64,4 @@ $lastSyncTime=$(az storage account show \
 
 - [Azure-Speicherredundanz](storage-redundancy.md)
 - [Ändern der Redundanzoption für ein Speicherkonto](redundancy-migration.md)
-- [Entwerfen von hochverfügbaren Anwendungen mit georedundantem Speicher mit Lesezugriff](storage-designing-ha-apps-with-ragrs.md)
+- [Verwenden von Georedundanz zum Entwerfen von hochverfügbaren Anwendungen](geo-redundant-design.md)

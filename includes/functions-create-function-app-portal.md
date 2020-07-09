@@ -55,7 +55,7 @@ ms.locfileid: "83116332"
 
 1. Überprüfen Sie auf der Seite **Bewerten + erstellen** Ihre Einstellungen, und wählen Sie dann **Erstellen** aus, um die Funktions-App bereitzustellen.
 
-1. Wählen Sie oben rechts im Portal das **Benachrichtigungs**symbol aus, und achten Sie auf die Meldung **Bereitstellung erfolgreich**.
+1. Wählen Sie oben rechts im Portal das **Benachrichtigungssymbol** aus, und achten Sie auf die Meldung **Bereitstellung erfolgreich**.
 
 1. Wählen Sie **Zu Ressource wechseln**, um Ihre neue Funktionen-App anzuzeigen. Sie können auch die Option **An Dashboard anheften** auswählen. Wenn Sie die Funktions-App anheften, können Sie einfacher über das Dashboard auf sie zugreifen.
 

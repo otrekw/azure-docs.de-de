@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 20f8e0bea460c20ed3af0c2844ebc3510bd2d6b6
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 9c70f8d728786e8aff8da33f9a39b8c2cfaafdc4
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800793"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295591"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketplace
 
@@ -58,6 +58,9 @@ Sie können die Nutzung auch genauer nachverfolgen, indem Sie zusätzliche GUIDs
 Die GUIDs müssen in Partner Center registriert werden, um die Zuordnung der Nutzung durch Kunden zu ermöglichen.
 
 Nachdem Sie Ihrer Vorlage oder im Benutzer-Agent eine GUID hinzugefügt und die GUID in Partner Center registriert haben, werden zukünftige Bereitstellungen nachverfolgt.
+
+> [!NOTE]
+> Wenn Sie Ihr [Azure-Anwendungsangebot](./partner-center-portal/create-new-azure-apps-offer.md) im Azure Marketplace über Partner Center veröffentlichen, wird jede neue GUID, die in Ihrer Vorlage verwendet wird, beim Hochladen der Vorlage automatisch im Partner Center-Profil registriert.  
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard) an.
 
@@ -246,7 +249,7 @@ Wenn Sie diese Vorlage bereitstellen, kann Microsoft die Installation der Softwa
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>Benachrichtigung für SDK- oder API-Bereitstellungen
 
-Wenn Sie Software von \<PARTNER> bereitstellen, kann Microsoft die Installation der \<PARTNER>-Software mit den bereitgestellten Azure-Ressourcen identifizieren. Microsoft kann die Azure-Ressourcen korrelieren, die zum Unterstützen der Software verwendet werden. Microsoft erfasst diese Informationen, um die Nutzung der Produkte zu optimieren und um Geschäfte zu ermöglichen. Diese Daten unterliegen den Datenschutzrichtlinien von Microsoft und werden gemäß diesen Richtlinien gesammelt. Diese Datenschutzrichtlinien können unter https://www.microsoft.com/trustcenter eingesehen werden.
+Wenn Sie Software von \<PARTNER> bereitstellen, kann Microsoft die Installation der Software von \<PARTNER> mit den bereitgestellten Azure-Ressourcen identifizieren. Microsoft kann die Azure-Ressourcen korrelieren, die zum Unterstützen der Software verwendet werden. Microsoft erfasst diese Informationen, um die Nutzung der Produkte zu optimieren und um Geschäfte zu ermöglichen. Diese Daten unterliegen den Datenschutzrichtlinien von Microsoft und werden gemäß diesen Richtlinien gesammelt. Diese Datenschutzrichtlinien können unter https://www.microsoft.com/trustcenter eingesehen werden.
 
 ## <a name="get-support"></a>Support
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7c2f74b8f8ed19fd73b67fdd0465cce81f89321
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: c9ed9dd75f7119268c2d5971e05704e5a4eca4a0
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735915"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798237"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-my-ibisworld"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit My IBISWorld
 
@@ -96,14 +96,14 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Darüber hinaus wird von der My IBISWorld-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
     
-    | Name |   |  Quellattribut|
-    | ---------------| --------------- | --------- |
-    | department |  | user.department |
-    | language |  | user.preferredlanguage |
-    | phone |  | user.telephonenumber |
-    | title |  | user.jobtitle |
-    | userid |  | user.employeeid |
-    | country |  | user.country |
+    | Name | Quellattribut|
+    | --------------- | --------- |
+    | department | user.department |
+    | language | user.preferredlanguage |
+    | phone | user.telephonenumber |
+    | title | user.jobtitle |
+    | userid | user.employeeid |
+    | country | user.country |
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 

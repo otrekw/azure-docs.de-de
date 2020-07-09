@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 5fce5c8de3b2224ef471b0b3eec5ff29a869a9f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: a25a34db99a4c1550ed78b5f084501fb8badfacf
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844521"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791281"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -75,7 +75,12 @@ Folgende Angebote werden noch nicht unterstützt:
 | **Supportpläne** | Azure Government Pro-Direct Support | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **Supportpläne** | Azure Government Developer Support  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-## <a name="determine-your-offer-type"></a>Bestimmen des Angebotstyps
+### <a name="free-trial-to-pay-as-you-go-upgrade"></a>Upgrade einer kostenlosen Testversion auf nutzungsbasierte Bezahlung
+
+Informationen zur Verfügbarkeit der kostenlosen Dienste nach einem Upgrade auf die nutzungsbasierte Bezahlung finden Sie in den [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq/).
+
+### <a name="determine-your-offer-type"></a>Bestimmen des Angebotstyps
+
 Wenn Sie keine Daten für ein Abonnement sehen und feststellen möchten, ob Ihr Abonnement zu den unterstützten Angeboten gehört, können Sie überprüfen, ob Ihr Abonnement unterstützt wird. Um zu überprüfen, ob ein Azure-Abonnement unterstützt wird, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie anschließend **Alle Dienste** im linken Menübereich aus. Wählen Sie in der Liste der Dienste **Abonnements** aus. Klicken Sie im Menü der Abonnementliste auf das Abonnement, das Sie überprüfen möchten. Ihr Abonnement wird auf der Registerkarte „Übersicht“ angezeigt und Sie können das **Angebot** und **Angebots-ID** sehen. Die folgende Abbildung zeigt ein Beispiel.
 
 ![Beispiel für die Registerkarte „Abonnementübersicht“ mit Anzeige von Angebot und Angebots-ID](./media/understand-cost-mgt-data/offer-and-offer-id.png)
@@ -106,7 +111,7 @@ Azure Cost Management empfängt Tags mit jedem Nutzungsdatensatz, der von den ei
 - Ressourcentags werden nur für in Ressourcengruppen bereitgestellte Ressourcen unterstützt.
 - Einige bereitgestellte Ressourcen unterstützen unter Umständen keine Tags oder enthalten keine Tags in Nutzungsdaten. Weitere Informationen finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../azure-resource-manager/tag-support.md).
 - Ressourcentags werden nur in Nutzungsdaten eingeschlossen, während das Tag angewendet ist. Tags werden nicht auf historische Daten angewendet.
-- Ressourcentags stehen in Cost Management erst zur Verfügung, nachdem die Daten aktualisiert wurden. Weitere Informationen finden Sie unter [Die Häufigkeit der Aktualisierung der Nutzungsdaten variiert](#usage-data-update-frequency-varies).
+- Ressourcentags stehen in Cost Management erst zur Verfügung, nachdem die Daten aktualisiert wurden. Weitere Informationen finden Sie unter [Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten](#cost-and-usage-data-updates-and-retention).
 - Ressourcentags sind nur in Cost Management verfügbar, wenn die Ressource aktiv ist/ausgeführt wird und Nutzungsdatensätze generiert (also beispielsweise nicht, wenn die Zuordnung eines virtuellen Computers aufgehoben wurde).
 - Für die Tagverwaltung ist Zugriff vom Typ „Mitwirkender“ auf die einzelnen Ressourcen erforderlich.
 - Für die Verwaltung von Tagrichtlinien ist Zugriff vom Typ „Besitzer“ oder „Mitwirkender an Richtlinien“ auf eine Verwaltungsgruppe, ein Abonnement oder eine Ressourcengruppe erforderlich.
@@ -114,9 +119,10 @@ Azure Cost Management empfängt Tags mit jedem Nutzungsdatensatz, der von den ei
 Sollte in Cost Management ein bestimmtes Tag nicht angezeigt werden, überprüfen Sie Folgendes:
 
 - Wurde das Tag direkt auf die Ressource angewendet?
-- Wurde das Tag vor mehr als 24 Stunden angewendet? Weitere Informationen finden Sie unter [Die Häufigkeit der Aktualisierung der Nutzungsdaten variiert](#usage-data-update-frequency-varies).
+- Wurde das Tag vor mehr als 24 Stunden angewendet? Siehe [Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten](#cost-and-usage-data-updates-and-retention).
 - Unterstützt der Ressourcentyp Tags? Von den folgenden Ressourcentypen werden keine Tags in Nutzungsdaten unterstützt (Stand: 1. Dezember 2019). Die vollständige Liste der unterstützten Tags finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../azure-resource-manager/tag-support.md).
     - Azure Active Directory B2C-Verzeichnisse
+    - Azure Bastion
     - Azure Firewalls
     - Azure NetApp Files
     - Data Factory
@@ -134,24 +140,22 @@ Im Anschluss finden Sie einige Tipps zur Verwendung von Tags:
 - Verwenden Sie die Tags-API zusammen mit „Query“ oder „UsageDetails“, um alle Kosten auf der Grundlage der aktuellen Tags zu erhalten.
 
 
-## <a name="free-trial-to-pay-as-you-go-upgrade"></a>Upgrade einer kostenlosen Testversion auf nutzungsbasierte Bezahlung
+## <a name="cost-and-usage-data-updates-and-retention"></a>Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten
 
-Informationen zur Verfügbarkeit der kostenlosen Dienste nach einem Upgrade auf die nutzungsbasierte Bezahlung finden Sie in den [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq/).
+Kosten- und Nutzungsdaten sind in Kostenverwaltung + Abrechnung im Azure-Portal und in den [unterstützenden APIs](../index.yml) innerhalb von 8–24 Stunden verfügbar. Beachten Sie beim Überprüfen der Kosten folgende Punkte:
 
-## <a name="rated-usage-data-refresh-schedule"></a>Zeitplan zur Datenaktualisierung der bewerteten Nutzung
-
-Kosten- und Nutzungsdaten sind i Cost Management + Abrechnung im Azure-Portal und in den [unterstützenden APIs](../index.yml) verfügbar. Beachten Sie beim Überprüfen der Kosten folgende Punkte:
-
+- Jeder Azure-Dienst (z. B. Storage, Compute und SQL) gibt die Nutzung in unterschiedlichen Intervallen aus. Es kann sein, dass Daten für einige Dienste früher angezeigt werden als für andere.
 - Die geschätzten Gebühren für den aktuellen Abrechnungszeitraum werden sechsmal pro Tag aktualisiert.
 - Die geschätzten Gebühren für den aktuellen Abrechnungszeitraum können sich mit zunehmender Nutzung ändern.
 - Jede Aktualisierung ist kumulativ und enthält alle Einzelposten und Informationen der vorherigen Aktualisierung.
 - Azure finalisiert oder _schließt_ den aktuellen Abrechnungszeitraum bis zu 72 Stunden (drei Kalendertage) nach Ablauf des Abrechnungszeitraums.
 
-Die folgenden Beispiele veranschaulichen, wie Abrechnungszeiträume enden können.
+Die folgenden Beispiele veranschaulichen, wie Abrechnungszeiträume enden können:
 
-Abonnements mit Enterprise Agreement (EA) – Wenn der Abrechnungsmonat am 31. März endet, werden die geschätzten Gebühren bis zu 72 Stunden später aktualisiert. In diesem Beispiel bis Mitternacht am (UTC) 4. April.
+* Abonnements mit Enterprise Agreement (EA) – Wenn der Abrechnungsmonat am 31. März endet, werden die geschätzten Gebühren bis zu 72 Stunden später aktualisiert. In diesem Beispiel bis Mitternacht am (UTC) 4. April.
+* Abonnements mit nutzungsbasierter Bezahlung – Wenn der Abrechnungsmonat am 15. Mai endet, können die geschätzten Gebühren bis zu 72 Stunden später aktualisiert werden. In diesem Beispiel bis Mitternacht am (UTC) 19. April.
 
-Abonnements mit nutzungsbasierter Bezahlung – Wenn der Abrechnungsmonat am 15. Mai endet, können die geschätzten Gebühren bis zu 72 Stunden später aktualisiert werden. In diesem Beispiel bis Mitternacht am (UTC) 19. April.
+Wenn die Kosten- und Nutzungsdaten in Kostenverwaltung + Abrechnung verfügbar sind, werden sie mindestens 7 Jahre lang aufbewahrt.
 
 ### <a name="rerated-data"></a>Neu bewertete Daten
 
@@ -166,16 +170,6 @@ Die in Cost Management angezeigten Kosten sind gerundet. Von der Abfrage-API zur
   - Gebühr 2: 0,004 USD
   -    Aggregierte Gebühr: 0,004 + 0,004 = 0,008. Angezeigte Gebühr: 0,01 USD.
 - Abfrage-API: Gebühren werden mit acht Dezimalstellen angezeigt und nicht gerundet.
-
-
-## <a name="usage-data-update-frequency-varies"></a>Die Häufigkeit der Aktualisierung der Nutzungsdaten variiert.
-
-Die Verfügbarkeit Ihrer anfallenden Nutzungsdaten in Cost Management hängt von einer Reihe von Faktoren ab, darunter:
-
-- Wie häufig Azure-Dienste (wie z.B. Speicher, Compute, CDN und SQL) die Nutzung ausgeben.
-- Die Zeit, die für die Verarbeitung der Nutzungsdaten durch die Rating-Engine und die Cost Management-Pipelines benötigt wird.
-
-Einige Dienste geben die Nutzung häufiger als andere ab. Daher können Sie für einige Dienste Daten in Cost Management früher sehen als für andere Dienste, die seltener Daten ausgeben. In der Regel dauert es ach bis 24 Stunden bis die Nutzung von Diensten in Cost Management angezeigt wird. Beachten Sie, dass die Daten für einen offenen Monat aktualisiert werden, wenn Sie den Dienst häufiger nutzen, da Aktualisierungen kumulativ sind.
 
 ## <a name="historical-data-might-not-match-invoice"></a>Verlaufsdaten stimmen möglicherweise nicht mit Rechnung überein
 

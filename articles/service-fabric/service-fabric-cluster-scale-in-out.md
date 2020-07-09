@@ -3,12 +3,12 @@ title: Horizontales Herunter- oder Hochskalieren eines Service Fabric-Clusters
 description: Skalieren Sie ein Service Fabric-Cluster bedarfsgesteuert horizontal herunter oder hoch, indem Sie die Regeln für das automatische Skalierung für jeden Knotentyp bzw. jede VM-Skalierungsgruppe festlegen. Hinzufügen oder Entfernen von Knoten für einen Service Fabric-Cluster
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 670e2a1fcccf80faaf652f1ce0c749b315c3aaec
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c72f8eca9bc054446ceec35448c930098c5f81fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82794046"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610250"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Horizontales Herunter- oder Hochskalieren eines Clusters
 
@@ -258,4 +258,4 @@ Lesen Sie die folgenden Artikel, um mehr über die Kapazitätsplanung von Cluste
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-in-out/BrowseServiceFabricClusterResource.png
 [ClusterResources]: ./media/service-fabric-cluster-scale-in-out/ClusterResources.png
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster

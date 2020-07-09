@@ -1,7 +1,6 @@
 ---
-title: Beschreibung von ML-Pipelines
-titleSuffix: Azure Machine Learning
-description: In diesem Artikel lernen Sie die Vorteile von ML-Pipelines (Machine Learning) kennen, die Sie mit dem Azure Machine Learning SDK für Python erstellen können. Machine Learning-Pipelines werden von Data Scientists verwendet, um Workflows für das maschinelle Lernen zu erstellen, zu optimieren und zu verwalten.
+title: Was sind Azure Machine Learning-Pipelines?
+description: Erfahren Sie, wie Sie mithilfe von ML-Pipelines Machine-Learning-Workflows erstellen, optimieren und verwalten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +8,17 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.openlocfilehash: 0cefa78b6f52cc67df8817f68a9b793ab86b2a7f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.custom: tracking-python
+ms.openlocfilehash: 7d34b54349a681061f80798a19ce65d2266f589d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878577"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559470"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Beschreibung von Azure Machine Learning-Pipelines
 
-Mit Azure Machine Learning Pipelines können Sie Workflows in ihren Machine Learning-Projekten erstellen. Diese Workflows bieten eine Reihe von Vorteilen: 
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Machine Learning-Pipelines Machine-Learning-Workflows erstellen, optimieren und verwalten. Diese Workflows bieten eine Reihe von Vorteilen: 
 
 + Einfachheit
 + Geschwindigkeit
@@ -45,7 +45,6 @@ Die Azure-Cloud bietet mehrere andere Pipelines, die jeweils einem anderen Zweck
 | Modellorchestrierung (maschinelles Lernen) | Data Scientist | Azure Machine Learning-Pipelines | Kubeflow-Pipelines | Daten -> Modell | Verteilung, Caching, Code-First, Wiederverwendung | 
 | Datenorchestrierung (Datenvorbereitung) | Datentechniker | [Azure Data Factory-Pipelines](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache Airflow | Daten -> Daten | Stark typisierte Verschiebung Datenorientierte Aktivitäten |
 | Code- und App-Orchestrierung (CI/CD) | App-Entwickler/Vorgänge | [Azure DevOps Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + Modell -> App/Dienst | Offenste und flexibelste Aktivitätsunterstützung, Genehmigungswarteschlangen, Phasen mit Beschränkung | 
-
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Wozu sind Azure ML-Pipelines imstande?
 

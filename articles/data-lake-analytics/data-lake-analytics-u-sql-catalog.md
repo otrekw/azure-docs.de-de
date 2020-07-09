@@ -7,14 +7,14 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/09/2017
-ms.openlocfilehash: f3b9f14be4422373fb30f8c3d4909fd9c9546fdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78bd7f446b7716031e3eef02639acc8bb729719e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71672845"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119564"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Erste Schritte mit dem U-SQL-Katalog in Azure Data Lake Analytics
 
@@ -24,7 +24,7 @@ Im vorherigen U-SQL-Skript haben Sie die Verwendung von EXTRACT zum Lesen aus de
 
 Im folgenden Skript wird eine Tabellenwertfunktion mit dem Namen `Searchlog()` in der Standarddatenbank und im Standardschema erstellt:
 
-```
+```usql
 DROP FUNCTION IF EXISTS Searchlog;
 
 CREATE FUNCTION Searchlog()
@@ -55,7 +55,7 @@ END;
 
 Das folgende Skript veranschaulicht, wie Sie die im obigen Skript definierte Tabellenwertfunktion verwenden:
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -76,7 +76,7 @@ Wenn ein einzelner Abfrageausdruck vorhanden ist, können Sie anstelle einer Tab
 
 Im folgenden Skript wird eine Ansicht mit dem Namen `SearchlogView` in der Standarddatenbank und im Standardschema erstellt:
 
-```
+```usql
 DROP VIEW IF EXISTS SearchlogView;
 
 CREATE VIEW SearchlogView AS  
@@ -93,7 +93,7 @@ USING Extractors.Tsv();
 
 Das folgende Skript veranschaulicht die Verwendung der definierten Ansicht:
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -113,7 +113,7 @@ OUTPUT @res
 
 Erstellen Sie mithilfe des folgenden Skripts eine Datenbank und zwei Tabellen:
 
-```
+```usql
 DROP DATABASE IF EXISTS SearchLogDb;
 CREATE DATABASE SearchLogDb;
 USE DATABASE SearchLogDb;
@@ -147,7 +147,7 @@ Sie können Tabellen wie die im obigen Skript erstellten auf die gleiche Weise w
 
 Um aus den Tabellen zu lesen, ändern Sie das zuvor verwendete Transformationsskript:
 
-```
+```usql
 @rs1 =
     SELECT
         Region,

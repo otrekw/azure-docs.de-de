@@ -6,15 +6,15 @@ author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 506339cefa90fb17bedfc946f70cb4d7d8047cf2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427138"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702099"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Erstellen, Entwickeln und Verwalten von Azure Synapse Studio (Vorschau)-Notebooks
 
@@ -55,12 +55,12 @@ Es gibt mehrere Möglichkeiten, um Ihrem Notebook eine neue Zelle hinzuzufügen.
 
 ### <a name="set-a-primary-language"></a>Festlegen einer primären Sprache
 
-Azure Synapse Studio-Notebooks unterstützen vier Spark-Sprachen:
+Azure Synapse Studio-Notebooks unterstützen vier Apache Spark-Sprachen:
 
-* pyspark (Python)
-* spark (Scala)
-* sparkSQL
-* Spark.NET (C#)
+* PySpark (Python)
+* Spark (Scala)
+* SparkSQL
+* .NET für Apache Spark (C#)
 
 Sie können die primäre Sprache für neu hinzugefügte Zellen in der Dropdownliste in der oberen Befehlsleiste festlegen.
 
@@ -75,9 +75,9 @@ Sie können in einem Notebook mehrere Sprachen verwenden, indem Sie den richtige
 |%%pyspark| Python | Eine **Python**-Abfrage im Spark-Kontext ausführen.  |
 |%%spark| Scala | Eine **Scala**-Abfrage im Spark-Kontext ausführen.  |  
 |%%sql| SparkSQL | Eine **SparkSQL**-Abfrage im Spark-Kontext ausführen.  |
-|%%csharp | Spark.NET C# | Eine **Spark.NET C#** -Abfrage im Spark-Kontext ausführen. |
+|%%csharp | .NET für Spark (C#) | Führen Sie eine Abfrage vom Typ **.NET für Spark (C#)** für Spark-Kontext aus. |
 
-Die folgende Abbildung zeigt ein Beispiel dafür, wie Sie eine PySpark-Abfrage mit dem Magic-Befehl **%%pyspark** schreiben können oder eine SparkSQL-Abfrage mit dem Magic-Befehl **%%sql** in einem **Spark (Scala)** -Notebook. Beachten Sie, dass die primäre Sprache für das Notebook auf Scala festgelegt ist.
+Die folgende Abbildung zeigt ein Beispiel dafür, wie Sie eine PySpark-Abfrage mit dem Magic-Befehl **%%pyspark** schreiben können oder eine SparkSQL-Abfrage mit dem Magic-Befehl **%%sql** in einem **Spark (Scala)** -Notebook. Beachten Sie, dass die primäre Sprache für das Notebook auf PySpark festgelegt ist.
 
    ![Synapse-Spark-Magic-Befehle](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
@@ -118,7 +118,7 @@ Die IntelliSense-Funktionen befinden sich in unterschiedlichen Stadien der Entwi
 |PySpark (Python)|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Spark (Scala)|Ja|Ja|Ja|Ja|-|-|-|Ja|
 |SparkSQL|Ja|Ja|-|-|-|-|-|-|
-|Spark.NET (C#)|Ja|-|-|-|-|-|-|-|
+|.NET für Spark (C#)|Ja|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Textzelle mit Symbolleisten-Schaltflächen formatieren
 
@@ -390,5 +390,8 @@ Mithilfe der folgenden Tastenkombinationen können Sie in Azure Synapse-Notebook
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Schnellstart: Erstellen eines Apache Spark-Pools (Vorschauversion) in Azure Synapse Analytics mithilfe von Webtools](../quickstart-apache-spark-notebook.md)
+- [Was ist Apache Spark in Azure Synapse Analytics?](apache-spark-overview.md)
+- [Verwenden von .NET für Apache Spark mit Azure Synapse Analytics](spark-dotnet.md)
 - [Dokumentation zu .NET für Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

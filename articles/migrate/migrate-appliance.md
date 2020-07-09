@@ -3,12 +3,12 @@ title: Azure Migrate-Appliance
 description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 5995242f84738eca1b2be680e3f744e36831d78f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780333"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235340"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -105,7 +105,7 @@ Das Azure Migrate-Gerät muss mit dem Internet verbunden sein.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate.
 management.azure.com | Erstellen von Azure AD-Apps, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
 *.services.visualstudio.com | Laden Sie App-Protokolle hoch, die für die interne Überwachung verwendet werden.
-*.vault.azure.net | Verwalten von Geheimnissen in Azure Key Vault
+*.vault.azure.net | Verwalten von Geheimnissen in Azure Key Vault Hinweis: Stellen Sie sicher, dass die replizierten Computer darauf zugreifen können.
 aka.ms/* | Zulassen des Zugriffs auf aka-Links Wird für Updates der Azure Migrate-Appliance verwendet.
 download.microsoft.com/download | Zulassen von Downloads von Microsoft Download Center
 *.servicebus.windows.net | Kommunikation zwischen der Appliance und dem Azure Migrate-Dienst
@@ -206,11 +206,77 @@ Datenträgerschreibvorgänge pro Sekunde | virtualDisk.numberWriteAveraged.avera
 NIC-Lesedurchsatz (MB pro Sekunde) | net.received.average | Berechnung der VM-Größe
 NIC-Schreibdurchsatz (MB pro Sekunde) | net.transmitted.average  |Berechnung der VM-Größe
 
+
+### <a name="installed-apps-metadata"></a>Metadaten installierter Apps
+
+Bei der Anwendungsermittlung werden installierte Anwendungen und Betriebssystemdaten erfasst.
+
+#### <a name="windows-vm-apps-data"></a>Windows-VM-App-Daten
+
+Dies sind die Daten der installierten Anwendung, die die Appliance von jedem virtuellen Computer sammelt, der für die Anwendungsermittlung aktiviert ist. Diese Daten werden an Azure gesendet.
+
+**Daten** | **Registrierungsstandort** | **Schlüssel**
+--- | --- | ---
+Anwendungsname  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
+Version  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+Anbieter  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Herausgeber
+
+#### <a name="windows-vm-features-data"></a>Daten zu Windows-VM-Features
+
+Dies sind die Daten der Features, die die Appliance von jedem virtuellen Computer sammelt, der für die Anwendungsermittlung aktiviert ist. Diese Daten werden an Azure gesendet.
+
+**Daten**  | **PowerShell-Cmdlet** | **Eigenschaft**
+--- | --- | ---
+Name  | Get-WindowsFeature  | Name
+Featuretyp | Get-WindowsFeature  | FeatureType
+Parent  | Get-WindowsFeature  | Parent
+
+#### <a name="windows-vm-sql-server-metadata"></a>Windows-VM-SQL Server-Metadaten
+
+Dies sind die SQL Server-Metadaten, die von der Appliance von virtuellen Computern gesammelt werden, auf denen Microsoft SQL Server für die Anwendungsermittlung aktiviert ist. Diese Daten werden an Azure gesendet.
+
+**Daten**  | **Registrierungsstandort**  | **Schlüssel**
+--- | --- | ---
+Name  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Edition  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Edition 
+Service Pack  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | SP
+Version  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Version 
+
+#### <a name="windows-vm-operating-system-data"></a>Windows-VM-Betriebssystemdaten
+
+Dies sind die Betriebssystemdaten, die die Appliance von jedem virtuellen Computer sammelt, der für die Anwendungsermittlung aktiviert ist. Diese Daten werden an Azure gesendet.
+
+Daten  | WMI-Klasse  | WMI-Klasseneigenschaft
+--- | --- | ---
+Name  | Win32_operatingsystem  | Caption
+Version  | Win32_operatingsystem  | Version
+Aufbau  | Win32_operatingsystem  | OSArchitecture
+
+#### <a name="linux-vm-apps-data"></a>Linux-VM-App-Daten
+
+Dies sind die Daten der installierten Anwendung, die die Appliance von jedem virtuellen Computer sammelt, der für die Anwendungsermittlung aktiviert ist. Basierend auf dem Betriebssystem der VM werden einer oder mehrere der Befehle ausgeführt. Diese Daten werden an Azure gesendet.
+
+Daten  | Get-Help
+--- | --- 
+Name | rpm, dpkg-query, snap
+Version | rpm, dpkg-query, snap
+Anbieter | rpm, dpkg-query, snap
+
+#### <a name="linux-vm-operating-system-data"></a>Linux-VM-Betriebssystemdaten
+
+Dies sind die Betriebssystemdaten, die die Appliance von jedem virtuellen Computer sammelt, der für die Anwendungsermittlung aktiviert ist. Diese Daten werden an Azure gesendet.
+
+**Daten**  | **Befehl** 
+--- | --- | ---
+Name <br/> version | Erfasst aus mindestens einer der folgenden Dateien:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Aufbau | uname
+
+
 ### <a name="app-dependencies-metadata"></a>Metadaten zu App-Abhängigkeiten
 
 Die Abhängigkeitsanalyse ohne Agent sammelt Verbindungs- und Prozessdaten.
 
-#### <a name="connection-data"></a>Verbindungsdaten
+#### <a name="windows-vm-app-dependencies-data"></a>Windows-VM-App-Abhängigkeitendaten
 
 Hier sind die Verbindungsdaten, die die Appliance von jedem virtuellen Computer sammelt, der für eine Abhängigkeitsanalyse ohne Agent aktiviert ist. Diese Daten werden an Azure gesendet.
 
@@ -222,9 +288,9 @@ Remoteport | netstat
 Remote-IP-Adresse | netstat
 TCP-Verbindungsstatus | netstat
 Prozess-ID | netstat
-Nein. aktiver Verbindungen | netstat
+Anzahl der aktiven Verbindungen | netstat
 
-#### <a name="process-data"></a>Verarbeiten von Daten
+
 Hier sind die Prozessdaten, die die Appliance von jedem virtuellen Computer sammelt, der für eine Abhängigkeitsanalyse ohne Agent aktiviert ist. Diese Daten werden an Azure gesendet.
 
 **Daten** | **WMI-Klasse** | **WMI-Klasseneigenschaft**
@@ -233,7 +299,7 @@ Prozessname | Win32_Process | ExecutablePath
 Prozessargumente | Win32_Process | CommandLine
 Anwendungsname | Win32_Process | Parameter „VersionInfo.ProductName“ der ExecutablePath-Eigenschaft
 
-#### <a name="linux-vm-data"></a>Linux-VM-Daten
+#### <a name="linux-vm-app-dependencies-data"></a>Linux-VM-App-Abhängigkeitendaten
 
 Hier sind die Verbindungs- und Prozessdaten, die die Appliance von jedem virtuellen Linux-Computer sammelt, der für eine Abhängigkeitsanalyse ohne Agent aktiviert ist. Diese Daten werden an Azure gesendet.
 
@@ -244,7 +310,7 @@ Lokale IP-Adresse | netstat
 Remoteport | netstat 
 Remote-IP-Adresse | netstat 
 TCP-Verbindungsstatus | netstat 
-Nein. aktiver Verbindungen | netstat
+Anzahl der aktiven Verbindungen | netstat
 Prozess-ID  | netstat 
 Prozessname | ps
 Prozessargumente | ps
@@ -340,7 +406,7 @@ Nachstehend finden Sie die vollständige Liste der Linux-Servermetadaten, die di
 FQDN | cat /proc/sys/kernel/hostname, hostname -f
 Anzahl der Prozessorkerne |  /proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
 Zugeordneter Arbeitsspeicher | cat /proc/meminfo \| grep MemTotal \| awk '{printf "%.0f", $2/1024}'
-Seriennummer des BIOS | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}’
+Seriennummer des BIOS | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}'
 BIOS-GUID | cat /sys/class/dmi/id/product_uuid
 Starttyp | [ -d /sys/firmware/efi ] && echo EFI \|\| echo BIOS
 Betriebssystemname/-version | Für die Version und den Namen des Betriebssystems wird auf folgende Dateien zugegriffen:<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
@@ -440,12 +506,12 @@ So überprüfen Sie die Version in der Systemsteuerung:
 Wenn bei einer oder mehreren Komponenten eine ältere Version vorhanden ist, müssen Sie den Dienst deinstallieren und eine manuelle Aktualisierung auf die aktuelle Version durchführen.
 
 1. In diesem [Download](https://aka.ms/latestapplianceservices) der LatestComponents.json-Datei finden Sie die jeweils aktuelle Version der Appliancedienste.
-2.  Öffnen Sie die Datei „LatestComponents.json“ nach dem Herunterladen im Editor.
+2.    Öffnen Sie die Datei „LatestComponents.json“ nach dem Herunterladen im Editor.
 3. Suchen Sie in der Datei nach der aktuellen Dienstversion und dem zugehörigen Downloadlink. Beispiel:
 
     "Name": "ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
-4.  Laden Sie die aktuelle Version eines überholten Diensts über den Downloadlink in der Datei herunter.
+4.    Laden Sie die aktuelle Version eines überholten Diensts über den Downloadlink in der Datei herunter.
 5. Führen Sie nach dem Herunterladen den folgenden Befehl in einem Befehlsfenster für Administratoren aus, um die Integrität der heruntergeladenen MSI-Datei zu überprüfen.
 
     Beispiel: ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```  C:\>CertUtil -HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5

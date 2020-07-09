@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a01ab91fe84aaa1fe55018754eddbf8b8f89643
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722134"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890855"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Überwachen der Event Grid-Nachrichtenübermittlung 
 
@@ -27,18 +27,21 @@ Informationen zu Ereignisübermittlungen und Wiederholungen finden Sie unter [Ev
 
 Das Portal zeigt Metriken für den Status der Übermittlung von Ereignisnachrichten an.
 
-Für Themen gibt es diese Metriken:
+In den folgenden Themen finden Sie einige der Metriken:
 
-* **Veröffentlichen erfolgreich**: Das Ereignis wurde erfolgreich an das Thema gesendet und mit einer Antwort des Typs 2xx verarbeitet.
+* **Veröffentlichung erfolgreich**: Das Ereignis wurde erfolgreich an das Thema gesendet und mit einer Antwort des Typs 2xx verarbeitet.
 * **Fehler beim Veröffentlichen**: Das Ereignis wurde an das Thema gesendet, aber mit einem Fehlercode abgelehnt.
-* **Nicht übereinstimmende**: Das Ereignis wurde erfolgreich im Thema veröffentlicht, stimmt aber mit keinem Ereignisabonnement überein. Das Ereignis wurde gelöscht.
+* **Ohne Übereinstimmung**: Das Ereignis wurde erfolgreich im Thema veröffentlicht, stimmt aber mit keinem Ereignisabonnement überein. Das Ereignis wurde gelöscht.
 
-Für Abonnements gibt es diese Metriken:
+Für Abonnements sind hier einige Metriken aufgeführt:
 
-* **Übermittlung erfolgreich**: Das Ereignis wurde erfolgreich an den Endpunkt des Abonnements übermittelt und erhielt eine Antwort des Typs 2xx.
-* **Übermittlungsfehler**: Das Ereignis wurde erfolgreich an den Endpunkt des Abonnements übermittelt, erhielt aber eine Antwort des Typs 4xx oder 5xx.
+* **Übermittlung erfolgreich**: Das Ereignis wurde erfolgreich an den Endpunkt des Abonnements übermittelt und hat eine Antwort des Typs 2xx erhalten.
+* **Übermittlungsfehler**: Jedes Mal, wenn der Dienst eine Übermittlung versucht und der Ereignishandler keinen 2xx-Erfolgscode zurückgibt, wird der Zähler **Übermittlungsfehler** erhöht. Wenn Sie versuchen, dasselbe Ereignis mehrmals zu übermitteln, und dies fehlschlägt, wird der Zähler **Übermittlungsfehler** für jeden Fehler erhöht.
 * **Abgelaufene Ereignisse**: Das Ereignis wurde nicht übermittelt, und alle Wiederholungsversuche wurden gesendet. Das Ereignis wurde gelöscht.
 * **Übereinstimmende Ereignisse**: Das Ereignis im Thema stimmt mit dem Ereignisabonnement überein.
+
+    > [!NOTE]
+    > Die vollständige Liste der Metriken finden Sie unter [Von Azure Event Grid unterstützte Metriken](metrics.md).
 
 ## <a name="event-subscription-status"></a>Status des Ereignisabonnements
 

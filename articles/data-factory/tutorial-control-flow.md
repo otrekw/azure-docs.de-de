@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 77fa8f72d4d4d929d15859fde71f112de1ddd14e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418727"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513319"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 
@@ -48,13 +48,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 * Azure Storage-Konto. Sie verwenden Blob Storage als Quelldatenspeicher. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md).
 * Azure Storage-Explorer. Informationen zum Installieren des Tools finden Sie unter [Azure Storage-Explorer](https://storageexplorer.com/).
-* Azure SQL-Datenbank. Sie verwenden die Datenbank als Senkendatenspeicher. Wenn Sie keine Azure SQL-Datenbank besitzen, finden Sie unter [Erstellen einer Azure SQL-Datenbank](../sql-database/sql-database-get-started-portal.md) weitere Informationen.
+* Azure SQL-Datenbank. Sie verwenden die Datenbank als Senkendatenspeicher. Wenn Sie in Azure SQL-Datenbank keine Datenbank haben, lesen Sie [Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md).
 * Visual Studio. In diesem Artikel wird Visual Studio 2019 verwendet.
 * Azure .NET SDK. Laden Sie das [Azure .NET SDK](https://azure.microsoft.com/downloads/) herunter, und installieren Sie es.
 
 Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die Datenspeicher und Computeressourcen befinden sich unter Umständen in anderen Regionen. Die Speicher umfassen Azure Storage und Azure SQL-Datenbank. Die Computeressourcen umfassen HDInsight (von Data Factory verwendet).
 
-Erstellen Sie eine Anwendung, wie unter [Erstellen einer Azure Active Directory-Anwendung](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) beschrieben. Weisen Sie die Anwendung der Rolle **Mitwirkender** zu, indem Sie die Anweisungen im gleichen Artikel befolgen. Später in diesem Tutorial benötigen Sie verschiedene Werte, wie z. B. **Anwendungs-ID (Client)** und **Verzeichnis-ID (Mandant)** .
+Erstellen Sie eine Anwendung, wie unter [Erstellen einer Azure Active Directory-Anwendung](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) beschrieben. Weisen Sie die Anwendung der Rolle **Mitwirkender** zu, indem Sie die Anweisungen im gleichen Artikel befolgen. Später in diesem Tutorial benötigen Sie verschiedene Werte, wie z. B. **Anwendungs-ID (Client)** und **Verzeichnis-ID (Mandant)** .
 
 ### <a name="create-a-blob-table"></a>Erstellen einer Blobtabelle
 

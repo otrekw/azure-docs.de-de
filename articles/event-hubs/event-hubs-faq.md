@@ -1,21 +1,14 @@
 ---
 title: Häufig gestellte Fragen (FAQ) – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zu Azure Event Hubs sowie die zugehörigen Antworten.
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/02/2019
-ms.author: shvija
-ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.date: 06/23/2020
+ms.openlocfilehash: 0094be0eef4595662477ef1c7914ae9f118b8e25
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086367"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320582"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -97,11 +90,29 @@ Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige z
 2. Notieren Sie sich den Namen im Abschnitt **non-authoritative answer** (nicht autorisierende Antwort), der in einem der folgenden Formate vorliegt: 
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
     ```
 3. Führen Sie den Befehl „nslookup“ für jeden Namen mit den Suffixen s1, s2 und s3 aus, um die IP-Adressen aller drei Instanzen zu erhalten, die in drei Verfügbarkeitszonen ausgeführt werden. 
+
+### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>Wo finde ich Client-IP-Adressen, die Nachrichten (msgs) an meinen Namespace sendet oder von diesem empfängt?
+Aktivieren Sie zunächst die [IP-Filterung](event-hubs-ip-filtering.md) für den Namespace. 
+
+Aktivieren Sie dann Diagnoseprotokolle für [Event Hubs-Verbindungsereignisse für virtuelle Netzwerke](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema), indem Sie den Anweisungen unter [Aktivieren von Diagnoseprotokollen](event-hubs-diagnostic-logs.md#enable-diagnostic-logs) folgen. Es wird die IP-Adresse angezeigt, für die die Verbindung verweigert wird.
+
+```json
+{
+    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
+    "NamespaceName": "namespace-name",
+    "IPAddress": "1.2.3.4",
+    "Action": "Deny Connection",
+    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
+    "Count": "65",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
+    "Category": "EventHubVNetConnectionEvent"
+}
+```
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka-Integration
 
@@ -150,9 +161,11 @@ Sie können mit einer niedrigen Anzahl von Durchsatzeinheiten (TUs) beginnen, z.
 Mit diesem Feature sind **keine Kosten** verbunden. 
 
 ### <a name="how-are-throughput-limits-enforced"></a>Wie werden Durchsatzlimits durchgesetzt?
-Wenn der gesamte eingehende Durchsatz oder die gesamte eingehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Absender gedrosselt und erhalten die Fehlermeldung, dass das Eingangskontingent überschritten wurde.
+Wenn der gesamte **eingehende** Durchsatz oder die gesamte eingehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Absender gedrosselt und erhalten die Fehlermeldung, dass das Eingangskontingent überschritten wurde.
 
-Wenn der gesamte ausgehende Durchsatz oder die gesamte ausgehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Empfänger gedrosselt und erhalten die Fehlermeldung, dass das Ausgangskontingent überschritten wurde. Eingangs-und Ausgangskontingente werden separat durchgesetzt, sodass kein Absender die Verlangsamung der Nutzung herbeiführen kann und kein Empfänger verhindern kann, dass Ereignisse an einen Event Hub gesendet werden.
+Wenn der gesamte **ausgehende** Durchsatz oder die gesamte ausgehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Empfänger gedrosselt. Es werden jedoch keine Fehlermeldungen generiert. 
+
+Eingangs-und Ausgangskontingente werden separat durchgesetzt, sodass kein Absender die Verlangsamung der Nutzung herbeiführen kann und kein Empfänger verhindern kann, dass Ereignisse an einen Event Hub gesendet werden.
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Gibt es eine Beschränkung für die Anzahl der Durchsatzeinheiten (TUs), die reserviert und ausgewählt werden können?
 Bei einem mehrinstanzenfähigen Angebot können die Durchsatzeinheiten auf maximal 40 TUs erhöht werden. (Sie können bis zu 20 TUs im Portal auswählen und ein Supportticket erstellen, um diese Anzahl für den Namespace auf 40 TUs zu erhöhen.) Für eine Anzahl über 40 TUs umfasst Event Hubs das ressourcen- und kapazitätsbasierte Modell der **Event Hubs Dedicated-Cluster**. Dedicated-Cluster werden in Kapazitätseinheiten (Capacity Units, CUs) angeboten.
@@ -248,7 +261,7 @@ Event Hubs unterstützt zwei Arten von [Diagnoseprotokollen](event-hubs-diagnost
 
 ### <a name="support-and-sla"></a>Support und SLA
 
-Technischer Support für Event Hubs steht über die [Communityforen](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus)bereit. Der Support für die Abrechnungs- und Abonnementverwaltung wird kostenlos bereitgestellt.
+Technischer Support für Event Hubs steht über die Seite mit [häufig gestellten Fragen zu Azure Service Bus](https://docs.microsoft.com/answers/topics/azure-service-bus.html) von Microsoft zur Verfügung. Der Support für die Abrechnungs- und Abonnementverwaltung wird kostenlos bereitgestellt.
 
 Weitere Informationen zu unserem SLA finden Sie auf der Seite [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) .
 

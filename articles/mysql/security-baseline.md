@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1b9a1771ad498fa3fb9b8294adb8a6556a00863a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02050745e7c8a9aa05d3f2de63a4bc5f1ebf8318
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190417"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83654773"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure-Sicherheitsbaseline für Azure Database for MySQL
 
@@ -902,7 +902,7 @@ Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität: 
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Sicheres und automatisches Verwalten von Identitäten
 
-**Leitfaden**: Azure Database for MySQL-Instanzen unterstützen zurzeit keine Azure Active Directory-Authentifizierung (in der Vorschau) für den Zugriff auf Datenbanken.  Beim Erstellen der Azure Database for MySQL-Instanz geben Sie Anmeldeinformationen für einen Administratorbenutzer ein. Dieser Administrator dient zum Erstellen zusätzlicher Datenbankbenutzer.  
+**Leitfaden**: Azure Database for MySQL-Instanzen unterstützen zurzeit keine Azure Active Directory-Authentifizierung für den Zugriff auf Datenbanken.  Beim Erstellen der Azure Database for MySQL-Instanz geben Sie Anmeldeinformationen für einen Administratorbenutzer ein. Dieser Administrator dient zum Erstellen zusätzlicher Datenbankbenutzer.  
 
 Verwenden Sie für virtuelle Azure-Computer oder Webanwendungen, die in Azure App Service für den Zugriff auf Ihre Azure Database for MySQL-Instanzen ausgeführt werden, verwaltete Dienstidentitäten in Verbindung mit Azure Key Vault, um Anmeldeinformationen für Azure Database for MySQL-Instanzen zu speichern und abzurufen. Stellen Sie sicher, dass das vorläufige Löschen für Azure Key Vault aktiviert ist.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672645"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771195"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Was ist ein primäres Aktualisierungstoken (Primary Refresh Token, PRT)?
 
@@ -76,7 +76,7 @@ Nach der Ausstellung ist ein PRT 14 Tage lang gültig und wird fortlaufend verl
 Ein PRT wird in Windows von zwei wichtigen Komponenten verwendet:
 
 * **Azure AD-CloudAP-Plug-In**: Während der Windows-Anmeldung fordert das Azure AD-CloudAP-Plug-In ein PRT von Azure AD an, indem die vom Benutzer bereitgestellten Anmeldeinformationen verwendet werden. Darüber hinaus wird das PRT hierbei zwischengespeichert, um die Nutzung der zwischengespeicherten Anmeldung zu ermöglichen, wenn der Benutzer keinen Zugriff auf eine Internetverbindung hat.
-* **Azure AD-WAM-Plug-In**: Wenn Benutzer versuchen, auf Anwendungen zuzugreifen, wird das PRT vom Azure AD-WAM-Plug-In genutzt, um SSO unter Windows 10 zu ermöglichen. Das Azure AD-WAM-Plug-In nutzt das PRT, um Aktualisierungs- und Zugriffstoken für Anwendungen anzufordern, für die WAM für Tokenanforderungen verwendet wird. Außerdem wird hiermit SSO in Browsern ermöglicht, indem das PRT in Browseranforderungen eingefügt wird. SSO für Browser unter Windows 10 wird für Microsoft Edge (nativ) und Chrome (über die Windows 10-Konten oder die Office Online-Erweiterung) unterstützt.
+* **Azure AD-WAM-Plug-In**: Wenn Benutzer versuchen, auf Anwendungen zuzugreifen, wird das PRT vom Azure AD-WAM-Plug-In genutzt, um SSO unter Windows 10 zu ermöglichen. Das Azure AD-WAM-Plug-In nutzt das PRT, um Aktualisierungs- und Zugriffstoken für Anwendungen anzufordern, für die WAM für Tokenanforderungen verwendet wird. Außerdem wird hiermit SSO in Browsern ermöglicht, indem das PRT in Browseranforderungen eingefügt wird. SSO für Browser unter Windows 10 wird für Microsoft Edge (nativ) und Chrome (über die [Windows 10-Konten](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en) oder die [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en)-Erweiterungen) unterstützt.
 
 ## <a name="how-is-a-prt-renewed"></a>Wie wird ein PRT verlängert?
 

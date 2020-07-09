@@ -3,15 +3,15 @@ title: Integrieren von Azure Functions in ein virtuelles Azure-Netzwerk
 description: Ein Tutorial in einzelnen Schritten, in dem erläutert wird, wie Sie eine Funktion mit einem virtuellen Azure-Netzwerk verbinden.
 author: alexkarcher-msft
 ms.topic: article
-ms.date: 5/03/2019
+ms.date: 4/23/2020
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 0c70c69f547405eb8ebdcf6dcc6ae597db151e53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1babfa188a29e79cb52cd14af19d552123345f1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75433211"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122660"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Tutorial: Integrieren von Functions in ein virtuelles Azure-Netzwerk
 
@@ -100,17 +100,15 @@ Damit haben Sie eine WordPress-Website eingerichtet, die ausschließlich in Ihre
 
 Über eine WordPress-Website, die auf einer VM in einem virtuellen Netzwerk ausgeführt wird, können Sie nun Ihre Funktions-App mit diesem virtuellen Netzwerk verbinden.
 
-1. Klicken Sie in Ihrer neuen Funktions-App auf **Plattformfeatures** > **Netzwerk**.
-
-    ![Auswählen von „Netzwerk“ in der Funktions-App](./media/functions-create-vnet/networking-0.png)
+1. Wählen Sie in der neuen Funktions-App im linken Menü **Netzwerk** aus.
 
 1. Wählen Sie unter **VNET-Integration** die Option **Zum Konfigurieren hier klicken** aus.
 
-    ![Status für das Konfigurieren einer Netzwerkfunktion](./media/functions-create-vnet/Networking-1.png)
+    :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="Auswählen von „Netzwerk“ in der Funktions-App":::
 
-1. Wählen Sie auf der Seite zur Integration des virtuellen Netzwerks die Option **VNET hinzufügen (Vorschau)** aus.
+1. Wählen Sie auf der Seite **VNET-Integration** die Option **VNET hinzufügen** aus.
 
-    ![Hinzufügen der VNET-Integration (Vorschau)](./media/functions-create-vnet/networking-2.png)
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="Hinzufügen der VNET-Integration (Vorschau)":::
 
 1. Verwenden Sie unter **Netzwerkfeaturestatus** die Einstellungen in der Tabelle unterhalb der Abbildung:
 
@@ -124,7 +122,7 @@ Damit haben Sie eine WordPress-Website eingerichtet, die ausschließlich in Ihre
     | **Adressblock des virtuellen Netzwerks** | 10.10.0.0/16 | Wählen Sie denselben Adressblock aus, der von der WordPress-Website verwendet wird. Es sollte nur ein Adressblock definiert sein. |
     | **Adressbereich** | 10.10.2.0/24   | Die Subnetzgröße begrenzt die Gesamtanzahl von Instanzen, auf die Ihre Funktions-App im Premium-Plan aufskaliert werden kann. Dieses Beispiel verwendet ein `/24`-Subnetz mit 254 verfügbaren Hostadressen. Dieses Subnetz ist überdimensioniert, aber einfach zu berechnen. |
 
-1. Klicken Sie auf **OK**, um das Subnetz hinzuzufügen. Schließen Sie die Seiten „VNET-Integration“ und „Netzwerkfeaturestatus“, um zur Seite Ihrer Funktions-App zurückzukehren.
+1. Klicken Sie auf **OK**, um das Subnetz hinzuzufügen. Schließen Sie die Seiten **VNET-Integration** und **Netzwerkfeaturestatus**, um zur Seite Ihrer Funktions-App zurückzukehren.
 
 Die Funktions-App hat nun Zugriff auf das virtuelle Netzwerk, in dem die WordPress-Website ausgeführt wird. Als Nächstes verwenden Sie [Azure-Funktionsproxys](functions-proxies.md), um eine Datei von der WordPress-Website zurückzugeben.
 
@@ -132,9 +130,9 @@ Die Funktions-App hat nun Zugriff auf das virtuelle Netzwerk, in dem die WordPre
 
 Wenn die VNET-Integration aktiviert ist, können Sie einen Proxy in Ihrer Funktions-App erstellen, um Anforderungen an die VM weiterzuleiten, die im virtuellen Netzwerk ausgeführt wird.
 
-1. Wählen Sie in Ihrer Funktions-App die Option **Proxys** >  **+** aus, und verwenden Sie dann die Proxyeinstellungen in der Tabelle unterhalb der Abbildung:
+1. Wählen Sie in Ihrer Funktions-App im Menü auf der linken Seite **Proxys** aus, und wählen Sie dann **Hinzufügen** aus. Verwenden Sie die Proxyeinstellungen aus der Tabelle unterhalb der Abbildung:
 
-    ![Definieren der Proxyeinstellungen](./media/functions-create-vnet/create-proxy.png)
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Definieren der Proxyeinstellungen":::
 
     | Einstellung  | Vorgeschlagener Wert  | Beschreibung      |
     | -------- | ---------------- | ---------------- |

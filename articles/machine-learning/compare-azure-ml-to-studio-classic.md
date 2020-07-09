@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning und Machine Learning Studio (Classic)
+title: Azure Machine Learning und Machine Learning Studio (klassisch)
 description: Was ist der Unterschied zwischen Azure Machine Learning und Machine Learning Studio (Classic)?
 services: machine-learning
 ms.service: machine-learning
@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 03/25/2020
-ms.openlocfilehash: 5577a9847ff405397c553028a6dfdf2df80d03fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 065fd166fb2ce82a3338322d55ef1ee5886ac56b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371838"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210370"
 ---
 # <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Vergleich von Azure Machine Learning und Machine Learning Studio (Classic)
 
@@ -27,15 +27,15 @@ Unsere Empfehlung für neue Benutzer ist die Wahl von Azure Machine Learning, um
 
 In der folgenden Tabelle sind einige wichtige Unterschiede zwischen Azure Machine Learning und Studio (Classic) zusammengefasst:
 
-| | Machine Learning Studio (Classic) | Azure Machine Learning |
+| | Machine Learning Studio (klassisch) | Azure Machine Learning |
 |---| --- | --- |
-| Drag & Drop-Oberfläche | Unterstützt | Unterstützt: [Azure Machine Learning-Designer (Vorschau)](concept-designer.md) | 
+| Drag & Drop-Oberfläche | Unterstützt | Unterstützt: [Azure Machine Learning-Designer (Vorschau)](concept-designer.md) <br/>(Setzt einen Unternehmensarbeitsbereich voraus) | 
 | Experiment | Skalierbar (Limit für Trainingsdaten: 10 GB) | Skalieren mit Computeziel |
 | Trainieren von Computezielen | Proprietäres Computeziel, nur CPU-Unterstützung | Viele anpassbare [Computeziele für das Training](concept-compute-target.md#train). GPU- und CPU-Unterstützung | 
 | Computeziele für die Bereitstellung | Proprietäres Webdienstformat, nicht anpassbar | Viele anpassbare [Computeziele für die Bereitstellung](concept-compute-target.md#deploy). GPU- und CPU-Unterstützung |
 | ML-Pipeline | Nicht unterstützt | Erstellung von flexiblen modularen [Pipelines](concept-ml-pipelines.md) zum Automatisieren von Workflows |
 | MLOps | Einfache Modellverwaltung und -bereitstellung | Entitätsversionierung (Modell, Daten, Workflows), Workflowautomatisierung, Integration in CICD-Tools [und mehr](concept-model-management-and-deployment.md) |
-| Modellformat | Proprietäres Format, nur Studio (Classic) | Mehrere unterstützte Formate, je nach Typ des Trainingsauftrags |
+| Modellformat | Proprietäres Format, nur Studio (klassisch) | Mehrere unterstützte Formate, je nach Typ des Trainingsauftrags |
 | Automatisiertes Modelltraining und Optimieren von Hyperparametern |  Nicht unterstützt | [Unterstützung im SDK und visuellen Arbeitsbereich](concept-automated-ml.md) | 
 | Datendrifterkennung | Nicht unterstützt | [Unterstützung im SDK und visuellen Arbeitsbereich](how-to-monitor-datasets.md) |
 

@@ -4,15 +4,15 @@ description: Dieser Artikel enthält Informationen darüber, wie Sie einen WebSo
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68d4ff7e4617136e4c58ce672f34de56e46f0229
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207786"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>Verfügbarmachen eines WebSocket-Servers für Application Gateway
 
@@ -78,7 +78,7 @@ spec:
 Wenn alle Voraussetzungen erfüllt sind und Sie über ein Application Gateway verfügen, das von einer Kubernetes-Erfassungsressource in Ihrem AKS gesteuert wird, würde die oben angeführte Bereitstellung zu einem an Port 80 der öffentlichen IP-Adresse Ihres Application Gateways und der `ws.contoso.com`-Domäne verfügbaren WebSockets-Server führen.
 
 Der folgende cURL-Befehl testet die WebSocket-Serverbereitstellung:
-```sh
+```shell
 curl -i -N -H "Connection: Upgrade" \
         -H "Upgrade: websocket" \
         -H "Origin: http://localhost" \

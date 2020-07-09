@@ -2,17 +2,20 @@
 title: Überschreitung des Bereitstellungskontingents
 description: Beschreibt die Behebung des Fehlers, dass im Verlauf der Ressourcengruppe mehr als 800 Bereitstellungen vorkommen.
 ms.topic: troubleshooting
-ms.date: 10/04/2019
-ms.openlocfilehash: 919cd9a3482401cd47516e2677b0bf58387488b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/26/2020
+ms.openlocfilehash: 0fec8fa91ec79822115d83b15e8c8a839dc7fd69
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80245088"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117808"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Beheben des Fehlers, dass die Anzahl der Bereitstellungen 800 überschreitet
 
 Jede Ressourcengruppe ist in ihrem Bereitstellungsverlauf auf 800 Bereitstellungen beschränkt. Dieser Artikel beschreibt den Fehler, den Sie erhalten, wenn bei einer Bereitstellung ein Fehler auftritt, da dadurch die zulässigen 800 Bereitstellungen überschritten würden. Um diesen Fehler zu beheben, löschen Sie Bereitstellungen aus dem Verlauf der Ressourcengruppe. Das Löschen einer Bereitstellung aus dem Verlauf hat keinerlei Auswirkungen auf die bereitgestellten Ressourcen.
+
+> [!NOTE]
+> Ab Juni 2020 löscht Azure Resource Manager Bereitstellungen automatisch aus dem Verlauf, wenn der Grenzwert fast erreicht ist. Dieser Fehler wird möglicherweise weiterhin angezeigt, wenn Sie automatische Löschungen deaktiviert haben. Weitere Informationen finden Sie unter [Automatische Löschungen aus dem Bereitstellungsverlauf](deployment-history-deletions.md).
 
 ## <a name="symptom"></a>Symptom
 
@@ -20,7 +23,7 @@ Während einer Bereitstellung erhalten Sie einen Fehler, dass die aktuelle Berei
 
 ## <a name="solution"></a>Lösung
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Verwenden Sie den Befehl [az deployment group delete](/cli/azure/group/deployment), um Bereitstellungen aus dem Verlauf zu löschen.
 

@@ -5,27 +5,24 @@ description: Hier erfahren Sie, wie Sie Datasets beim Training einsetzen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 03/09/2020
-ms.openlocfilehash: 401383f2d483836bf725051810d78167869f7b22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.custom: tracking-python
+ms.openlocfilehash: a9b9faed111e6126bfdb30e4237a988afd947823
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237014"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560134"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Trainieren mit Datasets in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel lernen Sie die beiden Möglichkeiten kennen, wie Sie [Azure Machine Learning-Datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) in Trainingsausführungen von Remoteexperimenten nutzen können, ohne sich Gedanken über Verbindungszeichenfolgen oder Datenpfade machen zu müssen.
-
-- Option 1: Wenn Sie über strukturierte Daten verfügen, erstellen Sie ein TabularDataset-Element, und verwenden Sie es direkt in Ihrem Trainingsskript.
-
-- Option 2: Wenn Sie über unstrukturierte Daten verfügen, erstellen Sie ein FileDataset-Element, und binden Sie Dateien für das Training auf einem Remotecomputer ein oder laden Sie diese herunter.
+In diesem Artikel erfahren Sie, wie Sie [Azure Machine Learning-Datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) in Ihren Trainingsexperimenten einsetzen.  Sie können Datasets in Ihrem Lokal- oder Remotecomputeziel verwenden, ohne sich Gedanken über Verbindungszeichenfolgen oder Datenpfade machen zu müssten.
 
 Azure Machine Learning-Datasets bieten eine nahtlose Integration in Azure Machine Learning-Trainingsprodukte wie [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py), [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) und [Azure Machine Learning-Pipelines](how-to-create-your-first-pipeline.md).
 
@@ -42,26 +39,14 @@ Sie benötigen Folgendes, um Datasets zu erstellen und für das Training zu nutz
 > [!Note]
 > Einige Datasetklassen sind vom Paket [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) abhängig. Für Linux-Benutzer werden diese Klassen nur unter den folgenden Distributionen unterstützt:  Red Hat Enterprise Linux, Ubuntu, Fedora und CentOS.
 
-## <a name="option-1-use-datasets-directly-in-training-scripts"></a>Option 1: Direktes Verwenden von Datasets in Trainingsskripts
+## <a name="access-and-explore-input-datasets"></a>Zugreifen auf und Untersuchen von Eingabedatasets
 
-In diesem Beispiel erstellen Sie ein [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)-Element und verwenden es zum Training als direkte Eingabe für das `estimator`-Objekt. 
+Sie können auf eine vorhandene TabularDataset-Klasse aus dem Trainingsskript eines Experiments in Ihrem Arbeitsbereich zugreifen und dieses Dataset in einen Pandas-Datenrahmen laden, um die lokale Umgebung genauer zu untersuchen.
 
-### <a name="create-a-tabulardataset"></a>Erstellen eines TabularDataset-Elements
+Im folgenden Code wird die [`get_context()`]()-Methode in der [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py)-Klasse verwendet, um auf die vorhandene TabularDataset-Klasse (`titanic`) im Trainingsskript zuzugreifen. Anschließend wird die [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--)-Methode verwendet, um das Dataset in einen Pandas-Datenrahmen zu laden, um das Durchsuchen und die Vorbereitung der Daten vor dem Training zu vertiefen.
 
-Der folgende Code erstellt ein nicht registriertes TabularDataset-Element aus einer Web-URL. Sie können Datasets auch aus lokalen Dateien oder Pfaden in Datenspeichern erstellen. Erfahren Sie mehr über das [Erstellen von Datasets](https://aka.ms/azureml/howto/createdatasets).
-
-```Python
-from azureml.core.dataset import Dataset
-
-web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
-titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
-```
-
-### <a name="access-the-input-dataset-in-your-training-script"></a>Zugreifen auf das Eingabedataset im Trainingsskript
-
-TabularDataset-Objekte bieten die Möglichkeit, die Daten in einen Pandas- oder Spark-Datenrahmen zu laden, damit Sie mit vertrauten Datenaufbereitungs- und Trainingsbibliotheken arbeiten können. Übergeben Sie ein TabularDataset-Element als Eingabe in Ihrer Trainingskonfiguration, und rufen Sie es anschließend in Ihrem Skript ab, um diese Funktion nutzen zu können.
-
-Greifen Sie dazu über das [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py)-Objekt in Ihrem Trainingsskript auf das Eingabedataset zu, und verwenden Sie die Methode [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--). 
+> [!Note]
+> Wenn die ursprüngliche Datenquelle den Wert NaN, leere Zeichenfolgen oder leere Werte enthält, wenn Sie to_pandas_dataframe(), müssen diese durch *NULL-Werte* ersetzt werden. 
 
 ```Python
 %%writefile $script_folder/train_titanic.py
@@ -71,9 +56,31 @@ from azureml.core import Dataset, Run
 run = Run.get_context()
 # get the input dataset by name
 dataset = run.input_datasets['titanic']
+
 # load the TabularDataset to pandas DataFrame
 df = dataset.to_pandas_dataframe()
 ```
+
+Wenn Sie die vorbereiteten Daten aus einem In-Memory-Pandas-Datenrahmen in ein neues Dataset laden müssen, schreiben Sie die Daten in eine lokale Datei, z. B. eine Parquet-Datei, und erstellen das neue Dataset aus dieser Datei. Sie können Datasets auch aus lokalen Dateien oder Pfaden in Datenspeichern erstellen. Erfahren Sie mehr über das [Erstellen von Datasets](how-to-create-register-datasets.md).
+
+## <a name="use-datasets-directly-in-training-scripts"></a>Direktes Verwenden von Datasets in Trainingsskripts
+
+Wenn Sie strukturierte Daten besitzen, die noch nicht als Dataset registriert wurden, können Sie eine TabularDataset-Klasse erstellen und diese direkt im Trainingsskript für das Lokal- oder Remoteexperiment verwenden.
+
+In diesem Beispiel erstellen Sie eine nicht registrierte [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)-Klasse und verwenden diese als direkte Trainingseingabe für das `estimator`-Objekt. Wenn Sie diese TabularDataset-Klasse für andere Experimente in Ihrem Arbeitsbereich wiederverwenden möchten, finden Sie weitere Informationen unter [Registrieren von Datasets](how-to-create-register-datasets.md#register-datasets).
+
+### <a name="create-a-tabulardataset"></a>Erstellen eines TabularDataset-Elements
+
+Der folgende Code erstellt ein nicht registriertes TabularDataset-Element aus einer Web-URL.  
+
+```Python
+from azureml.core.dataset import Dataset
+
+web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
+titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
+```
+
+TabularDataset-Objekte bieten die Möglichkeit, die TabularDataset-Daten in einen Pandas- oder Spark-Datenrahmen zu laden, damit Sie mit vertrauten Datenaufbereitungs- und Trainingsbibliotheken arbeiten können, ohne das Notebook zu verlassen. Informationen zur Nutzung dieser Funktion finden Sie unter [Zugreifen auf und Untersuchen von Eingabedatasets](#access-and-explore-input-datasets).
 
 ### <a name="configure-the-estimator"></a>Konfigurieren des Estimators
 
@@ -83,7 +90,7 @@ Dieser Code erstellt ein generisches Estimator-Objekt (`est`) das Folgendes fest
 
 * Ein Skriptverzeichnis für Ihre Skripts. Alle Dateien in dieses Verzeichnis werden zur Ausführung in die Clusterknoten hochgeladen.
 * Das Trainingsskript *train_titanic.py*
-* Das Eingabedataset für das Training: `titanic` `as_named_input()` ist erforderlich, damit der zugewiesene Name in Ihrem Trainingsskript auf das Eingabedataset verweisen kann. 
+* Das Eingabedataset für das Training: `titanic_ds` `as_named_input()` ist erforderlich, damit der zugewiesene Name `titanic` in Ihrem Trainingsskript auf das Eingabedataset verweisen kann. 
 * Das Computeziel für das Experiment
 * Die Umgebungsdefinition für das Experiment
 
@@ -100,34 +107,11 @@ experiment_run = experiment.submit(est)
 experiment_run.wait_for_completion(show_output=True)
 ```
 
+## <a name="mount-files-to-remote-compute-targets"></a>Einbinden von Dateien in Remotecomputezielen
 
-## <a name="option-2--mount-files-to-a-remote-compute-target"></a>Option 2:  Einbinden von Dateien in einem Remotecomputeziel
+Wenn Sie unstrukturierte Daten besitzen, sollten Sie eine [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py)-Klasse erstellen und Ihre Datendateien einbinden oder herunterladen, damit diese vom Remotecomputeziel für das Training genutzt werden können. Lesen Sie nach, wann Sie Daten [einbinden oder herunterladen](#mount-vs-download) sollten, wenn Sie Remotetrainingsexperimente durchführen. 
 
-Wenn Sie Ihre Datendateien auf dem Computeziel für das Training verfügbar machen möchten, nutzen Sie [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py), um Dateien einzubinden oder herunterzuladen, auf die damit verwiesen wird.
-
-### <a name="mount-vs-download"></a>Einbinden im Vergleich zum Download
-
-Das Einbinden oder Herunterladen von Dateien beliebiger Formate aus Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL-Datenbank und Azure Database for PostgreSQL wird für Datasets beliebiger Formate unterstützt. 
-
-Wenn Sie ein Dataset einbinden, fügen Sie die Datei, auf die das Dataset verweist, an ein Verzeichnis (Bereitstellungspunkt) an und stellen sie auf dem Computeziel zur Verfügung. Einbinden wird für Linux-basierte Computeressourcen unterstützt, einschließlich Azure Machine Learning Compute, virtuelle Computer und HDInsight. Beim Herunterladen eines Datasets werden alle Dateien, auf die das Dataset verweist, auf das Computeziel heruntergeladen. Herunterladen wird für alle Computetypen unterstützt. 
-
-Wenn Ihr Skript alle Dateien verarbeitet, auf die das Dataset verweist, und Ihr Computedatenträger über Platz für das vollständige Dataset verfügt, wird Herunterladen empfohlen, um den Mehraufwand das Streamen von Daten von Speicherdiensten zu vermeiden. Wenn der Umfang Ihrer Daten die Größe des Computedatenträgers übersteigt, ist das Herunterladen nicht möglich. Für dieses Szenario empfehlen wir das Einbinden, da nur die von Ihrem Skript verwendeten Datendateien zum Zeitpunkt der Verarbeitung geladen werden.
-
-Der folgende Code bindet `dataset` in das temporäre Verzeichnis unter `mounted_path` ein.
-
-```python
-import tempfile
-mounted_path = tempfile.mkdtemp()
-
-# mount dataset onto the mounted_path of a Linux-based compute
-mount_context = dataset.mount(mounted_path)
-
-mount_context.start()
-
-import os
-print(os.listdir(mounted_path))
-print (mounted_path)
-```
+Im folgenden Beispiel wird eine FileDataset-Klasse erstellt, und das Dataset wird in das Computeziel eingebunden, indem es als Argument in der Schätzung für das Training übergeben wird. 
 
 ### <a name="create-a-filedataset"></a>Erstellen eines FileDataset-Elements
 
@@ -147,9 +131,9 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>Konfigurieren des Estimators
 
-Neben dem Übergeben des Datasets über den `inputs`-Parameter im Estimator können Sie das Dataset auch über `script_params` übergeben und den Datenpfad (Bereitstellungspunkt) im Trainingsskript über Argumente abrufen. Auf diese Weise können Sie das Trainingsskript unabhängig von azureml-sdk halten. Anders ausgedrückt: Sie können dasselbe Trainingsskript für lokales Debugging und Remotetraining auf jeder Cloudplattform verwenden.
+Es wird empfohlen, das Dataset bei der Einbindung als Argument zu übergeben. Neben dem Übergeben des Datasets über den `inputs`-Parameter im Estimator können Sie das Dataset auch über `script_params` übergeben und den Datenpfad (Bereitstellungspunkt) im Trainingsskript über Argumente abrufen. So können Sie dasselbe Trainingsskript für lokales Debugging und Remotetraining auf jeder Cloudplattform verwenden.
 
-Ein [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)-Estimatorobjekt wird verwendet, um die Scikit-learn-Experimente zu übermitteln. Weitere Informationen zum Training mit der [SKlearn-Schätzung](how-to-train-scikit-learn.md).
+Ein [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)-Estimatorobjekt wird verwendet, um die Scikit-learn-Experimente zu übermitteln. Nach dem Übermitteln der Ausführung werden Datendateien, auf die das `mnist`-Dataset verweist, auf dem Computeziel eingebunden. Weitere Informationen zum Training mit der [SKlearn-Schätzung](how-to-train-scikit-learn.md).
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -173,7 +157,7 @@ run.wait_for_completion(show_output=True)
 
 ### <a name="retrieve-the-data-in-your-training-script"></a>Abrufen der Daten im Trainingsskript
 
-Nach dem Übermitteln der Ausführung werden Datendateien, auf die das `mnist`-Dataset verweist, auf dem Computeziel eingebunden. Der folgende Code zeigt, wie Sie die Daten in Ihrem Skript abrufen können.
+Der folgende Code zeigt, wie Sie die Daten in Ihrem Skript abrufen können.
 
 ```Python
 %%writefile $script_folder/train_mnist.py
@@ -207,6 +191,33 @@ y_train = load_data(y_train_path, True).reshape(-1)
 y_test = load_data(y_test, True).reshape(-1)
 ```
 
+
+## <a name="mount-vs-download"></a>Vergleich: Einbinden oder Herunterladen
+
+Das Einbinden oder Herunterladen von Dateien beliebiger Formate aus Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL-Datenbank und Azure Database for PostgreSQL wird für Datasets beliebiger Formate unterstützt. 
+
+Wenn Sie ein Dataset einbinden, fügen Sie die Datei, auf die das Dataset verweist, an ein Verzeichnis (Bereitstellungspunkt) an und stellen sie auf dem Computeziel zur Verfügung. Einbinden wird für Linux-basierte Computeressourcen unterstützt, einschließlich Azure Machine Learning Compute, virtuelle Computer und HDInsight. 
+
+Beim Herunterladen eines Datasets werden alle Dateien, auf die das Dataset verweist, auf das Computeziel heruntergeladen. Herunterladen wird für alle Computetypen unterstützt. 
+
+Wenn Ihr Skript alle Dateien verarbeitet, auf die das Dataset verweist, und Ihr Computedatenträger über Platz für das vollständige Dataset verfügt, wird Herunterladen empfohlen, um den Mehraufwand das Streamen von Daten von Speicherdiensten zu vermeiden. Wenn der Umfang Ihrer Daten die Größe des Computedatenträgers übersteigt, ist das Herunterladen nicht möglich. Für dieses Szenario empfehlen wir das Einbinden, da nur die von Ihrem Skript verwendeten Datendateien zum Zeitpunkt der Verarbeitung geladen werden.
+
+Der folgende Code bindet `dataset` in das temporäre Verzeichnis unter `mounted_path` ein.
+
+```python
+import tempfile
+mounted_path = tempfile.mkdtemp()
+
+# mount dataset onto the mounted_path of a Linux-based compute
+mount_context = dataset.mount(mounted_path)
+
+mount_context.start()
+
+import os
+print(os.listdir(mounted_path))
+print (mounted_path)
+```
+
 ## <a name="notebook-examples"></a>Notebook-Beispiele
 
 Die [Dataset-Notebooks](https://aka.ms/dataset-tutorial) veranschaulichen und erläutern die in diesem Artikel enthaltenen Konzepte.
@@ -217,4 +228,4 @@ Die [Dataset-Notebooks](https://aka.ms/dataset-tutorial) veranschaulichen und er
 
 * [Trainieren von Bildklassifizierungsmodellen](https://aka.ms/filedataset-samplenotebook) mit FileDatasets
 
-* [Trainieren mit Datasets mithilfe von Pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)
+* [Training mit Datasets mithilfe von Pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)

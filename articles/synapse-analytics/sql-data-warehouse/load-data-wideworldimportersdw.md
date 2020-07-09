@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 16263a23c978e3486ff7c5d9281117f850cb885c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: bb05a817ae553872fa1a6c364da4c075ae454e1f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744364"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211175"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Tutorial: Laden von Daten in den SQL-Pool von Azure Synapse Analytics
 
@@ -46,7 +46,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Erstellen eines leeren Data Warehouse im SQL-Pool
 
-Ein SQL-Pool wird mit einem definierten Satz von [Computeressourcen](memory-concurrency-limits.md) erstellt. Der SQL-Pool wird innerhalb einer [Azure-Ressourcengruppe](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) und auf einem [logischen Azure SQL-Server](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) erstellt.
+Ein SQL-Pool wird mit einem definierten Satz von [Computeressourcen](memory-concurrency-limits.md) erstellt. Der SQL-Pool wird in einer [Azure-Ressourcengruppe](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) und auf einem [logischen SQL-Server](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) erstellt.
 
 Führen Sie die folgenden Schritte aus, um einen leeren SQL-Pool zu erstellen.
 
@@ -73,11 +73,11 @@ Führen Sie die folgenden Schritte aus, um einen leeren SQL-Pool zu erstellen.
     | **Kennwort** | Ein gültiges Kennwort | Ihr Kennwort muss mindestens acht Zeichen umfassen und Zeichen aus drei der folgenden Kategorien enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen. |
     | **Location** | Gültiger Standort | Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |
 
-    ![Erstellen eines Datenbankservers](./media/load-data-wideworldimportersdw/create-database-server.png)
+    ![Server erstellen](./media/load-data-wideworldimportersdw/create-database-server.png)
 
 1. **Auswählen der Leistungsebene**. Der Schieberegler ist standardmäßig auf **DW1000c** festgelegt. Bewegen Sie den Schieberegler nach oben oder unten, um die gewünschte Leistungsstufe auszuwählen.
 
-    ![Erstellen eines Datenbankservers](./media/load-data-wideworldimportersdw/create-data-warehouse.png)
+    ![Server erstellen 2](./media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
 1. Legen Sie auf der Seite **Zusätzliche Einstellungen** die Option **Vorhandene Daten verwenden** auf „Keine“ fest, und belassen Sie die **Sortierung** auf dem Standardwert *SQL_Latin1_General_CP1_CI_AS*.
 
@@ -87,10 +87,10 @@ Führen Sie die folgenden Schritte aus, um einen leeren SQL-Pool zu erstellen.
 
 ## <a name="create-a-server-level-firewall-rule"></a>Erstellen einer Firewallregel auf Serverebene
 
-Der Azure Synapse Analytics-Dienst erstellt eine Firewall auf Serverebene, um zu verhindern, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen. Zum Herstellen von Konnektivität können Sie Firewallregeln hinzufügen, mit denen Konnektivität für bestimmte IP-Adressen ermöglicht wird.  Führen Sie die folgenden Schritte aus, um eine [Firewallregel auf Serverebene](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) für die IP-Adresse Ihres Clients zu erstellen.
+Der Azure Synapse Analytics-Dienst erstellt eine Firewall auf Serverebene, um zu verhindern, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen. Zum Herstellen von Konnektivität können Sie Firewallregeln hinzufügen, mit denen Konnektivität für bestimmte IP-Adressen ermöglicht wird.  Führen Sie die folgenden Schritte aus, um eine [Firewallregel auf Serverebene](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) für die IP-Adresse Ihres Clients zu erstellen.
 
 > [!NOTE]
-> Der SQL-Pool von Azure Synapse Analytics kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
+> Der SQL-Pool von Azure Synapse Analytics kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
 >
 
 1. Nachdem die Bereitstellung abgeschlossen ist, suchen Sie im Suchfeld im Navigationsmenü nach Ihrem Poolnamen, und wählen Sie dann die SQL-Poolressource aus. Wählen Sie den Servernamen aus.
@@ -100,7 +100,7 @@ Der Azure Synapse Analytics-Dienst erstellt eine Firewall auf Serverebene, um zu
 1. Wählen Sie den Servernamen aus.
     ![Servername](././media/load-data-wideworldimportersdw/find-server-name.png)
 
-1. Wählen Sie die Option **Firewalleinstellungen anzeigen** aus. Die Seite **Firewalleinstellungen** für den SQL-Poolserver wird geöffnet.
+1. Wählen Sie die Option **Firewalleinstellungen anzeigen** aus. Die Seite **Firewalleinstellungen** für den Server wird geöffnet.
 
     ![Servereinstellungen](./media/load-data-wideworldimportersdw/server-settings.png)
 
@@ -108,9 +108,9 @@ Der Azure Synapse Analytics-Dienst erstellt eine Firewall auf Serverebene, um zu
 
     ![Serverfirewallregel](./media/load-data-wideworldimportersdw/server-firewall-rule.png)
 
-1. Wählen Sie **Speichern** aus. Für Ihre aktuelle IP-Adresse wird eine Firewallregel auf Serverebene erstellt, und auf dem logischen Server wird Port 1433 geöffnet.
+1. Wählen Sie **Speichern** aus. Für Ihre aktuelle IP-Adresse wird eine Firewallregel auf Serverebene erstellt, wodurch Port 1433 auf dem Server geöffnet wird.
 
-Sie können jetzt mithilfe Ihrer Client-IP-Adresse eine Verbindung mit dem SQL-Server herstellen. Die Verbindung über SQL Server Management Studio oder ein anderes Tool Ihrer Wahl hergestellt werden. Verwenden Sie zum Herstellen der Verbindung das Serveradministratorkonto, das Sie zuvor erstellt haben.  
+Sie können jetzt mithilfe Ihrer Client-IP-Adresse eine Verbindung mit dem Server herstellen. Die Verbindung über SQL Server Management Studio oder ein anderes Tool Ihrer Wahl hergestellt werden. Verwenden Sie zum Herstellen der Verbindung das Serveradministratorkonto, das Sie zuvor erstellt haben.  
 
 > [!IMPORTANT]
 > Standardmäßig ist der Zugriff über die SQL-Datenbank-Firewall für alle Azure-Dienste aktiviert. Klicken Sie auf dieser Seite auf **AUS** und dann auf **Speichern**, um die Firewall für alle Azure-Dienste zu deaktivieren.
@@ -123,7 +123,7 @@ Der vollqualifizierte Servername wird verwendet, um eine Verbindung mit dem Serv
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Herstellen einer Verbindung mit dem Server als Serveradministrator
 
-In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) zum Herstellen einer Verbindung mit Ihrem Azure SQL-Server verwendet.
+In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) zum Herstellen einer Verbindung mit Ihrem Server verwendet.
 
 1. Öffnen Sie SQL Server Management Studio.
 
@@ -1087,7 +1087,7 @@ Führen Sie die folgenden Schritte aus, um Ressourcen nach Wunsch zu bereinigen.
 
 3. Wenn zukünftig keine Gebühren anfallen sollen, können Sie das Data Warehouse löschen. Wenn Sie das Data Warehouse entfernen möchten, damit keine Gebühren für Compute- oder Speicherressourcen anfallen, klicken Sie auf **Löschen**.
 
-4. Zum Entfernen des erstellten SQL-Servers klicken Sie auf **sample-svr.database.windows.net** (siehe Abbildung oben) und dann auf **Löschen**.  Seien Sie dabei vorsichtig, denn durch das Löschen des Servers werden auch alle Datenbanken gelöscht, die dem Server zugewiesen sind.
+4. Zum Entfernen des erstellten Servers klicken Sie auf **sample-svr.database.windows.net** (siehe Abbildung oben) und dann auf **Löschen**.  Seien Sie dabei vorsichtig, denn durch das Löschen des Servers werden auch alle Datenbanken gelöscht, die dem Server zugewiesen sind.
 
 5. Zum Entfernen der Ressourcengruppe klicken Sie auf **SampleRG** und dann auf **Ressourcengruppe löschen**.
 

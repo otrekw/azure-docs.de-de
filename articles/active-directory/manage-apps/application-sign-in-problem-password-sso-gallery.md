@@ -2,25 +2,25 @@
 title: Probleme bei der Anmeldung bei einer für SSO konfigurierten Azure AD-Katalog-App | Microsoft-Dokumentation
 description: Beheben von Problemen mit einer Azure AD-Kataloganwendung, die für einmaliges Anmelden per Kennwort konfiguriert ist.
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9fd17d9e066be6a1abff5165436a09b8921184e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6eebde3a7c6163b7faf92be193fe442cd5b74d2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68381308"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759112"
 ---
 # <a name="sign-in-problems-with-an-azure-ad-gallery-app-configured-for-sso"></a>Probleme beim Anmelden bei einer Azure AD-Katalog-App, die für SSO konfiguriert ist
 

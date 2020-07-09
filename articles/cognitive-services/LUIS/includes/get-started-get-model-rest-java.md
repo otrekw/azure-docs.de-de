@@ -6,21 +6,19 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: 92552a9870f037555a6cde9daa67d3af112ccee7
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f6fb3452f2c5540617a6d59f9c81421c7de2161f
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368457"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416376"
 ---
+[Referenzdokumentation](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45) | [Beispiel](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/LUIS/java-model-with-rest/Model.java)
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure Language Understanding: Ressourcenschlüssel mit 32 Zeichen und Endpunkt-URL für die Erstellung. Führen Sie die Erstellung mit dem [Azure-Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) oder der [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli) durch.
-* Importieren Sie die App [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) aus dem GitHub-Repository „cognitive-services-language-understanding“.
-* Die LUIS-Anwendungs-ID für die importierte TravelAgent-App. Die Anwendungs-ID wird auf dem Anwendungsdashboard angezeigt.
-* Die Versions-ID der Anwendung, die die Äußerungen empfängt. Die Standard-ID lautet „0.1“.
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
 * [Visual Studio Code](https://code.visualstudio.com/) oder Ihre bevorzugte IDE
 
@@ -30,7 +28,9 @@ ms.locfileid: "77368457"
 
 ## <a name="change-model-programmatically"></a>Programmgesteuertes Ändern des Modells
 
-1. Erstellen Sie ein Unterverzeichnis mit dem Namen `lib`, und kopieren Sie die folgenden Java-Bibliotheken hinein:
+1. Erstellen Sie einen neuen Ordner für die Aufnahme Ihrer Java-Projekte, z. B. `java-model-with-rest`.
+
+1. Erstellen Sie ein Unterverzeichnis mit dem Namen `lib`, und kopieren Sie die folgenden Java-Bibliotheken in das `lib`-Unterverzeichnis:
 
     * [commons-logging-1.2.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
     * [httpclient-4.5.3.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
@@ -38,121 +38,122 @@ ms.locfileid: "77368457"
 
 1. Erstellen Sie eine neue Datei mit dem Namen `Model.java`. Fügen Sie den folgenden Code hinzu:
 
-
-    ```java
-    import java.io.*;
-    import java.net.URI;
-    import org.apache.http.HttpEntity;
-    import org.apache.http.HttpResponse;
-    import org.apache.http.client.HttpClient;
-    import org.apache.http.client.methods.HttpGet;
-    import org.apache.http.client.methods.HttpPost;
-    import org.apache.http.client.utils.URIBuilder;
-    import org.apache.http.impl.client.HttpClients;
-    import org.apache.http.util.EntityUtils;
-
-    //javac -cp ":lib/*" Model.java
-    //java -cp ":lib/*" Model
-
-    public class Model {
-
-        public static void main(String[] args)
-        {
-            try
-            {
-
-                // The ID of a public sample LUIS app that recognizes intents for turning on and off lights
-                String AppId = "YOUR-APP-ID";
-
-                // Add your endpoint key
-                String Key = "YOUR-KEY";
-
-                // Add your endpoint, example is your-resource-name.api.cognitive.microsoft.com
-                String Endpoint = "YOUR-ENDPOINT";
-
-                String Utterance = "[{'text': 'go to Seattle today','intentName': 'BookFlight','entityLabels': [{'entityName': 'Location::LocationTo',"
-                    + "'startCharIndex': 6,'endCharIndex': 12}]},{'text': 'a barking dog is annoying','intentName': 'None','entityLabels': []}]";
-
-                String Version = "1.0";
-
-                // Begin endpoint URL string building
-                URIBuilder addUtteranceURL = new URIBuilder("https://" + Endpoint + "/luis/authoring/v3.0-preview/apps/" + AppId + "/versions/" + Version + "/examples");
-                URIBuilder trainURL = new URIBuilder("https://" + Endpoint + "/luis/authoring/v3.0-preview/apps/" + AppId + "/versions/" + Version + "/train");
-
-                // create URL from string
-                URI addUtterancesURI = addUtteranceURL.build();
-                URI trainURI = trainURL.build();
-
-                // add utterances POST
-                HttpClient addUtterancesClient = HttpClients.createDefault();
-                HttpPost addutterancesRequest = new HttpPost(addUtterancesURI);
-                addutterancesRequest.setHeader("Ocp-Apim-Subscription-Key",Key);
-                addutterancesRequest.setHeader("Content-type","application/json");
-                HttpResponse addutterancesResponse = addUtterancesClient.execute(addutterancesRequest);
-                HttpEntity addutterancesEntity = addutterancesResponse.getEntity();
-                if (addutterancesEntity != null)
-                {
-                    System.out.println(EntityUtils.toString(addutterancesEntity));
-                }
-
-                // train POST
-                HttpClient trainClient = HttpClients.createDefault();
-                HttpPost trainRequest = new HttpPost(trainURI);
-                trainRequest.setHeader("Ocp-Apim-Subscription-Key",Key);
-                trainRequest.setHeader("Content-type","application/json");
-                HttpResponse trainResponse = trainClient.execute(trainRequest);
-                HttpEntity trainEntity = trainResponse.getEntity();
-                if (trainEntity != null)
-                {
-                    System.out.println(EntityUtils.toString(trainEntity));
-                }
-
-                // training status GET
-                HttpClient trainStatusClient = HttpClients.createDefault();
-                HttpGet trainStatusRequest = new HttpGet(trainURI);
-                trainStatusRequest.setHeader("Ocp-Apim-Subscription-Key",Key);
-                trainStatusRequest.setHeader("Content-type","application/json");
-                HttpResponse trainStatusResponse = trainStatusClient.execute(trainStatusRequest);
-                HttpEntity trainStatusEntity = trainStatusResponse.getEntity();
-                if (trainStatusEntity != null)
-                {
-                    System.out.println(EntityUtils.toString(trainStatusEntity));
-                }
-            }
-
-            catch (Exception e)
-            {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-    ```
+    [!code-java[Code snippet](~/cognitive-services-quickstart-code/java/LUIS/java-model-with-rest/Model.java)]
 
 1. Ersetzen Sie die Werte, die mit `YOUR-` beginnen, durch Ihre eigenen Werte.
 
     |Information|Zweck|
     |--|--|
-    |`YOUR-KEY`|Ihr Erstellungsschlüssel mit 32 Zeichen.|
-    |`YOUR-ENDPOINT`| Ihr URL-Endpunkt für die Erstellung. Beispiel: `replace-with-your-resource-name.api.cognitive.microsoft.com`. Sie haben Ihren Ressourcennamen festgelegt, als Sie die Ressource erstellt haben.|
     |`YOUR-APP-ID`| Ihre LUIS-App-ID. |
+    |`YOUR-AUTHORING-KEY`|Ihr Erstellungsschlüssel mit 32 Zeichen.|
+    |`YOUR-AUTHORING-ENDPOINT`| Ihr URL-Endpunkt für die Erstellung. Beispiel: `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. Sie haben Ihren Ressourcennamen festgelegt, als Sie die Ressource erstellt haben.|
 
     Zugewiesene Schlüssel und Ressourcen werden im LUIS-Portal auf der Seite **Azure-Ressourcen** im Abschnitt „Verwalten“ angezeigt. Die App-ID wird auf der Seite **Anwendungseinstellungen** ebenfalls im Abschnitt „Verwalten“ angezeigt.
 
-1. Geben Sie im Verzeichnis, in dem Sie die Datei erstellt haben, an einer Eingabeaufforderung den folgenden Befehl ein, um die Java-Datei zu kompilieren:
+1. Geben Sie im Verzeichnis, in dem Sie die `Model.java`-Datei erstellt haben, an einer Eingabeaufforderung den folgenden Befehl ein, um die Java-Datei zu kompilieren:
 
-    ```console
-    javac -cp ":lib/*" Model.java
-    ```
+    * Verwenden Sie unter Windows den folgenden Befehl: `javac -cp ";lib/*" Model.java`.
+    * Verwenden Sie unter macOS oder Linux den folgenden Befehl: `javac -cp ":lib/*" Model.java`.
 
 1. Führen Sie die Java-Anwendung über die Befehlszeile aus, indem Sie den folgenden Text an der Eingabeaufforderung eingeben:
 
+    * Verwenden Sie unter Windows den folgenden Befehl: `java -cp ";lib/*" Model`.
+    * Verwenden Sie unter macOS oder Linux den folgenden Befehl: `java -cp ":lib/*" Model`.
+
+1. Überprüfen Sie die Erstellungsantwort:
+
     ```console
-    java -cp ":lib/*" Model
+    [{"value":{"ExampleId":1137150691,"UtteranceText":"order a pizza"},"hasError":false},{"value":{"ExampleId":1137150692,"UtteranceText":"order a large pepperoni pizza"},"hasError":false},{"value":{"ExampleId":1137150693,"UtteranceText":"i want two large pepperoni pizzas on thin crust"},"hasError":false}]
+    {"statusId":9,"status":"Queued"}
+    [{"modelId":"edb46abf-0000-41ab-beb2-a41a0fe1630f","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"a5030be2-616c-4648-bf2f-380fa9417d37","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"e4b6704b-1636-474c-9459-fe9ccbeba51c","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"031d3777-2a00-4a7a-9323-9a3280a30000","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"9250e7a1-06eb-4413-9432-ae132ed32583","details":{"statusId":3,"status":"InProgress","exampleCount":0,"progressSubstatus":"CollectingData"}}]
+    ```
+
+    Hier sehen Sie die zur besseren Lesbarkeit formatierte Ausgabe:
+
+    ```json
+    [
+      {
+        "value": {
+          "ExampleId": 1137150691,
+          "UtteranceText": "order a pizza"
+        },
+        "hasError": false
+      },
+      {
+        "value": {
+          "ExampleId": 1137150692,
+          "UtteranceText": "order a large pepperoni pizza"
+        },
+        "hasError": false
+      },
+      {
+        "value": {
+          "ExampleId": 1137150693,
+          "UtteranceText": "i want two large pepperoni pizzas on thin crust"
+        },
+        "hasError": false
+      }
+    ]
+    {
+      "statusId": 9,
+      "status": "Queued"
+    }
+    [
+      {
+        "modelId": "edb46abf-0000-41ab-beb2-a41a0fe1630f",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "a5030be2-616c-4648-bf2f-380fa9417d37",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "e4b6704b-1636-474c-9459-fe9ccbeba51c",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "031d3777-2a00-4a7a-9323-9a3280a30000",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "9250e7a1-06eb-4413-9432-ae132ed32583",
+        "details": {
+          "statusId": 3,
+          "status": "InProgress",
+          "exampleCount": 0,
+          "progressSubstatus": "CollectingData"
+        }
+      }
+    ]
     ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben.
+Löschen Sie den Projektordner aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

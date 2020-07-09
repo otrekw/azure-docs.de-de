@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie Ihre Funktionen mithilfe der Continuous�
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235022"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123669"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Continuous Deployment für Azure Functions
 
@@ -36,46 +36,30 @@ Damit Continuous Deployment erfolgreich ausgeführt werden kann, muss Ihre Verze
 
 Gehen Sie wie folgt vor, um Continuous Deployment für eine vorhandene Funktions-App zu konfigurieren. Die Schritte zeigen die Integration eines GitHub-Repositorys. Die Vorgehensweise für Azure Repos und andere Quellcoderepositorys ist jedoch ähnlich.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) unter Ihrer Funktions-App die Optionen **Plattformfeatures** > **Bereitstellungscenter** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) in ihrer Funktions-App **Deployment Center**, **GitHub** und dann **Autorisieren** aus. Falls Sie GitHub bereits autorisiert haben, wählen Sie **Weiter** aus und überspringen den nächsten Schritt. 
 
-    ![Öffnen des Bereitstellungscenters](./media/functions-continuous-deployment/platform-features.png)
+    :::image type="content" source="./media/functions-continuous-deployment/github.png" alt-text="Azure App Service Deployment Center":::
 
-2. Wählen Sie im **Bereitstellungscenter** die Option **GitHub** und anschließend **Autorisieren** aus. Falls Sie GitHub bereits autorisiert haben, wählen Sie **Weiter** aus. 
+3. Wählen Sie in GitHub **AzureAppService autorisieren** aus.
 
-    ![Azure App Service-Bereitstellungscenter](./media/functions-continuous-deployment/github.png)
+    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Autorisieren von Azure App Service":::
 
-3. Wählen Sie auf GitHub die Schaltfläche **Authorize AzureAppService** (AzureAppService autorisieren) aus. 
-
-    ![Autorisieren von Azure App Service](./media/functions-continuous-deployment/authorize.png)
-    
-    Wählen Sie im Azure-Portal im **Bereitstellungscenter** die Option **Weiter** aus.
+    Geben Sie Ihr GitHub-Kennwort ein, und wählen Sie dann **Weiter** aus.
 
 4. Wählen Sie einen der folgenden Buildanbieter aus:
 
     * **App Service-Builddienst**: Empfiehlt sich, wenn Sie keinen Build oder einen generischen Build benötigen.
     * **Azure-Pipelines (Vorschau)** : Empfiehlt sich, wenn Sie mehr Kontrolle über den Build benötigen. Dieser Anbieter befindet sich derzeit in der Vorschauphase.
 
-    ![Auswählen eines Buildanbieters](./media/functions-continuous-deployment/build.png)
+    Wählen Sie **Weiter**.
 
 5. Konfigurieren Sie Informationen, die für die von Ihnen angegebene Option der Quellcodeverwaltung spezifisch sind. Für GitHub müssen Werte für **Organisation**, **Repository** und **Branch** eingegeben bzw. ausgewählt werden. Die Werte basieren auf dem Ort, an dem sich Ihr Code befindet. Wählen Sie anschließend **Weiter** aus.
 
-    ![Konfigurieren von GitHub](./media/functions-continuous-deployment/github-specifics.png)
+    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="Konfigurieren von GitHub":::
 
 6. Überprüfen Sie alle Angaben, und wählen Sie anschließend **Fertig stellen** aus, um die Bereitstellungskonfiguration abzuschließen.
 
-    ![Zusammenfassung](./media/functions-continuous-deployment/summary.png)
-
 Nach Abschluss des Prozesses wird der gesamte Code aus der angegebenen Quelle für Ihre App bereitgestellt. An diesem Punkt lösen Änderungen in der Bereitstellungsquelle eine Bereitstellung dieser Änderungen in Ihrer Funktions-App in Azure aus.
-
-## <a name="deployment-scenarios"></a>Bereitstellungsszenarien
-
-<a name="existing"></a>
-
-### <a name="move-existing-functions-to-continuous-deployment"></a>Verschieben vorhandener Funktionen in Continuous Deployment
-
-Wenn Sie bereits Funktionen im [Azure-Portal](https://portal.azure.com) geschrieben haben und den Inhalt Ihrer App vor dem Wechsel zu Continuous Deployment herunterladen möchten, navigieren Sie zur Registerkarte **Übersicht** Ihrer Funktions-App. Wählen Sie die Schaltfläche **App-Inhalt herunterladen** aus.
-
-![Herunterladen des App-Inhalts](./media/functions-continuous-deployment/download.png)
 
 > [!NOTE]
 > Nach dem Konfigurieren von Continuous Integration können Sie Ihre Quelldateien im Functions-Portal nicht mehr bearbeiten.

@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d6212692465270182db541889bed5f03a08a345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 08d56a13d0a2e373a725320e132df739d806f2e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74008285"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608227"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Analysieren von Azure AD-Aktivitätsprotokollen mithilfe von Azure Monitor-Protokollen
 
@@ -60,7 +60,7 @@ Die Protokolle werden per Push an die Tabellen **AuditLogs** und **SigninLogs** 
 
 1. Wählen Sie in der Standardabfrageansicht des vorherigen Abschnitts **Schema** aus, und erweitern Sie den Arbeitsbereich. 
 
-2. Erweitern Sie den Abschnitt **Protokollverwaltung**, und erweitern Sie dann entweder **AuditLogs** oder **SignInLogs**, um das Protokollschema anzuzeigen.
+2. Erweitern Sie den Abschnitt **Protokollverwaltung**, und erweitern Sie dann entweder **AuditLogs** oder **SigninLogs**, um das Protokollschema anzuzeigen.
     ![Überwachungsprotokolle](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![Anmeldeprotokolle](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>Abfragen der Azure AD-Aktivitätsprotokolle

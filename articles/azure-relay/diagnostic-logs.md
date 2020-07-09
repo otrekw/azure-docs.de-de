@@ -1,22 +1,14 @@
 ---
 title: Diagnoseprotokolle für Hybrid Connections
 description: Dieser Artikel enthält eine Übersicht über alle verfügbaren Aktivitäts- und Diagnoseprotokolle für Azure Relay.
-services: service-bus-messaging
-author: spelluru
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.date: 04/27/2020
-ms.author: spelluru
-ms.openlocfilehash: b7ac5f1da70352115bf05df1a61120f46a85ec5d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314905"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Aktivieren von Diagnoseprotokollen für Azure Relay Hybrid Connections
 Wenn Sie Azure Relay Hybrid Connections verwenden, möchten Sie möglicherweise überwachen, wie und wann Ihre Listener und Absender geöffnet und geschlossen werden und wie Hybrid Connections erstellt und Nachrichten gesendet werden. Dieser Artikel enthält eine Übersicht über die verfügbaren Aktivitäts- und Diagnoseprotokolle, die vom Azure Relay-Dienst bereitgestellt werden. 
@@ -60,7 +52,7 @@ Die neuen Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die P
 ## <a name="schema-for-hybrid-connections-events"></a>Schema für Hybridverbindungsereignisse
 JSON-Zeichenfolgen im Hybridverbindungs-Ereignisprotokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
-| Name | Beschreibung |
+| Name | BESCHREIBUNG |
 | ------- | ------- |
 | resourceId | Azure Resource Manager-Ressourcen-ID |
 | ActivityId | Interne ID, die zum Identifizieren des angegebenen Vorgangs verwendet wird. Kann auch als „TrackingId“ bezeichnet werden. |

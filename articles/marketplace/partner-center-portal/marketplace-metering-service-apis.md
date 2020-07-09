@@ -1,18 +1,18 @@
 ---
-title: Marketplace-Messungsdienst-APIs | Azure Marketplace
-description: Nutzungsereignis für SaaS-Angebote in Azure Marketplace.
+title: 'Messungsdienst-APIs: Kommerzieller Microsoft-Marketplace'
+description: Mit der API für Nutzungsereignisse können Sie Nutzungsereignisse für SaaS-Angebote in Microsoft AppSource und Azure Marketplace ausgeben.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 315f36e5aed9dee0a89e1f9f504b18a6bed806e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/18/2020
+ms.openlocfilehash: 95eba648219413923ce27d433a5236877c4953f3
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275746"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725464"
 ---
 # <a name="marketplace-metering-service-apis"></a>Marketplace-Messungsdienst-APIs
 
@@ -35,6 +35,9 @@ Mit der API für Nutzungsereignisse können Sie Nutzungsereignisse für eine bes
 | `x-ms-requestid`     | Eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 | `x-ms-correlationid` | Eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 | `authorization`   | [Abrufen eines Tokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Hinweis: Stellen Sie beim Senden der HTTP-Anforderung dem Token, das Sie über den angegebenen Link erhalten haben, das Präfix `Bearer` voran. |
+
+>[!Note]
+>Bei Plänen für verwaltete Azure-Apps ist `resourceId` das `resourceUsageId`-Element unter dem `billingDetails`-Element des Metadatenobjekts für verwaltete Apps.  Ein Beispielskript zum Abrufen der ID finden Sie unter [Verwenden des Tokens für von Azure verwaltete Identitäten](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token).  Bei SaaS-Angeboten ist `resourceId` die SaaS-Abonnement-ID.  Weitere Informationen zu SaaS-Abonnements finden Sie unter [Auflisten von Abonnements](./pc-saas-fulfillment-api-v2.md#list-subscriptions).
 
 *Anforderung:*
 

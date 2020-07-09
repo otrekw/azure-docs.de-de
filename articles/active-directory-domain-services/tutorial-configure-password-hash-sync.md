@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 4bf85a8e38a3cfc46fe4dbaf86639899e7267178
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: e9d6f31674db0744e220a9cd88033a32bb5c1e17
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676607"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024688"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Tutorial: Aktivieren der Kennwortsynchronisierung in Azure Active Directory Domain Services für Hybridumgebungen
 
@@ -42,7 +42,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen:
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
     * [Aktivieren Sie bei Bedarf Azure AD Connect für die Kennworthashsynchronisierung][enable-azure-ad-connect].
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Bei Bedarf [erstellen und konfigurieren Sie eine Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance].
+    * [Erstellen und konfigurieren Sie eine verwaltete Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance], sofern erforderlich.
 
 ## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Kennworthashsynchronisierung mit Azure AD Connect
 
@@ -97,7 +97,7 @@ Nachdem Sie Azure AD Connect installiert und für die Synchronisierung mit Azure
     Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true
     ```
 
-    Je nach Größe Ihres Verzeichnisses in Bezug auf die Anzahl von Konten und Gruppen kann die Synchronisierung der Legacy-Kennworthashes mit Azure AD auch etwas länger dauern. Die Kennwörter werden dann mit der verwalteten Azure AD DS-Domäne synchronisiert, nachdem die Synchronisierung mit Azure AD erfolgt ist.
+    Je nach Größe Ihres Verzeichnisses in Bezug auf die Anzahl von Konten und Gruppen kann die Synchronisierung der Legacy-Kennworthashes mit Azure AD auch etwas länger dauern. Die Kennwörter werden dann mit der verwalteten Domäne synchronisiert, nachdem die Synchronisierung mit Azure AD erfolgt ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

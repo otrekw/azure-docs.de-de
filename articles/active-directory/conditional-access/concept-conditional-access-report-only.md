@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c5643b0ce9d93c28372b30e6fc114816cafbce6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b45b2294d56de896849dca0f387a4e26b845aa93
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690466"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204190"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Was ist der reine Berichtsmodus des bedingten Zugriffs?
 
@@ -30,7 +30,7 @@ Der reine Berichtsmodus ist ein neuer Status von Richtlinien für bedingten Zugr
 - Kunden mit einem Azure Monitor-Abonnement können die Auswirkungen ihrer Richtlinien für bedingten Zugriff mithilfe der Arbeitsmappe für Erkenntnisse zum bedingten Zugriff überwachen.
 
 > [!WARNING]
-> Richtlinien im reinen Berichtsmodus, die konforme Geräte erfordern, können Benutzer von Mac-, iOS- und Android-Geräten auffordern, bei der Richtlinienauswertung ein Gerätezertifikat auszuwählen, auch wenn die Gerätekonformität nicht erzwungen wird. Diese Aufforderungen können wiederholt werden, bis das Gerät konform ist. Um zu verhindern, dass Endbenutzer bei der Anmeldung Eingabeaufforderungen erhalten, schließen Sie die Geräteplattformen Mac, iOS und Android aus Richtlinien im reinen Berichtsmodus aus, die Gerätekonformitätsprüfungen durchführen.
+> Richtlinien im reinen Berichtsmodus, die konforme Geräte erfordern, können Benutzer von Mac-, iOS- und Android-Geräten auffordern, bei der Richtlinienauswertung ein Gerätezertifikat auszuwählen, auch wenn die Gerätekonformität nicht erzwungen wird. Diese Aufforderungen können wiederholt werden, bis das Gerät konform ist. Um zu verhindern, dass Endbenutzer bei der Anmeldung Eingabeaufforderungen erhalten, schließen Sie die Geräteplattformen Mac, iOS und Android aus Richtlinien im reinen Berichtsmodus aus, die Gerätekonformitätsprüfungen durchführen. Beachten Sie, dass der reine Berichtsmodus für Richtlinien für bedingten Zugriff mit dem Bereich „Benutzeraktionen“ nicht anwendbar ist.
 
 ![Registerkarte „Nur Bericht“ im Azure AD-Anmeldeprotokoll](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
 

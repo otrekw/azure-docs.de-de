@@ -2,14 +2,14 @@
 title: Bewerten von VMware-VMs mit der Azure Migrate-Serverbewertung
 description: Hier erfahren Sie, wie Sie lokale VMware-VMs mit der Azure Migrate-Serverbewertung für die Migration zu Azure bewerten.
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: bd9e6b5923207297b1aa70a67052a7796b901781
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 231daff5972e9b2f115df9e6184c43a553f55b83
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535365"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771307"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>Bewerten virtueller VMware-Computer mit der Serverbewertung
 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 - [Absolvieren Sie das erste Tutorial](tutorial-prepare-vmware.md) dieser Reihe. Andernfalls funktionieren die Anweisungen in diesem Tutorial nicht.
 - Im ersten Tutorial müssen folgende Schritte ausgeführt werden:
     - [Vorbereiten von Azure](tutorial-prepare-vmware.md#prepare-azure) auf die Arbeit mit Azure Migrate
-    - [Vorbereiten von VMware](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) auf die Bewertung. Dies umfasst das Überprüfen der VMware-Einstellungen und das Einrichten eines Kontos, über das Azure Migrate auf vCenter Server zugreifen kann.
+    - [Vorbereiten von VMware](tutorial-prepare-vmware.md#prepare-for-assessment) auf die Bewertung. Dies umfasst das Überprüfen der VMware-Einstellungen und das Einrichten eines Kontos, über das Azure Migrate auf vCenter Server zugreifen kann.
     - [Überprüfen](tutorial-prepare-vmware.md#verify-appliance-settings-for-assessment), welche Komponenten für die Bereitstellung der Azure Migrate-Appliance für die VMware-Bewertung erforderlich sind
 
 ## <a name="set-up-an-azure-migrate-project"></a>Einrichten eines Azure Migrate-Projekts
@@ -85,18 +85,26 @@ Bei der Azure Migrate-Serverbewertung wird eine einfache Azure Migrate-Applianc
 Vergewissern Sie sich vor der Bereitstellung, dass die OVA-Datei sicher ist:
 
 1. Öffnen Sie auf dem Computer, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
-1. Führen Sie den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
+2. Führen Sie den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
   
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
    
    Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 
-Für die Version 2.19.07.30 muss der generierte Hash den folgenden Werten entsprechen:
+3. Überprüfen Sie die aktuellen Applianceversionen und Hashwerte:
 
-**Algorithmus** | **Hashwert**
---- | ---
-MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
-SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+    - Öffentliche Azure-Cloud:
+    
+        **Algorithmus** | **Download** | **SHA256**
+        --- | --- | ---
+        VMware (10,9 GB) | [Aktuelle Version](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
+
+    - Azure Government:
+    
+        **Algorithmus** | **Download** | **SHA256**
+        --- | --- | ---
+        VMware (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+
 
 ### <a name="create-the-appliance-vm"></a>Erstellen der Appliance-VM
 
@@ -116,7 +124,7 @@ Importieren Sie die heruntergeladene Datei, und erstellen Sie einen virtuellen C
 
 ## <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
-Stellen Sie sicher, dass die Appliance-VM eine Verbindung mit Azure-URLs für [öffentliche Clouds](migrate-appliance.md#public-cloud-urls) und [Azure Government-Clouds](migrate-appliance.md#government-cloud-urls) herstellen kann.
+Stellen Sie sicher, dass die Appliance-VM eine Verbindung mit Azure-URLs für [öffentliche](migrate-appliance.md#public-cloud-urls) und [Government](migrate-appliance.md#government-cloud-urls)-Clouds herstellen kann.
 
 ### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
 
@@ -162,7 +170,7 @@ Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um
 1. Geben Sie unter **vCenter Server-Details angeben** den Namen (FQDN) oder die IP-Adresse der vCenter Server-Instanz an. Sie können den Standardport beibehalten oder einen benutzerdefinierten Port angeben, an dem vCenter Server lauscht.
 2. Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das vCenter Server-Konto an, über das die Appliance virtuelle Computer in der vCenter Server-Instanz ermittelt. 
 
-    - Sie sollten im [vorherigen Tutorial](tutorial-prepare-vmware.md#set-up-an-account-for-assessment) ein Konto mit den erforderlichen Berechtigungen eingerichtet haben.
+    - Sie sollten im [vorherigen Tutorial](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) ein Konto mit den erforderlichen Berechtigungen eingerichtet haben.
     - Wenn Sie die Ermittlung auf bestimmte VMware-Objekte (vCenter Server-Rechenzentren, Cluster, einen Ordner mit Clustern, Hosts, einen Ordner mit Hosts oder einzelne VMs) begrenzen möchten, hilft Ihnen die Anleitung in [diesem Artikel](set-discovery-scope.md) beim Einschränken des von Azure Migrate genutzten Kontos weiter.
 
 3. Vergewissern Sie sich durch Auswählen von **Verbindung überprüfen**, dass die Appliance eine Verbindung mit vCenter Server herstellen kann.
@@ -170,7 +178,7 @@ Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um
 
     - Hier können Sie optional Anmeldeinformationen hinzufügen, wenn Sie ein Konto erstellt haben, das für das [Feature „Anwendungsermittlung“](how-to-discover-applications.md) oder das [Feature „Abhängigkeitsanalyse ohne Agent“](how-to-create-group-machine-dependencies-agentless.md) verwendet werden soll.
     - Wenn Sie diese Features nicht verwenden, können Sie diese Einstellung überspringen.
-    - Sehen Sie sich die Anmeldeinformationen für [App-Ermittlung](migrate-support-matrix-vmware.md#application-discovery) oder für die [Analyse ohne Agent](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) an.
+    - Sehen Sie sich die Anmeldeinformationen für [App-Ermittlung](migrate-support-matrix-vmware.md#application-discovery-requirements) oder für die [Analyse ohne Agent](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) an.
 
 5. Wählen Sie **Speichern und Ermittlung starten** aus, um die VM-Ermittlung zu starten.
 

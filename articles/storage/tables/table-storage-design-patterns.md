@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: 5478163a6103bcc84b4f3608d7513c6e7cb11c01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79529338"
 ---
 # <a name="table-design-patterns"></a>Entwurfsmuster für die Tabelle
@@ -153,7 +153,7 @@ Ein Client startet den Archiv-Vorgang, indem er eine Meldung auf einer Azure-War
 In diesem Beispiel fügt Schritt 4 den Mitarbeiter in die Tabelle **Archiv** ein. Es könnte den Mitarbeiter einem Blob im Blob-Dienst oder einer Datei in einem Dateisystem hinzufügen.  
 
 ### <a name="recovering-from-failures"></a>Wiederherstellung bei Fehlern
-Für den Fall, dass die Workerrolle den Archivierungsvorgang neu starten muss, müssen die Vorgänge in den Schritten **4** und **5***idempotent* sein. Bei Verwendung des Tabellenspeicherdiensts müssen Sie für Schritt **4** einen Vorgang vom Typ „Einfügen oder Ersetzen“ und für Schritt **5** in der verwendeten Clientbibliothek einen Vorgang vom Typ „Löschen, falls vorhanden“ ausführen. Wenn Sie ein anderes Speichersystem verwenden, müssen Sie einen entsprechenden idempotenten Vorgang verwenden.  
+Für den Fall, dass die Workerrolle den Archivierungsvorgang neu starten muss, müssen die Vorgänge in den Schritten **4** und **5** *idempotent* sein. Bei Verwendung des Tabellenspeicherdiensts müssen Sie für Schritt **4** einen Vorgang vom Typ „Einfügen oder Ersetzen“ und für Schritt **5** in der verwendeten Clientbibliothek einen Vorgang vom Typ „Löschen, falls vorhanden“ ausführen. Wenn Sie ein anderes Speichersystem verwenden, müssen Sie einen entsprechenden idempotenten Vorgang verwenden.  
 
 Wenn die Workerrolle Schritt **6**niemals abschließt, erscheint nach einem Timeout die Meldung wieder in der Warteschlange, damit die Workerrolle versuchen kann, sie erneut zu verarbeiten. Die Workerrolle kann überprüfen, wie oft eine Meldung in der Warteschlange gelesen wurde und bei Bedarf markieren, dass dies eine "unzustellbare" Meldung ist und sie zur Untersuchung an eine eigene Warteschlange senden. Weitere Informationen zum Lesen von Warteschlangenmeldungen und zur Überprüfung des Zählers für Entfernungsvorgänge aus der Warteschlange finden Sie unter [Get Messages](https://msdn.microsoft.com/library/azure/dd179474.aspx).  
 
@@ -197,7 +197,7 @@ Um die Suche nach dem Nachnamen mit der oben dargestellten Entitätsstruktur zu 
 * Erstellen von Index-Entitäten in der gleichen Partition wie für die Mitarbeiterentitäten.  
 * Erstellen von Index-Entitäten in einer separaten Partition oder Tabelle.  
 
-<u>Option 1: Verwenden von Blob-Speicher</u>  
+<u>Option 1: Verwenden von Blobspeicher</u>  
 
 Für die erste Option erstellen Sie ein Blob für jeden eindeutigen Nachnamen und speichern in jedem Blob eine Liste mit den Werten **PartitionKey** (Abteilung) und **RowKey** (Mitarbeiter-ID) für die Mitarbeiter mit diesem Nachnamen. Beim Hinzufügen oder Löschen eines Mitarbeiters sollten Sie sicherstellen, dass der Inhalt des relevanten Blob schließlich konsistent mit den Mitarbeiterentitäten ist.  
 
@@ -588,7 +588,7 @@ using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Azure.Cosmos.Table.Queryable;
 ```
 
-Bei employeeTable handelt es sich um ein CloudTable-Objekt, das eine CreateQuery\<ITableEntity>()-Methode implementiert, die eine TableQuery\<ITableEntity> zurückgibt. Objekte dieses Typs implementieren eine „iQueryable“-Schnittstelle und ermöglichen die Verwendung von LINQ-Abfrageausdrücken und der Punktnotationssyntax.
+Bei „employeeTable“ handelt es sich um ein „CloudTable“-Objekt, das eine „CreateQuery\<ITableEntity>()“-Methode implementiert, die eine „TableQuery\<ITableEntity>“ zurückgibt. Objekte dieses Typs implementieren eine „iQueryable“-Schnittstelle und ermöglichen die Verwendung von LINQ-Abfrageausdrücken und der Punktnotationssyntax.
 
 Das Abrufen von mehreren Entitäten erfolgt durch das Angeben einer Abfrage mit einer **where**-Klausel. Um einen Tabellenscan zu vermeiden, sollten Sie immer den **PartitionKey**-Wert in die where-Klausel einschließen (und möglichst auch den **RowKey**-Wert, um Tabellen- und Partitionsscans zu vermeiden). Der Tabellenspeicherdienst unterstützt eine begrenzte Anzahl von Vergleichsoperatoren (größer als, größer als oder gleich, kleiner als, kleiner als oder gleich, gleich und ungleich) zur Verwendung in der WHERE-Klausel. 
 
@@ -926,7 +926,7 @@ Im restlichen Teil dieses Abschnitts werden einige Funktionen der Storage Client
 ### <a name="retrieving-heterogeneous-entity-types"></a>Abrufen von heterogenen Entitätstypen
 Bei Verwendung der Storage Client Library stehen Ihnen drei Optionen für die Arbeit mit mehreren Entitätstypen zur Verfügung.  
 
-Wenn Sie den Entitätstyp kennen, der mit bestimmten **RowKey**- und **PartitionKey**-Werten gespeichert ist, können Sie den Entitätstyp angeben, wenn Sie die Entität wie in den vorherigen beiden Beispielen dargestellt abrufen. Die folgenden Beispiele rufen die Entitäten vom Typ **EmployeeEntity** ab: [Ausführen einer Punktabfrage mithilfe der Speicherclientbibliothek](#executing-a-point-query-using-the-storage-client-library) und [Abrufen von mehreren Entitäten mithilfe von LINQ](#retrieving-multiple-entities-using-linq).  
+Wenn Sie den Entitätstyp kennen, der mit einem bestimmten **RowKey**- und **PartitionKey**-Wert gespeichert ist, können Sie beim Abrufen der Entität den Entitätstyp angeben, wie in den beiden vorherigen Beispielen zum Abrufen von Entitäten des Typs **EmployeeEntity** dargestellt: [Ausführen einer Punktabfrage mithilfe der Speicherclientbibliothek](#executing-a-point-query-using-the-storage-client-library) und [Abrufen von mehreren Entitäten mithilfe von LINQ](#retrieving-multiple-entities-using-linq).  
 
 Die zweite Option ist die Verwendung des **DynamicTableEntity** -Typs (ein Eigenschaftenbehälter) anstelle eines konkreten POCO-Entitätstyps (diese Option kann auch die Leistung verbessern, da keine Notwendigkeit zum Serialisieren und Deserialisieren der Entität in .NET-Typen besteht). Der folgende C#-Code ruft möglicherweise mehrere Entitäten mit unterschiedlichen Typen aus der Tabelle ab, gibt jedoch alle Entitäten als **DynamicTableEntity** -Instanzen zurück. Anschließend bestimmt er mithilfe der **EventType** -Eigenschaft den Typ von jeder Entität:  
 

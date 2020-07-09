@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: c0cf8a91ee1dbdd70f1b911dba24fb69ee7bc0e3
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: f75b080ce31a5c954471d277aad354879c16c6b3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744393"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022196"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -35,7 +35,9 @@ Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat un
 Im Folgenden finden Sie einige wichtige Details zu privaten Endpunkten: 
 - Ein privater Endpunkt ermöglicht die Verbindung zwischen den Consumern im selben VNet, in regionalen VNets mit Peering, globalen VNets mit Peering und lokalen Standorten mit [VPN](https://azure.microsoft.com/services/vpn-gateway/) oder [Express Route](https://azure.microsoft.com/services/expressroute/) und Diensten auf Basis von Private Link.
  
-- Beim Erstellen eines privaten Endpunkts wird für die Lebensdauer der Ressource auch eine schreibgeschützte Netzwerkschnittstelle eingerichtet. Der Schnittstelle wird eine private IP-Adresse aus dem Subnetz zugewiesen, das der Private Link-Ressource zugeordnet ist.
+- Netzwerkverbindungen können nur von Clients initiiert werden, die eine Verbindung mit dem privaten Endpunkt herstellen. Dienstanbieter verfügen nicht über eine Routingkonfiguration, die Verbindungen mit Dienstconsumern initiieren kann. Verbindungen können nur in einer Richtung eingerichtet werden.
+
+- Beim Erstellen eines privaten Endpunkts wird für die Lebensdauer der Ressource auch eine schreibgeschützte Netzwerkschnittstelle eingerichtet. Der Schnittstelle werden dynamisch private IP-Adressen aus dem Subnetz zugewiesen, das der Private Link-Ressource zugeordnet ist. Der Wert der privaten IP-Adresse bleibt über den gesamten Lebenszyklus des privaten Endpunkts unverändert.
  
 - Der private Endpunkt muss in derselben Region wie das virtuelle Netzwerk bereitgestellt werden. 
  
@@ -61,6 +63,7 @@ Eine Private Link-Ressource ist das Ziel eines bestimmten privaten Endpunkts. Es
 |**Azure Database for PostgreSQL – Einzelserver** | Microsoft.DBforPostgreSQL/servers    | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
+|**Azure IoT Hub** | Microsoft.Devices/IotHubs    | iotHub |
 |**Azure Key Vault** | Microsoft.KeyVault/vaults    | Tresor |
 |**Azure Kubernetes Service: Kubernetes-API** | Microsoft.ContainerService/managedClusters    | managedCluster |
 |**Azure Search** | Microsoft.Search/searchService| searchService|  
@@ -121,9 +124,9 @@ Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verw
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erstellen eines privaten Endpunkts mit dem Azure-Portal](create-private-endpoint-portal.md)
-- [Erstellen eines privaten Endpunkts über PowerShell](create-private-endpoint-powershell.md)
-- [Erstellen eines privaten Endpunkts über die Azure CLI](create-private-endpoint-cli.md)
+- [Schnellstart: Erstellen eines privaten Endpunkts mit dem Azure-Portal](create-private-endpoint-portal.md)
+- [Erstellen eines privaten Endpunkts mit Azure PowerShell](create-private-endpoint-powershell.md)
+- [Schnellstart: Erstellen eines privaten Endpunkts mit Azure CLI](create-private-endpoint-cli.md)
 - [Erstellen eines privaten Endpunkts für das Speicherkonto im Portal](create-private-endpoint-storage-portal.md)
 - [Erstellen eines privaten Endpunkts für das Azure Cosmos-Konto im Portal](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Erstellen eines eigenen Private Link-Diensts mit Azure PowerShell](create-private-link-service-powershell.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a41c1f634c030106dd6936676010fea32da8d436
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919429"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084017"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Startvorgang des virtuellen Azure-Computers bleibt bei Windows-Update hängen
 
@@ -48,14 +48,19 @@ Abhängig von der Anzahl der Updates, die installiert werden oder für die ein R
 
 4. Öffnen Sie eine Eingabeaufforderungsinstanz mit erhöhten Rechten („Als Administrator ausführen“). Führen Sie den folgenden Befehl aus, um die Liste mit den Updatepaketen abzurufen, die sich auf dem angefügten Betriebssystemdatenträger befinden:
 
-        dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
+    ```console
+    dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
+    ```
 
     Ist dem angefügten Betriebssystemdatenträger beispielsweise Laufwerk „F“ zugeordnet, führen Sie den folgenden Befehl aus:
 
-        dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
+    ```console
+    dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
+    ```
+
 5. Öffnen Sie die Datei „C:\temp\Patch_level.txt“, und lesen Sie die Datei von unten nach oben. Suchen Sie nach dem Update mit dem Status **Installation steht aus** oder **Deinstallation steht aus**.  Im Folgenden finden Sie ein Beispiel für den Updatestatus:
 
-     ```
+    ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
     State : Install Pending
     Release Type : Security Update

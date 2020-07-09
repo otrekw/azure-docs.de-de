@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60381194"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850962"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:  PowerShell-Referenz zu ADSyncConfig
 Die folgende Dokumentation enthält Referenzinformationen für das PowerShell-Modul „ADSyncConfig.psm1“, das in Azure AD Connect enthalten ist.
@@ -59,25 +59,24 @@ Sucht in AD, beginnend bei dem Parameter „SearchBase“, und gibt alle Objekte
 ### <a name="examples"></a>BEISPIELE
 
 #### <a name="example-1"></a>BEISPIEL 1
+Suchen von Objekten mit deaktivierter Vererbung in der Domäne „Contoso“ (standardmäßig werden nur die Objekte „organizationalUnit“ zurückgegeben)
 ```
-Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
+```
 
 #### <a name="example-2"></a>BEISPIEL 2
+Suchen von „User“-Objekten mit deaktivierter Vererbung in der Domäne „Contoso“
 ```
-Find 'user' objects with disabled inheritance in 'Contoso' domain
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'user'
+```
 
 #### <a name="example-3"></a>BEISPIEL 3
+Suchen aller Objekttypen mit deaktivierter Vererbung in einer Organisationseinheit
 ```
-Find all types of objects with disabled inheritance in a OU
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
+
 
 ### <a name="parameters"></a>PARAMETERS
 
@@ -1081,28 +1080,19 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ### <a name="description"></a>DESCRIPTION
 Die Funktion „Set-ADSyncRestrictedPermissions“ verschärft die Berechtigungen des bereitgestellten Kontos.
 Das Verschärfen von Berechtigungen umfasst die folgenden Schritte:
-1.
-Deaktivieren der Vererbung für das angegebene Objekt
-2.
-Entfernen aller ACEs für das angegebene Objekt, mit Ausnahme von ACEs für SELF
+1. Deaktivieren der Vererbung für das angegebene Objekt
+2. Entfernen aller ACEs für das angegebene Objekt, mit Ausnahme von ACEs für SELF
 Wir möchten die Standardberechtigungen für SELF beibehalten.
-3.
-Weisen Sie diese speziellen Berechtigungen zu:
+3. Weisen Sie diese speziellen Berechtigungen zu:
 
-        Type    Name                                        Access              Applies To
-        =============================================================================================
-        Allow   SYSTEM                                      Full Control        This object
-        Allow   Enterprise Admins                           Full Control        This object
-        Allow   Domain Admins                               Full Control        This object
-        Allow   Administrators                              Full Control        This object
-
-        Allow   Enterprise Domain Controllers               List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
-
-        Allow   Authenticated Users                         List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
+   | type | Name | Zugriff | Gilt für |
+   |------|------|--------|------------|
+   | Allow | SYSTEM | Vollzugriff | Dieses Objekt |
+   | Allow | Organisationsadministratoren | Vollzugriff | Dieses Objekt |
+   | Allow | Domänenadministratoren | Vollzugriff | Dieses Objekt | 
+   | Allow | Administratoren | Vollzugriff | Dieses Objekt |
+   | Allow | Domänencontroller des Unternehmens | Inhalt auflisten <br> Alle Eigenschaften lesen <br> Leseberechtigungen | Dieses Objekt |
+   | Allow | Authentifizierte Benutzer | Inhalt auflisten <br> Alle Eigenschaften lesen <br> Leseberechtigungen | Dieses Objekt |
 
 ### <a name="examples"></a>BEISPIELE
 

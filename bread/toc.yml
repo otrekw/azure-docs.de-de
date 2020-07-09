@@ -54,6 +54,9 @@
         - name: Identity Governance
           tocHref: /azure/active-directory/governance/
           topicHref: /azure/active-directory/governance/
+        - name: Bereitstellung von Anwendungen
+          tocHref: /azure/active-directory/app-provisioning/
+          topicHref: /azure/active-directory/app-provisioning/
         - name: Anwendungsverwaltung
           tocHref: /azure/active-directory/manage-apps/
           topicHref: /azure/active-directory/manage-apps/
@@ -438,9 +441,9 @@
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
-    - name: Data Box-Familie
-      tocHref: /azure/databox-family/
-      topicHref: /azure/databox-family/
+    - name: Storage
+      tocHref: /azure/storage/
+      topicHref: /azure/storage/
       items:
         - name: Data Box-Offlineübertragung
           tocHref: /azure/databox/
@@ -463,9 +466,9 @@
     - name: Dediziertes HSM
       tocHref: /azure/dedicated-hsm/
       topicHref: /azure/dedicated-hsm/
-    - name: DevTest Lab
-      tocHref: /azure/devtest-lab/
-      topicHref: /azure/devtest-lab/
+    - name: DevTest Labs
+      tocHref: /azure/devtest-labs/
+      topicHref: /azure/devtest-labs/
     - name: FXT Edge Filer
       tocHref: /azure/fxt-edge-filer/
       topicHref: /azure/fxt-edge-filer/
@@ -595,6 +598,9 @@
         - name: Azure Media Player
           tocHref: /azure/media-services/azure-media-player/
           topicHref: /azure/media-services/azure-media-player/
+        - name: Live Video Analytics in IoT Edge
+          tocHref: /azure/media-services/live-video-analytics-edge/
+          topicHref: /azure/media-services/live-video-analytics-edge/
     - name: Messagingdienste
       tocHref: /azure/messaging-services/
       topicHref: /azure/messaging-services/

@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: d7c38a44e3111a319e4146b3c9b71a22b0d31bfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d397e481fcd11e534e4bb5cf98f8c402435e890e
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72675467"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997076"
 ---
 # <a name="what-are-parallel-documents"></a>Was sind parallele Dokumente?
 
@@ -25,7 +25,7 @@ Es spielt keine Rolle, welche Sprache als „Quelle“ markiert ist und welche a
 
 Sie benötigen mindestens 10.000 eindeutige zugeordnete parallele Sätze, um ein System zu trainieren. Durch diese Einschränkung wird sichergestellt, dass Ihre parallelen Sätze genügend eindeutiges Vokabular zum erfolgreichen Trainieren eines Übersetzungsmodells enthalten. Es empfiehlt sich, kontinuierlich weitere parallele Inhalte hinzuzufügen und das Training erneut auszuführen, um die Qualität Ihres Übersetzungssystems zu verbessern. Weitere Informationen finden Sie unter [Satzpaarbildung und -zuordnung in parallelen Dokumenten](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment).
 
-Gemäß den Bestimmungen von Microsoft dürfen in Custom Translator hochgeladene Dokumente die Copyright-, Schutz- und Urheberrechte von Dritten nicht verletzen. Weitere Informationen finden Sie in den [Nutzungsbestimmungen](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
+Gemäß den Bestimmungen von Microsoft dürfen in „Benutzerdefinierter Translator“ hochgeladene Dokumente die Copyright-, Schutz- und Urheberrechte von Dritten nicht verletzen. Weitere Informationen finden Sie in den [Nutzungsbestimmungen](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
 Durch das Hochladen eines Dokuments über das Portal ändern sich die Rechte am geistigen Eigentum des Dokuments selbst nicht.
 
 ## <a name="use-of-parallel-documents"></a>Verwenden von parallelen Dokumenten

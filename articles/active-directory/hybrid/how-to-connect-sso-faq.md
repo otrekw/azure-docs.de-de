@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7241c8dfbedb24f95c29ea9e1c3f763218a5668d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 674befe7d01d0ef88026afeb2cb9179b167a88ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72025675"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357935"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen
 
@@ -37,7 +37,7 @@ Die nahtlose SSO ist eine kostenlose Funktion, sodass Sie für deren Verwendung 
 
 **F: Ist Seamless SSO in der Cloud [Microsoft Azure Deutschland](https://www.microsoft.de/cloud-deutschland) und der Cloud [Microsoft Azure Government](https://azure.microsoft.com/features/gov/) verfügbar?**
 
-Nein. Das nahtlose einmalige Anmelden ist nur in der weltweiten Instanz von Azure AD verfügbar.
+Nahtloses SSO ist für die Azure Government-Cloud verfügbar. Weitere Informationen finden Sie unter [Überlegungen zur Hybrididentität für Azure Government](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud).
 
 **F: Welche Anwendungen nutzen die `domain_hint`- oder `login_hint`-Parameterfunktion von Seamless SSO?**
 
@@ -74,9 +74,9 @@ Sie können sowohl Azure AD Join als auch das nahtlose einmalige Anmelden für I
 
 Ja. Für dieses Szenario benötigen Sie Version 2.1 oder höher des [Clients für die Arbeitsplatzeinbindung](https://www.microsoft.com/download/details.aspx?id=53554).
 
-**F: Wie kann ich ein Rollover des Kerberos-Entschlüsselungsschlüssels des `AZUREADSSOACC`-Computerkontos durchführen?**
+**F: Wie kann ich ein Rollover des Kerberos-Entschlüsselungsschlüssels des `AZUREADSSO`-Computerkontos durchführen?**
 
-Es ist wichtig, häufig ein Rollover des Kerberos-Entschlüsselungsschlüssels des `AZUREADSSOACC`-Computerkontos durchzuführen, das Azure AD repräsentiert und in Ihrer lokalen AD-Gesamtstruktur erstellt wurde.
+Es ist wichtig, häufig ein Rollover des Kerberos-Entschlüsselungsschlüssels des `AZUREADSSO`-Computerkontos durchzuführen, das Azure AD repräsentiert und in Ihrer lokalen AD-Gesamtstruktur erstellt wurde.
 
 >[!IMPORTANT]
 >Es wird dringend empfohlen, das Rollover des Kerberos-Entschlüsselungsschlüssels mindestens alle 30 Tage durchzuführen.
@@ -101,7 +101,7 @@ Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connec
    >[!NOTE]
    >Das verwendete Domänenadministratorkonto darf kein Mitglied der Gruppe „Geschützte Benutzer“ sein. Andernfalls schlägt der Vorgang fehl.
 
-   2. Rufen Sie `Update-AzureADSSOForest -OnPremCredentials $creds` auf. Dieser Befehl aktualisiert den Kerberos-Entschlüsselungsschlüssel für das `AZUREADSSOACC`-Computerkonto in dieser bestimmten AD-Gesamtstruktur und in Azure AD.
+   2. Rufen Sie `Update-AzureADSSOForest -OnPremCredentials $creds` auf. Dieser Befehl aktualisiert den Kerberos-Entschlüsselungsschlüssel für das `AZUREADSSO`-Computerkonto in dieser bestimmten AD-Gesamtstruktur und in Azure AD.
    3. Wiederholen Sie die oben stehenden Schritte für jede AD-Gesamtstruktur, für die Sie das Feature eingerichtet haben.
 
    >[!IMPORTANT]
@@ -145,7 +145,7 @@ Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connec
    4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.
    5. Rufen Sie `Get-AzureADSSOStatus | ConvertFrom-Json` auf. Dadurch erhalten Sie die Liste der AD-Gesamtstrukturen (siehe die Liste „Domänen“), in denen diese Funktion aktiviert ist.
 
-   **Schritt 3. Löschen Sie das Computerkonto `AZUREADSSOACCT` manuell aus jeder in der Liste enthaltenen AD-Gesamtstruktur.**
+   **Schritt 3. Löschen Sie das Computerkonto `AZUREADSSO` manuell aus jeder in der Liste enthaltenen AD-Gesamtstruktur.**
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b5990f79891a9cbc0d18c3499691a3d7ef309a73
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: dbeb2540084fad2cfab3ce360dd15b60a75e5e59
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81678266"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389325"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: Aktivieren benutzerdefinierter Attribute in einer benutzerdefinierten Profilrichtlinie
 
@@ -49,7 +49,7 @@ Die Begriffe *Erweiterungseigenschaft*, *benutzerdefiniertes Attribut* und *benu
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
-1. Wählen Sie **App-Registrierungen (Vorschau)** und dann **Alle Anwendungen** aus.
+1. Wählen Sie **App-Registrierungen** und dann **Alle Anwendungen** aus.
 1. Wählen Sie die Anwendung `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` aus.
 1. Kopieren Sie die folgenden Bezeichner in die Zwischenablage, und speichern Sie sie:
     * **Anwendungs-ID**. Beispiel: `11111111-1111-1111-1111-111111111111`.

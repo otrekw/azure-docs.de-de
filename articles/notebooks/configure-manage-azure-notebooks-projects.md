@@ -3,18 +3,19 @@ title: Konfigurieren und Verwalten von Azure Notebooks Preview
 description: Erfahren Sie, wie Sie Projektmetadaten, Projektdateien, Projektumgebung und Setupschritte sowohl über die Azure Notebooks-Benutzeroberfläche als auch mit direktem Terminalzugriff verwalten.
 ms.topic: how-to
 ms.date: 02/28/2020
-ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: tracking-python
+ms.openlocfilehash: 53acf7c916b402e291b9779948579761e79179ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236122"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834079"
 ---
 # <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Verwalten und Konfigurieren von Projekten in Azure Notebooks Preview
 
-Ein Projekt in Azure Notebooks Preview stellt im Wesentlichen eine Konfiguration des zugrunde liegenden virtuellen Linux-Computers, auf dem Jupyter-Notebooks ausgeführt werden, in Kombination mit einem Dateiordner und beschreibenden Metadaten dar. 
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Ein Projekt in Azure Notebooks Preview stellt im Wesentlichen eine Konfiguration des zugrunde liegenden virtuellen Linux-Computers, auf dem Jupyter-Notebooks ausgeführt werden, in Kombination mit einem Dateiordner und beschreibenden Metadaten dar. 
 
 Das Projektdashboard in Azure Notebooks ermöglicht Ihnen das Verwalten von Dateien und das Konfigurieren der sonstigen Projektmerkmale:
 

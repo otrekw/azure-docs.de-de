@@ -1,16 +1,16 @@
 ---
-title: Übersicht über das Rendering – Azure Batch
+title: Renderingübersicht
 description: Enthält eine Einführung in die Verwendung von Azure für das Rendering und eine Übersicht über Azure Batch-Renderingfunktionen.
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 515fc92aa14c0a86746d0a97d2bc601fab553aa3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115702"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965279"
 ---
 # <a name="rendering-using-azure"></a>Rendern mit Azure
 
@@ -48,7 +48,7 @@ Es gibt eine Reihe von Azure-Funktionen, die zum Rendern von Workloads verwendet
 
 Der Normalfall ist, dass eine vorhandene lokale Renderfarm mit einer Anwendung für die Renderverwaltung verwaltet wird, z.B. PipelineFX Qube, Royal Render oder Thinkbox Deadline.  Die Anforderung besteht darin, die Kapazität der lokalen Renderfarm mit Azure-VMs zu erweitern.
 
-Entweder ist die Azure-Unterstützung in die Software für die Renderverwaltung integriert, oder wir stellen Plug-Ins zur Verfügung, mit denen die Azure-Unterstützung hinzugefügt wird. Weitere Informationen zu den unterstützten Anwendungen für die Renderverwaltung und den aktivierten Funktionen finden Sie im Artikel zum [Verwenden von Render-Managern](https://docs.microsoft.com/azure/batch/batch-rendering-render-managers).
+Entweder ist die Azure-Unterstützung in die Software für die Renderverwaltung integriert, oder wir stellen Plug-Ins zur Verfügung, mit denen die Azure-Unterstützung hinzugefügt wird. Weitere Informationen zu den unterstützten Anwendungen für die Renderverwaltung und den aktivierten Funktionen finden Sie im Artikel zum [Verwenden von Render-Managern](./batch-rendering-render-managers.md).
 
 ### <a name="custom-rendering-workflow"></a>Workflow für benutzerdefiniertes Rendern
 
@@ -77,9 +77,9 @@ Azure Batch wird für viele Workloads genutzt, aber die folgenden Funktionen sin
 Es gibt mehrere Möglichkeiten, um Azure Batch zu verwenden. Diese gelten auch für das Rendering mit Azure Batch.
 
 * APIs:
-  * Schreiben Sie Code mit [REST](https://docs.microsoft.com/rest/api/batchservice), [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch), [Python](https://docs.microsoft.com/python/api/overview/azure/batch), [Java](https://docs.microsoft.com/java/api/overview/azure/batch) oder anderen unterstützten APIs.  Entwickler können Azure Batch-Funktionen in ihre vorhandenen Anwendungen oder den Workflow integrieren (in der Cloud oder lokal).  Für das [Autodesk Maya-Plug-In](https://github.com/Azure/azure-batch-maya) wird die Batch-Python-API verwendet, um Batch aufzurufen und Pools zu erstellen und zu verwalten, Aufträge und Aufgaben zu übermitteln und den Status zu überwachen.
+  * Schreiben Sie Code mit [REST](/rest/api/batchservice), [.NET](/dotnet/api/overview/azure/batch), [Python](/python/api/overview/azure/batch), [Java](/java/api/overview/azure/batch) oder anderen unterstützten APIs.  Entwickler können Azure Batch-Funktionen in ihre vorhandenen Anwendungen oder den Workflow integrieren (in der Cloud oder lokal).  Für das [Autodesk Maya-Plug-In](https://github.com/Azure/azure-batch-maya) wird die Batch-Python-API verwendet, um Batch aufzurufen und Pools zu erstellen und zu verwalten, Aufträge und Aufgaben zu übermitteln und den Status zu überwachen.
 * Befehlszeilentools:
-  * Die [Azure-Befehlszeile](https://docs.microsoft.com/cli/azure/) oder [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) können verwendet werden, um Skripts für die Batch-Nutzung zu erstellen.
+  * Die [Azure-Befehlszeile](/cli/azure/) oder [Azure PowerShell](/powershell/azure/overview) können verwendet werden, um Skripts für die Batch-Nutzung zu erstellen.
   * Besonders die Unterstützung für die Batch-CLI-Vorlage vereinfacht die Erstellung von Pools und die Übermittlung von Aufträgen.
 * Benutzeroberflächen:
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) ist ein plattformübergreifendes Clienttool, mit dem auch Batch-Konten verwaltet und überwacht werden können. Im Vergleich zur Benutzeroberfläche des Azure-Portals verfügt es aber über umfassendere Funktionen.  Es werden verschiedene Pool- und Auftragsvorlagen bereitgestellt, die für jede unterstützte Anwendung angepasst sind und verwendet werden können, damit Pools leicht erstellt und Aufträge übermittelt werden können.
@@ -95,9 +95,9 @@ Es gibt mehrere Möglichkeiten, um Azure Batch zu verwenden. Diese gelten auch f
 
 Sehen Sie sich die folgenden Einführungstutorials an, um das Rendering mit Azure Batch auszuprobieren:
 
-* [Tutorial: Rendern einer Blender-Szene mithilfe von Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
-* [Tutorial: Rendern einer Szene mit Azure Batch](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Tutorial: Rendern einer Blender-Szene mithilfe von Batch Explorer](./tutorial-rendering-batchexplorer-blender.md)
+* [Tutorial: Rendern einer Szene mit Azure Batch](./tutorial-rendering-cli.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ermitteln Sie die Liste mit den Renderinganwendungen und Versionen, die in den Azure Marketplace-VM-Images enthalten sind, in [diesem Artikel](https://docs.microsoft.com/azure/batch/batch-rendering-applications).
+Ermitteln Sie die Liste mit den Renderinganwendungen und Versionen, die in den Azure Marketplace-VM-Images enthalten sind, in [diesem Artikel](./batch-rendering-applications.md).

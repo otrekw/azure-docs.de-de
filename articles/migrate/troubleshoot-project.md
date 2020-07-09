@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b56244fccce623827367d504831ca8db517c108d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535399"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121638"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Behandeln von Problemen bei Azure Migrate-Projekten
 
@@ -52,7 +52,7 @@ Wenn Sie versuchen, ein Projekt zu erstellen und einen Bereitstellungsfehler erh
 - Wenn Sie den Fehler „Anforderungen müssen Benutzeridentitätsheader enthalten“ erhalten, könnte dies darauf hinweisen, dass Sie keinen Zugriff auf den Azure Active Directory-Mandanten (Azure AD) der Organisation haben. In diesem Fall:
     - Wenn Sie erstmalig zu einem Azure AD-Mandanten hinzugefügt werden, erhalten Sie eine E-Mail-Einladung, dem Mandanten beizutreten.
     - Nehmen Sie die Einladung an, die dem Mandanten hinzugefügt werden soll.
-    - Wenn die E-Mail nicht angezeigt wird, wenden Sie sich an einen Benutzer mit Zugriff auf den Mandanten, und bitten Sie ihn, [die Einladung erneut zu senden](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users).
+    - Wenn die E-Mail nicht angezeigt wird, wenden Sie sich an einen Benutzer mit Zugriff auf den Mandanten, und bitten Sie ihn, [die Einladung erneut zu senden](../active-directory/b2b/add-users-administrator.md#resend-invitations-to-guest-users).
     - Nachdem Sie die Einladungs-E-Mail erhalten haben, öffnen Sie die E-Mail, und wählen Sie den Link aus, um die Einladung anzunehmen. Melden Sie sich dann beim Azure-Portal ab und wieder an. (Das Aktualisieren des Browsers funktioniert hierbei nicht.) Sie können dann mit dem Erstellen des Migrationsprojekts beginnen.
 
 ## <a name="how-do-i-delete-a-project"></a>Wie lösche ich ein Projekt?

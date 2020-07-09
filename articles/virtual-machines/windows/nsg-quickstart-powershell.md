@@ -54,7 +54,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-Nun weisen Sie Ihre Netzwerksicherheitsgruppe einem Subnetz zu. Im folgenden Beispiel wird mit *Get-AzVirtualNetwork* der Variable *$vnet* das vorhandene virtuelle Netzwerk [myVnet](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) zugewiesen:
+Nun weisen Sie Ihre Netzwerksicherheitsgruppe einem Subnetz zu. Im folgenden Beispiel wird mit [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) der Variable *$vnet* das vorhandene virtuelle Netzwerk *myVnet* zugewiesen:
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `

@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76844886"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296668"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Häufig gestellte Fragen zu Azure Spatial Anchors
 
@@ -49,6 +49,10 @@ Weitere Informationen finden Sie unter [Azure Spatial Anchors-Übersicht](overvi
 
 **A:** Anker liegen jeweils nach Azure-Konto isoliert vor. Nur Apps, denen Sie Zugriff auf Ihr Konto gewähren, können im Konto auf Anker zugreifen.
 
+**F: Wie speichert Azure Spatial Anchors Daten?**
+
+**A:** Alle Daten werden mit einem von Microsoft verwalteten Datenverschlüsselungsschlüssel verschlüsselt gespeichert.
+
 **F: Welche Informationen zu einer Umgebung werden bei Verwendung von Azure Spatial Anchors für den Dienst übertragen und gespeichert? Werden Bilder der Umgebung übertragen und gespeichert?**
 
 **A:** Beim Erstellen oder Suchen nach Ankern werden Bilder der Umgebung auf dem Gerät in einem abgeleiteten Format verarbeitet. Dieses abgeleitete Format wird an den Dienst übertragen und darunter gespeichert.
@@ -60,7 +64,6 @@ Für Azure Spatial Anchors werden [Servicevertrag & Bestimmungen](https://go.mic
 ![Umgebung und abgeleitete Punktwolke mit Verknüpfungspunkten](./media/sparse-point-cloud.png)
 *Abbildung 1: Umgebung und abgeleitete Punktwolke mit Verknüpfungspunkten*
 
-
 **F: Gibt es eine Möglichkeit zum Senden von Diagnoseinformationen an Microsoft?**
 
 **A:** Ja. Azure Spatial Anchors verfügt über einen Diagnosemodus, den Entwickler über die Azure Spatial Anchors-API nutzen können. Dies ist beispielsweise hilfreich, wenn Sie in einer Umgebung Anker nicht auf vorhersagbare Weise erstellen und finden können. Unter Umständen werden Sie von uns gefragt, ob Sie einen Diagnosebericht mit Informationen übermitteln können, die für den Debugvorgang nützlich sind. Weitere Informationen finden Sie unter [Logging and diagnostics in Azure Spatial Anchors](./concepts/logging-diagnostics.md) (Protokollierung und Diagnose in Azure Spatial Anchors).
@@ -69,21 +72,21 @@ Für Azure Spatial Anchors werden [Servicevertrag & Bestimmungen](https://go.mic
 
 **F: Wird eine Vereinbarung zum Servicelevel (SLA) bereitgestellt?**
 
-**A:** Wie bei Azure-Diensten üblich, streben wir eine Verfügbarkeit von über 99,9 % an. Beachten Sie, dass sich Azure Spatial Anchors derzeit in der Vorschauphase befindet und daher die Angaben unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) gelten.
+**A:** Wie bei Azure-Diensten üblich, streben wir eine Verfügbarkeit von über 99,9 % an. 
 
 **F: Kann ich meine Apps mit Azure Spatial Anchors in App Stores veröffentlichen? Kann ich Azure Spatial Anchors für unternehmenskritische Produktionsszenarien nutzen?**
 
-**A:** Azure Spatial Anchors befindet sich derzeit in der Vorschauphase. Während dieser Phase laden wir Sie ein, Apps zu entwickeln, [Feedback zum Produkt zu geben](https://feedback.azure.com/forums/919252-azure-spatial-anchors) und Ihre Bereitstellungen für die Produktion zu planen.
-
-Die Zeitpunkte für die allgemeine Verfügbarkeit (General Availability, GA) werden in Kürze bekanntgegeben.
+**A:** Ja, Azure Spatial Anchors ist allgemein verfügbar und verfügt über eine Standard-SLA für Azure-Dienste. Gerne können Sie Apps für Ihre Produktionsbereitstellungen entwickeln und uns Ihr [Feedback](https://feedback.azure.com/forums/919252-azure-spatial-anchors) zum Produkt mitteilen.
 
 **F: Gelten bestimmte Drosselungslimits?**
 
-**A:** Ja, es gelten Drosselungslimits.  Es ist nicht zu erwarten, dass Sie diese Limits bei typischen Vorgängen der Anwendungsentwicklung und beim Testen überschreiten. Für Produktionsbereitstellungen haben wir das Ziel, die hohen Skalierungsanforderungen unserer Kunden zu unterstützen. [Nehmen Sie Kontakt mit uns auf](mailto:azuremrs@microsoft.com), um dies mit uns zu besprechen. Zum gegenwärtigen Zeitpunkt haben wir unsere Tarif- und Preisstruktur noch nicht bekannt gegeben. Dies werden wir voraussichtlich in Kürze nachholen.
+**A:** Ja, es gelten Drosselungslimits.  Es ist nicht zu erwarten, dass Sie diese Limits bei typischen Vorgängen der Anwendungsentwicklung und beim Testen überschreiten. Für Produktionsbereitstellungen haben wir das Ziel, die hohen Skalierungsanforderungen unserer Kunden zu unterstützen. [Nehmen Sie Kontakt mit uns auf](mailto:azuremrs@microsoft.com), um dies mit uns zu besprechen. 
 
 **F: In welchen Regionen ist Azure Spatial Anchors verfügbar?**
 
-**A:** Sie können noch heute ein Azure Spatial Anchors-Konto in der Azure-Region „USA, Osten 2“ erstellen. Dies bedeutet, dass sich sowohl die Compute- als auch die Speicherressourcen dieses Diensts in dieser Region befinden. Es gelten aber keine Einschränkungen in Bezug darauf, wo sich Ihre Clients befinden. In Zukunft werden wir die regionale Verfügbarkeit des Diensts auf alle primären Azure-Regionen erweitern.
+**A:** Azure Spatial Anchors ist derzeit in den folgenden Regionen verfügbar: „USA, Westen 2“, „USA, Osten“, „USA, Osten 2“, „USA, Süden-Mitte“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Süden“ und „Australien, Osten“. Weitere Regionen werden im Laufe der Zeit verfügbar.
+
+Dies bedeutet, dass sich sowohl die Compute- als auch die Speicherressourcen dieses Diensts in diesen Regionen befinden. Es gelten aber keine Einschränkungen in Bezug darauf, wo sich Ihre Clients befinden. 
 
 **F: Fallen für Azure Spatial Anchors Gebühren an? Wann werden diese Gebühren berechnet?**
 

@@ -1,58 +1,71 @@
 ---
 title: Azure Active Directory-Sicherheitsstandards
-description: Informationen zu Sicherheitsstandardrichtlinien zum Schutz von Organisationen vor gängigen Angriffen
+description: Informationen zu Sicherheitsstandardrichtlinien zum Schutz von Organisationen vor gängigen Angriffen in Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 05/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f307553a97973d03b0699248373e53e4845aa39a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.custom: contperfq4
+ms.openlocfilehash: 385107f3bb5dd30a118d3a5f7a5f14213f0ad1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869917"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554531"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
-Die Aufrechterhaltung der Sicherheit kann schwierig sein, da gängige identitätsbezogene Angriffe immer zahlreicher auftreten. Zu diesen zählen Kennwortspray- und Replay-Angriffe sowie Phishing.
+Die Aufrechterhaltung der Sicherheit kann schwierig sein, da gängige identitätsbezogene Angriffe, z. B. Kennwortspray, Replay und Phishing, immer zahlreicher und beliebter werden. Sicherheitsstandards in Azure Active Directory (Azure AD) können den Schutz Ihrer Organisation vor solchen Angriffen mit vorkonfigurierten Sicherheitseinstellungen vereinfachen:
 
-Die Sicherheitsstandards in Azure Active Directory (Azure AD) erleichtern es, die Sicherheit zu erhöhen und Ihr Unternehmen vor gängigen Angriffen zu schützen. Sie umfassen vorkonfigurierte Sicherheitseinstellungen für diese verbreiteten Angriffe. 
-
-Microsoft stellt allen Benutzern Sicherheitsstandards zur Verfügung. Das Ziel ist sicherzustellen, dass in allen Organisationen eine Standardsicherheitsebene ohne zusätzliche Kosten aktiviert ist. Sie aktivieren die Sicherheitsstandards im Azure-Portal.
+- Festlegen, dass sich alle Benutzer für Azure Multi-Factor Authentication registrieren müssen.
+- Festlegen, dass Administratoren mehrstufige Authentifizierung durchführen müssen.
+- Blockieren älterer Authentifizierungsprotokolle.
+- Festlegen, dass Benutzer bei Bedarf mehrstufige Authentifizierung ausführen müssen.
+- Schützen privilegierter Aktivitäten Zugriff auf das Azure-Portal.
 
 ![Screenshot: Azure-Portal mit Umschaltfläche zum Aktivieren der Sicherheitsstandards](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
-> [!TIP]
-> Wenn Ihr Mandant am 22. Oktober 2019 oder danach erstellt wurde, ist es möglich, dass Sie bereits das neue, sichere Standardverhalten nutzen und die Sicherheitsstandards in Ihrem Mandanten aktiviert wurden. Um alle unsere Benutzer zu schützen, werden die Sicherheitsstandards für alle neu erstellten Mandanten eingeführt.
-
 Weitere Informationen dazu, warum diese Sicherheitsstandards verfügbar gemacht werden, finden Sie im Blogbeitrag von Alex Weinert [Introducing security defaults](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414) (Einführung von Sicherheitsstandards).
 
-## <a name="unified-multi-factor-authentication-registration"></a>Einheitliche Registrierung für die mehrstufige Authentifizierung
+## <a name="availability"></a>Verfügbarkeit
 
-Alle Benutzer in Ihrem Mandanten müssen sich über den Azure Multi-Factor Authentication-Dienst für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) registrieren. Benutzer haben 14 Tage Zeit, sich mithilfe der Microsoft Authenticator-App für MFA zu registrieren. Nach Ablauf der 14 Tage kann der Benutzer sich erst wieder anmelden, nachdem die MFA-Registrierung durchgeführt wurde.
+Microsoft stellt allen Benutzern Sicherheitsstandards zur Verfügung. Das Ziel ist sicherzustellen, dass in allen Organisationen eine Standardsicherheitsebene ohne zusätzliche Kosten aktiviert ist. Sie aktivieren die Sicherheitsstandards im Azure-Portal. Wenn Ihr Mandant am oder nach dem 22. Oktober 2019 erstellt wurde, ist es möglich, dass in Ihrem Mandanten bereits Sicherheitsstandards aktiviert sind. Um alle unsere Benutzer zu schützen, werden die Sicherheitsstandards für alle neu erstellten Mandanten eingeführt.
 
-Uns ist bewusst, dass einige Benutzer möglicherweise abwesend sind oder sich unmittelbar nach Aktivierung der Sicherheitsstandards nicht innerhalb von 14 Tagen anmelden werden. Um sicherzustellen, dass jedem Benutzer ausreichend Zeit für die MFA-Registrierung eingeräumt wird, ist der Zeitraum von 14 Tagen für jeden Benutzer individuell festgelegt. Die 14-tägige Frist eines Benutzers beginnt nach seiner ersten erfolgreichen interaktiven Anmeldung nach Aktivierung der Sicherheitsstandards.
+### <a name="whos-it-for"></a>Für wen eignet sich diese Funktion?
 
-## <a name="multi-factor-authentication-enforcement"></a>Erzwingen der mehrstufigen Authentifizierung
+- Wenn Sie ein Unternehmen sind, das seinen Sicherheitsstatus erhöhen möchte, Sie aber nicht wissen, wie oder wo Sie anfangen sollen, sind die Sicherheitsstandards für Sie von Nutzen.
+- Wenn Sie ein Unternehmen sind, das den Free-Tarif der Azure Active Directory-Lizenzierung nutzt, sind die Sicherheitsstandards für Sie geeignet.
+
+### <a name="who-should-use-conditional-access"></a>Wer sollte bedingten Zugriff verwenden?
+
+- Wenn Sie eine Organisation sind, die derzeit Richtlinien für den bedingten Zugriff verwendet, um Signale zusammenzuführen, Entscheidungen zu treffen und Organisationsrichtlinien zu erzwingen, sind Sicherheitsstandards möglicherweise nicht für Sie geeignet. 
+- Wenn Sie ein Unternehmen mit Azure Active Directory Premium-Lizenzen sind, sind Sicherheitsstandards möglicherweise nicht das Richtige für Sie.
+- Wenn Ihre Organisation über komplexe Sicherheitsanforderungen verfügt, sollten Sie bedingten Zugriff in Erwägung ziehen.
+
+## <a name="policies-enforced"></a>Erzwungene Richtlinien
+
+### <a name="unified-multi-factor-authentication-registration"></a>Einheitliche Registrierung für die mehrstufige Authentifizierung
+
+Alle Benutzer in Ihrem Mandanten müssen sich für mehrstufige Authentifizierung (MFA) in Form von Azure Multi-Factor Authentication registrieren. Benutzer haben 14 Tage Zeit, sich mithilfe der Microsoft Authenticator-App für Azure Multi-Factor Authentication zu registrieren. Nach Ablauf der 14 Tage kann sich der Benutzer erst nach erfolgter Registrierung anmelden. Die 14-tägige Frist eines Benutzers beginnt nach seiner ersten erfolgreichen interaktiven Anmeldung nach Aktivierung der Sicherheitsstandards.
 
 ### <a name="protecting-administrators"></a>Schützen von Administratoren
 
-Benutzer mit Zugriff auf privilegierte Konten haben erweiterten Zugriff auf Ihre Umgebung. Aufgrund der weitreichenden Befugnisse, die diese Konten haben, sollten Sie sie mit Bedacht verwalten. Eine gängige Methode zur Verbesserung des Schutzes von privilegierten Konten ist eine strengere Form der Kontoüberprüfung für die Anmeldung. In Azure AD können Sie eine striktere Kontoüberprüfung erreichen, indem Sie eine mehrstufige Authentifizierung anfordern.
+Benutzer mit privilegiertem Zugriff besitzen erweiterten Zugriff auf Ihre Umgebung. Aufgrund der weitreichenden Befugnisse, die diese Konten haben, sollten Sie sie mit Bedacht verwalten. Eine gängige Methode zur Verbesserung des Schutzes von privilegierten Konten ist eine strengere Form der Kontoüberprüfung für die Anmeldung. In Azure AD können Sie eine striktere Kontoüberprüfung erreichen, indem Sie mehrstufige Authentifizierung verlangen.
 
-Nach Abschluss der MFA-Registrierung ist für die folgenden 9 Azure AD-Administratorrollen bei jeder Anmeldung eine zusätzliche Authentifizierung erforderlich:
+Nach Abschluss der Azure Multi-Factor Authentication-Registrierung ist für die folgenden 9 Azure AD-Administratorrollen bei jeder Anmeldung eine zusätzliche Authentifizierung erforderlich:
 
 - Globaler Administrator
 - SharePoint-Administrator
 - Exchange-Administrator
 - Administrator für den bedingten Zugriff
 - Sicherheitsadministrator
-- Helpdeskadministrator oder Kennwortadministrator
+- Helpdesk-Administrator
 - Rechnungsadministrator
 - Benutzeradministrator
 - Authentifizierungsadministrator
@@ -63,7 +76,7 @@ Wir gehen häufig davon aus, dass nur Administratorkonten durch eine mehrstufige
 
 Nachdem die Angreifer Zugang erhalten haben, können sie im Namen des ursprünglichen Kontoinhabers Zugriff auf privilegierten Informationen anfordern. Sie können sogar das gesamte Verzeichnis herunterladen, um einen Phishing-Angriff auf Ihr gesamtes Unternehmen durchzuführen. 
 
-Eine gängige Methode zur Verbesserung des Schutzes für alle Benutzer besteht in einer strengeren Kontoüberprüfung, beispielsweise durch eine mehrstufige Authentifizierung (MFA). Nachdem die Benutzer die MFA-Registrierung abgeschlossen haben, werden sie bei Bedarf zu einer zusätzlichen Authentifizierung aufgefordert.
+Eine gängige Methode zur Verbesserung des Schutzes für alle Benutzer besteht in einer strengeren Kontoüberprüfung, beispielsweise durch eine mehrstufige Authentifizierung (MFA). Nachdem die Benutzer die MFA-Registrierung abgeschlossen haben, werden sie bei Bedarf zu einer zusätzlichen Authentifizierung aufgefordert. Diese Funktion schützt alle Anwendungen, die bei Azure AD registriert sind (einschließlich SaaS-Anwendungen).
 
 ### <a name="blocking-legacy-authentication"></a>Blockieren der Legacyauthentifizierung
 
@@ -78,6 +91,8 @@ Nach Aktivierung der Sicherheitsstandards in Ihrem Mandanten werden alle Authent
 
 > [!WARNING]
 > Stellen Sie vor dem Aktivieren von Sicherheitsstandards sicher, dass Ihre Administratoren keine älteren Authentifizierungsprotokolle verwenden. Weitere Informationen finden Sie unter [Blockieren der Legacyauthentifizierung](concept-fundamentals-block-legacy-authentication.md).
+
+- [Einrichten eines Multifunktionsgeräts oder einer -anwendung zum Senden von E-Mails mit Office 365 und Microsoft 365](https://docs.microsoft.com/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>Schützen privilegierter Aktionen
 
@@ -101,21 +116,26 @@ Nach Aktivierung der Sicherheitsstandards in Ihrem Mandanten muss jeder Benutzer
 
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 
-Nachfolgend werden zusätzliche Aspekte im Zusammenhang mit der Bereitstellung von Sicherheitsstandards für Ihren Mandanten beleuchtet.
+Nachfolgend werden zusätzliche Aspekte im Zusammenhang mit der Bereitstellung von Sicherheitsstandards beleuchtet.
 
 ### <a name="authentication-methods"></a>Authentifizierungsmethoden
 
-Sicherheitsstandards ermöglichen die Registrierung für die mehrstufige Authentifizierung und deren Nutzung **unter alleiniger Verwendung der Microsoft Authenticator-App mit Benachrichtigungen**. Der bedingte Zugriff ermöglicht die Verwendung und Aktivierung einer beliebigen Authentifizierungsmethode, für die sich der Administrator entscheidet.
+Diese kostenlosen Sicherheitsstandards ermöglichen die Registrierung für mehrstufige Authentifizierung und deren Nutzung **unter alleiniger Verwendung der Microsoft Authenticator-App mit Benachrichtigungen**. Der bedingte Zugriff ermöglicht die Verwendung und Aktivierung einer beliebigen Authentifizierungsmethode, für die sich der Administrator entscheidet.
 
-|   | Standardwerte für die Sicherheit | Bedingter Zugriff |
+| Methode | Standardwerte für die Sicherheit | Bedingter Zugriff |
 | --- | --- | --- |
 | Benachrichtigung über mobile App | X | X |
-| Prüfcode aus mobiler App oder Hardwaretoken |   | X |
+| Prüfcode aus mobiler App oder Hardwaretoken | X** | X |
 | Textnachricht an Telefon |   | X |
 | Auf Telefon anrufen |   | X |
-| App-Kennwörter |   | X** |
+| App-Kennwörter |   | X*** |
 
-** App-Kennwörter sind nur in Szenarien mit benutzerbasierter MFA mit Legacyauthentifizierung verfügbar, wenn diese Methode von Administratoren aktiviert wurde.
+- ** Benutzer können Prüfcodes von der Microsoft Authenticator-App verwenden, können sich jedoch nur mit der Benachrichtigungsoption registrieren.
+- ** App-Kennwörter sind nur in Szenarien mit benutzerbasierter MFA mit Legacyauthentifizierung verfügbar, wenn diese Methode von Administratoren aktiviert wurde.
+
+### <a name="disabled-mfa-status"></a>Deaktivierter MFA-Status
+
+Wenn Ihre Organisation früher benutzerbasierte Azure Multi-Factor Authentication verwendet hat, sollten Sie nicht beunruhigt sein, wenn Sie auf der Statusseite der mehrstufigen Authentifizierung keine Benutzer mit dem Status  **Aktiviert** oder  **Erzwungen** sehen. **Deaktiviert** ist der geeignete Status für Benutzer, die Sicherheitsstandards oder auf bedingtem Zugriff basierende Azure Multi-Factor Authentication verwenden.
 
 ### <a name="conditional-access"></a>Bedingter Zugriff
 
@@ -123,13 +143,13 @@ Sie können den bedingten Zugriff zum Konfigurieren von Richtlinien verwenden, d
 
 ![Warnmeldung mit dem Hinweis, dass Sicherheitsstandards und bedingter Zugriff nicht gleichzeitig verwendet werden können](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 
-Hier finden Sie Anleitungen dazu, wie Sie mithilfe des bedingten Zugriffs äquivalente Richtlinien konfigurieren können:
+Hier finden Sie schrittweise Anleitungen, wie Sie bedingten Zugriff verwenden können, um äquivalente Richtlinien zu den durch Sicherheitsstandards aktivierten Richtlinien zu konfigurieren:
 
 - [Vorschreiben der MFA für Administratoren](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [Vorschreiben der MFA für die Azure-Verwaltung](../conditional-access/howto-conditional-access-policy-azure-management.md)
 - [Blockieren älterer Authentifizierungsmethoden](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [Erzwingen der MFA für alle Benutzer](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [Anfordern von Azure MFA-Registrierung](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – Erfordert Azure AD Identity Protection
+- [Verlangen von Azure MFA-Registrierung](../identity-protection/howto-identity-protection-configure-mfa-policy.md): Erfordert Azure AD Identity Protection von Azure AD Premium P2.
 
 ## <a name="enabling-security-defaults"></a>Aktivieren von Sicherheitsstandards
 

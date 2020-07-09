@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Azure Dev Spaces in einem AKS-Cluster aktivieren und die clientseitigen Tools installieren.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: 3666eeb995c73615c522200a3619d785814ea0b5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: b62c4a4861529c19363f159b8cc64a32a0ba11e8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873520"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83996260"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Aktivieren von Azure Dev Spaces in einem AKS-Cluster und Installieren der clientseitigen Tools
 
@@ -60,24 +60,6 @@ Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup'
 
 Der obige Befehl entfernt Azure Dev Spaces aus dem Cluster *MyAKS* in *MyResourceGroup*. Alle Namespaces, die Sie mit Azure Dev Spaces erstellt haben, bleiben zusammen mit ihren Workloads erhalten, neue Workloads in diesen Namespaces werden jedoch nicht mit Azure Dev Spaces instrumentiert. Wenn Sie darüber hinaus vorhandene Pods neu starten, die mit Azure Dev Spaces instrumentiert werden, werden möglicherweise Fehler angezeigt. Diese Pods müssen ohne Azure Dev Spaces-Tools neu bereitgestellt werden. Wenn Sie Azure Dev Spaces vollständig aus Ihrem Cluster entfernen möchten, löschen Sie alle Pods in sämtlichen Namespaces, in denen Azure Dev Spaces aktiviert war.
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-azure-portal"></a>Aktivieren oder Entfernen von Azure Dev Spaces über das Azure-Portal
-
-Bevor Sie Dev Spaces mit dem Azure-Portal aktivieren können, benötigen Sie Folgendes:
-* Ein Azure-Abonnement. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto][az-portal-create-account] erstellen.
-* [Einen AKS-Cluster][create-aks-portal] in einer [unterstützten Region][supported-regions].
-
-Aktivieren von Azure Dev Spaces über das Azure-Portal:
-1. Melden Sie sich beim [Azure-Portal][az-portal] an.
-1. Navigieren Sie zu Ihrem AKS-Cluster.
-1. Wählen Sie das Menüelement *Dev Spaces* aus.
-1. Ändern Sie *Azure Dev Spaces aktivieren* in *Ja*, und klicken Sie auf *Speichern*.
-
-![Aktivieren von Dev Spaces im Azure-Portal](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
-
-Bei der Aktivierung von Azure Dev Spaces über das Azure-Portal werden **keine** clientseitigen Tools für Azure Dev Spaces installiert.
-
-Wenn Sie Azure Dev Spaces aus Ihrem AKS-Cluster entfernen möchten, ändern Sie *Dev Spaces aktivieren* in *Nein*, und klicken Sie auf *Speichern*. Alle Namespaces, die Sie mit Azure Dev Spaces erstellt haben, bleiben zusammen mit ihren Workloads erhalten, neue Workloads in diesen Namespaces werden jedoch nicht mit Azure Dev Spaces instrumentiert. Wenn Sie darüber hinaus vorhandene Pods neu starten, die mit Azure Dev Spaces instrumentiert werden, werden möglicherweise Fehler angezeigt. Diese Pods müssen ohne Azure Dev Spaces-Tools neu bereitgestellt werden. Wenn Sie Azure Dev Spaces vollständig aus Ihrem Cluster entfernen möchten, löschen Sie alle Pods in sämtlichen Namespaces, in denen Azure Dev Spaces aktiviert war.
-
 ## <a name="install-the-client-side-tools"></a>Installieren der clientseitigen Tools
 
 Sie können die clientseitigen Azure Dev Spaces-Tools verwenden, um mit Dev Spaces über einen AKS-Cluster auf Ihrem lokalen Computer zu interagieren. Es gibt mehrere Möglichkeiten, die clientseitigen Tools zu installieren:
@@ -94,7 +76,6 @@ Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komp
 > [Schnellstart: Entwicklung im Team unter Kubernetes: Azure Dev Spaces][team-development-qs]
 
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
-[create-aks-portal]: ../../aks/kubernetes-walkthrough-portal.md#create-an-aks-cluster
 [install-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [team-development-qs]: ../quickstart-team-development.md

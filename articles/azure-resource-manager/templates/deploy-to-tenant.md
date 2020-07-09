@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen für einen Mandanten
 description: Hier erfahren Sie, wie Sie Ressourcen im Mandantenbereich in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: d72b4a63e564732a9a4baaf8b8cd94d0f165e12a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/08/2020
+ms.openlocfilehash: 45541bcbea5a80e55dbc9f80e1eae8e17189bf6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653336"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945442"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Erstellen von Ressourcen auf der Mandantenebene
 
@@ -72,7 +72,7 @@ Verwenden Sie bei der Azure CLI [az deployment tenant create](/cli/azure/deploym
 az deployment tenant create \
   --name demoTenantDeployment \
   --location WestUS \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 Verwenden Sie für Azure PowerShell den Befehl [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
@@ -81,7 +81,7 @@ Verwenden Sie für Azure PowerShell den Befehl [New-AzTenantDeployment](/powersh
 New-AzTenantDeployment `
   -Name demoTenantDeployment `
   -Location "West US" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 Verwenden Sie für die REST-API [Bereitstellungen: Erstellen oder Aktualisieren im Mandantenbereich](/rest/api/resources/deployments/createorupdateattenantscope).
@@ -117,7 +117,7 @@ Bei Mandantenbereitstellungen müssen bei der Verwendung von Vorlagenfunktionen 
 
 ## <a name="create-management-group"></a>Erstellen einer Verwaltungsgruppe
 
-Die [folgende Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/new-mg) dient zum Erstellen einer Verwaltungsgruppe:
+Die [folgende Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg) dient zum Erstellen einer Verwaltungsgruppe:
 
 ```json
 {
@@ -143,7 +143,7 @@ Die [folgende Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/
 
 ## <a name="assign-role"></a>Zuweisen einer Rolle
 
-Die [folgende Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment) dient zum Zuweisen einer Rolle im Mandantenbereich:
+Die [folgende Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment) dient zum Zuweisen einer Rolle im Mandantenbereich:
 
 ```json
 {

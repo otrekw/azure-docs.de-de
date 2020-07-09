@@ -3,14 +3,14 @@ title: Erste Schritte mit der Azure Service Fabric CLI
 description: Hier erfahren Sie, wie Sie die Azure Service Fabric CLI verwenden. Es wird beschrieben, wie Sie eine Verbindung mit einem Cluster herstellen und Anwendungen verwalten.
 author: jeffj6123
 ms.topic: conceptual
-ms.date: 1/16/2020
+ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229458"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681799"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -30,7 +30,8 @@ Die Service Fabric-Befehlszeilenschnittstelle ist zur Unterstützung der neueste
 
 | CLI-Version   | Unterstützte Laufzeitversion |
 |---------------|---------------------------|
-| Neueste (~= 9)  | Neueste (~= 7)              |
+| Neueste (~= 10) | Neueste (~= 7.1)            |
+| 9.0.0         | 7.1                       |
 | 8.0.0         | 6,5                       |
 | 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |

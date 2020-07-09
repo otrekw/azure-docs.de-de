@@ -3,16 +3,16 @@ title: Verwaltetes Datenträgerbursting
 description: Hier erfahren Sie mehr über Datenträgerbursting für Azure-Datenträger und Datenträgerbursting für virtuelle Azure-Computer.
 author: albecker1
 ms.author: albecker
-ms.date: 04/27/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 25aa9fc166e831acd2ed0389bbbe4d2dc7e04b19
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: f92fae38d49c51dfe87a68b023ba779e89b0e0bc
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594745"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295455"
 ---
 # <a name="disk-bursting"></a>Datenträgerbursting
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -24,9 +24,6 @@ Burstingunterstützung auf VM-Ebene ist in allen Regionen in der öffentlichen C
 Bursting ist für virtuelle Computer, die diese Technologie unterstützen, standardmäßig aktiviert.
 
 ## <a name="disk-level-bursting"></a>Bursting auf Datenträgerebene
-Bursting steht auch für unsere [Premium-SSDs](disks-types.md#premium-ssd) für Datenträgergrößen P20 und kleiner in allen Regionen zur Verfügung. Das Datenträgerbursting ist bei neuen Bereitstellungen der unterstützten Datenträgergrößen standardmäßig aktiviert. Bei vorhandenen Datenträgergrößen, die das Datenträgerbursting unterstützen, kann die Funktion durch eine der folgenden Methoden aktiviert werden: 
-- **Neustarten der VM** 
-- **Trennen und erneutes Anfügen des Datenträgers**
-
+Bursting steht auch für unsere [Premium-SSDs](disks-types.md#premium-ssd) für die Datenträgergrößen P20 und kleiner in allen Regionen („Azure, öffentlich“, Government und China-Clouds) zur Verfügung. Das Datenträgerbursting ist standardmäßig in allen neuen und vorhandenen Bereitstellungen der unterstützten Datenträgergrößen aktiviert. 
 
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting-2.md)]

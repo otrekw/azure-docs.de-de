@@ -5,15 +5,15 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 06/30/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4860dcac666f790fed199536338e50a967113c20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f707ccaaf150f4dbd799ca56bf823968a6889a4b
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76748899"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856552"
 ---
 Dieser Artikel enthält eine Übersicht über die Verfügbarkeitsfunktionen von virtuellen Azure-Computern (VMs).
 
@@ -48,17 +48,6 @@ Mit diesem Ansatz wird sichergestellt, dass mindestens eine Instanz Ihrer Anwend
 ## <a name="virtual-machines-scale-sets"></a>Skalierungsgruppen für virtuelle Computer 
 
 Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe VMs mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Skalierungsgruppen ermöglichen Hochverfügbarkeit für Ihre Anwendungen und das zentrale Verwalten, Konfigurieren und Aktualisieren zahlreicher VMs. Es empfiehlt sich, mindestens zwei VMs in einer Skalierungsgruppe zu erstellen, um eine Anwendung mit hoher Verfügbarkeit zu erhalten und die [Azure-SLA von 99,95 Prozent](https://azure.microsoft.com/support/legal/sla/virtual-machines/) zu erfüllen. Für die Skalierungssgruppe selbst entstehen keine Kosten. Sie bezahlen nur für die einzelnen VM-Instanzen, die Sie erstellen. Wenn ein einzelner virtuelle Computer [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) verwendet, gilt die Azure-SLA für ungeplante Wartungsereignisse. VMs in einer Skalierungsgruppe können über mehrere Updatedomänen und Fehlerdomänen hinweg bereitgestellt werden, um die Verfügbarkeit und Ausfallsicherheit für den Fall von Rechenzentrumsausfällen sowie geplanten oder ungeplanten Wartungsereignissen zu maximieren. VMs in einer Skalierungsgruppe können auch in einer einzelnen Verfügbarkeitszone oder regional bereitgestellt werden. Die Bereitstellungsoptionen für Verfügbarkeitszonen können je nach Orchestrierungsmodus variieren.
-
-### <a name="preview-orchestration-mode-preview"></a>Vorschau: Orchestrierungsmodus (Vorschau)
-Anhand von VM-Skalierungsgruppen können Sie den Orchestrierungsmodus angeben.  Mit dem Orchestrierungsmodus für VM-Skalierungsgruppe (Vorschauversion) können Sie nun wählen, ob die Skalierungsgruppe VMs orchestrieren soll, die explizit außerhalb eines Konfigurationsmodells für die Skalierungsgruppe erstellt wurden, oder VM-Instanzen, die implizit basierend auf dem Konfigurationsmodell erstellt wurden. Wählen Sie den Orchestrierungsmodus aus, über den das VM-Orchestrierungsmodell eine Gruppierung der explizit definierten VMs in einer Region oder Verfügbarkeitszone zulässt. VMs, die in einer Verfügbarkeitszone bereitgestellt werden, bieten eine Zonenisolierung für VMs, weil sie an die Grenze der Verfügbarkeitszone gebunden sind und nicht durch Ausfälle beeinträchtigt werden, die möglicherweise in anderen Verfügbarkeitszonen in der Region auftreten. 
-
-|   | „orchestrationMode“: „VM“ (VirtualMachine)| „orchestrationMode“: „ScaleSetVM“ (VirtualMachineScaleSetVM) |
-|----|----|----|
-| VM-Konfigurationsmodell| Keine. „VirtualMachineProfile“ ist im Skalierungsgruppenmodell nicht definiert. | Erforderlich. „VirtualMachineProfile“ wird in das Skalierungsgruppenmodell eingefügt. |
-| Hinzufügen einer neuen VM zu einer Skalierungsgruppe| VMs werden bei der Erstellung explizit zur Skalierungsgruppe hinzugefügt. | VMs werden implizit erstellt und der Skalierungsgruppe basierend auf dem VM-Konfigurationsmodell, der Anzahl der Instanzen und den AutoScaling-Regeln hinzugefügt. |
-| Verfügbarkeitszonen| Unterstützt die regionale Bereitstellung oder VMs in einer Verfügbarkeitszone.| Unterstützt regionale Bereitstellung oder mehrere Verfügbarkeitszonen; kann die Strategie zum Sicherstellen eines Zonengleichgewichts definieren. |
-| Fehlerdomänen| Kann die Anzahl der Fehlerdomänen definieren. 2 oder 3 basierend auf der regionalen Unterstützung und 5 für Verfügbarkeitszonen. Die zugewiesene VM-Fehlerdomäne bleibt während des VM-Lebenszyklus erhalten, einschließlich der Freigabe und dem Neustart. | Kann 1, 2 oder 3 Fehlerdomänen für nicht zonenbasierte Bereitstellungen und 5 für Verfügbarkeitszonenbereitstellungen definieren. Die zugewiesene VM-Fehlerdomäne bleibt nicht im VM-Lebenszyklus erhalten, VMs werden bei der Zuordnung einer Fehlerdomäne zugewiesen. |
-| Updatedomänen| N/V. Updatedomänen werden automatisch Fehlerdomänen zugeordnet.| N/V. Updatedomänen werden automatisch Fehlerdomänen zugeordnet. |
 
 **Fehler- und Updatedomänen**
 

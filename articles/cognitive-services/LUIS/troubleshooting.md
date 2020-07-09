@@ -1,15 +1,15 @@
 ---
 title: 'Häufig gestellte Fragen (FAQ): LUIS'
 description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Language Understanding (LUIS).
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: b45f3c43e70502b2734696a66d2a497c2213d1b9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592847"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054830"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -43,7 +43,7 @@ Ja, beim Hinzufügen von weiteren Bezeichnungen für andere Absichten sollten Si
 Informationen hierzu finden Sie im Tutorial zur [Bing-Rechtschreibprüfungs-API v7](luis-tutorial-bing-spellcheck.md). LUIS setzt die Einschränkungen um, die durch die Bing-Rechtschreibprüfungs-API v7 vorgegeben werden.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Wie kann ich eine LUIS-App programmgesteuert bearbeiten?
-Sie können Ihre LUIS-App mit der [Erstellungs-API](https://go.microsoft.com/fwlink/?linkid=2092087) programmgesteuert bearbeiten. Unter [Aufrufen der Erstellungs-API für LUIS-Apps](./get-started-get-model-rest-apis.md) und [Build a LUIS app programmatically using Node.js (Programmgesteuertes Erstellen einer LUIS-App mit Node.js)](./luis-tutorial-node-import-utterances-csv.md) finden Sie Beispiele zum Aufrufen der Erstellungs-API. Die Erstellungs-API setzt voraus, dass Sie einen [Erstellungsschlüssel](luis-concept-keys.md#azure-resources-for-luis) anstelle eines Endpunktschlüssels verwenden. Bei der programmgesteuerte Erstellung sind bis 1.000.000 Aufrufe pro Monat und fünf Transaktionen pro Sekunde möglich. Weitere Informationen zu den mit LUIS verwendeten Schlüsseln finden Sie unter [Verwalten von Schlüsseln](./luis-concept-keys.md).
+Sie können Ihre LUIS-App mit der [Erstellungs-API](https://go.microsoft.com/fwlink/?linkid=2092087) programmgesteuert bearbeiten. Unter [Aufrufen der Erstellungs-API für LUIS-Apps](./get-started-get-model-rest-apis.md) und [Build a LUIS app programmatically using Node.js (Programmgesteuertes Erstellen einer LUIS-App mit Node.js)](./luis-tutorial-node-import-utterances-csv.md) finden Sie Beispiele zum Aufrufen der Erstellungs-API. Die Erstellungs-API setzt voraus, dass Sie einen [Erstellungsschlüssel](luis-how-to-azure-subscription.md#azure-resources-for-luis) anstelle eines Endpunktschlüssels verwenden. Bei der programmgesteuerte Erstellung sind bis 1.000.000 Aufrufe pro Monat und fünf Transaktionen pro Sekunde möglich. Weitere Informationen zu den mit LUIS verwendeten Schlüsseln finden Sie unter [Verwalten von Schlüsseln](./luis-how-to-azure-subscription.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Wo finde ich das Feature für Muster, mit den bisher nach regulären Ausdrücken gesucht werden konnte?
 Das bisherige **Feature für Muster** ist als veraltet gekennzeichnet und wurde durch **[Muster](luis-concept-patterns.md)** ersetzt.
@@ -123,7 +123,7 @@ Weitere Tipps finden Sie in den [Best Practices](luis-concept-best-practices.md)
 LUIS nutzt für die [Tokenisierung](luis-language-support.md#tokenization) der Äußerung deren [Kultur](luis-glossary.md#token). Sowohl der ursprüngliche Wert als auch der nach der Tokenisierung vorhandene Wert können [extrahiert](luis-concept-data-extraction.md#tokenized-entity-returned) werden.
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Wie lässt sich ein LUIS-Endpunkt erstellen und zuweisen?
-Erstellen Sie zunächst für Ihren [Servicelevel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) den [Endpunktschlüssel](luis-how-to-azure-subscription.md) in Azure. [Weisen Sie den Schlüssel](luis-how-to-azure-subscription.md) auf der Seite **[Azure-Ressourcen](luis-how-to-azure-subscription.md)** zu. Für diese Aktion steht keine API zur Verfügung. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md) verwendet wird.
+Erstellen Sie zunächst für Ihren [Servicelevel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) den [Endpunktschlüssel](luis-how-to-azure-subscription.md) in Azure. [Weisen Sie den Schlüssel](luis-how-to-azure-subscription.md) auf der Seite **[Azure-Ressourcen](luis-how-to-azure-subscription.md)** zu. Für diese Aktion steht keine API zur Verfügung. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-how-to-azure-subscription.md) verwendet wird.
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Wie lassen sich LUIS-Bewertungen interpretieren?
 Ihr System sollte die am höchsten bewertete Absicht unabhängig vom Wert verwenden. Ein Wert unter 0,5 (weniger als 50 %) ist nicht zwangsläufig mit einer geringen Zuverlässigkeit von LUIS gleichzusetzen. Durch das Bereitstellen weiterer Trainingsdaten kann die [Bewertung](luis-concept-prediction-score.md) für die wahrscheinlichste Absicht verbessert werden.
@@ -144,10 +144,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ```
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Bisher hat meine LUIS-App problemlos funktioniert. Nun werden jedoch 403-Fehlermeldungen angezeigt. Ich habe die App nicht geändert. Wie behebe ich das Problem?
-Befolgen Sie [diese Anweisungen](#how-do-i-create-and-assign-a-luis-endpoint-key), um einen LUIS-Endpunktschlüssel zu erstellen und ihn der App zuzuweisen. Danach müssen Sie die HTTP-Anforderung der Clientanwendung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md) verwendet wird. Wenn Sie eine neue Ressource in einer anderen Region erstellt haben, ändern Sie auch die Region der HTTP-Clientanforderung.
+Befolgen Sie [diese Anweisungen](#how-do-i-create-and-assign-a-luis-endpoint-key), um einen LUIS-Endpunktschlüssel zu erstellen und ihn der App zuzuweisen. Danach müssen Sie die HTTP-Anforderung der Clientanwendung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-how-to-azure-subscription.md) verwendet wird. Wenn Sie eine neue Ressource in einer anderen Region erstellt haben, ändern Sie auch die Region der HTTP-Clientanforderung.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>Wie sichere ich meinen LUIS-Endpunkt?
-Informationen hierzu finden Sie unter [Securing the endpoint (Schützen von Endpunkten)](luis-concept-keys.md#securing-the-endpoint).
+Informationen hierzu finden Sie unter [Securing the endpoint (Schützen von Endpunkten)](luis-how-to-azure-subscription.md#securing-the-endpoint).
 
 ## <a name="working-within-luis-limits"></a>LUIS-Grenzwerte
 
@@ -206,7 +206,7 @@ Wenn Ihre App bereits vor der allgemeinen Verfügbarkeit von LUIS bestand, wurde
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Wie erfahre ich, welchen Schlüssel ich benötige, wo ich diesen erhalte und wie ich ihn verwende?
 
-Informationen zu den Unterschieden zwischen dem Erstellungsschlüssel und dem Vorhersage-Laufzeitschlüssel finden Sie unter [Erstellungsschlüssel und Endpunktschlüssel für Abfragevorhersagen in LUIS](luis-concept-keys.md).
+Informationen zu den Unterschieden zwischen dem Erstellungsschlüssel und dem Vorhersage-Laufzeitschlüssel finden Sie unter [Erstellungsschlüssel und Endpunktschlüssel für Abfragevorhersagen in LUIS](luis-how-to-azure-subscription.md).
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Ich habe eine Fehlermeldung erhalten, dass nicht genügend Kontingent vorhanden ist. Wie behebe ich das Problem?
 
@@ -333,4 +333,4 @@ Videos:
 
 Weitere Informationen zu LUIS finden Sie in den folgenden Ressourcen:
 * [Mit dem Tag „LUIS“ versehene Fragen auf Stack Overflow](https://stackoverflow.com/questions/tagged/luis)
-* [MSDN-Forum für Language Understanding Intelligent Services (LUIS)](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)
+* [Seite mit häufig gestellten Fragen von Microsoft für das MSDN-Forum für Language Understanding Intelligent Services (LUIS)](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)

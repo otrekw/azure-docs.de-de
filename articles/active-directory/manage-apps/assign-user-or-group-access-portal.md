@@ -2,22 +2,22 @@
 title: Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure AD
 description: Auswählen einer Unternehmens-App zum Zuweisen eines Benutzers oder einer Gruppe in der Azure Active Directory-Vorschau
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/21/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 186e36e4625a60362c54972b16b53f0f3e6753fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2eeab9cbb68567b6af3b1381b8ec5e67e82461ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763736"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory
 
@@ -38,7 +38,7 @@ Bei den folgenden Anwendungstypen haben Sie die Möglichkeit anzufordern, dass B
 - Anwendungsproxyanwendungen mit Azure Active Directory-Vorauthentifizierung
 - Anwendungen, die auf der Azure AD-Anwendungsplattform bei Verwendung der OAuth 2.0/OpenID Connect-Authentifizierung erstellt werden (nachdem ein Benutzer oder Administrator seine Zustimmung für die Anwendung erteilt hat).
 
-Wenn eine Benutzerzuweisung erforderlich ist, können sich nur die Benutzer anmelden, die Sie der Anwendung explizit zuweisen. Sie können auf die App auf ihrer Seite „Meine Apps“ oder über einen direkten Link zugreifen. 
+Wenn eine Benutzerzuweisung erforderlich ist, können sich nur die Benutzer anmelden, die Sie der Anwendung explizit zuweisen (durch direkte Benutzerzuweisung oder basierend auf Gruppenmitgliedschaft). Sie können auf die App auf ihrer Seite „Meine Apps“ oder über einen direkten Link zugreifen. 
 
 Wenn die Zuweisung *nicht erforderlich* ist, entweder weil Sie diese Option auf **Nein** festgelegt haben oder die Anwendung einen anderen SSO-Modus verwendet, kann jeder Benutzer auf die Anwendung zugreifen. Dazu muss er über einen direkten Link zur Anwendung oder die **Benutzerzugriffs-URL** auf der Seite **Eigenschaften** der Anwendung verfügen. 
 
@@ -110,9 +110,11 @@ So fordern Sie eine Benutzerzuweisung für eine Anwendung an
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
-Weitere Informationen zum Zuweisen eines Benutzers zu einer Anwendungsrolle finden Sie in der Dokumentation zu [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)
+Weitere Informationen zum Zuweisen eines Benutzers zu einer Anwendungsrolle finden Sie in der Dokumentation zu [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0).
 
-Wenn Sie eine Gruppe einer Unternehmens-App zuweisen möchten, müssen Sie `Get-AzureADUser` durch `Get-AzureADGroup` ersetzen.
+Wenn Sie eine Gruppe einer Unternehmens-App zuweisen möchten, müssen Sie `Get-AzureADUser` durch `Get-AzureADGroup` und `New-AzureADUserAppRoleAssignment` durch `New-AzureADGroupAppRoleAssignment` ersetzen.
+
+Weitere Informationen zum Zuweisen einer Gruppe zu einer Anwendungsrolle finden Sie in der Dokumentation zu [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0).
 
 ### <a name="example"></a>Beispiel
 

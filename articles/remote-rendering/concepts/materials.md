@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8551e17ddd71e76aca0c85b9768f564ae0e5f049
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 2bc356060bacd1c04ecb3d3dd10b8322ae40b8ba
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679400"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758672"
 ---
 # <a name="materials"></a>Materialien
 
@@ -35,11 +35,15 @@ In Azure Remote Rendering gibt es zwei verschiedene Materialtypen:
 
 Wenn Sie ein Material direkt in der Gittermodellressource ändern, wirkt sich diese Änderung auf alle Instanzen des betreffenden Gittermodells aus. Eine Änderung in der MeshComponent wirkt sich hingegen nur auf die betreffende Gittermodellinstanz aus. Welche Methode besser geeignet ist, hängt vom gewünschten Verhalten ab. Der gängigste Ansatz ist aber das Ändern einer MeshComponent.
 
+## <a name="material-de-duplication"></a>Deduplizierung von Materialien
+
+Bei der Konvertierung werden mehrere Materialien mit denselben Eigenschaften und Texturen automatisch in ein einzelnes Material dedupliziert. Sie können dieses Feature in den [Konvertierungseinstellungen](../how-tos/conversion/configure-model-conversion.md) deaktivieren, zum Erzielen der optimalen Leistung empfiehlt es sich aber, das Feature beizubehalten.
+
 ## <a name="material-classes"></a>Materialklassen
 
 Alle von der API bereitgestellten Materialien sind von der Basisklasse `Material` abgeleitet. Ihr Typ kann mit `Material.MaterialSubType` oder durch direkte Umwandlung abgefragt werden:
 
-``` cs
+```cs
 void SetMaterialColorToGreen(Material material)
 {
     if (material.MaterialSubType == MaterialType.Color)
@@ -50,14 +54,33 @@ void SetMaterialColorToGreen(Material material)
     }
 
     PbrMaterial pbrMat = material as PbrMaterial;
-    if( pbrMat!= null )
+    if (pbrMat != null)
     {
-        PbrMaterial pbrMaterial = material.PbrMaterial.Value;
-        pbrMaterial.AlbedoColor = new Color4(0, 1, 0, 1);
+        pbrMat.AlbedoColor = new Color4(0, 1, 0, 1);
         return;
     }
 }
 ```
+
+```cpp
+void SetMaterialColorToGreen(ApiHandle<Material> material)
+{
+    if (*material->MaterialSubType() == MaterialType::Color)
+    {
+        ApiHandle<ColorMaterial> colorMaterial = material.as<ColorMaterial>();
+        colorMaterial->AlbedoColor({ 0, 1, 0, 1 });
+        return;
+    }
+
+    if (*material->MaterialSubType() == MaterialType::Pbr)
+    {
+        ApiHandle<PbrMaterial> pbrMat = material.as<PbrMaterial>();
+        pbrMat->AlbedoColor({ 0, 1, 0, 1 });
+        return;
+    }
+}
+```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

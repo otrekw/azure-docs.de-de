@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75771256"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956371"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Mehrere Front-Ends für Azure Load Balancer
 
@@ -102,20 +102,31 @@ Führen Sie für jeden virtuellen Computer im Back-End-Pool die folgenden Befehl
 
 Geben Sie den folgenden Befehl ein, um die Liste der Schnittstellennamen auf Ihrem virtuellen Computer abzurufen:
 
-    netsh interface show interface 
+```console
+netsh interface show interface 
+```
 
 Geben Sie für den Netzwerkadapter des virtuellen Computers (von Azure verwaltet) den folgenden Befehl ein:
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
-   (Ersetzen Sie „interfacename“ durch den Namen dieser Schnittstelle.)
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+```
+
+(Ersetzen Sie „interfacename“ durch den Namen dieser Schnittstelle.)
 
 Wiederholen Sie für jede hinzugefügte Loopbackschnittstelle die folgenden Befehle:
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
-   (Ersetzen Sie „interfacename“ durch den Namen dieser Loopbackschnittstelle.)
-     
-    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
-   (Ersetzen Sie „interfacename“ durch den Namen dieser Loopbackschnittstelle.)
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+```
+
+(Ersetzen Sie „interfacename“ durch den Namen dieser Loopbackschnittstelle.)
+
+```console
+netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+```
+
+(Ersetzen Sie „interfacename“ durch den Namen dieser Loopbackschnittstelle.)
 
 > [!IMPORTANT]
 > Die Konfiguration der Loopbackschnittstellen erfolgt innerhalb des Gastbetriebssystems. Diese Konfiguration wird nicht von Azure vorgenommen oder verwaltet. Ohne diese Konfiguration funktionieren die Regeln nicht. Integritätstestdefinitionen verwenden anstelle der Loopbackschnittstelle, die das DSR-Front-End darstellt, die DIP der VM. Deshalb muss Ihr Dienst Testantworten an einem DIP-Port bereitstellen, die den Status des Diensts wiedergeben, der an der das DSR-Front-End darstellenden Loopbackschnittstelle angeboten wird.
@@ -146,7 +157,7 @@ Das Ziel des eingehenden Datenflusses ist die Front-End-IP-Adresse der Loopbacks
 
 Beachten Sie, dass in diesem Beispiel der Zielport nicht geändert wird. Obwohl dies ein Floating IP-Szenario ist, unterstützt Azure Load Balancer auch das Definieren einer Regel, um den Back-End-Zielport zu ändern, damit er sich vom Front-End-Zielport unterscheidet.
 
-Der Floating IP-Regeltyp bildet die Grundlage für mehrere Load Balancer-Konfigurationsmuster. Ein Beispiel, das derzeit verfügbar ist, ist die [Konfiguration von SQL AlwaysOn mit mehreren Listenern](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) . Mit der Zeit werden weitere dieser Szenarien dokumentiert.
+Der Floating IP-Regeltyp bildet die Grundlage für mehrere Load Balancer-Konfigurationsmuster. Ein Beispiel, das derzeit verfügbar ist, ist die [Konfiguration von SQL AlwaysOn mit mehreren Listenern](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) . Mit der Zeit werden weitere dieser Szenarien dokumentiert.
 
 ## <a name="limitations"></a>Einschränkungen
 

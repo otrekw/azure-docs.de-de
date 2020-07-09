@@ -1,18 +1,18 @@
 ---
 title: 'Importieren aus Datenquellen: QnA Maker'
-description: Eine QnA Maker-Wissensdatenbank besteht aus einer Reihe von Frage-Antwort-Sätzen (QnA) und optionalen Metadaten, die jedem QnA-Paar zugeordnet sind.
+description: Eine QnA Maker-Wissensdatenbank besteht aus einer Reihe von Frage-Antwort-Paaren (QnA) und optionalen Metadaten, die jedem QnA-Paar zugeordnet sind.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: eaa19cb2abf84f31cda9d8894e91ec1540980b27
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804281"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993098"
 ---
 # <a name="importing-from-data-sources"></a>Importieren aus Datenquellen
 
-Eine Wissensdatenbank besteht aus Frage-Antwort-Sätzen, die über öffentliche URLs und Dateien eingefügt werden.
+Eine Wissensdatenbank besteht aus Frage- und Antwortpaaren, die über öffentliche URLs und Dateien eingefügt werden.
 
 ## <a name="data-source-locations"></a>Speicherorte von Datenquellen
 
@@ -26,7 +26,7 @@ Geplauderinhalte von QnA werden als vollständige Inhaltsdatenquelle in verschie
 
 ## <a name="structured-data-format-through-import"></a>Strukturiertes Datenformat durch Import
 
-Beim Importieren einer Wissensdatenbank wird der Inhalt der vorhandenen Wissensdatenbank ersetzt. Der Import erfordert eine strukturierte `.tsv`-Datei, die Fragen und Antworten enthält. Diese Informationen helfen QnA Maker beim Gruppieren der Frage-Antwort-Sätze und beim Zuweisen zu einer bestimmten Datenquelle.
+Beim Importieren einer Wissensdatenbank wird der Inhalt der vorhandenen Wissensdatenbank ersetzt. Der Import erfordert eine strukturierte `.tsv`-Datei, die Fragen und Antworten enthält. Diese Informationen helfen QnA Maker beim Gruppieren der Frage-Antwort-Paare und dem Zuweisen zu einer bestimmten Datenquelle.
 
 | Frage  | Antwort  | `Source`| Metadaten (1 Schlüssel: 1 Wert) |
 |-----------|---------|----|---------------------|
@@ -58,7 +58,7 @@ Die Spalte für eine `.tsv`-Datei mit Mehrfachdurchläufen, die sich speziell f�
 
 Wenn Sie nicht sicher sind, wie Sie Ihr QnA-Paar in der Datei vom Typ `.tsv` darstellen, gehen Sie wie folgt vor:
 * Verwenden Sie [dieses Beispiel](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true) zum Herunterladen von GitHub.
-* Oder erstellen Sie den Satz im QnA Maker-Portal, speichern Sie ihn, und exportieren Sie dann die Wissensdatenbank, um ein Beispiel für die Darstellung des Satzes zu erhalten.
+* Oder erstellen Sie das Paar im QnA Maker-Portal, speichern Sie es, und exportieren Sie dann die Wissensdatenbank, um ein Beispiel für die Darstellung des Paars zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

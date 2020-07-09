@@ -3,19 +3,19 @@ title: Einrichten einer öffentlichen ausgehenden IP-Adresse für Integrationsdi
 description: Erfahren Sie, wie Sie eine einzelne ausgehende IP-Adresse für Integrationsdienstumgebung (Integration Service Environments, ISEs) in Azure Logic Apps einrichten können.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 619c68b84291bc35b8216194ac4534393fde454c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/06/2020
+ms.openlocfilehash: 2132dc464ee404339d9de03c0c797426aea04ce2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191498"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927138"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Einrichten einer einzelnen IP-Adresse für eine oder mehrere Integrationsdienstumgebungen in Azure Logic Apps
 
-Wenn Sie mit Azure Logic Apps arbeiten, können Sie eine [*Integrationsdienstumgebung* (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zum Hosten von Logik-Apps einrichten, die Zugriff auf Ressourcen in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) benötigen. Wenn Sie über mehrere ISE-Instanzen verfügen, die Zugriff auf andere Endpunkte mit IP-Einschränkungen benötigen, stellen Sie eine [Azure Firewall-Instanz](../firewall/overview.md) oder ein [virtuelles Netzwerkgerät](../virtual-network/virtual-networks-overview.md#filter-network-traffic) in Ihrem virtuellen Netzwerk bereit, und leiten Sie ausgehenden Datenverkehr über die Firewall oder das virtuelle Netzwerkgerät weiter. Sie können dann für alle ISE-Instanzen in Ihrem virtuellen Netzwerk eine einzelne, öffentliche, statische und vorhersagbare IP-Adresse verwenden, um mit Zielsystemen zu kommunizieren. Auf diese Weise müssen Sie nicht für jede ISE an den Zielsystemen zusätzliche Firewallzugänge einrichten.
+Wenn Sie mit Azure Logic Apps arbeiten, können Sie eine [*Integrationsdienstumgebung* (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zum Hosten von Logik-Apps einrichten, die Zugriff auf Ressourcen in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) benötigen. Wenn Sie über mehrere ISE-Instanzen verfügen, die Zugriff auf andere Endpunkte mit IP-Einschränkungen benötigen, stellen Sie eine [Azure Firewall-Instanz](../firewall/overview.md) oder ein [virtuelles Netzwerkgerät](../virtual-network/virtual-networks-overview.md#filter-network-traffic) in Ihrem virtuellen Netzwerk bereit, und leiten Sie ausgehenden Datenverkehr über die Firewall oder das virtuelle Netzwerkgerät weiter. Sie können dann für alle ISE-Instanzen in Ihrem virtuellen Netzwerk eine einzelne, öffentliche, statische und vorhersagbare IP-Adresse verwenden, um mit den gewünschten Zielsystemen zu kommunizieren. Auf diese Weise müssen Sie nicht für jede ISE auf Ihren Zielsystemen zusätzliche Firewallzugänge einrichten.
 
 In diesem Artikel wird erläutert, wie Sie ausgehenden Datenverkehr über eine Azure Firewall-Instanz weiterleiten. Sie können aber auch ähnliche Konzepte auf ein virtuelles Netzwerkgerät anwenden, z. B. auf eine Drittanbieterfirewall aus dem Azure Marketplace. Zwar liegt in diesem Thema der Schwerpunkt auf der Einrichtung mehrerer ISE-Instanzen, doch Sie können diesen Ansatz auch für eine einzelne ISE verwenden, wenn in Ihrem Szenario die Anzahl der IP-Adressen eingeschränkt werden muss, die Zugriff benötigen. Wägen Sie ab, ob die zusätzlichen Kosten für die Firewall oder das virtuelle Netzwerkgerät für Ihr Szenario sinnvoll sind. Erfahren Sie mehr über [Azure Firewall-Preise](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
@@ -52,10 +52,12 @@ In diesem Artikel wird erläutert, wie Sie ausgehenden Datenverkehr über eine A
    | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Routenname** | <*unique-route-name*> | Ein eindeutiger Name für die Route in der Routingtabelle |
-   | **Adresspräfix** | <*destination-address*> | Die Adresse des Zielsystems, an die der Datenverkehr gesendet werden soll. Achten Sie darauf, für diese Adresse [die CIDR-Notation (Classless Interdomain Routing = klassenloses domänenübergreifendes Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) zu verwenden. |
+   | **Adresspräfix** | <*destination-address*> | Das Adressenpräfix Ihres Zielsystems, an das der ausgehende Datenverkehr gesendet werden soll. Achten Sie darauf, für diese Adresse [die CIDR-Notation (Classless Interdomain Routing = klassenloses domänenübergreifendes Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) zu verwenden. In diesem Beispiel ist dieses Adressenpräfix für einen SFTP-Server, der im Abschnitt [Einrichten von Netzwerkregeln](#set-up-network-rule) beschrieben wird. |
    | **Typ des nächsten Hops** | **Virtuelles Gerät** | Der [Hoptyp](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools), der für den ausgehenden Datenverkehr verwendet wird. |
    | **Adresse des nächsten Hops** | <*firewall-private-IP-address*> | Die private IP-Adresse für Ihre Firewall |
    |||
+
+<a name="set-up-network-rule"></a>
 
 ## <a name="set-up-network-rule"></a>Einrichten einer Netzwerkregel
 
@@ -65,7 +67,7 @@ In diesem Artikel wird erläutert, wie Sie ausgehenden Datenverkehr über eine A
 
 1. Fügen Sie der Sammlung eine Regel hinzu, die zulässt, dass Datenverkehr an das Zielsystem weitergeleitet wird.
 
-   Angenommen, Sie verfügen über eine Logik-App, die in einer ISE ausgeführt wird und mit einem SFTP-System kommunizieren muss. Sie erstellen eine Netzwerkregelsammlung mit dem Namen `LogicApp_ISE_SFTP_Outbound`, die eine Netzwerkregel mit dem Namen `ISE_SFTP_Outbound` enthält. Diese Regel lässt zu, dass Datenverkehr über die IP-Adresse eines beliebigen Subnetztes, auf dem Ihre ISE in Ihrem virtuellen Netzwerk ausgeführt wird, über die private IP-Adresse Ihrer Firewall an das SFTP-Zielsystem weitergeleitet wird.
+   Angenommen, Sie verfügen über eine Logik-App, die in einer ISE ausgeführt wird und mit einem SFTP-Server kommunizieren muss. Sie erstellen eine Netzwerkregelsammlung mit dem Namen `LogicApp_ISE_SFTP_Outbound`, die eine Netzwerkregel mit dem Namen `ISE_SFTP_Outbound` enthält. Diese Regel lässt zu, dass Datenverkehr über die IP-Adresse eines beliebigen Subnetzes, auf dem Ihre ISE in Ihrem virtuellen Netzwerk ausgeführt wird, über die private IP-Adresse Ihrer Firewall an den SFTP-Zielserver weitergeleitet wird.
 
    ![Netzwerkregel für die Firewall einrichten](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
 
@@ -85,7 +87,7 @@ In diesem Artikel wird erläutert, wie Sie ausgehenden Datenverkehr über eine A
    | **Name** | <*network-rule-name*> | Der Name Ihrer Netzwerkregel |
    | **Protokoll** | <*connection-protocols*> | Die zu verwendenden Verbindungsprotokolle. Wenn Sie z. B. NSG-Regeln verwenden, wählen Sie sowohl **TCP** als auch **UDP** und nicht nur **TCP** aus. |
    | **Quelladressen** | <*ISE-subnet-addresses*> | Die IP-Adressen der Subnetze, unter denen Ihre ISE ausgeführt wird und von denen der Datenverkehr Ihrer Logik-Apps stammt |
-   | **Zieladressen** | <*destination-IP-address*> | Die IP-Adresse des Zielsystems, an die der Datenverkehr gesendet werden soll. |
+   | **Zieladressen** | <*destination-IP-address*> | Die IP-Adresse Ihres Zielsystems, an das der ausgehende Datenverkehr gesendet werden soll. In diesem Beispiel ist diese IP-Adresse für den SFTP-Server. |
    | **Zielports** | <*destination-ports*> | Alle Ports, die ihr Zielsystem für die eingehende Kommunikation verwendet |
    |||
 

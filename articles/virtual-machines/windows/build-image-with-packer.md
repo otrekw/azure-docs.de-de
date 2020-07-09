@@ -8,17 +8,17 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 4180f62e589ef79227d8e60ca19661e1c65f0097
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ec6fcfbc171b7227c79741c00adbc16be4c7ce87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773320"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85445524"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Erstellen von Images von virtuellen Windows-Computern in Azure mit Packer
 Jeder virtuelle Computer (VM) in Azure wird anhand eines Images erstellt, das die Windows-Distribution und -Betriebssystemversion bestimmt. Images können vorinstallierte Anwendungen und Konfigurationen enthalten. Azure Marketplace enthält viele Images von Erst- und Drittanbietern für die gängigsten Betriebssysteme und Anwendungsumgebungen. Sie können jedoch auch entsprechend Ihren Anforderungen eigene benutzerdefinierte Images erstellen. In diesem Artikel wird erläutert, wie Sie mit dem Open-Source-Tool [Packer](https://www.packer.io/) benutzerdefinierte Images in Azure definieren und erstellen.
 
-Dieser Artikel wurde zuletzt am 21.02.2019 unter Verwendung von Version 1.3.0 des [Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) und Version 1.3.4 von [Packer](https://www.packer.io/docs/install/index.html) geprüft.
+Dieser Artikel wurde zuletzt am 21.02.2019 unter Verwendung von Version 1.3.0 des [Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) und Version 1.3.4 von [Packer](https://www.packer.io/docs/install) geprüft.
 
 > [!NOTE]
 > Azure bietet jetzt einen Dienst zum Definieren und Erstellen eigener benutzerdefinierter Images: Azure Image Builder (Vorschauversion). Azure Image Builder baut auf Packer auf, daher können Sie sogar Ihre vorhandenen Packer Shell Provisioner-Skripts importieren. Informationen zu den ersten Schritten mit Azure Image Builder finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Azure Image Builder](image-builder.md).
@@ -122,7 +122,7 @@ Diese Vorlage erstellt eine VM mit Windows Server 2016, installiert IIS und gene
 
 
 ## <a name="build-packer-image"></a>Erstellen des Packer-Images
-Wenn Packer noch nicht auf dem lokalen Computer installiert sein sollte, [befolgen Sie die Installationsanweisungen für Packer](https://www.packer.io/docs/install/index.html).
+Wenn Packer noch nicht auf dem lokalen Computer installiert sein sollte, [befolgen Sie die Installationsanweisungen für Packer](https://learn.hashicorp.com/packer/getting-started/install).
 
 Erstellen Sie das Image, indem Sie eine Befehlseingabeaufforderung öffnen und Ihre Packer-Vorlagendatei wie folgt angeben:
 

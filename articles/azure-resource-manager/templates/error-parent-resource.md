@@ -3,12 +3,12 @@ title: Fehler bei übergeordneten Ressourcen
 description: Hier wird beschrieben, wie bei der Arbeit mit einer übergeordneten Ressource in einer Azure Resource Manager-Vorlage Fehler behoben werden können.
 ms.topic: troubleshooting
 ms.date: 08/01/2018
-ms.openlocfilehash: f1847389d60ddf3c6abc70bc3309940c2246084e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 474cb85d16382136e24e5502b87ba8a1a65488ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76154039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673659"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>Beheben von Fehlern bei übergeordneten Ressourcen
 
@@ -52,7 +52,7 @@ Legen Sie keine Abhängigkeit fest, um diesen Fehler zu beheben, wenn die überg
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "sqlServerName": {

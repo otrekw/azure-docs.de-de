@@ -1,28 +1,26 @@
 ---
-title: 'Kommerzieller Microsoft-Marketplace: Leitfaden zur Veröffentlichung nach Angebotstyp'
+title: Leitfaden zur Veröffentlichung nach Angebotstyp – Kommerzieller Microsoft-Marketplace
 description: In diesem Artikel werden die im kommerziellen Microsoft-Marketplace verfügbaren Angebotstypen beschrieben.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 6521f19ea566719fee39c238adda8e3a068e2c25
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 72acd5c3c5fbab08b2e97421689b4f562b2ae2e8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419288"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119717"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Leitfaden zur Veröffentlichung nach Angebotstyp
 
-Sobald Sie sich [für eine Veröffentlichungsoption entschieden haben](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type), können Sie den Angebotstyp auswählen, der verwendet wird, um Ihr Angebot zu präsentieren.
+In diesem Artikel werden die im kommerziellen Marketplace verfügbaren Angebotstypen beschrieben. Der *Angebotstyp* definiert die Angebotsstruktur einschließlich der Metadaten, Artefakte und sonstigen Inhalte, mit denen das Angebot im Marketplace präsentiert wird.
 
- Der *Angebotstyp* definiert die Angebotsstruktur einschließlich der Metadaten, Artefakte und sonstigen Inhalte, mit denen das Angebot im Marketplace präsentiert wird.
+Bevor Sie ein Angebot erstellen können, und nachdem Sie [sich für eine Veröffentlichungsoption entschieden haben](determine-your-listing-type.md), müssen Sie einen Angebotstyp auswählen, der zum Präsentieren Ihres Angebots verwendet wird. Der Angebotstyp hängt davon ab, welchen Lösungstyp, welche App oder welches Dienstangebot Sie veröffentlichen möchten, sowie von der Ausrichtung des Angebots an Produkten und Diensten von Microsoft.
 
-Bevor Sie ein Angebot erstellen können, müssen Sie einen Angebotstyp auswählen. Der Angebotstyp hängt davon ab, welchen Lösungstyp, welche App oder welches Dienstangebot Sie veröffentlichen möchten, sowie von der Ausrichtung des Angebots an Produkten und Diensten von Microsoft.
-
-Ein einzelner Angebotstyp kann unterschiedlich konfiguriert werden, um andere Veröffentlichungsoptionen, Aktionsaufrufe, Bereitstellungen oder Preisgestaltungen zu ermöglichen. Die Veröffentlichungsoption und Konfiguration des Angebotstyps entsprechen auch der Angebotsberechtigung und technischen Anforderungen.
+Ein einzelner Angebotstyp kann auf verschiedene Weise konfiguriert werden, um unterschiedliche Veröffentlichungsoptionen, Aktionsaufrufe, Bereitstellungen oder Preisgestaltungen zu ermöglichen. Die Veröffentlichungsoption und Konfiguration des Angebotstyps entsprechen auch der Angebotsberechtigung und technischen Anforderungen.
 
 Bevor Sie Ihr Angebot erstellen, informieren Sie sich über die erforderlichen Berechtigungen für Storefront und Angebotstyp und darüber hinaus über die technischen Anforderungen der Veröffentlichung.
 
@@ -35,7 +33,7 @@ Azure Marketplace-Angebotstypen werden in der folgenden Tabelle aufgeführt.
 | [**Virtuelle Computer**](./marketplace-virtual-machines.md) | Verwenden Sie den VM-Angebotstyp beim Bereitstellen einer virtuellen Appliance für das Abonnement Ihres Kunden. |
 | [**Lösungsvorlagen**](./marketplace-solution-templates.md) | Verwenden Sie den Angebotstyp der Lösungsvorlage (auch als Azure-Anwendung bezeichnet), wenn für Ihre Lösung neben einem einzelnen virtuellen Computer auch eine zusätzliche Bereitstellungs- und Konfigurationsautomatisierung erforderlich ist. In Lösungsvorlagen können viele verschiedene Arten von Azure-Ressourcen genutzt werden, einschließlich VMs u. a.  |
 | [**Verwaltete Anwendungen**](./marketplace-managed-apps.md) | Verwenden der Azure-App: Angebotstyp „Verwaltete App“, wenn die folgenden Bedingungen erforderlich sind: <br> <ul> <li> Sie stellen entweder eine Abonnement-basierte Lösung für Ihren Kunden mit einer VM oder eine vollständig IaaS-basierte Lösung bereit. </li> <li>Sie oder Ihr Kunde setzen voraus, dass die Lösung von einem Partner verwaltet wird. </li> <ul> |
-| [**SaaS-Anwendungen**](./marketplace-saas-applications-technical-publishing-guide.md) | Verwenden Sie die SaaS-App-Angebotstypen, um Ihren Kunden die Möglichkeit zu geben, Ihre SaaS-basierte, technische Lösung als Abonnement zu kaufen. |
+| [**SaaS-Anwendungen**](./partner-center-portal/create-new-saas-offer.md) | Verwenden Sie die SaaS-App-Angebotstypen, um Ihren Kunden die Möglichkeit zu geben, Ihre SaaS-basierte, technische Lösung als Abonnement zu kaufen. |
 | [**Container-Angebote**](./marketplace-containers.md) | Verwenden Sie den Angebotstyp „Container“, wenn Ihre Lösung ein Docker-Container-Image ist, das als Kubernetes-basierter Azure Container Service bereitgestellt wird. |
 | [**Azure IoT Edge-Module**](./iot-edge-module.md) | Azure IoT Edge-Module sind die kleinste von IoT Edge verwaltete Recheneinheit. Sie können Microsoft-Dienste (wie Azure Stream Analytics), Dienste von Drittanbietern oder Ihren eigenen lösungsspezifischen Code enthalten. |
 | [**Beratungsdienste**](./consulting-services.md) | Beratungsdienste unterstützen Kunden dabei, Verbindungen mit Diensten herzustellen, um die Nutzung von Azure-, Dynamics 365- oder Power Suite-Diensten zu unterstützen und zu erweitern.|

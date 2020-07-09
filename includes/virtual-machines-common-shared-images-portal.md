@@ -26,7 +26,7 @@ Im folgenden Beispiel wird der Katalog *myGallery* in der Ressourcengruppe *myGa
 1. Klicken Sie auf der Seite **Katalog der freigegebenen Images** auf **Hinzufügen**.
 1. Wählen Sie auf der Seite **Katalog mit freigegebenen Images erstellen** das richtige Abonnement aus.
 1. Wählen Sie in **Ressourcengruppe** **Neu erstellen** aus, und geben Sie *myGalleryRG* für den Namen ein.
-1. Geben Sie unter **Name***myGallery* als Namen des Katalogs ein.
+1. Geben Sie unter **Name** *myGallery* als Namen des Katalogs ein.
 1. Übernehmen Sie den Standardwert für **Region**.
 1. Sie können eine kurze Beschreibung des Katalogs eingeben, wie *Mein Imagekatalog zum Testen*. Klicken Sie dann auf **Überprüfen + Erstellen**.
 1. Wenn die Überprüfung erfolgreich war, wählen Sie **Erstellen** aus.
@@ -41,13 +41,13 @@ Erstellen Sie die Definition des Katalogimages innerhalb Ihres Katalogs. In dies
 
 1. Wählen Sie auf der Seite Ihres neuen Imagekatalogs **Neue Imagedefinition hinzufügen** oben auf der Seite aus. 
 1. Wählen Sie unter **Neue Imagedefinition zum Katalog mit freigegebenen Images hinzufügen** für **Region** die Option *USA, Osten* aus.
-1. Geben Sie für **Name der Imagedefinition***myImageDefinition* ein.
+1. Geben Sie für **Name der Imagedefinition** *myImageDefinition* ein.
 1. Wählen Sie für **Betriebssystem** die richtige Option basierend auf Ihrer Quell-VM.  
 1. Wählen Sie für **VM-Generation** die Option basierend auf Ihrer Quell-VM aus. In den meisten Fällen wird dies *1. Generation* sein. Weitere Informationen finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2).
 1. Wählen Sie für **Betriebssystemstatus** die richtige Option basierend auf Ihrer Quell-VM. Weitere Informationen finden Sie unter [Generalisierte und spezialisierte Images](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images).
-1. Geben Sie für **Herausgeber***myPublisher* ein. 
-1. Geben Sie für **Angebot***myOffer* ein.
-1. Geben Sie für **SKU***mySKU* ein.
+1. Geben Sie für **Herausgeber** *myPublisher* ein. 
+1. Geben Sie für **Angebot** *myOffer* ein.
+1. Geben Sie für **SKU** *mySKU* ein.
 1. Wenn Sie fertig sind, wählen Sie **Überprüfen und erstellen** aus.
 1. Nachdem die Imagedefinition erfolgreich überprüft wurde, wählen Sie **Erstellen**.
 1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
@@ -65,7 +65,7 @@ Die Schritte zum Erstellen einer Imageversion unterscheiden sich geringfügig, a
 
 1. Wählen Sie oben auf der Seite für Ihre Imagedefinition **Version hinzufügen** aus.
 1. Wählen Sie unter **Region** die Region, in der Ihr verwaltetes Image gespeichert ist. Imageversionen müssen in der gleichen Region erstellt werden wie das verwaltete Image, aus dem sie erstellt wurden.
-1. Geben Sie für **Name***1.0.0* ein. Der Name der Imageversion sollte dem Format *major*.*minor*.*patch* mit ganzen Zahlen entsprechen. 
+1. Geben Sie für **Name** *1.0.0* ein. Der Name der Imageversion sollte dem Format *major*.*minor*.*patch* mit ganzen Zahlen entsprechen. 
 1. Wählen Sie unter **Quellimage** aus der Dropdownliste das von der Quelle verwaltete Image aus.
 1. Übernehmen Sie für **Aus aktueller Version ausschließen** den Standardwert *Nein*.
 1. Wählen Sie unter **Datum für Ende des Lebenszyklus** ein Datum aus dem Kalender aus, das einige Monate in der Zukunft liegt.
@@ -80,7 +80,7 @@ Es kann eine Weile dauern, bis das Image in alle Zielregionen repliziert ist.
 
 1. Wählen Sie oben auf der Seite für Ihre Imagedefinition **Version hinzufügen** aus.
 1. Wählen Sie unter **Region** die Region aus, in der die Momentaufnahme gespeichert ist. Imageversionen müssen in der gleichen Region erstellt werden wie die Quelle, aus der sie erstellt wurden.
-1. Geben Sie für **Name***1.0.0* ein. Der Name der Imageversion sollte dem Format *major*.*minor*.*patch* mit ganzen Zahlen entsprechen. 
+1. Geben Sie für **Name** *1.0.0* ein. Der Name der Imageversion sollte dem Format *major*.*minor*.*patch* mit ganzen Zahlen entsprechen. 
 1. Wählen Sie in **Betriebssystemdatenträger-Momentaufnahme** die Momentaufnahme aus der Quell-VM in der Dropdownliste aus. Wenn die Quell-VM einen Datenträger enthält, den Sie einschließen möchten, wählen Sie in der Dropdownliste die richtige **LUN** aus, und wählen Sie dann für **Datenträger-Momentaufnahme** die Momentaufnahme des Datenträgers aus. 
 1. Übernehmen Sie für **Aus aktueller Version ausschließen** den Standardwert *Nein*.
 1. Wählen Sie unter **Datum für Ende des Lebenszyklus** ein Datum aus dem Kalender aus, das einige Monate in der Zukunft liegt.

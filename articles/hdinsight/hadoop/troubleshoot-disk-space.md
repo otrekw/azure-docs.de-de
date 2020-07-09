@@ -24,11 +24,11 @@ In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen 
 
 1. Navigieren Sie zu **Hive** > **Configs** > **Advanced** > **Advanced hive-log4j**. Überprüfen Sie die folgenden Einstellungen:
 
-    * [https://login.microsoftonline.com/consumers/](`hive.root.logger=DEBUG,RFA`). Dies ist der Standardwert. Ändern Sie die [Protokollebene](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html) in `INFO`, um weniger Protokolleinträge zu drucken.
+    * `hive.root.logger=DEBUG,RFA`. Dies ist der Standardwert. Ändern Sie die [Protokollebene](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html) in `INFO`, um weniger Protokolleinträge zu drucken.
 
-    * [https://login.microsoftonline.com/consumers/](`log4jhive.log.maxfilesize=1024MB`). Dies ist der Standardwert. Ändern Sie ihn nach Bedarf.
+    * `log4jhive.log.maxfilesize=1024MB`. Dies ist der Standardwert. Ändern Sie ihn nach Bedarf.
 
-    * [https://login.microsoftonline.com/consumers/](`log4jhive.log.maxbackupindex=10`). Dies ist der Standardwert. Ändern Sie ihn nach Bedarf. Wenn der Parameter ausgelassen wurde, werden endlose Protokolldateien generiert.
+    * `log4jhive.log.maxbackupindex=10`. Dies ist der Standardwert. Ändern Sie ihn nach Bedarf. Wenn der Parameter ausgelassen wurde, werden endlose Protokolldateien generiert.
 
 ## <a name="yarn-log-configurations"></a>YARN-Protokollkonfigurationen
 

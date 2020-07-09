@@ -4,19 +4,19 @@ description: Hier erfahren Sie, wie Sie Geräte über das Azure-Portal verwalten
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
-ms.date: 06/04/2019
+ms.topic: how-to
+ms.date: 05/28/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf3f6455be992502182fb942f0e6db089051ab1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230474"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253153"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Verwalten der Geräteidentität mithilfe des Azure-Portals
 
@@ -26,6 +26,8 @@ Dieser Artikel:
 
 - Setzt voraus, dass Sie die [Einführung in die Geräteidentitätsverwaltung in Azure Active Directory](overview.md) gelesen haben.
 - Enthält Informationen zum Verwalten Ihrer Geräteidentitäten mithilfe des Azure AD-Portals.
+
+![Ansicht „Alle Geräte“ im Azure-Portal](./media/device-management-azure-portal/all-devices-azure-portal.png)
 
 ## <a name="manage-device-identities"></a>Verwalten von Geräteidentitäten
 
@@ -47,7 +49,7 @@ Damit Ihre Geräteidentitäten im Azure AD-Portal verwaltet werden können, müs
 
 Die Seite mit den Geräteeinstellungen ermöglicht es Ihnen, Einstellungen zu konfigurieren, die sich auf die Identität von Geräten beziehen:
 
-![Verwalten eines Intune-Geräts](./media/device-management-azure-portal/21.png)
+![Geräteeinstellungen in Verbindung mit Azure AD](./media/device-management-azure-portal/device-settings-azure-portal.png)
 
 - **Benutzer dürfen Geräte in Azure AD einbinden**: Diese Einstellung ermöglicht Ihnen die Auswahl der Benutzer, die ihre Geräte als in Azure AD eingebundene Geräte registrieren können. Die Standardeinstellung ist **Alle**.
 
@@ -82,13 +84,9 @@ Bei beiden Optionen erhalten Sie eine Ansicht, die:
 - Eine detaillierte Übersicht über registrierte und verknüpfte Geräte enthält.
 - Ihnen die Durchführung allgemeiner Geräteverwaltungsaufgaben ermöglicht.
 
-![Alle Geräte](./media/device-management-azure-portal/51.png)
-
 >[!TIP]
 >
 >* Wenn in der Spalte „REGISTRIERT“ ein Gerät mit dem Zusatz „In Hybrid-Azure AD eingebunden“ und dem Zustand „Ausstehend“ angezeigt wird, deutet das darauf hin, dass das Gerät von Azure AD Connect synchronisiert wurde und auf die vollständige Registrierung vom Client wartet. Weitere Informationen finden Sie unter [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md). Weitere Informationen finden Sie im Artikel mit [häufig gestellten Fragen zu Geräten](faq.md).
->
->   ![Ausstehende Geräte](./media/device-management-azure-portal/75.png)
 >
 >* Für einige iOS-Geräte werden in Gerätenamen, die Apostrophe enthalten, möglicherweise andere Zeichen verwendet, die wie Apostrophe aussehen. Die Suche nach solchen Geräte ist daher ein wenig kompliziert. Wenn Ihnen Suchergebnisse nicht ordnungsgemäß angezeigt werden, stellen Sie sicher, dass die Suchzeichenfolge ein Zeichen enthält, das einem Apostroph entspricht.
 
@@ -96,8 +94,8 @@ Bei beiden Optionen erhalten Sie eine Ansicht, die:
 
 Als globaler Administrator oder Cloudgeräteadministrator können Sie die registrierten oder verknüpften Geräte verwalten. Intune-Dienstadministratoren können folgende Aktionen ausführen:
 
-- Aktualisieren von Geräten: Beispiele sind tägliche Vorgänge wie das Aktivieren/Deaktivieren von Geräten.
-- Löschen von Geräten: Ein Gerät wird außer Betrieb genommen und muss in Azure AD gelöscht werden.
+- Aktualisieren von Geräten: Beispiele sind tägliche Vorgänge wie das Aktivieren/Deaktivieren von Geräten
+- Löschen von Geräten: Ein Gerät wird außer Betrieb genommen und sollte in Azure AD gelöscht werden
 
 Dieser Abschnitt enthält Informationen zu allgemeinen Geräteidentitätsverwaltungsaufgaben.
 
@@ -145,7 +143,7 @@ Sie haben zwei Optionen, um ein Gerät zu löschen:
    - Entfernt alle Details, die an das Gerät angefügt wurden, z.B. BitLocker-Schlüssel für Windows-Geräte  
    - Stellt eine Aktivität dar, die nicht rückgängig gemacht werden kann, und wird nur empfohlen, wenn das Löschen notwendig ist
 
-Wenn ein Gerät von einer anderen Verwaltungsautorität (z.B. Microsoft Intune) verwaltet wird, sollten Sie vor dem Löschen des Geräts in Azure AD sicherstellen, dass es zurückgesetzt bzw. außer Kraft gesetzt wurde. Informieren Sie sich über das [Verwalten veralteter Geräte](device-management-azure-portal.md), bevor Sie Geräte löschen.
+Wenn ein Gerät von einer anderen Verwaltungsautorität (z.B. Microsoft Intune) verwaltet wird, sollten Sie vor dem Löschen des Geräts in Azure AD sicherstellen, dass es zurückgesetzt bzw. außer Kraft gesetzt wurde. Informieren Sie sich über das [Verwalten veralteter Geräte](manage-stale-devices.md), bevor Sie Geräte löschen.
 
 ### <a name="view-or-copy-device-id"></a>Anzeigen oder Kopieren einer Geräte-ID
 
@@ -170,6 +168,27 @@ Zum Anzeigen oder Kopieren der BitLocker-Schlüssel müssen Sie entweder der Bes
 
 > [!NOTE]
 > In Hybrid-Azure AD eingebundene Windows 10-Geräte haben keinen Besitzer. Wenn Sie also ein Gerät nach Besitzer suchen und es nicht finden, suchen Sie nach der Geräte-ID.
+
+### <a name="device-list-filtering-preview"></a>Filtern der Geräteliste (Vorschau)
+
+Bisher konnten Sie die Geräteliste nur nach Aktivität und Aktivierungszustand filtern. In dieser Vorschauversion können Sie nun die Geräteliste nach den folgenden Attributen eines Geräts filtern:
+
+- Aktivierungszustand
+- Konformitätszustand
+- Jointyp (in Azure AD eingebunden, hybrid in Azure AD eingebunden, in Azure AD registriert)
+- Aktivitätszeitstempel
+- OS
+- Gerätetyp (Drucker, sichere virtuelle Computer, freigegebene Geräte, registrierte Geräte)
+
+So aktivieren Sie die Filterfunktionen (Vorschau) in der Ansicht **Alle Geräte**
+
+![Aktivieren der Filterfunktionen (Vorschau)](./media/device-management-azure-portal/device-filter-preview-enable.png)
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Navigieren Sie zu **Azure Active Directory** > **Geräte**.
+1. Wählen Sie das Banner aus, das besagt: **Testen Sie die Verbesserungen des neuen Gerätefilters. Klicken Sie hier, um die Vorschau zu aktivieren.**
+
+Sie haben jetzt die Möglichkeit, mit **Filter hinzufügen** der Ansicht **Alle Geräte** Filter hinzuzufügen.
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle
 

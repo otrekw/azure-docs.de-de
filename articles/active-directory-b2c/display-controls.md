@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188731"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202295"
 ---
 # <a name="display-controls"></a>Anzeigesteuerelemente
 
@@ -34,7 +34,7 @@ In der folgenden Abbildung wird eine selbstbestätigte Registrierungsseite mit z
 
  Im Abschnitt [Metadaten](self-asserted-technical-profile.md#metadata) eines [selbstbestätigten technischen Profils](self-asserted-technical-profile.md) muss für das [ContentDefinition](contentdefinitions.md)-Element, auf das verwiesen wird, `DataUri` auf Seitenvertragsversion 2.0.0 oder höher festgelegt sein. Beispiel:
 
-```XML
+```xml
 <ContentDefinition Id="api.selfasserted">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -66,7 +66,7 @@ In einem Anzeigesteuerelement können Sie **InputClaims**-Elemente verwenden, um
 
 Im folgenden Beispiel wird die E-Mail-Adresse, die überprüft werden soll, mit der bereits vorhandenen Adresse vorab aufgefüllt.
 
-```XML
+```xml
 <DisplayControl Id="emailControl" UserInterfaceControlType="VerificationControl">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="emailAddress" />
@@ -82,7 +82,7 @@ Jede Art von Anzeigesteuerelement erfordert andere Anzeigeansprüche, [Ausgabean
 
 Bestimmte Anzeigeansprüche sind für bestimmte Arten von Anzeigesteuerelementen erforderlich. **VerificationCode** ist beispielsweise für **VerificationControl**-Anzeigesteuerelemente erforderlich. Verwenden Sie das-Attribut **ControlClaimType**, um anzugeben, welches DisplayClaim-Element für den erforderlichen Anspruch festgelegt ist. Beispiel:
 
-```XML
+```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
 ```
 
@@ -100,7 +100,7 @@ Eine Aktion definiert eine Liste mit **technischen Validierungsprofilen**. Diese
 
 Im folgenden Beispiel wird ein Code abhängig von der Auswahl des Benutzers im **mfaType**-Anspruch per E-Mail oder SMS gesendet.
 
-```XML
+```xml
 <Action Id="SendCode">
   <ValidationClaimsExchange>
     <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AzureMfa-SendSms">
@@ -131,7 +131,7 @@ Auf Anzeigesteuerelemente wird in den [Anzeigeansprüchen](self-asserted-technic
 
 Beispiel:
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
   ...
   <DisplayClaims>

@@ -6,12 +6,12 @@ ms.custom: subject-armqs
 ms.date: 04/29/2020
 author: davidsmatlak
 ms.author: v-dasmat
-ms.openlocfilehash: 47c25ebd0fe18d470b04ccbcc85a8638c1ce0346
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: cf85939a1dbaf8d3e8a90a3acf10bda9faac83bc
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598390"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217284"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>Schnellstart: Erstellen eines Recovery Services-Tresors mithilfe einer Resource Manager-Vorlage
 
@@ -35,7 +35,7 @@ Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit 
 
 Zwei Azure-Ressourcen sind in der Vorlage definiert:
 
-- [Microsoft.RecoveryServices vaults](/azure/templates/microsoft.recoveryservices/2016-06-01/vaults): zum Erstellen des Tresors
+- [Microsoft.RecoveryServices vaults](/azure/templates/microsoft.recoveryservices/vaults): zum Erstellen des Tresors
 - [Microsoft.RecoveryServices/vaults/backupstorageconfig](/rest/api/backup/backupresourcestorageconfigs): zum Konfigurieren der Sicherungsredundanzeinstellungen des Tresors
 
 Die Vorlage enthält optionale Parameter für die Sicherungskonfiguration des Tresors. Als Speicherredundanz kann lokal redundanter Speicher (LRS) oder geografisch redundanter Speicher (GRS) festgelegt werden. Weitere Informationen finden Sie unter [Festlegen der Speicherredundanz](../backup/backup-create-rs-vault.md#set-storage-redundancy).

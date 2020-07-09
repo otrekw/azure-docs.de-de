@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 86ffe47c009f9e0ae121ffc6ab57bff8fb73210f
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 3375b28d94956d5c368db4bf3026bdf52ee2d58e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679196"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021142"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>Installieren des Remote Rendering-Pakets für Unity
 
@@ -43,9 +43,9 @@ Ausführlichere Anweisungen finden Sie im [Tutorial: Einrichten eines ganz neuen
 
 ## <a name="unity-render-pipelines"></a>Unity-Renderingpipelines
 
-Remote Rendering kann sowohl mit der **universellen Renderpipeline** als auch mit der **Standardrenderpipeline** verwendet werden. Aus Leistungsgründen wird die universelle Renderpipeline empfohlen.
+Das Remote Rendering funktioniert sowohl mit der **:::no-loc text="Universal render pipeline":::** als auch mit der **:::no-loc text="Standard render pipeline":::** . Aus Leistungsgründen wird die universelle Renderpipeline empfohlen.
 
-Um die **universelle Renderpipeline** verwenden zu können, muss das zugehörige Paket in Unity installiert werden. Dies kann entweder auf der Benutzeroberfläche des **Package Manager** von Unity (Paketname **Universal RP**, Version 7.2.1 oder höher) oder über die Datei `Packages/manifest.json` erfolgen, wie im [Tutorial zum Einrichten eines Unity-Projekts](../../tutorials/unity/project-setup.md#configure-the-projects-manifest) beschrieben.
+Um die **:::no-loc text="Universal render pipeline":::** verwenden zu können, muss das zugehörige Paket in Unity installiert werden. Dies kann entweder auf der Benutzeroberfläche des **Package Manager** von Unity (Paketname **Universal RP**, Version 7.2.1 oder höher) oder über die Datei `Packages/manifest.json` erfolgen, wie im [Tutorial zum Einrichten eines Unity-Projekts](../../tutorials/unity/project-setup.md#configure-the-projects-manifest) beschrieben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

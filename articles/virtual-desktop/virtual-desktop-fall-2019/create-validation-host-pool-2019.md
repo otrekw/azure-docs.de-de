@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 21c3e3c7ae515f5a740384d202451f61291bc05b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: fe6b047d10b8aef8faf81365cae940b05b3d798c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613846"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117744"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Tutorial: Erstellen eines Hostpools zum Überprüfen von Dienstupdates
 
@@ -82,4 +82,4 @@ Dienstupdates werden monatlich bereitgestellt. Wenn schwerwiegende Probleme vorl
 Nachdem Sie nun einen Überprüfungshostpool erstellt haben, können Sie sich darüber informieren, wie Sie Azure Service Health zum Überwachen Ihrer Windows Virtual Desktop-Bereitstellung verwenden. 
 
 > [!div class="nextstepaction"]
-> [Einrichten von Dienstwarnungen](../set-up-service-alerts.md)
+> [Einrichten von Dienstwarnungen](set-up-service-alerts-2019.md)

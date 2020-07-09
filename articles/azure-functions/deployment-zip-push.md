@@ -3,12 +3,12 @@ title: ZIP-Push-Bereitstellung für Azure Functions
 description: Verwenden Sie die Funktionen zur Bereitstellung von ZIP-Dateien des Kudu-Bereitstellungdiensts zum Veröffentlichen Ihrer Azure Functions.
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75769665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833051"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>ZIP-Bereitstellung für Azure Functions
 
@@ -56,7 +56,9 @@ Allerdings haben Sie Ihre Funktionen möglicherweise mithilfe des Editors im Azu
 
     Verwenden Sie die folgende GET-Bereitstellungs-API, um Dateien aus Ihrem `<function_app>`-Projekt herunterzuladen: 
 
-        https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```http
+    https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```
 
     Das Hinzufügen von `/site/wwwroot/` stellt sicher, dass die ZIP-Datei nur die Dateien des Funktionen-App-Projekts und nicht die gesamte Website enthält. Wenn Sie nicht bereits in Azure angemeldet sind, werden Sie aufgefordert, sich anzumelden.  
 

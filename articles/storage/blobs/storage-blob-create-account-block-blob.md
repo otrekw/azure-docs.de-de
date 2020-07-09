@@ -4,28 +4,29 @@ description: Hier wird gezeigt, wie Sie ein Azure-BlockBlobStorage-Konto mit Pre
 author: tamram
 services: storage
 ms.service: storage
-ms.topic: conceptual
-ms.date: 03/23/2019
+ms.topic: how-to
+ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6303644ada5c6f093611dba94daf8006f8cc5819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31a7048c263d7231fe827ad5a1c927c5cb3e2f6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536903"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463568"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Erstellen eines BlockBlobStorage-Kontos
 
 Mit der Kontoart BlockBlobStorage können Sie Blockblobs mit Premium-Leistungsmerkmalen erstellen. Diese Art von Speicherkonto ist für Workloads optimiert, die hohe Transaktionsraten aufweisen oder äußerst kurze Zugriffszeiten erfordern. In diesem Artikel wird gezeigt, wie Sie ein BlockBlobStorage-Konto über das Azure-Portal, mit der Azure CLI oder in Azure PowerShell erstellen.
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+> [!NOTE]
+> Das Feature für hierarchische Namespaces in einem Blockblob-Speicherkonto befindet sich in der öffentlichen Vorschau und ist in den Regionen „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen 2“, „Vereinigtes Königreich, Süden“, „Kanada, Mitte“ und „Australien, Osten“ verfügbar. Weitere Informationen zu den Einschränkungen finden Sie unter [Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md) sowie unter [Bekannte Probleme](data-lake-storage-known-issues.md). Wie Sie sich für die Vorschau registrieren, erfahren Sie in [diesem Formular](https://aka.ms/adlspremiumonboard).
 
 Weitere Informationen zu BlockBlobStorage-Konten finden Sie unter [Azure-Speicherkonto – Übersicht](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -54,7 +55,7 @@ Die Schaltfläche öffnet eine interaktive Shell, mit der Sie die in diesem Arti
 
 ### <a name="install-the-cli-locally"></a>Lokales Installieren der Befehlszeilenschnittstelle
 
-Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Für diese Anleitung müssen Sie mindestens Version 2.0.46 oder höher der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Für diese Anleitung müssen Sie mindestens Version 2.0.46 oder höher der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
 
 ---
 
@@ -91,23 +92,23 @@ Wenn Sie ein BlockBlobStorage-Konto über das Azure-Portal erstellen möchten, g
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** > die Kategorie **Storage** > **Speicherkonten** aus.
 
-1. Wählen Sie unter **Speicherkonten** die Option **Hinzufügen** aus.
+2. Wählen Sie unter **Speicherkonten** die Option **Hinzufügen** aus.
 
-1. Wählen Sie im Feld **Abonnement** das Abonnement aus, in dem das Speicherkonto erstellt werden soll.
+3. Wählen Sie im Feld **Abonnement** das Abonnement aus, in dem das Speicherkonto erstellt werden soll.
 
-1. Wählen Sie im Feld **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für die neue Ressourcengruppe ein.
+4. Wählen Sie im Feld **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für die neue Ressourcengruppe ein.
 
-1. Geben Sie im Feld **Speicherkontoname** einen Namen für das Konto ein. Beachten Sie die folgenden Richtlinien:
+5. Geben Sie im Feld **Speicherkontoname** einen Namen für das Konto ein. Beachten Sie die folgenden Richtlinien:
 
    - Der Name muss innerhalb von Azure eindeutig sein.
    - Der Name muss zwischen drei und 24 Zeichen lang sein.
    - Der Name darf nur Ziffern und Kleinbuchstaben enthalten.
 
-1. Wählen Sie im Feld **Standort** einen Standort für das Speicherkonto aus, oder verwenden Sie den Standardstandort.
+6. Wählen Sie im Feld **Standort** einen Standort für das Speicherkonto aus, oder verwenden Sie den Standardstandort.
 
-1. Konfigurieren Sie für die übrigen Einstellungen die folgenden Werte:
+7. Konfigurieren Sie für die übrigen Einstellungen die folgenden Werte:
 
-   |Feld     |value  |
+   |Feld     |Wert  |
    |---------|---------|
    |**Leistung**    |  Wählen Sie **Premium** aus.   |
    |**Kontoart**    | Wählen Sie **BlockBlobStorage** aus.      |
@@ -115,9 +116,18 @@ Wenn Sie ein BlockBlobStorage-Konto über das Azure-Portal erstellen möchten, g
 
    ![Portal-Benutzeroberfläche zum Erstellen eines Blockblob-Speicherkontos](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
-1. Wählen Sie **Überprüfen + erstellen** aus, um die Speicherkontoeinstellungen zu überprüfen.
+8. Wählen Sie die Registerkarte **Erweitert** aus.
 
-1. Klicken Sie auf **Erstellen**.
+9. Wenn Sie Ihr Speicherkonto für Datenanalyse optimieren möchten, legen Sie **Hierarchischer Namespace** auf **Aktiviert** fest. Andernfalls belassen Sie den Standardwert für diese Option.
+
+   Weitere Informationen finden Sie unter [Einführung in Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
+
+   > [!NOTE]
+   > Das Feature für hierarchische Namespaces in einem Blockblob-Speicherkonto befindet sich in der öffentlichen Vorschau und ist in den Regionen „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen 2“, „Vereinigtes Königreich, Süden“, „Kanada, Mitte“ und „Australien, Osten“ verfügbar. Weitere Informationen zu den Einschränkungen finden Sie unter [Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md) sowie unter [Bekannte Probleme](data-lake-storage-known-issues.md). Wie Sie sich für die Vorschau registrieren, erfahren Sie in [diesem Formular](https://aka.ms/adlspremiumonboard).
+
+8. Wählen Sie **Überprüfen + erstellen** aus, um die Speicherkontoeinstellungen zu überprüfen.
+
+9. Klicken Sie auf **Erstellen**.
 
 ## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -125,19 +135,19 @@ Wenn Sie ein BlockBlobStorage-Konto über das Azure-Portal erstellen möchten, g
 
 1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten („Als Administrator ausführen“).
 
-1. Führen Sie den folgenden Befehl aus, um sicherzustellen, dass die neueste Version des `Az` PowerShell-Moduls installiert ist.
+2. Führen Sie den folgenden Befehl aus, um sicherzustellen, dass die neueste Version des `Az` PowerShell-Moduls installiert ist.
 
    ```powershell
    Install-Module -Name Az -AllowClobber
    ```
 
-1. Öffnen Sie eine neue PowerShell-Konsole, und melden Sie sich mit Ihrem Azure-Konto an.
+3. Öffnen Sie eine neue PowerShell-Konsole, und melden Sie sich mit Ihrem Azure-Konto an.
 
    ```powershell
    Connect-AzAccount -SubscriptionId <SubscriptionID>
    ```
 
-1. Erstellen Sie bei Bedarf eine neue Ressourcengruppe. Ersetzen Sie die Werte in Anführungszeichen, und führen Sie den folgenden Befehl aus.
+4. Erstellen Sie bei Bedarf eine neue Ressourcengruppe. Ersetzen Sie die Werte in Anführungszeichen, und führen Sie den folgenden Befehl aus.
 
    ```powershell
    $resourcegroup = "new_resource_group_name"
@@ -145,7 +155,7 @@ Wenn Sie ein BlockBlobStorage-Konto über das Azure-Portal erstellen möchten, g
    New-AzResourceGroup -Name $resourceGroup -Location $location
    ```
 
-1. Erstellen Sie das BlockBlobStorage-Konto. Ersetzen Sie die Werte in Anführungszeichen, und führen Sie den folgenden Befehl aus.
+5. Erstellen Sie das BlockBlobStorage-Konto. Ersetzen Sie die Werte in Anführungszeichen, und führen Sie den folgenden Befehl aus.
 
    ```powershell
    $resourcegroup = "resource_group_name"
@@ -154,10 +164,14 @@ Wenn Sie ein BlockBlobStorage-Konto über das Azure-Portal erstellen möchten, g
 
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
+   Wenn Sie Ihr Speicherkonto für Datenanalyse optimieren möchten, fügen Sie dem Befehl `-EnableHierarchicalNamespace $True` hinzu. Weitere Informationen finden Sie unter [Einführung in Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
+
+   > [!NOTE]
+   > Das Feature für hierarchische Namespaces in einem Blockblob-Speicherkonto befindet sich in der öffentlichen Vorschau und ist in den Regionen „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen 2“, „Vereinigtes Königreich, Süden“, „Kanada, Mitte“ und „Australien, Osten“ verfügbar. Weitere Informationen zu den Einschränkungen finden Sie unter [Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md) sowie unter [Bekannte Probleme](data-lake-storage-known-issues.md). Wie Sie sich für die Vorschau registrieren, erfahren Sie in [diesem Formular](https://aka.ms/adlspremiumonboard).
 
 ## <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Zum Erstellen eines Blockblob-Speicherkontos mithilfe der Azure-Befehlszeilenschnittstelle müssen Sie zunächst die Azure-Befehlszeilenschnittstelle, Version 2.0.46 oder eine höhere Version, installieren. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
+Zum Erstellen eines Blockblob-Speicherkontos mithilfe der Azure-Befehlszeilenschnittstelle müssen Sie zunächst die Azure-Befehlszeilenschnittstelle, Version 2.0.46 oder eine höhere Version, installieren. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 1. Melden Sie sich bei Ihrem Azure-Abonnement an.
 
@@ -165,7 +179,7 @@ Zum Erstellen eines Blockblob-Speicherkontos mithilfe der Azure-Befehlszeilensch
    az login
    ```
 
-1. Erstellen Sie bei Bedarf eine neue Ressourcengruppe. Ersetzen Sie die Werte in Klammern (einschließlich der Klammern), und führen Sie den folgenden Befehl aus.
+2. Erstellen Sie bei Bedarf eine neue Ressourcengruppe. Ersetzen Sie die Werte in Klammern (einschließlich der Klammern), und führen Sie den folgenden Befehl aus.
 
    ```azurecli
    az group create \
@@ -173,7 +187,7 @@ Zum Erstellen eines Blockblob-Speicherkontos mithilfe der Azure-Befehlszeilensch
     --location "<location>"
    ```
 
-1. Erstellen Sie das BlockBlobStorage-Konto. Ersetzen Sie die Werte in Klammern (einschließlich der Klammern), und führen Sie den folgenden Befehl aus.
+3. Erstellen Sie das BlockBlobStorage-Konto. Ersetzen Sie die Werte in Klammern (einschließlich der Klammern), und führen Sie den folgenden Befehl aus.
 
    ```azurecli
    az storage account create \
@@ -184,6 +198,11 @@ Zum Erstellen eines Blockblob-Speicherkontos mithilfe der Azure-Befehlszeilensch
     --sku "Premium_LRS"
    ```
 
+   Wenn Sie Ihr Speicherkonto für Datenanalyse optimieren möchten, fügen Sie dem Befehl `--hierarchical-namespace true` hinzu. Weitere Informationen finden Sie unter [Einführung in Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
+
+   > [!NOTE]
+   > Das Feature für hierarchische Namespaces in einem Blockblob-Speicherkonto befindet sich in der öffentlichen Vorschau und ist in den Regionen „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen 2“, „Vereinigtes Königreich, Süden“, „Kanada, Mitte“ und „Australien, Osten“ verfügbar. Weitere Informationen zu den Einschränkungen finden Sie unter [Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md) sowie unter [Bekannte Probleme](data-lake-storage-known-issues.md). Wie Sie sich für die Vorschau registrieren, erfahren Sie in [diesem Formular](https://aka.ms/adlspremiumonboard).
+   
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte

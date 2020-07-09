@@ -1,20 +1,16 @@
 ---
 title: Aktualisieren des Bestands über das Azure-Portal und mithilfe von Themen/Abonnements
 description: In diesem Tutorial erfahren Sie, wie Sie Nachrichten für ein Thema und ein Abonnement senden und empfangen und Filterregeln per .NET hinzufügen und verwenden.
-services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.author: spelluru
-ms.date: 01/21/2020
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 77a8ef9c96219d2deb08126dc68eafe08d5262d4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76310117"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341697"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands mit dem Azure-Portal und mit Themen/Abonnements
 
@@ -55,7 +51,7 @@ Jedes [Abonnement eines Themas](service-bus-messaging-overview.md#topics) kann e
 
 Nachdem der Namespace und das Thema bzw. die Abonnements bereitgestellt wurden und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Erstellen von Filterregeln für die Abonnements bereit und können dann Nachrichten senden und empfangen. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) ansehen.
 
-### <a name="send-and-receive-messages"></a>Senden und Empfangen von Nachrichten
+## <a name="send-and-receive-messages"></a>Senden und Empfangen von Nachrichten
 
 Gehen Sie wie folgt vor, um den Code auszuführen:
 

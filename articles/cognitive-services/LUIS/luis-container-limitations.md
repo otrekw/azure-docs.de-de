@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e50dd636c1bd9403d5eca2157e4e46772418f92c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592898"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672662"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Einschränkungen für Language Understanding-Container (LUIS)
 
@@ -35,7 +35,7 @@ Sie können eine LUIS-Anwendung verwenden, sofern diese **keine** der folgenden 
 
 Nicht unterstützte App-Konfigurationen|Details|
 |--|--|
-|Nicht unterstützte Containerkulturen| Niederländisch (`nl-NL`)<br>Japanisch (`ja-JP`)<br>Deutsch wird nur ab [Tokenizer 1.0.2](luis-language-support.md#custom-tokenizer-versions) unterstützt.|
+|Nicht unterstützte Containerkulturen| Die Sprachen Niederländisch (`nl-NL`), Japanisch (`ja-JP`) und Deutsch (`de-DE`) werden nur mit dem [Tokenizer 1.0.2](luis-language-support.md#custom-tokenizer-versions) unterstützt.|
 |Nicht unterstützte Entitäten für alle Kulturen|Vordefinierte [KeyPhrase](luis-reference-prebuilt-keyphrase.md)-Entität für alle Kulturen|
 |Nicht unterstützte Entitäten für die Kultur Englisch (`en-US`)|Vordefinierte [GeographyV2](luis-reference-prebuilt-geographyV2.md)-Entitäten|
 |Sprachvorbereitung|Externe Abhängigkeiten werden im Container nicht unterstützt.|
@@ -49,6 +49,7 @@ LUIS-Container unterstützen eine Teilmenge der von LUIS insgesamt [unterstützt
 | Sprache | Gebietsschema | Vordefinierte Domäne | Vordefinierte Entität | Ausdrucklistenempfehlungen | \**[Textanalyse](../text-analytics/language-support.md)<br>(Stimmung und<br>Schlüsselwörter)|
 |--|--|:--:|:--:|:--:|:--:|
 | Englisch (USA) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
+| Arabisch (Vorschau, modernes Hocharabisch) |`ar-AR`|❌|❌|❌|❌|
 | *[Chinesisch](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | Französisch (Frankreich) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Französisch (Kanada) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
@@ -56,9 +57,12 @@ LUIS-Container unterstützen eine Teilmenge der von LUIS insgesamt [unterstützt
 | Hindi | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | Italienisch |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Koreanisch |`ko-KR` | ✔️ | ❌ | ❌ | Nur *Schlüsselausdruck* |
+| Marathi | `mr-IN`|❌|❌|❌|❌|
 | Portugiesisch (Brasilien) |`pt-BR` | ✔️ | ✔️ | ✔️ | Nicht alle Unterkulturen |
 | Spanisch (Spanien) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | Spanisch (Mexiko)|`es-MX` | ❌ | ❌ |✔️|✔️|
+| Tamilisch | `ta-IN`|❌|❌|❌|❌|
+| Telugu | `te-IN`|❌|❌|❌|❌|
 | Türkisch | `tr-TR` |✔️| ❌ | ❌ | Nur *Stimmung* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]

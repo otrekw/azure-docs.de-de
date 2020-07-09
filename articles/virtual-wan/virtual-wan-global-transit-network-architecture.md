@@ -5,15 +5,15 @@ description: Erfahren Sie mehr zur Architektur mit einem globalen Transitnetzwer
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
-ms.date: 02/06/2020
+ms.topic: conceptual
+ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9515058bc78a2d56dc1734c046dac5d5b04f68d9
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 78656b4789ea03601bc12579c391292e2f9ead9a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113177"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856373"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Architektur mit einem globalen Transitnetzwerk und Azure Virtual WAN
 
@@ -47,7 +47,7 @@ In der Azure Virtual WAN-Architektur werden virtuelle WAN-Hubs in Azure-Regionen
 
 Sie können ein virtuelles WAN erstellen, indem Sie einen einzelnen Virtual WAN-Hub in der Region erstellen, in der sich die meisten Spokes (Zweigstellen, VNets, Benutzer) befinden. Stellen Sie anschließend eine Verbindung der Spokes, die sich in einer anderen Region befinden, zum Hub her. Dies ist eine gute Möglichkeit, wenn der Fußabdruck eines Unternehmens größtenteils in einer Region mit wenigen Remote-Spokes liegt.  
   
-## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>Hub-zu-Hub-Verbindungen (Vorschau)
+## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>Hub-zu-Hub-Verbindungen
 
 Der Cloudfußabdruck eines Unternehmens kann sich über mehrere Cloudregionen erstrecken. Diese Architektur ist optimal (in Bezug auf die Latenz) für den Cloudzugriff in einer Region geeignet, die möglichst nah am physischen Standort des Unternehmens und an den Benutzern liegt. Einer der wichtigsten Faktoren für eine Architektur mit einem globalen Transitnetzwerk ist die Möglichkeit regionsübergreifender Verbindungen zwischen allen Cloud- und lokalen Netzwerkendpunkten. Das bedeutet, dass der Datenverkehr einer Zweigstelle, die in einer bestimmten Region mit der Cloud verbunden ist, eine Zweigstelle oder ein VNet in einer anderen Region über eine Hub-zu-Hub-Konnektivität, die durch das [Azure Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) ermöglicht wird, erreichen kann.
 
@@ -99,6 +99,9 @@ Zweigstellen können mit einem Azure Virtual WAN-Hub über ExpressRoute-Leitunge
 
 Durch diese Option können Unternehmen den Azure-Backbone zum Verbinden von Zweigstellen verwenden. Diese Funktion ist zwar verfügbar, Sie sollten aber dennoch die Vorteile der Verbindung von Zweigstellen über Azure Virtual WAN mit den Vorteilen eines privaten WAN vergleichen.  
 
+> [!NOTE]
+> Das Deaktivieren von Branch-to-Branch-Konnektivität im virtuellen WAN bzw. virtuellen WAN kann so konfiguriert werden, dass Branch-to-Branch-Konnektivität deaktiviert wird. Durch diese Konfiguration wird die Weitergabe von Routen zwischen durch VPN (S2S und P2S) und verbundenen Express Route-Standorten blockiert. Diese Konfiguration wirkt sich nicht auf Branch-zu-VNET und VNET-zu-VNET-Routenweitergabe und die Konnektivität aus. So konfigurieren Sie diese Einstellung im Azure-Portal: Wählen Sie im Menü „Virtual WAN-Konfiguration“ die Einstellung „Branch-to-Branch – deaktiviert“ aus. 
+
 ### <a name="remote-user-to-vnet-c"></a>Remotebenutzer-zu-VNET (c)
 
 Sie können direkten, sicheren Remotezugriff auf Azure über eine Point-to-Site-Verbindung zwischen einem Remotebenutzerclient und einem virtuellen WAN ermöglichen. Remotebenutzer eines Unternehmens müssen so nicht mehr mühsam eine Verbindung über ein Unternehmens-VPN herstellen.
@@ -110,6 +113,15 @@ Mit dem Remotebenutzer-zu-Zweigstelle-Pfad können Remotebenutzer, die über ein
 ### <a name="vnet-to-vnet-transit-e-and-vnet-to-vnet-cross-region-h"></a>VNet-zu-VNet-Transit (e) und VNet-zu-VNet, regionsübergreifend (h)
 
 Der VNet-zu-VNet-Transit ermöglicht Verbindungen zwischen VNets, um mehrschichtige Anwendungen zu verbinden, die in mehreren VNets implementiert wurden. Optional können Sie VNets über VNet Peering miteinander verbinden. Dies ist u. U. für einige Szenarien geeignet, in denen kein Transit über den VWAN-Hub erforderlich ist.
+
+
+## <a name="force-tunneling-and-default-route-in-azure-virtual-wan"></a><a name="DefaultRoute"></a>Erzwingen von Tunneln und Standardroute in Azure Virtual WAN
+
+Das Erzwingen von Tunneln kann aktiviert werden, indem die aktivierte Standardroute auf einer VPN-, ExpressRoute- oder virtuellen Netzwerkverbindung in Virtual WAN konfiguriert wird.
+
+Ein virtueller Hub gibt eine erlernte Standardroute an eine Verbindung vom Typ „Virtuelles Netzwerk“, „Site-to-Site-VPN“ oder „ExpressRoute“ weiter, wenn das aktivierte Standardflag für die Verbindung auf „Aktiviert“ festgelegt ist. 
+
+Dieses Flag ist sichtbar, wenn der Benutzer eine VNET-Verbindung, eine VPN-Verbindung oder eine ExpressRoute-Verbindung bearbeitet. Das Flag ist standardmäßig deaktiviert, wenn für eine Site oder eine ExpressRoute-Leitung eine Verbindung mit einem Hub besteht. Es ist standardmäßig aktiviert, wenn eine VNET-Verbindung hinzugefügt wird, um ein VNET mit einem virtuellen Hub zu verbinden. Der Ursprung der Standardroute liegt nicht auf dem Virtual WAN-Hub. Sie wird weitergegeben, wenn sie dem Virtual WAN-Hub bereits bekannt ist, weil darin eine Firewall bereitgestellt wurde, oder wenn für eine andere verbundene Site die Tunnelerzwingung aktiviert ist.
 
 ## <a name="security-and-policy-control"></a><a name="security"></a>Sicherheits- und Richtliniensteuerung
 
@@ -133,10 +145,28 @@ Der geschützte VNet-zu-VNet-Transit ermöglicht Verbindungen zwischen den VNets
 
 ### <a name="vnet-to-internet-or-third-party-security-service-i"></a>VNet-zu-Internet oder Sicherheitsdienst von Drittanbietern (i)
 
-Der geschützte Transit vom VNet zum Internet oder einem Drittanbieter ermöglicht Verbindungen vom VNet zum Internet oder zu unterstützten Sicherheitsdiensten von Drittanbietern über die Azure Firewall im Virtual WAN-Hub.
+VNet-zu-Internet ermöglicht es virtuellen Netzwerken, sich über die Azure Firewall im virtuellen WAN-Hub mit dem Internet zu verbinden. Der Datenverkehr zum Internet über unterstützte Sicherheitsdienste von Drittanbietern fließt nicht durch die Azure Firewall. Sie können den Vnet-zu-Internet-Pfad über einen unterstützten Sicherheitsdienst eines Drittanbieters mit Azure Firewall Manager konfigurieren.  
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Zweigstelle-zu-Internet oder Sicherheitsdienst von Drittanbietern (j)
-Der geschützte Transit von Zweigstellen zum Internet oder einem Drittanbieter ermöglicht Verbindungen von der Zweigstelle zum Internet oder zu unterstützten Sicherheitsdiensten von Drittanbietern über die Azure Firewall im Virtual WAN-Hub.
+Zweigstelle-zu-Internet ermöglicht es Zweigstellen, sich über die Azure Firewall im virtuellen WAN-Hub mit dem Internet zu verbinden. Der Datenverkehr zum Internet über unterstützte Sicherheitsdienste von Drittanbietern fließt nicht durch die Azure Firewall. Sie können den Zweigstelle-zu-Internet-Pfad über einen unterstützten Sicherheitsdienst eines Drittanbieters mit Azure Firewall Manager konfigurieren. 
+
+### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Wie aktiviere ich die Standardroute (0.0.0.0/0) in einem geschützten virtuellen Hub?
+
+Azure Firewall, das in einem virtuellen WAN-Hub (geschützter virtueller Hub) bereitgestellt wird, kann als Standardrouter zum Internet oder zum vertrauenswürdigen Sicherheitsanbieter für alle Zweigstellen (verbunden über VPN oder ExpressRoute), virtuelle Spoke-Netzwerke und Benutzer (verbunden über P2S VPN) konfiguriert werden. Diese Konfiguration muss mithilfe von Azure Firewall Manager durchgeführt werden.  Weitere Informationen finden Sie unter „Weiterleiten des Datenverkehrs an Ihren Hub zum Konfigurieren sämtlichen Datenverkehrs von Zweigstellen (einschließlich Benutzer)“ sowie unter „Virtuelle Netzwerke zum Internet über die Azure Firewall“. 
+
+Dies ist eine zweistufige Konfiguration:
+
+1. Konfigurieren Sie das Routing des Internetdatenverkehrs über das Menü für die geschützte virtuelle Hubrouteneinstellung. Konfigurieren Sie virtuelle Netzwerke und Zweigstellen, die Datenverkehr über die Firewall an das Internet senden können.
+
+2. Konfigurieren Sie, welche Verbindungen (Vnet und Branch) den Datenverkehr ins Internet (0.0.0.0/0) über die Azure Firewall im Hub oder über den vertrauenswürdigen Sicherheitsanbieter weiterleiten können. Dieser Schritt stellt sicher, dass die Standardroute an ausgewählte Zweigstellen und virtuelle Netzwerke weitergegeben wird, die über die Verbindungen an den Virtual WAN-Hub angefügt sind. 
+
+### <a name="force-tunneling-traffic-to-on-premises-firewall-in-a-secured-virtual-hub"></a>Erzwingen des Tunnelingdatenverkehrs zu einer lokalen Firewall in einem geschützten virtuellen Hub
+
+Wenn der virtuelle Hub bereits eine Standardroute (über BGP) von einer der Zweigstellen (VPN- oder ER-Standorte) erhalten hat, wird diese Standardroute durch die Standardroute überschrieben, die aus der Azure Firewall Manager-Einstellung erhalten wurde. In diesem Fall wird der gesamte Datenverkehr, der von virtuellen Netzwerken und Zweigstellen, die für das Internet bestimmt sind, in den Hub gelangt, an die Azure Firewall oder den vertrauenswürdigen Sicherheitsanbieter weitergeleitet.
+
+> [!NOTE]
+> Derzeit gibt es keine Möglichkeit, für Internetdatenverkehr, der von virtuellen Netzwerken, Zweigstellen oder Benutzern stammt, die lokale Firewall oder Azure Firewall (und den vertrauenswürdigen Sicherheitsanbieter) auszuwählen. Die Standardroute, die aus der Azure Firewall Manager-Einstellung übernommen wurde, wird immer der Standardroute vorgezogen, die aus einer der Zweigstellen übernommen wurde.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

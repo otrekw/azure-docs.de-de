@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 443ac9ee1c2f05cf90e866793449220d71e37b89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632678"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210660"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Speicher- und Parallelitätsgrenzwerte für Azure Synapse Analytics
 
@@ -77,7 +77,7 @@ Mit der Einführung von [Workloadgruppen](sql-data-warehouse-workload-isolation.
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Parallelitätshöchstwerte für Ressourcenklassen
 
-Um sicherzustellen, dass für jede Abfrage genügend Ressourcen zur effizienten Ausführung zur Verfügung stehen, verfolgt SQL Analytics in Azure Synapse die Nutzung von Ressourcen, indem jeder Abfrage Parallelitätsslots zugewiesen werden. Das System stellt Abfragen basierend auf Wichtigkeit und Parallelitätsslots in eine Warteschlange. Abfragen verbleiben in der Warteschlange, bis genügend Parallelitätsslots verfügbar sind. [Wichtigkeit](sql-data-warehouse-workload-importance.md) und Parallelitätsslots legen außerdem die CPU-Prioritäten fest. Weitere Informationen finden Sie unter [Analysieren Ihrer Workload](analyze-your-workload.md).
+Synapse SQL verfolgt die Nutzung von Ressourcen durch Zuweisen von Parallelitätsslots für jede Abfrage, um sicherzustellen, dass für jede Abfrage genügend Ressourcen zur effizienten Ausführung zur Verfügung stehen. Das System stellt Abfragen basierend auf Wichtigkeit und Parallelitätsslots in eine Warteschlange. Abfragen verbleiben in der Warteschlange, bis genügend Parallelitätsslots verfügbar sind. [Wichtigkeit](sql-data-warehouse-workload-importance.md) und Parallelitätsslots legen außerdem die CPU-Prioritäten fest. Weitere Informationen finden Sie unter [Analysieren Ihrer Workload](analyze-your-workload.md).
 
 **Statische Ressourcenklassen**
 

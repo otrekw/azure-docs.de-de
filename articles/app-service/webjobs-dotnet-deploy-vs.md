@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: d73c858bdbfee7c5b7c7e31b62b1f601b7b6838a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 971ab39ddf4b383f92f0cd81e5258ad357e76e99
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866436"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857063"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service
 
@@ -165,32 +165,36 @@ Die Felder in diesem Dialogfeld entsprechen den Feldern im Dialogfeld **WebJob h
 ### <a name="webjob-publish-settingsjson"></a><a id="publishsettings"></a>webjob-publish-settings.json
 Wenn Sie eine Konsolenanwendung für die Bereitstellung von WebJobs konfigurieren, installiert Visual Studio das NuGet-Paket [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) und speichert Zeitplanungsinformationen in der Datei *webjob-publish-settings.json* im Ordner *Eigenschaften* des WebJob-Projekts. Hier ist ein Beispiel dieser Datei:
 
-        {
-          "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
-          "webJobName": "WebJob1",
-          "startTime": "null",
-          "endTime": "null",
-          "jobRecurrenceFrequency": "null",
-          "interval": null,
-          "runMode": "Continuous"
-        }
+```json
+{
+  "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
+  "webJobName": "WebJob1",
+  "startTime": "null",
+  "endTime": "null",
+  "jobRecurrenceFrequency": "null",
+  "interval": null,
+  "runMode": "Continuous"
+}
+```
 
 Sie können diese Datei direkt bearbeiten, und Visual Studio stellt IntelliSense zur Verfügung. Das Dateischema wird unter [https://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) gespeichert und kann dort angezeigt werden.  
 
 ### <a name="webjobs-listjson"></a><a id="webjobslist"></a>webjobs-list.json
 Wenn Sie ein WebJob-fähiges Projekt mit einem Webprojekt verknüpfen, speichert Visual Studio den Namen des WebJob-Projekts in der Datei *webjobs-list.json* im Ordner *Eigenschaften* des Webprojekts. Die Liste kann mehrere WebJobs-Projekte umfassen, wie im folgenden Beispiel gezeigt wird:
 
-        {
-          "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
-          "WebJobs": [
-            {
-              "filePath": "../ConsoleApplication1/ConsoleApplication1.csproj"
-            },
-            {
-              "filePath": "../WebJob1/WebJob1.csproj"
-            }
-          ]
-        }
+```json
+{
+  "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
+  "WebJobs": [
+    {
+      "filePath": "../ConsoleApplication1/ConsoleApplication1.csproj"
+    },
+    {
+      "filePath": "../WebJob1/WebJob1.csproj"
+    }
+  ]
+}
+```
 
 Sie können diese Datei direkt bearbeiten, und Visual Studio stellt IntelliSense zur Verfügung. Das Dateischema wird unter [https://schemastore.org](http://schemastore.org/schemas/json/webjobs-list.json) gespeichert und kann dort angezeigt werden.
 

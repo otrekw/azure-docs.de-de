@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ca70262a7980df9d427fbd7e58e08b41c37d7133
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75411942"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195574"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Tutorial: Erstellen eines cachefremden Leaderboards in ASP.NET
 
@@ -642,9 +642,9 @@ So führen Sie die App lokal aus
 
 ## <a name="publish-and-run-in-azure"></a>Veröffentlichen und Ausführen in Azure
 
-### <a name="provision-a-sql-azure-database-for-the-app"></a>Bereitstellen einer SQL Azure-Datenbank für die App
+### <a name="provision-a-database-for-the-app"></a>Bereitstellen einer Datenbank für die App
 
-In diesem Abschnitt stellen Sie eine neue SQL Azure-Datenbank für die App bereit, die in Azure gehostet wird.
+In diesem Abschnitt stellen Sie eine neue Datenbank in SQL-Datenbank für die App bereit, die in Azure gehostet wird.
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) links oben auf **Ressource erstellen**.
 

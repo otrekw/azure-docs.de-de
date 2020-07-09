@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 9709cd3b6036b384fd9212a522c191d0695b9bb4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 764600d61704378b1bc0937dd1399260a1266150
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161723"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308625"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform – Glossar für Entwickler
 
@@ -202,7 +202,7 @@ Eine Instanz eines Azure AD-Verzeichnisses wird als Azure AD-Mandant bezeichnet.
 * Authentifizierung von Benutzerkonten und registrierten Anwendungen
 * REST-Endpunkte, die zur Unterstützung verschiedener Protokolle (einschließlich OAuth2 und SAML) erforderlich sind, z.B. der [Autorisierungsendpunkt](#authorization-endpoint), der [Tokenendpunkt](#token-endpoint) und der allgemeine, von [mehrinstanzenfähigen Anwendungen](#multi-tenant-application) verwendete Endpunkt.
 
-Azure AD-Mandanten werden mit Azure- und Office 365-Abonnements während der Registrierung erstellt/zugewiesen und stellen Identity & Access Management-Features für das Abonnement bereit. Azure-Abonnementadministratoren können auch zusätzliche Azure AD-Mandanten über das Azure-Portal erstellen. Ausführliche Informationen zu den verschiedenen Möglichkeiten für den Zugriff auf einen Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten][AAD-How-To-Tenant]. Unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory][AAD-How-Subscriptions-Assoc] erfahren Sie mehr über die Beziehung zwischen Abonnements und Azure AD-Mandanten.
+Azure AD-Mandanten werden mit Azure- und Office 365-Abonnements während der Registrierung erstellt/zugewiesen und stellen Identity & Access Management-Features für das Abonnement bereit. Azure-Abonnementadministratoren können auch zusätzliche Azure AD-Mandanten über das Azure-Portal erstellen. Ausführliche Informationen zu den verschiedenen Möglichkeiten für den Zugriff auf einen Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten][AAD-How-To-Tenant]. Einzelheiten zur Beziehung zwischen Abonnements und einem Azure AD-Mandanten sowie Anweisungen zum Zuordnen oder Hinzufügen eines Abonnements zu einem Azure AD-Mandanten finden Sie unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten][AAD-How-Subscriptions-Assoc].
 
 ## <a name="token-endpoint"></a>Tokenendpunkt
 

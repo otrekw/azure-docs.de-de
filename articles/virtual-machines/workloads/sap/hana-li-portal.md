@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c14ff9c4f6d2bc2b1a62d1874d01950d09491c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8512675381f6163e66b6b838e8262dd7d2b12374
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70099819"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130870"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Steuerung von HANA in Azure (große Instanzen) über das Azure-Portal
 Dieses Dokument beschreibt, wie [HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) im [Azure-Portal](https://portal.azure.com) dargestellt wird und welche Aktivitäten Sie über das Azure-Portal mit den für Sie bereitgestellten Einheiten von HANA (große Instanzen) ausführen können. Die Sichtbarkeit von HANA (große Instanzen) im Azure-Portal wird über einen Azure-Ressourcenanbieter für HANA (große Instanzen) bereitgestellt. Diese Funktion befindet sich derzeit in der öffentlichen Vorschau.
@@ -31,7 +31,9 @@ In Ihrem Azure-Abonnement, das Sie für Bereitstellungen von HANA (große Instan
 ### <a name="register-through-cli-interface"></a>Registrierung über die Befehlszeilenschnittstelle
 Sie müssen über die Azure-Befehlszeilenschnittstelle bei dem Azure-Abonnement angemeldet sein, das für die Bereitstellung von HANA (große Instanzen) verwendet wird. Sie können den Ressourcenanbieter für HANA (große Instanzen) mit dem folgenden Befehl registrieren oder erneut registrieren:
     
-    az provider register --namespace Microsoft.HanaOnAzure
+```azurecli
+az provider register --namespace Microsoft.HanaOnAzure
+```
 
 Weitere Informationen finden Sie im Artikel [Ressourcenanbieter und -typen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-cli).
 

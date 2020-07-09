@@ -5,16 +5,16 @@ services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: fbd8e03b1f8af7802133c35ae4860116aaea0c3c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c093a424ecf085c59501ee3d480838cc30c2ebf4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427242"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963035"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>Erfassen von Daten in einem SQL-Pool
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Daten aus einem Azure Data Lake Gen 2-Speic
 
 * **Azure-Abonnement**: Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * **Azure-Speicherkonto**: Sie verwenden Azure Data Lake Storage Gen 2 als *Quelldatenspeicher*. Wenn Sie kein Speicherkonto haben, finden Sie unter [Erstellen eines Azure Storage-Kontos](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) die erforderlichen Schritte zum Erstellen eines solchen Kontos.
-* **Azure Synapse Analytics**: Sie verwenden einen SQL-Pool als *Senkendatenspeicher*. Wenn Sie keine Azure Synapse Analytics-Instanz haben, finden Sie unter [Erstellen eines SQL-Pools](../../sql-database/sql-database-get-started-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) die erforderlichen Schritte zum Erstellen einer solchen Instanz.
+* **Azure Synapse Analytics**: Sie verwenden einen SQL-Pool als *Senkendatenspeicher*. Wenn Sie keine Azure Synapse Analytics-Instanz haben, finden Sie unter [Erstellen eines SQL-Pools](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) die erforderlichen Schritte zum Erstellen einer solchen Instanz.
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 
@@ -39,7 +39,7 @@ In Azure Synapse Analytics definieren Sie in einem verknüpften Dienst Ihre Verb
 
 ## <a name="create-pipeline"></a>Erstellen der Pipeline
 
-Eine Pipeline enthält den logischen Ablauf für die Ausführung einer Aktivitätenmenge. In diesem Abschnitt erstellen Sie eine Pipeline mit einer Kopieraktivität, die Daten aus ADLS Gen2 in einem SQL-Pool erfasst.
+Eine Pipeline enthält den logischen Ablauf für die Ausführung einer Aktivitätenmenge. In diesem Abschnitt erstellen Sie eine Pipeline mit einer Kopieraktivität, die Daten aus ADLS Gen2 in einem SQL-Pool erfasst.
 
 1. Wechseln Sie zur Registerkarte **Orchestrieren**. Klicken Sie neben dem Header „Pipelines“ auf das Pluszeichen, und wählen Sie **Pipeline**aus.
 1. Ziehen Sie im Bereich „Aktivitäten“ unter **Verschieben und transformieren** den Befehl **Daten kopieren** auf die Pipelinecanvas.

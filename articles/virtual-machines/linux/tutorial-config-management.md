@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 5dd35ed2f4533d19cc3a59788d6422416dce13f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cac17d15d792622d9a26ff7c228ce1f0ba76bbc4
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79223247"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027578"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Tutorial: Überwachen von Änderungen und Aktualisieren eines virtuellen Linux-Computers in Azure
 
@@ -29,7 +29,7 @@ Die [Änderungsnachverfolgung](../../automation/change-tracking.md) von Azure er
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Verwalten von Windows-Updates
+> * Verwalten von Linux-Updates
 > * Überwachen von Änderungen und Bestand
 
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell

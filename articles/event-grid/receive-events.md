@@ -1,19 +1,14 @@
 ---
 title: Empfangen von Ereignissen von Azure Event Grid an einem HTTP-Endpunkt
 description: Beschreibt, wie ein HTTP-Endpunkt überprüft und dann Ereignisse aus Azure Event Grid empfangen und deserialisiert werden.
-services: event-grid
-author: banisadr
-manager: darosa
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/01/2019
-ms.author: babanisa
-ms.openlocfilehash: 7c363fd4e55fdd6fe04a099ac833a256bbfd2eb2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 07/07/2020
+ms.openlocfilehash: 460efc15c7b85821f422c9964eb246df883a849f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116967"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108191"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Empfangen von Ereignissen an einem HTTP-Endpunkt
 

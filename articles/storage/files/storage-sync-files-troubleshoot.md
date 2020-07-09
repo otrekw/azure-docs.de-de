@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 41bc2a05b81bca586cde261bf2eb05db96d687f8
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 39106f863352061cdaa583bde96f50d3f91a07e9
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801315"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836514"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
 
 Dieser Artikel enthält Informationen zur Behebung von Fehlern und Lösung von Problemen, die möglicherweise bei ihrer Bereitstellung der Azure-Dateisynchronisierung auftreten. Wir beschreiben außerdem, wie Sie wichtige Protokolle aus dem System erfassen, wenn eine detailliertere Untersuchung des Problems erforderlich ist. Wenn Sie hier keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
 
-1. [Azure Storage-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
+1. [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Storage](https://docs.microsoft.com/answers/products/azure?product=storage)
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)
 3. Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte **Hilfe** die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage**.
 
@@ -161,7 +161,7 @@ Dieser Fehler tritt auf, wenn das Limit für die Serverendpunkte pro Server erre
 Dieser Fehler tritt auf, wenn der angegebene Serverendpunktpfad bereits von einem anderen Serverendpunkt synchronisiert wird. Azure-Dateisynchronisierung unterstützt nicht mehrere Serverendpunkte, die dasselbe Verzeichnis oder Volume synchronisieren.
 
 <a id="-2160590967"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2160590967 oder 0x80c80077)**  
-Dieser Fehler tritt auf, wenn der Pfad zum Serverendpunkt verwaiste mehrstufige Dateien enthält. Wenn ein Serverendpunkt vor Kurzem entfernt wurde, warten Sie, bis der Bereinigungsvorgang für verwaiste mehrstufige Dateien abgeschlossen ist. Im Telemetrieereignisprotokoll wird ein Ereignis mit der ID 6662 protokolliert, sobald der Bereinigungsvorgang für verwaiste mehrstufige Dateien gestartet wurde. Ein Ereignis mit der ID 6661 wird protokolliert, sobald der Bereinigungsvorgang für verwaiste mehrstufige Dateien abgeschlossen ist und ein Serverendpunkt mit der Pfad neu erstellt werden kann. Wenn nach dem Protokollieren der Ereignis-ID 6661 beim Erstellen des Serverendpunkts ein Fehler auftritt, entfernen Sie die verwaisten mehrstufigen Dateien, indem Sie die Schritte ausführen, die im Abschnitt [Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) dokumentiert sind.
+Dieser Fehler tritt auf, wenn der Pfad zum Serverendpunkt verwaiste mehrstufige Dateien enthält. Wenn ein Serverendpunkt vor Kurzem entfernt wurde, warten Sie, bis der Bereinigungsvorgang für verwaiste mehrstufige Dateien abgeschlossen ist. Im Telemetrieereignisprotokoll wird ein Ereignis mit der ID 6662 protokolliert, sobald der Bereinigungsvorgang für verwaiste mehrstufige Dateien gestartet wurde. Ein Ereignis mit der ID 6661 wird protokolliert, sobald der Bereinigungsvorgang für verwaiste mehrstufige Dateien abgeschlossen ist und ein Serverendpunkt mit der Pfad neu erstellt werden kann. Wenn nach Abschluss der Bereinigung der mehrstufigen Dateien beim Erstellen des Serverendpunkts ein Fehler auftritt oder wenn aufgrund eines Ereignisprotokollrollovers kein Ereignis mit der ID 6661 im Telemetrieereignisprotokoll gefunden werden kann, entfernen Sie die verwaisten mehrstufigen Dateien. Führen Sie hierzu die Schritte aus, die im Abschnitt [Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) dokumentiert sind.
 
 <a id="-2134347757"></a>**Fehler beim Löschen des Serverendpunkts: „MgmtServerJobExpired“ (Fehlercode: -2134347757 oder 0x80c87013)**  
 Dieser Fehler tritt auf, wenn der Server offline ist oder keine Netzwerkkonnektivität aufweist. Ist der Server nicht mehr verfügbar, heben Sie die Registrierung des Servers im Portal auf, wodurch die Serverendpunkte gelöscht werden. Um die Serverendpunkte zu löschen, führen Sie die Schritte aus, die unter [Aufheben der Registrierung eines Servers mit der Azure-Dateisynchronisierung](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service) beschrieben sind.

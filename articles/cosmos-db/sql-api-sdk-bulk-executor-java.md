@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: Java-API, SDK und Ressourcen für BulkExecutor'
 description: Wichtige Informationen zur Java-API und zum SDK für BulkExecutor, einschließlich Veröffentlichungsdaten, Deaktivierungsdaten und Änderungen an den einzelnen Versionen des Azure Cosmos DB-BulkExecutor-Java-SDK.
-author: milismsft
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/21/2018
-ms.author: adrianmi
-ms.openlocfilehash: 0030f974a36dc80dc8c4112000aa5934126a2482
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: c826b9f813c30a50d8b88b2cca1b188c328465b0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836443"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171649"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java-BulkExecutor-Bibliothek: Informationen zum Download
 
@@ -22,8 +22,9 @@ ms.locfileid: "82836443"
 > * [.NET-Änderungsfeed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -42,23 +43,23 @@ ms.locfileid: "82836443"
 
 ## <a name="release-notes"></a>Versionshinweise
 
-### <a name="2100"></a><a name="2.10.0"/>2.10.0
+### <a name="2100"></a><a name="2.10.0"></a>2.10.0
 
 * Korrektur für „DocumentAnalyzer.java“, damit Schlüsselwerte geschachtelter Partitionen ordnungsgemäß aus JSON-Code extrahiert werden.
 
-### <a name="294"></a><a name="2.9.4"/>2.9.4
+### <a name="294"></a><a name="2.9.4"></a>2.9.4
 
 * Funktionen in Massenlöschungsvorgängen hinzugefügt, mit denen Wiederholungsversuche für bestimmte Fehler ausgeführt werden und die auch eine Liste der Fehler, die wiederholt werden könnten, an den Benutzer zurückgeben.
 
-### <a name="293"></a><a name="2.9.3"/>2.9.3
+### <a name="293"></a><a name="2.9.3"></a>2.9.3
 
 * Update für Cosmos SDK Version 2.4.7.
 
-### <a name="292"></a><a name="2.9.2"/>2.9.2
+### <a name="292"></a><a name="2.9.2"></a>2.9.2
 
 * Korrektur für mergeAll zum Fortsetzen nach „ID“ und Partitionsschlüsselwert, sodass alle gepatchten Dokumenteigenschaften, die nach „ID“ und dem Partitionsschlüsselwert stehen, der aktualisierten Elementliste hinzugefügt werden.
 
-### <a name="291"></a><a name="2.9.1"/>2.9.1
+### <a name="291"></a><a name="2.9.1"></a>2.9.1
 
 * Startgrad der Parallelität auf 1 aktualisiert und Debugprotokolle für minibatch hinzugefügt.
 

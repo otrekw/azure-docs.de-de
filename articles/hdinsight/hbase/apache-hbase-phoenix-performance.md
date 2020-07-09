@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d1dff01c9e7b5232cfac0cf5581c077e67f6937
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75552643"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079495"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Bewährte Methoden für Leistung – Apache Phoenix
 
@@ -82,13 +82,17 @@ Mit Phoenix können Sie die Anzahl von Regionen steuern, an die Ihre Daten verte
 
 Wenn Sie bei der Tabellenerstellung einen Salt verwenden möchten, geben Sie die Anzahl von Salt-Buckets an:
 
-    CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```sql
+CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```
 
 Durch die Verwendung eines Salts wird die Tabelle entlang der Werte von Primärschlüsseln geteilt. (Die Werte werden automatisch ausgewählt.) 
 
 Wenn Sie die Teilung der Tabelle steuern möchten, können Sie die Tabelle vorab teilen, indem Sie die Bereichswerte für die Teilung angeben. Das folgende Beispiel zeigt die Teilung einer Tabelle entlang dreier Regionen:
 
-    CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```sql
+CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```
 
 ## <a name="index-design"></a>Indexdesign
 
@@ -120,11 +124,15 @@ In dem Beispiel mit der Kontakttabelle könnten Sie etwa einen sekundären Index
 
 Wenn Sie jedoch anhand der Sozialversicherungsnummer (socialSecurityNum) in der Regel nach dem Vornamen (firstName) und dem Nachnamen (lastName) suchen, können Sie einen Index mit vollständiger Abdeckung erstellen, der „firstName“ und „lastName“ als tatsächliche Daten in der Indextabelle enthält:
 
-    CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```sql
+CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```
 
 Dank dieses Index mit vollständiger Abdeckung kann die folgende Abfrage sämtliche Daten allein durch Lesen der Tabelle mit dem sekundären Index ermitteln:
 
-    SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```sql
+SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```
 
 ### <a name="use-functional-indexes"></a>Verwenden funktionaler Indizes
 
@@ -132,7 +140,9 @@ Mithilfe funktionaler Indizes können Sie einen Index für einen beliebigen Ausd
 
 So können Sie beispielsweise einen Index erstellen, der es ermöglicht, ohne Berücksichtigung der Groß-/Kleinschreibung nach der Kombination aus Vor- und Nachname einer Person zu suchen:
 
-     CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```sql
+CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```
 
 ## <a name="query-design"></a>Abfragedesign
 
@@ -155,44 +165,62 @@ Angenommen, Sie verfügen über eine Tabelle namens „FLIGHTS“, in der Inform
 
 Um alle Flüge mit der Fluggesellschafts-ID `19805` auszuwählen, wenn das Feld „airlineid“ nicht im Primärschlüssel oder in keinem Index enthalten ist, gehen Sie folgendermaßen vor:
 
-    select * from "FLIGHTS" where airlineid = '19805';
+```sql
+select * from "FLIGHTS" where airlineid = '19805';
+```
 
 Führen Sie den explain-Befehl wie folgt aus:
 
-    explain select * from "FLIGHTS" where airlineid = '19805';
+```sql
+explain select * from "FLIGHTS" where airlineid = '19805';
+```
 
 Der Abfrageplan sieht wie folgt aus:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
-        SERVER FILTER BY AIRLINEID = '19805'
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
+   SERVER FILTER BY AIRLINEID = '19805'
+```
 
 Beachten Sie in diesem Plan den Ausdruck „FULL SCAN OVER FLIGHTS“. Dieser Ausdruck gibt an, dass ein TABLE SCAN-Vorgang für alle Zeilen durchgeführt wird, anstatt die effizientere Option „RANGE SCAN“ oder „SKIP SCAN“ zu verwenden.
 
 Nehmen wir nun an, Sie möchten für die Fluglinie `AA` eine Abfrage nach Flügen am 2. Januar 2014 mit einer Flugnummer (flightnum) größer 1 durchführen. Nehmen wir weiter an, die Beispieltabelle enthält die Spalten „year“ (Jahr), „month“ (Monat), „dayofmonth“ (Monatstag), „carrier“ (Fluglinie) und „flightnum“ (Flugnummer), und diese Spalten sind alle Teil des zusammengesetzten Primärschlüssels. In diesem Fall sähe die Abfrage wie folgt aus:
 
-    select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 Als Nächstes sehen wir uns den Plan für diese Abfrage an:
 
-    explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 Der resultierende Plan sieht wie folgt aus:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```
 
 Bei den Werten in eckigen Klammern handelt es sich um den Wertebereich für die Primärschlüssel. In diesem Fall sind die Bereichswerte auf „year = 2014“, „month = 1“ und „dayofmonth = 2“ festgelegt. Für „flightnum“ sind jedoch Werte von 2 aufwärts (`*`) zulässig. Dieser Abfrageplan bestätigt, dass der Primärschlüssel wie erwartet verwendet wird.
 
 Erstellen Sie als Nächstes für die Tabelle „FLIGHTS“ einen Index mit dem Namen `carrier2_idx`, der nur auf dem Feld „carrier“ basiert. Dieser Index enthält auch „flightdate“ (Flugdatum), „tailnum“ (Flugzeugkennung), „origin“ (Herkunft) und „flightnum“ (Flugnummer) als abgedeckte Spalten, deren Daten ebenfalls im Index gespeichert werden.
 
-    CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```sql
+CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```
 
 Angenommen, Sie möchten die Fluglinie zusammen mit dem Flugdatum und der Flugzeugkennung abrufen, wie in der folgenden Abfrage gezeigt:
 
-    explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```sql
+explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```
 
 Dabei sollte dieser Index verwendet werden:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```
 
 Eine vollständige Liste mit den Elementen, die in den Ergebnissen eines Erläuterungsplans enthalten sein können, finden Sie im [Optimierungsleitfaden für Apache Phoenix](https://phoenix.apache.org/tuning_guide.html) im Abschnitt „Explain Plans“ (Erläuterungspläne).
 
@@ -222,7 +250,9 @@ Aktivieren Sie beim Löschen eines großen Datasets autoCommit, bevor Sie die DE
 
 Wenn Schreibgeschwindigkeit in Ihrem Szenario wichtiger ist als Datenintegrität, können Sie bei der Tabellenerstellung ggf. das Write-Ahead-Protokoll deaktivieren:
 
-    CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```sql
+CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```
 
 Ausführliche Informationen hierzu und zu anderen Optionen finden Sie unter [Apache Phoenix Grammar](https://phoenix.apache.org/language/index.html#options) (Apache Phoenix-Grammatik).
 

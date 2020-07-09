@@ -5,16 +5,17 @@ description: Hier erfahren Sie, wie Sie die Datentaggingtools in einem Azure Mac
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 2c21a8770209871be4d871a08e6355e4ca7ed169
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0421e5ad164c440c1b841cae66e7dafc5deadb81
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204320"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025130"
 ---
-# <a name="tag-images-in-a-labeling-project"></a>Taggen von Bildern in einem Bezeichnungsprojekt
+# <a name="tag-images-in-a-labeling-project-preview"></a>Taggen von Bildern in einem Bezeichnungsprojekt (Vorschau)
 
 Nachdem Ihr Projektadministrator ein [Bezeichnungsprojekt](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) in Azure Machine Learning erstellt hat, können Sie mit dem Beschriftungstool (öffentliche Vorschau) schnell Daten für ein Machine Learning-Projekt vorbereiten. Dieser Artikel beschreibt Folgendes:
 
@@ -65,11 +66,13 @@ Nach der Übermittlung von Tags für die vorliegenden Daten aktualisiert Azure d
 
 ### <a name="assisted-machine-learning"></a>Unterstütztes Machine Learning 
 
-Machine Learning-Algorithmen können während einer Klassifizierungsaufgabe mit mehreren Klassen oder mehreren Beschriftungen ausgelöst werden. Wenn diese Algorithmen in Ihrem Projekt aktiviert sind, wird ggf. Folgendes angezeigt:
+Möglicherweise werden Machine Learning-Algorithmen ausgelöst. Wenn diese Algorithmen in Ihrem Projekt aktiviert sind, wird ggf. Folgendes angezeigt:
 
 * Nach der Kennzeichnung einiger Bilder wird am oberen Bildschirmrand neben dem Projektnamen unter Umständen **Gruppierte Aufgaben** angezeigt.  Das bedeutet, dass Bilder gruppiert werden, um ähnliche Bilder auf der gleichen Seite darzustellen.  Wechseln Sie in diesem Fall zu einer der Ansichten mit mehreren Bildern, um von der Gruppierung zu profitieren.  
 
 * Später wird neben dem Projektnamen unter Umständen **Vorab beschriftete Aufgaben** angezeigt.  Bilder werden dann mit einer von einem Machine Learning-Klassifizierungsmodell vorgeschlagenen Bezeichnung angezeigt. Machine Learning-Modelle sind niemals hundertprozentig genau. Es werden zwar nur Bilder verwendet, bei denen das Modell eine hohe Zuverlässigkeit ermittelt hat, trotzdem kann es vorkommen, dass diese Bilder nicht korrekt gekennzeichnet sind.  Wenn diese Bezeichnungen angezeigt werden, korrigieren Sie falsche Bezeichnungen, bevor Sie die Seite übermitteln.  
+
+* Bei Objekterkennungsmodellen sind Begrenzungsrahmen und Bezeichnungen möglicherweise bereits vorhanden.  Korrigieren Sie alle Fehler, bevor Sie die Seite senden.
 
 Insbesondere in der Anfangsphase eines Bezeichnungsprojekts ist die Genauigkeit des Machine Learning-Modells möglicherweise nur für die Kennzeichnung einer kleinen Teilmenge von Bildern ausreichend. Sobald diese Bilder gekennzeichnet wurden, kehrt das Bezeichnungsprojekt zur manuellen Kennzeichnung zurück, um mehr Daten für das nächste Modelltraining zu erfassen. Im Laufe der Zeit erhöht sich die Zuverlässigkeit des Modells für einen größeren Teil von Bildern, was im weiteren Projektverlauf zu mehr Vorabbeschriftungsaufgaben führt.
 

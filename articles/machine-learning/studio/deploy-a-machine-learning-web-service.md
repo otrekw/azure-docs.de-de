@@ -5,21 +5,19 @@ description: So konvertieren Sie ein Trainingsexperiment in ein Vorhersageexperi
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 4cbc17e0352b9dfed3df9bbbd1480b9846f7ae75
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3fcf4e180233c6ceaa552b3505462639569ed974
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208481"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696387"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Bereitstellen eines (klassischen) Azure Machine Learning Studio-Webdiensts
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Azure Machine Learning Studio (klassisch) ermöglicht Ihnen, Vorhersageanalyselösungen zu erstellen und zu testen. Dann können Sie die Lösung als Webdienst bereitstellen.
 

@@ -1,17 +1,17 @@
 ---
 title: Erstellen eines Python-Runbooks in Azure Automation
-description: Dieses Tutorial zeigt, wie Sie ein einfaches Python-Runbook erstellen, testen und veröffentlichen.
+description: Dieser Artikel vermittelt Ihnen, wie Sie ein einfaches Python-Runbook erstellen, testen und veröffentlichen.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.custom: has-adal-ref
-ms.openlocfilehash: 2b20796fdcf71ccfb60c519d081b42fba982f0b6
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 1203feaf6b400e91e6ab5381df0af245db0a2973
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608693"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559556"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Tutorial: Erstellen eines Python-Runbooks
 
@@ -79,13 +79,11 @@ Bevor Sie das Runbook für die Verwendung in der Produktionsumgebung veröffentl
 
 ## <a name="publish-and-start-the-runbook"></a>Veröffentlichen und Starten des Runbooks
 
-Das erstellte Runbook befindet sich immer noch im Entwurfsmodus. Sie müssen das Runbook veröffentlichen, um es in der Produktionsumgebung ausführen zu können.
-Beim Veröffentlichen eines Runbooks wird die vorhandene veröffentlichte Version durch die Entwurfsversion überschrieben.
-In diesem Fall ist noch keine veröffentlichte Version vorhanden, da Sie das Runbook gerade erst erstellt haben.
+Das erstellte Runbook befindet sich immer noch im Entwurfsmodus. Sie müssen das Runbook veröffentlichen, um es in der Produktionsumgebung ausführen zu können. Beim Veröffentlichen eines Runbooks wird die vorhandene veröffentlichte Version durch die Entwurfsversion überschrieben. In diesem Fall ist noch keine veröffentlichte Version vorhanden, da Sie das Runbook gerade erst erstellt haben.
 
 1. Klicken Sie auf **Veröffentlichen**, um das Runbook zu veröffentlichen, und bestätigen Sie den Vorgang mit **Ja**.
 
-2. Wenn Sie nach links scrollen, um das Runbook auf der Seite **Runbooks** anzuzeigen, wird für das Runbook **Veröffentlicht** als **Erstellungsstatus** angezeigt.
+2. Wenn Sie nach links scrollen, um das Runbook auf der Seite „Runbooks“ anzuzeigen, wird für das Runbook **Veröffentlicht** als **Erstellungsstatus** angezeigt.
 
 3. Scrollen Sie wieder nach rechts , um den Bereich für **MyFirstRunbook-Python** anzuzeigen.
 

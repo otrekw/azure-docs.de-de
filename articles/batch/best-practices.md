@@ -1,30 +1,22 @@
 ---
 title: Bewährte Methoden
 description: Erhalten Sie Informationen über bewährte Methoden und nützliche Tipps für das Entwickeln Ihrer Azure Batch-Lösung.
-ms.date: 04/03/2020
-ms.topic: article
-ms.openlocfilehash: 43a0020953ea44593cf38298a78547194751fc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/22/2020
+ms.topic: conceptual
+ms.openlocfilehash: 0fa6c5e1d7e770468a14c66af9b99b32a7827eb1
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117504"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871353"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
-In diesem Artikel werden bewährte Methoden für die effektive und effiziente Verwendung des Azure Batch-Diensts behandelt. Diese bewährten Methoden leiten sich aus unseren Erfahrungen mit Batch und den Erfahrungen von Batch-Kunden ab. Es ist wichtig, diesen Artikel zu verstehen, um Fehler beim Entwurf, potenzielle Leistungsprobleme und Antimuster bei der Entwicklung für und Verwendung von Batch zu vermeiden.
-
-In diesem Artikel lernen Sie Folgendes:
-
-> [!div class="checklist"]
-> - Welche bewährten Methoden gibt es?
-> - Gründe für die Verwendung der bewährten Methoden
-> - Mögliche Folgen, wenn Sie die bewährte Methode nicht einhalten
-> - So halten Sie die bewährten Methoden ein
+In diesem Artikel werden bewährte Methoden für die effektive und effiziente Verwendung des Azure Batch-Diensts auf Grundlage praktischer Erfahrungen mit Batch behandelt. Lesen Sie diesen Artikel, um Fehler beim Entwurf, potenzielle Leistungsprobleme und Antimuster bei der Entwicklung für und Verwendung von Batch zu vermeiden.
 
 ## <a name="pools"></a>Pools
 
-Batch-Pools sind die Computeressourcen zum Ausführen von Aufträgen im Batch-Dienst. Die folgenden Abschnitte bieten Anleitungen zu den wichtigsten bewährten Methoden, die Sie bei der Arbeit mit Batch-Pools einhalten sollten.
+[Pools](nodes-and-pools.md#pools) sind die Computeressourcen zum Ausführen von Aufträgen im Batch-Dienst. Die folgenden Abschnitte enthalten Empfehlungen zum Arbeiten mit Batch-Pools.
 
 ### <a name="pool-configuration-and-naming"></a>Poolkonfiguration und Benennung
 
@@ -61,98 +53,121 @@ Fehler bei der Poolzuordnung können jederzeit während der ersten Zuordnung ode
 
 ### <a name="unplanned-downtime"></a>Ungeplante Ausfallzeiten
 
-Es ist möglich, dass es bei Batch-Pools in Azure zu Ausfallzeiten kommt. Es ist wichtig, dies im Hinterkopf zu behalten, wenn Sie Ihr Szenario oder Ihren Workflow für Batch planen und entwickeln.
+Es ist möglich, dass es bei Batch-Pools in Azure zu Ausfallzeiten kommt. Beachten Sie dies, wenn Sie Ihr Szenario oder Ihren Workflow für Batch planen und entwickeln.
 
-Wenn ein Knoten ausfällt, versucht Batch automatisch, diese Computeknoten in Ihrem Auftrag wiederherzustellen. Dadurch wird möglicherweise eine Neuplanung aller laufenden Aufgaben auf dem Knoten ausgelöst, der wiederhergestellt wird. Weitere Informationen zu unterbrochenen Aufgaben finden Sie unter [Entwerfen für Wiederholungsversuche](#designing-for-retries-and-re-execution).
+Wenn ein Knoten ausfällt, versucht Batch automatisch, diese Computeknoten in Ihrem Auftrag wiederherzustellen. Dadurch wird möglicherweise eine Neuplanung aller laufenden Aufgaben auf dem Knoten ausgelöst, der wiederhergestellt wird. Weitere Informationen zu unterbrochenen Aufgaben finden Sie unter [Entwerfen für Wiederholungsversuche](#design-for-retries-and-re-execution).
 
-- **Azure-Regionsabhängigkeit**: Es wird empfohlen, keine Abhängigkeit von einer einzelnen Azure-Region einzurichten, wenn Sie eine zeitkritische oder Produktionsworkload haben. In seltenen Fällen kann es Probleme geben, die sich auf eine ganze Region auswirken können. Wenn Ihre Verarbeitung beispielsweise zu einem bestimmten Zeitpunkt gestartet werden muss, sollten Sie erwägen, den Pool in ihrer primären Region zentral hochzuskalieren, und zwar *eine ganze Weile im Voraus vor der Startzeit*. Wenn diese Poolskalierung fehlschlägt, können Sie als Plan B einen Pool in einer (oder mehreren) Sicherungsregion(en) zentral hochskalieren. Pools über mehrere Konten hinweg in unterschiedlichen Regionen bieten eine bereite, leicht zugängliche Sicherung, wenn bei einem anderen Pool etwas schiefgeht. Weitere Informationen finden Sie unter [Entwerfen Ihrer Anwendung für Hochverfügbarkeit](high-availability-disaster-recovery.md).
+### <a name="azure-region-dependency"></a>Abhängigkeit von Azure-Regionen
+
+Es wird empfohlen, keine Abhängigkeit von einer einzelnen Azure-Region einzurichten, wenn Sie eine zeitkritische oder Produktionsworkload haben. In seltenen Fällen kann es Probleme geben, die sich auf eine ganze Region auswirken können. Wenn Ihre Verarbeitung beispielsweise zu einem bestimmten Zeitpunkt gestartet werden muss, sollten Sie erwägen, den Pool in ihrer primären Region zentral hochzuskalieren, und zwar *eine ganze Weile im Voraus vor der Startzeit*. Wenn diese Poolskalierung fehlschlägt, können Sie als Plan B einen Pool in einer (oder mehreren) Sicherungsregion(en) zentral hochskalieren. Pools über mehrere Konten hinweg in unterschiedlichen Regionen bieten eine bereite, leicht zugängliche Sicherung, wenn bei einem anderen Pool etwas schiefgeht. Weitere Informationen finden Sie unter [Entwerfen Ihrer Anwendung für Hochverfügbarkeit](high-availability-disaster-recovery.md).
 
 ## <a name="jobs"></a>Aufträge
 
-Ein Auftrag ist ein Container, der auf die Aufnahme Hunderter, Tausender oder sogar von Millionen von Aufgaben ausgelegt ist.
+Ein [Auftrag](jobs-and-tasks.md#jobs) ist ein Container, der auf die Aufnahme Hunderter, Tausender oder sogar von Millionen von Aufgaben ausgelegt ist. Beachten Sie beim Erstellen von Aufträgen die folgenden Richtlinien.
 
-- **Sammeln zahlreicher Aufgaben in einem Auftrag**: Die Verwendung eines Auftrags zum Ausführen einer einzelnen Aufgabe ist ineffizient. Beispielsweise ist es effizienter, einen einzelnen Auftrag mit 1000 Aufgaben zu verwenden, statt 100 Aufträge zu erstellen, die jeweils 10 Aufgaben enthalten. Das Ausführen von 1000 Aufträgen mit jeweils einer einzelnen Aufgabe wäre der am wenigsten effiziente, langsamste und teuerste Ansatz.
+### <a name="fewer-jobs-more-tasks"></a>Weniger Aufträge, mehr Aufgaben
 
-    Entwerfen Sie keine Batch-Lösung, die Tausende gleichzeitig aktive Aufträge erfordert. Es gibt kein Kontingent für Aufgaben. Wenn Sie also so viele Aufgaben unter so wenigen Aufträgen wie möglich ausführen, werden Ihre [Kontingente für Aufträge und die Zeitplanung von Aufträgen](batch-quota-limit.md#resource-quotas) effizient verwendet.
+Die Verwendung eines Auftrags zum Ausführen einer einzelnen Aufgabe ist ineffizient. Beispielsweise ist es effizienter, einen einzelnen Auftrag mit 1000 Aufgaben zu verwenden, statt 100 Aufträge zu erstellen, die jeweils 10 Aufgaben enthalten. Das Ausführen von 1000 Aufträgen mit jeweils einer einzelnen Aufgabe wäre der am wenigsten effiziente, langsamste und teuerste Ansatz.
 
-- **Lebensdauer eines Auftrags**: Ein Batch-Auftrag hat eine unbegrenzte Lebensdauer, bis er aus dem System gelöscht wird. Der Zustand eines Auftrags bestimmt, ob er mehr Aufgaben für die Planung annehmen kann oder nicht. Ein Auftrag wechselt nicht automatisch in den Zustand „Abgeschlossen“, es sei denn, er wurde explizit beendet. Dies kann automatisch über die Eigenschaft [onAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) oder [maxWallClockTime-](https://docs.microsoft.com/rest/api/batchservice/job/add#jobconstraints) ausgelöst werden.
+Vermeiden Sie deshalb, eine Batch-Lösung zu entwerfen, die Tausende gleichzeitig aktiver Aufträge erfordert. Es gibt kein Kontingent für Aufgaben. Wenn Sie also viele Aufgaben unter so wenigen Aufträgen wie möglich ausführen, werden Ihre [Kontingente für Aufträge und die Zeitplanung von Aufträgen](batch-quota-limit.md#resource-quotas) effizient verwendet.
+
+### <a name="job-lifetime"></a>Lebensdauer von Aufträgen
+
+Ein Batch-Auftrag hat eine unbegrenzte Lebensdauer, bis er aus dem System gelöscht wird. Sein Zustand bestimmt, ob er mehr Aufgaben für die Planung annehmen kann oder nicht.
+
+Ein Auftrag wechselt nicht automatisch in den Zustand „Abgeschlossen“, es sei denn, er wurde explizit beendet. Dies kann automatisch über die Eigenschaft [onAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) oder [maxWallClockTime-](https://docs.microsoft.com/rest/api/batchservice/job/add#jobconstraints) ausgelöst werden.
 
 Es gibt ein standardmäßiges [Kontingent für aktive Aufträge und die Zeitplanung von Aufträgen](batch-quota-limit.md#resource-quotas). Aufträge und Auftragszeitpläne im Zustand „Abgeschlossen“ werden nicht auf dieses Kontingent angerechnet.
 
 ## <a name="tasks"></a>Aufgaben
 
-Aufgaben sind einzelne Arbeitseinheiten, die einen Auftrag bilden. Tasks werden vom Benutzer übermittelt und von Batch auf Computeknoten geplant. Beim Erstellen und Ausführen von Tasks gibt es einige zu berücksichtigende Aspekte. In den folgenden Abschnitten werden gängige Szenarien erläutert und wie Sie Ihre Aufgaben so entwerfen, dass sie mit Probleme umgehen können und effizient ausgeführt werden.
+[Aufgaben](jobs-and-tasks.md#tasks) sind einzelne Arbeitseinheiten, die einen Auftrag bilden. Tasks werden vom Benutzer übermittelt und von Batch auf Computeknoten geplant. Beim Erstellen und Ausführen von Tasks gibt es einige zu berücksichtigende Aspekte. In den folgenden Abschnitten werden gängige Szenarien erläutert und wie Sie Ihre Aufgaben so entwerfen, dass sie mit Probleme umgehen können und effizient ausgeführt werden.
 
-- **Speichern von Aufgabendaten als Teil der Aufgabe.**
-    Computeknoten sind von Natur aus kurzlebig. Es gibt viele Funktionen in Batch wie AutoPool und Autoskalierung, die das Verschwinden von Knoten begünstigen. Wenn Knoten einen Pool verlassen (aufgrund einer Größenänderung oder des Löschens eine Pools), werden alle Dateien auf diesen Knoten ebenfalls gelöscht. Aus diesem Grund wird empfohlen, dass die Ausgabe vor Abschluss einer Aufgabe von dem Knoten, auf dem Sie ausgeführt wird, in einen permanenten Speicher verschoben wird. Ähnlich sollten Sie, wenn ein Task fehlschlägt, auch die Protokolle in einen permanenten Speicher verschieben, die zur Diagnose des Fehlers erforderlich sind. Batch verfügt über integrierte Unterstützung für Azure Storage zum Hochladen von Daten über [OutputFiles](batch-task-output-files.md) sowie eine Vielzahl von freigegebenen Dateisystemen, oder Sie können auch den Upload selbst in Ihren Aufgaben durchführen.
+### <a name="save-task-data"></a>Speichern von Aufgabendaten
 
-### <a name="task-lifetime"></a>Gültigkeitsdauer von Tasks
+Computeknoten sind von Natur aus kurzlebig. Es gibt viele Funktionen in Batch wie AutoPool und Autoskalierung, die das Verschwinden von Knoten begünstigen. Wenn Knoten einen Pool verlassen (aufgrund einer Größenänderung oder des Löschens eine Pools), werden alle Dateien auf diesen Knoten ebenfalls gelöscht. Aus diesem Grund sollte die Ausgabe einer Aufgabe aus dem Knoten, auf dem sie ausgeführt wird, in einen permanenten Speicher verschoben werden, bevor sie abgeschlossen wird. Wenn eine Aufgabe fehlschlägt, sollten auch die für die Diagnose des Fehlers erforderlichen Protokolle in einen permanenten Speicher verschoben werden.
 
-- **Löschen von Aufgaben, wenn Sie abgeschlossen sind.**
-    Löschen Sie Aufgaben, wenn Sie nicht mehr benötigt werden, oder legen Sie eine Einschränkung durch eine [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet)-Aufgabe fest. Wenn eine `retentionTime` festgelegt wird, bereinigt Batch automatisch den von der Aufgabe verwendeten Speicherplatz, wenn die `retentionTime` abläuft.
+Batch verfügt über integrierte Unterstützung für Azure Storage zum Hochladen von Daten über [OutputFiles](batch-task-output-files.md) sowie eine Vielzahl von freigegebenen Dateisystemen, oder Sie können auch den Upload selbst in Ihren Aufgaben durchführen.
 
-    Durch das Löschen von Aufgaben werden zwei Dinge erreicht. Es wird sichergestellt, dass sich nicht übermäßig Aufgaben im Auftrag ansammeln, was das Abfragen/Auffinden der Aufgabe erschwert, an der Sie interessiert sind (da Sie die abgeschlossenen Aufgaben filtern müssen). Es werden ferner die entsprechenden Aufgabendaten auf dem Knoten bereinigt (sofern `retentionTime` nicht bereits erreicht wurde). Dadurch wird sichergestellt, dass Ihre Knoten nicht mit Aufgabendaten aufgefüllt werden und der Speicherplatz knapp wird.
+### <a name="manage-task-lifetime"></a>Verwalten der Lebensdauer von Aufgaben
 
-### <a name="task-submission"></a>Aufgabenübermittlung
+Löschen Sie Aufgaben, wenn Sie nicht mehr benötigt werden, oder legen Sie eine Einschränkung durch eine [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet)-Aufgabe fest. Wenn eine `retentionTime` festgelegt wird, bereinigt Batch automatisch den von der Aufgabe verwendeten Speicherplatz, wenn die `retentionTime` abläuft.
 
-- **Übermitteln einer großen Anzahl von Aufgaben in einer Sammlung.**
-    Aufgaben können einzeln oder in Sammlungen übermittelt werden. Übermitteln Sie Aufgaben in [Sammlungen](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) von bis zu 100 Stück gleichzeitig, wenn Sie eine Massenübermittlung von Aufgaben durchführen, um den Aufwand und die Übermittlungszeiten zu verringern.
+Durch das Löschen von Aufgaben werden zwei Dinge erreicht. Es wird sichergestellt, dass sich nicht übermäßig Aufgaben im Auftrag ansammeln, was das Abfragen/Auffinden der Aufgabe erschweren kann, an der Sie interessiert sind (da Sie die abgeschlossenen Aufgaben filtern müssen). Es werden ferner die entsprechenden Aufgabendaten auf dem Knoten bereinigt (sofern `retentionTime` nicht bereits erreicht wurde). Dies hilft sicherzustellen, dass Ihre Knoten nicht mit Aufgabendaten aufgefüllt werden und der Speicherplatz knapp wird.
 
-### <a name="task-execution"></a>Aufgabenausführung
+### <a name="submit-large-numbers-of-tasks-in-collection"></a>Übermitteln einer großen Anzahl von Aufgaben in einer Sammlung
 
-- **Auswählen der maximalen Anzahl von Aufgaben pro Knoten**: Batch unterstützt das Überabonnieren von Aufgaben auf Knoten (Ausführen einer größeren Anzahl von Aufgaben, als ein Knoten über Kerne verfügt). Es liegt an Ihnen, sicherzustellen, dass ihre Aufgaben in die Knoten in Ihrem Pool „passen“. Es kann beispielsweise zu einer verschlechterten Erfahrung kommen, wenn Sie versuchen, acht Aufgaben zu planen, die jeweils 25 % CPU-Auslastung auf einem Knoten verbrauchen (in einem Pool mit `maxTasksPerNode = 8`).
+Aufgaben können einzeln oder in Sammlungen übermittelt werden. Übermitteln Sie Aufgaben in [Sammlungen](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) von bis zu 100 Stück gleichzeitig, wenn Sie eine Massenübermittlung von Aufgaben durchführen, um den Aufwand und die Übermittlungszeiten zu verringern.
 
-### <a name="designing-for-retries-and-re-execution"></a>Entwerfen für Wiederholungsversuche und erneute Ausführung
+### <a name="set-max-tasks-per-node-appropriately"></a>Festlegen einer angemessenen maximalen Anzahl von Aufgaben pro Knoten
+
+Batch unterstützt das Überabonnieren von Aufgaben auf Knoten (Ausführen von mehr Aufgaben, als ein Knoten über Kerne verfügt). Es liegt an Ihnen, sicherzustellen, dass ihre Aufgaben in die Knoten in Ihrem Pool „passen“. Es kann beispielsweise zu einer verschlechterten Erfahrung kommen, wenn Sie versuchen, acht Aufgaben zu planen, die jeweils 25 % CPU-Auslastung auf einem Knoten verbrauchen (in einem Pool mit `maxTasksPerNode = 8`).
+
+### <a name="design-for-retries-and-re-execution"></a>Entwerfen für Wiederholungsversuche und erneute Ausführung
 
 Aufgaben können von Batch automatisch wiederholt werden. Es gibt zwei Arten von Wiederholungsversuchen: benutzergesteuert und intern. Benutzergesteuerte Wiederholungsversuche werden über die [maxTaskRetryCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet) der Aufgabe angegeben. Wenn ein in der Aufgabe angegebenes Programm mit einem Exitcode ungleich 0 (null) beendet wird, wird die Aufgabe so oft, wie im Wert `maxTaskRetryCount` angegeben, wiederholt.
 
 Zwar ist dies selten, doch eine Aufgabe kann aufgrund von Fehlern auf dem Computeknoten intern wiederholt werden, z. B. wenn der interne Zustand nicht aktualisiert werden kann oder ein Fehler auf dem Knoten auftritt, während die Aufgabe ausgeführt wird. Die Aufgabe wird, falls möglich, auf demselben Computeknoten bis zu einem internen Limit wiederholt, bevor die Aufgabe aufgegeben und dann zur Neuplanung durch Batch verzögert wird, potenziell auf einem anderen Computeknoten.
 
-- **Erstellen permanenter Aufgaben**: Aufgaben sollten so entworfen werden, dass Sie Fehlern widerstehen und eine Wiederholung ermöglichen. Dies gilt besonders wichtig für zeitintensive Aufgaben. Stellen Sie zu diesem Zweck sicher, dass Aufgaben dasselbe einzige Ergebnis generieren, auch wenn Sie mehrmals ausgeführt werden. Eine Möglichkeit, dies zu erreichen, besteht darin, ihre Aufgaben „zielsuchend“ auszuführen. Eine andere Möglichkeit besteht darin sicherzustellen, dass ihre Aufgaben idempotent sind (Aufgaben haben immer dasselbe Ergebnis, egal wie oft Sie ausgeführt werden).
+Beim Ausführen Ihrer Aufgaben auf dedizierten Knoten oder Knoten mit niedriger Priorität gibt es keine Unterschiede beim Design. Unabhängig davon, ob eine Aufgabe bei der Ausführung auf einem Knoten mit niedriger Priorität vorzeitig entfernt oder aufgrund eines Fehlers auf einem dedizierten Knoten unterbrochen wird, werden beide Situationen durch das Entwerfen einer gegenüber Fehlern robusten Aufgabe abgemildert.
 
-    Ein gängiges Beispiel hierfür ist eine Aufgabe zum Kopieren von Dateien auf einen Computeknoten. Ein einfacher Ansatz ist eine Aufgabe, die bei jeder Ausführung alle angegebenen Dateien kopiert, was ineffizient und nicht robust ist. Erstellen Sie stattdessen eine Aufgabe, um sicherzustellen, dass sich die Dateien auf dem Computeknoten befinden, eine Aufgabe, die keine Dateien wiederholt kopiert, die bereits vorhanden sind. Auf diese Weise setzt die Aufgabe an der Stelle fort, an der Sie aufgehört hatte oder unterbrochen wurde.
+### <a name="build-durable-tasks"></a>Erstellen von permanenten Vorgängen
 
-- **Knoten mit niedriger Priorität**: Beim Ausführen Ihrer Aufgaben auf dedizierten Knoten oder Knoten mit niedriger Priorität gibt es keine Unterschiede beim Entwurf. Unabhängig davon, ob eine Aufgabe bei der Ausführung auf einem Knoten mit niedriger Priorität vorzeitig entfernt oder aufgrund eines Fehlers auf einem dedizierten Knoten unterbrochen wird, werden beide Situationen durch das Entwerfen einer gegenüber Fehlern robusten Aufgabe abgemildert.
+Aufgaben sollten so entworfen werden, dass Sie Fehlern widerstehen und eine Wiederholung ermöglichen. Dies gilt besonders wichtig für zeitintensive Aufgaben. Stellen Sie zu diesem Zweck sicher, dass Aufgaben dasselbe einzige Ergebnis generieren, auch wenn Sie mehrmals ausgeführt werden. Eine Möglichkeit, dies zu erreichen, besteht darin, Ihre Aufgaben „zielsuchend“ auszuführen. Eine andere Möglichkeit besteht darin sicherzustellen, dass ihre Aufgaben idempotent sind (Aufgaben haben immer dasselbe Ergebnis, egal wie oft Sie ausgeführt werden).
 
-- **Ausführungszeit der Aufgabe**: Vermeiden Sie Aufgaben mit kurzer Ausführungszeit. Aufgaben, die nur für eine bis zwei Sekunden ausgeführt werden, sind nicht ideal. Sie sollten versuchen, eine signifikante Menge an Arbeit in einer einzelnen Aufgabe zu verrichten (mindestens 10 Sekunden, bis zu Stunden oder Tage). Wenn jede Aufgabe für eine Minute (oder mehr) ausgeführt wird, ist der Planungsaufwand als Anteil an der gesamten Computezeit gering.
+Ein gängiges Beispiel hierfür ist eine Aufgabe zum Kopieren von Dateien auf einen Computeknoten. Ein einfacher Ansatz ist eine Aufgabe, die bei jeder Ausführung alle angegebenen Dateien kopiert, was ineffizient und nicht robust ist. Erstellen Sie stattdessen eine Aufgabe, um sicherzustellen, dass sich die Dateien auf dem Computeknoten befinden, eine Aufgabe, die keine Dateien wiederholt kopiert, die bereits vorhanden sind. Auf diese Weise setzt die Aufgabe an der Stelle fort, an der Sie aufgehört hatte oder unterbrochen wurde.
+
+### <a name="avoid-short-execution-time"></a>Vermeiden kurzer Ausführungszeit
+
+Aufgaben, die nur für eine bis zwei Sekunden ausgeführt werden, sind nicht ideal. Sie sollten versuchen, eine signifikante Menge an Arbeit in einer einzelnen Aufgabe zu verrichten (mindestens 10 Sekunden, bis zu Stunden oder Tage). Wenn jede Aufgabe für eine Minute (oder mehr) ausgeführt wird, ist der Planungsaufwand als Anteil an der gesamten Computezeit gering.
+
 
 ## <a name="nodes"></a>Nodes
 
-- **Startaufgaben sollten idempotent sein**: Ähnlich wie bei anderen Aufgaben, sollte die Knotenstartaufgabe idempotent sein, da Sie bei jedem Neustart des Knotens erneut ausgeführt wird. Bei einer idempotenten Aufgabe handelt es sich um eine Aufgabe, die bei mehreren Wiederholungen ein konsistentes Ergebnis erzeugt.
+Ein [Serverknoten](nodes-and-pools.md#nodes) ist ein virtueller Azure-Computer (VM) oder ein virtueller Clouddienstcomputer, der für die Verarbeitung eines Teils der Anwendungsworkload fest zugeordnet ist. Beachten Sie beim Arbeiten mit Knoten die folgenden Richtlinien.
 
-- **Verwalten zeitintensiver Dienste über die Betriebssystem-Diensteschnittstelle.**
-    In manchen Fällen ist es erforderlich, einen anderen Agent parallel zum Batch-Agent im Knoten auszuführen, z. B. um Daten vom Knoten zu erfassen und zu melden. Wir empfehlen, diese Agents als Betriebssystemdienste bereitzustellen, z. B. als Windows-Dienst oder als `systemd`-Dienst von Linux.
+### <a name="idempotent-start-tasks"></a>Idempotente Startaufgaben
 
-    Bei der Ausführung dieser Dienste dürfen sie keine Dateisperren für Dateien in von Batch verwalteten Verzeichnissen auf dem Knoten einrichten, da Batch sonst diese Verzeichnisse wegen der Dateisperren nicht löschen kann. Wenn Sie beispielsweise einen Windows-Dienst in einer Startaufgabe installieren, anstatt den Dienst direkt aus dem Arbeitsverzeichnis der Startaufgabe zu starten, kopieren Sie die Dateien an einen anderen Ort (wenn die Dateien vorhanden sind, überspringen Sie einfach das Kopieren). Installieren Sie den Dienst von diesem Ort aus. Wenn Batch Ihre Startaufgabe erneut ausführt, wird das Arbeitsverzeichnis der Startaufgabe gelöscht und erneut erstellt. Dies funktioniert, weil der Dienst Dateisperren im anderen Verzeichnis und nicht im Arbeitsverzeichnis der Startaufgabe eingerichtet hat.
+Wie andere Aufgaben auch sollte die [Knotenstartaufgabe](jobs-and-tasks.md#start-task) idempotent sein, da sie bei jedem Neustart des Knotens erneut ausgeführt wird. Bei einer idempotenten Aufgabe handelt es sich um eine Aufgabe, die bei mehreren Wiederholungen ein konsistentes Ergebnis erzeugt.
 
-- **Vermeiden der Erstellung von Verzeichnisverbindungen in Windows**: Verzeichnisverbindungen, manchmal auch als feste Verzeichnisverknüpfungen bezeichnet, sind während der Aufgaben- und Auftragsbereinigung schwierig zu behandeln. Verwenden Sie symlinks (symbolische Verknüpfungen) anstelle von festen Verknüpfungen.
+### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>Verwalten zeitintensiver Dienste über die Betriebssystem-Diensteschnittstelle
 
-- **Erfassen der Batch-Agent-Protokolle bei einem Problem**: Wenn Sie ein Problem bemerken, das mit dem Verhalten eines Knotens oder einer Aufgabe, die auf einem Knoten ausgeführt wird, zusammenhängt, empfiehlt es sich, die Batch-Agent-Protokolle vor dem Aufheben der Zuordnung der fraglichen Knoten zu erfassen. Die Batch-Agent-Protokolle lassen sich mithilfe der API zum Hochladen von Batch-Dienstprotokollen erfassen. Diese Protokolle können als Teil eines Supporttickets an Microsoft bereitgestellt werden und helfen bei der Behandlung und Behebung von Problemen.
+In manchen Fällen ist es erforderlich, einen anderen Agent parallel zum Batch-Agent im Knoten auszuführen. Beispielsweise möchten Sie eventuell Daten vom Knoten erfassen und melden. Wir empfehlen, diese Agents als Betriebssystemdienste bereitzustellen, z. B. als Windows-Dienst oder als `systemd`-Dienst von Linux.
 
-## <a name="security"></a>Sicherheit
+Bei der Ausführung dieser Dienste dürfen sie keine Dateisperren für Dateien in von Batch verwalteten Verzeichnissen auf dem Knoten einrichten, da Batch sonst diese Verzeichnisse wegen der Dateisperren nicht löschen kann. Wenn Sie beispielsweise einen Windows-Dienst in einer Startaufgabe installieren, anstatt den Dienst direkt aus dem Arbeitsverzeichnis der Startaufgabe zu starten, kopieren Sie die Dateien an einen anderen Ort (oder wenn die Dateien vorhanden sind, überspringen Sie einfach das Kopieren). Installieren Sie dann den Dienst von diesem Ort aus. Wenn Batch Ihre Startaufgabe erneut ausführt, wird das Arbeitsverzeichnis der Startaufgabe gelöscht und erneut erstellt. Dies funktioniert, weil der Dienst Dateisperren im anderen Verzeichnis und nicht im Arbeitsverzeichnis der Startaufgabe eingerichtet hat.
 
-### <a name="security-isolation"></a>Sicherheitsisolierung
+### <a name="avoid-creating-directory-junctions-in-windows"></a>Vermeiden der Erstellung von Verzeichnisverbindungen
 
-Zum Zwecke der Isolierung, falls Ihr Szenario die Isolierung von Aufträgen voneinander erfordert, sollten Sie diese Aufträge isolieren, indem Sie sie in separaten Pools platzieren. Ein Pool ist die Sicherheitsisolierungsgrenze in Batch, und standardmäßig sind zwei Pools nicht gegenseitig sichtbar und können auch nicht miteinander kommunizieren. Vermeiden Sie die Verwendung separater Batch-Konten als Isolierungsmethode.
+Verzeichnisverbindungen, manchmal auch als feste Verzeichnisverknüpfungen bezeichnet, sind während der Aufgaben- und Auftragsbereinigung schwierig zu behandeln. Verwenden Sie symlinks (symbolische Verknüpfungen) anstelle von festen Verknüpfungen.
 
-## <a name="moving"></a>Verschieben
+### <a name="collect-the-batch-agent-logs"></a>Erfassen der Batch-Agent-Protokolle
 
-### <a name="move-batch-account-across-regions"></a>Verschieben von Batch-Konten zwischen Regionen
+Wenn Sie ein Problem bemerken, das mit dem Verhalten eines Knotens oder einer Aufgabe, die auf einem Knoten ausgeführt wird, zusammenhängt, sollten Sie die Batch-Agent-Protokolle vor dem Aufheben der Zuordnung der fraglichen Knoten erfassen. Die Batch-Agent-Protokolle lassen sich mithilfe der API zum Hochladen von Batch-Dienstprotokollen erfassen. Diese Protokolle können als Teil eines Supporttickets an Microsoft bereitgestellt werden und helfen bei der Behandlung und Behebung von Problemen.
 
-Es gibt verschiedene Szenarien, in denen Sie Ihr vorhandenes Batch-Konto aus einer Region in eine andere verschieben möchten. Möglicherweise möchten Sie im Rahmen der Planung einer Notfallwiederherstellung eine Verschiebung in eine andere Region durchführen.
+## <a name="isolation-security"></a>Isolierungssicherheit
 
-Azure Batch-Konten können nicht von einer Region in eine andere verschoben werden. Sie können jedoch eine Azure Resource Manager-Vorlage verwenden, um die vorhandene Konfiguration Ihres Batch-Kontos zu exportieren.  Anschließend können Sie die Ressource in einer anderen Region stagen, indem Sie das Batch-Konto in eine Vorlage exportieren, die Parameter so ändern, dass sie der Zielregion entsprechen, und die Vorlage dann in der neuen Region bereitstellen. Nachdem Sie die Vorlage in der neuen Region hochgeladen haben, müssen Sie Zertifikate, Auftragszeitpläne und Anwendungspakete neu erstellen. Um die Änderungen zu committen und das Verschieben des Batch-Kontos abzuschließen, müssen Sie das ursprüngliche Batch-Konto oder die ursprüngliche Ressourcengruppe löschen.
+Falls Ihr Szenario die Isolierung von Aufträgen voneinander erfordert, sollten Sie zu diesem Zwecke die Aufträge in separaten Pools platzieren. Ein Pool ist die Sicherheitsisolierungsgrenze in Batch, und standardmäßig sind zwei Pools nicht gegenseitig sichtbar und können auch nicht miteinander kommunizieren. Vermeiden Sie die Verwendung separater Batch-Konten als Isolierungsmethode.
+
+## <a name="moving-batch-accounts-across-regions"></a>Verschieben von Batch-Konten zwischen Regionen
+
+Es gibt Szenarien, in denen es hilfreich sein kann, ein vorhandenes Batch-Konto aus einer Region in eine andere zu verschieben. Möglicherweise möchten Sie im Rahmen der Planung einer Notfallwiederherstellung eine Verschiebung in eine andere Region durchführen.
+
+Azure Batch-Konten können nicht direkt von einer Region in eine andere verschoben werden. Sie können jedoch eine Azure Resource Manager-Vorlage verwenden, um die vorhandene Konfiguration Ihres Batch-Kontos zu exportieren. Anschließend können Sie die Ressource in einer anderen Region stagen, indem Sie das Batch-Konto in eine Vorlage exportieren, die Parameter so ändern, dass sie der Zielregion entsprechen, und die Vorlage dann in der neuen Region bereitstellen.
+
+Nachdem Sie die Vorlage in der neuen Region hochgeladen haben, müssen Sie Zertifikate, Auftragszeitpläne und Anwendungspakete neu erstellen. Um die Änderungen zu committen und das Verschieben des Batch-Kontos abzuschließen, müssen Sie das ursprüngliche Batch-Konto oder die ursprüngliche Ressourcengruppe löschen.
 
 Weitere Informationen zu Resource Manager und Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
-## <a name="connectivity-to-the-batch-service"></a>Konnektivität mit dem Batch-Dienst
+## <a name="connectivity"></a>Konnektivität
+
+Lesen Sie die folgenden Anleitungen für die Konnektivität in Ihren Batch-Lösungen.
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Netzwerksicherheitsgruppen (NSGs) und benutzerdefinierte Routen (UDRs)
 
 Wenn Sie [Batch-Pools in einem virtuellen Netzwerk](batch-virtual-network.md) bereitstellen, sollten Sie sicherstellen, dass Sie die Richtlinien bezüglich der Verwendung des `BatchNodeManagement`-Diensttags, der Ports, der Protokolle und der Richtung der Regel streng befolgen.
-Die Verwendung des Diensttags anstelle der zugrunde liegenden IP-Adressen des Batch-Diensts wird dringend empfohlen, da sich diese im Lauf der Zeit ändern können. Wenn Sie die IP-Adressen des Batch-Diensts direkt verwenden, kann sich dies als Instabilität, Unterbrechungen oder Ausfälle für Ihre Batch-Pools manifestieren, da der Batch-Dienst die verwendeten IP-Adressen im Lauf der Zeit aktualisiert. Wenn Sie derzeit IP-Adressen des Batch-Diensts in ihren NSG-Regeln verwenden, empfiehlt es sich, auf die Verwendung des Diensttags umzusteigen.
+Die Verwendung des Diensttags anstelle der zugrunde liegenden IP-Adressen des Batch-Diensts wird dringend empfohlen. Der Grund dafür ist, dass IP-Adressen sich im Laufe der Zeit ändern können. Die direkte Verwendung von IP-Adressen des Batch-Diensts kann zu Instabilität, Unterbrechungen oder Ausfällen für die Batch-Pools führen.
 
-Stellen Sie für benutzerdefinierte Routen sicher, dass Sie über einen Prozess verfügen, um die IP-Adressen des Batch-Diensts in regelmäßigen Abständen in der Routingtabelle zu aktualisieren, da sich diese im Lauf der Zeit ändern. Informationen dazu, wie Sie die Liste mit den IP-Adressen des Batch-Diensts abrufen, finden Sie unter [Lokale Diensttags](../virtual-network/service-tags-overview.md). Die IP-Adressen des Batch-Diensts werden dem `BatchNodeManagement`-Diensttag (oder der regionalen Variante, die Ihrer Batch-Kontoregion entspricht) zugeordnet.
+Stellen Sie für benutzerdefinierte Routen (User Defined Routes, UDRs) sicher, dass Sie über einen Prozess verfügen, um die IP-Adressen des Batch-Diensts in regelmäßigen Abständen in der Routingtabelle zu aktualisieren, da sich diese Adressen im Laufe der Zeit ändern. Informationen dazu, wie Sie die Liste mit den IP-Adressen des Batch-Diensts abrufen, finden Sie unter [Lokale Diensttags](../virtual-network/service-tags-overview.md). Die IP-Adressen des Batch-Diensts werden dem `BatchNodeManagement`-Diensttag (oder der regionalen Variante, die Ihrer Batch-Kontoregion entspricht) zugeordnet.
 
 ### <a name="honoring-dns"></a>Berücksichtigen von DNS
 
@@ -164,3 +179,25 @@ Wenn Ihre Anforderungen HTTP-Antworten auf 5xx-Ebene empfangen und ein „Connec
 
 Stellen Sie sicher, dass für Ihre Batch-Dienstclients geeignete Wiederholungsrichtlinien vorhanden sind, um Ihre Anforderungen auch während des normalen Betriebs und nicht ausschließlich während der Dienstwartungszeiten zu wiederholen. Diese Wiederholungsrichtlinien sollten ein Intervall von mindestens 5 Minuten umfassen. Automatische Wiederholungsfunktionen werden mit verschiedenen Batch-SDKs bereitgestellt, etwa in der [RetryPolicyProvider-Klasse von .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet).
 
+## <a name="batch-node-underlying-dependencies"></a>Zugrunde liegende Abhängigkeiten von Batch-Knoten
+
+Beachten Sie beim Entwerfen Ihrer Batch-Lösungen die folgenden Abhängigkeiten und Einschränkungen.
+
+### <a name="system-created-resources"></a>Vom System erstellte Ressourcen
+
+Azure Batch erstellt und verwaltet eine Gruppe von Benutzern und Gruppen auf der VM, die nicht geändert werden sollten. Dies sind:
+
+#### <a name="windows"></a>Windows
+
+- Ein Benutzer mit dem Namen **PoolNonAdmin**
+- Eine Benutzergruppe mit dem Namen **WATaskCommon**
+
+#### <a name="linux"></a>Linux
+
+- Ein Benutzer mit dem Namen **_azbatch**
+
+### <a name="file-cleanup"></a>Dateibereinigung
+
+Batch versucht, das Arbeitsverzeichnis zu bereinigen, in dem Aufgaben ausgeführt werden, sobald die Aufbewahrungsdauer abläuft. Alle außerhalb dieses Verzeichnisses geschriebenen Dateien [müssen von Ihnen bereinigt werden](#manage-task-lifetime), um die Überfüllung des Speicherplatzes zu verhindern. 
+
+Wenn Sie einen Dienst unter Windows aus dem Arbeitsverzeichnis „startTask“ ausführen, wird die automatisierte Bereinigung für das Arbeitsverzeichnis blockiert, weil der Ordner noch verwendet wird. Dadurch wird die Leistung beeinträchtigt. Um dieses Problem zu beheben, ändern Sie das Verzeichnis für diesen Dienst in ein anderes Verzeichnis, das nicht von Batch verwaltet wird.

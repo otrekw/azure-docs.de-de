@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/07/2020
+ms.date: 05/19/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f0723534d9d2187593cb73f058ffea62473b80a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32c08af129172fb1dbebf1679ea01694e8bd3d1a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235964"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653277"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>Angeben der Quellsprache für die Spracherkennung
 
@@ -166,23 +166,35 @@ speechConfig.endpointId = "The Endpoint ID for your custom model.";
 
 ## <a name="how-to-specify-source-language-in-objective-c"></a>Vorgehensweise: Angeben der Quellsprache in Objective-C
 
-Im ersten Schritt wird ein `speechConfig` erstellt:
+In diesem Beispiel wird die Ausgangssprache mithilfe eines `SPXSpeechRecognizer`-Konstrukts explizit als Parameter bereitgestellt.
 
 ```Objective-C
-SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithSubscription:@"YourSubscriptionkey" region:@"YourRegion"];
+SPXSpeechRecognizer* speechRecognizer = \
+    [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig language:@"de-DE" audioConfiguration:audioConfig];
 ```
 
-Geben Sie als nächstes die Quellsprache Ihrer Audiodatei mit `speechRecognitionLanguage` an:
+In diesem Beispiel wird die Quellsprache mithilfe von `SPXSourceLanguageConfiguration` bereitgestellt. `SPXSourceLanguageConfiguration` wird dann als Parameter an das `SPXSpeechRecognizer`-Konstrukt übergeben.
 
 ```Objective-C
-speechConfig.speechRecognitionLanguage = @"de-DE";
+SPXSourceLanguageConfiguration* sourceLanguageConfig = [[SPXSourceLanguageConfiguration alloc]init:@"de-DE"];
+SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig
+                                                                     sourceLanguageConfiguration:sourceLanguageConfig
+                                                                              audioConfiguration:audioConfig];
 ```
 
-Wenn Sie ein benutzerdefiniertes Modell zur Erkennung verwenden, können Sie den Endpunkt mit `endpointId` angeben:
+In diesem Beispiel werden die Quellsprache und der benutzerdefinierte Endpunkt mithilfe von `SPXSourceLanguageConfiguration` bereitgestellt. `SPXSourceLanguageConfiguration` wird dann als Parameter an das `SPXSpeechRecognizer`-Konstrukt übergeben.
 
 ```Objective-C
-speechConfig.endpointId = @"The Endpoint ID for your custom model.";
+SPXSourceLanguageConfiguration* sourceLanguageConfig = \
+        [[SPXSourceLanguageConfiguration alloc]initWithLanguage:@"de-DE"
+                                                     endpointId:@"The Endpoint ID for your custom model."];
+SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig
+                                                                     sourceLanguageConfiguration:sourceLanguageConfig
+                                                                              audioConfiguration:audioConfig];
 ```
+
+>[!Note]
+> Die Eigenschaften `speechRecognitionLanguage` und `endpointId` sind veraltete Eigenschaften der Klasse `SPXSpeechConfiguration` in Objective-C. Die Verwendung dieser Eigenschaften wird nicht empfohlen und sollte bei der Erstellung einer Spracherkennung (`SPXSpeechRecognizer`) vermieden werden.
 
 ::: zone-end
 

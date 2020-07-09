@@ -1,6 +1,6 @@
 ---
 title: Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure mithilfe von PowerShell
-description: Dieses PowerShell-Skript kopiert Daten aus einer lokalen SQL Server-Datenbank in eine andere Azure Blob Storage-Instanz.
+description: Dieses PowerShell-Skript kopiert Daten aus einer SQL Server-Datenbank in eine Azure Blob Storage-Instanz.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,16 +10,16 @@ author: linda33wj
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: 10555defc4888af66bb88d19190b6543aa8ae0c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f0a1509a97d2d860b43146ffaf69bb241105910
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75974701"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194628"
 ---
-# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>Verwenden von PowerShell zum Erstellen einer Data Factory-Pipeline zum Kopieren von lokalen Daten nach Azure
+# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>Verwenden von PowerShell zum Erstellen einer Data Factory-Pipeline zum Kopieren von SQL Server-Daten in Azure
 
-Dieses PowerShell-Beispielskript erstellt eine Pipeline in Azure Data Factory, die Daten aus einer lokalen SQL Server-Datenbank in eine Azure Blob Storage-Instanz kopiert.
+Dieses PowerShell-Beispielskript erstellt eine Pipeline in Azure Data Factory, die Daten aus einer SQL Server-Datenbank in eine Azure Blob Storage-Instanz kopiert.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -27,12 +27,12 @@ Dieses PowerShell-Beispielskript erstellt eine Pipeline in Azure Data Factory, d
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **SQL Server**. In diesem Beispiel verwenden Sie eine lokale SQL Server-Datenbank als **Quelldatenspeicher**.
+- **SQL Server**. In diesem Beispiel verwenden Sie eine SQL Server-Datenbank als **Quelldatenspeicher**.
 - **Azure Storage-Konto**. In diesem Beispiel verwenden Sie Azure Blob Storage als **Ziel-/Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md) Schritte zum Erstellen eines Azure Storage-Kontos.
 - **Selbstgehostete Integration Runtime**. Laden Sie die MSI-Datei aus dem [Download Center](https://www.microsoft.com/download/details.aspx?id=39717) herunter, und führen Sie sie aus, um eine selbstgehostete Integration Runtime auf Ihrem Computer zu installieren.  
 
 ### <a name="create-sample-database-in-sql-server"></a>Erstellen einer Beispieldatenbank in SQL Server
-1. Erstellen Sie in der lokalen SQL Server-Datenbank eine Tabelle namens **emp**. Verwenden Sie dazu das folgende SQL-Skript:
+1. Erstellen Sie in der SQL Server-Datenbank eine Tabelle namens **emp**. Verwenden Sie dazu das folgende SQL-Skript:
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -57,7 +57,7 @@ Dieses PowerShell-Beispielskript erstellt eine Pipeline in Azure Data Factory, d
 > [!IMPORTANT]
 > Dieses Skript erstellt JSON-Dateien, die Data Factory-Entitäten (verknüpften Dienst, Dataset und Pipeline) auf der Festplatte im Ordner „c:\“ definieren.
 
-[!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from on-premises SQL Server -> Azure Blob Storage")]
+[!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from SQL Server -> Azure Blob Storage")]
 
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung

@@ -1,24 +1,19 @@
 ---
 title: 'Schnellstart: Verwenden von Azure Service Bus-Themen und -Abonnements mit Python'
 description: In diesem Artikel erfahren Sie, wie Sie ein Azure Service Bus-Thema und -Abonnement erstellen und Nachrichten an ein Thema senden sowie Nachrichten von einem Abonnement empfangen.
-services: service-bus-messaging
 documentationcenter: python
-author: axisc
-editor: spelluru
-ms.assetid: c4f1d76c-7567-4b33-9193-3788f82934e4
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
+author: spelluru
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 4745d675086f1b07bf7fccf17c14c76e4b18fba2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.custom: tracking-python
+ms.openlocfilehash: 4c490d252fa1153324df62a6119ae6bdc548c331
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478074"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341038"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit Python
 

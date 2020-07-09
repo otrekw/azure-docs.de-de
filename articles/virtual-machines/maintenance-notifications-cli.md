@@ -4,15 +4,15 @@ description: Zeigen Sie mithilfe der Azure CLI Wartungsbenachrichtigungen für i
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 4ad57c1c71a51f948bd405a5487a1e27e36bfff7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 289733c4cee23a37c26df0b613a470925756f0eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920891"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84674838"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen mit der Azure CLI
 

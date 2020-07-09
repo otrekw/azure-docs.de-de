@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 076edc62a467701eaf0de23f280cdaf2abd945de
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9ac7640dd8b63c72bac83c98e07cf861fb26c870
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792716"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845787"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Verwenden von Azure Blob Storage zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -74,9 +74,9 @@ ms.locfileid: "82792716"
 Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für Ihr Angebot im Veröffentlichungsportal zu konfigurieren:
 
 1. Navigieren Sie zur Seite **Angebotseinrichtung** für Ihr Angebot.
-2. Wählen Sie im Abschnitt „Leadverwaltung“ die Option **Verbinden** aus.
+2. Wählen Sie im Abschnitt **Kundenleads** die Option **Verbinden** aus.
 
-    ![„Verbinden“ für Angebot](./media/commercial-marketplace-lead-management-instructions-azure-blob/connect-offer.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-blob/customer-leads.png" alt-text="Kundenleads":::
 
 3. Wählen Sie im Popupfenster „Verbindungsdetails“ **Azure Blob** als Leadziel aus.
 

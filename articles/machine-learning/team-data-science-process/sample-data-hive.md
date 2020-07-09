@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 339273c091a1bcfc4f2de66ef2f79ea8cebbc49b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76719992"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026048"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Extrahieren von Stichproben aus Daten in Azure HDInsight Hive-Tabellen
 In diesem Artikel wird das Downsampling von in Azure HDInsight Hive-Tabellen gespeicherten Daten mithilfe von Hive-Abfragen beschrieben, um Daten auf eine für die Analyse besser verwaltbare Größe zu reduzieren. Dabei werden drei häufig verwendete Samplingmethoden behandelt:
@@ -38,16 +38,18 @@ Bei einheitlichen Stichproben hat jede Zeile im Dataset die gleiche Wahrscheinli
 
 Dies ist eine Beispielabfrage:
 
-    SET sampleRate=<sample rate, 0-1>;
+```python
+SET sampleRate=<sample rate, 0-1>;
+select
+    field1, field2, …, fieldN
+from
+    (
     select
-        field1, field2, …, fieldN
-    from
-        (
-        select
-            field1, field2, …, fieldN, rand() as samplekey
-        from <hive table name>
-        )a
-    where samplekey<='${hiveconf:sampleRate}'
+        field1, field2, …, fieldN, rand() as samplekey
+    from <hive table name>
+    )a
+where samplekey<='${hiveconf:sampleRate}'
+```
 
 Dabei gibt `<sample rate, 0-1>` den Anteil von Datensätzen an, den die Benutzer erfassen möchten.
 
@@ -56,48 +58,51 @@ Bei der Entnahme von Stichproben aus kategorischen Daten sollten Sie entweder al
 
 Dies ist eine Beispielabfrage für das Erstellen einer Stichprobe nach Gruppe:
 
-    SET sampleRate=<sample rate, 0-1>;
+```python
+SET sampleRate=<sample rate, 0-1>;
+select
+    b.field1, b.field2, …, b.catfield, …, b.fieldN
+from
+    (
     select
-        b.field1, b.field2, …, b.catfield, …, b.fieldN
+        field1, field2, …, catfield, …, fieldN
+    from <table name>
+    )b
+join
+    (
+    select
+        catfield
     from
         (
         select
-            field1, field2, …, catfield, …, fieldN
+            catfield, rand() as samplekey
         from <table name>
-        )b
-    join
-        (
-        select
-            catfield
-        from
-            (
-            select
-                catfield, rand() as samplekey
-            from <table name>
-            group by catfield
-            )a
-        where samplekey<='${hiveconf:sampleRate}'
-        )c
-    on b.catfield=c.catfield
+        group by catfield
+        )a
+    where samplekey<='${hiveconf:sampleRate}'
+    )c
+on b.catfield=c.catfield
+```
 
 ## <a name="stratified-sampling"></a><a name="stratified"></a>Geschichtete Stichproben
 Zufällige Stichproben sind in Bezug auf eine kategorische Variable geschichtet, wenn die abgerufenen Beispieldaten kategorische Werte enthalten, die im gleichen Verhältnis wie in der übergeordneten Datenmenge vorliegen. Bei dem oben genannten Beispiel besitzen Ihre Daten beispielsweise die folgenden Vorkommen nach Bundesstaat: „NJ“ hat 100 Vorkommen, „NY“ 60 und „WA“ 300. Wenn Sie die Rate für die geschichtete Stichprobe auf 0,5 festlegen, sollte die abgerufene Stichprobe ungefähr 50, 30 und 150 Vorkommen für "NJ", "NY" und "WA" aufweisen.
 
 Dies ist eine Beispielabfrage:
 
-    SET sampleRate=<sample rate, 0-1>;
+```hiveql
+SET sampleRate=<sample rate, 0-1>;
+select
+    field1, field2, field3, ..., fieldN, state
+from
+    (
     select
-        field1, field2, field3, ..., fieldN, state
-    from
-        (
-        select
-            field1, field2, field3, ..., fieldN, state,
-            count(*) over (partition by state) as state_cnt,
-              rank() over (partition by state order by rand()) as state_rank
-          from <table name>
-        ) a
-    where state_rank <= state_cnt*'${hiveconf:sampleRate}'
-
+        field1, field2, field3, ..., fieldN, state,
+        count(*) over (partition by state) as state_cnt,
+          rank() over (partition by state order by rand()) as state_rank
+      from <table name>
+    ) a
+where state_rank <= state_cnt*'${hiveconf:sampleRate}'
+```
 
 Informationen zu komplexeren Methoden für das Extrahieren von Stichproben, die in Hive verfügbar sind, finden Sie unter [LanguageManual Sampling](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)(in englischer Sprache).
 

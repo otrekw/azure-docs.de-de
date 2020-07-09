@@ -1,15 +1,15 @@
 ---
-title: Beibehalten von Ausgabedaten in Azure Storage mit der .NET-Dateikonventionenbibliothek – Azure Batch
+title: Beibehalten von Ausgabedaten in Azure Storage mit der .NET-Dateikonventionenbibliothek
 description: Erfahren Sie, wie Sie die Azure Batch-Dateikonventionenbibliothek für .NET verwenden, um Auftrags- und Taskausgaben von Batch in Azure Storage dauerhaft zu speichern und die Ausgabe im Azure-Portal anzuzeigen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d7988ef4339280bd729cc1acaa1b7fb2c33b6b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba1b35bd8f2a4cc58558607581d10b598d23058c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232699"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965194"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Beibehalten von Auftrags- und Taskdateien in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET
 
@@ -104,7 +104,7 @@ Der `kind`-Parameter der [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.c
 Mit diesen Ausgabetypen können Sie angeben, welche Typen von Ausgaben aufgelistet werden, wenn Sie die beibehaltenen Ausgaben eines bestimmten Tasks später in Batch abfragen. Beim Auflisten der Ausgaben für einen Task können Sie die Liste also nach einem der Ausgabetypen filtern. Beispiel: „*preview*-Ausgabe für Task *109* abrufen.“ Weitere Informationen zum Auflisten und Abrufen von Ausgaben finden Sie unter „Abrufen der Ausgabe“ weiter unten in diesem Artikel.
 
 > [!TIP]
-> Die Art der Ausgabe bestimmt auch, wo eine bestimmte Datei im Azure-Portal angezeigt wird: Als *TaskOutput* kategorisierte Dateien werden unter **Taskausgabedateien** angezeigt, als *TaskLog* kategorisierte Dateien unter **Taskprotokolle**.
+> Die Art der Ausgabe bestimmt auch, wo im Azure-Portal eine bestimmte Datei angezeigt wird: Als *TaskOutput* kategorisierte Dateien werden unter **Aufgabenausgabedateien** und *TaskLog*-Dateien unter **Aufgabenprotokolle** angezeigt.
 
 ### <a name="store-job-outputs"></a>Speichern von Auftragsausgaben
 
@@ -208,7 +208,7 @@ Das Beispielprojekt [PersistOutputs][github_persistoutputs] ist eines der [Azure
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>Abrufen der Batch-Dateikonventionenbibliothek für .NET
 
-Die Batch-Dateikonventionenbibliothek für .NET finden Sie unter [NuGet][nuget_package]. Die Bibliothek erweitert die Klassen [CloudJob][net_cloudjob] und [CloudTask][net_cloudtask] durch neue Methoden. Informationen zur Dateikonventionenbibliothek finden Sie auch in der [Referenzdokumentation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files).
+Die Batch-Dateikonventionenbibliothek für .NET finden Sie unter [NuGet][nuget_package]. Die Bibliothek erweitert die Klassen [CloudJob][net_cloudjob] und [CloudTask][net_cloudtask] durch neue Methoden. Informationen zur Dateikonventionenbibliothek finden Sie auch in der [Referenzdokumentation](/dotnet/api/microsoft.azure.batch.conventions.files).
 
 Der [Quellcode][github_file_conventions] für die Dateikonventionenbibliothek ist auf GitHub im Microsoft Azure SDK für .NET-Repository verfügbar. 
 
@@ -222,20 +222,20 @@ Der [Quellcode][github_file_conventions] für die Dateikonventionenbibliothek is
 [github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
-[net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_cloudstorageaccount]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.cloudstorageaccount
-[net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_cloudstorageaccount]: /java/api/com.microsoft.azure.storage.cloudstorageaccount
+[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
 [net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
-[net_joboutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputkind.aspx
-[net_joboutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.aspx
-[net_joboutputstorage_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync.aspx
-[net_msdn]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[net_prepareoutputasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.cloudjobextensions.prepareoutputstorageasync.aspx
-[net_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx
-[net_savetrackedasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.savetrackedasync.aspx
-[net_taskoutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputkind.aspx
-[net_taskoutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx
+[net_joboutputkind]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputkind
+[net_joboutputstorage]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputstorage
+[net_joboutputstorage_saveasync]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync
+[net_msdn]: /dotnet/api/microsoft.azure.batch
+[net_prepareoutputasync]: /dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.prepareoutputstorageasync
+[net_saveasync]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync
+[net_savetrackedasync]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.savetrackedasync
+[net_taskoutputkind]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputkind
+[net_taskoutputstorage]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage
 [nuget_manager]: https://docs.nuget.org/consume/installing-nuget
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com

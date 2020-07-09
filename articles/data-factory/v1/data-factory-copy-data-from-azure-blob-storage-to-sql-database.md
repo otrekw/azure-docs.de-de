@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c81c4cd72a34f69632c2b1264ba2d276ff03de4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979728"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118582"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory
 > [!div class="op_single_selector"]
@@ -66,7 +66,7 @@ Sie benötigen in diesem Tutorial den Kontonamen und -schlüssel Ihres Azure-Spe
 7. Schließen Sie alle Blätter, indem Sie auf **X**klicken.
 
 ## <a name="collect-sql-server-database-user-names"></a>Erfassen der Namen von SQL Server, Datenbank und Benutzer
-Sie benötigen in diesem Tutorial die Namen von Azure SQL-Server, -Datenbank und -Benutzer. Notieren Sie sich den Namen des **Servers**, der **Datenbank** und des **Benutzers** Ihrer Azure SQL-Datenbank.
+Sie benötigen die Namen der logischen SQL Server-Instanz, der Datenbank und Benutzer, um dieses Tutorial durchzuführen. Notieren Sie sich den Namen des **Servers**, der **Datenbank** und des **Benutzers** Ihrer Azure SQL-Datenbank.
 
 1. Klicken Sie links im **Azure-Portal** auf **Alle Dienste**, und wählen Sie **SQL-Datenbanken** aus.
 2. Wählen Sie auf dem Blatt **SQL-Datenbanken** die **Datenbank**, die Sie in diesem Tutorial verwenden möchten. Notieren Sie sich den **Datenbanknamen**.  
@@ -75,7 +75,7 @@ Sie benötigen in diesem Tutorial die Namen von Azure SQL-Server, -Datenbank und
 5. Schließen Sie alle Blätter, indem Sie auf **X**klicken.
 
 ## <a name="allow-azure-services-to-access-sql-server"></a>Gewähren des Zugriffs auf SQL Server für Azure-Dienste
-Stellen Sie sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** für Ihren Azure SQL-Server **aktiviert** ist, damit der Data Factory-Dienst auf Ihren Azure SQL-Server zugreifen kann. Führen Sie folgende Schritte aus, um diese Einstellung zu überprüfen und zu aktivieren:
+Stellen Sie sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** für Ihren Server **aktiviert** ist, damit der Data Factory-Dienst auf Ihren Server zugreifen kann. Führen Sie folgende Schritte aus, um diese Einstellung zu überprüfen und zu aktivieren:
 
 1. Klicken Sie links im Hub auf **Alle Dienste** und anschließend auf **SQL Server**.
 2. Wählen Sie Ihren Server aus, und klicken Sie unter **EINSTELLUNGEN** auf **Firewall**.
@@ -107,9 +107,9 @@ Nun bereiten Sie Ihre Azure Blob Storage-Instanz und Azure SQL-Datenbank durch A
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **Wenn Sie SQL Server 2012/2014 auf Ihrem Computer installiert haben:** Befolgen Sie die Anweisungen unter [Verwalten einer Azure SQL-Datenbank mit SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md), um eine Verbindung mit Ihrem Azure SQL-Server herzustellen und das SQL-Skript auszuführen.
+    **Wenn Sie SQL Server 2012/2014 auf Ihrem Computer installiert haben**: Befolgen Sie die Anweisungen unter [Verwalten einer Azure SQL-Datenbank mit SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md), um eine Verbindung mit Ihrem Server herzustellen und das SQL-Skript auszuführen.
 
-    Wenn Ihr Client nicht auf den Azure SQL-Server zugreifen darf, müssen Sie die Firewall für Ihren Azure SQL-Server so konfigurieren, dass der Zugriff über Ihren Computer (bzw. dessen IP-Adresse) ermöglicht wird. Schritte zum Konfigurieren der Firewall für Ihren Azure SQL-Server finden Sie in [diesem Artikel](../../sql-database/sql-database-configure-firewall-settings.md).
+    Wenn Ihr Client nicht auf die logische SQL Server-Instanz zugreifen darf, müssen Sie die Firewall für Ihren Server so konfigurieren, dass der Zugriff über Ihren Computer (bzw. dessen IP-Adresse) ermöglicht wird. Schritte zum Konfigurieren der Firewall für Ihren Server finden Sie in [diesem Artikel](../../sql-database/sql-database-configure-firewall-settings.md).
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 Sie haben die Voraussetzungen erfüllt. Mit einer der folgenden Methoden können Sie eine Data Factory erstellen. Klicken Sie oben auf eine der Optionen in der Dropdownliste oder einen der folgenden Links, um das Tutorial auszuführen.     
@@ -122,6 +122,6 @@ Sie haben die Voraussetzungen erfüllt. Mit einer der folgenden Methoden können
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Die Datenpipeline in diesem Tutorial kopiert Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Sie transformiert keine Eingabedaten in Ausgabedaten. Ein Tutorial zum Transformieren von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md).
+> Die Datenpipeline in diesem Tutorial kopiert Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Sie transformiert keine Eingabedaten in Ausgabedaten. Ein Tutorial zum Transformieren von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Erstellen Ihrer ersten Pipeline zum Transformieren von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md).
 >
 > Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Ausführliche Informationen finden Sie unter [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md).

@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 87a9632ec2433b8698e3ae3761ba733aa6bc63a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885683"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478296"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -169,9 +169,9 @@ So fügen Sie eine Anspruchsbedingung hinzu
 
 Die Reihenfolge, in der Sie die Bedingungen hinzufügen, spielt eine wichtige Rolle. Azure AD wertet die Bedingungen absteigend (von oben nach unten) aus, um den im Anspruch auszugebenden Wert zu bestimmen. 
 
-Beispiel: Brita Simon ist Gastbenutzer im Contoso-Mandanten. Sie gehört zu einer anderen Organisation, die ebenfalls Azure AD verwendet. Wenn Brita bei der folgenden Konfiguration für die Fabrikam-Anwendung versucht, sich bei Fabrikam anzumelden, wertet Azure AD die Bedingungen wie folgt aus.
+Beispiel: Britta Simon ist Gastbenutzer im Contoso-Mandanten. Sie gehört zu einer anderen Organisation, die ebenfalls Azure AD verwendet. Wenn Britta bei der folgenden Konfiguration für die Fabrikam-Anwendung versucht, sich bei Fabrikam anzumelden, wertet Azure AD die Bedingungen wie folgt aus.
 
-Zuerst wertet Azure AD aus, ob Britas Benutzertyp `All guests` entspricht. Da dies der Fall ist, weist Azure AD anschließend `user.extensionattribute1` die Quelle für den Anspruch zu. Danach wertet Azure AD aus, ob Britas Benutzertyp `AAD guests` entspricht. Da dies ebenfalls richtig ist, weist Azure AD `user.mail` die Quelle für den Anspruch zu. Schließlich wird der Anspruch mit dem Wert `user.email` für Brita ausgegeben.
+Zuerst überprüft Azure AD, ob Brittas Benutzertyp `All guests` lautet. Da dies der Fall ist, weist Azure AD anschließend `user.extensionattribute1` die Quelle für den Anspruch zu. Danach überprüft Azure AD, ob Brittas Benutzertyp `AAD guests` lautet. Da dies ebenfalls zutrifft, weist Azure AD `user.mail` die Quelle für den Anspruch zu. Abschließend wird der Anspruch mit dem Wert `user.mail` für Britta ausgegeben.
 
 ![Bedingte Konfiguration von Ansprüchen](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: e18abf5d8e26dba7a48bd1deb7d53102b9971690
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28266471fb1e440a45e412ee889e0706cfc2ce49
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184281"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82870094"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Verwalten von Konsistenzebenen in Azure Cosmos DB
 
@@ -23,7 +23,13 @@ In diesem Artikel wird beschrieben, wie Sie Konsistenzebenen in Azure Cosmos DB 
 
 Die [Standardkonsistenzebene](consistency-levels.md) ist die Konsistenzebene, die Clients standardmäßig verwenden.
 
-### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+Melden Sie sich zum Anzeigen oder Ändern der Standardkonsistenzebene beim Azure-Portal an. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie den Bereich **Standardkonsistenz**. Wählen Sie die Konsistenzebene aus, die Sie als neue Standardeinstellung verwenden möchten, und wählen Sie anschließend **Speichern**. Das Azure-Portal bietet auch eine Visualisierung verschiedener Konsistenzebenen mit Musiknoten. 
+
+![Konsistenzmenü im Azure-Portal](./media/how-to-manage-consistency/consistency-settings.png)
+
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli)
 
 Erstellen Sie ein Cosmos-Konto mit Sitzungskonsistenz, und aktualisieren Sie dann die Standardkonsistenz.
 
@@ -35,7 +41,7 @@ az cosmosdb create --name $accountName --resource-group $resourceGroupName --def
 az cosmosdb update --name $accountName --resource-group $resourceGroupName --default-consistency-level Strong
 ```
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Erstellen Sie ein Cosmos-Konto mit Sitzungskonsistenz, und aktualisieren Sie dann die Standardkonsistenz.
 
@@ -49,11 +55,7 @@ Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
   -Name $accountName -DefaultConsistencyLevel "Strong"
 ```
 
-### <a name="azure-portal"></a>Azure-Portal
-
-Melden Sie sich zum Anzeigen oder Ändern der Standardkonsistenzebene beim Azure-Portal an. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie den Bereich **Standardkonsistenz**. Wählen Sie die Konsistenzebene aus, die Sie als neue Standardeinstellung verwenden möchten, und wählen Sie anschließend **Speichern**. Das Azure-Portal bietet auch eine Visualisierung verschiedener Konsistenzebenen mit Musiknoten. 
-
-![Konsistenzmenü im Azure-Portal](./media/how-to-manage-consistency/consistency-settings.png)
+---
 
 ## <a name="override-the-default-consistency-level"></a>Außerkraftsetzen der Standardkonsistenzebene
 
@@ -62,7 +64,9 @@ Clients können die vom Dienst festgelegte Standardkonsistenzebene außer Kraft 
 > [!TIP]
 > Konsistenz kann nur auf der Anforderungsebene **gelockert** werden. Aktualisieren Sie die Standardkonsistenz für das Cosmos-Konto, um von einer schwächeren zu einer stärkeren Konsistenz zu gelangen.
 
-### <a name="net-sdk-v2"></a><a id="override-default-consistency-dotnet"></a>.NET SDK V2
+### <a name="net-sdk"></a><a id="override-default-consistency-dotnet"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 // Override consistency at the client level
@@ -74,7 +78,7 @@ RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = Consiste
 var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
 ```
 
-### <a name="net-sdk-v3"></a><a id="override-default-consistency-dotnet-v3"></a>.NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 ```csharp
 // Override consistency at the request level via request options
@@ -86,8 +90,11 @@ var response = await client.GetContainer(databaseName, containerName)
         new PartitionKey(itemPartitionKey),
         requestOptions);
 ```
+---
 
-### <a name="java-async-sdk"></a><a id="override-default-consistency-java-async"></a>Java Async SDK
+### <a name="java-sdk"></a><a id="override-default-consistency-java"></a>Java SDK
+
+# <a name="java-async-sdk"></a>[Asynchrones Java SDK](#tab/javaasync)
 
 ```java
 // Override consistency at the client level
@@ -101,13 +108,14 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-### <a name="java-sync-sdk"></a><a id="override-default-consistency-java-sync"></a>Java Sync SDK
+# <a name="java-sync-sdk"></a>[Synchrones Java SDK](#tab/javasync)
 
 ```java
 // Override consistency at the client level
 ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Eventual);
 ```
+---
 
 ### <a name="nodejsjavascripttypescript-sdk"></a><a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -137,7 +145,9 @@ Die Konsistenz *Sitzung* ist eine der Konsistenzebenen in Azure Cosmos DB. Dies 
 
 Rufen Sie zum manuellen Verwalten von Sitzungstoken das Sitzungstoken aus der Antwort ab, und legen Sie es jeweils pro Anforderung fest. Wenn Sie Sitzungstoken nicht manuell verwalten müssen, müssen Sie diese Beispiele nicht verwenden. Das SDK verfolgt Sitzungstoken automatisch. Wenn Sie das Sitzungstoken nicht manuell festlegen, nutzt das SDK standardmäßig das zuletzt verwendete Sitzungstoken.
 
-### <a name="net-sdk-v2"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
+### <a name="net-sdk"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 var response = await client.ReadDocumentAsync(
@@ -150,7 +160,7 @@ var response = await client.ReadDocumentAsync(
                 UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"), options);
 ```
 
-### <a name="net-sdk-v3"></a><a id="utilize-session-tokens-dotnet-v3"></a>.NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 ```csharp
 Container container = client.GetContainer(databaseName, collectionName);
@@ -161,8 +171,11 @@ ItemRequestOptions options = new ItemRequestOptions();
 options.SessionToken = sessionToken;
 ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(salesOrder.Id, new PartitionKey(salesOrder.PartitionKey), options);
 ```
+---
 
-### <a name="java-async-sdk"></a><a id="utilize-session-tokens-java-async"></a>Java Async SDK
+### <a name="java-sdk"></a><a id="utilize-session-tokens-java"></a>Java SDK
+
+# <a name="java-async-sdk"></a>[Asynchrones Java SDK](#tab/javaasync)
 
 ```java
 // Get session token from response
@@ -184,7 +197,7 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-### <a name="java-sync-sdk"></a><a id="utilize-session-tokens-java-sync"></a>Java Sync SDK
+# <a name="java-sync-sdk"></a>[Synchrones Java SDK](#tab/javasync)
 
 ```java
 // Get session token from response
@@ -196,6 +209,7 @@ RequestOptions options = new RequestOptions();
 options.setSessionToken(sessionToken);
 ResourceResponse<Document> response = client.readDocument(documentLink, options);
 ```
+---
 
 ### <a name="nodejsjavascripttypescript-sdk"></a><a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
 

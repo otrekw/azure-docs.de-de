@@ -3,15 +3,15 @@ title: Erstellen und Verwalten von Azure Cosmos DB mit Resource Manager-Vorlagen
 description: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren der Core-API (SQL) von Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/08/2020
+ms.topic: how-to
+ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: dfdeb210c59377822b2ee69bde286b87c2251021
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2b4a572abec8007fe6f1c7e963be19d28c7b48d6
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592490"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028154"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>Verwalten von Ressourcen für die Core-API (SQL) von Azure Cosmos DB mit Azure Resource Manager-Vorlagen
 
@@ -33,7 +33,7 @@ Wenn Sie eine der unten aufgeführten Azure Cosmos DB-Ressourcen erstellen möc
 
 Mit dieser Vorlage wird ein Azure Cosmos-Konto in zwei Regionen mit Optionen für Konsistenz und Failover erstellt, wobei Datenbank und Container für den automatisch skalierten Durchsatz konfiguriert sind, für den die meisten Richtlinienoptionen aktiviert sind. Diese Vorlage ist auch für die Bereitstellung mit nur einem Klick im Katalog der Azure-Schnellstartvorlagen verfügbar.
 
-[![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-autoscale%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-autoscale%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-autoscale/azuredeploy.json":::
 
@@ -41,149 +41,19 @@ Mit dieser Vorlage wird ein Azure Cosmos-Konto in zwei Regionen mit Optionen fü
 
 ## <a name="azure-cosmos-account-with-analytical-store"></a>Azure Cosmos-Konto mit Analysespeicher
 
-Mit dieser Vorlage wird ein Azure Cosmos-Konto in einer Region mit einem Container mit aktivierter analytischer Gültigkeitsdauer und Optionen für die manuelle oder automatische Skalierung des Durchsatzes erstellt.
+Mit dieser Vorlage wird ein Azure Cosmos-Konto in einer Region mit einem Container mit aktivierter analytischer Gültigkeitsdauer und Optionen für die manuelle oder automatische Skalierung des Durchsatzes erstellt. Diese Vorlage ist auch für die Bereitstellung mit nur einem Klick im Katalog der Azure-Schnellstartvorlagen verfügbar.
 
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-       "accountName": {
-          "type": "string",
-          "defaultValue": "",
-          "metadata": {
-             "description": "Cosmos DB account name"
-          }
-       },
-       "location": {
-          "type": "string",
-          "defaultValue": "",
-          "metadata": {
-             "description": "Location for the Cosmos DB account."
-          }
-       },
-        "databaseName": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "The name for the database"
-            }
-        },
-        "containerName": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "The name for the container"
-            }
-        },
-        "partitionKeyPath": {
-            "type": "string",
-            "defaultValue": "/partitionKey",
-            "metadata": {
-                "description": "The partition key for the container"
-            }
-        },
-        "throughputPolicy":{
-            "type": "string",
-            "defaultValue": "Autoscale",
-            "allowedValues": [ "Manual", "Autoscale" ],
-            "metadata": {
-                "description": "The throughput policy for the container"
-            }
-        },
-        "manualProvisionedThroughput": {
-            "type": "int",
-            "defaultValue": 400,
-            "minValue": 400,
-            "maxValue": 1000000,
-            "metadata": {
-                "description": "Throughput value when using Manual Throughput Policy for the container"
-            }
-        },
-        "maxAutoscaleThroughput": {
-            "type": "int",
-            "defaultValue": 4000,
-            "minValue": 4000,
-            "maxValue": 1000000,
-            "metadata": {
-                "description": "Maximum throughput when using Autoscale Throughput Policy for the container"
-            }
-        }
-    },
-    "variables": {
-        "accountName": "[toLower(parameters('accountName'))]",
-        "locations": 
-        [ 
-            {
-                "locationName": "[parameters('location')]",
-                "failoverPriority": 0,
-                "isZoneRedundant": false
-            }
-        ],
-        "throughputPolicy": {
-            "Manual": {
-                "Throughput": "[parameters('manualProvisionedThroughput')]"
-            },
-            "Autoscale": {
-                "ProvisionedThroughputSettings": "[concat('{\"maxThroughput\":\"', parameters('maxAutoscaleThroughput'), '\"}')]"
-            }            
-        },
-        "throughputPolicyToUse": "[if(equals(parameters('throughputPolicy'), 'Manual'), variables('throughputPolicy').Manual, variables('throughputPolicy').Autoscale)]"
-    },
-    "resources": 
-    [
-        {
-            "type": "Microsoft.DocumentDB/databaseAccounts",
-            "name": "[variables('accountName')]",
-            "apiVersion": "2020-03-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "consistencyPolicy": {"defaultConsistencyLevel": "Session"},
-                "databaseAccountOfferType": "Standard",
-                "locations": "[variables('locations')]",
-                "enableAnalyticalStorage": true
-            }
-        },
-        {
-            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
-            "name": "[concat(variables('accountName'), '/', parameters('databaseName'))]",
-            "apiVersion": "2020-03-01",
-            "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('accountName'))]" ],
-            "properties":{
-                "resource":{
-                    "id": "[parameters('databaseName')]"
-                }
-            }
-        },
-        {
-            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('containerName'))]",
-            "apiVersion": "2020-03-01",
-            "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('accountName'), parameters('databaseName'))]" ],
-            "properties":
-            {
-                "resource":{
-                    "id":  "[parameters('containerName')]",
-                    "partitionKey": {
-                        "paths": [ "[parameters('partitionKeyPath')]" ],
-                        "kind": "Hash"
-                    },
-                    "analyticalStorageTtl": -1
-                },
-                "options": "[variables('throughputPolicyToUse')]"
-            }
-        }
-    ]
-}
-```
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-analytical-store%2Fazuredeploy.json)
+
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-analytical-store/azuredeploy.json":::
 
 <a id="create-manual"></a>
 
-## <a name="azure-cosmos-account-with-standard-manual-throughput"></a>Azure Cosmos-Konto mit (manuell bereitgestelltem) Standarddurchsatz
+## <a name="azure-cosmos-account-with-standard-provisioned-throughput"></a>Azure Cosmos-Konto mit standardmäßig bereitgestelltem Durchsatz
 
 Mit dieser Vorlage wird ein Azure Cosmos-Konto in zwei Regionen mit Optionen für Konsistenz und Failover erstellt, wobei Datenbank und Container für den Standarddurchsatz konfiguriert sind, für den die meisten Richtlinienoptionen aktiviert sind. Diese Vorlage ist auch für die Bereitstellung mit nur einem Klick im Katalog der Azure-Schnellstartvorlagen verfügbar.
 
-[![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
@@ -193,7 +63,7 @@ Mit dieser Vorlage wird ein Azure Cosmos-Konto in zwei Regionen mit Optionen fü
 
 Mit dieser Vorlage werden ein Azure Cosmos-Konto, eine Datenbank und ein Container mit einer gespeicherten Prozedur, einem Trigger und einer benutzerdefinierten Funktion erstellt. Diese Vorlage ist auch für die Bereitstellung mit nur einem Klick im Katalog der Azure-Schnellstartvorlagen verfügbar.
 
-[![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-container-sprocs%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-container-sprocs%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
 
@@ -203,7 +73,7 @@ Mit dieser Vorlage werden ein Azure Cosmos-Konto, eine Datenbank und ein Contain
 
 Mit dieser Vorlage werden ein Azure Cosmos-Konto im Free-Tarif und eine Datenbank mit gemeinsam genutztem Durchsatz erstellt, der von bis zu 25 Containern gemeinsam genutzt werden kann. Diese Vorlage ist auch für die Bereitstellung mit nur einem Klick im Katalog der Azure-Schnellstartvorlagen verfügbar.
 
-[![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-free%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-free%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-free/azuredeploy.json":::
 

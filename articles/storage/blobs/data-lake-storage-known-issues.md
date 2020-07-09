@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 06/29/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3861ab8839ba0483c5096e29cd09b6268bd765e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767977"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563906"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -60,46 +60,31 @@ Diese Blob-Rest-APIs werden nicht unterstützt:
 
 Nicht verwaltete VM-Datenträger werden für Konten, die über einen hierarchischen Namespace verfügen, nicht unterstützt. Wenn Sie einen hierarchischen Namespace für ein Speicherkonto aktivieren möchten, sollten Sie verwaltete VM-Datenträger in einem Speicherkonto anordnen, für das die Funktion für hierarchische Namespaces nicht aktiviert ist.
 
-<a id="api-scope-data-lake-client-library" />
+<a id="api-scope-data-lake-client-library"></a>
 
 ## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>Dateisystemunterstützung in SDKs, PowerShell und der Azure CLI
 
 - Get- und Set-Vorgänge für Zugriffssteuerungslisten sind derzeit nicht rekursiv.
-- Die Unterstützung der [Azure CLI](data-lake-storage-directory-file-acl-cli.md) befindet sich in der öffentlichen Vorschau.
 
-
-## <a name="lifecycle-management-policies"></a>Richtlinien für die Lebenszyklusverwaltung
-
-* Das Löschen von Blobmomentaufnahmen wird noch nicht unterstützt.  
-
-## <a name="archive-tier"></a>Archivzugriffsebene
-
-Zurzeit gibt es einen Fehler, der sich auf die Archivzugriffsebene auswirkt.
-
-
-## <a name="blobfuse"></a>blobfuse
-
-Blobfuse wird nicht unterstützt.
-
-<a id="known-issues-tools" />
+<a id="known-issues-tools"></a>
 
 ## <a name="azcopy"></a>AzCopy
 
 Verwenden Sie nur die neueste Version von AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Frühere Versionen von AzCopy wie z. B. AzCopy v8.1 werden nicht unterstützt.
 
-<a id="storage-explorer" />
+<a id="storage-explorer"></a>
 
 ## <a name="azure-storage-explorer"></a>Azure Storage-Explorer
 
 Verwenden Sie nur Versionen ab  `1.6.0` .
 
-<a id="explorer-in-portal" />
+<a id="explorer-in-portal"></a>
 
 ## <a name="storage-explorer-in-the-azure-portal"></a>Storage-Explorer im Azure-Portal
 
 ACLs werden noch nicht unterstützt.
 
-<a id="third-party-apps" />
+<a id="third-party-apps"></a>
 
 ## <a name="thirdpartyapplications"></a>Drittanbieteranwendungen
 
@@ -108,6 +93,39 @@ Drittanbieteranwendungen, die REST-APIs verwenden, funktionieren auch weiterhin,
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Zugriffssteuerungslisten (Access Control Lists, ACLs) und anonymer Lesezugriff
 
 Wenn [anonymer Lesezugriff](storage-manage-access-to-resources.md) für einen Container gewährt wurde, haben ACLs keine Auswirkungen auf diesen Container oder die darin enthaltenen Dateien.
+
+## <a name="premium-performance-blockblobstorage-storage-accounts"></a>BlockBlobStorage-Speicherkonten mit Premium-Leistung
+
+### <a name="diagnostic-logs"></a>Diagnoseprotokolle
+
+Diagnoseprotokolle können noch nicht über das Azure-Portal aktiviert werden. Sie können sie mithilfe der PowerShell aktivieren. Beispiel:
+
+```powershell
+#To login
+Connect-AzAccount
+
+#Set default block blob storage account.
+Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
+
+#Enable logging
+Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
+```
+
+### <a name="lifecycle-management-policies"></a>Richtlinien für die Lebenszyklusverwaltung
+
+- Richtlinien für die Lebenszyklusverwaltung werden in BlockBlobStorage-Speicherkonten mit Premium-Leistung noch nicht unterstützt. 
+
+- Daten können nicht aus dem Tarif „Premium“ in niedrigere Tarife verschoben werden. 
+
+- Die Aktion **Blob löschen** wird aktuell nicht unterstützt. 
+
+### <a name="hdinsight-support"></a>HDInsight-Support
+
+Wenn Sie einen HDInsight-Cluster erstellen, können Sie noch kein BlockBlobStorage-Konto auswählen, für das die Funktion „hierarchischer Namespace“ aktiviert ist. Sie können das Konto aber an den Cluster anfügen, nachdem Sie es erstellt haben.
+
+### <a name="dremio-support"></a>Dremio-Unterstützung
+
+Dremio kann noch keine Verbindung mit einem BlockBlobStorage-Konto herstellen, für das die Funktion „hierarchischer Namespace“ aktiviert ist. 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>WASB-Treiber (Windows Azure Storage Blob) (bei Data Lake Storage Gen2 nicht unterstützt)
 

@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie einen Dienstprinzipal zum Automatisieren von 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 05/26/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9797b4c8f8059f9cfefbb70672aa202c7a3f4825
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231674"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168334"
 ---
 # <a name="automation-with-service-principals"></a>Automatisierung mit Dienstprinzipalen
 
@@ -48,7 +48,7 @@ Dienstprinzipal-AppID und ein Kennwort oder Zertifikat können in Verbindungszei
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="using-azanalysisservices-module"></a><a name="azmodule" />Verwenden des „Az.AnalysisServices“-Moduls
+#### <a name="using-azanalysisservices-module"></a><a name="azmodule"></a>Verwenden des „Az.AnalysisServices“-Moduls
 
 Wenn Sie einen Dienstprinzipal für Ressourcenverwaltungsvorgänge mit dem [Az.AnalysisServices](/powershell/module/az.analysisservices)-Modul nutzen, verwenden Sie das Cmdlet `Connect-AzAccount`. 
 
@@ -110,4 +110,7 @@ db.Model.SaveChanges();
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Anmelden mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
-[Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle](analysis-services-addservprinc-admins.md)   
+[Aktualisieren mit Logic Apps](analysis-services-refresh-logic-app.md)  
+[Aktualisieren mit Azure Automation](analysis-services-refresh-azure-automation.md)  
+[Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle](analysis-services-addservprinc-admins.md)  
+[Automatisieren von Arbeitsbereichs- und Datasetaufgaben in Power BI Premium mithilfe von Dienstprinzipalen](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 

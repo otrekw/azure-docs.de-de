@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
-ms.openlocfilehash: 466c170985715be52a90d579c19ca23aefefe2e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe7d6d4e70bc55a6a91d3c1a1b910db4b5469fe6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77066001"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197077"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Verwendung von Apache Ambari in Azure HDInsight
 
@@ -56,7 +56,7 @@ Zum Zeitpunkt des Systemstarts werden die Dienste in dieser Reihenfolge gestarte
 
 ## <a name="ambari-database"></a>Ambari-Datenbank
 
-HDInsight erstellt hinter den Kulissen eine SQL Azure-Datenbank als Datenbank für den Ambari-Server. Die standardmäßige [Dienstebene ist S0](../sql-database/sql-database-elastic-pool-scale.md).
+HDInsight erstellt hinter den Kulissen eine Datenbank in SQL-Datenbank als Datenbank für den Ambari-Server. Die standardmäßige [Dienstebene ist S0](../azure-sql/database/elastic-pool-scale.md).
 
 Bei allen Clustern, die bei der Erstellung mehr als 16 Workerknoten umfassen, ist S2 die Dienstebene für die Datenbank.
 

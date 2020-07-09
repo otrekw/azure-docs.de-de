@@ -7,13 +7,13 @@ author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/19/2019
-ms.openlocfilehash: f47c7412bdd5ada1e50d1005b8e740e3f46ffd8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536232"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964633"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Preismodell für Azure Logic Apps
 
@@ -49,7 +49,7 @@ Eine [*Integrationsdienstumgebung* (Integration Service Environment, ISE)](../lo
 
 * **Developer** ISE: Für diese SKU gibt es keine Möglichkeit zum Hochskalieren, keine Vereinbarung zum Service Level (Service-Level Agreement, SLA) und keine veröffentlichten Grenzwerte. Verwenden Sie diese SKU nur für Experimente, Entwicklung und Tests, nicht jedoch für die Produktion oder Leistungstests.
 
-Für Logik-Apps, die in einer ISE erstellt und ausgeführt werden, zahlen Sie für die folgenden Funktionen einen [monatlichen Festpreis](https://azure.microsoft.com/pricing/details/logic-apps):
+Für Logik-Apps, die in einer ISE erstellt und ausgeführt werden, zahlen Sie für die folgenden Funktionen einen [Festpreis](https://azure.microsoft.com/pricing/details/logic-apps) (im Gegensatz zur nutzungsbasierten Bezahlung):
 
 * [Integrierte](../connectors/apis-list.md#built-in) Trigger und Aktionen
 
@@ -57,7 +57,7 @@ Für Logik-Apps, die in einer ISE erstellt und ausgeführt werden, zahlen Sie f�
 
 * [Standard](../connectors/apis-list.md#managed-connectors)- und [Enterprise](../connectors/apis-list.md#enterprise-connectors)-Connectors, die Ihnen so viele Enterprise-Verbindungen wie gewünscht ermöglichen
 
-   Standard- und Unternehmensconnectors, für die die Bezeichnung **ISE** angezeigt wird, werden in derselben ISE wie Ihre Logik-Apps ausgeführt. Connectors, für die die Beschriftung „ISE“ nicht angezeigt wird, werden im öffentlichen, „globalen“ mehrinstanzenfähigen Logic Apps-Dienst ausgeführt. Ein monatlicher Festpreis gilt auch für Connectors, die im mehrinstanzenfähigen Dienst ausgeführt werden, wenn Sie sie mit Logik-Apps verwenden, die in einer ISE ausgeführt werden.
+   Standard- und Unternehmensconnectors, für die die Bezeichnung **ISE** angezeigt wird, werden in derselben ISE wie Ihre Logik-Apps ausgeführt. Connectors, für die die Beschriftung „ISE“ nicht angezeigt wird, werden im öffentlichen, „globalen“ mehrinstanzenfähigen Logic Apps-Dienst ausgeführt. Ein Festpreis gilt auch für Connectors, die im mehrinstanzenfähigen Dienst ausgeführt werden, wenn Sie sie mit Logik-Apps verwenden, die in einer ISE ausgeführt werden.
 
 * Nutzung des [Integrationskontos](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) ohne zusätzliche Kosten, basierend auf Ihrer [ISE-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):
 
@@ -116,13 +116,13 @@ Deaktivierte Logik-Apps werden nicht berechnet, da für sie keine neuen Instanze
 
 Ein [festes Preismodell](https://azure.microsoft.com/pricing/details/logic-apps) gilt für [Integrationskonten](logic-apps-enterprise-integration-create-integration-account.md), mit denen Sie die Features [B2B und EDI](logic-apps-enterprise-integration-b2b.md) und [XML-Verarbeitung](logic-apps-enterprise-integration-xml.md) in Azure Logic Apps ohne zusätzliche Kosten erkunden, entwickeln und testen können. Jedes Azure-Abonnement kann über eine [bestimmte Höchstzahl an Integrationskonten](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) verfügen. Für jedes Integrationskonto kann eine bestimmte [maximale Anzahl von Artefakten](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) gespeichert werden, z. B. Handelspartner, Vereinbarungen, Karten, Schemas, Assemblys, Zertifikate, Batchkonfigurationen usw.
 
-Für Azure Logic Apps werden Integrationskonten vom Typ „Free“, „Basic“ und „Standard“ angeboten. Die Tarife „Basic“ und „Standard“ werden über die Vereinbarung zum Servicelevel (SLA) für Logic Apps unterstützt. Der Tarif „Free“ verfügt nicht über eine SLA-Unterstützung, und es gelten Grenzwerte für Durchsatz und Nutzung. Mit Ausnahme von Integrationskonten im Free-Tarif kann jede Azure-Region über mehr als ein Integrationskonto verfügen. Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/).
+Für Azure Logic Apps werden Integrationskonten vom Typ „Free“, „Basic“ und „Standard“ angeboten. Die Tarife „Basic“ und „Standard“ werden über die Vereinbarung zum Servicelevel (SLA) für Logic Apps unterstützt. Der Tarif „Free“ verfügt nicht über eine SLA-Unterstützung, und es gelten Einschränkungen für die Regionsverfügbarkeit, den Durchsatz und die Nutzung. Mit Ausnahme von Integrationskonten im Free-Tarif kann jede Azure-Region über mehr als ein Integrationskonto verfügen. Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/).
 
 Wenn Sie eine [*Integrationsdienstumgebung* (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwenden ([Premium oder Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)), kann diese insgesamt fünf Integrationskonten aufweisen. Weitere Informationen zum festen Preismodell für eine ISE finden Sie im obigen Abschnitt [Feststehendes Preismodell](#fixed-pricing) dieses Themas. Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps).
 
 Sehen Sie sich diese Beschreibungen von Anwendungsfällen an, um die Entscheidung zwischen Integrationskonten vom Typ „Free“, „Basic“ oder „Standard“ treffen zu können:
 
-* **Free:** Ein Konto zum Ausprobieren von Testszenarien. Nicht für Produktionsszenarien geeignet.
+* **Free:** Ein Konto zum Ausprobieren von Testszenarien. Nicht für Produktionsszenarien geeignet. Diese Dienstebene ist nur für öffentliche Regionen in Azure verfügbar, z. B. „USA, Westen“ oder „Asien, Südosten“, aber nicht für [Azure China 21ViaNet](https://docs.microsoft.com/azure/china/overview-operations) oder [Azure Government](../azure-government/documentation-government-welcome.md).
 
 * **Basic**: Verwenden Sie ein Konto dieses Typs, wenn Sie nur die Behandlung von Nachrichten nutzen oder als Partner für ein kleines Unternehmen fungieren möchten, das eine Handelspartnerbeziehung mit einem größeren Unternehmen eingegangen ist.
 

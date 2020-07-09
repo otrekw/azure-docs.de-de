@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a046791b8c50577c1921764b06bac5d88780194d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 97b17f7e80590b9b907b8dc25253e6d706117357
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734993"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807977"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -749,6 +749,9 @@ In einige Trigger ist die Unterstützung der Parallelitätsverwaltung integriert
 
 Sie können diese Einstellungen verwenden, um sicherzustellen, dass Ihre Funktion als Singleton auf einer einzigen Instanz ausgeführt wird. Wenn Sie sicherstellen möchten, dass nur eine Instanz der Funktion ausgeführt wird, wenn die Web-App auf mehrere Instanzen skaliert wird, wenden Sie eine Singleton-Sperre auf Listener-Ebene für die Funktion an (`[Singleton(Mode = SingletonMode.Listener)]`). Listener-Sperren werden beim Starten des JobHosts abgerufen. Wenn drei horizontal skalierte Instanzen zur selben Zeit gestartet werden, erhält nur eine der Instanzen die Sperre, und es wird nur ein Listener gestartet.
 
+> [!NOTE]
+> Informationen zur Funktionsweise der „SingletonMode.Function“ finden Sie in diesem [GitHub-Repository](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonMode.cs).
+
 ### <a name="scope-values"></a>Bereichswerte
 
 Sie können einen *Bereichsausdruck/Wert* in einem Singleton angeben. Der Ausdruck/Wert stellt sicher, dass alle Ausführungen der Funktion in einem bestimmten Bereich serialisiert werden. Die Implementierung einer detaillierteren Sperre auf diese Weise kann eine gewisse Parallelität für Ihre Funktion ermöglichen, während andere Aufrufe entsprechend Ihren Anforderungen serialisiert werden. Im folgenden Code wird beispielsweise der Bereichsausdruck an den Wert `Region` der eingehenden Nachricht gebunden. Wenn die Warteschlange drei Nachrichten in den Regionen „East“, „East“ und „West“ enthält, werden die Nachrichten, die die Region „East“ enthalten, seriell ausgeführt, während die Nachricht mit der Region „West“ parallel dazu ausgeführt wird.
@@ -956,7 +959,7 @@ In Version 3.*x* muss der [`TelemetryClient`] nicht mehr geleert werden, wenn de
 
 #### <a name="version-2x"></a>Version 2.*x*
 
-In Version 2.*x* verwendet der [`TelemetryClient`], der intern durch den Application Insights-Anbieter für das WebJobs SDK erstellt wurde, [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll). Wenn der Application Insights-Endpunkt nicht verfügbar ist oder eingehende Anforderungen gedrosselt werden, [speichert dieser Kanal die Anforderungen im Dateisystem der Web-App und übermittelt sie später erneut](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+In Version 2.*x* verwendet der [`TelemetryClient`], der intern durch den Application Insights-Anbieter für das WebJobs SDK erstellt wurde, [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll). Wenn der Application Insights-Endpunkt nicht verfügbar ist oder eingehende Anforderungen gedrosselt werden, [speichert dieser Kanal die Anforderungen im Dateisystem der Web-App und übermittelt sie später erneut](https://apmtips.com/posts/2015-09-03-more-telemetry-channels/).
 
 Der Telemetrieclient ([`TelemetryClient`]) wird von einer Klasse erstellt, die `ITelemetryClientFactory` implementiert. Das ist standardmäßig [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/).
 

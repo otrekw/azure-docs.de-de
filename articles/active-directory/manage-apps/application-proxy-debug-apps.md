@@ -2,21 +2,21 @@
 title: 'Debuggen von Anwendungsproxyanwendungen: Azure Active Directory | Microsoft-Dokumentation'
 description: Informationen zum Debuggen von Problemen mit Azure Active Directory-Anwendungsproxyanwendungen (Azure AD).
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 575891d99c077299f5e7abf008c1ebb2b158373f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e61ea30f01e8ae141d24c9bd91b08edef4dbe74e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74382076"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555062"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Debuggen von Problemen mit Anwendungsproxyanwendungen 
 
@@ -39,7 +39,7 @@ Dieses Flussdiagramm führt Sie durch die Schritte zum Debuggen einiger der häu
 
 ![Flussdiagramm mit den Schritten zum Debuggen einer Anwendung](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-|  | Action | BESCHREIBUNG | 
+| Schritt | Aktion | BESCHREIBUNG |
 |---------|---------|---------|
 |1 | Browser öffnen, auf die App zugreifen und Anmeldeinformationen eingeben | Versuchen Sie, sich mit Ihren Anmeldeinformationen bei der App anzumelden, und überprüfen Sie, ob benutzerbezogene Fehler auftreten, z. B. [Zugriff auf diese Unternehmens-App nicht möglich](application-proxy-sign-in-bad-gateway-timeout-error.md). |
 |2 | Benutzerzuweisung zur App überprüfen | Stellen Sie sicher, dass Ihr Benutzerkonto über die Berechtigung verfügt, innerhalb des Unternehmensnetzwerks auf die App zuzugreifen, und testen Sie dann die Anmeldung bei der App anhand der Schritte in [Testen der Anwendung](application-proxy-add-on-premises-application.md#test-the-application). Falls weiterhin Probleme bei der Anmeldung auftreten, finden Sie unter [Beheben von Anmeldefehlern](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) weitere Informationen.  |

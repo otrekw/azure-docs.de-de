@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 483f60138dcaa6252999b9d15e846fbd1c68e9a2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77648528"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021516"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Erneutes Bereitstellen von SSIS-Paketen in Azure SQL-Datenbank mit dem Azure Database Migration Service
 
@@ -26,7 +26,7 @@ Wenn Sie SQL Server Integration Services (SSIS) verwenden und Ihre SSIS-Projekte
 Wenn Sie eine ältere Version als SSIS 2012 verwenden, müssen Sie Ihre SSIS-Projekte/-Pakete mithilfe des Bereitstellungs-Assistenten für Integration Services konvertieren, bevor Sie die Projekte/Pakete im Projektbereitstellungsmodell erneut bereitstellen können. Der Bereitstellungs-Assistent kann ebenfalls direkt in SSMS gestartet werden. Weitere Informationen finden Sie im Artikel [Bereitstellen von SQL Server Integration Services-Projekten und Paketen (SSIS)](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
 
 > [!NOTE]
-> Azure Database Migration Service (DMS) bietet momentan keine Unterstützung für die Migration einer SSIS-Quelldatenbank zu einem Azure SQL-Datenbank-Server. Sie können Ihre SSIS-Projekte/-Pakete jedoch mithilfe des folgenden Prozesses erneut bereitstellen.
+> Azure Database Migration Service (DMS) bietet momentan keine Unterstützung für die Migration einer SSIS-Quelldatenbank zu Azure SQL-Datenbank. Sie können Ihre SSIS-Projekte/-Pakete jedoch mithilfe des folgenden Prozesses erneut bereitstellen.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > [!div class="checklist"]
@@ -39,20 +39,20 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 
 * SSMS in der Version 17.2 oder höher.
-* Eine Instanz Ihres Datenbankzielservers, um die SSIS-Datenbank zu hosten. Wenn noch keine Instanz vorhanden ist, erstellen Sie einen Azure SQL-Datenbank-Server (ohne eine Datenbank) mithilfe des Azure-Portals, indem Sie zum SQL Server-[Formular](https://ms.portal.azure.com/#create/Microsoft.SQLServer) (nur logischer Server) navigieren.
-* SSIS muss in Azure Data Factory (ADF) bereitgestellt werden. Dieser Dienst beinhaltet Azure-SSIS Integration Runtime (IR), wobei die SSIS-Zieldatenbank von der Instanz des Azure SQL-Datenbank-Servers gehostet wird (wie im Artikel [Bereitstellen der Azure-SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) beschrieben).
+* Eine Instanz Ihres Datenbankzielservers, um die SSIS-Datenbank zu hosten. Wenn noch kein [logischer SQL-Server](../azure-sql/database/logical-servers.md) vorhanden ist, erstellen Sie einen (ohne eine Datenbank) mithilfe des Azure-Portals, indem Sie zum SQL Server-[Formular](https://ms.portal.azure.com/#create/Microsoft.SQLServer) (nur logischer Server) navigieren.
+* SSIS muss in Azure Data Factory (ADF) bereitgestellt werden. Dieser Dienst beinhaltet Azure-SSIS Integration Runtime (IR), wobei die SSIS-Zieldatenbank von SQL-Datenbank gehostet wird (wie im Artikel [Bereitstellen der Azure-SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) beschrieben).
 
 ## <a name="assess-source-ssis-projectspackages"></a>Bewerten von SSIS-Quellprojekten/-paketen
 
-Während das Bewerten von SSIS-Quelldatenbanken momentan weder im Datenmigrations-Assistenten (DMA) noch im Azure Database Migration Service (DMS) integriert ist, werden Ihre SSIS-Projekte/-Pakete bewertet/überprüft, wenn Sie in der von einem Azure SQL-Datenbank-Server gehosteten SSIS-Zieldatenbank erneut bereitgestellt werden.
+Während das Bewerten von SSIS-Quelldatenbanken momentan weder im Datenmigrations-Assistenten (DMA) noch im Azure Database Migration Service (DMS) integriert ist, werden Ihre SSIS-Projekte/-Pakete bewertet/überprüft, wenn Sie in der von Azure SQL-Datenbank gehosteten SSIS-Zieldatenbank erneut bereitgestellt werden.
 
 ## <a name="migrate-ssis-projectspackages"></a>Migrieren von SSIS-Projekten/-Paketen
 
-Wenn Sie SSIS-Projekte/-Pakete zum Azure SQL-Datenbank-Server migrieren möchten, führen Sie die folgenden Schritte aus.
+Wenn Sie SSIS-Projekte/-Pakete zu Azure SQL-Datenbank migrieren möchten, führen Sie die folgenden Schritte aus.
 
 1. Öffnen Sie SSMS, und wählen Sie dann **Optionen** aus, um das Dialogfeld **Mit Server verbinden** anzuzeigen.
 
-2. Geben Sie auf der Registerkarte **Anmeldung** die Informationen an, die nötig sind, um eine Verbindung zum Azure SQL-Datenbank-Server herzustellen, der die SSIS Zieldatenbank hosten soll.
+2. Geben Sie auf der Registerkarte **Anmeldung** die Informationen an, die nötig sind, um eine Verbindung zu dem Server herzustellen, der die SSIS Zieldatenbank hosten soll.
 
     ![SSIS-Tab „Login“](media/how-to-migrate-ssis-packages/dms-ssis-login-tab.png)
 
@@ -81,7 +81,7 @@ Wenn Sie SSIS-Projekte/-Pakete zum Azure SQL-Datenbank-Server migrieren möchten
 8. Wählen Sie **Weiter** aus.
 9. Geben Sie auf der Seite **Ziel auswählen** das Ziel für Ihr Projekt an.
 
-    a. Geben Sie im Textfeld „Servername“ den vollqualifizierten Azure SQL-Datenbank-Servernamen ein (<Servername>.database.windows.net).
+    a. Geben Sie im Textfeld „Servername“ den vollqualifizierten Servernamen ein (<Servername>.database.windows.net).
 
     b. Geben Sie die Authentifizierungsinformationen ein, und klicken Sie dann auf **Verbinden**.
 

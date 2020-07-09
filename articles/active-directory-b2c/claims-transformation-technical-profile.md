@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84c1cf798e88e4067da8a495c1591143d2ee1bd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6553b9ec120ca0e1e479b400495b61bc68c88cf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189785"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201207"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils zur Anspruchstransformation in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Das **Name**-Attribut des **Protocol**-Elements muss auf `Proprietary` festgeleg
 
 Das folgende Beispiel zeigt ein technisches Profil für die Anspruchstransformation:
 
-```XML
+```xml
 <TechnicalProfile Id="Facebook-OAUTH-UnLink">
     <DisplayName>Unlink Facebook</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -52,7 +52,7 @@ Das **OutputClaims**-Element ist erforderlich. Sie sollten mindestens einen Ausg
 
 Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaimsTransformation**-Elementen, die zum Ändern von Ansprüchen oder zum Generieren neuer verwendet werden, enthalten. Das folgende technische Profil ruft die Anspruchstransformation **RemoveAlternativeSecurityIdByIdentityProvider** auf. Diese Anspruchstransformation entfernt eine Social Media-ID aus der Sammlung der **AlternativeSecurityIds**. Die Ausgabeansprüche dieses technischen Profils sind **identityProvider2** (auf `facebook.com` festgelegt) und **AlternativeSecurityIds**, der die Liste der Social Media-IDs, die dem Benutzer nach dem Entfernen der facebook.com-Identität zugeordnet sind, enthält.
 
-```XML
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider"
 TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
@@ -84,7 +84,7 @@ TransformationClaimType="collection" />
 
 Sie können mit dem technischen Profil für die Anspruchstransformation eine Anspruchstransformation für jeden beliebigen Orchestrierungsschritt der User Journey ausführen. Im folgenden Beispiel ruft der Orchestrierungsschritt ein technisches Profil zum Aufheben von Verknüpfungen (z.B. **UnLink-Facebook-OAUTH**) auf. Dieses technische Profil ruft das technische Profil für die Anspruchstransformation **RemoveAlternativeSecurityIdByIdentityProvider** auf, das einen neuen **AlternativeSecurityIds2**-Anspruch generiert, der die Liste der Social Media-IDs des Benutzers enthält und die Facebook-Identität aus den Sammlungen entfernt.
 
-```XML
+```xml
 <UserJourney Id="AccountUnLink">
   <OrchestrationSteps>
     ...
@@ -110,7 +110,7 @@ Sie können mit dem technischen Profil für die Anspruchstransformation eine Ans
 
 Ein technisches Profil für die Anspruchstransformation kann zum Überprüfen von Informationen verwendet werden. Im folgenden Beispiel fordert das [technische Profil mit Selbstbestätigung](self-asserted-technical-profile.md) namens **LocalAccountSignUpWithLogonEmail** den Benutzer auf, die E-Mail-Adresse zweimal einzugeben. Anschließend ruft es das [technische Validierungsprofil](validation-technical-profile.md) mit dem Namen **Validate-Email** auf, um die E-Mail-Adressen zu überprüfen. Das technische Profil **Validate-Email** ruft die Anspruchstransformation **AssertEmailAreEqual** auf, um die beiden Ansprüche **email** und **emailRepeat**  zu vergleichen, und löst eine Ausnahme aus, wenn sie nicht gemäß dem angegebenen Vergleich identisch sind.
 
-```XML
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="AssertEmailAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
     <InputClaims>
@@ -126,7 +126,7 @@ Ein technisches Profil für die Anspruchstransformation kann zum Überprüfen vo
 
 Das technische Profil für die Anspruchstransformation ruft die Anspruchstransformation **AssertEmailAreEqual** auf, die bestätigt, dass die vom Benutzer angegebenen E-Mail-Adressen identisch sind.
 
-```XML
+```xml
 <TechnicalProfile Id="Validate-Email">
   <DisplayName>Unlink Facebook</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -145,7 +145,7 @@ Das technische Profil für die Anspruchstransformation ruft die Anspruchstransfo
 
 Ein selbstbestätigtes technisches Profil kann das technische Validierungsprofil aufrufen und die Fehlermeldung, die in den **UserMessageIfClaimsTransformationStringsAreNotEqual**-Metadaten angegeben ist, anzeigen.
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>User ID signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

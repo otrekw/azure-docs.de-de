@@ -3,12 +3,12 @@ title: Allgemeine Fragen zu VMware-Notfallwiederherstellung mit Azure Site Recov
 description: Hier erhalten Sie Antworten auf allgemeine Fragen zur Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a523df21caca2a6def4274542979e9963345384b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259509"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135162"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Allgemeine Fragen zur VMware-zu-Azure-Replikation
 
@@ -122,7 +122,7 @@ Die Replikation von neuen virtuellen Computern in einem Speicherkonto ist nur ü
 
 ### <a name="can-i-change-the-managed-disk-type-after-a-machine-is-protected"></a>Kann ich den Typ der verwalteten Datenträger ändern, sobald der Computer geschützt wird?
 
-Ja, für laufende Replikationen können Sie mühelos [den Typ des verwalteten Datenträgers ändern](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Bevor Sie den Typ ändern, stellen Sie sicher, dass keine SAS-URL auf dem verwalteten Datenträger generiert wird:
+Ja, für laufende Replikationen können Sie mühelos [den Typ des verwalteten Datenträgers ändern](../virtual-machines/windows/convert-disk-storage.md). Bevor Sie den Typ ändern, stellen Sie sicher, dass keine SAS-URL auf dem verwalteten Datenträger generiert wird:
 
 1. Wechseln Sie zu der Ressource **Verwalteter Datenträger** im Azure-Portal, und überprüfen Sie, ob auf dem Blatt **Übersicht** ein SAS-URL-Banner für Sie angezeigt wird.
 1. Wenn das Banner vorhanden ist, wählen Sie es aus, um den fortlaufenden Export abzubrechen.

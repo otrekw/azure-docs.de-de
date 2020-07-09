@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: 345df8e1ea88caa6f8dbe941245c1f989c3e81c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51d8c951958dc5fb4b26e92337f96e7a5c758999
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234962"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996600"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -572,9 +572,6 @@ Wenn Sie Version 2.x der Azure Functions-Runtime als Ziel verwenden, können Sie
 Die generierte `.funcignore`-Datei wird verwendet, um anzugeben, welche Dateien ausgeschlossen werden sollen, wenn ein Projekt in Azure veröffentlicht wird.  
 
 TypeScript-Dateien (.ts) werden im Ausgabeverzeichnis `dist` in JavaScript-Dateien (.js) transpiliert. TypeScript-Dateien verwenden in `function.json` den [Parameter `scriptFile`](#using-scriptfile), um den Speicherort der entsprechenden JS-Datei im Ordner `dist` anzugeben. Der Ausgabespeicherort wird von der Vorlage mit dem Parameter `outDir` in der Datei `tsconfig.json` festgelegt. Wenn Sie diese Einstellung oder den Namen des Ordners ändern, kann die Runtime den auszuführenden Code nicht finden.
-
-> [!NOTE]
-> In Version 1.x der Azure Functions-Runtime ist die experimentelle Unterstützung von TypeScript vorhanden. Die experimentelle Version transpiliert TypeScript-Dateien in JavaScript-Dateien, wenn die Funktion aufgerufen wird. In Version 2.x wurde diese experimentelle Unterstützung durch eine toolgesteuerte Methode ersetzt, die die Transpilierung vor der Initialisierung des Hosts und während der Bereitstellung durchführt.
 
 Die Art der lokalen Entwicklung und Bereitstellung aus einem TypeScript-Projekt hängen von Ihrem Entwicklungstool ab.
 

@@ -1,14 +1,14 @@
 ---
-title: Einrichten Ihrer Umgebung für den Blaupausenoperator
+title: Einrichten Ihrer Umgebung für einen Blaupausenoperator
 description: Erfahren Sie, wie Sie Ihre Azure-Umgebung für die Verwendung der Rolle „Blaupausenoperator“ der integrierten rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) konfigurieren.
-ms.date: 08/26/2019
+ms.date: 05/06/2020
 ms.topic: how-to
-ms.openlocfilehash: fba0dd3f2eeb69f768800d1d04640510462d3c86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a61997f5e3247e5b42d5e2f07c0fc38cc1b5114d
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873215"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864010"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Konfigurieren Ihrer Umgebung für einen Blaupausenoperator
 

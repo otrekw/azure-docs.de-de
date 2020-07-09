@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2476cf360909374f711564fb5fad5c9e0706083d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562473"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195869"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway: Sicherheit und Schutz von Daten
 
@@ -27,7 +27,6 @@ Die Lösung Data Box Gateway besteht aus vier Hauptkomponenten, die miteinander 
 - **Data Box Gateway-Gerät:** Das virtuelle Gerät, das Sie im Hypervisor des angegebenen Systems bereitgestellt haben. Dieses virtuelle Gerät wird verwendet, um Ihre lokalen Daten in Azure zu importieren.
 - **Mit dem Gerät verbundene Clients/Hosts:** Die Clients in Ihrer Infrastruktur, die mit dem Data Box Gateway-Gerät verbunden werden und zu schützende Daten enthalten
 - **Cloudspeicher:** Der Speicherort auf der Azure-Cloudplattform, an dem die Daten gespeichert werden. Hierbei handelt es sich in der Regel um das Speicherkonto, das mit der erstellten Data Box Gateway-Ressource verknüpft ist.
-
 
 ## <a name="data-box-gateway-service-protection"></a>Schutz des Data Box Gateway-Diensts
 
@@ -64,7 +63,6 @@ Ihre Möglichkeiten:
 [!INCLUDE [data-box-edge-gateway-password-best-practices](../../includes/data-box-edge-gateway-password-best-practices.md)]
 - Verwenden Sie zum [Ändern des Kennworts](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access) die lokale Webbenutzeroberfläche. Sollten Sie das Kennwort ändern, benachrichtigen Sie alle Benutzer mit Remotezugriff, damit bei ihnen keine Anmeldefehler auftreten.
 
-
 ## <a name="protect-your-data"></a>Schützen Ihrer Daten
 
 In diesem Abschnitt werden die Data Box Gateway-Sicherheitsfeatures für Daten während der Übertragung und für gespeicherte Daten beschrieben.
@@ -77,10 +75,18 @@ In diesem Abschnitt werden die Data Box Gateway-Sicherheitsfeatures für Daten w
 
 [!INCLUDE [data-box-edge-gateway-data-flight](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>Schützen von Daten über Speicherkonten
+### <a name="protect-data-using-storage-accounts"></a>Schützen von Daten mithilfe von Speicherkonten
 
 [!INCLUDE [data-box-edge-gateway-data-storage-accounts](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
+
 - Rotieren und [synchronisieren Sie Ihre Speicherkontoschlüssel](data-box-gateway-manage-shares.md#sync-storage-keys) regelmäßig, um zu vermeiden, dass nicht autorisierte Benutzer auf Ihr Speicherkonto zugreifen können.
+
+### <a name="protect-the-device-data-using-bitlocker"></a>Schützen der Gerätedaten mithilfe von BitLocker
+
+Zum Schutz virtueller Datenträger auf Ihrem virtuellen Data Box Gateway-Computer wird die Aktivierung von BitLocker empfohlen. Standardmäßig ist BitLocker nicht aktiviert. Weitere Informationen finden Sie unter
+
+- [Einstellungen für die Verschlüsselungsunterstützung in Hyper-V-Manager](h https://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [BitLocker-Unterstützung auf einem virtuellen Computer](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>Verwalten persönlicher Informationen
 

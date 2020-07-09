@@ -7,19 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81481972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488748"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrieren von Azure Stream Analytics mit Azure Machine Learning (Vorschau)
 
 Sie können Machine Learning-Modelle als benutzerdefinierte Funktionen (User-Defined Function, UDF) in Ihre Azure Stream Analytics-Aufträge implementieren, um Echtzeitbewertungen und Vorhersagen für Ihre Eingabedatenströme zu erstellen. In [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) können Sie mit allen beliebten Open-Source-Tools, z. B. TensorFlow, scikit-learn und PyTorch, Modelle vorbereiten, trainieren und bereitstellen.
-
-> [!NOTE]
-> Diese Funktion befindet sich in der öffentlichen Vorschauphase. Sie können auf dieses Feature im Azure-Portal nur über den [Link zur Vorschauversion des Stream Analytics-Portals](https://aka.ms/asaportalpreview) zugreifen. Diese Funktion ist auch in der neuesten Version der [Stream Analytics-Tools für Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install) enthalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,11 +24,11 @@ Führen Sie die folgenden Schritte aus, bevor Sie ein Machine Learning-Modell al
 
 1. Verwenden Sie Azure Machine Learning, um [Ihr Modell als Webdienst bereitzustellen](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
 
-2. Ihr Bewertungsskript sollte über [Beispieleingaben und -ausgaben](../machine-learning/how-to-deploy-and-where.md#example-entry-script) verfügen, mit denen Azure Machine Learning eine Schemaspezifikation generiert. Stream Analytics verwendet das Schema, um die Funktionssignatur Ihres Webdiensts zu verstehen.
+2. Ihr Bewertungsskript sollte über [Beispieleingaben und -ausgaben](../machine-learning/how-to-deploy-and-where.md#example-entry-script) verfügen, mit denen Azure Machine Learning eine Schemaspezifikation generiert. Stream Analytics verwendet das Schema, um die Funktionssignatur Ihres Webdiensts zu verstehen. Sie können diese [Swagger-Beispieldefinition](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) als Referenz verwenden, um sicherzustellen, dass Sie es ordnungsgemäß eingerichtet haben.
 
 3. Stellen Sie sicher, dass Ihr Webdienst serialisierte JSON-Daten akzeptiert und zurückgibt.
 
-4. Stellen Sie Ihr Modell für umfangreiche Produktionsbereitstellungen in [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) bereit. Wenn der Webdienst die Menge der von Ihrem Auftrag ausgehenden Anforderungen nicht verarbeiten kann, beeinträchtigt dies die Leistung Ihres Stream Analytics-Auftrags, was sich wiederum auf die Latenz auswirkt. In Azure Container Instances bereitgestellte Modelle werden zurzeit nicht unterstützt, dies wird aber in den kommenden Monaten verfügbar sein.
+4. Stellen Sie Ihr Modell für umfangreiche Produktionsbereitstellungen in [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) bereit. Wenn der Webdienst die Menge der von Ihrem Auftrag ausgehenden Anforderungen nicht verarbeiten kann, beeinträchtigt dies die Leistung Ihres Stream Analytics-Auftrags, was sich wiederum auf die Latenz auswirkt. In Azure Container Instances bereitgestellte Modelle werden nur bei Verwendung des Azure-Portals unterstützt.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Hinzufügen eines Machine Learning-Modells zu Ihrem Auftrag
 

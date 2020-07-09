@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 23a5d2c0e52a22872a8b9a64503d61493018b611
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839163"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609929"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hosten einer statischen Website in Azure Storage
 
@@ -48,7 +48,7 @@ Das Feature zum Hosten statischer Websites muss für das Speicherkonto aktiviert
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-<a id="cli" />
+<a id="cli"></a>
 
 Sie können das Hosting statischer Websites über die [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) aktivieren.
 
@@ -76,7 +76,7 @@ Sie können das Hosting statischer Websites über die [Azure-Befehlszeilenschnit
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-<a id="powershell" />
+<a id="powershell"></a>
 
 Sie können das Hosting statischer Websites über das Azure PowerShell-Modul aktivieren.
 
@@ -153,13 +153,10 @@ In diesen Anweisungen wird gezeigt, wie Sie Dateien mit der Version von Storage-
 
 Laden Sie Objekte aus einem Quellverzeichnis in den Container *$web* hoch.
 
-> [!NOTE]
-> Wenn Sie Azure Cloud Shell verwenden, vergewissern Sie sich, dass Sie beim Verweisen auf den `$web`-Container ein Escapezeichen `\` hinzufügen (z.B. `\$web`). Wenn Sie eine lokale Installation der Azure-CLI verwenden, müssen Sie das Escapezeichen nicht verwendet.
-
 In diesem Beispiel wird davon ausgegangen, dass Sie Befehle aus einer Azure Cloud Shell-Sitzung ausführen.
 
 ```azurecli-interactive
-az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
+az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-account-name>
 ```
 
 > [!NOTE] 
@@ -195,21 +192,19 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 
 ---
 
-## <a name="find-the-website-url-by-using-the-azure-portal"></a>Suchen der Website-URL über das Azure-Portal
+<a id="portal-find-url"></a>
+
+## <a name="find-the-website-url"></a>Suchen der Website-URL
 
 Mit der öffentlichen URL der Website können Sie die Seiten Ihrer Website in einem Browser anzeigen.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
-
-<a id="portal-find-url" />
 
 Wählen Sie in dem Bereich, der neben der Übersichtsseite für Ihr Speicherkonto angezeigt wird, die Option **Statische Website** aus. Die URL Ihrer Website wird im Feld **Primärer Endpunkt** angezeigt.
 
 ![Metriken von statischen Websites in Azure Storage: Metrik](./media/storage-blob-static-website/storage-blob-static-website-url.png)
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-<a id="cli-find-url" />
 
 Suchen Sie die öffentliche URL Ihrer statischen Website mit dem folgenden Befehl:
 
@@ -222,8 +217,6 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 * Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-<a id="powershell-find-url" />
 
 Suchen Sie die öffentliche URL Ihrer statischen Website mit dem folgenden Befehl:
 
@@ -238,7 +231,7 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 ---
 
-<a id="metrics" />
+<a id="metrics"></a>
 
 ## <a name="enable-metrics-on-static-website-pages"></a>Aktivieren von Metriken auf Seiten der statischen Website
 

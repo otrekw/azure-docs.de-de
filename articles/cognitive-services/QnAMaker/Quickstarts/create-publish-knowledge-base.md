@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Erstellen, Trainieren und Veröffentlichen einer Wissensdatenbank: QnA Maker'
 description: Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erstellen, z.B. aus FAQs oder Produkthandbüchern. Dieser Artikel enthält ein Beispiel zum Erstellen einer QnA Maker-Wissensdatenbank auf der Grundlage einer einfachen FAQ-Webseite, um Fragen zu QnA Maker zu beantworten.
-ms.topic: conceptual
-ms.date: 02/08/2020
-ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.topic: quickstart
+ms.date: 05/26/2020
+ms.openlocfilehash: 12f46e9a72f0a3b027fe67e5b8bf27c940685cfe
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756824"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340588"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Schnellstart: Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank
 
@@ -34,7 +34,7 @@ Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erst
 
 1. Wählen Sie in **Schritt 3** Ihre Active Directory-Instanz, das Abonnement, den Dienst (Ressource) und die Sprache für alle im Dienst erstellten Wissensdatenbanken aus.
 
-   ![Screenshot: Auswählen einer Wissensdatenbank im QnA Maker-Dienst](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="Screenshot: Auswählen einer Wissensdatenbank im QnA Maker-Dienst":::
 
 1. Geben Sie in **Schritt 3** Ihrer Wissensdatenbank den Namen **My Sample QnA KB**.
 
@@ -64,7 +64,7 @@ Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erst
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    ![ Fügen Sie die Frage als Text und die mit Markdown formatierte Antwort hinzu.](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Fügen Sie die Frage als Text und die mit Markdown formatierte Antwort hinzu.":::
 
     Das Markdownsymbol `*` wird für Aufzählungszeichen verwendet. `\n` wird für eine neue Zeile verwendet.
 
@@ -81,7 +81,7 @@ Wählen Sie in der oberen rechten Ecke **Speichern und trainieren** aus, um Ihre
 
     `How many Azure services are used by a knowledge base?`
 
-    ![ Geben Sie eine Beispielbenutzerabfrage in das Textfeld ein. ](../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Geben Sie eine Beispielbenutzerabfrage in das Textfeld ein.":::
 
 1. Wählen Sie **Untersuchen** aus, um die Antwort ausführlicher zu untersuchen. Das Testfenster wird verwendet, um die Änderungen an der Wissensdatenbank zu testen, bevor die Wissensdatenbank veröffentlicht wird.
 
@@ -131,7 +131,7 @@ Wenn Sie Änderungen an der Wissensdatenbank vornehmen und sie erneut veröffent
 
     Der Chatbot antwortet mit einer Antwort aus Ihrer Wissensdatenbank.
 
-    ![Geben Sie eine Benutzerabfrage in den Testwebchat ein.](../media/qnamaker-create-publish-knowledge-base/test-web-chat.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Geben Sie eine Benutzerabfrage in den Testwebchat ein.":::
 
 ## <a name="what-did-you-accomplish"></a>Was haben Sie erreicht?
 

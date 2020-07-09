@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 3929ffa81a8b558d8cb0dbd74135acc9cf1ea47b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 9e9f9c71701ceb1c76bc162f22e166b4565e731b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82876043"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86062666"
 ---
 ## <a name="configure-your-local-environment"></a>Konfigurieren Ihrer lokalen Umgebung
 
@@ -17,11 +17,17 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 + Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell"  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java"  
 + [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2), Version 2.7.1846 oder höhere 2.x-Version.
 ::: zone-end  
 ::: zone pivot="programming-language-python"
-+ Für Python 3.6 und 3.7 ist Version 2.7.1846 oder eine höhere 2.x-Version von [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) erforderlich. Für Python 3.8 ist [Version 3.x](../articles/azure-functions/functions-run-local.md#v2) von Core Tools erforderlich.
++ Die Azure Functions Core Tools-Version, die Ihrer installierten Python-Version entspricht:
+
+   | Python-Version | Core Tools-Version |
+   | -------------- | ------------------ |
+   | Python 3.8     | [Version 3.x](../articles/azure-functions/functions-run-local.md#v2) |
+   | Python 3.6<br/>Python 3.7 | [Version 2.7.1846 oder höher](../articles/azure-functions/functions-run-local.md#v2) |
+  
 ::: zone-end
 
 + [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) ab Version 2.4 

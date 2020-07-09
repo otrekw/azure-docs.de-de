@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: 04c6444723180c34f6605810260f5f865dff2d12
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f8d8d5ae677ea438de4baed7d6636c2087277427
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790914"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602702"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric-Sicherungsmaßnahmen 
 Wenn Sie einen Service Fabric-Cluster bereitstellen, werden Sicherungsmaßnahmen angewendet, durch die eine Azure Resource Manager-Bereitstellung bei einer ungültigen Clusterkonfiguration fehlschlägt. Die folgenden Abschnitte bieten einen Überblick über häufige Probleme bei der Clusterkonfiguration und die erforderlichen Schritte, um diese Probleme zu beheben. 
@@ -68,7 +68,7 @@ So beheben Sie einen Dauerhaftigkeitskonflikt, der durch eine der oben genannten
 
 ## <a name="seed-node-deletion"></a>Löschung von Startknoten 
 ### <a name="overview"></a>Übersicht
-Ein Service Fabric-Cluster weist eine [Zuverlässigkeitsebene](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)-Eigenschaft auf, die verwendet wird, um die Anzahl der Systemdienste zu bestimmen, die auf dem primären Knotentyp des Clusters ausgeführt werden. Die Anzahl der erforderlichen Replikate bestimmt die Mindestanzahl der Knoten, die vom primären Knotentyp des Clusters betrieben werden müssen. Wenn die Anzahl der Knoten vom primären Knotentyp unter das erforderliche Minimum für die Zuverlässigkeitsebene fällt, wird der Cluster instabil.  
+Ein Service Fabric-Cluster weist eine [Zuverlässigkeitsebene](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster)-Eigenschaft auf, die verwendet wird, um die Anzahl der Systemdienste zu bestimmen, die auf dem primären Knotentyp des Clusters ausgeführt werden. Die Anzahl der erforderlichen Replikate bestimmt die Mindestanzahl der Knoten, die vom primären Knotentyp des Clusters betrieben werden müssen. Wenn die Anzahl der Knoten vom primären Knotentyp unter das erforderliche Minimum für die Zuverlässigkeitsebene fällt, wird der Cluster instabil.  
 
 ### <a name="error-messages"></a>Fehlermeldungen 
 Ein Vorgang zum Entfernen des Startknotens wurde erkannt und wird abgelehnt. 

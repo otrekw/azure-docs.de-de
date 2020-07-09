@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 125d89301e9d2cc3fc863bffb9b9e6c41e0c129e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 16fdc38d6235ddd0f72c7a35a3d71973ce01a4be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229934"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203213"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu technischen Profilen in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -49,7 +49,7 @@ Ein technisches Profil ermöglicht die folgenden Szenarien:
 Allen Typen von technischen Profilen liegt das gleiche Konzept zugrunde. Sie senden Eingabeansprüche, führen Anspruchstransformationen aus und kommunizieren mit der konfigurierten Partei, z.B. mit einem Identitätsanbieter, der REST-API oder Azure AD-Verzeichnisdiensten. Nach Abschluss des Prozesses gibt das technische Profil die Ausgabeansprüche zurück und führt ggf. Ausgabeanspruchstransformationen aus. Im folgenden Diagramm ist dargestellt, wie die im technischen Profil referenzierten Transformationen und Zuordnungen verarbeitet werden. Unabhängig von der Partei, mit der das technische Profil interagiert, werden die Ausgabeansprüche aus dem technischen Profil nach der Ausführung von Anspruchstransformationen sofort im Anspruchsbehälter gespeichert.
 
 ![Diagramm des Flows für technische Profile](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
- 
+
 1. **Einmaliges Anmelden (Single Sign-On, SSO) für Sitzungsverwaltung**: Stellt den Sitzungszustand des technischen Profils wieder her, indem die [SSO-Sitzungsverwaltung](custom-policy-reference-sso.md) verwendet wird.
 1. **Eingabeanspruchstransformation**: Aus dem Anspruchsbehälter werden Eingabeansprüche jeder [Eingabeanspruchstransformation](claimstransformations.md) entnommen.  Bei den Ausgabeansprüchen einer Eingabeanspruchstransformation kann es sich um Eingabeansprüche einer nachfolgenden Eingabeanspruchstransformation handeln.
 1. **Eingabeansprüche**: Ansprüche werden dem Anspruchsbehälter entnommen und für das technische Profil verwendet. Ein [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md) verwendet beispielsweise die Eingabeansprüche, um die Ausgabeansprüche im Vorhinein auszufüllen, die der Benutzer angibt. Ein technisches REST-API-Profil verwendet die Eingabeansprüche, um Eingabeparameter an den REST-API-Endpunkt zu senden. Azure Active Directory verwendet einen Eingabeanspruch als eindeutigen Bezeichner zum Lesen, Aktualisieren oder Löschen eines Kontos.
@@ -70,7 +70,7 @@ Ein technisches Profil kann ein anderes technisches Profil enthalten, um Einstel
 
 Das technische Profil **AAD-UserReadUsingAlternativeSecurityId-NoError** enthält z. B. das Profil **AAD-UserReadUsingAlternativeSecurityId**. Dieses technische Profil legt das Metadatenelement `RaiseErrorIfClaimsPrincipalDoesNotExist` auf `true` fest und löst einen Fehler aus, wenn ein Konto für ein soziales Netzwerk nicht im Verzeichnis vorhanden ist. **AAD-UserReadUsingAlternativeSecurityId-NoError** setzt dieses Verhalten außer Kraft und deaktiviert die Fehlermeldung.
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
   <Metadata>
     <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">false</Item>
@@ -81,7 +81,7 @@ Das technische Profil **AAD-UserReadUsingAlternativeSecurityId-NoError** enthäl
 
 **AAD-UserReadUsingAlternativeSecurityId** enthält das technische Profil `AAD-Common`.
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">Read</Item>
@@ -105,7 +105,7 @@ Das technische Profil **AAD-UserReadUsingAlternativeSecurityId-NoError** enthäl
 
 **AAD-UserReadUsingAlternativeSecurityId-NoError** und **AAD-UserReadUsingAlternativeSecurityId** geben das erforderliche **Protocol**-Element nicht an, weil es im technischen Profil **AAD-Common** angegeben ist.
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-Common">
   <DisplayName>Azure Active Directory</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

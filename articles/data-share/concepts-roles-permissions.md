@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 36a492f6a3e86cfb2fc9505550cc2d9f4746e070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 96a5d3d5c894dda4270c5a8832f188ead56a1ce4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79231478"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020896"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Rollen und Anforderungen für Azure Data Share 
 
@@ -24,6 +24,7 @@ Mit dem Azure Data Share-Dienst können Sie Daten freigeben, ohne Anmeldeinforma
 Der verwalteten Identität der Azure Data Share-Ressource muss Zugriff auf den Azure-Datenspeicher gewährt werden. Der Azure Data Share-Dienst verwendet dann diese verwaltete Identität zum Lesen und Schreiben von Daten für die auf Momentaufnahmen basierende Freigabe und zum Einrichten einer symbolischen Verknüpfung für die direkte Freigabe. 
 
 Zum Freigeben oder Empfangen von Daten aus einem Azure-Datenspeicher benötigt der Benutzer mindestens die folgenden Berechtigungen. Für die SQL-basierte Freigabe sind zusätzliche Berechtigungen erforderlich.
+
 * Berechtigung zum Schreiben in den Azure-Datenspeicher. Diese Berechtigung ist normalerweise in der Rolle **Mitwirkender** enthalten.
 * Berechtigung zum Erstellen einer Rollenzuweisung im Azure-Datenspeicher. Die Berechtigung zum Erstellen von Rollenzuweisungen ist normalerweise in der Rolle **Besitzer**, der Rolle „Benutzerzugriffsadministrator“ oder einer benutzerdefinierten Rolle mit zugewiesener Berechtigung „Microsoft.Authorization/role assignments/write“ enthalten. Diese Berechtigung ist nicht erforderlich, wenn der verwalteten Identität der Data Share-Ressource bereits Zugriff auf den Azure-Datenspeicher gewährt wurde. Die erforderliche Rolle finden Sie in der nachstehenden Tabelle.
 
@@ -48,8 +49,8 @@ Bei SQL-basierter Freigabe muss ein SQL-Benutzer über einen externen Anbieter i
 |Azure Synapse Analytics (ehemals SQL DW) | db_datareader | db_datareader, db_datawriter, db_ddladmin
 |
 
+### <a name="data-provider"></a>Datenanbieter
 
-### <a name="data-provider"></a>Datenanbieter 
 Zum Hinzufügen eines Datasets in Azure Data Share muss der verwalteten Identität der Data Share-Ressource des Anbieters Zugriff auf den Azure-Quelldatenspeicher gewährt werden. Bei einem Speicherkonto beispielsweise wird der verwalteten Identität der Data Share-Ressource die Rolle „Leser von Speicherblobdaten“ zugewiesen. 
 
 Dies geschieht automatisch durch den Azure Data Share-Dienst, wenn der Benutzer ein Dataset über das Azure-Portal hinzufügt und über die entsprechende Berechtigung verfügt. So ist der Benutzer beispielsweise Besitzer des Azure-Datenspeichers oder Mitglied einer benutzerdefinierten Rolle, der die Berechtigung „Microsoft.Authorization/role assignments/write“ zugewiesen wurde. 

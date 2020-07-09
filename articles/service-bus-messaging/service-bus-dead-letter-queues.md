@@ -1,25 +1,14 @@
 ---
 title: Service Bus-Warteschlangen für unzustellbare Nachrichten | Microsoft Docs
 description: Beschreibung von Warteschlangen für unzustellbare Nachrichten in Azure Service Bus Service Bus-Warteschlangen und -Themenabonnements verfügen über eine sekundäre Unterwarteschlange, die als „Warteschlange für unzustellbare Nachrichten“ bezeichnet wird.
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 68b2aa38-dba7-491a-9c26-0289bc15d397
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/23/2020
-ms.author: aschhab
-ms.openlocfilehash: 9c1a0cb92fbaf98d25799ffb5a85e666e7c05f8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 62db4e71d99d1242cfbb69bdb7979bf9e5dc67ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158899"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337585"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Übersicht über Service Bus-Warteschlangen für unzustellbare Nachrichten
 
@@ -50,14 +39,13 @@ Während die Nachricht vom Broker verschoben wird, werden ihr zwei Eigenschaften
 
 Anwendungen können ihre eigenen Codes für die `DeadLetterReason`-Eigenschaft definieren, aber das System legt die folgenden Werte fest.
 
-| Bedingung | DeadLetterReason | DeadLetterErrorDescription |
-| --- | --- | --- |
-| Always |HeaderSizeExceeded |Das Größenkontingent für diesen Datenstrom wurde überschritten. |
-| !TopicDescription.<br />EnableFilteringMessagesBeforePublishing und SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
-| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Die Nachricht ist abgelaufen und wurde in die Warteschlange für unzustellbare Nachrichten verschoben. |
-| SubscriptionDescription.RequiresSession |Sitzungs-ID ist NULL. |Die für die Sitzung aktivierte Entität erlaubt keine Nachricht, deren Sitzungsbezeichner null ist. |
-| !dead letter queue | MaxTransferHopCountExceeded | Die maximale Anzahl zulässiger Hops beim Weiterleiten zwischen Warteschlangen. Der Wert ist auf 4 festgelegt. |
-| Explizites Markieren von Nachrichten als unzustellbar durch Anwendung |Gemäß Anwendung |Gemäß Anwendung |
+| DeadLetterReason | DeadLetterErrorDescription |
+| --- | --- |
+|HeaderSizeExceeded |Das Größenkontingent für diesen Datenstrom wurde überschritten. |
+|TTLExpiredException |Die Nachricht ist abgelaufen und wurde in die Warteschlange für unzustellbare Nachrichten verschoben. Weitere Informationen finden Sie im Abschnitt [Überschreiten von TimeToLive](#exceeding-timetolive). |
+|Sitzungs-ID ist NULL. |Die für die Sitzung aktivierte Entität erlaubt keine Nachricht, deren Sitzungsbezeichner null ist. |
+|MaxTransferHopCountExceeded | Die maximale Anzahl zulässiger Hops beim Weiterleiten zwischen Warteschlangen. Der Wert ist auf 4 festgelegt. |
+| MaxDeliveryCountExceededExceptionMessage | Die Nachricht konnte nach der maximalen Anzahl der Übermittlungsversuche nicht verarbeitet werden. Weitere Informationen finden Sie im Abschnitt [Überschreiten von MaxDeliveryCount](#exceeding-maxdeliverycount). |
 
 ## <a name="exceeding-maxdeliverycount"></a>Überschreiten von MaxDeliveryCount
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 25393007a3cc878737ea5927cb65bcf7ef945313
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 09c41c7480b262e6f1a912ad4b708e485d86bf56
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80057567"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833501"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Benutzerdefinierte Konfigurationseinstellungen für App Service-Umgebungen
 ## <a name="overview"></a>Übersicht
@@ -24,23 +24,25 @@ Sie können Anpassungen der App Service-Umgebung mithilfe eines Arrays im neuen 
 
 Der folgende gekürzte Codeausschnitt aus einer Resource Manager-Vorlage zeigt das Attribut **clusterSettings** :
 
-    "resources": [
-    {
-       "apiVersion": "2015-08-01",
-       "type": "Microsoft.Web/hostingEnvironments",
-       "name": ...,
-       "location": ...,
-       "properties": {
-          "clusterSettings": [
-             {
-                 "name": "nameOfCustomSetting",
-                 "value": "valueOfCustomSetting"
-             }
-          ],
-          "workerPools": [ ...],
-          etc...
-       }
+```json
+"resources": [
+{
+    "apiVersion": "2015-08-01",
+    "type": "Microsoft.Web/hostingEnvironments",
+    "name": ...,
+    "location": ...,
+    "properties": {
+        "clusterSettings": [
+            {
+                "name": "nameOfCustomSetting",
+                "value": "valueOfCustomSetting"
+            }
+        ],
+        "workerPools": [ ...],
+        etc...
     }
+}
+```
 
 Das Attribut **clusterSettings** kann in eine Resource Manager-Vorlage eingefügt werden, um die App Service-Umgebung zu aktualisieren.
 
@@ -61,13 +63,15 @@ Wenn eine App Service-Umgebung beispielsweise über vier Front-Ends verfügt, da
 
 Die App Service-Umgebung wird als Blackbox-System betrieben, bei dem Sie die internen Komponenten oder die Kommunikation innerhalb des Systems nicht sehen können. Um einen höheren Durchsatz zu ermöglichen, ist die Verschlüsselung zwischen internen Komponente standardmäßig nicht aktiviert. Das System ist sicher, da der Datenverkehr vollständig vor Überwachung und Zugriff geschützt ist. Bei einer Kompatibilitätsanforderung, die eine End-to-End-Verschlüsselung des Datenpfads voraussetzt, kann diese mit einer Clustereinstellung (clusterSetting) aktiviert werden.  
 
-        "clusterSettings": [
-            {
-                "name": "InternalEncryption",
-                "value": "1"
-            }
-        ],
- 
+```json
+"clusterSettings": [
+    {
+        "name": "InternalEncryption",
+        "value": "1"
+    }
+],
+```
+
 Nach der Aktivierung der Clustereinstellung (clusterSetting) „InternalEncryption“ kann es zu einer Beeinträchtigung der Systemleistung kommen. Wenn Sie „InternalEncryption“ aktivieren, befindet sich die ASE in einem instabilen Zustand, bis die Änderung vollständig weitergegeben wurde. Die vollständige Weitergabe der Änderung kann abhängig von der Anzahl von Instanzen in Ihrer ASE einige Stunden in Anspruch nehmen. Es wird dringend empfohlen, diese Option nicht für eine ASE zu aktivieren, während sie verwendet wird. Wenn Sie die Option für eine aktiv genutzte ASE aktivieren müssen, wird dringend empfohlen, den Datenverkehr an eine Sicherungsumgebung umzuleiten, bis der Vorgang abgeschlossen ist. 
 
 ## <a name="disable-tls-10-and-tls-11"></a>Deaktivieren von TLS 1.0 und TLS 1.1
@@ -76,29 +80,31 @@ Wenn Sie TLS-Einstellungen auf App-Basis verwalten möchten, können Sie die Anl
 
 Wenn Sie sämtlichen eingehenden TLS 1.0- und TLS 1.1-Datenverkehr für alle Apps in einer ASE deaktivieren möchten, legen Sie den folgenden **clusterSettings**-Eintrag fest:
 
-        "clusterSettings": [
-            {
-                "name": "DisableTls1.0",
-                "value": "1"
-            }
-        ],
+```json
+"clusterSettings": [
+    {
+        "name": "DisableTls1.0",
+        "value": "1"
+    }
+],
+```
 
 Im Namen der Einstellung ist zwar 1.0 angegeben, sie deaktiviert jedoch sowohl TLS 1.0 als auch TLS 1.1, nachdem sie konfiguriert wurde.
 
 ## <a name="change-tls-cipher-suite-order"></a>Ändern der Reihenfolge der TLS-Verschlüsselungssammlung
 Eine weitere Frage von Kunden lautet, ob sie die Liste der Verschlüsselungsverfahren ändern können, die von ihrem Server ausgehandelt wird. Dies ist, wie im Folgenden gezeigt, durch Ändern der Einstellung **clusterSettings** möglich. Die Liste der verfügbaren Verschlüsselungssammlungen kann aus [diesem MSDN-Artikel](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx) abgerufen werden.
 
-        "clusterSettings": [
-            {
-                "name": "FrontEndSSLCipherSuiteOrder",
-                "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
-            }
-        ],
+```json
+"clusterSettings": [
+    {
+        "name": "FrontEndSSLCipherSuiteOrder",
+        "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
+    }
+],
+```
 
 > [!WARNING]
 > Wenn für die Verschlüsselungssammlung falsche Werte festgelegt werden, die SChannel nicht verstehen kann, funktioniert die TLS-Kommunikation mit dem Server ggf. nicht mehr. In diesem Fall müssen Sie den Eintrag *FrontEndSSLCipherSuiteOrder* aus **clusterSettings** entfernen und die aktualisierte Resource Manager-Vorlage übermitteln, um die Standardeinstellungen der Verschlüsselungssammlung wiederherzustellen.  Verwenden Sie diese Funktion umsichtig.
-> 
-> 
 
 ## <a name="get-started"></a>Erste Schritte
 Die Azure-Website mit Resource Manager-Schnellstartvorlagen umfasst eine Vorlage mit der Basisdefinition zum [Erstellen einer App Service-Umgebung](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).

@@ -1,20 +1,14 @@
 ---
 title: Senden oder Empfangen von Ereignissen an bzw. von Azure Event Hubs unter Verwendung von Python (altes Paket)
 description: Diese exemplarische Vorgehensweise zeigt, wie Sie Python-Skripts erstellen und ausführen, die unter Verwendung des alten Pakets „azure-eventhub“ (Version 1) Ereignisse an Azure Event Hubs senden bzw. von dort empfangen.
-services: event-hubs
-author: spelluru
-manager: femila
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.date: 01/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 22f6b2aba36e560e9bd335baa92925fe9846c670
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.openlocfilehash: 4ce53d2d82a00f98dbbd538bd7a61da9ba44e832
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77162598"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314473"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>Schnellstart: Senden und Empfangen von Ereignissen mit Event Hubs mithilfe von Python (Version 1 von „azure-eventhub“)
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Python-Pakets **azure-eventhub** (Version 1) Ereignisse an einen Event Hub senden bzw. von dort empfangen. 
@@ -47,7 +41,7 @@ Um eine Python-Anwendung zu erstellen, die Ereignisse an einen Event Hub sendet:
 
 1. Öffnen Sie Ihren bevorzugten Python-Editor, z. B. [Visual Studio Code](https://code.visualstudio.com/).
 2. Erstellen Sie eine neue Datei mit dem Namen *send.py*. Dieses Skript sendet 100 Ereignisse an Ihren Event Hub.
-3. Fügen Sie den folgenden Code in *send.py*  ein, und ersetzen Sie dabei die Angaben \<namespace>, \<eventhub>, \<AccessKeyName> und \<primary key value> von Event Hubs durch Ihre Werte: 
+3. Fügen Sie den folgenden Code in *send.py* ein, indem Sie die Angaben \<namespace>, \<eventhub>, \<AccessKeyName> und \<primary key value> für Event Hubs durch Ihre Werte ersetzen: 
    
    ```python
    import sys
@@ -110,7 +104,7 @@ Glückwunsch! Sie haben jetzt Nachrichten an einen Event Hub gesendet.
 Um eine Python-Anwendung zu erstellen, die Ereignisse von einem Event Hub empfängt:
 
 1. Erstellen Sie in Ihrem Python-Editor eine Datei namens *recv.py*.
-2. Fügen Sie den folgenden Code in *recv.py*  ein, und ersetzen Sie dabei die Angaben \<namespace>, \<eventhub>, \<AccessKeyName> und \<primary key value> von Event Hubs durch Ihre Werte: 
+2. Fügen Sie den folgenden Code in *recv.p*  ein, und ersetzen Sie die Angaben \<namespace>, \<eventhub>, \<AccessKeyName> und \<primary key value> von Event Hubs durch Ihre Werte: 
    
    ```python
    import os

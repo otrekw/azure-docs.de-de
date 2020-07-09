@@ -1,25 +1,24 @@
 ---
 title: Umgebungsvariablen der Aufgabenlaufzeit
 description: Anleitung und Referenz zu Umgebungsvariablen für Aufgabenlaufzeit für Azure Batch-Analysen.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/12/2019
-ms.author: labrenne
-ms.openlocfilehash: dd30444585cb1adaaf2b42cebdfa04683b12ecfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b8ade312146802ede6e12181a082a8fcd3842fe
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117334"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960910"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Umgebungsvariablen der Azure Batch-Laufzeit
 
 Der [Azure Batch-Dienst](https://azure.microsoft.com/services/batch/) legt die folgenden Umgebungsvariablen für Computeknoten fest. Sie können auf diese Umgebungsvariablen in Taskbefehlszeilen sowie in den Programmen und Skripts verweisen, die über die Befehlszeilen ausgeführt werden.
 
-Weitere Informationen zum Verwenden von Umgebungsvariablen mit dem Batch-Dienst finden Sie unter [Umgebungseinstellungen für Tasks](https://docs.microsoft.com/azure/batch/batch-api-basics#environment-settings-for-tasks).
+Weitere Informationen zum Verwenden von Umgebungsvariablen mit dem Batch-Dienst finden Sie unter [Umgebungseinstellungen für Tasks](./jobs-and-tasks.md#environment-settings-for-tasks).
 
 ## <a name="environment-variable-visibility"></a>Sichtbarkeit von Umgebungsvariablen
 
-Diese Umgebungsvariablen sind nur sichtbar im Kontext des **Taskbenutzers**, d.h. des Benutzerkontos im Knoten, unter dem ein Task ausgeführt wird. Sie werden *nicht* angezeigt, wenn Sie über RDP (Remotedesktopprotokoll) oder SSH (Secure Shell) eine [Remoteverbindung](https://azure.microsoft.com/documentation/articles/batch-api-basics/#connecting-to-compute-nodes) herstellen und die Umgebungsvariablen auflisten. Das liegt daran, dass das Benutzerkonto, das für die Remoteverbindung verwendet wird, nicht dem Konto entspricht, das vom Task verwendet wird.
+Diese Umgebungsvariablen sind nur sichtbar im Kontext des **Taskbenutzers**, d.h. des Benutzerkontos im Knoten, unter dem ein Task ausgeführt wird. Sie werden *nicht* angezeigt, wenn Sie über RDP (Remotedesktopprotokoll) oder SSH (Secure Shell) eine [Remoteverbindung](./error-handling.md#connect-to-compute-nodes) herstellen und die Umgebungsvariablen auflisten. Das liegt daran, dass das Benutzerkonto, das für die Remoteverbindung verwendet wird, nicht dem Konto entspricht, das vom Task verwendet wird.
 
 Um den aktuellen Wert einer Umgebungsvariablen abzurufen, starten Sie `cmd.exe` auf einem Windows-Computeknoten oder `/bin/sh` auf einem Linux-Knoten:
 
@@ -41,15 +40,15 @@ Die von Tasks auf Computeknoten angewendeten Befehlszeilen können nicht unter e
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Der Name des Batch-Kontos, zu dem der Task gehört.                  | Alle Tasks.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Die URL des Batch-Kontos. | Alle Tasks. | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | Ein Präfix aller Umgebungsvariablen des App-Pakets. Wenn beispielsweise von der Anwendung „FOO“ die Version „1“ in einem Pool installiert wird, lautet die Umgebungsvariable AZ_BATCH_APP_PACKAGE_FOO_1 (unter Linux) oder AZ_BATCH_APP_PACKAGE_FOO#1 (unter Windows). AZ_BATCH_APP_PACKAGE_FOO_1 verweist auf den Speicherort (einen Ordner), an den das Paket heruntergeladen wurde. Verwenden Sie bei Nutzung der Standardversion des App-Pakets die Umgebungsvariable AZ_BATCH_APP_PACKAGE ohne Versionsnummern. Wenn Sie Linux verwenden, der Name des Anwendungspakets „Agent-linux-x64“ lautet und die Versionsnummer „1.1.46.0“ ist, lautet der Umgebungsname wie folgt: AZ_BATCH_APP_PACKAGE_agent_linux_x64_1_1_46_0, einschließlich Unterstrichen und Kleinbuchstaben. Ausführlichere Informationen finden Sie [hier](https://docs.microsoft.com/azure/batch/batch-application-packages#execute-the-installed-applications). | Jede Aufgabe mit einem zugeordneten App-Paket. Auch für alle Aufgaben verfügbar, wenn der Knoten selbst über Anwendungspakete verfügt. | AZ_BATCH_APP_PACKAGE_FOO_1 (Linux) oder AZ_BATCH_APP_PACKAGE_FOO#1 (Windows) |
-| AZ_BATCH_AUTHENTICATION_TOKEN   | Ein Authentifizierungstoken für den Zugriff auf eine begrenzte Gruppe von Batch-Dienstvorgängen. Diese Umgebungsvariable ist nur vorhanden, wenn [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) beim [Hinzufügen der Aufgabe](/rest/api/batchservice/task/add#request-body) festgelegt wird. Der Tokenwert wird in den Batch-APIs als Anmeldeinformationen für die Erstellung eines Batchclients verwendet (wie etwa in der [.NET-API „BatchClient.Open()“](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_)). | Alle Tasks. | OAuth2-Zugriffstoken |
+| AZ_BATCH_APP_PACKAGE            | Ein Präfix aller Umgebungsvariablen des App-Pakets. Wenn beispielsweise von der Anwendung „FOO“ die Version „1“ in einem Pool installiert wird, lautet die Umgebungsvariable AZ_BATCH_APP_PACKAGE_FOO_1 (unter Linux) oder AZ_BATCH_APP_PACKAGE_FOO#1 (unter Windows). AZ_BATCH_APP_PACKAGE_FOO_1 verweist auf den Speicherort (einen Ordner), an den das Paket heruntergeladen wurde. Verwenden Sie bei Nutzung der Standardversion des App-Pakets die Umgebungsvariable AZ_BATCH_APP_PACKAGE ohne Versionsnummern. Wenn Sie Linux verwenden, der Name des Anwendungspakets „Agent-linux-x64“ lautet und die Versionsnummer „1.1.46.0“ ist, lautet der Umgebungsname wie folgt: AZ_BATCH_APP_PACKAGE_agent_linux_x64_1_1_46_0, einschließlich Unterstrichen und Kleinbuchstaben. Ausführlichere Informationen finden Sie [hier](./batch-application-packages.md#execute-the-installed-applications). | Jede Aufgabe mit einem zugeordneten App-Paket. Auch für alle Aufgaben verfügbar, wenn der Knoten selbst über Anwendungspakete verfügt. | AZ_BATCH_APP_PACKAGE_FOO_1 (Linux) oder AZ_BATCH_APP_PACKAGE_FOO#1 (Windows) |
+| AZ_BATCH_AUTHENTICATION_TOKEN   | Ein Authentifizierungstoken für den Zugriff auf eine begrenzte Gruppe von Batch-Dienstvorgängen. Diese Umgebungsvariable ist nur vorhanden, wenn [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) beim [Hinzufügen der Aufgabe](/rest/api/batchservice/task/add#request-body) festgelegt wird. Der Tokenwert wird in den Batch-APIs als Anmeldeinformationen für die Erstellung eines Batchclients verwendet (wie etwa in der [.NET-API „BatchClient.Open()“](/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_)). | Alle Tasks. | OAuth2-Zugriffstoken |
 | AZ_BATCH_CERTIFICATES_DIR       | Ein Verzeichnis im [Taskarbeitsverzeichnis][files_dirs], in dem Zertifikate für Linux-Computeknoten gespeichert werden. Diese Umgebungsvariable gilt nicht für Windows-Computeknoten.                                                  | Alle Tasks.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | Die Liste mit den Knoten, die einem [Task mit mehreren Instanzen][multi_instance] zugeordnet sind (im Format `nodeIP,nodeIP`). | Primäre und Untertasks mit mehreren Instanzen. | `10.0.0.4,10.0.0.5` |
 | AZ_BATCH_IS_CURRENT_NODE_MASTER | Gibt an, ob der aktuelle Knoten der Masterknoten eines [Tasks mit mehreren Instanzen][multi_instance] ist. Mögliche Werte sind `true` und `false`.| Primäre und Untertasks mit mehreren Instanzen. | `true` |
 | AZ_BATCH_JOB_ID                 | Die ID des Auftrags, zu dem der Task gehört. | Alle Tasks mit Ausnahme des Starttasks. | batchjob001 |
 | AZ_BATCH_JOB_PREP_DIR           | Der vollständige Pfad des [Taskverzeichnisses][files_dirs] für die Auftragsvorbereitung auf dem Knoten. | Alle Tasks mit Ausnahme des Starttasks und Auftragsvorbereitungstasks. Nur verfügbar, wenn der Auftrag mit einem Auftragsvorbereitungstask konfiguriert ist. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation |
 | AZ_BATCH_JOB_PREP_WORKING_DIR   | Der vollständige Pfad des [Taskarbeitsverzeichnisses][files_dirs] für die Auftragsvorbereitung auf dem Knoten. | Alle Tasks mit Ausnahme des Starttasks und Auftragsvorbereitungstasks. Nur verfügbar, wenn der Auftrag mit einem Auftragsvorbereitungstask konfiguriert ist. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation\wd |
-| AZ_BATCH_MASTER_NODE            | IP-Adresse und Port des Computeknotens, auf dem der Haupttasks eines [Tasks mit mehreren Instanzen][multi_instance] ausgeführt wird. | Primäre und Untertasks mit mehreren Instanzen. | `10.0.0.4:6000` |
+| AZ_BATCH_MASTER_NODE            | IP-Adresse und Port des Computeknotens, auf dem der Haupttasks eines [Tasks mit mehreren Instanzen][multi_instance] ausgeführt wird. Verwenden Sie den hier angegebenen Port nicht für MPI- oder NCCL-Kommunikation – er ist für den Azure Batch-Dienst reserviert. Verwenden Sie stattdessen die Variable MASTER_PORT, indem Sie sie entweder mit einem über das Befehlszeilenargument eingegebenen Wert festlegen (Port 6105 ist eine gute Standardwahl), oder indem Sie den von AML festgelegten Wert verwenden, wenn dieser verfügbar ist. | Primäre und Untertasks mit mehreren Instanzen. | `10.0.0.4:6000` |
 | AZ_BATCH_NODE_ID                | Die ID des Knotens, dem der Task zugewiesen ist | Alle Tasks. | tvm-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Wenn `true`, ist der aktuelle Knoten ein dedizierter-Knoten. Bei `false` handelt es sich um einen [Knoten mit niedriger Priorität](batch-low-pri-vms.md). | Alle Tasks. | `true` |
 | AZ_BATCH_NODE_LIST              | Die Liste mit den Knoten, die einem [Task mit mehreren Instanzen][multi_instance] zugeordnet sind (im Format `nodeIP;nodeIP`). | Primäre und Untertasks mit mehreren Instanzen. | `10.0.0.4;10.0.0.5` |
@@ -64,7 +63,7 @@ Die von Tasks auf Computeknoten angewendeten Befehlszeilen können nicht unter e
 | AZ_BATCH_TASK_WORKING_DIR       | Der vollständige Pfad des [Taskarbeitsverzeichnisses][files_dirs] auf dem Knoten. Der aktuell ausgeführte Tasks hat Lese-/Schreibzugriff auf dieses Verzeichnis. | Alle Tasks. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
 | CCP_NODES                       | Die Liste mit den Knoten und der Anzahl von Kernen pro Knoten, die einem [Task mit mehreren Instanzen][multi_instance] zugeordnet sind. Knoten und Kerne werden im Format `numNodes<space>node1IP<space>node1Cores<space>` aufgeführt.<br/>`node2IP<space>node2Cores<space> ...`, wobei auf die Anzahl der Knoten eine oder mehrere IP-Adressen von Knoten und die jeweilige Anzahl der Kerne folgen. |  Primäre und Untertasks mit mehreren Instanzen. |`2 10.0.0.4 1 10.0.0.5 1` |
 
-[files_dirs]: https://azure.microsoft.com/documentation/articles/batch-api-basics/#files-and-directories
-[multi_instance]: https://azure.microsoft.com/documentation/articles/batch-mpi/
-[coord_cmd]: https://azure.microsoft.com/documentation/articles/batch-mpi/#coordination-command
-[app_cmd]: https://azure.microsoft.com/documentation/articles/batch-mpi/#application-command
+[files_dirs]: ./files-and-directories.md
+[multi_instance]: ./batch-mpi.md
+[coord_cmd]: ./batch-mpi.md#coordination-command
+[app_cmd]: ./batch-mpi.md#application-command

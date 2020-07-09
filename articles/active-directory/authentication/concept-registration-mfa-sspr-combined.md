@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4caaf8704f2ee49f8f094ad22065ae462154be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87cec45ac3d7bf491278a4ba8520e8257fd0f6c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143916"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550663"
 ---
 # <a name="combined-security-information-registration-overview"></a>Kombinierte Registrierung von Sicherheitsinformationen – Übersicht
 
@@ -46,17 +46,17 @@ Die Seiten von „Mein Profil“ sind entsprechend den aktuellen Spracheinstellu
 
 Bei der kombinierten Registrierung werden die folgenden Authentifizierungsmethoden und -aktionen unterstützt:
 
-|   | Register  | Change | Löschen |
+| Methode | Register | Change | Löschen |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Ja (maximal 5) | Nein  | Ja |
-| Andere Authenticator-App | Ja (maximal 5) | Nein  | Ja |
-| Hardwaretoken | Nein  | Nein  | Ja |
+| Microsoft Authenticator | Ja (maximal 5) | Nein | Ja |
+| Andere Authenticator-App | Ja (maximal 5) | Nein | Ja |
+| Hardwaretoken | Nein | Nein | Ja |
 | Phone | Ja | Ja | Ja |
 | Alternatives Telefon | Ja | Ja | Ja |
-| Bürotelefon | Nein  | Nein  | Nein  |
+| Bürotelefon | Nein | Nein | Nein |
 | Email | Ja | Ja | Ja |
-| Sicherheitsfragen | Ja | Nein  | Ja |
-| App-Kennwörter | Ja | Nein  | Ja |
+| Sicherheitsfragen | Ja | Nein | Ja |
+| App-Kennwörter | Ja | Nein | Ja |
 | FIDO2-Sicherheitsschlüssel<br />*Verwalteter Modus nur auf der Seite [Sicherheitsinformation](https://mysignins.microsoft.com/security-info)“*| Ja | Ja | Ja |
 
 > [!NOTE]

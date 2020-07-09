@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 97dfe175a609ab336206098948b4e3fcc401d8bc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a5af58c645720f0643e9245dc106248e36f2658f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203960"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237728"
 ---
 In diesem Schnellstart auf Postman-Basis wird Schritt für Schritt erläutert, wie Sie eine Antwort aus einer Wissensdatenbank abrufen.
 
@@ -64,7 +64,7 @@ In einer vorherigen Schnellstartanleitung wurden zwei Frage-Antwort-Paaren Metad
     }
     ```
 
-    Die Frage ist nur ein einzelnes Wort (`size`), wodurch jeder der beiden Frage-Antwort-Sätze zurückgegeben werden kann. Das Array `strictFilters` gibt die Antwort aus und reduziert sie ausschließlich auf die `qna_maker`-Antworten.
+    Die Frage ist nur ein einzelnes Wort (`size`), wodurch jedes der beiden Frage-Antwort-Paare zurückgegeben werden kann. Das Array `strictFilters` gibt die Antwort aus und reduziert sie ausschließlich auf die `qna_maker`-Antworten.
 
 1. Die Ausgabe enthält nur die Antwort, die den Filterkriterien entspricht.
 
@@ -103,9 +103,12 @@ In einer vorherigen Schnellstartanleitung wurden zwei Frage-Antwort-Paaren Metad
     }
     ```
 
-    Wenn ein Frage-Antwort-Satz nicht mit dem Suchbegriff, dafür aber mit dem Filter übereinstimmt, wird er nicht ausgegeben. Stattdessen wird die allgemeine Antwort `No good match found in KB.` zurückgegeben.
+    Wenn ein Frage-Antwort-Paar nicht mit dem Suchbegriff, aber mit dem Filter übereinstimmt, wird es nicht zurückgegeben. Stattdessen wird die allgemeine Antwort `No good match found in KB.` zurückgegeben.
 
 ## <a name="use-debug-query-property"></a>Verwenden der Abfrageeigenschaft „debug“
+
+> [!NOTE]
+>Es wird nicht empfohlen, die debug-Eigenschaft für Abhängigkeiten zu verwenden. Diese Eigenschaft wurde hinzugefügt, um dem Produktteam bei der Problembehandlung zu helfen.
 
 Anhand von Debuginformationen können Sie besser nachvollziehen, wie die zurückgegebene Antwort ermittelt wurde. Dies ist zwar hilfreich, aber nicht unbedingt erforderlich. Wenn Sie eine Antwort mit Debuginformationen generieren möchten, fügen Sie die Eigenschaft `debug` hinzu:
 

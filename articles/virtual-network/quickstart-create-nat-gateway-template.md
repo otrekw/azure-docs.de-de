@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines NAT-Gateways: Resource Manager-Vorlage'
+title: 'Tutorial: Erstellen eines NAT-Gateways: Resource Manager-Vorlage'
 titleSuffix: Azure Virtual Network NAT
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein NAT-Gateway per Azure Resource Manager-Vorlage erstellen.
 services: load-balancer
@@ -8,21 +8,22 @@ author: asudbring
 manager: KumudD
 Customer intent: I want to create a NAT gateway by using an Azure Resource Manager template so that I can provide outbound connectivity for my virtual machines.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
-ms.topic: quickstart
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 3850f3f22e730e46f6d278b6cef0e17d357b126d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fbc8b48f4ff6a6df687d45a53008a159c5322084
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81618047"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703569"
 ---
-# <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>Schnellstart: Erstellen eines NAT-Gateways: Resource Manager-Vorlage
+# <a name="tutorial-create-a-nat-gateway---resource-manager-template"></a>Tutorial: Erstellen eines NAT-Gateways: Resource Manager-Vorlage
 
 Hier finden Sie Informationen zu den ersten Schritten mit Virtual Network NAT unter Verwendung einer Azure Resource Manager-Vorlage.  Mit dieser Vorlage werden ein virtuelles Netzwerk, eine NAT-Gatewayressource und ein virtueller Ubuntu-Computer bereitgestellt. Der virtuelle Ubuntu-Computer wird in einem Subnetz bereitgestellt, das der NAT-Gatewayressource zugeordnet ist.
 

@@ -3,15 +3,15 @@ title: Verschieben eines externen Azure-Lastenausgleichs in eine andere Azure-Re
 description: Verwenden einer Azure Resource Manager-Vorlage, um einen externen Lastenausgleich über das Azure-Portal aus einer Azure-Region in eine andere zu verschieben.
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 5cd5ce2635ce05c4d5962f12ddc3945342897ecd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0598f21cddbaeef6b3cd10cd77250eeae8bd34bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75638492"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808711"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Verschieben eines externen Lastenausgleichs in eine andere Region über das Azure-Portal
 

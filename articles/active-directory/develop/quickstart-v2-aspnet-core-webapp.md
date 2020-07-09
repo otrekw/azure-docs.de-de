@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: db488e4a9ec9aa0f4f12c8de45f123dba1a93cdf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2924a950e7b52a41939d1c06305bad2d1b243476
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82112710"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554143"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
 In dieser Schnellstartanleitung wird anhand eines Codebeispiels gezeigt, wie eine ASP.NET Core-Web-App persönliche Konten (beispielsweise „hotmail.com“ oder „outlook.com“) und Geschäfts-, Schul- oder Unikonten aus einer beliebigen Azure AD-Instanz (Azure Active Directory) anmelden kann. (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
@@ -145,7 +145,7 @@ Die Methode `AddAuthentication` konfiguriert den Dienst zum Hinzufügen der cook
 
 Die Zeile, die `.AddAzureAd` enthält, fügt Ihrer Anwendung die Microsoft Identity Platform-Authentifizierung hinzu. Die Anmeldung erfolgt dann über den Microsoft Identity Platform-Endpunkt.
 
-> |Hierbei gilt:  |  |
+> |Hierbei gilt: | BESCHREIBUNG |
 > |---------|---------|
 > | ClientId  | Die Anwendungs-ID (Client) der im Azure-Portal registrierten Anwendung |
 > | Authority | Der STS-Endpunkt für den zu authentifizierenden Benutzer. Normalerweise lautet er <https://login.microsoftonline.com/{tenant}/v2.0> für die öffentliche Cloud, wobei {tenant} der Name Ihres Mandanten, Ihre Mandanten-ID oder *common* für einen Verweis auf den allgemeinen Endpunkt (verwendet für mehrinstanzenfähige Anwendungen) ist. |
@@ -156,7 +156,7 @@ Die Zeile, die `.AddAzureAd` enthält, fügt Ihrer Anwendung die Microsoft Ident
 > Zur Vereinfachung dieser Schnellstartanleitung wird `ValidateIssuer = false` festgelegt. In echten Anwendungen müssen Sie den Aussteller überprüfen.
 > Informationen dazu finden Sie in den Beispielen.
 >
-> Beachten Sie auch die `Configure`-Methode, die zwei wichtige Methoden enthält: `app.UserCookiePolicy()` und `app.UseAuthentication()`.
+> Beachten Sie auch die `Configure`-Methode, die zwei wichtige Methoden enthält: `app.UseCookiePolicy()` und `app.UseAuthentication()`.
 
 ```csharp
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

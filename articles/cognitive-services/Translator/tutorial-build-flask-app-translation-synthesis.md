@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 955476eefc7575edb90634ce305bbebdf62e2371
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: tracking-python
+ms.openlocfilehash: 6621967584ee79dd514b6d9d4a9d0e2d240e7905
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592354"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608110"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Tutorial: Erstellen einer Flask-App mit Azure Cognitive Services
 
@@ -144,7 +145,7 @@ Als Nächstes müssen wir Flask installieren. Flask führt die Verarbeitung des 
    ```
    Die Version sollte im Terminal ausgegeben werden. Alle anderen Ergebnisse bedeuten, dass ein Fehler vorliegt.
 
-2. Zum Ausführen der Flask-App können Sie entweder den Befehl „flask“ oder den Python-Switch „-m“ mit Flask verwenden. Zuvor müssen Sie Ihrem Terminal mitteilen, mit welcher App gearbeitet werden soll, indem Sie die Umgebungsvariable `FLASK_APP` exportieren:
+2. Zum Ausführen der Flask-App können Sie entweder den Befehl „flask“ oder die Python-Option „-m“ mit Flask verwenden. Zuvor müssen Sie Ihrem Terminal mitteilen, mit welcher App gearbeitet werden soll, indem Sie die Umgebungsvariable `FLASK_APP` exportieren:
 
    **macOS/Linux:**
    ```

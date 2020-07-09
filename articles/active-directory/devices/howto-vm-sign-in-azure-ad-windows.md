@@ -4,28 +4,27 @@ description: Azure AD-Anmeldung bei einem virtuellen Azure-Computer unter Windo
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
+ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88ae3c45126403161e35ec46e5ccc2666c3edb55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554889"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
 Organisationen können nun die Azure Active Directory-Authentifizierung (Azure AD) für ihre virtuellen Azure-Computer verwenden, auf denen **Windows Server 2019 Datacenter Edition** oder **Windows 10 1809** und höher ausgeführt wird. Durch Verwendung von Azure AD für die Authentifizierung bei virtuellen Computern haben Sie die Möglichkeit, Richtlinien zentral zu steuern und zu erzwingen. Mit Tools wie der rollenbasierten Zugriffssteuerung (RBAC) in Azure und dem bedingten Azure AD-Zugriff können Sie steuern, wer auf einen virtuellen Computer zugreifen kann. In diesem Artikel wird beschrieben, wie Sie einen virtuellen Windows Server 2019-Computer zur Verwendung der Azure AD-Authentifizierung erstellen und konfigurieren.
 
-|     |
-| --- |
-| Die Azure AD-Anmeldung für virtuelle Azure Windows-Computer ist eine öffentliche Previewfunktion für Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+> [!NOTE]
+> Die Azure AD-Anmeldung für virtuelle Azure Windows-Computer ist eine öffentliche Previewfunktion für Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Die Verwendung der Azure AD-Authentifizierung für die Anmeldung bei virtuellen Windows-Computern in Azure bietet viele Vorteile, z. B.:
 

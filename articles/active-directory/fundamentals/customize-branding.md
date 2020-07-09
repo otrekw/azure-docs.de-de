@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 05/07/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e0fc3cb450c253882ed34a2c4f5748efe55d0ec
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049790"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982036"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation
 Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Office 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
@@ -52,9 +52,9 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
 
         - **Sprache.** Die Sprache wird automatisch als Ihr Standard festgelegt und kann nicht geändert werden.
         
-        - **Hintergrundbild der Anmeldeseite.** Wählen Sie eine PNG- oder JPG-Bilddatei aus, die als Hintergrund für Ihre Anmeldeseiten angezeigt werden soll. 
+        - **Hintergrundbild der Anmeldeseite.** Wählen Sie eine PNG- oder JPG-Bilddatei aus, die als Hintergrund für Ihre Anmeldeseiten angezeigt werden soll. Das Bild wird in der Mitte des Browsers verankert und auf die Größe des sichtbaren Bereichs skaliert. Ein Bild, das größer als 1920 x 1080 Pixel ist oder eine Dateigröße von mehr als 300 KB aufweist, können Sie nicht auswählen.
         
-            Das Bild darf nicht größer als 1920 x 1080 Pixel sein und muss eine Dateigröße von weniger als 300 KB einhalten.
+            Es wird empfohlen, Bilder zu verwenden, in denen sich die Bildschärfe nicht auf einen Bereich konzentriert (z. B. ein undurchsichtiges weißes Feld, das in der Mitte des Bildschirms angezeigt wird und je nach Abmessungen des sichtbaren Bereichs alle Teile des Bilds verdecken kann).
 
         - **Bannerlogo.** Wählen Sie eine PNG- oder JPG-Version Ihres Logos aus, das auf der Anmeldeseite angezeigt werden soll, nachdem der Benutzer einen Benutzernamen eingegeben hat, sowie auf der Portalseite **Meine Apps**.
             
@@ -62,7 +62,7 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
 
         - **Hinweis auf den Benutzernamen.** Geben Sie den Hinweistext ein, der Benutzern angezeigt wird, wenn sie ihren Benutzernamen vergessen haben. Dieser Text muss im Unicode-Format sein, darf keine Links oder Code enthalten und darf maximal 64 Zeichen lang sein. Wenn sich Gäste bei Ihrer App anmelden, wird empfohlen, diesen Hinweis nicht hinzuzufügen.
 
-        - **Text der Anmeldeseite.** Geben Sie den Text ein, der am unteren Rand der Anmeldeseite angezeigt wird. Sie können diesen Text verwenden, um zusätzliche Informationen, wie z.B. die Telefonnummer Ihres Helpdesks oder einen rechtlichen Hinweis, zu kommunizieren. Dieser Text muss im Unicode-Format sein und darf maximal 256 Zeichen lang sein. Wir empfehlen außerdem, keine Links oder HTML-Tags einzuschließen.
+        - **Text der Anmeldeseite.** Geben Sie den Text ein, der am unteren Rand der Anmeldeseite angezeigt wird. Sie können diesen Text verwenden, um zusätzliche Informationen, wie z.B. die Telefonnummer Ihres Helpdesks oder einen rechtlichen Hinweis, zu kommunizieren. Dieser Text muss im Unicode-Format sein und darf maximal 256 Zeichen lang sein.
 
     - **Erweiterte Einstellungen**
             

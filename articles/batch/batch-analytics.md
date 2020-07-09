@@ -3,17 +3,17 @@ title: Azure Batch-Analysen
 description: Die Themen in „Batch-Analysen“ enthalten Referenzinformationen zu den Ereignissen und Warnungen, die für Batch-Dienstressourcen verfügbar sind.
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: b07d362c3cc2d3b086cf0a82325025604907a393
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 9d0e5c90c7bade82d76c7dbdfd4276e9671c961c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726858"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958105"
 ---
 # <a name="batch-analytics"></a>Batch-Analysen
 Die Themen in „Batch-Analysen“ enthalten Referenzinformationen zu den Ereignissen und Warnungen, die für Batch-Dienstressourcen verfügbar sind.
 
-Unter [Diagnoseprotokollierung für Azure Batch](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) finden Sie weitere Informationen zum Aktivieren und Nutzen von Batch-Diagnoseprotokollen.
+Unter [Diagnoseprotokollierung für Azure Batch](./batch-diagnostics.md) finden Sie weitere Informationen zum Aktivieren und Nutzen von Batch-Diagnoseprotokollen.
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
 

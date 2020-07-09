@@ -4,14 +4,14 @@ description: Hier werden die Azure-Ressourcentypen aufgelistet, die in Azure-Reg
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 01/20/2020
+ms.date: 05/31/2020
 ms.author: raynew
-ms.openlocfilehash: 9bc7dc66ccf3049ac878f7871c816e5ade1afde5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0510df504c8de70cfb6a486f394db6da65dbfce2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760707"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057686"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Unterstützung für das regionenübergreifende Verschieben von Azure-Ressourcen
 
@@ -186,7 +186,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | Dienst |  Ja | 
+> | Dienst |  Ja (Vorlage verwenden) <br/><br/> [Regionsübergreifendes Verschieben von API Management](../../api-management/api-management-howto-migrate.md). | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -200,7 +200,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | apiapps | Nein | 
+> | apiapps | Ja (Vorlage verwenden)<br/><br/> [Verschieben einer App Service-Apps in eine andere Region](../../app-service/manage-move-across-regions.md) | 
 > | appidentities | Nein | 
 > | gateways | Nein | 
 
@@ -217,7 +217,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | automationaccounts | Nein | 
+> | automationaccounts | Ja (Vorlage verwenden) <br/><br/> [Verwenden von Georeplikation](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |  
 > | automationaccounts/configurations | Nein | 
 > | automationaccounts/runbooks | Nein | 
 
@@ -249,14 +249,14 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | batchaccounts | Nein |
+> | batchaccounts |  Batch-Konten können nicht direkt aus einer Region in eine andere verschoben werden, Sie können jedoch eine Vorlage verwenden, um eine Vorlage zu exportieren, sie zu ändern und dann die Vorlage in der neuen Region bereitzustellen. <br/><br/> Informationen zum [Verschieben eines Batch-Kontos zwischen Regionen](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
 
 ## <a name="microsoftbatchai"></a>Microsoft.BatchAI
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | clusters | Nein | 
+> | clusters | Nein <br/><br/> Der Azure Batch KI-Dienst wurde [eingestellt](/previous-versions/azure/batch-ai/overview-what-happened-batch-ai).
 > | fileservers | Nein | 
 > | jobs | Nein | 
 > | workspaces | Nein | 
@@ -280,7 +280,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | blockchainmembers | Nein |
+> | blockchainmembers | Nein <br/><br/> Das Blockchain-Netzwerk kann keine Knoten in unterschiedlichen Regionen haben. 
 > | watchers | Nein | 
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
@@ -327,7 +327,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | domainnames | Nein |  
+> | domainnames | Für klassische Dienste ist keine Arbeit geplant.
 > | virtualmachines | Nein | 
 
 
@@ -337,7 +337,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | networksecuritygroups | Nein |
+> | networksecuritygroups | Für klassische Dienste ist keine Arbeit geplant.
 > | reservedips | Nein | 
 > | virtualnetworks | Nein | 
 
@@ -355,6 +355,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
 > | accounts | Nein | 
+> | Cognitive Search | Unterstützt mit manuellen Schritten.<br/><br/> Informationen zum [Verschieben Ihres Azure Cognitive Search-Diensts in eine andere Region](../../search/search-howto-move-across-regions.md)
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -409,7 +410,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | containerservices | Nein | 
+> | containerservices | Nein.<br/><br/> Der Dienst wurde [eingestellt](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/).
 > | managedclusters | Nein | 
 > | openshiftmanagedclusters | Nein | 
 
@@ -542,7 +543,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | servers | Nein |  
+> | servers | Wenn der Dienst mit georedundantem Sicherungsspeicher bereitgestellt wird, können Sie die Geowiederherstellung für die Wiederherstellung in anderen Regionen verwenden. [Weitere Informationen](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
@@ -577,9 +578,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | elasticpools | Nein | 
-> | elasticpools/iothubtenants | Nein | 
-> | iothubs | Ja | 
+> | elasticpools | Nein. Die Ressource wird nicht verfügbar gemacht.
+> | elasticpools/iothubtenants | Nein. Die Ressource wird nicht verfügbar gemacht.
+> | iothubs | Ja. [Weitere Informationen](../../iot-hub/iot-hub-how-to-clone.md)
 > | provisioningservices | Nein | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
@@ -588,6 +589,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
 > | Controller | Nein | 
+> | AKS-Cluster | Nein<br/><br/> [Weitere Informationen](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) zum Verschieben in eine andere Region.
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -636,7 +638,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
 > | clusters | Nein |  
-> | Namespaces | Nein | 
+> | Namespaces | Ja (mit Vorlage)<br/><br/> [Verschieben eines Event Hub-Namespace in eine andere Region](../../event-hubs/move-across-regions.md) | 
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 
@@ -713,7 +715,15 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | iotapps |  Nein |  
+> | checknameavailability |  Nein.<br/><br/> IoT Central arbeitet mit geografischen Regionen, nicht mit Regionen.
+> | graph | Nein
+
+## <a name="microsoftiothub"></a>Microsoft.IoTHub
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Regionenverschiebung | 
+> | ------------- | ----------- |
+> |  iothub |  Ja (Hub klonen) <br/><br/> [Klonen eines IoT-Hubs in eine andere Region](../../iot-hub/iot-hub-how-to-clone.md)
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 
@@ -758,7 +768,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | accounts | Nein | 
+> | accounts | Nein, dies ist ein globaler Dienst.
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -832,14 +842,14 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | accounts |  Nein |  
+> | accounts |  Nein, Azure Maps ist ein räumlicher Dienst. 
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | classicdevservices | Nein | 
+> | classicdevservices | Für klassische Dienste ist keine Arbeit geplant. 
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
@@ -897,7 +907,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | expressrouteports | Nein | 
 > | frontdoors | Nein | 
 > | frontdoorwebapplicationfirewallpolicies | Nein | 
-> | loadbalancers | Ja: Basic-SKU<br>Nein: Standard-SKU | Ja: Basic-SKU<br> Ja (Standard-SKU) |
+> | loadbalancers | Ja <br/><br/> Sie können die vorhandene Konfiguration als Vorlage exportieren und diese Vorlage in der neuen Region bereitstellen. Erfahren Sie, wie Sie einen [externen](../..//load-balancer/move-across-regions-external-load-balancer-portal.md) oder [internen](../../load-balancer/move-across-regions-internal-load-balancer-portal.md) Load Balancer verschieben. |
 > | localnetworkgateways |  Nein | 
 > | natgateways |  Nein | 
 > | networkintentpolicies |  Nein | 
@@ -913,7 +923,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | privatednszones/virtualnetworklinks |  Nein |  
 > | privateendpoints | Nein | 
 > | privatelinkservices | Nein | 
-> | publicipaddresses | Ja: Basic-SKU<br>Nein: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU |
+> | publicipaddresses | Ja<br/><br/> Sie können die vorhandene öffentliche IP-Adressenkonfiguration als Vorlage exportieren und diese Vorlage in der neuen Region bereitstellen. [Weitere Informationen](../../virtual-network/move-across-regions-publicip-portal.md) zum Verschieben einer öffentlichen IP-Adresse. |
 > | publicipprefixes | Nein | 
 > | routefilters | Nein | 
 > | routetables |  Nein | 
@@ -1001,7 +1011,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | vaults | Nein. [Tresor deaktivieren und neu erstellen](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) für Site Recovery  | 
+> | vaults | Nein.<br/><br/> Das Verschieben von Recovery Services-Tresoren für Azure Backup zwischen Azure-Regionen wird nicht unterstützt.<br/><br/> In Recovery Services-Tresoren für Azure Site Recovery können Sie [den Tresor deaktivieren und in der Zielregion neu erstellen](../../site-recovery/move-vaults-across-regions.md). | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
@@ -1142,7 +1152,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | storageaccounts | Ja | 
+> | storageaccounts | Ja<br/><br/> [Verschieben eines Azure Storage-Kontos in eine andere Region](../../storage/common/storage-account-move.md) | 
 
 ## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
 

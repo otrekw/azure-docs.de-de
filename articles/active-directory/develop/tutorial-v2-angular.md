@@ -12,17 +12,14 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c645ab45711698e4a6f582678e2a850e15dea62a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6d869243f7f125ef7a795d6049d0b4f70fc51361
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181595"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322769"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Angular-SPA (Single-Page-Webanwendung)
-
-> [!IMPORTANT]
-> Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 In diesem Tutorial werden folgende Aktionen für eine Angular-Single-Page-Webanwendung (SPA) beschrieben:
 - Anmelden von persönlichen Konten sowie von Geschäfts-, Schul- oder Unikonten
@@ -343,7 +340,6 @@ Wenn eine Back-End-API keinen Bereich benötigt (nicht empfohlen), können Sie i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich als Nächstes im Angular-Tutorial darüber, wie Sie einen Benutzer anmelden und Token abrufen:
+Falls Sie mit der Identitäts- und Zugriffsverwaltung noch nicht eingehend vertraut sind, können Sie verschiedene Artikel lesen, um sich über die Konzepte der modernen Authentifizierung zu informieren. Beginnen Sie mit [Authentifizierung im Vergleich zu Autorisierung](authentication-vs-authorization.md).
 
-> [!div class="nextstepaction"]
-> [Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Angular-SPA (Single-Page-Webanwendung)](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
+Wenn Sie sich eingehender mit der Entwicklung von Single-Page-Webanwendungen auf der Microsoft Identity Platform beschäftigen möchten, kann Ihnen die mehrteilige Artikelreihe [Szenario: Single-Page-Webanwendung](scenario-spa-overview.md) den Einstieg erleichtern.

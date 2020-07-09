@@ -1,23 +1,14 @@
 ---
 title: 'Ausgleichen der Partitionsauslastung über mehrere Instanzen hinweg: Azure Event Hubs | Microsoft-Dokumentation'
 description: Beschreibt, wie Sie die Partitionsauslastung über mehrere Instanzen Ihrer Anwendung hinweg mithilfe eines Ereignisprozessors und des Azure Event Hubs SDK ausgleichen können.
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/16/2020
-ms.author: shvija
-ms.openlocfilehash: e7f17c589b043a055bd541a0850d9efc8e1d96be
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 06/23/2020
+ms.openlocfilehash: d5db1e877c1bfa6fac177e1ff8ed137e0301b709
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628860"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314991"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Ausgleichen der Partitionsauslastung über mehrere Instanzen der Anwendung hinweg
 Um die Ereignisverarbeitungsanwendung zu skalieren, können Sie mehrere Instanzen der Anwendung ausführen und die Auslastung zwischen diesen untereinander ausgleichen. In älteren Versionen konnte [EventProcessorHost](event-hubs-event-processor-host.md) die Last zwischen mehreren Instanzen Ihres Programms und Prüfpunktereignissen bei deren Empfang ausgleichen. In den neueren Versionen (5.0 oder höher) ermöglichen **EventProcessorClient** (.NET und Java) oder **EventHubConsumerClient** (Python und JavaScript) die gleiche Funktionalität. Das Entwicklungsmodell wird durch die Verwendung von-Ereignissen vereinfacht. Sie abonnieren die Ereignisse, an denen Sie interessiert sind, indem Sie einen Ereignishandler registrieren.
@@ -44,7 +35,7 @@ Beim Entwerfen des Consumers in einer verteilten Umgebung muss das Szenario die 
 
 ## <a name="event-processor-or-consumer-client"></a>Ereignisprozessor oder Consumerclient
 
-Sie müssen keine eigene Lösung erstellen, um diese Anforderungen zu erfüllen. Diese Funktionalität wird von den Azure-Event Hubs SDKs bereitgestellt. In .NET- oder Java-SDKs verwenden Sie einen Ereignisprozessorclient (EventProcessorClient) und in Python- und JavaScript-SDKs EventHubConsumerClient. In der alten Version des SDK war es der Ereignisprozessorhost (EventProcessorHost), der diese Funktionen unterstützt hat.
+Sie müssen keine eigene Lösung erstellen, um diese Anforderungen zu erfüllen. Diese Funktionalität wird von den Azure-Event Hubs SDKs bereitgestellt. In .NET SDKs oder Java SDKs verwenden Sie einen Ereignisprozessorclient (EventProcessorClient) und in Python- und JavaScript-SDKs EventHubConsumerClient. In der alten Version des SDK war es der Ereignisprozessorhost (EventProcessorHost), der diese Funktionen unterstützt hat.
 
 In den meisten Produktionsszenarien wird empfohlen, den Ereignisprozessorclient zum Lesen und Verarbeiten von Ereignissen zu verwenden. Der Prozessorclient soll eine robuste Umgebung für die Verarbeitung von Ereignissen über alle Partitionen eines Event Hub hinweg in einer leistungsstarken und fehlertoleranten Weise bereitstellen und gleichzeitig die Möglichkeit bieten, den Fortschritt anhand von Prüfpunkten festzustellen. Ereignisprozessorclients können auch im Kontext einer Consumergruppe für einen bestimmten Event Hub zusammenarbeiten. Verteilung und Lastenausgleich werden von Clients automatisch verwaltet, wenn Instanzen für die Gruppe verfügbar werden oder nicht verfügbar sind.
 
@@ -92,7 +83,7 @@ Wenn der Prüfpunkt ausgeführt wird, um ein Ereignis als verarbeitet zu markier
 
 ## <a name="thread-safety-and-processor-instances"></a>Threadsicherheit und Prozessorinstanzen
 
-Standardmäßig ist der Ereignisprozessor oder Consumer threadsicher und verhält sich auf synchrone Weise. Wenn Ereignisse für eine Partition eintreffen, wird die Funktion aufgerufen, die die Ereignisse verarbeitet. Nachfolgende Nachrichten und Aufrufe dieser Funktion sammeln sich im Hintergrund in der Warteschlange an, da das Nachrichtensystem weiterhin im Hintergrund in anderen Threads ausgeführt wird. Mit dieser Threadsicherheit entfällt die Notwendigkeit für threadsichere Sammlungen. Dadurch wird die Leistung erheblich gesteigert.
+Standardmäßig wird die Funktion zur Verarbeitung der Ereignisse für eine bestimmte Partition sequenziell aufgerufen. Nachfolgende Ereignisse und Aufrufe dieser Funktion über eine Partition sammeln sich im Hintergrund in der Warteschlange an, da das Ereignissystem weiterhin im Hintergrund in anderen Threads ausgeführt wird. Ereignisse unterschiedlicher Partitionen können gleichzeitig verarbeitet werden. Freigegebene Status, auf die über Partitionen hinweg zugegriffen wird, müssen synchronisiert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich die folgenden Schnellstarts an:

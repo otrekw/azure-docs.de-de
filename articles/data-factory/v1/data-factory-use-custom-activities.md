@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2cea9cd1439bce0c55d701539471c463acb8f7e2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231546"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020131"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -372,7 +372,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
     > Legen Sie Version 4.5.2 von .NET Framework als Zielframework für Ihr Projekt fest: Klicken Sie mit der rechten Maustaste auf das Projekt, und klicken Sie auf **Eigenschaften**, um das Zielframework festzulegen. Data Factory unterstützt keine benutzerdefinierten Aktivitäten, die mit .NET Framework-Versionen nach 4.5.2 kompiliert wurden.
 
 11. Starten Sie **Windows-Explorer**, und navigieren Sie je nach Buildtyp zum Ordner **bin\debug** oder **bin\release**.
-12. Erstellen Sie die ZIP-Datei **MyDotNetActivity.zip**, die alle Binärdateien im Ordner \<Projektordner\>\bin\Debug enthält. Schließen Sie die Datei **MyDotNetActivity.pdb** ein, damit Sie im Falle eines Fehlers zusätzliche Details erhalten, z.B. die Nummer der Quellcodezeile, die das Problem verursacht hat.
+12. Erstellen Sie die ZIP-Datei **MyDotNetActivity.zip**, die alle Binärdateien im Ordner \<project folder\>\bin\Debug enthält. Schließen Sie die Datei **MyDotNetActivity.pdb** ein, damit Sie im Falle eines Fehlers zusätzliche Details erhalten, z.B. die Nummer der Quellcodezeile, die das Problem verursacht hat.
 
     > [!IMPORTANT]
     > Alle Dateien in der ZIP-Datei für die benutzerdefinierte Aktivität müssen sich auf der **obersten Ebene** befinden und dürfen keine Unterordner besitzen.
@@ -1031,7 +1031,7 @@ Das Beispiel [Azure Data Factory – Lokale Umgebung](https://github.com/gbrueck
 
 [batch-net-library]: ../../batch/batch-dotnet-get-started.md
 [batch-create-account]: ../../batch/batch-account-create-portal.md
-[batch-technical-overview]: ../../batch/batch-technical-overview.md
+[batch-technical-overview]:../../azure-sql/database/sql-database-paas-overview.md
 [batch-get-started]: ../../batch/batch-dotnet-get-started.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md

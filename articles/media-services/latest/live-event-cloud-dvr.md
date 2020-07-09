@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/27/2019
+ms.date: 05/07/2020
 ms.author: juliako
-ms.openlocfilehash: 4c7618b60e5fd86a9b8b3f22fb3333c00cfdfa61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 231aeb210a7b97e8c0cfd0e21c48053c660b6128
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74899794"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995817"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Verwenden von Timeshift und Liveausgaben zum Erstellen der bedarfsgesteuerten Videowiedergabe
 
-In Azure Media Services verhält sich ein [Liveausgabe](https://docs.microsoft.com/rest/api/media/liveoutputs)-Objekt wie ein digitaler Videorekorder, der Ihren Livestream erfasst und in einem Medienobjekt (Asset) in Ihrem Media Services-Konto aufzeichnet. Der aufgezeichnete Inhalt wird in dem Container gespeichert, der durch die [Asset](https://docs.microsoft.com/rest/api/media/assets)-Ressource definiert ist (der Container befindet sich in dem Azure Storage-Konto, das Ihrem Konto zugeordnet ist). Die Liveausgabe ermöglicht Ihnen auch, einige der Eigenschaften des ausgehenden Livestreams zu steuern, etwa welcher Anteil des Streams in der Archivaufzeichnung verwahrt wird (beispielsweise die Kapazität des Cloud-DVR) und wann Zuschauer mit der Wiedergabe des Livestreams beginnen können. Das Archiv auf dem Datenträger ist ein kreisförmiges „Archivfenster“, das nur die Menge an Inhalten enthält, die in der **archiveWindowLength**-Eigenschaft der Liveausgabe angegeben ist. Inhalt außerhalb dieses Fensters wird automatisch aus dem Speichercontainer entfernt und ist nicht wiederherstellbar. Der archiveWindowLength-Wert entspricht einer ISO-8601-Zeitspanne (z. B. PTHH:MM:SS), die die Kapazität des DVRs angibt. Der Wert kann von mindestens 3 Minuten bis zu einem Höchstwert von 25 Stunden eingestellt werden.
+In Azure Media Services verhält sich ein [Liveausgabe](https://docs.microsoft.com/rest/api/media/liveoutputs)-Objekt wie ein digitaler Videorekorder, der Ihren Livestream erfasst und in einem Medienobjekt (Asset) in Ihrem Media Services-Konto aufzeichnet. Der aufgezeichnete Inhalt wird in dem Container gespeichert, der durch die [Asset](https://docs.microsoft.com/rest/api/media/assets)-Ressource definiert ist (der Container befindet sich in dem Azure Storage-Konto, das Ihrem Konto zugeordnet ist). Die Liveausgabe ermöglicht Ihnen auch, einige der Eigenschaften des ausgehenden Livestreams zu steuern, etwa welcher Anteil des Streams in der Archivaufzeichnung verwahrt wird (beispielsweise die Kapazität des Cloud-DVR) und wann Zuschauer mit der Wiedergabe des Livestreams beginnen können. Das Archiv auf dem Datenträger ist ein kreisförmiges „Archivfenster“, das nur die Menge an Inhalten enthält, die in der **archiveWindowLength**-Eigenschaft der Liveausgabe angegeben ist. Inhalt außerhalb dieses Fensters wird automatisch aus dem Speichercontainer entfernt und ist nicht wiederherstellbar. Der archiveWindowLength-Wert entspricht einer ISO-8601-Zeitspanne (z. B. PTHH:MM:SS), die die Kapazität des DVRs angibt. Der Wert kann von mindestens 1 Minute bis zu einem Höchstwert von 25 Stunden eingestellt werden.
 
 Die Beziehung zwischen einem Liveereignis und der zugehörigen Liveausgabe ist ähnlich wie bei einer traditionellen Fernsehsendung, bei der ein Kanal (Liveereignis) einen konstanten Videodatenstrom darstellt und eine Aufzeichnung (Liveausgabe) auf ein bestimmtes Zeitsegment (z. B. Abendnachrichten von 18:30 bis 19:00 Uhr) ausgerichtet ist. Sobald der Stream an das Liveereignis übertragen wird, können Sie das Streamingereignis starten, indem Sie ein Medienobjekt, eine Liveausgabe und einen Streaminglocator erstellen. Durch die Liveausgabe wird der Datenstrom archiviert und über den [Streamingendpunkt](https://docs.microsoft.com/rest/api/media/streamingendpoints) für die Zuschauer verfügbar gemacht. Sie können mehrere Liveausgaben (maximal bis zu drei) mit unterschiedlichen Archivlängen und Einstellungen für ein Liveereignis erstellen. Informationen zum Workflow für das Livestreaming finden Sie im Abschnitt [Allgemeine Schritte](live-streaming-overview.md#general-steps).
 

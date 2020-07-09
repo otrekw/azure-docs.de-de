@@ -3,12 +3,12 @@ title: Bereitstellen des Blaupausenbeispiels „ISO 27001“
 description: Bereitstellungsschritte für das eigenständige Blaupausenbeispiel „ISO 27001“, einschließlich Details zum Blaupausenartefaktparameter.
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: f5920541d49c454bd6648318c04ed607eada1dfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9eaf559f0c1e6c99d3a2469d63eddea1c1ae9867
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75922502"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044650"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>Bereitstellen des ISO 27001-Blaupausenbeispiels
 
@@ -109,7 +109,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Windows-Betriebssystem zum Hinzufügen zum Bereich|Mit einem leeren Array wird angegeben, dass keine optionalen Parameter verwendet werden: \[\]|
 |Allowed storage account SKUs (Zulässige Speicherkonto-SKUs)|Richtlinienzuweisung|Liste der zulässigen Speicher-SKUs|Die Liste der SKUs, die für Speicherkonten angegeben werden können|
 |Allowed virtual machine SKUs (Zulässige VM-SKUs)|Richtlinienzuweisung|Liste der zulässigen VM-SKUs|Die Liste der SKUs, die für virtuelle Computer angegeben werden können|
-|Blueprint Initiative für ISO 27001|Richtlinienzuweisung|Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|Blueprint Initiative für ISO 27001|Richtlinienzuweisung|Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

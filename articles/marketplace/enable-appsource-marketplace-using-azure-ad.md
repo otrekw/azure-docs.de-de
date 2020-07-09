@@ -1,26 +1,26 @@
 ---
-title: Aktivieren eines Microsoft AppSource- und Azure Marketplace-Eintrags mithilfe von Azure Active Directory | Azure
-description: Aktivieren des Listingtyps mithilfe von Azure Active Directory im Azure Marketplace und in AppSource für Herausgeber von Apps und Diensten.
+title: Integrieren Ihres Microsoft-Angebots im kommerziellen Marketplace mit Azure Active Directory
+description: Authentifizieren Sie Ihre Microsoft AppSource- und Azure Marketplace-Angebote mithilfe von Azure Active Directory.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 17cbfe92744ad96f2b5651b7e2f47a6443337068
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160612"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658042"
 ---
-# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Aktivieren eines AppSource- und Marketplace-Eintrags mithilfe von Azure Active Directory
+# <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Integrieren Ihres Eintrags im kommerziellen Marketplace mit Azure Active Directory
 
- Azure Active Directory (Azure AD) ist ein Cloudidentitätsdienst, der die Authentifizierung mit einem Microsoft-Konto ermöglicht. Azure AD verwendet branchenübliche Frameworks. [Weitere Informationen zu Azure Active Directory](https://azure.microsoft.com/services/active-directory)
+ In diesem Artikel werden die Anforderungen für die Integration eines Eintrags oder Angebots im kommerziellen Marketplace mit Azure Active Directory (Azure AD) erläutert. Azure AD ist ein Cloudidentitätsdienst, der die Authentifizierung bei einem Microsoft-Konto mithilfe von branchenüblichen Standardframeworks ermöglicht. [Weitere Informationen zu Azure Active Directory](https://azure.microsoft.com/services/active-directory)
 
 ## <a name="azure-ad-benefits"></a>Vorteile von Azure AD
 
-Microsoft AppSource- und Azure Marketplace-Kunden nutzen die produktinternen Umgebungen, um in den Listingkatalogen zu suchen. Diese Aktionen erfordern die Anmeldung der Kunden beim Produkt. Die Integration von Azure AD bietet folgende Vorteile:
+Microsoft AppSource- und Azure Marketplace-Kunden nutzen die produktinternen Umgebungen, um in den Katalogen für Storefronteinträge zu suchen. Diese Aktionen erfordern die Anmeldung der Kunden beim Produkt. Die Integration von Azure AD bietet folgende Vorteile:
 
 - Schnellere Bindung und optimierte Benutzerfreundlichkeit
 - Ermöglicht einmaliges Anmelden (Single Sign-On, SSO) für Millionen von Unternehmensbenutzern
@@ -29,17 +29,17 @@ Microsoft AppSource- und Azure Marketplace-Kunden nutzen die produktinternen Umg
 
 ## <a name="offers-that-require-azure-ad"></a>Angebote, die Azure AD erfordern
 
-Die verschiedenen [Listenoptionen und Angebotsarten](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) für AppSource und Azure Marketplace haben unterschiedliche Anforderungen an die Implementierung von Azure AD. Details finden Sie in der folgenden Tabelle:
+Die verschiedenen [Auflistungsoptionen und Angebotstypen](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) für den kommerziellen Marketplace weisen unterschiedliche Anforderungen an die Azure AD-Implementierung auf. Details finden Sie in der folgenden Tabelle.
 
 | **Angebotstyp**    | **Azure AD-SSO erforderlich?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | Kontaktformular | Testversion | Testversion | Transaktion |
-| Virtual Machine | – | Nein  | Nein  | Nein  |
+| Virtual Machine | – | Nein | Nein | Nein |
 | Azure-Apps (Lösungsvorlage)  | – | – | – | – |
-| Verwaltete Apps  | – | – | – | Nein  |
-| SaaS  | Nein  | Ja | Ja | Ja |
-| Container  | – | – | – | Nein  |
-| Beratungsdienste  | Nein  | – | – | – |
+| Verwaltete Apps  | – | – | – | Nein |
+| SaaS  | Nein | Ja | Ja | Ja |
+| Container  | – | – | – | Nein |
+| Beratungsdienste  | Nein | – | – | – |
 
 Weitere Informationen zu den technischen Anforderungen für SaaS finden Sie unter [SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 

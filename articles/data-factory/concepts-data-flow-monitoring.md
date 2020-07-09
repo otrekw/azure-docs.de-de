@@ -8,28 +8,28 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/17/2020
-ms.openlocfilehash: 18099e853aa44e4434a14d7ea913f968593021ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9594a2ddfaa0103e171618925ba6974bf9ad7f00
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687913"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833978"
 ---
 # <a name="monitor-data-flows"></a>Überwachen von Datenflüssen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Nachdem Sie den Aufbau und das Debugging Ihres Datenflusses abgeschlossen haben, sollten Sie Ihren Datenfluss so planen, dass er nach einem Zeitplan im Rahmen einer Pipeline ausgeführt wird. Sie können die Pipeline von Azure Data Factory mit Hilfe von Auslösern planen. Oder Sie können die Option „Jetzt auslösen“ aus dem Azure Data Factory Pipeline Builder verwenden, um eine einmalige Ausführung auszuführen, um Ihren Datenfluss im Kontext der Pipeline zu testen.
+Nachdem Sie den Aufbau und das Debugging Ihres Datenflusses abgeschlossen haben, planen Sie Ihren Datenfluss am besten so, dass er nach einem Zeitplan im Kontext einer Pipeline ausgeführt wird. Sie können die Pipeline von Azure Data Factory mit Hilfe von Auslösern planen. Oder Sie können die Option „Jetzt auslösen“ aus dem Azure Data Factory Pipeline Builder verwenden, um eine einmalige Ausführung auszuführen, um Ihren Datenfluss im Kontext der Pipeline zu testen.
 
-Wenn Sie Ihre Pipeline ausführen, können Sie die Pipeline und alle in der Pipeline enthaltenen Aktivitäten einschließlich der Datenflussaktivität überwachen. Klicken Sie auf das Symbol „Überwachen“ im linken Bereich der Azure Data Factory-Benutzeroberfläche. Es wird ein Bildschirm angezeigt, der dem folgenden Bildschirm ähnelt. Über die hervorgehobenen Symbole können Sie einen Drilldown für die Aktivitäten in der Pipeline ausführen, einschließlich der Datenflussaktivität.
+Bei der Ausführung können Sie die Pipeline und alle darin enthaltenen Aktivitäten, einschließlich der Datenflussaktivität, überwachen. Klicken Sie auf das Symbol „Überwachen“ im linken Bereich der Azure Data Factory-Benutzeroberfläche. Daraufhin wird ein Bildschirm angezeigt, der dem folgenden ähnelt. Über die hervorgehobenen Symbole können Sie einen Drilldown in die Aktivitäten der Pipeline ausführen, einschließlich der Datenflussaktivität.
 
 ![Datenflussüberwachung](media/data-flow/mon001.png "Datenflussüberwachung")
 
-Auf dieser Ebene werden neben Statistikdaten auch die Laufzeiten und der Status angezeigt. Die Ausführungs-ID auf der Aktivitätsebene unterscheidet sich von der Ausführungs-ID auf Pipelineebene. Die Ausführungs-ID der vorherigen Ebene ist für die Pipeline. Durch Anklicken der Brille erhalten Sie detaillierte Informationen über Ihre Datenflussausführung.
+Auf dieser Ebene werden sowohl Statistikdaten als auch die Laufzeiten und der Status angezeigt. Die Ausführungs-ID auf der Aktivitätsebene unterscheidet sich von der Ausführungs-ID auf der Pipelineebene. Die Ausführungs-ID der vorherigen Ebene ist für die Pipeline. Durch Auswählen der Brille erhalten Sie detaillierte Informationen zu Ihrer Datenflussausführung.
 
 ![Datenflussüberwachung](media/data-flow/mon002.png "Datenflussüberwachung")
 
-Wenn Sie sich in der grafischen Knotenüberwachungsansicht befinden, sehen Sie eine vereinfachte reine Ansichtsversion Ihres Datenflussdiagramms.
+Wenn Sie sich in der grafischen Knotenüberwachungsansicht befinden, wird eine vereinfachte reine Ansichtsversion Ihres Datenflussdiagramms angezeigt.
 
 ![Datenflussüberwachung](media/data-flow/mon003.png "Datenflussüberwachung")
 
@@ -39,18 +39,18 @@ Hier sehen Sie ein Video mit einer Übersicht über die Überwachungsleistung Ih
 
 ## <a name="view-data-flow-execution-plans"></a>Anzeigen der Ausführungspläne für den Datenfluss
 
-Wenn Ihr Datenfluss in Spark ausgeführt wird, bestimmt Azure Data Factory basierend auf Ihrem gesamten Datenfluss die optimalen Codepfade. Darüber hinaus können die Ausführungspfade auf verschiedenen horizontalen Skalierungsknoten und Datenpartitionen auftreten. Daher stellt das Überwachungsdiagramm den Entwurf Ihres Flusses dar, wobei der Ausführungspfad Ihrer Transformationen berücksichtigt wird. Wenn Sie auf einzelne Knoten klicken, werden „Gruppierungen“ angezeigt, die Code darstellen, der gemeinsam auf dem Cluster ausgeführt wurde. Die angezeigten Zeitangaben und Zählungen stellen diese Gruppen im Gegensatz zu den einzelnen Schritten in Ihrem Entwurf dar.
+Wenn Ihr Datenfluss in Spark ausgeführt wird, bestimmt Azure Data Factory basierend auf Ihrem gesamten Datenfluss die optimalen Codepfade. Darüber hinaus können die Ausführungspfade auf verschiedenen horizontalen Skalierungsknoten und Datenpartitionen auftreten. Daher stellt das Überwachungsdiagramm den Entwurf Ihres Flusses dar, wobei der Ausführungspfad Ihrer Transformationen berücksichtigt wird. Wenn Sie einzelne Knoten auswählen, werden „Gruppierungen“ angezeigt, die den auf dem Cluster gemeinsam ausgeführten Code darstellen. Die angezeigten Zeitangaben und Zählungen stellen diese Gruppen im Gegensatz zu den einzelnen Schritten in Ihrem Entwurf dar.
 
 ![Datenflussüberwachung](media/data-flow/mon004.png "Datenflussüberwachung")
 
-* Wenn Sie auf das freie Feld im Überwachungsfenster klicken, zeigen die Statistiken im unteren Fensterbereich die Zeitangabe und die Anzahl der Zeilen für jede Senke und die Transformationen an, die zu den Senkendaten für die Transformationslinie führten.
+* Wenn Sie das freie Feld im Überwachungsfenster auswählen, zeigen die Statistiken im unteren Bereich die Zeitangabe und die Anzahl der Zeilen für jede Senke und die Transformationen an, die zu den Senkendaten für die Transformationsherkunft geführt haben.
 
-* Wenn Sie einzelne Transformationen auswählen, erhalten Sie auf der rechten Seite zusätzliches Feedback, das Partitionsstatistiken, Spaltenanzahl, Schiefe (wie gleichmäßig sind die Daten auf Partitionen verteilt) und Kurtosis (wie viele Spitzen haben die Daten) enthält.
+* Wenn Sie einzelne Transformationen auswählen, wird auf der rechten Seite zusätzliches Feedback angezeigt, das Partitionsstatistiken, Spaltenanzahl, Schiefe (wie gleichmäßig die Daten auf Partitionen verteilt sind) und Kurtosis (wie viele Spitzen die Daten haben) enthält.
 
-* Wenn Sie auf die Senke in der Knotenansicht klicken, sehen Sie die Spaltenherkunft. Es gibt drei verschiedene Methoden, mit denen Spalten während des gesamten Datenflusses akkumuliert werden, um in die Senke weitergeleitet zu werden. Sie lauten wie folgt:
+* Wenn Sie die Senke in der Knotenansicht auswählen, wird die Spaltenherkunft angezeigt. Es gibt drei verschiedene Methoden, mit denen Spalten während des gesamten Datenflusses akkumuliert werden, um in die Senke weitergeleitet zu werden. Sie lauten wie folgt:
 
-  * Berechnet: Sie verwenden die Spalte für die bedingte Verarbeitung oder innerhalb eines Ausdrucks in Ihrem Datenfluss, sie wird aber nicht in die Senke weitergeleitet.
-  * Abgeleitet: Die Spalte ist eine neue Spalte, die Sie in Ihrem Fluss generiert haben, d.h. sie war nicht in der Quelle vorhanden.
+  * Berechnet: Sie verwenden die Spalte für die bedingte Verarbeitung oder innerhalb eines Ausdrucks in Ihrem Datenfluss; sie wird aber nicht in die Senke weitergeleitet.
+  * Abgeleitet: Die Spalte ist eine neue Spalte, die Sie in Ihrem Datenfluss generiert haben, d. h., sie war in der Quelle nicht vorhanden.
   * Zugeordnet: Die Spalte stammt aus der Quelle und Sie ordnen sie einem Senkenfeld zu.
   * „Data flow status“ (Datenflussstatus): Der aktuelle Status Ihrer Ausführung.
   * „Cluster startup time“ (Startzeit des Clusters): Zeitraum zum Abrufen der JIT-Spark-Computeumgebung für Ihre Datenflussausführung.
@@ -64,4 +64,4 @@ Dieses Symbol bedeutet, dass die Transformationsdaten bereits auf dem Cluster zw
 
 ![Datenflussüberwachung](media/data-flow/mon004.png "Datenflussüberwachung")
 
-Es werden auch grüne Kreissymbolen in der Transformation angezeigt. Sie stellen die Anzahl von Senken dar, in die der Datenfluss geleitet wird.
+In der Transformation werden auch grüne Kreissymbole angezeigt. Sie stellen die Anzahl von Senken dar, in die der Datenfluss geleitet wird.

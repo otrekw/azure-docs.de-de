@@ -3,12 +3,12 @@ title: Speichern von Helm-Diagrammen
 description: Erfahren Sie, wie Sie Helm-Charts für Ihre Kubernetes-Anwendungen mithilfe von Depots in Azure Container Registry speichern.
 ms.topic: article
 ms.date: 03/20/2020
-ms.openlocfilehash: cf9f9667438519443f857e43c0bbc94d6c239e0a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 04ba3aaf312188ab77c04a97ab960cf9b9af078f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583345"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857612"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Pushen und Pullen von Helm-Charts in Azure Container Registry
 
@@ -32,6 +32,7 @@ Sie können zum Hosten von Helm-Charts in Azure Container Registry entweder Helm
 
 * Für die meisten Szenarien wird der Helm 3-Workflow mit nativen Befehlen vom Typ `helm chart` empfohlen, um Charts als OCI-Artefakte zu verwalten.
 * Ab Helm 3 werden [az acr helm][az-acr-helm]-Befehle aus Gründen der Kompatibilität mit dem Helm 2-Client und dem -Chartformat unterstützt. Eine zukünftige Weiterentwicklungen dieser Befehle ist derzeit nicht geplant. Siehe die [Produktroadmap](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga).
+* Helm 2-Diagramme können nicht mithilfe des Azure-Portals angezeigt oder verwaltet werden.
 
 ## <a name="use-the-helm-3-client"></a>Verwenden des Helm 3-Clients
 

@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 01/11/2018
-ms.openlocfilehash: 78cb58bca9b06b6dcf8549eefa5ebf0eb2b4b01c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/10/2020
+ms.openlocfilehash: df185f8b75af6a845306fccc18d7d3cce74d0815
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409335"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249168"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus einer Azure SQL-Datenbank in Azure Blob Storage mithilfe des Azure-Portals
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage über das Azure-Portal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -65,7 +65,7 @@ Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt:
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als den Quelldatenspeicher. Wenn Sie keine SQL-Datenbank besitzen, finden Sie Schritte zum Erstellen einer solchen Datenbank unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../sql-database/sql-database-get-started-portal.md).
+* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als den Quelldatenspeicher. Wenn Sie in Azure SQL-Datenbank noch keine Datenbank haben, lesen Sie [Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md). Dort finden Sie die erforderlichen Schritte zum Erstellen einer solchen Datenbank.
 * **Azure Storage**. Sie verwenden den Blobspeicher als Senkendatenspeicher. Wenn Sie kein Speicherkonto besitzen, finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md) Schritte zum Erstellen eines solchen Kontos. Erstellen Sie einen Container mit dem Namen „adftutorial“. 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Erstellen einer Datenquelltabelle in Ihrer SQL-Datenbank
@@ -103,6 +103,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     ```
 
 ### <a name="create-another-table-in-your-sql-database-to-store-the-high-watermark-value"></a>Erstellen einer anderen Tabelle in SQL-Datenbank zum Speichern des hohen Grenzwerts
+
 1. Führen Sie den folgenden SQL-Befehl für Ihre SQL-Datenbank aus, um eine Tabelle mit dem Namen `watermarktable` zum Speichern des Grenzwerts zu erstellen:  
 
     ```sql
@@ -169,7 +170,7 @@ END
          
         Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).  
 6. Wählen Sie **V2** als **Version** aus.
-7. Wählen Sie den **Standort** für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
+7. Wählen Sie den **Standort** für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die Datenspeicher (Azure Storage, Azure SQL-Datenbank, Azure SQL Managed Instance usw.) und Computeeinheiten (HDInsight usw.), die von Data Factory genutzt werden, können sich in anderen Regionen befinden.
 8. Klicken Sie auf **Erstellen**.      
 9. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.
 
@@ -182,7 +183,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 1. Klicken Sie auf der Seite **Erste Schritte** der Data Factory-Benutzeroberfläche auf die Kachel **Pipeline erstellen**.
 
    ![Seite „Erste Schritte“ der Data Factory-Benutzeroberfläche](./media/doc-common-process/get-started-page.png)    
-3. Geben Sie im **Eigenschaftenfenster** auf der Seite **Allgemein** für die Pipeline den Namen **IncrementalCopyPipeline** ein.
+3. Geben Sie im Bereich „Allgemein“ unter **Eigenschaften** die Eigenschaft **IncrementalCopyPipeline** für **Name** an. Reduzieren Sie dann den Bereich, indem Sie in der oberen rechten Ecke auf das Symbol „Eigenschaften“ klicken.
 
 4. Wir fügen die erste Lookup-Aktivität hinzu, um den alten Grenzwert abzurufen. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie die **Lookup**-Aktivität auf die Oberfläche des Pipeline-Designers. Ändern Sie den Namen der Aktivität in **LookupOldWaterMarkActivity**.
 
@@ -196,10 +197,10 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 8. Wählen Sie unter **Verknüpfter Dienst** die Option **Neu** aus, und führen Sie dann die folgenden Schritte aus:
 
     1. Geben Sie unter **Name** den Namen **AzureSqlDatabaseLinkedService** ein.
-    2. Wählen Sie unter **Servername** Ihre Azure SQL Server-Instanz aus.
+    2. Wählen Sie unter **Servername** Ihren Server aus.
     3. Wählen Sie in der Dropdownliste den **Datenbanknamen** aus.
     4. Geben Sie **Benutzername** & **Kennwort** ein.
-    5. Klicken Sie zum Testen der Verbindung mit der Azure SQL-Datenbank auf **Verbindung testen**.
+    5. Klicken Sie zum Testen der Verbindung mit Ihrer SQL-Datenbank auf **Verbindung testen**.
     6. Klicken Sie auf **Fertig stellen**.
     7. Vergewissern Sie sich, dass unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService** ausgewählt ist.
 
@@ -277,7 +278,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
         | LastModifiedtime | Datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
-    ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
+        ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. Klicken Sie zum Überprüfen der Pipelineeinstellungen in der Symbolleiste auf **Überprüfen**. Vergewissern Sie sich, dass keine Validierungsfehler vorliegen. Schließen Sie das Fenster **Pipeline Validation Report** (Pipelineüberprüfungsbericht), indem Sie auf >> klicken.   
 
 28. Veröffentlichen Sie Entitäten (verknüpfte Dienste, Datasets und Pipelines) für den Azure Data Factory-Dienst, indem Sie die Schaltfläche **Alle veröffentlichen** wählen. Warten Sie, bis eine Meldung angezeigt wird, dass die Veröffentlichung erfolgreich war.
@@ -290,9 +291,9 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 
 ## <a name="monitor-the-pipeline-run"></a>Überwachen der Pipelineausführung
 
-1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Sie können den Status der Pipelineausführung anzeigen, die vom manuellen Trigger ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren.
+1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Dort wird der Status der Pipelineausführung angezeigt, der von einem manuellen Trigger ausgelöst wurde. Über die Links unter der Spalte **PIPELINENAME** können Sie Ausführungsdetails anzeigen und die Pipeline erneut ausführen.
 
-2. Wenn Sie mit dieser Pipelineausführung verknüpfte Aktivitätsausführungen anzeigen möchten, klicken Sie in der Spalte **Aktionen** auf den ersten Link (**View Activity Runs** (Aktivitätsausführungen anzeigen)). Sie können zurück zur vorherigen Ansicht wechseln, indem Sie oben auf **Pipelines** klicken. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren.
+2. Wenn Sie die der Pipelineausführung zugeordneten Aktivitätsausführungen anzeigen möchten, wählen Sie den Link unter der Spalte **PIPELINENAME** aus. Wenn Sie Details zu den Aktivitätsausführungen anzeigen möchten, wählen Sie unter der Spalte **AKTIVITÄTSNAME** den Link **Details** (das Brillensymbol) aus. Wählen Sie oben **Alle Pipelineausführungen** aus, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln. Klicken Sie zum Aktualisieren der Ansicht auf **Aktualisieren**.
 
 
 ## <a name="review-the-results"></a>Überprüfen der Ergebnisse
@@ -322,7 +323,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 
 ## <a name="add-more-data-to-source"></a>Hinzufügen von weiteren Daten zur Quelle
 
-Fügen Sie neue Daten in die SQL-Datenbank (Datenquellenspeicher) ein.
+Fügen Sie neue Daten in Ihre Datenbank (Datenquellenspeicher) ein.
 
 ```sql
 INSERT INTO data_source_table
@@ -332,7 +333,7 @@ INSERT INTO data_source_table
 VALUES (7, 'newdata','9/7/2017 9:01:00 AM')
 ```
 
-Die aktualisierten Daten in der SQL-Datenbank lauten:
+Die aktualisierten Daten in Ihrer Datenbank lauten:
 
 ```
 PersonID | Name | LastModifytime
@@ -346,8 +347,8 @@ PersonID | Name | LastModifytime
 7 | newdata | 2017-09-07 09:01:00.000
 ```
 
-
 ## <a name="trigger-another-pipeline-run"></a>Auslösen einer weiteren Pipelineausführung
+
 1. Wechseln Sie zur Registerkarte **Bearbeiten**. Klicken Sie in der Strukturansicht auf die Pipeline, falls sie im Designer nicht geöffnet ist.
 
 2. Klicken Sie auf der Symbolleiste auf **Trigger hinzufügen** und dann auf **Trigger Now** (Jetzt auslösen).
@@ -355,9 +356,9 @@ PersonID | Name | LastModifytime
 
 ## <a name="monitor-the-second-pipeline-run"></a>Überwachen der zweiten Pipelineausführung
 
-1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Sie können den Status der Pipelineausführung anzeigen, die vom manuellen Trigger ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren.
+1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Dort wird der Status der Pipelineausführung angezeigt, der von einem manuellen Trigger ausgelöst wurde. Über die Links unter der Spalte **PIPELINENAME** können Sie Aktivitätsdetails anzeigen und die Pipeline erneut ausführen.
 
-2. Wenn Sie mit dieser Pipelineausführung verknüpfte Aktivitätsausführungen anzeigen möchten, klicken Sie in der Spalte **Aktionen** auf den ersten Link (**View Activity Runs** (Aktivitätsausführungen anzeigen)). Sie können zurück zur vorherigen Ansicht wechseln, indem Sie oben auf **Pipelines** klicken. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren.
+2. Wenn Sie die der Pipelineausführung zugeordneten Aktivitätsausführungen anzeigen möchten, wählen Sie den Link unter der Spalte **PIPELINENAME** aus. Wenn Sie Details zu den Aktivitätsausführungen anzeigen möchten, wählen Sie unter der Spalte **AKTIVITÄTSNAME** den Link **Details** (das Brillensymbol) aus. Wählen Sie oben **Alle Pipelineausführungen** aus, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln. Klicken Sie zum Aktualisieren der Ansicht auf **Aktualisieren**.
 
 
 ## <a name="verify-the-second-output"></a>Überprüfen der zweiten Ausgabe
@@ -398,7 +399,7 @@ In diesem Tutorial haben Sie die folgenden Schritte ausgeführt:
 > * Überwachen der zweiten Pipelineausführung
 > * Überprüfen der Ergebnisse der zweiten Ausführung
 
-In diesem Tutorial hat die Pipeline Daten aus einer einzelnen Tabelle einer SQL-Datenbank in einen Blobspeicher kopiert. Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie Daten aus mehreren Tabellen einer lokalen SQL Server-Datenbank in eine SQL-Datenbank kopieren.
+In diesem Tutorial hat die Pipeline Daten aus einer einzelnen Tabelle in SQL-Datenbank in einen Blobspeicher kopiert. Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie Daten aus mehreren Tabellen einer SQL Server-Datenbank in SQL-Datenbank kopieren.
 
 > [!div class="nextstepaction"]
 >[Inkrementelles Laden von mehreren SQL Server-Tabellen in Azure SQL-Datenbank](tutorial-incremental-copy-multiple-tables-portal.md)

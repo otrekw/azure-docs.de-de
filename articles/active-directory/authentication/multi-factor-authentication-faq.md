@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d28f93f316ac2a63be6b3a8eb0b80678bd7607f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271402"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84483781"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
@@ -163,7 +163,7 @@ Löschen Sie alle App-Kennwörter des Benutzers, um nicht autorisierte Zugriffe 
 
 ### <a name="what-if-a-user-cant-sign-in-to-non-browser-apps"></a>Was kann ich tun, wenn sich ein Benutzer nicht bei nicht browserbasierten Apps anmelden kann?
 
-Falls Ihre Organisation noch Legacyclients verwendet und Sie [die Verwendung von App-Kennwörtern zugelassen haben](howto-mfa-mfasettings.md#app-passwords), können sich Ihre Benutzer nicht mit ihrem Benutzernamen und Kennwort bei diesen Legacyclients anmelden. Stattdessen müssen sie [App-Kennwörter einrichten](../user-help/multi-factor-authentication-end-user-app-passwords.md). Ihre Benutzer müssen ihre Anmeldeinformationen löschen, die App neu starten und sich dann mit ihrem Benutzernamen und ihrem *App-Kennwort* (anstelle des regulären Kennworts) anmelden.
+Falls Ihre Organisation noch Legacyclients verwendet und Sie [die Verwendung von App-Kennwörtern zugelassen haben](howto-mfa-app-passwords.md), können sich Ihre Benutzer nicht mit ihrem Benutzernamen und Kennwort bei diesen Legacyclients anmelden. Stattdessen müssen sie [App-Kennwörter einrichten](../user-help/multi-factor-authentication-end-user-app-passwords.md). Ihre Benutzer müssen ihre Anmeldeinformationen löschen, die App neu starten und sich dann mit ihrem Benutzernamen und ihrem *App-Kennwort* (anstelle des regulären Kennworts) anmelden.
 
 Wenn Ihre Organisation keine Legacyclients verwendet, sollten Sie die Erstellung von App-Kennwörtern durch Benutzer nicht zulassen.
 

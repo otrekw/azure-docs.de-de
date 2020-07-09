@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
-ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2f9f0e164f7ab0a6b146aad3a2809bf85e5aa4be
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81409871"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020658"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>Interagieren mit Unity-Spielobjekten und -Komponenten
 
@@ -88,7 +88,7 @@ Die oben stehenden Codebeispiele verwenden den Modellladepfad über SAS, weil da
 
 Beim Erstellen eines Unity-Spielobjekts wird implizit eine `RemoteEntitySyncObject`-Komponente zum Spielobjekt hinzugefügt. Diese Komponente wird zum Synchronisieren der Entitätstransformation mit dem Server verwendet. Standardmäßig erfordert `RemoteEntitySyncObject`, dass der Benutzer `SyncToRemote()` explizit aufruft, um den lokalen Unity-Status mit dem Server zu synchronisieren. Durch Aktivieren von `SyncEveryFrame` wird das Objekt automatisch synchronisiert.
 
-Für Objekte mit einem `RemoteEntitySyncObject` können die untergeordneten Elemente über die Schaltfläche **Untergeordnete Elemente anzeigen** instanziiert und im Unity-Editor angezeigt werden.
+Für Objekte mit einem `RemoteEntitySyncObject` können die untergeordneten Remoteelemente über die Schaltfläche **:::no-loc text="Show children":::** (Untergeordnete Elemente anzeigen) instanziiert und im Unity-Editor angezeigt werden.
 
 ![RemoteEntitySyncObject](media/remote-entity-sync-object.png)
 

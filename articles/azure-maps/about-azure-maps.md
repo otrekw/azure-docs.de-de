@@ -8,13 +8,13 @@ ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: fdac12350db785e6194cd3d057f4d2adfefa5969
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: mvc, references_regions
+ms.openlocfilehash: 4b53c4d1a26d8e4b8d784087dcb9b9feba9c7ded
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80335729"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191754"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
@@ -155,7 +155,7 @@ Weitere Informationen finden Sie in der [Dokumentation zu den Verkehrsinfo-APIs]
 
 ### <a name="ip-to-location-service"></a>IP to Location-Dienst
 
-Mit dem Dienst „IP to Location“ können Sie eine Vorschau für den abgerufenen zweistelligen Ländercode für eine IP-Adresse erstellen. Mithilfe dieses Diensts können Sie die Benutzeroberfläche verbessern, indem Sie angepasste Anwendungsinhalte auf der Grundlage des geografischen Standorts bereitstellen.
+Mit dem Dienst „IP to Location“ können Sie eine Vorschau für den abgerufenen zweistelligen Länder-/Regionscode für eine IP-Adresse erstellen. Mithilfe dieses Diensts können Sie die Benutzeroberfläche verbessern, indem Sie angepasste Anwendungsinhalte auf der Grundlage des geografischen Standorts bereitstellen.
 
 Ausführlichere Informationen zum Dienst „IP to Location“ finden Sie in der [Dokumentation zu den Geolocation-APIs von Azure Maps](https://docs.microsoft.com/rest/api/maps/geolocation).
 
@@ -180,7 +180,7 @@ Abgesehen von folgenden Ausnahmen sind die Azure Maps-APIs aktuell in allen Lä
 * China
 * Südkorea
 
-Vergewissern Sie sich, dass sich der Standort Ihrer aktuellen IP-Adresse in einem unterstützten Land befindet.
+Vergewissern Sie sich, dass sich der Standort Ihrer aktuellen IP-Adresse in einem unterstützten Land bzw. in einer unterstützten Region befindet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

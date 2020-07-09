@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4c3cc572dd9629605414cd88d7735c2b31f92249
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258744"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851254"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformieren und Schützen Ihrer API
 
@@ -82,8 +82,10 @@ Die ursprüngliche Antwort sieht in etwa wie folgt aus:
 
 7. Ändern Sie Ihren **\<outbound>** -Code, sodass er folgendermaßen aussieht:
 
-       <set-header name="X-Powered-By" exists-action="delete" />
-       <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
+   <set-header name="X-Powered-By" exists-action="delete" />
+   <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
 
    ![Richtlinien](./media/transform-api/set-policy.png)
 
@@ -112,11 +114,8 @@ So zeigen Sie die ursprüngliche Antwort an
 2.  Wählen Sie **Alle Vorgänge** aus.
 3.  Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
 4.  Klicken Sie im Abschnitt **Ausgehende Verarbeitung** auf das Symbol **</>** .
-5.  Positionieren Sie den Cursor im Element **&lt;outbound&gt;** , und klicken Sie in der oberen rechten Ecke auf die Schaltfläche **Richtlinie einfügen**.
-6.  Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** auf **+ Zeichenfolge im Text suchen und ersetzen**.
-7.  Ändern Sie Ihren **find-and-replace**-Code (im Element **\<outbound\>** ) ab, um die URL durch eine URL zu Ihrem APIM-Gateway zu ersetzen. Beispiel:
-
-        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+5.  Positionieren Sie den Cursor im Element **&lt;outbound&gt;** , und klicken Sie in der oberen rechten Ecke auf die Schaltfläche **Codeausschnitte anzeigen**.
+6.  Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** auf **URLs in Inhalt maskieren**.
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Schützen einer API durch das Hinzufügen einer Richtlinie für ein Aufruflimit (Drosselung)
 
@@ -130,33 +129,37 @@ In diesem Abschnitt wird gezeigt, wie Sie Ihre Back-End-API schützen, indem Sie
 4.  Klicken Sie im Abschnitt **Eingehende Verarbeitung** auf das Symbol **</>** .
 5.  Positionieren Sie den Cursor im **&lt;inbound&gt;** -Element.
 6.  Klicken Sie im rechten Fenster unter **Richtlinien für die Zugriffsbeschränkung** auf **+ Aufrufrate pro Schlüssel einschränken**.
-7.  Modifizieren Sie Ihren **rate-limit-by-key**-Code (im **\<inbound\>** -Element) folgendermaßen:
+7.  Ändern Sie Ihren **rate-limit-by-key**-Code (im **\<inbound\>** -Element) folgendermaßen ab:
 
-        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
+    <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
 
 ## <a name="test-the-transformations"></a>Testen der Transformationen
 
 Zu diesem Zeitpunkt sieht Ihre Richtlinie in etwa wie folgt aus, wenn Sie den Code im Code-Editor betrachten:
 
-    <policies>
-        <inbound>
-            <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
-            <base />
-        </inbound>
-        <backend>
-            <base />
-        </backend>
-        <outbound>
-            <set-header name="X-Powered-By" exists-action="delete" />
-            <set-header name="X-AspNet-Version" exists-action="delete" />
-            <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
-            <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
-            <base />
-        </outbound>
-        <on-error>
-            <base />
-        </on-error>
-    </policies>
+   ```
+   <policies>
+      <inbound>
+        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+        <base />
+      </inbound>
+      <backend>
+        <base />
+      </backend>
+      <outbound>
+        <set-header name="X-Powered-By" exists-action="delete" />
+        <set-header name="X-AspNet-Version" exists-action="delete" />
+        <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
+        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+        <base />
+      </outbound>
+      <on-error>
+        <base />
+      </on-error>
+   </policies>
+   ```
 
 Im verbleibenden Teil dieses Abschnitts werden die Richtlinientransformationen getestet, die Sie in diesem Artikel festgelegt haben.
 

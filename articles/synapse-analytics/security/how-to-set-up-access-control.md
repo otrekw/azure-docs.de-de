@@ -5,16 +5,16 @@ services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d02cd12552b3664dd7acaae0142fc939ee57f5f6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1a8023a700e83892fae9a16bb2bfbe2a2eb0b307
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591980"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193412"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Sichern Ihres Synapse-Arbeitsbereichs (Vorschau)
 
@@ -115,7 +115,7 @@ Benutzer in den einzelnen Rollen müssen die folgenden Schritte durchführen:
 |   | Schritt | Arbeitsbereichsadministratoren | Spark-Administratoren | SQL-Administratoren |
 | --- | --- | --- | --- | --- |
 | 1 | Hochladen einer Parquet-Datei in CNT1 | YES | YES | YES |
-| 2 | Lesen der Parquet-Datei mithilfe von SQL-on-Demand | YES | Nein | YES |
+| 2 | Lesen der Parquet-Datei mithilfe von SQL On-Demand | YES | Nein | YES |
 | 3 | Erstellen eines Spark-Pools | JA [1] | JA [1] | Nein  |
 | 4 | Lesen der Parquet-Datei mit einem Notebook | YES | YES | Nein |
 | 5 | Erstellen einer Pipeline aus dem Notebook und sofortiges Auslösen der Ausführung der Pipeline | YES | Nein | Nein |
@@ -130,7 +130,7 @@ Benutzer in den einzelnen Rollen müssen die folgenden Schritte durchführen:
 
 ## <a name="step-8-network-security"></a>SCHRITT 8: Netzwerksicherheit
 
-So konfigurieren Sie die Arbeitsbereichsfirewall, das virtuelle Netzwerk und den [privaten Link](../../sql-database/sql-database-private-endpoint-overview.md).
+So konfigurieren Sie die Arbeitsbereichsfirewall, das virtuelle Netzwerk und den [privaten Link](../../azure-sql/database/private-endpoint-overview.md).
 
 ## <a name="step-9-completion"></a>SCHRITT 9: Completion
 

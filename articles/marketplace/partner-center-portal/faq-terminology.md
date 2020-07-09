@@ -1,18 +1,16 @@
 ---
 title: Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace – Partner Center
 description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace in Partner Center. Dieser Artikel enthält ein Datenwörterbuch für Analyseterminologie.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 42478f6e6d6cb28364fe39aafcb52b3a17aa3c23
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ece7fa64c64d4c2f771be61984485cf9b1c4abaf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791475"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121740"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Terminologie und häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace
 
@@ -51,7 +49,7 @@ Wenn Sie diese Meldung erhalten, bedeutet das, dass Analysedaten vorliegen, aber
 | Kundenort| Kunde| Der Name des vom Kunden angegebenen Orts. Der Ort kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden.||
 | Kommunikationssprache des Kunden  | Kunde| Die vom Kunden für die Kommunikation bevorzugte Sprache.||
 | Firmenname des Kunden | Kunde, Bestellung | Der vom Kunden angegebene Firmenname. Der Name kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden.|  |
-| Land des Kunden | Kunde, Bestellung | Der vom Kunden angegebene Ländername. Das Land kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land unterscheiden.|  |
+| Land/Region des Kunden | Kunde, Bestellung | Der vom Kunden angegebene Name für das Land bzw. die Region. Das Land/die Region kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land bzw. der angegebenen Region unterscheiden.|  |
 | E-Mail-Adresse des Kunden| Kunde| Die vom Endkunden angegebene E-Mail-Adresse. Die E-Mail-Adresse kann sich von der im Azure-Abonnement eines Kunden angegebenen E-Mail-Adresse unterscheiden.||
 | Vorname des Kunden| Kunde| Der vom Kunden angegebene Name. Der Name kann sich von dem im Azure-Abonnement eines Kunden angegebenen Namen unterscheiden.| |
 | Customer ID | Kunde, Bestellung | Der eindeutige, einem Kunden zugewiesene Bezeichner. Ein Kunde kann keine oder mehrere Azure Marketplace-Abonnements haben.|  |

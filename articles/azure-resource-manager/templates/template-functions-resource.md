@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Ressourcen
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Werten zu Ressourcen verwendet werden können.
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.openlocfilehash: 508933cbea3e21fdec63907cef73102866732bb1
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/01/2020
+ms.openlocfilehash: a31aadb02ed3fff83ee6dc62a71aa32d0b716629
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891005"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259438"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Ressourcenfunktionen für ARM-Vorlagen
 
@@ -108,7 +108,7 @@ Im folgenden Beispiel wird die Ressourcen-ID für eine Ressourcengruppensperre z
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgänge. Jede Implementierung gibt Werte für den Ressourcentyp zurück, der einen Auflistungsvorgang unterstützt. Der Name des Vorgangs muss mit `list` beginnen. Häufig werden `listKeys` und `listSecrets` verwendet.
+Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgänge. Jede Implementierung gibt Werte für den Ressourcentyp zurück, der einen Auflistungsvorgang unterstützt. Der Name des Vorgangs muss mit `list` beginnen. Häufig werden `listKeys`, `listKeyValue` und `listSecrets` verwendet.
 
 ### <a name="parameters"></a>Parameter
 
@@ -129,6 +129,7 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Ressourcentyp | Funktionsname |
 | ------------- | ------------- |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
+| Microsoft.AppConfiguration | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
 | Microsoft.AppConfiguration/configurationStores | ListKeys |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [listkeys](/rest/api/batchmanagement/batchaccount/getkeys) |
@@ -201,7 +202,7 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.Network/applicationSecurityGroups | listIpConfigurations |
 | Microsoft.NotificationHubs/Namespaces/authorizationRules | [listkeys](/rest/api/notificationhubs/namespaces/listkeys) |
 | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [listkeys](/rest/api/notificationhubs/notificationhubs/listkeys) |
-| Microsoft.OperationalInsights/workspaces | [listKeys](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
+| Microsoft.OperationalInsights/workspaces | [list](/rest/api/loganalytics/workspaces/list) |
 | Microsoft.PolicyInsights/remediations | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
 | Microsoft.Relay/namespaces/authorizationRules | [listkeys](/rest/api/relay/namespaces/listkeys) |
 | Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys |
@@ -350,6 +351,8 @@ Um das SAS-Token abzurufen, übergeben Sie ein Objekt für die Ablaufzeit. Die A
 }
 ```
 
+Ein listKeyValue-Beispiel finden Sie unter [Schnellstart: Automatisierte VM-Bereitstellung mit App Configuration und Resource Manager-Vorlage](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values).
+
 ## <a name="providers"></a>providers
 
 `providers(providerNamespace, [resourceType])`
@@ -492,7 +495,7 @@ Die Verweisfunktion kann nur in den Eigenschaften einer Ressourcendefinition und
 
 Sie können die Verweisfunktion nicht verwenden, um den Wert der `count`-Eigenschaft in einer Kopierschleife festzulegen. Sie können damit andere Eigenschaften in der Schleife festlegen. Der Verweis ist für die count-Eigenschaft gesperrt, da diese Eigenschaft vor dem Auflösen der Verweisfunktion bestimmt werden muss.
 
-Die Referenzfunktion kann nicht in den Ausgaben einer [geschachtelten Vorlage](linked-templates.md#nested-template) verwendet werden, um eine Ressource zurückzugeben, die Sie in der geschachtelten Vorlage bereitgestellt haben. Verwenden Sie stattdessen eine [verknüpfte Vorlage](linked-templates.md#linked-template).
+Wenn Sie die reference-Funktion oder eine beliebige list*-Funktion im Abschnitt „outputs“ einer geschachtelten Vorlage verwenden möchten, müssen Sie die ```expressionEvaluationOptions``` festlegen, um die Auswertung des [inneren Bereichs](linked-templates.md#expression-evaluation-scope-in-nested-templates) oder eine verknüpfte anstelle einer geschachtelten Vorlage zu verwenden.
 
 Bei Verwendung der **reference**-Funktion mit einer Ressource mit bedingter Bereitstellung wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird.  Es wird eine Fehlermeldung angezeigt, wenn die **reference**-Funktion auf eine nicht vorhandene Ressource verweist. Verwenden Sie die **if**-Funktion, um sicherzustellen, dass die Funktion nur ausgewertet wird, wenn die Ressource bereitgestellt wird. Eine Beispielvorlage, die „if“ und „reference“ mit einer bedingt bereitgestellten Ressource verwendet, finden Sie unter der [if](template-functions-logical.md#if)-Funktion.
 
@@ -534,10 +537,20 @@ Um die Erstellung von Ressourcen-IDs zu vereinfachen, verwenden Sie die in diese
 
 [Verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sind [Erweiterungsressourcentypen](../management/extension-resource-types.md), die implizit für einige Ressourcen erstellt werden. Da die verwaltete Identität nicht explizit in der Vorlage definiert ist, müssen Sie auf die Ressource verweisen, auf die die Identität angewendet wird. Verwenden Sie `Full`, um alle Eigenschaften, einschließlich der implizit erstellten Identität, abzurufen.
 
-Um z. B. die Mandanten-ID für eine verwaltete Identität abzurufen, die auf eine VM-Skalierungsgruppe angewendet wird, verwenden Sie:
+Das Muster lautet:
+
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+
+Um z. B. die Prizipal-ID für eine verwaltete Identität abzurufen, die auf einen virtuellen Computer angewandt wird, verwenden Sie:
 
 ```json
-"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), '2019-03-01', 'Full').Identity.tenantId]"
+"[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
+```
+
+Um die Mandanten-ID für eine verwaltete Identität abzurufen, die auf eine VM-Skalierungsgruppe angewandt wird, verwenden Sie:
+
+```json
+"[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
 ```
 
 ### <a name="reference-example"></a>reference-Beispiel

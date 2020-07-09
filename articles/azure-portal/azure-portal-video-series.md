@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 04/06/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 5aa1a677836be3f05269539d52abf7bd8704833d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 74d43f8c200fad5caf152d24df6c8544074916ea
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757076"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120027"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Anleitungsvideos für das Azure-Portal
 
@@ -22,18 +22,18 @@ In den Anleitungsvideos für das Azure-Portal wird gezeigt, wie Sie mit Azure-Di
 
 ## <a name="featured-video"></a>Vorgestelltes Video
 
-In diesem Video erfahren Sie, wie Sie mithilfe von Azure Advisor-Empfehlungen zu Kosten in Azure Geld sparen.
+In diesem vorgestellten Video wird gezeigt, wie Sie mithilfe von Azure Private Link eine Verbindung mit einem Speicherkonto herstellen.
 
-> [!VIDEO https://www.youtube.com/embed/ky2WS3KWuYs]
+> [!VIDEO https://www.youtube.com/embed/vM7yDwHSc_o]
 
-[Verwenden von Kostenempfehlungen im Azure Advisor](https://www.youtube.com/watch?v=ky2WS3KWuYs)
+[Herstellen einer Verbindung mit einem Speicherkonto mithilfe von Azure Private Link](https://www.youtube.com/watch?v=vM7yDwHSc_o)
 
 Sehen Sie sich auch die folgenden aktuellen Videos an, die Sie möglicherweise verpasst haben:
 
 |   |   |   |
 | ------| ------ | ------ |
-| [![Abbildung von YouTube-Video zum Verwenden von Azure Monitor-Arbeitsmappen](https://i.ytimg.com/vi/Z5xRyy3HB8U/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=Z5xRyy3HB8U) | [![Abbildung von YouTube-Video zum Filtern Ihrer Ressourcenlistenansicht im Azure-Portal](https://i.ytimg.com/vi/L3I-xOZKWcg/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=L3I-xOZKWcg) | [![Abbildung von YouTube-Video zum Verwenden der automatischen Aktualisierung für Dashboards](https://i.ytimg.com/vi/tVoDXygZzWM/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=tVoDXygZzWM) |
-| [Verwenden von Azure Monitor-Arbeitsmappen](https://www.youtube.com/watch?v=Z5xRyy3HB8U) | [Filtern der Ressourcenlistenansicht im Azure-Portal](https://www.youtube.com/watch?v=L3I-xOZKWcg) | [Verwenden der automatischen Aktualisierung für Dashboards](https://www.youtube.com/watch?v=tVoDXygZzWM) |
+| [![Abbildung: YouTube-Video über die neue Benutzeroberfläche von Azure Functions](https://i.ytimg.com/vi/0bdT_9uOqkg/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=0bdT_9uOqkg) | [![Abbildung: YouTube-Video über das Bereitstellen einer Web-App mithilfe von GitHub Actions](https://i.ytimg.com/vi/b2oyxbSbLPA/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=b2oyxbSbLPA) | [![Abbildung: YouTube-Video über die Verwendung von Dienstinformationskarten](https://i.ytimg.com/vi/u00TU531qsQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=u00TU531qsQ) |
+| [Die neue Benutzeroberfläche von Azure Functions](https://www.youtube.com/watch?v=0bdT_9uOqkg) | [Bereitstellen einer Web-App mithilfe von GitHub Actions](https://www.youtube.com/watch?v=b2oyxbSbLPA) | [Verwendung von Dienstinformationskarten](https://www.youtube.com/watch?v=u00TU531qsQ) |
 
 ## <a name="video-playlist"></a>Wiedergabeliste
 

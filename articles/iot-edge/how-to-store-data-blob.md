@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bea00f429f31f2be62ee6a9c00f88873c595d94c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b647515e9bd802673114de82089ede5f52f9016
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76509817"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562707"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Speichern von Daten im Edgebereich mit Azure Blob Storage in IoT Edge
 
@@ -291,7 +291,7 @@ Dieses Azure Blob Storage in IoT Edge-Modul ermöglicht jetzt die Integration vo
 
 Dies sind die [Versionsinformationen im Docker-Hub](https://hub.docker.com/_/microsoft-azure-blob-storage) für dieses Modul.
 
-## <a name="feedback"></a>Feedback
+## <a name="suggestions"></a>Vorschläge
 
 Ihr Feedback ist uns wichtig und trägt dazu bei, den Nutzen und die Benutzerfreundlichkeit dieses Moduls und seiner Features zu verbessern. Übermitteln Sie uns Ihr Feedback, und lassen Sie uns wissen, was wir verbessern können.
 

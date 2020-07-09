@@ -3,12 +3,12 @@ title: Basisimageaktualisierungen – Aufgaben
 description: Erfahren Sie mehr über Basisimages für Anwendungscontainerimages und wie eine Basisimageaktualisierung eine Azure Container Registry-Aufgabe auslösen kann.
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 017c8f8a3a15896bd6e14a54136ba713e9f9c499
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 35933c4cdbbf2762f7a54bd945f8a8ffa55b9f21
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617730"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918505"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>Informationen zu Basisimageaktualisierungen für ACR Tasks
 
@@ -38,6 +38,13 @@ Bei Imagebuilds aus einem Dockerfile erkennt ein ACR-Task Abhängigkeiten von Ba
 * Ein öffentliches Repository in Microsoft Container Registry
 
 Wenn sich das in der Anweisung `FROM` angegebene Basisimage in einem dieser Speicherorte befindet, fügt die ACR-Aufgabe einen Hook hinzu, um sicherzustellen, dass das Image nach jeder Aktualisierung seiner Basis neu erstellt wird.
+
+## <a name="base-image-notifications"></a>Basisimagebenachrichtigungen
+
+Die Zeit zwischen der Aktualisierung eines Basisimages und dem Auslösen des abhängigen Tasks hängt vom Speicherort des Basisimages ab:
+
+* **Basisimages aus einem öffentlichen Repository in Docker Hub oder MCR**: Bei Basisimages in öffentlichen Repositorys überprüft ein ACR-Task in einem zufälligen Intervall von 10 bis 60 Minuten auf Imageaktualisierungen. Abhängige Tasks werden entsprechend ausgeführt.
+* **Basisimages aus einer Azure Container Registry**: Bei Basisimages in Azure Container Registrys löst ein ACR-Task sofort eine Ausführung aus, wenn sein Basisimage aktualisiert wird. Das Basisimage kann sich in derselben ACR befinden, in der der Task ausgeführt wird, oder in einer anderen ACR in einer beliebigen Region.
 
 ## <a name="additional-considerations"></a>Weitere Überlegungen
 

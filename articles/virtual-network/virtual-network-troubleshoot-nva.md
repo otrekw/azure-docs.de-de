@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 353ab1f15a6df8700a9abda22233dc052aa10095
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71056832"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130703"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Probleme mit virtuellen Netzwerkappliances in Azure
 
@@ -103,11 +103,15 @@ Verwenden von PowerShell
 
     Windows:
 
-        netstat -an
+    ```console
+   netstat -an
+    ```
 
     Linux:
 
-        netstat -an | grep -i listen
+    ```console
+   netstat -an | grep -i listen
+    ```
 2. Wenn der TCP-Port, der von der in den Ergebnissen aufgeführten NVA-Software verwendet wird, nicht angezeigt wird, müssen Sie die Anwendung in der NVA und auf der VM so konfigurieren, dass sie auf Datenverkehr, der auf diesen Ports eingeht, lauscht und antwortet. [Wenden Sie sich an den NVA-Anbieter, wenn Sie Unterstützung benötigen sollten](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
 ## <a name="check-nva-performance"></a>Überprüfen der NVA-Leistung

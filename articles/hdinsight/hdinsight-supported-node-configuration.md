@@ -6,15 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: e75146266568001d8fee7be26898ac8bdfffb7fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 05/14/2020
+ms.openlocfilehash: 0bf5559590b66400fc4fc4dc27ea88c3522effb1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77484785"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646618"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Was sind die Standard- und die empfohlenen Knotenkonfigurationen für Azure HDInsight?
 
@@ -24,9 +24,9 @@ In diesem Artikel sind die Standard- und die empfohlenen Knotenkonfigurationen f
 
 In den folgenden Tabellen sind die Standard- und die empfohlenen VM-Größen für HDInsight-Cluster aufgeführt.  Diese Informationen sind erforderlich, um die VM-Größen zu verstehen, die beim Erstellen von PowerShell- oder Azure CLI-Skripten verwendet werden sollten, mit denen HDInsight-Cluster bereitgestellt werden.
 
-Wenn Sie mehr als 32 Workerknoten in einem Cluster benötigen, müssen Sie eine Hauptknotengröße mit mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen. 
+Wenn Sie mehr als 32 Workerknoten in einem Cluster benötigen, müssen Sie eine Hauptknotengröße mit mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen.
 
-Die einzigen Clustertypen, die Datenträger haben, sind Kafka- und HBase-Cluster, wenn für diese das Accelerated Writes-Feature aktiviert ist. HDInsight unterstützt die Datenträgergröße P30 und S30 in diesen Szenarien.
+Die einzigen Clustertypen, die Datenträger haben, sind Kafka- und HBase-Cluster, wenn für diese das Accelerated Writes-Feature aktiviert ist. HDInsight unterstützt die Datenträgergröße P30 und S30 in diesen Szenarien. Für alle anderen Clustertypen stellt HDInsight mit dem Cluster verwalteten Speicherplatz auf dem Datenträger zur Verfügung. Seit dem 11.07.2019 beträgt die Größe des verwalteten Datenträgers jedes Knotens in dem neu erstellten Cluster 128 GB. Dies kann nicht geändert werden.
 
 In dieser Tabelle finden Sie die in diesem Dokument verwendeten Spezifikationen aller mindestens erforderlichen empfohlenen VM-Typen.
 

@@ -3,12 +3,12 @@ title: Vorläufiges Löschen für Azure Backup
 description: In diesem Artikel wird erläutert, wie Sie mit den Azure Backup-Sicherheitsfunktionen für mehr Sicherheit für Ihre Sicherungen sorgen können.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d7831488482ef154ce00685e513b36ed235e335e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 2b0d7a00bce8dfa427958f6db6d7174b9d5f7a79
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791390"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116415"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Vorläufiges Löschen für Azure Backup
 
@@ -16,7 +16,10 @@ Die Sorgen bezüglich Sicherheitsproblemen wie Schadsoftware, Ransomware und Ein
 
 Eines dieser Features ist das vorläufige Löschen. Beim vorläufigen Löschen werden die Sicherungsdaten 14 Tage länger aufbewahrt, damit das jeweilige Sicherungselement auch dann ohne Datenverluste wiederhergestellt werden kann, wenn ein böswilliger Akteur eine Sicherung löscht oder die Sicherungsdaten versehentlich gelöscht werden. Für die zusätzlichen 14 Tage der Aufbewahrung von Sicherungsdaten mit dem Status „Vorläufiges Löschen“ fallen für Kunden keine Kosten an.
 
-Der [Schutz durch das vorläufige Löschen für virtuelle Azure-Computer](soft-delete-virtual-machines.md) und das [vorläufige Löschen für SQL-Server auf virtuellen Azure-Computern und für SAP HANA in Azure-VM-Workloads](soft-delete-sql-saphana-in-azure-vm.md) ist für alle Benutzer verfügbar.
+Der Schutz durch das vorläufige Löschen ist für folgende Dienste verfügbar:
+
+- [Vorläufiges Löschen für virtuelle Azure-Computer](soft-delete-virtual-machines.md)
+- [Vorläufiges Löschen für SQL-Server auf virtuellen Azure-Computern und SAP HANA in Azure-VM-Workloads](soft-delete-sql-saphana-in-azure-vm.md)
 
 Im folgenden Flussdiagramm sind die unterschiedlichen Schritte und Zustände eines Sicherungselements bei aktiviertem vorläufigem Löschen dargestellt:
 

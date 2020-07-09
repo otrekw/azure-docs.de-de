@@ -1,16 +1,16 @@
 ---
 title: Kopieren von Anwendungen und Daten auf Poolknoten
 description: Erfahren Sie, wie Sie Anwendungen und Daten auf Poolknoten kopieren.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/17/2020
-ms.openlocfilehash: 700e9b80f8420266c0300b47bdd30bc271f8421c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e21b8551fb62c4335910fd05bb9590eaf6f7e35a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115583"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954892"
 ---
-# <a name="copying-applications-and-data-to-pool-nodes"></a>Kopieren von Anwendungen und Daten auf Poolknoten
+# <a name="copy-applications-and-data-to-pool-nodes"></a>Kopieren von Anwendungen und Daten auf Poolknoten
 
 Azure Batch unterstützt verschiedene Möglichkeiten, um Daten und Anwendungen auf Computeknoten zu überführen, damit die Daten und Anwendungen für die Verwendung durch Aufgaben verfügbar sind. Möglicherweise sind die Daten und Anwendungen erforderlich, um den gesamten Auftrag auszuführen, sodass sie auf jedem Knoten installiert werden müssen. Einige sind möglicherweise nur für eine bestimmte Aufgabe erforderlich oder müssen für den Auftrag installiert werden, müssen jedoch nicht auf jedem Knoten installiert sein. Batch verfügt über Tools für jedes dieser Szenarien.
 
@@ -19,13 +19,13 @@ Azure Batch unterstützt verschiedene Möglichkeiten, um Daten und Anwendungen a
 Beispiele: 
 - Verwenden Sie die Starttask-Befehlszeile, um Anwendungen zu verschieben oder zu installieren.
 
-- Geben Sie eine Liste bestimmter Dateien oder Container in einem Azure Storage-Konto an. Weitere Informationen finden Sie unter [add#resourcefile in der REST-Dokumentation](https://docs.microsoft.com/rest/api/batchservice/pool/add#resourcefile).
+- Geben Sie eine Liste bestimmter Dateien oder Container in einem Azure Storage-Konto an. Weitere Informationen finden Sie unter [add#resourcefile in der REST-Dokumentation](/rest/api/batchservice/pool/add#resourcefile).
 
-- Jeder Auftrag, der im Pool ausgeführt wird, führt „MyApplication.exe“ aus. Diese ausführbare Datei muss zunächst mit „MyApplication.msi“ installiert werden. Wenn Sie diesen Mechanismus verwenden, müssen Sie die Eigenschaft **Erfolg abwarten** des Starttasks auf **true** festlegen. Weitere Informationen finden Sie unter [add#starttask in der REST-Dokumentation](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask).
+- Jeder Auftrag, der im Pool ausgeführt wird, führt „MyApplication.exe“ aus. Diese ausführbare Datei muss zunächst mit „MyApplication.msi“ installiert werden. Wenn Sie diesen Mechanismus verwenden, müssen Sie die Eigenschaft **Erfolg abwarten** des Starttasks auf **true** festlegen. Weitere Informationen finden Sie unter [add#starttask in der REST-Dokumentation](/rest/api/batchservice/pool/add#starttask).
 
-- **Anwendungspaketverweise** im Pool: Für Anwendungen oder Daten, die auf jedem Knoten im Pool installiert werden müssen. Mit einem Anwendungspaket ist kein Installationsbefehl verknüpft, Sie können jedoch einen Starttask verwenden, um einen beliebigen Installationsbefehl auszuführen. Wenn Ihre Anwendung keine Installation erfordert oder eine große Anzahl von Dateien umfasst, können Sie diese Methode verwenden. Anwendungspakete eignen sich gut für eine große Anzahl von Dateien, da sie eine große Anzahl von Dateiverweisen in einer geringen Nutzlast kombinieren. Wenn Sie versuchen, mehr als 100 separate Ressourcendateien in einen Task aufzunehmen, können im Batch-Dienst für einen einzelnen Task interne Systemeinschränkungen auftreten. Verwenden Sie außerdem Anwendungspakete, wenn strenge Versionsverwaltungsanforderungen gelten, sodass Sie möglicherweise viele verschiedene Versionen derselben Anwendung verwenden und zwischen ihnen wählen müssen. Weitere Informationen finden Sie unter [Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen](https://docs.microsoft.com/azure/batch/batch-application-packages).
+- **Anwendungspaketverweise** im Pool: Für Anwendungen oder Daten, die auf jedem Knoten im Pool installiert werden müssen. Mit einem Anwendungspaket ist kein Installationsbefehl verknüpft, Sie können jedoch einen Starttask verwenden, um einen beliebigen Installationsbefehl auszuführen. Wenn Ihre Anwendung keine Installation erfordert oder eine große Anzahl von Dateien umfasst, können Sie diese Methode verwenden. Anwendungspakete eignen sich gut für eine große Anzahl von Dateien, da sie eine große Anzahl von Dateiverweisen in einer geringen Nutzlast kombinieren. Wenn Sie versuchen, mehr als 100 separate Ressourcendateien in einen Task aufzunehmen, können im Batch-Dienst für einen einzelnen Task interne Systemeinschränkungen auftreten. Verwenden Sie außerdem Anwendungspakete, wenn strenge Versionsverwaltungsanforderungen gelten, sodass Sie möglicherweise viele verschiedene Versionen derselben Anwendung verwenden und zwischen ihnen wählen müssen. Weitere Informationen finden Sie unter [Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen](./batch-application-packages.md).
 
-- **Ressourcendateien für den Auftragsvorbereitungstask**: Für Anwendungen oder Daten, die installiert werden müssen, damit der Auftrag ausgeführt werden kann, jedoch nicht im gesamten Pool installiert werden müssen. Beispiel: Wenn Ihr Pool viele verschiedene Typen von Aufträgen aufweist und nur für einen Auftragstyp „MyApplication.msi“ ausgeführt werden muss, ist es sinnvoll, den Installationsschritt in eine Auftragsvorbereitungstask einzufügen. Weitere Informationen zu Auftragsvorbereitungstasks finden Sie unter [Ausführen von Tasks zum Vorbereiten und Freigeben von Aufträgen auf Azure Batch-Computeknoten](https://azure.microsoft.com/documentation/articles/batch-job-prep-release/).
+- **Ressourcendateien für den Auftragsvorbereitungstask**: Für Anwendungen oder Daten, die installiert werden müssen, damit der Auftrag ausgeführt werden kann, jedoch nicht im gesamten Pool installiert werden müssen. Beispiel: Wenn Ihr Pool viele verschiedene Typen von Aufträgen aufweist und nur für einen Auftragstyp „MyApplication.msi“ ausgeführt werden muss, ist es sinnvoll, den Installationsschritt in eine Auftragsvorbereitungstask einzufügen. Weitere Informationen zu Auftragsvorbereitungstasks finden Sie unter [Ausführen von Tasks zum Vorbereiten und Freigeben von Aufträgen auf Azure Batch-Computeknoten](./batch-job-prep-release.md).
 
 - **Taskressourcendateien**: Für den Fall, dass eine Anwendung oder Daten nur für einen einzelnen Task relevant sind. Beispiel: Sie haben fünf Tasks, von denen jeder eine andere Datei verarbeitet und dann die Ausgabe in den Blobspeicher schreibt.  In diesem Fall sollte die Eingabedatei in der Sammlung der **Taskressourcendateien** angegeben werden, da jeder Task über eine eigene Eingabedatei verfügt.
 

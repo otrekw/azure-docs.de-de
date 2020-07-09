@@ -68,7 +68,7 @@ Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funkti
 
 1. Überprüfen Sie auf der Seite **Bewerten + erstellen** Ihre Einstellungen, und wählen Sie dann **Erstellen** aus, um die Funktions-App bereitzustellen.
 
-1. Wählen Sie oben rechts im Portal das **Benachrichtigungs**symbol aus, und achten Sie auf die Meldung **Bereitstellung erfolgreich**.
+1. Wählen Sie oben rechts im Portal das **Benachrichtigungssymbol** aus, und achten Sie auf die Meldung **Bereitstellung erfolgreich**.
 
 1. Wählen Sie **Zu Ressource wechseln**, um Ihre neue Funktionen-App anzuzeigen. Sie können auch die Option **An Dashboard anheften** auswählen. Wenn Sie die Funktions-App anheften, können Sie einfacher über das Dashboard auf sie zugreifen.
 
@@ -101,7 +101,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie im Portal in Ihrer neuen Funkt
 
 1. Wählen Sie in Ihrer neuen HTTP-Triggerfunktion im Menü auf der linken Seite **Code + testen** aus, und wählen Sie dann im obersten Menü **Funktions-URL abrufen** aus.
 
-    ![„Funktions-URL abrufen“ auswählen](./media/create-function-app-linux-app-service-plan/function-app-select-get-function-url.png)
+    ![Auswählen von „Funktions-URL abrufen“](./media/create-function-app-linux-app-service-plan/function-app-select-get-function-url.png)
 
 1. Wählen Sie im Dialogfeld **Funktions-URL abrufen** im Dropdownmenü die Option **default** (Standard) und anschließend das Symbol **In Zwischenablage kopieren** aus. 
 

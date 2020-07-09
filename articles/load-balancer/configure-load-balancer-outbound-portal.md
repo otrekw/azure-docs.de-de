@@ -5,15 +5,15 @@ description: In diesem Artikel wird gezeigt, wie Sie Lastenausgleichs- und Ausga
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: b75f49155991bfc71f788ad88f166c0bec281841
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2dff916bf005b307f27264ad7a17864fbba50872
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77589693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367392"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe des Azure-Portals
 
@@ -25,7 +25,7 @@ Jedes Front-End verweist auf eine öffentliche IP-Adresse. In diesem Szenario un
 
 Das Szenario verwendet zwei Back-End-Pools: einen für eingehenden Datenverkehr und einen für ausgehenden Datenverkehr. Diese Pools veranschaulichen die Funktion und stellen dem Szenario Flexibilität zur Verfügung.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen. 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -38,14 +38,14 @@ In diesem Abschnitt erstellen Sie eine Load Balancer-Instanz für den Lastenaus
 1. Wählens Sie links oben auf dem Bildschirm die Optionen **Ressource erstellen** > **Netzwerk** > **Lastenausgleich** aus.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus:
 
-    | Einstellung                 | value                                              |
+    | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen** aus, und geben Sie **myResourceGroupSLB** in das Textfeld ein.|
     | Name                   | **myLoadBalancer**                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
-    | SKU           | Wählen Sie **Standard** oder **Basic** aus. Microsoft empfiehlt für Produktionsworkloads die Option „Standard“. |
+    | SKU           | Wählen Sie **Standard** aus. |
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. Wenn Sie über eine vorhandene öffentliche IP-Adresse verfügen, die Sie verwenden möchten, wählen Sie **Vorhandene verwenden** aus.  Die vorhandene öffentliche IP-Adresse muss eine **Standard**-SKU sein.  Öffentliche IP-Adressen des Typs „Basic“ sind nicht mit einem Lastenausgleich des Typs **Standard**-SKU kompatibel.  |
     | Name der öffentlichen IP-Adresse              | Geben Sie **myPublicIP** in das Textfeld ein.|
     | Verfügbarkeitszone | Wählen Sie **Zonenredundant** aus, um eine resiliente Load Balancer-Instanz zu erstellen. Wählen Sie zum Erstellen einer zonalen Load Balancer-Instanz eine bestimmte Zone aus 1, 2 oder 3 aus. |
@@ -79,7 +79,7 @@ Ein Integritätstest wird verwendet, um den Status Ihrer App zu überwachen. Abh
 1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
 2. Wählen Sie unter **Einstellungen** die Option **Integritätstests** und dann **Hinzufügen** aus.
     
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Name | Geben Sie **myHealthProbe** ein. |
     | Protocol | Wählen Sie **HTTP** aus. |
@@ -106,7 +106,7 @@ Im folgenden Abschnitt erstellen Sie Folgendes:
 2. Wählen Sie unter **Einstellungen** die Option **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
 3. Konfigurieren Sie die Lastenausgleichsregel mit folgenden Werten:
     
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Name | Geben Sie **myHTTPRule** ein. |
     | Protocol | Wählen Sie **TCP** aus. |
@@ -128,7 +128,7 @@ Ausgangsregeln für den Lastenausgleich konfigurieren das ausgehende SNAT für v
 
 3. Verwenden Sie diese Werte zum Konfigurieren der Front-End-IP-Konfiguration für ausgehenden Datenverkehr:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Name | Geben Sie **LoadBalancerFrontEndOutbound** ein. |
     | IP-Version | Wählen Sie **IPv4** aus. |
@@ -153,7 +153,7 @@ Ausgangsregeln für den Lastenausgleich konfigurieren das ausgehende SNAT für v
 
 3. Verwenden Sie diese Werte zur Konfiguration der Ausgangsregeln:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Name | Geben Sie **myOutboundRule** ein. |
     | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontEndOutbound** aus. |

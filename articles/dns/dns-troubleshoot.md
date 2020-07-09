@@ -4,21 +4,21 @@ description: In diesem Lernpfad lernen Sie die Problembehandlung der häufigen P
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: b5e1624bf852256f6e8fb0b616258f932c5a8998
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a63a0c1e0044f5dcd6babb4941e1f4409404cdd2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76939028"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711186"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS – Handbuch zur Problembehandlung
 
 Dieser Artikel enthält Informationen zur Problembehandlung für häufige Fragen zu Azure DNS.
 
-Wenn das Problem durch diese Schritte nicht behoben wird, können Sie auch in unserem [Community-Supportforum auf MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork) nach dem Problem suchen oder einen Beitrag dazu veröffentlichen. Sie haben auch die Möglichkeit, eine Azure-Supportanfrage zu erstellen.
+Wenn das Problem durch diese Schritte nicht behoben wird, können Sie auch auf unserer [Frageseite von Microsoft Q&A zu Communitysupport](https://docs.microsoft.com/answers/topics/azure-virtual-network.html) nach dem Problem suchen oder einen Beitrag dazu veröffentlichen. Sie haben auch die Möglichkeit, eine Azure-Supportanfrage zu erstellen.
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>Ich kann keine DNS-Zone erstellen.

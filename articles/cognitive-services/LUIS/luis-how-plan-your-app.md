@@ -1,14 +1,14 @@
 ---
 title: Planen Ihrer App – LUIS
 description: Beschreiben Sie kurz relevante App-Absichten und -Entitäten, und erstellen Sie dann Ihre Anwendungspläne in Language Understanding Intelligent Service (LUIS).
-ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.topic: how-to
+ms.date: 05/14/2020
+ms.openlocfilehash: 8141e2a47e2a550a5dba50bc22117649c0bd04e2
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382305"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340231"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Planen Ihres LUIS-App-Schemas mit Motivdomäne und Datenextraktion
 
@@ -48,6 +48,30 @@ Wenn Sie festlegen, welche Entitäten in Ihrer App verwendet werden sollen, bede
 
 > [!TIP]
 > LUIS bietet [vordefinierte Entitäten](luis-prebuilt-entities.md) für gängige, interaktive Benutzerszenarios. Verwenden Sie vorgefertigte Entitäten als Ausgangspunkt für die Anwendungsentwicklung.
+
+## <a name="resolution-with-intent-or-entity"></a>Absicht oder Entität?
+
+In vielen Fälle, insbesondere bei natürlicher Sprache, enthalten die Äußerungen der Benutzer mehr als eine Funktion oder Absicht. Hierfür gilt die Faustregel, dass die Darstellung der Ausgabe in Absichten und Entitäten erfolgen kann. Die Darstellung sollte den Aktionen der Clientanwendung zuordenbar sein und muss nicht auf die Absichten beschränkt sein.
+
+Das Konzept, dass Aktionen (in der Regel als Absichten bezeichnet) auch als Entitäten erfasst und in diesem Format in die JSON-Ausgabe eingefügt werden, sodass sie einer bestimmten Aktion zugeordnet werden können, wird als **Intentities** (Absichtsentitäten) bezeichnet. Die _Negation_ wird häufig verwendet, um diese Abhängigkeit von Absicht und Entität für die vollständige Extraktion zu nutzen.
+
+Sehen Sie sich die folgenden beiden Äußerungen an, deren Wortwahl sich zwar ähnelt, aber die unterschiedliche Ergebnisse hervorbringen:
+
+|Äußerung|
+|--|
+|`Please schedule my flight from Cairo to Seattle`|
+|`Cancel my flight from Cairo to Seattle`|
+
+Anstelle von zwei separaten Absichten können Sie eine Absicht mit einer `FlightAction`-Entität für Machine Learning erstellen. Die Machine-Learning-Entität sollte die Einzelheiten der Aktion für eine Buchungs- und Stornierungsanfrage sowie für einen Start- und einen Zielort extrahieren.
+
+Die Entität `FlightAction` wäre nach folgendem Schema für Machine-Learning-Entitäten und -Subentitäten strukturiert:
+
+* FlightAction
+    * Aktion
+    * Origin
+    * Destination
+
+Fügen Sie den Subentitäten einige Eigenschaften hinzu, um die Extraktion zu optimieren. Wählen Sie Eigenschaften anhand des zu erwartenden Vokabulars in Benutzeräußerungen und anhand der Werte aus, die in der Vorhersageantwort zurückgegeben werden sollen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

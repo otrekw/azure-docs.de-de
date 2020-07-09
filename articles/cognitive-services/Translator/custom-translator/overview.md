@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 12/09/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: 04f90292b74593dece5f7e54268907e184fd084c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a78e2cbc6f1e33f516912911e2038a0de3ff6b99
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592762"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996940"
 ---
 # <a name="what-is-custom-translator"></a>Worum handelt es sich bei Custom Translator?
 
@@ -54,7 +54,7 @@ Mithilfe des sicheren [Custom Translator](https://portal.customtranslator.azure.
 
 Der Zugriff auf [Custom Translator](https://portal.customtranslator.azure.ai) ist auch programmgesteuert über eine [dedizierte API](https://custom-api.cognitive.microsofttranslator.com/swagger/) (derzeit in der Vorschauphase) möglich. Die API ermöglicht Benutzern das Verwalten der Erstellung oder Aktualisierung von Training in regelmäßigen Abständen über ihre eigenen Apps oder Webdienste.
 
-Die Kosten für die Verwendung eines benutzerdefinierten Modells zum Übersetzen von Inhalt basiert auf dem Tarif für Translator des Benutzers. Informationen zu Tarifen für Cognitive Services finden Sie auf der [Preiswebseite für Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/).
+Die Kosten für die Verwendung eines benutzerdefinierten Modells zum Übersetzen von Inhalt basieren auf dem Translator-Tarif des Benutzers. Informationen zu Tarifen für Cognitive Services finden Sie auf der [Preiswebseite für Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/).
 
 ## <a name="securely-translate-anytime-anywhere-on-all-your-apps-and-services"></a>Sicheres Übersetzen – jederzeit und überall in allen Ihren Apps und Diensten
 

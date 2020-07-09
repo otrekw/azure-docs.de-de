@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738115"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130452"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsfehler
 
@@ -36,7 +36,7 @@ Replication couldn't be enabled for the virtual machine <VmName>.
 
 ### <a name="fix-the-problem"></a>Beheben des Problems
 
-Wenden Sie sich an den [Azure-Abrechnungssupport](/azure/azure-portal/supportability/resource-manager-core-quotas-request), um Ihr Abonnement für die Erstellung von VMs der erforderlichen Größen am Zielstandort aktivieren zu lassen. Wiederholen Sie dann den fehlerhaften Vorgang.
+Wenden Sie sich an den [Azure-Abrechnungssupport](../azure-portal/supportability/resource-manager-core-quotas-request.md), um Ihr Abonnement für die Erstellung von VMs der erforderlichen Größen am Zielstandort aktivieren zu lassen. Wiederholen Sie dann den fehlerhaften Vorgang.
 
 Wenn für den Zielstandort eine Kapazitätsbeschränkung gilt, deaktivieren Sie die Replikation an diesen Standort. Dann aktivieren Sie die Replikation an einen anderen Standort, an dem für Ihr Abonnement ein ausreichendes Kontingent zum Erstellen von VMs der erforderlichen Größen zur Verfügung steht.
 
@@ -202,7 +202,7 @@ Eine Verbindung mit IP4-Endpunkten für die Authentifizierung und Identität von
 #### <a name="fix-the-problem"></a>Beheben des Problems
 
 Azure Site Recovery benötigt zur Authentifizierung Zugriff auf IP-Adressbereiche von Office 365.
-Wenn Sie Regeln für Azure-Netzwerksicherheitsgruppen (NSG-Regeln) oder einen Firewallproxy zum Steuern der ausgehenden Netzwerkkonnektivität für die VM verwenden, muss sichergestellt werden, dass Sie zum Zulassen des Zugriffs auf AAD eine NSG-Regel verwenden, die auf dem [AAD-Diensttag (Azure Active Directory)](/azure/virtual-network/security-overview#service-tags) basiert. Auf IP-Adressen basierende NSG-Regeln werden nicht mehr unterstützt.
+Wenn Sie Regeln für Azure-Netzwerksicherheitsgruppen (NSG-Regeln) oder einen Firewallproxy zum Steuern der ausgehenden Netzwerkkonnektivität für die VM verwenden, muss sichergestellt werden, dass Sie zum Zulassen des Zugriffs auf AAD eine NSG-Regel verwenden, die auf dem [AAD-Diensttag (Azure Active Directory)](../virtual-network/security-overview.md#service-tags) basiert. Auf IP-Adressen basierende NSG-Regeln werden nicht mehr unterstützt.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problem 3: Fehler bei der Site Recovery-Konfiguration (151197)
 
@@ -260,8 +260,8 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 Stellen Sie sicher, dass die Datenträger initialisiert wurden, und wiederholen Sie den Vorgang.
 
-- **Windows**: [Anfügen und Initialisieren eines neuen Datenträgers](/azure/virtual-machines/windows/attach-managed-disk-portal).
-- **Linux:** [Initialisieren eines neues Datenträgers unter Linux](/azure/virtual-machines/linux/add-disk).
+- **Windows**: [Anfügen und Initialisieren eines neuen Datenträgers](../virtual-machines/windows/attach-managed-disk-portal.md).
+- **Linux:** [Initialisieren eines neues Datenträgers unter Linux](../virtual-machines/linux/add-disk.md).
 
 Wenden Sie sich an den Support, wenn das Problem weiterhin besteht.
 

@@ -10,19 +10,19 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: bac37e91933d16f36f2d8917760968122a4f5619
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 81299751affe5f59e1132950ccb80844fcc1fae3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588903"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681394"
 ---
 # <a name="composite-entity"></a>Entität vom Typ „Composite“
 
 Eine zusammengesetzte Entität besteht aus anderen Entitäten, z. B. vom Typ Vordefiniert, Einfach, Regulärer Ausdruck oder Liste. Die einzelnen Entitäten bilden zusammen die gesamte Entität.
 
 > [!CAUTION]
-> Diese Entität ist **veraltet**. Migrieren Sie zur [durch maschinelles Lernen erworbenen Entität](reference-entity-machine-learned-entity.md).
+> Diese Entität ist **veraltet**. Migrieren Sie zur [Machine-Learning-Entität](reference-entity-machine-learned-entity.md).
 
 **Diese Entität ist gut geeignet, wenn für die Daten Folgendes gilt**:
 

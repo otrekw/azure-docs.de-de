@@ -10,14 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/27/2020
+ms.date: 05/21/2020
 ms.author: apimpm
-ms.openlocfilehash: cf65cd757655b496ceb87fa1ff8121ac6209d869
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: references_regions
+ms.openlocfilehash: f7a036a382ac3b16093529a67abe9ef78b897274
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203198"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300071"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
 Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann durch verschiedene VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Übersicht über Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -126,7 +127,7 @@ Es folgt eine Liste gängiger Konfigurationsprobleme, die beim Bereitstellen des
 | * / *                        | Eingehend            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Lastenausgleich von Azure-Infrastruktur                          | Extern & Intern  |
 
 >[!IMPORTANT]
-> Die Ports, deren *Zweck***fett** formatiert ist, sind zur erfolgreichen Bereitstellung des API Management-Diensts erforderlich. Die Blockierung der anderen Ports beeinträchtigt jedoch die Möglichkeit, den ausgeführten Dienst zu verwenden und zu überwachen.
+> Die Ports, deren *Zweck* **fett** formatiert ist, sind zur erfolgreichen Bereitstellung des API Management-Diensts erforderlich. Die Blockierung der anderen Ports beeinträchtigt jedoch die Möglichkeit, den ausgeführten Dienst zu verwenden und zu überwachen.
 
 + **TLS-Funktionalität**: Zum Aktivieren der Erstellung und Prüfung von TLS/SSL-Vertrauensketten benötigt der API Management-Dienst eine ausgehende Netzwerkverbindung zu ocsp.msocsp.com, mscrl.microsoft.com und crl.microsoft.com. Diese Abhängigkeit ist nicht erforderlich, wenn Zertifikate, die Sie in API Management hochladen, die vollständige Kette zum Stamm der Zertifizierungsstelle enthalten.
 
@@ -136,9 +137,9 @@ Es folgt eine Liste gängiger Konfigurationsprobleme, die beim Bereitstellen des
 
     | Azure-Umgebung | Endpunkte                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure – Öffentlich      | <ul><li>gcs.prod.monitoring.core.windows.net (**neu**)</li><li>prod.warmpath.msftcloudes.com (**als veraltet markiert**)</li><li>shoebox2.metrics.microsoftmetrics.com(**neu**)</li><li>shoebox2.metrics.nsatc.net(**wird eingestellt**)</li><li>prod3.metrics.microsoftmetrics.com(**neu**)</li><li>prod3.metrics.nsatc.net(**wird eingestellt**)</li><li>prod3-black.prod3.metrics.microsoftmetrics.com(**neu**)</li><li>prod3-black.prod3.metrics.nsatc.net(**wird eingestellt**)</li><li>prod3-red.prod3.metrics.microsoftmetrics.com(**neu**)</li><li>prod3-red.prod3.metrics.nsatc.net(**wird eingestellt**)</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`.warm.ingestion.msftcloudes.com. `East US 2` ergibt eastus2.warm.ingestion.msftcloudes.com.</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com(**neu**)</li><li>shoebox2.metrics.nsatc.net(**wird eingestellt**)</li><li>prod3.metrics.microsoftmetrics.com(**neu**)</li><li>prod3.metrics.nsatc.net(**wird eingestellt**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com(**neu**)</li><li>shoebox2.metrics.nsatc.net(**wird eingestellt**)</li><li>prod3.metrics.microsoftmetrics.com(**neu**)</li><li>prod3.metrics.nsatc.net(**wird eingestellt**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Azure – Öffentlich      | <ul><li>gcs.prod.monitoring.core.windows.net (**neu**)</li><li>prod.warmpath.msftcloudes.com (**als veraltet markiert**)</li><li>global.prod.microsoftmetrics.com(**neu**)</li><li>global.metrics.nsatc.net(**wird eingestellt**)</li><li>shoebox2.prod.microsoftmetrics.com(**neu**)</li><li>shoebox2.metrics.nsatc.net(**wird eingestellt**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com(**neu**)</li><li>prod3.metrics.nsatc.net(**wird eingestellt**)</li><li>prod3-black.prod.microsoftmetrics.com(**neu**)</li><li>prod3-black.prod3.metrics.nsatc.net(**wird eingestellt**)</li><li>prod3-red.prod.microsoftmetrics.com(**neu**)</li><li>prod3-red.prod3.metrics.nsatc.net(**wird eingestellt**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>global.prod.microsoftmetrics.com(**neu**)</li><li>global.metrics.nsatc.net(**wird eingestellt**)</li><li>shoebox2.prod.microsoftmetrics.com(**neu**)</li><li>shoebox2.metrics.nsatc.net(**wird eingestellt**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com(**neu**)</li><li>prod3.metrics.nsatc.net(**wird eingestellt**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com(**neu**)</li><li>global.metrics.nsatc.net(**wird eingestellt**)</li><li>shoebox2.prod.microsoftmetrics.com(**neu**)</li><li>shoebox2.metrics.nsatc.net(**wird eingestellt**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com(**neu**)</li><li>prod3.metrics.nsatc.net(**wird eingestellt**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > Bei der Änderung der oben genannten Cluster mit der DNS-Zone **.nsatc.net** in **.microsoftmetrics.com** handelt es sich größtenteils um eine DNS-Änderung. Die IP-Adresse des Clusters ändert sich nicht.
@@ -265,7 +266,7 @@ Die IP-Adressen werden auf die **Azure-Umgebung** aufgeteilt. Wenn IP-Adressen e
 | Azure Government| USDoD, Osten| 52.181.32.192|
 
 ## <a name="related-content"></a><a name="related-content"> </a>Verwandte Inhalte
-* [Verbinden eines virtuellen Netzwerks mit dem Back-End über VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
+* [Verbinden eines virtuellen Netzwerks mit dem Back-End über VPN Gateway](../vpn-gateway/design.md#s2smulti)
 * [Herstellen einer Verbindung mit einem virtuellen Netzwerk in verschiedenen Bereitstellungsmodellen](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management](api-management-howto-api-inspector.md)
 * [Häufig gestellte Fragen zu Virtual Network](../virtual-network/virtual-networks-faq.md)

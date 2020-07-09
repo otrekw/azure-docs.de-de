@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 2557ce7be44f0505b96df06cd2b44a2fa3ce3fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414217"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187667"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -55,7 +55,7 @@ Um Daten aus einer Quelle in eine Senke zu kopieren, führt der Dienst, der die 
 
 Sie können die Kopieraktivität verwenden, um Dateien unverändert zwischen zwei dateibasierten Datenspeichern zu kopieren. In diesem Fall werden die Daten effizient ohne Serialisierung oder Deserialisierung kopiert. Darüber hinaus können Sie Dateien eines bestimmten Formats analysieren oder generieren. Sie können beispielsweise folgende Vorgänge durchführen:
 
-* Kopieren von Daten aus einer lokalen SQL Server-Datenbank und Schreiben in Azure Data Lake Storage Gen2 im Parquet-Format
+* Kopieren von Daten aus einer SQL Server-Datenbank und Schreiben in Azure Data Lake Storage Gen2 im Parquet-Format
 * Kopieren von Dateien im Textformat (CSV) aus einem lokalen Dateisystem und Schreiben in Azure Blob Storage im Avro-Format
 * Kopieren von ZIP-Dateien aus einem lokalen Dateisystem, direktes Dekomprimieren und Schreiben der extrahierten Dateien in Azure Data Lake Storage Gen2
 * Kopieren von Daten im Gzip-komprimierten Textformat (CSV) aus Azure Blob Storage und Schreiben in Azure SQL-Datenbank
@@ -250,4 +250,4 @@ Weitere Informationen finden Sie in den folgenden Schnellstartanleitungen, Tutor
 
 - [Kopieren von Daten zwischen Speicherorten unter demselben Azure Blob Storage-Konto](quickstart-create-data-factory-dot-net.md)
 - [Kopieren von Daten aus Azure Blob Storage nach Azure SQL-Datenbank](tutorial-copy-data-dot-net.md)
-- [Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure](tutorial-hybrid-copy-powershell.md)
+- [Kopieren von Daten aus einer SQL Server-Datenbank in Azure](tutorial-hybrid-copy-powershell.md)

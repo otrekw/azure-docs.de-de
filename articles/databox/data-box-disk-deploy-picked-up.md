@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6b165df42da35077c7ef252291d8e1514bb3b1b0
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 07c86ca016d3e38359cbe8ba61d67f109c42edb0
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995998"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944966"
 ---
 ::: zone target="docs"
 
@@ -49,7 +49,7 @@ Stellen Sie zunächst sicher, dass Sie die Schritte unter [Tutorial: Kopieren vo
     - Es empfiehlt sich, die Datenträger sorgfältig in Luftpolsterfolie zu verpacken.
     - Achten Sie auf einen festen Sitz der Teile im Karton, um ein Verrutschen innerhalb der Verpackung zu vermeiden.
 
-Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben. Für USA/Kanada, Australien, die Europäische Union (EU) und asiatische Länder gelten jeweils andere Anweisungen.
+Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben. Für USA/Kanada, Australien, die Europäische Union (EU) und asiatische Länder/Regionen gelten jeweils andere Anweisungen.
 
 ### <a name="in-us-or-canada"></a>[In den USA oder in Kanada](#tab/in-us-or-canada)
 
@@ -142,10 +142,10 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
     To: kadcustcare@singpost.com
     Subject: Microsoft Azure Pick-up - XZ00001234567 
     Body: 
-     a. Requestor name
-     b. Requestor contact number
-     c. Requestor collection address
-     d. Preferred collection date
+     a.    Requestor name
+     b.    Requestor contact number
+     c.    Requestor collection address
+     d.    Preferred collection date
     ```
 
    > [!NOTE]
@@ -159,7 +159,7 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
 
 ### <a name="in-self-managed"></a>[Selbst verwalteter Versand](#tab/in-selfmanaged)
 
-Wenn Sie Data Box Disk in Japan, Singapur, Südkorea und Westeuropa verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor: 
+Wenn Sie Data Box Disk in Japan, Singapur, Südkorea, Westeuropa oder Indien verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor: 
 
 1. Navigieren Sie im Azure-Portal zum Blatt **Übersicht** für Ihre Bestellung. Durchlaufen Sie die Schritte, die angezeigt werden, wenn Sie **Abholung planen** auswählen. Es sollte ein Autorisierungscode angezeigt werden, der bei der Abgabe der Bestellung verwendet wird.
 
@@ -167,7 +167,7 @@ Wenn Sie Data Box Disk in Japan, Singapur, Südkorea und Westeuropa verwenden un
 
     ```
     To: adbops@microsoft.com
-    Subject: Request for Azure Data Box Disk drop-off for order: ‘orderName’
+    Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
     Body: 
      a. Order name
      b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.

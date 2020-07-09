@@ -4,12 +4,12 @@ description: Batch unterstützt Azure AD für die Authentifizierung vom Batch-Di
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 186de47b61c25485cec602cbc9bb208a795a7785
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: ed2bfb8e0fbaff0b7ad0ded734e33512c82a4040
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757584"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958207"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -20,7 +20,7 @@ Bei Verwendung der Azure AD-Authentifizierung mit Azure Batch können Sie auf zw
 - Mit **integrierter Authentifizierung**, um einen Benutzer zu authentifizieren, der mit der Anwendung interagiert. Eine Anwendung, die die integrierte Authentifizierung verwendet, erfasst die Anmeldeinformationen eines Benutzers und verwendet diese Anmeldeinformationen zum Authentifizieren des Zugriffs auf Batch-Ressourcen.
 - Mithilfe eines **Dienstprinzipals**, um eine unbeaufsichtigte Anwendung zu authentifizieren. Ein Dienstprinzipal definiert die Richtlinie und Berechtigungen für eine Anwendung, um die Anwendung zu repräsentieren, wenn zur Laufzeit auf Ressourcen zugegriffen wird.
 
-Weitere Informationen zu Azure AD finden Sie unter [Dokumentation zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
+Weitere Informationen zu Azure AD finden Sie unter [Dokumentation zu Azure Active Directory](../active-directory/index.yml).
 
 ## <a name="endpoints-for-authentication"></a>Endpunkte für die Authentifizierung
 
@@ -419,7 +419,7 @@ Verwenden Sie die Dienstprinzipal-Anmeldeinformationen, um ein **BatchServiceCli
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Azure AD finden Sie unter [Dokumentation zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Ausführliche Beispiele zur ADAL-Verwendung finden Sie in der Bibliothek mit den [Azure-Codebeispielen](https://azure.microsoft.com/resources/samples/?service=active-directory).
+- Weitere Informationen zu Azure AD finden Sie unter [Dokumentation zu Azure Active Directory](../active-directory/index.yml). Ausführliche Beispiele zur ADAL-Verwendung finden Sie in der Bibliothek mit den [Azure-Codebeispielen](https://azure.microsoft.com/resources/samples/?service=active-directory).
 
 - Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). Wie Sie einen Dienstprinzipal im Azure-Portal erstellen, erfahren Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../active-directory/develop/howto-create-service-principal-portal.md). Sie können einen Dienstprinzipal auch mit PowerShell oder Azure CLI erstellen.
 

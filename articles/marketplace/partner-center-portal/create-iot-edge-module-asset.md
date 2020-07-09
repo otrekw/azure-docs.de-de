@@ -1,18 +1,18 @@
 ---
 title: Vorbereiten der technischen Ressourcen für das IoT Edge-Modul – Azure Marketplace
 description: Informieren Sie sich über die technischen Anforderungen und die Anforderungen an die Konfiguration, die von den technischen Ressourcen für Ihr IoT Edge-Modul (Internet of Things) erfüllt werden müssen, damit Sie diese in Azure Marketplace veröffentlichen können.
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/03/2020
-ms.openlocfilehash: fc35602b55e79f3351da0def800d2a2b2698e250
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 685ac2a383bcc0b85121112b9b5df4aa7650ab59
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856730"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101170"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Vorbereiten der technischen Ressourcen für das IoT Edge-Modul
 
@@ -22,8 +22,8 @@ In diesem Artikel werden die Anforderungen beschrieben, die die technischen Ress
 
 Ein IoT Edge-Modul ist ein Docker-kompatibler Container, der auf einem IoT Edge-Gerät ausgeführt wird.
 
-- Weitere Informationen zu IoT Edge-Modulen finden Sie unter [Grundlegendes zu Azure IoT Edge-Modulen](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules).
-- Informationen zu den ersten Schritten bei der Entwicklung Ihres IoT Edge-Moduls finden Sie unter [Entwickeln eigener IoT Edge-Module](https://docs.microsoft.com/azure/iot-edge/module-development).
+- Weitere Informationen zu IoT Edge-Modulen finden Sie unter [Grundlegendes zu Azure IoT Edge-Modulen](../../iot-edge/iot-edge-modules.md).
+- Informationen zu den ersten Schritten bei der Entwicklung Ihres IoT Edge-Moduls finden Sie unter [Entwickeln eigener IoT Edge-Module](../../iot-edge/module-development.md).
 
 ## <a name="technical-requirements"></a>Technische Anforderungen
 
@@ -35,7 +35,7 @@ Ihr IoT Edge-Modul muss eine der folgenden Plattformoptionen unterstützen:
 
 #### <a name="tier-1-platforms-supported-by-iot-edge"></a>Von IoT Edge unterstützte Plattformen der Ebene 1
 
-Ihr Modul muss alle Plattformen der Ebene 1 unterstützen, die von IoT Edge unterstützt werden (wie unter [Azure IoT Edge-Support](https://docs.microsoft.com/azure/iot-edge/support) dargestellt). Diese Option wird empfohlen, da so die Benutzerfreundlichkeit verbessert wird. Module, die diese Kriterien erfüllen, werden vorgestellt. Für ein Modul mit dieser Plattformoption muss Folgendes gelten:
+Ihr Modul muss alle Plattformen der Ebene 1 unterstützen, die von IoT Edge unterstützt werden (wie unter [Azure IoT Edge-Support](../../iot-edge/support.md) dargestellt). Diese Option wird empfohlen, da so die Benutzerfreundlichkeit verbessert wird. Module, die diese Kriterien erfüllen, werden vorgestellt. Für ein Modul mit dieser Plattformoption muss Folgendes gelten:
 
 - Es muss ein latest-Tag und ein Versionstag (z. B. 1.0.1) bereitstellen. Dabei handelt es sich um Manifesttags, die mit dem [Manifesttool von GitHub](https://github.com/estesp/manifest-tool) erstellt werden.
 
@@ -43,7 +43,7 @@ Ihr Modul muss alle Plattformen der Ebene 1 unterstützen, die von IoT Edge unt
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Eine Teilmenge der von IoT Edge unterstützten Plattformen der Ebene 1
 
-Ihr Modul muss eine Teilmenge (mindestens eine) der Plattformen der Ebene 1 unterstützen, die von IoT Edge unterstützt werden (wie unter [Azure IoT Edge-Support](https://docs.microsoft.com/azure/iot-edge/support) dargestellt). Für ein Modul mit dieser Plattformoption muss Folgendes gelten:
+Ihr Modul muss eine Teilmenge (mindestens eine) der Plattformen der Ebene 1 unterstützen, die von IoT Edge unterstützt werden (wie unter [Azure IoT Edge-Support](../../iot-edge/support.md) dargestellt). Für ein Modul mit dieser Plattformoption muss Folgendes gelten:
 
 - Es muss ein latest-Tag und ein Versionstag (z. B. 1.0.1) bereitstellen. Dabei handelt es sich um Manifesttags, die mit dem [Manifesttool](https://github.com/estesp/manifest-tool) von GitHub erstellt werden, wenn mehr als eine Plattform unterstützt wird. Manifesttags sind optional, wenn nur eine Plattform unterstützt wird.
 - Verwenden Sie die Registerkarte „Angebotsliste“ in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace), um unter dem Abschnitt **Nützliche Links** mindestens einem IoT Edge-Gerät im [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/)-Gerätekatalog einen Link hinzuzufügen.
@@ -139,8 +139,8 @@ Ihr Angebot wird auch dann neu zertifiziert, wenn Sie es aktualisieren, indem Si
 
 ## <a name="host-module-in-azure-container-registry"></a>Hostmodul in Azure Container Registry
 
-Um Ihr IoT Edge-Modul in Azure Marketplace hochzuladen, müssen Sie es zuerst in [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR) hosten. Das Modul muss alle Tags enthalten, die Sie veröffentlichen möchten, einschließlich der Imagetags, auf die durch ein Manifesttag verwiesen wird. Weitere Informationen hierzu finden Sie im Tutorial [Erstellen einer Azure-Containerregistrierung und Übertragen eines Containerimages per Pushvorgang](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr).
+Um Ihr IoT Edge-Modul in Azure Marketplace hochzuladen, müssen Sie es zuerst in [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR) hosten. Das Modul muss alle Tags enthalten, die Sie veröffentlichen möchten, einschließlich der Imagetags, auf die durch ein Manifesttag verwiesen wird. Weitere Informationen hierzu finden Sie im Tutorial [Erstellen einer Azure-Containerregistrierung und Übertragen eines Containerimages per Pushvorgang](../../container-instances/container-instances-tutorial-prepare-acr.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines IoT Edge-Modulangebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
+- [Erstellen eines IoT Edge-Modulangebots](azure-iot-edge-module-creation.md)

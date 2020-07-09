@@ -3,12 +3,12 @@ title: Datenmodell „Azure Monitor-Protokolle“
 description: In diesem Artikel werden die Details des Azure Monitor Log Analytics-Datenmodells für Azure Backup-Daten vorgestellt.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 72484923bc94e197cd195c0192b53feb3ef457ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba50e10eee61c571249a9b99c7e3b53d74474382
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183686"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248922"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
 
@@ -463,7 +463,9 @@ Im folgenden finden Sie einige Beispiele, die Ihnen beim Schreiben von Abfragen 
 ## <a name="v1-schema-vs-v2-schema"></a>V1-Schema i. Vgl. mit V2-Schema
 Früher wurden Diagnosedaten für Azure Backup-Agent und Azure VM-Sicherungen an die Azure-Diagnosetabelle in einem Schema gesendet, das als ***V1-Schema*** bezeichnet wird. In der Folge wurden jedoch weitere Spalten hinzugefügt, um andere Szenarien und Workloads zu unterstützen, und Diagnosedaten wurden per Push in einem neuen Schema übertragen, das als ***V2-Schema*** bezeichnet wird. 
 
-Aus Gründen der Abwärtskompatibilität werden Diagnosedaten für Azure Backup-Agent und Azure VM-Sicherungen aktuell sowohl im V1- als auch im V2-Schema an die Azure-Diagnosetabelle gesendet (wobei das V1-Schema mittlerweile als veralteter Zweig geführt wird). Sie können erkennen, welche Datensätze in der Protokollanalyse dem V1-Schema entsprechen, indem Sie Datensätze in Ihren Protokollabfragen nach „SchemaVersion_s=="V1"“ filtern.
+Aus Gründen der Abwärtskompatibilität werden Diagnosedaten für Azure Backup-Agent und Azure VM-Sicherungen aktuell sowohl im V1- als auch im V2-Schema an die Azure-Diagnosetabelle gesendet (wobei das V1-Schema mittlerweile als veralteter Zweig geführt wird). Sie können erkennen, welche Datensätze in der Protokollanalyse dem V1-Schema entsprechen, indem Sie Datensätze in Ihren Protokollabfragen nach „SchemaVersion_s=="V1"“ filtern. 
+
+Im oben beschriebenen [Datenmodell](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model) sehen Sie in der dritten Spalte (Beschreibung), welche Spalten nur zum V1-Schema gehören.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

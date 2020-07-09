@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen einer einseitigen Web-App – Bing-Websuche-API'
+title: 'Tutorial: Erstellen einer Single-Page-Webanwendung – Bing-Websuche-API'
 titleSuffix: Azure Cognitive Services
 description: Dieses Tutorial zum Erstellen einer einseitigen App zeigt, wie Sie mit der Bing-Websuche-API relevante Suchergebnisse in einer einseitigen App abrufen, analysieren und anzeigen können.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 085bfd51ae6eabfc26201897a124a6272e0221fa
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943875"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603586"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Tutorial: Erstellen einer einseitigen Web-App mit der Bing-Websuche-API
+# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Tutorial: Erstellen einer Single-Page-Webanwendung mit der Bing-Websuche-API
 
 Diese einseitige App zeigt, wie Sie Suchergebnisse aus der Bing-Websuche-API abrufen, analysieren und anzeigen. Das Tutorial verwendet Standard-HTML und -CSS und konzentriert sich auf den JavaScript-Code. HTML-, CSS- und JS-Dateien sind in [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) mit Schnellstartanweisungen verfügbar.
 
@@ -30,15 +30,16 @@ Diese Beispiel-App kann:
 > * Abonnementschlüssel verwalten
 > * Fehlerbehandlung
 
-Zum Verwenden dieser App wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Bing-Suche-APIs benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) einen Abonnementschlüssel abrufen.
+Zum Verwenden dieser App wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Bing-Suche-APIs benötigt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Folgende Voraussetzungen müssen erfüllt sein, damit die App ausgeführt werden kann:
 
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Erstellen einer Ressource für die Bing-Suche"  target="_blank"> im Azure-Portal eine Ressource für die Bing-Suche <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+
 * Node.js 8 oder höher
-* Abonnementschlüssel für die Bing-Suche-API. Wenn Sie noch keinen besitzen, [erstellen Sie eine Ressource für Bing-Suche v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Sie können auch einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) verwenden.
-## <a name="get-the-source-code-and-install-dependencies"></a>Abrufen des Quellcodes und Installieren von Abhängigkeiten
 
 Der erste Schritt besteht darin, das Repository mit dem Quellcode der Beispiel-App zu klonen.
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 845c53ec970777901ae8d1c0abf5032ac705d3e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 882a94034831b1c710031031918e70bf3581a4a6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231298"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266643"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -87,7 +87,6 @@ Wenn Ihre ExpressRoute-Verbindung für öffentliches Azure Microsoft-Peering akt
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Power BI ist über eine regionale Azure-Community verfügbar. Die Region Ihres Power BI-Mandanten können Sie [hier](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) ermitteln.
 * Azure Active Directory
-* [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Community der globalen Azure-Dienste)
 * Öffentliche Azure-IP Adressen für IaaS (z. B. VMs, Virtual Network-Gateways, Lastenausgleiche)  
 * Die meisten anderen Azure-Dienste werden ebenfalls unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.
@@ -96,6 +95,7 @@ Wenn Ihre ExpressRoute-Verbindung für öffentliches Azure Microsoft-Peering akt
 
 * CDN
 * Azure Front Door
+* [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * Multi-Factor Authentication-Server (Vorversion)
 * Traffic Manager
 
@@ -118,7 +118,7 @@ Wenn die Meldung „Überprüfung erforderlich“ angezeigt wird, sammeln Sie di
 Dynamics 365- und Common Data Service (CDS)-Umgebungen werden in Azure gehostet, sodass Kunden von der zugrunde liegenden ExpressRoute-Unterstützung für Azure-Ressourcen profitieren. Sie können eine Verbindung mit ihren Dienstendpunkten herstellen, wenn Ihr Routerfilter die Azure-Regionen umfasst, in denen Ihre Dynamics 365/CDS-Umgebungen gehostet werden.
 
 > [!NOTE]
-> [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) ist für Dynamics 365-Konnektivität über Azure ExpressRoute **nicht** erforderlich.
+> [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) ist **nicht** für Dynamics 365-Konnektivität über Azure ExpressRoute erforderlich, wenn die ExpressRoute-Leitung innerhalb derselben [geopolitischen Region](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers#expressroute-locations) bereitgestellt wird.
 
 ## <a name="data-and-connections"></a>Daten und Verbindungen
 
@@ -342,7 +342,7 @@ Eine Local-Verbindung verfügt über die gleichen Features wie eine ExpressRoute
 Für ExpressRoute Local gelten auch die gleichen Einschränkungen in Bezug auf Ressourcen (z. B. die Anzahl von VNETs pro Verbindung) wie für Standard. 
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Wo ist ExpressRoute Local verfügbar, und welchen Azure-Regionen sind die einzelnen Peeringstandorte zugeordnet?
-ExpressRoute Local ist an den Peeringstandorten verfügbar, in deren Nähe sich ein oder zwei Azure-Regionen befinden. Dies gilt nicht für einen Peeringstandort, für den sich im Bundesland/Kanton bzw. im Land keine Azure-Region befindet. Die genauen Zuordnungen finden Sie auf der [Seite mit den Standorten](expressroute-locations-providers.md).  
+ExpressRoute Local ist an den Peeringstandorten verfügbar, in deren Nähe sich ein oder zwei Azure-Regionen befinden. Dies gilt nicht für einen Peeringstandort, für den sich im Bundesland/Kanton bzw. im Land/in der Region keine Azure-Region befindet. Die genauen Zuordnungen finden Sie auf der [Seite mit den Standorten](expressroute-locations-providers.md).  
 
 ## <a name="expressroute-for-office-365"></a>ExpressRoute für Office 365
 

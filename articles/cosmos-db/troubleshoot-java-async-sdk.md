@@ -1,22 +1,35 @@
 ---
-title: Diagnose und Problembehandlung des Azure Cosmos DB Java Async SDK
-description: Verwenden Sie Features wie clientseitige Protokollierung und andere Tools von Drittanbietern, um Probleme im Zusammenhang mit Azure Cosmos DB zu erkennen, zu diagnostizieren und zu beheben.
-author: moderakh
+title: Diagnose und Problembehandlung beim Azure Cosmos DB Async Java SDK v2
+description: Verwenden Sie Features wie clientseitige Protokollierung und andere Tools von Drittanbietern, um Azure Cosmos DB-Probleme in Async Java SDK v2 zu erkennen, zu diagnostizieren und zu beheben.
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 04/30/2019
-ms.author: moderakh
+ms.date: 05/11/2020
+ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65519979"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651890"
 ---
-# <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Behandeln von Problemen bei der Verwendung des Java Async SDK mit Azure Cosmos DB-SQL-API-Konten
+# <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>Behandeln von Problemen bei der Verwendung des Azure Cosmos DB Async Java SDK v2 mit SQL-API-Konten
+
+> [!div class="op_single_selector"]
+> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Async Java SDK v2](troubleshoot-java-async-sdk.md)
+> * [.NET](troubleshoot-dot-net-sdk.md)
+> 
+
+> [!IMPORTANT]
+> Dies ist *nicht* das neueste Java SDK für Azure Cosmos DB! Sie sollten ein Upgrade Ihres Projekts auf das [Azure Cosmos DB Java SDKv4](sql-api-sdk-java-v4.md) durchführen und dann den [Leitfaden zur Problembehandlung](troubleshoot-java-sdk-v4-sql.md) für das Azure Cosmos DB Java SDK v4 lesen. Befolgen Sie für ein Upgrade die Anweisungen in den Anleitungen [Migrieren zum Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) und [Gegenüberstellung von Reactor und RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md). 
+>
+> In diesem Artikel wird nur die Problembehandlung für das Azure Cosmos DB Async Java SDK v2 behandelt. Weitere Informationen finden Sie in den [Versionshinweisen](sql-api-sdk-async-java.md) zum Azure Cosmos DB Async Java SDK v2, im [Maven-Repository](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) und in den [Leistungstipps](performance-tips-async-java.md).
+>
+
 Dieser Artikel behandelt allgemeine Probleme, Problemumgehungen, Diagnoseschritte und Tools bei der Verwendung des [Java Async SDK](sql-api-sdk-async-java.md) mit Azure Cosmos DB-SQL-API-Konten.
 Das Java Async SDK bietet eine clientseitige logische Darstellung für den Zugriff auf die Azure Cosmos DB-SQL-API. Dieser Artikel beschreibt hilfreiche Tools und Vorgehensweisen für Problemfälle.
 
@@ -73,13 +86,16 @@ Halten Sie auch das [Verbindungslimit auf einem Hostcomputer](#connection-limit-
 Wenn Sie einen HTTP-Proxy verwenden, vergewissern Sie sich, dass er die Anzahl von Verbindungen unterstützt, die in `ConnectionPolicy` des SDK konfiguriert ist.
 Andernfalls treten Verbindungsprobleme auf.
 
-#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Ungültiges Codierungsmuster: Blockieren des Netty-E/A-Threads
+#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Ungültiges Codierungsmuster: Blockieren eines Netty E/A-Threads
 
 Das SDK verwendet für die Kommunikation mit Azure Cosmos DB die [Netty](https://netty.io/)-E/A-Bibliothek. Das SDK verfügt über asynchrone APIs und verwendet nicht blockierende E/A-APIs von Netty. Die E/A-Aufgaben des SDK werden in Netty-E/A-Threads ausgeführt. Die Anzahl von Netty-E/A-Threads ist so konfiguriert, dass sie mit der Anzahl von CPU-Kernen des App-Computers übereinstimmt. 
 
 Die Netty-E/A-Threads sind nur für nicht blockierende Netty-E/A-Aufgaben vorgesehen. Das SDK gibt das API-Aufrufergebnis für einen der Netty-E/A-Threads an den Code der App zurück. Wenn die App nach dem Empfang von Ergebnissen im Netty-Thread einen länger dauernden Vorgang ausführt, stehen dem SDK möglicherweise nicht genügend E/A-Threads für interne E/A-Aufgaben zur Verfügung. Eine solche App-Programmierung kann zu niedrigem Durchsatz, hoher Wartezeit und zu `io.netty.handler.timeout.ReadTimeoutException`-Fehlern führen. Wechseln Sie zur Problemumgehung den Thread, wenn Sie wissen, dass der Vorgang länger dauert.
 
 Sehen Sie sich beispielsweise den folgenden Codeausschnitt an. Möglicherweise wird im Netty-Thread eine Aufgabe ausgeführt, die mehr als nur ein paar Millisekunden dauert. In diesem Fall kann es vorkommen, dass für die Verarbeitung von E/A-Aufgaben kein Netty-E/A-Thread mehr vorhanden ist. Dies führt dann zu einem ReadTimeoutException-Fehler.
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-readtimeout"></a>Async Java SDK v2 (Maven com.microsoft.azure::azure-cosmosdb)
+
 ```java
 @Test
 public void badCodeWithReadTimeoutException() throws Exception {
@@ -131,13 +147,19 @@ public void badCodeWithReadTimeoutException() throws Exception {
     assertThat(failureCount.get()).isGreaterThan(0);
 }
 ```
-   Ändern Sie zur Problemumgehung den Thread für die Ausführung zeitaufwendiger Aufgaben. Definieren Sie eine Singletoninstanz des Schedulers für Ihre App.
-   ```java
+Ändern Sie zur Problemumgehung den Thread für die Ausführung zeitaufwendiger Aufgaben. Definieren Sie eine Singletoninstanz des Schedulers für Ihre App.
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>Async Java SDK v2 (Maven com.microsoft.azure::azure-cosmosdb)
+
+```java
 // Have a singleton instance of an executor and a scheduler.
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
-   ```
-   Unter Umständen müssen zeitaufwendige Aufgaben (etwa rechenintensive Aufgaben oder blockierende E/A-Vorgänge) ausgeführt werden. Verlagern Sie den Thread in diesem Fall mithilfe der API `customScheduler` auf einen durch `.observeOn(customScheduler)` bereitgestellten Worker.
+```
+Unter Umständen müssen zeitaufwendige Aufgaben (etwa rechenintensive Aufgaben oder blockierende E/A-Vorgänge) ausgeführt werden. Verlagern Sie den Thread in diesem Fall mithilfe der API `.observeOn(customScheduler)` auf einen durch `customScheduler` bereitgestellten Worker.
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>Async Java SDK v2 (Maven com.microsoft.azure::azure-cosmosdb)
+
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);

@@ -10,13 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: trbye
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: b44c1d722e6acbcf3fbe8f1ac6e05b15c2a0676b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ddcfeaad70e6552f94f9c87b6e9cf24ed15bfba8
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125518"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611464"
 ---
 # <a name="learn-the-basics-of-speech-synthesis"></a>Grundlegendes zur Sprachsynthese
 
@@ -28,8 +29,8 @@ In diesem Artikel werden gängige Entwurfsmuster für die Sprachsynthese mithilf
 * Verwenden neuronaler Stimmen
 
 > [!TIP]
-> Sollten Sie noch keine unserer Schnellstartanleitungen absolviert haben, empfehlen wir Ihnen, sich selbst ein Bild von der Spracherkennung zu machen.
-> * [Schnellstart: Erkennen von Spracheingaben per Mikrofon](quickstarts/text-to-speech.md)
+> Sollten Sie noch keine unserer Schnellstartanleitungen absolviert haben, empfehlen wir Ihnen, sich selbst ein Bild von der Sprachsynthese zu machen.
+> * [Synthetisieren von Sprache über einen Lautsprecher](quickstarts/text-to-speech.md)
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-csharp.md)]

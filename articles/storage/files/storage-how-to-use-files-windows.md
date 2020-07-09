@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2694e0c1536064267faad10517ae58d0709ad1c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4fef6102ac2ee69926c1c56af338b6e92670dd71
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231763"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773099"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
@@ -30,8 +30,8 @@ Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die en
 | Windows 8.1 | SMB 3.0 | Ja | Ja |
 | Windows Server 2012 R2 | SMB 3.0 | Ja | Ja |
 | Windows Server 2012 | SMB 3.0 | Ja | Ja |
-| Windows 7<sup>3</sup> | SMB 2.1 | Ja | Nein  |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ja | Nein  |
+| Windows 7<sup>3</sup> | SMB 2.1 | Ja | Nein |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ja | Nein |
 
 <sup>1</sup>Windows 10, Versionen 1507, 1607, 1709, 1803, 1809, 1903 und 1909.  
 <sup>2</sup>Windows Server, Versionen 1809, 1903 und 1909.  
@@ -80,7 +80,7 @@ Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die en
 ## <a name="using-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 Zum Verwenden einer Azure-Dateifreigabe mit Windows müssen Sie sie entweder einbinden, d.h. ihr einen Laufwerkbuchstaben oder Bereitstellungspunktpfad zuweisen, oder über ihren [UNC-Pfad](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx) darauf zugreifen. 
 
-Im Gegensatz zu anderen SMB-Freigaben, mit denen Sie vielleicht interagiert haben, wie z B. jene, die auf einem Windows Server-Computer, Linux Samba-Server oder NAS-Gerät gehostet werden, unterstützen Azure-Dateifreigaben derzeit keine Kerberos-Authentifizierung mit Ihrer Active Directory (AD) oder Azure Active Directory (AAD)-Identität. Allerdings [arbeiten](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles) wir bereits an dieser Funktion. Stattdessen müssen Sie für den Zugriff auf Ihre Azure-Dateifreigabe den Speicherkontoschlüssel für das Speicherkonto verwenden, das Ihre Azure-Dateifreigabe enthält. Ein Speicherkontoschlüssel ist ein Administratorschlüssel für ein Speicherkonto, der Administratorberechtigungen für alle Dateien und Ordner in der Dateifreigabe, auf die Sie zugreifen, sowie für alle Dateifreigaben und anderen Speicherressourcen (Blobs, Warteschlangen, Tabellen usw.) in Ihrem Speicherkonto umfasst. Wenn dies für Ihre Workload nicht ausreicht, kann die [Azure-Dateisynchronisierung](storage-sync-files-planning.md) den Mangel an Kerberos-Authentifizierung und ACL-Unterstützung in der Zwischenzeit ausgleichen, bis die AAD-basierte Kerberos-Authentifizierung und ACL-Unterstützung öffentlich verfügbar sind.
+In diesem Artikel wird der Speicherkontoschlüssel für den Zugriff auf die Dateifreigabe verwendet. Ein Speicherkontoschlüssel ist ein Administratorschlüssel für ein Speicherkonto, der Administratorberechtigungen für alle Dateien und Ordner in der Dateifreigabe, auf die Sie zugreifen, sowie für alle Dateifreigaben und anderen Speicherressourcen (Blobs, Warteschlangen, Tabellen usw.) in Ihrem Speicherkonto umfasst. Wenn dies für Ihre Workload nicht ausreicht, können Sie [Azure-Dateisynchronisierung](storage-sync-files-planning.md) verwenden, oder Sie verwenden [identitätsbasierte Authentifizierung über SMB](storage-files-active-directory-overview.md).
 
 Ein allgemeines Muster für das Migrieren von Branchenanwendungen per Lift & Shift, die eine SMB-Dateifreigabe an Azure erwarten, ist die Verwendung einer Azure-Dateifreigabe als Alternative für die Ausführung eines dedizierten Windows-Dateiservers auf einem virtuellen Azure-Computer. Ein wichtiger Aspekt für die erfolgreiche Migration einer Branchenanwendung zur Verwendung einer Azure-Dateifreigabe ist, dass viele Branchenanwendungen im Kontext eines dedizierten Dienstkontos mit begrenzten Berechtigungen anstatt des Administratorkontos eines virtuellen Computers ausgeführt werden. Daher müssen Sie sicherstellen, dass Sie die Anmeldeinformationen für die Azure-Dateifreigabe aus dem Kontext des Dienstkontos und nicht Ihres Administratorkontos einbinden/speichern.
 
@@ -186,7 +186,7 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![Screenshot: Dropdownmenü „Netzlaufwerk verbinden“](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-1. Wählen Sie den Laufwerkbuchstaben aus, und geben Sie den UNC-Pfad im Format `<storageAccountName>.file.core.windows.net/<fileShareName>` ein. Beispiel: `anexampleaccountname.file.core.windows.net/example-share-name`.
+1. Wählen Sie den Laufwerkbuchstaben aus, und geben Sie den UNC-Pfad im Format `\\<storageAccountName>.file.core.windows.net\<fileShareName>` ein. Beispiel: `\\anexampleaccountname.file.core.windows.net\example-share-name`.
     
     ![Screenshot des Dialogfelds „Netzlaufwerk verbinden“](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 

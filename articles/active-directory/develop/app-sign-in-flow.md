@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 7b326e17611b5f4b9520d8218a28a67afe9a851a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: af5b27dc85a276c731a61135ab59ab81f5aaf3c2
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584178"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772198"
 ---
 # <a name="app-sign-in-flow-with-microsoft-identity-platform"></a>App-Anmeldeflow mit Microsoft Identity Platform
 
@@ -29,8 +29,8 @@ In diesem Thema wird der grundlegende Anmeldeflow für Web-, Desktop- und mobile
 Wenn ein Benutzer im Browser zu einer Web-App navigiert, passiert Folgendes:
 
 * Die Web-App ermittelt, ob der Benutzer bereits authentifiziert wurde.
-* Falls der Benutzer nicht authentifiziert wurde, delegiert die Web-App den Vorgang an Azure AD, damit der Benutzer angemeldet wird. Diese Anmeldung ist mit der Richtlinie der Organisation konform. Dies kann bedeuten, dass der Benutzer zum Eingeben seiner Anmeldeinformationen aufgefordert wird, indem die mehrstufige Authentifizierung oder ein Verfahren ganz ohne Kennwort (z. B. Windows Hello) verwendet wird.
-* Der Benutzer wird aufgefordert, seine Einwilligung für den Zugriff zu erteilen, den die Client-App benötigt. Aus diesem Grund müssen Client-Apps bei Azure AD registriert werden. Microsoft Identity Platform kann dann Token für den Zugriff bereitstellen, für den der Benutzer seine Einwilligung erteilt hat.
+* Falls der Benutzer nicht authentifiziert wurde, delegiert die Web-App den Vorgang an Azure AD, damit der Benutzer angemeldet wird. Diese Anmeldung ist mit der Richtlinie der Organisation konform. Dies kann bedeuten, dass der Benutzer zum Eingeben seiner Anmeldeinformationen aufgefordert wird, indem die [mehrstufige Authentifizierung](../authentication/concept-mfa-howitworks.md) (manchmal auch als zweistufige Authentifizierung oder 2FA bezeichnet) oder ein Verfahren ganz ohne Kennwort (z. B. Windows Hello) verwendet wird.
+* Der Benutzer wird aufgefordert, seine Einwilligung für den Zugriff zu erteilen, den die Client-App benötigt. Aus diesem Grund müssen Client-Apps bei Azure AD registriert werden. Microsoft Identity Platform kann dann Token für den Zugriff bereitstellen, für den der Benutzer seine Einwilligung erteilt hat.
 
 Nach der erfolgreichen Authentifizierung des Benutzers:
 
@@ -48,7 +48,7 @@ Web-App-Entwickler können angeben, ob für alle oder nur für bestimmte Seiten 
 
 Dieses Attribut bewirkt, dass für ASP.NET überprüft wird, ob ein Sitzungscookie mit der Identität des Benutzers vorhanden ist. Falls kein Cookie vorhanden ist, leitet ASP.NET die Authentifizierung an den angegebenen Identitätsanbieter um. Wenn Azure AD als Identitätsanbieter verwendet wird, leitet die Web-App die Authentifizierung an `https://login.microsoftonline.com` um, und es wird ein Dialogfeld für die Anmeldung angezeigt.
 
-### <a name="how-a-web-app-delegates-sign-in-to-microsoft-identity-platform-and-obtains-a-token"></a>Delegieren der Anmeldung bei Microsoft Identity Platform und Abrufen eines Tokens durch die Web-App
+### <a name="how-a-web-app-delegates-sign-in-to-microsoft-identity-platform-and-obtains-a-token"></a>Delegieren der Anmeldung an Microsoft Identity Platform und Abrufen eines Tokens durch die Web-App
 
 Die Benutzerauthentifizierung erfolgt über den Browser. Für das OpenID-Protokoll werden die üblichen HTTP-Protokollnachrichten verwendet.
 
@@ -75,7 +75,7 @@ Standardmäßig wird für die MSAL der Systembrowser genutzt. Eine Ausnahme stel
 
 Weitere Themen zu den Grundlagen von Authentifizierung und Autorisierung:
 
-* Unter [Authentifizierung im Vergleich zu Autorisierung](authentication-vs-authorization.md) lernen Sie die grundlegenden Konzepte für Authentifizierung und Autorisierung in Microsoft Identity Platform kennen.
+* Unter [Authentifizierung im Vergleich zu Autorisierung](authentication-vs-authorization.md) lernen Sie die grundlegenden Konzepte von Authentifizierung und Autorisierung in Microsoft Identity Platform kennen.
 * Unter [Sicherheitstoken](security-tokens.md) erfahren Sie, wie Zugriffstoken, Aktualisierungstoken und ID-Token bei Authentifizierung und Autorisierung verwendet werden.
 * Unter [Anwendungsmodell](application-model.md) erhalten Sie Informationen zum Registrierungsvorgang für Ihre Anwendung, damit diese in Microsoft Identity Platform integriert werden kann.
 

@@ -7,12 +7,11 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: sukishen
-ms.openlocfilehash: d086484ece6faf95dccffb1e29da8a0e906b1da4
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
-ms.translationtype: HT
+ms.openlocfilehash: d89a3c65eb8d8bffd4cf87160286d1905bd1ba5b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985625"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747613"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Herstellen einer Verbindung mit China über Azure Virtual WAN und einen sicheren Hub
 
@@ -44,9 +43,9 @@ Abhängig vom Anbieter und Ihren Anforderungen müssen Sie nun einen der folgend
 * Softwaredefiniertes WAN (SDWAN)
 * Dedizierter Internetzugang
 
-Als nächstes müssen Sie mit diesem Anbieter eine Abzweigung zum globalen Netzwerk von Microsoft und dem zugehörigen Umkreisnetzwerk in Hongkong, nicht in Peking oder Schanghai, vereinbaren. In diesem Fall ist Hongkong wegen der physischen Verbindung und der Position in China sehr wichtig.
+Als nächstes müssen Sie mit diesem Anbieter eine Abzweigung zum globalen Netzwerk von Microsoft und dem zugehörigen Umkreisnetzwerk in Hongkong, nicht in Peking (Beijing) oder Schanghai, vereinbaren. In diesem Fall ist Hongkong wegen der physischen Verbindung und der Position in China sehr wichtig.
 
-Obwohl die meisten Kunden denken, dass Singapur für die Verbindung am besten geeignet ist, da es bei der Betrachtung der Karte näher an China liegt, ist dies nicht richtig. Wenn Sie den Netzwerkglasfaserleitungen auf der Karte folgen, werden fast alle Netzwerkverbindungen über Peking, Schanghai und Hongkong geleitet. Deshalb ist Hongkong eine bessere Wahl für Verbindungen mit China.
+Obwohl die meisten Kunden denken, dass Singapur für die Verbindung am besten geeignet ist, da es bei der Betrachtung der Karte näher an China liegt, ist dies nicht richtig. Wenn Sie den Netzwerkglasfaserleitungen auf der Karte folgen, werden fast alle Netzwerkverbindungen über Peking (Beijing), Schanghai und Hongkong geleitet. Deshalb ist Hongkong eine bessere Wahl für Verbindungen mit China.
 
 Abhängig vom Anbieter können Sie unterschiedliche Dienstangebote erhalten. In der folgenden Tabelle finden Sie ein Beispiel für Anbieter und dem jeweils angebotenen Dienst, basierend auf den Informationen zum Zeitpunkt, zu dem dieser Artikel verfasst wurde.
 
@@ -137,7 +136,7 @@ Der Datenverkehr, der an die verbundenen Branches oder von diesen an die Standor
 
 ![ExpressRoute Global Reach](./media/interconnect-china/expressroute-virtual.png)
 
-Zurzeit ist ExpressRoute Global Reach nicht in jedem Land verfügbar. Sie können aber eine Lösung mit Azure Virtual WAN konfigurieren.
+Zurzeit ist ExpressRoute Global Reach nicht in jedem Land/jeder Region verfügbar, Sie können jedoch eine Lösung mit Azure Virtual WAN konfigurieren.
 
 Sie können beispielsweise eine ExpressRoute-Verbindung mit Microsoft-Peering konfigurieren und über dieses Peering einen VPN-Tunnel mit Azure Virtual WAN verbinden. Nun ist wiederum eine Übertragung zwischen VPN und ExpressRoute ohne Global Reach und Drittanbieter und Dienst, z. B. Megaport Cloud, möglich.
 

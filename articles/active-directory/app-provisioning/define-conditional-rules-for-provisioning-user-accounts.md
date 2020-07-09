@@ -2,20 +2,20 @@
 title: Bereitstellen von Apps mit Bereichsfiltern | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe von Bereichsfiltern verhindern, dass Objekte in Apps mit automatisierter Benutzerbereitstellung bereitgestellt werden, wenn ein Objekt Ihre Geschäftsanforderungen nicht erfüllt.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/11/2018
-ms.author: mimart
-ms.openlocfilehash: 71c2e3a83c3d63d375935294a25a369ca7e54d80
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.topic: how-to
+ms.date: 06/08/2020
+ms.author: kenwith
+ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593743"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781955"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern
 In diesem Artikel wird die Verwendung von Bereichsfiltern zum Definieren attributbasierter Regeln beschrieben, die festlegen, welche Benutzer für eine Anwendung bereitgestellt werden.
@@ -29,7 +29,7 @@ Bereichsfilter können abhängig von der Art des Bereitstellungsconnectors unter
 * **Ausgehende Bereitstellung aus Azure AD für SaaS-Anwendungen:** Wenn Azure AD das Quellsystem ist, sind [Benutzer- und Gruppenzuweisungen](../manage-apps/assign-user-or-group-access-portal.md) die gängigste Methode, um zu ermitteln, welche Benutzer im Bereich der Bereitstellung enthalten sind. Diese Zuweisungen werden auch verwendet, um das einmalige Anmelden zu ermöglichen und eine zentrale Methode für die Zugriffs- und Bereitstellungsverwaltung bereitzustellen. Bereichsfilter können optional verwendet werden – zusätzlich zu oder anstelle von Zuweisungen –, um Benutzer basierend auf Attributwerten zu filtern.
 
     >[!TIP]
-    > Sie können die Bereitstellung auf der Grundlage von Zuweisungen für eine Unternehmensanwendung deaktivieren, indem Sie Einstellungen im Menü [Bereich](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) unter den Bereitstellungseinstellungen auf **Alle Benutzer und Gruppen synchronisieren** festlegen. Diese Option zusammen mit attributbasierten Bereichsfiltern ermöglicht eine schnellere Leistung als bei Verwendung von gruppenbasierten Zuweisungen.  
+    > Sie können die Bereitstellung auf der Grundlage von Zuweisungen für eine Unternehmensanwendung deaktivieren, indem Sie Einstellungen im Menü [Bereich](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) unter den Bereitstellungseinstellungen auf **Alle Benutzer und Gruppen synchronisieren** festlegen. 
 
 * **Eingehende Bereitstellung aus HCM-Anwendungen für Azure AD und Active Directory:** Wenn eine [HCM-Anwendung (beispielsweise Workday)](../saas-apps/workday-tutorial.md) das Quellsystem ist, sind Bereichsfilter die Hauptmethode für die Ermittlung, welche Benutzer aus der HCM-Anwendung für Active Directory oder Azure AD bereitgestellt werden sollen.
 

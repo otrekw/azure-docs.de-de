@@ -6,15 +6,15 @@ keywords: Einstellungen, Timeout, Sprache, regional
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/19/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d4c675ab18a7a9231229ce0c7de9a7450dc1baa8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310678"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763957"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Festlegen Ihrer Azure-Portaleinstellungen
 
@@ -79,7 +79,7 @@ Das Design, das Sie auswählen, wirkt sich auf die Hintergrund- und Schriftartfa
 
    ![Screenshot mit Azure-Portaleinstellungen mit hervorgehobenen Designs](./media/set-preferences/theme.png)
 
-Sie können stattdessen eines der Designs mit hohem Kontrast auswählen. Die Einstellungen für hohen Kontrast erleichtern die Lesbarkeit des Azure-Portals für Benutzer mit eingeschränktem Sehvermögen und überschreiben alle anderen Designs. Weitere Informationen finden Sie unter [Aktivieren von hohem Kontrast oder Ändern des Designs](azure-portal-change-theme-high-contrast.md).
+Sie können stattdessen eines der Designs mit hohem Kontrast auswählen. Die Einstellungen für hohen Kontrast erleichtern die Lesbarkeit des Azure-Portals für Benutzer mit einer Sehbehinderung und überschreiben alle anderen Designs. Weitere Informationen finden Sie unter [Aktivieren von hohem Kontrast oder Ändern des Designs](azure-portal-change-theme-high-contrast.md).
 
 ### <a name="enable-or-disable-pop-up-notifications"></a>Aktivieren oder Deaktivieren von Popupbenachrichtigungen
 

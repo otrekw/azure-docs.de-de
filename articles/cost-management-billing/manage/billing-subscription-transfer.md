@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 633f406d042ce5b8ddde5b28022bdb33fdd70377
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238158"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052148"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto
 
@@ -100,7 +100,7 @@ Wenn Sie den Abrechnungsbesitz für ein Azure-Abonnement angenommen haben, empfi
 
 ## <a name="supported-subscription-types"></a>Unterstützte Abonnementtypen
 
-Die Übertragung von Abonnements im Azure-Portal ist für die unten aufgeführten Abonnementtypen verfügbar. Für Abonnements vom Typ [Kostenlose Testversion](https://azure.microsoft.com/offers/ms-azr-0044p/) oder [Azure in Open (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) wird derzeit keine Übertragung unterstützt. Wie Sie dies umgehen können, erfahren Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md). Zum Übertragen anderer Abonnements wie [Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) oder Supportpläne [wenden Sie sich an den Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Die Übertragung von Abonnements im Azure-Portal ist für die unten aufgeführten Abonnementtypen verfügbar. Für Abonnements vom Typ [Kostenlose Testversion](https://azure.microsoft.com/offers/ms-azr-0044p/) oder [Azure in Open (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) wird derzeit keine Übertragung unterstützt. Wie Sie dies umgehen können, erfahren Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md). Zum Übertragen anderer Abonnements wie Supportpläne [wenden Sie sich an den Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 - [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*
 - [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)  
@@ -144,8 +144,8 @@ Verwenden Sie die folgenden Schritte für die Ermittlung, wenn Sie nicht sicher 
 
 Alle Ressourcen wie virtuelle Computer, Datenträger und Websites werden zum neuen Konto übertragen. Wenn Sie jedoch ein Abonnement an ein Konto in einem anderen Azure AD-Mandanten übertragen, werden [Administratorrollen](add-change-subscription-administrator.md) sowie Zuweisungen der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../../role-based-access-control/role-assignments-portal.md) für das Abonnement [nicht übertragen](#transfer-a-subscription-to-another-azure-ad-tenant-account). Auch [App-Registrierungen](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) und andere mandantenspezifische Dienste werden nicht mit dem Abonnement übertragen.
 
-### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>Kann ich den Besitz an ein Konto in einem anderen Land übertragen?
-Länderübergreifende Übertragungen können leider nicht über das Azure-Portal abgewickelt werden. Zum Übertragen Ihres Abonnements in ein anderes Land [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+### <a name="can-i-transfer-ownership-to-an-account-in-another-countryregion"></a>Kann ich den Besitz an ein Konto in einem anderen Land bzw. in einer anderen Region übertragen?
+Länder- bzw. regionsübergreifende Übertragungen können leider nicht über das Azure-Portal abgewickelt werden. Zum Übertragen Ihres Abonnements in ein anderes Land oder in eine andere Region [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="i-am-an-administrator-on-two-accounts-can-i-transfer-a-subscription-from-one-of-my-accounts-to-another"></a>Ich bin Administrator bei zwei Konten. Kann ich ein Abonnement von einem Konto auf das andere übertragen?
 Ja. Sie können Abonnements zwischen Ihren Konten übertragen. Vom Konzept her werden Ihre Konten als Konten von zwei verschiedenen Benutzern betrachtet. Daher können Sie mit den oben genannten Schritten Abonnements zwischen Ihren Konten übertragen.

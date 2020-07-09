@@ -2,22 +2,22 @@
 title: PowerShell-Beispiele für Azure AD-Anwendungsproxy
 description: Verwenden Sie diese PowerShell-Beispiele für Azure AD-Anwendungsproxy, um Informationen zu Anwendungsproxy-Apps und Connectors in Ihrem Verzeichnis abzurufen, Apps Benutzer und Gruppen zuzuweisen und Zertifikatinformationen abzurufen.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 476bdfdd2c0b81d86900cee18024cc261ee80a07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57efd88b9d194442920496107d4c37ba2baf94d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481261"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554988"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD PowerShell-Beispiele für Azure AD-Anwendungsproxy
 
@@ -26,7 +26,7 @@ Die folgende Tabelle enthält Links zu PowerShell-Skriptbeispielen für Azure AD
 
 Weitere Informationen zu den in diesen Beispielen verwendeten Cmdlets finden Sie unter [Verwaltung von Anwendungsproxyanwendungen](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) und [Anwendungsproxyconnector-Verwaltung](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management).
 
-| | |
+| Link | BESCHREIBUNG |
 |---|---|
 |**Anwendungsproxy-Apps**||
 | [Auflisten grundlegender Informationen für alle Anwendungsproxy-Apps](scripts/powershell-get-all-app-proxy-apps-basic.md) | Listet grundlegende Informationen („AppId“, „DisplayName“, „ObjId“) zu allen Anwendungsproxy-Apps in Ihrem Verzeichnis auf. |

@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a1e3d3c7494aa75b3f6d481d12135316791772d4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d5a10e3fe2803c7b9a10abe9bf959a694030cc8c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427578"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235439"
 ---
 # <a name="query-parquet-nested-types-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Abfragen von geschachtelten Parquet-Typen mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics
 
@@ -22,10 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit SQL On-Demand (Vorschau
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Lesen Sie die folgenden Artikel, bevor Sie den Rest dieses Artikels lesen:
-
-- [Erstmalige Einrichtung](query-data-storage.md#first-time-setup)
-- [Voraussetzungen](query-data-storage.md#prerequisites)
+Der erste Schritt besteht in der **Erstellung einer Datenbank** mit einer Datenquelle, die einen Verweis enthält. Initialisieren Sie dann die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. Mit diesem Setupskript werden die Datenquellen, die für die gesamte Datenbank gültigen Anmeldeinformationen und externe Dateiformate erstellt, die in diesen Beispielen verwendet werden.
 
 ## <a name="project-nested-or-repeated-data"></a>Projizieren von geschachtelten oder wiederholten Daten
 
@@ -36,33 +33,37 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/nested/justSimpleArray.parquet',
+        BULK 'parquet/nested/justSimpleArray.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT='PARQUET'
     ) AS [r];
 ```
 
 ## <a name="access-elements-from-nested-columns"></a>Zugreifen auf Elemente aus geschachtelten Spalten
 
-Die folgende Abfrage liest die Datei *structBeispiel.parquet* und zeigt, wie Elemente einer geschachtelten Spalte an die Oberfläche gebracht werden:
+Die folgende Abfrage liest die Datei *structBeispiel.parquet* und zeigt, wie Elemente einer geschachtelten Spalte an die Oberfläche gebracht werden: Es gibt zwei Möglichkeiten, auf einen geschachtelten Wert zu verweisen:
+- Durch Angeben des Pfadausdrucks des geschachtelten Werts nach der Typspezifikation
+- Durch Formatieren des Spaltennamens als geschachtelten Wert mithilfe von „.“ zum Verweisen auf die Felder
 
 ```sql
 SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/nested/structExample.parquet',
+        BULK 'parquet/nested/structExample.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT='PARQUET'
     )
     WITH (
-        -- you can see original n"sted columns values by uncommenting lines below
+        -- you can see original nested columns values by uncommenting lines below
         --DateStruct VARCHAR(8000),
-        [DateStruct.Date] DATE,
+        [DateValue] DATE '$.DateStruct.Date',
         --TimeStruct VARCHAR(8000),
         [TimeStruct.Time] TIME,
         --TimestampStruct VARCHAR(8000),
         [TimestampStruct.Timestamp] DATETIME2,
         --DecimalStruct VARCHAR(8000),
-        [DecimalStruct.Decimal] DECIMAL(18, 5),
+        DecimalValue DECIMAL(18, 5) '$.DecimalStruct.Decimal',
         --FloatStruct VARCHAR(8000),
         [FloatStruct.Float] FLOAT
     ) AS [r];
@@ -80,7 +81,8 @@ SELECT
     JSON_VALUE(SimpleArray, '$[2]') AS ThirdElement
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/nested/justSimpleArray.parquet',
+        BULK 'parquet/nested/justSimpleArray.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT='PARQUET'
     ) AS [r];
 ```
@@ -93,7 +95,8 @@ SELECT
     JSON_QUERY(MapOfPersons, '$."John Doe"') AS [John]
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/nested/mapExample.parquet',
+        BULK 'parquet/nested/mapExample.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT='PARQUET'
     ) AS [r];
 ```

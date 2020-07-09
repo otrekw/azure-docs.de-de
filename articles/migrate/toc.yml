@@ -48,12 +48,18 @@
           href: tutorial-assess-physical.md
         - name: Migrieren physischer Server
           href: tutorial-migrate-physical-virtual-machines.md
+    - name: Bewerten und Migrieren von virtuellen AWS-Computern
+      items:
+        - name: 'Ermitteln, Bewerten und Migrieren von virtuellen AWS-Computern (Amazon Web Services) zu Azure'
+          href: tutorial-migrate-aws-virtual-machines.md
     - name: Bewerten importierter Server für die Migration
       items:
         - name: Bewerten importierter Server für die Migration
           href: tutorial-assess-import.md
 - name: Konzepte
   items:
+    - name: Erstellen eines Migrationsplans mit Azure Migrate
+      href: concepts-migration-planning.md
     - name: Supportmatrizen
       items:
         - name: Allgemeine Unterstützung
@@ -80,8 +86,10 @@
       href: hyper-v-migration-architecture.md
     - name: Architektur für die Agent-basierte VMware-Migration
       href: agent-based-migration-architecture.md
-    - name: Bewertungsübersicht
+    - name: Übersicht über Azure-VM-Bewertungen
       href: concepts-assessment-calculation.md
+    - name: Übersicht über AVS-Bewertungen
+      href: concepts-azure-vmware-solution-assessment-calculation.md
     - name: Bewährte Methoden für Bewertungen
       href: best-practices-assessment.md
     - name: Übersicht über die Abhängigkeitsanalyse
@@ -118,16 +126,20 @@
       href: how-to-create-group-machine-dependencies.md
     - name: Analysieren von Computerabhängigkeiten (ohne Agent)
       href: how-to-create-group-machine-dependencies-agentless.md
-    - name: Erstellen einer Bewertung
+    - name: Erstellen einer Azure-VM-Bewertung
       href: how-to-create-assessment.md
+    - name: Erstellen einer AVS-Bewertung
+      href: how-to-create-azure-vmware-solution-assessment.md
     - name: "Bewerten einer SQL\_Server-Datenbank"
-      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb'
+      href: /sql/dma/dma-assess-sql-data-estate-to-sqldb
     - name: Anpassen einer Bewertung
       href: how-to-modify-assessment.md
     - name: Hinzufügen von Migrationstools
       href: how-to-migrate.md
     - name: Migrieren von virtuellen VMware-Computern zu virtuellen Azure-Computern mit SSE- und CMK-Verschlüsselung
       href: how-to-migrate-vmware-vms-with-cmk-disks.md
+    - name: "Vorbereiten von Windows\_2003-Servern für die Migration"
+      href: prepare-windows-server-2003-migration.md
     - name: Vorbereiten von Computern für die Migration
       href: prepare-for-migration.md
     - name: "Löschen eines Azure\_Migrate-Projekts"
@@ -159,9 +171,9 @@
 - name: Ressourcen
   items:
     - name: Migration im Cloud Adoption Framework
-      href: 'https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/index'
+      href: /azure/cloud-adoption-framework/migrate/
     - name: REST-API
-      href: 'https://docs.microsoft.com/rest/api/migrate/'
+      href: /rest/api/migrate/
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.migrate/allversions
     - name: Preise
@@ -169,7 +181,7 @@
     - name: UserVoice
       href: 'https://aka.ms/AzureMigrateUservoice'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
-      href: 'https://docs.microsoft.com/answers/topics/azure-migrate.html'
+      href: /answers/topics/azure-migrate.html
     - name: Blog
       href: 'https://azure.microsoft.com/blog/tag/azure-migrate/'
     - name: Azure Migrate

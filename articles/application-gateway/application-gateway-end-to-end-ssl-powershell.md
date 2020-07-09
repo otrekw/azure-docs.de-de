@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 57f2ce1fb8bf6415387eac5c760dadeb04e65648
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312499"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648424"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Konfigurieren von End-to-End-TLS mit Application Gateway mithilfe von PowerShell
 
@@ -168,6 +168,8 @@ Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festg
    > Der Standardtest ruft den öffentlichen Schlüssel aus der *standardmäßigen* TLS-Bindung in der IP-Adresse des Back-Ends ab und vergleicht den Wert dieses öffentlichen Schlüssels mit dem Wert des öffentlichen Schlüssels, den Sie hier bereitstellen. 
    > 
    > Wenn Sie Hostheader und Servernamensanzeige (SNI) auf dem Back-End verwenden, ist der abgerufene öffentliche Schlüssel nicht zwingend der Zielort für den Datenverkehr. Öffnen Sie im Zweifelsfall auf den Back-End-Servern die Seite https://127.0.0.1/, um sich zu vergewissern, welches Zertifikat für die *standardmäßige* TLS-Bindung verwendet wird. Verwenden Sie den öffentlichen Schlüssel aus der Aufforderung in diesem Abschnitt. Wenn Sie Hostheader und SNI in HTTPS-Bindungen verwenden und durch eine manuelle Browseranforderung in https://127.0.0.1/ auf den Back-End-Servern keine Antwort und kein Zertifikat erhalten, müssen Sie eine Standard-TLS-Bindung auf diesen Servern einrichten. Andernfalls sind die Tests nicht erfolgreich, und das Back-End wird nicht in die Whitelist aufgenommen.
+   
+   Weitere Informationen zu SNI in Application Gateway finden Sie unter [Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway](ssl-overview.md).
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer

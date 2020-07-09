@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 5f0be5d8378cd1640d3052f2e56c8161e2c0b203
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02b85cb90948f35cb6f6c855cfbe81fd58301de0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62116890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513590"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>Installieren von Update 0.6 in StorSimple Virtual Array
 
@@ -30,6 +30,7 @@ Dieser Artikel beschreibt die erforderlichen Schritte zum Installieren von Updat
 Außerdem wird empfohlen, die Volumes oder Freigaben vor dem Anwenden eines Updates auf dem Host und dann auf dem Gerät offline zu nehmen. Dadurch wird das Risiko einer Datenbeschädigung minimiert. Nachdem die Volumes oder Freigaben offline sind, sollten Sie auch eine manuelle Sicherung des Geräts durchführen.
 
 > [!IMPORTANT]
+>
 > - Update 0.6 entspricht der Softwareversion **10.0.10293.0** auf Ihrem Gerät. Informationen zu Neuigkeiten in diesem Update finden Sie in den [Versionsanmerkungen zum Update 0.6](storsimple-virtual-array-update-06-release-notes.md).
 >
 > - Wenn Sie Update 0.2 oder höher ausführen, empfehlen wir, die Updates über das Azure-Portal zu installieren. Wenn Sie Update 0.1 oder GA-Softwareversionen ausführen, müssen Sie die Hotfixmethode über die lokale Webbenutzeroberfläche verwenden, um Update 0.6 zu installieren.

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 04/22/2020
 ms.author: jingwang
-ms.openlocfilehash: da5c53f8953960c382070be658add2877fff3f8c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 71b05d8607c174dbe9298a1c02f4927ed2218374
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416899"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891414"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopieren von Daten aus ODBC-Datenspeichern bzw. in ODBC-Datenspeicher mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -35,7 +35,7 @@ Der ODBC-Connector wird für die folgenden Aktivitäten unterstützt:
 
 Sie können Daten aus einer ODBC-Quelle in jeden unterstützten Senkendatenspeicher oder Daten aus jedem unterstützten Quelldatenspeicher in eine ODBC-Senke kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Dieser ODBC-Connector unterstützt insbesondere das Kopieren von Daten aus **ODBC-kompatiblen Datenspeichern** bzw. in diese mithilfe der **Standard**- oder **anonymen** Authentifizierung. Ein **64-Bit-ODBC-Treiber** ist erforderlich.
+Dieser ODBC-Connector unterstützt insbesondere das Kopieren von Daten aus **ODBC-kompatiblen Datenspeichern** bzw. in diese mithilfe der **Standard**- oder **anonymen** Authentifizierung. Ein **64-Bit-ODBC-Treiber** ist erforderlich. Bei der ODBC-Senke unterstützt ADF die ODBC-Version 2.0 (Standard).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -236,48 +236,9 @@ Legen Sie zum Kopieren von Daten in ODBC-kompatible Datenspeicher den Senkentyp 
 ]
 ```
 
-## <a name="sap-hana-sink"></a>SAP HANA-Senke
-
->[!NOTE]
->Informationen zum Kopieren von Daten aus SAP HANA-Datenspeichern finden Sie im Artikel zum nativen [SAP HANA-Connector](connector-sap-hana.md). Um Daten in SAP HANA zu kopieren, befolgen Sie diese Anweisung zur Verwendung des ODBC-Connectors. Beachten Sie, dass die verknüpften Dienste für SAP HANA-Connectors und ODBC-Connectors unterschiedlichen Typs sind und daher nicht wiederverwendet werden können.
->
-
-Mit dem generischen ODBC-Connector können Sie Daten von SAP HANA-Datenbanken kopieren.
-
-Richten Sie eine selbstgehostete Integrationslaufzeit auf einem Computer mit Zugriff auf Ihren Datenspeicher ein. Die Integrationslaufzeit verwendet den ODBC-Treiber für SAP HANA, um eine Verbindung mit dem Datenspeicher herzustellen. Installieren Sie also den Treiber, falls dieser noch nicht auf demselben Computer installiert ist. Details finden Sie im Abschnitt [Voraussetzungen](#prerequisites).
-
-Bevor Sie die SAP HANA-Senke in einer Data Factory-Lösung verwenden können, überprüfen Sie anhand der Anweisungen im Abschnitt [Behandeln von Konnektivitätsproblemen](#troubleshoot-connectivity-issues), ob die Integrationslaufzeit eine Verbindung mit dem Datenspeicher herstellen kann.
-
-Erstellen Sie einen über die ODBC verknüpften Dienst, um einen SAP HANA-Datenspeicher mit Azure Data Factory zu verknüpfen, wie im folgenden Beispiel zu sehen ist:
-
-```json
-{
-    "name": "SAPHANAViaODBCLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-Lesen Sie den Artikel vom Anfang, um einen detaillierten Überblick über die Verwendung von ODBC-Datenspeichern als Quell-/Senkendatenspeicher in einem Kopiervorgang zu erhalten.
-
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 
 Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
-
 
 ## <a name="troubleshoot-connectivity-issues"></a>Behandeln von Konnektivitätsproblemen
 

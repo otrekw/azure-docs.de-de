@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 6e757260c7cd8945ff75dd0e760f3afeffd992f9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454253"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016388"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Tutorial: Konfigurieren von Serveradministrator- und Benutzerrollen
 
@@ -59,7 +59,7 @@ In den übrigen Aufgaben verwenden Sie SSMS, um eine Verbindung mit Ihrem Server
     ![Herstellen der Verbindung in SSMS](./media/analysis-services-tutorial-roles/aas-connect-ssms-auth.png)
 
     > [!TIP]
-    > Die Auswahl von „Active Directory: universell mit MFA-Unterstützung“ wird empfohlen. Dieser Authentifizierungstyp unterstützt eine [nicht interaktive mehrstufige Authentifizierung](../../sql-database/sql-database-ssms-mfa-authentication.md). 
+    > Die Auswahl von „Active Directory: universell mit MFA-Unterstützung“ wird empfohlen. Dieser Authentifizierungstyp unterstützt eine [nicht interaktive mehrstufige Authentifizierung](../../azure-sql/database/authentication-mfa-ssms-overview.md). 
 
 3. Erweitern Sie zum Anzeigen von Serverobjekten den **Objekt-Explorer**. Klicken Sie mit der rechten Maustaste auf ein Objekt, um Servereigenschaften anzuzeigen.
    

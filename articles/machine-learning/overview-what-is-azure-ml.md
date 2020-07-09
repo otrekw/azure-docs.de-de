@@ -8,12 +8,13 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: b97bae252b25c9ae2891506f08fc4955f84c1eb6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: tracking-python
+ms.openlocfilehash: c4969628bb80d63cafc9537ec511ac218ff87ca7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593017"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738293"
 ---
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
@@ -45,6 +46,8 @@ Azure Machine Learning verfügt über alle Tools, die Entwickler und Data Scient
 + Jupyter-Notebooks: Verwenden Sie unsere [Beispielnotebooks](https://aka.ms/aml-notebooks), oder erstellen Sie Ihre eigenen Notebooks, um unsere <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK für Python</a>-Beispiele für Ihre Machine Learning-Zwecke zu nutzen. 
 
 + R-Skripts oder Notebooks, in denen Sie das <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK für R</a> zum Schreiben Ihres eigenen Codes verwenden (oder die R-Module im Designer).
+
++ + Der [Many Models Solution Accelerator](https://aka.ms/many-models) (Preview) (Projektmappenbeschleuniger für viele Modelle (Vorschau)) baut auf Azure Machine Learning auf und ermöglicht Ihnen Training, Betrieb und Verwaltung von hunderten oder sogar tausenden von Machine Learning-Modellen.
 
 + [Visual Studio Code-Erweiterung](tutorial-setup-vscode-extension.md)
 
@@ -121,16 +124,11 @@ Das Azure Storage-Konto, die Computeziele und andere Ressourcen können innerhal
 ## <a name="basic--enterprise-editions"></a><a name="sku"></a>Basic- und Enterprise-Edition
 
 Azure Machine Learning verfügt über zwei Editionen für Ihre Machine Learning-Anforderungen:
-+ Basic (allgemein verfügbar)
-+ Enterprise (Vorschauversion)
++ **Basic**: Hervorragend für die Open-Source-Entwicklung auf Cloudniveau mit einem Code-First-Ansatz.
 
-Mit diesen Editionen wird ermittelt, welche Machine Learning-Tools für Entwickler und Data Scientists in ihrem Arbeitsbereich verfügbar sind.   
++ **Enterprise**: Alle Merkmale von „Basic“, zuzüglich einer Webschnittstelle (Studio) und sicherer, umfassender ML-Lebenszyklusverwaltung für alle Skillstufen.
 
-Mit Basic-Arbeitsbereichen können Sie mit der Nutzung von Azure Machine Learning fortfahren und zahlen dann nur für die Azure-Ressourcen, die während des Machine Learning-Prozesses genutzt werden. Für Arbeitsbereiche der Enterprise-Edition wird der Azure-Verbrauch nur berechnet, solange sich die Edition in der Vorschauphase befindet. Weitere Informationen zu den verfügbaren Optionen von Azure Machine Learning finden Sie auf der [Seite mit der Übersicht über die Editionen und Preise](https://azure.microsoft.com/pricing/details/machine-learning/). 
-
-Sie weisen die Edition jeweils zu, wenn Sie einen Arbeitsbereich erstellen. Bereits vorhandene Arbeitsbereiche werden für Sie auf die Basic-Edition umgestellt. Die Basic-Edition umfasst alle Features, die im Oktober 2019 bereits allgemein verfügbar waren. Alle Experimente in diesen Arbeitsbereichen, die mit Features der Enterprise-Edition erstellt wurden, stehen Ihnen schreibgeschützt weiter zur Verfügung, bis Sie das Upgrade auf Enterprise durchführen. Informieren Sie sich über das [Durchführen eines Upgrades eines Basic-Arbeitsbereichs auf die Enterprise-Edition](how-to-manage-workspace.md#upgrade). 
-
-Kunden sind während dieses Zeitraums für Kosten für Computevorgänge und für andere Azure-Ressourcen verantwortlich.
+Weitere Informationen zu diesen Editionen und den Funktionen, die sie entsperren, finden Sie in dem Artikel [„Azure Machine Learning-Editionen“](concept-editions.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

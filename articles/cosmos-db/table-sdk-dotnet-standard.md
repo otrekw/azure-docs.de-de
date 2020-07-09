@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: f7c6829d858e36b55f079f8ee03e431f67995e66
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272575"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84168198"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>.NET Standard-API für Azure Cosmos DB-Tabellen: Download und Versionshinweise
 > [!div class="op_single_selector"]
@@ -36,51 +36,51 @@ ms.locfileid: "81272575"
 ## <a name="release-notes-for-200-series"></a>Versionshinweise für die Serie 2.0.0
 Die Serie 2.0.0 übernimmt die Abhängigkeit von [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) mit Leistungsverbesserungen und Namespacekonsolidierung zum Cosmos DB-Endpunkt.
 
-### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
+### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0-preview
 * Die erste Vorschauversion des Tabellen-SDK 2.0.0 übernimmt die Abhängigkeit von [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) mit Leistungsverbesserungen und Namespacekonsolidierung zum Cosmos DB-Endpunkt. Die öffentliche API bleibt unverändert.
 
 ## <a name="release-notes-for-100-series"></a>Versionshinweise für die Serie 1.0.0
 Die Serie 1.0.0 übernimmt die Abhängigkeit von [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
 
-### <a name="107"></a><a name="1.0.7"/>1.0.7
+### <a name="107"></a><a name="1.0.7"></a>1.0.7
 * Leistungsverbesserung durch Festlegen der Standard-Ablaufverfolgungsebene für das Tabellen-SDK auf „SourceLevels.Off“, die über „app.config“ aktiviert werden kann.
 
-### <a name="105"></a><a name="1.0.5"/>1.0.5
+### <a name="105"></a><a name="1.0.5"></a>1.0.5
 * Einführung einer neuen Konfiguration unter TableClientConfiguration, um Rest Executor für die Kommunikation mit der Cosmos DB-Tabellen-API zu verwenden
 
-### <a name="105-preview"></a><a name="1.0.5-preview"/>1.0.5-preview
+### <a name="105-preview"></a><a name="1.0.5-preview"></a>1.0.5-preview
 * Behebung von Programmfehlern
 
-### <a name="104"></a><a name="1.0.4"/>1.0.4
-* Behebung von Programmfehlern
-* Bereitstellung der HttpClientTimeout-Option für „RestExecutorConfiguration“
-
-### <a name="104-preview"></a><a name="1.0.4-preview"/>1.0.4-preview
+### <a name="104"></a><a name="1.0.4"></a>1.0.4
 * Behebung von Programmfehlern
 * Bereitstellung der HttpClientTimeout-Option für „RestExecutorConfiguration“
 
-### <a name="101"></a><a name="1.0.1"/>1.0.1
+### <a name="104-preview"></a><a name="1.0.4-preview"></a>1.0.4-preview
+* Behebung von Programmfehlern
+* Bereitstellung der HttpClientTimeout-Option für „RestExecutorConfiguration“
+
+### <a name="101"></a><a name="1.0.1"></a>1.0.1
 * Behebung von Programmfehlern
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * Release zur allgemeinen Verfügbarkeit
 
-### <a name="0110-preview"></a><a name="0.11.0-preview"/>0.11.0-preview
+### <a name="0110-preview"></a><a name="0.11.0-preview"></a>0.11.0-preview
 * Es wurden Änderungen vorgenommen, wie CloudTableClient konfiguriert werden kann. Es akzeptiert jetzt ein TableClientConfiguration-Objekt während der Erstellung. TableClientConfiguration bietet verschiedene Eigenschaften, um das Clientverhalten in Abhängigkeit davon zu konfigurieren, ob der Zielendpunkt eine Cosmos DB-Tabellen-API oder Azure Storage-Tabellen-API ist.
 * Unterstützung für TableQuery wurde hinzugefügt, um Ergebnisse in sortierter Reihenfolge für eine benutzerdefinierte Spalte zurückzugeben. Diese Funktion wird nur für Cosmos DB-Tabellenendpunkte unterstützt.
 * Unterstützung wurde hinzugefügt, um RequestCharges für verschiedene Ergebnistypen verfügbar zu machen. Diese Funktion wird nur für Cosmos DB-Tabellenendpunkte unterstützt.
 
-### <a name="0101-preview"></a><a name="0.10.1-preview"/>0.10.1-preview
+### <a name="0101-preview"></a><a name="0.10.1-preview"></a>0.10.1-preview
 * Es wurde Unterstützung für SAS-Token, TablePermissions-, ServiceProperties- und ServiceStats-Vorgänge für Azure Storage-Tabellenendpunkte hinzugefügt. 
    > [!NOTE]
    > Einige Funktionen in vorherigen Azure Storage-Tabellen-SDKs werden noch nicht unterstützt (z.B. die clientseitige Verschlüsselung).
 
-### <a name="0100-preview"></a><a name="0.10.0-preview"/>0.10.0-preview
+### <a name="0100-preview"></a><a name="0.10.0-preview"></a>0.10.0-preview
 * Es wurde Unterstützung für grundlegende CRUD-, Batch- und Abfragevorgänge für Azure Storage-Tabellenendpunkte hinzugefügt. 
    > [!NOTE]
    > Einige Funktionen in vorherigen Azure Storage-Tabellen-SDKs werden noch nicht unterstützt (z.B. die clientseitige Verschlüsselung).
 
-### <a name="091-preview"></a><a name="0.9.1-preview"/>0.9.1-preview
+### <a name="091-preview"></a><a name="0.9.1-preview"></a>0.9.1-preview
 * „Azure Cosmos DB-Tabellen-API – .NET Standard SDK“ ist eine plattformübergreifende .NET-Bibliothek, die den effizienten Zugriff auf das Tabellendatenmodell unter Cosmos DB ermöglicht. Diese erste Version unterstützt den gesamten Satz mit CRUD- und Abfragefunktionen für Tabellen- und Entitätsvorgänge mit ähnlichen APIs wie das [Cosmos DB-Tabellen-SDK für .NET Framework](table-sdk-dotnet.md). 
    > [!NOTE]
    >  Azure Storage-Tabellenendpunkte werden in der Version 0.9.1-preview noch nicht unterstützt.

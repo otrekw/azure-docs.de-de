@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 3ea6c4226a59ba020a477cc5811033ff3dc3c2e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76772077"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234893"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Ermitteln des optimalen Bitratenwerts für eine bestimmte Auflösung unter Verwendung der Voreinstellung für die inhaltsbezogene Codierung
 
@@ -55,9 +55,10 @@ Im Anschluss finden Sie die Ergebnisse für eine weitere Kategorie von Quellinha
 
 Sie können Transformationen erstellen, die diese Voreinstellung wie folgt verwenden. 
 
-> [!TIP]
-> Unter [Nächste Schritte](#next-steps) finden Sie Links zu Tutorials für die Ausgabetransformation. Das Ausgabemedienobjekt kann von Media Services-Streamingendpunkten in Protokollen wie MPEG-DASH und HLS bereitgestellt werden (wie in den Tutorials gezeigt).
+Unter [Nächste Schritte](#next-steps) finden Sie Links zu Tutorials für die Ausgabetransformation. Das Ausgabemedienobjekt kann von Media Services-Streamingendpunkten in Protokollen wie MPEG-DASH und HLS bereitgestellt werden (wie in den Tutorials gezeigt).
 
+> [!NOTE]
+> Achten Sie darauf, die Einstellung **ContentAwareEncoding**, nicht „ContentAwareEncodingExperimental“ zu verwenden.
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -77,7 +78,7 @@ TransformOutput[] output = new TransformOutput[]
 
 > [!NOTE]
 > Codierungsaufträge mit der Voreinstellung `ContentAwareEncoding` werden auf der Grundlage der Ausgabeminuten abgerechnet. 
-
+  
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Tutorial: Hochladen, Codieren und Streamen von Videos mit Media Services v3](stream-files-tutorial-with-api.md)

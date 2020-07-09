@@ -1,21 +1,23 @@
 ---
 title: Verwenden der Application Health-Erweiterung mit Azure-VM-Skalierungsgruppen
 description: Erfahren Sie, wie Sie mit der Application Health-Erweiterung die Integrität Ihrer Anwendungen überwachen, die in VM-Skalierungsgruppen bereitgestellt werden.
-author: mimckitt
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 01/30/2019
-ms.author: mimckitt
-ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.subservice: extensions
+ms.date: 05/06/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273731"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783043"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Verwenden der Application Health-Erweiterung mit VM-Skalierungsgruppen
-Überwachung der Integrität Ihrer Anwendung ist ein wichtiges Signal für das Verwalten und Aktualisieren Ihrer Bereitstellung. Azure-VM-Skalierungsgruppen bieten Unterstützung für [parallele Upgrades](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) einschließlich [automatischer Betriebssystemimage-Upgrades](virtual-machine-scale-sets-automatic-upgrade.md), die von der Überwachung der Integrität der einzelnen Instanzen beim Upgrade Ihrer Bereitstellung abhängig sind.
+Überwachung der Integrität Ihrer Anwendung ist ein wichtiges Signal für das Verwalten und Aktualisieren Ihrer Bereitstellung. Azure-VM-Skalierungsgruppen bieten Unterstützung für [parallele Upgrades](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) einschließlich [automatischer Betriebssystemimage-Upgrades](virtual-machine-scale-sets-automatic-upgrade.md), die von der Überwachung der Integrität der einzelnen Instanzen beim Upgrade Ihrer Bereitstellung abhängig sind. Sie können die Integritätserweiterung auch verwenden, um die Anwendungsintegrität jeder Instanz in Ihrer Skalierungsgruppe zu überwachen und Instanzreparaturen mit [automatischen Instanzreparaturen](virtual-machine-scale-sets-automatic-instance-repairs.md) durchzuführen.
 
 In diesem Artikel erfahren Sie, wie Sie mit der Application Health-Erweiterung die Integrität Ihrer Anwendungen überwachen, die in VM-Skalierungsgruppen bereitgestellt werden.
 
@@ -31,7 +33,7 @@ Da die Erweiterung von einem virtuellen Computer aus über die Integrität beric
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
-Der folgende JSON-Code zeigt das Schema für die Application Health-Erweiterung. Die Erweiterung erfordert mindestens eine „Tcp“- oder „http“-Anforderung mit einem zugeordneten Port bzw. Anforderungspfad.
+Der folgende JSON-Code zeigt das Schema für die Application Health-Erweiterung. Die Erweiterung erfordert mindestens eine „Tcp“-, „http“- oder „https“-Anforderung mit einem zugeordneten Port bzw. Anforderungspfad.
 
 ```json
 {
@@ -58,17 +60,17 @@ Der folgende JSON-Code zeigt das Schema für die Application Health-Erweiterung.
 | Name | Wert/Beispiel | Datentyp
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| publisher | `Microsoft.ManagedServices` | string |
-| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
+| publisher | `Microsoft.ManagedServices` | Zeichenfolge |
+| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | Zeichenfolge |
 | typeHandlerVersion | `1.0` | INT |
 
 ### <a name="settings"></a>Einstellungen
 
 | Name | Wert/Beispiel | Datentyp
 | ---- | ---- | ----
-| Protokoll | `http` oder `tcp` | string |
-| port | Optional, wenn das Protokoll `http` ist, obligatorisch, wenn das Protokoll `tcp` ist. | INT |
-| requestPath | Obligatorisch, wenn das Protokoll `http` ist, nicht zulässig, wenn das Protokoll `tcp` ist. | string |
+| Protokoll | `http` oder `https` oder `tcp` | Zeichenfolge |
+| port | Optional, wenn das Protokoll `http` oder `https` ist, obligatorisch, wenn das Protokoll `tcp` ist. | INT |
+| requestPath | Obligatorisch, wenn das Protokoll `http` oder `https` ist, nicht zulässig, wenn das Protokoll `tcp` ist. | Zeichenfolge |
 
 ## <a name="deploy-the-application-health-extension"></a>Bereitstellen der Application Health-Erweiterung
 Es gibt mehrere Möglichkeiten, die Application Health-Erweiterung für Ihre Skalierungsgruppen bereitzustellen, wie in den folgenden Beispielen beschrieben.
@@ -171,7 +173,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 ```
 
 ```Linux
-/var/lib/waagent/apphealth
+/var/lib/waagent/Microsoft.ManagedServices.ApplicationHealthLinux-<extension_version>/status
+/var/log/azure/applicationhealth-extension
 ```
 
 Die Protokolle erfassen auch in regelmäßigen Abständen den Integritätsstatus der Anwendung.

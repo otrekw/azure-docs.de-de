@@ -2,22 +2,22 @@
 title: Verwenden von vorhandenen lokalen Proxyservern und Azure AD | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie vorhandene lokale Proxyserver verwenden.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 48727e377c2b6707e570cad103e4b08bcb44a1cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764926"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Verwenden von vorhandenen lokalen Proxyservern
 
@@ -162,7 +162,7 @@ Sie sollten jetzt verfolgen können, dass der gesamte Datenverkehr über den Pro
 
 Die beste Möglichkeit zur Identifizierung und Behebung von Problemen mit der Connectorkonnektivität ist die Erstellung einer Netzwerkerfassung beim Starten des Connectordiensts. Im Folgenden finden Sie einige Tipps zum Erfassen und Filtern von Netzwerkablaufverfolgungen.
 
-Sie können ein Überwachungstool Ihrer Wahl verwenden. Für diesen Artikel haben wir Microsoft Message Analyzer genutzt. Sie können es von der [Microsoft-Website](https://www.microsoft.com/download/details.aspx?id=44226) herunterladen.
+Sie können ein Überwachungstool Ihrer Wahl verwenden. Für diesen Artikel haben wir Microsoft Message Analyzer genutzt.
 
 Die folgenden Beispiele beziehen sich speziell auf Message Analyzer. Die Prinzipien können aber auf alle Analysetools angewendet werden.
 
@@ -204,4 +204,4 @@ Wenn andere Antwortcodes angezeigt werden, z.B. 407 oder 502, weist dies darauf 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-connectors.md)
-* Wenn Probleme mit der Connectorkonnektivität bestehen, stellen Sie Ihre Frage bitte im [Azure Active Directory-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD), oder erstellen Sie ein Ticket bei unserem Supportteam.
+* Wenn Probleme mit der Connectorkonnektivität bestehen, stellen Sie Ihre Frage auf der [Microsoft F&A-Seite für Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html), oder erstellen Sie ein Ticket für unser Supportteam.

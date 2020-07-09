@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 38e728de22d49de760e998ddc97c5067beb3ecd1
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 540c3eace72a1692a927916a48f772047115375f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81684693"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167246"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Ausnahmen und Fehlercodes für den Designer (Preview)
 
@@ -712,7 +712,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 **Lösung:** Dieser Fehler wird durch viele Bedingungen verursacht und es gibt keine bestimmte Lösung.  
  Die folgende Tabelle enthält allgemeine Meldungen zu diesem Fehler, auf die eine bestimmte Beschreibung der Bedingung folgt. 
 
- Wenn keine Details verfügbar sind, senden Sie ein [Feedback](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning), und stellen Sie Informationen zu den Modulen, die den Fehler ausgelöst haben, und zu den zugehörigen Bedingungen bereit.
+ Wenn keine Details verfügbar sind, besuchen Sie die [Microsoft-Seite mit Fragen und Antworten zum Senden von Feedback](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), und stellen Sie Informationen zu den Modulen, die den Fehler ausgelöst haben, und zu den entsprechenden Bedingungen bereit.
 
 |Ausnahmemeldungen|
 |------------------------|
@@ -1163,7 +1163,7 @@ Dieser Fehler in Azure Machine Learning tritt bei dem Versuch auf, Daten mit ein
 
 Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von Azure Machine Learning eingeführt, die eine umfassendere Anpassung der Quantisierungsmethoden ermöglichte. Derzeit basieren alle Quantisierungsmethoden auf einer Auswahl aus einer Dropdownliste, sodass es technisch nicht mehr möglich sein sollte, diesen Fehler zu erhalten.
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Azure Machine Learning forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=MachineLearning), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |Ausnahmemeldungen|
 |------------------------|
@@ -1500,7 +1500,7 @@ Lösung:
 
 
 ## <a name="error-0159"></a>Fehler 0159
- Die Ausnahme tritt auf, wenn das an das Modul übergebene Modellverzeichnis ungültig ist. 
+ Die Ausnahme tritt auf, wenn das Modulmodellverzeichnis ungültig ist. 
 
 |Ausnahmemeldungen|
 |------------------------------------------------------------|

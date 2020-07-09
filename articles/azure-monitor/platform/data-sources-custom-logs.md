@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 155c8fc3e7f1e37fe455c8f21d36e090c4fffce3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670592"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111999"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Benutzerdefinierte Protokolle in Azure Monitor
 
@@ -122,17 +122,19 @@ Benutzerdefinierte Protokolldatensätze besitzen einen Typ mit dem von Ihnen ang
 | TimeGenerated |Der Zeitpunkt (Datum und Uhrzeit), zu dem der Datensatz von Azure Monitor erfasst wurde.  Wenn das Protokoll ein zeitbasiertes Trennzeichen verwendet, handelt es sich hierbei um die Zeitangabe aus dem Eintrag. |
 | SourceSystem |Die Art des Agents, auf dem das Ereignis gesammelt wurde. <br> OpsManager: Windows-Agent (Direktverbindung oder System Center Operations Manager) <br> Linux: Alle Linux-Agents |
 | RawData |Der vollständige Text des gesammelten Eintrags. Wahrscheinlich möchten Sie [diese Daten in einzelne Eigenschaften aufschlüsseln](../log-query/parse-text.md). |
-| ManagementGroupName |Name der Verwaltungsgruppe für System Center Operations Manager-Agents.  Bei anderen Agents lautet dieser „AOI-\<Arbeitsbereich-ID\>“. |
+| ManagementGroupName |Name der Verwaltungsgruppe für System Center Operations Manager-Agents.  Bei anderen Agents lautet diese „AOI-\<workspace ID\>“. |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Exemplarische Vorgehensweise zum Hinzufügen eines benutzerdefinierten Protokolls
 Der folgende Abschnitt enthält ein Beispiel für die Erstellung eines benutzerdefinierten Protokolls.  Das Beispielprotokoll enthält in jeder Zeile einen einzelnen Eintrag, der jeweils mit einer Datums- und Uhrzeitangabe beginnt, gefolgt von durch Trennzeichen getrennten Feldern für Code, Status und Meldung.  Hier einige Beispieleinträge:
 
-    2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
-    2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
-    2019-08-27 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
-    2019-08-27 01:38:22 302,Error,Application could not connect to database
-    2019-08-27 01:31:34 303,Error,Application lost connection to database
+```output
+2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
+2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
+2019-08-27 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
+2019-08-27 01:38:22 302,Error,Application could not connect to database
+2019-08-27 01:31:34 303,Error,Application lost connection to database
+```
 
 ### <a name="upload-and-parse-a-sample-log"></a>Hochladen und Analysieren eines Beispielprotokolls
 Wir stellen eine der Protokolldateien bereit und sehen die Ereignisse, die gesammelt werden.  In diesem Fall kann als Trennzeichen die Option „Neue Zeile“ verwendet werden.  Wenn sich allerdings im Protokoll ein einzelner Eintrag über mehrere Zeilen erstrecken kann, muss ein Trennzeichen vom Typ „Zeitstempel“ verwendet werden.

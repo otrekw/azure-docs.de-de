@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: key-vault
 ms.topic: include
 ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 8247b1cedc2c5ebc8577af6be485aed0fcd5d6af
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 01b3c9584f3ecddbcdcc6938f5eb469510a47a4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768746"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838903"
 ---
 ### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Schlüsseltransaktionen (maximale Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup>):
 
@@ -46,7 +46,10 @@ Informationen zur Handhabung der Drosselung bei Überschreiten dieser Grenzwerte
 
 ### <a name="azure-private-link-integration"></a>Azure Private Link-Integration
 
+> [!NOTE]
+> Die Anzahl der Schlüsseltresore mit den pro Abonnement aktivierten privaten Endpunkten ist ein anpassbarer Grenzwert. Der gezeigte Grenzwert ist der Standardwert. Wenn Sie eine Erhöhung des Grenzwerts für Ihren Dienst beantragen möchten, senden Sie eine E-Mail an akv-privatelink@microsoft.com. Wir genehmigen diese Anträge je nach Fall.
+
 | Resource | Begrenzung |
 | -------- | ----- |
 | Private Endpunkte pro Schlüsseltresor | 64 |
-| Schlüsseltresore mit privaten Endpunkten pro Abonnement | 64 |
+| Schlüsseltresore mit privaten Endpunkten pro Abonnement | 400 |

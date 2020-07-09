@@ -3,25 +3,25 @@ title: Veröffentlichen von Remotedesktops mit dem Azure AD-App-Proxy | Microsof
 description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungsproxy-Connectors.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34f3dcd607a7417932912528167a1120dbfd9b4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67108460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764518"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy
 
@@ -68,7 +68,7 @@ Führen Sie nach der Einrichtung von RDS und des Azure AD-Anwendungsproxys für 
 
 1. [Veröffentlichen Sie anhand der folgenden Werten eine neue Anwendung mit Anwendungsproxy](application-proxy-add-on-premises-application.md):
    - Interne URL: `https://\<rdhost\>.com/`, wobei `\<rdhost\>` das gemeinsame Stammverzeichnis ist, das von RD-Web und RD-Gateway gemeinsam genutzt wird.
-   - Externe URL: Dieses Feld wird automatisch basierend auf dem Namen der Anwendung ausgefüllt, den Sie jedoch ändern können. Ihre Benutzer werden beim Zugriff auf RDS an diese URL weitergeleitet.
+   - Externe URL: Dieses Feld wird automatisch basierend auf dem Namen der Anwendung aufgefüllt. Sie können das Feld jedoch ändern. Ihre Benutzer werden beim Zugriff auf RDS an diese URL weitergeleitet.
    - Präauthentifizierungsmethode: Azure Active Directory
    - URL-Header übersetzen: Nein
 2. Weisen Sie Benutzern die veröffentlichte RD-Anwendung zu. Stellen Sie sicher, dass alle Benutzer auch Zugriff auf RDS haben.
@@ -91,7 +91,7 @@ Stellen Sie eine Verbindung mit der RDS-Bereitstellung als Administrator her und
 
    ![Bildschirm „Bereitstellungseigenschaften“ in RDS](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
-8. Führen Sie diesen Befehl für jede Sammlung aus. Ersetzen Sie *\<yourcollectionname\>* und *\<proxyfrontendurl\>* durch Ihre eigenen Information. Dieser Befehl ermöglicht eine einmalige Anmeldung zwischen RD-Web und RD-Gateway und optimiert die Leistung:
+8. Führen Sie diesen Befehl für jede Sammlung aus. Ersetzen Sie *\<yourcollectionname\>* und *\<proxyfrontendurl\>* durch Ihre eigenen Angaben. Dieser Befehl ermöglicht eine einmalige Anmeldung zwischen RD-Web und RD-Gateway und optimiert die Leistung:
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"

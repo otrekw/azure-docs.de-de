@@ -1,7 +1,7 @@
 ---
 title: Entität vom Typ „Simple“ – LUIS
 titleSuffix: Azure Cognitive Services
-description: Eine einfache Entität beschreibt ein einzelnes Konzept aus dem durch maschinelles Lernen erworbenen Kontext. Fügen Sie eine Auszugsliste hinzu, wenn Sie eine einfache Entität verwenden, um die Ergebnisse zu verbessern.
+description: Eine einfache Entität beschreibt ein einzelnes Konzept aus dem Machine Learning-Kontext. Fügen Sie eine Auszugsliste hinzu, wenn Sie eine einfache Entität verwenden, um die Ergebnisse zu verbessern.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b5754be3c9941101a53f332841ace93caf9acdd
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74894761"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684561"
 ---
 # <a name="simple-entity"></a>Entität vom Typ „Simple“
 
-Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt und im Kontext des maschinellen Lernens erworben wurde. Da es sich bei einfachen Entitäten normalerweise um Namen handelt, z.B. Unternehmensnamen, Produktnamen oder andere Namen, sollten Sie wie folgt vorgehen: Fügen Sie eine [Liste mit Ausdrücken](luis-concept-feature.md) hinzu, wenn Sie eine einfache Entität verwenden, um das Signal für die verwendeten Namen zu verstärken.
+Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt und aus dem Machine Learning-Kontext erworben wurde. Da es sich bei einfachen Entitäten normalerweise um Namen handelt, z.B. Unternehmensnamen, Produktnamen oder andere Namen, sollten Sie wie folgt vorgehen: Fügen Sie eine [Liste mit Ausdrücken](luis-concept-feature.md) hinzu, wenn Sie eine einfache Entität verwenden, um das Signal für die verwendeten Namen zu verstärken.
 
 **Diese Entität ist gut geeignet, wenn Folgendes gilt**:
 
@@ -88,7 +88,7 @@ This is the JSON if `verbose=true` is set in the query string:
 
 * * *
 
-|Datenobjekt|Name der Entität|value|
+|Datenobjekt|Name der Entität|Wert|
 |--|--|--|
 |Entität vom Typ „Simple“|`Customer`|`bob jones`|
 

@@ -5,21 +5,20 @@ description: Hier wird erläutert, wie Sie Azure Machine Learning-Webdienste dir
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: e30103589c1baf9a165839cd041ff511a119c5ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8565e3c62ea1b74879f2e127abed772576563886
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211322"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Excel-Add-In für (klassische) Azure Machine Learning Studio-Webdienste
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 Mit Excel können Webdienste auf einfache Weise direkt aufgerufen werden, ohne dafür Code erstellen zu müssen.
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Schritte zum Verwenden eines vorhandenen Webdiensts in einer Arbeitsmappe
@@ -84,4 +83,4 @@ Rufen Sie den API-Schlüssel Ihres Webdiensts ab. Wo diese Aktion durchgeführt 
 ## <a name="sharing-your-workbook"></a>Freigeben Ihrer Arbeitsmappe
 Wenn Sie Ihre Arbeitsmappe speichern, werden auch die API/der Primärschlüssel der hinzugefügten Webdienste gespeichert. Das bedeutet, dass Sie die Arbeitsmappe nur für Personen freigeben sollten, denen Sie vertrauen.
 
-Im nachstehenden Kommentarabschnitt oder in unserem [Forum](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409) können Sie Fragen stellen.
+Im nachstehenden Kommentarabschnitt oder in unserem [Forum](https://docs.microsoft.com/answers/topics/azure-machine-learning.html) können Sie Fragen stellen.

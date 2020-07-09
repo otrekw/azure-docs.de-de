@@ -1,22 +1,20 @@
 ---
-title: Dashboard „Marketplace-Erkenntnisse“ in Analysen für den kommerziellen Marketplace im Partner Center
-description: Nutzen Sie eine Zusammenfassung der Marketplace-Webanalysen, mit denen Herausgeber die Kundeninteraktion in AppSource- und Azure Marketplace-Storefronts messen können.
-author: dsindona
-ms.author: dsindona
+title: 'Marketplace-Erkenntnisse: kommerzieller Microsoft-Marketplace'
+description: Nutzen Sie eine Zusammenfassung der Marketplace-Webanalysen, mit denen Sie die Kundeninteraktion in Microsoft AppSource- und Azure Marketplace messen können.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 8b5f90449f27007febe93f1193c6d2245b076e7e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251706"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120397"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Marketplace-Erkenntnisse“ in Analysen für den kommerziellen Marketplace
+# <a name="marketplace-insights-dashboard-in-partner-center"></a>Dashboard mit Marketplace-Erkenntnissen in Partner Center
 
-Dieser Artikel bietet Informationen zum Dashboard „Marketplace-Erkenntnisse“ im Partner Center. In diesem Dashboard wird eine Zusammenfassung der Marketplace-Webanalysen angezeigt, mit deren Hilfe Herausgeber die Kundeninteraktion mit ihren jeweiligen Produktdetailseiten messen können, die in den Marketplace-Storefronts gelistet sind: AppSource und Azure Marketplace
+Dieser Artikel bietet Informationen zum Dashboard „Marketplace-Erkenntnisse“ im Partner Center. In diesem Dashboard wird eine Zusammenfassung der Marketplace-Webanalysen angezeigt, mit deren Hilfe Herausgeber die Kundeninteraktion mit ihren jeweiligen Produktdetailseiten messen können, die in den Marketplace-Storefronts gelistet sind: Microsoft AppSource und Azure Marketplace.
 
 ## <a name="marketplace-insights-dashboard"></a>Dashboard „Marketplace-Erkenntnisse“
 
@@ -89,7 +87,7 @@ Im folgenden Wärmebild wird die Anzahl der **Seitenbesuche**, **Handlungsauffor
 Das Wärmebild umfasst die folgenden Funktionen:
 
 - Das Wärmebild verfügt über ein zusätzliches Raster, in dem Details zu **Seitenbesuchen**, **Handlungsaufforderungen** und **unterschiedlichen Besuchern** an einem bestimmten Ort angezeigt werden können. Falls gewünscht, können Sie einen bestimmten Ort vergrößern.  
-- **Länderverteilung** entspricht der Anzahl aller Länder, in denen während des ausgewählten Datumsbereichs Seitenbesuche von Kunden gemeldet wurden.
+- **Länder-/Regionsverteilung** entspricht der Anzahl aller Länder/Regionen, in denen während des ausgewählten Datumsbereichs Seitenbesuche von Kunden gemeldet wurden.
 - Sie können ein Land im Raster suchen und auswählen, um in der Karte an den Ort zu zoomen. Um zur ursprünglichen Ansicht zurückzukehren, wählen Sie auf der Karte **Home** aus.
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>Trend: Seitenbesuche/unterschiedliche Besucher im Vergleich
@@ -138,7 +136,7 @@ Diese Tabelle enthält eine Listenansicht der Seitenbesuche und Handlungsaufford
 - Informationen zu Diagrammen, Trends und Werten von aggregierten Daten, mit deren Hilfe Marketplace-Aktivitäten für Ihr Angebot zusammengefasst werden, finden Sie unter [Dashboard „Zusammenfassung“ in Analysen für den kommerziellen Marketplace](./summary-dashboard.md).
 - Informationen zu Ihren Aufträgen in einem grafischen und herunterladbaren Format finden Sie unter [Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace](./orders-dashboard.md).
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](./usage-dashboard.md).
-- Ausführliche Informationen zu Ihren Kunden, einschließlich Wachstumstrends finden Sie unter [Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace](./customer-dashboard.md).
-- Eine Liste Ihrer Downloadanforderungen in den letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
-- Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote in Azure Marketplace und AppSource finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](./ratings-reviews.md).
+- Ausführliche Informationen zu Ihren Kunden, einschließlich Wachstumstrends, finden Sie unter [Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace](./customer-dashboard.md).
+- Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
+- Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in AppSource finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](./ratings-reviews.md).
 - Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace](./faq-terminology.md).

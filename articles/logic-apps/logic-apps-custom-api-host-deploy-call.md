@@ -1,35 +1,35 @@
 ---
-title: Bereitstellen und Aufrufen von Web- und REST-APIs über Azure Logic Apps
-description: Bereitstellen und Aufrufen von Web- und REST-APIs für Workflows für die Systemintegration in Azure Logic Apps
+title: Aufrufen von benutzerdefinierten Web- und REST-APIs
+description: Aufrufen Ihrer eigenen Web- und REST-APIs aus Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/26/2017
-ms.openlocfilehash: d1305be54a22b1460000a357074cbb1f67123bd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/13/2020
+ms.openlocfilehash: 7b4d00e8c0366d10fddafa66db699c1a59fd9ad7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74790756"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659772"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Bereitstellen und Aufrufen benutzerdefinierter APIs über Workflows in Azure Logic Apps
 
-Nachdem Sie den Vorgang [Benutzerdefinierte APIs erstellen](./logic-apps-create-api-app.md) für die Verwendung in Workflows der Logik-App durchgeführt haben, müssen Sie Ihre APIs bereitstellen, bevor Sie sie aufrufen können. Sie können Ihre APIs als [Web-Apps](../app-service/overview.md) bereitstellen, sollten jedoch in Erwägung ziehen, Ihre APIs als [API-Apps](../app-service/app-service-web-tutorial-rest-api.md) bereitzustellen. Dadurch wird das Erstellen, Hosten und Nutzen der APIs in der Cloud und lokal vereinfacht. Sie müssen keinen Code in Ihren APIs ändern. Stellen Sie einfach Ihren Code für eine API-App bereit. Sie können Ihre APIs in [Azure App Service](../app-service/overview.md) hosten, einem PaaS-Angebot (Platform-as-a-Service), das ein einfaches API-Hosting mit hoher Skalierbarkeit ermöglicht.
+Nachdem Sie [Ihre eigenen APIs erstellt haben](./logic-apps-create-api-app.md), um sie in Workflows der Logik-App zu verwenden, müssen Sie diese APIs bereitstellen, bevor Sie sie aufrufen können. Sie können Ihre APIs als [Web-Apps](../app-service/overview.md) bereitstellen, sollten jedoch in Erwägung ziehen, Ihre APIs als [API-Apps](../app-service/app-service-web-tutorial-rest-api.md) bereitzustellen. Dadurch wird das Erstellen, Hosten und Nutzen der APIs in der Cloud und lokal vereinfacht. Sie müssen keinen Code in Ihren APIs ändern. Stellen Sie einfach Ihren Code für eine API-App bereit. Sie können Ihre APIs in [Azure App Service](../app-service/overview.md) hosten, einem PaaS-Angebot (Platform-as-a-Service), das ein einfaches API-Hosting mit hoher Skalierbarkeit ermöglicht.
 
-Und obwohl Sie alle APIs in einer Logik-App aufrufen können, sollten Sie für optimale Ergebnisse [OpenAPI-Metadaten (zuvor Swagger)](https://swagger.io/specification/) hinzufügen, die Ihre API-Vorgänge und -Parameter beschreiben. Mit dieser OpenAPI-Datei funktioniert Ihre API besser und lässt sich leichter in Logik-Apps integrieren.
+Obwohl Sie alle APIs in einer Logik-App aufrufen können, sollten Sie für optimale Ergebnisse [Swagger-Metadaten](https://swagger.io/specification/) hinzufügen, die Ihre API-Vorgänge und -Parameter beschreiben. Dieses Swagger-Dokument erleichtert Ihnen die Integration Ihrer API und hilft bei der Zusammenarbeit Ihrer API mit Logik-Apps.
 
 ## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>Bereitstellen der API als Web-App oder API-App
 
-Bevor Sie Ihre benutzerdefinierte API über eine Logik-App aufrufen können, müssen Sie die API im Azure App Service als Web-App oder API-App bereitstellen. Zudem müssen Sie die Eigenschaften der API-Definition festlegen und die [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](../app-service/overview.md) für Ihre Web-App oder API-App einschalten, damit die OpenAPI-Datei für den Designer für Logik-Apps lesbar ist.
+Bevor Sie Ihre benutzerdefinierte API über eine Logik-App aufrufen können, müssen Sie die API im Azure App Service als Web-App oder API-App bereitstellen. Sie müssen die Eigenschaften der API-Definition festlegen und die [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](../app-service/overview.md) für Ihre Web-App oder API-App einschalten, damit das Swagger-Dokument vom Logic Apps-Designer gelesen werden kann.
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihre Web-App oder API-App aus.
 
-2. Wählen Sie auf dem geöffneten App-Menü unter **API** die Option **API-Definition** aus. Legen Sie den **Speicherort der API-Definition** auf die URL Ihrer OpenAPI-Datei „swagger.json“ fest.
+2. Wählen Sie auf dem geöffneten App-Menü unter **API** die Option **API-Definition** aus. Legen Sie den **Speicherort der API-Definition** auf die URL Ihrer Datei swagger.json fest.
 
    In der Regel wird die URL im folgenden Format dargestellt:`https://{name}.azurewebsites.net/swagger/docs/v1)`
 
-   ![Verknüpfung mit der OpenAPI-Datei für Ihre benutzerdefinierte API](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
+   ![Verknüpfung mit dem Swagger-Dokument für Ihre benutzerdefinierte API](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
 3. Wählen Sie unter **API** den Eintrag **CORS** aus. Legen Sie die CORS-Richtlinie für **Zulässige Ursprünge** auf **'*'** (alle zulassen) fest.
 
@@ -45,9 +45,9 @@ Nachdem Sie die Eigenschaften der API-Definition und CORS eingerichtet haben, so
 
 *  Durchsuchen Sie Ihre Abonnementwebsites im Logik-App-Designer, um Websites mit OpenAPI-URLs anzuzeigen.
 
-*  Verwenden Sie die [Aktion „HTTP + Swagger“ ](../connectors/connectors-native-http-swagger.md), um verfügbare Aktionen und Eingaben durch Verweis auf ein OpenAPI-Dokument anzuzeigen.
+*  Verwenden Sie die [Aktion „HTTP + Swagger“ ](../connectors/connectors-native-http-swagger.md), um verfügbare Aktionen und Eingaben durch Verweis auf ein Swagger-Dokument anzuzeigen.
 
-*  Sie können über die [HTTP-Aktion](../connectors/connectors-native-http.md) jederzeit eine Anforderung erstellen, um alle APIs aufzurufen (einschließlich der APIs, die über kein OpenAPI-Dokument verfügen bzw. keines verfügbar machen).
+*  Sie können über die [HTTP-Aktion](../connectors/connectors-native-http.md) jederzeit eine Anforderung erstellen, um alle APIs aufzurufen (einschließlich der APIs, die über kein Swagger-Dokument verfügen bzw. keines verfügbar machen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

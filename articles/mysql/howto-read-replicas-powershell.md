@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie mit PowerShell Lesereplikate in Azure Databas
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 4/29/2020
-ms.openlocfilehash: 9ac85299311c1fd233988c6472d6325934dd42dd
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.topic: how-to
+ms.date: 6/10/2020
+ms.openlocfilehash: f6d24ba0d31020b82669947189da180348f2a46b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613995"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107987"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe von PowerShell
 
@@ -40,6 +40,9 @@ Wenn Sie PowerShell lieber lokal verwenden möchten, stellen Sie mithilfe des Cm
 > Das Feature für Lesereplikate ist nur für Azure Database for MySQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Masterserver einer dieser Tarife festgelegt ist.
 
 ### <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
+
+> [!IMPORTANT]
+> Wenn Sie ein Replikat für einen Master erstellen, der keine vorhandenen Replikate hat, startet der Master zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
 
 Ein Lesereplikatserver kann mit dem folgenden Befehl erstellt werden:
 

@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131204"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124583"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -58,7 +58,7 @@ Für kostenpflichtige Konten verweist das Feld `Url` zurzeit auf eine interne UR
 In den nächsten Wochen werden wir dies ändern und die URL der [Video Indexer-Website](https://www.videoindexer.ai/) für alle Konten zurückgeben (Testkonten und kostenpflichtige Konten).
 
     Verwenden Sie nicht die internen URLs, Sie sollten die [öffentlichen Video Indexer-APIs](https://api-portal.videoindexer.ai/) verwenden.
-* Wenn Sie Video Indexer-URLs in Ihre Anwendungen einbetten und die URLs nicht auf die [Video Indexer-Website](https://www.videoindexer.ai/) oder den [Video Indexer-API-Endpunkt](https://api.videoindexer.ai) sondern stattdessen auf einen regionalen Endpunkt verweisen (beispielsweise `https://wus2.videoindexer.ai`), generieren Sie die URLs erneut.
+* Wenn Sie Video Indexer-URLs in Ihre Anwendungen einbetten und die URLs nicht auf die [Video Indexer-Website](https://www.videoindexer.ai/) oder den Video Indexer-API-Endpunkt (`https://api.videoindexer.ai`) sondern stattdessen auf einen regionalen Endpunkt verweisen (beispielsweise `https://wus2.videoindexer.ai`), generieren Sie die URLs erneut.
 
    Dies kann auf einer der folgenden Weisen erfolgen:
 

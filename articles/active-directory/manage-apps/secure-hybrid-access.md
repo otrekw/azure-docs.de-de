@@ -2,21 +2,21 @@
 title: Sicherer Hybridzugriff auf Azure AD | Microsoft-Dokumentation
 description: In diesem Artikel werden Partnerlösungen für die Integration Ihrer lokalen Legacy-, Public Cloud- oder Private Cloud-Anwendungen in Azure AD beschrieben. Schützen Sie Ihre Legacy-Apps, indem Sie App-Übermittlungscontroller oder Netzwerke mit Azure AD verbinden.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: overview
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/18/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e97b95e290ef74ffd98a3396ffe4705270132b2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 295891afbb0136e0b05bcd49f4045e0e8bcff6e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75433762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763039"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-app-delivery-controllers-and-networks"></a>Sicherer Hybridzugriff: Schützen von Legacy-Apps mit App-Bereitstellungscontrollern und -netzwerken
 

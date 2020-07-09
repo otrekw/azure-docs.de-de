@@ -5,16 +5,16 @@ services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3e28a76a559603755d3d72e8d5e27cde72aa9533
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 257847a34821ad48d0491472cf7365932f7740c0
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701064"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080780"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics: Gemeinsam genutzte Metadatentabellen
 
@@ -193,6 +193,6 @@ id | name | birthdate
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu gemeinsam genutzten Metadaten von Azure Synapse Analytics finden Sie [hier](overview.md).
-- Weitere Informationen zu gemeinsam genutzten Metadatentabellen von Azure Synapse Analytics finden Sie [hier](table.md).
+- Weitere Informationen zu gemeinsam genutzten Azure Synapse Analytics-Datenbanken für Metadaten finden Sie [hier](database.md).
 
 

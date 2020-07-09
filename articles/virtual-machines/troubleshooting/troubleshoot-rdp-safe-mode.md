@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1ffd26a243d15f7ee6e06d6c52406a16327b4a0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918205"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086771"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>RDP-Verbindung mit einem virtuellen Computer kann nicht hergestellt werden, weil die VM im abgesicherten Modus gestartet wird
 
@@ -47,7 +47,9 @@ Verwenden Sie zum Beheben dieses Problems die serielle Konsole, um die VM so zu 
    ). Wenn die serielle Konsole auf Ihrem virtuellen Computer nicht aktiviert ist, helfen Ihnen die Informationen unter [Reparieren des virtuellen Computers im Offlinestatus](#repair-the-vm-offline) weiter.
 2. Überprüfen Sie die Startkonfigurationsdaten:
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
     Wenn für die VM das Starten im abgesicherten Modus konfiguriert ist, wird im Abschnitt **Windows Boot Loader** ein zusätzliches Flag mit dem Namen **safeboot** angezeigt. Wenn das Flag **safeboot** nicht zu sehen ist, befindet sich die VM nicht im abgesicherten Modus. Dieser Artikel gilt nicht für Ihr Szenario.
 
@@ -61,11 +63,15 @@ Verwenden Sie zum Beheben dieses Problems die serielle Konsole, um die VM so zu 
 
 3. Löschen Sie das Flag **safeboot**, damit die VM wieder im normalen Modus gestartet wird:
 
-        bcdedit /deletevalue {current} safeboot
+    ```console
+    bcdedit /deletevalue {current} safeboot
+    ```
 
 4. Überprüfen Sie die Daten der Startkonfiguration, um sicherzustellen, dass das Flag **safeboot** entfernt wurde:
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
 5. Starten Sie die VM neu, und vergewissern Sie sich, dass das Problem behoben wurde.
 
@@ -115,7 +121,10 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
 1. Öffnen Sie eine Eingabeaufforderungssitzung mit erhöhten Rechten (**Als Administrator ausführen**).
 2. Überprüfen Sie die Startkonfigurationsdaten. Bei den folgenden Befehlen wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie diesen durch den entsprechenden Wert für Ihren virtuellen Computer.
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
     Notieren Sie sich den Bezeichnernamen der Partition, auf der sich der Ordner **\windows** befindet. Standardmäßig ist der Bezeichnername „Default“ (Standard).
 
     Wenn für die VM das Starten im abgesicherten Modus konfiguriert ist, wird im Abschnitt **Windows Boot Loader** ein zusätzliches Flag mit dem Namen **safeboot** angezeigt. Wenn das Flag **safeboot** nicht angezeigt wird, gilt dieser Artikel nicht für Ihr Szenario.
@@ -124,8 +133,14 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
 
 3. Entfernen Sie das Flag **safeboot**, damit die VM wieder im normalen Modus gestartet wird:
 
-        bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```console
+    bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```
+
 4. Überprüfen Sie die Daten der Startkonfiguration, um sicherzustellen, dass das Flag **safeboot** entfernt wurde:
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
 5. [Trennen Sie den Betriebssystemdatenträger, und erstellen die VM neu.](../windows/troubleshoot-recovery-disks-portal.md) Überprüfen Sie dann, ob das Problem behoben ist.

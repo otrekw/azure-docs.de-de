@@ -28,6 +28,8 @@
       href: Quickstarts/batch-testing.md
 - name: Konzepte
   items:
+    - name: Planen Ihrer Wissensdatenbank
+      href: Concepts/plan.md
     - name: Azure-Ressourcen
       href: Concepts/azure-resources.md
     - name: Zusammenarbeit mit anderen Benutzern
@@ -44,7 +46,7 @@
           href: Concepts/knowledge-base.md
         - name: Importierte Inhaltstypen
           href: Concepts/content-types.md
-        - name: Frage-Antwort-Sätze
+        - name: Frage-Antwort-Paare
           href: Concepts/question-answer-set.md
     - name: Lebenszyklus einer Knowledge Base
       items:
@@ -72,8 +74,6 @@
         - name: Ressourcen verwalten
           href: How-To/set-up-qnamaker-service-azure.md
           displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: Erstellen eines Geschäftskontinuitätsplans
-          href: How-To/business-continuity-plan.md
         - name: Zusammenarbeiten
           href: How-To/collaborate-knowledge-base.md
         - name: Aktivieren des Features für aktives Lernen
@@ -115,7 +115,7 @@
       items:
         - name: Erstellen einer neuen Wissensdatenbank
           items:
-            - name: 'C#'
+            - name: C#
               href: Quickstarts/create-new-kb-csharp.md
             - name: Go
               href: Quickstarts/create-new-kb-go.md
@@ -125,19 +125,19 @@
               href: Quickstarts/create-new-kb-python.md
         - name: Veröffentlichen einer Wissensdatenbank
           items:
-            - name: 'C#'
+            - name: C#
               href: Quickstarts/publish-kb-csharp.md
             - name: Go
               href: Quickstarts/publish-kb-go.md
             - name: Java
               href: Quickstarts/publish-kb-java.md
             - name: Node.js
-              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
+              href: Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base
             - name: Python
               href: Quickstarts/publish-kb-python.md
         - name: Abrufen der Antwort
           items:
-            - name: 'C#'
+            - name: C#
               href: Quickstarts/get-answer-from-knowledge-base-csharp.md
             - name: Go
               href: Quickstarts/get-answer-from-knowledge-base-go.md
@@ -185,7 +185,7 @@
           href: 'https://aka.ms/qnamakerhelpbotsample'
     - name: SDKs
       items:
-        - name: 'C#'
+        - name: C#
           items:
             - name: Referenzdokumentation
               href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet'
@@ -201,12 +201,14 @@
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v4.0/qnamaker'
             - name: Beispiele
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-go'
-        - name: Node.js
+        - name: JavaScript
           items:
             - name: Referenzdokumentation
               href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
-            - name: npm
-              href: 'https://www.npmjs.com/package/azure-cognitiveservices-qnamaker'
+            - name: 'NPM: Erstellung'
+              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
+            - name: 'NPM: Abfragelaufzeit'
+              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker-runtime'
             - name: Beispiele
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs'
         - name: Python
@@ -225,7 +227,7 @@
   items:
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: qna-maker-encryption-of-data-at-rest.md

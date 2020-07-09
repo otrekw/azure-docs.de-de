@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: d5dde8c45331cf8c443aba86c96ba12c8277472c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44262c30dc49182314fb70dbb814be25c49e9d50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192483"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080005"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
@@ -133,14 +133,6 @@ So umgehen Sie dieses Problem:
 
 > [!IMPORTANT]  
 > Das Rotieren des Speicherschlüssels für das primäre Speicherkonto, das an einen Cluster gekoppelt ist, wird nicht unterstützt.
-
-### <a name="poor-performance"></a>Schlechte Leistung
-
-Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster befindet, könnten Sie eine schlechte Leistung feststellen. Der Zugriff auf Daten in einer anderen Region ist mit Netzwerkdatenverkehr außerhalb des regionalen Azure-Rechenzentrums verbunden. Außerdem erfolgt dies über das öffentliche Internet, was zu einer längeren Wartezeit führen kann.
-
-### <a name="additional-charges"></a>Zusätzliche Gebühren
-
-Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster befindet, fallen Ihnen möglicherweise zusätzliche Ausgangsgebühren in Ihrer Azure-Abrechnung auf. Eine Ausgangsgebühr wird fällig, wenn Daten ein regionales Rechenzentrum verlassen. Diese Gebühr fällt auch dann an, wenn das Ziel des Datenverkehrs ein anderes Azure-Rechenzentrum in einer anderen Region ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,23 +1,14 @@
 ---
 title: Azure Service Bus-Themenfilter | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Abonnenten definieren können, welche Nachrichten von einem Thema empfangen werden sollen, indem Filter angegeben werden.
-services: service-bus-messaging
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 6e780268d4b8c1a512ce82b1ca10a2f6b7b894b7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: b722c040248c199782f6c8dea020ae582762e102
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125756"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339959"
 ---
 # <a name="topic-filters-and-actions"></a>Themenfilter und -aktionen
 
@@ -64,7 +55,7 @@ Bei der Weiterleitung werden Nachrichten mit Filtern auf vorhersehbare Weise auf
 
 
 > [!NOTE]
-> Zurzeit können Sie im Azure-Portal keine Filterregeln für Abonnements angeben. Sie können alle unterstützten SDKs oder Azure Resource Manager Vorlagen verwenden, um Abonnementregeln zu definieren. 
+> Da das Azure-Portal jetzt die Service Bus Explorer-Funktionen unterstützt, können Abonnementfilter über das Portal erstellt oder bearbeitet werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich die folgenden Beispiele an: 

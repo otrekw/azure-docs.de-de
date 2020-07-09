@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: bbe1d651a7d2d2cac1b1aa78b815b2797ad185c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f087a2880c16218905a4410a2f591511a155ffd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76717328"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629009"
 ---
 # <a name="create-a-custom-voice"></a>Erstellen einer benutzerdefinierten Stimme
 
@@ -62,7 +62,7 @@ Bei einer niedrigen Aussprachebewertung oder einem geringen SNR-Wert sollten Sie
 
 Nachdem Ihr Dataset überprüft wurde, können Sie damit Ihr benutzerdefiniertes Stimmmodell erstellen.
 
-1.  Navigieren Sie zu **„Sprachsynthese“ > „Custom Voice“ (Benutzerdefinierte Stimme) > „Training“.**
+1.  Navigieren Sie zu **Text-zu-Sprache > Custom Voice > [Projektname] > Training**.
 
 2.  Klicken Sie auf **Modell trainieren**.
 
@@ -106,7 +106,7 @@ Wenn Sie die neuronale Stimmtrainingsfunktion verwenden, können Sie auswählen,
 
 Nach der erfolgreichen Erstellung des Voicefonts können Sie ihn vor der Bereitstellung testen.
 
-1.  Navigieren Sie zu **„Sprachsynthese“ > „Custom Voice“ (Benutzerdefinierte Stimme) > „Testen“.**
+1.  Navigieren Sie zu **Text-zu-Sprache > Custom Voice > [Projektname] > Testen**.
 
 2.  Klicken Sie auf **Test hinzufügen**.
 

@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 816e8843467588cbfaeb5eb6e531d2221d28656b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565961"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Automatisierungsrichtlinien für Virtual WAN-Partner
 
@@ -54,7 +54,7 @@ Verstehen der erwarteten Kundenerfahrung in Verbindung mit Azure Virtual WAN
 
 ###  <a name="access-control"></a><a name="access"></a>Zugriffssteuerung
 
-Kunden müssen entsprechende Zugriffssteuerungen für Virtual WAN in der Gerätebenutzeroberfläche einrichten können. Dafür wird ein Azure-Dienstprinzipal empfohlen. Der auf einem Dienstprinzipal basierende Zugriff bietet dem Gerätecontroller eine entsprechende Authentifizierung, um Zweigstelleninformationen hochzuladen. Weitere Informationen finden Sie unter [Erstellen von Dienstprinzipalen](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Obwohl diese Funktionalität nicht zum Angebot von Azure Virtual WAN gehört, werden im Folgenden die typischen Schritte zur Einrichtung des Zugriffs in Azure aufgeführt, woraufhin die relevanten Details in das Dashboard zur Geräteverwaltung eingegeben werden.
+Kunden müssen entsprechende Zugriffssteuerungen für Virtual WAN in der Gerätebenutzeroberfläche einrichten können. Dafür wird ein Azure-Dienstprinzipal empfohlen. Der auf einem Dienstprinzipal basierende Zugriff bietet dem Gerätecontroller eine entsprechende Authentifizierung, um Zweigstelleninformationen hochzuladen. Weitere Informationen finden Sie unter [Erstellen von Dienstprinzipalen](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Obwohl diese Funktionalität nicht zum Angebot von Azure Virtual WAN gehört, werden im Folgenden die typischen Schritte zur Einrichtung des Zugriffs in Azure aufgeführt, woraufhin die relevanten Details in das Dashboard zur Geräteverwaltung eingegeben werden.
 
 * Erstellen Sie eine Azure Active Directory-Anwendung für Ihren lokalen Gerätecontroller.
 * Abrufen der Anwendungs-ID und des Authentifizierungsschlüssels

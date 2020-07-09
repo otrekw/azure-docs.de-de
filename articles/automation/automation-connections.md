@@ -1,17 +1,17 @@
 ---
 title: Verwalten von Verbindungen in Azure Automation
-description: Verbindungsobjekte in Azure Automation enthalten die Informationen, die zur Verbindungsherstellung mit einem externen Dienst oder einer externen Anwendung aus einem Runbook oder einer DSC-Konfiguration erforderlich sind. Dieser Artikel stellt eine ausführliche Beschreibung von Verbindungen bereit und zeigt, wie diese in Textrunbooks und grafischen Runbooks eingesetzt werden.
+description: In diesem Artikel wird beschrieben, wie Sie Azure Automation-Verbindungen mit externen Diensten oder Anwendungen verwalten und mit ihnen in Runbooks arbeiten.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1a50c5d3d6e068054cfc8381b220d38471a7eb6c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 3c5901dbd45cc0ce82c7fcd8117705eaeed7b4ba
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996573"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837126"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Verwalten von Verbindungen in Azure Automation
 
@@ -141,7 +141,7 @@ Sie können einem grafischen Runbook eine Aktivität für das interne Cmdlet `Ge
 
 ![Hinzufügen zur Canvas](media/automation-connections/connection-add-canvas.png)
 
-Die folgende Abbildung zeigt ein Beispiel für die Verwendung eines Verbindungsobjekts in einem grafischen Runbook. Dieses Beispiel verwendet das `Constant value`-Dataset für die Aktivität `Get RunAs Connection`, die ein Verbindungsobjekt für die Authentifizierung nutzt. Es wird eine [Pipelineverknüpfung](automation-graphical-authoring-intro.md#links-and-workflow) verwendet, da der Parameter `ServicePrincipalCertificate` so festgelegt wurde, dass er ein einzelnes Objekt erwartet.
+Die folgende Abbildung zeigt ein Beispiel für die Verwendung eines Verbindungsobjekts in einem grafischen Runbook. Dieses Beispiel verwendet das `Constant value`-Dataset für die Aktivität `Get RunAs Connection`, die ein Verbindungsobjekt für die Authentifizierung nutzt. Es wird eine [Pipelineverknüpfung](automation-graphical-authoring-intro.md#use-links-for-workflow) verwendet, da der Parameter `ServicePrincipalCertificate` so festgelegt wurde, dass er ein einzelnes Objekt erwartet.
 
 ![Abrufen von Verbindungen](media/automation-connections/automation-get-connection-object.png)
 

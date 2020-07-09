@@ -1,14 +1,14 @@
 ---
 title: Abrufen von Daten zur Richtlinienkonformität
 description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. Erfahren Sie, wie Sie Konformitätsinformationen Ihrer Azure-Ressourcen abrufen.
-ms.date: 02/01/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: d4d9c530a7f9c4683f522a08a30e23437d1774cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4d63355b793f69ccc2ed7aaa44bfb60a3a8440e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194005"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204836"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
 
@@ -44,7 +44,41 @@ Auswertungen zugewiesener Richtlinien und Initiativen geschehen im Zuge untersch
 
 ### <a name="on-demand-evaluation-scan"></a>Bedarfsgesteuerter Auswertungsscan
 
-Ein Auswertungsscan für ein Abonnement oder eine Ressourcengruppe kann mit einem Aufruf der REST-API gestartet werden. Dieser Scan ist ein asynchroner Prozess. Daher wartet der REST-Endpunkt zum Starten des Scans nicht, bis der Scan abgeschlossen ist, um zu reagieren. Stattdessen stellt er einen URI bereit, um den Status der angeforderten Auswertung abzufragen.
+Ein Auswertungsscan für ein Abonnement oder eine Ressourcengruppe kann mit Azure PowerShell oder einem Aufruf der REST-API gestartet werden. Dieser Scan ist ein asynchroner Prozess.
+
+#### <a name="on-demand-evaluation-scan---azure-powershell"></a>Bedarfsgesteuerter Auswertungsscan – Azure PowerShell
+
+Die Kompatibilitätsüberprüfung wird mit dem [Start-AzPolicyComplianceScan](/powershell/module/az.policyinsights/start-azpolicycompliancescan)-Cmdlet gestartet.
+
+Standardmäßig startet `Start-AzPolicyComplianceScan` eine Auswertung für alle Ressourcen im aktuellen Abonnement. Verwenden Sie den Parameter **ResourceGroupName**, um eine Auswertung für eine bestimmte Ressourcengruppe zu starten. Im folgenden Beispiel wird eine Kompatibilitätsüberprüfung im aktuellen Abonnement für die _MyRG_-Ressourcengruppe gestartet:
+
+```azurepowershell-interactive
+Start-AzPolicyComplianceScan -ResourceGroupName MyRG
+```
+
+Sie können PowerShell auf den Abschluss des asynchronen Aufrufes warten lassen, bevor Sie die Ergebnisausgabe bereitstellen, oder PowerShell im Hintergrund als [Auftrag](/powershell/module/microsoft.powershell.core/about/about_jobs) ausführen. Wenn Sie die Kompatibilitätsüberprüfung im Hintergrund mit einem PowerShell-Auftrag ausführen möchten, verwenden Sie den Parameter **AsJob**, und legen Sie den Wert auf ein Objekt fest, wie z. B. `$job` in diesem Beispiel:
+
+```azurepowershell-interactive
+$job = Start-AzPolicyComplianceScan -AsJob
+```
+
+Sie können den Status des Auftrags überprüfen, indem Sie das `$job`-Objekt überprüfen. Der Auftrag ist vom Typ `Microsoft.Azure.Commands.Common.AzureLongRunningJob`. Verwenden Sie `Get-Member` für das `$job`-Objekt, um die verfügbaren Eigenschaften und Methoden anzuzeigen.
+
+Während der Kompatibilitätsüberprüfung ergibt die Überprüfung der `$job`-Objektausgaben Ergebnisse wie diese:
+
+```azurepowershell-interactive
+$job
+
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+2      Long Running O… AzureLongRunni… Running       True            localhost            Start-AzPolicyCompliance…
+```
+
+Wenn die Kompatibilitätsüberprüfung abgeschlossen ist, ändert sich die **Status**-Eigenschaft in _Abgeschlossen_.
+
+#### <a name="on-demand-evaluation-scan---rest"></a>Bedarfsgesteuerter Auswertungsscan – REST
+
+Daher wartet der REST-Endpunkt als asynchroner Prozess zum Starten des Scans nicht, bis der Scan abgeschlossen ist, um zu reagieren. Stattdessen stellt er einen URI bereit, um den Status der angeforderten Auswertung abzufragen.
 
 In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetzen müssen:
 
@@ -56,19 +90,19 @@ Der Scan unterstützt die Auswertung von Ressourcen in einem Abonnement oder in 
 - Subscription
 
   ```http
-  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
 - Resource group
 
   ```http
-  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
 Der Aufruf gibt einen Status **202 - Akzeptiert** zurück. Im Antwortheader enthalten ist eine **Speicherort**-Eigenschaft mit dem folgenden Format:
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2019-10-01
 ```
 
 `{ResourceContainerGUID}` wird für den angeforderten Bereich statisch generiert. Wird für einen Bereich bereits ein bedarfsgesteuerter Scan ausgeführt, wird kein neuer Scan gestartet. Stattdessen wird der neuen Anforderung derselbe **Speicherort**-URI `{ResourceContainerGUID}` für den Status bereitgestellt. Ein REST-API-Befehl **GET** für den **Speicherort**-URI gibt während der laufenden Auswertung einen Status **202 - Akzeptiert** zurück. Nach Abschluss des Auswertungsscans wird ein Status **200 - OK** zurückgegeben. Der Text eines abgeschlossenen Scans ist eine JSON-Antwort mit folgendem Status:
@@ -115,6 +149,9 @@ _Ressourcen gesamt_ ist als Summe der Ressourcen mit dem Zustand **Konform**, **
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Beispiel für Richtlinienkonformität auf der Seite „Konformität“" border="false":::
 
+> [!NOTE]
+> Die Einhaltung gesetzlicher Bestimmungen in Azure Policy ist eine Funktion in der Vorschauversion. Complianceeigenschaften von SDK und Seiten im Portal unterscheiden sich für aktivierte Initiativen. Weitere Informationen finden Sie unter [Einhaltung gesetzlicher Bestimmungen](../concepts/regulatory-compliance.md).
+
 ## <a name="portal"></a>Portal
 
 Im Azure-Portal ist eine grafische Benutzeroberfläche zum Anzeigen und Verstehen des Konformitätsstatus Ihrer Umgebung dargestellt. Auf der Seite **Richtlinie** stellt die Option **Übersicht** Details für verfügbare Bereiche zur Konformität für Richtlinien und Initiativen bereit. Neben dem Konformitätsstatus und der Anzahl pro Zuweisung ist ein Diagramm enthalten, das die Konformität der letzten sieben Tage anzeigt. Die Seite **Konformität** enthält im Grunde genommen die gleichen Informationen (mit Ausnahme des Diagramms), stellt jedoch zusätzliche Optionen zum Filtern und Sortieren bereit.
@@ -143,7 +180,7 @@ Wenn Sie sich wieder auf der Seite für Ressourcenkonformität befinden, klicken
 
 ### <a name="understand-non-compliance"></a>Grundlagen der Nichtkompatibilität
 
-Wenn Ressourcen als **nicht kompatibel** bestimmt werden, kann das viele mögliche Ursachen haben. Wie Sie die Ursache für die **Nichtkompatibilität** einer Ressource bestimmen oder die dafür verantwortliche Änderung finden können, ist unter [Bestimmen der Nichtkompatibilität](./determine-non-compliance.md) beschrieben.
+Wenn Ressourcen als **nicht kompatibel** bestimmt werden, sind hierfür viele Ursachen möglich. Wie Sie die Ursache für die **Nichtkompatibilität** einer Ressource bestimmen oder die dafür verantwortliche Änderung finden können, ist unter [Bestimmen der Nichtkompatibilität](./determine-non-compliance.md) beschrieben.
 
 ## <a name="command-line"></a>Befehlszeile
 
@@ -157,7 +194,7 @@ Verwenden Sie ARMClient oder ein ähnliches Tool, um die Authentifizierung in Az
 Mithilfe der REST-API kann die Zusammenfassung nach Container, Definition oder Zuweisung erfolgen. Hier sehen Sie ein Beispiel der Zusammenfassung auf Abonnementebene mithilfe der Option [Summarize For Subscription](/rest/api/policy-insights/policystates/summarizeforsubscription) (Für Abonnement zusammenfassen) von Azure Policy Insights:
 
 ```http
-POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
+POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01
 ```
 
 Die Ausgabe fasst das Abonnement zusammen. In der Beispielausgabe unten befindet sich die zusammengefasste Konformität unter **value.results.nonCompliantResources** und **value.results.nonCompliantPolicies**. Diese Anforderung stellt weitere Details bereit, einschließlich jeder Zuweisung, aus der die nicht konformen Zahlen und die Definitionsinformationen für jede Zuweisung bestehen. Jedes Richtlinienobjekt in der Hierarchie bietet einen **queryResultsUri**, der zum Abrufen zusätzlicher Details auf dieser Ebene verwendet werden kann.
@@ -170,7 +207,7 @@ Die Ausgabe fasst das Abonnement zusammen. In der Beispielausgabe unten befindet
         "@odata.id": null,
         "@odata.context": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#summary/$entity",
         "results": {
-            "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false",
+            "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false",
             "nonCompliantResources": 15,
             "nonCompliantPolicies": 1
         },
@@ -178,7 +215,7 @@ Die Ausgabe fasst das Abonnement zusammen. In der Beispielausgabe unten befindet
             "policyAssignmentId": "/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77",
             "policySetDefinitionId": "",
             "results": {
-                "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
+                "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
                 "nonCompliantResources": 15,
                 "nonCompliantPolicies": 1
             },
@@ -187,7 +224,7 @@ Die Ausgabe fasst das Abonnement zusammen. In der Beispielausgabe unten befindet
                 "policyDefinitionId": "/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
                 "effect": "deny",
                 "results": {
-                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
+                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
                     "nonCompliantResources": 15
                 }
             }]
@@ -201,7 +238,7 @@ Die Ausgabe fasst das Abonnement zusammen. In der Beispielausgabe unten befindet
 Im obigen Beispiel stellt **value.policyAssignments.policyDefinitions.results.queryResultsUri** einen Beispiel-URI bereit, mit dem alle nicht konformen Ressourcen für eine bestimmte Richtliniendefinition abgerufen werden können. Sehen Sie sich den Wert **$filter** an. Sie werden feststellen, dass „IsCompliant“ gleich (eq) FALSE ist und „PolicyAssignmentId“ für die Richtliniendefinition sowie die PolicyDefinitionId selbst angegeben ist. Der Grund für das Einschließen der „PolicyAssignmentId“ in den Filter ist der, dass die „PolicyDefinitionId“ in mehreren Zuweisungen von Richtlinien oder Initiativen mit verschiedenen Bereichen vorhanden sein kann. Durch Angeben der „PolicyAssignmentId“ und der „PolicyDefinitionId“ können wir die Ergebnisse eingrenzen, die wir suchen. Zuvor haben wir für „PolicyStates“ **latest** verwendet, womit automatisch ein Zeitfenster **from** (von) und **to** (bis) der letzten 24 Stunden festgelegt wird.
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
 ```
 
 Die folgende Beispielantwort wurde der Kürze halber auf eine einzige nicht konforme Ressource reduziert. Die ausführliche Antwort enthält mehrere Teile von Ressourcendaten, die Richtlinie (oder Initiative) sowie die Zuweisung. Beachten Sie, dass Sie auch anzeigen können, welche Zuweisungsparameter an die Richtliniendefinition übergeben wurden.
@@ -247,7 +284,7 @@ Die folgende Beispielantwort wurde der Kürze halber auf eine einzige nicht konf
 Wenn eine Ressource erstellt oder aktualisiert wird, wird ein Ergebnis der Richtlinienauswertung generiert. Diese Ergebnisse werden als _Richtlinienereignisse_ bezeichnet. Verwenden Sie den folgenden URI, um die neuesten Richtlinienereignisse anzuzeigen, die dem Abonnement zugewiesen sind.
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2018-04-04
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2019-10-01
 ```
 
 Ihre Ergebnisse sollten in etwa wie im folgenden Beispiel aussehen:

@@ -9,21 +9,24 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2019
+ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 5cbef1f31ea7088d4fab4888f5630af1b765a910
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f4b5713aed6bae574c30f555ef7f63307138a96
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588653"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014977"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Herstellen einer Verbindung zwischen Azure Sentinel und AWS CloudTrail
 
 Verwenden Sie den AWS-Connector, um alle Ihre AWS CloudTrail-Ereignisse in Azure Sentinel zu streamen. Dieser Verbindungsprozess delegiert den Zugriff für Azure Sentinel auf Ihre AWS-Ressourcenprotokolle und schafft so eine Vertrauensbeziehung zwischen AWS CloudTrail und Azure Sentinel. Dies erfolgt in AWS durch Erstellen einer Rolle, die Azure Sentinel die Berechtigung erteilt, auf Ihre AWS-Protokolle zuzugreifen.
+
+> [!NOTE]
+> AWS CloudTrail weist [integrierte Beschränkungen](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) in seiner LookupEvents-API auf. Es sind nicht mehr als zwei Transaktionen pro Sekunde (TPS) pro Konto zulässig, und jede Abfrage kann maximal 50 Datensätze zurückgeben. Wenn also ein einziger Mandant ständig mehr als 100 Datensätze pro Sekunde in einer Region generiert, kommen es zu Backlogs und Verzögerungen bei der Datenerfassung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 9ef9eada9b9aec50642a8bf357edab0677868817
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db49a3660d3f1aab6a8a9945751fed9461a6b8fd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74949388"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086040"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Verwenden benutzerdefinierter C#-Funktionen mit Apache Hive und Apache Pig für Apache Hadoop in HDInsight
 
@@ -58,7 +58,7 @@ So erstellen Sie ein C#-Projekt für eine benutzerdefinierte Apache Hive-Funktio
 
 3. Wählen Sie im Fenster **Neues Projekt erstellen** die C#-Version der Vorlage **Konsolen-App (.NET Framework)** aus. Wählen Sie **Weiter**aus.
 
-4. Geben Sie im Fenster **Neues Projekt konfigurieren** den **Projektnamen***HiveCSharp* ein, und navigieren Sie zum **Speicherort** für das neue Projekt, oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen**.
+4. Geben Sie im Fenster **Neues Projekt konfigurieren** den **Projektnamen** *HiveCSharp* ein, und navigieren Sie zum **Speicherort** für das neue Projekt, oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen**.
 
 5. Ersetzen Sie den Inhalt von *Program.cs* in Visual Studio IDE durch den folgenden Code:
 
@@ -125,7 +125,7 @@ So erstellen Sie ein C#-Projekt für eine benutzerdefinierte Apache Hive-Funktio
 
 3. Wählen Sie im Fenster **Neues Projekt erstellen** die C#-Version der Vorlage **Konsolen-App (.NET Framework)** aus. Wählen Sie **Weiter**aus.
 
-4. Geben Sie im Fenster **Neues Projekt konfigurieren** den **Projektnamen***PigUDF* ein, und navigieren Sie zum **Speicherort** für das neue Projekt oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen**.
+4. Geben Sie im Fenster **Neues Projekt konfigurieren** den **Projektnamen** *PigUDF* ein, und navigieren Sie zum **Speicherort** für das neue Projekt oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen**.
 
 5. Ersetzen Sie den Inhalt von *Program.cs* in Visual Studio IDE durch den folgenden Code:
 

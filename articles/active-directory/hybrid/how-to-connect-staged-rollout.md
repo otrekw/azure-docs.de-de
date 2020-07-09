@@ -5,21 +5,21 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/23/2020
+ms.topic: how-to
+ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b7536704d68e96429d715705a0518410db399a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112319"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357850"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts (Vorschau)
 
-Durch Verwenden eines Ansatzes mit gestaffeltem Rollout können Sie von der Verbundauthentifizierung zur Cloudauthentifizierung migrieren. In diesem Artikel wird erläutert, wie Sie den Umstieg vornehmen. Bevor Sie mit dem gestaffelten Rollout beginnen, sollten Sie jedoch die Auswirkungen berücksichtigen, wenn mindestens eine der folgenden Bedingungen zutrifft:
+Indem Sie den Ansatz mit einem gestaffelten Rollout nutzen, können Sie eine Umstellung Ihrer gesamten Domäne vermeiden.  Dies ermöglicht Ihnen das selektive Testen von Benutzergruppen mit Cloudauthentifizierungsfunktionen, z. B. Azure Multi-Factor Authentication (MFA), bedingter Zugriff, Identity Protection für kompromittierte Anmeldeinformationen, Identity Governance usw.  In diesem Artikel wird erläutert, wie Sie den Umstieg vornehmen. Bevor Sie mit dem gestaffelten Rollout beginnen, sollten Sie jedoch die Auswirkungen berücksichtigen, wenn mindestens eine der folgenden Bedingungen zutrifft:
     
 -  Sie verwenden zurzeit einen lokalen Server für mehrstufige Authentifizierung. 
 -  Sie verwenden Smartcards für die Authentifizierung. 
@@ -38,8 +38,8 @@ Einen Überblick über das Feature finden Sie hier: „Azure Active Directory: W
 -   Sie verfügen über einen Azure AD-Mandanten (Azure Active Directory) mit Verbunddomänen.
 
 -   Sie haben sich entschieden, zu einer von zwei Optionen zu wechseln:
-    - **Option A** - *Kennworthashsynchronisierung* + *Nahtloses einmaliges Anmelden (Single Sign-On, SSO)*
-    - **Option B** - *Passthrough-Authentifizierung* + *Nahtloses SSO*
+    - **Option A** - *Kennworthashsynchronisierung* + *Nahtloses einmaliges Anmelden (Single Sign-On, SSO)* .  Weitere Informationen finden Sie unter [Was ist Kennworthashsynchronisierung?](whatis-phs.md) und [Nahtlose einmalige Anmeldung mit Azure Active Directory](how-to-connect-sso.md).
+    - **Option B** - *Passthrough-Authentifizierung* + *Nahtloses SSO*.  Weitere Informationen finden Sie unter [Worum handelt es sich bei der Passthrough-Authentifizierung?](how-to-connect-pta.md).  
     
     Obwohl *nahtloses SSO* optional ist, empfiehlt es sich, das nahtlose einmalige Anmelden zu aktivieren, damit Benutzer, die in die Domäne eingebundene Computer innerhalb des Unternehmensnetzwerks verwenden, von einer automatischen Anmeldung profitieren.
 
@@ -51,6 +51,7 @@ Einen Überblick über das Feature finden Sie hier: „Azure Active Directory: W
 
 -   Um *nahtloses einmaliges Anmelden* für eine bestimmte Active Directory-Gesamtstruktur aktivieren zu können, müssen Sie Domänenadministrator sein.
 
+
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 Die folgenden Szenarien werden für gestaffelten Rollout unterstützt. Das Feature funktioniert nur für:
@@ -58,6 +59,7 @@ Die folgenden Szenarien werden für gestaffelten Rollout unterstützt. Das Featu
 - Benutzer, die für Azure AD mithilfe von Azure AD Connect bereitgestellt werden. Es gilt nicht für reine Cloudbenutzer.
 
 - Datenverkehr bei der Benutzeranmeldung in Browsern und auf Clients mit *moderner Authentifizierung*. Für Anwendungen oder Clouddienste mit Legacyauthentifizierung werden wieder Verbundauthentifizierungsflows verwendet. Ein Beispiel ist Exchange Online mit deaktivierter moderner Authentifizierung oder Outlook 2010, das keine moderne Authentifizierung unterstützt.
+- Die Gruppengröße ist derzeit auf 50.000 Benutzer beschränkt.  Wenn Sie über Gruppen verfügen, die größer als 50.000 Benutzer sind, empfiehlt es sich, diese Gruppe für ein gestaffeltes Rollout in mehrere Gruppen aufzuteilen.
 
 ## <a name="unsupported-scenarios"></a>Nicht unterstützte Szenarien
 
@@ -74,9 +76,12 @@ Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
     - Dynamische Gruppen werden für den gestaffelten Rollout *nicht unterstützt*.
     - Kontaktobjekte innerhalb der Gruppe blockieren das Hinzufügen der Gruppe.
 
-- Die endgültige Umstellung von Verbundauthentifizierung auf Cloudauthentifizierung muss weiterhin mithilfe von Azure AD Connect oder PowerShell erfolgen. Ein gestaffelter Rollout stellt Domänen nicht von Verbunddomänen auf verwaltete Domänen um.
+- Die endgültige Umstellung von Verbundauthentifizierung auf Cloudauthentifizierung muss weiterhin mithilfe von Azure AD Connect oder PowerShell erfolgen. Ein gestaffelter Rollout stellt Domänen nicht von Verbunddomänen auf verwaltete Domänen um.  Weitere Informationen zur Domänenumstellung finden Sie unter [Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory](plan-migrate-adfs-password-hash-sync.md) und [Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory](plan-migrate-adfs-pass-through-authentication.md).
+
+
 
 - Wenn Sie zum ersten Mal eine Sicherheitsgruppe für den gestaffelten Rollout hinzufügen, besteht eine Einschränkung auf 200 Benutzer, um ein UX-Timeout zu vermeiden. Nachdem Sie die Gruppe hinzugefügt haben, können Sie ihr nach Bedarf weitere Benutzer hinzufügen.
+
 
 ## <a name="get-started-with-staged-rollout"></a>Erste Schritte mit gestaffeltem Rollout
 

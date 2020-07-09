@@ -6,17 +6,17 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/03/2020
-ms.openlocfilehash: 22d6c37b59488633394d7f3ed5ca5b0c78371e7d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/19/2020
+ms.openlocfilehash: ace85727680ecf6d62860ac2239a8c0b68ae6e0e
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790686"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848786"
 ---
 # <a name="create-an-azure-application-offer"></a>Erstellen eines Azure-Anwendungsangebots
 
-In diesem Artikel werden die Schritte und Aspekte des Erstellens eines neuen Azure-Anwendungsangebots im kommerziellen Marketplace erläutert. Sie sollten mit diesen Konzepten vertraut sein, bevor Sie ein neues Azure-Anwendungsangebot erstellen. 
+In diesem Artikel werden die Schritte und Aspekte des Erstellens eines neuen Azure-Anwendungsangebots im kommerziellen Marketplace erläutert. Sie sollten mit diesen Konzepten vertraut sein, bevor Sie ein neues Azure-Anwendungsangebot erstellen.
 
 Bevor Sie ein neues Azure-Anwendungsangebot veröffentlichen können, [erstellen Sie ein Konto für den kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), und stellen Sie sicher, dass Ihr Konto im kommerziellen Marketplace-Programm registriert ist.
 
@@ -122,17 +122,17 @@ Weitere Informationen über Veröffentlichungsanforderungen für Anwendungsplän
 1. Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird.
 
      * Dieser Name wird im Marketplace nicht verwendet und unterscheidet sich vom Angebotsnamen und anderen Werten, die den Kunden angezeigt werden.
-     * Sobald Sie auf **Erstellen** geklickt haben, kann der Angebotsalias nicht mehr geändert werden.
+     * Nachdem Sie **Erstellen** ausgewählt haben, kann der Angebotsalias nicht mehr geändert werden.
 
 1. Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
 
 ## <a name="offer-setup"></a>Angebotseinrichtung
 
-Auf der Seite **Angebotseinrichtung** können Sie eine Testversion und die Leadverwaltung für Ihr Angebot konfigurieren. 
+Auf der Seite **Angebotseinrichtung** können Sie eine Testversion und die Leadverwaltung für Ihr Angebot konfigurieren.
 
 ### <a name="test-drive"></a>Testversion
 
-Die Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen Kunden zu präsentieren, indem Sie ihnen die Möglichkeit geben, vor dem Kauf einen Test durchzuführen, was zu einer höheren Konversionsrate und der Generierung von aussichtsreichen Leads führt. [Erfahren Sie mehr über Testversionen.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+Die Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen Kunden zu präsentieren, indem Sie ihnen die Möglichkeit geben, vor dem Kauf einen Test durchzuführen. Dies führt zu einer höheren Konversionsrate und zur Generierung von aussichtsreichen Leads. Weitere Informationen zu Testversionen finden Sie [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive).
 
 Aktivieren Sie das Kontrollkästchen **Testversion aktivieren**, um eine Testversion für einen festen Zeitraum zu aktivieren. Deaktivieren Sie dieses Kontrollkästchen, um die Testversion aus Ihrem Angebot zu entfernen. Konfigurieren Sie die Umgebung für die Testversion wie im Abschnitt [Technische Konfiguration der Testversion](#test-drive-technical-configuration) weiter unten in diesem Artikel beschrieben.
 
@@ -141,7 +141,7 @@ Weitere Informationen finden Sie unter [Ermöglichen Sie Ihren Kunden das Testen
 >[!Note]
 >Da alle Azure-Anwendungen mit einer Azure Resource Manager-Vorlage implementiert werden, ist die einzige Art von Testversion, die für Azure-Anwendungen verfügbar ist, eine [Azure Resource Manager-Testversion](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive).
 
-## <a name="lead-management"></a>Leadverwaltung
+### <a name="customer-leads"></a>Kundenleads
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
@@ -174,26 +174,19 @@ Der hier eingegebene Name wird Kunden als Titel Ihrer Angebotsliste angezeigt. D
 
 #### <a name="search-results-summary"></a>Zusammenfassung der Suchergebnisse
 
-Geben Sie eine kurze Beschreibung Ihres Angebots ein (bis zu 100 Zeichen), die in den Suchergebnissen verwendet werden kann.
+Geben Sie eine kurze Beschreibung Ihres Angebots an (bis zu 100 Zeichen). Diese Beschreibung kann in Suchergebnissen verwendet werden.
 
 #### <a name="long-summary"></a>Lange Zusammenfassung
 
-Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 256 Zeichen). Diese Beschreibung kann in Suchergebnissen verwendet werden.
+Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 256 Zeichen). Diese Beschreibung kann in Suchergebnissen verwendet werden.
 
 #### <a name="description"></a>BESCHREIBUNG
 
-Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Diese Beschreibung wird Kunden in der Übersicht über das Angebot angezeigt. Geben Sie z.B ein Wertversprechen für Ihr Angebot, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe sowie alle erforderlichen Veröffentlichungen ein.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Im Folgenden finden Sie einige Tipps zum Verfassen Ihrer Beschreibung:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-* Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots. Berücksichtigen Sie folgende Punkte:
-  * Beschreibung Ihres Angebots.
-  * Den Typ von Benutzern, denen Ihr Angebot nützt.
-  * Kundenbedürfnisse oder -probleme, an die sich das Angebot richtet.
-* Beachten Sie, dass die ersten Sätze möglicherweise in den Suchmaschinenergebnissen angezeigt werden.
-* Verlassen Sie sich nicht nur auf Features und Funktionen, um Ihr Angebot zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Ihr Angebot bietet.
-* Verwenden Sie branchenspezifische oder den Nutzen betonende Wörter.
-* Verwenden Sie ggf. HTML-Tags, um Ihre Beschreibung zu formatieren und sie ansprechender zu gestalten.
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 #### <a name="search-keywords"></a>Suchbegriffe
 
@@ -231,7 +224,7 @@ Alle drei Logos sind erforderlich und werden an verschiedenen Stellen im Angebot
 
 #### <a name="screenshots"></a>Screenshots
 
-Fügen Sie bis zu fünf Screenshots hinzu, die zeigen, wie Ihr Angebot funktioniert. Jeder Screenshot muss 1.280 x 720 Pixel groß sein und im PNG-Format vorliegen. Jeder Screenshot muss eine Beschriftung enthalten.
+Fügen Sie bis zu fünf Screenshots hinzu, die zeigen, wie Ihr Angebot funktioniert. Jeder Screenshot muss 1.280 x 720 Pixel groß sein und im PNG-Format vorliegen. Jeder Screenshot muss einen Titel enthalten.
 
 #### <a name="videos"></a>Videos
 
@@ -335,7 +328,7 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ### <a name="plan-listing"></a>Planlisting
 
-Hier konfigurieren Sie die Angebotsdetails des Plans. Auf dieser Registerkarte werden spezifische Informationen angezeigt, die sich je nach Plan innerhalb desselben Angebots unterscheiden können.
+Hier konfigurieren Sie die Listendetails des Plans. Auf dieser Registerkarte werden spezifische Informationen angezeigt, die sich je nach Plan innerhalb desselben Angebots unterscheiden können.
 
 #### <a name="plan-name"></a>Planname
 
@@ -380,7 +373,7 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 #### <a name="markets"></a>Märkte
 
-Jeder Plan muss in mindestens einem Markt verfügbar sein. Aktivieren Sie das Kontrollkästchen für jeden Marktstandort, in dem Sie diesen Plan zur Verfügung stellen möchten. Zur Unterstützung sind ein Suchfeld und eine Schaltfläche zum Auswählen von Ländern vorhanden, in denen die Umsatz- und Gebrauchssteuer von Microsoft für Sie überwiesen wird.
+Jeder Plan muss in mindestens einem Markt verfügbar sein. Aktivieren Sie das Kontrollkästchen für jeden Marktstandort, in dem Sie diesen Plan zur Verfügung stellen möchten. Zur Unterstützung sind ein Suchfeld und eine Schaltfläche zum Auswählen von Ländern/Regionen vorhanden, in denen die Umsatz- und Gebrauchssteuer von Microsoft für Sie überwiesen wird.
 
 Wenn Sie bereits Preise in US-Dollar für Ihren Plan festgelegt haben und einen anderen Marktstandort hinzufügen, wird der Preis für den neuen Markt entsprechend dem aktuellen Wechselkurs berechnet. Überprüfen Sie vor dem Veröffentlichen immer den Preis für jeden Markt. Die Preise können nach dem Speichern der Änderungen mithilfe des Links „Export prices (xlsx)“ (Preise exportieren (.xlsx)) überprüft werden.
 
@@ -533,7 +526,7 @@ Hier beschreiben Sie die Testversion.
 <!-- The **Test Drive listings** option found under the **Test drive** tab displays the languages (and markets) where your test drive is available (currently English (United States) is the only location available). Additionally, this page displays the status of the language-specific listing and the date/time that it was added. You will need to define the test drive details (description, user manual, videos, etc.) for each language/market. -->
 
 * **Beschreibung** (erforderlich): Beschreiben Sie Ihre Testversion. Geben Sie an, was in der Demonstration enthalten ist, nennen Sie die Ziele, mit denen der Benutzer experimentieren soll, sowie die zu erkundenden Features, und geben Sie relevante Informationen an, die dem Benutzer helfen, zu entscheiden, ob er Ihr Angebot erwerben soll. In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden. 
-* **Zugriffsinformationen:** (erforderlich für Azure Resource Manager- und Logik-Testversionen): Erläutern Sie, was ein Kunde wissen muss, um auf diese Testversion zuzugreifen und diese zu verwenden. Beschreiben Sie ein Szenario für die Verwendung Ihres Angebots, und teilen Sie genau mit, was der Kunde wissen sollte, um auf die Funktionen in der gesamten Testversion zuzugreifen. In diesem Feld können bis zu 10.000 Zeichen Text eingegeben werden.
+* **Zugriffsinformationen** (erforderlich für Azure Resource Manager- und Logik-Testversionen): Erläutern Sie, was ein Kunde wissen muss, um auf diese Testversion zuzugreifen und diese zu verwenden. Beschreiben Sie ein Szenario für die Verwendung Ihres Angebots, und teilen Sie genau mit, was der Kunde wissen sollte, um auf die Funktionen in der gesamten Testversion zuzugreifen. In diesem Feld können bis zu 10.000 Zeichen Text eingegeben werden.
 * **Benutzerhandbuch** (erforderlich): Hierbei handelt es sich um eine ausführliche Beschreibung der Verwendung Ihrer Testversion. Das Benutzerhandbuch sollte genau beschreiben, was der Kunde durch die Erkundung der Testversion erlangen soll, und als Referenz für die Fragen des Kunden dienen. Die Datei muss das PDF-Format aufweisen und nach dem Hochladen mit einem Namen (max. 255 Zeichen) versehen werden.
 * **Videos: Add videos** (Videos: Videos hinzufügen) (optional): Videos können auf YouTube oder Vimeo hochgeladen werden, und hier kann mit einem Link und einer Miniaturansicht (533 × 324 Pixel) auf sie verwiesen werden. So erhalten Kunden Informationen zu einzelnen Schritten, um sich besser mit der Testversion vertraut zu machen. Unter anderem können Sie ihnen zeigen, wie sie die Funktionen Ihres Angebots erfolgreich verwenden, und Szenarios erläutern, in denen die Vorteile hervorgehoben werden.
   * **Name** (erforderlich)

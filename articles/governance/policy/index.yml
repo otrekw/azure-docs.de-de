@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 05/20/2020
-  ms.openlocfilehash: b28cae1fd59e863c04d744a5c17108f1bd942a4d
-  ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+  ms.date: 06/29/2020
+  ms.openlocfilehash: c066c3a7cc5b8208a61962ce4f51f7eef4be192b
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "84119347"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85549940"
 landingContent:
 - title: Informationen zu Azure Policy
   linkLists:
@@ -39,11 +39,11 @@ landingContent:
     links:
     - text: Zuweisen einer Richtlinie (Portal)
       url: ./assign-policy-portal.md
-    - text: Zuweisen einer Richtlinie (PowerShell)
-      url: ./assign-policy-powershell.md
     - text: Zuweisen einer Richtlinie (Azure CLI)
       url: ./assign-policy-azurecli.md
-    - text: Zuweisen einer Richtlinie (Vorlage)
+    - text: Zuweisen einer Richtlinie (Azure PowerShell)
+      url: ./assign-policy-powershell.md
+    - text: Zuweisen einer Richtlinie (ARM-Vorlage)
       url: ./assign-policy-template.md
   - linkListType: tutorial
     links:
@@ -73,6 +73,8 @@ landingContent:
       url: ./how-to/author-policies-for-arrays.md
   - linkListType: concept
     links:
+    - text: Einhaltung gesetzlicher Bestimmungen
+      url: ./concepts/regulatory-compliance.md
     - text: Richtlinie für Kubernetes
       url: ./concepts/policy-for-kubernetes.md
     - text: Richtlinie für virtuelle Computer
@@ -92,7 +94,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Microsoft Q&A (Fragen und Antworten) für Azure Policy
-      url: /answers/topics/azure-policy.html.html
+      url: /answers/topics/azure-policy.html
     - text: YouTube-Kanal zu Azure Governance
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: Produktfeature anfordern
@@ -127,9 +129,9 @@ landingContent:
       url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
     - text: Azure SDK für .NET (Richtliniendefinitionen)
       url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
-    - text: Azure SDK für Node (Richtlinie)
+    - text: Azure SDK für JavaScript (Richtlinie)
       url: /javascript/api/@azure/arm-policy
-    - text: Azure SDK für Node (Policy Insights)
+    - text: Azure SDK für JavaScript (Policy Insights)
       url: /javascript/api/@azure/arm-policyinsights
     - text: Azure SDK für Python (Richtlinie)
       url: /python/api/azure-mgmt-resource/azure.mgmt.resource.policy

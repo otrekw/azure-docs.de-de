@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: f3c1e7337c0ce07b7fbebb9f954deeb75f0b9584
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 84d14d63cd7bb96a7a4f37d2a6c29f09a50b2420
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246652"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848693"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Brivo Onair Identity Connector für die automatische Benutzerbereitstellung
 
@@ -54,17 +54,17 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 ## <a name="setup-brivo-onair-identity-connector-for-provisioning"></a>Einrichten von Brivo Onair Identity Connector für die Bereitstellung
 
-1.    Melden Sie sich bei der [Brivo Onair Identity Connector-Administratorkonsole](https://acs.brivo.com/login/) an. Navigieren Sie zu **Konto > Kontoeinstellungen**.
+1. Melden Sie sich bei der [Brivo Onair Identity Connector-Administratorkonsole](https://acs.brivo.com/login/) an. Navigieren Sie zu **Konto > Kontoeinstellungen**.
 
-    ![Brivo Onair Identity Connector-Administratorkonsole](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
+   ![Brivo Onair Identity Connector-Administratorkonsole](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
 
-2.  Klicken Sie auf die Registerkarte **Azure AD**. Geben Sie auf der **Azure AD**-Detailseite nochmal das Kennwort für das leitende Administratorkonto ein. Klicken Sie auf **Submit** (Senden).
+2. Klicken Sie auf die Registerkarte **Azure AD**. Geben Sie auf der **Azure AD**-Detailseite nochmal das Kennwort für das leitende Administratorkonto ein. Klicken Sie auf **Submit** (Senden).
 
-    ![Azure AD in Brivo Onair Identity Connector](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
+   ![Azure AD in Brivo Onair Identity Connector](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
-3.    Klicken Sie auf die Schaltfläche **Copy Token** (Token kopieren), und speichern Sie das **Geheime Token**. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Brivo Onair Identity Connector-Anwendung in das Feld „Geheimes Token“ eingegeben.
+3. Klicken Sie auf die Schaltfläche **Copy Token** (Token kopieren), und speichern Sie das **Geheime Token**. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Brivo Onair Identity Connector-Anwendung in das Feld „Geheimes Token“ eingegeben.
 
-    ![Brivo Onair Identity Connector-Token](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
+   ![Brivo Onair Identity Connector-Token](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
 
 ## <a name="add-brivo-onair-identity-connector-from-the-gallery"></a>Hinzufügen von Brivo Onair Identity Connector aus dem Katalog
 

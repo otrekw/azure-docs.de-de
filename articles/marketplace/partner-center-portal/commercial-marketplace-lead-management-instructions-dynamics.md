@@ -1,18 +1,18 @@
 ---
 title: Leadverwaltung für Dynamics 365 Customer Engagement – kommerzieller Microsoft-Marketplace
 description: Erfahren Sie, wie Sie Dynamics 365 Customer Engagement für die Verwaltung von Leads von Microsoft AppSource und Azure Marketplace verwenden.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 985b3258eb0b957242d529945f32ed9704a91e7d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 92f4bde31af2a7bb4c658141964f238a8c077eef
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790999"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120373"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Konfigurieren der Leadverwaltung für Dynamics 365 Customer Engagement
 
@@ -60,7 +60,7 @@ Zum Schreiben von Leads in Ihre Dynamics 365 Customer Engagement-Instanz müsse
 Führen Sie die folgenden Schritte aus, um das Dienstkonto zu erstellen und Berechtigungen zuzuweisen. Sie können Azure Active Directory oder Office 365 verwenden.
 
 >[!NOTE]
->Je nach ausgewählter Authentifizierungsoption können Sie die entsprechenden Anweisungen überspringen. Siehe [Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory) oder [Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365).
+>Je nach ausgewählter Authentifizierungsoption können Sie die entsprechenden Anweisungen überspringen. Siehe [Azure Active Directory](#azure-active-directory) oder [Office 365](#office-365).
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -172,9 +172,9 @@ Der letzte Schritt ist das Aktivieren des erstellten Benutzers für das Schreibe
 So konfigurieren Sie die Leadverwaltungsinformationen für Ihr Angebot im Veröffentlichungsportal:
 
 1. Navigieren Sie zur Seite **Angebotseinrichtung** für Ihr Angebot.
-1. Klicken Sie im Abschnitt **Leadverwaltung** auf die Option **Verbinden**.
+1. Wählen Sie im Abschnitt **Kundenleads** die Option **Verbinden** aus.
 
-    ![Schaltfläche „Verbinden“ im Bereich „Leadverwaltung“](./media/commercial-marketplace-lead-management-instructions-dynamics/connect-lead-management.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-dynamics/customer-leads.png" alt-text="Kundenleads":::
 
 1. Wählen Sie im Popupfenster „Verbindungsdetails“ die Option **Dynamics 365 Customer Engagement** als Leadziel aus.
 

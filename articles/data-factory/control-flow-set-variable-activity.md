@@ -11,12 +11,12 @@ author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: e5bd3d10e4e43daf3031aae5083ee917cfe65ede
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a0b5fa16658d3e354bcb4f90ad998997fc844a84
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417979"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832783"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Aktivität „Variable festlegen“ in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,8 +30,8 @@ Eigenschaft | BESCHREIBUNG | Erforderlich
 name | Der Name der Aktivität in der Pipeline. | ja
 description | Text, der beschreibt, welche Aktion die Aktivität ausführt. | nein
 type | Muss auf **SetVariable** festgelegt werden. | ja
-value | Zeichenfolgenliteral- oder Ausdrucksobjektwert, dem die Variable zugewiesen wird. | ja
-variableName | Der Name der Variablen, die von dieser Aktivität festgelegt wird. | ja
+value | Der Zeichenfolgenliteral- oder Ausdrucksobjektwert, dem die Variable zugewiesen wird. | ja
+variableName | Der Name der Variablen, die durch diese Aktivität festgelegt wird. | ja
 
 ## <a name="incrementing-a-variable"></a>Schrittweises Erhöhen einer Variablen
 

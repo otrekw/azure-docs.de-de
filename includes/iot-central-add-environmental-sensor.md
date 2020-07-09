@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 9717c76b42a63479c77f862057bfb141954eacff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0381418f20e126f94060b9f495fe1fe8b54e713b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673406"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378553"
 ---
 ## <a name="create-a-device-template"></a>Erstellen einer Gerätevorlage
 
@@ -21,7 +21,7 @@ Erstellen Sie auf Ihrem lokalen Computer einen Ordner namens `environmental-sens
 
 Laden Sie die [JSON-Datei für das Umgebungssensor-Funktionsmodell](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensorInline.capabilitymodel.json) herunter, und speichern Sie sie im Ordner `environmental-sensor`.
 
-Öffnen Sie die heruntergeladene Datei `EnvironmentalSensorInline.capabilitymodel.json` in einem Text-Editor, und ersetzen Sie die beiden Instanzen von `{YOUR_COMPANY_NAME_HERE}` durch den Namen Ihres Unternehmens.
+Öffnen Sie die heruntergeladene Datei `EnvironmentalSensorInline.capabilitymodel.json` in einem Text-Editor, und ersetzen Sie die beiden Instanzen von `{YOUR_COMPANY_NAME_HERE}` durch den Namen Ihres Unternehmens. Verwenden Sie nur die Zeichen a - z, A - Z, 0 - 9 und Unterstrich.
 
 Erstellen Sie in Ihrer Azure IoT Central-Anwendung eine Gerätevorlage mit dem Namen *Environmental sensor* (Umgebungssensor), indem Sie die Gerätefunktionsmodell-Datei `EnvironmentalSensorInline.capabilitymodel.json` importieren:
 

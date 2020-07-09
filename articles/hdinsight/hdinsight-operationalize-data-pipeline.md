@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 16c7af4d66bd550eb4a286de7c86c436b1fe10e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03bd00ad6d0262aeea31b5d3e2c6dd1733090e32
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75922664"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082793"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Operationalisieren einer Datenanalysepipeline
 
@@ -51,11 +51,11 @@ Für diese Pipeline müssen eine Azure SQL-Datenbank und ein HDInsight Hadoop-Cl
 
 ### <a name="provision-azure-sql-database"></a>Bereitstellen einer Azure SQL-Datenbank
 
-1. Erstellen Sie eine Azure SQL-Datenbank-Instanz. Weitere Informationen finden Sie unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../sql-database/sql-database-single-database-get-started.md).
+1. Erstellen Sie eine Azure SQL-Datenbank-Instanz. Weitere Informationen finden Sie unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../azure-sql/database/single-database-create-quickstart.md).
 
-1. Um sicherzustellen, dass Ihr HDInsight-Cluster auf die verbundene Azure SQL-Datenbank zugreifen kann, konfigurieren Sie Firewallregeln für die Azure SQL-Datenbank, sodass Azure-Dienste und -Ressourcen auf den Server zugreifen können. Sie können diese Option im Azure-Portal aktivieren. Wählen Sie hierzu **Serverfirewall festlegen** und anschließend unter **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** für den Azure SQL-Datenbank-Server oder die Azure SQL-Datenbank die Option **EIN** aus. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
+1. Um sicherzustellen, dass Ihr HDInsight-Cluster auf die verbundene Azure SQL-Datenbank zugreifen kann, konfigurieren Sie Firewallregeln für die Azure SQL-Datenbank, sodass Azure-Dienste und -Ressourcen auf den Server zugreifen können. Sie können diese Option im Azure-Portal aktivieren. Wählen Sie hierzu **Serverfirewall festlegen** und anschließend unter **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** für die Azure SQL-Datenbank die Option **EIN** aus. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
-1. Führen Sie mit dem [Abfrage-Editor](../sql-database/sql-database-single-database-get-started.md#query-the-database) die folgenden SQL-Anweisungen aus, um die Tabelle `dailyflights` zu erstellen, in der die zusammengefassten Daten aus jeder Ausführung der Pipeline gespeichert werden.
+1. Führen Sie mit dem [Abfrage-Editor](../azure-sql/database/single-database-create-quickstart.md#query-the-database) die folgenden SQL-Anweisungen aus, um die Tabelle `dailyflights` zu erstellen, in der die zusammengefassten Daten aus jeder Ausführung der Pipeline gespeichert werden.
 
     ```sql
     CREATE TABLE dailyflights
@@ -422,7 +422,9 @@ Verwenden Sie SCP aus der Bash-Sitzung, um Ihren Oozie-Workflow (`workflow.xml`)
 
 1. Wenn der Status SUCCEEDED (Erfolgreich) angegeben ist, fragen Sie die SQL-Datenbanktabelle ab, um die eingefügten Zeilen anzuzeigen. Navigieren Sie im Azure-Portal zum Bereich für die SQL-Datenbank, wählen Sie **Tools** aus, und öffnen Sie den **Abfrage-Editor**.
 
-        SELECT * FROM dailyflights
+    ```sql
+    SELECT * FROM dailyflights
+    ```
 
 Der Workflow für den einzelnen Testtag wird damit ausgeführt. Sie können diesen Workflow nun mit einem Koordinator umschließen, der den Workflow so plant, dass er täglich ausgeführt wird.
 

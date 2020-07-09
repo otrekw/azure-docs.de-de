@@ -1,5 +1,5 @@
 ---
-title: Verwenden von autoML zum Erstellen und Bereitstellen von Modellen
+title: Erstellen und Bereitstellen von Modellen mithilfe von AutoML
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie mit Azure Machine Learning automatisierte Machine Learning-Modelle erstellen, überprüfen und bereitstellen.
 services: machine-learning
@@ -7,16 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: nibaccam
-author: tsikiksr
+author: aniththa
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 03/10/2020
-ms.openlocfilehash: 0d6fa02578814c4c5d034be05cbc63093d70603b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 05/20/2020
+ms.openlocfilehash: 20d98f8eb4971d2aba1ecfbf8abeaba261cde8c4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257231"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115911"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Erstellen, Überprüfen und Bereitstellen von automatisierten Machine Learning-Modellen mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -120,14 +120,16 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
     Zusätzliche Konfigurationen|BESCHREIBUNG
     ------|------
     Primary metric (Primäre Metrik)| Die wichtigste Metrik, die für die Bewertung Ihres Modells verwendet wird. [Weitere Informationen zur Modellmetriken](how-to-configure-auto-train.md#explore-model-metrics).
-    Automatische Featurebereitstellung| Aktivieren oder deaktivieren Sie mit dieser Option die Vorverarbeitung durch automatisiertes Machine Learning. Vorverarbeitung umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren. Für den Aufgabentyp Zeitreihenvorhersagen nicht unterstützt. [Weitere Informationen zur Vorverarbeitung](#featurization). 
+    Automatische Featurebereitstellung| Aktivieren oder deaktivieren Sie mit dieser Option die Featurisierung durch automatisiertes maschinelles Lernen. Die automatische Featurisierung umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren. Für den Aufgabentyp Zeitreihenvorhersagen nicht unterstützt. Weitere Informationen zur Featurisierung finden Sie [hier](how-to-configure-auto-features.md#featurization). 
     Explain best model (Bestes Modell erläutern) | Wählen Sie diese Option aus, um die Erläuterungsfähigkeit des empfohlenen besten Modells anzuzeigen oder zu deaktivieren.
     Blocked algorithm (Blockierter Algorithmus)| Wählen Sie Algorithmen aus, die Sie aus den Trainingsauftrag ausschließen möchten.
     Beendigungskriterium| Wenn eines dieser Kriterien erfüllt ist, wird der Trainingsauftrag beendet. <br> *Training job time (hours)* Trainingsauftragszeit (Stunden): Gibt an, wie lange der Trainingsauftrag ausgeführt werden soll. <br> *Metric score threshold* (Metrischer Bewertungsschwellenwert):  Die Metrikmindestbewertung für alle Pipelines. Auf diese Weise wird sichergestellt, dass Sie nicht mehr Zeit für den Trainingsauftrag aufwenden als nötig, wenn Sie eine definierte Zielmetrik verwenden, die Sie erreichen möchten.
     Überprüfen| Wählen Sie eine der Optionen für Kreuzvalidierung aus, die im Trainingsauftrag verwendet werden soll. [Weitere Informationen zur Kreuzvalidierung](how-to-configure-auto-train.md).
     Parallelität| *Max concurrent iterations* (Maximale Anzahl gleichzeitiger Iterationen): Die maximale Anzahl von Pipelines (Iterationen), die im Trainingsauftrag getestet werden. Der Auftrag wird nicht häufiger als die angegebene Anzahl von Iterationen ausgeführt.
 
-1. (Optional:) Anzeigen von Featureerstellungseinstellungen: Wenn Sie **Automatische Merkmalserstellung** im Formular **Additional configuration settings** (Zusätzliche Konfigurationseinstellungen) aktivieren, geben Sie in diesem Formular an, für welche Spalten diese Featureerstellung durchgeführt werden soll, und wählen den statistischen Wert aus, der für fehlende Werte verwendet werden soll.
+1. (Optional) Anzeigen von Featurisierungseinstellungen: Wenn Sie im Formular **Additional configuration settings** (Zusätzliche Konfigurationseinstellungen) die Option **Automatische Featurisierung** aktivieren, werden standardmäßige Featurisierungstechniken angewendet. Diese Standardeinstellungen können unter **Featurisierungseinstellungen anzeigen** geändert und entsprechend angepasst werden. Informationen zum Anpassen von Featurisierungen finden Sie [hier](#customize-featurization). 
+
+    ![Azure Machine Learning Studio: Formular für den Aufgabentyp](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
 <a name="profile"></a>
 
@@ -155,58 +157,19 @@ Variance| Das Maß, wie weit die Daten dieser Spalte gegenüber dem Durchschnitt
 Schiefe| Das Maß für die Unterschiede zwischen den Daten dieser Spalte und der normalen Verteilung.
 Kurtosis| Das Maß für die schweren Ränder der Daten dieser Spalte im Vergleich mit der normalen Verteilung.
 
-<a name="featurization"></a>
+## <a name="customize-featurization"></a>Anpassen der Featurisierung
 
-## <a name="advanced-featurization-options"></a>Erweiterte Optionen bei der Featurebereitstellung
+Im Formular **Featurisierung** können Sie die automatische Featurisierung aktivieren/deaktivieren und die Einstellungen der automatischen Featurisierung für Ihr Experiment anpassen. Informationen zum Öffnen dieses Formulars finden Sie in Schritt 10 des Abschnitts [Erstellen und Ausführen eines Experiments](#create-and-run-experiment). 
 
-Automatisiertes maschinelles Lernen bietet eine Vorverarbeitung und automatische Schutzmaßnahmen für Daten, damit Sie potenzielle Probleme mit Ihren Daten identifizieren und verwalten können. 
+In der folgenden Tabelle sind die derzeit in Studio verfügbaren Anpassungen zusammengefasst: 
 
-### <a name="preprocessing"></a>Preprocessing (Vorverarbeitung)
+Spalte| Anpassung
+---|---
+Enthalten | Gibt an, welche Spalten in das Training einbezogen werden sollen.
+Featuretyp| Dient zum Ändern des Werttyps für die ausgewählte Spalte.
+Imputation mit| Dient zum Auswählen des Werts, mit dem fehlende Werte in Ihren Daten imputiert werden sollen.
 
-> [!NOTE]
-> Wenn Sie Ihre mit ML automatisch erstellten Modelle in ein [ONNX-Modell](concept-onnx.md) exportieren möchten, beachten Sie, dass nur die mit * gekennzeichneten Optionen zur Featurebereitstellung im ONNX-Format unterstützt werden. Erfahren Sie mehr über das [Konvertieren von Modellen zu ONNX](concept-automated-ml.md#use-with-onnx). 
-
-|Vorverarbeitungsschritte&nbsp;| BESCHREIBUNG |
-| ------------- | ------------- |
-|Löschen von Funktionen mit hoher Kardinalität oder ohne Varianz* |Löscht diese aus Trainings- und Validierungssets. Dazu gehören Funktionen, denen alle Werte fehlen, die denselben Wert für alle Zeilen haben oder die eine sehr hohe Kardinalität (z.B. Hashwerte, IDs oder GUIDs) aufweisen.|
-|Imputieren von fehlenden Werten* |Bei numerischen Features werden fehlende Werte mit dem Durchschnitt der Werte in der Spalte imputiert.<br/><br/>Bei kategorischen Features werden fehlende Werte mit dem am häufigsten vorkommenden Wert imputiert.|
-|Generieren zusätzlicher Funktionen* |Für DateTime-Funktionen: Jahr, Monat, Tag, Tag der Woche, Tag des Jahres, Quartal, Woche des Jahres, Stunde, Minute, Sekunde.<br/><br/>Für Text-Funktionen: Ausdruckshäufigkeit basierend auf Unigrammen, Bigrammen und Trigrammen.|
-|Transformieren und codieren*|Numerische Features mit wenigen eindeutigen Werten werden in kategorische Features transformiert.<br/><br/>One-Hot-Codierung wird für niedrige Kardinalität kategorisch durchgeführt, für hohe Kardinalität gilt One-Hot-Hashcodierung.|
-|Worteinbettungen|Ein Textfeaturizer, der Vektoren von Texttoken mithilfe eines vortrainierten Modells in Satzvektoren konvertiert. Der Einbettungsvektor jedes Worts in einem Dokument wird in einem Dokumentenfeaturevektor zusammengefasst.|
-|Zielcodierungen|Bei kategorischen Features wird jede Kategorie mit gemitteltem Zielwert für Regressionsprobleme und der Klassenwahrscheinlichkeit für jede Klasse für Klassifizierungsprobleme zugeordnet. Häufigkeitsbasierte Gewichtung und k-fache Kreuzvalidierung werden angewendet, um die Überanpassung der Zuordnung und das Rauschen durch dünn besetzte Datenkategorien zu verringern.|
-|Textzielcodierung|Für die Texteingabe wird ein gestapeltes lineares Modell mit Bag-of-Words verwendet, um die Wahrscheinlichkeit der einzelnen Klassen zu generieren.|
-|Gewichtung der Beweise (Weight of Evidence, WoE)|Berechnet den WoE-Wert als ein Maß für die Korrelation von kategorischen Spalten zur Zielspalte. Dieser Wert wird als Logarithmus des Verhältnisses von In-Class- zu Out-of-Class-Wahrscheinlichkeiten berechnet. Dieser Schritt gibt eine numerische Featurespalte pro Klasse aus und erspart die Notwendigkeit, fehlende Werte und Ausreißerbehandlung explizit zu berechnen.|
-|Clusterabstand|Trainiert ein K-Means-Clusteringmodell für alle numerischen Spalten.  Gibt k neue Features aus, ein neues numerisches Feature pro Cluster, das den Abstand jeder Stichprobe zum Schwerpunkt jedes Clusters enthält.|
-
-### <a name="data-guardrails"></a>Schutzmaßnahmen für Daten
-
-Schutzmaßnahmen für Daten werden angewendet, wenn die automatische Merkmalserstellung aktiviert ist oder die Überprüfung auf „automatisch“ eingestellt ist. Schutzmaßnahmen für Daten helfen Ihnen dabei, potenzielle Probleme mit Ihren Daten zu erkennen (z. B. fehlende Werte, Klassenungleichgewicht) und Korrekturmaßnahmen zur Verbesserung der Ergebnisse zu ergreifen. 
-
-Benutzer können die Schutzmaßnahmen für Daten in Studio innerhalb der Registerkarte **Schutzmaßnahmen für Daten** einer automatisierten ML-Ausführung oder durch Festlegen von ```show_output=True``` beim Übermitteln eines Experiments mit dem Python-SDK überprüfen. 
-
-#### <a name="data-guardrail-states"></a>Zustände von Schutzmaßnahmen für Daten
-
-Die Schutzmaßnahmen für Daten werden einen von drei Zuständen anzeigen: **Erfolgreich**, **Fertig** oder **Benachrichtigt**.
-
-State| BESCHREIBUNG
-----|----
-Erfolgreich| Es wurden keine Datenprobleme erkannt, und es ist keine Benutzeraktion erforderlich. 
-Vorgehensweise| Die Änderungen wurden auf Ihre Daten angewendet. Den Benutzern wird empfohlen, die vom automatisierten maschinellen Lernen ergriffenen Korrekturmaßnahmen zu überprüfen, um sicherzustellen, dass die Änderungen mit den erwarteten Ergebnissen übereinstimmen. 
-Benachrichtigt| Ein Datenproblem, das nicht behoben werden konnte, wurde erkannt. Den Benutzern wird empfohlen, das Problem zu überarbeiten und zu beheben. 
-
->[!NOTE]
-> Frühere Versionen des automatisierten ML-Experiments zeigten einen vierten Zustand an: **Behoben**. Neuere Experimente zeigen diesen Zustand nicht mehr an, und alle Schutzmaßnahmen, die den Zustand **Behoben** angezeigt haben, zeigen jetzt **Fertig** an.   
-
-In der folgenden Tabelle werden die derzeit unterstützten Schutzmaßnahmen für Daten und die zugehörigen Statuswerte beschrieben, die Benutzern beim Übermitteln Ihres Experiments unter Umständen angezeigt werden.
-
-Schutzmaßnahme|Status|Bedingung&nbsp;für&nbsp;Auslösung
----|---|---
-Fehlende Featurewerte durch Imputation ergänzen |**Erfolgreich** <br><br><br> **Fertig**| Es wurden keine fehlenden Featurewerte in Ihren Trainingsdaten festgestellt. Erfahren Sie mehr über die [Imputation fehlender Werte](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options). <br><br> Fehlende Featurewerte wurden in Ihren Trainingsdaten festgestellt und zugerechnet.
-Behandeln von Features mit hoher Kardinalität |**Erfolgreich** <br><br><br> **Fertig**| Ihre Eingaben wurden analysiert, und es wurden keine Features mit hoher Kardinalität gefunden. Erfahren Sie mehr über das [Erkennen von Features mit hoher Kardinalität.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Features mit hoher Kardinalität wurden in Ihren Eingaben erkannt und behandelt.
-Verarbeitung der Überprüfungsaufteilung |**Fertig**| *Die Überprüfungskonfiguration wurde auf „auto“ festgelegt, und die Trainingsdaten enthielten **weniger** als 20.000 Zeilen.* <br> Jede Iteration des trainierten Modells wurde durch Kreuzvalidierung überprüft. Erfahren Sie mehr über [Überprüfungsdaten](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data). <br><br> *Die Überprüfungskonfiguration wurde auf „auto“ festgelegt, und die Trainingsdaten enthielten **mehr** als 20.000 Zeilen.* <br> Die Eingabedaten wurden zur Überprüfung des Modells in ein Trainingsdataset und ein Validierungsdataset aufgeteilt.
-Ausgewogenheitserkennung für Klassen |**Erfolgreich** <br><br><br><br> **Benachrichtigt** | Ihre Eingaben wurden analysiert, und alle Klassen in Ihren Trainingsdaten sind ausgeglichen. Ein Dataset gilt als ausgewogen, wenn jede Klasse im Datensatz gemessen an Anzahl und Verhältnis der Stichproben gut repräsentiert ist. <br><br><br> In Ihren Eingaben wurden unausgeglichene Klassen erkannt. Beheben Sie das Ausgleichsproblem, um den Modelltrend zu beheben. Erfahren Sie mehr über [unausgeglichene Daten](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data).
-Erkennung von Arbeitsspeicherproblemen |**Erfolgreich** <br><br><br><br> **Fertig** |<br> Die ausgewählten Horizont-, Verzögerungs- und Zeitfensterwerte wurden analysiert, und es wurden keine potenziellen Probleme aufgrund von unzureichendem Speicherplatz erkannt. Erfahren Sie mehr über [Vorhersagekonfigurationen](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) von Zeitreihen. <br><br><br>Die ausgewählten Horizont-, Verzögerungs- und Zeitfensterwerte wurden analysiert, und für Ihr Experiment wird möglicherweise nicht genügend Speicherplatz zur Verfügung stehen. Die Konfigurationen für Verzögerung oder rollierende Zeitfenster wurden deaktiviert.
-Häufigkeitserkennung |**Erfolgreich** <br><br><br><br> **Fertig** |<br> Die Zeitreihe wurde analysiert, und alle Datenpunkte entsprechen der erkannten Häufigkeit. <br> <br> Die Zeitreihe wurde analysiert, und es wurden Datenpunkte ermittelt, die nicht mit der erkannten Häufigkeit übereinstimmen. Diese Datenpunkte wurden aus dem Dataset entfernt. Erfahren Sie mehr über die [Datenaufbereitung für die Zeitreihenvorhersage](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data).
+![Azure Machine Learning Studio: Formular für den Aufgabentyp](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
 
 ## <a name="run-experiment-and-view-results"></a>Ausführen des Experiments und Anzeigen der Ergebnisse
 
@@ -255,6 +218,7 @@ Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzus
     Das Menü *Erweitert* enthält Standard-Bereitstellungsfeatures wie [Datensammlung](how-to-enable-app-insights.md) und Einstellungen für die Ressourcenauslastung. Wenn Sie diese Standardeinstellungen überschreiben möchten, verwenden Sie dafür dieses Menü.
 
 1. Klicken Sie auf **Bereitstellen**. Die Bereitstellung kann bis zu 20 Minuten dauern.
+    Wenn die Bereitstellung beginnt, wird die Registerkarte **Modelldetails** angezeigt. Der Bereitstellungsstatus wird im Abschnitt **Bereitstellungsstatus** des Bereichs **Eigenschaften** angezeigt. 
 
 Nun haben Sie einen einsatzfähigen Webdienst, mit dem Vorhersagen generiert werden können! Sie können die Vorhersagen testen, indem Sie den Dienst über die [in Power BI integrierte Azure Machine Learning-Unterstützung](how-to-consume-web-service.md#consume-the-service-from-power-bi) abfragen.
 

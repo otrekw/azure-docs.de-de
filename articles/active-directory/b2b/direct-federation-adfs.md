@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie AD FS als Identitätsanbieter für den direkt
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: mimart
 author: msmimart
@@ -12,18 +12,17 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e350d6338b6ca589ab18d068ef6a314363fe205c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b3d7c47ff0a2c533bf12a67958a913b22915f75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74272826"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551517"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Beispiel: Direkter Verbund mit Active Directory-Verbunddienste (AD FS) (Vorschauversion)
-|     |
-| --- |
-| Ein direkter Verbund ist eine Public Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+
+> [!NOTE]
+> Ein direkter Verbund ist eine Public Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Dieser Artikel beschreibt, wie Sie einen [direkten Verbund](direct-federation.md) mit Active Directory-Verbunddienste (AD FS) als SAML 2.0- oder WS-Fed-Identitätsanbieter einrichten. Damit der direkte Verbund unterstützt wird, müssen beim Identitätsanbieter bestimmte Attribute und Ansprüche konfiguriert werden. Wir verwenden als Beispiel Active Directory-Verbunddienste (AD FS), um zu veranschaulichen, wie ein Identitätsanbieter für den direkten Verbund konfiguriert wird. Wir zeigen, wie man AD FS sowohl als SAML-Identitätsanbieter als auch als WS-Verbund-Identitätsanbieter einrichtet.
 

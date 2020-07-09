@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 1b486aaf0ce33e31433c2c3d0f7a1ff2c7089132
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9f27deebe3a1fb21f4c7406bfd424196fb1072ec
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78402650"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921922"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Tutorial: Visualisieren von Anomalien mithilfe von Batcherkennung und Power BI
 
@@ -32,8 +32,8 @@ In diesem Tutorial lernen Sie Folgendes:
 * [Ein Azure-Abonnement](https://azure.microsoft.com/free/)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), kostenlos verfügbar.
 * Eine Excel-Datei (.xlsx) mit Datenpunkten in einer Zeitreihe. Die Beispieldaten für diesen Schnellstart finden Sie auf [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962).
-* Sobald Sie über Ihr Azure-Abonnement verfügen, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Erstellen einer Textanalyseressource"  target="_blank"> erstellen Sie eine Textanalyseressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt zu erhalten. 
-    * Sie benötigen den Schlüssel und den Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Textanalyse-API zu verbinden. Dies geschieht später in der Schnellstartanleitung.
+* Sobald Sie über Ihr Azure-Abonnement verfügen, erstellen Sie über <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Erstellen einer Anomalieerkennungsressource"  target="_blank"> eine Anomalieerkennungsressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt zu erhalten. 
+    * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Anomalieerkennungs-API zu verbinden. Dies geschieht später in der Schnellstartanleitung.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
@@ -143,10 +143,10 @@ Beginnen Sie auf dem Hauptbildschirm von Power BI mit dem Verwenden der oben ers
 
 Fügen Sie die folgenden Felder aus der **aufgerufenen Funktion** dem Feld **Werte** des Diagramms hinzu. Erstellen Sie Ihr Diagramm anhand des folgenden Screenshots.
 
-    * Wert
-    * UpperMargins
-    * LowerMargins
-    * ExpectedValues
+* Wert
+* UpperMargins
+* LowerMargins
+* ExpectedValues
 
 ![Abbildung des Bildschirms „Neues Quickmeasure“](../media/tutorials/chart-settings.png)
 

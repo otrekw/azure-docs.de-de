@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 00d292b3ba2d1b6c7c425d4c9f89188e660ac80d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c734ff03b1cf277c7e0967d8b76b1941434f414
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73182219"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050386"
 ---
 Dieses Verfahren umfasst Folgendes:
 
@@ -31,12 +31,13 @@ Dieses Verfahren umfasst Folgendes:
 
 #### <a name="to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs"></a>So bereiten Sie die Inhaltsdatenbank und den Papierkorb für die sofortige Löschung verwaister BLOBs vor
 1. Führen Sie auf dem Computer mit SQL Server in SQL Management Studio die folgenden Updateabfragen für die Zielinhaltsdatenbank aus: 
-   
-       `use WSS_Content`
-   
-       `exec mssqlrbs.rbs_sp_set_config_value ‘garbage_collection_time_window’ , ’time 00:00:00’`
-   
-       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
+
+    `use WSS_Content`
+
+    `exec mssqlrbs.rbs_sp_set_config_value ‘garbage_collection_time_window’ , ’time 00:00:00’`
+
+    `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
+
 2. Bearbeiten Sie auf dem Front-End-Webserver unter **Zentraladministration** die **Allgemeinen Webanwendungseinstellungen** für die gewünschte Inhaltsdatenbank, um den Papierkorb vorübergehend zu deaktivieren. Im Zuge dieser Aktion wird auch der Papierkorb für alle dazugehörigen Websitesammlungen geleert. Klicken Sie auf **Zentraladministration** -> **Anwendungsverwaltung** -> **Webanwendungen (Webanwendungen verwalten)**  -> **SharePoint - 80** -> **Allgemeine Anwendungseinstellungen**. Legen Sie den **Status des Papierkorbs** auf **AUS** fest.
    
     ![Allgemeinen Webanwendungseinstellungen](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
@@ -44,7 +45,7 @@ Dieses Verfahren umfasst Folgendes:
 #### <a name="to-run-the-maintainer"></a>So führen Sie Maintainer aus
 * Verwenden Sie auf dem Front-End-Webserver in der SharePoint 2013-Verwaltungsshell Folgendes, um Maintainer auszuführen:
   
-      `Microsoft.Data.SqlRemoteBlobs.Maintainer.exe -ConnectionStringName RBSMaintainerConnectionWSSContent -Operation GarbageCollection -GarbageCollectionPhases rdo`
+    `Microsoft.Data.SqlRemoteBlobs.Maintainer.exe -ConnectionStringName RBSMaintainerConnectionWSSContent -Operation GarbageCollection -GarbageCollectionPhases rdo`
   
   > [!NOTE]
   > Für StorSimple wird derzeit nur der `GarbageCollection`-Vorgang unterstützt. Beachten Sie außerdem, dass bei den für „Microsoft.Data.SqlRemoteBlobs.Maintainer.exe“ ausgegebenen Parametern die Groß-/Kleinschreibung beachtet werden muss. 

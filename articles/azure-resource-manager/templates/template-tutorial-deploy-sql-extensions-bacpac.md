@@ -5,22 +5,23 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 83108c056035b16d26343d82c721b275ebcad0c5
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754329"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250331"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Tutorial: Importieren von SQL-BACPAC-Dateien mit ARM-Vorlagen
 
 Hier erfahren Sie, wie Sie die Azure SQL-Datenbank-Erweiterung verwenden, um eine BACPAC-Datei mit ARM-Vorlagen (Azure Resource Manager) zu importieren. Bereitstellungsartefakte sind sämtliche Dateien, die zusätzlich zu Hauptvorlagendateien für eine Bereitstellung benötigt werden. Die BACPAC-Datei ist ein Artefakt.
 
-In diesem Tutorial erstellen Sie eine Vorlage zum Bereitstellen einer Azure SQL Server-Instanz und einer SQL-Datenbank sowie zum Importieren einer BACPAC-Datei. Informationen zum Bereitstellen von Azure-VM-Erweiterungen unter Verwendung von ARM-Vorlagen finden Sie unter [Tutorial: Bereitstellen von VM-Erweiterungen mit ARM-Vorlagen](./template-tutorial-deploy-vm-extensions.md).
+In diesem Tutorial erstellen Sie eine Vorlage zum Bereitstellen eines [logischen SQL-Servers](../../azure-sql/database/logical-servers.md) und einer einzelnen Datenbank, und Sie importieren eine BACPAC-Datei. Informationen zum Bereitstellen von Azure-VM-Erweiterungen unter Verwendung von ARM-Vorlagen finden Sie unter [Tutorial: Bereitstellen von VM-Erweiterungen mit ARM-Vorlagen](./template-tutorial-deploy-vm-extensions.md).
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
 > [!div class="checklist"]
+>
 > * Vorbereiten einer BACPAC-Datei
 > * Öffnen einer Schnellstartvorlage
 > * Bearbeiten der Vorlage
@@ -34,7 +35,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 * Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Weitere Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von ARM-Vorlagen](./use-vs-code-to-create-template.md).
-* Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Azure SQL Server-Administratorkonto. Sie können das folgende Beispiel zum Generieren eines Kennworts verwenden:
+* Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Serveradministratorkonto. Sie können das folgende Beispiel zum Generieren eines Kennworts verwenden:
 
     ```console
     openssl rand -base64 32
@@ -44,7 +45,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="prepare-a-bacpac-file"></a>Vorbereiten einer BACPAC-Datei
 
-Auf [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) ist eine BACPAC-Datei verfügbar. Informationen zum Erstellen einer eigenen Datei finden Sie unter [Exportieren einer Azure SQL-Datenbank in eine BACPAC-Datei](../../sql-database/sql-database-export.md). Wenn Sie die Datei an Ihrem eigenen Standort veröffentlichen möchten, müssen Sie die Vorlage später in diesem Tutorial aktualisieren.
+Auf [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) ist eine BACPAC-Datei verfügbar. Informationen zum Erstellen einer eigenen Datei finden Sie unter [Exportieren einer Datenbank aus Azure SQL-Datenbank in eine BACPAC-Datei](../../azure-sql/database/database-export.md). Wenn Sie die Datei an Ihrem eigenen Standort veröffentlichen möchten, müssen Sie die Vorlage später in diesem Tutorial aktualisieren.
 
 Die BACPAC-Datei muss in einem Azure Storage-Konto gespeichert werden, damit sie mithilfe einer ARM-Vorlage importiert werden kann. Das folgende PowerShell-Skript bereitet die BACPAC-Datei mit den folgenden Schritten vor:
 
@@ -142,7 +143,7 @@ Die in diesem Tutorial verwendete Vorlage befindet sich auf [GitHub](https://raw
 
 1. Fügen Sie der Vorlage zwei weitere Ressourcen hinzu.
 
-    * Damit die SQL-Datenbank-Erweiterung BACPAC-Dateien importieren kann, müssen Sie Datenverkehr von Azure-Diensten zulassen. Fügen Sie unterhalb der SQL Server-Definition die folgende Firewallregeldefinition hinzu:
+    * Damit die SQL-Datenbank-Erweiterung BACPAC-Dateien importieren kann, müssen Sie Datenverkehr von Azure-Diensten zulassen. Fügen Sie unterhalb der Serverdefinition die folgende Firewallregeldefinition hinzu:
 
         ```json
         "resources": [
@@ -195,7 +196,7 @@ Die in diesem Tutorial verwendete Vorlage befindet sich auf [GitHub](https://raw
 
         Informationen zur Ressourcendefinition finden Sie in der [Referenz zur SQL-Datenbank-Erweiterung](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). Im Anschluss sind einige zentrale Elemente aufgeführt:
 
-        * **dependsOn:** Die Erweiterungsressource muss nach der Erstellung der SQL-Datenbank erstellt werden.
+        * **dependsOn:** Die Erweiterungsressource muss nach der Erstellung der Datenbank erstellt werden.
         * **storageKeyType:** Geben Sie die Art des zu verwendenden Speicherschlüssels an. Der Wert kann entweder `StorageAccessKey` oder `SharedAccessKey` sein. Verwenden Sie in diesem Tutorial `StorageAccessKey`.
         * **storageKey:** Geben Sie den Schlüssel für das Speicherkonto an, in dem die BACPAC-Datei gespeichert ist. Bei Verwendung des Speicherschlüsseltyps `SharedAccessKey` muss ein Fragezeichen (?) vorangestellt werden.
         * **storageUri:** Geben Sie die URL der in einem Speicherkonto gespeicherten BACPAC-Datei an.
@@ -238,9 +239,9 @@ Verwenden Sie ein generiertes Kennwort. Siehe [Voraussetzungen](#prerequisites).
 
 ## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
 
-Wenn Sie über Ihren Clientcomputer auf die SQL Server-Instanz zugreifen möchten, müssen Sie eine weitere Firewallregel hinzufügen. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](../../sql-database/sql-database-firewall-configure.md#create-and-manage-ip-firewall-rules).
+Wenn Sie über Ihren Clientcomputer auf den Server zugreifen möchten, müssen Sie eine weitere Firewallregel hinzufügen. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](../../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules).
 
-Wählen Sie im Azure-Portal die SQL-Datenbank aus der neu bereitgestellten Ressourcengruppe aus. Wählen Sie **Abfrage-Editor (Vorschau)** aus, und geben Sie dann die Administratoranmeldeinformationen ein. Wie Sie sehen, wurden zwei Tabellen in die Datenbank importiert:
+Wählen Sie im Azure-Portal die Datenbank aus der neu bereitgestellten Ressourcengruppe aus. Wählen Sie **Abfrage-Editor (Vorschau)** aus, und geben Sie dann die Administratoranmeldeinformationen ein. Wie Sie sehen, wurden zwei Tabellen in die Datenbank importiert:
 
 ![Abfrage-Editor (Vorschau)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 
@@ -255,7 +256,7 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen SQL-Server und eine SQL-Datenbank bereitgestellt und eine BACPAC-Datei importiert. Informationen zur Behandlung von Problemen bei der Bereitstellung von Vorlagen finden Sie unter:
+In diesem Tutorial haben Sie einen Server und eine Datenbank bereitgestellt und eine BACPAC-Datei importiert. Informationen zur Behandlung von Problemen bei der Bereitstellung von Vorlagen finden Sie unter:
 
 > [!div class="nextstepaction"]
 > [Problembehandlung bei Bereitstellungen von ARM-Vorlagen](./template-tutorial-troubleshoot.md)

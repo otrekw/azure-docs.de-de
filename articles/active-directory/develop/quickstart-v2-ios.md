@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 47485d8d9007a6cf6432b7bf401c7c1c34a9863a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: bd17c20707c3bf1a153e9209cd7e2ec279de0501
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536130"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554062"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer iOS- oder macOS-App
 
@@ -70,74 +70,50 @@ Dieser Schnellstart gilt für iOS- und macOS-Apps. Einige Schritte sind nur bei 
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Bereits konfiguriert](media/quickstart-v2-ios/green-check.png): Ihre Anwendung ist mit diesen Attributen konfiguriert.
-
-#### <a name="step-2-download-the-sample-project"></a>Schritt 2: Herunterladen des Beispielprojekts
-
-- [Herunterladen des Codebeispiels für iOS](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-- [Herunterladen des Codebeispiels für macOS](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+> 
+> #### <a name="step-2-download-the-sample-project"></a>Schritt 2: Herunterladen des Beispielprojekts
+> > [!div id="autoupdate_ios" class="nextstepaction"]
+> > [Herunterladen des Codebeispiels für iOS]()
+> 
+> > [!div id="autoupdate_macos" class="nextstepaction"]
+> > [Herunterladen des Codebeispiels für macOS]()
+> [!div renderon="docs"]
+> #### <a name="step-2-download-the-sample-project"></a>Schritt 2: Herunterladen des Beispielprojekts
+> 
+> - [Herunterladen des Codebeispiels für iOS](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+> - [Herunterladen des Codebeispiels für macOS](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
 #### <a name="step-3-install-dependencies"></a>Schritt 3: Installieren von Abhängigkeiten
 
 Navigieren Sie in einem Terminalfenster zu dem Ordner, der das heruntergeladene Codebeispiel enthält, und führen Sie `pod install` zum Installieren der MSAL-Bibliothek aus.
 
-#### <a name="step-4-configure-your-project"></a>Schritt 4: Konfigurieren des Projekts
-
-> [!div renderon="docs"]
-> Wenn Sie weiter oben die erste Option ausgewählt haben, können Sie diese Schritte überspringen.
-
 > [!div renderon="portal" class="sxs-lookup"]
-> 1. Extrahieren Sie die ZIP-Datei, und öffnen Sie das Projekt in XCode.
-> 1. Bearbeiten Sie **ViewController.swift**, und ersetzen Sie die Zeile, die mit „let kClientID“ beginnt, durch den folgenden Codeausschnitt. Sie müssen den Wert für `kClientID` durch die Client-ID ersetzen, die Sie zuvor im Schnellstart beim Registrieren Ihrer App im Portal gespeichert haben:
->    ```swift
->    let kClientID = "Enter_the_Application_Id_Here"
->    ```
-> 1. Bearbeiten Sie **ViewController.swift**, und ersetzen Sie die Zeile, die mit „let kAuthority“ beginnt, durch den folgenden Codeausschnitt:
->    ```swift
->    let kAuthority = "Enter_the_Authority_Endpoint_Host_HereEnter_the_Tenant_Info_Here"
->    ```
-> 1. Bearbeiten Sie **ViewController.swift**, und ersetzen Sie die Zeile, die mit „let kGraphEndpoint“ beginnt, durch den folgenden Codeausschnitt:
->    ```swift
->    let kGraphEndpoint = "Enter_the_MS_Graph_Endpoint_Host_Here"
->    ```
-> 1. Öffnen Sie die Projekteinstellungen. Geben Sie im Abschnitt **Identität** den Wert für **Bundle Identifier** (Paket-ID) ein, den Sie im Portal angegeben haben.
-> 1. Nur iOS: Klicken Sie mit der rechten Maustaste auf **Info.plist**, und wählen Sie **Öffnen als** > **Quellcode** aus.
-> 1. Nur iOS: Ersetzen Sie unter dem dict-Stammknoten `CFBundleURLSchemes` durch den Wert für ***Bundle Id*** (Paket-ID), die Sie im Portal eingegeben haben.
->
->    ```xml
->    <key>CFBundleURLTypes</key>
->    <array>
->       <dict>
->          <key>CFBundleURLSchemes</key>
->          <array>
->             <string>msauth.Enter_the_Bundle_Id_Here</string>
->          </array>
->       </dict>
->    </array>
->    ```
-> 1. Erstellen Sie die App, und führen Sie die App aus!
-> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-4-your-app-is-configured-and-ready-to-run"></a>Schritt 4: Ihre App ist konfiguriert und betriebsbereit
+> Wir haben das Projekt mit Werten Ihrer App-Eigenschaften konfiguriert. Es ist nun ausführungsbereit.
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
-> [!div renderon="docs"]
 >
+> [!div renderon="docs"]
+>#### <a name="step-4-configure-your-project"></a>Schritt 4: Konfigurieren des Projekts
+> Wenn Sie weiter oben die erste Option ausgewählt haben, können Sie diese Schritte überspringen.
 > 1. Extrahieren Sie die ZIP-Datei, und öffnen Sie das Projekt in XCode.
 > 1. Bearbeiten Sie **ViewController.swift**, und ersetzen Sie die Zeile, die mit „let kClientID“ beginnt, durch den folgenden Codeausschnitt. Sie müssen den Wert für `kClientID` durch die Client-ID ersetzen, die Sie zuvor im Schnellstart beim Registrieren Ihrer App im Portal gespeichert haben:
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Ersetzen Sie beim Erstellen einer App für [nationale Azure AD-Clouds](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints) die Zeile, die mit „let kGraphEndpoint“ und „let kAuthority“ beginnt, durch richtige Endpunkte. Verwenden Sie für globalen Zugriff die Standardwerte:
->     ```objective-c
+>     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.com/"
 >     let kAuthority = "https://login.microsoftonline.com/common"
 >     ```
 > 1. Informationen zu anderen Endpunkten finden Sie [hier](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints). Verwenden Sie beispielsweise zum Ausführen der Schnellstartanleitung mit Azure AD Deutschland Folgendes:
->     ```objective-c
+>     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.de/"
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
 > 1. Öffnen Sie die Projekteinstellungen. Geben Sie im Abschnitt **Identität** den Wert für **Bundle Identifier** (Paket-ID) ein, den Sie im Portal angegeben haben.
-> 1. Nur iOS: Klicken Sie mit der rechten Maustaste auf **Info.plist**, und wählen Sie **Öffnen als** > **Quellcode** aus.
-> 1. Nur iOS: Ersetzen Sie unter dem dict-Stammknoten `Enter_the_bundle_Id_Here` durch den Wert für ***Bundle Id*** (Paket-ID), den Sie im Portal verwendet haben.
+> 1. Klicken Sie mit der rechten Maustaste auf **Info.plist**, und wählen Sie **Öffnen als** > **Quellcode** aus.
+> 1. Ersetzen Sie unter dem Stammknoten „dict“ `Enter_the_bundle_Id_Here` durch den Wert für ***Bundle Id*** (Paket-ID), den Sie im Portal verwendet haben.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -197,7 +173,7 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Hierbei gilt: ||
+> |Hierbei gilt: | BESCHREIBUNG |
 > |---------|---------|
 > | `clientId` | Die Anwendungs-ID der in *portal.azure.com* registrierten Anwendung. |
 > | `authority` | Der Microsoft Identity Platform-Endpunkt. In den meisten Fällen ist dies *https<span/>://login.microsoftonline.com/common*. |
@@ -261,7 +237,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Hierbei gilt:||
+> |Hierbei gilt:| BESCHREIBUNG |
 > |---------|---------|
 > | `scopes` | Enthält die angeforderten Bereiche (`[ "user.read" ]` für Microsoft Graph oder `[ "<Application ID URL>/scope" ]` für benutzerdefinierte Web-APIs (`api://<Application ID>/access_as_user`)) |
 
@@ -281,7 +257,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Hierbei gilt: ||
+> |Hierbei gilt: | BESCHREIBUNG |
 > |---------|---------|
 > | `scopes` | Enthält die angeforderten Bereiche (`[ "user.read" ]` für Microsoft Graph oder `[ "<Application ID URL>/scope" ]` für benutzerdefinierte Web-APIs (`api://<Application ID>/access_as_user`)) |
 > | `account` | Das Konto, für das ein Token angefordert wird. In dieser Schnellstartanleitung wird eine einzelne Kontoanwendung angezeigt. Wenn Sie eine App mit mehreren Konten erstellen möchten, müssen Sie die Logik zum Identifizieren des gewünschten Kontos für Tokenanforderungen mit `accountsFromDeviceForParameters:completionBlock:` definieren und den richtigen `accountIdentifier` übergeben. |

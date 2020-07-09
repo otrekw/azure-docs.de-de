@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 704da86fd1d816dbf5d6cd9cf67dfee53fce2622
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 72006879c7181a8cefe56248215099eeb784d816
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419634"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658251"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mit Synapse SQL mithilfe von SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -30,14 +30,17 @@ Sie können mithilfe von [SQL Server Management Studio (SSMS)](/sql/ssms/downloa
 
 ### <a name="supported-tools-for-sql-on-demand-preview"></a>Unterstützte Tools für SQL On-Demand (Vorschauversion)
 
-SSMS wird ab Version 18.5 teilweise unterstützt und bietet eingeschränkte Funktionen (etwa Verbinden und Abfragen). [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) wird vollständig unterstützt.
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) wird ab Version 1.18.0 vollständig unterstützt. SSMS wird ab Version 18.5 teilweise unterstützt, kann aber nur zum Herstellen einer Verbindung und für Abfragen verwendet werden.
 
+> [!NOTE]
+> Wenn die Verbindung bei einer AAD-Anmeldung zum Zeitpunkt der Abfrageausführung länger als eine Stunde geöffnet bleibt, schlägt jede auf AAD basierende Abfrage fehl. Dazu gehört das Abfragen von Speicher mit AAD-Pass-Through und Anweisungen, die mit AAD interagieren (z. B. CREATE EXTERNAL PROVIDER). Dies wirkt sich auf jedes Tool aus, das die Verbindung geöffnet hält, wie beim Abfrage-Editor in SSMS und ADS. Tools wie Synapse Studio, die eine neue Verbindung zur Ausführung einer Abfrage öffnen, sind davon nicht betroffen.
+> Zur Behebung dieses Problems können Sie SSMS neu starten oder in ADS eine Verbindung herstellen und trennen. erforderlich.
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:  
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
-* Für den SQL-Pool benötigen Sie ein vorhandenes Data Warehouse. Informationen zur Erstellung finden Sie unter [Erstellen eines SQL-Pools](../quickstart-create-sql-pool.md). Bei SQL On-Demand wird bereits bei der Erstellung ein Data Warehouse in Ihrem Arbeitsbereich bereitgestellt. 
+* Für den SQL-Pool benötigen Sie ein vorhandenes Data Warehouse. Informationen zur Erstellung finden Sie unter [Erstellen eines SQL-Pools](../quickstart-create-sql-pool-portal.md). Bei SQL On-Demand wird bereits bei der Erstellung ein Data Warehouse in Ihrem Arbeitsbereich bereitgestellt. 
 * Den vollqualifizierten SQL Server-Namen. Informationen zur Ermittlung finden Sie unter [Herstellen einer Verbindung mit Synapse SQL](connect-overview.md).
 
 ## <a name="connect"></a>Verbinden

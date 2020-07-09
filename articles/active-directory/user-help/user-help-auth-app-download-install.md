@@ -9,24 +9,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 18c34e270f1849ef8d8d692b68567eab7d103b13
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d4053d4979861146705489dc02e628f03f3c4d85
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741367"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266218"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Herunterladen und Installieren der Microsoft Authenticator-App
 
 >[!Important]
->Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
+>Dieser Inhalt richtet sich an Benutzer. Weitere Informationen für Administratoren zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD) finden Sie in der [Azure Active Directory-Dokumentation für Administratoren](https://docs.microsoft.com/azure/active-directory).
+>
+> Wenn Sie Probleme bei der Anmeldung bei Ihrem Konto haben, lesen Sie den Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429).  Außerdem finden Sie unter [Dieses Microsoft-Konto ist nicht vorhanden](https://support.microsoft.com/help/13811) weitere Informationen zu den Maßnahmen, die Sie ergreifen können, wenn Sie diese Meldung beim Versuch erhalten, sich bei Ihrem Microsoft-Konto anzumelden.
 
-Die Microsoft Authenticator-App unterstützt Sie bei der Kontoanmeldung, wenn Sie die zweistufige Überprüfung verwenden. Mit der zweistufigen Überprüfung können Sie die Sicherheit des Zugriffs auf Ihre Konten erhöhen, insbesondere, wenn Sie vertrauliche Informationen anzeigen. Kennwörter können vergessen, gestohlen oder kompromittiert werden. Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert.
-
-Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfolgen:
+Die Microsoft Authenticator-App unterstützt Sie bei der Kontoanmeldung, wenn Sie die zweistufige Überprüfung verwenden. Die zweistufige Überprüfung hilft Ihnen, Ihre Konten sicherer zu verwenden, da Kennwörter vergessen, gestohlen oder kompromittiert werden können. Die zweistufige Überprüfung verwendet einen zweiten Faktor wie Ihr Telefon, um anderen Benutzern das Eindringen in Ihr Konto zu erschweren. Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfolgen:
 
 - **Zweistufige Überprüfung**: Dies ist die Standardüberprüfungsmethode, bei der einer der Faktoren Ihr Kennwort ist. Nachdem Sie sich mit Ihrem Benutzernamen und Kennwort angemeldet haben, können Sie entweder eine Benachrichtigung bestätigen oder einen bereitgestellten Prüfcode eingeben.
 
@@ -34,13 +34,9 @@ Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfol
 
 - **Codegenerierung**: Dient als Codegenerator für andere Konten, die Authentifikator-Apps unterstützen.
 
-> [!Important]
-> Die Microsoft Authenticator-App funktioniert mit jedem Konto, für das die zweistufige Überprüfung verwendet wird, und unterstützt die Standards für zeitbasierte Einmalkennwörter (Time-Based One-Time Passwords, TOTPs).
->
-> Ihre Organisation erfordert möglicherweise die Verwendung einer Authentifikator-App zum Anmelden und für den Zugriff auf Ihre Organisationsdaten und -dokumente. Ihr Benutzername kann in der App zwar angezeigt werden, das Konto ist jedoch erst tatsächlich als Überprüfungsmethode eingerichtet, nachdem Sie den Registrierungsprozess abgeschlossen haben. Weitere Informationen finden Sie unter [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](user-help-auth-app-add-work-school-account.md).
-> 
-> [!NOTE]
-> Wenn Sie Probleme bei der Anmeldung bei Ihrem Konto haben, lesen Sie den Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429).  Unter [Dieses Microsoft-Konto ist nicht vorhanden](https://support.microsoft.com/help/13811) finden Sie weitere Informationen zu den Maßnahmen, die Sie ergreifen können, wenn Sie diese Meldung beim Versuch erhalten, sich bei Ihrem Microsoft-Konto anzumelden.
+Authenticator funktioniert mit jedem Konto, für das die zweistufige Überprüfung verwendet wird, und unterstützt die Standards für zeitbasierte Einmalkennwörter (Time-Based One-Time Passwords, TOTPs).
+
+Ihre Organisation erfordert möglicherweise die Verwendung von Authenticator zum Anmelden und für den Zugriff auf Daten und Dokumente Ihrer Organisation. Selbst wenn Ihr Benutzername in der App angezeigt wird, ist das Konto nicht als Überprüfungsmethode eingerichtet, bevor Sie den Registrierungsvorgang abgeschlossen haben. Weitere Informationen finden Sie unter [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](user-help-auth-app-add-work-school-account.md).
 
 ## <a name="download-and-install-the-app"></a>Herunterladen und Installieren der App
 
@@ -55,7 +51,7 @@ Installieren Sie die aktuelle Version der Microsoft Authenticator-App basierend 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie die App heruntergeladen und installiert haben, müssen Sie Ihre verschiedenen Konten hinzufügen. Weitere Informationen finden Sie unter
+Nachdem Sie die App heruntergeladen und installiert haben, sehen Sie sich die [Übersicht über die Authenticator-App](user-help-auth-app-overview.md) an, um mehr zu erfahren. Weitere Setupoptionen finden Sie unter:
 
 - **Authentifikator-App:** Sie können eine Authentifikator-App herunterladen und verwenden, um entweder eine Genehmigungsbenachrichtigung oder einen nach dem Zufallsprinzip generierten Genehmigungscode für die zweistufige Überprüfung oder die Kennwortzurücksetzung zu erhalten. Ausführliche Anweisungen zum Einrichten und Verwenden der Microsoft Authenticator-App finden Sie unter [Einrichten der Sicherheitsinformation zur Verwendung einer Authentifikator-App](security-info-setup-auth-app.md).
 

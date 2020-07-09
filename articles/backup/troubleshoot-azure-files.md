@@ -3,12 +3,12 @@ title: Problembehandlung der Sicherung von Azure-Dateifreigaben
 description: Dieser Artikel enthält Informationen zum Behandeln von Problemen in Verbindung mit dem Schutz Ihrer Azure-Dateifreigaben.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 3d04a60b8bab5ba764818eab341ac08836b0dfd1
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562082"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116734"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
 
@@ -276,6 +276,45 @@ Fehlercode: BMSUserErrorObjectLocked
 Fehlermeldung: Für das ausgewählte Element wird derzeit ein anderer Vorgang ausgeführt.
 
 Warten Sie, bis dieser andere Vorgang abgeschlossen ist, und versuchen Sie es zu einem späteren Zeitpunkt noch einmal.
+
+Aus der Datei „troubleshoot-azure-files.md“
+
+## <a name="common-soft-delete-related-errors"></a>Häufige Fehler beim vorläufigen Löschen
+
+### <a name="usererrorrestoreafsinsoftdeletestate--this-restore-point-is-not-available-as-the-snapshot-associated-with-this-point-is-in-a-file-share-that-is-in-soft-deleted-state"></a>UserErrorRestoreAFSInSoftDeleteState: Dieser Wiederherstellungspunkt ist nicht verfügbar, da die diesem Punkt zugeordnete Momentaufnahme in einer Dateifreigabe gespeichert ist, die sich im vorläufig gelöschten Zustand befindet.
+
+Fehlercode: UserErrorRestoreAFSInSoftDeleteState
+
+Fehlermeldung: Dieser Wiederherstellungspunkt ist nicht verfügbar, da die diesem Punkt zugeordnete Momentaufnahme in einer Dateifreigabe gespeichert ist, die sich im vorläufig gelöschten Zustand befindet.
+
+Sie können keinen Wiederherstellungsvorgang durchführen, wenn sich die Dateifreigabe im vorläufig gelöschten Zustand befindet. Löschen Sie die Dateifreigabe aus dem Dateiportal, oder verwenden Sie das [Skript zum Rückgängigmachen des Löschvorgangs](scripts/backup-powershell-script-undelete-file-share.md), und versuchen Sie dann, die Wiederherstellung auszuführen.
+
+### <a name="usererrorrestoreafsindeletestate--listed-restore-points-are-not-available-as-the-associated-file-share-containing-the-restore-point-snapshots-has-been-deleted-permanently"></a>UserErrorRestoreAFSInDeleteState: Die aufgeführten Wiederherstellungspunkte sind nicht verfügbar, da die zugeordnete Dateifreigabe mit den Wiederherstellungspunkt-Momentaufnahmen dauerhaft gelöscht wurde.
+
+Fehlercode: UserErrorRestoreAFSInDeleteState
+
+Fehlermeldung: Die aufgeführten Wiederherstellungspunkte sind nicht verfügbar, da die zugeordnete Dateifreigabe mit den Wiederherstellungspunkt-Momentaufnahmen dauerhaft gelöscht wurde.
+
+Überprüfen Sie, ob die gesicherte Dateifreigabe gelöscht wurde. Wenn sie sich im vorläufig gelöschten Zustand befand, überprüfen Sie, ob die Beibehaltungsdauer für vorläufiges Löschen abgelaufen ist und sie nicht wiederhergestellt wurde. In beiden Fällen verlieren Sie alle Momentaufnahmen dauerhaft und können die Daten nicht wiederherstellen.
+
+>[!NOTE]
+> Es wird empfohlen, die gesicherte Dateifreigabe nicht zu löschen bzw., wenn sie sich im vorläufig gelöschten Zustand befindet, den Löschvorgang vor dem Ende der Beibehaltungsdauer nicht rückgängig zu machen, um zu vermeiden, dass alle Wiederherstellungspunkte verloren gehen.
+
+### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState: Fehler bei der Sicherung, da sich die Azure-Dateifreigabe im vorläufig gelöschten Zustand befindet.
+
+Fehlercode: UserErrorBackupAFSInSoftDeleteState
+
+Fehlermeldung: Fehler bei der Sicherung, da sich die Azure-Dateifreigabe im vorläufig gelöschten Zustand befindet.
+
+Löschen Sie die Dateifreigabe über das **Azure Files-Portal** oder mit dem [Skript zum Rückgängigmachen des Löschvorgangs](scripts/backup-powershell-script-undelete-file-share.md), um die Sicherung fortzusetzen und das dauerhafte Löschen von Daten zu verhindern.
+
+### <a name="usererrorbackupafsindeletestate--backup-failed-as-the-associated-azure-file-share-is-permanently-deleted"></a>UserErrorBackupAFSInDeleteState: Fehler bei der Sicherung, da die zugeordnete Azure-Dateifreigabe dauerhaft gelöscht wurde.
+
+Fehlercode: UserErrorBackupAFSInDeleteState
+
+Fehlermeldung: Fehler bei der Sicherung, da die zugeordnete Azure-Dateifreigabe dauerhaft gelöscht wurde.
+
+Überprüfen Sie, ob die gesicherte Dateifreigabe dauerhaft gelöscht wurde. Beenden Sie in diesem Fall die Sicherung für diese Dateifreigabe, um wiederholte Sicherungsfehler zu vermeiden. Weitere Informationen zum Beenden des Schutzes finden Sie unter [Beendigung des Schutzes für eine Azure-Dateifreigabe](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

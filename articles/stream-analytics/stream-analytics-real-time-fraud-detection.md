@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: c0b2943e1f0d7f2386ec09da03d297a570eede7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3bfc03dd7a04bea7e69aa1b62cef267a81b650f1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276477"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037612"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugsermittlung in Echtzeit
 
@@ -47,7 +47,7 @@ Wenn Sie die Ergebnisse des Stream Analytics-Auftrags untersuchen möchten, ben�
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>Erstellen von Azure Event Hubs zum Erfassen von Ereignissen
 
-Um einen Datenstrom zu analysieren, *erfassen* Sie diesen in Azure. Eine typische Vorgehensweise zum Erfassen von Daten ist die Verwendung von [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md), mit denen Sie Millionen von Ereignissen pro Sekunde verarbeiten und die Ereignisinformationen dann verarbeiten und speichern können. Für dieses Tutorial erstellen Sie einen Event Hub und senden über die App zum Generieren von Anrufereignissen Anrufdaten an den betreffenden Event Hub. Weitere Informationen zu Event Hubs finden Sie in der [Dokumentation zu Azure Service Bus](https://docs.microsoft.com/azure/service-bus/).
+Um einen Datenstrom zu analysieren, *erfassen* Sie diesen in Azure. Eine typische Vorgehensweise zum Erfassen von Daten ist die Verwendung von [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md), mit denen Sie Millionen von Ereignissen pro Sekunde verarbeiten und die Ereignisinformationen dann verarbeiten und speichern können. Für dieses Tutorial erstellen Sie einen Event Hub und senden über die App zum Generieren von Anrufereignissen Anrufdaten an den betreffenden Event Hub.
 
 >[!NOTE]
 >Eine ausführlichere Version dieses Verfahrens finden Sie unter [Erstellen eines Event Hub-Namespace und eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md). 
@@ -202,7 +202,7 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Eingabealias  |  CallStream   |  Geben Sie einen Namen zur Identifizierung der Eingabe des Auftrags ein.   |
-   |Subscription   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement aus, in dem sich der erstellte Event Hub befindet.   |
+   |Subscription   |  \<Your subscription\> |  Wählen Sie das Azure-Abonnement aus, in dem sich der erstellte Event Hub befindet.   |
    |Event Hub-Namespace  |  asa-eh-ns-demo |  Geben Sie den Namen des Event Hub-Namespace ein.   |
    |Event Hub-Name  | asa-eh-frauddetection-demo | Wählen Sie den Namen Ihres Event Hubs aus.   |
    |Event Hub-Richtlinienname  | asa-policy-manage-demo | Wählen Sie die Zugriffsrichtlinie aus, die Sie zuvor erstellt haben.   |
@@ -372,7 +372,7 @@ Wenn ein Blob Storage-Konto vorhanden ist, können Sie dieses verwenden. In dies
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Ausgabealias  |  CallStream-FraudulentCalls   |  Geben Sie einen Namen ein, um die Ausgabe des Auftrags kenntlich zu machen.   |
-   |Subscription   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
+   |Subscription   |  \<Your subscription\> |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
    |Speicherkonto  |  asaehstorage |  Geben Sie den Namen des von Ihnen erstellten Speicherkontos ein. |
    |Container  | asa-fraudulentcalls-demo | Wählen Sie „Neu erstellen“ aus, und geben Sie einen Containernamen ein. |
 
@@ -420,7 +420,7 @@ Wenn Sie jedoch fertig sind und die erstellten Ressourcen nicht benötigen, kön
 
 ## <a name="get-support"></a>Support
 
-Um Hilfe zu erhalten, nutzen Sie das [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Weitere Unterstützung finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

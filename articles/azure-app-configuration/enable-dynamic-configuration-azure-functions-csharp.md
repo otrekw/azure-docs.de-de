@@ -15,12 +15,12 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e8f5b21189007d2b15c2ff31b778144d9a672318
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74187294"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856474"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer Azure Functions-App
 
@@ -67,7 +67,7 @@ In diesem Tutorial lernen Sie Folgendes:
     }
     ```
 
-3. Aktualisieren Sie die `Run`-Methode, und signalisieren Sie die Aktualisierung der Konfiguration mithilfe der `Refresh`-Methode am Anfang des Funktionsaufrufs. Dies ist nur optional, wenn das Zeitfenster für den Cacheablauf erreicht wird. Entfernen Sie den `await`-Operator, wenn die Konfiguration ohne Blockierung aktualisiert werden soll.
+3. Aktualisieren Sie die `Run`-Methode, und signalisieren Sie die Aktualisierung der Konfiguration mithilfe der `TryRefreshAsync`-Methode am Anfang des Funktionsaufrufs. Dies ist nur optional, wenn das Zeitfenster für den Cacheablauf erreicht wird. Entfernen Sie den `await`-Operator, wenn die Konfiguration ohne Blockierung aktualisiert werden soll.
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -75,7 +75,7 @@ In diesem Tutorial lernen Sie Folgendes:
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        await ConfigurationRefresher.Refresh();
+        await ConfigurationRefresher.TryRefreshAsync(); 
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];
@@ -90,15 +90,21 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** fest, und geben Sie dafür den Zugriffsschlüssel für Ihren App-Konfigurationsspeicher an. Führen Sie bei Verwendung einer Windows-Eingabeaufforderung den folgenden Befehl aus, und starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird:
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+    setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Führen Sie bei Verwendung von Windows PowerShell den folgenden Befehl aus:
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+    $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     Führen Sie bei Verwendung von macOS oder Linux den folgenden Befehl aus:
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+    export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. Drücken Sie F5, um Ihre Funktion zu testen. Akzeptieren Sie die entsprechende Aufforderung von Visual Studio zum Herunterladen und Installieren der **Azure Functions Core (CLI)** -Tools. Sie müssen möglicherweise auch eine Firewallausnahme aktivieren, damit die Tools HTTP-Anforderungen verarbeiten können.
 

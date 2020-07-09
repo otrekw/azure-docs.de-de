@@ -1,23 +1,20 @@
 ---
-title: Abrufen des Shared Access Signature-URI für Ihr VM-Image | Azure Marketplace
-description: In diesem Artikel wird beschrieben, wie Sie den SAS-URI (Shared Access Signature) für die einzelnen virtuellen Festplatten (VHDs) abrufen.
-author: anbene
+title: Shared Access Signature-URI für VM-Images – Azure Marketplace
+description: Generieren Sie im Azure Marketplace einen SAS-URI (Shared Access Signature) für Ihre virtuellen Festplatten (VHDs).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/09/2020
+author: anbene
 ms.author: mingshen
-ms.openlocfilehash: c226d35647e4a5a2b1d583dd6328bfb73dae2a1c
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.date: 04/09/2020
+ms.openlocfilehash: 0fbd7aa42bf65ee0e553282b9961f1a9302b7903
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732639"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121723"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Abrufen des Shared Access Signature-URI für Ihr VM-Image
-
-> [!IMPORTANT]
-> Wir verlagern die Verwaltung Ihrer Azure-Containerangebote vom Cloud-Partnerportal in das Partner Center. Befolgen Sie bis zur erfolgten Migration Ihrer Angebote die Anleitung zur Angebotsverwaltung unter [Abrufen des Shared Access Signature-URI für Ihr VM-Image](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri) für das Cloud-Partnerportal.
 
 In diesem Artikel wird beschrieben, wie Sie einen SAS-URI (Shared Access Signature Uniform Resource Identifier) für die einzelnen virtuellen Festplatten (VHDs) generieren.
 
@@ -127,6 +124,6 @@ Wiederholen Sie diese Schritte für jede virtuelle Festplatte in den SKUs, die S
 
 ## <a name="next-step"></a>Nächster Schritt
 
-Falls Sie Schwierigkeiten beim Erstellen eines SAS-URI haben, helfen Ihnen die Informationen unter [Allgemeine Probleme mit der SAS-URL](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues) weiter. Andernfalls speichern Sie den SAS-URI in einem sicheren Speicherort zur späteren Verwendung. Sie benötigen ihn zum Veröffentlichen Ihres VM-Angebots in Partner Center.
+Falls Sie Schwierigkeiten beim Erstellen eines SAS-URI haben, helfen Ihnen die Informationen unter [Allgemeine Probleme mit der SAS-URL](common-sas-uri-issues.md) weiter. Andernfalls speichern Sie den SAS-URI in einem sicheren Speicherort zur späteren Verwendung. Sie benötigen ihn zum Veröffentlichen Ihres VM-Angebots in Partner Center.
 
-* [Erstellen eines Angebots für virtuelle Azure-Computer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)
+* [Erstellen eines Angebots für virtuelle Azure-Computer](azure-vm-create-offer.md)

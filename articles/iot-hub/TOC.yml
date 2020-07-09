@@ -25,6 +25,8 @@
           href: quickstart-send-telemetry-android.md
         - name: iOS
           href: quickstart-send-telemetry-ios.md
+        - name: Xamarin.Forms
+          href: quickstart-send-telemetry-xamarinforms.md
     - name: Steuern eines Geräts
       items:
         - name: Node.js
@@ -324,6 +326,8 @@
           href: iot-hub-distributed-tracing.md
         - name: Konfigurieren der IP-Filterung
           href: iot-hub-ip-filtering.md
+        - name: Verwalten des öffentlichen Netzwerkzugriffs
+          href: iot-hub-public-network-access.md
         - name: Automatische Geräteverwaltung im gewünschten Umfang
           items:
             - name: Verwenden des Azure-Portals
@@ -379,6 +383,8 @@
       items:
         - name: Getrennte Geräteverbindungen
           href: iot-hub-troubleshoot-connectivity.md
+        - name: Problembehandlung für das Nachrichtenrouting
+          href: troubleshoot-message-routing.md
         - name: Problemlösung
           items:
             - name: 400027 ConnectionForcefullyClosedOnNewConnection
@@ -414,13 +420,15 @@
 - name: Verweis
   items:
     - name: Azure CLI
-      href: /cli/azure/iot
+      href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
-      href: '/powershell/module/az.iothub#iot'
+      href: /powershell/module/az.iothub#iot
     - name: .NET (Gerät)
       href: /dotnet/api/microsoft.azure.devices.client
     - name: .NET (Dienst)
       href: /dotnet/api/microsoft.azure.devices
+    - name: .NET (Verwaltung)
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/iot/management'
     - name: Java (Gerät)
       href: /java/api/com.microsoft.azure.sdk.iot.device
     - name: Java (Dienst)
@@ -429,6 +437,14 @@
       href: 'https://docs.microsoft.com/javascript/api/azure-iot-device/'
     - name: Node.js (Dienst)
       href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
+    - name: Node.js (Verwaltung)
+      href: 'https://docs.microsoft.com/javascript/api/overview/azure/iothub/management'
+    - name: Python (Gerät)
+      href: 'https://docs.microsoft.com/python/api/azure-iot-device'
+    - name: Python (Dienst)
+      href: 'https://docs.microsoft.com/python/api/azure-iot-hub'
+    - name: Python (Verwaltung)
+      href: 'https://docs.microsoft.com/python/api/azure-mgmt-iothub'
     - name: C (Geräte-SDK)
       href: 'https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/'
     - name: REST (Gerät)
@@ -474,12 +490,12 @@
     - name: Azure IoT SDKs
       items:
         - name: IoT-Dienst-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT-Geräte-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: "Azure\_IoT-Beispiele"
       items:
-        - name: 'C# (.NET)'
+        - name: C# (.NET)
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
         - name: Node.js
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
@@ -503,16 +519,12 @@
       href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics (Tool)
       href: 'https://github.com/Azure/iothub-diagnostics'
-    - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
-      href: 'https://docs.microsoft.com/answers/topics/azure-iot-hub.html'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=iot-hub'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-iot-hub'
     - name: Technische Fallstudien
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: Videos

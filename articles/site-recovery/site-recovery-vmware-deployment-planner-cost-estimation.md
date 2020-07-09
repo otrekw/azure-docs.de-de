@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b03ac554ed578633b55ffa2fde4838c691d04d59
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73953346"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132204"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Überprüfen von Kostenvorkalkulationen im VMware-Bereitstellungsplaner 
 
@@ -162,4 +162,4 @@ Der Azure Site Recovery-Bereitstellungsplaner kann den Kostenbericht für die fo
 |TRY|Türkische Lira (TL)||USD| US-Dollar ($)||ZAR|Südafrikanischer Rand (R)|
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Schutz finden Sie unter [Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs](https://docs.microsoft.com/azure/site-recovery/tutorial-vmware-to-azure).
+Weitere Informationen zum Schutz finden Sie unter [Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs](./vmware-azure-tutorial.md).

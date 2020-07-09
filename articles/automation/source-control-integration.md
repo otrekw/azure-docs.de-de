@@ -1,25 +1,22 @@
 ---
-title: Integration der Quellcodeverwaltung in Azure Automation
-description: In diesem Artikel wird die Integration der Quellcodeverwaltung mit GitHub in Azure Automation erläutert.
+title: Verwenden der Integration der Quellcodeverwaltung in Azure Automation
+description: In diesem Artikel erfahren Sie, wie Sie die Azure Automation-Quellcodeverwaltung mit anderen Repositorys synchronisieren.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 166902978d1641458f18aeee6269c8d819e85233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132924"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828881"
 ---
-# <a name="source-control-integration-in-azure-automation"></a>Integration der Quellcodeverwaltung in Azure Automation
+# <a name="use-source-control-integration"></a>Verwenden der Integration der Quellcodeverwaltung
 
  Bei der Integration der Quellcodeverwaltung in Azure Automation wird die unidirektionale Synchronisierung aus Ihrem Repository der Quellcodeverwaltung unterstützt. Mit der Quellcodeverwaltung halten Sie die Runbooks in Ihrem Automation-Konto auf demselben aktuellen Stand wie Skripts in der Quellcodeverwaltung Ihres GitHub- oder Azure Repos-Repositorys. Mit dieser Funktion ist es einfach, Code, der in Ihrer Entwicklungsumgebung getestet wurde, in Ihr Automation-Produktionskonto höher zu stufen.
  
  Mithilfe der Integration der Quellcodeverwaltung können Sie einfach mit Ihrem Team zusammenarbeiten, Änderungen nachverfolgen und Ihre Runbooks auf frühere Versionen zurücksetzen. Mit der Quellcodeverwaltung können Sie beispielsweise verschiedene Verzweigungen in der Quellcodeverwaltung mit Ihren Automation-Entwicklungs-, Produktions- und Testkonten synchronisieren. 
-
->[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
 
 ## <a name="source-control-types"></a>Typen der Quellcodeverwaltung
 
@@ -38,7 +35,7 @@ Azure Automation unterstützt drei Arten von Quellcodeverwaltung:
 > [!NOTE]
 > Synchronisierungsaufträge für die Quellcodeverwaltung werden unter dem Automation-Konto eines Benutzers ausgeführt und mit der gleichen Rate wie andere Automation-Aufträge berechnet.
 
-## <a name="configuring-source-control"></a>Konfigurieren der Quellcodeverwaltung
+## <a name="configure-source-control"></a>Konfigurieren der Quellcodeverwaltung
 
 In diesem Abschnitt erfahren Sie, wie Sie die Quellcodeverwaltung für Ihr Automation-Konto konfigurieren. Sie können das Azure-Portal oder PowerShell verwenden.
 
@@ -126,7 +123,7 @@ In der folgenden Tabelle werden die für GitHub erforderlichen PAT-Mindestberech
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>PAT-Mindestberechtigungen für Azure Repos
 
-In der folgenden Liste werden die für Azure Repos erforderlichen PAT-Mindestberechtigungen definiert. Weitere Informationen zum Erstellen eines PAT in Azure Repos finden Sie unter [Authentifizieren des Zugriffs mit persönlichen Zugriffstoken](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
+In der folgenden Liste werden die für Azure Repos erforderlichen PAT-Mindestberechtigungen definiert. Weitere Informationen zum Erstellen eines PAT in Azure Repos finden Sie unter [Authentifizieren des Zugriffs mit persönlichen Zugriffstoken](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page).
 
 | `Scope`  |  Zugriffstyp  |
 |---------| ----------|
@@ -139,7 +136,7 @@ In der folgenden Liste werden die für Azure Repos erforderlichen PAT-Mindestber
 
 <sup>1</sup> Die Berechtigung `Service connections` ist nur erforderlich, wenn die automatische Synchronisierung aktiviert ist.
 
-## <a name="synchronizing"></a>Wird synchronisiert
+## <a name="synchronize-with-source-control"></a>Synchronisieren mit der Quellcodeverwaltung
 
 Führen Sie die folgenden Schritte aus, um eine Synchronisierung mit der Quellcodeverwaltung durchzuführen. 
 
@@ -161,7 +158,7 @@ Führen Sie die folgenden Schritte aus, um eine Synchronisierung mit der Quellco
     Azure Automation Source Control.
     Supported runbooks to sync: PowerShell Workflow, PowerShell Scripts, DSC Configurations, Graphical, and Python 2.
 
-    Setting AzureRmEnvironment.
+    Setting AzEnvironment.
 
     Getting AzureRunAsConnection.
 
@@ -187,7 +184,7 @@ Führen Sie die folgenden Schritte aus, um eine Synchronisierung mit der Quellco
 
 6. Zusätzliche Protokollierung ist verfügbar, indem Sie auf der Seite „Quellcodeverwaltung – Übersicht zu Synchronisierungsauftrag“ die Option **Alle Protokolle** auswählen. Diese zusätzlichen Protokolleinträge können Ihnen als Hilfe beim Behandeln von Problemen dienen, die bei Verwendung der Quellcodeverwaltung auftreten können.
 
-## <a name="disconnecting-source-control"></a>Trennen der Verbindung zur Quellcodeverwaltung
+## <a name="disconnect-source-control"></a>Trennen der Quellcodeverwaltung
 
 So trennen Sie die Verbindung mit einem Quellcodeverwaltungs-Repository
 
@@ -197,17 +194,18 @@ So trennen Sie die Verbindung mit einem Quellcodeverwaltungs-Repository
 
 3. Klicken Sie auf der Seite „Quellcodeverwaltung – Übersicht“ auf **Löschen**.
 
-## <a name="handling-encoding-issues"></a>Behandeln von Codierungsproblemen
+## <a name="handle-encoding-issues"></a>Behandeln von Codierungsproblemen
 
-Wenn mehrere Personen in Ihrem Quellcodeverwaltungs-Repository Runbooks mit unterschiedlichen Editoren bearbeiten, kann es zu Codierungsproblemen kommen. Weitere Informationen zu dieser Situation finden Sie unter [Häufige Gründe für Codierungsprobleme](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
+Wenn mehrere Personen in Ihrem Quellcodeverwaltungs-Repository Runbooks mit unterschiedlichen Editoren bearbeiten, kann es zu Codierungsproblemen kommen. Weitere Informationen zu dieser Situation finden Sie unter [Häufige Gründe für Codierungsprobleme](https://docs.microsoft.com/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues).
 
-## <a name="updating-the-pat"></a>Aktualisieren des PAT
+## <a name="update-the-pat"></a>Aktualisieren des PAT
 
 Derzeit können Sie das PAT in der Quellcodeverwaltung nicht über das Azure-Portal aktualisieren. Nach Ablauf oder Widerruf Ihres PAT können Sie die Quellcodeverwaltung auf eine der folgenden Weisen mit einem neuen Zugriffstoken aktualisieren:
 
 * Verwenden Sie die [REST-API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update).
-* Verwenden Sie das Cmdlet [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol).
+* Verwenden Sie das Cmdlet [Update-AzAutomationSourceControl](https://docs.microsoft.com//powershell/module/az.automation/update-azautomationsourcecontrol).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu den verschiedenen Runbooktypen mit ihren Vorteilen und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
+* Weitere Informationen zum Integrieren der Quellcodeverwaltung in Azure Automation finden Sie unter [Azure Automation: Source Control Integration in Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/) (Azure Automation: Integration der Quellcodeverwaltung in Azure Automation).  
+* Weitere Informationen zum Integrieren der Quellcodeverwaltung für Runbooks mit Visual Studio Online finden Sie unter [Azure Automation: Integrating Runbook Source Control using Visual Studio Online](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/) (Azure Automation: Integrieren der Runbook-Quellcodeverwaltung mithilfe von Visual Studio Online).

@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: c883383d3c870689bb95f808f6f60c5185c165c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33a63280f6973d2c5e29db29f7a6f3fc68c57c77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334660"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84424730"
 ---
 | Resource | Begrenzung |
 | --- | --- |
@@ -22,7 +22,7 @@ ms.locfileid: "80334660"
 | Tagschlüssellänge |512 |
 | Tagwertlänge |256 |
 
-<sup>1</sup>Wenn der Grenzwert von 800 Bereitstellungen pro Ressourcengruppe erreicht ist, löschen Sie nicht mehr benötigte Bereitstellungen aus dem Verlauf. Das Löschen eines Eintrags aus dem Bereitstellungsverlauf wirkt sich nicht auf die bereitgestellten Ressourcen aus. Weitere Informationen finden Sie unter [Beheben des Fehlers, dass die Anzahl der Bereitstellungen 800 überschreitet](../articles/azure-resource-manager/templates/deployment-quota-exceeded.md).
+<sup>1</sup> Ab Juni 2020 werden Bereitstellungen automatisch aus dem Verlauf gelöscht, wenn Sie den Grenzwert fast erreicht haben. Das Löschen eines Eintrags aus dem Bereitstellungsverlauf wirkt sich nicht auf die bereitgestellten Ressourcen aus. Weitere Informationen finden Sie unter [Automatische Löschungen aus dem Bereitstellungsverlauf](../articles/azure-resource-manager/templates/deployment-history-deletions.md).
 
 #### <a name="template-limits"></a>Vorlagengrenzwerte
 

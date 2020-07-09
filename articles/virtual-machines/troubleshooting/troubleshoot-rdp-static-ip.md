@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: 92ad33fbc759605ae901c3bcf09283c8e0b1c4b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49f3f44c7de8c700d0093c5eb6f166a1dffb34a4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918188"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087247"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Remotedesktopverbindung mit Azure Virtual Machines aufgrund einer statischen IP-Adresse nicht möglich
 
@@ -56,18 +56,27 @@ Verwenden Sie zum Beheben dieses Problems die serielle Konsole, um DHCP zu aktiv
 ). Wenn die serielle Konsole auf Ihrer VM nicht aktiviert ist, helfen Ihnen die Informationen unter [Zurücksetzen der Netzwerkschnittstelle](reset-network-interface.md) weiter.
 2. Überprüfen Sie, ob DHCP für die Netzwerkschnittstelle deaktiviert ist:
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
+
 3. Wenn DHCP deaktiviert ist, sollten Sie die Konfiguration Ihrer Netzwerkschnittstelle so ändern, dass DHCP verwendet wird:
 
-        netsh interface ip set address name="<NIC Name>" source=dhc
+    ```console
+    netsh interface ip set address name="<NIC Name>" source=dhc
+    ```
 
     Führen Sie beispielsweise den folgenden Befehl aus, wenn die Netzwerkschnittstelle den Namen „Ethernet 2“ hat:
 
-        netsh interface ip set address name="Ethernet 2" source=dhc
+    ```console
+    netsh interface ip set address name="Ethernet 2" source=dhc
+    ```
 
 4. Fragen Sie die IP-Konfiguration erneut ab, um sicherzustellen, dass die Netzwerkschnittstelle jetzt richtig eingerichtet ist. Die neue IP-Adresse sollte mit der IP-Adresse übereinstimmen, die von Azure bereitgestellt wird.
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
 
     Sie müssen die VM an diesem Punkt nicht neu starten. Die VM ist jetzt wieder erreichbar.
 

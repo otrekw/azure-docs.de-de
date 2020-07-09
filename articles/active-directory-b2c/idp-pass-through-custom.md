@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff5ef8f742914129d868152814d84d2112267c09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c434ad6a724ba513caf7923916997600097b43f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187787"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387863"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Übergeben eines Zugriffstokens über eine benutzerdefinierte Richtlinie an Ihre Anwendung in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Azure AD B2C unterstützt die Übergabe des Zugriffstokens von [OAuth 2.0](autho
 
 1. Öffnen Sie Ihre Datei *TrustframeworkExtensions.xml*, und fügen Sie das folgende **ClaimType**-Element mit dem Bezeichner `identityProviderAccessToken` zum **ClaimsSchema**-Element hinzu:
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="identityProviderAccessToken">
@@ -47,7 +47,7 @@ Azure AD B2C unterstützt die Übergabe des Zugriffstokens von [OAuth 2.0](autho
 
 2. Fügen Sie für jeden OAuth 2.0-Anbieter, für den Sie ein Zugriffstoken benötigen, das **OutputClaim**-Element zum **TechnicalProfile**-Element hinzu. Das folgende Beispiel zeigt, wie das Element zum technischen Profil für Facebook hinzugefügt wurde:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Facebook</DisplayName>
       <TechnicalProfiles>
@@ -64,7 +64,7 @@ Azure AD B2C unterstützt die Übergabe des Zugriffstokens von [OAuth 2.0](autho
 3. Speichern Sie die Datei *TrustframeworkExtensions.xml*.
 4. Öffnen Sie Ihre Richtliniendatei der vertrauenden Seite, z.B. *SignUpOrSignIn.xml*, und fügen Sie das **OutputClaim**-Element zum **TechnicalProfile**-Element hinzu:
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
       <TechnicalProfile Id="PolicyProfile">

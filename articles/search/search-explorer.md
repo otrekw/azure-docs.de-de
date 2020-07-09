@@ -7,25 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/27/2020
-ms.openlocfilehash: 9fb34141d19866a2f49ac164e0d89802cf7818c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/07/2020
+ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369657"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488204"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Schnellstart: Verwenden des Suchexplorers zum Ausführen von Abfragen im Portal
 
-Der **Suchexplorer** ist ein integriertes Abfragetool, das zum Ausführen von Abfragen über einen Suchindex in Azure Cognitive Search verwendet wird. Mit diesem Tool können Sie problemlos Abfragesyntax erlernen, einen Abfrage- oder Filterausdruck testen oder die Ergebnisse einer Indexaktualisierung bestätigen, indem Sie überprüfen, ob neuere Inhalte vorhanden sind.
+Der **Suchexplorer** ist ein integriertes Abfragetool, das zum Ausführen von Abfragen über einen Suchindex in Azure Cognitive Search verwendet wird. Mit diesem Tool können Sie problemlos Abfragesyntax erlernen, einen Abfrage- oder Filterausdruck testen oder eine Datenaktualisierung bestätigen, indem Sie überprüfen, ob neue Inhalte im Index vorhanden sind.
 
-In diesem Schnellstart wird der Suchexplorer anhand von **realestate-us-sample-index** veranschaulicht. Anforderungen werden mit der [Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) formuliert, und Antworten werden als JSON-Dokumente zurückgegeben.
+In diesem Schnellstart wird der Suchexplorer anhand eines vorhandenen Index veranschaulicht. Anforderungen werden mit der [Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) formuliert, und Antworten werden als JSON-Dokumente zurückgegeben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
+Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-+ **realestate-us-sample-index** wird für diesen Schnellstart verwendet. Führen Sie die Schritte im [**Datenimport-Assistenten**](search-import-data-portal.md) aus, um den Index aus der integrierten Beispieldatenquelle zu generieren.
++ Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/).
+
++ Ein Azure Cognitive Search-Dienst. [Erstellen Sie einen Dienst](search-create-service-portal.md), oder wechseln Sie in Ihrem aktuellen Abonnement [zu einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
+
++ *realestate-us-sample-index* wird für diesen Schnellstart verwendet. Verwenden Sie den [**Datenimport**](search-import-data-portal.md)-Assistenten, um den Index zu erstellen. Wenn Sie im ersten Schritt nach der Datenquelle gefragt werden, wählen Sie **Beispiele** und dann die Datenquelle **realestate-us-sample** aus. Übernehmen Sie zum Erstellen des Index alle Standardeinstellungen des Assistenten.
 
 ## <a name="start-search-explorer"></a>Starten des Suchexplorers
 

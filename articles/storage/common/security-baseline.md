@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 92f2102d8d6353da2002a4ee9d5bfbe57a774e10
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: cd7e7df5c789743cf6bd84c6150fd901490bdedd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792070"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84751635"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-Sicherheitsbaseline für Azure Storage
 
@@ -785,7 +785,10 @@ Verwenden Sie darüber hinaus Azure Resource Graph, um Ressourcen in Ihren Abonn
 
 **Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.Storage“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration Ihrer Storage-Konten zu erstellen. Sie können auch integrierte Azure Policy-Definitionen für Azure Storage-Konten verwenden: 
 
-Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen, Advanced Threat Protection für Speicherkonten bereitstellen, Speicherkonten müssen zu neuen Azure Resource Manager-Ressourcen migriert werden, Für Speicherkonten muss die sichere Übertragung aktiviert sein 
+Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen  
+Bereitstellen von Advanced Threat Protection für Speicherkonten  
+Speicherkonten sollten zu neuen Azure Resource Manager-Ressourcen migriert werden.  
+Sichere Übertragung in Speicherkonten sollte aktiviert werden.  
 
 Nutzen Sie die Empfehlungen des Azure Security Center als Konfigurationsbaseline für den Schutz Ihrer Storage-Konten. 
 

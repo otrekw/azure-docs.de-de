@@ -1,19 +1,14 @@
 ---
 title: Webhook-Ereignisbereitstellung
 description: In diesem Artikel werden die Webhook-Ereignisbereitstellung und die Endpunktüberprüfung bei der Verwendung von Webhooks beschrieben.
-services: event-grid
-author: banisadr
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.author: babanisa
-ms.openlocfilehash: 7ae8a21d4ea9216bea13d47ad5ae41f3bc1c2089
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 07/07/2020
+ms.openlocfilehash: b616c82092ad896da82d0f98f37e3c45f3ba1014
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629771"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118952"
 ---
 # <a name="webhook-event-delivery"></a>Webhook-Ereignisbereitstellung
 Ein Webhook ist eine der vielen Möglichkeiten, um Ereignisse aus Azure Event Grid zu empfangen. Wenn ein neues Ereignis bereit ist, sendet der Event Grid-Dienst per POST-Vorgang eine HTTP-Anforderung an den konfigurierten Endpunkt, wobei das Ereignis im Anforderungstext enthalten ist.
@@ -38,7 +33,7 @@ Falls Sie einen anderen Typ von Endpunkt nutzen, z. B. eine auf einem HTTP-Trigg
    Dieser Authentifizierungsmechanismus erfordert auch, dass der Webhookendpunkt einen HTTP-Statuscode von 200 zurückgibt, um sicherzustellen, dass das POST für das Überprüfungsereignis akzeptiert wurde, bevor er in den manuellen Überprüfungsmodus gewechselt wird. Mit anderen Worten: Wenn der Endpunkt 200 zurückgibt, aber nicht synchron eine Überprüfungsantwort zurückgibt, wird der Modus in den manuellen Überprüfungsmodus überführt. Wenn innerhalb von fünf Minuten ein GET-Vorgang auf die Überprüfungs-URL folgt, gilt der Überprüfungshandshake als erfolgreich.
 
 > [!NOTE]
-> Die Verwendung von selbstsignierten Zertifikaten wird nicht unterstützt. Verwenden Sie stattdessen ein Zertifikat von einer Zertifizierungsstelle.
+> Die Verwendung von selbstsignierten Zertifikaten wird nicht unterstützt. Verwenden Sie stattdessen ein signiertes Zertifikat von einer kommerziellen Zertifizierungsstelle.
 
 ### <a name="validation-details"></a>Überprüfungsdetails
 

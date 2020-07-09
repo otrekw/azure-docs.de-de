@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3aeb0369ee4a04dbbe89a4d0684b2a6c97378d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 033ec0f4011cae657fc464849aac5c5d9a850907
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77123224"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343319"
 ---
 Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt sind.  Diese VM-Größen eignen sich am besten für Workloads, die ein hohes Maß an Isolation von anderen Kunden erfordern, wenn es um Workloads mit Elementen wie Konformität und gesetzlichen Anforderungen geht.  Kunden können auch die Ressourcen dieser isolierten virtuellen Computer weiter unterteilen, indem sie die [Azure-Unterstützung für geschachtelte virtuelle Computer](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) verwenden.
 
@@ -23,11 +23,11 @@ Durch die Verwendung isolierter Größen wird sichergestellt, dass Ihr virtuelle
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
-* Standard_DS15_v2
-* Standard_D15_v2
+* Standard_DS15_v2 <sup>*</sup>
+* Standard_D15_v2 <sup>*</sup>
 * Standard_F72s_v2
 
-Weitere Informationen zu jeder verfügbaren isolierten Größe finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
+<sup>*</sup>Die Isolationsgarantie wird ab dem 15. Mai 2020 eingestellt.
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-may-15-2020"></a>Außerbetriebnahme der D15_v2/DS15_v2-Isolation am 15. Mai 2020
 **Update am 10. Februar 2020: Die Außerbetriebnahme-Zeitachse für „Isolation“ wurde bis zum 15. Mai 2020 verlängert**

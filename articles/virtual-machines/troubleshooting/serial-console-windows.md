@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 68089a86b8b832638abd30aa7c36aa1c5bd84225
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410119"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135244"
 ---
 # <a name="azure-serial-console-for-windows"></a>Die serielle Azure-Konsole für Windows
 
@@ -102,15 +102,15 @@ Wenn Sie Windows-Startlade-Eingabeaufforderungen in der seriellen Konsole aktivi
 
     ![Herstellen einer Verbindung mit SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.    Geben Sie `cmd` ein, um einen Kanal zu erstellen, der über eine CMD-Instanz verfügt.
+1. Geben Sie `cmd` ein, um einen Kanal zu erstellen, der über eine CMD-Instanz verfügt.
 
-1.    Geben Sie `ch -si 1` ein, oder drücken Sie die Tastenkombination `<esc>+<tab>`, um zu dem Kanal zu wechseln, in dem die CMD-Instanz ausgeführt wird.
+1. Geben Sie `ch -si 1` ein, oder drücken Sie die Tastenkombination `<esc>+<tab>`, um zu dem Kanal zu wechseln, in dem die CMD-Instanz ausgeführt wird.
 
-1.    Drücken Sie die **EINGABETASTE**, und geben Sie dann die Anmeldeinformationen mit Administratorrechten ein.
+1. Drücken Sie die **EINGABETASTE**, und geben Sie dann die Anmeldeinformationen mit Administratorrechten ein.
 
-1.    Nachdem Sie gültige Anmeldeinformationen eingegeben haben, wird die CMD-Instanz geöffnet.
+1. Nachdem Sie gültige Anmeldeinformationen eingegeben haben, wird die CMD-Instanz geöffnet.
 
-1.    Geben Sie zum Starten einer PowerShell-Instanz `PowerShell` in der CMD-Instanz ein, und drücken Sie die **EINGABETASTE**.
+1. Geben Sie zum Starten einer PowerShell-Instanz `PowerShell` in der CMD-Instanz ein, und drücken Sie die **EINGABETASTE**.
 
     ![Öffnen einer PowerShell-Instanz](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
@@ -160,7 +160,7 @@ Wenn ein Benutzer mit der seriellen Konsole verbunden ist und ein anderer Benutz
 > Dies bedeutet, dass ein Benutzer, der getrennt wird, nicht abgemeldet wird. Die Möglichkeit, bei der Trennung eine Abmeldung zu erzwingen (mithilfe von SIGHUP oder einem ähnlichen Mechanismus), ist noch nicht implementiert. Für Windows ist in der SAC ein automatisches Timeout aktiviert. Für Linux können Sie die Timeouteinstellung für das Terminal konfigurieren.
 
 ## <a name="accessibility"></a>Barrierefreiheit
-Die Barrierefreiheit ist ein wichtiger Aspekt bei der seriellen Konsole in Azure. Zu diesem Zweck haben wir sichergestellt, dass auch Personen mit Seh- und Hörbehinderung sowie Personen, die möglicherweise keine Maus nutzen können, auf die serielle Konsole zugreifen können.
+Die Barrierefreiheit ist ein wichtiger Aspekt bei der seriellen Konsole in Azure. Zu diesem Zweck haben wir sichergestellt, dass auch Personen mit Sehschwäche oder beeinträchtigtem Gehör sowie Personen, die möglicherweise keine Maus verwenden können, auf die serielle Konsole zugreifen können.
 
 ### <a name="keyboard-navigation"></a>Tastaturnavigation
 Verwenden Sie die **TAB**-Taste auf der Tastatur, um im Azure-Portal in der seriellen Konsolenschnittstelle zu navigieren. Auf dem Bildschirm wird hervorgehoben, wo Sie sich gerade befinden. Um den Fokus vom seriellen Konsolenbereich zu entfernen, drücken Sie **STRG**+**F6** auf der Tastatur.

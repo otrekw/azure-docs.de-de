@@ -1,6 +1,6 @@
 ---
 title: Entwurfsleitfaden für replizierte Tabellen
-description: Empfehlungen für das Entwerfen replizierter Tabellen in Synapse SQL
+description: Empfehlungen für das Entwerfen replizierter Tabellen im Synapse SQL-Pool
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,34 +11,34 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 654aeddbb305124ea00a883dbef9d8b5ad585a36
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 6f3418d73496ae25782b57a43e3357dc0bc7131a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990785"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660040"
 ---
-# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>Anleitung für das Verwenden replizierter Tabellen in SQL Analytics
+# <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Anleitung für das Verwenden replizierter Tabellen im Synapse SQL-Pool
 
-Dieser Artikel enthält Empfehlungen für das Entwerfen replizierter Tabellen in Ihrem SQL Analytics-Schema. Nutzen Sie diese Empfehlungen, um die Abfrageleistung zu verbessern, indem Sie die Datenverschiebung und die Komplexität von Abfragen reduzieren.
+Dieser Artikel enthält Empfehlungen für das Entwerfen replizierter Tabellen in Ihrem Synapse SQL-Poolschema. Nutzen Sie diese Empfehlungen, um die Abfrageleistung zu verbessern, indem Sie die Datenverschiebung und die Komplexität von Abfragen reduzieren.
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und -verschiebung in SQL Analytics vertraut sind.  Weitere Informationen finden Sie im Artikel zur [Architektur](massively-parallel-processing-mpp-architecture.md).
+In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und -verschiebung im SQL-Pool vertraut sind.  Weitere Informationen finden Sie im Artikel zur [Architektur](massively-parallel-processing-mpp-architecture.md).
 
 Für den Tabellenentwurf sollten Sie möglichst umfassende Kenntnisse zu Ihren Daten und über das Abfragen der Daten besitzen.  Stellen Sie sich beispielsweise die folgenden Fragen:
 
 - Wie groß ist die Tabelle?
 - Wie oft wird die Tabelle aktualisiert?
-- Gibt es in einer SQL Analytics-Datenbank Fakten- und Dimensionstabellen?
+- Verfüge ich in einer SQL-Pooldatenbank über Fakten- und Dimensionstabellen?
 
 ## <a name="what-is-a-replicated-table"></a>Was ist eine replizierte Tabelle?
 
 Eine replizierte Tabelle verfügt über eine vollständige Kopie der Tabelle, auf die auf jedem Computeknoten zugegriffen werden kann. Durch das Replizieren einer Tabelle müssen Daten vor einem Join oder einer Aggregation nicht mehr auf Computeknoten übertragen werden. Da die Tabelle über mehrere Kopien verfügt, lässt sich mit replizierten Tabellen am besten arbeiten, wenn die komprimierte Tabelle kleiner als 2 GB ist.  2 GB ist keine harte Grenze.  Wenn die Daten statisch sind und nicht geändert werden, können Sie größere Tabellen replizieren.
 
-Im folgenden Diagramm wird eine replizierte Tabelle dargestellt, auf die auf jedem Computeknoten zugegriffen werden kann. In SQL Analytics wird die replizierte Tabelle auf jedem Computeknoten vollständig in eine Verteilungsdatenbank kopiert.
+Im folgenden Diagramm wird eine replizierte Tabelle dargestellt, auf die auf jedem Computeknoten zugegriffen werden kann. In einem SQL-Pool wird die replizierte Tabelle auf jedem Serverknoten vollständig in eine Verteilungsdatenbank kopiert.
 
 ![Replizierte Tabelle](./media/design-guidance-for-replicated-tables/replicated-table.png "Replizierte Tabelle")  
 
@@ -52,8 +52,8 @@ Die Verwendung einer replizierten Tabelle kann sinnvoll sein, wenn folgende Bedi
 Replizierte Tabellen liefern möglicherweise nicht die optimale Abfrageleistung, wenn folgende Bedingungen zutreffen:
 
 - In der Tabelle erfolgen häufig Einfüge-, Aktualisierungs- und Löschvorgänge. Vorgänge der Datenbearbeitungssprache (Data Manipulation Language, DML) erfordern das erneute Erstellen der replizierten Tabelle. Ein häufiges Neuerstellen kann zu Leistungseinbußen führen.
-- Die SQL Analytics-Datenbank wird häufig skaliert. Durch das Skalieren einer SQL Analytics-Datenbank ändert sich die Anzahl der Computeknoten, was eine Neuerstellung der replizierten Tabelle nach sich zieht.
-- Die Tabelle enthält eine große Anzahl von Spalten, die Datenvorgänge greifen jedoch in der Regel nur auf eine kleine Anzahl von Spalten zu. In diesem Szenario ist es möglicherweise effektiver, eine Verteilung der Tabelle und dann einen Index für die Spalten mit häufigem Zugriff zu erstellen, statt die gesamte Tabelle zu replizieren. Wenn eine Abfrage eine Datenverschiebung erfordert, verschiebt SQL Analytics nur Daten für die angeforderten Spalten.
+- Die SQL-Pooldatenbank wird häufig skaliert. Durch das Skalieren einer SQL-Pooldatenbank wird die Anzahl der Serverknoten geändert, sodass eine Neuerstellung der replizierten Tabelle erfolgt.
+- Die Tabelle enthält eine große Anzahl von Spalten, die Datenvorgänge greifen jedoch in der Regel nur auf eine kleine Anzahl von Spalten zu. In diesem Szenario ist es möglicherweise effektiver, eine Verteilung der Tabelle und dann einen Index für die Spalten mit häufigem Zugriff zu erstellen, statt die gesamte Tabelle zu replizieren. Wenn eine Abfrage eine Datenverschiebung erfordert, verschiebt der SQL-Pool nur Daten für die angeforderten Spalten.
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>Verwenden Sie replizierte Tabellen mit einfachen Abfrageprädikaten
 
@@ -124,7 +124,7 @@ Wir haben `DimDate` und `DimSalesTerritory` als replizierte Tabellen neu erstell
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Überlegungen zur Leistung beim Ändern replizierter Tabellen
 
-SQL Analytics implementiert eine replizierte Tabelle, indem eine Masterversion der Tabelle erhalten bleibt. Die Masterversion wird in die erste Verteilungsdatenbank auf jedem Computeknoten kopiert. Wenn eine Änderung vorgenommen wird, aktualisiert SQL Analytics zuerst die Masterversion und erstellt dann die Tabellen auf den einzelnen Computeknoten neu. Das Neuerstellen einer replizierten Tabelle umfasst das Kopieren der Tabelle auf jeden Serverknoten und das anschließende Erstellen der Indizes.  Beispielsweise verfügt eine replizierte Tabelle auf einem DW2000c über 5 Kopien der Daten.  Eine Masterkopie und eine vollständige Kopie auf jedem Serverknoten.  Alle Daten werden in Verteilungsdatenbanken gespeichert. SQL Analytics unterstützt mit diesem Modell schnellere Datenänderungsanweisungen und flexible Skalierungsvorgänge.
+Der SQL-Pool implementiert eine replizierte Tabelle, indem eine Masterversion der Tabelle erhalten bleibt. Die Masterversion wird in die erste Verteilungsdatenbank auf jedem Computeknoten kopiert. Wenn eine Änderung eintritt, wird zunächst die Masterversion aktualisiert. Anschließend werden dann die Tabellen auf den einzelnen Serverknoten neu erstellt. Das Neuerstellen einer replizierten Tabelle umfasst das Kopieren der Tabelle auf jeden Serverknoten und das anschließende Erstellen der Indizes.  Beispielsweise verfügt eine replizierte Tabelle auf einem DW2000c über 5 Kopien der Daten.  Eine Masterkopie und eine vollständige Kopie auf jedem Serverknoten.  Alle Daten werden in Verteilungsdatenbanken gespeichert. Der SQL-Pool unterstützt mit diesem Modell schnellere Datenänderungsanweisungen und flexible Skalierungsvorgänge.
 
 Nach folgenden Vorgängen ist eine Neuerstellung erforderlich:
 
@@ -141,7 +141,7 @@ Die Neuerstellung erfolgt nicht unmittelbar nach dem Ändern der Daten. Stattdes
 
 ### <a name="use-indexes-conservatively"></a>Verwenden Sie Indizes zurückhaltend
 
-Für replizierte Tabellen gelten Standardindizierungsverfahren. SQL Analytics erstellt während der Neuerstellung jeden replizierten Tabellenindex neu. Verwenden Sie Indizes nur, wenn der Leistungsgewinn die Kosten für die Neuerstellung der Indizes überwiegt.
+Für replizierte Tabellen gelten Standardindizierungsverfahren. Der SQL-Pool erstellt während der Neuerstellung jeden replizierten Tabellenindex neu. Verwenden Sie Indizes nur, wenn der Leistungsgewinn die Kosten für die Neuerstellung der Indizes überwiegt.
 
 ### <a name="batch-data-load"></a>Datenladevorgänge in Batches
 
@@ -193,7 +193,7 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 
 Verwenden Sie zum Erstellen einer replizierten Tabelle eine dieser Anweisungen:
 
-- [CREATE TABLE (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE AS SELECT (SQL Analytics)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (SQL-Pool)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE AS SELECT (SQL-Pool)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 Einen Überblick über verteilte Tabellen finden Sie unter [Verteilen von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-distribute.md).

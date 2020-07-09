@@ -1,5 +1,6 @@
 ---
-title: Microsoft Identity Platform – Referenz zu ID-Token
+title: Microsoft Identity Platform – ID-Token | Azure
+titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie mehr über die Verwendung von ID-Token, die von den Azure AD v1.0- und Microsoft Identity Platform (v2.0)-Endpunkten ausgegeben werden.
 services: active-directory
 author: hpsin
@@ -8,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 0d1a5ee3ae56e8b5c4886308624159853c52b52c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690180"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926713"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
-`id_tokens` werden als Teil eines [OpenID Connect](v2-protocols-oidc.md)-Flusses an die Clientanwendung gesendet. Sie können zusammen mit einem Zugriffstoken oder anstelle eines Zugriffstokens gesendet werden und werden vom Client zur Authentifizierung des Benutzers verwendet.
+`id_tokens` werden als Teil eines [OpenID Connect](v2-protocols-oidc.md) (OIDC)-Flows an die Clientanwendung gesendet. Sie können zusammen mit einem Zugriffstoken oder anstelle eines Zugriffstokens gesendet werden und werden vom Client zur Authentifizierung des Benutzers verwendet.
 
 ## <a name="using-the-id_token"></a>Verwenden des ID-Tokens
 
@@ -30,7 +31,7 @@ ID-Token sollten verwendet werden, um zu überprüfen, ob ein Benutzer der ist, 
 
 ## <a name="claims-in-an-id_token"></a>Ansprüche in einem ID-Token
 
-`id_tokens` für Microsoft Identity sind [JWTs](https://tools.ietf.org/html/rfc7519), d.h. sie bestehen aus einem Header, Nutzlast und einer Signatur. Sie können den Header und die Signatur verwenden, um die Authentizität des Tokens zu überprüfen, während die Nutzlast die Informationen zu dem von Ihrem Client angeforderten Benutzer enthält. Sofern nicht anders angegeben, sind alle hier aufgeführten Ansprüche sowohl in v1.0- als auch in v2.0-Token enthalten.
+`id_tokens` für eine Microsoft-Identität sind [JWT-Token](https://tools.ietf.org/html/rfc7519) (JSON-Web-Token), d. h., sie bestehen aus Header, Nutzlast und Signatur. Sie können den Header und die Signatur verwenden, um die Authentizität des Tokens zu überprüfen, während die Nutzlast die Informationen zu dem von Ihrem Client angeforderten Benutzer enthält. Sofern nicht anders angegeben, sind alle hier aufgeführten JWT-Ansprüche sowohl in v1.0- als auch in v2.0-Token enthalten.
 
 ### <a name="v10"></a>v1.0
 
@@ -52,14 +53,14 @@ Zeigen Sie dieses v2. 0-Beispieltoken in [jwt.ms](https://jwt.ms/#id_token=eyJ0e
 
 |Anspruch | Format | BESCHREIBUNG |
 |-----|--------|-------------|
-|`typ` | Zeichenfolge – immer „JWT“ | Gibt an, dass das Token ein JWT ist.|
+|`typ` | Zeichenfolge – immer „JWT“ | Gibt an, dass das Token ein JWT-Token ist.|
 |`alg` | String | Gibt den Algorithmus an, mit dem das Token signiert wurde. Beispiel: "RS256" |
 |`kid` | String | Der Fingerabdruck des öffentlichen Schlüssels, der verwendet wird, um dieses Token zu signieren. Wird in v1. 0- und v2. 0-`id_tokens` ausgegeben. |
 |`x5t` | String | Identisch (in Verwendung und Wert) mit `kid`. Dies ist jedoch ein Legacyanspruch, der aus Kompatibilitätsgründen nur in v1.0-`id_tokens` ausgegeben wird. |
 
 ### <a name="payload-claims"></a>Nutzlastansprüche
 
-Diese Liste zeigt die Ansprüche, die (sofern nichts anderes angegeben ist) in den meisten ID-Token standardmäßig enthalten sind.  Allerdings kann Ihre App mithilfe von [optionalen Ansprüchen](active-directory-optional-claims.md) zusätzliche Ansprüche im ID-Token anfordern.  Diese können vom `groups`-Anspruch bis zu Informationen zum Namen des Benutzers reichen.
+Diese Liste zeigt die JWT-Ansprüche, die (sofern nicht anders angegeben) standardmäßig in den meisten ID-Token enthalten sind.  Allerdings kann Ihre App mithilfe von [optionalen Ansprüchen](active-directory-optional-claims.md) zusätzliche JWT-Ansprüche im ID-Token anfordern.  Diese können vom `groups`-Anspruch bis zu Informationen zum Namen des Benutzers reichen.
 
 |Anspruch | Format | BESCHREIBUNG |
 |-----|--------|-------------|
@@ -85,23 +86,23 @@ Diese Liste zeigt die Ansprüche, die (sofern nichts anderes angegeben ist) in d
 |`uti` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Sollte ignoriert werden. |
 |`ver` | Zeichenfolge, 1.0 oder 2.0 | Gibt die Version des ID-Tokens an. |
 
-
 > [!NOTE]
-> Die ID-Token der Version 1 (v1) und der Version 2 (v2) weisen Unterschiede in der Menge der enthaltenen Informationen auf, wie aus den obigen Beispielen hervorgeht. Die Version gibt im Wesentlichen den Endpunkt der Azure AD-Plattform an, von dem sie ausgestellt wurde. Die [Azure AD OAuth-Implementierung](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) wurde im Lauf der Jahre weiterentwickelt. Aktuell gibt es zwei verschiedene OAuth-Endpunkte für Azure AD-Anwendungen. Sie können entweder einen beliebigen neuen Endpunkt (als v2 kategorisiert) oder den alten Endpunkt (als v1 bezeichnet) verwenden. Die OAuth-Endpunkte der beiden Versionen unterscheiden sich. Der v2-Endpunkt ist der neuere Endpunkt, zu dem wir alle Features des v1-Endpunkts migrieren wollen. Daher empfehlen wir neuen Entwicklern, den v2-Endpunkt zu verwenden. 
+> Die ID-Token der Version 1 (v1) und der Version 2 (v2) weisen Unterschiede in der Menge der enthaltenen Informationen auf, wie aus den obigen Beispielen hervorgeht. Die Version gibt im Wesentlichen den Endpunkt der Azure AD-Plattform an, von dem sie ausgestellt wurde. Die [Azure AD OAuth-Implementierung](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) wurde im Lauf der Jahre weiterentwickelt. Aktuell gibt es zwei verschiedene OAuth-Endpunkte für Azure AD-Anwendungen. Sie können entweder einen beliebigen neuen Endpunkt (als v2 kategorisiert) oder den alten Endpunkt (als v1 bezeichnet) verwenden. Die OAuth-Endpunkte der beiden Versionen unterscheiden sich. Der v2-Endpunkt ist der neuere Endpunkt, zu dem wir alle Features des v1-Endpunkts migrieren wollen. Daher empfehlen wir neuen Entwicklern, den v2-Endpunkt zu verwenden.
+>
 > - Version 1: Azure Active Directory-Endpunkte: `https://login.microsoftonline.com/common/oauth2/authorize`
 > - Version 2: Microsoft Identity Platform-Endpunkte: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>Überprüfen eines ID-Tokens
 
-Die Überprüfung eines `id_token` ist dem ersten Schritt der [Überprüfung eines Zugriffstokens](access-tokens.md#validating-tokens) ähnlich. Ihr Client sollte bestätigen, dass der richtige Aussteller das Token zurückgesendet hat und dass es nicht manipuliert wurde. Da `id_tokens` immer JWT sind, sind zahlreiche Bibliotheken zum Überprüfen dieses Tokens verfügbar. Es wird empfohlen, eine dieser Bibliotheken zu verwenden, anstatt den Vorgang selbst auszuführen.
+Die Überprüfung eines `id_token` ist dem ersten Schritt der [Überprüfung eines Zugriffstokens](access-tokens.md#validating-tokens) ähnlich. Ihr Client sollte bestätigen, dass der richtige Aussteller das Token zurückgesendet hat und dass es nicht manipuliert wurde. Da `id_tokens` immer JWT-Token sind, sind zahlreiche Bibliotheken zum Überprüfen dieser Token verfügbar. Wir empfehlen, eine dieser Bibliotheken zu verwenden, anstatt den Vorgang selbst auszuführen.
 
-Um das Token manuell zu überprüfen, beachten Sie die Details der Schritte unter [Überprüfen eines Zugriffstokens](access-tokens.md#validating-tokens). Nach der Überprüfung der Signatur des Tokens sollten die folgenden Ansprüche im id_token überprüft werden (dies kann auch von Ihrer Tokenüberprüfungsbibliothek ausgeführt werden):
+Um das Token manuell zu überprüfen, beachten Sie die Details der Schritte unter [Überprüfen eines Zugriffstokens](access-tokens.md#validating-tokens). Nach der Überprüfung der Signatur des Tokens sollten die folgenden JWT-Ansprüche im ID-Token überprüft werden (dies kann auch von Ihrer Tokenüberprüfungsbibliothek ausgeführt werden):
 
-* Zeitstempel: Die Zeitstempel `iat`, `nbf` und `exp` sollten alle vor oder nach der aktuellen Zeit liegen (je nach Bedarf). 
+* Zeitstempel: Die Zeitstempel `iat`, `nbf` und `exp` sollten alle vor oder nach der aktuellen Zeit liegen (je nach Bedarf).
 * Zielgruppe: Der `aud`-Anspruch sollte mit der App-ID Ihrer Anwendung übereinstimmen.
 * Nonce: Der `nonce`-Anspruch in der Nutzlast muss mit dem nonce-Parameter übereinstimmen, der während der ersten Anforderung an den /authorize-Endpunkt übergeben wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu [Zugriffstoken](access-tokens.md)
-* Passen Sie die Ansprüche in Ihrem ID-Token mithilfe von [optionalen Ansprüchen](active-directory-optional-claims.md) an.
+* Passen Sie die JWT-Ansprüche in Ihrem ID-Token mithilfe von [optionalen Ansprüchen](active-directory-optional-claims.md) an.

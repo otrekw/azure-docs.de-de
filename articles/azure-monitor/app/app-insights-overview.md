@@ -4,18 +4,18 @@ description: Anwendungsleistungsverwaltung und Nachverfolgen der Nutzung Ihrer a
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 0ffa9e38d0ffbca41e4f4a8f3d27015ebe4b8bae
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: c25929100fdfa6f4652e99c0d2563d9e56cfb62b
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891736"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996090"
 ---
 # <a name="what-is-application-insights"></a>Was ist Application Insights?
 Application Insights, ein Feature von [Azure Monitor](../overview.md), ist ein erweiterbarer Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) für Entwickler und DevOps-Profis. Überwachen Sie damit Ihre aktiven Anwendungen. Der Dienst erkennt automatisch Leistungsanomalien und verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird.  Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen. Dazu zählen unter anderem .NET, Node.js, Java und Python (lokal gehostet, als Hybridmodell oder in einer öffentlichen Cloud). Der Dienst lässt sich in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit einer Vielzahl von Entwicklungstools. Sie können Telemetriedaten von mobilen Apps durch die Integration in Visual Studio App Center überwachen und analysieren.
 
 ## <a name="how-does-application-insights-work"></a>Funktionsweise von Application Insights
-Sie installieren ein kleines Instrumentierungspaket (SDK) in Ihrer Anwendung oder aktivieren Application Insights ohne Code (sofern [unterstützt](../../azure-monitor/app/platforms.md)). Die Instrumentierung überwacht Ihre App und leitet die Telemetriedaten an eine Azure Application Insights-Ressource weiter. Dabei wird eine eindeutige GUID (ein sogenannter Instrumentierungsschlüssel) verwendet.
+Sie installieren ein kleines Instrumentierungspaket (SDK) in Ihrer Anwendung oder aktivieren Application Insights mithilfe des Application Insights-Agents (sofern [unterstützt](../../azure-monitor/app/platforms.md)). Die Instrumentierung überwacht Ihre App und leitet die Telemetriedaten an eine Azure Application Insights-Ressource weiter. Dabei wird eine eindeutige GUID (ein sogenannter Instrumentierungsschlüssel) verwendet.
 
 Sie können nicht nur die Webdienstanwendung instrumentieren, sondern auch Hintergrundkomponenten und den JavaScript-Code in den Webseiten selbst. Die Anwendung und die zugehörigen Komponenten können überall ausgeführt und müssen nicht in Azure gehostet werden.
 
@@ -26,7 +26,7 @@ Darüber hinaus können Sie aus Hostumgebungen Telemetriedaten abrufen, wie z.B.
 Alle diese Telemetriedatenströme sind in Azure Monitor integriert. Im Azure-Portal können Sie auf die Rohdaten leistungsstarke Analysen und Suchtools anwenden.
 
 ### <a name="whats-the-overhead"></a>Wie sieht der Aufwand aus?
-Die Auswirkungen auf die Leistung Ihrer App sind sehr gering. Aufrufe zur Nachverfolgung sind nicht blockierend und werden zusammengefasst und in einem separaten Thread gesendet.
+Die Auswirkungen auf die Leistung Ihrer App sind gering. Aufrufe zur Nachverfolgung sind nicht blockierend und werden zusammengefasst und in einem separaten Thread gesendet.
 
 ## <a name="what-does-application-insights-monitor"></a>Was wird von Application Insights überwacht?
 
@@ -49,7 +49,7 @@ Es gibt zahlreiche Möglichkeiten, Ihre Daten zu untersuchen. Informationen find
 
 |  |  |
 | --- | --- |
-| [**Intelligente Erkennung und manuelle Warnungen**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Richten Sie automatische Warnungen ein, die sich den normalen Telemetriemustern Ihrer App anpassen und ausgelöst werden, wenn etwas nicht den üblichen Mustern entspricht. Sie können auch auf bestimmten Ebenen benutzerdefinierter oder standardmäßiger Metriken [Warnungen festlegen](../../azure-monitor/app/alerts.md). |![Beispiel für Warnungen](./media/app-insights-overview/alerts-tn.png) |
+| [**Intelligente Erkennung und manuelle Warnungen**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Richten Sie automatische Warnungen ein, die sich den normalen Telemetriemustern Ihrer App anpassen und ausgelöst werden, wenn etwas nicht den üblichen Mustern entspricht. Sie können auch auf bestimmten Ebenen benutzerdefinierter oder standardmäßiger Metriken [Warnungen festlegen](../../azure-monitor/platform/alerts-log.md). |![Beispiel für Warnungen](./media/app-insights-overview/alerts-tn.png) |
 | [**Anwendungszuordnung**](../../azure-monitor/app/app-map.md)<br/>Untersuchen Sie die Komponenten der App mit wichtigen Metriken und Warnungen. |![Anwendungszuordnung](./media/app-insights-overview/appmap-tn.png)  |
 | [**Profilerstellung**](../../azure-monitor/app/profiler.md)<br/>Untersuchen Sie die Ausführungsprofile von erfassten Anforderungen. |![Profiler](./media/app-insights-overview/profiler.png) |
 | [**Nutzungsanalyse**](../../azure-monitor/app/usage-overview.md)<br/>Analysieren Sie Benutzersegmentierung und Vermerkdauer.|![Vermerkdauer-Tool](./media/app-insights-overview/retention.png) |
@@ -127,7 +127,7 @@ Beginnen mit der Entwicklungszeitmethode mit:
 ## <a name="support-and-feedback"></a>Support und Feedback
 * Fragen und Probleme:
   * [Problembehandlung][qna]
-  * [MSDN-Forum](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+  * [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-monitor.html)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * Ihre Vorschläge:
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)

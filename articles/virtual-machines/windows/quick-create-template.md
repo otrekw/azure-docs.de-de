@@ -1,0 +1,93 @@
+---
+title: 'Schnellstart: Verwenden einer Resource Manager-Vorlage zum Erstellen einer Windows-VM'
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie eine Resource Manager-Vorlage zum Erstellen eines virtuellen Windows-Computers verwenden.
+author: cynthn
+ms.service: virtual-machines-windows
+ms.topic: quickstart
+ms.workload: infrastructure
+ms.date: 06/04/2020
+ms.author: cynthn
+ms.custom: subject-armqs
+ms.openlocfilehash: 6ef929a2934d8480ce6d1eca8bb7ba3b70580110
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84551993"
+---
+# <a name="quickstart-create-a-windows-virtual-machine-using-a-resource-manager-template"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mit einer Resource Manager-Vorlage
+
+In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine Resource Manager-Vorlage zum Bereitstellen eines virtuellen Windows-Computers (VM) in Azure verwenden. 
+
+[!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Keine.
+
+## <a name="create-a-windows-virtual-machine"></a>Erstellen eines virtuellen Windows-Computers
+
+### <a name="review-the-template"></a>Überprüfen der Vorlage
+
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
+
+:::code language="json" source="~/quickstart-templates/101-vm-simple-windows/azuredeploy.json" range="1-225" highlight="67-224":::
+
+
+In der Vorlage sind mehrere Ressourcen definiert:
+
+- [**Microsoft.Network/virtualNetworks/subnets**](/azure/templates/Microsoft.Network/virtualNetworks/subnets): Dient zum Erstellen eines Subnetzes.
+- [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts): Dient zum Erstellen eines Speicherkontos.
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/Microsoft.Network/publicIPAddresses): Dient zum Erstellen einer öffentlichen IP-Adresse.
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/Microsoft.Network/networkSecurityGroups): Dient zum Erstellen einer Netzwerksicherheitsgruppe.
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/Microsoft.Network/virtualNetworks): Dient zum Erstellen eines virtuellen Netzwerks.
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/Microsoft.Network/networkInterfaces): Dient zum Erstellen einer Netzwerkschnittstelle (NIC).
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/Microsoft.Compute/virtualMachines): Dient zum Erstellen eines virtuellen Computers.
+
+
+
+### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+
+1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt einen Schlüsseltresor und ein Geheimnis.
+
+    [![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
+
+1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein. Verwenden Sie die Standardwerte, sofern diese verfügbar sind.
+
+    - **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
+    - **Ressourcengruppe**: Wählen Sie in der Dropdownliste eine bereits vorhandene Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie anschließend auf **OK**.
+    - **Standort**: Wählen Sie einen Standort aus.  Beispiel: **USA, Mitte**.
+    - **Administratorbenutzername**: Geben Sie einen Benutzernamen an, z. B. *azureuser*.
+    - **Administratorkennwort**: Geben Sie ein Kennwort für das Administratorkonto an. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.
+    - **Präfix der DNS-Bezeichnung**: Geben Sie einen eindeutigen Bezeichner ein, der als Teil der DNS-Bezeichnung verwendet wird.
+    - **Windows-Betriebssystemversion**: Wählen Sie aus, welche Version von Windows auf der VM ausgeführt werden soll.
+    - **VM-Größe**: Wählen Sie die [Größe](sizes.md) aus, die für die VM verwendet werden soll.
+    - **Standort**: Hierfür wird standardmäßig derselbe Standort wie für die Ressourcengruppe verwendet, falls diese bereits vorhanden ist.
+1. Klicken Sie auf **Überprüfen + erstellen**. Wählen Sie nach Abschluss der Überprüfung die Option **Erstellen** aus, um die VM zu erstellen und bereitzustellen.
+
+
+Zum Bereitstellen der Vorlage wird das Azure-Portal verwendet. Neben dem Azure-Portal können Sie auch Azure PowerShell, die Azure-Befehlszeilenschnittstelle (Azure CLI) und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../../azure-resource-manager/templates/deploy-powershell.md).
+
+## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
+
+Im Azure-Portal können Sie das Vorhandensein der VM und der anderen erstellten Ressourcen überprüfen. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln** aus, um die VM und die anderen Ressourcen anzuzeigen.
+
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Ressourcengruppe, wenn Sie die Ressourcen nicht mehr benötigen. Hierbei werden die VM und alle in der Ressourcengruppe enthaltenen Ressourcen gelöscht. 
+
+1. Wählen Sie die **Ressourcengruppe** aus.
+1. Wählen Sie auf der Seite für die Ressourcengruppe die Option **Löschen** aus.
+1. Geben Sie bei entsprechender Aufforderung den Namen der Ressourcengruppe ein, und klicken Sie dann auf **Löschen**.
+
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In dieser Schnellstartanleitung haben Sie mit einer Resource Manager-Vorlage einen einfachen virtuellen Computer bereitgestellt. Fahren Sie mit dem Tutorial für virtuelle Linux-Computer fort, um weitere Informationen zu virtuellen Azure-Computern zu erhalten.
+
+
+> [!div class="nextstepaction"]
+> [Azure-Tutorials zu virtuellen Windows-Computern](./tutorial-manage-vm.md)

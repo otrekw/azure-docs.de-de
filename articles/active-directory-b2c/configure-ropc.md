@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 70cd4f2ca3a4ac37bdf1d1e465d1f1a7d06ef9e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1989f65f73ac4f9dc8dd328fa9d7ed267eec1aa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189700"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636414"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure AD B2C
 
@@ -40,7 +40,7 @@ Der Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern (Resource Own
 
    Es wird dann ein Endpunkt angezeigt (wie das folgende Beispiel):
 
-   `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
+   `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/v2.0/.well-known/openid-configuration`
 
 
 ## <a name="register-an-application"></a>Registrieren einer Anwendung
@@ -50,13 +50,13 @@ Der Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern (Resource Own
 ## <a name="test-the-user-flow"></a>Testen des Benutzerflows
 
 Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu generieren, und überprüfen Sie die Antwort, um Ihren Benutzerflow zu debuggen. Erstellen Sie einen Aufruf wie den folgenden, wobei Sie die Informationen aus der folgenden Tabelle als Hauptteil der POST-Anforderung verwenden:
-- Ersetzen Sie *\<yourtenant.onmicrosoft.com>* durch den Namen Ihres B2C-Mandanten.
+- Ersetzen Sie *\<tenant-name>.onmicrosoft.com>* durch den Namen Ihres B2C-Mandanten.
 - Ersetzen Sie *\<B2C_1A_ROPC_Auth>* durch den vollständigen Namen der Richtlinie für Ihren Ressourcenbesitzer für Kennwortanmeldeinformationen.
 - Ersetzen Sie *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* durch die Anwendungs-ID aus der Registrierung.
 
-`https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-| Key | value |
+| Schlüssel | Wert |
 | --- | ----- |
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
@@ -70,8 +70,8 @@ Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu 
 Die tatsächliche POST-Anforderung sieht wie folgt aus:
 
 ```
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth HTTP/1.1
-Host: yourtenant.b2clogin.com
+POST /<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token HTTP/1.1
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
@@ -94,9 +94,9 @@ Eine erfolgreiche Antwort mit Offlinezugriff ähnelt dem folgenden Beispiel:
 
 Erstellen Sie einen POST-Aufruf wie den folgenden, wobei Sie die Informationen aus der folgenden Tabelle als Hauptteil der Anforderung verwenden:
 
-`https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-| Key | value |
+| Schlüssel | Wert |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

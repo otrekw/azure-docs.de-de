@@ -4,12 +4,12 @@ description: Enthält Informationen zu Problembehandlungsschritten, mit denen Si
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 5e669a68794a8622bb4a2fa55b206153717fd772
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c229bd836029226a1e042de9bfe706654f97dc26
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187901"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658929"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problembehandlung bei langsamer Sicherung von Dateien und Ordnern in Azure Backup
 
@@ -95,6 +95,8 @@ Anhand der folgenden Indikatoren können Sie den Engpass identifizieren und dann
 
 * **Auf der Benutzeroberfläche wird der Status der Datenübertragung angezeigt**. Die Daten werden immer noch übertragen. Die Netzwerkbandbreite oder die Datenmenge könnte möglicherweise Verzögerungen verursachen.
 * **Auf der Benutzeroberfläche wird der Status der Datenübertragung nicht angezeigt**. Öffnen Sie die Protokolle unter „C:\Programme\Microsoft Azure Recovery Services Agent\Temp“, und suchen Sie in den Protokollen nach dem Eintrag „FileProvider::EndData“. Dieser Eintrag verdeutlicht, dass die Datenübertragung abgeschlossen ist und der Katalogisierungsvorgang durchgeführt wird. Brechen Sie die Sicherungsaufträge nicht ab. Warten Sie stattdessen noch ein wenig, bis die Katalogisierung beendet ist. Wenden Sie sich an den [Azure-Support](https://portal.azure.com/#create/Microsoft.Support), wenn das Problem weiterhin besteht.
+
+Wenn Sie versuchen, große Datenträger zu sichern, empfiehlt es sich, [Azure Data Box](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box)] für die erste Sicherung (erste Replikation) zu verwenden.  Ist die Verwendung von Data Box nicht möglich, können alle vorübergehenden Netzwerkprobleme, die in Ihrer Umgebung während der langen Datenübertragungen über das Netzwerk auftreten, zu Sicherungsfehlern führen.  Um sich vor diesen Fehlern zu schützen, können Sie Ihrer ersten Sicherung einige Ordner hinzufügen und inkrementell weitere Ordner hinzufügen, bis alle Ordner erfolgreich in Azure gesichert wurden.  Nachfolgende inkrementelle Sicherungen werden relativ schnell ausgeführt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

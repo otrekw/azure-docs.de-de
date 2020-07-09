@@ -9,7 +9,7 @@
       href: entitlement-management-overview.md
     - name: Worum handelt es sich bei Zugriffsüberprüfungen?
       href: access-reviews-overview.md
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
     - name: Erstellen Ihres ersten Zugriffspakets
@@ -31,7 +31,7 @@
           href: manage-user-access-with-access-reviews.md
         - name: 'Verwalten von Benutzern, die vom bedingten Zugriff ausgeschlossen wurden'
           href: conditional-access-exclusion.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   expanded: true
   items:
     - name: Berechtigungsverwaltung
@@ -120,3 +120,10 @@
               href: ../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
             - name: Abschließen einer Zugriffsüberprüfung
               href: ../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+- name: Verweis
+  expanded: true
+  items:
+    - name: 'Zugriffsüberprüfung: Graph-API'
+      href: 'https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta'
+    - name: 'Berechtigungsverwaltung: Graph-API'
+      href: 'https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta'

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: b85846419ce5f6cd4093e198d83240817c95754a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 3c922675619fc877d9d97a43b69a15f5ca4f393e
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983056"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849109"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Erstellen eines neuen SaaS-Angebots im kommerziellen Marketplace
 
@@ -120,7 +120,7 @@ Listen Sie Ihr Angebot für Kunden mit einem Link zu einer kostenlosen Testversi
 
 #### <a name="contact-me"></a>Kontakt mit mir aufnehmen
 
-Sammeln Sie über Ihr CRM-System (Customer Relationship Management) Kundenkontaktinformationen. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Marketplace, auf dem der Kunde Ihr Angebot gefunden hat, werden an das CRM-System gesendet, das Sie konfiguriert haben. Weitere Informationen zum Konfigurieren des CRM-Systems finden Sie unter [Einbinden der Leadverwaltung](#connect-lead-management).
+Sammeln Sie über Ihr CRM-System (Customer Relationship Management) Kundenkontaktinformationen. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Marketplace, auf dem der Kunde Ihr Angebot gefunden hat, werden an das CRM-System gesendet, das Sie konfiguriert haben. Weitere Informationen zum Konfigurieren des CRM-Systems finden Sie unter [Kundenleads](#customer-leads).
 
 #### <a name="example-marketplace-offer-listing"></a>Liste der Marketplace-Beispielangebote
 
@@ -140,7 +140,7 @@ Weitere Informationen finden Sie unter [Ermöglichen Sie Ihren Kunden das Testen
 - [Test Drive Best Practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices) (Bewährte Methoden für Testversionen)
 - [Übersicht](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF-Datei; stellen Sie sicher, dass Ihr Popupblocker deaktiviert ist.)
 
-### <a name="connect-lead-management"></a>Einbinden der Leadverwaltung
+### <a name="customer-leads"></a>Kundenleads
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
@@ -227,28 +227,13 @@ Geben Sie Informationen an, die im Marketplace angezeigt werden sollen, einschli
 - **Suchbegriffe**: Geben Sie bis zu drei Suchbegriffe ein, mit denen Kunden in den Marketplaces nach Ihrem Angebot suchen können.
 - **Anweisungen für den Einstieg** (erforderlich): Erläutern Sie potenziellen Kunden, wie die App konfiguriert und mit ihrer Verwendung begonnen wird.  Diese Schnellstartanleitung kann Links zu ausführlicherer Onlinedokumentation enthalten. In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden.
 
-#### <a name="description"></a>**Beschreibung**
+#### <a name="description"></a>BESCHREIBUNG
 
-Dies ist ein Pflichtfeld. Die **Beschreibung** sollte folgende Elemente enthalten:
+Dies ist ein Pflichtfeld.
 
-* Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots.  
-* Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können.  
-* Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten.  
-* Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung.
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-Die Kernbestandteile Ihres Nutzenversprechens sollten Folgendes umfassen:
-
-* Beschreibung des Produkts
-* Typ von Benutzern, die von dem Produkt profitieren
-* Anforderungen oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt
-
-Formatieren Sie Ihre Angebotsbeschreibung mithilfe des Rich-Text-Editors, um sie ansprechender zu gestalten.
-
-![Verwenden des Rich-Text-Editors](./media/rich-text-editor.png)
-
-| <center>Ändern des Textformats | <center>Hinzufügen von Aufzählungszeichen oder Nummerierungen | <center>Hinzufügen oder Entfernen von Texteinzügen |
-| --- | --- | --- |
-| <center>![Verwenden des Rich-Text-Editors zum Ändern des Textformats](./media/text-editor3.png) |  <center>![Verwenden des Rich-Text-Editors zum Hinzufügen von Listen](./media/text-editor4.png) |  <center>![Verwenden des Rich-Text-Editors für Einzüge](./media/text-editor5.png) |
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 #### <a name="links"></a>Links
 
@@ -355,7 +340,7 @@ Auf dieser Seite können Sie die Märkte, in denen der Plan verfügbar ist, sowi
 
 #### <a name="markets-optional"></a>Märkte (optional)
 
-Jeder Plan muss in mindestens einem Markt verfügbar sein. Wählen Sie **Märkte bearbeiten** aus, und aktivieren Sie das Kontrollkästchen für jeden Marktstandort, an dem Sie diesen Plan zur Verfügung stellen möchten. Auf dieser Seite stehen ein Suchfeld und eine Option zum Auswählen von Ländern zur Verfügung, in denen die Umsatz- und Gebrauchssteuer von Microsoft für Sie überwiesen wird.
+Jeder Plan muss in mindestens einem Markt verfügbar sein. Wählen Sie **Märkte bearbeiten** aus, und aktivieren Sie das Kontrollkästchen für jeden Marktstandort, an dem Sie diesen Plan zur Verfügung stellen möchten. Auf dieser Seite stehen ein Suchfeld und eine Option zum Auswählen von Ländern/Regionen zur Verfügung, in denen die Umsatz- und Gebrauchssteuer von Microsoft für Sie überwiesen wird.
 
 Wenn Sie bereits Preise in US-Dollar für Ihren Plan festgelegt haben und einen anderen Marktstandort hinzufügen, wird der Preis für den neuen Markt entsprechend dem aktuellen Wechselkurs berechnet. Überprüfen Sie vor dem Veröffentlichen den Preis für jeden Markt. Sehen Sie sich die Preise mithilfe des Links „Preise exportieren (XLSX)“ an, nachdem Sie Ihre Änderungen gespeichert haben.
 

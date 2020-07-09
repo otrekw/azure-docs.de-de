@@ -4,15 +4,15 @@ description: Es wird beschrieben, wie Sie eine Erhöhung des vCPU-Kontingentgren
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: de06375dad5999a29691435317e62585a2ea7f64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e00b1cf11b906390335f257b20787d394b3a8ed4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76843724"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117164"
 ---
 # <a name="standard-quota-increase-limits-by-vm-series"></a>Standardkontingent: Erhöhen der Grenzwerte nach VM-Serie
 
@@ -26,7 +26,7 @@ Das vCPU-Standardkontingent für nutzungsbasierte Bezahlung und reservierte VM-I
 * Die erste Ebene ist der *Grenzwert regionaler vCPUs gesamt* (für alle VM-Serien).
 * Die zweite Ebene ist der *vCPU-Grenzwert pro VM-Serie*, z. B. vCPUs der Dv3-Serie.
 
-Wenn Sie eine neue Spot-VM bereitstellen, darf die gesamte neue und vorhandene vCPU-Nutzung für diese VM-Serie das genehmigte vCPU-Kontingent für diese bestimmte VM-Serie nicht überschreiten. Darüber hinaus sollte die Gesamtzahl der neuen und vorhandenen vCPUs, die über alle VM-Serien hinweg bereitgestellt werden, das genehmigte regionale vCPU-Gesamtkontingent für das Abonnement nicht überschreiten. Wenn eines dieser Kontingente überschritten wird, ist die VM-Bereitstellung unzulässig.
+Wenn Sie eine neue Spot-VM bereitstellen, darf die gesamte neue und vorhandene vCPU-Nutzung für alle Spot-VM-Instanzen die genehmigte Spot-vCPU-Kontingentgrenze nicht überschreiten. Wenn das Spot-Kontingent überschritten wird, ist die Bereitstellung der Spot-VM unzulässig.
 
 Über das Azure-Portal können Sie eine Erhöhung der vCPU-Kontingentgrenze für die VM-Serie anfordern. Bei einer Erhöhung des Kontingents für die VM-Serie erhöht sich automatisch auch der Grenzwert „Regionale vCPUs gesamt“ um den gleichen Wert.
 

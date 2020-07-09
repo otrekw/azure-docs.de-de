@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: e99ad2d53bc26b4e13a34097baaec929058a61a0
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 9dbb8a6011b4f2aebc73df7d37e6f43e7f27b747
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654802"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734519"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Aktivieren von Azure Active Directory Domain Services mithilfe von PowerShell
 
@@ -51,7 +51,7 @@ Erstellen Sie mit dem Cmdlet [New-AzureADServicePrincipal][New-AzureADServicePri
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-Erstellen Sie nun eine Azure AD-Gruppe namens *AAD DC Administrators*. Den zu dieser Gruppe hinzugefügten Benutzern werden dann Berechtigungen zum Ausführen von Verwaltungsaufgaben in der verwalteten Azure AD DS-Domäne gewährt.
+Erstellen Sie nun eine Azure AD-Gruppe namens *AAD DC Administrators*. Den dieser Gruppe hinzugefügten Benutzern werden dann Berechtigungen zum Ausführen von Verwaltungsaufgaben für die verwaltete Domäne erteilt.
 
 Erstellen Sie die Gruppe *AAD DC Administrators* mithilfe des Cmdlets [New-AzureADGroup][New-AzureADGroup]:
 
@@ -126,9 +126,9 @@ $Vnet= New-AzVirtualNetwork `
   -Subnet $AaddsSubnet,$WorkloadSubnet
 ```
 
-## <a name="create-an-azure-ad-ds-managed-domain"></a>Erstellen einer verwalteten Azure AD DS-Domäne
+## <a name="create-a-managed-domain"></a>Erstellen einer verwalteten Domäne
 
-Jetzt erstellen Sie eine verwaltete Azure AD DS-Domäne. Legen Sie Ihre Azure-Abonnement-ID fest, und geben Sie dann einen Namen für die verwaltete Domäne (z. B. *aaddscontoso.com*) an. Die ID Ihres Abonnements können Sie mithilfe des Cmdlets [Get-AzSubscription][Get-AzSubscription] abrufen.
+Jetzt erstellen wir eine verwaltete Domäne. Legen Sie Ihre Azure-Abonnement-ID fest, und geben Sie dann einen Namen für die verwaltete Domäne (z. B. *aaddscontoso.com*) an. Die ID Ihres Abonnements können Sie mithilfe des Cmdlets [Get-AzSubscription][Get-AzSubscription] abrufen.
 
 Wenn Sie eine Region mit Unterstützung von Verfügbarkeitszonen auswählen, werden die Azure AD DS-Ressourcen auf mehrere Zonen verteilt, um zusätzliche Redundanz zu erzielen.
 
@@ -148,14 +148,14 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
   -Force -Verbose
 ```
 
-Es dauert einige Minuten, bis die Ressource erstellt und die Steuerung an die PowerShell-Eingabeaufforderung zurückgegeben wird. Im Hintergrund wird weiterhin die verwaltete Azure AD DS-Domäne bereitgestellt, und es kann bis zu einer Stunde dauern, bis die Bereitstellung beendet ist. Während dieser Bereitstellungsphase wird im Azure-Portal auf der Seite **Übersicht** für Ihre verwaltete Azure AD DS-Domäne der aktuelle Status angezeigt.
+Es dauert einige Minuten, bis die Ressource erstellt und die Steuerung an die PowerShell-Eingabeaufforderung zurückgegeben wird. Die verwaltete Domäne wird weiterhin im Hintergrund bereitgestellt, und es kann bis zu einer Stunde dauern, bis die Bereitstellung abgeschlossen ist. In dieser Bereitstellungsphase wird im Azure-Portal auf der Seite **Übersicht** für Ihre verwaltete Domäne der aktuelle Status angezeigt.
 
-Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung für die verwaltete Azure AD DS-Domäne abgeschlossen ist, müssen Sie die folgenden Aufgaben ausführen:
+Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung der verwalteten Domäne abgeschlossen ist, müssen Sie die folgenden Aufgaben ausführen:
 
 * Aktualisieren Sie DNS-Einstellungen für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können.
-    * Wählen Sie zum Konfigurieren von DNS Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
-* Wenn Sie eine von Azure AD DS verwaltete Domäne in einer Region erstellt haben, die Verfügbarkeitszonen unterstützt, erstellen Sie eine Netzwerksicherheitsgruppe, um den Datenverkehr im virtuellen Netzwerk für die von Azure AD DS verwaltete Domäne zu beschränken. Ein Azure-Standard-Load Balancer wird erstellt, der diese Regeln erfordert. Diese Netzwerksicherheitsgruppe sichert Azure AD DS. Sie ist erforderlich, damit die verwaltete Domäne ordnungsgemäß funktioniert.
-    * Wählen Sie zum Erstellen der Netzwerksicherheitsgruppe und der erforderlichen Regeln Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, die entsprechende Netzwerksicherheitsgruppe automatisch zu erstellen und zu konfigurieren.
+    * Wählen Sie zum Konfigurieren von DNS Ihre verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
+* Wenn Sie eine verwaltete Domäne in einer Region erstellt haben, die Verfügbarkeitszonen unterstützt, erstellen Sie eine Netzwerksicherheitsgruppe, um den Datenverkehr im virtuellen Netzwerk für die verwaltete Domäne einzuschränken. Ein Azure-Standard-Load Balancer wird erstellt, der diese Regeln erfordert. Diese Netzwerksicherheitsgruppe sichert Azure AD DS. Sie ist erforderlich, damit die verwaltete Domäne ordnungsgemäß funktioniert.
+    * Wählen Sie zum Erstellen der Netzwerksicherheitsgruppe und der erforderlichen Regeln Ihre verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, die entsprechende Netzwerksicherheitsgruppe automatisch zu erstellen und zu konfigurieren.
 * [Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden können.
 
 ## <a name="complete-powershell-script"></a>Vollständiges PowerShell-Skript
@@ -235,19 +235,19 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
   -Force -Verbose
 ```
 
-Es dauert einige Minuten, bis die Ressource erstellt und die Steuerung an die PowerShell-Eingabeaufforderung zurückgegeben wird. Im Hintergrund wird weiterhin die verwaltete Azure AD DS-Domäne bereitgestellt, und es kann bis zu einer Stunde dauern, bis die Bereitstellung beendet ist. Während dieser Bereitstellungsphase wird im Azure-Portal auf der Seite **Übersicht** für Ihre verwaltete Azure AD DS-Domäne der aktuelle Status angezeigt.
+Es dauert einige Minuten, bis die Ressource erstellt und die Steuerung an die PowerShell-Eingabeaufforderung zurückgegeben wird. Die verwaltete Domäne wird weiterhin im Hintergrund bereitgestellt, und es kann bis zu einer Stunde dauern, bis die Bereitstellung abgeschlossen ist. In dieser Bereitstellungsphase wird im Azure-Portal auf der Seite **Übersicht** für Ihre verwaltete Domäne der aktuelle Status angezeigt.
 
-Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung für die verwaltete Azure AD DS-Domäne abgeschlossen ist, müssen Sie die folgenden Aufgaben ausführen:
+Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung der verwalteten Domäne abgeschlossen ist, müssen Sie die folgenden Aufgaben ausführen:
 
 * Aktualisieren Sie DNS-Einstellungen für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können.
-    * Wählen Sie zum Konfigurieren von DNS Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
-* Wenn Sie eine von Azure AD DS verwaltete Domäne in einer Region erstellt haben, die Verfügbarkeitszonen unterstützt, erstellen Sie eine Netzwerksicherheitsgruppe, um den Datenverkehr im virtuellen Netzwerk für die von Azure AD DS verwaltete Domäne zu beschränken. Ein Azure-Standard-Load Balancer wird erstellt, der diese Regeln erfordert. Diese Netzwerksicherheitsgruppe sichert Azure AD DS. Sie ist erforderlich, damit die verwaltete Domäne ordnungsgemäß funktioniert.
-    * Wählen Sie zum Erstellen der Netzwerksicherheitsgruppe und der erforderlichen Regeln Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, die entsprechende Netzwerksicherheitsgruppe automatisch zu erstellen und zu konfigurieren.
+    * Wählen Sie zum Konfigurieren von DNS Ihre verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
+* Wenn Sie eine verwaltete Domäne in einer Region erstellt haben, die Verfügbarkeitszonen unterstützt, erstellen Sie eine Netzwerksicherheitsgruppe, um den Datenverkehr im virtuellen Netzwerk für die verwaltete Domäne einzuschränken. Ein Azure-Standard-Load Balancer wird erstellt, der diese Regeln erfordert. Diese Netzwerksicherheitsgruppe sichert Azure AD DS. Sie ist erforderlich, damit die verwaltete Domäne ordnungsgemäß funktioniert.
+    * Wählen Sie zum Erstellen der Netzwerksicherheitsgruppe und der erforderlichen Regeln Ihre verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, die entsprechende Netzwerksicherheitsgruppe automatisch zu erstellen und zu konfigurieren.
 * [Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie eine Demo der verwalteten Azure AD DS-Domäne anzeigen möchten, können Sie [einen virtuellen Windows-Computer in die Domäne einbinden][windows-join], [sicheres LDAP konfigurieren][tutorial-ldaps] und die [Kennworthashsynchronisierung][tutorial-phs] konfigurieren.
+Wenn Sie die verwaltete Domäne in Aktion sehen möchten, können Sie [einen virtuellen Windows-Computer in die Domäne einbinden][windows-join], [sicheres LDAP konfigurieren][tutorial-ldaps] und die [Kennworthashsynchronisierung konfigurieren][tutorial-phs].
 
 <!-- INTERNAL LINKS -->
 [windows-join]: join-windows-vm.md

@@ -25,7 +25,7 @@ Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](d
 1. Klicken Sie links oben im Azure-Portal auf **Ressource erstellen**.
 1. Suchen Sie im Suchfeld oberhalb der Liste der Azure Marketplace-Ressourcen nach **Ubuntu Server 16.04 LTS** von Canonical, und klicken Sie auf **Erstellen**.
 1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann *myDedicatedHostsRG* als **Ressourcengruppe** aus. 
-1. Geben Sie unter **Instanzdetails***myVM* als **Namen des virtuellen Computers** ein, und wählen Sie *USA, Osten* als Ihre **Ort** aus.
+1. Geben Sie unter **Instanzdetails** *myVM* als **Namen des virtuellen Computers** ein, und wählen Sie *USA, Osten* als Ihre **Ort** aus.
 1. Wählen Sie unter **Verfügbarkeitsoptionen** die Option **Verfügbarkeitszone** aus, und wählen Sie in der Dropdownliste *1* aus.
 1. Wählen Sie für die Größe **Größe ändern** aus. Wählen Sie in der Liste der verfügbaren Größen eine der Esv3-Serie aus, z. B. **Standard E2s v3**. Möglicherweise müssen Sie den Filter löschen, um alle verfügbaren Größen anzuzeigen.
 1. Wählen Sie unter **Administratorkonto** die Option **Öffentlicher SSH-Schlüssel** aus, geben Sie Ihren Benutzernamen ein, und fügen Sie Ihren öffentlichen Schlüssel in das Textfeld ein. Entfernen Sie in Ihrem öffentlichen Schlüssel alle führenden bzw. nachgestellten Leerzeichen.
@@ -40,7 +40,7 @@ Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](d
 
 Die Bereitstellung des virtuellen Computers dauert ein paar Minuten.
 
-## <a name="add-an-existing-vm"></a>Hinzufügen einer vorhandenen VM 
+## <a name="add-an-existing-vm"></a>Hinzufügen eines vorhandenen virtuellen Computers 
 
 Sie können einem dedizierten Host einen vorhandene virtuellen Computer hinzufügen. Der virtuelle Computer muss allerdings zuerst beendet bzw. seine Zuordnung aufgehoben werden. Vergewissern Sie sich vor dem Verschieben eines virtuellen Computers auf einen dedizierten Host, dass die VM-Konfiguration unterstützt wird:
 

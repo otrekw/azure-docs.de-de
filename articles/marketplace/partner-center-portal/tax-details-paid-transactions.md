@@ -2,16 +2,14 @@
 title: Steuerliche Aspekte für den kommerziellen Microsoft-Marketplace
 Description: In den folgenden Tabellen finden Sie Informationen zu Ihren Vertriebsländern bzw. -regionen, um die steuerlichen Aspekte der Preisauswahl, die Auswirkungen auf die Auszahlung und die Steuerverantwortung besser verstehen zu können.
 ms.topic: conceptual
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.date: 05/04/2020
-ms.openlocfilehash: 0276a859fb82f7775aca498d73d1cbf780aaf5fc
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0949bd1234b28a9683e194d3b3f08511f7f17a26
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793022"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120686"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Steuerliche Aspekte für kommerzielle Marketplace-Herausgeber
 
@@ -252,7 +250,7 @@ Für ein besseres Verständnis der steuerlichen Aspekte bei der Preisauswahl und
 | Vanuatu                          | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Vatikanstadt                     | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Venezuela                        | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
-| Vietnam                          | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. [Weitere Informationen zu den steuerlichen Aspekten für dieses Land](#mixed-remittance-countriesregions-for-publishers) | Preis abzüglich Store-Gebühr                 | Herausgeber          |
+| Vietnam                          | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. [Erfahren Sie mehr über die steuerlichen Aspekte für dieses Land/diese Region.](#mixed-remittance-countriesregions-for-publishers) | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Wallis und Futuna                | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Jemen                            | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Sambia                           | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
@@ -269,7 +267,7 @@ Die folgenden Informationen gelten nur für Azure Marketplace-Herausgeber, ungea
 
 ## <a name="mixed-remittance-countriesregions-for-publishers"></a>Gemischte Überweisungsländer/-regionen für Herausgeber
 
-Bestimmte Microsoft-Abrechnungspartner erheben möglicherweise Umsatzsteuer, Gebrauchssteuer, Waren- und Dienstleistungssteuer, Mehrwertsteuer oder vergleichbare Steuern (sofern zutreffend), die für den Erwerb Ihrer App(s) oder Ihrer In-App Produkte durch Kunden im Store in den nachstehend aufgeführten Ländern/Regionen gelten, und überweisen diese. Die [Berichte](payout-summary-overview.md#transaction-history-download-export), die Microsoft Ihnen zur Verfügung stellt, enthalten die Transaktionen, für die ein Abrechnungspartner Umsatzsteuer, Gebrauchssteuer, Waren- und Dienstleistungssteuer, Mehrwertsteuer oder vergleichbare Steuern, die für den Erwerb Ihrer App(s) oder In-App-Produkte durch Kunden im Store gelten, erhoben hat. Mit Ausnahme der in diesen Berichten beschriebenen Transaktionen überweisen Microsoft und seine Abrechnungsdienstanbieter keinerlei Umsatzsteuer, Gebrauchssteuer, Waren- und Dienstleistungssteuer, Mehrwertsteuer oder vergleichbare Steuern, die in Verbindung mit dem Erwerb Ihrer App(s) oder In-App Produkte durch Kunden in diesen Ländern anfallen. Sie sind dafür verantwortlich, die Ihnen zur Verfügung gestellten Berichte zu überprüfen und Ihre entsprechenden Verpflichtungen zu ermitteln und zu erfüllen (sofern zutreffend), um die in Verbindung mit den Transaktionen für Ihre App(s) oder In-App-Produkte anfallenden Steuern anzumelden, zu erheben und zu überweisen.
+Bestimmte Microsoft-Abrechnungspartner erheben möglicherweise Umsatzsteuer, Gebrauchssteuer, Waren- und Dienstleistungssteuer, Mehrwertsteuer oder vergleichbare Steuern (sofern zutreffend), die für den Erwerb Ihrer App(s) oder Ihrer In-App Produkte durch Kunden im Store in den nachstehend aufgeführten Ländern/Regionen gelten, und überweisen diese. Die [Berichte](payout-summary-overview.md#transaction-history-download-export), die Microsoft Ihnen zur Verfügung stellt, enthalten die Transaktionen, für die ein Abrechnungspartner Umsatzsteuer, Gebrauchssteuer, Waren- und Dienstleistungssteuer, Mehrwertsteuer oder vergleichbare Steuern, die für den Erwerb Ihrer App(s) oder In-App-Produkte durch Kunden im Store gelten, erhoben hat. Mit Ausnahme der in diesen Berichten beschriebenen Transaktionen überweisen Microsoft und seine Abrechnungsdienstanbieter keinerlei Umsatzsteuer, Gebrauchssteuer, Waren- und Dienstleistungssteuer, Mehrwertsteuer oder vergleichbare Steuern in Verbindung mit dem Erwerb Ihrer Apps oder In-App-Produkte durch Kunden in diesen Ländern/Regionen. Sie sind dafür verantwortlich, die Ihnen zur Verfügung gestellten Berichte zu überprüfen und Ihre entsprechenden Verpflichtungen zu ermitteln und zu erfüllen (sofern zutreffend), um die in Verbindung mit den Transaktionen für Ihre App(s) oder In-App-Produkte anfallenden Steuern anzumelden, zu erheben und zu überweisen.
 
 | Gemischte Überweisungsländer/-regionen |
 |------------------------------------|

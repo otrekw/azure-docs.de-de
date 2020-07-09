@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f35658a75adb4d4c6c279e45087e741b8117e65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fda84a68921500e8ba40aa6d04bfb5939f79a1ef
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481380"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736482"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurieren von benutzerdefinierten Domänen per Azure AD-Anwendungsproxy
 
@@ -143,6 +143,6 @@ Sie können dasselbe Zertifikat für mehrere Anwendungen verwenden. Wenn ein hoc
 Bei Ablauf eines Zertifikats erhalten Sie eine Warnung mit der Aufforderung, ein anderes Zertifikat hochzuladen. Wenn das Zertifikat widerrufen wird, wird für Ihre Benutzer beim Zugreifen auf die App ggf. eine Sicherheitswarnung angezeigt. Navigieren Sie zum Aktualisieren des Zertifikats für eine App zur Seite **Anwendungsproxy** der App, wählen Sie die Option **Zertifikat** aus, und laden Sie ein neues Zertifikat hoch. Wenn das alte Zertifikat nicht von anderen Apps verwendet wird, wird es automatisch gelöscht. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Aktivieren des einmaligen Anmeldens](application-proxy-configure-single-sign-on-with-kcd.md) bei Ihren veröffentlichten Apps mithilfe der Azure AD-Authentifizierung.
-* [Aktivieren des bedingten Zugriffs](../conditional-access/overview.md) auf Ihre veröffentlichten Apps
 
+* [Aktivieren des einmaligen Anmeldens](application-proxy-configure-single-sign-on-with-kcd.md) bei Ihren veröffentlichten Apps mithilfe der Azure AD-Authentifizierung.
+* [Bedingter Zugriff](../conditional-access/concept-conditional-access-cloud-apps.md) für Ihre veröffentlichten Cloud-Apps.

@@ -4,12 +4,12 @@ description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azu
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e6cbac9896fc2bc6b3d4d95a28a25d8177bd7a5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229070"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193558"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allgemeine Fragen zu Azure Site Recovery
 
@@ -102,9 +102,14 @@ Ja. Durch die Erstellung eines Site Recovery-Tresors in einer Region wird sicher
 ### <a name="does-site-recovery-encrypt-replication"></a>Verschlüsselt Site Recovery die Replikation?
 Für virtuelle Computer und physische Server wird bei der Replikation zwischen lokalen Standorten die Verschlüsselung während der Übertragung unterstützt. Für virtuelle Computer und physische Server wird bei der Replikation in Azure sowohl die Verschlüsselung während der Übertragung als auch die [Verschlüsselung ruhender Daten (in Azure)](https://docs.microsoft.com/azure/storage/storage-service-encryption) unterstützt.
 
-### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>Wie kann ich TLS 1.2 auf allen lokalen Azure Site Recovery-Komponenten erzwingen?
+### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Verwendet Azure-zu-Azure-Site Recovery für die gesamte Kommunikation zwischen den verschiedenen Microservices von Azure TLS 1.2?
+Ja, das TLS 1.2-Protokoll wird standardmäßig für das Azure-zu-Azure-Site Recovery-Szenario erzwungen. 
+
+### <a name="how-can-i-enforce-tls-12-on-vmware-to-azure-and-physical-server-to-azure-site-recovery-scenarios"></a>Wie erzwinge ich TLS 1.2 in VMware-zu-Azure- und Physischer-Server-zu-Azure-Site Recovery-Szenarien?
 Auf den replizierten Elementen installierte Mobility-Agents kommunizieren ausschließlich über TLS 1.2 mit dem Prozessserver. Die Kommunikation zwischen dem Konfigurationsserver und Azure sowie zwischen dem Prozessserver und Azure kann jedoch über TLS 1.1 oder 1.0 erfolgen. Befolgen Sie die [Anweisungen](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi) zum Erzwingen von TLS 1.2 für alle von Ihnen eingerichteten Konfigurations- und Prozessserver.
 
+### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>Wie kann ich TLS 1.2 für HyperV-zu-Azure-Site Recovery-Szenarien erzwingen?
+Die gesamte Kommunikation zwischen den Microservices von Azure Site Recovery erfolgt über das TLS 1.2-Protokoll. Site Recovery verwendet Sicherheitsanbieter, die im System (BS) konfiguriert sind, und verwendet das neueste verfügbare TLS-Protokoll. Sie müssen TLS 1.2 explizit in der Registrierung aktivieren, und dann wird Site Recovery mit der Verwendung von TLS 1.2 zur Kommunikation mit Diensten beginnen. 
 
 ## <a name="disaster-recovery"></a>Notfallwiederherstellung
 
@@ -190,7 +195,37 @@ Ja. In folgenden Artikeln erfahren Sie mehr über die Drosselung der Bandbreite:
 * [Kapazitätsplanung für die Replikation von VMware-VMs und physischen Servern](site-recovery-plan-capacity-vmware.md)
 * [Kapazitätsplanung für die Replikation von Hyper-V-VMs in Azure](site-recovery-capacity-planning-for-hyper-v-replication.md)
 
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Kann ich die Replikation mit App-Konsistenz auf Linux-Servern aktivieren? 
+Ja. Azure Site Recovery für Linux-Betriebssysteme unterstützt benutzerdefinierte Anwendungsskripts für App-Konsistenz. Das benutzerdefinierte Skript mit den „Pre“- und „Post“-Optionen wird vom Mobilitäts-Agent von Azure Site Recovery während des Vorgangs für die App-Konsistenz verwendet. Dies kann mithilfe folgender Schritte ermöglicht werden.
 
+1. Melden Sie sich beim Computer als Root-Benutzer an.
+2. Wechseln Sie in das Installationsverzeichnis des Mobilitäts-Agent von Azure Site Recovery. Der Standardwert ist „/usr/local/ASR“.<br>
+    `# cd /usr/local/ASR`
+3. Wechseln Sie im Installationsverzeichnis in „VX/Scripts“.<br>
+    `# cd VX/scripts`
+4. Erstellen Sie ein Bash-Shellskript mit dem Namen „customscript.sh“ mit Ausführungsberechtigungen für den Root-Benutzer.<br>
+    a. Das Skript sollte die Befehlszeilenoptionen „--pre“ und „--post“ (beachten Sie die doppelten Bindestriche) unterstützen.<br>
+    b. Wenn das Skript mit der „--pre“-Option aufgerufen wird, sollte es die Eingabe/Ausgabe der Anwendung einfrieren, und wenn es mit der „--post“-Option aufgerufen wird, sollte es die Eingabe/Ausgabe der Anwendung reaktivieren.<br>
+    c. Eine Beispielvorlage –<br>
+
+    `# cat customscript.sh`<br>
+
+```
+    #!/bin/bash
+
+    if [ $# -ne 1 ]; then
+        echo "Usage: $0 [--pre | --post]"
+        exit 1
+    elif [ "$1" == "--pre" ]; then
+        echo "Freezing app IO"
+        exit 0
+    elif [ "$1" == "--post" ]; then
+        echo "Thawed app IO"
+        exit 0
+    fi
+```
+
+5. Fügen Sie die Eingabe-/Ausgabebefehle zum Einfrieren und Reaktivieren in „--pre“- und „--post“-Schritten für Anwendungen hinzu, die App-Konsistenz erfordern. Sie können wahlweise ein weiteres Skript hinzufügen, das diese Befehle angibt, und von „customscript.sh“ aus mit „--pre“- und „--post“-Option aufrufen.
 
 ## <a name="failover"></a>Failover
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Wie greife ich nach einem Failover in Azure auf die virtuellen Azure-Computer zu?

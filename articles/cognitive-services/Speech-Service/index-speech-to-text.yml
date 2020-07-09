@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentation zur Spracherkennung
-summary: Die Spracherkennung des Speech-Diensts (auch als Sprache-zu-Text bezeichnet) ermöglicht die Echtzeit- und Batch-Transkription von Audiostreams in Text.
+summary: Die Spracherkennung des Speech-Diensts (auch als Sprache-zu-Text bezeichnet) ermöglicht die Echtzeit- und Batch-Transkription von Audiostreams in Text. Bei zusätzlicher Referenztexteingabe ermöglicht sie auch die Echtzeitbewertung der Aussprache und gibt Sprechern Feedback zur Richtigkeit und Flüssigkeit des gesprochenen Texts.
 metadata:
   title: 'Dokumentation zur Spracherkennung: Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
   titleSuffix: Azure Cognitive Services
@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: 717c4e0322b48eca0acfacd20ed527a629bd1ff0
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.openlocfilehash: c1f4b6b43f661251f764e65e5d5378952ab99d10
+  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "81401410"
+  ms.lasthandoff: 05/22/2020
+  ms.locfileid: "83800857"
 landingContent:
 - title: Informationen zur Spracherkennung
   linkLists:
@@ -28,6 +28,8 @@ landingContent:
       url: batch-transcription.md
     - text: Grundlegendes zur Spracherkennung
       url: speech-to-text-basics.md
+    - text: Verwenden der Speech-Befehlszeilenschnittstelle für Spracherkennung ohne Code
+      url: spx-overview.md
   - linkListType: quickstart
     links:
     - text: Erkennen von Sprache mit Mikrofoneingabe
@@ -36,6 +38,8 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: Erkennen von Sprache aus einem Blobspeicher
       url: quickstarts/from-blob.md
+    - text: Aussprachebewertung mit Referenzeingabe
+      url: rest-speech-to-text.md#pronunciation-assessment-parameters
 - title: Entwickeln mit Spracherkennung
   linkLists:
   - linkListType: how-to-guide

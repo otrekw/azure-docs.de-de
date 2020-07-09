@@ -1,14 +1,14 @@
 ---
 title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme mit verschiedenen SDKs beim Abfragen von Azure-Ressourcen mit Azure Resource Graph beheben können.
-ms.date: 10/18/2019
+ms.date: 05/20/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1b3758e52641bc27341c5da0ced9e811263c02b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74303896"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83683237"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Problembehandlung mit Azure Resource Graph
 
@@ -19,6 +19,25 @@ Beim Abfragen von Azure-Ressourcen mit Azure Resource Graph können Fehler auftr
 Die meisten Fehler werden durch Probleme beim Ausführen einer Abfrage mit Azure Resource Graph ausgelöst. Wenn eine Abfrage fehlschlägt, stellt das SDK Details zu dem Problem bereit. Diese Informationen enthalten Hinweise zum Problem, damit Sie es beheben können und die nächste Abfrage erfolgreich verläuft.
 
 ## <a name="general-errors"></a>Allgemeine Fehler
+
+### <a name="scenario-throttled-requests"></a><a name="throttled"></a>Szenario: Gedrosselte Anforderungen
+
+#### <a name="issue"></a>Problem
+
+Bei Kunden, die große oder häufige Ressourcenabfragen tätigen, sind die Anforderungen gedrosselt.
+
+#### <a name="cause"></a>Ursache
+
+Azure Resource Graph ordnet, abhängig von einem Zeitfenster, jedem Benutzer eine Kontingentnummer zu. Ein Benutzer kann innerhalb eines Zeitfensters von 5 Sekunden beispielsweise höchstens 15 Abfragen ohne Drosselung senden. Der Kontingentwert wird von vielen Faktoren bestimmt und kann verändert werden. Weitere Informationen finden Sie unter [Drosselung in Azure Resource Graph](../overview.md#throttling).
+
+#### <a name="resolution"></a>Lösung
+
+Es gibt mehrere Methoden für den Umgang mit gedrosselten Anforderungen:
+
+- [Gruppieren von Abfragen](../concepts/guidance-for-throttled-requests.md#grouping-queries)
+- [Staffelungsabfragen](../concepts/guidance-for-throttled-requests.md#staggering-queries)
+- [Gleichzeitige Abfrage](../concepts/guidance-for-throttled-requests.md#query-in-parallel)
+- [Paginierung](../concepts/guidance-for-throttled-requests.md#pagination)
 
 ### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>Szenario: Zu viele Abonnements
 

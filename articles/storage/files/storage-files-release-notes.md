@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/16/2020
+ms.date: 5/19/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 4cb5a3d471aa3131d3233841cd6450f0a968dfe7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: e57a0266c762a3735fe1a71428e597dc6c3a5ce0
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82800973"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013043"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -25,17 +25,15 @@ Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unter
 
 | Meilenstein | Agent-Versionsnummer | Veröffentlichungsdatum | Status |
 |----|----------------------|--------------|------------------|
-| V10 Release – [4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 9\. April 2020 | In Test-Flighting-Phase |
+| Mai 2020 Updaterollup – [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 19. Mai 2020 | Unterstützt |
+| V10-Release: [KB4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 9\. April 2020 | Unterstützt |
 | Updaterollup von Dezember 2019: [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12. Dezember 2019 | Unterstützt |
 | V9-Release: [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2\. Dezember 2019 | Unterstützt |
 | V8-Release – [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8\. Oktober 2019 | Unterstützt |
-| Juli 2019 Updaterollup – [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24. Juli 2019 | Unterstützt |
-| Juli 2019 Updaterollup – [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12. Juli 2019 | Unterstützt |
-| V7-Release: [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19. Juni 2019 | Unterstützt |
-| Updaterollup von Juni 2019: [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 27. Juni 2019 | Unterstützt: Agent-Version läuft am 21. April 2020 ab |
-| Updaterollup von Juni 2019: [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13. Juni 2019 | Unterstützt: Agent-Version läuft am 21. April 2020 ab |
-| Mai 2019 Updaterollup – [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7\. Mai 2019 | Unterstützt: Agent-Version läuft am 21. April 2020 ab |
-| V6 Release - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21. April 2019 | Unterstützt: Agent-Version läuft am 21. April 2020 ab |
+| Juli 2019 Updaterollup – [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24. Juli 2019 | Unterstützt: Agent-Version läuft am 1. September 2020 ab |
+| Juli 2019 Updaterollup – [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12. Juli 2019 | Unterstützt: Agent-Version läuft am 1. September 2020 ab |
+| V7-Release: [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19. Juni 2019 | Unterstützt: Agent-Version läuft am 1. September 2020 ab |
+| V6-Release | 6.0.0.0–6.3.0.0 | – | Nicht unterstützt – Agent-Versionen sind am 21. April 2020 abgelaufen. |
 | Release V5 | 5.0.2.0–5.2.0.0 | – | Nicht unterstützt – Agent-Versionen sind am 18. März 2020 abgelaufen. |
 | Release V4 | 4.0.1.0 – 4.3.0.0 | – | Nicht unterstützt – Agent-Versionen sind am 6. November 2019 abgelaufen. |
 | Release V3 | 3.1.0.0 – 3.4.0.0 | – | Nicht unterstützt – Agent-Versionen sind am 19. August 2019 abgelaufen. |
@@ -43,6 +41,15 @@ Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unter
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-10020"></a>Agent-Version 10.0.2.0
+Die folgenden Versionshinweise gelten für Version 10.0.2.0 des Azure-Dateisynchronisierungs-Agents, die am 19. Mai 2020 veröffentlicht wurde. Diese Hinweise gelten zusätzlich zu den Versionshinweisen, die für die Version 10.0.0.0 angegeben sind.
+
+In dieser Version behobenes Problem:  
+- Der Storage-Synchronisierungs-Agent (FileSyncSvc) stürzt nach der Installation des Azure-Dateisynchronisierung-Agents, Version 10, häufig ab.
+
+> [!Note]  
+>Für diese Version wurde kein Test-Flight für Server durchgeführt, die automatisch aktualisiert werden, wenn eine neue Version verfügbar ist. Verwenden Sie zum Installieren dieses Updates Microsoft Update oder den Microsoft Update-Katalog (Installationsanweisungen finden Sie unter [KB4522412](https://support.microsoft.com/help/4522412)).
 
 ## <a name="agent-version-10000"></a>Agent-Version 10.0.0.0
 Die folgenden Versionshinweise gelten für Version 10.0.0.0 des Azure-Dateisynchronisierungs-Agents, die am 9. April 2020 veröffentlicht wurde.

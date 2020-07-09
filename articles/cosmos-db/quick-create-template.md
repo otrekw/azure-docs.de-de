@@ -6,14 +6,14 @@ ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
-ms.date: 02/27/2020
+ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: f524a1e1db426b9b9dafb2fb95d77538a34b04ec
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: e626f6e5b65e369c3c77900cd46f2b86cd6f9d52
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605468"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117997"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Schnellstart: Erstellen einer Azure Cosmos DB-Instanz und eines Containers mit einer Azure Resource Manager-Vorlage
 
@@ -35,9 +35,9 @@ Azure-Abonnement oder kostenloses Azure Cosmos DB-Testkonto
 
 ### <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/).
 
-:::code language="json" source="~/quickstart-templates/101-cosmosdb-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 In der Vorlage sind drei Azure-Ressourcen definiert:
 
@@ -53,11 +53,11 @@ Weitere Azure Cosmos DB-Vorlagenbeispiele finden Sie im [Schnellstart-Vorlagen
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt ein Azure Cosmos-Konto, eine Datenbank und einen Container.
 
-   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json)
+   [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 
-   ![Resource Manager-Vorlage: Azure Cosmos DB-Integration – Bereitstellen (Portal)](./media/quick-create-template/create-cosmosdb-using-template-portal.png)
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="Resource Manager-Vorlage: Azure Cosmos DB-Integration – Bereitstellen (Portal)":::
 
     Sofern nicht anders angegeben, verwenden Sie die Standardwerte, um die Azure Cosmos-Ressourcen zu erstellen.
 
@@ -68,6 +68,9 @@ Weitere Azure Cosmos DB-Vorlagenbeispiele finden Sie im [Schnellstart-Vorlagen
     * **Standort**: Geben Sie den Standort ein, an dem Sie Ihr Azure Cosmos-Konto erstellen möchten. Das Azure Cosmos-Konto kann sich am gleichen Standort befinden wie die Ressourcengruppe.
     * **Primäre Region**: Die primäre Replikatregion für das Azure Cosmos-Konto.
     * **Sekundäre Region**: Die sekundäre Replikatregion für das Azure Cosmos-Konto.
+    * **Standardkonsistenzebene**: Die Standardkonsistenzebene des Azure Cosmos-Kontos.
+    * **Präfix für max. Veraltung**: Maximal veraltete Anforderungen. Für BoundedStaleness erforderlich.
+    * **Max. Intervall in Sekunden**: Maximale Verzögerungszeit. Für BoundedStaleness erforderlich.
     * **Datenbankname**: Der Name der Azure Cosmos-Datenbank.
     * **Containername**: Der Name des Azure Cosmos-Containers.
     * **Durchsatz**:  Der Durchsatz für den Container (Mindestwert: 400 RU/s).
@@ -75,7 +78,7 @@ Weitere Azure Cosmos DB-Vorlagenbeispiele finden Sie im [Schnellstart-Vorlagen
 
 3. Wählen Sie die Option **Kaufen**. Nach erfolgreicher Bereitstellung des Azure Cosmos-Kontos erhalten Sie eine Benachrichtigung:
 
-   ![Resource Manager-Vorlage: Cosmos DB-Integration – Bereitstellungsbenachrichtigung (Portal)](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Resource Manager-Vorlage: Cosmos DB-Integration – Bereitstellungsbenachrichtigung (Portal)":::
 
 Zum Bereitstellen der Vorlage wird das Azure-Portal verwendet. Neben dem Azure-Portal können Sie auch Azure PowerShell, die Azure-Befehlszeilenschnittstelle (Azure CLI) und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -105,8 +108,8 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Falls Sie mit weiteren Schnellstartanleitungen und Tutorials fortfahren möchten, empfiehlt es sich ggf., die Ressourcen nicht zu bereinigen.
-Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe. Dadurch werden das Azure Cosmos-Konto und die dazugehörigen Ressourcen gelöscht. Löschen Sie die Ressourcengruppe wie folgt mit der Azure CLI oder mit Azure Powershell:
+Falls Sie mit weiteren Schnellstartanleitungen und Tutorials fortfahren möchten, sollten Sie die Ressourcen nicht bereinigen.
+Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe. Dadurch werden das Azure Cosmos-Konto und die dazugehörigen Ressourcen gelöscht. Die Ressourcengruppe kann über die Azure-Befehlszeilenschnittstelle oder mithilfe von Azure PowerShell gelöscht werden:
 
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 

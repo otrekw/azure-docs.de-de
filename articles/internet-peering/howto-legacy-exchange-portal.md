@@ -3,17 +3,17 @@ title: Konvertieren einer Legacy-Instanz für Exchange Peering in eine Azure-Res
 titleSuffix: Azure
 description: Konvertieren einer Legacy-Instanz für Exchange Peering in eine Azure-Ressource über das Azure-Portal
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
-ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: 87a7a6bca608f1748d3b659eabdc3e941b537377
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.topic: how-to
+ms.date: 5/21/2020
+ms.author: derekol
+ms.openlocfilehash: 6249d68486af754f2d2980aaed9d5fd8287dcb5e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81678523"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700160"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Konvertieren einer Legacy-Instanz für Exchange Peering in eine Azure-Ressource über das Azure-Portal
 
@@ -26,15 +26,30 @@ Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe von [PowerShel
 
 ## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>Konvertieren einer Legacy-Instanz für Exchange Peering in eine Azure-Ressource
 
-### <a name="sign-in-to-the-portal-and-select-your-subscription"></a>Melden Sie sich beim Portal an, und wählen Sie Ihr Abonnement aus.
-[!INCLUDE [Account](./includes/account-portal.md)]
+Als Internet Exchange-Anbieter können Sie durch [Erstellen eines Peerings]( https://go.microsoft.com/fwlink/?linkid=2129593) eine Anforderung für ein Exchange Peering erstellen.
 
-### <a name="convert-legacy-exchange-peering"></a><a name=create></a>Konvertieren von Legacy-Exchange Peering
+1. Füllen Sie auf der Seite **Peering erstellen** auf der Registerkarte **Grundlagen** die Felder wie hier gezeigt aus:
 
-Sie können Legacy-Peeringverbindungen mithilfe der **Peeringressource** konvertieren.
+   ![Registrieren von Peering Service](./media/setup-basics-tab.png)
 
-#### <a name="launch-the-resource-and-configure-basic-settings"></a>Starten der Ressource und Konfigurieren grundlegender Einstellungen
-[!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
+* Wählen Sie Ihr Azure-Abonnement aus.
+
+* Als Ressourcengruppe können Sie in der Dropdownliste eine vorhandene Ressourcengruppe auswählen oder eine neue Gruppe erstellen, indem Sie „Neu erstellen“ auswählen. Im Rahmen dieses Beispiels erstellen Sie eine neue Ressourcengruppe.
+
+* Der Name entspricht dem Ressourcennamen und ist frei wählbar.
+
+* Die Region wird automatisch ausgewählt, wenn Sie eine vorhandene Ressourcengruppe ausgewählt haben. Wenn Sie eine neue Ressourcengruppe erstellen möchten, müssen Sie auch die Azure-Region auswählen, in der sich die Ressource befinden soll.
+
+  >[!NOTE]
+  >Die Region, in der sich die Ressourcengruppe befindet, ist unabhängig vom Standort, an dem Sie das Peering mit Microsoft erstellen möchten. Es empfiehlt sich jedoch, Ihre Peeringressourcen innerhalb von Ressourcengruppen zu organisieren, die sich in nahegelegenen Azure-Regionen befinden. Beispiel: Für Peerings in Ashburn können Sie eine Ressourcengruppe in „USA, Osten“ oder in „USA, Osten 2“ erstellen.
+
+* Wählen Sie Ihre ASN im Feld **PeerASN** aus.
+
+  >[!IMPORTANT]  
+  >Sie können nur eine ASN mit dem ValidationState „Genehmigt“ auswählen, bevor Sie eine Peeringanforderung übermitteln. Wenn Sie Ihre PeerAsn-Anforderung gerade erst übermittelt haben, warten Sie ca. 12 Stunden, damit die ASN-Zuordnung genehmigt werden kann. Wenn die Genehmigung der von Ihnen ausgewählten ASN noch aussteht, wird eine Fehlermeldung angezeigt. Wenn die benötigte ASN nicht angezeigt wird, überprüfen Sie, ob Sie das richtige Abonnement ausgewählt haben. Ist dies der Fall, überprüfen Sie mithilfe von **[Zuordnen der Peer-ASN zum Azure-Abonnement](https://go.microsoft.com/fwlink/?linkid=2129592)** , ob Sie PeerAsn bereits erstellt haben.
+
+* Klicken Sie auf **Weiter: Konfiguration**, um fortzufahren.
+
 
 #### <a name="configure-connections-and-submit"></a>Konfigurieren von Verbindungen und Übermitteln
 [!INCLUDE [exchange-peering-configuration](./includes/exchange-portal-configuration-legacy.md)]

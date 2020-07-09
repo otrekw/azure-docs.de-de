@@ -10,12 +10,13 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0ea181b0e6ac18a559614c5bce0707775acdcec
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: contperfq4
+ms.openlocfilehash: 353bc49ad6a64ff00a8a3ab8594fd76e02ca7913
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83640187"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85551734"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Tutorial: Aktivieren des Rückschreibens von Azure Active Directory-Self-Service-Kennzurücksetzungen in eine lokale Umgebung
 
@@ -34,7 +35,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
-* Ein funktionierender Azure AD-Mandant mit mindestens einer aktivierten Testlizenz.
+* Ein funktionierender Azure AD-Mandant mit mindestens einer aktivierten Azure AD Premium P1- oder P2-Testlizenz.
     * Erstellen Sie ggf. [ein kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
     * Weitere Informationen finden Sie unter [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](concept-sspr-licensing.md).
 * Ein Konto mit Berechtigungen vom Typ *Globaler Administrator*.

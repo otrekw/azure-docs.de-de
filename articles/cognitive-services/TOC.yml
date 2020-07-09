@@ -9,8 +9,6 @@
       href: cognitive-services-and-machine-learning.md
     - name: Benutzerdefinierte Unterdomänen für Cognitive Services
       href: cognitive-services-custom-subdomains.md
-    - name: Cognitive Services-Zulassung
-      href: cognitive-services-gating-process.md
     - name: Sprachunterstützung
       href: language-support.md
 - name: Schnellstarts
@@ -19,8 +17,15 @@
       href: cognitive-services-apis-create-account.md
     - name: Erstellen einer neuen Ressource über die Azure CLI
       href: cognitive-services-apis-create-account-cli.md
+    - name: Erstellen einer neuen Ressource mithilfe einer ARM-Vorlage
+      displayName: Resource Manager
+      href: resource-manager-template.md
     - name: Diagnoseprotokollierung
       href: diagnostic-logging.md
+- name: Beispiele
+  items:
+    - name: Azure Policy-Integrationen
+      href: ./policy-samples.md
 - name: Sicherheit
   items:
     - name: Sicherheit von Cognitive Services
@@ -31,6 +36,8 @@
       href: ./encryption/cognitive-services-encryption-keys-portal.md
     - name: Authentifizieren von Anforderungen für Cognitive Services
       href: authentication.md
+    - name: Sicherheitsbaseline
+      href: security-baseline.md
 - name: Containerunterstützung
   items:
     - name: Containerunterstützung
@@ -65,7 +72,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Support- und Hilfeoptionen
       href: cognitive-services-support-options.md

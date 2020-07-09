@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 34cc8154660db8afcd5859d45ccfd622bc7ca88f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74380102"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039822"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Schnellstart: Fordern der Annahme von Nutzungsbedingungen vor dem Zugreifen auf Cloud-Apps
 
@@ -29,7 +29,7 @@ Dieser Schnellstart veranschaulicht das Konfigurieren einer [Azure AD-Richtlinie
 
 ![Richtlinie erstellen](./media/require-tou/5555.png)
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -93,7 +93,7 @@ In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedi
 
 Legen Sie in Ihrer Richtlinie Folgendes fest:
 
-| Einstellung | value |
+| Einstellung | Wert |
 | --- | --- |
 | Benutzer und Gruppen | Isabella Simonsen |
 | Cloud-Apps | Microsoft Azure Management |
@@ -209,5 +209,4 @@ Löschen Sie den Testbenutzer, wenn er nicht mehr benötigt wird, und löschen S
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erfordern von mehrstufiger Authentifizierung für bestimmte Apps](app-based-mfa.md)
-> [Blockieren des Zugriffs bei erkanntem Sitzungsrisiko](app-sign-in-risk.md)
+> [Vorschreiben der Verwendung der MFA für bestimmte Apps](app-based-mfa.md)

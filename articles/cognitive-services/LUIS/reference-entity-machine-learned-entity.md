@@ -1,7 +1,7 @@
 ---
-title: Durch maschinelles Lernen erworbener Entitätstyp – LUIS
+title: Entität vom Typ „Machine Learning“ – LUIS
 titleSuffix: Azure Cognitive Services
-description: Die durch maschinelles Lernen erworbene Entität stellt die bevorzugte Entität für das Erstellen von LUIS-Anwendungen dar.
+description: Die Machine Learning-Entität stellt die bevorzugte Entität für das Erstellen von LUIS-Anwendungen dar.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/30/2020
 ms.author: diberry
-ms.openlocfilehash: 5f663379939f24d16fb63e8e5b002fe088a2d9f8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ddaf5c921f92aeaefd8a8b0cb13602bc70a4dd5d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585588"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684582"
 ---
-# <a name="machine-learned-entity"></a>Durch maschinelles Lernen erworbene Entität
+# <a name="machine-learning-entity"></a>Machine Learning-Entität
 
-Die durch maschinelles Lernen erworbene Entität stellt die bevorzugte Entität für das Erstellen von LUIS-Anwendungen dar.
+Die Machine Learning-Entität stellt die bevorzugte Entität für das Erstellen von LUIS-Anwendungen dar.
 
 
 ## <a name="example-json"></a>JSON-Beispiel
@@ -38,7 +38,7 @@ Hier sehen Sie einige einfache Beispieläußerungen:
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
-Da eine durch maschinelles Lernen erworbene Entität über zahlreiche untergeordnete Entitäten mit erforderlichen Features verfügen kann, handelt es sich hierbei nur um ein Beispiel. Diese sollen als nur als Anleitung für die Rückgabewerte Ihrer Entitäten dienen.
+Da eine Machine Learning-Entität über zahlreiche untergeordnete Entitäten mit erforderlichen Features verfügen kann, handelt es sich hierbei nur um ein Beispiel. Diese sollen als nur als Anleitung für die Rückgabewerte Ihrer Entitäten dienen.
 
 Sehen Sie sich diese Abfrage an:
 
@@ -348,6 +348,6 @@ Diese Entität ist in der V2-Vorhersageruntime nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über [Tutorials](tutorial-machine-learned-entity.md), [Konzepterläuterungen](luis-concept-entity-types.md#design-entities-for-decomposition) und [ausführliche Anleitungen](luis-how-to-add-entities.md#create-a-machine-learned-entity) über durch maschinelles Lernen erworbene Entitäten.
+Informieren Sie sich mithilfe von [Tutorials](tutorial-machine-learned-entity.md), [Konzepterläuterungen](luis-concept-entity-types.md#design-entities-for-decomposition) und [ausführlichen Anleitungen](luis-how-to-add-entities.md#create-a-machine-learned-entity) über Machine Learning-Entitäten.
 
 Erfahren Sie mehr über die Entität vom Typ [List](reference-entity-list.md) und die Entität vom Typ [Regular Expression](reference-entity-regular-expression.md).

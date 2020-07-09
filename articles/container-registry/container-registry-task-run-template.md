@@ -3,12 +3,12 @@ title: Ausführen von Schnelltasks mit einer Vorlage
 description: Einstellen einer ACR-Taskausführung in die Warteschlange, um ein Image mithilfe einer Azure Resource Manager-Vorlage zu erstellen
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 6e85e4a3d10ea34d71efde959aa7d179eba69e3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196991"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927767"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Ausführen von ACR Tasks mithilfe von Resource Manager-Vorlagen
 
@@ -139,7 +139,7 @@ Erstellen Sie zu Demonstrationszwecken eine gesonderte Containerregistrierung al
 
 ### <a name="create-new-dockerfile"></a>Erstellen eines neuen Dockerfile
 
-Erstellen Sie ein Dockerfile, das Basisimage aus ihrer Basisregistrierung abruft. Führen Sie die folgenden Schritte in Ihrem lokalen Fork des GitHub-Repository aus, z. B. https://github.com/myGitHubID/acr-build-helloworld-node.git *.
+Erstellen Sie ein Dockerfile, das Basisimage aus ihrer Basisregistrierung abruft. Führen Sie die folgenden Schritte in Ihrem lokalen Fork des GitHub-Repository aus, z. B. `https://github.com/myGitHubID/acr-build-helloworld-node.git`.
 
 1. Wählen Sie in der GitHub-Benutzeroberfläche **Neue Datei erstellen** aus.
 1. Nennen Sie Ihre Datei *Dockerfile-test*, und fügen Sie den folgenden Inhalt ein. Ersetzen Sie *mybaseregistry* durch den Namen Ihrer Registrierung.

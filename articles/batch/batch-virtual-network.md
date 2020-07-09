@@ -1,15 +1,15 @@
 ---
-title: Bereitstellen eines Pools in einem virtuellen Netzwerk – Azure Batch | Microsoft-Dokumentation
+title: Bereitstellen eines Pools in einem virtuellen Netzwerk
 description: Hier erfahren Sie, wie Sie einen Batch-Pool in einem virtuellen Netzwerk erstellen, damit Computeknoten sicher mit anderen VMs (z. B. Dateiserver) im Netzwerk kommunizieren können.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 616118d5f75f9bfa6d97d89baac9d7ea9186cd5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 559cf3bc145deeed78b91def9d36211f885005d6
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111894"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797520"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk
 
@@ -49,13 +49,13 @@ Wenn Sie Ihr VNET erstellt und einem Subnetz zugewiesen haben, können Sie einen
 
 Ihr Unternehmen erfordert möglicherweise zu Überprüfungs- und Protokollierungszwecken das (erzwungene) Weiterleiten von Internetdatenverkehr vom Subnetz zurück zu ihrem lokalen Standort. Möglicherweise ist die Tunnelerzwingung für das Subnetz in Ihrem VNET aktiviert.
 
-Um sicherzustellen, dass die Computeknoten Ihres Azure Batch-Pools in einem VNET funktionieren, in dem die Tunnelerzwingung aktiviert ist, müssen Sie folgende [benutzerdefinierte Routen](../virtual-network/virtual-networks-udr-overview.md) für dieses Subnetz hinzufügen:
+Um sicherzustellen, dass die Computeknoten Ihres Azure Batch-Pools in einem VNET funktionieren, in dem die Tunnelerzwingung aktiviert ist, müssen Sie folgende [benutzerdefinierte Routen](../virtual-network/virtual-networks-udr-overview.md) (User-Defined Routes, UDR)für dieses Subnetz hinzufügen:
 
-* Der Batch-Dienst muss für die zeitliche Planung von Tasks mit den Computeknoten des Pools kommunizieren. Um diese Kommunikation zu ermöglichen, fügen Sie eine benutzerdefinierte für jede IP-Adresse hinzu, die vom Batch-Dienst in der Region Ihres Batch-Kontos verwendet werden. Informationen dazu, wie Sie die Liste mit IP-Adressen des Batch-Diensts abrufen, finden Sie unter [Lokale Diensttags](../virtual-network/service-tags-overview.md). Die IP-Adressen des Batch-Diensts werden dem `BatchNodeManagement`-Diensttag (oder der regionalen Variante, die Ihrer Batch-Kontoregion entspricht) zugeordnet.
+* Der Batch-Dienst muss für die zeitliche Planung von Tasks mit den Computeknoten des Pools kommunizieren. Um diese Kommunikation zu ermöglichen, fügen Sie eine UDR für jede IP-Adresse hinzu, die vom Batch-Dienst in der Region Ihres Batch-Kontos verwendet werden. Informationen dazu, wie Sie die Liste mit IP-Adressen des Batch-Diensts abrufen, finden Sie unter [Lokale Diensttags](../virtual-network/service-tags-overview.md).
 
 * Stellen Sie sicher, dass ausgehender Datenverkehr an Azure Storage (also URLs im Format `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net`) nicht über Ihr lokales Netzwerkgerät blockiert wird.
 
-Wenn Sie eine benutzerdefinierte Route hinzufügen, definieren Sie die Route für jedes zugehörige Batch-IP-Adresspräfix und legen **Typ des nächsten Hops** auf **Internet** fest. Sehen Sie sich folgendes Beispiel an:
+Wenn Sie eine UDR hinzufügen, definieren Sie die Route für jedes zugehörige Batch-IP-Adresspräfix, und legen Sie den **Typ des nächsten Hops** auf **Internet** fest. Sehen Sie sich folgendes Beispiel an:
 
 ![Benutzerdefinierte Route](./media/batch-virtual-network/user-defined-route.png)
 
@@ -64,5 +64,5 @@ Wenn Sie eine benutzerdefinierte Route hinzufügen, definieren Sie die Route fü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine detaillierte Übersicht über Batch finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md).
-- Weitere Informationen zum Erstellen einer benutzerdefinierten Route finden Sie unter [Erstellen einer benutzerdefinierten Route – Azure-Portal](../virtual-network/tutorial-create-route-table-portal.md).
+- Erfahren Sie mehr über den [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md) wie Pools, Knoten, Aufträge und Aufgaben.
+- Informationen zum Erstellen einer benutzerdefinierten Route finden Sie unter [Erstellen einer benutzerdefinierten Route – Azure-Portal](../virtual-network/tutorial-create-route-table-portal.md).

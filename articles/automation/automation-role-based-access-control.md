@@ -1,24 +1,21 @@
 ---
-title: Rollenbasierte Zugriffssteuerung in Azure Automation
-description: Die rollenbasierte Zugriffssteuerung (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Ressourcen. Dieser Artikel beschreibt, wie eine rollenbasierte Zugriffssteuerung in Azure Automation eingerichtet wird.
+title: Verwalten von Berechtigungen und Sicherheit für Rollen in Azure Automation
+description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung (RBAC) verwenden, um eine präzise Zugriffsverwaltung für Azure-Ressourcen zu erzielen.
 keywords: Automation RBAC, rollenbasierte Zugriffssteuerung, Azure RBAC
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: a49f2596df91c44deafa1be83483f8972e223742
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ac05d5b4eb8dd9d7a39f56ec6efae4831f00c623
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535569"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85100006"
 ---
-# <a name="role-based-access-control-in-azure-automation"></a>Rollenbasierte Zugriffssteuerung in Azure Automation
+# <a name="manage-role-permissions-and-security"></a>Verwalten von Berechtigungen und Sicherheit für Rollen
 
 Die rollenbasierte Zugriffssteuerung (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Ressourcen. Mithilfe der [rollenbasierten Zugriffssteuerung](../role-based-access-control/overview.md) können Sie Aufgaben innerhalb Ihres Teams verteilen sowie Benutzern, Gruppen und Anwendungen nur den Zugriff gewähren, den diese zur Ausführung ihrer Aufgaben benötigen. Sie können Benutzern über das Azure-Portal, über Azure-Befehlszeilentools oder über Azure-Verwaltungs-APIs rollenbasierten Zugriff gewähren.
-
->[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
 
 ## <a name="roles-in-automation-accounts"></a>Rollen in Automation-Konten
 
@@ -32,7 +29,7 @@ Der Zugriff wird in Azure Automation erteilt, indem den Benutzern, Gruppen und A
 | Operator für Automation |Die Rolle „Operator für Automation“ ermöglicht das Anzeigen des Namens und der Eigenschaften des Runbooks sowie das Erstellen und Verwalten von Aufträgen für alle Runbooks in einem Automation-Konto. Diese Rolle ist hilfreich, wenn Sie Ihre Automation-Konten-Ressourcen wie Anmeldeinformationsobjekte und Runbooks vor Einblicken und Änderungen schützen, Mitgliedern Ihrer Organisation aber dennoch ermöglichen möchten, diese Runbooks auszuführen. |
 |Automation-Auftragsoperator|Die Rolle „Automation-Auftragsoperator“ ermöglicht das Erstellen und Verwalten von Aufträgen für alle Runbooks in einem Automation-Konto.|
 |Automation-Runbookoperator|Die Rolle „Automation-Runbookoperator“ ermöglicht das Lesen des Namens und der Eigenschaften eines Runbooks.|
-| Log Analytics-Mitwirkender | Die Rolle „Log Analytics-Mitwirkender“ erlaubt Ihnen, alle Überwachungsdaten zu lesen und Überwachungseinstellungen zu bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen.|
+| Log Analytics-Mitwirkender | Die Rolle „Log Analytics-Mitwirkender“ erlaubt Ihnen, alle Überwachungsdaten zu lesen und Überwachungseinstellungen zu bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Azure Automation-Features und Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen.|
 | Log Analytics-Leser | Die Rolle „Log Analytics-Leser“ erlaubt Ihnen, alle Überwachungsdaten anzuzeigen und zu durchsuchen sowie Überwachungseinstellungen anzuzeigen. Dies schließt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen ein. |
 | Überwachungsmitwirkender | Die Rolle „Überwachungsmitwirkender“ erlaubt Ihnen, alle Überwachungsdaten zu lesen und Überwachungseinstellungen zu aktualisieren.|
 | Überwachungsleser | Die Rolle „Überwachungsleser“ ermöglicht Ihnen, alle Überwachungsdaten zu lesen. |
@@ -130,7 +127,7 @@ Die Rolle „Automation-Runbookoperator“ wird im Runbookbereich vergeben. Ein 
 
 ### <a name="log-analytics-contributor"></a>Log Analytics-Mitwirkender
 
-Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen. Die folgende Tabelle zeigt die Berechtigungen für die Rolle:
+Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Features und Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen. Die folgende Tabelle zeigt die Berechtigungen für die Rolle:
 
 |**Aktionen**  |**Beschreibung**  |
 |---------|---------|
@@ -142,7 +139,7 @@ Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachu
 |Microsoft.Insights/alertRules/*|Lesen/Schreiben/Löschen von Warnungsregeln.|
 |Microsoft.Insights/diagnosticSettings/*|Lesen/Schreiben/Löschen von Diagnoseeinstellungen.|
 |Microsoft.OperationalInsights/*|Verwalten von Azure Monitor-Protokollen.|
-|Microsoft.OperationsManagement/*|Verwalten von Lösungen in Arbeitsbereichen|
+|Microsoft.OperationsManagement/*|Verwalten von Azure Automation-Features in Arbeitsbereichen|
 |Microsoft.Resources/deployments/*|Erstellen und Verwalten von Ressourcengruppenbereitstellungen|
 |Microsoft.Resources/subscriptions/resourcegroups/deployments/*|Erstellen und Verwalten von Ressourcengruppenbereitstellungen|
 |Microsoft.Storage/storageAccounts/listKeys/action|Auflisten von Speicherkontoschlüsseln|
@@ -207,11 +204,11 @@ Ein Benutzerzugriffsadministrator kann den Benutzerzugriff auf Azure-Ressourcen 
 |Microsoft.Authorization/*|Verwalten der Autorisierung|
 |Microsoft.Support/*|Erstellen und Verwalten von Support-Tickets|
 
-## <a name="onboarding-permissions"></a>Onboardingberechtigungen
+## <a name="feature-setup-permissions"></a>Berechtigungen für die Featureeinrichtung
 
-In den folgenden Abschnitten werden die minimal erforderlichen Berechtigungen beschrieben, die beim Onboarding virtueller Computer für die Lösungen zur Änderungsnachverfolgung oder Updateverwaltung benötigt werden.
+In den folgenden Abschnitten werden die minimal erforderlichen Berechtigungen beschrieben, die für das Aktivieren der Features Updateverwaltung und Änderungsnachverfolgung und Bestand benötigt werden.
 
-### <a name="permissions-for-onboarding-from-a-vm"></a>Berechtigungen für das Onboarding von einem virtuellen Computer aus
+### <a name="permissions-for-enabling-update-management-and-change-tracking-and-inventory-from-a-vm"></a>Berechtigungen für das Aktivieren von Updateverwaltung und Änderungsnachverfolgung und Bestand für einen virtuellen Computer
 
 |**Aktion**  |**Berechtigung**  |**Mindestumfang**  |
 |---------|---------|---------|
@@ -231,9 +228,9 @@ In den folgenden Abschnitten werden die minimal erforderlichen Berechtigungen be
 | Arbeitsbereichsüberprüfung des Onboardings für die VM<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | Subscription         |
 | Registrieren des Log Analytics-Anbieters |Microsoft.Insights/register/action | Subscription|
 
-<sup>1</sup> Diese Berechtigung ist für das Onboarding über die VM-Portal-Benutzeroberfläche erforderlich.
+<sup>1</sup> Diese Berechtigung ist für das Aktivieren der Features über die Benutzeroberfläche des VM-Portals erforderlich.
 
-### <a name="permissions-for-onboarding-from-automation-account"></a>Berechtigungen für das Onboarding aus einem Automation-Konto heraus
+### <a name="permissions-for-enabling-update-management-and-change-tracking-and-inventory-from-an-automation-account"></a>Berechtigungen für das Aktivieren von Updateverwaltung und Änderungsnachverfolgung und Bestand über ein Automation-Konto
 
 |**Aktion**  |**Berechtigung** |**Mindestumfang**  |
 |---------|---------|---------|
@@ -248,7 +245,7 @@ In den folgenden Abschnitten werden die minimal erforderlichen Berechtigungen be
 |Gespeicherten Suchvorgang erstellen/bearbeiten     | Microsoft.OperationalInsights/workspaces/write        | Arbeitsbereich        |
 |Bereichskonfiguration erstellen/bearbeiten     | Microsoft.OperationalInsights/workspaces/write        | Arbeitsbereich        |
 | Registrieren des Log Analytics-Anbieters |Microsoft.Insights/register/action | Subscription|
-|**Schritt 2 – Integrieren mehrerer VMs**     |         |         |
+|**Schritt 2: Aktivieren mehrerer virtueller Computer**     |         |         |
 |VMOnboarding-Blatt – MMA-Erweiterung erstellen     | Microsoft.Compute/virtualMachines/write           | Virtual Machine        |
 |Gespeicherten Suchvorgang erstellen/bearbeiten     | Microsoft.OperationalInsights/workspaces/write           | Arbeitsbereich        |
 |Bereichskonfiguration erstellen/bearbeiten  | Microsoft.OperationalInsights/workspaces/write   | Arbeitsbereich|
@@ -407,7 +404,7 @@ $userId = "<User ObjectId>" # Azure Active Directory (AAD) user's ObjectId from 
 $aa = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts" -ResourceName $automationAccountName
 
 # Get the Runbook resource
-$rb = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$automationAccountName/$rbName"
+$rb = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$rbName"
 
 # The Automation Job Operator role only needs to be run once per user.
 New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Operator" -Scope $aa.ResourceId
@@ -428,6 +425,6 @@ Wenn ein Benutzer, dem im Runbookbereich die Rolle „Operator für Automation�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu den Möglichkeiten, die rollenbasierte Zugriffsteuerung für Azure Automation zu konfigurieren, finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
-* Informationen zu Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks](automation-starting-a-runbook.md).
-* Weitere Informationen zu Runbooktypen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
+* Weitere Informationen zu RBAC in PowerShell finden Sie unter [Verwalten von RBAC mit Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
+* Ausführliche Informationen zu Runbooktypen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
+* Informationen zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks in Azure Automation](start-runbooks.md).

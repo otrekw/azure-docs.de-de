@@ -6,16 +6,16 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 5c6580d4fe7431c942ec4886b9dafc6148635b18
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 27311270c1383a54192d072d0e152c7cf1a58225
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585367"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200952"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Was ist Azure Synapse Analytics (früher SQL DW)?
 
@@ -66,5 +66,5 @@ Oder sehen Sie sich einige der folgenden weiteren Azure Synapse-Ressourcen an:
 - Suche in [Blogs](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - Übermitteln von [Funktionsanfragen](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [Erstellen eines Supporttickets](sql-data-warehouse-get-started-create-support-ticket.md)
-- Suche im [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+- Suche auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
 - Suche im [Stack Overflow-Forum](https://stackoverflow.com/questions/tagged/azure-sqldw)

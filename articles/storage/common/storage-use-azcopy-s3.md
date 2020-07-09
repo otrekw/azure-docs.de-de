@@ -4,16 +4,16 @@ description: Übertragen von Daten mit AzCopy und Amazon S3-Buckets
 services: storage
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a3180593eaf8c01c772fd761d88b5f5b9f7657ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e917c261392da6044391efc98a81c8f90b619514
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75941507"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513763"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Kopieren von Daten aus Amazon S3 in Azure Storage mithilfe von AzCopy
 
@@ -135,7 +135,7 @@ Im Rahmen des AzCopy-Befehls `copy` können Sie einen Wert für das optionale Fl
 | **FailIfInvalid** | Objekte werden nicht kopiert. AzCopy protokolliert einen Fehler und fügt diese Fehler der Fehleranzahl hinzu, die in der Zusammenfassung der Übertragung angezeigt wird.  |
 | **RenameIfInvalid**  | AzCopy löst den ungültigen Metadatenschlüssel auf und kopiert das Objekt in Azure, indem das aufgelöste Schlüssel-Wert-Paar aus den Metadaten verwendet wird. Informationen zu den genauen Schritten, die von AzCopy zum Umbenennen von Objektschlüsseln ausgeführt werden, finden Sie unten im Abschnitt [Umbenennen von Objektschlüsseln durch AzCopy](#rename-logic). Falls der Schlüssel von AzCopy nicht umbenannt werden kann, wird das Objekt nicht kopiert. |
 
-<a id="rename-logic" />
+<a id="rename-logic"></a>
 
 ### <a name="how-azcopy-renames-object-keys"></a>Umbenennen von Objektschlüsseln durch AzCopy
 

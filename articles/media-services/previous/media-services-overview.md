@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
 ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78197503"
 ---
 # <a name="azure-media-services-overview"></a>Azure Media Services – Übersicht 
@@ -76,7 +76,7 @@ Zum Entwickeln von Media Services-Lösungen können Sie folgende Komponenten ver
 
 ## <a name="code-samples"></a>Codebeispiele
 
-Mehrere Codebeispiele finden Sie im Katalog mit **Azure-Codebeispielen**: [Azure Media Services-Codebeispiele](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
+Im Katalog mit **Azure-Codebeispielen** stehen mehrere Codebeispiele zur Verfügung: [Azure Media Services-Codebeispiele](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
 ## <a name="concepts"></a>Konzepte
 

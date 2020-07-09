@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 27503defa23b2a35e767156139228aa2e177652f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d154029e20ed952ca371685b00d5520f9d7850c8
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405177"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873838"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -27,11 +27,14 @@ Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte A
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | Erweiterbarer APM-Dienst (Application Performance Management) zum Überwachen Ihrer Live-Webanwendung auf einer beliebigen Plattform. |
 | [Azure Monitor für Container](insights/container-insights-overview.md) | Überwacht die Leistung von Containerworkloads, die entweder in Azure Container Instances oder in Managed Kubernetes-Clustern bereitgestellt sind, die im Azure Kubernetes Service (AKS) gehostet werden. |
-| [Azure Monitor für Cosmos DB (Vorschauversion)](insights/cosmosdb-insights-overview.md) | Bietet eine Übersicht über Gesamtleistung, Fehler, Kapazität und Betriebsintegrität aller Ihrer Azure Cosmos DB-Ressourcen auf einer vereinheitlichten interaktiven Oberfläche. |
+| [Azure Monitor für Cosmos DB](insights/cosmosdb-insights-overview.md) | Bietet eine Übersicht über Gesamtleistung, Fehler, Kapazität und Betriebsintegrität aller Ihrer Azure Cosmos DB-Ressourcen auf einer vereinheitlichten interaktiven Oberfläche. |
 | [Azure Monitor für Netzwerke (Vorschauversion)](insights/network-insights-overview.md) | Bietet einen umfassenden Überblick über Integrität und Metriken Ihrer gesamten Netzwerkressource. Die erweiterte Suchfunktion unterstützt Sie beim Identifizieren von Ressourcenabhängigkeiten und ermöglicht Szenarien wie das Identifizieren von Ressourcen, die Ihre Website gehostet werden, indem einfach nach dem Namen Ihrer Website gesucht wird. |
 [Azure Monitor für Ressourcengruppen (Vorschauversion)](insights/resource-group-insights.md) |  Selektieren und Diagnostizieren von Problemen Ihrer individuellen Ressourcen und Bereitstellen eines Kontexts für die Integrität und Leistung der Ressourcengruppe als Ganzes. |
-| [Azure Monitor für Storage (Vorschauversion)](insights/storage-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. |
+| [Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage (Vorschauversion)](insights/storage-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. |
 | [Azure Monitor für VMs](insights/container-insights-overview.md) | Überwacht Ihre virtuellen Azure-Computer (VM) und VM-Skalierungsgruppen bedarfsorientiert. Der Dienst analysiert die Leistung und Integrität Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen. |
+| [Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault (Vorschauversion)](insights/key-vaults-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Wartezeit im Zusammenhang mit Key Vault bereitgestellt. |
+| [Erkunden von Azure Monitor für Azure Cache for Redis (Vorschauversion)](insights/redis-cache-insights-overview.md) |  Bietet eine einheitliche, interaktive Ansicht der Leistung, Fehler, Kapazität und Betriebsintegrität insgesamt. |
+
 
 ### <a name="core-solutions"></a>Wichtige Lösungen
 
@@ -115,7 +118,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Intune | Nein | Ja | Nein |  |
 |IoT Central | Nein | Nein | Nein |  |
 |IoT Hub | Ja | Ja | Nein |  |
-|Key Vault | Ja | Ja | Nein |  |
+|Key Vault | Ja | Ja | [Ja](insights/key-vaults-insights-overview.md) |  |
 |Kubernetes Service (AKS) | Nein | Nein | [Ja](insights/container-insights-overview.md)  |  |
 |Load Balancer | Ja | Ja | Nein |  |
 |Logic Apps | Ja | Ja | Nein |  |
@@ -139,7 +142,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Private Link | Nein | Nein | Nein |  |
 |Project Spool Communication Platform | Nein | Nein | Nein |  |
 |Red Hat OpenShift | Nein | Nein | Nein |  |
-|Redis Cache | Ja | Ja | Nein |  |
+|Redis Cache | Ja | Ja | [Ja](insights/redis-cache-insights-overview.md) | |
 |Ressourcendiagramm | Nein | Nein | Nein |  |
 |Ressourcen-Manager | Nein | Nein | Nein |  |
 |Retail Search – by Bing | Nein | Nein | Nein |  |

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: b16c60130836cf0e3b38092b894129f503ee6e83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b18717b78a271bd390bc221e9ed0723cb02079ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82141667"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484294"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Empfehlungen und bewährte Methoden für Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Die folgenden bewährten Methoden und Empfehlungen decken einige der wichtigsten
 
 ## <a name="fundamentals"></a>Grundlagen
 
-|  |  |
+| Bewährte Methode | BESCHREIBUNG |
 |--|--|
 | Auswählen von Benutzerflows für die meisten Szenarien | Identity Experience Framework von Azure AD B2C ist die Kernkompetenz des Diensts. Die Richtlinien beschreiben Benutzeroberflächen im Zusammenhang mit der Identität, z.B. Registrierung, Anmeldung oder Profilbearbeitung. Um Ihnen die Einrichtung der gängigsten Identitätsaufgaben zu erleichtern, enthält das Azure AD B2C-Portal vordefinierte und konfigurierbare Richtlinien, die als „Benutzerflows“ bezeichnet werden. Mit Benutzerflows können Sie mit nur wenigen Klicks innerhalb von Minuten tolle Benutzeroberflächen erstellen. [Erfahren Sie, wann Benutzerflows und wann benutzerdefinierte Richtlinien verwendet werden](custom-policy-overview.md#comparing-user-flows-and-custom-policies).|
 | App-Registrierungen | Jede Anwendung (Web- oder native Anwendung) und API, die gesichert ist, muss in Azure AD B2C registriert werden. Wenn eine App sowohl eine Web- als auch eine native Version von iOS und Android umfasst, können Sie sie als eine Anwendung in Azure AD B2C mit derselben Client-ID registrieren. Erfahren Sie, wie Sie [OIDC-, SAML-, Web- und native Apps registrieren](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications?tabs=applications). Weitere Informationen zu [in Azure Active Directory B2C verwendbaren Anwendungstypen](https://docs.microsoft.com/azure/active-directory-b2c/application-types). |
@@ -34,7 +34,7 @@ Die folgenden bewährten Methoden und Empfehlungen decken einige der wichtigsten
 
 Definieren Sie Ihre Anwendungs- und Dienstarchitektur, inventarisieren Sie die aktuellen Systeme, und planen Sie die Migration zu Azure AD B2C.
 
-|  |  |
+| Bewährte Methode | BESCHREIBUNG |
 |--|--|
 | Entwerfen einer End-to-End-Lösung | Berücksichtigen Sie bei der Planung einer Azure AD B2C-Integration alle Abhängigkeiten Ihrer Anwendungen. Beachten Sie alle Dienste und Produkte, die sich derzeit in Ihrer Umgebung befinden oder der Lösung hinzugefügt werden müssen, z. B. Azure Functions, CRM-Systeme (Customer Relationship Management), Azure API Management-Gateway und Speicherdienste. Berücksichtigen Sie die Sicherheit und Skalierbarkeit für alle Dienste. |
 | Dokumentieren der Erfahrungen Ihrer Benutzer | Erstellen Sie ausführliche Informationen zu allen User Journeys, die Ihre Kunden in Ihrer Anwendung haben können. Schließen Sie jeden Bildschirm und alle Branchflows ein, die bei der Interaktion mit den Identitäts- und Profilaspekten der Anwendung auftreten können. Berücksichtigen Sie Nutzbarkeit, Barrierefreiheit und Lokalisierung in Ihrer Planung. |
@@ -49,7 +49,7 @@ Definieren Sie Ihre Anwendungs- und Dienstarchitektur, inventarisieren Sie die a
 
 Beachten Sie während der Implementierungsphase die folgenden Empfehlungen.
 
-|  |  |
+| Bewährte Methode | BESCHREIBUNG |
 |--|--|
 | Bearbeiten benutzerdefinierter Richtlinien mit der Azure AD B2C-Erweiterung für Visual Studio Code | Laden Sie Visual Studio Code und diese von der Community erstellte [Erweiterung aus Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) herunter. Obwohl es sich nicht um ein offizielles Microsoft-Produkt handelt, enthält die Azure AD B2C-Erweiterung für Visual Studio Code mehrere Features, die das Arbeiten mit benutzerdefinierten Richtlinien vereinfachen. |
 | Informationen zur Problembehandlung von Azure AD B2C | Erfahren Sie, wie Sie [Problembehandlung für benutzerdefinierte Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications) während der Entwicklung ausführen. Erfahren Sie, wie ein normaler Authentifizierungsflow aussieht, und verwenden Sie Tools zum Ermitteln von Anomalien und Fehlern. Verwenden Sie beispielsweise [Application Insights](troubleshoot-with-application-insights.md), um Ausgabeprotokolle von User Journeys zu überprüfen. |
@@ -60,7 +60,7 @@ Beachten Sie während der Implementierungsphase die folgenden Empfehlungen.
 
 Testen und automatisieren Sie Ihre Azure AD B2C-Implementierung.
 
-|  |  |
+| Bewährte Methode | BESCHREIBUNG |
 |--|--|
 | Berücksichtigen globalen Datenverkehrs | Verwenden Sie Datenverkehrsquellen aus unterschiedlichen globalen Adressen, um die Leistungs- und Lokalisierungsanforderungen zu testen. Stellen Sie sicher, dass alle HTMLs, CSS und Abhängigkeiten die Leistungsanforderungen erfüllen können. |
 | Funktionale und UI-Tests | Testen Sie die Benutzerflows in einem End-to-End-Szenario. Fügen Sie im Minutentakt synthetische Tests mithilfe von Selenium, VS Web Test usw. hinzu. |
@@ -74,7 +74,7 @@ Testen und automatisieren Sie Ihre Azure AD B2C-Implementierung.
 
 Verwalten Sie Ihre Azure AD B2C-Umgebung.
 
-|  |  |
+| Bewährte Methode | BESCHREIBUNG |
 |--|--|
 | Erstellen mehrerer Umgebungen | Um den Betrieb und die Einführung der Bereitstellung zu erleichtern, sollten Sie separate Umgebungen für Entwicklung, Tests, Vorproduktion und Produktion erstellen. Erstellen Sie Azure AD B2C-Mandanten für jede dieser Umgebungen. |
 | Verwenden von Versionskontrolle für benutzerdefinierte Richtlinien | Verwenden Sie ggf. GitHub, Azure Repos oder ein anderes cloudbasiertes Versionskontrollsystem für Ihre benutzerdefinierten Azure AD B2C-Richtlinien. |
@@ -88,7 +88,7 @@ Verwalten Sie Ihre Azure AD B2C-Umgebung.
 
 Bleiben Sie auf dem neuesten Stand bezüglich des Zustands des Diensts, und informieren Sie sich über Supportoptionen.
 
-|  |  |
+| Bewährte Methode | BESCHREIBUNG |
 |--|--|
 | [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  Bleiben Sie mit Azure AD B2C-Produktupdates und -Ankündigungen auf dem neuesten Stand. |
 | [Microsoft-Support](support-options.md) | Stellen Sie eine Supportanfrage für technische Azure AD B2C-Probleme. Der Support für die Abrechnungs- und Abonnementverwaltung wird kostenlos bereitgestellt. |

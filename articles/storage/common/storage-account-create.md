@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c2d1e8b4975be0657983192df00cc434da00a6f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228370"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853500"
 ---
 # <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie über das [Azure-Portal](https://portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -63,7 +63,7 @@ Die Schaltfläche öffnet eine interaktive Shell, mit der Sie die in diesem Arti
 
 ### <a name="install-the-cli-locally"></a>Lokales Installieren der Befehlszeilenschnittstelle
 
-Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Für diesen Artikel müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Für diesen Artikel müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
 
 # <a name="template"></a>[Vorlage](#tab/template)
 
@@ -152,8 +152,8 @@ Um ein Speicherkonto vom Typ „Universell v2“ mit einer anderen Replikations
 |Zonenredundanter Speicher (ZRS)     |Standard_ZRS         |
 |Georedundanter Speicher (GRS)     |Standard_GRS         |
 |Georedundanter Speicher mit Lesezugriff (RA-GRS)     |Standard_RAGRS         |
-|Geozonenredundanter Speicher (GZRS)/Vorschau    |Standard_GZRS         |
-|Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)/Vorschau    |Standard_RAGZRS         |
+|Geozonenredundanter Speicher (GZRS)    |Standard_GZRS         |
+|Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -195,12 +195,12 @@ Um ein Speicherkonto vom Typ „Universell v2“ mit einer anderen Replikations
 |Zonenredundanter Speicher (ZRS)     |Standard_ZRS         |
 |Georedundanter Speicher (GRS)     |Standard_GRS         |
 |Georedundanter Speicher mit Lesezugriff (RA-GRS)     |Standard_RAGRS         |
-|Geozonenredundanter Speicher (GZRS)/Vorschau    |Standard_GZRS         |
-|Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)/Vorschau    |Standard_RAGZRS         |
+|Geozonenredundanter Speicher (GZRS)    |Standard_GZRS         |
+|Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="template"></a>[Vorlage](#tab/template)
 
-Sie können entweder Azure PowerShell oder die Azure CLI verwenden, um eine Resource Manager-Vorlage zum Erstellen eines Speicherkontos bereitzustellen. Die in diesem Artikel verwendete Resource Manager-Vorlage stammt von der Seite mit den [Azure Resource Manager-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Wählen Sie zum Ausführen der Skripts **Testen Sie es.** aus, um Azure Cloud Shell zu öffnen. Klicken Sie zum Einfügen des Skripts mit der rechten Maustaste auf die Shell, und wählen Sie **Einfügen** aus.
+Sie können entweder Azure PowerShell oder die Azure CLI verwenden, um eine Resource Manager-Vorlage zum Erstellen eines Speicherkontos bereitzustellen. Die in diesem Artikel verwendete Resource Manager-Vorlage stammt von der Seite mit den [Azure Resource Manager-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Wählen Sie zum Ausführen der Skripts **Testen** aus, um Azure Cloud Shell zu öffnen. Klicken Sie zum Einfügen des Skripts mit der rechten Maustaste auf die Shell, und wählen Sie **Einfügen** aus.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75973666"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135762"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Replizieren von virtuellen Azure-Computern mit direkten Speicherplätzen in eine andere Region
 
@@ -20,7 +20,7 @@ In diesem Artikel wird beschrieben, wie Sie die Notfallwiederherstellung von vir
 >Für Cluster mit „Direkte Speicherplätze“ werden nur absturzkonsistente Wiederherstellungspunkte unterstützt.
 >
 
-[Direkte Speicherplätze (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) ist softwaredefinierter Speicher und bietet eine Möglichkeit zum Erstellen von [Gastclustern](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) in Azure.  Ein Gastcluster in Microsoft Azure ist ein Failovercluster, der virtuelle IaaS-Cluster beinhaltet. Für gehostete VM-Workloads kann ein Failover in Gastclustern ausgeführt werden, sodass eine SLA mit einer höheren Verfügbarkeit für Anwendungen erreicht werden kann, als mit einer einzelnen Azure-VM möglich ist. Dies ist nützlich in Szenarien, in denen eine VM eine kritische Anwendung wie SQL oder einen Dateiserver mit horizontaler Skalierung hostet.
+[Direkte Speicherplätze (S2D)](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) ist softwaredefinierter Speicher und bietet eine Möglichkeit zum Erstellen von [Gastclustern](https://techcommunity.microsoft.com/t5/failover-clustering/bg-p/FailoverClustering) in Azure.  Ein Gastcluster in Microsoft Azure ist ein Failovercluster, der virtuelle IaaS-Cluster beinhaltet. Für gehostete VM-Workloads kann ein Failover in Gastclustern ausgeführt werden, sodass eine SLA mit einer höheren Verfügbarkeit für Anwendungen erreicht werden kann, als mit einer einzelnen Azure-VM möglich ist. Dies ist nützlich in Szenarien, in denen eine VM eine kritische Anwendung wie SQL oder einen Dateiserver mit horizontaler Skalierung hostet.
 
 ## <a name="disaster-recovery-with-storage-spaces-direct"></a>Notfallwiederherstellung mit direkten Speicherplätzen
 
@@ -38,14 +38,14 @@ Die folgende Abbildung zeigt einen Azure-VM-Failovercluster mit zwei Knoten, der
 
 **Überlegungen zur Notfallwiederherstellung**
 
-1. Wenn Sie einen [Cloudzeugen](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) für den Cluster einrichten, behalten Sie den Zeugen in der Notfallwiederherstellungsregion bei.
-2. Wenn Sie ein Failover der virtuellen Computer in das Subnetz in der Notfallwiederherstellungsregion durchführen, die sich von der Quellregion unterscheidet, muss die IP-Adresse des Clusters nach dem Failover geändert werden.  Um die IP-Adresse des Clusters zu ändern, müssen Sie das [Skript für einen Site Recovery-Wiederherstellungsplan](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation) verwenden.</br>
+1. Wenn Sie einen [Cloudzeugen](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) für den Cluster einrichten, behalten Sie den Zeugen in der Notfallwiederherstellungsregion bei.
+2. Wenn Sie ein Failover der virtuellen Computer in das Subnetz in der Notfallwiederherstellungsregion durchführen, die sich von der Quellregion unterscheidet, muss die IP-Adresse des Clusters nach dem Failover geändert werden.  Um die IP-Adresse des Clusters zu ändern, müssen Sie das [Skript für einen Site Recovery-Wiederherstellungsplan](./site-recovery-runbook-automation.md) verwenden.</br>
 [Beispielskript](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) zum Ausführen des Befehls im virtuellen Computer unter Verwendung der benutzerdefinierten Skripterweiterung. 
 
 ### <a name="enabling-site-recovery-for-s2d-cluster"></a>Aktivieren von Site Recovery für den S2D-Cluster:
 
 1. Klicken Sie im Recovery Services-Tresor auf „+Replizieren“.
-1. Wählen Sie alle Knoten im Cluster aus, und legen Sie sie als [Multi-VM-Konsistenzgruppe](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency) fest.
+1. Wählen Sie alle Knoten im Cluster aus, und legen Sie sie als [Multi-VM-Konsistenzgruppe](./azure-to-azure-common-questions.md#multi-vm-consistency) fest.
 1. Wählen Sie die Replikationsrichtlinie mit deaktivierter Anwendungskonsistenz aus (es ist nur Unterstützung für Absturzkonsistenz verfügbar).
 1. Aktivieren Sie die Replikation.
 
@@ -70,7 +70,7 @@ Für die korrekte Funktionsweise Ihrer Anwendungen kann es erforderlich sein, na
 
 
 ### <a name="failover-of-the-virtual-machines"></a>Failover der virtuellen Computer 
-Für beide Knoten der VMs muss ein Failover mithilfe des Site Recovery-[Wiederherstellungsplans](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) ausgeführt werden. 
+Für beide Knoten der VMs muss ein Failover mithilfe des Site Recovery-[Wiederherstellungsplans](./site-recovery-create-recovery-plans.md) ausgeführt werden. 
 
 ![storagespacesdirect protection](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 
@@ -94,4 +94,4 @@ Weitere Informationen finden Sie unter [Testfailover nach Azure in Site Recovery
 Weitere Informationen finden Sie unter [Failover in Site Recovery](site-recovery-failover.md).
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) zum Ausführen von Failbacks.
+[Weitere Informationen](./azure-to-azure-tutorial-failover-failback.md) zum Ausführen von Failbacks.

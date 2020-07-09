@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ed10e998ea05b6687190b1f87095f8bc28265905
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 83c3797cc3d9232f8589527285cc56c5cbff9a8a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086609"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221316"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
@@ -40,7 +40,7 @@ Ab API-Version `2019-05-06` sind Indexerfehler und -warnungen auf der Elementebe
 | Details | Alle zusätzlichen Details, die beim Diagnostizieren des Problems hilfreich sein können, z. B. die WebApi-Antwort, wenn die Ausführung eines benutzerdefinierten Skills fehlgeschlagen ist. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 source, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ...Rest der Stapelüberwachung... |
 | documentationLink | Ein Link zur relevanten Dokumentation mit ausführlichen Informationen zum Debuggen und Beheben des Problems. Dieser Link verweist häufig auf einen der folgenden Abschnitte auf dieser Seite. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
-<a name="could-not-read-document"/>
+<a name="could-not-read-document"></a>
 
 ## <a name="error-could-not-read-document"></a>Error: Dokument konnte nicht gelesen werden
 
@@ -52,7 +52,7 @@ Der Indexer konnte das Dokument nicht aus der Datenquelle lesen. Möglich sind f
 | Fehler aus dem zugrunde liegenden Dienst der Datenquelle | (aus Cosmos DB) `{"Errors":["Request rate is large"]}` | Überprüfen Sie die Speicherinstanz, um sicherzustellen, dass Sie fehlerfrei ist. Möglicherweise müssen Sie die Skalierung/Partitionierung anpassen. |
 | Vorübergehende Probleme | Beim Empfangen von Ergebnissen vom Server ist ein Fehler auf Übertragungsebene aufgetreten. (Anbieter: TCP-Anbieter, Fehler: 0 – Eine vorhandene Verbindung wurde erzwungenermaßen vom Remotehost geschlossen | Gelegentlich treten unerwartete Konnektivitätsprobleme auf. Versuchen Sie später erneut, das Dokument über den Indexer laufen zu lassen. |
 
-<a name="could-not-extract-document-content"/>
+<a name="could-not-extract-document-content"></a>
 
 ## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>Error: Inhalte oder Metadaten konnten nicht aus dem Dokument extrahiert werden.
 Der Indexer mit einer Blob-Datenquelle konnte die Inhalte oder Metadaten nicht aus dem Dokument extrahieren (beispielsweise aus einer PDF-Datei). Möglich sind folgende Ursachen:
@@ -64,19 +64,24 @@ Der Indexer mit einer Blob-Datenquelle konnte die Inhalte oder Metadaten nicht a
 | Blob ist verschlüsselt | Das Dokument konnte nicht verarbeitet werden. Es ist möglicherweise verschlüsselt oder kennwortgeschützt. | Sie können das Blob mit [Blob-Einstellungen](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed) überspringen. |
 | Vorübergehende Probleme | „Fehler beim Verarbeiten des Blobs: Anforderung abgebrochen: Die Anforderung wurde angebrochen.“ „Zeitüberschreitung beim Verarbeiten des Dokuments.“ | Gelegentlich treten unerwartete Konnektivitätsprobleme auf. Versuchen Sie später erneut, das Dokument über den Indexer laufen zu lassen. |
 
-<a name="could-not-parse-document"/>
+<a name="could-not-parse-document"></a>
 
 ## <a name="error-could-not-parse-document"></a>Error: Dokument konnte nicht analysiert werden
 Der Indexer hat das Dokument aus der Datenquelle gelesen, aber es gab ein Problem beim Konvertieren des Dokumentinhalts in das angegebene Feldzuordnungsschema. Möglich sind folgende Ursachen:
 
 | `Reason` | Details/Beispiel | Lösung |
 | --- | --- | --- |
-| Dokumentschlüssel fehlt | Der Dokumentschlüssel darf nicht fehlen oder leer sein | Stellen Sie sicher, dass alle Dokumente gültige Dokumentschlüssel aufweisen |
+| Dokumentschlüssel fehlt | Der Dokumentschlüssel darf nicht fehlen oder leer sein | Stellen Sie sicher, dass alle Dokumente über gültige Dokumentschlüssel verfügen. Der Dokumentschlüssel wird durch Festlegen der Eigenschaft „key“ als Teil der [Indexdefinition](https://docs.microsoft.com/rest/api/searchservice/create-index#request-body) bestimmt. Indexer geben diesen Fehler aus, wenn die als „key“ gekennzeichnete Eigenschaft in einem bestimmten Dokument nicht gefunden werden kann. |
 | Dokumentschlüssel ist ungültig | Der Dokumentschlüssel darf nicht länger als 1024 Zeichen sein | Ändern Sie den Dokumentschlüssel so, dass er die Überprüfungsanforderungen erfüllt. |
 | Feldzuordnung konnte nicht auf ein Feld angewendet werden | Die Zuordnungsfunktion `'functionName'` konnte nicht auf das Feld `'fieldName'` angewendet werden. Das Array darf nicht NULL sein. Parametername: Bytes | Überprüfen Sie die [Feldzuordnungen](search-indexer-field-mappings.md), die im Indexer definiert sind, und vergleichen Sie sie mit den Daten des angegebenen Felds des fehlerhaften Dokuments. Es kann erforderlich sein, die Feldzuordnungen oder die Dokumentdaten zu ändern. |
 | Feldwert konnte nicht gelesen werden | Der Wert der Spalte `'fieldName'` bei Index `'fieldIndex'` konnte nicht gelesen werden. Beim Empfangen von Ergebnissen vom Server ist ein Fehler auf Übertragungsebene aufgetreten. (Anbieter: TCP-Anbieter, Fehler: 0 – Eine vorhandene Verbindung wurde erzwungenermaßen vom Remotehost geschlossen.) | Diese Fehler sind in der Regel auf unerwartete Konnektivitätsprobleme beim zugrunde liegenden Dienst der Datenquelle zurückzuführen. Versuchen Sie später erneut, das Dokument über den Indexer laufen zu lassen. |
 
-<a name="could-not-execute-skill"/>
+<a name="Could not map output field '`xyz`' to search index due to deserialization problem while applying mapping function '`abc`'"></a>
+
+## <a name="error-could-not-map-output-field-xyz-to-search-index-due-to-deserialization-problem-while-applying-mapping-function-abc"></a>Error: Das Ausgabefeld „`xyz`“ konnte aufgrund eines Deserialisierungsproblems beim Anwenden der Zuordnungsfunktion „`abc`“ nicht dem Suchindex zugeordnet werden.
+Bei der Ausgabezuordnung ist möglicherweise ein Fehler aufgetreten, da die Ausgabedaten für die von Ihnen verwendete Zuordnungsfunktion das falsche Format aufweisen. Wenn Sie z. B. die Base64Encode-Zuordnungsfunktion auf binäre Daten anwenden, wird dieser Fehler generiert. Um das Problem zu beheben, führen Sie den Indexer erneut aus, ohne die Zuordnungsfunktion anzugeben, oder stellen Sie sicher, dass die Zuordnungsfunktion mit dem Datentyp des Ausgabefelds kompatibel ist. Weitere Informationen finden Sie unter [Ausgabefeldzuordnung](cognitive-search-output-field-mapping.md).
+
+<a name="could-not-execute-skill"></a>
 
 ## <a name="error-could-not-execute-skill"></a>Error: Skill konnte nicht ausgeführt werden.
 Der Indexer konnte einen Skill im Skillset nicht ausführen.
@@ -87,19 +92,19 @@ Der Indexer konnte einen Skill im Skillset nicht ausführen.
 | Potenzieller Produktfehler | Ein unerwarteter Fehler ist aufgetreten. | Dies weist auf eine unbekannte Fehlerklasse hin und kann bedeuten, dass ein Produktfehler vorliegt. Erstellen Sie ein [Supportticket](https://ms.portal.azure.com/#create/Microsoft.Support), um Hilfe zu erhalten. |
 | Fehler bei der Ausführung eines Skills | (Aus „Skill für Zusammenführung“:) Mindestens ein Offsetwert war ungültig und konnte nicht analysiert werden. Am Ende des Texts wurden Elemente eingefügt. | Beheben Sie das Problem anhand der Informationen in der Fehlermeldung. Für die Behebung dieser Art von Fehler sind Maßnahmen erforderlich. |
 
-<a name="could-not-execute-skill-because-the-web-api-request-failed"/>
+<a name="could-not-execute-skill-because-the-web-api-request-failed"></a>
 
 ## <a name="error-could-not-execute-skill-because-the-web-api-request-failed"></a>Error: Skill konnte wegen eines Fehlers bei der Anforderung der Web-API nicht ausgeführt werden.
 Bei der Ausführung eines Skills ist aufgrund eines Fehlers beim Aufruf der Web-API ein Fehler aufgetreten. Diese Fehlerklasse wird normalerweise angegeben, wenn benutzerdefinierte Skills verwendet werden. In diesem Fall müssen Sie den benutzerdefinierten Code debuggen, um das Problem zu beheben. Wenn der Fehler stattdessen einen integrierten Skill betrifft, finden Sie in der Fehlermeldung Hilfe zum Beheben des Problems.
 
 Achten Sie beim Debuggen dieses Problems auf alle [Qualifikationseingaben-Warnungen](#warning-skill-input-was-invalid) für diese Qualifikation. Bei Ihrem Web-API-Endpunkt kann ein Fehler auftreten, weil ihm vom Indexer unerwartete Eingaben übergeben werden.
 
-<a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"/>
+<a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"></a>
 
 ## <a name="error-could-not-execute-skill-because-web-api-skill-response-is-invalid"></a>Error: Skill konnte wegen ungültiger Antwort auf den Web-API-Skill nicht ausgeführt werden.
 Bei der Ausführung eines Skills ist ein Fehler aufgetreten, da beim Aufruf der Web-API eine ungültige Antwort zurückgegeben wurde. Diese Fehlerklasse wird normalerweise angegeben, wenn benutzerdefinierte Skills verwendet werden. In diesem Fall müssen Sie den benutzerdefinierten Code debuggen, um das Problem zu beheben. Wenn der Fehler stattdessen einen integrierten Skill betrifft, erstellen Sie ein [Supportticket](https://ms.portal.azure.com/#create/Microsoft.Support), um Hilfe zu erhalten.
 
-<a name="skill-did-not-execute-within-the-time-limit"/>
+<a name="skill-did-not-execute-within-the-time-limit"></a>
 
 ## <a name="error-skill-did-not-execute-within-the-time-limit"></a>Error: Die Qualifikation wurde nicht innerhalb des Zeitlimits ausgeführt
 Es gibt zwei Fälle, in denen möglicherweise diese Fehlermeldung angezeigt wird, die jeweils unterschiedlich behandelt werden sollten. Befolgen Sie die nachfolgenden Anweisungen, je nachdem, welche Qualifikation diesen Fehler zurückgegeben hat.
@@ -136,7 +141,7 @@ Wenn ein Timeout bei einer selbst erstellten benutzerdefinierten Qualifikation a
 
 Der maximale Wert, den Sie für den `timeout`-Parameter festlegen können, beträgt 230 Sekunden.  Wenn Ihre benutzerdefinierte Qualifikation nicht innerhalb von 230 Sekunden konsistent ausgeführt werden kann, sollten Sie ggf. die `batchSize` Ihrer benutzerdefinierten Qualifikation verringern, sodass weniger Dokumente innerhalb einer einzelnen Ausführung verarbeitet werden.  Wenn Sie die `batchSize` bereits auf 1 festgelegt haben, müssen Sie die Qualifikation neu schreiben, damit Sie in unter 230 Sekunden ausgeführt werden kann, oder Sie müssen sie anderweitig in mehrere benutzerdefinierte Qualifikationen aufteilen, damit die Ausführungszeit für jede einzelne benutzerdefinierte Qualifikation maximal 230 Sekunden beträgt. Weitere Informationen finden Sie in der [Dokumentation zu benutzerdefinierten Qualifikationen](cognitive-search-custom-skill-web-api.md).
 
-<a name="could-not-mergeorupload--delete-document-to-the-search-index"/>
+<a name="could-not-mergeorupload--delete-document-to-the-search-index"></a>
 
 ## <a name="error-could-not-mergeorupload--delete-document-to-the-search-index"></a>Error: „`MergeOrUpload`“ | „`Delete`“ des Dokuments in den Suchindex nicht möglich
 
@@ -152,7 +157,7 @@ Das Dokument wurde gelesen und verarbeitet, aber der Indexer konnte es nicht zum
 | Fehler in der zugrunde liegenden Compute-/Netzwerkressource (selten) | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Ein unbekannter Fehler ist aufgetreten. | Konfigurieren Sie Indexer für die [Ausführung nach Zeitplan](search-howto-schedule-indexers.md), um den Betrieb nach einem Fehler wieder aufzunehmen.
 | Eine Indizierungsanforderung an den Zielindex wurde aufgrund von Netzwerkproblemen nicht innerhalb eines Zeitlimits bestätigt. | Die Verbindung mit dem Suchindex konnte nicht rechtzeitig hergestellt werden. | Konfigurieren Sie Indexer für die [Ausführung nach Zeitplan](search-howto-schedule-indexers.md), um den Betrieb nach einem Fehler wieder aufzunehmen. Versuchen Sie außerdem, die [Batchgröße](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters) des Indexers zu verringern, wenn dieser Fehler weiterhin auftritt.
 
-<a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
+<a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>
 
 ## <a name="error-could-not-index-document-because-some-of-the-documents-data-was-not-valid"></a>Error: Das Dokument konnte nicht indiziert werden, da einige Daten des Dokuments nicht zulässig waren.
 
@@ -172,13 +177,13 @@ Beachten Sie in allen diesen Fällen die Informationen unter [Unterstützte Date
 
 Dies betrifft SQL-Tabellen und geschieht in der Regel, wenn der Schlüssel als zusammengesetzter Schlüssel definiert ist oder wenn in der Tabelle ein eindeutiger gruppierter Index definiert ist (d. h. wie in einem SQL-Index, nicht in einem Azure Search-Index). Der Hauptgrund ist, dass das Schlüsselattribut bei einem [eindeutigen gruppierten Index](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15) geändert wird, sodass es sich um einen zusammengesetzten Primärschlüssel handelt. Stellen Sie in diesem Fall sicher, dass die SQL-Tabelle keinen eindeutigen gruppierten Index aufweist oder dass Sie das Schlüsselfeld einem Feld zuordnen, das garantiert keine doppelten Werte aufweist.
 
-<a name="could-not-process-document-within-indexer-max-run-time"/>
+<a name="could-not-process-document-within-indexer-max-run-time"></a>
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Error: Das Dokument konnte nicht innerhalb der maximalen Laufzeit des Indexers verarbeitet werden.
 
 Dieser Fehler tritt auf, wenn der Indexer die Verarbeitung eines einzelnen Dokuments aus der Datenquelle nicht innerhalb der zulässigen Ausführungszeit beenden kann. Die [maximale Ausführungszeit](search-limits-quotas-capacity.md#indexer-limits) ist kürzer, wenn Skillsets verwendet werden. Wenn dieser Fehler auftritt und maxFailedItems auf einen anderen Wert als 0 festgelegt ist, umgeht der Indexer das Dokument bei zukünftigen Ausführungen, sodass die Indizierung fortgesetzt werden kann. Wenn kein Dokument übersprungen werden darf oder wenn dieser Fehler dauerhaft auftritt, sollten Sie die Dokumente in kleinere Dokumente aufteilen, damit ein Teilfortschritt innerhalb einer einzelnen Indexerausführung erfolgen kann.
 
-<a name="could-not-project-document"/>
+<a name="could-not-project-document></a>
 
 ## <a name="error-could-not-project-document"></a>Error: Das Dokument konnte nicht projiziert werden.
 
@@ -190,7 +195,7 @@ Dieser Fehler tritt auf, wenn der Indexer versucht hat, [Daten in einen Wissenss
 | Das Projektionsblob `'blobUri'` im Container `'containerName'` konnte nicht aktualisiert werden. |In die Übertragungsverbindung können keine Daten geschrieben werden: An existing connection was forcibly closed by the remote host. | Dies ist voraussichtlich ein vorübergehender Fehler bei Azure Storage, der daher durch erneutes Ausführen des Indexers behoben werden sollte. Wenn dieser Fehler konsistent auftritt, übermitteln Sie ein [Supportticket](https://ms.portal.azure.com/#create/Microsoft.Support), damit er weiter untersucht werden kann.  |
 | Zeile `'projectionRow'` in Tabelle `'tableName'` konnte nicht aktualisiert werden. | Der Server ist ausgelastet. | Dies ist voraussichtlich ein vorübergehender Fehler bei Azure Storage, der daher durch erneutes Ausführen des Indexers behoben werden sollte. Wenn dieser Fehler konsistent auftritt, übermitteln Sie ein [Supportticket](https://ms.portal.azure.com/#create/Microsoft.Support), damit er weiter untersucht werden kann.  |
 
-<a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
+<a name="could-not-execute-skill-because-a-skill-input-was-invalid"></a>
 
 ## <a name="warning-skill-input-was-invalid"></a>Warnung: Die Qualifikationseingabe war ungültig.
 Eine Eingabe für die Qualifikation fehlt, hat den falschen Typ oder ist aus einem anderen Grund ungültig. In der Warnmeldung wird die Auswirkung angegeben:
@@ -227,7 +232,7 @@ Wenn Sie einen Standardwert für fehlende Eingaben angeben möchten, können Sie
 | Die Skilleingabe fehlt. | „Eine erforderliche Qualifikationseingabe fehlt. Name: `text`, Quelle: `/document/merged_content`“ „Fehlender Wert: `/document/normalized_images/0/imageTags`.“  „Auswählen von `0` im Array `/document/pages` mit der Länge `0` nicht möglich.“ | Wenn diese Warnung für alle Ihre Dokumente angezeigt wird, enthalten die Eingabepfade sehr wahrscheinlich einen Tippfehler. Überprüfen Sie die Groß- und Kleinschreibung der Eigenschaftennamen. Prüfen Sie außerdem den Pfad auf überflüssige oder fehlende Sternchen (`*`), und stellen Sie sicher, dass die Dokumente aus der Datenquelle die erforderlichen Eingaben liefern. |
 | Der Sprachcode für die Skilleingabe ist ungültig. | Die Skilleingabe `languageCode` enthält die Sprachcodes `X,Y,Z`, von denen mindestens einer ungültig ist. | [Weiter unten](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) finden Sie weitere Details. |
 
-<a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"/>
+<a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>
 
 ## <a name="warning--skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Warnung:  Qualifikationseingabe „languageCode“ enthält die Sprachcodes „X, Y, Z“, wovon mindestens einer ungültig ist.
 Mindestens einer der an die optionale `languageCode`-Eingabe einer Downstreamqualifikation übergebenen Werte wird nicht unterstützt. Dies kann vorkommen, wenn Sie die Ausgabe von [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) an nachfolgende Qualifikationen übergeben und die Ausgabe aus mehr Sprachen besteht, als in diesen Downstreamqualifikationen unterstützt werden.
@@ -254,7 +259,7 @@ Im folgenden finden Sie einige Referenzen für die derzeit unterstützten Sprach
 * [Unterstützte Sprachen für den Übersetzer](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) (für die Qualifikation [Text TranslationSkill](cognitive-search-skill-text-translation.md))
 * [Text SplitSkill](cognitive-search-skill-textsplit.md) Unterstützte Sprachen: `da, de, en, es, fi, fr, it, ko, pt`
 
-<a name="skill-input-was-truncated"/>
+<a name="skill-input-was-truncated"></a>
 
 ## <a name="warning-skill-input-was-truncated"></a>Warnung: Die Qualifikationseingabe wurde abgeschnitten
 Für kognitive Skills gelten Beschränkungen hinsichtlich der Länge von Text, der gleichzeitig analysiert werden kann. Wenn die Texteingabe dieser Qualifikationen diesen Grenzwert überschreitet, wird der Text abgeschnitten, um den Grenzwert einzuhalten, und die Anreicherung wird anschließend für diesen abgeschnittene Text ausgeführt. Dies bedeutet, dass die Qualifikation ausgeführt wird, aber nicht für all Ihre Daten.
@@ -276,12 +281,12 @@ Im unten gezeigten LanguageDetectionSkill-Beispiel kann das `'text'`-Eingabefeld
 
 Wenn Sie sicherstellen möchten, dass der gesamte Text analysiert wird, sollten Sie die [Qualifikation „Aufteilung“](cognitive-search-skill-textsplit.md) verwenden.
 
-<a name="web-api-skill-response-contains-warnings"/>
+<a name="web-api-skill-response-contains-warnings"></a>
 
 ## <a name="warning-web-api-skill-response-contains-warnings"></a>Warnung: Antwort auf Web-API-Skill enthält Warnungen.
 Der Indexer konnte einen Skill im Skillset ausführen, aber die Antwort auf die Web-API-Anforderung ergab, dass während der Ausführung Warnungen aufgetreten sind. Überprüfen Sie die Warnungen, um zu verstehen, wie sich dies auf die Daten auswirkt und ob Handlungsbedarf besteht.
 
-<a name="the-current-indexer-configuration-does-not-support-incremental-progress"/>
+<a name="the-current-indexer-configuration-does-not-support-incremental-progress"></a>
 
 ## <a name="warning-the-current-indexer-configuration-does-not-support-incremental-progress"></a>Warnung: Die aktuelle Indexerkonfiguration unterstützt keinen inkrementellen Fortschritt.
 
@@ -295,30 +300,35 @@ Dieses Verhalten kann außer Kraft gesetzt werden, indem durch Verwendung der Ko
 
 Weitere Informationen finden Sie unter [Inkrementeller Status und benutzerdefinierte Abfragen](search-howto-index-cosmosdb.md#IncrementalProgress).
 
-<a name="some-data-was-lost-during projection-row-x-in-table-y-has-string-property-z-which-was-too-long"/>
+<a name="some-data-was-lost-during projection-row-x-in-table-y-has-string-property-z-which-was-too-long"></a>
 
 ## <a name="warning-some-data-was-lost-during-projection-row-x-in-table-y-has-string-property-z-which-was-too-long"></a>Warnung: Einige Daten sind während der Projektion verloren gegangen. Zeile „X“ in Tabelle „Y“ weist Zeichenfolgeneigenschaft „Z“ auf, die zu lang war.
 
 Im [Table Storage-Dienst](https://azure.microsoft.com/services/storage/tables) ist die Größe der [Entitätseigenschaften](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model#property-types) begrenzt. Zeichenfolgen können maximal 32.000 Zeichen enthalten. Wird eine Zeile mit einer Zeichenfolgeneigenschaft, die länger als 32.000 Zeichen ist, projiziert, werden nur die ersten 32.000 Zeichen beibehalten. Um dieses Problem zu umgehen, vermeiden Sie das Projizieren von Zeilen mit Zeichenfolgeneigenschaften, die länger als 32.000 Zeichen sind.
 
-<a name="truncated-extracted-text-to-x-characters"/>
+<a name="truncated-extracted-text-to-x-characters"></a>
 
 ## <a name="warning-truncated-extracted-text-to-x-characters"></a>Warnung: Der extrahierte Text wurde auf x Zeichen gekürzt.
 Indexer begrenzen die pro Dokument extrahierbare Textmenge. Dieser Grenzwert ist tarifabhängig: 32.000 Zeichen für den Tarif „Free“, 64.000 Zeichen für den Tarif „Basic“, 4 Millionen Zeichen für den Tarif „Standard“, 8 Millionen Zeichen für den Tarif „Standard S2“ und 16 Millionen Zeichen für den Tarif „Standard S3“. Abgeschnittener Text wird nicht indiziert. Zur Vermeidung dieser Warnung können Sie versuchen, Dokumente mit umfangreichem Text in mehrere kleinere Dokumente aufzuteilen. 
 
 Weitere Informationen finden Sie unter [Indexergrenzwerte](search-limits-quotas-capacity.md#indexer-limits).
 
-<a name="could-not-map-output-field-x-to-search-index"/>
+<a name="could-not-map-output-field-x-to-search-index"></a>
 
 ## <a name="warning-could-not-map-output-field-x-to-search-index"></a>Warnung: Das Ausgabefeld „X“ konnte dem Suchindex nicht zugeordnet werden.
-Ausgabefeldzuordnungen, die auf nicht vorhandene oder Nulldaten verweisen, führen zu Warnungen für jedes Dokument und damit zu einem leeren Indexfeld. Um dieses Problem zu umgehen, überprüfen Sie die Quellpfade des Ausgabefelds auf mögliche Tippfehler, oder legen Sie mit dem [bedingten Skill](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist) einen Standardwert fest.
+Ausgabefeldzuordnungen, die auf nicht vorhandene oder Nulldaten verweisen, führen zu Warnungen für jedes Dokument und damit zu einem leeren Indexfeld. Um dieses Problem zu umgehen, überprüfen Sie die Quellpfade des Ausgabefelds auf mögliche Tippfehler, oder legen Sie mit dem [bedingten Skill](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist) einen Standardwert fest. Weitere Informationen finden Sie unter [Ausgabefeldzuordnung](cognitive-search-output-field-mapping.md).
 
-<a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"/>
+| `Reason` | Details/Beispiel | Lösung |
+| --- | --- | --- |
+| Durchlaufen des Nichtarrays nicht möglich | „Durchlaufen des Nichtarrays `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` nicht möglich.“ | Dieser Fehler tritt auf, wenn die Ausgabe kein Array ist. Wenn Sie der Ansicht sind, dass die Ausgabe ein Array sein sollte, überprüfen Sie den Pfad des angegebenen Ausgabequellfelds. Es könnte beispielsweise ein `*` im Namen des Quellfelds fehlen oder zu viel sein. Es ist auch möglich, dass die Eingabe für diese Qualifikation NULL ist, was zu einem leeren Array führt. Ähnliche Details finden Sie im Abschnitt [Die Qualifikationseingabe war ungültig](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid).    |
+| Auswählen von `0` im Nichtarray nicht möglich | „Auswählen von `0` im Nichtarray `/document/pages` nicht möglich.“ | Dies kann vorkommen, wenn die Qualifikationsausgabe kein Array erzeugt und der Name des Ausgabequellfelds einen Arrayindex oder `*` im Pfad aufweist. Überprüfen Sie die in den Feldnamen der Ausgabequelle angegebenen Pfade und den Feldwert für den angegebenen Feldnamen. Ähnliche Details finden Sie im Abschnitt [Die Qualifikationseingabe war ungültig](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid).  |
+
+<a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>
 
 ## <a name="warning-the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>Warnung: Die Richtlinie zur Erkennung von Datenänderungen ist für die Verwendung der Schlüsselspalte „X“ konfiguriert.
 [Richtlinien für die Datenänderungserkennung](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) weisen bestimmte Anforderungen an die zum Erkennen von Änderungen verwendeten Spalten auf. Eine dieser Anforderungen besteht darin, dass diese Spalte jedes Mal aktualisiert wird, wenn das Quellelement geändert wird. Eine weitere Anforderung besteht darin, dass der neue Wert für diese Spalte größer als der vorherige Wert ist. Schlüsselspalten erfüllen diese Anforderung nicht, da Sie nicht bei jeder Aktualisierung geändert werden. Um dieses Problem zu umgehen, wählen Sie eine andere Spalte für die Änderungserkennungsrichtlinie aus.
 
-<a name="document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"/>
+<a name="document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>
 
 ## <a name="warning-document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>Warnung: Der Dokumenttext scheint UTF-16-codiert zu sein, es fehlt jedoch eine Bytereihenfolge-Marke.
 
@@ -334,7 +344,7 @@ Wenn keine Bytereihenfolge-Marke vorhanden ist, wird eine UTF-8-Codierung des Te
 
 Um diese Warnung zu umgehen, ermitteln Sie die Textcodierung für dieses Blob, und fügen Sie die entsprechende Bytereihenfolge-Marke hinzu.
 
-<a name="cosmos-db-collection-has-a-lazy-indexing-policy"/>
+<a name="cosmos-db-collection-has-a-lazy-indexing-policy"></a>
 
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>Warnung: Cosmos DB Sammlung „X“ weist eine Indizierungsrichtlinie vom Typ „Verzögert“ auf. Unter Umständen gehen einige Daten verloren.
 

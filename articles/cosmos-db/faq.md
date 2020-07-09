@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 976ff4d3be194bf33d2c01f06c66782caf8dad50
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: a5ef03689a6374dc1cf945a787f9f82b9979a1e0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608046"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834905"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 
@@ -70,7 +70,7 @@ Sie können auch den [Azure Cosmos DB-Emulator](local-emulator.md) zum kostenlos
 
 Eine technische Frage können Sie in einem dieser beiden Frage- und Antwort-Foren stellen:
 
-* [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
+* [Frageseite von Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow eignet sich am besten für Fragen zur Programmierung. Vergewissern Sie sich, dass Ihre Frage [themenbezogen](https://stackoverflow.com/help/on-topic) ist und [so viele Details wie möglich enthält, damit sie klar und beantwortbar ist](https://stackoverflow.com/help/how-to-ask).
 
 Wenn Sie neue Funktionen wünschen, erstellen Sie auf [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db) eine neue Anforderung.
@@ -93,7 +93,7 @@ Die folgenden Bedingungen gelten für Azure Cosmos DB-Testabonnements:
 * Die globale Replikation ist in den folgenden [Azure-Regionen](https://azure.microsoft.com/regions/) verfügbar: „USA, Mitte“, „Europa, Norden“ und „Asien, Südosten“
 * Maximaler Durchsatz von 5.000 RU/s bei Bereitstellung auf Containerebene.
 * Maximaler Durchsatz von 20.000 RU/s bei Bereitstellung auf Datenbankebene.
-* Abonnements laufen nach 30 Tagen ab und können auf maximal 31 Tage verlängert werden.
+* Abonnements laufen nach 30 Tagen ab und können auf maximal 31 Tage verlängert werden. Nach dem Ablauf werden die enthaltenen Informationen gelöscht.
 * Azure-Supporttickets können nicht für Azure Cosmos DB-Testkonten erstellt werden. Allerdings erhalten Abonnenten mit vorhandenen Supportplänen Support.
 
 ## <a name="set-up-azure-cosmos-db"></a>Einrichten von Azure Cosmos DB

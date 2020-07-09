@@ -5,22 +5,22 @@ author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1f4207a11f3ae3664023fccf6178b6db7cf253b9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679236"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021159"
 ---
 # <a name="create-client-side-performance-traces"></a>Erstellen clientseitiger Leistungsüberwachungen
 
 Es gibt zahlreiche Gründe, aus denen die Leistung von Azure Remote Rendering möglicherweise nicht den Erwartungen entspricht. Neben der reinen Renderingleistung auf dem Cloudserver hat insbesondere die Qualität der Netzwerkverbindung einen erheblichen Einfluss auf die Leistung. Informationen zum Erstellen von Profilen für die Leistung des Servers finden Sie im Kapitel [Serverseitige Leistungsabfragen](../overview/features/performance-queries.md).
 
-In diesem Kapitel wird erläutert, wie potenzielle clientseitige Engpässe mithilfe von *Leistungsablaufverfolgungen* identifiziert werden.
+In diesem Kapitel wird erläutert, wie potenzielle clientseitige Engpässe mithilfe von *:::no-loc text="performance traces":::* identifiziert werden.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Falls Sie noch nicht mit der Windows-Leistungsablaufverfolgung vertraut sind, wird in diesem Abschnitt auf die grundlegenden Begriffe und Anwendungen für den Einstieg eingegangen.
+Falls Sie noch nicht mit der :::no-loc text="performance tracing":::-Funktionalität von Windows vertraut sind, wird in diesem Abschnitt auf die grundlegenden Begriffe und Anwendungen für den Einstieg eingegangen.
 
 ### <a name="installation"></a>Installation
 
@@ -51,7 +51,7 @@ Zum Identifizieren von ARR-Leistungsproblemen sollten Sie eine Ablaufverfolgung 
 
 ### <a name="wpr-configuration"></a>WPR-Konfiguration
 
-1. Starten Sie die [Windows-Leistungsaufzeichnung](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) über das *Startmenü*.
+1. Starten Sie die [:::no-loc text="Windows Performance Recorder":::](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) im *Startmenü*.
 1. Erweitern Sie **Mehr Optionen**
 1. Klicken Sie auf **Add Profiles...** (Profile hinzufügen).
 1. Wählen Sie die Datei *AzureRemoteRenderingNetworkProfiling.wprp* aus. Sie finden diese Datei im ARR SDK unter *Tools/ETLProfiles*.
@@ -81,7 +81,7 @@ Wenn Sie eine Ablaufverfolgung auf einer HoloLens aufzeichnen möchten, starten 
 
 1. Navigieren Sie links zu *Performance > Performance Tracing* (Leistung > Ablaufleistungsverfolgung).
 1. Wählen Sie **Custom profiles** (Benutzerdefinierte Profile) aus.
-1. Klicken Sie auf **Durchsuchen**.
+1. Klicken Sie auf **:::no-loc text="Browse...":::**
 1. Wählen Sie die Datei *AzureRemoteRenderingNetworkProfiling.wprp* aus. Sie finden diese Datei im ARR SDK unter *Tools/ETLProfiles*.
 1. Klicken Sie auf **Start Trace** (Ablaufverfolgung starten).
 1. Die HoloLens zeichnet nun eine Ablaufverfolgung auf. Vergewissern Sie sich, dass die zu untersuchenden Leistungsprobleme ausgelöst wurden. Klicken Sie dann auf **Stop Trace** (Ablaufverfolgung beenden).

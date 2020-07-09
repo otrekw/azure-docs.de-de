@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 208a7a677bdf0b76ffed83e679c6f1ff3041d50d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 5ba9bb723ab7b052440eea2ac509692200b80f6e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239685"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750696"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk über das Azure-Portal
 
@@ -54,7 +54,7 @@ Ein Hybridnetzwerk nutzt das Modell der Hub-and-Spoke-Architektur zur Weiterleit
    Darüber hinaus werden Routen zu den mit dem Gateway verbundenen virtuellen Netzwerken oder lokalen Netzwerken über den Gatewaytransit automatisch an die Routingtabellen für die virtuellen Netzwerke mit Peeringbeziehung verteilt. Weitere Informationen finden Sie unter [Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md).
 
 - Legen Sie für das Peering von VNET-Spoke mit VNET-Hub **UseRemoteGateways** fest. Wenn **UseRemoteGateways** und für das Remotepeering **AllowGatewayTransit** festgelegt ist, verwendet das virtuelle Spoke-Netzwerk Gateways des virtuellen Remotenetzwerks für den Transit.
-- Zum Weiterleiten des Spoke-Subnetzdatenverkehrs durch die Hub-Firewall benötigen Sie eine benutzerdefinierte Route (User Defined Route, UDR), die auf die Firewall verweist, während die Option **Routenverteilung des Gateways für virtuelle Netzwerke** deaktiviert ist. Wenn die Option **Routenverteilung des Gateways für virtuelle Netzwerke** deaktiviert ist, wird die Routenverteilung für die Spoke-Subnetze verhindert. Dadurch wird verhindert, dass erlernte Routen mit Ihrer UDR in Konflikt stehen.
+- Zum Weiterleiten des Spoke-Subnetzdatenverkehrs durch die Hub-Firewall können Sie eine benutzerdefinierte Route (User Defined Route, UDR) verwenden, die auf die Firewall verweist, während die Option **Routenverteilung des Gateways für virtuelle Netzwerke** deaktiviert ist. Wenn die Option **Routenverteilung des Gateways für virtuelle Netzwerke** deaktiviert ist, wird die Routenverteilung für die Spoke-Subnetze verhindert. Dadurch wird verhindert, dass erlernte Routen mit Ihrer UDR in Konflikt stehen. Wenn Sie **Routenverteilung des Gateways für virtuelle Netzwerke** aktiviert lassen möchten, definieren Sie unbedingt spezifische Routen für die Firewall, um die Routen außer Kraft zu setzen, die aus einer lokalen Umgebung über BGP veröffentlicht werden.
 - Konfigurieren Sie eine UDR im Hub-Gatewaysubnetz, die auf die Firewall-IP-Adresse als nächsten Hop auf dem Weg zu den Spoke-Netzwerken verweist. Für das Azure Firewall-Subnetz ist keine UDR erforderlich, da es die Routen über BGP erlernt.
 
 Informationen zur Erstellung dieser Routen finden Sie in diesem Tutorial im Abschnitt [Erstellen von Routen](#create-the-routes).
@@ -131,18 +131,6 @@ Erstellen Sie nun ein zweites Subnetz für das Gateway.
 4. Geben Sie unter **Adressbereich (CIDR-Block)** den Adressbereich **192.168.2.0/24** ein.
 5. Klicken Sie auf **OK**.
 
-### <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
-
-Dies ist die öffentliche IP-Adresse für das lokale Gateway.
-
-1. Wählen Sie auf der Startseite des Azure-Portals **Ressource erstellen** aus.
-2. Geben Sie **öffentliche IP-Adresse** in das Textfeld für die Suche ein, und drücken Sie die **EINGABETASTE**.
-3. Wählen Sie **Öffentliche IP-Adresse** und anschließend **Erstellen** aus.
-4. Geben als Name die Zeichenfolge **VNet-Onprem-GW-pip** ein.
-5. Geben Sie als Ressourcengruppe die Zeichenfolge **FW-Hybrid-Test** ein.
-6. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
-7. Übernehmen Sie für die anderen Optionen die Standardwerte, und wählen Sie **Erstellen** aus.
-
 ## <a name="configure-and-deploy-the-firewall"></a>Konfigurieren und Bereitstellen der Firewall
 
 Stellen Sie nun die Firewall im virtuellen Firewall-Hub-Netzwerk bereit.
@@ -153,10 +141,10 @@ Stellen Sie nun die Firewall im virtuellen Firewall-Hub-Netzwerk bereit.
 
    |Einstellung  |Wert  |
    |---------|---------|
-   |Subscription     |\<Ihr Abonnement\>|
+   |Subscription     |\<your subscription\>|
    |Resource group     |**FW-Hybrid-Test** |
    |Name     |**AzFW01**|
-   |Position     |Wählen Sie den gleichen Standort aus wie zuvor.|
+   |Standort     |Wählen Sie den gleichen Standort aus wie zuvor.|
    |Virtuelles Netzwerk auswählen     |**Vorhandene verwenden**:<br> **VNet-hub**|
    |Öffentliche IP-Adresse     |Neu erstellen: <br>**Name** - **fw-pip**. |
 

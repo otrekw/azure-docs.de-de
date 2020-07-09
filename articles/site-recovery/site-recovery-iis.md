@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478290"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131337"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Einrichten der Notfallwiederherstellung für eine IIS-basierte Webanwendung mit mehreren Ebenen
 
@@ -31,7 +31,7 @@ In diesem Artikel wird beschrieben, wie Sie mit [Azure Site Recovery](site-recov
 Bevor Sie beginnen, stellen Sie sicher, dass Sie wissen, wie Sie die folgenden Aufgaben ausführen:
 
 * [Replizieren eines virtuellen Computers in Azure](vmware-azure-tutorial.md)
-* [Entwerfen eines Netzwerks für die Wiederherstellung](site-recovery-network-design.md)
+* [Entwerfen eines Netzwerks für die Wiederherstellung](./concepts-on-premises-to-azure-networking.md)
 * [Ausführen eines Testfailovers in Azure](site-recovery-test-failover-to-azure.md)
 * [Ausführen eines Failovers in Azure](site-recovery-failover.md)
 * [Replizieren eines Domänencontrollers](site-recovery-active-directory.md)
@@ -92,7 +92,7 @@ Weitere Informationen finden Sie unter [Anpassen des Wiederherstellungsplans](si
 
 
 ### <a name="add-a-script-to-the-recovery-plan"></a>Hinzufügen eines Skripts zum Wiederherstellungsplan
-Für die korrekte Funktionsweise der IIS-Webfarm kann es erforderlich sein, nach dem Failover bzw. während eines Testfailovers einige Vorgänge auf den virtuellen Azure-Computern durchzuführen. Sie können einige Vorgänge nach einem Failover automatisieren. Durch Hinzufügen entsprechender Skripts zum Wiederherstellungsplan können Sie beispielsweise den DNS-Eintrag aktualisieren sowie Bindungen und Verbindungszeichenfolgen ändern. Unter [Hinzufügen eines VMM-Skripts zu einem Wiederherstellungsplan](site-recovery-how-to-add-vmmscript.md) wird beschrieben, wie Sie automatisierte Aufgaben mithilfe eines Skripts einrichten.
+Für die korrekte Funktionsweise der IIS-Webfarm kann es erforderlich sein, nach dem Failover bzw. während eines Testfailovers einige Vorgänge auf den virtuellen Azure-Computern durchzuführen. Sie können einige Vorgänge nach einem Failover automatisieren. Durch Hinzufügen entsprechender Skripts zum Wiederherstellungsplan können Sie beispielsweise den DNS-Eintrag aktualisieren sowie Bindungen und Verbindungszeichenfolgen ändern. Unter [Hinzufügen eines VMM-Skripts zu einem Wiederherstellungsplan](./hyper-v-vmm-recovery-script.md) wird beschrieben, wie Sie automatisierte Aufgaben mithilfe eines Skripts einrichten.
 
 #### <a name="dns-update"></a>DNS-Update
 Wenn das DNS für das dynamische DNS-Update konfiguriert ist, führen virtuelle Computer nach dem Starten normalerweise ein Update des DNS mit der neuen IP-Adresse durch. Falls Sie einen expliziten Schritt für das Update des DNS mit den neuen IP-Adressen der virtuellen Computer hinzufügen möchten, fügen Sie ein [Skript zum Aktualisieren der IP-Adresse im DNS](https://aka.ms/asr-dns-update) als Aktion nach dem Failover den Wiederherstellungsplangruppen hinzu.  

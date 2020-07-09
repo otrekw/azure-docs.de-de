@@ -1,19 +1,14 @@
 ---
 title: Apache Kafka-Entwicklerleitfaden für Event Hubs
 description: Dieser Artikel enthält Links zu Artikeln, in denen beschrieben wird, wie Sie Ihre Kafka-Anwendungen in Azure Event Hubs integrieren können.
-services: event-hubs
-author: spelluru
-manager: ''
-ms.author: spelluru
-ms.date: 03/31/2020
+ms.date: 06/23/2020
 ms.topic: article
-ms.service: event-hubs
-ms.openlocfilehash: b4d9dc51451a06b2c87ddce78547655b51c6fabd
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: bbd173a7f81042c0839cec81838172b21f80d5cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314233"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka-Entwicklerleitfaden für Azure Event Hubs
 Dieser Artikel enthält Links zu Artikeln, in denen beschrieben wird, wie Sie Ihre Apache Kafka-Anwendungen in Azure Event Hubs integrieren können. 

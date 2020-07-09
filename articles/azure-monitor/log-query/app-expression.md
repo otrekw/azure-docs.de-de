@@ -5,19 +5,20 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/25/2019
-ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/09/2019
+ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670254"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201104"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>app()-Ausdruck in Azure Monitor-Abfragen
 
 Der `app`-Ausdruck wird in Azure Monitor-Abfragen verwendet, um Daten aus einer bestimmten Application Insights-Anwendung in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen. Dies ist nützlich, um Anwendungsdaten in eine Azure Monitor-Protokollabfrage einzuschließen und Daten in mehreren Anwendungen in einer Application Insights-Abfrage abzufragen.
 
-
+> [!IMPORTANT]
+> Der app()-Ausdruck wird nicht verwendet, wenn Sie eine [arbeitsbereichsbasierte Application Insights-Ressource](../app/create-workspace-resource.md) verwenden, da Protokolldaten in einem Log Analytics-Arbeitsbereich gespeichert werden. Verwenden Sie den log()-Ausdruck, um eine Abfrage zu schreiben, die Anwendungen in mehreren Arbeitsbereichen umfasst. Für mehrere Anwendungen im gleichen Arbeitsbereich benötigen Sie keine arbeitsbereichübergreifende Abfrage.
 
 ## <a name="syntax"></a>Syntax
 
@@ -26,7 +27,7 @@ Der `app`-Ausdruck wird in Azure Monitor-Abfragen verwendet, um Daten aus einer 
 
 ## <a name="arguments"></a>Argumente
 
-- *Identifier*: identifiziert die Anwendung mit einem der Formate in der folgenden Tabelle.
+- *Bezeichner*: Identifiziert die Anwendung mit einem der Formate in der folgenden Tabelle.
 
 | Bezeichner | BESCHREIBUNG | Beispiel
 |:---|:---|:---|

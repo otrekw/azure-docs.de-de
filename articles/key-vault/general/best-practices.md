@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cf8d461485cefd37b9508031f5cce7ae0a070ef5
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 2a81d28998c531339a1b719e37e4b90004157edf
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653194"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005848"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Bewährte Methoden zum Verwenden von Key Vault
 
@@ -35,7 +35,7 @@ Es wird empfohlen, einen Schlüsseltresor pro Anwendung und Umgebung (Entwicklun
 
 ## <a name="backup"></a>Backup
 
-Stellen Sie sicher, dass Sie regelmäßig Sicherungskopien Ihres [Schlüsseltresors](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) beim Aktualisieren/Löschen/Erstellen von Objekten in einem Schlüsseltresor erstellen.
+Stellen Sie sicher, dass Sie regelmäßig Sicherungskopien Ihres Schlüsseltresors beim Aktualisieren/Löschen/Erstellen von Objekten in einem Schlüsseltresor erstellen.
 
 ## <a name="turn-on-logging"></a>Aktivieren der Protokollierung
 

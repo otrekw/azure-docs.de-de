@@ -3,14 +3,14 @@ title: Azure Functions-Bereitstellungsslots
 description: Erfahren Sie, wie Sie Bereitstellungsslots mit Azure Functions erstellen und verwenden.
 author: craigshoemaker
 ms.topic: reference
-ms.date: 08/12/2019
+ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 0e8c93ea6d5c2b525ccbea2af900f100afcc3d93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cfbd533921ba4d1757e7415a3bb8f70aeb71251
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75769216"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122474"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions-Bereitstellungsslots
 
@@ -19,7 +19,7 @@ Azure Functions-Bereitstellungsslots ermöglichen Ihrer Funktions-App das Ausfü
 Im Folgenden wird dargestellt, wie sich der Austausch von Slots auf Funktionen auswirkt:
 
 - Die Umleitung des Datenverkehrs erfolgt nahtlos, und es gehen keine Anforderungen aufgrund des Tauschs verloren.
-- Wenn eine Funktion während eines Austauschs ausgeführt wird, wird die Ausführung fortgesetzt, und nachfolgende Trigger werden an die getauscht App-Instanz weitergeleitet.
+- Wenn eine Funktion während eines Austauschs ausgeführt wird, wird die Ausführung fortgesetzt, und die nächsten Trigger werden an die getauscht App-Instanz weitergeleitet.
 
 > [!NOTE]
 > Slots sind für den Linux-Verbrauch-Plan derzeit nicht verfügbar.
@@ -29,7 +29,7 @@ Im Folgenden wird dargestellt, wie sich der Austausch von Slots auf Funktionen a
 Es gibt eine Reihe von Vorteilen durch die Verwendung von Bereitstellungsslots. In den folgenden Szenarien werden gängige Verwendungsmöglichkeiten für Slots beschrieben:
 
 - **Verschiedene Umgebungen für unterschiedliche Zwecke**: Die Verwendung verschiedener Slots bietet Ihnen die Möglichkeit, App-Instanzen vor dem Austauschen in den Produktions- oder einen Stagingslot zu unterscheiden.
-- **Vorwärmen**: Wenn Sie in einem Slot anstatt direkt in der Produktionsumgebung bereitstellen, können Sie die App vor dem Livebetrieb vorwärmen. Außerdem reduziert die Verwendung von Slots die Latenzzeit für HTTP-ausgelöste Workloads. Instanzen werden vor der Bereitstellung vorgewärmt, wodurch sich Kaltstart bei neu bereitgestellten Funktionen verkürzt.
+- **Vorwärmen**: Wenn Sie in einem Slot anstatt direkt in der Produktionsumgebung bereitstellen, können Sie die App vor dem Livebetrieb vorwärmen. Außerdem reduziert die Verwendung von Slots die Latenzzeit für HTTP-ausgelöste Workloads. Instanzen werden vor der Bereitstellung vorgewärmt, wodurch sich der Kaltstart bei neu bereitgestellten Funktionen verkürzt.
 - **Einfache Fallbacks**: Nach einem Austausch mit der Produktion enthält der Slot mit der vorherigen Staging-App die vorherige Produktions-App. Wenn die in den Produktionsslot überführten Änderungen nicht Ihren Erwartungen entsprechen, können Sie den Austausch sofort wieder umkehren, um Ihre „letzte als funktionierend bekannte Instanz“ wiederherzustellen.
 
 ## <a name="swap-operations"></a>Austauschvorgänge
@@ -45,7 +45,7 @@ Während eines Austauschs wird ein Slot als Quelle und der andere als Ziel betra
 
 1. **Routing aktualisieren:** Nach erfolgreicher Vorwärmung aller Instanzen im Quellslot schließen die beiden Slots den Austausch ab, indem die Routingregeln ausgetauscht werden. Nach diesem Schritt befindet sich die App, die zuvor im Quellslot vorbereitet wurde, im Zielslot (also beispielsweise im Produktionsslot).
 
-1. **Vorgang wiederholen:** Nachdem der Quellslot nun die App vor dem Austausch enthält, die sich zuvor im Zielslot befand, führt App Service den gleichen Vorgang erneut aus, indem alle Einstellungen angewendet und die Instanzen für den Quellslot neu gestartet werden.
+1. **Vorgang wiederholen:** Nachdem der Quellslot nun die App vor dem Austausch enthält, die sich zuvor im Zielslot befand, führen Sie den gleichen Vorgang erneut aus, indem alle Einstellungen angewendet und die Instanzen für den Quellslot neu gestartet werden.
 
 Berücksichtigen Sie dabei Folgendes:
 
@@ -53,7 +53,7 @@ Berücksichtigen Sie dabei Folgendes:
 
 - Wenn Sie einen Stagingslot gegen den Produktionsslot austauschen möchten, muss der Produktionsslot *immer* der Zielslot sein. So ist sichergestellt, dass Ihre Produktions-App durch den Austauschvorgang nicht beeinträchtigt wird.
 
-- Einstellungen im Zusammenhang mit Ereignisquellen und -bindungen müssen als [Bereitstellungssloteinstellungen](#manage-settings) konfiguriert werden, *bevor Sie einen Austausch initiieren*. Wenn Sie vorzeitig als „sticky“ (persistent) markiert werden, wird sichergestellt, dass Ereignisse und Ausgaben an die richtige Instanz weitergeleitet werden.
+- Einstellungen im Zusammenhang mit Ereignisquellen und -bindungen müssen als [Bereitstellungssloteinstellungen](#manage-settings) konfiguriert werden, *bevor Sie einen Austausch starten*. Wenn Sie vorzeitig als „sticky“ (persistent) markiert werden, wird sichergestellt, dass Ereignisse und Ausgaben an die richtige Instanz weitergeleitet werden.
 
 ## <a name="manage-settings"></a>Verwalten von Einstellungen
 
@@ -67,15 +67,21 @@ Wenn Sie eine Bereitstellungseinstellung in einem Slot erstellen, achten Sie dar
 
 Führen Sie die folgenden Schritte aus, um eine Bereitstellungseinstellung zu erstellen:
 
-- Navigieren Sie in der Funktions-App zu *Slots*.
-- Klicken Sie auf den Slotnamen.
-- Klicken Sie unter *Plattformfeatures > Allgemeine Einstellungen* auf **Konfiguration**.
-- Klicken Sie auf den Namen der Einstellung, die für den aktuellen Slot persistent sein soll.
-- Klicken Sie auf das Kontrollkästchens **Bereitstellungssloteinstellung**.
-- Klicken Sie auf **OK**
-- Sobald das Blatt mit den Einstellungen angezeigt wird, klicken Sie auf **Speichern**, um die Änderungen beizubehalten.
+1. Navigieren Sie in der Funktions-App zu **Bereitstellungsslots**, und wählen Sie dann den Slotnamen aus.
 
-![Bereitstellungssloteinstellung](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
+    :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="Suchen Sie im Azure-Portal nach Slots." border="true":::
+
+1. Wählen Sie **Konfiguration** aus, und wählen Sie den Namen der Einstellung aus, die für den aktuellen Slot persistent sein soll.
+
+    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="Konfigurieren der Anwendungseinstellung für einen Slot im Azure-Portal." border="true":::
+
+1. Wählen Sie **Bereitstellungssloteinstellung** aus, und wählen Sie dann **OK** aus.
+
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="Konfigurieren der Bereitstellungssloteinstellung." border="true":::
+
+1. Sobald der Abschnitt mit den Einstellungen nicht mehr angezeigt wird, wählen Sie **Speichern** aus, um die Änderungen beizubehalten.
+
+    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="Speichern der Bereitstellungssloteinstellung." border="true":::
 
 ## <a name="deployment"></a>Bereitstellung
 
@@ -92,22 +98,28 @@ Alle Slots werden auf dieselbe Anzahl von Workern wie der Produktionsslot skalie
 
 Sie können einen Slot über die [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) oder über das Portal hinzufügen. In den folgenden Schritten wird veranschaulicht, wie Sie einen neuen Slot im Portal erstellen:
 
-1. Navigieren Sie zu ihrer Funktions-App, und klicken Sie auf das **Pluszeichen** neben *Slots*.
+1. Navigieren Sie zu Ihrer Funktions-App.
 
-    ![Hinzufügen eines Azure Functions-Bereitstellungsslots](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
+1. Wählen Sie **Bereitstellungsslots** aus, und wählen Sie dann **+ Slot hinzufügen** aus.
 
-1. Geben Sie einen Namen in das Textfeld ein, und drücken Sie auf die Schaltfläche **Erstellen**.
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="Hinzufügen eines Azure Functions-Bereitstellungsslots." border="true":::
 
-    ![Benennen eines Azure Functions-Bereitstellungsslots](./media/functions-deployment-slots/azure-functions-deployment-slots-add-name.png)
+1. Geben Sie den Namen des Slots ein, und wählen Sie dann **Hinzufügen** aus.
+
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="Benennen des Azure Functions-Bereitstellungsslots." border="true":::
 
 ## <a name="swap-slots"></a>Austauschen von Slots
 
 Sie können Slot über die [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) oder über das Portal austauschen. In den folgenden Schritten wird veranschaulicht, wie Sie Slots im Portal austauschen:
 
-1. Navigieren zur Funktions-App
-1. Klicken Sie auf den Namen des Quellslots, den Sie austauschen möchten.
-1. Klicken Sie auf der Registerkarte *Übersicht* auf die Schaltfläche **Austauschen**![Azure Functions-Bereitstellungsslot austauschen](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png).
-1. Überprüfen Sie die Konfigurationseinstellungen für Ihren Austausch, und klicken Sie auf **Austauschen**. ![Azure Functions-Bereitstellungsslot austauschen](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Navigieren Sie zur Funktionen-App.
+1. Wählen Sie **Bereitstellungssloteinstellung** aus, und wählen Sie dann **Austauschen** aus.
+
+    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="Austauschen des Bereitstellungsslots." border="true":::
+
+1. Überprüfen Sie die Konfigurationseinstellungen für den Austausch, und wählen Sie dann **Austauschen** aus.
+    
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="Austauschen des Bereitstellungsslots." border="true":::
 
 Der Vorgang kann einen Augenblick dauern, während der Austauschvorgang ausgeführt wird.
 
@@ -119,11 +131,21 @@ Wenn ein Austausch zu einem Fehler führt oder Sie einen Austausch einfach „r�
 
 Sie können einen Slot über die [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) oder über das Portal entfernen. In den folgenden Schritten wird veranschaulicht, wie Sie einen Slot im Portal entfernen:
 
-1. Navigieren zur Übersicht der Funktions-App
+1. Navigieren Sie in der Funktions-App zu **Bereitstellungsslots**, und wählen Sie dann den Slotnamen aus.
 
-1. Klicken Sie auf die Schaltfläche **Löschen**.
+    :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="Suchen Sie im Azure-Portal nach Slots." border="true":::
 
-    ![Hinzufügen eines Azure Functions-Bereitstellungsslots](./media/functions-deployment-slots/azure-functions-deployment-slots-delete.png)
+1. Klicken Sie auf **Löschen**.
+
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="Löschen des Bereitstellungsslots im Azure-Portal." border="true":::
+
+1. Geben Sie den Namen des Bereitstellungsslots ein, den Sie löschen möchten, und wählen Sie dann **Löschen** aus.
+
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="Löschen des Bereitstellungsslots im Azure-Portal." border="true":::
+
+1. Schließen Sie den Bestätigungsbereich für den Löschvorgang.
+
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="Bestätigung zum Löschen des Bereitstellungsslots." border="true":::
 
 ## <a name="automate-slot-management"></a>Automatisieren der Slotverwaltung
 
@@ -137,27 +159,24 @@ Mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deploy
 
 ## <a name="change-app-service-plan"></a>Ändern des App Service-Plans
 
-Bei einer Funktions-App, die in einem App Service-Plan ausgeführt wird, haben Sie die Möglichkeit, den zugrunde liegenden App Service-Plan für einen Slot zu ändern.
+Bei einer Funktions-App, die in einem App Service-Plan ausgeführt wird, können Sie den zugrunde liegenden App Service-Plan für einen Slot zu ändern.
 
 > [!NOTE]
 > Unter einem Verbrauch-Plan können Sie den App Service-Plan eines Slots nicht ändern.
 
 Führen Sie die folgenden Schritte aus, um den App Service-Plan eines Slots zu ändern:
 
-1. Navigieren zu einem Slot
+1. Navigieren Sie in der Funktions-App zu **Bereitstellungsslots**, und wählen Sie dann den Slotnamen aus.
 
-1. Klicken Sie unter *Plattformfeatures* auf **Alle Einstellungen**.
+    :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="Suchen Sie im Azure-Portal nach Slots." border="true":::
 
-    ![Ändern des App Service-Plans](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-settings.png)
+1. Wählen Sie unter **App Service-Plan**  die Option **App Service-Plan ändern** aus.
 
-1. Klicken Sie auf **App Service-Plan**.
+1. Wählen Sie den Plan aus, auf den Sie ein Upgrade durchführen möchten, oder erstellen Sie einen neuen Plan.
 
-1. Auswählen eines neuen App Service-Plans oder Erstellen einen neuen Plans
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="Ändern des App Service-Plans im Azure-Portal." border="true":::
 
-1. Klicken Sie auf **OK**
-
-    ![Ändern des App Service-Plans](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-select.png)
-
+1. Klicken Sie auf **OK**.
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -165,7 +184,7 @@ Azure Functions-Bereitstellungsslots unterliegen folgenden Einschränkungen:
 
 - Die Anzahl der für einen App verfügbaren Slots hängt vom Plan ab. Im Verbrauch-Plan ist nur ein Bereitstellungsslot zulässig. Zusätzliche Slots sind für Apps verfügbar, die unter dem App Service-Plan ausgeführt werden.
 - Durch den Austausch eines Slots werden Schlüssel für Apps zurückgesetzt, die über eine App-Einstellung für `AzureWebJobsSecretStorageType` von `files` verfügen.
-- Slots sind für den Linux-Verbrauch-Plan nicht verfügbar.
+- Slots sind für den Linux-Verbrauchsplan nicht verfügbar.
 
 ## <a name="support-levels"></a>Supportstufen
 

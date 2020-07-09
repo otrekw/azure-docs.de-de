@@ -6,16 +6,19 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 1fa34deaa12400a164602d38b6b2d349a64850c6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9d607f0ad1ab9d9924cd05ce1a66bee34e4ff18d
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652249"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84229858"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit MySQL
 
 Dieser Artikel führt Sie durch die Schritte zum Konfigurieren des Zugriffs auf Azure Active Directory mit Azure Database for MySQL sowie zum Herstellen einer Verbindung mit einem Azure AD-Token.
+
+> [!IMPORTANT]
+> Azure Active Directory-Authentifizierung ist nur für MySQL 5.7 und höher verfügbar.
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Festlegen des Azure AD-Administratorbenutzers
 
@@ -54,21 +57,19 @@ Wir haben auch die gängigsten Anwendungstreiber getestet. Details finden Sie am
 
 Dies sind die Schritte, die ein Benutzer oder eine Anwendung für die Authentifizierung mit Azure AD ausführen muss, die im Folgenden beschrieben werden:
 
+### <a name="prerequisites"></a>Voraussetzungen
+
+Sie können den Schritten in Azure Cloud Shell, auf einer Azure-VM oder auf Ihrem lokalen Computer folgen. Stellen Sie sicher, dass die [Azure CLI](/cli/azure/install-azure-cli) installiert ist.
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>Schritt 1: Authentifizierung über Azure AD
 
-Stellen Sie sicher, dass die [Azure CLI](/cli/azure/install-azure-cli) installiert ist.
-
-Rufen Sie das Azure CLI-Tool auf, um sich über Azure AD zu authentifizieren. Sie müssen Ihre Azure AD-Benutzer-ID und das Kennwort angeben.
+Authentifizieren Sie sich zunächst über Azure AD mithilfe des Azure CLI-Tools. Dieser Schritt ist in Azure Cloud Shell nicht erforderlich.
 
 ```
 az login
 ```
 
-Mit diesem Befehl wird ein Browserfenster auf der Seite „Azure AD-Authentifizierung“ gestartet.
-
-> [!NOTE]
-> Sie können auch Azure Cloud Shell verwenden, um diese Schritte auszuführen.
-> Beachten Sie, dass Sie beim Abrufen von Azure AD-Zugriffstoken in Azure Cloud Shell `az login` explizit aufrufen und sich erneut anmelden müssen (im separaten Fenster mit einem Code). Nach diesem Anmeldevorgang funktioniert der Befehl `get-access-token` wie erwartet.
+Mit dem Befehl wird ein Browserfenster auf der Seite „Azure AD-Authentifizierung“ gestartet. Sie müssen Ihre Azure AD-Benutzer-ID und das Kennwort angeben.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>Schritt 2: Abrufen eines Azure AD-Zugriffstokens
 
@@ -76,19 +77,19 @@ Rufen Sie das Azure CLI-Tool auf, um ein Zugriffstoken für den über Azure AD a
 
 Beispiel (für die öffentliche Cloud):
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
 Der oben genannte Ressourcenwert muss genau wie gezeigt angegeben werden. Für andere Clouds kann der Ressourcenwert wie folgt nachgeschlagen werden:
 
-```shell
+```azurecli-interactive
 az cloud show
 ```
 
 Für Version 2.0.71 oder höher der Azure CLI kann der Befehl in der folgenden, bequemeren Version für alle Clouds angegeben werden:
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
 

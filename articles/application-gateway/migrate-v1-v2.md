@@ -4,15 +4,15 @@ description: In diesem Artikel wird gezeigt, wie Sie Azure Application Gateway u
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 27e8eaa7b8171d6ccc43f6abc8a4b3d1017d30cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312048"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804397"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2
 
@@ -59,9 +59,9 @@ Um festzustellen, ob Sie die Azure Az-Module installiert haben, führen Sie `Get
 
 Damit Sie diese Option nutzen können, dürfen keine Azure Az-Module auf Ihrem Computer installiert sein. Wenn diese installiert sind, zeigt der folgende Befehl einen Fehler an. Sie können entweder die Azure Az-Module deinstallieren oder die andere Option nutzen, um das Skript manuell herunterzuladen und es auszuführen.
   
-Führen Sie das Skript mit dem folgenden Befehl aus:
+Führen Sie das Skript mit dem folgenden Befehl aus, um die neueste Version zu erhalten:
 
-`Install-Script -Name AzureAppGWMigration`
+`Install-Script -Name AzureAppGWMigration -Force`
 
 Mit diesem Befehl werden auch die erforderlichen Az-Module installiert.  
 
@@ -196,7 +196,7 @@ Nein. Das Skript unterstützt derzeit keine Zertifikate in Key Vault. Dies wird 
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Ich hatte beim Verwenden dieses Skripts einige Probleme. Wie erhalte ich Hilfe?
   
-Sie können eine E-Mail an appgwmigrationsup@microsoft.com senden, eine Supportanfrage beim Azure-Support öffnen, oder beides tun.
+Sie können den Azure-Support unter dem Thema „Konfiguration und Einrichtung/Migration zu V2-SKU“ kontaktieren. Weitere Informationen zum Azure-Support finden Sie [hier](https://azure.microsoft.com/support/options/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

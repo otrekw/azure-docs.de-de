@@ -1,6 +1,6 @@
 ---
-title: 'Azure Key Vault: Verschieben eines Tresors in eine andere Region | Microsoft-Dokumentation'
-description: Leitfaden zum Verschieben eines Schlüsseltresors in eine andere Region.
+title: Verschieben eines Schlüsseltresors in eine andere Region – Azure Key Vault| Microsoft-Dokumentation
+description: Dieser Artikel bietet eine Anleitung zum Verschieben eines Schlüsseltresors in eine andere Region.
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
@@ -11,43 +11,38 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another region.
-ms.openlocfilehash: e65a723ac9daafdc09896a50e197034104408df2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4f9f43b3d0aa0af8696300933c08c140951e5e52
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82254071"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651224"
 ---
-# <a name="moving-an-azure-key-vault-across-regions"></a>Regionsübergreifendes Verschieben eines Azure Key Vault
+# <a name="move-an-azure-key-vault-across-regions"></a>Regionsübergreifendes Verschieben eines Azure Key Vault
 
-## <a name="overview"></a>Übersicht
+Azure Key Vault unterstützt keinen Vorgang zum Verschieben von Ressourcen, der das Verschieben eines Schlüsseltresors aus einer Region in eine andere zulässt. In diesem Artikel werden Problemumgehungen für Organisationen behandelt, bei denen eine Geschäftsanforderung besteht, einen Schlüsseltresor in eine andere Region zu verschieben. Jede Problemumgehungsoption unterliegt Einschränkungen. Es ist wichtig, die Auswirkungen dieser Problemumgehungen zu verstehen, bevor Sie versuchen, sie in einer Produktionsumgebung anzuwenden.
 
-Key Vault unterstützt keinen Vorgang zum Verschieben von Ressourcen, der das Verschieben eines Schlüsseltresors in eine andere Region zulässt. In diesem Artikel werden Problemumgehungen behandelt, wenn die Geschäftsanforderung besteht, einen Schlüsseltresor in eine andere Region zu verschieben. Jede Option weist Einschränkungen auf, und es ist wichtig, die Auswirkungen dieser Problemumgehungen zu verstehen, bevor Sie sie in einer Produktionsumgebung ausführen.
+Um einen Schlüsseltresor in eine andere Region zu verschieben, erstellen Sie einen Schlüsseltresor in der anderen Region und kopieren dann manuell jeden geheimen Schlüssel aus dem vorhandenen Schlüsseltresor in den neuen Schlüsseltresor. Hierfür können Sie eine der beiden folgenden Methoden verwenden.
 
-Wenn Sie einen Schlüsseltresor in eine andere Region verschieben müssen, besteht die Lösung darin, einen neuen Schlüsseltresor in der gewünschten Region zu erstellen und manuell jeden geheimen Schlüssel aus dem vorhandenen Schlüsseltresor in den neuen Schlüsseltresor zu kopieren. Dieser Vorgang kann auf eine der beiden unten aufgeführten Arten durchgeführt werden.
+## <a name="design-considerations"></a>Überlegungen zum Entwurf
 
-## <a name="design-considerations"></a>Entwurfsaspekte
+Bevor Sie beginnen, bedenken Sie folgende Konzepte:
 
-* Key Vault-Namen sind global eindeutig. Der gleiche Tresorname kann nicht wiederverwendet werden.
+* Schlüsseltresornamen sind global eindeutig. Sie können einen Tresornamen nicht wiederverwenden.
+* Sie müssen Ihre Zugriffsrichtlinien und Netzwerkkonfigurationseinstellungen in dem neuen Schlüsseltresor erneut konfigurieren.
+* Sie müssen vorläufiges Löschen und Bereinigungsschutz in dem neuen Schlüsseltresor erneut konfigurieren.
+* Der Sicherungs- und Wiederherstellungsvorgang erhält Ihre Einstellungen für die automatische Rotation nicht. Sie müssen die Einstellungen eventuell neu konfigurieren.
 
-* Sie müssen Zugriffsrichtlinien und Netzwerkkonfigurationseinstellungen im neuen Schlüsseltresor konfigurieren.
+## <a name="option-1-use-the-key-vault-backup-and-restore-commands"></a>Option 1: Verwenden der Key Vault-Befehle zum Sichern und Wiederherstellen
 
-* Sie müssen vorläufiges Löschen und Bereinigungsschutz im neuen Schlüsseltresor erneut konfigurieren.
+Mit dem Sicherungsbefehl können Sie die einzelnen Geheimnisse, Schlüssel und Zertifikate in Ihrem Tresor sichern. Ihre Geheimnisse werden als verschlüsseltes Blob heruntergeladen. Anschließend können Sie das Blob in Ihrem neuen Schlüsseltresor wiederherstellen. Eine Liste der Befehle finden Sie unter [Azure Key Vault-Befehle](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-6.13.0#key_vault).
 
-* Der Sicherungs- und Wiederherstellungsvorgang behält keine Einstellungen für automatische Rotation bei. Diese Einstellungen müssen möglicherweise erneut konfiguriert werden.
+Die Verwendung der Befehle Sichern und Wiederherstellen weist zwei Einschränkungen auf:
 
-## <a name="option-1---use-the-key-vault-backup-and-restore-commands"></a>Option 1: Verwenden der Key Vault-Befehle zum Sichern und Wiederherstellen
+* Es ist nicht möglich, einen Schlüsseltresor in einer geografischen Region zu sichern und ihn in einer anderen geografischen Region wiederherzustellen. Weitere Informationen finden Sie unter [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/).
 
-Mit dem Sicherungsbefehl können Sie die einzelnen Geheimnisse, Schlüssel und Zertifikate in Ihrem Tresor sichern. Ihre Geheimnisse werden als verschlüsseltes Blob heruntergeladen. Anschließend können Sie das Blob in Ihrem neuen Schlüsseltresor wiederherstellen. Die Befehle werden im Link unten dokumentiert.
+* Der Sicherungsbefehl sichert alle Versionen der einzelnen Geheimnisse. Wenn Sie ein Geheimnis mit einer großen Anzahl von Vorgängerversionen (mehr als 10) verwenden, kann die Anforderung die maximal zulässige Anforderungsgröße überschreiten, und der Vorgang schlägt eventuell fehl.
 
-[Azure Key Vault-Befehle](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-6.13.0#key_vault)
+## <a name="option-2-manually-download-and-upload-the-key-vault-secrets"></a>Option 2: Manuelles Herunterladen und Hochladen der Schlüsseltresorgeheimnisse
 
-### <a name="limitations"></a>Einschränkungen
-
-* Es ist nicht möglich, einen Schlüsseltresor in einer geografischen Region zu sichern und ihn in einer anderen geografischen Region wiederherzustellen. Erfahren Sie mehr über geografische Azure-Regionen. [Link](https://azure.microsoft.com/global-infrastructure/geographies/)
-
-* Der Sicherungsbefehl sichert alle Versionen der einzelnen Geheimnisse. Wenn Sie ein Geheimnis mit einer großen Anzahl von Vorgängerversionen (mehr als 10) verwenden, besteht die Möglichkeit, dass die Anforderung die maximal zulässige Anforderungsgröße überschreitet und der Vorgang fehlschlagen kann.
-
-## <a name="option-2---manually-download-and-upload-secrets"></a>Option 2: Manuelles Herunterladen und Hochladen von Geheimnissen
-
-Bestimmte Geheimnistypen können manuell heruntergeladen werden. Sie können Zertifikate beispielsweise als PFX-Datei herunterladen. Mit dieser Option werden die geografischen Einschränkungen für einige Geheimnistypen wie Zertifikate beseitigt. Sie können die PFX-Dateien in beliebige Schlüsseltresore in einer beliebigen Region hochladen. Ihr Geheimnis wird in einem Format heruntergeladen, das nicht durch ein Kennwort geschützt ist. Sie sind dafür verantwortlich, Ihre Geheimnisse zu sichern, sobald sie Key Vault verlassen, während der Verschiebevorgang durchgeführt wird.
+Sie können bestimmte Geheimnistypen manuell herunterladen. Beispielsweise können Sie Zertifikate als PFX-Datei herunterladen. Diese Option beseitigt die geografischen Einschränkungen für einige Geheimnistypen wie Zertifikate. Sie können die PFX-Dateien in beliebige Schlüsseltresore in einer beliebigen Region hochladen. Die Geheimnisse werden in einem nicht kennwortgeschützten Format heruntergeladen. Sie sind für den Schutz Ihrer Geheimnisse während des Verschiebens verantwortlich.

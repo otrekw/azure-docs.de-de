@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 04/27/2020
-ms.openlocfilehash: 8ea26fc041f3fa6194ced65b3e3b9055848ead49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.openlocfilehash: 327fffd807d93fda67ff650954ece65e5db58e63
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188761"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798112"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -41,7 +41,7 @@ Beim Entwerfen einer Mapping Data Flow-Funktion können Sie Komponententests fü
 
 Durch eine Integration Runtime mit mehr Kernen wird die Anzahl der Knoten in den Spark-Computeumgebungen erhöht und eine höhere Verarbeitungsleistung für das Lesen, Schreiben und Transformieren Ihrer Daten geboten. ADF-Datenflüsse nutzen Spark für die Compute-Engine. Die Spark-Umgebung funktioniert sehr gut für speicheroptimierte Ressourcen.
 * Versuchen Sie es mit einem **computeoptimierten** Cluster, wenn die Verarbeitungsrate höher als die Eingaberate sein soll.
-* Versuchen Sie es mit einem **arbeitsspeicheroptimierten** Cluster, wenn Sie mehr Daten im Arbeitsspeicher zwischenspeichern möchten. Bei der arbeitsspeicheroptimierten Variante fallen zwar höhere Kosten pro Kern an als bei der computeoptimierten Variante, dafür ist jedoch wahrscheinlich die Transformationsgeschwindigkeit höher.
+* Versuchen Sie es mit einem **arbeitsspeicheroptimierten** Cluster, wenn Sie mehr Daten im Arbeitsspeicher zwischenspeichern möchten. Bei der arbeitsspeicheroptimierten Variante fallen zwar höhere Kosten pro Kern an als bei der computeoptimierten Variante, dafür ist jedoch wahrscheinlich die Transformationsgeschwindigkeit höher. Wenn beim Ausführen der Datenflüsse Fehler aufgrund von nicht genügend Arbeitsspeicher auftreten, wechseln Sie zu einer arbeitsspeicheroptimierten Azure IR-Konfiguration.
 
 ![Neue Integration Runtime](media/data-flow/ir-new.png "Neue Integration Runtime")
 
@@ -140,6 +140,10 @@ Wenn Sie z.B. über eine Liste von Datendateien vom Juli 2019 verfügen, die Sie
 ```DateFiles/*_201907*.txt```
 
 Durch die Verwendung von Platzhaltern enthält die Pipeline nur eine Datenflussaktivität. Dadurch erzielen Sie eine bessere Leistung als bei einem Suchvorgang für den Blobspeicher, bei der dann alle entsprechenden Dateien mittels „ForEach“ mit einer eingeschlossenen Aktivität zum Ausführen des Datenflusses durchlaufen werden.
+
+Die Pipeline „ForEach“ im parallelen Modus erzeugt mehrere Cluster, indem sie Auftragscluster für jede ausgeführte Datenflussaktivität erzeugt. Dies kann zu einer Drosselung des Azure-Diensts mit einer hohen Anzahl gleichzeitiger Ausführungen führen. Durch das Ausführen des Datenflusses in einer ForEach-Schleife, wobei die sequenzielle Ausführung in der Pipeline festgelegt ist, werden jedoch Drosselung und Ressourcenauslastung vermieden. Dies erzwingt die sequenzielle Ausführung der einzelnen Dateien für einen Datenfluss durch die Data Factory.
+
+Es wird empfohlen, bei sequenzieller Verwendung von ForEach mit einem Datenfluss die TTL-Einstellung in der Azure Integration Runtime verwenden. Der Grund dafür ist, dass jede Datei eine Clusterstartzeit von 5 Minuten im Iterator erfordert.
 
 ### <a name="optimizing-for-cosmosdb"></a>Optimieren für Cosmos DB
 

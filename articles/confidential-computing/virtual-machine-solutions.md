@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: e574ac33e5f7da814c4bd813fc1c083c7cb4c2c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187884"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773133"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Lösungen auf virtuellen Azure-Computern
 
@@ -21,7 +21,7 @@ In diesem Artikel werden Informationen über die Bereitstellung von Azure Confid
 
 ## <a name="azure-confidential-computing-vm-sizes"></a>VM-Größen für Azure Confidential Computing
 
-Die Azure Confidential Computing-VMs wurden entwickelt, um die Vertraulichkeit und Integrität Ihrer Daten und Ihres Codes zu schützen, während die Verarbeitung in der Cloud erfolgt. 
+Die Azure Confidential Computing-VMs sind darauf ausgelegt, die Vertraulichkeit und Integrität Ihrer Daten und Ihres Codes zu schützen, während diese in der Cloud verarbeitet werden. 
 
 VMs der [DCsv2-Serie](../virtual-machines/dcv2-series.md) sind die neueste Größenfamilie für Confidential Computing. Diese VMs unterstützen eine größere Palette an Bereitstellungsmöglichkeiten, verfügen über einen doppelt so großen Enclave Page Cache (EPC) und bieten im Vergleich zu unseren VMs der DC-Serie eine umfangreichere Auswahl an Größen. Die VMs der [DC-Serie](../virtual-machines/sizes-previous-gen.md#preview-dc-series) befinden sich derzeit in der Vorschauphase, gelten allerdings als veraltet und gelangen nicht in die Phase der allgemeinen Verfügbarkeit.
 
@@ -39,7 +39,7 @@ az vm list-skus
     --output table
 ```
 
-Ab April 2020 sind diese SKUs in den folgenden Regionen und Verfügbarkeitszonen verfügbar:
+Ab Mai 2020 sind diese SKUs in den folgenden Regionen und Verfügbarkeitszonen verfügbar:
 
 ```output
 Name              Locations      AZ_a
@@ -86,7 +86,7 @@ Folgen Sie einem Tutorial zum Schnellstart, um eine VM der DCsv2-Serie in wenige
   
 - **Größenänderung:** Aufgrund ihrer speziellen Hardware können Sie die Größe von Confidential Computing-Instanzen nur innerhalb der gleichen Größenfamilie anpassen. So können Sie beispielsweise die Größe einer VM der DCsv2-Serie nur in eine andere Größe der DCsv2-Serie ändern. Eine Änderung von einer Nicht-Confidential Computing-Größe in eine Confidential Computing-Größe wird nicht unterstützt.  
 
-- **Image**: Um Unterstützung für Intel Software Guard Extension (Intel SGX) auf Confidential Computing-Instanzen zu bieten, müssen alle Bereitstellungen auf Images der Generation 2 erfolgen. Azure Confidential Computing unterstützt Workloads, die unter Ubuntu 18.04 Gen 2, Ubuntu 16.04 Gen 2 und Windows Server 2016 Gen 2 ausgeführt werden. Weitere Informationen zu unterstützten und nicht unterstützten Szenarien finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](../virtual-machines/linux/generation-2.md). 
+- **Image**: Um Unterstützung für Intel Software Guard Extension (Intel SGX) auf Confidential Computing-Instanzen zu bieten, müssen alle Bereitstellungen auf Images der Generation 2 erfolgen. Azure Confidential Computing unterstützt Workloads, die unter Ubuntu 18.04 Gen 2, Ubuntu 16.04 Gen 2 und Windows Server 2019 Gen 2 und Windows Server 2016 Gen 2 ausgeführt werden. Weitere Informationen zu unterstützten und nicht unterstützten Szenarien finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](../virtual-machines/linux/generation-2.md). 
 
 - **Speicher**: Datenträger für Azure Confidential Computing-VMs und kurzlebige Betriebssystemdatenträger befinden sich auf NVMe-Datenträgern. Instanzen unterstützen ausschließlich SSD Premium- und SSD Standard- und keine SSD Ultra- oder HDD Standard-Datenträger. Die VM-Größe **DC8_v2** unterstützt nicht Storage Premium. 
 
@@ -104,11 +104,11 @@ Azure Resource Manager ist der Bereitstellungs- und Verwaltungsdienst für Azure
 
 Informationen zu Azure Resource Manager-Vorlagen finden Sie in der [Übersicht über die Vorlagenbereitstellung](../azure-resource-manager/templates/overview.md).
 
-Um eine VM der DCsv2-Serie mithilfe einer Resource Manager-Vorlage bereitzustellen, verwenden Sie die Ressource [Virtual Machine](../virtual-machines/windows/template-description.md). Vergewissern Sie sich, dass Sie die richtigen Eigenschaften für **vmSize** und **imageReference** angeben.
+Um eine VM der DCsv2-Serie mithilfe einer Azure Resource Manager-Vorlage bereitzustellen, verwenden Sie die [Ressource eines virtuellen Computers](../virtual-machines/windows/template-description.md). Stellen Sie sicher, dass Sie die richtigen Eigenschaften für **vmSize** und **imageReference** angeben.
 
-### <a name="vm-size"></a>VM-Größe
+### <a name="vm-size"></a>Größe des virtuellen Computers
 
-Geben Sie in der Resource Manager-Vorlage in der Ressource „Virtual Machine“ die folgenden Größen an. Diese Zeichenfolge wird in **properties** als **vmSize** eingegeben.
+Geben Sie in der Azure Resource Manager-Vorlage in der Ressource des virtuellen Computers eine der folgenden Größen an. Diese Zeichenfolge wird in **properties** als **vmSize** eingegeben.
 
 ```json
   [
@@ -124,6 +124,12 @@ Geben Sie in der Resource Manager-Vorlage in der Ressource „Virtual Machine“
 Unter **properties** müssen Sie zudem unter **storageProfile** auf ein Image verweisen. Verwenden Sie *nur eines* der folgenden Images für **imageReference**.
 
 ```json
+      "2019-datacenter-gensecond": {
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2019-datacenter-gensecond",
+        "version": "latest"
+      },
       "2016-datacenter-gensecond": {
         "offer": "WindowsServer",
         "publisher": "MicrosoftWindowsServer",
@@ -146,7 +152,7 @@ Unter **properties** müssen Sie zudem unter **storageProfile** auf ein Image ve
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-In diesem Artikel haben Sie sich über die Qualifikationen und Konfigurationen informiert, die zum Erstellen einer Confidential Computing-VM erforderlich sind. Sie können nun zum Azure Marketplace wechseln, um eine VM der DCsv2-Serie bereitzustellen.
+In diesem Artikel haben Sie sich über die Qualifikationen und Konfigurationen informiert, die zum Erstellen einer Confidential Computing-VM erforderlich sind. Sie können nun zum Microsoft Azure Marketplace wechseln, um eine VM der DCsv2-Serie bereitzustellen.
 
 > [!div class="nextstepaction"]
 > [Bereitstellen einer VM der DCsv2-Serie in Azure Marketplace](quick-create-marketplace.md)

@@ -3,12 +3,12 @@ title: Problembehandlung für SQL Server-Datenbanksicherungen
 description: Informationen zur Problembehandlung beim Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: cec3f8530d8a48a870c672d418d42d12a62aa2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4397f0bfa50990a7ad8080579261ed4587c4958
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183329"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247953"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problembehandlung für die SQL Server-Datenbanksicherung mit Azure Backup
 
@@ -267,4 +267,4 @@ Diese Datei muss abgelegt werden, bevor Sie den Wiederherstellungsvorgang auslö
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Backup für SQL Server-VMs (Public Preview) finden Sie unter [Azure Backup für SQL-VMs](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup).
+Weitere Informationen zu Azure Backup für SQL Server-VMs (Public Preview) finden Sie unter [Azure Backup für SQL-VMs](../azure-sql/virtual-machines/windows/backup-restore.md#azbackup).

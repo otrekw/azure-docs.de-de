@@ -1,18 +1,18 @@
 ---
 title: Technische Konzepte für Azure-Containerangebote – kommerzieller Microsoft-Marketplace
 description: Technische Ressourcen und Anleitungen, die Ihnen bei der Konfiguration eines Containerangebots im Azure Marketplace helfen.
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/09/2020
-ms.openlocfilehash: 87c915330fdc0d59d0d32c0747c7dc7647c342ba
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: da0fa53567e5c58db8e8394ef5562255d8a7142d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700986"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104265"
 ---
 # <a name="create-an-azure-container-offer"></a>Erstellen eines Azure-Containerangebots
 
@@ -20,7 +20,7 @@ Dieser Artikel enthält technische Ressourcen und Empfehlungen, die Ihnen helfen
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Schnellstarts, Tutorials und Beispiele finden Sie in der [Dokumentation zu Azure Container Instances](https://docs.microsoft.com/azure/container-instances).
+Schnellstarts, Tutorials und Beispiele finden Sie in der [Dokumentation zu Azure Container Instances](../../container-instances/index.yml).
 
 ## <a name="fundamental-technical-knowledge"></a>Grundlegende technische Kenntnisse
 
@@ -43,7 +43,7 @@ Wählen Sie eine oder beide der folgenden Skriptumgebungen als Unterstützung be
 
 Sie sollten Ihrer Entwicklungsumgebung diese Tools hinzufügen:
 
-- [Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
+- [Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Erweiterung: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Erweiterung: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -55,9 +55,9 @@ Machen Sie sich mit den verfügbaren Tools auf der Seite [Azure-Entwicklertools]
 
 Weitere Informationen finden Sie in folgenden Tutorials:
 
-- [Tutorial: Erstellen eines Containerimages für die Bereitstellung in Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-- [Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task).
+- [Tutorial: Erstellen eines Containerimages für die Bereitstellung in Azure Container Instances](../../container-instances/container-instances-tutorial-prepare-app.md)
+- [Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks](../../container-registry/container-registry-tutorial-quick-task.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen Sie Ihr Containerangebot](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer).
+- [Erstellen Sie Ihr Containerangebot](create-azure-container-offer.md).

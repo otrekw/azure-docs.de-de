@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd430d750b2220882479a430322f4b4c4e0c44c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594729"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712348"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Hinzufügen eines Benutzerflows für die Self-Service-Registrierung zu einer App (Vorschau)
 |     |
@@ -25,7 +25,10 @@ ms.locfileid: "83594729"
 | Die Self-Service-Registrierung ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Wenn Sie den Benutzerflow einer Anwendung zuordnen, können Sie die Registrierung für diese App aktivieren. Sie können mehrere Anwendungen auswählen, die dem Benutzerflow zugeordnet werden sollen. Nachdem Sie den Benutzerflow den entsprechenden Anwendungen zugewiesen haben, können sich Benutzer, die diese App aufrufen, mit den im Benutzerflow konfigurierten Optionen registrieren.
+Sie können Benutzerflows für Apps erstellen, die von Ihrer Organisation erstellt werden. Wenn Sie den Benutzerflow einer Anwendung zuordnen, können Sie die Registrierung für diese App aktivieren. Sie können mehrere Anwendungen auswählen, die dem Benutzerflow zugeordnet werden sollen. Nachdem Sie den Benutzerflow den entsprechenden Anwendungen zugewiesen haben, können sich Benutzer, die diese App aufrufen, mit den im Benutzerflow konfigurierten Optionen registrieren und ein Gastkonto erhalten.
+
+> [!NOTE]
+> Sie können Benutzerflows mit Apps verknüpfen, die von Ihrer Organisation erstellt wurden. Benutzerflows können nicht für Microsoft-Apps wie SharePoint oder Teams verwendet werden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -33,9 +36,12 @@ Wenn Sie den Benutzerflow einer Anwendung zuordnen, können Sie die Registrierun
 
 Azure AD ist der Standardidentitätsanbieter für die Self-Service-Registrierung. Das bedeutet, dass Benutzer sich standardmäßig mit einem Azure AD-Konto anmelden können. Soziale Netzwerke als Identitätsanbieter können ebenfalls in diese Registrierungsflows eingeschlossen werden, um Google- und Facebook-Konten zu unterstützen.
 
-- [Hinzufügen von Google zu Ihrer Liste der sozialen Netzwerke als Identitätsanbieter](google-federation.md)
 - [Hinzufügen von Facebook zu Ihrer Liste der sozialen Netzwerke als Identitätsanbieter](facebook-federation.md)
- 
+- [Hinzufügen von Google zu Ihrer Liste der sozialen Netzwerke als Identitätsanbieter](google-federation.md)
+
+> [!NOTE]
+> Wenn in der aktuellen Vorschau ein Benutzerflow für die Self-Service-Registrierung mit einer App verknüpft ist und Sie einem Benutzer eine Einladung für diese App senden, kann der Benutzer die Einladung nicht mit einem Gmail-Konto einlösen. Um dieses Problem zu umgehen, kann der Benutzer den Self-Service-Registrierungsprozess durchlaufen. Oder er kann die Einladung einlösen, indem er auf eine andere App zugreift oder das Portal „Meine Apps“ auf https://myapps.microsoft.com verwendet.
+
 ### <a name="define-custom-attributes-optional"></a>Definieren von benutzerdefinierten Attributen (optional)
 
 Benutzerattribute sind Werte, die während der Self-Service-Registrierung vom Benutzer erfasst werden. Azure AD verfügt über verschiedene integrierte Attribute, Sie können jedoch benutzerdefinierte Attribute für die Verwendung in Ihrem Benutzerflow erstellen. Außerdem können Sie diese Attribute mit der Microsoft Graph-API lesen und schreiben. Informationen finden Sie unter [Definieren benutzerdefinierter Attribute für Benutzerflows](user-flow-add-custom-attributes.md).

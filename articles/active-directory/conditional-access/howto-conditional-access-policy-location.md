@@ -4,23 +4,23 @@ description: Erstellen einer Richtlinien für den bedingten Zugriff, um den Zugr
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 03/25/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34b29ceadaaf85e69d1214039fa1b563ed21a77d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5350e728ad9c30a6e9258ce9c7615baf020473a8
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295183"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995121"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Bedingter Zugriff: Blockieren des Zugriffs nach Standort
 
-Mithilfe der Standortbedingung in Conditional Access können Sie den Zugriff auf Ihre Cloud-Apps auf der Grundlage des Netzwerkstandorts eines Benutzers steuern. Die Standortbedingung wird häufig verwendet, um den Zugriff aus Ländern zu blockieren, von denen Ihrem Unternehmen bekannt ist, dass der Datenverkehr nicht aus diesen Ländern stammen sollte.
+Mithilfe der Standortbedingung in Conditional Access können Sie den Zugriff auf Ihre Cloud-Apps auf der Grundlage des Netzwerkstandorts eines Benutzers steuern. Die Standortbedingung wird häufig verwendet, um den Zugriff aus Ländern/Regionen zu blockieren, von denen Ihrem Unternehmen bekannt ist, dass der Datenverkehr nicht aus diesen Ländern stammen sollte.
 
 ## <a name="define-locations"></a>Definieren von Standorten
 

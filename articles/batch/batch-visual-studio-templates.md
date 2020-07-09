@@ -1,24 +1,22 @@
 ---
-title: Erstellen von Lösungen mit Visual Studio-Vorlagen – Azure Batch | Microsoft-Dokumentation
+title: Erstellen von Projektmappen mit Visual Studio-Vorlagen
 description: Es wird beschrieben, wie Visual Studio-Projektvorlagen Sie beim Implementieren und Ausführen von rechenintensiven Workloads in Azure Batch unterstützen können.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 8e8d5be4a9f0fb5482ba6c86a8766a25e5713c09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4cdc3fa7b3238a83d55113c5f7dc551d637c8e2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117521"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959771"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Verwenden von Visual Studio-Vorlagen für den schnellen Einstieg in Batch-Lösungen
 
 Die Visual Studio-Vorlagen vom Typ **Auftrags-Manager** und **Aufgabenprozessor** für Batch enthalten Code zum Implementieren und Ausführen Ihrer rechenintensiven Workloads in Batch mit dem geringstmöglichen Aufwand. In diesem Dokument werden diese Vorlagen beschrieben, und es enthält eine Anleitung zur Verwendung.
 
 > [!IMPORTANT]
-> Im Artikel geht es nur um Informationen zu diesen beiden Vorlagen, und es wird vorausgesetzt, dass Sie mit dem Batch-Dienst und seinen wichtigsten Begriffen vertraut sind: Pools, Computeknoten, Aufträge und Aufgaben, Auftrags-Manager-Aufgaben, Umgebungsvariablen und andere relevante Informationen. Weitere Informationen finden Sie unter [Grundlagen von Azure Batch](batch-technical-overview.md) und [Übersicht über Batch-Features für Entwickler](batch-api-basics.md).
-> 
-> 
+> Im Artikel geht es nur um Informationen zu diesen beiden Vorlagen, und es wird vorausgesetzt, dass Sie mit dem Batch-Dienst und seinen wichtigsten Begriffen vertraut sind: Pools, Computeknoten, Aufträge und Aufgaben, Auftrags-Manager-Aufgaben, Umgebungsvariablen und andere relevante Informationen. Weitere Informationen finden Sie in [Grundlagen von Azure Batch](batch-technical-overview.md) und [Workflow und Ressourcen des Batch-Diensts](batch-service-workflow-features.md). 
 
 ## <a name="high-level-overview"></a>Allgemeine Übersicht
 Sie können die Auftrags-Manager- und Aufgabenprozessorvorlagen verwenden, um zwei nützliche Komponenten zu erstellen:
@@ -69,7 +67,7 @@ Die Auftrags-Manager-Vorlage dient Ihnen als Hilfe beim Implementieren einer Auf
 * Übermitteln der Aufgaben zur Ausführung in Batch
 
 > [!NOTE]
-> Weitere Informationen zu Auftrags-Manager-Aufgaben finden Sie unter [Übersicht über Batch-Features für Entwickler](batch-api-basics.md#job-manager-task).
+> Weitere Informationen zu den Aufgaben eines Auftrags-Managers finden Sie unter [Aufträge und Aufgaben](jobs-and-tasks.md#job-manager-task).
 > 
 > 
 
@@ -188,7 +186,7 @@ Eine Auftrags-Manager-Aufgabe, die mit der Auftrags-Manager-Vorlage implementier
 
 Wenn für eine Auftrags-Manager-Aufgabe ein Fehler auftritt, kann es sein, dass dem Dienst vor dem Auftreten des Fehlers noch einige Aufgaben hinzugefügt wurden. Diese Tasks werden wie gewohnt ausgeführt. Eine Beschreibung dieses Codepfads finden Sie oben unter „Fehler bei der Auftragsteilung“.
 
-Alle Informationen, die von Ausnahmen zurückgegeben werden, werden in die Dateien „stdout.txt“ und „stderr.txt“ geschrieben. Weitere Informationen finden Sie unter [Fehlerbehandlung](batch-api-basics.md#error-handling).
+Alle Informationen, die von Ausnahmen zurückgegeben werden, werden in die Dateien „stdout.txt“ und „stderr.txt“ geschrieben. Weitere Informationen finden Sie unter [Fehlerbehandlung](error-handling.md).
 
 ### <a name="client-considerations"></a>Clientaspekte
 In diesem Abschnitt werden einige Anforderungen an die Clientimplementierung beschrieben, die erfüllt sein müssen, wenn ein Auftrags-Manager basierend auf dieser Vorlage aufgerufen wird. Ausführliche Informationen zur Übergabe von Parametern und Umgebungseinstellungen finden Sie unter [Übergeben von Parametern und Umgebungsvariablen aus dem Clientcode](#pass-environment-settings) .
@@ -429,13 +427,13 @@ Sie können Parameter auch an einzelne Aufgaben übergeben, die mit der Aufgaben
 Ein weiteres nützliches Tool bei der Entwicklung von Batch-Lösungen sind [Azure Batch-Dateikonventionen][nuget_package]. Verwenden Sie diese .NET-Klassenbibliothek (derzeit in der Vorschauphase) in Ihren Batch .NET-Anwendungen, um Aufgabenausgaben leicht speichern und für Azure Storage übermitteln zu können. [Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks](batch-task-output.md) enthält eine umfassende Beschreibung der Bibliothek und ihrer Verwendung.
 
 
-[net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
+[net_jobmanagertask]: /dotnet/api/microsoft.azure.batch.jobmanagertask
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
-[process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
+[process_exitcode]: /dotnet/api/system.diagnostics.process.exitcode
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
 [vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
-[vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
+[vs_find_use_ext]: /visualstudio/ide/finding-and-using-visual-studio-extensions
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png

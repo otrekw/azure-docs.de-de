@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 296c8e2dfe99e3b0aea66f364ac6f6d9b2f60a1a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: d147c87e8fb0fa9e01ba2dbaf732adaae082bcd7
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272490"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167790"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Wiederherstellen einer gelöschten App Service-App mithilfe von PowerShell
 
@@ -48,6 +48,8 @@ Die ausführlichen Informationen enthalten folgende Angaben:
 - **DeletionTime**: Zeitpunkt, an dem die App gelöscht wurde  
 
 ## <a name="restore-deleted-app"></a>Wiederherstellen einer gelöschten App
+>[!NOTE]
+> `Restore-AzDeletedWebApp` wird für Funktions-Apps nicht unterstützt.
 
 Wenn Sie die wiederherzustellende App identifiziert haben, können Sie sie mithilfe von `Restore-AzDeletedWebApp` wiederherstellen.
 
@@ -64,7 +66,7 @@ Eingaben für den Befehl:
 - **Name**: Name für die App, muss global eindeutig sein
 - **TargetAppServicePlanName**: App Service-Plan, der mit der App verknüpft ist
 
-Standardmäßig wird von `Restore-AzDeletedWebApp` sowohl die Konfiguration der App als auch deren Inhalt wiederhergestellt. Wenn lediglich der Inhalt wiederhergestellt werden soll, verwenden Sie das Flag `-RestoreContentOnly` mit diesem Cmdlet.
+Standardmäßig wird von `Restore-AzDeletedWebApp` sowohl die Konfiguration der App als auch beliebiger Inhalt wiederhergestellt. Wenn lediglich der Inhalt wiederhergestellt werden soll, verwenden Sie das Flag `-RestoreContentOnly` mit diesem Cmdlet.
 
 > [!NOTE]
 > Falls die App in einer App Service-Umgebung gehostet und anschließend daraus gelöscht wurde, kann sie nur wiederhergestellt werden, wenn die entsprechende App Service-Umgebung noch vorhanden sind.

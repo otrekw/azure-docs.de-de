@@ -50,7 +50,7 @@ Folgende Eigenschaften werden für den mit SAP Cloud for Customer verknüpften D
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **SapCloudForCustomer**festgelegt sein. | Ja |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapCloudForCustomer**. | Ja |
 | url | Die URL des SAP C4C OData-Diensts. | Ja |
 | username | Geben Sie den Benutzernamen für die Verbindung mit dem SAP C4C-Server an. | Ja |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
@@ -90,7 +90,7 @@ Um Daten aus SAP Cloud for Customer zu kopieren, legen Sie die „type“-Eigens
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf **SapCloudForCustomerResource** festgelegt werden. |Ja |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **SapCloudForCustomerResource** |Ja |
 | path | Geben Sie den Pfad der Entität „SAP C4C OData“ an. |Ja |
 
 **Beispiel:**
@@ -122,7 +122,7 @@ Legen Sie zum Kopieren von Daten aus SAP Cloud for Customer den Quelltyp in der 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **SapCloudForCustomerSource** festgelegt sein.  | Ja |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapCloudForCustomerSource**  | Ja |
 | Abfrage | Geben Sie die benutzerdefinierte OData-Abfrage zum Lesen von Daten an. | Nein |
 
 Beispielabfrage zum Abrufen von Daten für einen bestimmten Tag: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
@@ -165,7 +165,7 @@ Legen Sie zum Kopieren von Daten in SAP Cloud for Customer den Senkentyp in der 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **SapCloudForCustomerSink**festgelegt sein.  | Ja |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapCloudForCustomerSink**  | Ja |
 | writeBehavior | Das Schreibverhalten des Vorgangs. Optionen: „Insert“, „Update“. | Nein. Standard: „Insert“. |
 | writeBatchSize | Die Batchgröße des Schreibvorgangs. Die Batchgröße zum Erzielen der besten Leistung kann für verschiedene Tabellen oder Server unterschiedlich sein. | Nein. Standardwert: 10 |
 

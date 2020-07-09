@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982198"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195993"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
 > [!NOTE]
@@ -47,7 +47,7 @@ Bevor Sie mit dieser exemplarischen Vorgehensweise beginnen, müssen folgende Vo
 
 * **Azure-Abonnement**.  Wenn Sie über kein Abonnement verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Im Artikel [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) finden Sie Details.
 * **Azure Storage-Konto**. In diesem Tutorial verwenden Sie den Blobspeicher als **Ziel-/Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md) Schritte zum Erstellen eines Azure Storage-Kontos.
-* **SQL Server**. In diesem Tutorial verwenden Sie eine lokale SQL Server-Datenbank als **Quelldatenspeicher**.
+* **SQL Server**. In diesem Tutorial verwenden Sie eine SQL Server-Datenbank als **Quelldatenspeicher**.
 
 ## <a name="create-data-factory"></a>Erstellen einer Data Factory
 In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data Factory-Instanz mit dem Namen **ADFTutorialOnPremDF**.
@@ -152,9 +152,9 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
 12. In der Strukturansicht links sollte **adftutorialgateway** unter **Datengateways** angezeigt werden.  Wenn Sie darauf klicken, sollte die zugehörige JSON angezeigt werden.
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
-In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedService** und **SqlServerLinkedService**. Der **SqlServerLinkedService** verknüpft eine lokale SQL Server-Datenbank und der verknüpfte Dienst **AzureStorageLinkedService** einen Azure-Blobspeicher mit der Data Factory. Sie erstellen eine Pipeline weiter unten in dieser exemplarischen Vorgehensweise, die Daten aus der lokalen SQL Server-Datenbank in den Azure-Blobspeicher kopiert.
+In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedService** und **SqlServerLinkedService**. **SqlServerLinkedService** verknüpft eine SQL Server-Datenbank und der verknüpfte Dienst **AzureStorageLinkedService** einen Azure-Blobspeicher mit der Data Factory. Sie erstellen weiter unten in dieser exemplarischen Vorgehensweise eine Pipeline, die Daten aus der SQL Server-Datenbank in Azure Blob Storage kopiert.
 
-#### <a name="add-a-linked-service-to-an-on-premises-sql-server-database"></a>Hinzufügen eines verknüpften Diensts zu einer lokalen SQL Server-Datenbank
+#### <a name="add-a-linked-service-to-a-sql-server-database"></a>Hinzufügen eines verknüpften Diensts zu einer SQL Server-Datenbank
 1. Klicken Sie in **Data Factory Editor** auf der Symbolleiste auf **Neuer Datenspeicher**, und wählen Sie **SQL Server**.
 
    ![Neuer mit SQL Server verknüpfter Dienst](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
@@ -189,7 +189,7 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
 * Erstellen Sie einen Blobcontainer mit dem Namen **adftutorial** im Azure Blob Storage-Konto, das Sie der Data Factory als verknüpften Dienst hinzugefügt haben.
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>Vorbereitung des lokalen SQL Servers für das Lernprogramm
-1. Verwenden Sie in der Datenbank, die Sie für den lokalen verknüpften SQL Server-Dienst (**SqlServerLinkedService**) angegeben haben, das folgende SQL-Skript zum Erstellen der Tabelle **emp** in der Datenbank.
+1. Verwenden Sie in der Datenbank, die Sie für den verknüpften SQL Server-Dienst (**SqlServerLinkedService**) angegeben haben, das folgende SQL-Skript zum Erstellen der Tabelle **emp** in der Datenbank.
 
     ```SQL   
     CREATE TABLE dbo.emp

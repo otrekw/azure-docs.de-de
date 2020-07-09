@@ -2,23 +2,23 @@
 title: Anhalten, Fortsetzen und Skalieren mit REST-APIs
 description: Verwalten der Computeleistung in Azure Synapse Analytics Data Warehouse über REST-APIs.
 services: synapse-analytics
-author: kevinvngo
+author: antvgski
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/29/2019
-ms.author: kevin
+ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4efd5c63af9f09d41733e8e172270410245977ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbb8e82710b4c8ca7736b53d427b3880faf2be05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633200"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213277"
 ---
-# <a name="rest-apis-for-azure-sql-data-warehouse"></a>REST-APIs für Azure SQL Data Warehouse
+# <a name="rest-apis-for-azure-synapse-analytics-data-warehouse"></a>REST-APIs für ein Azure Synapse Analytics-Data Warehouse
 
 REST-APIs für die Verwaltung von Computeressourcen in Azure Synapse Analytics Data Warehouse.
 

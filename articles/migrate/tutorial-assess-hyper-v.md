@@ -2,14 +2,14 @@
 title: Bewerten von Hyper-V-VMs für die Migration zu Azure mit Azure Migrate | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie lokale Hyper-V-VMs mithilfe der Azure Migrate-Serverbewertung für die Migration zu Azure bewerten.
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: c627902268af3a91e172223c1741dd24ea21fa92
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 4c95916bf5f92f8a82b9dfae50aa311891857e7a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535450"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114243"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Bewerten von Hyper-V-VMs mit der Azure Migrate-Serverbewertung
 
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 - [Absolvieren Sie das erste Tutorial dieser Reihe.](tutorial-prepare-hyper-v.md) Andernfalls funktionieren die Anweisungen in diesem Tutorial nicht.
 - Im ersten Tutorial müssen folgende Schritte ausgeführt werden:
     - [Vorbereiten von Azure](tutorial-prepare-hyper-v.md#prepare-azure) auf die Verwendung mit Azure Migrate
-    - [Vorbereiten der Bewertung von Hyper-V-Hosts](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) und VMs
+    - [Vorbereiten der Bewertung von Hyper-V-Hosts](tutorial-prepare-hyper-v.md#prepare-for-assessment) und VMs
     - [Überprüfen](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment), welche Komponenten für die Bereitstellung der Azure Migrate-Appliance für die Hyper-V-Bewertung erforderlich sind
 
 ## <a name="set-up-an-azure-migrate-project"></a>Einrichten eines Azure Migrate-Projekts
@@ -96,12 +96,20 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
 
-3.  Für die Applianceversion 2.19.07.30 muss der generierte Hash den folgenden Einstellungen entsprechen:
+3.  Überprüfen Sie die aktuellen Applianceversionen und Hashwerte:
 
-  **Algorithmus** | **Hashwert**
-  --- | ---
-  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
-  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+    - Öffentliche Azure-Cloud:
+
+        **Szenario** | **Download** | **SHA256**
+        --- | --- | ---
+        Hyper-V (8,93 GB) | [Aktuelle Version](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+
+    - Azure Government:
+
+        **Szenario*** | **Download** | **SHA256**
+        --- | --- | ---
+        Hyper-V (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+
 
 ### <a name="create-the-appliance-vm"></a>Erstellen der Appliance-VM
 
@@ -122,14 +130,14 @@ Importieren Sie die heruntergeladene Datei, und erstellen Sie die VM.
 2. Klicken Sie unter **Importtyp auswählen** auf **Virtuellen Computer kopieren (neue eindeutige ID erstellen)** . Klicken Sie dann auf **Weiter**.
 3. Behalten Sie unter **Ziel auswählen** die Standardeinstellung bei. Klicken Sie auf **Weiter**.
 4. Behalten Sie unter **Speicherordner** die Standardeinstellung bei. Klicken Sie auf **Weiter**.
-5. Geben Sie unter **Netzwerk auswählen** den virtuellen Switch an, der von der VM verwendet wird. Der Switch benötigt Internetkonnektivität, um Daten an Azure senden zu können. [Hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines) finden Sie Informationen zum Erstellen eines virtuellen Switches.
+5. Geben Sie unter **Netzwerk auswählen** den virtuellen Switch an, der von der VM verwendet wird. Der Switch benötigt Internetkonnektivität, um Daten an Azure senden zu können. [Hier](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines) finden Sie Informationen zum Erstellen eines virtuellen Switches.
 6. Überprüfen Sie die Einstellungen unter **Zusammenfassung**. Klicken Sie auf **Fertig stellen**.
 7. Starten Sie die VM im Hyper-V-Manager unter **Virtuelle Computer**.
 
 
 ## <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
-Stellen Sie sicher, dass die Appliance-VM eine Verbindung mit Azure-URLs für [öffentliche Clouds](migrate-appliance.md#public-cloud-urls) und [Azure Government-Clouds](migrate-appliance.md#government-cloud-urls) herstellen kann.
+Stellen Sie sicher, dass die Appliance-VM eine Verbindung mit Azure-URLs für [öffentliche](migrate-appliance.md#public-cloud-urls) und [Government](migrate-appliance.md#government-cloud-urls)-Clouds herstellen kann.
 
 ### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
 
@@ -166,10 +174,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Delegieren von Anmeldeinformationen für SMB-VHDs
 
-Wenn Sie VHDs in SMBs ausführen, müssen Sie die Delegierung von Anmeldeinformationen von der Appliance an die Hyper-V-Hosts aktivieren. Dafür ist Folgendes erforderlich:
-
-- Sie ermöglichen es jedem Host, als Delegat für die Appliance zu fungieren. Wenn Sie die Tutorials der Reihe nach durchgearbeitet haben, wurden diese Schritte im vorherigen Tutorial ausgeführt, als Sie Hyper-V auf die Bewertung und Migration vorbereitet haben. Sie müssen CredSSP für die Hosts entweder [manuell](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts) oder durch [Ausführung eines entsprechenden Skripts](tutorial-prepare-hyper-v.md#prepare-with-a-script) eingerichtet haben.
-- Aktivieren Sie die CredSSP-Delegierung, sodass die Azure Migrate-Appliance als Client fungieren und die Anmeldeinformationen an einen Host delegieren kann.
+Wenn Sie VHDs in SMBs ausführen, müssen Sie die Delegierung von Anmeldeinformationen von der Appliance an die Hyper-V-Hosts aktivieren. Dazu ermöglichen Sie es jedem Host, als Delegat für die Appliance zu fungieren. Wenn Sie die Tutorials der Reihe nach durchgearbeitet haben, wurden diese Schritte im vorherigen Tutorial ausgeführt, als Sie Hyper-V auf die Bewertung und Migration vorbereitet haben. Sie müssen CredSSP für die Hosts entweder [manuell](tutorial-prepare-hyper-v.md#enable-credssp-to-delegate-credentials) oder durch [Ausführung eines entsprechenden Skripts](tutorial-prepare-hyper-v.md#run-the-script) eingerichtet haben.
 
 Gehen Sie zur Aktivierung für die Appliance wie folgt vor:
 
@@ -178,7 +183,7 @@ Gehen Sie zur Aktivierung für die Appliance wie folgt vor:
 Führen Sie auf der Appliance-VM den folgenden Befehl aus. „HyperVHost1“ und „HyperVHost2“ sind Beispielhostnamen.
 
 ```
-Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
 ```
 
 Beispiel: ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force `

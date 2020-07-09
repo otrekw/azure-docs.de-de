@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3adb94709d089e2f1d106680acc00c08d2203a4d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658879"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340874"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor-Protokolle für Dienstanbieter
 
@@ -19,7 +19,7 @@ Log Analytics-Arbeitsbereiche in Azure Monitor unterstützen Managed Service Pro
 
 Zwischen Großunternehmen und Dienstanbietern bestehen viele Gemeinsamkeiten, insbesondere wenn ein zentrales IT-Team für die Verwaltung der IT vieler unterschiedlicher Geschäftseinheiten verantwortlich ist. Der Einfachheit halber wird in diesem Dokument der Begriff *Dienstanbieter* verwendet, jedoch ist die gleiche Funktionalität für Unternehmen und andere Kunden verfügbar.
 
-Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) teilnehmen, ist Log Analytics in Azure Monitor einer Dienste, die in Azure CSP-Abonnements verfügbar sind.
+Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) teilnehmen, ist Log Analytics in Azure Monitor einer Dienste, die in Azure CSP-Abonnements verfügbar sind.
 
 Log Analytics in Azure Monitor kann außerdem von Dienstanbietern verwendet werden, die Kundenressourcen über die Funktion der delegierten Azure-Ressourcenverwaltung in [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) verwalten.
 
@@ -64,7 +64,7 @@ Die zentralisierte Architektur bietet folgende Vorteile:
 Nachteile der zentralisierten Architektur:
 
 * Diese Architektur eignet sich nur für Agent-basierte VM-Daten, sie deckt PaaS-, SaaS- und Azure-Fabric-Datenquellen nicht ab.
-* Es kann schwierig sein, die Daten der Kunden zu trennen, wenn sie in einem einzelnen Arbeitsbereich zusammengeführt werden. Das einzig gute Verfahren dazu ist die Verwendung des FQDNs (vollqualifizierten Domänennamens) des Computers oder der Azure-Abonnement-ID. 
+* Es kann schwierig sein, die Daten der Kunden zu trennen, wenn sie in einem einzelnen Arbeitsbereich zusammengeführt werden. Das einzig gute Verfahren dazu ist die Verwendung des FQDNs (vollqualifizierten Domänennamens) des Computers oder der Azure-Abonnement-ID.
 * Alle Daten aller Kunden werden im gleichen Bereich mit einer einzelnen Rechnung und mit gleicher Vermerkdauer und gleichen Konfigurationseinstellungen gespeichert.
 * Azure-Fabric- und PaaS-Dienste, wie Azure-Diagnose und Azure-Überwachungsprotokolle, erfordern einen Arbeitsbereich im gleichen Mandanten wie die Ressource, sie können also keine Protokolle an den zentralen Arbeitsbereich senden.
 * Alle VM-Agents von allen Kunden werden beim zentralen Arbeitsbereich mit der gleichen Arbeitsbereichs-ID und dem gleichen Schlüssel authentifiziert. Es gibt kein Verfahren, Protokolle eines bestimmten Kunden zu blockieren, ohne andere Kunden zu unterbrechen.
@@ -77,13 +77,13 @@ Es bestehen zwei Optionen zum Implementieren von Protokollen an einem zentralen 
 
 1. Zentraler Arbeitsbereich: Der Dienstanbieter kann einen Arbeitsbereich in seinem Mandanten erstellen und ein Skript verwenden, das die [Abfrage-API](https://dev.loganalytics.io/) in Kombination mit der [Datensammlungs-API](../../azure-monitor/platform/data-collector-api.md) nutzt, um die Daten aus den verschiedenen Arbeitsbereichen an diesen zentralen Speicherort zu bringen. Eine weitere Option, die kein Skript einsetzt, ist die Verwendung von [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
-2. Power BI als zentraler Speicherort: Power BI kann als zentraler Speicherort dienen, wenn die verschiedenen Arbeitsbereiche mithilfe der Integration zwischen dem Log Analytics-Arbeitsbereich und [Power BI](../../azure-monitor/platform/powerbi.md) Daten nach Power BI exportieren. 
+2. Power BI als zentraler Speicherort: Power BI kann als zentraler Speicherort dienen, wenn die verschiedenen Arbeitsbereiche mithilfe der Integration zwischen dem Log Analytics-Arbeitsbereich und [Power BI](../../azure-monitor/platform/powerbi.md) Daten nach Power BI exportieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Automatisieren Sie mithilfe von [Resource Manager-Vorlagen](template-workspace-configuration.md) die Erstellung und Konfiguration von Arbeitsbereichen.
 
-* Automatisieren Sie mit [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) die Erstellung von Arbeitsbereichen. 
+* Automatisieren Sie mit [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) die Erstellung von Arbeitsbereichen.
 
 * Verwenden Sie [Warnungen](../../azure-monitor/platform/alerts-overview.md) für die Integration in vorhandene Systeme.
 

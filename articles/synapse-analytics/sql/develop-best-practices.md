@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ed2638cfe4ab7e849e428729ccd17ffdeb6314af
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: ff4781109b2572d5555ec0a03c65359ef5a89d8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482512"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Bewährte Methoden für die Entwicklung für Synapse SQL
 In diesem Artikel werden Anleitungen und bewährte Methoden für die Entwicklung Ihrer Data Warehouse-Lösung beschrieben. 
@@ -106,7 +106,7 @@ Da qualitativ hochwertige Columnstore-Segmente wichtig sind, ist es eine gute Id
 Da Columnstore-Tabellen Daten generell erst dann in ein komprimiertes Columnstore-Segment übertragen, wenn eine Tabelle mehr als eine Million Zeilen hat und jede SQL-Pool-Tabelle in 60 Tabellen partitioniert ist, empfiehlt sich Folgendes: Columnstore-Tabellen stellen für eine Abfrage nur dann einen Vorteil dar, wenn die Tabelle mehr als 60 Millionen Zeilen hat.  
 
 > [!TIP]
-> Bei Tabellen mit weniger als 60 Millionen Zeilen ist ein Columnstore-Index möglicherweise nicht die optimale Lösung.  
+> Bei Tabellen mit weniger als 60 Millionen Zeilen ist ein Columnstore-Index möglicherweise nicht die optimale Lösung.  
 
 Wenn Sie Ihre Daten partitionieren, können Sie auch darauf achten, dass jede Partition 1 Million Zeilen aufweisen muss, um von einem gruppierten Columnstore-Index zu profitieren.  Falls eine Tabelle 100 Partitionen hat, muss sie mindestens 6 Milliarden Zeilen enthalten, um von einem gruppierten Columnstore zu profitieren (60 Verteilungen *100 Partitionen* 1 Million Zeilen).  
 
@@ -150,11 +150,11 @@ Wenn möglich, können Sie Dateien für eine bessere Leistung vorbereiten:
 
 Daten sind oft in Partitionen organisiert. Sie können SQL On-Demand anweisen, bestimmte Ordner und Dateien abzufragen. Dies reduziert die Anzahl der Dateien und die Datenmenge, die die Abfrage zum Lesen und Verarbeiten benötigt. 
 
-Folglich erzielen Sie eine bessere Leistung. Weitere Informationen finden Sie unter [Dateinamen](develop-storage-files-overview.md#filename-function)- und [Dateipfad](develop-storage-files-overview.md#filepath-function)-Funktionen und in den Beispielen für das [Abfragen bestimmter Dateien](query-specific-files.md).
+Folglich erzielen Sie eine bessere Leistung. Weitere Informationen finden Sie unter [Dateinamen](query-data-storage.md#filename-function)- und [Dateipfad](query-data-storage.md#filepath-function)-Funktionen und in den Beispielen für das [Abfragen bestimmter Dateien](query-specific-files.md).
 
 Wenn Ihre gespeicherten Daten nicht partitioniert sind, sollten Sie eine Partitionierung in Erwägung ziehen, damit Sie diese Funktionen verwenden können, um Abfragen zu optimieren, die auf diese Dateien ausgerichtet sind.
 
-Bei der [Abfrage partitionierter Spark-Tabellen](develop-storage-files-spark-tables.md) aus SQL On-Demand ist die Abfrage automatisch nur auf die benötigten Dateien ausgerichtet.
+Bei der [Abfrage partitionierter externer Apache Spark für Azure Synapse-Tabellen](develop-storage-files-spark-tables.md) in SQL On-Demand ist die Abfrage automatisch nur auf die erforderlichen Dateien ausgerichtet.
 
 ### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Verwenden von CETAS zum Verbessern von Abfrageleistung und Verknüpfungen
 
@@ -166,7 +166,7 @@ Da CETAS Parquet-Dateien generiert, werden Statistiken automatisch erstellt, wen
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie Informationen benötigen, die in diesem Artikel nicht enthalten sind, verwenden Sie die „Nach Dokumenten suchen“ auf der linken Seite dieser Seite, um alle SQL-Pooldokumente zu durchsuchen.  Das [SQL-Poolforum](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) ist ein Ort, an dem Sie anderen Benutzern und der Produktgruppe „SQL-Pool“ Fragen stellen können.  
+Wenn Sie Informationen benötigen, die in diesem Artikel nicht enthalten sind, verwenden Sie die „Nach Dokumenten suchen“ auf der linken Seite dieser Seite, um alle SQL-Pooldokumente zu durchsuchen.  Auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für SQL-Pool ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) können Sie anderen Benutzern und der Produktgruppe „SQL-Pool“ Fragen stellen.  
 
 Wir überwachen dieses Forum aktiv, um sicherzustellen, dass Ihre Frage entweder von einem anderen Benutzer oder einem Mitarbeiter beantwortet wird.  Falls Sie Ihre Fragen lieber über Stack Overflow stellen möchten, können Sie dazu auch das [Stack Overflow-Forum für Azure SQL-Pool](https://stackoverflow.com/questions/tagged/azure-sqldw) nutzen.
  

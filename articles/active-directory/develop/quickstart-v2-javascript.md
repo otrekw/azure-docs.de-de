@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 91a4d10269975152cc62f3f5dc33238a8f6f2e11
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 047e03c4fa5916119036c5e539674dc48a6c77aa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890524"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554015"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA
 
@@ -92,7 +92,7 @@ In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer Jav
 >  const msalConfig = {
 >    auth: {
 >      clientId: "Enter_the_Application_Id_Here",
->      authority: "Enter_the_Cloud_Instance_Id_Here_OR_Enter_the_Tenant_Info_Here",
+>      authority: "Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here",
 >      redirectUri: "Enter_the_Redirect_Uri_Here",
 >    },
 >    cache: {
@@ -112,7 +112,7 @@ In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer Jav
 > Hierbei gilt:
 > - *\<Enter_the_Application_Id_Here>* ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
 > - *\<Enter_the_Cloud_Instance_Id_Here>* ist die Instanz der Azure-Cloud. Geben Sie für die Azure-Hauptcloud oder für die globale Azure-Cloud einfach *https://login.microsoftonline.com* ein. Informationen zu **nationalen** Clouds (etwa für China) finden Sie unter [Nationale Clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
-> - *\<Enter_the_Tenant_info_here >* wird auf eine der folgenden Optionen festgelegt:
+> - *\<Enter_the_Tenant_info_here>* wird auf eine der folgenden Optionen festgelegt:
 >    - Wenn Ihre Anwendung *Nur Konten in diesem Organisationsverzeichnis* unterstützt, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (beispielsweise *contoso.microsoft.com*).
 >    - Wenn Ihre Anwendung *Konten in einem beliebigen Organisationsverzeichnis* unterstützt, ersetzen Sie diesen Wert durch **Organisationen**.
 >    - Wenn Ihre Anwendung *Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten* unterstützt, ersetzen Sie diesen Wert durch **common**. Wenn Sie die Unterstützung *ausschließlich auf persönliche Microsoft-Konten* beschränken möchten, ersetzen Sie diesen Wert durch **consumers**.
@@ -130,8 +130,8 @@ In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer Jav
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
 >   const graphConfig = {
->     graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me",
->     graphMailEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me/messages"
+>     graphMeEndpoint: "Enter_the_Graph_Endpoint_Here/v1.0/me",
+>     graphMailEndpoint: "Enter_the_Graph_Endpoint_Here/v1.0/me/messages"
 >   };
 >
 >   // Add here scopes for access token to be used at MS Graph API endpoints.
@@ -144,7 +144,7 @@ In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer Jav
 > [!div renderon="docs"]
 >
 > Hierbei gilt:
-> - *\<Enter_the_Graph_Endpoint_Here>* ist der Endpunkt, für den API-Aufrufe ausgeführt werden. Geben Sie für den Microsoft Graph-API-Hauptdienst oder den globalen Microsoft Graph-API-Dienst einfach `https://graph.microsoft.com` ein. Weitere Informationen finden Sie unter [Bereitstellungen nationaler Clouds](https://docs.microsoft.com/graph/deployments).
+> - *\<Enter_the_Graph_Endpoint_Here>* ist der Endpunkt, an den API-Aufrufe gerichtet werden. Geben Sie für den Microsoft Graph-API-Hauptdienst oder den globalen Microsoft Graph-API-Dienst einfach `https://graph.microsoft.com` ein. Weitere Informationen finden Sie unter [Bereitstellungen nationaler Clouds](https://docs.microsoft.com/graph/deployments).
 >
 > #### <a name="step-4-run-the-project"></a>Schritt 4: Ausführen des Projekts
 
@@ -204,7 +204,7 @@ Im Schnellstartcode wird auch veranschaulicht, wie Sie die MSAL-Bibliothek initi
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Hierbei gilt:  |  |
+> |Hierbei gilt:  | BESCHREIBUNG |
 > |---------|---------|
 > |`clientId`     | Die Anwendungs-ID der im Azure-Portal registrierten Anwendung.|
 > |`authority`    | (Optional:) Die Autoritäts-URL zur Unterstützung von Kontotypen, wie im Konfigurationsabschnitt oben beschrieben. Die Standardautorität lautet `https://login.microsoftonline.com/common`. |
@@ -232,7 +232,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Hierbei gilt:  |  |
+> |Hierbei gilt:  | BESCHREIBUNG |
 > |---------|---------|
 > | `scopes`   | (Optional:) Enthält Bereiche, die bei der Anmeldung für die Benutzereinwilligung angefordert werden. Beispiel: `[ "user.read" ]` für Microsoft Graph oder `[ "<Application ID URL>/scope" ]` für benutzerdefinierte Web-APIs (`api://<Application ID>/access_as_user`). |
 
@@ -262,7 +262,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Hierbei gilt:  |  |
+> |Hierbei gilt:  | BESCHREIBUNG |
 > |---------|---------|
 > | `scopes`   | Enthält Bereiche, die für die Rückgabe im Zugriffstoken für die API angefordert werden. Beispiel: `[ "mail.read" ]` für Microsoft Graph oder `[ "<Application ID URL>/scope" ]` für benutzerdefinierte Web-APIs (`api://<Application ID>/access_as_user`).|
 

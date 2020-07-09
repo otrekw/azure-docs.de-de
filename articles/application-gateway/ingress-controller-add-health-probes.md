@@ -4,15 +4,15 @@ description: Dieser Artikel enthält Informationen zum Hinzufügen von Integrit�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 5d0543a3a43d53e462a6406312faddf37d2653c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c8b8b0090877db7abc8fae0e44f928e8b10dcf5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73795591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808004"
 ---
 # <a name="add-health-probes-to-your-service"></a>Hinzufügen von Integritätstests zu Ihrem Dienst
 Standardmäßig stellt der Eingangscontroller einen HTTP GET-Test für die verfügbar gemachten Pods bereit.
@@ -47,7 +47,7 @@ spec:
 
 Kubernetes-API-Referenz:
 * [Containertests](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes)
-* [HttpGet-Aktion](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#httpgetaction-v1-core)
+* [HttpGet-Aktion](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#httpgetaction-v1-core)
 
 > [!NOTE]
 > * `readinessProbe` und `livenessProbe` werden unterstützt, wenn sie mit `httpGet`konfiguriert sind.

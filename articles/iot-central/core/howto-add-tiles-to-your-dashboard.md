@@ -1,88 +1,85 @@
 ---
-title: Hinzufügen von Kacheln zu Ihrem Dashboard | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie als Ersteller das Standarddashboard Ihrer Azure IoT Central-Anwendung konfigurieren.
-author: mavoge
-ms.author: mavoge
-ms.date: 10/17/2019
+title: Hinzufügen von Kacheln zu Ihrem Dashboard in Azure IoT Central | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie als Ersteller das Standarddashboard Ihrer Azure IoT Central-Anwendung mit Kacheln konfigurieren.
+author: Haley-Rowland
+ms.author: harowl
+ms.date: 05/27/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: f75e5a28f7ec56750432e74ee48ba68491a5e481
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 892bdcc08bd19b92c8b3d32d2954583f80005e87
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310296"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022871"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurieren des Anwendungsdashboards
 
-Das **Dashboard** ist die Seite, die geladen wird, wenn zugriffsberechtigte Benutzer zur URL der Anwendung navigieren. Wenn Sie die Anwendung auf Grundlage einer der **Anwendungsvorlagen** erstellt haben, startet Ihre Anwendung mit einem vordefinierten Dashboard. Wenn Sie die Anwendung über die Anwendungsvorlage **Legacyanwendung** erstellt haben, ist das Dashboard beim Start leer.
+Nach dem Herstellen einer Verbindung zu einer Azure IoT Central-Anwendung wird als Erstes das **Dashboard** angezeigt. Wenn Sie die Anwendung auf Grundlage einer der branchenbezogenen [Anwendungsvorlagen](./concepts-app-templates.md) erstellt haben, startet Ihre Anwendung mit einem vordefinierten Dashboard. Wenn Sie die Anwendung über die Anwendungsvorlage [Benutzerdefinierte Anwendung](./concepts-app-templates.md) erstellt haben, werden auf dem Dashboard Tipps für den Einstieg angezeigt.
 
-> [!NOTE]
-> Zusätzlich zum Standarddashboard der Anwendung können Benutzer [mehrere Dashboards erstellen](howto-create-personal-dashboards.md). Diese Dashboards können nur für den Benutzer persönlich bestimmt sein oder für alle Benutzer der Anwendung freigegeben werden. 
+> [!TIP]
+> Zusätzlich zum Standarddashboard der Anwendung können Benutzer [mehrere Dashboards erstellen](howto-create-personal-dashboards.md). Diese Dashboards können nur für den Benutzer persönlich bestimmt sein oder für alle Benutzer der Anwendung freigegeben werden.  
 
 ## <a name="add-tiles"></a>Hinzufügen von Kacheln
 
-Der folgende Screenshot zeigt das Dashboard in einer Anwendung, die über die Vorlage **Benutzerdefinierte Anwendung** erstellt wurde. Wählen Sie zum Anpassen des Standarddashboards Ihrer Anwendung oben links auf der Seite die Option **Bearbeiten** aus.
+Der folgende Screenshot zeigt das Dashboard in einer Anwendung, die über die Vorlage **Benutzerdefinierte Anwendung** erstellt wurde. Wenn Sie das aktuelle Dashboard anpassen möchten, klicken Sie auf **Bearbeiten**. Wenn Sie ein benutzerdefiniertes privates oder freigegebenes Dashboard hinzufügen möchten, klicken Sie auf **Neu**:
 
-> [!div class="mx-imgBorder"]
-> ![Dashboard für Anwendungen auf Basis der „Beispiel Contoso“-Vorlage](media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png)
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png" alt-text="Dashboard für Anwendungen, die auf der Vorlage „Benutzerdefinierte Anwendung“ basieren":::
 
-Wenn Sie **Bearbeiten** auswählen, wird das Bibliotheksfenster des Dashboards geöffnet. Die Bibliothek enthält die Kacheln und Dashboardprimitive, mit denen Sie das Dashboard anpassen können.
+Nachdem Sie auf **Bearbeiten** oder **Neu** geklickt haben, befindet sich das Dashboard im *Bearbeitungsmodus*. Sie können die Tools im Bereich **Dashboard bearbeiten** verwenden, um dem Dashboard Kacheln hinzuzufügen und Kacheln auf dem Dashboard selbst anzupassen und von dort zu entfernen. Wenn Sie beispielsweise eine Kachel mit **Telemetriedaten** hinzufügen möchten, auf der die von einem oder mehreren Geräten gemeldete aktuelle Temperatur angezeigt wird, gehen Sie folgendermaßen vor:
 
-> [!div class="mx-imgBorder"]
-> ![Dashboardbibliothek](media/howto-add-tiles-to-your-dashboard/dashboard-library.png)
+1. Klicken Sie im Bereich **Dashboard bearbeiten** auf die Option **Gerätegruppe**.
+1. Wählen Sie im Dropdown **Geräte** eines oder mehrere Geräte aus, die auf der Kachel angezeigt werden sollen. Nun werden die verfügbare Telemetrie, die Eigenschaften und die Befehle dieser Geräte angezeigt.
+1. Klicken Sie im Telemetriebereich auf **Temperatur** und dann auf **Kachel hinzufügen**. Die Kachel wird nun auf dem Dashboard angezeigt. Dort können Sie die Visualisierung ändern, die Größe der Kachel ändern und sie konfigurieren:
 
-Sie können beispielsweise eine Kachel **Telemetrie** für die aktuelle Temperatur des Geräts hinzufügen. Gehen Sie folgendermaßen vor:
-1. Wählen Sie eine **Gerätevorlage** aus.
-1. Wählen Sie für das Gerät, das auf einer Dashboardkachel angezeigt werden soll, eine **Geräteinstanz** aus. Dann wird eine Liste der Geräteeigenschaften angezeigt, die auf der Kachel verwendet werden können.
-1. Wenn Sie die Kachel auf dem Dashboard erstellen möchten, klicken Sie auf **Temperatur**, und ziehen Sie sie auf den Dashboardbereich. Sie können auch auf das Kontrollkästchen neben **Temperatur** und dann auf **Kombinieren** klicken. Der folgende Screenshot zeigt das Auswählen einer Gerätevorlage und Geräteinstanz und dann das Erstellen der Kachel „Temperaturtelemetrie“ auf dem Dashboard.
-1. Wählen Sie oben links **Speichern** aus, um die Kachel auf dem Dashboard zu speichern.
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Hinzufügen einer Kachel mit Temperaturtelemetriedaten zum Dashboard":::
 
-> [!div class="mx-imgBorder"]
-> ![Formular „Gerätedetails konfigurieren“ mit Details zu Einstellungen und Eigenschaften](media/howto-add-tiles-to-your-dashboard/device-details.png)
+Wenn Sie das Hinzufügen und Anpassen der Kacheln auf dem Dashboard abgeschlossen haben, klicken Sie auf **Speichern**.
 
-Wenn ein Bediener jetzt das Standarddashboard der Anwendung anzeigt, wird die neue Kachel mit der Eigenschaft **Temperatur** für das Gerät angezeigt. Jede Kachel weist einen vorab ausgewählten Graph, ein vorab ausgewähltes Diagramm usw. auf, der beim Erstellen der Kachel angezeigt wird. Benutzer können diese Visualisierung jedoch bearbeiten und ändern. 
+## <a name="customize-tiles"></a>Anpassen von Kacheln
 
-> [!div class="mx-imgBorder"]
-> ![Registerkarte „Dashboard“ mit Anzeige der Einstellungen und Eigenschaften für die Kachel](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png)
+Wenn Sie eine Kachel auf dem Dashboard anpassen möchten, muss sich das Dashboard im Bearbeitungsmodus befinden. Die verfügbaren Anpassungsoptionen hängen vom [Kacheltyp](#tile-types) ab:
 
-## <a name="edit-tiles"></a>Bearbeiten von Kacheln
+* Über das Linealsymbol auf einer Kachel können Sie die Visualisierung ändern. Zu den Visualisierungen gehören Liniendiagramme, letzte bekannte Werte und Wärmebilder.
 
-Zum Bearbeiten einer Kachel im Dashboard klicken Sie zuerst in der Seite oben links auf **Bearbeiten**. Dadurch wird in den Bearbeitungsmodus für das Dashboard und alle zugehörigen Kacheln gewechselt. 
+* Über das quadratische Symbol können Sie die Größe der Kachel ändern.
 
-> [!div class="mx-imgBorder"]
-> ![Dashboard-Bildschirm mit aktiviertem Bearbeitungsmodus für eine ausgewählte Kachel](media/howto-add-tiles-to-your-dashboard/edit-mode.png)
-
-Klicken Sie anschließend in der oberen rechten Ecke der zu bearbeitenden Kachel auf das **Zahnradsymbol**. Hier können Sie die Aspekte der Kachel einschließlich ihres Titels, der Visualisierung, der Aggregation usw. bearbeiten.
-
-> [!div class="mx-imgBorder"]
-> ![Dropdownliste mit Aggregationseinstellungen der Kachel](media/howto-add-tiles-to-your-dashboard/aggregation-settings.png)
-
-Sie können auch die Visualisierung der Kachel ändern, indem Sie auf das **Linealsymbol** auf der Kachel klicken.
-
-> [!div class="mx-imgBorder"]
-> ![Dropdownliste mit Visualisierungseinstellungen der Kachel](media/howto-add-tiles-to-your-dashboard/visualization-settings.png)
+* Das Zahnradsymbol ermöglicht die Konfiguration der Visualisierung. Bei einer Liniendiagrammvisualisierung können Sie beispielsweise die Legende und Achsen anzeigen und einen Zeitbereich auswählen, der dargestellt werden soll.
 
 ## <a name="tile-types"></a>Kacheltypen
 
-In der folgende Tabelle ist die Verwendung von Kacheln in Azure IoT Central zusammengefasst:
- 
-| Kachel | Dashboard | BESCHREIBUNG
-| ----------- | ------- | ------- |
-| Inhalt | Dashboards von Anwendungen und Gerätegruppen |Kacheln mit Unterstützung für Markdown sind Kacheln, auf die geklickt werden kann und in denen Überschriften und Beschreibungstext angezeigt werden. Sie können diese Kachel auch als Link-Kachel verwenden, um Benutzern das Navigieren zu einer URL Ihrer Anwendung zu ermöglichen.|
-| Image | Dashboards von Anwendungen und Gerätegruppen |Auf Bildkacheln, auf denen ein benutzerdefiniertes Bild angezeigt wird, kann geklickt werden. Verwenden Sie eine Bildkachel, um einem Dashboard Grafiken hinzuzufügen und optional einem Benutzer die Navigation zu einer URL zu ermöglichen, die für Ihre Anwendung relevant ist.|
-| Bezeichnung | Anwendungsdashboards |Auf Kacheln mit einer Beschriftung auf einem Dashboard wird benutzerdefinierter Text angezeigt. Sie können die Größe des Texts festlegen. Auf einer Kachel mit Beschriftung können Sie dem Dashboard relevante Informationen wie Beschreibungen, Kontaktinformationen oder Hilfe hinzufügen.|
-| Karte | Dashboards von Anwendungen und Geräten |Kartenkacheln zeigen den Standort eines Geräts auf einer Karte an. Sie können bis zu 100 Punkte im Standortverlauf eines Geräts anzeigen. Sie können beispielsweise einen Routenmuster der Orte anzeigen, an denen sich ein Gerät in der vergangenen Woche befand.|
-| Liniendiagramm | Dashboards von Anwendungen und Geräten |Liniendiagrammkacheln zeigen eine Grafik der Aggregatmessung für ein Gerät über einen Zeitraum. Sie können beispielsweise ein Liniendiagramm anzeigen, das die durchschnittliche Temperatur und den durchschnittlichen Druck eines Geräts in der letzten Stunde anzeigt.|
-| Balkendiagramm | Dashboards von Anwendungen und Geräten |Balkendiagrammkacheln zeigen eine Grafik der Aggregatmessung für ein Gerät über einen Zeitraum. Sie können beispielsweise ein Balkendiagramm anzeigen, das die durchschnittliche Temperatur und den durchschnittlichen Druck eines Geräts in der letzten Stunde anzeigt.|
-| Kreisdiagramm | Dashboards von Anwendungen und Gerätegruppen |Kreisdiagrammkacheln zeigen eine Grafik der aggregierten Messungen für ein Gerät über einen Zeitraum.|
-| Wärmebild | Dashboards von Anwendungen und Gerätegruppen |Auf Wärmebildkacheln werden Informationen zur Gerätegruppen angezeigt, die mit Farben dargestellt sind.|
-| Ereignisverlauf | Dashboards von Anwendungen und Geräten |Auf einer Kachel mit dem Ereignisverlauf werden die Ereignisse für ein Gerät in einem Zeitraum gezeigt. Damit können Sie beispielsweise alle Temperaturänderungen anzeigen, die in der letzten Stunde auf einem Gerät aufgetreten sind.|
-| Der Statusverlauf | Dashboards von Anwendungen und Geräten |Auf einer Statusverlaufskachel werden die Messwerte für einen bestimmten Zeitraum gezeigt. Damit können Sie beispielsweise die Temperaturwerte eines Geräts in der letzten Stunde anzeigen.|
-| KPI | Dashboards von Anwendungen und Geräten | Auf KPI-Kacheln wird eine aggregierte Telemetrie- oder Ereignismessung für einen Zeitraum gezeigt. Damit können Sie beispielsweise die Maximaltemperatur eines Geräts in der letzten Stunde anzeigen.|
-| Letzter bekannter Wert | Dashboards von Anwendungen und Geräten |Auf Kacheln mit dem letzten bekannten Wert wird der neueste Wert für eine Telemetrie- oder Statusmessung ausgegeben. Auf dieser Kachel können Sie beispielsweise die neuesten Messungen von Temperatur, Druck und Feuchtigkeit für ein Gerät anzeigen.|
+Die folgende Tabelle beschreibt die verschiedenen Typen von Kacheln, die Sie einem Dashboard hinzufügen können:
+
+| Kachel             | BESCHREIBUNG |
+| ---------------- | ----------- |
+| Markdown         | Kacheln mit Unterstützung für Markdown sind Kacheln, auf die geklickt werden kann und in denen Überschriften und Beschreibungstext mithilfe von Markdown angezeigt werden. Die URL kann ein relativer Link zu einer anderen Seite der Anwendung sein, oder ein absoluter Link zu einer externen Website.|
+| Image            | Auf Bildkacheln, auf denen ein benutzerdefiniertes Bild angezeigt wird, kann geklickt werden. Die URL kann ein relativer Link zu einer anderen Seite der Anwendung sein, oder ein absoluter Link zu einer externen Website.|
+| Bezeichnung            | Auf Kacheln mit einer Beschriftung auf einem Dashboard wird benutzerdefinierter Text angezeigt. Sie können die Größe des Texts festlegen. Auf einer Kachel mit Beschriftung können Sie dem Dashboard relevante Informationen wie Beschreibungen, Kontaktinformationen oder Hilfe hinzufügen.|
+| Anzahl            | Diese Kachel zeigt die Anzahl der Geräte in einer Gerätegruppe an.|
+| Karte              | Kartenkacheln zeigen den Standort eines oder mehrerer Geräte auf einer Karte an. Sie können bis zu 100 Punkte im Standortverlauf eines Geräts anzeigen. Sie können beispielsweise ein Routenmuster der Orte anzeigen, an denen sich ein Gerät in der vergangenen Woche befand.|
+| KPI              |  KPI-Kacheln zeigen aggregierte Telemetriewerte für ein oder mehrere Geräte über einen bestimmten Zeitraum hinweg an. Damit können Sie beispielsweise die Maximaltemperatur und den Druck eines oder mehrerer Geräte in der letzten Stunde anzeigen.|
+| Liniendiagramm       | Liniendiagrammkacheln zeigen einen oder mehrere aggregierte Telemetriewerte für ein oder mehrere Geräte über einen bestimmten Zeitraum hinweg an. Sie können beispielsweise ein Liniendiagramm anzeigen, das die durchschnittliche Temperatur und den durchschnittlichen Druck eines oder mehrere Geräte in der letzten Stunde anzeigt.|
+| Balkendiagramm        | Balkendiagrammkacheln zeigen einen oder mehrere aggregierte Telemetriewerte für ein oder mehrere Geräte über einen bestimmten Zeitraum hinweg an. Sie können beispielsweise ein Balkendiagramm anzeigen, das die durchschnittliche Temperatur und den durchschnittlichen Druck eines oder mehrerer Geräte in der letzten Stunde anzeigt.|
+| Kreisdiagramm        | Kreisdiagrammkacheln zeigen einen oder mehrere aggregierte Telemetriewerte für ein oder mehrere Geräte über einen bestimmten Zeitraum hinweg an.|
+| Heat Map         | Auf Wärmebildkacheln werden Informationen zu einem oder mehreren Geräten farblich dargestellt.|
+| Letzter bekannter Wert | Kacheln mit letzten bekannten Werten zeigen die aktuellen Telemetriewerte für ein oder mehrere Geräte an. Auf dieser Kachel können Sie beispielsweise die aktuellen Messungen von Temperatur, Druck und Feuchtigkeit für ein oder mehrere Gerät anzeigen. |
+| Ereignisverlauf    | Auf einer Kachel mit dem Ereignisverlauf werden die Ereignisse für ein Gerät in einem Zeitraum gezeigt. Auf dieser Kachel können Sie beispielsweise alle Öffnungs- und Schließereignisse der Ventile für ein oder mehrere Geräte während der letzten Stunde anzeigen.|
+| Eigenschaft         |  Auf Eigenschaftenkacheln wird der aktuelle Wert für Eigenschaften und Cloudeigenschaften eines oder mehrerer Geräts angezeigt. Sie können diese Kachel z. B. verwenden, um Geräteeigenschaften wie den Hersteller oder die Firmwareversion eines Geräts anzuzeigen. |
+
+Aktuell können Sie Kacheln, die mehrere Geräte unterstützen, bis zu zehn Geräte hinzufügen.
+
+### <a name="customizing-visualizations"></a>Anpassen von Visualisierungen
+
+Klicken Sie bei Kacheln, die aggregierte Werte anzeigen, auf das Zahnradsymbol neben dem Telemetrietyp im Bereich **Diagramm konfigurieren**, um die Aggregation auszuwählen. Zur Verfügung stehen die Aggregationen für den Durchschnitt, die Summe, das Maximum, das Minimum und die Anzahl.
+
+Bei Liniendiagrammen, Balkendiagrammen und Kreisdiagrammen können Sie die Farbe der verschiedenen Telemetriewerte anpassen. Klicken Sie hierzu auf das Farbpalettensymbol neben den Telemetriedaten, die Sie anpassen möchten:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="Ändern der Farbe eines Telemetriewerts":::
+
+Bei Kacheln, die Zeichenfolgeneigenschaften oder Telemetriewerte zeigen, können Sie auswählen, wie der Text angezeigt werden soll. Wenn das Gerät beispielsweise eine URL in einer Zeichenfolgeneigenschaft speichert, können Sie sie als Link anzeigen, auf den geklickt werden kann. Wenn die URL auf ein Bild verweist, können Sie das Bild in einer Kachel mit dem letzten bekannten Wert oder einer Eigenschaftenkachel rendern. Wenn Sie ändern möchten, wie eine Zeichenfolge angezeigt wird, klicken Sie in der Kachelkonfiguration auf das Zahnradsymbol neben dem Telemetrietyp oder der Eigenschaft:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Ändern der Anzeige einer Zeichenfolge auf einer Kachel":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

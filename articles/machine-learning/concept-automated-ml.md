@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: ce51a1b25453a5bbacbd268b37f2bd21cfe37fea
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: dc40668ec7008042b5f1600214184cbf8bba4701
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983464"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119084"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Was ist automatisiertes maschinelles Lernen (AutoML)?
 
@@ -35,18 +35,19 @@ Data Scientists, Analysten und Entwickler aus den verschiedensten Branchen könn
 
 ### <a name="classification"></a>Klassifizierung
 
-Die Klassifizierung ist ein gängiger Machine Learning-Task. Klassifizierung ist eine Art des überwachten Lernens, bei der Modelle anhand von Trainingsdaten lernen und diese Erkenntnisse auf neue Daten anwenden. Azure Machine Learning bietet Featurebereitstellungen speziell für diese Aufgaben, z. B. Textfeaturizer für Deep Neural Network zur Klassifizierung. Erfahren Sie mehr über die [Optionen für die Featurebereitstellung](how-to-use-automated-ml-for-ml-models.md#featurization). 
+Die Klassifizierung ist ein gängiger Machine Learning-Task. Klassifizierung ist eine Art des überwachten Lernens, bei der Modelle anhand von Trainingsdaten lernen und diese Erkenntnisse auf neue Daten anwenden. Azure Machine Learning bietet Featurebereitstellungen speziell für diese Aufgaben, z. B. Textfeaturizer für Deep Neural Network zur Klassifizierung. Erfahren Sie mehr über die [Optionen für die Featurebereitstellung](how-to-configure-auto-features.md#featurization). 
 
 Das Hauptziel von Klassifizierungsmodellen besteht darin, auf der Grundlage der Erkenntnisse aus den Trainingsdaten vorherzusagen, in welche Kategorien neue Daten fallen werden. Zu den gängigen Klassifizierungsbeispielen gehören Betrugserkennung, Handschrifterkennung und Objekterkennung.  Hier erhalten Sie weitere Informationen und ein Beispiel für die [Klassifizierung mit automatisiertem maschinellen Lernen](tutorial-train-models-with-aml.md).
 
 Weitere Beispiele für Klassifizierung und automatisiertes Machine Learning finden Sie in den folgenden Python-Notebooks: [Fraud Detection](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb) (Betrugserkennung), [Marketing Prediction](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) (Marketingprognose) und [Newsgroup Data Classification](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb) (Klassifizierung von Diskussionsgruppendaten)
 
 ### <a name="regression"></a>Regression
-Ähnlich der Klassifizierung sind Regressionsaufgaben auch ein gängiger überwachter Lerntask. Azure Machine Learning bietet [spezielle Featurisierungen für diesen Task](how-to-use-automated-ml-for-ml-models.md#featurization).
+
+Ähnlich der Klassifizierung sind Regressionsaufgaben auch ein gängiger überwachter Lerntask. Azure Machine Learning bietet [spezielle Featurisierungen für diesen Task](how-to-configure-auto-features.md#featurization).
 
 Anders als bei der Klassifizierung, bei der die vorhergesagten Ausgabewerte kategorisch sind, sagen Regressionsmodelle numerische Ausgabewerte auf der Grundlage unabhängiger Vorhersagefaktoren voraus. Bei der Regression besteht das Ziel darin, die Beziehung zwischen diesen unabhängigen Vorhersagevariablen herzustellen, indem geschätzt wird, wie eine Variable die anderen beeinflusst. Beispiel: Der Fahrzeugpreis basierend auf Merkmalen wie Kraftstoffverbrauch, Sicherheitseinstufung, usw. Hier erhalten Sie weitere Informationen und ein Beispiel für die [Regression mit automatisiertem maschinellen Lernen](tutorial-auto-train-models.md).
 
-Weitere Beispiele für Regression und automatisiertes Machine Learning für Vorhersagen finden Sie in den folgenden Python-Notebooks: [CPU-Leistungsvorhersage](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb), 
+Weitere Beispiele für Regression und automatisiertes Machine Learning für Vorhersagen finden Sie in den folgenden Python-Notebooks: [CPU-Leistungsvorhersage](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb), 
 
 ### <a name="time-series-forecasting"></a>Zeitreihenvorhersagen
 
@@ -99,18 +100,19 @@ Obwohl die Modellerstellung automatisiert ist, können Sie auch [ermitteln, wie 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
-<a name="preprocess"></a>
 
-## <a name="preprocessing"></a>Preprocessing (Vorverarbeitung)
+## <a name="feature-engineering"></a>Featureentwicklung
 
-In jedem automatisierten Machine Learning-Experiment werden Ihre Daten mit den Standardmethoden und optional durch eine erweiterte Vorverarbeitung vorverarbeitet.
+Beim Feature Engineering werden Domänenkenntnisse der Daten zum Erstellen von Features verwendet, mit denen ML-Algorithmen besser lernen können. In Azure Machine Learning werden für das Feature Engineering Skalierungs- und Normalisierungstechniken angewendet. Zusammen werden diese Techniken und das Feature Engineering als Featurisierung bezeichnet.
+
+Bei automatisierten Machine Learning-Experimenten wird die Featurisierung automatisch angewendet, sie kann aber auch basierend auf Ihren Daten angepasst werden. [Weitere Informationen zur enthaltenen Featurebereitstellung](how-to-configure-auto-features.md#featurization).  
 
 > [!NOTE]
-> Die Schritte zur Vorverarbeitung bei automatisiertem maschinellen Lernen (Featurenormalisierung, Behandlung fehlender Daten, Umwandlung von Text in numerische Daten usw.) werden Teil des zugrunde liegenden Modells. Bei Verwendung des Modells für Vorhersagen werden die während des Trainings angewendeten Vorverarbeitungsschritte automatisch auf Ihre Eingabedaten angewendet.
+> Die Schritte zur Featurebereitstellung bei automatisiertem maschinellen Lernen (Featurenormalisierung, Behandlung fehlender Daten, Umwandlung von Text in numerische Daten usw.) werden Teil des zugrunde liegenden Modells. Bei Verwendung des Modells für Vorhersagen werden die während des Trainings angewendeten Schritte zur Featurebereitstellung automatisch auf Ihre Eingabedaten angewendet.
 
-### <a name="automatic-preprocessing-standard"></a>Automatische Vorverarbeitung (Standard)
+### <a name="automatic-featurization-standard"></a>Automatische Featurisierung (Standard)
 
-In jedem automatisierten Machine Learning-Experiment werden Ihre Daten automatisch skaliert oder normalisiert, damit die Algorithmen gut funktionieren.  Während des Modelltrainings wird eine der folgenden Skalierungs- oder Normalisierungstechniken auf jedes Modell angewendet.
+In jedem automatisierten Machine Learning-Experiment werden Ihre Daten automatisch skaliert oder normalisiert, damit die Algorithmen gut funktionieren. Während des Modelltrainings wird eine der folgenden Skalierungs- oder Normalisierungstechniken auf jedes Modell angewendet. Erfahren Sie, wie AutoML dazu beiträgt, die [Überanpassung und Unausgeglichenheit von Daten](concept-manage-ml-pitfalls.md) in Ihren Modellen zu vermeiden.
 
 |Skalierung&nbsp;&&nbsp;Normalisierung| BESCHREIBUNG |
 | ------------- | ------------- |
@@ -122,15 +124,15 @@ In jedem automatisierten Machine Learning-Experiment werden Ihre Daten automatis
 | [TruncatedSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |Diese Transformation führt Dimensionalitätsreduzierung durch abgeschnittene Singulärwertzerlegung (SVD) durch. Im Gegensatz zu PCA zentriert diese Schätzfunktion die Daten nicht vor der Berechnung der Singulärwertzerlegung, d. h., dass scipy.sparse-Matrizen effizient verwendet werden können. |
 | [SparseNormalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | Jede Stichprobe (d.h. jede Zeile der Datenmatrix) mit mindestens einer Komponente ungleich Null wird unabhängig von anderen Stichproben neu skaliert, sodass ihre Norm (l1 oder l2) gleich eins ist. |
 
-### <a name="advanced-preprocessing--featurization"></a>Erweiterte Vorverarbeitung und Featurisierung
+### <a name="customize-featurization"></a>Anpassen der Featurisierung
 
-Außerdem stehen zusätzliche erweiterte Vorverarbeitung und Featurebereitstellung zur Verfügung, z. B. Schutzmaßnahmen für Daten, Codierung und Transformationen. [Weitere Informationen zur enthaltenen Featurebereitstellung](how-to-use-automated-ml-for-ml-models.md#featurization). Diese Einstellung kann aktiviert werden über:
+Es stehen auch weitere Feature Engineering-Techniken wie etwa Codierung und Transformationen zur Verfügung. 
 
-+ Azure Machine Learning Studio: Aktivieren Sie die **Automatische Merkmalserstellung** im Abschnitt **Konfigurationsausführung** [mit diesen Schritten](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
+Diese Einstellung kann aktiviert werden über:
 
-+ Python SDK: Angeben von `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` für die [`AutoMLConfig`-Klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
++ Azure Machine Learning Studio: Aktivieren Sie die **Automatische Merkmalserstellung** im Abschnitt **Konfigurationsausführung** [mit diesen Schritten](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
 
-
++ Python SDK: Geben Sie `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` in Ihrem Objekt vom Typ [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) an. Weitere Informationen zur Aktivierung der Featurisierung finden Sie [hier]((how-to-configure-auto-features.md). 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a> Ensemblemodelle
 
@@ -186,8 +188,19 @@ Wägen Sie die folgenden Vor- und Nachteile gegeneinander ab, wenn Sie zwischen 
 | Registrieren und Visualisieren der Informationen und Metriken von Experimenten auf der Benutzeroberfläche | ✓      | ✓     |                               |
 | Schutzmaßnahmen für Daten                                            | ✓      | ✓     |                               |
 
+## <a name="many-models"></a>Viele Modelle 
 
-## <a name="automated-ml-in-azure-machine-learning"></a>Automatisiertes maschinelles Lernen in Azure Machine Learning
+Der [Many Models Solution Accelerator](https://aka.ms/many-models) (Preview) (Projektmappenbeschleuniger für viele Modelle (Vorschau)) baut auf Azure Machine Learning auf und ermöglicht Ihnen die Verwendung des automatisierten maschinellen Lernens für Training, Betrieb und Verwaltung von hunderten oder sogar tausenden von Machine Learning-Modellen.
+
+Die Erstellung eines Modells __für jede Instanz oder jede Einzelperson__ kann in den folgenden Szenarien z. B. zu verbesserten Ergebnissen führen:
+
+* Vorhersage der Umsätze für jedes einzelne Geschäft
+* Vorausschauende Wartung für Hunderte von Ölquellen
+* Anpassen einer Erfahrung für einzelne Benutzer
+
+Weitere Informationen finden Sie auf GitHub unter [Many Models Solution Accelerator](https://aka.ms/many-models) (Projektmappenbeschleuniger für viele Modelle).
+
+## <a name="automl-in-azure-machine-learning"></a>AutoML in Azure Machine Learning
 
 Azure Machine Learning bietet zwei Möglichkeiten für die Arbeit mit automatisiertem maschinellen Lernen
 

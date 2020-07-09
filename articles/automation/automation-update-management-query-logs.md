@@ -1,28 +1,28 @@
 ---
-title: Abfragen von Protokollen der Azure-Updateverwaltung
-description: In diesem Artikel wird beschrieben, wie Sie die Protokolle für die Updateverwaltung in Ihrem Log Analytics-Arbeitsbereich abfragen.
+title: Abfragen von Protokollen der Azure Automation-Updateverwaltung
+description: In diesem Artikel erfahren Sie, wie Sie die Protokolle für die Updateverwaltung in Ihrem Log Analytics-Arbeitsbereich abfragen.
 services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09eacb42eff6ecf3a3fca2d7fb401f52195f5f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617419"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830768"
 ---
-# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Abfragen von Updatedatensätzen für die Updateverwaltung in Azure Monitor-Protokollen
+# <a name="query-update-management-logs"></a>Abfragen von Protokollen der Updateverwaltung
 
-Zusätzlich zu den Details, die in der Updateverwaltungslösung bereitgestellt werden, können Sie die in Ihrem Log Analytics-Arbeitsbereich gespeicherten Protokolle durchsuchen. Wählen Sie auf der Lösungsseite im linken Bereich **Protokolle** aus. Die Seite „Protokollsuche“ wird geöffnet.
+Zusätzlich zu den Details, die während der Bereitstellung der Updateverwaltung bereitgestellt werden, können Sie die in Ihrem Log Analytics-Arbeitsbereich gespeicherten Protokolle durchsuchen. Um die Protokolle von Ihrem Automation-Konto aus zu durchsuchen, wählen Sie **Updateverwaltung** aus, und öffnen Sie den Log Analytics-Arbeitsbereich, der Ihrer Bereitstellung zugeordnet ist.
 
-Sie erfahren außerdem, wie Sie die Abfragen anpassen oder auf verschiedenen Clients verwenden können. Weitere Informationen finden Sie in der [Dokumentation zur Such-API von Log Analytics](https://dev.loganalytics.io/).
+Sie können auch die Protokollabfragen anpassen oder sie auf verschiedenen Clients verwenden. Weitere Informationen finden Sie in der [Dokumentation zur Such-API von Log Analytics](https://dev.loganalytics.io/).
 
-## <a name="update-records"></a>Updatedatensätze
+## <a name="query-update-records"></a>Abfragen von Updatedatensätzen
 
 Die Updateverwaltung sammelt Datensätze für Windows- und Linux-VMs und die Datentypen, die in den Protokollsuchergebnissen enthalten sind. In den folgenden Abschnitten werden diese Datensätze beschrieben.
 
-### <a name="required-updates"></a>Erforderliche Updates
+### <a name="query-required-updates"></a>Abfragen der erforderlichen Updates
 
 Ein Datensatz mit dem Typ `RequiredUpdate` wird erstellt, der die für einen Computer erforderlichen Updates darstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
@@ -43,7 +43,7 @@ Ein Datensatz mit dem Typ `RequiredUpdate` wird erstellt, der die für einen Com
 | UpdateSeverity | Bewertung des Schweregrads des Sicherheitsrisiko. Werte:<br> *Critical* (Kritisch)<br> *Wichtig*<br> *Mittel*<br> *Niedrig* |
 | UpdateTitle | Der Titel des Updates.|
 
-### <a name="update"></a>Aktualisieren
+### <a name="query-update-record"></a>Abfragen von Updatedatensätzen
 
 Ein Datensatz mit dem Typ `Update` wird erstellt, der die für einen Computer verfügbaren Updates sowie deren Installationsstatus darstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
@@ -80,7 +80,7 @@ Ein Datensatz mit dem Typ `Update` wird erstellt, der die für einen Computer ve
 | Resource | Der Name der Ressource. | 
 | ResourceType | Der Ressourcentyp. | 
 
-### <a name="update-agent"></a>Agentupdate ausführen
+### <a name="query-update-agent-record"></a>Abfragen von Datensätzen des Update-Agents
 
 Ein Datensatz mit dem Typ `UpdateAgent` wird erstellt, der Details zum Update-Agent auf dem Computer bereitstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
@@ -101,7 +101,7 @@ Ein Datensatz mit dem Typ `UpdateAgent` wird erstellt, der Details zum Update-Ag
 | WindowsUpdateAgentVersion | Version des Windows Update-Agents. |
 | WSUSServer | Fehlermeldungen, wenn der Windows Update-Agent ein Problem hat, das behandelt werden muss. |
 
-### <a name="update-deployment-status"></a>Bereitstellungsstatus des Updates 
+### <a name="query-update-deployment-status-record"></a>Abfragen des Datensatzes zum Bereitstellungsstatus von Updates
 
 Ein Datensatz mit dem Typ `UpdateRunProgress` wird erstellt, der den Bereitstellungsstatus des Updates einer geplanten Bereitstellung nach Computer bereitstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
@@ -133,7 +133,7 @@ Ein Datensatz mit dem Typ `UpdateRunProgress` wird erstellt, der den Bereitstell
 | VMUUID | Eindeutiger Bezeichner für den virtuellen Computer. |
 | resourceId | Eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist. |
 
-### <a name="update-summary"></a>Aktualisieren der Zusammenfassung 
+### <a name="query-update-summary-record"></a>Abfragen des Datensatzes mit der Updatezusammenfassung
 
 Ein Datensatz mit dem Typ `UpdateSummary` wird erstellt, der eine Updatezusammenfassung nach Computer bereitstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
@@ -171,7 +171,7 @@ Ein Datensatz mit dem Typ `UpdateSummary` wird erstellt, der eine Updatezusammen
 
 Die folgenden Abschnitte enthalten Beispielprotokollabfragen für Updatedatensätze, die für die Updateverwaltung erfasst werden.
 
-### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Bestätigen der Integration von Nicht-Azure-Computern
+### <a name="confirm-that-non-azure-machines-are-enabled-for-update-management"></a>Sicherstellen, dass Nicht-Azure-Computer für die Updateverwaltung aktiviert sind
 
 Sie können eine der folgenden Protokollsuchen ausführen, um zu bestätigen, dass direkt verbundene Computer mit Azure Monitor-Protokollen kommunizieren.
 
@@ -197,7 +197,7 @@ Auf einem Windows-Computer können Sie die folgenden Informationen überprüfen,
 Falls der Agent nicht mit Azure Monitor-Protokollen kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, vergewissern Sie sich, dass die Firewall bzw. der Proxyserver ordnungsgemäß konfiguriert sind. Weitere Informationen zur Überprüfung der Firewall- oder Proxyserverkonfiguration finden Sie unter [Netzwerkkonfiguration für den Windows-Agent](../azure-monitor/platform/agent-windows.md) bzw. unter [Netzwerkkonfiguration für den Linux-Agent](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
-> Wenn Ihre Linux-Systeme für die Kommunikation mit einem Proxy oder Log Analytics-Gateway konfiguriert sind und Sie diese Lösung integrieren, aktualisieren Sie die Berechtigungen für *proxy.conf*, um der Gruppe „omiuser“ Leseberechtigungen für die Datei zu erteilen. Führen Sie zu diesem Zweck die folgenden Befehle aus:
+> Wenn Ihre Linux-Systeme für die Kommunikation mit einem Proxy oder Log Analytics-Gateway konfiguriert sind und Sie die Updateverwaltung aktivieren, aktualisieren Sie die Berechtigungen für `proxy.conf`, um der Gruppe „omiuser“ Leseberechtigungen für die Datei zu erteilen. Führen Sie dazu die folgenden Befehle aus:
 >
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
@@ -409,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Verwenden Sie Protokollsuchen in [Azure Monitor-Protokollen](../log-analytics/log-analytics-log-searches.md), um ausführliche Aktualisierungsdaten anzuzeigen.
-* [Erstellen Sie Warnungen](automation-tutorial-update-management.md#configure-alerts) für den Status der Updatebereitstellung.
+* Ausführliche Informationen zu Azure Monitor-Protokollen finden Sie unter [Azure Monitor-Protokolle](../log-analytics/log-analytics-log-searches.md).
+* Hilfe zu Warnungen finden Sie unter [Konfigurieren von Warnungen](automation-tutorial-update-management.md#configure-alerts).

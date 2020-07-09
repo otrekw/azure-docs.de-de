@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Skillsets im Azure-Portal'
+title: Erstellen eines Skillsets im Azure-Portal
 titleSuffix: Azure Cognitive Search
 description: In diesem Schnellstart über das Portal erfahren Sie, wie Sie den Datenimport-Assistenten verwenden, um einer Indizierungspipeline in Azure Cognitive Search kognitive Qualifikationen hinzuzufügen. Zu diesen Qualifikationen zählen die optische Zeichenerkennung (Optical Character Recognition, OCR) und die Verarbeitung natürlicher Sprache.
 manager: nitinme
@@ -7,35 +7,44 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/20/2019
-ms.openlocfilehash: e2e17ba6af60fa495a03e7d46a07cfe6b66f4e68
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/07/2020
+ms.openlocfilehash: db9e8f71787026abea74fbbfeed51a227a295601
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77472416"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488952"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Schnellstart: Erstellen eines kognitiven Skillsets für Azure Cognitive Search über das Azure-Portal
 
-Ein Skillset ist ein KI-Feature, das Informationen und die Struktur aus umfangreichen, undifferenzierten Text- oder Bilddateien extrahiert und sie indizierbar und für Volltext-Suchabfragen in Azure Cognitive Search durchsuchbar macht. 
+Ein Skillset ist ein KI-basiertes Feature, das Informationen und Struktur aus umfangreichen, undifferenzierten Text- oder Bilddateien extrahiert und den Inhalt in Azure Cognitive Search indizierbar und durchsuchbar macht. 
 
-In dieser Schnellstartanleitung werden Dienste und Daten in der Azure-Cloud miteinander kombiniert, um ein Skillset zu erstellen. Nach Abschluss der Einrichtung wird im Portal der **Datenimport-Assistent** ausgeführt, um alles miteinander zu verknüpfen. Am Ende verfügen Sie über einen durchsuchbaren Index mit Daten, die mittels KI-Verarbeitung erstellt wurden und im Portal mithilfe des [Suchexplorers](search-explorer.md) abgefragt werden können.
+In dieser Schnellstartanleitung werden Dienste und Daten in der Azure-Cloud miteinander kombiniert, um ein Skillset zu erstellen. Nach Abschluss der Einrichtung wird im Azure-Portal der **Datenimport-Assistent** ausgeführt, um alles miteinander zu verknüpfen. Am Ende verfügen Sie über einen durchsuchbaren Index mit Daten, die mittels KI-Verarbeitung erstellt wurden und im Portal mithilfe des [Suchexplorers](search-explorer.md) abgefragt werden können.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="create-services-and-load-data"></a>Erstellen von Diensten und Laden von Daten
+Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-In dieser Schnellstartanleitung werden Azure Cognitive Search, [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/) und [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) für die KI verwendet. 
++ Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/).
 
-Aufgrund der geringen Workloadgröße wird Cognitive Services im Hintergrund genutzt und bietet eine kostenlose Verarbeitung von bis zu 20 Transaktionen. Für solch kleine Datasets können Sie das Erstellen oder Anfügen einer Cognitive Services-Ressource überspringen.
++ Ein Azure Cognitive Search-Dienst [Erstellen Sie einen Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
+
++ Ein Azure Storage-Konto mit [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/).
+
+> [!NOTE]
+> In diesem Schnellstart wird außerdem [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) für die KI verwendet. Aufgrund der geringen Workloadgröße wird Cognitive Services im Hintergrund für die kostenlose Verarbeitung von bis zu 20 Transaktionen genutzt. Das bedeutet, dass Sie diese Übung durchführen können, ohne eine zusätzliche Cognitive Services-Ressource erstellen zu müssen.
+
+## <a name="set-up-your-data"></a>Einrichten Ihrer Daten
+
+In den folgenden Schritten richten Sie einen Blobcontainer in Azure Storage ein, um heterogene Inhaltsdateien zu speichern.
 
 1. [Laden Sie die Beispieldaten herunter](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), die aus einem kleinen Satz Dateien verschiedener Typen bestehen. Entzippen Sie die Dateien.
 
 1. [Erstellen Sie ein Azure Storage-Konto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal), oder [suchen Sie nach einem vorhandenen Konto](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
 
-   Es muss sich in der gleichen Region wie Azure Cognitive Search befinden, um Bandbreitengebühren zu vermeiden. 
-   
-   Wählen Sie den Kontotyp „StorageV2 (allgemein, Version 2)“ aus, wenn Sie später auch das Wissensspeicher-Feature (in einer anderen exemplarischen Vorgehensweise) ausprobieren möchten. Andernfalls können Sie einen beliebigen Typ auswählen.
+   + Es muss sich in der gleichen Region wie Azure Cognitive Search befinden, um Bandbreitengebühren zu vermeiden. 
+
+   + Wählen Sie den Kontotyp „StorageV2 (allgemein, Version 2)“ aus, wenn Sie später auch das Wissensspeicher-Feature (in einer anderen exemplarischen Vorgehensweise) ausprobieren möchten. Andernfalls können Sie einen beliebigen Typ auswählen.
 
 1. Öffnen Sie die Seiten für Blobdienste, und erstellen Sie einen Container. Sie können die standardmäßige öffentliche Zugriffsebene verwenden. 
 
@@ -43,15 +52,15 @@ Aufgrund der geringen Workloadgröße wird Cognitive Services im Hintergrund gen
 
    ![Quelldateien in Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
 
-1. [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
-
 Nun können Sie zum Datenimport-Assistenten wechseln.
 
 ## <a name="run-the-import-data-wizard"></a>Ausführen des Datenimport-Assistenten
 
-Klicken Sie auf der Übersichtsseite des Suchdiensts auf der Befehlsleiste auf **Daten importieren**, um in vier Schritten die kognitive Anreicherung einzurichten.
+1. Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com/) an.
 
-  ![Befehl zum Importieren von Daten](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
+1. [Navigieren Sie zu Ihrem Suchdienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/), und klicken Sie auf der Seite „Übersicht“ auf der Befehlsleiste auf **Daten importieren**, um die kognitive Anreicherung in vier Schritten einzurichten.
+
+   ![Befehl zum Importieren von Daten](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
 ### <a name="step-1---create-a-data-source"></a>Schritt 1: Erstellen einer Datenquelle
 
@@ -119,7 +128,7 @@ Die Indizierung kognitiver Qualifikationen dauert länger als die übliche textb
 
   ![Azure Cognitive Search-Benachrichtigung](./media/cognitive-search-quickstart-blob/indexer-notification.png)
 
-Warnungen sind hinsichtlich der umfangreichen Spanne von Inhaltstypen normal. Einige Inhaltstypen sind für bestimmte Qualifikationen ungültig, und auf niedrigeren Ebenen treten üblicherweise [Indexergrenzwerte](search-limits-quotas-capacity.md#indexer-limits) auf. Beispielsweise treten im Free-Tarif Benachrichtigungen über Kürzungen auf den Indexergrenzwert von 32.000 Zeichen auf. Bei Ausführung dieser Demo auf einer höheren Ebene würden viele Kürzungswarnungen wegfallen.
+Warnungen sind hinsichtlich der umfangreichen Spanne von Inhaltstypen normal. Einige Inhaltstypen sind für bestimmte Skills ungültig, und bei niedrigeren Tarifen gelten üblicherweise [Grenzwerte für Indexer](search-limits-quotas-capacity.md#indexer-limits). Beispielsweise treten im Free-Tarif Benachrichtigungen über Kürzungen auf den Indexergrenzwert von 32.000 Zeichen auf. Bei Ausführung dieser Demo auf einer höheren Ebene würden viele Kürzungswarnungen wegfallen.
 
 Um Warnungen oder Fehler zu überprüfen, klicken Sie in der Liste „Indexer“ auf den Status „Warnung“, um die Seite „Ausführungsverlauf“ zu öffnen.
 

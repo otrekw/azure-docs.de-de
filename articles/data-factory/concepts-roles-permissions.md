@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 8b7791c5c04e986b30959d2fcae17142fdd8b7ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3955d3b9370a1cd2ee88c27e42b107f5ae0f87c2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418319"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833505"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen und Berechtigungen für Azure Data Factory
 
@@ -69,7 +69,7 @@ Hier finden Sie einige Beispiele, die zeigen, was sich mit benutzerdefinierten R
 
 - Sie können es einem Benutzer ermöglichen, eine Data Factory in einer Ressourcengruppe im Azure-Portal zu erstellen, zu bearbeiten oder zu löschen.
 
-  Sie können einem Benutzer die integrierte Rolle **Data Factory-Mitwirkender** auf Ressourcengruppenebene zuweisen. Wenn Sie einem Benutzer Zugriff auf jede Data Factory in einem Abonnement gewähren möchten, weisen Sie die Rolle auf Abonnementebene zu.
+  Sie können einem Benutzer die integrierte Rolle **Data Factory-Mitwirkender** auf Ressourcengruppenebene zuweisen. Wenn Sie den Zugriff auf jede beliebige Data Factory in einem Abonnement erlauben möchten, weisen Sie die Rolle auf Abonnementebene zu.
 
 - Sie können es einem Benutzer ermöglichen, eine Data Factory anzuzeigen (zu lesen) und zu überwachen, sie aber nicht zu bearbeiten oder zu ändern.
 

@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: b56f6743b642904349797ac5b6167194f7916b45
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: 8a28b187898bc9725b79bfb73c76d161b5ecd4d5
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446588"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607260"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und Python
 
-Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suche zum ersten Mal aufzurufen und die Ergebnisse anzuzeigen. Diese Python-Anwendung lädt ein Bild in die API hoch und zeigt die zurückgegebenen Informationen an. Die Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel.
+Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suche zum ersten Mal aufzurufen. Diese Python-Anwendung lädt ein Bild in die API hoch und zeigt die zurückgegebenen Informationen an. Die Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,7 +36,7 @@ Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suc
     import requests, json
     ```
 
-2. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt und den Pfad zu dem Bild, das hochgeladen werden soll. `BASE_URI` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird:
+2. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt und den Pfad zu dem Bild, das hochgeladen werden soll. Für den Wert von `BASE_URI` können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```python
 
@@ -44,7 +45,7 @@ Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suc
     imagePath = 'your-image-path'
     ```
     
-    Wenn Sie ein lokales Bild hochladen, müssen die Formulardaten den Header `Content-Disposition` enthalten. Der Parameter `name` muss auf „image“ festgelegt werden. Den Parameter `filename` können Sie auf eine beliebige Zeichenfolge festlegen. Der Inhalt des Formulars umfasst die Binärdaten des Bilds. Das hochzuladende Bild darf maximal 1 MB groß sein.
+3. Wenn Sie ein lokales Bild hochladen, müssen die Formulardaten den Header `Content-Disposition` enthalten. Legen Sie den Parameter `name` auf „image“ und den Parameter `filename` auf den Dateinamen des Bilds fest. Der Inhalt des Formulars umfasst die Binärdaten des Bilds. Das hochzuladende Bild darf maximal 1 MB groß sein.
     
     ```
     --boundary_1234-abcd
@@ -55,13 +56,13 @@ Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suc
     --boundary_1234-abcd--
     ```
 
-3. Erstellen Sie ein Wörterbuchobjekt für die Headerinformationen Ihrer Anforderung. Binden Sie Ihren Abonnementschlüssel wie hier gezeigt an die Zeichenfolge `Ocp-Apim-Subscription-Key`:
+4. Erstellen Sie ein Wörterbuchobjekt für die Headerinformationen Ihrer Anforderung. Binden Sie Ihren Abonnementschlüssel an die Zeichenfolge `Ocp-Apim-Subscription-Key`.
 
     ```python
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. Erstellen Sie ein weiteres Wörterbuch für Ihr Bild, das beim Senden der Anforderung geöffnet und hochgeladen wird:
+5. Erstellen Sie ein weiteres Wörterbuch für Ihr Bild, das beim Senden der Anforderung geöffnet und hochgeladen wird.
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
@@ -69,27 +70,27 @@ Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suc
 
 ## <a name="parse-the-json-response"></a>Analysieren der JSON-Antwort
 
-1. Erstellen Sie eine Methode mit dem Namen `print_json()` für die API-Antwort, und geben Sie den JSON-Code aus:
+Erstellen Sie eine Methode mit dem Namen `print_json()` für die API-Antwort, und geben Sie den JSON-Code aus.
 
-    ```python
-    def print_json(obj):
-        """Print the object as json"""
-        print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
-    ```
+```python
+def print_json(obj):
+    """Print the object as json"""
+    print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
+```
 
 ## <a name="send-the-request"></a>Senden der Anforderung
 
-1. Verwenden Sie `requests.post()`, um eine Anforderung an die API für die visuelle Bing-Suche zu senden. Fügen Sie die Zeichenfolge für Ihren Endpunkt, den Header und die Dateiinformationen ein. Geben Sie `response.json()` mit `print_json()` aus:
+Verwenden Sie `requests.post()`, um eine Anforderung an die API für die visuelle Bing-Suche zu senden. Fügen Sie die Zeichenfolge für Ihren Endpunkt, den Header und die Dateiinformationen ein. Geben Sie `response.json()` mit `print_json()` aus.
 
-    ```python
-    try:
-        response = requests.post(BASE_URI, headers=HEADERS, files=file)
-        response.raise_for_status()
-        print_json(response.json())
+```python
+try:
+    response = requests.post(BASE_URI, headers=HEADERS, files=file)
+    response.raise_for_status()
+    print_json(response.json())
     
-    except Exception as ex:
-        raise ex
-    ```
+except Exception as ex:
+    raise ex
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

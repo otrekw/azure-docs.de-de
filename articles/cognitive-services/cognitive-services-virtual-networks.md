@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 885f92bfb7a49fb90f68d3d5c5a2a93e5880afbc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8fcac761ab1f0805a3b2b75107e0119fbfb9db6e
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588337"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148088"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurieren von virtuellen Netzwerken für Azure Cognitive Services
 
@@ -484,6 +484,68 @@ Regeln für IP-Netzwerke für Cognitive Services-Ressourcen können über das Az
 
 > [!IMPORTANT]
 > Die Standardregel muss auf **Verweigern** festgelegt sein (siehe [Festlegen der Standardregel](#change-the-default-network-access-rule)). Andernfalls haben die Netzwerkregeln keine Wirkung.
+
+## <a name="use-private-endpoints"></a>Verwenden privater Endpunkte
+
+Sie können [private Endpunkte](../private-link/private-endpoint-overview.md) für Ihre Cognitive Services-Ressourcen verwenden, um Clients in einem virtuellen Netzwerk (VNET) den sicheren Zugriff auf Daten über [Private Link](../private-link/private-link-overview.md) zu ermöglichen. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihre Cognitive Services-Ressource. Der Netzwerkdatenverkehr zwischen den Clients im VNET und der Ressource wird über das VNET und eine private Verbindung im Microsoft-Backbonenetzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt.
+
+Private Endpunkte für Cognitive Services Ressourcen ermöglichen Folgendes:
+
+- das Schützen Ihrer Cognitive Services-Ressource, indem Sie die Firewall so konfigurieren, dass alle Verbindungen am öffentlichen Endpunkt für Cognitive Services blockiert werden
+- das Erhöhen der Sicherheit für das VNET, indem Sie die Exfiltration von Daten aus dem VNET blockieren
+- die sichere Verbindungsherstellung mit Cognitive Services-Ressourcen über lokale Netzwerke, die eine Verbindung mit dem VNET über [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoutes](../expressroute/expressroute-locations.md) mit privatem Peering aufweisen
+
+### <a name="conceptual-overview"></a>Konzeptionelle Übersicht
+
+Ein privater Endpunkt ist eine spezielle Netzwerkschnittstelle für einen Azure-Dienst in Ihrem [VNET](../virtual-network/virtual-networks-overview.md). Wenn Sie einen privaten Endpunkt für Ihre Cognitive Services-Ressource erstellen, wird eine sichere Verbindung zwischen Clients in Ihrem VNET und Ihrem Dienst bereitgestellt. Dem privaten Endpunkt wird eine IP-Adresse aus dem IP-Adressbereich Ihres VNET zugewiesen. Für die Verbindung zwischen dem privaten Endpunkt und Cognitive Services wird eine sichere private Verbindung verwendet.
+
+Anwendungen im VNET können eine nahtlose Verbindung mit dem Dienst über den privaten Endpunkt herstellen, indem die gleichen Verbindungszeichenfolgen und Autorisierungsmechanismen wie üblich verwendet werden. Der Speech-Dienst stellt eine Ausnahme dar, denn er benötigt einen separaten Endpunkt. Weitere Informationen finden Sie im Abschnitt [Private Endpunkte im Speech-Dienst](#private-endpoints-with-the-speech-service). Private Endpunkte können mit allen von der Cognitive Services-Ressource unterstützten Protokollen verwendet werden, auch mit REST.
+
+Private Endpunkte können in Subnetzen erstellt werden, die [Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) verwenden. Clients in einem Subnetz können eine Verbindung mit einer Cognitive Services-Ressource über einen privaten Endpunkt herstellen, während für den Zugriff auf andere Ressourcen Dienstendpunkte verwendet werden.
+
+Wenn Sie einen privaten Endpunkt für eine Cognitive Services-Ressource in Ihrem VNET erstellen, wird eine Einwilligungsanforderung zur Genehmigung an den Besitzer der Cognitive Services-Ressource gesendet. Wenn der Benutzer, der die Erstellung des privaten Endpunkts anfordert, auch ein Besitzer der Ressource ist, wird diese Einwilligungsanforderung automatisch genehmigt.
+
+Besitzer von Cognitive Services-Ressourcen können Einwilligungsanforderungen und die privaten Endpunkte über die Registerkarte *Private Endpunkte* für die Cognitive Services-Ressource im [Azure-Portal](https://portal.azure.com) verwalten.
+
+### <a name="private-endpoints"></a>Private Endpunkte
+
+Während Sie den privaten Endpunkt erstellen, müssen Sie die Cognitive Services-Ressource angeben, mit der eine Verbindung hergestellt wird. Weitere Informationen zum Erstellen eines privaten Endpunkts finden Sie in den folgenden Artikeln:
+
+- [Erstellen eines privaten Endpunkts über das Private Link Center im Azure-Portal](../private-link/create-private-endpoint-portal.md)
+- [Erstellen eines privaten Endpunkts mit Azure CLI](../private-link/create-private-endpoint-cli.md)
+- [Erstellen eines privaten Endpunkts mit Azure PowerShell](../private-link/create-private-endpoint-powershell.md)
+
+### <a name="connecting-to-private-endpoints"></a>Herstellen einer Verbindung mit privaten Endpunkten
+
+Clients in einem VNET, die den privaten Endpunkt verwenden, sollten dieselbe Verbindungszeichenfolge für die Cognitive Services-Ressource verwenden wie Clients, die eine Verbindung mit dem öffentlichen Endpunkt herstellen. Der Speech-Dienst stellt eine Ausnahme dar, denn er benötigt einen separaten Endpunkt. Weitere Informationen finden Sie im Abschnitt [Private Endpunkte im Speech-Dienst](#private-endpoints-with-the-speech-service). Das automatische Weiterleiten der Verbindungen vom VNET zur Cognitive Services-Ressource über eine private Verbindung basiert auf der DNS-Auflösung. Der Speech-Dienst 
+
+Wir erstellen standardmäßig eine [private DNS-Zone](../dns/private-dns-overview.md), die an das VNET angehängt ist, mit den erforderlichen Updates für die privaten Endpunkte. Wenn Sie jedoch einen eigenen DNS-Server verwenden, müssen Sie möglicherweise zusätzliche Änderungen an Ihrer DNS-Konfiguration vornehmen. Im folgenden Abschnitt zu [DNS-Änderungen](#dns-changes-for-private-endpoints) werden die für private Endpunkte erforderlichen Updates beschrieben.
+
+### <a name="private-endpoints-with-the-speech-service"></a>Private Endpunkte im Speech-Dienst
+
+Wenn Sie private Endpunkte mit dem Speech-Dienst verwenden, müssen Sie die Speech-Dienst-API über einen benutzerdefinierten Endpunkt aufrufen. Der globale Endpunkt kann nicht verwendet werden. Sie sollten einen Endpunkt im Format {konto}.{stt|tts|stimme|dls}.speech.microsoft.com verwenden.
+
+### <a name="dns-changes-for-private-endpoints"></a>DNS-Änderungen für private Endpunkte
+
+Wenn Sie einen privaten Endpunkt erstellen, wird der DNS CNAME-Ressourceneintrag für die Cognitive Services-Ressource auf einen Alias in einer Unterdomäne mit dem Präfix *privatelink* aktualisiert. Standardmäßig erstellen wir außerdem eine [private DNS-Zone](../dns/private-dns-overview.md), die der Unterdomäne *privatelink* entspricht, mit den DNS-A-Ressourceneinträgen für die privaten Endpunkte.
+
+Wenn Sie die Speicherendpunkt-URL von außerhalb des VNET mit dem privaten Endpunkt auflösen, wird diese in den öffentlichen Endpunkt der Cognitive Services-Ressource aufgelöst. Bei Auflösung aus dem VNET, das den privaten Endpunkt hostet, wird die Endpunkt-URL in die IP-Adresse des privaten Endpunkts aufgelöst.
+
+Diese Vorgehensweise ermöglicht den Zugriff auf die Cognitive Services-Ressource mithilfe derselben Verbindungszeichenfolge für Clients in dem VNET, das die privaten Endpunkte hostet, als auch für Clients außerhalb des VNET.
+
+Wenn Sie einen benutzerdefinierten DNS-Server in Ihrem Netzwerk verwenden, müssen Clients in der Lage sein, den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) für die Cognitive Services-Ressource in die IP-Adresse des privaten Endpunkts aufzulösen. Sie sollten den DNS-Server so konfigurieren, dass die Unterdomäne der privaten Verbindung an die private DNS-Zone für das VNET delegiert wird.
+
+> [!TIP]
+> Wenn Sie einen benutzerdefinierten oder lokalen DNS-Server verwenden, sollten Sie den DNS-Server so konfigurieren, dass der Name der Cognitive Services-Ressource in der Unterdomäne „privatelink“ in die IP-Adresse des privaten Endpunkts aufgelöst wird. Hierzu können Sie die Unterdomäne „privatelink“ an die private DNS-Zone des VNET delegieren oder die DNS-Zone auf dem DNS-Server konfigurieren und die DNS-A-Einträge hinzufügen.
+
+Weitere Informationen zum Konfigurieren des eigenen DNS-Servers für die Unterstützung privater Endpunkte finden Sie in den folgenden Artikeln:
+
+- [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [DNS-Konfiguration für private Endpunkte](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+
+### <a name="pricing"></a>Preise
+
+Ausführliche Preisinformationen finden Sie unter [Azure Private Link – Preise](https://azure.microsoft.com/pricing/details/private-link).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

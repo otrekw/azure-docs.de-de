@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720925"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115277"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Tutorial: Erstellen eines Notebooks in Azure Cosmos DB zum Analysieren und Visualisieren der Daten
 
@@ -30,11 +30,11 @@ In diesem Abschnitt erstellen Sie die Azure Cosmos-Datenbank sowie den Container
 
 1. Wechseln Sie zur Registerkarte **Notebooks**, wählen Sie `…` neben **Meine Notebooks** aus, und erstellen Sie ein **neues Notebook**. Wählen Sie **Python 3** als Standardkernel aus.
 
-   ![Erstellen eines neuen Notebooks](./media/create-notebook-visualize-data/create-new-notebook.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Erstellen eines neuen Notebooks":::
 
 1. Nachdem ein neues Notebook erstellt wurde, können Sie es z. B. in **EinzelhandelsdatenVisualisierung.ipynb** umbenennen.
 
-1. Als Nächstes erstellen Sie eine Datenbank mit dem Namen „RetailDemo“ und einen Container mit dem Namen „WebsiteData“, um die Einzelhandelsdaten zu speichern. Sie können „/CardID“ als Partitionsschlüssel verwenden. Kopieren Sie den folgenden Code, fügen Sie ihn in eine neue Zelle Ihres Notebooks ein, und führen Sie ihn aus:
+1. Als Nächstes erstellen Sie eine Datenbank mit dem Namen „RetailDemo“ und einen Container mit dem Namen „WebsiteData“, um die Einzelhandelsdaten zu speichern. Sie können „/CartID“ als Partitionsschlüssel verwenden. Kopieren Sie den folgenden Code, fügen Sie ihn in eine neue Zelle Ihres Notebooks ein, und führen Sie ihn aus:
 
    ```python
    import azure.cosmos
@@ -49,7 +49,7 @@ In diesem Abschnitt erstellen Sie die Azure Cosmos-Datenbank sowie den Container
 
    Wählen Sie zum Ausführen einer Zelle `Shift + Enter` aus, oder markieren Sie die Zelle, und wählen Sie in der Navigationsleiste des Daten-Explorers die Option zum **Ausführen der aktiven Zelle**.
 
-   ![Ausführen der aktiven Zelle](./media/create-notebook-visualize-data/run-active-cell.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Ausführen der aktiven Zelle":::
 
    Die Datenbank und der Container werden in Ihrem aktuellen Azure Cosmos-Konto erstellt. Der Container wird mit 400 RU/s bereitgestellt. Nachdem die Datenbank und der Container erstellt wurden, wird die folgende Ausgabe angezeigt. 
 
@@ -60,7 +60,7 @@ In diesem Abschnitt erstellen Sie die Azure Cosmos-Datenbank sowie den Container
 
    Sie können auch die Registerkarte **Daten** aktualisieren und die neu erstellten Ressourcen anzeigen:
 
-   ![Aktualisieren der Registerkarte „Daten“ zum Anzeigen des neuen Containers](media/create-notebook-visualize-data/refresh-data-tab.png)
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Aktualisieren der Registerkarte „Daten“ zum Anzeigen des neuen Containers":::
 
 1. Als nächstes importieren Sie die Beispieldaten für den Einzelhandel in den Azure Cosmos-Container. Hier sehen Sie das Format eines Elements aus den Einzelhandelsdaten:
 
@@ -121,7 +121,7 @@ Bevor Sie Abfragen zum Analysieren der Daten ausführen, können Sie die Daten a
 {Query text}
 ```
 
-Weitere Informationen finden Sie im Artikel [Integrierte Notebookbefehle und -features in Azure Cosmos DB](use-notebook-features-and-commands.md). Sie führen diese Abfrage aus: `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. Die Ergebnisse werden in einem Pandas-Datenrahmen mit dem Namen „df_cosmos“ gespeichert. Fügen Sie den folgenden Befehl in eine neue Notebookzelle ein, und führen Sie ihn aus.
+Weitere Informationen finden Sie im Artikel [Integrierte Notebookbefehle und -features in Azure Cosmos DB](use-python-notebook-features-and-commands.md). Sie führen diese Abfrage aus: `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. Die Ergebnisse werden in einem Pandas-Datenrahmen mit dem Namen „df_cosmos“ gespeichert. Fügen Sie den folgenden Befehl in eine neue Notebookzelle ein, und führen Sie ihn aus.
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -135,7 +135,7 @@ Führen Sie in einer neuen Notebookzelle den folgenden Code aus, um die ersten 1
 df_cosmos.head(10)
 ```
 
-![Abfrage ausführen, um die ersten 10 Elemente zu erhalten](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Ausführen der Abfrage, um die ersten 10 Elemente zu erhalten":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>Ausführen von Abfragen und Analysieren der Daten
 
@@ -148,7 +148,7 @@ In diesem Abschnitt führen Sie einige Abfragen für die abgerufenen Daten aus.
    display(df_revenue.head(5))
    ```
 
-   ![Ausgabe: Summe der Gesamtumsätze](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Ausgabe: Summe der Gesamtumsätze":::
 
 * **Abfrage 2:** Öffnen Sie eine neue Notebookzelle, und führen Sie den folgenden Code aus, um eine Liste der fünf meistgekauften Elemente zu erhalten:
 
@@ -159,7 +159,7 @@ In diesem Abschnitt führen Sie einige Abfragen für die abgerufenen Daten aus.
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![Fünf meistgekaufte Artikel](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Fünf meistgekaufte Artikel":::
 
 ## <a name="visualize-your-data"></a>Visualisieren Ihrer Daten  
 
@@ -170,16 +170,16 @@ In diesem Abschnitt führen Sie einige Abfragen für die abgerufenen Daten aus.
    !{sys.executable} -m pip install bokeh --user
    ```
 
-1. Als nächstes bereiten Sie die grafische Darstellung der Daten auf einer Karte vor. Verknüpfen Sie die Daten in Azure Cosmos DB mit Länderinformationen in Azure Blob Storage, und konvertieren Sie das Ergebnis in das GeoJSON-Format. Kopieren Sie den folgenden Code in eine neue Notebookzelle, und führen Sie ihn aus.
+1. Als nächstes bereiten Sie die grafische Darstellung der Daten auf einer Karte vor. Verknüpfen Sie die Daten in Azure Cosmos DB mit Länder-/Regionsinformationen in Azure Blob Storage, und konvertieren Sie das Ergebnis in das GeoJSON-Format. Kopieren Sie den folgenden Code in eine neue Notebookzelle, und führen Sie ihn aus.
 
    ```python
    import urllib.request, json
    import geopandas as gpd
 
-   # Load country information for mapping
+   # Load country/region information for mapping
    countries = gpd.read_file("https://cosmosnotebooksdata.blob.core.windows.net/notebookdata/countries.json")
 
-   # Merge the countries dataframe with our data in Azure Cosmos DB, joining on country code
+   # Merge the countries/regions dataframe with our data in Azure Cosmos DB, joining on country/region code
    df_merged = countries.merge(df_revenue, left_on = 'admin', right_on = 'Country', how='left')
 
    # Convert to GeoJSON so bokeh can plot it
@@ -187,7 +187,7 @@ In diesem Abschnitt führen Sie einige Abfragen für die abgerufenen Daten aus.
    json_data = json.dumps(merged_json)
    ```
 
-1. Visualisieren Sie den Umsatz verschiedener Länder auf einer Weltkarte, indem Sie den folgenden Code in einer neuen Notebookzelle ausführen:
+1. Visualisieren Sie den Umsatz verschiedener Länder/Regionen auf einer Weltkarte, indem Sie den folgenden Code in einer neuen Notebookzelle ausführen:
 
    ```python
    from bokeh.io import output_notebook, show
@@ -233,9 +233,9 @@ In diesem Abschnitt führen Sie einige Abfragen für die abgerufenen Daten aus.
    show(p)
    ```
 
-   In der Ausgabe wird die Weltkarte mit unterschiedlichen Farben angezeigt. Die von dunkel nach hell verlaufenden Farben stellen die Länder mit dem höchsten Umsatz bis zu denen mit dem niedrigsten Umsatz dar.
+   In der Ausgabe wird die Weltkarte mit unterschiedlichen Farben angezeigt. Die von dunkel nach hell verlaufenden Farben stellen die Länder/Regionen mit dem höchsten bzw. niedrigsten Umsatz dar.
 
-   ![Visualisierung des Umsatzes nach Ländern auf einer Karte](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   ![Visualisierung des Umsatzes nach Ländern/Regionen auf einer Karte](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
 
 1. Sehen wir uns einen weiteren Fall der Datenvisualisierung an. Der Container „WebsiteData“ enthält einen Verlauf der Benutzer, die ein Element angezeigt, zum ihrem Warenkorb hinzugefügt und gekauft haben. Wir stellen die Konvertierungsrate der erworbenen Elemente als Plot dar. Führen Sie den folgenden Code in einer neuen Zelle aus, um die Konvertierungsrate der einzelnen Elemente zu visualisieren:
 
@@ -286,8 +286,8 @@ In diesem Abschnitt führen Sie einige Abfragen für die abgerufenen Daten aus.
    show(p)
    ```
 
-   ![Visualisierung der Kaufkonvertierungsrate](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Visualisierung der Kaufkonvertierungsrate":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu Notebookbefehlen finden Sie im Artikel [Verwenden integrierter Notebookbefehle und -features in Azure Cosmos DB](use-notebook-features-and-commands.md).
+* Weitere Informationen zu Python-Notebookbefehlen finden Sie im Artikel [Verwenden integrierter Notebookbefehle und -features in Azure Cosmos DB](use-python-notebook-features-and-commands.md).

@@ -3,17 +3,17 @@ title: 'Tutorial: Erstellen und Verwalten von Azure-Budgets'
 description: Dieses Tutorial hilft bei der Planung und Abrechnung der Kosten für Azure-Dienste, die Sie in Anspruch nehmen.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: e8afa19b6d79ce915ca41f7b0e6b4a203d7daa1b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 384be4599abadaada31cfc5b4993fff6705ec71d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101755"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559322"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -115,6 +115,15 @@ Nach der Erstellung eines Budgets wird es in der Kostenanalyse angezeigt. Die Be
 
 Im obigen Beispiel haben Sie ein Budget für ein Abonnement erstellt. Sie können auch ein Budget für eine Ressourcengruppe erstellen. Wenn Sie ein Budget für eine Ressourcengruppe erstellen möchten, navigieren Sie zu **Cost Management + Abrechnung** &gt; **Abonnements** &gt; Abonnement auswählen > **Ressourcengruppen** > Ressourcengruppe auswählen > **Budgets** > und dann **Hinzufügen**, um ein Budget hinzuzufügen.
 
+### <a name="create-a-budget-for-combined-azure-and-aws-costs"></a>Erstellen eines Budgets für kombinierte Azure- und AWS-Kosten
+
+Sie können Ihre Azure- und AWS-Kosten gruppieren, indem Sie dem Connector eine Verwaltungsgruppe sowie die zugehörigen konsolidierten und verknüpften Konten zuweisen. Weisen Sie Ihre Azure-Abonnements derselben Verwaltungsgruppe zu. Erstellen Sie dann ein Budget für die kombinierten Kosten.
+
+1. Wählen Sie in Cost Management die Option **Budgets** aus.
+1. Wählen Sie **Hinzufügen**.
+1. Wählen Sie **Bereich ändern** und dann die Verwaltungsgruppe aus.
+1. Setzen Sie die Erstellung des Budgets bis zum Abschluss fort.
+
 ## <a name="costs-in-budget-evaluations"></a>Kosten in Budgetauswertungen
 
 Die Kostenauswertungen für Budgets beinhalten jetzt reservierte Instanzen und Kaufdaten. Falls diese Gebühren für Sie relevant sind, erhalten Sie möglicherweise Warnungen, weil die Gebühren in Ihren Auswertungen berücksichtigt werden. Es ist ratsam, sich beim [Azure-Portal](https://portal.azure.com) anzumelden und sicherzustellen, dass die Budgetschwellenwerte ordnungsgemäß konfiguriert sind, um die neuen Kosten zu berücksichtigen. An den abgerechneten Azure-Gebühren hat sich nichts geändert. Budgets werden jetzt anhand eines vollständigeren Kostenumfangs bewertet. Falls diese Gebühren für Sie nicht gelten, bleibt das Budgetverhalten unverändert.
@@ -124,8 +133,7 @@ Wenn Sie die neuen Kosten so filtern möchten, dass das Budget nur anhand der Az
 - Herausgebertyp: Azure
 - Gebührentyp: Verwendung
 
-Die Budgetkostenauswertung basiert auf den tatsächlichen Kosten. Sie beinhaltet keine Abschreibungen. Weitere Informationen zu den für Sie in Budgets verfügbaren Filteroptionen finden Sie unter [Grundlegendes zu Gruppierungs-und Filteroptionen](quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options).
-
+Die Budgetkostenauswertung basiert auf den tatsächlichen Kosten. Sie beinhaltet keine Abschreibungen. Weitere Informationen zu den für Sie in Budgets verfügbaren Filteroptionen finden Sie unter [Grundlegendes zu Gruppierungs-und Filteroptionen](group-filter.md).
 
 ## <a name="trigger-an-action-group"></a>Auslösen einer Aktionsgruppe
 

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/25/2019
-ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/01/2020
+ms.openlocfilehash: 2840e5b8ff16d44f76aaafcf68264c65e4401ff7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226582"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83199026"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics
 Wenn Sie eine [Protokollabfrage](log-query-overview.md) in [Log Analytics im Azure-Portal](get-started-portal.md) ausführen, sind die von der Abfrage ausgewerteten Daten von dem von Ihnen ausgewählten Bereich und Zeitbereich abhängig. In diesem Artikel wird der Bereich, der Zeitbereich und das Festlegen dieser Bereiche je nach Ihren Anforderungen beschrieben. Außerdem erfahren Sie mehr über das Verhalten von verschiedenen Bereichstypen.
@@ -25,6 +25,9 @@ Der Bereich wird immer oben links im Log Analytics-Fenster angezeigt. Ein Symbol
 ![`Scope`](media/scope/scope.png)
 
 Der Bereich wird von der Methode bestimmt, die Sie zum Starten von Log Analytics verwenden. In einigen Fällen können Sie den Bereich ändern, indem Sie auf diesen klicken. In der folgenden Tabelle werden die jeweiligen verschiedenen Bereichstypen und Details aufgelistet.
+
+> [!IMPORTANT]
+> Wenn Sie APM 2.1 verwenden, werden Application Insights-Anwendungen in einem Log Analytics-Arbeitsbereich mit allen anderen Protokolldaten gespeichert, und der Application Insights-Bereich ist nicht verfügbar. Wenn Sie im Application Insights-Menü die Option **Protokolle** auswählen, ist das Verhalten mit dem des Bereichs **Andere Azure-Ressourcen** identisch, und nur die Daten aus dieser Anwendung sind in den Application Insights-Tabellen verfügbar.
 
 | Abfragebereich | Datensätze in diesem Bereich | Auswählen | Ändern des Bereichs |
 |:---|:---|:---|:---|
@@ -65,7 +68,7 @@ Die Ausführung Ihrer Abfrage wird blockiert, wenn der Bereich Arbeitsbereiche i
 ## <a name="time-range"></a>Uhrzeitbereich
 Der Zeitbereich gibt, basierend auf dem Zeitpunkt der Erstellung des Datensatzes, die Gruppe der für die Abfrage auszuwertenden Datensätzen an. Er wird durch eine in der folgenden Tabelle angegebene Standardeigenschaft in jedem Datensatz im Arbeitsbereich oder in der Anwendung definiert.
 
-| Location | Eigenschaft |
+| Standort | Eigenschaft |
 |:---|:---|
 | Log Analytics-Arbeitsbereich          | TimeGenerated |
 | Application Insights-Anwendung | timestamp     |

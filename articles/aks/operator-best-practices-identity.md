@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für Clusteroperator zum Verwalten de
 services: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0e3569be769fcf70a65cbfee62a3b80a5abdc3b5
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: e02b542f74a2dd7b7e88f1fa075ad6a736895e76
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668310"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020046"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Best Practices für die Authentifizierung und Autorisierung in Azure Kubernetes Service (AKS)
 
@@ -19,6 +19,7 @@ Beim Bereitstellen und Verwalten von Clustern in Azure Kubernetes Service (AKS) 
 Dieser Artikel zu Best Practices konzentriert sich darauf, wie ein Clusteroperator Zugriff und Identität für AKS-Cluster verwalten kann. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
+>
 > * Authentifizieren von Benutzern von AKS-Clustern mit Azure Active Directory
 > * Steuern des Zugriffs auf Ressourcen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)
 > * Verwenden einer verwalteten Identität zur Authentifizierung bei anderen Diensten
@@ -97,14 +98,14 @@ Mit verwalteten Identitäten für Azure-Ressourcen (die derzeit als ein zugeordn
 
 Wenn Pods Zugriff auf einen Azure-Dienst anfordern, leiten Netzwerkregeln den Datenverkehr zum Node Management Identity-Server (NMI) um. Der NMI-Server identifiziert Pods, die den Zugriff auf Azure-Dienste basierend auf ihrer Remoteadresse anfordern, und fragt den Managed Identity Controller (MIC) ab. Der MIC prüft, ob Azure-Identitätszuordnungen im AKS-Cluster vorliegen, und der NMI-Server fordert dann basierend auf der Identitätszuordnung des Pods von Azure Active Directory (AD) ein Zugriffstoken an. Azure AD bietet Zugriff auf den NMI-Server, der an den Pod zurückgegeben wird. Dieses Zugriffstoken kann dann vom Pod verwendet werden, um Zugriff auf Azure-Dienste anzufordern.
 
-Im folgenden Beispiel erstellt ein Entwickler einen Pod, der eine verwaltete Identität verwendet, um Zugriff auf eine Azure SQL Server-Instanz anzufordern:
+Im folgenden Beispiel erstellt ein Entwickler einen Pod, der eine verwaltete Identität verwendet, um Zugriff auf Azure SQL-Datenbank anzufordern:
 
 ![Mit Podidentitäten kann ein Pod automatisch Zugriff auf andere Dienste anfordern.](media/operator-best-practices-identity/pod-identities.png)
 
 1. Der Clusteroperator erstellt zunächst ein Dienstkonto, das verwendet werden kann, um Identitäten zuzuordnen, wenn Pods Zugriff auf Dienste anzufordern.
 1. NMI-Server und MIC werden zum Weiterleiten von Podanforderungen von Zugriffstoken für den Azure AD-Zugriff bereitgestellt.
 1. Ein Entwickler stellt einen Pod mit einer verwalteten Identität bereit, die ein Zugriffstoken über den NMI-Server anfordert.
-1. Das Token wird an den Pod zurückgegeben und für den Zugriff auf eine Azure SQL Server-Instanz verwendet.
+1. Das Token wird an den Pod zurückgegeben und für den Zugriff auf Azure SQL-Datenbank verwendet.
 
 > [!NOTE]
 > Verwaltete Podidentitäten sind ein Open-Source-Projekt, das vom technischen Support von Azure nicht unterstützt wird.

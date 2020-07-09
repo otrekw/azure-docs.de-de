@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478309"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113070"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Behandeln von Problemen mit dem Konfigurationsserver
 
@@ -52,6 +52,8 @@ Der Quellcomputer registriert sich während der Installation des Mobilitäts-Age
     b. Öffnen Sie die Datei „Installation_Directory/Vx/bin/uninstall.sh“, und kommentieren Sie den Aufruf der Funktion **stop_services** aus.
     c. Öffnen Sie die Datei „Installation_Directory/Fx/uninstall.sh“, und kommentieren Sie den gesamten Abschnitt aus, der versucht, den Fx-Dienst zu beenden.
     d. [Deinstallieren](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) Sie den Mobilitäts-Agent. Starten Sie nach der erfolgreichen Deinstallation das System neu, und versuchen Sie, den Mobilitäts-Agent erneut zu installieren.
+
+8. Stellen Sie sicher, dass die mehrstufige Authentifizierung nicht für das Benutzerkonto aktiviert ist. Die mehrstufige Authentifizierung für das Benutzerkonto wird von Azure Site Recovery derzeit nicht unterstützt. Registrieren Sie den Konfigurationsserver, ohne dass die mehrstufige Authentifizierung für das Benutzerkonto aktiviert ist.  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>Installationsfehler: Fehler beim Laden von Konten.
 
@@ -160,16 +162,18 @@ Das Upgrade des Konfigurationsservers schlägt fehl, wenn bestimmte Dienste nich
 
 Um das Problem zu identifizieren, navigieren auf dem Konfigurationsserver zu C:\ProgramData\ASRSetupLogs\CX_TP_InstallLogFile. Wenn Sie folgende Fehler finden, verwenden Sie zum Beheben des Problems die folgenden Schritte aus: 
 
-    2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
-    2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
-    2018-06-28 14:28:12.944   Stopping svagents service.
-    2018-06-28 14:31:32.949   Unable to stop svagents service.
-    2018-06-28 14:31:32.949   Stopping svagents service.
-    2018-06-28 14:34:52.960   Unable to stop svagents service.
-    2018-06-28 14:34:52.960   Stopping svagents service.
-    2018-06-28 14:38:12.971   Unable to stop svagents service.
-    2018-06-28 14:38:12.971   Rolling back the install changes.
-    2018-06-28 14:38:12.971   Upgrade has failed.
+```output
+2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+2018-06-28 14:28:12.944   Stopping svagents service.
+2018-06-28 14:31:32.949   Unable to stop svagents service.
+2018-06-28 14:31:32.949   Stopping svagents service.
+2018-06-28 14:34:52.960   Unable to stop svagents service.
+2018-06-28 14:34:52.960   Stopping svagents service.
+2018-06-28 14:38:12.971   Unable to stop svagents service.
+2018-06-28 14:38:12.971   Rolling back the install changes.
+2018-06-28 14:38:12.971   Upgrade has failed.
+```
 
 So lösen Sie das Problem:
 
@@ -191,7 +195,7 @@ Sie haben keine ausreichenden Berechtigungen, um eine Anwendung in Azure Active 
 Um das Problem zu beheben, melden Sie sich beim Azure-Portal an, und führen Sie einen der folgenden Schritte aus:
 
 - Fordern Sie die Rolle „Anwendungsentwickler“ in AAD an. Weitere Informationen zur Rolle des Anwendungsentwicklers finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
-- Überprüfen Sie, ob das Flag **Benutzer kann die Anwendung erstellen** in AAD auf *true* gesetzt ist. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+- Überprüfen Sie, ob das Flag **Benutzer kann die Anwendung erstellen** in AAD auf *true* gesetzt ist. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>Prozessserver/Masterziel können nicht mit dem Konfigurationsserver kommunizieren 
 
@@ -203,14 +207,16 @@ In der Regel liegt hier ein Fehler an Port 443 vor. Führen Sie die folgenden Sc
 
 Um zu überprüfen, ob der Masterziel-Agent eine TCP-Sitzung für die IP des Konfigurationsservers erstellen kann, suchen Sie in den Masterziel-Agent-Protokollen nach einer Ablaufverfolgung ähnlich der folgenden:
 
-TCP \<hier IP durch CS-IP ersetzen>: 52739 \<hier IP durch CS-IP ersetzen>: 443 SYN_SENT 
+TCP \<Replace IP with CS IP here>:52739 \<Replace IP with CS IP here>:443 SYN_SENT 
 
 TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // Ersetzen Sie IP hier mit CS IP
 
 Wenn Sie in den MT-Agent-Protokollen ähnliche Ablaufverfolgungen wie die folgenden finden, meldet der MT-Agent Fehler auf Port 443:
 
-    #~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
-    #~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+```output
+#~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+#~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+```
  
 Dieser Fehler kann auftreten, wenn andere Anwendungen ebenfalls Port 443 verwenden oder wenn eine Firewalleinstellung den Port blockiert.
 

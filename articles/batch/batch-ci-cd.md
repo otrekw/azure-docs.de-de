@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 72f976071a5fc65c8e96f6b3cd5c0094785e287b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: d6b68a8448d8b644500b62e54ab763838d707c66
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726841"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956660"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen
 
@@ -28,8 +28,8 @@ In diesem Beispiel erstellen wir eine Build- und Releaseepipeline, um eine Azure
 
 Um den Schritten in diesem Artikel folgen zu können, benötigen Sie eine Azure DevOps-Organisation und ein Teamprojekt.
 
-* [Schnellstart: Erstellen einer Organisation](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-* [Erstellen eines Projekts in Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
+* [Schnellstart: Erstellen einer Organisation](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
+* [Erstellen eines Projekts in Azure DevOps](/azure/devops/organizations/projects/create-project?view=azure-devops)
 
 ### <a name="source-control-for-your-environment"></a>Quellcodeverwaltung für Ihre Umgebung
 
@@ -48,7 +48,7 @@ Die in diesem Beispiel verwendete Codebasisstruktur ähnelt dem Folgenden:
 
 In diesem Abschnitt wird davon ausgegangen, dass Sie mit der Versionskontrolle und dem Entwerfen von Resource Manager-Vorlagen vertraut sind. Wenn Sie mit diesen Konzepten nicht vertraut sind, finden Sie auf den folgenden Seiten weitere Informationen.
 
-* [Was ist Quellcodeverwaltung?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
+* [Was ist Quellcodeverwaltung?](/azure/devops/user-guide/source-control?view=azure-devops)
 * [Grundlegendes zur Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
@@ -62,7 +62,7 @@ In diesem Beispiel wird eine End-to-End-Lösungsvorlage (deployment.json) verwen
 
 ![Beispiel für die verknüpfte Vorlagenstruktur mit Verwendung von Azure Resource Manager-Vorlagen](media/batch-ci-cd/ARMTemplateHierarchy.png)
 
-Die erste Vorlage, die wir betrachten, ist für ein Azure Storage-Konto bestimmt. Unsere Lösung erfordert ein Speicherkonto, um die Anwendung in unserem Batch-Konto bereitzustellen. Das Referenzhandbuch für [Microsoft.Storage-Ressourcentypen](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions) sollte beim Erstellen der Resource Manager-Vorlagen für Storage-Konten berücksichtigt werden.
+Die erste Vorlage, die wir betrachten, ist für ein Azure Storage-Konto bestimmt. Unsere Lösung erfordert ein Speicherkonto, um die Anwendung in unserem Batch-Konto bereitzustellen. Das Referenzhandbuch für [Microsoft.Storage-Ressourcentypen](/azure/templates/microsoft.storage/allversions) sollte beim Erstellen der Resource Manager-Vorlagen für Storage-Konten berücksichtigt werden.
 
 ```json
 {
@@ -102,7 +102,7 @@ Die erste Vorlage, die wir betrachten, ist für ein Azure Storage-Konto bestimmt
 }
 ```
 
-Als Nächstes werden wir die Vorlage des Azure Batch-Kontos betrachten. Das Azure Batch-Konto fungiert als Plattform zum Pools (Gruppen von Computern) übergreifenden Ausführen zahlreicher Anwendungen. Das Referenzhandbuch für [Microsoft.Batch-Ressourcentypen](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) sollte beim Erstellen der Resource Manager-Vorlagen für Batch-Konten berücksichtigt werden.
+Als Nächstes werden wir die Vorlage des Azure Batch-Kontos betrachten. Das Azure Batch-Konto fungiert als Plattform zum Pools (Gruppen von Computern) übergreifenden Ausführen zahlreicher Anwendungen. Das Referenzhandbuch für [Microsoft.Batch-Ressourcentypen](/azure/templates/microsoft.batch/allversions) sollte beim Erstellen der Resource Manager-Vorlagen für Batch-Konten berücksichtigt werden.
 
 ```json
 {
@@ -141,7 +141,7 @@ Als Nächstes werden wir die Vorlage des Azure Batch-Kontos betrachten. Das Azur
 }
 ```
 
-Die nächste Vorlage zeigt ein Beispiel für das Erstellen eines Azure Batch-Pools (die Back-End-Computer zum Verarbeiten unserer Anwendungen). Das Referenzhandbuch für [Microsoft.Batch-Ressourcentypen](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) sollte beim Erstellen der Resource Manager-Vorlagen für Batch-Kontenpools berücksichtigt werden.
+Die nächste Vorlage zeigt ein Beispiel für das Erstellen eines Azure Batch-Pools (die Back-End-Computer zum Verarbeiten unserer Anwendungen). Das Referenzhandbuch für [Microsoft.Batch-Ressourcentypen](/azure/templates/microsoft.batch/allversions) sollte beim Erstellen der Resource Manager-Vorlagen für Batch-Kontenpools berücksichtigt werden.
 
 ```json
 {
@@ -309,7 +309,7 @@ Nun ist der Quellcode eingerichtet und wir können mit dem ersten Build beginnen
 
 ## <a name="continuous-integration"></a>Continuous Integration
 
-Mit [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/?view=azure-devops) innerhalb von Azure DevOps Services können Sie eine Erstellungs-, Test- und Bereitstellungspipeline für Ihre Anwendungen implementieren.
+Mit [Azure Pipelines](/azure/devops/pipelines/get-started/?view=azure-devops) innerhalb von Azure DevOps Services können Sie eine Erstellungs-, Test- und Bereitstellungspipeline für Ihre Anwendungen implementieren.
 
 In dieser Phase der Pipeline werden Tests in der Regel zum Überprüfen von Code und Erstellen der entsprechenden Teile der Software ausgeführt. Anzahl und Typen der Tests sowie weitere Aufgaben, die Sie ausführen, hängen von Ihrer übergeordneten Build- und Releasestrategie ab.
 
@@ -323,9 +323,9 @@ In diesem Beispiel konzentrieren wir uns auf den **hpc-application**-Ordner. Der
 
 1. Eine Buildpipeline kann auf zwei Arten erstellt werden:
 
-    a. [Verwenden des Visual Designer](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Klicken Sie zu dessen Verwendung auf der Seite **Neue Pipeline** auf „Verwenden Sie den visuellen Designer“.
+    a. [Verwenden des Visual Designer](/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Klicken Sie zu dessen Verwendung auf der Seite **Neue Pipeline** auf „Verwenden Sie den visuellen Designer“.
 
-    b. [Verwenden des YAML-Builds](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=azure-devops). Sie können eine neue YAML-Pipeline erstellen, indem Sie auf der Seite „Neue Pipeline“ auf die Option für Azure Repos oder GitHub klicken. Alternativ können Sie das folgende Beispiel in Ihrer Quellcodeverwaltung speichern und auf eine vorhandene YAML-Datei verweisen, indem Sie auf Visual Designer klicken und dann die YAML-Vorlage verwenden.
+    b. [Verwenden des YAML-Builds](/azure/devops/pipelines/get-started-yaml?view=azure-devops). Sie können eine neue YAML-Pipeline erstellen, indem Sie auf der Seite „Neue Pipeline“ auf die Option für Azure Repos oder GitHub klicken. Alternativ können Sie das folgende Beispiel in Ihrer Quellcodeverwaltung speichern und auf eine vorhandene YAML-Datei verweisen, indem Sie auf Visual Designer klicken und dann die YAML-Vorlage verwenden.
 
     ```yml
     # To publish an application into Azure Batch, we need to
@@ -357,11 +357,11 @@ In diesem Beispiel konzentrieren wir uns auf den **hpc-application**-Ordner. Der
     ![Anzeigen von Liveausgaben von Ihrem Build](media/batch-ci-cd/Build-1.jpg)
 
 > [!NOTE]
-> Wenn Sie eine Clientanwendung zum Ausführen der HPC-Batchanwendung verwenden, müssen Sie eine separate Builddefinition für diese Anwendung erstellen. Sie finden eine Reihe von Gewusst-wie-Anleitungen in der Dokumentation zu [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops).
+> Wenn Sie eine Clientanwendung zum Ausführen der HPC-Batchanwendung verwenden, müssen Sie eine separate Builddefinition für diese Anwendung erstellen. Sie finden eine Reihe von Gewusst-wie-Anleitungen in der Dokumentation zu [Azure Pipelines](/azure/devops/pipelines/get-started/index?view=azure-devops).
 
 ## <a name="continuous-deployment"></a>Kontinuierliche Bereitstellung
 
-Azure Pipelines hat auch stets Ihre Anwendung und die zugrunde liegende Infrastruktur bereitgestellt. Die Komponente [Releasepipelines](https://docs.microsoft.com/azure/devops/pipelines/release) ermöglicht die kontinuierliche Bereitstellung und automatisiert Ihren Releaseprozess.
+Azure Pipelines hat auch stets Ihre Anwendung und die zugrunde liegende Infrastruktur bereitgestellt. Die Komponente [Releasepipelines](/azure/devops/pipelines/release) ermöglicht die kontinuierliche Bereitstellung und automatisiert Ihren Releaseprozess.
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Bereitstellen der Anwendung und der zugrunde liegenden Infrastruktur
 

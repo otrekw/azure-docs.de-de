@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260937"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871256"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management
 Azure Event Hubs ist ein hochgradig skalierbarer Dateneingangsdienst, der Millionen von Ereignissen pro Sekunde erfassen kann. Auf diese Weise können Sie riesige Datenmengen verarbeiten und analysieren, die von vernetzten Geräten und Anwendungen erzeugt werden. Event Hubs fungiert als „Eingangstür“ für eine Ereignispipeline. Nach der Erfassung in Event Hubs können Sie Daten mit einem beliebigen Echtzeit-Analyseanbieter oder mit Batchverarbeitungs-/Speicheradaptern umwandeln und speichern. Event Hubs entkoppelt die Erzeugung eines Datenstroms von Ereignissen von der Nutzung dieser Ereignisse, sodass  Ereignisconsumer nach einem eigenen Zeitplan auf Ereignisse zugreifen können.
@@ -34,9 +34,9 @@ Der Event Hub ist nun vorhanden. Der nächste Schritt besteht darin, einen [Logg
 
 API Management-Logger werden mit der [API Management-REST-API](https://aka.ms/apimapi)konfiguriert. Ausführliche Anforderungsbeispiele finden Sie unter [Erstellen von Protokollierungen](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate).
 
-## <a name="configure-log-to-eventhubs-policies"></a>Konfigurieren von log-to-eventhub-Richtlinien
+## <a name="configure-log-to-eventhub-policies"></a>Konfigurieren von log-to-eventhub-Richtlinien
 
-Nachdem Sie den Logger in API Management konfiguriert haben, können Sie die Richtlinien zum Protokollieren im Event Hub („log-to-eventhub-Richtlinien“) für die gewünschten Ereignisse konfigurieren. Die log-to-eventhub-Richtlinie kann im Abschnitt mit Richtlinien für eingehenden Datenverkehr oder im Abschnitt mit Richtlinien für ausgehenden Datenverkehr verwendet werden.
+Nachdem Sie die Protokollierung in API Management konfiguriert haben, können Sie die Richtlinien zum Protokollieren im Event Hub („log-to-eventhub-Richtlinie“) für die gewünschten Ereignisse konfigurieren. Die log-to-eventhub-Richtlinie kann im Abschnitt mit Richtlinien für eingehenden Datenverkehr oder im Abschnitt mit Richtlinien für ausgehenden Datenverkehr verwendet werden.
 
 1. Navigieren Sie zu Ihrer APIM-Instanz.
 2. Wählen Sie die Registerkarte „API“ aus.
@@ -49,15 +49,32 @@ Nachdem Sie den Logger in API Management konfiguriert haben, können Sie die Ric
 9. Wählen Sie im Fenster rechts die Optionen **Erweiterte Richtlinien** > **Bei EventHub anmelden** aus. Damit wird die Richtlinienanweisungsvorlage `log-to-eventhub` eingefügt.
 
 ```xml
-<log-to-eventhub logger-id ='logger-id'>
-  @( string.Join(",", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name))
+<log-to-eventhub logger-id="logger-id">
+    @{
+        return new JObject(
+            new JProperty("EventTime", DateTime.UtcNow.ToString()),
+            new JProperty("ServiceName", context.Deployment.ServiceName),
+            new JProperty("RequestId", context.RequestId),
+            new JProperty("RequestIp", context.Request.IpAddress),
+            new JProperty("OperationName", context.Operation.Name)
+        ).ToString();
+    }
 </log-to-eventhub>
 ```
-Ersetzen Sie `logger-id` durch den Wert, den Sie im vorherigen Schritt in der URL für `{new logger name}` verwendet haben, um die Protokollierung zu erstellen.
+Ersetzen Sie `logger-id` durch den Wert, den Sie im vorherigen Schritt in der Anforderungs-URL zum Erstellen der Protokollierung für `{loggerId}` verwendet haben.
 
-Sie können jeden Ausdruck verwenden, der eine Zeichenfolge als Wert für das Element `log-to-eventhub` zurückgibt. In diesem Beispiel wird eine Zeichenfolge protokolliert, die das Datum, die Uhrzeit, den Dienstnamen, die Anforderungs-ID, die IP-Adresse der Anforderung und den Vorgangsnamen enthält.
+Sie können jeden Ausdruck verwenden, der eine Zeichenfolge als Wert für das Element `log-to-eventhub` zurückgibt. In diesem Beispiel wird eine Zeichenfolge im JSON-Format protokolliert, die das Datum, die Uhrzeit, den Dienstnamen, die Anforderungs-ID, die IP-Adresse der Anforderung und den Vorgangsnamen enthält.
 
 Klicken Sie auf **Speichern** , um die aktualisierte Richtlinienkonfiguration zu speichern. Die Richtlinie ist sofort nach dem Speichern aktiv, und im vorgesehenen Event Hub werden Ereignisse protokolliert.
+
+## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>Anzeigen einer Vorschau des Protokolls in Event Hubs mithilfe von Azure Stream Analytics
+
+Sie können eine Vorschau des Protokolls in Event Hubs anzeigen, indem Sie [Azure Stream Analytics-Abfragen](https://docs.microsoft.com/azure/event-hubs/process-data-azure-stream-analytics) verwenden. 
+
+1. Navigieren Sie im Azure-Portal zu dem Event Hub, an den die Protokollierung Ereignisse sendet. 
+2. Wählen Sie unter **Features**die Registerkarte **Daten verarbeiten** aus.
+3. Wählen Sie auf der Karte **Echtzeiterkenntnisse von Ereignissen aktivieren** die Option **Erkunden** aus.
+4. Sie sollten in der Lage sein, die Vorschau des Protokolls auf der Registerkarte **Eingabevorschau** anzuzeigen. Wenn die angezeigten Daten nicht aktuell sind, wählen Sie **Aktualisieren** aus, um die neuesten Ereignisse anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu Azure Event Hubs

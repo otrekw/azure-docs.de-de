@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentation zur Anwendungsverwaltung
-summary: Azure Active Directory bietet einen sicheren und nahtlosen Zugriff auf cloudbasierte und lokale Anwendungen. Darüber hinaus müssen die Kennwörter nicht verwaltet werden. Ihre Endbenutzer können sich einmal anmelden, um Zugriff auf Office 365 und Tausende andere Anwendungen zu erhalten. In unseren Schnellstarts, Tutorials und Anleitungen erfahren Sie, wie Sie Anwendungen verwalten und bereitstellen.
+summary: Azure Active Directory bietet einen sicheren und nahtlosen Zugriff auf cloudbasierte und lokale Anwendungen. Darüber hinaus müssen die Kennwörter nicht verwaltet werden. Ihre Endbenutzer können sich einmal anmelden, um Zugriff auf Microsoft 365 und Tausende andere Anwendungen zu erhalten. In unseren Schnellstarts, Tutorials und Anleitungen erfahren Sie, wie Sie Anwendungen verwalten und bereitstellen.
 metadata:
   title: Dokumentation zur Anwendungsverwaltung
-  description: Azure Active Directory bietet einen sicheren und nahtlosen Zugriff auf cloudbasierte und lokale Anwendungen. Darüber hinaus müssen die Kennwörter nicht verwaltet werden. Ihre Endbenutzer können sich einmal anmelden, um Zugriff auf Office 365 und Tausende andere Anwendungen zu erhalten. In unseren Schnellstarts, Tutorials und Anleitungen erfahren Sie, wie Sie Anwendungen verwalten und bereitstellen.
+  description: Azure Active Directory bietet einen sicheren und nahtlosen Zugriff auf cloudbasierte und lokale Anwendungen. Darüber hinaus müssen die Kennwörter nicht verwaltet werden. Ihre Endbenutzer können sich einmal anmelden, um Zugriff auf Microsoft 365 und Tausende andere Anwendungen zu erhalten. In unseren Schnellstarts, Tutorials und Anleitungen erfahren Sie, wie Sie Anwendungen verwalten und bereitstellen.
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 3bea7dda1cf44548ea924ffa84fb922410242f27
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: ed81c8d5eda3a9db84d85d79b10c0a5ab76705a4
+  ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77063471"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85339191"
 landingContent:
 - title: Informationen zur Anwendungsverwaltung
   linkLists:

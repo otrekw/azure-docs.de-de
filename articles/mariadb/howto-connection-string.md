@@ -4,14 +4,15 @@ description: In diesem Dokument sind alle derzeit unterstützten Verbindungszeic
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 74574fb905ae4ebd2552ef97cd0b5430eea6363a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: tracking-python
+ms.openlocfilehash: 3afa43f4db04b8289dea8e3d2d6511efb27b3d28
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530222"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104638"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Herstellen einer Verbindung zwischen Anwendungen und Azure Database for MariaDB
 In diesem Thema sind alle von Azure Database for MariaDB unterstützten Typen von Verbindungszeichenfolgen sowie Vorlagen und Beispiele aufgeführt. Ihre Verbindungszeichenfolge enthält unter Umständen andere Parameter und Einstellungen.

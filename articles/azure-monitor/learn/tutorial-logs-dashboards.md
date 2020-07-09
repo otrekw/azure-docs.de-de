@@ -5,14 +5,14 @@ ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 06/19/2019
+ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 76ba79561df4a75004369d24c4c6af82de9b1cfc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7bc2da2043c6607cfff62ff524be88efb79c6f18
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77661531"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148258"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Erstellen und Freigeben von Dashboards von Log Analytics-Daten
 
@@ -35,6 +35,14 @@ Wählen Sie **Dashboard** aus, um ihr standardmäßiges [Dashboard](../../azure-
 ![Dashboard des Azure-Portals](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
 
 Hier können Sie für all Ihre Azure-Ressourcen die Betriebsdaten zusammenstellen, die für die IT-Abteilung am wichtigsten sind, einschließlich Telemetriedaten aus Azure Log Analytics.  Bevor wir die Visualisierung einer Protokollabfrage durchführen, erstellen wir ein Dashboard und geben es frei.  Wir können uns dann auf unser Beispiel einer Leistungsprotokollabfrage konzentrieren, die als Liniendiagramm dargestellt wird, und sie dem Dashboard hinzufügen.  
+
+> [!NOTE]
+> Die folgenden Diagrammtypen werden in Azure-Dashboards mithilfe von Protokollabfragen unterstützt:
+> - Bereichsdiagramm
+> - Spaltendiagramm
+> - Kreisdiagramm (wird im Dashboard als Ring dargestellt)
+> - Punktdiagramm
+> - Zeitdiagramm
 
 Wählen Sie zum Erstellen eines Dashboards die Schaltfläche **Neues Dashboard** neben dem Namen des aktuellen Dashboards aus.
 

@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 5867c4ba7fa1447cbd5d40e15237ae50c24c7168
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e3553515e2cbae007883ad75960aa1c6991926df
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199261"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254547"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Informationen zur Azure-Reservierungsnutzung bei Ihrem einzelnen Abonnement mit nutzungsbasierter Bezahlung
 
@@ -27,7 +27,7 @@ In diesem Artikel wird davon ausgegangen, dass die Reservierung auf ein einzelne
 
 In den folgenden Abschnitten wird davon ausgegangen, dass Sie eine Windows-VM des Typs „Standard_DS1_v2“ in der Region „USA, Osten“ ausführen und die Informationen Ihrer reservierten VM-Instanz mit den Angaben in der folgenden Tabelle übereinstimmen:
 
-| Feld | value |
+| Feld | Wert |
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
 |Menge |1|
@@ -62,7 +62,7 @@ In den folgenden Abschnitten wird der Nutzungsbericht anhand von Azure SQL-Daten
 
 Es wird davon ausgegangen, dass Sie eine SQL-Datenbank-Gen 4-Instanz in der Region „USA, Osten“ ausführen und Ihre Reservierungsinformationen mit den Angaben in der folgenden Tabelle übereinstimmen:
 
-| Feld | value |
+| Feld | Wert |
 |---| --- |
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Menge |2|
@@ -71,7 +71,7 @@ Es wird davon ausgegangen, dass Sie eine SQL-Datenbank-Gen 4-Instanz in der Regi
 
 ### <a name="statement-section-of-csv-file"></a>Kostenaufstellungsabschnitt der CSV-Datei
 
-Filtern Sie nach der Messung **Nutzung reservierter Instanzen**. Wählen Sie dann die entsprechende **Kategorie für Messung** aus: Azure SQL-Datenbank oder Azure Cosmos DB. Die Anzeige sollte in etwa wie im folgenden Screenshot aussehen:
+Filtern Sie nach der Verbrauchseinheit **Nutzung reservierter Instanzen**, und wählen Sie dann die entsprechende **Kategorie der Verbrauchseinheit** (Azure SQL-Datenbank oder Azure Cosmos DB) aus. Die Anzeige sollte in etwa wie im folgenden Screenshot aussehen:
 
 ![CSV-Datei zu reservierten SQL-Datenbank-Kapazitäten](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
@@ -83,7 +83,7 @@ Filtern Sie nach **Zusätzliche Informationen**, und geben Sie Ihre **Reservieru
 
 ![CSV-Datei zu reservierten SQL-Datenbank-Kapazitäten](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
-1. Die **ReservationId** im Feld **Zusätzliche Informationen** ist die Reservierung von SQL-Datenbank-Kapazitäten, die auf die SQL-Datenbank-Ressource angewendet werden.
+1. Die **ReservationId** im Feld **Zusätzliche Informationen** bezieht sich auf die Reservierung der SQL-Datenbank-Kapazität, die auf die SQL-Datenbank-Ressource angewendet wurde.
 2. **ConsumptionMeter** ist die Verbrauchseinheit-ID für die SQL-Datenbank-Ressource.
 3. Die **Verbrauchseinheit-ID** ist die Reservierungsverbrauchseinheit. Die Kosten für diese Verbrauchseinheit betragen 0,00 USD. Bei SQL-Datenbank-Ressourcen, die für den Reservierungsrabatt qualifiziert sind, wird diese Verbrauchseinheit-ID in der CSV-Datei angezeigt.
 
@@ -97,7 +97,7 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 
 - [Was sind Azure-Reservierungen?](save-compute-costs-reservations.md)
 - [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../../sql-database/sql-database-reserved-capacity.md)
+- [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../../azure-sql/database/reserved-capacity-overview.md)
 - [Verwalten von Azure-Reservierungen](manage-reserved-vm-instance.md)
 - [Grundlegendes zur Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](../manage/understand-vm-reservation-charges.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](understand-reserved-instance-usage-ea.md)

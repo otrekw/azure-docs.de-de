@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 1d771d1e13d1ffd92a18658d08bb948d97e55999
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3efa8da87ac15495900dd264a9c37143f5e08181
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82209008"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699718"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Verschieben virtueller Azure-Computer in Verfügbarkeitszonen
 Verfügbarkeitszonen in Azure tragen dazu bei, Ihre Anwendungen und Daten vor Datencenterausfällen zu schützen. Jede Verfügbarkeitszone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region trägt dazu bei, Anwendungen und Daten vor Datencenterausfällen zu schützen. Mit Verfügbarkeitszonen bietet Azure eine Vereinbarung zum Servicelevel (Service Level Agreement, SLA) von 99,99 Prozent für die Betriebszeit virtueller Computer (Virtual Machines, VMs). Verfügbarkeitszonen werden in ausgewählten Regionen unterstützt (siehe [Regionen, die Verfügbarkeitszonen in Azure unterstützen](https://docs.microsoft.com/azure/availability-zones/az-region)).
@@ -23,7 +23,7 @@ Wenn Sie Ihre virtuellen Computer als *Einzelinstanz* in einer bestimmten Region
 - Verschieben von virtuellen Computern in einer Verfügbarkeitsgruppe in Verfügbarkeitszonen in einer Zielregion
 
 > [!IMPORTANT]
-> Azure Site Recovery unterstützt aktuell das Verschieben virtueller Computer zwischen Regionen, aber keine Verschiebung innerhalb einer Region.
+> Azure Site Recovery unterstützt aktuell das Verschieben virtueller Computer zwischen Regionen. Das Verschieben zwischen Zonen innerhalb einer Region wird nur in einigen Regionen unterstützt. [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)
 
 ## <a name="check-prerequisites"></a>Überprüfen der Voraussetzungen
 

@@ -1,23 +1,22 @@
 ---
 title: Erstellen einer Azure DB for MySQL-Instanz mithilfe einer ARM-Vorlage
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage einen Azure Database for MySQL-Server mit Integration eines virtuellen Netzwerks erstellen.
-services: azure-resource-manager
 author: mgblythe
 ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
-ms.date: 04/27/2020
-ms.openlocfilehash: 7313d12509859514e41b30c4021f74f25a0e50b9
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 05/19/2020
+ms.openlocfilehash: 9f38ba439a5f2facbc1c80493b802b5205a54691
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82630366"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323587"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-arm-template"></a>Schnellstart: Erstellen eines Azure Database for MySQL-Servers mithilfe der ARM-Vorlage
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Schnellstart: Erstellen eines Azure Database for MySQL-Servers mithilfe einer ARM-Vorlage
 
-Azure Database for MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie eine vordefinierte ARM-Vorlage (Azure Resource Manager) zum Erstellen eines Azure Database for MySQL-Servers mit Integration eines virtuellen Netzwerks verwenden. Sie können den Server über das Azure-Portal, mithilfe der Azure-Befehlszeilenschnittstelle oder mithilfe von Azure PowerShell erstellen.
+Azure Database for MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung verwenden Sie eine ARM-Vorlage, um einen Azure Database for MySQL-Server mit Integration in virtuelle Netzwerke zu erstellen. Sie können den Server im Azure-Portal, über die Azure-Befehlszeilenschnittstelle (Azure CLI) oder mithilfe von Azure PowerShell erstellen.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -45,7 +44,7 @@ Ein Azure Database for MySQL-Server wird mit einer definierten Gruppe von Comput
 
 ### <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-managed-mysql-with-vnet/).
 
 :::code language="json" source="~/quickstart-templates/101-managed-mysql-with-vnet/azuredeploy.json" range="001-231" highlight="149,162,176,199,213":::
 

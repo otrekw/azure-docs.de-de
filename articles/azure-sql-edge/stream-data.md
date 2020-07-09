@@ -2,19 +2,19 @@
 title: Datenstreaming in Azure SQL Edge (Vorschau)
 description: Informationen zum Datenstreaming in Azure SQL Edge (Vorschau)
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 15b6b80f9924b050b388d74adc1d67db6a386134
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ea1bb05e111432a45fffa3b770e01c6da9a076b6
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594509"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233126"
 ---
 # <a name="data-streaming-in-azure-sql-edge-preview"></a>Datenstreaming in Azure SQL Edge (Vorschau)
 

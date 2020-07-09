@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 61cc351470c0446b58d83d2d7f9c998d959c3649
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414401"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Temporäre Tabellen in einem Synapse SQL-Pool
 Dieser Artikel enthält wichtige Anleitungen zur Verwendung von temporären Tabellen. Zudem werden die Grundsätze von temporären Tabellen auf Sitzungsebene behandelt. 
@@ -29,7 +29,7 @@ Temporäre Tabellen sind nur für die Sitzung sichtbar, in der sie erstellt wurd
 
 Temporäre Tabellen verfügen über einen Leistungsvorteil, da ihre Ergebnisse nicht in den Remotespeicher geschrieben werden, sondern in den lokalen Speicher.
 
-Temporäre Tabellen sind nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. Bei SQL Analytics sind temporäre Tabellen auf Sitzungsebene vorhanden.  Sie sind nur für die Sitzung sichtbar, in der sie erstellt wurden. Daher werden sie automatisch gelöscht, wenn diese Sitzung abgemeldet wird. 
+Temporäre Tabellen sind nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. In einem SQL-Pool befinden sich temporäre Tabellen auf Sitzungsebene.  Sie sind nur für die Sitzung sichtbar, in der sie erstellt wurden. Daher werden sie automatisch gelöscht, wenn diese Sitzung abgemeldet wird. 
 
 ## <a name="temporary-tables-in-sql-pool"></a>Temporäre Tabellen im SQL-Pool
 
@@ -194,7 +194,7 @@ SELECT
     THEN 'UPDATE STATISTICS '+[two_part_name]+'('+[stats_name]+') WITH RESAMPLE;'
     END AS [update_stats_ddl]
 ,   [seq_nmbr]
-FROM    t1
+FROM    #stats_ddl
 ;
 GO
 ```
@@ -233,5 +233,5 @@ Darüber hinaus können Sichten nicht in temporären Tabellen erstellt werden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Entwickeln von Tabellen finden Sie im Artikel [Entwerfen von Tabellen mithilfe von SQL Analytics-Ressourcen](sql-data-warehouse-tables-overview.md).
+Weitere Informationen zum Entwickeln von Tabellen finden Sie im Artikel [Entwerfen von Tabellen mithilfe von Synapse SQL-Ressourcen](sql-data-warehouse-tables-overview.md).
 

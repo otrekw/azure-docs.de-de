@@ -8,36 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1a3e98afacf85bde8180253078cb53eae9a03d2f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c3ce10b6d3acb947d3fde6e3c872a2c2a83ddb69
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75383611"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871136"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit Java und der REST-API der Bing-News-Suche
 
-Verwenden Sie diese Schnellstartanleitung, um die Bing-News-Suche-API zum ersten Mal aufzurufen und die JSON-Antwort anzuzeigen. Diese einfache Java-Anwendung sendet eine Nachrichtensuchabfrage an die API und zeigt die Antwort an.
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Bing-News-Suche-API zum ersten Mal aufzurufen. Diese einfache Java-Anwendung sendet eine Nachrichtensuchabfrage an die API und zeigt die JSON-Antwort an.
 
-Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
+Die Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel.
 
 Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Das [Java Development Kit (JDK) 7 oder 8](https://aka.ms/azure-jdks)
-
-* Die [Gson-Bibliothek](https://github.com/google/gson)
+* Das [Java Development Kit (JDK) 7 oder 8](https://aka.ms/azure-jdks).
+* Die [Gson-Bibliothek](https://github.com/google/gson).
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Erstellen und Initialisieren eines Projekts
 
-1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt, und importieren Sie die folgenden Bibliotheken.
+1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt, und importieren Sie die folgenden Bibliotheken:
 
     ```java
     import java.net.*;
@@ -50,7 +49,7 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
     import com.google.gson.JsonParser;
     ```
 
-2. Erstellen Sie eine neue Klasse mit Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und einen Suchbegriff. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
+2. Erstellen Sie eine neue Klasse. Fügen Sie Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und einen Suchbegriff hinzu. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -64,7 +63,7 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
 
 ## <a name="construct-the-search-request-and-receive-a-json-response"></a>Erstellen der Suchanforderung und Erhalten einer JSON-Antwort
 
-1. Verwenden Sie die Variablen aus dem vorherigen Schritt, um eine Such-URL für die API-Anforderung zu formatieren. Beachten Sie, dass Ihr Suchbegriff URL-codiert sein muss, bevor er der Anforderung angefügt werden kann.
+1. Verwenden Sie die Variablen aus dem vorherigen Schritt, um eine Such-URL für die API-Anforderung zu formatieren. Codieren Sie den Suchbegriff als URL, bevor Sie ihn an die Anforderung anhängen.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -88,6 +87,7 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
 ## <a name="process-the-json-response"></a>Verarbeiten der JSON-Antwort
 
 1. Trennen Sie die Bing-bezogenen HTTP-Header vom JSON-Text. Schließen Sie dann den Datenstrom, und geben Sie die API-Antwort zurück.
+
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -101,7 +101,8 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
     return results;
     ```
 
-2. Erstellen einer Methode zum Analysieren und erneuten Serialisieren des JSON-Texts
+2. Erstellen Sie eine Methode zum Analysieren und erneuten Serialisieren der JSON-Ergebnisse.
+
     ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
@@ -113,7 +114,8 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
     ```
 
 3. Rufen Sie in der Hauptmethode Ihrer Anwendung die Suchmethode auf, und zeigen Sie die Ergebnisse an.
-    ```csharp
+
+    ```java
    public static void main (String[] args) {
        System.out.println("Searching the Web for: " + searchTerm);
        SearchResults result = SearchNews(searchTerm);
@@ -126,7 +128,7 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
     }
     ```
 
-## <a name="json-response"></a>JSON-Antwort
+## <a name="example-json-response"></a>JSON-Beispielantwort
 
 Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 

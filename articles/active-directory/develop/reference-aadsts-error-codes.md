@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3ec1e7e9aa84c01cd62836f3c09f22cdb143817a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611329"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266592"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 
@@ -63,7 +63,7 @@ Für das Feld `error` gibt es mehrere mögliche Werte. Unter den Protokolldokume
 | Fehlercode         | BESCHREIBUNG        | Clientaktion    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protokollfehler, z.B. ein fehlender erforderlicher Parameter. | Korrigieren Sie die Anforderung, und senden Sie sie erneut.|
-| `invalid_grant`    | Einige der Authentifizierungselemente (Authentifizierungscode, Aktualisierungstoken, Zugriffstoken, PKCE-Abfrage) waren ungültig, können nicht analysiert werden, fehlen oder sind anderweitig nicht verwendbar. | Versuchen Sie, eine neue Anforderung an den `/authorize`-Endpunkt zu senden, um einen neuen Autorisierungscode zu erhalten.  Überprüfen und validieren Sie die Verwendung der Protokolle durch diese App. |
+| `invalid_grant`    | Einige der Authentifizierungselemente (Authentifizierungscode, Aktualisierungstoken, Zugriffstoken, PKCE-Abfrage) waren ungültig, konnten nicht analysiert werden, fehlen oder sind anderweitig nicht verwendbar | Versuchen Sie, eine neue Anforderung an den `/authorize`-Endpunkt zu senden, um einen neuen Autorisierungscode zu erhalten.  Überprüfen und validieren Sie die Verwendung der Protokolle durch diese App. |
 | `unauthorized_client` | Der authentifizierte Client ist zur Verwendung dieses Autorisierungsgewährungstyps nicht autorisiert. | Dies tritt in der Regel auf, wenn die Clientanwendung nicht in Azure AD registriert ist oder dem Azure AD-Mandanten des Benutzers nicht hinzugefügt wird. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
 | `invalid_client` | Clientauthentifizierung fehlgeschlagen.  | Die Client-Anmeldeinformationen sind nicht gültig. Um das Problem zu beheben, aktualisiert der Anwendungsadministrator die Anmeldeinformationen.   |
 | `unsupported_grant_type` | Der Autorisierungsserver unterstützt den Autorisierungsgewährungstyp nicht. | Ändern Sie den Gewährungstyp in der Anforderung. Diese Art von Fehler sollte nur während der Entwicklung auftreten und bei den ersten Tests erkannt werden. |
@@ -126,8 +126,8 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided: Es wurden keine Informationen zur Identifizierung des Mandanten in der Anforderung gefunden bzw. nicht über angegebene Anmeldeinformationen impliziert. Der Benutzer kann sich an den Mandantenadministrator wenden, um das Problem zu lösen. |
 | AADSTS50061 | SignoutInvalidRequest: Die Anforderung zur Abmeldung ist ungültig. |
 | AADSTS50064 | CredentialAuthenticationError: Fehler beim Überprüfen der Anmeldeinformationen bezüglich Benutzername und Kennwort. |
-| AADSTS50068 | SignoutInitiatorNotParticipant: Fehler beim Abmelden. Die App, die den Anmeldevorgang eingeleitet hat, ist kein Teilnehmer der aktuellen Sitzung. |
-| AADSTS50070 | SignoutUnknownSessionIdentifier: Fehler beim Abmelden. In der Abmeldeanforderung wurde ein Namensbezeichner angegeben, der nicht mit den vorhandenen Sitzungen übereinstimmt. |
+| AADSTS50068 | SignoutInitiatorNotParticipant: Fehler beim Abmelden. Die App, die den Abmeldevorgang eingeleitet hat, ist kein Teilnehmer der aktuellen Sitzung. |
+| AADSTS50070 | SignoutUnknownSessionIdentifier: Fehler beim Abmelden. In der Abmeldeanforderung wurde ein Namensbezeichner angegeben, der nicht mit der/den vorhandenen Sitzung(en) übereinstimmt. |
 | AADSTS50071 | SignoutMessageExpired: Die Abmeldeanforderung ist abgelaufen. |
 | AADSTS50072 | UserStrongAuthEnrollmentRequiredInterrupt: Der Benutzer muss sich für zweistufige Authentifizierung (interaktiv) registrieren. |
 | AADSTS50074 | UserStrongAuthClientAuthNRequiredInterrupt: Starke Authentifizierung ist erforderlich, und der Benutzer hat die MFA-Überprüfung nicht bestanden. |
@@ -173,7 +173,7 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS50187 | DeviceInformationNotProvided: Der Dienst konnte das Gerät nicht authentifizieren. |
 | AADSTS50196 | LoopDetected: Eine Clientschleife wurde erkannt. Überprüfen Sie die Logik der App, um sicherzustellen, dass das Zwischenspeichern von Token implementiert ist und dass Fehlerbedingungen ordnungsgemäß behandelt werden.  Die App hat zu viele der gleichen Anforderungen in einem zu kurzen Zeitraum ausgeführt. Dies weist darauf hin, dass sie sich in einem fehlerhaften Zustand befindet oder böswillig Token anfordert. |
 | AADSTS50197 | ConflictingIdentities: Der Benutzer konnte nicht gefunden werden. Versuchen Sie erneut, sich anzumelden. |
-| AADSTS50199 | CmsiInterrupt: Aus Sicherheitsgründen ist für diese Anforderung eine Benutzerbestätigung erforderlich.  Da es sich hierbei um einen Fehler vom Typ „interaction_required“ handelt, sollte der Client eine interaktive Authentifizierung durchführen.  Dies liegt daran, dass eine System-WebView verwendet wurde, um ein Token für eine native Anwendung anzufordern. Der Benutzer muss aufgefordert werden, zu erfragen, ob es sich tatsächlich um die App handelt, bei der er sich anmelden wollte.|
+| AADSTS50199 | CmsiInterrupt: Aus Sicherheitsgründen ist für diese Anforderung eine Benutzerbestätigung erforderlich.  Da es sich hierbei um einen Fehler vom Typ „interaction_required“ handelt, sollte der Client eine interaktive Authentifizierung durchführen.  Dies liegt daran, dass eine System-WebView verwendet wurde, um ein Token für eine native Anwendung anzufordern. Der Benutzer muss aufgefordert werden, zu erfragen, ob es sich tatsächlich um die App handelt, bei der er sich anmelden wollte. Um diese Aufforderung zu vermeiden, sollte der Umleitungs-URI Teil der folgenden sicheren Liste sein: <br />http://<br />https://<br />msauth://(nur iOS)<br />msauthv2://(nur iOS)<br />chrome-extension://(nur Chrome-Desktopbrowser) |
 | AADSTS51000 | RequiredFeatureNotEnabled: Das Feature ist deaktiviert. |
 | AADSTS51001 | DomainHintMustbePresent: Domänenhinweis ist für lokale Sicherheits-ID oder lokalen UPN nicht vorhanden. |
 | AADSTS51004 | UserAccountNotInDirectory: Benutzerkonto ist nicht im Verzeichnis vorhanden. |
@@ -314,7 +314,7 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS700022 | InvalidMultipleResourcesScope: Der angegebene Wert für den Eingabeparameterbereich ist nicht gültig, weil er mehr als eine Ressource enthält. |
 | AADSTS700023 | InvalidResourcelessScope: Der angegebene Wert für den Eingabeparameterbereich ist beim Anfordern eines Zugriffstokens nicht gültig. |
 | AADSTS7000215 | Es wurde ein ungültiger geheimer Clientschlüssel bereitgestellt. Entwicklerfehler: Die App versucht, sich ohne die erforderlichen oder richtigen Authentifizierungsparameter anzumelden.|
-| AADSTS7000222| InvalidClientSecretExpiredKeysProvided: Die angegebenen geheimen Clientschlüssel sind abgelaufen. Erstellen Sie im Azure-Portal neue Schlüssel für Ihre App, oder verwenden Sie Zertifikatanmeldeinformationen, um die Sicherheit zu erhöhen: https://aka.ms/certCreds |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided: Die angegebenen geheimen Clientschlüssel sind abgelaufen. Erstellen Sie im Azure-Portal neue Schlüssel für Ihre App, oder verwenden Sie Zertifikatanmeldeinformationen, um die Sicherheit zu erhöhen: [https://aka.ms/certCreds](https://aka.ms/certCreds) |
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant: Der angegebene Autorisierungscode ist für einen anderen Mandanten bestimmt und wird daher abgelehnt. Der OAuth2-Autorisierungscode muss für denselben Mandanten verwendet werden, für den er bezogen wurde („/common“ oder „/{Mandanten-ID}“). |
 | AADSTS1000000 | UserNotBoundError: Die Bindungs-API erfordert, dass sich der Azure AD-Benutzer auch bei einem externen Identitätsanbieter authentifiziert, was noch nicht geschehen ist. |
 | AADSTS1000002 | BindCompleteInterruptError: Die Bindung wurde erfolgreich abgeschlossen, aber der Benutzer muss informiert werden. |

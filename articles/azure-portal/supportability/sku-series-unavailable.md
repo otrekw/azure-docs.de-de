@@ -4,15 +4,15 @@ description: Einige SKU-Serien sind für das ausgewählte Abonnement für diese 
 services: Azure Supportability
 author: stevendotwang
 ms.service: azure-supportability
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: b0f0762ded6804c0b0d90a19223c082f0fb8fd49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87533b2e0c1397d0b8b2e9a89450a80a75c5e348
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76843629"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763821"
 ---
 # <a name="region-or-sku-unavailable"></a>Region oder SKU nicht verfügbar
 
@@ -80,7 +80,7 @@ Wenn Sie keine passende Region oder SKU finden können, erstellen Sie eine [Supp
 
 ## <a name="send-us-your-suggestions"></a>Senden von Vorschlägen
 
-Wir sind stets offen für Feedback und Vorschläge. Senden Sie uns Ihre [Vorschläge](https://feedback.azure.com/forums/266794-support-feedback). Außerdem erreichen Sie uns über [Twitter](https://twitter.com/azuresupport) oder die [MSDN-Foren](https://social.msdn.microsoft.com/Forums/azure).
+Wir sind stets offen für Feedback und Vorschläge. Senden Sie uns Ihre [Vorschläge](https://feedback.azure.com/forums/266794-support-feedback). Außerdem erreichen Sie uns über [Twitter](https://twitter.com/azuresupport) oder die [Seite mit häufig gestellten Fragen von Microsoft](https://docs.microsoft.com/answers/products/azure).
 
 ## <a name="learn-more"></a>Weitere Informationen
 

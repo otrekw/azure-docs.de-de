@@ -4,16 +4,16 @@ description: Erfahren Sie mehr über Änderungsfeedprotokolle in Azure Blob Stor
 author: normesta
 ms.author: normesta
 ms.date: 11/04/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: ac111b06d578a0e9af8581ef2e8caeccfc4a291e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c9ee65a50b9fff13fca7a1989e7bb8801e5f621
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536886"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465183"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Unterstützung für Änderungsfeeds in Azure Blob Storage (Vorschau)
 
@@ -36,6 +36,8 @@ Die Unterstützung eines Änderungsfeeds eignet sich gut für Szenarien, in dene
   - Erstellen von Lösungen zum Sichern, Spiegeln oder Replizieren des Objektzustands in Ihrem Konto für Notfallverwaltung oder Compliance.
 
   - Erstellen von verbundenen Anwendungspipelines, die auf Änderungsereignisse reagieren oder Ausführungen basierend auf erstellten oder geänderten Objekten planen.
+  
+Der Änderungsfeed ist ein erforderliches Feature für [Objektreplikation und ](object-replication-overview.md) [Point-in-Time-Wiederherstellung für Blockblobs](point-in-time-restore-overview.md).
 
 > [!NOTE]
 > Der Änderungsfeed bietet ein permanentes, sortiertes Protokollmodell der Änderungen an einem Blob. Änderungen werden innerhalb weniger Minuten in das Änderungsfeedprotokoll geschrieben und verfügbar gemacht. Wenn Ihre Anwendung wesentlich schneller auf Ereignisse reagieren muss, sollten Sie stattdessen [Blob Storage-Ereignisse](storage-blob-event-overview.md) in Betracht ziehen. [Blob Storage-Ereignisse](storage-blob-event-overview.md) bieten einmalige Echtzeitereignisse, mit denen Ihre Azure Functions-Lösung oder Ihre Anwendungen schnell auf Blobänderungen reagieren können. 
@@ -55,21 +57,21 @@ Folgende Aspekte müssen Sie berücksichtigen, wenn Sie den Änderungsfeed aktiv
 - Nur GPv2- und Blob Storage-Konten können den Änderungsfeed aktivieren. Premium-BlockBlobStorage-Konten und Konten für hierarchische Namespaces werden aktuell nicht unterstützt. GPv1-Speicherkonten werden zwar nicht unterstützt, können aber ohne Downtime auf GPv2 aktualisiert werden. Weitere Informationen finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](../common/storage-account-upgrade.md).
 
 > [!IMPORTANT]
-> Der Änderungsfeed befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **USA, Westen-Mitte** und **USA, Westen 2** verfügbar. Informationen hierzu finden Sie im Abschnitt [Bedingungen](#conditions) dieses Artikels. Informationen zum Registrieren für die Vorschau finden Sie im Abschnitt [Registrieren Ihres Abonnements](#register) dieses Artikels. Sie müssen Ihr Abonnement registrieren, bevor Sie den Änderungsfeed für Ihre Speicherkonten aktivieren können.
+> Der Änderungsfeed befindet sich in der öffentlichen Vorschau und ist in den Regionen **USA, Westen-Mitte**, **USA, Westen 2**, **Frankreich, Mitte**, **Frankreich, Süden**, **Kanada, Mitte** und **Kanada, Osten** verfügbar. Informationen hierzu finden Sie im Abschnitt [Bedingungen](#conditions) dieses Artikels. Informationen zum Registrieren für die Vorschau finden Sie im Abschnitt [Registrieren Ihres Abonnements](#register) dieses Artikels. Sie müssen Ihr Abonnement registrieren, bevor Sie den Änderungsfeed für Ihre Speicherkonten aktivieren können.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 So aktivieren Sie den Änderungsfeed für Ihr Speicherkonto über das Azure-Portal:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus.
 
 2. Navigieren Sie unter **Blob-Dienst** zur Option **Datenschutz**.
 
-3. Klicken Sie unter **Blob change feed** (Blobänderungsfeed) auf **Aktiviert**.
+3. Klicken Sie unter **Blobänderungsfeed** auf **Aktiviert**.
 
-4. Wählen Sie die Schaltfläche **Speichern** aus, um Ihre Datenschutzeinstellungen zu bestätigen.
+4. Wählen Sie die Schaltfläche **Speichern** aus, um Ihre **Datenschutzeinstellungen** zu bestätigen.
 
-![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
+    ![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -209,6 +211,12 @@ Die Änderungsfeeddateien enthalten eine Reihe von Datensätzen mit Änderungser
 
 Änderungsfeeddateien werden im virtuellen Verzeichnis `$blobchangefeed/log/` als [Anfügeblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) gespeichert. Die erste Änderungsfeeddatei in jedem Pfad weist einen Zähler `00000` im Dateinamen auf (z. B. `00000.avro`). Dieser Zähler wird bei jeder Protokolldatei, die dem Pfad danach hinzugefügt wird, um 1 erhöht (z. B. `00001.avro`).
 
+Die folgenden Ereignistypen werden in den Änderungsfeed-Datensätzen erfasst:
+- BlobCreated
+- BlobDeleted
+- BlobPropertiesUpdated
+- BlobSnapshotCreated
+
 Im Folgenden sehen Sie ein Beispiel für einen in JSON konvertierten Änderungsfeed-Datensatz aus einer Änderungsfeeddatei:
 
 ```json
@@ -238,7 +246,7 @@ Im Folgenden sehen Sie ein Beispiel für einen in JSON konvertierten Änderungsf
 }
 ```
 
-Eine ausführliche Beschreibung der einzelnen Eigenschaften finden Sie unter [Azure Event Grid-Ereignisschema für Blob Storage](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties).
+Eine ausführliche Beschreibung der einzelnen Eigenschaften finden Sie unter [Azure Event Grid-Ereignisschema für Blob Storage](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties). Die Ereignisse BlobPropertiesUpdated und BlobSnapshotCreated sind zurzeit exklusiv für den Änderungsfeed und werden noch nicht für Blob Storage-Ereignisse unterstützt.
 
 > [!NOTE]
 > Die Änderungsfeeddateien für ein Segment werden nicht sofort nach dem Erstellen eines Segments angezeigt. Die Verzögerung bewegt sich im normalen Intervall der Veröffentlichungslatenz des Änderungsfeeds, die wenige Minuten nach der Änderung beträgt.
@@ -310,13 +318,13 @@ az provider register --namespace 'Microsoft.Storage'
 ## <a name="conditions-and-known-issues-preview"></a>Bedingungen und bekannte Probleme (Vorschau)
 
 Dieser Abschnitt beschreibt bekannte Probleme und Bedingungen in der aktuellen öffentlichen Vorschauversion des Änderungsfeeds. 
-- Für die Vorschauversion müssen Sie zuerst [Ihr Abonnement registrieren](#register), bevor Sie den Änderungsfeed für Ihr Speicherkonto in den Regionen „westcentralus“ oder „westus2“ aktivieren können. 
-- Der Änderungsfeed zeichnet nur Erstellungs-, Aktualisierungs-, Lösch- und Kopiervorgänge auf. Metadatenaktualisierungen werden in der Vorschauversion derzeit nicht erfasst.
+- Für die Vorschau müssen Sie zunächst [Ihr Abonnement registrieren](#register), bevor Sie den Änderungsfeed für Ihr Speicherkonto in den Regionen „USA, Westen-Mitte“, „USA, Westen 2“, „Frankreich, Mitte“, „Frankreich, Süden“, „Kanada, Mitte“ und „Kanada, Osten“ aktivieren können. 
+- Der Änderungsfeed zeichnet nur Erstellungs-, Aktualisierungs-, Lösch- und Kopiervorgänge auf. Blobeigenschaften und Metadatenänderungen werden ebenfalls erfasst. Die Zugriffsebeneneigenschaft wird jedoch derzeit nicht aufgezeichnet. 
 - Änderungsereignis-Datensätze für eine einzelne Änderung werden in Ihrem Änderungsfeed möglicherweise mehrmals angezeigt.
-- Sie können die Lebensdauer der Änderungsfeed-Protokolldateien noch nicht durch Festlegen einer zeitbasierten Aufbewahrungsrichtlinie verwalten, und Sie können die Blobs nicht löschen. 
+- Sie können die Lebensdauer der Änderungsfeed-Protokolldateien noch nicht durch Festlegen einer zeitbasierten Aufbewahrungsrichtlinie verwalten, und Sie können die Blobs nicht löschen.
 - Die Eigenschaft `url` der Protokolldatei ist aktuell immer leer.
 - Die `LastConsumable`-Eigenschaft der segments.json-Datei listet das allererste Segment, das vom Änderungsfeed abgeschlossen wird, nicht auf. Dieses Problem tritt nur nach Abschluss des ersten Segments auf. Alle nachfolgenden Segmente nach der ersten Stunde werden ordnungsgemäß in der `LastConsumable`-Eigenschaft aufgezeichnet.
-- Der Container **$blobchangefeed** kann zurzeit nicht angezeigt werden, wenn Sie die ListContainers-API aufrufen, und er wird auch nicht im Azure-Portal oder im Speicher-Explorer angezeigt.
+- Der Container **$blobchangefeed** kann zurzeit nicht angezeigt werden, wenn Sie die ListContainers-API aufrufen, und er wird auch nicht im Azure-Portal oder im Speicher-Explorer angezeigt. Sie können den Inhalt anzeigen, indem Sie die ListBlobs-API für den $blobchangefeed-Container direkt aufrufen.
 - Bei Speicherkonten, für die zuvor ein [Kontofailover](../common/storage-disaster-recovery-guidance.md) initiiert wurde, kann es vorkommen, dass die Protokolldatei nicht angezeigt wird. Auch bei zukünftigen Kontofailovern kann es während der Vorschauphase zu Problemen mit der Protokolldatei kommen.
 
 ## <a name="faq"></a>Häufig gestellte Fragen

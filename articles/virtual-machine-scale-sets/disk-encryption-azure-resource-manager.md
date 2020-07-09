@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: c2b49a7e7e14bfbefcca64133ff23fdfabe53e7b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4284e94f8d8d0effd160c5048f54fcbede417e38
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198424"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129748"
 ---
 # <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Verschlüsseln von VM-Skalierungsgruppen mit Azure Resource Manager
 
@@ -38,9 +38,9 @@ Wählen Sie zunächst eine geeignete Vorlage für Ihr Szenario aus.
 
 Führen Sie dann die folgenden Schritte durch:
 
-     1. Click **Deploy to Azure**.
-     2. Fill in the required fields then agree to the terms and conditions.
-     3. Click **Purchase** to deploy the template.
+1. Klicken Sie auf Schaltfläche zum **Bereitstellen in Azure**.
+2. Füllen Sie die erforderlichen Felder aus, und stimmen Sie dann den Geschäftsbedingungen zu.
+3. Klicken Sie auf **Kaufen**, um die Vorlage bereitzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

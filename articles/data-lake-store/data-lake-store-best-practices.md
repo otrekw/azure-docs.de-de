@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: a8ca67d1ff3100aee02ed473c9cc2180de3973b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75638934"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981434"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen1
 
@@ -126,7 +126,9 @@ Wie bei Distcp auch, muss AdlCopy mit einer Anwendung wie Azure Automation oder 
 
 Data Lake Storage Gen1 verfügt über ausführliche Diagnoseprotokolle und Überwachungsfunktionen. Für Data Lake Storage Gen1 werden im Azure-Portal unter dem Data Lake Storage Gen1-Konto und in Azure Monitor einige grundlegende Metriken bereitgestellt. Die Verfügbarkeit von Data Lake Storage Gen1 wird im Azure-Portal angezeigt. Diese Metrik wird aber alle sieben Minuten aktualisiert und kann nicht über eine öffentlich verfügbar gemachte API abgefragt werden. Sie müssen Ihre eigenen synthetischen Tests durchführen, um die Verfügbarkeit zu überprüfen, wenn Sie die aktuellste Verfügbarkeit eines Data Lake Storage Gen1-Kontos ermitteln möchten. Für andere Metriken, z.B. die gesamte Speicherauslastung, Lese-/Schreibanforderungen und Eingang/Ausgang, kann die Aktualisierung bis zu 24 Stunden dauern. Aktuellere Metriken über Hadoop-Befehlszeilentools oder die Aggregierung von Protokollinformationen müssen also manuell berechnet werden. Die schnellste Möglichkeit zur Erzielung der aktuellsten Speicherauslastung ist die Ausführung dieses HDFS-Befehls über einen Hadoop-Clusterknoten (z.B. Hauptknoten):
 
-    hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```console
+hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```
 
 ### <a name="export-data-lake-storage-gen1-diagnostics"></a>Exportieren der Data Lake Storage Gen1-Diagnose
 
@@ -138,9 +140,9 @@ Falls Sie mehr Echtzeitwarnungen nutzen und mehr Kontrolle darüber haben möcht
 
 Wenn das Senden von Data Lake Storage Gen1-Protokollen nicht aktiviert ist, ermöglicht Azure HDInsight auch das Aktivieren der [clientseitigen Protokollierung für Data Lake Storage Gen1](data-lake-store-performance-tuning-mapreduce.md) über log4j. Sie müssen unter **Ambari** > **YARN** > **Config** > **Advanced yarn-log4j configurations** die folgende Eigenschaft festlegen:
 
-    log4j.logger.com.microsoft.azure.datalake.store=DEBUG
+`log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 
-Nachdem die Eigenschaft festgelegt wurde und die Knoten neu gestartet wurden, wird die Data Lake Storage Gen1-Diagnose in die YARN-Protokolle auf den Knoten („/tmp/\<Benutzer\>/yarn.log“) geschrieben, und wichtige Details wie Fehler oder die Drosselung (Fehlercode HTTP 429) können überwacht werden. Diese Informationen können auch in Azure Monitor-Protokollen oder an jedem anderen Ziel überwacht werden, das im Data Lake Storage Gen1-Konto auf dem Blatt [Diagnose](data-lake-store-diagnostic-logs.md) für das Empfangen von Protokollen festgelegt ist. Es wird empfohlen, mindestens die clientseitige Protokollierung zu aktivieren oder die Protokollversandoption von Data Lake Storage Gen1 für die Sichtbarkeit von Vorgängen und das vereinfachte Debuggen zu nutzen.
+Nachdem die Eigenschaft festgelegt wurde und die Knoten neu gestartet wurden, wird die Data Lake Storage Gen1-Diagnose in die YARN-Protokolle auf den Knoten (/tmp/\<user\>/yarn.log) geschrieben, und wichtige Details wie Fehler oder die Drosselung (Fehlercode HTTP 429) können überwacht werden. Diese Informationen können auch in Azure Monitor-Protokollen oder an jedem anderen Ziel überwacht werden, das im Data Lake Storage Gen1-Konto auf dem Blatt [Diagnose](data-lake-store-diagnostic-logs.md) für das Empfangen von Protokollen festgelegt ist. Es wird empfohlen, mindestens die clientseitige Protokollierung zu aktivieren oder die Protokollversandoption von Data Lake Storage Gen1 für die Sichtbarkeit von Vorgängen und das vereinfachte Debuggen zu nutzen.
 
 ### <a name="run-synthetic-transactions"></a>Ausführen von synthetischen Transaktionen
 
@@ -154,11 +156,15 @@ Beim Einfügen von Daten in eine Data Lake-Struktur ist es wichtig, die Struktur
 
 Bei IoT-Workloads können große Datenmengen im Datenspeicher landen, der übergreifend für verschiedene Produkte, Geräte, Organisationen und Kunden verwendet wird. Es ist wichtig, das Verzeichnislayout für nachgeschaltete Consumer in Bezug auf die Organisation, Sicherheit und effiziente Verarbeitung vorauszuplanen. Das folgende Layout kann hierbei als allgemeine Vorlage dienen:
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 Die Zieltelemetrie für ein Flugzeugtriebwerk im Vereinigten Königreich kann beispielsweise wie die folgende Struktur aussehen:
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+```console
+UK/Planes/BA1293/Engine1/2017/08/11/12/
+```
 
 Es gibt einen wichtigen Grund dafür, das Datum am Ende der Ordnerstruktur anzuordnen. Falls Sie bestimmte Regionen oder Themen für Benutzer oder Gruppen sperren möchten, ist dies mit POSIX-Berechtigungen leicht möglich. Falls die Anforderung besteht, eine bestimmte Sicherheitsgruppe auf die Anzeige der Daten für das Vereinigte Königreich oder bestimmte Ebenen zu beschränken, wäre bei einer höheren Anordnung der Datumsstruktur andernfalls eine separate Berechtigung für viele Ordner unter jedem Stundenordner erforderlich. Außerdem würde sich die Anzahl von Ordnern im Laufe der Zeit exponentiell erhöhen, wenn die Datumsstruktur höher angeordnet wäre.
 
@@ -168,14 +174,18 @@ Ein häufiger allgemeiner Ansatz bei der Batchverarbeitung ist die Anordnung der
 
 Es kann vorkommen, dass die Dateiverarbeitung nicht erfolgreich ist, weil Daten beschädigt sind oder ein unerwartetes Format haben. In diesen Fällen kann für die Verzeichnisstruktur die Nutzung des Ordners **/bad** vorteilhaft sein, in den die Dateien zur weiteren Untersuchung verschoben werden können. Über den Batchauftrag können ggf. auch die Berichterstellung oder die Benachrichtigungsvorgänge für diese fehlerhaften Dateien (*bad* files) abgewickelt werden, um einen manuellen Eingriff zu ermöglichen. Erwägen Sie die Verwendung der folgenden Vorlagenstruktur:
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 Es kann beispielsweise sein, dass ein Marketingunternehmen tägliche Datenextrakte aus Kundenupdates von seinen Kunden in Nordamerika erhält. Vor und nach der Verarbeitung kann dies ggf. wie im folgenden Codeausschnitt aussehen:
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```console
+NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
+NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```
 
 Bei der normalen Verarbeitung von Batchdaten direkt in Datenbanken, z.B. Hive oder herkömmlichen SQL-Datenbanken, sind die Ordner **/in** und **/out** nicht erforderlich, da die Ausgabe bereits in einem separaten Ordner für die Hive-Tabelle oder externe Datenbank angeordnet wird. Die täglichen Extrakte von Kunden werden dann beispielsweise in die entsprechenden Ordner eingefügt, und die Orchestrierung per Azure Data Factory, Apache Oozie oder Apache Airflow würde einen täglichen Hive- oder Spark-Auftrag auslösen, mit dem die Daten verarbeitet und in eine Hive-Tabelle geschrieben werden.
 

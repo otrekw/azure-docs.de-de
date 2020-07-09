@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels „Canada Federal PBMM“
 description: Steuerungszuordnung der Blaupausenbeispiele „Canada Federal PBMM“ Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 09/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 943ca6849f9a55ce45b609a06cfcbb9b96b691c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8fc5b2f369dbe174fb4d5ea8160d592e9aaef3af
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74545251"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005713"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels „Canada Federal PBMM“
 
@@ -57,8 +57,8 @@ Bei nur einem Azure-Abonnementbesitzer ist keine administrative Redundanz mögli
 
 - Maximal 3 Besitzer sollten für Ihr Abonnement festgelegt sein.
 - Ihrem Abonnement sollte mehr als ein Besitzer zugewiesen sein.
-- Windows-VMs überwachen, bei denen die Gruppe „Administratoren“ beliebige der angegebenen Mitglieder enthält
-- Windows-VMs überwachen, bei denen die Gruppe „Administratoren“ nicht alle der angegebenen Mitglieder enthält
+- Überwachungsergebnisse von Windows-VMs anzeigen, bei denen die Gruppe „Administratoren“ beliebige der angegebenen Mitglieder enthält
+- Überwachungsergebnisse von Windows-VMs anzeigen, bei denen die Gruppe „Administratoren“ nicht alle der angegebenen Mitglieder enthält
 - Anforderungen zum Überwachen von Windows-VMs bereitstellen, bei denen die Gruppe „Administratoren“ beliebige der angegebenen Mitglieder enthält
 - Anforderungen zum Überwachen von Windows-VMs bereitstellen, bei denen die Gruppe „Administratoren“ nicht alle der angegebenen Mitglieder enthält
 
@@ -68,8 +68,8 @@ In Azure ist die [rollenbasierte Zugriffssteuerung ](../../../../role-based-acce
 
 - Maximal 3 Besitzer sollten für Ihr Abonnement festgelegt sein.
 - Ihrem Abonnement sollte mehr als ein Besitzer zugewiesen sein.
-- Windows-VMs überwachen, bei denen die Gruppe „Administratoren“ beliebige der angegebenen Mitglieder enthält
-- Windows-VMs überwachen, bei denen die Gruppe „Administratoren“ nicht alle der angegebenen Mitglieder enthält
+- Überwachungsergebnisse von Windows-VMs anzeigen, bei denen die Gruppe „Administratoren“ beliebige der angegebenen Mitglieder enthält
+- Überwachungsergebnisse von Windows-VMs anzeigen, bei denen die Gruppe „Administratoren“ nicht alle der angegebenen Mitglieder enthält
 - Anforderungen zum Überwachen von Windows-VMs bereitstellen, bei denen die Gruppe „Administratoren“ beliebige der angegebenen Mitglieder enthält
 - Anforderungen zum Überwachen von Windows-VMs bereitstellen, bei denen die Gruppe „Administratoren“ nicht alle der angegebenen Mitglieder enthält
 
@@ -85,7 +85,7 @@ Die Advanced Data Security-Funktion zur Datenermittlung und -klassifizierung fü
 
 Mit dieser Blaupause können Sie den Remotezugriff überwachen und steuern. Dazu weisen Sie [Azure Policy](../../../policy/overview.md)-Definitionen zu, um zu überwachen, ob Remotedebuggen für die Azure App Service-Anwendung deaktiviert ist. Diese Blaupause weist darüber hinaus Richtliniendefinitionen zum Überwachen virtueller Linux-Computer zu, die Remoteverbindungen von Konten ohne Kennwörter zulassen. Die Blaupause weist auch eine Azure Policy-Definition zu, mit der Sie den uneingeschränkten Zugriff auf Speicherkonten überwachen können. Die Überwachung dieser Indikatoren kann Ihnen helfen, sicherzustellen, dass Remotezugriffsmethoden Ihrer Sicherheitsrichtlinie entsprechen.
 
-- \[Vorschau\]: Linux-VMs überwachen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
+- \[Vorschau\]: Überwachungsergebnisse von Linux-VMs anzeigen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
 - \[Vorschau\]: Anforderungen zum Überwachen von Linux-VMs bereitstellen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
 - Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
 - Remotedebuggen für API-App deaktivieren
@@ -107,7 +107,7 @@ Von Azure Monitor erfasste Protokolldaten werden in einem Log Analytics-Arbeitsb
 Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zu, die Überprüfungs- und Ereignisprotokollierungskonfigurationen überwachen. Die Überwachung dieser Konfigurationen kann einen Indikator für einen Ausfall oder eine Fehlkonfiguration eines Überprüfungssystems bereitstellen und Ihnen helfen, Korrekturmaßnahmen zu ergreifen.
 
 - Überwachen der Diagnoseeinstellung
-- Überwachungseinstellungen auf SQL Server-Ebene überwachen
+- Die Überwachung in SQL Server muss aktiviert werden.
 - Advanced Data Security muss für Ihre verwalteten Instanzen aktiviert werden.
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 
@@ -131,7 +131,7 @@ Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokollier
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs
 - Überwachen der Diagnoseeinstellung
-- Überwachungseinstellungen auf SQL Server-Ebene überwachen
+- Die Überwachung in SQL Server muss aktiviert werden.
 - Advanced Data Security muss für Ihre verwalteten Instanzen aktiviert werden.
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 - Bereitstellen von Advanced Data Security auf SQL-Servern
@@ -167,8 +167,8 @@ Mit dieser Blaupause können Sie den privilegierten Zugriff einschränken und st
 
 Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen zum Überwachen virtueller Linux-Computer zu, die Remoteverbindungen von Konten ohne Kennwörter zulassen und/oder deren passwd-Datei falsche Berechtigungen enthält. Diese Blaupause weist auch Richtliniendefinitionen zu, die die Konfiguration des Kennwortverschlüsselungstyps für virtuelle Windows-Computer überwacht. Durch Überwachung dieser Indikatoren können Sie sicherstellen, dass die Systemauthentifikatoren die Identifizierung und Authentifizierungsrichtlinien Ihrer Organisation einhalten.
 
-- \[Vorschau\]: Linux-VMs überwachen, bei denen die passwd-Dateiberechtigungen nicht auf 0644 festgelegt sind
-- \[Vorschau\]: Linux-VMs überwachen, die Konten ohne Kennwörter verwenden
+- \[Vorschau\]: Überwachungsergebnisse von Linux-VMs anzeigen, bei denen die passwd-Dateiberechtigungen nicht auf 0644 festgelegt sind
+- \[Vorschau\]: Überwachungsergebnisse von Linux-VMs anzeigen, die Konten ohne Kennwörter verwenden
 - \[Vorschau\]: Anforderungen zum Überwachen von Linux-VMs bereitstellen, bei denen die passwd-Dateiberechtigungen nicht auf 0644 festgelegt sind
 - \[Vorschau\]: Anforderungen zum Überwachen von Linux-VMs bereitstellen, die Konten ohne Kennwörter verwenden
 
@@ -176,11 +176,11 @@ Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen z
 
 Mit dieser Blaupause können Sie sichere Kennwörter erzwingen, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, mit denen virtuelle Windows-Computer überwacht werden, auf denen keine Mindestsicherheitsanforderungen oder andere Anforderungen für Kennwörter erzwungen werden. Aufgrund der Informationen zu virtuellen Computern, die gegen die Richtlinie zur Kennwortsicherheit verstoßen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass die Kennwörter für alle Benutzerkonten auf virtuellen Computern mit der Kennwortrichtlinie Ihrer Organisation konform sind.
 
-- \[Vorschau\]: Windows-VMs überwachen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
-- \[Vorschau\]: Windows-VMs überwachen, für die kein maximales Kennwortalter von 70 Tagen gilt
-- \[Vorschau\]: Windows-VMs überwachen, die kein Mindestkennwortalter von 1 Tag verwenden
-- \[Vorschau\]: Windows-VMs überwachen, auf denen nicht die Einstellung für die Kennwortkomplexität aktiviert ist
-- \[Vorschau\]: Windows-VMs überwachen, für die keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
+- \[Vorschau\]: Überwachungsergebnisse von Windows-VMs anzeigen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
+- \[Vorschau\]: Überwachungsergebnisse von Windows-VMs anzeigen, für die kein maximales Kennwortalter von 70 Tagen gilt
+- \[Vorschau\]: Überwachungsergebnisse von Windows-VMs anzeigen, für die kein minimales Kennwortalter von 1 Tag gilt
+- \[Vorschau\]: Überwachungsergebnisse von Windows-VMs anzeigen, auf denen nicht die Einstellung für die Kennwortkomplexität aktiviert ist
+- \[Vorschau\]: Überwachungsergebnisse von Windows-VMs anzeigen, für die keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
 - \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
 - \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die kein maximales Kennwortalter von 70 Tagen gilt
 - \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die kein Mindestkennwortalter von 1 Tag verwenden
@@ -217,10 +217,9 @@ Die DDoS-Standard-Tarif (Distributed Denial of Service) von Azure bietet mehr Fe
 Mit dieser Blaupause können Sie die Systemgrenze verwalten und steuern, indem eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen wird, die Empfehlungen für die Härtung von Netzwerksicherheitsgruppen in Azure Security Center überprüft. Azure Security Center analysiert Datenverkehrsmuster von virtuellen Computern mit Internetanbindung und gibt Empfehlungen für Netzwerksicherheitsgruppen-Regeln, um die potenzielle Angriffsfläche zu reduzieren.
 Mit dieser Blaupause werden außerdem Richtliniendefinitionen zugewiesen, die nicht geschützte Endpunkte, Anwendungen und Speicherkonten überwachen. Endpunkte und Anwendungen, die nicht durch eine Firewall geschützt sind, sowie Speicherkonten mit uneingeschränktem Zugriff können einen unbeabsichtigten Zugriff auf Informationen im Informationssystem ermöglichen.
 
-- NSG-Regeln für VMs mit Internetzugriff sollten verstärken werden.
+- Auf virtuelle Computer mit Internetzugang müssen Empfehlungen zur adaptiven Netzwerkhärtung angewendet werden.
 - Zugriff über Endpunkt mit Internetzugriff sollte eingeschränkt werden
 - Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
-- Die NSG-Regeln für Webanwendungen in IaaS sollten verstärkt werden.
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) Schutz von Grenzen | Zugriffspunkte
 
@@ -239,7 +238,7 @@ Mit Just-In-Time-Zugriff (JIT) auf virtuelle Computer wird eingehender Datenverk
 Mithilfe dieser Blaupause können Sie die Vertraulichkeit und Integrität übertragener Informationen schützen. Weisen Sie dazu [Azure Policy](../../../policy/overview.md)-Definitionen zu, mit denen der für Kommunikationsprotokolle implementierte Kryptografiemechanismus überwacht werden kann. Die Sicherstellung der ordnungsgemäßen Verschlüsselung kann Sie bei der Erfüllung der Anforderungen Ihrer Organisation oder beim Schutz von Informationen vor nicht autorisierter Offenlegung und Änderung unterstützen.
 
 - Auf API-Apps sollte nur über HTTPS zugegriffen werden können
-- Windows-Webserver überwachen, die keine sicheren Kommunikationsprotokolle verwenden
+- Überwachungsergebnisse von Windows-Webservern anzeigen, die keine sicheren Kommunikationsprotokolle verwenden
 - Anforderungen zum Überwachen von Windows-Webservern bereitstellen, die keine sicheren Kommunikationsprotokolle verwenden
 - Zugriff auf Funktions-App nur über HTTPS gestatten
 - Nur sichere Verbindungen mit Ihrer Redis Cache-Instanz sollten aktiviert werden

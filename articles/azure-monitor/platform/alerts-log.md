@@ -6,94 +6,101 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 96b1bd86576f8cf34428eb60e2d3f476312311c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85aaefa12f0cef21e3a367700d1a4899a75e8a90
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226530"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298375"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor
 
 ## <a name="overview"></a>Übersicht
-In diesem Artikel wird erläutert, wie Sie im Azure-Portal mithilfe der Oberfläche „Warnungen“ Protokollwarnungen einrichten. Die Definition einer Warnungsregel setzt sich aus drei Teilen zusammen:
+In diesem Artikel wird erläutert, wie Sie im Azure-Portal mithilfe der Oberfläche für Warnungen Protokollwarnungen erstellen und verwalteten. Warnungsregeln werden durch drei Komponenten definiert:
 - Ziel: Eine bestimmte zu überwachende Azure-Ressource
-- Kriterien: Eine bestimmte Bedingung oder Logik, die beim Vorkommen in einem Signal eine Aktion auslösen soll
+- Kriterien: Eine Bedingung oder Logik zum Auswerten auf Wahrheit. Bei TRUE wird die Warnung ausgelöst.  
 - Aktion: Eine bestimmte Form der Kontaktaufnahme, die an einen Empfänger einer Benachrichtigung (z. B. E-Mail, SMS oder Webhook usw.) gesendet wird.
 
-Der Begriff **Protokollwarnungen** beschreibt Warnungen, die von Protokollabfragen in einem [Log Analytics-Arbeitsbereich](../learn/tutorial-viewdata.md) oder in [Application Insights](../app/analytics.md) ausgelöst werden. Erfahren Sie mehr über Funktionen, Terminologie und Typen von [Protokollwarnungen – Übersicht](alerts-unified-log.md).
+Der Begriff **Protokollwarnung** beschreibt Warnungen, bei denen eine Protokollabfrage in einem [Log Analytics-Arbeitsbereich](../learn/tutorial-viewdata.md) oder in [Application Insights](../app/analytics.md) ausgewertet und beim Ergebnis TRUE eine Warnung ausgelöst wird. Erfahren Sie mehr über Funktionen, Terminologie und Typen von [Protokollwarnungen – Übersicht](alerts-unified-log.md).
 
 > [!NOTE]
-> In [Log Analytics-Arbeitsbereichen](../../azure-monitor/learn/tutorial-viewdata.md) beliebte Protokolldaten stehen nun ebenfalls auf der Metrikplattform in Azure Monitor zur Verfügung. Eine Detailansicht finden Sie unter [Metrikwarnung für Protokolle](alerts-metric-logs.md).
+> Protokolldaten aus [einem Log Analytics-Arbeitsbereich](../../azure-monitor/learn/tutorial-viewdata.md) können auch an die Azure Monitor-Metrikdatenbank weitergeleitet werden. Metrikwarnungen weisen ein [anderes Verhalten](alerts-metric-overview.md) auf. Je nach den Daten, mit denen Sie arbeiten, kann dies wünschenswert sein.   Informationen zu den Protokollen, die Sie an Metriken weiterleiten können, und der zugehörigen Vorgehensweise finden Sie unter [Metrikwarnungen für Protokolle](alerts-metric-logs.md).
 
-## <a name="managing-log-alerts-from-the-azure-portal"></a>Verwalten von Protokollwarnungen über das Azure-Portal
+## <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Erstellen einer Protokollwarnungsregel mit dem Azure-Portal
 
-Als nächstes wird die schrittweise Anleitung zur Verwendung von Protokollwarnungen über die Benutzeroberfläche des Azure-Portals eingehend erläutert.
-
-### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Erstellen einer Protokollwarnungsregel mit dem Azure-Portal
-
-1. Wählen Sie im [Portal](https://portal.azure.com/) die Option **Monitor** und im Abschnitt „MONITOR“ dann **Warnungen** aus.
+1. Wählen Sie im [Portal](https://portal.azure.com/) die Option **Überwachen**. Wählen Sie in diesem Abschnitt **Warnungen** aus.
 
     ![Überwachung](media/alerts-log/AlertsPreviewMenu.png)
 
-1. Wählen Sie die Schaltfläche **Neue Warnungsregel** aus, um eine neue Warnung in Azure zu erstellen.
+1. Klicken Sie auf **Neue Warnungsregel**. 
 
     ![Warnung hinzufügen](media/alerts-log/AlertsPreviewOption.png)
 
-1. Der Abschnitt „Warnung erstellen“ wird mit den drei Teilen angezeigt, die aus Folgendem bestehen: *Warnungsbedingung definieren*, *Warnungsdetails definieren* und *Aktionsgruppe definieren*.
+1. Der Bereich **Warnung erstellen** wird geöffnet. Es besteht aus vier Teilen: 
+    - Die Ressource, für die die Warnung gilt
+    - Die zu überprüfende Bedingung
+    - Die durchzuführende Aktion, wenn die Bedingung erfüllt ist
+    - Die Details zur Benennung und Beschreibung der Warnung 
 
     ![Erstellen einer Regel](media/alerts-log/AlertsPreviewAdd.png)
 
-1. Definieren Sie die Warnungsbedingung, indem Sie auf den Link **Ressource auswählen** klicken und dann durch Auswahl einer Ressource das Ziel angeben. Filtern Sie, indem Sie die Optionen _Abonnement_, _Ressourcentyp_ und schließlich die erforderliche Option _Ressource_ auswählen.
+1. Definieren Sie die Warnungsbedingung, indem Sie auf den Link **Ressource auswählen** klicken und dann durch Auswahl einer Ressource das Ziel angeben. Filtern Sie, indem Sie die Optionen *Abonnement*, *Ressourcentyp* und schließlich die erforderliche Option *Ressource* auswählen. 
 
-   > [!NOTE]
-   > Überprüfen Sie beim Erstellen einer Protokollwarnung das für die ausgewählte Ressource verfügbare **Protokoll**signal, bevor Sie den Vorgang fortsetzen.
-   >  ![Auswählen einer Ressource](media/alerts-log/Alert-SelectResourceLog.png)
+   ![Auswählen einer Ressource](media/alerts-log/Alert-SelectResourceLog.png)
 
-1. *Protokollwarnungen*: Stellen Sie sicher, dass als **Ressourcentyp** eine Analysequelle wie *Log Analytics* oder *Application Insights* und der Signaltyp **Protokoll** ausgewählt sind, und klicken Sie nach Auswahl der entsprechenden **Ressource** auf *Fertig*. Klicken Sie als Nächstes auf die Schaltfläche **Kriterien hinzufügen**, um die Liste mit den für die Ressource verfügbaren Signaloptionen und die Option **Benutzerdefinierte Protokollsuche** für den ausgewählten Protokollüberwachungsdienst (z.B. *Log Analytics* oder *Application Insights*) aus der Signalliste anzuzeigen.
+1. Stellen Sie sicher, dass als **Ressourcentyp** eine Analysequelle wie *Log Analytics* oder *Application Insights* und als Signaltyp *Protokoll* ausgewählt sind. Klicken Sie auf **Fertig**. Wählen Sie als Nächstes die Schaltfläche **Kriterien hinzufügen** aus, um die Liste der für die Ressource verfügbaren Signaloptionen anzuzeigen. Suchen Sie für *Log Analytics* oder *Application Insights* (je nachdem, wo sich die Daten für Ihre Protokollwarnungen befinden) die Option **Custom log search** (Benutzerdefinierte Protokollsuche), und wählen Sie sie aus.
 
    ![Auswählen einer Ressource – benutzerdefinierte Protokollsuche](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
    > 
-   > Über die Listen von „Warnungen“ kann eine Analyseabfrage als Signaltyp **Protokoll (gespeicherte Abfrage)** importiert werden. Dies ist in der obigen Abbildung dargestellt. Benutzer können Ihre Abfrage so in Analytics verfeinern und zur zukünftigen Nutzung in Warnungen speichern. Weitere Informationen zum Speichern von Abfragen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../log-query/log-query-overview.md) oder [Analysieren von Protokolldaten in Azure Monitor](../app/app-insights-overview.md).
+   > Über die Listen von „Warnungen“ kann eine Analyseabfrage als Signaltyp **Protokoll (gespeicherte Abfrage)** importiert werden. Dies ist in der obigen Abbildung dargestellt. Daher können Benutzer Ihre Abfrage in Analytics optimieren und sie dann zur zukünftigen Verwendung in Warnungen speichern. Weitere Informationen zur Verwendung gespeicherter Abfragen finden Sie unter [Verwenden von Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md) und [Freigegebene Abfragen in Application Insights-Analysen](../app/app-insights-overview.md).
 
-1. *Protokollwarnungen*: Wenn Sie diese Option ausgewählt haben, können im Feld **Suchabfrage** Abfragen für Warnungen angegeben werden. Ist die Abfragesyntax falsch, wird eine Fehlermeldung in ROT angezeigt. Wenn die Abfragesyntax korrekt ist, werden für die angegebene Abfrage Referenzverlaufsdaten als Diagramm angezeigt. Dabei besteht die Möglichkeit, das Zeitfenster von den letzten sechs Stunden bis zur letzten Woche anzupassen.
+1. Nachdem Sie diese Option ausgewählt haben, erstellen Sie die Warnungsabfrage im Feld **Suchabfrage**. Wenn in der Abfragesyntax ein Fehler vorliegt, wird das Feld mit dem Fehler in Rot angezeigt. 
+
+1. Wenn die Abfragesyntax richtig ist, werden für die Abfrage Verlaufsdaten als Graph angezeigt. Dabei besteht die Möglichkeit, das Zeitfenster von den letzten sechs Stunden bis zur letzten Woche anzupassen.
 
     ![Konfigurieren einer Warnungsregel](media/alerts-log/AlertsPreviewAlertLog.png)
 
-   > [!NOTE]
-   > 
-   > Die Visualisierung von Verlaufsdaten kann nur angezeigt werden, wenn die Abfrageergebnisse Details in Bezug auf die Zeit enthalten. Wenn Ihre Abfrage zusammengefasste Daten oder bestimmte Spaltenwerte zurückgibt, werden diese als einzelner Plot angezeigt.
-   > Wenn Sie als Typ für die Metrikmessung Protokollwarnungen mit Application Insights verwenden oder [auf die neue API umgestiegen](alerts-log-api-switch.md) sind, können Sie angeben, nach welcher Variablen die Daten gruppiert werden sollen. Verwenden Sie dazu die Option **Aggregieren auf** wie hier gezeigt:
-   > 
-   > ![Option „Aggregieren auf“](media/alerts-log/aggregate-on.png)
+   Die Visualisierung von Verlaufsdaten kann nur angezeigt werden, wenn die Abfrageergebnisse zeitliche Details enthalten. Wenn Ihre Abfrage zusammengefasste Daten oder bestimmte Spaltenwerte zurückgibt, werden diese als einzelner Plot angezeigt.
+  
+   Bei Metrikmessungen mit Application Insights oder der **Log Analytics-API** können Sie mithilfe der Option [Aggregieren nach](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) angeben, nach welcher Variable die Daten gruppiert werden sollen, wie hier zu sehen: 
+  
+   ![Option „Aggregieren auf“](media/alerts-log/aggregate-on.png)
 
-1. *Protokollwarnungen*: Ist die Visualisierung eingerichtet, kann die **Warnungslogik** aus den angezeigten Optionen „Bedingung“, „Aggregation“ und schließlich „Schwellenwert“ ausgewählt werden. Geben Sie schließlich über die Option **Zeitraum** den Zeitraum für die Bewertung der angegebenen Bedingung in der Logik an. Legen Sie durch Auswahl der **Häufigkeit** außerdem fest, wie oft die Warnung ausgeführt werden soll. **Protokollwarnungen** können auf Folgendem basieren:
+
+
+1. Wählen Sie als Nächstes die Bedingung, die Aggregation und den Schwellenwert für die **Warnungslogik** aus. 
+
+1. Wählen Sie über die Option **Zeitraum** den Zeitraum aus, für den die angegebene Bedingung überprüft werden soll. 
+
+1. Wählen Sie unter **Häufigkeit** aus, wie oft die Warnung ausgeführt wird. 
+
+    **Protokollwarnungen** können auf Folgendem basieren:
     - [Anzahl von Datensätzen](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): Eine Warnung wird erstellt, wenn die Anzahl der von der Abfrage zurückgegebenen Datensätze entweder größer als oder kleiner als der Wert ist, den Sie angeben.
     - [Metrische Maßeinheit](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): Eine Warnung wird erstellt, wenn die einzelnen *aggregierten Werte* in den Ergebnissen den angegebenen Schwellenwert überschreiten und *nach dem ausgewählten Wert gruppiert* werden. Die Anzahl von Sicherheitsverletzungen für eine Warnung ist die Anzahl der Häufigkeit, mit der im ausgewählten Zeitraum der Schwellenwert überschritten wird. Sie können „Sicherheitsverletzungen gesamt“ für eine beliebige Kombination aus Verletzungen in den Ergebnissen angeben oder „Aufeinanderfolgende Sicherheitsverletzungen“, um vorauszusetzen, dass die Sicherheitsverletzungen in aufeinanderfolgenden Stichproben auftreten müssen.
 
 
-1. Legen Sie im zweiten Schritt einen Namen für ihre Warnung im Feld **Name der Warnungsregel** fest, und geben Sie eine **Beschreibung** mit Einzelheiten zur Warnung sowie den **Schweregrad** über die angegebenen Optionen an. Diese Details werden in allen Warnungs-E-Mails bzw. Benachrichtigungen wiederverwendet oder mithilfe von Push von Azure Monitor übertragen. Darüber hinaus kann der Benutzer durch Umschalten der Option **Regel beim Erstellen aktivieren** festlegen, dass die Warnungsregel bei der Erstellung sofort aktiviert werden soll.
+1. Klicken Sie auf **Fertig**. 
 
-    Nur bei **Protokollwarnungen** sind einige zusätzliche Funktionen in den Warnungsdetails verfügbar:
+1. Legen Sie im Feld **Name der Warnungsregel** einen Namen für Ihre Warnung sowie eine **Beschreibung** mit Einzelheiten zur Warnung und den **Schweregrad** über die jeweiligen Optionen fest. Diese Details werden in allen Warnungs-E-Mails, Benachrichtigungen und Pushvorgängen von Azure Monitor wiederverwendet. Darüber hinaus können Sie durch Klicken auf **Regel beim Erstellen aktivieren** festlegen, dass die Warnungsregel bei der Erstellung sofort aktiviert werden soll.
 
-    - **Warnungen unterdrücken**: Wenn Sie die Unterdrückung für die Warnungsregel aktivieren, werden Aktionen für die Regel nach dem Erstellen einer neuen Warnung für einen vorher festgelegten Zeitraum deaktiviert. Die Regel wird weiter ausgeführt und erstellt Warnungsdatensätze, wenn die Kriterien erfüllt sind. Dies erspart Ihnen die Zeit, das Problem zu beheben, ohne doppelte Aktionen durchzuführen.
+1. Wählen Sie aus, ob Sie für einen bestimmten Zeitraum **Warnungen unterdrücken** möchten.  Wenn Sie die Unterdrückung für die Warnungsregel aktivieren, werden Aktionen für die Regel nach dem Erstellen einer neuen Warnung für einen vorher festgelegten Zeitraum deaktiviert. Die Regel wird weiter ausgeführt und erstellt Warnungsdatensätze, wenn die Kriterien erfüllt sind. Durch diese Einstellung erhalten Sie Zeit, das Problem zu beheben, ohne doppelte Aktionen auszuführen.
 
-        ![Unterdrücken von Warnungen für Protokollwarnungen](media/alerts-log/AlertsPreviewSuppress.png)
+   ![Unterdrücken von Warnungen für Protokollwarnungen](media/alerts-log/AlertsPreviewSuppress.png)
 
-        > [!TIP]
-        > Geben Sie einen größeren Wert für das Unterdrücken von Warnungen als für die Häufigkeit der Warnung an, um sicherzustellen, dass Benachrichtigungen ohne Überlappung beendet werden.
+    > [!TIP]
+    > Geben Sie einen größeren Wert für das Unterdrücken von Warnungen als für die Häufigkeit der Warnung an, um sicherzustellen, dass Benachrichtigungen ohne Überlappung beendet werden.
 
-1. Legen Sie im dritten und letzten Schritt bei Bedarf fest, dass eine **Aktionsgruppe** für die Warnungsregel ausgelöst werden muss, wenn die Warnungsbedingung erfüllt ist. Sie können eine vorhandene Aktionsgruppe mit einer Warnung auswählen oder eine neue Aktionsgruppe erstellen. Entsprechend der ausgewählten Aktionsgruppe werden beim Auslösen einer Warnung u.a. folgende Vorgänge in Azure ausgeführt: Senden von E-Mails, Senden von SMS, Aufrufen von Webhooks, Wiederherstellen mit Azure Runbooks und Übertragen von Inhalten an das ITSM-Tool mithilfe von Push. Erfahren Sie mehr über [Aktionsgruppen](action-groups.md).
+1. Legen Sie im dritten und letzten Schritt bei Bedarf fest, ob **Aktionsgruppen** für die Warnungsregel ausgelöst werden sollen, wenn die Warnungsbedingung erfüllt ist. Sie können eine vorhandene Aktionsgruppe auswählen oder eine neue erstellen. Mit Aktionsgruppen können Sie eine Reihe von Aktionen durchführen, z. B. Senden von E-Mails, Senden von SMS-Nachrichten, Abrufen von Webhooks, Korrigieren mithilfe von Azure-Runbooks, Pushen an Ihr ITSM-Tool usw. Erfahren Sie mehr über [Aktionsgruppen](action-groups.md).
 
     > [!NOTE]
-    > Informationen zu den Einschränkungen für Runbook-Nutzlasten, die für Protokollwarnungen über Azure-Aktionsgruppen ausgelöst werden, finden Sie unter [Azure-Abonnementdienstgrenzen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+    > Informationen zu den Einschränkungen für mögliche Aktionen finden Sie unter [Einschränkungen für Azure-Abonnementdienste](../../azure-resource-manager/management/azure-subscription-service-limits.md).  
 
-    Für **Protokollwarnungen** sind einige zusätzliche Funktionen zum Überschreiben der Standardaktionen verfügbar:
+    Es sind einige weitere Funktionen zum Außerkraftsetzen der Standardaktionen verfügbar:
 
-    - **E-Mail-Benachrichtigung**: Überschreibt den *E-Mail-Betreff* in der E-Mail, die über die Aktionsgruppe gesendet wurde, wenn mindestens eine E-Mail-Aktion in der genannten Aktionsgruppe vorhanden ist. Der Text der E-Mail kann nicht geändert werden, und dieses Feld ist **nicht** für E-Mail-Adressen vorgesehen.
-    - **Benutzerdefinierte JSON-Nutzlast einschließen**: Diese Option überschreibt den von Aktionsgruppen verwendeten JSON-Webhook, wenn mindestens eine Webhookaktion in der genannten Aktionsgruppe vorhanden ist. Der Benutzer kann das JSON-Format angeben, das für alle in zugewiesenen Aktionsgruppen konfigurierte Webhooks verwendet werden soll. Weitere Informationen zu Webhookformaten finden Sie unter [Webhookaktionen für Protokollwarnungsregeln](../../azure-monitor/platform/alerts-log-webhook.md). Die Option „Webhook anzeigen“ bietet die Möglichkeit, das Format anhand von JSON-Beispieldaten zu überprüfen.
+    - **E-Mail-Benachrichtigung**: Setzt den *E-Mail-Betreff* in der über die Aktionsgruppe gesendeten E-Mail außer Kraft. Der Text der E-Mail kann nicht geändert werden, und dieses Feld ist **nicht** für E-Mail-Adressen vorgesehen.
+    - **Benutzerdefinierte JSON-Nutzlast einschließen**: Setzt den von Aktionsgruppen verwendeten Webhook-JSON-Code außer Kraft, wenn die Aktionsgruppe einen Webhooktyp enthält. Weitere Informationen zu Webhookformaten finden Sie unter [Webhookaktionen für Protokollwarnungen](../../azure-monitor/platform/alerts-log-webhook.md). Die Option „Webhook anzeigen“ bietet die Möglichkeit, das Format anhand von JSON-Beispieldaten zu überprüfen.
 
         ![Aktionsüberschreibungen für Protokollwarnungen](media/alerts-log/AlertsPreviewOverrideLog.png)
 
@@ -305,22 +312,23 @@ Das JSON-Beispiel oben kann im Rahmen dieser exemplarischen Vorgehensweise z.B. 
 
 Azure Monitor – [API für geplante Abfrageregeln](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) ist eine REST-API und vollständig kompatibel mit der Azure Resource Manager-REST-API. Die unten aufgeführten PowerShell-Cmdlets stehen zur Nutzung der [API für Regeln für geplante Abfragen](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) zur Verfügung.
 
-1. [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule): PowerShell-Cmdlet zum Erstellen einer neuen Protokollwarnungsregel.
-1. [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule): PowerShell-Cmdlet zum Aktualisieren einer vorhandenen Protokollwarnungsregel.
-1. [New-AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource): PowerShell-Cmdlet zum Erstellen oder Aktualisieren von Objekten, mit denen Quellparameter für eine Protokollwarnung angegeben werden. Wird von den Cmdlets [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) und [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) als Eingabe verwendet.
-1. [New-AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule): PowerShell-Cmdlet zum Erstellen oder Aktualisieren von Objekten, mit denen Planungsparameter für eine Protokollwarnung angegeben werden. Wird von den Cmdlets [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) und [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) als Eingabe verwendet.
-1. [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction): PowerShell-Cmdlet zum Erstellen oder Aktualisieren von Objekten, mit denen Aktionsparameter für eine Protokollwarnung angegeben werden. Wird von den Cmdlets [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) und [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) als Eingabe verwendet.
-1. [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup): PowerShell-Cmdlet zum Erstellen oder Aktualisieren von Objekten, mit denen Aktionsgruppenparameter für eine Protokollwarnung angegeben werden. Wird vom Cmdlet [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) als Eingabe verwendet.
-1. [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition): PowerShell-Cmdlet zum Erstellen oder Aktualisieren von Objekten, mit denen Auslöserbedingungsparameter für eine Protokollwarnung angegeben werden. Wird vom Cmdlet [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) als Eingabe verwendet.
-1. [New-AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger): PowerShell-Cmdlet zum Erstellen oder Aktualisieren von Objekten, mit denen Metrik-Auslöserbedingungsparameter für [Warnungsregeln des Typs „Metrische Maßeinheit“](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) angegeben werden. Wird vom Cmdlet [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) als Eingabe verwendet.
-1. [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule): PowerShell-Cmdlet zum Auflisten von vorhandenen Protokollwarnungsregeln oder einer bestimmten Protokollwarnungsregel.
-1. [Update-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule): PowerShell-Cmdlet zum Aktivieren oder Deaktivieren von Protokollwarnungsregeln.
-1. [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): PowerShell-Cmdlet zum Löschen einer vorhandenen Protokollwarnungsregel.
+- [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule): PowerShell-Cmdlet zum Erstellen einer neuen Protokollwarnungsregel
+- [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule): PowerShell-Cmdlet zum Aktualisieren einer vorhandenen Protokollwarnungsregel
+- [New-AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource): PowerShell-Cmdlet zum Erstellen oder Aktualisieren von Objekten, mit denen Quellparameter für eine Protokollwarnung angegeben werden. Wird von den Cmdlets [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) und [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) als Eingabe verwendet.
+- [New-AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule): PowerShell-Cmdlet zum Erstellen oder Aktualisieren von Objekten, mit denen Planungsparameter für eine Protokollwarnung angegeben werden. Wird von den Cmdlets [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) und [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) als Eingabe verwendet.
+- [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction): PowerShell-Cmdlet zum Erstellen oder Aktualisieren von Objekten, mit denen Aktionsparameter für eine Protokollwarnung angegeben werden. Wird von den Cmdlets [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) und [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) als Eingabe verwendet.
+- [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup): PowerShell-Cmdlet zum Erstellen oder Aktualisieren von Objekten, mit denen Aktionsgruppenparameter für eine Protokollwarnung angegeben werden. Wird vom Cmdlet [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) als Eingabe verwendet.
+- [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition): PowerShell-Cmdlet zum Erstellen oder Aktualisieren von Objekten, mit denen Auslöserbedingungsparameter für eine Protokollwarnung angegeben werden. Wird vom Cmdlet [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) als Eingabe verwendet.
+- [New-AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger): PowerShell-Cmdlet zum Erstellen oder Aktualisieren von Objekten, mit denen Bedingungsparameter von Metriktriggern für [Warnungsregeln des Typs „Metrische Maßeinheit“](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) angegeben werden. Wird vom Cmdlet [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) als Eingabe verwendet.
+- [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule): PowerShell-Cmdlet zum Auflisten der vorhandenen Protokollwarnungsregeln oder einer bestimmten Protokollwarnungsregel
+- [Update-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule): PowerShell-Cmdlet zum Aktivieren oder Deaktivieren von Protokollwarnungsregeln
+- [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): PowerShell-Cmdlet zum Löschen einer vorhandenen Protokollwarnungsregel
 
 > [!NOTE]
 > Mit ScheduledQueryRules-PowerShell-Cmdlets können nur Regeln verwaltet werden, die vom Cmdlet selbst oder mit der [API für Regeln für geplante Abfragen](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) von Azure Monitor erstellt werden. Protokollwarnungsregeln, die mit der [Legacy-API für Warnungen von Log Analytics](api-alerts.md) und mit Legacyvorlagen von [gespeicherten Log Analytics-Suchen und -Warnungen](../insights/solutions-resources-searches-alerts.md) erstellt wurden, können erst dann mit ScheduledQueryRules-PowerShell-Cmdlets verwaltet werden, wenn der Benutzer die [API-Einstellung für Protokollwarnungen wechselt](alerts-log-api-switch.md).
 
 Im nächsten Abschnitt werden die Schritte veranschaulicht, mit denen mithilfe des PowerShell-Cmdlets scheduledQueryRules eine Beispielregel für Protokollwarnungen erstellt wird.
+
 ```powershell
 $source = New-AzScheduledQueryRuleSource -Query 'Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m), _ResourceId' -DataSourceId "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews"
 

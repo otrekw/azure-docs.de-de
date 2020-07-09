@@ -1,19 +1,14 @@
 ---
 title: Senden oder Empfangen von Ereignissen an bzw. von Azure Event Hubs unter Verwendung von JavaScript (Legacypaket)
 description: Dieser Artikel enthält eine exemplarische Vorgehensweise zum Erstellen einer JavaScript-Anwendung, die unter Verwendung des alten Pakets „azure/event-hubs“ (Version 2) Ereignisse an Azure Event Hubs sendet bzw. von dort empfängt.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.date: 01/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 0a4b76bd1febca864cab6060fbdbd96dd0061cff
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.openlocfilehash: 548276b4bcbdd514c37a19375154923ad9f3f9a4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77162615"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314505"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-javascript-azureevent-hubs-version-2"></a>Schnellstart: Senden oder Empfangen von Ereignissen an bzw. von Event Hubs mithilfe von JavaScript (@azure/event-hubs, Version 2)
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des JavaScript-Pakets „azure/event-hubs“ (Version 2) JavaScript-Anwendungen erstellen, um Ereignisse an einen Event Hub zu senden bzw. von dort zu empfangen. 

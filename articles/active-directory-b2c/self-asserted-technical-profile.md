@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b29b8b0975639e5c5315a55e1382794d7662665
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 84e92cbac064106ca95277288eb773e311798930
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332506"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203451"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines selbstbestätigten technischen Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Das **Name**-Attribut des **Protocol**-Elements muss auf `Proprietary` festgeleg
 
 Das folgende Beispiel zeigt ein selbstbestätigtes technisches Profil für eine Registrierung per E-Mail:
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -40,7 +40,7 @@ Das folgende Beispiel zeigt ein selbstbestätigtes technisches Profil für eine 
 
 In einem selbstbestätigten technischen Profil können Sie die Elemente **InputClaims** und **InputClaimsTransformations** verwenden, um den Wert der Ansprüche vorab mit Daten aufzufüllen, die auf der selbstbestätigten Seite angezeigt werden (Anzeigeansprüche). In der Richtlinie zur Profilbearbeitung liest beispielsweise die User Journey zunächst das Benutzerprofil aus dem Azure AD B2C-Verzeichnisdienst. Anschließend legt das selbstbestätigte technische Profil die Eingabeansprüchen mit den im Benutzerprofil gespeicherten Daten fest. Diese Ansprüche werden aus dem Benutzerprofil gesammelt und anschließend dem Benutzer vorgelegt, der die vorhandenen Daten dann bearbeiten kann.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
 ...
   <InputClaims>
@@ -71,7 +71,7 @@ Das folgende Beispiel `TechnicalProfile` veranschaulicht die Verwendung von Anze
 * Der fünfte Anzeigeanspruch verweist auf das `phoneVerificationControl`-Anzeigesteuerelement, das eine Telefonnummer erfasst und überprüft.
 * Die anderen Anzeigeansprüche sind ClaimTypes, die vom Benutzer erfasst werden sollen.
 
-```XML
+```xml
 <TechnicalProfile Id="Id">
   <DisplayClaims>
     <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
@@ -93,7 +93,7 @@ Wenn Sie mindestens ein **DisplayClaim**-Element in einem selbstbestätigten tec
 
 Sehen Sie sich das folgende Beispiel an, in dem ein `age`-Anspruch als **Ausgabe**anspruch in einer Basisrichtlinie definiert wird. Bevor dem selbstbestätigten technischen Profil Anzeigeansprüche hinzugefügt werden, wird der `age`-Anspruch auf dem Bildschirm für die Datensammlung angezeigt, die vom Benutzer erfasst wurde:
 
-```XML
+```xml
 <TechnicalProfile Id="id">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="age" />
@@ -103,7 +103,7 @@ Sehen Sie sich das folgende Beispiel an, in dem ein `age`-Anspruch als **Ausgabe
 
 Wenn eine Blattrichtlinie, die diese Basis nachfolgend erbt, `officeNumber` als **Anzeige**anspruch angibt:
 
-```XML
+```xml
 <TechnicalProfile Id="id">
   <DisplayClaims>
     <DisplayClaim ClaimTypeReferenceId="officeNumber" />
@@ -140,7 +140,7 @@ Verwenden Sie die Ausgabeansprüche in folgenden Fällen:
 
 Im folgenden Beispiel wird die Verwendung eines selbstbestätigten technischen Profils veranschaulicht, das sowohl Anzeigeansprüche als auch Ausgabeansprüche verwendet.
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 02/14/2020
+ms.date: 06/15/2020
 ms.author: diberry
-ms.openlocfilehash: c0ee1abcb99e10d57d05945f45595e5bfd76fa28
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 285f68b4f0d7284740867f83311135d6c3efa90f
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80155986"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791213"
 ---
 # <a name="whats-new-in-qna-maker"></a>Neuerungen in QnA Maker
 
@@ -24,6 +24,15 @@ Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versi
 ## <a name="release-notes"></a>Versionshinweise
 
 Informieren Sie sich über Neuigkeiten zu QnA Maker.
+
+### <a name="june-2020"></a>Juni 2020
+
+* Die Schritte unter [Tutorial: Hinzufügen Ihrer Wissensdatenbank zu Power Virtual Agents](tutorials/integrate-with-power-virtual-assistant-fallback-topic.md) wurden verkürzt und vereinfacht.
+
+### <a name="may-2020"></a>Mai 2020
+
+* [Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](concepts/role-based-access-control.md)
+* [Rich-Text-Bearbeitung](how-to/edit-knowledge-base.md#rich-text-editing-for-answer) für Antworten
 
 ### <a name="march-2020"></a>März 2020
 

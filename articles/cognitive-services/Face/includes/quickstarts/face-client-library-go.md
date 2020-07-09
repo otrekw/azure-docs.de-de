@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 4a96f0e887bb04aea6d451e08bd5d26d1cc6edca
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 887b9fa62b89c500ef3b2b0164ba0281f911621e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82587837"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073205"
 ---
 Hier erhalten Sie Informationen zu den ersten Schritten mit der Clientbibliothek zur Gesichtserkennung für Go. Führen Sie die nachfolgenden Schritte aus, um die Bibliothek zu installieren und unsere Beispiele für grundlegende Aufgaben zu testen. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
@@ -30,66 +30,14 @@ Die Gesichtserkennungsdienst-Clientbibliothek für Go kann für Folgendes verwen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/)
 * Aktuelle Version von [Go](https://golang.org/dl/)
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über Ihr Azure-Abonnement verfügen, erstellen Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Erstellen einer Gesichtserkennungsressource"  target="_blank"> eine Gesichtserkennungsressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt zu erhalten. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+    * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Gesichtserkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
+    * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
+* Nachdem Sie einen Schlüssel und einen Endpunkt erhalten haben, [erstellen Sie Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel und den Endpunkt mit dem Namen `FACE_SUBSCRIPTION_KEY` bzw. `FACE_ENDPOINT`.
 
-## <a name="set-up"></a>Einrichten
-
-### <a name="create-a-face-azure-resource"></a>Erstellen einer Azure-Ressource für die Gesichtserkennung 
-
-Wenn Sie den Gesichtserkennungsdienst verwenden möchten, müssen Sie zunächst eine Azure-Ressource erstellen. Wählen Sie einen geeigneten Ressourcentyp aus:
-
-* Eine [Testressource](https://azure.microsoft.com/try/cognitive-services/#decision) (kein Azure-Abonnement erforderlich): 
-    * Kostenlos und sieben Tage lang gültig. Nach der Registrierung stehen ein Testschlüssel und ein Endpunkt auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung. 
-    * Diese Option eignet sich perfekt, wenn Sie den Gesichtserkennungsdienst testen möchten, aber über kein Azure-Abonnement verfügen.
-* Eine [Ressource für den Gesichtserkennungsdienst](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace):
-    * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.
-    * Verwenden Sie den Tarif „Free“, um den Dienst zu testen, und führen Sie später für die Produktion ein Upgrade auf einen kostenpflichtigen Tarif durch.
-* Eine [Ressource für mehrere Dienste](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
-    * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.  
-    * Verwenden Sie für Ihre Anwendungen den gleichen Schlüssel und Endpunkt über mehrere Cognitive Services-Instanzen hinweg.
-
-### <a name="create-an-environment-variable"></a>Erstellen einer Umgebungsvariablen
-
->[!NOTE]
-> Nach dem 1. Juli 2019 erstellte Endpunkte für Ressourcen, bei denen es sich nicht um Testressourcen handelt, verwenden das unten gezeigte benutzerdefinierte Format für Subdomänen. Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
-
-Erstellen Sie unter Verwendung des Schlüssels und des Endpunkts der von Ihnen erstellten Ressource zwei Umgebungsvariablen für die Authentifizierung:
-* `FACE_SUBSCRIPTION_KEY`: Der Ressourcenschlüssel zum Authentifizieren Ihrer Anforderungen.
-* `FACE_ENDPOINT`: Der Ressourcenendpunkt zum Senden von API-Anforderungen. Er sieht wie folgt aus: 
-  * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
-
-Führen Sie die Schritte für Ihr Betriebssystem aus:
-<!-- replace the below endpoint and key examples -->
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx FACE_SUBSCRIPTION_KEY <replace-with-your-product-name-key>
-setx FACE_ENDPOINT <replace-with-your-product-name-endpoint>
-```
-
-Starten Sie das Konsolenfenster neu, nachdem Sie die Umgebungsvariable hinzugefügt haben.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `source ~/.bashrc` aus, damit die Änderungen wirksam werden.
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-Bearbeiten Sie `.bash_profile`, und fügen Sie die Umgebungsvariable hinzu:
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `source .bash_profile` aus, damit die Änderungen wirksam werden.
-***
+## <a name="setting-up"></a>Einrichten
 
 ### <a name="create-a-go-project-directory"></a>Erstellen eines Go-Projektverzeichnisses
 
@@ -301,13 +249,13 @@ Der folgende Code vergleicht jedes Quellbild mit dem Zielbild und gibt eine Meld
 
 ## <a name="take-a-snapshot-for-data-migration"></a>Erstellen einer Momentaufnahme für die Datenmigration
 
-Mit dem Momentaufnahmefeature können Sie Ihre gespeicherten Gesichtserkennungsdaten (etwa ein trainiertes **PersonGroup**-Objekt) in ein anderes Abonnement für die Gesichtserkennung von Azure Cognitive Services verschieben. Sie können dieses Feature beispielsweise verwenden, wenn Sie ein Objekt vom Typ **PersonGroup** mit einem kostenlosen Testabonnement erstellt haben und dieses nun zu Ihrem kostenpflichtigen Abonnement migrieren möchten. Eine umfassende Übersicht über das Feature für Momentaufnahmen finden Sie unter [Migrieren Ihrer Gesichtserkennungsdaten in ein anderes Abonnement für die Gesichtserkennung](../../Face-API-How-to-Topics/how-to-migrate-face-data.md).
+Mit dem Momentaufnahmefeature können Sie Ihre gespeicherten Gesichtserkennungsdaten (etwa ein trainiertes **PersonGroup**-Objekt) in ein anderes Abonnement für die Gesichtserkennung von Azure Cognitive Services verschieben. Sie können dieses Feature beispielsweise verwenden, wenn Sie ein Objekt vom Typ **PersonGroup** mit einem kostenlosen Abonnement erstellt haben und dieses nun zu einem kostenpflichtigen Abonnement migrieren möchten. Eine umfassende Übersicht über das Feature für Momentaufnahmen finden Sie unter [Migrieren Ihrer Gesichtserkennungsdaten in ein anderes Abonnement für die Gesichtserkennung](../../Face-API-How-to-Topics/how-to-migrate-face-data.md).
 
 In diesem Beispiel wird das Objekt vom Typ **PersonGroup** migriert, das Sie unter [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group) erstellt haben. Sie können entweder zuerst diesen Abschnitt abschließen oder Ihre eigenen Konstrukte mit Gesichtserkennungsdaten verwenden.
 
 ### <a name="set-up-target-subscription"></a>Einrichten des Zielabonnements
 
-Sie benötigen zunächst ein zweites Azure-Abonnement mit einer Gesichtserkennungsressource. Führen Sie dazu erneut die Schritte im Abschnitt [Einrichten](#set-up) aus. 
+Sie benötigen zunächst ein zweites Azure-Abonnement mit einer Gesichtserkennungsressource. Führen Sie dazu erneut die Schritte im Abschnitt [Einrichten](#setting-up) aus. 
 
 Erstellen Sie anschließend im oberen Bereich der Methode **main** die folgenden Variablen. Darüber hinaus müssen Sie neue Umgebungsvariablen für die Abonnement-ID Ihres Azure-Kontos sowie den Schlüssel, den Endpunkt und die Abonnement-ID Ihres neuen Kontos (Zielkonto) erstellen.
 

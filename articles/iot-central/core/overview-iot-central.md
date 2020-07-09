@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 409ba6cd192f65c73aba6bd6eb11a26ec1f820fa
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 5fe8d261cb6804ffdf2cbe4f543db29336c4c78b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790880"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656419"
 ---
 # <a name="what-is-azure-iot-central"></a>Was ist Azure IoT Central?
 
@@ -61,13 +61,6 @@ Diese Gerätevorlage enthält Folgendes:
 - Cloudeigenschaften, die nicht auf dem Gerät gespeichert werden
 - Anpassungen, Dashboards und Formulare, die Teil der IoT Central-Anwendung sind
 
-### <a name="pricing"></a>Preise
-
-Sie können eine IoT Central-Anwendung mit einer kostenlosen siebentägigen Testversion erstellen oder einen Standard-Tarif verwenden.
-
-- Im Tarif *Free* erstellte Anwendungen sind sieben Tage lang kostenlos und unterstützen bis zu fünf Geräte. Sie können bis zum Ablauftermin jederzeit in Anwendungen mit Standard-Tarif konvertiert werden.
-- Anwendungen, die mit einem *Standard*-Tarif erstellt werden, werden pro Gerät abgerechnet. Sie können entweder den Tarif **Standard 1** oder den Tarif **Standard 2** auswählen. Die ersten zwei Geräte sind dabei kostenlos. Weitere Informationen zu den Tarifen „Free“ und „Standard“ finden Sie auf der Seite [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/).
-
 ### <a name="create-device-templates"></a>Erstellen von Gerätevorlagen
 
 [IoT Plug & Play (Vorschau)](../../iot-pnp/overview-iot-plug-and-play.md) ermöglicht IoT Central die Integration von Geräten, ohne dass Sie eingebetteten Gerätecode schreiben müssen. Das Herzstück von IoT Plug & Play (Vorschau) ist ein Gerätefunktionsmodell-Schema, das Gerätefunktionen beschreibt. In einer IoT Central-Anwendung verwenden Gerätevorlagen diese Gerätefunktionsmodelle von IoT Plug & Play (Vorschau).
@@ -81,6 +74,8 @@ Als Lösungsentwickler haben Sie mehrere Möglichkeiten zum Erstellen von Gerät
 
 Als Lösungsentwickler können Sie mit IoT Central Code für Testgeräte generieren, um Ihre Gerätevorlagen zu überprüfen.
 
+Wenn Sie ein Geräteentwickler sind, finden Sie unter [Übersicht über die Geräteentwicklung für IoT Central](./overview-iot-central-developer.md) eine Einführung in die Implementierung von Geräten, bei denen diese Gerätevorlagen verwendet werden.
+
 ### <a name="customize-the-ui"></a>Anpassen der Benutzeroberfläche
 
 Als Lösungsentwickler können Sie auch die Benutzeroberfläche der IoT Central-Anwendung für die Bediener anpassen, die die Anwendung tagtäglich verwenden. Die Anpassungsmöglichkeiten für Lösungsentwickler umfassen Folgendes:
@@ -89,43 +84,7 @@ Als Lösungsentwickler können Sie auch die Benutzeroberfläche der IoT Central-
 - Konfigurieren benutzerdefinierter Dashboards, um Bediener bei der Gewinnung von Erkenntnissen sowie bei der schnelleren Behebung von Problemen zu unterstützen
 - Konfigurieren benutzerdefinierter Analysen zur Untersuchung von Zeitreihendaten Ihrer verbundenen Geräte
 
-## <a name="pricing"></a>Preise
-
-Sie können eine IoT Central-Anwendung mit einer kostenlosen siebentägigen Testversion erstellen oder einen Standard-Tarif verwenden.
-
-- Im Tarif *Free* erstellte Anwendungen sind sieben Tage lang kostenlos und unterstützen bis zu fünf Geräte. Sie können bis zum Ablauftermin jederzeit in Anwendungen mit Standard-Tarif konvertiert werden.
-- Anwendungen, die mit dem Tarif *Standard* erstellt werden, werden pro Gerät abgerechnet. Sie können entweder den Tarif **Standard 1** oder den Tarif **Standard 2** auswählen. Die ersten zwei Geräte sind dabei kostenlos. Weitere Informationen finden Sie unter [IoT Central – Preise](https://aka.ms/iotcentral-pricing).
-
-## <a name="connect-your-devices"></a>Verbinden von Geräten
-
-Für Azure IoT Central wird der [Azure IoT Hub Device Provisioning Service (DPS)](../../iot-dps/about-iot-dps.md) zur Verwaltung aller Geräteregistrierungen und -verbindungen verwendet.
-
-DPS ermöglicht Folgendes:
-
-- IoT Central kann Onboarding und das Verbinden von Geräten nach Maß unterstützen.
-- Sie können jetzt Geräteanmeldeinformationen generieren und die Geräte offline konfigurieren, ohne sie über IoT Central zu registrieren.
-- Geräte können Verbindungen unter Verwendung von Shared Access Signatures herstellen.
-- Geräte können mithilfe von X.509-Zertifikaten nach Industriestandard Verbindungen herstellen.
-- Sie können Ihre eigenen Geräte-IDs verwenden, um Geräte in IoT Central zu registrieren. Die Verwendung Ihrer eigenen Geräte-IDs vereinfacht die Integration in vorhandene Backofficesysteme.
-- Eine einheitliche Möglichkeit, Geräte mit IoT Central zu verbinden.
-
-Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](./concepts-get-connected.md).
-
-### <a name="azure-iot-edge-devices"></a>Azure IoT Edge-Geräte
-
-Ebenso wie Geräte, die mit den [Azure IoT-SDKs](https://github.com/Azure/azure-iot-sdks) erstellt wurden, können Sie auch [Azure IoT Edge Geräte](../../iot-edge/about-iot-edge.md) mit einer IoT Central-Anwendung verbinden. Azure IoT Edge ermöglicht die Ausführung von Cloud Intelligence und benutzerdefinierter Logik direkt auf IoT-Geräten, die von IoT Central verwaltet werden. Die IoT Edge-Laufzeit ermöglicht Ihnen Folgendes:
-
-- Installieren und Aktualisieren von Workloads auf dem Gerät
-- Aufrechterhalten von Azure IoT Edge-Sicherheitsstandards auf dem Gerät
-- Sicherstellen, dass die IoT Edge-Module immer ausgeführt werden
-- Melden der Modulintegrität an die Cloud für die Remoteüberwachung
-- Verwalten der Kommunikation zwischen nachgeschalteten Blattknotengeräten und einem IoT Edge-Gerät, zwischen Modulen auf einem IoT Edge-Gerät sowie zwischen einem IoT Edge-Gerät und der Cloud.
-
-Weitere Informationen finden Sie unter [Azure IoT Edge-Geräte und IoT Central](concepts-architecture.md#azure-iot-edge-devices).
-
-## <a name="stay-connected"></a>In Verbindung bleiben
-
-IoT Central-Anwendungen werden vollständig von Microsoft gehostet, was den Verwaltungsaufwand für Ihre Anwendungen verringert.
+## <a name="manage-your-devices"></a>Verwalten von Geräten
 
 Als Bediener verwenden Sie die Benutzeroberfläche der IoT Central-Anwendung, um die Geräte in Ihrer IoT Central-Lösung zu verwalten. Bediener führen Aufgaben wie die folgenden aus:
 
@@ -134,8 +93,6 @@ Als Bediener verwenden Sie die Benutzeroberfläche der IoT Central-Anwendung, um
 - Bereitstellen neuer Geräte
 
 Als Lösungsentwickler können Sie benutzerdefinierte Regeln und Aktionen definieren, die über Datenstreaming von verbundenen Geräten ausgeführt werden. Bediener können diese Regeln auf der Geräteebene aktivieren oder deaktivieren, um Aufgaben innerhalb der Anwendung zu steuern und zu automatisieren.
-
-Administratoren verwalten über [Benutzerrollen und Berechtigungen](howto-administer.md) den Zugriff auf Ihre Anwendung.
 
 Für jede skalierbare IoT-Lösung ist eine strukturierte Geräteverwaltung unverzichtbar. Es reicht nicht aus, Ihre Geräte einfach nur mit der Cloud zu verbinden. Sie müssen auch die Konnektivität und die Integrität Ihrer Geräte gewährleisten. Operatoren stehen folgende IoT Central-Funktionen zur Verfügung, um Ihre Geräte über den gesamten Anwendungslebenszyklus hinweg zu verwalten:
 
@@ -149,23 +106,13 @@ Erstellen Sie [benutzerdefinierte Regeln](tutorial-create-telemetry-rules.md) au
 
 ### <a name="jobs"></a>Aufträge
 
-[Aufträge](howto-run-a-job.md) ermöglichen die Anwendung von Einzel- oder Massenupdates auf Geräte durch Festlegen von Eigenschaften oder Aufrufen von Befehlen. 
+[Aufträge](howto-run-a-job.md) ermöglichen die Anwendung von Einzel- oder Massenupdates auf Geräte durch Festlegen von Eigenschaften oder Aufrufen von Befehlen.
 
-### <a name="user-roles-and-permissions"></a>Benutzerrollen und -berechtigungen
-
-Mithilfe von [Rollen und Berechtigungen](howto-manage-users-roles.md) kann ein Administrator die Möglichkeiten jedes Benutzers individuell anpassen. Ein Administrator verwendet die Webbenutzeroberfläche, um Rollen zu erstellen und Berechtigungen zuzuweisen.
-
-## <a name="transform-your-iot-data"></a>Transformieren Ihrer IoT-Daten
+## <a name="integrate-with-other-services"></a>Integration in andere Dienste
 
 Als Anwendungsplattform ermöglicht IoT Central die Transformierung Ihrer IoT-Daten in geschäftliche Erkenntnisse, die zu verwertbaren Ergebnissen führen. [Regeln](./tutorial-create-telemetry-rules.md), [Datenexport](./howto-export-data.md) und die [öffentliche REST-API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) sind Beispiele für Möglichkeiten zur Integration von IoT Central in Branchenanwendungen:
 
 ![Transformationsmöglichkeiten für Ihre IoT-Daten mit IoT Central](media/overview-iot-central/transform.png)
-
-### <a name="monitor-device-health-and-operations-using-rules"></a>Überwachen von Geräteintegrität und -vorgängen mithilfe von Regeln
-
-Wenn Ihre verbundenen Geräte Daten senden, können Geräte mit Problemen oder Fehlern mithilfe von Regeln identifiziert und die Probleme mit minimaler Ausfallzeit behoben werden. Erstellen Sie Regeln in Ihrer IoT Central-Anwendung, um Telemetriedaten von Ihren Geräten zu überwachen und einen Operator zu benachrichtigen, wenn eine Metrik einen Schwellenwert überschreitet oder ein Gerät eine bestimmte Nachricht sendet. Durch E-Mail-Aktionen und Webhooks für Ihre Regeln werden die richtigen Personen und die richtigen nachgeschalteten Systeme benachrichtigt.
-
-### <a name="run-custom-analytics-and-processing-on-your-exported-data"></a>Ausführen benutzerdefinierter Analysen und Verarbeiten für Ihre exportierten Daten
 
 Sie können geschäftliche Erkenntnisse generieren, indem Sie beispielsweise Computereffizienztrends ermitteln oder den künftigen Energieverbrauch auf der Werksebene vorhersagen. Hierzu können Sie benutzerdefinierte Analysepipelines erstellen, um Telemetriedaten von Ihren Geräten zu verarbeiten und die Ergebnisse zu speichern. Konfigurieren Sie Datenexporte in Ihrer IoT Central-Anwendung, um Telemetriedaten sowie Änderungen an Geräteeigenschaften und -vorlagen in andere Dienste zu exportieren, wo Sie sie dann mit Ihren bevorzugten Tools analysieren, speichern und visualisieren können.
 
@@ -176,6 +123,17 @@ Erstellen Sie IoT-Lösungen wie etwa:
 - Mobile Begleit-Apps zur Remoteeinrichtung und -steuerung von Geräten
 - Benutzerdefinierte Integrationen, die es bereits vorhandenen Branchenanwendungen ermöglichen, mit Ihren IoT-Geräten und -Daten zu interagieren
 - Geräteverwaltungsanwendungen für Gerätemodellierung, Onboarding, Verwaltung und Datenzugriff
+
+## <a name="administer-your-application"></a>Verwalten Ihrer Anwendung
+
+IoT Central-Anwendungen werden vollständig von Microsoft gehostet, was den Verwaltungsaufwand für Ihre Anwendungen verringert. Administratoren verwalten über [Benutzerrollen und Berechtigungen](howto-administer.md) den Zugriff auf Ihre Anwendung.
+
+## <a name="pricing"></a>Preise
+
+Sie können eine IoT Central-Anwendung mit einer kostenlosen siebentägigen Testversion erstellen oder einen Standard-Tarif verwenden.
+
+- Im Tarif *Free* erstellte Anwendungen sind sieben Tage lang kostenlos und unterstützen bis zu fünf Geräte. Sie können bis zum Ablauftermin jederzeit in Anwendungen mit Standard-Tarif konvertiert werden.
+- Anwendungen, die mit dem Tarif *Standard* erstellt werden, werden pro Gerät abgerechnet. Sie können entweder den Tarif **Standard 1** oder den Tarif **Standard 2** auswählen. Die ersten zwei Geräte sind dabei kostenlos. Weitere Informationen finden Sie unter [IoT Central – Preise](https://aka.ms/iotcentral-pricing).
 
 ## <a name="quotas"></a>Kontingente
 

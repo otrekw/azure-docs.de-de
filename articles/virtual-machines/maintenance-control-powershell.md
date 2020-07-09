@@ -3,16 +3,16 @@ title: Steuerung der Wartung für virtuelle Azure-Computer mithilfe von PowerShe
 description: Erfahren Sie, wie Sie die Wartung steuern, wenn diese mithilfe der Wartungssteuerung und PowerShell auf Ihre virtuellen Azure-Computer angewendet wird.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: b1c72c2f606ab653d7e3f1d81f7278571e8e4978
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0bb3586d637c9399db057b7cd3225bf8cd36e2f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136531"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675841"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Steuern von Updates mit der Wartungssteuerung und Azure PowerShell
 
@@ -20,11 +20,17 @@ Mit der Wartungssteuerung können Sie entscheiden, wann Sie Updates auf Ihre iso
  
 ## <a name="enable-the-powershell-module"></a>Aktivieren des PowerShell-Moduls
 
-Stellen Sie sicher, dass `PowerShellGet` auf dem neuesten Stand ist.
+Stellen Sie sicher, dass `PowerShellGet` auf dem neuesten Stand ist.    
 
-```azurepowershell-interactive
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
+```azurepowershell-interactive  
+Install-Module -Name PowerShellGet -Repository PSGallery -Force 
+``` 
+
+Installieren Sie das `Az.Maintenance`-PowerShell-Modul.     
+
+```azurepowershell-interactive  
+Install-Module -Name Az.Maintenance
+``` 
 
 Wenn Sie lokal installieren, stellen Sie sicher, dass Sie die PowerShell-Eingabeaufforderung als Administrator öffnen.
 

@@ -1,5 +1,6 @@
 ---
-title: Erstellen einer Desktop-App, die Web-APIs aufruft – Microsoft Identity Platform | Azure
+title: Erstellen einer Desktop-App, die Web-APIs aufruft | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie eine Desktop-App erstellen, die Web-APIs aufruft (Übersicht)
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 09cc43dec2eff48754f5a6e693badd6bb1907cce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883000"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771858"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Szenario: Desktop-App, die Web-APIs aufruft
 
@@ -50,7 +51,7 @@ Sie schreiben eine Desktopanwendung und möchten Benutzer bei Ihrer Anwendung an
   - Wenn es sich um eine .NET Core-Anwendung handelt, und Sie zustimmen, dass die Authentifizierungsinteraktion mit Azure Active Directory (Azure AD) im Systembrowser erfolgt.
 
 - Bei Anwendungen, die von Windows gehostet werden, kann ein Token mithilfe der integrierten Windows-Authentifizierung automatisch abgerufen werden, wenn die Anwendungen auf Computern ausgeführt werden, die zu einer Windows-Domäne gehören oder in Azure AD eingebunden sind.
-- Schließlich können Sie, obwohl dies nicht empfohlen wird, in öffentlichen Clientanwendungen Benutzername und Kennwort verwenden. Dies wird noch bei einigen Szenarien (z. B. DevOps) benötigt. Die Verwendung ist allerdings mit Einschränkungen für Ihre Anwendung verbunden. Ein Benutzer, der beispielsweise die mehrstufige Authentifizierung (bedingter Zugriff) ausführen muss, könnte sich dann nicht anmelden. Auch einmaliges Anmelden wäre für Ihre Anwendung dann nicht möglich.
+- Schließlich können Sie, obwohl dies nicht empfohlen wird, in öffentlichen Clientanwendungen Benutzername und Kennwort verwenden. Dies wird noch bei einigen Szenarien (z. B. DevOps) benötigt. Die Verwendung ist allerdings mit Einschränkungen für Ihre Anwendung verbunden. Beispielsweise kann sich ein Benutzer, der die [mehrstufige Authentifizierung](../authentication/concept-mfa-howitworks.md) (bedingter Zugriff) durchführen muss, nicht darüber anmelden. Auch einmaliges Anmelden wäre für Ihre Anwendung dann nicht möglich.
 
   Diese Möglichkeit widerspricht außerdem den Prinzipien moderner Authentifizierung und steht nur aus Legacygründen zur Auswahl.
 

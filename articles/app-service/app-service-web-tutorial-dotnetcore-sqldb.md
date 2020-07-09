@@ -3,14 +3,14 @@ title: 'Tutorial: ASP.NET Core mit SQL-Datenbank'
 description: Informationen zum Ausführen einer .NET Core-App in Azure App Service mit einer Verbindung mit einer SQL-Datenbank
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/23/2020
+ms.date: 05/27/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: f8e76c90a670adb8fa5de5a33063d9de3bcc6cc3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c020e49b12784e628661bff61fe344df0ac6049a
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82207648"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905985"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service
 
@@ -90,7 +90,7 @@ Für SQL-Datenbank wird in diesem Tutorial [Dokumentation zu Azure SQL-Datenbank
 
 Erstellen Sie in Cloud Shell mit dem Befehl [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) einen logischen SQL-Datenbankserver.
 
-Ersetzen Sie den Platzhalter *\<server_name>* durch einen *eindeutigen* Namen für die SQL-Datenbank. Dieser Name wird als Teil des global eindeutigen SQL-Datenbank-Endpunkts `<server-name>.database.windows.net`verwendet. Gültige Zeichen sind `a`-`z`, `0`-`9` und `-`. Ersetzen Sie auch *\<db-username>* und *\<db-password>* durch einen Benutzernamen bzw. ein Kennwort Ihrer Wahl. 
+Ersetzen Sie den Platzhalter *\<server-name>* durch einen *eindeutigen* Namen für die SQL-Datenbank. Dieser Name wird als Teil des global eindeutigen SQL-Datenbank-Endpunkts `<server-name>.database.windows.net`verwendet. Gültige Zeichen sind `a`-`z`, `0`-`9` und `-`. Ersetzen Sie auch *\<db-username>db-username>* und *\<db-password>* durch einen Benutzernamen und ein Kennwort Ihrer Wahl. 
 
 
 ```azurecli-interactive
@@ -179,7 +179,7 @@ services.AddDbContext<MyDatabaseContext>(options =>
 
 Ihre App stellt derzeit eine Verbindung mit einer lokalen SQLite-Datenbank her. Sie haben eine Azure SQL-Datenbank konfiguriert. Erstellen Sie nun die erste Migration neu, um sie als Ziel festzulegen. 
 
-Führen Sie am Repositorystamm die folgenden Befehle aus. Ersetzen Sie *\<connection-string>* durch die Verbindungszeichenfolge, die Sie zuvor erstellt haben.
+Führen Sie am Repositorystamm die folgenden Befehle aus. Ersetzen Sie *\<connection-string>* durch die zuvor erstellte Verbindungszeichenfolge.
 
 ```
 # Delete old migrations
@@ -446,3 +446,8 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihrer App ei
 
 > [!div class="nextstepaction"]
 > [Tutorial: Zuordnen eines benutzerdefinierten DNS-Namens zu Ihrer App](app-service-web-tutorial-custom-domain.md)
+
+Weitere Ressourcen:
+
+> [!div class="nextstepaction"]
+> [Konfigurieren der ASP.NET Core-App](configure-language-dotnetcore.md)

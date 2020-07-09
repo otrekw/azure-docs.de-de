@@ -1,5 +1,6 @@
 ---
 title: Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
+titleSuffix: Microsoft identity platform
 description: Anleitung und Szenarien für Entwickler zum bedingten Zugriff mit Azure AD und Microsoft Identity Platform.
 services: active-directory
 keywords: ''
@@ -7,28 +8,28 @@ author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
-ms.date: 03/16/2020
+ms.date: 05/18/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: aae1b8aa27363e8f1d3c72d3934146c47b0cf2c9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535892"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771076"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
 Das Feature für bedingten Zugriff in Azure Active Directory (Azure AD) ist eine von mehreren Möglichkeiten, wie Sie Ihre App und einen Dienst schützen können. Der bedingte Zugriff ermöglicht Entwicklern und Unternehmenskunden den Schutz von Diensten auf unterschiedliche Weise, einschließlich:
 
-* Multi-Factor Authentication
+* [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 * Ermöglicht nur bei Intune registrierten Geräten den Zugriff auf bestimmte Dienste
 * Einschränken von Benutzerstandorten und IP-Adressbereichen
 
-Weitere Informationen über alle Funktionen des bedingten Zugriffs finden Sie unter [Bedingter Zugriff in Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
+Im Artikel [Was ist bedingter Zugriff?](../conditional-access/overview.md) finden Sie weitere Informationen zu allen Funktionen des bedingten Zugriffs.
 
 Für Entwickler, die Apps für Azure AD erstellen, wird in diesem Artikel veranschaulicht, wie der bedingte Zugriff eingesetzt werden kann. Außerdem werden die Auswirkungen des Zugriffs auf Ressourcen beschrieben, über die Sie keine Kontrolle haben und auf die ggf. Richtlinien für den bedingten Zugriff angewendet werden. Darüber hinaus geht es im Artikel um die Auswirkungen des bedingten Zugriffs auf den „Im Auftrag von“-Ablauf, auf Web-Apps, auf den Zugriff auf Microsoft Graph und auf das Aufrufen von APIs.
 
@@ -126,11 +127,11 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 In Web-API 1 fangen wir den Fehler `error=interaction_required` ab und senden die `claims`-Anforderung an die Desktop-App zurück. An diesem Punkt kann die Desktop-App einen neuen `acquireToken()`-Aufruf erstellen und die `claims`-Anforderung als zusätzlichen Parameter an die Abfragezeichenfolge anfügen. Diese neue Anforderung fordert den Benutzer zum Durchführen einer mehrstufigen Authentifizierung auf, sendet das neue Token an die Web-API 1 zurück und schließt den „Im-Auftrag-von“-Ablauf ab.
 
-Wenn Sie dieses Szenario testen möchten, sehen Sie sich unser [.NET-Codebeispiel](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access) an. Es zeigt, wie die Anspruchanforderung von der Web-API 1 zurück an die native App übergeben und in der Client-App eine neue Anforderung erstellt wird.
+Wenn Sie dieses Szenario testen möchten, sehen Sie sich unser [.NET-Codebeispiel](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph#handling-required-interactions-with-the-user-dynamic-consent-mfa-etc-) an. Es zeigt, wie die Anspruchanforderung von der Web-API 1 zurück an die native App übergeben und in der Client-App eine neue Anforderung erstellt wird.
 
 ## <a name="scenario-app-accessing-multiple-services"></a>Szenario: App, die auf mehrere Dienste zugreift
 
-In diesem Szenario wird der Fall behandelt, bei dem eine Web-App auf zwei Dienst zugreift, von denen für einen eine Richtlinie für den bedingten Zugriff gilt. Abhängig von Ihrer App-Logik gibt es möglicherweise einen Pfad, in dem Ihre App keinen Zugriff auf beide Webdienste benötigt. In diesem Szenario spielt die Reihenfolge, in der Sie ein Token anfordern, für den Endbenutzer eine wichtige Rolle.
+In diesem Szenario wird der Fall behandelt, bei dem eine Web-App auf zwei Dienst zugreift, von denen für einen eine Richtlinie für den bedingten Zugriff gilt. Abhängig von Ihrer App-Logik gibt es möglicherweise einen Pfad, in dem Ihre App keinen Zugriff auf beide Webdienste benötigt. In diesem Szenario spielt die Reihenfolge, in der Sie ein Token anfordern, eine wichtige Rolle für den Endbenutzer.
 
 Wir gehen von den beiden Webdiensten A und B aus, wobei für Webdienst B unsere Richtlinie für den bedingten Zugriff gilt. Während die anfängliche interaktive Authentifizierungsanforderung Zustimmung für beide Dienste erfordert, ist die Richtlinie für den bedingten Zugriff nicht in allen Fällen erforderlich. Wenn die App ein Token für den Webdienst B anfordert, wird die Richtlinie aufgerufen, und nachfolgende Anforderungen für den Webdienst A sind ebenfalls erfolgreich.
 
@@ -175,7 +176,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 Die App muss `error=interaction_required` abfangen. Die Anwendung kann dann `acquireTokenPopup()` oder `acquireTokenRedirect()` für dieselbe Ressource verwenden. Der Benutzer muss eine mehrstufige Authentifizierung durchführen. Nachdem der Benutzer die mehrstufige Authentifizierung abgeschlossen hat, wird der App ein neues Zugriffstoken für die angeforderte Ressource ausgestellt.
 
-Wenn Sie dieses Szenario testen möchten, sehen Sie sich unser [“Im-Auftrag-von“-Codebeispiel für eine JS-SPA](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access) an. Dieses Codebeispiel verwendet die Richtlinie für den bedingten Zugriff und die Web-API, die Sie zuvor mit einer JS-SPA registriert haben, um dieses Szenario zu veranschaulichen. Es zeigt die ordnungsgemäße Behandlung der Anspruchanforderung und das Abrufen eines Zugriffstokens, das für Ihre Web-API verwendet werden kann. Alternativ können Sie sich auch das allgemeine [Angular.js-Codebeispiel](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) ansehen, das Anweisungen für eine Angular-SPA enthält.
+Wenn Sie dieses Szenario testen möchten, sehen Sie sich unser [“Im-Auftrag-von“-Codebeispiel für eine JS-SPA](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/a2b257381b410c765ee01ecb611aa6f98c099eb1/2.%20Web%20API%20now%20calls%20Microsoft%20Graph/README.md) an. Dieses Codebeispiel verwendet die Richtlinie für den bedingten Zugriff und die Web-API, die Sie zuvor mit einer JS-SPA registriert haben, um dieses Szenario zu veranschaulichen. Es zeigt die ordnungsgemäße Behandlung der Anspruchanforderung und das Abrufen eines Zugriffstokens, das für Ihre Web-API verwendet werden kann. Alternativ können Sie sich auch das allgemeine [Angular.js-Codebeispiel](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) ansehen, das Anweisungen für eine Angular-SPA enthält.
 
 ## <a name="see-also"></a>Weitere Informationen
 

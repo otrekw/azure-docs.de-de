@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: 7886d5a1ad0745550767b7d6f19592ca3c84b00a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11166d5578b90fe6ec936389bcd173c4c26b4852
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235874"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171241"
 ---
 # <a name="get-started-with-storage-explorer"></a>Erste Schritte mit dem Storage-Explorer
 
@@ -33,7 +33,7 @@ Storage-Explorer wird von folgenden Windows-Versionen unterstützt:
 * Windows 8
 * Windows 7
 
-Für alle Windows-Versionen ist für Storage-Explorer .NET Framework 4.6.2 oder höher erforderlich.
+Für alle Windows-Versionen ist für Storage-Explorer .NET Framework 4.7.2 oder höher erforderlich.
 
 # <a name="macos"></a>[macOS](#tab/macos)
 

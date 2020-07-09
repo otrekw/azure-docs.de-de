@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 5cde80bf3205557884dfe8f2b8f5e79031bbca69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: b7994754d3ca9c43fe7935b2b52c42f2f113b1d3
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612060"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873036"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Lesen von Eingabe in beliebigen Formaten mithilfe benutzerdefinierter .NET-Deserialisierer
 
@@ -112,7 +112,7 @@ message MessageBodyProto {
 }
 ```
 
-Durch Ausführen von `protoc.exe` über **Google.Protobuf.Tools** wird in NuGet eine CS-Datei mit der Definition generiert. Die generierte Datei wird hier nicht gezeigt.
+Durch Ausführen von `protoc.exe` über **Google.Protobuf.Tools** wird in NuGet eine CS-Datei mit der Definition generiert. Die generierte Datei wird hier nicht gezeigt. Sie müssen sicherstellen, dass die im Stream Analytics-Projekt verwendete Version von Protobuf NuGet mit der Protobuf-Version übereinstimmt, die zum Generieren der Eingabe verwendet wurde. 
 
 Der folgende Codeausschnitt gilt für die Implementierung des Deserialisierers. Dabei wird vorausgesetzt, dass die generierte Datei im Projekt enthalten ist. Diese Implementierung ist nur ein einfacher Wrapper für die generierte Datei.
 

@@ -1,25 +1,15 @@
 ---
 title: Azure Service Bus-Verwaltungsbibliotheken| Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie mit den Azure Service Bus-Verwaltungsbibliotheken dynamisch Service Bus-Namespaces und -Entitäten bereitgestellt werden.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756265"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341723"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus-Verwaltungsbibliotheken
 
@@ -40,7 +30,7 @@ Zur Verwendung der Service Bus-Verwaltungsbibliotheken müssen Sie sich zunächs
 * [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-In diesen Tutorials erhalten Sie Werte für `AppId` (Client-ID), `TenantId` und `ClientSecret` (Authentifizierungsschlüssel). Diese werden von den Verwaltungsbibliotheken für die Authentifizierung verwendet. Für die Ressourcengruppe, für welche die Ausführung erfolgen soll, müssen Sie über Berechtigungen vom Typ **Besitzer** verfügen.
+In diesen Tutorials erhalten Sie Werte für `AppId` (Client-ID), `TenantId` und `ClientSecret` (Authentifizierungsschlüssel). Diese werden von den Verwaltungsbibliotheken für die Authentifizierung verwendet. Sie müssen mindestens über die Berechtigungen [**Datenbesitzer in Azure Service Bus**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) oder [**Mitwirkender**](/azure/role-based-access-control/built-in-roles#contributor) für die Ressourcengruppe sein, für die die Ausführung erfolgen soll.
 
 ## <a name="programming-pattern"></a>Muster für die Programmierung
 

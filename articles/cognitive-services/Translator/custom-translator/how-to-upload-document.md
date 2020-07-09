@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aaebf849cc69db7c85d1472f4d71774bc599be11
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73647383"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994302"
 ---
 # <a name="upload-a-document"></a>Hochladen eines Dokuments
 
@@ -24,7 +24,7 @@ Bevor Sie Ihre Dokumente hochladen, lesen Sie den [Leitfaden für Dokumentformat
 
 ## <a name="how-to-upload-document"></a>Hochladen eines Dokuments
 
-Klicken Sie im Portal [Custom Translator](https://portal.customtranslator.azure.ai) auf die Registerkarte „Dokumente“, um zur Dokumentenseite zu gelangen.
+Klicken Sie im Portal [Benutzerdefinierter Translator](https://portal.customtranslator.azure.ai) auf die Registerkarte „Dokumente“, um zur Dokumentenseite zu gelangen.
 
 ![Link zum Hochladen von Dokumenten](media/how-to/how-to-upload-1.png)
 
@@ -40,8 +40,8 @@ Klicken Sie im Portal [Custom Translator](https://portal.customtranslator.azure.
     -  Training: Diese Dokumente werden für den Trainingssatz verwendet.
     -  Optimierung: Diese Dokumente werden für den Optimierungssatz verwendet.
     -  Test: Diese Dokumente werden für den Testsatz verwendet.
-    -  Phrase Dictionary (Ausdruckswörterbuch): Diese Dokumente werden für das Ausdruckswörterbuch verwendet.
-    -  Sentence Dictionary (Satzwörterbuch): Diese Dokumente werden für das Satzwörterbuch verwendet.
+    -  Ausdruckswörterbuch: Diese Dokumente werden für das Ausdruckswörterbuch verwendet.
+    -  Satzwörterbuch: Diese Dokumente werden für das Satzwörterbuch verwendet.
 
     b.  Language pair (Sprachpaar)
 
@@ -55,7 +55,7 @@ Klicken Sie im Portal [Custom Translator](https://portal.customtranslator.azure.
         -  Dokumentname: Nur beim Hochladen paralleler Dateien relevant.
 
     - Kombinationsdaten:
-        -  Combo File (Kombinationsdatei): Wählen Sie die Kombinationsdatei auf Ihrem lokalen Computer aus. Die Kombinationsdatei enthält sowohl die Sätze in der Ausgangssprache als auch die Sätze in der Zielsprache. Für Kombinationsdateien wird eine [Namenskonvention](document-formats-naming-convention.md) benötigt.
+        -  Kombinationsdatei: Wählen Sie die Kombinationsdatei auf Ihrem lokalen Computer aus. Die Kombinationsdatei enthält sowohl die Sätze in der Ausgangssprache als auch die Sätze in der Zielsprache. Für Kombinationsdateien wird eine [Namenskonvention](document-formats-naming-convention.md) benötigt.
 
     e.  Klicken Sie auf „Hochladen“.
 

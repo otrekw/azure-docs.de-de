@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 9b8c44f99953d4518f0bc3f558f396250657c632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abf5d0d4aeeb18a11f50220e982448d41a9ac1b4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79138942"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773201"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Anmelden an Ihren Konten per Microsoft Authenticator-App
 
@@ -35,7 +35,7 @@ Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfol
 
 Sie müssen Folgendes durchführen, bevor Sie die Microsoft Authenticator-App verwenden können:
 
- 1. Laden Sie die Microsoft Authenticator-App herunter, und installieren Sie sie. Falls Sie dies noch nicht getan haben, helfen Ihnen diese Informationen unter [Erste Schritte mit der Microsoft Authenticator-App](user-help-auth-app-download-install.md) weiter.
+ 1. Laden Sie die Microsoft Authenticator-App herunter, und installieren Sie sie. Falls Sie dies noch nicht getan haben, helfen Ihnen die Informationen unter [Erste Schritte mit der Microsoft Authenticator-App](user-help-auth-app-download-install.md) weiter.
 
  2. Fügen Sie Ihre Geschäfts-, Schul- oder Unikonten, persönlichen Konten und Drittanbieterkonten der Microsoft Authenticator-App hinzu. Eine ausführliche Beschreibung der Schritte finden Sie unter [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](user-help-auth-app-add-work-school-account.md), [Hinzufügen Ihrer persönlichen Microsoft-Konten](user-help-auth-app-add-personal-ms-account.md) und [Hinzufügen Ihrer persönlichen Nicht-Microsoft-Konten](user-help-auth-app-add-non-ms-account.md).
 
@@ -43,7 +43,7 @@ Sie müssen Folgendes durchführen, bevor Sie die Microsoft Authenticator-App ve
 
 Die Anmeldung per Telefon ist eine Art der zweistufigen Überprüfung. Sie müssen Ihre Identität trotzdem bestätigen, indem Sie eine Ihnen bekannte Information und einen in Ihrem Besitz befindlichen Gegenstand angeben. Bei der Anmeldung per Telefon können Sie aber das Eingeben Ihres Kennworts überspringen und die gesamte Identitätsüberprüfung auf Ihrem mobilen Gerät durchführen.
 
-Bevor Sie die Anmeldung per Telefon aktivieren können, müssen Sie die zweistufige Überprüfung aktivieren. Weitere Informationen zur Aktivierung der zweistufigen Überprüfung für ein Konto finden Sie unter [Hinzufügen Ihrer Geschäfts-, Schul- oder Unikonten](user-help-auth-app-add-work-school-account.md)und[Hinzufügen Ihrer persönlichen Microsoft-Konten](user-help-auth-app-add-personal-ms-account.md).
+Bevor Sie die Anmeldung per Telefon aktivieren können, müssen Sie die zweistufige Überprüfung aktivieren. Weitere Informationen zur Aktivierung der zweistufigen Überprüfung für ein Konto finden Sie unter [Add your work or school account](user-help-auth-app-add-work-school-account.md) (Hinzufügen Ihrer Geschäfts-, Schul- oder Unikonten) und [Add your personal Microsoft accounts](user-help-auth-app-add-personal-ms-account.md) (Hinzufügen Ihrer persönlichen Microsoft-Konten).
 
 Die Anmeldung per Telefon ist auf iOS- und Android-Geräten mit Android 6.0 oder höher verfügbar.
 
@@ -53,7 +53,7 @@ Die Anmeldung per Telefon ist auf iOS- und Android-Geräten mit Android 6.0 oder
 
 Auf einem Android-Gerät:
 
-- **Bei Anzeige des Symbols:![Symbol zum Abschluss der Einrichtung](media/user-help-auth-app-sign-in/icon.png).** Wenn dieses Symbol neben dem Namen Ihres Geschäfts-, Schul- oder Unikontos angezeigt wird, bedeutet dies, dass Sie die telefonische Anmeldung für das Konto bereits durchgeführt haben. Unter Umständen werden Sie aufgefordert, Pushbenachrichtigungen für Ihr Konto hinzuzufügen, damit Sie außerhalb der App über Authentifizierungsanforderungen unterrichtet werden können.
+- **Bei Anzeige des folgenden Symbols: ![Symbol zum Abschluss der Einrichtung](media/user-help-auth-app-sign-in/icon.png).** Wenn dieses Symbol neben dem Namen Ihres Geschäfts-, Schul- oder Unikontos angezeigt wird, bedeutet dies, dass Sie die telefonische Anmeldung für das Konto bereits durchgeführt haben. Unter Umständen werden Sie aufgefordert, Pushbenachrichtigungen für Ihr Konto hinzuzufügen, damit Sie außerhalb der App über Authentifizierungsanforderungen unterrichtet werden können.
 - **Wenn Sie bereits die App für die zweistufige Überprüfung verwenden.** Wenn Sie die App und die zweistufige Überprüfung bereits genutzt haben, können Sie den Pfeil neben dem Kontonamen und dann die Option **Anmeldung per Telefon aktivieren** auswählen.
 - **Wenn Sie Ihr Geschäfts-, Schul- oder Unikonto nicht finden können:** Falls Sie Ihr Geschäfts-, Schul- oder Unikonto in der App unter **Konten** nicht finden können, bedeutet dies, dass Sie es der App noch nicht hinzugefügt haben. Fügen Sie Ihr Geschäfts-, Schul- oder Unikonto hinzu, indem Sie die Schritte im Artikel [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](user-help-auth-app-add-work-school-account.md) ausführen.
 
@@ -62,6 +62,9 @@ Auf einem iOS-Gerät:
 - **Wenn Sie auf die Kontokachel tippen**, wird das Konto in einer Vollbildansicht des Kontos geöffnet. Wenn **Anmeldung per Telefon aktiviert** angezeigt wird, bedeutet dies, dass alles so eingerichtet wurde, dass Sie sich ohne Kennwort anmelden können. Wenn **Anmeldung per Telefon aktivieren** angezeigt wird, tippen Sie darauf, um die Anmeldung per Telefon zu aktivieren.
 - **Wenn Sie die App bereits für die zweistufige Überprüfung verwendet haben**, können Sie auf die Kontokachel tippen, die dann in eine Vollbildansicht des Kontos erweitert wird. Tippen Sie dann auf **Anmeldung per Telefon aktivieren**, um die Anmeldung per Telefon zu aktivieren.
 - **Falls Sie Ihr Geschäfts-, Schul- oder Unikonto** in der App unter **Konten** nicht finden können, bedeutet dies, dass Sie es der App noch nicht hinzugefügt haben. Fügen Sie Ihr Geschäfts-, Schul- oder Unikonto hinzu, indem Sie die Schritte im Artikel zum Hinzufügen Ihrer Geschäfts-, Schul- oder Unikonten ausführen.
+
+> [!NOTE]
+> Eine Kombination aus Geräteregistrierung und zertifikatbasierter Authentifizierung wird in Authenticator unter iOS nicht unterstützt. Der Benutzer muss eine Problemumgehung verwenden, indem er das Gerät manuell über die Authenticatoreinstellungen registriert, bevor er sich anmeldet.
 
 Nachdem Sie die Anmeldung per Telefon aktiviert haben, können Sie sich anmelden, indem Sie nur die Microsoft Authenticator-App nutzen.
 
@@ -92,7 +95,7 @@ Sie können die Anmeldung per Telefon für Ihr persönliches Microsoft-Konto akt
 
 Auf einem Android-Gerät:
 
-- **Bei Anzeige des Symbols:![Symbol zum Abschluss der Einrichtung](media/user-help-auth-app-sign-in/icon.png).** Wenn dieses Symbol neben dem Namen Ihres persönlichen Microsoft-Kontos angezeigt wird, bedeutet dies, dass Sie die telefonische Anmeldung für das Konto bereits durchgeführt haben. Unter Umständen werden Sie aufgefordert, Pushbenachrichtigungen für Ihr Konto hinzuzufügen, damit Sie außerhalb der App über Authentifizierungsanforderungen unterrichtet werden können.
+- **Bei Anzeige des folgenden Symbols: ![Symbol zum Abschluss der Einrichtung](media/user-help-auth-app-sign-in/icon.png).** Wenn dieses Symbol neben dem Namen Ihres persönlichen Microsoft-Kontos angezeigt wird, bedeutet dies, dass Sie die telefonische Anmeldung für das Konto bereits durchgeführt haben. Unter Umständen werden Sie aufgefordert, Pushbenachrichtigungen für Ihr Konto hinzuzufügen, damit Sie außerhalb der App über Authentifizierungsanforderungen unterrichtet werden können.
 - **Bei Nutzung der App für die zweistufige Überprüfung:** Wenn Sie die App und die zweistufige Überprüfung bereits genutzt haben, können Sie den Pfeil neben dem Kontonamen und dann die Option **Anmeldung per Telefon aktivieren** auswählen.
 - **Wenn Sie Ihr Geschäfts-, Schul- oder Unikonto nicht finden können:** Falls Sie Ihr Konto in der App unter **Konten** nicht finden können, bedeutet dies, dass Sie es der App noch nicht hinzugefügt haben. Fügen Sie Ihr Konto hinzu, indem Sie die Schritte im Artikel [Hinzufügen Ihres persönlichen Microsoft-Kontos](user-help-auth-app-add-personal-ms-account.md) ausführen.
 

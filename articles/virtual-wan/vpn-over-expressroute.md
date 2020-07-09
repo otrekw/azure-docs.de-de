@@ -4,15 +4,15 @@ description: In diesem Tutorial wird beschrieben, wie Sie Azure Virtual WAN verw
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: b1e6305d142530ab19849f61f12a122d0c6434aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3a2c85540a4efa2f934605c4c056b458e2879ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80059299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84749597"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-Verschlüsselung: IPsec über ExpressRoute für Virtual WAN
 

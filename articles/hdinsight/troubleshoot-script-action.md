@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: e2a2f6abfd6b7c644e95649f3c9832e4cc986037
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8585779a263f4ff5dbdd998bbf065c6a4e1acdf
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188445"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079258"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Behandeln von Problemen mit Skriptaktionen in Azure HDInsight
 
@@ -55,7 +55,9 @@ Für den Fall, dass die Clustererstellung aufgrund eines Fehlers in einem Skript
 
 * Alle Ausgaben vom Typ **stdout** und **stderr** des entsprechenden Hosts werden in das Speicherkonto hochgeladen. Für die einzelnen Skriptaktionen sind jeweils die Dateien **output-\*.txt** und **errors-\*.txt** vorhanden. Die Datei **output-*.txt** enthält Informationen zum URI des Skripts, das auf dem Host ausgeführt wurde. Der folgende Text ist ein Beispiel für diese Informationen:
 
-        'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
+    ```output
+    'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
+    ```
 
 * Es kann sein, dass Sie wiederholt eine Skriptaktion mit demselben Namen erstellen. In diesem Fall können Sie die relevanten Protokolle anhand des **Datums** im Ordnernamen unterscheiden. Die Ordnerstruktur für einen an verschiedenen Tagen erstellten Cluster namens **mycluster** ähnelt beispielsweise den folgenden Protokolleinträgen:
 

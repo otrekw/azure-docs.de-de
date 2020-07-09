@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f35c2ebc4cd6e31fe59ad715d4f317e650bca52e
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382852"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995954"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Schnellstart: Überprüfen der Rechtschreibung mit der Bing-Rechtschreibprüfungs-REST-API und Node.js
 
-Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-REST-API zum ersten Mal aufzurufen. Diese einfache Node-Anwendung sendet eine Anforderung an die API und gibt eine Liste mit nicht erkannten Wörtern sowie entsprechende Korrekturvorschläge zurück. Diese Anwendung ist zwar in Node.js geschrieben, aber bei der API handelt es sich um einen RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Der Quellcode für diese Anwendung ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js) verfügbar.
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-REST-API zum ersten Mal aufzurufen. Diese einfache JavaScript-Anwendung sendet eine Anforderung an die API und gibt eine Liste mit Korrekturvorschlägen zurück. 
+
+Die Anwendung ist zwar in JavaScript geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Der Quellcode für diese Anwendung ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js) verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,7 +32,7 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
 
 ## <a name="create-and-initialize-a-project"></a>Erstellen und Initialisieren eines Projekts
 
-1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor eine neue JavaScript-Datei. Legen Sie die Genauigkeit fest, und erzwingen Sie `https`. Erstellen Sie anschließend Variablen für den Host, Pfad und Abonnementschlüssel Ihres API-Endpunkts. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
+1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor eine neue JavaScript-Datei. Legen Sie die Genauigkeit fest, und erzwingen Sie `https`. Erstellen Sie anschließend Variablen für den Host, Pfad und Abonnementschlüssel Ihres API-Endpunkts. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```javascript
     'use strict';
@@ -41,7 +43,11 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
     let key = '<ENTER-KEY-HERE>';
     ```
 
-2. Erstellen Sie Variablen für Ihre Suchparameter und den Text, den Sie überprüfen möchten. Fügen Sie Ihren Marktcode nach `mkt=` an. Der Marktcode ist das Land, aus dem Sie die Anforderung stellen. Fügen Sie außerdem Ihren Modus für die Rechtschreibprüfung nach `&mode=` an. Der Modus ist entweder `proof` (fängt die meisten Rechtschreib-/Grammatikfehler ab) oder `spell` (fängt die meisten Rechtschreib-, aber nicht so viele Grammatikfehler ab).
+2. Erstellen Sie Variablen für Ihre Suchparameter und den Text, den Sie überprüfen möchten: 
+
+   1. Weisen Sie dem `mkt`-Parameter mit dem `=`-Operator Ihren Marktcode zu. Der Marktcode ist der Code Lands bzw. der Region, aus dem/der Sie die Anforderung stellen. 
+
+   1. Fügen Sie den Parameter `mode` mit dem Operator `&` hinzu, und weisen Sie dann den Rechtschreibprüfungsmodus zu. Der Modus kann entweder `proof` (fängt die meisten Rechtschreib-/Grammatikfehler ab) oder `spell` (fängt die meisten Rechtschreibfehler, aber nicht so viele Grammatikfehler ab) sein.
 
     ```javascript
     let mkt = "en-US";
@@ -52,7 +58,7 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
 
 ## <a name="create-the-request-parameters"></a>Erstellen der Anforderungsparameter
 
-Erstellen Sie Ihre Anforderungsparameter, indem Sie ein neues Objekt mit einer Methode vom Typ `POST` erstellen. Fügen Sie Ihren Pfad hinzu, indem Sie Ihren Endpunktpfad und eine Abfragezeichenfolge anfügen. Fügen Sie dem `Ocp-Apim-Subscription-Key`-Header Ihren Abonnementschlüssel hinzu.
+Erstellen Sie Ihre Anforderungsparameter, indem Sie ein neues Objekt mit einer Methode vom Typ `POST` erstellen. Fügen Sie Ihren Pfad hinzu, indem Sie Ihren Endpunktpfad und eine Abfragezeichenfolge anfügen. Fügen Sie dem `Ocp-Apim-Subscription-Key`-Header anschließend Ihren Abonnementschlüssel hinzu.
 
 ```javascript
 let request_params = {
@@ -69,7 +75,7 @@ let request_params = {
 
 ## <a name="create-a-response-handler"></a>Erstellen eines Antworthandlers
 
-Erstellen Sie eine Funktion mit dem Namen `response_handler`, um die JSON-Antwort von der API zu akzeptieren und auszugeben. Erstellen Sie eine Variable für den Antworttext. Fügen Sie die Antwort unter Verwendung von `response.on()` an, wenn ein `data`-Flag empfangen wird. Wenn ein Flag vom Typ `end` empfangen wird, geben Sie den JSON-Text in der Konsole aus.
+Erstellen Sie eine Funktion mit dem Namen `response_handler`, um die JSON-Antwort von der API zu akzeptieren und auszugeben. Erstellen Sie eine Variable für den Antworttext. Fügen Sie die Antwort unter Verwendung von `response.on()` an, wenn ein `data`-Flag empfangen wird. Nachdem ein Flag vom Typ `end` empfangen wird, geben Sie den JSON-Text in der Konsole aus.
 
 ```javascript
 let response_handler = function (response) {
@@ -100,13 +106,13 @@ req.end ();
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Erstellen Sie Ihr Projekt, und führen Sie es aus.
+1. Erstellen Sie Ihr Projekt, und führen Sie es aus.
 
-Geben Sie bei Verwenden der Befehlszeile die folgenden Befehle an, um die Anwendung zu erstellen und auszuführen.
+1. Geben Sie bei Verwenden der Befehlszeile den folgenden Befehl an, um die Anwendung zu erstellen und auszuführen:
 
-```bash
-node <FILE_NAME>.js
-```
+   ```bash
+   node <FILE_NAME>.js
+   ```
 
 
 ## <a name="example-json-response"></a>JSON-Beispielantwort
@@ -154,7 +160,7 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen einer Web-App mit einer einzelnen Seite](../tutorials/spellcheck.md)
+> [Erstellen einer Single-Page-Web-App](../tutorials/spellcheck.md)
 
 - [Worum handelt es sich bei der Bing-Rechtschreibprüfungs-API?](../overview.md)
 - [Referenz zur Bing-Rechtschreibprüfungs-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

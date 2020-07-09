@@ -1,6 +1,6 @@
 ---
 title: Bewährte Methoden für den Azure Maps-Routendienst | Microsoft Azure Maps
-description: Erfahren Sie, wie Sie mit dem Routendienst von Microsoft Azure Maps Wegstrecken effizient planen.
+description: Erfahren Sie, wie Sie mit dem Routendienst von Microsoft Azure Maps Fahrzeuge effizient leiten.
 author: philmea
 ms.author: philmea
 ms.date: 03/11/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85ce29d088b8fbd110988db67776d89346215e5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335421"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266694"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Bewährte Methoden für den Azure Maps-Routendienst
 

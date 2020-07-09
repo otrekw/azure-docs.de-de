@@ -5,12 +5,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 6be8cb1b7e74301d16a1174f5ca2b774334dac3f
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 91fc2c4525ee622064520b0098087d54158bbe9e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422112"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680693"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Über Diagnoseeinstellungen exportierbare Azure Monitor-Plattformmetriken
 
@@ -24,7 +24,10 @@ Aufgrund von Feinheiten im Azure Monitor-Back-End können nicht alle Metriken mi
 
 ## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Änderung am Verhalten für NULL-Werte und 0-Werte 
  
-Bei den Plattformmetriken, die über Diagnoseeinstellungen exportiert werden können, gibt es einige Metriken, bei denen in Azure Monitor der Wert „0“ als NULL-Wert interpretiert wird. Dies führte zu einer gewissen Verwirrung zwischen den tatsächlichen „0“-Werten (von der Ressource ausgegeben) und den interpretierten „0“-Werten (NULL-Werte). Bald wird es eine Änderung geben, und es werden bei über Diagnoseeinstellungen exportierten Plattformmetriken keine „0“-Werte mehr exportiert, es sei denn, sie wurden tatsächlich von der zugrunde liegenden Ressource ausgegeben. Die Änderung war für den 1. April  2020 geplant, hat sich aber aufgrund von Prioritätsverschiebungen aufgrund von COVID-19 verzögert. 
+Bei den Plattformmetriken, die über Diagnoseeinstellungen exportiert werden können, gibt es einige Metriken, bei denen in Azure Monitor der Wert „0“ als NULL-Wert interpretiert wird. Dies führte zu einer gewissen Verwirrung zwischen den tatsächlichen „0“-Werten (von der Ressource ausgegeben) und den interpretierten „0“-Werten (NULL-Werte). Bald wird es eine Änderung geben, und es werden bei über Diagnoseeinstellungen exportierten Plattformmetriken keine „0“-Werte mehr exportiert, es sei denn, sie wurden tatsächlich von der zugrunde liegenden Ressource ausgegeben. 
+
+> [!CAUTION]
+> Die oben beschriebene Änderung des Verhaltens ist für den 1. Juni 2020 geplant.
 
 Hinweis:
 

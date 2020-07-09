@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 39f1137638f9cd4926b712bdd18e681d90adcdc4
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: d594f3cf556fe311e0b7400a23fd61d0336fe5f1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668550"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651122"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Häufig gestellte Fragen zur Azure Storage-Migration
 
@@ -284,13 +284,13 @@ Für den Zugriff auf redundanten Speicher ist georedundanter Speicher mit Lesezu
 
 **Wie greife ich bei einem replizierten Speicherkonto (z. B. zonenredundanter Speicher, georedundanter Speicher oder georedundanter Speicher mit Lesezugriff) auf Daten zu, die in der sekundären Region gespeichert sind?**
 
--   Wenn Sie zonenredundanten Speicher oder georedundanten Speicher verwenden, können Sie auf Daten in der sekundären Region nur zugreifen, indem Sie ein Failover zu dieser Region einleiten. Weitere Informationen zum Failoverprozess finden Sie unter [Notfallwiederherstellung und Failover von Speicherkonten (Vorschau) in Azure Storage](storage-disaster-recovery-guidance.md).
+-   Wenn Sie zonenredundanten Speicher oder georedundanten Speicher verwenden, können Sie auf Daten in der sekundären Region nur zugreifen, indem Sie ein Failover zu dieser Region einleiten. Weitere Informationen zum Failovervorgang finden Sie unter [Notfallwiederherstellung und Failover von Speicherkonten](storage-disaster-recovery-guidance.md).
 
 -   Bei Verwendung von georedundantem Speicher mit Lesezugriff können Sie jederzeit auf Daten in der sekundären Region zugreifen. Verwenden Sie eine der folgenden Methoden:  
 
     - **AzCopy:** Fügen Sie in der URL an den Speicherkontonamen **-secondary** an, um auf den sekundären Endpunkt zuzugreifen. Beispiel:  
 
-      https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
+      `https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd`
 
     - **SAS-Token:** Greifen Sie von einem Endpunkt mithilfe eines SAS-Tokens auf Daten zu. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](storage-sas-overview.md).
 

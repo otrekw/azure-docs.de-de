@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: f3448765eecf4a586e13155903f1c093607781dc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: da7d56a0fd8571e796567331a7543074f0bf1eda
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76896445"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808691"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Tutorial: Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Computer über das Azure-Portal
 
@@ -40,7 +40,7 @@ Mithilfe einer Netzwerksicherheitsgruppe (NSG) können Sie eingehenden Datenverk
 > * Herunterladen protokollierter Daten
 > * Anzeigen protokollierter Daten
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
@@ -48,14 +48,14 @@ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](h
 2. Wählen Sie **Compute** und anschließend **Windows Server 2016 Datacenter** oder eine Version von **Ubuntu Server**.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**:
 
-    |Einstellung|value|
+    |Einstellung|Wert|
     |---|---|
     |Name|myVm|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Subscription| Wählen Sie Ihr Abonnement aus.|
     |Resource group| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
-    |Location| Wählen Sie **USA, Osten** aus.|
+    |Standort| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Übernehmen Sie unter **Einstellungen** alle Standardwerte, und klicken Sie auf **OK**.
@@ -91,10 +91,10 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
 2. Wählen Sie die Option **Speicher** und anschließend **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die verbleibenden Standardeinstellungen, und wählen Sie dann **Erstellen** aus.
 
-    | Einstellung        | value                                                        |
+    | Einstellung        | Wert                                                        |
     | ---            | ---   |
     | Name           | Länge von 3 bis 24 Zeichen, darf nur Kleinbuchstaben und Ziffern enthalten und muss für alle Azure Storage-Konten eindeutig sein.                                                               |
-    | Location       | Wählen Sie **USA, Osten** aus.                                           |
+    | Standort       | Wählen Sie **USA, Osten** aus.                                           |
     | Resource group | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
 
     Das Erstellen des Speicherkontos kann etwa eine Minute dauern. Fahren Sie erst dann mit den weiteren Schritten fort, wenn das Speicherkonto erstellt wurde. Das Speicherkonto muss sich immer in derselben Region wie die NSG befinden.
@@ -123,7 +123,7 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
    ![Herunterladen von Flowprotokollen](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Wählen Sie das in Schritt 2 unter [Aktivieren des NSG-Flussprotokolls](#enable-nsg-flow-log) konfigurierte Speicherkonto aus.
-4. Wählen Sie unter **Blob-Dienst** **Blobs** aus, und wählen Sie dann den Container **insights-logs-networksecuritygroupflowevent** aus.
+4. Wählen Sie unter **Blob-Dienst** die Option **Container** und dann den Container **insights-logs-networksecuritygroupflowevent** aus.
 5. Navigieren Sie in dem Container in der Ordnerhierarchie, bis Sie zu einer Datei „PT1H.json“ gelangen, wie in der folgenden Abbildung dargestellt. Protokolldateien werden in einer Ordnerhierarchie gespeichert, die der folgenden Namenskonvention folgt: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
    ![Flowprotokoll](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
@@ -214,8 +214,8 @@ Bei dem Wert für **mac** in der vorherigen Ausgabe handelt es sich um die MAC-A
 | 443         | Zielport       | Der Zielport, für den der Datenfluss bestimmt war. Da der Datenverkehr für Port 443 bestimmt war, wurde der Flow anhand der Regel namens **UserRule_default-allow-rdp** in der Protokolldatei verarbeitet.                                                |
 | T            | Protocol               | Gibt an, ob das Protokoll des Datenflusses TCP (T) oder UDP (U) war.                                  |
 | O            | Direction              | Gibt an, ob es sich um eingehenden (I) oder ausgehenden (O) Datenverkehr handelte.                                     |
-| Ein            | Action                 | Gibt an, ob es sich um zulässigen (A) oder verweigerten (D) Datenverkehr handelte.  
-| C            | Flowstatus (**nur Version 2**) | Erfasst den Flowstatus. Mögliche Statusangaben: **B** (Beginn/Anfang): Erstellung eines Flows. Statistiken werden nicht bereitgestellt. **C** (Continue/Fortsetzung): Ein laufender Flow wird weiter fortgesetzt. Statistiken werden in Intervallen von 5 Minuten bereitgestellt. **E** (End/Beendung): Beendung eines Flows, Statistiken werden bereitgestellt. |
+| Ein            | Aktion                 | Gibt an, ob es sich um zulässigen (A) oder verweigerten (D) Datenverkehr handelte.  
+| C            | Flowstatus (**nur Version 2**) | Erfasst den Flowstatus. Mögliche Statusangaben: **B**: („Begin“/Anfang): Erstellung eines Flows. Statistiken werden nicht bereitgestellt. **C**: („Continue“/Fortsetzung): Ein laufender Flow wird weiter fortgesetzt. Statistiken werden in Intervallen von 5 Minuten bereitgestellt. **E**: („End“/Beendigung): Beendigung eines Flows. Statistiken werden bereitgestellt. |
 | 30 | Gesendete Pakete – Quelle zu Ziel (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden. |
 | 16978 | Gesendete Bytes – Quelle zu Ziel (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketbytes, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden. Paketbytes enthalten den Paketheader und die Nutzlast. |
 | 24 | Gesendete Pakete – Ziel zu Quelle (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden. |

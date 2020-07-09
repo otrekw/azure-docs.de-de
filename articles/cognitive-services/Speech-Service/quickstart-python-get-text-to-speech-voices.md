@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: b388c8d8b61e2fc638ae2bce5bc6d9eeb25ee0d4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: tracking-python
+ms.openlocfilehash: ec1b03bf0b3cf95f65013bddbc54e15ab985198e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81401015"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607996"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>Abrufen der Liste der Stimmen für Text-to-Speech mit Python
 

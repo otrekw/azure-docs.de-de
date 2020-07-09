@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 04/25/2020
-ms.openlocfilehash: e4afa3c122fa6e21b29b6ad52a386096b20aa055
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184421"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565837"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Tutorial: Abfragen eines Cognitive Search-Index über Power Apps
 
@@ -74,7 +74,7 @@ Ein Connector in Power Apps ist eine Datenquellenverbindung. In diesem Schritt 
 
    * Wählen Sie das Verb `GET` aus.
 
-   * Geben Sie unter „URL“ eine Beispielabfrage für Ihren Suchindex ein (`search=*` gibt alle Dokumente zurück, `$select=` ermöglicht die Auswahl von Feldern). Die API-Version muss angegeben werden. Eine vollständige URL sieht beispielsweise wie folgt aus: `https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2019-05-06`
+   * Geben Sie unter „URL“ eine Beispielabfrage für Ihren Suchindex ein (`search=*` gibt alle Dokumente zurück, `$select=` ermöglicht die Auswahl von Feldern). Die API-Version muss angegeben werden. Eine vollständige URL sieht beispielsweise wie folgt aus: `https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30`
 
    * Geben Sie unter „Header“ `Content-Type` ein. 
 
@@ -82,7 +82,7 @@ Ein Connector in Power Apps ist eine Datenquellenverbindung. In diesem Schritt 
 
        :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Aus Beispiel importieren" border="true":::
 
-1. Klicken Sie auf **Importieren**, um die Anforderung automatisch auszufüllen. Klicken Sie auf das Symbol **...** neben den einzelnen Parametern, um das Festlegen der Parametermetadaten abzuschließen. Klicken Sie nach jeder Parameteraktualisierung auf **Zurück**, um zur Seite „Anforderung“ zurückzukehren.
+1. Klicken Sie auf **Importieren**, um die Anforderung automatisch auszufüllen. Klicken Sie neben den einzelnen Parametern auf das Symbol **...** , um die Parametermetadaten abschließend festzulegen. Klicken Sie nach jeder Parameteraktualisierung auf **Zurück**, um zur Seite „Anforderung“ zurückzukehren.
 
    :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Dialogfeld „Aus Beispiel importieren“" border="true":::
 
@@ -94,7 +94,7 @@ Ein Connector in Power Apps ist eine Datenquellenverbindung. In diesem Schritt 
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Metadaten des Versionsparameters" border="true":::
 
-1. Für *api-version*: Legen Sie `2019-05-06` als **Standardwert** fest, wählen Sie unter **Erforderlich** die Option *Ja* aus und unter **Sichtbarkeit** die Option *Intern*.  
+1. Für *api-version*: Legen Sie `2020-06-30` als **Standardwert** fest, wählen Sie unter **Erforderlich** die Option *Ja* aus und unter **Sichtbarkeit** die Option *Intern*.  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Metadaten des Versionsparameters" border="true":::
 
@@ -106,7 +106,7 @@ Ein Connector in Power Apps ist eine Datenquellenverbindung. In diesem Schritt 
     parameters:
       - {name: search, in: query, required: false, type: string, default: '*'}
       - {name: $select, in: query, required: false, type: string, default: 'HotelName,Description,Address/City'}
-      - {name: api-version, in: query, required: true, type: string, default: '2019-05-06',
+      - {name: api-version, in: query, required: true, type: string, default: '2020-06-30',
         x-ms-visibility: internal}
       - {name: Content-Type, in: header, required: false, type: string}
     ```

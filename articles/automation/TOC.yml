@@ -41,6 +41,10 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: /powershell/scripting/dsc/overview/overview
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Datensicherheit
       items:
         - name: Verschlüsselung sicherer Ressourcen
@@ -59,8 +63,12 @@
           href: automation-config-aws-account.md
         - name: Konfigurieren der Authentifizierung mit Azure AD
           href: automation-use-azure-ad.md
+        - name: Verwalten des von Automation verwendeten DNS-Eintrags
+          href: how-to/automation-region-dns-records.md
         - name: Verwalten eines ausführenden Automation-Kontos
           href: manage-runas-account.md
+        - name: Herstellen einer privaten Verbindung mit einem Automation-Konto
+          href: how-to/private-link-security.md
         - name: Verwalten von Berechtigungen und Sicherheit für Rollen
           href: automation-role-based-access-control.md
         - name: Verschieben eines Automation-Kontos in ein anderes Abonnement
@@ -282,7 +290,7 @@
         - name: Integrieren mit Event Grid und Microsoft Teams
           href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md
         - name: Automatisieren des Starts/der Beendigung von Azure-SSIS IR
-          href: '../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir'
+          href: ../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir
 - name: Verweis
   items:
     - name: Azure PowerShell Az

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/20/2020
 ms.author: curtand
-ms.openlocfilehash: 6d6d32a7a340ef4b07138d5ec12c561e958cf739
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 795c68fc063d98bdee6ccf59dba6ee718dc92d03
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739497"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323024"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Microsoft Authenticator für Android in der öffentlichen Cloud in China
 
@@ -44,7 +44,7 @@ Wenn ein Benutzer zu einem früheren Zeitpunkt die Anmeldung per Telefon oder di
 
 ## <a name="multi-factor-authentication-workaround"></a>Problemumgehung für die mehrstufige Authentifizierung
 
-Anstelle der Verwendung von Pushbenachrichtigungen für die mehrstufige Authentifizierung können Benutzer ihre MFA für den Empfang von Prüfcodes auf Ihrem Gerät einrichten, mit denen sie ihre Identität bestätigen können. Diese Prüfcodes sind 30 Sekunden lang gültig. Damit sie verwendet werden können, müssen Administratoren ihrem Mandanten die Überprüfung mittels TOTP-Prüfcodes (Time-based One-Time Password, zeitbasiertes Einmalkennwort) ermöglichen.
+Anstelle von Pushbenachrichtigungen für die mehrstufige Authentifizierung können Benutzer [ihre Authenticator-App für den Empfang von Prüfcodes](multi-factor-authentication-setup-auth-app.md#set-up-the-microsoft-authenticator-app-to-use-verification-codes) auf ihrem Gerät einrichten, mit denen sie zur MFA ihre Identität bestätigen können. Diese Prüfcodes sind 30 Sekunden lang gültig. Damit sie verwendet werden können, müssen Administratoren ihrem Mandanten die Überprüfung mittels TOTP-Prüfcodes (Time-based One-Time Password, zeitbasiertes Einmalkennwort) ermöglichen.
 
 ## <a name="availability"></a>Verfügbarkeit
 

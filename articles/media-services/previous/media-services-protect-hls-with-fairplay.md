@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 873bc4ab5e435b91ff4400a39c92db0d0bb9baa8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ad06d0e37b7cf464c311e28e546e1b7f1ebd183
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74968764"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058247"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Schützen von HLS-Inhalten mit Apple FairPlay oder Microsoft PlayReady
 
@@ -127,7 +127,7 @@ Die folgenden allgemeinen Schritte dienen zum Schützen Ihrer Medienobjekte mit 
 ## <a name="use-fairplay-key-delivery-by-player-apps"></a>Verwenden der FairPlay-Schlüsselübermittlung nach Player-Apps
 Sie können Player-Apps mit dem iOS-SDK entwickeln. Damit FairPlay-Inhalte wiedergegeben werden können, müssen Sie das Lizenzaustauschprotokoll implementieren. Dieses Protokoll wird nicht von Apple angegeben. Es ist jeder App freigestellt, wie sie Anforderungen zur Schlüsselübermittlung sendet. Der Media Services-FairPlay-Schlüsselübermittlungsdienst erwartet das SPC als POST-Nachricht mit Verschlüsselung vom Typ „www-form-url“ im folgenden Format:
 
-    spc=<Base64 encoded SPC>
+`spc=<Base64 encoded SPC>`
 
 > [!NOTE]
 > Azure Media Player unterstützt die FairPlay-Wiedergabe. Weitere Informationen finden Sie in der [Azure Media Player-Dokumentation](https://amp.azure.net/libs/amp/latest/docs/index.html).

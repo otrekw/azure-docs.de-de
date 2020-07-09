@@ -5,14 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 11aa4a80deba4df14c239e69910ea38bac1b9c55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42245a8e1c8ce726b925fccade3c62637abb4f12
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063514"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118663"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe der Azure CLI
 Firewallregeln auf Serverebene können verwendet werden, um den Zugriff auf eine Azure Database for MySQL-Serverinstanz über eine bestimmte IP-Adresse oder über einen IP-Adressbereich zu verwalten. Dank praktischer Azure CLI-Befehle können Sie zum Verwalten Ihres Servers Firewallregeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über Firewalls für Azure-Datenbank for MySQL finden Sie unter [Firewallregeln für Azure-Datenbank für MySQL-Server](./concepts-firewall-rules.md).
@@ -29,9 +29,9 @@ Der Befehl **az mysql server firewall-rule** wird in der Azure CLI zum Erstellen
 Befehle:
 - **create**: Dient zum Erstellen einer Firewallregel für den Azure MySQL-Server.
 - **delete**: Dient zum Löschen einer Firewallregel für den Azure MySQL-Server.
-- **list**: Dient zum Auflisten der Serverfirewallregeln für Azure MySQL-Server.
+- **list**: Dient zum Auflisten der Firewallregeln für den Azure MySQL-Server.
 - **show**: Dient zum Anzeigen der Details einer Firewallregel für den Azure MySQL-Server.
-- **update**: Dient zum Aktualisieren der Firewallregel für den Azure MySQL-Server.
+- **update**: Dient zum Aktualisieren einer Firewallregel für den Azure MySQL-Server.
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Anmelden bei Azure und Auflisten Ihrer Azure Database for MySQL-Serverinstanzen
 Stellen Sie mit dem Befehl **az login** eine sichere Verbindung zwischen der Azure CLI und Ihrem Azure-Konto her.

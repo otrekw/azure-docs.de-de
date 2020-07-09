@@ -6,16 +6,16 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3dc111fe62cbae857f3369165ba29cf40e90342
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8483fd2a1b33330b868fb21d71922377e906e6c8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426390"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958420"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Bewährte Methoden für SQL-Pools in Azure Synapse Analytics
 
@@ -59,7 +59,7 @@ PolyBase-Ladevorgänge können per CTAS oder INSERT INTO ausgeführt werden. CTA
 
 Wenn Sie bei der Verwendung von Gzip-Textdateien den Durchsatz maximieren möchten, teilen Sie sie in 60 oder mehr Dateien auf, um die Parallelität Ihres Ladevorgangs zu maximieren. Erwägen Sie das gleichzeitige Laden von Daten, um einen besseren Gesamtdurchsatz zu erzielen. Zusätzliche Informationen zu den für diesen Abschnitt relevanten Themen sind in den folgenden Artikeln enthalten:
 
-- [Laden von Daten](data-loading-overview.md)
+- [Laden von Daten](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Anleitung für die Verwendung von PolyBase](data-loading-best-practices.md)
 - [Lademuster und -strategien für den Azure SQL-Pool](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
 - [Laden von Daten mit Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
@@ -193,7 +193,7 @@ SQL-Pools verfügen über mehrere DMVs, mit denen die Abfrageausführung überwa
 
 Informationen zu allgemeinen Problemen und entsprechende Lösungen finden Sie im Artikel [Problembehandlung](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-Wenn Sie Informationen benötigen, die in diesem Artikel nicht enthalten sind, verwenden Sie die „Nach Dokumenten suchen“ auf der linken Seite dieser Seite, um alle SQL-Pooldokumente zu durchsuchen.  Das [SQL-Poolforum](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) ist ein Ort, an dem Sie anderen Benutzern und der Produktgruppe „SQL-Pool“ Fragen stellen können.  
+Wenn Sie Informationen benötigen, die in diesem Artikel nicht enthalten sind, können Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) Fragen an andere Benutzer und die Produktgruppe „SQL-Pool“ stellen.  
 
 Wir überwachen dieses Forum aktiv, um sicherzustellen, dass Ihre Frage entweder von einem anderen Benutzer oder einem Mitarbeiter beantwortet wird.  Falls Sie Ihre Fragen lieber über Stack Overflow stellen möchten, können Sie dazu auch das [Stack Overflow-Forum für Azure SQL-Pool](https://stackoverflow.com/questions/tagged/azure-sqldw) nutzen.
 

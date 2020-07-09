@@ -3,12 +3,12 @@ title: Verwalten von Zertifikaten in einem Azure Service Fabric-Cluster
 description: Es wird beschrieben, wie Sie neue Zertifikate hinzufügen, ein Rollover für Zertifikate durchführen und ein Zertifikat für einen Service Fabric-Cluster entfernen.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: a3c92e1b39261af32085e4d9b6cb2462d5c0eb64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458356"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658391"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Hinzufügen oder Entfernen von Zertifikaten für einen Service Fabric-Cluster in Azure
 Es wird empfohlen, dass Sie sich damit vertraut machen, wie Service Fabric X.509-Zertifikate verwendet werden, und dass Sie sich mit den [Szenarien für die Clustersicherheit](service-fabric-cluster-security.md) auskennen. Sie müssen verstehen, was ein Clusterzertifikat ist, und wofür es verwendet wird, bevor Sie den Vorgang fortsetzen.
@@ -35,9 +35,7 @@ Um ein nicht verwendetes Clustersicherheitszertifikat zu entfernen, navigieren S
 
 Wenn Sie beabsichtigen, das als primär markierte Zertifikat zu entfernen, müssen Sie ein sekundäres Zertifikat mit einem Ablaufdatum weiter in der Zukunft als das primäre Zertifikat bereitstellen, um das automatische Rolloververhalten zu aktivieren. Löschen Sie das primäre Zertifikat, nachdem der automatische Rollover abgeschlossen wurde.
 
-## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Hinzufügen eines sekundären Zertifikats per Resource Manager PowerShell
-> [!TIP]
-> Jetzt gibt es eine bessere und einfachere Methode zum Hinzufügen eines sekundären Zertifikats mit dem Cmdlet [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate). Sie müssen die restlichen Schritte in diesem Abschnitt nicht ausführen.  Außerdem benötigen Sie bei Verwendung des Cmdlets [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) nicht die ursprünglich für die Erstellung und Bereitstellung des Clusters verwendete Vorlage.
+## <a name="add-a-secondary-certificate-using-azure-resource-manager"></a>Hinzufügen eines sekundären Zertifikats mit Azure Resource Manager
 
 Diese Schritte setzen voraus, dass Sie mit der Funktionsweise von Resource Manager vertraut sind und mindestens einen Service Fabric-Cluster mithilfe einer Resource Manager-Vorlage bereitgestellt haben. Außerdem müssen Sie die Vorlage, die Sie zum Einrichten des Clusters verwendet haben, zur Hand haben. Außerdem wird vorausgesetzt, dass Sie mit der Anwendung von JSON vertraut sind.
 
@@ -106,7 +104,7 @@ Damit Sie alles besser verfolgen können, enthält die Beispieldatei „5-VM-1-N
          }
     ``` 
 
-4. Nehmen Sie Änderungen an **allen** **Microsoft.Compute/virtualMachineScaleSets**-Ressourcendefinitionen vor. Suchen Sie nach der Ressourcendefinition „Microsoft.Compute/virtualMachineScaleSets“. Scrollen Sie unter „virtualMachineProfile“ zu „publisher“: „Microsoft.Azure.ServiceFabric“.
+4. Nehmen Sie Änderungen an **allen** **Microsoft.Compute/virtualMachineScaleSets**-Ressourcendefinitionen vor. Suchen Sie nach der Ressourcendefinition „Microsoft.Compute/virtualMachineScaleSets“. Scrollen Sie zu „publisher“: „Microsoft.Azure.ServiceFabric“ unter „virtualMachineProfile“.
 
     In den Service Fabric-Herausgebereinstellungen sollte in etwa Folgendes angezeigt werden.
     

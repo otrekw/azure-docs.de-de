@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e96fc9af0aa4f362256a5f0fee9465441a1c3928
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210608"
 ---
 # <a name="data-warehouse-units-dwus"></a>Data Warehouse-Einheiten (DWUs)
 
@@ -72,7 +72,7 @@ Jede Leistungsstufe verwendet eine etwas andere Maßeinheit für ihre Data Wareh
 
 Sowohl DWUs als auch cDWUs unterstützen das zentrale Herunterskalieren und Hochskalieren sowie Computepausen, wenn Sie das Data Warehouse nicht nutzen müssen. Diese Vorgänge werden alle bei Bedarf ausgeführt. Gen2 verwendet einen lokalen datenträgerbasierten Cache auf den Computeknoten, um die Leistung zu verbessern. Wenn Sie das System skalieren oder anhalten, wird der Cache für ungültig erklärt. Daher ist eine „Aufwärmphase“ des Caches erforderlich, bevor eine optimale Leistung erzielt wird.  
 
-Jeder SQL-Server (z.B. myserver.database.windows.net) weist ein Kontingent für [DTUs (Database Transaction Unit, Datenübertragungseinheiten)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) auf, das eine bestimmte Anzahl von Data Warehouse-Einheiten zulässt. Weitere Informationen finden Sie in den [Kapazitätsgrenzen für die Workloadverwaltung](sql-data-warehouse-service-capacity-limits.md#workload-management).
+Jeder SQL-Server (z.B. myserver.database.windows.net) weist ein Kontingent für [DTUs (Database Transaction Unit, Datenübertragungseinheiten)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) auf, das eine bestimmte Anzahl von Data Warehouse-Einheiten zulässt. Weitere Informationen finden Sie in den [Kapazitätsgrenzen für die Workloadverwaltung](sql-data-warehouse-service-capacity-limits.md#workload-management).
 
 ## <a name="capacity-limits"></a>Kapazitätsgrenzen
 
@@ -107,7 +107,7 @@ Integrierte Rollen für Azure-Ressourcen wie „Mitwirkender von SQL DB“ und �
 So zeigen Sie die aktuellen DWU-Einstellungen an:
 
 1. Öffnen Sie den Objekt-Explorer von SQL Server in Visual Studio.
-2. Stellen Sie eine Verbindung mit der Masterdatenbank mit dem logischen SQL-Datenbank-Server her.
+2. Stellen Sie eine Verbindung mit der Masterdatenbank her, die dem logischen SQL-Server zugeordnet ist.
 3. Treffen Sie eine Auswahl aus der dynamischen Verwaltungssicht „sys.database_service_objectives“. Beispiel:
 
 ```sql
@@ -149,7 +149,7 @@ Mit T-SQL können Sie die aktuellen DWU-Einstellungen anzeigen, die Einstellunge
 
 So ändern Sie die DWUs
 
-1. Stellen Sie eine Verbindung mit der Masterdatenbank her, die Ihrem logischen SQL-Datenbank-Server zugeordnet ist.
+1. Stellen Sie eine Verbindung mit der Masterdatenbank her, die Ihrem Server zugeordnet ist.
 2. Verwenden Sie die T-SQL-Anweisung [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Im folgenden Beispiel wird das Servicelevelziel für die Datenbank „MySQLDW“ auf „DW1000c“ gesetzt.
 
 ```Sql
@@ -185,7 +185,7 @@ Der Zustand der Datenbank für horizontale Hochskalierungsvorgänge kann nicht m
 
 So überprüfen Sie den Zustand von DWU-Änderungen:
 
-1. Stellen Sie eine Verbindung mit der Masterdatenbank her, die Ihrem logischen SQL-Datenbank-Server zugeordnet ist.
+1. Stellen Sie eine Verbindung mit der Masterdatenbank her, die Ihrem Server zugeordnet ist.
 2. Übermitteln Sie die folgende Abfrage, um den Datenbankzustand zu überprüfen.
 
 ```sql

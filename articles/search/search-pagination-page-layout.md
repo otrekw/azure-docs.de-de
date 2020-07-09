@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801772"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561582"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche
 
@@ -28,7 +28,7 @@ Ein Suchdokument kann zwar aus einer Vielzahl von Feldern bestehen. In der Regel
 Besonders gut eignen sich Felder, die Dokumente vergleichen und zwischen Dokumenten unterscheiden und so genügend Informationen liefern, um den Benutzer zu einer Antwort durch Klicken einzuladen. Auf einer E-Commerce-Website kann dies ein Produktname, eine Beschreibung, eine Marke, eine Farbe, eine Größe, ein Preis oder eine Bewertung sein. Bei dem integrierten Beispiel „hotels-sample-index“ können dies die Felder im folgenden Beispiel sein:
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",
       "select": "HotelId, HotelName, Description, Rating, Address/City"
@@ -103,11 +103,11 @@ Die Formatierung wird auf Abfragen kompletter Begriffe angewendet. Der Formatier
 Im folgenden Beispiel sind die Begriffe „sandy“, „sand“, „beaches“ und „beach“ im Beschreibungsfeld zur Markierung mit Tags versehen. Bei Abfragen, die eine Abfrageerweiterung in der Engine auslösen, wie z. B. Fuzzy- und Platzhaltersuche, wird die Treffermarkierung nur begrenzt unterstützt.
 
 ```http
-GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2020-06-30 
 ```
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",  
       "highlight": "Description"
@@ -126,8 +126,6 @@ Für das neue Verhalten gilt:
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
   Beachten Sie, dass für *bowl of chips* keine Markierung erfolgt, weil keine Entsprechung mit dem vollständigen Ausdruck vorliegt.
-  
-* Außerdem kann die Fragmentgröße angegeben werden, die für die Markierung zurückgegeben wird. Die Fragmentgröße wird als Anzahl von Zeichen (maximal 1.000 Zeichen) angegeben.
 
 Berücksichtigen Sie diese Änderung, wenn Sie Clientcode mit einer Treffermarkierungsimplementierung schreiben. Beachten Sie, dass dies nur dann für Sie relevant ist, wenn Sie einen vollständig neuen Suchdienst erstellen.
 

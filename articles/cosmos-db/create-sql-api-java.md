@@ -1,20 +1,20 @@
 ---
 title: 'Schnellstart: Verwenden von Java zum Erstellen einer Dokumentdatenbank mithilfe von Azure Cosmos DB'
 description: Diese Schnellstartanleitung enthält ein Java-Codebeispiel, mit dem Sie eine Verbindung mit der SQL-API von Azure Cosmos DB herstellen und diese API abfragen können.
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 10/31/2019
-ms.author: sngun
+ms.date: 05/11/2020
+ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1d818957daa53efc856a345a4886e814fdaab6f3
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: bb711dc67df51edc569f23bd1e6c54eef55012d2
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858138"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115386"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Schnellstart: Erstellen einer Java-App zum Verwalten von Azure Cosmos DB-SQL-API-Daten
 
@@ -22,12 +22,16 @@ ms.locfileid: "82858138"
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK V4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB-SQL-API-Konto im Azure-Portal mithilfe einer über GitHub geklonten Java-App. Sie erstellen zunächst über das Azure-Portal ein Azure Cosmos DB-SQL-API-Konto und anschließend mithilfe des SQL Java SDK eine Java-App. Dann fügen Sie mithilfe der Java-Anwendung dem Cosmos DB-Konto Ressourcen hinzu. Azure Cosmos DB ist ein Multimodell-Datenbankdienst, mit dem Sie mithilfe der Funktionen für globale Verteilung und horizontale Skalierung schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen können.
+In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB-SQL-API-Konto im Azure-Portal mithilfe einer über GitHub geklonten Java-App. Sie erstellen zunächst über das Azure-Portal ein Azure Cosmos DB-SQL-API-Konto und anschließend mithilfe des SQL Java SDK eine Java-App. Dann fügen Sie mithilfe der Java-Anwendung dem Cosmos DB-Konto Ressourcen hinzu. Azure Cosmos DB ist ein Multimodell-Datenbankdienst, mit dem Sie mithilfe der Funktionen für globale Verteilung und horizontale Skalierung schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen können.
+
+> [!IMPORTANT]  
+> Diese Schnellstartanleitung gilt nur für Azure Cosmos DB Java SDK V4. Weitere Informationen finden Sie in den [Versionshinweisen](sql-api-sdk-java-v4.md) zu Azure Cosmos DB Java SDK V4, im [Maven-Repository](https://mvnrepository.com/artifact/com.azure/azure-cosmos), in den [Tipps zur Leistungssteigerung](performance-tips-java-sdk-v4-sql.md) für Azure Cosmos DB Java SDK V4 und im [Leitfaden zur Problembehandlung](troubleshoot-java-sdk-v4-sql.md) für Azure Cosmos DB Java SDK V4. Wenn Sie aktuell eine ältere Version als V4 verwenden, lesen Sie den Leitfaden [Migrieren zu Azure Cosmos DB Java SDK V4](migrate-java-v4-sdk.md), um Hilfe beim Aktualisieren auf V4 zu erhalten.
+>
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,7 +44,7 @@ In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB-
 
 *Die Struktur eines Cosmos DB-Kontos.* Ein Cosmos DB-*Konto* enthält unabhängig von der API oder der Programmiersprache null oder mehr *Datenbanken*, eine *Datenbank* (DB) enthält null oder mehr *Container*, und ein *Container* enthält null oder mehr Elemente, wie im folgenden Diagramm zu sehen:
 
-![Entitäten in einem Azure Cosmos-Konto](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Entitäten in einem Azure Cosmos-Konto" border="false":::
 
 Weitere Informationen zu Datenbanken, Containern und Elementen finden Sie [hier](databases-containers-items.md). Einige wichtige Eigenschaften werden auf der Containerebene definiert. Hierzu zählen unter anderem der *bereitgestellte Durchsatz* und der *Partitionsschlüssel*. 
 

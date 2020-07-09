@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: a2083de1ddf400b368815877725d3b8dd446156b
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 3733989ad6eed113e37c87eb7da6748cec10e34d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82844507"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485765"
 ---
 Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Computer (Virtual Machines, VMs) empfiehlt sich in der Regel eine Form der Automatisierung. Es gibt zahlreiche Tools und Lösungen, mit denen Sie die gesamte Azure-Infrastrukturbereitstellung und den gesamten Verwaltungslebenszyklus automatisieren können. In diesem Artikel werden einige der Infrastrukturautomatisierungstools vorgestellt, die Sie in Azure verwenden können. Diese Tools lassen sich in der Regel einem der folgenden Konzepte zuordnen:
 
@@ -100,7 +100,7 @@ In diesem Artikel werden folgende Themen erläutert:
 
 In diesem Artikel werden folgende Themen erläutert:
 
-- [Installieren und Konfigurieren von Terraform mit Azure](/azure/developer/terraform/install-configure)
+- [Installieren und Konfigurieren von Terraform mit Azure](/azure/developer/terraform/getting-started-cloud-shell)
 - [Erstellen einer Azure-Infrastruktur mit Terraform](/azure/developer/terraform/create-linux-virtual-machine-with-infrastructure)
 
 

@@ -3,12 +3,12 @@ title: Problembehandlung bei Application Insights in einem Java-Webprojekt
 description: Handbuch zur Problembehandlung – Überwachen von Live-Java-Apps mit Application Insights
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 04e98938bc5dd17816ae873f122073212275a414
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77657179"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484796"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für Java
 Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights in Java][java]? Hier sind einige Tipps.
@@ -33,7 +33,6 @@ Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights i
 * Stellen Sie sicher, dass Sie dieselbe Version von Application Insights-Kern, Web-, Agent- und Protokollierungsappender verwenden, um Versionskonflikte zu vermeiden.
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>Zuvor wurden Daten angezeigt, jetzt jedoch nicht mehr.
-* Überprüfen Sie den [Statusblog](https://blogs.msdn.com/b/applicationinsights-status/).
 * Ist Ihr monatliches Kontingent an Datenpunkten erreicht? Öffnen Sie "Einstellungen – Kontingente und Preisübersicht", um es herauszufinden. Sie können in diesem Fall Ihren Plan aktualisieren oder zusätzliche Kapazität erwerben. Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/application-insights/).
 * Haben Sie Ihr SDK vor Kurzem aktualisiert? Stellen Sie sicher, dass nur eindeutige SDK-JARs im Projektverzeichnis vorhanden sind. Es dürfen keine zwei unterschiedlichen SDK-Versionen vorhanden sein.
 * Sehen Sie die richtige AI-Ressource? Stimmen Sie den iKey Ihrer Anwendung mit der Ressource ab, wo Sie Telemetriedaten erwarten. Sie sollten identisch sein.

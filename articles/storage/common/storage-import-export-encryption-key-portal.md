@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ddcb47bfe8ba2b77efd8ff0aed52f1412107f0c5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: d0a1826dafd1e6ce6202dc4f29417a1ce100e54f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456497"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195256"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für den Import/Export-Dienst
 
@@ -90,9 +90,8 @@ Das Konfigurieren eines kundenseitig verwalteten Schlüssels für den Import/Exp
 
 Auf dem Blatt **Verschlüsselung** werden der Schlüsseltresor und der Schlüssel angezeigt, der als kundenseitig verwalteter Schlüssel ausgewählt wurde.
 
-## <a name="disable-keys"></a>Deaktivieren von Schlüsseln
-
-Sie können in jeder Phase des Import-/Exportauftrags lediglich von Microsoft verwaltete Schlüssel deaktivieren und zu kundenseitig verwalteten Schlüsseln wechseln. Den kundenseitig verwalteten Schlüssel können Sie nach der Erstellung jedoch nicht deaktivieren.
+> [!IMPORTANT]
+> Sie können in jeder Phase des Import-/Exportauftrags lediglich von Microsoft verwaltete Schlüssel deaktivieren und zu kundenseitig verwalteten Schlüsseln wechseln. Den kundenseitig verwalteten Schlüssel können Sie nach der Erstellung jedoch nicht deaktivieren.
 
 ## <a name="troubleshoot-customer-managed-key-errors"></a>Beheben von Fehlern beim kundenseitig verwalteten Schlüssel
 
@@ -100,10 +99,10 @@ Wenn Ihnen Fehler im Zusammenhang mit dem kundenseitig verwalteten Schlüssel an
 
 | Fehlercode     |Details     | Wiederherstellbar?    |
 |----------------|------------|-----------------|
-| CmkErrorAccessRevoked | Es wurde ein kundenseitig verwalteter Schlüssel angewendet, aber der Schlüsselzugriff wurde widerrufen. Weitere Informationen finden Sie unter [Aktivieren des Schlüsselzugriffs](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).                                                      | Ja. Überprüfen Sie Folgendes: <ol><li>Der Schlüsseltresor verfügt weiterhin über die MSI in der Zugriffsrichtlinie.</li><li>Die Zugriffsrichtlinie bietet Berechtigungen zum Abrufen, Packen und Entpacken.</li><li>Wenn sich der Schlüsseltresor in einem VNET hinter der Firewall befindet, überprüfen Sie, ob **Vertrauenswürdige Microsoft-Dienste zulassen** aktiviert ist.</li></ol>                                                                                            |
-| CmkErrorDisabled      | Es wurde ein kundenseitig verwalteter Schlüssel angewendet, aber der Schlüssel ist deaktiviert. Weitere Informationen finden Sie unter [Aktivieren des Schlüssels](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate).                                                                             | Ja, durch Aktivieren der Schlüsselversion     |
-| CmkErrorNotFound      | Es wurde ein kundenseitig verwalteter Schlüssel angewendet, aber der Schlüssel wurde nicht gefunden. <br>Wenn der Schlüssel nach Ablauf der Aufbewahrungsdauer gelöscht und bereinigt wird, können Sie den Schlüssel nicht wiederherstellen. Wenn Sie den Schlüssel gesichert haben, können Sie den Schlüssel wiederherstellen, um dieses Problem zu lösen. | Nein. Der Schlüssel wurde gelöscht und nach Ablauf der Aufbewahrungsdauer außerdem bereinigt. <br>Ja, aber nur wenn der Kunde den Schlüssel gesichert hat und ihn wiederherstellt.  |
-| CmkErrorVaultNotFound | Es wurde ein kundenseitig verwalteter Schlüssel angewendet, aber der dem Schlüssel zugeordnete Schlüsseltresor wurde nicht gefunden.<br>Wenn Sie den Schlüsseltresor gelöscht haben, können Sie den kundenseitig verwalteten Schlüssel nicht wiederherstellen.  Wenn Sie den Schlüsseltresor zu einem anderen Mandanten migriert haben, finden Sie weitere Informationen unter [Ändern der Mandanten-ID des Schlüsseltresors nach einer Abonnementverschiebung](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix). |   Nein, wenn der Kunde den Schlüsseltresor gelöscht hat.<br> Ja, wenn der Schlüsseltresor eine Mandantenmigration durchlaufen hat. Führen Sie in diesem Fall einen der folgenden Schritte aus: <ol><li>Verschieben Sie den Schlüsseltresor zurück zum alten Mandanten.</li><li>Legen Sie „Identity = None“ und dann wieder „Identity = SystemAssigned“ fest. Dadurch wird die Identität gelöscht und neu erstellt.</li></ol>|
+| CmkErrorAccessRevoked | Der Zugriff auf den kundenseitig verwalteten Schlüssel wird aufgehoben.                                                       | Ja. Überprüfen Sie Folgendes: <ol><li>Der Schlüsseltresor verfügt weiterhin über die MSI in der Zugriffsrichtlinie.</li><li>In der Zugriffsrichtlinie sind die Berechtigungen „Get“, „Wrap“ und „Unwrap“ aktiviert.</li><li>Wenn sich der Schlüsseltresor in einem VNET hinter der Firewall befindet, überprüfen Sie, ob **Vertrauenswürdige Microsoft-Dienste zulassen** aktiviert ist.</li><li>Überprüfen Sie, ob die MSI der Auftragsressource mithilfe von APIs auf `None` zurückgesetzt wurde.<br>Wenn dies der Fall ist, legen Sie den Wert erneut auf `Identity = SystemAssigned` fest. Dadurch wird die Identität für die Auftragsressource neu erstellt.<br>Nachdem die neue Identität erstellt wurde, gewähren Sie der neuen Identität in der Zugriffsrichtlinie des Schlüsseltresors die Berechtigungen `Get`, `Wrap` und `Unwrap`.</li></ol>                                                                                            |
+| CmkErrorKeyDisabled      | Der kundenseitig verwaltete Schlüssel ist deaktiviert.                                         | Ja, durch Aktivieren der Schlüsselversion     |
+| CmkErrorKeyNotFound      | Der kundenseitig verwaltete Schlüssel wurde nicht gefunden. | Ja, wenn der Schlüssel noch innerhalb der Bereinigungsdauer gelöscht wurde, mithilfe von [Entfernen des Schlüssels des Schlüsseltresors rückgängig machen](https://docs.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval).<br>Ansonsten: <ol><li>Ja, wenn der Kunde den Schlüssel gesichert hat und ihn wiederherstellt.</li><li>Andernfalls nein.</li></ol>
+| CmkErrorVaultNotFound |Der Schlüsseltresor des kundenseitig verwalteten Schlüssels wurde nicht gefunden. |   Wenn der Schlüsseltresor gelöscht wurde:<ol><li>Ja, wenn Sie sich noch innerhalb des Zeitraums für den Schutz vor dem endgültigen Löschen befinden, können Sie die Schritte unter [Wiederherstellen eines Schlüsseltresors](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault) ausführen.</li><li>Nein, wenn der Zeitraum für den Schutz vor dem endgültigen Löschen abgelaufen ist.</li></ol><br>Andernfalls ja: Wenn der Schlüsseltresor zu einem anderen Mandanten migriert wurde, kann er mit einem der folgenden Schritte wiederhergestellt werden:<ol><li>Stellen Sie den Schlüsseltresor im alten Mandanten wieder her.</li><li>Legen Sie `Identity = None` fest, und setzen Sie dann den Wert auf `Identity = SystemAssigned` zurück. Dadurch wird die Identität gelöscht und neu erstellt, sobald die neue Identität erstellt wurde. Gewähren Sie der neuen Identität in der Zugriffsrichtlinie des Schlüsseltresors die Berechtigungen `Get`, `Wrap` und `Unwrap`.</li></ol>|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

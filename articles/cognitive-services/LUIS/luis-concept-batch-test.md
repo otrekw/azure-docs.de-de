@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: e9ad7c52af20762633c710b39a64fbebf0cf6213
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5ebd9b05b2dea9e04d4c9745c13d692ea88fcb8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218824"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680422"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testen von Batches mit 1.000 Äußerungen im LUIS-Portal
 
@@ -24,7 +24,7 @@ Mit Batchtests wird Ihre aktive trainierte Version überprüft, um ihre Vorhersa
 
 ## <a name="group-data-for-batch-test"></a>Gruppieren von Daten für Batchtests
 
-Es ist wichtig, dass die für Batchtests verwendeten Äußerungen für LUIS neu sind. Wenn Sie über ein Dataset mit Äußerungen verfügen, teilen Sie die Äußerungen in die folgenden drei Gruppen auf: Beispieläußerungen, die einer Absicht hinzugefügt wurden, Äußerungen, die vom veröffentlichten Endpunkt empfangen wurden und Äußerungen, die für Batchtests von LUIS nach dem Training verwendet werden. 
+Es ist wichtig, dass die für Batchtests verwendeten Äußerungen für LUIS neu sind. Wenn Sie über ein Dataset mit Äußerungen verfügen, teilen Sie die Äußerungen in die folgenden drei Gruppen auf: Beispieläußerungen, die einer Absicht hinzugefügt wurden, Äußerungen, die vom veröffentlichten Endpunkt empfangen wurden und Äußerungen, die für Batchtests von LUIS nach dem Training verwendet werden.
 
 ## <a name="a-data-set-of-utterances"></a>Ein Dataset mit Äußerungen
 
@@ -35,7 +35,7 @@ Senden Sie eine Batchdatei mit Äußerungen, die als *Dataset* bezeichnet wird, 
 |\* Keine doppelten Äußerungen|
 |1000 Äußerungen oder weniger|
 
-\* Als doppelte Äußerungen gelten exakt übereinstimmende Zeichenfolgen, nicht Übereinstimmungen, die zuerst in Token übersetzt wurden. 
+\* Als doppelte Äußerungen gelten exakt übereinstimmende Zeichenfolgen, nicht Übereinstimmungen, die zuerst in Token übersetzt wurden.
 
 ## <a name="entities-allowed-in-batch-tests"></a>In Batchtests zulässige Entitäten
 
@@ -46,7 +46,7 @@ Alle benutzerdefinierten Entitäten im Modell werden auch dann im Batchtest-Enti
 
 ## <a name="batch-file-format"></a>Batchdateiformat
 
-Die Batchdatei besteht aus Äußerungen. Jeder Äußerung muss eine erwartete Absichtsvorhersage in Verbindung mit allen [maschinell gelernten Entitäten](luis-concept-entity-types.md#types-of-entities), deren Erkennung Sie erwarten, zugeordnet sein. 
+Die Batchdatei besteht aus Äußerungen. Jeder Äußerung muss eine erwartete Absichtsvorhersage in Verbindung mit allen [Machine-Learning-Entitäten](luis-concept-entity-types.md#types-of-entities) zugeordnet sein, deren Erkennung Sie erwarten.
 
 ## <a name="batch-syntax-template-for-intents-with-entities"></a>Batchsyntaxvorlage für Absichten mit Entitäten
 
@@ -57,7 +57,7 @@ Verwenden Sie die folgende Vorlage, um die Batchdatei zu starten:
   {
     "text": "example utterance goes here",
     "intent": "intent name goes here",
-    "entities": 
+    "entities":
     [
         {
             "entity": "entity name 1 goes here",
@@ -74,7 +74,7 @@ Verwenden Sie die folgende Vorlage, um die Batchdatei zu starten:
 ]
 ```
 
-Die Batchdatei erkennt anhand der Eigenschaften **startPos** und **endPos** Anfang und Ende einer Entität. Die Werte sind nullbasiert und dürfen nicht mit einem Leerzeichen beginnen oder enden. Dies ist ein Unterschied zu den Abfrageprotokollen, die die Eigenschaften „startIndex“ und „endIndex“ verwenden. 
+Die Batchdatei erkennt anhand der Eigenschaften **startPos** und **endPos** Anfang und Ende einer Entität. Die Werte sind nullbasiert und dürfen nicht mit einem Leerzeichen beginnen oder enden. Dies ist ein Unterschied zu den Abfrageprotokollen, die die Eigenschaften „startIndex“ und „endIndex“ verwenden.
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
@@ -97,7 +97,7 @@ Wenn Sie keine Entitäten testen möchten, schließen Sie die Eigenschaft `entit
 
 ## <a name="common-errors-importing-a-batch"></a>Häufige Fehler beim Importieren eines Batches
 
-Häufige Fehler sind z.B. folgende: 
+Häufige Fehler sind z.B. folgende:
 
 > * Mehr als 1.000 Äußerungen
 > * Ein JSON-Äußerungsobjekt ohne Entitätseigenschaft. Die Eigenschaft kann ein leeres Array sein.
@@ -112,7 +112,7 @@ LUIS verfolgt für jedes Dataset den Status des letzten Tests nach. Dieser umfas
 
 ## <a name="batch-test-results"></a>Batchtestergebnisse
 
-Das Batchtestergebnis ist ein Punktdiagramm, auch als Fehlermatrix bekannt. Dieses Diagramm stellt einen Vierfachvergleich der Äußerungen in der Batchdatei mit den vorhergesagten Absichten und Entitäten des aktuellen Modells dar. 
+Das Batchtestergebnis ist ein Punktdiagramm, auch als Fehlermatrix bekannt. Dieses Diagramm stellt einen Vierfachvergleich der Äußerungen in der Batchdatei mit den vorhergesagten Absichten und Entitäten des aktuellen Modells dar.
 
 Datenpunkte in den Abschnitten **False Positive** (Falsch positives Ergebnis) und **False Negative** (Falsch negatives Ergebnis) zeigen Fehler an, die untersucht werden sollten. Wenn sich alle Datenpunkte in den Abschnitten **True Positive** (Echt positives Ergebnis) und **True Negative** (Echt negatives Ergebnis) befinden, ist die Genauigkeit Ihrer App für dieses Dataset perfekt.
 
@@ -124,13 +124,13 @@ Dieses Diagramm unterstützt Sie beim Auffinden von Äußerungen, die LUIS auf d
 
 ## <a name="errors-in-the-results"></a>Fehler in den Ergebnissen
 
-Fehler im Batchtest zeigen Absichten an, die nicht so wie in der Batchdatei vermerkt vorhergesagt werden. Fehler werden in den beiden roten Abschnitten des Diagramms angezeigt. 
+Fehler im Batchtest zeigen Absichten an, die nicht so wie in der Batchdatei vermerkt vorhergesagt werden. Fehler werden in den beiden roten Abschnitten des Diagramms angezeigt.
 
-Der Abschnitt für falsch positive Ergebnisse zeigt an, dass eine Übereinstimmung einer Äußerung mit einer Absicht oder Entität bestand, die sich nicht hätte ergeben sollen. Der Abschnitt für falsch negative Ergebnisse zeigt an, dass keine Übereinstimmung einer Äußerung mit einer Absicht oder Entität bestand, die sich hätte ergeben sollen. 
+Der Abschnitt für falsch positive Ergebnisse zeigt an, dass eine Übereinstimmung einer Äußerung mit einer Absicht oder Entität bestand, die sich nicht hätte ergeben sollen. Der Abschnitt für falsch negative Ergebnisse zeigt an, dass keine Übereinstimmung einer Äußerung mit einer Absicht oder Entität bestand, die sich hätte ergeben sollen.
 
 ## <a name="fixing-batch-errors"></a>Beheben von Batchfehlern
 
-Wenn im Batchtest Fehler auftreten, können Sie entweder weitere Äußerungen zu einer Absicht hinzufügen und/oder weitere Äußerungen mit der Entität bezeichnen, um LUIS bei der Unterscheidung zwischen Absichten zu unterstützen. Wenn Sie Äußerungen hinzugefügt und sie bezeichnet haben und trotzdem noch Vorhersagefehler beim Batchtest erhalten, erwägen Sie, ein [Begriffslisten](luis-concept-feature.md)-Feature mit domänenspezifischem Fachwortschatz hinzuzufügen, um LUIS beim schnelleren Lernen zu unterstützen. 
+Wenn im Batchtest Fehler auftreten, können Sie entweder weitere Äußerungen zu einer Absicht hinzufügen und/oder weitere Äußerungen mit der Entität bezeichnen, um LUIS bei der Unterscheidung zwischen Absichten zu unterstützen. Wenn Sie Äußerungen hinzugefügt und sie bezeichnet haben und trotzdem noch Vorhersagefehler beim Batchtest erhalten, erwägen Sie, ein [Begriffslisten](luis-concept-feature.md)-Feature mit domänenspezifischem Fachwortschatz hinzuzufügen, um LUIS beim schnelleren Lernen zu unterstützen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,6 +12,8 @@
       href: language-support.md
     - name: Unterstützung für Regionen
       href: regions.md
+    - name: Neues in der Dokumentation
+      href: whats-new.md
 - name: Spracherkennung
   items:
     - name: Dokumentation zur Spracherkennung
@@ -24,7 +26,7 @@
           href: batch-transcription.md
         - name: Grundlegendes zur Spracherkennung
           href: speech-to-text-basics.md
-    - name: Schnellstart
+    - name: Schnellstarts
       items:
         - name: Erkennen von Sprache mit Mikrofoneingabe
           href: quickstarts/speech-to-text-from-microphone.md
@@ -32,6 +34,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Erkennen von Sprache aus einem Blobspeicher
           href: quickstarts/from-blob.md
+        - name: Testen eines Modells mithilfe von Audiodateien in Speech Studio
+          href: quickstarts/speech-studio-test-model.md
     - name: Anleitungen
       items:
         - name: Auswählen eines Spracherkennungsmodus
@@ -67,6 +71,8 @@
           href: how-to-custom-speech-train-model.md
         - name: Bereitstellen eines benutzerdefinierten Modells
           href: how-to-custom-speech-deploy-model.md
+        - name: CI/CD für Custom Speech
+          href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: Erstellen von menschenmarkierten Transkriptionen
           href: how-to-custom-speech-human-labeled-transcriptions.md
     - name: Verweis
@@ -76,7 +82,7 @@
             - name: C++
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/cppref'
-            - name: 'C#'
+            - name: C#
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
@@ -101,9 +107,9 @@
     - name: Ressourcen
       items:
         - name: Sprachunterstützung
-          href: 'language-support.md#speech-to-text'
+          href: language-support.md#speech-to-text
         - name: Unterstützung für Regionen
-          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
+          href: regions.md#speech-to-text-text-to-speech-and-translation
         - name: Häufig gestellte Fragen zur Spracherkennung
           displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
           href: faq-stt.md
@@ -173,7 +179,7 @@
             - name: C++
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/cppref'
-            - name: 'C#'
+            - name: C#
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
@@ -198,11 +204,11 @@
     - name: Ressourcen
       items:
         - name: Unterstützung von Standardstimmen
-          href: 'language-support.md#standard-voices'
+          href: language-support.md#standard-voices
         - name: Unterstützung neuronaler Stimmen
-          href: 'language-support.md#neural-voices'
+          href: language-support.md#neural-voices
         - name: Unterstützung für Regionen
-          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
+          href: regions.md#speech-to-text-text-to-speech-and-translation
         - name: Phonetische SSML-Sätze
           href: speech-ssml-phonetic-sets.md
         - name: Häufig gestellte Fragen zur Sprachsynthese
@@ -237,7 +243,7 @@
             - name: C++
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/cppref'
-            - name: 'C#'
+            - name: C#
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
@@ -258,9 +264,9 @@
     - name: Ressourcen
       items:
         - name: Sprachunterstützung
-          href: 'language-support.md#speech-translation'
+          href: language-support.md#speech-translation
         - name: Unterstützung für Regionen
-          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
+          href: regions.md#speech-to-text-text-to-speech-and-translation
         - name: Häufig gestellte Fragen zur Sprachübersetzung
           href: 'https://www.microsoft.com/translator/faq.aspx'
 - name: Absichtserkennung
@@ -283,7 +289,7 @@
             - name: C++
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/cppref'
-            - name: 'C#'
+            - name: C#
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
@@ -310,7 +316,7 @@
         - name: Sprachunterstützung
           href: ../luis/luis-language-support.md
         - name: Unterstützung für Regionen
-          href: 'regions.md#intent-recognition'
+          href: regions.md#intent-recognition
 - name: Konversationsszenarien
   items:
     - name: Dokumentation zu Konversationsszenarien
@@ -338,7 +344,7 @@
                 - name: C++
                   displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/cppref'
-                - name: 'C#'
+                - name: C#
                   displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/csharpref'
                 - name: Java
@@ -376,7 +382,7 @@
               items:
                 - name: C++
                   href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
-                - name: 'C#'
+                - name: C#
                   href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
                 - name: Java
                   href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
@@ -388,30 +394,64 @@
       items:
         - name: Was ist ein Sprachassistent?
           href: voice-assistants.md
-    - name: Benutzerdefinierte Befehle (Vorschau)
+    - name: Benutzerdefinierte Befehle
       items:
-        - name: Was ist eine App für benutzerdefinierte Befehle?
+        - name: Was sind benutzerdefinierte Befehle?
           href: custom-commands.md
         - name: Schnellstarts
           items:
             - name: Erstellen einer App für benutzerdefinierte Befehle
-              href: quickstart-custom-speech-commands-create-new.md
-            - name: Erstellen eines benutzerdefinierten Befehls mit Parametern
-              href: quickstart-custom-speech-commands-create-parameters.md
-            - name: Verwenden benutzerdefinierter Befehle mit Custom Voice
-              href: quickstart-custom-speech-commands-select-custom-voice.md
-            - name: "Verwenden benutzerdefinierter Befehle mit dem Speech\_SDK"
-              href: quickstart-custom-speech-commands-speech-sdk.md
+              href: quickstart-custom-commands-application.md
         - name: Anleitungen
           items:
-            - name: Ausführen der Befehle eines Clients
-              href: how-to-custom-speech-commands-fulfill-sdk.md
-            - name: Hinzufügen einer Parameterüberprüfung
-              href: how-to-custom-speech-commands-validations.md
-            - name: Hinzufügen einer Bestätigung
-              href: how-to-custom-speech-commands-confirmations.md
-            - name: Hinzufügen einer Korrektur mit einem Schritt
-              href: how-to-custom-speech-commands-one-step-correction.md
+            - name: Entwickeln
+              items:
+                - name: Erstellen einer Anwendung mit einfachen Befehlen
+                  href: how-to-custom-commands-create-application-with-simple-commands.md
+                - name: Hinzufügen von Parametern zu Befehlen
+                  href: how-to-custom-commands-add-parameters-to-commands.md
+                - name: Hinzufügen von Konfigurationen zu Befehlsparametern
+                  href: how-to-custom-commands-add-parameter-configuration.md
+                - name: Hinzufügen von Interaktionsregeln
+                  href: how-to-custom-commands-add-interaction-rules.md
+                - name: Hinzufügen von Sprachgenerierungsvorlagen für Sprachantworten
+                  href: how-to-custom-commands-add-language-generation-templates.md
+            - name: Integrieren
+              items:
+                - name: Integrieren in eine Client-App mithilfe des Sprach-SDK
+                  href: how-to-custom-commands-setup-speech-sdk.md
+                - name: Senden einer Aktivität an eine Clientanwendung
+                  href: how-to-custom-commands-send-activity-to-client.md
+                - name: Einrichten von Webendpunkten
+                  href: how-to-custom-commands-setup-web-endpoints.md
+            - name: Bereitstellen
+              items:
+                - name: Continuous Deployment mit Azure DevOps
+                  href: how-to-custom-commands-deploy-cicd.md
+            - name: Test
+              items:
+                - name: Testen Ihrer App für benutzerdefinierte Befehle
+                  href: how-to-custom-commands-developer-flow-test.md
+            - name: Debuggen
+              items:
+                - name: Debuggen von Fehlern beim Erstellen der App
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: Debuggen von Fehlern beim Ausführen der App
+                  href: how-to-custom-commands-debug-runtime.md
+            - name: References
+              items:
+                - name: Konzepte benutzerdefinierter Befehle
+                  href: custom-commands-references.md
+        - name: Ressourcen
+          items:
+            - name: Beispiele für benutzerdefinierte Befehle (GitHub)
+              href: 'https://aka.ms/speech/cc-samples'
+            - name: Beispiele für Sprachassistenten (GitHub)
+              href: 'http://aka.ms/speech/va-samples'
+            - name: Häufig gestellte Fragen zu Sprachassistenten
+              href: faq-voice-assistants.md
+            - name: Sprach-SDK
+              href: speech-sdk.md
     - name: Direct Line Speech
       items:
         - name: Was ist Direct Line Speech?
@@ -454,6 +494,20 @@
           href: speech-devices-sdk-kws-guidelines.md
         - name: Benutzerdefinierte Schlüsselworterkennung
           href: speech-devices-sdk-create-kws.md
+- name: Sprechererkennung
+  items:
+    - name: Übersicht
+      items:
+        - name: Was ist Sprechererkennung?
+          href: speaker-recognition-overview.md
+        - name: Grundlagen zur Sprechererkennung
+          href: speaker-recognition-basics.md
+    - name: Verweis
+      items:
+        - name: REST-APIs
+          items:
+            - name: REST-API für die Sprechererkennung
+              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:
     - name: Dokumentation zum Hosting
@@ -466,6 +520,8 @@
         - name: Konfigurieren von Speech-Containern
           displayName: 'containers,configure containers,container config,configuration'
           href: speech-container-configuration.md
+        - name: Batchverarbeitung mit Speech-Containern
+          href: speech-container-batch-processing.md
         - name: Speech-Container mit Kubernetes und Helm
           displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
           href: speech-container-howto-on-premises.md
@@ -513,7 +569,7 @@
       items:
         - name: C++
           href: 'https://aka.ms/csspeech/cppref'
-        - name: 'C#'
+        - name: C#
           href: 'https://aka.ms/csspeech/csharpref'
         - name: Java
           href: 'https://aka.ms/csspeech/javaref'
@@ -598,7 +654,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: speech-encryption-of-data-at-rest.md

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 19cfd5d8ed4100048c270fb41e5e54a920c61516
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46a65720c9998a7a56d0ca269c344f85c5955546
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75548835"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086142"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Übersicht zu strukturiertes Apache Spark-Streaming
 
@@ -62,11 +62,13 @@ Nicht alle Abfragen im vollständigen Modus bewirken, dass die Tabelle unbegrenz
 
 Eine einfache Beispielabfrage kann die Temperaturmesswerte von einstündigen Fenstern zusammenfassen. In diesem Fall werden die Daten in Azure Storage (als Standardspeicher für das HDInsight-Cluster angefügt) in JSON-Dateien gespeichert:
 
-    {"time":1469501107,"temp":"95"}
-    {"time":1469501147,"temp":"95"}
-    {"time":1469501202,"temp":"95"}
-    {"time":1469501219,"temp":"95"}
-    {"time":1469501225,"temp":"95"}
+```json
+{"time":1469501107,"temp":"95"}
+{"time":1469501147,"temp":"95"}
+{"time":1469501202,"temp":"95"}
+{"time":1469501219,"temp":"95"}
+{"time":1469501225,"temp":"95"}
+```
 
 Diese JSON-Dateien werden im `temps`-Unterordner unter dem Container des HDInsight-Clusters gespeichert.
 
@@ -74,41 +76,51 @@ Diese JSON-Dateien werden im `temps`-Unterordner unter dem Container des HDInsig
 
 Zunächst konfigurieren Sie einen Datenrahmen, der die Quelle der Daten und alle Einstellungen beschreibt, die diese Quelle erfordert. In diesem Beispiel dienen die JSON-Dateien in Azure Storage als Datenquelle und es wird zur Lesezeit ein Schema auf sie angewendet.
 
-    import org.apache.spark.sql.types._
-    import org.apache.spark.sql.functions._
+```sql
+import org.apache.spark.sql.types._
+import org.apache.spark.sql.functions._
 
-    //Cluster-local path to the folder containing the JSON files
-    val inputPath = "/temps/" 
+//Cluster-local path to the folder containing the JSON files
+val inputPath = "/temps/" 
 
-    //Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
-    val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
+//Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
+val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
 
-    //Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
-    val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath) 
+//Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
+val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath)
+``` 
 
 #### <a name="apply-the-query"></a>Anwenden der Abfrage
 
 Führen Sie als Nächstes eine Abfrage des Streamingdatenrahmens aus, die die gewünschten Vorgänge enthält. In diesem Fall gruppiert eine Aggregation alle Zeilen in 1-Stunden-Fenstern und berechnet dann die minimale, durchschnittliche und maximale Temperatur in diesem 1-Stunden-Fenster.
 
-    val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```sql
+val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```
 
 ### <a name="define-the-output-sink"></a>Definieren der Ausgabesenke
 
 Definieren Sie als Nächstes das Ziel für die Zeilen, die der Ergebnistabelle in jedem Triggerintervall hinzugefügt werden. Dieses Beispiel gibt nur alle Zeilen in eine In-Memory-Tabelle `temps` aus, die Sie später mit SparkSQL abfragen können. Im vollständigen Ausgabemodus wird sichergestellt, dass alle Zeilen für alle Fenster jedes Mal ausgegeben werden.
 
-    val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete") 
+```sql
+val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete")
+``` 
 
 ### <a name="start-the-query"></a>Starten der Abfrage
 
 Starten Sie die Streamingabfrage, und führen Sie sie aus, bis ein Beendigungssignal empfangen wird.
 
-    val query = streamingOutDF.start()  
+```sql
+val query = streamingOutDF.start() 
+``` 
 
 ### <a name="view-the-results"></a>Zeigen Sie die Ergebnisse an
 
 Während die Abfrage ausgeführt wird, können`temps`{2}Sie in derselben SparkSession eine SparkSQL-Abfrage der {3}-Tabelle ausführen, in der die Ergebnisse der Abfrage gespeichert werden.
 
-    select * from temps
+```sql
+select * from temps
+```
 
 Die Ergebnisse dieser Abfrage sehen in etwa wie folgt aus:
 

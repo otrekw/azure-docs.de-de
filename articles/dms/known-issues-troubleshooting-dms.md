@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: c5d2ad481124f5ae048d010cdf632ee661bbd6ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f108c8b9d86a527764d2c7b8dddc6fb239b00d2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649106"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196267"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Troubleshooting von häufigen Problemen und Fehlern bei Azure Database Migration Service
 
@@ -32,7 +32,7 @@ Wenn Sie neue Aktivitäten in einem Azure Database Migration Service-Projekt ers
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>Maximale Anzahl von Datenbanken für die Migration ausgewählt
 
-Der folgende Fehler tritt auf, wenn eine Aktivität für ein Datenbankmigrationsprojekt erstellt wird, um in die Azure SQL-Datenbank oder eine von der Azure SQL-Datenbank verwaltete Instanz zu wechseln:
+Der folgende Fehler tritt auf, wenn eine Aktivität für ein Datenbankmigrationsprojekt erstellt wird, um zu Azure SQL-Datenbank oder Azure SQL Managed Instance zu wechseln:
 
 * **Fehler:** Fehler bei der Validierung der Migrationseinstellungen", "errorDetail":"Für die Migration wurden mehr als maximal 4 Datenbankobjekte ausgewählt."
 
@@ -72,13 +72,13 @@ Sie erhalten folgenden Fehler, wenn Sie die Azure Database Migration Service-Ins
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>Fehler beim Wiederherstellen der Datenbank während der Migration von SQL zu einer verwalteten Azure SQL-DB-Instanz
 
-Wenn Sie eine Onlinemigration von SQL Server zu einer von der Azure SQL-Datenbank verwalteten Instanz durchführen, schlägt die Umstellung mit folgendem Fehler fehl:
+Wenn Sie eine Onlinemigration von SQL Server zu Azure SQL Managed Instance durchführen, schlägt die Umstellung mit folgendem Fehler fehl:
 
 * **Fehler:** Fehler beim Wiederherstellungsvorgang für die Vorgangs-ID 'operationId'. Code 'AuthorizationFailed', Nachricht 'Der Client 'clientId' mit Objekt-ID 'objectId' hat keine Berechtigung, eine Aktion 'Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/read' über den Umfang '/subscriptions/subscriptionId' auszuführen.
 
 | Ursache         | Lösung    |
 | ------------- | ------------- |
-| Dieser Fehler gibt an, dass das Anwendungsprinzipal, das für die Onlinemigration von SQL Server zu einer von der Azure SQL-Datenbank verwalteten Instanz verwendet wird, keine Teilnahmeberechtigungen für das Abonnement hat. Bestimmte API-Aufrufe mit einer verwalteten Instanz erfordern derzeit für den Wiederherstellungsvorgang diese Berechtigung im Abonnement. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Verwenden Sie das in der Fehlermeldung verfügbare Cmdlet `Get-AzureADServicePrincipal` PowerShell mit `-ObjectId`, um den Anzeigenamen der verwendeten Anwendungs-ID anzuzeigen.<br><br> Überprüfen Sie die Berechtigungen für diese Anwendung, und stellen Sie sicher, dass sie die Rolle [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) auf der Abonnementebene hat. <br><br> Das Engineering-Team von Azure Database Migration Service arbeitet daran, den erforderlichen Zugriff von der aktuellen Rolle „Mitwirkender“ im Abonnement zu beschränken. Wenn Sie eine geschäftliche Wenn Sie eine Geschäftsanforderung haben, die die Verwendung der Rolle „Mitwirkender“ nicht zulässt, wenden Sie sich an den Azure-Support, um weitere Hilfe zu erhalten. |
+| Dieser Fehler gibt an, dass der Anwendungsprinzipal, der für die Onlinemigration von SQL Server zu Azure SQL Managed Instance verwendet wird, keine Mitwirkungsberechtigung für das Abonnement hat. Bestimmte API-Aufrufe mit einer verwalteten Instanz erfordern derzeit für den Wiederherstellungsvorgang diese Berechtigung im Abonnement. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Verwenden Sie das in der Fehlermeldung verfügbare Cmdlet `Get-AzureADServicePrincipal` PowerShell mit `-ObjectId`, um den Anzeigenamen der verwendeten Anwendungs-ID anzuzeigen.<br><br> Überprüfen Sie die Berechtigungen für diese Anwendung, und stellen Sie sicher, dass sie die Rolle [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) auf der Abonnementebene hat. <br><br> Das Engineering-Team von Azure Database Migration Service arbeitet daran, den erforderlichen Zugriff von der aktuellen Rolle „Mitwirkender“ im Abonnement zu beschränken. Wenn Sie eine geschäftliche Wenn Sie eine Geschäftsanforderung haben, die die Verwendung der Rolle „Mitwirkender“ nicht zulässt, wenden Sie sich an den Azure-Support, um weitere Hilfe zu erhalten. |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Fehler beim Löschen der dem Azure Database Migration Service zugeordneten NIC
 

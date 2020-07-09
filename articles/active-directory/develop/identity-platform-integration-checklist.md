@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 56975cebbfe4f6dd6452c850c338d431faea27bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7c26780cdba37a2bddc201928dbcbd5f86e0170
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050495"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115896"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Bewährte Methoden und Empfehlungen für Microsoft Identity Platform
 
@@ -26,6 +26,9 @@ Dieser Artikel enthält bewährte Methoden, Empfehlungen und häufige Fehler im 
 Machen Sie sich zum Einstieg anhand der [Dokumentation zu Microsoft Identity Platform](index.yml) unter anderem mit Authentifizierungsgrundlagen und mit Anwendungsszenarien in Microsoft Identity Platform vertraut.
 
 Stellen Sie anhand der folgenden Checkliste sicher, dass Ihre Anwendung effektiv in [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/) integriert wird.
+
+> [!TIP]
+> Der *Integrationsassistent* im Azure-Portal kann Ihnen dabei helfen, viele dieser bewährten Methoden und Empfehlungen anzuwenden. Wählen Sie im Azure-Portal eine der [App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) und dann das Menüelement **Integrationsassistent (Vorschau)** aus, um mit dem Assistenten zu beginnen.
 
 ## <a name="basics"></a>Grundlagen
 

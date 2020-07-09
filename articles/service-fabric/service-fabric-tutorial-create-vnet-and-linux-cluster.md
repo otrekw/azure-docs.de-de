@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI einen Service Fab
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1d6edc086233d757269c12e323241bc4bf55249f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411003"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611695"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk
 
@@ -54,8 +54,8 @@ In der Ressource **Microsoft.ServiceFabric/clusters** wird ein Linux-Cluster mit
 * Betriebssystem: (Ubuntu 16.04 LTS / Ubuntu 18.04 LTS) (in den Vorlagenparametern konfigurierbar)
 * Geschütztes Zertifikat (in den Vorlagenparametern konfigurierbar)
 * [DNS-Dienst](service-fabric-dnsservice.md) aktiviert
-* [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) „Bronze“ (in den Vorlagenparametern konfigurierbar)
-* [Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) „Silber“ (in den Vorlagenparametern konfigurierbar)
+* [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) „Bronze“ (in den Vorlagenparametern konfigurierbar)
+* [Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) „Silber“ (in den Vorlagenparametern konfigurierbar)
 * Clientverbindungsendpunkt: 19000 (in den Vorlagenparametern konfigurierbar)
 * HTTP-Gatewayendpunkt: 19080 (in den Vorlagenparametern konfigurierbar)
 

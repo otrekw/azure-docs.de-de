@@ -16,20 +16,20 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1a657a7d57b3e725b0ae92b5110935c0aecf73f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 09399f59e61ded49fef5a2388900b7b478111119
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75533033"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847190"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Maxient Conduct Manager Software
 
 In diesem Tutorial erfahren Sie, wie Sie Maxient Conduct Manager Software in Azure Active Directory (Azure AD) integrieren. Die Integration von Maxient Conduct Manager Software in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Maxient Conduct Manager Software haben soll.
+* Verwenden von Azure AD, um Ihre Benutzer für die Maxient Conduct Manager-Software zu authentifizieren.
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Maxient Conduct Manager Software anzumelden.
-* Verwalten Sie Ihre Konten zentral im Azure-Portal.
+
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
@@ -42,8 +42,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
-
+In diesem Tutorial konfigurieren Sie Ihr Azure AD für die Verwendung mit der Maxient Conduct Manager-Software.
 
 
 * Maxient Conduct Manager Software unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
@@ -65,16 +64,13 @@ Um die Integration von Maxient Conduct Manager Software in Azure AD zu konfigur
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-maxient-conduct-manager-software"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Maxient Conduct Manager Software
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Maxient Conduct Manager Software mithilfe eines Testbenutzers namens **B.Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Maxient Conduct Manager Software eingerichtet werden.
+Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Maxient Conduct Manager Software. Damit einmaliges Anmelden funktioniert, muss eine Verbindung zwischen Azure AD und der Maxient Conduct Manager Software hergestellt werden.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Maxient Conduct Manager Software zu konfigurieren:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für Maxient Conduct Manager Software](#configure-maxient-conduct-manager-software-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-    1. **[Erstellen eines Maxient Conduct Manager Software-Testbenutzers](#create-maxient-conduct-manager-software-test-user)** , um in Maxient Conduct Manager Software eine Entsprechung von B.Simon zu erhalten, die mit der Benutzerdarstellung in Azure AD verknüpft ist.
-1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+1. **[Konfigurieren des einmaligen Anmeldens für Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzer die Authentifizierung für die Verwendung von Maxient Conduct Manager-Software zu ermöglichen.
+    1. **[Zuweisen aller Benutzer zur Verwendung von Maxient](#assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software)** , um allen Benutzern in Ihrer Einrichtung die Möglichkeit zu geben, sich zu authentifizieren.
+1. **[Testen von Azure AD Setup mit Maxient](#test-with-maxient)** , um zu überprüfen, ob die Konfiguration funktioniert und die richtigen Attribute freigegeben werden.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
@@ -93,27 +89,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://cm.maxient.com/<SCHOOLCODE>`
 
     > [!NOTE]
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den Maxient Conduct Manager Software-Client](mailto:support@maxient.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an Ihren Maxient-Implementierungs-/Supportmitarbeiter, um den Wert zu erhalten.
 
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.  Diese URL müssen Sie Ihrem Maxient-Implementierungs-/Supportmitarbeiter angeben.
 
     ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software"></a>Allen Benutzern die Möglichkeit zum Authentifizieren für die Maxient Conduct Manager-Software zuweisen
 
-In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
-
-1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
-1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
-   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
-   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Erstellen**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-
-In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf Maxient Conduct Manager Software gewähren.
+In diesem Abschnitt gewähren Sie allen Konten Zugriff, um sich mithilfe des Azure-Systems für die Maxient Conduct Manager-Software zu authentifizieren.  Es ist wichtig zu beachten, dass dieser Schritt **ERFORDERLICH** ist, damit Maxient ordnungsgemäß funktioniert.  Maxient nutzt das Azure AD-System, um Benutzer zu *authentifizieren*. Die *Autorisierung* von Benutzern wird innerhalb des Maxient-Systems für die jeweilige Funktion ausgeführt, die diese durchführen möchten. Maxient verwendet keine Attribute aus Ihrem Verzeichnis, um diese Entscheidungen zu treffen.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste die Option **Maxient Conduct Manager Software** aus.
@@ -125,24 +109,12 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
     ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** alle Benutzer (oder die entsprechenden Gruppen) aus, und **weisen** Sie diese zu, damit sie sich bei Maxient authentifizieren können.
 
-## <a name="configure-maxient-conduct-manager-software-sso"></a>Konfigurieren des einmaligen Anmeldens für Maxient Conduct Manager Software
+## <a name="test-with-maxient"></a>Testen mit Maxient 
 
-Um das einmalige Anmelden aufseiten von **Maxient Conduct Manager Software** zu konfigurieren, müssen Sie die **App-Verbundmetadaten-URL** an das [Maxient Conduct Manager Software-Supportteam](mailto:support@maxient.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
-
-### <a name="create-maxient-conduct-manager-software-test-user"></a>Erstellen eines Maxient Conduct Manager Software-Testbenutzers
-
-In diesem Abschnitt erstellen Sie in Maxient Conduct Manager Software einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [Maxient Conduct Manager Software-Supportteam](mailto:support@maxient.com) zusammen, um der Maxient Conduct Manager Software-Plattform Benutzer hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
-
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
-
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
-
-Wenn Sie im Zugriffsbereich auf die Kachel „Maxient Conduct Manager Software“ klicken, sollten Sie automatisch bei der Maxient Conduct Manager Software-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
-
+Wenn nicht bereits ein Supportticket bei einem Maxient-Implementierungs-/Supportmitarbeiter geöffnet wurde, senden Sie eine E-Mail an [support@maxient.com](mailto:support@maxient.com) mit dem Betreff „Campus-basierte Authentifizierung/Azure Setup – \<\<Name der Schule/Uni\>\>“. Geben Sie im Textkörper der E-Mail die **App-Verbundmetadaten-URL** an. Ein Maxient-Mitarbeiter wird mit einem Testlink antworten, um zu überprüfen, ob die richtigen Attribute freigegeben werden.  
+    
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 - [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 00d54f9adcab93152881852b6fcac417e9d7c7d9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f1fb209f44ae7922de87277100fbf55add184766
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409903"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194490"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Inkrementelles Laden von Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher
 
@@ -32,7 +32,7 @@ In diesem Fall definieren Sie einen Grenzwert (Englisch: Watermark) in Ihrer Que
 
 Die folgenden Tutorials enthalten Schritt-für-Schritt-Anleitungen: 
 - [Inkrementelles Kopieren von Daten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage](tutorial-incremental-copy-powershell.md)
-- [Inkrementelles Laden von mehreren SQL Server-Tabellen in Azure SQL-Datenbank](tutorial-incremental-copy-multiple-tables-powershell.md)
+- [Inkrementelles Kopieren von Daten aus mehreren Tabellen einer SQL Server-Instanz in Azure SQL-Datenbank](tutorial-incremental-copy-multiple-tables-powershell.md)
 
 Informationen zu Vorlagen finden Sie im folgenden Artikel:
 - [Deltakopiervorgänge aus einer Datenbank mit einer Steuertabelle](solution-template-delta-copy-with-control-table.md)

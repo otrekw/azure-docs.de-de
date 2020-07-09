@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 10a061163447a60f1c25b386ef28028436284650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b78e227159065d2ae85d9b1dc989e8ea192ae26a
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75453073"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982801"
 ---
 # <a name="microsoft-global-network"></a>Globales Microsoft-Netzwerk
 
-Microsoft besitzt und betreibt eines der größten Backbonenetzwerke der Welt. Diese globale und hochentwickelte Architektur, die sich über mehr als 160.000 Kilometer erstreckt, verbindet unsere Rechenzentren und Kunden. 
+Microsoft besitzt und betreibt eines der größten Backbonenetzwerke der Welt. Diese globale und hoch entwickelte Architektur, die sich über mehr als 160.000 Meilen erstreckt, verbindet unsere Rechenzentren und Kunden. 
  
 Täglich stellen Kunden rund um die Welt Verbindungen mit Microsoft Azure, Bing, Dynamics 365, Office 365, XBox und vielen anderen Diensten her und übermitteln Billionen von Anforderungen. Unabhängig vom Typ erwarten die Kunden sofortige Zuverlässigkeit und Reaktion von unseren Diensten. 
  
@@ -32,7 +32,7 @@ Das [globale Microsoft-Netzwerk](https://azure.microsoft.com/global-infrastructu
  
 ## <a name="get-the-premium-cloud-network"></a>Holen Sie sich das Premium-Cloudnetzwerk
  
-Die Entscheidung für die [bestmögliche Umgebung](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) ist mit der Microsoft-Cloud einfach. Ab dem Moment, in dem der Datenverkehr der Kunden über unsere strategisch platzierten Edgeknoten in unserem globalen Netzwerk eintrifft, werden Ihre Daten mit nahezu Lichtgeschwindigkeit über optimierte Routen weitergeleitet. Dadurch wird eine optimale Latenz für bestmögliche Leistungen sichergestellt. Diese Edgeknoten sind über Tausende von Verbindungen an mehr als 145 Standorten mit mehr als 3500 individuellen Internetpartnern (Peers) verbunden und bilden die Grundlage unserer Verbindungsstrategie. 
+Die Entscheidung für die [bestmögliche Umgebung](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) ist mit der Microsoft-Cloud einfach. Ab dem Moment, in dem der Datenverkehr der Kunden über unsere strategisch platzierten Edgeknoten in unserem globalen Netzwerk eintrifft, werden Ihre Daten mit nahezu Lichtgeschwindigkeit über optimierte Routen weitergeleitet. Dadurch wird eine optimale Latenz für bestmögliche Leistungen sichergestellt. Diese Edgeknoten sind über Tausende von Verbindungen an mehr als 165 Standorten mit mehr als 3.500 individuellen Internetpartnern (Peers) verbunden und bilden die Grundlage unserer Verbindungsstrategie. 
  
 Ganz gleich, ob Sie eine Verbindung von London nach Tokio oder von Washington DC nach Los Angeles herstellen, die Netzwerkleistung wird durch Faktoren wie Latenz, Jitter, Paketverlust und Durchsatz bestimmt und beeinflusst.  Bei Microsoft verwenden wir direkte Verbindungen anstelle von Transitverbindungen. Dies sorgt für einen symmetrischen Antwortdatenverkehr sowie für möglichst kurze und einfache Hops, Peering-Partner und Wege. 
 

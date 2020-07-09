@@ -8,13 +8,13 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 08/23/2019
-ms.openlocfilehash: 9eedc0c3044717360494b222c88d73b3c8999e94
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.date: 06/25/2020
+ms.openlocfilehash: 82234719320f1ac707147c7c8393c0464956dd99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82587846"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85378461"
 ---
 | Computeziel | Syntaxelemente | GPU-Unterstützung | FPGA-Unterstützung | BESCHREIBUNG |
 | ----- | ----- | ----- | ----- | ----- |
@@ -22,7 +22,7 @@ ms.locfileid: "82587846"
 | [Webdienst für Azure Machine Learning-Computeinstanzen&nbsp;&nbsp;](../articles/machine-learning/how-to-deploy-and-where.md#notebookvm) | Testen/Debuggen | &nbsp; | &nbsp; | Für eingeschränkte Tests und Problembehandlung verwenden.
 | [Azure Kubernetes Service (AKS)](../articles/machine-learning/how-to-deploy-and-where.md#aks) | Echtzeitrückschluss |  [Ja](../articles/machine-learning/how-to-deploy-inferencing-gpus.md) (Webdienstbereitstellung) | [Ja](../articles/machine-learning/how-to-deploy-fpga-web-service.md)   |Für hochgradig skalierbare Produktionsbereitstellungen verwenden. Bietet schnelle Antwortzeiten und die automatische Skalierung von bereitgestellten Diensten. Die automatische Skalierung von Clustern wird vom Azure Machine Learning SDK nicht unterstützt. Die Knoten in Ihrem AKS-Cluster können Sie über die entsprechende Benutzeroberfläche im Azure-Portal ändern. AKS ist die einzige für den Designer verfügbare Option. |
 | [Azure Container Instances](../articles/machine-learning/how-to-deploy-and-where.md#aci) | Testen oder Entwicklung | &nbsp;  | &nbsp; | Für CPU-lastige Workloads im kleinen Maßstab verwenden, die weniger als 48 GB Arbeitsspeicher erfordern. |
-| [Azure Machine Learning-Computecluster](../articles/machine-learning/how-to-use-parallel-run-step.md) | (Vorschau) &nbsp;Batchrückschluss | [Ja](../articles/machine-learning/how-to-use-parallel-run-step.md) (Machine Learning-Pipeline) | &nbsp;  | Ausführen von Batchbewertungen auf serverlosen Computezielen. Unterstützt virtuelle Computer mit normaler und niedriger Priorität. |
+| [Azure Machine Learning-Computecluster](../articles/machine-learning/how-to-use-parallel-run-step.md) | Batchrückschluss&nbsp; | [Ja](../articles/machine-learning/how-to-use-parallel-run-step.md) (Machine Learning-Pipeline) | &nbsp;  | Ausführen von Batchbewertungen auf serverlosen Computezielen. Unterstützt virtuelle Computer mit normaler und niedriger Priorität. |
 | [Azure-Funktionen](../articles/machine-learning/how-to-deploy-functions.md) | (Vorschau) Echtzeitrückschluss | &nbsp; | &nbsp; | &nbsp; |
 | [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | (Vorschau) IoT-&nbsp;Modul |  &nbsp; | &nbsp; | Bereitstellen und Verarbeiten von ML-Modellen auf IoT-Geräten. |
 | [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | Über IoT Edge |  &nbsp; | Ja | Bereitstellen und Verarbeiten von ML-Modellen auf IoT-Geräten. |

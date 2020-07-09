@@ -1,18 +1,18 @@
 ---
-title: PowerShell-Skript zum Erstellen einer Datenbank und Sammlung über die Azure Cosmos DB-API für MongoDB
-description: 'Azure PowerShell-Skript: Azure Cosmos DB – Erstellen einer Datenbank und Sammlung für die MongoDB-API'
+title: PowerShell-Skript zum Erstellen einer Datenbank und Sammlung für die MongoDB-API in Azure Cosmos
+description: 'Azure PowerShell-Skript: Erstellen einer Datenbank und Sammlung für die MongoDB-API in Azure Cosmos'
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 05/01/2020
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 06d386f80b6a9c1116e71a629a2c445da3082836
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 1c3e4816e5bf2d104557fa3ed5ef2923d075e237
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653017"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125565"
 ---
 # <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Erstellen einer Datenbank und Sammlung für Azure Cosmos DB – MongoDB-API
 
@@ -39,10 +39,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Erstellt ein neues Cosmos DB-Konto. |
-| [Set-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbdatabase) | Erstellt eine neue MongoDB-API-Datenbank oder aktualisiert eine vorhandene MongoDB-API-Datenbank. |
-| [New-AzCosmosDBMongoDBIndex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbindex) | Erstellt einen neuen MongoDB-API-Index. |
-| [Set-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbcollection) | Erstellt eine neue MongoDB-API-Sammlung oder aktualisiert eine vorhandene MongoDB-API-Sammlung. |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Erstellt ein Cosmos DB-Konto. |
+| [New-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbdatabase) | Erstellt eine MongoDB-API-Datenbank. |
+| [New-AzCosmosDBMongoDBIndex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbindex) | Erstellt einen MongoDB-API-Index. |
+| [New-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection) | Erstellung eine MongoDB-API-Sammlung. |
 |**Azure-Ressourcengruppen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||

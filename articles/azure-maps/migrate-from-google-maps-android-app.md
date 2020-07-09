@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 9514398ec6a84becd1283e4b0975804101b64086
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5e344eb37af4fc1fae35a1f0c036ed1582054ea5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77209731"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747431"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Migrieren von Android-Apps aus Google Maps
 
@@ -314,7 +314,7 @@ Hinweis: Das Azure Maps-Steuerelement unterstützt das Zoomen und bietet eine We
 
 ## <a name="localizing-the-map"></a>Lokalisieren der Karte
 
-Lokalisierung ist wichtig, wenn sich Ihre Zielgruppe in verschiedenen Ländern befindet oder verschiedene Sprachen spricht.
+Lokalisierung ist ein wichtiger Punkt, wenn sich Ihre Zielgruppe über mehrere Länder/Regionen erstreckt oder verschiedene Sprachen spricht.
 
 **Vorher: Google Maps**
 

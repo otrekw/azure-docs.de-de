@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 01b8e1dbc290bed86ccfc3c7016e8bd9168e427a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: afcbf5187a3b5ef3f44aebda22d376e9b796bf59
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049061"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848393"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Umsteigen von der VM-Erweiterung für verwaltete Identitäten auf Azure Instance Metadata Service
 
@@ -44,26 +44,26 @@ Wenn Sie einen virtuellen Computer oder eine VM-Skalierungsgruppe mit einer verw
 
 Die VM-Erweiterung kann auch mithilfe der Azure Resource Manager-Bereitstellungsvorlage bereitgestellt werden. Hierzu muss dem Vorlagenabschnitt `resources` der folgende JSON-Code hinzugefügt werden. (Verwenden Sie `ManagedIdentityExtensionForLinux` für die Namens- und Typelemente für die Linux-Version.)
 
-    ```json
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-        "apiVersion": "2018-06-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.ManagedIdentity",
-            "type": "ManagedIdentityExtensionForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "port": 50342
-            }
+```json
+{
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
+    "apiVersion": "2018-06-01",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+    ],
+    "properties": {
+        "publisher": "Microsoft.ManagedIdentity",
+        "type": "ManagedIdentityExtensionForWindows",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+            "port": 50342
         }
     }
-    ```
+}
+```
     
     
 Bei Verwendung von VM-Skalierungsgruppen können Sie die Erweiterung für verwaltete Identitäten für Azure-Ressourcen für eine VM-Skalierungsgruppe auch mithilfe des Cmdlets [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) bereitstellen. Sie können abhängig von der Art der VM-Skalierungsgruppe entweder `ManagedIdentityExtensionForWindows` oder `ManagedIdentityExtensionForLinux` übergeben und mithilfe des Parameters `-Name` einen Namen festlegen. Der `-Settings`-Parameter gibt den Port an, der vom OAuth-Token-Endpunkt für den Tokenabruf verwendet wird:
@@ -75,23 +75,23 @@ Bei Verwendung von VM-Skalierungsgruppen können Sie die Erweiterung für verwal
    ```
 Wenn Sie die VM-Skalierungsgruppenerweiterung mithilfe der Azure Resource Manager-Bereitstellungsvorlage bereitstellen möchten, fügen Sie dem Vorlagenabschnitt `extensionpProfile` den folgenden JSON-Code hinzu. (Verwenden Sie `ManagedIdentityExtensionForLinux` für die Namens- und Typelemente für die Linux-Version.)
 
-    ```json
-    "extensionProfile": {
-        "extensions": [
-            {
-                "name": "ManagedIdentityWindowsExtension",
-                "properties": {
-                    "publisher": "Microsoft.ManagedIdentity",
-                    "type": "ManagedIdentityExtensionForWindows",
-                    "typeHandlerVersion": "1.0",
-                    "autoUpgradeMinorVersion": true,
-                    "settings": {
-                        "port": 50342
-                    },
-                    "protectedSettings": {}
-                }
+```json
+"extensionProfile": {
+    "extensions": [
+        {
+            "name": "ManagedIdentityWindowsExtension",
+            "properties": {
+                "publisher": "Microsoft.ManagedIdentity",
+                "type": "ManagedIdentityExtensionForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "port": 50342
+                },
+                "protectedSettings": {}
             }
-    ```
+        }
+```
 
 Es kann vorkommen, dass die Bereitstellung der VM-Erweiterung aufgrund von Fehlern beim DNS-Lookup nicht erfolgreich ist. Starten Sie in diesem Fall den virtuellen Computer neu, und versuchen Sie es noch mal. 
 

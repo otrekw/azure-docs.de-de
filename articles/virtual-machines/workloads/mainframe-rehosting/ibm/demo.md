@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83f7f16d8406744a10451e8d488b7719845c525d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68841391"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135939"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Festlegen einer Application Developers Controlled Distribution (ADCD) in IBM zD&T v1
 
@@ -29,7 +29,7 @@ Wie zD&T sind ADCDs nur für IBM-Kunden und -Partner verfügbar und ausschließl
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- ein Azure-Abonnement Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 - Die zuvor in Azure eingerichtete [zD&T-Umgebung][ibm-install-z]. Dieser Artikel setzt voraus, dass Sie das gleiche Ubuntu 16.04 VM-Image verwenden, dass Sie früher erstellt haben.
 
@@ -76,7 +76,7 @@ Nun müssen Sie die heruntergeladenen Pakete zu Ihrem virtuellen Computer in Azu
 
 4. Wenn Sie angemeldet sind, erstellen Sie ein Verzeichnis, um die IBM-Pakete hochzuladen. Denken Sie daran, dass in Linux die Groß-/Kleinschreibung beachtet wird. Diese Demo setzt beispielsweise voraus, dass die Pakete zu diesem Speicherort hochgeladen werden:
 
-        /home/MyUserID/ZDT/adcd/nov2017/volumes
+    `/home/MyUserID/ZDT/adcd/nov2017/volumes`
 
 5. Laden Sie die Dateien mit einem SSH-Client wie[WinSCP](https://winscp.net/eng/index.php) hoch. Da SCP ein Teil von SSH ist, wird Port 22 verwendet, den auch SSH nutzt. Wenn Ihr lokaler Computer kein Windows-Computer ist, können Sie den [scp-Befehl](http://man7.org/linux/man-pages/man1/scp.1.html) in Ihrer SSH-Sitzung eingeben.
 
@@ -89,8 +89,8 @@ Nun müssen Sie die heruntergeladenen Pakete zu Ihrem virtuellen Computer in Azu
 
 8. Wenn die Uploads abgeschlossen sind, navigieren Sie zum Volumesverzeichnis, und dekomprimieren Sie alle **gz**-Volumes:
 
-    ```
-        gunzip \*.gz
+    ```console
+    gunzip \*.gz
     ```
     
 ![Datei-Explorer mit dekomprimierten gz-Volumes](media/01-gunzip.png)
@@ -100,9 +100,9 @@ Nun müssen Sie die heruntergeladenen Pakete zu Ihrem virtuellen Computer in Azu
 Der nächste Schritt ist, zD&T zur Verwendung der hochgeladenen Pakete zu konfigurieren. Über den Imagespeicherprozess in zD&T können Sie die Images einbinden und verwenden. Sie können SSH oder FTP verwenden.
 
 1. Starten Sie den **zDTServer**. Dies müssen Sie auf der Stammebene ausführen. Geben Sie der Reihe nach diese beiden Befehle ein:
-    ```
-        sudo su -
-        /opt/ibm/zDT/bin/startServer
+    ```console
+    sudo su -
+    /opt/ibm/zDT/bin/startServer
     ```
 2. Beachten Sie die URL-Ausgabe des Befehls, und verwenden Sie diese URL zum Zugriff auf den Webserver. Sie sieht etwa so aus:
      > https://(Name Ihrer VM oder IP-Adresse):9443/ZDTMC/index.html

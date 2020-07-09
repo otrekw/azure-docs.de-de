@@ -7,34 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: b54905e201ee7a6dbf4c6837960a6e0b63057ea9
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 05/11/2020
+ms.openlocfilehash: 35cac2c05a8603313bb2bbe1bde3817dc88c6ed2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549056"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682635"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Dienstgrenzwerte in der kognitiven Azure-Suche
 
 Die Grenzwerte für Speicher, Workloads und Mengen von Indizes und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Cognitive Search](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
 
-+ **Free** ist ein gemeinsamer mehrinstanzfähiger Dienst, der Teil Ihres Azure-Abonnements ist. Indizierungs- und Abfrageanforderungen werden auf Replikaten und Partitionen ausgeführt, die von anderen Mandanten verwendet werden.
++ **Free** ist ein gemeinsamer mehrinstanzfähiger Dienst, der Teil Ihres Azure-Abonnements ist. 
 
 + **Basic** bietet dedizierte Computeressourcen für Produktionsworkloads mit geringerem Umfang, teilen sich jedoch bestimmte Netzwerkinfrastruktur mit anderen Mandanten.
 
-+ **Standard** wird auf dedizierten Computern ausgeführt. Sie bieten höhere Speicher- und Verarbeitungskapazität auf jeder Ebene. Standard ist in vier Ebenen verfügbar: S1, S2, S3 und S3 HD.
++ **Standard** wird auf dedizierten Computern ausgeführt. Sie bieten höhere Speicher- und Verarbeitungskapazität auf jeder Ebene. Standard ist in vier Ebenen verfügbar: S1, S2, S3 und S3 HD. S3 High Density (S3 HD) ist für [Mehrinstanzenfähigkeit](search-modeling-multitenant-saas-applications.md) und große Mengen von kleinen Indizes (3.000 Indizes pro Dienst) konzipiert. S3 HD bietet kein [Indexerfeature](search-indexer-overview.md), und die Datenerfassung muss APIs nutzen, die Daten aus der Quelle an den Index übermitteln. 
 
-+ **Storage Optimized** wird auf dedizierten Computern mit mehr Gesamtspeicher, Speicherbandbreite und Arbeitsspeicher als **Standard** ausgeführt. „Storage Optimized“ gibt es auf zwei Ebenen: L1 und L2
-
-> [!NOTE]
-> Ab dem 1. Juli stehen alle Tarife allgemein zur Verfügung, einschließlich des datenspeicheroptimierten Tarifs. Weitere Einzelheiten zu den Preisen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/search/).
-
-  S3 High Density (S3 HD) ist für bestimmte Workloads konzipiert: [Mehrinstanzenfähigkeit](search-modeling-multitenant-saas-applications.md) und große Mengen von kleinen Indizes (3.000 Indizes pro Dienst). Bei diesem Tarif ist das [Indexerfeature](search-indexer-overview.md) nicht verfügbar. Bei S3 HD muss der Push-Ansatz für die Datenerfassung verwendet werden, wobei Daten mithilfe von API-Aufrufen per Push von der Quelle an den Index übertragen werden. 
-
-> [!NOTE]
-> Ein Dienst wird für einen bestimmten Tarif bereitgestellt. Das Wechseln von Tarifen, um die Kapazität zu erhöhen, umfasst die Bereitstellung eines neuen Diensts (es gibt kein direktes Upgrade). Weitere Informationen finden Sie unter [Auswählen einer SKU oder eines Tarifs](search-sku-tier.md). Weitere Informationen zum Anpassen der Kapazität in einem Dienst, den Sie bereits bereitgestellt haben, finden Sie unter [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Workloads in Azure Search](search-capacity-planning.md).
->
++ **Storage Optimized** wird auf dedizierten Computern mit mehr Gesamtspeicher, Speicherbandbreite und Arbeitsspeicher als **Standard** ausgeführt. Dieser Tarif ist für große Indizes konzipiert, die nur langsam geändert werden. „Storage Optimized“ gibt es auf zwei Ebenen: L1 und L2.
 
 ## <a name="subscription-limits"></a>Grenzwerte für Abonnements
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
@@ -61,9 +52,6 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes und anderen Objek
 
 <sup>2</sup> Die Verwendung einer sehr großen Zahl von Elementen in komplexen Sammlungen pro Dokument führt derzeit zu einer hohen Speicherauslastung. Dies ist ein bekanntes Problem. Bis das Problem behoben wird, ist die Zahl 3.000 eine sichere Obergrenze für alle Dienstebenen. Dieser Grenzwert wird nur für Indizierungsvorgänge erzwungen, für die die früheste allgemein verfügbare API-Version mit Unterstützung von Feldern komplexen Typs (`2019-05-06`) verwendet wird (oder eine höhere Version). Damit es nicht zu Beeinträchtigungen für Clients kommt, für die ggf. ältere API-Vorschauversionen (mit Unterstützung von Feldern komplexen Typs) genutzt werden, wird dieser Grenzwert für Indizierungsvorgänge mit diesen API-Vorschauversionen nicht erzwungen. Beachten Sie, dass API-Vorschauversionen nicht für die Verwendung für Produktionsszenarien bestimmt sind und dass wir Kunden dringend empfehlen, die Umstellung auf die neueste allgemein verfügbare API-Version durchzuführen.
 
-> [!NOTE]
-> Die maximale Kapazität eines einzelnen Indexes ist in der Regel durch den verfügbaren Speicher begrenzt, es gibt jedoch eine Obergrenze für die Gesamtanzahl von Dokumenten, die in einem einzelnen Index gespeichert werden können. Diese Grenze beträgt ungefähr 24 Milliarden Dokumente pro Index für die Suchdienste Basic, S1, S2 und S3 und 2 Milliarden Dokumente pro Index für S3 HD-Suchdienste. Jedes Element einer komplexen Sammlung zählt für die Zwecke dieser Grenzwerte als separates Dokument.
-
 <a name="document-limits"></a>
 
 ## <a name="document-limits"></a>Dokumentgrenzwerte 
@@ -72,13 +60,16 @@ Seit Oktober 2018 gelten für neue Dienste, die in einem kostenpflichtigen Tari
 
 Um zu ermitteln, ob Ihr Dienst über Dokumentgrenzwerte verfügt, verwenden Sie die [GET Service Statistics-REST-API](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics). Dokumentgrenzwerte werden in der Antwort angezeigt, wobei `null` für keine Grenzwerte steht.
 
+> [!NOTE]
+> Obwohl der Dienst selbst keine Dokumentgrenzwerte festlegt, gibt es einen Shardgrenzwert von etwa 24 Milliarden Dokumenten pro Index für Basic-, S1-, S2 und S3-Suchdienste. Für S3 HD liegt der Shardgrenzwert bei 2 Milliarden Dokumenten pro Index. Jedes Element einer komplexen Sammlung zählt für den Shardgrenzwert als separates Dokument.
+
 ### <a name="document-size-limits-per-api-call"></a>Dokumentgrößenbeschränkungen pro API-Aufruf
 
 Die maximale Dokumentgröße beim Aufrufen einer Index-API beträgt etwa 16 Megabytes.
 
 Die Dokumentgröße ist tatsächlich eine Begrenzung der Größe des Anforderungstexts der Index-API. Da Sie einen Batch von mehreren Dokumenten auf einmal an die Index-API übergeben können, hängt die realistische maximale Größe davon ab, wie viele Dokumente im Batch vorhanden sind. Für einen Batch mit einem einzelnen Dokument beträgt die maximale Dokumentgröße 16 MB von JSON.
 
-Um die Dokumentgröße niedrig zu halten, achten Sie darauf, nicht abfragbare Daten von der Anforderung auszuschließen. Bilder und andere binäre Daten können nicht direkt abgefragt werden und sollten nicht im Index gespeichert werden. Um nicht abfragbare Daten in Suchergebnisse zu integrieren, definieren Sie ein nicht durchsuchbares Feld, in dem ein URL-Verweis auf die Ressource gespeichert wird.
+Denken Sie beim Schätzen der Dokumentgröße daran, nur die Felder zu berücksichtigen, die von einem Suchdienst verwendet werden können. Sämtliche Binär- oder Bilddaten in den Quelldokumenten sollten aus der Berechnungen ausgeschlossen werden.  
 
 ## <a name="indexer-limits"></a>Indexergrenzwerte
 
@@ -105,14 +96,14 @@ Es gibt eine maximale Ausführungsdauer, um den Dienst als Ganzes ausgewogen und
 
 <sup>4</sup> Maximal 30 Fähigkeiten pro Qualifikationsgruppe.
 
-<sup>5</sup> Workloads der kognitiven Suche und Bildanalysen in der Azure-BLOB-Indizierung weisen eine kürzere Ausführungsdauer auf als die normale Textindizierung. Bildanalysen und die Verarbeitung natürlicher Sprache sind rechenintensive Vorgänge, die unverhältnismäßig große Mengen an verfügbarer Verarbeitungskapazität verbrauchen. Die Ausführungsdauer wurde reduziert, damit andere Aufträge in der Warteschlange ausgeführt werden können.  
+<sup>5</sup> Die KI-Anreicherung und die Bildanalyse sind rechenintensive Vorgänge, die unverhältnismäßig große Mengen der verfügbaren Verarbeitungskapazität verbrauchen. Die Laufzeit für diese Workloads wurde verkürzt, damit andere Aufträge in der Warteschlange bessere Chancen haben, ausgeführt zu werden.  
 
 > [!NOTE]
 > Wie unter [Indexgrenzwerte](#index-limits) beschrieben, erzwingen Indexer die Obergrenze von 3.000 Elementen auch für alle komplexen Sammlungen pro Dokument – ab der neuesten allgemein verfügbaren API-Version, die komplexe Typen (`2019-05-06`) unterstützt. Dies bedeutet, dass dieser Grenzwert für Sie nicht gilt, wenn Sie Ihren Indexer mit einer früheren API-Version erstellt haben. Zur Sicherstellung der maximalen Kompatibilität wird ein Indexer, der mit einer früheren API-Version erstellt und dann mit API-Version `2019-05-06` oder höher aktualisiert wurde, trotzdem von der Begrenzung **ausgenommen**. Kunden sollten sich dieser negativen Auswirkungen, die wie oben erwähnt mit der Verwendung sehr komplexer Sammlungen verbunden sind, bewusst sein. Wir empfehlen Ihnen dringend, für die Erstellung aller neuen Indexer die neueste allgemein verfügbare API-Version zu nutzen.
 
 ## <a name="synonym-limits"></a>Synonymlimits
 
-Die maximal zulässige Anzahl von Synonymzuordnungen variiert je nach Tarif. Jede Regel kann bis zu 20 Erweiterungen aufweisen. Als Erweiterungen werden gleichwertige Begriffe bezeichnet. Beispielsweise würde für „Katze“, die Zuordnung von „Kätzchen“, „Kater“ und „Felis“ (die Gattung der Katzen) als drei Erweiterungen gezählt werden.
+Die maximale Anzahl der Synonymzuordnungen variiert je nach Tarif. Jede Regel kann bis zu 20 Erweiterungen aufweisen. Als Erweiterungen werden gleichwertige Begriffe bezeichnet. Beispielsweise würde für „Katze“, die Zuordnung von „Kätzchen“, „Kater“ und „Felis“ (die Gattung der Katzen) als drei Erweiterungen gezählt werden.
 
 | Resource | Kostenlos | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
@@ -125,11 +116,11 @@ QPS-Schätzungen müssen unabhängig von jedem Kunde erstellt werden. Indexgrö�
 
 Schätzungen sind besser vorhersagbar, wenn sie für Dienste berechnet werden, die auf dedizierten Ressourcen ausgeführt werden (Basic- und Standard-Tarife). Sie können den QPS-Wert genauer schätzen, da Sie die Kontrolle über mehr Parameter haben. Anleitungen zur Herangehensweise für Schätzungen finden Sie unter [Leistung und Optimierung der kognitiven Azure-Suche](search-performance-optimization.md).
 
-Für die Tarife vom Typ „Storage Optimized“ sollten Sie einen geringeren Abfragedurchsatz und eine höhere Latenz erwarten als für die Tarife vom Typ „Standard“.  Die Methodik zum Schätzen der zu erwartenden Abfrageleistung entspricht der der Standard-Tarife.
+Für die Tarife vom Typ „Storage Optimized“ (L1 und L2) sollten Sie einen geringeren Abfragedurchsatz und eine höhere Latenz als für die Tarife vom Typ „Standard“ erwarten. 
 
 ## <a name="data-limits-ai-enrichment"></a>Datengrenzwerte (KI-Anreicherung)
 
-Für eine [KI-Anreicherungspipeline](cognitive-search-concept-intro.md), die Aufrufe zur [Entitätserkennung](cognitive-search-skill-entity-recognition.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), [Stimmungsanalyse](cognitive-search-skill-sentiment.md), [Sprachenerkennung](cognitive-search-skill-language-detection.md) und [PII-Erkennung](cognitive-search-skill-pii-detection.md) an eine Textanalyseressource sendet, gelten Datengrenzwerte. Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an das Stimmungsanalysetool senden, verwenden Sie den [Skill „Text teilen“](cognitive-search-skill-textsplit.md).
+Für eine [KI-Anreicherungspipeline](cognitive-search-concept-intro.md), die Aufrufe zur [Entitätserkennung](cognitive-search-skill-entity-recognition.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), [Stimmungsanalyse](cognitive-search-skill-sentiment.md), [Sprachenerkennung](cognitive-search-skill-language-detection.md) und [Erkennung personenbezogener Daten](cognitive-search-skill-pii-detection.md) an eine Textanalyseressource sendet, gelten Datengrenzwerte. Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an das Stimmungsanalysetool senden, verwenden Sie den [Skill „Text teilen“](cognitive-search-skill-textsplit.md).
 
 ## <a name="throttling-limits"></a>Drosselungslimits
 

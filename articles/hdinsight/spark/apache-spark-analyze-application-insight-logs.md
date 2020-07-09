@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 6fd7682f56fbe446904a4acdb39e78525f2523a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435242"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078798"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analysieren von Application Insights-Telemetrieprotokollen mit Apache Spark in HDInsight
 
@@ -84,13 +84,15 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
 
 4. Verwenden Sie **UMSCHALT+EINGABE**, um den Code auszuführen. Auf der linken Seite der Zelle wird ein „\*“ in Klammern angezeigt. Dies weist darauf hin, dass der Code in dieser Zelle ausgeführt wird. Nach Abschluss der Ausführung wird „\*“ in eine Zahl geändert, und eine Ausgabe, die dem folgenden Text ähnelt, wird unterhalb der Zelle angezeigt:
 
-        Creating SparkContext as 'sc'
+    ```output
+    Creating SparkContext as 'sc'
 
-        ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
-        3    application_1468969497124_0001    pyspark    idle    Link    Link    ✔
+    ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
+    3    application_1468969497124_0001    pyspark    idle    Link    Link    ✔
 
-        Creating HiveContext as 'sqlContext'
-        SparkContext and HiveContext created. Executing user code ...
+    Creating HiveContext as 'sqlContext'
+    SparkContext and HiveContext created. Executing user code ...
+    ```
 
 5. Unterhalb der ersten Zelle wird eine neu erstellte Zelle angezeigt. Geben Sie den folgenden Text in die neue Zelle ein. Ersetzen Sie `CONTAINER` und `STORAGEACCOUNT` durch den Namen des Azure-Speicherkontos und des BLOB-Containers, der Application Insights-Daten enthält.
 
@@ -101,8 +103,10 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
 
     Verwenden Sie **UMSCHALT+EINGABETASTE**, um diese Zelle auszuführen. Ein Ergebnis ähnlich dem folgenden Text wird angezeigt:
 
-        Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```output
+    Found 1 items
+    drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```
 
     Der zurückgegebene WASB-Pfad ist der Speicherort der Application Insights-Telemetriedaten. Ändern Sie die Zeile `hdfs dfs -ls` in der Zelle so ab, dass der zurückgegebene WASB-Pfad verwendet wird, und führen Sie dann über **UMSCHALT+EINGABE** die Zelle erneut aus. Jetzt sollten die Ergebnisse die Verzeichnisse anzeigen, die Telemetriedaten enthalten.
 
@@ -125,66 +129,68 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
 
     Das Schema ist für die verschiedenen Telemetriedatentypen unterschiedlich. Das nachfolgende Beispiel ist das Schema, das für Webanforderungen generiert wird (Daten sind im Unterverzeichnis `Requests` gespeichert):
 
-        root
-        |-- context: struct (nullable = true)
-        |    |-- application: struct (nullable = true)
-        |    |    |-- version: string (nullable = true)
-        |    |-- custom: struct (nullable = true)
-        |    |    |-- dimensions: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |    |-- metrics: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- eventTime: string (nullable = true)
-        |    |    |-- isSynthetic: boolean (nullable = true)
-        |    |    |-- samplingRate: double (nullable = true)
-        |    |    |-- syntheticSource: string (nullable = true)
-        |    |-- device: struct (nullable = true)
-        |    |    |-- browser: string (nullable = true)
-        |    |    |-- browserVersion: string (nullable = true)
-        |    |    |-- deviceModel: string (nullable = true)
-        |    |    |-- deviceName: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- osVersion: string (nullable = true)
-        |    |    |-- type: string (nullable = true)
-        |    |-- location: struct (nullable = true)
-        |    |    |-- city: string (nullable = true)
-        |    |    |-- clientip: string (nullable = true)
-        |    |    |-- continent: string (nullable = true)
-        |    |    |-- country: string (nullable = true)
-        |    |    |-- province: string (nullable = true)
-        |    |-- operation: struct (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |-- session: struct (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- isFirst: boolean (nullable = true)
-        |    |-- user: struct (nullable = true)
-        |    |    |-- anonId: string (nullable = true)
-        |    |    |-- isAuthenticated: boolean (nullable = true)
-        |-- internal: struct (nullable = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- documentVersion: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |-- request: array (nullable = true)
-        |    |-- element: struct (containsNull = true)
-        |    |    |-- count: long (nullable = true)
-        |    |    |-- durationMetric: struct (nullable = true)
-        |    |    |    |-- count: double (nullable = true)
-        |    |    |    |-- max: double (nullable = true)
-        |    |    |    |-- min: double (nullable = true)
-        |    |    |    |-- sampledValue: double (nullable = true)
-        |    |    |    |-- stdDev: double (nullable = true)
-        |    |    |    |-- value: double (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |    |-- responseCode: long (nullable = true)
-        |    |    |-- success: boolean (nullable = true)
-        |    |    |-- url: string (nullable = true)
-        |    |    |-- urlData: struct (nullable = true)
-        |    |    |    |-- base: string (nullable = true)
-        |    |    |    |-- hashTag: string (nullable = true)
-        |    |    |    |-- host: string (nullable = true)
-        |    |    |    |-- protocol: string (nullable = true)
+    ```output
+    root
+    |-- context: struct (nullable = true)
+    |    |-- application: struct (nullable = true)
+    |    |    |-- version: string (nullable = true)
+    |    |-- custom: struct (nullable = true)
+    |    |    |-- dimensions: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |    |-- metrics: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- eventTime: string (nullable = true)
+    |    |    |-- isSynthetic: boolean (nullable = true)
+    |    |    |-- samplingRate: double (nullable = true)
+    |    |    |-- syntheticSource: string (nullable = true)
+    |    |-- device: struct (nullable = true)
+    |    |    |-- browser: string (nullable = true)
+    |    |    |-- browserVersion: string (nullable = true)
+    |    |    |-- deviceModel: string (nullable = true)
+    |    |    |-- deviceName: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- osVersion: string (nullable = true)
+    |    |    |-- type: string (nullable = true)
+    |    |-- location: struct (nullable = true)
+    |    |    |-- city: string (nullable = true)
+    |    |    |-- clientip: string (nullable = true)
+    |    |    |-- continent: string (nullable = true)
+    |    |    |-- country: string (nullable = true)
+    |    |    |-- province: string (nullable = true)
+    |    |-- operation: struct (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |-- session: struct (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- isFirst: boolean (nullable = true)
+    |    |-- user: struct (nullable = true)
+    |    |    |-- anonId: string (nullable = true)
+    |    |    |-- isAuthenticated: boolean (nullable = true)
+    |-- internal: struct (nullable = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- documentVersion: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |-- request: array (nullable = true)
+    |    |-- element: struct (containsNull = true)
+    |    |    |-- count: long (nullable = true)
+    |    |    |-- durationMetric: struct (nullable = true)
+    |    |    |    |-- count: double (nullable = true)
+    |    |    |    |-- max: double (nullable = true)
+    |    |    |    |-- min: double (nullable = true)
+    |    |    |    |-- sampledValue: double (nullable = true)
+    |    |    |    |-- stdDev: double (nullable = true)
+    |    |    |    |-- value: double (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |    |-- responseCode: long (nullable = true)
+    |    |    |-- success: boolean (nullable = true)
+    |    |    |-- url: string (nullable = true)
+    |    |    |-- urlData: struct (nullable = true)
+    |    |    |    |-- base: string (nullable = true)
+    |    |    |    |-- hashTag: string (nullable = true)
+    |    |    |    |-- host: string (nullable = true)
+    |    |    |    |-- protocol: string (nullable = true)
+    ```
 
 8. Verwenden Sie den folgenden Code, um den Datenrahmen als temporäre Tabelle zu registrieren und eine Abfrage für die Daten auszuführen:
 
@@ -201,15 +207,17 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
 
     Die Abfrage gibt Informationen zurück, die folgendem Text ähneln:
 
-        +---------+
-        |     city|
-        +---------+
-        | Bellevue|
-        |  Redmond|
-        |  Seattle|
-        |Charlotte|
-        ...
-        +---------+
+    ```output
+    +---------+
+    |     city|
+    +---------+
+    | Bellevue|
+    |  Redmond|
+    |  Seattle|
+    |Charlotte|
+    ...
+    +---------+
+    ```
 
 ## <a name="analyze-the-data-scala"></a>Analysieren der Daten: Scala
 
@@ -227,13 +235,15 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
 
 4. Verwenden Sie **UMSCHALT+EINGABE**, um den Code auszuführen. Auf der linken Seite der Zelle wird ein „\*“ in Klammern angezeigt. Dies weist darauf hin, dass der Code in dieser Zelle ausgeführt wird. Nach Abschluss der Ausführung wird „\*“ in eine Zahl geändert, und eine Ausgabe, die dem folgenden Text ähnelt, wird unterhalb der Zelle angezeigt:
 
-        Creating SparkContext as 'sc'
+    ```output
+    Creating SparkContext as 'sc'
 
-        ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
-        3    application_1468969497124_0001    spark    idle    Link    Link    ✔
+    ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
+    3    application_1468969497124_0001    spark    idle    Link    Link    ✔
 
-        Creating HiveContext as 'sqlContext'
-        SparkContext and HiveContext created. Executing user code ...
+    Creating HiveContext as 'sqlContext'
+    SparkContext and HiveContext created. Executing user code ...
+    ```
 
 5. Unterhalb der ersten Zelle wird eine neu erstellte Zelle angezeigt. Geben Sie den folgenden Text in die neue Zelle ein. Ersetzen Sie `CONTAINER` und `STORAGEACCOUNT` durch den Namen des Azure-Speicherkontos und des BLOB-Containers, der Application Insights-Protokolle enthält.
 
@@ -244,8 +254,10 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
 
     Verwenden Sie **UMSCHALT+EINGABETASTE**, um diese Zelle auszuführen. Ein Ergebnis ähnlich dem folgenden Text wird angezeigt:
 
-        Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```output
+    Found 1 items
+    drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```
 
     Der zurückgegebene WASB-Pfad ist der Speicherort der Application Insights-Telemetriedaten. Ändern Sie die Zeile `hdfs dfs -ls` in der Zelle so ab, dass der zurückgegebene WASB-Pfad verwendet wird, und führen Sie dann über **UMSCHALT+EINGABE** die Zelle erneut aus. Jetzt sollten die Ergebnisse die Verzeichnisse anzeigen, die Telemetriedaten enthalten.
 
@@ -270,66 +282,68 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
 
     Das Schema ist für die verschiedenen Telemetriedatentypen unterschiedlich. Das nachfolgende Beispiel ist das Schema, das für Webanforderungen generiert wird (Daten sind im Unterverzeichnis `Requests` gespeichert):
 
-        root
-        |-- context: struct (nullable = true)
-        |    |-- application: struct (nullable = true)
-        |    |    |-- version: string (nullable = true)
-        |    |-- custom: struct (nullable = true)
-        |    |    |-- dimensions: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |    |-- metrics: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- eventTime: string (nullable = true)
-        |    |    |-- isSynthetic: boolean (nullable = true)
-        |    |    |-- samplingRate: double (nullable = true)
-        |    |    |-- syntheticSource: string (nullable = true)
-        |    |-- device: struct (nullable = true)
-        |    |    |-- browser: string (nullable = true)
-        |    |    |-- browserVersion: string (nullable = true)
-        |    |    |-- deviceModel: string (nullable = true)
-        |    |    |-- deviceName: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- osVersion: string (nullable = true)
-        |    |    |-- type: string (nullable = true)
-        |    |-- location: struct (nullable = true)
-        |    |    |-- city: string (nullable = true)
-        |    |    |-- clientip: string (nullable = true)
-        |    |    |-- continent: string (nullable = true)
-        |    |    |-- country: string (nullable = true)
-        |    |    |-- province: string (nullable = true)
-        |    |-- operation: struct (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |-- session: struct (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- isFirst: boolean (nullable = true)
-        |    |-- user: struct (nullable = true)
-        |    |    |-- anonId: string (nullable = true)
-        |    |    |-- isAuthenticated: boolean (nullable = true)
-        |-- internal: struct (nullable = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- documentVersion: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |-- request: array (nullable = true)
-        |    |-- element: struct (containsNull = true)
-        |    |    |-- count: long (nullable = true)
-        |    |    |-- durationMetric: struct (nullable = true)
-        |    |    |    |-- count: double (nullable = true)
-        |    |    |    |-- max: double (nullable = true)
-        |    |    |    |-- min: double (nullable = true)
-        |    |    |    |-- sampledValue: double (nullable = true)
-        |    |    |    |-- stdDev: double (nullable = true)
-        |    |    |    |-- value: double (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |    |-- responseCode: long (nullable = true)
-        |    |    |-- success: boolean (nullable = true)
-        |    |    |-- url: string (nullable = true)
-        |    |    |-- urlData: struct (nullable = true)
-        |    |    |    |-- base: string (nullable = true)
-        |    |    |    |-- hashTag: string (nullable = true)
-        |    |    |    |-- host: string (nullable = true)
-        |    |    |    |-- protocol: string (nullable = true)
+    ```output
+    root
+    |-- context: struct (nullable = true)
+    |    |-- application: struct (nullable = true)
+    |    |    |-- version: string (nullable = true)
+    |    |-- custom: struct (nullable = true)
+    |    |    |-- dimensions: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |    |-- metrics: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- eventTime: string (nullable = true)
+    |    |    |-- isSynthetic: boolean (nullable = true)
+    |    |    |-- samplingRate: double (nullable = true)
+    |    |    |-- syntheticSource: string (nullable = true)
+    |    |-- device: struct (nullable = true)
+    |    |    |-- browser: string (nullable = true)
+    |    |    |-- browserVersion: string (nullable = true)
+    |    |    |-- deviceModel: string (nullable = true)
+    |    |    |-- deviceName: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- osVersion: string (nullable = true)
+    |    |    |-- type: string (nullable = true)
+    |    |-- location: struct (nullable = true)
+    |    |    |-- city: string (nullable = true)
+    |    |    |-- clientip: string (nullable = true)
+    |    |    |-- continent: string (nullable = true)
+    |    |    |-- country: string (nullable = true)
+    |    |    |-- province: string (nullable = true)
+    |    |-- operation: struct (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |-- session: struct (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- isFirst: boolean (nullable = true)
+    |    |-- user: struct (nullable = true)
+    |    |    |-- anonId: string (nullable = true)
+    |    |    |-- isAuthenticated: boolean (nullable = true)
+    |-- internal: struct (nullable = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- documentVersion: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |-- request: array (nullable = true)
+    |    |-- element: struct (containsNull = true)
+    |    |    |-- count: long (nullable = true)
+    |    |    |-- durationMetric: struct (nullable = true)
+    |    |    |    |-- count: double (nullable = true)
+    |    |    |    |-- max: double (nullable = true)
+    |    |    |    |-- min: double (nullable = true)
+    |    |    |    |-- sampledValue: double (nullable = true)
+    |    |    |    |-- stdDev: double (nullable = true)
+    |    |    |    |-- value: double (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |    |-- responseCode: long (nullable = true)
+    |    |    |-- success: boolean (nullable = true)
+    |    |    |-- url: string (nullable = true)
+    |    |    |-- urlData: struct (nullable = true)
+    |    |    |    |-- base: string (nullable = true)
+    |    |    |    |-- hashTag: string (nullable = true)
+    |    |    |    |-- host: string (nullable = true)
+    |    |    |    |-- protocol: string (nullable = true)
+    ```
 
 8. Verwenden Sie den folgenden Code, um den Datenrahmen als temporäre Tabelle zu registrieren und eine Abfrage für die Daten auszuführen:
 
@@ -345,15 +359,17 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
 
     Die Abfrage gibt Informationen zurück, die folgendem Text ähneln:
 
-        +---------+
-        |     city|
-        +---------+
-        | Bellevue|
-        |  Redmond|
-        |  Seattle|
-        |Charlotte|
-        ...
-        +---------+
+    ```output
+    +---------+
+    |     city|
+    +---------+
+    | Bellevue|
+    |  Redmond|
+    |  Seattle|
+    |Charlotte|
+    ...
+    +---------+
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

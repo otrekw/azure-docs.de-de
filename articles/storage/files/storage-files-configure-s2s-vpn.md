@@ -3,16 +3,16 @@ title: Konfigurieren eines S2S-VPN (Site-to-Site) zur Verwendung mit Azure Files
 description: So konfigurieren Sie ein S2S-VPN (Site-to-Site) zur Verwendung mit Azure Files.
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae3d38d92990d7a1af4146c25b017286ebd29352
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4d1d0f9e2a86da8213a9662b68c791a117dcc7fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515339"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Konfigurieren eines Site-to-Site-VPN zur Verwendung mit Azure Files
 Sie können ein S2S-VPN (Site-to-Site) verwenden, um Ihre Azure-Dateifreigaben aus Ihrem lokalen Netzwerk über SMB einzubinden, ohne Port 445 zu öffnen. Sie können ein Site-to-Site-VPN mithilfe des [Azure VPN Gateways](../../vpn-gateway/vpn-gateway-about-vpngateways.md) einrichten, einer Azure-Ressource, die VPN-Dienste anbietet, und die in einer Ressourcengruppe zusammen mit Speicherkonten oder anderen Azure-Ressourcen bereitgestellt wird.

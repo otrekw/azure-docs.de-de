@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81640962"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148343"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Behandeln von Problemen mit dem Aktivieren oder Anzeigen von Application Insights Profiler
 
@@ -128,7 +128,7 @@ Diese Parameter löschen den Ordner, der von Application Insights Profiler verwe
 
 Profiler wird als fortlaufender Webauftrag in der Web-App ausgeführt. Sie können die Web-App-Ressource im [Azure-Portal](https://portal.azure.com) öffnen. Überprüfen Sie im Bereich **WebJobs** den Status von **ApplicationInsightsProfiler**. Wenn er nicht ausgeführt wird, öffnen Sie **Protokolle**, um weitere Informationen zu erhalten.
 
-## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Behandeln von Problemen mit Profiler und der Azure-Diagnose
+## <a name="troubleshoot-vms-and-cloud-services"></a>Problembehandlung bei VMs und Cloud Services
 
 >**Der Fehler im Profiler, der in WAD für Cloud Services enthalten ist, wurde behoben.** Die neueste Version von WAD (1.12.2.0) für Cloud Services funktioniert mit allen neueren Versionen des App Insights-SDK. Cloud Service-Hosts führen ein automatisches Upgrade für WAD durch, doch erfolgt dies nicht unmittelbar. Soll ein Upgrade erzwungen werden, können Sie den Dienst erneut bereitstellen oder den Knoten neu starten.
 
@@ -141,27 +141,45 @@ Führen Sie die folgenden drei Schritte aus, um festzustellen, ob Profiler von d
 
 Überprüfen der Einstellungen, die zum Konfigurieren der Azure-Diagnose verwendet wurden:
 
-1. Melden Sie sich beim virtuellen Computer (VM) an, und öffnen Sie die Protokolldatei an diesem Speicherort. (Das Laufwerk ist möglicherweise „c:“ oder „d:“, und die Plug-In-Version könnte unterschiedlich sein.)
-
-    ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
-    ```
-    oder
+1. Melden Sie sich beim virtuellen Computer (VM) an, und öffnen Sie die Protokolldatei an diesem Speicherort. Die Plug-in-Version ist auf Ihrem Computer möglicherweise neuer.
+    
+    Für VMs:
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
+    ```
+    
+    Für Cloud Services:
+    ```
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
 
 1. Suchen Sie in der Datei nach der Zeichenfolge **WadCfg**, um die Einstellungen zu finden, die zum Konfigurieren der Azure-Diagnose an den virtuellen Computer übergeben wurden. Sie können überprüfen, ob der von der Profiler-Senke verwendete iKey richtig ist.
 
-1. Überprüfen Sie die Befehlszeile, mit der Profiler gestartet wird. Die zum Starten von Profiler verwendeten Argumente befinden sich in der folgenden Datei. (Das Laufwerk könnte „c:“ oder „d:“ sein.)
+1. Überprüfen Sie die Befehlszeile, mit der Profiler gestartet wird. Die zum Starten von Profiler verwendeten Argumente befinden sich in der folgenden Datei. (Das Laufwerk kann „c:“ oder „d:“ sein, und das Verzeichnis ist möglicherweise ausgeblendet.)
 
+    Für VMs:
+    ```
+    C:\ProgramData\ApplicationInsightsProfiler\config.json
+    ```
+    
+    Für Cloud Services:
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json
     ```
 
 1. Stellen Sie sicher, dass der iKey in der Profiler-Befehlszeile richtig ist. 
 
-1. Überprüfen Sie die Profiler-Protokolldatei anhand des Pfads in der vorherigen Datei *config.json*. Darin werden die Debuginformationen angezeigt, welche die von Profiler verwendeten Einstellungen angeben. Außerdem werden Status- und Fehlermeldungen von Profiler angezeigt.  
+1. Überprüfen Sie die Profiler-Protokolldatei namens **BootstrapN.log** anhand des Pfads in der vorherigen Datei *config.json*. Darin werden die Debuginformationen angezeigt, welche die von Profiler verwendeten Einstellungen angeben. Außerdem werden Status- und Fehlermeldungen von Profiler angezeigt.  
+
+    Für VMs befindet sich die Datei in der Regel hier:
+    ```
+    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
+
+    Für Cloud Services:
+    ```
+    C:\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
 
     Wenn Profiler ausgeführt wird, während Ihre Anwendung Anforderungen empfängt, wird die folgende Meldung angezeigt: *Aktivität aus iKey erkannt*. 
 

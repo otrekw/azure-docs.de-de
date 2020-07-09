@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 02/25/2020
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: f7a70454e395f5f9d39266e0777749e1fcbef68e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 39f2dad088f3f3eb4a99aa17c1bdde5fe2a2f79c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419356"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655812"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Schnellstart: Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche
 
@@ -26,10 +26,10 @@ ms.locfileid: "81419356"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Diese Schnellstartanleitung beschreibt, wie Sie mithilfe der Azure Data Factory-Benutzeroberfläche eine Data Factory erstellen und überwachen. Die in dieser Data Factory erstellte Pipeline *kopiert* Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Ein Tutorial zum *Transformieren* von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Transformieren von Daten mithilfe von Spark](tutorial-transform-data-spark-portal.md).
+Diese Schnellstartanleitung beschreibt, wie Sie mithilfe der Azure Data Factory-Benutzeroberfläche eine Data Factory erstellen und überwachen. Die in dieser Data Factory erstellte Pipeline *kopiert* Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Informationen zum *Transformieren* von Daten mithilfe von Azure Data Factory finden Sie unter [Was sind Zuordnungsdatenflüsse?](concepts-data-flow-overview.md) und [Wranglingdatenfluss (Vorschau)](wrangling-data-flow-overview.md).
 
 > [!NOTE]
-> Wenn Sie mit Azure Data Factory nicht vertraut sind, lesen Sie vor der Durchführung dieses Schnellstarts die Informationen unter [Einführung in Azure Data Factory](data-factory-introduction.md). 
+> Wenn Sie mit Azure Data Factory nicht vertraut sind, lesen Sie vor der Durchführung dieses Schnellstarts die Informationen unter [Einführung in Azure Data Factory](introduction.md). 
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -42,8 +42,6 @@ Dieses Video enthält Informationen zur Data Factory-Benutzeroberfläche:
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). 
 1. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus.
-   
-   ![Auswählen von „Ressource erstellen“ im Menü des Azure-Portals](./media/doc-common-process/create-a-resource.png)
 1. Wählen Sie **Analytics** und dann **Data Factory** aus. 
    
    ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -80,8 +78,12 @@ Dieses Video enthält Informationen zur Data Factory-Benutzeroberfläche:
 ## <a name="create-a-linked-service"></a>Erstellen eines verknüpften Diensts
 In dieser Prozedur erstellen Sie einen verknüpften Dienst, der Ihr Azure Storage-Konto mit der Data Factory verbindet. Der verknüpfte Dienste enthält die Verbindungsinformationen, die der Data Factory-Dienst zur Laufzeit zur Verbindungsherstellung verwendet.
 
-1. Wählen Sie **Verbindungen** und anschließend auf der Symbolleiste die Schaltfläche **Neu** aus. (Die Schaltfläche **Verbindungen** befindet sich unten in der linken Spalte unter **Factory Resources** (Factory-Ressourcen)). 
+1. Öffnen Sie im linken Bereich die Registerkarte [Verwalten](https://docs.microsoft.com/azure/data-factory/author-management-hub).
 
+1. Wählen Sie auf der Seite „Verknüpfte Dienste“ **+Neu** aus, um einen neuen verknüpften Dienst zu erstellen.
+
+   ![Neuer verknüpfter Dienst](./media/doc-common-process/new-linked-service.png)
+   
 1. Wählen Sie auf der Seite **Neuer verknüpfter Dienst** die Option **Azure Blob Storage**, und klicken Sie dann auf **Weiter**. 
 
 1. Führen Sie auf der Seite „New Linked Service (Azure Blob Storage)“ (Neuer verknüpfter Dienst (Azure Blob Storage)) die folgenden Schritte aus: 
@@ -143,12 +145,13 @@ In den Einstellungen des verknüpften Diensts haben Sie das Azure Storage-Konto
     f. Klicken Sie auf **OK**.   
 
     ![Festlegen der Eigenschaften für „OutputDataset“](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
+
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline 
 In diesem Schritt erstellen und überprüfen Sie eine Pipeline mit einer Copy-Aktivität, die das Eingabe- und Ausgabedataset verwendet. Die Copy-Aktivität kopiert Daten aus der in den Einstellungen des Eingabedatasets angegebenen Datei in die Datei, die in den Einstellungen des Ausgabedatasets angegeben ist. Wenn das Eingabedataset nur einen Ordner (nicht den Dateinamen) angibt, kopiert die Copy-Aktivität alle Dateien im Quellordner ans Ziel. 
 
 1. Klicken Sie auf die Schaltfläche **+** (Plus) und dann auf **Pipeline**. 
 
-1. Geben Sie auf der Registerkarte **Allgemein** für **Name** den Namen **CopyPipeline** ein. 
+1. Geben Sie im Bereich „Allgemein“ unter **Eigenschaften** die Eigenschaft **CopyPipeline** für **Name** an. Reduzieren Sie dann den Bereich, indem Sie in der oberen rechten Ecke auf das Symbol „Eigenschaften“ klicken.
 
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Move & Transform** (Verschieben und transformieren). Ziehen Sie die **Copy Data**-Aktivität aus der Toolbox **Aktivitäten** auf die Oberfläche des Pipeline-Designers. Sie können in der Toolbox **Aktivitäten** auch nach Aktivitäten suchen. Geben Sie unter **Name** den Namen **CopyFromBlobToBlob** ein.
    ![Erstellen einer Aktivität zum Kopieren von Daten](./media/quickstart-create-data-factory-portal/copy-activity.png)

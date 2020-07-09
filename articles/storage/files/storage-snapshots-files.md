@@ -7,28 +7,33 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e09887b8000a0aeb52879d5306bc0a00da5141f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d415ef165da18312a458d7d14fba18acd1bf44cf
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176140"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235604"
 ---
-# <a name="overview-of-share-snapshots-for-azure-files"></a>Übersicht über Freigabemomentaufnahmen für Azure Files 
+# <a name="overview-of-share-snapshots-for-azure-files"></a>Übersicht über Freigabemomentaufnahmen für Azure Files
+
 Azure Files bietet die Möglichkeit, Freigabemomentaufnahmen von Dateifreigaben zu erstellen. Freigabemomentaufnahmen erfassen den Freigabestatus zum jeweiligen Zeitpunkt. In diesem Artikel erfahren Sie, welche Möglichkeiten Freigabemomentaufnahmen bieten und wie Sie in Ihrem speziellen Fall von ihnen profitieren können.
 
 ## <a name="when-to-use-share-snapshots"></a>Verwendung von Freigabemomentaufnahmen
 
 ### <a name="protection-against-application-error-and-data-corruption"></a>Schutz vor Anwendungsfehlern und Datenbeschädigung
+
 Anwendungen, die Azure-Dateifreigaben verwenden, führen beispielsweise Schreib- und Lesevorgänge sowie Speicher-, Übertragungs- oder Verarbeitungsvorgänge durch. Eine falsche Anwendungskonfiguration oder ein Fehler in der Anwendung kann dazu führen, dass einige Datenblöcke versehentlich überschrieben oder beschädigt werden. Zum Schutz vor solchen Szenarien können Sie vor dem Bereitstellen von neuem Anwendungscode eine Freigabemomentaufnahme erstellen. Sollte die neue Bereitstellung einen Fehler enthalten, können Sie zu einer früheren Version Ihrer Daten in der Dateifreigabe zurückkehren. 
 
 ### <a name="protection-against-accidental-deletions-or-unintended-changes"></a>Schutz vor versehentlichem Löschen oder unbeabsichtigten Änderungen
+
 Angenommen, Sie arbeiten an einer Textdatei in einer Dateifreigabe. Nach dem Schließen der Textdatei können Sie Ihre Änderungen nicht mehr rückgängig machen. In einem solchen Fall müssen Sie eine frühere Version der Datei wiederherstellen. Mit Freigabemomentaufnahmen können Sie frühere Versionen der Datei wiederherstellen, wenn sie versehentlich umbenannt oder gelöscht wurde.
 
 ### <a name="general-backup-purposes"></a>Allgemeine Sicherung
-Nach dem Erstellen einer Dateifreigabe können Sie regelmäßig eine Freigabemomentaufnahme der Dateifreigabe als Datensicherung erstellen. Regelmäßig erstellte Freigabemomentaufnahmen helfen bei der Verwaltung vorheriger Versionen von Daten, die für künftige Überprüfungsanforderungen oder zur Notfallwiederherstellung verwendet werden können.
+
+Nach dem Erstellen einer Dateifreigabe können Sie regelmäßig eine Freigabemomentaufnahme der Dateifreigabe als Datensicherung erstellen. Regelmäßig erstellte Freigabemomentaufnahmen helfen bei der Verwaltung vorheriger Versionen von Daten, die für künftige Überprüfungsanforderungen oder zur Notfallwiederherstellung verwendet werden können. Es wird empfohlen, eine [Sicherung für die Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md) als Sicherungslösung für das Erstellen und Verwalten von Momentaufnahmen zu verwenden. Sie können Momentaufnahmen auch selbst erstellen und verwalten. Verwenden Sie dazu entweder die CLI oder PowerShell.
 
 ## <a name="capabilities"></a>Funktionen
+
 Eine Freigabemomentaufnahme ist eine schreibgeschützte Kopie Ihrer Daten zu einem bestimmten Zeitpunkt. Sie können Momentaufnahmen mithilfe der REST-API erstellen, löschen und verwalten. Die gleichen Funktionen stehen auch in der Clientbibliothek, über die Azure-Befehlszeilenschnittstelle und im Azure-Portal zur Verfügung. 
 
 Sie können Momentaufnahmen einer Freigabe über die REST-API und über SMB anzeigen. Sie können die Liste mit den Versionen des Verzeichnisses oder der Datei abrufen und eine spezifische Version direkt als Laufwerk einbinden (nur für Windows verfügbar; siehe [Einschränkungen](#limits)). 
@@ -48,7 +53,8 @@ Wenn Sie eine Freigabemomentaufnahme einer Dateifreigabe erstellen, werden die D
 
 Wenn Sie eine Freigabe mit Freigabemomentaufnahmen löschen möchten, müssen Sie zunächst alle Freigabemomentaufnahmen löschen.
 
-## <a name="space-usage"></a>Speicherplatz 
+## <a name="space-usage"></a>Speicherplatz
+
 Freigabemomentaufnahmen sind in der Regel inkrementell. Es werden also nur die Daten gespeichert, die sich seit der letzten Freigabemomentaufnahme geändert haben. Dadurch reduziert sich die erforderliche Zeit zum Erstellen der Freigabemomentaufnahme, und zudem werden Speicherkosten eingespart. Alle Schreibvorgänge in das Objekt und alle Vorgänge zum Aktualisieren von Eigenschaften oder Metadaten werden als Inhaltsänderung betrachtet und in der Freigabemomentaufnahme gespeichert. 
 
 Um Speicherplatz zu sparen, können Sie die Freigabemomentaufnahme für den Zeitraum mit den meisten Änderungen löschen.
@@ -58,6 +64,7 @@ Obwohl Freigabemomentaufnahmen inkrementell gespeichert werden, müssen Sie nur 
 Momentaufnahmen zählen nicht zu Ihrem 5-TB-Freigabelimit. Es gibt keine Beschränkung für die Speicherplatzbelegung durch Freigabemomentaufnahmen. Die Beschränkungen für Speicherkonten gelten weiterhin.
 
 ## <a name="limits"></a>Einschränkungen
+
 Derzeit sind in Azure Files maximal 200 Freigabemomentaufnahmen zulässig. Nach 200 Freigabemomentaufnahmen müssen ältere Freigabemomentaufnahmen gelöscht werden, damit neue Freigabemomentaufnahmen erstellt werden können. 
 
 Die Anzahl gleichzeitiger Aufrufe zum Erstellen von Freigabemomentaufnahmen ist nicht beschränkt. Für den Speicherplatz, den Freigabemomentaufnahmen einer bestimmten Dateifreigabe belegen können, gelten keine Einschränkungen. 
@@ -65,6 +72,7 @@ Die Anzahl gleichzeitiger Aufrufe zum Erstellen von Freigabemomentaufnahmen ist 
 Derzeit ist es nicht möglich, Freigabemomentaufnahmen unter Linux bereitzustellen. Das liegt daran, dass der Linux-SMB-Client das Bereitstellen von Momentaufnahmen nicht wie Windows unterstützt.
 
 ## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Kopieren von Daten aus einer Freigabemomentaufnahme zurück in eine Freigabe
+
 Für Kopiervorgänge, die Dateien und Freigabemomentaufnahmen betreffen, gelten folgende Regeln:
 
 Sie können einzelne Dateien in einer Dateifreigabemomentaufnahme in die zugehörige Basisfreigabe oder in jeden anderen Speicherort kopieren. Sie können eine frühere Version einer Datei oder die gesamte Dateifreigabe wiederherstellen, indem Sie die einzelnen Dateien nacheinander aus der Freigabemomentaufnahme kopieren. Die Freigabemomentaufnahme wird nicht zur Basisfreigabe heraufgestuft. 
@@ -75,15 +83,17 @@ Sie können eine Datei in einer Freigabemomentaufnahme in ein anderes Ziel mit e
 
 Wenn eine Zieldatei durch eine Kopie überschrieben wird, bleiben alle der ursprünglichen Zieldatei zugeordneten Freigabemomentaufnahmen erhalten.
 
-## <a name="general-best-practices"></a>Allgemeine bewährte Methoden 
-Bei der Verwendung von Infrastruktur in Azure sollten Sicherungen für die Datenwiederherstellung nach Möglichkeit automatisiert werden. Automatisierte Aktionen sind zuverlässiger als manuelle Vorgänge und verbessern so den Schutz und die Wiederherstellbarkeit von Daten. Für die Automatisierung können Sie die REST-API, das Client SDK oder Skripts verwenden.
+## <a name="general-best-practices"></a>Allgemeine bewährte Methoden
+
+Es wird empfohlen, eine [Sicherung für die Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md) als Sicherungslösung für die Automatisierung des Erstellens und Verwaltens von Momentaufnahmen zu verwenden. Bei der Verwendung von Infrastruktur in Azure sollten Sicherungen für die Datenwiederherstellung nach Möglichkeit automatisiert werden. Automatisierte Aktionen sind zuverlässiger als manuelle Vorgänge und verbessern so den Schutz und die Wiederherstellbarkeit von Daten. Für die Automatisierung können Sie die Sicherung für die Azure-Dateifreigabe, die REST-API, das Client SDK oder Skripts verwenden.
 
 Überlegen Sie vor der Bereitstellung des Freigabemomentaufnahmen-Planers sorgfältig, in welchem Intervall die Freigabemomentaufnahmen erstellt werden sollen und welche Aufbewahrungseinstellungen Sie festlegen möchten, um unnötige Kosten zu vermeiden.
 
-Freigabemomentaufnahmen bieten nur Schutz auf der Dateiebene. Freigabemomentaufnahmen verhindern keine versehentlichen Löschvorgänge für eine Dateifreigabe oder ein Speicherkonto. Zum Schutz vor versehentlichem Löschen können Sie das Speicherkonto oder die Ressourcengruppe sperren.
+Freigabemomentaufnahmen bieten nur Schutz auf der Dateiebene. Freigabemomentaufnahmen verhindern keine versehentlichen Löschvorgänge für eine Dateifreigabe oder ein Speicherkonto. Zum Schutz vor versehentlichem Löschen können Sie [vorläufiges Löschen aktivieren](storage-files-prevent-file-share-deletion.md) oder das Speicherkonto und/oder die Ressourcengruppe sperren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Verwenden von Azure-Dateifreigabemomentaufnahmen:
+    - [Informationen zum Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md)
     - [PowerShell](storage-how-to-use-files-powershell.md)
     - [BEFEHLSZEILENSCHNITTSTELLE (CLI)](storage-how-to-use-files-cli.md)
     - [Windows](storage-how-to-use-files-windows.md#accessing-share-snapshots-from-windows)

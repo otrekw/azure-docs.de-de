@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39ebbf99ad31cce20eabc20fbdc056c889235713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fa56217c54ac662a62a5ce835d75e3d85f05bfa
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77470750"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041471"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Datenmodellierung in Azure Time Series Insights Preview
 
 In diesem Artikel wird beschrieben, wie Sie mit dem Zeitreihenmodell in Insights Preview arbeiten. Es werden mehrere allgemeine Datenszenarien dargestellt.
 
 > [!TIP]
-> * Erfahren Sie mehr über das [Zeitreihenmodell](time-series-insights-update-tsm.md) (Vorschau).
+> * Erfahren Sie mehr über das [Zeitreihenmodell](concepts-model-overview.md) (Vorschau).
 > * Weitere Informationen zur Navigation auf der Vorschaubenutzeroberfläche finden Sie unter [Azure Time Series Insights Preview-Explorer](./time-series-insights-update-explorer.md).
 
 ## <a name="instances"></a>Instanzen
@@ -168,7 +168,7 @@ Wählen Sie zunächst die **Modell**-Ansicht aus der **Analyse**-Ansicht im Time
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Zeitreihenmodellen finden Sie unter [Datenmodellierung](./time-series-insights-update-tsm.md).
+- Weitere Informationen zu Zeitreihenmodellen finden Sie unter [Datenmodellierung](./concepts-model-overview.md).
 
 - Weitere Informationen zur Preview finden Sie unter [Visualisieren von Daten im Azure Time Series Insights Preview-Explorer](./time-series-insights-update-explorer.md).
 

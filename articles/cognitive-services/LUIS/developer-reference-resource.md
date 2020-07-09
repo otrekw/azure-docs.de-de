@@ -2,13 +2,13 @@
 title: Entwicklerressourcen – Language Understanding
 description: SDKs, REST-APIs und CLI unterstützen Sie beim Entwickeln von LUIS-Anwendungen (Language Understanding) in Ihrer Programmiersprache. Verwalten Sie Ihre Azure-Ressourcen und LUIS-Vorhersagen.
 ms.topic: reference
-ms.date: 05/05/2020
-ms.openlocfilehash: 820811c53f143c9747cd11f45cafb075398b080b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: c712a81e5b786ac980a0c48d358fef4caf2e7597
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589005"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758060"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK-, REST- und CLI-Entwicklerressourcen für LUIS (Language Understanding)
 
@@ -53,15 +53,16 @@ Sowohl Erstellungs- als auch Vorhersage-Endpunkt-APIs sind über Rest-APIs verf�
 
 LUIS weist zurzeit 2 Arten von Endpunkten auf:
 
-* Erstellen auf dem Trainingsendpunkt
-* Abfragevorhersage auf dem Laufzeitendpunkt.
+* **Erstellung** auf dem Trainingsendpunkt
+* **Abfragevorhersage** auf dem Laufzeitendpunkt
 
 |Zweck|URL|
 |--|--|
-|Erstellen auf dem Trainingsendpunkt|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
-|V2-Runtime: alle Vorhersagen am Laufzeitendpunkt|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
-|V3-Runtime: Versionsvorhersage am Laufzeitendpunkt|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
-|V3-Runtime: Slotvorhersagen am Laufzeitendpunkt|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|Version 2: Erstellung auf dem Trainingsendpunkt|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|Version 3: Erstellung auf dem Trainingsendpunkt|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/authoring/v3.0-preview/apps/{appID}/`|
+|Version 2: alle Vorhersagen auf dem Laufzeitendpunkt|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|Version 3: Versionsvorhersage auf dem Laufzeitendpunkt|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|Version 3: Slotvorhersage auf dem Laufzeitendpunkt|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
 
 In der folgende Tabelle werden die Parameter erläutert, die in der vorherigen Tabelle durch geschweifte Klammern `{}` gekennzeichnet sind.
 
@@ -97,7 +98,16 @@ Language Understanding bietet die Möglichkeit, Ihre App und ihre Modelle in ein
 
 Das Importieren und Exportieren in diesen Formaten ist über die APIs und das LUIS-Portal möglich. Das Portal bietet Import und Export als Teil der App-Liste und der Versionsliste.
 
-## <a name="other-tools-and-sdks"></a>Weitere Tools und SDKs
+## <a name="workshops"></a>Workshops
+
+* GitHub: (Workshop) [Conversational-AI: NLU using LUIS](https://github.com/GlobalAICommunity/Workshop-Conversational-AI) (Konversations-KI: NLU mit LUIS)
+
+## <a name="continuous-integration-tools"></a>Tools für Continuous Integration
+
+* GitHub: (Vorschau) [Developing a LUIS app using DevOps practices](https://github.com/Azure-Samples/LUIS-DevOps-Template) (Entwickeln einer LUIS-App mit DevOps-Verfahren)
+* GitHub: [NLU.DevOps:](https://github.com/microsoft/NLU.DevOps) Tools, die Continuous Integration und Continuous Deployment für NLU-Dienste unterstützen
+
+## <a name="bot-framework-tools"></a>Bot Framework-Tools
 
 Das Bot Framework ist als [SDK](https://github.com/Microsoft/botframework) in einer Vielzahl von Sprachen und als Dienst mit [Azure Bot Service](https://dev.botframework.com/) verfügbar.
 
@@ -109,8 +119,7 @@ Bot Framework bietet [verschiedene Tools](https://github.com/microsoft/botbuilde
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen): Automatisches Generieren von C#/Typescript-Klassen für Ihre LUIS-Absichten und -Entitäten
 * [Bot Framework-Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases): Eine Desktopanwendung, mit der Entwickler von Bots mit dem Bot Framework SDK erstellte Bots testen und debuggen können
 * [Bot Framework Composer](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md): Ein integriertes Entwicklungstool für Entwickler und bereichsübergreifende Teams zum Erstellen von Bots und Konversationsumgebungen mit Microsoft Bot Framework
-* [microsoft/NLU.DevOps](https://github.com/microsoft/NLU.DevOps): Tools, die Continuous Integration und Continuous Deployment für NLU-Dienste unterstützen
-
+* [Bot Framework-Beispiele](https://github.com/microsoft/botbuilder-samples) in C#, JavaScript, TypeScript und Python
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu allgemeinen [HTTP-Fehlercodes](luis-reference-response-codes.md)

@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: e4b56f18bf8a2ed1c22b00b8a57efdbf06eb7fa2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dabceb3cc3b7fa2b48ad1b21dfcafb3278c2461d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78183317"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298760"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer Webanwendung mit Azure Active Directory B2C
 
@@ -42,28 +42,27 @@ In dem Tutorial, das Sie zur Vorbereitung absolviert haben, wurde eine Webanwend
 
 ### <a name="add-a-redirect-uri-reply-url"></a>Hinzufügen eines Umleitungs-URI (Antwort-URL)
 
-Sie können die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden, um die Anwendung zu aktualisieren. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregintro)
+Zum Aktualisieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie unsere neue einheitliche Benutzeroberfläche **App-Registrierungen** oder unsere alte Benutzeroberfläche **Anwendungen (Legacy)** verwenden. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregtraining)
 
-#### <a name="applications"></a>[Anwendungen](#tab/applications/)
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-1. Wählen Sie **Anwendungen** und anschließend die Anwendung *webapp1* aus.
-1. Fügen Sie unter **Antwort-URL** Folgendes hinzu: `https://localhost:44316`.
-1. Wählen Sie **Speichern** aus.
-1. Notieren Sie sich auf der Eigenschaftenseite die Anwendungs-ID, die Sie später beim Konfigurieren der Webanwendung verwenden.
-
-#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[App-Registrierungen](#tab/app-reg-ga/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
-1. Wählen Sie **App-Registrierungen (Vorschau)** , die Registerkarte **Anwendungen mit Besitzer** und dann die Anwendung *webapp1* aus.
-1. Wählen Sie **Authentifizierung** und dann **Neue Benutzeroberfläche ausprobieren** aus (sofern die Option angezeigt wird).
+1. Wählen Sie **App-Registrierungen**, die Registerkarte **Anwendungen mit Besitzer** und dann die Anwendung *webapp1* aus.
 1. Wählen Sie unter **Web** den Link **URI hinzufügen** aus, geben Sie `https://localhost:44316` ein, und wählen Sie dann **Speichern** aus.
 1. Wählen Sie **Übersicht**.
 1. Notieren Sie sich die **Anwendungs-ID (Client)** , die Sie später beim Konfigurieren der Webanwendung verwenden.
+
+#### <a name="applications-legacy"></a>[Anwendungen (Legacy)](#tab/applications-legacy/)
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie **Anwendungen (Legacy)** und anschließend die Anwendung *webapp1* aus.
+1. Fügen Sie unter **Antwort-URL** Folgendes hinzu: `https://localhost:44316`.
+1. Wählen Sie **Speichern** aus.
+1. Notieren Sie sich auf der Eigenschaftenseite die Anwendungs-ID, die Sie später beim Konfigurieren der Webanwendung verwenden.
 
 * * *
 
@@ -93,6 +92,7 @@ Aktualisieren Sie die Einstellungen in der Datei „Web.config“ zur Verwendung
 1. Öffnen Sie die Projektmappe **B2C-WebAPI-DotNet** in Visual Studio.
 1. Öffnen Sie im Projekt **TaskWebApp** die Datei **Web.config**.
     1. Aktualisieren Sie den Wert für `ida:Tenant` und `ida:AadInstance` mit dem Namen des von Ihnen erstellten Azure AD B2C-Mandanten. Ersetzen Sie beispielsweise `fabrikamb2c` durch `contoso`.
+    1. Ersetzen Sie den Wert `ida:TenantId` durch die Verzeichnis-ID, die Sie im Azure-Portal (unter **Azure Active Directory** > **Eigenschaften** > **Verzeichnis-ID**) in den Eigenschaften für Ihren Azure B2C-Mandanten finden können.
     1. Ersetzen Sie den Wert für `ida:ClientId` durch die notierte Anwendungs-ID.
     1. Ersetzen Sie den Wert für `ida:ClientSecret` durch den notierten Schlüssel. Wenn der geheime Clientschlüssel vordefinierte XML-Entitäten enthält, z. B. kleiner als (`<`), größer als (`>`), kaufmännisches und-Zeichen (`&`) oder doppelte Anführungszeichen (`"`), müssen Sie diese Zeichen durch XML-Codierung des geheimen Clientschlüssels mit Escapezeichen versehen, bevor Sie sie der Datei „Web.config“ hinzufügen.
     1. Ersetzen Sie den Wert für `ida:SignUpSignInPolicyId` durch `b2c_1_signupsignin1`.

@@ -4,23 +4,24 @@ description: Erfahren Sie, wie die SQL-Systemfunktion CONTAINS in Azure Cosmos D
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c0c25b63fb6a7bf42bd2ec5b9503cac2cce7583f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a08fe47122d7e9ddd1c9038bb5f15ebbb0be30fa
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302592"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848973"
 ---
 # <a name="contains-azure-cosmos-db"></a>CONTAINS (Azure Cosmos DB)
+
  Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck den zweiten enthält.  
   
 ## <a name="syntax"></a>Syntax
   
 ```sql
-CONTAINS(<str_expr1>, <str_expr2>)  
+CONTAINS(<str_expr1>, <str_expr2> [, <bool_expr>])  
 ```  
   
 ## <a name="arguments"></a>Argumente
@@ -30,6 +31,8 @@ CONTAINS(<str_expr1>, <str_expr2>)
   
 *str_expr2*  
    Ist der Zeichenfolgenausdruck, der gefunden werden soll.  
+
+*bool_expr* ist ein optionaler Wert zum Ignorieren der Groß-/Kleinschreibung. Wenn diese Einstellung auf TRUE festgelegt ist, wird bei CONTAINS eine Suche ohne Beachtung der Groß-/Kleinschreibung durchgeführt. Wenn keine Angabe erfolgt, ist dieser Wert FALSE.
   
 ## <a name="return-types"></a>Rückgabetypen
   
@@ -37,21 +40,41 @@ CONTAINS(<str_expr1>, <str_expr2>)
   
 ## <a name="examples"></a>Beispiele
   
-  Im folgenden Beispiel wird überprüft, ob „ab“ und „d“ in „abc“ enthalten sind.  
+  Im folgenden Beispiel wird überprüft, ob „ab“ und „A“ in „abc“ enthalten sind.  
   
 ```sql
-SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2 
+SELECT CONTAINS("abc", "ab", false) AS c1, CONTAINS("abc", "A", false) AS c2, CONTAINS("abc", "A", true) AS c3
 ```  
   
  Hier ist das Resultset.  
   
 ```json
-[{"c1": true, "c2": false}]  
+[
+    {
+        "c1": true,
+        "c2": false,
+        "c3": true
+    }
+]
 ```  
 
 ## <a name="remarks"></a>Bemerkungen
 
-Der Index wird von dieser Systemfunktion nicht verwendet.
+Diese Systemfunktion profitiert von einem [Bereichsindex](index-policy.md#includeexclude-strategy).
+
+Der RU-Verbrauch von CONTAINS erhöht sich, wenn die Kardinalität der Eigenschaft in der Systemfunktion zunimmt. Anders ausgedrückt: Wenn Sie überprüfen, ob ein Eigenschaftswert eine bestimmte Zeichenfolge enthält, hängt die RU-Gebühr der Anforderung von der Anzahl möglicher Werte für diese Eigenschaft ab.
+
+Sehen Sie sich beispielsweise die beiden Eigenschaften „town“ und „country“ an. Die Kardinalität von „town“ ist 5.000, die Kardinalität von „country“ ist 200. Hier sind zwei Beispielabfragen:
+
+```sql
+    SELECT * FROM c WHERE CONTAINS(c.town, "Red", false)
+```
+
+```sql
+    SELECT * FROM c WHERE CONTAINS(c.country, "States", false)
+```
+
+Die erste Abfrage verbraucht wahrscheinlich mehr RUs als die zweite Abfrage, da die Kardinalität von „town“ höher als die von „country“ ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

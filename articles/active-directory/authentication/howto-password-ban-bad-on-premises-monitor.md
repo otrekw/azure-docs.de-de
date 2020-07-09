@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67d867249286ad1591b441bbe5ea2637971e104
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 841b12b27447c4d32d25b8eb0d5bcf51ff8e2932
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652612"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550281"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Überwachen und Überprüfen der Protokolle für lokale Umgebungen mit Azure AD-Kennwortschutz
 
@@ -63,7 +63,7 @@ Diskrete Ereignisse zum Erfassen dieser Situationen werden basierend auf folgend
 
 Die wichtigsten auf die Kennwortüberprüfung bezogenen Ereignisse sind wie folgt:
 
-|   |Kennwortänderung |Kennwortfestlegung|
+| Ereignis |Kennwortänderung |Kennwortfestlegung|
 | --- | :---: | :---: |
 |Pass |10014 |10015|
 |Fehler (aufgrund der Kundenkennwortrichtlinie)| 10016, 30002| 10017, 30003|

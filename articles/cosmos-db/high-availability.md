@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 9667d82551e169dcc4a4bfd3ac79b15390f58aa0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ae20a0372c5808cc2265a4fae63b79ef2bb71605
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609220"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125501"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hochverfügbarkeit mit Azure Cosmos DB
 
@@ -82,27 +82,7 @@ Zonenredundanz ist eine *Ergänzungsfunktion* für die [Multimasterreplikation](
 
 Wenn Sie für Ihr Azure Cosmos-Konto Schreibvorgänge in mehreren Regionen konfigurieren, können Sie die Zonenredundanz ohne zusätzliche Kosten aktivieren. Lesen Sie andernfalls weiter unten den Hinweis zu den Preisen für die Unterstützung der Zonenredundanz. Sie können die Zonenredundanz für eine vorhandene Region Ihres Azure Cosmos-Kontos aktivieren, indem Sie die Region entfernen und anschließend mit aktivierter Zonenredundanz wieder hinzufügen.
 
-Dieses Feature steht in folgenden Azure-Regionen zur Verfügung:
-
-- UK, Süden
-
-- Asien, Südosten
-
-- East US
-
-- USA (Ost) 2
-
-- USA (Mitte)
-
-- Europa, Westen
-
-- USA, Westen 2
-
-- Australien (Osten)
-
-- Japan, Osten
-
-- Nordeuropa
+Diese Funktion ist in den folgenden Regionen verfügbar: *„Vereinigtes Königreich, Süden“, „Asien, Südosten“, „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „Europa, Westen“, „USA, Westen 2“, „Australien, Osten“, „Japan, Osten“, „Europa, Norden“, „Frankreich, Mitte“* .
 
 > [!NOTE]
 > Wenn Sie Verfügbarkeitszonen für ein Azure Cosmos-Konto mit einer einzelnen Region aktivieren, fallen die gleichen Kosten an wie beim Hinzufügen einer weiteren Region zu Ihrem Konto. Ausführliche Informationen zu den Preisen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/cosmos-db/) sowie im Artikel [Optimieren der Kosten bei mehreren Regionen in Azure Cosmos DB](optimize-cost-regions.md).

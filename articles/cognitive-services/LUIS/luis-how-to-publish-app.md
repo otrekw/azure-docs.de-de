@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: b342c4319064bd00681c914585e541ab0bc3e17e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e9c8b607b1dc3f7f67ee1fdad353d15023318947
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585656"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340690"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Veröffentlichen Ihrer aktiven, trainierten App an einem Staging- oder Produktionsendpunkt
 
@@ -57,7 +57,7 @@ Wenn Sie beispielsweise für eine auf [www.luis.ai](https://www.luis.ai) erstell
 Nachdem Sie den Slot ausgewählt haben, konfigurieren Sie die Veröffentlichungseinstellungen für:
 
 * Stimmungsanalyse
-* Rechtschreibkorrektur: nur V2-Vorhersageendpunkte
+* [Rechtschreibkorrektur:](luis-tutorial-bing-spellcheck.md) nur V2-Vorhersageendpunkte
 * Sprachvorbereitung
 
 Nach der Veröffentlichung können Sie diese Einstellungen auf der zum Abschnitt **Verwalten** gehörenden Seite **Veröffentlichungseinstellungen** ändern. Sie können die Einstellungen mit jeder Veröffentlichung ändern. Wenn Sie eine Veröffentlichung abbrechen, werden alle Änderungen, die Sie während der Veröffentlichung vorgenommen haben, ebenfalls abgebrochen.
@@ -78,7 +78,7 @@ Sie müssen keine Textanalyseschlüssel bereitstellen, und es entstehen keine Ab
 
 Stimmungsdaten stellen eine Bewertung zwischen 1 und 0 dar, die eine eher positive (näher an 1) oder negative (näher an 0) Stimmung in den Daten angibt. Die Stimmungsbezeichnung von `positive`, `neutral` und `negative` gilt jeweils pro unterstützter Kultur. Derzeit unterstützt nur Englisch Stimmungsbezeichnungen.
 
-Weitere Informationen zur JSON-Endpunktantwort im Zusammenhang mit der Standpunktanalyse finden Sie unter [Standpunktanalyse](luis-concept-data-extraction.md#sentiment-analysis).
+Weitere Informationen zur JSON-Endpunktantwort im Zusammenhang mit der Standpunktanalyse finden Sie unter [Standpunktanalyse](luis-reference-prebuilt-sentiment.md).
 
 ## <a name="spelling-correction"></a>Rechtschreibkorrektur
 

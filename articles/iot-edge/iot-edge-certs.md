@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: d3e456d57d98b796fb1aea2e82de51f9fae40c68
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733161"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982727"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Grundlegendes zur Verwendung von Zertifikaten durch Azure IoT Edge
 
@@ -36,7 +36,7 @@ Die Zertifizierungsstelle, kurz „ZS“ genannt (Certificate Authority, CA), is
 
 ### <a name="root-ca-certificate"></a>Zertifikat der Stammzertifizierungsstelle
 
-Ein Zertifikat der Stammzertifizierungsstelle ist der Vertrauensanker des gesamten Prozesses. In Produktionsszenarien wird dieses ZS-Zertifikat normalerweise bei einer vertrauenswürdigen kommerziellen Zertifizierungsstelle wie Baltimore, Verisign oder DigiCert erworben. Wenn Sie vollständige Kontrolle über die Geräte haben, die mit Ihren IoT Edge-Geräten verbunden sind, kann eine Zertifizierungsstelle auf Unternehmensebene verwendet werden. In jedem Fall ist die gesamte Zertifikatkette ab dem IoT Edge Hub ununterbrochen, sodass die Blattknoten-IoT-Geräte dem Stammzertifikat vertrauen müssen. Sie können das Zertifikat der Stammzertifizierungsstelle im Speicher der vertrauenswürdigen Stammzertifizierungsstelle speichern oder die Details des Zertifikats in Ihrem Anwendungscode bereitstellen.
+Ein Zertifikat der Stammzertifizierungsstelle ist der Vertrauensanker des gesamten Prozesses. In Produktionsszenarien wird dieses ZS-Zertifikat normalerweise bei einer vertrauenswürdigen kommerziellen Zertifizierungsstelle wie Baltimore, Verisign oder DigiCert erworben. Wenn Sie vollständige Kontrolle über die Geräte haben, die mit Ihren IoT Edge-Geräten verbunden sind, kann eine Zertifizierungsstelle auf Unternehmensebene verwendet werden. In jedem Fall ist die gesamte Zertifikatkette ab dem IoT Edge Hub ununterbrochen, sodass die IoT-Blattgeräte dem Stammzertifikat vertrauen müssen. Sie können das Zertifikat der Stammzertifizierungsstelle im Speicher der vertrauenswürdigen Stammzertifizierungsstelle speichern oder die Details des Zertifikats in Ihrem Anwendungscode bereitstellen.
 
 ### <a name="intermediate-certificates"></a>Zwischenzertifikate
 

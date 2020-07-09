@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de55e2d316b6ed7ee51460ce96896ed2ccfe0992
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954602"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129897"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Verwalten von VM-Netzwerkschnittstellen für die lokale Notfallwiederherstellung in Azure
 
@@ -26,7 +26,7 @@ Standardmäßig erstellt Azure Site Recovery so viele Netzwerkschnittstellen auf
 
 ## <a name="select-the-target-network"></a>Auswählen des Zielnetzwerks
 
-Für VMware und physische Computer sowie für Hyper-V-VMs (ohne System Center Virtual Machine Manager) können Sie das virtuelle Zielnetzwerk für einzelne virtuelle Computer angeben. Verwenden Sie für Hyper-V-VMs, die mit Virtual Machine Manager verwaltet werden, [Netzwerkzuordnung](site-recovery-network-mapping.md) zum Zuordnen von VM-Netzwerken auf einem Virtual Machine Manager-Quellserver und Azure-Zielnetzwerken.
+Für VMware und physische Computer sowie für Hyper-V-VMs (ohne System Center Virtual Machine Manager) können Sie das virtuelle Zielnetzwerk für einzelne virtuelle Computer angeben. Verwenden Sie für Hyper-V-VMs, die mit Virtual Machine Manager verwaltet werden, [Netzwerkzuordnung](./hyper-v-vmm-network-mapping.md) zum Zuordnen von VM-Netzwerken auf einem Virtual Machine Manager-Quellserver und Azure-Zielnetzwerken.
 
 1. Wählen Sie unter **Replizierte Elemente** in einem Recovery Dervices-Tresor ein beliebiges repliziertes Element aus, um auf die Einstellungen für dieses replizierte Element zuzugreifen.
 

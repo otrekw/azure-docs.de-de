@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
-ms.date: 10/25/2019
+ms.topic: how-to
+ms.date: 06/01/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 104bf51fb03d88ab0e5efd25ebebb0e3060bc264
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc81cca10bacc581e72c7caa70a0b74b7ae99f9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457925"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604215"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten
 
@@ -42,7 +42,7 @@ Alle Ihre Benutzer verfügen über ein einzelnes *Basisverzeichnis* für die Aut
 
 Bevor Sie Ihr Abonnement zuweisen oder hinzufügen können, müssen Sie die folgenden Aufgaben ausführen:
 
-- Überprüfen Sie die folgende Liste von Änderungen und deren möglichen Folgen für Sie:
+- Überprüfen Sie die folgende Liste mit Änderungen, die nach dem Zuordnen oder Hinzufügen Ihres Abonnements vorgenommen werden, und ihre möglichen Folgen für Sie:
 
   - Benutzer, deren Rollen mithilfe von RBAC zugewiesen wurden, verlieren den Zugriff.
   - Dienstadministrator und Co-Admins verlieren den Zugriff.
@@ -71,13 +71,13 @@ Führen Sie die folgenden Schritte aus, um Ihrem Azure AD-Verzeichnis ein vorhan
 
     ![Ändern der Verzeichnisseite und Anzeigen des zu ändernden Verzeichnisses](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
-    Das Verzeichnis wird für das Abonnement geändert, und eine Erfolgsmeldung wird angezeigt.
+    Nachdem das Verzeichnis für das Abonnement geändert wurde, wird eine Erfolgsmeldung angezeigt.
 
-    ![Nachricht über die erfolgreiche Änderung des Verzeichnisses](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
+  1. Wählen Sie auf der Abonnementseite **Verzeichnis wechseln** aus, um zu Ihrem neuen Verzeichnis zu wechseln. 
 
-Rufen Sie mithilfe der Option **Verzeichnis wechseln** Ihr neues Verzeichnis auf. Es kann mehrere Stunden dauern, bis alles ordnungsgemäß angezeigt wird. Wenn es zu lange dauert, überprüfen Sie den **globalen Abonnementfilter**. Stellen Sie sicher, dass das verschobene Abonnement nicht ausgeblendet ist. Möglicherweise müssen Sie sich beim Azure-Portal abmelden und wieder anmelden, damit das neue Verzeichnis angezeigt wird.
+      ![Seite mit dem Verzeichnisumschalter mit Beispielinformationen](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-![Seite mit dem Verzeichnisumschalter mit Beispielinformationen](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+      Es kann mehrere Stunden dauern, bis alles ordnungsgemäß angezeigt wird. Wenn es zu lange dauert, überprüfen Sie den **globalen Abonnementfilter**. Stellen Sie sicher, dass das verschobene Abonnement nicht ausgeblendet ist. Möglicherweise müssen Sie sich beim Azure-Portal abmelden und wieder anmelden, damit das neue Verzeichnis angezeigt wird.
 
 Das Ändern des Abonnementverzeichnisses erfolgt auf Dienstebene, sodass sich der Vorgang nicht auf die Abonnementabrechnung auswirkt. Der Kontoadministrator kann den Dienstadministrator weiterhin über das [Kontocenter](https://account.azure.com/subscriptions) ändern. Um das ursprüngliche Verzeichnis zu löschen, müssen Sie die Abonnementabrechnung einem neuen Kontoadministrator übertragen. Weitere Informationen zum Übertragen der Abrechnung finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../../cost-management-billing/manage/billing-subscription-transfer.md).
 

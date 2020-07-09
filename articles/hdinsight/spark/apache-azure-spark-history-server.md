@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76548933"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079291"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Verwenden der erweiterten Features des Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Spark-Anwendungen
 
@@ -328,6 +328,6 @@ Wenn Sie ein Upgrade mit einem Hotfix durchführen möchten, verwenden Sie das f
 + [Verwalten von Ressourcen für den Apache Spark-Cluster unter HDInsight](apache-spark-resource-manager.md)
 + [Konfigurieren von Apache Spark-Einstellungen](apache-spark-settings.md)
 
-## <a name="feedback"></a>Feedback
+## <a name="suggestions"></a>Vorschläge
 
 Wenn Sie Feedback abgeben möchten oder bei der Verwendung des Tools Probleme auftreten, senden Sie eine E-Mail an [hdivstool@microsoft.com](mailto:hdivstool@microsoft.com).

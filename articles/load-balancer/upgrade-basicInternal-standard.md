@@ -4,18 +4,18 @@ description: In diesem Artikel erfahren Sie, wie Sie eine interne Azure Load B
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 239dc0f3133a5adf59a23d333131c91d3a655597
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 801f57c8d5b67e31bd6b3ac25d845dc2e13e365c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770383"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809330"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Aktualisieren einer internen Azure Load Balancer-Instanz: keine ausgehende Verbindung erforderlich
-[Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
+[Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](https://docs.microsoft.com/azure/load-balancer/skus#skus).
 
 In diesem Artikel wird ein PowerShell-Skript eingeführt, das einen Load Balancer Standard mit derselben Konfiguration erstellt wie der des Load Balancers Basic zusammen mit der Migration von Datenverkehr vom Load Balancer Basic zum Load Balancer Standard.
 
@@ -31,12 +31,24 @@ Es gibt ein Azure PowerShell-Skript, in dem folgende Vorgänge ausgeführt werde
 ### <a name="caveatslimitations"></a>Vorbehalte/Einschränkungen
 
 * Das Skript unterstützt nur das Upgrade des internen Lastenausgleichs, wenn keine ausgehende Verbindung erforderlich ist. Wenn Sie für einige Ihrer VMs eine [ausgehende Verbindung](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) benötigen, finden Sie auf dieser [Seite](upgrade-InternalBasic-To-PublicStandard.md) entsprechende Anweisungen. 
+* Load Balancer Basic muss sich in derselben Ressourcengruppe wie die virtuellen Back-End-VMs und -NICs befinden.
 * Wenn die Load Balancer Standard-Instanz in einer anderen Region erstellt wird, können die virtuellen Computer aus der alten Region nicht der neu erstellten Load Balancer Standard-Instanz zugeordnet werden. Erstellen Sie zur Umgehung dieser Einschränkung einen neuen virtuellen Computer in der neuen Region.
 * Wenn Ihre Load Balancer-Instanz über keine Front-End-IP-Konfiguration oder über keinen Back-End-Pool verfügt, tritt beim Ausführen des Skripts wahrscheinlich ein Fehler auf. Stellen Sie sicher, dass die Angaben vorhanden sind.
 
+## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>Ändern Sie die IP-Zuordnungsmethode für die Front-End-IP-Konfiguration in „Statisch“ (ignorieren Sie diesen Schritt, wenn die Methode bereits statisch ist).
+
+1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend Ihren Load Balancer Basic in der Ressourcenliste aus.
+
+2. Wählen Sie unter **Einstellungen** die Option **Front-End-IP-Konfigurations**aus, und wählen Sie dann die erste Front-End-IP-Konfiguration aus. 
+
+3. Wählen Sie als **Zuweisung** die Option **Statisch** aus.
+
+4. Wiederholen Sie Schritt 3 für alle Front-End-IP-Konfigurationen des Load Balancer Basic.
+
+
 ## <a name="download-the-script"></a>Herunterladen des Skripts
 
-Laden Sie das Migrationsskript aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureILBUpgrade/2.0) herunter.
+Laden Sie das Migrationsskript aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureILBUpgrade/3.0) herunter.
 ## <a name="use-the-script"></a>Verwenden des Skripts
 
 Je nach dem, wie Ihre lokale PowerShell-Umgebung eingerichtet und eingestellt ist, gibt es zwei Optionen für Sie:

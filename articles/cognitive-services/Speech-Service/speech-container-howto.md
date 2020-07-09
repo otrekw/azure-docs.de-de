@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: dc11d9d7dfa7ededa19e11c9e1bc38e1eaaec93f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e120eb20d247ce2def7f7c322ead3066c1d4386e
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591018"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974652"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Installieren und Ausführen von Containern für den Speech-Dienst (Vorschau)
 
@@ -24,14 +24,14 @@ Container ermöglichen es Ihnen, einige der Speech-Dienst-APIs in Ihrer eigenen 
 Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur erstellen, die sowohl für stabile Cloudfunktionen als auch für das Edge optimiert ist. Es stehen vier verschiedene Container zur Verfügung. Die beiden Standardcontainer sind **Spracherkennung** und **Sprachsynthese**. Die beiden benutzerdefinierten Container sind **Benutzerdefinierte Spracherkennung** und **Benutzerdefinierte Sprachsynthese**. Speech-Container haben denselben [Preis](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) wie die cloudbasierten Azure Speech-Dienste.
 
 > [!IMPORTANT]
-> Alle Speech-Container werden zurzeit im Rahmen einer [öffentlichen eingeschränkten Vorschau](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio) angeboten. Wenn Speech-Container in die allgemeine Verfügbarkeit übergehen, erfolgt eine entsprechende Ankündigung.
+> Alle Speech-Container werden zurzeit im Rahmen einer [öffentlichen eingeschränkten Vorschau](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) angeboten. Wenn Speech-Container in die allgemeine Verfügbarkeit übergehen, erfolgt eine entsprechende Ankündigung.
 
 | Funktion | Features | Neueste Version |
 |--|--|--|
-| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.2.0 |
-| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.2.0 |
-| Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.3.0 |
-| Benutzerdefinierte Sprachsynthese | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Voice-Portal](https://aka.ms/custom-voice-portal) und konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.3.0 |
+| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.3.1 |
+| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.3.1 |
+| Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.5.0 |
+| Benutzerdefinierte Sprachsynthese | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Voice-Portal](https://aka.ms/custom-voice-portal) und konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.5.0 |
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -47,7 +47,8 @@ Für die Verwendung von Speech-Containern müssen folgende Voraussetzungen erfü
 
 ## <a name="request-access-to-the-container-registry"></a>Anfordern des Zugriffs auf die Containerregistrierung
 
-Füllen Sie das [Formular zum Anfordern von Cognitive Services-Containern](https://aka.ms/cognitivegate) aus, und übermitteln Sie es, um Zugriff auf den Container anzufordern.
+Füllen Sie das [Anforderungsformular](https://aka.ms/cognitivegate) aus, und übermitteln Sie es, um Zugriff auf den Container anzufordern. 
+
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -164,7 +165,7 @@ Alle Tags, mit Ausnahme von `latest`, haben das folgende Format und beachten die
 Das folgende Tag ist ein Beispiel für das Format:
 
 ```
-2.2.0-amd64-en-us-preview
+2.3.1-amd64-en-us-preview
 ```
 
 Informationen zu allen unterstützten Gebietsschemas des Containers **Spracherkennung** finden Sie unter [Imagetags für Spracherkennung](../containers/container-image-tags.md#speech-to-text).
@@ -193,7 +194,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 ```
 
 > [!IMPORTANT]
-> Das Tag `latest` pullt das Gebietsschema `en-US` und die Stimme `jessarus`. Weitere Gebietsschemas finden Sie unter [Gebietsschemas für die Sprachsynthese](#text-to-speech-locales).
+> Das Tag `latest` pullt das Gebietsschema `en-US` und die Stimme `ariarus`. Weitere Gebietsschemas finden Sie unter [Gebietsschemas für die Sprachsynthese](#text-to-speech-locales).
 
 #### <a name="text-to-speech-locales"></a>Gebietsschemas für die Sprachsynthese
 
@@ -206,13 +207,13 @@ Alle Tags, mit Ausnahme von `latest`, haben das folgende Format und beachten die
 Das folgende Tag ist ein Beispiel für das Format:
 
 ```
-1.3.0-amd64-en-us-jessarus-preview
+1.5.0-amd64-en-us-ariarus-preview
 ```
 
 Informationen zu allen unterstützten Gebietsschemas und den entsprechenden Stimmen des Containers **Sprachsynthese** finden Sie unter [Imagetags für Sprachsynthese](../containers/container-image-tags.md#text-to-speech).
 
 > [!IMPORTANT]
-> Beim Erstellen einer HTTP POST-Anforderung für die *standardmäßige Sprachsynthese* erfordert die Meldung der [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) ein `voice`-Element mit einem `name`-Attribut. Der Wert ist das entsprechende Gebietsschema des Containers und die Stimme, auch bekannt als „[Kurzname](language-support.md#standard-voices)“. Das Tag `latest` beispielsweise weist den Sprachnamen `en-US-JessaRUS` auf.
+> Beim Erstellen einer HTTP POST-Anforderung für die *standardmäßige Sprachsynthese* erfordert die Meldung der [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) ein `voice`-Element mit einem `name`-Attribut. Der Wert ist das entsprechende Gebietsschema des Containers und die Stimme, auch bekannt als „[Kurzname](language-support.md#standard-voices)“. Das Tag `latest` beispielsweise weist den Sprachnamen `en-US-AriaRUS` auf.
 
 # <a name="custom-text-to-speech"></a>[Benutzerdefinierte Sprachsynthese](#tab/ctts)
 

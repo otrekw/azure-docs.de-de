@@ -1,14 +1,14 @@
 ---
 title: Ausführen von großen parallelen Aufträge in der Cloud mit Azure Batch
 description: Hier erhalten Sie Informationen über den Azure Batch-Dienst für umfangreiche parallele Workloads und HPC-Workloads.
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f2bdaeec47b50b715920b27d6adf6e078a354964
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 134706622655029c6673aea5dd04a9284155be6f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116348"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965075"
 ---
 # <a name="what-is-azure-batch"></a>Was ist Azure Batch?
 
@@ -18,7 +18,7 @@ Entwickler können Batch als Plattformdienst verwenden, um SaaS-Anwendungen oder
 
 Es fallen keine zusätzlichen Gebühren für die Nutzung von Batch an. Sie zahlen nur für die genutzten zugrunde liegenden Ressourcen, z.B. virtuelle Computer, Speicher und Netzwerk.
 
-Einen Vergleich zwischen Batch und anderen HPC-Lösungsoptionen in Azure finden Sie unter [High Performance Computing (HPC) on Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) (High Performance Computing (HPC) in Azure).
+Einen Vergleich zwischen Batch und anderen HPC-Lösungsoptionen in Azure finden Sie unter [High Performance Computing (HPC) on Azure](/azure/architecture/topics/high-performance-computing/) (High Performance Computing (HPC) in Azure).
 
 ## <a name="run-parallel-workloads"></a>Ausführen von parallelen Workloads
 Batch funktioniert gut mit intrinsisch parallelen Workloads (auch als „hochgradig parallel“ bezeichnet). Bei intrinsisch parallelen Workloads können die Anwendungen unabhängig voneinander ausgeführt werden, und jede Instanz erledigt einen Teil der Arbeit. Wenn die Anwendungen ausgeführt werden, greifen sie ggf. auf einige gemeinsame Daten zu, aber sie kommunizieren nicht mit anderen Instanzen der Anwendung. Intrinsisch parallele Workloads können daher in großem Umfang ausgeführt werden. Dies richtet sich nach der Menge von Computeressourcen, die für die gleichzeitige Ausführung von Anwendungen verfügbar sind.
@@ -34,7 +34,7 @@ Hier sind einige Beispiele für intrinsisch parallele Workloads angegeben, die S
 * Datenerfassung-/verarbeitung und ETL-Vorgänge
 * Softwaretestausführung
 
-Sie können Batch auch verwenden, um [eng gekoppelte Workloads auszuführen](batch-mpi.md). Dies sind Workloads, bei denen die von Ihnen ausgeführten Anwendungen miteinander kommunizieren müssen und nicht unabhängig ausgeführt werden. Für eng gekoppelte Anwendungen wird normalerweise die MPI-API (Message Passing Interface) verwendet. Sie können Ihre eng gekoppelten Workloads mit Batch per [Microsoft-MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) oder Intel-MPI ausführen. Verbessern Sie die Anwendungsleistung mit speziellen [HPC](../virtual-machines/linux/sizes-hpc.md)-Maßnahmen und [GPU-optimierten](../virtual-machines/linux/sizes-gpu.md) VM-Größen.
+Sie können Batch auch verwenden, um [eng gekoppelte Workloads auszuführen](batch-mpi.md). Dies sind Workloads, bei denen die von Ihnen ausgeführten Anwendungen miteinander kommunizieren müssen und nicht unabhängig ausgeführt werden. Für eng gekoppelte Anwendungen wird normalerweise die MPI-API (Message Passing Interface) verwendet. Sie können Ihre eng gekoppelten Workloads mit Batch per [Microsoft-MPI](/message-passing-interface/microsoft-mpi) oder Intel-MPI ausführen. Verbessern Sie die Anwendungsleistung mit speziellen [HPC](../virtual-machines/linux/sizes-hpc.md)-Maßnahmen und [GPU-optimierten](../virtual-machines/linux/sizes-gpu.md) VM-Größen.
 
 Hier sind einige Beispiele für eng gekoppelte Workloads angegeben:
 * FE-Analyse
@@ -74,7 +74,7 @@ Im folgenden Diagramm sind die Schritte eines gängigen Batch-Workflows dargeste
 
 Bedenken Sie, dass dies nur eine Möglichkeit zur Verwendung von Batch ist und dass in diesem Szenario nur einige Features beschrieben werden. Beispielsweise können Sie auf jedem Computeknoten [mehrere Aufgaben parallel](batch-parallel-node-tasks.md) ausführen. Oder verwenden Sie [Aufgaben für die Vorbereitung und den Abschluss von Aufträgen](batch-job-prep-release.md), um die Knoten für Ihre Aufträge vorzubereiten, und führen Sie anschließend die Bereinigung durch. 
 
-Unter [Übersicht über Batch-Features für Entwickler](batch-api-basics.md) finden Sie ausführliche Informationen zu Pools, Knoten, Aufträgen und Aufgaben sowie zu den zahlreichen API-Funktionen, die beim Erstellen der Batch-Anwendung verwendet werden können. Siehe auch die aktuellen [Batchdienstupdates](https://azure.microsoft.com/updates/?product=batch).
+Eine Übersicht über Features wie Pools, Knoten, Aufträge und Aufgaben finden Sie unter [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md). Siehe auch die aktuellen [Batchdienstupdates](https://azure.microsoft.com/updates/?product=batch).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

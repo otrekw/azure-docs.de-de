@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 8d4e9a1e255884b9250879ab486d7a4e2849473a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 95756e9951b384c779f61651555482b3c8cb7321
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192092"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083371"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Erstellen von Linux-basierten Clustern in HDInsight mit dem Azure-Portal
 
@@ -62,6 +62,9 @@ Geben Sie auf der Registerkarte **Grundlagen** die folgenden Informationen an:
 Klicken Sie auf **Weiter: Speicher >>** , um zur nächsten Registerkarte zu gelangen.
 
 ## <a name="storage"></a>Storage
+
+> [!WARNING] 
+> Ab dem 15. Juni 2020 können Kunden keinen neuen Dienstprinzipal mit HDInsight mehr erstellen. Informationen zur Verwendung von Azure Active Directory finden Sie unter [Erstellen von Dienstprinzipalen und Zertifikaten](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
 ![HDInsight: Erstellen von Clusterspeicher](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Erstellen eines neuen Clusters im Azure-Portal – Speicher")
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 94ff7ddda41f2df2634d927a7dbf8a5a0d4fc1d8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 69368ecd7234912bcaf5eb606545f62ddb7b30a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81681411"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204182"
 ---
 # <a name="localization"></a>Lokalisierung
 
@@ -26,7 +26,7 @@ Mithilfe des **Localization**-Elements können Sie mehrere Gebietsschemas oder S
 - Einrichten einer expliziten Liste der unterstützten Sprachen in einer Richtlinie und Auswählen einer Standardsprache
 - Angeben von sprachspezifischen Zeichenfolgen und Sammlungen
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
     <SupportedLanguage>en</SupportedLanguage>
@@ -116,7 +116,7 @@ Das **Item**-Element enthält die folgenden Attribute:
 
 Das folgende Beispiel zeigt die Verwendung des **LocalizedCollections**-Elements. Es enthält zwei **LocalizedCollection**-Elemente, eines für Englisch und ein anderes für Spanisch. Beide legen die **Restriction**-Sammlung des Anspruchs `Gender` auf eine Liste von Elementen für Englisch und Spanisch fest.
 
-```XML
+```xml
 <LocalizedResources Id="api.selfasserted.en">
  <LocalizedCollections>
    <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
@@ -205,7 +205,7 @@ Der Wert „ClaimType“ wird verwendet, um eines der Anspruchsattribute zu loka
 
 Im folgenden Beispiel wird gezeigt, wie die Attribute „DisplayName“, „UserHelpText“ und „PatternHelpText“ des Anspruchstyps „email“ lokalisiert werden.
 
-```XML
+```xml
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
@@ -228,7 +228,7 @@ Der Wert „ErrorMessage“ wird verwendet, um eine der Systemfehlermeldungen zu
 Im folgenden Beispiel wird gezeigt, wie die Fehlermeldung „UserMessageIfClaimsPrincipalAlreadyExists“ lokalisiert wird.
 
 
-```XML
+```xml
 <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
 ```
 
@@ -319,7 +319,7 @@ Der Wert „InputValidation“ wird verwendet, um eine der Fehlermeldungen der [
 
 Im folgenden Beispiel wird gezeigt, wie der Hilfetext für eine Prädikatüberprüfungsgruppe lokalisiert wird.
 
-```XML
+```xml
 <LocalizedString ElementType="InputValidation" ElementId="CustomPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
 ```
 
@@ -327,7 +327,7 @@ Im folgenden Beispiel wird gezeigt, wie der Hilfetext für eine Prädikatüberpr
 
 Der Wert „UxElement“ wird verwendet, um eines der Benutzeroberflächenelemente zu lokalisieren. Im folgenden Beispiel wird gezeigt, wie die Schaltflächen „continue“ (Weiter) und „Cancel“ (Abbrechen) lokalisiert werden.
 
-```XML
+```xml
 <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```

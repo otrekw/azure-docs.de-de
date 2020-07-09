@@ -3,12 +3,12 @@ title: Verwalten von DHCP
 description: In diesem Artikel wird beschrieben, wie Sie DHCP in der Azure-VMware-Lösung verwalten.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ccf28c94e1991681c238f51847fe228313abe29e
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 80791dd2041fb9d6fbc7c67f2d7d7b2d0b6c977e
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739810"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148360"
 ---
 # <a name="how-to-manage-dhcp-in-azure-vmware-solution-avs-preview"></a>Verwalten von DHCP in der Azure-VMware-Lösung (Vorschauversion)
 
@@ -56,7 +56,7 @@ Wählen Sie anschließend **Save** (Speichern) aus, um das Hinzufügen eines Net
 
 ## <a name="create-dhcp-relay-service"></a>Erstellen eines DHCP-Relaydiensts
 
-Navigieren Sie im Fenster „NXT-T“ zur Registerkarte **Networking** (Netzwerk), und wählen Sie unter **IP Management** (IP-Verwaltung) **DHCP** aus. Wählen Sie **ADD SERVER** (Server hinzufügen) aus. Wählen Sie „DHCP Relay“ als **Servertyp**, und geben Sie den Namen und die IP-Adresse des Relayservers ein. Wählen Sie **Save** (Speichern) aus, um Ihre Änderungen zu speichern.
+Navigieren Sie im Fenster „NXT-T“ zur Registerkarte **Networking** (Netzwerk), und wählen Sie unter **IP Management** (IP-Verwaltung) **DHCP** aus. Wählen Sie **ADD SERVER** (Server hinzufügen) aus. Wählen Sie „DHCP Relay“ als **Servertyp**, und geben Sie den Namen und die IP-Adresse des Relayservers ein. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern.
 
 :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="DHCP-Relayserver erstellen" border="true":::
 

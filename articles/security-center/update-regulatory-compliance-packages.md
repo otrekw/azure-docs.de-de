@@ -13,70 +13,82 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: fa5027ed285456247891c84e559b74a14237f553
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537779"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873334"
 ---
-# <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard"></a>Aktualisieren auf dynamische Compliancepakete in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen
+# <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Anpassen der Standards in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen
 
 Azure Security Center vergleicht die Konfiguration Ihrer Ressourcen kontinuierlich mit den Anforderungen von Branchenstandards, Vorschriften und Benchmarks. Das **Dashboard für die Einhaltung gesetzlicher Bestimmungen** bietet Erkenntnisse zu Ihrem Compliancestatus basierend auf der Erfüllung bestimmter Compliancevorgaben und -anforderungen.
 
-Ein Standard, für den Sie den Compliancestatus verfolgen können, ist [Azure CIS 1.1.0](https://www.cisecurity.org/benchmark/azure/) (genauer: „CIS Microsoft Azure Foundations Benchmark Version 1.1.0“). 
 
-Die Darstellung von Azure CIS, die zu Beginn in Ihrem Compliance-Dashboard angezeigt wird, basiert auf einem statischen Satz von Regeln, der in Security Center enthalten ist.
+## <a name="overview-of-compliance-packages"></a>Überblick über Compliancepakete
 
-Mit dem Feature **dynamische Compliancepakete** verbessert Security Center automatisch seine Abdeckung von Branchenstandards. Compliancepakete sind im Wesentlichen in Azure Policy definierte Initiativen. Sie können dem ausgewählten Bereich (Abonnement, Verwaltungsgruppe usw.) zugewiesen werden. Um Compliancedaten als zugeordnete Bewertungen in Ihrem Dashboard anzuzeigen, fügen Sie der Verwaltungsgruppe oder dem Abonnement innerhalb der Sicherheitsrichtlinie ein Compliancepaket hinzu. Durch das Hinzufügen eines Compliancepakets wird die gesetzliche Complianceinitiative dem ausgewählten Bereich zugewiesen. Auf diese Weise können Sie neu veröffentlichte gesetzliche Initiativen als Compliancestandards in Ihrem Dashboard nachverfolgen. Wenn Microsoft neue Inhalte für die Initiative veröffentlicht (neue Richtlinien, die mehr Regeln im Standard entsprechen), werden die zusätzlichen Inhalte automatisch in Ihrem Dashboard hinzugefügt.
+Industriestandards, gesetzliche Standards und Benchmarks werden im Security Center als *Compliancepakete* dargestellt.  Jedes Paket kann als eine in Azure Policy definierte Initiative verstanden werden. Fügen Sie der Verwaltungsgruppe oder dem Abonnement auf der Seite **Sicherheitsrichtlinie** ein Compliancepaket hinzu, um Compliancedaten als zugeordnete Bewertungen in Ihrem Dashboard anzuzeigen. Weitere Informationen zu Azure Policy und Initiativen erhalten Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md).
 
-Das dynamische Compliancepaket für den Azure CIS-Benchmark, **Azure CIS 1.1.0 (neu)** , verbessert die ursprüngliche *statische* Version durch Folgendes:
+Nachdem Sie das Onboarding für einen Standard oder einen Benchmarkwert für einen ausgewählten Bereich durchgeführt haben, wird die Initiative dem Bereich zugeordnet und in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen mit allen zugeordneten Compliancedaten in Form von Bewertungen angezeigt. Ein zusammenfassender Bericht für alle Standards, für die das Onboarding durchgeführt wurde, wird als Download bereitgestellt.
 
-* Einschließen weiterer Richtlinien
-* Automatisches Aktualisieren mit neuer Abdeckung direkt beim Hinzufügen 
+Microsoft überwacht die gesetzlichen Standards auch selbst und passt die Pakete im Laufe der Zeit entsprechend an. Wenn Microsoft neue Inhalte für die Initiative veröffentlicht (neue Richtlinien, die mehr Regeln im Standard entsprechen), werden die zusätzlichen Inhalte automatisch in Ihrem Dashboard hinzugefügt.
 
-Aktualisieren Sie wie unten beschrieben auf das neue dynamische Paket.
+> [!TIP]
+> Ein Standard, der im Laufe der Zeit immer weiterentwickelt wird und von Microsoft in Form von Releases veröffentlicht wird, ist **Azure CIS 1.1.0 (neu)** . Dieser Standard wird formell auch als [CIS Microsoft Azure Foundations Benchmark v1.1.0](https://www.cisecurity.org/benchmark/azure/) bezeichnet. Fügen Sie neue Inhalte zusammen mit „Azure CIS 1.1.0“, also die Azure CIS-Repräsentation, die standardmäßig in jeder Security Center-Umgebung konfiguriert ist, Ihrem Dashboard hinzu. Dieses Paket basiert auf statischen Regeln. Das neuere Paket beinhaltet mehr Richtlinien und führt im Laufe der Zeit automatisch Updates durch. Aktualisieren Sie wie unten beschrieben auf das neue dynamische Paket.
 
-## <a name="adding-a-dynamic-compliance-package"></a>Hinzufügen dynamischer Compliancepakete
 
-In den folgenden Schritten wird erläutert, wie Sie das dynamische Paket zum Überwachen Ihrer Compliance mit dem Azure CIS-Benchmark Version 1.1.0 hinzufügen.   
+## <a name="available-packages"></a>Verfügbare Pakete
 
-### <a name="update-to-the-azure-cis-110-new-dynamic-compliance-package"></a>Aktualisieren des dynamischen Compliancepakets für Azure CIS 1.1.0 (neu) 
+Sie können Standards wie NIST SP 800-53 R4, SWIFT CSP CSCF-v2020, UK Official & UK NHS, Canada Federal PBMM sowie Azure CIS 1.1.0 (neu) hinzufügen. Dabei handelt es sich um eine vollständigere Repräsentation für Azure CIS 1.1.0. 
 
-1. Öffnen Sie die Seite **Sicherheitsrichtlinie**. Auf dieser Seite werden die Anzahl von Verwaltungsgruppen, Abonnements und Arbeitsbereichen sowie Ihre Verwaltungsgruppenstruktur angezeigt.
+Zusätzlich können Sie den **Azure-Sicherheitsvergleichstest** hinzufügen. Dabei handelt es sich um von Microsoft erstellte Azure-spezifische Richtlinien zu den Best Practices für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Unter [Einführung zum Azure Security-Vergleichstest](https://docs.microsoft.com/azure/security/benchmarks/introduction) erhalten Sie weitere Informationen.
 
-1. Wählen Sie das Abonnement oder die Verwaltungsgruppe aus, für das bzw. die Sie den Status der Einhaltung gesetzlicher Bestimmungen verwalten möchten. Es wird empfohlen, den höchsten Bereich auszuwählen, für den der Standard gilt, damit Compliancedaten für alle geschachtelten Ressourcen aggregiert und nachverfolgt werden. 
+Weitere Standards werden im Dashboard unterstützt, sobald sie verfügbar sind. 
 
-1. Im Abschnitt „Branchen- und gesetzliche Standards“ wird angezeigt, dass Azure CIS 1.1.0 für neue Inhalte aktualisiert werden kann. Klicken Sie auf **Jetzt aktualisieren**. 
 
-1. Klicken Sie optional auf **Weitere Standards hinzufügen**, um die Seite **Standards zur Einhaltung gesetzlicher Bestimmungen hinzufügen** zu öffnen. Dort können Sie manuell nach **Azure CIS 1.1.0 (neu)** und dynamischen Paketen für andere Compliancestandards wie **NIST SP 800-53 R4**, **SWIFT CSP CSCF-v2020**, **UKO und UK NHS** und **Canada PBMM** suchen.
-    
+## <a name="adding-a-regulatory-standard-to-your-dashboard"></a>Hinzufügen eines gesetzlichen Standards in Ihrem Dashboard
+
+In den folgenden Schritten wird erklärt, wie Sie ein Paket hinzufügen, um Ihre Compliance mit einem der unterstützten gesetzlichen Standards zu überwachen.
+
+> [!NOTE]
+> Nur Benutzer, die Besitzer oder Mitwirkende an Richtlinien sind, haben die erforderlichen Berechtigungen zum Hinzufügen von Compliancestandards. 
+
+1. Wählen Sie auf der Seitenleiste in Security Center **Einhaltung gesetzlicher Bestimmungen** aus, um das Dashboard für die Einhaltung gesetzlicher Bestimmungen zu öffnen. Hier sehen Sie die Compliancestandards, die den aktuell ausgewählten Abonnements zugeordnet sind.   
+
+1. Wählen Sie oben auf der Seite **Konformitätsrichtlinien verwalten** aus. Dadurch wird die Seite für die Richtlinienverwaltung geöffnet.
+
+1. Wählen Sie das Abonnement oder die Verwaltungsgruppe aus, für das bzw. die Sie den Status der Einhaltung gesetzlicher Bestimmungen verwalten möchten. 
+
     > [!TIP]
-    > Nur Benutzer, die Besitzer oder Mitwirkende an Richtlinien sind, haben die erforderlichen Berechtigungen zum Hinzufügen von Compliancestandards. 
+    > Es wird empfohlen, den höchsten Bereich auszuwählen, für den der Standard gilt, damit Compliancedaten für alle geschachtelten Ressourcen aggregiert und nachverfolgt werden. 
 
-    ![Hinzufügen von Compliancepaketen zum Dashboard für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center](./media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-additional-standards.png)
+1. Wenn Sie die für Ihre Organisation relevanten Standards hinzufügen möchten, klicken Sie auf **Weitere Standards hinzufügen**. 
 
+1. Auf der Seite **Standards zur Einhaltung gesetzlicher Bestimmungen hinzufügen** können Sie nach Paketen für alle verfügbaren Standards suchen. Unten finden Sie Beispiele für verfügbare Standards:
 
-1. Wählen Sie auf der Seitenleiste in Security Center **Einhaltung gesetzlicher Bestimmungen** aus, um das Dashboard für die Einhaltung gesetzlicher Bestimmungen zu öffnen. 
-    * Azure CIS 1.1.0 (neu) wird jetzt in der Liste der Branchen- und gesetzlichen Standards aufgeführt. 
-    * Die ursprüngliche *statische* Ansicht Ihrer Azure CIS 1.1.0-Compliance bleibt ebenfalls erhalten. Sie wird möglicherweise zukünftig automatisch entfernt.
+    - **Azure-Sicherheitsvergleichstest**
+    - **NIST SP 800-53 R4**
+    - **SWIFT CSP CSCF-v2020**
+    - **UKO und UK NHS**
+    - **Canada PBMM**
+    
+    ![Hinzufügen von Compliancepaketen zum Dashboard für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+
+1. Wählen Sie auf der Seitenleiste in Security Center erneut **Einhaltung gesetzlicher Bestimmungen** aus, um zum Dashboard für die Einhaltung gesetzlicher Bestimmungen zurückzukehren.
+    * Ihr neuer Standard wird jetzt in der Liste der Branchen- und gesetzlichen Standards aufgeführt. 
+    * Wenn Sie **Azure CIS 1.1.0 (neu)** hinzugefügt haben, bleibt die ursprüngliche *statische* Ansicht Ihrer Azure CIS 1.1.0-Compliance ebenfalls erhalten. Sie wird möglicherweise zukünftig automatisch entfernt.
 
     > [!NOTE]
     > Es kann einige Stunden dauern, bis ein neu hinzugefügter Standard im Compliance-Dashboard angezeigt wird.
 
-
-    [![Dashboard für die Einhaltung gesetzlicher Bestimmungen mit neuem und altem Azure CIS](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png)](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png#lightbox)
-
+    [![Dashboard für die Einhaltung gesetzlicher Bestimmungen mit neuem und altem Azure CIS](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark-small.png)](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde Folgendes beschrieben:
-
-* **Aktualisieren der in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen angezeigten Standards** auf die neuen *dynamischen* Pakete
-* **Hinzufügen von Compliancepaketen** zum Überwachen Ihrer Compliance mit zusätzlichen Standards 
+In diesem Artikel haben Sie Informationen zum **Hinzufügen von Compliancepaketen** zum Überwachen Ihrer Compliance mit zusätzlichen Standards erhalten. 
 
 Weitere verwandte Informationen finden Sie in den folgenden Artikeln: 
 
+- [Einführung zum Azure Security-Vergleichstest](https://docs.microsoft.com/azure/security/benchmarks/introduction)
 - [Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md)
 - [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md)
-- [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md): Es wird beschrieben, wie Sie Empfehlungen in Azure Security Center nutzen, um Ihre Azure-Ressourcen zu schützen.

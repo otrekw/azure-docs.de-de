@@ -6,16 +6,16 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4462bf0fc2057922340eb01cb8c786dbc63ce290
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6978855e9b32a3842e76d02ef543d86cf0673019
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745356"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206647"
 ---
 # <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Bewährte Methoden für den Synapse SQL-Pool in Azure Synapse Analytics (ehemals SQL DW)
 
@@ -180,7 +180,7 @@ Siehe auch: [Ressourcenklassen für die Workloadverwaltung](resource-classes-for
 
 Informationen zu häufigen Problemen und den entsprechenden Lösungen finden Sie im Artikel [Problembehandlung](sql-data-warehouse-troubleshoot.md) .
 
-Wenn Sie die benötigten Informationen in diesem Artikel nicht gefunden haben, können Sie links auf dieser Seite über die Option „Nach Dokumenten suchen“ alle Dokumente zu Azure Synapse durchsuchen.  Im [Azure Synapse-Forum](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) können Sie anderen Benutzern und der Azure Synapse-Produktgruppe Fragen stellen. Wir überwachen dieses Forum aktiv, um sicherzustellen, dass Ihre Frage entweder von einem anderen Benutzer oder einem Mitarbeiter beantwortet wird.  
+Wenn Sie die benötigten Informationen in diesem Artikel nicht gefunden haben, können Sie links auf dieser Seite über die Option „Nach Dokumenten suchen“ alle Dokumente zu Azure Synapse durchsuchen.  Auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) können Sie anderen Benutzern und der Azure Synapse-Produktgruppe Fragen stellen. Wir überwachen dieses Forum aktiv, um sicherzustellen, dass Ihre Frage entweder von einem anderen Benutzer oder einem Mitarbeiter beantwortet wird.  
 
 Falls Sie Ihre Fragen lieber über Stack Overflow stellen möchten, können Sie dazu auch das [Stack Overflow-Forum für Azure Synapse](https://stackoverflow.com/questions/tagged/azure-sqldw) nutzen.
 

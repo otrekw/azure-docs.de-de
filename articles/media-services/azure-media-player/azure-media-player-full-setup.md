@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: d4c2dc58ca341db7ba17dbaf6a5ce7c009983379
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62d4e26d5a0d3d86cc58421dab4167d5d9d2562d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81725899"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961778"
 ---
 # <a name="azure-media-player-full-setup"></a>Vollständiges Setup von Azure Media Player #
 
@@ -23,11 +23,14 @@ Die Einrichtung von Azure Media Player ist einfach. Es dauert nur einige Augenbl
 Mithilfe von Azure Media Player können Sie auf die Skripts der gehosteten CDN-Version zugreifen. Es wird in letzter Zeit häufig empfohlen, JavaScript vor dem Endtag des Hauptteils `<body>` anstelle von `<head>` einzufügen, Azure Media Player enthält jedoch eine 'HTML5 Shiv', die im Header platziert werden muss, damit ältere IE-Versionen das Videotag als gültiges Element anerkennen.
 
 > [!NOTE]
-> Wenn Sie bereits eine HTML5-Shiv wie [Modernizr](http://modernizr.com/) verwenden, können Sie das JavaScript von Azure Media Player an jeder beliebigen Position einfügen. Vergewissern Sie sich aber, dass Ihre Version von Modernizr die Shiv für Video enthält.
+> Wenn Sie bereits eine HTML5-Shiv wie [Modernizr](https://modernizr.com/) verwenden, können Sie das JavaScript von Azure Media Player an jeder beliebigen Position einfügen. Vergewissern Sie sich aber, dass Ihre Version von Modernizr die Shiv für Video enthält.
 
 ### <a name="cdn-version"></a>CDN-Version ###
+
+```html
     <link href="//amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
     <script src= "//amp.azure.net/libs/amp/latest/azuremediaplayer.min.js"></script>
+```
 
 > [!IMPORTANT]
 > Es wird **NICHT** empfohlen, die Version vom Typ `latest` in der Produktion zu nutzen, da sie bedarfsabhängigen Änderungen unterliegt. Ersetzen Sie `latest` durch eine Version von Azure Media Player. Ersetzen Sie beispielsweise `latest` durch `2.1.1`. Azure Media Player-Versionen können [hier](azure-media-player-changelog.md) abgefragt werden.

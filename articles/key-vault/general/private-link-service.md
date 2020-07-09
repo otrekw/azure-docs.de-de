@@ -7,12 +7,12 @@ ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.openlocfilehash: 678e91126c04d5b299d9234a1602580260c5aee6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c832634a4b9154ec800da8c8ff25c6d81c620e9f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81421564"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610150"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrieren von Key Vault in Azure Private Link
 
@@ -104,7 +104,7 @@ az keyvault create --name {KEY VAULT NAME} --resource-group {RG} --location {AZU
 ```
 ### <a name="turn-on-key-vault-firewall"></a>Aktivieren der Key Vault-Firewall
 ```console
-az keyvault update --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION} --default-action deny
+az keyvault update --name {KEY VAULT NAME} --resource-group {RG} --default-action deny
 ```
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 ```console
@@ -124,7 +124,7 @@ az network private-dns zone create --resource-group {RG} --name privatelink.vaul
 ```
 ### <a name="link-private-dns-zone-to-virtual-network"></a>Verknüpfen einer privaten DNS-Zone mit dem virtuellen Netzwerk 
 ```console
-az network private-dns link vnet create --resoruce-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
+az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
 ```
 ### <a name="create-a-private-endpoint-automatically-approve"></a>Erstellen eines privaten Endpunkts (automatische Genehmigung) 
 ```console
@@ -225,13 +225,16 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 ## <a name="limitations-and-design-considerations"></a>Einschränkungen und Entwurfsaspekte
 
+> [!NOTE]
+> Die Anzahl der Schlüsseltresore mit den pro Abonnement aktivierten privaten Endpunkten ist ein anpassbarer Grenzwert. Der gezeigte Grenzwert ist der Standardwert. Wenn Sie eine Erhöhung des Grenzwerts für Ihren Dienst beantragen möchten, senden Sie eine E-Mail an akv-privatelink@microsoft.com. Wir genehmigen diese Anträge je nach Fall.
+
 **Preise:** Preisinformationen finden Sie unter [Azure Private Link – Preise](https://azure.microsoft.com/pricing/details/private-link/).
 
 **Einschränkungen:**  Der private Endpunkt für Azure Key Vault ist nur in öffentlichen Azure-Regionen verfügbar.
 
 **Maximal zulässige Anzahl privater Endpunkte pro Schlüsseltresor:** 64.
 
-**Maximal zulässige Anzahl von Schlüsseltresoren mit privaten Endpunkten pro Abonnement:** 64.
+**Standardanzahl von Schlüsseltresoren mit privaten Endpunkten pro Abonnement:** 400.
 
 Weitere Informationen finden Sie unter [Was ist der Azure Private Link-Dienst? – Einschränkungen](../../private-link/private-link-service-overview.md#limitations).
 

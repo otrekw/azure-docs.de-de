@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e9198892f95635add27bcfe9e479d0dd6fe3f08d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b62d69220a931bef8d91a85bcbbaedfbce86110a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425369"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211391"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault-Protokollierung
 
@@ -95,7 +95,7 @@ Im [Tutorial zu den ersten Schritten](../secrets/quick-create-cli.md) lautete de
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a name="enable-logging"></a><a id="enable"></a>Aktivieren der Protokollierung
+## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Aktivieren der Protokollierung mithilfe von Azure PowerShell
 
 Zum Aktivieren der Protokollierung für den Schlüsseltresor verwenden wir das Cmdlet **Set-AzDiagnosticSetting** zusammen mit den Variable, die wir für das neue Speicherkonto und den Schlüsseltresor erstellt haben. Außerdem legen wir das Flag **-Enabled** auf **$true** und die Kategorie auf **AuditEvent** (einzige Kategorie für die Key Vault-Protokollierung) fest:
 
@@ -131,6 +131,25 @@ Protokollierte Daten:
   * Erstellen, Ändern oder Löschen dieser Schlüssel oder Geheimnisse.
   * Signieren, Verifizieren, Verschlüsseln, Entschlüsseln, Ver- und Entpacken von Schlüsseln, Erhalten von Geheimnissen und Auflisten von Schlüsseln und Geheimnissen (und deren Versionen).
 * Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Beispiele sind Anforderungen ohne Bearertoken, falsch formatierte oder abgelaufene Anforderungen oder Anforderungen, deren Token ungültig ist.  
+
+## <a name="enable-logging-using-azure-cli"></a>Aktivieren der Protokollierung mithilfe der Azure CLI
+
+```azurecli
+az login
+
+az account set --subscription {AZURE SUBSCRIPTION ID}
+
+az provider register -n Microsoft.KeyVault
+
+az monitor diagnostic-settings create  \
+--name KeyVault-Diagnostics \
+--resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault \
+--logs    '[{"category": "AuditEvent","enabled": true}]' \
+--metrics '[{"category": "AllMetrics","enabled": true}]' \
+--storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount \
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace \
+--event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+```
 
 ## <a name="access-your-logs"></a><a id="access"></a>Zugreifen auf Ihre Protokolle
 
@@ -214,15 +233,10 @@ Sie können sich nun ansehen, was in den Protokollen enthalten ist. Aber bevor w
 * Zum Abfragen des Status von Diagnoseeinstellungen für Ihre Schlüsseltresorressource: `Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * Zum Deaktivieren der Protokollierung für Ihre Schlüsseltresorressource: `Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
+
 ## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>Interpretieren der Key Vault-Protokolle
 
-Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Schauen wir uns einen Beispielprotokolleintrag an. Führen Sie den folgenden Befehl aus:
-
-```powershell
-Get-AzKeyVault -VaultName 'contosokeyvault'`
-```
-
-Er gibt einen Protokolleintrag zurück, der dem folgenden ähnlich ist:
+Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Schauen wir uns einen Beispielprotokolleintrag an. 
 
 ```json
     {

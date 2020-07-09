@@ -7,18 +7,19 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 05/11/2020
 ms.author: dapine
-ms.openlocfilehash: c86d806c408c2e8226e632a0b15e1e8729c987f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: tracking-python
+ms.openlocfilehash: be1f6bd05069024194cb9312b17941c609d544dd
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131533"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608450"
 ---
 # <a name="azure-cognitive-services-security"></a>Sicherheit von Azure Cognitive Services
 
-Sicherheit sollte bei der Anwendungsentwicklung stets einen hohen Stellenwert haben. Angesichts des Aufkommens KI-fähiger Anwendungen ist Sicherheit sogar noch wichtiger geworden. In diesem Artikel werden verschiedene Aspekte der Sicherheit von Azure Cognitive Services erläutert – etwa die Verwendung von Transport Layer Security, Authentifizierung und einer sicheren Konfiguration für sensible Daten.
+Sicherheit sollte bei der Anwendungsentwicklung stets einen hohen Stellenwert haben. Angesichts des Aufkommens KI-fähiger Anwendungen ist Sicherheit sogar noch wichtiger geworden. In diesem Artikel werden verschiedene Aspekte der Sicherheit von Azure Cognitive Services erläutert – etwa die Verwendung von Transport Layer Security, Authentifizierung, einer sicheren Konfiguration für sensible Daten und Kunden-Lockbox für den Zugriff auf Kundendaten.
 
 ## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
@@ -193,6 +194,21 @@ NSString* value =
 ```
 
 ---
+
+## <a name="customer-lockbox"></a>Kunden-Lockbox
+
+[Kunden-Lockbox für Microsoft Azure](../security/fundamentals/customer-lockbox-overview.md) bietet eine Oberfläche, auf der Kunden Anforderungen nach Zugriff auf Kundendaten prüfen und dann genehmigen oder ablehnen können. Das Feature wird in Fällen verwendet, in denen ein Microsoft-Techniker während einer Supportanfrage auf Kundendaten zugreifen muss. Informationen zu der Weise, in der Kunden-Lockbox-Anforderungen initiiert, nachverfolgt und für spätere Überprüfungen und Audits speichert, finden Sie unter [Kunden-Lockbox](../security/fundamentals/customer-lockbox-overview.md). 
+
+Kunden-Lockbox ist für diesen Cognitive Service erhältlich:
+
+* Übersetzer
+
+Für Language Understanding greifen Microsoft-Techniker in der E0-SKU auf keinerlei Kundendaten zu. Wenn Sie die Verwendung der E0-SKU beantragen möchten, füllen Sie das  [LUIS Service Request-Formular](https://aka.ms/cogsvc-cmk) aus, und reichen Sie es ein. Nach ca. 3–5 Werktagen erhalten Sie eine Rückmeldung zum Status Ihrer Anforderung. Je nach Bedarf können Sie in einer Warteschlange platziert und genehmigt werden, sobald Platz verfügbar ist. Nachdem Ihre Verwendung der E0-SKU mit LUIS genehmigt wurde, müssen Sie im Azure-Portal eine neue Language Understanding-Ressource erstellen und E0 als Tarif auswählen. Benutzer können kein Upgrade von F0 auf die neue E0-SKU durchführen.
+
+Der Sprachdienst unterstützt zurzeit keine Kunden-Lockbox. Kundendaten können jedoch mithilfe von BYOS gespeichert werden, sodass Sie eine ähnliche Datenkontrolle wie bei [Kunden-Lockbox](../security/fundamentals/customer-lockbox-overview.md) erreichen können. Bedenken Sie, dass Daten des Sprachdiensts in der Region verarbeitet werden und verbleiben, in der die Speech-Ressource erstellt wurde. Dies betrifft alle Daten, sowohl ruhende Daten als auch übertragene Daten. Bei der Verwendung von Anpassungsfunktionen wie Custom Speech und Custom Voice werden alle Kundendaten in der gleichen Region übertragen, gespeichert und verarbeitet, in der Ihr BYOS (sofern verwendet) und die Sprachdienstressource gespeichert sind.
+
+> [!IMPORTANT]
+> Microsoft verwendet **keine** Kundendaten zur Verbesserung seiner Sprachmodelle. Wenn darüber hinaus die Endpunktprotokollierung deaktiviert ist und keine Anpassungen verwendet werden, werden keine Kundendaten gespeichert. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

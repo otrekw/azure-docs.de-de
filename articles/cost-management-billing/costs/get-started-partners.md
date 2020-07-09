@@ -3,17 +3,17 @@ title: Erste Schritte mit Azure Cost Management für Partner
 description: In diesem Artikel wird erläutert, wie Partner Features von Azure Cost Management verwenden und den Zugriff auf Cost Management für ihre Kunden aktivieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 06/08/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d1425407b9d451a8c35e736c38b8fac059a7c9d8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204884"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554561"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -152,7 +152,7 @@ In amortisierten Ansichten und für tatsächlichen Koste für reservierte Instan
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Analysieren von Kosten mithilfe der Kostenanalyse
 
-Partner mit Zugriff auf Abrechnungsbereiche im Partnermandanten können Kosten in der Kostenanalyse für einen bestimmten Kunden oder für eine Rechnung untersuchen und analysieren. In der Ansicht [Kostenanalyse](quick-acm-cost-analysis.md) können Sie auch [Ansichten speichern](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) und Daten in [CSV- und PNG-Dateien](quick-acm-cost-analysis.md#automation-and-offline-analysis) exportieren.
+Partner mit Zugriff auf Abrechnungsbereiche im Partnermandanten können Kosten in der Kostenanalyse für einen bestimmten Kunden oder für eine Rechnung untersuchen und analysieren. In der Ansicht [Kostenanalyse](quick-acm-cost-analysis.md) können Sie auch [Ansichten speichern](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) und Daten in [CSV- und PNG-Dateien](quick-acm-cost-analysis.md#download-usage-data) exportieren.
 
 Benutzer, denen im Rahmen der rollenbasierten Zugriffssteuerung im Kundenmandanten Zugriff auf ein Abonnement gewährt wurde, können auch Einzelhandelskosten für Abonnements im Kundenmandanten analysieren, Ansichten speichern und Daten in CSV- und PNG-Dateien exportieren.
 
@@ -208,7 +208,7 @@ Die folgenden Datenfelder befinden sich im Nutzungsdetaildateien und Cost Manage
 | resourceGroup | Name der Azure-Ressourcengruppe, der für die Lebenszyklusverwaltung der Ressource verwendet wird. | Name der Ressourcengruppe |
 | instanceID (oder) ResourceID | Bezeichner der Ressourceninstanz. | Wird als ResourceURI angezeigt, der die kompletten Ressourceneigenschaften enthält. |
 | resourceLocation | Name des Ressourcenspeicherorts. | Der Speicherort der Ressource. |
-| Position | Normalisierter Speicherort der Ressourcengruppe. | – |
+| Standort | Normalisierter Speicherort der Ressourcengruppe. | – |
 | effectivePrice | Der geltende Einheitenpreis für den Dienst in der Abrechnungswährung. Dieser Preis ist für jedes Produkt, jede Dienstfamilie, jede Verbrauchseinheit und jedes Angebot einzigartig. Wird mit den Preisen im Preisblatt für das Abrechnungskonto verwendet. Bei Stufenpreisen oder enthaltenen Mengen wird der gemischte Preis für die Nutzung angezeigt. | Der Einzelpreis nach den vorgenommenen Anpassungen. |
 | Menge | Die gemessene Menge, die erworben oder genutzt wurde. Die Menge der Verbrauchseinheit, die während des Abrechnungszeitraums genutzt wurde. | Anzahl der Einheiten. Stellen Sie sicher, dass die Angaben den Informationen in Ihrem Abrechnungssystem während des Abgleichs entsprechen. |
 | unitOfMeasure | Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele: GB oder Stunden. | Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele sind GB, Stunden und 10.000 s. |
@@ -246,7 +246,7 @@ Wenn die **PartnerEarnedCreditApplied**-Eigenschaft _True_ ist, wirkt sich der V
 
 Wenn die **PartnerEarnedCreditApplied**-Eigenschaft _False_  ist, haben die zugeordneten Kosten die erforderliche Berechtigung für die Gutschrift nicht erfüllt. Es kann auch sein, dass der erworbene Dienst nicht für Partner Earned Credit berechtigt ist.
 
-In der Regel dauert es 8-24 Stunden, bis Dienstnutzungsdaten in Cost Management angezeigt werden. Weitere Informationen finden Sie unter [Die Häufigkeit der Aktualisierung der Nutzungsdaten variiert](understand-cost-mgt-data.md#usage-data-update-frequency-varies). PEC-Gutschriften werden innerhalb von 48 Stunden ab dem Zeitpunkt des Zugriffs in Azure Cost Management angezeigt.
+In der Regel dauert es 8-24 Stunden, bis Dienstnutzungsdaten in Cost Management angezeigt werden. Weitere Informationen finden Sie unter [Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention). PEC-Gutschriften werden innerhalb von 48 Stunden ab dem Zeitpunkt des Zugriffs in Azure Cost Management angezeigt.
 
 
 Sie können auch nach der **PartnerEarnedCreditApplied**-Eigenschaft gruppieren und filtern, indem Sie die **Gruppieren nach**-Optionen verwenden. Verwenden Sie die Optionen, um zu überprüfen, auf welche Kosten PEC angewendet wird und auf welche nicht.

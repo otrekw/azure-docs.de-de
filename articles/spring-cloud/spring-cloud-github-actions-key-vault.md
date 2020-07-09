@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a836ae195674556c486592a421c188f7c40e3f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78945464"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484343"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Authentifizieren von Azure Spring Cloud mit Schlüsseltresor in GitHub Actions
 Ein Schlüsseltresor ist ein sicherer Ort zum Speichern von Schlüsseln. Unternehmensbenutzer müssen Anmeldeinformationen für CI/CD-Umgebungen im von ihnen kontrollierten Bereich speichern. Der Schlüssel zum Abrufen von Anmeldeinformationen im Schlüsseltresor muss auf den Ressourcenbereich beschränkt sein.  Er ermöglicht nur den Zugriff auf den Schlüsseltresorbereich und nicht auf den gesamten Azure-Bereich. Somit ist er vergleichbar mit einem Schlüssel, der nur ein bestimmtes Schließfach öffnet (im Gegensatz zu einem Hauptschlüssel, mit dem sämtliche Türen in einem Gebäude geöffnet werden können). Er ermöglicht das Abrufen eines Schlüssels mithilfe eines anderen Schlüssels, was in einem CI/CD-Workflow hilfreich ist. 
@@ -73,7 +73,7 @@ Ergebnisse:
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-Kopieren Sie die gesamte JSON-Zeichenfolge.  Kehren Sie zum Dashboard **Key Vault** zurück. Öffnen Sie das Menü **Geheimnisse**, und klicken Sie auf die Schaltfläche **Generieren/importieren**. Geben Sie den Namen des Geheimnisses ein (beispielsweise `AZURE-CRENDENTIALS-FOR-SPRING`). Fügen Sie die JSON-Anmeldeinformationszeichenfolge in das Eingabefeld **Wert** ein. Wie Sie sehen, ist das Eingabefeld für den Wert kein Textbereich mit mehreren Zeilen, sondern ein einzeiliges Textfeld.  Dort können Sie die gesamte JSON-Zeichenfolge einfügen.
+Kopieren Sie die gesamte JSON-Zeichenfolge.  Kehren Sie zum Dashboard **Key Vault** zurück. Öffnen Sie das Menü **Geheimnisse**, und klicken Sie auf die Schaltfläche **Generieren/importieren**. Geben Sie den Namen des Geheimnisses ein (beispielsweise `AZURE-CREDENTIALS-FOR-SPRING`). Fügen Sie die JSON-Anmeldeinformationszeichenfolge in das Eingabefeld **Wert** ein. Wie Sie sehen, ist das Eingabefeld für den Wert kein Textbereich mit mehreren Zeilen, sondern ein einzeiliges Textfeld.  Dort können Sie die gesamte JSON-Zeichenfolge einfügen.
 
  ![Anmeldeinformationen für den gesamten Bereich](./media/github-actions/key-vault3.png)
 
@@ -92,7 +92,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}           # Strong box key you generated in the first step
     - uses: Azure/get-keyvault-secrets@v1.0
       with:
-        keyvault: "zlhe-test"
+        keyvault: "<Your Key Vault Name>"
         secrets: "AZURE-CREDENTIALS-FOR-SPRING"           # Master key to open all doors in the building
       id: keyvaultaction
     - uses: azure/login@v1

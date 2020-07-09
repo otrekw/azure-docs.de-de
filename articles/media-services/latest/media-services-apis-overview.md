@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: eacdfe8211c97e75b6609f5e11b681f84ae55846
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ea74c85af062ce00dbccf8a486ce39cbd524bb0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472083"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515067"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Entwickeln mit Media Services v3-APIs
 
@@ -41,7 +41,7 @@ Anstatt ein Dienstprinzipal zu erstellen, sollten Sie die Verwendung verwalteter
 
 Wenn Sie eine Azure AD-App und ein Dienstprinzipal erstellen, muss sich die App in ihrem eigenen Mandanten befinden. Nachdem Sie die App erstellt haben, können Sie für die App den Zugriff auf das Media Services-Konto über die Rolle **Mitwirkender** oder **Besitzer** gewähren.
 
-Wenn Sie sich nicht sicher sind, ob Sie über Berechtigungen zum Erstellen einer Azure AD-App verfügen, lesen Sie [Erforderliche Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+Wenn Sie sich nicht sicher sind, ob Sie über Berechtigungen zum Erstellen einer Azure AD-App verfügen, lesen Sie [Erforderliche Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 In der folgenden Abbildung stellen die Zahlen den Fluss der Anforderungen in chronologischer Reihenfolge dar:
 
@@ -54,7 +54,7 @@ In der folgenden Abbildung stellen die Zahlen den Fluss der Anforderungen in chr
    * Ressourcen-URI für REST Media Services
    * Werte der Azure AD-App: Client-ID und Clientgeheimnis
 
-   Informationen zum Abrufen aller erforderlichen Werte finden Sie in [Zugriff auf Azure Media Services API mit Azure CLI](access-api-cli-how-to.md).
+   Informationen zum Abrufen aller erforderlichen Werte finden Sie in [Zugriff auf Azure Media Services API](access-api-cli-how-to.md).
 
 2. Das Azure AD-Zugriffstoken wird an die mittlere Ebene gesendet.
 4. Die mittlere Ebene sendet eine Anforderung mit dem Azure AD-Token an die Azure Media-REST-API.
@@ -148,7 +148,7 @@ Im Artikel [Azure Media Services-Community](media-services-community.md) finden 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+Informationen zum Abrufen aller erforderlichen Werte finden Sie in [Zugriff auf Azure Media Services API](access-api-cli-how-to.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

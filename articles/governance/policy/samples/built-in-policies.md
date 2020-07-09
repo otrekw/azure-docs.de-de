@@ -1,21 +1,29 @@
 ---
 title: Liste der integrierten Richtliniendefinitionen
 description: Hier finden Sie eine Liste der integrierten Richtliniendefinitionen für Azure Policy. Zu den Kategorien zählen Tags, Einhaltung gesetzlicher Bestimmungen, Key Vault, Kubernetes, Gastkonfiguration und vieles mehr.
-ms.date: 05/13/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c6a7f128dd2479645cc379f36532563c0ade5d14
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 94f69754ab51728a18da10b45e05770f1271760b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651339"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313387"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Integrierte Azure Policy-Richtliniendefinitionen
 
 Diese Seite enthält einen Index der integrierten Azure Policy-Richtliniendefinitionen.
 
 Die Namen der einzelnen Integrationen sind Links zur entsprechenden Richtliniendefinition im Azure-Portal. Verwenden Sie den Link in der Spalte **Quelle**, um die Quelle im [Azure Policy-GitHub-Repository](https://github.com/Azure/azure-policy) anzuzeigen Die Integrationen sind basierend auf der Eigenschaft **category** in den **Metadaten** gruppiert. Verwenden Sie das Menü auf der rechten Seite, um zu einer bestimmten **Kategorie** zu wechseln. Verwenden Sie andernfalls <kbd>STRG</kbd>-<kbd>F</kbd>, um die Suchfunktion des Browsers zu nutzen.
+
+## <a name="api-for-fhir"></a>API für FHIR
+
+[!INCLUDE [azure-policy-samples-policies-api-for-fhir](../../../../includes/policy/samples/bycat/policies-api-for-fhir.md)]
+
+## <a name="api-management"></a>API Management
+
+[!INCLUDE [azure-policy-samples-policies-api-management](../../../../includes/policy/samples/bycat/policies-api-management.md)]
 
 ## <a name="app-configuration"></a>App Configuration
 
@@ -45,6 +53,10 @@ Die Namen der einzelnen Integrationen sind Links zur entsprechenden Richtliniend
 
 [!INCLUDE [azure-policy-samples-policies-cache](../../../../includes/policy/samples/bycat/policies-cache.md)]
 
+## <a name="cognitive-services"></a>Cognitive Services
+
+[!INCLUDE [azure-policy-samples-policies-cognitive-services](../../../../includes/policy/samples/bycat/policies-cognitive-services.md)]
+
 ## <a name="compute"></a>Compute
 
 [!INCLUDE [azure-policy-samples-policies-compute](../../../../includes/policy/samples/bycat/policies-compute.md)]
@@ -64,6 +76,10 @@ Die Namen der einzelnen Integrationen sind Links zur entsprechenden Richtliniend
 ## <a name="data-lake"></a>Data Lake
 
 [!INCLUDE [azure-policy-samples-policies-data-lake](../../../../includes/policy/samples/bycat/policies-data-lake.md)]
+
+## <a name="event-grid"></a>Event Grid
+
+[!INCLUDE [azure-policy-samples-policies-event-grid](../../../../includes/policy/samples/bycat/policies-event-grid.md)]
 
 ## <a name="event-hub"></a>Event Hub
 
@@ -89,10 +105,6 @@ Die Namen der einzelnen Integrationen sind Links zur entsprechenden Richtliniend
 
 [!INCLUDE [azure-policy-samples-policies-kubernetes](../../../../includes/policy/samples/bycat/policies-kubernetes.md)]
 
-## <a name="kubernetes-service"></a>Kubernetes-Dienst
-
-[!INCLUDE [azure-policy-samples-policies-kubernetes-service](../../../../includes/policy/samples/bycat/policies-kubernetes-service.md)]
-
 ## <a name="lighthouse"></a>Lighthouse
 
 [!INCLUDE [azure-policy-samples-policies-lighthouse](../../../../includes/policy/samples/bycat/policies-lighthouse.md)]
@@ -100,6 +112,10 @@ Die Namen der einzelnen Integrationen sind Links zur entsprechenden Richtliniend
 ## <a name="logic-apps"></a>Logic Apps
 
 [!INCLUDE [azure-policy-samples-policies-logic-apps](../../../../includes/policy/samples/bycat/policies-logic-apps.md)]
+
+## <a name="machine-learning"></a>Machine Learning
+
+[!INCLUDE [azure-policy-samples-policies-machine-learning](../../../../includes/policy/samples/bycat/policies-machine-learning.md)]
 
 ## <a name="managed-application"></a>Verwaltete Anwendung
 
@@ -128,6 +144,10 @@ Die Namen der einzelnen Integrationen sind Links zur entsprechenden Richtliniend
 ## <a name="service-fabric"></a>Service Fabric
 
 [!INCLUDE [azure-policy-samples-policies-service-fabric](../../../../includes/policy/samples/bycat/policies-service-fabric.md)]
+
+## <a name="signalr"></a>SignalR
+
+[!INCLUDE [azure-policy-samples-policies-signalr](../../../../includes/policy/samples/bycat/policies-signalr.md)]
 
 ## <a name="sql"></a>SQL
 

@@ -1,24 +1,17 @@
 ---
 title: Verwenden von azure/service-bus-Warteschlangen in Node.js
 description: Hier erfahren Sie, wie Sie ein Node.js-Programm schreiben, um mithilfe des neuen Pakets @azure/service-bus Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen.
-services: service-bus-messaging
-documentationcenter: nodejs
-author: axisc
-editor: spelluru
-ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
-ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
+author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: c2e24e9dea2c8463294c85f04c9e4d7d2da17261
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.openlocfilehash: 59137cd50c2bb6fcd71b43028f68d63225b4094c
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78330650"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340671"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Schnellstart: Verwenden von Service Bus-Warteschlangen mit Node.js und dem Paket „azure/service-bus“
 In diesem Tutorial erfahren Sie, wie Sie ein Node.js-Programm schreiben, um Nachrichten mithilfe des neuen [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus)-Pakets an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen. Dieses Paket verwendet das schnellere [Advance Message Queueing Protocol 1.0](service-bus-amqp-overview.md). Im Gegensatz dazu hat das ältere Paket [azure-sb](https://www.npmjs.com/package/azure-sb) die [Service Bus-REST-Laufzeit-APIs](/rest/api/servicebus/service-bus-runtime-rest) verwendet. Die Beispiele sind in JavaScript geschrieben.

@@ -10,10 +10,10 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: queues
 ms.openlocfilehash: 464807a7bf4a20b540e2d5344b721c8844bd7bca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75750483"
 ---
 # <a name="scalability-and-performance-targets-for-queue-storage"></a>Skalierbarkeits- und Leistungsziele für Queue Storage
@@ -27,6 +27,6 @@ ms.locfileid: "75750483"
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Prüfliste zu Leistung und Skalierbarkeit für Queue Storage](storage-performance-checklist.md)
-- [Skalierbarkeitsziele für Storage Standard-Konten](../common/scalability-targets-standard-account.md)
+- [Skalierbarkeitsziele für Storage Standard-Konten](../common/scalability-targets-standard-account.md)
 - [Skalierbarkeitsziele für den Azure Storage-Ressourcenanbieter](../common/scalability-targets-resource-provider.md)
 - [Grenzwerte und Kontingente von Azure-Abonnements](../../azure-resource-manager/management/azure-subscription-service-limits.md)

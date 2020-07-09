@@ -6,19 +6,19 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/29/2019
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb80c3a94e63a886e4a16c0b8fa445b2a8a34e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 252c033c1a9d4d45c3d48256e65ae9ad10a93c51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72515821"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360060"
 ---
-# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren von AD DS-Connector-Kontoberechtigungen 
+# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren der Azure AD-Connector-Kontoberechtigungen 
 
 Mit Build 1.1.880.0 (veröffentlicht im August 2018) wurde das PowerShell-Modul namens [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) eingeführt, das eine Sammlung von Cmdlets enthält, die Sie beim Konfigurieren der richtigen Active Directory-Berechtigungen für Ihre Azure AD Connect-Bereitstellung unterstützen. 
 
@@ -40,7 +40,7 @@ Die folgende Tabelle bietet eine Zusammenfassung der für AD-Objekte erforderlic
 | Öffentlicher Exchange-E-Mail-Ordner |Leseberechtigungen für die Attribute, die im [öffentlichen Exchange-E-Mail-Ordner](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) für öffentliche Ordner dokumentiert sind. | 
 | Kennwortrückschreiben |Lese- und Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../authentication/howto-sspr-writeback.md) für Benutzer dokumentiert sind. |
 | Geräterückschreiben |Lese- und Schreibberechtigungen für Geräteobjekte und Container, die in [Geräterückschreiben](how-to-connect-device-writeback.md) dokumentiert sind. |
-| Gruppenrückschreiben |Lesen, Erstellen, Aktualisieren und Löschen von Gruppenobjekten für synchronisierte **Office 365-Gruppen**.  Weitere Informationen finden Sie unter [Gruppenrückschreiben](how-to-connect-preview.md#group-writeback).|
+| Gruppenrückschreiben |Lesen, Erstellen, Aktualisieren und Löschen von Gruppenobjekten für synchronisierte **Office 365-Gruppen**.|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>Verwenden des ADSyncConfig PowerShell-Moduls 
 Das ADSyncConfig-Modul erfordert die [Remoteserver-Verwaltungstools (RSAT) für AD DS](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools), weil es vom AD DS PowerShell-Modul und den Tools abhängig ist. Um RSAT für AD DS zu installieren, öffnen Sie ein Windows PowerShell-Fenster mit „Als Administrator ausführen“, und führen Sie Folgendes aus: 

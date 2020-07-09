@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: f2e3c03ba599128cc4552f64637ebd63efcb4578
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d7ab9d4e7a7c560fa05bdc06c7d1c357a2c2767
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128444"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196628"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -21,18 +21,24 @@ ms.locfileid: "82128444"
 
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. 
 
-Dieser Artikel ist eine vollständige Liste aller Plattformmetriken (d. h. der automatisch erfassten), die derzeit mit der konsolidierten Metrikpipeline von Azure Monitor zur Verfügung stehen. Die Liste wurde am 27. März 2020 zuletzt aktualisiert. Nach diesem Datum geänderte oder hinzugefügte Metriken werden möglicherweise unten nicht angezeigt. Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um diese Metriken programmgesteuert abzufragen und auf die Liste zuzugreifen.
+Dieser Artikel ist eine vollständige Liste aller Plattformmetriken (d. h. der automatisch erfassten), die derzeit mit der konsolidierten Metrikpipeline von Azure Monitor zur Verfügung stehen. Die Liste wurde am 27. März 2020 zuletzt aktualisiert. Nach diesem Datum geänderte oder hinzugefügte Metriken werden möglicherweise unten nicht angezeigt. Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um diese Metriken programmgesteuert abzufragen und auf die Liste zuzugreifen. Andere Metriken, die nicht in dieser Liste enthalten sind, stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung.
 
-Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung. Metriken für das Gastbetriebssystem (Gast-BS), das in Azure Virtual Machines, Service Fabric und Cloud Services ausgeführt wird, sind hier **NICHT** aufgeführt. Diese müssen über einen oder mehrere Agents erfasst werden, die unter dem oder als Teil des Betriebssystems ausgeführt werden. Sie können die Agentmetriken mithilfe der API für [benutzerdefinierte Metriken](metrics-custom-overview.md), die sich derzeit in der öffentlichen Vorschauphase befindet, in die Plattformmetriken-Datenbank senden. Anschließend können Sie Gast-BS-Metriken grafisch darstellen, mit Warnungen verknüpfen und anderweitig wie Plattformmetriken verwenden. Weitere Informationen finden Sie unter [Übersicht über Überwachungs-Agents](agents-overview.md).    
+Die Metriken sind nach Ressourcenanbietern und Ressourcentyp geordnet. Eine Liste der Dienste und der Ressourcenanbieter, die zu diesen gehören, finden Sie unter [Ressourcenanbieter für Azure-Dienste](../../azure-resource-manager/management/azure-services-resource-providers.md). 
 
-Die Metriken werden nach Namespace organisiert. Eine Liste der Dienste und Namespaces, die zu diesen gehören, finden Sie unter [Ressourcenanbieter für Azure-Dienste](../../azure-resource-manager/management/azure-services-resource-providers.md). 
 
-> [!NOTE]
-> Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert.
->
-> *Beispiel*: Die Metrik „Eingehende Nachrichten“ in einem Event Hub kann auf Warteschlangenebene untersucht und in einem Diagramm dargestellt werden. Wenn Sie die Metrik allerdings über die Diagnoseeinstellungen exportieren, umfasst die Darstellung alle eingehenden Nachrichten für alle Warteschlangen im Event Hub.
->
-> Eine Liste der Plattformmetriken, die über Diagnoseeinstellungen exportiert werden können, finden Sie in [diesem Artikel](metrics-supported-export-diagnostic-settings.md).
+## <a name="guest-os-metrics"></a>Gastbetriebssystemmetriken
+
+Metriken für das Gastbetriebssystem (Gast-BS), das in Azure Virtual Machines, Service Fabric und Cloud Services ausgeführt wird, sind hier **NICHT** aufgeführt. Stattdessen müssen Leistungsmetriken für das Gastbetriebssystem über einen oder mehrere Agents erfasst werden, die unter dem oder als Teil des Gastbetriebssystems ausgeführt werden.  Zu den Gastbetriebssystemmetriken zählen Leistungsindikatoren, die den CPU-Prozentsatz oder die Speicherauslastung durch das Gastbetriebssystem nachverfolgen. Diese werden häufig für die automatische Skalierung oder Warnungen verwendet.  Wenn Sie die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) verwenden, können Sie Leistungsmetriken für das Gastbetriebssystem an dieselbe Datenbank senden, in der auch Plattformmetriken gespeichert werden. Gastbetriebssystemmetriken werden hierbei über die API für [benutzerdefinierte Metriken](metrics-custom-overview.md) weitergeleitet. Anschließend können Sie Gast-BS-Metriken grafisch darstellen, mit Warnungen verknüpfen und anderweitig wie Plattformmetriken verwenden. Weitere Informationen finden Sie unter [Übersicht über Überwachungs-Agents](agents-overview.md).    
+
+## <a name="routing-platform-metrics-to-other-locations"></a>Weiterleiten von Plattformmetriken an andere Speicherorte
+
+Mithilfe von [Diagnoseeinstellungen](diagnostic-settings.md) können Sie Plattformmetriken an Azure Storage, Azure Monitor-Protokolle (und somit Log Analytics) sowie Event Hubs weiterleiten.  
+
+Es gibt einige Einschränkungen in Hinsicht darauf, welche Metriken weitergeleitet werden können und in welcher Form diese gespeichert werden. 
+- Nicht alle Metriken können an andere Speicherorte exportiert werden. Eine Liste der Plattformmetriken, die über Diagnoseeinstellungen exportiert werden können, finden Sie in [diesem Artikel](metrics-supported-export-diagnostic-settings.md).
+
+- Das Senden mehrdimensionaler Metriken an andere Speicherorte über Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert.
+*Beispiel*: Die Metrik „Eingehende Nachrichten“ in einem Event Hub kann auf Warteschlangenebene untersucht und in einem Diagramm dargestellt werden. Wenn Sie die Metrik allerdings über die Diagnoseeinstellungen exportieren, umfasst die Darstellung alle eingehenden Nachrichten für alle Warteschlangen im Event Hub.
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers

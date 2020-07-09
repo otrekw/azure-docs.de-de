@@ -1,18 +1,16 @@
 ---
 title: Dashboard „Kunde“ in Analysen für den kommerziellen Microsoft-Marketplace in Partner Center
 description: Erfahren Sie, wie Sie mithilfe des Dashboards „Kunde“ in Analysen für den kommerziellen Marketplace auf Informationen zu Ihren Kunden zugreifen, einschließlich Wachstumstrends.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 4d9dc0315a5c87ed67390e8edb23d44ee55f242b
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 06/15/2020
+ms.openlocfilehash: 9f71a668b3473521e9d8d7c9318ab2e557380845
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732766"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121757"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Kunden“ in Analysen für den kommerziellen Marketplace
 
@@ -52,9 +50,9 @@ Es gibt drei **Kundentypen**: Neukunden, Bestandskunden und abgewanderte Kunden.
 
 ### <a name="customer-by-geography"></a>Kunden nach Geografie
 
-Im Diagramm **Kunden nach Geografie** wird die Anzahl aller Kunden und der während des ausgewählten Datumsbereichs gewonnenen Kunden angezeigt. Diese werden anhand des Kundenlands zugeordnet. Die Helligkeit der Farbe auf der Karte entspricht einer niedrigen bis hohen Anzahl von Kunden. Klicken Sie auf einen Datensatz in der Tabelle, um ein Land zu vergrößern.
+Im Diagramm **Kunden nach Geografie** wird die Anzahl aller Kunden und der im ausgewählten Datumsbereich gewonnenen Kunden angezeigt. Diese werden anhand des Kundenlands bzw. der Kundenregion zugeordnet. Die Helligkeit der Farbe auf der Karte entspricht einer niedrigen bis hohen Anzahl von Kunden. Klicken Sie auf einen Datensatz in der Tabelle, um ein Land/eine Region zu vergrößern.
 
-Das Wärmebild zeigt die Anzahl der Kunden und den Anteil nach Kundenland an. Sie können die Karte verschieben, um den genauen Standort anzuzeigen und einen bestimmten Standort zu vergrößern. Diese Karte weist ein zusätzliches Raster auf, über das Sie den prozentualen Anteil der Kunden nach Standort sowie die Neukunden an diesem Standort anzeigen können.
+Im Wärmebild wird die Anzahl der Kunden und der Anteil nach Kundenland/-region angezeigt. Sie können die Karte verschieben, um den genauen Standort anzuzeigen und einen bestimmten Standort zu vergrößern. Diese Karte weist ein zusätzliches Raster auf, über das Sie den prozentualen Anteil der Kunden nach Standort sowie die Neukunden an diesem Standort anzeigen können.
 
 ### <a name="customer-trends"></a>Kundentrends
 
@@ -97,7 +95,9 @@ Die Tabelle **Kundendetails** zeigt eine nummerierte Liste der 1.000 besten Kund
 - Jede Spalte im Raster ist sortierbar.
 - Die Daten können in eine TSV-Datei extrahiert werden, wenn die Anzahl der Datensätze weniger als 1000 beträgt.
 - Liegt die Anzahl der Datensätze über 1.000, werden die exportierten Daten für die nächsten 30 Tage asynchron auf einer Downloadseite abgelegt.
-- Sie können auf die Tabelle Filter anwenden, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Firmennamen, die Kunden-ID, Marketplace-Abonnement-ID, Azure-Lizenztyp, Erwerbsdatum, Verlustdatum, E-Mail-Adresse des Kunden, Land/Bundesland/Stadt/Postleitzahl des Kunden, Sprache des Kunden usw. gefiltert werden.
+- Sie können auf die Tabelle Filter anwenden, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Firmenname, Kunden-ID, Marketplace-Abonnement-ID, Azure-Lizenztyp, Erwerbsdatum, Verlustdatum, E-Mail-Adresse des Kunden, Land/Region/Bundesland/Kanton/Stadt/Postleitzahl des Kunden, Sprache des Kunden usw. gefiltert werden.
+- Wenn ein Angebot von einem geschützten Kunden erworben wird, werden die Informationen in **Customer Detailed Data** (Detaillierte Kundendaten) maskiert (************).
+- Kundendimensionsdetails wie Firmenname, Kundenname und E-Mail-Adresse des Kunden befinden sich auf der Ebene der Unternehmens-ID, nicht auf der Azure Marketplace- oder AppSource-Transaktionsebene.
 
 ### <a name="customer-page-filters"></a>Filter auf der Seite „Kunden“
 

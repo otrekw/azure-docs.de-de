@@ -5,16 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 59dc64c952aab6b37e6a779ab1e7e85b9a8ab4b7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792614"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018819"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
 Auf dieser Seite finden Sie allgemeine Probleme, die Azure Remote Rendering beeinträchtigen, sowie Möglichkeiten, diese zu beheben.
+
+## <a name="cant-link-storage-account-to-arr-account"></a>Das Speicherkonto kann nicht mit dem ARR-Konto verknüpft werden.
+
+Manchmal wird während der [Verknüpfung eines Speicherkontos](../how-tos/create-an-account.md#link-storage-accounts) das Remote Rendering-Konto nicht aufgeführt. Um dieses Problem zu beheben, wechseln Sie im Azure-Portal zum ARR-Konto, und wählen Sie **Identität** unter der Gruppe **Einstellungen** auf der linken Seite aus. Stellen Sie sicher, dass **Status** auf **Ein** festgelegt ist.
+![Unity-Framedebugger](./media/troubleshoot-portal-identity.png)
 
 ## <a name="client-cant-connect-to-server"></a>Der Client kann keine Verbindung mit dem Server herstellen.
 
@@ -24,7 +29,7 @@ Stellen Sie sicher, dass Ihre Firewalls (auf dem Gerät, in Routern usw.) die fo
 * **8266 (TCP + UDP):** für die Datenübertragung erforderlich
 * **5000 (TCP)** , **5433 (TCP)** , **8443 (TCP)** : für [ArrInspector](tools/arr-inspector.md) erforderlich
 
-## <a name="error-disconnected-videoformatnotavailable"></a>Fehler „Getrennt: VideoFormatNotAvailable“
+## <a name="error-disconnected-videoformatnotavailable"></a>Fehler „`Disconnected: VideoFormatNotAvailable`“
 
 Vergewissern Sie sich, dass Ihre GPU-Hardware Videodecodierung unterstützt. Weitere Informationen finden Sie unter [Entwicklungs-PC](../overview/system-requirements.md#development-pc).
 
@@ -32,7 +37,7 @@ Wenn Sie an einem Laptop mit zwei GPUs arbeiten, kann es vorkommen, dass die GPU
 
 ## <a name="h265-codec-not-available"></a>H.265-Codec nicht verfügbar
 
-Der Server kann aus zwei Gründen die Verbindung mit dem Fehler **Codec nicht verfügbar** ablehnen.
+Der Server kann aus zwei Gründen die Verbindung mit dem Fehler `codec not available` ablehnen.
 
 **Der H.265-Codec ist nicht installiert:**
 
@@ -102,7 +107,7 @@ Wenn diese beiden Schritte nicht hilfreich waren, müssen Sie herausfinden, ob d
 
 Weitere Informationen finden Sie bei den spezifischen [VM-Größenbeschränkungen](../reference/limits.md#overall-number-of-polygons).
 
-**Das Modell befindet sich nicht im Ansichtsfrustum:**
+**Das Modell befindet sich nicht im Kamerafrustum:**
 
 In vielen Fällen wird das Modell ordnungsgemäß dargestellt, befindet sich jedoch außerhalb des Kamerafrustums. Ein häufiger Grund dafür ist, dass das Modell mit einem Pivot deutlich außerhalb des Mittelpunkts exportiert wurde, sodass es von der Entfernungsclippingebene der Kamera abgeschnitten wird. Es hilft, den Begrenzungsrahmen des Modells programmgesteuert abzufragen und mit Unity als Linienrahmen zu visualisieren oder die entsprechenden Werte im Debugprotokoll auszugeben.
 
@@ -137,7 +142,7 @@ Bei diesem Begrenzungsfeld können zwei Probleme auftreten, die zu unsichtbarer 
 
 **Die Unity-Renderpipeline enthält nicht die Renderhooks:**
 
-Azure Remote Rendering erstellt Hooks in der Unity-Renderpipeline, um die Framezusammenstellung mit dem Video und die Neuprojektion durchzuführen. Um zu überprüfen, ob diese Hooks vorhanden sind, öffnen Sie das Menü *Window > Analysis > Frame debugger* (Fenster > Analyse > Framedebugger). Aktivieren Sie ihn, und stellen Sie sicher, dass zwei Einträge für `HolographicRemotingCallbackPass` in der Pipeline vorhanden sind:
+Azure Remote Rendering erstellt Hooks in der Unity-Renderpipeline, um die Framezusammenstellung mit dem Video und die Neuprojektion durchzuführen. Öffnen Sie das Menü *:::no-loc text="Window > Analysis > Frame debugger":::* , um zu überprüfen, ob diese Hooks vorhanden sind. Aktivieren Sie ihn, und stellen Sie sicher, dass zwei Einträge für `HolographicRemotingCallbackPass` in der Pipeline vorhanden sind:
 
 ![Unity-Framedebugger](./media/troubleshoot-unity-pipeline.png)
 
@@ -150,7 +155,7 @@ Stellen Sie den *Buildtyp* der Unity-Lösung auf **Debug** um. Beim Testen von A
 ### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>Kompilierungsfehler beim Kompilieren von Unity-Beispielen für HoloLens 2
 
 Bei dem Versuch, Unity-Beispiele ( Schnellstart, ShowCaseApp, ...) für HoloLens 2 zu kompilieren, sind fälschlicherweise Fehler aufgetreten. Visual Studio beanstandet, dass einige Dateien nicht kopiert werden können, obwohl sie vorhanden sind. Wenn Sie auf dieses Problem treffen:
-* Entfernen Sie alle temporären Unity-Dateien aus dem Projekt, und versuchen Sie es erneut.
+* Entfernen Sie alle temporären Unity-Dateien aus dem Projekt, und versuchen Sie es erneut. Schließen Sie hierzu Unity, löschen Sie die temporären Ordner *library* und *obj* im Projektverzeichnis, und laden/erstellen Sie das Projekt erneut.
 * Stellen Sie sicher, dass sich die Projekte in einem Verzeichnis auf dem Datenträger mit einem relativ kurzen Pfad befinden, da es beim Kopieren gelegentlich zu Problemen mit langen Dateinamen zu kommen scheint.
 * Wenn das nicht hilft, könnte es sein, dass zwischen MS Sense und dem Kopierschritt ein Konflikt besteht. Führen Sie diesen Registrierungsbefehl über die Befehlszeile aus (erfordert Administratorrechte), um eine Ausnahme einzurichten:
     ```cmd

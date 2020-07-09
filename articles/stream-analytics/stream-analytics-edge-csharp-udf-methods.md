@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53ebf8adb99362b5aaf27676bbd50fb8b525f526
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426316"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994482"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Entwickeln von benutzerdefinierten .NET Standard-Funktionen für Azure Stream Analytics-Aufträge (Vorschau)
 
@@ -42,17 +42,29 @@ Zum Implementieren von UDFs stehen drei Methoden zur Auswahl:
 Der Pfad aller UDF-Pakete hat das Format `/UserCustomCode/CLR/*`. Dynamic Link Libraries (DLLs) und Ressourcen werden in den Ordner `/UserCustomCode/CLR/*` kopiert. Damit werden die Benutzer-DLLs von den System- und Azure Stream Analytics-DLLs isoliert. Dieser Paketpfad wird für alle Funktionen genutzt, unabhängig davon, mit welcher Methode sie verwendet werden.
 
 ## <a name="supported-types-and-mapping"></a>Unterstützte Typen und Zuordnungen
+Damit Azure Stream Analytics-Werte in C# verwendet werden können, müssen sie von einer Umgebung in die andere übertragen werden. Das Marshalling erfolgt für alle Eingabeparameter einer UDF. Jeder Azure Stream Analytics-Typ verfügt über einen entsprechenden Typ in C#, der in der nachstehenden Tabelle aufgeführt ist:
 
-|**UDF-Typ (C#)**  |**Azure Stream Analytics-Typ**  |
+|**Azure Stream Analytics-Typ** |**C#-Typ** |
+|---------|---------|
+|BIGINT | long |
+|float | double |
+|nvarchar(max) | Zeichenfolge |
+|datetime | Datetime |
+|Datensatz | Dictionary\<Zeichenfolge, Objekt> |
+|Array | Objekt[] |
+
+Dasselbe gilt, wenn Daten von C# nach Azure Stream Analytics gemarshallt werden müssen, was beim Ausgabewert einer UDF erfolgt. Die folgende Tabelle zeigt, welche Typen unterstützt werden:
+
+|**C#-Typ**  |**Azure Stream Analytics-Typ**  |
 |---------|---------|
 |long  |  BIGINT   |
-|double  |  double   |
+|double  |  float   |
 |Zeichenfolge  |  nvarchar(max)   |
-|dateTime  |  dateTime   |
-|struct  |  IRecord   |
-|Objekt (object)  |  IRecord   |
-|Array\<Objekt>  |  IArray   |
-|dictionary<Zeichenfolge, Objekt>  |  IRecord   |
+|Datetime  |  dateTime   |
+|struct  |  Datensatz   |
+|Objekt (object)  |  Datensatz   |
+|Objekt[]  |  Array   |
+|Dictionary\<Zeichenfolge, Objekt>  |  Datensatz   |
 
 ## <a name="codebehind"></a>CodeBehind
 Sie können benutzerdefinierte Funktionen im CodeBehind **Script.asql** schreiben. Visual Studio-Tools kompilieren automatisch die CodeBehind-Datei in eine Assemblydatei. Die Assemblys werden als ZIP-Datei verpackt und in Ihr Speicherkonto hochgeladen, wenn Sie Ihren Auftrag an Azure übermitteln. Im Tutorial [C#-UDF für Stream Analytics-Edge-Aufträge](stream-analytics-edge-csharp-udf.md) erfahren Sie, wie Sie eine UDF in C# mit CodeBehind schreiben. 
@@ -128,6 +140,43 @@ Erweitern Sie den Abschnitt mit der **benutzerdefinierten Codekonfiguration**, u
    |Custom Code Storage Settings Container (Container für Speichereinstellungen für benutzerdefinierten Code)|<Ihr Speichercontainer>|
    |Custom Code Assembly Source (Assemblyquelle für benutzerdefinierten Code)|Vorhandene Assemblypakete aus der Cloud|
    |Custom Code Assembly Source (Assemblyquelle für benutzerdefinierten Code)|UserCustomCode.zip|
+
+## <a name="user-logging"></a>Benutzerprotokollierung
+Mit dem Protokollierungsmechanismus können Sie benutzerdefinierte Informationen erfassen, während ein Auftrag ausgeführt wird. Protokolldaten können bspw. verwendet werden, um in Echtzeit den benutzerdefinierten Code zu debuggen oder dessen die Richtigkeit zu bewerten.
+
+Die Klasse `StreamingContext` ermöglicht es Ihnen, Diagnoseinformationen mithilfe der Funktion `StreamingDiagnostics.WriteError` zu veröffentlichen. Der folgende Code zeigt die Schnittstelle, die von Azure Stream Analytics verfügbar gemacht wird.
+
+```csharp
+public abstract class StreamingContext
+{
+    public abstract StreamingDiagnostics Diagnostics { get; }
+}
+
+public abstract class StreamingDiagnostics
+{
+    public abstract void WriteError(string briefMessage, string detailedMessage);
+}
+```
+
+`StreamingContext` wird als Eingabeparameter an die UDF-Methode übergeben und kann darin zum Veröffentlichen benutzerdefinierter Protokollinformationen verwendet werden. Im folgenden Beispiel definiert `MyUdfMethod` eine Dateneingabe (**data**), die von der Abfrage bereitgestellt wird, und eine Kontexteingabe (**context**) als `StreamingContext`, die von der Runtime-Engine bereitgestellt wird. 
+
+```csharp
+public static long MyUdfMethod(long data, StreamingContext context)
+{
+    // write log
+    context.Diagnostics.WriteError("User Log", "This is a log message");
+    
+    return data;
+}
+```
+
+Der Wert `StreamingContext` muss nicht von der SQL-Abfrage übergeben werden. Azure Stream Analytics stellt automatisch ein Kontextobjekt bereit, wenn ein Eingabeparameter vorhanden ist. Die Verwendung von `MyUdfMethod` ändert sich nicht. Dies wird in der folgenden Abfrage veranschaulicht:
+
+```sql
+SELECT udf.MyUdfMethod(input.value) as udfValue FROM input
+```
+
+Sie können über die [Diagnoseprotokolle](data-errors.md) auf Protokollmeldungen zugreifen.
 
 ## <a name="limitations"></a>Einschränkungen
 Für die Vorschauversion für benutzerdefinierte Funktionen gelten derzeit folgende Einschränkungen:

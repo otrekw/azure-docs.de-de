@@ -3,15 +3,15 @@ title: Herstellen einer Verbindung mit einem Azure Cosmos-Konto mit Azure Privat
 description: Erfahren Sie, wie Sie über einen virtuellen Computer sicher auf das Azure Cosmos-Konto zugreifen, indem Sie einen privaten Endpunkt erstellen.
 author: malopMSFT
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: b7a50a2dabc9503ca5dbdd3388e29cfc69963885
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d074128376d481902a203de3d32ef89aa72d7b3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252599"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737715"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Herstellen einer privaten Verbindung mit einem Azure Cosmos-Konto mithilfe von Azure Private Link
 
@@ -33,12 +33,12 @@ In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten w
 
 | Parameter                   | Wert                |
 |-----------------------------|----------------------|
-| **\<Ressourcengruppenname>**  | myResourceGroup|
-| **\<VNET-Name>** | myVirtualNetwork         |
-| **\<Regionsname>**          | USA, Westen-Mitte     |
-| **\<IPv4-Adressraum>**   | 10.1.0.0\16          |
-| **\<Subnetzname>**          | mySubnet        |
-| **\<Subnetzadressbereich>** | 10.1.0.0\24          |
+| **\<resource-group-name>**  | myResourceGroup|
+| **\<virtual-network-name>** | myVirtualNetwork         |
+| **\<region-name>**          | USA, Westen-Mitte     |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 

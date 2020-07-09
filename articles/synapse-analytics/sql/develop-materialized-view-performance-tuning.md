@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 30ca03633b9b0788235439204a3c1926fe6b6a6b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a3b012d86444ca2bb9b84af37aa17424221457d1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427062"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955062"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
 
@@ -153,7 +153,7 @@ Um das zwischengespeicherte Ergebnis verwenden zu können, muss die Form des Cac
 
 ## <a name="example"></a>Beispiel
 
-In diesem Beispiel wird eine TPCDS-ähnliche Abfrage verwendet, bei der Kunden gefunden werden, die über den Katalog mehr Geld aufwenden als in Geschäften. Außerdem werden die bevorzugten Kunden und deren Ursprungsland identifiziert.   Die Abfrage umfasst die Auswahl der TOP 100-Datensätze aus der Vereinigung (UNION) von drei untergeordneten SELECT-Anweisungen mit SUM () und GROUP BY.
+In diesem Beispiel wird eine TPCDS-ähnliche Abfrage verwendet, bei der Kunden gefunden werden, die über den Katalog mehr Geld aufwenden als in Geschäften. Außerdem werden die bevorzugten Kunden und deren Ursprungsland/-region ermittelt.   Die Abfrage umfasst die Auswahl der TOP 100-Datensätze aus der Vereinigung (UNION) von drei untergeordneten SELECT-Anweisungen mit SUM () und GROUP BY.
 
 ```sql
 WITH year_total AS (

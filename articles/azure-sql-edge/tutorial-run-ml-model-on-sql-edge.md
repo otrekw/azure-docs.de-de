@@ -2,19 +2,19 @@
 title: Bereitstellen eines ML-Modells in Azure SQL Edge mithilfe von ONNX
 description: Im dritten Teil dieses dreiteiligen Azure SQL Edge-Tutorials zum Vorhersagen von Eisenerzverunreinigungen führen Sie die ONNX Machine Learning-Modelle in SQL Edge aus.
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 64594267dc51fa42dabcc3083d18d631904a9cab
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f38a973611cb1ab18eead4ec51e6be91ada2cc40
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593543"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318640"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>Bereitstellen eines ML-Modells in Azure SQL Edge mithilfe von ONNX 
 
@@ -32,7 +32,7 @@ Im dritten Teil dieses dreiteiligen Tutorials zum Vorhersagen von Eisenerzverunr
    |_Feld_|_Wert_|
    |-------|-------|
    |Verbindungstyp| Microsoft SQL Server|
-   |Serve|Öffentliche IP-Adresse in der VM, die für diese Demo erstellt wurde|
+   |Server|Öffentliche IP-Adresse in der VM, die für diese Demo erstellt wurde|
    |Username|sa|
    |Kennwort|Das starke Kennwort, das bei der Erstellung der Azure SQL Edge-Instanz verwendet wurde|
    |Datenbank|Standard|

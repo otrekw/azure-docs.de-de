@@ -1,33 +1,26 @@
 ---
-title: Beispiele für Richtlinienvorlagen | Microsoft-Dokumentation
-description: Beispiele für Azure Policy-Vorlagen für virtuelle Netzwerke
-services: virtual-network
-documentationcenter: ''
-author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: virtual-network
-ms.devlang: na
+title: Integrierte Richtliniendefinitionen für Azure Virtual Network
+description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Virtual Network. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
+ms.date: 06/23/2020
 ms.topic: sample
-ms.tgt_pltfrm: ''
-ms.workload: ''
-ms.date: 05/05/2020
+author: KumudD
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 93d0138f336ffc7055daf9988658a6284af53188
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.service: virtual-network
+ms.custom: subject-policy-samples
+ms.openlocfilehash: 9b248b1e35025e2f05422a51efaac5ab9506b790
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839129"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317725"
 ---
-# <a name="azure-policy-sample-built-ins-for-virtual-network"></a>Integrierte Azure Policy-Beispiele für virtuelle Netzwerke
+# <a name="azure-policy-built-in-definitions-for-azure-virtual-network"></a>Integrierte Azure Policy-Definitionen für Azure Virtual Network
 
-In der folgenden Tabelle sind Links zu [Azure Policy](../governance/policy/overview.md)-Beispielen enthalten. Diese Beispiele befinden sich im [Azure Policy-Beispielrepository](https://github.com/Azure/azure-policy).
+Diese Seite enthält einen Index der integrierten [Azure Policy](../governance/policy/overview.md)-Richtliniendefinitionen für Azure Virtual Network. Weitere Azure Policy-Integrationen für andere Dienste finden Sie unter [Integrierte Azure Policy-Richtliniendefinitionen](../governance/policy/samples/built-in-policies.md).
 
-## <a name="network"></a>Netzwerk
+Die Namen der einzelnen integrierten Richtliniendefinitionen sind Links zur entsprechenden Richtliniendefinition im Azure-Portal. Verwenden Sie den Link in der Spalte **Version**, um die Quelle im [Azure Policy-GitHub-Repository](https://github.com/Azure/azure-policy) anzuzeigen.
+
+## <a name="azure-virtual-network"></a>Virtuelles Azure-Netzwerk
 
 [!INCLUDE [azure-policy-samples-policies-network](../../includes/policy/samples/bycat/policies-network.md)]
 
@@ -38,3 +31,9 @@ In der folgenden Tabelle sind Links zu [Azure Policy](../governance/policy/overv
 ## <a name="general"></a>Allgemein
 
 [!INCLUDE [azure-policy-samples-policies-general](../../includes/policy/samples/bycat/policies-general.md)]
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Sehen Sie sich die Integrationen im [Azure Policy-GitHub-Repository](https://github.com/Azure/azure-policy) an.
+- Lesen Sie die Informationen unter [Struktur von Azure Policy-Definitionen](../governance/policy/concepts/definition-structure.md).
+- Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](../governance/policy/concepts/effects.md).

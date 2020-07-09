@@ -9,21 +9,24 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9748b0354ce09752296fb7d736e09af716f19351
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f09f9a503348efc51fb50c283e7fe856869e0dd5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420874"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198517"
 ---
 # <a name="connect-to-synapse-sql"></a>Herstellen einer Verbindung mit Synapse SQL
 Stellen Sie eine Verbindung mit der Synapse SQL-Funktion in Azure Synapse Analytics her.
 
 ## <a name="supported-tools-for-sql-on-demand-preview"></a>Unterstützte Tools für SQL On-Demand (Vorschauversion)
 
-Azure Data Studio (Vorschauversion) ist ein vollständig unterstütztes Tool.
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) wird ab Version 1.18.0 vollständig unterstützt. SSMS wird ab Version 18.5 teilweise unterstützt, kann aber nur zum Herstellen einer Verbindung und für Abfragen verwendet werden.
 
-SQL Server Management Studio wird ab Version 18.4 teilweise unterstützt. Manche Funktionen (etwa die zum Verbinden und Abfragen) sind eingeschränkt.
+> [!NOTE]
+> Wenn die Verbindung bei einer AAD-Anmeldung zum Zeitpunkt der Abfrageausführung länger als eine Stunde geöffnet bleibt, schlägt jede auf AAD basierende Abfrage fehl. Dazu gehört das Abfragen von Speicher mit AAD-Pass-Through und Anweisungen, die mit AAD interagieren (z. B. CREATE EXTERNAL PROVIDER). Dies wirkt sich auf jedes Tool aus, das Verbindungen geöffnet hält, wie beim Abfrage-Editor in SSMS und ADS. Tools wie Synapse Studio, die neue Verbindungen zur Ausführung einer Abfrage öffnen, sind davon nicht betroffen.
+
+> Zur Behebung dieses Problems können Sie SSMS neu starten oder in ADS eine Verbindung herstellen und trennen. 
 
 ## <a name="find-your-server-name"></a>Suchen des Servernamens
 

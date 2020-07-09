@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c351f8a95110a32c53c68c5eb6095918578bc5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c159e78d0aa065b53b1164e01309e770302fb1ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189173"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389019"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurieren der Kennwortänderung mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azu
 
 1. Öffnen Sie Ihre Datei *TrustframeworkExtensions.xml*, und fügen Sie das folgende **ClaimType**-Element mit dem Bezeichner `oldPassword` zum [ClaimsSchema](claimsschema.md)-Element hinzu:
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="oldPassword">
@@ -47,7 +47,7 @@ Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azu
 
 2. Ein [ClaimsProvider](claimsproviders.md)-Element enthält das technische Profil, das den Benutzer authentifiziert. Fügen Sie dem **ClaimsProviders**-Element die folgenden Anspruchsanbieter hinzu:
 
-    ```XML
+    ```xml
     <ClaimsProviders>
       <ClaimsProvider>
         <DisplayName>Local Account SignIn</DisplayName>
@@ -125,7 +125,7 @@ Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azu
 
 3. Das [UserJourney](userjourneys.md)-Element definiert den Pfad, den der Benutzer beim Interagieren mit Ihrer Anwendung durchläuft. Fügen Sie das **UserJourneys**-Element hinzu (sofern es noch nicht vorhanden ist), und identifizieren Sie dabei die **UserJourney** als `PasswordChange`:
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="PasswordChange">
         <OrchestrationSteps>

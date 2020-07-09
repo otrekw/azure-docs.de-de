@@ -1,15 +1,15 @@
 ---
-title: Installieren von Anwendungspaketen auf Serverknoten
+title: Bereitstellen von Anwendungspaketen für Computeknoten
 description: Verwenden Sie das Feature „Anwendungspakete“ von Azure Batch zur einfachen Verwaltung mehrerer Anwendungen und Versionen für die Installation auf Batch-Serverknoten.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7824d3e2d8cfb7b52041e59a9007688c4ef1cafa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cebb7bf001d16e1024ed466268758f0b1bc92c6c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115617"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955029"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
 
@@ -67,8 +67,8 @@ Bei Anwendungspaketen muss die Startaufgabe Ihres Pools keine lange Liste einzel
 ## <a name="upload-and-manage-applications"></a>Hochladen und Verwalten von Anwendungen
 Sie können die Anwendungspakete in Ihrem Batch-Konto über das [Azure-Portal][portal] oder die Batch Management-APIs verwalten. In den folgenden Abschnitten wird zunächst gezeigt, wie ein Speicherkonto verknüpft wird. Anschließend wird besprochen, wie Sie Anwendungen und Pakete hinzufügen und mit dem Portal verwalten.
 
-### <a name="link-a-storage-account"></a>Verknüpfen eines Storage-Kontos 
-Damit Sie Anwendungspakete verwenden können, müssen Sie zuerst ein [Azure Storage-Konto](batch-api-basics.md#azure-storage-account) mit Ihrem Batch-Konto verknüpfen. Falls Sie noch kein Storage-Konto konfiguriert haben, wird im Azure-Portal eine Warnung angezeigt, wenn Sie in Ihrem Batch-Konto zum ersten Mal auf **Anwendungen** klicken.
+### <a name="link-a-storage-account"></a>Verknüpfen eines Storage-Kontos
+Damit Sie Anwendungspakete verwenden können, müssen Sie zuerst ein [Azure Storage-Konto](accounts.md#azure-storage-accounts) mit Ihrem Batch-Konto verknüpfen. Falls Sie noch kein Storage-Konto konfiguriert haben, wird im Azure-Portal eine Warnung angezeigt, wenn Sie in Ihrem Batch-Konto zum ersten Mal auf **Anwendungen** klicken.
 
 
 
@@ -285,9 +285,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> Im Artikel [Übersicht über Azure Batch-Features](batch-api-basics.md) finden Sie unter [Umgebungseinstellungen für Tasks](batch-api-basics.md#environment-settings-for-tasks) weitere Informationen zu Umgebungseinstellungen für Computeknoten.
-> 
-> 
+> Weitere Informationen zu Umgebungseinstellungen für Computeknoten finden Sie unter [Umgebungseinstellungen für Tasks](jobs-and-tasks.md#environment-settings-for-tasks). 
 
 ## <a name="update-a-pools-application-packages"></a>Aktualisieren der Anwendungspakete eines Pools
 Wenn ein vorhandener Pool bereits mit einem Anwendungspaket konfiguriert wurde, können Sie ein neues Paket für den Pool angeben. Wenn Sie einen neuen Paketverweis für einen Pool angeben, gilt Folgendes:
@@ -336,24 +334,24 @@ Mit Anwendungspaketen können Sie Ihre Kunden dabei unterstützen, die passende 
 * Die [Batch-REST-API][api_rest] unterstützt auch die Verwendung von Anwendungspaketen. Unter [Hinzufügen eines Pools zu einem Konto][rest_add_pool] finden Sie unter dem Element [applicationPackageReferences][rest_add_pool_with_packages] beispielsweise Informationen zum Angeben von zu installierenden Paketen mithilfe der REST-API. Unter [Anwendungen][rest_applications] finden Sie ausführliche Informationen zum Abrufen von Anwendungsinformationen mithilfe der Batch-REST-API.
 * Informieren Sie sich über das programmgesteuerte [Verwalten von Azure Batch-Konten und -Kontingenten mit Batch Management .NET](batch-management-dotnet.md). Die [Batch Management .NET][api_net_mgmt]-Bibliothek ermöglicht die Verwendung von Features zum Erstellen und Löschen von Konten für Ihre Batch-Anwendung oder Ihren Dienst.
 
-[api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet
-[api_net_mgmt]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/management?view=azure-dotnet
-[api_rest]: https://docs.microsoft.com/rest/api/batchservice/
+[api_net]: /dotnet/api/overview/azure/batch/client?view=azure-dotnet
+[api_net_mgmt]: /dotnet/api/overview/azure/batch/management?view=azure-dotnet
+[api_rest]: /rest/api/batchservice/
 [batch_mgmt_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [storage_pricing]: https://azure.microsoft.com/pricing/details/storage/
-[net_appops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationoperations.aspx
-[net_appops_listappsummaries]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationoperations.listapplicationsummaries.aspx
-[net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[net_cloudpool_pkgref]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.applicationpackagereferences.aspx
-[net_cloudtask]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudtask.aspx
-[net_cloudtask_pkgref]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudtask.applicationpackagereferences.aspx
-[net_nodestate]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.state.aspx
-[net_pkgref]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationpackagereference.aspx
+[net_appops]: /dotnet/api/microsoft.azure.batch.applicationoperations
+[net_appops_listappsummaries]: /dotnet/api/microsoft.azure.batch.applicationoperations
+[net_cloudpool]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_cloudpool_pkgref]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_cloudtask_pkgref]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_nodestate]: /dotnet/api/microsoft.azure.batch.computenode
+[net_pkgref]: /dotnet/api/microsoft.azure.batch.applicationpackagereference
 [portal]: https://portal.azure.com
-[rest_applications]: https://msdn.microsoft.com/library/azure/mt643945.aspx
-[rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
-[rest_add_pool_with_packages]: https://msdn.microsoft.com/library/azure/dn820174.aspx#bk_apkgreference
+[rest_applications]: /rest/api/batchservice/application
+[rest_add_pool]: /rest/api/batchservice/pool/add
+[rest_add_pool_with_packages]: /rest/api/batchservice/pool/add#bk_apkgreference
 
 [1]: ./media/batch-application-packages/app_pkg_01.png "Übersichtsdiagramm für Anwendungspakete"
 [2]: ./media/batch-application-packages/app_pkg_02.png "Kachel „Anwendungen“ im Azure-Portal"

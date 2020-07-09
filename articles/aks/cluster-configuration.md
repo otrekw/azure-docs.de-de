@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie in Azure Kubernetes Service (AKS) einen Clust
 services: container-service
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 94f84beee2d7a76e48ac1470a0ce0b387929cc08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe5ce13d9db8f2bc2231f87de7e602e63d239bfa
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474175"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725145"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurieren eines AKS-Clusters
 
@@ -49,6 +49,8 @@ Wenn der Status als registriert angezeigt wird, können Sie die Registrierung de
 az provider register --namespace Microsoft.ContainerService
 ```
 
+### <a name="new-clusters"></a>Neue Cluster
+
 Konfigurieren Sie den Cluster für die Verwendung von Ubuntu 18,04, wenn der Cluster erstellt wird. Verwenden Sie das Flag `--aks-custom-headers`, um Ubuntu 18.04 als Standardbetriebssystem festzulegen.
 
 ```azure-cli
@@ -56,6 +58,17 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-
 ```
 
 Wenn Sie einen herkömmlichen Ubuntu 16.04-Cluster erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg.
+
+### <a name="existing-clusters"></a>Vorhandene Cluster
+
+Konfigurieren Sie einen neuen Knotenpool zur Verwendung von Ubuntu 18.04. Verwenden Sie das Flag `--aks-custom-headers`, um Ubuntu 18.04 als Standardbetriebssystem für diesen Knotenpool festzulegen.
+
+```azure-cli
+az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
+```
+
+Wenn Sie einen herkömmlichen Ubuntu 16.04-Knotenpool erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg.
+
 
 ## <a name="custom-resource-group-name"></a>Name der benutzerdefinierten Ressourcengruppe
 
@@ -67,9 +80,9 @@ Installieren Sie die aks-preview-Erweiterungsversion 0.3.2 oder höher der Azur
 az aks create --name myAKSCluster --resource-group myResourceGroup --node-resource-group myNodeResourceGroup
 ```
 
-Die sekundäre Ressourcengruppe wird automatisch vom Azure-Ressourcenanbieter in Ihrem eigenen Abonnement erstellt. Beachten Sie, dass Sie den Namen der benutzerdefinierten Ressourcengruppe nur beim Erstellen des Clusters angeben können. 
+Die sekundäre Ressourcengruppe wird automatisch vom Azure-Ressourcenanbieter in Ihrem eigenen Abonnement erstellt. Sie können einen benutzerdefinierten Namen für die Ressourcengruppe nur dann angeben, wenn der Cluster erstellt wird. 
 
-Beachten Sie beim Verwenden der Knotenressourcengruppe, dass Folgendes nicht möglich ist:
+Denken Sie bei der Arbeit mit der Knotenressourcengruppe daran, dass Folgendes nicht möglich ist:
 
 - Angeben einer vorhandenen Ressourcengruppe als Knotenressourcengruppe
 - Angeben eines anderen Abonnements für die Knotenressourcengruppe

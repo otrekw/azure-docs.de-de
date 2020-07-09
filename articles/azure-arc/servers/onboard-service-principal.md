@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 45a61b5bc6f1082b84bf94db7e8ad5ce49ec068f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648062"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103788"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Verbinden von Hybridcomputern mit Azure im großen Stil
 
@@ -86,7 +86,7 @@ Im Folgenden finden Sie die Einstellungen, die Sie für den Befehl `azcmagent` k
 * `location` : Siehe [Unterstützte Azure-Regionen](overview.md#supported-regions). Bei diesem Standort kann es sich um denselben Standort wie bei der Ressourcengruppe oder um einen anderen Standort handeln.
 * `resource-name` : (*Optional*) Wird für die Azure-Ressourcendarstellung Ihres lokalen Computers verwendet. Ohne Angabe dieses Werts wird der Hostname des Computers verwendet.
 
-Weitere Informationen zum `azcmagent`-Befehlszeilentool finden Sie in der [Azcmagent-Referenz](azcmagent-reference.md).
+Weitere Informationen zum `azcmagent`-Befehlszeilentool finden Sie in der [Azcmagent-Referenz](./manage-agent.md).
 
 ### <a name="windows-installation-script"></a>Windows-Installationsskript
 

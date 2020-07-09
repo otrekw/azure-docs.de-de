@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: bd6f04ca7e24e380ad657f967284704ad613375a
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632188"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996396"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -101,18 +101,18 @@ Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gat
 
    Sie können eine benutzerdefinierte Route erstellen, um Datenverkehr an 0.0.0.0/0 direkt an das Internet zu übermitteln. 
 
-  **Szenario 3:** Benutzerdefinierte Route für Azure Kubernetes Service-Kubenet
+  **Szenario 3:** Benutzerdefinierte Route für Azure Kubernetes Service mit kubenet
 
-  Wenn Sie Kubenet mit Azure Kubernetes Service (AKS) und dem Application Gateway-Eingangscontroller (AGIC, Application Gateway Ingress Controller) verwenden, müssen Sie eine Routingtabelle einrichten, um die Weiterleitung des Datenverkehrs an die Pods an den richtigen Knoten zu erlauben. Dies ist nicht erforderlich, wenn Sie Azure CNI verwenden. 
+  Wenn Sie kubenet mit Azure Kubernetes Service (AKS) und dem Application Gateway-Eingangscontroller (AGIC, Application Gateway Ingress Controller) verwenden, benötigen Sie eine Routingtabelle, die die Weiterleitung des von Application Gateway an die Pods gesendeten Datenverkehrs an den richtigen Knoten erlaubt. Dies ist nicht erforderlich, wenn Sie Azure CNI verwenden. 
 
-   Führen Sie die folgenden Schritte aus, um die Routingtabelle einzurichten, damit Kubenet funktioniert:
+  Führen Sie die folgenden Schritte aus, um die Routingtabelle einzurichten, damit kubenet funktioniert:
 
-  1. Erstellen Sie eine Routingtabelleressource in Azure. 
-  2. Rufen Sie nach der Erstellung die Seite **Routen** auf. 
-  3. Fügen Sie eine neue Route hinzu:
+  1. Wechseln Sie zu der Ressourcengruppe, die von AKS erstellt wurde (der Name der Ressourcengruppe sollte mit „MC_“ beginnen).
+  2. Suchen Sie von AKS in dieser Ressourcengruppe erstellte Routentabelle. Die Routingtabelle sollte mit den folgenden Informationen aufgefüllt sein:
      - Das Adresspräfix sollte dem IP-Adressbereich der Pods entsprechen, die Sie in AKS erreichen möchten. 
-     - Der Typ des nächsten Hops sollte **virtuelles Gerät** sein. 
-     - Die Adresse des nächsten Hops sollte der IP-Adresse des Knotens entsprechen, der die Pods im IP-Adressbereich hostet, der im Feld für das Adresspräfix definiert wurde. 
+     - Der Typ des nächsten Hops sollte „Virtuelles Gerät“ sein. 
+     - Die Adresse des nächsten Hops sollte der IP-Adresse des Knotens entsprechen, der die Pods hostet.
+  3. Ordnen Sie diese Routingtabelle dem Subnetz des Application Gateways zu. 
     
   **Nicht unterstützte v2-Szenarios**
 
@@ -224,9 +224,7 @@ Wenn Sie eine Regel erstellen, wählen Sie zwischen [*grundlegend* und *pfadbasi
 
 #### <a name="order-of-processing-rules"></a>Verarbeitungsreihenfolge von Regeln
 
-Für die v1 SKU wird die Musterzuordnung eingehender Anforderungen in der Reihenfolge verarbeitet, in der die Pfade in der URL-Pfadzuordnung der pfadbasierten Regel aufgelistet sind. Wenn eine Anforderung mit dem Muster in mindestens zwei Pfaden in der Pfadzuordnung übereinstimmt, wird der zuerst aufgelistete Pfad abgeglichen. Die Anforderung wird an das Back-End weitergeleitet, das diesem Pfad zugeordnet ist.
-
-Für die v2 SKU hat eine genaue Übereinstimmung höhere Priorität als die Pfadreihenfolge in der URL-Pfadzuordnung. Wenn eine Anforderung mit dem Muster in mindestens zwei Pfaden übereinstimmt, wird sie an das Back-End weitergeleitet, das dem Pfad zugeordnet ist, der exakt mit der Anforderung übereinstimmt. Wenn der Pfad in der eingehenden Anforderung mit keinem Pfad in der Zuordnung genau übereinstimmt, wird der Musterabgleich der Anforderung in der Reihenfolge der Pfadzuordnungsliste für die pfadbasierte Regel verarbeitet.
+Für die v1- und v2-SKU wird die Musterzuordnung eingehender Anforderungen in der Reihenfolge verarbeitet, in der die Pfade in der URL-Pfadzuordnung der pfadbasierten Regel aufgelistet sind. Wenn eine Anforderung mit dem Muster in mindestens zwei Pfaden in der Pfadzuordnung übereinstimmt, wird der zuerst aufgelistete Pfad abgeglichen. Die Anforderung wird an das Back-End weitergeleitet, das diesem Pfad zugeordnet ist.
 
 ### <a name="associated-listener"></a>Zugeordneter Listener
 

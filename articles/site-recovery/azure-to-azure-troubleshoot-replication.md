@@ -5,16 +5,16 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 8cba02d3c7d1e649853570b199b646b1c4dcce2d
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667418"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130394"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Behandeln von Problemen bei der Replikation während der Notfallwiederherstellung von Azure-VMs
 
-In diesem Artikel werden allgemeine Probleme in Azure Site Recovery bei der Replikation und Wiederherstellung von virtuellen Azure-Computern (VMs) zwischen verschiedenen Regionen beschrieben. Darüber hinaus wird die Behandlung häufig auftretender Probleme beschrieben. Weitere Informationen zu unterstützten Konfigurationen finden Sie unter [Azure Site Recovery support matrix for replicating from Azure to Azure](site-recovery-support-matrix-azure-to-azure.md) (Azure Site Recovery-Supportmatrix zum Replizieren aus Azure in Azure).
+In diesem Artikel werden allgemeine Probleme in Azure Site Recovery bei der Replikation und Wiederherstellung von virtuellen Azure-Computern (VMs) zwischen verschiedenen Regionen beschrieben. Darüber hinaus wird die Behandlung häufig auftretender Probleme beschrieben. Weitere Informationen zu unterstützten Konfigurationen finden Sie unter [Azure Site Recovery support matrix for replicating from Azure to Azure](./azure-to-azure-support-matrix.md) (Azure Site Recovery-Supportmatrix zum Replizieren aus Azure in Azure).
 
 Azure Site Recovery repliziert Daten konsistent von der Quellregion zur Notfallwiederherstellungsregion. Außerdem wird alle 5 Minuten ein absturzkonsistenter Wiederherstellungspunkt erstellt. Wenn Site Recovery 60 Minuten lang keine Wiederherstellungspunkte erstellen kann, werden Sie mit diesen Informationen gewarnt:
 
@@ -41,7 +41,7 @@ Wenn Sie das Ereignis auswählen, sehen Sie die genauen Datenträgerinformatione
 
 Die folgende Tabelle enthält die Azure Site Recovery-Grenzwerte. Diese Grenzwerte basieren auf unseren Tests, können aber nicht alle möglichen Eingabe-Ausgabe-Kombinationen (E/A) für Anwendungen abdecken. Die tatsächlichen Ergebnisse können je nach Ihrer E/A-Mischung für die Anwendungen variieren.
 
-Es gibt zwei Einschränkungen zu berücksichtigen: die Datenänderungen pro Datenträger und die Datenänderung pro virtuellem Computer. Als Beispiel betrachten wir den Premium-P20-Datenträger in der folgenden Tabelle. Für einen einzelnen virtuellen Computer kann Site Recovery eine Änderungsrate von 5 MB/s pro Datenträger bei maximal fünf Datenträgern bewältigen. Site Recovery unterstützt eine maximale Gesamtänderungsrate pro virtuellem Computer von 25 MB/s.
+Es gibt zwei Einschränkungen zu berücksichtigen: die Datenänderungen pro Datenträger und die Datenänderung pro virtuellem Computer. Als Beispiel betrachten wir den Premium-P20-Datenträger in der folgenden Tabelle. Für einen einzelnen virtuellen Computer kann Site Recovery eine Änderungsrate von 5 MB/s pro Datenträger bei maximal fünf Datenträgern bewältigen. Site Recovery unterstützt eine maximale Gesamtänderungsrate pro virtuellem Computer von 54 MB/s.
 
 **Replikationsspeicherziel** | **Durchschnittliche E/A-Größe des Quelldatenträgers** |**Durchschnittliche Datenänderungsrate des Quelldatenträgers** | **Gesamte Datenänderungsrate pro Tag der Quelldatenträger**
 ---|---|---|---
@@ -78,7 +78,7 @@ Eine Spitze in der Datenänderungsrate könnte von einem gelegentlichen Datenbur
 
 Site Recovery sendet replizierte Daten an das Cachespeicherkonto. Möglicherweise stellen Sie Netzwerklatenz fest, wenn das Hochladen der Daten aus einem virtuellen Computer in das Cachespeicherkonto langsamer ist als 4MB in 3 Sekunden.
 
-Verwenden Sie [AzCopy](/azure/storage/common/storage-use-azcopy), um nach einem Problem im Zusammenhang mit der Latenz zu suchen. Mit diesem Befehlszeilen-Hilfsprogramm können Sie Daten vom virtuellen Computer in das Cachespeicherkonto hochladen. Wenn die Latenz hoch ist, überprüfen Sie, ob Sie ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) zum Steuern des ausgehenden Netzwerkdatenverkehrs von virtuellen Computern verwenden. Das virtuelle Netzwerkgerät wird möglicherweise gedrosselt, wenn der gesamte Replikationsdatenverkehr durch das virtuelle Netzwerkgerät läuft.
+Verwenden Sie [AzCopy](../storage/common/storage-use-azcopy-v10.md), um nach einem Problem im Zusammenhang mit der Latenz zu suchen. Mit diesem Befehlszeilen-Hilfsprogramm können Sie Daten vom virtuellen Computer in das Cachespeicherkonto hochladen. Wenn die Latenz hoch ist, überprüfen Sie, ob Sie ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) zum Steuern des ausgehenden Netzwerkdatenverkehrs von virtuellen Computern verwenden. Das virtuelle Netzwerkgerät wird möglicherweise gedrosselt, wenn der gesamte Replikationsdatenverkehr durch das virtuelle Netzwerkgerät läuft.
 
 Es wird empfohlen, einen Netzwerk-Dienstendpunkt in Ihrem virtuellen Netzwerk für „Storage“ zu erstellen, damit der Replikationsdatenverkehr nicht an das virtuelle Netzwerkgerät geleitet wird. Weitere Informationen finden Sie unter [Konfiguration der virtuellen Netzwerkappliance](azure-to-azure-about-networking.md#network-virtual-appliance-configuration).
 
@@ -105,6 +105,10 @@ Einige der häufigsten Probleme sind nachfolgend aufgeführt.
 ### <a name="youre-using-azure-storage-spaces-direct-configuration"></a>Sie verwenden die Konfiguration direkter Speicherplätze (Azure Storage Spaces Direct).
 
 **Problembehandlung**: Azure Site Recovery kann keinen anwendungskonsistenten Wiederherstellungspunkt für die Konfiguration direkter Speicherplätze erstellen. [Konfigurieren Sie die Replikationsrichtlinie](azure-to-azure-how-to-enable-replication-s2d-vms.md).
+
+### <a name="app-consistency-not-enabled-on-linux-servers"></a>App-Konsistenz ist auf Linux-Servern nicht aktiviert
+
+**Problembehandlung**: Azure Site Recovery für Linux-Betriebssysteme unterstützt benutzerdefinierte Anwendungsskripts für App-Konsistenz. Das benutzerdefinierte Skript mit „Pre“- und „Post“-Optionen wird vom Mobilitäts-Agent von Azure Site Recovery für die App-Konsistenz verwendet. Die Schritte für die Aktivierung finden Sie [hier](./site-recovery-faq.md#replication).
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>Weitere Ursachen aufgrund von VSS-bezogenen Problemen:
 

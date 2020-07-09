@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8902c3147bbe142fc58d4e2c3fa83601c8ccbba3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 5b83b0687db72c78a0c7788933acf07f5cb9e0ed
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203517"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679351"
 ---
-# <a name="bulk-import-group-members-in-azure-active-directory"></a>Massenimport von Gruppenmitgliedern in Azure Active Directory
+# <a name="bulk-add-group-members-in-azure-active-directory"></a>Massenhinzufügen von Gruppenmitgliedern in Azure Active Directory
 
 Über das Azure AD-Portal (Azure Active Directory) können Sie eine große Anzahl von Mitgliedern zu einer Gruppe hinzufügen, indem Sie mithilfe einer CSV-Datei (Comma-Separated Values, durch Trennzeichen getrennte Werte) einen Massenimport von Gruppenmitgliedern ausführen.
 
@@ -57,7 +57,7 @@ Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 
 1. Öffnen Sie die CSV-Datei, und fügen Sie für jedes in die Gruppe zu importierende Gruppenmitglied eine Zeile hinzu (die erforderlichen Werte sind entweder **Mitgliedsobjekt-ID** oder **Benutzerprinzipalname**). Speichern Sie dann die Datei.
 
-   ![Die CSV-Datei enthält Namen und IDs der zu importierenden Mitglieder.](./media/groups-bulk-import-members/csv-file.png)
+    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="Die CSV-Datei enthält Namen und IDs der zu importierenden Mitglieder":::
 
 1. Navigieren Sie auf der Seite **Massenimport von Gruppenmitgliedern** unter **CSV-Datei hochladen** zur entsprechenden Datei. Wenn Sie die Datei auswählen, wird mit der Überprüfung der CSV-Datei begonnen.
 1. Nach der Überprüfung des Dateiinhalts wird auf der Seite für den Massenimport die Meldung **Datei erfolgreich hochgeladen** angezeigt. Wenn Fehler vorliegen, müssen Sie diese beheben, bevor Sie den Auftrag übermitteln können.

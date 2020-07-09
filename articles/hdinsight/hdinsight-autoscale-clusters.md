@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: f41a15fb52698eaa17d6f76b991cbd31a56ba14f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 29c04fc8f6af016200e06ad239095a3665de5869
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731972"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086431"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisches Skalieren von Azure HDInsight-Clustern
 
@@ -22,6 +22,11 @@ Mit der kostenlosen automatischen Skalierung von Azure HDInsight können Sie die
 ## <a name="how-it-works"></a>Funktionsweise
 
 Das Feature „Autoskalierung“ verwendet zwei Arten von Bedingungen zum Auslösen von Skalierungsereignissen: Schwellenwerte für verschiedene Clusterleistungsmetriken (die sogenannte *lastbasierte Skalierung*) und zeitbasierte Trigger (*zeitplanbasierte Skalierung*). Die lastbasierte Skalierung ändert die Anzahl der Knoten in Ihrem Cluster innerhalb eines von Ihnen festgelegten Bereichs, um eine optimale CPU-Auslastung zu gewährleisten und die Betriebskosten zu minimieren. Bei der zeitplanbasierten Skalierung wird die Anzahl der Knoten im Cluster aufgrund von Vorgängen geändert, die Sie bestimmten Datums- und Uhrzeitangaben zuordnen.
+
+Das folgende Video vermittelt einen Überblick über die Herausforderungen, für die die Autoskalierung Abhilfe schafft. Außerdem wird erläutert, wie dieses Feature Ihnen bei der Steuerung von Kosten mit HDInsight helfen kann.
+
+
+> [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
 ### <a name="choosing-load-based-or-schedule-based-scaling"></a>Auswählen von last- oder zeitplanbasierter Skalierung
 
@@ -69,10 +74,10 @@ Die folgende Tabelle beschreibt die Clustertypen und Versionen, die mit dem Feat
 
 | Version | Spark | Hive | LLAP | hbase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3.6 ohne ESP | Ja | Ja | Ja | Ja* | Nein  | Nein  | Nein  |
-| HDInsight 4.0 ohne ESP | Ja | Ja | Ja | Ja* | Nein  | Nein  | Nein  |
-| HDInsight 3.6 mit ESP | Ja | Ja | Ja | Ja* | Nein  | Nein  | Nein  |
-| HDInsight 4.0 mit ESP | Ja | Ja | Ja | Ja* | Nein  | Nein  | Nein  |
+| HDInsight 3.6 ohne ESP | Ja | Ja | Ja | Ja* | Nein | Nein | Nein |
+| HDInsight 4.0 ohne ESP | Ja | Ja | Ja | Ja* | Nein | Nein | Nein |
+| HDInsight 3.6 mit ESP | Ja | Ja | Ja | Ja* | Nein | Nein | Nein |
+| HDInsight 4.0 mit ESP | Ja | Ja | Ja | Ja* | Nein | Nein | Nein |
 
 \* HBase-Cluster können nur für zeitplanbasierte, aber nicht für auslastungsbasierte Skalierung konfiguriert werden.
 
@@ -177,12 +182,12 @@ Sie können einen HDInsight-Cluster mit zeitplanbasierter Autoskalierung und ein
             "minInstanceCount": 10,
             "maxInstanceCount": 10
           }
-        },
+        }
       ]
     }
   },
   "name": "workernode",
-  "targetInstanceCount": 4,
+  "targetInstanceCount": 4
 }
 ```
 
@@ -205,7 +210,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 Verwenden Sie die geeigneten Parameter in der Anforderungsnutzlast. Die nachfolgende JSON-Nutzlast könnte verwendet werden, um Autoskalierung zu aktivieren. Verwenden Sie die Nutzlast `{autoscale: null}`, um Autoskalierung zu deaktivieren.
 
 ```json
-{ autoscale: { capacity: { minInstanceCount: 3, maxInstanceCount: 2 } } }
+{ "autoscale": { "capacity": { "minInstanceCount": 3, "maxInstanceCount": 5 } } }
 ```
 
 Eine vollständige Beschreibung aller Nutzlastparameter finden Sie im vorherigen Abschnitt über [Aktivieren von lastenbasierter Autoskalierung](#load-based-autoscaling).

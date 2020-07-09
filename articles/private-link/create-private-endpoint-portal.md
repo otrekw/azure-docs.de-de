@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 1bdc089bb89a732e329bf7d3ffd3d5b5c09ba408
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: ef6d49c9046ba04bbac40ec9bf555e12d2faa8f6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637243"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021703"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Schnellstart: Erstellen eines privaten Endpunkts mit dem Azure-Portal
 
-Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren. In dieser Schnellstartanleitung erfahren Sie, wie Sie einen virtuellen Computer in einem virtuellen Azure-Netzwerk und einen SQL-Datenbank-Server mit einem privaten Azure-Endpunkt mithilfe des Azure-Portals erstellen. Anschließend können Sie vom virtuellen Computer sicher auf den SQL-Datenbank-Server zugreifen.
+Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren. In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Azure-Portals einen virtuellen Computer in einem virtuellen Azure-Netzwerk und einen logischen SQL-Server mit einem privaten Azure-Endpunkt erstellen. Anschließend können Sie vom virtuellen Computer sicher auf SQL-Datenbank zugreifen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -36,12 +36,12 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
 
 | Parameter                   | Wert                |
 |-----------------------------|----------------------|
-| **\<Ressourcengruppenname>**  | myResourceGroup |
-| **\<VNET-Name>** | myVirtualNetwork          |
-| **\<Regionsname>**          | USA, Westen-Mitte    |
-| **\<IPv4-Adressraum>**   | 10.1.0.0/16          |
-| **\<Subnetzname>**          | mySubnet        |
-| **\<Subnetzadressbereich>** | 10.1.0.0/24          |
+| **\<resource-group-name>**  | myResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>**          | USA, Westen-Mitte    |
+| **\<IPv4-address-space>**   | 10.1.0.0/16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -93,8 +93,9 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
 
 1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
 
-## <a name="create-a-sql-database-server"></a>Erstellen eines SQL-Datenbank-Servers
-In diesem Abschnitt erstellen Sie einen SQL-Datenbank-Server in Azure. 
+## <a name="create-a-logical-sql-server"></a>Erstellen eines logischen SQL-Servers
+
+In diesem Abschnitt erstellen Sie einen logischen SQL-Server in Azure. 
 
 1. Wählen Sie oben links auf dem Bildschirm im Azure-Portal die Option **Ressource erstellen** > **Datenbanken** > **SQL-Datenbank** aus.
 
@@ -116,7 +117,7 @@ In diesem Abschnitt erstellen Sie einen SQL-Datenbank-Server in Azure.
     |Servername  | Geben Sie *myserver* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen.|
     | Serveradministratoranmeldung| Geben Sie einen Administratornamen Ihrer Wahl ein. |
     | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens acht Zeichen lang sein und die festgelegten Anforderungen erfüllen. |
-    | Position | Wählen Sie eine Azure-Region aus, in der sich Ihr SQL Server befinden soll. |
+    | Standort | Wählen Sie eine Azure-Region aus, in der sich Ihr SQL Server befinden soll. |
     
 7. Klicken Sie auf **OK**. 
 8. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
@@ -193,7 +194,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 1. Sobald der VM-Desktop angezeigt wird, minimieren Sie ihn, um zu Ihrem lokalen Desktop zurückzukehren.  
 
-## <a name="access-the-sql-database-server-privately-from-the-vm"></a>Privates Zugreifen auf den SQL-Datenbank-Server vom virtuellen Computer
+## <a name="access-sql-database-privately-from-the-vm"></a>Privates Zugreifen auf SQL-Datenbank über den virtuellen Computer
 
 1. Öffnen Sie auf dem Remotedesktop von *myVM* PowerShell.
 
@@ -233,4 +234,4 @@ Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem SQL-Server und dem virtuelle
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie einen virtuellen Computer in einem virtuellen Netzwerk, einen SQL-Datenbankserver und einen privaten Endpunkt für den privaten Zugriff erstellt. Sie haben aus dem Internet eine Verbindung mit einem virtuellen Computer hergestellt und über Private Link sicher mit dem SQL-Datenbankserver kommuniziert. Weitere Informationen zu privaten Endpunkten finden Sie unter [Was ist privater Endpunkt in Azure?](private-endpoint-overview.md).
+In dieser Schnellstartanleitung haben Sie einen virtuellen Computer in einem virtuellen Netzwerk, einen logischen SQL-Server und einen privaten Endpunkt für den privaten Zugriff erstellt. Sie haben aus dem Internet eine Verbindung mit einem virtuellen Computer hergestellt und über Private Link sicher mit SQL-Datenbank kommuniziert. Weitere Informationen zu privaten Endpunkten finden Sie unter [Was ist privater Endpunkt in Azure?](private-endpoint-overview.md).

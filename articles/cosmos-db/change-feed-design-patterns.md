@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: abbf5d79da033a696890566d85bd24bb54577d2c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81450350"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715697"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Änderungsfeed-Entwurfsmuster in Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Mit dem Änderungsfeed in Azure Cosmos DB können Sie effiziente und skalierbare
 
 ## <a name="event-computing-and-notifications"></a>Ereignisse und Benachrichtigungen
 
-Der Änderungsfeed von Azure Cosmos DB kann Szenarien vereinfachen, in denen eine Benachrichtigung oder ein API-Aufruf basierend auf einem bestimmten Ereignis ausgelöst werden muss. Sie können die [Änderungsfeed-Prozessbibliothek](change-feed-processor.md) verwenden, um den Container automatisch nach Änderungen abzufragen und eine externe API aufzurufen, wenn ein Schreib- oder Aktualisierungsvorgang vorliegt.
+Der Änderungsfeed von Azure Cosmos DB kann Szenarien vereinfachen, in denen eine Benachrichtigung oder ein API-Aufruf basierend auf einem bestimmten Ereignis ausgelöst oder gesendet werden muss. Sie können die [Änderungsfeed-Prozessbibliothek](change-feed-processor.md) verwenden, um den Container automatisch nach Änderungen abzufragen und eine externe API aufzurufen, wenn ein Schreib- oder Aktualisierungsvorgang vorliegt.
 
 Sie können auch selektiv eine Benachrichtigung auslösen oder einen Aufruf an eine API basierend auf bestimmten Kriterien senden. Wenn Sie z. B. mit [Azure Functions](change-feed-functions.md) aus dem Änderungsfeed lesen, können Sie Logik in die Funktion einfügen, damit nur dann eine Benachrichtigung gesendet wird, wenn bestimmte Kriterien erfüllt sind. Auch wenn der Azure Functions-Code während jedes Schreib- und Aktualisierungsvorgangs ausgeführt wird, wird die Benachrichtigung nur gesendet, wenn bestimmte Kriterien erfüllt wurden.
 

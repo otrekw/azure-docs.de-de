@@ -25,6 +25,8 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: Erstellen einer Data Factory – Resource Manager-Vorlage
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: 'Sicherheit: Aktivieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln'
+      href: enable-customer-managed-key.md
     - name: Erstellen eines Datenflusses
       href: data-flow-create.md
 - name: Tutorials
@@ -39,7 +41,7 @@
               href: tutorial-copy-data-portal.md
             - name: .NET
               href: tutorial-copy-data-dot-net.md
-        - name: Aus einer lokalen SQL Server-Datenbank in Azure Blob Storage
+        - name: "Aus einer SQL\_Server-Datenbank in Azure Blob Storage"
           items:
             - name: Tool zum Kopieren von Daten
               href: tutorial-hybrid-copy-data-tool.md
@@ -76,7 +78,7 @@
                   href: tutorial-incremental-copy-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-powershell.md
-            - name: Aus mehreren lokalen SQL Server-Tabellen
+            - name: "Aus mehreren SQL\_Server-Datenbanktabellen"
               items:
                 - name: 'Benutzeroberfläche (User Interface, UI)'
                   href: tutorial-incremental-copy-multiple-tables-portal.md
@@ -88,6 +90,10 @@
                   href: tutorial-incremental-copy-change-tracking-feature-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: Verwenden von CDC in Azure SQL MI
+              items:
+                - name: 'Benutzeroberfläche (User Interface, UI)'
+                  href: tutorial-incremental-copy-change-data-capture-feature-portal.md
             - name: Neue Dateien basierend auf den zuletzt geänderten Daten
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
             - name: Neue Dateien basierend auf dem zeitpartitionierten Dateinamen
@@ -156,6 +162,10 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integrationslaufzeit
       href: concepts-integration-runtime.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Datenflüsse
       items:
         - name: Transformieren von Daten mit Zuordnungsdatenflüssen
@@ -194,6 +204,8 @@
       items:
         - name: Visuelles Erstellen von Data Factorys
           href: author-visually.md
+        - name: Verwaltungshub
+          href: author-management-hub.md
         - name: Quellcodeverwaltung
           href: source-control.md
         - name: Continuous Integration und Continuous Delivery
@@ -236,8 +248,8 @@
           href: connector-azure-file-storage.md
         - name: "Azure\_SQL-Datenbank"
           href: connector-azure-sql-database.md
-        - name: Verwaltete Azure SQL-Datenbank-Instanz.
-          href: connector-azure-sql-database-managed-instance.md
+        - name: Verwaltete Azure SQL-Instanz
+          href: connector-azure-sql-managed-instance.md
         - name: Azure Synapse Analytics (ehemals SQL Data Warehouse)
           href: connector-azure-sql-data-warehouse.md
         - name: Azure Table Storage
@@ -246,6 +258,8 @@
           href: format-binary.md
         - name: Cassandra
           href: connector-cassandra.md
+        - name: Common Data Model-Format
+          href: format-common-data-model.md
         - name: Common Data Service für Apps
           href: connector-dynamics-crm-office-365.md
         - name: Concur
@@ -264,10 +278,14 @@
           href: connector-dynamics-ax.md
         - name: Dynamics CRM
           href: connector-dynamics-crm-office-365.md
+        - name: Excel-Format
+          href: format-excel.md
         - name: Dateisystem
           href: connector-file-system.md
         - name: FTP
           href: connector-ftp.md
+        - name: GitHub
+          href: connector-github.md
         - name: Google AdWords
           href: connector-google-adwords.md
         - name: Google BigQuery
@@ -370,6 +388,8 @@
           href: connector-sharepoint-online-list.md
         - name: Shopify
           href: connector-shopify.md
+        - name: Snowflake
+          href: connector-snowflake.md
         - name: Spark
           href: connector-spark.md
         - name: SQL Server
@@ -556,19 +576,21 @@
         - name: Verwaltete Identität für Data Factory
           href: data-factory-service-identity.md
         - name: Verschlüsselung mit kundenseitig verwalteten Schlüsseln
-          href: quickstart-enable-customer-managed-key.md
+          href: enable-customer-managed-key.md
     - name: Überwachen und Verwalten
       items:
         - name: Visuelle Überwachung
           href: monitor-visually.md
         - name: Überwachung mit Azure Monitor
           href: monitor-using-azure-monitor.md
+        - name: Überwachung von SSIS mit Azure Monitor
+          href: monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor
         - name: Überwachung mit SDKs
           href: monitor-programmatically.md
         - name: Überwachen der Azure-Integrationslaufzeit
           href: monitor-integration-runtime.md
         - name: Überwachen von Azure SSIS Integration Runtime
-          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
+          href: monitor-integration-runtime.md#azure-ssis-integration-runtime
         - name: Neukonfigurieren einer Azure-SSIS-Integration Runtime
           href: manage-azure-ssis-integration-runtime.md
         - name: Kopieren oder Klonen einer Data Factory
@@ -605,6 +627,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Aktivieren der Azure AD-Authentifizierung für Azure-SSIS IR
           href: enable-aad-authentication-azure-ssis-ir.md
+        - name: Herstellen einer Verbindung mit Daten mit der Windows-Authentifizierung
+          href: ssis-azure-connect-with-windows-auth.md
+        - name: Speichern von Dateien und Herstellen einer Verbindung mit Dateifreigaben
+          href: ssis-azure-files-file-shares.md
         - name: Bereitstellen von Enterprise Edition für Azure-SSIS-IR
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: "Integrierte und vorinstallierte Komponenten für Azure-SSIS\_IR"
@@ -623,6 +649,8 @@
           href: how-to-use-sql-managed-instance-with-ir.md
         - name: Migrieren von SSIS-Aufträgen mit SSMS
           href: how-to-migrate-ssis-job-ssms.md
+        - name: "Verwalten von Paketen mit Azure-SSIS\_IR-Paketspeicher"
+          href: azure-ssis-integration-runtime-package-store.md
     - name: Erstellen von Triggern
       items:
         - name: Erstellen eines ereignisbasierten Triggers
@@ -633,6 +661,32 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Erstellen einer Triggerabhängigkeit für ein rollierendes Fenster
           href: tumbling-window-trigger-dependency.md
+    - name: Szenarien
+      items:
+        - name: Datenmigration für Data Lake und EDW
+          items:
+            - name: Gründe für die Verwendung von Azure Data Factory
+              href: data-migration-guidance-overview.md
+            - name: Migrieren von Daten von AWS S3 zu Azure
+              href: data-migration-guidance-s3-azure-storage.md
+            - name: Migrieren der Daten von einem lokalen Hadoop-Cluster zu Azure
+              href: data-migration-guidance-hdfs-azure-storage.md
+            - name: Migrieren der Daten von einem lokalen Netezza-Server zu Azure
+              href: data-migration-guidance-netezza-azure-sqldw.md
+        - name: Transformation per Zuordnung von Datenflüssen
+          items:
+            - name: Verarbeiten von Textdateien mit fester Breite
+              href: how-to-fixed-width.md
+            - name: Fehlerzeilenbehandlung
+              href: how-to-data-flow-error-rows.md
+            - name: Azure SQL-DB zu CosmosDB
+              href: how-to-sqldb-to-cosmosdb.md
+        - name: Lokale SSIS-Migration
+          items:
+            - name: Übersicht über die SSIS-Migration
+              href: scenario-ssis-migration-overview.md
+            - name: SSISDB-Migration zu Azure SQL Managed Instance
+              href: scenario-ssis-migration-ssisdb-mi.md
     - name: Vorlagen
       items:
         - name: Übersicht über Vorlagen
@@ -673,32 +727,6 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Paketausführung in Azure-SSIS IR
           href: ssis-integration-runtime-ssis-activity-faq.md
-- name: Szenarien
-  items:
-    - name: Datenmigration für Data Lake und EDW
-      items:
-        - name: Gründe für die Verwendung von Azure Data Factory
-          href: data-migration-guidance-overview.md
-        - name: Migrieren von Daten von AWS S3 zu Azure
-          href: data-migration-guidance-s3-azure-storage.md
-        - name: Migrieren der Daten von einem lokalen Hadoop-Cluster zu Azure
-          href: data-migration-guidance-hdfs-azure-storage.md
-        - name: Migrieren der Daten von einem lokalen Netezza-Server zu Azure
-          href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: Transformation per Zuordnung von Datenflüssen
-      items:
-        - name: Verarbeiten von Textdateien mit fester Breite
-          href: how-to-fixed-width.md
-        - name: Fehlerzeilenbehandlung
-          href: how-to-data-flow-error-rows.md
-        - name: Azure SQL-DB zu CosmosDB
-          href: how-to-sqldb-to-cosmosdb.md
-    - name: Lokale SSIS-Migration
-      items:
-        - name: Übersicht über die SSIS-Migration
-          href: scenario-ssis-migration-overview.md
-        - name: SSISDB-Migration zu einer verwalteten Azure SQL-Datenbank-Instanz
-          href: scenario-ssis-migration-ssisdb-mi.md
 - name: Verweis
   items:
     - name: Datenflussskript

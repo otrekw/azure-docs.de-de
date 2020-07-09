@@ -4,6 +4,8 @@
   items:
     - name: Informationen zu Azure Blockchain
       href: overview.md
+    - name: Neues
+      href: whats-new.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -11,7 +13,8 @@
       href: create-member.md
     - name: Erstellen von Mitgliedern mithilfe der Befehlszeilenschnittstelle
       href: create-member-cli.md
-    - name: Erstellen von Mitgliedern mithilfe einer Vorlage
+    - name: Erstellen von Mitgliedern mithilfe einer ARM-Vorlage
+      displayName: Resource Manager
       href: create-member-template.md
     - name: Herstellen einer Verbindung mit dem Transaktionsknoten
       items:
@@ -59,6 +62,10 @@
       href: ethereum-logic-app.md
     - name: Überwachen von Azure Blockchain Service
       href: monitor-azure-blockchain-service.md
+- name: Verweis
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blockchain/blockchain
 - name: Ressourcen
   items:
     - name: Development Kit für Azure Blockchain

@@ -7,12 +7,12 @@ ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 54085d602246d38adb970ed02f451241ca7ba19d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e168abaf522fa1126e3cb4618941952b562df31
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726401"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831873"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Verwenden des Blobspeichers mit iOS
 
@@ -134,7 +134,7 @@ Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, das
 Die Berechtigungen eines Containers werden standardmäßig für den **Privatzugriff** konfiguriert. Container bieten jedoch einige unterschiedliche Optionen für den Containerzugriff:
 
 - **Privat**: Container- und Blobdaten können nur vom Kontobesitzer gelesen werden.
-- **Blob**: Blobdaten innerhalb dieses Containers können über anonyme Anforderungen gelesen werden, aber die Containerdaten sind nicht verfügbar. Clients können keine Blobs innerhalb des Containers über anonyme Anforderungen aufzählen.
+- **Blob**: Blob-Daten innerhalb dieses Containers können über anonyme Anforderungen gelesen werden, Containerdaten sind aber nicht verfügbar. Clients können keine Blobs innerhalb des Containers über anonyme Anforderungen aufzählen.
 - **Container**: Container- und Blobdaten können über anonyme Anforderungen gelesen werden. Clients können Blobs innerhalb des Containers über eine anonyme Anforderung aufzählen, können aber keine Container innerhalb des Speicherkontos aufzählen.
 
 Das folgende Beispiel veranschaulicht das Erstellen eines Containers mit **Container**-Zugriffsberechtigungen, die allen Benutzern im Internet den öffentlichen, schreibgeschützten Zugriff gewähren:
@@ -208,7 +208,7 @@ Das folgende Beispiel zeigt den Upload eines Blockblobs aus einer NSString. Wenn
 }
 ```
 
-Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, dass der Container [containerpublic](https://storageexplorer.com) im *Microsoft Azure Storage-Explorer* das Blob *sampleblob* enthält. In diesem Beispiel haben Sie einen öffentlichen Container verwendet, sodass Sie die Funktionsweise der Anwendung auch durch das Aufrufen der Blob-URI überprüfen können:
+Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, dass der Container *containerpublic* im [Microsoft Azure Storage-Explorer](https://storageexplorer.com) das Blob *sampleblob* enthält. In diesem Beispiel haben Sie einen öffentlichen Container verwendet, sodass Sie die Funktionsweise der Anwendung auch durch das Aufrufen der Blob-URI überprüfen können:
 
 ```http
 https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
@@ -224,12 +224,12 @@ Das folgende Beispiel zeigt, wie alle Blobs in einem Container aufgelistet werde
 - **prefix** – Sie können das Präfix angeben, das für die Blobliste verwendet werden soll. Nur Blobs, die mit diesem Präfix beginnen, werden aufgelistet.
 - **useFlatBlobListing** – Wie im Abschnitt [Benennen von Containern und Blobs und verweisen auf diese](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) erwähnt, können Sie eine virtuelle Hierarchie durch Benennen von Blobs mit Pfadinformationen erstellen, selbst wenn der Blob-Dienst ein flaches Speicherschema ist. Allerdings wird derzeit die nicht-flache Auflistung nicht unterstützt. Diese Funktion ist in Kürze verfügbar. Bis dahin sollte der folgende Wert verwendet werden: **JA**.
 - **blobListingDetails** – Sie können angeben, welche Elemente beim Auflisten der Blobs einbezogen werden sollen.
-  - _AZSBlobListingDetailsNone_: Nur zugesicherte Blobs auflisten und keine Blobmetadaten zurückgeben.
-  - _AZSBlobListingDetailsSnapshots_: Zugesicherte Blobs und Blobmomentaufnahmen auflisten.
-  - _AZSBlobListingDetailsMetadata_: Blobmetadaten für jeden Blob aufrufen, der in der Liste zurückgegeben wird.
-  - _AZSBlobListingDetailsUncommittedBlobs_: Zugesicherte und nicht zugesicherte Blobs auflisten.
-  - _AZSBlobListingDetailsCopy_: Kopieeigenschaften in die Auflistung einbeziehen.
-  - _AZSBlobListingDetailsAll_: Alle verfügbaren zugesicherten Blobs, nicht zugesicherten Blobs und Momentaufnahmen auflisten und alle Metadaten und Kopierstatus für diese Blobs zurückgeben.
+  - _AZSBlobListingDetailsNone_: Listen Sie nur zugesicherte Blobs auf, und geben Sie keine Blobmetadaten zurück.
+  - _AZSBlobListingDetailsSnapshots_: Listen Sie zugesicherte Blobs und Blobmomentaufnahmen auf.
+  - _AZSBlobListingDetailsMetadata_: Rufen Sie Blobmetadaten für jedes Blob auf, das in der Liste zurückgegeben wird.
+  - _AZSBlobListingDetailsUncommittedBlobs_: Listen Sie zugesicherte und nicht zugesicherte Blobs auf.
+  - _AZSBlobListingDetailsCopy_: Schließen Sie Kopiereigenschaften in die Liste ein.
+  - _AZSBlobListingDetailsAll_: Listen Sie alle verfügbaren zugesicherten Blobs, nicht zugesicherten Blobs und Momentaufnahmen auf, und geben Sie alle Metadaten und den Kopierstatus für diese Blobs zurück.
 - **maxResults** – Die maximale Anzahl von Ergebnissen, die für diesen Vorgang zurückgegeben werden. Verwenden Sie -1, um keinen Grenzwert festzulegen.
 - **completionHandler** – Der auszuführende Codeblock mit den Ergebnissen des Auflistungsvorgangs.
 
@@ -392,7 +392,7 @@ Da Sie jetzt die Verwendung von Blobspeicher in iOS kennen, folgen Sie diesen Li
 - [Azure Storage-Clientbibliothek für iOS](https://github.com/azure/azure-storage-ios)
 - [Azure Storage-iOS-Referenzdokumentation](https://azure.github.io/azure-storage-ios/)
 - [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [Azure Storage-Teamblog](https://blogs.msdn.com/b/windowsazurestorage)
+- [Azure Storage-Teamblog](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 
-Wenn Sie Fragen zu dieser Bibliothek haben, können Sie diese im [MSDN Azure-Forum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) oder auf [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) stellen.
+Wenn Sie Fragen zu dieser Bibliothek haben, können Sie diese auf unserer [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-blob-storage.html) oder auf [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) stellen.
 Richten Sie Vorschläge für Azure Storage-Features an [Feedback zu Azure Storage](https://feedback.azure.com/forums/217298-storage/).

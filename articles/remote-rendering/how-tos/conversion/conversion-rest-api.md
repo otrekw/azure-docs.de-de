@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 0a0feb6b638cb6e3a74fcd30baea5e8a04375699
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887043"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857794"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>Verwenden der REST-API für die Modellkonvertierung
 
@@ -120,6 +120,7 @@ Der Status einer aktuell ausgeführten Konvertierung, die mit einem der oben gen
 
 Gibt ein JSON-Dokument mit einem Feld „status“ zurück, das die folgenden Werte aufweisen kann:
 
+- "Created"
 - „Running“ (wird ausgeführt)
 - „Success“
 - „Failure“ (Fehler)

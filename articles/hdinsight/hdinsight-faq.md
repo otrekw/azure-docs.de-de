@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 8a69cb83492fabc692886fe6966a147de3bcbb04
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780843"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022213"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Häufig gestellte Fragen
 
@@ -43,6 +43,14 @@ Weitere Informationen finden Sie unter [Kapazitätsplanung für HDInsight-Cluste
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>Welche unterschiedlichen Knotentypen gibt es in einem HDInsight-Cluster?
 
 Lesen Sie dazu [Ressourcentypen in Azure HDInsight-Clustern](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters).
+
+### <a name="what-are-the-best-practices-for-creating-large-hdinsight-clusters"></a>Wie lauten die bewährten Methoden zur Erstellung von großen HDInsight-Clustern?
+
+1. Wir empfehlen Ihnen, HDInsight-Cluster mit einer [benutzerdefinierten Ambari-Datenbank](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db) einzurichten, um die Clusterskalierbarkeit zu verbessern.
+2. Verwenden Sie [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) für die Erstellung von HDInsight-Clustern, um die höhere Bandbreite und weitere Leistungsmerkmale von Azure Data Lake Storage Gen2 zu nutzen.
+3. Hauptknoten sollten eine ausreichende Größe haben, um mehrere Masterdienste abdecken zu können, die auf diesen Knoten ausgeführt werden.
+4. Für einige spezifische Workloads, z. B. Interactive Query, werden ebenfalls größere Zookeeper-Knoten benötigt. Beachten Sie hierbei die Mindestanzahl von acht Kern-VMs.
+5. Verwenden Sie bei Hive und Spark den [externen Hive-Metastore](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores).
 
 ## <a name="individual-components"></a>Einzelne Komponenten
 
@@ -79,9 +87,9 @@ Nein, Apache Kafka und Apache Spark können nicht im selben HDInsight-Cluster au
 
 ## <a name="metastore"></a>Metastore
 
-### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>Wie kann ich vom vorhandenen Metastore zu Azure SQL Server migrieren? 
+### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-database"></a>Wie kann ich vom vorhandenen Metastore zu Azure SQL-Datenbank migrieren? 
 
-Informationen zum Migrieren von SQL Server zu Azure SQL Server finden Sie unter [Tutorial: Offlinemigration von SQL Server zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank mit DMS](../dms/tutorial-sql-server-to-azure-sql.md).
+Informationen zum Migrieren von SQL Server zu Azure SQL-Datenbank finden Sie unter [Tutorial: Offlinemigration von SQL Server zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank mit DMS](../dms/tutorial-sql-server-to-azure-sql.md).
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>Wird der Hive-Metastore zusammen mit dem Cluster gelöscht?
 
@@ -276,8 +284,8 @@ Sie verwenden permanente Skripts, um mithilfe von Skalierungsvorgängen neue Wor
 
 Sie können die folgenden REST-Endpunkte verwenden, um die erforderlichen Informationen im JSON-Format abzurufen. Verwenden Sie standardmäßige Authentifizierungsheader, um diese Anforderungen auszuführen.
 
-- `Tez Query View`: *https:\//\<Clustername>.azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/*
-- `Tez Dag View`: *https:\//\<Clustername>.azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/*
+- `Tez Query View`: *https:\//\<cluster name>.azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/*
+- `Tez Dag View`: *https:\//\<cluster name>.azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Wie rufe ich die Konfigurationsdetails aus dem HDI-Cluster mithilfe eines Azure Active Directory-Benutzers ab?
 

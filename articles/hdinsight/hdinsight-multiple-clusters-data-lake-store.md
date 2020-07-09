@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75495745"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083949"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Verwenden von mehreren HDInsight-Clustern mit einem Azure Data Lake Storage-Konto
 
@@ -44,7 +44,7 @@ In der Tabelle
 - **Dienstprinzipal** ist der Dienstprinzipal von Azure Active Directory (AAD), der mit dem Konto verknüpft ist.
 - **FINGRP** ist eine Benutzergruppe, die in AAD erstellt wurde, die Benutzer der Organisation „Finanzen“ enthält.
 
-Anweisungen zum Erstellen einer AAD-Anwendung (die auch einen Dienstprinzipal erstellt) finden Sie unter [Create an AAD application (Erstellen einer AAD-Anwendung)](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Anweisungen zum Erstellen einer Benutzergruppe in AAD finden Sie unter [Verwalten von Gruppen in Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+Anweisungen zum Erstellen einer AAD-Anwendung (die auch einen Dienstprinzipal erstellt) finden Sie unter [Create an AAD application (Erstellen einer AAD-Anwendung)](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Anweisungen zum Erstellen einer Benutzergruppe in AAD finden Sie unter [Verwalten von Gruppen in Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Zu berücksichtigende Punkte:
 
@@ -79,7 +79,9 @@ Wenn ein neues Azure Data Lake Storage-Konto erstellt wird, wird das Stammverzei
 
 Es ist bekannt, dass diese Einstellungen einen bestimmten Anwendungsfall von HDInsight beeinträchtigen. Dieser Fall wurde in [YARN 247](https://hwxmonarch.atlassian.net/browse/YARN-247) erfasst. Autragsübermittlungen schlagen möglicherweise mit einer Fehlermeldung wie dieser fehl:
 
-    Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```output
+Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```
 
 Wie im bereits verlinkten JIRA von YARN angegeben, überprüft der Lokalisierer beim Lokalisieren von öffentlichen Ressourcen, dass die angeforderten Ressourcen auch tatsächlich öffentlich sind, indem er ihre Berechtigungen auf dem Remote-Dateisystem prüft. Jede lokale Ressource, die diese Bedingung nicht erfüllt, wird bei der Lokalisierung abgelehnt. Das Prüfen der Berechtigungen beinhaltet auch den Lesezugriff auf die Datei für „Andere“. Dieses Szenario ist nicht sofort einsatzbereit, wenn Sie HDInsight-Cluster in Azure Data Lake hosten, da Azure Data Lake den Zugriff auf „Andere“ auf der Ebene des Stammordner verweigert.
 

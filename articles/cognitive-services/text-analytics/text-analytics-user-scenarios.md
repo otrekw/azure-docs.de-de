@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb82422aa0e3d45743539da623fcb919e8e77bbc
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218532"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141811"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Beispielbenutzerszenarien für die Textanalyse-API
 
@@ -50,6 +50,13 @@ Verwenden Sie die Schlüsselbegriffs- und Entitätserkennung zum Verarbeiten von
 Verwenden Sie die Erkennung benannter Entitäten, um in Dokumenten personenbezogene und vertrauliche Informationen zu identifizieren. Verwenden Sie die Daten zum Klassifizieren oder Bearbeiten von Dokumenten, damit sie auf sichere Weise freigegeben werden können.
 
 ![Abbildung zur Verwendung der Erkennung benannter Entitäten, um personenbezogene Informationen zu erkennen und Dokumente zu klassifizieren und zu bearbeiten](media/use-cases/sensitive-docs.jpg)
+
+## <a name="perform-opinion-mining"></a>Ausführen von Opinion Mining
+
+Gruppieren Sie Meinungen im Zusammenhang mit bestimmten Aspekten eines Produkts oder Diensts in Umfragen und Kundenfeedback oder in Text, der eine Meinung zu einem Aspekt enthält. Verwenden Sie dieses Verfahren, um Produkteinführungen und -verbesserungen sowie Marketingmaßnahmen zu steuern und die Leistung Ihres Produkts oder Diensts hervorzuheben. 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="media/use-cases/aspect-based-sentiment.png" alt-text="Beispielmeinungen zu einem Hotel":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

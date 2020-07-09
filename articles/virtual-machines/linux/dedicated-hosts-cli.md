@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ba40e610e31a1215ac90baf63a04b435b636d68a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc772368de1a0f7d8a7d4f44b47ecafda70f0a70
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127697"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714847"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Bereitstellen von VMs auf dedizierten Hosts über die Azure-Befehlszeilenschnittstelle
  
@@ -25,13 +25,21 @@ Stellen Sie sicher, dass mindestens Version 2.0.70 der Azure-Befehlszeilenschni
 
 - VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
 - Die verfügbaren Größen und Hardwaretypen für dedizierte Hosts variieren je nach Region. Weitere Informationen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
- 
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen 
 Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie die Ressourcengruppe mithilfe von „az group create“. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myDHResourceGroup* am Standort *USA, Osten* erstellt.
 
 ```bash
 az group create --name myDHResourceGroup --location eastus 
+```
+ 
+## <a name="list-available-host-skus-in-a-region"></a>Auflisten der in einer Region verfügbaren Host-SKUs
+Nicht alle Host-SKUs sind in allen Regionen und allen Verfügbarkeitszonen verfügbar. 
+
+Listen Sie die Hostverfügbarkeit und alle Angebotseinschränkungen auf, bevor Sie mit der Bereitstellung dedizierter Hosts beginnen. 
+
+```bash
+az vm list-skus -l eastus2  -r hostGroups/hosts  -o table  
 ```
  
 ## <a name="create-a-host-group"></a>Erstellen einer Hostgruppe 

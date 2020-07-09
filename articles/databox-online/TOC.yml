@@ -31,6 +31,8 @@
           href: data-box-gateway-use-cases.md
     - name: Anleitung
       items:
+        - name: Aktualisieren
+          href: data-box-gateway-apply-updates.md
         - name: Verwalten
           items:
             - name: Freigaben
@@ -95,7 +97,7 @@
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
     - name: Anleitung
       items:
-        - name: 'Entwickeln eines C#-Moduls'
+        - name: Entwickeln eines C#-Moduls
           href: azure-stack-edge-create-iot-edge-module.md
         - name: Verwalten
           items:

@@ -4,21 +4,21 @@ description: Erstellen Sie eine Funktion, die Azure Logic Apps und Azure Cogniti
 author: craigshoemaker
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
 ms.topic: tutorial
-ms.date: 11/06/2018
+ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f6698bcc8125cd00dcb1cd6c86a8d69153242b35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aa4087f3eafcd217eedc707697d093155b13b9e6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190298"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116331"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Erstellen einer Funktion, die in Azure Logic Apps integriert ist
 
 Azure Functions ist in Azure Logic Apps im Logik-App-Designer integriert. Dank dieser Integration können Sie die Rechenleistung von Functions in Orchestrierungen mit anderen Azure- und Drittanbieterdiensten nutzen. 
 
-In diesem Tutorial wird gezeigt, wie Sie Functions mit Logic Apps und Cognitive Services in Azure verwenden, um eine Standpunktanalyse für Twitter-Postings auszuführen. Mit einer Funktion mit HTTP-Auslösung werden Tweets basierend auf dem Stimmungswert als Grün, Gelb oder Rot (Green, Yellow, Red) kategorisiert. Wenn eine negative Stimmung erkannt wird, wird eine E-Mail gesendet. 
+In diesem Tutorial wird gezeigt, wie Sie Azure Functions mit Logic Apps und Cognitive Services in Azure verwenden, um eine Standpunktanalyse für Twitter-Postings auszuführen. Mit einer HTTP-Triggerfunktion werden Tweets basierend auf dem Stimmungswert als Grün, Gelb oder Rot (Green, Yellow, Red) kategorisiert. Wenn eine negative Stimmung erkannt wird, wird eine E-Mail gesendet. 
 
 ![Abbildung: Die ersten beiden Schritte der App im Logik-App-Designer](media/functions-twitter-email/00-logic-app-overview.png)
 
@@ -74,21 +74,21 @@ Die Cognitive Services-APIs sind in Azure als einzelne Ressourcen verfügbar. Ve
 
 ## <a name="create-the-function-app"></a>Erstellen der Funktionen-App
 
-„Functions“ ist eine gute Möglichkeit, um Verarbeitungsaufgaben in einen Logic Apps-Workflow zu verlagern. In diesem Tutorial wird eine Funktion mit HTTP-Auslösung verwendet, um Tweet-Stimmungswerte aus Cognitive Services zu verarbeiten und einen Kategoriewert zurückzugeben.  
+Azure Functions ist eine gute Möglichkeit, um Verarbeitungsaufgaben in einen Logik-Apps-Workflow zu verlagern. In diesem Tutorial wird eine HTTP-Triggerfunktion verwendet, um Tweet-Stimmungswerte aus Cognitive Services zu verarbeiten und einen Kategoriewert zurückzugeben.  
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-## <a name="create-an-http-triggered-function"></a>Erstellen einer durch HTTP ausgelösten Funktion  
+## <a name="create-an-http-trigger-function"></a>Erstellen einer HTTP-Triggerfunktion  
 
-1. Erweitern Sie die Funktions-App, und klicken Sie auf die Schaltfläche **+** neben **Functions**. Wenn dies die erste Funktion in Ihrer Funktions-App ist, wählen Sie **Im Portal** aus.
+1. Wählen Sie im linken Menü des Fensters **Funktionen** die Option **Funktionen** aus, und wählen Sie dann im oberen Menü **Hinzufügen** aus.
 
-    ![Schnellstartseite für Funktionen im Azure-Portal](media/functions-twitter-email/05-function-app-create-portal.png)
+2. Wählen Sie im Fenster **Neue Funktion** die Option **HTTP-Trigger** aus.
 
-2. Wählen Sie als Nächstes **Webhook + API** aus, und klicken Sie auf **Erstellen**. 
+    ![Auswählen der HTTP-Triggerfunktion](./media/functions-twitter-email/06-function-http-trigger.png)
 
-    ![Auswählen des HTTP-Triggers](./media/functions-twitter-email/06-function-webhook.png)
+3. Wählen Sie auf der Seite **Neue Funktion** die Option **Funktion erstellen** aus.
 
-3. Ersetzen Sie den Inhalt der Datei `run.csx` durch den folgenden Code, und klicken Sie auf **Speichern**:
+4. Wählen Sie in der neuen HTTP-Triggerfunktion im Menü auf der linken Seite **Programmieren und testen** aus, ersetzen Sie den Inhalt der Datei `run.csx` durch den folgenden Code, und wählen Sie dann **Speichern** aus:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -123,11 +123,12 @@ Die Cognitive Services-APIs sind in Azure als einzelne Ressourcen verfügbar. Ve
             : new BadRequestObjectResult("Please pass a value on the query string or in the request body");
     }
     ```
+
     Dieser Funktionscode gibt eine Farbkategorie zurück, die auf dem mit der Anforderung empfangenen Stimmungswert basiert. 
 
-4. Klicken Sie zum Testen der Funktion ganz rechts auf **Testen**, um die Registerkarte „Testen“ zu erweitern. Geben Sie den Wert `0.2` für **Anforderungstext** ein, und klicken Sie dann auf **Ausführen**. Im Text der Antwort wird der Wert **RED** (ROT) zurückgegeben. 
+5. Wählen Sie zum Testen der Funktion im oberen Menü **Testen** aus. Geben Sie auf der Registerkarte **Eingabe** unter **Textkörper** den Wert `0.2` ein, und wählen Sie dann **Ausführen** aus. Auf der Registerkarte **Ausgabe** wird unter **Inhalt der HTTP-Antwort** der Wert **RED** zurückgegeben. 
 
-    ![Testen der Funktion im Azure-Portal](./media/functions-twitter-email/07-function-test.png)
+    :::image type="content" source="./media/functions-twitter-email/07-function-test.png" alt-text="Definieren der Proxyeinstellungen":::
 
 Sie verfügen nun über eine Funktion zum Kategorisieren von Stimmungswerten. Als Nächstes erstellen Sie eine Logik-App, die Ihre Funktion in Ihre Twitter- und Cognitive Services-API integriert. 
 
@@ -215,7 +216,7 @@ Ihre Funktion wird jetzt ausgelöst, wenn von der Logik-App ein Stimmungswert ge
 
 ## <a name="add-email-notifications"></a>Hinzufügen von E-Mail-Benachrichtigungen
 
-Der letzte Teil des Workflows ist das Auslösen einer E-Mail, wenn der Wert für die Stimmung _RED_ (ROT) lautet. In diesem Thema wird ein Outlook.com-Connector verwendet. Sie können ähnliche Schritte ausführen, um einen Gmail- oder Office 365 Outlook-Connector zu verwenden.   
+Der letzte Teil des Workflows ist das Auslösen einer E-Mail, wenn der Wert für die Stimmung _RED_ (ROT) lautet. In diesem Artikel wird ein Outlook.com-Connector verwendet. Sie können ähnliche Schritte ausführen, um einen Gmail- oder Office 365 Outlook-Connector zu verwenden.   
 
 1. Klicken Sie im Logik-App-Designer auf **Neuer Schritt** > **Bedingung hinzufügen**. 
 
@@ -277,7 +278,7 @@ Nachdem der Workflow jetzt fertig ist, können Sie die Logik-App aktivieren und 
     > [!IMPORTANT]
     > Nach Abschluss dieses Tutorials sollten Sie die Logik-App deaktivieren. Durch das Deaktivieren der App verhindern Sie, dass Ihnen für Ausführungen Gebühren berechnet und die Transaktionen für Ihre Cognitive Services-API aufgebraucht werden.
 
-Sie haben gesehen, wie einfach es ist, Functions in einen Logik-Apps-Workflow zu integrieren.
+Sie haben gesehen, wie einfach es ist, Functions in einen Logic Apps-Workflow zu integrieren.
 
 ## <a name="disable-the-logic-app"></a>Deaktivieren der Logik-App
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4559a49a64688545e519f6172798997c2d695672
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: a665c3c27cca03a084896895ae51c56732ceb7b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461872"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84237733"
 ---
 Beim Erstellen eines virtuellen Azure-Computers (VM) müssen Sie ein [virtuelles Netzwerk](../articles/virtual-network/virtual-networks-overview.md) (VNet) erstellen oder ein vorhandenes VNet verwenden. Außerdem müssen Sie entscheiden, wie auf Ihre VMs im VNet zugegriffen werden soll. Es ist wichtig, [vor dem Erstellen von Ressourcen einen Plan aufzustellen](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) und sicherzustellen, dass Sie die [Einschränkungen von Netzwerkressourcen](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) verstehen.
 
@@ -51,7 +51,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer Net
 
 ## <a name="ip-addresses"></a>IP-Adressen 
 
-Sie können diese Arten von [IP-Adressen](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) einer NIC in Azure zuweisen:
+Sie können diese Arten von [IP-Adressen](../articles/virtual-network/public-ip-addresses.md) einer NIC in Azure zuweisen:
 
 - **Öffentliche IP-Adressen**: Werden für die eingehende und ausgehende Kommunikation (ohne Netzwerkadressübersetzung (NAT)) mit dem Internet und anderen Azure-Ressourcen verwendet, die nicht mit einem VNet verbunden sind. Das Zuweisen einer öffentlichen IP-Adresse zu einer NIC ist optional. Für öffentliche IP-Adressen wird eine geringe Gebühr berechnet, und es kann nur eine bestimmte Anzahl dieser IP-Adressen pro Abonnement verwendet werden.
 - **Private IP-Adressen**: Werden für die Kommunikation in einem VNet, in Ihrem lokalen Netzwerk und mit dem Internet (mit NAT) verwendet. Sie müssen einer VM mindestens eine private IP-Adresse zuweisen. Weitere Informationen zu NAT in Azure finden Sie unter [Grundlegendes zu ausgehenden Verbindungen in Azure](../articles/load-balancer/load-balancer-outbound-connections.md).

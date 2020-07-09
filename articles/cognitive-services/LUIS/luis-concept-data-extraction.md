@@ -4,17 +4,17 @@ description: Extrahieren Sie Daten aus dem Äußerungstext mit Absichten und Ent
 author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 3b6b09fd1066a9caa745cddf30d76e2843c3f56c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589719"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682196"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrahieren von Daten aus dem Äußerungstext mit Absichten und Entitäten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können. In den folgenden Abschnitten erfahren Sie anhand von JSON-Beispielen, welche Daten von Absichten und Entitäten zurückgegeben werden.
 
-Am schwierigsten sind Daten zu extrahieren, die maschinell gelernt wurden, da es sich nicht um genaue Textübereinstimmungen handelt. Das Extrahieren von Daten aus maschinell erlernten [Entitäten](luis-concept-entity-types.md) muss im Rahmen des [Erstellungszyklus](luis-concept-app-iteration.md) erfolgen, bis Sie sicher sind, dass Sie die erwarteten Daten erhalten.
+Am schwierigsten sind Machine-Learning-Daten zu extrahieren, da es sich nicht um genaue Textübereinstimmungen handelt. Das Extrahieren von Daten aus [Machine-Learning-Entitäten](luis-concept-entity-types.md) muss im Rahmen des [Erstellungszyklus](luis-concept-app-iteration.md) erfolgen, bis Sie sicher sind, dass Sie die erwarteten Daten erhalten.
 
 ## <a name="data-location-and-key-usage"></a>Speicherort der Daten und Schlüsselverwendung
 Von LUIS werden Daten aus der Äußerung des Benutzers am veröffentlichten [Endpunkt](luis-glossary.md#endpoint) extrahiert. Die **HTTPS-Anforderung** (POST oder GET) enthält die Äußerung sowie einige optionale Konfigurationen wie z.B. Staging- oder Produktionsumgebung.
@@ -216,7 +216,7 @@ Alle Entitäten werden im Array **entities** der Endpunktantwort zurückgegeben.
 
 ## <a name="list-entity-data"></a>Daten von Listenentitäten
 
-[Listenentitäten](reference-entity-list.md) stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste. Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben.
+[Listenentitäten](reference-entity-list.md) stellen eine feste, geschlossene Gruppe verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste. Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben.
 
 ## <a name="regular-expression-entity-data"></a>Daten von Entitäten aus regulären Ausdrücken
 
@@ -245,7 +245,7 @@ Einige Apps müssen in der Lage sein, neue oder sich entwickelnde Namen, z.B. vo
 
 ## <a name="patternany-entity-data"></a>Daten in Entitäten vom Typ „Pattern.any“
 
-[Pattern.any](reference-entity-pattern-any.md) ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet. Die im Muster verwendete Entität muss gefunden werden, damit das Muster angewendet wird. 
+[Pattern.any](reference-entity-pattern-any.md) ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet. Die im Muster verwendete Entität muss gefunden werden, damit das Muster angewendet wird.
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 Wenn beim [Veröffentlichen](luis-how-to-publish-app.md#sentiment-analysis) die Standpunktanalyse konfiguriert wird, enthält die JSON-Antwort von LUIS eine Standpunktanalyse. Weitere Informationen zu Standpunktanalysen finden Sie in der Dokumentation zur [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).

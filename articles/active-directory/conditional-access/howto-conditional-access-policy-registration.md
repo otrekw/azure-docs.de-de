@@ -4,19 +4,19 @@ description: Erstellen einer benutzerdefinierten Richtlinie für bedingten Zugri
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 03/25/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c8081bb8145a6654c168fb2d664e1666b32dc18
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: acf17f4cef43fe4221781deedb130ef587208550
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457908"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993744"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Bedingter Zugriff: Sichere Registrierung von Sicherheitsinformationen
 
@@ -61,6 +61,7 @@ Einige Organisationen wählen möglicherweise anstelle des in Schritt 6 oben au
 
 > [!WARNING]
 > Wenn Sie den Gerätestatus als Bedingung in Ihrer Richtlinie verwenden, kann dies Auswirkungen auf Gastbenutzer im Verzeichnis haben. Die Auswirkungen von Richtlinienoptionen können im [reinen Berichtsmodus](concept-conditional-access-report-only.md) ermittelt werden.
+> Beachten Sie, dass der reine Berichtsmodus für Richtlinien für bedingten Zugriff mit dem Bereich „Benutzeraktionen“ nicht anwendbar ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

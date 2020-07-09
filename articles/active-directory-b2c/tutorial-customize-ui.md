@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/01/2019
+ms.topic: tutorial
+ms.date: 05/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 235fd429707a418fa193e986b95c9b38fa6c8101
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186249"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385024"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Tutorial: Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -166,4 +166,4 @@ In diesem Artikel haben Sie Folgendes gelernt:
 > * Testen der angepassten Benutzeroberfläche
 
 > [!div class="nextstepaction"]
-> [Sprachanpassung in Azure Active Directory B2C](user-flow-language-customization.md)
+> [Anpassen der Benutzeroberfläche in Azure Active Directory B2C](customize-ui-overview.md)

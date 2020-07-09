@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: eabfa03aa70f54a967fe256f694ef59ad0fe7ebe
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685439"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930470"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informationen zu Azure Key Vault-Geheimnissen
 
@@ -26,6 +26,10 @@ Aus Entwicklerperspektive akzeptieren Key Vault-APIs geheime Werte als Zeichenfo
 Bei hochvertraulichen Daten sollten zusätzliche Schutzebenen für die Daten eingerichtet werden. Die Verschlüsselung von Daten mithilfe eines separaten Schutzschlüssels vor dem Speichern in Key Vault ist nur ein Beispiel hierfür.  
 
 Key Vault unterstützt auch ein contentType-Feld für Geheimnisse. Clients können den Inhaltstyp eines Geheimnisses als Hilfestellung beim Interpretieren der geheimen Daten beim Abrufen angeben. Dieses Feld darf maximal 255 Zeichen lang sein. Es gibt keine vordefinierten Werte. Die Verwendungsempfehlung dient als Hinweis für das Interpretieren der geheimen Daten. Wenn eine Implementierung z.B. sowohl Kennwörter als auch Zertifikate als Geheimnisse speichert, verwenden Sie dieses Feld zur Unterscheidung. Es gibt keine vordefinierten Werte.  
+
+## <a name="encryption"></a>Verschlüsselung
+
+Alle Geheimnisse in Ihrer Key Vault-Instanz werden verschlüsselt gespeichert. Diese Verschlüsselung ist transparent, und der Benutzer muss keine Aktion durchführen. Ihre Geheimnisse werden vom Azure Key Vault-Dienst verschlüsselt, wenn Sie diese hinzufügen, und dann automatisch entschlüsselt, wenn Sie sie lesen. Der Verschlüsselungsschlüssel ist für jeden Schlüsseltresor eindeutig.
 
 ## <a name="secret-attributes"></a>Geheimnisattribute
 

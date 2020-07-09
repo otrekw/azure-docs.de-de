@@ -3,16 +3,16 @@ title: Bereitstellen von Azure File Storage auf Linux-VMs per SMB
 description: Bereitstellen von Azure File Storage auf virtuellen Linux-Computern per SMB mithilfe der Azure-Befehlszeilenschnittstelle
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 0314095a053087a7d490926c41c6ae386c304919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ab798ccbbbfc9cfc11ae85fd698ecedcb5e8e73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066644"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658153"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Bereitstellen von Azure File Storage auf Linux-VMs per SMB
 
@@ -35,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Erstellen Sie mithilfe des Befehls [az storage account create](/cli/azure/storage/account) ein neues Speicherkonto in der von Ihnen erstellten Ressourcengruppe. In diesem Beispiel wird ein Speicherkonto mit dem Namen *mySTORAGEACCT\<Zufallszahl>* erstellt und der Name dieses Speicherkontos in die Variable **STORAGEACCT** eingefügt. Da Speicherkontonamen eindeutig sein müssen, wird durch Verwendung von `$RANDOM` eine Zahl an das Ende des Namens angefügt.
+Erstellen Sie mithilfe des Befehls [az storage account create](/cli/azure/storage/account) ein neues Speicherkonto in der von Ihnen erstellten Ressourcengruppe. In diesem Beispiel wird ein Speicherkonto mit dem Namen *mySTORAGEACCT\<random number>* erstellt und der Name dieses Speicherkontos in die Variable **STORAGEACCT** eingefügt. Da Speicherkontonamen eindeutig sein müssen, wird durch Verwendung von `$RANDOM` eine Zahl an das Ende des Namens angefügt.
 
 ```azurecli
 STORAGEACCT=$(az storage account create \

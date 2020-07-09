@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 48602cb65430bcf6720b4d6f4ba05c771a7bd55b
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 03ef1708f836eb016d8f2fce530b9588cc61cd35
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559963"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075704"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API
 
@@ -364,7 +364,9 @@ In diesem Beispiel wird ein JSON-Dokument zurückgegeben, das die aktuelle Konfi
 2. Bearbeiten Sie `newconfig.json`.  
    Öffnen Sie das Dokument `newconfig.json` und ändern Sie Werte im `properties`-Objekt, bzw. fügen Sie sie hinzu. Im folgenden Beispiel wird der Wert von `"livy.server.csrf_protection.enabled"` von `"true"` in `"false"` geändert.
 
-        "livy.server.csrf_protection.enabled": "false",
+    ```json
+    "livy.server.csrf_protection.enabled": "false",
+    ```
 
     Speichern Sie die Datei, nachdem Sie alle Änderungen vorgenommen haben.
 

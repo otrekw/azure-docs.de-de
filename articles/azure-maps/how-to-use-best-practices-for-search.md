@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8d62d7d278323baa0ae49b9e12f46468efb067a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335305"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84264365"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Bewährte Methoden für den Suchdienst von Azure Maps
 
-Der [Suchdienst](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps enthält APIs, die verschiedene Funktionen bieten. Die API für die Adresssuche wird z. B. für die Suche nach Points of Interest (POI) oder Daten rund um einen bestimmten Ort verwendet. 
+Der Azure Maps-[Suchdienst](https://docs.microsoft.com/rest/api/maps/search) enthält APIs, die verschiedene Funktionen bieten, die Entwickler bei der Suche nach Adressen, Orten, Brancheneinträgen (nach Name oder Kategorie) und anderen geografischen Informationen unterstützen. Mithilfe der [API für die Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) können Benutzer beispielsweise nach einer Adresse oder einem Point of Interest (POI) suchen.
 
 In diesem Artikel wird erläutert, wie Sie beim Aufrufen von Daten aus dem Suchdienst von Azure Maps vernünftige Methoden anwenden können. Sie lernen Folgendes:
 
@@ -33,7 +33,7 @@ Um die Azure Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Azure Maps
 Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
 > [!TIP]
-> Um den Suchdienst abzufragen, können Sie die [Postman-App](https://www.getpostman.com/apps) zum Erstellen von REST-Aufrufen verwenden. Sie können aber auch jede beliebige API-Entwicklungsumgebung verwenden, die Sie bevorzugen.
+> Sie können die [Postman-App](https://www.getpostman.com/apps) zum Erstellen von REST-Aufrufen verwenden, um den Suchdienst abzufragen. Sie können aber auch jede beliebige API-Entwicklungsumgebung verwenden, die Sie bevorzugen.
 
 ## <a name="best-practices-to-geocode-addresses"></a>Bewährte Methoden zur Geocodierung von Adressen
 
@@ -52,7 +52,7 @@ Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Verf
 
 Um die Ergebnisse geografisch in den für Ihren Benutzer relevanten Bereich zu lenken, fügen Sie immer so viele Standortangaben wie möglich hinzu. Möglicherweise möchten Sie die Suchergebnisse einschränken, indem Sie einige Eingabetypen angeben:
 
-* Legen Sie den Parameter `countrySet` fest. Sie können ihn z. B. auf `US,FR` festlegen. Standardmäßig durchsucht die API die gesamte Welt, sodass sie möglicherweise überflüssige Ergebnisse zurückgeben kann. Wenn Ihre Abfrage keinen `countrySet`-Parameter umfasst, kann die Suche ungenaue Ergebnisse liefern. Die Suche nach einer Stadt namens *Bellevue* liefert z. B. Ergebnisse aus den USA und Frankreich, da in beiden Ländern eine Stadt mit dem Namen *Bellevue* existiert.
+* Legen Sie den Parameter `countrySet` fest. Sie können ihn z. B. auf `US,FR` festlegen. Standardmäßig durchsucht die API die gesamte Welt, sodass sie möglicherweise überflüssige Ergebnisse zurückgeben kann. Wenn Ihre Abfrage keinen `countrySet`-Parameter umfasst, kann die Suche ungenaue Ergebnisse liefern. Die Suche nach einer Stadt namens *Bellevue* liefert z. B. Ergebnisse aus den USA und Frankreich, da in beiden Ländern/Regionen eine Stadt mit dem Namen *Bellevue* existiert.
 
 * Mit den Parametern `btmRight` und `topleft` können Sie die Begrenzungsrahmen festlegen. Diese Parameter schränken die Suche auf ein bestimmtes Gebiet auf der Karte ein.
 
@@ -61,7 +61,7 @@ Um die Ergebnisse geografisch in den für Ihren Benutzer relevanten Bereich zu l
 
 #### <a name="fuzzy-search-parameters"></a>Parameter der Fuzzysuche
 
-Es wird empfohlen, die Azure Maps-API für die [Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) zu verwenden, wenn Sie Ihre Benutzereingaben für eine Suchabfrage nicht kennen. Die API kombiniert POI-Suche und Geocodierung zu einer kanonischen *einzeiligen Suche*: 
+Es wird empfohlen, die Azure Maps-API für die [Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) zu verwenden, wenn Sie Ihre Benutzereingaben für eine Suchabfrage nicht kennen. Beispielsweise kann die Eingabe des Benutzers eine Adresse oder der POI-Typ sein, wie z. B. *Einkaufszentrum*. Die API kombiniert POI-Suche und Geocodierung zu einer kanonischen *einzeiligen Suche*: 
 
 * Die Parameter `minFuzzyLevel` und `maxFuzzyLevel` helfen, relevante Übereinstimmungen zurückzugeben, selbst wenn die Abfrageparameter nicht genau mit den vom Benutzer gewünschten Informationen übereinstimmen. Um die Leistung zu maximieren und ungewöhnliche Ergebnisse zu verringern, legen Sie Suchabfragen auf die Standardwerte `minFuzzyLevel=1` und `maxFuzzyLevel=2` fest. 
 
@@ -70,7 +70,7 @@ Es wird empfohlen, die Azure Maps-API für die [Fuzzysuche](https://docs.microso
 * Verwenden Sie den Parameter `idxSet`, um den genauen Satz von Ergebnistypen zu priorisieren. Um einen genauen Satz von Ergebnissen zu priorisieren, können Sie eine durch Trennzeichen getrennte Liste von Indizes übermitteln. In der Liste spielt die Reihenfolge der Elemente keine Rolle. Azure Maps unterstützt die folgenden Indizes:
 
 * `Addr` - **Adressbereiche**: Adresspunkte, die über Anfang und Ende der Straße interpoliert werden. Diese Punkte werden als Adressbereiche dargestellt.
-* `Geo` - **Geografische Regionen:** Administrative Aufteilung von Land. Eine Geografie kann z. B. ein Land, ein Bundesstaat oder eine Stadt sein.
+* `Geo` - **Geografische Regionen:** Administrative Aufteilung von Land. Eine Geografie kann z. B. ein Land/eine Region, ein Bundesstaat oder eine Stadt sein.
 * `PAD` - **Punktadressen**: Adressen, die einen Straßennamen und eine Nummer enthalten. Punktadressen können in einem Index gefunden werden. Ein Beispiel ist *Soquel Dr 2501*. Eine Punktadresse bietet den höchsten Grad an Genauigkeit, der für Adressen verfügbar ist.  
 * `POI` - **Points of Interest**: Punkte auf einer Karte, die als beachtenswert angesehen werden oder die interessant sein könnten. Die [Suchadressen-API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) gibt keine Points of Interest (POIs) zurück.  
 * `Str` - **Straßen:** Straßen auf der Karte.
@@ -85,7 +85,7 @@ Es wird empfohlen, die Azure Maps-API für die [Fuzzysuche](https://docs.microso
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Inverser Geocode und Filter für einen Geografieentitätstyp
 
-Wenn Sie eine inverse Geocodesuche mit der [API für die umgekehrte Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) durchführen, kann der Dienst Polygone für Verwaltungsbereiche zurückgeben. Nehmen Sie den Parameter `entityType` in Ihre Anforderungen auf, um die Suche auf bestimmte Geografieentitätstypen einzugrenzen. 
+Wenn Sie eine inverse Geocodesuche mit der [API für die umgekehrte Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) durchführen, kann der Dienst Polygone für Verwaltungsbereiche zurückgeben. Sie möchten beispielsweise das Flächenpolygon für eine Stadt abrufen. Nehmen Sie den Parameter `entityType` in Ihre Anforderungen auf, um die Suche auf bestimmte Geografieentitätstypen einzugrenzen. 
 
 Die resultierende Antwort enthält die Geografie-ID und den passenden Entitätstyp. Wenn Sie mehr als eine Entität angeben, gibt der Endpunkt die *kleinste verfügbare Entität* zurück. Sie können die zurückgegebene Geometrie-ID verwenden, um die Geometrie der Geografie über den [Dienst „Polygonsuche“](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) abzurufen.
 
@@ -480,7 +480,7 @@ url.QueryEscape(query)
 
 Bei einer POI-Suche können Sie POI-Ergebnisse nach Namen anfordern. Sie können z. B. nach dem Namen eines Unternehmens suchen. 
 
-Es wird dringend empfohlen, den Parameter `countrySet` zu verwenden, um die Länder anzugeben, die von Ihrer Anwendung abgedeckt werden sollen. Standardmäßig wird weltweit gesucht. Diese umfassende Suche könnte überflüssige Ergebnisse liefern und sehr lange dauern.
+Es wird dringend empfohlen, den Parameter `countrySet` zu verwenden, um die Länder/Regionen anzugeben, die von Ihrer Anwendung abgedeckt werden sollen. Standardmäßig wird weltweit gesucht. Diese umfassende Suche könnte überflüssige Ergebnisse liefern und sehr lange dauern.
 
 ### <a name="brand-search"></a>Markensuche
 
@@ -769,7 +769,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 * **Adressbereich**: Der Bereich der Adresspunkte, die über Anfang und Ende der Straße interpoliert werden.  
 
-* **geography:** Bereiche auf einer Karte, die die Verwaltungseinheiten eines Landes darstellen, z. B. Land, Bundesland, Stadt. 
+* **geography:** Bereiche auf einer Karte, die die Verwaltungseinheiten eines Landes darstellen, z. B. Land/Region, Bundesland, Stadt. 
 
 * **POI**: Punkte auf einer Karte, die beachtenswert sind und interessant sein können.
 

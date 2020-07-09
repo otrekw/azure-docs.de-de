@@ -8,18 +8,18 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 3c58086a163bf558ffdc71e51e55d296e8d4d25e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728587"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory
 
@@ -48,6 +48,10 @@ Sie können bis zu 900 Namen für verwaltete Domänen hinzufügen. Wenn Sie all 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Hinzufügen von Unterdomänen einer benutzerdefinierten Domäne
 
 Wenn Sie Ihrem Verzeichnis einen Domänennamen der dritten Ebene wie beispielsweise „europe.contoso.com“ hinzufügen möchten, sollten Sie zuerst die Domäne zweiter Ebene, z. B. „contoso.com“, hinzufügen und überprüfen. Die Unterdomäne wird automatisch von Azure AD überprüft. Um festzustellen, ob die von Ihnen hinzugefügte Unterdomäne überprüft wurde, aktualisieren Sie die Domänenliste im Browser.
+
+Hinweis
+
+Wenn Sie einem Azure AD-Mandanten bereits eine Domäne contoso.com hinzugefügt haben, können Sie auch einem zweiten Azure AD-Mandanten die Unterdomäne europe.contoso.com hinzufügen. Wenn Sie die Unterdomäne hinzufügen, werden Sie aufgefordert, einen TXT-Eintrag im DNS-Hostinganbieter hinzuzufügen.
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Vorgehensweise beim Ändern der DNS-Registrierungsstelle für Ihren benutzerdefinierten Domänennamen
 

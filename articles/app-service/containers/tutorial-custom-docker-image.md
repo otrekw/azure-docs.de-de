@@ -7,13 +7,13 @@ ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 2609ff908b3c2f872cb63d3dcd7dcd481d316484
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: 88ca971986119b3612c79d0bee381d3a0fc9a977
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085857"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906835"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Tutorial: Erstellen eines benutzerdefinierten Images und Ausführen in App Service über eine private Registrierung
 
@@ -180,7 +180,7 @@ Sie sollten die folgende Ausgabe erhalten.
 
 ### <a name="create-web-app"></a>Web-App erstellen
 
-Erstellen Sie in der Cloud Shell im App Service-Plan `myAppServicePlan` mit dem Befehl [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) eine [Web-App](app-service-linux-intro.md). Ersetzen Sie _\<app-name>_ durch einen eindeutigen App-Namen und _\<azure-container-registry-name>_ durch Ihren Registrierungsnamen.
+Erstellen Sie in der Cloud Shell im App Service-Plan `myAppServicePlan` mit dem Befehl [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) eine [Web-App](app-service-linux-intro.md). Ersetzen Sie _\<app-name>_ durch einen eindeutigen App-Namen, und _\<azure-container-registry-name>_ durch Ihren Registrierungsnamen.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -236,23 +236,33 @@ Stellen Sie sicher, dass die Web-App funktioniert, indem Sie zu ihr navigieren (
 
 ## <a name="change-web-app-and-redeploy"></a>Ändern der Web-App und erneutes Bereitstellen
 
-Öffnen Sie „app/templates/app/index.html“ in Ihrem lokalen Git-Repository. Suchen Sie das erste HTML-Element und passen Sie es an.
+Öffnen Sie *app/templates/app/index.html* in Ihrem lokalen Git-Repository. Ändern Sie das erste HTML-Element entsprechend dem folgenden Code.
 
-```python
+```html
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
-      </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
     </div>
-  </nav>
+  </div>
+</nav>
 ```
 
-Nachdem Sie die Python-Datei geändert und gespeichert haben, müssen Sie sie neu erstellen und das neue Docker-Image per Pushübertragung senden. Starten Sie dann die Web-App neu, damit die Änderungen wirksam werden. Verwenden Sie die gleichen Befehle, die Sie zuvor in diesem Tutorial verwendet haben. Weitere Informationen finden Sie unter [Erstellen des Images aus der Docker-Datei](#build-the-image-from-the-docker-file) und [Übertragen des Images zu Azure Container Registry mithilfe von Push](#push-image-to-azure-container-registry). Testen Sie die Web-App, indem Sie die Anweisungen in [Testen der Web-App](#test-the-web-app) befolgen.
+Nachdem Sie Ihre Änderungen gespeichert haben, verwenden Sie dieselben Befehle, die Sie zuvor in diesem Tutorial verwendet haben, um das neue Docker-Image neu zu erstellen und zu pushen. Weitere Informationen finden Sie unter [Erstellen des Images aus der Docker-Datei](#build-the-image-from-the-docker-file) und [Übertragen des Images zu Azure Container Registry mithilfe von Push](#push-image-to-azure-container-registry).
+
+Nachdem Sie das neue Image gepusht haben, starten Sie die Web-App neu, damit die Änderungen wirksam werden, indem Sie den folgenden Befehl verwenden:
+
+```azurecli-interactive
+az webapp restart --name <app_name> --resource-group myResourceGroup
+```
+
+Ersetzen Sie `<app_name>` durch den zuvor verwendeten spezifischen Namen.
+
+Nachdem die App neugestartet wurde, testen Sie sie, indem Sie die Anweisungen in [Testen der Web-App](#test-the-web-app) befolgen.
 
 ## <a name="access-diagnostic-logs"></a>Zugreifen auf Diagnoseprotokolle
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="enable-ssh-connections"></a>Aktivieren von SSH-Verbindungen
 

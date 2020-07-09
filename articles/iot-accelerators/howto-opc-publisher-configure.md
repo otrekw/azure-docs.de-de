@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 0ebbf0d41c05f71c571d9665903ba4ba44f71bd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2128fee29e64c58a8066a681776fb509b3e31b6f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198802"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85445694"
 ---
 # <a name="configure-opc-publisher"></a>Konfigurieren von OPC Publisher
 
@@ -58,7 +58,7 @@ Im folgenden Beispiel sehen Sie das Format der Konfigurationsdatei:
 
 Zum Veröffentlichen von OPC UA-Ereignissen wird die gleiche Konfigurationsdatei wie für Datenänderungen verwendet.
 
-Das folgende Beispiel zeigt, wie Sie die Veröffentlichung für Ereignisse konfigurieren, die über den [SimpleEvents-Server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/SimpleEvents/Server) generiert werden. Den SimpleEvents-Server finden Sie im [OPC Foundation-Repository](https://github.com/OPCFoundation/UA-.NETStandard).
+Das folgende Beispiel zeigt, wie Sie die Veröffentlichung für Ereignisse konfigurieren, die über den [SimpleEvents-Server](https://github.com/OPCFoundation/UA-.NETStandard-Samples/tree/master/Workshop/SimpleEvents/Server) generiert werden. Den SimpleEvents-Server finden Sie im [OPC Foundation-Repository](https://github.com/OPCFoundation/UA-.NETStandard-Samples).
 
 ```json
 [

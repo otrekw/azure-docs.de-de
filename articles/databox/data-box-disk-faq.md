@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 7ba6ea8606fc354527ff4114bc45a0904941ba93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a0b3a91d9af119191717aa63a2dedf0797159fd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918936"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745794"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Häufig gestellte Fragen
 
@@ -56,8 +56,8 @@ A.  Unter [Regionale Verfügbarkeit](data-box-disk-overview.md#region-availabili
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. In welchen Regionen kann ich Daten über Data Box-Datenträger speichern?
 A. Data Box Disk wird für alle Regionen in den USA, Kanada, Australien, Westeuropa und Nordeuropa sowie Korea und Japan unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt.
 
-### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>Q. Überquert Data Box Disk beim Versand Ländergrenzen?
-A. Data Box Disk-Geräte werden aus dem Bestimmungsland versendet, sie überqueren keine internationalen Grenzen. Die einzige Ausnahme betrifft Bestellungen innerhalb der Europäischen Union (EU), wo Datenträger in und aus beliebige(n) EU-Länder(n) gesendet werden können.
+### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>Q. Überquert mein Data Box-Datenträger beim Versand Länder-/Regionsgrenzen?
+A. Data Box-Datenträger werden aus demselben Land/derselben Region wie ihr Ziel versendet und überqueren keine internationalen Grenzen. Die einzige Ausnahme betrifft Bestellungen innerhalb der Europäischen Union (EU). Dort können Datenträger in und aus beliebige(n) EU-Länder(n) bzw. EU-Regionen gesendet werden.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. An wen sollte ich mich wenden, falls Probleme mit Data Box-Datenträgern auftreten?
 A. Falls Probleme mit Data Box-Datenträgern auftreten, wenden Sie sich an den [Microsoft-Support](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
@@ -138,7 +138,7 @@ A.  Sie können den Kopiervorgang wie folgt beschleunigen:
 
 - Erstellen Sie im schnellen Speicher eine lokale VHDx oder eine leere VHD auf der HDD/SSD (langsamer).
 - Stellen Sie die Daten auf einer VM bereit.
-- Kopieren Sie die Dateien auf den Datenträger der VM.
+- Kopieren Sie Dateien auf den Datenträger der VM.
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>Q. Kann ich mehrere Speicherkonten mit Data Box-Datenträgern verwenden?
 A.  Nein. Für Data Box-Datenträger wird derzeit nur ein Speicherkonto (allgemein oder klassisch) unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Blobs unterstützt. Derzeit werden nur die Speicherkonten in den USA, Westeuropa und Nordeuropa unterstützt, die Teil der öffentlichen Azure-Cloud sind.
@@ -159,7 +159,7 @@ A. Azure Files wird für Data Box Disk unterstützt, funktioniert jedoch nicht g
 
 ## <a name="verify-and-upload"></a>Überprüfen und Hochladen
 
-### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-disks-back"></a>Q. Wie schnell kann ich in Azure auf meine Daten zugreifen, nachdem ich die Datenträger gesendet habe? 
+### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-disks-back"></a>Q. Wie schnell kann ich in Azure auf meine Daten zugreifen, nachdem ich die Datenträger zurückgesendet habe? 
 A.  Nachdem der Auftragsstatus für das Kopieren der Daten als „Abgeschlossen“ angezeigt wird, sollten Sie sofort auf Ihre Daten zugreifen können.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>Q. Wo befinden sich meine Daten nach dem Upload in Azure?

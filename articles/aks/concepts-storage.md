@@ -4,12 +4,12 @@ description: Informationen zu Speicher in Azure Kubernetes Service (AKS) einschl
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4bb19d7da971a82aef9c0e1fc092cc648ac49c4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 643d25e99bef191bfce77f092a9f2218c891a442
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595993"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171377"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Speicheroptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -55,10 +55,12 @@ Ein PersistentVolume kann *statisch* von einem Clusteradministrator oder *dynami
 
 Sie können zum Definieren verschiedener Speicherstufen, z.B. „Premium“ und „Standard“, eine *StorageClass* erstellen. Die StorageClass definiert auch die *reclaimPolicy*. Diese reclaimPolicy steuert das Verhalten der zugrunde liegenden Azure-Speicherressource, wenn die Pods gelöscht werden und das persistente Volume vielleicht nicht mehr benötigt wird. Die zugrunde liegende Speicherressource kann gelöscht oder für die Verwendung mit einem zukünftigen Pod beibehalten werden.
 
-In AKS werden anfänglich zwei StorageClasses erstellt:
+In AKS werden anfänglich 4 StorageClasses erstellt:
 
-- *default*: Verwendet Azure-Standardspeicher zum Erstellen eines verwalteten Datenträgers. Die Freigaberichtlinie gibt an, dass der zugrunde liegende Azure Disk-Datenträger gelöscht wird, wenn das persistente Volume gelöscht wird, das ihn verwendet hat.
+- *default*: Verwendet Azure-StandardSSD-Speicher zum Erstellen eines verwalteten Datenträgers. Die Freigaberichtlinie gibt an, dass der zugrunde liegende Azure Disk-Datenträger gelöscht wird, wenn das persistente Volume gelöscht wird, das ihn verwendet hat.
 - *managed-premium*: Verwendet Azure Storage Premium zum Erstellen verwalteter Datenträger. Die Freigaberichtlinie gibt wieder an, dass der zugrunde liegende Azure Disk-Datenträger gelöscht wird, wenn das persistente Volume gelöscht wird, das ihn verwendet hat.
+- *azurefile*: Verwendet Azure Storage Standard zum Erstellen einer Azure-Dateifreigabe. Die Freigaberichtlinie gibt an, dass die zugrunde liegende Azure-Dateifreigabe gelöscht wird, wenn das persistente Volume gelöscht wird, das sie verwendet hat.
+- *azurefile-premium*: Verwendet Azure Storage Premium zum Erstellen einer Azure-Dateifreigabe. Die Freigaberichtlinie gibt an, dass die zugrunde liegende Azure-Dateifreigabe gelöscht wird, wenn das persistente Volume gelöscht wird, das sie verwendet hat.
 
 Wenn keine StorageClass für ein persistentes Volume angegeben wird, wird die standardmäßige StorageClass verwendet. Achten Sie beim Anfordern von persistenten Volumes darauf, dass sie den Speicher verwenden, den Sie benötigen. Sie können eine StorageClass für zusätzliche Anforderungen mit `kubectl` erstellen. Im folgenden Beispiel werden Managed Disks Premium verwendet und festgelegt, dass der zugrunde liegende Azure Disk-Datenträger *beibehalten* werden soll, wenn der Pod gelöscht wird:
 

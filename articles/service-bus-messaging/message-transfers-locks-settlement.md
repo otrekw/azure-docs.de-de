@@ -1,24 +1,14 @@
 ---
 title: Nachrichtenübertragungen, Sperren und Abgleich in Azure Service Bus
 description: Dieser Artikel bietet eine Übersicht über Nachrichtenübertragungen, Sperren und Abgleichungsvorgänge in Azure Service Bus.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
-ms.author: aschhab
-ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 22be139fccdeecee846c204a8035804fb897ae5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230090"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341146"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Nachrichtenübertragungen, Sperren und Abgleich
 

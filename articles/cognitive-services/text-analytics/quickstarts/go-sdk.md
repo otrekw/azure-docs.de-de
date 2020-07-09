@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: 0b4495616c750b2b3e8431e011d71ae8671af1ef
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f9b5fb1837fdafe818fdb27221f8575d93ec304d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77912638"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701631"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Schnellstart: Verwenden der Textanalyse-Clientbibliothek für Go
 
-[Referenzdokumentation](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [Paket (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+[Referenzdokumentation](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-go/blob/090dc0ee4d8d2d60e2a9525774d967a4111a2b0c/services/cognitiveservices/v2.1/textanalytics/client.go) | [Paket (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 > [!NOTE]
 > Diese Schnellstartanleitung gilt nur für die Version 2.1 der Textanalyse. Für Go steht derzeit keine V3-Clientbibliothek zur Verfügung.
@@ -89,7 +89,7 @@ Das Antwortobjekt ist eine Liste mit den Analyseinformationen für jedes Dokumen
 
 ## <a name="code-examples"></a>Codebeispiele
 
-Mit den Codeausschnitten wird veranschaulicht, wie die folgenden Vorgänge mit der Textanalyse-Clientbibliothek für Python durchgeführt werden:
+Mit den Codeausschnitten wird veranschaulicht, wie die folgenden Vorgänge mit der Textanalyse-Clientbibliothek für Go durchgeführt werden:
 
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Standpunktanalyse](#sentiment-analysis)

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 71176c87ee805eb4a634dd6c2f344922fc13c4f3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80884867"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132717"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Netzwerkkonnektivitätsprobleme
 
@@ -51,7 +51,7 @@ Versuchen Sie, über den virtuellen Computer auf den DNS-Server zuzugreifen. Wen
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Problem 2: Fehler bei der Site Recovery-Konfiguration (151196)
 
 > [!NOTE]
-> Falls die VMs hinter einem internen Lastenausgleichsmodul vom Typ **Standard** angeordnet sind, besteht standardmäßig kein Zugriff auf die IP-Adressen von Office 365, z. B. `login.microsoftonline.com`. Ändern Sie dies entweder in den Typ **Basic** für das interne Lastenausgleichsmodul, oder ermöglichen Sie den Zugriff in ausgehender Richtung, wie dies im Artikel [Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe der Azure CLI](/azure/load-balancer/configure-load-balancer-outbound-cli) beschrieben ist.
+> Falls die VMs hinter einem internen Lastenausgleichsmodul vom Typ **Standard** angeordnet sind, besteht standardmäßig kein Zugriff auf die IP-Adressen von Office 365, z. B. `login.microsoftonline.com`. Ändern Sie dies entweder in den Typ **Basic** für das interne Lastenausgleichsmodul, oder ermöglichen Sie den Zugriff in ausgehender Richtung, wie dies im Artikel [Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe der Azure CLI](../load-balancer/configure-load-balancer-outbound-cli.md) beschrieben ist.
 
 #### <a name="possible-cause"></a>Mögliche Ursache
 
@@ -60,7 +60,7 @@ Eine Verbindung mit IP4-Endpunkten für die Authentifizierung und Identität von
 #### <a name="resolution"></a>Lösung
 
 - Azure Site Recovery benötigt für die Authentifizierung Zugriff auf die IP-Adressbereiche von Office 365.
-- Wenn Sie zum Steuern der ausgehenden Netzwerkkonnektivität auf dem virtuellen Computer Azure-Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) oder einen Firewallproxy verwenden, müssen Sie die Kommunikation mit den IP-Adressbereichen von Office 365 zulassen. Erstellen Sie basierend auf der NSG-Regel ein [Azure Active Directory-Diensttag (Azure AD)](/azure/virtual-network/security-overview#service-tags), das den Zugriff auf alle IP-Adressen für Azure AD zulässt.
+- Wenn Sie zum Steuern der ausgehenden Netzwerkkonnektivität auf dem virtuellen Computer Azure-Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) oder einen Firewallproxy verwenden, müssen Sie die Kommunikation mit den IP-Adressbereichen von Office 365 zulassen. Erstellen Sie basierend auf der NSG-Regel ein [Azure Active Directory-Diensttag (Azure AD)](../virtual-network/security-overview.md#service-tags), das den Zugriff auf alle IP-Adressen für Azure AD zulässt.
 - Wenn Azure AD später neue Adressen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.
 
 ### <a name="example-nsg-configuration"></a>Beispielkonfiguration für eine Netzwerksicherheitsgruppe
@@ -143,7 +143,7 @@ Die benutzerdefinierten Proxyeinstellungen sind ungültig, und der Agent des Azu
 
 ### <a name="fix-the-problem"></a>Beheben des Problems
 
-Führen Sie die Schritte im [Dokument mit der Netzwerkanleitung](site-recovery-azure-to-azure-networking-guidance.md) aus, um die [erforderlichen URLs](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) bzw. die [erforderlichen IP-Bereiche](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) zuzulassen.
+Führen Sie die Schritte im [Dokument mit der Netzwerkanleitung](./azure-to-azure-about-networking.md) aus, um die [erforderlichen URLs](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) bzw. die [erforderlichen IP-Bereiche](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) zuzulassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

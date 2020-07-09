@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Variablen in Azure Automation
-description: Variablenobjekte sind Werte, die allen Runbooks und DSC-Konfigurationen in Azure Automation zur Verfügung stehen.  Dieser Artikel stellt eine ausführliche Beschreibung von Variablen bereit und zeigt, wie diese in Textrunbooks und grafischen Runbooks eingesetzt werden.
+description: In diesem Artikel erfahren Sie, wie Sie Variablen in Runbooks und DSC-Konfigurationen verwenden.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bf7840daad02f679cad4c3b798d2add02c863a15
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 28f69d3ef8301e00b470ce09353be6ae3259bbe3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82651967"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744958"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Verwalten von Variablen in Azure Automation
 
@@ -34,9 +34,6 @@ Azure Automation speichert jede verschlüsselte Variable sicher. Beim Erstellen 
 
 >[!NOTE]
 >Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Azure Automation speichert den Schlüssel im vom System verwalteten Schlüsseltresor. Vor dem Speichern einer sicheren Ressource lädt Azure Automation den Schlüssel aus dem Schlüsseltresor und verwendet ihn dann zum Verschlüsseln der Ressource. 
-
->[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) auf die neueste Version aktualisieren.
 
 ## <a name="variable-types"></a>Variablentypen
 
@@ -191,7 +188,7 @@ In einem grafischen Runbook können Sie Aktivitäten für die internen Cmdlets `
 
 ![Hinzufügen einer Variablen zum Zeichenbereich](../media/variables/runbook-variable-add-canvas.png)
 
-In der folgenden Abbildung werden Beispielaktivitäten zum Aktualisieren einer Variablen mit einem einfachen Wert in einem grafischen Runbook veranschaulicht. In diesem Beispiel ruft die Aktivität für `Get-AzVM` eine einzelne Azure-VM ab und speichert den Computernamen in einer vorhandenen Automation-Zeichenfolgenvariablen. Es spielt keine Rolle, ob es sich bei der [Verknüpfung um eine Pipeline oder eine Sequenz handelt](../automation-graphical-authoring-intro.md#links-and-workflow), da der Code in der Ausgabe nur ein einziges Objekt erwartet.
+In der folgenden Abbildung werden Beispielaktivitäten zum Aktualisieren einer Variablen mit einem einfachen Wert in einem grafischen Runbook veranschaulicht. In diesem Beispiel ruft die Aktivität für `Get-AzVM` eine einzelne Azure-VM ab und speichert den Computernamen in einer vorhandenen Automation-Zeichenfolgenvariablen. Es spielt keine Rolle, ob es sich bei der [Verknüpfung um eine Pipeline oder eine Sequenz handelt](../automation-graphical-authoring-intro.md#use-links-for-workflow), da der Code in der Ausgabe nur ein einziges Objekt erwartet.
 
 ![Festlegen einer einfachen Variablen](../media/variables/runbook-set-simple-variable.png)
 
@@ -199,4 +196,4 @@ In der folgenden Abbildung werden Beispielaktivitäten zum Aktualisieren einer V
 
 * Weitere Informationen zu den Cmdlets, die für den Zugriff auf Variablen verwendet werden, finden Sie unter [Verwalten von Modulen in Azure Automation](modules.md).
 * Allgemeine Informationen zu Runbooks finden Sie unter [Ausführen von Runbooks in Azure Automation](../automation-runbook-execution.md).
-* Ausführliche Informationen zu DSC-Konfigurationen finden Sie in der [Übersicht über State Configuration](../automation-dsc-overview.md).
+* Ausführliche Informationen zu DSC-Konfigurationen finden Sie in der [Übersicht über die Zustandskonfiguration](../automation-dsc-overview.md).

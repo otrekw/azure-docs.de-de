@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: a1d764ce1ce332290c1bd68c5beb5f2731ae5e41
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 13a7ca317630a5a1b0606fa0d2e2022f065fbd4d
+  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80159301"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85317171"
 landingContent:
 - title: Informationen zu Security Center
   linkLists:
@@ -30,18 +30,16 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
-    - text: Schützen Ihrer Container
-      url: container-security.md
-    - text: Integrierte Sicherheitsrisikobewertung für virtuelle Computer
-      url: built-in-vulnerability-assessment.md
-    - text: Überprüfen der Schemas für Sicherheitswarnungen
-      url: alerts-schemas.md
-    - text: Automatisieren von Reaktionen auf Warnungen und Empfehlungen
-      url: workflow-automation.md
-    - text: Exportieren von Sicherheitswarnungen und -empfehlungen
-      url: continuous-export.md
-    - text: Einrichten eines Bedrohungsschutzes für Azure Key Vault
-      url: advanced-threat-protection-key-vault.md
+    - text: Versionshinweise für Security Center
+      url: release-notes.md
+    - text: Advanced Data Security für SQL-Computer
+      url: security-center-iaas-advanced-data.md
+    - text: Warnungsunterdrückungsregeln
+      url: alerts-suppression-rules.md
+    - text: Vollständige Beschreibungen der neuen Sicherheitskontrollelemente
+      url: secure-score-security-controls.md#security-controls-and-their-recommendations
+    - text: Neue Sicherheitsbewertungs-API
+      url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
 - title: Erste Schritte
   linkLists:
   - linkListType: get-started
@@ -49,7 +47,7 @@ landingContent:
     - text: Konfigurieren der Sicherheitsrichtlinien
       url: tutorial-security-policy.md
     - text: Auswerten der Erkenntnisse über Ihre Sicherheitssituation
-      url: security-center-secure-score.md
+      url: secure-score-security-controls.md
     - text: Ausführen eines Upgrades auf erweiterte Sicherheit
       url: security-center-onboarding.md
 - title: Verbessern Ihrer Sicherheitsbewertung
@@ -64,6 +62,8 @@ landingContent:
       url: tutorial-security-policy.md
     - text: Verwenden von Empfehlungen zur Verbesserung der Sicherheit
       url: security-center-using-recommendations.md
+    - text: Nachverfolgen mit der Sicherheitsbewertungs-API
+      url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
 - title: Minimieren von Risiken
   linkLists:
   - linkListType: how-to-guide

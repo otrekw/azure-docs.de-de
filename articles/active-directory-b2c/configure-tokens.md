@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/16/2019
+ms.topic: how-to
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 160898f8535d3dad4811af016ebca779b7ef43a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49a5ff61e5f7a17005561e0729a9b0fcb0f954d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189616"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389563"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurieren von Token in Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie die [Lebensdauer und Kompatibilität ein
 
 [Erstellen Sie einen Benutzerflow](tutorial-create-user-flows.md), damit sich Benutzer bei Ihrer Anwendung registrieren und anmelden können.
 
-## <a name="configure-token-lifetime"></a>Konfigurieren der Tokenlebensdauer
+## <a name="configure-jwt-token-lifetime"></a>Konfigurieren der Lebensdauer von JWT-Token
 
 Sie können die Lebensdauer des Tokens für den beliebigen Benutzerflow konfigurieren.
 
@@ -41,7 +41,7 @@ Sie können die Lebensdauer des Tokens für den beliebigen Benutzerflow konfigur
 
 8. Klicken Sie auf **Speichern**.
 
-## <a name="configure-token-compatibility"></a>Konfigurieren der Tokenkompatibilität
+## <a name="configure-jwt-token-compatibility"></a>Konfigurieren der Kompatibilität von JWT-Token
 
 1. Wählen Sie **Benutzerflows (Richtlinien)** aus.
 2. Öffnen Sie den Benutzerflow, den Sie zuvor erstellt haben.
@@ -54,7 +54,7 @@ Sie können die Lebensdauer des Tokens für den beliebigen Benutzerflow konfigur
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum [Verwenden von Zugriffstoken](access-tokens.md).
+Weitere Informationen zum [Anfordern von Zugriffstoken](access-tokens.md).
 
 
 

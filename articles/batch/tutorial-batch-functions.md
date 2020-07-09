@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
-ms.openlocfilehash: 01c3ab167239affa4d7ae94f5649d60072c3c270
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88937e5bc9870075bfe273c21b11f886d32bf99d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117164"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963851"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Tutorial: Auslösen eines Batch-Auftrags mithilfe von Azure Functions
 
@@ -55,7 +55,7 @@ In diesem Abschnitt erstellen Sie mit Batch Explorer den Batch-Pool und den Batc
 Hier erstellen Sie Blobcontainer, in denen die Eingabe- und Ausgabedateien für den OCR-Batch-Auftrag gespeichert werden.
 
 1. Melden Sie sich mit Ihren Azure-Anmeldeinformationen bei Storage-Explorer an.
-1. Erstellen Sie unter Verwendung des mit Ihrem Batch-Konto verknüpften Speicherkontos entsprechend den unter [Erstellen eines Blobcontainers](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#create-a-blob-container) beschriebenen Schritten zwei Blobcontainer (einen für Eingabedateien und einen für Ausgabedateien).
+1. Erstellen Sie unter Verwendung des mit Ihrem Batch-Konto verknüpften Speicherkontos entsprechend den unter [Erstellen eines Blobcontainers](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container) beschriebenen Schritten zwei Blobcontainer (einen für Eingabedateien und einen für Ausgabedateien).
 
 In diesem Beispiel hat der Eingabecontainer den Namen `input` und ist der Speicherort, in den alle Dokumente ohne OCR zunächst zur Verarbeitung hochgeladen werden. In den Ausgabecontainer mit dem Namen `output` schreibt der Batch-Auftrag die mit OCR verarbeiteten Dokumente.  
     * In diesem Beispiel hat der Eingabecontainer den Namen `input`, und der Ausgabecontainer heißt `output`.  
@@ -68,7 +68,7 @@ Erstellen Sie in Storage-Explorer eine Shared Access Signature (SAS) für den Au
 
 In diesem Abschnitt erstellen Sie die Azure-Funktion, die den OCR-Batch-Auftrag auslöst, wenn eine Datei in den Eingabecontainer hochgeladen wird.
 
-1. Führen Sie zum Erstellen der Funktion die Schritte unter [Erstellen einer Funktion, die durch Azure Blob Storage ausgelöst wird](https://docs.microsoft.com/azure/azure-functions/functions-create-storage-blob-triggered-function) aus.
+1. Führen Sie zum Erstellen der Funktion die Schritte unter [Erstellen einer Funktion, die durch Azure Blob Storage ausgelöst wird](../azure-functions/functions-create-storage-blob-triggered-function.md) aus.
     1. Wenn Sie zur Eingabe eines Speicherkontos aufgefordert werden, geben Sie das gleiche Speicherkonto an, das Sie mit Ihrem Batch-Konto verknüpft haben.
     1. Wählen Sie „.NET“ für **Runtimestapel** aus. Wir schreiben die Funktion in C#, um das Batch .NET SDK zu nutzen.
 1. Verwenden Sie nach dem Erstellen der per Blob ausgelösten Funktion die Dateien [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) und [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) aus GitHub in der Funktion.
@@ -111,4 +111,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 * Weitere Beispiele zur Verwendung der .NET-API zum Planen und Verarbeiten von Batch-Workloads finden Sie in den [Beispielen auf GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp). 
 
-* Weitere Azure Functions-Auslöser, die Sie zum Ausführen von Batch-Workloads verwenden können, finden Sie in der [Dokumentation zu Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings).
+* Weitere Azure Functions-Auslöser, die Sie zum Ausführen von Batch-Workloads verwenden können, finden Sie in der [Dokumentation zu Azure Functions](../azure-functions/functions-triggers-bindings.md).

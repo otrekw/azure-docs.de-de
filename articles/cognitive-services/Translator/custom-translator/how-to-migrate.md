@@ -6,25 +6,25 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5705e5f29bc851d615f91d902fd505a69b5cfd12
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: face605d756d2107c04b3df0c072602ac91d147d
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586990"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992894"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrieren des Hub-Arbeitsbereichs und der Projekte zu Custom Translator
 
 Sie können Ihren [Microsoft Translator-Hub](https://hub.microsofttranslator.com/)-Arbeitsbereich und Ihre Projekte ganz einfach zu Benutzerdefinierter Translator migrieren. Die Migration wird vom Microsoft-Hub aus initiiert, indem Sie einen Arbeitsbereich oder ein Projekt und anschließend einen Arbeitsbereich in Benutzerdefinierter Translator auswählen. Anschließend wählen Sie noch die Trainings aus, die Sie übertragen möchten. Nach dem Start der Migration werden die Einstellungen für die ausgewählten Trainings mit allen relevanten Dokumenten übertragen. Bereitgestellte Modelle werden trainiert und können nach Fertigstellung automatisch bereitgestellt werden.
 
 Während der Migration werden die folgenden Aktionen ausgeführt:
-* Die Namen aller Dokumente und Projektdefinitionen werden durch Voranstellen des Präfix „hub_“ vor dem Namen übertragen. Automatisch generierte Test- und Optimierungsdaten werden in „hub_systemtune_\<modelid>“ bzw. „hub_systemtest_\<modelid>“ umbenannt.
+* Die Namen aller Dokumente und Projektdefinitionen werden mit dem hinzugefügten Präfix „hub_“ übertragen. Automatisch generierte Test- und Optimierungsdaten werden in „hub_systemtune_\<modelid>“ bzw. „hub_systemtest_\<modelid>“ umbenannt.
 * Alle Trainings, die zum Zeitpunkt der Migration bereitgestellt waren, werden automatisch mit den Dokumenten des Hubtrainings trainiert. Dieses Training wird Ihrem Abonnement nicht in Rechnung gestellt. Wenn für die Migration die automatische Bereitstellung ausgewählt wurde, wird das trainierte Modell nach Abschluss bereitgestellt. Es gelten die regulären Hostinggebühren.
 * Auf alle migrierten Trainings, die nicht den Status „bereitgestellt“ hatten, wird der migrierte Entwurfsstatus angewandt. In diesem Zustand haben Sie die Möglichkeit, ein Modell mit der migrierten Definition zu trainieren – dafür fallen jedoch die regulären Trainingsgebühren an.
-* Sie können die BLEU-Bewertung aus dem Hubtraining jederzeit auf der Seite „TrainingDetails“ des Modells unter der Überschrift „Bleu score in MT Hub“ (BLEU-Punktzahl in MT-Hub) einsehen.
+* Sie können die BLEU-Bewertung aus dem Hubtraining jederzeit auf der Seite „TrainingDetails“ des Modells unter der Überschrift „BLEU-Punktzahl in MT-Hub“ einsehen.
 
 > [!Note] 
 > Damit ein Training erfolgreich ausgeführt werden kann, benötigt Custom Translator mindestens 10.000 extrahierte eindeutige Sätze. Custom Translator kann kein Training mit einem geringeren Wert als dem [empfohlenen Minimum](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences) ausführen.
@@ -92,7 +92,7 @@ So migrieren Sie einen Arbeitsbereich:
 
 ## <a name="migration-history"></a>Migrationsverlauf
 
-Wenn Sie die Migration von Arbeitsbereichen/Projekten vom Hub aus angefordert haben, finden Sie Ihren Migrationsverlauf auf der Seite „Einstellungen“ von Custom Translator.
+Wenn Sie die Migration von Arbeitsbereichen/Projekten vom Hub aus angefordert haben, finden Sie Ihren Migrationsverlauf auf der Seite „Einstellungen“ von „Benutzerdefinierter Translator“.
 
 Um den Migrationsverlauf anzuzeigen, gehen Sie folgendermaßen vor:
 
@@ -132,11 +132,11 @@ In der folgenden Tabelle werden die Features von Microsoft Translator Hub und Cu
 
 |   | Hub | Benutzerdefinierter Translator |
 |:-----|:----:|:----:|
-|Status des Anpassungsfeatures   | Allgemeine Verfügbarkeit  | Allgemeine Verfügbarkeit |
-| Version der Text-API  | V2    | V3  |
-| SMT-Anpassung | Ja   | Nein |
-| NMT-Anpassung | Nein    | Ja |
-| Neue einheitliche Anpassung der Sprachdienste | Nein    | Ja |
+|Status des Anpassungsfeatures    | Allgemeine Verfügbarkeit    | Allgemeine Verfügbarkeit |
+| Version der Text-API    | V2     | V3  |
+| SMT-Anpassung    | Ja    | Nein |
+| NMT-Anpassung    | Nein    | Ja |
+| Neue einheitliche Anpassung der Sprachdienste    | Nein    | Ja |
 | Keine Ablaufverfolgung | Ja | Ja |
 
 ## <a name="new-languages"></a>Neue Sprachen

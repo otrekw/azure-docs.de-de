@@ -22,6 +22,9 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: Befehlszeile
           href: functions-create-first-azure-function-azure-cli.md
+        - name: ARM-Vorlage
+          displayName: Resource Manager
+          href: functions-create-first-function-resource-manager.md
     - name: Herstellen einer Verbindung mit dem Speicher
       items:
         - name: Visual Studio Code
@@ -62,7 +65,7 @@
       href: 'https://www.serverlesslibrary.net/'
     - name: Azure-Beispiele
       items:
-        - name: 'C#'
+        - name: C#
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
@@ -109,11 +112,11 @@
       items:
         - name: Unterstützte Sprachen
           href: supported-languages.md
-        - name: 'C# (Klassenbibliothek)'
+        - name: C# (Klassenbibliothek)
           href: functions-dotnet-class-library.md
-        - name: 'C#-Skript (.csx)'
+        - name: C#-Skript (.csx)
           href: functions-reference-csharp.md
-        - name: 'F#'
+        - name: F#
           href: functions-reference-fsharp.md
         - name: JavaScript
           href: functions-reference-node.md
@@ -124,7 +127,7 @@
         - name: Python
           href: functions-reference-python.md
         - name: TypeScript
-          href: 'functions-reference-node.md#typescript'
+          href: functions-reference-node.md#typescript
     - name: Sicherheit
       items:
         - name: Sicherheitsübersicht
@@ -341,6 +344,12 @@
   items:
     - name: API-Referenzen
       items:
+        - name: ARM-Vorlage
+          href: /azure/templates/microsoft.web/2018-11-01/sites/functions
+        - name: Azure CLI
+          href: /cli/azure/functionapp
+        - name: Azure PowerShell
+          href: /powershell/module/az.functions
         - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable'
         - name: Python
@@ -368,7 +377,7 @@
             - name: Functions 1.x
               href: functions-bindings-cosmosdb.md
               displayName: Azure Cosmos DB
-            - name: Functions 2.x
+            - name: "Functions\_2.x und höher"
               displayName: Azure Cosmos DB
               items:
                 - name: Übersicht
@@ -462,6 +471,9 @@
             - name: Übersicht
               href: functions-bindings-signalr-service.md
               displayName: SignalR Service
+            - name: Trigger
+              href: functions-bindings-signalr-service-trigger.md
+              displayName: SignalR Service
             - name: Eingabe
               href: functions-bindings-signalr-service-input.md
               displayName: SignalR Service
@@ -495,7 +507,7 @@
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Informationen zum Kontingent
-      href: 'functions-scale.md#service-limits'
+      href: functions-scale.md#service-limits
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Videos

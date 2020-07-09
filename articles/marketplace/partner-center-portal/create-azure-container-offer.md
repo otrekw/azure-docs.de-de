@@ -1,23 +1,20 @@
 ---
 title: Erstellen eines Azure-Containerangebots – Azure Marketplace
-description: In diesem Artikel wird erläutert, wie Sie ein Containerangebot für Azure Marketplace erstellen und dort veröffentlichen.
+description: Hier wird erläutert, wie Sie ein Containerangebot für Azure Marketplace erstellen und dort veröffentlichen.
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/07/2020
-ms.openlocfilehash: f2a3b6355fdaa8cd90525fac9d29324270dfad02
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/19/2020
+ms.openlocfilehash: 1a027eb4cb3351934738319f342afac8d8407e6f
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791934"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848803"
 ---
 # <a name="create-an-azure-container-offer"></a>Erstellen eines Azure-Containerangebots
-
-> [!IMPORTANT]
-> Wir verlagern die Verwaltung Ihrer Azure-Containerangebote vom Cloud-Partnerportal ins Partner Center. Folgen Sie für die Verwaltung Ihrer Angebote bis zum Abschluss der Migration den Anweisungen unter [Container](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) für das Cloud-Partnerportal.
 
 In diesem Artikel wird beschrieben, wie Sie ein Containerangebot für Azure Marketplace erstellen und dort veröffentlichen. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), sofern Sie dies noch nicht getan haben. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
@@ -62,18 +59,18 @@ Auf dieser Seite werden basierend auf dem aktuellen Status des Angebots untersch
 
 Führen Sie die unten angegebenen Schritte aus, um Ihr Angebot einzurichten.
 
-### <a name="connect-lead-management--optional"></a>Einbinden der Leadverwaltung (optional)
+### <a name="customer-leads--optional"></a>Kundenleads (optional)
 
 Wenn Sie Ihr Angebot mithilfe des Partner Centers im kommerziellen Marketplace veröffentlichen, können Sie es mit Ihrem CRM-System (Customer Relationship Management) verbinden. Dadurch empfangen Sie Kontaktinformationen zum Kunden, sobald jemand sein Interesse an Ihrem Produkt bekundet oder es verwendet.
 
 1. **Wählen Sie ein Leadziel aus, an das wir Kundenleads senden sollen**. Das Partner Center unterstützt die folgenden CRM-Systeme:
 
-- [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-- [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+   - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
+   - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
+   - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
-> [!NOTE]
-> Wenn Ihr CRM-System oben nicht aufgeführt ist, verwenden Sie eine [Azure-Tabelle](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) oder einen [HTTPS-Endpunkt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https), um die Leaddaten von Kunden zu speichern, und exportieren Sie die Daten dann in Ihr CRM-System.
+   > [!NOTE]
+   > Wenn Ihr CRM-System oben nicht aufgeführt ist, verwenden Sie eine [Azure-Tabelle](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) oder einen [HTTPS-Endpunkt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https), um die Leaddaten von Kunden zu speichern, und exportieren Sie die Daten dann in Ihr CRM-System.
 
 2. Verbinden Sie Ihr Angebot bei der Veröffentlichung im Partner Center mit dem Leadziel.
 3. Vergewissern Sie sich, dass die Verbindung mit dem Leadziel korrekt konfiguriert ist. Nach der Veröffentlichung Ihres Angebots im Partner Center überprüfen wir die Verbindung und senden Ihnen einen Testlead. Während Sie das Angebot vor der Liveschaltung als Vorschau anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu kaufen.
@@ -149,40 +146,11 @@ Eine detailliertere Beschreibung Ihres Angebots. Sie kann bis zu 256 Zeichen la
 
 ### <a name="description"></a>BESCHREIBUNG
 
-Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Sie wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Schließen Sie eine oder mehrere der folgenden Informationen in die Beschreibung ein:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Den Nutzen und die wichtigsten Vorteile Ihres Angebots
-- Zuordnungen zu Kategorien oder Branchen oder beidem
-- Möglichkeit zu In-App-Käufen
-- Alle erforderlichen Bekanntmachungen
-
-Hier einige Tipps zum Verfassen Ihrer Beschreibung:
-
-- Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich den Nutzen Ihres Angebots. Berücksichtigen Sie folgende Punkte:
-  - Beschreibung des Angebots.
-  - Benutzertyp, der von dem Produkt profitiert
-  - Kundenbedürfnisse oder -probleme, an die sich das Angebot richtet.
-- Beachten Sie, dass die ersten Sätze möglicherweise in den Suchergebnissen angezeigt werden.
-- Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Ihr Angebot bietet.
-- Verwenden Sie möglichst branchenspezifisches Vokabular oder nutzenorientierte Formulierungen.
-
-Um Ihre **Angebotsbeschreibung** ansprechender zu gestalten, formatieren Sie sie mithilfe des Rich-Text-Editors. Mit diesem Editor können Sie eine Nummerierung, Aufzählungspunkte, fette und kursive Formatierungen und Einzüge hinzufügen, um die Lesbarkeit Ihrer Beschreibung zu verbessern.
-
-:::image type="content" source="media/text-editor2.png" alt-text="Darstellung des Rich-Text-Editors." border="false" :::
-
-- Verwenden Sie dieses Dropdownmenü, um eine Absatzformatvorlage auf Text anzuwenden.
-
-    :::image type="content" source="media/text-editor3.png" alt-text="Darstellung des Formatvorlagen-Steuerelement für Text im Rich-Text-Editor." border="false":::
-
-- Verwenden Sie diese Symbole, um Nummerierungen oder Aufzählungszeichen auf Text anzuwenden.
-
-     :::image type="content" source="media/text-editor4.png" alt-text="Darstellung der Steuerelemente für Aufzählungen und Listen mit Aufzählungspunkten im Rich-Text-Editor." border="false":::
-
-- Verwenden Sie diese Symbole, um im Text Einzüge hinzuzufügen oder zu entfernen.
-
-    :::image type="content" source="media/text-editor5.png" alt-text="Veranschaulicht die Einzugssteuerelemente im Rich-Text-Editor." border="false":::
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-link"></a>Link zur Datenschutzrichtlinie
 

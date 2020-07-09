@@ -1,29 +1,25 @@
 ---
-title: Bereitstellen einer Azure Resource Manager-Vorlage in einem Azure Automation-Runbook
-description: Bereitstellen einer in Azure Storage gespeicherten Azure Resource Manager-Vorlage aus einem Runbook
+title: Bereitstellen einer Azure Resource Manager-Vorlage in einem Azure Automation-PowerShell-Runbook
+description: In diesem Artikel wird das Bereitstellen einer in Azure Storage gespeicherten Azure Resource Manager-Vorlage aus einem PowerShell-Runbook beschrieben.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: PowerShell, Runbook, JSON, Azure Automation
-ms.openlocfilehash: 1bf381499ac31fafc8aaeef2b4ee488cfa1aa5c1
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 921d878c585b811700b1c112524e314f0af53c24
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994683"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837075"
 ---
-# <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Bereitstellen einer Azure Resource Manager-Vorlage in einem Azure Automation-PowerShell-Runbook
+# <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>Bereitstellen einer Azure Resource Manager-Vorlage in einem PowerShell-Runbook
 
-Sie können ein [Azure Automation-PowerShell-Runbook](automation-first-runbook-textual-powershell.md) schreiben, mit dem eine Azure-Ressource bereitgestellt wird, indem Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-create-first-template.md) verwenden.
-
-Auf diese Weise können Sie die Bereitstellung von Azure-Ressourcen automatisieren. Sie können Ihre Resource Manager-Vorlagen an einem zentralen, sicheren Ort verwalten, z.B. in Azure Storage.
+Sie können ein [Azure Automation-PowerShell-Runbook](automation-first-runbook-textual-powershell.md) schreiben, mit dem eine Azure-Ressource bereitgestellt wird, indem Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-create-first-template.md) verwenden. Die Vorlage ermöglicht Ihnen das Automatisieren der Bereitstellung Ihrer Azure-Ressourcen mithilfe von Azure Automation und Azure Storage. Sie können Ihre Resource Manager-Vorlagen an einem zentralen, sicheren Ort verwalten, z. B. in Azure Storage.
 
 In diesem Artikel erstellen wir ein PowerShell-Runbook, für das eine in [Azure Storage](../storage/common/storage-introduction.md) gespeicherte Resource Manager-Vorlage verwendet wird, um ein neues Azure Storage-Konto bereitzustellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
-Für dieses Tutorial benötigen Sie Folgendes:
 
 * Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto registrieren](https://azure.microsoft.com/free/).
 * [Automation-Konto](automation-sec-configure-azure-runas-account.md) dient zur Aufbewahrung des Runbooks und zur Authentifizierung gegenüber Azure-Ressourcen.  Dieses Konto muss über die Berechtigung zum Starten und Beenden des virtuellen Computers verfügen.
@@ -231,15 +227,10 @@ Sie können prüfen, ob das neue Speicherkonto erstellt wurde, indem Sie den fol
 Get-AzStorageAccount
 ```
 
-## <a name="summary"></a>Zusammenfassung
-
-Das ist alles! Sie können jetzt Azure Automation und Azure Storage mit Resource Manager-Vorlagen verwenden, um alle Ihre Azure-Ressourcen bereitzustellen.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu Resource Manager-Vorlagen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/management/overview.md).
 * Informationen zu den ersten Schritten mit Azure Storage finden Sie unter [Einführung in Azure Storage](../storage/common/storage-introduction.md).
-* Informationen zu weiteren nützlichen Azure Automation-Runbooks finden Sie unter [Runbook und Modulkataloge für Azure Automation](automation-runbook-gallery.md).
+* Informationen zu weiteren nützlichen Azure Automation-Runbooks finden Sie unter [Verwenden von Runbooks und Modulen in Azure Automation](automation-runbook-gallery.md).
 * Informationen zu weiteren nützlichen Resource Manager-Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
-* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

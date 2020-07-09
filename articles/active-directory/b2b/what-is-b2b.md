@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0effb6bb6e3d3f80775a3cee1ad8a63013a78805
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 89e1868d8e9a346d5a791c9fa8ae7682ca2b6807
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585821"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905135"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Was ist der Gastzugriff in Azure Active Directory-B2B?
 
@@ -44,7 +44,7 @@ Mit Azure AD-B2B verwendet der Partner seine eigene Identitätsverwaltungslösun
 
 ## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>Einladen von Gastbenutzern mit einem einfachen Prozess zum Senden und Einlösen von Einladungen
 
-Gastbenutzer können sich mit ihrem Geschäfts-, Schul- oder Unikonto bzw. mit ihrer Identität bei Ihren Anwendungen und Diensten anmelden. Falls der Gastbenutzer über kein Microsoft- oder Azure AD-Konto verfügt, wird zum Zeitpunkt der Einlösung ein Konto für ihn erstellt. 
+Gastbenutzer können sich mit ihrem Geschäfts-, Schul- oder Unikonto bzw. mit ihrer Identität bei Ihren Anwendungen und Diensten anmelden. Falls der Gastbenutzer über kein Microsoft- oder Azure AD-Konto verfügt, wird zum Zeitpunkt der Einlösung ein Konto für ihn erstellt. 
 
 - Laden Sie Gastbenutzer mit der E-Mail-Adresse ihrer Wahl ein.
 - Senden Sie einen direkten Link zu einer Anwendung oder eine Einladung an den eigenen Zugriffsbereich des Gastbenutzers.
@@ -98,9 +98,12 @@ Azure AD unterstützt externe Identitätsanbieter wie Facebook, Microsoft-Konten
 
 ## <a name="create-a-self-service-sign-up-user-flow-preview"></a>Erstellen eines Benutzerflows für die Self-Service-Registrierung (Vorschau)
 
-Mit einem Benutzerflow für die Self-Service-Registrierung können Sie eine Registrierungsbenutzeroberfläche für externe Benutzer erstellen, die auf Ihre Apps zugreifen möchten. Im Rahmen des Registrierungsflows können Sie Optionen für verschiedene Identitätsanbieter für soziale Netzwerke oder Unternehmen bereitstellen und Informationen über den Benutzer sammeln. Informieren Sie sich ausführlicher über die Self-Service-Registrierung und ihre Einrichtung.
+Mit einem Benutzerflow für die Self-Service-Registrierung können Sie eine Registrierungsbenutzeroberfläche für externe Benutzer erstellen, die auf Ihre Apps zugreifen möchten. Im Rahmen des Registrierungsflows können Sie Optionen für verschiedene Identitätsanbieter für soziale Netzwerke oder Unternehmen bereitstellen und Informationen über den Benutzer sammeln. Informieren Sie sich ausführlicher über die [Self-Service-Registrierung und ihre Einrichtung](self-service-sign-up-overview.md).
+
+Sie können auch [API-Connectors](api-connectors-overview.md) verwenden, um Ihre Benutzerflows für die Self-Service-Registrierung in externe Cloudsysteme zu integrieren. Sie können eine Verbindung mit benutzerdefinierten Genehmigungsworkflows herstellen, die Identitätsüberprüfung durchführen, vom Benutzer bereitgestellte Informationen überprüfen usw.
 
 ![Screenshot der Seite mit Benutzerflows](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
+<!--TODO: Add screenshot with API connectors -->
 
 ## <a name="next-steps"></a>Nächste Schritte
 

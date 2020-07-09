@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 0e18fd0c52fd4090477599f53cd0ef0bc05855f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ca6bff4c1e99bb8e63db212ca57693870afc30e7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587339"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080656"
 ---
 # <a name="long-audio-api-preview"></a>API für lange Audioinhalte (Vorschau)
 
@@ -48,7 +48,7 @@ Stellen Sie bei der Vorbereitung Ihrer Textdatei Folgendes sicher:
   * Bei Nur-Text wird jeder Absatz durch Drücken der **EINGABETASTE** getrennt – [Beispiel für die Eingabe von Nur-Text](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) anzeigen
   * Bei SSML-Text wird jede SSML-Komponente als Absatz betrachtet. SSML-Elemente sollen durch verschiedene Absätze getrennt werden – [Beispiel für die Eingabe von SSML-Text](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) anzeigen.
 > [!NOTE]
-> Bei Chinesisch (Festland), Chinesisch (Hongkong), Chinesisch (Taiwan), Japanisch und Koreanisch zählt jedes Wort als zwei Zeichen. 
+> Bei Chinesisch (Festland), Chinesisch (Hongkong SAR), Chinesisch (Taiwan), Japanisch und Koreanisch zählt jedes Wort als zwei Zeichen. 
 
 ## <a name="submit-synthesis-requests"></a>Übermitteln von Syntheseanforderungen
 
@@ -56,7 +56,7 @@ Nach dem Vorbereiten des Eingabeinhalts befolgen Sie die Anweisungen unter [Schn
 
 Die **HTTP-Statuscodes** weisen auf häufige Fehler hin.
 
-| API | HTTP-Statuscode | Beschreibung | Vorschlag |
+| API | HTTP-Statuscode | BESCHREIBUNG | Vorschlag |
 |-----|------------------|-------------|----------|
 | Erstellen | 400 | Die Stimmensynthese ist in dieser Region nicht aktiviert. | Verwenden Sie einen Speech-Abonnementschlüssel mit einer unterstützten Region. |
 |        | 400 | Nur das **Standard**-Speech-Abonnement für diese Region ist gültig. | Ändern Sie den Speech-Abonnementschlüssel in den Tarif „Standard“. |
@@ -66,7 +66,7 @@ Die **HTTP-Statuscodes** weisen auf häufige Fehler hin.
 |        | 400 | Die Textdatei wird von der Stimmensynthese nur mit UTF-8-Codierung und Bytereihenfolge-Marke unterstützt. | Stellen Sie sicher, dass die Eingabedatei über UTF-8-Codierung und Bytereihenfolge-Marke verfügen. |
 |        | 400 | In der Stimmensyntheseanforderung sind nur gültige SSML-Eingaben zulässig. | Stellen Sie sicher, dass die SSML-Eingabeausdrücke korrekt sind. |
 |        | 400 | Der Stimmname „{voiceName}“ wurde in der Eingabedatei nicht gefunden. | Der SSML-Stimmname der Eingabe ist nicht auf die Modell-ID abgestimmt. |
-|        | 400 | Der Absatz in der Eingabedatei muss weniger als 10.000 Zeichen enthalten. | Stellen Sie sicher, dass der Absatz in der Datei weniger als 10.000 Zeichen enthält. |
+|        | 400 | Die Anzahl der Absätze in der Eingabedatei muss weniger als 10.000 Zeichen betragen. | Stellen Sie sicher, dass die Anzahl der Absätze in der Datei weniger als 10.000 beträgt. |
 |        | 400 | Die Eingabedatei muss mehr als 400 Zeichen enthalten. | Stellen Sie sicher, dass die Eingabedatei mehr als 400 Zeichen enthält. |
 |        | 404 | Das in der Stimmensynthesedefinition deklarierte Modell wurde nicht gefunden: {modelID}. | Stellen Sie sicher, dass die Modell-ID ({modelID}) korrekt ist. |
 |        | 429 | Der Grenzwert für die aktive Stimmensynthese wurde überschritten. Warten Sie, bis einige Anforderungen abgeschlossen wurden. | Der Server kann für jedes Azure-Konto bis zu 120 Anforderungen ausführen und in die Warteschlange einreihen. Warten Sie, und senden Sie erst dann wieder neue Anforderungen, wenn einige Anforderungen abgeschlossen wurden. |

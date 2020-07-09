@@ -1,21 +1,14 @@
 ---
 title: Verwaltungsbibliotheken – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zu der Bibliothek, die Sie zum Verwalten von Azure Event Hubs-Namespaces und -Entitäten über .NET verwenden können.
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: dotnet
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 431fe04461f422274697d1e91c4b56e914ce2d4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: f3129ae5586a3096dda89eea3af21eefd1606f30
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60746657"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312975"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs-Verwaltungsbibliotheken
 

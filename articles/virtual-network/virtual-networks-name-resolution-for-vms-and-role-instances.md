@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9ea63192732184ff7a13ff1465a5b393a282f9d2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 32ef66c0a6d585e785fccb038a2b499c7f7f66db
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262195"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204768"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -86,7 +86,7 @@ Wenn Sie die von Azure bereitgestellte Namensauflösung verwenden, beachten Sie 
 Reverse-DNS wird in allen auf Azure Resource Manager basierenden virtuellen Netzwerken unterstützt. Sie können Reverse-DNS-Abfragen (PTR-Abfragen) ausführen, um IP-Adressen virtueller Computer zu FQDNs virtueller Computer zuzuordnen.
 * Alle PTR-Abfragen für IP-Adressen virtueller Computer geben FQDNs im Format\[VM-Name\].internal.cloudapp.net zurück.
 * Forward-Lookup für FQDNs im Format \[VM-Name\].internal.cloudapp.net wird in die IP-Adresse aufgelöst, die dem virtuellen Computer zugewiesen ist.
-* Wenn das virtuelle Netzwerk mit [privaten Azure DNS-Zonen](../dns/private-dns-overview.md) als virtuelles Registrierungsnetzwerk verknüpft ist, geben die Reverse-DNS-Abfragen zwei Einträge zurück. Ein Eintrag hat das Format \[VM-Name\].[Name_der_privaten_Zone] und der andere das Format \[VM-Name\].internal.cloudapp.net
+* Wenn das virtuelle Netzwerk mit [privaten Azure DNS-Zonen](../dns/private-dns-overview.md) als virtuelles Registrierungsnetzwerk verknüpft ist, geben die Reverse-DNS-Abfragen zwei Einträge zurück. Ein Eintrag hat das Format „\[VM-Name\].[Name_der_privaten_Zone]“ und der andere das Format „\[VM-Name\].internal.cloudapp.net“.
 * Reverse-DNS-Lookup ist auf ein bestimmtes virtuelles Netzwerk begrenzt, auch bei Peerings mit anderen virtuellen Netzwerken. Reverse-DNS-Abfragen (PTR-Abfragen) für IP-Adressen virtueller Computer im Peering mit virtuellen Netzwerken geben NXDOMAIN zurück.
 * Wenn Sie die Reverse-DNS-Funktion in einem virtuellen Netzwerk deaktivieren möchten, können Sie dazu mit [Azure DNS Private Zones](../dns/private-dns-overview.md) eine Reverse-Lookup-Zone erstellen und diese mit Ihrem virtuellen Netzwerk verknüpfen. Wenn der IP-Adressraum des virtuellen Netzwerks z. B. 10.20.0.0/16 lautet, können Sie die leere private DNS-Zone 20.10.in-addr.arpa erstellen und diese mit dem virtuellen Netzwerk verknüpfen. Beim Verknüpfen der Zone mit dem virtuellen Netzwerk sollten Sie die automatische Registrierung für den Link deaktivieren. Diese Zone setzt die Reverse-Lookup-Standardzonen für das virtuelle Netzwerk außer Kraft, und da diese Zone leer ist, erhalten Sie für Ihre Reverse-DNS-Abfragen NXDOMAIN. Weitere Informationen zum Erstellen einer privaten DNS-Zone und Verknüpfen der Zone mit einem virtuellen Netzwerk finden Sie in unserem [Schnellstart](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal).
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 8f6134e8f8fdb9af3f578afaf0670c32a3896e01
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: c74d4f0b2e0b2d8ca09c9b2c1f1091594f5657dc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81766865"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111013"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights-Agent (ehemals „Statusmonitor v2“): Ausführliche Anleitungen
 
@@ -38,10 +38,10 @@ https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-e
 
 **Fehlerbeispiele**
 
-```
+```output
 Install-Module : The 'Install-Module' command was found in the module 'PowerShellGet', but the module could not be
 loaded. For more information, run 'Import-Module PowerShellGet'.
-    
+
 Import-Module : File C:\Program Files\WindowsPowerShell\Modules\PackageManagement\1.3.1\PackageManagement.psm1 cannot
 be loaded because running scripts is disabled on this system. For more information, see about_Execution_Policies at
 https:/go.microsoft.com/fwlink/?LinkID=135170.
@@ -53,8 +53,7 @@ https:/go.microsoft.com/fwlink/?LinkID=135170.
 Überwachen Sie Ihre Instanz von PowerShell durch Ausführen des Befehls `$PSVersionTable`.
 Dieser Befehl erstellt die folgende Ausgabe:
 
-
-```
+```output
 Name                           Value
 ----                           -----
 PSVersion                      5.1.17763.316
@@ -88,15 +87,17 @@ Diese Schritte bereiten Ihren Server darauf vor, Module aus dem PowerShell-Katal
         - `-Force`. Umgeht die Bestätigungsaufforderung.
     
     Sie erhalten diese Eingabeaufforderung, wenn NuGet nicht eingerichtet ist:
-        
-        NuGet provider is required to continue
-        PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet
-         provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
-        'C:\Users\t\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by running
-        'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install and import
-         the NuGet provider now?
-        [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
-    
+
+    ```output
+    NuGet provider is required to continue
+    PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. 
+    The NuGet provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
+    'C:\Users\t\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by running
+    'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install and import
+    the NuGet provider now?
+    [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
+    ```    
+
 3. Konfigurieren Sie den PowerShell-Katalog als vertrauenswürdiges Repository.
     - Beschreibung: Standardmäßig ist der PowerShell-Katalog ein nicht vertrauenswürdiges Repository.
     - Referenz: [Set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6).
@@ -106,11 +107,14 @@ Diese Schritte bereiten Ihren Server darauf vor, Module aus dem PowerShell-Katal
 
     Sie erhalten diese Eingabeaufforderung, wenn der PowerShell-Katalog nicht vertrauenswürdig ist:
 
-        Untrusted repository
-        You are installing the modules from an untrusted repository. If you trust this repository, change its
-        InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from
-        'PSGallery'?
-        [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
+    ```output
+    Untrusted repository
+    You are installing the modules from an untrusted repository. 
+    If you trust this repository, change its InstallationPolicy value 
+    by running the Set-PSRepository cmdlet. Are you sure you want to 
+    install the modules from 'PSGallery'?
+    [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
+    ```
 
     Sie können diese Änderung bestätigen und alle PSRepositories überprüfen, indem Sie den Befehl `Get-PSRepository` ausführen.
 
@@ -123,14 +127,16 @@ Diese Schritte bereiten Ihren Server darauf vor, Module aus dem PowerShell-Katal
         - `-Force`. Umgeht die Warnung „bereits installiert“ und installiert die neueste Version.
 
     Dieser Fehler wird angezeigt, wenn Sie nicht die neueste Version von PowerShellGet verwenden:
-    
-        Install-Module : A parameter cannot be found that matches parameter name 'AllowPrerelease'.
-        At line:1 char:20
-        Install-Module abc -AllowPrerelease
-                           ~~~~~~~~~~~~~~~~
-            CategoryInfo          : InvalidArgument: (:) [Install-Module], ParameterBindingException
-            FullyQualifiedErrorId : NamedParameterNotFound,Install-Module
-    
+
+    ```output
+    Install-Module : A parameter cannot be found that matches parameter name 'AllowPrerelease'.
+    At line:1 char:20
+    Install-Module abc -AllowPrerelease
+                   ~~~~~~~~~~~~~~~~
+    CategoryInfo          : InvalidArgument: (:) [Install-Module], ParameterBindingException
+    FullyQualifiedErrorId : NamedParameterNotFound,Install-Module
+    ```
+
 5. Starten Sie PowerShell neu. Sie können die neue Version nicht in der aktuellen Sitzung laden. Neue PowerShell-Sitzungen laden die neueste Version von PowerShellGet.
 
 ## <a name="download-and-install-the-module-via-powershell-gallery"></a>Herunterladen und Installieren des Moduls über den PowerShell-Katalog
@@ -169,7 +175,7 @@ Weitere Informationen finden Sie unter [Installieren eines PowerShell-Moduls](/p
 - Referenz: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
 - Befehl:
 
-    ```
+    ```console
     $pathToNupkg = "C:\az.applicationmonitor.0.3.0-alpha.nupkg"
     $pathToZip = ([io.path]::ChangeExtension($pathToNupkg, "zip"))
     $pathToNupkg | rename-item -newname $pathToZip
@@ -183,7 +189,7 @@ Weitere Informationen finden Sie unter [Installieren eines PowerShell-Moduls](/p
 - Referenz: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) und [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
 - Befehl:
 
-    ```
+    ```console
     $pathToNupkg = "C:\az.applicationmonitor.0.2.1-alpha.nupkg"
     $pathInstalledModule = "$Env:ProgramFiles\WindowsPowerShell\Modules\az.applicationmonitor"
     Expand-Archive -LiteralPath $pathToNupkg -DestinationPath $pathInstalledModule

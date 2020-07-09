@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 6b01253d12b67c327bc67416ca569ccb7ee469ae
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 718365119b8cdf9279dcabc5f8c54deb386e8500
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780639"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019040"
 ---
 # <a name="buy-a-reservation"></a>Kaufen einer Reservierung
 
@@ -72,7 +72,7 @@ Sie können Reservierungen über das Azure-Portal, APIs, PowerShell und die CLI 
 - [Dedicated Host](../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md)
 - [Softwarepläne](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Storage](../../storage/blobs/storage-blob-reserved-capacity.md)
-- [SQL-Datenbank](../../sql-database/sql-database-reserved-capacity.md)
+- [SQL-Datenbank](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure-Datenbank für PostgreSQL](../../postgresql/concept-reserved-pricing.md)
 - [Azure Database for MySQL](../../mysql/concept-reserved-pricing.md)
 - [Azure Database for MariaDB](../../mariadb/concept-reserved-pricing.md)

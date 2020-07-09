@@ -7,13 +7,13 @@ ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
-ms.reviewer: cbrooks
-ms.openlocfilehash: d9c666fd6fcf020908b6fc5bdd639261853ad9c6
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.reviewer: dineshm
+ms.openlocfilehash: 8f51b6f94ae8a245471757d256a923570582bb12
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811544"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809071"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reaktion auf Blob Storage-Ereignisse
 
@@ -31,7 +31,7 @@ Wenn Sie Blob Storage-Ereignisse ausprobieren möchten, informieren Sie sich in 
 |--|-|
 |Azure-Portal    |[Schnellstart: Weiterleiten von Blob Storage-Ereignissen an einen Webendpunkt über das Azure-Portal](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure-Befehlszeilenschnittstelle    |[Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per Azure CLI](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure CLI    |[Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per Azure CLI](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 Ausführliche Beispiele für die Reaktion auf Blobspeicherereignisse mithilfe von Azure-Funktionen finden Sie in den folgenden Artikeln:
 
@@ -39,7 +39,7 @@ Ausführliche Beispiele für die Reaktion auf Blobspeicherereignisse mithilfe vo
 - [Tutorial: Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid](https://docs.microsoft.com/azure/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
 
 >[!NOTE]
-> Nur Speicherkonten vom Typ **StorageV2 (universell, Version 2)** , **BlockBlobStorage** und **BlobStorage** unterstützen die Ereignisintegration. **Storage (allgemein, Version 1)** unterstützt *nicht* die Integration in Event Grid.
+> Nur Speicherkonten vom Typ **StorageV2 (universell, Version 2)** , **BlockBlobStorage** und **BlobStorage** unterstützen die Ereignisintegration. **Storage (Universell V1)** unterstützt *nicht* die Integration in Event Grid.
 
 ## <a name="the-event-model"></a>Ereignismodell
 

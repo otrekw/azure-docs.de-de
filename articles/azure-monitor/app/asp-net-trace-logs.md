@@ -3,12 +3,12 @@ title: Untersuchen von .NET-Ablaufverfolgungsprotokollen in Application Insights
 description: Suchen Sie nach mit Trace, NLog oder Log4Net generierten Protokollen.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 273d5a2f4e1155541e159332312bdaa68aa175d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d010fe4389e22c9909800f5329911b6b5619d7b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234790"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829532"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Untersuchen von .NET/.NET Core- und Python-Ablaufverfolgungsprotokollen in Application Insights
 
@@ -73,11 +73,15 @@ Beispiele für die Verwendung der Application Insights-ILogger-Implementierung m
 ## <a name="insert-diagnostic-log-calls"></a>Einfügen von Diagnoseprotokollaufrufen
 Wenn Sie System.Diagnostics.Trace verwenden, wäre ein typischer Aufruf:
 
-    System.Diagnostics.Trace.TraceWarning("Slow response - database01");
+```csharp
+System.Diagnostics.Trace.TraceWarning("Slow response - database01");
+```
 
 Wenn Sie log4net oder NLog bevorzugen, verwenden Sie:
 
+```csharp
     logger.Warn("Slow response - database01");
+```
 
 ## <a name="use-eventsource-events"></a>Verwenden von EventSource-Ereignissen
 Sie können [System.Diagnostics.Tracing.EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx)-Ereignisse so konfigurieren, dass Sie als Ablaufverfolgungen an Application Insights gesendet werden. Installieren Sie zunächst das `Microsoft.ApplicationInsights.EventSourceListener`-NuGet-Paket. Bearbeiten Sie anschließend den Abschnitt `TelemetryModules` der Datei [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md).
@@ -133,17 +137,21 @@ Sie können die API zur Application Insights-Ablaufverfolgung direkt aufrufen. D
 
 Beispiel:
 
-    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
-    telemetry.TrackTrace("Slow response - database01");
+```csharp
+var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+telemetry.TrackTrace("Slow response - database01");
+```
 
 Ein Vorteil von TrackTrace ist, dass relativ lange Daten in die Nachricht eingefügt werden können. Sie können dort beispielsweise POST-Daten codieren.
 
 Sie können Ihrer Nachricht auch einen Schweregrad hinzufügen. Wie bei anderen Telemetriedaten auch können Sie Eigenschaftswerte hinzufügen, um zu filtern oder nach verschiedenen Ablaufverfolgungen zu suchen. Beispiel:
 
-    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
-    telemetry.TrackTrace("Slow database response",
-                   SeverityLevel.Warning,
-                   new Dictionary<string,string> { {"database", db.ID} });
+  ```csharp
+  var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+  telemetry.TrackTrace("Slow database response",
+                 SeverityLevel.Warning,
+                 new Dictionary<string,string> { {"database", db.ID} });
+  ```
 
 Auf diese Weise können Sie in der [Suche][diagnostic] alle Nachrichten eines bestimmten Schweregrads, die im Zusammenhang mit einer bestimmten Datenbank stehen, einfach herausfiltern.
 
@@ -182,7 +190,9 @@ Sie haben beispielsweise folgende Möglichkeiten:
 
 ## <a name="troubleshooting"></a>Problembehandlung
 ### <a name="how-do-i-do-this-for-java"></a>Wie geht das mit Java?
-Verwenden Sie die [Java-Protokolladapter](../../azure-monitor/app/java-trace-logs.md).
+In der Java-Instrumentierung ohne Code (empfohlen) werden die Protokolle standardmäßig erfasst. Verwenden Sie den [Java 3.0-Agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
+
+Wenn Sie das Java-SDK verwenden, verwenden Sie die [Java-Protokolladapter](../../azure-monitor/app/java-trace-logs.md).
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Keine Application Insights-Option im Kontextmenü des Projekts
 * Stellen Sie sicher, dass die Developer Analytics Tools auf diesem Entwicklungscomputer installiert sind. Suchen Sie in Visual Studio im Menü **Extras** > **Erweiterungen und Updates** nach **Developer Analytics Tools**. Wenn die Option nicht auf der Registerkarte **Installiert** angezeigt wird, öffnen Sie die Registerkarte **Online** und installieren sie.

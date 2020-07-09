@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: luisbosquez
 ms.author: lbosq
-ms.openlocfilehash: 95677f4c45c0213de5ffac5521bac1c6bf7294e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d244a5bfb6d0a1e2a0965cc72a8f223e0646fa77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72755076"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390855"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB: Gremlin-Serverantwortheader
 In diesem Artikel werden Header behandelt, die der Cosmos DB Gremlin-Server bei der Anforderungsausführung an den Aufrufer zurückgibt. Diese Header sind nützlich für die Problembehandlung der Anforderungsleistung, beim Erstellen von Anwendungen, die sich nativ in den Cosmos DB-Dienst integrieren lassen, und bei der Vereinfachung des Kundensupports.
@@ -107,6 +107,6 @@ try {
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [HTTP-Statuscodes für Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
-* [Allgemeine Azure Cosmos DB REST-Antwortheader](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
+* [HTTP-Statuscodes für Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
+* [Allgemeine Azure Cosmos DB REST-Antwortheader](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
 * [Anforderungen für den TinkerPop Graph-Treiberanbieter]( http://tinkerpop.apache.org/docs/current/dev/provider/#_graph_driver_provider_requirements)

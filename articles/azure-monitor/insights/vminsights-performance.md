@@ -5,17 +5,23 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/15/2019
-ms.openlocfilehash: a50ba39777e6a9d3d609e584c0c7d872f2a65f35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/31/2020
+ms.openlocfilehash: 1ea6d09609d1b7b3f7ba7297a040447d1fc24756
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283717"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684382"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>Darstellen der Leistung in Diagrammen mit Azure Monitor for VMs
 
 Azure Monitor for VMs beinhaltet einen Satz Leistungsdiagramme, die auf verschiedene Key Performance Indicators (KPIs) abzielen, um Sie beim Bestimmen der Leistung eines virtuellen Computers zu unterstützen. Die Diagramme zeigen die Ressourcennutzung über einen Zeitraum an, damit Sie Engpässe und Anomalien erkennen oder zu einer Perspektive wechseln können, in der jede VM aufgelistet ist, um die Ressourcennutzung nach der ausgewählten Metrik anzuzeigen. Beim Thema Leistung sind zwar eine Vielzahl von Elementen zu berücksichtigen, Azure Monitor für VMs überwacht jedoch Betriebssystem-Key Performance Indicators im Zusammenhang mit Prozessor, Arbeitsspeicher, Netzwerkadapter und Datenträgerverwendung. Leistung ergänzt das Feature zur Integritätsüberwachung und hilft bei der Offenlegung von Problemen, die auf einen möglichen Ausfall von Systemkomponenten hinweisen, Feinabstimmung und Optimierung unterstützen, um Effizienz zu erreichen, oder bei der Kapazitätsplanung helfen.  
+
+## <a name="limitations"></a>Einschränkungen
+Nachfolgend sind Einschränkungen bei der Leistungserfassung mit Azure Monitor für VMs aufgeführt.
+
+- **Verfügbarer Arbeitsspeicher** ist für virtuelle Computer mit Red Hat Linux (RHEL) 6 nicht verfügbar. Diese Metrik wird aus **MemAvailable** berechnet, das in [Kernelversion 3.14](http://www.man7.org/linux/man-pages/man1/free.1.html) eingeführt wurde.
+- Metriken sind nur für Datenträger auf virtuellen Linux-Computern mit der EXT-Dateisystemfamilie (EXT2, EXT3, EXT4) verfügbar.
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Multi-VM-Perspektive in Azure Monitor
 

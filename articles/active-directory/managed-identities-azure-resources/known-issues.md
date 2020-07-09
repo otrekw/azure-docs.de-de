@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 84b68e5aecca11fb72f8cacc7e16701eebd0ae1a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d29689b088759b73465b24d06d4341571b599782
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197326"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714048"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -51,27 +51,7 @@ Bei der Sicherheitsgrenze der Identität handelt es sich um die Ressource, an di
 - Wenn die vom System zugewiesene verwaltete Identität nicht aktiviert und nur eine vom Benutzer zugewiesene verwaltete Identität vorhanden ist, verwendet IMDS standardmäßig diese einzige vom Benutzer zugewiesene verwaltete Identität. 
 - Wenn die vom System zugewiesene verwaltete Identität nicht aktiviert ist und mehrere vom Benutzer zugewiesene verwaltete Identitäten vorhanden sind, muss in der Anforderung eine verwaltete Identität angegeben werden.
 
-### <a name="should-i-use-the-managed-identities-for-azure-resources-imds-endpoint-or-the-vm-extension-endpoint"></a>Sollte ich den IMDS-Endpunkt der verwalteten Identitäten für Azure-Ressourcen oder den Endpunkt der VM-Erweiterung verwenden?
 
-Bei Verwendung verwalteter Identitäten für Azure-Ressourcen mit virtuellen Computern wird empfohlen, den IMDS-Endpunkt zu verwenden. Der Azure Instance Metadata Service ist ein REST-Endpunkt, der für alle virtuellen IaaS-Computer verfügbar ist, die mit Azure Resource Manager erstellt wurden. 
-
-Zu den Vorteilen der Verwendung von verwalteten Identitäten für Azure-Ressourcen über IMDS gehören:
-- Alle für Azure IaaS unterstützten Betriebssysteme können verwaltete Identitäten für Azure-Ressourcen über IMDS verwenden.
-- Es ist nicht mehr erforderlich, eine Erweiterung auf Ihrem virtuellen Computer zu installieren, um verwaltete Identitäten für Azure-Ressourcen zu aktivieren. 
-- Die von verwalteten Identitäten für Azure-Ressourcen verwendeten Zertifikate sind nicht mehr auf dem virtuellen Computer vorhanden.
-- Der Endpunkt ist eine bekannte, nicht routingfähige IP-Adresse, auf die nur innerhalb des virtuellen Computers zugegriffen werden kann.
-- Einem einzelnen virtuellen Computer können 1.000 benutzerseitig zugewiesene verwaltete Identitäten zugewiesen werden. 
-
-Die verwalteten Identitäten für die VM-Erweiterung von Azure-Ressourcen sind weiterhin verfügbar, wir entwickeln dafür jedoch keine neuen Funktionen mehr. Es wird empfohlen, auf die Verwendung des IMDS-Endpunkts umzusteigen. 
-
-Einige der Einschränkungen bei der Verwendung des Endpunkts für die VM-Erweiterung:
-- Eingeschränkte Unterstützung für Linux-Distributionen: CoreOS Stable, CentOS 7.1, Red Hat 7.2, Ubuntu 15.04, Ubuntu 16.04
-- Dem virtuellen Computer können nur 32 verwaltete Identitäten benutzerseitig zugewiesen werden.
-
-
-Hinweis: Der Support für verwaltete Identitäten für die VM-Erweiterung von Azure-Ressourcen endet im Januar 2019. 
-
-Weitere Informationen zum Azure Instance Metadata Service finden Sie in der [IMDS-Dokumentation](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Werden verwaltete Identitäten automatisch neu erstellt, wenn ich ein Abonnement in ein anderes Verzeichnis verschiebe?
 
@@ -88,16 +68,7 @@ Nein. Verwaltete Identitäten unterstützen derzeit keine verzeichnisübergreife
 - Systemseitig zugewiesene verwaltete Identität: Sie benötigen Schreibberechtigungen für die Ressource. Für virtuelle Computer benötigen Sie z.B. „Microsoft.Compute/virtualMachines/write“. Diese Aktion ist in ressourcenspezifischen integrierten Rollen wie [Mitwirkender von virtuellen Computern](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) enthalten.
 - Benutzerseitig zugewiesene verwaltete Identität: Sie benötigen Schreibberechtigungen für die Ressource. Für virtuelle Computer benötigen Sie z.B. „Microsoft.Compute/virtualMachines/write“. Zusätzlich zu der Rollenzuweisung [Operator für verwaltete Identität](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) für die verwaltete Identität.
 
-### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Wie wird die Erweiterung für verwaltete Identitäten für Azure-Ressourcen neu gestartet?
-Unter Windows und bestimmten Versionen von Linux kann das folgende Cmdlet verwendet werden, um die Erweiterung manuell neu zu starten, wenn sie beendet wurde:
 
-```powershell
-Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
-```
-
-Hierbei gilt: 
-- Erweiterungsname und -typ für Windows: ManagedIdentityExtensionForWindows
-- Erweiterungsname und -typ für Linux: ManagedIdentityExtensionForLinux
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -133,12 +104,7 @@ Nachdem der virtuelle Computer gestartet wurde, kann das Tag mithilfe des folgen
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-### <a name="vm-extension-provisioning-fails"></a>Fehlschlagen der Bereitstellung der VM-Erweiterung
 
-Die Bereitstellung der VM-Erweiterung kann aufgrund von Fehlern beim DNS-Lookup fehlschlagen. Starten Sie den virtuellen Computer neu, und wiederholen Sie den Vorgang.
- 
-> [!NOTE]
-> Die VM-Erweiterung wird voraussichtlich im Januar 2019 eingestellt. Es wird empfohlen, dass Sie stattdessen den IMDS-Endpunkt verwenden.
 
 ### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen
 
@@ -151,4 +117,4 @@ Problemumgehung für verwaltete Identitäten in einem Abonnement, die in ein and
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Verschieben einer benutzerseitig zugewiesenen verwalteten Identität in eine andere Ressourcengruppe/ein anderes Abonnement
 
-Beim Verschieben einer benutzerseitig zugewiesenen verwalteten Identität in eine andere Ressourcengruppe tritt ein Fehler für die Identität auf. Infolgedessen können Ressourcen (z. B. VMs), die diese Identität verwenden, keine Token für sie anfordern. 
+Das Verschieben einer benutzerseitig zugewiesenen verwalteten Identität in eine andere Ressourcengruppe wird nicht unterstützt.

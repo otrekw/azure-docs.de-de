@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: a41dcc9c7ec86f41c64a69ea1aba762b960b2633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cdff42c6ff0cadb5ce4b3d7fc469d648349d1e88
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283020"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265198"
 ---
 # <a name="getting-started-with-ai-enrichment"></a>Erste Schritte mit der KI-Anreicherung
 
@@ -102,7 +102,7 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 
 1. Definieren Sie das [Indexschema](https://docs.microsoft.com/rest/api/searchservice/create-index). Die *Fields*-Auflistung enthält Felder aus Quelldaten. Sie sollten zudem zusätzliche Felder durch Stubs ersetzen, um generierte Werte für Inhalte zu speichern, die während der Anreicherung erstellt werden.
 
-1. Definieren Sie den [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-skillset), der auf die Datenquelle, die Fähigkeitengruppen und den Index verweist.
+1. Definieren Sie den [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer), der auf die Datenquelle, die Fähigkeitengruppen und den Index verweist.
 
 1. Fügen Sie *outputFieldMappings* innerhalb des Indexers hinzu. In diesem Abschnitt wird die Ausgabe aus der Fähigkeitengruppe (in Schritt 3) den Eingabefeldern im Indexschema (in Schritt 4) zugeordnet.
 

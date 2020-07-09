@@ -3,15 +3,15 @@ title: Beschränken des Benutzerzugriffs ausschließlich auf Datenvorgänge mit 
 description: Erfahren Sie, wie der Benutzerzugriff ausschließlich auf Datenvorgänge mit Azure Cosmos DB beschränkt wird.
 author: voellm
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 03cad9e4c3752b5f35be785a6280bf18aaa14860
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74980019"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261221"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>Beschränken des Benutzerzugriffs ausschließlich auf Datenvorgänge
 
@@ -19,7 +19,9 @@ In Azure Cosmos DB gibt es zwei Möglichkeiten, Ihre Interaktionen mit dem Daten
 - Verwenden Ihrer Azure Active Directory-Identität bei der Interaktion mit dem Azure-Portal.
 - Verwenden von Azure Cosmos DB-[Schlüsseln](secure-access-to-data.md#master-keys) oder -[Ressourcentoken](secure-access-to-data.md#resource-tokens) beim Ausgeben von Aufrufen aus APIs und SDKs.
 
-Jede Authentifizierungsmethode ermöglicht den Zugriff auf unterschiedliche Sätze von Vorgängen mit einer gewissen Überschneidung: ![Aufteilung von Vorgängen pro Authentifizierungstyp](./media/how-to-restrict-user-data/operations.png)
+Jede Authentifizierungsmethode ermöglicht den Zugriff auf unterschiedliche Sätze von Vorgängen mit einer gewissen Überschneidung:
+
+:::image type="content" source="./media/how-to-restrict-user-data/operations.png" alt-text="Aufteilung von Vorgängen pro Authentifizierungstyp" border="false":::
 
 In einigen Szenarien möchten Sie möglicherweise einige Benutzer Ihrer Organisation darauf beschränken, Datenvorgänge (also CRUD-Anforderungen und Abfragen) auszuführen. Dies ist in der Regel der Fall bei Entwicklern, die keine Ressourcen erstellen oder löschen bzw. den bereitgestellten Durchsatz der Container nicht ändern müssen, an denen sie arbeiten.
 

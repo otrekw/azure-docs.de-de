@@ -1,6 +1,6 @@
 ---
-title: Weiterleiten von Berichtsdaten von Azure Automation State Configuration an Azure Monitor-Protokolle
-description: Dieser Artikel beschreibt, wie DSC-Berichtsdaten (Desired State Configuration) von Azure Automation State Configuration an Azure Monitor-Protokolle gesendet werden, um zusätzliche Erkenntnisse zu gewinnen und Verwaltungsoptionen zu erhalten.
+title: Integration in Azure Monitor-Protokolle
+description: Dieser Artikel beschreibt, wie Desired State Configuration-Berichtsdaten von Azure Automation State Configuration an Azure Monitor-Protokolle gesendet werden.
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0b0ee75c39ba87503f150ffb72b7ab95aaf83999
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f7e24e1b4546c76348e61e3c2736fcfe4b66410d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996051"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836939"
 ---
-# <a name="forward-state-configuration-reporting-data-to-azure-monitor-logs"></a>Weiterleiten von Berichtsdaten zur Zustandskonfiguration an Azure Monitor-Protokolle
+# <a name="integrate-with-azure-monitor-logs"></a>Integration in Azure Monitor-Protokolle
 
 Azure Automation State Configuration behält den Knotenstatus 30 Tage lang bei. Sie können die Knotenstatusdaten an Ihren Log Analytics-Arbeitsbereich senden, wenn Sie diese Daten für einen längeren Zeitraum aufbewahren möchten. Der Konformitätsstatus kann im Azure-Portal oder mit PowerShell angezeigt werden, und zwar für Knoten und einzelne DSC-Ressourcen in Knotenkonfigurationen. 
 
@@ -29,7 +29,6 @@ Azure Monitor-Protokolle bietet eine höhere operative Transparenz für Ihre Aut
 - Benutzerdefinierte Ansichten und Suchabfragen zum Visualisieren von Runbookergebnissen, Runbookauftragsstatus und anderer wichtiger Schlüsselindikatoren oder Metriken verwenden
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -192,15 +191,14 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in A
 | ResourceType | AUTOMATIONACCOUNTS. |
 | CorrelationId |Ein eindeutiger Bezeichner (GUID), bei dem es sich um die Korrelations-ID des Complianceberichts handelt. |
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Eine Übersicht finden Sie unter [Übersicht über Azure Automation State Configuration](automation-dsc-overview.md).
 - Eine Einführung finden Sie unter [Erste Schritte mit Azure Automation State Configuration](automation-dsc-getting-started.md).
-- Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation DSC](automation-dsc-compile.md).
+- Wie Sie DSC-Konfigurationen kompilieren und sie anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation State Configuration](automation-dsc-compile.md).
 - Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
 - Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
-- Ein Verwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment mit Azure Automation State Configuration und Chocolatey](automation-dsc-cd-chocolatey.md).
+- Ein Anwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Einrichten von Continuous Deployment mit Chocolatey](automation-dsc-cd-chocolatey.md).
 - Weitere Informationen zum Erstellen verschiedener Suchabfragen und zur Überprüfung der Automation State Configuration-Protokolle mit Azure Monitor-Protokolle finden Sie unter [Protokollsuchen in Azure Monitor-Protokollen](../log-analytics/log-analytics-log-searches.md).
 - Weitere Informationen zu Azure Monitor-Protokolle und Datensammlungsquellen finden Sie unter [Sammeln von Azure Storage-Daten in Azure Monitor-Protokolle – Übersicht](../azure-monitor/platform/collect-azure-metrics-logs.md).

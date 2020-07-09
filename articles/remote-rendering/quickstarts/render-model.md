@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b0af45ba4a6b1ca7f9e751af082ff0db80776ec0
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ed533f571ada4cacf053157b397cca07cd65e6f8
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677685"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300571"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Schnellstart: Rendern eines Modells mit Unity
 
@@ -32,9 +32,12 @@ Sie müssen zunächst ein [Konto erstellen](../how-tos/create-an-account.md), um
 Die folgende Software muss installiert werden:
 
 * Windows SDK 10.0.18362.0 [(Download)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* Aktuelle Version von Visual Studio 2019 [(Download)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* Git [(Download)](https://git-scm.com/downloads)
-* Unity 2019.3.1 [(Download)](https://unity3d.com/get-unity/download)
+* Aktuelle Version von Visual Studio 2019 [(herunterladen)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* [Visual Studio-Tools für Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Insbesondere sind die folgenden *Workloadinstallationen* obligatorisch:
+  * **Desktopentwicklung mit C++**
+  * **Entwicklung für die universelle Windows-Plattform (UWP)**
+* Git [(herunterladen)](https://git-scm.com/downloads)
+* Unity 2019.3.1 [(herunterladen)](https://unity3d.com/get-unity/download)
   * Installieren Sie in Unity diese Module:
     * **UWP**: Buildunterstützung für Universelle Windows-Plattform
     * **IL2CPP**: Windows-Buildunterstützung (IL2CPP)
@@ -66,7 +69,7 @@ Das von uns gerenderte Standardmodell ist ein [integriertes Beispielmodell](../s
 
 1. Navigieren Sie im Unity-Ressourcenbrowser zum Ordner *Scenes* (Szenen), und öffnen Sie die Szene **Quickstart**.
 1. Wählen Sie unter *Hierarchy* (Hierarchie) das Spielobjekt **RemoteRendering** aus.
-1. Geben Sie unter *Inspector* Ihre [Kontoanmeldeinformationen](../how-tos/create-an-account.md) ein.
+1. Geben Sie unter *Inspector* Ihre [Kontoanmeldeinformationen](../how-tos/create-an-account.md) ein. Wenn Sie noch kein Konto besitzen, [erstellen Sie eines](../how-tos/create-an-account.md).
 
 ![ARR-Kontoinformationen](./media/arr-sample-account-info.png)
 

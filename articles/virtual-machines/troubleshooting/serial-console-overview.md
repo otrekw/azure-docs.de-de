@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231942"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656483"
 ---
 # <a name="azure-serial-console"></a>Serielle Azure-Konsole
 
@@ -66,6 +66,10 @@ Die serielle Konsole ist für VM-Skalierungsgruppen verfügbar und in jeder Inst
   1. Klicken Sie im Abschnitt **Support + Problembehandlung** auf **Serielle Konsole**. Ein neuer Bereich mit der seriellen Konsole wird geöffnet, und die Verbindung wird hergestellt.
 
      ![Serielle Konsole für Linux-VM-Skalierungsgruppe](./media/virtual-machines-serial-console/vmss-start-console.gif)
+
+
+### <a name="tls-12-in-serial-console"></a>TLS 1.2 in der seriellen Konsole
+Die serielle Konsole verwendet an jedem Punkt TLS 1.2, um die gesamte Kommunikation im Dienst abzusichern. Die serielle Konsole weist eine Abhängigkeit von einem vom Benutzer verwalteten Speicherkonto zur Startdiagnose auf. Außerdem muss TLS 1.2 für das Speicherkonto separat konfiguriert werden. Anweisungen dazu finden Sie [hier](https://docs.microsoft.com/azure/storage/common/storage-security-tls).
 
 ## <a name="advanced-uses-for-serial-console"></a>Erweiterte Nutzung der seriellen Konsole
 Neben dem Konsolenzugriff auf Ihren virtuellen Computer können Sie die serielle Azure-Konsole für Folgendes verwenden:

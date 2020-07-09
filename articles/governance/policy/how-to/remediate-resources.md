@@ -3,12 +3,12 @@ title: Korrigieren nicht konformer Ressourcen
 description: Dieser Leitfaden führt Sie schrittweise durch den Korrekturprozess von Ressourcen, die mit Richtlinien in Azure Policy nicht konform sind.
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: f4846b6eb1ea03c6706a610cab16ec376d19b060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acdb067e888ecbe68e3221944568b202f2510c41
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195229"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849959"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
@@ -180,6 +180,10 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 ```
 
 Andere Cmdlets zur Wartung und Beispiele finden Sie im [Az.PolicyInsights](/powershell/module/az.policyinsights/#policy_insights)-Modul.
+
+### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>Erstellen eines Wartungstasks während der Richtlinienzuweisung im Azure-Portal
+
+Eine optimierte Möglichkeit zum Erstellen eines Wartungstasks besteht während der Richtlinienzuweisung über das Azure-Portal. Wenn die zuzuweisende Richtliniendefinition ein **deployIfNotExists**- oder **modify**-Effekt ist, enthält der Assistent auf der Registerkarte **Wartung** eine Option _Wartungstask erstellen_. Bei Auswahl dieser Option wird ein Wartungstask gleichzeitig mit der Richtlinienzuweisung erstellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

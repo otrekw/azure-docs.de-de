@@ -9,12 +9,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
 ms.custom: mqtt
-ms.openlocfilehash: 1c6af4f44cd16405d1ef12ae909085220b0d072d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 63fa7481b96f8a606893b76b66f8c414a54cdb82
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733599"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714813"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub
 
@@ -354,7 +354,7 @@ Sie können [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemNam
 
     ![Festlegen der Azure IoT Hub-Verbindungszeichenfolge](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
 
-1. Erweitern Sie den Bereich **AZURE IOT HUB DEVICES** (AZURE IOT HUB-GERÄTE) auf der rechten Seite, klicken Sie mit der rechten Maustaste auf den Namen des von Ihnen erstellten Geräts, und wählen Sie **Start Monitoring Built-in Event Endpoint** (Überwachung von integrierten Ereignisendpunkten starten) aus.
+1. Erweitern Sie den Bereich **AZURE IOT HUB DEVICES** (AZURE IOT HUB-GERÄTE) auf der linken Seite, klicken Sie mit der rechten Maustaste auf den Namen des von Ihnen erstellten Geräts, und wählen Sie **Start Monitoring Built-in Event Endpoint** (Überwachung von integrierten Ereignisendpunkten starten) aus.
 
     ![D2C-Nachrichten überwachen](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/monitor-d2c.png)
 

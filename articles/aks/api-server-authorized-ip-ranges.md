@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ihre Cluster durch Verwendung von IP-Adressbe
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 570d842409fc019d24446e091f83402f4c288d7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45f82d5a6531b2a9584140d6ff309a799656926a
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81640053"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299569"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Sicherer Zugriff auf den API-Server mit autorisierten IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Weitere Informationen zum API-Server und anderen Clusterkomponenten finden Sie u
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>Erstellen eines AKS-Clusters mit aktivierten vom API-Server autorisierten IP-Adressbereichen
 
-Vom API-Server autorisierte IP-Adressbereiche funktionieren nur für neue AKS-Cluster. Erstellen Sie mithilfe von [az aks create][az-aks-create] einen Cluster, und geben Sie den Parameter *--api-server-authorized-ip-ranges* an, um eine Liste mit autorisierten IP-Adressbereichen bereitzustellen. Dabei handelt es sich in der Regel um IP-Adressbereiche, die von lokalen Netzwerken oder öffentlichen IP-Adressen verwendet werden. Wenn Sie einen CIDR-Bereich angeben, beginnen Sie mit der ersten IP-Adresse im Bereich. *137.117.106.90/29* ist z.B. ein gültiger Bereich, aber stellen Sie sicher, dass Sie die erste IP-Adresse im Bereich angeben, z.B. *137.117.106.88/29*.
+Vom API-Server autorisierte IP-Adressbereiche funktionieren nur für neue AKS-Cluster und werden für private AKS-Cluster nicht unterstützt. Erstellen Sie mithilfe von [az aks create][az-aks-create] einen Cluster, und geben Sie den Parameter *--api-server-authorized-ip-ranges* an, um eine Liste mit autorisierten IP-Adressbereichen bereitzustellen. Dabei handelt es sich in der Regel um IP-Adressbereiche, die von lokalen Netzwerken oder öffentlichen IP-Adressen verwendet werden. Wenn Sie einen CIDR-Bereich angeben, beginnen Sie mit der ersten IP-Adresse im Bereich. *137.117.106.90/29* ist z.B. ein gültiger Bereich, aber stellen Sie sicher, dass Sie die erste IP-Adresse im Bereich angeben, z.B. *137.117.106.88/29*.
 
 > [!IMPORTANT]
 > Der Cluster verwendet standardmäßig den [Lastenausgleich mit einer Standard-SKU][standard-sku-lb], den Sie zum Konfigurieren des Ausgangsgateways verwenden können. Wenn Sie vom API-Server autorisierte IP-Adressbereiche bei der Clustererstellung aktivieren, wird neben den von Ihnen angegebenen Bereichen standardmäßig auch die öffentliche IP-Adresse für Ihren Cluster zugelassen. Wenn Sie *""* oder keinen Wert für *--api-server-authorized-ip-ranges* angeben, werden vom API-Server autorisierte IP-Adressbereiche deaktiviert. Geben Sie bei Verwendung von PowerShell *--api-server-authorized-ip-ranges=""* (mit Gleichheitszeichen) ein, um Analysefehler zu vermeiden.
@@ -133,7 +133,7 @@ Weitere Informationen finden Sie unter [Sicherheitskonzepte für Anwendungen und
 
 <!-- LINKS - external -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
-[dev-spaces-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
+[dev-spaces-ranges]: ../dev-spaces/configure-networking.md#aks-cluster-network-requirements
 [kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
 
 <!-- LINKS - internal -->

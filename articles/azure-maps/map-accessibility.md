@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 5fa9e159fa0ac76ce8c585936059fb7f3151c7c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473318"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648576"
 ---
 # <a name="building-an-accessible-application"></a>Erstellen einer zugänglichen Anwendung
 
@@ -28,6 +28,7 @@ Das Azure Maps Web SDK enthält zahlreiche Funktionen zur Barrierefreiheit wie d
 - Beschreibungen bei der Sprachausgabe, wenn die Karte verschoben wird und der Benutzer auf ein Steuerelement oder ein Popup fokussiert
 - Maus-, Berührungs- und Tastaturunterstützung
 - Unterstützung für Farbkontraste beim Stil von Straßenkarten
+- Unterstützung für hohen Kontrast
 
 Sämtliche Details zur Konformität bei der Barrierefreiheit zu allen Microsoft-Produkten finden Sie [hier](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/). Suchen Sie nach „Azure Maps Web“, um das spezielle Dokument zum Azure Maps Web SDK zu finden. 
 

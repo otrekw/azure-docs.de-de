@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: eb7bb7933303aaf16f320e219ad3673bf1efde72
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 59983530d93885f28dfb1625ca6d58fe572609b8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82564658"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080480"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>Tutorial: Transformieren von Daten mit Azure Stack Edge für den erweiterten Bereitstellungsablauf
 
@@ -22,7 +22,7 @@ In diesem Tutorial wird beschrieben, wie Sie eine Computerolle für einen erweit
 
 Compute kann für einfachen oder erweiterten Bereitstellungsablauf auf Ihrem Gerät konfiguriert werden.
 
-|                  | Einfache Bereitstellung                                | Erweiterte Bereitstellung                   |
+| Kriterien | Einfache Bereitstellung                                | Erweiterte Bereitstellung                   |
 |------------------|--------------------------------------------------|---------------------------------------|
 | Vorgesehen für     | IT-Administratoren                                | Entwickler                            |
 | type             | Verwenden des Azure Stack Edge-Diensts zum Bereitstellen von Modulen      | Verwenden des IoT Hub-Diensts zum Bereitstellen von Modulen |
@@ -215,9 +215,9 @@ In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln e
 
         ![Hinzufügen eines benutzerdefinierten Moduls](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
  
-5.    Legen Sie unter **Routen angeben** die Routen zwischen den Modulen fest.  
-    
-    ![Abschnitt „Routen angeben“](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
+5. Legen Sie unter **Routen angeben** die Routen zwischen den Modulen fest.  
+   
+   ![Abschnitt „Routen angeben“](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
 
     Sie können *route* durch die nachstehende „route“-Zeichenfolge ersetzen, die Sie zuvor kopiert haben. Geben Sie in diesem Beispiel den Namen der lokalen Freigabe ein, über die Daten per Pushvorgang an die Cloudfreigabe übertragen werden. Ersetzen Sie `modulename` durch den Namen des Moduls. Wählen Sie **Weiter** aus.
         
@@ -227,9 +227,9 @@ In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln e
 
     ![Abschnitt „Routen angeben“](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-8.png)
 
-6.    Sehen Sie sich unter **Bereitstellung prüfen** alle Einstellungen an, und wählen Sie dann **Übermitteln**, um das Modul für die Bereitstellung zu übermitteln.
+6. Sehen Sie sich unter **Bereitstellung prüfen** alle Einstellungen an, und wählen Sie dann **Übermitteln**, um das Modul für die Bereitstellung zu übermitteln.
 
-    ![Seite „Module festlegen“](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
+   ![Seite „Module festlegen“](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
     Diese Aktion startet die Bereitstellung des Moduls. Nach Abschluss der Bereitstellung lautet der **Laufzeitstatus** des Moduls **Wird ausgeführt**.
 
@@ -241,13 +241,13 @@ Im letzten Schritt wird sichergestellt, dass das Modul verbunden ist und wie erw
 
 Führen Sie die folgenden Schritte aus, um die Datentransformation und -übertragung an Azure zu überprüfen.
  
-1.    Stellen Sie im Datei-Explorer eine Verbindung mit den lokalen und anderen Edgefreigaben her, die Sie zuvor erstellt haben.
+1. Stellen Sie im Datei-Explorer eine Verbindung mit den lokalen und anderen Edgefreigaben her, die Sie zuvor erstellt haben.
 
-    ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-2.png)
+   ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-2.png)
  
-1.    Fügen Sie der lokalen Freigabe Daten hinzu.
+1. Fügen Sie der lokalen Freigabe Daten hinzu.
 
-    ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
+   ![Überprüfen der Datentransformation](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
  
     Die Daten werden auf die Cloudfreigabe verschoben.
 

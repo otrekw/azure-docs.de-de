@@ -11,6 +11,8 @@
       href: virtual-machines-availability-set-supportability.md
 - name: VM-Bereitstellungsleitfaden
   items:
+    - name: Aktualisieren auf SLES 15 SP1
+      href: linux-upgrade-suse-15sp1.md
     - name: Neue VM-Bereitstellungen
       items:
         - name: Linux
@@ -67,6 +69,8 @@
       items:
         - name: Startdiagnose
           href: boot-diagnostics.md
+        - name: 'Startfehler: Fehler beim Lesen des Datenträgers'
+          href: boot-error-disk-read-error-occurred.md
         - name: BitLocker-Fehler
           href: troubleshoot-bitlocker-boot-error.md
         - name: Bluescreen-Fehler
@@ -87,6 +91,8 @@
           href: troubleshoot-reboot-loop.md
         - name: Bleibt bei Windows-Update hängen
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: Unerwarteter Neustart oder Fehler
+          href: troubleshoot-unexpected-restart-error-during-vm-boot.md
         - name: Der virtuelle Computer bleibt beim Starten hängen.
           href: troubleshoot-vm-boot-configure-update.md
         - name: Der virtuelle Computer kann aufgrund des Windows-Start-Managers nicht gestartet werden.
@@ -95,6 +101,10 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: 'Der virtuelle Computer reagiert nicht, wenn eine Gruppenrichtlinie angewendet wird.'
           href: unresponsive-vm-apply-group-policy.md
+        - name: 'Der virtuelle Computer reagiert nicht, wenn eine Sicherheitsrichtlinie angewendet wird.'
+          href: unresponsive-vm-apply-security-policy.md
+        - name: 'Windows-kritischer Fehler: Status „Nicht genügend Arbeitsspeicher“'
+          href: troubleshoot-windows-stop-error.md
 - name: Es kann keine Verbindung mit meinem virtuellen Computer hergestellt werden
   items:
     - name: RDP
@@ -190,6 +200,8 @@
       href: storage-resource-deletion-errors.md
     - name: Fehler beim Löschen von klassischen Speicherressourcen
       href: storage-classic-cannot-delete-storage-account-container-vhd.md
+    - name: 'VHD wird nicht unterstützt, wenn Sie einen virtuellen Computer in Azure erstellen.'
+      href: vhd-not-supported-vm-azure.md
     - name: Verwenden der geschachtelten Virtualisierung
       href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: VM-Leistungsprobleme

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 27d9b12d9e1a0237050243c2b5f07edaa8d8857a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0035d367017c92bd151c27e14d744ef41eace069
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72757188"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800147"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Moderieren von Bildern mit benutzerdefinierten Bildlisten in der API-Konsole
 
@@ -77,15 +77,17 @@ Nachdem Sie eine Bildliste geändert haben, müssen Sie den zugehörigen Index a
 
 6. Verwenden Sie Platzhalter für Schlüssel-Wert-Paare, um Ihrer Liste aussagekräftigere Metadaten zuzuweisen.
 
-       {
-          "Name": "MyExclusionList",
-          "Description": "MyListDescription",
-          "Metadata": 
-          {
+    ```json
+    {
+        "Name": "MyExclusionList",
+        "Description": "MyListDescription",
+        "Metadata": 
+        {
             "Category": "Competitors",
             "Type": "Exclude"
-          }
-       }
+        }
+    }
+    ```
 
    Fügen Sie Metadaten als Schlüssel-Wert-Paare und nicht als tatsächliche Bilder hinzu.
  

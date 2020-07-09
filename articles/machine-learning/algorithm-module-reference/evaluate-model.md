@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: cf9597f4a722ff9cda68e87b31db77c989afcb0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e522291bdf1982ff65a62f028107b15b3249898c
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129851"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847411"
 ---
 # <a name="evaluate-model-module"></a>Modul „Evaluate Model“
 
@@ -34,9 +34,13 @@ Mithilfe dieses Moduls können Sie die Genauigkeit eines trainierten Modells mes
 
 
 ## <a name="how-to-use-evaluate-model"></a>Verwenden von Evaluate Model
-1. Verbinden Sie die Ausgabe **Scored dataset** (Dataset mit Score) des Moduls [Score Model](./score-model.md) mit dem linken Eingang des Moduls **Evaluate Model**. 
+1. Verbinden Sie die **Bewertetes Dataset**-Ausgabe des [Bewertungsmodells](./score-model.md) oder die Ergebnisdataset-Ausgabe von [Zuweisen von Daten zu Clustern](./assign-data-to-clusters.md) mit dem linken Eingangsport von **Evaluate Model** (Bewerten eines Modells). 
+  > [!NOTE] 
+  > Wenn Sie Module wie „Select Columns in Dataset“ (Spalten im Dataset auswählen) verwenden, um einen Teil des Eingabedatasets auszuwählen, stellen Sie sicher, dass die Spalte „Actual label“ (im Training verwendet), die Spalte „Scored Probabilities“ und die Spalte „Scored Labels“ vorhanden sind, um Metriken wie AUC, Genauigkeit für binäre Klassifizierung/Anomalieerkennung zu berechnen.
+  > Die Spalten „Actual label“ und „Scored Labels“ sind vorhanden, um Metriken für die mehrklassige Klassifizierung/Regression zu berechnen.
+  > Die Spalte „Assignments“ und die Spalten „DistancesToClusterCenter no.X“ (X ist der Schwerpunktindex, der von 0 bis zur Anzahl der Schwerpunkte minus 1 reicht) sind vorhanden, um Metriken für das Clustering zu berechnen.
 
-2. [Optional:] Verbinden Sie die Ausgabe **Scored dataset** (Dataset mit Score) von [Score Model](./score-model.md) für das zweite Modell mit dem **rechten** Eingang von **Evaluate Model**. Sie können die Ergebnisse zweier verschiedener Modelle auf der Grundlage derselben Daten einfach vergleichen. Die beiden Eingabealgorithmen sollten denselben Algorithmustyp aufweisen. Sie können auch Ergebnisse zweier verschiedener Ausführungen über dieselben Daten mit unterschiedlichen Parametern vergleichen.
+2. [Optional] Verbinden Sie die **Bewertetes Dataset**-Ausgabe des [Bewertungsmodells](./score-model.md) oder die Ergebnisdataset-Ausgabe von „Zuweisen von Daten zu Clustern“ für das zweite Modell mit dem **rechten** Eingangsport von **Evaluate Model** (Bewerten eines Modells). Sie können die Ergebnisse zweier verschiedener Modelle auf der Grundlage derselben Daten einfach vergleichen. Die beiden Eingabealgorithmen sollten denselben Algorithmustyp aufweisen. Sie können auch Ergebnisse zweier verschiedener Ausführungen über dieselben Daten mit unterschiedlichen Parametern vergleichen.
 
     > [!NOTE]
     > Als Algorithmustyp sind zweiklassige Klassifizierung, mehrklassige Klassifizierung, Regression oder Clustering unter den Algorithmen für maschinelles Lernen möglich. 
@@ -45,7 +49,7 @@ Mithilfe dieses Moduls können Sie die Genauigkeit eines trainierten Modells mes
 
 ## <a name="results"></a>Ergebnisse
 
-Klicken Sie nach der Ausführung von **Evaluate Model** mit der rechten Maustaste auf das Modul, und wählen Sie **Visualize Evaluation results** (Auswertungsergebnisse visualisieren) aus, um die Ergebnisse anzuzeigen.
+Nachdem Sie **Evaluate Model** (Bewerten eines Modells) ausgeführt haben, wählen Sie das Modul, um den **Evaluate Model**-Navigationsbereich auf der rechten Seite zu öffnen.  Wählen Sie dann die Registerkarte **Ausgaben und Protokolle** aus. Auf der Registerkarte weist der Abschnitt **Datenausgaben** verschiedene Symbole auf.   Das Symbol **Visualisieren** besitzt ein Balkendiagrammsymbol und stellt eine erste Möglichkeit dar, um die Ergebnisse anzuzeigen.
 
 Wenn Sie Datasets mit beiden Eingaben von **Evaluate Model** verbinden, enthalten die Ergebnisse Metriken für beide Datasets bzw. beide Modelle.
 Das Modell oder die Daten, die an den linken Port angefügt wurden, werden zuerst im Bericht dargestellt, gefolgt von den Metriken für das Dataset oder das Modell, das an den rechten Port angefügt wurde.  

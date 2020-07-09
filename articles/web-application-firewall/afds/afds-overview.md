@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 02/01/2020
+ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a437e474a923edc15689639b7180ebed73242bb5
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77915638"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816368"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application Firewall für Azure Front Door
 
@@ -26,7 +26,7 @@ WAF vereitelt Angriffe in der Nähe der Angriffsquellen, bevor sie Ihr virtuelle
 
 ## <a name="waf-policy-and-rules"></a>WAF-Richtlinien und -Regeln
 
-Sie können eine WAF-Richtlinie konfigurieren und diese Richtlinie einem oder mehreren Front Door-Front-Ends als Schutz zuordnen. Eine WAF-Richtlinie besteht aus zwei verschiedenen Arten von Sicherheitsregeln:
+Sie können eine [WAF-Richtlinie](waf-front-door-create-portal.md) konfigurieren und diese Richtlinie einem oder mehreren Front Door-Front-Ends als Schutz zuordnen. Eine WAF-Richtlinie besteht aus zwei verschiedenen Arten von Sicherheitsregeln:
 
 - benutzerdefinierte Regeln, die vom Kunden erstellt werden
 

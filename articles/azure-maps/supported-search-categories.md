@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 9dbcae6e3947576a7d2bc204c2a3a6fb2e95953d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4975a5842ef23b54444663f653f43bb8dbd1d2c1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988285"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745980"
 ---
 # <a name="azure-maps-supported-categories"></a>Unterstützte Kategorien in Azure Maps
 
@@ -24,7 +24,7 @@ Zum Erstellen einer [Suchkategorie](https://docs.microsoft.com/rest/api/maps/sea
 | **Kategoriecode** | **Dem Code entsprechende Kategorien** |
 | --- | --- |
 | ACCESS\_GATEWAY | Zugang von Fluggesellschaften, Sicherheitstor, Bahnhofzugang, Access Gateway |
-| ADMINISTRATIVE\_DIVISION | Kanton, Verwaltungseinheit vierter Ordnung, Verwaltungseinheit erster Ordnung, historische Verwaltungseinheit dritter Ordnung, Sitz einer Verwaltungseinheit vierter Ordnung, Sitz einer Verwaltungseinheit zweiter Ordnung, abhängige politische Entität, besiedelter Ort, Sitz einer Verwaltungseinheit dritter Ordnung, besiedelte Orte, Verwaltungseinheit zweiter Ordnung, Sitz einer Verwaltungseinheit erster Ordnung, Verwaltungseinheit, besiedelte Örtlichkeit, historische Region, historische Site, historischer besiedelter Ort, israelische Siedlung, historische Verwaltungseinheit vierter Ordnung, Verwaltungseinheit fünfter Ordnung, historische Verwaltungseinheit erster Ordnung, Verwaltungseinheit dritter Ordnung, historische politische Entität, historische Verwaltungseinheit, Regierungssitz einer politischen Entität, historische Verwaltungseinheit zweiter Ordnung, Hauptstadt einer politischen Einheit |
+| ADMINISTRATIVE\_DIVISION | Kanton, Verwaltungseinheit vierter Ordnung, Verwaltungseinheit erster Ordnung, historische Verwaltungseinheit dritter Ordnung, Sitz einer Verwaltungseinheit vierter Ordnung, Sitz einer Verwaltungseinheit zweiter Ordnung, abhängige politische Entität, besiedelter Ort, Sitz einer Verwaltungseinheit dritter Ordnung, besiedelte Orte, Verwaltungseinheit zweiter Ordnung, Sitz einer Verwaltungseinheit erster Ordnung, Verwaltungseinheit, besiedelte Örtlichkeit, historische Region, historische Site, historischer besiedelter Ort, israelische Siedlung, historische Verwaltungseinheit vierter Ordnung, Verwaltungseinheit fünfter Ordnung, historische Verwaltungseinheit erster Ordnung, Verwaltungseinheit dritter Ordnung, historische politische Entität, historische Verwaltungseinheit, Regierungssitz einer politischen Entität, historische Verwaltungseinheit zweiter Ordnung, Hauptstadt/Großstadt einer politischen Einheit |
 | ADVENTURE\_SPORT\_VENUE | Erlebnissportanlage |
 | AGRICULTURE | Gartenbau, Rohstoffproduzent, Landwirtschaft, Bauernhof, Bauerndorf, Gehöft, Eigenheim, Weidefläche, Allgemein, Aquakulturanlage, Bauernhöfe, Angelplatz, Milchprodukte, Feld(er) |
 | AIRPORT | private Behörde, Militärbehörde, Heliport, geschlossen, mittlerer Flughafen, großer Flughafen, kleiner Flughafen, Flugplatz, Basis für Wasserflugzeuge, Behörde, Basis für Heißluftballons, Flughafen |

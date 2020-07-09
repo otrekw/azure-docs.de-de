@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: f91ee5654b4add37d3cce4f875be1f9c2b398ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259492"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197041"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Beheben von Problemen bei der Replikation von VMware-VMs und physischen Servern
 
@@ -77,7 +77,7 @@ So lösen Sie das Problem:
     - Navigieren Sie zum Blatt „Datenträger“ des betroffenen replizierten Computers, und kopieren Sie den Replikatdatenträgernamen.
     - Navigieren Sie zu diesem verwalteten Replikatdatenträger.
     - Auf dem Blatt „Übersicht“ wird möglicherweise ein Banner angezeigt, das besagt, dass eine SAS-URL generiert wurde. Klicken Sie auf dieses Banner, und brechen Sie den Export ab. Ignorieren Sie diesen Schritt, wenn das Banner nicht angezeigt wird.
-    - Sobald die SAS-URL aufgehoben wurde, wechseln Sie zum Blatt „Konfiguration“ des verwalteten Datenträgers, und vergrößern Sie diesen so, dass ASR die ermittelte Datenänderungsrate auf dem Quelldatenträger unterstützt.
+    - Nachdem die SAS-URL widerrufen wurde, wechseln Sie zum Blatt „Konfiguration“ des verwalteten Datenträgers und vergrößern diesen so, dass Azure Site Recovery die ermittelte Datenänderungsrate auf dem Quelldatenträger unterstützt.
 - Wenn die erkannte erhöhte Änderungsrate nur vorrübergehend ist, warten Sie einigen Stunden ab, damit alle ausstehenden Daten hochgeladen werden. Dann können Sie einen Wiederherstellungspunkt erstellen.
 - Wenn der Datenträger unkritische Daten wie temporäre Protokolle, Testdaten usw. enthält, erwägen Sie, diese Daten an einen anderen Ort zu verschieben oder den gesamten Datenträger von der Replikation auszuschließen.
 - Wenn das Problem weiterhin besteht, können Sie die Replikation mithilfe des [Bereitstellungsplaners](site-recovery-deployment-planner.md#overview) von Site Recovery planen.
@@ -146,6 +146,8 @@ Einige der häufigsten Probleme sind nachfolgend aufgeführt:
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Ursache 3: Bekanntes Problem in SQL Server 2016 und 2017
 **Problembehandlung**: Referenz-KB-[Artikel](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>Ursache 4: App-Konsistenz ist auf Linux-Servern nicht aktiviert
+**Problembehandlung**: Azure Site Recovery für Linux-Betriebssysteme unterstützt benutzerdefinierte Anwendungsskripts für App-Konsistenz. Das benutzerdefinierte Skript mit „Pre“- und „Post“-Optionen wird vom Mobilitäts-Agent von Azure Site Recovery für die App-Konsistenz verwendet. Die Schritte für die Aktivierung finden Sie [hier](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication).
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>Weitere Ursachen aufgrund von VSS-bezogenen Problemen:
 
@@ -167,7 +169,7 @@ Weitere Informationen finden Sie im [Artikel zur Problembehandlung bei der VSS W
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS Writer ist deaktiviert – Fehler 2147943458
 
-**Problembehandlung**: Azure Site Recovery verwendet den Microsoft-VSS (Volumeschattenkopie-Dienst), um Tags für die Anwendungskonsistenz zu erstellen. Es installiert einen VSS-Anbieter für den Betrieb, um Momentaufnahmen zur Anwendungskonsistenz zu erstellen. Dieser VSS-Anbieter wird als Dienst installiert. Falls der VSS-Anbieterdienst deaktiviert ist, tritt bei der Erstellung der Momentaufnahme zur Anwendungskonsistenz ein Fehler mit der ID „Der angegebene Dienst ist deaktiviert und kann nicht gestartet werden (0x80070422)“ auf. </br>
+**Problembehandlung**: Azure Site Recovery verwendet den Microsoft-VSS (Volumeschattenkopie-Dienst), um Tags für die Anwendungskonsistenz zu erstellen. Es installiert einen VSS-Anbieter für den Betrieb, um Momentaufnahmen zur Anwendungskonsistenz zu erstellen. Dieser VSS-Anbieter wird als Dienst installiert. Falls der VSS-Anbieterdienst deaktiviert ist, tritt bei der Erstellung der Momentaufnahme zur Anwendungskonsistenz ein Fehler mit der ID „0x80070422“ auf – „Der angegebene Dienst ist deaktiviert und kann nicht gestartet werden“. </br>
 
 - Wenn VSS deaktiviert ist:
     - Stellen Sie sicher, dass der Starttyp des VSS-Anbieterdiensts auf **Automatic** (Automatisch) festgelegt ist.
@@ -193,4 +195,4 @@ Stellen Sie sicher, dass der Starttyp des VSS-Anbieterdiensts auf **Automatic** 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie weitere Hilfe benötigen, können Sie Ihre Frage im [Azure Site Recovery-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) veröffentlichen. Unsere Community ist sehr aktiv, und einer unserer Techniker kann Sie bei Ihrem Problem unterstützen.
+Wenn Sie weitere Hilfe benötigen, können Sie Ihre Frage auf der [Microsoft F&A-Seite für Azure Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html) veröffentlichen. Unsere Community ist sehr aktiv, und einer unserer Techniker kann Sie bei Ihrem Problem unterstützen.

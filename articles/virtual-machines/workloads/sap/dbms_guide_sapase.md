@@ -16,10 +16,9 @@ ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81273204"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – SAP ASE-DBMS-Bereitstellung für SAP-Workload
@@ -231,9 +230,9 @@ Wie bei lokalen Systemen sind einige Schritte erforderlich, um die gesamte SAP N
 
 Die im Transaktions-DBACockpit generierten Links ähneln den folgenden Links:
 
-> https:\//\<vollqualifizierterhostname>:44300/sap/bc/webdynpro/sap/dba_cockpit
+> https:\//\<fullyqualifiedhostname>:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
-> http:\//\<vollqualifizierterhostname>:8000/sap/bc/webdynpro/sap/dba_cockpit
+> http:\//\<fullyqualifiedhostname>:8000/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > 
 

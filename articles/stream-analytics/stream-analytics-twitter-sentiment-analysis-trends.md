@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 4b265bb574895e4728ad93ee25c9dad0da226ea4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5569e7e3a33c4f1bbbd3214e742b0cb889c65e31
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240305"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040774"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Twitter-Standpunktanalyse in Echtzeit in Azure Stream Analytics
 
@@ -56,7 +56,7 @@ In diesem Abschnitt erstellen Sie einen Event Hub-Namespace und fügen diesem Na
  
 4. Wenn die Bereitstellung des Namespace abgeschlossen ist, navigieren Sie zu Ihrer Ressourcengruppe, und suchen Sie in Ihrer Liste der Azure-Ressourcen den Event Hub-Namespace. 
 
-5. Wählen Sie im neuen Namespace **+Event Hub&nbsp;** aus. 
+5. Wählen Sie im neuen Namespace **+&nbsp;Event Hub** aus. 
 
 6. Nennen Sie den neuen Event Hub *socialtwitter-eh*. Sie können auch einen anderen Namen verwenden. In diesem Fall sollten Sie sich den Namen notieren, da Sie ihn später noch benötigen. Sie müssen keine weiteren Optionen für den Event Hub festlegen.
  
@@ -159,7 +159,7 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen von Twitter in Echtzeit haben
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Eingabealias| *TwitterStream* | Geben Sie einen Alias für die Eingabe ein. |
-   |Subscription  | \<Ihr Abonnement\> |  Wählen Sie das gewünschte Azure-Abonnement aus. |
+   |Subscription  | \<Your subscription\> |  Wählen Sie das gewünschte Azure-Abonnement aus. |
    |Event Hub-Namespace | *asa-twitter-eventhub* |
    |Event Hub-Name | *socialtwitter-eh* | Wählen Sie *Vorhandene verwenden* aus. Wählen Sie dann den erstellten Event Hub aus.|
    |Typ der Ereigniskomprimierung| GZip | Der Datenkomprimierungstyp.|
@@ -225,7 +225,7 @@ Es werden eine Auftragseingabe, eine Abfrage und eine Ausgabe angegeben. Sie kö
 3. Wählen Sie auf der Seite **Auftrag starten** für **Startzeit der Auftragsausgabe** die Option **Jetzt** aus, und wählen Sie dann **Starten** aus.
 
 ## <a name="get-support"></a>Support
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Weitere Unterstützung finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

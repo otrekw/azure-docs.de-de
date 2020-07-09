@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: aae3f8b1cfe224f0a948eb16bd6ee5120b19dde1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 99393ed518df590140f79933623a9f7ec96edc85
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612077"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402290"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurieren der Beschleunigung durch Graphics Processing Units (GPUs) für Windows Virtual Desktop
 
@@ -96,5 +96,5 @@ So können Sie überprüfen, ob der Remotedesktop die durch GPU beschleunigte Co
 
 Anhand der beschriebenen Anweisungen sollten Sie nun die GPU-Beschleunigung auf einem Sitzungshost (einer VM) verwenden können. Für das Verwenden der GPU-Beschleunigung für einen größeren Hostpool können Sie folgende Aspekte in Erwägung ziehen:
 
-* Ziehen Sie die Verwendung einer [VM-Erweiterung](/azure/virtual-machines/extensions/overview) in Betracht, um die Treiberinstallation und Updates für mehrere VMs zu vereinfachen. Verwenden Sie die [NVIDIA-GPU-Treibererweiterung](/azure/virtual-machines/extensions/hpccompute-gpu-windows) für VMs mit NVIDIA-GPUs, und verwenden Sie die AMD-GPU-Treibererweiterung (in Kürze verfügbar) für VMs mit AMD-GPUs.
+* Ziehen Sie die Verwendung einer [VM-Erweiterung](/azure/virtual-machines/extensions/overview) in Betracht, um die Treiberinstallation und Updates für mehrere VMs zu vereinfachen. Verwenden Sie die [NVIDIA-GPU-Treibererweiterung](/azure/virtual-machines/extensions/hpccompute-gpu-windows) für VMs mit NVIDIA-GPUs, und verwenden Sie die [AMD-GPU-Treibererweiterung](/azure/virtual-machines/extensions/hpccompute-amd-gpu-windows) für VMs mit AMD-GPUs.
 * Die Verwendung einer Active Directory Domain Services-Gruppenrichtlinie, um die Konfiguration von Gruppenrichtlinien für mehrere VMs zu vereinfachen. Weitere Informationen zur Bereitstellung von Gruppenrichtlinien in der AD DS-Domäne finden Sie unter [Working with Group Policy Objects (Verwenden von Gruppenrichtlinienobjekten)](https://go.microsoft.com/fwlink/p/?LinkId=620889).

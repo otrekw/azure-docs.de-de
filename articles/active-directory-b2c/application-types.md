@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8328db12bde531c2e27936c09247611ff1a3583
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190142"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295421"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>In Active Directory B2C verwendbare Anwendungstypen
 
@@ -119,9 +119,11 @@ Bei diesem Ablauf führt die Anwendung [Richtlinien](user-flow-overview.md) aus 
 
 Anwendungen, die lang andauernde Prozesse enthalten oder ohne Benutzereingriff arbeiten, benötigen auch die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Anwendungen können mithilfe der Identität der Anwendung (anstelle der delegierten Benutzeridentität) und mithilfe des Clientanmeldeinformations-Flows von OAuth 2.0 die Authentifizierung durchführen und Token abrufen. Ein Clientanmeldeinformations-Flow ist nicht gleich einem „Im Auftrag von“-Ablauf, und in der „Im Auftrag von“-Ablauf sollte nicht für die Server-zu-Server-Authentifizierung verwendet werden.
 
-Obwohl der Clientanmeldeinformations-Flow zurzeit nicht von Azure AD B2C unterstützt wird, können Sie den Clientanmeldeinformations-Flow mithilfe von Azure AD einrichten. Ein Azure AD B2C-Mandant teilt sich einige Funktionen mit Azure AD-Unternehmensmandanten.  Der Clientanmeldeinformations-Flow wird mithilfe der Azure AD-Funktionen des Azure AD B2C-Mandanten unterstützt.
+Der Flow für die Gewährung von OAuth 2.0-Clientanmeldeinformationen wird derzeit nicht direkt vom Azure AD B2C-Authentifizierungsdienst unterstützt. Sie können den Clientanmeldeinformations-Flow jedoch mithilfe von Azure AD und Microsoft Identity Platform/Tokenendpunkt für eine Anwendung in Ihrem Azure AD B2C-Mandanten einrichten. Ein Azure AD B2C-Mandant teilt sich einige Funktionen mit Azure AD-Unternehmensmandanten.
 
 Informationen über das Einrichten des Clientanmeldeinformations-Flows finden Sie unter [Azure Active Directory v2.0 und der OAuth 2.0-Clientanmeldeinformations-Flow](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds). Bei einer erfolgreichen Authentifizierung wird ein formatiertes Token empfangen, sodass es von Azure AD wie in [Azure AD-Tokenreferenz](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) beschrieben verwendet werden kann.
+
+Anweisungen zum Registrieren einer Verwaltungsanwendung finden Sie unter [Verwalten von Azure AD B2C mit Microsoft Graph](microsoft-graph-get-started.md).
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web-API-Ketten („Im Auftrag von“-Ablauf)
 

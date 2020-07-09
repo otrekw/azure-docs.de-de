@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: aa8bd6e89dd47c4e972a860691d1bc3779ba5bc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78dde3f6706ecbc54daca162ac718911752fa0ca
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982312"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832961"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Allgemeine Abfragemuster in Azure Stream Analytics
 
@@ -56,7 +56,7 @@ INTO Output
 FROM Input
 ```
 
-Eine **SELECT***-Abfrage projiziert alle Felder eines eingehenden Ereignisses und sendet sie an die Ausgabe. Mit **SELECT-** können Sie auf dieselbe Weise nur erforderliche Felder aus der Eingabe projizieren. Wenn wie in diesem Beispiel nur die Felder *Make* und *Time* eines Fahrzeugs die einzigen erforderlichen Felder sind, die gespeichert werden müssen, können diese Felder in der **SELECT**-Anweisung angegeben werden.
+Eine **SELECT** *-Abfrage projiziert alle Felder eines eingehenden Ereignisses und sendet sie an die Ausgabe. Mit **SELECT-** können Sie auf dieselbe Weise nur erforderliche Felder aus der Eingabe projizieren. Wenn wie in diesem Beispiel nur die Felder *Make* und *Time* eines Fahrzeugs die einzigen erforderlichen Felder sind, die gespeichert werden müssen, können diese Felder in der **SELECT**-Anweisung angegeben werden.
 
 **Eingabe**:
 
@@ -618,7 +618,7 @@ Im Falle von unregelmäßigen oder fehlenden Ereignissen kann aus einer Eingabe 
 
 **Eingabe**:
 
-| Time | value |
+| Time | Wert |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -708,7 +708,7 @@ Wenn Sie einen Vorgang ausführen, wie z. B. die Berechnung von Durchschnittswe
 
 **Eingabe**:  
 
-| deviceId | Time | attribute | value |
+| deviceId | Time | attribute | Wert |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000Z |Temperatur |50 |
 | 1 |2018-07-27T00:00:01.0000000Z |Temperatur |50 |
@@ -930,7 +930,7 @@ Weitere Informationen finden Sie im Artikel [Geofencing and geospatial aggregati
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Weitere Unterstützung finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

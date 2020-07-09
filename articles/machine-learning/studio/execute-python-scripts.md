@@ -5,21 +5,19 @@ description: Erfahren Sie, wie Sie das Modul „Execute Python Script“ nutzen 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.custom: tracking-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: c79f6bd63fa5d8d8c6b22ff271d8ca513a94fd64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4afb6dca94642ab9b908a4f07ff5de56677626f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218082"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696302"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Ausführen von Python-Machine Learning-Skripts in Azure Machine Learning Studio (klassisch)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Python ist ein wertvolles Tool im Werkzeugkasten vieler Datenanalysten. Es wird in jeder Phase typischer Workflows beim maschinellen Lernen verwendet, einschließlich des Durchsuchens von Daten, der Featureextraktion, des Modelltrainings und der Modellvalidierung sowie der Bereitstellung.
 

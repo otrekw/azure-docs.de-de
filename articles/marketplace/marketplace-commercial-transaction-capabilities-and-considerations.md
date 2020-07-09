@@ -1,5 +1,5 @@
 ---
-title: Transaktionsfunktionen im kommerziellen Marketplace
+title: Transaktionsfunktionen im kommerziellen Microsoft Marketplace
 description: In diesem Artikel werden Überlegungen zur Preisgestaltung, Abrechnung, Rechnungsstellung und Auszahlung für die Transaktionsoption im kommerziellen Marketplace beschrieben.
 author: dsindona
 ms.service: marketplace
@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 4aeae69dd50e8c233a1903f6f2c7bd7795b8d7b9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 8818b06e84f6ffe05398087c4aaeba282adc8b2e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857216"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298209"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
@@ -53,7 +53,7 @@ Je nach verwendeter Transaktionsoption fallen folgende Softwarelizenzgebühren a
 - **Kostenlos**: Keine Kosten für Softwarelizenzen.
 - **Bring-Your-Own-License (BYOL, Verwendung Ihrer eigenen Lizenz)** : Alle anfallenden Gebühren für Softwarelizenzen werden direkt zwischen Herausgeber und Kunde geregelt. Microsoft wickelt nur die Nutzungsgebühren für Azure-Infrastruktur ab. Dies gilt nur für Virtual Machines und Azure-Anwendungen.
 - **Nutzungsbasierte Bezahlung**: Softwarelizenzgebühren werden basierend auf der verwendeten Azure-Infrastruktur als Preis pro Stunde und pro Kern (vCPU) ausgewiesen. Dies gilt nur für Virtual Machines und Azure-Anwendungen.
-- **Abonnementpreise**: Softwarelizenzgebühren fallen als monatliche oder jährliche wiederkehrende Gebühren an, die als Pauschalgebühr oder pro Arbeitsplatz berechnet werden. Dies gilt nur für SaaS-Apps und verwaltete Azure-Apps.
+- **Abonnementpreise**: Softwarelizenzgebühren fallen als monatliche oder jährliche wiederkehrende Gebühren an, die als Pauschalgebühr oder pro Arbeitsplatz berechnet werden. Dies gilt nur für SaaS-Apps (monatlich oder jährlich) und verwaltete Azure-Apps (monatlich).
 - **Kostenlose Testversion der Software**: Keine Kosten für Softwarelizenzen für 30 bzw. 90 Tage.
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>Preise für die Modelle „Kostenlos“ und „BYOL“ (Bring-Your-Own-License, Verwendung Ihrer eigenen Lizenz)
@@ -165,7 +165,7 @@ Kunden kaufen in der Regel im Rahmen eines Enterprise Agreement oder eines Vertr
 
 Weitere Informationen und gesetzliche Richtlinien finden Sie in der [Herausgebervereinbarung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (in Partner Center verfügbar).
 
-Hilfe zu Abrechnungsfragen erhalten Sie beim [Support für Herausgeber im kommerziellen Marketplace](https://partner.microsoft.com/support/v2/?stage=1).
+Hilfe zu Abrechnungsfragen erhalten Sie beim [Support für Herausgeber im kommerziellen Marketplace](https://aka.ms/marketplacepublishersupport).
 
 ## <a name="transact-requirements"></a>Anforderungen für die Veröffentlichungsoption „Transaktion“
 

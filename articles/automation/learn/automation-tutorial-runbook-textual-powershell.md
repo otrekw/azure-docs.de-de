@@ -1,17 +1,17 @@
 ---
 title: Erstellen eines PowerShell-Runbooks in Azure Automation
-description: Dieses Tutorial zeigt, wie Sie ein einfaches PowerShell-Runbook erstellen, testen und veröffentlichen.
+description: Dieser Artikel vermittelt Ihnen, wie Sie ein einfaches PowerShell-Runbook erstellen, testen und veröffentlichen.
 keywords: Azure PowerShell, Tutorial zu PowerShell-Skripts, PowerShell-Automation
 services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: b94969ff0973f68b57a1f43aa9d3205901bb1436
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: bf06515f98b21c24f5222b51e1b1c97b702c12d4
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81725084"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714490"
 ---
 # <a name="tutorial-create-a-powershell-runbook"></a>Tutorial: Erstellen eines PowerShell-Runbooks
 
@@ -22,9 +22,6 @@ Dieses Tutorial führt Sie durch die Erstellung eines [PowerShell-Runbooks](../a
 > * Testen und Veröffentlichen des Runbooks
 > * Ausführen des Runbookauftrags und Nachverfolgen seines Status
 > * Aktualisieren des Runbooks zum Starten eines virtuellen Azure-Computers mit Runbookparametern
-
->[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) auf die neueste Version aktualisieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -277,10 +274,9 @@ Ihr Runbook startet derzeit den virtuellen Computer, den Sie im Runbook hartcodi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur PowerShell, einschließlich Sprachreferenz und Lernmodulen, finden Sie in der [PowerShell-Dokumentation](/powershell/scripting/overview).
-* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
-* Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Erstellen eines grafischen Runbooks](automation-tutorial-runbook-graphical.md).
-* Informationen zu den ersten Schritten mit PowerShell-Workflow-Runbooks finden Sie unter [Erstellen eines PowerShell-Workflow-Runbooks](automation-tutorial-runbook-textual.md).
-* Weitere Informationen zu den verschiedenen Runbooktypen sowie zu ihren Vorteilen und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](../automation-runbook-types.md).
-* Weitere Informationen zur PowerShell-Skriptunterstützung finden Sie unter [Ankündigung der nativen PowerShell-Skriptunterstützung in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).
+* [PowerShell-Dokumentationen](/powershell/scripting/overview)
+* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* [Erstellen eines grafischen Runbooks](automation-tutorial-runbook-graphical.md)
+* [Erstellen eines PowerShell-Workflow-Runbooks](automation-tutorial-runbook-textual.md)
+* [Azure Automation-Runbooktypen](../automation-runbook-types.md)
+* [Native PowerShell-Skriptunterstützung in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)

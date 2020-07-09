@@ -13,7 +13,10 @@
       items:
         - name: Azure-Portal
           href: stream-analytics-quick-create-portal.md
+        - name: Azure CLI
+          href: quick-create-azure-cli.md
         - name: ARM-Vorlage
+          displayName: Resource Manager
           href: quick-create-azure-resource-manager.md
         - name: PowerShell
           href: stream-analytics-quick-create-powershell.md
@@ -29,7 +32,7 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3. Bereitstellen mit CI/CD in Azure Pipelines
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '4. Ausführen einer benutzerdefinierten C#-Funktion'
+    - name: 4. Ausführen einer benutzerdefinierten C#-Funktion
       href: stream-analytics-edge-csharp-udf.md
     - name: 5. Erstellen eines benutzerdefinierten .NET-Deserialisierers
       href: custom-deserializer.md
@@ -48,6 +51,10 @@
       href: feature-comparison.md
     - name: Lokale Entwicklung
       href: develop-locally.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Eingabetypen für einen Auftrag
       items:
         - name: Übersicht über Eingaben
@@ -77,10 +84,12 @@
           href: stream-analytics-javascript-user-defined-functions.md
         - name: JavaScript-UDA
           href: stream-analytics-javascript-user-defined-aggregates.md
-        - name: 'C#-UDF'
+        - name: C#-UDF
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: "Machine\_Learning-UDF"
           href: machine-learning-udf.md
+        - name: Debuggen von UDFs
+          href: debug-user-defined-functions.md
     - name: Optimieren Ihres Stream Analytics-Auftrags
       items:
         - name: Überblick über Streamingeinheiten und Informationen zu Anpassungen
@@ -114,6 +123,8 @@
   items:
     - name: Verwalten
       items:
+        - name: Automatisches Skalieren von Aufträgen
+          href: stream-analytics-autoscale.md
         - name: Aktualisieren von Anmeldeinformationen
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Konfigurieren von Richtlinien für die Ereignisreihenfolge
@@ -221,6 +232,8 @@
           href: visual-studio-code-local-run.md
         - name: Lokales Testen mit Livedaten
           href: visual-studio-code-local-run-live-input.md
+        - name: Debuggen von Abfragen mithilfe des Auftragsdiagramms
+          href: debug-locally-using-job-diagram-vs-code.md
         - name: Einrichten von CI-/CD-Pipelines
           href: setup-cicd-vs-code.md
         - name: Untersuchen von Aufträgen
@@ -611,6 +624,8 @@
       href: /rest/api/streamanalytics
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure CLI
+      href: /cli/azure/ext/stream-analytics/stream-analytics
 - name: Ressourcen
   items:
     - name: Stream Analytics-Vorschauversionen

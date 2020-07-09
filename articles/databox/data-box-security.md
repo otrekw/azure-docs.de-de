@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77911736"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84817712"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box – Sicherheit und Schutz von Daten
 
@@ -45,7 +45,6 @@ Data Box ist eine sichere Lösung für den Schutz der Daten, indem dafür gesorg
 Das Data Box-Gerät wird mithilfe der folgenden Merkmale geschützt:
 
 - Ein widerstandsfähiges Gerätegehäuse, das Erschütterungen, widrigen Transport- und Umweltbedingungen problemlos standhält. 
-- Manipulationsgeschützte Siegel zur Erkennung von Manipulationen während des Transports.
 - Erkennung von Manipulationen an Hardware und Software, die weitere Gerätevorgänge verhindern.
 - Wird nur auf Data Box-spezifischer Software ausgeführt.
 - Startet im gesperrten Zustand.
@@ -57,7 +56,7 @@ Das Data Box-Gerät wird mithilfe der folgenden Merkmale geschützt:
 Die Daten, die in und aus Data Box übertragen werden, werden mithilfe der folgenden Merkmale geschützt:
 
 - AES-256-Bit-Verschlüsselung für ruhende Daten.
-- Während ihrer Übertragung können für Daten verschlüsselte Protokolle verwendet werden.
+- Während ihrer Übertragung können für Daten verschlüsselte Protokolle verwendet werden. Sie sollten SMB 3.0 mit Verschlüsselung verwenden, um Daten zu schützen, wenn Sie diese von Ihren Datenservern kopieren.
 - Sicheres Löschen von Daten vom Gerät nach dem Upload in Azure. Das Löschen der Daten wird gemäß den Richtlinien in [Anhang A für ATA-Festplatten der NIST-Standards (800-88r1)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) durchgeführt. Das Datenlöschereignis wird im [Auftragsverlauf](data-box-logs.md#download-order-history) aufgezeichnet.
 
 ### <a name="data-box-service-protection"></a>Schutz des Data Box-Diensts

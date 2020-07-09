@@ -1,23 +1,23 @@
 ---
-title: Azure Front Door | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine Übersicht zu Azure Front Door. Es wird beschrieben, ob dies die richtige Wahl für den Lastenausgleich des Benutzerdatenverkehrs für Ihre Anwendung ist.
+title: Neues in Azure Front Door
+description: Erfahren Sie, was in Azure Front Door geändert wurde.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 009891d16d3acf5db2e344bcc2c917ecee9eed5b
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: f76e54d698e30cb2b8f929050264a3afaec36562
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515845"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743472"
 ---
 # <a name="whats-new-in-azure-front-door"></a>Neues in Azure Front Door
 

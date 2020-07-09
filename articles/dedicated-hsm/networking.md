@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70881287"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300731"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure-Dienst für dedizierte HSMs – Netzwerke
 
@@ -78,7 +78,7 @@ Die HSM-Geräte haben die Möglichkeit, über Softwarebibliotheken Datenverkehr 
 
 ### <a name="cross-region-ha-using-vpn-gateway"></a>Regionen übergreifende HOCHVERFÜGBARKEIT mit VPN Gateway
 
-Für global verteilte Anwendungen oder regionale Failoverszenarien mit hoher Verfügbarkeit müssen virtuelle Netzwerke Regionen übergreifend verbunden werden. Mit dem Azure-Dienst für dedizierte HSMs kann Hochverfügbarkeit mit VPN Gateway erreicht werden, das einen sicheren Tunnel zwischen den beiden virtuellen Netzwerken bereitstellt. Weitere Informationen zu VNET-to-VNET-Verbindungen mit VPN Gateway finden Sie im Artikel [Was ist VPN Gateway?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)
+Für global verteilte Anwendungen oder regionale Failoverszenarien mit hoher Verfügbarkeit müssen virtuelle Netzwerke Regionen übergreifend verbunden werden. Mit dem Azure-Dienst für dedizierte HSMs kann Hochverfügbarkeit mit VPN Gateway erreicht werden, das einen sicheren Tunnel zwischen den beiden virtuellen Netzwerken bereitstellt. Weitere Informationen zu VNET-to-VNET-Verbindungen mit VPN Gateway finden Sie im Artikel [Was ist VPN Gateway?](../vpn-gateway/design.md#V2V)
 
 > [!NOTE]
 > Globales VNET-Peering ist in regionsübergreifenden Konnektivitätsszenarien mit dedizierten HSMs zu diesem Zeitpunkt nicht verfügbar, und VPN Gateway sollte stattdessen verwendet werden. 

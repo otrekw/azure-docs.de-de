@@ -2,19 +2,19 @@
 title: Azure Lighthouse-Beispiele und -Vorlagen
 description: Diese Beispiele und Azure Resource Manager-Vorlagen veranschaulichen, wie Sie das Onboarding von Kunden für die delegierte Azure-Ressourcenverwaltung durchführen und Azure Lighthouse-Szenarien unterstützen.
 ms.topic: sample
-ms.date: 03/30/2020
-ms.openlocfilehash: 9e0ba8175931e277357e5b65e7e9ebded908a675
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.date: 07/07/2020
+ms.openlocfilehash: 9a90923b43fa5afe59f6385e3f227cdc722b27f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421149"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111656"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse-Beispiele
 
 Die folgende Tabelle enthält Links zu wichtigen Azure Resource Manager-Vorlagen für Azure Lighthouse. Diese und weitere Dateien finden Sie auch im [Azure Lighthouse-Beispielrepository](https://github.com/Azure/Azure-Lighthouse-samples/).
 
-## <a name="onboarding-customers-to-azure-delegated-resource-management"></a>Onboarding von Kunden für delegierte Azure-Ressourcenverwaltung durchführen
+## <a name="onboarding-customers-to-azure-lighthouse"></a>Onboarding von Kunden in Azure Lighthouse durchführen
 
 [!INCLUDE [azure-lighthouse-samples-onboarding](../../../includes/azure-lighthouse-samples-onboarding.md)]
 

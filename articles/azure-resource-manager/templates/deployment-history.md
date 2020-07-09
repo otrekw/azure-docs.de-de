@@ -3,17 +3,19 @@ title: Bereitstellungsverlauf
 description: Erfahren Sie, wie Sie Azure Resource Manager-Bereitstellungsvorgänge mit dem Portal, mit PowerShell, mit der Azure-Befehlszeilenschnittstelle (CLI) und der REST-API anzeigen.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 11/26/2019
-ms.openlocfilehash: b0f196f86bed05094b04bfc20c7cef2248a91c65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460295"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117848"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Anzeigen des Bereitstellungsverlaufs mit Azure Resource Manager
 
-Mit Azure Resource Manager können Sie Ihren Bereitstellungsverlauf anzeigen und bestimmte Vorgänge in früheren Bereitstellungen untersuchen. Ihnen werden die bereitgestellten Ressourcen angezeigt, und Sie erhalten Informationen zu etwaigen Fehlern.
+Mit Azure Resource Manager können Sie den Bereitstellungsverlauf anzeigen. Sie können bestimmte Vorgänge in früheren Bereitstellungen überprüfen und sehen, welche Ressourcen bereitgestellt wurden. Dieser Verlauf enthält Informationen zu Fehlern.
+
+Der Bereitstellungsverlauf einer Ressourcengruppe ist auf 800 Bereitstellungen beschränkt. Wenn Sie den Grenzwert fast erreicht haben, werden Bereitstellungen automatisch aus dem Verlauf gelöscht. Weitere Informationen finden Sie unter [Automatische Löschungen aus dem Bereitstellungsverlauf](deployment-history-deletions.md).
 
 Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](common-deployment-errors.md).
 
@@ -117,7 +119,7 @@ Jede Bereitstellung kann mehrere Vorgänge umfassen. Um weiter Informationen zu 
 
 1. Wählen Sie in der Zusammenfassung für eine Bereitstellung **Vorgangsdetails** aus.
 
-    ![Auswählen von Bereitstellungsvorgängen](./media/deployment-history/get-operation-details.png)
+    ![Auswählen von Vorgangsdetails](./media/deployment-history/get-operation-details.png)
 
 1. Es werden die ausführlichen Informationen zu dem Bereitstellungsschritt angezeigt. Wenn ein Fehler auftritt, enthalten die Details die Fehlermeldung.
 
@@ -145,22 +147,22 @@ Verwenden Sie den folgenden Befehl, um die Statusmeldung für einen fehlerhaften
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Verwenden Sie zum Anzeigen der Bereitstellungsvorgänge für die Bereitstellung in einer Ressourcengruppe den Befehl [az deployment group operation list](/cli/azure/group/deployment/operation?view=azure-cli-latest#az-deployment-group-operation-list).
+Verwenden Sie zum Anzeigen der Bereitstellungsvorgänge für die Bereitstellung in einer Ressourcengruppe den Befehl [az deployment operation group list](/cli/azure/deployment/operation/group#az-deployment-operation-group-list). Sie müssen Azure CLI 2.6.0 oder höher verwenden.
 
 ```azurecli-interactive
-az deployment group operation list --resource-group ExampleGroup --name ExampleDeployment
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
 ```
 
 Zum Anzeigen fehlerhafter Vorgänge filtern Sie Vorgänge mit dem Zustand **Fehler**.
 
 ```azurecli-interactive
-az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
 ```
 
 Verwenden Sie den folgenden Befehl, um die Statusmeldung für einen fehlerhaften Vorgang abzurufen:
 
 ```azurecli-interactive
-az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
 ```
 
 # <a name="http"></a>[HTTP](#tab/http)
@@ -210,6 +212,6 @@ Die Antwort enthält eine Fehlermeldung.
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](common-deployment-errors.md).
-* Weitere Informationen zur Verwendung der Aktivitätsprotokolle für die Überwachung anderer Arten von Aktionen finden Sie unter [Anzeigen von Aktivitätsprotokolle zum Verwalten von Azure-Ressourcen](../management/view-activity-logs.md).
+* Weitere Informationen zur Verwaltung von Bereitstellungen im Verlauf finden Sie unter [Automatische Löschungen aus dem Bereitstellungsverlauf](deployment-history-deletions.md).
 * Informationen zum Überprüfen der Bereitstellung vor der Ausführung finden Sie unter [Bereitstellen einer Ressourcengruppe mit Azure Resource Manager-Vorlagen](deploy-powershell.md).
 

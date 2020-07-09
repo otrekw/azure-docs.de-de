@@ -4,15 +4,15 @@ description: Erhöhen Sie die Kontingentgrenzwerte für Spot-VMs, die ein Modell
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 3e6dddfc458f390f5648e23a8a2af8d714de4bf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 513bde930f9c7c8892164c50c3866ff6e948ed4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76842775"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763872"
 ---
 # <a name="spot-quota-increase-limits-for-all-vm-series"></a>Spot-Kontingent: Erhöhen der Grenzwerte für alle VM-Serien
 

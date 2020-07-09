@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0e3a2ddda4529cee584f5eabf6677af940d2bdd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d6bf5d40262c5991504d3dc62490fb50f6a20592
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585894"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826093"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen
 
@@ -42,9 +42,9 @@ Alternativ zur Einladungs-E-Mail können Sie einem Gast einen direkten Link zu I
 
 > [!IMPORTANT]
 > Der direkte Link muss mandantenspezifisch sein. Mit anderen Worten: Er muss eine Mandanten-ID oder eine überprüfte Domäne enthalten, damit der Gast in Ihrem Mandanten, in dem sich die freigegebene App befindet, authentifiziert werden kann. Eine allgemeine URL wie https://myapps.microsoft.com funktioniert für einen Gast nicht, da sie für die Authentifizierung an seinen Basismandanten weitergeleitet wird. Hier sind einige Beispiele für direkte Links mit Mandantenkontext:
- > - Zugriffsbereich für Apps: https://myapps.microsoft.com/?tenantid=&lt;Mandanten-ID&gt; 
- > - Zugriffsbereich für Apps für eine überprüfte Domäne: https://myapps.microsoft.com/&lt;überprüfte Domäne&gt;
- > - Azure-Portal: https://portal.azure.com/&lt;Mandanten-ID&gt;
+ > - App-Zugriffsbereich: `https://myapps.microsoft.com/?tenantid=<tenant id>`
+ > - App-Zugriffsbereich für eine überprüfte Domäne: `https://myapps.microsoft.com/<;verified domain>`
+ > - Azure-Portal: `https://portal.azure.com/<tenant id>`
  > - Einzelne App: Lesen Sie, wie ein [direkter Anmeldelink](../manage-apps/end-user-experiences.md#direct-sign-on-links) verwendet wird.
 
 Es gibt einige Fälle, in denen die Einladungs-E-Mail über einen direkten Link empfohlen wird. Wenn diese Sonderfälle für Ihre Organisation relevant sind, empfiehlt es sich, für die Einladung von Benutzern eine Methode zu verwenden, bei der weiterhin eine Einladungs-E-Mail gesendet wird:

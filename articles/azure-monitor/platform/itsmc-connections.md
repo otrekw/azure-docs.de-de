@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
-ms.date: 05/24/2018
-ms.openlocfilehash: 0773492c3042a6f8c906aa6ba1bc3c76ea8c0d8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/12/2020
+ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870592"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655925"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector
 Dieser Artikel bietet Informationen dazu, wie Sie die Verbindung zwischen Ihrem ITSM-Produkt bzw. -Dienst und dem ITSM-Connector (ITSMC) in Log Analytics konfigurieren, um Arbeitselemente zentral zu verwalten. Weitere Informationen zu ITSMC finden Sie in der [Übersicht](../../azure-monitor/platform/itsmc-overview.md).
@@ -201,8 +201,10 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 > Klicken Sie zum Schluss auf „Aktualisieren“.
 > 2) **Es wird empfohlen, eine interne Prozedur einzurichten, um sicherzustellen, dass die Verbindung aktiv bleibt:** Gemäß der Lebensdauer des Aktualisierungstokens zum Aktualisieren des Tokens. Stellen Sie sicher, dass die folgenden Vorgänge vor der erwarteten Ablaufzeit des Aktualisierungstokens ausgeführt werden (einige Tage vor Ablauf der Lebensdauer des Aktualisierungstokens wird empfohlen):
 >
->>  1) [Ausführen eines manuellen Synchronisierungsprozesses für die Konfiguration des ITSM-Connectors](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
- >> 2) Widerrufen Sie das alte Aktualisierungstoken, da aus Sicherheitsgründen davon abgeraten wird, alte Schlüssel aufzubewahren. Suchen Sie auf dem ServiceNow-Blatt nach „System-OAuth“, und wählen Sie dann „Token verwalten“ aus. Wählen Sie das alte Token nach OAuth-Name und Ablaufdatum aus der Liste aus. Klicken Sie auf „Zugriff widerrufen“ und dann auf „Widerrufen“.
+> 1. [Ausführen eines manuellen Synchronisierungsprozesses für die Konfiguration des ITSM-Connectors](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+> 2. Widerrufen Sie das alte Aktualisierungstoken, da aus Sicherheitsgründen davon abgeraten wird, alte Schlüssel aufzubewahren. Suchen Sie auf dem ServiceNow-Blatt nach „System-OAuth“, und wählen Sie dann „Token verwalten“ aus. Wählen Sie das alte Token nach OAuth-Name und Ablaufdatum aus der Liste aus.
+> ![ServiceNow: Definition von System-OAuth](media/itsmc-connections/snow-system-oauth.png)
+> 3. Klicken Sie auf „Zugriff widerrufen“ und dann auf „Widerrufen“.
 
 - Installieren der Benutzer-App für die Microsoft Log Analytics-Integration (ServiceNow-App). [Weitere Informationen](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )
 - Erstellen der Benutzerrolle „Integration“ für die installierte Benutzer-App. Informationen zum Erstellen der Benutzerrolle „Integration“ finden Sie [hier](#create-integration-user-role-in-servicenow-app).

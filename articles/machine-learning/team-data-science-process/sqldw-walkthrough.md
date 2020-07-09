@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c4c1cfdb927cfd2ee607bfe2a951e06c80f9bfb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a65143394d8e6ee8a385cc5d1737cc976aae47b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418540"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558480"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure Synapse Analytics
 In diesem Tutorial führen wir Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells mit Azure Synapse Analytics für ein öffentlich zugängliches Dataset: das Dataset [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/). Das erstellte binäre Klassifizierungsmodell sagt vorher, ob ein Trinkgeld für eine Fahrt bezahlt wird.  Die Modelle umfassen die Multiklassenklassifizierung (unabhängig davon, ob es ein Trinkgeld gibt oder nicht) und die Regression (die Verteilung der gezahlten Trinkgeldbeträge).
@@ -77,7 +77,7 @@ Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schri
 **Stellen Sie Ihre Azure Synapse Analytics-Instanz bereit.**
 Folgen Sie der Dokumentation unter [Erstellen und Abfragen eines Azure SQL Data Warehouse im Azure-Portal](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md), um eine Azure Synapse Analytics-Instanz bereitzustellen. Vergewissern Sie sich, dass Sie sich die folgenden Anmeldeinformationen für Azure Synapse Analytics notieren, die in späteren Schritten verwendet werden.
 
-* **Servername**: \<Servername>.database.windows.net
+* **Servername**: \<server Name>.database.windows.net
 * **SQLDW-Name (Datenbank)**
 * **Benutzername**
 * **Kennwort**

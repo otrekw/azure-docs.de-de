@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: a8b1c53a5c060f2124a36b69365bdd9b62896b56
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478152"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220955"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -30,7 +30,17 @@ In diesem Dokument erfahren Sie, wie Sie die benutzerdefinierte Skripterweiterun
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die Erweiterung für benutzerdefinierte Skripts für Windows wird auf den für Erweiterungen unterstützten Betriebssystemen ausgeführt. Weitere Informationen finden Sie unter [Azure-Erweiterung: unterstützte Betriebssysteme](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems).
+Die Erweiterung für benutzerdefinierte Skripts für Windows kann auf den von Erweiterungen unterstützten Betriebssystemen ausgeführt werden.
+### <a name="windows"></a>Windows
+
+* Windows Server 2008 R2
+* Windows Server 2012
+* Windows Server 2012 R2
+* Windows 10
+* Windows Server 2016
+* Windows Server 2016 Core
+* Windows Server 2019
+* Windows Server 2019 Core
 
 ### <a name="script-location"></a>Speicherort des Skripts
 

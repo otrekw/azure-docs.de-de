@@ -3,15 +3,15 @@ title: Erste Schritte mit Azure Data Lake Storage Gen1 – PowerShell | Microsof
 description: Verwenden Sie Azure PowerShell zum Erstellen eines Azure Data Lake Storage Gen1-Kontos und zum Ausführen grundlegender Vorgänge.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 42ddab6991b418af3e41da9966cdab69ded87461
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8c97064af6fecf08af4608cfcd9874ff9bb1936
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73837890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504781"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Erste Schritte mit Azure Data Lake Storage Gen1 mithilfe von Azure PowerShell
 

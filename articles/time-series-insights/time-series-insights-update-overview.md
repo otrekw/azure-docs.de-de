@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 20ab78aa67fa5d59dac774559b3c43561cf75fbc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271062"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040706"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Was ist Azure Time Series Insights (Vorschauversion)?
 
@@ -78,12 +78,12 @@ Aufgrund der Einführung dieser wichtigen IoT-Funktionen für die Industrie verf
 
 | | |
 | ---| ---|
-| Speicherung auf mehreren Ebenen für Zeitreihendaten im IoT-Maßstab | Mit einer gemeinsamen Datenverarbeitungspipeline zur Datenerfassung können Sie Daten sowohl in Warm Storage als auch in Cold Storage erfassen. Verwenden Sie den Warm Storage für interaktive Abfragen und den Cold Storage für die Speicherung großer Datenmengen. Weitere Informationen zum Nutzen der Vorteile von leistungsstarken, ressourcenbasierten Abfragen finden Sie unter [Abfragen](./time-series-insights-update-tsq.md). |
-| Zeitreihenmodell zum Kontextualisieren von Telemetrierohdaten und Gewinnen von ressourcenbasierten Erkenntnissen | Mit dem Zeitreihenmodell können Sie Instanzen, Hierarchien, Typen und Variablen für Ihre Zeitreihendaten erstellen. Weitere Informationen zum Zeitreihenmodell finden Sie unter [Zeitreihenmodell](./time-series-insights-update-tsm.md).  |
-| Nahtlose und kontinuierliche Integration in andere Datenlösungen | Daten im Cold Storage von Time Series Insights werden in Apache Parquet-Open-Source-Dateien [gespeichert](./time-series-insights-update-storage-ingress.md). Dies ermöglicht die Datenintegration mit anderen Datenlösungen (Erst- oder Drittanbieter) für Szenarien wie Business Intelligence, Advanced Machine Learning und Predictive Analytics. |
+| Speicherung auf mehreren Ebenen für Zeitreihendaten im IoT-Maßstab | Mit einer gemeinsamen Datenverarbeitungspipeline zur Datenerfassung können Sie Daten sowohl in Warm Storage als auch in Cold Storage erfassen. Verwenden Sie den Warm Storage für interaktive Abfragen und den Cold Storage für die Speicherung großer Datenmengen. Weitere Informationen zum Nutzen der Vorteile von leistungsstarken, ressourcenbasierten Abfragen finden Sie unter [Abfragen](./concepts-query-overview.md). |
+| Zeitreihenmodell zum Kontextualisieren von Telemetrierohdaten und Gewinnen von ressourcenbasierten Erkenntnissen | Mit dem Zeitreihenmodell können Sie Instanzen, Hierarchien, Typen und Variablen für Ihre Zeitreihendaten erstellen. Weitere Informationen zum Zeitreihenmodell finden Sie unter [Zeitreihenmodell](./concepts-model-overview.md).  |
+| Nahtlose und kontinuierliche Integration in andere Datenlösungen | Daten im Cold Storage von Time Series Insights werden in Apache Parquet-Open-Source-Dateien [gespeichert](concepts-storage.md). Dies ermöglicht die Datenintegration mit anderen Datenlösungen (Erst- oder Drittanbieter) für Szenarien wie Business Intelligence, Advanced Machine Learning und Predictive Analytics. |
 | Datenuntersuchung nahezu in Echtzeit | Die Benutzeroberfläche des [Azure Time Series Insights Preview-Explorers](./time-series-insights-update-explorer.md) ermöglicht die Visualisierung für den gesamten Datenstreamingprozess über die Erfassungspipeline. Nachdem Sie eine Verbindung mit einer Ereignisquelle hergestellt haben, können Sie Ereignisdaten anzeigen, durchsuchen und abfragen. Auf diese Weise können Sie überprüfen, ob ein Gerät Daten wie erwartet ausgibt. Sie können auch eine IoT-Ressource auf Integrität, Produktivität und allgemeine Wirksamkeit überwachen. | 
 | Erweiterbarkeit und Integration | Die Integration von Azure Time Series Insights-Power BI-Connector steht auf der Oberfläche des Time Series-Explorers über die Option **Export** zur Verfügung. Kunden können damit die erstellten Zeitreihenabfragen direkt auf unserer Benutzeroberfläche in den Power BI-Desktop exportieren und die Zeitreihendiagramme gemeinsam mit anderen BI-Analysen anzeigen. Dies öffnet die Tür zu einer neuen Klasse von Szenarien für industrielle IoT-Unternehmen, die in Power BI investiert haben, indem sie eine zentralisierte Benutzeroberfläche für Analysen aus verschiedenen Datenquellen einschließlich IoT-Zeitreihen bereitstellen. | 
-| Benutzerdefinierte Anwendungen, die auf der Time Series Insights-Plattform basieren | Time Series Insights unterstützt das [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Das SDK bietet umfassende Steuerungsmöglichkeiten und vereinfachten Zugriff auf Abfragen. Verwenden Sie das SDK zum Erstellen benutzerdefinierter IoT-Anwendungen ergänzend zu Time Series Insights zur Anpassung an Ihre geschäftlichen Anforderungen. Darüber hinaus können Sie Time Series Insights-[Abfrage-APIs](./time-series-insights-update-tsq.md) direkt verwenden, um Daten in benutzerdefinierte IoT-Anwendungen zu befördern. |
+| Benutzerdefinierte Anwendungen, die auf der Time Series Insights-Plattform basieren | Time Series Insights unterstützt das [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Das SDK bietet umfassende Steuerungsmöglichkeiten und vereinfachten Zugriff auf Abfragen. Verwenden Sie das SDK zum Erstellen benutzerdefinierter IoT-Anwendungen ergänzend zu Time Series Insights zur Anpassung an Ihre geschäftlichen Anforderungen. Darüber hinaus können Sie Time Series Insights-[Abfrage-APIs](./concepts-query-overview.md) direkt verwenden, um Daten in benutzerdefinierte IoT-Anwendungen zu befördern. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

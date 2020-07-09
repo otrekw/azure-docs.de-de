@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 388f43fec9242f6a4b448483d9486aa4413d2612
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52f333a8e39dfd8f68666e6438a7d40414b6f958
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228082"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701416"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamen von Daten als Eingabe in Stream Analytics
 
@@ -134,7 +134,7 @@ Der Standardzeitstempel von Blob Storage-Ereignissen in Stream Analytics ist der
 
 Wenn ein Blob um 13:00 Uhr in einen Speicherkontocontainer hochgeladen wird und der Azure Stream Analytics-Auftrag mit der Option *Benutzerdefinierte Uhrzeit* um 13:00 Uhr oder früher gestartet wird, wird der Blob abgeholt, da seine geänderte Zeit in den Zeitraum für die Auftragsausführung fällt.
 
-Wenn ein Azure Stream Analytics-Auftrag mit der Option *Jetzt* um 13:00 Uhr gestartet wird und ein Blob um 13:01 Uhr in den Speicherkontocontainer hochgeladen wird, holt Azure Stream Analytics den Blob ab.
+Wenn ein Azure Stream Analytics-Auftrag mit der Option *Jetzt* um 13:00 Uhr gestartet wird und ein Blob um 13:01 Uhr in den Speicherkontocontainer hochgeladen wird, holt Azure Stream Analytics den Blob ab. Der jedem Blob zugewiesene Zeitstempel basiert nur auf `BlobLastModifiedTime`. Der Ordner, in dem sich das Blob befindet, hat keine Beziehung zum zugewiesenen Zeitstempel. Wenn es beispielsweise einen Blob *2019/10-01/00/b1.txt* mit einer `BlobLastModifiedTime` von 2019-11-11 gibt, lautet der dem Blob zugewiesene Zeitstempel 2019-11-11.
 
 Zum Verarbeiten der Daten als Datenstrom mit einem Zeitstempel in der Ereignisnutzlast müssen Sie das Schlüsselwort [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) verwenden. Bei einem Stream Analytics-Auftrag werden Daten jede Sekunde per Pullvorgang aus der Azure-Blobspeichereingabe abgerufen, wenn die Blobdatei verfügbar ist. Falls die Blobdatei nicht verfügbar ist, kommt es zu einem exponentiellen Backoff mit einer maximalen Zeitverzögerung von 90 Sekunden.
 
@@ -143,7 +143,7 @@ Eingaben im CSV-Format müssen über eine Überschriftenzeile verfügen, um Feld
 > [!NOTE]
 > Stream Analytics unterstützt das Hinzufügen von Inhalten zu einer vorhandenen Blobdatei nicht. Stream Analytics zeigt jede Datei nur einmal an. Des Weiteren werden alle Änderungen, die in der Datei vorgenommen wurden, nachdem der Auftrag die Daten gelesen hat, nicht verarbeitet. Die Methode, alle Daten für eine Blobdatei auf einmal hochzuladen und dann zusätzliche neuere Ereignisse einer anderen, neuen Blobdatei hinzuzufügen, hat sich bewährt.
 
-Das gleichzeitige Hochladen einer sehr großen Anzahl von Blobs kann dazu führen, dass Stream Analytics in seltenen Fällen das Lesen einiger Blobs überspringt. Es wird empfohlen, Blobs in einem Abstand von mindestens 2 Sekunden in Blob Storage hochzuladen. Wenn diese Option nicht praktikabel ist, können Sie Event Hubs verwenden, um große Mengen von Ereignissen zu streamen. 
+In Szenarien, in denen fortlaufend viele Blobs hinzugefügt werden und Stream Analytics die Blobs beim Hinzufügen verarbeitet, kann es in seltenen Fällen vorkommen, dass einige Blobs aufgrund der Granularität von `BlobLastModifiedTime`übersprungen werden. Sie können dies entschärfen, indem Sie Blobs in einem Abstand von mindestens zwei Sekunden hochladen. Wenn diese Option nicht praktikabel ist, können Sie Event Hubs verwenden, um große Mengen von Ereignissen zu streamen.
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>Konfigurieren von Blob Storage als Datenstromeingabe 
 
@@ -157,7 +157,7 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **N
 | **Speicherkontoschlüssel** | Der geheime Schlüssel, der dem Speicherkonto zugeordnet ist. Diese Option wird automatisch ausgefüllt, es sei denn, Sie wählen die Option zum manuellen Festlegen der Blob Storage-Einstellungen. |
 | **Container** | Der Container für die Blobeingabe. Container stellen eine logische Gruppierung für Blobs bereit, die im Microsoft Azure-Blobdienst gespeichert sind. Wenn Sie ein Blob in den Azure Blob Storage-Dienst hochladen, müssen Sie einen Container für dieses Blob angeben. Sie können entweder **Vorhandenes Element verwenden** oder **Neues Element erstellen** wählen, um einen neuen Container zu erstellen.|
 | **Pfadmuster** (optional) | Der Dateipfad, der verwendet wird, um die Blobs im angegebenen Container zu suchen. Wenn Sie Blobs aus dem Containerstamm lesen möchten, legen Sie kein Pfadmuster fest. In dem Pfad können Sie mindestens eine Instanz der folgenden drei Variablen angeben: `{date}`, `{time}` oder `{partition}`.<br/><br/>Beispiel 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Beispiel 2: `cluster1/logs/{date}`<br/><br/>Das Zeichen `*` ist kein zulässiger Wert für das Pfadpräfix. Es sind nur gültige <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-Zeichen</a> zulässig. Schließen Sie keine Containernamen oder Dateinamen ein. |
-| **Datumsformat** (optional) | Wenn Sie die Datumsvariable im Pfad verwenden, wird das Datumsformat, in dem die Dateien organisiert sind, verwendet. Beispiel: `YYYY/MM/DD` |
+| **Datumsformat** (optional) | Wenn Sie die Datumsvariable im Pfad verwenden, wird das Datumsformat, in dem die Dateien organisiert sind, verwendet. Beispiel: `YYYY/MM/DD` <br/><br/> Wenn Blobeingaben `{date}` oder `{time}` in ihrem Pfad aufweisen, werden die Ordner in zeitlich aufsteigender Reihenfolge untersucht.|
 | **Zeitformat** (optional) |  Wenn Sie die Zeitvariable im Pfad verwenden, wird das Zeitformat, in dem die Dateien organisiert sind, verwendet. Der einzige derzeit unterstützte Wert ist `HH` für Stunden. |
 | **Partitionsschlüssel** | Wenn Ihre Eingabe durch eine Eigenschaft partitioniert wird, können Sie den Namen dieser Eigenschaft hinzufügen. Partitionsschlüssel sind optional und werden verwendet, um die Leistung einer Abfrage zu verbessern, wenn diese eine PARTITION BY- oder GROUP BY-Klausel für diese Eigenschaft enthält. |
 | **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV, Avro, oder [Sonstige (Protobuf, XML, Proprietär...)](custom-deserializer.md)) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |

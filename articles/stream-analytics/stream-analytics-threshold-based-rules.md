@@ -4,14 +4,14 @@ description: Dieser Artikel beschreibt, wie Verweisdaten verwendet werden, um ei
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2018
-ms.openlocfilehash: 94fdddf11acb6763ed98a4b7e17304fbde0e25dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75369710"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039040"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Verarbeiten von konfigurierbaren schwellenwertbasierten Regeln in Azure Stream Analytics
 Dieser Artikel beschreibt, wie Verweisdaten verwendet werden, um eine Warnungslösung zu erreichen, die konfigurierbare schwellenwertbasiere Regeln in Azure Stream Analytics verwendet.

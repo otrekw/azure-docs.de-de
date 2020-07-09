@@ -2,13 +2,13 @@
 title: Problembehandlung ohne Daten – Application Insights für .NET
 description: Sie sehen in Azure Application Insights keine Daten? Versuchen Sie es hier.
 ms.topic: conceptual
-ms.date: 07/23/2018
-ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 05/21/2020
+ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80802585"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485168"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problembehandlung ohne Daten – Application Insights für .NET/.NET Core
 
@@ -158,7 +158,6 @@ Leistungsdaten (CPU, E/A-Rate usw.) sind für [Java-Webdienste](../../azure-moni
 * Windows Server 2008: Stellen Sie sicher, dass Sie die folgenden Updates installiert haben: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Zuvor wurden Daten angezeigt, jetzt jedoch nicht mehr.
-* Überprüfen Sie den [Statusblog](https://blogs.msdn.com/b/applicationinsights-status/).
 * Ist Ihr monatliches Kontingent an Datenpunkten erreicht? Öffnen Sie "Einstellungen – Kontingente und Preisübersicht", um es herauszufinden. Sie können in diesem Fall Ihren Plan aktualisieren oder zusätzliche Kapazität erwerben. Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/application-insights/).
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>Nicht alle Daten werden erwartungsgemäß angezeigt.
@@ -248,9 +247,17 @@ Weitere Informationen finden Sie unter:
 - [Recording performance traces with PerfView (Aufzeichnen von Leistungsnachverfolgungen mit PerfView)](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
 - [Application Insights-Ereignisquellen](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 
+## <a name="collect-logs-with-dotnet-trace"></a>Sammeln von Protokollen mit dotnet-trace
+
+Eine alternative Methode zum Sammeln von Protokollen für die Problembehandlung, die für Linux-basierte Umgebungen besonders hilfreich sein kann, ist [`dotnet-trace`](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace).
+
+```bash
+dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
+```
+
 ## <a name="how-to-remove-application-insights"></a>Entfernen von Application Insights
 
 Erfahren Sie, wie Sie Application Insights in Visual Studio entfernen, indem Sie die Schritte im entsprechenden [Artikel](../../azure-monitor/app/remove-application-insights.md) ausführen.
 
 ## <a name="still-not-working"></a>Noch nicht funktionsfähig ...
-* [Application Insights-Forum](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
+* [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)

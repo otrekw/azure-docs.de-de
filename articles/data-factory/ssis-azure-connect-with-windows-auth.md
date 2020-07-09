@@ -10,12 +10,12 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 6f2983b375e3eeb73a0372e123d4d2763b3c65ec
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 5dd8e483751010a6090e0ec415c40d381e978fd9
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629387"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118809"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Zugreifen auf Datenspeicher und Dateifreigaben mit Windows-Authentifizierung in SSIS-Paketen in Azure
 
@@ -34,7 +34,7 @@ Sie können die Windows-Authentifizierung verwenden, um auf Datenspeicher wie SQ
 > [!WARNING]
 > Wenn Sie keine der oben genannten Methoden verwenden, um mit Windows-Authentifizierung auf Datenspeicher zuzugreifen, können Pakete, die von der Windows-Authentifizierung abhängig sind, nicht auf diese zugreifen, und zur Laufzeit treten Fehler auf. 
 
-Im weiteren Verlauf dieses Artikels wird beschrieben, wie Sie den SSIS-Katalog (SSISDB) konfigurieren, der in der Azure SQL-Datenbank-Instanz bzw. verwalteten Instanz gehostet wird, um Pakete in der Azure-SSIS IR auszuführen, die die Windows-Authentifizierung für den Zugriff auf Datenspeicher verwenden. 
+Im weiteren Verlauf dieses Artikels wird beschrieben, wie Sie den in der SQL-Datenbank-Instanz bzw. verwalteten SQL-Instanz gehosteten SSIS-Katalog (SSISDB) zur Ausführung von Paketen in der Azure-SSIS IR konfigurieren, die die Windows-Authentifizierung für den Zugriff auf Datenspeicher verwenden. 
 
 ## <a name="you-can-only-use-one-set-of-credentials"></a>Sie können nur einen Satz Anmeldeinformationen verwenden
 
@@ -44,7 +44,7 @@ Wenn Sie die Windows-Authentifizierung in einem SSIS-Paket verwenden, können Si
 
 Um Domänenanmeldeinformationen bereitzustellen, die es Paketen ermöglichen, mit der Windows-Authentifizierung auf lokale Datenspeicher zuzugreifen, gehen Sie wie folgt vor:
 
-1. Stellen Sie mit SQL Server Management Studio (SSMS) oder einem anderen Tool eine Verbindung mit dem Azure SQL-Datenbank-Server bzw. der verwalteten Instanz her, die SSISDB hostet. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SSISDB in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. Stellen Sie mithilfe von SQL Server Management Studio (SSMS) oder eines anderen Tools eine Verbindung mit der SQL-Datenbank bzw. der verwalteten SQL-Instanz her, die SSISDB hostet. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SSISDB in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Öffnen Sie ein Abfragefragefenster mit SSISDB als aktuelle Datenbank.
 
@@ -60,7 +60,7 @@ Um Domänenanmeldeinformationen bereitzustellen, die es Paketen ermöglichen, mi
 
 Führen Sie die folgenden Schritte aus, um die aktiven Anmeldeinformationen einer Domäne anzuzeigen:
 
-1. Stellen Sie mit SSMS oder einem anderen Tool eine Verbindung mit dem Azure SQL-Datenbank-Server bzw. der verwalteten Instanz her, die SSISDB hostet. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SSISDB in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. Stellen Sie mithilfe von SSMS oder eines anderen Tools eine Verbindung mit der SQL-Datenbank bzw. der verwalteten SQL-Instanz her, die SSISDB hostet. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SSISDB in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Öffnen Sie ein Abfragefragefenster mit SSISDB als aktuelle Datenbank.
 
@@ -75,7 +75,7 @@ Führen Sie die folgenden Schritte aus, um die aktiven Anmeldeinformationen eine
 ### <a name="clear-domain-credentials"></a>Löschen von Anmeldeinformationen für eine Domäne
 Führen Sie die folgenden Schritte aus, um die Anmeldeinformationen, die Sie angegeben haben, wie in diesem Artikel beschrieben, zu löschen und zu entfernen:
 
-1. Stellen Sie mit SSMS oder einem anderen Tool eine Verbindung mit dem Azure SQL-Datenbank-Server bzw. der verwalteten Instanz her, die SSISDB hostet. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SSISDB in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. Stellen Sie mithilfe von SSMS oder eines anderen Tools eine Verbindung mit der SQL-Datenbank bzw. der verwalteten SQL-Instanz her, die SSISDB hostet. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SSISDB in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Öffnen Sie ein Abfragefragefenster mit SSISDB als aktuelle Datenbank.
 
@@ -140,7 +140,7 @@ Um in Azure ausgeführten Paketen auf eine lokale Dateifreigabe zuzugreifen, geh
 
 Um in Azure ausgeführten Paketen auf eine Dateifreigabe auf einer Azure-VM zuzugreifen, gehen Sie wie folgt vor:
 
-1. Stellen Sie mit SSMS oder einem anderen Tool eine Verbindung mit dem Azure SQL-Datenbank-Server bzw. der verwalteten Instanz her, die SSISDB hostet. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SSISDB in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. Stellen Sie mithilfe von SSMS oder eines anderen Tools eine Verbindung mit der SQL-Datenbank bzw. der verwalteten SQL-Instanz her, die SSISDB hostet. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SSISDB in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Öffnen Sie ein Abfragefragefenster mit SSISDB als aktuelle Datenbank.
 
@@ -156,7 +156,7 @@ Weitere Informationen zu Azure Files finden Sie unter [Azure Files](https://azur
 
 Um in Azure ausgeführten Paketen auf eine Dateifreigabe in Azure Files zuzugreifen, gehen Sie wie folgt vor:
 
-1. Stellen Sie mit SSMS oder einem anderen Tool eine Verbindung mit dem Azure SQL-Datenbank-Server bzw. der verwalteten Instanz her, die SSISDB hostet. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SSISDB in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
+1. Stellen Sie mithilfe von SSMS oder eines anderen Tools eine Verbindung mit der SQL-Datenbank bzw. der verwalteten SQL-Instanz her, die SSISDB hostet. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SSISDB in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database).
 
 2. Öffnen Sie ein Abfragefragefenster mit SSISDB als aktuelle Datenbank.
 

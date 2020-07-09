@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5c6956c38d15213d84b43b24784d2bb2b3a1963f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: dac1d66242dc88c1b2d96c7af1930e36f225ff4e
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638580"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040502"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure Active Directory B2C mithilfe einer benutzerdefinierten Richtlinie
 
@@ -39,7 +39,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
 1. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*.
 2. Falls es nicht bereits vorhanden ist, fügen Sie ein **ClaimsSchema**-Element und seine untergeordneten Elemente als erstes Element unter dem **BuildingBlocks**-Element hinzu:
 
-    ```XML
+    ```xml
     <ClaimsSchema>
       <ClaimType Id="logonIdentifier">
         <DisplayName>User name or email address that the user can use to sign in</DisplayName>
@@ -62,7 +62,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
 
 3. Fügen Sie dem **BuildingBlocks**-Element hinter dem **ClaimsSchema**-Element ein **ClaimsTransformations**-Element und dessen untergeordnete Elemente hinzu:
 
-    ```XML
+    ```xml
     <ClaimsTransformations>
       <ClaimsTransformation Id="CreateSubjectClaimFromObjectID" TransformationMethod="CreateStringClaim">
         <InputParameters>
@@ -88,7 +88,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
 
 4. Suchen Sie das **ClaimsProvider**-Element, bei dem **DisplayName** den Wert `Local Account SignIn` aufweist, und fügen Sie das folgende technische Profil hinzu:
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
       <DisplayName>Local Account SignIn</DisplayName>
       <Protocol Name="OpenIdConnect" />
@@ -110,8 +110,8 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
         <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="password" />
         <InputClaim ClaimTypeReferenceId="scope" DefaultValue="openid" />
         <InputClaim ClaimTypeReferenceId="nca" PartnerClaimType="nca" DefaultValue="1" />
-        <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="00000000-0000-0000-0000-000000000000" />
-        <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="00000000-0000-0000-0000-000000000000" />
+        <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppId" />
+        <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppId" />
       </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid" />
@@ -128,7 +128,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
 
 5. Fügen Sie die folgenden **ClaimsProvider**-Elemente mit ihren technischen Profilen dem **ClaimsProviders**-Element hinzu:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>
@@ -182,7 +182,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
 
 6. Fügen Sie dem **TrustFrameworkPolicy**-Element ein **UserJourneys**-Element und dessen untergeordnete Elemente hinzu:
 
-    ```XML
+    ```xml
     <UserJourney Id="ResourceOwnerPasswordCredentials">
       <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
       <OrchestrationSteps>
@@ -230,7 +230,7 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, die die User J
 3. Ändern Sie den Wert des **ReferenceId**-Attributs unter **DefaultUserJourney** in `ResourceOwnerPasswordCredentials`.
 4. Ändern Sie das **OutputClaims**-Element so, dass es nur die folgenden Ansprüche enthält:
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="sub" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
     <OutputClaim ClaimTypeReferenceId="displayName" DefaultValue="" />
@@ -251,7 +251,7 @@ Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu 
 - Ersetzen Sie `<tenant-name>` durch den Namen des Azure AD B2C-Mandanten.
 - Ersetzen Sie `B2C_1A_ROPC_Auth` durch den vollständigen Namen der Richtlinie für Kennwortanmeldeinformationen des Ressourcenbesitzers.
 
-| Key | value |
+| Schlüssel | Wert |
 | --- | ----- |
 | username | `user-account` |
 | password | `password1` |
@@ -267,7 +267,7 @@ Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu 
 
 Die tatsächliche POST-Anforderung sieht wie im folgenden Beispiel aus:
 
-```HTTPS
+```https
 POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
@@ -277,7 +277,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 Eine erfolgreiche Antwort mit Offlinezugriff ähnelt dem folgenden Beispiel:
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...",
     "token_type": "Bearer",
@@ -296,7 +296,7 @@ Erstellen Sie einen POST-Aufruf ähnlich dem hier gezeigten. Verwenden Sie die I
 - Ersetzen Sie `<tenant-name>` durch den Namen des Azure AD B2C-Mandanten.
 - Ersetzen Sie `B2C_1A_ROPC_Auth` durch den vollständigen Namen der Richtlinie für Kennwortanmeldeinformationen des Ressourcenbesitzers.
 
-| Key | value |
+| Schlüssel | Wert |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -309,7 +309,7 @@ Erstellen Sie einen POST-Aufruf ähnlich dem hier gezeigten. Verwenden Sie die I
 
 Eine erfolgreiche Antwort ähnelt dem folgenden Beispiel:
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhT...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQn...",

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: b06fe37b63494eb4ee0ca680733a801c26415d67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca9a74763715c5c68526ff3213a14d2148f5ad30
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530052"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834304"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Verwenden von EXPLAIN zum Analysieren der Abfrageleistung in Azure Database for MariaDB
 **EXPLAIN** ist ein praktisches Tool zum Optimieren von Abfragen. Mit einer EXPLAIN-Anweisung können Sie Informationen zur Ausführung von SQL-Anweisungen abrufen. Die folgende Ausgabe zeigt ein Beispiel für die Ausführung einer EXPLAIN-Anweisung.
@@ -166,4 +166,4 @@ Aus der EXPLAIN-Anweisung geht jetzt hervor, dass MariaDB einen kombinierten Ind
 Durch die Verwendung von EXPLAIN und verschiedener Typen von Indizes kann die Leistung erheblich gesteigert werden. Wenn Sie über einen Index für die Tabelle verfügen, bedeutet das nicht zwangsläufig, dass MariaDB in der Lage ist, ihn für Ihre Abfragen zu verwenden. Überprüfen Sie Ihre Annahmen immer mit EXPLAIN, und optimieren Sie Ihre Abfragen mithilfe von Indizes.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Um Antworten anderer Benutzer auf häufige Fragen zu erhalten oder eine neue Frage/Antwort zu veröffentlichen, besuchen Sie das [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) oder [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).
+- Um Antworten anderer Benutzer auf häufig gestellte Fragen zu erhalten oder eine neue Frage/Antwort zu veröffentlichen, besuchen Sie die [Frageseite von Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-database-mariadb.html) oder [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).

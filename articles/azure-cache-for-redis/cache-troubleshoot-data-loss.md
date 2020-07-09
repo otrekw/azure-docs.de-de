@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: d54506b94f076f0a3d967f88bd4e2960a1ca6396
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef7824640dcd2b9dbae1d27f385e5334ba9875ff
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75530900"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699220"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Problembehandlung bei Datenverlust in Azure Cache for Redis
 
@@ -80,7 +80,7 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>Asynchrone Replikation
 
-Jede Azure Cache for Redis-Instanz ist sowohl im Tarif „Standard“ als auch im Tarif „Premium“ mit einem Masterknoten und mindestens einem Replikat konfiguriert. Daten werden in einem Hintergrundprozess asynchron aus dem Masterknoten in ein Replikat kopiert. Auf der Website [redis.io](https://redis.io/topics/replication) wird beschrieben, wie die Redis-Datenreplikation im Allgemeinen funktioniert. Bei Szenarien, in denen Clients häufig in Redis schreiben, kann ein partieller Datenverlust auftreten, weil diese Datenreplikation als sofortige Replikation garantiert wird. Wenn beispielsweise der Masterknoten heruntergefahren wird, *nachdem* ein Client einen Schlüssel in den Knoten geschrieben hat, aber *bevor* der Hintergrundprozess die Möglichkeit hatte, diesen Schlüssel an das Replikat zu senden, geht der Schlüssel verloren, wenn das Replikat als neuer Masterknoten verwendet wird.
+Jede Azure Cache for Redis-Instanz ist sowohl im Tarif „Standard“ als auch im Tarif „Premium“ mit einem Masterknoten und mindestens einem Replikat konfiguriert. Daten werden in einem Hintergrundprozess asynchron aus dem Masterknoten in ein Replikat kopiert. Auf der Website [redis.io](https://redis.io/topics/replication) wird beschrieben, wie die Redis-Datenreplikation im Allgemeinen funktioniert. In Szenarien, in denen Clients häufig in Redis schreiben, kann ein partieller Datenverlust auftreten, weil nicht garantiert werden kann, dass diese Replikation sofort ausgeführt wird. Wenn beispielsweise der Masterknoten heruntergefahren wird, *nachdem* ein Client einen Schlüssel in den Knoten geschrieben hat, aber *bevor* der Hintergrundprozess die Möglichkeit hatte, diesen Schlüssel an das Replikat zu senden, geht der Schlüssel verloren, wenn das Replikat als neuer Masterknoten verwendet wird.
 
 ## <a name="major-or-complete-loss-of-keys"></a>Größerer oder kompletter Verlust von Schlüsseln
 

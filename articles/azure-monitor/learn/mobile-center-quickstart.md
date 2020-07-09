@@ -23,7 +23,7 @@ In diesem Schnellstart erfahren Sie, wie Sie die Instanz von App Center Ihrer Ap
 
 Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
-- ein Azure-Abonnement
+- Ein Azure-Abonnement.
 - Eine iOS-, Android-, Xamarin-, Universal Windows- oder React Native-App
  
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -75,7 +75,7 @@ Sobald Ihre App benutzerdefinierte Ereignisse sendet und diese von App Center em
 
     Ein Konfigurationsfeld wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der unten stehenden Tabelle aus.
 
-    | Einstellungen        |  value           | BESCHREIBUNG  |
+    | Einstellungen        |  Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Ein global eindeutiger Wert wie z.B. „myApp-iOS“ | Der Name, der die zu überwachende App identifiziert. |
      | **Ressourcengruppe**     | Eine neue Ressourcengruppe, oder eine vorhandene aus dem Menü | Die Ressourcengruppe, in der die neue Application Insights-Ressource erstellt werden soll |

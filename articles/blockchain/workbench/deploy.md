@@ -2,14 +2,14 @@
 title: Bereitstellen von Azure Blockchain Workbench Preview
 description: 'Vorgehensweise: Bereitstellen von Azure Blockchain Workbench Preview'
 ms.date: 01/08/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: brendal
-ms.openlocfilehash: 141bb8825e47eb2309f9f551990a2976e8f4e209
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aaef42f715c9f4fa2550f4a2468b42c5077af14c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943202"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210762"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Bereitstellen von Azure Blockchain Workbench Preview
 
@@ -28,7 +28,7 @@ Blockchain Workbench ermöglicht die Bereitstellung eines Blockchainledgers zusa
 * Event Grid
 * Azure-Schlüsseltresor
 * Service Bus
-* SQL-Datenbank (Standard S0) + logischer SQL-Server
+* SQL-Datenbank (Standard S0)
 * Azure Storage-Konto (Standard LRS)
 * VM-Skalierungsgruppe mit der Kapazität 1
 * Virtual Network-Ressourcengruppe (mit Load Balancer, Netzwerksicherheitsgruppe, öffentlicher IP-Adresse, virtuellem Netzwerk)
@@ -69,7 +69,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
     | Bereitstellungsregion | Geben Sie an, wo die Blockchain Workbench-Ressourcen bereitgestellt werden sollen. Für optimale Verfügbarkeit sollte dies der Einstellung **Ort** entsprechen. |
     | Subscription | Geben Sie das Azure-Abonnement an, das Sie für Ihre Bereitstellung verwenden möchten. |
     | Ressourcengruppen | Erstellen Sie eine Ressourcengruppe, indem Sie **Neu erstellen** auswählen, und geben Sie einen eindeutigen Namen für die Ressourcengruppe ein. |
-    | Location | Geben Sie die Region an, in der Sie das Framework bereitstellen möchten. |
+    | Standort | Geben Sie die Region an, in der Sie das Framework bereitstellen möchten. |
 
 1. Wählen Sie **OK**, um die Konfiguration der Grundeinstellungen fertig zu stellen.
 
@@ -84,7 +84,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
     | Einstellung | BESCHREIBUNG  |
     |---------|--------------|
     | Azure Blockchain-Diensttarif | Wählen Sie für Blockchain Workbench den Azure Blockchain-Diensttarif **Basic** oder **Standard** aus. |
-    | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie festgelegt haben, [Azure AD vorab zu konfigurieren](#azure-ad-configuration) oder erneut bereitzustellen, klicken Sie auf *Jetzt hinzufügen*. |
+    | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
     | VM-Auswahl | Wählen Sie die bevorzugte Speicherleistung und VM-Größe für Ihr Blockchainnetzwerk aus. Wählen Sie eine kleinere VM-Größe wie *Standard DS1 v2* aus, wenn Sie ein Abonnement mit niedrigen Dienstlimits verwenden, z.B. den Azure-Free-Tarif. |
 
     Für **Vorhandene verwenden**:
@@ -103,7 +103,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
      | Einstellung | BESCHREIBUNG  |
      |---------|--------------|
      | Ethereum-RPC-Endpunkt | Geben Sie den RPC-Endpunkt eines bestehenden PoA-Blockchainnetzwerks an. Der Endpunkt beginnt mit „https://“ oder „http://“ und endet mit einer Portnummer. Zum Beispiel, `http<s>://<network-url>:<port>` |
-     | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie festgelegt haben, [Azure AD vorab zu konfigurieren](#azure-ad-configuration) oder erneut bereitzustellen, klicken Sie auf *Jetzt hinzufügen*. |
+     | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
      | VM-Auswahl | Wählen Sie die bevorzugte Speicherleistung und VM-Größe für Ihr Blockchainnetzwerk aus. Wählen Sie eine kleinere VM-Größe wie *Standard DS1 v2* aus, wenn Sie ein Abonnement mit niedrigen Dienstlimits verwenden, z.B. den Azure-Free-Tarif. |
 
 1. Klicken Sie auf **OK**, um die Konfiguration der erweiterten Einstellungen abzuschließen.
@@ -177,7 +177,6 @@ Wenn Sie Azure AD-Einstellungen manuell konfigurieren oder vor der Bereitstellun
 
 Die Blockchain Workbench-Bereitstellung erfordert die Registrierung einer Azure AD-Anwendung. Sie benötigen einen Azure Active Directory (Azure AD)-Mandanten, um die App zu registrieren. Sie können einen bestehenden Mandanten verwenden oder einen neuen Mandanten anlegen. Wenn Sie einen bestehenden Azure AD-Mandanten verwenden, benötigen Sie ausreichende Berechtigungen, um innerhalb eines Azure AD-Mandanten Anwendungen zu registrieren und Berechtigungen für die Graph-API zu erteilen. Wenn Sie in einem vorhandenen Azure AD-Mandanten nicht über ausreichende Berechtigungen verfügen, erstellen Sie einen neuen Mandanten.
 
-
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie oben rechts Ihr Konto aus, und wechseln Sie zum gewünschten Azure AD-Mandanten. Bei dem Mandanten muss es sich um den Mandanten des Abonnementadministrators handeln, in dem Azure Blockchain Workbench installiert ist, und Sie müssen über ausreichende Berechtigungen für die Anwendungsregistrierung verfügen.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus. Wählen Sie **App-Registrierungen** > **Neue Registrierung** aus.
@@ -194,11 +193,9 @@ Die Blockchain Workbench-Bereitstellung erfordert die Registrierung einer Azure 
 
 Als Nächstes müssen Sie das Manifest für die Verwendung von Anwendungsrollen innerhalb von Azure AD ändern, um Blockchain Workbench-Administratoren festzulegen.  Weitere Informationen zu Anwendungsmanifesten finden Sie unter [Azure Active Directory-Anwendungsmanifest](../../active-directory/develop/reference-app-manifest.md).
 
-
 1. Für das Manifest ist eine GUID erforderlich. Zum Generieren einer GUID können Sie den PowerShell-Befehl `[guid]::NewGuid()` oder das Cmdlet `New-GUID` verwenden. Alternativ können Sie auch eine GUID-Generator-Website verwenden.
 1. Wählen Sie für die Anwendung, die Sie registriert haben, im Bereich **Verwalten** die Option **Manifest** aus.
-1. Aktualisieren Sie als Nächstes den Abschnitt **appRoles** des Manifests. Ersetzen Sie `"appRoles": []` durch den bereitgestellten JSON-Code. Stellen Sie sicher, dass Sie den Wert für das Feld **ID** durch die von Ihnen generierte GUID ersetzen. 
-
+1. Aktualisieren Sie als Nächstes den Abschnitt **appRoles** des Manifests. Ersetzen Sie `"appRoles": []` durch den bereitgestellten JSON-Code. Stellen Sie sicher, dass Sie den Wert für das Feld `id` durch die von Ihnen generierte GUID ersetzen.
     ![Bearbeiten des Manifests](media/deploy/edit-manifest.png)
 
     ``` json
@@ -262,7 +259,7 @@ Die Anwendungs-ID und die Mandateninformationen werden für die Bereitstellung b
 
 ### <a name="get-tenant-domain-name"></a>Abrufen des Domänennamens des Mandanten
 
-Sammeln und speichern Sie den Domänennamen des Active Directory-Mandanten, unter dem die Anwendungen registriert sind. 
+Sammeln und speichern Sie den Domänennamen des Active Directory-Mandanten, unter dem die Anwendungen registriert sind.
 
 Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus. Wählen Sie **Benutzerdefinierte Domänennamen**. Kopieren und speichern Sie den Domänennamen.
 
@@ -299,7 +296,7 @@ Nachdem Azure Blockchain Workbench bereitgestellt wurde, muss im nächsten Schri
 
 Wenn eine Bereitstellung nicht mehr benötigt wird, können Sie eine Bereitstellung durch Löschen der Blockchain Workbench-Ressourcengruppe entfernen.
 
-1. Navigieren Sie im Azure-Portal im linken Navigationsbereich zu **Ressourcengruppe**, und wählen Sie die Ressourcengruppe aus, die gelöscht werden soll. 
+1. Navigieren Sie im Azure-Portal im linken Navigationsbereich zu **Ressourcengruppe**, und wählen Sie die Ressourcengruppe aus, die gelöscht werden soll.
 1. Wählen Sie die Option **Ressourcengruppe löschen**. Überprüfen Sie den Löschvorgang, indem Sie den Ressourcengruppennamen eingeben und auf **Löschen** klicken.
 
     ![Ressourcengruppe löschen](media/deploy/delete-resource-group.png)

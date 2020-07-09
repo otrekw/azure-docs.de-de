@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 507afad294e8233ea4de4130795f29925870fcdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ff356ef67630429b72208107541b1696e4eceac
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74888052"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958564"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services 
 
@@ -56,7 +56,7 @@ Es folgt eine Liste der speziellen Formatdefinitionen, die für die Echtzeiterfa
 ## <a name="4-protocol-format--http"></a>4. Protokollformat – HTTP
 Bei der auf fragmentiertem ISO-MP4-basierenden Echtzeiterfassung für Media Services wird eine HTTP POST-Standardanforderung mit langer Laufzeit verwendet, um codierte Mediendaten im fragmentierten MP4-Format an den Dienst zu übertragen. Jede HTTP POST-Anforderung sendet einen vollständigen Bitstrom in fragmentiertem MP4 („Stream“), der mit den Headerfeldern (**ftyp**, **Live Server Manifest Box** und **moov**) beginnt und mit einer Sequenz von Fragmenten (Felder **moof** und **mdat**) fortgesetzt wird. Informationen zur URL-Syntax für die HTTP POST-Anforderung finden Sie in Abschnitt 9.2 in [1]. Beispiel für die POST-URL: 
 
-    http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)
+`http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)`
 
 ### <a name="requirements"></a>Requirements (Anforderungen)
 Es folgen die detaillierten Anforderungen:

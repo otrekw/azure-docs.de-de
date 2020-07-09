@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: c2e590f011c92df6aa942e8e1fc799023f15750f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4072fe48b9f53e5d2a43be66cdc5385784f285b6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79237580"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020709"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>APIs für die Automatisierung von Azure-Reservierungen
 
@@ -63,7 +63,7 @@ Sie können eine Reservierung auch im Azure-Portal erwerben. Weitere Information
 Servicepläne:
 - [Virtueller Computer](../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)
 -  [Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json)
-- [SQL-Datenbank](../../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json)
+- [SQL-Datenbank](../../azure-sql/database/reserved-capacity-overview.md?toc=/azure/billing/TOC.json)
 
 Softwarepläne:
 - [SUSE Linux-Software](../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json)

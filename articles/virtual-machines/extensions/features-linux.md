@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79226866"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
@@ -83,7 +83,7 @@ Azure-VM-Erweiterungen können auf vorhandenen VMs ausgeführt werden, was nütz
 
 Die folgenden Methoden können verwendet werden, um eine Erweiterung für eine vorhandene VM auszuführen.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Azure VM-Erweiterungen können mit dem Befehl [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) für einen vorhandenen virtuellen Computer ausgeführt werden. Im folgenden Beispiel wird die Erweiterung für benutzerdefinierte Skripts für einen virtuellen Computer mit dem Namen *myVM* in der Ressourcengruppe *myResourceGroup* ausgeführt. Ersetzen Sie den Ressourcengruppennamen, den VM-Namen und das auszuführende Skript (https:\//raw.githubusercontent.com/me/project/hello.sh) im Beispiel durch Ihre eigenen Informationen. 
 
@@ -336,7 +336,7 @@ Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
 
 1. Um das Protokoll des Linux-Agents zu überprüfen, sollten Sie die Aktivität bei der Bereitstellung der Erweiterung in */var/log/waagent.log* untersuchen.
 
-2. Überprüfen Sie die Protokolle der eigentlichen Erweiterung in */var/log/azure/\<NameDerErweiterung>* , um weitere Informationen zu erhalten.
+2. Überprüfen Sie die Protokolle der eigentlichen Erweiterung in */var/log/azure/\<extensionName>* , um weitere Informationen zu erhalten.
 
 3. Lesen Sie die Abschnitte zur Problembehandlung in der Dokumentation zu Erweiterungen für Fehlercodes, bekannten Problemen usw.
 

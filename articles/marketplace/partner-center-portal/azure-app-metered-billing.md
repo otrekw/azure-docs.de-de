@@ -1,18 +1,16 @@
 ---
 title: Getaktete Abrechnung für verwaltete Anwendungen mit dem Marketplace-Messungsdienst | Azure Marketplace
 description: Diese Dokumentation ist ein Leitfaden für ISVs, die Azure-Anwendungen mit flexiblen Abrechnungsmodellen veröffentlichen.
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 180015a6bab576c02dcfaaea589628e40c6adde4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: d1ed294412e44c79fc1eb8cbc01bf134f08a953f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736105"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118935"
 ---
 # <a name="managed-application-metered-billing"></a>Getaktete Abrechnung für verwaltete Anwendungen 
 
@@ -125,7 +123,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Supportticket zu übermitteln:
 4. Wählen Sie unter „Wählen Sie ein Problem aus, das das Problem am besten beschreibt“ die Option **getaktete Abrechnung** aus.
 5. Durch Auswählen der Schaltfläche **Weiter** gelangen Sie zur Seite **Problemdetails**, wo Sie weitere Details zu Ihrem Problem eingeben können.
 
-Weitere Supportoptionen für Herausgeber finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+Weitere Supportoptionen für Herausgeber finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](support.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

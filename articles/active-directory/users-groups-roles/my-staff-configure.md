@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
-ms.topic: article
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 791f2e9bf825bb0a1d1ce555c9fbd879106213df
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: dc4e71f4283d78c2b241441810a8c1313f002152
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995828"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850893"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Verwalten Ihrer Benutzer mit „Meine Mitarbeiter“ (Vorschau)
 
@@ -71,9 +71,10 @@ Wir empfehlen dringend, dass Sie „Meine Mitarbeiter“ mit [Azure AD-Richtlini
 1. Installieren Sie die [Microsoft Graph Beta PowerShell-Cmdlets](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1).
 1. Führen Sie die folgenden Befehle aus:
 
-        Connect-Graph -Scopes "Directory.AccessAsUser.All"
-        New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
-
+   ```powershell
+   Connect-Graph -Scopes "Directory.AccessAsUser.All"
+   New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
+   ```
 1. Erstellen Sie eine Richtlinie für bedingten Zugriff, die für die Cloudanwendung „Meine Mitarbeiter“ gilt.
 
     ![Erstellen einer Richtlinie für bedingten Zugriff für die Anwendung „Meine Mitarbeiter“](media/my-staff-configure/conditional-access.png)

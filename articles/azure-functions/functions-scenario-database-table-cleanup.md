@@ -4,12 +4,12 @@ description: Verwenden Sie Azure Functions, um eine Aufgabe zu planen, die eine 
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 2e3f53943d45e90b8aff8e386ce8d0e28670673f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18e310559cb0b88aac53b1020172847968616f97
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366807"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020335"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
 
@@ -21,13 +21,13 @@ Wenn Sie C#-Funktionen zum ersten Mal verwenden, sollten Sie die [C#-Entwicklerr
 
 + Führen Sie die Schritte im Artikel [Erstellen Ihrer ersten Funktion mit Visual Studio](functions-create-your-first-function-visual-studio.md) aus, um eine lokale Funktions-App für Version 2.x oder höher der Runtime zu erstellen. Zudem müssen Sie Ihr Projekt in einer Funktions-App in Azure veröffentlicht haben.
 
-+ In diesem Artikel wird ein Transact-SQL-Befehl veranschaulicht, der einen Massenbereinigungsvorgang in der Tabelle **SalesOrderHeader** in der Beispieldatenbank „AdventureWorksLT“ ausführt. Um die Beispieldatenbank „AdventureWorksLT“ zu erstellen, führen Sie die Schritte im Artikel [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../sql-database/sql-database-get-started-portal.md) aus.
++ In diesem Artikel wird ein Transact-SQL-Befehl veranschaulicht, der einen Massenbereinigungsvorgang in der Tabelle **SalesOrderHeader** in der Beispieldatenbank „AdventureWorksLT“ ausführt. Um die Beispieldatenbank „AdventureWorksLT“ zu erstellen, führen Sie die Schritte im Artikel [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../azure-sql/database/single-database-create-quickstart.md) aus.
 
 + Sie müssen eine [Firewallregel auf Serverebene](../sql-database/sql-database-get-started-portal-firewall.md) für die öffentliche IP-Adresse des Computers hinzufügen, den Sie für diesen Schnellstart verwenden. Diese Regel ist erforderlich, damit über den lokalen Computer auf die SQL-Datenbank-Instanz zugegriffen werden kann.  
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
-Sie müssen die Verbindungszeichenfolge für die Datenbank abrufen, die Sie in [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../sql-database/sql-database-get-started-portal.md) erstellt haben.
+Sie müssen die Verbindungszeichenfolge für die Datenbank abrufen, die Sie in [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../azure-sql/database/single-database-create-quickstart.md) erstellt haben.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 

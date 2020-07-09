@@ -6,16 +6,16 @@ ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: bb5fc8bcc99a4439276f53325c029635143c86c5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9086e00e4b6caf89ab249bbf25ca03a6f068ba49
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74685384"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248276"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database"></a>Herstellen einer Verbindung zwischen einer App Service-App und einer SQL-Datenbank
+# <a name="connect-an-app-service-app-to-sql-database"></a>Herstellen einer Verbindung zwischen einer App Service-App und einer SQL-Datenbank
 
-In diesem Szenario erfahren Sie, wie Sie eine Azure SQL-Datenbank und eine App Service-App erstellen. Anschließend verknüpfen Sie die SQL-Datenbank mithilfe von App-Einstellungen mit der App.
+In diesem Szenario erfahren Sie, wie Sie eine Datenbank in Azure SQL-Datenbank und eine App Service-App erstellen. Anschließend verknüpfen Sie die Datenbank mithilfe von App-Einstellungen mit der App.
 
 Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
@@ -23,7 +23,7 @@ Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure Powe
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to a SQL database")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to SQL Database")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 
@@ -42,8 +42,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Erstellt einen App Service-Plan. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Erstellt eine App Service-App. |
-| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen SQL-Datenbank-Server. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Erstellt eine Firewallregel für einen SQL-Datenbank-Server. |
+| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen Server. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Erstellt eine Firewallregel auf Serverebene. |
 | [New-AzSQLDatabase](/powershell/module/az.sql/new-azsqldatabase) | Erstellt eine Datenbank oder eine elastische Datenbank. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Ändert die Konfiguration einer App Service-App. |
 

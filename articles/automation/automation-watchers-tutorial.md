@@ -1,20 +1,26 @@
 ---
-title: Erstellen eines Watcher-Tasks im Azure Automation-Konto
-description: Erfahren Sie, wie Sie einen Watchertask im Azure Automation-Konto erstellen, um die Erstellung neuer Dateien in einem Ordner zu überwachen.
+title: Nachverfolgen aktualisierter Dateien mit einem Azure Automation-Watchertask
+description: In diesem Artikel erfahren Sie, wie Sie einen Watchertask im Azure Automation-Konto erstellen, um die Erstellung neuer Dateien in einem Ordner zu überwachen.
 services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 1175350e7f9f4db92d7d59eba0cc66ac4bb49f5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3369a807410e9e959e8091d5b16c8480803d26bb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617350"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830581"
 ---
-# <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Erstellen von Azure Automation-Watchertasks zum Nachverfolgen von Dateiänderungen auf einem lokalen Computer
+# <a name="track-updated-files-with-a-watcher-task"></a>Nachverfolgen von aktualisierten Dateien mit einem Watchertask
 
 Azure Automation verwendet einen Watchertask für eine Überwachung auf Ereignisse und Triggeraktionen in PowerShell-Runbooks. Der Watchertask besteht aus zwei Teilen: Watcher und Aktion. Ein Watcherrunbook wird in einem Intervall ausgeführt, das im Watchertask definiert ist, und gibt Daten in ein Aktionsrunbook aus. 
+
+> [!NOTE]
+> Watchertasks werden in Azure China 21Vianet nicht unterstützt.
+
+> [!IMPORTANT]
+> Seit Mai 2020 ist die Verwendung von Azure Logic Apps die unterstützte Methode zum Überwachen auf Ereignisse, zum Planen von wiederkehrenden Aufgaben und zum Auslösen von Aktionen. Informationen finden Sie unter [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows).
 
 Dieses Tutorial führt Sie durch die Schritte zum Erstellen eines Watchertasks, mit dem Sie überwachen können, ob einem Verzeichnis eine neue Datei hinzugefügt wird. Folgendes wird vermittelt:
 
@@ -34,9 +40,6 @@ Für dieses Tutorials müssen folgende Voraussetzungen erfüllt sein:
 * [Automation-Konto](automation-offering-get-started.md), um die Watcher- und Aktionsrunbooks und den Watchertask aufzunehmen.
 * [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), in dem der Watchertask ausgeführt wird.
 * PowerShell-Runbooks. PowerShell-Workflow-Runbooks werden von Watchertasks nicht unterstützt.
-
-> [!NOTE]
-> Waterchertasks werden in Azure China nicht unterstützt.
 
 ## <a name="import-a-watcher-runbook"></a>Importieren eines Watcherrunbooks
 
@@ -166,5 +169,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Klicken Sie auf folgenden Link, um weitere Informationen zum Erstellen von Runbooks zu erhalten:
 
 > [!div class="nextstepaction"]
-> [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-powershell.md).
-
+> [Erstellen eines PowerShell-Runbooks](learn/automation-tutorial-runbook-textual-powershell.md)

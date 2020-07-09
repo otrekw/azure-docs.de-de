@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 05/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 5ce1b85394a7bb604841f7fb941bdebf12c0bca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414151"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891754"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Beibehalten von Metadaten und Zugriffssteuerungslisten bei Verwendung der Kopieraktivität in Azure Data Factory
 
@@ -32,6 +32,8 @@ Die Kopieraktivität unterstützt die Beibehaltung der folgenden Attribute beim 
 
 - **Alle vom Kunden angegebenen Metadaten** 
 - Und die folgenden **fünf integrierten Systemeigenschaften des Datenspeichers**: `contentType`, `contentLanguage` (mit Ausnahme von Amazon S3) `contentEncoding`, `contentDisposition`, `cacheControl`.
+
+**Behandeln von Unterschieden in Metadaten:** Amazon S3 und Azure Storage erlauben unterschiedliche Zeichensätze in den Schlüsseln der vom Kunden angegebenen Metadaten. Wenn Sie sich für die Beibehaltung von Metadaten bei Verwendung der Kopieraktivität entscheiden, ersetzt ADF die ungültigen Zeichen automatisch durch „_“.
 
 Wenn Sie Dateien unverändert von Amazon S3/Azure Data Lake Storage Gen2/Azure Blob in Azure Data Lake Storage Gen2/Azure Blob mit dem Binärformat kopieren, können Sie die Option **Beibehalten** auf der Registerkarte **Kopieraktivität** > **Einstellungen** für die Aktivitätserstellung oder auf der Seite **Einstellungen** im Tool zum Kopieren von Daten verwenden.
 

@@ -1,18 +1,18 @@
 ---
 title: Geschäftskonten und Partner Center
 description: Überprüfen, ob Ihr Unternehmen ein Geschäftskonto eingerichtet hat, Erstellen eines neuen Geschäftskontos und Einrichten mehrerer Geschäftskonten für die Verwendung mit Partner Center
-author: dsindona
-ms.author: parthp
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 3c0ee2f8d5291f7904435dea32d913adeaaf25c5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6fca3429ab96a63b01eaa7e9d1f0ae83dc46e9c7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262365"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119751"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Geschäftskonten und Partner Center
 
@@ -44,7 +44,7 @@ Führen Sie die folgenden Schritte aus, um ein neues Geschäftskonto für Ihr Un
 
 Die E-Mail-Adresse für das Benutzerkonto muss ein verifizierter Domänenname in Ihrem Verzeichnis sein. Wählen Sie im linken Navigationsmenü **Azure Active Directory** -> **Benutzerdefinierte Domänennamen** aus, um alle verifizierten Domänennamen in Ihrem Verzeichnis aufzulisten.
 
-Weitere Informationen zum Hinzufügen von benutzerdefinierten Domänen in Azure Active Directory finden Sie unter [Hinzufügen oder Zuordnen einer Domäne in Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain).
+Weitere Informationen zum Hinzufügen von benutzerdefinierten Domänen in Azure Active Directory finden Sie unter [Hinzufügen oder Zuordnen einer Domäne in Azure AD](../../active-directory/active-directory-add-domain.md).
 
 ## <a name="troubleshoot-work-email-sign-in"></a>Problembehandlung: Anmeldedaten für geschäftliche E-Mail-Konten
 

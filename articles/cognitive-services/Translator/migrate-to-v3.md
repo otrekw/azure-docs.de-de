@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 47136ee9c2f0dee29571f310eb3b07d7c11888c0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8fae863c03ccbc17e9ec6621e73ddf475f759569
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592711"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996209"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator-Migration von V2 zu V3
 
@@ -32,7 +32,7 @@ Am Ende dieses Dokuments finden Sie nützliche Links, unter denen Sie weitere In
 
 * Keine Ablaufverfolgung: In V3 gilt das Feature „Keine Ablaufverfolgung“ für alle Tarife im Azure-Portal. Dieses Feature bedeutet, dass kein Text, der an die V3-API übermittelt wird, von Microsoft gespeichert wird.
 * JSON: XML wird durch JSON ersetzt. Alle Daten, die an diesen Dienst gesendet und von ihm empfangen werden, sind im JSON-Format.
-* Mehrere Zielsprachen in einer einzelnen Anforderung: Die Übersetzungsmethode akzeptiert mehrere Zielsprachen für die Übersetzung einer einzelnen Anforderung. Eine einzelne Anforderung kann also beispielsweise von Englisch in Deutsch, Spanisch und Japanisch (oder in eine andere Gruppe von Sprachen) übersetzt werden.
+* Mehrere Zielsprachen in einer einzelnen Anforderung: Die Translate-Methode akzeptiert mehrere Zielsprachen für die Übersetzung einer einzelnen Anforderung. Eine einzelne Anforderung kann also beispielsweise von Englisch in Deutsch, Spanisch und Japanisch (oder in eine andere Gruppe von Sprachen) übersetzt werden.
 * Bilinguales Wörterbuch: Eine Methode für ein bilinguales Wörterbuch wurde zur API hinzugefügt. Diese Methode enthält „lookup“ und „examples“.
 * Transkription: Die Transliterate-Methode wurde zur API hinzugefügt. Diese Methode konvertiert Wörter und Sätze in einem Skript (z.B. Arabisch) in ein anderes Skript (z.B. Latein).
 * Sprachen: Eine neue Languages-Methode stellt Sprachinformationen im JSON-Format bereit, die mit den Methoden „Translate“, „Dictionary“ und „Transliterate“ verwendet werden können.
@@ -116,10 +116,10 @@ Microsoft Translator V3 verwendet standardmäßig eine neuronale maschinelle Üb
 
 Die neuronale Übersetzung mit der Text-API von V3 unterstützt die Verwendung der Standardkategorien (SMT, speech, tech, generalnn) nicht.
 
-| |Endpunkt|    DSGVO-konformer Datenverarbeiter|  Verwendung von Translator Hub| Verwendung von „Benutzerdefinierter Translator“ (Vorschau)|
+| |Endpunkt|    DSGVO-konformer Datenverarbeiter|    Verwendung von Translator Hub|    Verwendung von „Benutzerdefinierter Translator“ (Vorschau)|
 |:-----|:-----|:-----|:-----|:-----|
-|Translator-Version 2|  api.microsofttranslator.com|    Nein  |Ja    |Nein|
-|Translator-Version 3|  api.cognitive.microsofttranslator.com|  Ja|    Nein| Ja|
+|Translator-Version 2|    api.microsofttranslator.com|    Nein    |Ja    |Nein|
+|Translator-Version 3|    api.cognitive.microsofttranslator.com|    Ja|    Nein|    Ja|
 
 **Translator-Version 3**
 * Ist allgemein verfügbar und wird vollständig unterstützt.

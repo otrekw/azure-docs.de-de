@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Sicherungsvorgänge von Azu
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d037339d9ff9a891fcc595a3eff75097204a77ab
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226142"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248684"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Sichern eines virtuellen Azure-Computers mithilfe von Azure Backup über die REST-API
 
@@ -272,11 +272,11 @@ Wenn der Vorgang abgeschlossen ist, wird „200 (OK)“ mit dem Inhalt des gesch
 }
 ```
 
-Dies bestätigt, dass der Schutz für den virtuellen Computer aktiviert ist und die erste Sicherung entsprechend dem Richtlinienzeitplan ausgelöst wird.
+Dies bestätigt, dass der Schutz für die VM aktiviert ist und die erste Sicherung gemäß dem Richtlinienzeitplan ausgelöst wird.
 
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>Auslösen einer bedarfsgesteuerten Sicherung für einen geschützten virtuellen Azure-Computer
 
-Nachdem ein virtueller Azure-Computer für die Sicherung konfiguriert wurde, werden Sicherungen entsprechend dem Richtlinienzeitplan durchgeführt. Sie können warten, bis die erste geplante Sicherung durchgeführt wird, oder jederzeit eine bedarfsgesteuerte Sicherung auslösen. Die Aufbewahrung für bedarfsgesteuerte Sicherungen unterscheidet sich von der Aufbewahrung bei der Sicherungsrichtlinie und kann für ein bestimmtes Datum und eine bestimmte Uhrzeit angegeben werden. Wenn sie nicht angegeben ist, wird von 30 Tagen ab dem Tag, an dem die bedarfsgesteuerte Sicherung ausgelöst wurde, ausgegangen.
+Nachdem eine Azure-VM für die Sicherung konfiguriert wurde, werden Sicherungen gemäß dem Richtlinienzeitplan durchgeführt. Sie können warten, bis die erste geplante Sicherung durchgeführt wird, oder jederzeit eine bedarfsgesteuerte Sicherung auslösen. Die Aufbewahrung für bedarfsgesteuerte Sicherungen unterscheidet sich von der Aufbewahrung bei der Sicherungsrichtlinie und kann für ein bestimmtes Datum und eine bestimmte Uhrzeit angegeben werden. Wenn sie nicht angegeben ist, wird von 30 Tagen ab dem Tag, an dem die bedarfsgesteuerte Sicherung ausgelöst wurde, ausgegangen.
 
 Das Auslösen einer bedarfsgesteuerten Sicherung ist ein *POST*-Vorgang.
 

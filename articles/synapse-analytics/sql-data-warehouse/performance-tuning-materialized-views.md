@@ -6,22 +6,20 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 6a3235d5edc5249bbbdc2e79dac8575ad26fd5e1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417021"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956388"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
+# <a name="performance-tune-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
 
-Die materialisierten Sichten im Synapse SQL-Pool bieten eine niedrige Wartungsmethode für komplexe analytische Abfragen, um eine schnelle Leistung ohne irgendeine Abfrageänderung zu erzielen. Dieser Artikel erläutert den allgemeinen Leitfaden zur Verwendung materialisierter Sichten.
-
-Die materialisierten Sichten im SQL-Pool bieten eine wartungsarme Methode für komplexe analytische Abfragen, um ohne Abfrageänderungen eine hohe Leistung zu erzielen. Dieser Artikel erläutert den allgemeinen Leitfaden zur Verwendung materialisierter Sichten.
+Die materialisierten Sichten im Synapse SQL-Pool bieten eine Methode mit geringer Wartung für komplexe analytische Abfragen, um eine schnelle Leistung ohne irgendeine Abfrageänderung zu erzielen. Dieser Artikel erläutert den allgemeinen Leitfaden zur Verwendung materialisierter Sichten.
 
 ## <a name="materialized-views-vs-standard-views"></a>Materialisierte Sichten im Vergleich zu Standardsichten
 
@@ -161,7 +159,7 @@ Materialisierte Sichten lassen Datenänderungen in den Basistabellen zu.  Daten 
 
 ## <a name="example"></a>Beispiel
 
-In diesem Beispiel dient eine TPCDS-ähnliche Abfrage zur Ermittlung von Kunden, die beim Katalogkauf mehr Geld ausgeben als in Geschäften, sowie zur Identifizierung der bevorzugten Kunden und von deren Ursprungsland.   Die Abfrage umfasst die Auswahl der TOP 100-Datensätze aus der Vereinigung (UNION) von drei untergeordneten SELECT-Anweisungen mit SUM () und GROUP BY.
+In diesem Beispiel dient eine TPCDS-ähnliche Abfrage zur Ermittlung von Kunden, die beim Katalogkauf mehr Geld ausgeben als in Geschäften, sowie zur Identifizierung der bevorzugten Kunden und von deren Ursprungsland/-region.   Die Abfrage umfasst die Auswahl der TOP 100-Datensätze aus der Vereinigung (UNION) von drei untergeordneten SELECT-Anweisungen mit SUM () und GROUP BY.
 
 ```sql
 WITH year_total AS (

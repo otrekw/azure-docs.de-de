@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 252b3b3ecf2de24410d046473ee2cfd2215254a9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ff4a2b9cb66013900b5b9969a4281d1a20d9c122
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198228"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736440"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten einer VM-Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. In diesem Tutorial lernen Sie Folgendes:
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.29 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.29 ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
@@ -78,7 +78,7 @@ Die folgende Beispielausgabe zeigt zwei VM-Instanzen in der Skalierungsgruppe:
 ```
 
 
-Die erste Spalte der Ausgabe enthält eine Instanz-ID (*InstanceId*). Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie `--instance-id`az vmss get-instance-view[ den Parameter ](/cli/azure/vmss) hinzu. Im folgenden Beispiel werden Informationen zur VM-Instanz *1* angezeigt:
+Die erste Spalte der Ausgabe enthält eine Instanz-ID (*InstanceId*). Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie [az vmss get-instance-view](/cli/azure/vmss) den Parameter `--instance-id` hinzu. Im folgenden Beispiel werden Informationen zur VM-Instanz *1* angezeigt:
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -167,6 +167,9 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 
 Wenn Sie eine Skalierungsgruppe mit einem bestimmten Image bereitstellen möchten, verwenden Sie den Wert aus der Spalte *Urn*. Wenn Sie das Image angeben, können Sie die Imageversionsnummer durch *latest* ersetzen, um die neueste Version der Distribution auszuwählen. Im folgenden Beispiel wird mithilfe des Arguments `--image` die neueste Version eines CentOS 7.3-Images angegeben.
 
+> [!IMPORTANT]
+> Wir empfehlen die Verwendung der *neuesten* Imageversion. Geben Sie „latest“ an, damit Sie die neueste Version eines Images verwenden können, das zum Zeitpunkt der Bereitstellung verfügbar ist. Bitte beachten Sie: Sollten Sie „latest“ verwenden, wird das VM-Image nach diesem Zeitpunkt selbst dann nicht automatisch aktualisiert, wenn eine neue Version verfügbar wird.
+
 Da die Erstellung und Konfiguration aller Ressourcen und VM-Instanzen der Skalierungsgruppe einige Minuten dauert, müssen Sie die folgende Skalierungsgruppe nicht bereitstellen:
 
 ```azurecli-interactive
@@ -234,7 +237,7 @@ az vmss create \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>Ändern der Kapazität einer Skalierungsgruppe
-Bei der Erstellung der Skalierungsgruppe zu Beginn des Tutorials wurden standardmäßig zwei VM-Instanzen bereitgestellt. Sie können `--instance-count`az vmss create[ zusammen mit dem Parameter ](/cli/azure/vmss) angeben, um die Anzahl von Instanzen zu ändern, die mit einer Skalierungsgruppe erstellt werden. Wenn Sie die Anzahl von VM-Instanzen in Ihrer bereits vorhandenen Skalierungsgruppe erhöhen oder verringern möchten, können Sie manuell die Kapazität ändern. Die Skalierungsgruppe erstellt oder entfernt die erforderliche Anzahl von VM-Instanzen und konfiguriert anschließend den Lastenausgleich für die Verteilung des Datenverkehrs.
+Bei der Erstellung der Skalierungsgruppe zu Beginn des Tutorials wurden standardmäßig zwei VM-Instanzen bereitgestellt. Sie können [az vmss create](/cli/azure/vmss) zusammen mit dem Parameter `--instance-count` angeben, um die Anzahl von Instanzen zu ändern, die mit einer Skalierungsgruppe erstellt werden. Wenn Sie die Anzahl von VM-Instanzen in Ihrer bereits vorhandenen Skalierungsgruppe erhöhen oder verringern möchten, können Sie manuell die Kapazität ändern. Die Skalierungsgruppe erstellt oder entfernt die erforderliche Anzahl von VM-Instanzen und konfiguriert anschließend den Lastenausgleich für die Verteilung des Datenverkehrs.
 
 Die Anzahl von VM-Instanzen in der Skalierungsgruppe kann mit [az vmss scale](/cli/azure/vmss) manuell erhöht oder verringert werden. Im folgenden Beispiel wird die Anzahl von VM-Instanzen in der Skalierungsgruppe auf *3* festgelegt:
 

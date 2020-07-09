@@ -4,12 +4,12 @@ description: Beschreibt die zahlreiche Regionen umfassende Bereitstellung eines 
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 424cd79a6c63200e1f101cf178b1fd2c9083161e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 006c123dfbb682ff5c498872d7f717a4a09e0bb5
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76152526"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057924"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Sichere Bereitstellungsmethoden mit dem Azure-Bereitstellungs-Manager (öffentliche Vorschau)
 
@@ -30,7 +30,7 @@ Die Topologievorlage wird vor der Rolloutvorlage bereitgestellt.
 
 Zusätzliche Ressourcen:
 
-- Die [REST-API-Referenz für den Azure-Bereitstellungs-Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- Die [REST-API-Referenz für den Azure-Bereitstellungs-Manager](/rest/api/deploymentmanager/).
 - [Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (private Vorschau)](./deployment-manager-tutorial.md) beschrieben vor.
 - [Tutorial: Verwenden der Integritätsprüfung im Azure-Bereitstellungs-Manager (Public Preview)](./deployment-manager-tutorial-health-check.md).
 - [Ein Beispiel zum Azure-Bereitstellungs-Manager](https://github.com/Azure-Samples/adm-quickstart).
@@ -300,7 +300,7 @@ Ihre Vorlage und Parameterdatei benötigen den korrekten Pfad, um die versionier
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "deployPackageUri": {

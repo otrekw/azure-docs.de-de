@@ -28,7 +28,7 @@ Führen Sie die folgenden Schritte aus, um einen Recovery Services-Tresor zu er
 
     ![Auswählen von „Alle Dienste“](./media/backup-create-rs-vault/click-all-services.png)
 
-1. Geben Sie im Dialogfeld **Alle Dienste***Recovery Services* ein. Die Liste der Ressourcen wird Ihrer Eingabe entsprechend gefiltert. Wählen Sie in der Liste der Ressourcen **Recovery Services-Tresore** aus.
+1. Geben Sie im Dialogfeld **Alle Dienste** *Recovery Services* ein. Die Liste der Ressourcen wird Ihrer Eingabe entsprechend gefiltert. Wählen Sie in der Liste der Ressourcen **Recovery Services-Tresore** aus.
 
     ![Eingeben und Auswählen von „Recovery Services-Tresore“](./media/backup-create-rs-vault/all-services.png)
 

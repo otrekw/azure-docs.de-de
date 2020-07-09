@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: fe4ecc237b56575f99844d3ec074225fadb69d3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67673347"
 ---
 ## <a name="configure-your-application-to-access-azure-storage"></a>Konfigurieren der Anwendung für den Zugriff auf Azure Storage
@@ -49,5 +49,5 @@ Das folgende Beispiel zeigt die Verwendung des Microsoft Azure Storage-Explorers
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
-Wie Sie sehen, machen Sie den Kontoschlüssel in Ihrer Anwendung nicht verfügbar, wenn Sie eine SAS verwenden. Weitere Informationen zu SAS und bewährten Methoden bei der Verwendung von SAS erhalten Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Wie Sie sehen, machen Sie den Kontoschlüssel in Ihrer Anwendung nicht verfügbar, wenn Sie eine SAS verwenden. Weitere Informationen zu SAS und bewährten Methoden bei der Verwendung von SAS erhalten Sie unter [Shared Access Signatures: Grundlegendes zum SAS-Modell](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md).
 

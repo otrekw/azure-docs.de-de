@@ -102,7 +102,7 @@
       href: monitor-container-security.md
     - name: Schützen Ihrer Server mit Microsoft Defender ATP
       href: security-center-wdatp.md
-    - name: Verwenden von Advanced Data Security für SQL auf virtuellen Azure-Computern
+    - name: Verwenden von Advanced Data Security für SQL-Computer
       href: security-center-iaas-advanced-data.md
     - name: Schützen von Anwendungen mithilfe von App Service
       href: security-center-app-services.md
@@ -198,8 +198,6 @@
       href: security-center-features-retirement-july2019.md
     - name: 'Endpoint Protection: Bewertung und Empfehlungen'
       href: security-center-endpoint-protection.md
-    - name: Sicherheitsbewertung (Legacy)
-      href: security-center-secure-score.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

@@ -1,28 +1,25 @@
 ---
-title: Starten eines Azure Automation-Runbooks mit einem Webhook
-description: Ein Webhook, der es einem Client ermöglicht, ein Runbook in Azure Automation über einen HTTP-Aufruf zu starten.  In diesem Artikel wird beschrieben, wie Sie einen Webhook erstellen und aufrufen, um ein Runbook zu starten.
+title: Starten eines Azure Automation-Runbooks über einen Webhook
+description: In diesem Artikel erfahren Sie, wie Sie mit einem Webhook ein Runbook in Azure Automation über einen HTTP-Aufruf starten.
 services: automation
 ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: cbe43b298c57d266f0b031b5192f25fe3df07c05
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 2578e15a60b2021d9e599018043c4834d0c07d34
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582433"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830496"
 ---
-# <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Starten eines Azure Automation-Runbooks mit einem Webhook
+# <a name="start-a-runbook-from-a-webhook"></a>Starten eines Runbooks über einen Webhook
 
-Mit einem Webhook kann ein externer Dienst ein bestimmtes Runbook in Azure Automation über eine einfache HTTP-Anforderung starten. Externe Dienste umfassen Azure DevOps Services, GitHub, Azure Monitor-Protokolle und benutzerdefinierte Anwendungen. Ein solcher Dienst kann einen Webhook verwenden, um ein Runbook zu starten, ohne eine vollständige Lösung mithilfe der Azure Automation-API zu implementieren. Unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md) können Sie Webhooks mit anderen Methoden zum Starten eines Runbooks vergleichen.
+Mit einem Webhook kann ein externer Dienst ein bestimmtes Runbook in Azure Automation über eine einfache HTTP-Anforderung starten. Externe Dienste umfassen Azure DevOps Services, GitHub, Azure Monitor-Protokolle und benutzerdefinierte Anwendungen. Ein solcher Dienst kann einen Webhook verwenden, um ein Runbook zu starten, ohne die vollständige Azure Automation-API zu implementieren. Unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md) können Sie Webhooks mit anderen Methoden zum Starten eines Runbooks vergleichen.
 
 > [!NOTE]
 > Die Verwendung eines Webhooks zum Starten eines Python-Runbooks wird nicht unterstützt.
 
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
-
->[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
 
 ## <a name="webhook-properties"></a>Eigenschaften von Webhooks
 
@@ -240,4 +237,4 @@ Die folgende Abbildung zeigt die Anforderung, die von Windows PowerShell gesende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Verwendung von Azure Automation für die Reaktion auf Azure-Warnungen finden Sie unter [Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks](automation-create-alert-triggered-runbook.md).
+* Informationen zum Auslösen eines Runbooks mithilfe einer Warnung finden Sie unter [Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks](automation-create-alert-triggered-runbook.md).

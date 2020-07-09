@@ -8,23 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/28/2020
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f2887ab23dd89f1a3e1e3112ce3713ef1139de8e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4824b64236270c422f22809e9eeb191ee3be27fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202567"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Sitzungsverwaltung für einmaliges Anmelden in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Mithilfe der [Sitzungsverwaltung für einmaliges Anmelden](session-overview.md) (Single Sign-On, SSO) in Azure Active Directory B2C (Azure AD B2C) kann ein Administrator die Interaktion mit einem Benutzer steuern, nachdem dieser bereits authentifiziert wurde. Der Administrator kann z. B. steuern, ob die Auswahl von Identitätsanbietern angezeigt wird oder ob Kontodetails erneut eingegeben werden müssen. In diesem Artikel wird das Konfigurieren der Einstellungen für einmaliges Anmelden für Azure AD B2C beschrieben.
-
-Die SSO-Sitzungsverwaltung verwendet dieselbe Semantik wie jedes andere technische Profil in benutzerdefinierten Richtlinien. Wenn ein Orchestrierungsschritt ausgeführt wird, wird das technische Profil, das dem Schritt zugeordnet ist, nach einem `UseTechnicalProfileForSessionManagement`-Verweis abgefragt. Falls vorhanden, wird der referenzierte SSO-Sitzungsanbieter überprüft, um festzustellen, ob der Benutzer ein Sitzungsteilnehmer ist. In diesem Fall wird der SSO-Sitzungsanbieter dazu verwendet, um die Sitzung wieder aufzufüllen. Wenn die Ausführung eines Orchestrierungsschritts abgeschlossen ist, wird entsprechend der Anbieter verwendet, um Informationen in der Sitzung zu speichern, wenn ein SSO-Sitzungsanbieter angegeben wurde.
+Die [SSO-Sitzungsverwaltung](session-overview.md) verwendet dieselbe Semantik wie jedes andere technische Profil in benutzerdefinierten Richtlinien. Wenn ein Orchestrierungsschritt ausgeführt wird, wird das technische Profil, das dem Schritt zugeordnet ist, nach einem `UseTechnicalProfileForSessionManagement`-Verweis abgefragt. Falls vorhanden, wird der referenzierte SSO-Sitzungsanbieter überprüft, um festzustellen, ob der Benutzer ein Sitzungsteilnehmer ist. In diesem Fall wird der SSO-Sitzungsanbieter dazu verwendet, um die Sitzung wieder aufzufüllen. Wenn die Ausführung eines Orchestrierungsschritts abgeschlossen ist, wird entsprechend der Anbieter verwendet, um Informationen in der Sitzung zu speichern, wenn ein SSO-Sitzungsanbieter angegeben wurde.
 
 Azure AD B2C hat eine Reihe von SSO-Sitzungsanbietern definiert, die verwendet werden können:
 
@@ -59,7 +57,7 @@ Ansprüche, die an die Anwendung zurückgegeben oder von Vorbedingungen in nachf
 
 Wie der Name besagt, ist dieser Anbieter untätig. Dieser Anbieter kann zum Unterdrücken des SSO-Verhaltens für ein bestimmtes technisches Profil verwendet werden. Das folgende technische `SM-Noop`-Profil ist im [Starter Pack für benutzerdefinierte Richtlinien](custom-policy-get-started.md#custom-policy-starter-pack) enthalten.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Noop">
   <DisplayName>Noop Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.NoopSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -70,7 +68,7 @@ Wie der Name besagt, ist dieser Anbieter untätig. Dieser Anbieter kann zum Unte
 
 Dieser Anbieter kann zum Speichern von Ansprüchen in einer Sitzung verwendet werden. Auf diesen Anbieter wird in der Regel in einem technischen Profil verwiesen, über das lokale und Verbundkonten verwaltet werden. Das folgende technische `SM-AAD`-Profil ist im [Starter Pack für benutzerdefinierte Richtlinien](custom-policy-get-started.md#custom-policy-starter-pack) enthalten.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-AAD">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -91,7 +89,7 @@ Dieser Anbieter kann zum Speichern von Ansprüchen in einer Sitzung verwendet we
 
 Das folgende technische `SM-MFA`-Profil ist im [Starter Pack für benutzerdefinierte Richtlinien](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`enthalten. Dieses technische Profil verwaltet die Multi-Factor Authentication-Sitzung.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-MFA">
   <DisplayName>Session Mananagement Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -108,7 +106,7 @@ Das folgende technische `SM-MFA`-Profil ist im [Starter Pack für benutzerdefini
 
 Dieser Anbieter wird verwendet, um den Bildschirm „Identitätsanbieter auswählen“ und die Abmeldung bei einem Verbundidentitätsanbieter zu unterdrücken. Er wird in der Regel in einem technischen Profil referenziert, das für einen Verbundidentitätsanbieter wie Facebook oder Azure Active Directory konfiguriert wurde. Das folgende technische `SM-SocialLogin`-Profil ist im [Starter Pack für benutzerdefinierte Richtlinien](custom-policy-get-started.md#custom-policy-starter-pack) enthalten.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-SocialLogin">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -125,7 +123,7 @@ Dieser Anbieter wird verwendet, um den Bildschirm „Identitätsanbieter auswäh
 
 | attribute | Erforderlich | BESCHREIBUNG|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | Nein  | Derzeit nicht verwendet, kann ignoriert werden. |
+| AlwaysFetchClaimsFromProvider | Nein | Derzeit nicht verwendet, kann ignoriert werden. |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -142,7 +140,7 @@ Dieser Anbieter wird zum Verwalten der Azure AD B2C-Sitzungen zwischen einer ve
 
 Dieser Anbieter wird in Azure AD B2C zum Verwalten der SAML-Sitzungen zwischen einer Anwendung der vertrauenden Seite oder einem SAML-Verbundidentitätsanbieter verwendet. Wenn der SSO-Anbieter zum Speichern einer SAML-Identitätsanbietersitzung verwendet wird, muss `RegisterServiceProviders` auf `false` eingestellt sein. Das folgende technische `SM-Saml-idp`-Profil wird vom [technischen Profil des SAML-Identitätsanbieters](saml-identity-provider-technical-profile.md) verwendet.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -156,7 +154,7 @@ Wenn der Anbieter zum Speichern der B2C-SAML-Sitzung verwendet wird, muss `Regis
 
 Das folgende technische `SM-Saml-issuer`-Profil wird vom [technischen Profil des SAML-Ausstellers](saml-issuer-technical-profile.md) verwendet.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-issuer">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
@@ -167,10 +165,11 @@ Das folgende technische `SM-Saml-issuer`-Profil wird vom [technischen Profil des
 
 | attribute | Erforderlich | BESCHREIBUNG|
 | --- | --- | --- |
-| IncludeSessionIndex | Nein  | Derzeit nicht verwendet, kann ignoriert werden.|
-| RegisterServiceProviders | Nein  | Gibt an, dass der Anbieter alle SAML-Dienstanbieter registrieren soll, die eine Assertion ausgestellt haben. Mögliche Werte: `true` (Standard) oder `false`.|
+| IncludeSessionIndex | Nein | Derzeit nicht verwendet, kann ignoriert werden.|
+| RegisterServiceProviders | Nein | Gibt an, dass der Anbieter alle SAML-Dienstanbieter registrieren soll, die eine Assertion ausgestellt haben. Mögliche Werte: `true` (Standard) oder `false`.|
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zur [Azure AD B2C-Sitzung](session-overview.md).
+- Informationen zum [Konfigurieren des Sitzungsverhaltens in benutzerdefinierten Richtlinien](session-behavior-custom-policy.md).

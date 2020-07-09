@@ -7,16 +7,16 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 06/10/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.custom: mvc
-ms.openlocfilehash: 13a2a0bcc362a13b0c42650509d356f613527cfc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b5ca24a68b271c08ea7cd4196d5b8659eb0262d2
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061330"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367375"
 ---
 # <a name="secure-access-to-application-data"></a>Sicheres Zugreifen auf Anwendungsdaten
 
@@ -39,16 +39,29 @@ Damit Sie dieses Tutorial abschließen können, müssen Sie das vorherige Storag
 
 In diesem Teil der Tutorialreihe werden SAS-Token für den Zugriff auf die Miniaturbilder verwendet. In diesem Schritt legen Sie den öffentlichen Zugriff auf den Container *thumbnails* auf `off` fest.
 
-```azurecli-interactive 
+```bash
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
-    --name $blobStorageAccount --query [0].value --output tsv) 
+    --account-name $blobStorageAccount --query [0].value --output tsv) 
 
 az storage container set-permission \
     --account-name $blobStorageAccount \
     --account-key $blobStorageAccountKey \
     --name thumbnails \
+    --public-access off
+```
+
+```powershell
+$blobStorageAccount="<blob_storage_account>"
+
+blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
+    --account-name $blobStorageAccount --query [0].value --output tsv) 
+
+az storage container set-permission `
+    --account-name $blobStorageAccount `
+    --account-key $blobStorageAccountKey `
+    --name thumbnails `
     --public-access off
 ```
 
@@ -60,11 +73,19 @@ In diesem Beispiel wird der Branch `sasTokens` im Quellcoderepository verwendet,
 
 Im folgenden Befehl ist `<web-app>` der Name Ihrer Web-App.
 
-```azurecli-interactive 
+```bash
 az webapp deployment source delete --name <web-app> --resource-group myResourceGroup
 
 az webapp deployment source config --name <web_app> \
     --resource-group myResourceGroup --branch sasTokens --manual-integration \
+    --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
+```
+
+```powershell
+az webapp deployment source delete --name <web-app> --resource-group myResourceGroup
+
+az webapp deployment source config --name <web_app> `
+    --resource-group myResourceGroup --branch sasTokens --manual-integration `
     --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
@@ -135,11 +156,13 @@ Die folgenden Klassen, Eigenschaften und Methoden werden im vorhergehenden Task 
 |[UriBuilder](/dotnet/api/system.uribuilder) | [Abfrage](/dotnet/api/system.uribuilder.query) |  |
 |[Liste](/dotnet/api/system.collections.generic.list-1) | | [Add (Hinzufügen)](/dotnet/api/system.collections.generic.list-1.add) |
 
-## <a name="server-side-encryption"></a>Serverseitige Verschlüsselung
+## <a name="azure-storage-encryption"></a>Azure Storage-Verschlüsselung
 
-[Azure Storage Service Encryption (SSE)](../common/storage-service-encryption.md) vereinfacht das Sichern und Schützen Ihrer Daten. SSE verschlüsselt ruhende Daten und übernimmt die Verschlüsselung, die Entschlüsselung und die Schlüsselverwaltung. Sämtliche Daten werden mittels 256-Bit- [AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)verschlüsselt, einem der sichersten verfügbaren Blockverschlüsselungsverfahren.
+[Azure Storage-Verschlüsselung](../common/storage-service-encryption.md) trägt zum Schutz Ihrer Daten bei, indem ruhende Daten verschlüsselt sowie Verschlüsselung und Entschlüsselung verarbeitet werden. Sämtliche Daten werden mittels 256-Bit- [AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)verschlüsselt, einem der sichersten verfügbaren Blockverschlüsselungsverfahren.
 
-SSE verschlüsselt die Daten automatisch in allen Leistungsebenen (Standard oder Premium), allen Bereitstellungsmodellen (Azure Resource Manager und Classic) sowie allen Azure Storage-Diensten (Blob, Queue, Table und File). 
+Sie können Verschlüsselungsschlüssel durch Microsoft verwalten lassen oder Azure Key Vault mit eigenen (kundenseitig verwalteten) Schlüsseln verwenden (Bring Your Own Key, BYOK). Weitere Informationen finden Sie unter [Verwenden kundenseitig verwalteter Schlüssel mit Azure Key Vault für die Verwaltung der Azure Storage-Verschlüsselung](../common/encryption-customer-managed-keys.md).
+
+Azure Storage-Verschlüsselung verschlüsselt die Daten automatisch in allen Leistungsstufen (Standard oder Premium), allen Bereitstellungsmodellen (Azure Resource Manager und Classic) sowie allen Azure Storage-Diensten (Blob, Queue, Table und File).
 
 ## <a name="enable-https-only"></a>Aktivieren der Übertragung nur über HTTPS
 

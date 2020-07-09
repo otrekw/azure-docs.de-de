@@ -1,6 +1,6 @@
 ---
-title: Behandeln von Problemen mit der Änderungsnachverfolgung und dem Bestand
-description: Erfahren Sie, wie Sie Probleme mit der Azure Automation-Lösung für Änderungsnachverfolgung und Bestand beheben.
+title: 'Problembehandlung in Azure Automation: Probleme mit Änderungsnachverfolgung und Bestand'
+description: In diesem Artikel erfahren Sie, wie Sie Probleme mit dem Azure Automation-Feature für Änderungsnachverfolgung und Bestand beheben.
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
@@ -9,19 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4f230cd0965d58f690d333cd62f2c7c1d499e8d1
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 3fe28ba0871009785b1bb8b263b42f453c2918be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582144"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83684869"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Behandeln von Problemen mit Änderungsnachverfolgung und Bestand
 
-In diesem Artikel wird beschrieben, wie Sie Probleme mit der Änderungsnachverfolgung und dem Bestand in Azure Automation beheben.
-
->[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) auf die neueste Version aktualisieren.
+In diesem Artikel wird beschrieben, wie Sie Probleme mit der Änderungsnachverfolgung und dem Bestand in Azure Automation beheben und lösen. Allgemeine Informationen zu Änderungsnachverfolgung und Bestand finden Sie unter [Übersicht über Änderungsnachverfolgung und Bestand](../change-tracking.md).
 
 ## <a name="windows"></a>Windows
 
@@ -29,7 +26,7 @@ In diesem Artikel wird beschrieben, wie Sie Probleme mit der Änderungsnachverfo
 
 #### <a name="issue"></a>Problem
 
-Es werden keine Ergebnisse für die Änderungsnachverfolgung oder den Bestand von integrierten Windows-Computern angezeigt.
+Es werden keine Ergebnisse für die Änderungsnachverfolgung oder den Bestand von Windows-Computern angezeigt, auf denen dieses Feature aktiviert wurde.
 
 #### <a name="cause"></a>Ursache
 
@@ -38,7 +35,7 @@ Dieser Fehler kann folgende Ursachen haben:
 * Der Azure Log Analytics-Agent für Windows wird nicht ausgeführt.
 * Die Kommunikation an das Automation-Konto wird blockiert.
 * Die Management Packs für Änderungsnachverfolgung und Bestand wurden nicht heruntergeladen.
-* Die VM, für die das Onboarding durchgeführt wird, stammt möglicherweise von einem geklonten Computer, der nicht über Sysprep mit installiertem Log Analytics-Agent für Windows vorbereitet wurde.
+* Die aktivierte VM stammt möglicherweise von einem geklonten Computer, der nicht mit der Systemvorbereitung (Sysprep) mit installiertem Log Analytics-Agent für Windows vorbereitet wurde.
 
 #### <a name="resolution"></a>Lösung
 
@@ -64,7 +61,7 @@ Vergewissern Sie sich, dass der Log Analytics-Agent (**HealthService.exe**) auf 
 
 Überprüfen Sie die Ereignisanzeige auf dem Computer, und suchen Sie nach allen Ereignisse, die das Wort `changetracking` enthalten.
 
-Informationen zu Adressen und Ports, die für die Arbeit mit Änderungsnachverfolgung und Bestand zugelassen werden müssen, finden Sie unter [Automatisieren von Ressourcen im Rechenzentrum oder in der Cloud mit Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md#network-planning).
+Welche Adressen und Ports zugelassen werden müssen, damit Änderungsnachverfolgung und Bestand funktionieren, erfahren Sie im Abschnitt [Netzwerkplanung](../automation-hybrid-runbook-worker.md#network-planning).
 
 ##### <a name="management-packs-not-downloaded"></a>Management Packs nicht heruntergeladen
 
@@ -84,7 +81,7 @@ Wenn Sie ein geklontes Image verwenden, bereiten Sie das Image zunächst mit Sys
 
 #### <a name="issue"></a>Problem
 
-Es werden keine Ergebnisse für die Änderungsnachverfolgung und den Bestand für Linux-Computer angezeigt, die in die Lösung integriert sind. 
+Es werden keine Ergebnisse für Änderungsnachverfolgung und Bestand für Linux-Computer angezeigt, die für das Feature aktiviert sind. 
 
 #### <a name="cause"></a>Ursache
 Im Folgenden sind mögliche Ursachen für dieses Problem aufgeführt:
@@ -111,11 +108,11 @@ Weitere Informationen zum Troubleshooting für dieses Problem finden Sie unter [
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Log Analytics-Agent für Linux nicht ordnungsgemäß konfiguriert
 
-Der Log Analytics-Agent für Linux wurde möglicherweise nicht ordnungsgemäß für die Sammlung der Protokolle und Befehlszeilenausgaben mit dem Tool OMS Log Collector konfiguriert. Weitere Informationen finden Sie unter [Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für Änderungsnachverfolgung und Bestand](../change-tracking.md).
+Der Log Analytics-Agent für Linux wurde möglicherweise nicht ordnungsgemäß für die Sammlung der Protokolle und Befehlszeilenausgaben mit dem Tool OMS Log Collector konfiguriert. Siehe [Übersicht über Änderungsnachverfolgung und Bestand](../change-tracking.md).
 
 ##### <a name="fim-conflicts"></a>FIM-Konflikte
 
-Das FIM-Feature von Azure Security Center kann die Integrität Ihrer Linux-Dateien nicht ordnungsgemäß validieren. Vergewissern Sie sich, dass FIM betriebsbereit und ordnungsgemäß für die Linux-Dateiüberwachung konfiguriert ist. Weitere Informationen finden Sie unter [Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für Änderungsnachverfolgung und Bestand](../change-tracking.md).
+Das FIM-Feature von Azure Security Center kann die Integrität Ihrer Linux-Dateien nicht ordnungsgemäß validieren. Vergewissern Sie sich, dass FIM betriebsbereit und ordnungsgemäß für die Linux-Dateiüberwachung konfiguriert ist. Siehe [Übersicht über Änderungsnachverfolgung und Bestand](../change-tracking.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

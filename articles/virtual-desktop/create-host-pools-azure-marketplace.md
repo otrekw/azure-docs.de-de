@@ -1,162 +1,188 @@
 ---
-title: 'Windows Virtual Desktop-Hostpool in Azure Marketplace: Azure'
-description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool mit dem Azure Marketplace erstellen.
+title: 'Windows Virtual Desktop-Hostpool im Azure-Portal: Azure'
+description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool im Azure-Portal erstellen.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/09/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d5165b160ffc196416052a56aaa0d93c05db56bc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8a20d7cb05f4529d5aa8a115b7d1db6e4d812be0
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222287"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100859"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Tutorial: Erstellen eines Hostpools mit dem Azure Marketplace
+# <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Tutorial: Erstellen eines Hostpools mit dem Azure-Portal
 
-In diesem Tutorial erfahren Sie, wie Sie innerhalb eines Windows Virtual Desktop-Mandanten unter Verwendung eines Microsoft Azure Marketplace-Angebots einen Hostpool erstellen.
-
-Hostpools sind eine Sammlung identischer virtueller Computer innerhalb von Windows Virtual Desktop-Mandantenumgebungen. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
-
-Dieses Tutorial umfasst die folgenden Aufgaben:
-
-> [!div class="checklist"]
+>[!IMPORTANT]
+>Dieser Inhalt gilt für das Update vom Frühjahr 2020 mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie das Windows Virtual Desktop-Release vom Herbst 2019 ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md). Objekte, die Sie mit dem Windows Virtual Desktop-Release vom Herbst 2019 erstellen, können nicht mit dem Azure-Portal verwaltet werden.
 >
-> * Erstellen eines Hostpools in Windows Virtual Desktop.
-> * Erstellen einer Ressourcengruppe mit VMs in Ihrem Azure-Abonnement.
-> * Verknüpfen der VMs mit der Active Directory-Domäne.
-> * Registrieren der VMs mit Windows Virtual Desktop.
+> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. 
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Ein Hostpool ist eine Sammlung identischer VMs innerhalb von Windows Virtual Desktop-Umgebungen. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
+
+In diesem Artikel wird der Einrichtungsprozess zum Erstellen eines Hostpools für eine Windows Virtual Desktop-Umgebung über das Azure-Portal detailliert beschrieben. Bei dieser Methode verwenden Sie eine browserbasierte Benutzeroberfläche, um einen Hostpool in Windows Virtual Desktop zu erstellen, eine Ressourcengruppe mit VMs unter einem Azure-Abonnement zu erstellen und diese VMs dann in die Azure Active Directory-Domäne (AD) einzubinden und bei Windows Virtual Desktop zu registrieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Mandant in Virtual Desktop. In einem vorangehenden [Tutorial](tenant-setup-azure-active-directory.md) wird ein Mandant erstellt.
-* [Windows Virtual Desktop-PowerShell-Modul](/powershell/windows-virtual-desktop/overview/).
+Zum Erstellen eines Hostpools müssen Sie die folgenden Parameter eingeben:
 
-Nachdem Sie das Modul heruntergeladen haben, führen Sie das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
+- Name des VM-Images
+- Konfiguration des virtuellen Computers
+- Domänen- und Netzwerkeigenschaften
+- Eigenschaften des Windows Virtual Desktop-Hostpools
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+Außerdem müssen Sie Folgendes wissen:
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+- Wo befindet sich die Quelle des Images, das Sie verwenden möchten? Stammt es aus dem Azure-Katalog, oder handelt es sich um ein benutzerdefiniertes Image?
+- Wo befinden sich Ihre Anmeldeinformationen für den Domänenbeitritt?
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+Stellen Sie außerdem sicher, dass Sie den Ressourcenanbieter „Microsoft.DesktopVirtualization“ registriert haben. Gehen Sie wie folgt vor, falls Sie dies noch nicht getan haben: Navigieren Sie zu **Abonnements**, wählen Sie den Namen Ihres Abonnements und dann **Azure-Ressourcenanbieter** aus.
 
-## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Ausführen des Azure Marketplace-Angebots zum Bereitstellen eines neuen Hostpools
+Beim Erstellen eines Windows Virtual Desktop-Hostpools mit der Azure Resource Manager-Vorlage können Sie einen virtuellen Computer über den Azure-Katalog, ein verwaltetes Image oder ein nicht verwaltetes Image erstellen. Weitere Informationen zur Erstellung von VM-Images finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) bzw. unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md).
 
-So führen Sie das Azure Marketplace-Angebot aus, um einen neuen Hostpool bereitzustellen:
+Wenn Sie noch kein Azure-Abonnement haben, müssen Sie [ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie diese Anweisungen ausführen.
 
-1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
-1. Geben Sie **Windows Virtual Desktop** in das Marketplace-Suchfenster ein.
-1. Wählen Sie **Windows Virtual Desktop – Hostpool bereitstellen** und anschließend **Erstellen** aus.
+## <a name="begin-the-host-pool-setup-process"></a>Erste Schritte des Einrichtungsprozesses für den Hostpool
 
-Befolgen Sie anschließend die Anweisungen im nächsten Abschnitt, um die Informationen auf den entsprechenden Registerkarten einzugeben.
+Zum Erstellen des neuen Hostpools führen Sie zunächst die folgenden Schritte aus:
 
-### <a name="basics"></a>Grundlagen
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com/) beim Azure-Portal an.
 
-Gehen Sie auf der Registerkarte **Grundlagen** wie folgt vor:
+2. Geben Sie **Windows Virtual Desktop** in die Suchleiste ein, und wählen Sie dann unter „Dienste“ den Eintrag **Windows Virtual Desktop** aus.
 
-1. Wählen Sie ein **Abonnement**aus.
-1. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie einen Namen für die neue Ressourcengruppe an.
-1. Wählen Sie eine **Region** aus.
-1. Geben Sie für den Hostpool einen Namen ein, der innerhalb des Windows Virtual Desktop-Mandanten eindeutig ist.
-1. Wählen Sie einen **Desktoptyp** aus. Wenn Sie **Persönlich** auswählen, wird jeder Benutzer, der eine Verbindung mit diesem Hostpool herstellt, dauerhaft einer VM zugewiesen.
-1. Geben Sie Benutzer ein, die sich bei den Windows Virtual Desktop-Clients anmelden und auf einen Desktop zugreifen können. Verwenden Sie dazu eine durch Trennzeichen getrennte Liste. Geben Sie also beispielsweise *`user1@contoso.com,user2@contoso.com`* ein, um `user1@contoso.com` und `user2@contoso.com` Zugriff zu gewähren.
-1. Wählen Sie als **Speicherort des Metadatendiensts** den Standort des virtuellen Netzwerks aus, das mit dem Active Directory-Server verbunden ist.
+3. Wählen Sie auf der Übersichtsseite für **Windows Virtual Desktop** die Option **Hostpool erstellen** aus.
 
-   >[!IMPORTANT]
-   >Wenn Sie eine reine Azure Active Directory Domain Services (Azure AD DS)- und Azure Active Directory (Azure AD)-Lösung verwenden, stellen Sie Ihren Hostpool in derselben Region wie Azure AD DS bereit, um Fehler beim Domänenbeitritt und mit Anmeldeinformationen zu vermeiden.
+4. Wählen Sie auf der Registerkarte **Grundlagen** unter „Projektdetails“ das richtige Abonnement aus.
 
-1. Klicken Sie auf **Weiter: Configure virtual machines** (Virtuelle Computer konfigurieren).
+5. Klicken Sie entweder auf **Neu erstellen**, um eine neue Ressourcengruppe zu erstellen, oder wählen Sie im Dropdownmenü eine vorhandene Ressourcengruppe aus.
 
-### <a name="configure-virtual-machines"></a>Konfigurieren virtueller Computer
+6. Geben Sie einen eindeutigen Namen für Ihren Hostpool ein.
 
-Gehen Sie auf der Registerkarte zum **Konfigurieren virtueller Computer** wie folgt vor:
+7. Wählen Sie im Feld „Standort“ im Dropdownmenü die Region aus, in der Sie den Hostpool erstellen möchten.
+   
+   Die Metadaten für diesen Hostpool und die zugehörigen Objekte werden in der Azure-Geografie gespeichert, die den von Ihnen ausgewählten Regionen zugeordnet ist. Stellen Sie sicher, dass Sie die Regionen innerhalb der Geografie auswählen, in der die Dienstmetadaten gespeichert werden sollen.
 
-1. Übernehmen Sie die Standardeinstellungen, oder passen Sie die Anzahl und Größe der VMs an.
+     ![Screenshot des Azure-Portals, der das Feld „Standort“ mit ausgewählter Region „USA, Osten“ zeigt. Neben dem Feld wird „Metadaten werden in ‚USA, Osten‘ gespeichert“ angezeigt.](media/portal-location-field.png)
+
+8. Wählen Sie unter „Host pool type“ (Hostpooltyp) die Option **Persönlich** oder **In Pool** für Ihren Hostpool aus.
+
+    - Wählen Sie bei Auswahl von **Persönlich** im Feld „Zuweisungstyp“ die Option **Automatisch** oder **Direkt** aus.
+
+      ![Screenshot des Dropdownmenüs „Zuweisungstyp“. Der Benutzer hat „Automatisch“ ausgewählt.](media/assignment-type-field.png)
+
+9. Geben Sie bei Auswahl von **In Pool** die folgenden Informationen ein:
+
+     - Geben Sie für **Maximale Anzahl von Sitzungen** die Höchstanzahl von Benutzern ein, für die ein Lastenausgleich auf einem einzelnen Sitzungshost durchgeführt werden soll.
+     - Wählen Sie für **Lastenausgleichsalgorithmus** je nach Nutzungsmuster „Breitenorientierter Lastenausgleich“ oder „Tiefenorientierter Lastenausgleich“ aus.
+
+       ![Screenshot des Dropdownmenüs „Zuweisungstyp“ mit ausgewählter Option „In Pool“. Der Benutzer zeigt mit dem Cursor auf die Option „Breitenorientierter Lastenausgleich“ im Dropdownmenü „Lastenausgleichsalgorithmus“.](media/pooled-assignment-type.png)
+
+10. Klicken Sie auf **Weiter: Details zum virtuellen Computer**.
+
+11. Wenn Sie bereits VMs erstellt haben und diese mit dem neuen Hostpool verwenden möchten, wählen Sie **Nein** aus. Möchten Sie neue VMs erstellen und beim neuen Hostpool registrieren, wählen Sie **Ja** aus.
+
+Damit ist der erste Teil abgeschlossen. Im nächsten Teil des Einrichtungsprozesses erstellen Sie die VM.
+
+## <a name="virtual-machine-details"></a>Details zum virtuellen Computer
+
+Nachdem Sie den ersten Teil abgeschlossen haben, müssen Sie nun Ihre VM einrichten.
+
+So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein:
+
+1. Wählen Sie unter „Ressourcengruppe“ die Ressourcengruppe aus, in der Sie die VM erstellen möchten. Dabei kann es sich um eine andere Ressourcengruppe als die für den Hostpool handeln.
+
+2. Wählen Sie die **Region** aus, in der Sie die VM erstellen möchten. Sie können die für den Hostpool ausgewählte Region oder eine andere Region verwenden.
+
+3. Wählen Sie als Nächstes die Größe der VM aus. Sie können entweder die Standardgröße übernehmen oder **Größe ändern** auswählen, um die Größe zu ändern. Wenn Sie auf **Größe ändern** klicken, wählen Sie im angezeigten Fenster die passende VM-Größe für Ihre Workload aus.
+
+4. Geben Sie unter „Anzahl von VMs“ die Anzahl von VMs an, die Sie für Ihren Hostpool erstellen möchten.
 
     >[!NOTE]
-    >Wird die gewünschte VM-Größe nicht in der VM-Größenauswahl angezeigt, wurde sie noch nicht ins Azure Marketplace-Tool aufgenommen. Wenn Sie eine VM-Größe anfordern möchten, erstellen Sie im [Windows Virtual Desktop-UserVoice-Forum](https://windowsvirtualdesktop.uservoice.com/forums/921118-general) eine Anforderung, oder stimmen Sie dort für eine vorhandene Anforderung ab.
+    >Sie können während der Einrichtung Ihres Hostpools bis zu 400 VMs erstellen, und bei jedem VM-Einrichtungsprozess werden vier Objekte in Ihrer Ressourcengruppe erstellt. Ihr Abonnementkontingent wird bei der Erstellung nicht überprüft. Achten Sie daher darauf, dass die von Ihnen angegebene Anzahl von VMs den Azure-VM- und API-Grenzwerten für Ihre Ressourcengruppe und Ihr Abonnement entspricht. Sie können nach der Erstellung des Hostpools weitere VMs hinzufügen.
 
-1. Geben Sie ein Namenspräfix für die virtuellen Computer ein. Wenn Sie also beispielsweise *prefix* eingeben, heißen die VMs **prefix-0**, **prefix-1** usw.
-1. Klicken Sie auf **Weiter: Virtual machine settings** (Weiter: VM-Einstellungen) aus.
+5. Geben Sie anschließend ein **Namenspräfix** für die Benennung der VMs an, die beim Einrichtungsprozess erstellt werden. Das Suffix ist `-` mit Zahlen ab 0.
 
-### <a name="virtual-machine-settings"></a>Einstellungen des virtuellen Computers
+6. Wählen Sie nun das Image aus, das zum Erstellen der VM verwendet werden muss. Sie können **Katalog** oder **Speicherblob** auswählen.
 
-Gehen Sie auf der Registerkarte mit den **Einstellungen des virtuellen Computers** wie folgt vor:
+    - Wählen Sie bei Auswahl von **Katalog** im Dropdownmenü eines der empfohlenen Images aus:
 
-1. Wählen Sie die Quelle für die **Imagequelle** aus, und geben Sie entsprechende Informationen zum Speicherort und zur Art der Speicherung ein. Die Optionen für Blob-Speicher, das verwaltete Image und den Katalog unterscheiden sich.
+      - Windows 10 Enterprise (mehrere Sitzungen), Version 1909 + Microsoft 365 Apps for Enterprise – Gen 1
+      - Windows 10 Enterprise mit mehreren Sitzungen, Version 1909 – Gen 1
+      - Windows Server 2019 Datacenter – Gen 1
 
-   Falls Sie keine verwalteten Datenträger verwenden möchten, wählen Sie das Speicherkonto mit der *VHD*-Datei aus.
-1. Geben Sie den Benutzerprinzipalnamen und das Kennwort ein. Bei diesem Konto muss es sich um das Domänenkonto handeln, mit dem die VMs der Active Directory-Domäne beitreten. Auf den virtuellen Computern wird ein lokales Konto mit dem gleichen Benutzernamen und Kennwort erstellt. Diese lokalen Konten können später zurückgesetzt werden.
+     Falls das gewünschte Image nicht angezeigt wird, wählen Sie **Alle Images und Datenträger durchsuchen** aus. Sie können dann ein anderes Image in Ihrem Katalog oder ein von Microsoft und anderen Herausgebern bereitgestelltes Image auswählen.
 
-   >[!NOTE]
-   > Wenn Sie Ihre VMs einer Azure AD DS-Umgebung beitreten lassen, stellen Sie sicher, dass der Benutzer für den Domänenbeitritt Mitglied der [Gruppe „AAD DC-Administratoren“](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group) ist.
-   >
-   > Das Konto muss auch Mitglied der verwalteten Azure AD DS-Domäne oder des Azure AD-Mandanten sein. Konten aus externen Verzeichnissen, die Ihrem Azure AD-Mandanten zugeordnet sind, können während der Einbindung in die Domäne nicht richtig authentifiziert werden.
+     ![Screenshot des Marketplace mit einer Liste von Images von Microsoft.](media/marketplace-images.png)
 
-1. Wählen Sie das **virtuelle Netzwerk**, das mit dem Active Directory-Server verbunden ist, und anschließend ein Subnetz als Host für die VMs aus.
-1. Klicken Sie auf **Weiter: Windows Virtual Desktop information** (Weiter: Informationen zu Windows Virtual Desktop) aus.
+     Sie können auch zu **Meine Elemente** wechseln und ein benutzerdefiniertes Image auswählen, das Sie bereits hochgeladen haben.
 
-### <a name="windows-virtual-desktop-tenant-information"></a>Informationen zum Windows Virtual Desktop-Mandanten
+     ![Screenshot der Registerkarte „Meine Elemente“.](media/my-items.png)
 
-Gehen Sie auf der Registerkarte mit den **Informationen zum Windows Virtual Desktop-Mandanten** wie folgt vor:
+    - Bei Auswahl von **Speicherblob** können Sie Ihren eigenen Imagebuild über Hyper-V oder auf einer Azure-VM nutzen. Sie müssen lediglich im Speicherblob den Speicherort des Images als URI eingeben.
 
-1. Geben Sie in **Name der Windows Virtual Desktop-Mandantengruppe** den Namen für die Mandantengruppe ein, die Ihren Mandanten enthält. Lassen Sie den Standardnamen, es sei denn, Ihnen wurde ein spezieller Mandantengruppenname bereitgestellt.
-1. Geben Sie für **Name des Windows Virtual Desktop-Mandanten** den Namen des Mandanten ein, in dem Sie diesen Hostpool erstellen möchten.
-1. Geben Sie die Art der Anmeldeinformationen an, die Sie für die Authentifizierung als RDS-Besitzer des Windows Virtual Desktop-Mandanten verwenden möchten. Geben Sie den Benutzerprinzipalnamen (User Principal Name, UPN) oder Dienstprinzipal und ein Kennwort ein.
+7. Wählen Sie den gewünschten Typ für die Betriebssystemdatenträger Ihrer VMs aus: „SSD Standard“, „SSD Premium“ oder „HDD Standard“.
 
-   Wenn Sie das Tutorial [Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell](./create-service-principal-role-powershell.md) abgeschlossen haben, wählen Sie **Dienstprinzipal** aus.
+8. Wählen Sie unter „Netzwerk und Sicherheit“ das virtuelle Netzwerk und das Subnetz aus, in dem Sie die von Ihnen erstellten VMs platzieren möchten. Stellen Sie sicher, dass das virtuelle Netzwerk eine Verbindung mit dem Domänencontroller herstellen kann, da Sie die VMs im virtuellen Netzwerk der Domäne hinzufügen müssen. Wählen Sie als Nächstes aus, ob die VMs eine öffentliche IP-Adresse haben sollen. Wir empfehlen, **Nein** auszuwählen, weil eine private IP-Adresse sicherer ist.
 
-1. Geben Sie unter **Dienstprinzipal** für die **Azure AD-Mandanten-ID** das Mandantenadministratorkonto für die Azure AD-Instanz ein, die den Dienstprinzipal enthält. Es werden nur Dienstprinzipale mit Kennwort unterstützt.
-1. Klicken Sie auf **Weiter: Überprüfen + erstellen**.
+9. Wählen Sie den gewünschten Sicherheitsgruppentyp aus: **Basic**, **Erweitert** oder **Keine**.
 
-## <a name="complete-setup-and-create-the-virtual-machine"></a>Abschließen der Einrichtung und Erstellen des virtuellen Computers
+    Bei Auswahl von **Basic** müssen Sie auswählen, ob ein Eingangsport geöffnet sein soll. Wählen Sie bei Auswahl von **Ja** in der Liste der Standardports einen Port aus, um eingehende Verbindungen zuzulassen.
 
-Überprüfen Sie unter **Überprüfen und erstellen** die Setupinformationen. Falls Sie etwas ändern müssen, können Sie zurückgehen und Änderungen vornehmen. Wenn alle Angaben korrekt sind, wählen Sie **Erstellen** aus, um Ihren Hostpool bereitzustellen.
+    >[!NOTE]
+    >Aus Sicherheitsgründen empfehlen wir, öffentliche Eingangsports nicht zu öffnen.
 
-Dieser Vorgang kann je nach Anzahl zu erstellender VMs 30 Minuten oder länger dauern.
+    ![Screenshot der Seite „Sicherheitsgruppe“ mit einer Liste verfügbarer Ports in einem Dropdownmenü.](media/available-ports.png)
+    
+    Wählen Sie bei Auswahl von **Erweitert** eine vorhandene Netzwerksicherheitsgruppe aus, die Sie bereits konfiguriert haben.
 
->[!IMPORTANT]
-> Zum Schutz Ihrer Windows Virtual Desktop-Umgebung in Azure empfiehlt es sich, den eingehenden Port 3389 auf Ihren VMs nicht zu öffnen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die VMs des Hostpools zugreifen können.
->
-> Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den Just-In-Time-Zugriff. Weitere Informationen finden Sie unter [Sichern Ihrer Verwaltungsports mit Just-in-Time-Zugriff (JIT)](../security-center/security-center-just-in-time.md).
+10. Wählen Sie anschließend aus, ob die VMs einer bestimmten Domäne und Organisationseinheit beitreten sollen. Geben Sie bei Auswahl von **Ja** die jeweilige Domäne an. Sie können auch eine spezifische Organisationseinheit hinzufügen, in der die VMs enthalten sein sollen.
 
-## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>Optional: Zuweisen zusätzlicher Benutzer zur Desktopanwendungsgruppe
+11. Geben Sie unter „Administratorkonto“ die Anmeldeinformationen für den Active Directory-Domänenadministrator des virtuellen Netzwerks an, das Sie ausgewählt haben.
 
-Nachdem Azure Marketplace die Erstellung des Pools abgeschlossen hat, können Sie der Desktopanwendungsgruppe weitere Benutzer zuweisen. Überspringen Sie diesen Abschnitt, falls Sie keine weiteren Benutzer hinzufügen möchten.
+12. Wählen Sie **Arbeitsbereich** aus.
 
-So weisen Sie der Desktopanwendungsgruppe Benutzer zu:
+Damit sind Sie bereit für die nächste Phase der Einrichtung Ihres Hostpools: Registrieren Ihrer App-Gruppe in einem Arbeitsbereich.
 
-1. Öffnen Sie ein PowerShell-Fenster.
+## <a name="workspace-information"></a>Informationen zum Arbeitsbereich
 
-1. Führen Sie den folgenden Befehl aus, um sich bei der Windows Virtual Desktop-Umgebung anzumelden:
+Beim Einrichtungsprozess für den Hostpool wird standardmäßig eine Desktopanwendungsgruppe erstellt. Damit der Hostpool wie beabsichtigt funktioniert, müssen Sie diese App-Gruppe für Benutzer oder Benutzergruppen veröffentlichen und die App-Gruppe in einem Arbeitsbereich registrieren. 
 
-   ```powershell
-   Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-   ```
+So registrieren Sie die Desktop-App-Gruppe in einem Arbeitsbereich:
 
-1. Fügen Sie der Desktopanwendungsgruppe mit diesem Befehl Benutzer hinzu:
+1. Wählen Sie **Ja** aus.
 
-   ```powershell
-   Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
-   ```
+   Wenn Sie **Nein** auswählen, können Sie die App-Gruppe zu einem späteren Zeitpunkt registrieren. Wir empfehlen jedoch, die Registrierung im Arbeitsbereich so schnell wie möglich zu erledigen, damit Ihr Hostpool korrekt funktioniert.
 
-   Der UPN des Benutzers muss der Identität des Benutzers in Azure AD entsprechen, beispielweise *user1@contoso.com* . Wenn Sie mehrere Benutzer hinzufügen möchten, müssen Sie den Befehl für jeden Benutzer separat ausführen.
+2. Wählen Sie aus, ob Sie einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich verwenden möchten. Die App-Gruppe kann nur in Arbeitsbereichen registriert werden, die am gleichen Standort wie der Hostpool erstellt werden.
 
-Benutzer, die Sie der Desktopanwendungsgruppe hinzufügen, können sich mit unterstützten Remotedesktopclients bei Windows Virtual Desktop anmelden und eine Ressource für einen Sitzungsdesktop anzeigen.
+3. Optional können Sie **Tags** auswählen.
 
-Derzeit werden folgende Clients unterstützt:
+    Hier können Sie Tags hinzufügen, damit Sie die Objekte mit Metadaten gruppieren und dadurch Ihren Administratoren die Arbeit erleichtern können.
 
-* [Remotedesktopclient für Windows 7 und Windows 10](connect-windows-7-and-10.md)
-* [Windows Virtual Desktop-Webclient](connect-web.md)
+4. Wählen Sie abschließend **Überprüfen + erstellen** aus. 
+
+     >[!NOTE]
+     >Beim Überprüfungsprozess „Überprüfen + erstellen“ wird nicht überprüft, ob Ihr Kennwort den Sicherheitsstandards entspricht oder Ihre Architektur korrekt ist. Sie müssen daher selbst überprüfen, ob in dieser Hinsicht Probleme vorliegen. 
+
+5. Überprüfen Sie die Informationen zu Ihrer Bereitstellung, um sicherzustellen, dass alles richtig ist. Wählen Sie **Erstellen**, wenn Sie fertig sind. Dadurch wird der Bereitstellungsprozess gestartet, bei dem die folgenden Objekte erstellt werden:
+
+     - Ihr neuer Hostpool.
+     - Eine Desktop-App-Gruppe.
+     - Ein Arbeitsbereich (sofern Sie keinen vorhandenen Arbeitsbereich verwenden).
+     - Wenn Sie sich für die Registrierung der Desktop-App-Gruppe entschieden haben, wird die Registrierung durchgeführt.
+     - VMs (sofern Sie sich für deren Erstellung entschieden haben), die der Domäne hinzugefügt und beim neuen Hostpool registriert werden.
+     - Ein Downloadlink für eine Azure-Ressourcenverwaltungsvorlage, die auf Ihrer Konfiguration basiert.
+
+Danach sind Sie fertig!
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben nun einen Hostpool erstellt und Benutzer zugewiesen, die Zugriff auf den zugehörigen Desktop haben. Als Nächstes können Sie Ihren Hostpool mit RemoteApp-Programmen füllen. Weitere Informationen zum Verwalten von Apps in Windows Virtual Desktop finden Sie im folgenden Tutorial:
+Nachdem Sie Ihren Hostpool erstellt haben, können Sie ihn nun mit RemoteApp-Programmen auffüllen. Weitere Informationen zum Verwalten von Apps in Windows Virtual Desktop finden Sie in unserem nächsten Tutorial:
 
 > [!div class="nextstepaction"]
 > [Manage app groups for Windows Virtual Desktop Preview](./manage-app-groups.md) (Verwalten von App-Gruppen für Windows Virtual Desktop (Vorschauversion))

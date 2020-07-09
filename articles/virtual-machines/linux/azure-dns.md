@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e53a6a5c024fe58eae00dcda785ff9622061654
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641711"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135319"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure
 Azure stellt die DNS-Namensauflösung standardmäßig für alle in einem einzelnen virtuellen Netzwerk enthaltenen virtuellen Computer bereit. Sie können Ihre eigene Lösung für die DNS-Namensauflösung implementieren, indem Sie auf Ihren in Azure gehosteten virtuellen Computern Ihre eigenen DNS-Dienste konfigurieren. Die folgenden Szenarien sollten Ihnen dabei helfen, situationsabhängig die jeweils am besten geeignete Lösung zu wählen.
@@ -92,7 +92,9 @@ DNS ist in erster Linie ein UDP-Protokoll. Da das UDP-Protokoll keine Nachrichte
 
 Wechseln Sie zum Überprüfen der aktuellen Einstellungen auf einem virtuellen Linux-Computer „cat /etc/resolv.conf“ ein, und sehen Sie sich die Zeile „options“ an, z.B.:
 
-    options timeout:1 attempts:5
+```config-conf
+options timeout:1 attempts:5
+```
 
 Die Datei „resolv.conf“ wird automatisch generiert und darf nicht bearbeitet werden. Die entsprechenden Schritte zum Hinzufügen der Zeile „options“ variieren je nach Distribution:
 

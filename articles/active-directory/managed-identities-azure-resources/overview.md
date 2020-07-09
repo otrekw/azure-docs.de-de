@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/20/2020
+ms.date: 06/18/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 738a5bd76cc15b9356275707aed0d0a695aa6367
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 3557bab44e1a4af5fdcbda5f8643018952e4e54e
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770923"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099549"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Was sind verwaltete Identitäten für Azure-Ressourcen?
 
@@ -43,7 +43,7 @@ Die folgenden Begriffe werden in den verwalteten Identitäten für den Azure-Res
 - **Prinzipal-ID**: Die Objekt-ID des Dienstprinzipalobjekts für Ihre verwaltete Identität, die zum Gewähren des rollenbasierten Zugriffs auf eine Azure-Ressource verwendet wird
 - **Azure Instance Metadata Service (IMDS)** ist ein REST-Endpunkt, der für alle virtuellen IaaS-Computer verfügbar ist, die mit Azure Resource Manager erstellt wurden. Der Endpunkt steht unter einer bekannten, nicht routingfähigen IP-Adresse zur Verfügung (169.254.169.254), auf die nur von innerhalb der VM zugegriffen werden kann.
 
-## <a name="how-does-the-managed-identities-for-azure-resources-work"></a>Wie funktionieren die verwalteten Identitäten für Azure-Ressourcen?
+## <a name="managed-identity-types"></a>Arten von verwalteten Identitäten
 
 Es gibt zwei Arten von verwalteten Identitäten:
 
@@ -54,6 +54,9 @@ Intern sind verwaltete Identitäten eine Sonderform von Dienstprinzipalen, die n
 Außerdem gilt: Wenn eine benutzerseitig oder systemseitig zugewiesenen Identität erstellt wird, gibt der Ressourcenanbieter der verwalteten Identität (Managed Identity Resource Provider, MSRP) intern ein Zertifikat für diese Identität aus. 
 
 Ihr Code kann eine verwaltete Identität zum Anfordern von Zugriffstokens für Dienste verwenden, die die Azure AD-Authentifizierung unterstützen. Azure übernimmt die Weitergabe der von der Dienstinstanz verwendeten Anmeldeinformationen. 
+
+## <a name="credential-rotation"></a>Rotation von Anmeldeinformationen
+Die Rotation von Anmeldeinformationen wird durch den Ressourcenanbieter gesteuert, von dem die Azure-Ressource gehostet wird. Standardmäßig werden die Anmeldeinformationen alle 46 Tage rotiert. Da die Anforderung neuer Anmeldeinformationen vom Ressourcenanbieter abhängt, kann es auch länger als 46 Tage dauern.
 
 Das folgende Diagramm zeigt, wie verwaltete Dienstidentitäten mit virtuellen Azure-Computern funktionieren:
 
@@ -104,9 +107,6 @@ Das folgende Diagramm zeigt, wie verwaltete Dienstidentitäten mit virtuellen Az
 
 6. Mit einem an Azure AD gerichteten Aufruf wird ein Zugriffstoken angefordert (siehe Schritt 5). Dabei werden die Client-ID und das Zertifikat verwendet, die in Schritt 3 konfiguriert wurden. Azure AD gibt ein JWT-Zugriffstoken (JSON Web Token) zurück.
 7. Der Code sendet das Zugriffstoken in einem Aufruf eines Diensts, der die Azure AD-Authentifizierung unterstützt.
-
-## <a name="credential-rotation"></a>Rotation von Anmeldeinformationen
-Die Rotation von Anmeldeinformationen wird durch den Ressourcenanbieter gesteuert, von dem die Azure-Ressource gehostet wird. Standardmäßig werden die Anmeldeinformationen alle 46 Tage rotiert. Da die Anforderung neuer Anmeldeinformationen vom Ressourcenanbieter abhängt, kann es auch länger als 46 Tage dauern.
 
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Wie kann ich verwaltete Identitäten für Azure-Ressourcen verwenden?
 

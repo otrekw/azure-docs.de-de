@@ -9,12 +9,13 @@ ms.custom:
 - seodec18
 - seo-python-october2019
 - cli-validate
-ms.openlocfilehash: 504e2f7c07d8d29e4fe4dad52dc008c895517a3d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+- tracking-python
+ms.openlocfilehash: 29aeae7683c46b1e10acdf1b2c4a7183c22eb408
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609781"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807318"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Tutorial: Bereitstellen einer Python-Web-App (Django) mit PostgreSQL in Azure App Service
 
@@ -111,7 +112,7 @@ In diesem Abschnitt erstellen Sie eine Azure Database for PostgreSQL-Serverinsta
 az extension add --name db-up
 ```
 
-Erstellen Sie die Postgres-Datenbankinstanz wie im folgenden Beispiel gezeigt mit dem Befehl [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) in Azure. Ersetzen Sie *\<postgresql-name>* durch einen *eindeutigen* Namen (der Serverendpunkt ist *https://\<postgresql-name>.postgres.database.azure.com*). Geben Sie für *\<admin-username>* und *\<admin-password>* Anmeldeinformationen ein, um einen Administratorbenutzer für diese Postgres-Serverinstanz zu erstellen.
+Erstellen Sie die Postgres-Datenbankinstanz wie im folgenden Beispiel gezeigt mit dem Befehl [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) in Azure. Ersetzen Sie *\<postgresql-name>* durch einen *eindeutigen* Namen (der Serverendpunkt ist *https://\<postgresql-name>.postgres.database.azure.com*). Geben Sie für *\<admin-username>* und *\<admin-password>* Anmeldeinformationen ein, um einen Administratorbenutzer für diesen Postgres-Server zu erstellen.
 
 <!-- Issue: without --location -->
 ```azurecli
@@ -146,7 +147,7 @@ In diesem Abschnitt erstellen Sie die App Service-App. Sie stellen die Verbindun
 
 Stellen Sie sicher, dass Sie sich wieder im Repositorystamm (`djangoapp`) befinden, da die App aus diesem Verzeichnis bereitgestellt wird.
 
-Erstellen Sie mit dem Befehl [`az webapp up`](/cli/azure/webapp#az-webapp-up) eine App Service-App, wie im folgenden Beispiel gezeigt wird. Ersetzen Sie *\<app-name>* durch einen *eindeutigen* Namen (der Serverendpunkt ist *https://\<app-name>.azurewebsites.net*). Gültige Zeichen für *\<app-name>* sind `A`-`Z`, `0`-`9` und `-`.
+Erstellen Sie mit dem Befehl [`az webapp up`](/cli/azure/webapp#az-webapp-up) eine App Service-App, wie im folgenden Beispiel gezeigt wird. Ersetzen Sie *\<app-name>* durch einen *eindeutigen* Namen (der Serverendpunkt ist *https://\<app-name>.azurewebsites.net*). Zulässige Zeichen für *\<app-name>* sind `A`-`Z`, `0`-`9` und `-`.
 
 ```azurecli
 az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-name>
@@ -219,6 +220,8 @@ cd site/wwwroot
 
 # Activate default virtual environment in App Service container
 source /antenv/bin/activate
+# Install packages
+pip install -r requirements.txt
 # Run database migrations
 python manage.py migrate
 # Create the super user (follow prompts)
@@ -227,15 +230,15 @@ python manage.py createsuperuser
 
 ### <a name="browse-to-the-azure-app"></a>Navigieren zur Azure-App
 
-Greifen Sie über die URL *http:\//\<app-name>.azurewebsites.net* in einem Browser auf die bereitgestellte App zu. Es sollte eine Meldung wie **No polls are available** (Keine Umfragen verfügbar) angezeigt werden. 
+Greifen Sie in einem Browser über die URL *http:\//\<app-name>.azurewebsites.net* auf die bereitgestellte App zu. Es sollte eine Meldung wie **No polls are available** (Keine Umfragen verfügbar) angezeigt werden. 
 
-Navigieren Sie zu *http:\//\<app-name>.azurewebsites.net/admin*, und melden Sie sich im letzten Schritt als der von Ihnen erstellte Administratorbenutzer an. Wählen Sie neben **Fragen** die Option **Hinzufügen** aus, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten.
+Navigieren Sie zu *http:\//\<app-name>.azurewebsites.net/admin*, und melden Sie sich als der Administratorbenutzer an, den Sie im letzten Schritt erstellt haben. Wählen Sie neben **Fragen** die Option **Hinzufügen** aus, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten.
 
-Greifen Sie über die URL *http:\//\<app-name>.azurewebsites.net/admin* auf die bereitgestellte App zu, und erstellen Sie einige Abruffragen. Die Fragen finden Sie unter *http:\//\<app-name>.azurewebsites.net/* . 
+Greifen Sie über die URL *http:\//\<app-name>.azurewebsites.net/admin* auf die bereitgestellte App zu, und erstellen Sie einige Fragen für die Umfrage. Die Fragen finden Sie unter *http:\//\<app-name>.azurewebsites.net/* . 
 
 ![Ausführen einer Python-Django-App in App Services in Azure](./media/tutorial-python-postgresql-app/deploy-python-django-app-in-azure.png)
 
-Greifen Sie über die URL *http:\//\<app-name>.azurewebsites.net* wieder auf die bereitgestellte App zu, um die Abruffrage anzuzeigen, und beantworten Sie die Frage.
+Greifen Sie über die URL *http:\//\<app-name>.azurewebsites.net* wieder auf die bereitgestellte App zu, um die Frage für die Umfrage anzuzeigen, und beantworten Sie die Frage.
 
 App Service erkennt ein Django-Projekt in Ihrem Repository, indem in jedem Unterverzeichnis nach der Datei *wsgi.py* gesucht wird. Das Unterverzeichnis wird durch `manage.py startproject` standardmäßig erstellt. Wenn die Datei von App Service gefunden wird, wird die Django-Web-App geladen. Weitere Informationen dazu, wie App Service Python-Apps lädt, finden Sie unter [Konfigurieren Ihrer Python-App für Azure App Service unter Linux](how-to-configure-python.md).
 

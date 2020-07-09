@@ -1,25 +1,14 @@
 ---
 title: 'Schnellstart: Lesen erfasster Daten von der Python-App – Azure Event Hubs'
 description: 'Schnellstart: Skripts, die das Azure Python SDK verwenden, um die Funktion Event Hubs Capture zu veranschaulichen.'
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-editor: ''
-ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 01/15/2020
-ms.author: shvija
-ms.openlocfilehash: 6c830cf871c2ae650bb61e8b3712a664e9e405d4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.openlocfilehash: 8e6174970a6821f7541387f91b226cdebe555625
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77187293"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323066"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Schnellstart: Exemplarische Vorgehensweise für Event Hubs Capture: Python (azure-eventhub Version 1)
 
@@ -80,7 +69,7 @@ Dieses Skript sendet 200 Ereignisse an Ihren Event Hub. Bei den Ereignissen hand
 
 1. Öffnen Sie Ihren bevorzugten Python-Editor, z.B. [Visual Studio Code][Visual Studio Code].
 2. Erstellen Sie eine neue Datei mit dem Namen *sender.py*. 
-3. Fügen Sie den folgenden Code in *sender.py* ein. Ersetzen Sie die Angaben \<namespace>, \<AccessKeyName>, \<primary key value> und \<eventhub> von Event Hubs durch Ihre eigenen Werte.
+3. Fügen Sie den folgenden Code in *sender.py* ein. Ersetzen Sie Angaben \<namespace>, \<AccessKeyName>, \<primary key value> und \<eventhub> für Event Hubs durch Ihre eigenen Werte.
    
    ```python
    import uuid

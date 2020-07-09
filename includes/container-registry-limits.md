@@ -5,20 +5,21 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 19d0be6a032868c6683cd5b6bbfa7f07306171fb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85242096"
 ---
 | Resource | Basic | Standard | Premium |
 |---|---|---|---|
-| Storage<sup>1</sup> | 10 GiB | 100 GB| 500 GiB |
-| Maximale Größe für Imageebenen | 200 GiB | 200 GiB | 200 GiB |
+| Enthaltener Speicher<sup>1</sup> (GiB) | 10 | 100 | 500 |
+| Speicherbegrenzung (TiB) | 20| 20 | 20 |
+| Maximale Größe für Imageebenen (GiB) | 200 | 200 | 200 |
 | Lesevorgänge pro Minute<sup>2, 3</sup> | 1\.000 | 3,000 | 10.000 |
 | Schreibvorgänge pro Minute<sup>2, 4</sup> | 100 | 500 | 2\.000 |
 | Downloadbandbreite MBit/s<sup>2</sup> | 30 | 60 | 100 |
@@ -35,7 +36,7 @@ ms.locfileid: "83683416"
 | &bull; Repositorys pro Bereichszuordnung | – | – | 500 |
 
 
-<sup>1</sup> Die angegebenen Speichergrenzen beziehen sich auf die Größe des *inbegriffenen* Speichers für jeden Tarif. Für Imagespeicher, der diese Grenzen überschreitet, wird Ihnen ein zusätzlicher Tagestarif pro GiB in Rechnung gestellt. Weitere Informationen zu diesen Tarifen finden Sie unter [Container Registry – Preise][pricing].
+<sup>1</sup> In der täglichen Rate für jede Ebene inbegriffener Speicher. Für zusätzlichen Speicher fällt bis zur Speicherbegrenzung eine zusätzliche tägliche Gebühr pro GiB an. Weitere Informationen zu diesen Tarifen finden Sie unter [Container Registry – Preise][pricing].
 
 <sup>2</sup>*Lesevorgänge*, *Schreibvorgänge* und *Bandbreite* sind geschätzte Mindestwerte. Die Azure Container Registry soll die Leistung der Nutzung nach Bedarf verbessern.
 

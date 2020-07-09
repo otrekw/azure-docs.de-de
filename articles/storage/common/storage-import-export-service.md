@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Import- und Exportaufträge im Azure-Portal e
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
-ms.date: 03/15/2020
+ms.topic: conceptual
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: eee0fc2797fbe0666a6b848fde574c7807f47cc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a43637071ec1a9962c8aa1b2262e07354293f12b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282442"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512423"
 ---
 # <a name="what-is-azure-importexport-service"></a>Was ist der Azure Import/Export-Dienst?
 
@@ -41,7 +41,7 @@ Der Import/Export-Dienst verwendet die folgenden Komponenten:
 * **WAImportExport-Tool**: Hierbei handelt es sich um ein Befehlszeilentool zur Ausführung der folgenden Aufgaben:
   * Vorbereiten der Laufwerke, die für den Import versendet werden
   * Kopieren der Daten auf das Laufwerk
-  * Verschlüsseln der Daten auf dem Laufwerk mit BitLocker (AES 128-Bit). Sie können den BitLocker-Schlüssel mit einer externen Schlüsselschutzvorrichtung schützen.
+  * Verschlüsseln der Daten auf dem Laufwerk mit BitLocker (AES 256-Bit). Sie können den BitLocker-Schlüssel mit einer externen Schlüsselschutzvorrichtung schützen.
   * Generieren der Laufwerks-Journaldateien während der Erstellung des Imports
   * Ermitteln der Anzahl der für Exportaufträge erforderlichen Laufwerke
 
@@ -131,7 +131,7 @@ Der Azure Import/Export-Dienst unterstützt das Kopieren von Daten von bzw. in a
 
 ## <a name="security-considerations"></a>Sicherheitshinweise
 
-Die Daten auf dem Laufwerk werden mit BitLocker-Laufwerkverschlüsselung (AES 128-Bit) verschlüsselt. Durch diese Verschlüsselung sind Ihre Daten beim Transport geschützt.
+Die Daten auf dem Laufwerk werden mit BitLocker-Laufwerkverschlüsselung (AES 256-Bit) verschlüsselt. Durch diese Verschlüsselung sind Ihre Daten beim Transport geschützt.
 
 Für Importaufträge werden die Laufwerke auf zwei Arten verschlüsselt.  
 

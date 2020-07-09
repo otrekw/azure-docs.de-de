@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8e263d29bc71ac76c374eeda78e5250a0af2095
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191028"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744788"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Qualifikationsgruppenkonzepte und Komposition in Azure Cognitive Search
 
@@ -26,9 +26,9 @@ Eine Qualifikationsgruppe ist eine wiederverwendbare Ressource in der kognitiven
 
 Eine Qualifikationsgruppe verfügt über drei Eigenschaften:
 
-+   ```skills```, eine ungeordnete Sammlung von Qualifikationen, für die die Plattform die Ausführungssequenz basierend auf den für jede Qualifikation erforderlichen Eingaben bestimmt
-+   ```cognitiveServices```, der zum Berechnen der aufgerufenen kognitiven Fähigkeiten erforderliche Cognitive Services-Schlüssel
-+   ```knowledgeStore```, das Speicherkonto, in das Ihre angereicherten Dokumente projiziert werden
++    ```skills```, eine ungeordnete Sammlung von Qualifikationen, für die die Plattform die Ausführungssequenz basierend auf den für jede Qualifikation erforderlichen Eingaben bestimmt
++    ```cognitiveServices```, der zum Berechnen der aufgerufenen kognitiven Fähigkeiten erforderliche Cognitive Services-Schlüssel
++    ```knowledgeStore```, das Speicherkonto, in das Ihre angereicherten Dokumente projiziert werden
 
 
 
@@ -36,7 +36,7 @@ Qualifikationsgruppen werden in JSON erstellt. Mithilfe der [Ausdruckssprache](h
 
 ### <a name="enrichment-tree"></a>Anreicherungsstruktur
 
-Um zu sehen, wie eine Qualifikationsgruppe Ihr Dokument zunehmend anreichert, beginnen wir damit, wie das Dokument vor den Anreicherungen aussieht. Die Ausgabe der Dokumententschlüsselung ist abhängig von der Datenquelle und dem ausgewählten spezifischen Analysemodus. Dies ist auch der Zustand des Dokuments, aus dem die [Feldzuordnungen](search-indexer-field-mappings.md) beim Hinzufügen von Daten zum Suchindex Inhalte abrufen können.
+Um zu sehen, wie Ihr Dokument nach und nach durch eine Qualifikationsgruppe angereichert wird, beginnen Sie zunächst damit, wie das Dokument vor den Anreicherungen aussieht. Die Ausgabe der Dokumententschlüsselung ist abhängig von der Datenquelle und dem ausgewählten spezifischen Analysemodus. Dies ist auch der Zustand des Dokuments, aus dem die [Feldzuordnungen](search-indexer-field-mappings.md) beim Hinzufügen von Daten zum Suchindex Inhalte abrufen können.
 ![Wissensspeicher im Pipelinediagramm](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Wissensspeicher im Pipelinediagramm")
 
 Sobald sich ein Dokument in der Anreicherungspipeline befindet, wird es als Inhaltsstruktur mit zugeordneten Anreicherungen dargestellt. Diese Struktur wird als Ausgabe der Dokumententschlüsselung instanziiert. Das Anreicherungsstruktur-Format ermöglicht der Anreicherungspipeline das Anfügen von Metadaten auch an primitive Datentypen. Es handelt sich nicht um ein gültiges JSON-Objekt, kann jedoch in ein gültiges JSON-Format projiziert werden. In der folgenden Tabelle wird der Zustand eines Dokuments gezeigt, das in die Anreicherungspipeline wechselt:
@@ -54,14 +54,14 @@ In den übrigen Teilen dieses Dokuments gehen wir vom [Beispiel „Hotelbewertun
 
 ### <a name="context"></a>Kontext
 Jede Qualifikation erfordert einen Kontext. Ein Kontext bestimmt Folgendes:
-+   Wie oft die Qualifikation ausgeführt wird, basierend auf den ausgewählten Knoten. Wird bei Kontextwerten einer Typsammlung ein ```/*``` an das Ende hinzugefügt, führt dies dazu, dass die Qualifikation für jede Instanz in der Sammlung einmal aufgerufen wird. 
-+   Wo in der Anreicherungsstruktur die Qualifikationsausgaben hinzugefügt werden. Ausgaben werden der Struktur immer als untergeordnete Elemente des Kontextknotens hinzugefügt. 
-+   Form der Eingaben. Bei Sammlungen mit mehreren Ebenen hat das Festlegen des Kontexts auf die übergeordnete Sammlung Auswirkungen auf die Form der Eingabe für den Skill. Sie verfügen beispielsweise über eine Anreicherungsstruktur mit einer Liste von Ländern, von denen jedes mit einer Liste von Bundesländern angereichert ist, die wiederum eine Liste von Postleitzahlen enthalten.
++    Wie oft die Qualifikation ausgeführt wird, basierend auf den ausgewählten Knoten. Wird bei Kontextwerten einer Typsammlung ein ```/*``` an das Ende hinzugefügt, führt dies dazu, dass die Qualifikation für jede Instanz in der Sammlung einmal aufgerufen wird. 
++    Wo in der Anreicherungsstruktur die Qualifikationsausgaben hinzugefügt werden. Ausgaben werden der Struktur immer als untergeordnete Elemente des Kontextknotens hinzugefügt. 
++    Form der Eingaben. Bei Sammlungen mit mehreren Ebenen hat das Festlegen des Kontexts auf die übergeordnete Sammlung Auswirkungen auf die Form der Eingabe für den Skill. Sie verfügen beispielsweise über eine Anreicherungsstruktur mit einer Liste von Ländern oder Regionen, von denen jedes bzw. jede mit einer Liste von Bundesländern/Kantonen angereichert ist, die wiederum eine Liste von Postleitzahlen enthalten.
 
 |Kontext|Eingabe|Form der Eingabe|Aufruf einer Qualifikation|
 |---|---|---|---|
-|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Eine Liste aller Postleitzahlen im Land |Einmal pro Land |
-|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Eine Liste aller Postleitzahlen im Bundesland | Einmal pro Kombination aus Land und Bundesland|
+|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Eine Liste aller Postleitzahlen im Land oder der Region |Einmal pro Land oder Region |
+|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Eine Liste aller Postleitzahlen im Bundesland | Einmal pro Kombination aus Land oder Region und Bundesland/Kanton|
 
 ### <a name="sourcecontext"></a>SourceContext
 
@@ -77,7 +77,7 @@ Im Diagramm oben wird die Auswahl beschrieben, mit der Sie arbeiten, je nachdem,
 
 ## <a name="generate-enriched-data"></a>Generieren von angereicherten Daten 
 
-Betrachten wir nun die Qualifikationsgruppe „Hotelbewertungen“ näher. Mithilfe des [Tutorials](knowledge-store-connect-powerbi.md) können Sie die Qualifikationsgruppe erstellen oder [anzeigen](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/samples/skillset.json). Wir betrachten Folgendes:
+Betrachten Sie nun die Qualifikationsgruppe „Hotelbewertungen“ näher. Mithilfe des [Tutorials](knowledge-store-connect-powerbi.md) können Sie die Qualifikationsgruppe erstellen oder [anzeigen](https://github.com/Azure-Samples/azure-search-postman-samples/). Wir betrachten Folgendes:
 
 * Die Entwicklung der Anreicherungsstruktur mit Ausführung der einzelnen Qualifikationen 
 * Die Funktionsweise des Kontexts und der Eingaben, um zu bestimmen, wie oft eine Qualifikation ausgeführt wird 

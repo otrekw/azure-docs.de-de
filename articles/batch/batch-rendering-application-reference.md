@@ -5,16 +5,16 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 21ae6e0a190875e3e541eb858ec38658ce191ee6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726501"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964871"
 ---
 # <a name="rendering-applications"></a>Renderinganwendungen
 
-Renderinganwendungen werden verwendet, indem Batch-Aufträge und -Aufgaben erstellt werden. Mit der Befehlszeileneigenschaft für die Aufgabe werden die entsprechende Befehlszeile und die Parameter angegeben.  Die einfachste Möglichkeit zur Erstellung der Auftragsaufgaben ist das Verwenden der Batch Explorer-Vorlagen, wie in [diesem Artikel](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer) angegeben.  Die Vorlagen können angezeigt werden, und bei Bedarf können auch geänderte Versionen erstellt werden.
+Renderinganwendungen werden verwendet, indem Batch-Aufträge und -Aufgaben erstellt werden. Mit der Befehlszeileneigenschaft für die Aufgabe werden die entsprechende Befehlszeile und die Parameter angegeben.  Die einfachste Möglichkeit zur Erstellung der Auftragsaufgaben ist das Verwenden der Batch Explorer-Vorlagen, wie in [diesem Artikel](./batch-rendering-using.md#using-batch-explorer) angegeben.  Die Vorlagen können angezeigt werden, und bei Bedarf können auch geänderte Versionen erstellt werden.
 
 Dieser Artikel enthält eine kurze Beschreibung dazu, wie die einzelnen Renderinganwendungen ausgeführt werden.
 

@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/29/2020
+ms.date: 05/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 685c56c7ef270acb416d4b76c6aceb8553e9a07f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 086491484592c8015bdb519bb498e73da3836f6f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82581711"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103907"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -28,17 +28,25 @@ Der Azure Connected Machine-Agent für Windows und Linux kann abhängig von Ih
 | Windows | Manuell<br> Windows-Update |
 | Ubuntu | [Apt](https://help.ubuntu.com/lts/serverguide/apt.html) |
 | SUSE Linux Enterprise Server | [zypper](https://en.opensuse.org/SDB:Zypper_usage_11.3) |
-| RedHat Enterprise, Amazon, CentOS Linux | [yum](https://wiki.centos.org/PackageManagement/Yum) | 
+| RedHat Enterprise, Amazon, CentOS Linux | [yum](https://wiki.centos.org/PackageManagement/Yum) |
 
 ### <a name="windows-agent"></a>Windows-Agent
 
-Um den Agent auf einem Windows-Computer auf die neueste Version zu aktualisieren, ist der Agent über Microsoft Update verfügbar und kann mithilfe des vorhandenen Softwareupdate-Verwaltungsprozesses bereitgestellt werden. Er kann auch manuell über die Eingabeaufforderung, mit einem Skript oder einer anderen Automatisierungslösung oder über den Benutzeroberflächen-Assistenten ausgeführt werden, indem Sie `AzureConnectedMachine.msi` ausführen. 
+Das Updatepaket für den Connected Machine-Agent für Windows kann über folgende Quellen bezogen werden:
+
+* Microsoft Update
+
+* [Microsoft Update-Katalog](https://www.catalog.update.microsoft.com/Home.aspx)
+
+* [Windows Installer-Paket für den Windows-Agent](https://aka.ms/AzureConnectedMachineAgent) im Microsoft Download Center
+
+Der Agent kann auf verschiedene Arten aktualisiert werden, um Ihren Verwaltungsprozess für Softwareupdates zu unterstützen. Er kann nicht nur über Microsoft Update bezogen, sondern auch über die Eingabeaufforderung, ein Skript oder eine andere Automatisierungslösung oder über den Benutzeroberflächen-Assistenten heruntergeladen und ausgeführt werden, indem Sie `AzureConnectedMachine.msi` ausführen.
 
 > [!NOTE]
 > * Zum Upgraden des Agent sind *Administratorberechtigungen* erforderlich.
 > * Laden Sie für das manuelle Upgrade zunächst das Installer-Paket herunter, und kopieren Sie es in einen Ordner auf dem Zielserver, oder verwenden Sie einen freigegebenen Netzwerkordner. 
 
-Wenn Sie mit den Befehlszeilenoptionen für Windows Installer-Pakete nicht vertraut sind, lesen Sie die Artikel [Standardmäßige Installer-Befehlszeilenoptionen](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) und [Befehlszeilenoptionen](https://docs.microsoft.com/windows/win32/msi/command-line-options).
+Wenn Sie mit den Befehlszeilenoptionen für Windows Installer-Pakete nicht vertraut sind, lesen Sie die Artikel [Standardmäßige Installer-Befehlszeilenoptionen](/windows/win32/msi/standard-installer-command-line-options) und [Befehlszeilenoptionen](/windows/win32/msi/command-line-options).
 
 #### <a name="to-upgrade-using-the-setup-wizard"></a>So aktualisieren Sie mit dem Setup-Assistenten
 
@@ -60,7 +68,9 @@ Der Setup-Assistent ermittelt, ob eine frühere Version vorhanden ist, und führ
 
 ### <a name="linux-agent"></a>Linux-Agent
 
-Mit zwei Befehlen wird der Agent auf einem Linux-Computer auf die neueste Version aktualisiert. Ein Befehl aktualisiert den lokalen Paketindex mit der Liste der neuesten verfügbaren Pakete aus den Repositorys und ein weiterer Befehl führt ein Upgrade des lokalen Pakets durch. 
+Mit zwei Befehlen wird der Agent auf einem Linux-Computer auf die neueste Version aktualisiert. Ein Befehl aktualisiert den lokalen Paketindex mit der Liste der neuesten verfügbaren Pakete aus den Repositorys und ein weiterer Befehl führt ein Upgrade des lokalen Pakets durch.
+
+Das aktuelle Agent-Paket können Sie über das [Microsoft-Paketrepository](https://packages.microsoft.com/) herunterladen.
 
 > [!NOTE]
 > Um ein Upgrade des Agents vorzunehmen, benötigen Sie *root*-Zugriffsberechtigungen oder ein Konto mit erhöhten Rechten, das Sudo verwendet.
@@ -171,7 +181,7 @@ Führen Sie den folgenden Befehl aus, um die Verbindung mit Ihren Anmeldeinforma
 
 Mit diesem Parameter wird der bereits registrierte oder verbundene Computer erneut mit Azure Arc für Server (Vorschau) verbunden. Dies ist möglicherweise erforderlich, wenn der Computer mindestens 45 Tage lang ausgeschaltet war, damit das Zertifikat abläuft. Dieser Parameter verwendet die angegebenen Authentifizierungsoptionen, um neue Anmeldeinformationen abzurufen, die der Azure Resource Manager-Ressource entsprechen, die diesen Computer darstellt.
 
-Dieser Befehl erfordert höhere Berechtigungen als die Rolle [Azure Connected Machine-Onboarding](overview.md#required-permissions).
+Dieser Befehl erfordert höhere Berechtigungen als die Rolle [Azure Connected Machine-Onboarding](agent-overview.md#required-permissions).
 
 Führen Sie den folgenden Befehl aus, um erneut eine Verbindung mithilfe des Dienstprinzipals herzustellen:
 
@@ -207,7 +217,7 @@ Beider der folgenden Methoden entfernen den Agent, aber sie entfernen nicht den 
 #### <a name="uninstall-from-the-command-line"></a>Deinstallieren über die Befehlszeile
 
 Um den Agent manuell über die Eingabeaufforderung zu deinstallieren oder eine automatisierte Methode wie z. B. ein Skript zu verwenden, können Sie das folgende Beispiel nutzen. Zuerst müssen Sie den Produktcode, d. h. eine GUID, die der Prinzipalbezeichner des Anwendungspakets ist, vom Betriebssystem abrufen. Die Deinstallation erfolgt mithilfe der Msiexec.exe-Befehlszeile – `msiexec /x {Product Code}`.
-    
+
 1. Öffnen Sie den Registrierungs-Editor.
 
 2. Suchen Sie unter dem Registrierungsschlüssel `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` nach der Produktcode-GUID, und kopieren Sie sie.

@@ -8,32 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: c4335e1ac0f0ffc7ee5570a8f0819827fc77dd18
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 6d4e7297ba0b325aa0045c16620d716ceb1418b4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75384150"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650259"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Schnellstart: Senden einer Suchanforderung an die Bing-Entitätssuche-REST-API mithilfe von Java
 
 Verwenden Sie diese Schnellstartanleitung, um die Bing-Entitätssuche-API zum ersten Mal aufzurufen und die JSON-Antwort anzuzeigen. Diese einfache Java-Anwendung sendet eine Nachrichtensuchabfrage an die API und zeigt die Antwort an.
 
-Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
+Die Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Das [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
-* Die [Gson-Bibliothek](https://github.com/google/gson)
+* Das [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/).
+* Die [Gson-Bibliothek](https://github.com/google/gson).
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Erstellen und Initialisieren eines Projekts
 
-1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt, und importieren Sie die folgenden Bibliotheken.
+1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt, und importieren Sie die folgenden Bibliotheken:
 
    ```java
    import java.io.*;
@@ -50,7 +50,7 @@ Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTf
    import com.google.gson.JsonParser;
    ```
 
-2. Erstellen Sie in einer neuen Klasse Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und eine Suchabfrage. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
+2. Erstellen Sie in einer neuen Klasse Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und eine Suchabfrage. Sie können den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
    ```java
    public class EntitySearch {
@@ -68,7 +68,7 @@ Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTf
 
 ## <a name="construct-a-search-request-string"></a>Erstellen einer Zeichenfolge für die Suchanforderung
 
-1. Erstellen Sie eine Funktion namens `search()`, die eine JSON-`String` zurückgibt. Führen Sie eine URL-Codierung für Ihre Suchabfrage aus, und fügen Sie sie mit `&q=` einer Parameterzeichenfolge hinzu. Fügen Sie der Zeichenfolge mit `?mkt=` Ihren Markt hinzu.
+1. Erstellen Sie eine Funktion namens `search()`, die eine JSON-`String` zurückgibt. Führen Sie eine URL-Codierung für Ihre Suchabfrage aus, und fügen Sie sie mit `&q=` einer Parameterzeichenfolge hinzu. Fügen Sie der Parameterzeichenfolge mit `?mkt=` Ihren Markt hinzu.
  
 2. Erstellen Sie ein URL-Objekt mit Ihrem Host, Pfad und Parameterzeichenfolgen.
     
@@ -121,7 +121,7 @@ Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTf
 
 1. Erstellen Sie eine neue Funktion namens `prettify`, um die JSON-Antwort zu formatieren. Erstellen Sie ein neues `JsonParser`-Element, rufen Sie `parse()` für den JSON-Text auf, und speichern Sie es als JSON-Objekt. 
 
-2. Erstellen Sie mithilfe der Gson-Bibliothek ein neues `GsonBuilder()`-Element, und verwenden Sie `setPrettyPrinting().create()` zum Formatieren des JSON-Objekts. Geben Sie es dann zurück.    
+2. Erstellen Sie mithilfe der Gson-Bibliothek ein neues `GsonBuilder()`-Element, verwenden Sie `setPrettyPrinting().create()` zum Formatieren des JSON-Objekts, und geben Sie es dann zurück.    
   
    ```java
    //...
@@ -136,7 +136,7 @@ Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTf
 
 ## <a name="call-the-search-function"></a>Aufrufen der Suchfunktion
 
-1. Rufen Sie in der Main-Methode Ihres Projekts `search()` auf, und verwenden Sie `prettify()` zum Formatieren des Texts.
+- Rufen Sie in der Main-Methode Ihres Projekts `search()` auf, und verwenden Sie `prettify()` zum Formatieren des Texts.
     
     ```java
         public static void main(String[] args) {
@@ -220,5 +220,5 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 > [!div class="nextstepaction"]
 > [Erstellen einer Einzelseiten-Web-App](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Was ist die Bing-Entitätssuche-API?](../overview.md )
-* [Referenz zur Bing-Entitätssuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Was ist die Bing-Entitätssuche-API?](../overview.md)
+* [Referenz zur Bing-Entitätssuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

@@ -9,10 +9,10 @@ ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 367a0b1d17f8d5ebe4f46835ace963b00e75354e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68229252"
 ---
 So erstellen Sie eine IoT Hub-Instanz über das Azure-Portal:
@@ -25,7 +25,7 @@ So erstellen Sie eine IoT Hub-Instanz über das Azure-Portal:
 
 1. Erstellen Sie Ihre kostenlose IoT Hub-Instanz mit den Werten aus den folgenden Tabellen:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Subscription | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
     | Resource group | Erstellen Sie eine neue Ressourcengruppe. In diesem Tutorial wird der Name **tutorials-iot-hub-rg** verwendet. |
@@ -34,7 +34,7 @@ So erstellen Sie eine IoT Hub-Instanz über das Azure-Portal:
 
     ![Hub-Einstellungen 1](media/iot-hub-tutorials-create-free-hub/hubdefinition-1.png)
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Tarif und Skalierung | F1 Free. Pro Abonnement ist jeweils nur ein kostenloser Hub zulässig. |
     | IoT Hub-Einheiten | 1 |

@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/24/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f04a3fea3801f917a3ae4aced04ef3824d1cfa82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 084284037b02ce02d1e46a61a69d6e60cc89a36b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78184518"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387727"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Verwalten des Benutzerzugriffs in Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ Hier ist ein Beispiel für einen Benutzerflow zum Einholen der elterlichen Zusti
 
 2. Die Anwendung verarbeitet das JSON-Token und zeigt einen Hinweis für die minderjährige Person an, dass die Zustimmung der Eltern erforderlich ist. Die Zustimmung eines Elternteils wird dann online angefordert.
 
-3. In Azure AD B2C wird ein Anmeldeprozess angezeigt, über den sich der Benutzer auf normale Weise anmelden kann, und es wird ein Token für die Anwendung ausgegeben, das **legalAgeGroupClassification = "minorWithParentalConsent"** enthält. Die Anwendung erfasst die E-Mail-Adresse eines Elternteils und prüft, ob es sich bei dieser Person um einen Erwachsenen handelt. Zu diesem Zweck wird eine vertrauenswürdige Quelle genutzt, z.B. Einwohnermeldeamt-Daten, Lizenzverifizierung oder Kreditkartennachweis. Wenn die Überprüfung erfolgreich durchgeführt wurde, wird die minderjährige Person in der Anwendung aufgefordert, sich über den Azure AD B2C-Benutzerflow anzumelden. Falls die Zustimmung verweigert wird (z.B. **legalAgeGroupClassification = “minorWithoutParentalConsent”** ), gibt Azure AD B2C ein JSON-Token (keine Anmeldedaten) an die Anwendung zurück, um den Zustimmungsprozess neu zu starten. Der Benutzerflow kann optional angepasst werden, damit eine minderjährige oder erwachsene Person Zugriff auf das Konto eines Minderjährigen erlangen kann. Hierzu wird ein Registrierungscode an die hinterlegte E-Mail-Adresse des Minderjährigen oder des Erwachsenen gesendet.
+3. In Azure AD B2C wird ein Anmeldeprozess angezeigt, über den sich der Benutzer auf normale Weise anmelden kann, und es wird ein Token für die Anwendung ausgegeben, das **legalAgeGroupClassification = "minorWithParentalConsent"** enthält. Die Anwendung erfasst die E-Mail-Adresse eines Elternteils und prüft, ob es sich bei dieser Person um einen Erwachsenen handelt. Zu diesem Zweck wird eine vertrauenswürdige Quelle genutzt, z.B. Einwohnermeldeamt-Daten, Lizenzverifizierung oder Kreditkartennachweis. Wenn die Überprüfung erfolgreich durchgeführt wurde, wird die minderjährige Person in der Anwendung aufgefordert, sich über den Azure AD B2C-Benutzerflow anzumelden. Falls die Zustimmung verweigert wird (z. B. **legalAgeGroupClassification = “minorWithoutParentalConsent”** ), gibt Azure AD B2C ein JSON-Token (keine Anmeldedaten) an die Anwendung zurück, um den Zustimmungsprozess neu zu starten. Der Benutzerflow kann optional angepasst werden, damit eine minderjährige oder erwachsene Person Zugriff auf das Konto eines Minderjährigen erlangen kann. Hierzu wird ein Registrierungscode an die hinterlegte E-Mail-Adresse des Minderjährigen oder des Erwachsenen gesendet.
 
 4. Die Anwendung zeigt für die minderjährige Person eine Option an, mit der die Zustimmung widerrufen werden kann.
 
@@ -66,15 +66,15 @@ Ein benutzerdefinierter Benutzerflow ermöglicht das Erfassen von Geburtsdatum u
 
 In den folgenden Schritten wird die Logik veranschaulicht, mit der aus dem Geburtsdatum des Benutzers die Altersgruppe (**ageGroup**) berechnet wird:
 
-1. Es wird versucht, das Land anhand des Landescodes in der Liste zu ermitteln. Wenn dieser Vorgang nicht erfolgreich ist, wird **Default** verwendet.
+1. Es wird versucht, das Land bzw. die Region anhand des Landes-/Regionscodes in der Liste zu ermitteln. Wenn das Land bzw. die Region nicht gefunden wird, wird auf **Default** (Standard) zurückgegriffen.
 
-2. Bei Vorhandensein des Knotens **MinorConsent** im Landeselement:
+2. Bei Vorhandensein des Knotens **MinorConsent** im Länder-/Regionselement:
 
     a. Es wird das Datum berechnet, an dem der Benutzer geboren sein muss, um als erwachsene Person zu gelten. Wenn der 14. März 2015 z.B. das aktuelle Datum ist und für **MinorConsent** der Wert 18 gilt, kann das Geburtsdatum nicht nach dem 14. März 2000 liegen.
 
     b. Das Mindestdatum für die Geburt wird mit dem tatsächlichen Geburtsdatum verglichen. Falls das Mindestdatum für die Geburt vor dem Geburtstag des Benutzers liegt, wird für die Berechnung der Altersgruppe das Ergebnis **Minor** zurückgegeben.
 
-3. Falls der Knoten **MinorNoConsentRequired** im Landeselement enthalten ist, können Sie die Schritte 2a und 2b wiederholen, indem Sie den Wert aus **MinorNoConsentRequired** verwenden. Die Ausgabe von 2b gibt **MinorNoConsentRequired** zurück, falls das Mindestdatum für die Geburt vor dem Geburtsdatum des Benutzers liegt.
+3. Falls der Knoten **MinorNoConsentRequired** im Länder-/Regionselement enthalten ist, können Sie die Schritte 2a und 2b wiederholen, indem Sie den Wert aus **MinorNoConsentRequired** verwenden. Die Ausgabe von 2b gibt **MinorNoConsentRequired** zurück, falls das Mindestdatum für die Geburt vor dem Geburtsdatum des Benutzers liegt.
 
 4. Wenn für keine Berechnung TRUE zurückgegeben wurde, wird für die Berechnung **Adult** zurückgegeben.
 

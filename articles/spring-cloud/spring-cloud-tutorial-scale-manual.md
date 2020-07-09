@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: f08a3b5d0a03b0e898457bbb783dd5031c4b0f27
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 93cefd0c71e2d51187e68c6f5f02777d158e95a4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277474"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792063"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Skalieren einer Anwendung in Azure Spring Cloud
 
@@ -58,6 +58,9 @@ Wählen Sie unbedingt **Speichern** aus, um Ihre Skalierungseinstellungen zu üb
 ![Der Skalierungsdienst im Azure-Portal](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
 Nach wenigen Sekunden werden die von Ihnen vorgenommenen Änderungen auf der Seite **Übersicht** angezeigt. Weitere Details können Sie auf der Registerkarte **Anwendungsinstanzen** einsehen. Für die Skalierung sind weder Codeänderungen noch eine erneute Bereitstellung erforderlich.
+
+## <a name="upgrade-to-the-standard-tier"></a>Upgrade auf den Standard-Tarif
+Wenn Sie sich im Tarif „Basic“ befinden und durch eins oder mehrere dieser [Limits](spring-cloud-quotas.md) eingeschränkt sind, können Sie ein Upgrade auf den Tarif „Standard“ durchführen. Wechseln Sie zu diesem Zweck zum Menü „Preise“, indem Sie zuerst die Tarifspalte „Standard“ auswählen und dann auf die Schaltfläche **Upgrade** klicken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

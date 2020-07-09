@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 11/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: d24c87e0ebb5e5297a62f00186cd182b1aa48cd9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 3c52b48c5d5eae796a6f1cbab57fcab76fcab8a1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632719"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022446"
 ---
 # <a name="migrate-database-resources-to-global-azure"></a>Migrieren von Datenbankressourcen zu Azure weltweit
 
@@ -42,8 +42,8 @@ Um kleinere Azure SQL-Datenbank-Workloads zu migrieren, verwenden Sie die Export
 
 Weitere Informationen finden Sie unter:
 
-- Erfahren Sie, wie Sie [eine Datenbank in eine BACPAC-Datei exportieren](../sql-database/sql-database-export.md).
-- Erfahren Sie, wie Sie [eine BACPAC-Datei in eine neue Datenbank importieren](../sql-database/sql-database-import.md).
+- Erfahren Sie, wie Sie [eine Datenbank in eine BACPAC-Datei exportieren](../azure-sql/database/database-export.md).
+- Erfahren Sie, wie Sie [eine BACPAC-Datei in eine neue Datenbank importieren](../azure-sql/database/database-import.md).
 - Lesen Sie die [Dokumentation zu Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

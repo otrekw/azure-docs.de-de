@@ -4,12 +4,12 @@ description: Behandeln von Problemen bei der Installation, bei der Registrierung
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 7a1cac63ba6497b8580c83fe2b666b020701283a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 3d27b6d96dfd6c815cedc6194e6bb6e8a101dec2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81688051"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735914"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
 
@@ -38,7 +38,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
-| Backup | Replikat inkonsistent | Stellen Sie sicher, dass die Option für die automatische Konsistenzprüfung im Schutzgruppen-Assistenten aktiviert ist. Weitere Informationen zu den Ursachen von Replikatinkonsistenz und entsprechende Vorschläge finden Sie im Artikel [Replikat ist inkonsistent](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2006/cc161593(v=technet.10)).<br> <ol><li> Stellen Sie bei einer Systemstatus- oder BMR-Sicherung sicher, dass die Windows Server-Sicherung auf dem geschützten Server installiert ist.</li><li> Überprüfen Sie den DPM-Speicherpool auf dem DPM-/Microsoft Azure Backup Server auf Speicherplatzprobleme, und weisen Sie ggf. Speicher zu.</li><li> Überprüfen Sie den Zustand des Volumeschattenkopie-Diensts auf dem geschützten Server. Wenn er deaktiviert ist, legen Sie ihn auf manuellen Start fest. Starten Sie den Dienst auf dem Server. Kehren Sie anschließend zur DPM-/Microsoft Azure Backup Server-Konsole zurück, und starten Sie die Synchronisierung mit dem Auftrag zur Konsistenzprüfung.</li></ol>|
+| Backup | Replikat inkonsistent | Stellen Sie sicher, dass die Option für die automatische Konsistenzprüfung im Schutzgruppen-Assistenten aktiviert ist. Weitere Informationen zu Replikationsoptionen und Konsistenzprüfungen finden Sie in [diesem Artikel](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019).<br> <ol><li> Stellen Sie bei einer Systemstatus- oder BMR-Sicherung sicher, dass die Windows Server-Sicherung auf dem geschützten Server installiert ist.</li><li> Überprüfen Sie den DPM-Speicherpool auf dem DPM-/Microsoft Azure Backup Server auf Speicherplatzprobleme, und weisen Sie ggf. Speicher zu.</li><li> Überprüfen Sie den Zustand des Volumeschattenkopie-Diensts auf dem geschützten Server. Wenn er deaktiviert ist, legen Sie ihn auf manuellen Start fest. Starten Sie den Dienst auf dem Server. Kehren Sie anschließend zur DPM-/Microsoft Azure Backup Server-Konsole zurück, und starten Sie die Synchronisierung mit dem Auftrag zur Konsistenzprüfung.</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>Fehler bei der Erstellung eines Onlinewiederherstellungspunkts.
 
@@ -84,8 +84,8 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
 | Konfigurieren von Schutzgruppen | Die Anwendungskomponente konnte von DPM auf dem geschützten Computer (Name des geschützten Computers) nicht aufgelistet werden. | Wählen Sie auf dem Konfigurationsbildschirm für Schutzgruppen auf der entsprechenden Datenquellen-/Komponentenebene auf **Aktualisieren** aus. |
-| Konfigurieren von Schutzgruppen | Der Schutz kann nicht konfiguriert werden. | Falls es sich bei dem geschützten Server um einen SQL-Server handelt, überprüfen Sie, ob das Systemkonto (NTAuthority\System) auf dem geschützten Computer über Berechtigungen der SysAdmin-Rolle verfügt, wie in [diesem Artikel](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757977(v=sc.12)) beschrieben.
-| Konfigurieren von Schutzgruppen | Im Speicherpool für diese Schutzgruppe ist nicht genügend freier Speicherplatz vorhanden. | Die dem Speicherpool hinzugefügten Datenträger [dürfen keine Partition enthalten](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)). Löschen Sie alle vorhandenen Volumes auf den Datenträgern. Fügen Sie sie dann dem Speicherpool hinzu.|
+| Konfigurieren von Schutzgruppen | Der Schutz kann nicht konfiguriert werden. | Falls es sich bei dem geschützten Server um einen SQL-Server handelt, überprüfen Sie, ob das Systemkonto (NTAuthority\System) auf dem geschützten Computer über Berechtigungen der SysAdmin-Rolle verfügt, wie in [diesem Artikel](https://docs.microsoft.com/system-center/dpm/back-up-sql-server?view=sc-dpm-2019) beschrieben.
+| Konfigurieren von Schutzgruppen | Im Speicherpool für diese Schutzgruppe ist nicht genügend freier Speicherplatz vorhanden. | Die dem Speicherpool hinzugefügten Datenträger [dürfen keine Partition enthalten](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019). Löschen Sie alle vorhandenen Volumes auf den Datenträgern. Fügen Sie sie dann dem Speicherpool hinzu.|
 | Richtlinienänderung |Die Sicherungsrichtlinie konnte nicht geändert werden. Error: Beim aktuellen Vorgang ist aufgrund eines internen Dienstfehlers [0x29834] ein Fehler aufgetreten. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support. | **Ursache:**<br/>Für diesen Fehler kommen drei mögliche Ursachen in Betracht: Die Sicherheitseinstellungen sind aktiviert, Sie versuchen, die Beibehaltungsdauer unter die oben angegebenen Mindestwerte zu verkürzen, oder Sie verwenden eine nicht unterstützte Version. (Nicht unterstützte Versionen sind niedrigere Versionen als Microsoft Azure Backup Server, Version 2.0.9052, und Azure Backup Server Update 1.) <br/>**Empfohlene Maßnahme:**<br/> Um mit richtlinienbezogenen Updates fortzufahren, müssen Sie die Beibehaltungsdauer auf einen größeren Wert als die angegebene minimale Beibehaltungsdauer festlegen. (Die minimale Beibehaltungsdauer beträgt sieben Tage für die tägliche Beibehaltungsdauer, vier Wochen für die wöchentliche Beibehaltungsdauer, drei Wochen für die monatliche Beibehaltungsdauer und ein Jahr für die jährliche Beibehaltungsdauer.) <br><br>Optional besteht eine weitere bevorzugte Vorgehensweise darin, den Backup-Agent und Azure Backup Server zu aktualisieren, um alle Sicherheitsupdates zu nutzen. |
 
 ## <a name="backup"></a>Backup

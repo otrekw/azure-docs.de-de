@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Erfahren Sie mehr zur Azure Media Services-Livetranskription.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 11/19/2019
-ms.author: juliako
-ms.openlocfilehash: b364b6e70e3b5723c483bc3435f0c3a152c03aa9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: inhenkel
+ms.openlocfilehash: 9481b4ee2f225c7f76337d73b27630e4c67cc780
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499872"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193610"
 ---
-# <a name="live-transcription-preview"></a>Livetranskription (Vorschau)
+# <a name="live-transcription-preview"></a>Livetranskription (Preview)
 
 Azure Media Service übermittelt Video, Audio und Text in unterschiedlichen Protokollen. Wenn Sie Ihren Livestream mittels MPEG-DASH oder HLS/CMAF veröffentlichen, stellt unser Dienst neben den Video- und Audiospuren auch den transkribierten Text im IMSC1.1-kompatiblen TTML-Format bereit. Die Übermittlung ist in MPEG-4 Part 30-Fragmente (ISO/IEC 14496-30) gepackt. Bei Verwendung der Zustellung über HLS/TS wird Text als VTT-Blöcke übermittelt.
 
@@ -41,54 +41,113 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 Der Vorgang weist den folgenden Funktionskörper auf (wobei ein Pass-Through-Liveereignis mit RTMP als Erfassungsprotokoll erstellt wird). Beachten Sie das Hinzufügen einer transcriptions-Eigenschaft. Der einzige zulässige Wert für die Sprache ist „en-US“.
 
 ```
-{ 
-  "properties": { 
-    "description": "Demonstrate how to enable live transcriptions", 
-    "input": { 
-      "streamingProtocol": "RTMP", 
-      "accessControl": { 
-        "ip": { 
-          "allow": [ 
-            { 
-              "name": "Allow All", 
-              "address": "0.0.0.0", 
-              "subnetPrefixLength": 0 
-            } 
-          ] 
-        } 
-      } 
-    }, 
-    "preview": { 
-      "accessControl": { 
-        "ip": { 
-          "allow": [ 
-            { 
-              "name": "Allow All", 
-              "address": "0.0.0.0", 
-              "subnetPrefixLength": 0 
-            } 
-          ] 
-        } 
-      } 
-    }, 
-    "encoding": { 
-      "encodingType": "None" 
-    }, 
-    "transcriptions": [ 
-      { 
-        "language": "en-US" 
-      } 
-    ], 
-    "vanityUrl": false, 
-    "streamOptions": [ 
-      "Default" 
-    ] 
-  }, 
-  "location": "West US 2" 
-} 
+{
+  "properties": {
+    "description": "Demonstrate how to enable live transcriptions",
+    "input": {
+      "streamingProtocol": "RTMP",
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "preview": {
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "encoding": {
+      "encodingType": "None"
+    },
+    "transcriptions": [
+      {
+        "language": "en-US"
+      }
+    ],
+    "vanityUrl": false,
+    "streamOptions": [
+      "Default"
+    ]
+  },
+  "location": "West US 2"
+}
 ```
 
 Fragen Sie den Status des Liveereignisses ab, bis es in den Zustand „Wird ausgeführt“ wechselt, was darauf hinweist, dass Sie jetzt einen RTMP-Beitragsfeed senden können. Sie können jetzt dieselben Schritte wie in diesem Tutorial ausführen, z. B. das Überprüfen des Vorschaufeeds und das Erstellen von Liveausgaben.
+
+## <a name="start-transcription-after-live-event-has-started"></a>Starten der Transkription nach dem Start des Liveereignisses
+
+Die Livetranskription kann gestartet werden, nachdem ein Liveereignis begonnen hat. Um Livetranskriptionen zu aktivieren, patchen Sie das Liveereignis, um die transcriptions-Eigenschaft einzuschließen. Um Livetranskriptionen zu deaktivieren, wird die transcriptions-Eigenschaft aus dem Objekt des Liveereignisses entfernt.
+
+> [!NOTE]
+> Das mehrmalige Aktivieren oder Deaktivieren der Transkription während des Liveereignisses wird nicht unterstützt.
+
+Dies ist der Beispielaufruf zum Aktivieren von Livetranskriptionen.
+
+PATCH: ```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
+
+```
+{
+  "properties": {
+    "description": "Demonstrate how to enable live transcriptions", 
+    "input": {
+      "streamingProtocol": "RTMP",
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "preview": {
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "encoding": {
+      "encodingType": "None"
+    },
+    "transcriptions": [
+      {
+        "language": "en-US"
+      }
+    ],
+    "vanityUrl": false,
+    "streamOptions": [
+      "Default"
+    ]
+  },
+  "location": "West US 2"
+}
+```
 
 ## <a name="transcription-delivery-and-playback"></a>Übermittlung und Wiedergabe der Transkription
 

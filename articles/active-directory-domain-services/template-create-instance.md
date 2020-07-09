@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 01/14/2020
 ms.author: iainfou
-ms.openlocfilehash: b44547998b7ed7159e43bcbbfb4b4456d2a232e9
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d826a40073d243193f87d90ab80333b491a203b2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654553"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734214"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Erstellen einer verwalteten Azure Active Directory Domain Services-Domäne mithilfe einer Resource Manager-Vorlage
 
@@ -38,7 +38,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie f
 
 ## <a name="dns-naming-requirements"></a>DNS-Benennungsanforderungen
 
-Beim Erstellen einer Azure AD DS-Instanz geben Sie einen DNS-Namen an. Bei der Auswahl dieses DNS-Namens sind folgende Aspekte zu berücksichtigen:
+Beim Erstellen einer verwalteten Azure AD DS-Domäne geben Sie einen DNS-Namen an. Bei der Auswahl dieses DNS-Namens sind folgende Aspekte zu berücksichtigen:
 
 * **Integrierter Domänenname:** Standardmäßig wird der integrierte Domänenname des Verzeichnisses verwendet (das Suffix *.onmicrosoft.com*). Wenn Sie Secure LDAP für den Zugriff auf die verwaltete Domäne über das Internet aktivieren möchten, können Sie kein digitales Zertifikat erstellen, um die Verbindung mit dieser Standarddomäne zu sichern. Die Domäne *.onmicrosoft.com* ist im Besitz von Microsoft, daher stellt keine Zertifizierungsstelle ein Zertifikat aus.
 * **Benutzerdefinierte Domänennamen:** Die gängigste Vorgehensweise besteht darin, einen benutzerdefinierten Domänennamen anzugeben – in der Regel den Namen einer Domäne, die Sie bereits besitzen und die routingfähig ist. Wenn Sie eine routingfähige benutzerdefinierte Domäne verwenden, kann der Datenverkehr ordnungsgemäß und bedarfsgerecht weitergeleitet werden, um Ihre Anwendungen zu unterstützen.
@@ -47,7 +47,7 @@ Beim Erstellen einer Azure AD DS-Instanz geben Sie einen DNS-Namen an. Bei der
 > [!TIP]
 > Lassen Sie beim Erstellen eines benutzerdefinierten Domänennamens Vorsicht in Bezug auf DNS-Namespaces walten. Es wird empfohlen, einen Domänennamen zu verwenden, der von vorhandenen Azure- oder lokalen DNS-Namespaces getrennt ist.
 >
-> Lautet Ihr DNS-Namespace beispielsweise *contoso.com*, erstellen Sie eine verwaltete Azure AD DS-Domäne mit dem benutzerdefinierten Domänennamen *aaddscontoso.com*. Wenn Sie Secure LDAP verwenden, müssen Sie diesen benutzerdefinierten Domänennamen registrieren und sein Besitzer sein, um die erforderlichen Zertifikate generieren zu können.
+> Lautet Ihr vorhandener DNS-Namespace beispielsweise *contoso.com*, erstellen Sie eine verwaltete Domäne mit dem benutzerdefinierten Domänennamen *aaddscontoso.com*. Wenn Sie Secure LDAP verwenden, müssen Sie diesen benutzerdefinierten Domänennamen registrieren und sein Besitzer sein, um die erforderlichen Zertifikate generieren zu können.
 >
 > Möglicherweise müssen Sie einige zusätzliche DNS-Einträge für andere Dienste in Ihrer Umgebung oder bedingte DNS-Weiterleitungen zwischen vorhandenen DNS-Namespaces in Ihrer Umgebung erstellen. Beispiel: Wenn Sie einen Webserver ausführen, der unter Verwendung des DNS-Stammnamens eine Website hostet, können Namenskonflikte auftreten, aufgrund derer zusätzliche DNS-Einträge erforderlich sind.
 >
@@ -63,7 +63,7 @@ Es gelten außerdem die folgenden Einschränkungen für DNS-Namen:
 
 ## <a name="create-required-azure-ad-resources"></a>Erstellen der erforderlichen Azure AD-Ressourcen
 
-Azure AD DS erfordert einen Dienstprinzipal und eine Azure AD-Gruppe. Mit diesen Ressourcen kann die verwaltete Azure AD DS-Domäne Daten synchronisieren und definieren, welche Benutzer über Administratorrechte in der verwalteten Domäne verfügen.
+Azure AD DS erfordert einen Dienstprinzipal und eine Azure AD-Gruppe. Mit diesen Ressourcen kann die verwaltete Domäne Daten synchronisieren und definieren, welche Benutzer über Administratorrechte in der verwalteten Domäne verfügen.
 
 Registrieren Sie zunächst den Azure AD Domain Services-Ressourcenanbieter mithilfe des Cmdlets [Register-AzResourceProvider][Register-AzResourceProvider]:
 
@@ -77,7 +77,7 @@ Erstellen Sie mit dem Cmdlet [New-AzureADServicePrincipal][New-AzureADServicePri
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-Erstellen Sie nun mit dem Cmdlet [New-AzureADGroup][New-AzureADGroup] eine Azure AD-Gruppe namens *AAD DC-Administratoren*. Den zu dieser Gruppe hinzugefügten Benutzern werden dann Berechtigungen zum Ausführen von Verwaltungsaufgaben in der verwalteten Azure AD DS-Domäne gewährt.
+Erstellen Sie nun mit dem Cmdlet [New-AzureADGroup][New-AzureADGroup] eine Azure AD-Gruppe namens *AAD DC-Administratoren*. Den dieser Gruppe hinzugefügten Benutzern werden dann Berechtigungen zum Ausführen von Verwaltungsaufgaben für die verwaltete Domäne erteilt.
 
 ```powershell
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
@@ -125,10 +125,10 @@ Für die Resource Manager-Ressourcendefinition sind u. a. die folgenden Konfigu
 |-------------------------|---------|
 | domainName              | Geben Sie den DNS-Domänennamen für Ihre verwaltete Domäne ein, und berücksichtigen Sie dabei die obigen Ausführungen zu Namenspräfixen und Konflikten. |
 | filteredSync            | Mit Azure AD DS können Sie *alle* in Azure AD verfügbaren Benutzer und Gruppen synchronisieren oder eine *bereichsbezogene* Synchronisierung spezifischer Gruppen durchführen. Wenn Sie alle Benutzer und Gruppen für die Synchronisierung auswählen, können Sie sich später nicht für eine nur bereichsbezogene Synchronisierung entscheiden.<br /> Weitere Informationen zur bereichsbezogenen Synchronisierung finden Sie unter [Bereichsbezogene Synchronisierung für Azure AD Domain Services][scoped-sync].|
-| notificationSettings    | Wenn in der verwalteten Azure AD DS-Domäne Warnungen generiert werden, können E-Mail-Benachrichtigungen gesendet werden. <br />*Globale Administratoren* des Azure-Mandanten und Mitglieder der Gruppe *AAD DC-Administratoren* können für diese Benachrichtigungen *aktiviert* werden.<br /> Bei Bedarf können Sie weitere Empfänger von Benachrichtigungen hinzufügen, wenn für Warnungen Maßnahmen erforderlich sind.|
-| domainConfigurationType | Eine verwaltete Azure AD DS-Domäne wird standardmäßig als *Benutzergesamtstruktur* erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert – einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten. Den Wert *domainConfiguration* müssen Sie nicht angeben, um eine Benutzergesamtstruktur zu erstellen.<br /> Eine *Ressourcengesamtstruktur* synchronisiert nur Benutzer und Gruppen, die direkt in Azure AD erstellt werden. Ressourcengesamtstrukturen sind derzeit als Vorschau verfügbar. Legen Sie den Wert auf *ResourceTrusting* fest, um eine Ressourcengesamtstruktur zu erstellen.<br />Weitere Informationen zu *Ressourcengesamtstrukturen* finden Sie in der [Übersicht zu Azure AD DS-Ressourcengesamtstrukturen][resource-forests]. Dort werden u. a. die Gründe für ihre Verwendung sowie die Vorgehensweise zum Erstellen von Gesamtstrukturvertrauensstellungen mit lokalen AD DS-Domänen erläutert.|
+| notificationSettings    | Wenn in der verwalteten Domäne Warnungen generiert werden, können E-Mail-Benachrichtigungen gesendet werden. <br />*Globale Administratoren* des Azure-Mandanten und Mitglieder der Gruppe *AAD DC-Administratoren* können für diese Benachrichtigungen *aktiviert* werden.<br /> Bei Bedarf können Sie weitere Empfänger von Benachrichtigungen hinzufügen, wenn für Warnungen Maßnahmen erforderlich sind.|
+| domainConfigurationType | Eine verwaltete Domäne wird standardmäßig als *Benutzergesamtstruktur* erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert – einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten. Den Wert *domainConfiguration* müssen Sie nicht angeben, um eine Benutzergesamtstruktur zu erstellen.<br /> Eine *Ressourcengesamtstruktur* synchronisiert nur Benutzer und Gruppen, die direkt in Azure AD erstellt werden. Ressourcengesamtstrukturen sind derzeit als Vorschau verfügbar. Legen Sie den Wert auf *ResourceTrusting* fest, um eine Ressourcengesamtstruktur zu erstellen.<br />Weitere Informationen zu *Ressourcengesamtstrukturen* finden Sie in der [Übersicht zu Azure AD DS-Ressourcengesamtstrukturen][resource-forests]. Dort werden u. a. die Gründe für ihre Verwendung sowie die Vorgehensweise zum Erstellen von Gesamtstrukturvertrauensstellungen mit lokalen AD DS-Domänen erläutert.|
 
-Die folgende Parameterdefinition in Kurzform zeigt, wie diese Werte deklariert werden. Eine Benutzergesamtstruktur namens *aaddscontoso.com* wird erstellt, wobei alle Benutzer von Azure AD mit der verwalteten Azure AD DS-Domäne synchronisiert werden:
+Die folgende Parameterdefinition in Kurzform zeigt, wie diese Werte deklariert werden. Eine Benutzergesamtstruktur namens *aaddscontoso.com* wird erstellt, wobei alle Benutzer von Azure AD mit der verwalteten Domäne synchronisiert werden:
 
 ```json
 "parameters": {
@@ -149,7 +149,7 @@ Die folgende Parameterdefinition in Kurzform zeigt, wie diese Werte deklariert w
 }
 ```
 
-Der folgende Ressourcentyp der Resource Manager-Vorlage (komprimiert) wird dann verwendet, um die verwaltete Azure AD DS-Domäne zu definieren und zu erstellen. Ein virtuelles Azure-Netzwerk und ein Subnetz müssen bereits vorhanden sein oder als Teil der Resource Manager-Vorlage erstellt werden. Die verwaltete Azure AD DS-Domäne wird mit diesem Subnetz verbunden.
+Der folgende Ressourcentyp der Resource Manager-Vorlage (komprimiert) wird dann verwendet, um die verwaltete Domäne zu definieren und zu erstellen. Ein virtuelles Azure-Netzwerk und ein Subnetz müssen bereits vorhanden sein oder als Teil der Resource Manager-Vorlage erstellt werden. Die verwaltete Domäne wird mit diesem Subnetz verbunden.
 
 ```json
 "resources": [
@@ -176,7 +176,7 @@ Diese Parameter und der Ressourcentyp können als Teil einer umfassenderen Resou
 
 ## <a name="create-a-managed-domain-using-sample-template"></a>Erstellen einer verwalteten Domäne mithilfe einer Beispielvorlage
 
-Mit der folgenden vollständigen Resource Manager-Beispielvorlage werden eine verwaltete Azure AD DS-Domäne sowie das unterstützende virtuelle Netzwerk, das Subnetz und Regeln für Netzwerksicherheitsgruppen erstellt. Die Regeln für Netzwerksicherheitsgruppen sind erforderlich, um die verwaltete Domäne zu schützen und einen ordnungsgemäßen Datenverkehrsfluss zu gewährleisten. Eine Benutzergesamtstruktur mit dem DNS-Namen *aaddscontoso.com* wird erstellt, wobei alle Benutzer von Azure AD synchronisiert werden:
+Mit der folgenden vollständigen Resource Manager-Beispielvorlage werden eine verwaltete Domäne sowie das unterstützende virtuelle Netzwerk, das Subnetz und Regeln für Netzwerksicherheitsgruppen erstellt. Die Regeln für Netzwerksicherheitsgruppen sind erforderlich, um die verwaltete Domäne zu schützen und einen ordnungsgemäßen Datenverkehrsfluss zu gewährleisten. Eine Benutzergesamtstruktur mit dem DNS-Namen *aaddscontoso.com* wird erstellt, wobei alle Benutzer von Azure AD synchronisiert werden:
 
 ```json
 {
@@ -325,17 +325,17 @@ Diese Vorlage kann über Ihre bevorzugte Bereitstellungsmethode (z B. [Azure-Po
 New-AzResourceGroupDeployment -ResourceGroupName "myResourceGroup" -TemplateFile <path-to-template>
 ```
 
-Es dauert einige Minuten, bis die Ressource erstellt und die Steuerung an die PowerShell-Eingabeaufforderung zurückgegeben wird. Im Hintergrund wird weiterhin die verwaltete Azure AD DS-Domäne bereitgestellt, und es kann bis zu einer Stunde dauern, bis die Bereitstellung beendet ist. Während dieser Bereitstellungsphase wird im Azure-Portal auf der Seite **Übersicht** für Ihre verwaltete Azure AD DS-Domäne der aktuelle Status angezeigt.
+Es dauert einige Minuten, bis die Ressource erstellt und die Steuerung an die PowerShell-Eingabeaufforderung zurückgegeben wird. Die verwaltete Domäne wird weiterhin im Hintergrund bereitgestellt, und es kann bis zu einer Stunde dauern, bis die Bereitstellung abgeschlossen ist. In dieser Bereitstellungsphase wird im Azure-Portal auf der Seite **Übersicht** für Ihre verwaltete Domäne der aktuelle Status angezeigt.
 
-Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung für die verwaltete Azure AD DS-Domäne abgeschlossen ist, müssen Sie die folgenden Aufgaben ausführen:
+Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung der verwalteten Domäne abgeschlossen ist, müssen Sie die folgenden Aufgaben ausführen:
 
 * Aktualisieren Sie DNS-Einstellungen für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können.
-    * Wählen Sie zum Konfigurieren von DNS Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
+    * Wählen Sie zum Konfigurieren von DNS Ihre verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
 * [Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie eine Demo der verwalteten Azure AD DS-Domäne anzeigen möchten, können Sie [einen virtuellen Windows-Computer in die Domäne einbinden][windows-join], [sicheres LDAP konfigurieren][tutorial-ldaps] und die [Kennworthashsynchronisierung][tutorial-phs] konfigurieren.
+Wenn Sie die verwaltete Domäne in Aktion sehen möchten, können Sie [einen virtuellen Windows-Computer in die Domäne einbinden][windows-join], [sicheres LDAP konfigurieren][tutorial-ldaps] und die [Kennworthashsynchronisierung konfigurieren][tutorial-phs].
 
 <!-- INTERNAL LINKS -->
 [windows-join]: join-windows-vm.md

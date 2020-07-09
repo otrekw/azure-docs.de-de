@@ -8,13 +8,20 @@
       href: azure-portal-quickstart-center.md
     - name: Unterstützte Browser und Geräte
       href: azure-portal-supported-browsers-devices.md
+- name: Schnellstarts
+  items:
+    - name: Erstellen eines virtuellen Computers im Portal
+      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - name: 'Erstellen eines Dashboards: ARM-Vorlage'
+      displayName: Resource Manager
+      href: quick-create-template.md
 - name: Konzepte
   items:
     - name: Freigeben von Dashboards per rollenbasierter Zugriffssteuerung
       href: azure-portal-dashboard-share-access.md
     - name: Programmgesteuertes Erstellen von Azure-Dashboards
       href: azure-portal-dashboards-create-programmatically.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Festlegen Ihrer Azure-Portaleinstellungen
       href: set-preferences.md
@@ -36,8 +43,8 @@
       items:
         - name: Erstellen einer Azure-Supportanfrage
           href: supportability/how-to-create-azure-support-request.md
-        - name: Hochladen von Dateien für eine Supportanfrage
-          href: supportability/how-to-use-file-uploader.md
+        - name: Verwalten einer Azure-Supportanfrage
+          href: supportability/how-to-manage-azure-support-request.md
         - name: Anfordern der Kontingenterhöhung
           items:
             - name: Erhöhen der vCPU-Grenzwerte für Compute
@@ -70,6 +77,8 @@
       href: azure-portal-safelist-urls.md
     - name: Struktur von Azure-Dashboards
       href: azure-portal-dashboards-structure.md
+    - name: Azure CLI
+      href: /cli/azure/ext/portal/portal
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

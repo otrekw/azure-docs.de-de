@@ -3,15 +3,15 @@ title: Konvertieren von Sitzungstokenformaten im .NET SDK – Azure Cosmos DB
 description: Informationen zum Konvertieren von Sitzungstokenformaten, um die Kompatibilität zwischen verschiedenen .NET SDK-Versionen sicherzustellen
 author: vinhms
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
-ms.openlocfilehash: 377d8e3e923d6a8fa3b1722cee6451a696ce2490
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 1f5609eae106e04928bc2c49bd84aa651b224611
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793934"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261578"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>Konvertieren von Sitzungstokenformaten im .NET SDK
 

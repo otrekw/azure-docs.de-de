@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 2471c29f559df5c347c62ceb4c7fd9b4ae1e5eec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 385f4a9ff1c299f49a514ad63bb3c8d633d8c191
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77657332"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552805"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
 
@@ -179,7 +179,7 @@ Allgemeine Schritte zur Problembehandlung:
 
 1. Fehlende DNS-Lookupdaten: Um dieses Problem zu beheben, setzen Sie die Konfiguration zurück, oder laden Sie die Konfigurationsseite einfach ein Mal im Portal. Ändern Sie zum Zurücksetzen nur eine Einstellung in einen anderen Wert, und ändern Sie sie anschließend erneut in den ursprünglichen Wert. Speichern Sie die Konfiguration dann.
 
-## <a name="feedback"></a>Feedback
+## <a name="suggestions"></a>Vorschläge
 
 Rufen Sie für Feedback die UserVoice-Seite für [Log Analytics](https://aka.ms/dnsanalyticsuservoice) auf, um Ideen zu wünschenswerten DNS Analytics-Features mitzuteilen. 
 

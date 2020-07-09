@@ -1,18 +1,18 @@
 ---
-title: Bestimmen Ihrer Veröffentlichungsoption in den Storefronts im kommerziellen Microsoft-Marketplace
-description: In diesem Artikel werden die Berechtigungskriterien und Veröffentlichungsanforderungen für Partner beschrieben, die sich über die Veröffentlichung von Apps in Microsoft AppSource und Azure Marketplace informieren möchten.
+title: Bestimmen Ihrer Veröffentlichungsoption im kommerziellen Microsoft-Marketplace
+description: In diesem Artikel werden die Eignungskriterien und Bedingungen für die Veröffentlichung von Angeboten in Microsoft AppSource und im Azure Marketplace beschrieben.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: e91ca0334276dbe9118eb0e40d042f598e8b3c0f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7c8a8bcef548ae752b6ddeb7663dd82b3f245349
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415737"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957884"
 ---
 # <a name="determine-your-publishing-option"></a>Bestimmung Ihrer Veröffentlichungsoption
 
@@ -60,7 +60,7 @@ Bei **Azure Marketplace**-Anwendungen handelt es sich um technische „Baustein�
 
 ## <a name="choose-a-publishing-option"></a>Auswählen einer Veröffentlichungsoption
 
-Die verfügbaren Veröffentlichungsoptionen ermöglichen eine differenzierte Kundenbindung und ebnen Ihnen den Weg zu gemeinsamem Zugriff auf Leads und [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Beachten Sie die Aktionsaufrufe, die mit den Veröffentlichungsoptionen verbunden sind:
+Die verfügbaren Veröffentlichungsoptionen ermöglichen eine differenzierte Kundenbindung und ebnen Ihnen den Weg zu gemeinsamem Zugriff auf Leads und [Vorteile des kommerziellen Marketplace](gtm-your-marketplace-benefits.md). Beachten Sie die Aktionsaufrufe, die mit den Veröffentlichungsoptionen verbunden sind:
 
 | **Veröffentlichungsoption**    | **Beschreibung**  |
 | :------------------- | :-------------------|

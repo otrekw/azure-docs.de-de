@@ -5,43 +5,49 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/19/2019
-ms.openlocfilehash: 2584cedceab1386cbab9c72bb4b510eebe2122bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/26/2020
+ms.openlocfilehash: a03fcf5748eaa215aa90b70dbd11e788e8beb3e4
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054710"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860969"
 ---
-# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Verwalten von Log Analytics-Arbeitsbereichen in Azure Monitor mithilfe von PowerShell
+# <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs in Azure Monitor mithilfe von PowerShell
+Dieser Artikel enthält zwei Codebeispiele, die zeigen, wie ein Log Analytics-Arbeitsbereich in Azure Monitor erstellt und konfiguriert wird.  
 
-Mit den [PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) können Sie verschiedene Funktionen für einen Log Analytics-Arbeitsbereich in Azure Monitor über eine Befehlszeile oder in einem Skript ausführen.  Beispiele für die Aufgaben, die Sie mit PowerShell ausführen können:
-
-* Erstellen eines Arbeitsbereichs
-* Hinzufügen oder Entfernen einer Lösung
-* Importieren und Exportieren von gespeicherten Suchvorgängen
-* Erstellen einer Computergruppe
-* Aktivieren der Sammlung von IIS-Protokollen auf Computern mit installiertem Windows-Agent
-* Sammeln von Leistungsindikatoren von Windows- und Linux-Computern
-* Sammeln von Ereignissen aus Syslog auf Linux-Computern
-* Sammeln von Ereignissen aus Windows-Ereignisprotokollen
-* Sammeln von benutzerdefinierten Ereignisprotokollen
-* Hinzufügen des Log Analytics-Agents auf virtuellen Azure-Computern
-* Konfiguration von Log Analytics zum Indizieren der Daten, die mit der Azure-Diagnose gesammelt werden
-
-Dieser Artikel enthält zwei Codebeispiele, die einige der Funktionen veranschaulicht, die Sie mit PowerShell ausführen können.  In der [Referenz zu den PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) finden Sie noch weitere Funktionen.
 
 > [!NOTE]
 > Log Analytics wurde früher als Operational Insights bezeichnet, daher wird dieser Name in den Cmdlets verwendet.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesen Beispielen wird Version 1.0.0 oder höher des Az.OperationalInsights-Moduls verwendet.
 
+## <a name="create-workspace"></a>Arbeitsbereich erstellen
+Das folgende Beispielskript erstellt einen Arbeitsbereich ohne Konfiguration von Datenquellen. 
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs
-Das folgende Beispielskript veranschaulicht Folgendes:
+```powershell
+$ResourceGroup = "my-resource-group"
+$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique across all Azure subscriptions - Get-Random helps with this for the example code
+$Location = "westeurope"
+
+# Create the resource group if needed
+try {
+    Get-AzResourceGroup -Name $ResourceGroup -ErrorAction Stop
+} catch {
+    New-AzResourceGroup -Name $ResourceGroup -Location $Location
+}
+
+# Create the workspace
+New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
+```
+
+## <a name="create-workspace-and-configure-data-sources"></a>Erstellen eines Arbeitsbereichs und Konfigurieren von Datenquellen
+
+Das folgende Beispielskript erstellt einen Arbeitsbereich und konfiguriert mehrere Datenquellen. Diese Datenquellen sind nur erforderlich, wenn Sie virtuelle Computer mit dem [Log Analytics-Agent](log-analytics-agent.md) überwachen.
+
+Dieses Skript führt die folgenden Funktionen aus:
 
 1. Erstellen eines Arbeitsbereichs
 2. Auflisten der verfügbaren Lösungen
@@ -57,10 +63,19 @@ Das folgende Beispielskript veranschaulicht Folgendes:
 12. Sammeln eines benutzerdefinierten Protokolls
 
 ```powershell
-
-$ResourceGroup = "oms-example"
+$ResourceGroup = "my-resource-group"
 $WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique across all Azure subscriptions - Get-Random helps with this for the example code
 $Location = "westeurope"
+
+# Create the resource group if needed
+try {
+    Get-AzResourceGroup -Name $ResourceGroup -ErrorAction Stop
+} catch {
+    New-AzResourceGroup -Name $ResourceGroup -Location $Location
+}
+
+# Create the workspace
+New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
 
 # List of solutions to enable
 $Solutions = "Security", "Updates", "SQLAssessment"
@@ -196,81 +211,13 @@ Im obigen Beispiel wurde regexDelimiter als „\\n“ für den Zeilenumbruch def
 | `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> dabei ist „+“ ein „+“ oder ein „-“ <br> dabei ist „zzzz“ der Zeitversatz | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\/((19|20)[0-9][0-9]):([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\s[\\+|\\-][0-9]{4})` | | |
 | `yyyy-MM-ddTHH:mm:ss` <br> Das „T“ steht für den Buchstaben „T“ | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
-## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Konfigurieren von Log Analytics zum Senden der Azure-Diagnose
-Für die Überwachung von Azure-Ressourcen ohne Agents müssen die Ressourcen Azure-Diagnose aktiviert haben und zum Schreiben in einen Log Analytics-Arbeitsbereich konfiguriert worden sein. Bei diesem Ansatz werden Daten direkt an den Arbeitsbereich gesendet, und Daten müssen nicht in ein Speicherkonto geschrieben werden. Unterstützte Ressourcen:
-
-| Ressourcentyp | Protokolle | Metriken |
-| --- | --- | --- |
-| Anwendungsgateways    | Ja | Ja |
-| Automation-Konten     | Ja | |
-| Batch-Konten          | Ja | Ja |
-| Data Lake Analytics     | Ja | |
-| Data Lake Store         | Ja | |
-| Elastischer SQL-Pool        |     | Ja |
-| Event Hub-Namespace     |     | Ja |
-| IoT Hubs                |     | Ja |
-| Key Vault               | Ja | |
-| Load Balancer          | Ja | |
-| Logic Apps              | Ja | Ja |
-| Netzwerksicherheitsgruppen | Ja | |
-| Azure Cache for Redis             |     | Ja |
-| Suchdienste         | Ja | Ja |
-| Service Bus-Namespace   |     | Ja |
-| SQL (v12)               |     | Ja |
-| Websites               |     | Ja |
-| Webserverfarmen        |     | Ja |
-
-Ausführliche Informationen zu den verfügbaren Metriken finden Sie unter [Supported metrics with Azure Monitor](../../azure-monitor/platform/metrics-supported.md) (Von Azure Monitor unterstützte Metriken).
-
-Ausführliche Informationen zu den verfügbaren Protokollen finden Sie unter [Unterstützte Dienste und Schema für Ressourcenprotokolle](../../azure-monitor/platform/diagnostic-logs-schema.md).
-
-```powershell
-$workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
-
-$resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
-
-Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
-```
-
-Sie können mit dem vorherigen Cmdlet auch Protokolle von Ressourcen in verschiedenen Abonnements sammeln. Das Cmdlet kann abonnementübergreifend verwendet werden, da Sie die ID der Ressource, die Protokolle erstellt, und des Arbeitsbereichs angeben, an den die Protokolle gesendet werden.
-
-
-## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>Konfigurieren eines Log Analytics-Arbeitsbereichs zum Erfassen der Azure-Diagnose aus dem Speicher
-Damit Sie Protokolldaten in einer ausgeführten Instanz eines klassischen Clouddiensts oder eines Service Fabric-Clusters erfassen können, müssen Sie die Daten zunächst in den Azure-Speicher schreiben. Dann wird ein Log Analytics-Arbeitsbereich konfiguriert, um die Protokolle aus dem Speicherkonto zu sammeln. Unterstützte Ressourcen:
-
-* Azure Cloud Services (Web- und Workerrollen)
-* Service Fabric-Cluster
-
-Das folgende Beispiel veranschaulicht die Vorgehensweise:
-
-1. Auflisten der vorhandenen Speicherkonten und Speicherorte, aus denen der Arbeitsbereich Daten indiziert
-2. Erstellen einer Konfiguration zum Lesen aus einem Speicherkonto
-3. Aktualisieren der neu erstellten Konfiguration zum Indizieren von Daten von zusätzlichen Speicherorten
-4. Löschen der neu erstellten Konfiguration
-
-```powershell
-# validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
-$workspace = (Get-AzOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
-
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want the workspace to index
-$storageId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
-$key = "abcd=="
-
-# List existing insights
-Get-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name
-
-# Create a new insight
-New-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -StorageAccountResourceId $storageId -StorageAccountKey $key -Tables @("WADWindowsEventLogsTable") -Containers @("wad-iis-logfiles")
-
-# Update existing insight
-Set-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -Tables @("WADWindowsEventLogsTable", "WADETWEventTable") -Containers @("wad-iis-logfiles")
-
-# Remove the insight
-Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight"
-
-```
-
-Sie können mit dem vorherigen Skript auch Protokolle aus Speicherkonten in verschiedenen Abonnements sammeln. Das Skript kann abonnementübergreifend verwendet werden, da Sie die Speicherkontoressourcen-ID und einen entsprechenden Zugriffsschlüssel bereitstellen. Wenn Sie den Zugriffsschlüssel ändern, müssen Sie die Speicherdetails aktualisieren, sodass sie den neuen Schlüssel enthalten.
+## <a name="troubleshooting"></a>Problembehandlung
+Wenn Sie einen Arbeitsbereich erstellen, der in den letzten 14 Tagen gelöscht wurde und sich im [Zustand des vorläufigen Löschens](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#soft-delete-behavior) befindet, kann der Vorgang je nach Arbeitsbereichskonfiguration ein anderes Ergebnis aufweisen:
+1. Wenn Sie denselben Arbeitsbereichsnamen, dieselbe Ressourcengruppe, dasselbe Abonnement und dieselbe Region wie beim gelöschten Arbeitsbereich angeben, wird der Arbeitsbereich einschließlich Daten, Konfiguration und verbundener Agents wiederhergestellt.
+2. Wenn Sie denselben Arbeitsbereichsnamen, aber andere Werte für Ressourcengruppe, Abonnement oder Region verwenden, erhalten Sie eine Fehlermeldung des Typs *Der Arbeitsbereichsname „Arbeitsbereichname“ ist nicht eindeutig* oder *Konflikt*. Wenn Sie das vorläufige Löschen außer Kraft setzen, den Arbeitsbereich dauerhaft löschen und einen neuen, gleichnamigen Arbeitsbereich erstellen möchten, gehen Sie folgendermaßen vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:
+   * [Wiederherstellen](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) Ihres Arbeitsbereichs
+   * [Dauerhaftes Löschen](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) Ihres Arbeitsbereichs
+   * Erstellen eines neuen Arbeitsbereichs mit demselben Arbeitsbereichsnamen
 
 
 ## <a name="next-steps"></a>Nächste Schritte

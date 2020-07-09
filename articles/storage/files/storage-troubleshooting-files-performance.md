@@ -3,16 +3,16 @@ title: Azure Files-Leistung – Handbuch zur Problembehandlung
 description: Bekannte Leistungsprobleme mit Azure-Dateifreigaben und entsprechende Problemumgehungen.
 author: gunjanj
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 64c7e56f14fb06e7b211954eb93e4858563a8f08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598084"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511961"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Troubleshooting bei Azure Files-Leistungsproblemen
 
@@ -113,7 +113,7 @@ Es werden keine Verzeichnis-Leasedauern unterstützt.
 ### <a name="workaround"></a>Problemumgehung
 
 - Vermeiden Sie nach Möglichkeit, dass Öffnen-/Schließen-Vorgänge im selben Verzeichnis innerhalb kurzer Zeit verarbeitet werden müssen.
-- Erhöhen Sie für virtuelle Linux-Computer das Cachetimeout für Verzeichniseinträge, indem Sie **actimeo=\<Sekunden>** als eine Bereitstellungsoption angeben. Der Standardwert für die Option beträgt eine Sekunde, sodass ein höherer Wert, etwa drei oder fünf Sekunden, nützlich sein kann.
+- Erhöhen Sie für virtuelle Linux-Computer das Cachetimeout für Verzeichniseinträge, indem Sie **actimeo=\<sec>** als eine Bereitstellungsoption angeben. Der Standardwert für die Option beträgt eine Sekunde, sodass ein höherer Wert, etwa drei oder fünf Sekunden, nützlich sein kann.
 - Aktualisieren Sie bei virtuellen Linux-Computern den Kernel auf 4.20 oder höher.
 
 ## <a name="low-iops-on-centosrhel"></a>Niedriger IOPS unter CentOS/RHEL

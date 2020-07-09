@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8c8d6c1aca81d59b42ceca17ecfb071ee5f13bd
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77185554"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014365"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -75,6 +75,9 @@ In den folgenden Abschnitten werden diese Phasen ausführlich erläutert.
 Nur globale Administratoren können einen Authentifizierungs-Agent auf einem lokalen Server installieren (durch Verwenden von Azure AD Connect oder eigenständig). Bei der Installation werden der Liste in **Systemsteuerung** > **Programme** > **Programme und Features** diesen beiden neuen Einträge hinzugefügt:
 - Die eigentliche Authentifizierungs-Agent-Anwendung. Diese Anwendung wird mit [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx)-Berechtigungen ausgeführt.
 - Die Updater-Anwendung, die zur automatischen Aktualisierung des Authentifizierungs-Agents verwendet wird. Diese Anwendung wird mit [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx)-Berechtigungen ausgeführt.
+
+>[!IMPORTANT]
+>Vom Sicherheitsstandpunkt aus sollten Administratoren den Server, auf dem der PTA-Agent ausgeführt wird, so behandeln, als sei er ein Domänencontroller.  Die PTA-Agent-Server sollten wie in [Sichern von Domänencontrollern gegen Angriffe](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) beschrieben geschützt werden.
 
 ### <a name="authentication-agent-registration"></a>Registrierung des Authentifizierungs-Agents
 

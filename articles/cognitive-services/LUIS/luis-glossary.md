@@ -3,12 +3,12 @@ title: LUIS-Glossar
 description: In diesem Glossar werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit der LUIS-API stoßen.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: eb823e65acc55dd9d739b31e506ad27f6af9095a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589668"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056377"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit dem LUIS-Dienst stoßen.
@@ -38,11 +38,11 @@ Bei der Erstellung handelt es sich um die Fähigkeit zum Erstellen, Verwalten un
 
 ### <a name="authoring-key"></a>Erstellungsschlüssel
 
-Der [Erstellungsschlüssel](luis-concept-keys.md) wird zum Erstellen der App verwendet. Er sollte nicht für Endpunktabfragen auf Produktionsebene verwendet werden. Weitere Informationen finden Sie unter [Schlüsselgrenzwerte](luis-limits.md#key-limits).
+Der [Erstellungsschlüssel](luis-how-to-azure-subscription.md) wird zum Erstellen der App verwendet. Er sollte nicht für Endpunktabfragen auf Produktionsebene verwendet werden. Weitere Informationen finden Sie unter [Schlüsselgrenzwerte](luis-limits.md#key-limits).
 
 ### <a name="authoring-resource"></a>Erstellungsressource
 
-Ihre LUIS-[Erstellungsressource](luis-concept-keys.md#azure-resources-for-luis) ist ein verwaltbares Element, das über Azure erhältlich ist. Die Ressource ist Ihr Zugang zu den zugehörigen Erstellungs-, Trainings- und Veröffentlichungsfunktionen des Azure-Diensts. Die Ressource enthält Authentifizierungs-, Autorisierungs- und Sicherheitsinformationen, die Sie für den Zugriff auf den zugehörigen Azure-Dienst benötigen.
+Ihre LUIS-[Erstellungsressource](luis-how-to-azure-subscription.md#azure-resources-for-luis) ist ein verwaltbares Element, das über Azure erhältlich ist. Die Ressource ist Ihr Zugang zu den zugehörigen Erstellungs-, Trainings- und Veröffentlichungsfunktionen des Azure-Diensts. Die Ressource enthält Authentifizierungs-, Autorisierungs- und Sicherheitsinformationen, die Sie für den Zugriff auf den zugehörigen Azure-Dienst benötigen.
 
 Die Erstellungsressource weist die Azure-Art `LUIS-Authoring` auf.
 
@@ -139,9 +139,9 @@ Das Entitätsschema ist die Struktur, die Sie für Machine Learning-Entitäten m
 
 ### <a name="entitys-subentity"></a>Untergeordnete Entität einer Entität
 
-Eine untergeordnete Entität ist einer Entität des maschinellen Lernens untergeordnet.
+Eine Subentität ist einer Machine-Learning-Entität untergeordnet.
 
-### <a name="non-machine-learned-entity"></a>Nicht durch maschinelles Lernen erworbene Entität
+### <a name="non-machine-learning-entity"></a>Entität ohne Machine Learning
 
 Eine Entität, die Textabgleiche verwendet, um Daten zu extrahieren:
 * Entität vom Typ „List“
@@ -164,7 +164,7 @@ Weitere Informationen finden Sie im Eintrag des vordefinierten Modells für [vor
 
 Beim maschinellen Lernen ist ein Feature ein Merkmal, das dem Modell hilft, ein bestimmtes Konzept zu erkennen. Es ist ein Hinweis, den LUIS verwenden kann, aber keine feste Regel.
 
-Dieser Begriff wird auch als **[durch maschinelles Lernen erworbenes Feature](luis-concept-feature.md)** bezeichnet.
+Das wird auch als **[Machine-Learning-Feature](luis-concept-feature.md)** bezeichnet.
 
 Diese Hinweise werden in Verbindung mit den Bezeichnungen verwendet, um zu lernen, wie neue Daten vorhergesagt werden können. LUIS unterstützt als Features sowohl Ausdruckslisten als auch andere Modelle.
 
@@ -200,6 +200,10 @@ Ein (durch maschinelles Lernen erworbenes) Modell ist eine Funktion, die eine Vo
 
 Sie fügen Werte zu Ihren [Listenentitäten](#list-entity) hinzu. Jeder dieser Werte kann eine Liste mit einem oder mehreren Synonymen aufweisen. In der Antwort wird nur der normalisierte Wert zurückgegeben.
 
+## <a name="overfitting"></a>Überanpassung
+
+Eine Überanpassung tritt auf, wenn das Modell auf bestimmte Beispiele fixiert ist und nicht gut generalisieren kann.
+
 ## <a name="owner"></a>Besitzer
 
 Jede App hat einen Besitzer. Dies ist die Person, die die App erstellt hat. Der Besitzer verwaltet die Berechtigungen für die Anwendung im Azure-Portal.
@@ -230,7 +234,7 @@ Eine Vorhersage ist eine REST-Anforderung an den Azure LUIS-Vorhersagedienst, de
 
 ### <a name="prediction-key"></a>Vorhersageschlüssel
 
-Der [Vorhersageschlüssel](luis-concept-keys.md) (früher als Abonnementschlüssel bezeichnet) ist der Schlüssel, der mit dem LUIS-Dienst verbunden ist, den Sie in Azure erstellt haben und der Ihre Verwendung des Vorhersageendpunkts autorisiert.
+Der [Vorhersageschlüssel](luis-how-to-azure-subscription.md) (früher als Abonnementschlüssel bezeichnet) ist der Schlüssel, der mit dem LUIS-Dienst verbunden ist, den Sie in Azure erstellt haben und der Ihre Verwendung des Vorhersageendpunkts autorisiert.
 
 Dieser Schlüssel ist nicht der Erstellungsschlüssel. Wenn Sie einen Vorhersageendpunktschlüssel besitzen, sollte dieser anstelle des Erstellungsschlüssels für alle Endpunktanforderungen verwendet werden. Sie können Ihren aktuellen Vorhersageschlüssel innerhalb der Endpunkt-URL unten auf der Azure-Ressourcenseite der LUIS-Website anzeigen. Es ist der Wert des Name-Wert-Paars „subscription-key“.
 
@@ -260,7 +264,7 @@ Das LUIS-Kontingent ist die Einschränkung durch den Azure-Abonnementtarif. Das 
 
 ## <a name="schema"></a>Schema
 
-Ihr Schema umfasst Ihre Absichten und Entitäten zusammen mit den untergeordneten Entitäten. Das Schema wird anfänglich geplant und dann im Laufe der Zeit iteriert. Das Schema umfasst keine App-Einstellungen, Features oder Beispieläußerungen. 
+Ihr Schema umfasst Ihre Absichten und Entitäten zusammen mit den untergeordneten Entitäten. Das Schema wird anfänglich geplant und dann im Laufe der Zeit iteriert. Das Schema umfasst keine App-Einstellungen, Features oder Beispieläußerungen.
 
 ## <a name="sentiment-analysis"></a>Standpunktanalyse
 Die Standpunktanalyse (Stimmungsanalyse) liefert durch eine [Textanalyse](../text-analytics/overview.md) positive oder negative Werte zu Äußerungen.

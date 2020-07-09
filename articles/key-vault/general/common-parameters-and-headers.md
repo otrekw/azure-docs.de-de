@@ -10,17 +10,18 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d0ada9c1e6b45b1be17b15b67f67fc64fc266203
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1d93bcd84fd9460e658b221089a4b24d46b0429
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81427338"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005817"
 ---
 # <a name="common-parameters-and-headers"></a>Allgemeine Parameter und Header
 
 Die folgenden Informationen gelten für alle Vorgänge, die Sie ggf. im Zusammenhang mit Key Vault-Ressourcen ausführen:
 
+- Der HTTP-Header `Host` muss immer vorhanden sein, und der Hostname des Tresors muss angegeben werden. Beispiel: `Host: contoso.vault.azure.net`. Beachten Sie, dass die meisten Clienttechnologien den `Host`-Header aus dem URI mit Daten auffüllen. Beispielsweise legt `GET https://contoso.vault.azure.net/secrets/mysecret{...}` die Angabe `Host` auf `contoso.vault.azure.net` fest. Dies bedeutet Folgendes: Wenn Sie auf Key Vault mit einer unformatierten IP-Adresse wie `GET https://10.0.0.23/secrets/mysecret{...}` zugreifen, ist der automatische Wert des `Host`-Headers falsch, und Sie müssen manuell sicherstellen, dass der `Host`-Header den Hostnamen des Tresors enthält.
 - Ersetzen Sie `{api-version}` durch die API-Version im URI.
 - Ersetzen Sie `{subscription-id}` durch Ihren Abonnementbezeichner im URI.
 - Ersetzen Sie `{resource-group-name}` durch die Ressourcengruppe. Weitere Informationen finden Sie unter „Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen“.
@@ -42,8 +43,8 @@ Der Dienst gibt anhand von HTTP-Statuscodes an, ob der Vorgang erfolgreich oder 
 
 |Elementname | type | BESCHREIBUNG |
 |---|---|---|
-| code | string | Der Typ des aufgetretenen Fehlers.|
-| message | string | Eine Beschreibung der Ursache des Fehlers. |
+| code | Zeichenfolge | Der Typ des aufgetretenen Fehlers.|
+| message | Zeichenfolge | Eine Beschreibung der Ursache des Fehlers. |
 
 
 

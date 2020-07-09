@@ -3,14 +3,14 @@ title: Manuelles Ausführen einer Azure-Funktion ohne HTTP-Trigger
 description: Ausführen einer Azure-Funktion ohne HTTP-Trigger mithilfe einer HTTP-Anforderung
 author: craigshoemaker
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: 6571482d738549d2708fd8ab23eaf8c9f6fb1f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd7b0be967c7a0bbc605c51408448917b5222d36
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892358"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121752"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Manuelles Ausführen einer Funktion ohne HTTP-Trigger
 
@@ -37,11 +37,17 @@ Dieser Anforderungsort wird in Postman zusammen mit dem Hauptschlüssel der Funk
 
 ## <a name="get-the-functions-master-key"></a>Abrufen des Hauptschlüssels der Funktion
 
-Navigieren Sie im Azure-Portal zu Ihrer Funktion, klicken Sie auf **Verwalten**, und navigieren Sie zum Abschnitt **Hostschlüssel**. Klicken Sie in der Zeile *_master* auf die Schaltfläche **Kopieren**, um den Hauptschlüssel in die Zwischenablage zu kopieren.
+1. Navigieren Sie im Azure-Portal zu Ihrer Funktion, und wählen Sie **Funktionsschlüssel** aus. Wählen Sie dann den Funktionsschlüssel aus, den Sie kopieren möchten. 
 
-![Kopieren des Hauptschlüssels auf dem Bildschirm zur Funktionsverwaltung](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
-Klicken Sie nach dem Kopieren des Hauptschlüssels auf den Funktionsnamen, um zum Fenster mit der Codedatei zurückzukehren. Klicken Sie anschließend auf die Registerkarte **Protokolle**. Hier werden Meldungen zur Funktion protokolliert, wenn Sie die Funktion manuell über Postman ausführen.
+1. Kopieren Sie im Abschnitt **Schlüssel bearbeiten** den Schlüsselwert in die Zwischenablage, und wählen Sie dann **OK** aus.
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Kopieren des Hauptschlüssels in die Zwischenablage." border="true":::
+
+1. Klicken Sie nach dem Kopieren des *_master*-Schlüssels auf **Programmieren und testen**, und wählen Sie dann **Protokolle** aus. Hier werden Meldungen zur Funktion protokolliert, wenn Sie die Funktion manuell über Postman ausführen.
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Anzeigen der Protokolle, um die Testergebnisse für den Hauptschlüssel anzuzeigen." border="true":::
 
 > [!CAUTION]  
 > Aufgrund der erhöhten Berechtigungen, die der Hauptschlüssel in Ihrer Funktions-App gewährt, sollten Sie diesen Schlüssel nicht für Dritte freigeben oder in einer Anwendung verteilen.
@@ -51,27 +57,27 @@ Klicken Sie nach dem Kopieren des Hauptschlüssels auf den Funktionsnamen, um zu
 Öffnen Sie Postman, und führen Sie die folgenden Schritte aus:
 
 1. Geben Sie den **Anforderungsort in das Textfeld für die URL** ein.
-2. Vergewissern Sie sich, dass die HTTP-Methode auf **POST** festgelegt ist.
-3. **Klicken** Sie auf die Registerkarte **Header**.
-4. Geben Sie **x-functions-key** als ersten **Schlüssel** ein, und fügen Sie den Hauptschlüssel (aus der Zwischenablage) ins Feld **Wert** ein.
-5. Geben Sie **Content-Type** als zweiten **Schlüssel** und **application/json** als **Wert** ein.
+1. Vergewissern Sie sich, dass die HTTP-Methode auf **POST** festgelegt ist.
+1. Wählen Sie die Registerkarte **Headers** (Header) aus.
+1. Geben Sie **x-functions-key** als ersten Schlüssel ein, und fügen Sie den Hauptschlüssel (aus der Zwischenablage) dann als Wert ein.
+1. Geben Sie **Content-Type** als zweiten Schlüssel und **application/json** als Wert ein.
 
-    ![Header-Einstellungen in Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Header-Einstellungen in Postman." border="true":::
 
-6. **Klicken** Sie auf die Registerkarte **Text**.
-7. Geben Sie **{ "input": "test" }** als Anforderungstext ein.
+1. Wählen Sie die Registerkarte **Body (Hauptteil)** aus.
+1. Geben Sie **{ "input": "test" }** als Anforderungstext ein.
 
-    ![Postman-Einstellungen für den Anforderungstext](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Postman-Einstellungen für den Anforderungstext." border="true":::
 
-8. Klicken Sie auf **Send**.
+1. Wählen Sie **Senden** aus.
+        
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Senden einer Anforderung mit Postman." border="true":::
 
-    ![Senden einer Anforderung mit Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
+    Postman meldet anschließend den Status **202 – Akzeptiert**.
 
-Postman meldet anschließend den Status **202 – Akzeptiert**.
+1. Kehren Sie anschließend zu Ihrer Funktion im Azure-Portal zurück. Überprüfen Sie die Protokolle. In ihnen werden Meldungen aus dem manuellen Aufruf der Funktion angezeigt.
 
-Kehren Sie anschließend zu Ihrer Funktion im Azure-Portal zurück. Navigieren Sie zum Fenster *Protokolle*. Dort werden Meldungen aus dem manuellen Aufruf der Funktion angezeigt.
-
-![Funktionsprotokollergebnisse des manuellen Aufrufs](./media/functions-manually-run-non-http/azure-portal-function-log.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Anzeigen der Protokolle, um die Testergebnisse für den Hauptschlüssel anzuzeigen." border="true":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

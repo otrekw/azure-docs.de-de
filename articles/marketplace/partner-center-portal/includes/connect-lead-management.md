@@ -2,19 +2,17 @@
 title: include file
 description: include file
 documentationcenter: partner-center-commercial-marketplace
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 ms.date: 08/16/2019
-ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: cf6a5730f92eba8f0a4e63bf40a4d2b50f76eb3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86b16c92f7a9bd3f594b01820db6cbf7ef5ecb6b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131098"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104356"
 ---
 Wenn Sie Ihr Angebot über Partner Center im Marketplace veröffentlichen, müssen Sie das Angebot mit Ihrem CRM-System verbinden. Dadurch können Sie Kundenkontaktinformationen unverzüglich erhalten, wenn ein Kunde Interesse bekundet oder Ihr Produkt bereitstellt.
 

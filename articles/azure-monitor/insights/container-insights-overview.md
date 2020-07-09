@@ -3,12 +3,12 @@ title: Übersicht zu Azure Monitor für Container | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt Azure Monitor für Container, das die AKS Container Insights-Lösung überwacht, und den Wert, den es durch die Überwachung der Integrität Ihrer AKS-Cluster und Containerinstanzen in Azure bietet.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5bd951f7dcb2def62893df48709f1e57bd340bb2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234470"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118079"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Azure Monitor für Container – Übersicht
 
@@ -48,7 +48,7 @@ Azure Monitor für Container stellt eine umfassende Überwachungsumgebung auf Gr
 
 Nachfolgend sind die wichtigsten Unterschiede bei der Überwachung eines Windows Server-Clusters im Vergleich zu einem Linux-Cluster aufgeführt:
 
-- Für Windows-Knoten und -Container ist keine Arbeitsspeicher-RSS-Metrik verfügbar.
+- Windows weist keine Arbeitsspeicher-RSS-Metrik auf, und daher ist diese für Windows-Knoten und -Container nicht verfügbar. Ein Arbeitssatz ist verfügbar. Erfahren Sie mehr über die [Arbeitsspeicherverwaltung in Windows](https://docs.microsoft.com/windows/win32/memory/working-set).
 - Für Windows-Knoten sind keine Informationen zur Speicherkapazität des Datenträgers verfügbar.
 - Containerprotokolle sind für Container, die auf Windows-Knoten ausgeführt werden, nicht verfügbar.
 - Eine Unterstützung der Funktion für Livedaten (Vorschau) ist mit Ausnahme von Windows-Containerprotokollen verfügbar.

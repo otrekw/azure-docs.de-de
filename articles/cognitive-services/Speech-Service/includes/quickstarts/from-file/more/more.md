@@ -18,7 +18,7 @@ Wenn Sie auf diese Registerkarte geklickt haben, wurde wahrscheinlich keine Schn
 | Sprache | Weitere Schnellstartanleitungen | Codebeispiele |
 |--|--|--|
 | C# | [Von Mikro][1-mic], [Aus Blob][1-blob] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
-| C++ | [Von Mikro][2-mic], [Aus Blob][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
+| C++ | [Von Mikro][2-mic][Aus Blob][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
 | Java | [Von Mikro][3-mic], [Aus Blob][3-blob] | [Android][java-android], [JRE][java-jre] |
 | JavaScript | [Browser von Mikro][js-browser], [Node.js aus einer Datei][js-node] | [Windows, Linux, macOS][js-code] |
 | Objective-C | [iOS von Mikro][obj-iOS-qck], [macOS von Mikro][obj-macOS-qck] | [iOS][obj-iOS], [macOS][obj-macOS] |

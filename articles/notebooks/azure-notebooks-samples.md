@@ -3,18 +3,18 @@ title: Jupyter-Beispielnotebooks für Azure Notebooks (Vorschauversion)
 description: Beispiele sind eine hervorragende Möglichkeit, Jupyter-Notebooks, die in den kostenlosen Azure Notebooks-Clouddiensten ausgeführt werden, kennenzulernen.
 ms.topic: sample
 ms.date: 01/11/2019
-ms.openlocfilehash: f67c37d0ffe0e90e13e05bb50ed6c523e0b3a14e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 397e40f628e6e935fef74d2225d2e477aac7b276
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75646312"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833994"
 ---
 # <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Entdecken und Verwenden von Beispielnotebooks in Azure Notebooks (Vorschauversion)
 
-Das Internet bietet viele Sammlungen von interessanten und nützlichen Jupyter-Notebooks, die Sie problemlos in Azure Notebooks nutzen können. Dieser Artikel enthält eine Liste erwähnenswerter Beispiele.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Das Internet bietet viele Sammlungen von interessanten und nützlichen Jupyter-Notebooks, die Sie problemlos in Azure Notebooks nutzen können. Dieser Artikel enthält eine Liste erwähnenswerter Beispiele.
 
 Sobald Sie ein Notebook ermittelt haben, das Sie untersuchen möchten, sollten Sie sich mit diesen Details vertraut machen:
 

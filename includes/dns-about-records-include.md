@@ -4,12 +4,12 @@ ms.service: dns
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
-ms.openlocfilehash: 261ae22348cd82b129727261c619727917e19c96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ca054b3a3d5147b7d98a021ce1e26d02d5581b0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73832053"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050370"
 ---
 ### <a name="record-names"></a>Eintragsnamen
 
@@ -27,8 +27,10 @@ Azure DNS unterstützt alle allgemeinen DNS-Eintragstypen: A, AAAA, CAA, CNAME, 
 
 In einigen Fällen müssen Sie mehrere DNS-Einträge mit einem bestimmten Namen und Typ erstellen. Angenommen, die Website „www.contoso.com“ wird auf zwei verschiedenen IP-Adressen gehostet. Für diese Website sind zwei verschiedene A-Einträge erforderlich (einer für jede IP-Adresse). Hier ist ein Beispiel für einen Ressourceneintragssatz:
 
-    www.contoso.com.        3600    IN    A    134.170.185.46
-    www.contoso.com.        3600    IN    A    134.170.188.221
+```dns
+www.contoso.com.        3600    IN    A    134.170.185.46
+www.contoso.com.        3600    IN    A    134.170.188.221
+```
 
 Azure DNS verwaltet alle DNS-Einträge mithilfe von *Ressourceneintragssätzen*. Bei *Ressourceneintragssätzen* handelt es sich um die Auflistung von DNS-Einträgen in einer Zone, die den gleichen Namen und den gleichen Typ aufweisen. Die meisten Ressourceneintragssätze enthalten einen einzelnen Eintrag, aber Beispiele wie das obige, in dem eine Datensatzgruppe mehr als einen Eintrag enthält, sind nicht ungewöhnlich.
 

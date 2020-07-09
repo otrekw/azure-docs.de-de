@@ -5,18 +5,18 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: da16e0898f08e1cca602ca5927bce82ed32353fe
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 379f7a0ef60020566de9edfcafb0809d1955cac8
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437862"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752148"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Übernehmen des Abrechnungsbesitzes für Azure-Abonnements für Ihr MPA-Konto
 
-Cloudlösungsanbieter (Cloud Solution Providers, CSPs) können den Abrechnungsbesitz für Azure-Abonnements von ihren Kunden mit direktem Konzernvertrag (Enterprise Agreement, EA) übernehmen, um eine einzelne, konsolidierte Rechnung für verwaltete Dienste und die Azure-Nutzung bereitzustellen.
+Ein Cloudlösungsanbieter (Cloud Solution Provider, CSP) kann den Abrechnungsbesitz für Azure-Abonnements von seinen Kunden mit direktem Enterprise Agreement (EA) übernehmen, um eine einzelne, kombinierte Rechnung für verwaltete Dienste und die Azure-Nutzung bereitzustellen.
 
 Dieses Feature steht nur für CSP-Partner mit direkter Abrechnung zur Verfügung, die als [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) zertifiziert sind. Es unterliegt der Governance und den Richtlinien von Microsoft und erfordert ggf. eine Überprüfung und Genehmigung für bestimmte Kunden.
 
@@ -26,57 +26,40 @@ Dieser Artikel gilt für Abrechnungskonten für Microsoft-Partnervereinbarungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Etablieren Sie eine [Handelspartnerbeziehung](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer) mit dem Kunden. Vergewissern Sie sich anhand der [regionalen CSP-Autorisierungsübersicht](https://docs.microsoft.com/partner-center/regional-authorization-overview), dass sich Kunden- und Partnermandant in den gleichen autorisierten Regionen befinden.  
-
-2. [Vergewissern Sie sich, dass der Kunde die Microsoft-Kundenvereinbarung akzeptiert hat.](https://docs.microsoft.com/partner-center/confirm-customer-agreement)
-
-3. Richten Sie den [Azure-Plan](https://docs.microsoft.com/partner-center/purchase-azure-plan) für den Kunden ein. Falls der Kunde bei mehreren Handelspartnern einkauft, muss für jede Kombination aus Kunde und Handelspartner ein Azure-Plan eingerichtet werden.
+1. Etablieren Sie eine [Handelspartnerbeziehung](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer) mit dem Kunden. Vergewissern Sie sich anhand der [regionalen CSP-Autorisierungsübersicht](https://docs.microsoft.com/partner-center/regional-authorization-overview), dass sich Kunden- und Partnermandant in den gleichen autorisierten Regionen befinden.
+1. [Vergewissern Sie sich, dass der Kunde die Microsoft-Kundenvereinbarung akzeptiert hat.](https://docs.microsoft.com/partner-center/confirm-customer-agreement)
+1. Richten Sie einen [Azure-Plan](https://docs.microsoft.com/partner-center/purchase-azure-plan) für den Kunden ein. Falls der Kunde bei mehreren Handelspartnern einkauft, muss für jede Kombination aus Kunde und Handelspartner ein Azure-Plan eingerichtet werden.
 
 ## <a name="request-billing-ownership"></a>Anfordern des Abrechnungsbesitzes
 
-1. Melden Sie sich mit CSP-Administrator-Agent-Anmeldeinformationen beim [Azure-Portal](https://portal.azure.com) an.
-
-2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
-
-   ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/mpa-request-ownership/search-cmb.png)
-
-3. Wählen Sie auf der linken Seite **Kunden** und anschließend einen Kunden aus der Liste aus.
-
-   ![Screenshot: Auswählen von Kunden](./media/mpa-request-ownership/mpa-select-customers.png)        
-
-4. Wählen Sie links unten die Option **Übertragungsanforderungen** und anschließend **Neue Anforderung hinzufügen** aus.
-
-   ![Screenshot: Auswahl von Übertragungsanforderungen](./media/mpa-request-ownership/mpa-select-transfer-requests.png)
-
-5. Geben Sie die E-Mail-Adresse des Benutzers in der Kundenorganisation ein, der die Übertragungsanforderung akzeptieren soll. Bei dem Benutzer muss es sich um einen Kontobesitzer für einen Konzernvertrag handeln. Wählen Sie **Übertragungsanforderung senden** aus.
-
-   ![Screenshot: Senden einer Übertragungsanforderung](./media/mpa-request-ownership/mpa-send-transfer-requests.png)
-
-6. Der Benutzer erhält eine E-Mail mit der Aufforderung, Ihre Übertragungsanforderung zu prüfen.
-
-   ![Screenshot: E-Mail mit Aufforderung zur Prüfung der Übertragungsanforderung](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
-
-7. Um die Übertragungsanforderung zu genehmigen, muss der Benutzer auf den Link in der E-Mail klicken und den Anweisungen folgen.
-
-    ![Screenshot: E-Mail mit Aufforderung zur Prüfung der Übertragungsanforderung](./media/mpa-request-ownership/mpa-review-transfer-request.png)
+1. Melden Sie sich mit CSP-Administrator-Agent-Anmeldeinformationen im CSP-Mandanten beim [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.  
+    ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/mpa-request-ownership/search-cmb.png)
+1. Wählen Sie auf der linken Seite **Kunden** und anschließend einen Kunden aus der Liste aus.  
+    [![Screenshot: Auswählen von Kunden](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
+1. Wählen Sie links unten die Option **Übertragungsanforderungen** und anschließend **Neue Anforderung hinzufügen** aus.  
+    [![Screenshot: Auswählen von Übertragungsanforderungen](./media/mpa-request-ownership/mpa-select-transfer-requests.png)](./media/mpa-request-ownership/mpa-select-transfer-requests.png#lightbox)
+1. Geben Sie die E-Mail-Adresse des Benutzers in der Kundenorganisation ein, der die Übertragungsanforderung akzeptieren soll. Bei dem Benutzer muss es sich um einen Kontobesitzer für einen Konzernvertrag handeln. Wählen Sie **Übertragungsanforderung senden** aus.  
+    [![Screenshot: Senden einer Übertragungsanforderung](./media/mpa-request-ownership/mpa-send-transfer-requests.png)](./media/mpa-request-ownership/mpa-send-transfer-requests.png#lightbox)
+1. Der Benutzer erhält eine E-Mail mit der Aufforderung, Ihre Übertragungsanforderung zu prüfen.  
+    ![Screenshot: E-Mail mit Aufforderung zur Prüfung der Übertragungsanforderung](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
+1. Um die Übertragungsanforderung zu genehmigen, muss der Benutzer auf den Link in der E-Mail klicken und den Anweisungen folgen.  
+    [![Screenshot: Überprüfen der Übertragungsanforderung](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) Der Benutzer kann das Abrechnungskonto auswählen, von dem er Azure-Produkte übertragen möchte. Nach der Auswahl werden zur Übertragung berechtigte Produkte angezeigt. **Hinweis:** Deaktivierte Abonnements können nicht übertragen werden und werden ggf. in der Liste „Nicht übertragbare Azure-Produkte“ angezeigt. Nachdem Sie die zu übertragenden Azure-Produkte ausgewählt haben, klicken Sie auf **Überprüfen**.
+1. Im Bereich **Ergebnis der Übertragungsprüfung** werden die Auswirkungen der zu übertragenden Azure-Produkte angezeigt. Die folgenden Status sind möglich:
+    * **Erfolgreich**: Die Überprüfung für dieses Azure-Produkt war erfolgreich, und das Produkt kann übertragen werden.
+    * **Warnung**: Es besteht eine Warnung für das ausgewählte Azure-Produkt. Zwar kann das Produkt übertragen werden, doch hat dies Auswirkungen, die dem Benutzer bekannt sein sollten, falls er Maßnahmen zur Minderung ergreifen möchte. Beispielsweise nutzt das zu übertragende Azure-Abonnement die Vorteile einer RI. Nach der Übertragung sind diese Vorteile für das Abonnement nicht mehr vorhanden. Um die Einsparungen zu erhöhen, stellen Sie sicher, dass die RI einem anderen Abonnement zugeordnet wird, das diese Vorteile nutzen kann. Der Benutzer kann stattdessen auch zur Auswahlseite zurückkehren und die Auswahl dieses Azure-Abonnements aufheben.
+    * **Fehler**: Das ausgewählte Azure-Produkt kann aufgrund eines Fehlers nicht übertragen werden. Der Benutzer muss zur Auswahlseite zurückkehren und die Auswahl dieses Produkts aufheben, um die anderen ausgewählten Azure-Produkte zu übertragen.  
+    ![Screenshot: Überprüfungsoberfläche](./media/mpa-request-ownership/validate-transfer-request.png)
 
 ## <a name="check-the-transfer-request-status"></a>Überprüfen des Status der Übertragungsanforderung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-
-2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
-
-   ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
-
-3. Wählen Sie auf der linken Seite **Kunden** aus.
-
-   ![Screenshot: Auswählen von Kunden](./media/mpa-request-ownership/mpa-select-customers.png)
-
-4. Wählen Sie in der Liste den Kunden aus, für den Sie die Übertragungsanforderung gesendet haben.
-
-5. Wählen Sie links unten die Option **Übertragungsanforderungen** aus. Auf der Seite „Übertragungsanforderungen“ werden folgende Informationen angezeigt:
-
-    ![Screenshot: Liste mit Übertragungsanforderungen](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)
+1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.  
+    ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+1. Wählen Sie auf der linken Seite **Kunden** aus.  
+    [![Screenshot: Auswählen von Kunden](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
+1. Wählen Sie in der Liste den Kunden aus, für den Sie die Übertragungsanforderung gesendet haben.
+1. Wählen Sie links unten die Option **Übertragungsanforderungen** aus. Auf der Seite „Übertragungsanforderungen“ werden folgende Informationen angezeigt: [![Screenshot: Liste mit Übertragungsanforderungen](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png#lightbox)
 
    |Column|Definition|
    |---------|---------|
@@ -97,11 +80,11 @@ Dieser Artikel gilt für Abrechnungskonten für Microsoft-Partnervereinbarungen.
    |Canceled|Die Anforderung wurde von einem Benutzer mit Zugriff auf die Übertragungsanforderung abgebrochen.|
    |Abgelehnt|Der Benutzer hat die Übertragungsanforderung abgelehnt.|
 
-6. Wählen Sie eine Übertragungsanforderung aus, um Details anzuzeigen. Auf der Seite mit den Übertragungsdetails werden folgende Informationen angezeigt: ![Screenshot: Liste mit übertragenen Abonnements](./media/mpa-request-ownership/mpa-transfer-completed.png)
+1. Wählen Sie eine Übertragungsanforderung aus, um Details anzuzeigen. Auf der Seite mit den Übertragungsdetails werden folgende Informationen angezeigt: [![Screenshot: Liste mit übertragenen Abonnements](./media/mpa-request-ownership/mpa-transfer-completed.png)](./media/mpa-request-ownership/mpa-transfer-completed.png#lightbox)
 
    |Column  |Definition|
    |---------|---------|
-   |ID der Übertragungsanforderung|Die eindeutige ID für Ihre Übertragungsanforderung. Wenn Sie eine Supportanfrage senden, teilen Sie dem Azure-Support die ID mit, um die Bearbeitung Ihrer Supportanfrage zu beschleunigen.|
+   |ID der Übertragungsanforderung|Die eindeutige ID für Ihre Übertragungsanforderung. Wenn Sie eine Supportanfrage senden, teilen Sie dem Azure-Support die ID mit, um die Bearbeitung der Supportanfrage zu beschleunigen.|
    |Übertragung angefordert am|Das Datum, an dem die Übertragungsanforderung gesendet wurde.|
    |Übertragung angefordert von|Die E-Mail-Adresse des Benutzers, der die Übertragungsanforderung gesendet hat.|
    |Übertragungsanforderung läuft ab am| Das Datum, an dem die Übertragungsanforderung abläuft.|
@@ -112,10 +95,10 @@ Dieser Artikel gilt für Abrechnungskonten für Microsoft-Partnervereinbarungen.
 
 Sie können für die unten angegebenen Abonnementtypen den Abrechnungsbesitz anfordern.
 
-- [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
-- [Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
+* [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
+* [Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-\* Ein Dev/Test-Abonnement muss zunächst über ein Supportticket in ein EA-Unternehmensangebot konvertiert werden. Das Enterprise Dev/Test-Abonnement wird nach der Übertragung gemäß dem Satz für nutzungsbasierte Bezahlung abgerechnet. Rabatte, die im Rahmen des Enterprise Dev/Test-Angebots über den Konzernvertrag des Kunden angeboten wurden, stehen für den CSP-Partner nicht zur Verfügung.
+\* Sie müssen ein Dev/Test-Abonnement über ein Supportticket in ein EA-Unternehmensangebot konvertieren. Das Enterprise Dev/Test-Abonnement wird nach der Übertragung gemäß dem Satz für nutzungsbasierte Bezahlung abgerechnet. Rabatte, die im Rahmen des Enterprise Dev/Test-Angebots über das Enterprise Agreement (EA) des Kunden angeboten wurden, stehen für den CSP-Partner nicht zur Verfügung.
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 
@@ -139,13 +122,13 @@ Azure Marketplace-Produkte, die für von Cloudlösungsanbietern (Cloud Solution
 
 ### <a name="azure-reservations-transfer"></a>Übertragung von Azure-Reservierungen
 
-Azure-Reservierungen werden nicht automatisch zusammen mit Abonnements verschoben. Sie können die Reservierung in EA für andere Abonnements behalten oder [die Reservierung stornieren](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations), und Partner können sie in CSP erneut erwerben. 
+Azure-Reservierungen werden nicht automatisch zusammen mit Abonnements verschoben. Sie können die Reservierung in EA für andere Abonnements behalten oder [die Reservierung stornieren](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations), und Partner können sie in CSP erneut erwerben.
 
 ### <a name="access-to-azure-services"></a>Zugriff auf Azure-Dienste
 
-Der Zugriff für vorhandene Benutzer, Gruppen oder Dienstprinzipale, der per [rollenbasierter Azure-Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) zugewiesen wurde, ist von dieser Übertragung nicht betroffen. Der Partner erhält keinen neuen RBAC-Zugriff auf die Abonnements.  
+Der Zugriff für vorhandene Benutzer, Gruppen oder Dienstprinzipale, der per [rollenbasierter Azure-Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) zugewiesen wurde, ist von dieser Übertragung nicht betroffen. Der Partner erhält keinen neuen RBAC-Zugriff auf die Abonnements.
 
-Die Partner müssen mit dem Kunden zusammenarbeiten, um Zugriff auf Abonnements zu erhalten.  Die Partner benötigen Zugriff vom Typ [Administrator im Auftrag von](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) (Admin on Behalf of, AOBO) oder [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) auf offene Supporttickets.
+Die Partner müssen mit dem Kunden zusammenarbeiten, um Zugriff auf Abonnements zu erhalten. Die Partner benötigen Zugriff vom Typ [Administrator im Auftrag von](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) (Admin on Behalf of, AOBO) oder [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) auf offene Supporttickets.
 
 ### <a name="azure-support-plan"></a>Azure-Supportplan
 
@@ -168,12 +151,13 @@ SaaS-Produkte werden nicht zusammen mit den Abonnements übertragen. Bitten Sie 
 Bei bestimmten Kundenumstellungsanforderungen ist aufgrund der Art der aktuellen Unternehmensregistrierungsstruktur des Kunden ggf. ein zusätzlicher Überprüfungsprozess mit Microsoft erforderlich. Über solche Anforderungen wird der Partner informiert, wenn er versucht, eine Einladung an Kunden zu senden. Partner werden aufgefordert, mit ihrem Partner Development Manager und dem Kontoteam des Kunden zusammenzuarbeiten, um diesen Überprüfungsprozess abzuschließen.
 
 ### <a name="azure-subscription-directory"></a>Azure-Abonnementverzeichnis
+
 Das Verzeichnis der übertragenen Azure-Abonnements muss dem Verzeichnis des Kunden entsprechen, das beim Etablieren der CSP-Beziehung ausgewählt wurde.
 
 Stimmen diese beiden Verzeichnisse nicht überein, konnten die Abonnements nicht übertragen werden. Sie müssen entweder eine neue CSP-Handelspartnerbeziehung mit dem Kunden etablieren, indem Sie das Verzeichnis der Azure-Abonnements auswählen, oder das Verzeichnis der Azure-Abonnements ändern, sodass es dem CSP-Beziehungsverzeichnis des Kunden entspricht. Weitere Informationen finden Sie unter [So weisen Sie Ihrem Azure AD-Verzeichnis ein vorhandenes Abonnement zu](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory).
 
-
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Partnervereinbarung
+
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
@@ -182,6 +166,5 @@ Stimmen diese beiden Verzeichnisse nicht überein, konnten die Abonnements nicht
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Der Abrechnungsbesitz für die Azure-Abonnements wird auf Sie übertragen. Überwachen Sie die Gebühren für die entsprechenden Abonnements über das [Azure-Portal](https://portal.azure.com).
-
-- Arbeiten Sie mit dem Kunden zusammen, um Zugriff auf die übertragenen Azure-Abonnements zu erhalten. [Verwalten Sie den Zugriff auf Azure-Ressourcen mit RBAC.](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* Der Abrechnungsbesitz für die Azure-Abonnements wird auf Sie übertragen. Überwachen Sie die Gebühren für die entsprechenden Abonnements über das [Azure-Portal](https://portal.azure.com).
+* Arbeiten Sie mit dem Kunden zusammen, um Zugriff auf die übertragenen Azure-Abonnements zu erhalten. [Verwalten Sie den Zugriff auf Azure-Ressourcen mit RBAC.](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)

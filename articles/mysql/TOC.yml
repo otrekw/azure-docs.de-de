@@ -109,6 +109,8 @@
           href: concepts-data-encryption-mysql.md
         - name: Azure AD-Authentifizierung
           href: concepts-azure-ad-authentication.md
+        - name: Doppelte Infrastrukturverschlüsselung
+          href: concepts-infrastructure-double-encryption.md
         - name: Sicherheitsbaseline
           href: security-baseline.md
     - name: Geschäftskontinuität
@@ -132,6 +134,8 @@
           href: concepts-query-performance-insight.md
         - name: Leistungsempfehlungen
           href: concepts-performance-recommendations.md
+        - name: Serverparameter
+          href: concepts-server-parameters.md
     - name: Entwicklung
       items:
         - name: Kompatibilität von Treibern und Tools
@@ -190,6 +194,8 @@
           href: howto-connection-string.md
         - name: Konfigurieren von SSL
           href: howto-configure-ssl.md
+        - name: Konfigurieren von TLS
+          href: howto-tls-configurations.md
         - name: Web-Apps
           href: howto-connect-webapp.md
         - name: Herstellen einer Verbindung mit Umleitung
@@ -272,6 +278,10 @@
           href: howto-data-encryption-cli.md
         - name: Validierung der Datenverschlüsselung
           href: howto-data-encryption-validation.md
+    - name: Doppelte Infrastrukturverschlüsselung
+      items:
+        - name: Konfigurieren der doppelten Infrastrukturverschlüsselung
+          href: howto-double-encryption.md
     - name: Azure AD-Integration
       items:
         - name: "Konfigurieren der Azure\_AD-Integration"
@@ -290,6 +300,10 @@
           href: howto-restart-server-cli.md
         - name: Azure PowerShell
           href: howto-restart-server-powershell.md
+    - name: Verschieben zwischen Regionen
+      items:
+        - name: Azure-Portal
+          href: howto-move-regions-portal.md
 - name: Verweis
   items:
     - name: Azure CLI

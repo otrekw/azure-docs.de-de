@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b16790e288f6569f08ce14e5a7c751bbd8083faf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ab196e894fc53b1243ac363f9863d5c7d4e328f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79138433"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389002"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurieren der Kennwortkomplexität mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ Um die Kennwortkomplexität zu konfigurieren, überschreiben Sie die [Anspruchst
 1. Suchen Sie nach dem Element [ClaimsSchema](claimsschema.md). Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
 1. Fügen Sie dem Element **ClaimsSchema** die Ansprüche `newPassword` und `reenterPassword` hinzu.
 
-    ```XML
+    ```xml
     <ClaimType Id="newPassword">
       <PredicateValidationReference Id="CustomPassword" />
     </ClaimType>
@@ -48,7 +48,7 @@ Um die Kennwortkomplexität zu konfigurieren, überschreiben Sie die [Anspruchst
 
 1. Das Element [Predicates](predicates.md) definiert eine grundlegende Überprüfung zum Prüfen des Werts eines Anspruchstyps und gibt „true“ oder „false“ zurück. Die Überprüfung erfolgt mit einem bestimmten Methodenelement und einer Reihe von Parametern, die für die Methode relevant sind. Fügen Sie dem Element **BuildingBlocks** unmittelbar nach dem Schließen des Elements `</ClaimsSchema>` die folgenden Prädikate hinzu:
 
-    ```XML
+    ```xml
     <Predicates>
       <Predicate Id="LengthRange" Method="IsLengthRange">
         <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
@@ -86,7 +86,7 @@ Um die Kennwortkomplexität zu konfigurieren, überschreiben Sie die [Anspruchst
 
 1. Fügen Sie dem Element **BuildingBlocks** unmittelbar nach dem Schließen des Elements `</Predicates>` die folgenden Prädikatüberprüfungen hinzu:
 
-    ```XML
+    ```xml
     <PredicateValidations>
       <PredicateValidation Id="CustomPassword">
         <PredicateGroups>
@@ -111,7 +111,7 @@ Um die Kennwortkomplexität zu konfigurieren, überschreiben Sie die [Anspruchst
 
 1. Die folgenden technischen Profile sind [technische Active Directory-Profile](active-directory-technical-profile.md), die Daten in Azure Active Directory schreiben und daraus lesen. Überschreiben Sie diese technischen Profile in der Erweiterungsdatei. Verwenden Sie `PersistedClaims`, um die sichere Kennwortrichtlinie zu deaktivieren. Suchen Sie nach dem Element **ClaimsProviders**.  Fügen Sie wie folgt die folgenden Anspruchsanbieter hinzu:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: da7a47bf61453c30f5c735b1282ae93d2442598c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6594bbeb9899a255d0c38b6a5b2a378388501b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552531"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Überwachen von Abfrageanforderungen in Azure Cognitive Search
 
@@ -128,11 +128,11 @@ Wenn Sie die Ressourcenprotokollierung aktivieren, erfasst das System Abfrageanf
    AzureDiagnostics
    | project OperationName, Query_s, IndexName_s, Documents_d
    | where OperationName == "Query.Search"
-   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where Query_s != "?api-version=2020-06-30&search=*"
    | where IndexName_s != "realestate-us-sample-index"
    ```
 
-1. Legen Sie optional einen Spaltenfilter auf *Query_s* fest, um eine bestimmte Syntax oder Zeichenfolge zu durchsuchen. Beispielsweise können Sie nach *ist gleich* `?api-version=2019-05-06&search=*&%24filter=HotelName`) filtern.
+1. Legen Sie optional einen Spaltenfilter auf *Query_s* fest, um eine bestimmte Syntax oder Zeichenfolge zu durchsuchen. Beispielsweise können Sie nach *ist gleich* `?api-version=2020-06-30&search=*&%24filter=HotelName`) filtern.
 
    ![Protokollierte Abfragezeichenfolgen](./media/search-monitor-usage/log-query-strings.png "Protokollierte Abfragezeichenfolgen")
 

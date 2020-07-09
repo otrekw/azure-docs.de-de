@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 61a71539dc034a216689eafd8991df60db96d2a4
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396927"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84803965"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Abfragen von Protokollen aus Azure Monitor für VMs
 
@@ -454,7 +454,7 @@ In der folgenden Tabelle sind die Leistungsindikatoren aufgeführt, die zurzeit 
 | Namespace | Name | BESCHREIBUNG | Einheit | `Tags` |
 |:---|:---|:---|:---|:---|
 | Computer    | Heartbeat             | Computertakt                        | | |
-| Arbeitsspeicher      | AvailableMB           | Arbeitsspeicher: Verfügbare Bytes                    | Byte          | memorySizeMB: Gesamtspeichergröße|
+| Arbeitsspeicher      | AvailableMB           | Arbeitsspeicher: Verfügbare Bytes                    | Megabytes      | memorySizeMB: Gesamtspeichergröße|
 | Netzwerk     | WriteBytesPerSecond   | Geschriebene Bytes pro Sekunde (Netzwerk)            | Bytes pro Sekunde | NetworkDeviceId: Geräte-ID<br>bytes: Anzahl der insgesamt gesendeten Bytes |
 | Netzwerk     | ReadBytesPerSecond    | Gelesene Bytes pro Sekunde (Netzwerk)             | Bytes pro Sekunde | networkDeviceId: Geräte-ID<br>bytes: Insgesamt empfangene Bytes |
 | Prozessor   | UtilizationPercentage | Prozentsatz der Prozessorauslastung          | Percent        | totalCpus: Gesamtanzahl der CPUs |
@@ -467,7 +467,7 @@ In der folgenden Tabelle sind die Leistungsindikatoren aufgeführt, die zurzeit 
 | Logischer Datenträger | ReadLatencyMs         | Lesewartezeit in Millisekunden (logischer Datenträger)     | Millisekunden   | mountId: Einbindungs-ID des Geräts |
 | Logischer Datenträger | ReadBytesPerSecond    | Gelesene Bytes pro Sekunde (logischer Datenträger)        | Bytes pro Sekunde | mountId: Einbindungs-ID des Geräts |
 | Logischer Datenträger | FreeSpacePercentage   | Prozentsatz verfügbarer Speicherplatz (logischer Datenträger)        | Percent        | mountId: Einbindungs-ID des Geräts |
-| Logischer Datenträger | FreeSpaceMB           | Verfügbarer Speicherplatz (logischer Datenträger)             | Byte          | mountId: Einbindungs-ID des Geräts<br>diskSizeMB: Gesamtgröße des Datenträgers |
+| Logischer Datenträger | FreeSpaceMB           | Verfügbarer Speicherplatz (logischer Datenträger)             | Megabytes      | mountId: Einbindungs-ID des Geräts<br>diskSizeMB: Gesamtgröße des Datenträgers |
 | Logischer Datenträger | Bytes pro Sekunde        | Bytes pro Sekunde (logischer Datenträger)             | Bytes pro Sekunde | mountId: Einbindungs-ID des Geräts |
 
 

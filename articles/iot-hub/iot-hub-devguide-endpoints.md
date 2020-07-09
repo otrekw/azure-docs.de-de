@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 53660ad93ab2218d546ae6f363873c4d66872e2b
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 9554713e50e7a2ead2e25f274428ad0ecba4934d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730309"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996959"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referenz: IoT Hub-Endpunkte
 
@@ -54,9 +54,9 @@ Die Endpunkte werden in der folgende Liste beschrieben:
 
   * *Empfangen von Anforderungen direkter Methoden*. Ein Gerät verwendet diesen Endpunkt zum Lauschen auf Anforderungen [direkter Methoden](iot-hub-devguide-direct-methods.md).
 
-    Diese Endpunkte werden über die Protokolle [MQTT v3.1.1](https://mqtt.org/), HTTPS 1.1 und [AMQP 1.0](https://www.amqp.org/) verfügbar gemacht. AMQP ist auch über [WebSockets](https://tools.ietf.org/html/rfc6455) an Port 443 verfügbar.
+    Diese Endpunkte werden über die Protokolle [MQTT v3.1.1](https://mqtt.org/), HTTPS 1.1 und [AMQP 1.0](https://www.amqp.org/) verfügbar gemacht. AMQP und MQTT stehen auch über [WebSockets](https://tools.ietf.org/html/rfc6455) an Port 443 zur Verfügung.
 
-* **Dienstendpunkte**. Jede IoT Hub-Instanz macht eine Reihe von Endpunkten verfügbar, über die Ihr Lösungs-Back-End mit Ihren Geräten kommunizieren kann. Mit einer einzigen Ausnahme werden diese Endpunkte nur über das Protokoll [AMQP](https://www.amqp.org/) verfügbar gemacht. Der Endpunkt für den Methodenaufruf wird über das HTTPS-Protokoll verfügbar gemacht.
+* **Dienstendpunkte**. Jede IoT Hub-Instanz macht eine Reihe von Endpunkten verfügbar, über die Ihr Lösungs-Back-End mit Ihren Geräten kommunizieren kann. Mit einer einzigen Ausnahme werden diese Endpunkte nur über die Protokolle [AMQP](https://www.amqp.org/) und „AMQP über WebSockets“ verfügbar gemacht. Der Endpunkt für den Aufruf direkter Methoden wird über das HTTPS-Protokoll verfügbar gemacht.
   
   * *Empfangen von D2C-Nachrichten*. Dieser Endpunkt ist kompatibel mit [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Ein Back-End-Dienst kann ihn zum Lesen der [D2C-Nachrichten](iot-hub-devguide-messages-d2c.md) verwenden, die Ihre Geräte senden. Zusätzlich zu diesem integrierten Endpunkt können Sie für Ihren IoT-Hub benutzerdefinierte Endpunkte erstellen.
   

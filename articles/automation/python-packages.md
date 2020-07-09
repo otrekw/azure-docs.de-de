@@ -1,16 +1,16 @@
 ---
 title: Verwalten von Python 2-Paketen in Azure Automation
-description: Dieser Artikel beschreibt, wie Sie Python 2-Pakete in Azure Automation verwalten.
+description: In diesem Artikel wird erläutert, wie Sie Python 2-Pakete in Azure Automation verwalten.
 services: automation
 ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: 701a5aab7a0061f8b5abfaac1b699034db2671b9
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: c2871c4c988675dd9a1a5749d908805994b6b309
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508988"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835154"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Verwalten von Python 2-Paketen in Azure Automation
 
@@ -89,4 +89,4 @@ Um Ihre Python 2-Runbooks offline zu entwickeln und zu testen, können Sie die f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Einführung in Python 2-Runbooks finden Sie unter [Mein erstes Python 2-Runbook](automation-first-runbook-textual-python2.md).
+Informationen zum Vorbereiten eines Python-Runbooks finden Sie unter [Tutorial: Erstellen eines Python-Runbooks](learn/automation-tutorial-runbook-textual-python2.md).

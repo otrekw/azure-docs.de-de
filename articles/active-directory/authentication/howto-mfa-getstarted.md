@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845a202faccbbe0a604560ac57ae30f87344b95a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 15d519e1cede27b3626d715c48790af620589e43
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81451124"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757602"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Planen einer Bereitstellung von Azure Multi-Factor Authentication
 
@@ -55,7 +55,7 @@ Microsoft stellt [Kommunikationsvorlagen](https://aka.ms/mfatemplates) und [Endb
 
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 
-Azure Multi-Factor Authentication wird durch Erzwingen von Richtlinien mit bedingtem Zugriff bereitgestellt. Eine [Richtlinie für bedingten Zugriff](../conditional-access/overview.md) kann von Benutzern eine mehrstufige Authentifizierung verlangen, wenn bestimmte Kriterien wie etwa die folgenden erfüllt sind:
+Azure Multi-Factor Authentication wird durch Erzwingen von Richtlinien mit bedingtem Zugriff bereitgestellt. Eine Richtlinie für bedingten Zugriff kann von Benutzern eine mehrstufige Authentifizierung verlangen, wenn bestimmte Kriterien wie etwa die folgenden erfüllt sind:
 
 * Alle Benutzer, bestimmter Benutzer, Mitglied einer Gruppe oder zugewiesene Rolle
 * Bestimmte Cloudanwendung, auf die zugegriffen wird
@@ -114,7 +114,7 @@ Administratoren können die [Authentifizierungsmethoden](../authentication/conce
 Eine Pushbenachrichtigung wird an die Microsoft Authenticator-App auf Ihrem Mobilgerät gesendet. Der Benutzer zeigt die Benachrichtigung an und wählt **Genehmigen** aus, um die Überprüfung abzuschließen. Pushbenachrichtigungen über eine mobile App bieten Benutzern die am wenigsten intrusive Option. Sie sind auch die zuverlässigste und sicherste Option, da sie eine Daten- anstelle einer Telefonverbindung verwenden.
 
 > [!NOTE]
-> Wenn es in Ihrer Organisation Mitarbeiter gibt, die in China arbeiten oder nach China reisen, müssen Sie beachten, dass die Methode **Benachrichtigung über mobile App** auf **Android-Geräten** in diesem Land nicht funktioniert. Daher sollten diesen Benutzern alternative Methoden zur Verfügung gestellt werden.
+> Wenn es in Ihrer Organisation Mitarbeiter gibt, die in China arbeiten oder nach China reisen, müssen Sie beachten, dass die Methode **Benachrichtigung über mobile App** auf **Android-Geräten** in diesem Land/dieser Region nicht funktioniert. Daher sollten diesen Benutzern alternative Methoden zur Verfügung gestellt werden.
 
 ### <a name="verification-code-from-mobile-app"></a>Prüfcode über die mobile App
 
@@ -221,7 +221,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 ## <a name="plan-conditional-access-policies"></a>Planen von Richtlinien für bedingten Zugriff
 
-Informationen zum Planen der Richtlinienstrategie für den bedingten Zugriff, die bestimmt, wann MFA und andere Steuerelemente erforderlich sind, finden Sie unter [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md).
+Informationen zum Planen der Richtlinienstrategie für den bedingten Zugriff, die bestimmt, wann MFA und andere Steuerelemente erforderlich sind, finden Sie unter [Allgemeine Richtlinien für bedingten Zugriff](../conditional-access/concept-conditional-access-policy-common.md).
 
 Es ist wichtig, dass Sie verhindern, versehentlich aus Ihrem Azure AD-Mandanten ausgesperrt zu werden. Sie können die Auswirkungen eines versehentlichen Verlusts des Administratorzugriffs abmildern, indem Sie [mindestens zwei Konten für den Notfallzugriff in Ihrem Mandanten erstellen](../users-groups-roles/directory-emergency-access.md) und sie von Ihrer Richtlinie für bedingten Zugriff ausnehmen.
 

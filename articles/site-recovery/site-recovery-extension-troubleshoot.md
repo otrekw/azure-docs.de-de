@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190726"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133751"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Behandeln von Problemen mit der Azure-VM-Erweiterung
 
@@ -69,14 +69,14 @@ Der VM-Agent wurde möglicherweise beschädigt, oder der Dienst wurde angehalten
 1. Überprüfen Sie, ob der Windows-Azure-Gast-Agent-Dienst in den Diensten angezeigt wird.
 1. Starten Sie den Schutzauftrag neu.
 
-Überprüfen Sie auch, ob [Microsoft .NET 4.5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) auf dem virtuellen Computer installiert ist. Sie benötigen .NET 4.5 für die Kommunikation des VM-Agent mit dem Dienst.
+Überprüfen Sie auch, ob [Microsoft .NET 4.5](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) auf dem virtuellen Computer installiert ist. Sie benötigen .NET 4.5 für die Kommunikation des VM-Agent mit dem Dienst.
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern).
 
 #### <a name="solution"></a>Lösung
 Die meisten Fehler im Zusammenhang mit Agents oder Erweiterungen bei virtuellen Linux-Computern werden durch Probleme verursacht, die einen veralteten VM-Agent betreffen. Befolgen Sie diese allgemeinen Richtlinien, um dieses Problem zu beheben:
 
-1. Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents ](../virtual-machines/linux/update-agent.md).
+1. Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents ](../virtual-machines/extensions/update-linux-agent.md).
 
    > [!NOTE]
    > Wir *empfehlen dringend*, den Agent ausschließlich über ein Verteilungsrepository zu aktualisieren. Wir raten davon ab, den Agent-Code direkt von GitHub herunterzuladen und die Aktualisierung durchzuführen. Falls der aktuelle Agent für Ihre Distribution nicht verfügbar ist, können Sie sich an den zuständigen Support wenden, um Informationen zur Installation zu erhalten. Eine Prüfung auf den aktuellen Agent können Sie auf der Seite für den [Windows Azure-Linux-Agent](https://github.com/Azure/WALinuxAgent/releases) im GitHub-Repository durchführen.
@@ -107,6 +107,6 @@ So deinstallieren Sie die Erweiterung:
 1. Wählen Sie **Site Recovery-Erweiterung**.
 1. Wählen Sie **Deinstallieren** aus.
 
-Wenn die VMSnapshot-Erweiterung im Azure-Portal nicht angezeigt wird, [aktualisieren Sie den Azure-Linux-Agent](../virtual-machines/linux/update-agent.md). Führen Sie anschließend den Schutzauftrag aus.
+Wenn die VMSnapshot-Erweiterung im Azure-Portal nicht angezeigt wird, [aktualisieren Sie den Azure-Linux-Agent](../virtual-machines/extensions/update-linux-agent.md). Führen Sie anschließend den Schutzauftrag aus.
 
 Diese Schritte bewirken, dass die Erweiterung während der nächsten Ausführung des Schutzauftrags neu installiert wird.

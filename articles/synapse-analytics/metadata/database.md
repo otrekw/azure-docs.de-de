@@ -5,16 +5,16 @@ services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: da1bd9c812c20f60264d1a5ee1f8821128900618
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 68919457cc045f50ebef249ced9c117fea8d6984
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698852"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079028"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Gemeinsam genutzte Azure Synapse Analytics-Datenbank
 
@@ -41,7 +41,7 @@ Im Falle eines Namenskonflikts zwischen einer Spark-Datenbank und einer vorhande
 Wenn also beispielsweise im Azure Synapse-Arbeitsbereich `myws` eine Spark-Datenbank mit dem Namen `mydb` erstellt wird und bereits eine SQL On-Demand-Datenbank mit dem gleichen Namen vorhanden ist, muss auf die Spark-Datenbank in SQL On-Demand mithilfe des Namens `mydb_myws-ondemand-DefaultSparkConnector` verwiesen werden.
 
 > [!CAUTION]
-> Vorsicht: Es sollte keine Abhängigkeit von diesem Verhalten bestehen.
+> Vorsicht: Dieses Verhalten kann sich ggf. ändern. Verlassen Sie sich daher nicht darauf.
 
 ## <a name="security-model"></a>Sicherheitsmodell
 

@@ -68,6 +68,8 @@
       href: How-tos/text-analytics-how-to-keyword-extraction.md
     - name: Erkennung benannter Entitäten
       href: How-tos/text-analytics-how-to-entity-linking.md
+    - name: Textanalyse für Integrität
+      href: How-tos/text-analytics-for-health.md
     - name: Verwenden von Containern
       items:
         - name: Installieren und Ausführen von Containern
@@ -126,7 +128,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'

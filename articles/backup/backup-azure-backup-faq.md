@@ -3,12 +3,12 @@ title: Antworten auf häufig gestellte Fragen
 description: 'Antworten auf häufig gestellte Fragen zu: Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ee6df940dd36a325d3638c3ad29ebfd8dec713d8
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 04921cd617a688ebcf31bcec29cf26681914f44b
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801704"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247664"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 
@@ -107,7 +107,7 @@ Windows 8 oder höher | 54.400 GB
 Windows 7 |1\.700 GB
 Windows Server 2012 oder höher | 54.400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1\.700 GB
-Azure VM | 16 Datenträger<br/> Wenn Sie sich für die eingeschränkte Vorschauversion von virtuellen Computern mit mehr als 16 Datenträgern (mit bis zu 32 Datenträgern) registrieren möchten, senden Sie eine E-Mail an AskAzureBackupTeam@microsoft.com. <br><br> Datenträger bis zu 32 TB
+Azure VM | Weitere Informationen finden Sie in der [Unterstützungsmatrix für die Sicherung von Azure-VMs](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
 
 ### <a name="how-is-the-data-source-size-determined"></a>Wie wird die Größe der Datenquelle bestimmt?
 
@@ -208,7 +208,7 @@ Ja. Die Daten in Azure sind im Ruhezustand verschlüsselt.
 
 Die Sicherungsdaten werden zu keinem Zeitpunkt von Microsoft entschlüsselt.
 
-### <a name="what-is-the-minimum-length-of-encryption-the-key-used-to-encrypt-backup-data"></a>Wie lang muss der Verschlüsselungsschlüssel zur Verschlüsselung von Sicherungsdaten mindestens sein?
+### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>Wie lang muss der Verschlüsselungsschlüssel zur Verschlüsselung von Sicherungsdaten mindestens sein?
 
 Bei Verwendung des Azure Backup-Agents muss der Verschlüsselungsschlüssel mindestens 16 Zeichen lang sein. Bei virtuellen Azure-Computern gibt es keine Längenbegrenzung für Schlüssel, die von Azure Key Vault verwendet werden.
 

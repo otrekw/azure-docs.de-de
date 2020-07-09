@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/19/2018
-ms.openlocfilehash: 40b1b8d040c4b3ea76372920f88551fba35c5f26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: 44a95430ece9c55bb088ae5b968c33691f25b4c5
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419441"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860786"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Visuelles Überwachen von Azure Data Factory
 
@@ -132,6 +132,21 @@ Sie können aber auch den Verlauf für erneute Ausführungen für eine bestimmte
 
 ![Anzeigen des Verlaufs für eine Pipelineausführung](media/monitor-visually/rerun-history-image2.png)
 
+## <a name="monitor-consumption"></a>Überwachen des Verbrauchs
+
+Sie können die durch eine Pipelineausführung verbrauchten Ressourcen anzeigen, indem Sie neben der Ausführung auf das Symbol für Verbrauch klicken. 
+
+![Überwachen des Verbrauchs](media/monitor-visually/monitor-consumption-1.png)
+
+Wenn Sie auf das Symbol klicken, wird ein Verbrauchsbericht zu den durch diese Pipelineausführung genutzten Ressourcen geöffnet. 
+
+![Überwachen des Verbrauchs](media/monitor-visually/monitor-consumption-2.png)
+
+Sie können diese Werte mit dem [Azure-Preisrechner](https://azure.microsoft.com/pricing/details/data-factory/) verbinden, um die Kosten für die Pipelineausführung zu schätzen. Weitere Informationen zu Azure Data Factory-Preisen finden Sie unter [Grundlegendes zu Preisen](pricing-concepts.md).
+
+> [!NOTE]
+> Diese vom Preisrechner zurückgegebenen Werte sind eine Schätzung. Sie geben nicht den genauen Betrag an, der Ihnen von Azure Data Factory in Rechnung gestellt wird. 
+
 ## <a name="gantt-views"></a>Gantt-Ansichten
 
 Mit Gantt-Ansichten können Sie schnell Ihre Pipelines und Aktivitätsausführungen anzeigen.
@@ -155,7 +170,7 @@ Wählen Sie links unten das **Informationssymbol** aus. Wählen Sie dann **Guide
 
 Sie können Warnungen auf der Grundlage unterstützter Metriken in Data Factory auslösen. Wählen Sie dazu auf der Überwachungsseite von Data Factory die Option **Überwachen** > **Warnungen und Metriken** aus.
 
-![Data Factory-Überwachungsseite](media/monitor-visually/alerts01.png)
+![Data Factory-Überwachungsseite](media/monitor-visually/start-page.png)
 
 Das folgende Video enthält eine siebenminütige Einführung und Demonstration dieses Features:
 
@@ -165,31 +180,31 @@ Das folgende Video enthält eine siebenminütige Einführung und Demonstration d
 
 1.  Wählen Sie **Neue Warnungsregel** aus, um eine neue Warnung zu erstellen.
 
-    ![Schaltfläche „Neue Warnungsregel“](media/monitor-visually/alerts02.png)
+    ![Schaltfläche „Neue Warnungsregel“](media/monitor-visually/new-alerts.png)
 
 1.  Geben Sie den Namen der Warnungsregel an, und wählen Sie den Schweregrad der Warnung aus.
 
-    ![Felder für Regelname und Schweregrad](media/monitor-visually/alerts03.png)
+    ![Felder für Regelname und Schweregrad](media/monitor-visually/name-and-severity.png)
 
 1.  Wählen Sie die Warnungskriterien aus.
 
-    ![Feld für Zielkriterien](media/monitor-visually/alerts04.png)
+    ![Feld für Zielkriterien](media/monitor-visually/add-criteria-1.png)
 
-    ![Liste der Kriterien](media/monitor-visually/alerts05.png)
+    ![Liste der Kriterien](media/monitor-visually/add-criteria-2.png)
 
 1.  Konfigurieren Sie die Warnungslogik. Sie können eine Warnung für die ausgewählte Metrik für alle Pipelines und entsprechenden Aktivitäten erstellen. Sie können außerdem einen bestimmten Aktivitätstyp, Aktivitätsnamen, Pipelinenamen oder Fehlertyp auswählen.
 
-    ![Optionen zum Konfigurieren der Warnungslogik](media/monitor-visually/alerts06.png)
+    ![Optionen zum Konfigurieren der Warnungslogik](media/monitor-visually/alert-logic.png)
 
 1.  Konfigurieren Sie E-Mail-, SMS-, Push- und Sprachbenachrichtigungen für die Warnung. Erstellen Sie eine Aktionsgruppe für die Warnungsbenachrichtigungen, oder wählen Sie eine vorhandene Aktionsgruppe aus.
 
-    ![Optionen zum Konfigurieren von Benachrichtigungen](media/monitor-visually/alerts07.png)
+    ![Optionen zum Konfigurieren von Benachrichtigungen](media/monitor-visually/configure-notification-1.png)
 
-    ![Optionen zum Hinzufügen einer Benachrichtigung](media/monitor-visually/alerts08.png)
+    ![Optionen zum Hinzufügen einer Benachrichtigung](media/monitor-visually/configure-notification-2.png)
 
 1.  Erstellen Sie die Warnungsregel.
 
-    ![Optionen zum Erstellen einer Warnungsregel](media/monitor-visually/alerts09.png)
+    ![Optionen zum Erstellen einer Warnungsregel](media/monitor-visually/create-alert-rule.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

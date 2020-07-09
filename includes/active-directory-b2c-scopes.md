@@ -5,25 +5,16 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 9d394b07ff17ab24305b2580efc8bedfc5e7d384
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3ebe1ec4c0292a530e5ef2c754e9b002e931300e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78183376"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84680318"
 ---
-#### <a name="applications"></a>[Anwendungen](#tab/applications/)
+#### <a name="app-registrations"></a>[App-Registrierungen](#tab/app-reg-ga/) 
 
-1. Wählen Sie **Anwendungen** aus.
-1. Wählen Sie die Anwendung *webapi1* aus, um ihre Seite mit den **Eigenschaften** zu öffnen.
-1. Wählen Sie **Veröffentlichte Bereiche** aus. Mit den veröffentlichten Bereichen können einer Clientanwendung bestimmte Berechtigungen für die Web-API gewährt werden.
-1. Geben Sie unter **BEREICH** den Bereich `demo.read` und als **BESCHREIBUNG**`Read access to the web API` ein.
-1. Geben Sie unter **BEREICH** den Bereich `demo.write` und als **BESCHREIBUNG**`Write access to the web API` ein.
-1. Wählen Sie **Speichern** aus.
-
-#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
-
-1. Wählen Sie **App-Registrierungen (Vorschau)** aus.
+1. Wählen Sie **App-Registrierungen** aus.
 1. Wählen Sie die Anwendung *webapi1* aus, um ihre **Übersicht**-Seite zu öffnen.
 1. Wählen Sie unter **Verwalten** die Option **Eine API verfügbar machen** aus.
 1. Wählen Sie neben **Anwendungs-ID-URI** den Link **Festlegen** aus.
@@ -37,3 +28,12 @@ ms.locfileid: "78183376"
     1. **Bereichsname**: `demo.write`
     1. **Anzeigename der Administratoreinwilligung**: `Write access to demo API`
     1. **Beschreibung der Administratoreinwilligung**: `Allows write access to the demo API`
+
+#### <a name="applications-legacy"></a>[Anwendungen (Legacy)](#tab/applications-legacy/)
+
+1. Wählen Sie **Anwendungen (Legacy)** aus.
+1. Wählen Sie die Anwendung *webapi1* aus, um ihre Seite mit den **Eigenschaften** zu öffnen.
+1. Wählen Sie **Veröffentlichte Bereiche** aus. Mit den veröffentlichten Bereichen können einer Clientanwendung bestimmte Berechtigungen für die Web-API gewährt werden.
+1. Geben Sie unter **BEREICH** den Bereich `demo.read` und als **BESCHREIBUNG**`Read access to the web API` ein.
+1. Geben Sie unter **BEREICH** den Bereich `demo.write` und als **BESCHREIBUNG**`Write access to the web API` ein.
+1. Wählen Sie **Speichern** aus.

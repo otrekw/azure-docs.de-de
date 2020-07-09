@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 12/05/2019
-ms.openlocfilehash: f2f8b9f207993c49201d03d3d1fed3c5800e8780
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.date: 05/15/2020
+ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673818"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659270"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
@@ -68,13 +68,15 @@ Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installier
     > [!TIP]
     > Um Wartezeiten zu minimieren, können Sie das Gateway so nah wie möglich zur Datenquelle oder auf demselben Computer installieren, vorausgesetzt, Sie haben die Berechtigungen.
 
-  * Installieren Sie das Gateway auf einem Computer in einem verkabelten Netzwerk, der mit dem Internet verbunden ist, immer eingeschaltet ist und sich nicht im Energiesparmodus befindet. Andernfalls kann das Gateway nicht ausgeführt werden, und die Gatewayleistung wird beim Einsatz in einem Drahtlosnetzwerk ggf. beeinträchtigt.
+  * Installieren Sie das Gateway auf einem lokalen Computer in einem verkabelten Netzwerk, der mit dem Internet verbunden ist, immer eingeschaltet ist und sich nicht im Energiesparmodus befindet. Andernfalls kann das Gateway nicht ausgeführt werden, und die Gatewayleistung wird beim Einsatz in einem Drahtlosnetzwerk ggf. beeinträchtigt.
 
   * Wenn Sie planen, Windows-Authentifizierung zu verwenden, stellen Sie sicher, dass Sie das Gateway auf einem Computer installieren, der Mitglied derselben Active Directory-Umgebung ist wie Ihre Datenquellen.
 
   * Die Region, die Sie für Ihre Gatewayinstallation auswählen, ist die gleiche Region, die Sie auswählen müssen, wenn Sie später die Azure-Gatewayressource für Ihre Logik-App erstellen. Standardmäßig ist diese Region derselbe Standort wie Ihr Azure AD-Mandant, der Ihr Azure-Konto verwaltet. Der Standort kann jedoch während der Gatewayinstallation geändert werden.
 
-  * Wenn Sie Ihre Gatewayinstallation auf die neueste Version aktualisieren, deinstallieren Sie zuerst Ihr aktuelles Gateway, um die Erfahrung zu bereinigen.
+  * Wenn Sie Ihre Gatewayinstallation aktualisieren, deinstallieren Sie zuerst Ihr aktuelles Gateway, um die Erfahrung zu bereinigen.
+
+    Als bewährte Methode stellen Sie sicher, dass Sie eine unterstützte Version verwenden. Microsoft gibt jeden Monat ein neues Update für das lokale Datengateway frei und unterstützt derzeit nur die letzten sechs Releases für das lokale Datengateway. Wenn Sie Probleme mit der Version haben, die Sie verwenden, versuchen Sie, [ein Upgrade auf die neueste Version](https://aka.ms/on-premises-data-gateway-installer) auszuführen, da Ihr Problem möglicherweise in der aktuellen Version behoben ist.
 
   * Das Gateway verfügt über zwei Modi: Standardmodus und persönlicher Modus, der nur für Power BI gilt. Auf demselben Computer können nicht mehrere Gateways im gleichen Modus ausgeführt werden.
 
@@ -162,11 +164,11 @@ Nachdem Sie Ihr primäres Gateway eingerichtet haben, wählen Sie zum Installier
 
 Wenn Sie den Ort Ihres Gateways ändern, die Gatewayinstallation auf einen neuen Computer verschieben, ein beschädigtes Gateway wiederherstellen oder den Besitz eines vorhandenen Gateways übernehmen müssen, benötigen Sie den Wiederherstellungsschlüssel, der bei der Gatewayinstallation bereitgestellt wurde.
 
-1. Führen Sie den Gateway-Installer auf dem Computer aus, der über das vorhandene Gateway verfügt. Wenn Sie nicht über den neuesten Gateway-Installer verfügen, [laden Sie die neueste Gatewayversion herunter](https://aka.ms/on-premises-data-gateway-installer).
+> [!NOTE]
+> Bevor Sie das Gateway auf dem Computer wiederherstellen, auf dem sich die ursprüngliche Gatewayinstallation befindet, müssen Sie zunächst das Gateway auf diesem Computer deinstallieren. Bei dieser Aktion wird das ursprüngliche Gateway getrennt.
+> Wenn Sie einen Gatewaycluster für einen beliebigen Clouddienst entfernen oder löschen, können Sie diesen Cluster nicht wiederherstellen.
 
-   > [!NOTE]
-   > Bevor Sie das Gateway auf dem Computer wiederherstellen, auf dem sich die ursprüngliche Gatewayinstallation befindet, müssen Sie zunächst das Gateway auf diesem Computer deinstallieren. Bei dieser Aktion wird das ursprüngliche Gateway getrennt.
-   > Wenn Sie einen Gatewaycluster für einen beliebigen Clouddienst entfernen oder löschen, können Sie diesen Cluster nicht wiederherstellen.
+1. Führen Sie den Gateway-Installer auf dem Computer aus, der über das vorhandene Gateway verfügt.
 
 1. Nachdem der Installer geöffnet wurde, melden Sie sich mit dem gleichen Azure-Konto an, das beim Installieren des Gateways verwendet wurde.
 
@@ -258,8 +260,6 @@ Nachfolgend finden Sie Möglichkeiten, wie Sie Ihre lokalen Active Directory-Kon
 <a name="faq"></a>
 
 ## <a name="faq-and-troubleshooting"></a>FAQ und Fehlerbehebung
-
-Weitere Informationen finden Sie in den folgenden Themen:
 
 * [Lokales Datengateway: Häufig gestellte Fragen](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
 * [Problembehandlung des lokalen Datengateways](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)

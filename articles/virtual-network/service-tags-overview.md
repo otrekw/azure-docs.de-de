@@ -4,21 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Hier erhalten Sie Informationen zu Diensttags. Diensttags reduzieren die Komplexität bei der Erstellung von Sicherheitsregeln.
 services: virtual-network
 documentationcenter: na
-author: jispar
+author: allegradomel
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
-ms.author: jispar
+ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: bfeded391f582ab0ac6f3c15d2086789228f1494
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ea756b965a2539886e695585c9b5f5034eac7684
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660588"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263192"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
@@ -62,7 +62,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **AzureDataExplorerManagement** | Azure Data Explorer-Verwaltung | Eingehend | Nein | Nein |
 | **AzureDataLake** | Azure Data Lake Storage Gen1. | Ausgehend | Nein | Ja |
 | **AzureDevSpaces** | Azure Dev Spaces | Ausgehend | Nein | Nein |
-| **AzureEventGrid** | Azure Event Grid: <br/><br/>*Hinweis:* Dieses Tag deckt nur Azure Event Grid-Endpunkte in den Regionen „USA, Süden-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Westen 2“ und „USA, Mitte“ ab. | Beide | Nein | Nein |
+| **AzureEventGrid** | Azure Event Grid: | Beide | Nein | Nein |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door | Beide | Nein | Nein |
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit von den Tags **AzureActiveDirectory**, **AzureFrontDoor.Frontend** und **AzureFrontDoor.FirstParty** auf. | Ausgehend | Nein | Nein |
 | **AzureIoTHub** | Azure IoT Hub. | Ausgehend | Nein | Nein |

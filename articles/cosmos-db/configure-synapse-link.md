@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: 384d4ebf211c80ac069889356f269407ba7d3d75
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 24f6f77f1371157ca1b57cfd85ac196cace822fc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596529"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83676007"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurieren und Verwenden von Azure Synapse Link für Azure Cosmos DB (Vorschau)
 
@@ -187,11 +187,15 @@ container.replace(containerProperties).block();
 
 ## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a> Herstellen einer Verbindung mit einem Synapse-Arbeitsbereich
 
-Befolgen Sie die Anleitung unter [Herstellen einer Verbindung mit Azure Synapse Link](), um aus Azure Synapse Analytics Studio mit Azure Synapse Link auf eine Azure Cosmos DB-Datenbank zuzugreifen.
+Befolgen Sie die Anleitung unter [Herstellen einer Verbindung mit Azure Synapse Link](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md), um aus Azure Synapse Analytics Studio mit Azure Synapse Link auf eine Azure Cosmos DB-Datenbank zuzugreifen.
 
 ## <a name="query-using-synapse-spark"></a><a id="query-analytical-store"></a> Durchführen von Abfragen mit Synapse Spark
 
-Befolgen Sie die Anleitung im Artikel [Abfragen des Azure Cosmos DB-Analysespeichers](), um mit Synapse Spark Abfragen durchzuführen. Dieser Artikel enthält einige Beispiele dafür, wie Sie mithilfe von Synapse-Gesten mit dem Analysespeicher interagieren können. Diese Gesten werden angezeigt, wenn Sie mit der rechten Maustaste auf einen Container klicken. Mit Gesten können Sie schnell Code generieren und an Ihre Anforderungen anpassen. Sie eignen sich auch ideal zum Ermitteln von Daten mit nur einem Mausklick.
+Befolgen Sie die Anleitung im Artikel [Abfragen des Azure Cosmos DB-Analysespeichers](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md), um mit Synapse Spark Abfragen durchzuführen. Dieser Artikel enthält einige Beispiele dafür, wie Sie mithilfe von Synapse-Gesten mit dem Analysespeicher interagieren können. Diese Gesten werden angezeigt, wenn Sie mit der rechten Maustaste auf einen Container klicken. Mit Gesten können Sie schnell Code generieren und an Ihre Anforderungen anpassen. Sie eignen sich auch ideal zum Ermitteln von Daten mit nur einem Mausklick.
+
+## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Erste Schritte mit Azure Synpase Link – Beispiele
+
+Beispiele für die ersten Schritte mit Synapse Link finden Sie auf [GitHub](https://aka.ms/cosmosdb-synapselink-samples). Diese zeigen End-to-End-Lösungen für IoT- und Einzelhandelsszenarien.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,15 +4,15 @@ description: In diesem Artikel erfahren Sie, wie Sie Ihr öffentliches Peering �
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f6b3ec93498ab58ba67a2ca08199feaa2da73ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436842"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738361"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Umstellen von öffentlichem Peering auf Microsoft-Peering
 
@@ -33,7 +33,7 @@ Um eine Verbindung mit Microsoft-Peering herstellen zu können, müssen Sie die 
 
 Informieren Sie sich unter [Asymmetrisches Routing mit mehreren Netzwerkpfaden](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) über die Einschränkungen des asymmetrischen Routings, bevor Sie das Microsoft-Peering konfigurieren.
 
-* Wenn Sie öffentliches Peering verwenden und derzeit über IP-Netzwerkregeln für öffentliche IP-Adressen verfügen, mit denen auf [Azure Storage](../storage/common/storage-network-security.md) oder [Azure SQL-Datenbank](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md) zugegriffen wird, müssen Sie sicherstellen, dass der mit Microsoft-Peering konfigurierte NAT-IP-Adressenpool in der Liste der öffentlichen IP-Adressen für das Azure Storage- oder Azure SQL-Konto enthalten ist.<br>
+* Wenn Sie öffentliches Peering verwenden und derzeit über IP-Netzwerkregeln für öffentliche IP-Adressen verfügen, mit denen auf [Azure Storage](../storage/common/storage-network-security.md) oder [Azure SQL-Datenbank](../azure-sql/database/vnet-service-endpoint-rule-overview.md) zugegriffen wird, müssen Sie sicherstellen, dass der mit Microsoft-Peering konfigurierte NAT-IP-Adressenpool in der Liste der öffentlichen IP-Adressen für das Azure Storage- oder Azure SQL-Konto enthalten ist.<br>
 * Führen Sie die Schritte in diesem Artikel in der angegebenen Reihenfolge aus, damit es bei der Umstellung auf Microsoft-Peering zu keinen Ausfällen kommt.
 
 ## <a name="1-create-microsoft-peering"></a><a name="create"></a>1. Erstellen von Microsoft-Peering

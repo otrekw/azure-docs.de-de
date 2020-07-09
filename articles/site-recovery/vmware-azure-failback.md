@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: cd4cc90fb102d517a47ba458619e22b8921dd498
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aed015b67aa36e7678b31d7f2f047cb1e77c6a3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75495331"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485315"
 ---
 # <a name="fail-back-vmware-vms-to-on-premises-site"></a>Failback von VMware-VMs zum lokalen Standort
 
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie mit [Azure Site Recovery](site-recov
 
 ## <a name="run-a-failover-to-fail-back"></a>Ausführen eines Failovers für ein Failback
 
-1. Vergewissern Sie sich, dass Azure-VMs erneut geschützt werden und an den lokalen Standort repliziert werden. 
+1. Vergewissern Sie sich, dass Azure-VMs erneut geschützt werden und an den lokalen Standort repliziert werden.
     - Ein virtueller Computer benötigt mindestens einen Wiederherstellungspunkt, damit ein Failback möglich ist.
     - Wenn Sie ein Failback für einen Wiederherstellungsplan durchführen, müssen alle Computer im Plan über mindestens einen Wiederherstellungspunkt verfügen.
 2. Wählen Sie im Tresor **Replizierte Elemente** und dann die VM aus. Klicken Sie mit der rechten Maustaste auf die VM und wählen Sie **Nicht geplantes Failover** aus.

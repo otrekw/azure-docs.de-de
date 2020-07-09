@@ -1,6 +1,6 @@
 ---
-title: Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal
-description: Erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und dem Azure-Portal ermitteln können, auf welche Ressourcen Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten Zugriff besitzen.
+title: Auflisten von Azure-Rollenzuweisungen mithilfe des Azure-Portals – Azure RBAC
+description: Erfahren Sie, wie Sie mithilfe des Azure-Portals und Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung) ermitteln können, auf welche Ressourcen Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten Zugriff haben.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 03a3d3c7d572d7ec5b8d3ac3d527d0d59e649bc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04a13b2b3b8cd6e696f0ac6601b5f23b9d6cb24d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062243"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996644"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal
+# <a name="list-azure-role-assignments-using-the-azure-portal"></a>Auflisten von Azure-Rollenzuweisungen über das Azure-Portal
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal Rollenzuweisungen auflisten.
 
@@ -32,7 +32,9 @@ ms.locfileid: "80062243"
 
 Die einfachste Möglichkeit, die einem Benutzer oder einer Gruppe in einem Abonnement zugewiesenen Rollen anzuzeigen, ist die Verwendung des Bereichs **Azure-Ressourcen**.
 
-1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie dann **Benutzer** oder **Gruppen** aus.
+1. Klicken Sie im Menü des Azure-Portals auf **Alle Dienste**.
+
+1. Klicken Sie anschließend auf **Azure Active Directory** und dann auf **Benutzer** oder **Gruppen**.
 
 1. Klicken Sie auf den Benutzer oder die Gruppe, für den bzw. die Sie Rollenzuweisungen auflisten möchten.
 
@@ -128,7 +130,7 @@ Um den Zugriff für einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine
 
 ## <a name="list-number-of-role-assignments"></a>Auflisten der Anzahl von Rollenzuweisungen
 
-Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen haben. Damit Sie diesen Grenzwert nachverfolgen können, enthält die Registerkarte **Rollenzuweisungen** ein Diagramm, in dem die Anzahl der Rollenzuweisungen für das aktuelle Abonnement aufgeführt ist.
+Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen haben. Dieser Grenzwert schließt Rollenzuweisungen im Abonnement, in der Ressourcengruppe und im Ressourcenbereich ein. Damit Sie diesen Grenzwert nachverfolgen können, enthält die Registerkarte **Rollenzuweisungen** ein Diagramm, in dem die Anzahl der Rollenzuweisungen für das aktuelle Abonnement aufgeführt ist.
 
 ![Zugriffssteuerung: Diagramm „Anzahl der Rollenzuweisungen“](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 
@@ -138,5 +140,5 @@ Wenn Sie sich der maximalen Anzahl nähern und versuchen, weitere Rollenzuweisun
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal](role-assignments-portal.md)
-- [Problembehandlung von RBAC für Azure-Ressourcen](troubleshooting.md)
+- [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](role-assignments-portal.md)
+- [Behandeln von Problemen bei Azure RBAC](troubleshooting.md)

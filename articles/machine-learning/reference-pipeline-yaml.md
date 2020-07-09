@@ -5,17 +5,18 @@ description: Erfahren Sie, wie Sie eine Machine Learning-Pipeline mithilfe einer
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
 ms.date: 11/11/2019
-ms.openlocfilehash: cee6de8fda45c429d0c74a3ecdc966b49e092567
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: a519519d5728307847b5d92f9ae5ce3e739e3ba6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560944"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>Definieren von Machine Learning-Pipelines in YAML
 
@@ -26,15 +27,16 @@ In der folgenden Tabelle ist aufgeführt, was beim Definieren einer Pipeline in 
 | Schritttyp | Unterstützt? |
 | ----- | :-----: |
 | PythonScriptStep | Ja |
+| ParallelRunStep | Ja |
 | AdlaStep | Ja |
 | AzureBatchStep | Ja |
 | DatabricksStep | Ja |
 | DataTransferStep | Ja |
-| AutoMLStep | Nein  |
-| HyperDriveStep | Nein  |
+| AutoMLStep | Nein |
+| HyperDriveStep | Nein |
 | ModuleStep | Ja |
-| MPIStep | Nein  |
-| EstimatorStep | Nein  |
+| MPIStep | Nein |
+| EstimatorStep | Nein |
 
 ## <a name="pipeline-definition"></a>Definition der Pipeline
 
@@ -111,6 +113,7 @@ Die Schritte definieren eine Compute-Umgebung und die Dateien, die in der Umgebu
 | `DatabricsStep` | Fügt ein Databricks-Notebook, ein Python-Skript oder JAR hinzu. Entspricht der [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py)-Klasse. |
 | `DataTransferStep` | Überträgt Daten zwischen verschiedenen Speicheroptionen. Entspricht der [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)-Klasse. |
 | `PythonScriptStep` | Führt ein Python-Skript aus. Entspricht der [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)-Klasse. |
+| `ParallelRunStep` | Führt ein Python-Skript aus, um große Datenmengen asynchron und parallel zu verarbeiten. Entspricht der [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py)-Klasse. |
 
 ### <a name="adla-step"></a>ADLA-Schritt
 
@@ -358,6 +361,58 @@ pipeline:
             outputs:
                 OutputData:
                     destination: Output4
+                    datastore: workspaceblobstore
+                    bind_mode: mount
+```
+
+### <a name="parallel-run-step"></a>Schritt zur parallelen Ausführung
+
+| YAML-Schlüssel | BESCHREIBUNG |
+| ----- | ----- |
+| `inputs` | Eingaben können [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py) oder [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py) sein. |
+| `outputs` | Mögliche Ausgaben sind [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) oder [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
+| `script_name` | Der Name des Python-Skripts (relativ zum `source_directory`). |
+| `source_directory` | Verzeichnis, das das Skript, die Conda-Umgebung usw. enthält. |
+| `parallel_run_config` | Der Pfad zur Datei `parallel_run_config.yml`. Diese Datei ist eine YAML-Darstellung der [ParallelRunConfig](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?view=azure-ml-py)-Klasse. |
+| `allow_reuse` | Bestimmt, ob bei dem Schritt vorherige Ergebnisse wiederverwendet werden sollen, wenn er mit den gleichen Einstellungen ausgeführt wird. |
+
+Das folgende Beispiel enthält einen Schritt zur parallelen Ausführung:
+
+```yaml
+pipeline:
+    description: SamplePipelineFromYaml
+    default_compute: cpu-cluster
+    data_references:
+        MyMinistInput:
+            dataset_name: mnist_sample_data
+    parameters:
+        PipelineParamTimeout:
+            type: int
+            default: 600
+    steps:        
+        Step1:
+            parallel_run_config: "yaml/parallel_run_config.yml"
+            type: "ParallelRunStep"
+            name: "parallel-run-step-1"
+            allow_reuse: True
+            arguments:
+            - "--progress_update_timeout"
+            - parameter:timeout_parameter
+            - "--side_input"
+            - side_input:SideInputData
+            parameters:
+                timeout_parameter:
+                    source: PipelineParamTimeout
+            inputs:
+                InputData:
+                    source: MyMinistInput
+            side_inputs:
+                SideInputData:
+                    source: Output4
+                    bind_mode: mount
+            outputs:
+                OutputDataStep2:
+                    destination: Output5
                     datastore: workspaceblobstore
                     bind_mode: mount
 ```

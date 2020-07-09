@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77526789"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84752471"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web Application Firewall-Anforderungsgrößenlimits und Ausschlusslisten
 
@@ -31,7 +31,6 @@ Die folgenden Attribute können Ausschlusslisten nach dem Namen hinzugefügt wer
 * Ein Anforderungsattributname (Argument) kann als Ausschlusselement hinzugefügt werden. Beispiele hierfür sind:
 
    * Name des Formularfelds
-   * XML-Entität
    * JSON-Entität
    * URL-Abfragezeichenfolgenargument
 

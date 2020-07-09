@@ -2,13 +2,13 @@
 title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: f71d8cc62daf68b158bed444da1446e016194b56
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 06/26/2020
+ms.openlocfilehash: 1b63ebc62a944b43aef3b777dd7d285369356c29
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609305"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056683"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -16,7 +16,7 @@ Zum Bereitstellen komplexer Lösungen können Sie Ihre Vorlage in viele verwandt
 
 Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen. Sie können diese Vorlagen mühelos erneut für andere Szenarien verwenden.
 
-Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen](template-tutorial-create-linked-templates.md).
+Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen](./deployment-tutorial-linked-template.md).
 
 > [!NOTE]
 > Für verknüpfte oder geschachtelte Vorlagen können Sie nur den Bereitstellungsmodus [Inkrementell](deployment-modes.md) verwenden.
@@ -34,9 +34,9 @@ Zum Schachteln einer Vorlage fügen Sie der Hauptvorlage eine [Bereitstellungsre
   "variables": {},
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -63,13 +63,13 @@ Im folgenden Beispiel wird ein Speicherkonto über eine geschachtelte Vorlage be
   },
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "resources": [
             {
@@ -132,7 +132,7 @@ Die folgende Vorlage veranschaulicht, wie Vorlagenausdrücke entsprechend dem Be
         },
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "variables": {
             "exampleVar": "from nested template"
@@ -169,7 +169,7 @@ Im folgenden Beispiel wird eine SQL Server-Instanz bereitgestellt, und ein Schl�
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -232,7 +232,7 @@ Im folgenden Beispiel wird eine SQL Server-Instanz bereitgestellt, und ein Schl�
           }
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {
@@ -308,13 +308,11 @@ Zum Verknüpfen einer Vorlage fügen Sie der Hauptvorlage eine [Bereitstellungsr
 }
 ```
 
-Beim Verweisen auf eine verknüpfte Vorlage darf der Wert von `uri` keine lokale Datei oder keine Datei sein, die nur in Ihrem lokalen Netzwerk verfügbar ist. Sie müssen einen URI-Wert angeben, der als **http**- oder **https**-Wert heruntergeladen werden kann. 
+Beim Verweisen auf eine verknüpfte Vorlage darf der Wert von `uri` keine lokale Datei oder keine Datei sein, die nur in Ihrem lokalen Netzwerk verfügbar ist. Sie müssen einen URI-Wert angeben, der als **http**- oder **https**-Wert heruntergeladen werden kann.
 
 > [!NOTE]
 >
 > Sie können auf Vorlagen mithilfe von Parametern verweisen, die letztendlich in einen Wert aufgelöst werden, der **http** oder **https** verwendet, beispielsweise die Verwendung des Parameters `_artifactsLocation` wie folgt: `"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
-
-
 
 Der Resource Manager muss auf die Vorlage zugreifen können. Eine Option besteht darin, die verknüpfte Vorlage in einem Speicherkonto zu platzieren und den URI für dieses Element zu verwenden.
 
@@ -358,7 +356,7 @@ Um Parameterwerte inline zu übergeben, verwenden Sie die **parameters**-Eigensc
       "contentVersion":"1.0.0.0"
      },
      "parameters": {
-      "StorageAccountName":{"value": "[parameters('StorageAccountName')]"}
+      "storageAccountName":{"value": "[parameters('storageAccountName')]"}
     }
    }
   }
@@ -425,7 +423,7 @@ In der folgenden Beispielvorlage wird die Verwendung von „copy“ mit einer ge
     "scope": "inner"
     },
     "template": {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
       {
@@ -461,7 +459,7 @@ In den folgenden Beispielen wird veranschaulicht, wie Sie auf eine verknüpfte V
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -479,7 +477,7 @@ Die Hauptvorlage stellt die verknüpfte Vorlage bereit und ruft den zurückgegeb
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -512,7 +510,7 @@ Im folgenden Beispiel ist eine Vorlage dargestellt, die eine öffentliche IP-Adr
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -547,7 +545,7 @@ Um beim Bereitstellen eines Lastenausgleichs die öffentliche IP-Adresse aus der
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "loadBalancers_name": {
@@ -620,7 +618,7 @@ Der Resource Manager verarbeitet jede Vorlage als separate Bereitstellung im Ber
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -658,7 +656,7 @@ Die folgende Vorlage wird mit der vorherigen Vorlage verknüpft. Es werden drei 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   },
@@ -725,7 +723,7 @@ Im folgenden Beispiel wird veranschaulicht, wie ein SAS-Token beim Verknüpfen m
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   "containerSasToken": { "type": "securestring" }
@@ -795,7 +793,7 @@ Die folgenden Beispiele zeigen gängige Nutzungsszenarien für verknüpften Vorl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen](template-tutorial-create-linked-templates.md).
+* Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen](./deployment-tutorial-linked-template.md).
 * Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren von Abhängigkeiten in Azure Resource Manager-Vorlagen](define-resource-dependency.md).
 * Informationen, wie Sie eine Ressource definieren und von dieser viele Instanzen erstellen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](copy-resources.md).
 * Schritte zum Einrichten einer Vorlage in einem Speicherkonto und zum Generieren eines SAS-Tokens finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure PowerShell](deploy-powershell.md) oder [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure-CLI](deploy-cli.md).

@@ -29,7 +29,7 @@ In diesem Artikel wird veranschaulicht, wie Sie C#, [MSAL.NET](https://github.co
 
 Im unten stehenden Beispielcode werden die folgenden Funktionen veranschaulicht:
 
-* Abrufen eines Zugriffstokens mit [PublicClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) für **MSAL.NET**
+* Abrufen eines Zugriffstokens mit **PublicClientApplication** für [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)
 * Sequenzielle CREATE-, READ-, UPDATE- und DELETE-Vorgänge für die GA-[Verweisdatenverwaltungs-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)
 * Allgemeine Antwortcodes, einschließlich [allgemeiner Fehlercodes](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)
     

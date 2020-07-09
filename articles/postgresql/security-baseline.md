@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4a94b0b84290bbf796e951dfee8b3f35b80036ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89d760e28025f64b8cd8940fc08f06d23c969e12
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183159"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83655756"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure-Sicherheitsbaseline für Azure Database for PostgreSQL-Einzelserver
 
@@ -906,7 +906,7 @@ Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität: 
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Sicheres und automatisches Verwalten von Identitäten
 
-**Leitfaden**: Azure Database for PostgreSQL-Server unterstützt zurzeit keine Azure Active Directory-Authentifizierung (in der Vorschau) für den Zugriff auf Datenbanken.  Beim Erstellen des Azure Database for PostgreSQL-Servers geben Sie Anmeldeinformationen für einen Administratorbenutzer ein. Dieser Administrator dient zum Erstellen zusätzlicher Datenbankbenutzer.  
+**Leitfaden**: Azure Database for PostgreSQL-Server unterstützt zurzeit keine Azure Active Directory-Authentifizierung für den Zugriff auf Datenbanken.  Beim Erstellen des Azure Database for PostgreSQL-Servers geben Sie Anmeldeinformationen für einen Administratorbenutzer ein. Dieser Administrator dient zum Erstellen zusätzlicher Datenbankbenutzer.  
 
 Verwenden Sie für virtuelle Azure-Computer oder Webanwendungen, die in Azure App Service für den Zugriff auf Ihre Azure Database for PostgreSQL Server ausgeführt werden, verwaltete Dienstidentitäten in Verbindung mit Azure Key Vault, um Anmeldeinformationen für Azure Database for PostgreSQL-Server zu speichern und abzurufen. Stellen Sie sicher, dass das vorläufige Löschen für Azure Key Vault aktiviert ist.
 

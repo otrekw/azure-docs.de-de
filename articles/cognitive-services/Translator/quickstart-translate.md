@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/10/2020
+ms.date: 05/26/2020
 ms.author: erhopf
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: e8f0f3ff1b34701d45b0138a3c11795520c30a2f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e4ee37c00778d239c8481392ce9231b2dda7c6e3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586623"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606527"
 ---
 # <a name="quickstart-use-the-translator-to-translate-text"></a>Schnellstart: Verwenden von Translator zum Übersetzen von Text
 

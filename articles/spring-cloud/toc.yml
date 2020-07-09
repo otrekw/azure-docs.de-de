@@ -49,6 +49,8 @@
       href: spring-cloud-quotas.md
     - name: Grundlegendes zu Metriken in Azure Spring Cloud
       href: spring-cloud-concept-metrics.md
+    - name: Verwalten und Überwachen einer App mit dem Azure Spring Boot-Aktor
+      href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
     - name: Sicherheitskontrollen für den Azure Spring Cloud-Dienst
       href: spring-cloud-concept-security-controls.md
     - name: Grundlegendes zum App-Status in Azure Spring Cloud
@@ -73,6 +75,10 @@
       href: spring-cloud-howto-persistent-storage.md
     - name: Integrieren von Azure Spring Cloud in Azure-Lastenausgleichslösungen
       href: spring-cloud-howto-integrate-azure-load-balancers.md
+    - name: Aktivieren der systemseitig zugewiesenen verwalteten Identität für die Azure Spring Cloud-Anwendung
+      href: spring-cloud-howto-enable-system-assigned-managed-identity.md
+    - name: Selbstdiagnose und Lösung von Problemen in Azure Spring Cloud
+      href: spring-cloud-howto-self-diagnose-solve.md
 - name: DevOps-Bereitstellung in Azure Spring Cloud
   items:
     - name: CI/CD mit Azure DevOps
@@ -86,7 +92,7 @@
 - name: Verweis
   items:
     - name: Azure CLI-Plug-In
-      href: spring-cloud-cli-reference.md
+      href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
     - name: Ressourcen
       href: spring-cloud-resources.md
     - name: Häufig gestellte Fragen

@@ -3,12 +3,12 @@ title: Unterstützung der Bewertung physischer Server in Azure Migrate
 description: Informationen zur Unterstützung der Bewertung physischer Server mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: ae76a6b570ec58e71a8a1728a2a601728030f58c
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 2a6149da95501b106a57466ad923c0480f52e065
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538153"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267915"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Unterstützungsmatrix für die Bewertung physischer Server 
 
@@ -34,16 +34,18 @@ Zum Bewerten von physischen Servern erstellen Sie ein Azure Migrate-Projekt, und
 | **Unterstützung**                | **Details**               
 | :-------------------       | :------------------- |
 | **Physische Serverbereitstellung**       | Der physische Server kann eigenständig sein oder in einem Cluster bereitgestellt werden. |
-| **Berechtigungen**           | **Windows:** Sie benötigen auf allen Windows-Servern, die Sie ermitteln möchten, ein lokales Konto oder Domänenbenutzerkonto. Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remotedesktopbenutzer, Systemmonitorbenutzer und Leistungsprotokollbenutzer. <br/><br/> **Linux:** Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. |
-| **Betriebssystem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)- und [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)-Betriebssysteme, die von Azure unterstützt werden, mit Ausnahme von Windows Server 2003 und SUSE Linux.|
+| **Berechtigungen**           | **Windows:** Sie benötigen auf allen Windows-Servern, die Sie ermitteln möchten, ein Domänenadministratorkonto oder ein lokales Administratorkonto. Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer. <br/><br/> **Linux:** Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. |
+| **Betriebssystem** | Alle Betriebssysteme können für die Migration ausgewertet werden. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Anforderungen für die Azure Migrate-Appliance
 
-In Azure Migrate erfolgt die Ermittlung und Bewertung über die [Azure Migrate-Appliance](migrate-appliance.md). Die Appliance für physische Server kann auf einem virtuellen Computer oder auf einem physischen Computer ausgeführt werden. Die Einrichtung der Appliance erfolgt mithilfe eines PowerShell-Skripts, das Sie vom Azure-Portal herunterladen.
+In Azure Migrate erfolgt die Ermittlung und Bewertung über die [Azure Migrate-Appliance](migrate-appliance.md). Die Appliance für physische Server kann auf einem virtuellen Computer oder auf einem physischen Computer ausgeführt werden. 
 
 - Informationen zu den Applianceanforderungen für physische Server finden Sie [hier](migrate-appliance.md#appliance---physical).
 - Informationen zu den URLs, auf die die Appliance Zugriff benötigt, finden Sie unter [URLs für die öffentliche Cloud](migrate-appliance.md#public-cloud-urls) und [URLs für Azure Government-Clouds](migrate-appliance.md#government-cloud-urls).
+- Die Einrichtung der Appliance erfolgt mithilfe eines [PowerShell-Skripts](how-to-set-up-appliance-physical.md), das Sie im Azure-Portal herunterladen.
+In Azure Government stellen Sie die Appliance [mithilfe des Skripts](deploy-appliance-script-government.md) bereit.
 
 ## <a name="port-access"></a>Portzugriff
 

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Suchindex in C# mit .NET'
+title: Erstellen eines Suchindex in .NET
 titleSuffix: Azure Cognitive Search
 description: In diesem C#-Schnellstart erfahren Sie, wie Sie mit dem Azure Cognitive Search-.NET SDK einen Index erstellen, Daten laden und Abfragen ausführen.
 manager: nitinme
@@ -8,15 +8,15 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 3d0006a3c77050c1bb21a0da8d6be51e659f933d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/07/2020
+ms.openlocfilehash: 5862a446b1522926f8241959d5e1cff66e4da06b
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77589214"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079388"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in C# mit dem .NET SDK
+# <a name="quickstart-create-a-search-index-in-net"></a>Schnellstart: Erstellen eines Suchindex in .NET
 > [!div class="op_single_selector"]
 > * [C#](search-get-started-dotnet.md)
 > * [Portal](search-get-started-portal.md)
@@ -25,20 +25,22 @@ ms.locfileid: "77589214"
 > * [Postman](search-get-started-postman.md)
 >*
 
-Erstellen Sie mithilfe von Visual Studio und dem [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) eine .NET Core-Konsolenanwendung in C#, die einen Azure Cognitive Search-Index erstellt, lädt und abfragt. In diesem Artikel wird die Erstellung der Anwendung Schritt für Schritt erklärt. Alternativ können Sie [die vollständige Anwendung herunterladen und ausführen](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart).
+Erstellen Sie mithilfe von Visual Studio und dem [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) in C# eine .NET Core-Konsolenanwendung, die einen Azure Cognitive Search-Index erstellt, lädt und abfragt. 
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+In diesem Artikel wird die Erstellung der Anwendung Schritt für Schritt erklärt. Sie könnten auch [die komplette Anwendung herunterladen und ausführen](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart), wenn Sie direkt zum Code wechseln möchten.
 
 > [!NOTE]
 > Der Democode in diesem Artikel enthält der Einfachheit halber die synchronen Methoden des Azure Cognitive Search .NET SDK. In Produktionsszenarien sollten dagegen zur Gewährleistung der Skalierbarkeit und Reaktionsfähigkeit der eigenen Anwendungen die asynchronen Methoden verwendet werden. So können Sie beispielsweise `Create` und `Delete` durch `CreateAsync` und `DeleteAsync` ersetzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diesen Schnellstart sind die folgenden Dienste und Tools erforderlich.
+Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+
++ Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/).
+
++ Ein Azure Cognitive Search-Dienst. [Erstellen Sie einen Dienst](search-create-service-portal.md), oder wechseln Sie in Ihrem aktuellen Abonnement [zu einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/) (beliebige Edition). Der Beispielcode und die Anleitung wurden in der kostenlosen Community-Edition getestet.
-
-+ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
 
 <a name="get-service-info"></a>
 
@@ -62,7 +64,7 @@ Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erford
 
 ### <a name="install-nuget-packages"></a>Installieren von NuGet-Paketen
 
-Das [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) besteht aus einigen Clientbibliotheken, die als NuGet-Pakete verteilt werden.
+Das [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) besteht aus einigen Clientbibliotheken, die als NuGet-Pakete verteilt werden.
 
 Verwenden Sie für dieses Projekt die Version 9 des NuGet-Pakets `Microsoft.Azure.Search` sowie das neueste NuGet-Paket `Microsoft.Extensions.Configuration.Json`.
 
@@ -70,7 +72,7 @@ Verwenden Sie für dieses Projekt die Version 9 des NuGet-Pakets `Microsoft.Azu
 
 1. Klicken Sie auf **Durchsuchen**.
 
-1. Suchen Sie nach `Microsoft.Azure.Search`, und wählen Sie mindestens die Version 9.0.1 aus.
+1. Suchen Sie nach `Microsoft.Azure.Search`, und wählen Sie mindestens die Version 9.0.1 aus (die neueste stabile Version ist 10.1.0).
 
 1. Klicken Sie rechts auf **Installieren**, um die Assembly Ihrem Projekt und Ihrer Projektmappe hinzuzufügen.
 
@@ -87,26 +89,27 @@ Verwenden Sie für dieses Projekt die Version 9 des NuGet-Pakets `Microsoft.Azu
 
 1. Fügen Sie die Datei Ihrem Ausgabeverzeichnis hinzu. Klicken Sie mit der rechten Maustaste auf „appsettings.json“, und wählen Sie **Eigenschaften** aus. Wählen Sie unter **In Ausgabeverzeichnis kopieren** die Option **Kopieren, wenn neuer** aus.
 
-1. Kopieren Sie den folgenden JSON-Code in Ihre neue JSON-Datei. Setzen Sie für den Namen des Suchdiensts (YOUR-SEARCH-SERVICE-NAME) und den Admin-API-Schlüssel (YOUR-ADMIN-API-KEY) gültige Werte ein. Ist Ihr Dienstendpunkt also beispielsweise `https://mydemo.search.windows.net`, lautet der Dienstname „mydemo“.
+1. Kopieren Sie den folgenden JSON-Code in Ihre neue JSON-Datei. 
 
-```json
-{
-  "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
-  "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
-  "SearchIndexName": "hotels-quickstart"
-}
-```
+    ```json
+    {
+      "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
+      "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
+      "SearchIndexName": "hotels-quickstart"
+    }
+    ```
+
+1. Setzen Sie für den Namen des Suchdiensts (YOUR-SEARCH-SERVICE-NAME) und den Admin-API-Schlüssel (YOUR-ADMIN-API-KEY) gültige Werte ein. Ist Ihr Dienstendpunkt also beispielsweise `https://mydemo.search.windows.net`, lautet der Dienstname „mydemo“.
 
 ### <a name="add-class-method-files-to-your-project"></a>Hinzufügen von Klassendateien vom Typ „.Method“ zu Ihrem Projekt
 
-Wenn Ergebnisse im Konsolenfenster ausgegeben werden, müssen einzelne Felder aus dem Objekt „Hotel“ als Zeichenfolgen zurückgegeben werden. Für diese Aufgabe können Sie [ToString()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) implementieren, indem Sie den erforderlichen Code in die beiden neuen Dateien kopieren.
+Dieser Schritt ist erforderlich, um in der Konsole eine sinnvolle Ausgabe zu erzeugen. Wenn Ergebnisse im Konsolenfenster ausgegeben werden, müssen einzelne Felder aus dem Objekt „Hotel“ als Zeichenfolgen zurückgegeben werden. In diesem Schritt wird zur Durchführung dieser Aufgabe [ToString()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) implementiert, indem Sie den erforderlichen Code in zwei neue Dateien kopieren.
 
 1. Fügen Sie Ihrem Projekt zwei leere Klassendefinitionen hinzu: „Address.Methods.cs“ und „Hotel.Methods.cs“.
 
-1. Überschreiben Sie in „Address.Methods.cs“ den Standardinhalt mit dem folgenden Code ([Zeilen 1–32](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L32)).
+1. Überschreiben Sie in „Address.Methods.cs“ den Standardinhalt mit dem folgenden Code ([Zeilen 1 bis 25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L25)).
 
-1. Kopieren Sie in „Hotel.Methods.cs“ die [Zeilen 1–66](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L66).
-
+1. Kopieren Sie in „Hotel.Methods.cs“ die [Zeilen 1 bis 68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L68).
 
 ## <a name="1---create-index"></a>1\. Erstellen des Index
 
@@ -271,7 +274,7 @@ Der Hotelindex setzt sich aus einfachen und komplexen Feldern zusammen. Ein einf
             // The fields of the index are defined by calling the FieldBuilder.BuildForType() method.
             private static void CreateIndex(string indexName, SearchServiceClient serviceClient)
             {
-                var definition = new Index()
+                var definition = new Microsoft.Azure.Search.Models.Index()
                 {
                     Name = indexName,
                     Fields = FieldBuilder.BuildForType<Hotel>()

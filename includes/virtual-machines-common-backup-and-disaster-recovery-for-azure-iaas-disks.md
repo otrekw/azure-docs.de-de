@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77179013"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84124392"
 ---
 In diesem Artikel wird beschrieben, wie Sie die Sicherung und Notfallwiederherstellung (Disaster Recovery, DR) von virtuellen IaaS-Computern (Virtual Machines, VMs) und Datenträgern in Azure planen. Im Dokument werden sowohl Managed Disks als auch nicht verwaltete Datenträger behandelt.
 
@@ -231,7 +231,7 @@ Bei VMs mit mehreren Datenträgern müssen Sie alle Momentaufnahmen kopieren, di
 
 ### <a name="sql-server"></a>SQL Server
 
-Wenn SQL Server auf einer VM ausgeführt wird, sind eigene Funktionen zum Sichern Ihrer SQL Server-Datenbank in Azure Blob Storage oder auf einer Dateifreigabe vorhanden. Bei einem Speicherkonto des Typs georedundanter Speicher oder georedundanter Speicher mit Lesezugriff können Sie bei einem Notfall mit denselben Einschränkungen wie oben beschrieben im sekundären Rechenzentrum des Speicherkontos auf diese Sicherungen zugreifen. Weitere Informationen finden Sie unter [Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md). Zusätzlich zum Sichern und Wiederherstellen können [SQL Server AlwaysOn-Verfügbarkeitsgruppen](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md) sekundäre Replikate von Datenbanken verwalten. Diese Möglichkeit reduziert die Wiederherstellungszeit nach einem Notfall erheblich.
+Wenn SQL Server auf einer VM ausgeführt wird, sind eigene Funktionen zum Sichern Ihrer SQL Server-Datenbank in Azure Blob Storage oder auf einer Dateifreigabe vorhanden. Bei einem Speicherkonto des Typs georedundanter Speicher oder georedundanter Speicher mit Lesezugriff können Sie bei einem Notfall mit denselben Einschränkungen wie oben beschrieben im sekundären Rechenzentrum des Speicherkontos auf diese Sicherungen zugreifen. Weitere Informationen finden Sie unter [Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern](../articles/azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md). Zusätzlich zum Sichern und Wiederherstellen können [SQL Server AlwaysOn-Verfügbarkeitsgruppen](../articles/azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md) sekundäre Replikate von Datenbanken verwalten. Diese Möglichkeit reduziert die Wiederherstellungszeit nach einem Notfall erheblich.
 
 ## <a name="other-considerations"></a>Weitere Überlegungen
 

@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung bei Azure Automation State Configuration
-description: Dieser Artikel enthält Informationen zur Behandlung von Problemen mit Azure Automation State Configuration.
+description: In diesem Artikel erfahren Sie, wie Sie Probleme mit Azure Automation State Configuration beheben.
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,19 +9,16 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0801bb44fc0c08df1adee1f817e8fccab166fb5
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 6e057f5c9525f3b4ca373897c865990eb29835c0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652810"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681379"
 ---
-# <a name="troubleshoot-issues-with-azure-automation-state-configuration"></a>Problembehandlung bei Azure Automation State Configuration
+# <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Problembehandlung bei Azure Automation State Configuration
 
-Dieser Artikel enthält Informationen zur Behandlung von Problemen, die beim Kompilieren oder Bereitstellen von Konfigurationen in Azure Automation State Configuration auftreten können.
-
->[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Schritte unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) auf die neueste Version aktualisieren.
+Dieser Artikel enthält Informationen zur Behebung von Problemen, die beim Kompilieren oder Bereitstellen von Konfigurationen in Azure Automation State Configuration auftreten können. Allgemeine Informationen zum State Configuration-Feature finden Sie unter [Übersicht über Azure Automation State Configuration](../automation-dsc-overview.md).
 
 ## <a name="diagnose-an-issue"></a>Ein Problem diagnostizieren
 
@@ -112,7 +109,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>Ursache
 
-Dieses Problem wird durch ein ungültiges oder abgelaufenes Zertifikat verursacht. Weitere Informationen finden Sie unter [Ablauf und erneute Registrierung eines Zertifikats](../automation-dsc-onboarding.md#re-registering-a-node).
+Dieses Problem wird durch ein ungültiges oder abgelaufenes Zertifikat verursacht. Weitere Informationen finden Sie unter [Erneutes Registrieren eines Knotens](../automation-dsc-onboarding.md#re-register-a-node).
 
 Dieses Problem kann auch durch eine Proxykonfiguration verursacht werden, die den Zugriff auf * **.azure-automation.net** nicht zulässt. Weitere Informationen finden Sie unter [Konfiguration privater Netzwerke](../automation-dsc-overview.md#network-planning). 
 
@@ -239,11 +236,11 @@ Sie haben Anmeldeinformationen in einer Konfiguration verwendet, aber keine ordn
 
 Stellen Sie sicher, dass Sie die ordnungsgemäßen `ConfigurationData` übergeben, mit denen `PSDscAllowPlainTextPassword` für jede in der Konfiguration angegebene Knotenkonfiguration auf „true“ festgelegt wird. Weitere Informationen finden Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation State Configuration](../automation-dsc-compile.md).
 
-## <a name="scenario-failure-processing-extension-error-when-onboarding-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>Szenario: „Fehler beim Verarbeiten der Erweiterung“ beim Onboarding über eine DSC-Erweiterung
+## <a name="scenario-failure-processing-extension-error-when-enabling-a-machine-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>Szenario: „Fehler beim Verarbeiten der Erweiterung“ beim Aktivieren eines Computers über eine DSC-Erweiterung
 
 ### <a name="issue"></a>Problem
 
-Beim Onboarding mithilfe einer DSC-Erweiterung tritt der folgende Fehler auf:
+Beim Aktivieren eines Computers mithilfe einer DSC-Erweiterung tritt der folgende Fehler auf:
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -256,7 +253,7 @@ Dieser Fehler tritt in der Regel auf, wenn dem Knoten ein Knotenkonfigurationsna
 ### <a name="resolution"></a>Lösung
 
 * Stellen Sie sicher, dass Sie dem Knoten einen Namen zuweisen, der genau mit dem im Dienst vorhandenen Namen übereinstimmt.
-* Sie können festlegen, dass kein Knotenkonfigurationsname angegeben werden soll. In diesem Fall erfolgt ein Onboarding des Knotens, aber keine Zuweisung einer Knotenkonfiguration.
+* Sie können festlegen, dass kein Knotenkonfigurationsname angegeben werden soll. In diesem Fall erfolgt eine Aktivierung des Knotens, aber keine Zuweisung einer Knotenkonfiguration.
 
 ## <a name="scenario-one-or-more-errors-occurred-error-when-registering-a-node-by-using-powershell"></a><a name="cross-subscription"></a>Szenario: Fehler „Es ist mindestens ein Fehler aufgetreten“ beim Registrieren eines Knotens mit PowerShell
 
@@ -274,10 +271,10 @@ Dieser Fehler tritt auf, wenn Sie versuchen, einen Knoten in einem anderen als d
 
 ### <a name="resolution"></a>Lösung
 
-Behandeln Sie den Knoten aus dem anderen Abonnement so, als wäre er für eine separate Cloud oder als lokaler Knoten definiert. Registrieren Sie den Knoten mit einer der folgenden Onboardingoptionen:
+Behandeln Sie den Knoten aus dem anderen Abonnement so, als wäre er für eine separate Cloud oder als lokaler Knoten definiert. Registrieren Sie den Knoten mit einer der folgenden Optionen für die Aktivierung von Computern:
 
-* Windows: [Physische/virtuelle Windows-Computer, lokal oder in einer anderen Cloud als Azure/AWS](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines).
-* Linux: [Physische/virtuelle Linux-Computer, lokal oder in einer anderen Cloud als Azure](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines).
+* Windows: [Physische/virtuelle Windows-Computer, lokal oder in einer anderen Cloud als Azure/AWS](../automation-dsc-onboarding.md#enable-physicalvirtual-windows-machines).
+* Linux: [Physische/virtuelle Linux-Computer, lokal oder in einer anderen Cloud als Azure](../automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines).
 
 ## <a name="scenario-provisioning-has-failed-error-message"></a><a name="agent-has-a-problem"></a>Szenario: Fehlermeldung „Fehler beim Bereitstellen“
 
@@ -295,7 +292,7 @@ Diese Meldung ist auf ein Konnektivitätsproblem zwischen dem Knoten und Azure z
 
 ### <a name="resolution"></a>Lösung
 
-Ermitteln Sie, ob sich Ihr Knoten in einem virtuellen privaten Netzwerk (VPN) befindet oder ob andere Probleme beim Herstellen einer Verbindung mit Azure vorliegen. Weitere Informationen finden Sie unter [Behandeln von Problemen beim Onboarding von Lösungen](onboarding.md).
+Ermitteln Sie, ob sich Ihr Knoten in einem virtuellen privaten Netzwerk (VPN) befindet oder ob andere Probleme beim Herstellen einer Verbindung mit Azure vorliegen. Weitere Informationen finden Sie unter [Beheben von Problemen bei der Featurebereitstellung](onboarding.md).
 
 ## <a name="scenario-failure-with-a-general-error-when-applying-a-configuration-in-linux"></a><a name="failure-linux-temp-noexec"></a>Szenario: Allgemeiner Fehler beim Anwenden einer Konfiguration in Linux
 

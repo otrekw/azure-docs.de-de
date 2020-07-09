@@ -1,35 +1,31 @@
 ---
 title: Generieren von Empfehlungen mit Apache Mahout in Azure HDInsight
-description: Erfahren Sie, wie Sie Filmempfehlungen mit der Apache Mahout-Bibliothek für maschinelles Lernen und HDInsight (Hadoop) erstellen können.
+description: Erfahren Sie, wie Sie Filmempfehlungen mit der Apache Mahout-Bibliothek für maschinelles Lernen und HDInsight erstellen können.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 01/03/2020
-ms.openlocfilehash: 33110e9f1d45fcd11e5f4cad1b589ab929a9472d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: f533b2baa3e1e748edfc723a60734daedf3d0a18
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75767635"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086023"
 ---
-# <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>Erstellen von Filmempfehlungen mithilfe von Apache Mahout mit Apache Hadoop in HDInsight (SSH)
-
-[!INCLUDE [mahout-selector](../../../includes/hdinsight-selector-mahout.md)]
+# <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Generieren von Empfehlungen mit Apache Mahout in Azure HDInsight
 
 Erfahren Sie, wie Sie Filmempfehlungen mit der [Apache Mahout](https://mahout.apache.org) -Bibliothek für maschinelles Lernen und Azure HDInsight erstellen können.
 
 Mahout ist eine Bibliothek für [maschinelles Lernen](https://en.wikipedia.org/wiki/Machine_learning) für Apache Hadoop. Mahout enthält Algorithmen zur Verarbeitung von Daten wie etwa Filterung, Klassifizierung und Clustering. In diesem Artikel verwenden Sie eine Empfehlungs-Engine zum Generieren von Filmempfehlungen auf der Grundlage von Filmen, die Ihre Freunde gesehen haben.
 
+Weitere Informationen zur Mahout-Version in HDInsight finden Sie unter [HDInsight-Versionen und Apache Hadoop-Komponenten](../hdinsight-component-versioning.md).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Ein Apache Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](./apache-hadoop-linux-tutorial-get-started.md).
-
-## <a name="apache-mahout-versioning"></a>Apache Mahout-Versionsverwaltung
-
-Weitere Informationen zur Mahout-Version in HDInsight finden Sie unter [HDInsight-Versionen und Apache Hadoop-Komponenten](../hdinsight-component-versioning.md).
 
 ## <a name="understanding-recommendations"></a>Grundlegendes zu Empfehlungen
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: a9a5fe2eed0c0e6cf990183d321a71a7fabfbbee
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76774271"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118633"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Tutorial: Moderieren von Facebook-Posts und -Kommentaren mit Azure Content Moderator
 
@@ -70,14 +70,14 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und führen S
     
     | Name der App-Einstellung | value   | 
     | -------------------- |-------------|
-    | cm:TeamId   | Ihre Content Moderator-Team-ID  | 
-    | cm:SubscriptionKey | Ihr Content Moderator-Abonnementschlüssel – Siehe [Anmeldeinformationen](review-tool-user-guide/credentials.md) |
-    | cm:Region | Ihr Content Moderator-Regionsname, ohne Leerzeichen. Sie finden ihn auf der Registerkarte **Übersicht** Ihrer Azure-Ressource im Feld **Standort**.|
-    | cm:ImageWorkflow | Name des Workflows für Bilder |
-    | cm:TextWorkflow | Name des Workflows für Text |
-    | cm:CallbackEndpoint | URL für die CMListener-Funktionen-App, die Sie später in diesem Leitfaden erstellen |
-    | fb:VerificationToken | Ein von Ihnen erstelltes geheimes Token, das zum Abonnieren der Facebook-Feedereignisse verwendet wird |
-    | fb:PageAccessToken | Das Zugriffstoken für die Facebook-Graph-API läuft nicht ab und lässt die Funktion zum Ausblenden/Löschen von Posts in Ihrem Namen zu Dieses Token erhalten Sie in einem späteren Schritt. |
+    | `cm:TeamId`   | Ihre Content Moderator-Team-ID  | 
+    | `cm:SubscriptionKey` | Ihr Content Moderator-Abonnementschlüssel – Siehe [Anmeldeinformationen](review-tool-user-guide/credentials.md) |
+    | `cm:Region` | Ihr Content Moderator-Regionsname, ohne Leerzeichen. Sie finden diesen Namen auf der Registerkarte **Übersicht** Ihrer Azure-Ressource im Feld **Standort**.|
+    | `cm:ImageWorkflow` | Name des Workflows für Bilder |
+    | `cm:TextWorkflow` | Name des Workflows für Text |
+    | `cm:CallbackEndpoint` | URL für die CMListener-Funktionen-App, die Sie später in diesem Leitfaden erstellen |
+    | `fb:VerificationToken` | Ein von Ihnen erstelltes geheimes Token, das zum Abonnieren der Facebook-Feedereignisse verwendet wird |
+    | `fb:PageAccessToken` | Das Zugriffstoken für die Facebook-Graph-API läuft nicht ab und lässt die Funktion zum Ausblenden/Löschen von Posts in Ihrem Namen zu Dieses Token erhalten Sie in einem späteren Schritt. |
 
     Klicken Sie oben auf der Seite auf die Schaltfläche **Speichern**.
 

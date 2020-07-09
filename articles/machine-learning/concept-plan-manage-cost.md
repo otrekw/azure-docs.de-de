@@ -9,13 +9,13 @@ ms.reviewer: nigup
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 67b703f0079e26d01330d52d170f99699480fad6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195777"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996318"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Planen und Verwalten von Kosten für Azure Machine Learning
 
@@ -49,7 +49,7 @@ Der folgende Screenshot zeigt die Kostenschätzung unter Verwendung des Preisrec
 
 Wenn Sie Ihrem Arbeitsbereich neue Ressourcen hinzufügen, kehren Sie zu diesem Preisrechner zurück, und fügen Sie hier die gleiche Ressource hinzu, um Ihre Kostenschätzung zu aktualisieren.
 
-Für die Vorschauversion der Enterprise Edition wird für ML kein Zuschlag in Rechnung gestellt. Mit Erreichen der allgemeinen Verfügbarkeit der Enterprise Edition wird für Machine Learning ein Zuschlag (für Training und Rückschließen) in Rechnung gestellt.  Weitere Details finden Sie unter [Azure Machine Learning-Preise](https://azure.microsoft.com/pricing/details/machine-learning/).
+Für die Vorschauversion der Enterprise Edition wird für ML kein Zuschlag in Rechnung gestellt. Mit Erreichen der allgemeinen Verfügbarkeit der Enterprise Edition wird ein Zuschlag (für Training und Rückschlüsse) in Rechnung gestellt.  Weitere Informationen finden Sie unter [Azure Machine Learning – Preise](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 ## <a name="get-cost-alerts"></a>Abrufen von Kostenwarnungen
 
@@ -59,26 +59,30 @@ Erstellen Sie [Budgets](../cost-management/tutorial-acm-create-budgets.md), um K
 
 Wenn Sie Ressourcen mit Azure Machine Learning verwenden, fallen Kosten an. Die Kosten pro Azure-Ressourcennutzungseinheit variieren nach dem Zeitintervall (Sekunden, Minuten, Stunden und Tage) oder der Nutzung von Anforderungseinheiten. Kosten fallen an, sobald die Nutzung von Azure Machine Learning beginnt. Zeigen Sie diese Kosten im Bereich [Kostenanalyse](../cost-management/quick-acm-cost-analysis.md) im Azure-Portal an.
 
-Zeigen Sie Kosten in Diagrammen und Tabellen für verschiedene Zeitintervalle an. Beispiele hierfür sind „Tag“, „Aktuell“, „Vorheriger Monat“ und „Jahr“. Ferner können Sie Kosten im Vergleich mit Budgets und vorhergesagten Kosten anzeigen. Wenn Sie im Laufe der Zeit zu längeren Zeiträumen wechseln, können Sie Ausgabentrends ermitteln und erkennen, wo es ggf. zu hohen Ausgaben gekommen ist. Wenn Sie Budgets erstellt haben, sehen Sie, wo diese überschritten wurden.  
+Sie können die Kosten in Diagrammen und Tabellen für verschiedene Zeitintervalle anzeigen. Außerdem können Sie Kosten nach Budgets und vorhergesagten Kosten anzeigen. Wenn Sie im Laufe der Zeit auf längere Zeiträume umstellen, können Sie Ausgabentrends ermitteln und erkennen, wo das Budget ggf. überschritten wurde. Wenn Sie Budgets erstellt haben, sehen Sie, wo diese überschritten wurden.  
 
 Es wird kein separater Dienstbereich für Machine Learning angezeigt.  Stattdessen sehen Sie die verschiedenen Ressourcen, die Sie Ihren Machine Learning-Arbeitsbereichen hinzugefügt haben.
 
-## <a name="use-amlcompute"></a>Verwenden von AmlCompute
+## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Verwenden des Azure Machine Learning Compute-Clusters (AmlCompute)
 
 Bei sich ständig verändernden Daten benötigen Sie ein schnelles und optimiertes Training und Nachtraining von Modellen, um die Genauigkeit der Modelle aufrecht zu erhalten. Fortlaufendes Training hat aber seinen Preis, insbesondere bei Deep Learning-Modellen auf GPUs. 
 
-Azure Machine Learning-Benutzer können den verwalteten Azure Machine Learning-Computecluster verwenden, der auch als „AmlCompute“ bezeichnet wird. AmlCompute unterstützt eine Vielzahl von GPU- und CPU-Optionen. AmlCompute wird intern im Auftrag Ihres Abonnements von Azure Machine Learning gehostet, bietet aber die gleiche Sicherheit, Compliance und Governance auf Konzernniveau wie Azure IaaS im Cloudmaßstab.
+Azure Machine Learning-Benutzer können den verwalteten Azure Machine Learning-Computecluster verwenden, der auch als „AmlCompute“ bezeichnet wird. AmlCompute unterstützt eine Vielzahl von GPU- und CPU-Optionen. Der AmlCompute-Cluster wird von Azure Machine Learning intern im Auftrag Ihres Abonnements gehostet. Er bietet die gewohnte Sicherheit, Compliance und Governance auf Unternehmensniveau im Umfang einer Azure-IaaS-Cloud.
 
 Da sich diese Computepools innerhalb der Azure IaaS-Infrastruktur befinden, können Sie Ihr Training mit den gleichen Sicherheits- und Complianceanforderungen bereitstellen, skalieren und verwalten wie den Rest Ihrer Infrastruktur.  Diese Bereitstellungen erfolgen in Ihrem Abonnement und richten sich nach Ihren Governanceregeln. Weitere Informationen zu [Azure Machine Learning Compute](how-to-set-up-training-targets.md#amlcompute).
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>Konfigurieren von Trainingsclustern für automatische Skalierung
 
-Cluster mit automatischer Skalierung auf der Grundlage Ihrer Workloadanforderungen helfen Ihnen, Ihre Kosten zu senken, indem Sie nur nutzen, was Sie benötigen. AmlCompute-Cluster sind dafür ausgelegt, ausgehend von den Anforderungen Ihrer Workload automatisch zu skalieren. Der Cluster kann bis zur maximalen Anzahl der bereitgestellten Knoten und im Rahmen des für das Abonnement bestimmten Kontingents hochskaliert werden. Nach dem Abschluss der einzelnen Läufe gibt der Cluster Knoten frei und skaliert automatisch auf die von Ihnen bestimmte minimale Knotenanzahl herunter.
+Cluster mit automatischer Skalierung auf der Grundlage Ihrer Workloadanforderungen helfen Ihnen, Ihre Kosten zu senken, indem Sie nur nutzen, was Sie benötigen.
 
-Über das Festlegen der Minimal- und Maximalanzahl der Knoten hinaus können Sie die Leerlaufzeit des Knotens vor dem Herunterskalieren optimieren. Standardmäßig ist die Leerlaufzeit vor dem Herunterskalieren auf 120 Sekunden festgelegt.
+AmlCompute-Cluster sind auf die workloadabhängige Skalierung ausgelegt. Der Cluster kann auf die maximale Anzahl der konfigurierten Knoten hochskaliert werden. Nach dem Abschluss der einzelnen Durchläufe gibt der Cluster Knoten frei und skaliert auf die von Ihnen konfigurierte minimale Knotenanzahl herunter.
+
+[!INCLUDE [min-nodes-note](../../includes/machine-learning-min-nodes.md)]
+
+Sie können auch festlegen, wie lange sich der Knoten im Leerlauf befindet, bevor er herunterskaliert wird. Standardmäßig ist die Leerlaufzeit vor dem Herunterskalieren auf 120 Sekunden festgelegt.
 
 + Wenn Sie weniger iterative Experimente ausführen, setzen Sie diese Zeit herab, um Kosten zu sparen. 
-+ Wenn Sie hochgradig iterative Dev/Test-Experimente ausführen, müssen Sie diesen Wert möglicherweise heraufsetzen, damit Sie nicht für ständiges Hoch- und Herunterskalieren nach jeder Änderung Ihres Trainingsskripts oder Ihrer Umgebung zahlen müssen.
++ Wenn Sie hochgradig iterative Dev/Test-Experimente ausführen, müssen Sie die Zeit möglicherweise erhöhen, damit Sie nicht für ständiges Hoch- und Herunterskalieren nach jeder Änderung Ihres Trainingsskripts oder Ihrer Umgebung zahlen müssen.
 
 AmlCompute-Cluster können im Azure-Portal für Ihre wechselnden Workloadanforderungen konfiguriert werden, mithilfe der [AmlCompute SDK-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py), des [AmlCompute-CLIs](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute) und mit den [REST-APIs](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
 
@@ -88,24 +92,24 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 ## <a name="set-quotas-on-resources"></a>Festlegen von Kontingenten für Ressourcen
 
-Ganz wie andere Azure-Computeressourcen besitzt auch AmlCompute von Haus aus eine inhärente [Kontingentkonfiguration (oder Grenzwertkonfiguration)](how-to-manage-quotas.md#azure-machine-learning-compute). Dieses Kontingent ist für die VM-Familie spezifisch (z. B. Dv2-Serie, NCv3-Serie) und variiert für die einzelnen Abonnements nach Region. Abonnements beginnen mit kleinen Standardwerten für den Einstieg, aber mit dieser Einstellung können Sie die Menge der Amlcompute-Ressourcen bestimmen, die für das Hochfahren in Ihrem Abonnement verfügbar sind. 
+AmlCompute bietet eine [Konfiguration für Kontingente (Limits)](how-to-manage-quotas.md#azure-machine-learning-compute). Dieses Kontingent ist für die VM-Familie spezifisch (z. B. Dv2-Serie, NCv3-Serie) und variiert für die einzelnen Abonnements nach Region. Abonnements beginnen mit kleinen Standardwerten für den Einstieg, aber mit dieser Einstellung können Sie die Menge der Amlcompute-Ressourcen bestimmen, die für das Hochfahren in Ihrem Abonnement verfügbar sind. 
 
-Konfigurieren Sie außerdem für jeden Arbeitsbereich innerhalb eines Abonnements das [Kontingent auf Arbeitsbereichsebene pro VM-Familie](/how-to-manage-quotas.md#workspace-level-quota). Dies ermöglicht Ihnen eine präzisere Kontrolle der Kosten, die für die einzelnen Arbeitsbereiche anfallen können, und eine Einschränkung bestimmter VM-Familien. 
+Konfigurieren Sie außerdem für jeden Arbeitsbereich innerhalb eines Abonnements das [Kontingent auf Arbeitsbereichsebene pro VM-Familie](how-to-manage-quotas.md#workspace-level-quota). Diese ermöglicht Ihnen eine präzisere Kontrolle der Kosten, die für die einzelnen Arbeitsbereiche anfallen können, und eine Einschränkung bestimmter VM-Familien. 
 
 Beginnen Sie das Festlegen von Kontingenten auf Arbeitsbereichsebene im [Azure-Portal](https://portal.azure.com).  Wählen Sie einen beliebigen Arbeitsbereich in Ihrem Abonnement aus, und wählen Sie im linken Bereich **Nutzung + Kontingente** aus. Wählen Sie anschließend die Registerkarte **Kontingente konfigurieren** aus, um die Kontingente anzuzeigen. Sie benötigen Berechtigungen auf Abonnementebene, um dieses Kontingent festzulegen, da diese Einstellung mehrere Arbeitsbereiche betrifft.
 
-## <a name="set-run-auto-termination-policies"></a>Festlegen von Richtlinien für die automatische Beendigung von Läufen 
+## <a name="set-run-autotermination-policies"></a>Festlegen von Richtlinien für die automatische Beendigung von Durchläufen 
 
-Konfigurieren Sie für Ihre Trainingsläufe eine beschränkte Ausführungsdauer oder eine vorzeitige Beendigung, falls bestimmte Bedingungen erfüllt sind, insbesondere, wenn Sie die integrierte Hyperparameteroptimierung von Azure Machine Learning oder die Funktionen für automatisiertes maschinelles Lernen verwenden. 
+In einigen Fällen sollten Sie Ihre Trainingsdurchläufe so konfigurieren, dass ihre Dauer eingeschränkt wird oder sie vorzeitig beendet werden. Das gilt beispielsweise, wenn Sie die integrierte Hyperparameteroptimierung von Azure Machine Learning oder automatisiertes Machine Learning nutzen.
 
 Dies sind einige der Optionen, die sich Ihnen bieten:
 * Definieren Sie einen Parameter mit dem Namen `max_run_duration_seconds` in ihrer RunConfiguration, um die maximale Dauer zu steuern, auf die ein Lauf auf der von Ihnen gewählten Compute (lokale oder Remote-Cloudcompute) ausgedehnt werden kann.
-* Definieren Sie für die [Hyperparameteroptimierung](how-to-tune-hyperparameters.md#early-termination) eine Richtlinie für vorzeitige Beendigung, eine Medianstopprichtlinie oder eine Kürzungsauswahlrichtlinie. Außerdem sollten Sie Parameter wie `max_total_runs` oder `max_duration_minutes` verwenden, um die verschiedenen Löschungen der Hyperparameter feiner zu steuern.
+* Definieren Sie für die [Hyperparameteroptimierung](how-to-tune-hyperparameters.md#early-termination) eine Richtlinie für vorzeitige Beendigung, eine Medianstopprichtlinie oder eine Kürzungsauswahlrichtlinie. Verwenden Sie Parameter wie `max_total_runs` oder `max_duration_minutes`, um Hyperparametersweeps präziser zu steuern.
 * Legen Sie für [automatisiertes maschinelles Lernen](how-to-configure-auto-train.md#exit) ähnliche Beendigungsrichtlinien mithilfe des Flags `enable_early_stopping` fest. Verwenden Sie darüber hinaus Eigenschaften wie `iteration_timeout_minutes` und `experiment_timeout_minutes`, um die maximale Dauer eines Laufs für das gesamte Experiment zu steuern.
 
 ## <a name="use-low-priority-vms"></a>Verwenden von virtuellen Computern mit niedriger Priorität
 
-Azure erlaubt es Ihnen, nicht ausgelastete Überschusskapazität in Form von VMs mit niedriger Priorität für VM-Skalierungsgruppen, Batch und den Machine Learning-Dienst zu verwenden. Für diese Zuordnungen können Bevorrechtigungen festgelegt werden (pre-emptible), sie bieten jedoch den Vorteil eines niedrigeren Preises im Vergleich mit dedizierten VMs. Im Allgemeinen empfiehlt sich der Einsatz von VMs mit niedriger Priorität für Batchworkloads oder in Fällen, in denen eine Wiederherstellung nach Unterbrechungen erfolgen kann, entweder durch erneute Einleitung (bei Batchrückschließen) oder mithilfe eines Neustarts (bei Training mit Prüfpunktausführung in Deep Learning-Szenarien).
+Azure erlaubt es Ihnen, nicht ausgelastete Überschusskapazität in Form von VMs mit niedriger Priorität für VM-Skalierungsgruppen, Batch und den Machine Learning-Dienst zu verwenden. Für diese Zuordnungen können Bevorrechtigungen festgelegt werden (pre-emptible), sie bieten jedoch den Vorteil eines niedrigeren Preises im Vergleich mit dedizierten VMs. Im Allgemeinen wird empfohlen, VMS mit niedriger Priorität für Batchworkloads zu verwenden. Sie sollten diese ebenfalls in Fällen verwenden, in denen eine Wiederherstellung nach Unterbrechungen erfolgen kann – entweder durch erneute Einleitung (bei Batchrückschlüssen) oder mithilfe eines Neustarts (bei Training mit Prüfpunktausführung in Deep-Learning-Szenarios).
 
 VMs mit niedriger Priorität besitzen ein einzelnes Kontingent, das sich nach der VM-Familie richtet. Weitere Informationen über [AmlCompute-Kontingente](how-to-manage-quotas.md).
 
@@ -131,12 +135,14 @@ Legen Sie die Priorität Ihrer VM auf eine der folgenden Weisen fest:
 
 ## <a name="use-reserved-instances"></a>Verwenden von reservierten Instanzen
 
-Reservierte Azure-VM-Instanzen bieten eine weitere Möglichkeit, große Einsparungen bei Computeressourcen durch eine verbindliche ein- oder dreijährige Laufzeit zu erzielen. Diese Rabatte erreichen bis zu 72 % gegenüber den Preisen für nutzungsbasierte Bezahlung und werden direkt auf Ihre monatliche Azure-Rechnung angewendet.
+Reservierte Azure VM-Instanzen sind eine weitere Möglichkeit zur Kosteneinsparung bei Computeressourcen. Bei diesem Angebot stehen Verträge mit ein- oder dreijähriger Laufzeit zur Wahl. Diese Rabatte erreichen bis zu 72 % gegenüber den Preisen für nutzungsbasierte Bezahlung und werden direkt auf Ihre monatliche Azure-Rechnung angewendet.
 
-Azure Machine Learning Compute unterstützt reservierte Instanzen nativ. Wenn Sie also eine reservierte Instanz für ein Jahr oder drei Jahre erworben haben, wenden wir den Rabatt für die reservierte Instanz automatisch auf die verwaltete Compute an, die in Azure Machine Learning genutzt wird, ohne dass weiteres Setup ihrerseits erforderlich ist.
+Azure Machine Learning Compute unterstützt reservierte Instanzen nativ. Wenn Sie eine reservierte Instanz für ein Jahr oder drei Jahre kaufen, wird der Rabatt automatisch auf ihre verwalteten Azure Machine Learning-Computeressourcen angewendet.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über die Verwaltung von Kosten mit der [Kostenanalyse](../cost-management-billing/costs/quick-acm-cost-analysis.md).
-* Weitere Informationen zu [Azure Machine Learning Compute](how-to-set-up-training-targets.md#amlcompute).
+Weitere Informationen:
+* [Verwalten und Erhöhen von Ressourcenkontingenten](how-to-manage-quotas.md)
+* [Kostenverwaltung mit der Kostenanalyse](../cost-management-billing/costs/quick-acm-cost-analysis.md)
+* [Azure Machine Learning Compute](how-to-set-up-training-targets.md#amlcompute)

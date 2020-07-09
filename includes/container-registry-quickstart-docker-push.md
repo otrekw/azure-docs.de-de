@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 09eaf9465ec3912dea6e1f3ee1693f6bfed50abc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b10bf18fde850223bda80a597f448747558113f1
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "67178647"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752201"
 ---
 ## <a name="push-image-to-registry"></a>Pushen eines Image in die Registrierung
 
@@ -23,24 +23,24 @@ Um ein Image mithilfe von Push an Ihre Azure Container Registry-Instanz übertra
 docker pull hello-world
 ```
 
-Bevor Sie ein Image mithilfe von Push in Ihre Registrierung übertragen können, müssen Sie es mit dem vollqualifizierten Namen Ihres ACR-Anmeldeservers markieren. Der Name des Anmeldeservers wird im Format *\<Registrierungsname\>.azurecr.io* (nur Kleinbuchstaben) angegeben, z. B. *mycontainerregistry007.azurecr.io*.
+Bevor Sie ein Image mithilfe von Push in Ihre Registrierung übertragen können, müssen Sie es mit dem vollqualifizierten Namen des Anmeldeservers Ihrer Registrierungsinstanz markieren. Der Name des Anmeldeservers wird im Format *\<registry-name\>.azurecr.io* (nur Kleinbuchstaben) angegeben, z. B. *mycontainerregistry007.azurecr.io*.
 
-Markieren Sie das Image mithilfe des Befehls [docker tag][docker-tag]. Ersetzen Sie `<acrLoginServer>` durch den Anmeldeservernamen Ihrer ACR-Instanz.
-
-```
-docker tag hello-world <acrLoginServer>/hello-world:v1
-```
-
-Nun können Sie das Image mithilfe von [docker push][docker-push] an die ACR-Instanz übertragen. Ersetzen Sie `<acrLoginServer>` durch den Anmeldeservernamen Ihrer ACR-Instanz. In diesem Beispiel wird das Repository **hello-world** mit dem Image `hello-world:v1` erstellt.
+Markieren Sie das Image mithilfe des Befehls [docker tag][docker-tag]. Ersetzen Sie `<login-server>` durch den Anmeldeservernamen Ihrer ACR-Instanz.
 
 ```
-docker push <acrLoginServer>/hello-world:v1
+docker tag hello-world <login-server>/hello-world:v1
+```
+
+Nun können Sie das Image mit [docker push][docker-push] per Pushvorgang an die Registrierungsinstanz übertragen. Ersetzen Sie `<login-server>` durch den Anmeldeservernamen Ihrer Registrierungsinstanz. In diesem Beispiel wird das Repository **hello-world** mit dem Image `hello-world:v1` erstellt.
+
+```
+docker push <login-server>/hello-world:v1
 ```
 
 Nachdem das Image in Ihre Containerregistrierung gepusht wurde, entfernen Sie das Image `hello-world:v1` aus Ihrer lokalen Docker-Umgebung. (Beachten Sie, dass der Befehl [docker rmi][docker-rmi] nicht das Image aus dem Repository **hello-world** in Ihrer Azure-Containerregistrierung entfernt.)
 
 ```
-docker rmi <acrLoginServer>/hello-world:v1
+docker rmi <login-server>/hello-world:v1
 ```
 
 <!-- LINKS - External -->

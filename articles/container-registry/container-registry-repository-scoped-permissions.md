@@ -1,14 +1,14 @@
 ---
 title: Berechtigungen für Repositorys in Azure Container Registry
-description: Erstellen eines Tokens mit Berechtigungen, die für bestimmte Repositorys in einer Registrierung gelten, um Images zu pullen oder zu pushen bzw. andere Aktionen auszuführen
+description: Erstellen eines Tokens mit Berechtigungen, die für bestimmte Repositorys in einer Premium-Registrierung gelten, um Images zu pullen oder zu pushen bzw. andere Aktionen auszuführen
 ms.topic: article
-ms.date: 02/13/2020
-ms.openlocfilehash: 9004c45401833d3070266055dd7eb99a2bb43bde
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.date: 05/27/2020
+ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618824"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509405"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Erstellen eines Token mit repositorybezogenen Berechtigungen
 
@@ -20,12 +20,13 @@ Zu den Szenarien für die Erstellung eines Tokens gehören die folgenden:
 * Bereitstellen einer externen Organisation mit Berechtigungen für ein bestimmtes Repository 
 * Einschränken des Zugriffs auf verschiedene Benutzergruppen in Ihrer Organisation. Beispielsweise Bereitstellen von Schreib- und Lesezugriff für Entwickler, die Images für bestimmte Repositorys erstellen, und von Lesezugriff für Teams, die aus diesen Repositorys Bereitstellungen durchführen.
 
+Diese Funktion ist auf der Dienstebene **Premium** der Containerregistrierung verfügbar. Informationen zu den Tarifen und Einschränkungen des Registrierungsdiensts finden Sie unter [Azure Container Registry-Tarife](container-registry-skus.md).
+
 > [!IMPORTANT]
 > Dieses Feature befindet sich derzeit in der Vorschauphase. Es gelten einige [Einschränkungen](#preview-limitations). Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
-* Dieses Feature ist nur in einer Containerregistrierung des Typs **Premium** verfügbar. Weitere Informationen zu den Tarifen des Registrierungsdiensts und zu den Einschränkungen finden Sie unter [Azure Container Registry-SKUs](container-registry-skus.md).
 * Zurzeit können Sie einer Azure Active Directory-Identität (z. B. einem Dienstprinzipal oder einer verwalteten Identität) keine repositorybezogenen Berechtigungen zuweisen.
 * Sie können keine Bereichszuordnung in einer Registrierung erstellen, die für [anonymen Pull-Zugriff](container-registry-faq.md#how-do-i-enable-anonymous-pull-access) aktiviert ist.
 
@@ -52,7 +53,7 @@ Zum Konfigurieren von repositorybezogenen Berechtigungen erstellen Sie ein *Toke
     * Konfigurieren mehrerer Token mit identischen Berechtigungen für eine Gruppe von Repositorys
     * Aktualisieren von Tokenberechtigungen beim Hinzufügen oder Entfernen von Repositoryaktionen in der Gültigkeitsbereichszuordnung oder beim Anwenden einer anderen Gültigkeitsbereichszuordnung 
 
-  Azure Container Registry bietet auch mehrere systemdefinierte Gültigkeitsbereichszuordnungen, die Sie anwenden können, mit festen Berechtigungen für alle Repositorys.
+  Azure Container Registry bietet auch mehrere vom System definierte Bereichszuordnungen, die Sie beim Erstellen von Token anwenden können. Die Berechtigungen vom System definierter Bereichszuordnungen gelten für alle Repositorys in der Registrierung.
 
 In der folgenden Abbildung wird die Beziehung zwischen Token und Gültigkeitsbereichszuordnungen veranschaulicht. 
 
@@ -68,7 +69,7 @@ In der folgenden Abbildung wird die Beziehung zwischen Token und Gültigkeitsber
 
 ### <a name="create-token-and-specify-repositories"></a>Erstellen eines Tokens und Angeben von Repositorys
 
-Erstellen Sie mit dem Befehl [az acr token create][az-acr-token-create] ein Token. Wenn Sie ein Token erstellen, können Sie mindestens ein Repository und zugehörige Aktionen für jedes Repository angeben. Die Repositorys müssen sich noch nicht in der Registrierung befinden. Um ein Token durch die Angabe einer vorhandenen Gültigkeitsbereichszuordnung zu erstellen, lesen Sie den nächsten Abschnitt.
+Erstellen Sie mit dem Befehl [az acr token create][az-acr-token-create] ein Token. Wenn Sie ein Token erstellen, können Sie mindestens ein Repository und zugehörige Aktionen für jedes Repository angeben. Die Repositorys müssen sich noch nicht in der Registrierung befinden. Um ein Token durch die Angabe einer vorhandenen Gültigkeitsbereichszuordnung zu erstellen, lesen Sie den [nächsten Abschnitt](#create-token-and-specify-scope-map).
 
 Das folgende Beispiel erstellt ein Token in der Registrierung *myregistry* mit den folgenden Berechtigungen für das `samples/hello-world`-Repository: `content/write` und `content/read`. Standardmäßig legt der Befehl den standardmäßigen Tokenstatus auf `enabled` fest, aber Sie können den Status jederzeit auf `disabled` aktualisieren.
 
@@ -78,7 +79,7 @@ az acr token create --name MyToken --registry myregistry \
   content/write content/read
 ```
 
-In der Ausgabe werden Details zum Token angezeigt, einschließlich der zwei generierten Kennwörter. Es wird empfohlen, die Kennwörter an einem sicheren Ort zu speichern, um sie später für die Authentifizierung zu verwenden. Die Kennwörter können nicht erneut abgerufen werden, aber es können neue Kennwörter generiert werden.
+Die Ausgabe zeigt Details zum Token an. Standardmäßig werden zwei Kennwörter generiert. Es wird empfohlen, die Kennwörter an einem sicheren Ort zu speichern, um sie später für die Authentifizierung zu verwenden. Die Kennwörter können nicht erneut abgerufen werden, aber es können neue Kennwörter generiert werden.
 
 ```console
 {
@@ -111,6 +112,9 @@ In der Ausgabe werden Details zum Token angezeigt, einschließlich der zwei gene
   "type": "Microsoft.ContainerRegistry/registries/tokens"
 ```
 
+> [!NOTE]
+> Wenn Sie Tokenkennwörter erneut generieren und Kennwort-Ablaufzeiten festlegen möchten, nutzen Sie die Informationen unter [Erneutes Generieren von Tokenkennwörtern](#regenerate-token-passwords) weiter unten in diesem Artikel.
+
 Die Ausgabe enthält Details über die vom Befehl erstellte Gültigkeitsbereichszuordnung. Mit der Gültigkeitsbereichszuordnung, hier unter der Bezeichnung `MyToken-scope-map`, können Sie dieselben Repositoryaktionen auf andere Token anwenden. Oder aktualisieren Sie die Gültigkeitsbereichszuordnung später, um die Berechtigungen der zugeordneten Token zu ändern.
 
 ### <a name="create-token-and-specify-scope-map"></a>Erstellen eines Tokens und Angeben der Gültigkeitsbereichszuordnung
@@ -134,7 +138,10 @@ az acr token create --name MyToken \
   --scope-map MyScopeMap
 ```
 
-In der Ausgabe werden Details zum Token angezeigt, einschließlich der zwei generierten Kennwörter. Es wird empfohlen, die Kennwörter an einem sicheren Ort zu speichern, um sie später für die Authentifizierung zu verwenden. Die Kennwörter können nicht erneut abgerufen werden, aber es können neue Kennwörter generiert werden.
+Die Ausgabe zeigt Details zum Token an. Standardmäßig werden zwei Kennwörter generiert. Es wird empfohlen, die Kennwörter an einem sicheren Ort zu speichern, um sie später für die Authentifizierung zu verwenden. Die Kennwörter können nicht erneut abgerufen werden, aber es können neue Kennwörter generiert werden.
+
+> [!NOTE]
+> Wenn Sie Tokenkennwörter erneut generieren und Kennwort-Ablaufzeiten festlegen möchten, nutzen Sie die Informationen unter [Erneutes Generieren von Tokenkennwörtern](#regenerate-token-passwords) weiter unten in diesem Artikel.
 
 ## <a name="create-token---portal"></a>Token erstellen – Portal
 
@@ -143,14 +150,16 @@ Sie können das Azure-Portal zum Erstellen von Token und Gültigkeitsbereichszuo
 Das folgende Beispiel erstellt ein Token und erstellt eine Gültigkeitsbereichszuordnung mit den folgenden Berechtigungen im `samples/hello-world`-Repository: `content/write` und `content/read`.
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Containerregistrierung.
-1. Wählen Sie unter **Dienste** die Option **Token (Vorschau) > +Hinzufügen** aus.
-  ![Erstellen von Token im Portal](media/container-registry-repository-scoped-permissions/portal-token-add.png)
+1. Wählen Sie unter **Repositoryberechtigungen** die Option **Token (Vorschau) > +Hinzufügen** aus.
+
+      :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-add.png" alt-text="Erstellen von Token im Portal":::
 1. Geben Sie einen Tokennamen ein.
 1. Wählen Sie unter **Gültigkeitsbereichszuordnung** die Option **Neu erstellen** aus.
 1. Konfigurieren der Gültigkeitsbereichszuordnung:
     1. Geben Sie einen Namen und eine Beschreibung für die Gültigkeitsbereichszuordnung ein. 
     1. Unter **Repositorys** geben Sie `samples/hello-world` ein, und unter **Berechtigungen** wählen Sie `content/read` und `content/write` aus. Wählen Sie dann **+Hinzufügen** aus.  
-    ![Erstellen einer Gültigkeitsbereichszuordnung im Portal](media/container-registry-repository-scoped-permissions/portal-scope-map-add.png)
+
+        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Erstellen einer Gültigkeitsbereichszuordnung im Portal":::
 
     1. Nachdem Sie Repositorys und Berechtigungen hinzugefügt haben, wählen Sie **Hinzufügen** aus, um die Gültigkeitsbereichszuordnung hinzuzufügen.
 1. Akzeptieren Sie den **Status** des Standardtokens von **Aktiviert**, und wählen Sie dann **Erstellen** aus.
@@ -159,26 +168,26 @@ Nachdem das Token überprüft und erstellt wurde, werden die Details des Tokens 
 
 ### <a name="add-token-password"></a>Hinzufügen eines Tokenkennworts
 
-Generieren Sie ein Kennwort, nachdem Sie ein Token erstellt haben. Das Token muss für die Authentifizierung bei der Registrierung aktiviert sein und über ein gültiges Kennwort verfügen.
-
-Sie können ein oder zwei Kennwörter generieren und für jedes ein Ablaufdatum festlegen. 
+Wenn Sie ein im Portal erstelltes Token verwenden möchten, müssen Sie ein Kennwort generieren. Sie können ein oder zwei Kennwörter generieren und für jedes ein Ablaufdatum festlegen. 
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Containerregistrierung.
-1. Wählen Sie unter **Dienste** die Option **Token (Vorschau)** und dann ein Token aus.
+1. Wählen Sie unter **Repositoryberechtigungen** die Option **Token (Vorschau)** und dann ein Token aus.
 1. Wählen Sie in den Tokendetails die Option **password1** oder **password2** und dann das Symbol „Generieren“ aus.
-1. Legen Sie auf dem Bildschirm für das Kennwort optional ein Ablaufdatum für das Kennwort fest, und wählen Sie **Generieren** aus.
+1. Legen Sie auf dem Bildschirm für das Kennwort optional ein Ablaufdatum für das Kennwort fest, und wählen Sie **Generieren** aus. Sie sollten ein Ablaufdatum festlegen.
 1. Nachdem Sie ein Kennwort generiert haben, kopieren und speichern Sie es an einem sicheren Ort. Sie können ein generiertes Kennwort nach dem Schließen des Bildschirms nicht mehr abrufen, aber Sie können ein neues Kennwort generieren.
 
-    ![Erstellen eines Tokenkennworts im Portal](media/container-registry-repository-scoped-permissions/portal-token-password.png)
+    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Erstellen eines Tokenkennworts im Portal":::
 
 ## <a name="authenticate-with-token"></a>Authentifizieren mit einem Token
 
-Wenn ein Benutzer oder Dienst ein Token zur Authentifizierung bei der Zielregistrierung verwendet, stellt er den Tokennamen als Benutzernamen und eines seiner generierten Kennwörter zur Verfügung. Die Authentifizierungsmethode hängt von der oder den konfigurierten Aktionen ab, die mit dem Token verbunden sind.
+Wenn ein Benutzer oder Dienst ein Token zur Authentifizierung bei der Zielregistrierung verwendet, stellt er den Tokennamen als Benutzernamen und eines seiner generierten Kennwörter zur Verfügung. 
+
+Die Authentifizierungsmethode hängt von der oder den konfigurierten Aktionen ab, die mit dem Token verbunden sind.
 
 |Aktion  |Authentifizierung  |
   |---------|---------|
-  |`content/delete`    | `az acr repository delete` in der Azure CLI |
-  |`content/read`     |  `docker login`<br/><br/>`az acr login` in der Azure CLI  |
+  |`content/delete`    | `az acr repository delete` in der Azure CLI<br/><br/>Beispiel: `az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
+  |`content/read`     |  `docker login`<br/><br/>`az acr login` in der Azure CLI<br/><br/>Beispiel: `az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
   |`content/write`     |  `docker login`<br/><br/>`az acr login` in der Azure CLI     |
   |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests` in der Azure CLI   |
   |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update` in der Azure CLI |
@@ -200,7 +209,7 @@ docker tag hello-world myregistry.azurecr.io/samples/alpine:v1
 
 ### <a name="authenticate-using-token"></a>Authentifizierung mithilfe des Tokens
 
-Führen Sie `docker login` aus, um sich bei der Registrierung zu authentifizieren, stellen Sie den Tokennamen als Benutzernamen bereit, und geben Sie eines seiner Kennwörter an. Das Token muss den Status `Enabled` aufweisen.
+Führen Sie `docker login` oder `az acr login` aus, um sich mit der Registrierung zu authentifizieren und Images zu pushen oder pullen. Geben Sie den Tokennamen als Benutzernamen ein, und geben Sie eines seiner Kennwörter an. Das Token muss den Status `Enabled` aufweisen.
 
 Das folgende Beispiel ist für die Bash-Shell formatiert und stellt die Werte mithilfe von Umgebungsvariablen bereit.
 
@@ -231,7 +240,7 @@ Das Token hat keine Berechtigungen für das `samples/alpine`-Repository, sodass 
 docker push myregistry.azurecr.io/samples/alpine:v1
 ```
 
-### <a name="change-pushpull-permissions"></a>Ändern der Push-/Pullberechtigungen
+### <a name="update-token-permissions"></a>Aktualisieren von Tokenberechtigungen
 
 Um Berechtigungen eines Tokens zu aktualisieren, aktualisieren Sie die Berechtigungen in der zugehörigen Gültigkeitsbereichszuordnung. Die aktualisierte Gültigkeitsbereichszuordnung wird sofort auf alle zugeordneten Token angewendet. 
 
@@ -250,7 +259,7 @@ az acr scope-map update \
 Führen Sie im Azure-Portal die folgenden Schritte aus:
 
 1. Navigieren Sie zu Ihrer Containerregistrierung.
-1. Wählen Sie unter **Dienste** die Option **Gültigkeitsbereichszuordnungen (Vorschau)** aus, und wählen Sie die zu aktualisierende Gültigkeitsbereichszuordnung aus.
+1. Wählen Sie unter **Repositoryberechtigungen** die Option **Bereichszuordnungen (Vorschau)** aus, und wählen Sie die zu aktualisierende Bereichszuordnung aus.
 1. Unter **Repositorys** geben Sie `samples/alpine` ein, und unter **Berechtigungen** wählen Sie `content/read` und `content/write` aus. Wählen Sie dann **+Hinzufügen** aus.
 1. Unter **Repositorys** wählen Sie `samples/hello-world` aus, und unter **Berechtigungen** deaktivieren Sie `content/write`. Klicken Sie dann auf **Speichern**.
 
@@ -285,9 +294,9 @@ az acr scope-map update \
   --add samples/alpine content/delete
 ``` 
 
-Informationen zum Aktualisieren der Gültigkeitsbereichszuordnung über das Portal finden Sie im vorherigen Abschnitt.
+Informationen zum Aktualisieren der Bereichszuordnung über das Portal finden Sie im [vorherigen Abschnitt](#update-token-permissions).
 
-Verwenden Sie den folgenden Befehl [az acr repository delete][az-acr-repository-delete], um das `samples/alpine`-Repository zu löschen. Um Images oder Repositorys zu löschen, wird das Token nicht durch `docker login` authentifiziert. Übergeben Sie stattdessen den Namen und das Kennwort des Tokens an den Befehl. Das folgende Beispiel verwendet die zuvor in diesem Artikel erstellten Umgebungsvariablen:
+Verwenden Sie den folgenden Befehl [az acr repository delete][az-acr-repository-delete], um das `samples/alpine`-Repository zu löschen. Um Images oder Repositorys zu löschen, übergeben Sie den Namen und das Kennwort des Tokens an den Befehl. Das folgende Beispiel verwendet die zuvor in diesem Artikel erstellten Umgebungsvariablen:
 
 ```azurecli
 az acr repository delete \
@@ -308,11 +317,11 @@ az acr scope-map update \
   --add samples/hello-world metadata/read 
 ```  
 
-Informationen zum Aktualisieren der Gültigkeitsbereichszuordnung über das Portal finden Sie im vorherigen Abschnitt.
+Informationen zum Aktualisieren der Bereichszuordnung über das Portal finden Sie im [vorherigen Abschnitt](#update-token-permissions).
 
 Um Metadaten im `samples/hello-world`-Repository zu lesen, führen Sie den Befehl [az acr repository show-manifests][az-acr-repository-show-manifests] oder [az acr repository show-tags][az-acr-repository-show-tags] aus. 
 
-Um Metadaten zu lesen, wird das Token nicht durch `docker login` authentifiziert. Übergeben Sie stattdessen den Namen und das Kennwort des Tokens an beide Befehle. Das folgende Beispiel verwendet die zuvor in diesem Artikel erstellten Umgebungsvariablen:
+Um Metadaten zu lesen, übergeben Sie den Namen und das Kennwort des Tokens an einen der beiden Befehle. Das folgende Beispiel verwendet die zuvor in diesem Artikel erstellten Umgebungsvariablen:
 
 ```azurecli
 az acr repository show-tags \
@@ -327,6 +336,7 @@ Beispielausgabe:
   "v1"
 ]
 ```
+
 ## <a name="manage-tokens-and-scope-maps"></a>Verwalten von Token und Gültigkeitsbereichszuordnungen
 
 ### <a name="list-scope-maps"></a>Auflisten von Gültigkeitsbereichszuordnungen
@@ -338,7 +348,7 @@ az acr scope-map list \
   --registry myregistry --output table
 ```
 
-Die Ausgabe zeigt die von Ihnen definierten Gültigkeitsbereichszuordnungen und mehrere systemdefinierte Gültigkeitsbereichszuordnungen an, die Sie zur Konfiguration von Token verwenden können:
+Die Ausgabe besteht aus den drei vom System definierten Bereichszuordnungen und anderen von Ihnen generierten Bereichszuordnungen. Token können mit einer dieser Bereichszuordnungen konfiguriert werden.
 
 ```
 NAME                 TYPE           CREATION DATE         DESCRIPTION
@@ -364,9 +374,9 @@ Verwenden Sie den Befehl [az acr Tokenliste][az-acr-token-list] oder den Bildsch
 az acr token list --registry myregistry --output table
 ```
 
-### <a name="generate-passwords-for-token"></a>Generieren von Kennwörtern für das Token
+### <a name="regenerate-token-passwords"></a>Erneutes Generieren von Tokenkennwörtern
 
-Wenn Sie nicht über ein Tokenkennwort verfügen oder neue Kennwörter generieren möchten, führen Sie den Befehl [az acr token credential generate][az-acr-token-credential-generate] aus. 
+Wenn Sie kein Tokenkennwort generiert haben oder neue Kennwörter generieren möchten, führen Sie den Befehl [az acr token credential generate][az-acr-token-credential-generate] aus. 
 
 Das folgende Beispiel generiert einen neuen Wert für „password1“ für das Token *MyToken* mit einer Ablauffrist von 30 Tagen. Das Kennwort wird in der Umgebungsvariablen `TOKEN_PWD` gespeichert. Dieses Beispiel ist für die Bash-Shell formatiert.
 

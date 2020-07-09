@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels „DoD-Auswirkungsstufe 4“
 description: Steuerungszuordnung des Blaupausenbeispiels „DoD-Auswirkungsstufe 4“ Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 03/06/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: a11a8637618bb42831ccf1a7001e4da40529ba74
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 48734e62f47c38feb8bc34409f9ba41af2648e7a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82024828"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168980"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels „DoD-Auswirkungsstufe 4“
 
@@ -132,9 +132,7 @@ Von Azure Monitor erfasste Protokolldaten werden in einem Log Analytics-Arbeitsb
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5): Prüfung, Analyse und Berichterstellung in Bezug auf die Überwachung | Integrations-, Scan- und Überwachungsfunktionen
 
-Mit dieser Blaupause werden Richtliniendefinitionen bereitgestellt, bei denen Datensätze mit einer Analyse der Sicherheitsrisikobewertung auf virtuellen Computern, in VM-Skalierungsgruppen, auf verwalteten SQL-Instanzen und auf SQL-Servern überwacht werden.
-Diese Richtliniendefinitionen überprüfen auch die Konfiguration von Diagnoseprotokollen, um Einblick in Vorgänge zu erhalten, die innerhalb von Azure-Ressourcen ausgeführt werden. Diese Erkenntnisse bieten Echtzeitinformationen zum Sicherheitsstatus Ihrer bereitgestellten Ressourcen und ermöglichen die Priorisierung von Aktionen zur Problembehebung.
-Zur Durchführung einer ausführlichen Überprüfung und Überwachung auf Sicherheitsrisiken empfehlen wir Ihnen, auch Azure Sentinel und Azure Security Center zu nutzen.
+Mit dieser Blaupause werden Richtliniendefinitionen bereitgestellt, bei denen Datensätze mit einer Analyse der Sicherheitsrisikobewertung auf virtuellen Computern, in VM-Skalierungsgruppen, auf SQL-Datenbank-Servern und auf Servern mit verwalteten SQL-Instanzen überwacht werden. Diese Richtliniendefinitionen überprüfen auch die Konfiguration von Diagnoseprotokollen, um Einblick in Vorgänge zu erhalten, die innerhalb von Azure-Ressourcen ausgeführt werden. Diese Erkenntnisse bieten Echtzeitinformationen zum Sicherheitsstatus Ihrer bereitgestellten Ressourcen und ermöglichen die Priorisierung von Aktionen zur Problembehebung. Zur Durchführung einer ausführlichen Überprüfung und Überwachung auf Sicherheitsrisiken empfehlen wir Ihnen, auch Azure Sentinel und Azure Security Center zu nutzen.
 
 - \[Vorschau\]: Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
 - Für Ihre SQL Server-Instanzen muss eine Sicherheitsrisikobewertung aktiviert sein.

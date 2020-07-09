@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 54b45825f2322dc127d5db818b7abe52e4a98967
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 76eb0638d2b67e7859b25cdda8a6f4cbda285920
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208396"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800215"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center
 
@@ -64,7 +64,7 @@ Im Abschnitt „Kontaktinformation“ werden Ihr **Anzeigename des Herausgebers*
 
 #### <a name="payout-account"></a>Auszahlungskonto
 
-Ein Auszahlungskonto ist das Bankkonto, auf das Ihre Verkaufserlöse übertragen werden. Dieses Bankkonto muss sich in demselben Land befinden, in dem Sie Ihr Partner Center-Konto registriert haben.
+Ein Auszahlungskonto ist das Bankkonto, auf das Ihre Verkaufserlöse übertragen werden. Dieses Bankkonto muss sich in demselben Land/derselben Region befinden, wo Sie Ihr Partner Center-Konto registriert haben.
 
 So richten Sie Ihr Auszahlungskonto ein
 
@@ -80,21 +80,21 @@ So richten Sie Ihr Auszahlungskonto ein
 
 Überprüfen Sie Ihren aktuellen Steuerprofilstatus, und stellen Sie sicher, dass der angezeigte **Entitätstyp** und die **Steuerzertifikatinformationen** korrekt sind. Wählen Sie **Bearbeiten**, um alle erforderlichen Formulare zu aktualisieren oder auszufüllen.
 
-Um Ihren Steuerstatus festzulegen, müssen Sie das Land Ihres Wohnsitzes und Ihre Staatsangehörigkeit angeben und die entsprechenden Steuerformulare für Ihr Land/Ihre Region ausfüllen.
+Um Ihren Steuerstatus festzulegen, müssen Sie das Land/die Region Ihres Wohnsitzes und Ihre Staatsangehörigkeit angeben und die entsprechenden Steuerformulare für Ihr Land/Ihre Region ausfüllen.
 
-Unabhängig von Ihrem Land des Wohnsitzes und Ihrer Staatsangehörigkeit müssen Sie die US-Steuerformulare ausfüllen, um Angebote über Microsoft zu verkaufen. Partner, die bestimmte Anforderungen im Zusammenhang mit der US-amerikanischen Staatsbürgerschaft erfüllen, müssen ein IRS W-9-Formular ausfüllen. Andere Partner außerhalb der USA müssen ein IRS W-8 Formular ausfüllen. Sie können diese Formulare beim Erstellen Ihres Steuerprofils online ausfüllen.
+Unabhängig von dem Land/der Region, wo sich Ihr Wohnsitz befindet, und Ihrer Staatsangehörigkeit müssen Sie die US-Steuerformulare ausfüllen, um Angebote über Microsoft zu verkaufen. Partner, die bestimmte Anforderungen im Zusammenhang mit der US-amerikanischen Staatsbürgerschaft erfüllen, müssen ein IRS W-9-Formular ausfüllen. Andere Partner außerhalb der USA müssen ein IRS W-8 Formular ausfüllen. Sie können diese Formulare beim Erstellen Ihres Steuerprofils online ausfüllen.
 
 Es ist keine US-Steueridentifikationsnummer (ITIN) erforderlich, um Zahlungen von Microsoft zu erhalten oder um Begünstigungen von Steuerabkommen in Anspruch zu nehmen.
 
 Sie können Ihre Steuerformulare elektronisch in Partner Center ausfüllen und übermitteln. In den meisten Fällen müssen Sie keine Formulare drucken und per E-Mail senden.
 
-In verschiedenen Ländern und Regionen gelten unterschiedliche Steueranforderungen. Wie viele Steuern Sie genau abführen müssen, hängt von den Ländern und Regionen ab, in denen Sie Ihre Angebote verkaufen. Microsoft zahlt in einigen Ländern die Mehrwertsteuer und die Verbrauchssteuer für Sie. Diese Länder werden beim Auflisten Ihres Angebots angegeben. Abhängig davon, wo Sie registriert sind, müssen Sie in anderen Ländern möglicherweise die Mehrwert- und Verbrauchssteuer für Ihre Verkäufe direkt an die örtliche Steuerbehörde abführen. Darüber hinaus können Ihre erhaltenen Verkaufserlöse unter Umständen als Einkommen steuerbar sein. Es wird dringend empfohlen, sich an die entsprechende Behörde für Ihr Land bzw. Ihre Region zu wenden. Diese kann Ihnen am besten dabei helfen, die richtige Besteuerung für Ihre Microsoft-Verkaufstransaktionen zu bestimmen.
+In verschiedenen Ländern und Regionen gelten unterschiedliche Steueranforderungen. Wie viele Steuern Sie genau abführen müssen, hängt von den Ländern und Regionen ab, in denen Sie Ihre Angebote verkaufen. Microsoft zahlt in einigen Ländern/Regionen Mehrwertsteuer und Verbrauchssteuer für Sie. Diese Länder/Regionen werden beim Auflisten Ihres Angebots angegeben. Abhängig davon, wo Sie registriert sind, müssen Sie in anderen Ländern/Regionen möglicherweise die Mehrwert- und Verbrauchssteuer für Ihre Verkäufe direkt an die örtliche Steuerbehörde abführen. Darüber hinaus können Ihre erhaltenen Verkaufserlöse unter Umständen als Einkommen steuerbar sein. Es wird dringend empfohlen, sich an die entsprechende Behörde für Ihr Land bzw. Ihre Region zu wenden. Diese kann Ihnen am besten dabei helfen, die richtige Besteuerung für Ihre Microsoft-Verkaufstransaktionen zu bestimmen.
 
 ##### <a name="withholding-rates"></a>Quellensteuer
-Die Informationen, die Sie in den Steuerformularen übermitteln, bestimmen die entsprechende Quellensteuer. Der Quellensteuer betrifft nur Verkäufe in die USA. Verkäufe an Orte außerhalb der USA unterliegen nicht der Quellensteuer. Die Quellensteuer variiert, aber bei den meisten Entwicklern, die außerhalb der USA registriert sind, liegt der Standardwert bei 30 %. Sie haben die Möglichkeit, diesen Wert zu reduzieren, wenn Ihr Land ein Einkommenssteuerabkommen mit den USA getätigt hat.
+Die Informationen, die Sie in den Steuerformularen übermitteln, bestimmen die entsprechende Quellensteuer. Der Quellensteuer betrifft nur Verkäufe in die USA. Verkäufe an Orte außerhalb der USA unterliegen nicht der Quellensteuer. Die Quellensteuer variiert, aber bei den meisten Entwicklern, die außerhalb der USA registriert sind, liegt der Standardwert bei 30 %. Sie haben die Möglichkeit, diesen Wert zu reduzieren, wenn Ihr Land/Ihre Region ein Einkommenssteuerabkommen mit den USA geschlossen hat.
 
 ##### <a name="tax-treaty-benefits"></a>Begünstigungen durch Steuerabkommen
-Wenn Sie sich außerhalb der USA befinden, können Sie möglicherweise von Begünstigungen durch Steuerabkommen profitieren. Diese Begünstigungen unterschieden sich je nach Land und ermöglichen es Ihnen unter Umständen, den Steuerbetrag zu reduzieren, den Microsoft einbehält. Begünstigungen durch Steuerabkommen können Sie in Anspruch nehmen, indem Sie Teil II des Formulars W-8BEN ausfüllen. Es wird empfohlen, mit den entsprechenden Ressourcen in Ihrem Land oder in Ihrer Region zu kommunizieren, um zu ermitteln, ob diese Begünstigungen für Sie infrage kommen.
+Wenn Sie sich außerhalb der USA befinden, können Sie möglicherweise von Begünstigungen durch Steuerabkommen profitieren. Diese Begünstigungen unterschieden sich je nach Land/Region und ermöglichen Ihnen unter Umständen, den Steuerbetrag zu reduzieren, den Microsoft einbehält. Begünstigungen durch Steuerabkommen können Sie in Anspruch nehmen, indem Sie Teil II des Formulars W-8BEN ausfüllen. Es wird empfohlen, mit den entsprechenden Ressourcen in Ihrem Land oder in Ihrer Region zu kommunizieren, um zu ermitteln, ob diese Begünstigungen für Sie infrage kommen.
 
 [Erfahren Sie mehr über Steuerdetails für Entwickler von Windows-Apps/-Spielen und Azure Marketplace-Herausgeber](https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps).
 
@@ -117,7 +117,7 @@ Der Einstellungen für die Geräteverwaltung gelten nur für UWP-Veröffentlichu
 
 GUIDs (Globally Unique Identifiers) sind eindeutige Referenznummern (mit 32 Hexadezimalstellen), die für die Nachverfolgung Ihrer Azure-Nutzung verwendet werden können. 
 
-Zum Erstellen einer GUID für die Nachverfolgung sollten Sie einen GUID-Generator verwenden. Das Azure Storage-Team hat ein [Formular für den GUID-Generator](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu) erstellt, über das Sie per E-Mail eine GUID im richtigen Format erhalten. Dieses Formular kann für verschiedene Nachverfolgungssysteme wiederverwendet werden.
+Zum Erstellen einer GUID für die Nachverfolgung sollten Sie einen GUID-Generator verwenden. Das Azure Storage-Team hat ein [Formular für den GUID-Generator](https://aka.ms/StoragePartners) erstellt, über das Sie per E-Mail eine GUID im richtigen Format erhalten. Dieses Formular kann für verschiedene Nachverfolgungssysteme wiederverwendet werden.
 
 Es empfiehlt sich, für jedes Produkt eine eindeutige GUID für jedes Angebot und jeden Distributionskanal zu erstellen. Sie können festlegen, dass eine einzige GUID für die vielfältigen Verteilungskanäle des Produkts verwendet wird, wenn die Berichterstellung nicht aufgeteilt werden soll.
 
@@ -134,7 +134,7 @@ Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Nachverfolg
 
 Wenn Sie ein Angebot für [Dynamics 365 for Customer Engagement und Power Apps](./create-new-customer-engagement-offer.md) oder [Dynamics 365 for Operations](./create-new-operations-offer.md) veröffentlichen, müssen Sie ein **Abrechnungsprofil** ausfüllen.
 
-Die Abrechnungsadresse ist von Ihrer juristischen Entität bereits ausgefüllt. Sie können diese Adresse später aktualisieren. Die Felder „Steuer“ und „Umsatzsteuer-ID“ sind optional.  Der Name des Landes und der Firmenname können nicht bearbeitet werden.
+Die Abrechnungsadresse ist von Ihrer juristischen Entität bereits ausgefüllt. Sie können diese Adresse später aktualisieren. Die Felder „Steuer“ und „Umsatzsteuer-ID“ sind optional.  Der Name des Landes/der Region und der Firmenname können nicht bearbeitet werden.
 
 ## <a name="multi-user-account-management"></a>Kontoverwaltung für mehrere Benutzer
 

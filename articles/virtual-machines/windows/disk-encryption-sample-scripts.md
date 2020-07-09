@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5e0a970df680df43a7bd303636b3d81bda3e141
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 1a0bac96c3daa0d81786b1a3facf6ccd328cd579
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085704"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076758"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption-Beispielskripts 
 
@@ -76,22 +76,30 @@ Sie müssen die BitLocker-Gruppenrichtlinieneinstellung mit dem Namen **BitLocke
 ### <a name="install-bitlocker-feature-components"></a>Installieren der Komponenten der BitLocker-Funktion
 Verwenden Sie für Windows Server 2012 und höher den folgenden Befehl:
 
-    dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+```console
+dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+```
 
 Verwenden Sie für Windows Server 2008 R2 den folgenden Befehl:
 
-    ServerManagerCmd -install BitLockers
+```console
+ServerManagerCmd -install BitLockers
+```
 
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Vorbereiten des Betriebssystemvolumes für BitLocker mit `bdehdcfg`
 Führen Sie den Befehl [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) aus, falls erforderlich, um die Betriebssystempartition zu komprimieren und den Computer für BitLocker vorzubereiten:
 
-    bdehdcfg -target c: shrink -quiet 
+```console
+bdehdcfg -target c: shrink -quiet 
+```
 
 ### <a name="protect-the-os-volume-by-using-bitlocker"></a>Schützen des Betriebssystemvolumes mit BitLocker
 Verwenden Sie den Befehl [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx), um die Verschlüsselung auf dem Startvolume mit einer externen Schlüsselschutzvorrichtung zu aktivieren. Platzieren Sie außerdem den externen Schlüssel (BEK-Datei) auf dem externen Laufwerk oder Volume. Die Verschlüsselung wird nach dem nächsten Neustart auf dem System-/Startvolume aktiviert.
 
-    manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
-    reboot
+```console
+manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
+reboot
+```
 
 > [!NOTE]
 > Bereiten Sie den virtuellen Computer mit einer separaten Daten-/Ressourcen-VHD zum Abrufen des externen Schlüssels mit BitLocker vor.

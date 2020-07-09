@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: ef0d79cae11a382bcca0ddb61e1d4a04b5db41e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5b3db919056f24ad8b46c9925c044453e671d99f
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79501878"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219164"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Tutorial: Kopieren von Daten in Azure Data Box (Vorschauversion) mithilfe des Datenkopierdiensts
 
@@ -50,7 +50,8 @@ Nachdem Sie die Verbindung mit dem NAS-Gerät hergestellt haben, kopieren Sie im
 
 * Wenn die Daten geändert werden, während sie gerade vom Datenkopierdienst gelesen werden, kommt es ggf. zu Fehlern oder Datenbeschädigungen.
 
-* Bevor Sie bestätigen können, dass Data Box Ihre Daten nach Azure Storage übertragen hat, müssen Sie sicherstellen, dass Sie über eine Kopie der Quelldaten verfügen.
+> [!IMPORTANT]
+> Bevor Sie bestätigen können, dass Data Box Ihre Daten nach Azure Storage übertragen hat, müssen Sie sicherstellen, dass Sie über eine Kopie der Quelldaten verfügen.
 
 Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopieren:
 
@@ -150,4 +151,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihr Data Box
 
 > [!div class="nextstepaction"]
 > [Tutorial: Zurücksenden der Azure Data Box und Überprüfen des Datenuploads in Azure](./data-box-deploy-picked-up.md)
-

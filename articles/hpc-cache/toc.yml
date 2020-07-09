@@ -38,6 +38,10 @@
       href: hpc-cache-manage.md
     - name: Konfigurieren optionaler Einstellungen
       href: configuration.md
+- name: Verweis
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/hpc-cache/hpc-cache
 - name: Ressourcen
   items:
     - name: Öffnen eines Supporttickets
@@ -52,3 +56,5 @@
       href: customer-keys.md
     - name: Verwenden von Azure NetApp Files mit Azure HPC Cache
       href: hpc-cache-netapp.md
+    - name: Videos
+      href: 'https://azure.microsoft.com/resources/videos/index/?service=hpc-cache'

@@ -1,6 +1,7 @@
 ---
-title: Endpunkte konfigurieren
-description: Hier wird beschrieben, wie Sie die Authentifizierungsendpunkte für eine benutzerdefinierte Anwendung ermitteln, die Sie entwickeln oder bei Azure AD registrieren.
+title: Abrufen der Endpunkte für eine App-Registrierung bei Azure AD
+titleSuffix: Microsoft identity platform
+description: Hier wird beschrieben, wie Sie die Authentifizierungsendpunkte für eine benutzerdefinierte Anwendung ermitteln, die Sie mit Azure AD entwickeln oder bei Azure AD registrieren.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,28 +10,29 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 05/07/2020
 ms.author: ryanwi
-ms.openlocfilehash: 28d85736019a6fea6d977d813fdc1c9be6429748
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: dc37ce474ad3226f5dbf7e6efd687ddf55f7da03
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883269"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926679"
 ---
-# <a name="how-to-configure-endpoints"></a>Konfigurieren von Endpunkten
+# <a name="how-to-discover-endpoints"></a>Ermitteln von Endpunkten
 
 Sie können die Authentifizierungsendpunkte für Ihre Anwendung im [Azure-Portal](https://portal.azure.com) ermitteln.
 
--   Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie **Azure Active Directory** aus.
+1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** und dann **Endpunkte** im oberen Menü aus.
 
--   Klicken Sie im linken Navigationsbereich auf **Azure Active Directory**.
+    Die Seite **Endpunkte** wird angezeigt, auf der die Authentifizierungsendpunkte für Ihren Mandanten aufgelistet sind.
+    
+    Verwenden Sie den Endpunkt, der dem Authentifizierungsprotokoll entspricht, das Sie zusammen mit der **Anwendungs-ID (Client-ID)** zum Erstellen der spezifischen Authentifizierungsanforderung für Ihre Anwendung verwenden.
 
--   Klicken Sie auf **App-Registrierungen**, und wählen Sie **Endpunkte** aus.
-
--   Die Seite **Endpunkte** wird geöffnet, auf der alle Authentifizierungsendpunkte für Ihren Mandanten aufgelistet werden.
-
--   Verwenden Sie den spezifischen Endpunkt für das verwendete Authentifizierungsprotokoll zusammen mit der Anwendungs-ID, um die spezifische Authentifizierungsanfrage für Ihre Anwendung zu erstellen.
+**Nationale Clouds** (z. B. Azure AD China, Deutschland und US Government) verfügen über ein eigenes App-Registrierungsportal und eigene Azure AD-Authentifizierungsendpunkte. Weitere Informationen finden Sie in der [Übersicht über nationale Clouds](authentication-national-cloud.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Entwicklerhandbuch zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+
+Weitere Informationen zu Endpunkten in den verschiedenen Azure-Umgebungen finden Sie in der [Übersicht über nationale Clouds](authentication-national-cloud.md).

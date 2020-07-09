@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: a16120194b1b8015466005f42336828c2b4ace6c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c51d79d55f77468030100fa10973e2a31148ceae
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983839"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648440"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Behandeln von Problemen mit der Back-End-Integrität in Application Gateway
 ==================================================
@@ -203,6 +203,10 @@ Um einen benutzerdefinierten Test zu erstellen, führen Sie die [diese Schritte]
 
 Weitere Informationen zum [Testabgleich von Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching).
 
+>[!NOTE]
+> Bei Fehlermeldungen im Zusammenhang mit TLS finden Sie weitere Informationen zum SNI-Verhalten und zu den Unterschieden zwischen der v1-SKU und der v2-SKU auf der Seite mit der [Übersicht über TLS](ssl-overview.md).
+
+
 #### <a name="backend-server-certificate-invalid-ca"></a>Ungültige Zertifizierungsstelle für das Zertifikat des Back-End-Servers
 
 **Nachricht:** The server certificate used by the backend is not signed by a well-known Certificate Authority (CA). (Das vom Back-End verwendete Serverzertifikat ist nicht von einer bekannten Zertifizierungsstelle (CA) signiert.) Whitelist the backend on the Application Gateway by uploading the root certificate of the server certificate used by the backend. (Fügen Sie das Back-End für Application Gateway der Whitelist hinzu, indem Sie das Stammzertifikat des Serverzertifikats hochladen, das vom Back-End verwendet wird.)
@@ -280,7 +284,7 @@ Wenn die Ausgabe nicht die Rückgabe der gesamten Kette des Zertifikats enthält
 
 **Nachricht:** The Common Name (CN) of the backend certificate does not match the host header of the probe. (Der allgemeine Name (CN) des Back-End-Zertifikats stimmt nicht mit dem Hostheader des Tests überein.)
 
-**Ursache:** Application Gateway überprüft, ob der in der HTTP-Einstellung des Back-Ends angegebene Hostname mit dem allgemeinen Namen (Common Name, CN) übereinstimmt, der vom TLS/SSL-Zertifikat des Back-End-Servers angegeben wird. Dies ist Standard_v2- und WAF_v2-SKU-Verhalten. Die SNI (Server Name Indication, Servernamensanzeige) der Standard- und WAF-SKU wird als FQDN in der Adresse des Back-End-Pools festgelegt.
+**Ursache:** Application Gateway überprüft, ob der in der HTTP-Einstellung des Back-Ends angegebene Hostname mit dem allgemeinen Namen (Common Name, CN) übereinstimmt, der vom TLS/SSL-Zertifikat des Back-End-Servers angegeben wird. Dies ist das Verhalten der v2-SKUs „Standard_v2“ und „WAF_v2“. Die SNI (Server Name Indication, Servernamensanzeige) der Standard- und WAF-SKU (v1) wird als FQDN in der Adresse des Back-End-Pools festgelegt. Weitere Informationen zum SNI-Verhalten und zu den Unterschieden zwischen der v1-SKU und der v2-SKU finden Sie unter [Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway](ssl-overview.md).
 
 Wenn ein Standardtest vorliegt (es wurde kein benutzerdefinierter Test konfiguriert und zugeordnet), wird in der V2-SKU die SNI aus dem in den HTTP-Einstellungen angegebenen Hostnamen festgelegt. Oder für den Fall, dass „Pick hostname from backend address“ (Hostnamen aus Back-End-Adresse entnehmen) in den HTTP-Einstellungen erwähnt wird, wobei der Back-End-Adresspool einen gültigen FQDN enthalten muss, wird diese Einstellung angewendet.
 

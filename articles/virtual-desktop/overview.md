@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 04/10/2020
+ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 927696d029bf1b8742dc0001e03799322f368191
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261719"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125803"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop? 
 
@@ -22,7 +22,7 @@ Bei Windows Virtual Desktop handelt es sich um einen in der Cloud ausgeführten 
 Windows Virtual Desktop in Azure ermöglicht Folgendes:
 
 * Einrichten einer Windows 10-Bereitstellung mit mehreren Sitzungen, die eine vollständige Windows 10-Umgebung mit Skalierbarkeit bietet
-* Virtualisieren von Office 365 ProPlus und Optimieren der Ausführung in virtuellen Szenarien mit mehreren Benutzern
+* Virtualisieren von Microsoft 365 Apps for Enterprise und Optimieren der Ausführung in virtuellen Szenarien mit mehreren Benutzern
 * Bereitstellen virtueller Windows 7-Desktops mit kostenlosen erweiterten Sicherheitsupdates
 * Verwenden bereits vorhandener Remotedesktopdienste (Remote Desktop Services, RDS) und Windows Server-Desktops/-Apps auf einem beliebigen Computer
 * Virtualisieren von Desktops und Apps
@@ -67,8 +67,8 @@ Da wir planen, die Unterstützung auf die folgenden Betriebssysteme zu erweitern
 
 |OS|Erforderliche Lizenz|
 |---|---|
-|Windows 10 Enterprise (mehrere Sitzungen) oder Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
-|Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
+|Windows 10 Enterprise (mehrere Sitzungen) oder Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F3, Business Premium<br>Windows E3, E5, A3, A5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F3, Business Premium<br>Windows E3, E5, A3, A5|
 |Windows Server 2012 R2, 2016, 2019|RDS-Clientzugriffslizenz (Client Access License, CAL) mit Software Assurance|
 
 In Ihrer Infrastruktur muss Folgendes vorhanden sein, um Windows Virtual Desktop verwenden zu können:
@@ -98,19 +98,22 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 |prod.warmpath.msftcloudes.com|443|Agent-Datenverkehr|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Aktivierung von Windows|Internet|
+|wvdportalstorageblob.blob.core.windows.net|443|Unterstützung des Azure-Portals|AzureCloud|
 
 >[!IMPORTANT]
->In den meisten Fällen wird empfohlen, die Diensttags anstelle von URLs zu verwenden, um Dienstprobleme zu vermeiden. Das Aufheben der Blockierung dieser URLs ist für die zuverlässige Bereitstellung von Windows Virtual Desktop von entscheidender Bedeutung. Der Zugriff auf diese URLs darf nicht blockiert werden; andernfalls wird die Dienstfunktionalität beeinträchtigt. Diese URLs entsprechen lediglich Windows Virtual Desktop-Websites und -Ressourcen und beinhalten keine URLs für andere Dienste wie etwa Azure Active Directory.
+>Windows Virtual Desktop unterstützt jetzt das FQDN-Tag. Weitere Informationen finden Sie unter [Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](../firewall/protect-windows-virtual-desktop.md).
+>
+>Wir empfehlen Ihnen, FQDN- oder Diensttags anstelle von URLs zu verwenden, um Dienstprobleme zu verhindern. Die aufgeführten URLs und Tags beziehen sich nur auf Windows Virtual Desktop-Websites und -Ressourcen. Sie enthalten keine URLs für andere Dienste, z. B. Azure Active Directory.
 
 In der folgenden Tabelle sind optionale URLs aufgeführt, auf die Ihre virtuellen Azure-Computer Zugriff haben können:
 
 |Adresse|Ausgehender TCP-Port|Zweck|Diensttag|
 |---|---|---|---|
-|*.microsoftonline.com|443|Authentifizierung bei MS-Onlinediensten|Keine|
+|*.microsoftonline.com|443|Authentifizierung bei Microsoft Online Services|Keine|
 |*.events.data.microsoft.com|443|Telemetriedienst|Keine|
 |www.msftconnecttest.com|443|Ermittelt, ob das Betriebssystem mit dem Internet verbunden ist.|Keine|
 |*.prod.do.dsp.mp.microsoft.com|443|Windows-Update|Keine|
-|login.windows.net|443|Anmelden bei MS-Onlinediensten, Office 365|Keine|
+|login.windows.net|443|Anmelden bei Microsoft Online Services, Microsoft 365|Keine|
 |*.sfx.ms|443|Updates für die OneDrive-Clientsoftware|Keine|
 |*.digicert.com|443|Überprüfung der Zertifikatsperre|Keine|
 
@@ -180,20 +183,22 @@ Windows Virtual Desktop unterstützt keine Betriebssystemimages mit x86 (32 Bit
 
 Die verfügbaren Automatisierungs- und Bereitstellungsoptionen hängen davon ab, welches Betriebssystem und welche Version gewählt werden; siehe dazu die folgende Tabelle: 
 
-|Betriebssystem|Azure-Imagekatalog|Manuelle VM-Bereitstellung|Integration von Azure Resource Manager-Vorlagen|Bereitstellungshost-Pools auf Azure Marketplace|Updates für Windows Virtual Desktop-Agents|
-|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10, Multisession, Version 1903|Ja|Ja|Ja|Ja|Automatic|
-|Windows 10, Multisession, Version 1809|Ja|Ja|Nein|Nein|Automatic|
-|Windows 10 Enterprise, Version 1903|Ja|Ja|Ja|Ja|Automatic|
-|Windows 10 Enterprise, Version 1809|Ja|Ja|Nein|Nein|Automatic|
-|Windows 7 Enterprise|Ja|Ja|Nein|Nein|Manuell|
-|Windows Server 2019|Ja|Ja|Nein|Nein|Automatic|
-|Windows Server 2016|Ja|Ja|Ja|Ja|Automatic|
-|Windows Server 2012 R2|Ja|Ja|Nein|Nein|Automatic|
+|Betriebssystem|Azure-Imagekatalog|Manuelle VM-Bereitstellung|Integration von Azure Resource Manager-Vorlagen|Bereitstellungshost-Pools auf Azure Marketplace|
+|--------------------------------------|:------:|:------:|:------:|:------:|
+|Windows 10, Multisession, Version 1903|Ja|Ja|Ja|Ja|
+|Windows 10, Multisession, Version 1809|Ja|Ja|Nein|Nein|
+|Windows 10 Enterprise, Version 1903|Ja|Ja|Ja|Ja|
+|Windows 10 Enterprise, Version 1809|Ja|Ja|Nein|Nein|
+|Windows 7 Enterprise|Ja|Ja|Nein|Nein|
+|Windows Server 2019|Ja|Ja|Nein|Nein|
+|Windows Server 2016|Ja|Ja|Ja|Ja|
+|Windows Server 2012 R2|Ja|Ja|Nein|Nein|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erstellen Sie zunächst einen Mandanten. Weitere Informationen zum Erstellen eines Mandanten finden Sie im folgenden Tutorial:
+Wenn Sie das Windows Virtual Desktop-Release vom Herbst 2019 verwenden, können Sie mit dem Tutorial [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) beginnen.
+
+Wenn Sie das Windows Virtual Desktop-Release vom Frühjahr 2020 verwenden, müssen Sie stattdessen einen Hostpool erstellen. Im folgenden Tutorial finden Sie Informationen zu den ersten Schritten:
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Mandanten in Windows Virtual Desktop](tenant-setup-azure-active-directory.md)
+> [Erstellen eines Hostpools mit dem Azure-Portal](create-host-pools-azure-marketplace.md)

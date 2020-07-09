@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 765c73a3ab8d5fa8939abe597d0141b24b59ac52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3c7b74d31bc3c4e2276cd52c8e6450630dc99bcd
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76152476"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058026"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Tutorial: Verwenden der Integritätsprüfung im Azure-Bereitstellungs-Manager (Public Preview)
 
@@ -35,7 +35,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 Zusätzliche Ressourcen:
 
-* Die [REST-API-Referenz für den Azure-Bereitstellungs-Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* Die [REST-API-Referenz für den Azure-Bereitstellungs-Manager](/rest/api/deploymentmanager/).
 * [Ein Beispiel zum Azure-Bereitstellungs-Manager](https://github.com/Azure-Samples/adm-quickstart).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -58,7 +58,7 @@ Notieren Sie sich die URL mit dem SAS-Token. Diese URL wird zum Auffüllen eines
 
 ## <a name="create-a-health-check-service-simulator"></a>Erstellen eines Integritätsprüfungsdienst-Simulators
 
-In der Produktion nutzen Sie üblicherweise einen oder mehrere Überwachungsanbieter. Um die Integritätsintegration so einfach wie möglich zu gestalten, hat Microsoft mit einigen der führenden Unternehmen für Dienstintegritätsüberwachung zusammengearbeitet, um Ihnen eine einfache Copy&Paste-Lösung zu bieten, mit der Sie Integritätsprüfungen in Ihre Bereitstellungen integrieren können. Eine Liste mit diesen Unternehmen finden Sie unter [Health monitoring providers](./deployment-manager-health-check.md#health-monitoring-providers) (Integritätsüberwachungsanbieter). Im Rahmen dieses Tutorials erstellen Sie eine [Azure-Funktion](/azure/azure-functions/), um einen Integritätsüberwachungsdienst zu simulieren. Diese Funktion akzeptiert einen Statuscode und gibt den gleichen Code zurück. Ihre Azure-Bereitstellungs-Manager-Vorlage ermittelt anhand des Statuscodes, wie mit der Bereitstellung verfahren werden soll.
+In der Produktion nutzen Sie üblicherweise einen oder mehrere Überwachungsanbieter. Um die Integritätsintegration so einfach wie möglich zu gestalten, hat Microsoft mit einigen der führenden Unternehmen für Dienstintegritätsüberwachung zusammengearbeitet, um Ihnen eine einfache Copy&Paste-Lösung zu bieten, mit der Sie Integritätsprüfungen in Ihre Bereitstellungen integrieren können. Eine Liste mit diesen Unternehmen finden Sie unter [Health monitoring providers](./deployment-manager-health-check.md#health-monitoring-providers) (Integritätsüberwachungsanbieter). Im Rahmen dieses Tutorials erstellen Sie eine [Azure-Funktion](../../azure-functions/index.yml), um einen Integritätsüberwachungsdienst zu simulieren. Diese Funktion akzeptiert einen Statuscode und gibt den gleichen Code zurück. Ihre Azure-Bereitstellungs-Manager-Vorlage ermittelt anhand des Statuscodes, wie mit der Bereitstellung verfahren werden soll.
 
 Die beiden folgenden Dateien dienen zum Bereitstellen der Azure-Funktion. Sie müssen diese Dateien für das Tutorial nicht herunterladen.
 
@@ -369,4 +369,4 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie sich mit der Verwendung des Integritätsprüfungsfeatures des Azure-Bereitstellungs-Managers vertraut gemacht. Weitere Informationen finden Sie in der [Azure Resource Manager-Dokumentation](/azure/azure-resource-manager/).
+In diesem Tutorial haben Sie sich mit der Verwendung des Integritätsprüfungsfeatures des Azure-Bereitstellungs-Managers vertraut gemacht. Weitere Informationen finden Sie in der [Azure Resource Manager-Dokumentation](../index.yml).

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 0438f573c33c71e0f30b7db1909e3649b21010a7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 19a7cf2ec3a8a7a95952fcebfcf3a127c4dfd013
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82086588"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792182"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken
 
@@ -22,6 +22,13 @@ In diesem Artikel erhalten Sie schrittweise Anleitungen zum Konfigurieren von Az
 
 > [!IMPORTANT]
 > Nachdem Firewallregeln in Kraft sind, können Benutzer nur Vorgänge auf Key Vault-[Datenebene](secure-your-key-vault.md#data-plane-access-control) ausführen, wenn ihre Anforderungen aus zulässigen virtuellen Netzwerken oder IPv4-Adressbereichen stammen. Dies gilt auch für den Zugriff auf den Schlüsseltresor aus dem Azure-Portal. Obwohl Benutzer im Azure-Portal zu einem Schlüsseltresor navigieren können, können sie möglicherweise keine Schlüssel, Geheimnisse oder Zertifikate auflisten, wenn ihr Clientcomputer nicht in der Zulassungsliste enthalten ist. Dies wirkt sich auch auf die Key Vault-Auswahl anderer Azure-Dienste aus. Benutzer können möglicherweise eine Liste von Schlüsseltresoren einsehen, aber keine Schlüssel auflisten, wenn Firewallregeln ihren Clientcomputer blockieren.
+
+> [!NOTE]
+> Bedenken Sie dabei folgende Konfigurationseinschränkungen:
+> * Maximal 127 VNET-Regeln und 127 IPv4-Regeln sind zulässig. 
+> * Kleine Adressbereiche, die die Präfixgrößen „/ 31“ oder „/ 32“ verwenden, werden nicht unterstützt. Konfigurieren Sie stattdessen diese Bereiche mit einzelnen IP-Adressregeln.
+> * IP-Netzwerkregeln sind nur für öffentliche IP-Adressen zulässig. Für private Netzwerke reservierte IP-Adressbereiche (gemäß RFC 1918) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die mit **10.** , **172.16-31** und **192.168.** beginnen. 
+> * Derzeit werden nur IPv4-Adressen unterstützt.
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
@@ -33,6 +40,7 @@ Im Folgenden finden Sie Anweisungen zum Konfigurieren von Key Vault-Firewalls un
 4. Wenn Sie vorhandene virtuelle Netzwerke zu Firewalls und VNET-Regeln hinzufügen möchten, klicken Sie auf **+ Vorhandene virtuelle Netzwerke hinzufügen**.
 5. Wählen Sie auf dem angezeigten neuen Blatt das Abonnement, die virtuellen Netzwerke und Subnetze aus, denen Sie Zugriff auf diesen Schlüsseltresor gewähren möchten. Wenn für die von Ihnen ausgewählten virtuellen Netzwerke und Subnetze keine Dienstendpunkte aktiviert sind, bestätigen Sie, dass Sie Dienstendpunkte aktivieren möchten, und wählen Sie **Aktivieren** aus. Es kann bis zu 15 Minuten dauern, bis diese Änderung wirksam wird.
 6. Fügen Sie unter **IP-Netzwerke** IPv4-Adressbereiche hinzu, indem Sie IPv4-Adressbereiche in [CIDR-Notation (Classless Inter-Domain Routing)](https://tools.ietf.org/html/rfc4632) oder einzelne IP-Adressen eingeben.
+7. Wenn Sie zulassen möchten, dass vertrauenswürdige Microsoft-Dienste die Key Vault-Firewall umgehen, wählen Sie „Ja“ aus. Eine vollständige Liste der aktuellen vertrauenswürdigen Key Vault-Dienste finden Sie unter folgendem Link: [Azure Key Vault – Vertrauenswürdige Dienste](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services).
 7. Wählen Sie **Speichern** aus.
 
 Sie können auch neue virtuelle Netzwerke und Subnetze hinzufügen und dann Dienstendpunkte für die neu erstellten virtuellen Netzwerke und Subnetze aktivieren, indem Sie **+ Neues virtuelles Netzwerk hinzufügen** auswählen. Folgen Sie dann den Anweisungen.
@@ -114,7 +122,7 @@ Im Folgenden finden Sie Anweisungen zum Konfigurieren von Key Vault-Firewalls un
    ```
 
 ## <a name="references"></a>References
-
+* ARM-Vorlagenreferenz: [Azure Key Vault: ARM-Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/vaults)
 * Azure CLI-Befehle: [az keyvault network-rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
 * Azure PowerShell-Cmdlets: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 

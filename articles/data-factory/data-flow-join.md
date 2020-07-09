@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/02/2020
-ms.openlocfilehash: 9b720470ac406ed0730e6243262dcf33d2df169a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/15/2020
+ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233419"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683371"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Join-Transformation in einem Zuordnungsdatenfluss
 
@@ -63,13 +63,19 @@ Wenn Sie explizit ein vollständiges kartesisches Produkt erzeugen möchten, ver
 
 ![Join-Transformation](media/data-flow/join.png "Join")
 
+### <a name="non-equi-joins"></a>Nicht-Gleichheitsverknüpfungen
+
+Wenn Sie in Ihren Joinbedingungen einen bedingten Operator wie „ungleich“ „(!=)“ oder „größer als“ „(>)“ verwenden möchten, ändern Sie die Dropdownliste des Operators zwischen den beiden Spalten. Bei Nicht-Gleichheitsverknüpfungen muss mindestens einer der beiden Datenströme mithilfe der Übertragungsoption **Fixed** (Fest) auf der Registerkarte **Optimieren** übertragen werden.
+
+![Nicht-Gleichheitsverknüpfung](media/data-flow/non-equi-join.png "Nicht-Gleichheitsverknüpfung")
+
 ## <a name="optimizing-join-performance"></a>Optimieren der Leistung beim Verknüpfen
 
 Im Gegensatz zu „Merge Join“ in Tools wie SSIS ist die Join-Transformation kein obligatorischer Vorgang vom Typ „Merge Join“. Die Join-Schlüssel müssen nicht sortiert werden. Der Join-Vorgang erfolgt basierend auf dem optimalen Join-Vorgang in Spark (Broadcast- oder Map-Side-Join).
 
 ![Optimieren der Join-Transformation](media/data-flow/joinoptimize.png "Join-Optimierung")
 
-Wenn bei Joins, Suchvorgängen und Exists-Transformationen der Arbeitsspeicher des Workerknotens groß genug für einen oder beide Datenströme ist, können Sie die Leistung optimieren, indem Sie die **Übertragung** aktivieren. Standardmäßig entscheidet die Spark-Engine automatisch, ob eine Seite übertragen werden soll. Klicken Sie auf **Fest**, um die zu übertragende Seite manuell auszuwählen.
+Wenn bei Joins, Suchvorgängen und Exists-Transformationen der Arbeitsspeicher des Workerknotens groß genug für einen oder beide Datenströme ist, können Sie die Leistung optimieren, indem Sie die **Übertragung** aktivieren. Standardmäßig entscheidet die Spark-Engine automatisch, ob eine Seite übertragen werden soll oder nicht. Klicken Sie auf **Fest**, um die zu übertragende Seite manuell auszuwählen.
 
 Es wird nicht empfohlen, die Übertragung über die Option **Off** (Aus) zu deaktivieren, es sei denn, für Ihre Joins treten Timeoutfehler auf.
 

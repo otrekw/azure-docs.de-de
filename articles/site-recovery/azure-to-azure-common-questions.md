@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738047"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134036"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung
 
@@ -53,6 +53,14 @@ Ja. Site Recovery unterstützt die Notfallwiederherstellung von virtuellen Compu
   - Für Azure Disk Encryption Version 1.1 müssen Sie die virtuellen Windows-Computer mit verwalteten Datenträgern verwenden.
   - Weitere Informationen zum Aktivieren der Replikation für verschlüsselte virtuelle Computer finden Sie [hier](azure-to-azure-how-to-enable-replication-ade-vms.md).
 
+### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>Kann ich ein Automation-Konto aus einer anderen Ressourcengruppe auswählen?
+
+Dies wird über das Portal derzeit nicht unterstützt, aber Sie können ein Automation-Konto per PowerShell aus einer anderen Ressourcengruppe auswählen.
+
+### <a name="after-specifying-an-automation-account-that-is-in-a-different-resource-group-than-the-vault-am-i-permitted-to-delete-the-runbook-if-there-is-no-other-vault-to-specify"></a>Kann ich nach dem Angeben eines Automation-Kontos, das sich in einer anderen Ressourcengruppe als der Tresor befindet, das Runbook löschen, falls kein anderer Tresor angegeben werden muss?
+
+Das erstellte benutzerdefinierte Runbook ist ein Tool, das gelöscht werden kann, falls es nicht mehr benötigt wird.
+
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>Kann ich VMs in ein anderes Abonnement replizieren?
 
 Ja, Sie können virtuelle Azure-Computer in ein anderes Abonnement im selben Azure AD-Mandanten replizieren.
@@ -81,7 +89,7 @@ Site Recovery unterstützt kein „Entfernen eines Datenträgers im laufendem Be
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Wie oft kann ich zu Azure replizieren?
 
-Die Replikation ist fortlaufend, wenn Sie virtuelle Azure-Computer in eine andere Azure-Region replizieren. Weitere Informationen finden Sie unter [Architektur der Azure-zu-Azure-Replikation](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process).
+Die Replikation ist fortlaufend, wenn Sie virtuelle Azure-Computer in eine andere Azure-Region replizieren. Weitere Informationen finden Sie unter [Architektur der Azure-zu-Azure-Replikation](./azure-to-azure-architecture.md#replication-process).
 
 ### <a name="can-i-replicate-virtual-machines-within-a-region-i-need-this-functionality-to-migrate-vms"></a>Kann ich virtuelle Computer innerhalb einer Region replizieren? Ich benötige diese Funktion zum Migrieren von virtuellen Computern.
 
@@ -89,17 +97,21 @@ Sie können eine Lösung für die Azure-zu-Azure-Notfallwiederherstellung nicht 
 
 ### <a name="can-i-replicate-vm-instances-to-any-azure-region"></a>Kann ich VM-Instanzen in jede Azure-Region replizieren?
 
-Mit Site Recovery können Sie VMs zwischen zwei beliebigen Regionen im gleichen geografischen Cluster replizieren und wiederherstellen. Geografische Cluster werden unter Berücksichtigung von Datenlatenz und Souveränität definiert. Weitere Informationen finden Sie unter [Unterstützung für Regionen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support) für Site Recovery.
+Mit Site Recovery können Sie VMs zwischen zwei beliebigen Regionen im gleichen geografischen Cluster replizieren und wiederherstellen. Geografische Cluster werden unter Berücksichtigung von Datenlatenz und Souveränität definiert. Weitere Informationen finden Sie unter [Unterstützung für Regionen](./azure-to-azure-support-matrix.md#region-support) für Site Recovery.
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Ist für Site Recovery eine Internetverbindung erforderlich?
 
-Nein, für Site Recovery ist keine Internetverbindung erforderlich. Benötigt wird jedoch ein Zugriff auf die URLs und IP-Adressbereiche von Site Recovery, wie unter [Netzwerke für die Notfallwiederherstellung für virtuelle Azure-Computer](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls) erwähnt.
+Nein, für Site Recovery ist keine Internetverbindung erforderlich. Benötigt wird jedoch ein Zugriff auf die URLs und IP-Adressbereiche von Site Recovery, wie unter [Netzwerke für die Notfallwiederherstellung für virtuelle Azure-Computer](./azure-to-azure-about-networking.md#outbound-connectivity-for-urls) erwähnt.
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>Kann ich eine Anwendung mit einer separaten Ressourcengruppe für verschiedene Ebenen replizieren?
 
 Ja, Sie können die Anwendung replizieren und die Notfallwiederherstellungskonfiguration auch in einer separaten Ressourcengruppe speichern.
 
-Angenommen, Sie verwenden eine Anwendung, bei der die Ebenen von Anwendung, Datenbank und Web sich jeweils in einer separaten Ressourcengruppe befinden, dann müssen Sie den [Replikations-Assistenten](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) dreimal auswählen, um alle Ebenen zu schützen. Site Recovery repliziert diese drei Ebenen in drei verschiedenen Ressourcengruppen.
+Angenommen, Sie verwenden eine Anwendung, bei der die Ebenen von Anwendung, Datenbank und Web sich jeweils in einer separaten Ressourcengruppe befinden, dann müssen Sie den [Replikations-Assistenten](./azure-to-azure-how-to-enable-replication.md#enable-replication) dreimal auswählen, um alle Ebenen zu schützen. Site Recovery repliziert diese drei Ebenen in drei verschiedenen Ressourcengruppen.
+
+### <a name="can-i-move-storage-accounts-across-resource-groups"></a>Kann ich Speicherkonten über Ressourcengruppen hinweg verschieben?
+
+Nein, dieses Szenario wird nicht unterstützt. Wenn Sie jedoch versehentlich Speicherkonten in eine andere Ressourcengruppe verschieben und die ursprüngliche Ressourcengruppe löschen, können Sie eine neue Ressourcengruppe mit dem gleichen Namen wie die alte Ressourcengruppe erstellen und dann das Speicherkonto in diese Ressourcengruppe verschieben.
 
 ## <a name="replication-policy"></a>Replikationsrichtlinie
 
@@ -110,7 +122,7 @@ Eine Replikationsrichtlinie definiert die Einstellungen für den Aufbewahrungsve
 - 24 Stunden für den Aufbewahrungsverlauf von Wiederherstellungspunkten.
 - 60 Minuten für die Häufigkeit anwendungskonsistenter Momentaufnahmen.
 
-[Weitere Informationen zu Replikationseinstellungen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings).
+[Weitere Informationen zu Replikationseinstellungen](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Was ist ein absturzkonsistenter Wiederherstellungspunkt?
 
@@ -169,6 +181,10 @@ Der erste Wiederherstellungspunkt, der generiert wird, ist eine vollständige Ko
 
 Ja, wenn Sie die Aufbewahrungsdauer von 24 auf 72 Stunden erhöhen, speichert Site Recovery die Wiederherstellungspunkte für zusätzliche 48 Stunden. Durch die zusätzliche Zeit fallen Speicherkosten an. Beispiel: Ein einzelner Wiederherstellungspunkt weist Deltaänderungen von 10 GB auf, bei pro-GB-Kosten von $0,16 pro Monat. Die zusätzlichen Kosten betragen $1,60 × 48 pro Monat.
 
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Kann ich die Replikation mit App-Konsistenz auf Linux-Servern aktivieren?
+
+Ja. Azure Site Recovery für Linux-Betriebssysteme unterstützt benutzerdefinierte Anwendungsskripts für App-Konsistenz. Das benutzerdefinierte Skript mit den „Pre“- und „Post“-Optionen wird vom Mobilitäts-Agent von Azure Site Recovery während des Vorgangs für die App-Konsistenz verwendet. [Weitere Informationen](./site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
+
 ## <a name="multi-vm-consistency"></a>Multi-VM-Konsistenz
 
 ### <a name="what-is-multi-vm-consistency"></a>Was versteht man unter Multi-VM-Konsistenz?
@@ -179,7 +195,7 @@ Site Recovery stellt die Option **Multi-VM-Konsistenz** bereit, die eine Replika
 
 Wenn Sie ein Failover dieser virtuellen Computer ausführen, verfügen alle über gemeinsame absturz- und anwendungskonsistente Wiederherstellungspunkte.
 
-Schauen Sie sich hierzu das Tutorial [Aktivieren von Multi-VM-Konsistenz](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm) an.
+Schauen Sie sich hierzu das Tutorial [Aktivieren von Multi-VM-Konsistenz](./azure-to-azure-tutorial-enable-replication.md#enable-replication-for-a-vm) an.
 
 ### <a name="can-i-fail-over-a-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Kann für einen einzelnen virtuellen Computer in einer Replikationsgruppe für Multi-VM-Konsistenz ein Failover ausgeführt werden?
 
@@ -275,11 +291,11 @@ Ja, Sie können Azure Automation-Runbooks in Ihren Wiederherstellungsplan integr
 
 ### <a name="i-failed-over-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>Ich habe ein Failover von der primären Region in eine Notfallwiederherstellungsregion durchgeführt. Werden virtuelle Computer in einer Notfallwiederherstellungsregion automatisch geschützt?
 
-Nein. Wenn Sie ein [Failover](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) für virtuelle Azure-Computer von einer Region in eine andere durchführen, werden die virtuellen Computer in der Notfallwiederherstellungsregion in einem ungeschützten Zustand gestartet. Für ein Failback der VMs in die primäre Region müssen Sie die VMs in der sekundären Region [erneut schützen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect).
+Nein. Wenn Sie ein [Failover](./azure-to-azure-tutorial-failover-failback.md) für virtuelle Azure-Computer von einer Region in eine andere durchführen, werden die virtuellen Computer in der Notfallwiederherstellungsregion in einem ungeschützten Zustand gestartet. Für ein Failback der VMs in die primäre Region müssen Sie die VMs in der sekundären Region [erneut schützen](./azure-to-azure-how-to-reprotect.md).
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>Repliziert Site Recovery zum Zeitpunkt des erneuten Schutzes alle Daten aus der sekundären Region in die primäre Region?
 
-Dies hängt von der Situation ab. Wenn der virtuelle Computer der Quellregion vorhanden ist, werden nur Änderungen zwischen dem Quelldatenträger und dem Zieldatenträger synchronisiert. Site Recovery berechnet die Unterschiede durch Vergleichen der Datenträger und überträgt dann die Daten. Dieser Vorgang dauert normalerweise einige Stunden. Unter [Erneutes Schützen von virtuellen Azure-Computerinstanzen, für die ein Failover zur primären Region durchgeführt wurde](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection) erfahren Sie, was bei einem erneuten Schutz passiert.
+Dies hängt von der Situation ab. Wenn der virtuelle Computer der Quellregion vorhanden ist, werden nur Änderungen zwischen dem Quelldatenträger und dem Zieldatenträger synchronisiert. Site Recovery berechnet die Unterschiede durch Vergleichen der Datenträger und überträgt dann die Daten. Dieser Vorgang dauert normalerweise einige Stunden. Unter [Erneutes Schützen von virtuellen Azure-Computerinstanzen, für die ein Failover zur primären Region durchgeführt wurde](./azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection) erfahren Sie, was bei einem erneuten Schutz passiert.
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Wie lange dauert ein Failback?
 
@@ -305,10 +321,10 @@ Site Recovery ist zertifiziert nach ISO 27001:2013, 27018, HIPAA und DPA. Der Di
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Verschlüsselt Site Recovery die Replikation?
 
-Ja. Sowohl Verschlüsselung bei der Übertragung als auch [Verschlüsselung im Ruhezustand in Azure](https://docs.microsoft.com/azure/storage/storage-service-encryption) wird unterstützt.
+Ja. Sowohl Verschlüsselung bei der Übertragung als auch [Verschlüsselung im Ruhezustand in Azure](../storage/common/storage-service-encryption.md) wird unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Überprüfen der Azure-zu-Azure-Supportanforderungen](azure-to-azure-support-matrix.md).
 - [Einrichten der Azure-zu-Azure-Replikation](azure-to-azure-tutorial-enable-replication.md).
-- Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese bitte im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
+- Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese auf der [Microsoft F&A-Seite für Azure Recovery Services](/answers/topics/azure-site-recovery.html).

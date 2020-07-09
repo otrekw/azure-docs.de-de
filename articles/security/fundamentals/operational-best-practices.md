@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 80b8adfc26cd87e0788852e98fddb0fd3f2e8cd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188585"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204734"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Dieser Artikel enthält eine Reihe von bewährten Methoden für den Schutz Ihrer Daten, Anwendungen und anderen Ressourcen in Azure.
@@ -215,8 +215,8 @@ Weitere Informationen finden Sie unter [Erstellen und Verwalten von Richtlinien 
 **Bewährte Methode**: Identifizieren Sie die Rollen, die dafür verantwortlich sind, dass Richtlinienverletzungen überwacht werden und sichergestellt ist, dass die richtige Korrekturaktion schnell ausgeführt wird.   
 **Detail**: Lassen Sie über das [Azure-Portal](../../governance/policy/how-to/get-compliance-data.md#portal) oder über die [Befehlszeile](../../governance/policy/how-to/get-compliance-data.md#command-line) die zugewiesene Rolle die Einhaltung überwachen.
 
-**Bewährte Methode**: Azure Policy ist eine technische Darstellung der schriftlichen Richtlinien einer Organisation. Ordnen Sie alle Azure-Richtlinien Organisationsrichtlinien zu, um Verwirrung zu vermeiden und die Konsistenz zu steigern.   
-**Detail**: Dokumentieren Sie die Zuordnung in der Dokumentation Ihrer Organisation oder direkt in der Azure Policy-Definition, indem Sie einen Verweis auf die Organisationsrichtlinie in der [Azure Policy-Definition](../../governance/policy/concepts/definition-structure.md#display-name-and-description) oder der Beschreibung der [Azure Policy-Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) hinzufügen.
+**Bewährte Methode**: Azure Policy ist eine technische Darstellung der schriftlichen Richtlinien einer Organisation. Ordnen Sie alle Azure Policy-Definitionen Organisationsrichtlinien zu, um Verwirrung zu vermeiden und die Konsistenz zu steigern.   
+**Detail**: Dokumentieren Sie die Zuordnung in der Dokumentation Ihrer Organisation oder direkt in der Azure Policy-Definition, indem Sie einen Verweis auf die Organisationsrichtlinie in der [Richtliniendefinition](../../governance/policy/concepts/definition-structure.md#display-name-and-description) oder der Beschreibung der [Initiativendefinition](../../governance/policy/concepts/initiative-definition-structure.md#metadata) hinzufügen.
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Überwachen der Azure AD-Risikoberichte
 Die allermeisten Sicherheitsverletzungen kommen vor, wenn Angreifer Zugriff auf eine Umgebung erhalten, indem sie die Identität eines Benutzers stehlen. Die Ermittlung von kompromittierten Identitäten ist keine einfache Aufgabe. Azure AD verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um verdächtige Aktivitäten im Zusammenhang mit Ihren Benutzerkonten zu erkennen. Jede erkannte verdächtige Aktion wird in einem Datensatz gespeichert, der als [Risikoerkennung](../../active-directory/reports-monitoring/concept-risk-events.md) bezeichnet wird. Risikoerkennungen werden in Azure AD-Sicherheitsberichten erfasst. Weitere Informationen finden Sie unter [Bericht „Benutzer mit Risikomarkierung“](../../active-directory/reports-monitoring/concept-user-at-risk.md) und unter [Bericht „Riskante Anmeldungen“](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).

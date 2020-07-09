@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
-ms.openlocfilehash: 59de7a8decef807b548ff4b85f06fc1115ce110b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125042"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310562"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure-Spot-VMs für VM-Skalierungsgruppen 
 
@@ -54,7 +54,7 @@ Zum Bereitstellen von Spot-VMs in Skalierungsgruppen können Sie das neue *Prior
 Das Erstellen einer Skalierungsgruppe, die Spot-VMs nutzt, entspricht den Ausführungen im [Artikel „Erste Schritte“](quick-create-portal.md). Wenn Sie eine Skalierungsgruppe bereitstellen, können Sie das Spot-Flag und die Entfernungsrichtlinie festlegen: ![Erstellen einer Skalierungsgruppe mit Spot-VMs](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure CLI
 
 Das Erstellen einer Skalierungsgruppe mit Spot-VMs entspricht den Ausführungen im [Artikel „Erste Schritte“](quick-create-cli.md). Fügen Sie einfach „--Priority Spot“ und `--max-price` hinzu. In diesem Beispiel verwenden wir `-1` für `--max-price`, sodass die Instanz nicht basierend auf dem Preis entfernt wird.
 
@@ -160,7 +160,7 @@ Um die Instanz nach dem Entfernen zu löschen, ändern Sie den `evictionPolicy`-
 | Nutzungsbasierte Bezahlung                | Ja                               |
 | Clouddienstanbieter | [Kontaktieren Sie Ihren Partner.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Vorteile                     | Nicht verfügbar                     |
-| Sponsoren                    | Nicht verfügbar                     |
+| Sponsoren                    | Ja                               |
 | Kostenlose Testversion                   | Nicht verfügbar                     |
 
 

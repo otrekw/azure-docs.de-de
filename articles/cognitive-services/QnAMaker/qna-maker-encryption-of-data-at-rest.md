@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: bd64321a6a7afbac61a63365c77a75120f837e83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99c21ece202f8d9867045d506574dd7718bd455e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371987"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653661"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker-Verschlüsselung für ruhende Daten
 
@@ -52,6 +52,11 @@ Der QnA Maker-Dienst verwendet CMKs aus dem Azure Search-Dienst. Führen Sie die
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
 Kundenseitig verwaltete Schlüssel sind in allen Azure Search-Regionen verfügbar.
+
+## <a name="encryption-of-data-in-transit"></a>Verschlüsselung von Daten während der Übertragung
+
+Das QnA Maker-Portal wird im Browser des Benutzers ausgeführt. Jede Aktion löst einen direkten Aufruf der entsprechenden Cognitive Services-API aus. Daher ist QnA Maker mit Daten während der Übertragung kompatibel.
+Der QnA Maker-Portaldienst wird jedoch in der Region „USA, Westen“ gehostet und ist daher nicht ideal für Kunden außerhalb der USA. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

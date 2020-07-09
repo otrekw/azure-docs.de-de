@@ -7,21 +7,25 @@ manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: conceptual
-ms.date: 04/23/2020
+ms.topic: overview
+ms.date: 06/10/2020
 ms.author: diberry
-ms.openlocfilehash: 0c52771573c1df6a7a0efefbf950e88e1f1728f7
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 973a8b7eb8dad66568a5beb45adea9740dd0402a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800628"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700633"
 ---
 # <a name="whats-new-in-personalizer"></a>Neuerungen in der Personalisierung
 
 Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="june-2020"></a>Juni 2020
+
+* Neues Tutorial: [Verwendung der Personalisierung in einer Web-App](tutorial-use-personalizer-web-app.md)
 
 ### <a name="may-2020---build-conference"></a>Mai 2020 – //Build-Konferenz
 

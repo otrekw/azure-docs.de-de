@@ -11,12 +11,12 @@ ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 1d82c7c22bb5aeb2740884b0d7ede4a4d8f07f86
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: ea9a9430f9abee6179bacd4f999b7eeca92a8129
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631218"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020845"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Sichern und Wiederherstellen in einem Azure Synapse-SQL-Pool
 
@@ -30,7 +30,7 @@ Eine *Data Warehouse-Wiederherstellung* ist ein neues Data Warehouse, das auf de
 
 ## <a name="automatic-restore-points"></a>Automatische Wiederherstellungspunkte
 
-Bei Momentaufnahmen handelt es sich um ein integriertes Feature des Diensts zum Erstellen von Wiederherstellungspunkten. Sie müssen das Feature nicht aktivieren. Der SQL-Pool sollte jedoch für die Erstellung des Wiederherstellungspunkts einen aktiven Status aufweisen. Wenn der SQL-Pool häufig angehalten wird, werden möglicherweise keine automatischen Wiederherstellungspunkte erstellt. Sie sollten daher einen benutzerdefinierten Wiederherstellungspunkt erstellen, bevor Sie den SQL-Pool anhalten. Automatische Wiederherstellungspunkte können derzeit nicht von Benutzern gelöscht werden, da der Dienst mithilfe dieser Wiederherstellungspunkte SLAs für die Wiederherstellung verwaltet.
+Bei Momentaufnahmen handelt es sich um ein integriertes Feature zum Erstellen von Wiederherstellungspunkten. Sie müssen das Feature nicht aktivieren. Der SQL-Pool sollte jedoch für die Erstellung des Wiederherstellungspunkts einen aktiven Status aufweisen. Wenn der SQL-Pool häufig angehalten wird, werden möglicherweise keine automatischen Wiederherstellungspunkte erstellt. Sie sollten daher einen benutzerdefinierten Wiederherstellungspunkt erstellen, bevor Sie den SQL-Pool anhalten. Automatische Wiederherstellungspunkte können derzeit nicht von Benutzern gelöscht werden, da der Dienst mithilfe dieser Wiederherstellungspunkte SLAs für die Wiederherstellung verwaltet.
 
 Die Momentaufnahmen Ihres Data Warehouse werden im Verlauf des Tages erstellt, und die generierten Wiederherstellungspunkte sind für sieben Tage verfügbar. Dieser Aufbewahrungszeitraum kann nicht geändert werden. Ein SQL-Pool unterstützt eine RPO (Recovery Point Objective) von acht Stunden. Sie können das Data Warehouse in der primären Region anhand einer beliebigen Momentaufnahme wiederherstellen, die in den vergangenen sieben Tagen erstellt wurde.
 
@@ -65,7 +65,7 @@ In Folgenden sind ausführliche Details zu den Aufbewahrungszeiträumen für Wie
 Wenn Sie einen SQL-Pool löschen, wird eine abschließende Momentaufnahme erstellt und sieben Tage lang gespeichert. Sie können den SQL-Pool anhand des letzten Wiederherstellungspunkts wiederherstellen, der zum Zeitpunkt der Löschung erstellt wurde. Wenn der SQL-Pool im angehaltenen Zustand gelöscht wird, wird keine Momentaufnahme erstellt. Erstellen Sie in diesem Fall einen benutzerdefinierten Wiederherstellungspunkt, bevor Sie den SQL-Pool löschen.
 
 > [!IMPORTANT]
-> Wenn Sie eine logische SQL Server-Instanz löschen, werden auch alle Datenbanken der Instanz gelöscht und können nicht wiederhergestellt werden. Es ist nicht möglich, einen gelöschten Server wiederherzustellen.
+> Wenn Sie den Server löschen, auf dem ein SQL-Pool gehostet wird, werden auch alle Datenbanken gelöscht, die zum Server gehören, und sie können nicht wiederhergestellt werden. Es ist nicht möglich, einen gelöschten Server wiederherzustellen.
 
 ## <a name="geo-backups-and-disaster-recovery"></a>Geosicherungen und Notfallwiederherstellung
 
@@ -96,7 +96,7 @@ Zum Wiederherstellen einer gelöschten oder angehaltenen Data Warehouse-Instanz 
 
 ## <a name="cross-subscription-restore"></a>Abonnementübergreifende Wiederherstellung
 
-Wenn Sie eine direkte Wiederherstellung über ein Abonnement hinweg durchführen müssen, stimmen Sie [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore) für diese Funktion ab. Wiederherstellung auf einen anderen logischen Server und [„Verschieben“](/azure/azure-resource-manager/resource-group-move-resources?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) des Servers über Abonnements hinweg, um eine abonnementübergreifende Wiederherstellung durchzuführen.
+Wenn Sie eine direkte Wiederherstellung über ein Abonnement hinweg durchführen müssen, stimmen Sie [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore) für diese Funktion ab. Führen Sie eine Wiederherstellung auf einen anderen Server aus, und [„verschieben“](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Sie den Server über Abonnements hinweg, um eine abonnementübergreifende Wiederherstellung durchzuführen.
 
 ## <a name="geo-redundant-restore"></a>Georedundante Wiederherstellung
 
@@ -107,4 +107,4 @@ Sie können [Ihren SQL-Pool in einer beliebigen Region wiederherstellen](sql-dat
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Planen der Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](../../sql-database/sql-database-business-continuity.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Weitere Informationen zum Planen der Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](../../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).

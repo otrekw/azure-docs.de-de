@@ -1,18 +1,18 @@
 ---
-title: Anzeigen von Updatebewertungen der Azure Automation-Updateverwaltung
-description: In diesem Artikel erfahren Sie, wie Sie Updatebewertungen für Updatebereitstellungen anzeigen.
+title: Anzeigen von Azure Automation-Updatebewertungen
+description: In diesem Artikel erfahren Sie, wie Sie Updatebewertungen für Bereitstellungen der Updateverwaltung anzeigen.
 services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 75762afc9ae69da81e89ce320f454d9764f82914
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 321146364897d46a403bdfd6789fcb219179d88c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617391"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830598"
 ---
-# <a name="view-azure-automation-update-management-update-assessments"></a>Anzeigen von Updatebewertungen der Azure Automation-Updateverwaltung
+# <a name="view-update-assessments"></a>Anzeigen der Updatebewertungen
 
 Wählen Sie in Ihrem Azure Automation-Konto **Updateverwaltung** aus, um den Status Ihrer Computer anzuzeigen.
 
@@ -28,7 +28,7 @@ Wählen Sie **Fehlende Updates** aus, um eine Liste der Updates anzuzeigen, die 
 
 ![Fehlende Updates](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
-## <a name="update-classifications"></a>Updateklassifizierungen
+## <a name="work-with-update-classifications"></a>Verwenden von Updateklassifizierungen
 
 Die folgenden Tabellen enthalten eine Liste der unterstützten Updateklassifizierungen in der Updateverwaltung sowie eine Definition für jede Klassifikation.
 
@@ -64,4 +64,4 @@ Sie müssen das Plug-In „yum-security“ installieren, um Updates in Version 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Updatebewertungen angezeigt haben, können Sie eine Updatebereitstellung planen, indem Sie die Schritte unter [Verwalten von Updates und Patches für Ihre Azure-VMS ](automation-tutorial-update-management.md) ausführen.
+Weitere Informationen finden Sie unter [Verwalten von Updates und Patches für Ihre Azure-VMs](automation-tutorial-update-management.md).

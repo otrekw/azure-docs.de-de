@@ -4,13 +4,13 @@ description: Dieser Schnellstart zeigt Ihnen die ersten Schritte mit den QnA Mak
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: ecc3fb144fb4b4e27182567925199f841b1c4357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.openlocfilehash: b42bc3be0d425a84da8bb545ebb29e261a6b0780
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78851544"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342730"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Schnellstart: QnA Maker-REST-APIs für Node.js
 

@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: b1286daaa76c71f88d44ea387a92876a8676783c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: tracking-python
+ms.openlocfilehash: 0f96cbd86921428a85aa69f3561252aeb7fd67b5
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77062228"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118218"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Schnellstart: Erstellen einer Graphdatenbank in Azure Cosmos DB mit Python und dem Azure-Portal
 
@@ -97,7 +98,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzur
 
     Kopieren Sie den ersten Teil des URI-Werts.
 
-    ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“](./media/create-graph-python/keys.png)
+    :::image type="content" source="./media/create-graph-python/keys.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“":::
 
 2. Öffnen Sie die Datei *connect.py*, und ersetzen Sie `<YOUR_ENDPOINT>` in Zeile 104 durch den URI-Wert:
 
@@ -171,15 +172,15 @@ Nach dem Einfügen der Scheitelpunkte und Kanten können Sie wieder zum Daten-Ex
 
 1. Wählen Sie im Azure-Portal in Ihrem Azure Cosmos DB-Konto **Daten-Explorer** aus, erweitern Sie den Eintrag **sample-graph**, und wählen Sie **Graph** und anschließend **Filter anwenden** aus. 
 
-   ![Neue Dokumente im Daten-Explorer im Azure-Portal erstellen](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="Erstellen neuer Dokumente im Daten-Explorer im Azure-Portal":::
 
 2. Beachten Sie in der Liste **Ergebnisse** drei neue Benutzer, die dem Graph hinzugefügt wurden. Sie können die Scheitelpunkte bewegen, indem Sie sie ziehen und loslassen, zoomen, indem Sie das Mausrad verwenden, und die Größe des Graphen verändern, indem Sie auf den Doppelpfeil klicken. 
 
-   ![Neue Scheitelpunkte im Graph im Daten-Explorer im Azure-Portal](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png" alt-text="Neue Scheitelpunkte im Graph im Daten-Explorer im Azure-Portal":::
 
 3. Fügen Sie nun einige neue Benutzer hinzu. Wählen Sie die Schaltfläche **Neuer Vertex** aus, um dem Graph Daten hinzuzufügen.
 
-   ![Neue Dokumente im Daten-Explorer im Azure-Portal erstellen](./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Erstellen neuer Dokumente im Daten-Explorer im Azure-Portal":::
 
 4. Geben Sie als Bezeichnung *Person* ein.
 
@@ -218,15 +219,15 @@ Nach dem Einfügen der Scheitelpunkte und Kanten können Sie wieder zum Daten-Ex
 
 12. Als Nächstes verbinden wir „rakesh“ und „ashley“. Vergewissern Sie sich, dass **ashley** in der Liste **Ergebnisse** ausgewählt ist, und wählen Sie anschließend rechts unten neben **Ziele** die Bearbeitungsschaltfläche aus. Möglicherweise müssen Sie Ihr Fenster verbreitern, damit der Bereich **Eigenschaften** zu sehen ist.
 
-    ![Ändern des Ziels eines Scheitelpunkts in einem Graph](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Ändern des Ziels eines Scheitelpunkts in einem Graph":::
 
 13. Geben Sie im Feld **Ziel** die Zeichenfolge *rakesh* und im Feld **Kantenbezeichnung** die Zeichenfolge *knows* ein, und wählen Sie anschließend das Häkchen aus.
 
-    ![Hinzufügen einer Verbindung zwischen „ashley“ und „rakesh“ im Daten-Explorer](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="Hinzufügen einer Verbindung zwischen „ashley“ und „rakesh“ im Daten-Explorer":::
 
 14. Wählen Sie nun in der Ergebnisliste den Eintrag **rakesh** aus. Wie Sie sehen, sind „ashley“ und „rakesh“ miteinander verbunden. 
 
-    ![Zwei verbundene Scheitelpunkte im Daten-Explorer](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="Zwei verbundene Scheitelpunkte im Daten-Explorer":::
 
 Damit haben Sie den Teil des Tutorials, in dem die Ressourcen erstellt werden, abgeschlossen. Sie können weiter Scheitelpunkte zu Ihrem Graphen hinzufügen, die vorhandenen Scheitelpunkte anpassen oder die Abfragen ändern. Sehen Sie sich nun die von Azure Cosmos DB bereitgestellten Metriken an, und bereinigen Sie anschließend die Ressourcen. 
 

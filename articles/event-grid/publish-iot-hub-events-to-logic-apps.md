@@ -1,18 +1,18 @@
 ---
 title: 'Tutorial: Verwenden von IoT Hub-Ereignissen zum Auslösen von Azure Logic Apps'
 description: In diesem Tutorial wird gezeigt, wie Sie mit dem Ereignisroutingdienst von Azure Event Grid automatisierte Prozesse zum Durchführen von Azure Logic Apps-Aktionen anhand von IoT Hub-Ereignissen erstellen.
-services: iot-hub
+services: iot-hub, event-grid
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
-ms.date: 11/21/2019
+ms.date: 07/07/2020
 ms.author: robinsh
-ms.openlocfilehash: 0b1870af6316713590eec59aee2af94ce34b7e1a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b9c2fc636b08e872b9ea5288eb6205d905885f0e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722557"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120482"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Tutorial: Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Event Grid und Logic Apps
 
@@ -175,19 +175,26 @@ In diesem Abschnitt konfigurieren Sie Ihren IoT Hub zum Veröffentlichen von Ere
 
 4. Erstellen Sie das Ereignisabonnement mit den folgenden Werten: 
 
-   * **Details zum Ereignisabonnement**: Geben Sie einen aussagekräftigen Namen ein, und wählen Sie **Event Grid-Schema** aus.
+    1. Führen Sie im Abschnitt **DETAILS ZUM EREIGNISABONNEMENT** die folgenden Aufgaben aus:
+        1. Geben Sie einen **Namen** für das Ereignisabonnement an. 
+        2. Wählen Sie als **Ereignisschema** die Option **Event Grid-Schema** aus. 
+   2. Führen Sie im Abschnitt **THEMENDETAILS** die folgenden Aufgaben aus:
+       1. Vergewissern Sie sich, dass der **Thementyp** auf **IoT Hub** festgelegt ist. 
+       2. Vergewissern Sie sich, dass der Name des IoT-Hubs als Wert für das Feld **Quellressource** festgelegt ist. 
+       3. Geben Sie einen Namen für das zu erstellende **Systemthema** ein. Informationen zu Systemthemen finden Sie unter [Übersicht über Systemthemen](system-topics.md).
+   3. Führen Sie im Abschnitt **EREIGNISTYPEN** die folgenden Aufgaben aus: 
+        1. Deaktivieren Sie unter **Nach Ereignistypen filtern** alle Optionen mit Ausnahme von **Gerät erstellt**.
 
-   * **Ereignistypen**: Deaktivieren Sie unter **Nach Ereignistypen filtern** alle Optionen mit Ausnahme von **Gerät erstellt**.
+           ![Abonnementereignistypen](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+   4. Führen Sie im Abschnitt **ENDPUNKTDETAILS** die folgenden Aufgaben aus: 
+       1. Wählen Sie **Webhook** als **Endpunkttyp** aus.
+       2. Klicken Sie auf **Endpunkt auswählen**. Fügen Sie die URL ein, die Sie aus Ihrer Logik-App kopiert haben, und bestätigen Sie die Auswahl.
 
-       ![Abonnementereignistypen](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+         ![Auswählen der Endpunkt-URL](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
-   * **Endpunktdetails**: Wählen Sie als Endpunkttyp die Option **Webhook** und dann *Endpunkt auswählen* aus, fügen Sie die URL ein, die Sie aus Ihrer Logik-App kopiert haben, und bestätigen Sie die Auswahl.
+         Nach Abschluss des Vorgangs sollte der Bereich wie im folgenden Beispiel aussehen: 
 
-     ![Auswählen der Endpunkt-URL](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
-
-   Nach Abschluss des Vorgangs sollte der Bereich wie im folgenden Beispiel aussehen: 
-
-    ![Beispielformular für ein Ereignisabonnement](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+        ![Beispielformular für ein Ereignisabonnement](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
 5. Sie können hier das Ereignisabonnement speichern und Benachrichtigungen für alle Geräte empfangen, die in Ihren IoT Hub erstellt werden. Im Rahmen dieses Tutorials möchten wir jedoch die optionalen Felder zum Filtern nach bestimmten Geräten verwenden. Wählen Sie oben im Bereich die Option **Filter** aus.
 

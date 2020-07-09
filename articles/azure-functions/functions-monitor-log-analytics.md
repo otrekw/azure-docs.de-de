@@ -3,14 +3,15 @@ title: Überwachen von Azure Functions mit Azure Monitor-Protokollen
 description: Erfahren Sie, wie Sie Azure Monitor-Protokolle mit Azure Functions zum Überwachen der Funktionsausführung verwenden.
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 13c72a1cf8a0dd4a1124e51b9ceee04ae04bf261
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: tracking-python
+ms.openlocfilehash: 44de63ccd90ca8a76835fabe48d6047139ddc634
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649873"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84561709"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Überwachen von Azure Functions mit Azure Monitor-Protokollen
 
@@ -25,17 +26,23 @@ Azure Monitor verwendet eine Version der von Azure Data Explorer verwendeten [Ab
 
 ## <a name="setting-up"></a>Einrichten
 
-Wählen Sie im Abschnitt **Überwachung** die Option **Diagnoseeinstellungen** aus, und klicken Sie dann auf **Diagnoseeinstellung hinzufügen**.
+1. Wählen Sie im Abschnitt **Überwachung** der Funktions-App im [Azure-Portal](https://portal.azure.com) die Option **Diagnoseeinstellungen** aus, und wählen Sie dann **Diagnoseeinstellung hinzufügen** aus.
 
-![Hinzufügen einer Diagnoseeinstellung](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
+   :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="Auswählen der Diagnoseeinstellungen":::
 
-Wählen Sie auf der Seite **Diagnoseeinstellungen** die Option **An Log Analytics senden** und anschließend Ihren Log Analytics-Arbeitsbereich aus. Wählen Sie unter **Protokoll** die Option **FunctionAppLogs** aus. Diese Tabelle enthält die gewünschten Protokolle.
+1. Wählen Sie auf der Seite **Diagnoseeinstellungen** unter **Kategoriedetails** und **Protokoll** die Option **FunctionAppLogs** aus.
 
-![Hinzufügen einer Diagnoseeinstellung](media/functions-monitor-log-analytics/choose-table.png)
+   Die Tabelle **FunctionAppLogs** enthält die gewünschten Protokolle.
+
+1. Wählen Sie unter **Zieldetails** die Option **An Log Analytics senden** und anschließend Ihren **Log Analytics-Arbeitsbereich** aus. 
+
+1. Geben Sie einen **Namen für die Diagnoseeinstellungen** ein, und wählen Sie dann **Speichern** aus.
+
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Hinzufügen einer Diagnoseeinstellung":::
 
 ## <a name="user-generated-logs"></a>Benutzergenerierte Protokolle
 
-Um benutzerdefinierte Protokolle zu generieren, können Sie die jeweils spezifische Protokollierungsanweisung, abhängig von Ihrer Sprache, verwenden. Hier finden Sie Beispielcodeausschnitte:
+Um benutzerdefinierte Protokolle zu generieren, verwenden Sie die für Ihre Sprache spezifische Protokollierungsanweisung. Im Folgenden finden Sie Beispielcodeausschnitte:
 
 
 # <a name="c"></a>[C#](#tab/csharp)
@@ -72,11 +79,19 @@ logging.info('My app logs here.')
 
 ## <a name="querying-the-logs"></a>Abfragen der Protokolle
 
-Wechseln Sie zum Abfragen der generierten Protokolle zum Log Analytics-Arbeitsbereich, den Sie zum Senden der Funktionsprotokolle konfiguriert haben, und klicken Sie auf **Protokolle**.
+So fragen Sie die generierten Protokolle ab:
+ 
+1. Wählen Sie in ihrer Funktions-App **Diagnoseeinstellungen** aus. 
 
-![Abfragefenster im Log Analytics-Arbeitsbereich](media/functions-monitor-log-analytics/querying.png)
+1. Wählen Sie in der Liste **Diagnoseeinstellungen** den Log Analytics-Arbeitsbereich aus, an den die Funktionsprotokolle gesendet werden sollen. 
 
-Azure Functions schreibt alle Protokolle die Tabelle **FunctionAppLogs**. Hier finden Sie ein paar Beispielabfragen.
+1. Wählen Sie auf der Seite **Log Analytics-Arbeitsbereich** die Option **Protokolle** aus.
+
+   Azure Functions schreibt alle Protokolle in die Tabelle **FunctionAppLogs** unter **LogManagement**. 
+
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Abfragefenster im Log Analytics-Arbeitsbereich":::
+
+Im Folgenden finden Sie einige Beispielabfragen:
 
 ### <a name="all-logs"></a>Alle Protokolle
 
@@ -87,7 +102,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>Ein bestimmtes Funktionsprotokoll
+### <a name="specific-function-logs"></a>Spezifische Funktionsprotokolle
 
 ```
 
@@ -108,6 +123,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen der [Übersicht zu Azure Functions](functions-overview.md).
-- Weitere Informationen zu [Azure Monitor-Protokolle](../azure-monitor/platform/data-platform-logs.md).
+- Lesen Sie die [Übersicht zu Azure Functions](functions-overview.md).
+- Weitere Informationen zu [Azure Monitor-Protokollen](../azure-monitor/platform/data-platform-logs.md).
 - Erfahren Sie mehr über die [Abfragesprache](../azure-monitor/log-query/get-started-queries.md).

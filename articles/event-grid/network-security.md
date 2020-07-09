@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
-ms.openlocfilehash: ed3b70ad267252981110e7970bc5c5fad6cf4b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6d6d8df8f3c5da762ac672b304ec072a723e7d7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79300597"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857046"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Netzwerksicherheit für Azure Event Grid-Ressourcen
 In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen mit Azure Event Grid verwenden: 
@@ -29,7 +29,7 @@ Sie können mithilfe von Diensttags Netzwerkzugriffssteuerungen in [Netzwerksich
 
 | Diensttag | Zweck | Eingehend oder ausgehend möglich? | Regional möglich? | Einsatz mit Azure Firewall möglich? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| AzureEventGrid | Azure Event Grid: <br/><br/>*Hinweis:* Dieses Tag deckt nur Azure Event Grid-Endpunkte in den Regionen „USA, Süden-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Westen 2“ und „USA, Mitte“ ab. | Beide | Nein  | Nein  |
+| AzureEventGrid | Azure Event Grid: <br/><br/>*Hinweis:* Dieses Tag deckt nur Azure Event Grid-Endpunkte in den Regionen „USA, Süden-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Westen 2“ und „USA, Mitte“ ab. | Beide | Nein | Nein |
 
 
 ## <a name="ip-firewall"></a>IP-Firewall 
@@ -85,17 +85,16 @@ In der folgenden Tabelle werden die verschiedenen Zustände der Verbindung mit d
 | Verbindungsstatus   |  Veröffentlichung erfolgreich (Ja/Nein) |
 | ------------------ | -------------------------------|
 | Genehmigt           | Ja                            |
-| Rejected (Abgelehnt)           | Nein                              |
-| Ausstehend            | Nein                              |
-| Getrennt       | Nein                              |
+| Rejected (Abgelehnt)           | Nein                             |
+| Ausstehend            | Nein                             |
+| Getrennt       | Nein                             |
 
 Damit die Veröffentlichung erfolgreich ist, sollte der Verbindungsstatus des privaten Endpunkts **Genehmigt** sein. Wenn eine Verbindung abgelehnt wird, kann sie nicht mithilfe des Azure-Portals genehmigt werden. Die einzige Möglichkeit besteht darin, die Verbindung zu löschen und eine neue Verbindung zu erstellen.
 
 ## <a name="pricing-and-quotas"></a>Preise und Kontingente
-**Private Endpunkte** sind nur mit Themen und Domänen im Premium-Tarif verfügbar. Mit Event Grid können bis zu 64 private Endpunktverbindungen pro Thema oder Domäne erstellt werden. Informationen zum Upgraden vom Basic- auf den Premium-Tarif finden Sie im Artikel [Aktualisieren des Tarifs](update-tier.md).
+**Private Endpunkte** sind sowohl im Basic- als auch im Premium-Tarif von Event Grid verfügbar. Mit Event Grid können bis zu 64 private Endpunktverbindungen pro Thema oder Domäne erstellt werden. 
 
 Das Feature **IP-Firewall** ist sowohl im Basic- als auch im Premium-Tarif von Event Grid verfügbar. Es können bis zu 16 IP-Firewallregeln pro Thema oder Domäne erstellt werden.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können die IP-Firewall für Ihre Event Grid-Ressource so konfigurieren, dass der Zugriff über das öffentliche Internet auf eine bestimmte Gruppe von IP-Adressen oder IP-Adressbereichen beschränkt wird. Schrittweise Anleitungen dazu finden Sie unter [Konfigurieren der IP-Firewall](configure-firewall.md).

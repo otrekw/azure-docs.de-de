@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5120e7ca3a29f12066343e5c4a81d6e51278f9ef
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75611065"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020403"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Anpassen der SQL Information Protection-Richtlinie im Azure Security Center (Vorschau)
  
@@ -29,7 +29,7 @@ Information Protection ist eine erweiterte Sicherheitsfunktion für Ermittlung, 
 - Sicherheitsszenarien wie Überwachung und Warnung bei anomalem Zugriff auf vertrauliche Daten
 - Steuern des Zugriffs auf und Härten der Sicherheit von Datenspeichern, die sensible Daten enthalten
  
-[SQL Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementiert dieses Paradigma für Ihre SQL-Datenspeicher, die derzeit für Azure SQL-Datenbank unterstützt. SQL Information Protection ermittelt und klassifiziert automatisch potenziell sensible Daten, stellt einen Bezeichnungsmechanismus zum dauerhaften Kennzeichnen der sensiblen Daten mit Klassifizierungsattributen bereit und bietet ein detailliertes Dashboard, das den Klassifizierungsstatus der Datenbank zeigt. Darüber hinaus wird die Vertraulichkeit des Resultsets von SQL-Abfragen berechnet, sodass Abfragen, die sensible Daten extrahieren, explizit überwacht und die Daten geschützt werden können. Weitere Informationen zu SQL Information Protection finden Sie unter [Azure SQL-Datenbank – Datenermittlung und -klassifizierung](../sql-database/sql-database-data-discovery-and-classification.md).
+[SQL Information Protection](../azure-sql/database/data-discovery-and-classification-overview.md) implementiert dieses Paradigma für Ihre SQL-Datenspeicher, die derzeit für Azure SQL-Datenbank unterstützt. SQL Information Protection ermittelt und klassifiziert automatisch potenziell sensible Daten, stellt einen Bezeichnungsmechanismus zum dauerhaften Kennzeichnen der sensiblen Daten mit Klassifizierungsattributen bereit und bietet ein detailliertes Dashboard, das den Klassifizierungsstatus der Datenbank zeigt. Darüber hinaus wird die Vertraulichkeit des Resultsets von SQL-Abfragen berechnet, sodass Abfragen, die sensible Daten extrahieren, explizit überwacht und die Daten geschützt werden können. Weitere Informationen zu SQL Information Protection finden Sie unter [Azure SQL-Datenbank – Datenermittlung und -klassifizierung](../azure-sql/database/data-discovery-and-classification-overview.md).
  
 Der Klassifizierungsmechanismus basiert auf zwei primären Konstrukten, die die Klassifizierungstaxonomie bilden: **Bezeichnungen** und **Informationstypen**.
 - **Bezeichnungen**: Die wichtigsten Klassifizierungsattribute zum Definieren der Vertraulichkeitsstufe der in der Spalte gespeicherten Daten. 
@@ -79,7 +79,7 @@ Nachdem Ihre Information Protection-Richtlinie vollständig definiert und gespei
  
 ## <a name="next-steps"></a>Nächste Schritte
  
-In diesem Artikel haben Sie erfahren, wie eine SQL Information Protection-Richtlinie im Azure Security Center definiert wird. Weitere Informationen zum Klassifizieren und Schutz von sensiblen Daten in Ihren SQL-Datenbank-Instanzen mit SQL Information Protection finden Sie unter [Azure SQL-Datenbank – Datenermittlung und -klassifizierung](../sql-database/sql-database-data-discovery-and-classification.md). 
+In diesem Artikel haben Sie erfahren, wie eine SQL Information Protection-Richtlinie im Azure Security Center definiert wird. Weitere Informationen zum Klassifizieren und Schutz von sensiblen Daten in Ihren SQL-Datenbank-Instanzen mit SQL Information Protection finden Sie unter [Azure SQL-Datenbank – Datenermittlung und -klassifizierung](../azure-sql/database/data-discovery-and-classification-overview.md). 
 
 Weitere Informationen zu Sicherheitsrichtlinien und zur Datensicherheit im Azure Security Center finden Sie in den folgenden Artikeln:
  

@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 04/24/2020
+ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 51cd464da417bfd1d6d4ff52e2a2595a7ce77fe6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: ad8fc7452a704a4a030e7a6eb45a5ba397912ef1
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201702"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402371"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -113,6 +113,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 - Verwalten von Azure Sentinel-Ressourcen [in Kundenmandanten](../../sentinel/multiple-tenants-service-providers.md)
 - [Verfolgen von Angriffen und Anzeigen von Sicherheitswarnungen über mehrere Kundenmandanten hinweg](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
+- [Anzeigen von Vorfällen](../../sentinel/multiple-workspace-view.md) in mehreren Sentinel-Arbeitsbereichen in verschiedenen Kundenmandanten
 
 [Azure Service Health](../../service-health/index.yml):
 

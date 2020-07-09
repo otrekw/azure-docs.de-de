@@ -4,21 +4,21 @@ description: 'Azure CLI-Beispiele für Azure Cosmos DB: Tabellen-API'
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
-ms.topic: sample
-ms.date: 9/25/2019
+ms.topic: how-to
+ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: efee7262c0568e269613af26dd7518117d81ead9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8c6456074e29efe47819e4f31235d957bde81cfb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71275207"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560612"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-table-api"></a>Azure CLI-Beispiele für Azure Cosmos DB: Tabellen-API
 
 Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für die Azure Cosmos DB-Tabellen-API. Referenzseiten für alle CLI-Befehle für Azure Cosmos DB sind in der [Referenz zur Azure CLI](/cli/azure/cosmosdb) verfügbar. Alle CLI-Skriptbeispiele für Azure Cosmos DB finden Sie im [GitHub-Repository zur Azure Cosmos DB-CLI](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
 
-| |  |
+|Aufgabe | BESCHREIBUNG |
 |---|---|
 | [Erstellen eines Kontos und einer Tabelle in Azure Cosmos](scripts/cli/table/create.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos und einer Tabelle in Azure Cosmos DB für die Tabellen-API |
 | [Ändern des Durchsatzes](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualisieren der Anforderungseinheiten pro Sekunde (RU/s) für eine Tabelle|
@@ -27,4 +27,5 @@ Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für die Azure
 | [Sichern mit einer IP-Firewall](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Cosmos-Kontos mit konfigurierter IP-Firewall|
 | [Sichern eines neuen Kontos mit Dienstendpunkten](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Cosmos-Kontos und Sichern des Kontos mit Dienstendpunkten|
 | [Sichern eines vorhandenen Kontos mit Dienstendpunkten](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| Aktualisieren eines Cosmos-Kontos beim Konfigurieren des Subnetzes, um es mit Dienstendpunkten zu sichern|
+| [Sperren von Ressourcen für die Löschung](scripts/cli/table/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren|
 |||

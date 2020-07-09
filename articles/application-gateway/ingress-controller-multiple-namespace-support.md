@@ -4,15 +4,15 @@ description: Dieser Artikel enthält Informationen zum Aktivieren der Unterstüt
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235914"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556156"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Aktivieren der Unterstützung mehrerer Namespaces in einem AKS-Cluster mit Application Gateway Ingress Controller
 
@@ -45,6 +45,7 @@ Oben in der Hierarchie können **Listener** (IP-Adresse, Port und Host) und **Ro
 Auf der anderen Seite können Pfade, Back-End-Pools, HTTP-Einstellungen und TLS-Zertifikate durch nur einen Namespace erstellt werden, sodass Duplikate entfernt werden.
 
 Sehen Sie sich z. B. die folgenden beiden Eingangsressourcen mit den doppelt definierten Namespaces `staging` und `production` für `www.contoso.com` an:
+
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -101,6 +102,7 @@ Standardmäßig wird Application Gateway in AGIC basierend auf einem kommentiert
   - Verwenden Sie [Role/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac), um AGIC auf bestimmte Namespaces zu beschränken.
 
 ## <a name="sample-helm-config-file"></a>Helm-Beispielkonfigurationsdatei
+
 ```yaml
     # This file contains the essential configs for the ingress controller helm chart
 
@@ -152,5 +154,5 @@ Standardmäßig wird Application Gateway in AGIC basierend auf einem kommentiert
     # Specify aks cluster related information. THIS IS BEING DEPRECATED.
     aksClusterConfiguration:
         apiServerAddress: <aks-api-server-address>
-    ```
+```
 

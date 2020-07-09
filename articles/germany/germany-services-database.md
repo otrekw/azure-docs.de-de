@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2019
 ms.author: ralfwi
-ms.openlocfilehash: 16c4d835da65d7dbb3e8f3ba08d99602f952b6b1
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: ac648af430d626aa782c18dc66c2353bb241c0eb
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75436649"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022923"
 ---
 # <a name="azure-germany-database-services"></a>Datenbankdienste von Azure Deutschland
 
@@ -31,7 +31,7 @@ ms.locfileid: "75436649"
 > Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, und [migrieren](germany-migration-main.md) Sie noch heute.
 
 ## <a name="sql-database"></a>SQL-Datenbank
-Azure SQL-Datenbank V12 ist allgemein in Azure Deutschland verfügbar. Anleitungen zur Konfiguration der Metadatensichtbarkeit und bewährte Methoden für den Schutz finden Sie unter [Sicherheitscenter für SQL Server-Datenbank-Engine und Azure SQL-Datenbank](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database) und in der [SQL-Datenbank-Dokumentation](../sql-database/index.yml).
+Azure SQL-Datenbank und Azure SQL Managed Instance V12 sind in Azure Deutschland allgemein verfügbar. Anleitungen zur Konfiguration der Metadatensichtbarkeit und bewährte Methoden für den Schutz finden Sie unter [Sicherheitscenter für SQL Server-Datenbank-Engine und Azure SQL-Datenbank](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database), in der [SQL-Datenbank-Dokumentation](../azure-sql/database/index.yml) und in der [Globalen Dokumentation zu SQL Managed Instance](../azure-sql/managed-instance/index.yml).
 
 ### <a name="variations"></a>Abweichungen
 Die Adresse für SQL-Datenbank in Azure Deutschland unterscheidet sich von der Adresse in der globalen Azure-Umgebung:

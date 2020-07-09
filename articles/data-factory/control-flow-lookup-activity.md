@@ -106,7 +106,7 @@ In diesem Beispiel kopieren Sie mit der Kopieraktivität Daten aus einer SQL-Tab
 Dieses Beispiel zeigt nur das Lookup für die erste Zeile. Wenn Sie weitere Informationen zum Lookup für alle Zeilen und dem Verketten von Ergebnissen mit der ForEach-Aktivität benötigen, lesen Sie die Beispiele in [Massenkopieren von mehreren Tabellen mithilfe von Azure Data Factory](tutorial-bulk-copy.md).
 
 ### <a name="pipeline"></a>Pipeline
-Diese Pipeline enthält zwei Aktivitäten: Lookup und Kopieren. 
+Diese Pipeline enthält zwei Aktivitäten: Lookup und Copy. 
 
 - Die Lookup-Aktivität ist für die Verwendung von **LookupDataset** konfiguriert, das auf einen Speicherort in Azure Blob Storage verweist. Der Name der SQL-Tabelle wird von der Lookup-Aktivität aus einer JSON-Datei an diesem Speicherort gelesen. 
 - Die Kopieraktivität verwendet die Ausgabe der Lookup-Aktivität, also den Namen der SQL-Tabelle. Die **tableName**-Eigenschaft in **SourceDataset** ist für die Verwendung der Ausgabe der Lookup-Aktivität konfiguriert. Die Kopieraktivität kopiert Daten aus der SQL-Tabelle an einen Speicherort in Azure Blob Storage. Der Speicherort wird durch die **SinkDataset**-Eigenschaft festgelegt. 

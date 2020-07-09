@@ -6,16 +6,16 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d204477818ce2733d9f6d1e3dcc7455018456bcb
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: cde6cb514b6f87315400b3c40d8b86bcb7ff0adb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80884831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210965"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (ehemals SQL DW)-Architektur
 
@@ -23,7 +23,7 @@ Azure Synapse ist ein unbegrenzter Analysedienst, der Data Warehousing für Unte
 
  Azure Synapse besteht aus vier Komponenten:
 
-- SQL-Analyse: Vollständige T-SQL-basierte Analyse
+- Synapse SQL: Vollständige T-SQL-basierte Analyse
 
   - SQL-Pool (Bezahlung pro bereitgestellter DWU) – Allgemein verfügbar
   - SQL On-Demand (Bezahlung pro verarbeitetem TB) – Vorschau
@@ -37,9 +37,9 @@ Azure Synapse ist ein unbegrenzter Analysedienst, der Data Warehousing für Unte
 
 [Synapse SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) nutzt eine aufskalierte Architektur zur Verteilung der Berechnungsverarbeitung von Daten auf mehrere Knoten. Die Skalierungseinheit ist eine Abstraktion der Computeleistung, die als [Data Warehouse-Einheit](what-is-a-data-warehouse-unit-dwu-cdwu.md) bezeichnet wird. Compute- und Speicherressourcen sind getrennt, sodass Sie Compute unabhängig von den Daten in Ihrem System skalieren können.
 
-![Synapse-SQL-Architektur](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
+![Synapse SQL: Architektur](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-SQL-Analyse verwendet eine knotenbasierte Architektur. Anwendungen stellen eine Verbindung her und geben T-SQL-Befehle an einen Steuerknoten aus, der der einzige Einstiegspunkt für SQL-Analyse ist. Der Steuerknoten führt die MPP-Engine aus, die Abfragen für die Parallelverarbeitung optimiert und dann Vorgänge an Serverknoten übergibt, sodass die Vorgänge parallel ausgeführt werden.
+Synapse SQL verwendet eine knotenbasierte Architektur. Anwendungen stellen eine Verbindung her und geben T-SQL-Befehle an einen Steuerknoten aus, der der einzige Einstiegspunkt für Synapse SQL ist. Der Steuerknoten führt die MPP-Engine aus, die Abfragen für die Parallelverarbeitung optimiert und dann Vorgänge an Serverknoten übergibt, sodass die Vorgänge parallel ausgeführt werden.
 
 Auf den Serverknoten werden alle Benutzerdaten in Azure Storage gespeichert und die parallelen Abfragen ausgeführt. Der Datenverschiebungsdienst (Data Movement Service, DMS) ist ein interner Dienst auf Systemebene, der Daten nach Bedarf zwischen den Knoten verschiebt, sodass Abfragen parallel ausgeführt und genaue Ergebnisse zurückgegeben werden.
 
@@ -74,7 +74,7 @@ Der Datenverschiebungsdienst (Data Movement Service, DMS) ist die Datentransport
 
 ## <a name="distributions"></a>Verteilungen
 
-Eine Verteilung ist die Basiseinheit zur Speicherung und Verarbeitung von parallelen Abfragen, die für verteilte Daten ausgeführt werden. Wenn SQL-Analyse eine Abfrage ausführt, wird der Vorgang in 60 kleinere Abfragen unterteilt, die parallel ausgeführt werden.
+Eine Verteilung ist die Basiseinheit zur Speicherung und Verarbeitung von parallelen Abfragen, die für verteilte Daten ausgeführt werden. Wenn Synapse SQL eine Abfrage ausführt, wird der Vorgang in 60 kleinere Abfragen unterteilt, die parallel ausgeführt werden.
 
 Die einzelnen 60 kleineren Abfragen werden jeweils auf einer der Datenverteilungen ausgeführt. Auf jedem Serverknoten werden eine oder mehrere der 60 Verteilungen verwaltet. Bei einem SQL-Pool mit maximalen Computeressourcen befindet sich eine Verteilung auf jeweils einem Serverknoten. Bei einem SQL-Pool mit minimalen Computeressourcen befinden sich alle Verteilungen auf einem einzigen Serverknoten.  
 
@@ -119,6 +119,6 @@ Nachdem Sie sich mit den Grundlagen von Azure Synapse vertraut gemacht haben, in
 - [Funktionsanfragen](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [Videos](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Erstellen eines Supporttickets](sql-data-warehouse-get-started-create-support-ticket.md)
-- [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+- [Frageseite von Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
 - [Stack Overflow-Forum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

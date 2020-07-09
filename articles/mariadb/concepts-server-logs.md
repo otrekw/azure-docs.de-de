@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272082"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Protokolle für langsame Abfragen in Azure Database for MariaDB
@@ -43,12 +43,12 @@ Beim lokalen Serverspeicher können Sie langsame Abfrageprotokolle über das Azu
 Azure Monitor-Diagnoseprotokolle ermöglichen es Ihnen, langsame Abfrageprotokolle an Azure Monitor-Protokolle (Protokollanalyse), Azure Storage oder Event Hubs zu senden. Weitere Informationen finden Sie [unten](concepts-server-logs.md#diagnostic-logs).
 
 ## <a name="local-server-storage-log-retention"></a>Protokollaufbewahrung im lokalen Serverspeicher
-Wenn Sie sich beim lokalen Speicher des Servers anmelden, stehen Protokolle bis zu sieben Tage nach ihrer Erstellung zur Verfügung. Wenn die Gesamtgröße der verfügbaren Protokolle 7 GB überschreitet, werden die ältesten Dateien gelöscht, bis Speicherplatz verfügbar ist.
+Wenn Sie sich beim lokalen Speicher des Servers anmelden, stehen Protokolle bis zu sieben Tage ab dem Zeitpunkt ihrer Erstellung zur Verfügung. Wenn die Gesamtgröße der verfügbaren Protokolle 7 GB überschreitet, werden die ältesten Dateien gelöscht, bis Speicherplatz verfügbar ist.
 
 Die Protokolle werden alle 24 Stunden oder bei Erreichen einer Größe von 7 GB rotiert, je nachdem, welches Ereignis früher eintritt.
 
 > [!Note]
-> Die obengenannte Protokollaufbewahrung gilt nicht für Protokolle, die mithilfe von Azure Monitor-Diagnoseprotokolle gesendet werden. Sie können den Aufbewahrungszeitraum für die Datensenken ändern, die ausgegeben werden an (z. B. Azure Storage).
+> Die zuvor genannte Protokollaufbewahrung gilt nicht für Protokolle, die mithilfe von Azure Monitor-Diagnoseprotokolle gesendet werden. Sie können die Aufbewahrungsdauer für die Datensenken ändern, an die eine Ausgabe erfolgt (z. B. Azure Storage).
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
 Azure Database for MariaDB ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie die Protokolle zu langsamen Abfragen auf Ihrem MariaDB-Server aktiviert haben, können Sie sie an Azure Monitor-Protokolle, Event Hubs oder Azure Storage ausgeben. Weitere Informationen zum Aktivieren von Diagnoseprotokollen finden Sie im Gewusst-wie-Abschnitt der [Dokumentation zu Diagnoseprotokollen](../azure-monitor/platform/platform-logs-overview.md).

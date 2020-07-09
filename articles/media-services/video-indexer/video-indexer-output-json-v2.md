@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e3501ea8bc327f0dd906a42702194abce18c5fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225454"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84656583"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Untersuchen der von der API erstellten Video Indexer-Ausgabe
 
@@ -89,7 +89,7 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |faces|Kann null oder mehr Gesichter enthalten. Ausführlichere Informationen finden Sie unter [faces](#faces).|
 |keywords|Kann null oder mehr Schlüsselwörter enthalten. Ausführlichere Informationen finden Sie unter [keywords](#keywords).|
 |sentiments|Kann null oder mehr Stimmungen enthalten. Ausführlichere Informationen finden Sie unter [sentiments](#sentiments).|
-|audioEffects| Kann null oder mehr Audioeffekte (audioEffects) enthalten. Ausführlichere Informationen finden Sie unter [audioEffects](#audioEffects).|
+|audioEffects| Kann null oder mehr Audioeffekte (audioEffects) enthalten. Ausführlichere Informationen finden Sie unter [audioEffects](#audioeffects).|
 |Bezeichnungen| Kann null oder mehr Bezeichnungen enthalten. Weitere Informationen finden Sie unter [labels](#labels).|
 |brands| Kann null oder mehr Marken enthalten. Ausführlichere Informationen finden Sie unter [brands](#brands).|
 |statistics | Ausführlichere Informationen finden Sie unter [statistics](#statistics).|
@@ -166,7 +166,7 @@ Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten un
 |Bezeichnungen|Die Erkenntnis [labels](#labels).|
 |shots|Die Erkenntnis [shots](#shots).|
 |brands|Die Erkenntnis [brands](#brands).|
-|audioEffects|Die Erkenntnis [audioEffects](#audioEffects).|
+|audioEffects|Die Erkenntnis [audioEffects](#audioeffects).|
 |sentiments|Die Erkenntnis [sentiments](#sentiments).|
 |visualContentModeration|Die Erkenntnis [visualContentModeration](#visualcontentmoderation).|
 |textualContentModeration|Die Erkenntnis [textualContentModeration](#textualcontentmoderation).|
@@ -561,7 +561,7 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 |SpeakerLongestMonolog|Der längste Monolog des Sprechers. Falls der Sprecher bei seinem Monolog Sprechpausen einlegt, ist diese Zeit mit enthalten. Die Ruhephasen am Anfang und Ende des Monologs werden entfernt.| 
 |SpeakerTalkToListenRatio|Die Berechnung basiert auf der Zeit für den Monolog des Sprechers (ohne Sprechpausen) geteilt durch die Gesamtzeit des Videos. Der Zeitwert wird auf die dritte Dezimalstelle gerundet.|
 
-#### <a name="audioeffects"></a><a id="audioEffects"/>audioEffects
+#### <a name="audioeffects"></a>audioEffects
 
 |Name|BESCHREIBUNG|
 |---|---|

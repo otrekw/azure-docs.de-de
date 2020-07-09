@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e963d62df8d2c416726852ee3d46daf1cd22936e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 945bcd03bc3bf13517836e7a5624bd5142782183
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208551"
 ---
 # <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Installationsanleitung zum Marketplace-Angebot für Striim und Azure SQL Data Warehouse
 
@@ -30,7 +30,7 @@ Konfigurieren Sie den virtuellen Striim-Computer mit den angegebenen Eigenschaft
 
 ![Konfigurieren von Striim][configure]
 
-Klicken Sie nach der Bereitstellung im Azure-Portal auf „\<VM-Name>-masternode“, klicken Sie auf „Verbinden“, und kopieren Sie die Anmeldung mit einem lokalen VM-Konto. 
+Klicken Sie nach der Bereitstellung auf „\<VM Name>-masternode“ im Azure-Portal, klicken Sie auf „Verbinden“, und kopieren Sie die Anmeldung mit einem lokalen VM-Konto. 
 
 ![Verbinden von Striim mit SQL Data Warehouse][connect]
 
@@ -56,7 +56,7 @@ Führen Sie die folgenden Befehle aus, um die JDBC-JAR-Datei in das Verzeichnis 
 
 ![Starten des Striim-Clusters][start-striim]
 
-Öffnen Sie nun Ihren bevorzugten Browser, und navigieren Sie zu „\<DNS-Name>:9080“.
+Öffnen Sie nun Ihren bevorzugten Browser, und navigieren Sie zu „\<DNS Name>:9080“.
 
 ![Navigieren zum Anmeldebildschirm][navigate]
 

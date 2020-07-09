@@ -9,14 +9,14 @@ ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 06/24/2020
 ms.author: aahi
-ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 272a10e211e99e200b82807b188d828a9ece42d8
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75382326"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609434"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Erstellen einer Suchclient-Konsolen-App in C#
 
@@ -31,8 +31,9 @@ In diesem Tutorial wird Folgendes veranschaulicht:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- Visual Studio. Sollten Sie nicht über Visual Studio verfügen, [laden Sie die kostenlose Visual Studio 2017 Community Edition herunter, und installieren Sie sie](https://www.visualstudio.com/downloads/).
-- Einen Abonnementschlüssel für die Bing-Websuche-API. Falls Sie noch nicht über einen solchen Schlüssel verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) registrieren.
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Erstellen einer Ressource für die Bing-Suche"  target="_blank"> im Azure-Portal eine Ressource für die Bing-Suche <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+* [Visual Studio-IDE](https://www.visualstudio.com/downloads/)
 
 ## <a name="create-a-new-console-app-project"></a>Erstellen eines neuen Konsolen-App-Projekts
 
@@ -224,8 +225,8 @@ Bevor wir darauf eingehen, wie Sie nach Rang sortierte Ergebnisse anzeigen, sehe
 Das JSON-Objekt `rankingResponse` ([Dokumentation](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) beschreibt die korrekte Anzeigereihenfolge für Suchergebnisse. Es enthält mindestens eine der folgenden priorisierten Gruppen:
 
 - `pole`: Die Suchergebnisse, die am sichtbarsten sein und beispielsweise über dem Hauptbereich und der Randleiste angezeigt werden sollen.
-- `mainline`: Die Suchergebnisse, die im Hauptbereich angezeigt werden sollen.
-- `sidebar`: Die Suchergebnisse, die auf der Randleiste angezeigt werden sollen. Ist keine Randleiste vorhanden, werden die Ergebnisse unterhalb des Hauptbereichs angezeigt.
+- `mainline`: Die Suchergebnisse, die in der Hauptlinie angezeigt werden sollen.
+- `sidebar`: Die Suchergebnisse, die in der Randleiste angezeigt werden sollen. Ist keine Randleiste vorhanden, werden die Ergebnisse unterhalb des Hauptbereichs angezeigt.
 
 Der JSON-Code der Rangfolgeantwort kann eine oder mehrere der Gruppen enthalten.
 

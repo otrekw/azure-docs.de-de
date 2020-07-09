@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426502"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021686"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag
 
@@ -40,7 +40,7 @@ Fügen Sie mit den folgenden Schritten die Azure SQL-Datenbank-Instanz als Verwe
 
    ![SQL-Datenbank-Verweiskonfiguration](./media/sql-reference-data/sql-input-config.png)
 
-3. Testen Sie die Momentaufnahmenabfrage im SQL-Abfrage-Editor. Weitere Informationen finden Sie unter [Verwenden des SQL-Abfrage-Editors im Azure-Portal zum Verbinden und Abfragen von Daten](../sql-database/sql-database-connect-query-portal.md).
+3. Testen Sie die Momentaufnahmenabfrage im SQL-Abfrage-Editor. Weitere Informationen finden Sie unter [Verwenden des SQL-Abfrage-Editors im Azure-Portal zum Verbinden und Abfragen von Daten](../azure-sql/database/connect-query-portal.md).
 
 ### <a name="specify-storage-account-in-job-config"></a>Angeben des Speicherkontos in der Auftragskonfiguration
 
@@ -69,7 +69,7 @@ Fügen Sie mit den folgenden Schritten die Azure SQL-Datenbank-Instanz als Verwe
 
 ### <a name="create-a-sql-database-table"></a>Erstellen einer SQL-Datenbanktabelle
 
-Verwenden Sie SQL Server Management Studio, um eine Tabelle zum Speichern Ihrer Verweisdaten zu erstellen. Nähere Informationen finden Sie unter [Entwerfen Ihrer ersten Azure SQL-Datenbank mit SSMS](../sql-database/sql-database-design-first-database.md).
+Verwenden Sie SQL Server Management Studio, um eine Tabelle zum Speichern Ihrer Verweisdaten zu erstellen. Nähere Informationen finden Sie unter [Entwerfen Ihrer ersten Azure SQL-Datenbank mit SSMS](../azure-sql/database/design-first-database-tutorial.md).
 
 Die im folgenden Beispiel verwendete Beispieltabelle wurde aus der folgenden Anweisung erstellt:
 
@@ -129,7 +129,7 @@ Bevor Sie den Auftrag in Azure bereitstellen, können Sie die Abfragelogik lokal
 
 ## <a name="delta-query"></a>Deltaabfrage
 
-Wenn Sie die Deltaabfrage verwenden, werden [temporale Tabellen in der Azure SQL-Datenbank](../sql-database/sql-database-temporal-tables.md) empfohlen.
+Wenn Sie die Deltaabfrage verwenden, werden [temporale Tabellen in der Azure SQL-Datenbank](../azure-sql/temporal-tables.md) empfohlen.
 
 1. Erstellen Sie eine temporale Tabelle in Azure SQL-Datenbank.
    
@@ -156,16 +156,16 @@ Wenn Sie die Deltaabfrage verwenden, werden [temporale Tabellen in der Azure SQL
  
 2. Erstellen Sie die Deltaabfrage. 
    
-   Diese Abfrage ruft alle Zeilen in der SQL-Datenbank-Instanz ab, die zwischen der Startzeit **\@deltaStartTime** und der Endzeit **\@deltaEndTime** eingefügt oder gelöscht wurden. Die Deltaabfrage muss die gleichen Spalten wie die Momentaufnahmenabfrage zurückgeben, sowie die Spalte **_operation_** . Diese Spalte definiert, ob die Zeile zwischen **\@deltaStartTime** und **\@deltaEndTime** eingefügt oder gelöscht wird. Die sich ergebenden Zeilen werden mit **1** gekennzeichnet, wenn die Datensätze eingefügt wurden, oder **2**, wenn sie gelöscht wurden. 
+   Diese Abfrage ruft alle Zeilen in der SQL-Datenbank-Instanz ab, die zwischen der Startzeit **\@deltaStartTime** und der Endzeit **\@deltaEndTime** eingefügt oder gelöscht wurden. Die Deltaabfrage muss die gleichen Spalten wie die Momentaufnahmenabfrage zurückgeben, sowie die Spalte **_operation_**. Diese Spalte definiert, ob die Zeile zwischen **\@deltaStartTime** und **\@deltaEndTime** eingefügt oder gelöscht wird. Die sich ergebenden Zeilen werden mit **1** gekennzeichnet, wenn die Datensätze eingefügt wurden, oder **2**, wenn sie gelöscht wurden. Die Abfrage muss außerdem das **Wasserzeichen** von der SQL Server-Seite hinzufügen, um sicherzustellen, dass alle Aktualisierungen im Deltazeitraum ordnungsgemäß erfasst werden. Die Verwendung der Deltaabfrage ohne **Wasserzeichen** kann zu einem fehlerhaften Verweisdataset führen.  
 
    Für Datensätze, die aktualisiert wurden, übernimmt die temporale Tabelle die Buchführung durch Erfassen eines Einfüge- und Löschvorgangs. Die Stream Analytics-Runtime wendet dann die Ergebnisse auf die an die vorhergehende Momentaufnahme gerichtete Deltaabfrage an, um die Verweisdaten auf dem neuesten Stand zu halten. Ein Beispiel der Deltaabfrage wird unten gezeigt:
 
    ```SQL
-      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidFrom as _watermark_, 1 as _operation_
       FROM dbo.DeviceTemporal
       WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
       UNION
-      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidTo as _watermark_, 2 as _operation_
       FROM dbo.DeviceHistory   -- table we created in step 1
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```

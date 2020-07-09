@@ -1,14 +1,14 @@
 ---
 title: Index der Richtlinienbeispiele
 description: Index der Integrationen für Azure Policy Kategorietags, Einhaltung gesetzlicher Bestimmungen, Key Vault, Kubernetes, Gastkonfiguration und vieles mehr
-ms.date: 03/25/2020
+ms.date: 06/10/2020
 ms.topic: sample
-ms.openlocfilehash: 41a08a70df24f80ea324860d6d1db16c9ed99760
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7528a22ad09db1e06aabf84ad946ef7af36a8430
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697182"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736780"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-Beispiele
 
@@ -32,6 +32,15 @@ Nachfolgend finden Sie Beispiele für verschiedene Muster, in der die Sprache un
 - [count-Operator](./pattern-count-operator.md)
 - [Gruppieren von Richtliniendefinitionen in einer Initiative](./pattern-group-with-initiative.md)
 - [Bereitstellen von Ressourcen mit deployIfNotExists](./pattern-deploy-resources.md)
+
+## <a name="regulatory-compliance"></a>Einhaltung gesetzlicher Bestimmungen
+
+Dies sind die Integrationen zur [Einhaltung gesetzlicher Bestimmungen](../concepts/regulatory-compliance.md):
+
+- [Azure-Sicherheitsvergleichstest](./azure-security-benchmark.md)
+- [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md)
+- [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
+- [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)
 
 ## <a name="other-samples"></a>Weitere Beispiele
 

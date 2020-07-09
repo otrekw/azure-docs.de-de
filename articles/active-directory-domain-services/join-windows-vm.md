@@ -1,5 +1,5 @@
 ---
-title: Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne | Microsoft-Dokumentation
+title: Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Azure AD Domain Services-Domäne | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie einen virtuellen Windows Server-Computer in eine verwaltete Azure Active Directory Domain Services-Domäne einbinden.
 author: iainfoulds
 manager: daveba
@@ -9,23 +9,23 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 1ac508fc9fee07482e475c46e1db262c8bfa1a12
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ac7af2f4500f6702dcacad546b0985e41159dc6e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476259"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734672"
 ---
-# <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Tutorial: Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne
+# <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Azure Active Directory Domain Services-Domäne
 
-Azure Active Directory Domain Services (Azure AD DS) stellt verwaltete Domänendienste bereit, z. B. Domänenbeitritt, Gruppenrichtlinie, LDAP und Kerberos-/NTLM-Authentifizierung, die mit Windows Server Active Directory vollständig kompatibel sind. Mit einer verwalteten Azure AD DS-Domäne können Sie Features für den Domänenbeitritt und Verwaltungsfunktionen für virtuelle Computer (VMs) in Azure bereitstellen. In diesem Tutorial erfahren Sie, wie Sie eine Windows Server-VM erstellen und in eine verwaltete Azure AD DS-Domäne einbinden.
+Azure Active Directory Domain Services (Azure AD DS) stellt verwaltete Domänendienste bereit, z. B. Domänenbeitritt, Gruppenrichtlinie, LDAP und Kerberos-/NTLM-Authentifizierung, die mit Windows Server Active Directory vollständig kompatibel sind. Mit einer verwalteten Azure AD DS-Domäne können Sie Features für den Domänenbeitritt und Verwaltungsfunktionen für virtuelle Computer (VMs) in Azure bereitstellen. In diesem Tutorial erfahren Sie, wie Sie einen virtuellen Windows Server-Computer erstellen und dann in eine verwaltete Domäne einbinden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer Windows Server-VM
 > * Herstellen einer Verbindung zwischen dem virtuellen Windows Server-Computer und einem virtuellen Azure-Netzwerk
-> * Einbinden der VM in die verwaltete Azure AD DS-Domäne
+> * Einbinden der VM in die verwaltete Domäne
 
 Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
@@ -38,23 +38,23 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen:
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Bei Bedarf [erstellen und konfigurieren Sie eine Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance].
-* Ein Benutzerkonto, das Teil der von Azure AD DS verwalteten Domäne ist.
-    * Stellen Sie sicher, dass die Azure AD Connect-Synchronisierung von Kennworthashes oder die Self-Service-Kennwortzurücksetzung ausgeführt wurde, sodass das Konto sich bei der verwalteten Azure AD DS-Domäne anmelden kann.
+    * [Erstellen und konfigurieren Sie eine verwaltete Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance], sofern erforderlich.
+* Ein Benutzerkonto, das Teil der verwalteten Domäne ist.
+    * Stellen Sie sicher, dass die Azure AD Connect-Kennworthashsynchronisierung oder die Self-Service-Kennwortzurücksetzung ausgeführt wurde, damit Sie sich mit dem Konto bei der verwalteten Domäne anmelden können.
 * Einen in Ihrem virtuellen Azure AD DS-Netzwerk bereitgestellten Azure Bastion-Host.
     * Eine Anleitung zum Erstellen eines Azure Bastion-Hosts finden Sie [hier][azure-bastion].
 
-Wenn Sie bereits über eine VM verfügen, die Sie in die Domäne einbinden möchten, fahren Sie mit dem Abschnitt [Einbinden der VM in die verwaltete Azure AD DS-Domäne](#join-the-vm-to-the-azure-ad-ds-managed-domain) fort.
+Wenn Sie bereits über einen virtuellen Computer verfügen, den Sie in die Domäne einbinden möchten, fahren Sie mit dem Abschnitt [Einbinden der VM in die verwaltete Domäne](#join-the-vm-to-the-managed-domain) fort.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-In diesem Tutorial erstellen Sie eine Windows Server-VM, die über das Azure-Portal in Ihre verwaltete Azure AD DS-Domäne eingebunden werden soll. Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com) an.
+In diesem Tutorial erstellen Sie im Azure-Portal einen virtuellen Windows Server-Computer, der in Ihre verwaltete Domäne eingebunden werden soll. Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-a-windows-server-virtual-machine"></a>Erstellen einer Windows-VM
 
-Um zu erläutern, wie ein Computer in eine verwaltete Azure AD DS-Domäne eingebunden wird, erstellen wir zunächst eine Windows Server-VM. Diese VM ist mit einem virtuellen Azure-Netzwerk verbunden, das Konnektivität mit der verwalteten Azure AD DS-Domäne bietet. Das Verfahren zum Einbinden in eine verwaltete Azure AD DS-Domäne ist dasselbe wie beim Einbinden in eine reguläre lokale Active Directory Domain Services-Domäne.
+Um aufzuzeigen, wie ein Computer in eine verwaltete Domäne eingebunden wird, erstellen wir zunächst einen virtuellen Windows Server-Computer. Dieser virtuelle Computer ist mit einem virtuellen Azure-Netzwerk verbunden, das Konnektivität mit der verwalteten Domäne ermöglicht. Der Vorgang zum Einbinden in eine verwaltete Domäne entspricht dem Einbinden in eine normale lokale Active Directory Domain Services-Domäne.
 
-Wenn Sie bereits über eine VM verfügen, die Sie in die Domäne einbinden möchten, fahren Sie mit dem Abschnitt [Einbinden der VM in die verwaltete Azure AD DS-Domäne](#join-the-vm-to-the-azure-ad-ds-managed-domain) fort.
+Wenn Sie bereits über einen virtuellen Computer verfügen, den Sie in die Domäne einbinden möchten, fahren Sie mit dem Abschnitt [Einbinden der VM in die verwaltete Domäne](#join-the-vm-to-the-managed-domain) fort.
 
 1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
 
@@ -80,17 +80,17 @@ Wenn Sie bereits über eine VM verfügen, die Sie in die Domäne einbinden möch
 
 1. Klicken Sie dann auf **Weiter: Datenträger**.
 1. Wählen Sie im Dropdownmenü **Typ des Betriebssystemdatenträgers** die Option *SSD Standard* aus, und klicken Sie dann auf **Weiter: Netzwerk** aus.
-1. Ihre VM muss eine Verbindung mit einem Subnetz eines virtuellen Azure-Netzwerks herstellen können, das mit dem Subnetz kommunizieren kann, in dem Ihre verwaltete Azure AD DS-Domäne bereitgestellt ist. Es wird empfohlen, eine verwaltete Azure AD DS-Domäne in einem eigenen dedizierten Subnetz bereitzustellen. Stellen Sie Ihre VM nicht im gleichen Subnetz wie Ihre verwaltete Azure AD DS-Domäne bereit.
+1. Ihre VM muss eine Verbindung mit einem Subnetz eines virtuellen Azure-Netzwerks herstellen, das mit dem Subnetz kommunizieren kann, in dem Ihre verwaltete Domäne bereitgestellt ist. Es wird empfohlen, eine verwaltete Domäne in einem eigenen dedizierten Subnetz bereitzustellen. Stellen Sie Ihre VM nicht in demselben Subnetz wie Ihre verwaltete Domäne bereit.
 
     Es gibt zwei Hauptmethoden, die VM bereitzustellen und eine Verbindung mit einem geeigneten virtuellen Subnetz herzustellen:
     
-    * Erstellen Sie ein Subnetz im gleichen virtuellen Netzwerk, in dem Ihre verwaltete Azure AD DS-Domäne bereitgestellt ist, oder wählen Sie ein solches Subnetz aus.
+    * Erstellen Sie ein Subnetz in dem virtuellen Netzwerk, in dem Ihre verwaltete Domäne bereitgestellt ist, oder wählen Sie ein entsprechendes Subnetz aus.
     * Wählen Sie ein Subnetz in einem virtuellen Azure-Netzwerk aus, das per [Peering in virtuellen Azure-Netzwerken][vnet-peering] mit diesem verbunden ist.
     
-    Wenn Sie ein virtuelles Subnetz auswählen, das nicht mit dem Subnetz für Ihre Azure AD DS-Instanz verbunden ist, können Sie die VM nicht in die verwaltete Domäne einbinden. In diesem Tutorial erstellen wir ein neues Subnetz im virtuellen Azure-Netzwerk.
+    Wenn Sie ein virtuelles Subnetz auswählen, das nicht mit dem Subnetz für Ihre verwaltete Domäne verbunden ist, können Sie die VM nicht in die verwaltete Domäne einbinden. In diesem Tutorial erstellen wir ein neues Subnetz im virtuellen Azure-Netzwerk.
 
-    Wählen Sie im Bereich **Netzwerk** das virtuelle Netzwerk aus, in dem Ihre per Azure AD DS verwaltete Domäne bereitgestellt wurde, z. B. *aaads-vnet*.
-1. In diesem Beispiel wird das vorhandene Subnetz *aaads-subnet* angezeigt, mit dem die verwaltete Azure AD DS-Domäne verbunden ist. Verbinden Sie Ihre VM nicht mit diesem Subnetz. Um ein Subnetz für die VM zu erstellen, wählen Sie **Subnetzkonfiguration verwalten** aus.
+    Wählen Sie im Bereich **Netzwerk** das virtuelle Netzwerk aus, in dem Ihre verwaltete Domäne bereitgestellt wurde, z. B. *aaads-vnet*.
+1. In diesem Beispiel wird das vorhandene Subnetz *aaads-subnet* angezeigt, mit dem die verwaltete Domäne verbunden ist. Verbinden Sie Ihre VM nicht mit diesem Subnetz. Um ein Subnetz für die VM zu erstellen, wählen Sie **Subnetzkonfiguration verwalten** aus.
 
     ![Auswählen von „Subnetzkonfiguration verwalten“ im Azure-Portal](./media/join-windows-vm/manage-subnet.png)
 
@@ -109,7 +109,7 @@ Wenn Sie bereits über eine VM verfügen, die Sie in die Domäne einbinden möch
     ![Erstellen einer Subnetzkonfiguration im Azure-Portal](./media/join-windows-vm/create-subnet.png)
 
 1. Das Erstellen des Subnetzes dauert einige Sekunden. Klicken Sie nach dem Erstellen auf das *X*, um das Subnetzfenster zu schließen.
-1. Wählen Sie für die VM-Erstellung im Bereich **Netzwerk** im Dropdownmenü das erstellte Subnetz aus (hier also *management*). Vergewissern Sie sich, dass Sie das richtige Subnetz auswählen und die VM nicht im gleichen Subnetz bereitstellen wie Ihre verwaltete Azure AD DS-Domäne.
+1. Wählen Sie für die VM-Erstellung im Bereich **Netzwerk** im Dropdownmenü das erstellte Subnetz aus (hier also *management*). Vergewissern Sie sich, dass Sie das richtige Subnetz auswählen und die VM nicht in demselben Subnetz bereitstellen wie Ihre verwaltete Domäne.
 1. Wählen Sie unter **Öffentliche IP-Adresse** im Dropdownmenü *Keine* aus, da Sie Azure Bastion zum Herstellen einer Verbindung mit „management“ verwenden keine öffentliche IP-Adresse zugewiesen werden muss.
 1. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **Verwaltung**.
 1. Legen Sie **Startdiagnose** auf *Aus* fest. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **Überprüfen + erstellen**.
@@ -135,54 +135,54 @@ Gehen Sie wie folgt vor, um für die Verbindungsherstellung mit Ihrem virtuellen
 
 Lassen Sie in Ihrem Webbrowser bei Bedarf das Öffnen von Popups zu, damit die Bastion-Verbindung angezeigt wird. Es dauert einige Sekunden, bis die Verbindung mit Ihrem virtuellen Computer hergestellt wurde.
 
-## <a name="join-the-vm-to-the-azure-ad-ds-managed-domain"></a>Einbinden der VM in die verwaltete Azure AD DS-Domäne
+## <a name="join-the-vm-to-the-managed-domain"></a>Einbinden der VM in die verwaltete Domäne
 
-Nach dem Erstellen des virtuellen Computers und dem Herstellen einer webbasierten RDP-Verbindung mit Azure Bastion binden wir den virtuellen Windows Server-Computer in die verwaltete Azure AD DS-Domäne ein. Dieser Prozess ist der gleiche wie beim Herstellen einer Verbindung eines Computers mit einer regulären lokalen Active Directory Domain Services-Domäne.
+Nach dem Erstellen des virtuellen Computers und dem Herstellen einer webbasierten RDP-Verbindung mit Azure Bastion binden wir den virtuellen Windows Server-Computer in die verwaltete Domäne ein. Dieser Prozess ist der gleiche wie beim Herstellen einer Verbindung eines Computers mit einer regulären lokalen Active Directory Domain Services-Domäne.
 
 1. Wenn **Server-Manager** bei der Anmeldung beim virtuellen Computer nicht standardmäßig geöffnet wird, wählen Sie das **Startmenü** und dann **Server-Manager** aus.
 1. Wählen Sie im linken Bereich des **Server-Manager**-Fensters die Option **Lokaler Server**. Wählen Sie im rechten Bereich unter **Eigenschaften** die Option **Arbeitsgruppe** aus.
 
     ![Öffnen des Server-Managers auf der VM und Bearbeiten der Eigenschaften für die Arbeitsgruppe](./media/join-windows-vm/server-manager.png)
 
-1. Wählen Sie im Fenster **Systemeigenschaften** die Option **Ändern** aus, um die VM in die verwaltete Azure AD DS-Domäne einzubinden.
+1. Wählen Sie im Fenster **Systemeigenschaften** die Option **Ändern** aus, um die verwaltete Domäne einzubinden.
 
     ![Ändern der Arbeitsgruppen- oder Domäneneigenschaften](./media/join-windows-vm/change-domain.png)
 
-1. Geben Sie im Feld **Domäne** den Namen Ihrer verwalteten Azure AD DS-Domäne an (z. B. *aaddscontoso.com*), und klicken Sie anschließend auf **OK**.
+1. Geben Sie im Feld **Domäne** den Namen Ihrer verwalteten Domäne (z. B. *aaddscontoso.com*) an, und wählen Sie dann **OK** aus.
 
-    ![Angeben der verwalteten Azure AD DS-Domäne für die Einbindung](./media/join-windows-vm/join-domain.png)
+    ![Angeben der verwalteten Domäne für die Einbindung](./media/join-windows-vm/join-domain.png)
 
-1. Geben Sie für die Einbindung in die Domäne Domänenanmeldeinformationen ein. Verwenden Sie die Anmeldeinformationen für einen Benutzer, der Teil der von Azure AD DS verwalteten Domäne ist. Das Konto muss Teil der verwalteten Azure AD DS-Domäne oder des Azure AD-Mandanten sein. Konten aus externen Verzeichnissen, die Ihrem Azure AD-Mandanten zugeordnet sind, können während der Einbindung in die Domäne nicht richtig authentifiziert werden. Anmeldeinformationen können auf eine der folgenden Arten angegeben werden:
+1. Geben Sie für die Einbindung in die Domäne Domänenanmeldeinformationen ein. Verwenden Sie die Anmeldeinformationen für einen Benutzer, der Teil der verwalteten Domäne ist. Das Konto muss Teil der verwalteten Domäne oder des Azure AD-Mandanten sein. Konten aus externen Verzeichnissen, die Ihrem Azure AD-Mandanten zugeordnet sind, können während der Einbindung in die Domäne nicht richtig authentifiziert werden. Anmeldeinformationen können auf eine der folgenden Arten angegeben werden:
 
     * **UPN-Format** (empfohlen): Geben Sie das Suffix für den Benutzerprinzipalnamen (User Principal Name, UPN) für das Benutzerkonto an, wie in Azure AD konfiguriert. Das UPN-Suffix des Benutzers *contosoadmin* würde beispielsweise `contosoadmin@aaddscontoso.onmicrosoft.com` lauten. Es gibt einige Anwendungsfälle, in denen das UPN-Format zuverlässig anstelle des *SAMAccountName*-Formats zum Anmelden bei der Domäne verwendet werden kann:
         * Wenn das UPN-Präfix eines Benutzers lang ist (z.B. *Janwirklichlangerbenutzername*), wird der *SAMAccountName* möglicherweise automatisch generiert.
         * Falls mehrere Benutzer in Ihrem Azure AD-Mandanten das gleiche UPN-Präfix besitzen (z.B. *jan*), wird ihr *SAMAccountName*-Format möglicherweise automatisch generiert.
     * **SAMAccountName-Format**: Geben Sie den Kontonamen im Format *SAMAccountName* an. Der *SAMAccountName* des Benutzers *contosoadmin* würde beispielsweise `AADDSCONTOSO\contosoadmin` lauten.
 
-1. Das Einbinden in die verwaltete Azure AD DS-Domäne dauert einige Sekunden. Nach Abschluss werden Sie mit folgender Meldung in der Domäne begrüßt:
+1. Das Einbinden in die verwaltete Domäne dauert einige Sekunden. Nach Abschluss werden Sie mit folgender Meldung in der Domäne begrüßt:
 
     ![Willkommen in der Domäne](./media/join-windows-vm/join-domain-successful.png)
 
     Klicken Sie auf **OK** , um fortzufahren.
 
-1. Um den Vorgang zum Einbinden in die verwaltete Azure AD DS-Domäne abzuschließen, starten Sie die VM neu.
+1. Um den Vorgang zum Einbinden in die verwaltete Domäne abzuschließen, starten Sie die VM neu.
 
 > [!TIP]
-> Sie können eine VM mit PowerShell mit dem Cmdlet [Add-Computer][add-computer] in eine Domäne einbinden. Im folgenden Beispiel wird die Domäne *AADDSCONTOSO* eingebunden und der virtuelle Computer neu gestartet. Geben Sie bei entsprechender Aufforderung die Anmeldeinformationen für einen Benutzer ein, der Teil der verwalteten Azure AD DS-Domäne ist.
+> Sie können eine VM mit PowerShell mit dem Cmdlet [Add-Computer][add-computer] in eine Domäne einbinden. Im folgenden Beispiel wird die Domäne *AADDSCONTOSO* eingebunden und der virtuelle Computer neu gestartet. Geben Sie bei entsprechender Aufforderung die Anmeldeinformationen für einen Benutzer ein, der Teil der verwalteten Domäne ist:
 >
 > `Add-Computer -DomainName AADDSCONTOSO -Restart`
 >
 > Wenn Sie eine VM in die Domäne einbinden möchten, ohne eine Verbindung damit herzustellen und die Verbindung manuell zu konfigurieren, können Sie das Azure PowerShell-Cmdlet [Set-AzVmAdDomainExtension][set-azvmaddomainextension] nutzen.
 
-Sobald die Windows Server-VM neu gestartet wurde, werden alle auf die verwaltete Azure AD DS-Domäne angewendeten Richtlinien per Push an die VM übertragen. Sie können sich jetzt auch mit den geeigneten Domänenanmeldeinformationen bei der Windows Server-VM anmelden.
+Nachdem die Windows Server-VM neu gestartet wurde, werden alle auf die verwaltete Domäne angewendeten Richtlinien per Push an die VM übertragen. Sie können sich jetzt auch mit den geeigneten Domänenanmeldeinformationen bei der Windows Server-VM anmelden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Im nächsten Tutorial verwenden Sie diese Windows Server-VM, um die Programme zu installieren, mit denen Sie die verwaltete Azure AD DS-Domäne verwalten. Wenn Sie die Tutorialreihe nicht fortsetzen möchten, führen Sie die folgenden Bereinigungsschritte zum [Löschen des virtuellen Computers](#delete-the-vm) aus. Andernfalls [fahren Sie mit dem nächsten Tutorial fort](#next-steps).
+Im nächsten Tutorial verwenden Sie diese Windows Server-VM, um die Verwaltungstools zu installieren, mit denen Sie die verwaltete Domäne verwalten. Wenn Sie die Tutorialreihe nicht fortsetzen möchten, führen Sie die folgenden Bereinigungsschritte zum [Löschen des virtuellen Computers](#delete-the-vm) aus. Andernfalls [fahren Sie mit dem nächsten Tutorial fort](#next-steps).
 
-### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>Entfernen der VM aus der verwalteten Azure AD DS-Domäne
+### <a name="un-join-the-vm-from-the-managed-domain"></a>Entfernen der VM aus der verwalteten Domäne
 
-Führen Sie zum Entfernen der VM aus der verwalteten Azure AD DS-Domäne erneut die Schritte zum [Einbinden der VM in eine Domäne](#join-the-vm-to-the-azure-ad-ds-managed-domain) aus. Binden Sie die VM nicht in die verwaltete Azure AD DS-Domäne, sondern in eine Arbeitsgruppe ein, etwa in die Standardgruppe *WORKGROUP*. Nach dem Neustart der VM wird das Computerobjekt aus der verwalteten Azure AD DS-Domäne entfernt.
+Führen Sie zum Entfernen der VM aus der verwalteten Domäne erneut die Schritte zum [Einbinden der VM in eine Domäne](#join-the-vm-to-the-managed-domain) aus. Statt die VM in die verwaltete Domäne einzubinden, wählen Sie die Einbindung in eine Arbeitsgruppe (z. B. in die Standardgruppe *WORKGROUP*) aus. Nach dem Neustart der VM wird das Computerobjekt aus der verwalteten Domäne entfernt.
 
 Wenn Sie die [VM löschen](#delete-the-vm), ohne sie aus der Domäne zu entfernen, bleibt ein verwaistes Computerobjekt in Azure AD DS zurück.
 
@@ -197,30 +197,30 @@ Wenn Sie diese Windows Server-VM nicht weiterverwenden möchten, führen Sie fol
 
 ## <a name="troubleshoot-domain-join-issues"></a>Behandeln von Problemen mit dem Einbinden in eine Domäne
 
-Eine Windows Server-VM sollte sich im Regelfall auf die gleiche Weise in eine verwaltete Azure AD -DS-Domäne einbinden lassen, in der reguläre lokale Computer einer Active Directory Domain Services-Domäne beitreten. Wenn die Windows Server-VM nicht in die verwaltete Azure AD -DS-Domäne eingebunden werden kann, weist dies darauf hin, dass ein Problem mit der Konnektivität oder den Anmeldeinformationen besteht. Sehen Sie sich die folgenden Abschnitte zur Problembehandlung an, um die VM erfolgreich in die verwaltete Domäne einzubinden.
+Die erfolgreiche Einbindung der Windows Server-VM in die verwaltete Domäne sollte auf die gleiche Weise erfolgen wie das Einbinden eines normalen lokalen Computers in eine Active Directory Domain Services-Domäne. Wenn die Windows Server-VM nicht in die verwaltete Domäne eingebunden werden kann, weist dies darauf hin, dass ein Problem mit der Konnektivität oder den Anmeldeinformationen besteht. Sehen Sie sich die folgenden Abschnitte zur Problembehandlung an, um die VM erfolgreich in die verwaltete Domäne einzubinden.
 
 ### <a name="connectivity-issues"></a>Konnektivitätsprobleme
 
-Wenn Sie beim Einbinden in die Domäne nicht zur Eingabe von Anmeldeinformationen aufgefordert werden, besteht ein Konnektivitätsproblem. Die VM kann die verwaltete Azure AD -DS-Domäne im virtuellen Netzwerk nicht erreichen.
+Wenn Sie beim Einbinden in die Domäne nicht zur Eingabe von Anmeldeinformationen aufgefordert werden, besteht ein Konnektivitätsproblem. Die VM kann die verwaltete Domäne im virtuellen Netzwerk nicht erreichen.
 
 Führen Sie die folgenden Problembehandlungsschritte aus, und versuchen Sie erneut, die Windows Server-VM in die verwaltete Domäne einzubinden.
 
 * Überprüfen Sie, ob die VM mit dem virtuellen Netzwerk verbunden ist, in dem Azure AD DS aktiviert ist, oder eine Peeringnetzwerkverbindung nutzt.
 * Versuchen Sie, den DNS-Domänennamen der verwalteten Domäne zu pingen, z. B. mit `ping aaddscontoso.com`.
-    * Wenn diese Pinganforderung nicht erfolgreich ist, versuchen Sie, die IP-Adressen für die verwaltete Domäne zu pingen, z. B. mit `ping 10.0.0.4`. Die IP-Adresse Ihrer Umgebung wird auf der Seite *Eigenschaften* angezeigt, wenn Sie die verwaltete Azure AD -DS-Domäne aus Ihrer Liste mit Azure-Ressourcen auswählen.
+    * Wenn diese Pinganforderung nicht erfolgreich ist, versuchen Sie, die IP-Adressen für die verwaltete Domäne zu pingen, z. B. mit `ping 10.0.0.4`. Die IP-Adresse Ihrer Umgebung wird auf der Seite *Eigenschaften* angezeigt, wenn Sie die verwaltete Domäne aus Ihrer Liste der Azure-Ressourcen auswählen.
     * Wenn Sie die IP-Adresse pingen können, aber nicht die Domäne, ist das DNS möglicherweise falsch konfiguriert. Überprüfen Sie, ob die IP-Adressen der verwalteten Domäne als DNS-Server für das virtuelle Netzwerk konfiguriert sind.
 * Leeren Sie mit dem Befehl `ipconfig /flushdns` den DNS-Resolvercache auf dem virtuellen Computer.
 
 ### <a name="credentials-related-issues"></a>Probleme mit Anmeldeinformationen
 
-Wenn Sie beim Einbinden in die Domäne dazu aufgefordert werden, Anmeldeinformationen einzugeben, nach dieser Eingabe aber ein Fehler auftritt, kann die VM eine Verbindung mit der verwalteten Azure AD -DS-Domäne herstellen. Mit den angegebenen Anmeldeinformationen kann die VM nicht in die verwaltete Azure AD -DS-Domäne eingebunden werden.
+Wenn Sie beim Einbinden in die Domäne dazu aufgefordert werden, Anmeldeinformationen einzugeben, nach dieser Eingabe aber ein Fehler auftritt, kann die VM eine Verbindung mit der verwalteten Domäne herstellen. Mit den angegebenen Anmeldeinformationen kann die VM nicht in die verwaltete Domäne eingebunden werden.
 
 Führen Sie die folgenden Problembehandlungsschritte aus, und versuchen Sie erneut, die Windows Server-VM in die verwaltete Domäne einzubinden.
 
-* Das angegebene Benutzerkonto muss der verwalteten Azure AD DS-Domäne angehören.
-* Vergewissern Sie sich, dass das Konto Teil der verwalteten Azure AD DS-Domäne oder des Azure AD-Mandanten ist. Konten aus externen Verzeichnissen, die Ihrem Azure AD-Mandanten zugeordnet sind, können während der Einbindung in die Domäne nicht richtig authentifiziert werden.
+* Stellen Sie sicher, dass das angegebene Benutzerkonto zur verwalteten Domäne gehört.
+* Vergewissern Sie sich, dass das Konto Teil der verwalteten Domäne oder des Azure AD-Mandanten ist. Konten aus externen Verzeichnissen, die Ihrem Azure AD-Mandanten zugeordnet sind, können während der Einbindung in die Domäne nicht richtig authentifiziert werden.
 * Geben Sie die Anmeldeinformationen im UPN-Format an, z. B. als `contosoadmin@aaddscontoso.onmicrosoft.com`. Wenn mehrere Benutzer in Ihrem Mandanten das gleiche UPN-Präfix verwenden oder das UPN-Präfix sehr lang ist, wird der *SAMAccountName* für Ihr Konto möglicherweise automatisch generiert. In diesen Fällen ist das *SAMAccountName*-Format für Ihr Konto möglicherweise anders als Sie erwarten bzw. unterscheidet sich von dem, was Sie in Ihrer lokalen Domäne verwenden.
-* Überprüfen Sie, ob Sie die [Kennwortsynchronisierung für Ihre verwaltete Domäne aktiviert haben][password-sync]. Ohne diesen Konfigurationsschritt sind die erforderlichen Kennworthashes in der verwalteten Azure AD DS-Domäne nicht vorhanden und können Ihren Anmeldeversuch nicht ordnungsgemäß authentifizieren.
+* Überprüfen Sie, ob Sie die [Kennwortsynchronisierung für Ihre verwaltete Domäne aktiviert haben][password-sync]. Ohne diesen Konfigurationsschritt sind die erforderlichen Kennworthashes in der verwalteten Domäne nicht vorhanden und können Ihren Anmeldeversuch nicht ordnungsgemäß authentifizieren.
 * Warten Sie, bis die Kennwortsynchronisierung abgeschlossen ist. Wird das Kennwort eines Benutzerkontos geändert, aktualisiert eine automatische Hintergrundsynchronisierung von Azure AD das Kennwort in Azure AD DS. Es dauert einige Zeit, bis das Kennwort für das Einbinden in die Domäne verfügbar ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -230,9 +230,9 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 > * Erstellen einer Windows Server-VM
 > * Herstellen einer Verbindung zwischen der Windows Server-VM und einem virtuellen Azure-Netzwerk
-> * Einbinden der VM in die verwaltete Azure AD DS-Domäne
+> * Einbinden der VM in die verwaltete Domäne
 
-Um Ihre verwaltete Azure AD DS-Domäne zu verwalten, konfigurieren Sie über das Active Directory-Verwaltungscenter (Active Directory Administrative Center, ADAC) eine Verwaltungs-VM.
+Konfigurieren Sie im Active Directory-Verwaltungscenter (Active Directory Administrative Center, ADAC) eine Verwaltungs-VM, um Ihre verwaltete Domäne zu verwalten.
 
 > [!div class="nextstepaction"]
 > [Installieren von Verwaltungstools auf einer Verwaltungs-VM](tutorial-create-management-vm.md)

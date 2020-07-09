@@ -1,48 +1,32 @@
 ---
-title: Zugriffs- und Nutzungsberichte für Azure MFA – Azure Active Directory
-description: Beschreibt, wie Sie das Berichte-Feature für Multi-Factor Authentication verwenden.
+title: Einzelheiten zu Anmeldeereignissen für Azure Multi-Factor Authentication – Azure Active Directory
+description: Erfahren Sie, wie Sie Anmeldeaktivitäten für Azure Multi-Factor Authentication-Ereignisse und Statusmeldungen anzeigen.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/30/2018
+ms.date: 05/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df562d65ad064efb1be337e0b68cb8638536981
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9bf76729c3b5844918659283a65eeb347c4237d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112761"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639827"
 ---
-# <a name="reports-in-azure-multi-factor-authentication"></a>Berichte in Azure Multi-Factor Authentication
+# <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>Verwenden des Anmeldeberichts zum Überprüfen von Azure Multi-Factor Authentication-Ereignissen
 
-Azure Multi-Factor Authentication bietet verschiedene Berichte, die Sie und Ihre Organisation im Azure-Portal verwenden können. In der folgenden Tabelle sind die verfügbaren Berichte aufgeführt:
+Zum Überprüfen von Azure Multi-Factor Authentication-Ereignissen und zum besseren Verständnis können Sie den Azure Active Directory (Azure AD)-Anmeldebericht verwenden. Dieser Bericht zeigt Authentifizierungsdetails für Ereignisse, bei denen ein Benutzer zur mehrstufigen Authentifizierung aufgefordert wird. Er zeigt auch, ob Richtlinien für bedingten Zugriff verwendet wurden. Ausführliche Informationen zum Anmeldebericht finden Sie unter [Berichte zu Anmeldeaktivitäten in Azure AD](../reports-monitoring/concept-sign-ins.md).
 
-| Bericht | Position | BESCHREIBUNG |
-|:--- |:--- |:--- |
-| Verlauf – gesperrte Benutzer | Azure AD > Sicherheit > MFA > Benutzer sperren/entsperren | Zeigt die Liste der Anforderungen zum Blockieren und Entsperren von Benutzern an. |
-| Nutzung und Betrugswarnungen | Azure AD > Anmeldungen | Bietet Informationen zur Gesamtnutzung, Übersichts- und Detailinformationen zu Benutzern sowie einen Verlauf von Betrugswarnungen, die im angegebenen Zeitraum gesendet wurden. |
-| Nutzung für lokale Komponenten | Azure AD > Sicherheit > MFA > Aktivitätsbericht | Bietet Informationen zur Gesamtnutzung für MFA durch die NPS-Erweiterung, AD FS und den MFA-Server. |
-| Verlauf – Umgangene Benutzer | Azure AD > Sicherheit > MFA > Einmalige Umgehung | Zeigt den Verlauf von Anforderungen zur Umgehung der Multi-Factor Authentication für einen Benutzer an. |
-| Serverstatus | Azure AD > Sicherheit > MFA > Serverstatus | Zeigt den Status von Multi-Factor Authentication-Servern an, die mit Ihrem Konto verknüpft sind. |
+In diesem Artikel erfahren Sie, wie Sie den Azure AD-Anmeldebericht im Azure-Portal und dann das PowerShell-Modul „MSOnline V1“ anzeigen.
 
-## <a name="view-mfa-reports"></a>Anzeigen von MFA-Berichten
+## <a name="view-the-azure-ad-sign-ins-report"></a>Anzeigen des Azure AD-Anmeldeberichts
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Sicherheit** > **MFA** aus.
-3. Wählen Sie den Bericht aus, den Sie anzeigen möchten.
-
-   ![MFA Server-Serverstatusbericht im Azure-Portal](./media/howto-mfa-reporting/report.png)
-
-## <a name="azure-ad-sign-ins-report"></a>Azure AD-Anmeldungenbericht
-
-Mit dem **Anmeldungenaktivitätsbericht** im [Azure-Portal](https://portal.azure.com) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
-
-Der Anmeldungenbericht kann Informationen zur Nutzung von verwalteten Anwendungen und Benutzeranmeldeaktivitäten, z.B. auch Informationen zur Nutzung von MFA (Multi-Factor Authentication, mehrstufige Authentifizierung), enthalten. Die MFA-Daten liefern Ihnen Erkenntnisse zur Funktionsweise von MFA in Ihrer Organisation. Sie können dann beispielsweise folgende Fragen beantworten:
+Der Anmeldebericht enthält Informationen zur Nutzung von verwalteten Anwendungen und zu Anmeldeaktivitäten von Benutzern, darunter auch Informationen zur Nutzung von Azure Multi-Factor Authentication (MFA). Die MFA-Daten liefern Ihnen Erkenntnisse zur Funktionsweise von MFA in Ihrer Organisation. Hier finden Sie Antworten auf folgende Fragen:
 
 - Wurde bei der Anmeldung MFA verwendet?
 - Wie hat der Benutzer den MFA-Vorgang durchgeführt?
@@ -51,94 +35,76 @@ Der Anmeldungenbericht kann Informationen zur Nutzung von verwalteten Anwendunge
 - Wie viele Benutzer können den MFA-Vorgang nicht durchführen?
 - Welche MFA-Probleme treten für Benutzer häufig auf?
 
-Diese Daten sind über das [Azure-Portal](https://portal.azure.com) und die [Berichterstellungs-API](../reports-monitoring/concept-reporting-api.md) verfügbar.
+Führen Sie die folgenden Schritte aus, um den Bericht zu den Anmeldeaktivitäten im [Azure-Portal](https://portal.azure.com) anzuzeigen. Mithilfe der [Berichterstellungs-API](../reports-monitoring/concept-reporting-api.md) können Sie auch Daten abfragen.
 
-![Azure AD-Anmeldebericht im Azure-Portal](./media/howto-mfa-reporting/sign-in-report.png)
+1. Melden Sie sich mit dem Konto mit den Berechtigungen vom Typ *Globaler Administrator* beim [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie nach **Azure Active Directory**, wählen Sie den Eintrag aus, und wählen Sie anschließend im Menü auf der linken Seite die Option **Benutzer** aus.
+1. Wählen Sie im Menü auf der linken Seite unter **Aktivität** die Option *Anmeldungen* aus.
+1. Angezeigt wird eine Liste mit Anmeldeereignissen und Statusangaben. Sie können ein Ereignis auswählen, um weitere Details anzuzeigen.
 
-### <a name="sign-ins-report-structure"></a>Struktur des Anmeldungenberichts
+    Als Ereignisdetails werden auf der Registerkarte *Authentifizierungsdetails* oder *Bedingter Zugriff* der Statuscode bzw. die Richtlinie angezeigt, durch die die Aufforderung zur mehrstufigen Authentifizierung ausgelöst wurde.
 
-Über die Berichte zu den Anmeldeaktivitäten für MFA erhalten Sie Zugriff auf die folgenden Informationen:
+    [![](media/howto-mfa-reporting/sign-in-report-cropped.png "Screenshot of example Azure Active Directory sign-ins report in the Azure portal")](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
-**MFA erforderlich:** Gibt an, ob MFA für die Anmeldung erforderlich ist. MFA kann aufgrund von MFA pro Benutzer, bedingtem Zugriff oder aus anderen Gründen obligatorisch sein. Mögliche Werte sind **Ja** oder **Nein**.
+Sofern verfügbar, wird die Art der Authentifizierung angezeigt, z. B. Textnachricht, Benachrichtigung der Microsoft Authenticator-App oder Telefonanruf.
 
-**MFA-Ergebnis:** Weitere Informationen dazu, ob der MFA-Vorgang erfolgreich durchgeführt wurde:
+Im Fenster *Authentifizierungsdetails* werden die folgenden Einzelheiten für ein Anmeldeereignis angezeigt, aus denen hervorgeht, ob die MFA-Anforderung erfolgreich war oder abgelehnt wurde:
 
-- Wenn der MFA-Vorgang erfolgreich war, enthält diese Spalte weitere Details dazu.
-   - Azure Multi-Factor Authentication
-      - completed in the cloud (in der Cloud durchgeführt)
-      - has expired due to the policies configured on tenant (ist aufgrund der auf dem Mandanten konfigurierten Richtlinien abgelaufen)
-      - registration prompted (zur Registrierung aufgefordert)
-      - satisfied by claim in the token (per Anspruch im Token erfüllt)
-      - satisfied by claim provided by external provider (per Anspruch vom externen Anbieter erfüllt)
-      - satisfied by strong authentication (per strenger Authentifizierung erfüllt)
-      - skipped as flow exercised was Windows broker logon flow (übersprungen, da es sich um einen Windows-Broker-Anmeldefluss gehandelt hat)
-      - skipped due to app password (übersprungen aufgrund von App-Kennwort)
-      - skipped due to location (übersprungen aufgrund von Standort)
-      - skipped due to registered device (übersprungen aufgrund von registriertem Gerät)
-      - skipped due to remembered device (übersprungen aufgrund von gespeichertem Gerät)
-      - successfully completed (erfolgreich abgeschlossen)
-   - Redirected to external provider for multi-factor authentication (umgeleitet an externen Anbieter zur mehrstufigen Authentifizierung)
+* Wenn der MFA-Vorgang erfolgreich war, enthält diese Spalte weitere Details dazu.
+   * completed in the cloud (in der Cloud durchgeführt)
+   * has expired due to the policies configured on tenant (ist aufgrund der auf dem Mandanten konfigurierten Richtlinien abgelaufen)
+   * registration prompted (zur Registrierung aufgefordert)
+   * satisfied by claim in the token (per Anspruch im Token erfüllt)
+   * satisfied by claim provided by external provider (per Anspruch vom externen Anbieter erfüllt)
+   * satisfied by strong authentication (per strenger Authentifizierung erfüllt)
+   * skipped as flow exercised was Windows broker logon flow (übersprungen, da es sich um einen Windows-Broker-Anmeldefluss gehandelt hat)
+   * skipped due to app password (übersprungen aufgrund von App-Kennwort)
+   * skipped due to location (übersprungen aufgrund von Standort)
+   * skipped due to registered device (übersprungen aufgrund von registriertem Gerät)
+   * skipped due to remembered device (übersprungen aufgrund von gespeichertem Gerät)
+   * successfully completed (erfolgreich abgeschlossen)
 
-- Wenn der MFA-Vorgang nicht erfolgreich war, ist in dieser Spalte der Grund angegeben.
-   - Azure Multi-Factor Authentication denied; (Azure Multi-Factor Authentication verweigert;)
-      - authentication in-progress (Authentifizierung in Bearbeitung)
-      - duplicate authentication attempt (versuchte doppelte Authentifizierung)
-      - entered incorrect code too many times (falschen Code zu häufig eingegeben)
-      - invalid authentication (ungültige Authentifizierung)
-      - invalid mobile app verification code (ungültiger Verifizierungscode der mobilen App)
-      - misconfiguration (Fehlkonfiguration)
-      - phone call went to voicemail (Voicemail bei Telefonanruf)
-      - phone number has an invalid format (Telefonnummer hat ein ungültiges Format)
-      - service error (Dienstfehler)
-      - unable to reach the user's phone (Telefon des Benutzers nicht erreichbar)
-      - unable to send the mobile app notification to the device (Benachrichtigung über mobile App kann nicht an das Gerät gesendet werden)
-      - unable to send the mobile app notification (Benachrichtigung über mobile App kann nicht gesendet werden)
-      - user declined the authentication (Benutzer hat die Authentifizierung abgelehnt)
-      - user did not respond to mobile app notification (Benutzer hat auf Benachrichtigung über mobile App nicht geantwortet)
-      - user does not have any verification methods registered (für Benutzer sind keine Verifizierungsmethoden registriert)
-      - user entered incorrect code (Benutzer hat falschen Code eingegeben)
-      - user entered incorrect PIN (Benutzer hat falsche PIN eingegeben)
-      - user hung up the phone call without succeeding the authentication (Benutzer hat Gespräch beendet, ohne die Authentifizierung durchzuführen)
-      - user is blocked (Benutzer ist gesperrt)
-      - user never entered the verification code (Benutzer hat den Verifizierungscode niemals eingegeben)
-      - user not found (Benutzer wurde nicht gefunden)
-      - verification code already used once (Verifizierungscode wurde bereits einmal verwendet)
-
-**MFA-Authentifizierungsmethode:** Die Authentifizierungsmethode, die vom Benutzer zum Durchführen des MFA-Vorgangs verwendet wurde. Mögliche Werte sind:
-
-- Textnachricht
-- Benachrichtigung über eine mobile App
-- Telefonanruf (Telefonnummer für Authentifizierung)
-- Prüfcode in der mobilen App
-- Telefonanruf (Geschäftliche Telefonnummer)
-- Telefonanruf (alternative Telefonnummer für Authentifizierung)
-
-**MFA-Authentifizierungsdetail:** Bereinigte Version der Telefonnummer, z.B. +X XXXXXXXX64.
-
-**Bedingter Zugriff**: Finden Sie Informationen zu Richtlinien für bedingten Zugriff, die den Anmeldeversuch beeinflusst haben, einschließlich:
-
-- Richtlinienname
-- Gewährungssteuerelemente
-- Sitzungssteuerelemente
-- Ergebnis
+* Wenn der MFA-Vorgang nicht erfolgreich war, ist in dieser Spalte der Grund angegeben.
+   * authentication in-progress (Authentifizierung in Bearbeitung)
+   * duplicate authentication attempt (versuchte doppelte Authentifizierung)
+   * entered incorrect code too many times (falschen Code zu häufig eingegeben)
+   * invalid authentication (ungültige Authentifizierung)
+   * invalid mobile app verification code (ungültiger Verifizierungscode der mobilen App)
+   * misconfiguration (Fehlkonfiguration)
+   * phone call went to voicemail (Voicemail bei Telefonanruf)
+   * phone number has an invalid format (Telefonnummer hat ein ungültiges Format)
+   * service error (Dienstfehler)
+   * unable to reach the user's phone (Telefon des Benutzers nicht erreichbar)
+   * unable to send the mobile app notification to the device (Benachrichtigung über mobile App kann nicht an das Gerät gesendet werden)
+   * unable to send the mobile app notification (Benachrichtigung über mobile App kann nicht gesendet werden)
+   * user declined the authentication (Benutzer hat die Authentifizierung abgelehnt)
+   * user did not respond to mobile app notification (Benutzer hat auf Benachrichtigung über mobile App nicht geantwortet)
+   * user does not have any verification methods registered (für Benutzer sind keine Verifizierungsmethoden registriert)
+   * user entered incorrect code (Benutzer hat falschen Code eingegeben)
+   * user entered incorrect PIN (Benutzer hat falsche PIN eingegeben)
+   * user hung up the phone call without succeeding the authentication (Benutzer hat Gespräch beendet, ohne die Authentifizierung durchzuführen)
+   * user is blocked (Benutzer ist gesperrt)
+   * user never entered the verification code (Benutzer hat den Verifizierungscode niemals eingegeben)
+   * user not found (Benutzer wurde nicht gefunden)
+   * verification code already used once (Verifizierungscode wurde bereits einmal verwendet)
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>PowerShell-Berichte über für MFA registrierte Benutzer
 
 Stellen Sie zunächst sicher, dass das [MSOnline-V1-PowerShell-Modul](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0) installiert ist.
 
-Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich für MFA registriert haben. Mit dieser Gruppe von Befehlen werden deaktivierte Benutzer ausgeschlossen, da sich diese Konten nicht bei Azure AD authentifizieren können.
+Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich für MFA registriert haben. Mit dieser Reihe von Befehlen werden deaktivierte Benutzer ausgeschlossen, da sich diese Konten nicht bei Azure AD authentifizieren können:
 
 ```powershell
 Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods -ne $null -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
-Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich nicht für MFA registriert haben. Mit dieser Gruppe von Befehlen werden deaktivierte Benutzer ausgeschlossen, da sich diese Konten nicht bei Azure AD authentifizieren können.
+Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich nicht für MFA registriert haben. Mit dieser Reihe von Befehlen werden deaktivierte Benutzer ausgeschlossen, da sich diese Konten nicht bei Azure AD authentifizieren können:
 
 ```powershell
 Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0 -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
-Identifizieren Sie die registrierten Benutzer und Ausgabemethoden. 
+Identifizieren Sie die registrierten Benutzer und Ausgabemethoden:
 
 ```powershell
 Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalName}},
@@ -148,9 +114,9 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 @{N='MFA Methods';E={$_.StrongAuthenticationMethods.methodtype}} | Export-Csv -Path c:\MFA_Report.csv -NoTypeInformation
 ```
 
-## <a name="possible-results-in-activity-reports"></a>Mögliche Ergebnisse in Aktivitätsberichten
+## <a name="downloaded-activity-reports-result-codes"></a>Ergebniscodes im heruntergeladenen Aktivitätsbericht
 
-Die folgende Tabelle kann verwendet werden, um die Problembehandlung für die mehrstufige Authentifizierung durchzuführen, indem die heruntergeladene Version des Aktivitätsberichts für die mehrstufige Authentifizierung verwendet wird. Die Anzeige erfolgt nicht direkt im Azure-Portal.
+Mithilfe der Version des Aktivitätsberichts, die Sie in den vorherigen Schritten im Portal oder mit PowerShell-Befehlen heruntergeladen haben, und der folgenden Tabelle können Sie Probleme bei Ereignissen besser beheben. Diese Ergebniscodes werden nicht direkt im Azure-Portal angezeigt.
 
 | Anrufergebnis | BESCHREIBUNG | Genauere Beschreibung |
 | --- | --- | --- |
@@ -200,8 +166,17 @@ Die folgende Tabelle kann verwendet werden, um die Problembehandlung für die me
 | FAILED_AUTH_RESULT_TIMEOUT | Zeitüberschreitung bei Authentifizierung | Der Benutzer hat zu lange gebraucht, um den Multi-Factor Authentication-Vorgang durchzuführen. |
 | FAILED_AUTHENTICATION_THROTTLED | Authentifizierung wurde gedrosselt | Der Multi-Factor Authentication-Vorgang wurde vom Dienst gedrosselt. |
 
+## <a name="additional-mfa-reports"></a>Weitere MFA-Berichte
+
+Für Ereignisse der mehrstufigen Authentifizierung (und für den MFA-Server) sind die folgenden weiteren Informationen und Berichte verfügbar:
+
+| Bericht | Standort | BESCHREIBUNG |
+|:--- |:--- |:--- |
+| Verlauf – gesperrte Benutzer | Azure AD > Sicherheit > MFA > Benutzer sperren/entsperren | Zeigt die Liste der Anforderungen zum Blockieren und Entsperren von Benutzern an. |
+| Nutzung für lokale Komponenten | Azure AD > Sicherheit > MFA > Aktivitätsbericht | Enthält Informationen zur allgemeinen Nutzung für MFA-Server durch die NPS-Erweiterung, AD FS und den MFA-Server. |
+| Verlauf – Umgangene Benutzer | Azure AD > Sicherheit > MFA > Einmalige Umgehung | Stellt den Verlauf der MFA-Serveranforderungen zum Umgehen der MFA für einen Benutzer bereit. |
+| Serverstatus | Azure AD > Sicherheit > MFA > Serverstatus | Zeigt den Status der MFA-Server an, die mit Ihrem Konto verknüpft sind. |
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Nutzungs- und Insights-Berichte für SSPR und MFA](howto-authentication-methods-usage-insights.md)
-* [Für Benutzer](../user-help/multi-factor-authentication-end-user.md)
-* [Bereitstellungsort](concept-mfa-whichversion.md)
+Dieser Artikel enthält eine Übersicht über den Bericht zu Anmeldeaktivitäten. Detailliertere Informationen zum Inhalt dieses Berichts und zu den Daten finden Sie unter [Berichte zu Anmeldeaktivitäten in Azure AD](../reports-monitoring/concept-sign-ins.md).

@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: 0b83a35d912c97ae25bc2d69d076e8eae8ca490f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77523603"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856684"
 ---
 # <a name="keys-and-values"></a>Schlüssel und Werte
 
@@ -25,13 +25,17 @@ Hier sind zwei Beispiele für in eine Hierarchie strukturierte Schlüsselnamen:
 
 * Basierend auf Komponentendiensten
 
+```aspx
         AppName:Service1:ApiEndpoint
         AppName:Service2:ApiEndpoint
+```
 
 * Basierend auf Bereitstellungsregionen
 
+```aspx
         AppName:Region1:DbEndpoint
         AppName:Region2:DbEndpoint
+```
 
 Bei Verwendung von Konfigurationsdaten in Anwendungsframeworks sind möglicherweise bestimmte Benennungsschemas für Schlüsselwerte vorgegeben. Beispielsweise definiert das Spring Cloud-Framework von Java `Environment`-Ressourcen, die Einstellungen für eine Spring-Anwendung bereitstellen.  Diese werden durch Variablen parametrisiert, die *Anwendungsname* und *Profil* enthalten. Schlüssel für Spring Cloud-bezogene Konfigurationsdaten beginnen normalerweise mit diesen beiden Elementen, die durch ein Trennzeichen getrennt sind.
 
@@ -57,9 +61,11 @@ Schlüsselwerte in App Configuration können optional über das Attribut „labe
 
 Eine Bezeichnung ist praktisch zum Erstellen von Varianten eines Schlüssels. Mit Bezeichnungen werden häufig mehrere Umgebungen für den gleichen Schlüssel angegeben:
 
+```aspx
     Key = AppName:DbEndpoint & Label = Test
     Key = AppName:DbEndpoint & Label = Staging
     Key = AppName:DbEndpoint & Label = Production
+```
 
 ### <a name="version-key-values"></a>Versionsverwaltung von Schlüsselwerten
 

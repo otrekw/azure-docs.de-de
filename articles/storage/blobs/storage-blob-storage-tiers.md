@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: c803d489b70cda6910865f6096d21c2021c4ae3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14e8b3e28115fb191760382ed2a9fbd5c5a04114
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393703"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919923"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“
 
@@ -59,9 +59,9 @@ Für die kalte Zugriffsebene fallen im Vergleich mit dem heißen Speicher niedri
 
 ## <a name="archive-access-tier"></a>Zugriffsebene „Archiv“
 
-Die Zugriffsebene „Archiv“ weist die niedrigsten Speicherkosten auf. Im Vergleich zu den Ebenen „Heiß“ und „Kalt“ sind jedoch die Kosten für Datenabrufe höher. Das Abrufen von Daten auf Archivspeicherebene kann mehrere Stunden in Anspruch nehmen. Die Daten müssen sich mindestens 180 Tage lang auf der Archivspeicherebene befinden, sonst unterliegen sie einer Gebühr für frühe Löschung.
+Die Zugriffsebene „Archiv“ weist die niedrigsten Speicherkosten auf. Im Vergleich zu den Ebenen „Heiß“ und „Kalt“ sind jedoch die Kosten für Datenabrufe höher. Die Daten müssen sich mindestens 180 Tage lang auf der Archivspeicherebene befinden, sonst unterliegen sie einer Gebühr für frühe Löschung. Das Abrufen von Daten in der Archivspeicherebene kann je nach Priorität der Aktivierung mehrere Stunden dauern. Ein kleines Objekt kann bei einer Aktivierung mit hoher Priorität in weniger als einer Stunde aus dem Archiv abgerufen werden. Weitere Informationen finden Sie unter [Aktivieren von Blobdaten aus der Archivzugriffsebene](storage-blob-rehydration.md).
 
-Solange sich ein Blob im Archivspeicher befindet, sind die Blobdaten offline und können nicht gelesen, überschrieben oder geändert werden. Um ein Blob, das sich im Archivspeicher befindet, zu lesen oder herunterzuladen, müssen Sie es zunächst in einer Onlineebene aktivieren. Sie können keine Momentaufnahmen von einem Blob im Archivspeicher erstellen. Die Blobmetadaten bleiben jedoch online und verfügbar, sodass Sie das Blob und seine Eigenschaften auflisten können. Für Blobs auf Archivspeicherebene sind GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier, CopyBlob und DeleteBlob die einzigen gültigen Vorgänge. Weitere Informationen finden Sie unter [Aktivieren von Blobdaten aus der Archivzugriffsebene](storage-blob-rehydration.md).
+Solange sich ein Blob im Archivspeicher befindet, sind die Blobdaten offline und können nicht gelesen, überschrieben oder geändert werden. Um ein Blob, das sich im Archivspeicher befindet, zu lesen oder herunterzuladen, müssen Sie es zunächst in einer Onlineebene aktivieren. Sie können keine Momentaufnahmen von einem Blob im Archivspeicher erstellen. Die Blobmetadaten bleiben jedoch online und verfügbar, sodass Sie das Blob, seine Eigenschaften, Metadaten und Blobindextags auflisten können. Ein Festlegen oder Ändern der Blobmetadaten im Archiv ist nicht zulässig. Sie können jedoch die Blobindextags festlegen und ändern. Für Blobs auf Archivspeicherebene sind „GetBlobProperties“, „GetBlobMetadata“, „SetBlobTags“, „GetBlobTags“, „FindBlobsByTags“, „ListBlobs“, „SetBlobTier“, „CopyBlob“ und „DeleteBlob“ die einzigen gültigen Vorgänge.
 
 Beispielszenarien für die Verwendung der Archivzugriffsebene:
 
@@ -82,7 +82,7 @@ Blobebenentiering ermöglicht es Ihnen, Daten mit den Vorgängen [Put Blob](/res
 Der Zeitpunkt der letzten Änderung der Blobebene wird über die Blobeigenschaft **Access Tier Change Time** (Änderungszeitpunkt der Zugriffsebene) verfügbar gemacht. Beim Überschreiben eines Blobs auf der heißen oder kalten Ebene erbt das neu erstellte Blob den Tarif des Blobs, das überschrieben wurde, sofern nicht bei der Erstellung die neue Blobzugriffsebene explizit festgelegt wird. Wenn sich ein Blob auf der Archivspeicherebene befindet, kann es nicht überschrieben werden. Das Hochladen desselben Blobs ist daher in diesem Szenario nicht zulässig. 
 
 > [!NOTE]
-> Für die Archivspeicherebene und das Blobebenentiering werden nur Blockblobs unterstützt. Außerdem ist es derzeit nicht möglich, die Ebene eines Blockblobs zu ändern, für das Momentaufnahmen vorhanden sind.
+> Für die Archivspeicherebene und das Blobebenentiering werden nur Blockblobs unterstützt.
 
 ### <a name="blob-lifecycle-management"></a>Lebenszyklusverwaltung für Blobs
 
@@ -119,7 +119,7 @@ Die folgende Tabelle enthält eine Gegenüberstellung des Premium-Leistungsblock
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Verfügbarkeit**                          | 99,9 %                     | 99,9 %        | 99 %                 | Offline           |
 | **Verfügbarkeit** <br> **(RA-GRS-Lesevorgänge)**  | –                       | 99,99 %       | 99,9 %               | Offline           |
-| **Nutzungsgebühren**                         | Höhere Speicherkosten, geringere Zugriffs- und Transaktionskosten | Höhere Speicherkosten, geringere Zugriffs- und Transaktionskosten | Geringere Speicherkosten, höhere Zugriffs- und Transaktionskosten | Niedrigste Speicherkosten, höchste Zugriffs- und Transaktionskosten |
+| **Nutzungsgebühren**                         | Höhere Speicherkosten, niedrigere Zugriffs- und Transaktionskosten | Höhere Speicherkosten, geringere Zugriffs- und Transaktionskosten | Geringere Speicherkosten, höhere Zugriffs- und Transaktionskosten | Niedrigste Speicherkosten, höchste Zugriffs- und Transaktionskosten |
 | **Mindestobjektgröße**                   | –                       | –          | –                 | –               |
 | **Mindestspeicherdauer**              | –                       | –          | 30 Tage<sup>1</sup> | 180 Tage
 | **Latenz** <br> **(Zeit bis zum ersten Byte)** | Einstellige Millisekunden | Millisekunden | Millisekunden        | Stunden<sup>2</sup> |
@@ -133,7 +133,7 @@ Die folgende Tabelle enthält eine Gegenüberstellung des Premium-Leistungsblock
 
 ## <a name="quickstart-scenarios"></a>Schnellstartszenarien
 
-In diesem Abschnitt werden unter Verwendung des Azure-Portals und von PowerShell die folgenden Szenarien veranschaulicht:
+In diesem Abschnitt werden die folgenden Szenarien unter Verwendung des Azure-Portals und von PowerShell veranschaulicht:
 
 - Ändern der Standard-Kontozugriffsebene für ein GPv2- oder Blobspeicherkonto
 - Ändern der Ebene eines Blobs in einem GPv2- oder Blobspeicherkonto
@@ -252,7 +252,7 @@ Für Blobs der Zugriffsebene „Kalt“ gilt in Bezug auf die Verfügbarkeit ein
 
 **Sind die Vorgänge für die Ebenen „Hot“, „Cool“ und „Archiv“ identisch?**
 
-Alle Vorgänge zwischen „Hot“ und „Cool“ sind zu 100% konsistent. Alle gültigen Archivvorgänge (einschließlich „GetBlobProperties“, „GetBlobMetadata“, „ListBlobs“, „SetBlobTier“ und „DeleteBlob“) sind mit „Heiß“ und „Kalt“ vollständig konsistent. Blobdaten auf Archivspeicherebene müssen erst aktiviert werden, bevor sie gelesen oder geändert werden können. Im Archiv werden nur Lesevorgänge für Blobmetadaten unterstützt.
+Alle Vorgänge zwischen „Hot“ und „Cool“ sind zu 100% konsistent. Alle gültigen Archivvorgänge (einschließlich „GetBlobProperties“, „GetBlobMetadata“, „SetBlobTags“, „GetBlobTags“, „FindBlobsByTags“, „ListBlobs“, „SetBlobTier“ und „DeleteBlob“) sind mit „Heiß“ und „Kalt“ zu 100 % konsistent. Blobdaten auf Archivspeicherebene müssen erst aktiviert werden, bevor sie gelesen oder geändert werden können. Im Archiv werden nur Lesevorgänge für Blobmetadaten unterstützt. Blobindextags können im Archiv jedoch gelesen, festgelegt oder geändert werden.
 
 **Wie kann ich beim Aktivieren eines Blobs von der Ebene „Archiv“ auf die Ebene „Hot“ oder „Cool“ erkennen, wann die Aktivierung abgeschlossen ist?**
 

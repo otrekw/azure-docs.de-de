@@ -29,7 +29,7 @@ Mit diesen Schritten können Sie Ihre Methode für die Kennwortzurücksetzung hi
 
 ## <a name="security-vs-password-reset-verification"></a>Authentifizierung mittels Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
 
-Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
+Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch für die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
 
 | Methode | Syntaxelemente |
 | ------ | -------- |

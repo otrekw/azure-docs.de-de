@@ -3,12 +3,12 @@ title: Unterstützung der Hyper-V-Bewertung in Azure Migrate
 description: Informationen zur Unterstützung der Hyper-V-Bewertung mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 67fabebf805e38a6bca5dda6e691c263ee235219
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 5ba7e74624f719feb6efbb3fb58dd3375250d649
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744600"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266779"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Unterstützungsmatrix für die Hyper-V-Bewertung
 
@@ -44,7 +44,7 @@ Um die Bewertung von Hyper-V-VMs einzurichten, erstellen Sie ein Azure Migrate-P
 
 | **Unterstützung**                  | **Details**               
 | :----------------------------- | :------------------- |
-| **Betriebssystem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)- und [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)-Betriebssysteme. |
+| **Betriebssystem** | Alle Betriebssysteme können für die Migration ausgewertet werden.  |
 | **Integrationsdienste**       | [Hyper-V Integration Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) muss auf den von Ihnen bewerteten VMs ausgeführt werden, um Betriebssysteminformationen zu erfassen. |
 
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
-ms.openlocfilehash: dd3e77610749eb5d146b0c0b7cf9d307fba0dd83
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e63f073c4f7166cd205b85ef06589f6056b2a70f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79370235"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195687"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Schnellstart: Erstellen einer Instanz im Hybridmodus mit dem Azure-Portal und dem Azure Database Migration Service
 
@@ -26,7 +26,7 @@ Azure Database Migration Service im Hybridmodus verwaltet Datenbankmigrationen m
 >[!NOTE]
 >Zurzeit unterstützt der Azure Database Migration Service im Hybridmodus SQL Server-Migrationen zu Folgendem:
 >
->- Verwaltete Azure SQL-Datenbank-Instanz nahezu ohne Ausfallzeit (online).
+>- Verwaltete Azure SQL-Instanz nahezu ohne Ausfallzeit (online).
 >- Einzelne Azure SQL-Datenbank mit einem gewissen Maß an Ausfallzeit (offline).
 >- MongoDB zu Cosmos DB nahezu ohne Ausfallzeit (online).
 >- MongoDB zu Cosmos DB mit einem gewissen Maß an Ausfallzeit (offline).
@@ -191,5 +191,5 @@ Füllen Sie die Parameter am Anfang des Skripts aus, und führen Sie das Skript 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von DMS (online)](tutorial-sql-server-managed-instance-online.md)
-> [Offlinemigration von SQL Server zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank mit DMS](tutorial-sql-server-to-azure-sql.md)
+> [Migrieren von SQL Server zu einer verwalteten Azure SQL-Instanz online](tutorial-sql-server-managed-instance-online.md)
+> [Migrieren von SQL Server zu einer verwalteten Azure SQL-Instanz offline](tutorial-sql-server-to-azure-sql.md)

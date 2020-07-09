@@ -2,19 +2,19 @@
 title: Selbsthilfe für SQL On-Demand (Vorschauversion)
 description: Dieser Abschnitt enthält Informationen, die Sie bei der Behandlung von Problemen mit SQL On-Demand (Vorschauversion) unterstützen.
 services: synapse analytics
-author: vvasic-msft
+author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: vvasic
+ms.subservice: sql
+ms.date: 05/15/2020
+ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: e2c262915c928cf487cb84aeb3423d67e7a96e97
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7a6b145e9a1efb29bbb6c233f2a09498b4a4ea7f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421194"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213124"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>Selbsthilfe für SQL On-Demand (Vorschauversion)
 
@@ -33,13 +33,43 @@ Wenn bei Ihrer Abfrage ein Fehler mit dem Hinweis auftritt, dass die Datei nicht
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>Abfrage nicht erfolgreich, da sie aufgrund von aktuellen Ressourceneinschränkungen nicht ausgeführt werden kann 
 
-Sollte bei Ihrer Abfrage ein Fehler mit dem Hinweis auftreten, dass die Abfrage aufgrund von aktuellen Ressourceneinschränkungen nicht ausgeführt werden kann, kann die Abfrage aufgrund von Ressourceneinschränkungen momentan nicht von SQL On-Demand ausgeführt werden: 
+Wenn bei Ihrer Abfrage ein Fehler mit dem Hinweis auftritt, dass die Abfrage aufgrund von aktuellen Ressourceneinschränkungen nicht ausgeführt werden kann, ist die Ausführung aufgrund von Ressourceneinschränkungen für SQL On-Demand derzeit nicht möglich: 
 
 - Vergewissern Sie sich, dass Datentypen mit angemessener Größe verwendet werden. Geben Sie außerdem für Parquet-Dateien das Schema für Zeichenfolgenspalten an, da hierfür standardmäßig „VARCHAR(8000)“ verwendet wird. 
 
 - Bei Abfragen für CSV-Dateien empfiehlt sich ggf. das [Erstellen von Statistiken](develop-tables-statistics.md#statistics-in-sql-on-demand-preview). 
 
 - Informationen zur Abfrageoptimierung finden Sie in den [bewährten Methoden zum Verbessern der Leistung von SQL On-Demand](best-practices-sql-on-demand.md).  
+
+## <a name="create-statement-is-not-supported-in-master-database"></a>„CREATE STATEMENT“ wird in der Masterdatenbank nicht unterstützt
+
+Wenn bei Ihrer Abfrage ein Fehler mit dem folgenden Hinweis auftritt:
+
+> „Fehler beim Ausführen der Abfrage. Error: CREATE EXTERNAL TABLE/DATA SOURCE/DATABASE SCOPED CREDENTIAL/FILE FORMAT wird in der Masterdatenbank nicht unterstützt.“ 
+
+bedeutet dies, dass die Masterdatenbank in SQL On-Demand die Erstellung von Folgendem nicht unterstützt:
+  - Externe Tabellen
+  - Externe Datenquellen
+  - Datenbankweit gültige Anmeldeinformationen
+  - Externe Dateiformate
+
+Lösung:
+
+  1. Erstellen Sie eine Benutzerdatenbank:
+
+```sql
+CREATE DATABASE <DATABASE_NAME>
+```
+
+  2. Führen Sie die CREATE-Anweisung im Kontext von <DATABASE_NAME> aus, die bei der Masterdatenbank zuvor fehlgeschlagen ist. 
+  
+  Beispiel für die Erstellung eines externen Dateiformats:
+    
+```sql
+USE <DATABASE_NAME>
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] 
+WITH ( FORMAT_TYPE = PARQUET)
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

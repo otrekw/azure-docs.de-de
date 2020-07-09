@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: bee93cf84f4beda0684127102942447630219881
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128843"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982049"
 ---
 # <a name="monitor-published-apis"></a>Überwachen von veröffentlichten APIs
 
@@ -43,14 +43,13 @@ Im folgenden Video wird die Überwachung von API Management mithilfe von Azure M
 
 ## <a name="view-metrics-of-your-apis"></a>Anzeigen von Metriken Ihrer API
 
-Von API Management werden jede Minute Metriken ausgegeben, sodass Sie einen Überblick über den Zustand und die Integrität Ihrer APIs nahezu in Echtzeit erhalten. Hier sehen Sie eine Übersicht über einige der verfügbaren Metriken:
+Von API Management werden jede Minute Metriken ausgegeben, sodass Sie einen Überblick über den Zustand und die Integrität Ihrer APIs nahezu in Echtzeit erhalten. Im Folgenden finden Sie die beiden am häufigsten verwendeten Metriken. Eine Liste aller verfügbaren Metriken finden Sie unter [unterstützte Metriken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice).
 
 * Kapazität: Unterstützt Sie beim Treffen von Entscheidungen in Bezug auf Upgrades/Downgrades Ihrer APIM-Dienste. Die Metrik wird minütlich ausgegeben und spiegelt die Gatewaykapazität zum Zeitpunkt der Meldung wider. Der Wert der Metrik kann zwischen 0 und 100 liegen und wird basierend auf Gatewayressourcen wie CPU und Speicherauslastung berechnet.
-* Gatewayanforderungen gesamt: Anzahl der API-Anforderungen innerhalb des Zeitraums. 
-* Erfolgreiche Gatewayanforderungen: Anzahl der API-Anforderungen, die erfolgreiche HTTP-Antwortcodes einschließlich 304, 307 und alle unter 301 (z.B. 200) erhalten haben.
-* Fehlerhafte Gatewayanforderungen: Anzahl der API-Anforderungen, die fehlerhafte HTTP-Antwortcodes einschließlich 400 und alle über 500 erhalten haben.
-* Nicht autorisierte Gatewayanforderungen: Anzahl der API-Anforderungen, die HTTP-Antwortcodes einschließlich 401, 403 und 429 erhalten haben.
-* Andere Gateway-Anforderungen: Anzahl der API-Anforderungen, die HTTP-Antwortcodes erhalten haben, die keiner der oben genannten Kategorien angehören (z.B. 418).
+* Anforderungen: Unterstützen Sie bei der Analyse von API-Datenverkehr, der über Ihre APIM-Dienste läuft. Die Metrik wird pro Minute ausgegeben und meldet die Anzahl von Gatewayanforderungen mit Dimensionen, einschließlich Antwortcodes, Standort, Hostname und Fehlern. 
+
+> [!IMPORTANT]
+> Die folgenden Metriken sind ab Mai 2019 veraltet und werden im August 2023 eingestellt: Total Gateway Requests (Gatewayanforderungen gesamt), Successful Gateway Requests (Erfolgreiche Gatewayanforderungen), Unauthorized Gateway Requests (Nicht autorisierte Gatewayanforderungen), Failed Gateway Requests (Fehlgeschlagene Gatewayanforderungen), Other Gateway Requests (Sonstige Gatewayanforderungen). Migrieren Sie zur Metrik „Anforderungen“, die eine entsprechende Funktionalität bietet.
 
 ![Metrikdiagramm](./media/api-management-azure-monitor/apim-monitor-metrics.png)
 
@@ -60,9 +59,9 @@ So greifen Sie auf Metriken zu:
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-1. Wählen Sie im Dropdownmenü die gewünschten Metriken aus. Beispiel: **Anforderungen**. 
-1. Im Diagramm ist die Gesamtanzahl von API-Aufrufen gezeigt.
-1. Das Diagramm kann anhand der Dimensionen der Metrik **Anforderungen** gefiltert werden. Klicken Sie beispielsweise auf **Filter hinzufügen**, wählen Sie **Backend Response Code** (Antwortcode des Back-Ends) aus, und geben Sie als Wert 500 ein. Das Diagramm zeigt nun die Anzahl von Anforderungen an, für die im API-Back-End ein Fehler auftrat.   
+2. Wählen Sie im Dropdownmenü die gewünschten Metriken aus. Beispiel: **Anforderungen**. 
+3. Im Diagramm ist die Gesamtanzahl von API-Aufrufen gezeigt.
+4. Das Diagramm kann anhand der Dimensionen der Metrik **Anforderungen** gefiltert werden. Klicken Sie beispielsweise auf **Filter hinzufügen**, wählen Sie **Backend Response Code** (Antwortcode des Back-Ends) aus, und geben Sie als Wert 500 ein. Das Diagramm zeigt nun die Anzahl von Anforderungen an, für die im API-Back-End ein Fehler auftrat.   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Einrichten einer Warnungsregel für nicht autorisierte Anforderungen
 
@@ -188,7 +187,7 @@ API Management bietet derzeit Ressourcenprotokolle (stündlich erfasst) zu einze
 | correlationId | Zeichenfolge | Von API Management zugewiesene eindeutige HTTP-Anforderungs-ID |
 | location | Zeichenfolge | Name der Azure-Region, in der sich das Gateway befindet, das die Anforderung verarbeitet hat |
 | httpStatusCodeCategory | Zeichenfolge | Kategorie des HTTP-Antwortstatuscodes: Erfolgreich (301 oder darunter, 304 oder 307), Nicht autorisiert (401, 403, 429), Erroneous (Fehler) (400, zwischen 500 und 600), Other (Sonstiges) |
-| resourceId | Zeichenfolge | ID der API Management-Ressource: /SUBSCRIPTIONS/\<Abonnement>/RESOURCEGROUPS/\<Ressourcengruppe>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<Name> |
+| resourceId | Zeichenfolge | ID der API Management-Ressource: /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> |
 | properties | Objekt (object) | Eigenschaften der aktuellen Anforderung |
 | method | Zeichenfolge | HTTP-Methode der eingehenden Anforderung |
 | url | Zeichenfolge | URL der eingehenden Anforderung |

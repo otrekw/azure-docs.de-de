@@ -3,12 +3,12 @@ title: Bereitstellen des HIPAA HITRUST-Blaupausenbeispiels
 description: Bereitstellungsschritte für das Blaupausenbeispiel „HIPAA HITRUST“, einschließlich Details zum Blaupausenartefaktparameter.
 ms.date: 12/03/2019
 ms.topic: sample
-ms.openlocfilehash: a4277dbbf40a9ab8651598203e9279bca00eb164
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3101d67e281f3b613b95e3f3ef5f620ae44cec7
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75470735"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044837"
 ---
 # <a name="deploy-the-hipaa-hitrust-blueprint-sample"></a>Bereitstellen des HIPAA HITRUST-Blaupausenbeispiels
 
@@ -98,7 +98,7 @@ Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs |Richtlinienzuweisung |Optional: Liste der VM-Images mit unterstütztem Windows-Betriebssystem zum Hinzufügen zum Bereich |Mit einem leeren Array wird angegeben, dass keine optionalen Parameter verwendet werden: `[]` |
 |\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs |Richtlinienzuweisung |Log Analytics-Arbeitsbereich für virtuelle Windows-Computer |Weitere Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
 |\[Vorschau\]: HITRUST HIPAA-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen |Richtlinienzuweisung |ID des Log Analytics-Arbeitsbereichs, für den die VMs konfiguriert werden sollen |Dies ist die ID (GUID) des Log Analytics-Arbeitsbereichs, für den die virtuellen Computer konfiguriert werden sollen. |
-|\[Vorschau\]: HITRUST HIPAA-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen |Richtlinienzuweisung |Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen |Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type). |
+|\[Vorschau\]: HITRUST HIPAA-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen |Richtlinienzuweisung |Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen |Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas). |
 |\[Vorschau\]: HITRUST HIPAA-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen |Richtlinienzuweisung |Gruppe „Administratoren“ |Gruppe. Beispiel: `Administrator; myUser1; myUser2` |
 |\[Vorschau\]: HITRUST HIPAA-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen |Richtlinienzuweisung |Liste der Benutzer, die in der Gruppe der Windows-VM-Administratoren enthalten sein sollen |Eine durch Semikolon getrennte Liste von Mitgliedern, die in der Gruppe der lokalen Administratoren enthalten sein sollen. Beispiel: `Administrator; myUser1; myUser2` |
 |Bereitstellen von Advanced Threat Protection für Speicherkonten |Richtlinienzuweisung |Wirkung |Informationen zu Richtlinienauswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../../policy/concepts/effects.md). |

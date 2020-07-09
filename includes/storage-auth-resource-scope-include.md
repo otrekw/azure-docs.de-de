@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 74ef8270b5efcd3b7cdf756c103dcc2e1c935508
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b97a62626666fa39a5b0622852d9eec47c2410a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75460499"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024888"
 ---
 Bevor Sie einem Sicherheitsprinzipal eine RBAC-Rolle zuweisen, legen Sie den Zugriffsbereich fest, den der Sicherheitsprinzipal haben soll. Es hat sich als am besten bewährt, stets nur den kleinstmöglichen Umfang an Zugriffsrechten zu gewähren.
 
@@ -24,6 +24,3 @@ In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff 
 - **Das Speicherkonto**. Bei diesem Umfang gilt eine Rollenzuweisung für alle Container und deren Blobs oder für alle Warteschlangen und deren Nachrichten.
 - **Die Ressourcengruppe**. Bei diesem Umfang gilt eine Rollenzuweisung für alle Container oder Warteschlangen in allen Speicherkonten der Ressourcengruppe.
 - **Das Abonnement**. Bei diesem Umfang gilt eine Rollenzuweisung für alle Container oder Warteschlangen in allen Speicherkonten in allen Ressourcengruppen des Abonnements.
-
-> [!IMPORTANT]
-> Wenn Ihr Abonnement einen Azure DataBricks-Namespace enthält, wird Rollen, die auf das Abonnement begrenzt sind, kein Zugriff auf Blob- und Warteschlangendaten gewährt. Legen Sie den Umfang von Rollen stattdessen auf die Ressourcengruppe, das Speicherkonto, den Container oder die Warteschlange fest.     

@@ -5,17 +5,17 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a93f4ff2ddc0737692de9e5619cf7a7521936224
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226230"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980812"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition-Funktionen
 Dieser Abschnitt enthält die Signaturen für alle unterstützten Funktionen einer CreateUiDefinition.
 
-Setzen Sie die Deklaration in eckige Klammern, um eine Funktion zu verwenden. Beispiel:
+Setzen Sie den Aufruf in eckige Klammern, um eine Funktion zu verwenden. Beispiel:
 
 ```json
 "[function()]"
@@ -485,6 +485,45 @@ Angenommen `element1` und `element2` sind nicht definiert. Das folgende Beispiel
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
 
+Diese Funktion ist besonders nützlich im Kontext eines optionalen Aufrufs, der aufgrund einer Benutzeraktion nach dem Laden der Seite auftritt. Ein Beispiel hierfür ist, wenn die Einschränkungen, die für ein Feld in der Benutzeroberfläche festgelegt wurden, vom aktuell ausgewählten Wert eines anderen, **anfänglich nicht sichtbaren** Felds abhängen. In diesem Fall kann `coalesce()` verwendet werden, um zu ermöglichen, dass die Funktion zur Seitenladezeit syntaktisch gültig ist, während gleichzeitig der gewünschte Effekt erzielt wird, wenn der Benutzer mit dem Feld interagiert.
+
+Beachten Sie dieses `DropDown`, das es dem Benutzer ermöglicht, aus mehreren verschiedenen Datenbanktypen auszuwählen:
+
+```
+{
+    "name": "databaseType",
+    "type": "Microsoft.Common.DropDown",
+    "label": "Choose database type",
+    "toolTip": "Choose database type",
+    "defaultValue": "Oracle Database",
+    "visible": "[bool(steps('section_database').connectToDatabase)]"
+    "constraints": {
+        "allowedValues": [
+            {
+                "label": "Azure Database for PostgreSQL",
+                "value": "postgresql"
+            },
+            {
+                "label": "Oracle Database",
+                "value": "oracle"
+            },
+            {
+                "label": "Azure SQL",
+                "value": "sqlserver"
+            }
+        ],
+        "required": true
+    },
+```
+
+Um die Aktion eines anderen Felds bedingt an den aktuell ausgewählten Wert für dieses Felds zu binden, verwenden Sie `coalesce()`, wie hier gezeigt:
+
+```
+"regex": "[concat('^jdbc:', coalesce(steps('section_database').databaseConnectionInfo.databaseType, ''), '.*$')]",
+```
+
+Dies ist notwendig, da der `databaseType` anfänglich nicht sichtbar ist und daher keinen Wert besitzt. Dies bewirkt, dass der gesamte Ausdruck nicht ordnungsgemäß ausgewertet wird.
+
 ## <a name="conversion-functions"></a>Konvertierungsfunktionen
 Diese Funktionen können verwendet werden, um Werte zwischen JSON-Datentypen und Codierungen zu konvertieren.
 
@@ -518,7 +557,7 @@ Das folgende Beispiel gibt `2.9`zurück:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>string
+### <a name="string"></a>Zeichenfolge
 Konvertiert den Parameter in eine Zeichenfolge. Diese Funktion unterstützt Parameter aller JSON-Datentypen.
 
 Das folgende Beispiel gibt `"1"`zurück:

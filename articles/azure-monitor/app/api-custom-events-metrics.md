@@ -2,13 +2,13 @@
 title: Application Insights-API für benutzerdefinierte Ereignisse und Metriken | Microsoft Docs
 description: Fügen Sie einige Codezeilen in Ihrer Geräte- oder Desktop-App, Webseite oder dem Webdienst ein, um Nutzungs- und Diagnoseprobleme nachzuverfolgen.
 ms.topic: conceptual
-ms.date: 03/27/2019
-ms.openlocfilehash: 152bd117ec0ae76c2c85ead26ba5278aa71d582f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.date: 05/11/2020
+ms.openlocfilehash: ae96609446818802b70cab9c31f6527264046eb9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509286"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115658"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -649,7 +649,7 @@ Die flush()-Methode wird idealerweise in der Aktivität zum Herunterfahren der A
 
 ## <a name="authenticated-users"></a>Authentifizierte Benutzer
 
-In einer Web-App werden Benutzer (standardmäßig) anhand von Cookies identifiziert. Benutzer werden unter Umständen mehr als einmal gezählt, wenn sie über verschiedene Computer oder Browser auf Ihre App zugreifen oder Cookies löschen.
+In einer Web-App werden Benutzer (standardmäßig) [anhand von Cookies identifiziert](../../azure-monitor/app/usage-segmentation.md#the-users-sessions-and-events-segmentation-tool). Benutzer werden unter Umständen mehr als einmal gezählt, wenn sie über verschiedene Computer oder Browser auf Ihre App zugreifen oder Cookies löschen.
 
 Wenn sich Benutzer bei Ihrer App anmelden, erhalten Sie einen genaueren Zählwert durch Festlegen der ID des authentifizierten Benutzers im Browsercode:
 
@@ -1096,16 +1096,14 @@ Informationen dazu, wie lange Daten aufbewahrt werden, finden Sie unter [Datensp
 * [Java-Referenz](https://docs.microsoft.com/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript-Referenz](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
-
 ## <a name="sdk-code"></a>SDK-Code
 
-* [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
+* [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
-* [Windows Server-Pakete](https://github.com/Microsoft/applicationInsights-dotnet-server)
+* [Windows Server-Pakete](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
-
 
 ## <a name="questions"></a>Fragen
 

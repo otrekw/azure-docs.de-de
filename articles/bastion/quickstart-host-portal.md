@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Sie einen Azure Bastion-Hos
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/11/2020
 ms.author: charwen
-ms.openlocfilehash: a420a3253040fff8b767a81f298ede283c1d214b
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 3c2780c8c99fd4568a7213b625ce785d3a99129c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619254"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743982"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Schnellstart: Herstellen einer Verbindung mit einem virtuellen Computer mit einer privaten IP-Adresse und Azure Bastion
 

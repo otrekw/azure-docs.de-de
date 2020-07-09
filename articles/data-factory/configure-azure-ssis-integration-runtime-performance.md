@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: ca88e42438c7cb48b062aa67d82053afbb9244bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36662a0089fef34a539788cfac667b5086a10c78
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418285"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194267"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurieren von Azure-SSIS Integration Runtime für hohe Leistung
 
@@ -51,25 +51,25 @@ $AzureSSISNodeNumber = 2
 # Azure-SSIS IR edition/license info: Standard or Enterprise
 $AzureSSISEdition = "Standard" # Standard by default, while Enterprise lets you use advanced/premium features on your Azure-SSIS IR
 # Azure-SSIS IR hybrid usage info: LicenseIncluded or BasePrice
-$AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your own on-premises SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
+$AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your existing SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
 # For a Standard_D1_v2 node, up to 4 parallel executions per node are supported, but for other nodes, up to max(2 x number of cores, 8) are currently supported
 $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide SAS URI of blob container where your custom setup script and its associated files are stored
 # Virtual network info: Classic or Azure Resource Manager
-$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/Managed Instance/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon
-$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use the same subnet as the one used with your Azure SQL Database with virtual network service endpoints or a different subnet than the one used for your Managed Instance
+$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/SQL Managed Instance/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon
+$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use the same subnet as the one used with your Azure SQL Database with virtual network service endpoints or a different subnet than the one used for your SQL Managed Instance
 
 ### SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name or Managed Instance name.DNS prefix].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
+$SSISDBServerEndpoint = "[your server name or managed instance name.DNS prefix].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
 # Authentication info: SQL or Azure Active Directory (AAD)
 $SSISDBServerAdminUserName = "[your server admin username for SQL authentication or leave it empty for AAD authentication]"
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication or leave it empty for AAD authentication]"
-$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for Managed Instance]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for SQL Managed Instance]"
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-**AzureSSISLocation** ist der Ort, an dem sich der Integration Runtime-Workerknoten befindet. Der Workerknoten gewährleistet eine konstante Verbindung mit der SSIS-Katalogdatenbank (SSIS Catalog Database, SSISDB) in einer Azure SQL-Datenbank. Legen Sie **AzureSSISLocation** auf den Ort fest, an dem sich auch der SQL-Datenbank-Server befindet, der die SSISDB hostet, um die bestmögliche Integration Runtime-Effizienz zu erzielen.
+**AzureSSISLocation** ist der Ort, an dem sich der Integration Runtime-Workerknoten befindet. Der Workerknoten gewährleistet eine konstante Verbindung mit der SSIS-Katalogdatenbank (SSIS Catalog Database, SSISDB) in Azure SQL-Datenbank. Legen Sie **AzureSSISLocation** auf denselben Ort fest, an dem sich auch der [logische SQL-Server](../azure-sql/database/logical-servers.md) zum Hosten der SSISDB befindet, um die bestmögliche Integration Runtime-Effizienz zu erzielen.
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
 Data Factory, das auch die Azure SSIS-IR enthält, unterstützt folgende Optionen:
@@ -121,7 +121,7 @@ Wenn Sie viele Pakete ausführen müssen und für Sie der allgemeine Durchsatz i
 Wenn Sie bereits einen leistungsstarken Workerknoten für die Paketausführung verwenden, lässt sich der allgemeine Integration Runtime-Durchsatz ggf. durch Erhöhen von **AzureSSISMaxParallelExecutionsPerNode** steigern. Für Standard_D1_v2-Knoten werden 1 bis 4 parallele Ausführungen pro Knoten unterstützt. Für alle anderen Arten von Knoten werden 1 bis (2 x Anzahl der Kerne, 8) Ausführungen pro Knoten unterstützt. Wenn Sie mehr **AzureSSISMaxParallelExecutionsPerNode** als maximal von uns unterstützt wünschen, können Sie ein Supportticket öffnen, und wir können den maximalen Wert für Sie heraufsetzen. Danach müssen Sie  **AzureSSISMaxParallelExecutionsPerNode** mit Azure PowerShell aktualisieren.
 Einen geeigneten ungefähren Wert können Sie auf der Grundlage der Kosten für Ihr Paket und der folgenden Konfigurationen für Workerknoten ermitteln. Weitere Informationen finden Sie unter [Universelle VM-Größen](../virtual-machines/windows/sizes-general.md).
 
-| Size             | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps) |
+| Size             | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBps Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
 | Standard\_D1\_v2 | 1    | 3,5         | 50                     | 3000/46/23                                             | 2/2 x 500                         | 2/750                                        |
 | Standard\_D2\_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 4/4 x 500                         | 2/1500                                       |

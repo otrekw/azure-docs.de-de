@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45648170f69d513b15e79cdd76f56e66bbc88bfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 609ad2539753a838f02c4a79be56444ca0fb07f9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332089"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014386"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Voraussetzungen für die Azure AD Connect-Cloudbereitstellung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory (Azure AD) Connect-Cloudbereitstellung als Identitätslösung.
@@ -26,7 +26,7 @@ Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active 
 ## <a name="cloud-provisioning-agent-requirements"></a>Anforderungen des Agents für die Cloudbereitstellung
 Für die Verwendung der Azure AD Connect-Cloudbereitstellung benötigen Sie Folgendes:
     
-- Ein globales Administratorkonto für Ihren Azure AD-Mandanten, das kein Gastbenutzer ist.
+- Ein Hybrididentität-Administratorkonto für Ihren Azure AD-Mandanten, das kein Gastbenutzer ist.
 - einen lokalen Server für den Bereitstellungs-Agent mit Windows 2012 R2 oder höher
 - lokale Firewallkonfigurationen
 
@@ -37,7 +37,7 @@ Im Weiteren finden Sie schrittweise Anleitungen für diese Voraussetzungen.
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Im Azure Active Directory Admin Center
 
-1. Erstellen Sie in Ihrem Azure AD-Mandanten ein auf die Cloud beschränktes globales Administratorkonto. Auf diese Weise können Sie die Konfiguration Ihres Mandanten verwalten, wenn Ihre lokalen Dienste ausfallen oder nicht verfügbar sind. Erfahren Sie, wie Sie ein [auf die Cloud beschränktes globales Administratorkonto hinzufügen](../active-directory-users-create-azure-portal.md). Die Ausführung dieses Schritts ist äußerst wichtig, damit sichergestellt ist, dass Sie für Ihren Mandanten nicht gesperrt werden.
+1. Erstellen Sie in Ihrem Azure AD-Mandanten ein auf die Cloud beschränktes Hybrididentität-Administratorkonto. Auf diese Weise können Sie die Konfiguration Ihres Mandanten verwalten, wenn Ihre lokalen Dienste ausfallen oder nicht verfügbar sind. Erfahren Sie, wie Sie ein [auf die Cloud beschränktes Hybrididentität-Administratorkonto hinzufügen](../active-directory-users-create-azure-portal.md). Die Ausführung dieses Schritts ist äußerst wichtig, damit sichergestellt ist, dass Sie für Ihren Mandanten nicht gesperrt werden.
 1. Fügen Sie Ihrem Azure AD-Mandanten mindestens einen [benutzerdefinierten Domänennamen](../active-directory-domains-add-azure-portal.md) hinzu. Ihre Benutzer können sich mit einem dieser Domänennamen anmelden.
 
 ### <a name="in-your-directory-in-active-directory"></a>In Ihrem Verzeichnis in Active Directory
@@ -47,6 +47,8 @@ Führen Sie das [IdFix-Tool](https://docs.microsoft.com/office365/enterprise/pre
 ### <a name="in-your-on-premises-environment"></a>In Ihrer lokalen Umgebung
 
 1. Geben Sie einen in die Domäne eingebundenen Hostserver unter Windows Server 2012 R2 oder höher mit mindestens 4 GB RAM und .NET 4.7.1 + Runtime an.
+
+1. Die PowerShell-Ausführungsrichtlinie auf dem lokalen Server muss auf „Nicht definiert“ oder „RemoteSigned“ festgelegt werden.
 
 1. Wenn zwischen Ihren Servern und Azure AD eine Firewall eingerichtet wurde, konfigurieren Sie die folgenden Elemente:
    - Stellen Sie sicher, dass Agents über die folgenden Ports *ausgehende* Anforderungen an Azure AD senden können:
@@ -62,14 +64,9 @@ Führen Sie das [IdFix-Tool](https://docs.microsoft.com/office365/enterprise/pre
    - Ihre Agents benötigen für die Erstregistrierung Zugriff auf „login.windows.net“ und „login.microsoftonline.com“. Öffnen Sie Ihre Firewall auch für diese URLs.
    - Geben Sie für die Zertifikatüberprüfung folgende URLs frei: „mscrl.microsoft.com:80“, „crl.microsoft.com:80“, „ocsp.msocsp.com:80“ und „www\.microsoft.com:80“. Da diese URLs für die Zertifikatüberprüfung in Verbindung mit anderen Microsoft-Produkten verwendet werden, haben Sie diese möglicherweise bereits freigegeben.
 
-### <a name="verify-the-port"></a>Überprüfen des Ports
-Mithilfe der folgenden URL können Sie überprüfen, ob Azure Port 443 überwacht und der Agent mit diesem kommunizieren kann:
+>[!NOTE]
+> Die Installation des Agents für die Cloudbereitstellung unter Windows Server Core wird nicht unterstützt.
 
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
-
-Mithilfe dieses Tests wird überprüft, ob Ihre Agents über Port 443 mit Azure kommunizieren können. Öffnen Sie einen Browser, und navigieren Sie von dem Server, auf dem der Agent installiert ist, zur obigen URL.
-
-![Überprüfen der Porterreichbarkeit](media/how-to-install/verify2.png)
 
 ### <a name="additional-requirements"></a>Zusätzliche Anforderungen
 - [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56116) 

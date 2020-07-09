@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 16cfb6c15a4d17ff3fb4f7f41f59f9f80af1e9e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1dfe88741a304da92901d3997c746654336ef54
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75382122"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800039"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Moderieren von Text mit benutzerdefinierten Benennungslisten in der API-Konsole
 
@@ -77,15 +77,17 @@ Nachdem Sie eine Benennungsliste geändert haben, müssen Sie den zugehörigen I
 
 5. Verwenden Sie Platzhalter für Schlüssel-Wert-Paare, um Ihrer Liste aussagekräftigere Metadaten zuzuweisen.
 
-       {
-          "Name": "MyExclusionList",
-          "Description": "MyListDescription",
-          "Metadata": 
-          {
-             "Category": "Competitors",
-             "Type": "Exclude"
-          }
-       }
+    ```json
+    {
+        "Name": "MyExclusionList",
+        "Description": "MyListDescription",
+        "Metadata": 
+        {
+            "Category": "Competitors",
+            "Type": "Exclude"
+        }
+    }
+    ```
 
    Fügen Sie Metadaten als Schlüssel-Wert-Paare und nicht als tatsächliche Benennungen zur Liste hinzu.
  

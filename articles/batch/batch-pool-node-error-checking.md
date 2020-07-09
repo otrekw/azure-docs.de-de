@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: how-to
-ms.openlocfilehash: 5ac3991a52ab75dccd0033160d6e972d155a882b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 519b357e4e5fde30221f7dc804bb848ecec9704c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723917"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85979916"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Suchen nach Pool- und Knotenfehlern
 
@@ -24,9 +24,9 @@ In diesem Artikel werden die Hintergrundvorgänge behandelt, die für Pools und 
 
 ### <a name="resize-timeout-or-failure"></a>Timeout oder Fehler bei Größenänderung
 
-Bei Erstellung eines neuen Pools oder Änderung der Größe eines vorhandenen Pools geben Sie die geplante Anzahl der Knoten an.  Der Vorgang für die Erstellung oder Änderung der Größe wird unmittelbar abgeschlossen, aber die tatsächliche Zuordnung der neuen bzw. die Entfernung vorhandener Knoten kann einige Minuten dauern.  Sie geben das Timeout bei Größenänderung in der API [create](https://docs.microsoft.com/rest/api/batchservice/pool/add) oder [resize](https://docs.microsoft.com/rest/api/batchservice/pool/resize) an. Falls Batch die Zielanzahl von Knoten während des Timeouts für die Größenänderung nicht abrufen kann, wird der Pool in einen stabilen Zustand versetzt und meldet Größenänderungsfehler.
+Bei Erstellung eines neuen Pools oder Änderung der Größe eines vorhandenen Pools geben Sie die geplante Anzahl der Knoten an.  Der Vorgang für die Erstellung oder Änderung der Größe wird unmittelbar abgeschlossen, aber die tatsächliche Zuordnung der neuen bzw. die Entfernung vorhandener Knoten kann einige Minuten dauern.  Sie geben das Timeout bei Größenänderung in der API [create](/rest/api/batchservice/pool/add) oder [resize](/rest/api/batchservice/pool/resize) an. Falls Batch die Zielanzahl von Knoten während des Timeouts für die Größenänderung nicht abrufen kann, wird der Pool in einen stabilen Zustand versetzt und meldet Größenänderungsfehler.
 
-Mit der [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror)-Eigenschaft für die aktuellen Evaluierungslisten werden die aufgetretenen Fehler aufgelistet.
+Mit der [ResizeError](/rest/api/batchservice/pool/get#resizeerror)-Eigenschaft für die aktuellen Evaluierungslisten werden die aufgetretenen Fehler aufgelistet.
 
 Häufige Gründe für Größenänderungsfehler sind:
 
@@ -34,31 +34,31 @@ Häufige Gründe für Größenänderungsfehler sind:
   - In den meisten Fällen ist das standardmäßige Timeout von 15 Minuten lang genug, um Poolknoten zuzuordnen oder zu entfernen.
   - Wenn Sie eine große Anzahl von Knoten zuordnen, empfehlen wir, das Timeout für die Größenänderung auf 30 Minuten festzulegen. Das gilt beispielsweise, wenn Sie die Größe über ein Azure Marketplace-Image auf mehr als 1.000 Knoten oder über ein benutzerdefinierte VM-Image auf mehr als 300 Knoten ändern.
 - Kernkontingent nicht ausreichend
-  - Ein Azure Batch-Konto weist eine Begrenzung für die Anzahl von Kernen auf, die poolübergreifend zugeordnet werden können. Sobald dieses Kontingent erschöpft ist, werden von Azure Batch keine weiteren Knoten zugeordnet. Sie können das Kernkontingent [erhöhen](https://docs.microsoft.com/azure/batch/batch-quota-limit), sodass Azure Batch mehr Knoten zuordnen kann.
-- Nicht genügend Subnetz-IP-Adressen, wenn sich ein [Pool in einem virtuellen Netzwerk](https://docs.microsoft.com/azure/batch/batch-virtual-network) befindet
+  - Ein Azure Batch-Konto weist eine Begrenzung für die Anzahl von Kernen auf, die poolübergreifend zugeordnet werden können. Sobald dieses Kontingent erschöpft ist, werden von Azure Batch keine weiteren Knoten zugeordnet. Sie können das Kernkontingent [erhöhen](./batch-quota-limit.md), sodass Azure Batch mehr Knoten zuordnen kann.
+- Nicht genügend Subnetz-IP-Adressen, wenn sich ein [Pool in einem virtuellen Netzwerk](./batch-virtual-network.md) befindet
   - Das Subnetz eines virtuellen Netzwerks muss über ausreichend nicht zugewiesene IP-Adressen verfügen, die allen angeforderten Poolknoten zugeordnet werden können. Andernfalls können die Knoten nicht erstellt werden.
-- Nicht genügend Ressourcen, wenn sich ein [Pool in einem virtuellen Netzwerk](https://docs.microsoft.com/azure/batch/batch-virtual-network) befindet
+- Nicht genügend Ressourcen, wenn sich ein [Pool in einem virtuellen Netzwerk](./batch-virtual-network.md) befindet
   - Sie können Ressourcen, wie z. B. Lastenausgleichsmodule, öffentliche IP-Adressen und Netzwerksicherheitsgruppen, im selben Abonnement wie das Azure Batch-Konto erstellen. Vergewissern Sie sich, dass die Abonnementkontingente für diese Ressourcen ausreichend sind.
 - Große Pools mit benutzerdefinierten VM-Images
   - Die Zuordnung großer Pools, die benutzerdefinierte Images verwenden, kann länger dauern und zu Timeouts bei Größenänderungen führen.  Empfehlungen zu Grenzwerten und zur Konfiguration finden Sie unter [Erstellen eines Pools mit Shared Image Gallery](batch-sig-images.md).
 
 ### <a name="automatic-scaling-failures"></a>Fehler bei der automatischen Skalierung
 
-Sie können Azure Batch auch so einrichten, dass die Anzahl der Knoten in einem Pool automatisch skaliert wird. Sie definieren die Parameter für die [automatische Skalierungsformel für einen Pool](https://docs.microsoft.com/azure/batch/batch-automatic-scaling). Der Azure Batch-Dienst verwendet die Formel, um die Anzahl der Knoten im Pool regelmäßig auszuwerten und eine neue Zielanzahl festzulegen. Die folgenden Arten von Problemen können auftreten:
+Sie können Azure Batch auch so einrichten, dass die Anzahl der Knoten in einem Pool automatisch skaliert wird. Sie definieren die Parameter für die [automatische Skalierungsformel für einen Pool](./batch-automatic-scaling.md). Der Azure Batch-Dienst verwendet die Formel, um die Anzahl der Knoten im Pool regelmäßig auszuwerten und eine neue Zielanzahl festzulegen. Die folgenden Arten von Problemen können auftreten:
 
 - Die Auswertung für die automatische Skalierung schlägt fehl.
 - Die resultierende Größenänderung schlägt fehl und führt zu einem Timeout.
 - Ein Problem mit der automatischen Skalierungsformel führt zu falschen Zielwerten für die Knoten. Die Größenänderung funktioniert, oder ein Timeout tritt auf.
 
-Informationen zur letzten Auswertung zur automatischen Skalierung erhalten Sie mithilfe der [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun)-Eigenschaft. Diese Eigenschaft meldet die Auswertungszeit, die Werte und das Ergebnis sowie eventuelle Leistungsfehler.
+Informationen zur letzten Auswertung zur automatischen Skalierung erhalten Sie mithilfe der [autoScaleRun](/rest/api/batchservice/pool/get#autoscalerun)-Eigenschaft. Diese Eigenschaft meldet die Auswertungszeit, die Werte und das Ergebnis sowie eventuelle Leistungsfehler.
 
-Das [Ereignis zum Abschluss der Größenänderung von Pools](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event) erfasst Informationen zu sämtlichen Auswertungen.
+Das [Ereignis zum Abschluss der Größenänderung von Pools](./batch-pool-resize-complete-event.md) erfasst Informationen zu sämtlichen Auswertungen.
 
 ### <a name="delete"></a>Löschen
 
 Wenn Sie einen Pool löschen, der Knoten enthält, löscht Azure Batch zuerst die Knoten. Anschließend wird das Poolobjekt selbst gelöscht. Es kann einige Minuten dauern, bis die Poolknoten gelöscht wurden.
 
-Der [Poolstatus](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) wird von Azure Batch während des Löschvorgangs auf **Wird gelöscht** festgelegt. Die aufrufende Anwendung kann mithilfe der Eigenschaften **state** und **stateTransitionTime** erkennen, ob der Löschvorgang im Pool zu lange dauert.
+Der [Poolstatus](/rest/api/batchservice/pool/get#poolstate) wird von Azure Batch während des Löschvorgangs auf **Wird gelöscht** festgelegt. Die aufrufende Anwendung kann mithilfe der Eigenschaften **state** und **stateTransitionTime** erkennen, ob der Löschvorgang im Pool zu lange dauert.
 
 ## <a name="pool-compute-node-errors"></a>Fehler in Pool-Computeknoten
 
@@ -131,7 +131,7 @@ Andere Dateien werden für jeden Task geschrieben, der auf einem Knoten ausgefü
 Die Größe des temporären Laufwerks hängt von der Größe des virtuellen Computers ab. Ein wichtiger Aspekt bei der Wahl der VM-Größe besteht darin, sich zu vergewissern, dass auf dem temporären Laufwerk genügend Platz ist.
 
 - Im Azure-Portal kann beim Hinzufügen eines Pools die vollständige Liste mit VM-Größen angezeigt werden, und die Spalte „Ressourcen-Datenträgergröße“ ist vorhanden.
-- Die Artikel, in denen die gesamten VM-Größen beschrieben werden, verfügen über Tabellen mit der Spalte „Temporärer Speicher“, z. B. [Compute-optimierte VM-Größen](/azure/virtual-machines/windows/sizes-compute).
+- Die Artikel, in denen die gesamten VM-Größen beschrieben werden, verfügen über Tabellen mit der Spalte „Temporärer Speicher“, z. B. [Compute-optimierte VM-Größen](../virtual-machines/sizes-compute.md).
 
 Für Dateien, die von den einzelnen Tasks geschrieben werden, kann für jeden Task eine Aufbewahrungsdauer angegeben werden. Hiermit wird festgelegt, wie lange die Taskdateien aufbewahrt werden, bevor sie automatisch bereinigt werden. Die Aufbewahrungszeit kann reduziert werden, um den Speicherbedarf zu verringern.
 
@@ -140,17 +140,17 @@ Wenn auf dem temporären Datenträger nicht genügend Speicherplatz zur Verfügu
 
 ### <a name="what-to-do-when-a-disk-is-full"></a>Vorgehensweise im Falle eines vollen Datenträgers
 
-Ermitteln Sie, warum der Datenträger voll ist: Sollten Sie nicht sicher sein, wodurch der Speicherplatz auf dem Knoten beansprucht wird, empfiehlt es sich, eine Remoteverbindung mit dem Knoten herzustellen und die Speicherplatzbeanspruchung manuell zu untersuchen. Sie können auch die [Batch-API zum Auflisten von Dateien](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) verwenden, um Dateien in von Batch verwalteten Ordnern zu untersuchen (beispielsweise Aufgabenausgaben). Beachten Sie, dass durch diese API nur Dateien in den von Batch verwalteten Verzeichnissen aufgelistet werden. Dateien, die von Ihren Aufgaben ggf. an einem anderen Ort erstellt wurden, werden nicht angezeigt.
+Ermitteln Sie, warum der Datenträger voll ist: Sollten Sie nicht sicher sein, wodurch der Speicherplatz auf dem Knoten beansprucht wird, empfiehlt es sich, eine Remoteverbindung mit dem Knoten herzustellen und die Speicherplatzbeanspruchung manuell zu untersuchen. Sie können auch die [Batch-API zum Auflisten von Dateien](/rest/api/batchservice/file/listfromcomputenode) verwenden, um Dateien in von Batch verwalteten Ordnern zu untersuchen (beispielsweise Aufgabenausgaben). Beachten Sie, dass durch diese API nur Dateien in den von Batch verwalteten Verzeichnissen aufgelistet werden. Dateien, die von Ihren Aufgaben ggf. an einem anderen Ort erstellt wurden, werden nicht angezeigt.
 
 Vergewissern Sie sich, dass alle erforderlichen Daten von dem Knoten abgerufen oder in einen permanenten Speicher hochgeladen wurden. Zur Behebung des Problems mit einem vollen Datenträger müssen immer Daten gelöscht werden, um Speicherplatz freizugeben.
 
 ### <a name="recovering-the-node"></a>Wiederherstellen des Knotens
 
-1. Wenn es sich bei Ihrem Pool um einen Pool vom Typ [CloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) handelt, können Sie über die [Batch-API für Reimaging](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage) ein Reimaging für den Knoten durchführen. Dadurch wird der gesamte Datenträger bereinigt. Für Pools vom Typ [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) wird das Reimaging derzeit nicht unterstützt.
+1. Wenn es sich bei Ihrem Pool um einen Pool vom Typ [CloudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) handelt, können Sie über die [Batch-API für Reimaging](/rest/api/batchservice/computenode/reimage) ein Reimaging für den Knoten durchführen. Dadurch wird der gesamte Datenträger bereinigt. Für Pools vom Typ [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) wird das Reimaging derzeit nicht unterstützt.
 
-2. Bei einem Pool vom Typ [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) können Sie den Knoten mithilfe der [API zum Entfernen von Knoten](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes) aus dem Pool entfernen. Anschließend können Sie den Pool wieder vergrößern, um den fehlerhaften Knoten durch einen neuen Knoten zu ersetzen.
+2. Bei einem Pool vom Typ [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) können Sie den Knoten mithilfe der [API zum Entfernen von Knoten](/rest/api/batchservice/pool/removenodes) aus dem Pool entfernen. Anschließend können Sie den Pool wieder vergrößern, um den fehlerhaften Knoten durch einen neuen Knoten zu ersetzen.
 
-3.  Löschen Sie alte abgeschlossene Aufträge oder alte abgeschlossene Aufgaben, deren Aufgabendaten sich noch auf den Knoten befinden. Ein Hinweis darauf, welche Aufträge/Aufgabendaten sich auf den Knoten befinden, erhalten Sie in der [Auflistung „RecentTasks“](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation) auf dem Knoten oder in den [Dateien auf dem Knoten](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode). Durch das Löschen des Auftrags werden alle Aufgaben im Auftrag gelöscht, und durch das Löschen der Aufgaben im Auftrag wird das Löschen der Daten in den Aufgabenverzeichnissen auf dem Knoten ausgelöst, wodurch Speicherplatz freigegeben wird. Starten Sie den Knoten neu, nachdem Sie genügend Speicherplatz freigegeben haben. Daraufhin sollte der Zustand von „Nicht verwendbar“ wieder in „Leerlauf“ übergehen.
+3.  Löschen Sie alte abgeschlossene Aufträge oder alte abgeschlossene Aufgaben, deren Aufgabendaten sich noch auf den Knoten befinden. Ein Hinweis darauf, welche Aufträge/Aufgabendaten sich auf den Knoten befinden, erhalten Sie in der [Auflistung „RecentTasks“](/rest/api/batchservice/computenode/get#taskinformation) auf dem Knoten oder in den [Dateien auf dem Knoten](/rest/api/batchservice/file/listfromcomputenode). Durch das Löschen des Auftrags werden alle Aufgaben im Auftrag gelöscht, und durch das Löschen der Aufgaben im Auftrag wird das Löschen der Daten in den Aufgabenverzeichnissen auf dem Knoten ausgelöst, wodurch Speicherplatz freigegeben wird. Starten Sie den Knoten neu, nachdem Sie genügend Speicherplatz freigegeben haben. Daraufhin sollte der Zustand von „Nicht verwendbar“ wieder in „Leerlauf“ übergehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,24 +3,22 @@ title: include file
 description: include file
 services: batch
 documentationcenter: ''
-author: LauraBrenner
+author: JnHs
 manager: evansma
 editor: ''
-ms.assetid: ''
 ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.workload: ''
-ms.date: 04/03/2020
-ms.author: labrenne
+ms.date: 06/16/2020
+ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: dc08dcded6418208751edbffcb5d263db059ec01
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 1b21141a4b3f9ae92cdcf1d5a93a457012cb136a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506595"
 ---
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
@@ -40,16 +38,14 @@ Darüber hinaus gelten ggf. noch weitere VNET-Anforderungen. Diese hängen jedoc
 
 **Subnetz-ID:** Verwenden Sie den *Ressourcenbezeichner* des Subnetzes, wenn Sie das Subnetz über die Batch-APIs angeben. Die Subnetz-ID hat folgendes Format:
 
-  ```
-  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}
-  ```
+`/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}`
 
 **Berechtigungen:** Überprüfen Sie, ob Ihre Sicherheitsrichtlinien oder -sperren für das Abonnement oder die Ressourcengruppe Ihres VNETs die VNET-Verwaltungsberechtigungen eines Benutzers einschränken.
 
 **Zusätzliche Netzwerkressourcen:** Batch ordnet in der Ressourcengruppe, die das VNET enthält, automatisch zusätzliche Netzwerkressourcen zu.
 
 > [!IMPORTANT]
->Dabei ordnet Batch pro 50 dedizierten Knoten (oder pro 20 Knoten mit niedriger Priorität) jeweils eine Netzwerksicherheitsgruppe (NSG), eine öffentliche IP-Adresse und einen Lastenausgleich zu. Diese Ressourcen werden durch die [Ressourcenkontingente](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt. Bei umfangreichen Pools muss ggf. eine Kontingenterhöhung für eine oder mehrere der Ressourcen angefordert werden.
+> Dabei ordnet Batch pro 100 dedizierten Knoten oder Knoten mit niedriger Priorität jeweils eine Netzwerksicherheitsgruppe (NSG), eine öffentliche IP-Adresse und einen Lastenausgleich zu. Diese Ressourcen werden durch die [Ressourcenkontingente](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt. Bei umfangreichen Pools muss ggf. eine Kontingenterhöhung für eine oder mehrere der Ressourcen angefordert werden.
 
 #### <a name="network-security-groups-batch-default"></a>Netzwerksicherheitsgruppen: Batch-Standard
 
@@ -61,7 +57,7 @@ Das Subnetz muss eingehende Kommunikation des Batch-Diensts zulassen, um Aufgabe
 * Ausgehender Datenverkehr an allen Ports zum Internet. Dies kann durch NSG-Regeln auf Subnetzebene angepasst werden (siehe unten).
 
 > [!IMPORTANT]
-> Seien Sie vorsichtig, wenn Sie Eingangs- und Ausgangsregeln in von Batch konfigurierten NSGs ändern. Falls die Kommunikation mit den Computeknoten im angegebenen Subnetz durch eine Netzwerksicherheitsgruppe (NSG) verhindert wird, legt der Batch-Dienst den Zustand der Computeknoten auf **Nicht verwendbar** fest. Darüber hinaus dürfen keine Ressourcensperren auf von Batch erstellte Ressourcen angewendet werden. Dies kann sonst dazu führen, dass die Bereinigung von Ressourcen infolge der vom Benutzer initiierten Aktionen (etwa Löschen eines Pools) verhindert wird.
+> Seien Sie vorsichtig, wenn Sie Eingangs- und Ausgangsregeln in von Batch konfigurierten NSGs ändern. Falls die Kommunikation mit den Computeknoten im angegebenen Subnetz durch eine Netzwerksicherheitsgruppe (NSG) verhindert wird, legt der Batch-Dienst den Zustand der Computeknoten auf **Nicht verwendbar** fest. Darüber hinaus dürfen keine Ressourcensperren auf von Batch erstellte Ressourcen angewendet werden, ansonsten wird möglicherweise die Bereinigung von Ressourcen infolge der vom Benutzer initiierten Aktionen (etwa Löschen eines Pools) verhindert.
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>Netzwerksicherheitsgruppen: Angeben von Regeln auf Subnetzebene
 
@@ -77,7 +73,7 @@ Konfigurieren Sie eingehenden Datenverkehr am Port 3389 (Windows) bzw. am Port 2
 | Benutzerquellen-IPs für den Remotezugriff auf Computeknoten und/oder Computeknoten-Subnetz für Multi-Instanz-Aufgaben unter Linux, falls erforderlich. | – | * | Any | 3389 (Windows), 22 (Linux) | TCP | Allow |
 
 > [!WARNING]
-> IP-Adressen des Batch-Diensts können sich im Laufe der Zeit ändern. Daher wird dringend empfohlen, das Diensttag `BatchNodeManagement` (oder die regionale Variante) für NSG-Regeln zu verwenden. Es wird nicht empfohlen, NSG-Regeln direkt mit den IP-Adressen des Batch-Diensts aufzufüllen.
+> IP-Adressen des Batch-Diensts können sich im Laufe der Zeit ändern. Daher wird dringend empfohlen, das Diensttag `BatchNodeManagement` (oder die regionale Variante) für NSG-Regeln zu verwenden. Vermeiden Sie das Auffüllen von NSG-Regeln mit bestimmten Batch-Dienst-IP-Adressen.
 
 **Ausgangssicherheitsregeln**
 
@@ -91,9 +87,7 @@ Konfigurieren Sie eingehenden Datenverkehr am Port 3389 (Windows) bzw. am Port 2
 
 **Subnetz-ID:** Verwenden Sie den *Ressourcenbezeichner* des Subnetzes, wenn Sie das Subnetz über die Batch-APIs angeben. Die Subnetz-ID hat folgendes Format:
 
-  ```
-  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}
-  ```
+`/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}`
 
 **Berechtigungen:** Der Dienstprinzipal `Microsoft Azure Batch` muss für das angegebene VNET über die RBAC-Rolle `Classic Virtual Machine Contributor` verfügen.
 
@@ -103,7 +97,7 @@ Das Subnetz muss eingehende Kommunikation des Batch-Diensts zulassen, um Aufgabe
 
 Sie müssen keine NSG angeben, da Batch nur eingehende Kommunikation von Batch-IP-Adressen an die Poolknoten konfiguriert. Wenn das angegebene Subnetz allerdings über zugewiesene NSGs und/oder eine Firewall verfügt, konfigurieren Sie die Eingangs- und Ausgangssicherheitsregeln gemäß den folgenden Tabellen. Falls die Kommunikation mit den Computeknoten im angegebenen Subnetz durch eine Netzwerksicherheitsgruppe (NSG) verhindert wird, legt der Batch-Dienst den Zustand der Computeknoten auf **Nicht verwendbar** fest.
 
-Konfigurieren Sie eingehenden Datenverkehr am Port 3389 für Windows, wenn Sie RDP-Zugriff auf die Poolknoten zulassen müssen. Dieser Schritt ist nicht erforderlich, um die Poolknoten verwenden zu können.
+Konfigurieren Sie eingehenden Datenverkehr am Port 3389 für Windows, wenn Sie RDP-Zugriff auf die Poolknoten zulassen müssen. Dieser Schritt ist für die Nutzung der Poolknoten nicht erforderlich.
 
 **Eingangssicherheitsregeln**
 

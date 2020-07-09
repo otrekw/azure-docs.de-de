@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd288cfb78bb97bd5c05c1cc59af3c082ab549a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458436"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687003"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps
 
@@ -27,7 +27,7 @@ In diesem Thema erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel 
 
 * Sie können einen vom Kunden verwalteten Schlüssel *nur beim Erstellen der ISE* angeben, nicht später. Sie können diesen Schlüssel nach dem Erstellen Ihrer ISE nicht mehr deaktivieren. Zurzeit wird das Rotieren eines vom Kunden verwalteten Schlüssels für eine ISE nicht unterstützt.
 
-* Zur Unterstützung von kundenseitig verwalteten Schlüsseln muss die [vom System zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) Ihrer ISE aktiviert sein. Mit dieser Identität kann die ISE den Zugriff auf Ressourcen in anderen Azure Active Directory-Mandanten (Azure AD) authentifizieren, sodass Sie sich nicht mit Ihren Anmeldeinformationen anmelden müssen.
+* Zur Unterstützung von kundenseitig verwalteten Schlüsseln muss die [vom System zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) Ihrer ISE aktiviert sein. Mit dieser Identität kann die ISE den Zugriff auf Ressourcen in anderen Azure Active Directory-Mandanten (Azure AD) authentifizieren, sodass Sie sich nicht mit Ihren Anmeldeinformationen anmelden müssen.
 
 * Derzeit müssen Sie zum Erstellen einer ISE, die vom Kunden verwaltete Schlüssel unterstützt und deren vom System zugewiesene Identität aktiviert ist, die Logic Apps-REST-API über eine HTTPS PUT-Anforderung aufrufen.
 

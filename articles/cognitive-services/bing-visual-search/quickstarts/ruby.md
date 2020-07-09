@@ -8,45 +8,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: e19f582084bec6915f95cf16fd8571b8d99da6fd
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 20c5ef930af8cc279f63432e9e3a14a0767ca592
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75379639"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870354"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und Ruby
 
-In dieser Schnellstart wird die Programmiersprache Ruby verwendet, um die visuelle Bing-Suche aufzurufen und Ergebnisse anzuzeigen. Über eine POST-Anforderung wird ein Bild in den API-Endpunkt hochgeladen. Die Ergebnisse enthalten URLs und beschreibende Informationen zu Bildern, die dem hochgeladenen Bild ähneln.
+Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suche zum ersten Mal aufzurufen, und verwenden Sie dazu die Programmiersprache Ruby. Über eine POST-Anforderung wird ein Bild in den API-Endpunkt hochgeladen. Die Ergebnisse enthalten URLs und beschreibende Informationen zu Bildern, die dem hochgeladenen Bild ähneln.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diese Schnellstartanleitung ist Folgendes erforderlich:
-
 * Installieren Sie [Ruby 2.4 (oder höher)](https://www.ruby-lang.org/en/downloads/).
-* Rufen Sie einen Abonnementschlüssel ab:
+* Rufen Sie einen Abonnementschlüssel ab.
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-required-modules"></a>Projekt und erforderliche Module
 
-Erstellen Sie in Ihrer IDE oder in einem Editor ein neues Ruby-Projekt. Importieren Sie `net/http`, `uri` und `json` für die Behandlung des JSON-Texts der Ergebnisse. Die Bibliothek `base64` wird verwendet, um die Zeichenfolge des Dateinamens zu codieren: 
+Erstellen Sie in Ihrer IDE oder in einem Editor ein neues Ruby-Projekt. Importieren Sie `net/http`, `uri` und `json` für die Behandlung des JSON-Texts der Ergebnisse. Importieren Sie die `base64`-Bibliothek, die die Dateinamen-Zeichenfolge codiert. 
 
-```
+```ruby
 require 'net/https'
 require 'uri'
 require 'json'
 require 'base64'
-
 ```
 
 ## <a name="define-variables"></a>Definieren von Variablen
 
-Der folgende Code weist erforderliche Variablen zu. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `accessKey` durch einen Abonnementschlüssel aus Ihrem Azure-Konto.  `batchNumber` ist eine GUID, die für führende und nachgestellte Grenzen der POST-Daten erforderlich ist.  Die Variable `fileName` gibt die Bilddatei für den POST-Vorgang an.  Der Block `if` überprüft, ob ein gültiger Abonnementschlüssel vorhanden ist.
+Der folgende Code dient zum Deklarieren der main-Funktion und zum Zuweisen der erforderlichen Variablen: 
 
-```
+1. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `accessKey` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. 
+2. Für `batchNumber` weisen Sie eine GUID zu, die für die führenden und nachfolgenden Grenzen der POST-Daten erforderlich ist. 
+3. Weisen Sie für `fileName` die Bilddatei zu, die für POST verwendet werden soll. 
+4. Verwenden Sie einen `if`-Block, um zu überprüfen, ob ein gültiger Abonnementschlüssel vorhanden ist.
+
+```ruby
 accessKey = "ACCESS-KEY"
 uri  = "https://api.cognitive.microsoft.com"
 path = "/bing/v7.0/images/visualsearch"
@@ -63,40 +65,40 @@ end
 
 ## <a name="form-data-for-post-request"></a>Formulardaten für die POST-Anforderung
 
-Die Bilddaten für den POST-Vorgang sind von führenden und nachfolgenden Grenzen umschlossen. Die Grenzen werden mithilfe der folgenden Funktionen festgelegt:
+1. Umschließen Sie die Bilddaten für den POST-Vorgang sind mit führenden und nachfolgenden Grenzen. Die Grenzen werden mithilfe der folgenden Funktionen festgelegt:
 
-```
-def BuildFormDataStart(batNum, fileName)
-    startBoundary = "--batch_" + batNum
-    return startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"image\"; filename=" + "\"" + fileName + "\"" + "\r\n\r\n"   
-end
+   ```ruby
+   def BuildFormDataStart(batNum, fileName)
+       startBoundary = "--batch_" + batNum
+       return startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"image\"; filename=" + "\"" + fileName + "\"" + "\r\n\r\n"    
+   end
 
-def BuildFormDataEnd(batNum)
-    return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
-end
-```
+   def BuildFormDataEnd(batNum)
+       return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
+   end
+   ```
 
-Erstellen Sie als Nächstes den Endpunkt-URI und ein Array für den POST-Text.  Verwenden Sie die vorherige Funktion, um die Anfangsgrenze in das Array zu laden. Lesen Sie die Bilddatei in das Array. Lesen Sie anschließend die Endgrenze in das Array:
+2. Erstellen Sie den Endpunkt-URI und ein Array für den POST-Text. Verwenden Sie die vorherige Funktion, um die Anfangsgrenze in das Array zu laden. Lesen Sie die Bilddatei in das Array ein, und lesen Sie dann die Endgrenze in das Array ein.
 
-```
-uri = URI(uri + path)
-print uri
-print "\r\n\r\n"
+   ```ruby
+   uri = URI(uri + path)
+   print uri
+   print "\r\n\r\n"
 
-post_body = []
+   post_body = []
 
-post_body << BuildFormDataStart(batchNumber, fileName)
+   post_body << BuildFormDataStart(batchNumber, fileName)
 
-post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
+   post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 
-post_body << BuildFormDataEnd(batchNumber)
-```
+   post_body << BuildFormDataEnd(batchNumber)
+   ```
 
 ## <a name="create-the-http-request"></a>Erstellen der HTTP-Anforderung
 
-Legen Sie den Header `Ocp-Apim-Subscription-Key` fest.  Erstellen der Anforderung Weisen Sie anschließend den Header und den Inhaltstyp zu. Verknüpfen Sie den zuvor erstellten POST-Text mit der Anforderung:
+Legen Sie den Header `Ocp-Apim-Subscription-Key` fest. Erstellen Sie die Anforderung, und weisen Sie anschließend den Header und den Inhaltstyp zu. Verknüpfen Sie den zuvor erstellten POST-Text mit der Anforderung.
 
-```
+```ruby
 header = {'Ocp-Apim-Subscription-Key': accessKey}
 request = Net::HTTP::Post.new(uri)  # , 'ImageKnowledge' => 'ImageKnowledge'
 
@@ -108,9 +110,9 @@ request.body = post_body.join
 
 ## <a name="request-and-response"></a>Anforderung und Antwort
 
-Ruby sendet die Anforderung und ruft die Antwort mit der folgenden Codezeile ab:
+Ruby sendet die Anforderung und ruft die Antwort mit dem folgenden Code ab:
 
-```
+```ruby
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
    http.request(request)
 end
@@ -121,7 +123,7 @@ end
 
 Geben Sie die Header der Antwort aus, und verwenden Sie die JSON-Bibliothek, um die Ausgabe zu formatieren:
 
-```
+```ruby
 puts "\nRelevant Headers:\n\n"
 response.each_header do |key, value|
     if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
@@ -134,11 +136,11 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ```
 
-## <a name="results"></a>Ergebnisse
+## <a name="json-response"></a>JSON-Antwort
 
 Der folgende JSON-Code ist ein Segment der Ausgabe:
 
-```
+```JSON
 Relevant Headers:
 
 bingapis-traceid: 6E19E78D4FEC4A61AB4F85977EEDB8E6

@@ -11,10 +11,10 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 90fd3680cfdc4ecd1dcb0ce33b63f8d76dd8bfae
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759469"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Behandeln von Problemen beim Bereitstellen von OpenShift Container Platform 3.11 in Azure
@@ -114,5 +114,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 Bei einigen Fehlern können Sie auch die folgenden Befehle verwenden, um weitere Informationen zu erhalten:
 
-1. systemctl status \<Dienst>
+1. systemctl status \<service>
 2. journalctl -xe

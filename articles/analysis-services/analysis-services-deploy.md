@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie ein tabellarisches Modell mithilfe von Visual
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 71b3b7815d2a4b0b4de3afdca9db93156f505445
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6b737985bc19aa09b26bb0d4a65696a364a903a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73572877"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697595"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Bereitstellen eines Modells mithilfe von Visual Studio
 
@@ -55,11 +55,15 @@ Das war es schon!
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn beim Bereitstellen von Metadaten ein Fehler auftritt, konnte wahrscheinlich von Visual Studio keine Verbindung mit dem Server hergestellt werden. Stellen Sie sicher, dass mithilfe von SSMS eine Verbindung mit dem Server hergestellt werden kann. Stellen Sie dann sicher, dass die Bereitstellungsserver-Eigenschaft für das Projekt korrekt ist.
+Wenn beim Bereitstellen von Metadaten ein Fehler auftritt, konnte wahrscheinlich von Visual Studio keine Verbindung mit dem Server hergestellt werden. Vergewissern Sie sich, dass Sie über SQL Server Management Studio (SSMS) eine Verbindung mit Ihrem Server herstellen können. Stellen Sie dann sicher, dass die Bereitstellungsserver-Eigenschaft für das Projekt korrekt ist.
 
 Wenn die Bereitstellung für eine Tabelle fehlschlägt, konnte wahrscheinlich der Server keine Verbindung mit einer Datenquelle herstellen. Wenn die Datenquelle lokal im Netzwerk der Organisation vorhanden ist, müssen Sie ein [lokales Datengateway](analysis-services-gateway.md) installieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie jetzt das tabellarische Modell auf dem Server bereitgestellt haben, können Sie eine Verbindung mit diesem herstellen. Sie können [mit SQL Server Management Studio (SSMS) eine Verbindung damit herstellen](analysis-services-manage.md), um es zu verwalten. Und Sie können [mithilfe eines Clienttools eine Verbindung mit diesem herstellen](analysis-services-connect.md) (z. B. mit Power BI, Power BI Desktop oder Excel) und mit dem Erstellen von Berichten beginnen.
+Nachdem Sie jetzt das tabellarische Modell auf dem Server bereitgestellt haben, können Sie eine Verbindung mit diesem herstellen. Sie können [mit SQL Server Management Studio (SSMS) eine Verbindung damit herstellen](analysis-services-manage.md), um es zu verwalten. Und Sie können [mithilfe eines Clienttools eine Verbindung mit diesem herstellen](analysis-services-connect.md) (z. B. mit Power BI, Power BI Desktop oder Excel) und mit dem Erstellen von Berichten beginnen.   
+
+Weitere Informationen zu erweiterten Bereitstellungsmethoden finden Sie unter [Bereitstellung von Tabellenmodelllösungen](https://docs.microsoft.com/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current).
+
+
 

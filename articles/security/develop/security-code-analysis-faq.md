@@ -1,7 +1,7 @@
 ---
 title: Dokumentation zur Microsoft-Sicherheitscodeanalyse – häufig gestellte Fragen
 description: Dieser Artikel enthält häufig gestellte Fragen zur Erweiterung „Microsoft-Sicherheitscodeanalyse“.
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: cb04a8e5a6d8c982a35cb5c448e4b6d93825bf73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d5eac2d3e2f3cd87ddad02aac68ce015163bd00
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362073"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 Haben Sie Fragen? Weitere Informationen finden Sie in den folgenden häufig gestellten Fragen.
@@ -123,11 +123,11 @@ Der Hashschlüssel des Geheimnisses aus der CredScan-Ausgabedatei ist erforderli
 
 Der Dateiausdruck kann ein Dateiname sein. Darüber hinaus kann er der Basename-Teil eines vollständigen Dateipfads oder eines Dateinamens sein. Platzhalter werden nicht unterstützt.
 
-In den folgenden Beispielen wird gezeigt, wie Sie die Datei „\<Eingabepfad>\src\JS\lib\angular.js“ unterdrücken.
+In den folgenden Beispielen wird gezeigt, wie Sie die Datei „\<InputPath>\src\JS\lib\angular.js“ unterdrücken.
 
 Beispiele für gültige Unterdrückungsregeln:
 
-- \<Eingabepfad>\src\JS\lib\angular.js: unterdrückt die Datei im angegebenen Pfad
+- \<InputPath>\src\JS\lib\angular.js: Unterdrückt die Datei im angegebenen Pfad.
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
@@ -155,7 +155,7 @@ Beispiele für gültige Unterdrückungsregeln:
 Die folgenden Ressourcen helfen Ihnen, Geheimnisse sicher zu verwalten und von Anwendungen aus sicher auf vertrauliche Informationen zuzugreifen:
 
  - [Azure Key Vault](../../key-vault/index.yml)
- - [Azure Active Directory (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
+ - [Azure Active Directory (Azure AD)](../../azure-sql/database/authentication-aad-overview.md)
  - [Verwaltete Dienstidentität (Managed Service Identity, MSI) in Azure AD](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Verwaltete Identitäten im Azure App Service und Azure Functions](../../app-service/overview-managed-identity.md)
@@ -173,7 +173,7 @@ Eine Inhaltssuchroutine wird wie folgt definiert:
 - **Name**: Der beschreibende Name der Suchroutine, der in den Ausgabedateien von Credential Scanner verwendet werden soll. Es wird empfohlen, die Camel-Case-Namenskonvention für Namen von Suchroutinen zu verwenden.
 - **RuleId**: Die stabile, opake ID der Suchroutine:
     - Standardsuchroutinen von Credential Scanner wird ein **RuleId**-Wert wie CSCAN0010, CSCAN0020 oder CSCAN0030 zugewiesen. Die letzte Ziffer ist für das Mergen oder Unterteilen von Suchroutinengruppen durch reguläre Ausdrücke (RegEx) reserviert.
-    - Der **RuleId**-Wert für eine angepasste Suchroutine sollte über einen eigenen Namespace verfügen. Beispiele sind: CSCAN-\<Namespace\>0010, CSCAN-\<Namespace\>0020 und CSCAN-\<Namespace\>0030.
+    - Der **RuleId**-Wert für eine angepasste Suchroutine sollte über einen eigenen Namespace verfügen. Beispiele: CSCAN-\<Namespace\>0010, CSCAN-\<Namespace\>0020 und CSCAN-\<Namespace\>0030.
     - Der vollqualifizierte Name der Suchroutine besteht aus der Kombination von **RuleId**-Wert und Suchroutinennamen. Beispiele sind: CSCAN0010.KeyStoreFiles und CSCAN0020.Base64EncodedCertificate.
 - **ResourceMatchPattern**: RegEx der Dateierweiterungen, die anhand der Suchroutine überprüft werden sollen.
 - **ContentSearchPatterns**: Ein Array von Zeichenfolgen mit RegEx-Anweisungen, die abgeglichen werden sollen. Wenn keine Suchmuster definiert sind, werden alle Dateien zurückgegeben, die mit dem **ResourceMatchPattern**-Wert übereinstimmen.

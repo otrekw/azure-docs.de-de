@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 5414a70180a82be8253dace7d800c90c1ae6a9bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d46b9f9386e8b16d4806e054820cbd82d83ef56b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79234730"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266987"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -76,7 +76,7 @@ Standardmäßig sammelt das Application Insights JavaScript SDK automatisch eine
     - ID (sofern vorhanden) des Benutzers, der die Anforderung sendet
     - Korrelationskontext (falls vorhanden), in dem die Anforderung ausgegeben wird
 - **Benutzerinformationen** (z.B. Speicherort, Netzwerk, IP)
-- **Geräteinformationen** (z.B. Browser, Betriebssystem, Version, Sprache, Auflösung, Modell)
+- **Geräteinformationen** (z. B. Browser, Betriebssystem, Version, Sprache, Modell)
 - **Sitzungsinformationen**
 
 ### <a name="telemetry-initializers"></a>Telemetrieinitialisierer
@@ -139,13 +139,20 @@ Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf
 | enableAutoRouteTracking | false | Routenänderungen in Single-Page-Webanwendungen (Single Page Applications, SPA) automatisch nachverfolgen. Bei „true“ sendet jede Routenänderung einen neuen Seitenaufruf an Application Insights. Hashroutenänderungen (`example.com/foo#bar`) werden ebenfalls als neue Seitenaufrufe aufgezeichnet.
 | enableRequestHeaderTracking | false | Bei „true“ werden AJAX- und Fetch-Anforderungsheader nachverfolgt.Der Standardwert ist „false“.
 | enableResponseHeaderTracking | false | Bei „true“ werden Antwortheader für AJAX- und Fetch-Anforderungen nachverfolgt.Der Standardwert ist „false“.
-| distributedTracingMode | `DistributedTracingModes.AI` | Legt den Modus für verteilte Ablaufverfolgung fest. Wenn der AI_AND_W3C-Modus oder der W3C-Modus festgelegt ist, werden Kontextheader für die W3C-Ablaufverfolgung (traceparent/tracestate) generiert und in alle ausgehenden Anforderungen eingeschlossen. AI_AND_W3C wird für Abwärtskompatibilität mit beliebigen mit älteren Application Insights-Versionen instrumentierten Diensten bereitgestellt.
+| distributedTracingMode | `DistributedTracingModes.AI` | Legt den Modus für verteilte Ablaufverfolgung fest. Wenn der AI_AND_W3C-Modus oder der W3C-Modus festgelegt ist, werden Kontextheader für die W3C-Ablaufverfolgung (traceparent/tracestate) generiert und in alle ausgehenden Anforderungen eingeschlossen. AI_AND_W3C wird für Abwärtskompatibilität mit beliebigen mit älteren Application Insights-Versionen instrumentierten Diensten bereitgestellt. Ein Beispiel finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps).
 
 ## <a name="single-page-applications"></a>Single-Page-Webanwendungen
 
 Standardmäßig verarbeitet dieses SDK **keine** statusbasierte Routenänderung, die in Single-Page-Webanwendungen erfolgt. Um das automatische Nachverfolgen von Routenänderungen für Ihre Single-Page-Webanwendung zu aktivieren, können Sie Ihrer Setupkonfiguration `enableAutoRouteTracking: true` hinzufügen.
 
 Wir bieten derzeit ein separates [React-Plug-In](#react-extensions) an, das Sie mit diesem SDK initialisieren können. Es wird auch die Nachverfolgung von Routenänderungen automatisch ausführen sowie [weitere React-spezifische Telemetriedaten](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md) sammeln.
+
+> [!NOTE]
+> Verwenden Sie `enableAutoRouteTracking: true` nur, wenn Sie das React-Plug-In **nicht** verwenden. Beide können bei Routenänderungen neue Seitenaufrufe senden. Wenn beide aktiviert sind, werden möglicherweise doppelte Seitenaufrufe gesendet.
+
+## <a name="configuration-autotrackpagevisittime"></a>Konfiguration: autoTrackPageVisitTime
+
+Wenn Sie `autoTrackPageVisitTime: true` festlegen, wird die Zeit nachverfolgt, die ein Benutzer auf jeder Seite verbringt. Bei jedem neuen Seitenaufruf wird die Zeitdauer, die der Benutzer auf der *vorherigen* Seite verbracht hat, als [benutzerdefinierte Metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) mit dem Namen `PageVisitTime`gesendet. Diese benutzerdefinierte Metrik kann im [Metrik-Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) als eine „protokollbasierte Metrik“ angezeigt werden.
 
 ## <a name="react-extensions"></a>React-Erweiterungen
 

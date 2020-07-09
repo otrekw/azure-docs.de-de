@@ -2,13 +2,13 @@
 title: Sichern einer SharePoint-Farm in Azure Stack
 description: Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen Ihrer SharePoint-Daten auf Azure Stack. Dieser Artikel stellt die benötigten Informationen bereit, um Ihre SharePoint-Farm so zu konfigurieren, dass Sie die gewünschten Daten in Azure speichern können. Sie können geschützte SharePoint-Daten vom Datenträger oder aus Azure wiederherstellen.
 ms.topic: conceptual
-ms.date: 06/08/2018
-ms.openlocfilehash: d080605022cadf121fa6be99c9758fe9c0d878ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/07/2020
+ms.openlocfilehash: 8b9257c1d175c350df06f9421b31a9e7b8e2bb80
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84657930"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Sichern einer SharePoint-Farm in Azure Stack
 
@@ -26,127 +26,116 @@ Azure Backup für MABS unterstützt folgende Szenarios:
 
 Vor dem Sichern einer SharePoint-Farm in Azure müssen Sie ein paar Punkte bestätigen.
 
-### <a name="prerequisites"></a>Voraussetzungen
-
-Bevor Sie fortfahren, stellen Sie sicher, [dass Azure Backup Server installiert und für den Schutz von Workloads vorbereitet wurde](backup-mabs-install-azure-stack.md).
-
-### <a name="protection-agent"></a>Schutz-Agent
-
-Der Azure Backup-Agent muss auf dem Server, auf dem SharePoint ausgeführt wird, auf den Servern, auf denen SQL Server ausgeführt wird, sowie allen anderen Servern installiert werden, die der SharePoint-Farm angehören. Weitere Informationen zum Einrichten des Schutz-Agents finden Sie unter [Einrichten des Schutz-Agents](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).  Einzige Ausnahme: Der Agent wird nur auf einem einzelnen Web-Front-End-Server (WFE) installiert. Azure Backup Server benötigt den Agent auf einem WFE-Server nur als Einstiegspunkt für den Schutz.
-
-### <a name="sharepoint-farm"></a>SharePoint-Farm
-
-Pro zehn Millionen Farmelemente müssen mindestens 2 GB Speicherplatz auf dem Volume verfügbar sein, auf dem sich der MABS-Ordner befindet. Dieser Speicherplatz wird für die Kataloggenerierung benötigt. Für die Wiederherstellung bestimmter Elemente (Websitesammlungen, Websites, Listen, Dokumentbibliotheken, Ordner, einzelne Dokumente und Listenelemente) durch MABS erstellt die Kataloggenerierung eine Liste mit den URLs aus den einzelnen Inhaltsdatenbanken. Sie können die URL-Liste im Bereich für wiederherstellbare Elemente (im Aufgabenbereich **Wiederherstellung** der MABS-Administratorkonsole) anzeigen.
-
-### <a name="sql-server"></a>SQL Server
-
-Azure Backup Server wird als ein „LocalSystem“-Konto ausgeführt. Zum Sichern von SQL Server-Datenbanken benötigt MABS Systemadministratorberechtigungen für dieses Konto für den Server, auf dem SQL Server ausgeführt wird. Legen Sie für NT AUTHORITY\SYSTEM *sysadmin* auf dem Server fest, auf dem SQL Server ausgeführt wird, bevor Sie ihn sichern.
-
-Falls die SharePoint-Farm über SQL Server-Datenbanken verfügt, die mit SQL Server-Aliasnamen konfiguriert sind, installieren Sie die SQL Server-Clientkomponenten auf dem Front-End-Webserver, der von MABS geschützt wird.
-
 ### <a name="whats-not-supported"></a>Nicht unterstützte Funktionen
 
 * Der MABS-Schutz einer SharePoint-Farm erstreckt sich nicht auf Suchindizes oder Anwendungsdienstdatenbanken. Für diese Datenbanken muss der Schutz separat konfiguriert werden.
+
 * Von MABS werden keine SharePoint-SQL Server-Datenbanken gesichert, die sich auf Freigaben von Dateiservern mit horizontaler Skalierung (Scale Out File Server, SOFS) befinden.
 
-## <a name="configure-sharepoint-protection"></a>Konfigurieren des SharePoint-Schutzes
+### <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie SharePoint mit MABS schützen können, müssen Sie den SharePoint VSS Writer-Dienst (WSS Writer-Dienst) mithilfe von **ConfigureSharePoint.exe**konfigurieren.
+Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsoft Azure Backup alle [Voraussetzungen](backup-azure-dpm-introduction.md#prerequisites-and-limitations) erfüllt sind. Die Voraussetzungen umfassen folgende Aufgaben: Erstellen eines Sicherungstresors, Herunterladen der Anmeldeinformationen, Installieren des Azure Backup-Agents und Registrieren der Azure Backup Server-Instanz beim Tresor.
 
-Die Datei **ConfigureSharePoint.exe** befindet sich auf dem Front-End-Webserver im Ordner „[MABS-Installationspfad]\bin“. Dieses Tool stellt den Schutz-Agent mit den Anmeldeinformationen für die SharePoint-Farm bereit. Es wird auf einem einzelnen WFE-Server ausgeführt. Wählen Sie bei Verwendung mehrerer WFE-Server einen der Server aus, wenn Sie eine Schutzgruppe konfigurieren.
+Zusätzliche Voraussetzungen und Einschränkungen:
 
-### <a name="to-configure-the-sharepoint-vss-writer-service"></a>So konfigurieren Sie den SharePoint VSS Writer-Dienst
+* Wenn Sie SharePoint schützen, werden standardmäßig alle Inhaltsdatenbanken (sowie die SharePoint_Config- und SharePoint_AdminContent*-Datenbanken) geschützt. Wenn Sie Anpassungen wie Suchindizes, Vorlagen, Anwendungsdienst-Datenbanken oder den Benutzerprofildienst hinzufügen möchten, müssen Sie diese separat für den Schutz konfigurieren. Stellen Sie sicher, dass Sie den Schutz für alle Ordner aktivieren, die diese Typen von Features oder Anpassungsdateien enthalten.
 
-1. Navigieren Sie an einer Eingabeaufforderung auf dem WFE-Server zu „[MABS-Installationsort]\bin\“.
-2. Geben Sie ConfigureSharePoint -EnableSharePointProtection ein.
-3. Geben Sie die Administratoranmeldeinformationen für die Farm an. Dieses Konto muss der lokalen Administratorgruppe auf dem WFE-Server angehören. Wenn der Farmadministrator kein lokaler Administrator ist, erteilen Sie auf dem WFE-Server die folgenden Berechtigungen:
-   * Erteilen Sie der Gruppe „WSS_ADMIN_WPG“ Vollzugriff auf den DPM-Ordner (%Program Files%\Microsoft Azure Backup\DPM).
-   * Erteilen Sie der Gruppe „WSS_Admin_WPG“ Lesezugriff auf den DPM-Registrierungsschlüssel (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager).
+* Sie können SharePoint-Datenbanken nicht als SQL Server-Datenquelle schützen. Sie können einzelne Datenbanken aus einer Farmsicherung wiederherstellen.
 
-> [!NOTE]
-> Wenn sich die Administratoranmeldeinformationen für die SharePoint-Farm ändern, muss „ConfigureSharePoint.exe“ erneut ausgeführt werden.
->
->
+* Beachten Sie, dass MABS als **lokales System** ausgeführt wird und zum Sichern von SQL Server-Datenbanken Systemadministratorberechtigungen für dieses Konto für den SQL Server benötigt. Legen Sie auf dem SQL Server, den Sie sichern möchten, „NT AUTHORITY\SYSTEM“ auf **sysadmin** fest.
 
-## <a name="back-up-a-sharepoint-farm-by-using-mabs"></a>Sichern einer SharePoint-Farm mit MABS
+* Pro zehn Millionen Farmelemente müssen mindestens 2 GB Speicherplatz auf dem Volume verfügbar sein, auf dem sich der MABS-Ordner befindet. Dieser Speicherplatz wird für die Kataloggenerierung benötigt. Damit Sie MABS zur Durchführung einer bestimmten Wiederherstellung von Elementen (Websitesammlungen, Websites, Listen, Dokumentbibliotheken, Ordner, einzelne Dokumente und Listenelemente) verwenden können erstellt die Kataloggenerierung eine Liste mit den URLs aus den einzelnen Inhaltsdatenbanken. Sie können die URL-Liste im Bereich für wiederherstellbare Elemente (im Aufgabenbereich „Wiederherstellung“ der MABS-Verwaltungskonsole) anzeigen.
 
-Wenn Sie MABS und die SharePoint-Farm wie oben beschrieben konfiguriert haben, kann SharePoint von MABS geschützt werden.
+* Wenn sich in der SharePoint-Farm SQL Server-Datenbanken befinden, die mit SQL Server-Aliasen konfiguriert wurden, installieren Sie die SQL Server-Clientkomponenten auf dem Front-End-Webserver, der von MABS geschützt wird.
 
-### <a name="to-protect-a-sharepoint-farm"></a>So schützen Sie eine SharePoint-Farm
+* Der Schutz von Elementen im Anwendungsspeicher wird mit SharePoint 2013 nicht unterstützt.
 
-1. Klicken Sie auf der Registerkarte **Schutz** der MABS-Administratorkonsole auf **Neu**.
-    ![Neue Registerkarte „Schutz“](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
-2. Wählen Sie auf der Seite **Schutzgruppentyp auswählen** des Assistenten **Neue Schutzgruppe erstellen** die Option **Server** aus, und klicken Sie anschließend auf **Weiter**.
+* Der Schutz von Remote-FILESTREAM wird von MABS nicht unterstützt. FILESTREAM sollte Bestandteil der Datenbank sein.
 
-    ![Schutzgruppentyp auswählen](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
-3. Aktivieren Sie im Bildschirm **Gruppenmitglieder auswählen** das Kontrollkästchen für den zu schützenden SharePoint-Server, und klicken Sie auf **Weiter**.
+## <a name="configure-backup"></a>Konfigurieren der Sicherung
 
-    ![Gruppenmitglieder auswählen](./media/backup-azure-backup-sharepoint/select-group-members2.png)
+Um die SharePoint-Farm zu sichern, konfigurieren Sie den Schutz für SharePoint mithilfe von „ConfigureSharePoint.exe“, und erstellen Sie dann eine Schutzgruppe in MABS.
 
-   > [!NOTE]
-   > Wenn der Schutz-Agent installiert ist, wird der Server im Assistenten angezeigt. Darüber hinaus wird von MABS die Struktur angezeigt. Dank der Ausführung von „ConfigureSharePoint.exe“ kommuniziert MABS mit dem SharePoint VSS Writer-Dienst sowie mit den entsprechende SQL-Datenbanken und erkennt die Struktur der SharePoint-Farm (die zugeordneten Inhaltsdatenbanken und alle dazugehörigen Elemente).
-   >
-   >
-4. Geben Sie auf der Seite **Datenschutzmethode auswählen** den Namen der **Schutzgruppe** ein, und wählen Sie Ihre bevorzugten *Schutzmethoden* aus. Klicken Sie auf **Weiter**.
+1. **Führen Sie ConfigureSharePoint.exe aus**: Dieses Tool konfiguriert den SharePoint VSS Writer-Dienst \(WSS\) und stellt dem Schutz-Agent mit Anmeldeinformationen für die SharePoint-Farm zur Verfügung. Nachdem Sie den Schutz-Agent bereitgestellt haben, befindet sich die Datei „ConfigureSharePoint.exe“ im Ordner „`<MABS Installation Path\>\bin`“ auf dem Front\-End-Webserver.  Wenn Sie über mehrere WFE-Server verfügen, müssen brauchen Sie ihn nur auf einem der Server zu installieren. Führen Sie die folgenden Schritte aus:
 
-    ![Datenschutzmethode auswählen](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
+    * Navigieren Sie auf dem WFE-Server an einer Eingabeaufforderung zu `\<MABS installation location\>\\bin\\`, und führen Sie `ConfigureSharePoint \[\-EnableSharePointProtection\] \[\-EnableSPSearchProtection\] \[\-ResolveAllSQLAliases\] \[\-SetTempPath <path>\]` aus, wobei Folgendes gilt:
 
-   > [!NOTE]
-   > Die Datenträgerschutz-Methode erleichtert das Einhalten kurzer Wiederherstellungszeit-Ziele.
-   >
-   >
-5. Wählen Sie auf der Seite **Kurzfristige Ziele angeben** Ihre bevorzugte **Beibehaltungsdauer** aus, und geben Sie an, wann die Sicherungen durchgeführt werden sollen.
+        * **EnableSharePointProtection** aktiviert den Schutz der SharePoint-Farm, aktiviert den VSS Writer und registriert die Identität der DCOM-Anwendung „WssCmdletsWrapper“, die als der Benutzer ausgeführt wird, dessen Anmeldeinformationen mit dieser Option eingegeben werden. Dieses Konto muss Farmadministrator und auch ein lokaler Administrator auf dem Front\-End-Webserver sein.
 
-    ![Kurzfristige Ziele angeben](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
+        * **EnableSPSearchProtection** aktiviert den Schutz von WSS 3.0 SP Search durch Verwendung des Registrierungsschlüssels „SharePointSearchEnumerationEnabled“ unter „HKLM\\Software\\Microsoft\\ Microsoft Data Protection Manager\\Agent\\2.0\\“ auf dem Front\-End-Webserver und registriert die Identität der DCOM-Anwendung „WssCmdletsWrapper“, die als der Benutzer ausgeführt wird, dessen Anmeldeinformationen mit dieser Option eingegeben werden. Dieses Konto muss Farmadministrator und auch ein lokaler Administrator auf dem Front\-End-Webserver sein.
 
-   > [!NOTE]
-   > Da in den meisten Fällen Daten wiederhergestellt werden, die weniger als fünf Tage alt sind, haben wir in diesem Beispiel eine datenträgerbasierte Beibehaltungsdauer von fünf Tagen ausgewählt und die Sicherung so konfiguriert, dass sie nicht während der Produktionszeiten erfolgt.
-   >
-   >
-6. Überprüfen Sie den für die Schutzgruppe reservierten Speicherpool-Speicherplatz, und klicken Sie auf **Weiter**.
-7. MABS reserviert für jede Schutzgruppe Speicherplatz zum Speichern und Verwalten von Replikaten. An diesem Punkt muss MABS eine Kopie der ausgewählten Daten erstellen. Wählen Sie aus, wie und wann das Replikat erstellt werden soll, und klicken Sie anschließend auf **Weiter**.
+        * Mit **ResolveAllSQLAliases** werden alle von SharePoint VSS Writer gemeldeten Aliase angezeigt und für den entsprechenden Computer mit SQL Server aufgelöst. Außerdem werden die entsprechenden aufgelösten Instanznamen angezeigt. Wenn die Server gespiegelt sind, wird auch den gespiegelten Server angezeigt. Alle Aliase, die für den Computer mit SQL Server nicht aufgelöst werden, werden gemeldet.
 
-    ![Replikaterstellungsmethode auswählen](./media/backup-azure-backup-sharepoint/choose-replica-creation-method.png)
+        * **SetTempPath** legt die Umgebungsvariablen TEMP und TMP auf den angegebenen Pfad fest. Bei der Wiederherstellung auf Elementebene tritt ein Fehler auf, wenn umfangreiche Websitesammlungen, Websites, Listen oder Elemente wiederhergestellt werden und nicht genügend Speicherplatz im temporären Ordner des Farmadministrators vorhanden ist. Mit dieser Option können Sie für den Ordnerpfad der temporären Dateien ein Volume verwenden, das über genügend Speicherplatz zum Speichern der wiederherzustellenden Websitesammlung oder Website verfügt.
 
-   > [!NOTE]
-   > Wählen Sie eine Zeit außerhalb der Produktionszeit, um eine Beeinträchtigung des Netzwerkdatenverkehrs zu vermeiden.
-   >
-   >
-8. MABS prüft die Konsistenz des Replikats und stellt so die Datenintegrität sicher. Hierbei stehen zwei Optionen zur Verfügung: Sie können einen Zeitplan für die Ausführung von Konsistenzprüfungen definieren, oder DPM kann die Konsistenz des Replikats automatisch überprüfen, wenn es inkonsistent wird. Wählen Sie Ihre bevorzugte Option aus, und klicken Sie anschließend auf **Weiter**.
+    * Geben Sie die Administratoranmeldeinformationen für die Farm an. Dieses Konto muss der lokalen Administratorgruppe auf dem WFE-Server angehören. Wenn der Farmadministrator kein lokaler Administrator ist, erteilen Sie auf dem WFE-Server die folgenden Berechtigungen:
 
-    ![Konsistenzprüfung](./media/backup-azure-backup-sharepoint/consistency-check.png)
-9. Wählen Sie auf der Seite **Online zu schützende Daten** die zu schützende SharePoint-Farm aus, und klicken Sie anschließend auf **Weiter**.
+        * Erteilen Sie der Gruppe **WSS_Admin_WPG** Vollzugriff auf den MABS-Ordner (`%Program Files%\Data Protection Manager\DPM\`).
 
-    ![DPM SharePoint Protection1](./media/backup-azure-backup-sharepoint/select-online-protection1.png)
-10. Wählen Sie auf der Seite **Online-Sicherungszeitplan angeben** Ihren bevorzugten Zeitplan aus, und klicken Sie anschließend auf **Weiter**.
+        * Erteilen Sie der Gruppe **WSS_Admin_WPG** Lesezugriff auf den MABS-Registrierungsschlüssel (`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager`).
 
-    ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
+        Wenn sich die Administratoranmeldeinformationen für die SharePoint-Farm nach dem Ausführen von „ConfigureSharePoint.exe“ ändern, muss „ConfigureSharePoint.exe“ erneut ausgeführt werden.
 
-    > [!NOTE]
-    > MABS führt maximal zwei tägliche Sicherungen in Azure aus, und zwar von dem jeweils verfügbaren neuesten Datenträgersicherungspunkt aus. Azure Backup kann auch mithilfe der [Azure Backup-Netzwerk-Bandbreiteneinschränkung](backup-windows-with-mars-agent.md#enable-network-throttling)steuern, welche WAN-Bandbreite innerhalb und außerhalb von Spitzenzeiten für Sicherungen verwendet werden kann.
-    >
-    >
-11. Wählen Sie abhängig vom ausgewählten Sicherungszeitplan auf der Seite **Online-Aufbewahrungsrichtlinie angeben** die gewünschte Aufbewahrungsrichtlinie für die täglichen, wöchentlichen, monatlichen und jährlichen Sicherungspunkte aus.
+1. Um eine Schutzgruppe zu erstellen, klicken Sie auf **Schutz** > **Aktionen** > **Schutzgruppe erstellen**, um den **Assistenten zum Erstellen einer neuen Schutzgruppe** in der MABS-Konsole zu öffnen.
 
-    ![Online_retention_policy](./media/backup-azure-backup-sharepoint/specify-online-retention.png)
+1. Wählen Sie unter **Schutzgruppentyp auswählen** die Option **Server** aus.
 
-    > [!NOTE]
-    > Das Aufbewahrungsschema von MABS funktioniert nach dem Großvater-Vater-Sohn-Prinzip. Dabei kann für verschiedene Sicherungspunkte jeweils eine andere Aufbewahrungsrichtlinie ausgewählt werden.
-    >
-    >
-12. In Azure muss (ähnlich wie bei einem Datenträger) ein erstes Referenzpunktreplikat erstellt werden. Wählen Sie Ihre bevorzugte Option zum Erstellen der ersten Sicherungskopie in Azure, und klicken Sie anschließend auf **Weiter**.
+1. Erweitern Sie in **Gruppenmitglieder auswählen** den Server, auf dem sich die WFE-Rolle befindet. Wenn mehrere WFE-Server vorhanden sind, wählen Sie den Server aus, auf dem Sie die Datei „ConfigureSharePoint.exe“ konfiguriert haben.
 
-    ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
-13. Überprüfen Sie in der **Zusammenfassung** die ausgewählten Einstellungen, und klicken Sie anschließend auf **Gruppe erstellen**. Nach Erstellen der Schutzgruppe wird eine Erfolgsmeldung angezeigt.
+    Wenn Sie den SharePoint-Server erweitern, wird VSS von fragt MABS abgefragt, um zu ermitteln, welche Daten MABS schützen kann.  Wenn es sich bei der SharePoint-Datenbank um eine Remotedatenbank handelt, stellt MABS eine Verbindung mit der Datenbank her. Wenn SharePoint-Datenquellen nicht angezeigt werden, vergewissern Sie sich, dass der VSS Writer auf dem SharePoint-Server und allen SQL Server-Remoteinstanzen ausgeführt wird, und stellen Sie sicher, dass der MABS-Agent sowohl auf dem SharePoint-Server als auch auf der SQL Server-Remoteinstanz installiert ist. Stellen Sie außerdem sicher, dass SharePoint-Datenbanken nicht an anderer Stelle als SQL Server-Datenbanken geschützt werden.
 
-    ![Zusammenfassung](./media/backup-azure-backup-sharepoint/summary.png)
+1. Geben Sie unter **Datenschutzmethode auswählen** an, wie Sie die kurz- und langfristige Sicherung handhaben möchten. Die kurzfristige Sicherung erfolgt immer zuerst auf Datenträger, mit der Option der Sicherung vom Datenträger in die Azure-Cloud mit Azure Backup (kurz- oder langfristig).
+
+1. Geben Sie unter **Kurzfristige Ziele auswählen** an, wie die Sicherung in kurzfristigem Speicher auf Datenträger erfolgen soll.   Geben Sie unter **Beibehaltungsdauer** an, wie lange die Daten auf dem Datenträger beibehalten werden sollen. Geben Sie unter **Synchronisierungsfrequenz** an, wie oft eine inkrementelle Sicherung auf Datenträger erfolgen soll. Wenn Sie kein Sicherungsintervall festlegen möchten, können Sie „Direkt vor einem Wiederherstellungspunkt“ aktivieren, damit MABS unmittelbar vor jedem geplanten Wiederherstellungspunkt eine schnelle vollständige Sicherung ausführt.
+
+1. Überprüfen Sie auf der Seite „Datenträgerzuordnungen überprüfen“ den Speicherplatz im Speicherpool, der der Schutzgruppe zugeordnet ist.
+
+    **Gesamtdatengröße** ist die Größe der Daten, die Sie sichern möchten. **Bereitzustellender Speicherplatz für MABS** ist der für die Schutzgruppe von MABS empfohlene Speicherplatz. MABS wählt auf Grundlage der Einstellungen das ideale Sicherungsvolume. Sie können jedoch in **Details zur Datenträgerzuordnung** das gewählte Sicherungsvolume ändern. Wählen Sie für die Workloads im Dropdownmenü den bevorzugten Speicher aus. Durch Ihre Änderungen verändern sich im Bereich **Verfügbarer Speicherplatz** die Werte für **Gesamtspeicher** und **Freier Speicher**. Nicht ausreichend bereitgestellter Speicherplatz ist die Menge an Speicher, die laut Vorschlag von MABS zum Sicherstellen künftiger reibungsloser Sicherungen dem Volume hinzugefügt werden sollte.
+
+1. Wählen Sie unter **Replikaterstellungsmethode auswählen** aus, wie die erste vollständige Datenreplikation erfolgen soll.  Wenn Sie die Replikation über das Netzwerk auswählen, empfehlen wir, eine Nebenzeit zu wählen. Ziehen Sie bei großen Datenmengen oder nicht optimalen Netzwerkbedingungen die Offlinereplikation der Daten mit Wechselmedien in Betracht.
+
+1. Legen Sie unter **Konsistenzprüfungsoptionen auswählen** fest, wie Konsistenzprüfungen automatisiert werden sollen. Sie können eine Überprüfung aktivieren, die nur bei inkonsistenten Replikatdaten oder gemäß einem festgelegten Zeitplan ausgeführt wird. Wenn Sie keine automatische Konsistenzprüfung konfigurieren möchten, können Sie jederzeit eine manuelle Überprüfung ausführen, indem Sie im Bereich **Schutz** der MABS-Konsole mit der rechten Maustaste auf die Schutzgruppe klicken und **Konsistenzprüfung ausführen** auswählen.
+
+1. Wenn Sie die Sicherung in die Cloud mit Azure Backup ausgewählt haben, vergewissern Sie sich, dass auf der Seite **Online zu schützende Daten angeben** die Workloads ausgewählt sind, die Sie in Azure sichern möchten.
+
+1. Geben Sie unter **Onlinesicherungszeitplan angeben** an, wie oft inkrementelle Sicherungen in Azure erfolgen sollen. Sie können tägliche, wöchentliche, monatliche und jährliche Sicherungen planen und Datum und Uhrzeit ihrer Ausführung festlegen. Sicherungen können bis zu zweimal täglich erfolgen. Bei jeder Ausführung einer Sicherung wird ein Datenwiederherstellungspunkt in Azure anhand der gesicherten Daten erstellt, die auf dem MABS-Datenträger gespeichert sind.
+
+1. Auf der Seite **Onlineaufbewahrungsrichtlinie angeben** können Sie auswählen, wie die Wiederherstellungspunkte aus den täglichen, wöchentlichen, monatlichen und jährlichen Sicherungen in Azure aufbewahrt werden.
+
+1. Geben Sie auf der Seite **Onlinereplikation wählen** an, wie die erste vollständige Replikation der Daten erfolgt. Sie können eine Replikation über das Netzwerk wählen oder eine Offlinesicherung (sog. Offlineseeding) durchführen. Die Offlinesicherung erfolgt mithilfe der Importfunktion von Azure. [Weitere Informationen](https://azure.microsoft.com/documentation/articles/backup-azure-backup-import-export/).
+
+1. Überprüfen Sie auf der Seite **Zusammenfassung** Ihre Einstellungen. Nach dem Klicken auf **Gruppe erstellen** erfolgt die erste Replikation der Daten. Nach Abschluss der Replikation wird der Status der Schutzgruppe auf der Seite **Status** als **OK** angezeigt. Die Sicherung erfolgt anschließend gemäß den Schutzgruppeneinstellungen.
+
+## <a name="monitoring"></a>Überwachung
+
+Nach der Erstellung der Schutzgruppe erfolgt die erste Replikation, und MABS beginnt mit der Sicherung und Synchronisierung der SharePoint-Daten. MABS überwacht die Erstsynchronisierung sowie die nachfolgenden Sicherungen.  Sie können die SharePoint-Daten auf verschiedene Weise überwachen:
+
+* Mithilfe der MABS-Standardüberwachung können Sie Benachrichtigungen für die proaktive Überwachung durch Veröffentlichen von Warnungen und Konfigurieren von Benachrichtigungen einrichten. Sie können per E-Mail Benachrichtigungen für kritische Warnungen, Warnungen oder Informationen sowie für den Status von instanziierten Wiederherstellungen senden.
+
+* Wenn Sie Operations Manager verwenden, können Sie Warnungen zentral veröffentlichen.
+
+### <a name="set-up-monitoring-notifications"></a>Einrichten der Überwachung von Benachrichtigungen
+
+1. Klicken Sie in der MABS-Verwaltungskonsole auf **Überwachung** > **Aktion** > **Optionen**.
+
+2. Klicken Sie auf **SMTP-Server**, geben Sie den Servernamen, den Port und die E-Mail-Adresse ein, über die Benachrichtigungen gesendet werden. Die Adresse muss gültig sein.
+
+3. Geben Sie unter **Authentifizierter SMTP-Server** einen Benutzernamen und ein Kennwort ein. Der Benutzername und das Kennwort müssen zum Domänenkontonamen der Person gehören, deren Absenderadresse im vorherigen Schritt beschrieben wurde. Andernfalls tritt bei der Benachrichtigungsübermittlung ein Fehler auf.
+
+4. Klicken Sie zum Testen der SMTP-Servereinstellungen auf **Test-E-Mail senden**, geben Sie die E-Mail-Adresse ein, an die die Testnachricht von MABS gesendet werden soll, und klicken Sie dann auf **OK**. Klicken Sie auf **Optionen** > **Benachrichtigungen**, und wählen Sie die Warnungstypen aus, über die Empfänger benachrichtigt werden möchten. Geben Sie im Feld **Empfänger** die E-Mail-Adressen aller Empfänger ein, an die MABS die Benachrichtigungskopien senden soll.
+
+### <a name="publish-operations-manager-alerts"></a>Veröffentlichen von Operations Manager-Warnungen
+
+1. Klicken Sie in der MABS-Verwaltungskonsole auf **Überwachung** > **Aktion** > **Optionen** > **Warnungsveröffentlichung** > **Aktive Warnungen veröffentlichen**.
+
+2. Nach der Aktivierung der **Warnungsveröffentlichung** werden alle vorhandene MABS-Warnungen, die möglicherweise eine Benutzeraktion erfordern, im Ereignisprotokoll **MABS-Warnungen** veröffentlicht. Der Operations Manager-Agent, der auf dem MABS-Server installiert ist, veröffentlicht dann diese Warnungen für Operations Manager und setzt die Aktualisierung der Konsole fort, wenn neue Warnungen generiert werden.
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>Wiederherstellen eines SharePoint-Elements vom Datenträger mit MABS
 
 Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht und muss wiederhergestellt werden.
 ![MABS SharePoint Protection4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
-1. Öffnen Sie die **DPM-Verwaltungskonsole**. Alle von DPM geschützten SharePoint-Farmen werden auf der Registerkarte **Schutz** angezeigt.
+1. Öffnen Sie die **MABS-Verwaltungskonsole**. Alle von MABS geschützten SharePoint-Farmen werden auf der Registerkarte **Schutz** angezeigt.
 
     ![MABS SharePoint Protection3](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection4.png)
 2. Wechseln Sie zum Wiederherstellen des Elements zunächst zur Registerkarte **Wiederherstellung** .
@@ -172,7 +161,7 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
    >
 8. Wählen Sie den gewünschten **Wiederherstellungsprozess** aus.
 
-   * Wählen Sie **Ohne Wiederherstellungsfarm wiederherstellen** , wenn sich die SharePoint-Farm nicht geändert hat und dem Wiederherstellungspunkt entspricht, der wiederhergestellt wird.
+   * Wählen Sie **Ohne Wiederherstellungsfarm wiederherstellen**, wenn sich die SharePoint-Farm nicht geändert hat und dem Wiederherstellungspunkt entspricht, der wiederhergestellt wird.
    * Wählen Sie **Mithilfe einer Wiederherstellungsfarm wiederherstellen** , wenn sich die SharePoint-Farm seit der Erstellung des Wiederherstellungspunkts geändert hat.
 
      ![Wiederherstellungsprozess](./media/backup-azure-backup-sharepoint/recovery-process.png)
@@ -203,7 +192,7 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
     >
     >
 
-## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>Azure-basiertes Wiederherstellen einer SharePoint-Datenbank mit DPM
+## <a name="restore-a-sharepoint-database-from-azure-by-using-mabs"></a>Azure-basiertes Wiederherstellen einer SharePoint-Datenbank mit MABS
 
 1. Durchsuchen Sie zum Wiederherstellen einer SharePoint-Inhaltsdatenbank verschiedene Wiederherstellungspunkte (siehe oben), und wählen Sie den wiederherzustellenden Wiederherstellungspunkt aus.
 
@@ -211,7 +200,7 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
 2. Doppelklicken Sie auf den SharePoint-Wiederherstellungspunkt, um die verfügbaren SharePoint-Kataloginformationen anzuzeigen.
 
    > [!NOTE]
-   > Da die SharePoint-Farm mit langfristiger Aufbewahrung in Azure geschützt ist, sind auf MABS keine Kataloginformationen (Metadaten) verfügbar. Wenn also eine Zeitpunktwiederherstellung einer SharePoint-Inhaltsdatenbank erforderlich ist, muss die SharePoint-Farm neu katalogisiert werden.
+   > Da die SharePoint-Farm mit langfristiger Aufbewahrung in Azure geschützt ist, sind auf dem MABS-Server keine Kataloginformationen (Metadaten) verfügbar. Wenn also eine Zeitpunktwiederherstellung einer SharePoint-Inhaltsdatenbank erforderlich ist, muss die SharePoint-Farm neu katalogisiert werden.
    >
    >
 3. Klicken Sie auf **die entsprechende** Option.
@@ -230,15 +219,45 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Führen Sie nun die weiter oben in diesem Artikel beschriebenen Wiederherstellungsschritte für die Wiederherstellung einer SharePoint-Inhaltsdatenbank vom Datenträger aus.
 
-## <a name="faqs"></a>Häufig gestellte Fragen
+## <a name="switching-the-front-end-web-server"></a>Wechseln des Front-End-Webservers
 
-F: Kann ich ein SharePoint-Element am ursprünglichen Speicherort wiederherstellen, wenn SharePoint mit SQL AlwaysOn (und datenträgerbasiertem Schutz) konfiguriert wird?<br>
-A: Ja, das Element kann in der ursprünglichen SharePoint-Site wiederhergestellt werden.
+Wenn Sie über mehrere Front-End-Webserver verfügen und den Server, den MABS zum Schützen der Farm verwendet, wechseln möchten, befolgen Sie die Anweisungen:
 
-F: Kann ich eine SharePoint-Datenbank am ursprünglichen Speicherort wiederherstellen, wenn SharePoint mit SQL AlwaysOn konfiguriert wird?<br>
-A: Da SharePoint-Datenbanken in SQL AlwaysOn konfiguriert werden, können sie nur geändert werden, wenn die Verfügbarkeitsgruppe entfernt wird. MABS kann eine Datenbank daher nicht am ursprünglichen Speicherort wiederherstellen. Sie können eine SQL Server-Datenbank in einer anderen SQL Server-Instanz wiederherstellen.
+Im folgenden Verfahren wird das Beispiel für eine Serverfarm mit zwei Front-End-Webservern verwendet, *Server1* und *Server2*. MABS verwendet *Server1*, um die Farm zu schützen. Ändern Sie den von MABS verwendeten Front-End-Webserver in *Server2*, damit Sie *Server1* aus der Farm entfernen können.
+
+> [!NOTE]
+> Wenn der Front-End-Webserver, der von MABS zum Schutz der Farm verwendet wird, nicht verfügbar ist, verwenden Sie das folgende Verfahren, um den Front-End-Webserver zu ändern, indem Sie mit Schritt 4 beginnen.
+
+### <a name="to-change-the-front-end-web-server-that-mabs-uses-to-protect-the-farm"></a>So ändern Sie den Front-End-Webserver, den MABS zum Schutz der Farm verwendet
+
+1. Beenden Sie den SharePoint VSS Writer-Dienst auf *Server1*, indem Sie den folgenden Befehl an einer Eingabeaufforderung ausführen:
+
+    ```CMD
+    stsadm -o unregisterwsswriter
+    ```
+
+1. Öffnen Sie auf *Server1* den Registrierungs-Editor, und navigieren Sie zum folgenden Registrierungsschlüssel:
+
+   **HKLM\System\CCS\Services\VSS\VssAccessControl**
+
+1. Überprüfen Sie alle Werte, die im Unterschlüssel „VssAccessControl“ aufgeführt sind. Wenn ein Eintrag den Wert „0“ aufweist und ein anderer VSS Writer unter den zugehörigen Kontoanmeldeinformationen ausgeführt wird, ändern Sie die Wert in „1“.
+
+1. Installieren Sie einen Schutz-Agent auf *Server2*.
+
+   > [!WARNING]
+   > Sie können nur Web-Front-End-Server nur wechseln, wenn sich beide Server in derselben Domäne befinden.
+
+1. Ändern Sie auf *Server2* an der Eingabeaufforderung das Verzeichnis in `_MABS installation location_\bin\`, und führen Sie **ConfigureSharepoint** aus. Weitere Informationen zu ConfigureSharePoint finden Sie unter [Konfigurieren der Sicherung](#configure-backup).
+
+1. Wählen Sie die Schutzgruppe aus, zu der die Serverfarm gehört, und klicken Sie dann auf **Schutzgruppe ändern**.
+
+1. Erweitern Sie im Assistenten zum Ändern von Schutzgruppen *Server2* auf der Seite **Gruppenmitglieder auswählen**, wählen Sie die Serverfarm aus, und schließen Sie dann den Assistenten ab.
+
+   Eine Konsistenzprüfung wird gestartet.
+
+1. Wenn Sie Schritt 6 ausgeführt haben, können Sie das Volume nun aus der Schutzgruppe entfernen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie im Artikel [Sichern von Dateien und Anwendungen](backup-mabs-files-applications-azure-stack.md).
-Weitere Informationen finden Sie im Artikel [Sichern von SQL Server auf Azure Stack](backup-mabs-sql-azure-stack.md).
+* Weitere Informationen finden Sie im Artikel [Sichern von Dateien und Anwendungen](backup-mabs-files-applications-azure-stack.md).
+* Weitere Informationen finden Sie im Artikel [Sichern von SQL Server auf Azure Stack](backup-mabs-sql-azure-stack.md).

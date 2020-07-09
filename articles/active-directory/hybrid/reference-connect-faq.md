@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5aa30bc819531ee8cc9cd337648a6cbc661bb29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ad8990512cb09f6048b169c1d0c0a259a62b61b
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77149812"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827147"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -265,9 +265,9 @@ Wenn Sie Hilfe bei der Durchführung eines Upgrades auf eine neuere Version von 
 
 * Suchen Sie in der Knowledge Base nach technischen Lösungen für häufige Probleme im Zusammenhang mit der Unterstützung von Azure AD Connect.
 
-[Azure Active Directory-Foren](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
+[Microsoft F&A-Seite für Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
 
-* Suchen Sie nach technischen Fragen und Antworten, oder stellen Sie selbst Fragen, indem Sie die [Azure AD-Community](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required) besuchen.
+* Suchen Sie nach technischen Fragen und Antworten, oder stellen Sie selbst Fragen, indem Sie die [Azure AD-Community](https://docs.microsoft.com/answers/topics/azure-active-directory.html) besuchen.
 
 [Erhalten von Support für Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
 

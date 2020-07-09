@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: cb6b99351a5cb995d87b482b7e707a3913fd86f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1ac1df402c25c0f6e5f07ce8d9631c01c0fa504c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594959"
+ms.locfileid: "83655250"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Authentifizierung und Autorisierung für Azure Static Web Apps (Vorschau)
 
@@ -95,7 +95,7 @@ Wenn der Benutzer in der Einladung auf den Link klickt, wird er aufgefordert, si
 1. Klicken Sie unter _Einstellungen_ auf **Rollenverwaltung**.
 1. Suchen Sie in der Liste nach dem Benutzer.
 1. Aktivieren Sie das Kontrollkästchen in der Zeile des Benutzers.
-1. Klicken Sie auf die Schaltfläche **Löschen**.
+1. Klicken Sie auf die Schaltfläche **Löschen** .
 
 Beachten Sie beim Entfernen eines Benutzers Folgendes:
 
@@ -118,7 +118,7 @@ https://identity.azurestaticapps.net/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 Senden Sie unter der folgenden URL eine Anfrage, um für einzelne Apps zu verhindern, dass die Plattform diese Informationen bei zukünftigen Anforderungen bereitstellt:
 
 ```url
-https://<WEB_APP_DOMAIN_NAME>/identity/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
+https://<WEB_APP_DOMAIN_NAME>/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 ```
 
 ## <a name="system-folder"></a>Systemordner
@@ -154,6 +154,11 @@ Sie können eine [Routenregel](routes.md) verwenden, um einen Standardanbieter e
 }
 ```
 
+### <a name="post-login-redirect"></a>Umleitung nach der Anmeldung
+
+Wenn ein Benutzer nach der Anmeldung zu einer bestimmten Seite zurückgeleitet werden soll, geben Sie eine URL im `post_login_redirect_uri`-Abfragezeichenfolgenparameter an.
+
+
 ## <a name="logout"></a>Logout
 
 Mit der Route `/.auth/logout` werden Benutzer von der Website abgemeldet. Sie können einen Link zu Ihrer Sitenavigation hinzufügen, um dem Benutzer das Abmelden zu ermöglichen. Dies ist im folgenden Beispiel dargestellt.
@@ -170,6 +175,10 @@ Sie können eine [Routenregel](routes.md) verwenden, um eine benutzerfreundliche
   "serve": "/.auth/logout"
 }
 ```
+
+### <a name="post-logout-redirect"></a>Umleitung nach der Abmeldung
+
+Wenn ein Benutzer nach der Abmeldung zu einer bestimmten Seite zurückgeleitet werden soll, geben Sie eine URL im `post_logout_redirect_uri`-Abfragezeichenfolgenparameter an.
 
 ## <a name="block-an-authorization-provider"></a>Blockieren eines Autorisierungsanbieters
 

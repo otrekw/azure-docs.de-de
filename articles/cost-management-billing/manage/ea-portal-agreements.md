@@ -3,34 +3,26 @@ title: 'Azure EA: Vereinbarungen und Ergänzungen'
 description: In diesem Artikel wird erläutert, wie sich Azure EA-Vereinbarungen und -Zusatzvereinbarungen auf Ihre Azure EA-Portalnutzung auswirken.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 570a7b3bef702d0e42e23bc4b7af41cc431b9cc8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 4904390ce0642d0331e82610e8aef4b735b56f1f
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690991"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298141"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA: Vereinbarungen und Ergänzungen
 
 In diesem Artikel wird beschrieben, wie sich Azure-EA-Vereinbarungen und -Zusatzvereinbarungen darauf auswirken, wie Sie auf Azure-Dienste zugreifen, diese verwenden und für diese bezahlen.
 
-## <a name="amendment-status"></a>Status der Zusatzvereinbarungen
-
-Alle Zusatzvereinbarungen, die für Azure-Kunden erforderlich sind, müssen deren Partner- oder Microsoft-Kontoteam durchlaufen und über das regionale Betriebszentrum verarbeitet werden. Wenn Sie der Ansicht sind, dass eine Zusatzvereinbarung nicht verarbeitet wurde, wenden Sie sich an Ihren Partner, Ihren Softwareberater oder an das Microsoft-Kontoteam.
-
 ## <a name="enrollment-provisioning-status"></a>Registrierungsbereitstellungsstatus
 
 Das Startdatum eines neuen Mindestverbrauchs wird durch das Datum definiert, an dem das regionale Betriebszentrum diesen verarbeitet hat. Da Mindestverbrauchsbestellungen über das Azure-EA-Portal in der Zeitzone „UTC“ verarbeitet werden, kann es zu Verzögerungen kommen, wenn Ihre Bestellung im Rahmen des Mindestverbrauchs in einer anderen Zeitzone verarbeitet wurde. Das Startdatum der Abdeckung in der Bestellung unter https://www.explore.ms zeigt den Beginn des Mindestverbrauchs an. Das Startdatum der Abdeckung ist dann, wenn der Mindestverbrauch im Azure EA-Portal angezeigt wird.
 
-## <a name="support-offer-not-provisioned"></a>Supportangebot nicht bereitgestellt
-
-Sie können Standard- oder Pro-Direct-Support bestellen, indem Sie supportspezifische SKUs erwerben. Die Bestellung ähnelt der Bestellung einer EA Azure-SKU für den Mindestverbrauch. Beispiel: 6QK-00001. Support-SKU-Nummern sind W6T-00002 (Pro-Direct) und W6T-00003 (Standard). Überprüfen Sie die aktuellen Supportangebote, bevor Sie Support-SKUs erwerben.
-
-Die Registrierung muss über mindestens ein aktives Konto verfügen, damit das Supportangebot bereitgestellt werden kann.
+## <a name="support-for-enterprise-customers"></a>Support für Unternehmenskunden
 
  Das [Enterprise Agreement-Supportplanangebot](https://azure.microsoft.com/offers/enterprise-agreement-support/) von Azure steht einigen Kunden zur Verfügung.
 
@@ -51,7 +43,7 @@ Eine Registrierung weist einen der folgenden Statuswerte auf. Jeder Wert bestimm
 
 **Abgelaufen**: Die EA-Registrierung läuft ab, wenn das Enddatum für das Enterprise Agreement erreicht ist. Der EA-Kunde hat keine Option für eine Laufzeitverlängerung mehr und alle seine Dienste werden deaktiviert.
 
-Neue Kündigungsformulare werden ab dem 1. August 2019 für kommerzielle Azure-Kunden nicht mehr akzeptiert. Stattdessen werden alle Registrierungen unbegrenzt verlängert. Wenn Sie die Verwendung von Azure-Diensten beenden möchten, schließen Sie Ihr Abonnement im [Azure-EA-Portal](https://portal.azure.com). Alternativ kann Ihr Partner unter https://www.explore.ms eine Anforderung zur Beendigung übermitteln. Für Kunden mit behördlichen Verträgen ändert sich nichts.
+Neue Kündigungsformulare werden ab dem 1. August 2019 für kommerzielle Azure-Kunden nicht mehr akzeptiert. Stattdessen werden alle Registrierungen unbegrenzt verlängert. Wenn Sie die Verwendung von Azure-Diensten beenden möchten, schließen Sie Ihr Abonnement im [Azure-Portal](https://portal.azure.com). Alternativ kann Ihr Partner unter https://www.explore.ms eine Anforderung zur Beendigung übermitteln. Für Kunden mit behördlichen Verträgen ändert sich nichts.
 
 **Übertragen**: Der Status „Übertragen“ gilt für Registrierungen, deren zugeordnete Konten und Dienste in eine neue Registrierung übertragen werden. Registrierungen werden nicht automatisch übertragen, wenn während der Verlängerung eine neue Registrierungsnummer generiert wird. Die vorherige Registrierungsnummer muss in die Verlängerungsanforderung des Kunden aufgenommen werden, damit eine automatische Übertragung erfolgt.
 
@@ -158,24 +150,6 @@ Sie können jederzeit eine Kontingenterhöhung anfordern, indem Sie eine [Online
 - Die Ihrem Dienst zugeordnete Abonnement-ID für das Azure-Entwicklerportal.
   - Um Informationen zu erhalten, wie Sie Ihre Abonnement-ID abrufen, [wenden Sie sich an den Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-## <a name="azure-compute-pre-purchase-plan-cpp"></a>Azure Compute-Plan mit Vorauszahlung
-
-Der Azure Compute-Plan mit Vorauszahlung (Azure Compute Pre-Purchase Plan, CPP – früher als Azure Compute Promo bezeichnet) ist ein Angebot, das Kunden mit stabilen, vorhersagbaren Workloads die Möglichkeit bietet, Computingressourcen mit einem erheblichen Rabatt zu beziehen, indem sie Azure Compute-Ressourcen für 12 Monate im Voraus erwerben. Der Plan ist für EAs verfügbar und im EA-Portal sichtbar.
-
-Wenn Sie eine CPP-SKU bestellt haben, gilt diese für einen bestimmten Computertyp in einem bestimmten Rechenzentrum. Zum aktuellen Zeitpunkt stellen wir keine Liste aller CPP-Einkäufe eines Kunden bereit, daher gibt es auch keine Liste mit wartenden Guthaben. Wenn Sie jedoch die erworbenen Computertypen in dem Rechenzentrum konfigurieren, für das sie erworben wurden, sehen Sie die monatliche Zuteilung im Nutzungszusammenfassungsbericht im EA-Portal.
-
-Die vorab erworbene Menge wird als Guthaben in der Spalte „Enthaltene Einheiten“ angezeigt. Eine Nutzung dieser Menge führt dazu, dass erst dann Nutzungsgebühren erhoben werden, wenn die enthaltenen Einheiten verbraucht sind. Sobald diese Einheiten verbraucht sind, wird jede zusätzliche Nutzung zum vereinbarten Satz im normalen EA-Kundenpreisblatt berechnet.
-
-Der Guthabenerwerb basiert auf der Anzahl von Computern einer Klasse pro Monat. Ein Beispiel: Wenn Sie 70 A2-VMs pro Jahr in „USA, Osten 2“ erworben haben, werden diese im EA-Portal nicht auf die gleiche Weise angezeigt, wie Sie sie erworben haben.
-
-Computer auf Monatsbasis werden so berechnet, als würden sie 744 Stunden pro Monat ausgeführt. Damit ergeben sich 70 × 744 =52.080 erworbene A2-VM-Stunden pro Monat. Da in der Nutzungszusammenfassung im EA-Portal A2-VMs mit Schritten von 100 Stunden aufgeführt sind, sehen Sie ein Guthaben von 520,8 (52.080/100) „enthaltenen Einheiten“ pro Monat, und Sie sehen zudem die bisher im Monat verbrauchten Einheiten. Für die Nutzungsgebühren wird 0 angezeigt, bis die monatlich verbrauchten Einheiten die monatlich enthaltenen Einheiten überschreiten.
-
-Verschiedene Computertypen verwenden verschiedene Maßeinheiten: D3- und D4-VMs z. B. werden im Nutzungszusammenfassungsbericht mit einer Maßeinheit von 10 Stunden aufgeführt, daher wird der Erwerb von 70 Computern dieser Art als 5.208 (52.080/10) enthaltene Einheiten pro Monat angezeigt.
-
-Im Allgemeinen können Sie mit der folgenden Formel die Anzahl von erworbenen VMs anhand ihrer Maßeinheiten berechnen:
-
-<center><b> (enthaltene Menge · Maßeinheit) : 744 </b></center>
-
 ## <a name="plan-skus"></a>Plan-SKUs
 
 Plan-SKUs bieten die Möglichkeit, eine Reihe von integrierten Diensten in Form einer Suite zu einem reduzierten Preis zu erwerben. Die Plan-SKUs ergänzen einander durch weitere integrierte Angebote und Suites, um noch mehr Kosteneinsparungen zu bieten.
@@ -191,35 +165,6 @@ Unternehmensadministratoren können Kontobesitzer im Enterprise Portal mithilfe 
 1. Klicken Sie auf die Registerkarte **Preisblatt**.
 1. Klicken Sie in der oberen rechten Ecke auf das Symbol „Herunterladen“.
 1. Suchen Sie mit einem Filter in der Spalte „Enthaltene Menge“ nach entsprechenden Plan-SKU-Teilenummern, und wählen Sie Werte größer als 0 aus.
-
-### <a name="provision-the-plan-skus"></a>Bereitstellen der Plan-SKUs
-
-Unternehmensadministratoren können neue Kontobesitzer hinzufügen, vorhandene Kontobesitzer zuordnen oder vorhandene Kontobesitzer auffordern, sich beim Azure-EA-Portal anzumelden, um zuvor erworbene Plan-SKUs im Azure-EA-Portal bereitzustellen. Dazu sind folgende Schritte erforderlich.  
-
-**Hinzufügen eines neuen Kontobesitzers (durchgeführt durch EA-Administrator)** :
-
-1. Klicken Sie im Azure-EA-Portal im linken Navigationsbereich auf **Verwalten**.
-1. Klicken Sie auf die Registerkarte **Konto**.
-1. Klicken Sie auf der Seite „Konto“ auf **+ Konto hinzufügen**.
-1. Wählen Sie eine Abteilung aus, oder treffen Sie keine Auswahl.
-1. Wählen Sie den beabsichtigten Authentifizierungstyp aus.
-1. Geben Sie einen Anzeigenamen ein, den Sie zum Identifizieren dieses Kontos in Berichten verwenden möchten.
-1. Geben Sie die E-Mail-Adresse des Kontobesitzers ein, die dem neuen Konto zugeordnet werden soll.
-1. Bestätigen Sie die E-Mail-Adresse, die dem neuen Konto zugeordnet werden soll.
-1. Klicken Sie auf **Hinzufügen**.
-1. Sie können ein weiteres Konto hinzufügen, indem Sie **Weiteres Konto hinzufügen** auswählen oder in der rechten unteren Ecke der linken Symbolleiste auf **Hinzufügen** klicken.
-1. Jetzt kann sich der neue Kontobesitzer anmelden, um die relevanten Abonnements zum Bereitstellen der Plan-SKUs hinzuzufügen.
-
-**Zuordnen eines vorhandenen Kontobesitzers**:
-
-1. Klicken Sie im Enterprise Portal auf **Verwalten**.
-1. Klicken Sie auf die Registerkarte **Konto**.
-1. Klicken Sie auf **+ Konto hinzufügen**. Geben Sie das Microsoft-Konto oder Geschäfts-, Schul- oder Unikonto ein, das dem vorhandenen Konto zugeordnet ist.
-1. Bestätigen Sie das Microsoft-Konto oder Geschäfts-, Schul- oder Unikonto, das dem vorhandenen Konto zugeordnet ist.
-1. Geben Sie einen Namen ein, den Sie zum Identifizieren dieses Kontos in Berichten verwenden möchten.
-1. Klicken Sie auf **Hinzufügen**.
-1. Sie können ein weiteres Konto hinzufügen, indem Sie erneut die Option **+ Konto hinzufügen** auswählen, oder kehren Sie zur Startseite zurück, indem Sie auf die Schaltfläche **Verwaltung** klicken.  
-1. Wenn Sie durch Klicken die Kontoseite öffnen, wird das neu hinzugefügte Konto mit dem Status „Ausstehend“ angezeigt. Der Status ändert sich in „Aktiv“, nachdem sich der Kontobesitzer zum ersten Mal beim EA-Portal angemeldet hat.
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Vorhandene/neue Kontobesitzer zum Erstellen neuer Abonnements
 

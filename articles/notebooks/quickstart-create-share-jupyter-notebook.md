@@ -3,14 +3,17 @@ title: Erstellen und Teilen eines Jupyter-Notebooks auf Azure Notebooks (Vorscha
 description: Erstellen Sie schnell ein Jupyter-Notebook in Azure Notebooks (Vorschauversion), führen Sie es aus, und teilen Sie das Notebook dann mit anderen.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: d3310444fa28240b8fb1344199514a9601a2c615
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: tracking-python
+ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77064443"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832099"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Schnellstart: Erstellen und Teilen eines Notebooks in Azure Notebooks (Vorschauversion)
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 In dieser Schnellstartanleitung erstellen Sie eine Jupyter Notebook-Instanz in Azure Notebooks, führen sie aus und geben das Notebook dann für andere Benutzer frei. Jupyter ermöglicht es Ihnen, auf einfache Weise Markdowntext, ausführbaren Code, persistente Daten, Grafiken und Visualisierungen auf einer einzelnen Canvas zu kombinieren, die als „Notebook“ bezeichnet wird. Azure Notebooks ist ein kostenloser gehosteter Dienst zum Entwickeln und Ausführen von Jupyter-Notebooks in der Cloud ohne Installation.
 
@@ -18,8 +21,6 @@ In dieser Schnellstartanleitung erstellen Sie eine Jupyter Notebook-Instanz in 
 Keine.
 
 ## <a name="create-a-new-project-and-notebook"></a>Erstellen eines neuen Projekts und Notebooks
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. Wechseln Sie zur [Azure Notebooks-Website (https://notebooks.azure.com)](https://notebooks.azure.com), und melden Sie sich an. Ausführliche Informationen finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md).
 

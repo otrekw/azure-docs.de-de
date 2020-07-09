@@ -4,16 +4,16 @@ description: Leitlinien für die Leistungsoptimierung von Azure Data Lake Storag
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 125c583512f6bae34c2dd3c3dd76a1b96a181ac1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60e0d3fc22fdfc158110e9936748cc0bda280853
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74327900"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465914"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Optimieren der Leistung: Storm, HDInsight und Azure Data Lake Storage Gen2
 
@@ -63,7 +63,7 @@ Angenommen, es werden acht Bolt-Threads pro Kern verwendet. Bei 64 Kernen bedeut
 Nachdem Sie über die grundlegende Topologie verfügen, können Sie überlegen, ob Sie Parameter optimieren möchten:
 * **Anzahl von JVMs pro Workerknoten:** Wenn Sie eine große Datenstruktur haben (z.B. eine Suchtabelle), die Sie im Arbeitsspeicher hosten, wird für jede JVM eine separate Kopie benötigt. Alternativ dazu können Sie die Datenstruktur über viele Threads hinweg nutzen, wenn Sie eine geringere Zahl von JVMs verwenden. Für den Ein-/Ausgang des Bolts macht die Anzahl von JVMs keinen so großen Unterschied wie die Anzahl von Threads aus, die für diese JVMs hinzugefügt werden. Der Einfachheit halber ist es ratsam, eine JVM pro Worker zu verwenden. Aber je nachdem, was der Zweck Ihres Bolts ist oder welche Anwendungsverarbeitung Sie benötigen, müssen Sie diese Anzahl ggf. ändern.
 * **Anzahl von Spout Executors:** Da im vorherigen Beispiel Bolts zum Schreiben in Data Lake Storage Gen2 verwendet werden, ist die Anzahl von Spouts für die Boltleistung nicht direkt relevant. Je nach Verarbeitungs- oder E/A-Aufwand im Spout kann es ratsam sein, die Spouts zu optimieren, um die beste Leistung zu erzielen. Achten Sie darauf, dass Sie über genügend Spouts verfügen, um die Bolts auszulasten. Die Ausgaberaten der Spouts sollten mit dem Durchsatz der Bolts übereinstimmen. Die tatsächliche Konfiguration hängt vom Spout ab.
-* **Anzahl von Aufgaben:** Jeder Bolt wird als einzelner Thread ausgeführt. Weitere Aufgaben pro Bolt führen nicht zu einer Erhöhung der Parallelität. Es ergibt sich nur dann ein Vorteil, wenn Ihr Prozess zur Bestätigung des Tupels einen Großteil Ihrer Bolt-Ausführungsdauer einnimmt. Wir empfehlen, viele Tupel in einem größeren Anfügepaket zu gruppieren, bevor Sie eine Bestätigung vom Bolt senden. In den meisten Fällen führen mehrere Aufgaben also nicht zu weiteren Vorteilen.
+* **Anzahl von Aufgaben:** Jeder Bolt wird als einzelner Thread ausgeführt. Weitere Aufgaben pro Bolt führen nicht zu einer Erhöhung der Parallelität. Es ergibt sich nur dann ein Vorteil, wenn Ihr Prozess zur Bestätigung des Tupels einen Großteil Ihrer Bolt-Ausführungsdauer einnimmt. Es wird empfohlen, viele Tupel in einem größeren Anfügepaket zu gruppieren, bevor Sie eine Bestätigung vom Bolt senden. In den meisten Fällen führen mehrere Aufgaben also nicht zu weiteren Vorteilen.
 * **Lokale oder Shuffle-Gruppierung:** Wenn diese Einstellung aktiviert ist, werden Tupel in demselben Workerprozess an Bolts gesendet. Auf diese Weise werden die prozessübergreifende Kommunikation und Netzwerkaufrufe reduziert. Dies wird für die meisten Topologien empfohlen.
 
 Dieses einfache Szenario ist ein guter Ausgangspunkt. Führen Sie einen Test mit Ihren eigenen Daten durch, um die vorherigen Parameter zu optimieren und so eine optimale Leistung zu erzielen.

@@ -4,10 +4,10 @@ description: Verschlüsseln Sie Ihre Anwendungsdaten in Azure Storage, und stell
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 7e5e809fe8b670ae6ec5bfd15e54f9a8019e76d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79408742"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Verschlüsselung im Ruhezustand mithilfe von Kunden verwalteter Schlüssel
@@ -16,7 +16,7 @@ Zum Verschlüsseln der Anwendungsdaten Ihrer Web-App im Ruhezustand sind ein Azu
 
   - [Azure Storage ermöglicht die Verschlüsselung ruhender Daten](../storage/common/storage-service-encryption.md). Sie können vom System bereitgestellte Schlüssel oder eigene, vom Kunden verwaltete Schlüssel verwenden. Dort werden Ihre Anwendungsdaten gespeichert, wenn sie nicht in einer Web-App in Azure ausgeführt werden.
   - Das [Ausführen aus einem Bereitstellungspaket](deploy-run-package.md) ist eine Bereitstellungsfunktion von App Service. Sie ermöglicht Ihnen, Ihre Websiteinhalte mithilfe einer SAS-URL (Shared Access Signature) über ein Azure Storage-Konto bereitzustellen.
-  - [Key Vault-Verweise](app-service-key-vault-references.md) sind ein Sicherheitsfeature von App Service. Es ermöglicht Ihnen, Geheimnisse zur Runtime als Anwendungseinstellungen zu importieren. Verwenden Sie dies zum Verschlüsseln der SAS-URL Ihres Azure Storage-Kontos.
+  - [Key Vault-Verweise](app-service-key-vault-references.md) sind ein Sicherheitsfeature von App Service. Es ermöglicht Ihnen, Geheimnisse zur Laufzeit als Anwendungseinstellungen zu importieren. Verwenden Sie dies zum Verschlüsseln der SAS-URL Ihres Azure Storage-Kontos.
 
 ## <a name="set-up-encryption-at-rest"></a>Einrichten der Verschlüsselung ruhender Daten
 
@@ -27,11 +27,11 @@ Zum Verschlüsseln der Anwendungsdaten Ihrer Web-App im Ruhezustand sind ein Azu
 Verwenden Sie als nächstes den Storage-Explorer, um [eine SAS zu generieren](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer). 
 
 > [!NOTE]
-> Speichern Sie diese SAS-URL. Sie wird später verwendet, um den sicheren Zugriff auf das Bereitstellungspaket zur Runtime zu aktivieren.
+> Speichern Sie diese SAS-URL. Sie wird später verwendet, um zur Laufzeit sicheren Zugriff auf das Bereitstellungspaket zu aktivieren.
 
-### <a name="configure-running-from-a-package-from-your-storage-account"></a>Konfigurieren der Ausführung von einem Paket aus Ihrem Speicherkonto
+### <a name="configure-running-from-a-package-from-your-storage-account"></a>Konfigurieren der Ausführung aus einem Paket aus Ihrem Speicherkonto
   
-Wenn Sie Ihre Datei in Blobspeicher hochgeladen haben und über eine SAS-URL für die Datei verfügen, können Sie die App-Einstellung `WEBSITE_RUN_FROM_PACKAGE` auf die SAS-URL festlegen. Im folgenden Beispiel wird dazu die Azure-Befehlszeilenschnittstelle verwendet:
+Wenn Sie Ihre Datei in Blobspeicher hochgeladen haben und über eine SAS-URL für die Datei verfügen, können Sie die Anwendungseinstellung `WEBSITE_RUN_FROM_PACKAGE` auf die SAS-URL festlegen. Im folgenden Beispiel wird dazu die Azure-Befehlszeilenschnittstelle verwendet:
 
 ```
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_RUN_FROM_PACKAGE="<your-SAS-URL>"

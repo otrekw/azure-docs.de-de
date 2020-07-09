@@ -3,12 +3,12 @@ title: Matrix zur Azure Backup-Unterstützung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: cc817c1833c4c9aedcbc5fa111de694fab715c43
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 4946a4627d037053e441152182278c26b4f693fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801262"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84655623"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -56,7 +56,7 @@ Im Folgenden werden die Informationen zur Unterstützung beim Sichern von lokale
 
 **Begrenzung** | **Details**
 --- | ---
-**Azure-VM-Datenträger** | Maximal 16 <br> Wenn Sie sich für die eingeschränkte Vorschauversion von virtuellen Computern mit mehr als 16 Datenträgern (mit bis zu 32 Datenträgern) registrieren möchten, senden Sie eine E-Mail an AskAzureBackupTeam@microsoft.com.
+**Azure-VM-Datenträger** | Weitere Informationen finden Sie in der [Unterstützungsmatrix für die Sicherung von Azure-VMs](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
 **Größe des Azure-VM-Datenträgers** | Die Größe einzelner Datenträger kann bis zu 32 TB und maximal 256 TB für alle Datenträger in einer VM betragen.
 
 ### <a name="azure-vm-backup-options"></a>Optionen für Azure-VM-Sicherungen
@@ -101,14 +101,14 @@ Azure Backup unterstützt die Verschlüsselung für Daten während der Übertrag
 
 - Sicherungsdatenverkehr von den Servern zum Recovery Services-Tresor wird per AES 256 (Advanced Encryption Standard) verschlüsselt.
 - Sicherungsdaten werden über eine sichere HTTPS-Verbindung übertragen.
+
+### <a name="data-security"></a>Datensicherheit
+
 - Sicherungsdaten werden im Recovery Services-Tresor in verschlüsselter Form gespeichert.
 - Nur Sie verfügen über die Passphrase zum Entsperren dieser Daten. Die Sicherungsdaten können zu keinem Zeitpunkt von Microsoft entschlüsselt werden.
 
     > [!WARNING]
     > Nachdem der Tresor eingerichtet wurde, haben nur Sie Zugriff auf den Verschlüsselungsschlüssel. Microsoft bewahrt keine Kopie auf und hat keinen Zugriff auf den Schlüssel. Wenn der Schlüssel verlegt wird, kann Microsoft die gesicherten Daten nicht wiederherstellen.
-
-### <a name="data-security"></a>Datensicherheit
-
 - Beim Sichern von Azure-VMs müssen Sie die Verschlüsselung *auf dem virtuellen Computer* einrichten.
 - Azure Backup unterstützt den Azure Disk Encryption-Dienst, der auf virtuellen Windows-Computern BitLocker und auf virtuellen Linux-Computern **dm-crypt** verwendet.
 - Auf dem Back-End nutzt Azure Backup die [Speicherdienstverschlüsselung von Azure](../storage/common/storage-service-encryption.md), mit der ruhende Daten geschützt werden.
@@ -152,9 +152,9 @@ Azure Backup hat das Feature zur regionsübergreifenden Wiederherstellung hinzug
 | Sicherungsverwaltungstyp | Unterstützt                                                    | Unterstützte Regionen |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Ja.   Wird für verschlüsselte VMs und VMs mit Datenträgern mit weniger als 4 TB unterstützt | Alle öffentlichen Azure-Regionen  |
-| MARS-Agent/lokal | Nein                                                            | –               |
-| SQL/SAP HANA          | Nein                                                            | –               |
-| AFS                    | Nein                                                            | –               |
+| MARS-Agent/lokal | Nein                                                           | –               |
+| SQL/SAP HANA          | Nein                                                           | –               |
+| AFS                    | Nein                                                           | –               |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

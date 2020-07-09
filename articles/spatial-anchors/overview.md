@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5ebd29b5fb6fdedcdfbc434209b350512c4cd5dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 361a75c2e5951dc540830efd6be057753402daf1
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77657306"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006109"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Azure Spatial Anchors-Übersicht
 
@@ -26,7 +26,7 @@ Diese präzisen Points of Interest werden als Spatial Anchors bezeichnet.
 
 Einige Beispiele für Anwendungsfälle, die mit Spatial Anchors ermöglicht werden, sind:
 
-- [Umgebungen für mehrere Benutzer](tutorials/tutorial-share-anchors-across-devices.md): Spatial Anchors erleichtert es Personen, die sich an demselben Ort befinden, an Mixed Reality-Anwendungen für mehrere Benutzer teilzunehmen. Beispielsweise können zwei Personen eine Partie Mixed Reality-Schach beginnen, indem sie ein virtuelles Schachbrett auf einem Tisch anordnen. Indem sie ihre Geräte dann in Richtung des Tischs halten, können sie das virtuelle Schachbrett zusammen anzeigen und damit interagieren.
+- [Umgebungen für mehrere Benutzer](tutorials/tutorial-share-anchors-across-devices.md): Azure Spatial Anchors erleichtert es Personen, die sich an demselben Ort befinden, an Mixed Reality-Anwendungen für mehrere Benutzer teilzunehmen. Beispielsweise können zwei Personen eine Partie Mixed Reality-Schach beginnen, indem sie ein virtuelles Schachbrett auf einem Tisch anordnen. Indem sie ihre Geräte dann in Richtung des Tischs halten, können sie das virtuelle Schachbrett zusammen anzeigen und damit interagieren.
 
 - [Wegeleitsysteme](concepts/anchor-relationships-way-finding.md): Entwickler können auch Spatial Anchors-Instanzen miteinander verbinden, um dafür Beziehungen herzustellen. Eine App kann beispielsweise eine Benutzeroberfläche mit zwei oder mehr Points of Interest enthalten, mit denen ein Benutzer interagieren muss, um eine Aufgabe zu erfüllen. Diese Points of Interest können auf verbundene Weise erstellt werden. Später beim Durchführen der mehrteiligen Aufgabe durch den Benutzer kann die App nach Ankern fragen, die sich in der Nähe des aktuellen Ankers befinden, um den Benutzer zum nächsten Schritt der Aufgabe zu leiten.
 
@@ -36,7 +36,7 @@ Azure Spatial Anchors besteht aus einem verwalteten Dienst und Client-SDKs für 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erstellen Sie Ihre erste App mit Spatial Anchors.
+Erstellen Sie Ihre erste App mit Azure Spatial Anchors.
 
 > [!div class="nextstepaction"]
 > [Unity (HoloLens)](quickstarts/get-started-unity-hololens.md)

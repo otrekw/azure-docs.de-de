@@ -1,6 +1,6 @@
 ---
-title: 'Häufig gestellte Fragen: Azure Synapse Analytics'
-description: Häufig gestellte Fragen zu Azure Synapse Analytics
+title: Häufig gestellte Fragen zu Azure Synapse Analytics (Vorschau für Arbeitsbereiche)
+description: Häufig gestellte Fragen zu Azure Synapse Analytics (Vorschau für Arbeitsbereiche)
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 007fe7cb90c651c346bc7fbea46d74aa41605d2d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2c470483cee8b621475fa70dd09c80aa126173be
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744076"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609147"
 ---
-# <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure Synapse Analytics (Vorschau für Arbeitsbereiche): Häufig gestellte Fragen
+# <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics (Vorschau für Arbeitsbereiche): häufig gestellte Fragen
 
 In diesem Leitfaden finden Sie die am häufigsten gestellten Fragen zu Synapse Analytics.
 
@@ -32,13 +32,6 @@ A: Azure Synapse ist eine integrierte Datenplattform für BI, KI und Continuous 
 - Einfaches Überwachen und schnelles Optimieren und Debuggen von Ereignissen in Ihren Arbeitsbereichsaktivitäten auf beliebiger Ebene sowie Reagieren auf solche Ereignisse
 - Engine-übergreifendes Verwalten Ihrer Metadaten. Wenn Sie eine Spark-Tabelle erstellen, ist sie automatisch in Ihren Azure Synapse-Datenbanken verfügbar.
 - Interagieren mit den Daten über eine einheitliche Benutzeroberfläche. Mit Synapse Studio können Big Data-Entwickler, Dateningenieure, Datenbankadministratoren, Datenanalysten und Data Scientists die gleiche Plattform nutzen.
-
-### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>F: Wie beginne ich mit der Nutzung von Azure Synapse Analytics?
-
-A: Um mit der Verwendung von Azure Synapse Analytics zu beginnen, [registrieren Sie den Azure Synapse-Ressourcenanbieter](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types), indem Sie in der Liste der Ressourcenanbieter *Microsoft.Synapse* auswählen. Erstellen Sie dann einen (kostenlosen) [Synapse-Arbeitsbereich](https://portal.azure.com) sowie die Ressourcen, die Sie in diesem Arbeitsbereich verwenden möchten. Hierzu können Sie anhand eines unserer Schnellstarttutorials (beispielsweise [Schnellstart: Erstellen eines Synapse SQL-Pools](quickstart-create-sql-pool-portal.md) oder [Schnellstart: Erstellen eines Azure Synapse Analytics-Arbeitsbereichs (Vorschauversion)](quickstart-create-workspace.md)) einen einfachen Anwendungsfall ansehen. In unserem [Repository](https://github.com/Azure-Samples/Synapse) stehen außerdem Beispielnotebooks und SQL-Skripts zur Verfügung. Wenn Sie eine Verbindung mit einem öffentlichen Dataset herstellen müssen, erstellen Sie einen neuen verknüpften Dienst mit folgenden Attributen:
-
-- azure_storage_account_name = "azureopendatastorage"
-- azure_storage_sas_token = "" (write **""** )
 
 ### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>F: Was sind die Hauptkomponenten von Azure Synapse Analytics?
 

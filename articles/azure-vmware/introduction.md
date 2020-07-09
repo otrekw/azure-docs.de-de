@@ -3,16 +3,16 @@ title: Einführung
 description: Hier finden Sie Informationen zu den Features und Vorteilen der Azure-VMware-Lösung (Azure VMware Solution, AVS) für die Bereitstellung und Verwaltung VMware-basierter Workloads in Azure.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: e227b6c7c2f25fbf62f11c17dc62293e4fbd5267
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 9e3ab0abfdaa613a08675356bc5b01949e0381ae
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740991"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749679"
 ---
 # <a name="what-is-azure-vmware-solution-avs-preview"></a>Was ist die Azure-VMware-Lösung (Azure VMware Solution, AVS) (Vorschauversion)?
 
-Von der Azure-VMware-Lösung (Azure VMware Solution, AVS) werden private Clouds in Azure bereitgestellt. Die privaten Clouds enthalten vSphere-Cluster, die auf dedizierter Bare-Metal-Azure-Infrastruktur basieren. Private Cloudcluster können von mindestens drei Hosts auf maximal 16 Hosts skaliert werden, und eine einzelne private Cloud kann mehrere Cluster enthalten. Alle privaten Clouds werden mit vCenter Server, VSAN, vSphere und NSX-T bereitgestellt. Sie können Workloads aus Ihren lokalen Umgebungen migrieren, neue virtuelle Computer erstellen oder bereitstellen und Azure-Dienste von Ihren privaten Clouds aus nutzen.
+Von der Azure-VMware-Lösung (Azure VMware Solution, AVS) werden private Clouds in Azure bereitgestellt. Die privaten Clouds enthalten vSphere-Cluster, die auf dedizierter Bare-Metal-Azure-Infrastruktur basieren. Private Cloudcluster können von mindestens drei Hosts auf maximal 16 Hosts skaliert werden, und eine einzelne private Cloud kann mehrere Cluster enthalten. Alle privaten Clouds werden mit vCenter Server, vSAN, vSphere und NSX-T bereitgestellt. Sie können Workloads aus Ihren lokalen Umgebungen migrieren, neue virtuelle Computer erstellen oder bereitstellen und Azure-Dienste von Ihren privaten Clouds aus nutzen.
 
 Bei AVS handelt es sich um eine von VMware geprüfte Lösung, deren Erweiterungen und Upgrades kontinuierlich geprüft und getestet werden. Die private Cloudinfrastruktur und die Software werden von Microsoft verwaltet und gepflegt, sodass Sie sich ganz auf die Entwicklung und Ausführung von Workloads in Ihren privaten Clouds konzentrieren können.
 

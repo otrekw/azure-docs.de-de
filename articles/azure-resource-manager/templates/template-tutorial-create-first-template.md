@@ -2,15 +2,15 @@
 title: 'Tutorial: Erstellen und Bereitstellen einer Vorlage'
 description: Erstellen Sie Ihre erste Azure Resource Manager-Vorlage. In diesem Tutorial lernen Sie die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
-ms.date: 05/20/2020
+ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2180ca80d87643eb885d814318e516b4b3c53f37
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e2419e8ee9f8648ae8f929638ac2c85ea8b67a0f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714796"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676147"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage
 
@@ -37,8 +37,12 @@ Zum Bereitstellen der Vorlage benötigen Sie außerdem entweder Azure PowerShell
 - [Installieren von Azure PowerShell](/powershell/azure/install-az-ps)
 - [Installieren der Azure CLI unter Windows](/cli/azure/install-azure-cli-windows)
 - [Installieren der Azure CLI unter Linux](/cli/azure/install-azure-cli-linux)
+- [Installieren der Azure CLI unter macOS](/cli/azure/install-azure-cli-macos)
 
 Melden Sie sich nach der Installation von Azure PowerShell oder der Azure CLI zum ersten Mal an. Hilfe finden Sie unter [Anmelden –PowerShell](/powershell/azure/install-az-ps#sign-in) oder [Anmelden – Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
+
+> [!IMPORTANT]
+> Wenn Sie Azure CLI verwenden, stellen Sie sicher, dass Sie Version 2.6 oder höher verwenden. Die in diesem Tutorial gezeigten Befehle funktionieren nicht, wenn Sie eine niedrigere Version verwenden. Führen Sie `az --version` aus, um Ihre installierte Version zu überprüfen.
 
 Okay, Sie sind bereit, mehr über Vorlagen zu erfahren.
 

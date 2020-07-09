@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie die Konfiguration eines Tre
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 4c604fe067e73f5f9a17f4b5f810708121cff767
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744562"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248225"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualisieren von Konfigurationen eines Azure Recovery Services-Tresors mithilfe der REST-API
 
@@ -21,7 +21,7 @@ Das Löschen von Sicherungen eines geschützten Elements ist ein kritischer Vorg
 
 Es gibt jedoch Szenarien, in denen diese Funktion nicht erforderlich ist. Ein Azure Recovery Services-Tresor, der Sicherungselemente enthält, kann nicht gelöscht werden (auch dann nicht, wenn sich die Elemente im Zustand „Vorläufig gelöscht“ befinden). Dies kann problematisch sein, wenn der Tresor umgehend gelöscht werden muss. Ein Beispiel: Bei Bereitstellungsvorgängen werden die erstellten Ressourcen häufig im gleichen Workflow bereinigt. Eine Bereitstellung kann einen Tresor erstellen, Sicherungen für ein Element konfigurieren, eine Testwiederherstellung durchführen und anschließend die Sicherungselemente und den Tresor wieder löschen. Wenn der Tresor nicht gelöscht werden kann, ist unter Umständen die gesamte Bereitstellung nicht erfolgreich. Die umgehende Löschung kann nur durch Deaktivieren des vorläufigen Löschens sichergestellt werden.
 
-Aus diesem Grund muss sich der Kunde je nach Szenario sehr genau überlegen, ob er das vorläufige Löschen für einen bestimmten Tresor deaktiviert. Weitere Informationen finden Sie im [Artikel zu vorläufigem Löschen](backup-azure-security-feature-cloud.md).
+Sie müssen sich je nach Szenario genau überlegen, ob Sie das vorläufige Löschen für einen bestimmten Tresor deaktivieren möchten. Weitere Informationen finden Sie im [Artikel zu vorläufigem Löschen](backup-azure-security-feature-cloud.md).
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>Abrufen des Zustands des vorläufigen Löschens mithilfe der REST-API
 

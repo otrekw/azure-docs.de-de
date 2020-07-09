@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 06/02/2020
 ms.author: spelluru
-ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67746ebd8a16eb02b8f02d238b0e3c0125989189
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393154"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308267"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systemthemen in Azure Event Grid
 Der Azure Event Grid-Dienst erstellt Systemthemen, wenn Sie ein erstes Ereignisabonnement für eine Azure-Ereignisquelle erstellen. Derzeit erstellt Event Grid keine Systemthemen für Themenquellen, die vor dem 15. März 2020 erstellt wurden. Für alle Themenquellen, die Sie nach diesem Datum erstellt haben, erstellt Event Grid automatisch Systemthemen. In diesem Artikel werden die **Systemthemen** in Azure Event Grid beschrieben.
@@ -25,7 +25,10 @@ Wenn Sie das erste Ereignisabonnement für eine Azure-Ereignisquelle wie ein Azu
 
 Das Systemthema kann nicht für benutzerdefinierte Themenszenarios verwendet werden (z. B. Event Grid-Themen und Event Grid-Domänen). 
 
-## <a name="location"></a>Position
+## <a name="name"></a>Name 
+Wenn Sie zuvor ein Abonnement für ein Ereignis erstellt haben, das durch Azure-Quellen ausgelöst wurde, hat der Event Grid-Dienst automatisch ein Systemthema mit einem **zufällig generierten Namen** erstellt. Jetzt können Sie beim Erstellen des Themas im Azure-Portal einen Namen für das Systemthema angeben. Sie können diese Systemthemaressource verwenden, um Metriken und Diagnoseprotokolle zu ermitteln.
+
+## <a name="location"></a>Standort
 Für Azure-Ereignisquellen, die sich in einer bestimmten Region bzw. einem bestimmten Speicherort befinden, wird das Systemthema am gleichen Speicherort erstellt wie die Azure-Ereignisquelle. Wenn Sie beispielsweise ein Ereignisabonnement für Azure Blob Storage in der Region „USA, Osten“ erstellen, wird das Systemthema in „USA, Osten“ erstellt. Für globale Azure-Ereignisquellen wie Azure-Abonnements, Ressourcengruppen oder Azure Maps erstellt Event Grid das Systemthema an einem **globalen** Speicherort. 
 
 ## <a name="resource-group"></a>Resource group 
@@ -35,8 +38,6 @@ Wenn Sie versuchen, die Ressourcengruppe mit dem Speicherkonto zu löschen, wird
 
 ![Ressourcengruppe löschen](./media/system-topics/delete-resource-group.png)
 
-## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie in folgenden Artikeln: 
 
-- [Benutzerdefinierte Themen](custom-topics.md)
-- [Domänen](event-domains.md)
+## <a name="next-steps"></a>Nächste Schritte
+Lesen Sie den folgenden Artikel: [Erstellen, Anzeigen und Verwalten von Systemthemen](create-view-manage-system-topics.md).

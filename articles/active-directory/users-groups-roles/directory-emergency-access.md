@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c26b4e04970dd6c35fc6a71a1aade94d949b520
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74028126"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816181"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Verwalten von Konten für den Notfallzugriff in Azure AD
 
@@ -44,7 +44,7 @@ Erstellen Sie mindestens zwei Konten für den Notfallzugriff. Bei diesen Konten 
 Beim Konfigurieren dieser Konten müssen die folgenden Anforderungen erfüllt werden:
 
 - Die Konten für den Notfallzugriff dürfen keinem Einzelbenutzer in der Organisation zugeordnet werden. Stellen Sie sicher, dass Ihre Konten nicht mit Mobiltelefonen von Mitarbeitern, Hardwaretoken einzelner Mitarbeiter oder anderen mitarbeiterspezifischen Anmeldeinformationen verbunden sind. Durch diese Vorsichtsmaßnahme werden Fälle abgedeckt, in denen einzelne Mitarbeiter nicht erreichbar sind, wenn die Anmeldeinformationen benötigt werden. Es muss unbedingt sichergestellt werden, dass alle registrierten Geräte an einem bekannten, sicheren Ort aufbewahrt werden, die über verschiedene Wege mit Azure AD kommunizieren können.
-- Der für ein Konto für den Notfallzugriff verwendete Authentifizierungsmechanismus sollte sich von dem unterscheiden, der für Ihre anderen Administratorkonten einschließlich anderer Konten für den Notfallzugriff verwendet wird.  Erfolgt beispielsweise die normale Administratoranmeldung über lokale MFA, würde Azure MFA einen anderen Mechanismus darstellen.  Wenn jedoch Azure MFA Ihr primäres Authentifizierungselement für Ihre Administratorkonten ist, sollten Sie einen anderen Ansatz für diese Konten in Betracht ziehen, z.B. die Verwendung von bedingtem Zugriff mit einem MFA-Drittanbieter.
+- Der für ein Konto für den Notfallzugriff verwendete Authentifizierungsmechanismus sollte sich von dem unterscheiden, der für Ihre anderen Administratorkonten einschließlich anderer Konten für den Notfallzugriff verwendet wird.  Erfolgt beispielsweise die normale Administratoranmeldung über lokale MFA, würde Azure MFA einen anderen Mechanismus darstellen.  Wenn jedoch Azure MFA Ihr primäres Authentifizierungselement für Ihre Administratorkonten ist, sollten Sie einen anderen Ansatz für diese Konten in Betracht ziehen, z. B. die Verwendung von bedingtem Zugriff mit einem MFA-Drittanbieter über [benutzerdefinierte Steuerelemente](https://docs.microsoft.com/azure/active-directory/conditional-access/controls).
 - Die jeweiligen Geräte oder die Anmeldeinformationen dürfen nicht ablaufen oder aufgrund mangelnder Verwendung in den Bereich der automatisierten Bereinigung fallen.  
 - Sie sollten die Rolle „Globaler Administrator“ für Ihre Konten für den Notfallzugriff dauerhaft zuweisen. 
 

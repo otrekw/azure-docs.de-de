@@ -1,6 +1,7 @@
 ---
 title: SAML-Protokoll für das einmalige Anmelden von Azure
-description: In diesem Artikel wird das SAML-Protokoll für einmaliges Anmelden in Azure Active Directory beschrieben.
+titleSuffix: Microsoft identity platform
+description: In diesem Artikel wird das SAML-Protokoll für einmaliges Anmelden (Single Sign-On, SSO) in Azure Active Directory beschrieben.
 services: active-directory
 documentationcenter: .net
 author: rwike77
@@ -9,24 +10,27 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/19/2017
+ms.date: 05/18/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 333f23ddfe834307b5cbfebb9540e0b5efc79a53
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 155816a9cd171b42e1def5cafa09cb9e310d5ee7
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853779"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771671"
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-Protokoll für einmaliges Anmelden
 
-In diesem Artikel werden die SAML 2.0-Authentifizierungsanforderungen und -antworten erläutert, die Azure Active Directory (Azure AD) für das einmalige Anmelden unterstützt.
+In diesem Artikel werden die SAML 2.0-Authentifizierungsanforderungen und -antworten erläutert, die Azure Active Directory (Azure AD) für das einmalige Anmelden (Single Sign-On, SSO) unterstützt.
 
 Das folgende Protokolldiagramm beschreibt den Ablauf für das einmalige Anmelden. Der Clouddienst (der Dienstanbieter) verwendet eine HTTP-Umleitungsbindung, um eine Authentifizierungsanforderung ( `AuthnRequest` ) an Azure AD (den Identitätsanbieter) zu übergeben. Azure AD verwendet daraufhin eine HTTP Post-Bindung, um ein `Response` -Element an den Clouddienst zu senden.
 
-![Workflow für einmaliges Anmelden](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+![Workflow für einmaliges Anmelden (Single Sign-On, SSO)](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+
+> [!NOTE]
+> In diesem Artikel wird die Verwendung von SAML für einmaliges Anmelden (Single Sign-On, SSO) erläutert. Weitere Informationen zu anderen Möglichkeiten der Verwendung des einmaligen Anmeldens (z. B. mit OpenID Connect oder der integrierten Windows-Authentifizierung) finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="authnrequest"></a>AuthnRequest
 
@@ -93,10 +97,10 @@ Das `Scoping`-Element enthält eine Liste mit Identitätsanbietern und ist bei `
 Wenn Sie sich für die Angabe entscheiden, schließen Sie nicht das `ProxyCount`-Attribut, `IDPListOption` oder das `RequesterID`-Element ein, da diese nicht unterstützt werden.
 
 ### <a name="signature"></a>Signatur
-Schließen Sie in `AuthnRequest`-Elementen kein `Signature`-Element ein, da Azure AD nicht signierte Authentifizierungsanforderungen unterstützt.
+Fügen Sie kein `Signature`-Element in `AuthnRequest`-Elemente ein. Azure AD überprüft keine signierten Authentifizierungsanforderungen. Die Überprüfung des Anforderers erfolgt, indem nur auf registrierte Assertionsverbraucherdienst-URLs reagiert wird.
 
 ### <a name="subject"></a>Subject
-Azure AD ignoriert das `Subject`-Element von `AuthnRequest`-Elementen.
+Fügen Sie kein `Subject`-Element ein. Das Angeben eines „Subject“-Elements für eine Anforderung wird von Azure AD nicht unterstützt, und bei Angabe wird ein Fehler zurückgegeben.
 
 ## <a name="response"></a>Antwort
 Wenn eine angeforderte Anmeldung erfolgreich abgeschlossen wird, sendet Azure AD eine Antwort an den Clouddienst. Eine Antwort auf einen erfolgreichen Anmeldeversuch sieht wie im folgenden Beispiel aus:

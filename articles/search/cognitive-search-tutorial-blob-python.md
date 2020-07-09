@@ -8,13 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 02/26/2020
-ms.openlocfilehash: e7708b0043b7f5baf2c12e813306595cc358a01d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 06/12/2020
+ms.custom: tracking-python
+ms.openlocfilehash: 0cb266f512875f588c5bf95e31b207b9c49e4e96
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78194053"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85552605"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Tutorial: Verwenden von Python und KI zum Generieren von durchsuchbarem Inhalt über Azure-Blobs
 
@@ -91,7 +92,7 @@ Erstellen Sie diese beiden Dienste nach Möglichkeit in derselben Region und Res
    Die Verbindungszeichenfolge ist eine URL, die in etwa wie folgt aussieht:
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=<storageaccountname>;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
 1. Speichern Sie die Verbindungszeichenfolge im Editor. Sie wird später bei der Einrichtung der Datenquellenverbindung benötigt.
@@ -100,7 +101,7 @@ Erstellen Sie diese beiden Dienste nach Möglichkeit in derselben Region und Res
 
 Die KI-Anreicherung basiert auf Cognitive Services (einschließlich Textanalyse und maschinellem Sehen für die Verarbeitung von natürlicher Sprache und Bildern). Bei der Erstellung eines echten Prototyps oder Projekts würden Sie an dieser Stelle Cognitive Services bereitstellen (in der gleichen Region wie Azure Cognitive Search), um eine Verknüpfung mit Indizierungsvorgängen zu ermöglichen.
 
-In dieser Übung können Sie die Ressourcenbereitstellung allerdings überspringen, da Azure Cognitive Search im Hintergrund eine Verbindung mit Cognitive Services herstellen kann und 20 kostenlose Transaktionen pro Indexerausführung ermöglicht. Da in diesem Tutorial sieben Transaktionen verwendet werden, ist die kostenlose Zuteilung ausreichend. Planen Sie bei umfangreicheren Projekten die Bereitstellung von Cognitive Services im S0-Tarif (nutzungsbasierte Bezahlung). Weitere Informationen finden Sie unter [Anfügen einer Cognitive Services-Ressource an eine Qualifikationsgruppe in Azure Search](cognitive-search-attach-cognitive-services.md).
+Da in diesem Tutorial nur 7 Transaktionen verwendet werden, können Sie die Ressourcenbereitstellung überspringen, weil Azure Cognitive Search eine Verbindung mit Cognitive Services für 20 kostenlose Transaktionen pro Indexer-Ausführung herstellen kann. Die kostenlose Speicherbelegung ist ausreichend. Planen Sie bei umfangreicheren Projekten die Bereitstellung von Cognitive Services im S0-Tarif (nutzungsbasierte Bezahlung). Weitere Informationen finden Sie unter [Anfügen einer Cognitive Services-Ressource an eine Qualifikationsgruppe in Azure Search](cognitive-search-attach-cognitive-services.md).
 
 ### <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
@@ -152,7 +153,7 @@ endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
 headers = {'Content-Type': 'application/json',
            'api-key': '<YOUR-ADMIN-API-KEY>'}
 params = {
-    'api-version': '2019-05-06'
+    'api-version': '2020-06-30'
 }
 ```
 
@@ -219,12 +220,14 @@ skillset_payload = {
             "defaultLanguageCode": "en",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/content"
+                    "name": "text", 
+                    "source": "/document/content"
                 }
             ],
             "outputs": [
                 {
-                    "name": "organizations", "targetName": "organizations"
+                    "name": "organizations", 
+                    "targetName": "organizations"
                 }
             ]
         },
@@ -232,7 +235,8 @@ skillset_payload = {
             "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/content"
+                    "name": "text", 
+                    "source": "/document/content"
                 }
             ],
             "outputs": [
@@ -268,10 +272,12 @@ skillset_payload = {
             "context": "/document/pages/*",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/pages/*"
+                    "name": "text", 
+                    "source": "/document/pages/*"
                 },
                 {
-                    "name": "languageCode", "source": "/document/languageCode"
+                    "name": "languageCode", 
+                    "source": "/document/languageCode"
                 }
             ],
             "outputs": [
@@ -377,9 +383,9 @@ Ein [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 
 
 Um diese Objekte in einem Indexer zusammenzuführen, müssen Sie Feldzuordnungen definieren.
 
-+ fieldMappings werden vor der Qualifikationsgruppe verarbeitet, und die Quellfelder der Datenquelle werden Zielfeldern in einem Index zugeordnet. Wenn die Feldnamen und -typen auf beiden Seiten gleich sind, ist keine Zuordnung erforderlich.
++ Die `"fieldMappings"` werden vor dem Skillset verarbeitet, wobei die Quellfelder aus der Datenquelle Zielfeldern in einem Index zugeordnet werden. Wenn die Feldnamen und -typen auf beiden Seiten gleich sind, ist keine Zuordnung erforderlich.
 
-+ outputFieldMappings werden nach der Qualifikationsgruppe verarbeitet. Es wird auf nicht vorhandene sourceFieldNames verwiesen, bis diese per Dokumententschlüsselung oder Anreicherung erstellt werden. targetFieldName ist ein Feld in einem Index.
++ Die `"outputFieldMappings"` werden nach dem Skillset verarbeitet. Dabei wird auf `"sourceFieldNames"` verwiesen, die so lange nicht vorhanden sind, bis sie per Dokumententschlüsselung oder Anreicherung erstellt werden. Der `"targetFieldName"` ist ein Feld in einem Index.
 
 Neben dem Verknüpfen von Ein- und Ausgaben können Sie auch Feldzuordnungen nutzen, um Datenstrukturen zu vereinfachen. Weitere Informationen finden Sie unter [Zuordnen angereicherter Felder zu einem durchsuchbaren Index](cognitive-search-output-field-mapping.md).
 
@@ -464,7 +470,7 @@ r = requests.get(endpoint + "/indexers/" + indexer_name +
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-Überprüfen Sie „lastResult“ auf die Werte für „status“ und „endTime“ in der Antwort. Führen Sie das Skript regelmäßig aus, um den Status zu überprüfen. Wenn der Indexer abgeschlossen wurde, wird der Status auf „success“ festlegt, ein Wert für „endTime“ wird angegeben, und die Antwort enthält Fehler und Warnungen, die bei der Anreicherung aufgetreten sind.
+Überwachen Sie in der Antwort das `"lastResult"` auf seine `"status"`- und `"endTime"`-Werte. Führen Sie das Skript regelmäßig aus, um den Status zu überprüfen. Wenn der Indexer abgeschlossen wurde, wird der Status auf „success“ festlegt, ein Wert für „endTime“ wird angegeben, und die Antwort enthält Fehler und Warnungen, die bei der Anreicherung aufgetreten sind.
 
 ![Indexererstellung](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "Indexererstellung")
 
@@ -504,7 +510,7 @@ Die Ergebnisse sollten in etwa dem folgenden Beispiel entsprechen. Im Screenshot
 
 ![Abfragen des Index: Inhalte von Organisationen](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "Abfragen des Indexes, um die Inhalte von Organisationen zurückzugeben")
 
-Wiederholen Sie das Verfahren in dieser Übung für weitere Felder: „content“, „languageCode“, „keyPhrases“ und „organizations“. Mithilfe von `$select` können Sie unter Einsatz einer durch Trennzeichen getrennten Liste mehrere Felder zurückgeben.
+Wiederholen Sie das für die folgenden zusätzlichen Felder in dieser Übung: `content`, `languageCode`, `keyPhrases` und `organizations`. Mithilfe von `$select` können Sie unter Einsatz einer durch Trennzeichen getrennten Liste mehrere Felder zurückgeben.
 
 Sie können GET oder POST verwenden, abhängig von der Komplexität und Länge der Abfragezeichenfolge. Weitere Informationen finden Sie unter [Abfragen mithilfe der REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 

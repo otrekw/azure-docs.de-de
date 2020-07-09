@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Funktionen in der Vorschau | Microsoft Docs'
+title: 'Azure AD Connect: Funktionen in der Vorschau | Microsoft-Dokumentation'
 description: In diesem Thema werden Funktionen detaillierter beschrieben, die sich in Azure AD Connect in der Preview befinden.
 services: active-directory
 documentationcenter: ''
@@ -11,39 +11,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 07/13/2017
+ms.topic: how-to
+ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bb7305fe8ee96697c5c8b2172e32a2a97e5bd6c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230178"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358428"
 ---
 # <a name="more-details-about-features-in-preview"></a>Weitere Informationen zu den Funktionen in der Vorschau
 In diesem Thema wird beschrieben, wie Sie Funktionen verwenden, die sich derzeit in der Vorschau befinden.
 
-## <a name="group-writeback"></a>Gruppenrückschreiben
-Mit der Option zum Gruppenrückschreiben, die unter den optionalen Features aufgeführt ist, können Sie **Office 365-Gruppen** in eine Gesamtstruktur zurückschreiben, in der Exchange installiert ist. Dies ist eine Gruppe, die immer in der Cloud verwaltet wird. Wenn Sie über lokales Exchange verfügen, können Sie diese Gruppen in die lokale Installation zurückschreiben, damit Benutzer mit einem lokalen Exchange-Postfach E-Mails von diesen Gruppen empfangen und an sie senden können.
+## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Synchronisierungsendpunkt-API V2 für Azure AD Connect (öffentliche Vorschau) 
 
-Weitere Informationen zu Office 365-Gruppen und zu deren Verwendung finden Sie [hier](https://aka.ms/O365g).
-
-Eine Office 365-Gruppe wird im lokalen AD DS als Verteilergruppe dargestellt. Auf dem lokalen Exchange-Server muss das kumulative Update 8 für Exchange Server 2013 (vom März 2015) oder Exchange 2016 installiert sein, damit dieser neue Gruppentyp erkannt wird.
-
-**Hinweise während der Vorschau**
-
-* Das Adressbuchattribut ist in der Vorschau derzeit nicht aufgefüllt. Ohne dieses Attribut ist diese Gruppe in der globalen Adressliste nicht sichtbar. Am einfachsten können Sie dieses Attribut mit dem Exchange PowerShell-Cmdlet `update-recipient`auffüllen.
-* Nur Gesamtstrukturen mit dem Exchange-Schema sind gültige Ziele für Gruppen. Wenn kein Exchange erkannt wurde, kann das Gruppenrückschreiben nicht aktiviert werden.
-* Derzeit werden nur Bereitstellungen unterstützt, bei der eine Exchange-Organisation eine einzelne Gesamtstruktur darstellt. Wenn Sie lokal über mehrere Exchange-Organisationen verfügen, benötigen Sie eine lokale Lösung für die Synchronisierung der globalen Adressliste, damit diese Gruppen in Ihren anderen Gesamtstrukturen angezeigt werden können.
-* Das Feature „Gruppenrückschreiben“ verarbeitet keine Sicherheitsgruppen oder Verteilergruppen.
-
-> [!NOTE]
-> Für das Gruppenrückschreiben ist ein Azure AD Premium-Abonnement erforderlich.
-> 
->
+Wir haben einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, mit dem die Leistung der Synchronisierungsdienstvorgänge für Azure Active Directory verbessert wird. Wenn Sie den neuen V2-Endpunkt verwenden, treten beim Exportieren aus und Importieren in Azure AD spürbare Leistungssteigerungen auf. Dieser neue Endpunkt unterstützt auch das Synchronisieren von Gruppen mit bis zu 250.000 Mitgliedern. Mithilfe dieses Endpunkts können Sie auch vereinheitlichte O365-Gruppen ohne maximale Mitgliedschaftsbeschränkung in Ihr lokales Active Directory zurückschreiben, wenn Gruppenrückschreiben aktiviert ist.   Weitere Informationen finden Sie unter [Synchronisierungsendpunkt-API V2 für Azure AD Connect (öffentliche Vorschau)](how-to-connect-sync-endpoint-api-v2.md).
 
 ## <a name="user-writeback"></a>Rückschreiben von Benutzern
 > [!IMPORTANT]

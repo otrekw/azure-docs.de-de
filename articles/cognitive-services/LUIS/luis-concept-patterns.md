@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 86f4eab266aabccd25e1269e1942e535f6af5436
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d8088f537c4148f780c5f250eda3dcd5198f67f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591834"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683908"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Verbessern der Vorhersagegenauigkeit mit Mustern
 Muster werden entworfen, um die Genauigkeit zu erhöhen, wenn mehrere Äußerungen sehr ähnlich sind.  Ein Muster ermöglicht es Ihnen, größere Genauigkeit für eine Absicht zu erreichen, ohne viele weitere Äußerungen anzugeben.
@@ -36,16 +36,16 @@ Wenn einer App zwischen 10 und 20 Äußerungen mit unterschiedlicher Satzlänge,
 Muster lösen Probleme in den folgenden Situationen:
 
 * die Absichtsbewertung ist gering
-* die richtige Absicht hat nicht die höchste Punktzahl, kommt der höchsten Punktzahl aber sehr nahe 
+* die richtige Absicht hat nicht die höchste Punktzahl, kommt der höchsten Punktzahl aber sehr nahe
 
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Muster stellen eine Garantie für Absicht dar
 Muster verwenden eine Kombination von Vorhersagetechnologien. Das Festlegen einer Absicht für eine Vorlagenäußerung in einem Muster stellt keine Garantie für die Absichtsvorhersage dar, liefert aber ein starkes Signal.
 
 <a name="patterns-do-not-improve-entity-detection"/></a>
 
-## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Muster verbessern nicht die Erkennung von Entitäten, die mit Machine Learning trainiert wurden
+## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>Muster verbessern nicht die Erkennung von Machine Learning-Entitäten.
 
-Ein Muster ist in erster Linie zur Unterstützung der Vorhersage bei Absichten und Rollen vorgesehen. Die Entität _pattern.any_ wird zum Extrahieren von Freiformentitäten verwendet. Zwar verwenden Muster Entitäten, ein Muster hilft jedoch nicht beim Erkennen einer mit Machine Learning trainierten Entität.
+Ein Muster ist in erster Linie zur Unterstützung der Vorhersage bei Absichten und Rollen vorgesehen. Die Entität _pattern.any_ wird zum Extrahieren von Freiformentitäten verwendet. Zwar verwenden Muster Entitäten, ein Muster hilft jedoch nicht beim Erkennen einer Machine Learning-Entität.
 
 Erwarten Sie keine verbesserte Vorhersage von Entitäten, wenn Sie mehrere Äußerungen in einem einzelnen Muster zusammenfassen. Damit einfache Entitäten ausgelöst werden, müssen Sie Äußerungen hinzufügen oder Listenentitäten verwenden, da Ihr Muster andernfalls nicht ausgelöst wird.
 
@@ -59,7 +59,7 @@ Eine ausreichende Anzahl von Beispieläußerungen vorausgesetzt, wäre LUIS imst
 Ein Musterabgleich erfolgt so, dass zuerst die Entitäten innerhalb des Musters erkannt und dann der Rest der Wörter und die Wortstellung bewertet werden. Entitäten sind im Muster erforderlich, damit ein Musterabgleich erfolgen kann. Das Muster wird auf Tokenebene, nicht auf Zeichenebene angewandt.
 
 ## <a name="pattern-only-apps"></a>Apps, die nur auf Mustern beruhen
-Sie können eine App mit Absichten erstellen, die über keine Beispieläußerungen verfügen, solange es für jede Absicht ein Muster gibt. Bei Apps, die nur auf Mustern beruhen, sollte das Muster keine mit Machine Learning trainierten Entitäten enthalten, da für diese Beispieläußerungen erforderlich sind.
+Sie können eine App mit Absichten erstellen, die über keine Beispieläußerungen verfügen, solange es für jede Absicht ein Muster gibt. Bei Apps, die nur auf Mustern beruhen, sollte das Muster keine Machine Learning-Entitäten enthalten, da für diese Beispieläußerungen erforderlich sind.
 
 ## <a name="patternany-entity"></a>Entität „Pattern.any“
 

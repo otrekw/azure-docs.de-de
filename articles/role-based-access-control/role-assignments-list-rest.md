@@ -1,6 +1,6 @@
 ---
-title: Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und der REST-API
-description: Erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure und der REST-API ermitteln können, auf welche Ressourcen Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten Zugriff haben.
+title: Auflisten von Azure-Rollenzuweisungen mithilfe der REST-API – Azure RBAC
+description: Erfahren Sie, wie Sie mithilfe der REST-API und der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) ermitteln können, auf welche Ressourcen Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten Zugriff haben.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -11,18 +11,18 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 03/19/2020
+ms.topic: how-to
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a494e7fd4c9fb79faa6a1d8cb2c3c871796ccdc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 634e1111c9374a1749e7dbb0666740ce2833a688
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062158"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790975"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und der REST-API
+# <a name="list-azure-role-assignments-using-the-rest-api"></a>Auflisten von Azure-Rollenzuweisungen mithilfe der REST-API
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] In diesem Artikel wird beschrieben, wie Sie mit der REST-API Rollenzuweisungen auflisten.
 
@@ -31,7 +31,7 @@ ms.locfileid: "80062158"
 
 ## <a name="list-role-assignments"></a>Auflisten der Rollenzuweisungen
 
-Zum Auflisten des Zugriffs in RBAC führen Sie die Rollenzuweisungen auf. Um Rollenzuweisungen aufzulisten, verwenden Sie eine der REST-APIs unter [Rollenzuweisungen – Auflisten](/rest/api/authorization/roleassignments/list). Um die Ergebnisse einzugrenzen, geben Sie einen Bereich und einen optionalen Filter an.
+Zum Auflisten des Zugriffs in Azure RBAC führen Sie die Rollenzuweisungen auf. Um Rollenzuweisungen aufzulisten, verwenden Sie eine der REST-APIs unter [Rollenzuweisungen – Auflisten](/rest/api/authorization/roleassignments/list). Um die Ergebnisse einzugrenzen, geben Sie einen Bereich und einen optionalen Filter an.
 
 1. Beginnen Sie mit der folgenden Anforderung:
 
@@ -61,7 +61,36 @@ Zum Auflisten des Zugriffs in RBAC führen Sie die Rollenzuweisungen auf. Um Rol
     > | `$filter=atScope()+and+assignedTo('{objectId}')` | Listet die Rollenzuweisungen für bestimmte Benutzer oder Dienstprinzipale sowie im angegebenen Umfang auf. |
     > | `$filter=principalId+eq+'{objectId}'` | Listet die Rollenzuweisungen für bestimmte Benutzer, Gruppen oder Dienstprinzipale auf. |
 
+Mit der folgenden Anforderung werden alle Rollenzuweisungen für den angegebenen Benutzer im Abonnementbereich angezeigt:
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()+and+assignedTo('{objectId1}')
+```
+
+Nachfolgend sehen Sie ein Beispiel für die Ausgabe:
+
+```json
+{
+    "value": [
+        {
+            "properties": {
+                "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+                "principalId": "{objectId1}",
+                "scope": "/subscriptions/{subscriptionId1}",
+                "createdOn": "2019-01-15T21:08:45.4904312Z",
+                "updatedOn": "2019-01-15T21:08:45.4904312Z",
+                "createdBy": "{createdByObjectId1}",
+                "updatedBy": "{updatedByObjectId1}"
+            },
+            "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
+            "type": "Microsoft.Authorization/roleAssignments",
+            "name": "{roleAssignmentId1}"
+        }
+    ]
+}
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der REST-API](role-assignments-rest.md)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der REST-API](role-assignments-rest.md)
 - [Azure REST-API-Referenz](/rest/api/azure/)

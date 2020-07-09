@@ -5,20 +5,20 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 01/09/2020
+ms.date: 05/11/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 2b506c9d15dafcd23b24207fe15ed0532939209f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dba321d055e64d62ca91f95461c3299bee5f90d2
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310695"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714218"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Erfassen einer Browserablaufverfolgung zur Problembehandlung
 
-Wenn Sie ein Problem mit dem Azure-Portal beheben und sich an den Microsoft-Support wenden müssen, empfiehlt es sich, zuerst eine Browserablaufverfolgung und einige zusätzliche Informationen zu erfassen. Die erfassten Informationen können zu dem Zeitpunkt, an dem das Problem auftritt, wichtige Details zum Portal bereitstellen. Befolgen Sie die Schritte in diesem Artikel für die Entwicklertools in dem Browser, den Sie verwenden: Google Chrome oder Microsoft Edge (Chromium), Microsoft Edge (EdgeHTML) oder Apple Safari.
+Wenn Sie ein Problem mit dem Azure-Portal beheben und sich an den Microsoft-Support wenden müssen, empfiehlt es sich, zuerst eine Browserablaufverfolgung und einige zusätzliche Informationen zu erfassen. Die erfassten Informationen können zu dem Zeitpunkt, an dem das Problem auftritt, wichtige Details zum Portal bereitstellen. Befolgen Sie die Schritte in diesem Artikel für die Entwicklertools in dem Browser, den Sie verwenden: Google Chrome oder Microsoft Edge (Chromium), Microsoft Edge (EdgeHTML), Apple Safari oder Firefox.
 
 ## <a name="google-chrome-and-microsoft-edge-chromium"></a>Google Chrome und Microsoft Edge (Chromium)
 
@@ -58,9 +58,9 @@ Google Chrome und Microsoft Edge (Chromium) basieren auf dem [Open-Source-Projek
 
     ![Screenshot: „HAR exportieren“](media/capture-browser-trace/chromium-network-export-har.png)
 
-1. Beenden Sie die Schrittaufzeichnung, und speichern Sie die Datei.
+1. Beenden Sie die Schrittaufzeichnung, und speichern Sie die Aufzeichnung.
 
-1. Wählen Sie im Bereich mit dem Entwicklertools des Browsers die Registerkarte **Konsole** aus. Klicken Sie mit der rechten Maustaste, und wählen Sie dann **Speichern unter...** aus. Speichern Sie die Konsolenausgabe in einer Textdatei.
+1. Wählen Sie im Bereich mit dem Entwicklertools des Browsers die Registerkarte **Konsole** aus. Klicken Sie mit der rechten Maustaste auf eine der Nachrichten, wählen Sie **Speichern unter** aus, und speichern Sie die Konsolenausgabe in einer Textdatei.
 
     ![Screenshot der Konsolenausgabe](media/capture-browser-trace/chromium-console-select.png)
 
@@ -104,7 +104,7 @@ In den folgenden Schritten wird gezeigt, wie die Entwicklertools in Microsoft Ed
 
     ![Screenshot: „Als HAR exportieren“](media/capture-browser-trace/edge-network-export-har.png)
 
-1. Beenden Sie die Schrittaufzeichnung, und speichern Sie die Datei.
+1. Beenden Sie die Schrittaufzeichnung, und speichern Sie die Aufzeichnung.
 
 1. Wählen Sie im Bereich mit dem Entwicklertools des Browsers die Registerkarte **Konsole** aus, und erweitern Sie das Fenster. Platzieren Sie den Cursor am Anfang der Konsolenausgabe, und markieren und wählen Sie dann den gesamten Inhalt der Ausgabe aus. Klicken Sie mit der rechten Maustaste, und wählen Sie dann **Kopieren** aus. Speichern Sie die Konsolenausgabe in einer Textdatei.
 
@@ -158,11 +158,53 @@ In den folgenden Schritten wird gezeigt, wie die Entwicklertools in Apple Safari
 
     ![Screenshot: „Exportieren“](media/capture-browser-trace/safari-network-export-har.png)
 
-1. Beenden Sie die Bildschirmaufzeichnung, und speichern Sie die Datei.
+1. Beenden Sie die Bildschirmaufzeichnung, und speichern Sie die Aufzeichnung.
 
 1. Wählen Sie im Bereich mit dem Entwicklertools des Browsers die Registerkarte **Konsole** aus, und erweitern Sie das Fenster. Platzieren Sie den Cursor am Anfang der Konsolenausgabe, und markieren und wählen Sie dann den gesamten Inhalt der Ausgabe aus. Verwenden Sie Befehlstaste-C, um die Ausgabe zu kopieren, und speichern Sie sie in einer Textdatei.
 
     ![Screenshot der Konsolenausgabe](media/capture-browser-trace/safari-console-select.png)
+
+1. Packen Sie die HAR-Datei, die Konsolenausgabe und die Bildschirmaufzeichnung in einem komprimierten Format wie ZIP, und teilen Sie sie dann mit dem Microsoft-Support.
+
+## <a name="firefox"></a>Firefox
+
+In den folgenden Schritten wird das Verwenden der Entwicklertools in Firefox gezeigt. Weitere Informationen finden Sie unter [Firefox-Entwicklertools](https://developer.mozilla.org/docs/Tools).
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Es ist wichtig, sich anzumelden, _bevor_ Sie die Ablaufverfolgung starten, damit die Ablaufverfolgung keine vertraulichen Informationen im Zusammenhang mit Ihrer Anmeldung enthält. 
+
+1. Beginnen Sie mit der Aufzeichnung der Schritte, die Sie im Portal durchführen. Verwenden Sie die [Schrittaufzeichnung](https://support.microsoft.com/help/22878/windows-10-record-steps) unter Windows, oder lesen Sie [So machst du eine Aufnahme deines Mac-Bildschirms](https://support.apple.com/HT208721).
+
+1. Navigieren Sie im Portal zu dem Schritt, der unmittelbar vor dem Auftreten des Problems liegt.
+
+1. Drücken Sie F12, oder wählen Sie ![Screenshot des Symbols „Browsereinstellungen“](media/capture-browser-trace/firefox-icon-settings.png) > **Web Developer** > **Entwicklertools umschalten** aus.
+
+1. Standardmäßig speichert der Browser Ablaufverfolgungsinformationen nur für die Seite, die derzeit geladen ist. Legen Sie die folgenden Optionen fest, damit der Browser alle Ablaufverfolgungsionformationen beibehält, auch wenn Sie für Ihre Reproduktion zu mehreren Seiten navigieren müssen:
+
+    1. Wählen Sie die Registerkarte **Netzwerk** und dann **Persist Logs** (Protokolle beibehalten) aus.
+
+          ![Screenshot von „Persist Logs“ (Protokolle beibehalten)](media/capture-browser-trace/firefox-network-persist-logs.png)
+
+    1. Wählen Sie die Registerkarte **Konsole**, anschließend **Konsoleneinstellungen** und dann **Persist Logs** (Protokolle beibehalten) aus.
+
+          ![Screenshot von „Persist Logs“ (Protokolle beibehalten)](media/capture-browser-trace/firefox-console-persist-logs.png)
+
+1. Wählen Sie die Registerkarte **Netzwerk** und dann **Löschen** aus.
+
+    ![Screenshot von „Löschen“](media/capture-browser-trace/firefox-clear-session.png)
+
+1. Reproduzieren Sie das Problem im Portal. Eine Sitzungsausgabe ähnlich der folgenden Abbildung wird angezeigt.
+
+    ![Screenshot der Ergebnisse der Browserablaufverfolgung](media/capture-browser-trace/firefox-browser-trace-results.png)
+
+1. Nachdem Sie das unerwartete Portalverhalten reproduziert haben, wählen Sie **HAR Export/Import** und dann **Save All As HAR** (Alles als HAR speichern) aus.
+
+    ![Screenshot: „HAR exportieren“](media/capture-browser-trace/firefox-network-export-har.png)
+
+1. Halten Sie die Schrittaufzeichnung unter Windows bzw. die Bildschirmaufzeichnung auf dem Mac an, und speichern Sie die Aufzeichnung.
+
+1. Wählen Sie im Bereich mit dem Entwicklertools des Browsers die Registerkarte **Konsole** aus. Klicken Sie mit der rechten Maustaste auf eine der Nachrichten, wählen Sie **Export Visible Message To** (Sichtbare Nachricht exportieren nach) aus, und speichern Sie die Konsolenausgabe in einer Textdatei.
+
+    ![Screenshot der Konsolenausgabe](media/capture-browser-trace/firefox-console-select.png)
 
 1. Packen Sie die HAR-Datei, die Konsolenausgabe und die Bildschirmaufzeichnung in einem komprimierten Format wie ZIP, und teilen Sie sie dann mit dem Microsoft-Support.
 

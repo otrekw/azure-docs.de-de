@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dd559a8dd0bd59b50f4a3fa663f57874d948bf71
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 549c85f92434504b931f0325959beb17ae92afba
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438852"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254887"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Tutorial: Verwenden einer Azure Resource Manager-Vorlage zum Erstellen einer Data Factory-Pipeline zum Kopieren von Daten 
 > [!div class="op_single_selector"]
@@ -56,10 +56,10 @@ In diesem Tutorial erstellen Sie eine Data Factory mit den folgenden Data Factor
 
 | Entität | BESCHREIBUNG |
 | --- | --- |
-| Mit Azure Storage verknüpfter Dienst |Verknüpft Ihr Azure Storage-Konto mit der Data Factory. Azure Storage ist der Quelldatenspeicher für die Kopieraktivität des Tutorials, Azure SQL-Datenbank der Senkendatenspeicher. Der Dienst gibt das Speicherkonto an, das die Eingabedaten für die Kopieraktivität enthält. |
-| Mit Azure SQL-Datenbank verknüpfter Dienst |Verknüpft Azure SQL-Datenbank mit der Data Factory. Der Dienst gibt die Azure SQL-Datenbank-Instanz zum Speichern der Ausgabedaten für die Kopieraktivität an. |
+| Mit Azure Storage verknüpfter Dienst |Verknüpft Ihr Azure Storage-Konto mit der Data Factory. Azure Storage ist der Quelldatenspeicher und Azure SQL-Datenbank der Senkendatenspeicher für die Kopieraktivität im Tutorial. Der Dienst gibt das Speicherkonto an, das die Eingabedaten für die Kopieraktivität enthält. |
+| Mit Azure SQL-Datenbank verknüpfter Dienst |Verknüpft die Datenbank in Azure SQL-Datenbank mit der Data Factory. Der Dienst gibt die Datenbank zum Speichern der Ausgabedaten für die Kopieraktivität an. |
 | Azure-Blob-Eingabedataset |Verweist auf den mit Azure Storage verknüpften Dienst. Der verknüpfte Dienst verweist auf ein Azure Storage-Konto, und das Azure-Blobdataset gibt den Container, Ordner und Dateinamen in dem Speicher an, der die Eingabedaten enthält. |
-| Azure SQL-Ausgabedataset |Verweist auf den mit Azure SQL verknüpften Dienst. Der mit Azure SQL verknüpfte Dienst verweist auf eine Azure SQL Server-Instanz, und das Azure SQL-Dataset gibt den Namen der Tabelle mit den Ausgabedaten an. |
+| Azure SQL-Ausgabedataset |Verweist auf den mit Azure SQL verknüpften Dienst. Der mit Azure SQL verknüpfte Dienst verweist auf einen logischen SQL Server, und das Azure SQL-Dataset gibt den Namen der Tabelle mit den Ausgabedaten an. |
 | Datenpipeline |Die Pipeline verfügt über eine einzelne Kopieraktivität mit dem Azure-Blob-Dataset als Eingabe und dem Azure SQL-Dataset als Ausgabe. Die Kopieraktivität kopiert Daten aus einem Azure-Blob in eine Tabelle in Azure SQL-Datenbank. |
 
 Eine Data Factory kann eine oder mehrere Pipelines haben. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Es gibt zwei Arten von Aktivitäten: [Datenverschiebungen](data-factory-data-movement-activities.md) und [Datentransformationen](data-factory-data-transformation-activities.md). In diesem Tutorial erstellen Sie eine Pipeline mit einer einzelnen Kopieraktivität.
@@ -106,9 +106,9 @@ Erstellen Sie im Ordner **C:\ADFGetStarted** eine JSON-Datei namens **ADFCopyTut
       "storageAccountKey": { "type": "securestring", "metadata": { "description": "Key for the Azure storage account." } },
       "sourceBlobContainer": { "type": "string", "metadata": { "description": "Name of the blob container in the Azure Storage account." } },
       "sourceBlobName": { "type": "string", "metadata": { "description": "Name of the blob in the container that has the data to be copied to Azure SQL Database table" } },
-      "sqlServerName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Server that will hold the output/copied data." } },
-      "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the Azure SQL server." } },
-      "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the Azure SQL server." } },
+      "sqlServerName": { "type": "string", "metadata": { "description": "Name of the logical SQL server that will hold the output/copied data." } },
+      "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the logical SQL server." } },
+      "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the logical SQL server." } },
       "sqlServerPassword": { "type": "securestring", "metadata": { "description": "Password for the user." } },
       "targetSQLTable": { "type": "string", "metadata": { "description": "Table in the Azure SQL Database that will hold the copied data." } 
       } 
@@ -288,7 +288,7 @@ Erstellen Sie eine JSON-Datei namens **ADFCopyTutorialARM-Parameters.json** mit 
 > [!IMPORTANT]
 > Geben Sie für „storageAccountName“ und „storageAccountKey“ den Namen und den Schlüssel Ihres Azure Storage-Kontos an.  
 > 
-> Geben Sie den Azure SQL-Server, die Datenbank, den Benutzer und das Kennwort für die Parameter „sqlServerName“, „databaseName“, „sqlServerUserName“ und „sqlServerPassword“ an.  
+> Geben Sie den logischen SQL-Server, die Datenbank, den Benutzer und das Kennwort für die Parameter „sqlServerName“, „databaseName“, „sqlServerUserName“ und „sqlServerPassword“ an.  
 
 ```json
 {
@@ -301,9 +301,9 @@ Erstellen Sie eine JSON-Datei namens **ADFCopyTutorialARM-Parameters.json** mit 
         },
         "sourceBlobContainer": { "value": "adftutorial" },
         "sourceBlobName": { "value": "emp.txt" },
-        "sqlServerName": { "value": "<Name of the Azure SQL server>" },
-        "databaseName": { "value": "<Name of the Azure SQL database>" },
-        "sqlServerUserName": { "value": "<Name of the user who has access to the Azure SQL database>" },
+        "sqlServerName": { "value": "<Name of the logical SQL server>" },
+        "databaseName": { "value": "<Name of the database>" },
+        "sqlServerUserName": { "value": "<Name of the user who has access to the database>" },
         "sqlServerPassword": { "value": "<password for the user>" },
         "targetSQLTable": { "value": "emp" }
     }
@@ -413,7 +413,7 @@ Die AzureStorageLinkedService-Instanz verknüpft Ihr Azure Storage-Konto mit der
 Die Verbindungszeichenfolge (connectionString) enthält die Parameter „storageAccountName“ und „storageAccountKey“. Die Werte für diese Parameter werden mithilfe einer Konfigurationsdatei übergeben. In der Definition werden außerdem die in der Vorlage definierten Variablen „azureStorageLinkedService“ und „dataFactoryName“ verwendet. 
 
 #### <a name="azure-sql-database-linked-service"></a>Mit Azure SQL-Datenbank verknüpfter Dienst
-AzureSqlLinkedService verknüpft Azure SQL-Datenbank mit der Data Factory. Die aus Blob Storage kopierten Daten werden in dieser Datenbank gespeichert. Sie haben im Rahmen der Schritte zur Erfüllung der [Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) die Tabelle „emp“ in dieser Datenbank erstellt. In diesem Abschnitt geben Sie den Namen der Azure SQL Server-Instanz, den Datenbanknamen, den Benutzernamen und das Benutzerkennwort an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure SQL verknüpften Diensts finden Sie unter [Mit Azure SQL verknüpfter Dienst](data-factory-azure-sql-connector.md#linked-service-properties).  
+„AzureSqlLinkedService“ verknüpft Ihre Datenbank in Azure SQL-Datenbank mit der Data Factory. Die aus Blob Storage kopierten Daten werden in dieser Datenbank gespeichert. Sie haben im Rahmen der Schritte zur Erfüllung der [Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) die Tabelle „emp“ in dieser Datenbank erstellt. In diesem Abschnitt geben Sie den Namen des logischen SQL Servers, den Datenbanknamen, den Benutzernamen und das Benutzerkennwort an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure SQL verknüpften Diensts finden Sie unter [Mit Azure SQL verknüpfter Dienst](data-factory-azure-sql-connector.md#linked-service-properties).  
 
 ```json
 {
@@ -572,7 +572,7 @@ In diesem Abschnitt definieren Sie eine Pipeline, die Daten aus dem Azure-Blobda
 ```
 
 ## <a name="reuse-the-template"></a>Wiederverwenden der Vorlage
-In diesem Tutorial haben Sie eine Vorlage zum Definieren von Data Factory-Entitäten und eine Vorlage zum Übergeben von Parameterwerten erstellt. Die Pipeline kopiert Daten aus einem Azure Storage-Konto in eine mithilfe von Parametern angegebene Azure SQL-Datenbank-Instanz. Mit der gleichen Vorlage können Sie Data Factory-Entitäten in unterschiedlichen Umgebungen bereitstellen. Hierzu müssen Sie lediglich eine Parameterdatei für die jeweilige Umgebung erstellen und beim Bereitstellen in dieser Umgebung verwenden.     
+In diesem Tutorial haben Sie eine Vorlage zum Definieren von Data Factory-Entitäten und eine Vorlage zum Übergeben von Parameterwerten erstellt. Die Pipeline kopiert Daten aus einem Azure Storage-Konto in Azure SQL-Datenbank (angegeben mithilfe von Parametern). Mit der gleichen Vorlage können Sie Data Factory-Entitäten in unterschiedlichen Umgebungen bereitstellen. Hierzu müssen Sie lediglich eine Parameterdatei für die jeweilige Umgebung erstellen und beim Bereitstellen in dieser Umgebung verwenden.     
 
 Beispiel:  
 

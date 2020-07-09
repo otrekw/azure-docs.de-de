@@ -1,7 +1,7 @@
 ---
-title: Netzwerktopologien für Migrationen vom Typ „Verwaltete SQL-Instanz“
+title: Netzwerktopologien für Migrationen von verwalteten SQL-Instanzen
 titleSuffix: Azure Database Migration Service
-description: Lernen Sie die Quell- und Zielkonfigurationen für Migrationen von verwalteten Azure SQL-Datenbank-Instanzen mithilfe von Azure Database Migration Service kennen.
+description: Lernen Sie die Quell- und Zielkonfigurationen für Migrationen von verwalteten Azure SQL-Instanzen mithilfe von Azure Database Migration Service kennen.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,46 +12,46 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 48485b7ba0f846afa737454b092a6c1ee986b737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31dfae60b1967e221e294195f66bb7fe59a15e64
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78254954"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187520"
 ---
-# <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-azure-database-migration-service"></a>Netzwerktopologien für Migrationen von verwalteten Azure SQL-Datenbank-Instanzen mithilfe von Azure Database Migration Service
+# <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Netzwerktopologien für Migrationen von verwalteten Azure SQL-Instanzen mithilfe von Azure Database Migration Service
 
-In diesem Artikel werden verschiedene Netzwerktopologien erläutert, die Azure Database Migration Service verwenden kann, um eine umfassende Migration von lokalen SQL Server-Instanzen zu einer verwalteten Azure SQL-Datenbank-Instanz zu ermöglichen.
+In diesem Artikel werden verschiedene Netzwerktopologien erläutert, die Azure Database Migration Service verwenden kann, um eine umfassende Migration von SQL Server-Instanzen zu einer verwalteten Azure SQL-Instanz zu ermöglichen.
 
-## <a name="azure-sql-database-managed-instance-configured-for-hybrid-workloads"></a>Verwaltete Azure SQL-Datenbank-Instanz konfiguriert für Hybridworkloads 
+## <a name="azure-sql-managed-instance-configured-for-hybrid-workloads"></a>Verwaltete Azure SQL-Instanz konfiguriert für Hybridworkloads 
 
-Verwenden Sie diese Topologie, wenn die verwaltete Azure SQL-Datenbank-Instanz mit Ihrem lokalen Netzwerk verbunden ist. Dieser Ansatz nutzt das einfachste Netzwerkrouting bei maximalem Datendurchsatz während der Migration.
+Verwenden Sie diese Topologie, wenn die verwaltete Azure SQL-Instanz mit Ihrem lokalen Netzwerk verbunden ist. Dieser Ansatz nutzt das einfachste Netzwerkrouting bei maximalem Datendurchsatz während der Migration.
 
 ![Netzwerktopologie für Hybridworkloads](media/resource-network-topologies/hybrid-workloads.png)
 
 **Anforderungen**
 
-- In diesem Szenario werden die verwaltete Azure SQL-Datenbank-Instanz und die Azure Database Migration Service-Instanz in derselben Microsoft Azure Virtual Network-Instanz erstellt, sie nutzen jedoch unterschiedliche Subnetze.  
+- In diesem Szenario werden die verwaltete SQL-Instanz und die Azure Database Migration Service-Instanz in derselben Microsoft Azure Virtual Network-Instanz erstellt, sie nutzen jedoch unterschiedliche Subnetze.  
 - Das in diesem Szenario verwendete virtuelle Netzwerk ist über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) auch mit dem lokalen Netzwerk verbunden.
 
-## <a name="azure-sql-database-managed-instance-isolated-from-the-on-premises-network"></a>Verwaltete Azure SQL-Datenbank-Instanz isoliert vom lokalen Netzwerk
+## <a name="sql-managed-instance-isolated-from-the-on-premises-network"></a>Verwaltete SQL-Instanz isoliert vom lokalen Netzwerk
 
 Verwenden Sie diese Netzwerktopologie, wenn Ihre Umgebung mindestens eines der folgenden Szenarien erfordert:
 
-- Die verwaltete Azure SQL-Datenbank-Instanz ist von der lokalen Konnektivität isoliert, aber die Azure Database Migration Service-Instanz ist mit dem lokalen Netzwerk verbunden.
-- Es gelten RBAC-Richtlinien (rollenbasierte Zugriffssteuerung), und Sie müssen den Benutzerzugriff auf das Abonnement beschränken, unter dem die verwaltete Azure SQL-Datenbank-Instanz gehostet wird.
-- Die für die verwaltete Azure SQL-Datenbank-Instanz und Azure Database Migration Service verwendeten virtuellen Netzwerke befinden sich in unterschiedlichen Abonnements.
+- Die verwaltete SQL-Instanz ist von der lokalen Konnektivität isoliert, aber die Azure Database Migration Service-Instanz ist mit dem lokalen Netzwerk verbunden.
+- Es gelten RBAC-Richtlinien (rollenbasierte Zugriffssteuerung), und Sie müssen den Benutzerzugriff auf das Abonnement beschränken, unter dem die verwaltete SQL-Instanz gehostet wird.
+- Die für die verwaltete SQL-Instanz und Azure Database Migration Service verwendeten virtuellen Netzwerke befinden sich in unterschiedlichen Abonnements.
 
 ![Netzwerktopologie für eine vom lokalen Netzwerk isolierte verwaltete Instanz](media/resource-network-topologies/mi-isolated-workload.png)
 
 **Anforderungen**
 
 - Das virtuelle Netzwerk, das Azure Database Migration Service für dieses Szenario verwendet, muss über ExpressRoute (https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) auch mit dem lokalen Netzwerk verbunden sein.
-- Richten Sie ein [VNET-Netzwerkpeering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) zwischen dem virtuellen Netzwerk für die verwaltete Azure SQL-Datenbank-Instanz und Azure Database Migration Service ein.
+- Richten Sie ein [VNET-Netzwerkpeering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) zwischen dem virtuellen Netzwerk für die verwaltete SQL-Instanz und Azure Database Migration Service ein.
 
 ## <a name="cloud-to-cloud-migrations-shared-virtual-network"></a>Cloud-zu-Cloud-Migrationen: gemeinsam genutztes virtuelles Netzwerk
 
-Verwenden Sie diese Topologie, wenn die SQL Server-Quelle auf einer Azure-VM gehostet wird und dasselbe virtuelle Netzwerk wie die verwaltete Azure SQL-Datenbank-Instanz und Azure Database Migration Service nutzt.
+Verwenden Sie diese Topologie, wenn die SQL Server-Quelle auf einer Azure-VM gehostet wird und dasselbe virtuelle Netzwerk wie die verwaltete SQL-Instanz und Azure Database Migration Service nutzt.
 
 ![Netzwerktopologie für Cloud-zu-Cloud-Migrationen mit einem gemeinsam genutzten VNet](media/resource-network-topologies/cloud-to-cloud.png)
 
@@ -63,15 +63,15 @@ Verwenden Sie diese Topologie, wenn die SQL Server-Quelle auf einer Azure-VM geh
 
 Verwenden Sie diese Netzwerktopologie, wenn Ihre Umgebung mindestens eines der folgenden Szenarien erfordert:
 
-- Die verwaltete Azure SQL-Datenbank-Instanz wird in einem isolierten virtuellen Netzwerk bereitgestellt.
-- Es gelten RBAC-Richtlinien (rollenbasierte Zugriffssteuerung), und Sie müssen den Benutzerzugriff auf das Abonnement beschränken, unter dem die verwaltete Azure SQL-Datenbank-Instanz gehostet wird.
-- Die für die verwaltete Azure SQL-Datenbank-Instanz und Azure Database Migration Service verwendeten virtuellen Netzwerke befinden sich in unterschiedlichen Abonnements.
+- Die verwaltete SQL-Instanz wird in einem isolierten virtuellen Netzwerk bereitgestellt.
+- Es gelten RBAC-Richtlinien (rollenbasierte Zugriffssteuerung), und Sie müssen den Benutzerzugriff auf das Abonnement beschränken, unter dem die verwaltete SQL-Instanz gehostet wird.
+- Die für die verwaltete SQL-Instanz und Azure Database Migration Service verwendeten virtuellen Netzwerke befinden sich in unterschiedlichen Abonnements.
 
 ![Netzwerktopologie für Cloud-zu-Cloud-Migrationen mit einem isolierten VNet](media/resource-network-topologies/cloud-to-cloud-isolated.png)
 
 **Anforderungen**
 
-- Richten Sie ein [VNET-Netzwerkpeering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) zwischen dem virtuellen Netzwerk für die verwaltete Azure SQL-Datenbank-Instanz und Azure Database Migration Service ein.
+- Richten Sie ein [VNET-Netzwerkpeering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) zwischen dem virtuellen Netzwerk für die verwaltete SQL-Instanz und Azure Database Migration Service ein.
 
 ## <a name="inbound-security-rules"></a>Eingangssicherheitsregeln
 
@@ -92,7 +92,7 @@ Verwenden Sie diese Netzwerktopologie, wenn Ihre Umgebung mindestens eines der f
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
+- [Migrieren von SQL Server zu einer verwalteten SQL-Instanz](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
 - [Übersicht über die Voraussetzungen für die Verwendung von Azure Database Migration Service](https://docs.microsoft.com/azure/dms/pre-reqs)
 - [Erstellen eines virtuellen Netzwerks im Azure-Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 

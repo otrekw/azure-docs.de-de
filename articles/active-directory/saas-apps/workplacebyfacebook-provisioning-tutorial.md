@@ -15,34 +15,16 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99103c9994b240e2f45b66acf269b320c90e5135
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 799206ee08dc3b1cdac46a0e4e79d2c929138c31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231729"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84718599"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workplace by Facebook für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Workplace by Facebook als auch in Azure Active Directory (Azure AD) ausführen müssen, um die automatische Benutzerbereitstellung zu konfigurieren. Bei der Konfiguration stellt Azure AD automatisch mithilfe des Azure AD-Bereitstellungsdiensts Benutzer und Gruppen für [Workplace by Facebook](https://work.workplace.com/) bereit bzw. hebt deren Bereitstellung auf. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
-
-## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Migrieren zur neuen Workplace by Facebook-Anwendung
-Wenn Sie bereits über eine Integration mit Workplace by Facebook verfügen, lesen Sie den folgenden Abschnitt über bevorstehende Änderungen. Wenn Sie Workplace by Facebook zum ersten Mal einrichten, können Sie diesen Abschnitt überspringen und zu den unterstützten Funktionen wechseln. 
-
-#### <a name="whats-changing"></a>Was hat sich geändert?
-* Änderungen auf der Azure AD-Seite: Die Autorisierungsmethode für die Bereitstellung von Benutzern in Workplace war in der Vergangenheit ein langlebiges, geheimes Token. Bald werden Sie sehen, dass die Autorisierungsmethode zur OAuth-Autorisierungsgewährung gewechselt ist. 
-* Änderungen auf der Workplace-Seite: Zuvor war die Azure AD-App eine benutzerdefinierte Integration in Workplace by Facebook. Jetzt finden Sie Azure AD im Verzeichnis der Workplace-Integrationen als Drittanbieteranwendung. 
-
-#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Wie muss ich vorgehen, um meine bestehende benutzerdefinierte Integration in die neue Anwendung zu migrieren?
-Wenn Sie über eine bestehende Workplace-Integration mit einem gültigen Token verfügen, ist keine Aktion erforderlich. **Seit dem 28.04.2020 haben wir automatisch alle Anwendungen migriert, die nicht aufgrund ungültiger Anmeldeinformationen in Quarantäne gestellt werden.**
- 
-#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Wie kann ich erkennen, ob meine Anwendung migriert wurde? 
-* Im Azure-Portal: Wenn Ihre Anwendung migriert wird, wird das Banner im Autorisierungsabschnitt über bevorstehende Änderungen entfernt, und das Feld für das geheime Token wird durch eine blaue Autorisierungsschaltfläche ersetzt. 
-* Im Portal von Workplace by Facebook: Überprüfen Sie die Azure AD-App, um sicherzustellen, dass sie zugelassen ist.  
-
-#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>Der Abschnitt mit den Administratoranmeldeinformationen ist für meine Anwendung abgeblendet und ich kann nicht speichern. Warum?
-Wir haben den Abschnitt mit den Administratoranmeldeinformationen für Workplace-Kunden gesperrt, die nicht migriert wurden. Verwenden Sie die folgende URL, wenn der Abschnitt mit den Administratoranmeldeinformationen abgeblendet ist und Sie den Zugriff erneut autorisieren müssen. **?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true** (https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true)
-
 
 ## <a name="capabilities-supported"></a>Unterstützte Funktionen
 > [!div class="checklist"]

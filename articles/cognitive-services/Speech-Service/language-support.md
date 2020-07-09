@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3fe1b999fbdc03157778a1329e05e8c342183528
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 89b2b7b993ef9613740dd777546cc15a12203e62
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587373"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210727"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Sprach- und Stimmunterstützung für den Speech-Dienst
 
@@ -24,7 +24,9 @@ Die Sprachunterstützung ist abhängig von der Funktion des Speech-Diensts. In d
 
 ## <a name="speech-to-text"></a>Spracherkennung
 
-Sowohl das Microsoft Speech SDK als auch die REST-API unterstützen die folgenden Sprachen (Gebietsschemas). Um die Genauigkeit zu erhöhen, wird die Anpassung für eine Teilmenge der Sprachen durch das Hochladen von Audio- und menschenmarkierten Transkripten oder verwandten Texten angeboten: Sätze Die Anpassung der Aussprache ist zurzeit nur für `en-US` und `de-DE` verfügbar. [Hier](how-to-custom-speech.md) erhalten Sie weitere Informationen zur Anpassung.
+Sowohl das Microsoft Speech SDK als auch die REST-API unterstützen die folgenden Sprachen (Gebietsschemas). 
+
+Um die Genauigkeit zu erhöhen, wird die Anpassung für eine Teilmenge der Sprachen durch das Hochladen von **Audio und menschenmarkierten Transkripten** oder **zugehörigem Text (Sätze)** angeboten. Weitere Informationen zur Anpassung finden Sie unter [Was ist Custom Speech?](how-to-custom-speech.md).
 
 <!--
 To get the AM and ML bits:
@@ -39,7 +41,11 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-AE` | Arabisch (VAE)                      | Ja       | Nein                                                |
 | `ar-BH` | Arabisch (Bahrain), modernes Hocharabisch | Ja       | Sprachmodell                                    |
 | `ar-EG` | Arabisch (Ägypten)                    | Ja       | Sprachmodell                                    |
+| `ar-IL` | Arabisch (Israel)                   | Ja       | Nein                                                |
+| `ar-JO` | Arabisch (Jordanien)                   | Ja       | Nein                                                |
 | `ar-KW` | Arabisch (Kuwait)                   | Ja       | Nein                                                |
+| `ar-LB` | Arabisch (Libanon)                  | Ja       | Nein                                                |
+| `ar-PS` | Arabisch (Palästinensische Behörde)                | Ja       | Nein                                                |
 | `ar-QA` | Arabisch (Katar)                    | Ja       | Nein                                                |
 | `ar-SA` | Arabisch (Saudi-Arabien)             | Ja       | Nein                                                |
 | `ar-SY` | Arabisch (Syrien)                    | Ja       | Sprachmodell                                    |
@@ -71,9 +77,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ru-RU` | Russisch (Russische Föderation)                  | Ja       | Akustische Modell<br>Sprachmodell                  |
 | `sv-SE` | Schwedisch (Schweden)                  | Ja       | Sprachmodell                                    |
 | `ta-IN` | Tamil (Indien)                     | Ja       | Sprachmodell                                    |
-| `te-IN` | Telugu (Indien)                    | Ja       | Nein                                                |
+| `te-IN` | Telugu (Indien)                    | Ja       | Sprachmodell                                    |
 | `th-TH` | Thai (Thailand)                   | Ja       | Nein                                                |
-| `tr-TR` | Türkisch (Türkei)                  | Ja       | Nein                                                |
+| `tr-TR` | Türkisch (Türkei)                  | Ja       | Sprachmodell                                    |
 | `zh-CN` | Chinesisch (Mandarin, vereinfacht)    | Ja       | Akustische Modell<br>Sprachmodell                  |
 | `zh-HK` | Chinesisch (Kantonesisch, traditionell)  | Ja       | Sprachmodell                                    |
 | `zh-TW` | Chinesisch (Taiwanesisch, Mandarin)      | Ja       | Sprachmodell                                    |
@@ -93,29 +99,29 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 
 Weitere Informationen zur regionalen Verfügbarkeit finden Sie unter [Regionen](regions.md#standard-and-neural-voices).
 
-|Gebietsschema  | Sprache            | Geschlecht | Name der Stimme  | Zweisprachige Unterstützung | Stilunterstützung |
-|--|--|--|--|--|--|
-| `de-DE` | Deutsch (Deutschland)    | Female | "de-DE-KatjaNeural" | Ja. Englisch (USA) | Allgemein |
-| `en-AU` | Englisch (Australien) | Female |  „en-AU-NatashaNeural“ | Nein | Allgemein |
-| `en-CA` | Englisch (Kanada)    | Female |  „en-CA-ClaraNeural“| Nein | Allgemein |
-| `en-GB` | English (UK)        | Female |  „en-GB-LibbyNeural“| Nein | Allgemein |
-|  |      | Female |  „en-GB-MiaNeural“ | Nein | Allgemein |
-| `en-US` | Englisch (USA)        | Female |  „en-US-AriaNeural“| Nein | Allgemein, mehrere Stimmstile verfügbar |
-|  |      | Male   | "en-US-GuyNeural" | Nein | Allgemein |
-| `es-ES` | Spanisch (Spanien)     | Female |  „es-ES-ElviraNeural“| Ja. Englisch (USA) | Allgemein |
-| `es-MX` | Spanisch (Mexiko)    | Female |  „es-MX-DaliaNeural“ | Ja. Englisch (USA) | Allgemein |
-| `fr-CA` | Französisch (Kanada)     | Female |  „fr-CA-SylvieNeural“ | Ja. Englisch (USA) | Allgemein |
-| `fr-FR` | Französisch (Frankreich)     | Female | „fr-FR-DeniseNeural“  | Ja. Englisch (USA) | Allgemein |
-| `it-IT` | Italienisch (Italien)     | Female |  "it-IT-ElsaNeural"  | Ja. Englisch (USA) | Allgemein |
-| `ja-JP` | Japanisch            | Female |  „ja-JP-NanamiNeural“ | Ja. Englisch (USA) | Allgemein |
-| `ko-KR` | Koreanisch              | Female |  „ko-KR-SunHiNeural“ | Ja. Englisch (USA) | Allgemein |
-| `nb-NO` | Norwegisch           | Female | „nb-NO-IselinNeural“ | Nein | Allgemein |
-| `pt-BR` | Portugiesisch (Brasilien) | Female |  „pt-BR-FranciscaNeural“ | Nein | Allgemein |
-| `tr-TR` | Türkisch             | Female | „tr-TR-EmelNeural“ | Nein | Allgemein |
-| `zh-CN` | Chinesisch (Mandarin, vereinfacht)  | Female |  "zh-CN-XiaoxiaoNeural"  | Ja. Englisch (USA) | Allgemein, mehrere Stimmstile verfügbar |
-|  |  | Female |  „zh-CN-XiaoyouNeural“  | Ja. Englisch (USA) | Kinderstimme, optimiert für das Erzählen von Geschichten |
-|  |  | Male |  „zh-CN-YunyangNeural“  | Ja. Englisch (USA) | Optimiert für das Vorlesen von Nachrichten, mehrere Stimmstile verfügbar |
-|  |  | Male |  „zh-CN-YunyeNeural“  | Nein | Optimiert für das Erzählen von Geschichten |
+|Gebietsschema  | Sprache            | Geschlecht | Name der Stimme | Stilunterstützung |
+|--|--|--|--|--|
+| `de-DE` | Deutsch (Deutschland)                | Female | „de-DE-KatjaNeural"      | Allgemein |
+| `en-AU` | Englisch (Australien)             | Female | „en-AU-NatashaNeural“    | Allgemein |
+| `en-CA` | Englisch (Kanada)                | Female | „en-CA-ClaraNeural“      | Allgemein |
+| `en-GB` | English (UK)                    | Female | „en-GB-LibbyNeural“      | Allgemein |
+|         |                                 | Female | „en-GB-MiaNeural“        | Allgemein |
+| `en-US` | Englisch (USA)                    | Female | „en-US-AriaNeural“       | Allgemein, mehrere Stimmstile verfügbar |
+|         |                                 | Male   | "en-US-GuyNeural"        | Allgemein |
+| `es-ES` | Spanisch (Spanien)                 | Female | „es-ES-ElviraNeural“     | Allgemein |
+| `es-MX` | Spanisch (Mexiko)                | Female | „es-MX-DaliaNeural“      | Allgemein |
+| `fr-CA` | Französisch (Kanada)                 | Female | „fr-CA-SylvieNeural“     | Allgemein |
+| `fr-FR` | Französisch (Frankreich)                 | Female | „fr-FR-DeniseNeural“     | Allgemein |
+| `it-IT` | Italienisch (Italien)                 | Female | "it-IT-ElsaNeural"       | Allgemein |
+| `ja-JP` | Japanisch                        | Female | „ja-JP-NanamiNeural“     | Allgemein |
+| `ko-KR` | Koreanisch                          | Female | „ko-KR-SunHiNeural“      | Allgemein |
+| `nb-NO` | Norwegisch                       | Female | „nb-NO-IselinNeural“     | Allgemein |
+| `pt-BR` | Portugiesisch (Brasilien)             | Female | „pt-BR-FranciscaNeural“  | Allgemein |
+| `tr-TR` | Türkisch                         | Female | „tr-TR-EmelNeural“       | Allgemein |
+| `zh-CN` | Chinesisch (Mandarin, vereinfacht)  | Female | „zh-CN-XiaoxiaoNeural"   | Allgemein, mehrere Stimmstile verfügbar |
+|         |                                 | Female | „zh-CN-XiaoyouNeural“    | Kinderstimme, optimiert für das Erzählen von Geschichten |
+|         |                                 | Male   | „zh-CN-YunyangNeural“    | Optimiert für das Vorlesen von Nachrichten, mehrere Stimmstile verfügbar |
+|         |                                 | Male   | „zh-CN-YunyeNeural“      | Optimiert für das Erzählen von Geschichten |
 
 > [!IMPORTANT]
 > Die Stimme `en-US-JessaNeural` wurde in `en-US-AriaNeural` geändert. Wenn Sie zuvor „Jessa“ verwendet haben, wechseln Sie zu „Aria“.
@@ -134,7 +140,7 @@ Es stehen mehr als 75 Standardstimmen in mehr als 45 Sprachen und Gebietsschemas
 | <sup>1</sup>`ar-EG` | Arabisch (Ägypten) | Female | "ar-EG-Hoda" |
 | `ar-SA` | Arabisch (Saudi-Arabien) | Male | "ar-SA-Naayf" |
 | `bg-BG` | Bulgarisch | Male |  "bg-BG-Ivan" |
-| `ca-ES` | Katalanisch (Spanien) | Female |  "ca-ES-HerenaRUS" |
+| `ca-ES` | Katalanisch | Female |  "ca-ES-HerenaRUS" |
 | `cs-CZ` | Tschechisch | Male | "cs-CZ-Jakub" |
 | `da-DK` | Dänisch | Female |  "da-DK-HelleRUS" |
 | `de-AT` | Deutsch (Österreich) | Male | "de-AT-Michael" |
@@ -306,6 +312,26 @@ Die **Sprachübersetzungs**-API unterstützt verschiedene Sprachen für die Übe
 | Vietnamesisch              | `vi`          |
 | Walisisch                   | `cy`          |
 | Yukatekisches Maya            | `yua`         |
+
+## <a name="speaker-recognition"></a>Sprechererkennung
+
+In der folgenden Tabelle finden Sie die unterstützten Sprachen für die verschiedenen Sprechererkennungs-APIs. Weitere Informationen zur Sprechererkennung finden Sie in der [Übersicht](speaker-recognition-overview.md).
+
+| Gebietsschema | Sprache | Textabhängige Überprüfung | Textunabhängige Überprüfung | Textunabhängige Identifikation |
+|----|----|----|----|----|
+| de-DE | Englisch (USA) | ja | ja | ja |
+|zh-CN  |Chinesisch (Mandarin, vereinfacht)|    –|    ja|    ja|
+|de-DE  |Deutsch (Deutschland)   |–    |ja    |ja|
+|en-GB  |English (UK)   |–    |ja    |ja|
+|fr-FR  |Französisch (Frankreich)    |–    |ja    |ja|
+|en-AU  |Englisch (Australien)    |–    |ja    |ja|
+|en-CA  |Englisch (Kanada)   |–|   ja|    ja|
+|fr-CA  |Französisch (Kanada)    |–    |ja|   ja|
+|it-IT  |Italienisch|   – |ja|   ja|
+|es-ES| Spanisch (Spanien) |–    |ja|   ja|
+|es-MX  |Spanisch (Mexiko)   |–|   ja|    ja|
+|ja-JP| Japanisch    |–    |ja    |ja|
+|pt-BR| Portugiesisch (Brasilien)|    –|    ja|    ja|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

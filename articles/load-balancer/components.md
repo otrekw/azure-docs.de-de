@@ -9,27 +9,27 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2020
+ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 4a84c43b57ec4f632a2bfabb10d112e4975249bf
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: b696cdf2d54c42d3967041c5d10b1bd9bb5a3065
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733106"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448681"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer-Komponenten
 
-Azure Load Balancer enthält mehrere wichtige Komponenten für den Betrieb. Diese Komponenten können in Ihrem Abonnement über das Azure-Portal, die Azure-Befehlszeilenschnittstelle, Azure PowerShell oder Vorlagen konfiguriert werden.
+Azure Load Balancer besteht aus ein paar Komponenten. Diese können in Ihrem Abonnement über das Azure-Portal, die Azure-Befehlszeilenschnittstelle, Azure PowerShell oder Vorlagen konfiguriert werden.
 
-## <a name="frontend-ip-configurations"></a>Front-End-IP-Konfigurationen
+## <a name="frontend-ip-configuration"></a>Front-End-IP-Konfiguration<a name = "frontend-ip-configurations"></a>
 
-Die IP-Adresse des Lastenausgleichs. Sie ist der Kontaktpunkt für Clients. Folgende Adressen sind möglich:
+Die IP-Adresse Ihres Azure Load Balancers. Sie ist der Kontaktpunkt für Clients. Diese IP-Adressen sind möglich:
 
 - **Öffentliche IP-Adresse**
 - **Private IP-Adresse**
 
-Die Auswahl der IP-Adresse bestimmt den **Typ** des erstellten Lastenausgleichs. Wenn Sie eine private IP-Adresse auswählen, wird ein interner Lastenausgleich erstellt. Bei Auswahl einer öffentlichen IP-Adresse wird ein öffentlicher Lastenausgleich erstellt.
+Die Art der IP-Adresse bestimmt den **Typ** des erstellten Lastenausgleichs. Wenn Sie eine private IP-Adresse auswählen, wird ein interner Lastenausgleich erstellt. Bei Auswahl einer öffentlichen IP-Adresse wird ein öffentlicher Lastenausgleich erstellt.
 
 |  | Öffentlicher Load Balancer  | Interner Lastenausgleich |
 | ---------- | ---------- | ---------- |
@@ -39,46 +39,64 @@ Die Auswahl der IP-Adresse bestimmt den **Typ** des erstellten Lastenausgleichs.
 
 ![Beispiel für einen mehrstufigen Lastenausgleich](./media/load-balancer-overview/load-balancer.png)
 
+Load Balancer kann über mehrere Front-End-IP-Adressen verfügen. Erfahren Sie mehr zu [mehreren Front-Ends](load-balancer-multivip-overview.md).
+
 ## <a name="backend-pool"></a>Back-End-Pool
 
-Die Gruppe virtueller Computer oder Instanzen in einer VM-Skalierungsgruppe, von denen die eingehende Anforderung verarbeitet wird. Für eine kosteneffiziente Skalierung zur Bewältigung großer Mengen an eingehendem Datenverkehr empfiehlt es sich in der Regel, dem Back-End-Pool weitere Instanzen hinzuzufügen. 
+Die Gruppe virtueller Computer oder Instanzen in einer VM-Skalierungsgruppe, von denen die eingehende Anforderung verarbeitet wird. Für eine kosteneffiziente Skalierung zur Bewältigung großer Mengen an eingehendem Datenverkehr empfiehlt es sich in der Regel, dem Back-End-Pool weitere Instanzen hinzuzufügen.
 
-Die Konfiguration des Lastenausgleichs wird automatisch angepasst, wenn Sie Instanzen hoch- oder herunterskalieren. Durch Hinzufügen virtueller Computer zum bzw. Entfernen virtueller Computer aus dem Back-End-Pool wird der Lastenausgleich ohne zusätzliche Vorgänge neu konfiguriert. Der Back-End-Pool wird für jeden beliebigen virtuellen Computer im virtuellen Netzwerk verwendet. 
+Die Konfiguration des Lastenausgleichs wird automatisch angepasst, wenn Sie Instanzen hoch- oder herunterskalieren. Durch Hinzufügen virtueller Computer zum bzw. Entfernen virtueller Computer aus dem Back-End-Pool wird der Lastenausgleich ohne zusätzliche Vorgänge neu konfiguriert. Der Back-End-Pool wird für jeden beliebigen virtuellen Computer im virtuellen Netzwerk verwendet.
 
 Halten Sie bei der Gestaltung Ihres Back-End-Pools die Anzahl der einzelnen Back-End-Pool-Ressourcen so gering wie möglich, um die Dauer von Verwaltungsvorgängen zu optimieren. Es gibt keinen Unterschied in der Datenebenenleistung oder -skalierung.
 
 ## <a name="health-probes"></a>Integritätstests
 
-Mithilfe eines Integritätstest wird die Integrität der Instanzen im Back-End-Pool ermittelt. Sie können den gewünschten Fehlerschwellenwert für Ihre Integritätstests definieren. Wenn ein Test nicht reagiert, beendet der Load Balancer das Senden neuer Verbindungen an die fehlerhaften Instanzen. Ein Testfehler wirkt sich nicht auf vorhandene Verbindungen aus. Die Verbindung bleibt so lange bestehen, bis die Anwendung:
+Mithilfe eines Integritätstest wird der Integritätsstatus der Instanzen im Back-End-Pool ermittelt. Wenn Sie einen Load Balancer erstellen, müssen Sie einen Integritätstest konfigurieren, mit dem Ihr Load Balancer ermitteln kann, ob eine Instanz fehlerfrei ist, um dann Datenverkehr an diese weiterzuleiten.
+
+Sie können den gewünschten Fehlerschwellenwert für Ihre Integritätstests definieren. Wenn ein Test nicht reagiert, beendet der Load Balancer das Senden neuer Verbindungen an die fehlerhaften Instanzen. Ein Testfehler wirkt sich nicht auf vorhandene Verbindungen aus. Die Verbindung bleibt so lange bestehen, bis die Anwendung:
 
 - den Flow beendet
 - eine Leerlauftimeout auftritt
 - der virtuelle Computer heruntergefahren wird
 
-Load Balancer verfügt über verschiedene Integritätstesttypen für Endpunkte:
+Load Balancer verfügt über verschiedene Integritätstesttypen für Endpunkte: TCP, HTTP und HTTPS. [Erfahren Sie mehr zu Load Balancer-Integritätstests](load-balancer-custom-probe-overview.md).
 
-- TCP
-- HTTP
-- HTTPS
-
-Vom Lastenausgleich im Tarif „Basic“ werden keine HTTPS-Tests unterstützt. Vom Lastenausgleich im Tarif „Basic“ werden alle TCP-Verbindungen (einschließlich aktiver Verbindungen) beendet.
+Vom Load Balancer im Tarif „Basic“ werden keine HTTPS-Tests unterstützt. Vom Load Balancer im Tarif „Basic“ werden alle TCP-Verbindungen (einschließlich aktiver Verbindungen) beendet.
 
 ## <a name="load-balancing-rules"></a>Lastenausgleichsregeln
 
-Lastenausgleichsregeln weisen den Lastenausgleich an, welche Aktionen ausgeführt werden sollen. Eine Lastenausgleichsregel ordnet mehreren Back-End-IP-Adressen und Ports eine bestimmte Front-End-IP-Konfiguration und einen Port zu.
+Mithilfe einer Lastenausgleichsregel wird definiert, wie eingehender Datenverkehr auf **alle** Instanzen innerhalb des Back-End-Pools verteilt werden soll. Eine Lastenausgleichsregel ordnet mehreren Back-End-IP-Adressen und Ports eine bestimmte Front-End-IP-Konfiguration und einen Port zu.
+
+Wenn Sie z. B. Datenverkehr an Port 80 (oder einen anderen Port) Ihrer Front-End-IP-Adresse an Port 80 aller Ihrer Back-End-Instanzen umleiten möchten, verwenden Sie eine Lastenausgleichsregel, um dies zu erreichen.
+
+### <a name="high-availability-ports"></a>Hochverfügbarkeitsports
+
+Eine mit „protocol - all“ und „port - 0“ konfigurierte Load Balancer-Regel. Dies ermöglicht das Bereitstellen einer einzelnen Regel für den Lastenausgleich aller TCP- und UDP-Datenflüsse, die an allen Ports einer internen Load Balancer Standard-Instanz eingehen. Die Entscheidung über den Lastenausgleich erfolgt pro Datenfluss. Diese Lösung basiert auf der folgenden Verbindung mit fünf Tupeln: 
+1. Quell-IP-Adresse
+2. Quellport
+3. Ziel-IP-Adresse
+4. Zielport
+5. Protokoll
+
+Die Lastenausgleichsregeln für Hochverfügbarkeitsports unterstützen Sie bei wichtigen Szenarien, z. B. Hochverfügbarkeit und Skalierung für virtuelle Netzwerkgeräte in virtuellen Netzwerken. Das Feature kann auch hilfreich sein, wenn für eine große Anzahl von Ports ein Lastenausgleich vorgenommen werden muss.
+
+Erfahren Sie mehr über [Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md).
 
 ## <a name="inbound-nat-rules"></a>Eingehende NAT-Regeln
 
-NAT-Regeln für eingehenden Datenverkehr leiten Datenverkehr von der Front-End-IP-Adresse an eine Back-End-Instanz im virtuellen Netzwerk weiter. Der Portweiterleitung liegt die gleiche hashbasierte Verteilung zugrunde wie dem Lastenausgleich. 
+Eine NAT-Regel für eingehenden Datenverkehr leitet eingehenden Datenverkehr, der an eine ausgewählte Kombination aus Front-End-IP-Adresse und -Port gesendet wird, an einen **bestimmten** virtuellen Computer oder eine bestimmte Instanz im Back-End-Pool weiter. Der Portweiterleitung liegt die gleiche hashbasierte Verteilung zugrunde wie dem Lastenausgleich.
 
-Ein Beispiel für die Verwendung sind RDP-Sitzungen (Remote Desktop Protocol, Remotedesktopprotokoll) oder SSH-Sitzungen (Secure Shell) zum Trennen von VM-Instanzen innerhalb eines virtuellen Netzwerks. Ports können mehrere interne Endpunkte unter derselben Front-End-IP-Adresse zugeordnet werden. Sie können die Front-End-IP-Adressen verwenden, um für Ihre VMs die Remoteverwaltung ohne zusätzliche Jumpbox durchzuführen.
+Beispielsweise, wenn Sie RDP-Sitzungen (Remote Desktop Protocol, Remotedesktopprotokoll) oder SSH-Sitzungen (Secure Shell) zum Trennen von VM-Instanzen innerhalb eines Back-End-Pools verwenden möchten. Ports können mehrere interne Endpunkte unter derselben Front-End-IP-Adresse zugeordnet werden. Sie können die Front-End-IP-Adressen verwenden, um für Ihre VMs die Remoteverwaltung ohne zusätzliche Jumpbox durchzuführen.
+
+NAT-Regeln für eingehenden Datenverkehr im Kontext von Virtual Machine Scale Sets (VMSS) sind NAT-Pools für eingehenden Datenverkehr. Erfahren Sie mehr zu [Load Balancer-Komponenten und VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer).
 
 ## <a name="outbound-rules"></a>Ausgangsregeln
 
-Eine Ausgangsregel konfiguriert die Netzwerkadressenübersetzung (Network Address Translation, NAT) für ausgehenden Datenverkehr für alle virtuellen Computer oder Instanzen, die vom Back-End-Pool identifiziert wurden.
+Eine Ausgangsregel konfiguriert die Netzwerkadressenübersetzung (Network Address Translation, NAT) für ausgehenden Datenverkehr für alle virtuellen Computer oder Instanzen, die vom Back-End-Pool identifiziert wurden. Dadurch können Instanzen im Back-End (ausgehend) mit dem Internet oder anderen Endpunkten kommunizieren.
+
+Erfahren Sie mehr zu [ausgehenden Verbindungen und Regeln](load-balancer-outbound-connections.md).
 
 Vom Lastenausgleich im Tarif „Basic“ werden keine Ausgangsregeln unterstützt.
-![Azure-Lastenausgleich](./media/load-balancer-overview/load-balancer-overview.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -90,9 +108,6 @@ Vom Lastenausgleich im Tarif „Basic“ werden keine Ausgangsregeln unterstütz
 - Weitere Informationen zu [Diagnosen für Standard Load Balancer](load-balancer-standard-diagnostics.md).
 - Informationen zur [TCP-Zurücksetzung bei Leerlauf](load-balancer-tcp-reset.md).
 - Informationen zu [Load Balancer Standard mit Lastenausgleichsregeln für HA-Ports](load-balancer-ha-ports-overview.md)
-- Informationen zur Verwendung von [Load Balancer mit mehreren Front-Ends](load-balancer-multivip-overview.md)
 - Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
-- Informieren Sie sich über [Testtypen](load-balancer-custom-probe-overview.md#types).
 - Lesen Sie weitere Informationen zu [Load Balancer-Grenzwerten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer).
 - Erfahren Sie mehr über die Verwendung der [Portweiterleitung](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal).
-- Erfahren Sie mehr über [Load Balancer-Ausgangsregeln](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview).

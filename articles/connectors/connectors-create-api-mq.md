@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: ChristopherHouser
 ms.author: chrishou
-ms.reviewer: valthom, logicappspm
+ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 05/14/2020
 tags: connectors
-ms.openlocfilehash: 737c5b90b216156ca08346f4a64fd0b421ad6c19
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 17143257fcb6b9c71bb56e1f4c4958dce503c234
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410249"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652469"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Herstellen einer Verbindung mit dem IBM MQ-Server über Azure Logic Apps
 
@@ -33,6 +33,7 @@ Offiziell unterstützte IBM WebSphere MQ-Versionen:
   * MQ 7.5
   * MQ 8.0
   * MQ 9.0
+  * MQ 9.1
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

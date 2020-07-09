@@ -3,16 +3,16 @@ title: Linux-Migration zur Azure-Dateisynchronisierung
 description: Hier erfahren Sie, wie Sie Dateien von einem Linux-Serverstandort mit der Azure-Dateisynchronisierung und Azure-Dateifreigaben zu einer Hybrid-Cloud-Bereitstellung migrieren.
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 3131d6a7e3675027968eadd5f3e3ca8a7f2449c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd2e4f5c81427413e3f3f3eceaa0cc41a3b9e318
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143607"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510369"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migration von Linux zu einer Hybrid-Cloud-Bereitstellung mit der Azure-Dateisynchronisierung
 
@@ -118,7 +118,7 @@ Hintergrund:
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /UNILOG:\<Dateiname\>
+      /UNILOG:\<file name\>
    :::column-end:::
    :::column span="1":::
       Gibt den Status als Unicode in die Protokolldatei aus (überschreibt das vorhandene Protokoll).

@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Weitere Informationen zum Peering in virtuellen Netzwerken in Azure
 services: virtual-network
 documentationcenter: na
-author: anavinahar
+author: altambaw
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
-ms.author: anavin
-ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: kumud
+ms.openlocfilehash: e1a2babef17e23457e1f41d8ec0a20a442452c23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235798"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84232950"
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 

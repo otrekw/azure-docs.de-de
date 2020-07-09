@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 429f46156da728bbc24108090eac8c04f68da71c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4146553d59607e1512d8f15391d143d44815cea9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74084740"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016473"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Einrichten der Notfallwiederherstellung für SQL Server
 
@@ -37,8 +37,8 @@ Bereitstellungstyp | BCDR-Technologie | Erwartete RTO für SQL Server | Erwartet
 SQL Server auf einem virtuellen IaaS-Computer (Infrastructure-as-a-Service-VM) in Azure oder lokal.| [AlwaysOn-Verfügbarkeitsgruppe](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017) | Die Zeit, die es dauert, das sekundäre Replikat zum primären zu machen. | Weil die Replikation zum sekundären Replikat asynchron ist, tritt ein gewisser Datenverlust auf.
 SQL Server auf einer Azure-IaaS-VM oder auf einem lokalem System.| [Failoverclustering (Always On-FCI)](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | Die Zeit, die das Failover zwischen Knoten benötigt. | Da Always On freigegebenen Speicher verwendet, ist dieselbe Ansicht der Speicherinstanz bei einem Failover verfügbar.
 SQL Server auf einer Azure-IaaS-VM oder auf einem lokalem System.| [Datenbankspiegelung (Hochleistungsmodus)](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | Die erforderliche Zeit, um den Dienst zu erzwingen, der den Spiegelserver als betriebsbereiten Standbyserver nutzt. | Die Replikation ist asynchron. Bei der Spiegeldatenbank kann im Vergleich zur Prinzipaldatenbank zu etwas Verzögerung auftreten. Die Verzögerung ist in der Regel gering. Sie kann jedoch sehr groß werden, wenn das System des Prinzipals oder Spiegelservers stark ausgelastet ist.<br/><br/>Der Protokollversand kann eine Ergänzung der Datenbankspiegelung darstellen. Es ist eine günstige Alternative zur asynchronen Datenbankspiegelung.
-SQL als Platform-as-a-Service (PaaS) in Azure.<br/><br/>Dieser Bereitstellungstyp umfasst Pools für elastische Datenbanken und Azure SQL-Datenbank-Server. | Aktive Georeplikation | 30 Sekunden nach dem Auslösen des Failovers.<br/><br/>Wenn das Failover für eine sekundäre Datenbank aktiviert ist, werden alle anderen sekundären Datenbanken automatisch mit der neuen primären Datenbank verknüpft. | RPO von fünf Sekunden.<br/><br/>Die aktive Georeplikation verwendet die Always On-Technologie von SQL Server. Sie repliziert asynchron durchgeführte Transaktionen der primären Datenbank zu einer sekundären Datenbank mithilfe der Momentaufnahmenisolation.<br/><br/>Die sekundären Daten haben niemals partielle Transaktionen.
-SQL als PaaS ist mit aktiver Georeplikation auf Azure konfiguriert.<br/><br/>Dieser Bereitstellungstyp umfasst eine verwaltete SQL-Datenbank-Instanz, Pools für elastische Datenbanken und SQL-Datenbank-Server. | Autofailover-Gruppen | RTO von einer Stunde. | RPO von fünf Sekunden.<br/><br/>Autofailover-Gruppen stellen die Gruppensemantik zusätzlich zur aktiven Georeplikation bereit. Es wird jedoch der gleiche asynchrone Replikationsmechanismus verwendet.
+SQL als Platform-as-a-Service (PaaS) in Azure.<br/><br/>Dieser Bereitstellungstyp umfasst Einzeldatenbanken und Pools für elastische Datenbanken. | Aktive Georeplikation | 30 Sekunden nach dem Auslösen des Failovers.<br/><br/>Wenn das Failover für eine sekundäre Datenbank aktiviert ist, werden alle anderen sekundären Datenbanken automatisch mit der neuen primären Datenbank verknüpft. | RPO von fünf Sekunden.<br/><br/>Die aktive Georeplikation verwendet die Always On-Technologie von SQL Server. Sie repliziert asynchron durchgeführte Transaktionen der primären Datenbank zu einer sekundären Datenbank mithilfe der Momentaufnahmenisolation.<br/><br/>Die sekundären Daten haben niemals partielle Transaktionen.
+SQL als PaaS ist mit aktiver Georeplikation auf Azure konfiguriert.<br/><br/>Dieser Bereitstellungstyp umfasst eine verwaltete SQL-Datenbank-Instanz, Pools für elastische Datenbanken und Einzeldatenbanken. | Autofailover-Gruppen | RTO von einer Stunde. | RPO von fünf Sekunden.<br/><br/>Autofailover-Gruppen stellen die Gruppensemantik zusätzlich zur aktiven Georeplikation bereit. Es wird jedoch der gleiche asynchrone Replikationsmechanismus verwendet.
 SQL Server auf einer Azure-IaaS-VM oder auf einem lokalem System.| Replikation mit Azure Site Recovery | Die RTO beträgt in der Regel weniger als 15 Minuten. Weitere Informationen finden Sie in der [SLA für Site Recovery](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). | Eine Stunde für die Anwendungskonsistenz und fünf Minuten für die Absturzkonsistenz. Wenn Sie nach einer niedrigeren RPO suchen, verwenden Sie andere BCDR-Technologien.
 
 > [!NOTE]
@@ -71,8 +71,8 @@ Sobald die Datenbankebene in der Azure-Zielregion ausgeführt wird, stellen Sie 
 
 Die folgenden Beispiele helfen Ihnen, zu verstehen, wie Sie Anwendungen unter Konnektivitätsaspekten entwickeln können:
 
-* [Entwickeln Sie eine Anwendung für die Cloud-Notfallwiederherstellung](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-* [Notfallwiederherstellungsstrategien für Pool für elastische Datenbanken](../sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+* [Entwickeln Sie eine Anwendung für die Cloud-Notfallwiederherstellung](../azure-sql/database/designing-cloud-solutions-for-disaster-recovery.md)
+* [Notfallwiederherstellungsstrategien für Pool für elastische Datenbanken](../azure-sql/database/disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 
 ### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>Schritt 3: Interoperabilität mit Always On, aktive Georeplikation und Gruppen für automatisches Failover
 
@@ -162,6 +162,6 @@ Site Recovery ist anwendungsunabhängig. Site Recovery kann jede Version von SQL
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über die [Site Recovery-Architektur](site-recovery-components.md).
-* Erfahren Sie für SQL Server in Azure mehr über [hochverfügbare Lösungen](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions) für die Wiederherstellung in einer sekundären Azure-Region.
-* Erfahren Sie für SQL-Datenbank mehr über Optionen für [Geschäftskontinuität](../sql-database/sql-database-business-continuity.md) und [Hochverfügbarkeit](../sql-database/sql-database-high-availability.md) für die Wiederherstellung in sekundären Azure-Regionen.
-* Erfahren Sie für SQL Server-Computer an lokalen Standorten mehr über die [Hochverfügbarkeitsoptionen](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#hybrid-it-disaster-recovery-solutions) für die Wiederherstellung in Azure Virtual Machines.
+* Erfahren Sie für SQL Server in Azure mehr über [hochverfügbare Lösungen](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions) für die Wiederherstellung in einer sekundären Azure-Region.
+* Erfahren Sie für SQL-Datenbank mehr über Optionen für [Geschäftskontinuität](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md) und [Hochverfügbarkeit](../azure-sql/database/high-availability-sla.md) für die Wiederherstellung in sekundären Azure-Regionen.
+* Erfahren Sie für SQL Server-Computer an lokalen Standorten mehr über die [Hochverfügbarkeitsoptionen](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#hybrid-it-disaster-recovery-solutions) für die Wiederherstellung in Azure Virtual Machines.

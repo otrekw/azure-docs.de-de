@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 10d3e3674aef901ad35dfb6d0b9fd13715aace55
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594939"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960298"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Einrichten einer benutzerdefinierten Domäne in Azure Static Web Apps (Vorschau)
 
@@ -29,11 +29,11 @@ Beim Konfigurieren von Domänennamen werden A-Einträge verwendet, um Stammdomä
 
 Für eine Anwendung sind verschiedene Arten von DNS-Konfigurationen verfügbar.
 
-| Zweck                            | Aktion                                                |
-| ----------------------------------------- | --------------------------------------------------- |
-| Unterstützung für `www.example.com`                 | [Zuordnen eines CNAME-Eintrags](#map-a-cname-record)           |
-| Unterstützung für `example.com`                     | [Konfigurieren einer Stammdomäne](#configure-a-root-domain) |
-| Verweisen auf `www.example.com` für alle Unterdomänen | [Zuordnen eines Platzhalters](#map-a-wildcard-domain)                   |
+| Zweck                                 | Then                                                |
+| -----------------------------------------------| --------------------------------------------------- |
+| Unterstützung `www.example.com` oder `blog.example.net`| [Zuordnen eines CNAME-Eintrags](#map-a-cname-record)           |
+| Unterstützung für `example.com`                          | [Konfigurieren einer Stammdomäne](#configure-a-root-domain) |
+| Verweisen auf `www.example.com` für alle Unterdomänen      | [Zuordnen eines Platzhalters](#map-a-wildcard-domain)            |
 
 ## <a name="map-a-cname-record"></a>Zuordnen eines CNAME-Eintrags
 
@@ -65,9 +65,9 @@ Mit einem CNAME-Eintrag wird eine Domäne einer anderen zugeordnet. Sie können 
 
     | Einstellung             | Wert                     |
     | ------------------- | ------------------------- |
-    | Type                | CNAME                     |
+    | type                | CNAME                     |
     | Host                | www                       |
-    | Value               | Aus Zwischenablage einfügen |
+    | Wert               | Aus Zwischenablage einfügen |
     | TTL (falls zutreffend) | Standardwert übernehmen    |
 
 5. Speichern Sie die Änderungen mit Ihrem DNS-Anbieter.
@@ -80,7 +80,7 @@ Mit einem CNAME-Eintrag wird eine Domäne einer anderen zugeordnet. Sie können 
 
 1. Klicken Sie auf die Schaltfläche **Überprüfen**.
 
-Nachdem die benutzerdefinierte Domäne nun konfiguriert wurde, kann es mehrere Stunden dauern, bis die Änderungen vom DNS-Anbieter an alle weltweiten Standorte weitergegeben wurden. Sie können den Stand der Weitergabe unter [dnspropagation.net](https://dnspropagation.net) überprüfen. Geben Sie Ihre benutzerdefinierte Domäne (einschließlich `www`) ein, und wählen Sie in der Dropdownliste die Option „CNAME“ und dann **Starten** aus.
+Nachdem die benutzerdefinierte Domäne nun konfiguriert wurde, kann es mehrere Stunden dauern, bis die Änderungen vom DNS-Anbieter an alle weltweiten Standorte weitergegeben wurden. Sie können den Stand der Weitergabe unter [dnspropagation.net](https://dnspropagation.net) überprüfen. Geben Sie Ihre benutzerdefinierte Domäne (einschließlich `www`) ein, wählen Sie in der Dropdownliste die Option „CNAME“ aus, und klicken Sie auf **Starten**.
 
 Nachdem Ihre DNS-Änderungen eingefügt wurden, gibt die Website die automatisch generierte URL Ihrer statischen Web-App zurück (z. B. _random-name-123456789c.azurestaticapps.net_).
 
@@ -92,7 +92,7 @@ Unterstützung für Stammdomänen ist während der Vorschauphase nicht verfügba
 
 ## <a name="map-a-wildcard-domain"></a>Zuordnen einer Platzhalterdomäne
 
-Es kann vorkommen, dass bei Ihnen der gesamte Datenverkehr, der an eine Unterdomäne gesendet wird, an eine andere Domäne weitergeleitet werden soll. Ein häufiges Beispiel ist die Zuordnung des gesamten Unterdomänen-Datenverkehrs zu `www.example.com`. Auch wenn dann `ww.example.com` anstelle von `www.example.com` eingegeben wird, wird die Anforderung trotzdem an `www.example.com` gesendet.
+Es kann vorkommen, dass bei Ihnen der gesamte Datenverkehr, der an eine Unterdomäne gesendet wird, an eine andere Domäne weitergeleitet werden soll. Ein häufiges Beispiel ist die Zuordnung des gesamten Unterdomänen-Datenverkehrs zu `www.example.com`. Auch wenn dann `w.example.com` anstelle von `www.example.com` eingegeben wird, wird die Anforderung trotzdem an `www.example.com` gesendet.
 
 ### <a name="configure-dns-provider"></a>Konfigurieren des DNS-Anbieters
 
@@ -110,9 +110,9 @@ Es kann vorkommen, dass bei Ihnen der gesamte Datenverkehr, der an eine Unterdom
 
     | Einstellung | Wert                  |
     | ------- | ---------------------- |
-    | Type    | CNAME                  |
+    | type    | CNAME                  |
     | Host    | \*                     |
-    | Value   | www.example.com        |
+    | Wert   | www.example.com        |
     | TTL     | Standardwert übernehmen |
 
 5. Speichern Sie die Änderungen mit Ihrem DNS-Anbieter.

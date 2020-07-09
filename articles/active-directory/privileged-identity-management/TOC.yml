@@ -20,7 +20,7 @@
       href: pim-email-notifications.md
     - name: Microsoft Graph-APIs
       href: pim-apis.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   expanded: true
   items:
     - name: Bereitstellen von PIM
@@ -107,3 +107,13 @@
               href: pim-resource-roles-perform-access-review.md
             - name: Abschließen einer Zugriffsüberprüfung
               href: pim-resource-roles-complete-access-review.md
+- name: Verweis
+  items:
+    - name: Graph-API
+      href: 'https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview'
+    - name: Azure AD-Befehlszeilenschnittstelle
+      href: 'https://docs.microsoft.com/cli/azure/ad'
+    - name: Azure AD PowerShell für Graph
+      href: 'https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0'
+    - name: Azure AD-Diensteinschränkungen
+      href: ../users-groups-roles/directory-service-limits-restrictions.md

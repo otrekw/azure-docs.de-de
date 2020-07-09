@@ -1,6 +1,6 @@
 ---
 title: 'Verschieben von Daten in eine Azure SQL-Datenbank: Team Data Science-Prozess'
-description: Hier finden Sie Informationen zum Verschieben von Daten aus Flatfiles (CSV- oder TSV-Formate) oder von in einer lokalen SQL Server-Instanz gespeicherten Daten in eine Azure SQL-Datenbank-Instanz.
+description: Hier finden Sie Informationen zum Verschieben von Daten aus Flatfiles (CSV- oder TSV-Formate) oder von in einer SQL Server-Instanz gespeicherten Daten in eine Azure SQL-Datenbank-Instanz.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f9a1424f2afe6c5153e208601b21dff9651880a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99e637099e54698e9d6eabb14920251a9d4a81f5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722457"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194394"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Verschieben von Daten in eine Azure SQL-Datenbank für Azure Machine Learning
 
-In diesem Artikel werden die Optionen zum Verschieben von Daten aus Flatfiles (CSV- oder TSV-Format) oder von in einer lokalen SQL Server-Instanz gespeicherten Daten in eine Azure SQL-Datenbank-Instanz beschrieben. Diese Tasks zum Verschieben von Daten in die Cloud sind Teil des Team Data Science-Prozesses.
+In diesem Artikel werden die Optionen zum Verschieben von Daten aus Flatfiles (CSV- oder TSV-Format) oder von in einer SQL Server-Instanz gespeicherten Daten in eine Azure SQL-Datenbank-Instanz beschrieben. Diese Tasks zum Verschieben von Daten in die Cloud sind Teil des Team Data Science-Prozesses.
 
-Ein Thema, in dem die Optionen für das Verschieben von Daten in eine lokale SQL Server-Instanz für Machine Learning beschrieben werden, finden Sie unter [Verschieben von Daten in SQL Server auf einem virtuellen Computer in Azure](move-sql-server-virtual-machine.md).
+Ein Thema, in dem die Optionen für das Verschieben von Daten in eine SQL Server-Instanz für Machine Learning beschrieben werden, finden Sie unter [Verschieben von Daten in SQL Server auf einem virtuellen Computer in Azure](move-sql-server-virtual-machine.md).
 
 In der folgende Tabelle sind die Optionen zum Verschieben von Daten in eine Azure SQL-Datenbank zusammengefasst.
 
@@ -41,7 +41,7 @@ Für diese hier beschriebenen Verfahren benötigen Sie:
 
 **Data:** Die Migrationsprozesse werden anhand des [NYC Taxi-Datasets](https://chriswhong.com/open-data/foil_nyc_taxi/)demonstriert. Das NYC Taxi-Dataset enthält Informationen zu Daten und Preisen von Fahrten und ist in Azure Blob Storage verfügbar: [NYC Taxi Data](https://www.andresmh.com/nyctaxitrips/). Ein Beispiel und eine Beschreibung dieser Dateien finden Sie unter [Beschreibung des NYC Taxi Trips-Datasets](sql-walkthrough.md#dataset).
 
-Sie können die hier beschriebenen Verfahren entweder auf einen Satz Ihrer eigenen Daten anpassen oder die Schritte wie beschrieben unter Verwendung des NYC Taxi-Datasets durchführen. Um das NYC Taxi-Dataset in Ihre lokale SQL Server-Datenbank hochzuladen, befolgen Sie das unter [Massenimport von Daten in eine SQL Server-Datenbank](sql-walkthrough.md#dbload) beschriebene Verfahren. Diese Anleitungen gelten für eine SQL Server-Instanz auf einem virtuellen Azure-Computer, aber das Verfahren zum Hochladen auf die lokale SQL Server-Instanz ist identisch.
+Sie können die hier beschriebenen Verfahren entweder auf einen Satz Ihrer eigenen Daten anpassen oder die Schritte wie beschrieben unter Verwendung des NYC Taxi-Datasets durchführen. Um das NYC Taxi-Dataset in Ihre SQL Server-Datenbank hochzuladen, befolgen Sie das unter [Massenimport von Daten in eine SQL Server-Datenbank](sql-walkthrough.md#dbload) beschriebene Verfahren.
 
 ## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a> Verschieben von Daten aus einer Flatfilequelle in Azure SQL-Datenbank
 Daten in Flatfiles (CSV- oder TSV-Format) können mithilfe einer SQL-Abfrage zum Masseneinfügen in Azure SQL-Datenbank verschoben werden.
@@ -49,8 +49,8 @@ Daten in Flatfiles (CSV- oder TSV-Format) können mithilfe einer SQL-Abfrage zum
 ### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a> SQL-Abfrage zum Masseneinfügen
 Die Schritte des Verfahrens mit der SQL-Abfrage zum Masseneinfügen sind mit denen zum Verschieben von Daten aus einer Flatfilequelle in SQL Server auf einem virtuellen Azure-Computer vergleichbar. Ausführliche Informationen finden Sie unter [SQL-Abfrage zum Masseneinfügen](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="moving-data-from-on-premises-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a> Verschieben von Daten aus einer lokalen SQL Server-Instanz in Azure SQL-Datenbank
-Wenn die Quelldaten in einer lokalen SQL Server-Instanz gespeichert sind, stehen verschiedene Optionen zum Verschieben der Daten in Azure SQL-Datenbank zur Verfügung:
+## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a> Verschieben von Daten aus einer SQL Server-Instanz in eine Azure SQL-Datenbank
+Wenn die Quelldaten auf einem SQL Server gespeichert sind, stehen verschiedene Optionen zum Verschieben der Daten in eine Azure SQL-Datenbank zur Verfügung:
 
 1. [Exportieren in eine Flatfile](#export-flat-file)
 2. [SQL-Datenbankmigrations-Assistent](#insert-tables-bcp)
@@ -69,6 +69,6 @@ Die Schritte für die Verwendung des SQL-Datenbankmigrations-Assistenten ähneln
 Die Schritte für die Verwendung der Datenbanksicherung und -wiederherstellung ähneln den Anweisungen unter [Datenbanksicherung und -wiederherstellung](move-sql-server-virtual-machine.md#sql-backup).
 
 ### <a name="azure-data-factory"></a><a name="adf"></a>Azure Data Factory
-Informationen zum Verschieben von Daten in eine Azure SQL-Datenbank-Instanz mit Azure Data Factory (ADF) finden Sie im Thema [Verschieben von Daten von einer lokalen SQL Server-Instanz zu SQL Azure mithilfe von Azure Data Factory](move-sql-azure-adf.md). In diesem Thema wird gezeigt, wie Sie mithilfe von ADF Daten aus einer lokalen SQL Server-Datenbank über Azure Blob Storage in eine Azure SQL-Datenbank-Instanz verschieben.
+Informationen zum Verschieben von Daten in eine Azure SQL-Datenbank-Instanz mit Azure Data Factory (ADF) finden Sie im Thema [Verschieben von Daten von einer SQL Server-Instanz zu SQL Azure mithilfe von Azure Data Factory](move-sql-azure-adf.md). In diesem Thema wird gezeigt, wie Sie mithilfe von ADF Daten aus einer SQL Server-Datenbank über Azure Blob Storage in eine Azure SQL-Datenbank-Instanz verschieben.
 
 Sie sollten ADF verwenden, wenn Daten fortlaufend mit lokalen und cloudbasierten Hybridquellen migriert werden müssen.  ADF ist auch hilfreich, wenn bei der Migration Transformationen der Daten erforderlich sind oder ihnen neue Geschäftslogik hinzugefügt werden muss. ADF ermöglicht die Planung und Überwachung von Aufträgen mithilfe einfacher JSON-Skripts, die das Verschieben von Daten in regelmäßigen Abständen verwalten. ADF verfügt außerdem über weitere Funktionen wie Unterstützung für komplexe Vorgänge.

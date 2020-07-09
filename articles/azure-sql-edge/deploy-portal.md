@@ -2,19 +2,19 @@
 title: Bereitstellen von Azure SQL Edge (Vorschau) mithilfe des Azure-Portals
 description: Hier erfahren Sie, wie Sie Azure SQL Edge (Vorschau) über das Azure-Portal bereitstellen.
 keywords: SQL Edge bereitstellen
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7dfc7b680c6b7d6b2a3641b25c0f82665143bde1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594669"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233242"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Bereitstellen von Azure SQL Edge (Vorschau) 
 
@@ -119,4 +119,4 @@ In diesem Schnellstart haben Sie ein SQL Edge-Modul auf einem IoT Edge-Gerät 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Machine Learning und künstliche Intelligenz mit ONNX in SQL Edge](onnx-overview.md)
-- Entwickeln einer End-to-End-IoT-Lösung mit SQL Edge unter Verwendung von IoT Edge
+- [Entwickeln einer End-to-End-IoT-Lösung mit SQL Edge unter Verwendung von IoT Edge](tutorial-deploy-azure-resources.md)

@@ -3,17 +3,17 @@ title: Herstellen einer privaten Verbindung mit einer Web-App mithilfe eines pri
 description: Herstellen einer privaten Verbindung mit einer Web-App mithilfe eines privaten Azure-Endpunkts
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
-ms.topic: article
-ms.date: 03/12/2020
+ms.topic: how-to
+ms.date: 06/02/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 2f10c7378ae7681b14df6e96b6a6f1adac832d1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b3ac4c79ce92f591e74821a9f355717e4b22ea4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80287814"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737392"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Herstellen einer privaten Verbindung mit einer Web-App mithilfe eines privaten Azure-Endpunkts (Vorschau)
 
@@ -23,7 +23,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Web-App mit einem pri
 Weitere Informationen finden Sie unter [Verwenden privater Endpunkte für eine Azure-Web-App (Vorschau)][privatenedpointwebapp].
 
 > [!Note]
->Die Vorschauversion ist in den Regionen „USA, Osten“ und „USA, Westen 2“ für alle Windows- und Linux-Web-Apps vom Typ „PremiumV2“ verfügbar. 
+>Die Vorschauversion ist in öffentlichen Regionen für Windows- und Linux-Web-Apps des Typs PremiumV2 sowie elastische Premiumfunktionen verfügbar. 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

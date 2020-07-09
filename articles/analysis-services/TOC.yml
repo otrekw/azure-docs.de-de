@@ -30,9 +30,9 @@
     - name: Automatisierung mit Dienstprinzipalen
       href: analysis-services-service-principal.md
     - name: Clientbibliotheken
-      href: analysis-services-data-providers.md
+      href: 'https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current'
     - name: Kompatibilitätsgrad
-      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
+      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services?view=azure-analysis-services-current'
     - name: Herstellen einer Verbindung mit lokalen Datenquellen
       href: analysis-services-gateway.md
     - name: Herstellen einer Verbindung mit Servern
@@ -71,6 +71,8 @@
           href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
         - name: Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle
           href: analysis-services-addservprinc-admins.md
+        - name: Verschieben zwischen Regionen
+          href: move-between-regions.md
     - name: Modell
       items:
         - name: Tabellenmodellierung
@@ -120,11 +122,9 @@
     - name: Beispiele
       href: analysis-services-samples.md
     - name: Teamblog zu Analysis Services
-      href: 'https://blogs.msdn.microsoft.com/analysisservices/'
-    - name: 'Frageseite von Microsoft Q&A (Fragen und Antworten): Azure Analysis Services'
-      href: 'https://docs.microsoft.com/answers/topics/azure-analysis-services.html'
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+      href: 'https://powerbi.microsoft.com/blog/category/analysis-services/'
+    - name: Azure-Updates
+      href: 'https://azure.microsoft.com/updates/?query=Analysis%20Services'
     - name: Azure-Status
       href: 'https://azure.microsoft.com/status/'
     - name: Feedback

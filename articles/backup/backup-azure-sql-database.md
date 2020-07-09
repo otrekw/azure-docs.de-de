@@ -3,12 +3,12 @@ title: Sichern von SQL Server-Datenbanken in Azure
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server in Azure sichern. In diesem Artikel wird auch die SQL Server-Wiederherstellung beschrieben.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 537257733d7693598fd8007da6ce12c28fbeb02a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0a555125e50a974ae51a08d7870cdc3ec12fd39
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408759"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021091"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
 
@@ -39,7 +39,7 @@ Die Lösung nutzt die nativen SQL-APIs, um Sicherungen Ihrer SQL-Datenbankinstan
 
 Überprüfen Sie zunächst Folgendes:
 
-1. Vergewissern Sie sich, dass in Azure eine SQL Server-Instanz ausgeführt wird. Im Marketplace können Sie [schnell eine SQL Server-Instanz erstellen](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md).
+1. Vergewissern Sie sich, dass in Azure eine SQL Server-Instanz ausgeführt wird. Im Marketplace können Sie [schnell eine SQL Server-Instanz erstellen](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md).
 2. Informieren Sie sich über [Funktionsaspekte](sql-support-matrix.md#feature-consideration-and-limitations) und [Unterstützung von Szenarien](sql-support-matrix.md#scenario-support).
 3. [Lesen Sie häufig gestellte Fragen](faq-backup-sql-server.md) zu diesem Szenario.
 

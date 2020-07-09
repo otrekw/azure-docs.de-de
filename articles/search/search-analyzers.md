@@ -8,16 +8,21 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7be56fa48887e2ee500f1b253c078bde16d91e6
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460712"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891232"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analysetools für Textverarbeitung in der kognitiven Azure-Suche
 
 Ein *Analysetool* ist eine Komponente der [Volltext-Suchmaschine](search-lucene-query-architecture.md), mit der Text in Abfragezeichenfolgen und indizierten Dokumenten verarbeitet wird. Verschiedene Analysetools bearbeiten Text je nach Szenario auf verschiedene Arten. Sprachanalysetools verarbeiten Text mit linguistischen Regeln, um die Suchqualität zu verbessern, während andere Analysetools grundlegendere Aufgaben wie z.B. das Konvertieren von Zeichen in Kleinschreibung ausführen. 
+
+Das folgende Videosegment bietet eine schnelle Übersicht über die Funktionsweise von Textverarbeitung in Azure Cognitive Search.
+
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=132&end=189]
+
 
 Sprachanalysetools sind die am häufigsten verwendeten, und jedem durchsuchbaren Feld in einem Index für die kognitive Azure-Suche ist ein Standard-Sprachanalysetool zugewiesen. Die folgenden Sprachtransformationen sind während der Textanalyse typisch:
 

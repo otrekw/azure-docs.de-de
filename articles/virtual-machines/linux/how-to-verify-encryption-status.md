@@ -1,89 +1,72 @@
 ---
-title: Überprüfen des Verschlüsselungsstatus unter Linux
-description: In diesem Artikel finden Sie Anweisungen zum Überprüfen des Verschlüsselungsstatus auf Plattform- und Betriebssystemebene.
+title: 'Überprüfen des Verschlüsselungsstatus unter Linux: Azure Disk Encryption'
+description: In diesem Artikel finden Sie Anweisungen zum Überprüfen des Verschlüsselungsstatus auf der Plattform- und Betriebssystemebene.
 author: kailashmsft
 ms.service: security
 ms.topic: article
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0aaa32c46d915eafffcfac9d95cfdd3a24d4086d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: e2916a71f167c415f6bf1dde8ff82a38b0e0557c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123420"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83873999"
 ---
-# <a name="how-to-verify-encryption-status-for-linux"></a>Überprüfen des Verschlüsselungsstatus unter Linux 
+# <a name="verify-encryption-status-for-linux"></a>Überprüfen des Verschlüsselungsstatus unter Linux 
 
-**Dieses Szenario gilt für ADE-Erweiterungen mit einem und zwei Durchläufen.**  
-Das Ziel dieser Dokumentation ist es, den Verschlüsselungsstatus einer VM (virtueller Computer) mithilfe verschiedener Methoden zu überprüfen.
+In diesem Artikel wird beschrieben, wie der Verschlüsselungsstatus eines virtuellen Computers mit verschiedenen Methoden überprüft wird: Azure-Portal, PowerShell, Azure CLI oder Betriebssystem des virtuellen Computers (VM). 
 
-### <a name="environment"></a>Environment
+Sie können den Verschlüsselungsstatus entweder während oder nach der Verschlüsselung überprüfen, indem Sie wie folgt vorgehen:
 
-- Linux-Distributionen
+- Überprüfen der Datenträger, die an einen bestimmten virtuellen Computer angefügt sind 
+- Abfragen der Verschlüsselungseinstellungen auf jedem einzelnen Datenträger, um zu ermitteln, ob er angefügt oder nicht angefügt ist
 
-### <a name="procedure"></a>Verfahren
-
-Eine VM wurde mit einem oder zwei Durchläufen verschlüsselt.
-
-Der Verschlüsselungsstatus kann während oder nach der Verschlüsselung anhand verschiedener Methoden überprüft werden.
+Dieses Szenario gilt für Azure Disk Encryption-Erweiterungen mit einem und zwei Durchläufen. Linux-Distributionen sind die einzig mögliche Umgebung für dieses Szenario.
 
 >[!NOTE] 
->Im Verlauf der Dokumentation werden Variablen verwendet. Achten Sie darauf, dass Sie die Werte entsprechend ersetzen.
+>Im gesamten Artikel werden Variablen verwendet. Ersetzen Sie die Werte entsprechend.
 
-### <a name="verification"></a>Überprüfung
+## <a name="portal"></a>Portal
 
-Die Überprüfung kann über das Portal, PowerShell, die Azure CLI oder über das Betriebssystem der VM durchgeführt werden. 
+Wählen Sie im Azure-Portal im Abschnitt **Erweiterungen** in der Liste die Azure Disk Encryption-Erweiterung aus. In den Informationen der **Statusmeldung** ist der aktuelle Verschlüsselungsstatus angegeben:
 
-Diese Überprüfung können Sie durchführen, indem Sie die Datenträger überprüfen, die einer bestimmten VM angefügt sind. 
+![Überprüfung im Portal mit Hervorhebung von Status, Version und Statusmeldung](./media/disk-encryption/verify-encryption-linux/portal-check-001.png)
 
-Alternativ können Sie die Verschlüsselungseinstellungen auf jedem einzelnen Datenträger abfragen, um in Erfahrung zu bringen, ob sie angefügt oder nicht angefügt sind.
+In der Liste mit den Erweiterungen wird die entsprechende Version der Azure Disk Encryption-Erweiterung angezeigt. Version 0.x entspricht Azure Disk Encryption mit zwei Durchläufen, und Version 1.x entspricht Azure Disk Encryption mit einem Durchlauf.
 
-Im Folgenden werden die verschiedenen Überprüfungsmethoden aufgeführt:
+Weitere Details erhalten Sie, indem Sie die Erweiterung und dann die Option **Detaillierten Status anzeigen** auswählen. Der ausführliche Status des Verschlüsselungsprozesses wird im JSON-Format angezeigt.
 
-## <a name="using-the-portal"></a>Verwenden des Portals
+![Überprüfung im Portal mit Hervorhebung des Links „Detaillierten Status anzeigen“](./media/disk-encryption/verify-encryption-linux/portal-check-002.png)
 
-Überprüfen Sie den Verschlüsselungsstatus im Abschnitt „Erweiterungen“ im Azure-Portal.
+![Detaillierter Status im JSON-Format](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
 
-Im Abschnitt **Erweiterungen** wird die ADE-Erweiterung aufgeführt. 
+Eine weitere Möglichkeit zum Überprüfen des Verschlüsselungsstatus ist das Anzeigen des Abschnitts mit den **Datenträgereinstellungen**.
 
-Klicken Sie auf diese Erweiterung, und sehen Sie sich die **Statusmeldung** an. Diese gibt den aktuellen Verschlüsselungsstatus an:
-
-![Überprüfung im Portal 1](./media/disk-encryption/verify-encryption-linux/portal-check-001.png)
-
-In der Liste der Erweiterungen wird die entsprechende Version de ADE-Erweiterung angezeigt. Version 0.x entspricht ADE mit zwei Durchläufen und Version 1.x entspricht ADE mit einem Durchlauf.
-
-Weitere Details finden Sie, indem Sie auf die Erweiterung und dann auf *Detaillierten Status anzeigen* klicken.
-
-Daraufhin wird ein ausführlicherer Status des Verschlüsselungsprozesses im JSON-Format angezeigt:
-
-![Überprüfung im Portal 2](./media/disk-encryption/verify-encryption-linux/portal-check-002.png)
-
-![Überprüfung im Portal 3](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
-
-Eine weitere Möglichkeit zum Überprüfen des Verschlüsselungsstatus besteht darin, den Abschnitt **Datenträger** zu überprüfen.
-
-![Überprüfung im Portal 4](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
+![Verschlüsselungsstatus für Betriebssystemdatenträger und Datenträger](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
 
 >[!NOTE] 
-> Dieser Status deutet darauf hin, dass die Datenträger über gestempelte Verschlüsselungseinstellungen verfügen, aber das bedeutet nicht, dass sie tatsächlich auf Betriebssystemebene verschlüsselt wurden. Die Datenträger werden entwurfsgemäß erst gestempelt und später verschlüsselt. Wenn der Verschlüsselungsprozess fehlschlägt, werden die Datenträger womöglich gestempelt, aber nicht verschlüsselt. Sie können die Verschlüsselung der Datenträger auf der Betriebssystemebene wiederholt prüfen, um sicherzustellen, ob die Datenträger wirklich verschlüsselt wurden.
+> Mit diesem Status wird angegeben, dass die Datenträger über gestempelte Verschlüsselungseinstellungen verfügen. Es bedeutet nicht, dass sie tatsächlich auf der Betriebssystemebene verschlüsselt wurden.
+>
+> Die Datenträger werden standardmäßig erst gestempelt und dann später verschlüsselt. Wenn der Verschlüsselungsprozess fehlschlägt, werden die Datenträger womöglich gestempelt, aber nicht verschlüsselt. 
+>
+> Sie können die Verschlüsselung der Datenträger auf der Betriebssystemebene wiederholt prüfen, um sicherzustellen, dass die Datenträger wirklich verschlüsselt wurden.
 
-## <a name="using-powershell"></a>PowerShell
+## <a name="powershell"></a>PowerShell
 
-Sie können den **allgemeinen** Verschlüsselungsstatus einer verschlüsselten VM mithilfe der folgenden PowerShell-Befehle überprüfen:
+Sie können den *allgemeinen* Verschlüsselungsstatus einer verschlüsselten VM mit den folgenden PowerShell-Befehlen überprüfen:
 
 ```azurepowershell
    $VMNAME="VMNAME"
    $RGNAME="RGNAME"
    Get-AzVmDiskEncryptionStatus -ResourceGroupName  ${RGNAME} -VMName ${VMNAME}
 ```
-![Überprüfung in PowerShell 1](./media/disk-encryption/verify-encryption-linux/verify-status-ps-01.png)
+![Allgemeiner Verschlüsselungsstatus in PowerShell](./media/disk-encryption/verify-encryption-linux/verify-status-ps-01.png)
 
-Sie können die Verschlüsselungseinstellungen der einzelnen Datenträger mithilfe der folgenden PowerShell-Befehle erfassen:
+Sie können die Verschlüsselungseinstellungen jedes Datenträgers mit den folgenden PowerShell-Befehlen erfassen.
 
 ### <a name="single-pass"></a>Einzeldurchlauf
-Bei Verschlüsselungen mit einem Durchlauf werden die Verschlüsselungseinstellungen auf jedem Datenträger (Betriebssystem und Daten) gestempelt. Sie können die Verschlüsselungseinstellungen des Betriebssystemdatenträger bei Verschlüsselungen mit einem Durchlauf wie folgt erfassen:
+Bei nur einem Durchlauf werden die Verschlüsselungseinstellungen auf jeden Datenträger (Betriebssystem und Daten) gestempelt. Sie können die Verschlüsselungseinstellungen für einen Betriebssystemdatenträger wie folgt mit einem einzelnen Durchlauf erfassen:
 
 ``` powershell
 $RGNAME = "RGNAME"
@@ -101,13 +84,13 @@ $VM = Get-AzVM -Name ${VMNAME} -ResourceGroupName ${RGNAME}
  Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
  Write-Host "============================================================================================================================================================="
 ```
-![Überprüfung über das Betriebssystem bei Einzeldurchlauf 01](./media/disk-encryption/verify-encryption-linux/verify-os-single-ps-001.png)
+![Verschlüsselungseinstellungen für einen Betriebssystemdatenträger](./media/disk-encryption/verify-encryption-linux/verify-os-single-ps-001.png)
 
-Wenn der Datenträger über keine gestempelten Verschlüsselungseinstellungen verfügt, ist die Ausgabe wie im Folgenden gezeigt leer:
+Wenn der Datenträger über keine gestempelten Verschlüsselungseinstellungen verfügt, ist die Ausgabe leer:
 
-![Verschlüsselungseinstellungen des Betriebssystems 2](./media/disk-encryption/verify-encryption-linux/os-encryption-settings-2.png)
+![Leere Ausgabe](./media/disk-encryption/verify-encryption-linux/os-encryption-settings-2.png)
 
-Erfassen der Datenträgerverschlüsselungseinstellungen:
+Verwenden Sie die folgenden Befehle, um die Verschlüsselungseinstellungen für reguläre Datenträger zu erfassen:
 
 ```azurepowershell
 $RGNAME = "RGNAME"
@@ -128,12 +111,12 @@ $VM = Get-AzVM -Name ${VMNAME} -ResourceGroupName ${RGNAME}
  Write-Host "============================================================================================================================================================="
  }
 ```
-![Überprüfen der Datenträgerverschlüsselung mit einem Durchlauf in PowerShell 001](./media/disk-encryption/verify-encryption-linux/verify-data-single-ps-001.png)
+![Verschlüsselungseinstellungen für reguläre Datenträger](./media/disk-encryption/verify-encryption-linux/verify-data-single-ps-001.png)
 
 ### <a name="dual-pass"></a>Zwei Durchläufe
-Bei zwei Durchläufen werden die Verschlüsselungseinstellungen im VM-Modell gestempelt und nicht auf jedem einzelnen Datenträger.
+Bei einem Vorgang mit zwei Durchläufen werden die Verschlüsselungseinstellungen nicht auf jedem einzelnen Datenträger, sondern im VM-Modell gestempelt.
 
-Sie können die folgenden Befehle verwenden, um zu überprüfen, ob die Verschlüsselungseinstellungen mit zwei Durchläufen gestempelt wurden:
+Sie können mit den folgenden Befehlen überprüfen, ob die Verschlüsselungseinstellungen bei einem Vorgang mit zwei Durchläufen gestempelt wurden:
 
 ```azurepowershell
 $RGNAME = "RGNAME"
@@ -152,7 +135,7 @@ Write-Host "Secret URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSett
 Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
 Write-Host "============================================================================================================================================================="
 ```
-![Überprüfung bei zwei Durchläufen in PowerShell 1](./media/disk-encryption/verify-encryption-linux/verify-dual-ps-001.png)
+![Verschlüsselungseinstellungen bei einem Vorgang mit zwei Durchläufen](./media/disk-encryption/verify-encryption-linux/verify-dual-ps-001.png)
 
 ### <a name="unattached-disks"></a>Nicht angefügte Datenträger
 
@@ -171,19 +154,19 @@ Write-Host "Secret URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSett
 Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
 Write-Host "============================================================================================================================================================="
 ```
-## <a name="using-az-cli"></a>Verwenden der Azure CLI
+## <a name="azure-cli"></a>Azure CLI
 
-Sie können den **allgemeinen** Verschlüsselungsstatus einer verschlüsselten VM mithilfe der folgenden Azure CLI-Befehle überprüfen:
+Sie können den *allgemeinen* Verschlüsselungsstatus einer verschlüsselten VM mit den folgenden Azure CLI-Befehlen überprüfen:
 
 ```bash
 VMNAME="VMNAME"
 RGNAME="RGNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
 ```
-![Allgemeine Überprüfung mit der CLI ](./media/disk-encryption/verify-encryption-linux/verify-gen-cli.png)
+![Allgemeiner Verschlüsselungsstatus per Azure CLI ](./media/disk-encryption/verify-encryption-linux/verify-gen-cli.png)
 
 ### <a name="single-pass"></a>Einzeldurchlauf
-Sie können die Verschlüsselungseinstellungen der einzelnen Datenträger mithilfe der folgenden Azure CLI-Befehle überprüfen:
+Sie können die Verschlüsselungseinstellungen für jeden Datenträger überprüfen, indem Sie die folgenden Azure CLI-Befehle verwenden:
 
 ```bash
 az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuses[*].displayStatus]"  -o table
@@ -192,9 +175,9 @@ az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuse
 ![Datenverschlüsselungseinstellungen](./media/disk-encryption/verify-encryption-linux/data-encryption-settings-2.png)
 
 >[!IMPORTANT]
-> Wenn der Datenträger über keine gestempelten Verschlüsselungseinstellungen verfügt, wird „Disk is not encrypted“ (Der Datenträger ist nicht verschlüsselt) angezeigt.
+> Falls der Datenträger nicht über gestempelte Verschlüsselungseinstellungen verfügt, wird der Text **Datenträger ist nicht verschlüsselt** angezeigt.
 
-Detaillierter Status und Verschlüsselungseinstellungen:
+Verwenden Sie die folgenden Befehle, um den detaillierten Status und die Verschlüsselungseinstellungen abzurufen.
 
 Betriebssystemdatenträger:
 
@@ -214,9 +197,9 @@ echo "==========================================================================
 done
 ```
 
-![OSSingleCLI](./media/disk-encryption/verify-encryption-linux/os-single-cli.png)
+![Detaillierter Status und Verschlüsselungseinstellungen für den Betriebssystemdatenträger](./media/disk-encryption/verify-encryption-linux/os-single-cli.png)
 
-Datenträger:
+Reguläre Datenträger:
 
 ```bash
 RGNAME="RGNAME"
@@ -234,7 +217,7 @@ echo "==========================================================================
 done
 ```
 
-![Datenträgerüberprüfung bei einem Durchlauf über die CLI ](./media/disk-encryption/verify-encryption-linux/data-single-cli.png)
+![Detaillierter Status und Verschlüsselungseinstellungen für die regulären Datenträger](./media/disk-encryption/verify-encryption-linux/data-single-cli.png)
 
 ### <a name="dual-pass"></a>Zwei Durchläufe
 
@@ -242,7 +225,9 @@ done
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} -o table
 ```
 
-![Allgemeine Überprüfung bei zwei Durchläufen über die CLI](./media/disk-encryption/verify-encryption-linux/verify-gen-dual-cli.png) Sie können die Verschlüsselungseinstellungen auch im Speicherprofil des VM-Modells auf dem Betriebssystemdatenträger überprüfen:
+![Allgemeine Verschlüsselungseinstellungen für Vorgang mit zwei Durchläufen per Azure CLI](./media/disk-encryption/verify-encryption-linux/verify-gen-dual-cli.png)
+
+Sie können die Verschlüsselungseinstellungen auch im Speicherprofil des VM-Modells auf dem Betriebssystemdatenträger überprüfen:
 
 ```bash
 disk=`az vm show -g ${RGNAME} -n ${VMNAME} --query storageProfile.osDisk.name -o tsv`
@@ -257,7 +242,7 @@ echo "==========================================================================
 done
 ```
 
-![Überprüfung des VM-Profils bei zwei Durchläufen über die CLI ](./media/disk-encryption/verify-encryption-linux/verify-vm-profile-dual-cli.png)
+![VM-Profil für zwei Durchläufe per Azure CLI](./media/disk-encryption/verify-encryption-linux/verify-vm-profile-dual-cli.png)
 
 ### <a name="unattached-disks"></a>Nicht angefügte Datenträger
 
@@ -282,10 +267,10 @@ Nicht verwaltete Datenträger sind VHD-Dateien, die als Seitenblobs in Azure-Spe
 
 Sie müssen Folgendes angeben, um die Details zu einem spezifischen Datenträger abzurufen:
 
-Die ID des Speicherkontos, das den Datenträger enthält
-Eine Verbindungszeichenfolge für das spezifische Speicherkonto
-Der Name des Containers, in dem der Datenträger gespeichert wird
-Der Name des Datenträgers
+- Die ID des Speicherkontos, das den Datenträger enthält
+- Eine Verbindungszeichenfolge für das spezifische Speicherkonto
+- Der Name des Containers, in dem der Datenträger gespeichert wird
+- Der Name des Datenträgers
 
 Mit dem folgenden Befehl werden alle IDs für all Ihre Speicherkonten aufgeführt:
 
@@ -294,13 +279,12 @@ az storage account list --query [].[id] -o tsv
 ```
 Die Speicherkonto-IDs werden im folgenden Format aufgeführt:
 
-/subscriptions/\<Abonnement-ID>/resourceGroups/\<Name der Ressourcengruppe>/providers/Microsoft.Storage/storageAccounts/\<Name des Speicherkontos>
+/subscriptions/\<subscription id>/resourceGroups/\<resource group name>/providers/Microsoft.Storage/storageAccounts/\<storage account name>
 
 Wählen Sie die entsprechende ID aus, und speichern Sie sie in einer Variable:
 ```bash
 id="/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name>"
 ```
-Verbindungszeichenfolge.
 
 Mit dem folgenden Befehl wird die Verbindungszeichenfolge für ein bestimmtes Speicherkonto abgerufen und in einer Variable gespeichert:
 
@@ -308,57 +292,51 @@ Mit dem folgenden Befehl wird die Verbindungszeichenfolge für ein bestimmtes Sp
 ConnectionString=$(az storage account show-connection-string --ids $id --query connectionString -o tsv)
 ```
 
-Der Containername
-
 Mit dem folgenden Befehl werden alle Container in einem Speicherkonto aufgeführt:
 ```bash
 az storage container list --connection-string $ConnectionString --query [].[name] -o tsv
 ```
-Der Container, der für Datenträger verwendet wird, trägt normalerweise den Namen „vhds“.
+Der Container, der für Datenträger verwendet wird, hat normalerweise den Namen „vhds“.
 
-Speichern Sie den Containernamen in einer Variable: 
+Speichern Sie den Containernamen in einer Variablen: 
 ```bash
 ContainerName="name of the container"
 ```
-
-Der Name des Datenträgers
 
 Verwenden Sie den folgenden Befehl, um alle Blobs eines bestimmten Containers aufzuführen:
 ```bash 
 az storage blob list -c ${ContainerName} --connection-string $ConnectionString --query [].[name] -o tsv
 ```
-Wählen Sie den abzufragenden Datenträger aus, und speichern Sie seinen Namen in einer Variable.
+Wählen Sie den abzufragenden Datenträger aus, und speichern Sie seinen Namen in einer Variablen:
 ```bash
 DiskName="diskname.vhd"
 ```
-Fragen Sie die Datenträgerverschlüsselungseinstellungen ab:
+Fragen Sie die Verschlüsselungseinstellungen des Datenträgers ab:
 ```bash
 az storage blob show -c ${ContainerName} --connection-string ${ConnectionString} -n ${DiskName} --query metadata.DiskEncryptionSettings
 ```
 
-## <a name="from-the-os"></a>Methode zur Überprüfung über das Betriebssystem
+## <a name="operating-system"></a>Betriebssystem
 Überprüfen Sie, ob die Datenträgerpartitionen verschlüsselt sind (und der Betriebssystemdatenträger nicht).
 
-Wenn eine Partition bzw. ein Datenträger verschlüsselt ist, wird er mit dem Typ **crypt** angezeigt. Wenn keine Verschlüsselung vorliegt, wird der Typ **part/disk** angezeigt.
+Wenn eine Partition oder ein Datenträger verschlüsselt ist, wird als Typ **crypt** angezeigt. Wenn keine Verschlüsselung durchgeführt wurde, wird als Typ **part/disk** angezeigt.
 
 ``` bash
 lsblk
 ```
 
-![Verschlüsselte Betriebssystemebene ](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer.png)
+![Betriebssystemebene „crypt“ für eine Partition](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer.png)
 
-Mit der folgenden Variante des lsblk-Befehls können Sie weitere Details abrufen. 
+Mit der folgenden Variante des Befehls **lsblk** können Sie weitere Details abrufen. 
 
-Daraufhin wird die Ebene des Typs **crypt** angezeigt, die von der Erweiterung eingebunden wird.
-
-Im folgenden Beispiel werden logische Volumes und normale Datenträger mit „**crypto\_LUKS FSTYPE**“ veranschaulicht.
+Daraufhin wird die Ebene des Typs **crypt** angezeigt, die von der Erweiterung eingebunden wird. Im folgenden Beispiel werden logische Volumes und reguläre Datenträger mit **crypto\_LUKS FSTYPE** veranschaulicht.
 
 ```bash
 lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
 ```
-![Verschlüsselte Betriebssystemebene 2](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer-2.png)
+![Betriebssystemebene „crypt“ für logische Volumes und reguläre Datenträger](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer-2.png)
 
-Sie können einen zusätzlichen Schritt ausführen, indem Sie auch überprüfen, ob der Datenträger über geladene Schlüssel verfügt.
+Sie können in einem zusätzlichen Schritt überprüfen, ob der Datenträger über geladene Schlüssel verfügt:
 
 ``` bash
 cryptsetup luksDump /dev/VGNAME/LVNAME
@@ -368,7 +346,7 @@ cryptsetup luksDump /dev/VGNAME/LVNAME
 cryptsetup luksDump /dev/sdd1
 ```
 
-Außerdem können Sie überprüfen, welche DM-Geräte als verschlüsselt aufgeführt werden.
+Darüber hinaus können Sie überprüfen, welche **dm**-Geräte als **crypt** aufgeführt sind:
 
 ```bash
 dmsetup ls --target crypt

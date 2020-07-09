@@ -2,13 +2,13 @@
 title: Fehler wegen ungültiger Vorlage
 description: Hier wird beschrieben, wie Fehler aufgrund ungültiger Vorlagen beim Bereitstellen von Azure Resource Manager-Vorlagen behoben werden.
 ms.topic: troubleshooting
-ms.date: 03/08/2018
-ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/22/2020
+ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76154056"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118884"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Beheben von Fehlern aufgrund ungültiger Vorlagen
 
@@ -29,7 +29,7 @@ Die Fehlermeldung hängt vom Typ des Fehlers ab.
 
 Dieser Fehler kann aus verschiedenen Arten von Fehlern entstehen. Normalerweise handelt es sich um einen Syntax- oder Strukturfehler in der Vorlage.
 
-<a id="syntax-error" />
+<a id="syntax-error"></a>
 
 ## <a name="solution-1---syntax-error"></a>Lösung 1 – Syntaxfehler
 
@@ -48,9 +48,9 @@ Solche Fehler können sehr leicht passieren, da Vorlagenausdrücke recht kompliz
 
 Wenn Sie nicht die passende Syntax bereitstellen, erzeugt die Vorlage einen Wert, der nicht Ihrer Absicht entspricht.
 
-Wenn Sie diese Art von Fehler erhalten, überprüfen Sie sorgfältig die Ausdruckssyntax. Verwenden Sie ggf. einen JSON-Editor, der Sie auf Syntaxfehler aufmerksam machen kann (z.B. [Visual Studio](create-visual-studio-deployment-project.md) oder [Visual Studio Code](use-vs-code-to-create-template.md)).
+Wenn Sie diese Art von Fehler erhalten, überprüfen Sie sorgfältig die Ausdruckssyntax. Verwenden Sie ggf. einen JSON-Editor, der Sie auf Syntaxfehler aufmerksam machen kann (z.B. [Visual Studio](create-visual-studio-deployment-project.md) oder [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)).
 
-<a id="incorrect-segment-lengths" />
+<a id="incorrect-segment-lengths"></a>
 
 ## <a name="solution-2---incorrect-segment-lengths"></a>Lösung 2 – falsche Segmentlängen
 
@@ -111,7 +111,7 @@ Die richtige Angabe der Segmente kann bei Resource Manager-Typen problematisch s
 }
 ```
 
-<a id="parameter-not-valid" />
+<a id="parameter-not-valid"></a>
 
 ## <a name="solution-3---parameter-is-not-valid"></a>Lösung 3 – Parameter ungültig
 
@@ -126,13 +126,13 @@ part of the allowed values
 
 Überprüfen Sie die zulässigen Werte in der Vorlage, und geben Sie während der Bereitstellung einen gültigen Wert an. Weitere Informationen zu zulässigen Parameterwerten finden Sie im [Abschnitt „Parameters“ von Azure Resource Manager-Vorlagen](template-syntax.md#parameters).
 
-<a id="too-many-resource-groups" />
+<a id="too-many-resource-groups"></a>
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>Lösung 4 – zu viele Zielressourcengruppen
 
-Wenn Sie mehr als fünf Zielressourcengruppen in einer einzelnen Bereitstellung angeben, wird dieser Fehler angezeigt. Sie sollten entweder die Anzahl der Ressourcengruppen in Ihrer Bereitstellung konsolidieren oder einige der Vorlagen als separate Bereitstellungen bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](cross-resource-group-deployment.md).
+Dieser Fehler wird in früheren Bereitstellungen möglicherweise angezeigt, weil in einer einzigen Bereitstellung nur fünf Zielressourcengruppen vorhanden sein durften. Im Mai 2020 wurde dieses Limit auf 800 Ressourcengruppen erhöht. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](cross-resource-group-deployment.md).
 
-<a id="circular-dependency" />
+<a id="circular-dependency"></a>
 
 ## <a name="solution-5---circular-dependency-detected"></a>Lösung 5 – Ringabhängigkeit erkannt
 
@@ -143,7 +143,7 @@ So beheben Sie eine Ringabhängigkeit
 1. Suchen Sie in Ihrer Vorlage nach der Ressource, die in der Ringabhängigkeit angegeben ist.
 2. Sehen Sie sich für diese Ressource die **dependsOn**-Eigenschaft und alle Vorkommen der Funktion **reference** an, um zu ermitteln, von welchen Ressourcen sie abhängig ist.
 3. Überprüfen Sie diese Ressourcen, um zu ermitteln, von welchen Ressourcen sie abhängig sind. Verfolgen Sie die Abhängigkeiten, bis Sie auf eine Ressource stoßen, die von der Originalressource abhängig ist.
-5. Untersuchen Sie für die an der Ringabhängigkeit beteiligten Ressourcen sorgfältig alle Vorkommen der **dependsOn**-Eigenschaft, um alle Abhängigkeiten zu identifizieren, die nicht benötigt werden. Entfernen Sie diese Abhängigkeiten. Wenn Sie unsicher sind, ob eine Abhängigkeit erforderlich ist, können Sie versuchen, sie zu entfernen.
+5. Überprüfen Sie für die an der Ringabhängigkeit beteiligten Ressourcen gründlich alle Vorkommen der **dependsOn**-Eigenschaft, um alle Abhängigkeiten zu identifizieren, die nicht benötigt werden. Entfernen Sie diese Abhängigkeiten. Wenn Sie unsicher sind, ob eine Abhängigkeit erforderlich ist, können Sie versuchen, sie zu entfernen.
 6. Stellen Sie die Vorlage erneut bereit.
 
 Das Entfernen von Werten aus der **dependsOn**-Eigenschaft kann zu Fehlern beim Bereitstellen der Vorlage führen. Fügen Sie die Abhängigkeit wieder in die Vorlage ein, wenn ein Fehler auftritt.

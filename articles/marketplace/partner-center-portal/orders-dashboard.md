@@ -1,18 +1,16 @@
 ---
 title: Partner Center-Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
 description: Erfahren Sie, wie Sie auf Analyseberichte in einem grafischen und herunterladbaren Format zugreifen, die Informationen zu Aufträgen für Ihre Marketplace-Angebote enthalten.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 148b80a6843168b11e4feb3558f6bf08eaeb3ace
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4f5e18a2cebc309475c4fbcf84d7baaa28c6e61d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261260"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118357"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
 
@@ -58,7 +56,7 @@ Der Prozentwert neben „Bestellungen insgesamt“ stellt den Zuwachs im ausgew�
 
 ### <a name="orders-by-geography"></a>Bestellungen nach Geographie
 
-Im Wärmebild **Aufträge nach Geografie** wird die Anzahl Ihrer Aufträge auf einer Weltkarte angezeigt. Außerdem werden die zugeordneten Arbeitsplätze basierend auf dem Land des Kunden angezeigt. Dieses Wärmebild funktioniert genauso wie das **[Wärmebild „Kunden nach Geografie“](./customer-dashboard.md#customer-by-geography)** .
+Im Wärmebild **Aufträge nach Geografie** wird die Anzahl Ihrer Aufträge auf einer Weltkarte angezeigt. Außerdem werden die zugeordneten Arbeitsplätze basierend auf dem Land/der Region des Kunden angezeigt. Dieses Wärmebild funktioniert genauso wie das **[Wärmebild „Kunden nach Geografie“](./customer-dashboard.md#customer-by-geography)** .
 
 ![Partner Center, Aufträge nach Geografie analysieren](./media/orders-by-geography.png)
 
@@ -103,7 +101,8 @@ In der Tabelle „Auftragsdetails“ wird eine nummerierte Liste der 1000 Top-Au
 - Jede Spalte im Raster ist sortierbar.
 - Die Daten können in eine TSV-Datei extrahiert werden, wenn die Anzahl der Datensätze weniger als 1000 beträgt.
 - Liegt die Anzahl der Datensätze über 1000, werden die exportierten Daten für die nächsten 30 Tage asynchron auf einer Downloadseite abgelegt.
-- Sie können auf die **Tabelle „Auftragsdetails“** Filter anwenden, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Land, Azure-Lizenztyp, Marketplace-Lizenztyp, Angebotstyp, Bestellstatus, kostenlosen Testversionen, Marketplace-Abonnement-ID, Kunden-ID und Firmenname gefiltert werden.
+- Sie können auf die **Tabelle „Auftragsdetails“** Filter anwenden, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Land/Region, Azure-Lizenztyp, Marketplace-Lizenztyp, Angebotstyp, Bestellstatus, kostenlosen Testversionen, Marketplace-Abonnement-ID, Kunden-ID und Unternehmensname gefiltert werden.
+- Da für SaaS-Angebote, die über den Azure Marketplace oder AppSource erworben werden, kein Azure-Abonnement erforderlich ist, wird im Abschnitt **Daten zu detaillierten Aufträgen** als Marketplace-Abonnement-ID „00000000-0000-0000-0000-000000000000“ angezeigt.
 
 #### <a name="orders-page-filters"></a>Filter für die Seite „Bestellungen“
 

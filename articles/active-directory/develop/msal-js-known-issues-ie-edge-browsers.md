@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
-ms.date: 05/16/2019
+ms.date: 05/18/2020
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5ae2dee68ec0da8e8a00d4f01583461462bc196c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696094"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772079"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Bekannte Probleme in den Browsern Internet Explorer und Microsoft Edge (MSAL.js)
 
@@ -50,7 +50,7 @@ Nutzen Sie die unten beschriebenen Problemumgehungen.
 
 #### <a name="other-workarounds"></a>Weitere Problemumgehungen
 Vergewissern Sie sich, dass das Problem nur in der spezifischen Version des Microsoft Edge-Browsers auftritt und dass die anderen Browser einwandfrei funktionieren, bevor Sie diese Problemumgehungen anwenden.  
-1. Zunächst stellen sicher, dass die Anwendungsdomäne und alle anderen an der Umleitung des Authentifizierungsflows beteiligten Websites in den Sicherheitseinstellungen des Browsers als vertrauenswürdige Sites hinzugefügt wurden, sodass sie derselben Sicherheitszone angehören.
+1. Um diese Probleme zu umgehen, stellen Sie als ersten Schritt sicher, dass die Anwendungsdomäne und alle anderen an der Umleitung des Authentifizierungsflows beteiligten Websites in den Sicherheitseinstellungen des Browsers als vertrauenswürdige Sites hinzugefügt wurden, sodass sie derselben Sicherheitszone angehören.
 Gehen Sie dazu folgendermaßen vor:
     - Öffnen Sie **Internet Explorer**, und klicken Sie in der oberen rechten Ecke auf **Einstellungen** (Zahnradsymbol).
     - Wählen Sie **Internetoptionen** aus.
@@ -63,7 +63,7 @@ Beim InPrivate-Browsen wird das Problem dadurch allerdings nicht behoben, da sow
 
 ## <a name="issues-due-to-popup-blockers"></a>Probleme durch Popupblocker
 
-In manchen Fällen werden Popupfenster in Internet Explorer oder Microsoft Edge blockiert, beispielsweise, wenn bei der Multi-Factor Authentication ein zweites Popupfenster eingeblendet wird. Sie werden im Browser darüber informiert, dass Sie das Popupfenster einmalig oder dauerhaft zulassen können. Wenn Sie das Popupfenster zulassen möchten, wird es automatisch geöffnet, und der Browser gibt ein `null`-Handle dafür zurück. Dies führt dazu, dass die Bibliothek kein Handle für das Fenster hat, sodass es keine Möglichkeit gibt, das Popupfenster zu schließen. In Chrome tritt dieses Problem nicht auf, wenn sie aufgefordert werden, Popupfenster zuzulassen, da der Browser nicht automatisch ein Popupfenster öffnet.
+In manchen Fällen werden Popupfenster in Internet Explorer oder Microsoft Edge blockiert, beispielsweise wenn bei der [mehrstufigen Authentifizierung](../authentication/concept-mfa-howitworks.md) ein zweites Popupfenster eingeblendet wird. Sie werden im Browser darüber informiert, dass Sie das Popupfenster einmalig oder dauerhaft zulassen können. Wenn Sie das Popupfenster zulassen möchten, wird es automatisch geöffnet, und der Browser gibt ein `null`-Handle dafür zurück. Dies führt dazu, dass die Bibliothek kein Handle für das Fenster hat, sodass es keine Möglichkeit gibt, das Popupfenster zu schließen. In Chrome tritt dieses Problem nicht auf, wenn sie aufgefordert werden, Popupfenster zuzulassen, da der Browser nicht automatisch ein Popupfenster öffnet.
 
 Zur **Problemumgehung** müssen Entwickler Popupfenster in IE und Microsoft Edge zulassen, bevor sie ihre App verwenden. So wird das Problem vermieden.
 

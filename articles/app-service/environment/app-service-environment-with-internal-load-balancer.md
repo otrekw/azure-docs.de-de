@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0c03905017629e28e41cce2adaa65eac347b8185
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294732"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833102"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Verwenden einen internen Lastenausgleichs mit einer App Service-Umgebung
 
@@ -118,9 +118,10 @@ Die zusätzlichen Verwaltungselemente sind Zertifikat- und DNS-Verwaltung. Sie m
 #### <a name="dns-configuration"></a>DNS-Konfiguration
 Bei Verwendung einer externen VIP-Adresse wird das DNS mithilfe von Azure verwaltet. Jede in Ihrer ASE erstellte App wird automatisch dem Azure-DNS – einem öffentlichen DNS – hinzugefügt. In einer ILB-ASE müssen Sie einen eigenen DNS verwalten. Für eine vorgegebene Unterdomäne, wie z.B. contoso.corp.net, müssen Sie DNS-A-Einträge mit folgenden Verweisen auf Ihre ILB-Adresse erstellen:
 
-    * 
-    *.scm ftp publish 
-
+- \*
+- *.scm
+- ftp
+- Veröffentlichen
 
 ## <a name="getting-started"></a>Erste Schritte
 Informationen zu den ersten Schritten mit App Service-Umgebungen finden Sie unter [Einführung in App Service-Umgebungen][WhatisASE].

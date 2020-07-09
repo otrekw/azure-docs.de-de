@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 04/03/2020
-ms.openlocfilehash: e53164d1e25f8a8d0a14d21c0544d95cf912fe9f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.date: 04/30/2020
+ms.openlocfilehash: 2d6ebcd720a5cea8d41bf3c05f753f2e9d4775d1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313963"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085904"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Verwenden von externen Metadatenspeichern in Azure HDInsight
 
@@ -38,8 +38,10 @@ HDInsight erstellt standardmäßig einen Metastore für jeden Clustertyp. Sie k�
 
 * Der Standardmetastore kann nicht für andere Cluster freigegeben werden.
 
-* Der Standardmetastore verwendet die Azure SQL-Basisdatenbank, die auf fünf DTUs (Datenbankübertragungseinheiten) begrenzt ist.
+* Der Standardmetastore verwendet die Azure SQL-Datenbank, die auf fünf DTUs (Datenbankübertragungseinheiten) begrenzt ist.
 Dieser Standardmetastore wird in der Regel für relativ einfache Workloads verwendet. Workloads, für die weder mehrere Cluster noch eine Beibehaltung von Metadaten über den Lebenszyklus des Clusters hinaus erforderlich sind.
+
+* Bei Produktionsworkloads empfiehlt sich die Migration zu einem externen Metastore. Im folgenden Abschnitt finden Sie weitere Details.
 
 ## <a name="custom-metastore"></a>Benutzerdefinierter Metastore
 
@@ -63,7 +65,9 @@ HDInsight unterstützt auch benutzerdefinierte Metastores, der für Produktionsc
 
 Vor dem Einrichten eines benutzerdefinierten Hive-Metastores für einen HDInsight-Cluster müssen Sie eine Azure SQL-Datenbank erstellen, oder es muss bereits eine Azure SQL-Datenbank vorhanden sein.  Weitere Informationen finden Sie unter [Quickstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
 
-Beim Erstellen des Clusters muss der HDInsight-Dienst eine Verbindung mit dem externen metastore herstellen und Ihre Anmeldeinformationen überprüfen. Konfigurieren Sie die Regeln der Azure SQL-Datenbank-Firewall, um Azure-Diensten und -Ressourcen den Zugriff auf den Server zu ermöglichen. Aktivieren Sie diese Option im Azure-Portal, indem Sie **Serverfirewall festlegen** auswählen. Wählen Sie dann unterhalb von **Zugriff auf öffentliches Netzwerk verweigern** **Nein** und unterhalb von **Azure-Diensten Zugriff auf den Server erlauben** für den Azure SQL-Datenbankserver bzw. die Azure SQL-Datenbank **Ja** aus. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
+Beim Erstellen des Clusters muss der HDInsight-Dienst eine Verbindung mit dem externen metastore herstellen und Ihre Anmeldeinformationen überprüfen. Konfigurieren Sie die Regeln der Azure SQL-Datenbank-Firewall, um Azure-Diensten und -Ressourcen den Zugriff auf den Server zu ermöglichen. Aktivieren Sie diese Option im Azure-Portal, indem Sie **Serverfirewall festlegen** auswählen. Wählen Sie dann unterhalb von **Zugriff auf öffentliches Netzwerk verweigern** **Nein** und unterhalb von **Azure-Diensten Zugriff auf den Server erlauben** für Azure SQL-Datenbank **Ja** aus. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
+
+Private Endpunkte für SQL-Speicher werden nicht unterstützt.
 
 ![Schaltfläche zum Festlegen der Serverfirewall](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
@@ -83,7 +87,7 @@ Sie können jederzeit einen Verweis des Clusters auf eine zuvor erstellte Azure 
 
 * Wenn Sie mehreren HDInsight-Clustern Zugriff auf separate Daten gewähren möchten, verwenden Sie für den Metastore auf jedem Cluster eine eigene Datenbank. Wenn Sie einen Metastore für mehrere HDInsight-Cluster freigeben, bedeutet dies, dass die Cluster dieselben Metadaten und zugrunde liegenden Benutzerdatendateien verwenden.
 
-* Sichern Sie Ihren benutzerdefinierten Metastore regelmäßig. Die Azure SQL-Datenbank generiert Sicherungen automatisch, der Aufbewahrungszeitraum der Sicherungen variiert jedoch. Weitere Informationen finden Sie unter [Informationen zu automatischen Sicherungen von SQL-Datenbank](../sql-database/sql-database-automated-backups.md).
+* Sichern Sie Ihren benutzerdefinierten Metastore regelmäßig. Die Azure SQL-Datenbank generiert Sicherungen automatisch, der Aufbewahrungszeitraum der Sicherungen variiert jedoch. Weitere Informationen finden Sie unter [Informationen zu automatischen Sicherungen von SQL-Datenbank](../azure-sql/database/automated-backups-overview.md).
 
 * Platzieren Sie den Metastore und den HDInsight-Cluster in derselben Region. Diese Konfiguration bietet die höchste Leistung und die niedrigsten Gebühren für ausgehenden Netzwerkdatenverkehr.
 
@@ -94,6 +98,8 @@ Sie können jederzeit einen Verweis des Clusters auf eine zuvor erstellte Azure 
 * Falls Sie einen Metastore für mehrere Cluster freigeben, achten Sie darauf, dass alle Cluster die gleiche HDInsight-Version haben. Verschiedene Hive-Versionen verwenden unterschiedliche Schemas der Metastoredatenbank. So können Sie beispielsweise einen Metastore nicht für Hive 2.1- und Hive 3.1-Cluster freigeben.
 
 * In HDInsight 4.0 verwenden Spark und Hive unabhängige Kataloge für den Zugriff auf SparkSQL- oder Hive-Tabellen. Eine von Spark erstellte Tabelle befindet sich im Spark-Katalog. Eine von Hive erstellte Tabelle befindet sich im Hive-Katalog. Dies unterscheidet sich von HDInsight 3.6, wo in Hive und Spark der gleiche Katalog verwendet wurde. Die Integration von Hive und Spark in HDInsight 4.0 basiert auf Hive Warehouse Connector (HWC). HWC funktioniert als Brücke zwischen Spark und Hive. [Informationen zu Hive Warehouse Connector](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
+
+* Wenn Sie in HDInsight 4.0 den Metastore für Hive und Spark freigeben möchten, können Sie in Ihrem Spark-Cluster den Wert für die Eigenschaft „metastore.catalog.default“ in „hive“ ändern. Diese Eigenschaft finden Sie in Ambari unter „Advanced spark2-hive-site-override“. Es ist wichtig zu verstehen, dass die Freigabe des Metastores nur für externe Hive-Tabellen funktioniert. Sie funktioniert nicht bei internen/verwalteten Hive-Tabellen oder ACID-Tabellen.  
 
 ## <a name="apache-oozie-metastore"></a>Apache Oozie-Metastore
 

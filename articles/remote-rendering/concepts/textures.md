@@ -5,16 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: de3f127d97803ea920d61d748a1af0c80a1a1afc
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 4b87008f4172e58440c32e4ff92a3ee1f4d5efae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565872"
 ---
 # <a name="textures"></a>Texturen
 
-Texturen sind unveränderliche [freigegebene Ressourcen](../concepts/lifetime.md). Texturen können aus dem [Blobspeicher](../how-tos/conversion/blob-storage.md) geladen und direkt auf Modelle angewendet werden, wie hier veranschaulicht: [Tutorial: Ändern der Umgebung und der Materialien](../tutorials/unity/changing-environment-and-materials.md). Am häufigsten sind Texturen jedoch in einem [konvertierten Modell](../how-tos/conversion/model-conversion.md) zu finden, in dem sie anhand ihrer [Materialien](materials.md) referenziert werden.
+Texturen sind unveränderliche [freigegebene Ressourcen](../concepts/lifetime.md). Texturen können aus dem [Blobspeicher](../how-tos/conversion/blob-storage.md) geladen und direkt auf Modelle angewendet werden, wie hier veranschaulicht: [Tutorial: Ändern der Umgebung und der Materialien](../tutorials/unity/materials-lighting-effects/materials-lighting-effects.md). Am häufigsten sind Texturen jedoch in einem [konvertierten Modell](../how-tos/conversion/model-conversion.md) zu finden, in dem sie anhand ihrer [Materialien](materials.md) referenziert werden.
 
 ## <a name="texture-types"></a>Typen von Texturen
 

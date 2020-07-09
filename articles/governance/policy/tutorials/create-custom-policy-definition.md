@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition'
 description: In diesem Tutorial erstellen Sie eine benutzerdefinierte Richtliniendefinition für Azure Policy, um benutzerdefinierte Geschäftsregeln für Ihre Azure-Ressourcen zu erzwingen.
-ms.date: 11/25/2019
+ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7a1eb8abcfbf7513b4620f66c0a7fdbd288f8705
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f8702e84923762b2f417eee882a473228d6bafb8
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190706"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888155"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition
 
@@ -172,6 +172,9 @@ Es gibt verschiedene Möglichkeiten, die Aliase für eine Azure-Ressource zu erm
 
 Mit der Azure Policy-Erweiterung für die VS Code-Erweiterung können Sie ganz einfach Ihre Ressourcen durchsuchen und [Aliase ermitteln](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
 
+> [!NOTE]
+> Die VS Code-Erweiterung stellt nur Eigenschaften des Resource Manager-Modus zur Verfügung und zeigt keine Eigenschaften des [Ressourcenanbietermodus](../concepts/definition-structure.md#mode) an.
+
 ### <a name="azure-cli"></a>Azure CLI
 
 In der Azure-Befehlszeilenschnittstelle wird die Befehlsgruppe `az provider` verwendet, um nach Ressourcenaliasen zu suchen. Wir filtern anhand der Details, die wir zuvor zur Azure-Ressource erhalten haben, nach dem Namespace **Microsoft.Storage**.
@@ -321,7 +324,7 @@ Azure Resource Graph kann mit [Cloud Shell](https://shell.azure.com) verwendet w
 
 Die Entscheidung, was mit Ihren nicht konformen Ressourcen passieren soll, ist fast so wichtig wie die Entscheidung, was überhaupt evaluiert werden soll. Jede mögliche Reaktion auf eine nicht konforme Ressource wird als [Auswirkung](../concepts/effects.md) bezeichnet. Mit der Auswirkung wird gesteuert, ob die nicht konforme Ressource protokolliert oder blockiert wird, über angefügte Daten verfügt oder mit einer zugeordneten Bereitstellung versehen ist, um die Ressource wieder in einen konformen Zustand zu versetzen.
 
-Für unser Beispiel ist „Deny“ die passende Auswirkung, da wir nicht möchten, dass in unserer Azure-Umgebung nicht konforme Ressourcen erstellt werden. Die Überwachung ist eine gute erste Wahl für eine Richtlinienauswirkung, um vor dem Festlegen einer Richtlinie auf „Deny“ zu ermitteln, welche Auswirkung damit verbunden ist. Eine Möglichkeit, die Änderung der Auswirkung pro Zuweisung zu vereinfachen, ist die Parametrisierung der Auswirkung. Genauere Informationen zur Vorgehensweise finden Sie unter [Parameter](#parameters).
+Für unser Beispiel ist „Deny“ die passende Auswirkung, weil wir nicht möchten, dass in unserer Azure-Umgebung nicht konforme Ressourcen erstellt werden. Die Überwachung ist eine gute erste Wahl für eine Richtlinienauswirkung, um vor dem Festlegen einer Richtlinie auf „Deny“ zu ermitteln, welche Auswirkung damit verbunden ist. Eine Möglichkeit, die Änderung der Auswirkung pro Zuweisung zu vereinfachen, ist die Parametrisierung der Auswirkung. Genauere Informationen zur Vorgehensweise finden Sie unter [Parameter](#parameters).
 
 ## <a name="compose-the-definition"></a>Verfassen der Definition
 

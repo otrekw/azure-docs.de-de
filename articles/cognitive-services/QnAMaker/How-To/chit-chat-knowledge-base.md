@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a9a14056e6be62fc1c1b5e542c1a3acceb738eac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e06cad8e8ca62330b09e173cf6058905b49f19e4
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219064"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992904"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Hinzufügen von Geplauder zu einer Wissensdatenbank
 
-Das Hinzufügen von Geplauder zu Ihrem Bot macht ihn unterhaltsamer und interessanter. Das Geplauderfeature von QnA Maker ermöglicht Ihnen, auf einfache Weise ein vordefiniertes Dataset mit wichtigen Geplauderelementen in Ihrer Wissensdatenbank (KB) hinzufügen. Dies kann ein Ausgangspunkt für die Persönlichkeit Ihres Bots sein und Ihnen die Zeit und die Kosten ersparen, diese Elemente von Grund auf neu zu schreiben.  
+Das Hinzufügen von Geplauder zu Ihrem Bot macht ihn unterhaltsamer und interessanter. Das Geplauderfeature von QnA Maker ermöglicht Ihnen, auf einfache Weise ein vordefiniertes Dataset mit wichtigen Geplauderelementen in Ihrer Wissensdatenbank (KB) hinzufügen. Dies kann ein Ausgangspunkt für die Persönlichkeit Ihres Bots sein und Ihnen die Zeit und die Kosten ersparen, diese Elemente von Grund auf neu zu schreiben.
 
-Dieses Dataset enthält rund 100 Geplauderszenarios mit den Stimmen mehrerer Personen wie „Professionell“, „Freundlich“ oder „Witzig“. Wählen Sie die Persona aus, die dem Sprachstil Ihres Bots am nächsten kommt. Bei einer Benutzerabfrage versucht QnA Maker, sie mit der nächsten bekannten Geplauder-QnA abzugleichen.  
+Dieses Dataset enthält rund 100 Geplauderszenarios mit den Stimmen mehrerer Personen wie „Professionell“, „Freundlich“ oder „Witzig“. Wählen Sie die Persona aus, die dem Sprachstil Ihres Bots am nächsten kommt. Bei einer Benutzerabfrage versucht QnA Maker, sie mit der nächsten bekannten Geplauder-QnA abzugleichen.
 
 Einige Beispiele für die verschiedenen Persönlichkeiten finden Sie unten. Sie können alle Persönlichkeiten-[Datasets](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) einschließlich Details der Persönlichkeiten anzeigen.
 
@@ -57,23 +57,23 @@ Geplauderdatasets werden in den folgenden Sprachen unterstützt:
 
 
 ## <a name="add-chit-chat-during-kb-creation"></a>Hinzufügen von Geplauder während der Erstellung der Wissensdatenbank
-Während der Erstellung der Wissensdatenbank besteht nach dem Hinzufügen Ihrer Quell-URLs und Dateien eine Option zum Hinzufügen von Geplauder. Wählen Sie die Persönlichkeit aus, die Sie als Grundlage für das Geplauder verwenden möchten. Wenn Sie kein Geplauder hinzufügen möchten oder bereits Unterstützung für Geplauder in Ihren Datenquellen verwenden, wählen Sie **Keine** aus. 
+Während der Erstellung der Wissensdatenbank besteht nach dem Hinzufügen Ihrer Quell-URLs und Dateien eine Option zum Hinzufügen von Geplauder. Wählen Sie die Persönlichkeit aus, die Sie als Grundlage für das Geplauder verwenden möchten. Wenn Sie kein Geplauder hinzufügen möchten oder bereits Unterstützung für Geplauder in Ihren Datenquellen verwenden, wählen Sie **Keine** aus.
 
 ## <a name="add-chit-chat-to-an-existing-kb"></a>Hinzufügen von Geplauder zu einer vorhandenen Wissensdatenbank
-Wählen Sie Ihre Wissensdatenbank aus, und navigieren Sie zur Seite **Einstellungen**. Dort finden Sie einen Link zu allen Geplauderdatasets im entsprechenden **TSV**-Format. Laden Sie die gewünschte Persönlichkeit herunter, und laden Sie sie dann als Dateiquelle hoch. Achten Sie darauf, dass Sie das Format oder die Metadaten nicht bearbeiten, wenn Sie die Datei herunterladen und hochladen. 
-  
+Wählen Sie Ihre Wissensdatenbank aus, und navigieren Sie zur Seite **Einstellungen**. Dort finden Sie einen Link zu allen Geplauderdatasets im entsprechenden **TSV**-Format. Laden Sie die gewünschte Persönlichkeit herunter, und laden Sie sie dann als Dateiquelle hoch. Achten Sie darauf, dass Sie das Format oder die Metadaten nicht bearbeiten, wenn Sie die Datei herunterladen und hochladen.
+
 ![Hinzufügen von Geplauder zu einer vorhandenen Wissensdatenbank](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
 
 ## <a name="edit-your-chit-chat-questions-and-answers"></a>Bearbeiten von Geplauderfragen und -antworten
-Beim Bearbeiten Ihrer Wissensdatenbank wird eine neue Quelle für Geplauder basierend auf der Persönlichkeit angezeigt, die Sie ausgewählt haben. Sie können jetzt geänderte Fragen hinzufügen oder die Antworten wie bei jeder anderen Quelle bearbeiten. 
+Beim Bearbeiten Ihrer Wissensdatenbank wird eine neue Quelle für Geplauder basierend auf der Persönlichkeit angezeigt, die Sie ausgewählt haben. Sie können jetzt geänderte Fragen hinzufügen oder die Antworten wie bei jeder anderen Quelle bearbeiten.
 
 ![Bearbeiten von Geplauder-QnAs](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
 Wählen Sie zum Anzeigen der Metadaten auf der Symbolleiste **Ansichtsoptionen** aus, und wählen Sie dann **Metadaten anzeigen** aus.
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>Hinzufügen zusätzlicher Geplauderfragen und -antworten
-Sie können neue Geplauder-QnAs hinzufügen, die nicht im vordefinierten Dataset enthalten sind. Stellen Sie sicher, dass Sie kein QnA-Paar duplizieren, das bereits im Geplauderdataset enthalten ist. Wenn Sie neue Geplauder-QnAs hinzufügen, werden diese Ihrer **redaktionellen** Quelle hinzugefügt. Um sicherzustellen, dass der Ranker versteht, dass es sich um Smalltalk handelt, fügen Sie das Metadaten-Schlüssel-Wertpaar „Editorial: chitchat“ hinzu, wie in der folgenden Abbildung gezeigt:
-   
+Sie können ein neues Frage- und Antwortpaar für Smalltalk hinzufügen, das nicht im vordefinierten Dataset enthalten ist. Stellen Sie sicher, dass Sie kein QnA-Paar duplizieren, das bereits im Geplauderdataset enthalten ist. Wenn Sie neue Geplauder-QnAs hinzufügen, werden diese Ihrer **redaktionellen** Quelle hinzugefügt. Um sicherzustellen, dass der Ranker versteht, dass es sich um Smalltalk handelt, fügen Sie das Metadaten-Schlüssel-Wertpaar „Editorial: chitchat“ hinzu, wie in der folgenden Abbildung gezeigt:
+
 ![![Add chit-chat QnAs]\(../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>Löschen von Geplauder aus einer vorhandenen Wissensdatenbank
@@ -86,6 +86,6 @@ Wählen Sie Ihre Wissensdatenbank aus, und navigieren Sie zur Seite **Einstellun
 > [!div class="nextstepaction"]
 > [Importieren einer Knowledge Base](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>Weitere Informationen 
+## <a name="see-also"></a>Weitere Informationen
 
 [Übersicht über QnA Maker](../Overview/overview.md)

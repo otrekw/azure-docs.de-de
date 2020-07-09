@@ -3,27 +3,25 @@ title: Verwaltete Identitäten
 description: Erfahren Sie, wie verwaltete Identitäten in Azure App Service und Azure Functions funktionieren, wie Sie eine verwaltete Identität konfigurieren und ein Token für eine Back-End-Ressource erstellen.
 author: mattchenderson
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 875d2bbebdfa95c6d180979399d876eb2afc01b4
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.custom: tracking-python
+ms.openlocfilehash: 87e4d67086ea9f260becb2d63765e807e2b73546
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392523"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985751"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Verwenden verwalteter Identitäten für App Service und Azure Functions
 
+In diesem Thema erfahren Sie, wie eine verwaltete Identität für App Service- und Azure Functions-Anwendungen erstellt und für den Zugriff auf andere Ressourcen verwendet wird. 
+
 > [!Important] 
-> Verwaltete Identitäten für App Service und Azure Functions verhalten sich nicht wie erwartet, wenn Ihre App abonnement- bzw. mandantenübergreifend migriert wird. Die App muss eine neue Identität abrufen. Zu diesem Zweck kann die Funktion deaktiviert und dann erneut aktiviert werden. Weitere Informationen finden Sie im Abschnitt [Entfernen einer Identität](#remove) weiter unten. Für nachgeschaltete Ressourcen müssen außerdem die Zugriffsrichtlinien für die Verwendung der neuen Identität aktualisiert werden.
+> Verwaltete Identitäten für App Service und Azure Functions verhalten sich nicht wie erwartet, wenn Ihre App abonnement- bzw. mandantenübergreifend migriert wird. Die App muss eine neue Identität abrufen. Zu diesem Zweck deaktivieren Sie die Funktion und aktivieren Sie anschließend erneut. Weitere Informationen finden Sie im Abschnitt [Entfernen einer Identität](#remove) weiter unten. Für nachgeschaltete Ressourcen müssen außerdem die Zugriffsrichtlinien für die Verwendung der neuen Identität aktualisiert werden.
 
-In diesem Thema erfahren Sie, wie eine verwaltete Identität für App Service- und Azure Functions-Anwendungen erstellt und für den Zugriff auf andere Ressourcen verwendet wird. Über eine verwaltete Identität aus Azure Active Directory (Azure AD) kann Ihre App einfach auf andere durch Azure AD geschützte Ressourcen wie Azure Key Vault zugreifen. Da die Identität von der Azure-Plattform verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zu verwalteten Identitäten in Azure AD finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md).
-
-Ihrer Anwendung können zwei Arten von Identitäten zugewiesen werden:
-
-- Eine **systemseitig zugewiesene Identität** ist an Ihre Anwendung gebunden und wird gelöscht, wenn Ihre App gelöscht wird. Eine App kann nur über eine systemseitig zugewiesene Identität verfügen.
-- Eine **benutzerseitig zugewiesene Identität** ist eine eigenständige Azure-Ressource, die Ihrer App zugewiesen werden kann. Eine App kann über mehrere benutzerseitig zugewiesene Identitäten verfügen.
+[!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
 ## <a name="add-a-system-assigned-identity"></a>Hinzufügen einer systemseitig zugewiesenen Identität
 
@@ -42,6 +40,11 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zu
 4. Ändern Sie auf der Registerkarte **Systemseitig zugewiesen** den **Status** in **Ein**. Klicken Sie auf **Speichern**.
 
     ![Verwaltete Identität in App Service](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
+
+
+> [!NOTE] 
+> Um die verwaltete Identität für Ihre Web-App oder Slot-App im Azure-Portal zu finden, sehen Sie unter **Unternehmensanwendungen** im Abschnitt **Benutzereinstellungen** nach. In der Regel lautet der Slotname ähnlich wie `<app name>/slots/<slot name>`.
+
 
 ### <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
@@ -77,7 +80,9 @@ In den folgenden Schritten werden Sie durch das Erstellen einer Web-App und das 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In den folgenden Schritten werden Sie durch das Erstellen einer Web-App und das Zuweisen einer Identität zur App mithilfe von Azure PowerShell geleitet:
+In den folgenden Schritten werden Sie durch das Erstellen einer App und das Zuweisen einer Identität zur App mithilfe von Azure PowerShell geleitet. Die Anweisungen zum Erstellen einer Web-App und einer Funktions-App sind unterschiedlich.
+
+#### <a name="using-azure-powershell-for-a-web-app"></a>Verwenden von Azure PowerShell für eine Web-App
 
 1. Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitungen in der [Azure PowerShell-Dokumentation](/powershell/azure/overview), und führen Sie dann `Login-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
@@ -85,20 +90,39 @@ In den folgenden Schritten werden Sie durch das Erstellen einer Web-App und das 
 
     ```azurepowershell-interactive
     # Create a resource group.
-    New-AzResourceGroup -Name myResourceGroup -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Create an App Service plan in Free tier.
-    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName $resourceGroupName -Tier Free
 
     # Create a web app.
-    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName $resourceGroupName
     ```
 
 3. Führen Sie den `Set-AzWebApp -AssignIdentity` Befehl aus, um die Identität für diese Anwendung zu erstellen:
 
     ```azurepowershell-interactive
-    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName $resourceGroupName 
     ```
+
+#### <a name="using-azure-powershell-for-a-function-app"></a>Verwenden von Azure PowerShell für eine Funktions-App
+
+1. Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitungen in der [Azure PowerShell-Dokumentation](/powershell/azure/overview), und führen Sie dann `Login-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+
+2. Erstellen Sie eine Funktions-App mit Azure PowerShell. Weitere Beispiele zur Verwendung von Azure PowerShell mit Azure Functions finden Sie in der [Az-Funktionenreferenz](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions):
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a function app with a system-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType SystemAssigned
+    ```
+
+Sie können eine vorhandene Funktions-App stattdessen auch mit `Update-AzFunctionApp` aktualisieren.
 
 ### <a name="using-an-azure-resource-manager-template"></a>Verwenden einer Azure Resource Manager-Vorlage
 
@@ -174,6 +198,35 @@ Zunächst müssen Sie eine Ressource für eine benutzerseitig zugewiesene Identi
 6. Suchen Sie nach der zuvor erstellten Identität, und wählen Sie sie aus. Klicken Sie auf **Hinzufügen**.
 
     ![Verwaltete Identität in App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
+
+### <a name="using-azure-powershell"></a>Verwenden von Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+In den folgenden Schritten werden Sie durch das Erstellen einer App und das Zuweisen einer Identität zur App mithilfe von Azure PowerShell geleitet.
+
+> [!NOTE]
+> Die aktuelle Version der Azure PowerShell-Cmdlets für Azure App Service unterstützt keine vom Benutzer zugewiesenen Identitäten. Die folgenden Anweisungen gelten für Azure Functions.
+
+1. Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitungen in der [Azure PowerShell-Dokumentation](/powershell/azure/overview), und führen Sie dann `Login-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+
+2. Erstellen Sie eine Funktions-App mit Azure PowerShell. Weitere Beispiele zur Verwendung von Azure PowerShell mit Azure Functions finden Sie in der [Az-Funktionenreferenz](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions). Im folgenden Skript wird auch `New-AzUserAssignedIdentity` verwendet, die gemäß [Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mit Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) separat installiert werden muss.
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a user-assigned identity. This requires installation of the "Az.ManagedServiceIdentity" module.
+    $userAssignedIdentity = New-AzUserAssignedIdentity -Name $userAssignedIdentityName -ResourceGroupName $resourceGroupName
+
+    # Create a function app with a user-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType UserAssigned -IdentityId $userAssignedIdentity.Id
+    ```
+
+Sie können eine vorhandene Funktions-App stattdessen auch mit `Update-AzFunctionApp` aktualisieren.
 
 ### <a name="using-an-azure-resource-manager-template"></a>Verwenden einer Azure Resource Manager-Vorlage
 
@@ -426,7 +479,11 @@ Für Java-Anwendungen und -Funktionen besteht die einfachste Methode für die Ar
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>Entfernen einer Identität
 
-Eine systemseitig zugewiesene Identität kann entfernt werden, indem das Feature über das Portal, PowerShell oder die Befehlszeilenschnittstelle auf die gleiche Weise wie bei der Erstellung deaktiviert wird. Benutzerseitig zugewiesene Identitäten können einzeln entfernt werden. Um alle Identitäten zu entfernen, legen Sie den Typ in der [ARM-Vorlage](#using-an-azure-resource-manager-template) auf „Kein“ fest:
+Eine systemseitig zugewiesene Identität kann entfernt werden, indem das Feature über das Portal, PowerShell oder die Befehlszeilenschnittstelle auf die gleiche Weise wie bei der Erstellung deaktiviert wird. Benutzerseitig zugewiesene Identitäten können einzeln entfernt werden. Um alle Identitäten zu entfernen, legen Sie den Identitätstyp auf „Kein“ fest.
+
+Bei dieser Methode zum Entfernen einer systemseitig zugewiesenen Identität wird diese auch aus Azure AD gelöscht. Systemseitig zugewiesene Identitäten werden automatisch aus Azure AD entfernt, wenn die App-Ressource gelöscht wird.
+
+So entfernen Sie alle Identitäten in einer [ARM-Vorlage](#using-an-azure-resource-manager-template):
 
 ```json
 "identity": {
@@ -434,7 +491,12 @@ Eine systemseitig zugewiesene Identität kann entfernt werden, indem das Feature
 }
 ```
 
-Bei dieser Methode zum Entfernen einer systemseitig zugewiesenen Identität wird diese auch aus Azure AD gelöscht. Systemseitig zugewiesene Identitäten werden automatisch aus Azure AD entfernt, wenn die App-Ressource gelöscht wird.
+So entfernen Sie alle Identitäten in Azure PowerShell (nur Azure Functions):
+
+```azurepowershell-interactive
+# Update an existing function app to have IdentityType "None".
+Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -IdentityType None
+```
 
 > [!NOTE]
 > Es gibt auch eine Anwendungseinstellung, die festgelegt werden kann (WEBSITE_DISABLE_MSI). Hierdurch wird nur der lokale Tokendienst deaktiviert. Die Identität bleibt jedoch erhalten, und in den Tools wird die verwaltete Identität weiterhin als „Ein“ oder „Aktiviert“ angezeigt. Daher wird die Verwendung dieser Einstellung nicht empfohlen.

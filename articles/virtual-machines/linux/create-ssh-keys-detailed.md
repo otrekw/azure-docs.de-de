@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: c34a88c39104d3af2c5747d1cd6d3dea6929379a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5add789809f274ef5634f3c33dfedd3cd96b36d0
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969534"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142468"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ausführliche Schritte: Erstellen und Verwalten von SSH-Schlüsseln für die Authentifizierung bei einer Linux-VM in Azure 
 Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie einen virtuellen Linux-Computer in Azure erstellen, bei dem standardmäßig zur Authentifizierung SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. Mit dem Azure-Portal erstellte VMs, Resource Manager-Vorlagen für Azure CLI oder andere Tools können Ihren öffentlichen SSH-Schlüssel als Teil der Bereitstellung enthalten, die die Authentifizierung mit dem SSH-Schlüssel für SSH-Verbindungen einrichtet. 
@@ -35,7 +35,7 @@ Falls Sie keine SSH-Schlüssel verwenden möchten, können Sie Ihren virtuellen 
 
 ## <a name="generate-keys-with-ssh-keygen"></a>Generieren von Schlüsseln mit „ssh-keygen“
 
-Ein bevorzugter Befehl zum Erstellen der Schlüssel ist `ssh-keygen`, der mit OpenSSH-Hilfsprogrammen in der Azure Cloud Shell, einem macOS- oder Linux-Host, dem [Windows-Subsystem für Linux](https://docs.microsoft.com/windows/wsl/about) und anderen Tools verfügbar ist. `ssh-keygen` stellt eine Reihe von Fragen, und anschließend werden ein privater Schlüssel und ein passender öffentlicher Schlüssel geschrieben. 
+Ein bevorzugter Befehl zum Erstellen der Schlüssel ist `ssh-keygen`, der mit OpenSSH-Hilfsprogrammen in Azure Cloud Shell, einem macOS- oder Linux-Host und Windows 10 verfügbar ist. `ssh-keygen` stellt eine Reihe von Fragen, und anschließend werden ein privater Schlüssel und ein passender öffentlicher Schlüssel geschrieben. 
 
 SSH-Schlüssel werden standardmäßig im Verzeichnis `~/.ssh` gespeichert.  Wenn Sie nicht über das Verzeichnis `~/.ssh` verfügen, können Sie es mithilfe des Befehls `ssh-keygen` gleich mit den richtigen Berechtigungen erstellen.
 

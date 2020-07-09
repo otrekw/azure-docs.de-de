@@ -10,29 +10,31 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fe76e32bfd9b1734f3c84a400f897b7af7e3168b
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81404263"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800994"
 ---
 # <a name="learn-image-moderation-concepts"></a>Lernen von Bildmoderationskonzepten
 
-Verwenden Sie die computergestützte Bildmoderation und das [Tool für die Überprüfung mit menschlicher Beteiligung](Review-Tool-User-Guide/human-in-the-loop.md) von Content Moderator, um Bilder mit nicht jugendfreien und freizügigen Inhalten zu moderieren. Scannen Sie Bilder auf Textinhalte, extrahieren Sie diesen Text, und nutzen Sie die Gesichtserkennung. Sie können Bilder mit benutzerdefinierten Listen vergleichen und weitere Maßnahmen ergreifen.
+Verwenden Sie die computergestützte Bildmoderation und das [Überprüfungstool](Review-Tool-User-Guide/human-in-the-loop.md) des Content Moderator, um Bilder mit nicht jugendfreien und freizügigen Inhalten zu mäßigen. Scannen Sie Bilder auf Textinhalte, extrahieren Sie diesen Text, und nutzen Sie die Gesichtserkennung. Sie können Bilder mit benutzerdefinierten Listen vergleichen und weitere Maßnahmen ergreifen.
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>Auswerten von nicht jugendfreien und freizügigen Inhalten
 
 Der **Auswertungsvorgang** gibt eine Zuverlässigkeitsbewertung zwischen 0 und 1 zurück. Außerdem werden boolesche Daten zurückgegeben, die TRUE oder FALSE entsprechen. Diese Werte sagen vorher, ob das Bild potenziell nicht jugendfreie oder freizügige Inhalte enthält. Wenn Sie die API mit Ihrem Bild (Datei oder URL) aufrufen, enthält die zurückgegebene Antwort die folgenden Informationen:
 
-    "ImageModeration": {
-      .............
-      "adultClassificationScore": 0.019196987152099609,
-      "isImageAdultClassified": false,
-      "racyClassificationScore": 0.032390203326940536,
-      "isImageRacyClassified": false,
-      ............
-      ],
+```json
+"ImageModeration": {
+    .............
+    "adultClassificationScore": 0.019196987152099609,
+    "isImageAdultClassified": false,
+    "racyClassificationScore": 0.032390203326940536,
+    "isImageRacyClassified": false,
+    ............
+    ],
+```
 
 > [!NOTE]
 > 
@@ -51,18 +53,19 @@ Die Antwort enthält folgende Informationen:
 
 Beispiel für die Extraktion:
 
-    "TextDetection": {
-      "status": {
+```json
+"TextDetection": {
+    "status": {
         "code": 3000.0,
         "description": "OK",
         "exception": null
-      },
-      .........
-      "language": "eng",
-      "text": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n",
-      "candidates": []
     },
-
+    .........
+    "language": "eng",
+    "text": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n",
+    "candidates": []
+},
+```
 
 ## <a name="detecting-faces"></a>Erkennen von Gesichtern
 
@@ -75,29 +78,30 @@ Eine Antwort enthält die folgenden Informationen:
 
 Beispiel für die Extraktion:
 
-
-    "FaceDetection": {
-       ......
-      "result": true,
-      "count": 2,
-      "advancedInfo": [
-      .....
-      ],
-      "faces": [
+```json
+"FaceDetection": {
+    ......
+    "result": true,
+    "count": 2,
+    "advancedInfo": [
+        .....
+    ],
+    "faces": [
         {
-          "bottom": 598,
-          "left": 44,
-          "right": 268,
-          "top": 374
+            "bottom": 598,
+            "left": 44,
+            "right": 268,
+            "top": 374
         },
         {
-          "bottom": 620,
-          "left": 308,
-          "right": 532,
-          "top": 396
+            "bottom": 620,
+            "left": 308,
+            "right": 532,
+            "top": 396
         }
-      ]
-    }
+    ]
+}
+```
 
 ## <a name="creating-and-managing-custom-lists"></a>Erstellen und Verwalten von benutzerdefinierten Listen
 
@@ -124,7 +128,8 @@ Wenn eine Übereinstimmung gefunden wird, gibt der Vorgang den Bezeichner und di
 
 Beispiel für die Extraktion:
 
-    {
+```json
+{
     ..............,
     "IsMatch": true,
     "Matches": [
@@ -137,7 +142,8 @@ Beispiel für die Extraktion:
         }
     ],
     ....
-    }
+}
+```
 
 ## <a name="review-tool"></a>Überprüfungstool
 
@@ -147,4 +153,4 @@ Verwenden Sie für nuancierte Fälle das [Überprüfungstool](Review-Tool-User-G
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Testen Sie die [API-Konsole für die Bildmoderation](try-image-api.md), und verwenden Sie die REST-API-Codebeispiele. Wenn Sie mit Visual Studio und C# vertraut sind, sehen Sie sich auch den Abschnitt zur Bildmoderation im [.NET SDK-Schnellstart](dotnet-sdk-quickstart.md) an.
+Testen Sie die [API-Konsole für die Bildmoderation](try-image-api.md), und verwenden Sie die REST-API-Codebeispiele. Weitere Informationen zur Einrichtung der Überprüfung durch Personen finden Sie auch unter [Überprüfungen, Workflows und Aufträge](./review-api.md).

@@ -1,50 +1,48 @@
 ---
-title: Verwalten von Updates für mehrere virtuelle Azure-Computer
-description: In diesem Artikel wird beschrieben, wie Sie Updates für Azure- und Nicht-Azure-VMs verwalten.
+title: Verwalten von Updates für mehrere virtuelle Computer in Azure Automation
+description: In diesem Artikel erfahren Sie, wie Sie Updates für mehrere virtuelle Computer verwalten.
 services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6a878ecf4519a852a9798b320bda26cd490487a4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: d08afc6e501fd76167e0939633442213958f0d49
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731984"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834627"
 ---
-# <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Verwalten von Updates für mehrere virtuelle Azure-Computer
+# <a name="manage-updates-for-multiple-vms"></a>Verwalten von Updates für mehrere virtuelle Computer
 
-Sie können die Azure Automation-Updateverwaltung verwenden, um Updates und Patches für Ihre Windows- und Linux-Computer zu verwalten. Über Ihr [Azure Automation](automation-offering-get-started.md)-Konto können Sie:
+Sie können die Azure Automation-Updateverwaltung verwenden, um Updates und Patches für Ihre virtuellen Windows- und Linux-Computer zu verwalten. Über Ihr [Azure Automation](automation-offering-get-started.md)-Konto können Sie:
 
-- Virtuelle Computer integrieren
+- Virtuelle Computer für die Updateverwaltung aktivieren
 - Den Status verfügbarer Updates bewerten
 - Die Installation erforderlicher Updates planen
-- Bereitstellungsergebnisse überprüfen, um sicherzustellen, dass Updates erfolgreich auf alle virtuellen Computer angewendet wurden, für die die Updateverwaltung aktiviert ist.
+- Bereitstellungsergebnisse überprüfen, um sicherzustellen, dass Updates erfolgreich auf alle virtuellen Computer angewendet wurden, für die die Updateverwaltung aktiviert ist
 
 Informationen zu den Systemanforderungen für die Updateverwaltung finden Sie unter [Clientanforderungen für die Updateverwaltung](automation-update-management.md#client-requirements).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Einen virtuellen Computer bzw. einen Computer, auf dem eines der unterstützten Betriebssysteme installiert ist.
-* Zugriff auf ein Updaterepository für virtuelle Linux-Computer, die in die Updateverwaltung integriert sind.
+* Ein virtueller Computer bzw. ein Computer, auf dem eines der unterstützten Betriebssysteme installiert ist
+* Zugriff auf ein Updaterepository für virtuelle Linux-Computer, für die die Updateverwaltung aktiviert ist
 
-## <a name="enable-update-management-for-azure-virtual-machines"></a>Aktivieren der Updateverwaltung für virtuelle Azure-Computer
+## <a name="enable-update-management-for-azure-vms"></a>Aktivieren der Updateverwaltung für virtuelle Azure-Computer
 
-Öffnen Sie im Azure-Portal Ihr Automation-Konto, und wählen Sie dann **Updateverwaltung** aus.
+1. Öffnen Sie im Azure-Portal Ihr Automation-Konto, und wählen Sie dann **Updateverwaltung** aus.
 
-Wählen Sie **Azure-VMs hinzufügen** aus.
+2. Wählen Sie **Azure-VMs hinzufügen** aus.
 
-![Registerkarte „Azure-VM hinzufügen“](./media/manage-update-multi/update-onboard-vm.png)
+    ![Registerkarte „Azure-VM hinzufügen“](./media/manage-update-multi/update-onboard-vm.png)
 
-Wählen Sie einen virtuellen Computer aus, der integriert werden soll.
+3. Wählen Sie einen virtuellen Computer für die Aktivierung und anschließend unter **Updateverwaltung aktivieren** die Option **Aktivieren** aus.
 
-Wählen Sie unter **Updateverwaltung aktivieren** die Option **Aktivieren** aus, um den virtuellen Computer zu integrieren.
+    ![Dialogfeld „Updateverwaltung aktivieren“](./media/manage-update-multi/update-enable.png)
 
-![Dialogfeld „Updateverwaltung aktivieren“](./media/manage-update-multi/update-enable.png)
+    Wenn der Vorgang abgeschlossen ist, ist die Updateverwaltung auf Ihrem virtuellen Computer aktiviert.
 
-Nach Abschluss der Integration ist die Updateverwaltung für Ihren virtuellen Computer aktiviert.
-
-## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Aktivieren der Updateverwaltung für VMs und Computer, die nicht Azure unterstehen
+## <a name="enable-update-management-for-non-azure-vms-and-computers"></a>Aktivieren der Updateverwaltung für virtuelle Computer und Computer, die nicht Azure unterstehen
 
 Der Log Analytics-Agent für Windows und Linux muss auf den VMS installiert werden, die in Ihrem Unternehmensnetzwerk oder in einer anderen Cloudumgebung ausgeführt werden, um Sie für die Updateverwaltung zu aktivieren. Informationen zu den Systemanforderungen und unterstützten Methoden für die Bereitstellung des Agent auf außerhalb von Azure gehosteten Computern finden Sie unter [Übersicht zum Log Analytics-Agent](../azure-monitor/platform/log-analytics-agent.md).
 
@@ -70,11 +68,11 @@ Sobald die Updateverwaltung aktiviert ist, wird der Bereich „Updateverwaltung�
 
 ## <a name="collect-data"></a>Sammeln von Daten
 
-Mit Agents, die auf VMs und Computern installiert sind, werden Daten zu Updates gesammelt. Die Agents senden die Daten an die Azure-Updateverwaltung.
+Mit Agents, die auf virtuellen Computern und Computern installiert sind, werden Daten zu Updates gesammelt. Die Agents senden die Daten an die Azure-Updateverwaltung.
 
 ### <a name="supported-agents"></a>Unterstützte Agents
 
-In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von dieser Lösung unterstützt werden:
+In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Updateverwaltung unterstützt werden:
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
@@ -117,7 +115,7 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
 
   ![Bereich „Neue Updatebereitstellung“](./media/manage-update-multi/update-select-computers.png)
 
-- **Updateklassifizierung**: Wählen Sie die Softwaretypen aus, die in die Updatebereitstellung eingeschlossen werden sollen. Eine Beschreibung der Klassifizierungstypen finden Sie unter [Updateklassifizierungen](automation-view-update-assessments.md#update-classifications). Es gibt die folgenden Klassifizierungstypen:
+- **Updateklassifizierung**: Wählen Sie die Softwaretypen aus, die in die Updatebereitstellung eingeschlossen werden sollen. Eine Beschreibung der Klassifizierungstypen finden Sie unter [Updateklassifizierungen](automation-view-update-assessments.md#work-with-update-classifications). Es gibt die folgenden Klassifizierungstypen:
   - Kritische Updates
   - Sicherheitsupdates
   - Updaterollups
@@ -130,11 +128,10 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
 - **Einzuschließende/auszuschließende Updates**: Öffnet die Seite „Einschließen/ausschließen“. Updates, die eingeschlossen oder ausgeschlossen werden sollen, befinden sich auf verschiedenen Registerkarten. Weitere Informationen zur Vorgehensweise beim Einschließen finden Sie unter [Planen einer Updatebereitstellung](automation-tutorial-update-management.md#schedule-an-update-deployment).
 
 > [!NOTE]
-> Es ist wichtig zu wissen, dass Ausschlüsse eine höhere Priorität als Einschlüsse haben. Wenn Sie beispielsweise die Ausschlussregel `*` definieren, werden keine Patches oder Pakete installiert, da sie alle ausgeschlossen wurden. Ausgeschlossene Patches werden weiterhin als auf dem Computer nicht vorhanden angezeigt. Wenn auf Linux-Computern ein Paket eingeschlossen wird, das jedoch eine Abhängigkeit zu einem ausgeschlossenen Paket aufweist, wird das Paket nicht installiert.
+> Ausschlüsse haben eine höhere Priorität als Einschlüsse. Wenn Sie beispielsweise die Ausschlussregel `*` definieren, werden keine Patches oder Pakete installiert, da sie alle ausgeschlossen wurden. Ausgeschlossene Patches werden weiterhin als auf dem Computer nicht vorhanden angezeigt. Wenn auf Linux-Computern ein Paket eingeschlossen wird, das jedoch eine Abhängigkeit zu einem ausgeschlossenen Paket aufweist, wird das Paket nicht installiert.
 
 > [!NOTE]
-> Sie können keine Updates angeben, die für die Aufnahme in die Updatebereitstellung abgelöst wurden.
->
+> Sie können keine Updates angeben, die für die Aufnahme in die Updatebereitstellung ersetzt wurden.
 
 - **Zeitplaneinstellungen**: Sie können das Standarddatum und die Standarduhrzeit (30 Minuten nach der aktuellen Zeit) übernehmen. Sie können auch eine andere Zeit angeben.
 
@@ -179,10 +176,10 @@ Im Bereich „Updateergebnisse“ werden die Gesamtzahl von Updates und die Erge
 
 Klicken Sie auf **Alle Protokolle**, um alle von der Bereitstellung erstellten Protokolleinträge anzuzeigen.
 
-Klicken Sie auf die Ausgabekachel, um den Auftragsdatenstrom des Runbooks anzuzeigen, das die Updatebereitstellung auf der Ziel-VM verwaltet.
+Wählen Sie die Ausgabekachel aus, um den Auftragsdatenstrom des Runbooks anzuzeigen, das die Updatebereitstellung auf dem virtuellen Zielcomputer verwaltet.
 
 Klicken Sie auf **Fehler**, um ausführliche Informationen zu Fehlern bei der Bereitstellung anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Updateverwaltungsprotokollen, -ausgaben und -fehlern finden Sie unter [Abfragen von Aktualisierungsdatensätzen für die Updateverwaltung](automation-update-management-query-logs.md).
+* Weitere Informationen zum Durchsuchen von Updateprotokollen finden Sie unter [Abfragen von Updatedatensätzen für die Updateverwaltung in Azure Monitor-Protokollen](automation-update-management-query-logs.md).

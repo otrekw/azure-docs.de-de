@@ -10,10 +10,10 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: f0c21626c664f2d72b534ebae7f0a257620be07d
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767071"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glossar für IoT Plug & Play (Vorschau)
@@ -28,7 +28,7 @@ Sie können die Website [Azure Certified for IoT-Portal](https://aka.ms/ACFI) f�
 - Suchen von [Gerätefunktionsmodellen](#device-capability-model).
 - Veröffentlichen eines Gerätefunktionsmodell im [öffentlichen Modellrepository](#public-model-repository).
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure CLI
 
 Die Azure-Befehlszeilenschnittstelle (Command Line Interface, CLI) ist ein plattformübergreifendes Befehlszeilentool zum Verwalten von Azure-Ressourcen. Die Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle ist ein Befehlszeilentool zum Interagieren mit und Testen von [IoT Plug & Play-Geräten](#iot-plug-and-play-device). Sie können die Erweiterung für folgende Aufgaben verwenden:
 

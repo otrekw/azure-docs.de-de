@@ -11,12 +11,12 @@ ms.date: 04/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 314d7ebe9cc363b4186b81d8eda5f892710d71c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a0131e461f2664fa06fc0e24237aec1579bd253c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229985"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203842"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webanmeldungen mit OpenID Connect in Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Wenn Ihre Webanwendung den Benutzer authentifizieren und einen Benutzerflow ausf
 
 In dieser Anforderung gibt der Client die Berechtigungen, die er vom Benutzer benötigt, im Parameter `scope` an, und er gibt den auszuführenden Benutzerflow an. Um sich anzusehen, wie diese Anforderung funktioniert, fügen Sie sie in einem Browser ein und führen sie aus. Ersetzen Sie `{tenant}` durch den Namen Ihres Mandanten. Ersetzen Sie `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` durch die App-ID der Anwendung, die Sie zuvor in Ihrem Mandanten registriert haben. Ändern Sie auch den Richtliniennamen (`{policy}`) in den Richtliniennamen in Ihrem Mandanten, z. B. `b2c_1_sign_in`.
 
-```HTTP
+```http
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=code+id_token
@@ -64,7 +64,7 @@ Nachdem der Benutzer den Benutzerflow abgeschlossen hat, wird im angegebenen `re
 
 Eine erfolgreiche Antwort mit `response_mode=fragment` sieht wie folgt aus:
 
-```HTTP
+```http
 GET https://aadb2cplayground.azurewebsites.net/#
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
@@ -79,7 +79,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 
 Fehlerantworten können auch an den `redirect_uri`-Parameter gesendet werden, damit die Anwendung diese angemessen behandeln kann:
 
-```HTTP
+```http
 GET https://aadb2cplayground.azurewebsites.net/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -98,13 +98,13 @@ Das Empfangen eines ID-Tokens reicht nicht aus, um den Benutzer zu authentifizie
 
 Azure AD B2C verfügt über einen OpenID Connect-Metadatenendpunkt, mit dem die Anwendung zur Laufzeit Informationen über Azure AD B2C abrufen kann. Diese Informationen umfassen Endpunkte, Tokeninhalte und Token-Signaturschlüssel. Es gibt ein JSON-Metadatendokument für jeden Benutzerflow in Ihrem B2C-Mandanten. Das Metadatendokument für den Benutzerflow `b2c_1_sign_in` in `fabrikamb2c.onmicrosoft.com` befindet sich beispielsweise unter:
 
-```HTTP
+```http
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/.well-known/openid-configuration
 ```
 
 Eine der Eigenschaften dieses Konfigurationsdokuments ist `jwks_uri`, deren Wert für den gleichen Benutzerflow wie folgt lautet:
 
-```HTTP
+```http
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
 ```
 
@@ -136,7 +136,7 @@ Sie können den erhaltenen Autorisierungscode (mit `response_type=code+id_token`
 
 Sie haben auch die Möglichkeit, ein Zugriffstoken für die Web-API Ihres App-Back-Ends anzufordern, indem Sie die Client-ID der App als angeforderten Bereich verwenden. Dies führt dazu, dass ein Zugriffstoken mit dieser Client-ID als Zielgruppe erstellt wird:
 
-```HTTP
+```http
 POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
 Host: {tenant}.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
@@ -157,7 +157,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 Eine erfolgreiche Token-Antwort sieht wie folgt aus:
 
-```JSON
+```json
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -179,7 +179,7 @@ Eine erfolgreiche Token-Antwort sieht wie folgt aus:
 
 Fehlerantworten sehen aus wie folgt:
 
-```JSON
+```json
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",
@@ -195,7 +195,7 @@ Fehlerantworten sehen aus wie folgt:
 
 Nachdem Sie ein Zugriffstoken erhalten haben, können Sie das Token für Anforderungen an die Back-End-Web-APIs verwenden, indem Sie es in den -`Authorization`Header einfügen:
 
-```HTTP
+```http
 GET /tasks
 Host: mytaskwebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
@@ -205,7 +205,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ID-Token laufen nach kurzer Zeit ab. Aktualisieren Sie die Token nach deren Ablauf, um weiterhin auf Ressourcen zugreifen zu können. Zum Aktualisieren eines Tokens übermitteln Sie eine weitere `POST`-Anforderung an den `/token`-Endpunkt. Geben Sie diesmal den `refresh_token`-Parameter anstelle von `code` an:
 
-```HTTP
+```http
 POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
 Host: {tenant}.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
@@ -226,7 +226,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 Eine erfolgreiche Token-Antwort sieht wie folgt aus:
 
-```JSON
+```json
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -248,7 +248,7 @@ Eine erfolgreiche Token-Antwort sieht wie folgt aus:
 
 Fehlerantworten sehen aus wie folgt:
 
-```JSON
+```json
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",
@@ -266,7 +266,7 @@ Wenn Sie den Benutzer bei der Anwendung abmelden möchten, reicht es nicht aus, 
 
 Um den Benutzer abzumelden, leiten Sie ihn an den `end_session`-Endpunkt um, der im oben beschriebenen OpenID Connect-Metadatendokument aufgeführt wird:
 
-```HTTP
+```http
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
 ```
 

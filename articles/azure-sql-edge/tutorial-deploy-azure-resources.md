@@ -2,19 +2,19 @@
 title: Einrichten von Ressourcen für die Bereitstellung eines ML-Modells in Azure SQL Edge
 description: Im ersten Teil dieses dreiteiligen Azure SQL Edge-Tutorials zum Vorhersagen von Eisenerzverunreinigungen installieren Sie die erforderliche Software und richten erforderliche Azure-Ressourcen für die Bereitstellung eines Machine Learning-Modells in Azure SQL Edge ein.
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: c74e402fa1faa883b1e456f11a8d9d7b1e750d27
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 8c17351c049ef419ab95f46a54aa9f8cc523f7cf
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772827"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887460"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Installieren von Software und Einrichten von Ressourcen für das Tutorial
 
@@ -30,6 +30,7 @@ In diesem dreiteiligen Tutorial erstellen Sie ein Machine Learning-Modell zum Vo
 4. Installieren Sie [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/).
 5. Öffnen Sie Azure Data Studio, und konfigurieren Sie Python für Notebooks. Weitere Informationen finden Sie unter [Konfigurieren von Python für Notebooks](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks). Dieser Schritt kann mehrere Minuten lang dauern.
 6. Installieren Sie die neueste Version von [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020). Für die folgenden Skripts muss AZ PowerShell die neueste Version (3.5.0, Februar 2020) sein.
+7. Laden Sie die [DACPAC-](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) und [AMD/ARM-Docker-Imagedateien](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/tar-files) herunter, die im Tutorial verwendet werden.
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>Bereitstellen von Azure-Ressourcen mithilfe eines PowerShell-Skripts
 

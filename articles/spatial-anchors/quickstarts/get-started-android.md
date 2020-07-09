@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3f794d1c70baee07b9ff3ed5d8299cf8ad3bf983
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75376459"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652505"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Schnellstart: Erstellen einer Android-App mit Azure Spatial Anchors
 
@@ -86,6 +86,8 @@ Suchen Sie nach dem Feld `SpatialAnchorsAccountKey`, und ersetzen Sie `Set me` d
 
 Suchen Sie nach dem Feld `SpatialAnchorsAccountId`, und ersetzen Sie `Set me` durch den Kontobezeichner.
 
+Suchen Sie `public AzureSpatialAnchorsManager(Session arCoreSession)`, und fügen Sie die folgende Zeile hinzu, die in Ihrer Kontodomäne den vorherigen Wert ersetzt: `spatialAnchorsSession.getConfiguration().setAccountDomain("MyAccountDomain");`.
+
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 Öffnen Sie `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
@@ -93,6 +95,8 @@ Suchen Sie nach dem Feld `SpatialAnchorsAccountId`, und ersetzen Sie `Set me` du
 Suchen Sie nach dem Feld `SpatialAnchorsAccountKey`, und ersetzen Sie `Set me` durch den Kontoschlüssel.
 
 Suchen Sie nach dem Feld `SpatialAnchorsAccountId`, und ersetzen Sie `Set me` durch den Kontobezeichner.
+
+Suchen Sie `AzureSpatialAnchorsApplication::StartCloudSession()`, und fügen Sie die folgende Zeile hinzu, die in Ihrer Kontodomäne den vorherigen Wert ersetzt: `m_cloudSession->Configuration()->AccountDomain("MyAccountDomain");`.
 
 ---
 

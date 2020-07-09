@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5436e50a23b73e1a10cf42b3dd8790c5b0620ac3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75969289"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021890"
 ---
 # <a name="use-case---customer-profiling"></a>Anwendungsfall – Erstellen von Kundenprofilen
 Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden.  Weitere Informationen zu Cortana Intelligence finden Sie unter [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). In diesem Dokument wird ein einfacher Anwendungsfall beschrieben, der Ihnen dabei helfen soll zu verstehen, wie Sie mit Azure Data Factory verbreitete Analyseprobleme lösen können.
@@ -38,7 +38,7 @@ Für diesen einfachen Anwendungsfall benötigen Sie lediglich ein [Azure-Abonnem
 3. Klicken Sie auf dem Blatt **Beispiel-Pipelines** auf die Option vom Typ **Kundenprofile**, die Sie bereitstellen möchten.
 
     ![Blatt "Beispielpipelines"](./media/data-factory-samples/SampleTile.png)
-4. Geben Sie die Konfigurationseinstellungen für das Beispiel an. Hierzu zählen beispielsweise der Name und der Schlüssel Ihres Azure Storage-Kontos, der Azure SQL-Servername, die Datenbank, die Benutzer-ID und das Kennwort.
+4. Geben Sie die Konfigurationseinstellungen für das Beispiel an. Hierzu zählen beispielsweise der Name und der Schlüssel Ihres Azure Storage-Kontos, der Name des logischen SQL-Servers, die Datenbank, die Benutzer-ID und das Kennwort.
 
     ![Blatt "Beispiel"](./media/data-factory-samples/SampleBlade.png)
 5. Wenn Sie mit den Konfigurationseinstellungen fertig sind, klicken Sie auf **Erstellen**, um die Beispielpipelines und die von den Pipelines verwendeten verknüpften Dienste und Tabellen zu erstellen bzw. bereitzustellen.

@@ -15,10 +15,10 @@ ms.custom:
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80235274"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Onlinemigrationsprobleme und Einschränkungen bei Azure DB for MySQL mit Azure Database Migration Service
@@ -35,7 +35,7 @@ In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Be
 - Migration zu derselben Version. Die Migration von MySQL 5.6 zu Azure Database for MySQL 5.7 wird nicht unterstützt.
 - Aktivieren Sie die binäre Protokollierung in „my.ini“ (Windows) oder „my.cnf“ (Unix).
   - Legen Sie „Server_id“ auf eine beliebige Zahl größer oder gleich 1 fest, z.B. Server_id=1 (nur für MySQL 5.6).
-  - Legen Sie „log-bin = \<Pfad>“ fest (nur für MySQL 5.6).
+  - Legen Sie „log-bin = \<path>“ fest (nur für MySQL 5.6).
   - Legen Sie „binlog_format = row“ fest.
   - „Expire_logs_days = 5“ (empfohlen – nur für MySQL 5.6)
 - Der Benutzer muss die Rolle „ReplicationAdmin“ besitzen.

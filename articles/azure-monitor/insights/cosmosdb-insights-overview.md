@@ -1,21 +1,21 @@
 ---
-title: Überwachen von Azure Cosmos DB mit Azure Monitor für Cosmos DB (Vorschauversion)| Microsoft-Dokumentation
+title: Überwachen von Azure Cosmos DB mit Azure Monitor für Cosmos DB | Microsoft-Dokumentation
 description: In diesem Artikel wird das Azure Monitor für Cosmos DB-Feature beschrieben, das Cosmos DB-Besitzern ein schnelles Verständnis der Leistungs- und Nutzungsprobleme bei ihren CosmosDB-Konten ermöglicht.
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/27/2019
-ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/11/2020
+ms.openlocfilehash: 05000f4c670860be249d80b0e695a8a8760510be
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250675"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797580"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Informationen zu Azure Monitor für Azure Cosmos DB (Vorschau)
+# <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Informationen zu Azure Monitor für Azure Cosmos DB
 
-Azure Monitor für Azure Cosmos DB (Vorschau) bietet eine Übersicht über Gesamtleistung, Fehler, Kapazität und Betriebsintegrität aller Ihrer Azure Cosmos DB-Ressourcen in einer vereinheitlichten interaktiven Oberfläche. Anhand dieses Artikels können Sie sich mit den Vorteilen dieser neuen Überwachungsoberfläche vertraut machen, und Sie erfahren, wie Sie diese entsprechend den konkreten Anforderungen Ihrer Organisation ändern und anpassen können.   
+Azure Monitor für Azure Cosmos DB bietet eine Übersicht über Gesamtleistung, Fehler, Kapazität und Betriebsintegrität aller Ihrer Azure Cosmos DB-Ressourcen in einer vereinheitlichten interaktiven Oberfläche. Anhand dieses Artikels können Sie sich mit den Vorteilen dieser neuen Überwachungsoberfläche vertraut machen, und Sie erfahren, wie Sie diese entsprechend den konkreten Anforderungen Ihrer Organisation ändern und anpassen können.   
 
 ## <a name="introduction"></a>Einführung
 
@@ -44,7 +44,7 @@ Führen Sie die folgenden Schritte aus, um die Nutzung und Leistung Ihrer Speich
 
     ![Suchfeld mit dem Wort „Monitor“, und eine Dropdownliste „Dienste“ mit dem Eintrag „Monitor“ mit einem Tachometersymbol](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. Wählen Sie **Cosmos DB (Vorschau)** aus.
+3. Wählen Sie **Cosmos DB**.
 
     ![Screenshot der Arbeitsmappe mit Cosmos DB-Übersicht](./media/cosmosdb-insights-overview/cosmos-db.png)
 
@@ -110,7 +110,7 @@ Wenn Sie alle Dropdownansichten in der Arbeitsmappe erweitern oder reduzieren m�
 
 ![Symbol „Arbeitsmappe erweitern“](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Anpassen von Azure Monitor für Azure Cosmos DB (Vorschau)
+## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>Anpassen von Azure Monitor für Azure Cosmos DB
 
 Da diese Oberfläche auf Azure Monitor-Arbeitsmappenvorlagen aufbaut, stehen Ihnen die Optionen **Anpassen** > **Bearbeiten** zur Verfügung, und mit **Speichern** können Sie eine Kopie der geänderten Version in einer benutzerdefinierten Arbeitsmappe speichern. 
 
@@ -124,4 +124,4 @@ Arbeitsmappen werden in einer Ressourcengruppe gespeichert, und zwar entweder im
 
 * Konfigurieren Sie [Metrikwarnungen](../platform/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sein können.
 
-* Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../app/usage-workbooks.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
+* Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.

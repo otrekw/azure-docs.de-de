@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 838e523f74a21c44958ddb6dc88e4dab3526d81a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064996"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194472"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Versionshinweise für Datenverwaltungsgateway
 > [!NOTE]
@@ -49,8 +49,8 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 -   Sie können DNS-Einträge hinzufügen, um Service Bus auf die Positivliste zu setzen, statt alle Azure IP-Adressen der Firewall auf eine Positivliste zu setzen (sofern erforderlich). Ausführlichere Informationen finden Sie hier.
 -   Sie können jetzt Daten in einen bzw. aus einem einzelnen Blockblob von bis zu 4,75 TB kopieren. Dies ist die unterstützte maximale Größe eines Blockblobs. (Der frühere Grenzwert betrug 195 GB.)
 -   Behoben: Fehler „Nicht genügend Arbeitsspeicher“ beim Entzippen mehrerer kleiner Dateien während der Kopieraktivität.
--   Behoben: Fehler „Index außerhalb des gültigen Bereichs“ beim Kopieren aus DocumentDB in eine lokale SQL Server-Instanz mit der Idempotenz-Funktion.
--   Behoben: SQL-Bereinigungsskript funktioniert nicht bei lokaler SQL Server-Instanz mit dem Assistenten zum Kopieren.
+-   Behoben: Fehler „Index außerhalb des gültigen Bereichs“ beim Kopieren aus DocumentDB in SQL Server mit der Idempotenz-Funktion.
+-   Behoben: SQL-Bereinigungsskript funktioniert nicht bei SQL Server mit dem Assistenten zum Kopieren.
 -   Behoben: Spaltenname mit Leerzeichen am Ende funktioniert nicht in Kopieraktivität.
 
 ## <a name="28662833"></a>2.8.66283.3
@@ -111,7 +111,7 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 *  Der DB2-Treiber unterstützt nun z/OS und DB2 für i (AS/400) sowie die bereits unterstützten Plattformen (Linux, Unix und Windows).
 *  Unterstützt die Verwendung von Azure Cosmos DB als Quelle oder Ziel für lokale Datenspeicher.
 *  Unterstützt das Kopieren von Daten in kalte bzw. heiße Blobspeicher (und umgekehrt) sowie das bereits unterstützte allgemeine Speicherkonto.
-*  Ermöglicht die Verbindung mit einer lokalen SQL Server-Instanz über ein Gateway mit Remoteanmeldeberechtigungen.  
+*  Ermöglicht die Verbindung mit einer SQL Server-Instanz über ein Gateway mit Remoteanmeldeberechtigungen.  
 
 ## <a name="2060131"></a>2.0.6013.1
 
@@ -126,7 +126,7 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
     *  Neu organisierte und vereinfachte Steuerelemente.
 
     *  Sie können Daten aus einem Speicher mithilfe des [codefreien Kopiertools](data-factory-copy-data-wizard-tutorial.md) kopieren. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie allgemeine Details zu diesem Feature.
-*  Sie können das Datenverwaltungsgateway nutzen, um Daten direkt aus einer lokalen SQL Server-Datenbank in Azure Machine Learning zu erfassen.
+*  Sie können das Datenverwaltungsgateway nutzen, um Daten direkt aus einer SQL Server-Datenbank in Azure Machine Learning zu erfassen.
 
 *  Leistungsverbesserungen
 

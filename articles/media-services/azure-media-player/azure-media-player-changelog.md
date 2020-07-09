@@ -6,12 +6,11 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 15f8a3ac8c2777b3a878de92db495e559f64ad20
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
-ms.translationtype: HT
+ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727597"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698313"
 ---
 # <a name="changelog"></a>Änderungsprotokoll #
 
@@ -20,9 +19,9 @@ ms.locfileid: "81727597"
 ### <a name="bug-fixes-224"></a>Fehlerbehebungen in Version 2.2.4 ###
 
 - [Fehlerbehebung][AMP][Barrierefreiheit] Erreichbare Phantom-Registerkarte bei Anzeige des Fehlerbildschirms entfernt
-- [Fehlerbehebung][AMP] Fehler bei Hotkey „M“ für IE11 und Edge behoben
+- [Fehlerbehebung][AMP] Fehler bei Hotkey „M“ für IE11 und Microsoft Edge behoben
 - [Fehlerbehebung][AMP] Ausnahme für CEA708-Untertitel behoben
-- [Fehlerbehebung][AMP] Problem in Bezug auf das Einfrieren von Videos für den Edge-Browser behoben
+- [Fehlerbehebung][AMP] Problem in Bezug auf das Einfrieren von Videos für den Microsoft Edge-Browser behoben
 
 ### <a name="changes-224"></a>Änderungen in Version 2.2.4 ###
 
@@ -82,7 +81,7 @@ ms.locfileid: "81727597"
 
 ### <a name="bug-fixes-220"></a>Fehlerbehebungen in Version 2.2.0 ###
 
-- [Fehlerbehebung] Erkennung der Flash-Version in Chrome/Edge hat nicht funktioniert
+- [Fehlerbehebung] Erkennung der Flash-Version in Chrome/Microsoft Edge hat nicht funktioniert
 
 ### <a name="changes-220"></a>Änderungen in Version 2.2.0 ###
 
@@ -439,7 +438,7 @@ ms.locfileid: "81727597"
 
 ### <a name="bug-fixes-161"></a>Fehlerbehebungen in Version 1.6.1 ###
 
-- [Fehlerbehebung][FlashSS|Edge,IE][SilverlightSS|IE] Festlegung des Fokus in IE/Edge auf andere Elemente der Benutzeroberfläche für Eingaben oder andere Vorgänge war nicht möglich
+- [Fehlerbehebung][FlashSS|Edge,IE][SilverlightSS|IE] Festlegung des Fokus in IE/Microsoft Edge auf andere Elemente der Benutzeroberfläche für Eingaben oder andere Vorgänge war nicht möglich
 - [Fehlerbehebung] Fehler bei AES-Wiedergabe, wenn Forge nicht definiert war
 - [Fehlerbehebung][Android][AzureHtml5JS|Chrome] Anzeige des Wartekreisels und keine Wiedergabe von Inhalt während der Schleife zur Integritätsprüfung
 - [Fehlerbehebung][IE9] Keine Unterstützung von „console.log()“, weil von IE 9 eine Ausnahme ausgelöst wurde
@@ -449,7 +448,7 @@ ms.locfileid: "81727597"
 ### <a name="features-160"></a>Features in Version 1.6.0 ###
 
 - [Feature] Größenreduzierung von 33 % für „azuremediaplayer.min.js“
-- [Feature][AzureHtml5JS|Edge][Nicht getestet] Unterstützung für DD+-Audiostreams in Edge (kein Codec-Wechsel nach anfänglicher Auswahl). Für die App muss an diesem Punkt der richtige Audiostream ausgewählt werden.
+- [Feature][AzureHtml5JS|Edge][Nicht getestet] Unterstützung für DD+-Audiostreams in Microsoft Edge (kein Codec-Wechsel nach anfänglicher Auswahl). Für die App muss an diesem Punkt der richtige Audiostream ausgewählt werden.
 - [Feature] Hotkey-Steuerelemente (weitere Details in der Dokumentation)
 - [Feature] Tipp beim Zeigen auf Statuszeit für präzise Zeitpunktsuche
 - [Feature] Asynchrone Erkennung von Plug-Ins, wenn das Plug-In die „setupDone“-Methode enthält
@@ -460,8 +459,8 @@ ms.locfileid: "81727597"
 - [Fehlerbehebung] Feld für Bitratenauswahl wurde bei Mausbewegung zurückgesetzt und hat zu Problemen beim Auswählen von niedrigeren Bitraten per Maus geführt
 - [Fehlerbehebung] Mac Office in App ist bei Durchführung einer DRM-Prüfung abgestürzt
 - [Fehlerbehebung] CSS-Klassen konnten leicht versehentlich überschrieben werden
-- [Fehlerbehebung][Chrome] Identifizierung aus User-Agent-Zeichenfolge für Browser auf Edge aktualisiert
-- [Fehlerbehebung][AzureHtml5JS] Schaltfläche „Untertitel“ wird in der Symbolleiste in Edge (Win10) bzw. Chrome (Mac) nicht angezeigt
+- [Fehlerbehebung][Chrome] Identifizierung aus User-Agent-Zeichenfolge für Browser auf Microsoft Edge aktualisiert
+- [Fehlerbehebung][AzureHtml5JS] Schaltfläche „Untertitel“ wird in der Symbolleiste in Microsoft Edge (Win10) bzw. Chrome (Mac) nicht angezeigt
 - [Fehlerbehebung][Android][AzureHtml5JS|Chrome] Ausnahme „InvalidStateError“ bei Aufruf „endOfStream()“ in kurzen Videos
 - [Fehlerbehebung][Firefox] DRM-Warnung entfernt, die von Firefox beim Überprüfen der Browserfunktionen verursacht wurde
 - [Fehlerbehebung][Html5] Untertitel wurden für Progressive MP4-Inhalt nicht angezeigt
@@ -488,7 +487,7 @@ ms.locfileid: "81727597"
 - [Fehlerbehebung] Update für CSS-Minimierung durchgeführt, damit für Schaltflächen Schriftartcodes der HTML-Entität anstelle von Unicode verwendet werden
 - [Fehlerbehebung][AzureHtml5JS] Für Multi-DRM-Inhalt wurde aus „protectionInfo“ immer das Token des ersten Elements ausgewählt, sodass für den zweiten DRM-Vorgang ein Fehler aufgetreten ist
 - [Fehlerbehebung][AzureHtml5JS] Suchvorgang wurde nicht beendet, wenn in einem Bereich mit fehlenden Segmenten gesucht wurde
-- [Fehlerbehebung][AzureHtml5JS|Edge] EME mit Präfix in Edge für PlayReady-Wiedergabe aktualisiert
+- [Fehlerbehebung][AzureHtml5JS|Edge] EME mit Präfix in Microsoft Edge für PlayReady-Wiedergabe aktualisiert
 - [Fehlerbehebung][AzureHtml5JS|Firefox] EME-Überprüfung aktualisiert, damit für Firefox v42+ (mit MSE) für geschützten Inhalt auf Silverlight zurückgegriffen werden kann
 - [Fehlerbehebung][FlashSS] „error.message“ von Zahl auf ausführliche Zeichenfolge aktualisiert
 
@@ -577,8 +576,8 @@ ms.locfileid: "81727597"
 - [Fehlerbehebung][AzureHtml5JS] Livewiedergabe ist bei MPD-Updates eingefroren, wenn der Zeitstempel kleinere Ungenauigkeiten aufgewiesen hat
 - [Fehlerbehebung][AzureHtml5JS] Behebung mehrerer Probleme mit der Livewiedergabe
 - [Fehlerbehebung][AzureHtml5JS] Leeren der Puffer, wenn Heuristik für Fenstergröße aktiviert ist, und Wechseln zu einem Bildschirm mit höherer Auflösung
-- [Fehlerbehebung][AzureHtml5JS] In Chrome wird das Ereignis für das Ende jetzt richtig angezeigt. Verknüpft mit vorherigem bekanntem Problem „*Chrome sendet Ereignis „â&euro;œendedâ&euro;“ nicht richtig, wenn „AzureHtml5JS“ verwendet wird. Es besteht ein Problem im zugrunde liegenden Browser.*
-- [Fehlerbehebung][AzureHtml5JS] Safari für diese Technologie deaktiviert, um das folgende Problem zu beheben: *Wiedergabeproblem bei OSX Yosemite mit der Technologie „AzureHtml5JS tech“. Es bestehen Probleme bei der MSE-Implementierung. Vorübergehende Lösung: Erzwingen von „â&euro;œflashSSâ&euro;, â&euro;œsilverlightSSâ&euro;“ als Technologiereihenfolge für diese User-Agents*.
+- [Fehlerbehebung][AzureHtml5JS] In Chrome wird das Ereignis für das Ende jetzt richtig angezeigt. Verknüpft mit vorherigem bekanntem Problem *Chrome sendet das beendete Ereignis nicht richtig, wenn „AzureHtml5JS“ verwendet wird. Es besteht ein Problem im zugrunde liegenden Browser.*
+- [Fehlerbehebung][AzureHtml5JS] Safari für diese Technologie deaktiviert, um das folgende Problem zu beheben: *Wiedergabeproblem bei OSX Yosemite mit der Technologie „AzureHtml5JS tech“. Es bestehen Probleme bei der MSE-Implementierung. Vorübergehende Lösung: Erzwingen von „flashSS“, „silverlightSS“ als Technologiereihenfolge für diese User-Agents*
 - [Fehlerbehebung][FlashSS] „loadstart“ wird nach Auftreten eines Fehlers ausgelöst
 
 ## <a name="020-beta"></a>0.2.0 (Beta) ##

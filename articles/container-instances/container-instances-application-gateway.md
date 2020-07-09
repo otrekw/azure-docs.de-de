@@ -3,12 +3,12 @@ title: Statische IP-Adresse für eine Containergruppe
 description: Erstellen einer Containergruppe in einem virtuellen Netzwerk und Verwenden eines Azure-Anwendungsgateways, um eine statische Front-End-IP-Adresse für eine Container-Web-App verfügbar zu machen
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 5c3a14f93af3ecc614dc296f0a4d2815d7a64a66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481788"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299161"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Verfügbarmachen einer statischen IP-Adresse für eine Containergruppe
 
@@ -17,7 +17,7 @@ In diesem Artikel wird eine Möglichkeit gezeigt, wie Sie mithilfe eines Azure-[
 In diesem Artikel verwenden Sie die Azure-Befehlszeilenschnittstelle (Azure CLI), um die Ressourcen für das Szenario zu erstellen:
 
 * Ein virtuelles Azure-Netzwerk
-* Eine im [virtuellen Netzwerk (Vorschauversion)](container-instances-vnet.md) bereitgestellte Containergruppe, die eine kleine Web-App hostet
+* Eine [im virtuellen Netzwerk](container-instances-vnet.md) bereitgestellte Containergruppe, die eine kleine Web-App hostet
 * Ein Anwendungsgateway mit einer öffentlichen Front-End-IP-Adresse, ein Listener zum Hosten einer Website auf dem Gateway und eine Route zur Back-End-Containergruppe
 
 Solange das Anwendungsgateway ausgeführt wird und die Containergruppe eine stabile private IP-Adresse im delegierten Subnetz des Netzwerks verfügbar macht, kann über diese öffentliche IP-Adresse auf die Containergruppe zugegriffen werden.

@@ -3,12 +3,12 @@ title: Übersicht über die Offlinesicherung
 description: Erfahren Sie mehr über die Komponenten der Offlinesicherung. Dazu zählen Offlinesicherungen basierend auf Azure Data Box und Offlinesicherungen basierend auf dem Azure Import/Export-Dienst.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: a33810c633d8c7ca79c559355935d3c11853bc0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160920"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628348"
 ---
 # <a name="overview-of-offline-backup"></a>Übersicht über die Offlinesicherung
 
@@ -60,7 +60,7 @@ Hier finden Sie einen Überblick über die Architektur:
 
 Informationen zur Verwendung einer auf dem Azure Import/Export-Dienst basierenden Offlinesicherung mit dem MARS-Agent finden Sie unter [Offlinesicherungsworkflow in Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export).
 
-Wenn Sie die Offlinesicherung mit MABS oder DPM-A verwenden möchten, finden Sie weitere Informationen unter [Offlinesicherungsworkflow für DPM und Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-).
+Wenn Sie die Offlinesicherung mit MABS oder DPM-A verwenden möchten, finden Sie weitere Informationen unter [Offlinesicherungsworkflow für DPM und Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export).
 
 ## <a name="offline-backup-support-summary"></a>Zusammenfassung der Unterstützung für die Offlinesicherung
 
@@ -73,14 +73,14 @@ In der folgenden Tabelle werden die beiden verfügbaren Optionen verglichen, sod
 | Sicherheit (Daten, Gerät und Dienst)                           | [Daten:](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) AES-256-Bit-Verschlüsselung <br> [Gerät:](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) robustes Gehäuse, proprietäre und auf Anmeldeinformationen basierende Schnittstelle zum Kopieren von Daten <br> [Dienst:](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) Schutz durch Azure-Sicherheitsfeatures | Daten: BitLocker-verschlüsselt                                 |
 | Bereitstellung von temporärem Stagingspeicherort                     | Nicht erforderlich                                                | Umfang größer oder gleich der geschätzten Größe der Sicherungsdaten        |
 | Unterstützte Regionen                                           | [Azure Data Box Disk-Regionen](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure Data Box-Regionen](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Azure Import/Export-Dienst: Regionen](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
-| Länderübergreifender Versand                                     | Nicht unterstützt  <br>    Die Quelladresse und das gewünschte Azure-Rechenzentrum müssen sich im gleichen Land/in der gleichen Region befinden* | Unterstützt                                                    |
+| Länderübergreifender Versand                                     | Nicht unterstützt  <br>    Die Quelladresse und das Azure-Zielrechenzentrum müssen sich im selben Land/derselben Region befinden.* | Unterstützt                                                    |
 | Transportlogistik (Lieferung, Transport und Abholung)           | Vollständig von Microsoft verwaltet                                     | Vom Kunden verwaltet                                            |
 | Preise                                                      | [Azure Data Box: Preise](https://azure.microsoft.com/pricing/details/databox/) <br> [Azure Data Box Disk: Preise](https://azure.microsoft.com/pricing/details/databox/disk/) | [Azure Import/Export-Dienst: Preise](https://azure.microsoft.com/pricing/details/storage-import-export/) |
 
-*Wenn es in Ihrem Land/Ihrer Region kein Azure-Rechenzentrum gibt, müssen Sie Ihre Datenträger an ein Azure-Rechenzentrum in einem anderen Land schicken.
+\* Wenn es in Ihrem Land/Ihrer Region kein Azure-Rechenzentrum gibt, müssen Sie Ihre Datenträger an ein Azure-Rechenzentrum in einem anderen Land/einer anderen Region schicken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Offlinesicherung in Azure Backup unter Verwendung von Azure Data Box](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
 - [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md)
-- [Offlinesicherungsworkflow für DPM und Azure Backup Server](backup-azure-backup-server-import-export-.md)
+- [Offlinesicherungsworkflow für DPM und Azure Backup Server](backup-azure-backup-server-import-export.md)

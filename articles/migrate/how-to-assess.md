@@ -1,31 +1,21 @@
 ---
 title: Hinzufügen von Bewertungstools in Azure Migrate
 description: Hier erfahren Sie, wie Sie Bewertungstools in Azure Migrate hinzufügen.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.manager: carmonm
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 64af78abd8f82b41d4a03fbb56c96e3038cef5a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 04/26/2020
+ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185911"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122114"
 ---
 # <a name="add-assessment-tools"></a>Hinzufügen von Bewertungstools
 
-In diesem Artikel wird beschrieben, wie Sie in [Azure Migrate](migrate-overview.md) Bewertungstools hinzufügen.
+In diesem Artikel wird beschrieben, wie Sie in [Azure Migrate](./migrate-services-overview.md) Bewertungstools hinzufügen. 
 
-Azure Migrate stellt einen Hub mit Tools für die Bewertung und Migration zu Azure bereit. Er umfasst Azure Migrate-Tools sowie andere Tools und Angebote von unabhängigen Drittanbietern (Independent Software Vendors, ISVs).
-
-Wenn Sie ein Bewertungstool hinzufügen möchten und noch nicht über ein Azure Migrate-Projekt verfügen, hilft Ihnen [dieser Artikel](how-to-add-tool-first-time.md) weiter.
-
-## <a name="select-a-tool"></a>Auswählen eines Tools
-
-Wenn Sie ein nicht zu Azure Migrate gehörendes Tool für die Bewertung auswählen, erwerben Sie zunächst eine Lizenz, oder melden Sie sich in Übereinstimmung mit der Toolrichtlinie für eine kostenlose Testversion an. Für Tools ist eine Option zum Herstellen einer Verbindung mit Azure Migrate verfügbar. Befolgen Sie die Anweisungen und die Dokumentation, um eine Verbindung des Tools mit Azure Migrate herzustellen. [Weitere Informationen](migrate-services-overview.md) zu Tools.
-
+- Wenn Sie ein Bewertungstool hinzufügen möchten und noch nicht über ein Azure Migrate-Projekt verfügen, hilft Ihnen [dieser Artikel](how-to-add-tool-first-time.md) weiter.
+- Wenn Sie für die Bewertung ein ISV-Tool oder Movere hinzugefügt haben, [befolgen Sie die Schritte](prepare-isv-movere.md) zur Vorbereitung auf die Arbeit mit dem Tool.
 
 ## <a name="select-an-assessment-scenario"></a>Auswählen eines Bewertungsszenarios
 
@@ -33,7 +23,7 @@ Wenn Sie ein nicht zu Azure Migrate gehörendes Tool für die Bewertung auswähl
 2. Wählen Sie das Bewertungsszenario aus, das Sie verwenden möchten:
 
     - Wählen Sie **Server bewerten und migrieren**, um Computer und Workloads zu ermitteln und für die Migration zu Azure zu bewerten.
-    - Wählen Sie die Option **Datenbanken bewerten und migrieren**, um lokale SQL-Computer zu bewerten.
+    - Um lokale SQL Server-Datenbanken zu bewerten, wählen Sie die Option **Datenbanken bewerten und migrieren** aus.
     - Wählen Sie die Option **Web-Apps bewerten und migrieren**, um lokale Web-Apps zu bewerten.
 
     ![Bewertungsszenario](./media/how-to-assess/assess-scenario.png)

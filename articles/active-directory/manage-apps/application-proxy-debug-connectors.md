@@ -2,21 +2,21 @@
 title: 'Debuggen von Anwendungsproxyconnectors: Azure Active Directory | Microsoft-Dokumentation'
 description: Enthält Informationen zum Debuggen von Problemen mit Azure AD-Anwendungsproxyconnectors (Azure Active Directory).
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39a27ce3b3e7946504298451233b6054302c45f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72311848"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555044"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>Debuggen von Problemen mit Anwendungsproxyconnectors 
 
@@ -40,7 +40,7 @@ In diesem Flussdiagramm werden die Schritte zum Debuggen von einigen häufigeren
 
 ![Flussdiagramm mit den Schritten zum Debuggen eines Connectors](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
-|  | Action | BESCHREIBUNG | 
+| Schritt | Aktion | BESCHREIBUNG |
 |---------|---------|---------|
 |1 | Ermitteln der Connectorgruppe, die der App zugewiesen ist | Vermutlich haben Sie einen Connector auf mehreren Servern installiert. In diesem Fall sollten die Connectors [Connectorgruppen zugewiesen sein](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Weitere Informationen zu Connectorgruppen finden Sie unter [Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen](application-proxy-connector-groups.md). |
 |2 | Installieren des Connectors und Zuweisen einer Gruppe | Wenn Sie keinen Connector installiert haben, helfen Ihnen die Informationen unter [Installieren und Registrieren eines Connectors](application-proxy-add-on-premises-application.md#install-and-register-a-connector) weiter.<br></br> Wenn Probleme beim Installieren des Connectors auftreten, lesen Sie [Problem beim Installieren des Anwendungsproxy-Agent-Connectors](application-proxy-connector-installation-problem.md).<br></br> Lesen Sie den Abschnitt [Erstellen von Connectorgruppen](application-proxy-connector-groups.md#create-connector-groups), wenn der Connector keiner Gruppe zugewiesen ist.<br></br>Lesen Sie den Abschnitt [Zuweisen von Anwendungen zu Ihren Connectorgruppen](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups), wenn die Anwendung keiner Connectorgruppe zugewiesen ist.|

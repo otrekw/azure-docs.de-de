@@ -7,7 +7,7 @@ author: msaburnley
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.subservice: fundamentals
 ms.workload: identity
 ms.date: 08/28/2017
@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1193bfc08ccbd86d4da09c4de472f09bb49208f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c49d795b80ed5e9536740e0d8fe877d070da87a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799365"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Anfordern von Unterstützung und Öffnen eines Supporttickets für Azure Active Directory
 Microsoft bietet für Azure Active Directory (Azure AD) weltweiten, vertriebsvorbereitenden, Abrechnungs- und Abonnementsupport. Für gebührenpflichtige und Testabonnements von Microsoft Azure steht Support online und telefonisch zur Verfügung. Abrechnungssupport ist online und telefonisch in weiteren Sprachen verfügbar. 
@@ -46,30 +46,29 @@ Wenn Sie mithilfe dieser Selbsthilferessourcen keine Antworten finden, können S
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie **Azure Active Directory**.
    
-2. Scrollen Sie nach unten zu **Problembehandlung und Support**, und wählen Sie **Neue Supportanfrage** aus.
+1. Scrollen Sie nach unten zu **Problembehandlung und Support**, und wählen Sie **Neue Supportanfrage** aus.
    
-3. Wählen Sie auf dem Blatt **Grundeinstellungen** für **Problemtyp** die Option **Technisch** aus.
+1. Wählen Sie auf dem Blatt **Grundeinstellungen** für **Problemtyp** die Option **Technisch** aus.
 
-4. Wählen Sie Ihr **Abonnement** aus.
+1. Wählen Sie Ihr **Abonnement** aus.
 
-5. Wählen Sie unter **Dienst** die Option **Azure Active Directory** aus.
+1. Wählen Sie unter **Dienst** die Option **Azure Active Directory** aus.
 
-6. Erstellen Sie eine **Zusammenfassung** für die Anfrage. Die Zusammenfassung muss weniger als 140 Zeichen umfassen.
+1. Erstellen Sie eine **Zusammenfassung** für die Anfrage. Die Zusammenfassung muss weniger als 140 Zeichen umfassen.
   
-7. Wählen Sie einen **Problemtyp** und anschließend eine Kategorie für diesen Typ aus. An diesem Punkt werden Ihnen für Ihre Problemkategorie auch Informationen zur Selbsthilfe angeboten.
+1. Wählen Sie einen **Problemtyp** und anschließend eine Kategorie für diesen Typ aus. An diesem Punkt werden Ihnen für Ihre Problemkategorie auch Informationen zur Selbsthilfe angeboten.
   
-7. Fügen Sie die restlichen Informationen zu Ihrem Problem hinzu, und klicken Sie auf **Weiter**. 
+1. Fügen Sie die restlichen Informationen zu Ihrem Problem hinzu, und klicken Sie auf **Weiter**. 
 
-8. Daraufhin werden auf dem Blatt **Lösungen** Selbsthilfelösungen und Dokumentationen angeboten. Sollte sich das vorliegende Problem durch keine der Lösungen beheben lassen, klicken Sie auf **Weiter**. 
+1. Daraufhin werden auf dem Blatt **Lösungen** Selbsthilfelösungen und Dokumentationen angeboten. Sollte sich das vorliegende Problem durch keine der Lösungen beheben lassen, klicken Sie auf **Weiter**. 
 
-9. Geben Sie auf dem Blatt **Details** die erforderlichen Details an, und wählen Sie einen [Schweregrad](https://azure.microsoft.com/support/plans/response/) aus. 
+1. Geben Sie auf dem Blatt **Details** die erforderlichen Details an, und wählen Sie einen [Schweregrad](https://azure.microsoft.com/support/plans/response/) aus. 
  
-![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
+    ![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
  
-10. Geben Sie Ihre Kontaktinformationen ein, und wählen Sie **Weiter** aus. 
+1. Geben Sie Ihre Kontaktinformationen ein, und wählen Sie **Weiter** aus. 
 
-
-8. Geben Sie Ihre Kontaktinformationen ein, und klicken Sie auf **Erstellen**.
+1. Geben Sie Ihre Kontaktinformationen ein, und klicken Sie auf **Erstellen**.
   ![Screenshot der Problemkategorie „Selbsthilfe“](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>So öffnen Sie ein Supportticket für Azure AD im Microsoft 365 Admin Center
@@ -79,19 +78,19 @@ Wenn Sie mithilfe dieser Selbsthilferessourcen keine Antworten finden, können S
 
 1. Melden Sie sich beim [Microsoft 365 Admin Center](https://admin.microsoft.com) mit einem Konto mit einer EMS-Lizenz (Enterprise Mobility + Security) an.
 
-2. Wählen Sie auf der Kachel **Support** den Eintrag **Neue Serviceanfrage** aus:
+1. Wählen Sie auf der Kachel **Support** den Eintrag **Neue Serviceanfrage** aus:
 
-3. Wählen Sie auf der Seite **Supportübersicht** entweder **Identitätsverwaltung** oder **Benutzer- und Domänenverwaltung aus**:
+1. Wählen Sie auf der Seite **Supportübersicht** entweder **Identitätsverwaltung** oder **Benutzer- und Domänenverwaltung aus**:
 
-4. Wählen Sie für **Feature** das Azure AD-Feature aus, für das Sie Unterstützung wünschen.
+1. Wählen Sie für **Feature** das Azure AD-Feature aus, für das Sie Unterstützung wünschen.
 
-5. Wählen Sie für **Symptom** ein entsprechendes Symptom aus. Fassen Sie Ihr Problem zusammen, geben Sie relevante Details ein, und klicken Sie dann auf **Weiter**.
+1. Wählen Sie für **Symptom** ein entsprechendes Symptom aus. Fassen Sie Ihr Problem zusammen, geben Sie relevante Details ein, und klicken Sie dann auf **Weiter**.
 
-6. Wählen Sie eine der angebotenen Selbsthilferessourcen, oder klicken Sie auf **Ja, weiter** oder **Nein, Anfrage abbrechen**.
+1. Wählen Sie eine der angebotenen Selbsthilferessourcen, oder klicken Sie auf **Ja, weiter** oder **Nein, Anfrage abbrechen**.
 
-7. Wenn Sie fortfahren, werden Sie nach weiteren Details befragt. Sie können alle Dateien anfügen, die das Problem wiedergeben. Klicken Sie dann auf **Weiter**.
+1. Wenn Sie fortfahren, werden Sie nach weiteren Details befragt. Sie können alle Dateien anfügen, die das Problem wiedergeben. Klicken Sie dann auf **Weiter**.
 
-8. Geben Sie Ihre Kontaktinformationen ein, und klicken Sie auf **Anfrage senden**.
+1. Geben Sie Ihre Kontaktinformationen ein, und klicken Sie auf **Anfrage senden**.
 
 ## <a name="get-phone-support"></a>Telefonischer Support
 

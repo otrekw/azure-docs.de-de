@@ -1,15 +1,15 @@
 ---
-author: sptramer
 ms.topic: include
 ms.date: 01/30/2019
-ms.service: azure-powershell
-ms.author: sttramer
-ms.openlocfilehash: 85a78200fa5c2b90908de6ac0de8723b20ffe56b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+author: mikefrobbins
+ms.author: mirobb
+manager: barbkess
+ms.openlocfilehash: e59fea8b1a615abc9ab00646d5a0b37974348352
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76263970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85378613"
 ---
 Für dieses Beispiel ist mindestens Azure PowerShell Az 1.0 erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierten Versionen zu ermitteln. Wenn Sie die Installation ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. 
 

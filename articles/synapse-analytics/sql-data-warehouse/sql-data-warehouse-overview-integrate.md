@@ -6,28 +6,28 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2f6e091b6e0285bea5fef9e4d0be40faec936c6b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 16cfdfb475ce21ed4b51dc9140e59df701363f27
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633140"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201003"
 ---
-# <a name="integrate-other-services-with-a-sql-analytics-data-warehouse"></a>Integrieren anderer Dienste in ein SQL Analytics-Data Warehouse
+# <a name="integrate-other-services-with-a-synapse-sql-pool-data-warehouse"></a>Integrieren anderer Dienste mit einem Synapse SQL-Pool (Data Warehouse)
 
-Die SQL Analytics-Funktion in Azure Synapse Analytics ermöglicht Benutzern die Integration in viele andere Dienste unter Azure. Mit SQL Analytics können Sie über die zugehörige SQL-Poolressource ein Data Warehouse erstellen, über das dann mehrere zusätzliche Dienste genutzt werden können, z. B.:
+Die SQL-Poolfunktion in Azure Synapse Analytics ermöglicht Benutzern die Integration mit vielen anderen Diensten in Azure. Mit Synapse SQL können Sie über die zugehörige SQL-Poolressource ein Data Warehouse erstellen, über das dann mehrere zusätzliche Dienste genutzt werden können, z. B.:
 
 * Power BI
 * Azure Data Factory
 * Azure Machine Learning
 * Azure Stream Analytics
 
-Weitere Informationen zu Integrationsdiensten unter Azure finden Sie im Artikel zu [Integrationspartnern](sql-data-warehouse-partner-data-integration.md).
+Weitere Informationen über Integrationsdienste in Azure finden Sie im Artikel zu [Integrationspartnern](sql-data-warehouse-partner-data-integration.md).
 
 ## <a name="power-bi"></a>Power BI
 

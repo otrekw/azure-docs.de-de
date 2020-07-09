@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1224aef044c558147f4c7234f6514d0de2f09e0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ca3f4b1e1061b0ca86cc836849499b83ee055fe
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143983"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826518"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung
 
@@ -256,7 +256,7 @@ Azure AD Connect benötigt für das Kennwortrückschreiben die Active Directory-
 
 ## <a name="azure-ad-forums"></a>Azure AD-Foren
 
-Wenn Sie eine allgemeine Frage zu Azure AD und zur Self-Service-Kennwortzurücksetzung haben, können Sie die Community in den [Azure AD-Foren](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD) um Unterstützung bitten. Zu den Mitgliedern der Community gehören Techniker, Produktmanager MVPs und andere IT-Experten.
+Wenn Sie eine allgemeine Frage zu Azure AD und zur Self-Service-Kennwortzurücksetzung haben, können Sie die Community auf der [Microsoft-Frageseite „Q&A“ für Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html) um Unterstützung bitten. Zu den Mitgliedern der Community gehören Techniker, Produktmanager MVPs und andere IT-Experten.
 
 ## <a name="contact-microsoft-support"></a>Microsoft-Support kontaktieren
 

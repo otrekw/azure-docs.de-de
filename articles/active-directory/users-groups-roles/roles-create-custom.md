@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e172a023cc9156f435b4f40b2262ee44128c138e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74025276"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84732003"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Erstellen und Zuweisen einer benutzerdefinierten Rolle in Azure Active Directory
 
@@ -141,6 +141,9 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
    }
     ```
 
+  > [!Note]
+  > „templateId“: „GUID“ ist ein optionaler Parameter, der je nach Anforderung im Text gesendet wird. Wenn Sie mehrere verschiedene benutzerdefinierte Rollen mit allgemeinen Parametern erstellen müssen, empfiehlt es sich, eine Vorlage zu erstellen und eine templateId zu definieren. Sie können mit dem PowerShell-Cmdlet „(New-Guid).Guid“ eine templateId im Voraus generieren. 
+
 1. Erstellen Sie die Rollenzuweisung.
 
     HTTP-Anforderung zum Erstellen einer benutzerdefinierten Rollendefinition.
@@ -160,6 +163,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
    }
     ```
+
 
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>Zuweisen einer auf eine Ressource begrenzten benutzerdefinierten Rolle
 

@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: caf4a4b038cab81333ca78cd355bb2033891da00
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 452947821d598bc3c81dea84d8ca177f1fd56950
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73888141"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992792"
 ---
 # <a name="custom-translator-glossary"></a>Glossar für Custom Translator
 
@@ -32,7 +32,7 @@ In diesem Glossar werden Begriffe erläutert, auf die Sie möglicherweise beim V
 | Trennzeichen               | Mit Trennzeichen wird ein Satz in Segmente unterteilt oder von anderen Sätzen abgegrenzt. Zum Beispiel trennen im Englischen Leerzeichen Wörter, Doppelpunkte und Semikolons Nebensätze und Punkte ganze Sätze.                                                                                                                                                                                                                                         |
 | Trainingsdateien           | Anhand einer Trainingsdatei lernt das maschinelle Übersetzungssystem, wie eine Sprache (Quelle) auf eine Zielsprache (Ziel) abgebildet wird. Je mehr Daten Sie zur Verfügung stellen, umso besser sind die Übersetzungen des Systems.                                                                                                                                                                                                               |
 | Optimierungsdateien             | Diese Dateien werden oft zufällig aus dem Trainingsset abgeleitet (wenn Sie kein Optimierungsset auswählen). Die automatisch ausgewählten Sätze werden verwendet, um das System zu optimieren und sicherzustellen, dass es ordnungsgemäß funktioniert. Wenn Sie Ihre eigenen Optimierungsdateien für ein allgemeines Übersetzungsmodell erstellen möchten, achten Sie darauf, dass es sich um eine zufällige Menge von Sätzen aus unterschiedlichen Domänen handelt.                                                                                 |
-| Testdateien            | Hierbei handelt es sich oft um abgeleitete Dateien, die zufällig aus dem Trainingsset ausgewählt wurden (wenn Sie kein Testset auswählen). Mithilfe dieser Sätze soll die Genauigkeit des Übersetzungsmodells bewertet werden. Mit diesen Sätze überprüfen Sie, ob das System korrekt übersetzt. Sie können also ein Testset erstellen und in Custom Translator hochladen, um sicherzustellen, dass diese Sätze in der Systembewertung (Generierung eines BLEU-Scores) verwendet werden.   |
+| Testdateien            | Hierbei handelt es sich oft um abgeleitete Dateien, die zufällig aus dem Trainingsset ausgewählt wurden (wenn Sie kein Testset auswählen). Mithilfe dieser Sätze soll die Genauigkeit des Übersetzungsmodells bewertet werden. Mit diesen Sätze überprüfen Sie, ob das System korrekt übersetzt. Sie können also ein Testset erstellen und in „Benutzerdefinierter Translator“ hochladen, um sicherzustellen, dass diese Sätze in der Systembewertung (Generierung eines BLEU-Scores) verwendet werden.   |
 | Kombinationsdatei               | Dieser Dateityp enthält sowohl die ausgangssprachlichen als auch die übersetzten Sätze in einer Datei. Diese Dateiformate werden unterstützt: TMX, XLIFF, XLF, LCL, XLSX.                                                                                                                                                                                                                                                                                                                       |
 | Archivdatei             | Eine Datei, die andere Dateien enthält. Diese Dateiformate werden unterstützt: ZIP, GZ, TGZ.                                                                                                                                                                                                                                                                                                                                                                                                |
 | BLEU-Bewertung               | [BLEU](what-is-bleu-score.md) ist die branchenübliche Methode zur Bewertung der Richtigkeit bzw. Genauigkeit des Übersetzungsmodells. Es gibt zwar auch andere Bewertungsmethoden, doch Microsoft Translator meldet Projektbesitzern die Genauigkeit basierend auf der BLEU-Methode.

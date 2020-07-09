@@ -2,13 +2,13 @@
 title: Deaktivieren von Funktionen in Azure Functions
 description: Erfahren Sie, wie Sie Funktionen in Azure Functions deaktivieren und aktivieren.
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 11585e92e7d239731b02d06c5093f979cd65cfba
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 04/08/2020
+ms.openlocfilehash: ee701e8df8faddef9bbdb16e7a1048c4dc2e40a5
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81686880"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848738"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Deaktivieren von Funktionen in Azure Functions
 
@@ -39,7 +39,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>Verwenden des Portals
 
-Sie können auch die Option **Funktionszustand** auf der Registerkarte **Verwalten** der Funktion verwenden. Die Option erstellt und löscht die App-Einstellung `AzureWebJobs.<FUNCTION_NAME>.Disabled`.
+Sie können auch die Schaltflächen **Aktivieren** und **Deaktivieren** auf der Seite **Übersicht** der Funktion verwenden. Diese Schaltflächen erstellen und löschen die App-Einstellung `AzureWebJobs.<FUNCTION_NAME>.Disabled`.
 
 ![Option „Funktionszustand“](media/disable-function/function-state-switch.png)
 
@@ -122,9 +122,9 @@ oder
 
 Im zweiten Beispiel wird die Funktion deaktiviert, wenn eine App-Einstellung mit dem Namen „IS_DISABLED“ vorhanden und auf `true` oder 1 festgelegt ist.
 
-Sie können die Datei im Azure-Portal bearbeiten oder die Option **Funktionszustand** auf der Registerkarte **Verwalten** der Funktion verwenden. Die Option im Portal ändert die Datei *function.json*.
+>[!IMPORTANT]  
+>Das Portal verwendet nun Anwendungseinstellungen, um v1.x-Funktionen zu deaktivieren. Wenn eine Anwendungseinstellung mit der Datei „function.json“ in Konflikt steht, kann ein Fehler auftreten. Sie sollten die Eigenschaft `disabled` aus der Datei „function.json“ entfernen, um Fehler zu verhindern. 
 
-![Option „Funktionszustand“](media/disable-function/function-state-switch.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

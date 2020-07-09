@@ -1,20 +1,14 @@
 ---
 title: Georedundante Notfallwiederherstellung in Azure Service Bus | Microsoft-Dokumentation
 description: Verwenden von geografischen Regionen für das Failover und zum Durchführen der Notfallwiederherstellung in Azure Service Bus
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: 49748006baf779e6aea4322068ca3bd07a03a0a3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 06/23/2020
+ms.openlocfilehash: fcdeb499b8ebecc4ecddbfcbe32b812ce7e3efe5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209399"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341484"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Service Bus
 
@@ -43,11 +37,11 @@ In diesem Artikel werden die folgenden Begriffe verwendet:
 
 -  *Alias*: Der Name für die Konfiguration einer von Ihnen eingerichteten Notfallwiederherstellung. Der Alias stellt einen einzelnen, stabilen, vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) als Verbindungszeichenfolge bereit. Anwendungen verwenden diese Alias-Verbindungszeichenfolge, um eine Verbindung mit einem Namespace herzustellen. Mit einem Alias wird sichergestellt, dass die Verbindungszeichenfolge unverändert bleibt, wenn das Failover ausgelöst wird.
 
--  *Primärer/sekundärer Namespace:* Die Namespaces, die dem Alias entsprechen. Der primäre Namespace ist aktiv und empfängt Nachrichten. (Dies kann ein bereits vorhandener oder ein neuer Namespace sein.) Der sekundäre Namespace ist passiv und empfängt keine Nachrichten. Die Metadaten zwischen beiden Namespaces werden synchronisiert, sodass beide nahtlos und ohne Änderung des Anwendungscodes oder der Verbindungszeichenfolge Nachrichten entgegennehmen können. Um sicherzustellen, dass nur der aktive Namespace Nachrichten empfängt, müssen Sie den Alias verwenden. 
+-  *Primärer/sekundärer Namespace*: Die Namespaces, die dem Alias entsprechen. Der primäre Namespace ist aktiv und empfängt Nachrichten. (Dies kann ein bereits vorhandener oder ein neuer Namespace sein.) Der sekundäre Namespace ist passiv und empfängt keine Nachrichten. Die Metadaten zwischen beiden Namespaces werden synchronisiert, sodass beide nahtlos und ohne Änderung des Anwendungscodes oder der Verbindungszeichenfolge Nachrichten entgegennehmen können. Um sicherzustellen, dass nur der aktive Namespace Nachrichten empfängt, müssen Sie den Alias verwenden. 
 
--  *Metadaten:* Entitäten, z.B. Warteschlangen, Themen und Abonnements und die dazugehörigen Eigenschaften des Diensts, die dem Namespace zugeordnet sind. Beachten Sie, dass nur Entitäten und ihre Einstellungen automatisch repliziert werden. Nachrichten werden nicht repliziert.
+-  *Metadaten*: Entitäten, z.B. Warteschlangen, Themen und Abonnements und die dazugehörigen Eigenschaften des Diensts, die dem Namespace zugeordnet sind. Beachten Sie, dass nur Entitäten und ihre Einstellungen automatisch repliziert werden. Nachrichten werden nicht repliziert.
 
--  *Failover:* Der Vorgang zum Aktivieren des sekundären Namespace.
+-  *Failover*: Der Vorgang zum Aktivieren des sekundären Namespace.
 
 ## <a name="setup"></a>Einrichten
 
@@ -145,6 +139,43 @@ Die Service Bus-Premium-SKU unterstützt zudem [Verfügbarkeitszonen](../availab
 Sie können Verfügbarkeitszonen nur für neue Namespaces über das Azure-Portal aktivieren. Service Bus bietet keine Unterstützung für die Migration vorhandener Namespaces. Sie können die Zonenredundanz nicht deaktivieren, wenn Sie sie für Ihren Namespace aktiviert haben.
 
 ![3][]
+
+## <a name="private-endpoints"></a>Private Endpunkte
+Dieser Abschnitt enthält zusätzliche Überlegungen zur Verwendung der georedundanten Notfallwiederherstellung mit Namespaces, bei denen private Endpunkte verwendet werden. Allgemeine Informationen zur Verwendung von privaten Endpunkten mit Service Bus finden Sie unter [Integrieren von Azure Service Bus in den Azure Private Link-Dienst](private-link-service.md).
+
+### <a name="new-pairings"></a>Neue Kopplungen
+Wenn Sie versuchen, eine Kopplung zwischen einem primären Namespace mit einem privaten Endpunkt und einem sekundären Namespace ohne einen privaten Endpunkt zu erstellen, wird die Kopplung nicht durchgeführt. Die Kopplung erfolgt nur, wenn sowohl der primäre als auch der sekundäre Namespace einen privaten Endpunkt aufweist. Wir empfehlen Ihnen, für den primären und den sekundären Namespace sowie für virtuelle Netzwerke, in denen private Endpunkte erstellt werden, die gleichen Konfigurationen zu verwenden. 
+
+> [!NOTE]
+> Wenn Sie versuchen, den primären Namespace mit einem privaten Endpunkt und dem sekundären Namespace zu koppeln, prüft der Überprüfungsprozess lediglich, ob ein privater Endpunkt im sekundären Namespace vorhanden ist. Es wird nicht überprüft, ob der Endpunkt funktioniert oder nach dem Failover ausgeführt wird. Sie selbst müssen sicherstellen, dass der sekundäre Namespace mit dem privaten Endpunkt nach dem Failover erwartungsgemäß funktioniert.
+>
+> Gehen Sie wie folgt vor, um die Konfigurationen des privaten Endpunkts zu testen: Senden Sie von einem Ort außerhalb des virtuellen Netzwerks eine [Get queues](/rest/api/servicebus/queues/get)-Anforderung an den sekundären Namespace, und überprüfen Sie, ob Sie eine Fehlermeldung vom Dienst erhalten.
+
+### <a name="existing-pairings"></a>Vorhandene Kopplungen
+Wenn die Kopplung zwischen dem primären und dem sekundären Namespace bereits vorhanden ist, kann für den primären Namespace kein privater Endpunkt erstellt werden. Erstellen Sie zunächst einen privaten Endpunkt für den sekundären Namespace und dann einen privaten Endpunkt für den primären Endpunkt, um das Problem zu beheben.
+
+> [!NOTE]
+> Für den sekundären Namespace ist nur Lesezugriff möglich. Konfigurationen des privaten Endpunkts können dagegen aktualisiert werden. 
+
+### <a name="recommended-configuration"></a>Empfohlene Konfiguration
+Beim Erstellen einer Konfiguration für die Notfallwiederherstellung Ihrer Anwendung und Service Bus müssen Sie private Endpunkte für primäre und sekundäre Service Bus-Namespaces für die virtuellen Netzwerke erstellen, die primäre und sekundäre Instanzen der Anwendung enthalten.
+
+Angenommen, Sie verfügen über die beiden virtuellen Netzwerke VNET-1 und VNET-2 sowie diesen primären und sekundären Namespace: ServiceBus-Namespace1-Primary, ServiceBus-Namespace2-Secondary. Sie müssen dann die folgenden Schritte ausführen: 
+
+- Erstellen Sie für „ServiceBus-Namespace1-Primary“ zwei private Endpunkte, an denen Subnetze aus VNET-1 und VNET-2 verwendet werden.
+- Erstellen Sie für „ServiceBus-Namespace2-Secondary“ zwei private Endpunkte, an denen dieselben Subnetze aus VNET-1 und VNET-2 verwendet werden. 
+
+![Private Endpunkte und virtuelle Netzwerke](./media/service-bus-geo-dr/private-endpoints-virtual-networks.png)
+
+
+Der Vorteil dieses Ansatzes besteht darin, dass ein Failover auf Anwendungsebene unabhängig vom Service Bus-Namespace erfolgen kann. Betrachten Sie die folgenden Szenarien: 
+
+**Nur Anwendungsfailover:** In diesem Fall ist die Anwendung nicht in VNET-1 vorhanden, wird aber in VNET-2 verschoben. Da beide privaten Endpunkte sowohl in VNET-1 als auch in VNET-2 für primäre und sekundäre Namespaces konfiguriert sind, wird die Anwendung ausgeführt. 
+
+**Nur Failover für Service Bus-Namespaces:** Da auch in diesem Fall beide privaten Endpunkte in beiden virtuellen Netzwerken für primäre und sekundäre Namespaces konfiguriert sind, wird die Anwendung ausgeführt. 
+
+> [!NOTE]
+> Eine Anleitung zur georedundanten Notfallwiederherstellung eines virtuellen Netzwerks finden Sie unter [Virtuelles Netzwerk: Geschäftskontinuität](../virtual-network/virtual-network-disaster-recovery-guidance.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

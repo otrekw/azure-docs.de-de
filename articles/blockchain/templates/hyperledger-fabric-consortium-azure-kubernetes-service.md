@@ -4,12 +4,12 @@ description: Bereitstellen und Konfigurieren eines Hyperledger Fabric-Konsortium
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 2312c002e5c2e0b813f8acbdc3e3bff597f204d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da4ec99f1b9d73ab67a2312094feaa1a89aee394
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476439"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980223"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric-Konsortium auf Azure Kubernetes Service (AKS)
 
@@ -54,7 +54,6 @@ Führen Sie die folgenden Schritte aus, um ein Hyperledger Fabric Blockchain-Net
 
 - [Bereitstellen der Anordner/Peer-Organisation](#deploy-the-ordererpeer-organization)
 - [Erstellen des Konsortiums](#build-the-consortium)
-- [Ausführen nativer HLF-Vorgänge](#run-native-hlf-operations)
 
 ## <a name="deploy-the-ordererpeer-organization"></a>Bereitstellen der Anordner/Peer-Organisation
 
@@ -78,7 +77,7 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um mit der Bereitst
     ![Vorlage „Hyperledger Fabric auf Azure Kubernetes Service“](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
 
 5. Geben Sie die folgenden Details ein:
-    - **Name der Organisation:** Der Name der Fabric-Organisation, die für verschiedene Datenebenenvorgänge erforderlich ist. Der Name der Organisation muss pro Bereitstellung eindeutig sein. 
+    - **Name der Organisation:** Der Name der Fabric-Organisation, die für verschiedene Datenebenenvorgänge erforderlich ist. Der Name der Organisation muss pro Bereitstellung eindeutig sein.
     - **Fabric-Netzwerkkomponente**: Wählen Sie entsprechend der Blockchain-Netzwerkkomponente, die Sie einrichten möchten, entweder „Anordnungsdienst“ oder „Peerknoten“ aus.
     - **Anzahl der Knoten**: Es gibt die beiden folgenden Knotentypen:
         - Anordnungsdienst: Wählen Sie die Anzahl der Knoten aus, um Fehlertoleranz für das Netzwerk bereitzustellen. Als Anzahl für Anordnerknoten werden nur 3, 5 und 7 unterstützt.
@@ -87,7 +86,7 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um mit der Bereitst
     - **Fabric-Benutzername**: Geben Sie den Benutzernamen ein, der für die Fabric CA-Authentifizierung verwendet wird.
     - **Fabric CA-Kennwort**: Geben Sie das Kennwort für die Fabric CA-Authentifizierung ein.
     - **Kennwort bestätigen**: Bestätigen Sie das Fabric CA-Kennwort.
-    - **Zertifikate**: Wenn Sie Ihre eigenen Stammzertifikate verwenden möchten, um die Fabric CA zu initialisieren, wählen Sie die Option „Stammzertifikat für Fabric CA hochladen“ aus. Andernfalls erstellt Fabric CA standardmäßig selbstsignierte Zertifikate.
+    - **Zertifikate**: Wenn Sie Ihre eigenen Stammzertifikate verwenden möchten, um die Fabric CA zu initialisieren, wählen Sie die Option zum Hochladen des Stammzertifikats für Fabric CA aus. Andernfalls erstellt Fabric CA standardmäßig selbstsignierte Zertifikate.
     - **Stammzertifikat**: Laden Sie das Stammzertifikat (öffentlicher Schlüssel) hoch, mit dem Fabric CA initialisiert werden muss. Zertifikate im PEM-Format werden unterstützt. Die Zertifikate müssen in der UTC-Zeitzone gültig sein.
     - **Privater Schlüssel des Stammzertifikats**: Laden Sie den privaten Schlüssel des Stammzertifikats hoch. Wenn Sie ein PEM-Zertifikat haben, in dem sowohl der öffentliche als auch der private Schlüssel kombiniert sind, laden Sie es hier ebenfalls hoch.
 
@@ -116,48 +115,82 @@ Die Bereitstellung dauert in der Regel 10 bis 12 Minuten, kann aber je nach Grö
 
 ## <a name="build-the-consortium"></a>Erstellen des Konsortiums
 
-Um das Blockchain-Konsortium nach dem Bereitstellen des Anordnungsdiensts (Ordering service) und der Peerknoten zu erstellen, müssen Sie die weiter unten aufgeführten Schritte nacheinander ausführen. Sie verwenden das Skript „byn.sh“ (**Build Your Network**), das Sie beim Einrichten des Konsortiums, beim Erstellen eines Kanals und beim Installieren von Chaincode unterstützt.
+Um das Blockchain-Konsortium nach dem Bereitstellen des Anordnungsdiensts (Ordering service) und der Peerknoten zu erstellen, müssen Sie die weiter unten aufgeführten Schritte nacheinander ausführen. Das Azure-HLF-Skript (azhlf) unterstützt Sie beim Einrichten des Konsortiums, beim Erstellen eines Kanals und bei Chaincodevorgängen.
 
 > [!NOTE]
-> Das „Build Your Network“-Skript (byn-Skript) ist ausschließlich für Demo-/DevTest-Szenarien geeignet. Für das Einrichten eines Produktionsumgebung sollten Sie die nativen HLF-APIs verwenden.
+> Im Skript ist ein Update enthalten. Dieses dient dazu, weitere Funktionen zusammen mit dem Azure-HLF-Skript zur Verfügung zu stellen. Wenn Sie auf das alte Skript verweisen möchten, finden Sie [hier](https://github.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/blob/master/consortiumScripts/README.md) weitere Informationen. Dieses Skript ist mit Hyperledger Fabric in der Azure Kubernetes Service-Vorlagenversion 2.0.0 und höheren Versionen kompatibel. Zur Überprüfung der Version der Bereitstellung befolgen Sie die Schritte unter [Problembehandlung](#troubleshoot).
 
-Alle Befehle zum Ausführen des byn-Skripts können über die Bash-Befehlszeilenschnittstelle (Command Line Interface, CLI) von Azure ausgeführt werden. Sie können sich über die Option ![Vorlage „Hyperledger Fabric auf Azure Kubernetes Service“](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) in der oberen rechten Ecke des Azure-Portals bei der Webversion der Azure-Shell anmelden. Geben Sie an der Eingabeaufforderung „bash“ ein, und drücken Sie die Eingabetaste, um zur bash-CLI zu wechseln.
+> [!NOTE]
+> Das bereitgestellte Azure-HLF-Skript (azhlf) dient nur der Unterstützung in Demonstrations- und Dev/Test-Szenarios. Der von diesem Skript erstellte Kanal und das Konsortium verfügen über grundlegende HLF-Richtlinien zur Vereinfachung des Demonstrations- und Dev/Test-Szenarios. Für die Einrichtung in der Produktion wird empfohlen, die HLF-Richtlinien für Kanal/Konsortium mithilfe der nativen HLF-APIs entsprechend den Complianceanforderungen Ihrer Organisation zu aktualisieren.
+
+
+Alle Befehle zum Ausführen des Azure-HLF-Skripts können über die Bash-Befehlszeilenschnittstelle (Command Line Interface, CLI) von Azure ausgeführt werden. Sie können sich über die Option  ![Vorlage „Hyperledger Fabric auf Azure Kubernetes Service“](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) in der oberen rechten Ecke des Azure-Portals bei der Webversion der Azure-Shell anmelden. Geben Sie an der Eingabeaufforderung „bash“ ein, und drücken Sie die Eingabetaste, um zur bash-CLI zu wechseln.
 
 Weitere Informationen finden Sie unter [Übersicht über Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 ![Vorlage „Hyperledger Fabric auf Azure Kubernetes Service“](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
 
-Laden Sie die Dateien „byn.sh“ und „fabric-admin.yaml“ herunter.
+Auf der folgenden Abbildung sehen Sie Schritt für Schritt den Prozess für das Erstellen eines Konsortiums zwischen einer Auftraggeber- und einer Peerorganisation. In den folgenden Abschnitten werden Befehle zum Ausführen dieser Schritte detailliert beschrieben.
+
+![Vorlage „Hyperledger Fabric auf Azure Kubernetes Service“](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
+
+Führen Sie die folgenden Schritte aus, um die Anfangseinrichtung der Clientanwendung vorzunehmen: 
+
+1.  [Herunterladen der Clientanwendungsdateien](#download-client-application-files)
+2.  [Einrichten der Umgebungsvariablen](#setup-environment-variables)
+3.  [Importieren des Organisationsverbindungsprofils, des Administratorbenutzers und des MSP](#import-organization-connection-profile-admin-user-identity-and-msp)
+
+Nach Abschluss der Anfangseinrichtung können Sie die Clientanwendung verwenden, um die folgenden Vorgänge durchzuführen:  
+
+- [Befehle für die Kanalverwaltung](#channel-management-commands)
+- [Befehle für die Konsortiumsverwaltung](#consortium-management-commands)
+- [Befehle für die Chaincode-Verwaltung](#chaincode-management-commands)
+
+### <a name="download-client-application-files"></a>Herunterladen der Clientanwendungsdateien
+
+Der erste Einrichtungsschritt besteht darin, die Clientanwendungsdateien herunterzuladen. Führen Sie den folgenden Befehl aus, um alle erforderlichen Dateien und Pakete herunterzuladen:
 
 ```bash-interactive
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/byn.sh -o byn.sh; chmod 777 byn.sh
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/fabric-admin.yaml -o fabric-admin.yaml
-```
-**Legen Sie die folgenden Umgebungsvariablen für die Azure CLI-Bash-Shell** fest:
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/azhlfToolSetup.sh | bash
+cd azhlfTool
+npm install
+npm run setup
 
-Legen Sie Kanalinformationen sowie Informationen für die Organisation des Anordners (Orderer) fest.
+```
+Diese Befehle klonen Azure-HLF-Clientanwendungscode aus dem öffentlichen GitHub-Repository. Anschließend werden alle abhängigen npm-Pakete geladen. Nach erfolgreicher Ausführung des Befehls sehen Sie den Ordner „node_modules“ im aktuellen Verzeichnis. Alle erforderlichen Pakete werden in den Ordner „node_modules“ geladen.
+
+
+### <a name="setup-environment-variables"></a>Einrichten von Umgebungsvariablen
+
+> [!NOTE]
+> Alle Umgebungsvariablen befolgen die Namenskonvention für Azure-Ressourcen.
+
+
+**Festlegen der untenstehenden Umgebungsvariablen für den Client der Auftraggeberorganisation**
+
 
 ```bash
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-ORDERER_AKS_SUBSCRIPTION=<ordererAKSClusterSubscriptionID>
-ORDERER_AKS_RESOURCE_GROUP=<ordererAKSClusterResourceGroup>
-ORDERER_AKS_NAME=<ordererAKSClusterName>
-ORDERER_DNS_ZONE=$(az aks show --resource-group $ORDERER_AKS_RESOURCE_GROUP --name $ORDERER_AKS_NAME --subscription $ORDERER_AKS_SUBSCRIPTION -o json | jq .addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName | tr -d '"')
-ORDERER_END_POINT="orderer1.$ORDERER_DNS_ZONE:443"
+ORDERER_ORG_SUBSCRIPTION=<ordererOrgSubscription>
+ORDERER_ORG_RESOURCE_GROUP=<ordererOrgResourceGroup>
+ORDERER_ORG_NAME=<ordererOrgName>
+ORDERER_ADMIN_IDENTITY="admin.$ORDERER_ORG_NAME"
 CHANNEL_NAME=<channelName>
 ```
-Legen Sie Informationen für die Peerorganisation fest.
+**Festlegen der untenstehenden Umgebungsvariablen für den Client der Peerorganisation**
 
 ```bash
-PEER_AKS_RESOURCE_GROUP=<peerAKSClusterResourceGroup>
-PEER_AKS_NAME=<peerAKSClusterName>
-PEER_AKS_SUBSCRIPTION=<peerAKSClusterSubscriptionID>
-#Peer organization name is case-sensitive. Specify exactly the same name, which was provided while creating the Peer AKS Cluster.
-PEER_ORG_NAME=<peerOrganizationName>
+PEER_ORG_SUBSCRIPTION=<peerOrgSubscritpion>
+PEER_ORG_RESOURCE_GROUP=<peerOrgResourceGroup>
+PEER_ORG_NAME=<peerOrgName>
+PEER_ADMIN_IDENTITY="admin.$PEER_ORG_NAME"
+CHANNEL_NAME=<channelName>
 ```
 
-Erstellen Sie eine Azure-Dateifreigabe, um verschiedene öffentliche Zertifikate in Peer- und Anordnerorganisation gemeinsam zu nutzen.
+> [!NOTE]
+> Basierend auf der Anzahl der Peerorganisationen in Ihrem Konsortium müssen Sie möglicherweise die Peerbefehle wiederholen und die Umgebungsvariable entsprechend festlegen.
+
+**Festlegen der untenstehenden Umgebungsvariablen für das Einrichten eines Speicherkontos in Azure**
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -165,311 +198,223 @@ STORAGE_RESOURCE_GROUP=<azureFileShareResourceGroup>
 STORAGE_ACCOUNT=<azureStorageAccountName>
 STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
+```
 
+Befolgen Sie die Schritte unten, um ein Speicherkonto in Azure zu erstellen. Wenn Sie bereits ein Speicherkonto in Azure erstellt haben, können Sie diese Schritte überspringen.
+
+```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
 az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
+```
+
+Befolgen Sie die folgenden Schritte, um eine Dateifreigabe in einem Speicherkonto in Azure zu erstellen. Wenn Sie bereits eine Dateifreigabe erstellt haben, können Sie diese Schritte überspringen.
+
+```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
-SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry `date -u -d "1 day" '+%Y-%m-%dT%H:%MZ'` --https-only --permissions lruwd --resource-types sco --services f | tr -d '"')
-AZURE_FILE_CONNECTION_STRING="https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN"
 ```
-**Befehle für die Kanalverwaltung**
 
-Wechseln Sie zum AKS-Cluster der Anordnerorganisation (Orderer-Organisation), und führen Sie den Befehl zum Erstellen eines neuen Kanals aus.
+Befolgen Sie die untenstehenden Schritte, um eine Dateifreigabeverbindungszeichenfolge in Azure zu generieren.
 
 ```bash
-SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
-./byn.sh createChannel "$CHANNEL_NAME"
+STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
+SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry `date -u -d "1 day" '+%Y-%m-%dT%H:%MZ'` --https-only --permissions lruwd --resource-types sco --services f | tr -d '"')
+AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN
+
 ```
 
-**Befehle für die Konsortiumsverwaltung**
+### <a name="import-organization-connection-profile-admin-user-identity-and-msp"></a>Importieren des Organisationsverbindungsprofils, der Identität des Administratorbenutzers und des MSP
+
+Führen Sie die untenstehenden Befehle aus, um das Verbindungsprofil der Organisation, die Identität des Administratorbenutzers und den MSP aus dem Azure Kubernetes-Cluster abzurufen und diese Identitäten im lokalen Speicher der Clientanwendung zu speichern, also im Verzeichnis „azhlfTool/stores“.
+
+Befehle für Auftraggeberorganisationen:
+
+```bash
+./azhlf adminProfile import fromAzure -o $ORDERER_ORG_NAME -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION
+./azhlf connectionProfile import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME   
+./azhlf msp import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME
+```
+
+Befehle für Peerorganisationen:
+
+```bash
+./azhlf adminProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
+./azhlf connectionProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
+./azhlf msp import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
+```
+
+### <a name="channel-management-commands"></a>Befehle für die Kanalverwaltung
+
+> [!NOTE]
+> Bevor Sie mit dem Ausführen von Kanalvorgängen beginnen, stellen Sie sicher, dass die Anfangseinrichtung der Clientanwendung abgeschlossen ist.  
+
+Unten finden Sie die beiden Befehle für die Kanalverwaltung:
+
+1. [Befehl zum Erstellen eines Kanals](#create-channel-command)
+2. [Befehl zum Festlegen der Ankerpeers](#setting-anchor-peers-command)
+
+
+#### <a name="create-channel-command"></a>Befehl zum Erstellen eines Kanals
+
+Wechseln Sie zum Client der Auftraggeberorganisation, und führen Sie den Befehl zum Erstellen eines neuen Kanals aus. Dieser Befehl erstellt einen Kanal, in dem sich nur die Auftraggeberorganisation befindet.  
+
+```bash
+./azhlf channel create -c $CHANNEL_NAME -u $ORDERER_ADMIN_IDENTITY -o $ORDERER_ORG_NAME
+```
+
+#### <a name="setting-anchor-peers-command"></a>Befehl zum Festlegen von Ankerpeers
+Wechseln Sie zum Client der Peerorganisation, und führen Sie den untenstehenden Befehl zum Festlegen der Ankerpeers für die im Kanal angegebene Peerorganisation aus.
+
+>[!NOTE]
+> Bevor Sie diesen Befehl ausführen, vergewissern Sie sich mithilfe von Befehlen für die Konsortiumsverwaltung, dass die Peerorganisation im Kanal hinzugefügt wurde.
+
+```bash
+./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
+```
+
+`<anchorPeersList>` ist eine durch Leerzeichen getrennte Liste von Peerknoten, die als Ankerpeer festgelegt werden sollen. Beispiel:
+
+  - Legen Sie `<anchorPeersList>` als „peer1“ fest, wenn Sie nur den peer1-Knoten als Ankerpeer festlegen möchten.
+  - Legen Sie `<anchorPeersList>` als „peer1“ „peer3“ fest, wenn Sie den peer1- und den peer3-Knoten als Ankerpeer festlegen möchten.
+
+### <a name="consortium-management-commands"></a>Befehle für die Konsortiumsverwaltung
+
+>[!NOTE]
+> Bevor Sie mit dem Ausführen von Konsortiumsvorgängen beginnen, stellen Sie sicher, dass die Anfangseinrichtung der Clientanwendung abgeschlossen ist.  
 
 Führen Sie die folgenden Befehle in der angegebenen Reihenfolge aus, um eine Peerorganisation in einem Kanal und einem Konsortium hinzuzufügen.
+1.  Navigieren Sie zum Client für die Peerorganisation, und laden Sie den MSP für die Peerorganisation in den Speicher in Azure hoch.
 
-1. Wechseln Sie zum AKS-Cluster der Peerorganisation, und laden Sie deren MSP (Member Service Provider) in einen Azure-Dateispeicher hoch.
+      ```bash
+      ./azhlf msp export toAzureStorage -f  $AZURE_FILE_CONNECTION_STRING -o $PEER_ORG_NAME
+      ```
+2.  Navigieren Sie zum Client der Auftraggeberorganisation, und laden Sie den MSP für die Peerorganisation in den Speicher in Azure hoch. Führen Sie dann den Befehl aus, um die Peerorganisation im Kanal/Konsortium hinzuzufügen.
 
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-    ./byn.sh uploadOrgMSP "$AZURE_FILE_CONNECTION_STRING"
-    ```
+      ```bash
+      ./azhlf msp import fromAzureStorage -o $PEER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ./azhlf channel join -c  $CHANNEL_NAME -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
+      ./azhlf consortium join -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
+      ```
 
-2. Wechseln Sie zum AKS-Cluster der Anordnerorganisation, und fügen Sie die Peerorganisation im Kanal und im Konsortium hinzu.
+3.  Laden Sie auf dem Client für die Auftraggeberorganisation die Verbindungsprofile des Auftraggebers in den Speicher in Azure hoch, sodass die Peerorganisation mithilfe dieses Verbindungsprofils eine Verbindung zu den Auftraggeberknoten herstellen kann.
 
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
-    #add peer in consortium
-    ./byn.sh addPeerInConsortium "$PEER_ORG_NAME" "$AZURE_FILE_CONNECTION_STRING"
-    #add peer in channel
-    ./byn.sh addPeerInChannel "$PEER_ORG_NAME" "$CHANNEL_NAME" "$AZURE_FILE_CONNECTION_STRING"
-    ```
+      ```bash
+      ./azhlf connectionProfile  export toAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ```
 
-3. Wechseln Sie zurück zur Peerorganisation, und führen Sie den Befehl aus, mit dem die Peerknoten im Kanal verknüpft werden.
+4.  Navigieren Sie zum Client für die Peerorganisation, laden Sie das Verbindungsprofil des Auftraggebers aus dem Speicher in Azure herunter, und führen Sie dann den Befehl aus, um Peerknoten im Kanal hinzuzufügen.
 
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-    ./byn.sh joinNodesInChannel "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-    ```
+      ```bash
+      ./azhlf connectionProfile  import fromAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ./azhlf channel joinPeerNodes -o $PEER_ORG_NAME  -u $PEER_ADMIN_IDENTITY -c $CHANNEL_NAME --ordererOrg $ORDERER_ORG_NAME
+      ```
 
-Wenn Sie weitere Peerorganisationen im Kanal hinzufügen möchten, aktualisieren Sie die Peer-AKS-Umgebungsvariablen entsprechend der erforderlichen Peerorganisation, und führen Sie die Schritte 1 bis 3 aus.
+Wenn Sie weitere Peerorganisationen im Kanal hinzufügen möchten, aktualisieren Sie die Peerumgebungsvariablen entsprechend der erforderlichen Peerorganisation, und führen Sie die Schritte 1 bis 4 aus.
 
-**Befehle für die Chaincode-Verwaltung**
 
-Führen Sie den folgenden Befehl aus, um den chaincodebezogenen Vorgang durchzuführen. Dieser Befehl führt alle Vorgänge für einen Demo-Chaincode aus. Dieser Demo-Chaincode hat die beiden Variablen „a“ und „b“. Bei der Instanziierung des Chaincodes wird „a“ mit 1000 und „b“ mit 2000 initialisiert. Bei jedem Aufruf des Chaincodes werden 10 Einheiten von „a“ nach „b“ übertragen. Eine Abfrage des Chaincodes gibt den Weltzustand von Variable „a“ zurück.
+### <a name="chaincode-management-commands"></a>Befehle für die Chaincodeverwaltung
 
-Führen Sie den folgenden Befehl für den AKS-Cluster der Peerorganisation aus.
+>[!NOTE]
+> Bevor Sie mit dem Ausführen von Chaincodevorgängen beginnen, stellen Sie sicher, dass die Anfangseinrichtung der Clientanwendung abgeschlossen ist.  
 
-```bash
-# switch to peer organization AKS cluster. Skip this command if already connected to the required Peer AKS Cluster
-SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-```
-**Chaincode-Vorgangsbefehle**
+**Festlegen der untenstehenden für den Chaincode spezifischen Umgebungsvariablen**
 
 ```bash
-PEER_NODE_NAME="peer<peer#>"
-./byn.sh installDemoChaincode "$PEER_NODE_NAME"
-./byn.sh instantiateDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-./byn.sh invokeDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-./byn.sh queryDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME"
-```
-
-## <a name="run-native-hlf-operations"></a>Ausführen nativer HLF-Vorgänge
-
-Kunden sollen dabei unterstützt werden, native Hyperledger-Befehle im HLF-Netzwerk auf AKS auszuführen. In der bereitgestellten Beispielanwendung wird das Fabric Node.js SDK verwendet, um die HLF-Vorgänge auszuführen. Mit den bereitgestellten Befehlen können Sie eine neue Benutzeridentität erstellen und Ihren eigenen Chaincode installieren.
-
-### <a name="before-you-begin"></a>Voraussetzungen
-
-Führen Sie die folgenden Schritte aus, um die Anfangseinrichtung der Anwendung vorzunehmen:
-
-- Herunterladen der Anwendungsdateien
-- Generieren des Verbindungsprofils und des Administratorprofils
-- Importieren der Identität des Administratorbenutzers
-
-Nach Abschluss der Anfangseinrichtung können Sie das SDK verwenden, um die folgenden Vorgänge durchzuführen:
-
-- Generieren der Benutzeridentität
-- Chaincode-Vorgänge
-
-Die oben aufgeführten Befehle können aus Azure Cloud Shell ausgeführt werden.
-
-### <a name="download-application-files"></a>Herunterladen der Anwendungsdateien
-
-Der erste Schritt für eine Ausführen der Anwendung besteht darin, alle Anwendungsdateien in einen Ordner herunterzuladen.
-
-**Erstellen Sie den Ordner „app“, und wechseln Sie in diesen Ordner**:
-
-```bash
-mkdir app
-cd app
-```
-Führen Sie den folgenden Befehl aus, um alle erforderlichen Dateien und Pakete herunterzuladen:
-
-```bash-interactive
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/application/setup.sh | bash
-```
-Dieser Befehl benötigt einige Zeit, um alle Pakete zu laden. Nach erfolgreicher Ausführung des Befehls sehen Sie den Ordner `node_modules` im aktuellen Verzeichnis. Alle erforderlichen Pakete wurden in den Ordner `node_modules` geladen.
-
-### <a name="generate-connection-profile-and-admin-profile"></a>Generieren des Verbindungsprofils und des Administratorprofils
-
-Erstellen Sie das Verzeichnis `profile` im Ordner `app`.
-
-```bash
-cd app
-mkdir ./profile
-```
-Legen Sie diese Umgebungsvariablen für Azure Cloud Shell fest.
-
-```bash
-# Organization name whose connection profile is to be generated
-ORGNAME=<orgname>
-# Organization AKS cluster resource group
-AKS_RESOURCE_GROUP=<resourceGroup>
-```
-
-Führen Sie den folgenden Befehl aus, um das Verbindungsprofil und das Administratorprofil der Organisation zu generieren.
-
-```bash
-./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/gateway/g"| xargs curl > ./profile/$ORGNAME-ccp.json
-./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/admin/g"| xargs curl > ./profile/$ORGNAME-admin.json
-```
-
-Der Befehl erstellt das Verbindungsprofil und das Administrator`profile` der Organisation im Profilordner `<orgname>-ccp.json` bzw. `<orgname>-admin.json`.
-
-Generieren Sie auf gleiche Weise das Verbindungsprofil und das Administratorprofil für jede Anordner- und Peerorganisation.
-
-
-### <a name="import-admin-user-identity"></a>Importieren der Identität des Administratorbenutzers
-
-Der letzte Schritt besteht darin, die Administratorbenutzeridentität der Organisation in das Wallet zu importieren.
-
-```bash
-npm run importAdmin -- -o <orgName>
-
-```
-Der obige Befehl führt „importAdmin.js“ aus, um die Administratorbenutzeridentität in das Wallet zu importieren. Das Skript liest die Administratoridentität aus dem Administratorprofil `<orgname>-admin.json` und importiert sie in das Wallet zum Ausführen von HLF-Vorgängen.
-
-Im Skript wird das Dateisystem-Wallet verwendet, um die Identitäten zu speichern. Es erstellt ein Wallet gemäß dem Pfad, der im Verbindungsprofil im Feld „.wallet“ angegeben ist. Standardmäßig wird das Feld „.wallet“ mit `<orgname>` initialisiert. Dies bedeutet, dass ein Ordner namens `<orgname>` im aktuellen Verzeichnis erstellt wird, um die Identitäten zu speichern. Wenn Sie das Wallet in einem anderen Ordner erstellen möchten, ändern Sie das Feld „.wallet“ im Verbindungsprofil, bevor Sie das Registrieren des Administratorbenutzers und andere HLF-Vorgänge ausführen.
-
-Importieren Sie auf gleiche Weise die Administratorbenutzeridentität für jede Organisation.
-
-Weitere Informationen zu den Argumenten, die an den Befehl übergeben werden, finden Sie in der Hilfe zum Befehl.
-
-```bash
-npm run importAdmin -- -h
-
-```
-
-### <a name="user-identity-generation"></a>Generieren der Benutzeridentität
-
-Führen Sie die folgenden Befehle in der angegebenen Reihenfolge aus, um neue Benutzeridentitäten für die HLF-Organisation zu generieren.
-
-> [!NOTE]
-> Bevor Sie mit den Schritten zur Generierung der Benutzeridentitäten beginnen, stellen Sie sicher, dass die Anfangseinrichtung der Anwendung abgeschlossen ist.
-
-Legen Sie die folgenden Umgebungsvariablen für Azure Cloud Shell fest.
-
-```bash
-# Organization name for which user identity is to be generated
-ORGNAME=<orgname>
-# Name of new user identity. Identity will be registered with the Fabric-CA using this name.
-USER_IDENTITY=<username>
-
-```
-
-Registrieren eines neuen Benutzers
-
-Um einen neuen Benutzer zu registrieren, führen Sie den folgenden Befehl aus, mit dem „registerUser.js“ ausgeführt wird. Der Befehl speichert die generierte Benutzeridentität im Wallet.
-
-```bash
-npm run registerUser -- -o $ORGNAME -u $USER_IDENTITY
-
-```
-
-> [!NOTE]
-> Für das Ausführen des Registrierungsbefehls wird die Identität eines Administratorbenutzers verwendet. Daher muss sich die Administratorbenutzeridentität bereits im Wallet befinden, bevor dieser Befehl ausgeführt wird. Andernfalls kann der Befehl nicht erfolgreich ausgeführt werden.
-
-Weitere Informationen zu den Argumenten, die an den Befehl übergeben werden, finden Sie in der Hilfe zum Befehl.
-
-```bash
-npm run registerUser -- -h
-
-```
-
-### <a name="chaincode-operations"></a>Chaincode-Vorgänge
-
-
-> [!NOTE]
-> Bevor Sie mit dem Ausführen von Chaincode-Vorgängen beginnen, stellen Sie sicher, dass die Anfangseinrichtung der Anwendung abgeschlossen ist.
-
-Legen Sie die folgenden chaincodespezifischen Umgebungsvariablen für Azure Cloud Shell fest:
-
-```bash
-# peer organization name where chaincode is to be installed
-ORGNAME=<orgName>
-USER_IDENTITY="admin.$ORGNAME"
-CC_NAME=<chaincodeName>
+# peer organization name where chaincode operation is to be performed
+ORGNAME=<PeerOrgName>
+USER_IDENTITY="admin.$ORGNAME"  
+# If you are using chaincode_example02 then set CC_NAME=“chaincode_example02”
+CC_NAME=<chaincodeName>  
+# If you are using chaincode_example02 then set CC_VERSION=“1” for validation
 CC_VERSION=<chaincodeVersion>
-# Language in which chaincode is written. Supported languages are 'node', 'golang' and 'java'
-# Default value is 'golang'
-CC_LANG=<chaincodeLanguage>
-# CC_PATH contains the path where your chaincode is place. In case of go chaincode, this path is relative to 'GOPATH'.
-# For example, if your chaincode is present at path '/opt/gopath/src/chaincode/chaincode.go'.
-# Then, set GOPATH to '/opt/gopath' and CC_PATH to 'chaincode'
-CC_PATH=<chaincodePath>
-# 'GOPATH' environment variable. This needs to be set in case of go chaincode only.
-export GOPATH=<goPath>
-# Channel on which chaincode is to be instantiated/invoked/queried
-CHANNEL=<channelName>
-
-````
-
-Die folgenden Chaincode-Vorgänge können ausgeführt werden:
-
-- Installieren von Chaincode
-- Instanziieren von Chaincode
-- Aufrufen von Chaincode
-- Abfragen von Chaincode
-
-### <a name="install-chaincode"></a>Installieren von Chaincode
-
-Führen Sie den folgenden Befehl aus, um Chaincode in der Peerorganisation zu installieren.
-
-```bash
-npm run installCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION
-
-```
-Dieser Befehl installiert Chaincode auf allen Peerknoten der Organisation, die in der Umgebungsvariablen `ORGNAME` festgelegt sind. Gibt es in Ihrem Kanal mehrere Peerorganisationen, und möchten Sie Chaincode auf jedem dieser Kanäle installieren, führen Sie die Befehle für jede Peerorganisation separat aus.
-
-Führen Sie diese Schritte aus:
-
-- Legen Sie `ORGNAME` auf `<peerOrg1Name>` fest, und führen Sie den Befehl `installCC` aus.
-- Legen Sie `ORGNAME` auf `<peerOrg2Name>` fest, und führen Sie den Befehl `installCC` aus.
-
-  Gehen Sie für jede Peerorganisation so vor.
-
-Weitere Informationen zu den Argumenten, die an den Befehl übergeben werden, finden Sie in der Hilfe zum Befehl.
-
-```bash
-npm run installCC -- -h
-
+# Language in which chaincode is written. Supported languages are 'node', 'golang' and 'java'  
+# Default value is 'golang'  
+CC_LANG=<chaincodeLanguage>  
+# CC_PATH contains the path where your chaincode is place.
+# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/chaincode/src/chaincode_example02/go”
+CC_PATH=<chaincodePath>  
+# Channel on which chaincode is to be instantiated/invoked/queried  
+CHANNEL_NAME=<channelName>  
 ```
 
-### <a name="instantiate-chaincode"></a>Instanziieren von Chaincode
+Die folgenden Chaincode-Vorgänge können ausgeführt werden:  
 
-Führen Sie den folgenden Befehl aus, um Chaincode auf dem Peer zu instanziieren.
+- [Installieren von Chaincode](#install-chaincode)  
+- [Instanziieren von Chaincode](#instantiate-chaincode)  
+- [Aufrufen von Chaincode](#invoke-chaincode)
+- [Abfragen von Chaincode](#query-chaincode)
+
+
+### <a name="install-chaincode"></a>Installieren von Chaincode  
+
+Führen Sie den folgenden Befehl aus, um Chaincode in der Peerorganisation zu installieren.  
 
 ```bash
-npm run instantiateCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL -f <instantiateFunc> -a <instantiateFuncArgs>
+./azhlf chaincode install -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION  
 
 ```
-Übergeben Sie den Namen der Instanziierungsfunktion und die Liste der Argumente (mit Kommas als Trennzeichen) in `<instantiateFunc>` bzw. `<instantiateFuncArgs>`. Möchten Sie z. B. in [fabrcar-Chaincode](https://github.com/hyperledger/fabric-samples/blob/release/chaincode/fabcar/fabcar.go) den Chaincode instanziieren, legen Sie `<instantiateFunc>` auf `"Init"` und `<instantiateFuncArgs>` auf eine leere Zeichenfolge `""` fest.
+Dieser Befehl installiert Chaincode auf allen Peerknoten der Peerorganisation, die in der Umgebungsvariablen ORGNAME festgelegt sind. Gibt es in Ihrem Kanal mindestens zwei Peerorganisationen, und möchten Sie Chaincode auf jedem dieser Kanäle installieren, führen Sie die Befehle für jede Peerorganisation separat aus.  
+
+Führen Sie diese Schritte aus:  
+
+1.  Legen Sie `ORGNAME` und `USER_IDENTITY` als peerOrg1 fest, und führen Sie den Befehl `./azhlf chaincode install` aus.  
+2.  Legen Sie `ORGNAME` und `USER_IDENTITY` als peerOrg2 fest, und führen Sie den Befehl `./azhlf chaincode install` aus.  
+
+### <a name="instantiate-chaincode"></a>Instanziieren von Chaincode  
+
+Navigieren Sie zur Peerclientanwendung, und führen Sie den untenstehenden Befehl aus, um Chaincode auf dem Kanal zu instanziieren.  
+
+```bash
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+```
+Übergeben Sie den Namen der Instanziierungsfunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen in `<instantiateFunc>` bzw. `<instantiateFuncArgs>`. Möchten Sie z. B. im Chaincode „chaincode_example02.go“ den Chaincode instanziieren, legen Sie `<instantiateFunc>` auf `init` und `<instantiateFuncArgs>` auf „a“ „2000“ „b“ „1000“ fest.
 
 > [!NOTE]
-> Führen Sie den Befehl jeweils ein Mal aus jeder Peerorganisation im Kanal aus.
-> Sobald die Transaktion erfolgreich an den Anordner (Orderer) übermittelt wurde, verteilt der Anordner diese Transaktion an alle Peerorganisationen im Kanal. Somit wird der Chaincode auf allen Peerknoten in allen Peerorganisationen im Kanal instanziiert.
+> Führen Sie den Befehl jeweils ein Mal aus jeder Peerorganisation im Kanal aus. Sobald die Transaktion erfolgreich an den Anordner (Orderer) übermittelt wurde, verteilt der Anordner diese Transaktion an alle Peerorganisationen im Kanal. Somit wird der Chaincode auf allen Peerknoten in allen Peerorganisationen im Kanal instanziiert.  
 
-Weitere Informationen zu den Argumenten, die an den Befehl übergeben werden, finden Sie in der Hilfe zum Befehl.
+
+### <a name="invoke-chaincode"></a>Aufrufen von Chaincode  
+
+Navigieren Sie zum Peerorganisationsclient, und führen Sie den folgenden Befehl aus, um die Chaincodefunktion aufzurufen:  
 
 ```bash
-npm run instantiateCC -- -h
-
+./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
-### <a name="invoke-chaincode"></a>Aufrufen von Chaincode
+Übergeben Sie den Namen der Aufruffunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen in  `<invokeFunction>`  bzw.  `<invokeFuncArgs>` . Fahren Sie mit dem Chaincodebeispiel „chaincode_example02.go“ fort, und legen Sie  `<invokeFunction>`  auf  `invoke`  und  `<invokeFuncArgs>`  auf „a“ „b“ „10“ fest, um einen Aufrufvorgang auszuführen.  
 
-Führen Sie den folgenden Befehl aus, um die Chaincode-Funktion aufzurufen:
+>[!NOTE]
+> Führen Sie den Befehl jeweils ein Mal aus jeder Peerorganisation im Kanal aus. Sobald die Transaktion erfolgreich an den Anordner (Orderer) übermittelt wurde, verteilt der Anordner diese Transaktion an alle Peerorganisationen im Kanal. Daher wird der Weltzustand (World State) auf allen Peerknoten aller Peerorganisationen im Kanal aktualisiert.  
+
+
+### <a name="query-chaincode"></a>Abfragen von Chaincode  
+
+Führen Sie den folgenden Befehl aus, um Chaincode abzufragen:  
 
 ```bash
-npm run invokeCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <invokeFunc> -a <invokeFuncArgs>
-
+./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
 ```
-Übergeben Sie den Namen der Aufruffunktion und die Liste der Argumente (mit Kommas als Trennzeichen) in `<invokeFunction>` bzw. `<invokeFuncArgs>`. Für das fabcar-Chaincode-Beispiel heißt das, dass Sie `<invokeFunction>` auf `"initLedger"` und `<invokeFuncArgs>` auf `""` festlegen, damit die Funktion „initLedger“ aufgerufen wird.
+Übergeben Sie den Namen der Abfragefunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen in  `<queryFunction>`  bzw.  `<queryFuncArgs>` . Wenn nun wieder der Chaincode „chaincode_example02.go“ als Referenz verwendet wird, müssten Sie  `<queryFunction>`  auf  `query` und  `<queryArgs>` auf „a“ festlegen, um den Wert von „a“ in World State abzufragen.  
 
-> [!NOTE]
-> Führen Sie den Befehl jeweils ein Mal aus jeder Peerorganisation im Kanal aus.
-> Sobald die Transaktion erfolgreich an den Anordner (Orderer) übermittelt wurde, verteilt der Anordner diese Transaktion an alle Peerorganisationen im Kanal. Daher wird der Weltzustand (World State) auf allen Peerknoten aller Peerorganisationen im Kanal aktualisiert.
+## <a name="troubleshoot"></a>Problembehandlung
 
-Weitere Informationen zu den Argumenten, die an den Befehl übergeben werden, finden Sie in der Hilfe zum Befehl.
+**So überprüfen Sie die Version der ausgeführten Vorlage:**
+
+Führen Sie die untenstehenden Befehle aus, um die Version Ihrer Vorlagenbereitstellung zu ermitteln.
+
+Legen Sie die untenstehenden Umgebungsvariablen entsprechend der Ressourcengruppe fest, in der die Vorlage jeweils bereitgestellt wurde.
 
 ```bash
-npm run invokeCC -- -h
 
+SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
+AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
+AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
+AKS_CLUSTER_NAME=<AKSClusterName>
 ```
-
-### <a name="query-chaincode"></a>Abfragen von Chaincode
-
-Führen Sie den folgenden Befehl aus, um Chaincode abzufragen:
-
+Führen Sie den untenstehenden Befehl aus, um die Vorlagenversion zu drucken.
 ```bash
-npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <queryFunction> -a <queryFuncArgs>
-
-```
-
-Übergeben Sie den Namen der Abfragefunktion und die Liste der Argumente (mit Kommas als Trennzeichen) in `<queryFunction>` bzw. `<queryFuncArgs>`. Nutzen Sie den `fabcar`-Chaincode nochmals als Referenz, und legen Sie `<queryFunction>` auf `"queryAllCars"` und `<queryArgs>` auf `""` fest, um alle Autos im Weltzustand abzufragen.
-
-Weitere Informationen zu den Argumenten, die an den Befehl übergeben werden, finden Sie in der Hilfe zum Befehl.
-
-```bash
-npm run queryCC -- -h
+SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
+kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 ```

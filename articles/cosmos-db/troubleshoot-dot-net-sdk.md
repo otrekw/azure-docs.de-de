@@ -1,21 +1,28 @@
 ---
 title: Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB
 description: Verwenden Sie Features wie clientseitige Protokollierung und andere Tools von Drittanbietern, um bei Verwenden des .NET SDK Probleme im Zusammenhang mit Azure Cosmos DB zu erkennen, zu diagnostizieren und zu beheben.
-author: j82w
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 03/11/2020
-ms.author: jawilley
+ms.date: 05/06/2020
+ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e015c1ee335cbdfed7964d63b1f4600bc6a4cb77
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 55c462795b29cd678a5fd7816211bce720d554e1
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208736"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170357"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB
+
+> [!div class="op_single_selector"]
+> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Asynchrones Java SDK v2](troubleshoot-java-async-sdk.md)
+> * [.NET](troubleshoot-dot-net-sdk.md)
+> 
+
 Dieser Artikel behandelt allgemeine Probleme, Problemumgehungen, Diagnoseschritte und Tools bei der Verwendung des [.NET SDK](sql-api-sdk-dotnet.md) mit Azure Cosmos DB-SQL-API-Konten.
 Das .NET SDK bietet eine clientseitige logische Darstellung für den Zugriff auf die Azure Cosmos DB-SQL-API. Dieser Artikel beschreibt hilfreiche Tools und Vorgehensweisen für Problemfälle.
 
@@ -87,7 +94,7 @@ Wenn Ihre App auf einem [virtuellen Azure-Computer ohne öffentliche IP-Adresse]
 * Fügen Sie Ihren Azure Cosmos DB-Dienstendpunkt dem Subnetz Ihres virtuellen Netzwerks von Azure Virtual Machines hinzu. Weitere Informationen finden Sie unter [Azure Virtual Network-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
     Wenn der Dienstendpunkt aktiviert ist, werden die Anforderungen nicht mehr von einer öffentlichen IP-Adresse an Azure Cosmos DB gesendet. Stattdessen wird die Identität des virtuellen Netzwerks und des Subnetzes gesendet. Diese Änderung kann zu Firewallproblemen führen, wenn nur öffentliche IP-Adressen zulässig sind. Wenn Sie eine Firewall verwenden und den Dienstendpunkt aktivieren, fügen Sie der Firewall mithilfe von [VNET-ACLs](../virtual-network/virtual-networks-acl.md) ein Subnetz hinzu.
-* Weisen Sie Ihrem [virtuellen Azure-Computer eine öffentliche IP-Adresse](../load-balancer/load-balancer-outbound-connections.md#assignilpip) zu.
+* Weisen Sie Ihrem [virtuellen Azure-Computer eine öffentliche IP-Adresse](../load-balancer/troubleshoot-outbound-connection.md#assignilpip) zu.
 
 ### <a name="http-proxy"></a>HTTP-Proxy
 Wenn Sie einen HTTP-Proxy verwenden, vergewissern Sie sich, dass er die Anzahl von Verbindungen unterstützt, die in `ConnectionPolicy` des SDK konfiguriert ist.
@@ -102,7 +109,7 @@ Anhand der [Metriken zu Abfragen](sql-api-query-metrics.md) können Sie bestimme
 * Wenn die Back-End-Abfrage langsam ist, versuchen Sie, [die Abfrage zu optimieren](optimize-cost-queries.md), und sehen Sie sich die aktuelle [Indexierungsrichtlinie](index-overview.md) an. 
 
 ### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401: Die in der HTTP-Anforderung gefundene MAC-Signatur entspricht nicht der berechneten Signatur
-Die 401-Fehlermeldung „Die in der HTTP-Anforderung gefundene MAC-Signatur entspricht nicht der berechneten Signatur.“ kann durch die folgenden Szenarien verursacht werden.
+Wenn Sie die folgende 401-Fehlermeldung erhalten haben: „Die in der HTTP-Anforderung gefundene MAC-Signatur entspricht nicht der berechneten Signatur.“ kann durch die folgenden Szenarien verursacht werden.
 
 1. Der Schlüssel wurde rotiert und entsprach nicht den [bewährten Methoden](secure-access-to-data.md#key-rotation). Dies ist normalerweise der Fall. Abhängig von der Größe des Cosmos DB-Kontos kann die Schlüsselrotation für das Cosmos DB-Konto nur wenige Sekunden bis möglicherweise Tage dauern.
    1. Die 401-MAC-Signatur wird kurz nach der Schlüsselrotation angezeigt und schließlich ohne Änderungen angehalten. 
@@ -111,7 +118,7 @@ Die 401-Fehlermeldung „Die in der HTTP-Anforderung gefundene MAC-Signatur ents
 3. Es liegt eine Racebedingung bei der Containererstellung vor. Eine Anwendungsinstanz versucht, auf den Container zuzugreifen, bevor die Containererstellung abgeschlossen ist. Dies ist das häufigste Szenario, wenn die Anwendung ausgeführt wird und der Container gelöscht und mit demselben Namen neu erstellt wird, während die Anwendung ausgeführt wird. Das SDK versucht, den neuen Container zu verwenden, aber die Containererstellung wird noch ausgeführt, sodass die Schlüssel noch nicht verfügbar sind.
    1. Das Problem mit der 401-MAC-Signatur tritt kurz nach der Erstellung eines Containers auf und besteht nur, bis die Containererstellung abgeschlossen ist.
  
- ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP-Statuscode 400: Die Anforderungsheader sind zu lang.
+ ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP-Fehler 400. Die Anforderungsheader sind zu lang.
  Der Header ist zu groß geworden und überschreitet die maximal zulässige Größe. Es wird immer empfohlen, das aktuelle SDK zu verwenden. Stellen Sie sicher, dass Sie mindestens Version [3.x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) oder [2.x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md) verwenden. In dieser Version wird der Ausnahmemeldung die Verfolgung der Headergröße hinzugefügt.
 
 Ursachen:

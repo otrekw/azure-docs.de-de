@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846841"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Übersicht über DNS-Zonen und -Einträge
 
@@ -130,7 +130,7 @@ Auf der Ebene der REST-API von Azure DNS werden ETags mithilfe von HTTP-Headern 
 | Header | Verhalten |
 | --- | --- |
 | Keine |PUT ist immer erfolgreich (keine Etag-Prüfung) |
-| If-match \<Etag> |PUT ist nur erfolgreich, wenn die Ressource vorhanden ist und das Etag übereinstimmt. |
+| If-match \<etag> |PUT ist nur erfolgreich, wenn die Ressource vorhanden ist und das Etag übereinstimmt. |
 | If-match * |PUT ist nur erfolgreich, wenn eine Ressource vorhanden ist. |
 | If-none-match * |PUT ist nur erfolgreich, wenn die Ressource nicht vorhanden ist. |
 

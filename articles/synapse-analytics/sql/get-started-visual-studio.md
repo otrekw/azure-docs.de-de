@@ -5,16 +5,16 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5e725df5c875f23d82da1fda19bcdf28db548fc8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3f98a9d6dd79ba1da1a3be1e9e187ed4e8eca8ee
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426626"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962985"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Herstellen einer Verbindung mit Synapse SQL mit Visual Studio und SSDT
 > [!div class="op_single_selector"]
@@ -28,20 +28,19 @@ ms.locfileid: "81426626"
 
 Verwenden Sie Visual Studio zur Abfrage des SQL-Pools mit Azure Synapse Analytics. Bei dieser Methode wird die SSDT-Erweiterung (SQL Server Data Tools) in Visual Studio 2019 verwendet. 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>Unterstützte Tools für SQL On-Demand (Vorschauversion)
-
-Visual Studio wird derzeit nicht für SQL On-Demand (Vorschauversion) unterstützt. Azure Data Studio (Vorschauversion) ist jedoch ein vollständig unterstütztes Tool. SQL Server Management Studio wird ab Version 18.4 teilweise unterstützt und verfügt über eingeschränkte Features wie das Herstellen von Verbindungen und das Stellen von Abfragen.
+> [!NOTE]
+> SQL On-Demand (Vorschau) wird von SSDT nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie benötigen die folgenden Komponenten, um dieses Tutorial verwenden zu können:
 
 * Einen vorhandenen SQL-Pool. Wenn Sie keinen besitzen, finden Sie weitere Informationen zum Erfüllen dieser Voraussetzungen unter [Erstellen eines SQL-Pools](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 * SSDT für Visual Studio. Wenn Sie über Visual Studio verfügen, ist diese Komponente darin wahrscheinlich bereits enthalten. Installationshinweise und -optionen finden Sie unter [Installieren von Visual Studio und SSDT](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-* Den vollqualifizierten SQL-Servernamen. Diesen finden Sie unter [Herstellen einer Verbindung mit dem SQL-Pool](connect-overview.md).
+* Den vollqualifizierten SQL-Servernamen. Informationen darüber, wie Sie diesen Servernamen finden, finden Sie unter [Herstellen einer Verbindung mit Synapse SQL](connect-overview.md).
 
 ## <a name="1-connect-to-sql-pool"></a>1. Herstellen einer Verbindung mit dem SQL-Pool
 1. Öffnen Sie Visual Studio 2019.
-2. Öffnen Sie den SQL Server-Objekt-Explorer. Wählen Sie zu diesem Zweck **Ansicht** > **SQL Server-Objekt-Explorer** aus.
+2. Öffnen Sie den SQL Server-Objekt-Explorer durch Klicken auf **Anzeigen** > **SQL Server-Objekt-Explorer**.
    
     ![SQL Server-Objekt-Explorer](./media/get-started-visual-studio/open-ssdt.png)
 3. Klicken Sie auf das Symbol **SQL Server hinzufügen** .
@@ -71,7 +70,7 @@ Nachdem jetzt eine Verbindung mit Ihrer Datenbank hergestellt wurde, schreiben S
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Führen Sie die Abfrage aus. Zu diesem Zweck klicken Sie auf den grünen Pfeil oder verwenden die folgende Tastenkombination: `CTRL`+`SHIFT`+`E`.
+4. Führen Sie die Abfrage aus, indem Sie auf den grünen Pfeil klicken oder die folgende Tastenkombination drücken: `CTRL`+`SHIFT`+`E`.
    
     ![Abfrage ausführen](./media/get-started-visual-studio/run-query.png)
 5. Sehen Sie sich die Abfrageergebnisse an. In diesem Beispiel weist die Tabelle „FactInternetSales“ 60398 Zeilen auf.

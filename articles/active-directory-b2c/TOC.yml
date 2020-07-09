@@ -36,6 +36,9 @@
           href: tutorial-desktop-app.md
         - name: Einseitig
           href: tutorial-single-page-app.md
+        - name: Python
+          href: tutorial-web-app-python.md
+          displayName: flask
     - name: Gewähren des API-Zugriffs
       items:
         - name: ASP.NET
@@ -87,11 +90,11 @@
         - name: Registrieren eines SAML-Dienstanbieters
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
-        - name: Registrieren einer Graph-Anwendung
+        - name: "Registrieren einer Microsoft\_Graph-Anwendung"
           href: microsoft-graph-get-started.md
           displayName: 'migrate, migration, microsoft graph'
         - name: Hinzufügen einer Web-API-Anwendung
-          href: add-web-application.md
+          href: add-web-api-application.md
         - name: Hinzufügen einer nativen Clientanwendung
           href: add-native-application.md
         - name: iOS ObjC mit App-Authentifizierung
@@ -188,8 +191,12 @@
               displayName: 'ux, input, cors, html, css'
             - name: Anpassen der Sprache
               href: custom-policy-localization.md
-            - name: Benutzerdefinierte E-Mail
-              href: custom-email.md
+            - name: Benutzerdefinierte E-Mail-Überprüfung
+              items:
+                - name: Mailjet
+                  href: custom-email-mailjet.md
+                - name: SendGrid
+                  href: custom-email-sendgrid.md
               displayName: verification
             - name: Deaktivieren der E-Mail-Überprüfung
               href: custom-policy-disable-email-verification.md
@@ -322,6 +329,8 @@
                     - name: Azure Multi-Factor Authentication
                       href: multi-factor-auth-technical-profile.md
                       displayName: mfa
+                    - name: Azure AD-Self-Service-Kennwortzurücksetzung
+                      href: aad-sspr-technical-profile.md
                     - name: Transformation von Ansprüchen
                       href: claims-transformation-technical-profile.md
                     - name: JWT-Tokenaussteller
@@ -354,6 +363,22 @@
               href: relyingparty.md
             - name: Anspruchskonfliktlöser
               href: claim-resolver-overview.md
+    - name: Partnerintegration
+      items:
+        - name: Azure AD B2C-Partnerkatalog
+          href: partner-gallery.md
+        - name: Arkose Labs
+          href: partner-arkose-labs.md
+        - name: IDology
+          href: partner-idology.md
+        - name: itsme
+          href: partner-itsme.md
+        - name: Trusona
+          href: partner-trusona.md
+        - name: Twilio
+          href: partner-twilio.md
+        - name: TypingDNA
+          href: partner-typingdna.md
     - name: Verwenden von b2clogin.com
       items:
         - name: Übersicht über b2clogin.com
@@ -397,6 +422,8 @@
           href: user-migration.md
 - name: Verweis
   items:
+    - name: App-Registrierungen
+      href: app-registrations-training-guide.md
     - name: Abrechnungsmodell
       href: billing.md
     - name: Codebeispiele

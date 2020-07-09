@@ -3,12 +3,13 @@ title: Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung
 description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus einem Wiederherstellungspunkt für virtuelle Azure-Computer wiederherstellen.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: references_regions
+ms.openlocfilehash: 68fa3bb2b17da01004220f5876911fa3289a2e7c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233878"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124986"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -53,7 +54,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
     ![Generiertes Kennwort](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
-7. Klicken Sie im Downloadverzeichnis (in der Regel der Ordner „Downloads“) mit der rechten Maustaste auf die ausführbare Datei bzw. das Skript, und führen Sie sie bzw. es mit Administratoranmeldeinformationen aus. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort ein oder fügen es aus der Zwischenablage ein, und drücken Sie die **EINGABETASTE**. Nach der Eingabe eines gültigen Kennworts stellt das Skript eine Verbindung mit dem Wiederherstellungspunkt her.
+7. Stellen Sie sicher, [dass Sie den richtigen Computer](#selecting-the-right-machine-to-run-the-script) zum Ausführen des Skripts verwenden. Wenn der richtige Computer derselbe Computer ist, auf den Sie das Skript heruntergeladen haben, können Sie mit dem Downloadabschnitt fortfahren. Klicken Sie im Downloadverzeichnis (in der Regel der Ordner *Downloads*) mit der rechten Maustaste auf die ausführbare Datei bzw. das Skript, und führen Sie Datei bzw. Skript mit Administratoranmeldeinformationen aus. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort ein oder fügen es aus der Zwischenablage ein, und drücken Sie die **EINGABETASTE**. Nach der Eingabe eines gültigen Kennworts stellt das Skript eine Verbindung mit dem Wiederherstellungspunkt her.
 
     ![Menü „Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
@@ -84,6 +85,23 @@ Nachdem die Dateien bestimmt und an den lokalen Speicherort kopiert wurden, kön
 Nachdem die Bereitstellung der Datenträger aufgehoben wurde, erhalten Sie eine Meldung. Die Aktualisierung der Verbindung kann einige Minuten dauern, sodass Sie die Datenträger entfernen können.
 
 Nachdem unter Linux die Verbindung mit dem Wiederherstellungspunkt getrennt wurde, entfernt das Betriebssystem die entsprechenden Bereitstellungspfade nicht automatisch. Diese sind als „verwaiste“ Volumes vorhanden und sichtbar, lösen aber einen Fehler aus, wenn ein Zugriff bzw. Schreibzugriff auf die Dateien erfolgt. Sie können manuell entfernt werden. Das Skript ermittelt bei seiner Ausführung solche Volumes von vorherigen Wiederherstellungspunkten und bereinigt diese nach Zustimmung.
+
+## <a name="selecting-the-right-machine-to-run-the-script"></a>Auswählen des richtigen Computers zum Ausführen des Skripts
+
+Wenn das Skript erfolgreich heruntergeladen wurde, müssen Sie im nächsten Schritt überprüfen, ob der Computer, auf dem Sie das Skript ausführen möchten, geeignet ist. Nachfolgend sind die Anforderungen aufgeführt, die der Computer erfüllen muss.
+
+### <a name="original-backed-up-machine-versus-another-machine"></a>Ursprünglich gesicherter Computer im Vergleich mit einem anderen Computer
+
+1. Wenn der gesicherte Computer eine VM mit großem Datenträger ist, d. h. über mehr als 16 Datenträger verfügt oder jeder Datenträger größer als 4 TB ist, dann **muss das Skript auf einem anderen Computer ausgeführt werden** und [diese Anforderungen](#file-recovery-from-virtual-machine-backups-having-large-disks) müssen erfüllt werden.
+1. Auch wenn es sich bei dem gesicherten Computer nicht um eine VM mit großem Datenträger handelt, kann in [diesen Szenarios](#special-configurations) das Skript nicht auf derselben gesicherten VM ausgeführt werden.
+
+### <a name="os-requirements-on-the-machine"></a>Betriebssystemanforderungen an den Computer
+
+Der Computer, auf dem das Skript ausgeführt werden muss, muss [diese Betriebssystemanforderungen erfüllen](#system-requirements).
+
+### <a name="access-requirements-for-the-machine"></a>Zugriffsanforderungen für den Computer
+
+Der Computer, auf dem das Skript ausgeführt werden muss, muss [diese Zugriffsanforderungen erfüllen](#access-requirements).
 
 ## <a name="special-configurations"></a>Besondere Konfigurationen
 
@@ -125,14 +143,23 @@ Hiermit werden alle logischen Volumes mit Name und Pfad in einer Volumegruppe au
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command's results>
+lvdisplay <volume-group-name from the pvs commands results>
 ```
+
+Der ```lvdisplay```-Befehl zeigt auch an, ob die Volumegruppen aktiv sind. Wenn die Volumegruppe als inaktiv gekennzeichnet ist, muss sie erneut aktiviert werden, damit sie eingebunden werden kann. Wenn die Volumegruppe als inaktiv angezeigt wird, verwenden Sie den folgenden Befehl, um sie zu aktivieren.
+
+```bash
+#!/bin/bash
+vgchange –a y  <volume-group-name from the pvs commands results>
+```
+
+Sobald der Volumegruppenname aktiv ist, führen Sie den ```lvdisplay```-Befehl erneut aus, um alle relevanten Attribute anzuzeigen.
 
 Hiermit werden die logischen Volumes im Pfad Ihrer Wahl bereitgestellt:
 
 ```bash
 #!/bin/bash
-mount <LV path> </mountpath>
+mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>Für RAID-Arrays
@@ -202,7 +229,7 @@ Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, 
 
 - `download.microsoft.com`
 - Recovery Service-URLs (Geoname bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (für öffentliche Azure-Gebiete)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Für öffentliche Azure-Regionen)
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Für Azure China 21Vianet)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us` (für Azure US Government)
   - `https://pod01-rec2.geo-name.backup.windowsazure.de` (für Azure Deutschland)
@@ -217,8 +244,6 @@ Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, 
 Für Linux benötigt das Skript zum Herstellen der Verbindung mit dem Wiederherstellungspunkt die Komponenten „open-iscsi“ und „lshw“. Wenn die Komponenten auf dem Computer, auf dem das Skript ausgeführt wird, nicht vorhanden sind, wird um die Erlaubnis zum Installieren der Komponenten gebeten. Geben Sie die Zustimmung zur Installation der erforderlichen Komponenten.
 
 Der Zugriff auf `download.microsoft.com` ist erforderlich, um die Komponenten für das Herstellen eines sicheren Kanals zwischen dem Computer, auf dem das Skript ausgeführt wird, und den Daten am Wiederherstellungspunkt herunterzuladen.
-
-Sie können das Skript auf allen Computern ausführen, die dasselbe (oder ein kompatibles) Betriebssystem wie die gesicherte VM haben. Siehe hierzu die Tabelle [Kompatible Betriebssysteme](backup-azure-restore-files-from-vm.md#system-requirements) mit den kompatiblen Betriebssystemen. Wenn der geschützte virtuelle Azure-Computer das Feature „Windows-Speicherplätze“ (für virtuelle Windows-Computer) oder LVM/RAID-Arrays (für virtuelle Linux-Computer) verwendet, können Sie die ausführbare Datei bzw. das Skript nicht auf diesem virtuellen Computer ausführen. Führen Sie die ausführbare Datei bzw. das Skript stattdessen auf einem beliebigen anderen Computer mit einem kompatiblen Betriebssystem aus.
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Dateiwiederherstellung von Sicherungen virtueller Computer mit großen Datenträgern
 
@@ -304,6 +329,6 @@ Das Skript erteilt einem Wiederherstellungspunkt schreibgeschützten Zugriff und
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu Problemen beim Wiederherstellen von Dateien finden Sie im Abschnitt [Problembehandlung](#troubleshooting).
-- Erfahren Sie mehr über das [Wiederherstellen von Dateien mit Powershell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-files-from-an-azure-vm-backup).
+- Erfahren Sie mehr über das [Wiederherstellen von Dateien mit PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-files-from-an-azure-vm-backup).
 - Erfahren Sie mehr über das [Wiederherstellen von Dateien mit Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-files).
 - Nachdem die VM wiederhergestellt wurde, lesen Sie, wie Sie [Sicherungen verwalten](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms).

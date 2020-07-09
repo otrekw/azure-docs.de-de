@@ -6,12 +6,12 @@ manager: rochakm
 ms.topic: conceptual
 ms.author: mayg
 ms.date: 11/12/2019
-ms.openlocfilehash: 50fb6da2905b2ae27547f25cce3d7a76ca7976b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 373cffe96119af4a2fc0d74e2090e6cc24dcaf8f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75498138"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131259"
 ---
 # <a name="exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
 
@@ -41,7 +41,7 @@ Beachten Sie zunächst Folgendes:
 
 ## <a name="exclude-disks"></a>Ausschließen von Datenträgern
 
-1. Um Datenträger auszuschließen, wenn Sie die Replikation für einen virtuellen Hyper-V-Computer [aktivieren](site-recovery-hyper-v-site-to-azure.md), müssen Sie nach Auswahl der zu replizierenden virtuellen Computer auf der Seite **Replikation aktivieren** > **Eigenschaften** > **Eigenschaften konfigurieren** die Spalte **Datenträger für Replikation** überprüfen. Standardmäßig sind alle Datenträger für die Replikation ausgewählt.
+1. Um Datenträger auszuschließen, wenn Sie die Replikation für einen virtuellen Hyper-V-Computer [aktivieren](./hyper-v-azure-tutorial.md), müssen Sie nach Auswahl der zu replizierenden virtuellen Computer auf der Seite **Replikation aktivieren** > **Eigenschaften** > **Eigenschaften konfigurieren** die Spalte **Datenträger für Replikation** überprüfen. Standardmäßig sind alle Datenträger für die Replikation ausgewählt.
 2. Wenn Sie einen bestimmten Datenträger nicht replizieren möchten, können Sie in **Datenträger replizieren** die Datenträger abwählen, die Sie ausschließen möchten. 
 
     ![Ausschließen von Datenträgern von der Replikation](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)

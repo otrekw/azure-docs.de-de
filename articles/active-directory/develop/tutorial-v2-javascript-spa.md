@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6f0253490d39e69d491dd5fd3ab0d0d0a32d47bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 573aef4f0d340d0d32dc4977e0937bca9c6d3cef
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181561"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338923"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-SPA (Single-Page-Webanwendung)
 
@@ -56,13 +56,26 @@ In diesem Leitfaden werden die folgenden Bibliotheken verwendet:
 
 * Die Anweisungen in diesem Handbuch basieren auf einem integrierten Node.js-Webserver. Es wird empfohlen, [Visual Studio Code](https://code.visualstudio.com/download) als integrierte Entwicklungsumgebung (Integrated Development Environment, IDE) zu verwenden.
 
+* Ein zeitgemäßer Webbrowser. In diesem JavaScript-Beispiel werden [ES6](http://www.ecma-international.org/ecma-262/6.0/)-Konventionen verwendet, daher wird **Internet Explorer** **nicht** unterstützt.
+
 ## <a name="create-your-project"></a>Erstellen Ihres Projekts
 
 Vergewissern Sie sicher, dass [Node.js](https://nodejs.org/en/download/) installiert ist, und erstellen Sie einen Ordner für Ihre Anwendung. Dort implementieren wir einen einfachen [Express](https://expressjs.com/)-Webserver, um die `index.html` Datei zu verarbeiten.
 
-1. Suchen Sie zunächst mithilfe des integrierten Terminals von Visual Studio Code Ihren Projektordner, und installieren Sie dann Express mithilfe von NPM.
+1. Suchen Sie mithilfe eines Terminals (etwa mithilfe des integrierten Terminals von Visual Studio Code) Ihren Projektordner, und geben Sie Folgendes ein:
 
-1. Erstellen Sie als nächstes eine JS-Datei mit dem Namen `server.js`, und fügen Sie dann den folgenden Code hinzu:
+   ```console
+   npm init
+   ```
+
+2. Installieren Sie anschließend die erforderlichen Abhängigkeiten:
+
+   ```console
+   npm install express --save
+   npm install morgan --save
+   ```
+
+1. Erstellen Sie nun eine JS-Datei mit dem Namen `index.js`, und fügen Sie dann den folgenden Code hinzu:
 
    ```JavaScript
    const express = require('express');
@@ -269,7 +282,7 @@ Bevor Sie mit der Authentifizierung fortfahren, registrieren Sie die Anwendung i
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Festlegen einer Umleitungs-URL für Node.js
 >
-> Für Node.js können Sie den Webserverport in der Datei *server.js* festlegen. In diesem Tutorial wird zwar der Port 3000 verwendet, Sie können aber auch einen beliebigen anderen verfügbaren Port verwenden.
+> Für Node.js können Sie den Webserverport in der Datei *index.js* festlegen. In diesem Tutorial wird zwar der Port 3000 verwendet, Sie können aber auch einen beliebigen anderen verfügbaren Port verwenden.
 >
 > Wenn Sie eine Umleitungs-URL in den Registrierungsinformationen der Anwendung einrichten möchten, kehren Sie zum Bereich **Anwendungsregistrierung** zurück und führen eine der folgenden Aktionen aus:
 >
@@ -310,7 +323,7 @@ Erstellen Sie eine neue JS-Datei mit dem Namen `authConfig.js`, die die Konfigur
  Hierbei gilt:
  - *\<Enter_the_Application_Id_Here>* ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
  - *\<Enter_the_Cloud_Instance_Id_Here>* ist die Instanz der Azure-Cloud. Geben Sie für die Azure-Hauptcloud oder für die globale Azure-Cloud einfach *https://login.microsoftonline.com* ein. Informationen zu **nationalen** Clouds (etwa für China) finden Sie unter [Nationale Clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
- - *\<Enter_the_Tenant_info_here >* wird auf eine der folgenden Optionen festgelegt:
+ - *\<Enter_the_Tenant_info_here>* wird auf eine der folgenden Optionen festgelegt:
    - Wenn Ihre Anwendung *Nur Konten in diesem Organisationsverzeichnis* unterstützt, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (beispielsweise *contoso.microsoft.com*).
    - Wenn Ihre Anwendung *Konten in einem beliebigen Organisationsverzeichnis* unterstützt, ersetzen Sie diesen Wert durch **Organisationen**.
    - Wenn Ihre Anwendung *Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten* unterstützt, ersetzen Sie diesen Wert durch **common**. Wenn Sie die Unterstützung *ausschließlich auf persönliche Microsoft-Konten* beschränken möchten, ersetzen Sie diesen Wert durch **consumers**.
@@ -433,7 +446,7 @@ Die Methode `acquireTokenSilent` wickelt den Bezug und die Verlängerung von Tok
    ```
 
    Hierbei gilt:
-   - *\<Enter_the_Graph_Endpoint_Here>* ist die Instanz von der MS Graph-API. Ersetzen Sie diese Zeichenfolge für den globalen MS Graph-API-Endpunkt einfach durch `https://graph.microsoft.com`. Informationen zu Bereitstellungen in der nationalen Cloud finden Sie in der [Graph-API-Dokumentation](https://docs.microsoft.com/graph/deployments).
+   - *\<Enter_the_Graph_Endpoint_Here>* ist die Instanz der MS Graph-API. Ersetzen Sie diese Zeichenfolge für den globalen MS Graph-API-Endpunkt einfach durch `https://graph.microsoft.com`. Informationen zu Bereitstellungen in der nationalen Cloud finden Sie in der [Graph-API-Dokumentation](https://docs.microsoft.com/graph/deployments).
 
 1. Erstellen Sie als nächstes eine JS-Datei mit dem Namen `graph.js`, die ein REST-Aufruf an die Microsoft Graph-API durchführt, und fügen Sie den folgenden Code hinzu:
 
@@ -496,7 +509,5 @@ Die Microsoft Graph-API benötigt den Bereich *user.read*, um das Benutzerprofil
 
 > [!NOTE]
 > Wenn Sie die Anzahl der Bereiche erhöhen, werden Benutzer ggf. zu weiteren Genehmigungen aufgefordert.
-
-Wenn eine Back-End-API keinen Bereich benötigt (nicht empfohlen), können Sie in den Aufrufen zum Beziehen von Token *clientId* als Bereich verwenden.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

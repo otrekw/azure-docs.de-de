@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 241efab246dc903981da570a4191f93cc744bca7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 627dfee81cb10e4e442b3cefb10d786d87d5c81d
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727447"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005887"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 
@@ -46,7 +46,7 @@ In den JOSE-Spezifikationen finden Sie relevante Datentypen für Schlüssel, Ver
 
 In Key Vault gespeicherte Objekte werden versioniert, wenn eine neue Instanz eines Objekts erstellt wird. Jeder Version wird ein eindeutiger Bezeichner und eine URL zugewiesen. Wenn ein Objekt zum ersten Mal erstellt wird, erhält es einen eindeutigen Versionsbezeichner und wird als aktuelle Version des Objekts gekennzeichnet. Beim Erstellen einer neuen Instanz mit dem gleichen Objektnamen erhält das neue Objekt einen eindeutigen Versionsbezeichner und wird zur aktuellen Version.  
 
-Objekte in Key Vault können mit dem aktuellen Bezeichner oder einem versionsspezifischen Bezeichner adressiert werden. Wenn z.B. für einen Schlüssel mit dem Namen `MasterKey` Vorgänge mit dem aktuellen Bezeichner durchgeführt werden, verwendet das System die neueste verfügbare Version. Das Ausführen von Vorgängen mit dem versionsspezifischen Bezeichner veranlasst das System, die spezifische Version des Objekts zu verwenden.  
+Für die Adressierung von Objekten in Key Vault können Sie eine Version angeben oder bei Vorgängen für die aktuelle Version des Objekts die Version weglassen. Bei einem Schlüssel mit dem Namen `MasterKey` führt das Durchführen von Vorgängen ohne Angabe einer Version beispielsweise dazu, dass die neueste verfügbare Version verwendet wird. Das Ausführen von Vorgängen mit dem versionsspezifischen Bezeichner veranlasst das System, die spezifische Version des Objekts zu verwenden.  
 
 Objekte werden in Key Vault über eine URL eindeutig identifiziert. Unabhängig vom geografischen Standort dürfen keine zwei Objekte im System die gleiche URL aufweisen. Die vollständige URL zu einem Objekt wird Objektbezeichner genannt. Die URL besteht aus einem Präfix, das den Schlüsseltresor, den Objekttyp, den vom Benutzer bereitgestellten Objektnamen und eine Objektversion identifiziert. Beim Objektnamen wird Groß-/Kleinschreibung nicht unterschieden, und er ist unveränderlich. Bezeichner, die nicht die Objektversion enthalten, heißen Basisbezeichner.  
 
@@ -62,7 +62,7 @@ Hierbei gilt:
 |-|-|  
 |`keyvault-name`|Der Name eines Schlüsseltresors im Microsoft Azure Key Vault-Dienst.<br /><br /> Schlüsseltresornamen werden vom Benutzer ausgewählt und sind global eindeutig.<br /><br /> Der Key Vault-Name muss zwischen 3 und 24 Zeichen lang sein und darf nur die Ziffern 0-9, die Buchstaben a-z und A-Z sowie das Minuszeichen („-“) enthalten.|  
 |`object-type`|Die Art des Objekts (Schlüssel, Geheimnisse oder Zertifikate)|  
-|`object-name`|Ein `object-name` ist ein vom Benutzer bereitgestellter Name und muss innerhalb eines Schlüsseltresors eindeutig sein. Der Name muss zwischen 1 und 127 Zeichen lang sein und darf nur die Ziffern 0-9, die Buchstaben a-z und A-Z sowie das Minuszeichen („-“) enthalten.|  
+|`object-name`|Ein `object-name` ist ein vom Benutzer bereitgestellter Name und muss innerhalb eines Schlüsseltresors eindeutig sein. Der Name muss eine Zeichenfolge mit 1 bis 127 Zeichen sein und mit einem Buchstaben beginnen und darf nur die Zeichen „0 - 9“, „a - z“, „A - Z“ und „-“ enthalten.|  
 |`object-version`|Ein `object-version` ist ein vom System generierter, 32 Zeichen langer Zeichenfolgenbezeichner, der optional verwendet wird, um eine eindeutige Version eines Objekts zu adressieren.|  
 
 ## <a name="next-steps"></a>Nächste Schritte

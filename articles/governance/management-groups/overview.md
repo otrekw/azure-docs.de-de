@@ -3,12 +3,12 @@ title: Organisieren Ihrer Ressourcen mit Verwaltungsgruppen – Azure Governanc
 description: Informationen zu Verwaltungsgruppen und ihrer Verwendung sowie zur Funktionsweise ihrer Berechtigungen
 ms.date: 04/15/2020
 ms.topic: overview
-ms.openlocfilehash: cc60e4555f0fb2b920b8061fb044ce5dde990d38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381535"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773150"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen
 
@@ -108,7 +108,7 @@ Die Unterstützung benutzerdefinierter RBAC-Rollen für Verwaltungsgruppen befin
 
 Das [Definieren und Erstellen einer benutzerdefinierten Rolle](../../role-based-access-control/custom-roles.md) ändert sich mit dem Einbeziehen von Verwaltungsgruppen nicht. Verwenden Sie den vollständigen Pfad, um die Verwaltungsgruppe **/providers/Microsoft.Management/managementgroups/{Gruppen-ID}** zu definieren.
 
-Verwenden Sie die ID der Verwaltungsgruppe und nicht ihren Anzeigenamen. Dieser häufige Fehler tritt auf, da es sich bei der Erstellung einer Verwaltungsgruppe bei beiden um benutzerdefinierte Felder handelt.
+Verwenden Sie die ID der Verwaltungsgruppe und nicht ihren Anzeigenamen. Dieser häufige Fehler tritt auf, weil es sich bei der Erstellung einer Verwaltungsgruppe bei beiden um benutzerdefinierte Felder handelt.
 
 ```json
 ...
@@ -143,13 +143,13 @@ Verwenden Sie die ID der Verwaltungsgruppe und nicht ihren Anzeigenamen. Dieser 
 
 ### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>Probleme mit Unterbrechen des Rollendefinitions- und Zuweisungshierarchiepfads
 
-Rollendefinitionen können an beliebiger Stelle innerhalb der Verwaltungsgruppenhierarchie zugewiesen werden. Eine Rollendefinition kann für eine übergeordnete Verwaltungsgruppe definiert werden, während die tatsächliche Rollenzuweisung im untergeordneten Abonnement vorhanden ist. Da es eine Beziehung zwischen den beiden Elementen gibt, erhalten Sie eine Fehlermeldung, wenn Sie versuchen, die Zuweisung von ihrer Definition zu trennen.
+Rollendefinitionen können an beliebiger Stelle innerhalb der Verwaltungsgruppenhierarchie zugewiesen werden. Eine Rollendefinition kann für eine übergeordnete Verwaltungsgruppe definiert werden, während die tatsächliche Rollenzuweisung im untergeordneten Abonnement vorhanden ist. Da eine Beziehung zwischen den beiden Elementen besteht, erhalten Sie eine Fehlermeldung, wenn Sie versuchen, die Zuweisung von ihrer Definition zu trennen.
 
 Wir betrachten nun als Beispiel einen kleinen Abschnitt einer Hierarchie für ein visuelles Element.
 
 :::image type="content" source="./media/subtree.png" alt-text="Unterstruktur" border="false":::
 
-Nehmen wir an, für die Verwaltungsgruppe „Marketing“ ist eine benutzerdefinierte Rolle definiert. Diese benutzerdefinierte Rolle wird dann zwei kostenlosen Abonnements zugewiesen.  
+Angenommen, für die Verwaltungsgruppe „Marketing“ ist eine benutzerdefinierte Rolle definiert. Diese benutzerdefinierte Rolle wird dann zwei kostenlosen Abonnements zugewiesen.  
 
 Wenn wir versuchen, eines dieser Abonnements zu verschieben, sodass es der Verwaltungsgruppe „Production“ untergeordnet ist, würde diese Verschiebung den Pfad von der Abonnementrollenzuweisung zur Rollenddefinition der Verwaltungsgruppe „Marketing“ unterbrechen. In diesem Szenario wird eine Fehlermeldung angezeigt, die besagt, dass die Verschiebung nicht zulässig ist, da sie diese Beziehung unterbricht.  
 
@@ -163,13 +163,14 @@ Es gibt verschiedene Optionen, um dieses Szenario zu beheben:
 
 Es bestehen Einschränkungen für die Verwendung benutzerdefinierter Rollen für Verwaltungsgruppen. 
 
- - Sie können nur eine Verwaltungsgruppe in den zuweisbaren Bereichen einer neuen Rolle definieren. Diese Einschränkung soll die Anzahl der Situationen verringern, in denen Rollendefinitionen und Rollenzuweisungen getrennt werden. Dies geschieht, wenn ein Abonnement oder eine Verwaltungsgruppe mit einer Rollenzuweisung zu einem anderen übergeordneten Element verschoben wird, das nicht über die Rollendefinition verfügt.  
- - Aktionen der RBAC-Datenebene dürfen in den benutzerdefinierten Rollen der Verwaltungsgruppe nicht definiert werden. Diese Einschränkung besteht, weil bei RBAC-Aktionen ein Latenzproblem beim Aktualisieren der Ressourcenanbieter für die Datenebene auftritt. An diesem Latenzproblem wird gearbeitet, und diese Aktionen werden bei der Rollendefinition deaktiviert, um Risiken zu verringern.
- - Der Azure Resource Manager überprüft nicht, ob die Verwaltungsgruppe im zuweisbaren Bereich der Rollendefinition vorhanden ist. Wenn ein Tippfehler oder eine falsche Verwaltungsgruppen-ID aufgelistet wird, wird die Rollendefinition dennoch erstellt.  
+ - Sie können nur eine Verwaltungsgruppe in den zuweisbaren Bereichen einer neuen Rolle definieren. Diese Einschränkung soll die Anzahl der Situationen verringern, in denen Rollendefinitionen und Rollenzuweisungen getrennt werden. Diese Situation tritt auf, wenn ein Abonnement oder eine Verwaltungsgruppe mit einer Rollenzuweisung in ein anderes übergeordnetes Element verschoben wird, das nicht über die Rollendefinition verfügt.  
+ - Aktionen der RBAC-Datenebene können in benutzerdefinierten Rollen für Verwaltungsgruppen nicht definiert werden. Diese Einschränkung besteht, weil bei RBAC-Aktionen ein Latenzproblem beim Aktualisieren der Ressourcenanbieter für die Datenebene auftritt.
+   An diesem Latenzproblem wird gearbeitet, und diese Aktionen werden bei der Rollendefinition deaktiviert, um Risiken zu verringern.
+ - Der Azure Resource Manager überprüft nicht, ob die Verwaltungsgruppe im zuweisbaren Bereich der Rollendefinition vorhanden ist. Wenn ein Tippfehler vorhanden oder eine falsche Verwaltungsgruppen-ID aufgelistet ist, wird die Rollendefinition dennoch erstellt.  
 
 ## <a name="moving-management-groups-and-subscriptions"></a>Verschieben von Verwaltungsgruppen und Abonnements 
 
-Damit eine Verwaltungsgruppe oder ein Abonnement einer anderen Verwaltungsgruppe untergeordnet ist, müssen drei Regeln als „true“ ausgewertet werden.
+Damit eine Verwaltungsgruppe oder ein Abonnement als untergeordnetes Element einer anderen Verwaltungsgruppe verschoben werden kann, müssen drei Regeln als „true“ ausgewertet werden.
 
 Wenn Sie die Verschiebung durchführen, muss Folgendes zutreffen: 
 

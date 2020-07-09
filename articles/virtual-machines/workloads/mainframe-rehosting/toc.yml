@@ -18,6 +18,8 @@
           href: microfocus/get-started.md
         - name: Installieren von Enterprise Server
           href: microfocus/set-up-micro-focus-azure.md
+        - name: Bereitstellen von Enterprise Server in AKS
+          href: microfocus/deploy-micro-focus-enterprise-server.md
         - name: Ausführen von CICS BankDemo
           href: microfocus/demo.md
         - name: Enterprise Server in Containern

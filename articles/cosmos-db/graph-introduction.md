@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/18/2019
 ms.author: lbosq
-ms.openlocfilehash: 9151b54d7fa0b64a465aa8384cb4bfdb8e72c482
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0eb778d1fc2dca522bef675709b5241f214e2b86
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75500010"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118116"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Einführung in Azure Cosmos DB: Gremlin-API
 
 [Azure Cosmos DB](introduction.md) ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen für unternehmenskritische Anwendungen. Diese Datenbank für mehrere Modelle unterstützt Dokument-, Schlüssel-Wert-Paar-, Diagramm- und spaltenbasierte Datenmodelle. Die Azure Cosmos DB Gremlin-API dient zum Speichern und Verarbeiten der Graphdaten für einen vollständig verwalteten Datenbankdienst, der für eine beliebige Größenordnung entworfen wurde.  
 
-![Architektur von Azure Cosmos DB-Diagrammen](./media/graph-introduction/cosmosdb-graph-architecture.png)
+:::image type="content" source="./media/graph-introduction/cosmosdb-graph-architecture.png" alt-text="Architektur von Azure Cosmos DB-Diagrammen" border="false":::
 
 Dieser Artikel enthält eine Übersicht über die Gremlin-API von Azure Cosmos DB und erläutert, wie Sie diese zum Speichern von umfangreichen Diagrammen mit Milliarden von Scheitelpunkten und Kanten verwenden können. Sie können die Graphen mit einer Latenz im Millisekundenbereich abfragen und die Graphstruktur mühelos entwickeln. Die Gremlin-API von Azure Cosmos DB basiert auf dem Graphdatenbankstandard [Apache TinkerPop](https://tinkerpop.apache.org) und verwendet die Gremlin-Abfragesprache. 
 
@@ -101,7 +101,7 @@ Graphdatenbanken werden oft NoSQL- oder nicht relationalen Datenbanken zugeordne
 ### <a name="gremlin-by-example"></a>Gremlin anhand eines Beispiels
 Anhand eines Beispieldiagramms wird erläutert, wie Abfragen in Gremlin ausgedrückt werden können. Die folgende Abbildung zeigt eine Geschäftsanwendung, die Daten zu Benutzern, Interessen und Geräten in Form eines Diagramms verwaltet.  
 
-![Beispieldatenbank mit Personen, Geräten und Interessen](./media/gremlin-support/sample-graph.png) 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Beispieldatenbank mit Personen, Geräten und Interessen" border="false"::: 
 
 Dieses Diagramm weist folgende *Vertex*-Typen (in Gremlin als „Bezeichnung“ bezeichnet) auf:
 

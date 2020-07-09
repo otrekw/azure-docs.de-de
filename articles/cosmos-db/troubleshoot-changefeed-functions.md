@@ -8,10 +8,10 @@ ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79365507"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des Azure Functions-Triggers für Cosmos DB
@@ -56,7 +56,7 @@ Die früheren Versionen der Azure Cosmos DB-Erweiterung unterstützten nicht die
 
 Dieser Fehler bedeutet, dass Sie derzeit eine partitionierte Leasesammlung mit einer alten [Erweiterungsabhängigkeit](#dependencies) nutzen. Führen Sie ein Upgrade auf die neueste verfügbare Version durch. Wenn Sie derzeit mit Azure Functions V1 arbeiten, müssen Sie ein Upgrade auf Azure Functions V2 durchführen.
 
-### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Die Azure-Funktion kann nicht gestartet werden, und der folgende Fehler wird ausgegeben: „The lease collection, if partitioned, must have partition key equal to id“ (Die Lease-Sammlung, falls partitioniert, muss einen Partitionsschlüssel aufweisen, der gleich id ist).
+### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Die Azure Funktion kann nicht gestartet werden, und der folgende Fehler wird ausgegeben: „The lease collection, if partitioned, must have partition key equal to id“ (Die Lease-Sammlung, falls partitioniert, muss einen Partitionsschlüssel aufweisen, der gleich id ist).
 
 Dieser Fehler weist darauf hin, dass Ihr aktueller Leases-Container partitioniert ist, der Partitionsschlüsselpfad jedoch nicht `/id` ist. Zum Beheben dieses Problems müssen Sie den Leases-Container mit `/id` als Partitionsschlüssel neu erstellen.
 
@@ -109,7 +109,7 @@ So verarbeiten Sie alle Elemente in einem Container von Anfang an erneut
 
 Durch Festlegen von [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) auf „true“ wird die Azure-Funktion angewiesen, damit zu beginnen, Änderungen ab dem Anfang des Verlaufs der Sammlung statt ab der aktuellen Uhrzeit zu lesen. Dies funktioniert nur, wenn es keine bereits erstellten Leases (d. h. Dokumente in der Sammlung der Leases) gibt. Wird diese Eigenschaft auf „true“ festgelegt, wenn es bereits Leases gibt, hat dies keine Auswirkungen. Wenn in diesem Szenario eine Funktion beendet und neu gestartet wird, beginnt sie mit dem Lesen ab dem letzten Prüfpunkt, wie es in der Leases-Sammlung definiert wurde. Führen Sie die obigen Schritte 1-4 aus, um die erneute Verarbeitung von Anfang an auszuführen.  
 
-### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Bindung kann nur mit IReadOnlyList\<Dokument> oder JArray erfolgen
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Bindung kann nur mit IReadOnlyList\<Document> oder JArray erfolgen
 
 Dieser Fehler tritt auf, wenn Ihr Azure Functions-Projekt (oder ein beliebiges Projekt, auf das verwiesen wird) einen manuelle NuGet-Verweis auf das Azure Cosmos DB-SDK mit einer anderen Version als die durch die [Azure Functions Cosmos DB-Erweiterung](./troubleshoot-changefeed-functions.md#dependencies) bereitgestellte Version enthält.
 

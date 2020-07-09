@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: f6dea00bf3b3e8a58f42da8fd8ad59ccec2dea72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5ea227ba75a9ecf6666883603dad97d02385b5c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537796"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086482"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight
 
@@ -61,7 +61,7 @@ Nach der Erstellung eines Edgeknotens können Sie über SSH eine Verbindung mit 
 > [!WARNING]
 > Für auf dem Edgeknoten installierte benutzerdefinierte Komponenten stellt Microsoft wirtschaftlich angemessenen Support bereit. Dadurch werden unter Umständen bei Ihnen auftretende Probleme behoben. Alternativ erhalten Sie unter Umständen weitere Unterstützung über Communityressourcen. Im Anschluss finden Sie einige besonders aktive Websites, auf denen Sie Unterstützung von der Community erhalten:
 >
-> * [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
+> * [Frageseite von Microsoft Q&A (Fragen und Antworten) für HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
 > Bei Verwendung einer Apache-Technologie finden Sie hilfreiche Informationen ggf. auf den Apache-Projektwebsites unter [https://apache.org](https://apache.org), beispielsweise auf der Website für [Apache Hadoop](https://hadoop.apache.org/).
@@ -142,11 +142,15 @@ Der Edgeknoten wird als Anwendung im Azure-Portal angezeigt.  Im Portal erfahren
 
 2. Verwenden Sie nach dem Herstellen einer Verbindung mit dem Edgeknoten über SSH den folgenden Befehl, um die Hive-Konsole zu öffnen:
 
-        hive
+    ```console
+    hive
+    ```
 
 3. Führen Sie den folgenden Befehl aus, um Hive-Tabellen im Cluster anzuzeigen:
 
-        show tables;
+    ```hiveql
+    show tables;
+    ```
 
 ## <a name="delete-an-edge-node"></a>Löschen eines Edgeknotens
 

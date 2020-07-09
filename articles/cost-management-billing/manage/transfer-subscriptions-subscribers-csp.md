@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 06/19/2020
 ms.author: banders
-ms.openlocfilehash: b198a781da6e18c363e90d8bd5314dafc563dcca
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 925a69f1f3a408e50cb9dc1d03cb5c1cf673ef41
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791152"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102683"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Übertragen von Azure-Abonnements zwischen Abonnenten und CSPs
 
-Dieser Artikel enthält allgemeine Schritte zum Übertragen von Azure-Abonnements zwischen CSP-Partnern (Cloud Solution Provider) und ihren Kunden.
+In diesem Artikel werden allgemeine Schritte zum Übertragen von Azure-Abonnements zwischen Cloud Solution Provider-Partnern (CSP-Partnern) und ihren Kunden beschrieben.
 
-## <a name="transfer-ea-subscriptions"></a>Übertragen von EA-Abonnements
+## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>Übertragen von Enterprise Agreement-Abonnements auf einen CSP-Partner
 
 CSP-Partner mit direkter Abrechnung, die als [Azure Expert Managed Services Provider (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) zertifiziert sind, können die Übertragung von Azure-Abonnements für ihre Kunden anfordern, die über ein direktes Enterprise Agreement (EA) verfügen. Abonnementübertragungen sind nur für Kunden zulässig, die eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) akzeptiert und einen Azure-Plan erworben haben.
 
@@ -44,7 +44,7 @@ Um andere Azure-Abonnements an einen CSP-Partner zu übertragen, muss der Abonne
     > [!IMPORTANT]
     >  - Das Verschieben von Azure-Ressourcen zwischen Abonnements kann je nach den in den Abonnements enthaltenen Ressourcen zu Dienstdowntime führen.
 
-## <a name="all-subscription-transfers-from-a-csp-partner"></a>Alle Abonnementübertragungen von einem CSP-Partner
+## <a name="transfer-csp-subscription-to-other-offer"></a>Übertragen von CSP-Abonnements auf ein anderes Angebot
 
 Um andere Abonnements von einem CSP-Partner auf ein anderes Azure-Angebot zu übertragen, muss der Abonnent Ressourcen zwischen CSP-Quellabonnements und Zielabonnements verschieben.
 
@@ -67,4 +67,4 @@ Um andere Abonnements von einem CSP-Partner auf ein anderes Azure-Angebot zu üb
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Übernehmen des Abrechnungsbesitzes für Azure-Abonnements für Ihr MPA-Konto](mpa-request-ownership.md)
-- [Verwalten von Konten und Abonnements mit der Azure-Abrechnung](index.yml)
+- [Verwalten von Konten und Abonnements mit der Azure-Abrechnung](../index.yml)

@@ -8,21 +8,21 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 50c88dd1785bd9177219054fed3800ca725a5274
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43ed0bfed1dbe48c4f66a820ecad6fedf11115fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478160"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>Die neue Oberfläche für App-Registrierungen im Azure-Portal
 
-In der neuen Umgebung [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) im Azure-Portal gibt es viele Verbesserungen. Wenn Sie mit der Umgebung des Anwendungsregistrierungsportals (apps.dev.microsoft.com) zum Registrieren oder Verwalten konvergierter Anwendungen (im Folgenden als alte Umgebung bezeichnet) gut vertraut sind, können Sie mit diesem Schulungshandbuch erste Schritte in der neuen Umgebung unternehmen.
+In der neuen Umgebung [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) im Azure-Portal gibt es viele Verbesserungen. Wenn Sie mit dem Anwendungsregistrierungsportal (apps.dev.microsoft.com) zum Registrieren oder Verwalten von Anwendungen (im Folgenden als alte Umgebung bezeichnet) gut vertraut sind, können Sie mit dieser Anleitung erste Schritte in der neuen Umgebung unternehmen.
 
 ## <a name="whats-not-changing"></a>Was ändert sich nicht?
 
@@ -37,7 +37,7 @@ In der neuen Umgebung [App-Registrierungen](https://go.microsoft.com/fwlink/?lin
 
 ## <a name="key-changes"></a>Die wichtigsten Änderungen
 
--   In der alten Umgebung wurden Apps standardmäßig als konvergierte Apps registriert, die alle Organisationskonten (mehrinstanzenfähig) und persönliche Microsoft-Konten unterstützen. Dies konnte in der alten Umgebung nicht geändert werden, sodass es schwierig war, Apps zu erstellen, die nur Organisationskonten unterstützten (entweder mehrinstanzenfähig oder Einzelmandant).
+-   In der alten Umgebung wurden Apps standardmäßig als *konvergierte* Apps registriert – Apps, die alle Organisationskonten (mehrinstanzenfähig) und persönliche Microsoft-Konten unterstützten. Dies konnte in der alten Umgebung nicht geändert werden, sodass es schwierig war, Apps zu erstellen, die nur Organisationskonten unterstützten (entweder mehrinstanzenfähig oder Einzelmandant).
     In der neuen Umgebung können Sie Apps registrieren, die all diese Optionen unterstützen. [Weitere Informationen zu App-Typen](active-directory-v2-registration-portal.md).
 
 -   Wenn sich auch Ihr persönliches Microsoft-Konto in einem Azure AD-Mandanten befindet, werden in der neuen Umgebung drei Registerkarten angezeigt: alle Anwendungen im Mandanten, in Ihrem Besitz befindliche Anwendungen im Mandanten sowie Anwendungen für Ihr persönliches Konto. Wenn also die für Ihr persönliches Microsoft-Konto registrierten Anwendungen zu fehlen scheinen, schauen Sie sich die Registerkarte **Anwendungen für Ihr persönliches Konto** an.
@@ -52,28 +52,23 @@ In der neuen Umgebung [App-Registrierungen](https://go.microsoft.com/fwlink/?lin
 
 ## <a name="new-app-registration"></a>Neue App-Registrierung
 
-In der alten Umgebung mussten Sie zum Registrieren einer konvergierten App nur einen Namen angeben. Die erstellten Apps wurden als konvergierte Apps registriert, die alle Organisationskonten (mehrinstanzenfähig) und persönliche Microsoft-Konten unterstützen.  Dies konnte in der alten Umgebung nicht geändert werden, sodass es schwierig war, Apps zu erstellen, die nur Organisationskonten unterstützten (entweder mehrinstanzenfähig oder Einzelmandant). [Weitere Informationen zu unterstützten Kontotypen](v2-supported-account-types.md)
+In der alten Umgebung mussten Sie zum Registrieren einer App nur einen Namen angeben. Die erstellten Apps wurden als *konvergierte* Apps registriert – Apps, die alle Organisationskonten (mehrinstanzenfähig) und persönliche Microsoft-Konten unterstützten.  Dies konnte in der alten Umgebung nicht geändert werden, sodass es schwierig war, Apps zu erstellen, die nur Organisationskonten unterstützten (mehrinstanzenfähig oder Einzelmandant). [Weitere Informationen zu unterstützten Kontotypen](v2-supported-account-types.md)
 
 In der neuen Umgebung müssen Sie einen Namen für die App angeben und die unterstützten Kontotypen auswählen. Sie können optional einen Umleitungs-URI angeben.
 Wenn Sie einen Umleitungs-URI angeben, müssen Sie den Typ „Web“ oder „Öffentlicher Client“ angeben (native Anwendung/Mobilgerät und Desktop). Weitere Informationen zum Registrieren einer App mithilfe der neuen App-Registrierungsumgebung finden Sie [in dieser Schnellstartanleitung](quickstart-register-app.md).
 
 ## <a name="app-management-page"></a>Seite für die App-Verwaltung
 
-In der alten Umgebung gab es eine einzelne Seite für die Verwaltung konvergierter Apps mit folgenden Bereichen: „Eigenschaften“, „Anwendungsgeheimnisse“, „Plattformen“, „Besitzer“, „Microsoft Graph-Berechtigungen“, „Profil“ und „Erweiterte Optionen“.
+In der alten Umgebung gab es eine einzelne Seite für die App-Verwaltung mit folgenden Bereichen: „Eigenschaften“, „Anwendungsgeheimnisse“, „Plattformen“, „Besitzer“, „Microsoft Graph-Berechtigungen“, „Profil“ und „Erweiterte Optionen“.
 
 Die neue Umgebung im Azure-Portal enthält diese Funktionen auf separaten Seiten. Die jeweilige Funktionalität finden Sie an folgenden Stellen:
 
--   Eigenschaften: Name und Anwendungs-ID befinden sich auf der Seite „Übersicht“.
-
--   Anwendungsgeheimnisse befinden sich auf der Seite „Zertifikate & Geheimnisse“.
-
--   Die Plattformkonfiguration befindet sich auf der Seite „Authentifizierung“.
-
--   Die Microsoft Graph-Berechtigungen finden Sie neben anderen Berechtigungen auf der Seite „API-Berechtigungen“.
-
--   Das Profil befindet sich auf der Seite „Branding“.
-
--   Erweiterte Optionen: Live SDK-Support befindet sich auf der Seite „Authentifizierung“.
+- Eigenschaften: Name und Anwendungs-ID befinden sich auf der Seite „Übersicht“.
+- Anwendungsgeheimnisse befinden sich auf der Seite „Zertifikate & Geheimnisse“.
+- Die Plattformkonfiguration befindet sich auf der Seite „Authentifizierung“.
+- Die Microsoft Graph-Berechtigungen finden Sie neben anderen Berechtigungen auf der Seite „API-Berechtigungen“.
+- Das Profil befindet sich auf der Seite „Branding“.
+- Erweiterte Optionen: Live SDK-Support befindet sich auf der Seite „Authentifizierung“.
 
 ## <a name="application-secretscertificates--secrets"></a>Anwendungsgeheimnisse/Zertifikate & Geheimnisse
 
@@ -111,7 +106,7 @@ Es gibt eine neue Benutzeroberfläche für die Eigenschaften, die bisher nur mit
 
 -   „Durch diese API definierte Bereiche“ (oauth2Permissions) und „Autorisierte Clientanwendungen“ (preAuthorizedApplications) können auf der Seite „Eine API verfügbar machen“ konfiguriert werden. Weitere Informationen zum Konfigurieren einer App als Web-API und zum Verfügbarmachen von Berechtigungen/Bereichen finden Sie [in dieser Schnellstartanleitung](quickstart-configure-app-expose-web-apis.md).
 
--   Die Herausgeberdomäne (wird Benutzern nur bei der [Zustimmungsaufforderung der App angezeigt\'](application-consent-experience.md)) befindet sich auf der Seite „Branding“. Weitere Informationen zum Konfigurieren einer Herausgeberdomäne finden Sie [in dieser Anleitung](howto-configure-publisher-domain.md).
+-   Die Herausgeberdomäne (wird Benutzern bei der [Zustimmungsaufforderung der Anwendung angezeigt\'](application-consent-experience.md)) befindet sich auf der Seite „Branding“. Weitere Informationen zum Konfigurieren einer Herausgeberdomäne finden Sie [in dieser Anleitung](howto-configure-publisher-domain.md).
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -125,3 +120,7 @@ Für die neue Umgebung gelten die folgenden Einschränkungen:
 
    > [!NOTE]
    > Wenn Sie im Azure AD-Mandanten ein persönliches Microsoft-Konto verwenden und der Mandantenadministrator den Zugriff auf das Azure-Portal beschränkt hat, erhalten Sie möglicherweise die Fehlermeldung „Zugriff verweigert“. Wenn Sie jedoch eine Verknüpfung verwenden, indem Sie App-Registrierungen in der Suchleiste eingeben oder diese anheften, können Sie auf die neue Umgebung zugreifen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Informationen zu den ersten Schritten mit der neuen App-Registrierungsumgebung finden Sie unter [Schnellstart: Registrieren einer Anwendung bei der Microsoft Identity Platform](quickstart-register-app.md).

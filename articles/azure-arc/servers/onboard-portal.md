@@ -6,14 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/24/2020
+ms.date: 05/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 40885e1de4ff4c16d2a50399c654d8596396ab53
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.custom: references_regions
+ms.openlocfilehash: 459360e72c2d35cafedb0291642bf081bfcad96c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366366"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103992"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinden von Hybridcomputern mit Azure über das Azure-Portal
 
@@ -21,7 +22,7 @@ Azure Arc für Server (Vorschauversion) kann mithilfe einiger manueller Schritte
 
 Für diese Methode müssen Sie auf dem Computer über Administratorberechtigungen verfügen, um den Agent installieren und konfigurieren zu können. Unter Linux muss hierfür das root-Konto verwendet werden. Unter Windows müssen Sie der Gruppe der lokalen Administratoren angehören.
 
-Bevor Sie beginnen, sollten Sie die [Voraussetzungen](overview.md#prerequisites) überprüfen und sicherstellen, dass Ihr Abonnement und Ihre Ressourcen auch diese Anforderungen erfüllen.
+Bevor Sie beginnen, sollten Sie die [Voraussetzungen](agent-overview.md#prerequisites) überprüfen und sicherstellen, dass Ihr Abonnement und Ihre Ressourcen auch diese Anforderungen erfüllen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -39,9 +40,10 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
 
     >[!NOTE]
     >Von Azure Arc für Server (Vorschauversion) werden nur folgende Regionen unterstützt:
+    >- EastUS
     >- WestUS2
     >- Europa, Westen
-    >- WestAsia
+    >- SoutheastAsia
     >
     >Überprüfen Sie weitere Überlegungen bei der Auswahl einer Region [hier](overview.md#supported-regions) im Übersichtsartikel.
 
@@ -57,7 +59,7 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
 
 ### <a name="install-manually"></a>Manuelle Installation
 
-Sie können den Azure Connected Machine-Agent manuell installieren, indem Sie das Windows Installer-Paket *AzureConnectedMachineAgent.msi* ausführen. 
+Sie können den Azure Connected Machine-Agent manuell installieren, indem Sie das Windows Installer-Paket *AzureConnectedMachineAgent.msi* ausführen. Sie können die neueste Version des [Windows Installer-Pakets für den Windows-Agent](https://aka.ms/AzureConnectedMachineAgent) vom Microsoft Download Center herunterladen. 
 
 > [!NOTE]
 > * Zum Installieren und Deinstallieren des Agents sind *Administratorberechtigungen* erforderlich.
@@ -65,7 +67,7 @@ Sie können den Azure Connected Machine-Agent manuell installieren, indem Sie da
 
 Wenn der Computer über einen Proxyserver mit dem Dienst kommunizieren muss, muss nach der Installation des Agents ein weiter unten in diesem Artikel beschriebener Befehl ausgeführt werden. Dadurch wird die Systemumgebungsvariable `https_proxy` für den Proxyserver festgelegt.
 
-Wenn Sie nicht mit den Befehlszeilenoptionen für Windows Installer-Pakete vertraut sind, lesen Sie die Artikel [Standardmäßige Installer-Befehlszeilenoptionen](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) und [Befehlszeilenoptionen](https://docs.microsoft.com/windows/win32/msi/command-line-options).
+Wenn Sie nicht mit den Befehlszeilenoptionen für Windows Installer-Pakete vertraut sind, lesen Sie die Artikel [Standardmäßige Installer-Befehlszeilenoptionen](/windows/win32/msi/standard-installer-command-line-options) und [Befehlszeilenoptionen](/windows/win32/msi/command-line-options).
 
 Führen Sie das Installationsprogramm z. B. mit dem Parameter `/?` aus, um die Hilfe- und Kurzübersichtsoption anzuzeigen. 
 
@@ -73,13 +75,13 @@ Führen Sie das Installationsprogramm z. B. mit dem Parameter `/?` aus, um die 
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
 ```
 
-Führen Sie den folgenden Befehl aus, um den Agent im Hintergrund zu installieren und eine Setupprotokolldatei im Ordner `C:\Support\Logs` zu erstellen.
+Führen Sie den folgenden Befehl aus, um den Agent im Hintergrund zu installieren und eine Setupprotokolldatei im vorhandenen Ordner `C:\Support\Logs` zu erstellen.
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
 ```
 
-Dateien für den Azure Connected Machine-Agent werden standardmäßig unter *C:\Programme\AzureConnectedMachineAgent* installiert. Sollte der Agent nach Abschluss des Setups nicht gestartet werden, suchen Sie in den Protokollen nach ausführlichen Fehlerinformationen. Das Protokollverzeichnis ist *%Programfiles%\AzureConnectedMachineAgentAgent\logs*.
+Sollte der Agent nach Abschluss des Setups nicht gestartet werden, suchen Sie in den Protokollen nach ausführlichen Fehlerinformationen. Das Protokollverzeichnis ist *%Programfiles%\AzureConnectedMachineAgentAgent\logs*.
 
 ### <a name="install-with-the-scripted-method"></a>Installieren mit der Skriptmethode
 
@@ -88,6 +90,8 @@ Dateien für den Azure Connected Machine-Agent werden standardmäßig unter *C:\
 1. Öffnen Sie eine PowerShell-Eingabeaufforderung mit erhöhten Rechten.
 
 1. Navigieren Sie zu dem Ordner bzw. zu der Freigabe, in den bzw. in die Sie das Skript kopiert haben, und führen Sie es auf dem Server aus, indem Sie das Skript `./OnboardingScript.ps1` ausführen.
+
+Sollte der Agent nach Abschluss des Setups nicht gestartet werden, suchen Sie in den Protokollen nach ausführlichen Fehlerinformationen. Das Protokollverzeichnis ist *%Programfiles%\AzureConnectedMachineAgentAgent\logs*.
 
 ### <a name="configure-the-agent-proxy-setting"></a>Konfigurieren der Proxyeinstellung für den Agent
 
@@ -109,7 +113,7 @@ Restart-Service -Name himds
 
 Nachdem Sie den Agent installiert haben, müssen Sie den folgenden Befehl ausführen, um den Agent für die Kommunikation mit dem Azure Arc-Dienst zu konfigurieren:
 
-`%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>Installieren und Überprüfen des Agents unter Linux
 
@@ -146,7 +150,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 Führen Sie nach Abschluss der Agent-Installation den folgenden Befehl aus, um den Agent für die Kommunikation mit dem Azure Arc-Dienst zu konfigurieren:
 
-`/opt/azcmagent/bin/azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`azcmagent connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Überprüfen der Verbindung mit Azure Arc
 

@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: a5d90106a85a61cbf499c4c08130392b922a45f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77593579"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402460"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
@@ -38,11 +38,6 @@ Microsoft verwaltet und überwacht die folgenden Komponenten über den Steuerung
 AKS ist keine vollständig verwaltete Clusterlösung. Einige Komponenten, z. B. Workerknoten, weisen eine *gemeinsame Verantwortung* auf, wobei Benutzer bei der Verwaltung des AKS-Clusters helfen müssen. Benutzereingaben sind z. B. erforderlich, um einen Sicherheitspatch für das Betriebssystem (OS) eines Workerknotens anzuwenden.
 
 Die Dienste sind in dem Sinne *verwaltet*, dass Microsoft und das AKS-Team die Dienste bereitstellen, betreiben und für deren Verfügbarkeit und Funktionalität verantwortlich sind. Kunden können diese verwalteten Komponenten nicht ändern. Microsoft beschränkt die Anpassung, um eine konsistente und skalierbare Benutzererfahrung zu gewährleisten. Eine vollständig anpassbare Lösung finden Sie unter [AKS-Engine](https://github.com/Azure/aks-engine).
-
-> [!NOTE]
-> AKS-Workerknoten werden im Azure Portal als reguläre Azure IaaS-Ressourcen angezeigt. Diese virtuellen Computer werden jedoch in einer benutzerdefinierten Azure-Ressourcengruppe bereitgestellt (mit dem Präfix MC\\\*). AKS-Workerknoten können geändert werden. Sie können z. B. mit Secure Shell (SSH) AKS-Workerknoten wie normale virtuelle Computer ändern (Sie können jedoch nicht das Basisimage des Betriebssystems ändern und Änderungen bleiben möglicherweise bei Updates oder Neustarts nicht erhalten), und Sie können andere Azure-Ressourcen an AKS-Workerknoten anfügen. Aber wenn Sie Änderungen bei der *Out-of-Band-Verwaltung und -Anpassung* vornehmen, kann der AKS-Cluster möglicherweise nicht mehr unterstützt werden. Vermeiden Sie Änderungen bei Workerknoten, es sei denn, Sie werden vom Microsoft-Support zum Vornehmen von Änderungen angewiesen.
-
-Wenn nicht unterstützte Vorgänge wie oben definiert ausgeführt werden, z. B. Aufhebung der Out-of-Band-Zuweisung aller Agent-Knoten, wird der Cluster nicht mehr unterstützt. AKS behält sich vor, Steuerungsebenen zu archivieren, die außerhalb der Supportrichtlinien für verlängerte Zeiträume ab 30 Tagen konfiguriert wurden. AKS verwaltet Sicherungen von etcd-Metadaten der Cluster und kann den Cluster jederzeit neu zuweisen. Diese erneute Zuweisung kann mit jedem PUT-Vorgang initiiert werden, der den Cluster wieder unterstützungsfähig macht, z. B. durch ein Upgrade oder eine Skalierung auf aktive Agent-Knoten.
 
 ## <a name="shared-responsibility"></a>Gemeinsame Verantwortung
 
@@ -104,8 +99,22 @@ Microsoft startet Workerknoten nicht automatisch neu, um Patches auf Betriebssys
 
 Die Kunden sind für die Durchführung von Kubernetes-Upgrades verantwortlich. Sie können Upgrades über die Azure-Systemsteuerung oder die Azure CLI durchführen. Dies gilt für Updates zur Verbesserung der Sicherheit oder Funktionalität von Kubernetes.
 
+#### <a name="user-customization-of-worker-nodes"></a>Benutzeranpassung von Workerknoten
 > [!NOTE]
-> Da es sich bei AKS um einen *verwalteten Dienst* handelt, besteht sein Endziel darin, jegliche Verantwortung für Patches, Updates und Protokollerfassung zu beseitigen, um die Dienstverwaltung umfassender und effektiver zu gestalten. Da die Kapazität des Diensts für die End-to-End-Verwaltung steigt, könnten zukünftige Versionen einige Funktionen auslassen (z. B. Neustart von Knoten und automatisches Patchen).
+> AKS-Workerknoten werden im Azure Portal als reguläre Azure IaaS-Ressourcen angezeigt. Diese virtuellen Computer werden jedoch in einer benutzerdefinierten Azure-Ressourcengruppe bereitgestellt (mit dem Präfix MC\\\*). Sie können die Standardkonfiguration Ihrer AKS-Workerknoten erweitern. Beispielsweise können Sie Secure Shell (SSH) verwenden, um AKS-Workerknoten regulär wie VMs zu konfigurieren. Das Basis-Betriebssystemimage kann jedoch nicht geändert werden. Benutzerdefinierte Änderungen werden möglicherweise nicht beibehalten, wenn Upgrades, Skalierungen, Updates oder Neustarts durchgeführt werden. Wenn Sie **jedoch** Änderungen vornehmen, die nicht mit den *Bedingungen für die AKS-API übereinstimmen*, wird der AKS-Cluster nicht mehr unterstützt. Vermeiden Sie Änderungen bei Workerknoten, es sei denn, Sie werden vom Microsoft-Support zum Vornehmen von Änderungen angewiesen.
+
+Wenn nicht unterstützte Vorgänge wie oben definiert ausgeführt werden, z. B. Aufhebung der Out-of-Band-Zuweisung aller Agent-Knoten, wird der Cluster nicht mehr unterstützt. AKS behält sich vor, Steuerungsebenen zu archivieren, die außerhalb der Supportrichtlinien für verlängerte Zeiträume ab 30 Tagen konfiguriert wurden. AKS verwaltet Sicherungen von etcd-Metadaten der Cluster und kann den Cluster jederzeit neu zuweisen. Diese erneute Zuweisung kann mit jedem PUT-Vorgang initiiert werden, der den Cluster wieder unterstützungsfähig macht, z. B. durch ein Upgrade oder eine Skalierung auf aktive Agent-Knoten.
+
+AKS verwaltet den Lebenszyklus und die Vorgänge von Workerknoten im Auftrag von Kunden. Das Ändern der IaaS-Ressourcen, die den Workerknoten zugeordnet sind, wird **nicht** unterstützt. Ein Beispiel für einen nicht unterstützten Vorgang ist das Anpassen einer VM-Skalierungsgruppe eines Knotenpools durch manuelles Ändern der Konfigurationen auf der VMSS über das VMSS-Portal oder die VMSS-API.
+ 
+Für workloadspezifische Konfigurationen oder Pakete empfiehlt AKS die Verwendung von [Kubernetes-Daemonsets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
+
+Durch die Verwendung von privilegierten Kubernetes-Daemonsets und -Startcontainern können Kunden Software von Drittanbietern auf Clusterworkerknoten optimieren, ändern oder installieren. Beispiele für solche Anpassungen sind das Hinzufügen von benutzerdefinierter Software für Sicherheitsscans oder das Aktualisieren von sysctl-Einstellungen.
+
+Dieser Ansatz wird empfohlen, wenn die oben genannten Anforderungen zutreffen. Das AKS-Engineeringteam und der AKS-Support können Sie nicht bei der Diagnose oder Behebung von Problemen unterstützen, die aus fehlerhaften Änderungen oder sonstigen Änderungen hervorgehen, durch die der Knoten aufgrund eines kundenseitig bereitgestellten Daemonsets nicht verfügbar ist.
+
+> [!NOTE]
+> Da es sich bei AKS um einen *verwalteten Dienst* handelt, besteht sein Zweck darin, jegliche Verantwortung für Patches, Updates und Protokollerfassung zu beseitigen, um die Dienstverwaltung umfassender und effektiver zu gestalten. Da die Kapazität des Diensts für die End-to-End-Verwaltung steigt, könnten zukünftige Versionen einige Funktionen auslassen (z. B. Neustart von Knoten und automatisches Patchen).
 
 ### <a name="security-issues-and-patching"></a>Sicherheitsprobleme und -patches
 

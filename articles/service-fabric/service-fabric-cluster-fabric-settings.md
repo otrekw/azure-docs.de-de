@@ -3,12 +3,12 @@ title: Ändern von Azure Service Fabric-Clustereinstellungen
 description: Dieser Artikel beschreibt die Fabric-Einstellungen und Fabric-Upgraderichtlinien, die Sie anpassen können.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: c2e280af814a3e10ad84c5ba07fc376868fcd851
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 05b0b132f45e1cc7fbb136c46a7596f480941178
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416244"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682992"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -57,7 +57,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |MinReplicaSetSize|Ganze Zahl, Standardwert 0|statischen|MinReplicaSetSize für BackupRestoreService |
 |PlacementConstraints|Zeichenfolge, Standardwert „“|statischen|    PlacementConstraints für den BackupRestore-Dienst |
 |SecretEncryptionCertThumbprint|Zeichenfolge, Standardwert „“|Dynamisch|Fingerabdruck des X509-Verschlüsselungszertifikats für das Geheimnis |
-|SecretEncryptionCertX509StoreName|Zeichenfolge, Standardwert ist „My“|    Dynamisch|    Gibt das Zertifikat für das Ver- und Entschlüsseln von Anmeldeinformationen und den Namen des X.509-Zertifikatspeichers für das Ver- und Entschlüsseln von Speicheranmeldeinformationen für den Sicherungs- und Wiederherstellungsdienst an |
+|SecretEncryptionCertX509StoreName|Zeichenfolge, empfohlener Wert ist „My“ (kein Standardwert) |    Dynamisch|    Gibt das Zertifikat für das Ver- und Entschlüsseln von Anmeldeinformationen und den Namen des X.509-Zertifikatspeichers für das Ver- und Entschlüsseln von Speicheranmeldeinformationen für den Sicherungs- und Wiederherstellungsdienst an |
 |TargetReplicaSetSize|Ganze Zahl, Standardwert ist „0“|statischen| TargetReplicaSetSize für BackupRestoreService |
 
 ## <a name="clustermanager"></a>ClusterManager

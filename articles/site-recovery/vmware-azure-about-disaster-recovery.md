@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6759b2c0f679a865d0bdcf8ea8cd39f258a9cf25
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954392"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132116"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Informationen zur Notfallwiederherstellung von virtuellen VMware-Computern in Azure
 
@@ -21,7 +21,7 @@ Dieser Artikel bietet eine Übersicht über die Notfallwiederherstellung von lok
 
 Eine Strategie für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) hilft Ihnen, Ihren Geschäftsbetrieb am Laufen zu halten. Mit einer BCDR-Strategie bleiben Daten bei geplanten und unerwarteten Ausfallzeiten gesichert und verfügbar. Zudem wird sichergestellt, dass Anwendungen weiter ausgeführt werden. Neben den Features der BCDR-Plattform wie z.B. Regionspaaren und der Speicherung mit Hochverfügbarkeit bietet Azure auch Recovery Services als Bestandteil Ihrer BCDR-Lösung. Recovery Services umfasst Folgendes: 
 
-- [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) sichert lokale Daten und Daten von virtuellen Azure-Computern. Sie können Dateien und Ordner, bestimmte Workloads oder einen vollständigen virtuellen Computer sichern. 
+- [Azure Backup](../backup/backup-overview.md) sichert lokale Daten und Daten von virtuellen Azure-Computern. Sie können Dateien und Ordner, bestimmte Workloads oder einen vollständigen virtuellen Computer sichern. 
 - [Azure Site Recovery](site-recovery-overview.md) bietet Datenresilienz und Notfallwiederherstellung für Anwendungen und Workloads, die auf lokalen Computern oder virtuellen Azure-IaaS-Computern ausgeführt werden. Site Recovery orchestriert die Replikation und führt bei Ausfällen ein Failover in Azure aus. Zudem wird die Wiederherstellung aus Azure an Ihrem primären Standort durchgeführt. 
 
 ## <a name="how-does-site-recovery-do-disaster-recovery"></a>Wie wird die Notfallwiederherstellung mithilfe von Site Recovery durchgeführt?

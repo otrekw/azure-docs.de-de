@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7b02560d1e7b7c34a4d87dbdc468a85362aca4f7
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993803"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103958"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Arbeiten mit der vorherigen Version von Azure Migrate
 
@@ -92,7 +92,7 @@ Die Bereitschaft berücksichtigt eine Reihe von VM-Eigenschaften, um festzustell
 --- | --- | ---
 **Starttyp** | BIOS wird unterstützt. VM wird nicht unterstützt. | Bedingt bereit, wenn der Starttyp UEFI ist.
 **Kerne** | Computerkern <= maximale Anzahl von Kernen (128), die für eine Azure-VM unterstützt werden.<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate die genutzten Kerne.<br/>Wenn in den Bewertungseinstellungen ein Komfortfaktor festgelegt ist, wird die Anzahl der genutzten Kerne mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Leistungsverlauf vorhanden ist, verwendet Azure Migrate die zugeordneten Kerne ohne Anwendung des Komfortfaktors. | Bereit, wenn kleiner als die Grenzwerte oder gleich diesen.
-**Memory** | Größe des Computerarbeitsspeichers <= maximal zulässiger Arbeitsspeicher (3.892GB bei Azure M-Serie Standard_M128m&nbsp;<sup>2</sup>) für einen virtuellen Azure-Computer. [Weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate dem genutzten Arbeitsspeicher.<br/><br/>Wenn ein Komfortfaktor festgelegt ist, wird der genutzte Arbeitsspeicher mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete Arbeitsspeicher ohne Anwendung des Komfortfaktors verwendet.<br/><br/> | Bereit, wenn innerhalb der Grenzen.
+**Memory** | Größe des Computerarbeitsspeichers <= maximal zulässiger Arbeitsspeicher (3.892GB bei Azure M-Serie Standard_M128m&nbsp;<sup>2</sup>) für einen virtuellen Azure-Computer. [Weitere Informationen](../virtual-machines/windows/sizes.md)<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate dem genutzten Arbeitsspeicher.<br/><br/>Wenn ein Komfortfaktor festgelegt ist, wird der genutzte Arbeitsspeicher mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete Arbeitsspeicher ohne Anwendung des Komfortfaktors verwendet.<br/><br/> | Bereit, wenn innerhalb der Grenzen.
 **Speicherdatenträger** | Die zugeteilte Größe eines Datenträgers darf höchstens 4 TB (4096 GB) betragen.<br/><br/> An den Computer dürfen einschließlich des Betriebssystem-Datenträgers höchstens 65 Datenträger angefügt sein. | Bereit, wenn innerhalb der Grenzen.
 **Netzwerk** | An einen Computer dürfen höchstens 32 NICs angefügt sein. | Bereit, wenn innerhalb der Grenzen.
 
@@ -114,8 +114,8 @@ Windows Server 2008 R2 und alle SPs | Azure bietet vollständige Unterstützung.
 Windows Server 2008 (32-Bit und 64-Bit) | Azure bietet vollständige Unterstützung. | Bereit für Azure
 Windows Server 2003, 2003 R2 | Nicht mehr unterstützt und benötigen eine [benutzerdefinierte Supportvereinbarung (CSA)](https://aka.ms/WSosstatement) für die Unterstützung in Azure. | Bedingt bereit für Azure, erwägen Sie ein Upgrade des Betriebssystems vor der Migration zu Azure.
 Windows 2000, 98, 95, NT, 3.1, MS-DOS | Nicht mehr unterstützt. Der Computer kann ggf. in Azure gestartet werden, von Azure wird jedoch keine Unterstützung des Betriebssystems bereitgestellt. | Bedingt bereit für Azure, es empfiehlt sich ein Upgrade des Betriebssystems vor der Migration zu Azure.
-Windows Client 7, 8 und 10 | Azure bietet [nur mit Visual Studio-Abonnement](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) Unterstützung. | Bedingt bereit für Azure
-Windows 10 Pro Desktop | Azure bietet Unterstützung mit [mehrinstanzenfähigen Hostingrechten](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment). | Bedingt bereit für Azure
+Windows Client 7, 8 und 10 | Azure bietet [nur mit Visual Studio-Abonnement](../virtual-machines/windows/client-images.md) Unterstützung. | Bedingt bereit für Azure
+Windows 10 Pro Desktop | Azure bietet Unterstützung mit [mehrinstanzenfähigen Hostingrechten](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md). | Bedingt bereit für Azure
 Windows Vista, XP Professional | Nicht mehr unterstützt. Der Computer kann ggf. in Azure gestartet werden, von Azure wird jedoch keine Unterstützung des Betriebssystems bereitgestellt. | Bedingt bereit für Azure, es empfiehlt sich ein Upgrade des Betriebssystems vor der Migration zu Azure.
 Linux | Azure empfiehlt diese [Linux-Betriebssysteme](../virtual-machines/linux/endorsed-distros.md). Andere Linux-Betriebssysteme können in Azure gestartet werden. Es empfiehlt sich jedoch ein Upgrade des jeweiligen Betriebssystems auf eine unterstützte Version vor der Migration zu Azure. | Bereit für Azure, wenn die Version unterstützt wird.<br/><br/>Bedingt bereit, wenn die Version nicht unterstützt wird.
 Andere Betriebssysteme<br/><br/> Beispielsweise Oracle Solaris, Apple Mac OS, FreeBSD usw. | Azure unterstützt diese Betriebssysteme nicht. Der Computer kann in Azure gestartet werden, es wird jedoch keine Unterstützung des Betriebssystems bereitgestellt. | Bedingt bereit für Azure, es empfiehlt sich die Installation eines unterstützten Betriebssystems vor der Migration zu Azure.  
@@ -240,11 +240,11 @@ Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[Erfahren Sie mehr](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) über die Liste der Unterstützungen durch den MMA für Linux-Betriebssysteme.
+[Erfahren Sie mehr](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) über die Liste der Unterstützungen durch den MMA für Linux-Betriebssysteme.
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Installieren des MMA-Agents auf einem Computer, der von Operations Manager überwacht wird
 
-Bei Computern, die von System Center Operations Manager 2012 R2 oder höher überwacht werden, besteht keine Notwendigkeit den MMA-Agent zu installieren. Die Dienstzuordnung wird in den MMA von Operations Manager integriert, um die erforderlichen Abhängigkeitsdaten zu erfassen. [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites) Der Abhängigkeits-Agent muss installiert werden.
+Bei Computern, die von System Center Operations Manager 2012 R2 oder höher überwacht werden, besteht keine Notwendigkeit den MMA-Agent zu installieren. Die Dienstzuordnung wird in den MMA von Operations Manager integriert, um die erforderlichen Abhängigkeitsdaten zu erfassen. [Weitere Informationen](../azure-monitor/insights/service-map-scom.md#prerequisites) Der Abhängigkeits-Agent muss installiert werden.
 
 ### <a name="install-the-dependency-agent"></a>Installieren des Abhängigkeits-Agents
 
@@ -274,7 +274,7 @@ Bei Computern, die von System Center Operations Manager 2012 R2 oder höher übe
 4. Sie können Abhängigkeiten für verschiedene Zeiträume anzeigen, indem Sie im Zeitbereich auf die Zeitdauer klicken. Standardmäßig ist ein Bereich von einer Stunde ausgewählt. Sie können den Zeitraum ändern oder das Start- und Enddatum und die Dauer angeben.
 
    > [!NOTE]
-   >    Ein Zeitraum von bis zu einer Stunde wird unterstützt. Verwenden Sie Azure Monitor-Protokolle zum [Abfragen von Abhängigkeitsdaten](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) über einen längeren Zeitraum.
+   >    Ein Zeitraum von bis zu einer Stunde wird unterstützt. Verwenden Sie Azure Monitor-Protokolle zum [Abfragen von Abhängigkeitsdaten](./how-to-create-group-machine-dependencies.md) über einen längeren Zeitraum.
 
 5. Nachdem Sie abhängige Computer identifiziert haben, die Sie gruppieren möchten, können Sie die gewünschten Computer mit Strg+Klick auswählen und auf **Computer gruppieren** klicken.
 6. Geben Sie einen Gruppennamen an. Stellen Sie sicher, dass die abhängigen Computer von Azure Migrate ermittelt werden.
@@ -289,7 +289,7 @@ Nach der Erstellung der Gruppe wird empfohlen, alle Agents auf sämtlichen Compu
 
 ## <a name="query-dependency-data-from-azure-monitor-logs"></a>Abfragen von Abhängigkeitsdaten aus Azure Monitor-Protokollen
 
-Von der Dienstzuordnung erfasste Abhängigkeitsdaten stehen zur Abfrage im Log Analytics-Arbeitsbereich zur Verfügung, der Ihrem Azure Migrate-Projekt zugeordnet ist. [Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) über die Dienstzuordnungs-Datentabellen, die in Azure Monitor-Protokollen abgefragt werden sollen. 
+Von der Dienstzuordnung erfasste Abhängigkeitsdaten stehen zur Abfrage im Log Analytics-Arbeitsbereich zur Verfügung, der Ihrem Azure Migrate-Projekt zugeordnet ist. [Erfahren Sie mehr](../azure-monitor/insights/service-map.md#log-analytics-records) über die Dienstzuordnungs-Datentabellen, die in Azure Monitor-Protokollen abgefragt werden sollen. 
 
 So führen Sie die Kusto-Abfragen aus:
 
@@ -299,15 +299,15 @@ So führen Sie die Kusto-Abfragen aus:
 4. Schreiben Sie Ihre Abfrage, um mit Azure Monitor-Protokollen Abhängigkeitsdaten zu sammeln. Beispielabfragen finden Sie im nächsten Abschnitt.
 5. Führen Sie Ihre Abfrage aus, indem Sie auf „Ausführen“ klicken. 
 
-[Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) über das Schreiben von Kusto-Abfragen. 
+[Erfahren Sie mehr](../azure-monitor/log-query/get-started-portal.md) über das Schreiben von Kusto-Abfragen. 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Beispielabfragen für Azure Monitor-Protokolle
 
-Nachfolgend finden Sie Beispielabfragen, mit denen Sie Abhängigkeitsdaten extrahieren können. Sie können die Abfragen ändern, um Ihre bevorzugten Datenpunkte zu extrahieren. Eine vollständige Liste der Felder in Abhängigkeitsdatensätzen ist [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) verfügbar. Weitere Beispielabfragen finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+Nachfolgend finden Sie Beispielabfragen, mit denen Sie Abhängigkeitsdaten extrahieren können. Sie können die Abfragen ändern, um Ihre bevorzugten Datenpunkte zu extrahieren. Eine vollständige Liste der Felder in Abhängigkeitsdatensätzen ist [hier](../azure-monitor/insights/service-map.md#log-analytics-records) verfügbar. Weitere Beispielabfragen finden Sie [hier](../azure-monitor/insights/service-map.md#sample-log-searches).
 
 #### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Zusammenfassen von eingehenden Verbindungen in einer Gruppe von Computern
 
-Die Datensätze in der Tabelle für Verbindungsmetriken „VMConnection“ stellen keine einzelnen physischen Netzwerkverbindungen dar. Mehrere physische Netzwerkverbindungen werden in einer logischen Verbindung gruppiert. Weitere Informationen dazu, wie Daten von physischen Netzwerkverbindungen in einem einzelnen logischen Datensatz in VMConnection aggregiert werden, finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections). 
+Die Datensätze in der Tabelle für Verbindungsmetriken „VMConnection“ stellen keine einzelnen physischen Netzwerkverbindungen dar. Mehrere physische Netzwerkverbindungen werden in einer logischen Verbindung gruppiert. Weitere Informationen dazu, wie Daten von physischen Netzwerkverbindungen in einem einzelnen logischen Datensatz in VMConnection aggregiert werden, finden Sie [hier](../azure-monitor/insights/service-map.md#connections). 
 
 ```
 // the machines of interest

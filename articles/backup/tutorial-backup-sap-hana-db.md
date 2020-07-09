@@ -3,12 +3,12 @@ title: 'Tutorial: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Compute
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, in einem Azure Backup Recovery Services-Tresor sichern.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: cb1fc4c1b9bfa2025850f16d175ba83bd5ee1470
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 123f27a6e2114ed17cbb5e11b34202c17ba69a2d
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747229"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770729"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer
 
@@ -22,21 +22,24 @@ In diesem Tutorial wird veranschaulicht, wie Sie SAP HANA-Datenbanken, die auf 
 
 [Hier](sap-hana-backup-support-matrix.md#scenario-support) finden Sie alle Szenarien, die von uns derzeit unterstützt werden.
 
+>[!NOTE]
+>[Erste Schritte](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) mit SAP HANA-Sicherung (Vorschau) für RHEL (7.4, 7.6, 7.7 oder 8.1). Für weitere Anfragen schreiben Sie uns unter [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Führen Sie vor dem Konfigurieren von Sicherungen unbedingt die folgenden Schritte aus:
 
+* Bestimmen oder erstellen Sie einen [Recovery Services-Tresor](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) in derselben Region und demselben Abonnement wie die VM, auf der SAP HANA ausgeführt wird.
 * Lassen Sie eine Verbindung des virtuellen Computers mit dem Internet zu, damit er Azure erreichen kann. Dies ist unten im Abschnitt [Einrichten der Netzwerkkonnektivität](#set-up-network-connectivity) beschrieben.
+* Stellen Sie sicher, dass der Name der SAP HANA-Server-VM und der Ressourcengruppenname zusammen 84 Zeichen für Azure Resoure Manager (VMs vom Typ „ARM_“) bzw. 77 Zeichen für klassische VMs nicht überschreiten. Diese Einschränkung ist darauf zurückzuführen, dass einige Zeichen vom Dienst reserviert werden.
 * In **hdbuserstore** sollte ein Schlüssel enthalten sein, der die folgenden Kriterien erfüllt:
-  * Er sollte sich im Standardspeicher **hdbuserstore** befinden.
+  * Er sollte sich im Standardspeicher **hdbuserstore** befinden. Standard ist das Konto `<sid>adm`, unter dem SAP HANA installiert ist.
   * Für MDC sollte der Schlüssel auf den SQL-Port von **NAMESERVER** verweisen. Für SDC sollte er auf den SQL-Port von **INDEXSERVER** verweisen.
   * Es sollten Anmeldeinformationen zum Hinzufügen und Löschen von Benutzern vorhanden sein.
 * Führen Sie das Skript für die SAP HANA-Sicherungskonfiguration (Vorregistrierungsskript) auf dem virtuellen Computer, auf dem HANA installiert ist, als Stammbenutzer aus. Mit [diesem Skript](https://aka.ms/scriptforpermsonhana) wird das HANA-System für die Sicherung vorbereitet. Weitere Informationen zum Vorregistrierungsskript finden Sie unter [Aufgaben des Vorregistrierungsskripts](#what-the-pre-registration-script-does).
 
 >[!NOTE]
->Azure Backup passt Änderungen an der Sommer- oder Winterzeit bei der Sicherung einer auf einem virtuellen Azure-Computer ausgeführten SAP HANA-Datenbank nicht automatisch an.
->
->Ändern Sie die Richtlinie nach Bedarf manuell.
+>Das Vorregistrierungsskript installiert **compat-unixODBC234** für SAP HANA-Workloads, die auf RHEL (7.4, 7.6 und 7.7) ausgeführt werden, sowie **unixODBC** für RHEL 8.1. [Dieses Paket befindet sich im Repository RHEL for SAP HANA (für RHEL 7 Server) Update Services für SAP-Lösungen (RPMs)](https://access.redhat.com/solutions/5094721).  Das Repository für das Azure Marketplace RHEL-Image wäre **rhui-rhel-sap-hana-for-rhel-7-server-rhui-e4s-rpms**.
 
 ## <a name="set-up-network-connectivity"></a>Einrichten der Netzwerkkonnektivität
 
@@ -99,7 +102,7 @@ Verwenden eines HTTP-Proxys | Feinsteuerung im Proxy über die Speicher-URLs zul
 
 Beim Ausführen des Skripts für die Vorregistrierung wird Folgendes durchgeführt:
 
-* Es werden alle Pakete installiert bzw. aktualisiert, die vom Azure Backup-Agent Ihrer Distribution benötigt werden.
+* Je nach Ihrer Linux-Distribution werden alle Pakete installiert bzw. aktualisiert, die vom Azure Backup-Agent benötigt werden.
 * Es werden Konnektivitätsprüfungen in ausgehender Richtung mit Azure Backup-Servern und abhängigen Diensten wie Azure Active Directory und Azure Storage durchgeführt.
 * Die Anmeldung bei Ihrem HANA-System erfolgt mit dem Benutzerschlüssel, der Teil der [Voraussetzungen](#prerequisites) ist. Der Benutzerschlüssel wird zum Erstellen eines Sicherungsbenutzers (AZUREWLBACKUPHANAUSER) im HANA-System verwendet und kann gelöscht werden, nachdem das Vorregistrierungsskript erfolgreich ausgeführt wurde.
 * AZUREWLBACKUPHANAUSER werden die folgenden erforderlichen Rollen und Berechtigungen zugewiesen:

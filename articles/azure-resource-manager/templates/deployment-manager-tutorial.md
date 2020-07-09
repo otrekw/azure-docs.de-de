@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ad79721b88f886426d658ed6ee89c4969e1f1baa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 43291bdaa277c06262be2d7bb5ba8d3f61ff35ea
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75470285"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056887"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (Public Preview)
 
@@ -40,7 +40,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 Zusätzliche Ressourcen:
 
-* Die [REST-API-Referenz für den Azure-Bereitstellungs-Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* Die [REST-API-Referenz für den Azure-Bereitstellungs-Manager](/rest/api/deploymentmanager/).
 * [Tutorial: Verwenden der Integritätsprüfung im Azure-Bereitstellungs-Manager (Public Preview)](./deployment-manager-tutorial-health-check.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -52,7 +52,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 * Etwas Erfahrung mit der Entwicklung von [Azure Resource Manager-Vorlagen](overview.md).
-* Azure PowerShell. Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Azure PowerShell. Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](/powershell/azure/get-started-azureps).
 * Bereitstellungs-Manager-Cmdlets. Um diese vorab veröffentlichten Cmdlets installieren zu können, benötigen Sie die neueste Version von PowerShellGet. Informationen zum Beziehen der neuesten Version finden Sie unter [Installieren von PowerShellGet](/powershell/scripting/gallery/installing-psget). Schließen Sie nach dem Installieren von PowerShellGet das PowerShell-Fenster. Öffnen Sie ein neues PowerShell-Fenster mit erhöhten Rechten, und führen Sie den folgenden Befehl aus:
 
     ```powershell

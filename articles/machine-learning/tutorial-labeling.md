@@ -10,14 +10,14 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: d960c8225cbb22c221ecaec1b7c49b5bb20c1429
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203640"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628386"
 ---
-# <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung 
+# <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts (Vorschau) für mehrklassige Bildklassifizierung 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dieses Tutorial zeigt Ihnen, wie Sie den Prozess der Beschriftung (auch als Tagging bezeichnet) von Bildern verwalten, die als Daten für die Erstellung von Machine Learning-Modellen verwendet werden sollen. Die Datenbeschriftung in Azure Machine Learning ist in der Public Preview-Phase.
@@ -77,13 +77,13 @@ Azure Machine Learning-Datenspeicher werden zum Speichern von Verbindungsinforma
 
 ### <a name="create-a-labeling-project"></a>Erstellen eines Beschriftungsprojekts
 
-Da Sie nun Ihre Liste von Beschriftungserstellern und Zugriff auf die Daten haben, die Sie beschriften lassen möchten, erstellen Sie Ihr Beschriftungsprojekt.
+Da Sie nun Zugriff auf die Daten haben, die Sie beschriften lassen möchten, erstellen Sie Ihr Beschriftungsprojekt.
 
 1. Wählen Sie oben auf der Seite **Projekte** aus.
 
 1. Wählen Sie **+ Projekt hinzufügen** aus.
 
-    ![Erstellen eines Projekts](media/tutorial-labeling/create-project.png)
+    :::image type="content" source="media/tutorial-labeling/create-project.png" alt-text="Erstellen eines Projekts":::
 
 ### <a name="project-details"></a>Projektdetails
 
@@ -109,6 +109,12 @@ Da Sie nun Ihre Liste von Beschriftungserstellern und Zugriff auf die Daten habe
     1. Wählen Sie den Kreis neben dem Namen des Datasets in der Liste aus, z. B. **images-for-tutorial**.
 
 1. Wählen Sie **Weiter** aus, um die Erstellung des Projekts fortzusetzen.
+
+### <a name="incremental-refresh"></a>Inkrementelle Aktualisierung
+
+Wenn Sie dem Dataset neue Bilder hinzufügen möchten, werden diese von der inkrementellen Aktualisierung ermittelt und Ihrem Projekt hinzugefügt.  Wenn Sie diese Funktion aktivieren, sucht das Projekt regelmäßig nach neuen Bildern.  Lassen Sie diese Funktion deaktiviert, da Sie dem Datenspeicher in diesem Tutorial keine neuen Bilder hinzufügen.
+
+Klicken Sie auf **Weiter**, um fortzufahren.
 
 ### <a name="label-classes"></a>Beschriftungsklassen
 

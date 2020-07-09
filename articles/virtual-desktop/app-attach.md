@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ec69a9906eabb4ce56f79b1b88c2b5f2440f84b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c23528fbb60b471a7613f372fe5316a4883ae733
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612468"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310613"
 ---
 # <a name="set-up-msix-app-attach"></a>Einrichten des MSIX-Features zum Anfügen von Apps
 
@@ -28,20 +28,21 @@ In diesem Thema wird erläutert, wie Sie das MSIX-Feature zum Anfügen von Apps 
 Bevor Sie beginnen, müssen Sie Folgendes für das MSIX-Feature zum Anfügen von Apps konfigurieren:
 
 - Zugriff auf das Windows-Insider-Portal, um die Version von Windows 10 mit Unterstützung für die APIs für das MSIX-Feature zum Anfügen von Apps abzurufen.
-- Eine funktionierende Windows Virtual Desktop-Bereitstellung. Weitere Informationen finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
+- Eine funktionierende Windows Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung der Windows Virtual Desktop-Release vom Herbst 2019 finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zur Bereitstellung der Windows Virtual Desktop-Release vom Frühjahr 2020 finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
+
 - Das MSIX-Pakettool
 - Eine Netzwerkfreigabe in der Windows Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird
 
-## <a name="get-the-os-image"></a>Abrufen des Betriebssystemimages
+## <a name="get-the-os-image-from-the-technology-adoption-program-tap-portal"></a>Abrufen des Betriebssystemimages aus dem TAP-Portal (Technology Adoption Program)
 
-Zunächst müssen Sie das Betriebssystemimage abrufen, das Sie für die MSIX-App verwenden. So rufen Sie das Betriebssystemimage ab:
+So rufen Sie das Betriebssystemimage aus dem Windows Insider-Portal ab:
 
 1. Öffnen Sie das [Windows-Insider-Portal](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0), und melden Sie sich an.
 
      >[!NOTE]
      >Sie müssen Mitglied des Windows-Insider-Programms sein, um auf das Windows-Insider-Portal zugreifen zu können. Weitere Informationen zum Windows-Insider-Programm finden Sie in unserer [Dokumentation zu Windows-Insider](/windows-insider/at-home/).
 
-2. Scrollen Sie nach unten zum Abschnitt **Edition auswählen**, und wählen Sie **Windows 10 Insider Preview Enterprise (FAST) – Build 19035** aus.
+2. Scrollen Sie nach unten zum Abschnitt **Edition auswählen**, und wählen Sie **Windows 10 Insider Preview Enterprise (FAST) – Build 19041** oder höher aus.
 
 3. Wählen Sie **Bestätigen** aus, und wählen Sie dann die gewünschte Sprache aus. Wählen Sie anschließend **Bestätigen** erneut aus.
     
@@ -49,6 +50,21 @@ Zunächst müssen Sie das Betriebssystemimage abrufen, das Sie für die MSIX-App
      >Zurzeit ist Englisch die einzige Sprache, die mit dem Feature getestet wurde. Sie können andere Sprachen auswählen, aber sie werden möglicherweise nicht wie vorgesehen angezeigt.
     
 4. Wenn der Downloadlink generiert wird, wählen Sie den **64-Bit-Download** aus, und speichern Sie ihn auf der lokalen Festplatte.
+
+## <a name="get-the-os-image-from-the-azure-portal"></a>Abrufen des Betriebssystemimages aus dem Azure-Portal
+
+So rufen Sie das Betriebssystemimage aus dem Azure-Portal ab:
+
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich an.
+
+2. Wechseln Sie zu **Erstellen eines virtuellen Computers**.
+
+3. Wählen Sie auf der Registerkarte **Grundlegend** die Option **Windows 10 Enterprise (mehrere Sitzungen), Version 2004**aus.
+      
+4. Befolgen Sie die weiteren Anweisungen, um die Erstellung des virtuellen Computers durchzuführen.
+
+     >[!NOTE]
+     >Mit dieser VM können Sie das Anfügen der MSIX-App direkt testen. Weitere Informationen finden Sie weiter unten unter [Generieren eines VHD- oder VHDX-Pakets für MSIX](#generate-a-vhd-or-vhdx-package-for-msix). Lesen Sie andernfalls diesen Abschnitt.
 
 ## <a name="prepare-the-vhd-image-for-azure"></a>Vorbereiten des VHD-Images für Azure 
 
@@ -73,6 +89,14 @@ rem Disable Windows Update:
 
 sc config wuauserv start=disabled
 ```
+
+Nachdem Sie die automatischen Updates deaktiviert haben, müssen Sie Hyper-V aktivieren, da Sie den „Mount-VHD“-Befehl zum Stagen und „Dismount-VHD“ zum Aufheben des Stagings verwenden. 
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+>[!NOTE]
+>Diese Änderung erfordert, dass Sie den virtuellen Computer neu starten.
 
 Bereiten Sie im nächsten Schritt die VM-VHD für Azure vor, und laden Sie den sich ergebenden VHD-Datenträger in Azure hoch. Weitere Informationen finden Sie unter [Vorbereiten und Anpassen eines VHD-Masterimages](set-up-customize-master-image.md).
 
@@ -257,7 +281,7 @@ Bevor Sie die PowerShell-Skripts aktualisieren, stellen Sie sicher, dass Sie üb
 
     {
 
-    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
 
     Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 
@@ -452,4 +476,4 @@ catch [Exception]
 
 Dieses Feature wird zurzeit nicht unterstützt, aber Sie können der Community in der [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) Fragen stellen.
 
-Sie können Feedback zu Windows Virtual Desktop auch auf dem [Windows Virtual Desktop-Feedback-Hub](https://aka.ms/MRSFeedbackHub) oder für die MSIX-App und das Pakettool auf dem [Feedback-Hub für das Feature zum Anfügen von Apps](https://aka.ms/msixappattachfeedback) und dem [Feedback-Hub für das MSIX-Pakettool](https://aka.ms/msixtoolfeedback) hinterlassen.
+Sie können Ihr Feedback in Bezug auf Windows Virtual Desktop auch im [Windows Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) hochladen.

@@ -3,12 +3,12 @@ title: SharePoint-Dateien – QnA Maker
 description: Fügen Sie Ihrer Wissensdatenbank geschützte SharePoint-Datenquellen hinzu, um sie um Fragen und Antworten zu erweitern, die mit Active Directory geschützt werden können.
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 6f05079e39c8afb001bd4ba09d68f435c18efad5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93f17e79834b412ce0babf220ba13649ae07718c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294878"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660308"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Hinzufügen einer geschützten SharePoint-Datenquelle zu Ihrer Wissensdatenbank
 
@@ -32,7 +32,7 @@ Sie können Ihrer Wissensdatenbank alle von QnA Maker unterstützten [Dateitypen
 
    ![Rufen Sie die URL der SharePoint-Datei ab, indem Sie das Menü mit den Auslassungszeichen der Datei auswählen und die URL kopieren.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. Navigieren Sie im QnA Maker-Portal zur Seite **Einstellungen**, und [fügen Sie die URL der Wissensdatenbank hinzu](manage-knowledge-bases.md#edit-knowledge-base).
+1. Navigieren Sie im QnA Maker-Portal zur Seite **Einstellungen**, und fügen Sie der Wissensdatenbank die URL hinzu.
 
 ### <a name="images-with-sharepoint-files"></a>Bilder mit SharePoint-Dateien
 

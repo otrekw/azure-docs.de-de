@@ -1,19 +1,19 @@
 ---
 title: Anfügen an Azure Blockchain Service mithilfe von Geth
 description: Anfügen an eine Geth-Instanz in einem Azure Blockchain Service-Transaktionsknoten
-ms.date: 11/20/2019
+ms.date: 05/26/2020
 ms.topic: quickstart
-ms.reviewer: janders
-ms.openlocfilehash: 9da78eac1dc429bcc0ad52bb9cb2f1fb743a90d4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.reviewer: maheshna
+ms.openlocfilehash: 2c5b6a56d96ac132949052e9879c8f61d41ffb06
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74455835"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994773"
 ---
 # <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Schnellstart: Anfügen an einen Azure Blockchain Service-Transaktionsknoten mithilfe von Geth
 
-In dieser Schnellstartanleitung verwenden Sie den Geth-Client, um eine Anfügung an eine Geth-Instanz in einem Azure Blockchain Service-Transaktionsknoten durchzuführen. Nach dem Anfügen verwenden Sie die Geth-JavaScript-Konsole, um eine Web3-JavaScript-DApp-API aufzurufen.
+In dieser Schnellstartanleitung verwenden Sie den Geth-Client, um eine Anfügung an eine Geth-Instanz in einem Azure Blockchain Service-Transaktionsknoten durchzuführen. Nach dem Anfügen rufen Sie über die Geth-Konsole eine Ethereum-JavaScript-API auf.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,7 +45,7 @@ Sie können die Geth-Verbindungszeichenfolge für einen Azure Blockchain Service
     geth attach <connection string>
     ```
 
-1. Sobald eine Verbindung mit der Ethereum-Konsole des Transaktionsknotens hergestellt wurde, können Sie die Web3-JavaScript- DApp-API oder die Administrator-API aufrufen.
+1. Sobald eine Verbindung mit der Ethereum-Konsole des Transaktionsknotens hergestellt wurde, können Sie die Ethereum-JavaScript-API aufrufen.
 
     Mit der folgenden API können Sie beispielsweise den Wert von chainId ermitteln:
 

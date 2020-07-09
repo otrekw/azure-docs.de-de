@@ -1,18 +1,16 @@
 ---
 title: Dashboard „Zusammenfassung“ für Partner Center-Analysen im kommerziellen Marketplace
 description: Erfahren Sie, wie Sie über das Dashboard „Zusammenfassung“ im Partner Center auf Diagramme, Trends und Werte von aggregierten Daten zugreifen, mit deren Hilfe Marketplace-Aktivitäten zusammengefasst werden.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 86bce85c6ec273b4ab5f9f00cbae68fc054f53f5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 39b963fe40d26d498e69b8fc9bbb62ce514bef39
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262399"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109143"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Zusammenfassung“ in Analysen für den kommerziellen Marketplace
 
@@ -70,7 +68,7 @@ Die Heatmap **Kunden nach Geografie** zeigt die Kundenanzahl auf einer Weltkarte
 - Sie können die Karte verschieben, um den genauen Standort anzuzeigen.
 - Sie können an einen bestimmten Ort zoomen.
 - Das Wärmebild verfügt über ein zusätzliches Raster, um Details zur Anzahl der Kunden oder Aufträge und zu den normalisierten Nutzungsstunden an einem bestimmten Ort anzuzeigen.
-- Sie können ein Land im Raster suchen und auswählen, um an den Ort in der Karte zu zoomen. Um wieder zur ursprünglichen Ansicht zurückzukehren, drücken Sie die Taste **Home** in der Karte.
+- Sie können ein Land oder eine Region im Raster suchen und auswählen, um an den Ort in der Karte zu zoomen. Um wieder zur ursprünglichen Ansicht zurückzukehren, drücken Sie die Taste **Home** in der Karte.
 - Ein **Neukunde** hat eines Ihrer Angebote im Laufe des Monats innerhalb des ausgewählten Datumsbereichs zum ersten Mal gekauft.
 
 ### <a name="growth-trend-charts"></a>Wachstumstrenddiagramme
@@ -119,6 +117,6 @@ Im Diagramm **Kostenlose SaaS-Testversionsaufträge – Trend** wird der Auftrag
 - Informationen zu Ihren Aufträgen in einem grafischen und herunterladbaren Format finden Sie unter [Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace](./orders-dashboard.md).
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](./usage-dashboard.md).
 - Ausführliche Informationen zu Ihren Kunden, einschließlich Wachstumstrends, finden Sie unter [Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace](./customer-dashboard.md).
-- Eine Liste Ihrer Downloadanforderungen in den letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
-- Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote in Azure Marketplace und AppSource finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](./ratings-reviews.md).
+- Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
+- Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in AppSource finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](./ratings-reviews.md).
 - Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace](./faq-terminology.md).

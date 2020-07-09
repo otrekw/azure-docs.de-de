@@ -11,14 +11,14 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f26aafc771998ea73d1a4f97f0e960a94f6775c3
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 5935efca138d156507e2e3fefa65d045f618a57b
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626716"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020828"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Laden von Daten aus Azure Data Lake Storage für SQL Analytics
+# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Laden von Daten aus Azure Data Lake Storage für Synapse SQL
 
 In dieser Anleitung erfahren Sie, wie Sie mithilfe externer PolyBase-Tabellen Daten aus Azure Data Lake Storage laden. Obwohl Sie Ad-hoc-Abfragen für Daten ausführen können, die in Data Lake Storage gespeichert sind, sollten Sie die Daten zur Leistungsoptimierung importieren.
 
@@ -93,7 +93,7 @@ WITH
 
 ## <a name="create-the-external-data-source"></a>Erstellen der externen Datenquelle
 
-Verwenden Sie den Befehl [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), um den Speicherort der Daten zu speichern. Wenn Sie sich mit AAD-Pass-Through authentifizieren, ist der CREDENTIAL-Parameter nicht erforderlich. Wenn Sie sich mit der verwalteten Identität für Dienstendpunkte authentifizieren, folgen Sie den Anleitungen in dieser [Dokumentation](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-synapse-analytics-polybase), um die externe Datenquelle einzurichten.
+Verwenden Sie den Befehl [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), um den Speicherort der Daten zu speichern. Wenn Sie sich mit AAD-Pass-Through authentifizieren, ist der CREDENTIAL-Parameter nicht erforderlich. Wenn Sie sich mit der verwalteten Identität für Dienstendpunkte authentifizieren, folgen Sie den Anleitungen in dieser [Dokumentation](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-synapse-polybase), um die externe Datenquelle einzurichten.
 
 ```sql
 -- C (for Gen1): Create an external data source

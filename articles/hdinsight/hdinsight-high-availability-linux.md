@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849662"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight
 
@@ -245,8 +245,10 @@ Sie können auch über das SSH File Transfer Protocol oder das Secure File Trans
 
 Wenn die Verbindung hergestellt ist, wird die Eingabeaufforderung `sftp>` angezeigt. An dieser Eingabeaufforderung können Sie Verzeichnisse wechseln sowie Dateien hoch- und herunterladen. Durch die folgenden Befehle wird z.B. zum Verzeichnis **/var/log/hadoop/hdfs** gewechselt, und anschließend werden alle Dateien in diesem Verzeichnis heruntergeladen.
 
-    cd /var/log/hadoop/hdfs
-    get *
+```bash
+cd /var/log/hadoop/hdfs
+get *
+```
 
 Um eine Liste aller verfügbaren Befehle zu erhalten, geben Sie an der `sftp>`-Eingabeaufforderung den Befehlt `help` ein.
 

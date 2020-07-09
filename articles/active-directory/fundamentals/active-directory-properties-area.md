@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/17/2018
 ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343671c1d9ee82950a9822648f9831588da7e9f8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 03a8d1f3e541d61d515b28bf56964c0add3b390e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80876183"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830637"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Hinzufügen der Datenschutzinformationen Ihrer Organisation mit Azure Active Directory
 In diesem Artikel wird erläutert, wie ein Mandantenadministrator dem Azure Active Directory-Mandanten (Azure AD) einer Organisation über das Azure-Portal Informationen in Bezug auf den Datenschutz hinzufügen kann.
@@ -32,15 +32,15 @@ Sie fügen die Datenschutzinformationen Ihrer Organisation im Bereich **Eigensch
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>So greifen Sie auf den Bereich „Eigenschaften“ zu und fügen die Datenschutzinformationen hinzu
 
-1.    Melden Sie sich als Mandantenadministrator beim Azure-Portal an.
+1. Melden Sie sich als Mandantenadministrator beim Azure-Portal an.
 
-2.    Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** und dann **Eigenschaften** aus.
+2. Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** und dann **Eigenschaften** aus.
 
     Der Bereich **Eigenschaften** wird angezeigt.
 
     ![Bereich „Eigenschaften“ in Azure AD mit hervorgehobenem Bereich „Datenschutzinformationen“](media/active-directory-properties-area/properties-area.png)
 
-3.    Fügen Sie Ihre Datenschutzinformationen für Ihre Mitarbeiter hinzu:
+3. Fügen Sie Ihre Datenschutzinformationen für Ihre Mitarbeiter hinzu:
 
     - **Technischer Kontakt**: Geben Sie die E-Mail-Adresse der Person ein, die bei Anfragen zum technischen Support innerhalb Ihrer Organisation zu kontaktieren ist.
     
@@ -53,7 +53,7 @@ Sie fügen die Datenschutzinformationen Ihrer Organisation im Bereich **Eigensch
 
         ![Feld „Berechtigungen überprüfen“ in der B2B-Zusammenarbeit mit Meldung](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.    Wählen Sie **Speichern** aus.
+4. Wählen Sie **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](../b2b/redemption-experience.md)

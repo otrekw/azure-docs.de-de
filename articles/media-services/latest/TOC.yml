@@ -16,6 +16,11 @@
     - name: Liveereignis mit Portal und OBS
       displayName: 'live, event, portal, obs'
       href: live-events-obs-quickstart.md
+    - name: 'Hochladen, Codieren und Streamen von Inhalten mithilfe des Portals'
+      href: manage-assets-quickstart.md
+    - name: Verschlüsseln von Inhalten mithilfe des Portals
+      displayName: 'protect, drm, aes'
+      href: encrypt-content-quickstart.md
 - name: Tutorials
   items:
     - name: Codieren von Remotedateien und Streamen von Videos
@@ -193,6 +198,19 @@
         - name: Streaming
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
+    - name: Problembehandlung
+      items:
+        - name: Häufig gestellte Fragen
+          displayName: faqs
+          href: frequently-asked-questions.md
+        - name: Fehlercodes
+          items:
+            - name: Fehlercodes für Streamingendpunkte
+              href: streaming-endpoint-error-codes.md
+            - name: Fehlercodes für Liveereignisse
+              href: live-event-error-codes.md
+            - name: Auftragsfehlercodes
+              href: job-error-codes.md
     - name: Migration von v2 zu v3
       items:
         - name: Vergleich von v2 und v3
@@ -338,19 +356,6 @@
           href: download-results-howto.md
         - name: Signalisieren beschreibender Audiospuren
           href: signal-descriptive-audio-howto.md
-    - name: Problembehandlung
-      items:
-        - name: Häufig gestellte Fragen
-          displayName: faqs
-          href: frequently-asked-questions.md
-        - name: Fehlercodes
-          items:
-            - name: Fehlercodes für Streamingendpunkte
-              href: streaming-endpoint-error-codes.md
-            - name: Fehlercodes für Liveereignisse
-              href: live-event-error-codes.md
-            - name: Auftragsfehlercodes
-              href: job-error-codes.md
 - name: Verweis
   items:
     - name: OpenAPI-Spezifikation (Swagger)
@@ -358,7 +363,7 @@
       displayName: schema
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/media/'
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: SDKs
       items:
@@ -369,11 +374,17 @@
         - name: Python
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
-          href: 'https://aka.ms/ams-v3-nodejs-ref'
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/mediaservices/management'
         - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.media/allversions
+    - name: Standard-Encoder-Schemas
+      items:
+        - name: Eingeben von Metadaten
+          href: input-metadata-schema.md
+        - name: Ausgeben von Metadaten
+          href: output-metadata-schema.md
 - name: Ressourcen
   items:
     - name: Azure Media Services-Community
@@ -389,7 +400,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
     - name: SDKs/Tools
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: 'https://aka.ms/ams-v3-cli'
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'

@@ -4,12 +4,12 @@ description: Application Insights-Datenmodell für Anforderungstelemetrie
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57cc9c95137facaaf2ddf5bb212121f88e150f5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671901"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807654"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Anforderungstelemetrie: Application Insights-Datenmodell
 
@@ -21,7 +21,7 @@ Die Anforderungstelemetrie unterstützt das Standarderweiterbarkeitsmodell mit b
 
 Der Name der Anforderung gibt den Codepfad für die Verarbeitung der Anforderung an. Ein niedriger Kardinalitätswert ermöglicht die bessere Gruppierung von Anforderungen. Für HTTP-Anforderungen gibt er die HTTP-Methode und die URL-Pfadvorlage wie `GET /values/{id}` ohne den tatsächlichen `id`-Wert an.
 
-Mit dem Application Insights-Web-SDK wird der Anforderungsname im Hinblick auf die Groß-/Kleinschreibung unverändert gesendet. Bei der Gruppierung auf der Benutzeroberfläche wird die Groß-/Kleinschreibung beachtet, sodass `GET /Home/Index` und `GET /home/INDEX` separat gezählt werden, obwohl sie häufig zur gleichen Controller- und Aktionsausführung führen. Dies liegt daran, dass bei URLs allgemein die [Groß-/Kleinschreibung beachtet wird](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Sie können prüfen, ob für die in Großbuchstaben eingegebenen URLs alle `404` erfolgt sind. Weitere Informationen zur Anforderungsnamensammlung mit dem ASP.NET-Web-SDK finden Sie in diesem [Blogbeitrag](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
+Mit dem Application Insights-Web-SDK wird der Anforderungsname im Hinblick auf die Groß-/Kleinschreibung unverändert gesendet. Bei der Gruppierung auf der Benutzeroberfläche wird die Groß-/Kleinschreibung beachtet, sodass `GET /Home/Index` und `GET /home/INDEX` separat gezählt werden, obwohl sie häufig zur gleichen Controller- und Aktionsausführung führen. Dies liegt daran, dass bei URLs allgemein die [Groß-/Kleinschreibung beachtet wird](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Sie können prüfen, ob für die in Großbuchstaben eingegebenen URLs alle `404` erfolgt sind. Weitere Informationen zur Anforderungsnamensammlung mit dem ASP.NET-Web-SDK finden Sie in diesem [Blogbeitrag](https://apmtips.com/posts/2015-02-23-request-name-and-url/).
 
 Maximale Länge: 1.024 Zeichen
 
@@ -61,7 +61,7 @@ Für Webanwendungen definiert Application Insights eine Anforderung als erfolgre
 
 Teilweise akzeptierter Inhalt `206` gibt möglicherweise einen Fehler einer gesamten Anforderung an. Ein Application Insights-Endpunkt empfängt beispielsweise einen Batch mit Telemetrieelementen als einzelne Anforderung. Er gibt `206` zurück, wenn einige Elemente in dem Batch nicht erfolgreich verarbeitet wurden. Eine steigende Rate von `206` deutet auf ein Problem hin, das untersucht werden muss. Eine ähnliche Logik gilt für `207` (Multistatus), wo der Erfolg der schlechteste von verschiedenen Antwortcodes sein kann.
 
-Weitere Informationen zu Ergebniscodes und Statuscodes von Anforderungen finden Sie in diesem [Blogbeitrag](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
+Weitere Informationen zu Ergebniscodes und Statuscodes von Anforderungen finden Sie in diesem [Blogbeitrag](https://apmtips.com/posts/2016-12-03-request-success-and-response-code/).
 
 ## <a name="custom-properties"></a>Benutzerdefinierte Eigenschaften
 

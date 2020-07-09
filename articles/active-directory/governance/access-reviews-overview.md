@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.subservice: compliance
-ms.date: 01/10/2020
+ms.date: 06/17/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5499c8808c3916842071df1f03a865efd98719f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22a7cafbf8223c3d9e7641851d02f61bc2ad16ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230426"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078902"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Was sind Azure AD-Zugriffsüberprüfungen?
 
@@ -78,6 +78,12 @@ Um eine Zugriffsüberprüfung zu erstellen, führen Sie die folgenden Schritte a
 
    ![Startseite für Zugriffsüberprüfungen](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
+### <a name="creating-access-review-on-a-group-that-can-be-assigned-to-azure-ad-role"></a>Erstellen einer Zugriffsüberprüfung für eine Gruppe, die einer Azure AD-Rolle zugewiesen werden kann
+Wenn Sie über die neueste Version der Zugriffsüberprüfungen verfügen (ihre Prüfer werden standardmäßig zum Portal **Mein Zugriff** geleitet), kann nur der globale Administrator die Zugriffsüberprüfung für Gruppen erstellen, denen Rollen zugewiesen werden können. Wenn Sie über eine ältere Version der Zugriffsüberprüfungen verfügen (ihre Prüfer werden standardmäßig zum **Zugriffsbereich** geleitet), können sowohl der globale Administrator als auch der Benutzeradministrator die Zugriffsüberprüfung für Gruppen erstellen, denen Rollen zugewiesen werden können.  
+
+Die neue Umgebung wird am 1. August 2020 für alle Kunden eingeführt. Wenn Sie das Upgrade jedoch früher erhalten möchten, müssen Sie unter [Azure AD Access Reviews – Updated reviewer experience in My Access Signup](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u) eine Anfrage stellen.
+
+[Weitere Informationen zum Zuweisen von Gruppen zu Azure AD-Rollen](https://go.microsoft.com/fwlink/?linkid=2103037).
 
 ## <a name="learn-about-access-reviews"></a>Informationen zu Zugriffsüberprüfungen
 

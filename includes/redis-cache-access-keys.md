@@ -9,10 +9,10 @@ ms.date: 11/05/2019
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: a737e130d616a67bab28c7c96c0372216a6707af
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73720318"
 ---
 ### <a name="retrieve-host-name-ports-and-access-keys-from-the-azure-portal"></a>Abrufen von Hostname, Ports und Zugriffsschlüsseln vom Azure-Portal
@@ -23,7 +23,7 @@ Um eine Verbindung mit einer Azure Cache for Redis-Instanz herzustellen, benöti
   
   ![Azure Cache for Redis-Schlüssel](media/redis-cache-access-keys/redis-cache-keys.png)
 
-- Wählen Sie **Eigenschaften** aus, um den Hostnamen und die Ports aus dem linken Navigationsbereich des Cache abzurufen. Der Hostname hat das Format *\<DNS-Name>.redis.cache.windows.net*.
+- Wählen Sie **Eigenschaften** aus, um den Hostnamen und die Ports aus dem linken Navigationsbereich des Cache abzurufen. Der Hostname hat das Format *\<DNS name>.redis.cache.windows.net*.
 
   ![Azure Cache for Redis-Eigenschaften](media/redis-cache-access-keys/redis-cache-hostname-ports.png)
 

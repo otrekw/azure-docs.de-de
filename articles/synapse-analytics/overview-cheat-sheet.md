@@ -1,20 +1,20 @@
 ---
-title: 'Cheatsheet: Azure Synapse Analytics'
+title: 'Cheatsheet: Azure Synapse Analytics (Vorschau für Arbeitsbereiche)'
 description: Azure Synapse Analytics-Referenzhandbuch für Benutzer
 services: synapse-analytics
-author: ArnoMicrosoft
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: c49e5f421f88b4d2676204ff0a32a0aa2b808be1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 95fa4a0b5761b9d5a17e03c0edf9a727777d3a7f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652663"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609351"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Cheatsheet für Azure Synapse Analytics
 
@@ -27,15 +27,15 @@ Im Cheatsheet für Azure Synapse Analytics werden Schritt für Schritt die grund
 > [!div class="mx-imgBorder"]
 >![Architektur von Synapse](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
 
-## <a name="concepts"></a>Konzepte
-| Substantive und Verben                         | Funktionsbeschreibung       |
+## <a name="terminology"></a>Begriff
+| Begriff                         | Definition      |
 |:---                                 |:---                 |
-| **Synapse-Arbeitsbereich (Vorschauversion)** | Eine sicherungsfähige Zusammenarbeitsgrenze für cloudbasierte Unternehmensanalysen in Azure. Ein Arbeitsbereich wird in einer bestimmten Region bereitgestellt und verfügt über ein zugeordnetes ADLS Gen2-Konto und Dateisystem (zum Speichern temporärer Daten). Ein Arbeitsbereich befindet sich unter einer Ressourcengruppe. |
+| **Synapse-Arbeitsbereich** | Eine sicherungsfähige Zusammenarbeitsgrenze für cloudbasierte Unternehmensanalysen in Azure. Ein Arbeitsbereich wird in einer bestimmten Region bereitgestellt und verfügt über ein zugeordnetes ADLS Gen2-Konto und Dateisystem (zum Speichern temporärer Daten). Ein Arbeitsbereich befindet sich unter einer Ressourcengruppe. |
 | **Synapse SQL**   | Ermöglicht das Ausführen von Analysen mit Pools oder On-Demand-Funktionen.  |
 | **SQL-Pool**   | In einem Arbeitsbereich können null bis n bereitgestellte SQL-Ressourcen mit entsprechenden Datenbanken bereitgestellt werden. Jeder SQL-Pool verfügt über eine zugeordnete Datenbank. Ein SQL-Pool kann manuell oder automatisch skaliert, angehalten und fortgesetzt werden. Ein SQL-Pool kann zwischen 100 DWU und 30.000 DWU skaliert werden.       |
-| **SQL On-Demand (Vorschauversion)**   | Verteiltes, für große Datenmengen konzipiertes Datenverarbeitungssystem, mit dem Sie T-SQL-Abfragen für Daten in einem Data Lake ausführen können. Da es sich hierbei um ein serverloses System handelt, muss keine Infrastruktur verwaltet werden.       |
-|**Apache Spark** | In einem Spark-Pool verwendete Spark-Runtime. Die aktuell unterstützte Version ist Spark 2.4 mit Python 3.6.1, Scala 2.11.12, .NET-Unterstützung für Apache Spark 0.5 und Delta Lake 0.3.  | 
-| **Apache Spark-Pool (Vorschauversion)**  | In einem Arbeitsbereich können null bis n bereitgestellte Spark-Ressourcen mit entsprechenden Datenbanken bereitgestellt werden. Ein Spark-Pool kann automatisch angehalten, fortgesetzt und skaliert werden.  |
+| **SQL On-Demand**   | Verteiltes, für große Datenmengen konzipiertes Datenverarbeitungssystem, mit dem Sie T-SQL-Abfragen für Daten in einem Data Lake ausführen können. Da es sich hierbei um ein serverloses System handelt, muss keine Infrastruktur verwaltet werden.       |
+|**Apache Spark für Synapse** | In einem Spark-Pool verwendete Spark-Runtime. Die aktuell unterstützte Version ist Spark 2.4 mit Python 3.6.1, Scala 2.11.12, .NET-Unterstützung für Apache Spark 0.5 und Delta Lake 0.3.  | 
+| **Apache Spark-Pool**  | In einem Arbeitsbereich können null bis n bereitgestellte Spark-Ressourcen mit entsprechenden Datenbanken bereitgestellt werden. Ein Spark-Pool kann automatisch angehalten, fortgesetzt und skaliert werden.  |
 | **Spark-Anwendung**  |   Besteht aus einem Treiberprozess und einem Satz von Executorprozessen. Eine Spark-Anwendung wird in einem Spark-Pool ausgeführt.            |
 | **Spark-Sitzung**  |   Einheitlicher Einstiegspunkt einer Spark-Anwendung. Ermöglicht die Interaktion mit den verschiedenen Funktionen von Spark sowie mit einer kleineren Anzahl von Konstrukten. Zum Ausführen eines Notebooks muss eine Sitzung erstellt werden. Eine Sitzung kann so konfiguriert werden, dass sie in einer bestimmten Anzahl von Executors mit einer bestimmten Größe ausgeführt wird. Eine Notebooksitzung ist standardmäßig für die Ausführung in zwei Executors mittlerer Größe konfiguriert. |
 | **SQL-Anforderung**  |   Ein Vorgang – beispielsweise eine Abfrage, die über einen SQL-Pool oder über SQL On-Demand ausgeführt wird. |
@@ -56,6 +56,6 @@ Im Cheatsheet für Azure Synapse Analytics werden Schritt für Schritt die grund
 - [Erstellen eines Arbeitsbereichs](quickstart-create-workspace.md)
 - [Verwenden von Synapse Studio](quickstart-synapse-studio.md)
 - [Erstellen eines SQL-Pools](quickstart-create-sql-pool-portal.md)
-- [Verwenden von SQL On-Demand](quickstart-sql-on-demand.md)
 - [Erstellen eines Apache Spark-Pools](quickstart-create-apache-spark-pool-portal.md)
+- [Verwenden von SQL On-Demand](quickstart-sql-on-demand.md)
 

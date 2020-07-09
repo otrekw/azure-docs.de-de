@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dekapur
-ms.openlocfilehash: 16ec0eb429ec6e8f6613490226b7cff01dff1b32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3195f1f409ab5cb87cd0520192a3dd362e188a3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75451910"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610233"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>Skalieren von eigenständigen Service Fabric-Clustern
 Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. Cluster können Tausende von Knoten enthalten. Nach dem Erstellen eines Service Fabric-Clusters können Sie den Cluster horizontal (Änderung der Anzahl von Knoten) oder vertikal (Änderung der Ressourcen von Knoten) skalieren.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
@@ -28,7 +28,7 @@ Mit eigenständigen Clustern können Sie Service Fabric-Cluster lokal oder über
 Durch das Entfernen von Knoten werden möglicherweise mehrere Upgrades initiiert. Einige Knoten sind mit dem Tag `IsSeedNode=”true”` gekennzeichnet und können durch Abfragen des Clustermanifests mit [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) ermittelt werden. Das Entfernen solcher Knoten dauert möglicherweise länger als bei anderen Knoten, da die Seed-Knoten in einem solchen Szenario verschoben werden müssen. Der Cluster muss mindestens drei primäre Knotentypen verwalten.
 
 > [!WARNING]
-> Die für den Cluster angegebene Knotenanzahl sollte mindestens der [Clustergröße der Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) entsprechen. Andernfalls besteht die Gefahr, dass die Replizierung von Service Fabric-Systemdiensten im Cluster beeinträchtigt und der Cluster destabilisiert oder sogar gelöscht wird.
+> Die für den Cluster angegebene Knotenanzahl sollte mindestens der [Clustergröße der Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) entsprechen. Andernfalls besteht die Gefahr, dass die Replizierung von Service Fabric-Systemdiensten im Cluster beeinträchtigt und der Cluster destabilisiert oder sogar gelöscht wird.
 >
 
 Beachten Sie beim Skalieren eines eigenständigen Clusters die folgenden Richtlinien:

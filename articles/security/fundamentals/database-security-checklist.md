@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: d9283a36d5f7ccb82b2cc211485487d5a3dcce7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc79d7204ba360696b8d9411cd56efd09d1678dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79201024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021839"
 ---
 # <a name="azure-database-security-checklist"></a>Checkliste für die Sicherheit der Azure-Datenbank
 
@@ -28,7 +28,7 @@ Um die Sicherheit zu verbessern, umfasst die Azure-Datenbank eine Reihe von inte
 
 Dazu gehören:
 
--    Eine Firewall, die es Ihnen die ermöglicht, [Firewallregeln](../../sql-database/sql-database-firewall-configure.md) zu erstellen, die die Konnektivität mit den IP-Adressen beschränken
+-    Eine Firewall, die es Ihnen die ermöglicht, [Firewallregeln](../../azure-sql/database/firewall-configure.md) zu erstellen, die die Konnektivität mit den IP-Adressen beschränken
 -    Firewallregeln auf Serverebene zugänglich vom Azure-Portal
 -    Firewallregeln auf Datenebene zugänglich von SSMS
 -    Herstellen einer sicheren Verbindung mit Ihrer Datenbank mithilfe einer sicheren Verbindungszeichenfolge
@@ -50,10 +50,10 @@ Es wird empfohlen, den Artikel [Azure Database Security Best Practices (Bewährt
 | <br> Verschlüsselung von Daten während der Übertragung| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol) für die Datenverschlüsselung beim Verschieben von Daten in die Netzwerke.</li><li>Die Datenbank erfordert sichere Kommunikation von Clients auf der Grundlage des Protokolls [Tabular Data Stream (TDS)](https://msdn.microsoft.com/library/dd357628.aspx) über Transport Layer Security (TLS).</li></ul> |
 |<br>Verschlüsselung ruhender Daten| <ul><li>[Transparente Datenverschlüsselung](https://go.microsoft.com/fwlink/?LinkId=526242), wenn inaktive Daten physisch in digitaler Form gespeichert werden.</li></ul>|
 |**Steuern des Zugriffs**||  
-|<br> Datenbankzugriff | <ul><li>[Authentifizierung](../../sql-database/sql-database-manage-logins.md) (Azure Active Directory-Authentifizierung, AD-Authentifizierung) verwendet von Azure Active Directory verwaltete Identitäten.</li><li>[Autorisierung](../../sql-database/sql-database-manage-logins.md) erteilt Benutzern die minimal erforderlichen Berechtigungen.</li></ul> |
-|<br>Anwendungszugriff| <ul><li>[Sicherheit auf Zeilenebene](https://msdn.microsoft.com/library/dn765131) (Verwendet Sicherheitsrichtlinien und beschränkt gleichzeitig den Zugriff auf Zeilenebene auf Grundlage einer Benutzeridentität, einer Rolle oder eines Ausführungskontexts).</li><li>[Dynamische Datenmaskierung](../../sql-database/sql-database-dynamic-data-masking-get-started.md) (Verwendet Permission &amp; Policy, schränkt die Offenlegung sensibler Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden).</li></ul>|
+|<br> Datenbankzugriff | <ul><li>[Authentifizierung](../../azure-sql/database/logins-create-manage.md) (Azure Active Directory-Authentifizierung, AD-Authentifizierung) verwendet von Azure Active Directory verwaltete Identitäten.</li><li>[Autorisierung](../../azure-sql/database/logins-create-manage.md) erteilt Benutzern die minimal erforderlichen Berechtigungen.</li></ul> |
+|<br>Anwendungszugriff| <ul><li>[Sicherheit auf Zeilenebene](https://msdn.microsoft.com/library/dn765131) (Verwendet Sicherheitsrichtlinien und beschränkt gleichzeitig den Zugriff auf Zeilenebene auf Grundlage einer Benutzeridentität, einer Rolle oder eines Ausführungskontexts).</li><li>[Dynamische Datenmaskierung](../../azure-sql/database/dynamic-data-masking-overview.md) (Verwendet Permission &amp; Policy, schränkt die Offenlegung sensibler Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden).</li></ul>|
 |**Proaktive Überwachung**||  
-| <br>Nachverfolgen und Erkennen| <ul><li>Die [Überprüfung](../../sql-database/sql-database-auditing.md) verfolgt Datenbankereignisse und schreibt diese in ein Überwachungs-/Aktivitätsprotokoll in Ihrem [Azure Speicherkonto](../../storage/common/storage-create-storage-account.md).</li><li>Nachverfolgen der Integrität der Azure-Datenbank mit [Azure Monitor-Aktivitätsprotokollen](../../azure-monitor/platform/platform-logs-overview.md).</li><li>Die [Bedrohungserkennung](../../sql-database/sql-database-threat-detection.md) erkennt anormale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. </li></ul> |
+| <br>Nachverfolgen und Erkennen| <ul><li>Die [Überprüfung](../../sql-database/sql-database-auditing.md) verfolgt Datenbankereignisse und schreibt diese in ein Überwachungs-/Aktivitätsprotokoll in Ihrem [Azure Speicherkonto](../../storage/common/storage-create-storage-account.md).</li><li>Nachverfolgen der Integrität der Azure-Datenbank mit [Azure Monitor-Aktivitätsprotokollen](../../azure-monitor/platform/platform-logs-overview.md).</li><li>Die [Bedrohungserkennung](../../azure-sql/database/threat-detection-configure.md) erkennt anormale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. </li></ul> |
 |<br>Azure Security Center| <ul><li>Die [Überwachung der Daten](../../security-center/security-center-enable-auditing-on-sql-databases.md) verwendet Azure Security Center als eine zentralisierte Sicherheitsüberwachungslösung für SQL und anderen Azure-Dienste.</li></ul>|        
 
 ## <a name="conclusion"></a>Zusammenfassung
@@ -62,7 +62,7 @@ Azure-Datenbank ist eine stabile Datenbankplattform mit umfassenden Sicherheitsf
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können den Schutz Ihrer Datenbank vor schädlichen Benutzern oder nicht autorisiertem Zugriff mit wenigen einfachen Schritten verbessern. In diesem Tutorial lernen Sie Folgendes:
 
-- Einrichten von [Firewallregeln](../../sql-database/sql-database-firewall-configure.md) für den Server und/oder die Datenbank
+- Einrichten von [Firewallregeln](../../azure-sql/database/firewall-configure.md) für den Server und/oder die Datenbank
 - Schützen von Daten durch [Verschlüsselung](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-encryption).
 - Aktivieren der [SQL-Datenbanküberwachung](../../sql-database/sql-database-auditing.md).
 

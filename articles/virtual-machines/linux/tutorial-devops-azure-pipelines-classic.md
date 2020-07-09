@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Konfigurieren von parallelen Bereitstellungen für virtuelle Linux-Computer in Azure'
-description: In diesem Tutorial erfahren Sie, wie Sie eine CD-Pipeline (Continuous Deployment) einrichten, die mithilfe der Strategie für die parallele Bereitstellung eine Gruppe virtueller Linux-Computer in Azure inkrementell aktualisiert.
+description: In diesem Tutorial erfahren Sie, wie Sie eine CD-Pipeline (Continuous Deployment) einrichten. Diese Pipeline aktualisiert inkrementell eine Gruppe von virtuellen Azure-Linux-Computern mithilfe der Strategie für die parallele Bereitstellung.
 author: moala
 manager: jpconnock
 tags: azure-devops-pipelines
@@ -12,75 +12,86 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 75888b1ebbda33891296fe0b54c5d204955e32a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 28f093bc464a45862d3b253d628b7ae03810f81a
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82113481"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871232"
 ---
-# <a name="tutorial---configure-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Tutorial: Konfigurieren der Strategie für parallele Bereitstellungen für virtuelle Linux-Computer in Azure
+# <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Tutorial: Konfigurieren der Strategie für parallele Bereitstellungen für virtuelle Linux-Computer in Azure
 
-Azure DevOps ist ein integrierter Azure-Dienst, bei dem alle Teile des DevOps-Prozesses für alle Azure-Ressourcen per Continuous Integration und Continuous Delivery automatisiert werden.
-Unabhängig davon, ob für Ihre App virtuelle Computer, Web-Apps, Kubernetes oder andere Ressourcen genutzt werden, gilt Folgendes: Sie können Infrastructure-as-Code, Continuous Integration, fortlaufende Tests, Continuous Delivery und fortlaufende Überwachung mit Azure und Azure DevOps implementieren.  
+Azure DevOps ist ein integrierter Azure-Dienst, bei dem alle Teile des DevOps-Prozesses für alle Azure-Ressourcen automatisiert werden. Unabhängig davon, ob für Ihre App virtuelle Computer, Web-Apps, Kubernetes oder andere Ressourcen genutzt werden, gilt Folgendes: Sie können Infrastructure-as-a-Code (IaaC), Continuous Integration, fortlaufende Tests, Continuous Delivery und fortlaufende Überwachung mit Azure und Azure DevOps implementieren.
 
-![AzDevOps_portalView](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png) 
+![Azure-Portal mit ausgewählter Option „Azure DevOps“ unter „Dienste“](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png)
 
+## <a name="infrastructure-as-a-service-iaas---configure-cicd"></a>Infrastructure-as-a-Service (IaaS): Konfigurieren von CI/CD
 
-## <a name="iaas---configure-cicd"></a>IaaS: Konfigurieren von CI/CD 
-Azure Pipelines verfügt über einen umfassenden Satz an CI/CD-Automatisierungstools für Bereitstellungen auf virtuellen Computern. Sie können eine Continuous Delivery-Pipeline für einen virtuellen Azure-Computer direkt über das Azure-Portal konfigurieren. Das vorliegende Dokument enthält die Schritte, die zum Einrichten einer CI/CD-Pipeline für die parallele Bereitstellung auf mehreren Computern über das Azure-Portal ausgeführt werden müssen. Sie können sich auch andere Strategien wie die [Canary-](https://aka.ms/AA7jdrz) und die [Blau-Grün-Strategie](https://aka.ms/AA83fwu) ansehen, die standardmäßig über das Azure-Portal unterstützt werden. 
+Azure Pipelines verfügt über einen umfassenden Satz an CI/CD-Automatisierungstools für Bereitstellungen auf virtuellen Computern. Sie können eine Continuous Delivery-Pipeline für einen virtuellen Azure-Computer über das Azure-Portal konfigurieren.
 
+In diesem Artikel wird gezeigt, wie Sie über das Azure-Portal eine CI/CD-Pipeline für parallele Bereitstellungen auf mehreren Computern einrichten. Vom Azure-Portal werden auch andere Strategien wie die [Canary-Strategie](https://aka.ms/AA7jdrz) und die [Blau-Grün-Strategie](https://aka.ms/AA83fwu) unterstützt.
 
-**Konfigurieren von CI/CD auf virtuellen Computern**
+### <a name="configure-cicd-on-virtual-machines"></a>Konfigurieren von CI/CD auf virtuellen Computern
 
-Virtuelle Computer können einer [Bereitstellungsgruppe](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups) als Ziele hinzugefügt und bei Updates für mehrere Computer als Ziele verwendet werden. Nach der Bereitstellung ermöglicht der **Bereitstellungsverlauf** innerhalb einer Bereitstellungsgruppe die Nachverfolgung vom virtuellen Computer über die Pipeline bis hin zum Commit. 
- 
+Sie können virtuelle Computer als Ziele zu einer [Bereitstellungsgruppe](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups) hinzufügen. Diese können dann als Ziel für die Aktualisierung mehrerer Computer verwendet werden. Sehen Sie sich nach der Bereitstellung auf Computern den **Bereitstellungsverlauf** in einer Bereitstellungsgruppe an. In dieser Ansicht können Sie eine Ablaufverfolgung vom virtuellen Computer zur Pipeline und dann zum Commit durchführen.
 
-**Parallele Bereitstellungen:** Bei einer parallelen Bereitstellung werden bei jeder Iteration auf einer festgelegten Gruppe von Computern (Gruppe für parallele Vorgänge) Instanzen der vorherigen Version einer Anwendung durch Instanzen der neuen Version ersetzt. Als Nächstes wird beschrieben, wie Sie ein paralleles Update auf virtuellen Computern konfigurieren können.  
-Sie können parallele Updates für Ihre „**virtuellen Computer**“ konfigurieren, indem Sie im Azure-Portal die Option für Continuous Delivery verwenden. 
+### <a name="rolling-deployments"></a>Parallele Bereitstellungen
 
-Hier ist eine ausführliche exemplarische Vorgehensweise angegeben. 
-1. Melden Sie sich an Ihrem Azure-Portal an, und navigieren Sie zu einem virtuellen Computer. 
-2. Navigieren Sie im linken Bereich des virtuellen Computers zum Menü  **Continuous Delivery**. Klicken Sie anschließend auf  **Konfigurieren**. 
+In jeder Iterationen ersetzt eine parallele Bereitstellung Instanzen der früheren Version einer Anwendung. Sie ersetzt sie durch Instanzen der neuen Version auf einer festgelegten Gruppe von Computern (Gruppe für parallele Vorgänge). In der folgenden exemplarischen Vorgehensweise wird gezeigt, wie Sie ein paralleles Update für virtuelle Computer konfigurieren.
 
-   ![AzDevOps_configure](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png) 
-3. Klicken Sie im Konfigurationsbereich auf „Azure DevOps-Organisation“, um ein vorhandenes Konto auszuwählen oder ein neues Konto zu erstellen. Wählen Sie anschließend das Projekt aus, unter dem Sie die Pipeline konfigurieren möchten.  
+Mithilfe der Continuous Delivery-Option können Sie im Azure-Portal parallele Updates für Ihre virtuellen Computer konfigurieren. Nachfolgend ist die ausführliche exemplarische Vorgehensweise angegeben:
 
+1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu einem virtuellen Computer.
+1. Wählen Sie im Bereich ganz links der VM-Einstellungen die Option **Continuous Delivery** aus. Klicken Sie anschließend auf **Konfigurieren**.
 
-   ![AzDevOps_project](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png) 
-4. Eine Bereitstellungsgruppe ist eine logische Gruppe mit Bereitstellungsziel-Computern, die die physischen Umgebungen darstellen, z. B. „Entwicklung“, „Test“, „UAT“ und „Produktion“. Sie können eine neue Bereitstellungsgruppe erstellen oder eine vorhandene auswählen. 
-5. Wählen Sie die Buildpipeline aus, die das Paket veröffentlicht, das auf dem virtuellen Computer bereitgestellt werden soll. Beachten Sie, dass das veröffentlichte Paket im Paketstammverzeichnis im Ordner `deployscripts` ein Bereitstellungsskript vom Typ _deploy.ps1_ oder _deploy.sh_ enthalten muss. Dieses Bereitstellungsskript wird zur Laufzeit von der Azure DevOps-Pipeline ausgeführt.
-6. Wählen Sie die gewünschte Bereitstellungsstrategie aus. In diesem Fall wird „Parallel“ verwendet.
-7. Optional können Sie den Computer mit der Rolle taggen. Beispiel: „web“, „db“ usw. Dadurch können Sie einfacher virtuelle Computer mit einer spezifischen Rolle als Ziel verwenden.
-8. Klicken Sie im Dialogfeld auf **OK**, um die Continuous Delivery-Pipeline zu konfigurieren. 
-9. Anschließend verfügen Sie über eine Continuous Delivery-Pipeline, die für die Bereitstellung auf dem virtuellen Computer konfiguriert ist.  
+   ![Bereich „Continuous Delivery“ mit der Schaltfläche „Konfigurieren“](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png)
 
+1. Wählen Sie im Konfigurationsbereich **Azure DevOps-Organisation** aus, um ein vorhandenes Konto auszuwählen oder ein neues Konto zu erstellen. Wählen Sie anschließend das Projekt aus, unter dem Sie die Pipeline konfigurieren möchten.  
 
-   ![AzDevOps_pipeline](media/tutorial-devops-azure-pipelines-classic/azure-devops-deployment-history.png)
-10. Sie sehen, dass die Bereitstellung auf dem virtuellen Computer durchgeführt wird. Sie können auf den Link klicken, um zur Pipeline zu navigieren. Klicken Sie auf **Release-1**, um die Bereitstellung anzuzeigen. Alternativ können Sie auf **Bearbeiten** klicken, um die Definition der Releasepipeline zu ändern. 
-11. Wenn Sie mehrere virtuelle Computer konfigurieren möchten, müssen Sie die Schritte 2 bis 4 für die anderen virtuellen Computer wiederholen, die der Bereitstellungsgruppe hinzugefügt werden sollen. Beachten Sie Folgendes: Wenn Sie eine Bereitstellungsgruppe auswählen, für die bereits eine Pipelineausführung vorhanden ist, wird der virtuelle Computer lediglich der Bereitstellungsgruppe hinzugefügt, und es werden keine neuen Pipelines erstellt. 
-12. Klicken Sie auf die Pipelinedefinition, navigieren Sie zur Azure DevOps-Organisation, und klicken Sie auf **Bearbeiten**, um die Releasepipeline zu bearbeiten. 
-   ![AzDevOps_edit_pipeline](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline.png)
-13. Klicken Sie für die Phase **Entwicklung** auf den Link für **1 Auftrag, 1 Aufgabe**. Klicken Sie auf die Phase **Bereitstellen**.
-   ![AzDevOps_deploymentGroup](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline-tasks.png)
-14. Im Konfigurationsbereich auf der rechten Seite können Sie die Anzahl von Computer angeben, die pro Iteration parallel bereitgestellt werden sollen. Falls die Bereitstellung gleichzeitig auf mehreren Computern erfolgen soll, können Sie den gewünschten Umfang mithilfe des Schiebereglers als Prozentsatz angeben.  
+   ![Bereich „Continuous Delivery“](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png)
 
-15. Durch den Task „Execute Deploy Script“ (Bereitstellungsskript ausführen) wird standardmäßig das Bereitstellungsskript _deploy.ps1_ oder _deploy.sh_ ausgeführt, das sich im Ordner „deployscripts“ im Stammverzeichnis des veröffentlichten Pakets befindet.  
-![AzDevOps_publish_package](media/tutorial-deployment-strategy/package.png)
+1. Eine Bereitstellungsgruppe ist eine logische Gruppe mit Bereitstellungszielcomputern, die die physischen Umgebungen darstellen. Beispiele hierfür sind „Entwicklung“, „Test“, „UAT“ und „Produktion“. Sie können eine neue Bereitstellungsgruppe erstellen oder eine vorhandene auswählen.
+1. Wählen Sie die Buildpipeline aus, die das Paket veröffentlicht, das auf dem virtuellen Computer bereitgestellt werden soll. Das veröffentlichte Paket muss im Paketstammverzeichnis im Ordner „deployscripts“ ein Bereitstellungsskript namens „deploy.ps1“ oder „deploy.sh“ enthalten. Die Pipeline führt dieses Bereitstellungsskript aus.
+1. Wählen Sie unter **Bereitstellungsstrategie** die Option **Parallel** aus.
+1. Optional können Sie jeden Computer mit seiner Rolle taggen. Beispiele sind die Tags „“web“ und „db“. Durch diese Tags können Sie einfacher ausschließlich virtuelle Computer mit einer spezifischen Rolle als Ziel verwenden.
+1. Wählen Sie **OK** aus, um die Continuous Delivery-Pipeline zu konfigurieren.
+1. Nach der Konfiguration verfügen Sie über eine Continuous Delivery-Pipeline, die für die Bereitstellung auf dem virtuellen Computer konfiguriert ist.  
+
+   ![Bereich „Continuous Delivery“ mit Bereitstellungsverlauf](media/tutorial-devops-azure-pipelines-classic/azure-devops-deployment-history.png)
+
+1. Die Bereitstellungsdetails für den virtuellen Computer werden angezeigt. Sie können den Link auswählen, um zur Pipeline **Release-1** zu navigieren und die Bereitstellung anzuzeigen. Wählen Sie alternativ **Bearbeiten** aus, um die Definition der Releasepipeline zu ändern.
+
+1. Wenn Sie mehrere virtuelle Computer konfigurieren, wiederholen Sie die Schritte 2 bis 4 für andere virtuelle Computer, die der Bereitstellungsgruppe hinzugefügt werden sollen. Wenn Sie eine Bereitstellungsgruppe auswählen, für die bereits eine Pipeline ausgeführt wird, werden die virtuellen Computer nur der Bereitstellungsgruppe hinzugefügt. Es werden keine neuen Pipelines erstellt.
+1. Wählen Sie nach Abschluss der Konfiguration die Pipelinedefinition aus, navigieren Sie zur Azure DevOps-Organisation, und wählen Sie **Bearbeiten** für die Releasepipeline aus.
+
+   ![Bearbeiten der parallelen Pipeline](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline.png)
+
+1. Wählen Sie in der Phase **Entwicklung** die Option **1 job, 1 task** (1 Auftrag, 1 Aufgabe) aus. Wählen Sie die Phase **Bereitstellen** aus.
+
+   ![Parallele Pipelineaufgaben mit ausgewählter Bereitstellungsaufgabe](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline-tasks.png)
+
+1. Im Konfigurationsbereich ganz rechts können Sie die Anzahl von Computern angeben, die pro Iteration parallel bereitgestellt werden sollen. Falls die Bereitstellung gleichzeitig auf mehreren Computern erfolgen soll, können Sie die Anzahl von Computern mithilfe des Schiebereglers als Prozentsatz angeben.  
+
+1. Durch die Aufgabe „Execute Deploy Script“ (Bereitstellungsskript ausführen) wird standardmäßig das Bereitstellungsskript „deploy.ps1“ oder „deploy.sh“ ausgeführt. Das Skript befindet sich im Ordner „deployscripts“ im Stammverzeichnis des veröffentlichten Pakets.
+
+   ![Bereich „Artefakte“ mit „deploy.sh“ im Ordner „deployscripts“](media/tutorial-deployment-strategy/package.png)
 
 ## <a name="other-deployment-strategies"></a>Weitere Bereitstellungsstrategien
 
-- [Konfigurieren der Strategie für die Canary-Bereitstellung](https://aka.ms/AA7jdrz)
-- [Konfigurieren der Strategie für eine Blaugrün-Bereitstellung](https://aka.ms/AA83fwu)
+- [Tutorial: Konfigurieren der Canary-Bereitstellungsstrategie für virtuelle Linux-Computer in Azure](https://aka.ms/AA7jdrz)
+- [Tutorial: Konfigurieren der Blau-Grün-Bereitstellungsstrategie für virtuelle Linux-Computer in Azure](https://aka.ms/AA83fwu)
 
+## <a name="azure-devops-projects"></a>Azure DevOps Projects
+
+Der Einstieg ist mit Azure ganz einfach. Starten Sie mit Azure DevOps Projects die Ausführung Ihrer Anwendung in einem beliebigen Azure-Dienst mit nur drei Schritten, indem Sie Folgendes auswählen:
+
+- Anwendungssprache
+- Runtime
+- Azure-Dienst
  
-## <a name="azure-devops-project"></a>Azure DevOps-Projekt 
-Der Einstieg in Azure ist jetzt noch einfacher.
+[Weitere Informationen](https://azure.microsoft.com/features/devops-projects/)
  
-Starten Sie mit DevOps Projects die Ausführung Ihrer Anwendung auf einem beliebigen Azure-Dienst mit nur drei Schritten: Sie müssen lediglich eine Anwendungssprache, eine Runtime und einen Azure-Dienst auswählen.
- 
-[Weitere Informationen](https://azure.microsoft.com/features/devops-projects/ )
- 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen 
-- [Tutorial: Bereitstellen einer ASP.NET-App auf virtuellen Azure-Computern mithilfe von Azure DevOps Projects](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
+- [Tutorial: Bereitstellen einer ASP.NET-App auf virtuellen Azure-Computern mithilfe von Azure DevOps Starter](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
 - [Implementieren von Continuous Deployment für Ihre App in einer VM-Skalierungsgruppe von Azure](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

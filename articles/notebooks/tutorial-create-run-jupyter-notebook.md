@@ -3,20 +3,21 @@ title: 'Tutorial: Erstellen und Ausführen eines Jupyter-Notebooks – Azure No
 description: Hier erfahren Sie, wie Sie eine Jupyter Notebook-Datei in Azure Notebooks (Vorschauversion) erstellen und ausführen, die den Prozess der linearen Regression in der Data Science veranschaulicht.
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.openlocfilehash: 8a1c13f41ef1588b040b3540b852d83764c6ce79
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: tracking-python
+ms.openlocfilehash: fd7fc324894595a991074c6d83ffc0f9fa3cff75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75660816"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834130"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 In diesem Tutorial durchlaufen Sie den Prozess zur Verwendung von Azure Notebooks zum Erstellen einer vollständigen Jupyter Notebook-Datei, die eine einfache lineare Regression veranschaulicht. Im Laufe dieses Tutorials machen Sie sich mit der Benutzeroberfläche von Jupyter Notebook vertraut, die das Erstellen verschiedener Zellen, das Ausführen von Zellen und eine Anzeige des Notebooks als Diaschau umfasst.
 
 Das vollständige Notebook finden Sie unter [GitHub - Azure Notebooks Samples (GitHub: Azure Notebooks-Beispiele)](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Dieses Tutorial beginnt jedoch mit einem neuen Projekt und einem leeren Notebook, damit Sie die Erstellung Schritt für Schritt kennenlernen können.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 In diesem Tutorial lernen Sie Folgendes:
 

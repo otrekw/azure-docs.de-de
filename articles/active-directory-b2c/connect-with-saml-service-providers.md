@@ -7,17 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ff5d8ecaaeff67e1a97c4afd4ca8119f8ac7c1e1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b9ea9e756587af124ca94518d9f15271310ddee3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696948"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389377"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -119,7 +119,7 @@ Suchen Sie den Abschnitt `<ClaimsProviders>`, und fügen Sie den folgenden XML-C
 
 Sie können den Wert der `IssuerUri`-Metadaten ändern. Dies ist der Aussteller-URI, der in der SAML-Antwort von Azure AD B2C zurückgegeben wird. Die Anwendung der vertrauenden Seite muss so konfiguriert werden, dass während der Überprüfung der SAML-Assertion ein Aussteller-URI akzeptiert wird.
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Token Issuer</DisplayName>
   <TechnicalProfiles>
@@ -165,7 +165,7 @@ Da Ihr nun Mandant SAML-Assertionen ausstellen kann, müssen Sie die SAML-Richtl
 
 1. Ändern Sie `PolicyId` und `PublicPolicyUri` der Richtlinie in _B2C_1A_signup_signin_saml_ und `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml` wie unten gezeigt.
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -178,7 +178,7 @@ Da Ihr nun Mandant SAML-Assertionen ausstellen kann, müssen Sie die SAML-Richtl
 
 1. Fügen Sie folgenden XML-Codeausschnitt direkt vor dem `<RelyingParty>`-Element hinzu. Dieser XML-Code überschreibt den Orchestrierungsschritt Nummer 7 der User Journey _SignUpOrSignIn_. Wenn Sie aus einem anderen Ordner im Starter Pack gestartet sind oder die User Journey durch Hinzufügen oder Entfernen von Orchestrierungsschritten angepasst haben, stellen Sie sicher, dass die Anzahl (im `order`-Element) dem im User Journey für den Tokenausstellungsschritt angegebenen Wert entspricht (in den anderen Starter Pack-Ordnern ist es z. B. Schritt 4 für `LocalAccounts`, 6 für `SocialAccounts` und 9 für `SocialAndLocalAccountsWithMfa`).
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="SignUpOrSignIn">
         <OrchestrationSteps>
@@ -190,7 +190,7 @@ Da Ihr nun Mandant SAML-Assertionen ausstellen kann, müssen Sie die SAML-Richtl
 
 1. Ersetzen Sie das gesamte `<TechnicalProfile>`-Element im `<RelyingParty>`-Element durch das folgende technische Profil-XML.
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="SAML2"/>
@@ -210,7 +210,7 @@ Da Ihr nun Mandant SAML-Assertionen ausstellen kann, müssen Sie die SAML-Richtl
 
 Die endgültige Richtliniendatei der vertrauenden Seite sollte wie folgt aussehen:
 
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -265,12 +265,12 @@ Ihre benutzerdefinierte Richtlinie und der Azure AD B2C-Mandant sind jetzt berei
 
 ## <a name="4-setup-application-in-the-azure-ad-b2c-directory"></a>4. Einrichten der Anwendung im Azure AD B2C-Verzeichnis
 
-### <a name="41-register-your-application-in-azure-active-directory"></a>4.1 Registrieren der Anwendung in Azure Active Directory
+### <a name="41-register-your-application-in-azure-ad-b2c"></a>4.1 Registrieren Ihrer Anwendung bei Azure AD B2C
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
-1. Wählen Sie **App-Registrierungen (Vorschau)** und dann **Neue Registrierung** aus.
+1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Beispielsweise *SAMLApp1*.
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
 1. Wählen Sie unter **Umleitungs-URIs** die Option **Web** aus, und geben Sie dann `https://localhost` ein. Diesen Wert ändern Sie später im Manifest der Anwendungsregistrierung.
@@ -297,7 +297,7 @@ Wenn Eigenschaften *sowohl* in der SAML-Metadaten-URL als auch im Manifest der A
 
 Verwenden Sie in diesem Tutorial, in dem die SAML-Testanwendung verwendet wird, für `samlMetadataUrl` den folgenden Wert:
 
-```JSON
+```json
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
 ```
 
@@ -309,7 +309,7 @@ Wenn Sie die Antwort-URL und die Abmelde-URL im Anwendungsmanifest konfigurieren
 
 Legen Sie für dieses Tutorial, in dem Sie die SAML-Testanwendung verwenden, die `url`-Eigenschaft von `replyUrlsWithType` auf den Wert fest, der im folgenden JSON-Codeausschnitt gezeigt wird.
 
-```JSON
+```json
 "replyUrlsWithType":[
   {
     "url":"https://samltestapp2.azurewebsites.net/SP/AssertionConsumer",
@@ -324,7 +324,7 @@ Diese optionale Eigenschaft stellt die `Logout`-URL (`SingleLogoutService`-URL i
 
 Behalten Sie für dieses Tutorial, in dem die SAML-Testanwendung verwendet wird, die Festlegung von `logoutUrl` auf `https://samltestapp2.azurewebsites.net/logout` bei:
 
-```JSON
+```json
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",
 ```
 

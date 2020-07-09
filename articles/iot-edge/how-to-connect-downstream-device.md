@@ -4,29 +4,29 @@ description: Erfahren Sie, wie Sie nachgeschaltete oder Blattgeräte für eine V
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/08/2019
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 49a94b8877d46cf95ec8701f470d87e187713f69
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: c7de0fdf6a22b1414be297b6958841ba5c251c4b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583307"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309219"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
 
-Dieser Artikel enthält Anweisungen zum Herstellen einer vertrauenswürdigen Verbindung zwischen nachgeschalteten Geräten und transparenten IoT Edge-Gateways. In einem transparenten Gatewayszenario kann mindestens ein Gerät Nachrichten über ein einziges Gatewaygerät weiterleiten, das die Verbindung zu IoT Hub aufrechterhält. Ein nachgeschaltetes Gerät kann eine beliebige Anwendung oder Plattform sein, deren Identität mit dem [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub)-Clouddienst erstellt wurde. Oft verwenden diese Anwendungen das [Azure IoT-Geräte-SDK](../iot-hub/iot-hub-devguide-sdks.md). Ein nachgeschaltetes Gerät kann sogar eine Anwendung sein, die auf dem IoT Edge-Gatewaygerät selbst ausgeführt wird.
+Dieser Artikel enthält Anweisungen zum Herstellen einer vertrauenswürdigen Verbindung zwischen nachgeschalteten Geräten und transparenten IoT Edge-Gateways. In einem transparenten Gatewayszenario kann mindestens ein Gerät Nachrichten über ein einziges Gatewaygerät weiterleiten, das die Verbindung zu IoT Hub aufrechterhält.
 
 Es gibt drei allgemeine Schritte zum Einrichten einer erfolgreichen Verbindung mit einem transparenten Gateway. In diesem Artikel wird der dritte Schritt behandelt:
 
-1. Das Gatewaygerät muss eine sichere Verbindung mit nachgeschalteten Geräten herstellen, Nachrichten von nachgeschalteten Geräten empfangen und Nachrichten an das richtige Ziel weiterleiten. Weitere Informationen finden Sie unter [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md).
-2. Das nachgeschaltete Gerät benötigt eine Geräteidentität, damit es sich bei IoT Hub authentifizieren kann und weiß, dass es über sein Gatewaygerät kommunizieren kann. Weitere Informationen finden Sie unter [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md).
-3. **Das nachgeschaltete Gerät muss eine sichere Verbindung mit dem Gatewaygerät herstellen.**
+1. Konfigurieren Sie das Gatewaygerät als Server, sodass sich nachgeschaltete Geräte mit ihm sicher verbinden können. Richten Sie das Gateway so ein, dass es Nachrichten von nachgeschalteten Geräten empfängt und an das richtige Ziel weiterleitet. Weitere Informationen finden Sie unter [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md).
+2. Erstellen Sie eine Geräteidentität für das nachgeschaltete Gerät, damit es sich bei IoT Hub authentifizieren kann. Konfigurieren Sie das nachgeschaltete Gerät zum Senden von Nachrichten über das Gatewaygerät. Weitere Informationen finden Sie unter [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md).
+3. **Verbinden Sie das nachgeschaltete Gerät mit dem Gatewaygerät, und beginnen Sie mit dem Senden von Nachrichten.**
 
 Dieser Artikel erläutert häufige Probleme beim Verbinden nachgeschalteter Geräte und führt Sie durch ihre Einrichtung. Behandelt werden die folgenden Themen:
 
@@ -38,23 +38,23 @@ In diesem Artikel beziehen sich die Begriffe *Gateway* und *IoT Edge-Gateway* au
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Auf Ihrem nachgeschalteten Gerät muss die Zertifikatsdatei **azure-iot-test-only.root.ca.cert.pem** zur Verfügung stehen, die in [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md) generiert wurde. Das nachgeschaltete Gerät verwendet dieses Zertifikat zum Überprüfen der Identität des Gatewaygeräts.
+* Auf Ihrem nachgeschalteten Gerät muss die Datei für das Zertifikat der Stammzertifizierungsstelle zur Verfügung stehen, mit der das Zertifikat der Gerätezertifizierungsstelle in [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md) generiert wurde. Das nachgeschaltete Gerät verwendet dieses Zertifikat zum Überprüfen der Identität des Gatewaygeräts. Wenn Sie die Demozertifikate verwendet haben, hat das Stammzertifikat der Zertifizierungsstelle den Namen **azure-iot-test-only.root.ca.cert.pem**.
 * Sie verfügen über die geänderte Verbindungszeichenfolge, die auf das Gatewaygerät verweist, wie unter [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md) erläutert.
 
 ## <a name="prepare-a-downstream-device"></a>Vorbereiten eines nachgeschalteten Geräts
 
-Ein nachgeschaltetes Gerät kann eine beliebige Anwendung oder Plattform sein, deren Identität mit dem [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub)-Clouddienst erstellt wurde. Oft verwenden diese Anwendungen das [Azure IoT-Geräte-SDK](../iot-hub/iot-hub-devguide-sdks.md). Ein nachgeschaltetes Gerät kann sogar eine Anwendung sein, die auf dem IoT Edge-Gatewaygerät selbst ausgeführt wird. Allerdings kann ein IoT Edge-Gerät einem IoT Edge-Gateway nicht nachgeschaltet werden.
+Ein nachgeschaltetes Gerät kann eine beliebige Anwendung oder Plattform sein, deren Identität mit dem Azure IoT Hub-Clouddienst erstellt wurde. Oft verwenden diese Anwendungen das [Azure IoT-Geräte-SDK](../iot-hub/iot-hub-devguide-sdks.md). Ein nachgeschaltetes Gerät kann sogar eine Anwendung sein, die auf dem IoT Edge-Gatewaygerät selbst ausgeführt wird. Allerdings kann ein IoT Edge-Gerät einem IoT Edge-Gateway nicht nachgeschaltet werden.
 
 >[!NOTE]
->IoT-Geräte, die in IoT Hub registrierte Identitäten haben, können [Modulzwillinge](../iot-hub/iot-hub-devguide-module-twins.md) verwenden, um verschiedene Prozesse, Hardware oder Funktionen auf einem einzigen Gerät zu isolieren. IoT Edge-Gateways unterstützen nachgeschaltete Modulverbindungen mithilfe von Authentifizierung mit symmetrischen Schlüsseln, aber nicht mit X.509-Zertifikatauthentifizierung.
+>Mit IoT Hub registrierte IoT-Geräte können mithilfe von [Modulzwillingen](../iot-hub/iot-hub-devguide-module-twins.md) verschiedene Prozesse, Hardware oder Funktionen auf einem einzigen Gerät zu isolieren. IoT Edge-Gateways unterstützen nachgeschaltete Modulverbindungen mithilfe von Authentifizierung mit symmetrischen Schlüsseln, aber nicht mit X.509-Zertifikatauthentifizierung.
 
 Zum Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway ist Folgendes erforderlich:
 
 * Ein Geräte oder eine Anwendung, die mit einer IoT Hub-Geräte-Verbindungszeichenfolge konfiguriert ist, der Informationen für die Verbindung mit dem Gateway angefügt sind.
 
-    Dieser Schritt wird unter [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md) erläutert.
+    Dieser Schritt wurde im vorherigen Artikel, [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md#retrieve-and-modify-connection-string), abgeschlossen.
 
-* Das Gerät oder die Anwendung muss dem Zertifikat der **Stammzertifizierungsstelle** des Gateways vertrauen, um die TLS-Verbindungen mit dem Gatewaygerät zu überprüfen.
+* Das Gerät oder die Anwendung muss dem **Zertifikat der Stammzertifizierungsstelle** des Gateways vertrauen, um die TLS-Verbindungen (Transport Layer Security) mit dem Gatewaygerät zu überprüfen.
 
     Dieser Schritt wird im weiteren Verlauf dieses Artikels ausführlich erläutert. Dieser Schritt kann auf zwei Arten ausgeführt werden: durch Installation des Zertifizierungsstellenzertifikats (ZS-Zertifikat) im Zertifikatspeicher des Betriebssystems oder (für bestimmte Sprachen) durch Verweisen auf das Zertifikat in Anwendungen mit Azure IoT SDKs.
 
@@ -62,9 +62,9 @@ Zum Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway is
 
 Die sichere Verbindung nachgeschalteter Geräte mit IoT Edge unterliegt den gleichen Herausforderungen wie jede andere sichere Client/Server-Kommunikation, die über das Internet erfolgt. Ein Client und ein Server kommunizieren mithilfe von [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) sicher über das Internet. TLS wird mit Standardkonstrukten der [Public Key-Infrastruktur](https://en.wikipedia.org/wiki/Public_key_infrastructure) erstellt, die als Zertifikate bezeichnet werden. TLS ist ziemlich raffiniert und deckt zahlreiche Themen in Hinblick auf die Sicherung von zwei Endpunkten ab. In diesem Abschnitt sind die für Sie relevanten Konzepte zusammengefasst, um eine sichere Verbindung von Geräten mit einem IoT Edge-Gateway herzustellen.
 
-Wenn sich ein Client mit einem Server verbindet, präsentiert der Server eine Kette von Zertifikaten, die als *Serverzertifikatkette* bezeichnet wird. Eine Zertifikatkette besteht i.d.R. aus einem Stammzertifizierungsstellen-Zertifikat, mindestens einem Zwischen-ZS-Zertifikat und dem Zertifikat des Servers selbst. Ein Client stellt eine Vertrauensstellung mit einem Server her, indem er die gesamte Serverzertifikatkette kryptographisch überprüft. Diese Clientüberprüfung der Serverzertifikatkette wird als *Serverkettenüberprüfung* bezeichnet. Der Client fordert den Dienst in einem Prozess namens *Eigentumsnachweis* kryptografisch auf, den Besitz des privaten Schlüssels, der dem Serverzertifikat zugeordnet ist, nachzuweisen. Die Kombination aus Serverkettenüberprüfung und Eigentumsnachweis wird als *Serverauthentifizierung* bezeichnet. Zum Überprüfen einer Serverzertifikatkette benötigt der Client eine Kopie des Stamm-ZS-Zertifikats, mit dem das Serverzertifikat erstellt (oder ausgestellt) wurde. Normalerweise ist ein Browser beim Verbinden mit Websites mit häufig verwendeten ZS-Zertifikaten vorkonfiguriert, um den Workflow des Clients zu vereinfachen.
+Wenn sich ein Client mit einem Server verbindet, präsentiert der Server eine Kette von Zertifikaten, die als *Serverzertifikatkette* bezeichnet wird. Eine Zertifikatkette besteht i.d.R. aus einem Stammzertifizierungsstellen-Zertifikat, mindestens einem Zwischen-ZS-Zertifikat und dem Zertifikat des Servers selbst. Ein Client stellt eine Vertrauensstellung mit einem Server her, indem er die gesamte Serverzertifikatkette kryptographisch überprüft. Diese Clientüberprüfung der Serverzertifikatkette wird als *Serverkettenüberprüfung* bezeichnet. Der Client fordert den Server im Prozess *Eigentumsnachweis* auf, den Besitz des privaten Schlüssels nachzuweisen, der dem Serverzertifikat zugeordnet ist. Die Kombination aus Serverkettenüberprüfung und Eigentumsnachweis wird als *Serverauthentifizierung* bezeichnet. Zum Überprüfen einer Serverzertifikatkette benötigt der Client eine Kopie des Stamm-ZS-Zertifikats, mit dem das Serverzertifikat erstellt (oder ausgestellt) wurde. Normalerweise ist ein Browser beim Verbinden mit Websites mit häufig verwendeten ZS-Zertifikaten vorkonfiguriert, um den Workflow des Clients zu vereinfachen.
 
-Wenn sich ein Gerät mit Azure IoT Hub verbindet, ist das Gerät der Client und der IoT Hub-Clouddienst der Server. Der IoT Hub-Clouddienst wird durch ein Stamm-ZS-Zertifikat namens **Baltimore CyberTrust Root** gesichert, das öffentlich verfügbar und weitverbreitet ist. Da das IoT Hub-ZS-Zertifikat auf den meisten Geräten bereits installiert ist, wird es von vielen TLS-Implementierungen (OpenSSL, Schannel, LibreSSL) bei der Serverzertifikatüberprüfung automatisch verwendet. Ein Gerät, das sich erfolgreich mit IoT Hub verbinden kann, hat möglicherweise Probleme beim Verbinden mit einem IoT Edge-Gateway.
+Wenn sich ein Gerät mit Azure IoT Hub verbindet, ist das Gerät der Client und der IoT Hub-Clouddienst der Server. Der IoT Hub-Clouddienst wird durch ein Stamm-ZS-Zertifikat namens **Baltimore CyberTrust Root** gesichert, das öffentlich verfügbar und weitverbreitet ist. Da das IoT Hub-ZS-Zertifikat auf den meisten Geräten bereits installiert ist, wird es von vielen TLS-Implementierungen (OpenSSL, Schannel, LibreSSL) bei der Serverzertifikatüberprüfung automatisch verwendet. Allerdings hat ein Gerät, das sich mit IoT Hub erfolgreich verbinden kann, hat möglicherweise Probleme beim Verbinden mit einem IoT Edge-Gateway.
 
 Wenn sich ein Gerät mit einem IoT Edge-Gateway verbindet, ist das nachgeschaltete Gerät der Client und das Gatewaygerät der Server. Mit Azure IoT Edge können Operatoren (und Benutzer) Gatewayzertifikatketten nach Belieben erstellen. Der Operator hat die Möglichkeit, ein öffentliches ZS-Zertifikat wie Baltimore oder ein selbstsigniertes (oder internes) Stamm-ZS-Zertifikat zu verwenden. Öffentliche ZS-Zertifikate sind oft mit Kosten verbunden und werden deswegen i.d.R. in Produktionsszenarien eingesetzt. Selbstsignierte ZS-Zertifikate werden für Entwicklung und Tests bevorzugt. Bei den in der Einführung aufgelisteten Artikeln zum Einrichten transparenter Gateways werden selbstsignierte Stamm-ZS-Zertifikate verwendet.
 

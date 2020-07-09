@@ -1,24 +1,23 @@
 ---
-title: Integrierte Lösungen – Azure Marketplace
-description: Integrierte Lösungen im Azure Marketplace und in AppSource
-author: dsindona
+title: 'Integrierte Lösungen: kommerzieller Microsoft-Marketplace'
+description: Erfahren Sie mehr über die Vorteile, Ressourcen und die nächsten Schritte zum Anbieten integrierter Lösungen im kommerziellen Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: 4c32fe80b681e6d82d40b0f5c94d5e9288f72cd6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 8e029d888b963fd10e7198486a973766755c9812
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81684400"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119513"
 ---
-# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Integrierte Lösungen in Microsoft AppSource und Azure Marketplace
-
+# <a name="integrated-solutions-in-the-commercial-marketplace"></a>Integrierte Lösungen im kommerziellen Marketplace
 Eine integrierte Lösung vereint branchenführende Technologien von Microsoft-Partnern und beinhaltet Leistungen wie Beratung, Bereitstellung und Support, die von erfahrenen Servicepartnern bereitgestellt werden.
 
-Zwei oder mehr Microsoft-Partner integrieren ihre Technologien und Dienste, um eine einheitliche, nahtlose und wiederholbare Bereitstellungsumgebung zu schaffen, die Kunden einen schnellen Einstieg ermöglicht.  Der federführende Partner und Anbieter der Lösung (normalerweise der Servicepartner) stellt für den Kunden auch einen zentralen Ansprechpartner bereit, der für die entsprechende Anpassung und Beratung sowie für den Support rund um die Lösung verantwortlich ist.
+Mehrere Microsoft-Partner integrieren ihre Technologien und Dienste, um eine einheitliche, nahtlose und wiederholbare Bereitstellungsumgebung zu schaffen und dadurch Kunden einen schnellen Einstieg zu ermöglichen.  Der federführende Partner und Anbieter der Lösung (normalerweise der Servicepartner) stellt für den Kunden auch einen zentralen Ansprechpartner bereit, der für die entsprechende Anpassung und Beratung sowie für den Support rund um die Lösung verantwortlich ist.
 
 In anderen Szenarien können Partner Ihre Lösung gemeinsam durch Co-Selling oder Co-Marketing vertreiben, während eine integrierte Lösung ein gemeinsames, neu entwickeltes Projekt darstellt, in dem Technologien und Dienste partnerübergreifend integriert werden.
 
@@ -30,7 +29,7 @@ Ein integrierter Ansatz bietet folgende Vorteile:
 * *Amortisationszeit*: Mit dem integrierten Bereitstellungsansatz können Sie einen unmittelbaren Nutzen erzielen.
 * *Branchenführende Lösungen*: Entdecken Sie, wie einfach der Erwerb und die Implementierung einer integrierten Lösung ist.
 
-Weitere Informationen finden Sie unter [Veröffentlichen einer integrierten Sicherheitslösung](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers).
+Weitere Informationen finden Sie unter [Veröffentlichen einer integrierten Lösung](./integrated-solutions-for-publishers.md).
 
 ## <a name="submit-a-nomination"></a>Einreichen einer Nominierung
 
@@ -38,7 +37,7 @@ Partner, die am Programm teilnehmen möchten, müssen die anderen Partner angebe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie integrierte Lösungen entdecken und Kontakt mit den geschätzten Partnern aufnehmen möchten, sehen Sie sich hier deren Auflistungen an:
+Sie können integrierte Lösungen entdecken und Kontakt mit den geschätzten Partnern aufnehmen, indem Sie sich hier deren Auflistungen ansehen:
 
 * [Customer 360 Powered by Zero2Hero](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
 * [Rapid Commerce](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)

@@ -1,25 +1,17 @@
 ---
 title: 'Tutorial: Beispiele zur Integration von Azure Service Bus in Event Grid'
 description: 'Tutorial: Dieser Artikel enthält Beispiele für die Integration von Service Bus-Messaging und Event Grid.'
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: fef325b67c38eda09a05dac9d74bd5b97df164cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8f947489c2298e580ae455763709df1734687130
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067769"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337062"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Tutorial: Reagieren auf Azure Service Bus-Ereignisse, die über Azure Event Grid empfangen wurden, mithilfe von Azure Functions und Azure Logic Apps
 In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Functions und Azure Logic Apps auf Azure Service Bus-Ereignisse reagieren, die über Azure Event Grid empfangen wurden. 
@@ -28,11 +20,11 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen eines Service Bus-Namespace
 > * Vorbereiten einer Beispielanwendung zum Senden von Nachrichten.
+> * Senden von Nachricht an das Service Bus-Thema
+> * Empfangen von Nachrichten mithilfe von Logik-Apps
 > * Einrichten einer Testfunktion in Azure
 > * Verbinden der Funktion und des Namespace per Event Grid
-> * Senden von Nachricht an das Service Bus-Thema
 > * Empfangen von Nachrichten per Azure Functions
-> * Empfangen von Nachrichten mithilfe von Logik-Apps
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -61,7 +53,62 @@ Sie können beliebige Verfahren zum Senden einer Nachricht an Ihr Service Bus-Th
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     const string TopicName = "YOUR TOPIC NAME";
     ```
+5. Aktualisieren Sie den Wert `numberOfMessages` auf **5**. 
 5. Erstellen Sie das Programm, und führen Sie es aus, um Testnachrichten an das Service Bus-Thema zu senden. 
+
+## <a name="receive-messages-by-using-logic-apps"></a>Empfangen von Nachrichten mithilfe von Logik-Apps
+Gehen Sie wie folgt vor, um für eine Logik-App eine Verbindung mit Azure Service Bus und Azure Event Grid herzustellen:
+
+1. Erstellen Sie im Azure-Portal eine Logik-App.
+    1. Wählen Sie **+Ressource erstellen**, dann **Integration** und schließlich **Logik-App** aus. 
+    2. Geben Sie auf der Seite **Logik-App – Erstellen** einen **Namen** für die Logik-App ein.
+    3. Wählen Sie Ihr Azure- **Abonnement**aus. 
+    4. Wählen Sie für die **Ressourcengruppe** **Vorhandene verwenden** aus, und wählen Sie die Ressourcengruppe aus, die Sie für andere Ressourcen (wie Azure-Funktion, Service Bus-Namespace) verwendet haben, die Sie zuvor erstellt haben. 
+    5. Wählen Sie den **Speicherort** für die Logik-App aus. 
+    6. Wählen Sie **Erstellen** aus, um die Logik-App zu erstellen. 
+2. Wählen Sie auf der Seite **Designer für Logik-Apps** unter **Vorlagen** den Eintrag **Leere Logik-App** aus. 
+3. Führen Sie im Designer folgende Schritte aus:
+    1. Suchen Sie nach **Event Grid**. 
+    2. Wählen Sie **Wenn ein Ressourcenereignis eintritt – Azure Event Grid** aus. 
+
+        ![Designer für Logik-Apps: Event Grid-Trigger auswählen](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
+4. Wählen Sie **Anmelden** aus, geben Sie Ihre Azure-Anmeldeinformationen ein, und wählen Sie **Zugriff zulassen** aus. 
+5. Führen Sie auf der Seite **Bei Auftreten eines Ressourcenereignisses** die folgenden Schritte aus:
+    1. Wählen Sie Ihr Azure-Abonnement. 
+    2. Wählen Sie für **Ressourcentyp** den Wert **Microsoft.ServiceBus.Namespaces** aus. 
+    3. Wählen Sie für **Ressourcenname** Ihren Service Bus-Namespace aus. 
+    4. Wählen Sie **Neuen Parameter hinzufügen** und dann **Suffixfilter** aus. 
+    5. Geben Sie für **Suffixfilter** den Namen Ihres zweiten Service Bus-Themenabonnements ein. 
+        ![Designer für Logik-Apps: Ereignis konfigurieren](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
+6. Wählen Sie im Designer **+ Neuer Schritt** aus, und führen Sie die folgenden Schritte aus:
+    1. Suchen Sie nach **Service Bus**.
+    2. Wählen Sie in der Liste **Service Bus** aus. 
+    3. Wählen Sie in der Liste **Aktionen** den Eintrag **Nachrichten abrufen** aus. 
+    4. Wählen Sie **Ruft Nachrichten aus einem Themenabonnement ab (Peek-Lock)** aus. 
+
+        ![Designer für Logik-Apps: Aktion „Nachrichten abrufen“](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
+    5. Geben Sie einen **Namen für die Verbindung** ein. Beispiel: **Rufen Sie Nachrichten aus einem Themenabonnement ab**, und wählen Sie den Service Bus-Namespace aus. 
+
+        ![Designer für Logik-Apps: Service Bus-Namespace auswählen](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
+    6. Wählen Sie **RootManageSharedAccessKey** und dann **Erstellen** aus.
+
+        ![Designer für Logik-Apps: Freigegebenen Zugriffsschlüssel auswählen](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
+    8. Wählen Sie Ihr **Thema** und **Abonnement** aus. 
+    
+        ![Designer für Logik-Apps: Service Bus-Thema und -Abonnement auswählen](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
+7. Wählen Sie **+ Neuer Schritt** aus, und führen Sie die folgenden Schritte aus: 
+    1. Wählen Sie **Service Bus** aus.
+    2. Wählen Sie in der Liste der Aktionen **Nachricht in einem Themenabonnement abschließen** aus. 
+    3. Wählen Sie Ihr Service Bus-**Thema** aus.
+    4. Wählen Sie das zweite **Abonnement** für das Thema aus.
+    5. Wählen Sie für **Sperrtoken der Nachricht** die Option **Sperrtoken** aus dem **Dynamischen Inhalt** aus. 
+
+        ![Designer für Logik-Apps: Service Bus-Thema und -Abonnement auswählen](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
+8. Wählen Sie in der Symbolleiste des Designers für Logik-Apps **Speichern** aus, um die Logik-App zu speichern. 
+9. Befolgen Sie die Anleitungen im Abschnitt [Senden von Nachrichten an das Service Bus-Thema](#send-messages-to-the-service-bus-topic) aus, um Nachrichten an das Thema zu senden. 
+10. Wechseln Sie zur Seite **Übersicht** Ihrer Logik-App. Sie sehen, dass die Logik-App ausgeführt wird, im **Ausführungsverlauf** für die gesendeten Nachrichten.
+
+    ![Designer für Logik-Apps – Logik-App wird ausgeführt](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 
 ## <a name="set-up-a-test-function-on-azure"></a>Einrichten einer Testfunktion in Azure 
 Richten Sie vor dem Durcharbeiten des gesamten Szenarios mindestens eine kleine Testfunktion ein, mit der Sie die fließenden Ereignisse debuggen und beobachten können. Befolgen Sie die Anleitungen in dem Artikel [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md), um die folgenden Aufgaben auszuführen: 
@@ -99,9 +146,10 @@ Führen Sie dann die folgenden Schritte aus:
             var validationHeaderValue = headerValues.FirstOrDefault();
             if(validationHeaderValue == "SubscriptionValidation")
             {
+                log.LogInformation("Validating the subscription");            
                 var events = JsonConvert.DeserializeObject<GridEvent[]>(jsonContent);
                 var code = events[0].Data["validationCode"];
-                log.LogInformation("Validation code: {code}");
+                log.LogInformation($"Validation code: {code}");
                 return (ActionResult) new OkObjectResult(new { validationResponse = code });
             }
         }
@@ -119,22 +167,46 @@ Führen Sie dann die folgenden Schritte aus:
         public DateTime EventTime { get; set; }
         public Dictionary<string, string> Data { get; set; }
         public string Topic { get; set; }
-    }
-    
+    }    
     ```
-2. Klicken Sie auf **Speichern und ausführen**.
+2. Wählen Sie auf der Symbolleiste **Speichern** aus, um den Code für die Funktion zu speichern.
 
-    ![Ausgabe der Funktions-App](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
+    ![Speichern des Funktionscodes](./media/service-bus-to-event-grid-integration-example/save-function-code.png)
+3. Wählen Sie auf der Symbolleiste **Testen/Ausführen** aus, und führen Sie die folgenden Schritte aus: 
+    1. Geben Sie als **Textkörper** den folgenden JSON-Code ein:
+
+        ```json
+        [{
+          "id": "64ba80ae-9f8e-425f-8bd7-d88d2c0ba3e3",
+          "topic": "/subscriptions/0000000000-0000-0000-0000-0000000000000/resourceGroups/spegridsbusrg/providers/Microsoft.ServiceBus/namespaces/spegridsbusns",
+          "subject": "",
+          "data": {
+            "validationCode": "D7D825D4-BD04-4F73-BDE3-70666B149857",
+            "validationUrl": "https://rp-eastus.eventgrid.azure.net:553/eventsubscriptions/spsbusegridsubscription/validate?id=D7D825D4-BD04-4F73-BDE3-70666B149857&t=2020-06-09T18:28:51.5724615Z&apiVersion=2020-04-01-preview&[Hidden Credential]"
+          },
+          "eventType": "Microsoft.EventGrid.SubscriptionValidationEvent",
+          "eventTime": "2020-06-09T18:28:51.5724615Z",
+          "metadataVersion": "1",
+          "dataVersion": "2"
+        }]
+        ```    
+    2. Klicken Sie auf **Kopfzeile hinzufügen**, und fügen Sie einen Header mit dem Namen `aeg-event-type` und dem Wert `SubscriptionValidation` hinzu. 
+    3. Klicken Sie auf **Run** (Ausführen). 
+
+        ![Testlauf](./media/service-bus-to-event-grid-integration-example/test-run-function.png)
+    4. Vergewissern Sie sich, dass der Rückgabestatuscode **OK** und der Validierungscode im Antworttext angezeigt werden. Sehen Sie sich darüber hinaus die von der Funktion protokollierten Informationen an. 
+
+        ![Testlauf – Antwort](./media/service-bus-to-event-grid-integration-example/test-function-response.png)        
 3. Wählen Sie **Funktions-URL abrufen** aus, und notieren Sie sich die URL. 
 
     ![Abrufen der Funktions-URL](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+5. Wählen Sie neben dem URL-Text die Schaltfläche **Kopieren** aus.    
+    ![Kopieren der Funktions-URL](./media/service-bus-to-event-grid-integration-example/get-function-url-copy.png)
 
 # <a name="azure-functions-v1"></a>[Azure Functions V1](#tab/v1)
 
 1. Konfigurieren Sie die Funktion für die Verwendung der Version **V1**: 
     1. Wählen Sie Ihre Funktions-App in der Strukturansicht aus, und wählen Sie **Funktionen-App-Einstellungen** aus. 
-
-        ![Einstellungen für Funktions-Apps]()./media/service-bus-to-event-grid-integration-example/function-app-settings.png)
     2. Wählen Sie als **Laufzeitversion** **~1** aus. 
 2. Erweitern Sie **Funktionen** in der Strukturansicht, und wählen Sie Ihre Funktion aus. Ersetzen Sie den Code für die Funktion durch den folgenden Code: 
 
@@ -184,9 +256,11 @@ Führen Sie dann die folgenden Schritte aus:
 4. Klicken Sie auf **Speichern und ausführen**.
 
     ![Ausgabe der Funktions-App](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
-4. Wählen Sie **Funktions-URL abrufen** aus, und notieren Sie sich die URL. 
+4. Wählen Sie auf der Symbolleiste **Funktions-URL abrufen** aus. 
 
     ![Abrufen der Funktions-URL](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+5. Wählen Sie neben dem URL-Text die Schaltfläche **Kopieren** aus.    
+    ![Kopieren der Funktions-URL](./media/service-bus-to-event-grid-integration-example/get-function-url-copy.png)
 
 ---
 
@@ -201,16 +275,20 @@ Gehen Sie wie folgt vor, um ein Azure Event Grid-Abonnement zu erstellen:
 2. Wählen Sie in der Symbolleiste **+ Ereignisabonnement** aus. 
 3. Führen Sie auf der Seite **Ereignisabonnement erstellen** die folgenden Schritte aus:
     1. Geben Sie einen **Namen** für das Abonnement ein. 
+    2. Geben Sie unter **Name** einen Namen für das **Systemthema** ein. Systemthemen werden für Azure-Ressourcen wie Azure Storage-Konten und Azure Service Bus erstellt. Weitere Informationen zu Systemthemen finden Sie unter [Systemthemen in Azure Event Grid](../event-grid/system-topics.md).
     2. Wählen Sie **Webhook** als **Endpunkttyp** aus. 
 
         ![Service Bus: Event Grid-Abonnement](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
     3. Wählen Sie **Endpunkt auswählen** aus, fügen Sie die Funktions-URL ein, und wählen Sie dann **Auswahl bestätigen** aus. 
 
         ![Funktion: Endpunkt auswählen](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
-    4. Wechseln Sie zur Registerkarte **Filter**, geben Sie den Namen des **erste Abonnements** des Service Bus-Themas ein, das Sie zuvor erstellt haben, und wählen Sie dann die Schaltfläche **Erstellen** aus. 
+    4. Wechseln Sie zur Registerkarte **Filter**, und führen Sie die folgenden Aufgaben aus:
+        1. Wählen Sie **Betrefffilter aktivieren** aus.
+        2. Geben Sie den Namen des **ersten Abonnements** für das zuvor erstellte Service Bus-Thema ein.
+        3. Wählen Sie die Schaltfläche **Erstellen**. 
 
-        ![Ereignisabonnementfilter](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
-4. Vergewissern Sie sich, dass das Ereignisabonnement in der Liste angezeigt wird.
+            ![Ereignisabonnementfilter](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
+4. Wechseln Sie auf der Registerkarte **Ereignisabonnements** zur Seite **Ereignisse**, und vergewissern Sie sich, dass das Ereignisabonnement in der Liste angezeigt wird.
 
     ![Ereignisabonnement in der Liste](./media/service-bus-to-event-grid-integration-example/event-subscription-in-list.png)
 
@@ -218,9 +296,11 @@ Gehen Sie wie folgt vor, um ein Azure Event Grid-Abonnement zu erstellen:
 1. Führen Sie die .NET C#-Anwendung aus, die Nachrichten an das Service Bus-Thema sendet. 
 
     ![Ausgabe der Konsolen-App](./media/service-bus-to-event-grid-integration-example/console-app-output.png)
-1. Erweitern Sie auf der Seite für Ihre Azure Funktions-App **Funktionen**, erweitern Sie Ihre **Funktion**, und wählen Sie **Überwachen** aus. 
+1. Wechseln Sie auf der Seite für Ihre Azure-Funktions-App auf der Registerkarte **Programmieren und testen** zur Registerkarte **Monitor**. Für jede im Service Bus-Thema gepostete Nachricht sollte ein Eintrag angezeigt werden. Ist dies nicht der Fall, aktualisieren Sie die Seite nach einigen Minuten. 
 
     ![Überwachen-Funktion](./media/service-bus-to-event-grid-integration-example/function-monitor.png)
+
+    Sie können die Protokollierungsinformationen auch über die Registerkarte **Protokolle** auf der Seite **Monitor** anzeigen, wenn die Nachrichten gesendet werden. Es kann eine Verzögerung auftreten. Daher kann es einige Minuten dauern, bis die protokollierten Nachrichten angezeigt werden. 
 
 ## <a name="receive-messages-by-using-azure-functions"></a>Empfangen von Nachrichten per Azure Functions
 Im vorherigen Abschnitt haben Sie ein einfaches Test- und Debuggingszenario verwendet und sich vergewissert, dass Ereignisse fließen. 
@@ -242,11 +322,15 @@ In diesem Abschnitt erfahren Sie, wie Sie nach dem Erhalt eines Ereignisses Nach
         ![Veröffentlichungsprofil für die Funktion abrufen](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
     4. Speichern Sie die Datei im Ordner Ihres Projekts. 
 4. Klicken Sie in Visual Studio mit der rechten Maustaste auf **SBEventGridIntegration**, und wählen Sie anschließend die Option **Veröffentlichen**. 
-5. Wählen Sie auf der Seite **Veröffentlichen** die Option **Start** aus. 
-6. Führen Sie auf der Seite **Veröffentlichungsziel auswählen** die folgenden Schritte aus, und wählen Sie **Profil importieren** aus. 
+5. Führen Sie unter **Veröffentlichen** die folgenden Schritte aus: 
+    1. Wählen Sie auf der Seite **Veröffentlichen** die Option **Starten** aus. 
+    2. Wählen Sie unter **Ziel** die Option **Profil importieren** aus. 
+    3. Wählen Sie **Weiter** aus. 
 
-    ![Visual Studio: Schaltfläche „Profil importieren“](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
-7. Wählen Sie die zuvor heruntergeladene **Veröffentlichungsprofildatei** aus. 
+        ![Visual Studio: Schaltfläche „Profil importieren“](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
+7. Wählen Sie die zuvor heruntergeladene **Veröffentlichungsprofildatei** und dann **Fertig stellen** aus.
+
+    ![Auswählen des Veröffentlichungsprofils](./media/service-bus-to-event-grid-integration-example/select-publish-profile.png)
 8. Wählen Sie auf der Seite **Veröffentlichen** den Befehl **Veröffentlichen** aus. 
 
     ![Visual Studio: Veröffentlichen](./media/service-bus-to-event-grid-integration-example/select-publish.png)
@@ -259,65 +343,15 @@ In diesem Abschnitt erfahren Sie, wie Sie nach dem Erhalt eines Ereignisses Nach
 
 1. Löschen Sie das vorhandene Event Grid-Abonnement:
     1. Wählen Sie auf der Seite **Service Bus-Namespace** im linken Menü die Option **Ereignisse** aus. 
+    2. Wechseln Sie zur Registerkarte **Event Subscriptions** (Ereignisabonnements). 
     2. Wählen Sie das vorhandene Ereignisabonnement aus. 
-    3. Wählen Sie auf der Seite **Ereignisabonnement** die Option **Löschen** aus.
+
+        ![Auswählen eines Ereignisabonnements](./media/service-bus-to-event-grid-integration-example/select-event-subscription.png)
+    3. Wählen Sie auf der Seite **Ereignisabonnement** die Option **Löschen** aus. Wählen Sie **Ja** aus, um den Löschvorgang zu bestätigen. 
+        ![Schaltfläche zum Löschen eines Ereignisabonnements](./media/service-bus-to-event-grid-integration-example/delete-subscription-button.png)
 2. Befolgen Sie die Anleitungen im Abschnitt [Verbinden von Funktion und Namespace per Event Grid](#connect-the-function-and-namespace-via-event-grid), um mithilfe der neuen Funktions-URL ein Event Grid-Abonnement zu erstellen.
 3. Führen Sie die Anweisungen im Abschnitt [Senden von Nachrichten an das Service Bus-Thema](#send-messages-to-the-service-bus-topic) aus, um Nachrichten an das Thema zu senden und die Funktion zu überwachen. 
 
-## <a name="receive-messages-by-using-logic-apps"></a>Empfangen von Nachrichten mithilfe von Logik-Apps
-Gehen Sie wie folgt vor, um für eine Logik-App eine Verbindung mit Azure Service Bus und Azure Event Grid herzustellen:
-
-1. Erstellen Sie im Azure-Portal eine Logik-App.
-    1. Wählen Sie **+Ressource erstellen**, dann **Integration** und schließlich **Logik-App** aus. 
-    2. Geben Sie auf der Seite **Logik-App – Erstellen** einen **Namen** für die Logik-App ein.
-    3. Wählen Sie Ihr Azure- **Abonnement**aus. 
-    4. Wählen Sie für die **Ressourcengruppe** **Vorhandene verwenden** aus, und wählen Sie die Ressourcengruppe aus, die Sie für andere Ressourcen (wie Azure-Funktion, Service Bus-Namespace) verwendet haben, die Sie zuvor erstellt haben. 
-    5. Wählen Sie den **Speicherort** für die Logik-App aus. 
-    6. Wählen Sie **Erstellen** aus, um die Logik-App zu erstellen. 
-2. Wählen Sie auf der Seite **Designer für Logik-Apps** unter **Vorlagen** den Eintrag **Leere Logik-App** aus. 
-3. Führen Sie im Designer folgende Schritte aus:
-    1. Suchen Sie nach **Event Grid**. 
-    2. Wählen Sie **Bei Auftreten eines Ressourcenereignisses (Vorschau) – Azure Event Grid** aus. 
-
-        ![Designer für Logik-Apps: Event Grid-Trigger auswählen](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
-4. Wählen Sie **Anmelden** aus, geben Sie Ihre Azure-Anmeldeinformationen ein, und wählen Sie **Zugriff zulassen** aus. 
-5. Führen Sie auf der Seite **Bei Auftreten eines Ressourcenereignisses** die folgenden Schritte aus:
-    1. Wählen Sie Ihr Azure-Abonnement. 
-    2. Wählen Sie für **Ressourcentyp** den Wert **Microsoft.ServiceBus.Namespaces** aus. 
-    3. Wählen Sie für **Ressourcenname** Ihren Service Bus-Namespace aus. 
-    4. Wählen Sie **Neuen Parameter hinzufügen** und dann **Suffixfilter** aus. 
-    5. Geben Sie für **Suffixfilter** den Namen Ihres zweiten Service Bus-Themenabonnements ein. 
-        ![Designer für Logik-Apps: Ereignis konfigurieren](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
-6. Wählen Sie im Designer **+ Neuer Schritt** aus, und führen Sie die folgenden Schritte aus:
-    1. Suchen Sie nach **Service Bus**.
-    2. Wählen Sie in der Liste **Service Bus** aus. 
-    3. Wählen Sie in der Liste **Aktionen** den Eintrag **Nachrichten abrufen** aus. 
-    4. Wählen Sie **Ruft Nachrichten aus einem Themenabonnement ab (Peek-Lock)** aus. 
-
-        ![Designer für Logik-Apps: Aktion „Nachrichten abrufen“](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
-    5. Geben Sie einen **Namen für die Verbindung** ein. Beispiel: **Rufen Sie Nachrichten aus einem Themenabonnement ab**, und wählen Sie den Service Bus-Namespace aus. 
-
-        ![Designer für Logik-Apps: Service Bus-Namespace auswählen](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
-    6. Wählen Sie **RootManageSharedAccessKey**.
-
-        ![Designer für Logik-Apps: Freigegebenen Zugriffsschlüssel auswählen](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
-    7. Klicken Sie auf **Erstellen**. 
-    8. Wählen Sie Ihr Thema und Abonnement aus. 
-    
-        ![Designer für Logik-Apps: Service Bus-Thema und -Abonnement auswählen](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
-7. Wählen Sie **+ Neuer Schritt** aus, und führen Sie die folgenden Schritte aus: 
-    1. Wählen Sie **Service Bus** aus.
-    2. Wählen Sie in der Liste der Aktionen **Nachricht in einem Themenabonnement abschließen** aus. 
-    3. Wählen Sie Ihr Service Bus-**Thema** aus.
-    4. Wählen Sie das zweite **Abonnement** für das Thema aus.
-    5. Wählen Sie für **Sperrtoken der Nachricht** die Option **Sperrtoken** aus dem **Dynamischen Inhalt** aus. 
-
-        ![Designer für Logik-Apps: Service Bus-Thema und -Abonnement auswählen](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
-8. Wählen Sie in der Symbolleiste des Designers für Logik-Apps **Speichern** aus, um die Logik-App zu speichern. 
-9. Befolgen Sie die Anleitungen im Abschnitt [Senden von Nachrichten an das Service Bus-Thema](#send-messages-to-the-service-bus-topic) aus, um Nachrichten an das Thema zu senden. 
-10. Wechseln Sie zur Seite **Übersicht** Ihrer Logik-App. Sie sehen, dass die Logik-App ausgeführt wird, im **Ausführungsverlauf** für die gesendeten Nachrichten.
-
-    ![Designer für Logik-Apps – Logik-App wird ausgeführt](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

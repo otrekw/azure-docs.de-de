@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5825466c099a8c57477f2d9d0420da74ccb2e96d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 195668886a0c1ba9f96939a7e5e3960a6932dee5
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614259"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235891"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -35,6 +35,22 @@ Um das Windows 10 Enterprise-Image für mehrere Sitzungen zu verwenden, wechseln
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Erstellen eines Windows Virtual Desktop-Mandanten
 
 Dieser Abschnitt behandelt mögliche Probleme beim Erstellen des Windows Virtual Desktop-Mandanten.
+
+### <a name="error-aadsts650052-the-app-needs-access-to-a-service"></a>Error: AADSTS650052 The app needs access to a service (Die APP benötigt Zugriff auf einen Dienst).
+
+Beispiel für unformatierten Fehler:
+
+```Error
+AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+configuration of your service subscriptions.650052 Message The app needs access to a service
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+Contact your IT Admin to review the configuration of your service subscriptions.
+```
+
+**Ursache:** Windows Virtual Desktop in der Azure Active Directory-Instanz wurde keine Erlaubnis erteilt.
+
+**Behebung:** [Befolgen Sie diese Anleitung](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop), um die Erlaubnis zu erteilen.
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Error: User is not authorized to query the management service (Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen)
 
@@ -122,7 +138,7 @@ Führen Sie die folgenden Schritte aus, um eine Problembehandlung bei nicht erfo
 3. Sobald der Fehler identifiziert ist, nutzen Sie die Informationen zur Fehlermeldung und zu den Ressourcen im Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../../azure-resource-manager/resource-manager-common-deployment-errors.md), um den Fehler zu beheben.
 4. Löschen Sie alle Ressourcen, die während der vorherigen Bereitstellung erstellt wurden, und versuchen Sie erneut, die Vorlage bereitzustellen.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Error: Fehler bei der Bereitstellung….\<Hostname >/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Error: Fehler bei der Bereitstellung … \<hostname>/joindomain
 
 ![Screenshot: Fehler bei der Bereitstellung](../media/e72df4d5c05d390620e07f0d7328d50f.png)
 

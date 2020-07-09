@@ -3,12 +3,12 @@ title: Speichern von Containerimages
 description: Details darüber, wie Ihre Docker-Containerimages in Azure Container Registry gespeichert werden, sowie über Sicherheit, Redundanz und Kapazität.
 ms.topic: article
 ms.date: 03/21/2018
-ms.openlocfilehash: f66c3dd95edfe5035c46857cb6f9aa59d8a6a0e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b738556e5a4f764cd47c72d964ee188d1344b336
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74456208"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683403"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Speichern von Containerimages in Azure Container Registry
 
@@ -46,7 +46,7 @@ Ausführliche Informationen zu den Preisen finden Sie unter [Containerregistrier
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den verschiedenen Azure Container Registry-SKUs (Basic, Standard, Premium) finden Sie unter den [Azure Container Registry-SKUs](container-registry-skus.md).
+Weitere Informationen zu den Containerregistrierungen „Basic“, „Standard“ und „Premium“ finden Sie unter [Azure Container Registry-Tarife](container-registry-skus.md).
 
 <!-- IMAGES -->
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16c3676a881dc5dc979891dfd870274581be255b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683322"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84310384"
 ---
 # <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 
@@ -115,7 +115,7 @@ Ja, wenn Sie über lokale Gemalto SafeNet-HSMs verfügen. Es gibt mehrere Mögli
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>F: Welche Betriebssysteme werden von Dedicated HSM-Clientsoftware unterstützt?
 
 * Windows, Linux, Solaris, AIX, HP-UX, FreeBSD.
-* Virtuell: VMware, HyperV, Xen, KVM.
+* Virtuell: VMware, Hyper-V, Xen, KVM
 
 ### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>F: Wie konfiguriere ich meine Clientanwendung so, dass eine Hochverfügbarkeitskonfiguration mit mehreren Partitionen aus mehreren HSMs erstellt wird?
 
@@ -242,7 +242,7 @@ Microsoft hat nicht die Möglichkeit, eine Verbindung mit HSMs herzustellen, die
 
 ### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>F: Was passiert, wenn ich mein HSM neu starten muss?
 
-Das HSM verfügt über eine Befehlszeilenoption für den Neustart. Es kommt jedoch zeitweilig zu Problemen beim Neustart, der dann hängt. Aus diesem Grund wird als sicherste Neustartmethode empfohlen, dass Sie eine Supportanfrage bei Microsoft stellen, damit das Gerät physisch neu gestartet wird. 
+Das HSM verfügt über eine Befehlszeilenoption für den Neustart. Es kommt jedoch zu Problemen, bei denen der Neustart zeitweilig nicht mehr reagiert. Aus diesem Grund wird als sicherste Neustartmethode empfohlen, dass Sie eine Supportanfrage bei Microsoft stellen, damit das Gerät physisch neu gestartet wird. 
 
 ## <a name="cryptography-and-standards"></a>Kryptografie und Standards
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228882"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134745"
 ---
 # <a name="monitor-the-process-server"></a>Überwachen des Prozessservers
 
@@ -96,7 +96,7 @@ Außerdem können Sie Prozessserver im Tresor unter **Site Recovery-Infrastruktu
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Wenn Probleme mit dem Prozessserver auftreten, finden Sie Informationen unter [Problembehandlung des Prozessservers](vmware-physical-azure-troubleshoot-process-server.md).
-- Wenn Sie weitere Hilfe benötigen, können Sie Ihre Frage im [Azure Site Recovery-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) veröffentlichen. 
+- Wenn Sie weitere Hilfe benötigen, können Sie Ihre Frage auf der [Microsoft F&A-Seite für Azure Site Recovery](/answers/topics/azure-site-recovery.html) veröffentlichen. 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

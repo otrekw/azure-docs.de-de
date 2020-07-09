@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 363feda1409d2bb54e60d1b2168cba38f2a8a41c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa90f272a05b7449981ca5d4ccab161fb1e39e9e
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77621855"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636772"
 ---
 # <a name="what-is-azure-data-share"></a>Was ist Azure Data Share?
 
@@ -78,15 +78,6 @@ Mit Azure Data Share haben Datenconsumer folgende Möglichkeiten:
 * Abonnieren einer Datenfreigabe, um die aktuelle Kopie der Daten per inkrementeller Momentaufnahme zu erhalten
 
 Alle wichtigen Funktionen, die oben aufgeführt sind, werden über das Azure-Portal oder REST-APIs unterstützt. Weitere Informationen zur Verwendung von Azure Data Share mit REST-APIs finden Sie in unserer Referenzdokumentation. 
-
-## <a name="security"></a>Sicherheit
-
-Azure Data Share nutzt die zugrunde liegende Sicherheit, die von Azure angeboten wird, um ruhende Daten und Daten während der Übertragung zu schützen. Daten werden im ruhenden Zustand verschlüsselt, wenn dies vom zugrunde liegenden Datenspeicher unterstützt wird. Daten werden auch während der Übertragung verschlüsselt. Metadaten zu einer Datenfreigabe werden im ruhenden Zustand und während der Übertragung ebenfalls verschlüsselt. 
-
-Zugriffssteuerungen können auf der Azure Data Share-Ressourcenebene festgelegt werden, um sicherzustellen, dass nur von berechtigten Personen darauf zugegriffen wird. 
-
-Azure Data Share nutzt verwaltete Identitäten für Azure-Ressourcen (bisher als MSIs bezeichnet), um die automatische Identitätsverwaltung in Azure Active Directory durchzuführen. Verwaltete Identitäten für Azure-Ressourcen werden für den Zugriff auf die Datenspeicher genutzt, die für die Datenfreigabe verwendet werden. Zwischen einem Datenanbieter und einem Datenconsumer findet kein Austausch von Anmeldeinformationen statt. Weitere Informationen finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities). 
-
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 

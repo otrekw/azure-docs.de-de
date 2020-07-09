@@ -1,31 +1,33 @@
 ---
-title: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen eines Automation-Kontos | Microsoft-Dokumentation
-description: Sie können mit einer Azure Resource Manager-Vorlage ein Azure Automation-Konto erstellen.
+title: Erstellen eines Automation-Kontos mithilfe einer Azure Resource Manager-Vorlage | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie mit einer Azure Resource Manager-Vorlage ein Azure Automation-Konto erstellen.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/24/2020
-ms.openlocfilehash: 431b89df0ce06736a2e76e58797ded65751bb404
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.date: 05/22/2020
+ms.openlocfilehash: 1418b26a2a498c43ff61f42b2761c59cbca5d0f4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165823"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837143"
 ---
-# <a name="create-automation-account-using-azure-resource-manager-template"></a>Erstellen eines Automation-Kontos mit einer Azure Resource Manager-Vorlage
+# <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Erstellen eines Automation-Kontos mithilfe einer Azure Resource Manager-Vorlage
 
-Sie können mit einer [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/template-syntax.md) ein Azure Automation-Konto in Ihrer Ressourcengruppe erstellen. Dieser Artikel enthält eine Beispielvorlage, die Folgendes automatisiert:
+Sie können mit einer [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/template-syntax.md) ein Azure Automation-Konto in Ihrer Ressourcengruppe erstellen. Dieser Artikel enthält eine Beispielvorlage mit folgenden Funktionen:
 
-* Erstellen eines Azure Monitor Log Analytics-Arbeitsbereichs
-* Erstellen eines Azure Automation-Kontos.
+* Automatisieren der Erstellung eines Azure Monitor Log Analytics-Arbeitsbereichs
+* Automatisieren der Erstellung eines Azure Automation-Kontos
 * Verknüpfen des Automation-Kontos mit dem Log Analytics-Arbeitsbereich
 
-Die Vorlage kann nicht zum Automatisieren des Onboardings von Azure- oder Nicht-Azure-VMs oder -Lösungen genutzt werden. 
+Die Vorlage automatisiert nicht die Aktivierung von virtuellen Computern innerhalb oder außerhalb von Azure. 
 
 >[!NOTE]
 >Die Erstellung des ausführenden Automation-Kontos wird bei Verwendung einer Azure Resource Manager-Vorlage nicht unterstützt. Informationen zum Erstellen eines ausführenden Kontos über das Portal oder mit PowerShell finden Sie unter [Verwalten von ausführenden Azure Automation-Konten](manage-runas-account.md).
+
+Nachdem Sie diese Schritte ausgeführt haben, müssen Sie [Diagnoseeinstellungen konfigurieren](automation-manage-send-joblogs-log-analytics.md), damit Ihr Automation-Konto Auftragsstatus und Auftragsdatenströme von Runbooks an den verknüpften Log Analytics Arbeitsbereich sendet. 
 
 ## <a name="api-versions"></a>API-Versionen
 
@@ -36,40 +38,40 @@ Die folgende Tabelle enthält die API-Versionen für die Ressourcen, die in dies
 | Arbeitsbereich | workspaces | 2017-03-15-preview |
 | Automation-Konto | automation | 2015-10-31 | 
 
-## <a name="before-using-the-template"></a>Vor dem Verwenden der Vorlage
+## <a name="before-you-use-the-template"></a>Vor der Verwendung der Vorlage
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel das Az-Modul für Azure PowerShell verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Sollte ein Upgrade erforderlich sein, lesen Sie [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps). Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen. Bei der Azure PowerShell verwendet die Bereitstellung [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel das Az-Modul für Azure PowerShell verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Sollte ein Upgrade erforderlich sein, lesen Sie [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps). Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen. In PowerShell wird für die Bereitstellung [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) verwendet.
 
-Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.1.0 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Bei der Azure CLI verwendet diese Bereitstellung [az group deployment create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
+Wenn Sie die Azure-Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens die Version 2.1.0 ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Bei der Azure-Befehlszeilenschnittstelle wird für diese Bereitstellung [az group deployment create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) verwendet. 
 
 Die JSON-Vorlage ist so konfiguriert, dass Sie Folgendes von Ihnen anfordert:
 
-* Den Namen des Arbeitsbereichs.
-* Die Region, in der der den Arbeitsbereich erstellt werden soll.
-* Den Namen des Automation-Kontos.
-* Die Region, in der das Konto erstellt werden soll.
+* Den Namen des Arbeitsbereichs
+* Die Region, in der der Arbeitsbereich erstellt werden soll
+* Der Namen des Automation-Kontos.
+* Die Region, in der das Konto erstellt werden soll
 
 Die folgenden Parameter in der Vorlage werden mit einem Standardwert für den Log Analytics-Arbeitsbereich festgelegt:
 
-* SKU: Als Standardwert wird der neue, im Preismodell von April 2018 veröffentlichte Tarif pro GB verwendet.
-* Datenaufbewahrung: Als Standardwert werden dreißig Tage verwendet.
-* Kapazitätsreservierung: Standardwerte bis zu 100 GB
+* *sku:* Als Standardwert wird der neue, im Preismodell von April 2018 veröffentlichte Tarif pro GB verwendet.
+* *dataRetention* ist standardmäßig auf 30 Tage festgelegt.
+* *capacityReservationLevel* ist standardmäßig auf 100 GB festgelegt.
 
 >[!WARNING]
->Wenn Sie einen Log Analytics-Arbeitsbereich in einem Abonnement mit dem neuen Preismodell von April 2018 erstellen oder konfigurieren, ist **PerGB2018** als einziger gültiger Log Analytics-Tarif verfügbar.
+>Wenn Sie einen Log Analytics-Arbeitsbereich in einem Abonnement mit dem Preismodell von April 2018 erstellen oder konfigurieren möchten, ist *PerGB2018* als einziger gültiger Log Analytics-Tarif verfügbar.
 >
 
 Die JSON-Vorlage gibt einen Standardwerte für die anderen Parameter an, die wahrscheinlich als Standardkonfiguration in Ihrer Umgebung verwendet werden. Für den gemeinsamen Zugriff in Ihrer Organisation können Sie die Vorlage in einem Azure Storage-Konto speichern. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/templates/deploy-cli.md).
 
-Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollten Sie sich unbedingt mit den folgenden Konfigurationsdetails vertraut machen. Beim Versuch, einen Log Analytics Arbeitsbereich zu erstellen, zu konfigurieren und zu verwenden, der mit Ihrem neuen Automation-Konto verknüpft ist, können sonst Fehler auftreten.
+Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollten Sie unbedingt die folgenden Konfigurationsdetails kennen. Sie können Ihnen helfen, Fehler zu vermeiden, wenn Sie versuchen, einen mit Ihrem neuen Automation-Konto verknüpften Log Analytics-Arbeitsbereich zu erstellen, zu konfigurieren und zu verwenden. 
 
 * Lesen Sie die [zusätzlichen Details](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace), um die Optionen für die Arbeitsbereichskonfiguration vollständig zu verstehen, z. B. Zugriffssteuerungsmodus, Tarif, Datenaufbewahrung und Kapazitätsreservierungsstufe.
 
-* Da nur bestimmte Regionen für das Verknüpfen eines Log Analytics Arbeitsbereichs und eines Automation-Kontos in Ihrem Abonnement unterstützt werden, überprüfen Sie die [Arbeitsbereichszuordnungen](how-to/region-mappings.md), um die unterstützten Regionen inline oder in einer Parameterdatei anzugeben.
+* Überprüfen Sie die [Arbeitsbereichszuordnungen](how-to/region-mappings.md), um die unterstützten Regionen inline oder in einer Parameterdatei anzugeben. Es werden nur bestimmte Regionen zum Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto in Ihrem Abonnement unterstützt.
 
-* Wenn Sie noch keine Erfahrungen mit Azure Monitor-Protokollen noch keinen Arbeitsbereich bereitgestellt haben, sollten Sie die Anleitung zum [Arbeitsbereichsdesign](../azure-monitor/platform/design-logs-deployment.md) lesen, um Informationen zur Zugriffssteuerung zu erhalten und ein Verständnis für die Designimplementierungsstrategien zu erhalten, die wir für Ihre Organisation empfehlen.
+* Wenn Sie noch nicht mit Azure Monitor-Protokollen vertraut sind und noch keinen Arbeitsbereich bereitgestellt haben, sollten Sie die [Entwurfsanleitungen für Arbeitsbereiche](../azure-monitor/platform/design-logs-deployment.md) lesen. Sie helfen Ihnen, etwas über die Zugriffssteuerung zu erfahren und die Implementierungsstrategien für den Entwurf zu verstehen, die für Ihre Organisation empfohlen werden.
 
-## <a name="deploy-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 1. Kopieren Sie die folgende JSON-Syntax, und fügen Sie sie in Ihre Datei ein:
 
@@ -96,7 +98,7 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
             ],
             "defaultValue": "pergb2018",
             "metadata": {
-                "description": "Pricing tier: perGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+                "description": "Pricing tier: perGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium), which are not available to all customers."
             }
         },
         "dataRetention": {
@@ -105,14 +107,14 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
             "minValue": 7,
             "maxValue": 730,
             "metadata": {
-                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
+                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can have only 7 days."
             }
         },
         "immediatePurgeDataOn30Days": {
             "type": "bool",
             "defaultValue": "[bool('false')]",
             "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
+                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This applies only when retention is being set to 30 days."
             }
         },
         "location": {
@@ -139,7 +141,7 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
             },
             "sampleGraphicalRunbookDescription": {
                 "type": "String",
-                "defaultValue": " An example runbook which gets all the ARM resources using the Run As Account (Service Principal)."
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
             },
             "sampleGraphicalRunbookContentUri": {
                 "type": "String",
@@ -151,7 +153,7 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
             },
             "samplePowerShellRunbookDescription": {
                 "type": "String",
-                "defaultValue": " An example runbook which gets all the ARM resources using the Run As Account (Service Principal)."
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
             },
             "samplePowerShellRunbookContentUri": {
                 "type": "String",
@@ -163,7 +165,7 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
             },
             "samplePython2RunbookDescription": {
                 "type": "String",
-                "defaultValue": " An example runbook which gets all the ARM resources using the Run As Account (Service Principal)."
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
             },
             "samplePython2RunbookContentUri": {
                 "type": "String",
@@ -290,7 +292,7 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
 
 3. Speichern Sie diese Datei unter dem Namen „deployAzAutomationAccttemplate.json“ in einem lokalen Ordner.
 
-4. Nun können Sie die Vorlage bereitstellen. Sie können dazu entweder PowerShell oder Azure CLI verwenden. Wenn Sie zur Eingabe des Namens eines Arbeitsbereichs oder Automation-Kontos aufgefordert werden, geben Sie einen Namen an, der in allen Azure-Abonnements global eindeutig ist.
+4. Die Vorlage kann nun bereitgestellt werden. Sie können dazu entweder PowerShell oder Azure CLI verwenden. Wenn Sie zur Eingabe des Namens eines Arbeitsbereichs oder Automation-Kontos aufgefordert werden, geben Sie einen Namen an, der in allen Ihren Azure-Abonnements global eindeutig ist.
 
     **PowerShell**
 
@@ -304,10 +306,10 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployAzAutomationAccttemplate.json
     ```
 
-    Die Bereitstellung kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung ähnlich der folgenden mit dem Ergebnis angezeigt:
+    Die Bereitstellung kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung ähnlich der folgenden mit dem Ergebnis angezeigt.
 
     ![Beispielergebnis nach abgeschlossener Bereitstellung](media/automation-create-account-template/template-output.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nun, da Sie über ein Automation-Konto verfügen, können Sie Runbooks erstellen und manuelle Prozesse automatisieren.
+Informationen zum Weiterleiten von Auftragsstatus und Auftragsdatenströmen Ihrer Runbooks an den verknüpften Log Analytics-Arbeitsbereich finden Sie unter [Weiterleiten von Azure Automation-Auftragsdaten an Azure Monitor-Protokolle](automation-manage-send-joblogs-log-analytics.md). Dadurch werden die Diagnoseeinstellungen des Automation-Kontos mithilfe von Azure PowerShell-Befehlen konfiguriert, um die Integration für das Senden von Protokollen zur Analyse an den Arbeitsbereich abzuschließen. 

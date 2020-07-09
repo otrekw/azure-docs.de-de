@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 04/17/2020
-ms.openlocfilehash: 3847ba008747bd37d55977ec47014bf76a52ad24
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/23/2020
+ms.openlocfilehash: 29c5cdf418c4b7acfc7c3c510c3e76d956268fdf
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789911"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780365"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -37,7 +37,6 @@ Dies sind die Grenzwerte für eine einzelne Logik-App-Definition:
 | Länge von `description` | 256 Zeichen | |
 | Größter Wert für `parameters` | 50 | |
 | Größter Wert für `outputs` | 10 | |
-||||
 
 <a name="run-duration-retention-limits"></a>
 
@@ -144,7 +143,7 @@ Einige Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webho
 
 | Name | Grenzwert bei mehreren Mandanten | Grenzwert für Integrationsdienstumgebung | Notizen |
 |------|--------------------|---------------------------------------|-------|
-| Ausgehende Anforderung | 120 Sekunden <br>(2 Minuten) | 240 Sekunden <br>(4 Minuten) | Beispiele ausgehender Anforderungen umfassen Aufrufe durch HTTP-Trigger. <p><p>**Tipp**: Verwenden Sie für Vorgänge, die länger ausgeführt werden, ein [asynchrones Abrufmuster](../logic-apps/logic-apps-create-api-app.md#async-pattern) oder eine [Until-Schleife](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). |
+| Ausgehende Anforderung | 120 Sekunden <br>(2 Minuten) | 240 Sekunden <br>(4 Minuten) | Beispiele ausgehender Anforderungen umfassen Aufrufe durch HTTP-Trigger. <p><p>**Tipp**: Verwenden Sie für Vorgänge, die länger ausgeführt werden, ein [asynchrones Abrufmuster](../logic-apps/logic-apps-create-api-app.md#async-pattern) oder eine [Until-Schleife](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). Um Timeoutlimits zu umgehen, wenn Sie eine andere Logik-App aufrufen, die einen [aufrufbaren Endpunkt](logic-apps-http-endpoint.md) besitzt, können Sie stattdessen die integrierte Azure Logic Apps-Aktion verwenden, die Sie in der Connectorauswahl unter **Integriert** finden. |
 | Eingehende Anforderungen | 120 Sekunden <br>(2 Minuten) | 240 Sekunden <br>(4 Minuten) | Beispiele eingehender Anforderungen umfassen Aufrufe, die durch Anforderungstrigger und Webhooktrigger empfangen wurden. <p><p>**Hinweis**: Damit der ursprüngliche Aufrufer die Antwort erhält, müssen alle Schritte in der Antwort innerhalb des Grenzwerts abgeschlossen werden, es sei denn, Sie rufen eine andere Logik-App als geschachtelten Workflow auf. Weitere Informationen hierzu finden Sie unter [Aufrufen, Auslösen oder Schachteln von Logik-Apps](../logic-apps/logic-apps-http-endpoint.md). |
 |||||
 
@@ -154,8 +153,8 @@ Einige Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webho
 
 | Name | Grenzwert bei mehreren Mandanten | Grenzwert für Integrationsdienstumgebung | Notizen |
 |------|--------------------|---------------------------------------|-------|
-| Nachrichtengröße | 100 MB | 200 MB | Die mit ISE bezeichneten Connectors verwenden den ISE-Grenzwert, nicht ihre Grenzwerte für Nicht-ISE-Connectors. <p><p>Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. |
-| Nachrichtengröße mit Blockerstellung (Segmentierung) | 1 GB | 5 GB | Dieser Grenzwert gilt für Aktionen, die die Blockerstellung automatisch unterstützen, oder für die Sie die Blockerstellung in der Laufzeitkonfiguration aktivieren können. <p><p>Für die Integrationsdienstumgebung unterstützt die Logic Apps-Engine diesen Grenzwert. Connectors verfügen jedoch über eigene Blockerstellungsgrenzwerte bis zum Grenzwert der Engine. Beachten Sie hierzu z. B. die Informationen in der [Referenz zur API des Azure Blob Storage-Connectors](https://docs.microsoft.com/connectors/azureblob/). Weitere Informationen zur Blockerstellung finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). |
+| Nachrichtengröße | 100 MB | 200 MB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. <p><p>- Connectors wie AS2, X12 und EDIFACT verfügen über eigene [B2B-Nachrichtenlimits](#b2b-protocol-limits). <br>- ISE-Connectors verwenden den ISE-Grenzwert, nicht ihre Grenzwerte für Nicht-ISE-Connectors. |
+| Nachrichtengröße mit Blockerstellung (Segmentierung) | 1 GB | 5 GB | Dieser Grenzwert gilt für Aktionen, die die Blockerstellung automatisch unterstützen, oder für die Sie die Blockerstellung in der Laufzeitkonfiguration aktivieren können. <p><p>Wenn Sie eine ISE verwenden, unterstützt die Logic Apps-Engine diesen Grenzwert. Connectors verfügen jedoch über eigene Blockerstellungsgrenzwerte bis zum Grenzwert der Engine. Beachten Sie hierzu z. B. die Informationen in der [Referenz zur API des Azure Blob Storage-Connectors](https://docs.microsoft.com/connectors/azureblob/). Weitere Informationen zur Blockerstellung finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). |
 |||||
 
 #### <a name="character-limits"></a>Zeichengrenzwerte
@@ -177,6 +176,18 @@ Einige Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webho
 | Minimale Wiederholungsverzögerung | 5 Sekunden | Um den Standardwert zu ändern, verwenden Sie den [Parameter für Richtlinienwiederholung](../logic-apps/logic-apps-workflow-actions-triggers.md) (retryPolicy). |
 ||||
 
+<a name="authentication-limits"></a>
+
+### <a name="authentication-limits"></a>Authentifizierungslimits
+
+Hier finden Sie die Limits für eine Logik-App, die mit einem Anforderungstrigger startet und [Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) für die Autorisierung eingehender Aufrufe an den Anforderungstrigger aktiviert:
+
+| Name | Begrenzung | Notizen |
+| ---- | ----- | ----- |
+| Azure AD-Autorisierungsrichtlinien | 5 | |
+| Ansprüche pro Autorisierungsrichtlinie | 10 | |
+||||
+
 <a name="custom-connector-limits"></a>
 
 ## <a name="custom-connector-limits"></a>Grenzwerte für einen benutzerdefinierten Connector
@@ -196,7 +207,7 @@ Die folgenden Grenzwerte gelten für benutzerdefinierte Connectors, die Sie übe
 | Name | Begrenzung |
 |------|-------|
 | Verwaltete Identitäten pro Logik-App | Entweder die vom System zugewiesene Identität oder eine benutzerseitig zugewiesene Identität |
-| Anzahl von Logik-Apps mit einer verwalteten Identität in einem Azure-Abonnement pro Region | 250 |
+| Anzahl von Logik-Apps mit einer verwalteten Identität in einem Azure-Abonnement pro Region | 500 |
 |||
 
 <a name="integration-account-limits"></a>

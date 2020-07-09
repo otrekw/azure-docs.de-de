@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: cb016ec490dc14cbde1a1cb3f34caf39e4740961
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: a96ddfe2023fbddd6a4a25c97001875e0dddc7f3
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732370"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753196"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Tutorial: Sprachaktivierung für Ihren Bot mithilfe des Speech SDK
 
@@ -125,7 +125,7 @@ Im nächsten Schritt wird ein App Service-Plan erstellt. Mit einem App Service-P
 
 Überprüfen Sie hier, ob die Ressourcengruppe (**SpeechEchoBotTutorial-ResourceGroup**) zwei Ressourcen enthält:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
 | SpeechEchoBotTutorial-Speech | Cognitive Services | USA (Westen) |
@@ -178,7 +178,7 @@ Nachdem Sie einige Ressourcen erstellt haben, erstellen Sie nun einen Bot. Wir b
 Im nächsten Schritt wird der Echobot in Azure bereitgestellt. Es gibt mehrere Möglichkeiten, einen Bot bereitzustellen, in diesem Tutorial wird er direkt über Visual Studio veröffentlicht.
 
 > [!NOTE]
-> Alternativ können Sie einen Bot mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) und über [Bereitstellungsvorlagen](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore/04.core-bot/deploymentTemplates) bereitstellen.
+> Alternativ können Sie einen Bot mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) und über [Bereitstellungsvorlagen](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/adaptive-dialog/03.core-bot) bereitstellen.
 
 1. Öffnen Sie in Visual Studio den Echobot, der zur Verwendung mit dem Direct Line Speech-Kanal konfiguriert ist:
 
@@ -197,6 +197,7 @@ Im nächsten Schritt wird der Echobot in Azure bereitgestellt. Es gibt mehrere M
    * Wählen Sie unter **Hostingplan** die Option **SpeechEchoBotTutorial-AppServicePlan** aus.
    * Für **Application Insights** belassen Sie **Kein(e)**
 1. Klicken Sie auf **Erstellen**
+1. Klicken Sie auf der rechten Seite des neu erstellten Profils auf **Veröffentlichen**.
 1. In Visual Studio sollte eine Erfolgsmeldung angezeigt werden, die wie folgt aussieht:
 
    ```
@@ -207,7 +208,7 @@ Im nächsten Schritt wird der Echobot in Azure bereitgestellt. Es gibt mehrere M
 1. Im geöffneten Standardbrowser sollte die folgende Seite angezeigt werden: „Your bot is ready!“ (Ihr Bot wurde erstellt.).
 1. Überprüfen Sie hier, ob die Ressourcengruppe **SpeechEchoBotTutorial-ResourceGroup** im Azure-Portal drei Ressourcen enthält:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA (Westen) |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
@@ -236,7 +237,7 @@ Nach dem Erstellen einer Azure App Service-Instanz zum Hosten Ihres Bots wird im
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Erstellen einer Azure-Botkanalregistrierung <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. Sie werden aufgefordert, einige Informationen anzugeben:
-   * Geben Sie unter **Bothandle** den Namen **SpeechEchoBotTutorial-BotRegistration** ein.
+   * Geben Sie als **Bot-Handle** die Zeichenfolge **SpeechEchoBotTutorial-BotRegistration-####** ein, und ersetzen Sie **####** durch eine Zahl Ihrer Wahl. Beachten Sie, dass der Bot-Handle global eindeutig sein muss. Wenn Sie einen Bot-Handle eingeben und die Fehlermeldung _Die angeforderte Bot-ID ist nicht verfügbar_ erhalten, wählen Sie eine andere Zahl aus. In den folgenden Beispielen wird „8726“ verwendet.
    * Wählen Sie unter **Abonnement** die Option **Kostenlose Testversion** aus.
    * Wählen Sie unter **Ressourcengruppe** die Gruppe **SpeechEchoBotTutorial-ResourceGroup** aus.
    * Wählen Sie unter **Standort** die Option **USA, Westen** aus.
@@ -248,25 +249,47 @@ Nach dem Erstellen einer Azure App Service-Instanz zum Hosten Ihres Bots wird im
 
 Überprüfen Sie hier die Ressourcengruppe **SpeechEchoBotTutorial-ResourceGroup** im Azure-Portal. Es sollten nun vier Ressourcen angezeigt werden:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA (Westen) |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
-| SpeechEchoBotTutorial-BotRegistration | Botkanalregistrierung | Global |
+| SpeechEchoBotTutorial-BotRegistration-8726 | Botkanalregistrierung | Global |
 | SpeechEchoBotTutorial-Speech | Cognitive Services | USA (Westen) |
 
 > [!IMPORTANT]
 > In der Ressource der Botkanalregistrierung wird die globale Region angezeigt, auch wenn Sie „USA, Westen“ ausgewählt haben. Dies entspricht dem erwarteten Verhalten.
 
+## <a name="optional-test-in-web-chat"></a>Optional: Testen im Webchat
+
+Die Seite für die Azure-Botkanalregistrierung enthält unter **Botverwaltung** die Option **In Web Chat testen**. Sie funktioniert nicht standardmäßig mit Ihrem Bot, da sich der Webchat bei Ihrem Bot authentifizieren muss. Wenn Sie den bereitgestellten Bot mit Texteingaben testen möchten, führen Sie die folgenden Schritte aus. Beachten Sie, dass diese Schritte optional und für die nächsten Schritte des Tutorials nicht erforderlich sind. 
+
+1. Suchen und öffnen Sie die Ressource **EchoBotTutorial-BotRegistration-####** im [Azure-Portal](https://portal.azure.com).
+1. Wählen Sie im Navigationsbereich unter **Botverwaltung** die Option **Einstellungen** aus. Kopieren Sie den Wert unter **Microsoft-App-ID**.
+1. Öffnen Sie die Visual Studio-Projektmappe „EchoBot“. Suchen Sie im Projektmappen-Explorer nach **appsettings.json**, und doppelklicken Sie darauf.
+1. Ersetzen Sie die leere Zeichenfolge neben **MicrosoftAppId** in der JSON-Datei durch den kopierten ID-Wert.
+1. Navigieren Sie zum Azure-Portal zurück, wählen Sie im Navigationsbereich unter **Botverwaltung** die Option **Einstellungen** aus, und klicken Sie neben **Microsoft-App-ID** auf **(Verwalten)** .
+1. Klicken Sie auf **Neuer geheimer Clientschlüssel**. Fügen Sie eine Beschreibung (z. B. „Webchat“) hinzu, und klicken Sie auf **Hinzufügen**. Kopieren Sie das neue Geheimnis.
+1. Ersetzen Sie die leere Zeichenfolge neben **MicrosoftAppPassword** in der JSON-Datei durch den kopierten Wert des Geheimnisses.
+1. Speichern Sie die JSON-Datei. Der Bericht könnte beispielsweise wie folgt aussehen:
+```json
+{
+  "MicrosoftAppId": "3be0abc2-ca07-475e-b6c3-90c4476c4370",
+  "MicrosoftAppPassword": "-zRhJZ~1cnc7ZIlj4Qozs_eKN.8Cq~U38G"
+}
+```
+9. Veröffentlichen Sie die App erneut. (Klicken Sie im Projektmappen-Explorer von Visual Studio mit der rechten Maustaste auf das Projekt **EchoBot**, wählen Sie **Veröffentlichen** aus, und klicken Sie auf die Schaltfläche **Veröffentlichen**.)
+10. Jetzt können Sie den Bot im Webchat testen.
+
 ## <a name="register-the-direct-line-speech-channel"></a>Registrieren des Direct Line Speech-Kanals
 
 Nun muss der Bot beim Direct Line Speech-Kanal registriert werden. Dieser Kanal dient zum Erstellen einer Verbindung zwischen dem Echobot und einer Client-App, die mit dem Speech SDK kompiliert wurde.
 
-1. Suchen und öffnen Sie die Ressource **SpeechEchoBotTutorial-BotRegistration** im [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie im Navigationsbereich **Azure-Dienste** die Option **Kanäle** aus.
+1. Suchen und öffnen Sie die Ressource **SpeechEchoBotTutorial-BotRegistration-####** im [Azure-Portal](https://portal.azure.com).
+1. Wählen Sie im Navigationsbereich unter **Botverwaltung** die Option **Kanäle** aus.
    * Suchen Sie nach **Weitere Kanäle**, und klicken Sie auf **Direct Line Speech**.
    * Überprüfen Sie den Text auf der Seite **Configure Direct line Speech** (Direct Line Speech konfigurieren), und erweitern Sie dann das Dropdownmenü „Cognitive Services-Konto“.
    * Wählen Sie im Menü die zuvor erstellte Speech-Ressource (z. B. **SpeechEchoBotTutorial-Speech**) aus, um Ihren Bot dem Speech-Abonnementschlüssel zuzuordnen.
+   * Ignorieren Sie die restlichen optionalen Felder.
    * Klicken Sie auf **Speichern**.
 
 1. Klicken Sie im Navigationsbereich **Botverwaltung** auf **Einstellungen**.
@@ -289,7 +312,7 @@ Stellen Sie sicher, dass das Mikrofon und die Lautsprecher aktiviert sind und fu
    * eine ZIP-Datei mit der ausführbaren Datei herunterzuladen oder
    * die ausführbare Datei selbst zu erstellen, indem Sie das Repository klonen und das Projekt kompilieren.
 
-1. Starten Sie die Clientanwendung, und konfigurieren Sie sie.
+1. Starten Sie die Clientanwendung, und konfigurieren Sie sie für die Verbindung mit Ihrem Bot. Nutzen Sie dazu die Anweisungen im GitHub-Repository.
 1. Klicken Sie auf **Erneut verbinden**, und vergewissern Sie sich, dass die Meldung **Press the mic button, or type to start talking to your bot** (Klicken Sie auf die Schaltfläche für das Mikrofon, oder geben Sie Text ein, um mit dem Bot zu sprechen) angezeigt wird.
 1. Testen wir den Bot. Klicken Sie auf die Schaltfläche für das Mikrofon, und sprechen Sie ein paar Worte auf Englisch. Der erkannte Text wird angezeigt, während Sie sprechen. Wenn Sie aufhören zu sprechen, antwortet der Bot mit eigener Stimme und sagt „Echo“, gefolgt von den erkannten Wörtern.
 1. Sie können auch über Text mit dem Bot kommunizieren. Geben Sie den Text einfach auf der unteren Leiste ein. 
@@ -300,13 +323,16 @@ Wenn im Hauptfenster der App eine Fehlermeldung angezeigt wird, können Sie den 
 
 | Fehler | Vorgehensweise |
 |-------|----------------------|
-|Fehler AuthenticationFailure: Authentifizierungsfehler beim WebSocket-Upgrade (401). Überprüfen Sie, ob der Abonnementschlüssel (oder das Autorisierungstoken) und der Regionsname richtig sind.| Stellen Sie auf der Seite „Einstellungen“ der App sicher, dass Sie den Speech-Abonnementschlüssel und die zugehörige Region richtig eingegeben haben.<br>Vergewissern Sie sich, dass Ihr Sprachschlüssel und der Schlüsselbereich ordnungsgemäß eingegeben wurden. |
-|Fehler ConnectionFailure: Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1011. Fehlerdetails: Vor dem Senden einer Meldung konnte keine Verbindung mit dem Bot hergestellt werden. | Vergewissern Sie sich, dass Sie das Kontrollkästchen [„Enable Streaming Endpoint“ (Streamingendpunkt aktivieren) aktiviert](#register-the-direct-line-speech-channel) und/oder [**Websockets** auf „Ein“ festlegt](#enable-web-sockets) haben.<br>Stellen Sie sicher, dass Ihre Azure App Service-Instanz ausgeführt wird. Wenn dies der Fall ist, starten Sie die App Service-Instanz neu.|
-|Fehler ConnectionFailure: Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1011. Fehlerdetails: Der Antwortstatuscode gibt keinen Erfolg an: 500 (InternalServerError)| Im Bot ist im Feld [speak](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) der Ausgabeaktivität eine neuronale Stimme angegeben, in der Azure-Region, die Ihrem Speech-Abonnementschlüssel zugeordnet ist, werden neuronale Stimmen jedoch nicht unterstützt. Siehe [Standard- und neuronale Stimmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
-|Fehler ConnectionFailure: Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1.000. Fehlerdetails: Maximale Leerlaufzeit der WebSocket-Verbindung wurde überschritten (> 300.000 ms)| Dies ist ein erwarteter Fehler, wenn eine Verbindung mit dem Kanal länger als fünf Minuten geöffnet und inaktiv bleibt. |
+|Fehler (AuthenticationFailure): Authentifizierungsfehler beim WebSocket-Upgrade (401). Überprüfen Sie, ob der Abonnementschlüssel (oder das Autorisierungstoken) und der Regionsname richtig sind.| Stellen Sie auf der Seite „Einstellungen“ der App sicher, dass Sie den Speech-Abonnementschlüssel und die zugehörige Region richtig eingegeben haben.<br>Vergewissern Sie sich, dass Ihr Sprachschlüssel und der Schlüsselbereich ordnungsgemäß eingegeben wurden. |
+|Fehler (ConnectionFailure): Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1011. Fehlerdetails: Vor dem Senden einer Meldung konnte keine Verbindung mit dem Bot hergestellt werden. | Vergewissern Sie sich, dass Sie das Kontrollkästchen [„Enable Streaming Endpoint“ (Streamingendpunkt aktivieren) aktiviert](#register-the-direct-line-speech-channel) und/oder [**Websockets** auf „Ein“ festlegt](#enable-web-sockets) haben.<br>Stellen Sie sicher, dass Ihre Azure App Service-Instanz ausgeführt wird. Wenn dies der Fall ist, starten Sie die App Service-Instanz neu.|
+|Fehler (ConnectionFailure): Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1002 Fehlerdetails: Vom Server wurde Statuscode '503' zurückgegeben, als Statuscode '101' erwartet wurde. | Vergewissern Sie sich, dass Sie das Kontrollkästchen [„Enable Streaming Endpoint“ (Streamingendpunkt aktivieren) aktiviert](#register-the-direct-line-speech-channel) und/oder [**Websockets** auf „Ein“ festlegt](#enable-web-sockets) haben.<br>Stellen Sie sicher, dass Ihre Azure App Service-Instanz ausgeführt wird. Wenn dies der Fall ist, starten Sie die App Service-Instanz neu.|
+|Fehler (ConnectionFailure): Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1011. Fehlerdetails: Der Antwortstatuscode gibt keinen Erfolg an: 500 (InternalServerError)| Im Bot ist im Feld [speak](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) der Ausgabeaktivität eine neuronale Stimme angegeben, in der Azure-Region, die Ihrem Speech-Abonnementschlüssel zugeordnet ist, werden neuronale Stimmen jedoch nicht unterstützt. Siehe [Standard- und neuronale Stimmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
 
-Wenn Ihr Problem in der Tabelle nicht aufgeführt wird, finden Sie weitere Informationen unter [Sprachassistenten: Häufig gestellte Fragen (FAQs)](faq-voice-assistants.md).
+Wenn Ihr Problem in der Tabelle nicht aufgeführt wird, finden Sie weitere Informationen unter [Sprachassistenten: Häufig gestellte Fragen (FAQs)](faq-voice-assistants.md). Wenn Sie Ihr Problem nach dem Ausführen aller Schritte in diesem Tutorial trotzdem nicht lösen können, geben Sie ein neues Problem auf der [GitHub-Seite des Sprachassistenten](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues) ein.
 
+#### <a name="a-note-on-connection-time-out"></a>Hinweis zum Verbindungstimeout
+
+Wenn Sie mit einem Bot verbunden sind und innerhalb der letzten 5 Minuten keine Aktivitäten aufgetreten sind, trennt der Dienst die Websocketverbindung mit dem Client und dem Bot automatisch. Dies ist beabsichtigt. In der Statusleiste wird eine Nachricht angezeigt: *„Timeout der aktiven Verbindung, die Verbindung kann bei Bedarf wiederhergestellt werden“* . Sie brauchen nicht die Schaltfläche „Erneut verbinden“ zu aktivieren, drücken Sie einfach die Mikrofontaste, und beginnen Sie zu speichern, geben Sie eine Textnachricht ein, oder sagen Sie das Schlüsselwort (wenn eins festgelegt wurde). Die Verbindung wird automatisch wiederhergestellt.  
 ### <a name="view-bot-activities"></a>Anzeigen von Botaktivitäten
 
 Jeder Bot sendet und empfängt **Aktivitätsnachrichten**. Im Fenster **Aktivitätsprotokoll** des Windows-Sprachassistent-Clients werden für jede Aktivität, die der Client vom Bot empfängt, mit einem Zeitstempel versehene Protokolle angezeigt. Außerdem werden die Aktivitäten angezeigt, die der Client mithilfe der [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync)-Methode an den Bot gesendet hat. Wenn Sie ein Protokollelement auswählen, werden die Details der zugeordneten Aktivität im JSON-Format angezeigt.
@@ -331,7 +357,7 @@ JSON-Beispielcode einer Aktivität, die vom Client empfangen wurde:
     },
     "entities":[],
     "from":{
-        "id":"SpeechEchoBotTutorial-BotRegistration"
+        "id":"SpeechEchoBotTutorial-BotRegistration-8726"
     },
     "id":"89841b4d-46ce-42de-9960-4fe4070c70cc",
     "inputHint":"acceptingInput",
@@ -389,7 +415,7 @@ Sehen Sie sich im Quellcode des Windows-Sprachassistent-Clients in den folgenden
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>(Optional:) Ändern von Sprache und Stimme des Bots
 
-Der Bot, den Sie erstellt haben, lauscht und antwortet in englischer Sprache, mit einer standardmäßigen Sprachausgabe in amerikanischem Englisch. Sie sind jedoch nicht auf die Verwendung von Englisch oder eine Standardstimme beschränkt. In diesem Abschnitt erfahren Sie, wie Sie die Sprache ändern, auf die der Bot lauscht und in der er antwortet. Außerdem lernen Sie, wie Sie eine andere Stimme für diese Sprache auswählen können.
+Der Bot, den Sie erstellt haben, lauscht und antwortet in englischer Sprache, mit einer standardmäßigen Sprachausgabe in US-amerikanischem Englisch. Sie sind jedoch nicht auf die Verwendung von Englisch oder eine Standardstimme beschränkt. In diesem Abschnitt erfahren Sie, wie Sie die Sprache ändern, auf die der Bot lauscht und in der er antwortet. Außerdem lernen Sie, wie Sie eine andere Stimme für diese Sprache auswählen können.
 
 ### <a name="change-the-language"></a>Ändern der Sprache
 

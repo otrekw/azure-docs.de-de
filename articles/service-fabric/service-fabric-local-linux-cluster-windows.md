@@ -66,7 +66,7 @@ Führen Sie die folgenden Schritte in PowerShell aus, um einen lokalen Docker-Co
     >[!TIP]
     > Standardmäßig wird dann das Image mit der aktuellen Version von Service Fabric per Pullvorgang bereitgestellt. Bestimmte Revisionen finden Sie auf der Seite [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
 
-3. Öffnen Sie ein Terminal, wechseln Sie per `Dockerfile` zum Verzeichnis mit Ihrer Datei vom Typ `cd`, und führen Sie anschließend Folgendes aus, um Ihr wiederverwendbares Images auf der Grundlage der Datei vom Typ `Dockerfile` zu erstellen:
+3. Öffnen Sie ein Terminal, wechseln Sie per `cd` zum Verzeichnis mit Ihrer Datei vom Typ `Dockerfile`, und führen Sie anschließend Folgendes aus, um Ihr wiederverwendbares Images auf der Grundlage der Datei vom Typ `Dockerfile` zu erstellen:
 
     ```powershell 
     docker build -t mysfcluster .

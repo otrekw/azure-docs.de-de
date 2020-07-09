@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: e078893b3bbe0ef5661cd87bad62b320f78ceb5d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b81f1e49b2209d0a236f1fb453bb7fe679bb3608
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421234"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112752"
 ---
 # <a name="azure-synapse-analytics-sql-resource-consumption"></a>SQL-Ressourcennutzung in Azure Synapse Analytics
 
@@ -77,7 +77,7 @@ Wenn Sie Data Warehouse-Einheiten erhöhen, erhöhen Sie die Computingressourcen
 
 #### <a name="capacity-limits"></a>Kapazitätsgrenzen
 
-Jeder SQL-Server (z.B. myserver.database.windows.net) weist ein Kontingent für [DTUs (Database Transaction Unit, Datenübertragungseinheiten)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) auf, das eine bestimmte Anzahl von Data Warehouse-Einheiten zulässt. Weitere Informationen finden Sie in den [Kapazitätsgrenzen für die Workloadverwaltung](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
+Jeder SQL-Server (z.B. myserver.database.windows.net) weist ein Kontingent für [DTUs (Database Transaction Unit, Datenübertragungseinheiten)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) auf, das eine bestimmte Anzahl von Data Warehouse-Einheiten zulässt. Weitere Informationen finden Sie in den [Kapazitätsgrenzen für die Workloadverwaltung](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
 
 ### <a name="how-many-data-warehouse-units-do-i-need"></a>Wie viele Data Warehouse-Einheiten benötige ich?
 
@@ -106,7 +106,7 @@ Integrierte Rollen für Azure-Ressourcen wie „Mitwirkender von SQL DB“ und �
 So zeigen Sie die aktuellen DWU-Einstellungen an:
 
 1. Öffnen Sie den Objekt-Explorer von SQL Server in Visual Studio.
-2. Stellen Sie eine Verbindung mit der Masterdatenbank mit dem logischen SQL-Datenbank-Server her.
+2. Stellen Sie eine Verbindung mit der Masterdatenbank mit dem logischen SQL-Server her.
 3. Treffen Sie eine Auswahl aus der dynamischen Verwaltungssicht „sys.database_service_objectives“. Beispiel:
 
 ```sql
@@ -148,7 +148,7 @@ Mit T-SQL können Sie die aktuellen DWU-Einstellungen anzeigen, die Einstellunge
 
 So ändern Sie die DWUs
 
-1. Stellen Sie eine Verbindung mit der Masterdatenbank her, die Ihrem logischen SQL-Datenbank-Server zugeordnet ist.
+1. Stellen Sie eine Verbindung mit der Masterdatenbank mit Ihrem Server her.
 2. Verwenden Sie die T-SQL-Anweisung [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Im folgenden Beispiel wird das Servicelevelziel für die Datenbank „MySQLDW“ auf „DW1000c“ gesetzt.
 
 ```Sql
@@ -184,7 +184,7 @@ Der Zustand der Datenbank für horizontale Hochskalierungsvorgänge kann nicht m
 
 So überprüfen Sie den Zustand von DWU-Änderungen:
 
-1. Stellen Sie eine Verbindung mit der Masterdatenbank her, die Ihrem logischen SQL-Datenbank-Server zugeordnet ist.
+1. Stellen Sie eine Verbindung mit der Masterdatenbank mit Ihrem Server her.
 2. Übermitteln Sie die folgende Abfrage, um den Datenbankzustand zu überprüfen.
 
 ```sql

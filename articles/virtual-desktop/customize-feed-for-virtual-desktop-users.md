@@ -4,23 +4,23 @@ description: Erfahren Sie, wie Sie den Feed für Windows Virtual Desktop-Benutze
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 961fadfff0147d8c5258fa5acf31d8b0649ea12a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 99c63fd04a40b1a4e591f5ad42d8f776e8e5b67c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612893"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208500"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Anpassen von Feeds für Windows Virtual Desktop-Benutzer
 
 >[!IMPORTANT]
 >Dieser Inhalt gilt für das Update vom Frühjahr 2020 mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie das Windows Virtual Desktop-Release vom Herbst 2019 ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md).
 >
-> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. 
+> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Sie können den Feed anpassen, damit die RemoteApp- und Remotedesktopressourcen den Benutzern auf erkennbare Weise angezeigt werden.
@@ -54,30 +54,30 @@ Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | f
 Die Ausgabe würde wie folgt aussehen:
 
 ```powershell
-CommandLineArgument : 
-CommandLineSetting  : DoNotAllow 
-Description         : 
-FilePath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
-FriendlyName        : Microsoft Word 
-IconContent         : {0, 0, 1, 0…} 
-IconHash            : --iom0PS6XLu-EMMlHWVW3F7LLsNt63Zz2K10RE0_64 
-IconIndex           : 0 
-IconPath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
-Id                  : /subscriptions/<subid>/resourcegroups/0301RG/providers/Microsoft.DesktopVirtualization/applicationgroups/0301RAG/applications/Microsoft Word 
-Name                : 0301RAG/Microsoft Word 
-ShowInPortal        : False 
-Type                : Microsoft.DesktopVirtualization/applicationgroups/applications 
+CommandLineArgument :
+CommandLineSetting  : DoNotAllow
+Description         :
+FilePath            : C:\Program Files\Windows NT\Accessories\wordpad.exe
+FriendlyName        : Microsoft Word
+IconContent         : {0, 0, 1, 0…}
+IconHash            : --iom0PS6XLu-EMMlHWVW3F7LLsNt63Zz2K10RE0_64
+IconIndex           : 0
+IconPath            : C:\Program Files\Windows NT\Accessories\wordpad.exe
+Id                  : /subscriptions/<subid>/resourcegroups/0301RG/providers/Microsoft.DesktopVirtualization/applicationgroups/0301RAG/applications/Microsoft Word
+Name                : 0301RAG/Microsoft Word
+ShowInPortal        : False
+Type                : Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 Führen Sie dieses Cmdlet aus, um den Anzeigenamen zu aktualisieren:
 
 ```powershell
-Update-AzWvdApplication -GroupName 0301RAG -Name "Microsoft Word" -FriendlyName "WordUpdate" -ResourceGroupName 0301RG -IconIndex 0 -IconPath "C:\Program Files\Windows NT\Accessories\wordpad.exe" -ShowInPortal:$true -CommandLineSetting DoNotallow -FilePath "C:\Program Files\Windows NT\Accessories\wordpad.exe" 
+Update-AzWvdApplication -GroupName 0301RAG -Name "Microsoft Word" -FriendlyName "WordUpdate" -ResourceGroupName 0301RG -IconIndex 0 -IconPath "C:\Program Files\Windows NT\Accessories\wordpad.exe" -ShowInPortal:$true -CommandLineSetting DoNotallow -FilePath "C:\Program Files\Windows NT\Accessories\wordpad.exe"
 ```
 
 Führen Sie dieses Cmdlet aus, um zu bestätigen, dass Sie den Anzeigenamen erfolgreich aktualisiert haben:
 
 ```powershell
-Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list FriendlyName 
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list FriendlyName
 ```
 
 Die Ausgabe des Cmdlets sollte wie folgt aussehen:
@@ -104,28 +104,28 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 ## <a name="customize-a-display-name-in-azure-portal"></a>Anpassen eines Anzeigenamens im Azure-Portal
 
-Sie können den Anzeigenamen für einen veröffentlichten Remotedesktop ändern, indem Sie im Azure-Portal einen Anzeigenamen festlegen. 
+Sie können den Anzeigenamen für einen veröffentlichten Remotedesktop ändern, indem Sie im Azure-Portal einen Anzeigenamen festlegen.
 
-1. Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an. 
+1. Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an.
 
 2. Suchen Sie nach **Windows Virtual Desktop**.
 
-3. Wählen Sie unter „Dienste“ die Option **Windows Virtual Desktop** aus. 
+3. Wählen Sie unter „Dienste“ die Option **Windows Virtual Desktop** aus.
 
-4. Wählen Sie auf der Seite „Windows Virtual Desktop“ auf der linken Bildschirmseite **Anwendungsgruppen** aus, und wählen Sie dann den Namen der App-Gruppe aus, den Sie bearbeiten möchten. 
+4. Wählen Sie auf der Seite „Windows Virtual Desktop“ auf der linken Bildschirmseite **Anwendungsgruppen** aus, und wählen Sie dann den Namen der App-Gruppe aus, den Sie bearbeiten möchten.
 
 5. Wählen Sie im Menü auf der linken Bildschirmseite **Anwendungen** aus.
 
-6. Wählen Sie die Anwendung aus, die Sie aktualisieren möchten, und geben Sie dann einen neuen **Anzeigenamen** ein. 
+6. Wählen Sie die Anwendung aus, die Sie aktualisieren möchten, und geben Sie dann einen neuen **Anzeigenamen** ein.
 
 7. Wählen Sie **Speichern** aus. Für die Anwendung, die Sie bearbeitet haben, sollte jetzt der aktualisierte Name angezeigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie den Feed für Benutzer angepasst haben, können Sie sich bei einem Windows Virtual Desktop-Client anmelden, um ihn zu testen. Wechseln Sie dafür zu den Vorgehensweisen für das Herstellen einer Verbindung mit Windows Virtual Desktop:
-    
+
  * [Herstellen einer Verbindung mit Windows 10 oder Windows 7](connect-windows-7-and-10.md)
- * [Herstellen einer Verbindung mit dem Webclient](connect-web.md) 
+ * [Herstellen einer Verbindung mit dem Webclient](connect-web.md)
  * [Herstellen einer Verbindung mit dem Android-Client](connect-android.md)
  * [Herstellen einer Verbindung mit dem iOS-Client](connect-ios.md)
  * [Herstellen einer Verbindung mit dem macOS-Client](connect-macos.md)

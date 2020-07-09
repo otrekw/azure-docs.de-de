@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 312e9db594983f85372285bdff415a2d5dc76ed3
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 5c175a1575a4efbdc2294412e3743e201d8c4bb1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984009"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653304"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Was ist IPv6 für Azure Virtual Network?
 
@@ -58,6 +58,7 @@ IPv6 für Azure VNET beinhaltet die folgenden Funktionen:
     - Mehrere optionale Front-End-Konfigurationen, sodass ein einzelner Lastenausgleich mehrere öffentliche IPv6-Adressen nutzen kann. (Für verschiedene Front-End-Adressen können das gleiche Front-End-Protokoll und der gleiche Port verwendet werden.)
     - Optionale IPv6-Ports können mithilfe der Funktion *Floating IP* der Lastenausgleichsregeln in Back-End-Instanzen wiederverwendet werden. 
     - Hinweis: Der Lastenausgleich führt keine Protokollübersetzung durch (kein NAT64). 
+    - Hinweis: Für IPv6 kann nur ein Lastenausgleich auf die primäre Netzwerkschnittstelle (NIC) auf Azure-VMs ausgeführt werden. 
 - Unterstützung einer [internen IPv6-Load Balancer Standard-Instanz](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) zur Erstellung resilienter Anwendungen mit mehreren Ebenen innerhalb von Azure VNETs.   
 - Unterstützung einer öffentlichen IPv6-Load Balancer Basic-Instanz für die Kompatibilität mit Legacy-Bereitstellungen
 - [Reservierte öffentliche IPv6-IP-Adressen und IPv6-Adressbereiche](ipv6-public-ip-address-prefix.md) bieten stabile vorhersagbare IPv6-Adressen, die Whitelists der in Azure gehosteten Anwendungen für Ihr Unternehmen und Ihre Kunden vereinfachen.
@@ -73,10 +74,14 @@ IPv6 für Azure VNET ist eine grundlegende Gruppe von Funktionen, über die Kund
 
 ## <a name="limitations"></a>Einschränkungen
 Das aktuelle Release von IPv6 für Azure Virtual Network weist die folgenden Einschränkungen auf:
-- IPv6 für Azure Virtual Network ist in allen globalen Azure Commercial-Regionen unter Verwendung aller Bereitstellungsmethoden verfügbar.  Die Bereitstellung in der US-Government Cloud ist vorübergehend auf ARM-Vorlage (JSON), Befehlszeilenschnittstelle (CLI) und PowerShell beschränkt.  Die IPv6-Unterstützung im Portal der US-Government Cloud wird in Kürze verfügbar sein.  
+- IPv6 für Azure Virtual Network ist in allen globalen Azure Commercial- und US Government-Regionen unter Verwendung aller Bereitstellungsmethoden verfügbar.  
 - ExpressRoute-Gateways können für reinen IPv4-Datenverkehr in einem VNET mit aktiviertem IPv6 verwendet werden.  Die Unterstützung des IPv6-Datenverkehrs befindet sich in Planung.   
 - VPN-Gateways können in einem VNET mit aktiviertem IPv6 WEDER direkt noch durch Peering mit „UseRemoteGateway“ verwendet werden.
 - Die Azure-Plattform (AKS usw.) unterstützt die IPv6-Kommunikation für Container nicht.  
+- Für IPv6 kann nur ein Lastenausgleich auf die primäre Netzwerkschnittstelle (NIC) auf Azure-VMs ausgeführt werden. Der Lastenausgleich für IPv6-Datenverkehr auf sekundäre NICs wird nicht unterstützt.    
+- Reine virtuelle IPv6-Computer oder VM-Skalierungsgruppen werden nicht unterstützt. Jede NIC muss mindestens eine IPv4-IP-Konfiguration enthalten. 
+- Beim Hinzufügen von IPv6 zu vorhandenen IPv4-Bereitstellungen können IPv6-Bereiche nicht zu einem VNET hinzugefügt werden, das über vorhandene Ressourcennavigationslinks verfügt.  
+- Das Weiterleiten von DNS für IPv6 wird derzeit für öffentliches Azure-DNS unterstützt, aber Reverse-DNS wird noch nicht unterstützt.   
 
 ## <a name="pricing"></a>Preise
 

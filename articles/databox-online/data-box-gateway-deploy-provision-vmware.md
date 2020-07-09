@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9cf012df65560a921f2c9f12f6c0362a033300be
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: b62441a4b1307a232ad2f592f13253c0759b5431
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561638"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564196"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in VMware
 
@@ -145,7 +145,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät in VMware berei
 
     Klicken Sie auf der gleichen Seite auf **Add hard disk** (Festplatte hinzufügen), und wählen Sie dann **Existing hard disk** (Vorhandene Festplatte) aus. Wählen Sie die VMDK-Datei im Datenspeicher aus. Dadurch wird ein Betriebssystemdatenträger hinzugefügt. 
 
-     Seite zum Anpassen von Einstellungen[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![Seite zum Anpassen von Einstellungen](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     Scrollen Sie nach unten, bis Sie den Eintrag **New hard disk** (Neue Festplatte) sehen, und erweitern Sie ihn, um die Einstellungen anzuzeigen. Legen Sie **Virtual Device Node** (Virtueller Geräteknoten) auf **IDE controller 0** (IDE-Controller 0) fest.
 

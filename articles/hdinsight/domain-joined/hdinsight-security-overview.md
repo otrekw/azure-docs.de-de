@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 91a3c71ecaa8af58e13cb96571fc7afdf618fcdd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 65df89aff0232d7bf9809cdffc4262d1a640a5a1
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780078"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771120"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Übersicht über die Unternehmenssicherheit in Azure HDInsight
 
-Azure HDInsight bietet eine Reihe von Methoden, um Ihre Sicherheitsanforderungen im Unternehmen zu erfüllen. Die meisten dieser Lösungen sind standardmäßig nicht aktiviert. Diese Flexibilität ermöglicht Ihnen die Auswahl der Sicherheitsfunktionen, die für Sie am wichtigsten sind, und unterstützt Sie dabei, für nicht gewünschte Features nicht zu bezahlen. Diese Flexibilität bedeutet auch, dass Sie dafür verantwortlich sind, sicherzustellen, dass die richtigen Lösungen für Ihr Setup und Ihre Umgebung aktiviert sind.
+Azure HDInsight bietet eine Reihe von Methoden, um Ihre Sicherheitsanforderungen im Unternehmen zu erfüllen. Die meisten dieser Lösungen sind standardmäßig nicht aktiviert. Diese Flexibilität ermöglicht es Ihnen, die Sicherheitsfeatures auszuwählen, die für Sie am wichtigsten sind, und hilft Ihnen zu vermeiden, das Sie für nicht erforderliche Features bezahlen. Diese Flexibilität bedeutet auch, dass Sie dafür verantwortlich sind, sicherzustellen, dass die richtigen Lösungen für Ihr Setup und Ihre Umgebung aktiviert sind.
 
 Dieser Artikel befasst sich mit Sicherheitslösungen, indem die Sicherheitslösungen nach den vier traditionellen Sicherheitssäulen gegliedert werden: Umgebungssicherheit, Authentifizierung, Autorisierung und Verschlüsselung.
 
@@ -43,7 +43,7 @@ In dieser Konfiguration können sich Mitarbeiter des Unternehmens mit ihren Dom�
 
 In den meisten Unternehmen hat es sich bewährt, dass nicht jeder Mitarbeiter Vollzugriff auf alle Unternehmensressourcen hat. Analog dazu kann der Administrator für die Clusterressourcen Richtlinien für die rollenbasierte Zugriffssteuerung definieren. Diese Aktion ist nur in den ESP-Clustern verfügbar.
 
-Der Hadoop-Administrator kann die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) konfigurieren. Die Konfigurationen sichern Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md) und [Kafka](apache-domain-joined-run-kafka.md) mit Apache Range-Plug-Ins. Durch die Konfiguration von RBAC-Richtlinien können Sie Berechtigungen einer Rolle in der Organisation zuordnen. Diese Abstraktionsebene erleichtert die Sicherstellung, dass Personen nur über die Berechtigungen verfügen, die sie zur Erfüllung ihrer beruflichen Aufgaben benötigen. Mit Ranger können Sie auch den Datenzugriff von Mitarbeitern und alle Änderungen an den Zugriffssteuerungsrichtlinien überwachen.
+Der Hadoop-Administrator kann die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) konfigurieren. Die Konfigurationen sichern Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md) und [Kafka](apache-domain-joined-run-kafka.md) mit Apache Ranger-Plug-Ins ab. Durch die Konfiguration von RBAC-Richtlinien können Sie Berechtigungen einer Rolle in der Organisation zuordnen. Diese Abstraktionsebene erleichtert die Sicherstellung, dass Personen nur über die Berechtigungen verfügen, die sie zur Erfüllung ihrer beruflichen Aufgaben benötigen. Mit Ranger können Sie auch den Datenzugriff von Mitarbeitern und alle Änderungen an den Zugriffssteuerungsrichtlinien überwachen.
 
 So kann der Administrator etwa [Apache Ranger](https://ranger.apache.org/) zum Festlegen von Zugriffssteuerungsrichtlinien für Hive konfigurieren. Mit dieser Funktion wird die Filterung auf Zeilen- und Spaltenebene (Datenmaskierung) sichergestellt. Zudem werden die sensiblen Daten für nicht autorisierte Benutzer gefiltert.
 
@@ -53,7 +53,7 @@ Die Überwachung des Zugriffs auf die Clusterressource ist erforderlich, um unbe
 
 Der Administrator kann sämtliche Zugriffe auf die Ressourcen und Daten des HDInsight-Clusters anzeigen und entsprechende Berichte erstellen. Der Administrator kann sämtliche Änderungen an den Zugriffssteuerungsrichtlinien anzeigen und entsprechende Berichte erstellen.
 
-[Aktivieren Sie Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing), um auf Überwachungsprotokolle von Apache Ranger und Ambari sowie auf SSH-Zugriffsprotokolle zuzugreifen. Zeigen Sie außerdem die Tabellen an, die Überwachungsdatensätze bereitstellen.
+[Aktivieren Sie Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing), und zeigen Sie die Tabellen mit Überwachungsdatensätzen an, um auf Überwachungsprotokolle von Apache Ranger und Ambari sowie auf SSH-Zugriffsprotokolle zuzugreifen.
 
 ### <a name="encryption"></a>Verschlüsselung
 

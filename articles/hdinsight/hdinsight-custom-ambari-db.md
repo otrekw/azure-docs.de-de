@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: e7351e2f39c7e4eed84f4a47e3eeb2214a062a94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cb96e1299010636e0bce3cb99fbba9862822564
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240153"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022264"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>Einrichten von HDInsight-Clustern mit einer benutzerdefinierten Ambari-Datenbank
 
 Apache Ambari vereinfacht die Verwaltung und Überwachung von Apache Hadoop-Clustern. Ambari bietet eine benutzerfreundliche Webbenutzeroberfläche und REST-API. Ambari ist in HDInsight-Clustern enthalten und wird verwendet, um den Cluster zu überwachen und Konfigurationsänderungen vorzunehmen.
 
-Bei der normalen Clustererstellung, die in anderen Artikeln beschrieben wird, z. B. unter [Einrichten von Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md), wird Ambari in einer [Azure SQL-Datenbank mit Computegröße S0](../sql-database/sql-database-dtu-resource-limits-single-databases.md#standard-service-tier) bereitgestellt, die in HDInsight verwaltet wird und für Benutzer nicht zugänglich ist.
+Bei der normalen Clustererstellung, die in anderen Artikeln beschrieben wird, z. B. unter [Einrichten von Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md), wird Ambari in einer [Azure SQL-Datenbank mit Computegröße S0](../azure-sql/database/resource-limits-dtu-single-databases.md#standard-service-tier) bereitgestellt, die in HDInsight verwaltet wird und für Benutzer nicht zugänglich ist.
 
 Mit der Funktion der benutzerdefinierten Ambari-Datenbank können Sie einen neuen Cluster bereitstellen und Ambari in einer externen Datenbank einrichten, die Sie verwalten. Die Bereitstellung erfolgt über eine Azure Resource Manager-Vorlage. Diese Funktion bietet folgende Vorteile:
 
@@ -41,13 +41,13 @@ Für die benutzerdefinierte Ambari-Datenbank gelten folgende weitere Voraussetzu
 - Sie müssen über einen Azure SQL-Datenbank-Server und eine Azure SQL-Datenbank-Instanz verfügen.
 - Die für die Einrichtung von Ambari bereitgestellte Datenbank muss leer sein. Das dbo-Standardschema darf keine Tabellen enthalten.
 - Der Benutzer, der zum Herstellen der Verbindung mit der Datenbank verwendet wird, muss über die Berechtigungen SELECT, CREATE TABLE und INSERT für die Datenbank verfügen.
-- Aktivieren Sie die Option [Zugriff auf Azure-Dienste erlauben](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#azure-portal-steps) in der Azure SQL Server-Instanz, auf der Ambari gehostet wird.
-- In der SQL Server-Instanz müssen Verwaltungs-IP-Adressen vom HDInsight-Dienst zugelassen sein. Eine Liste der IP-Adressen, die der SQL Server-Firewall hinzugefügt werden müssen, finden Sie unter [HDInsight-Verwaltungs-IP-Adressen](hdinsight-management-ip-addresses.md).
+- Aktivieren Sie die Option [Zugriff auf Azure-Dienste erlauben](../azure-sql/database/vnet-service-endpoint-rule-overview.md#azure-portal-steps) auf dem Server, auf dem Ambari gehostet wird.
+- Verwaltungs-IP-Adressen vom HDInsight-Dienst müssen in der Firewallregel zulässig sein. Eine Liste der IP-Adressen, die der Firewallregel auf Serverebene hinzugefügt werden müssen, finden Sie unter [HDInsight-Verwaltungs-IP-Adressen](hdinsight-management-ip-addresses.md).
 
 Beachten Sie beim Hosten der Apache Ambari-Datenbank in einer externen Datenbank die folgenden Punkte:
 
 - Für die Azure SQL-Datenbank, die Ambari umfasst, fallen zusätzliche Kosten für Sie an.
-- Sichern Sie die benutzerdefinierte Ambari-Datenbank regelmäßig. Die Azure SQL-Datenbank generiert Sicherungen automatisch, der Aufbewahrungszeitraum der Sicherungen variiert jedoch. Weitere Informationen finden Sie unter [Informationen zu automatischen Sicherungen von SQL-Datenbank](../sql-database/sql-database-automated-backups.md).
+- Sichern Sie die benutzerdefinierte Ambari-Datenbank regelmäßig. Die Azure SQL-Datenbank generiert Sicherungen automatisch, der Aufbewahrungszeitraum der Sicherungen variiert jedoch. Weitere Informationen finden Sie unter [Informationen zu automatischen Sicherungen von SQL-Datenbank](../azure-sql/database/automated-backups-overview.md).
 
 ## <a name="deploy-clusters-with-a-custom-ambari-db"></a>Bereitstellen von HDInsight-Clustern mit einer benutzerdefinierten Ambari-Datenbank
 

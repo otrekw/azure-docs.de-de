@@ -7,12 +7,12 @@ ms.date: 04/18/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4d486b8ffc921a5ca2f38bef912ba6dc46ecec40
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: af76025317436f7046b857731e4c8af9b504201f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83634090"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833416"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -285,7 +285,7 @@ Sie können die Ergebnisse der API-Aufrufe im [Azure-Portal](https://portal.azur
 #### <a name="step-4---delete-the-container"></a>Schritt 4: Löschen des Containers
 
 1. Wählen Sie in der Web-App **Container löschen** aus. Der Status gibt an, dass der Container gelöscht wurde.
-2. Wählen Sie oben links im Azure-Portal den Link **\<Name des Kontos \> | Container** aus.
+2. Wählen Sie im Azure-Portal oben links im Portalbereich den Link **\<account-name\> | Container** aus.
 3. Klicken Sie auf **Aktualisieren**. Der neue Container wird nicht mehr angezeigt.
 4. Schließen Sie die Web-App.
 
@@ -302,7 +302,7 @@ In diesem Schnellstart wurde beschrieben, wie Sie Blobs mit JavaScript hochladen
 Tutorials, Beispiele, Schnellstartanleitungen und weiteres Dokumentationsmaterial finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [Dokumentation zu Azure für JavaScript](/azure/javascript/)
+> [Dokumentation zu Azure für JavaScript](/azure/developer/javascript/)
 
 * Weitere Informationen finden Sie in der [Azure Storage Blob client library for JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob) (Azure Storage Blob-Clientbibliothek für JavaScript).
 * Blobspeicher-Beispiel-Apps finden Sie unter [Getting started with samples](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) (Erste Schritte mit Beispielen).

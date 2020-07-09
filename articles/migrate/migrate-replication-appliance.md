@@ -3,12 +3,12 @@ title: Azure Migrate-Replikationsappliance
 description: Hier erhalten Sie Informationen zur Azure Migrate-Replikationsappliance für die Agent-basierte VMware-Migration.
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8149613effc4519638cc9b80f7894874ef3eafe3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535212"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122097"
 ---
 # <a name="replication-appliance"></a>Replikationsappliance
 
@@ -58,8 +58,8 @@ TLS | TLS 1.2 muss aktiviert sein.
 MySQL | MySQL sollte auf der Appliance installiert sein.<br/> MySQL sollte installiert sein. Sie können MySQL manuell installieren oder bei der Bereitstellung der Appliance durch Site Recovery installieren lassen.
 Andere Apps | Führen Sie keine anderen Apps auf der Replikationsappliance aus.
 Windows Server-Rollen | Aktivieren Sie die folgenden Rollen nicht: <br> - Active Directory Domain Services <br>- Internetinformationsdienste <br> - Hyper-V
-Gruppenrichtlinien | Aktivieren Sie die folgenden Gruppenrichtlinien nicht: <br> - Zugriff auf Eingabeaufforderung verhindern <br> - Zugriff auf Programme zum Bearbeiten der Registrierung verhindern <br> - Vertrauenslogik für Dateianlagen <br> - Skriptausführung aktivieren <br> [Weitere Informationen](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | - Keine bereits vorhandene Standardwebsite <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen <br>- Die [anonyme Authentifizierung](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) ist aktiviert. <br> - Aktivieren der Einstellung [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)
+Gruppenrichtlinien | Aktivieren Sie die folgenden Gruppenrichtlinien nicht: <br> - Zugriff auf Eingabeaufforderung verhindern <br> - Zugriff auf Programme zum Bearbeiten der Registrierung verhindern <br> - Vertrauenslogik für Dateianlagen <br> - Skriptausführung aktivieren <br> [Weitere Informationen](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))
+IIS | - Keine bereits vorhandene Standardwebsite <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen <br>- Die [anonyme Authentifizierung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) ist aktiviert. <br> - Aktivieren der Einstellung [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))
 **Netzwerkeinstellungen** |
 Art der IP-Adresse | statischen
 Ports | 443 (Steuerkanalorchestrierung)<br>9443 (Datentransport)

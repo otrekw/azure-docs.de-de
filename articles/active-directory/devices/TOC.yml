@@ -35,6 +35,8 @@
 - name: Anleitungen
   expanded: false
   items:
+    - Name: "Planen der Azure\_AD-Gerätebereitstellung"
+      href: plan-device-deployment.md
     - name: Planen der Implementierung Ihrer Azure AD-Einbindung
       href: azureadjoin-plan.md
     - name: Zuweisen lokaler Administratoren zu in Azure AD eingebundenen Geräten

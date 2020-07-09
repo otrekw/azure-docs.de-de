@@ -4,15 +4,15 @@ description: Dieser Artikel enthält Informationen zum Bereitstellen eines Appli
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585886"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807154"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Installieren eines Application Gateway-Eingangscontrollers (Application Gateway Ingress Controller, AGIC) mithilfe eines neuen Application Gateways
 
@@ -66,7 +66,7 @@ Führen Sie die folgenden Schritte aus, um ein AAD-[Dienstprinzipalobjekt](https
     }
     EOF
     ```
-    Legen Sie zum Bereitstellen eines für **RBAC** aktivierten Clusters das Feld `aksEnabledRBAC` auf `true` fest.
+    Legen Sie zum Bereitstellen eines für **RBAC** aktivierten Clusters das Feld `aksEnableRBAC` auf `true` fest.
 
 ## <a name="deploy-components"></a>Bereitstellungskomponenten
 In diesem Schritt werden Ihrem Abonnement die folgenden Komponenten hinzugefügt:

@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 41e88dd5a08de485f770559959843ba3b54e590f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 31bd6a2680d8c71df6b6030187ff44ca10d09440
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274009"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561041"
 ---
 # <a name="learn-text-moderation-concepts"></a>Lernen von Textmoderationskonzepten
 
-Verwenden Sie die computergestützte Textmoderation von Content Moderator sowie Funktionen zur [Überprüfung durch Personen](Review-Tool-User-Guide/human-in-the-loop.md), um Textinhalte zu moderieren.
+Verwenden Sie die Textmoderationsmodelle von Content Moderator, um Textinhalte zu analysieren.
 
-Sie können Inhalte basierend auf Ihren Richtlinien und Schwellenwerten entweder blockieren, genehmigen oder überprüfen. Verwenden Sie diese Funktion, um in Umgebungen, in denen Partner, Mitarbeiter und Kunden Textinhalte generieren, die Moderation durch Personen zu ergänzen. Zu solchen Umgebungen zählen etwa Chatrooms, Diskussionsforen, Chatbots, E-Commerce-Kataloge und Dokumente. 
+Sie können den Inhalt auf Basis Ihrer Richtlinien und Schwellenwerte blockieren, genehmigen oder überprüfen (unter [Überprüfungen, Workflows und Aufträge](./review-api.md) erfahren Sie, wie Sie Überprüfungen durch Personen einrichten). Verwenden Sie die Textmoderationsmodelle, um Umgebungen, in denen Partner, Mitarbeiter und Kunden Textinhalte generieren, durch Moderation durch Personen zu ergänzen. Zu solchen Umgebungen zählen etwa Chatrooms, Diskussionsforen, Chatbots, E-Commerce-Kataloge und Dokumente.
 
 Die Antwort des Diensts enthält folgende Informationen:
 
@@ -155,4 +155,4 @@ Content Moderator bietet eine [Begriffslisten-API](https://westus.dev.cognitive.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Testen Sie die [API-Konsole für die Textmoderation](try-text-api.md), und verwenden Sie die REST-API-Codebeispiele. Wenn Sie mit Visual Studio und C# vertraut sind, sehen Sie sich auch den Abschnitt zur Textmoderation im [.NET SDK-Schnellstart](dotnet-sdk-quickstart.md) an.
+Testen Sie die APIs mit der [Textmoderations-API-Konsole](try-text-api.md). Weitere Informationen zur Einrichtung der Überprüfung durch Personen finden Sie auch unter [Überprüfungen, Workflows und Aufträge](./review-api.md).

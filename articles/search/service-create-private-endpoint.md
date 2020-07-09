@@ -7,25 +7,22 @@ author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 2664b1abd4131cf1dca186c7b044e338bf1efa84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/11/2020
+ms.openlocfilehash: 0945743fb2cf3e37345ff562250e48511944cee6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75945824"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125552"
 ---
-# <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search-preview"></a>Erstellen eines privaten Endpunkts für sichere Verbindungen mit Azure Cognitive Search (Vorschauversion)
+# <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Erstellen eines privaten Endpunkts für sichere Verbindungen mit Azure Cognitive Search
 
-In diesem Artikel erstellen Sie über das Portal eine neue Azure Cognitive Search-Dienstinstanz, auf die nicht über eine öffentliche IP-Adresse zugegriffen werden kann. Anschließend konfigurieren Sie einen virtuellen Azure-Computer im selben Netzwerk und greifen damit über einen privaten Endpunkt auf den Suchdienst zu.
+In diesem Artikel verwenden Sie das Azure-Portal, um eine neue Azure Cognitive Search-Dienstinstanz zu erstellen, auf die nicht über das Internet zugegriffen werden kann. Anschließend konfigurieren Sie einen virtuellen Azure-Computer im selben Netzwerk und greifen damit über einen privaten Endpunkt auf den Suchdienst zu.
 
 > [!Important]
-> Die Unterstützung privater Endpunkte für Azure Cognitive Search ist [auf Anforderung](https://aka.ms/SearchPrivateLinkRequestAccess) als Vorschauversion mit eingeschränktem Zugriff verfügbar. Previewfunktionen werden ohne Vereinbarung zum Servicelevel bereitgestellt und sind nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
->
-> Nachdem Sie Zugriff auf die Vorschauversion erhalten haben, können Sie über das Azure-Portal oder die [Verwaltungs-REST-API-Version 2019-10-06-Preview](https://docs.microsoft.com/rest/api/searchmanagement/) private Endpunkte für Ihren Dienst konfigurieren.
->   
+> Die Unterstützung privater Endpunkte für Azure Cognitive Search kann mithilfe des Azure-Portals oder der [Verwaltungs-REST-API, Version 2020-03-13,](https://docs.microsoft.com/rest/api/searchmanagement/) konfiguriert werden. Wenn der Dienstendpunkt privat ist, sind einige Portalfunktionen deaktiviert. Sie können Informationen auf Dienstebene anzeigen und verwalten, aber der Portalzugriff auf Indexdaten und die verschiedenen Komponenten im Dienst sind aus Sicherheitsgründen eingeschränkt. Dazu zählen beispielsweise Index-, Indexer- und Skillsetdefinitionen.
 
-## <a name="why-use-private-endpoint-for-secure-access"></a>Gründe für den sicheren Zugriff über private Endpunkte
+## <a name="why-use-a-private-endpoint-for-secure-access"></a>Gründe für den sicheren Zugriff über einen privaten Endpunkt
 
 [Private Endpunkte](../private-link/private-endpoint-overview.md) für Azure Cognitive Search ermöglichen, dass ein Client in einem virtuellen Netzwerk über eine [private Verbindung](../private-link/private-link-overview.md) sicher auf Daten in einem Suchindex zugreifen kann. Der private Endpunkt verwendet eine IP-Adresse aus dem [Adressraum des virtuellen Netzwerks](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) für Ihren Suchdienst. Der Netzwerkdatenverkehr zwischen dem Client und dem Suchdienst wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbonenetzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt. Eine Liste mit anderen PaaS-Diensten, bei denen Private Link unterstützt wird, finden Sie im Abschnitt [Verfügbarkeit](../private-link/private-link-overview.md#availability) in der Produktdokumentation.
 
@@ -34,20 +31,6 @@ Private Endpunkte für Ihren Suchdienst ermöglichen Folgendes:
 - Blockieren aller Verbindungen am öffentlichen Endpunkt für den Suchdienst
 - Erhöhen der Sicherheit für das virtuelle Netzwerk, indem Sie die Exfiltration von Daten aus dem virtuellen Netzwerk blockieren können
 - Sicheres Verbinden mit dem Suchdienst aus lokalen Netzwerken, die eine Verbindung mit dem virtuellen Netzwerk über [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../expressroute/expressroute-locations.md) mit privatem Peering herstellen
-
-> [!NOTE]
-> Es gibt derzeit einige Einschränkungen in der Vorschauversion, die zu beachten sind:
-> * Nur für Suchdienste im **Basic**-Tarif verfügbar 
-> * Verfügbar in den Regionen „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Osten“, „USA, Süden-Mitte“, „Australien, Osten“ und „Australien, Südosten“
-> * Wenn der Dienstendpunkt privat ist, sind einige Portalfunktionen deaktiviert. Sie können Informationen auf Dienstebene anzeigen und verwalten, aber der Portalzugriff auf Indexdaten und die verschiedenen Komponenten im Dienst sind aus Sicherheitsgründen eingeschränkt. Dazu zählen beispielsweise Index-, Indexer- und Skillsetdefinitionen.
-> * Wenn der Dienstendpunkt privat ist, müssen Sie die [Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) verwenden, um Dokumente in den Index hochzuladen.
-> * Sie müssen den folgenden Link verwenden, um die Option zur Unterstützung privater Endpunkte im Azure-Portal anzuzeigen: https://portal.azure.com/?feature.enablePrivateEndpoints=true
-
-
-
-## <a name="request-access"></a>Zugriff anfordern 
-
-Klicken Sie auf [Zugriff anfordern](https://aka.ms/SearchPrivateLinkRequestAccess), um sich für diese Previewfunktion zu registrieren. Im Formular müssen Sie Informationen über sich, Ihr Unternehmen und die allgemeine Netzwerktopologie angeben. Wenn wir Ihre Anfrage überprüft haben, erhalten Sie eine Bestätigungs-E-Mail mit weiteren Anweisungen.
 
 ## <a name="create-the-virtual-network"></a>Erstellen des virtuellen Netzwerks
 
@@ -59,17 +42,13 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 
     | Einstellung | Wert |
     | ------- | ----- |
-    | Name | Geben Sie *MyVirtualNetwork* ein. |
-    | Adressraum | Geben Sie *10.1.0.0/16* ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **Neu erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie dann **OK** aus. |
-    | Position | Wählen Sie **USA, Westen** oder die verwendete Region aus.|
-    | Subnetzname | Geben Sie *mySubnet* ein. |
-    | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |
+    | Name | Geben Sie *MyVirtualNetwork* ein. |
+    | Region | Wählen Sie Ihre bevorzugte Region aus. |
     |||
 
-1. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
-
+1. Übernehmen Sie für den Rest der Einstellungen die Standardwerte. Klicken Sie auf **Überprüfen + erstellen** und danach auf **Erstellen**.
 
 ## <a name="create-a-search-service-with-a-private-endpoint"></a>Erstellen eines Suchdiensts mit einem privaten Endpunkt
 
@@ -86,8 +65,8 @@ In diesem Abschnitt erstellen Sie einen neuen Azure Cognitive Search-Dienst mit 
     | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
     | **INSTANZDETAILS** |  |
     | URL | Geben Sie einen eindeutigen Namen ein. |
-    | Position | Wählen Sie die Region aus, die Sie beim Anfordern des Zugriffs auf diese Previewfunktion angegeben haben. |
-    | Tarif | Wählen Sie **Tarif ändern** und dann **Basic** aus. Dieser Tarif ist für die Vorschauversion erforderlich. |
+    | Standort | Wählen Sie Ihre bevorzugte Region aus. |
+    | Tarif | Wählen Sie **Tarif ändern** und dann den gewünschten Tarif aus. (Keine Unterstützung im **Free**-Tarif. Muss **Basic**-Tarif oder höher sein.) |
     |||
   
 1. Klicken Sie auf **Weiter: Skalieren**.
@@ -104,7 +83,7 @@ In diesem Abschnitt erstellen Sie einen neuen Azure Cognitive Search-Dienst mit 
     | ------- | ----- |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
-    | Position | Wählen Sie **USA, Westen** aus.|
+    | Standort | Wählen Sie **USA, Westen** aus.|
     | Name | Geben Sie *myPrivateEndpoint* ein.  |
     | Zielunterressource | Übernehmen Sie den Standardwert **searchService**. |
     | **NETZWERK** |  |
@@ -206,7 +185,7 @@ Laden Sie den virtuellen Computer *myVm* herunter, und stellen Sie dann wie folg
 
 In diesem Abschnitt überprüfen Sie den Zugriff im privaten Netzwerk auf den Suchdienst und stellen über den privaten Endpunkt eine private Verbindung her.
 
-Wie in der Einleitung erläutert, müssen alle Interaktionen mit dem Suchdienst über die [Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) durchgeführt werden. Das Portal und das .NET SDK werden in dieser Vorschauversion nicht unterstützt.
+Wenn der Suchdienst-Endpunkt privat ist, sind einige Portalfunktionen deaktiviert. Sie können Einstellungen auf Dienstebene anzeigen und verwalten, aber der Portalzugriff auf Indexdaten und verschiedene andere Komponenten im Dienst sind aus Sicherheitsgründen eingeschränkt. Dazu zählen beispielsweise Index-, Indexer- und Skillsetdefinitionen.
 
 1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVM*.
 

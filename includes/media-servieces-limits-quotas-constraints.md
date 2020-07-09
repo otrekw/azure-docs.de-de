@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/31/2020
 ms.author: juliako
-ms.openlocfilehash: 99aeb5384b317d1b4d291c769b5402e829247b30
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d6ff823951e6474a35a514036f02c0aabb17bf01
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656201"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82997711"
 ---
 > [!NOTE]
 > Erstellen Sie für Ressourcen ohne festes Limit ein Supportticket, um eine Erhöhung der Kontingente anzufordern. Erstellen Sie keine zusätzlichen Azure Media Services-Konten, um höhere Limits zu erhalten.
@@ -50,11 +50,11 @@ Die folgende Tabelle enthält die Grenzwerte für die reservierten Einheiten fü
 | Resource | Standardlimit | 
 | --- | --- | 
 | Aufträge pro Media Services-Konto | 500.000 <sup>(3)</sup> (feststehend)|
-| „JobInputs“ pro Auftrag | 50  (feststehend)|
-| „JobOutputs“ pro Auftrag | 20 (feststehend) |
+| Auftragseingaben pro Auftrag | 50  (feststehend)|
+| Auftragsausgaben pro Auftrag | 20 (feststehend) |
 | Transformationen pro Media Services-Konto | 100  (feststehend)|
-| „TransformOutputs“ in einer Transformation | 20 (feststehend) |
-| Dateien pro „JobInput“|10 (feststehend)|
+| Transformationsausgaben in einer Transformation | 20 (feststehend) |
+| Dateien pro Auftragseingabe|10 (feststehend)|
 
 <sup>3</sup> Diese Zahl umfasst fertiggestellte, aktive und abgebrochene Aufträge sowie Aufträge in der Warteschlange. Gelöschte Aufträge sind nicht enthalten. 
 
@@ -66,13 +66,13 @@ Alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, werden aut
 | --- | --- | 
 | Liveereignisse <sup>(4)</sup> pro Media Services-Konto |5|
 | Live-Ausgaben pro Liveereignis |3 <sup>(5)</sup> |
-| Max. Dauer für Liveausgabe | 25 Stunden |
+| Max. Dauer für Liveausgabe | [Größe des DVR-Fensters](../articles/media-services/latest/live-event-cloud-dvr.md) |
 
 <sup>4</sup> Ausführliche Informationen zu den Einschränkungen bei Liveereignissen finden Sie unter [Liveereignistypen – Vergleich und Einschränkungen](../articles/media-services/latest/live-event-types-comparison.md).
 
 <sup>5</sup> Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet.
 
-### <a name="packaging--delivery-limits"></a>Grenzwerte für Verpackung und Bereitstellung
+### <a name="packaging--delivery-limits"></a>Limits für Verpackung und Bereitstellung
 
 | Resource | Standardlimit | 
 | --- | --- | 

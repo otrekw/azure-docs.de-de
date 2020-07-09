@@ -2,23 +2,23 @@
 title: Remotezugriff auf lokale Apps – Azure AD-Anwendungsproxy
 description: Der Azure Active Directory-Anwendungsproxy ermöglicht den sicheren Remotezugriff auf lokal gehostete Webanwendungen. Nach dem einmaligen Anmelden in Azure AD können Benutzer über eine externe URL oder ein internes Anwendungsportal auf Cloudanwendungen und lokale Anwendungen zugreifen. Der Anwendungsproxy kann z.B. Remotezugriff und einmaliges Anmelden bei Remotedesktop, SharePoint, Teams, Tableau, Qlik und Branchenanwendungen (LOB) bereitstellen.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 24e18f5b1766f0dde5e677ac40d24edd5597a20d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 84cd6f9d7612cc6cf5829c03c398dd65a6eec412
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318027"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Remotezugriff auf lokale Anwendungen über den Azure Active Directory-Anwendungsproxy
 
@@ -41,7 +41,7 @@ Der Anwendungsproxy funktioniert mit:
 * Webanwendungen mit formularbasiertem oder [headerbasiertem](application-proxy-configure-single-sign-on-with-ping-access.md) Zugriff
 * Web-APIs, die Sie für umfassende Anwendungen auf unterschiedlichen Geräten verfügbar machen möchten
 * Hinter einem [Remotedesktopgateway](application-proxy-integrate-with-remote-desktop-services.md) gehostete Anwendungen
-* Rich Client-Apps, die in der Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library (ADAL)) integriert sind
+* Rich Client-Apps, die in die Microsoft Authentication Library (MSAL) integriert sind
 
 Der Anwendungsproxy unterstützt das einmalige Anmelden. Weitere Informationen zu unterstützten Methoden finden Sie unter [Auswählen einer Methode für einmaliges Anmelden](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
 
@@ -72,4 +72,3 @@ Das folgende Diagramm zeigt, wie Azure AD und der Anwendungsproxy gemeinsam das 
 ## <a name="next-steps"></a>Nächste Schritte
 Erste Schritte mit dem Anwendungsproxy finden Sie in [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy](application-proxy-add-on-premises-application.md).
 
-Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](https://blogs.technet.com/b/applicationproxyblog/).

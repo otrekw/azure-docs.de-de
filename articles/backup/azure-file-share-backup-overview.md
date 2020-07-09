@@ -3,12 +3,12 @@ title: Informationen zum Sichern von Azure-Dateifreigaben
 description: Erfahren Sie, wie Sie Azure-Dateifreigaben im Recovery Services-Tresor sichern.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: c79100724b882c0682c86070ee74a8726d6b049f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a03871b61ab00f2dae18ba11a5a9127680a646b
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105742"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299229"
 ---
 # <a name="about-azure-file-share-backup"></a>Informationen zum Sichern von Azure-Dateifreigaben
 
@@ -16,11 +16,12 @@ Bei der Sicherung von Azure-Dateifreigaben handelt es sich um eine native, cloud
 
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Wichtige Vorteile der Sicherung von Azure-Dateifreigaben
 
-* Keine Infrastrukturanforderungen: Zum Konfigurieren des Schutzes für Ihre Dateifreigaben sind keine Bereitstellungen erforderlich.
-* Benutzerdefinierte Aufbewahrung: Sie können für den Aufbewahrungszeitraum von Sicherungen eine bestimmte Anzahl von Tagen/Wochen/Monaten/Jahren konfigurieren, ganz nach Ihren Anforderungen.
-* Integrierte Verwaltungsfunktionen: Sie können Sicherungen planen und den gewünschten Aufbewahrungszeitraum ohne zusätzlichen Aufwand für die Datenbereinigung angeben.
-* Sofortige Wiederherstellung: Für die Sicherung von Azure-Dateifreigaben werden Dateifreigabe-Momentaufnahmen verwendet, sodass Sie einfach die Dateien auswählen können, die Sie sofort wiederherstellen möchten.
-* Warnungen und Berichte: Sie können Warnungen bei Sicherungs- und Wiederherstellungsfehlern konfigurieren und die von Azure Backup bereitgestellte Berichterstellungslösung verwenden, um Erkenntnisse zu Sicherungen für Ihre Dateifreigaben zu erhalten.
+* **Keine Infrastrukturanforderungen**: Zum Konfigurieren des Schutzes für Ihre Dateifreigaben sind keine Bereitstellungen erforderlich.
+* **Benutzerdefinierte Aufbewahrung**: Sie können für den Aufbewahrungszeitraum von Sicherungen eine bestimmte Anzahl von Tagen/Wochen/Monaten/Jahren konfigurieren, ganz nach Ihren Anforderungen.
+* **Integrierte Verwaltungsfunktionen**: Sie können Sicherungen planen und den gewünschten Aufbewahrungszeitraum ohne zusätzlichen Aufwand für die Datenbereinigung angeben.
+* **Sofortige Wiederherstellung**: Für die Sicherung von Azure-Dateifreigaben werden Dateifreigabe-Momentaufnahmen verwendet, sodass Sie einfach die Dateien auswählen können, die Sie sofort wiederherstellen möchten.
+* **Warnungen und Berichte**: Sie können Warnungen bei Sicherungs- und Wiederherstellungsfehlern konfigurieren und die von Azure Backup bereitgestellte Berichterstellungslösung verwenden, um Erkenntnisse zu Sicherungen für Ihre Dateifreigaben zu erhalten.
+* **Schutz vor versehentlichem Löschen von Dateifreigaben**: Mit Azure Backup wird die [Funktion für vorläufiges Löschen](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) auf einer Speicherkontoebene mit einem Aufbewahrungszeitraum von 14 Tagen aktiviert. Die Inhalte und Wiederherstellungspunkte (Momentaufnahmen) der Dateifreigabe werden für einen konfigurierbaren Aufbewahrungszeitraum beibehalten. Dies ermöglicht die erfolgreiche und vollständige Wiederherstellung von Quellinhalten und Momentaufnahmen ohne Datenverlust, selbst wenn ein böswilliger Akteur die Dateifreigabe löscht.
 
 ## <a name="architecture"></a>Aufbau
 

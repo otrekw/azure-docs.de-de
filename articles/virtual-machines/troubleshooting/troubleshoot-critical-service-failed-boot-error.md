@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921452"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129852"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Unter Windows wird beim Starten eines virtuellen Azure-Computers der Bluescreenfehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM KRITISCHEN DIENST) angezeigt.
 Dieser Artikel beschreibt den Fehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM KRITISCHEN DIENST), der unter Umständen beim Starten eines virtuellen Windows-Computers in Microsoft Azure angezeigt wird. Er enthält Schritte zum Beheben des Problems. 
@@ -84,11 +84,15 @@ Um die Abbildprotokolle und die serielle Konsole zu aktivieren, führen Sie das 
 
 1. Führen Sie auf dem virtuellen Wiederherstellungscomputer den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten aus. Mit diesem Befehl wird festgelegt, dass der betroffene Betriebssystemdatenträger beim nächsten Start im abgesicherten Modus gestartet wird:
 
-        bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```
 
     Ist der angefügte Betriebssystemdatenträger beispielsweise „F“ ist, führen Sie den folgenden Befehl aus:
 
-        bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```
 
 2. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn dann erneut an den betroffenen virtuellen Computer an.](troubleshoot-recovery-disks-portal-windows.md) Der virtuelle Computer wird im abgesicherten Modus gestartet. Tritt der Fehler weiterhin auf, fahren Sie mit dem optionalen Schritt fort.
 3. Öffnen Sie das Feld **Ausführen**,und führen Sie die **Überprüfung** aus, um den Treiberüberprüfungs-Manager zu starten.
@@ -98,7 +102,10 @@ Um die Abbildprotokolle und die serielle Konsole zu aktivieren, führen Sie das 
 
 7. Entfernen Sie die Einstellungen für den sicheren Start:
 
-        bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```console
+    bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```
+
 8.  Starten Sie den virtuellen Computer neu. 
 
 ### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Optional: Analysieren der Sicherungsprotokolle im Modus für Absturzabbilder

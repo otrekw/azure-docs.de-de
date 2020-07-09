@@ -3,14 +3,14 @@ title: Erstellen von Azure-Funktionen unter Linux mit einem benutzerdefinierten 
 description: Hier erfahren Sie, wie Sie Azure Functions erstellen, die auf einem benutzerdefinierten Linux-Image ausgeführt werden.
 ms.date: 03/30/2020
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: fee4e16bd77664e541eeb36cb807a77d13191899
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bb9fc07c0c909f1fcec1644175c1dbac1e2bbb57
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82165721"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560916"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Container
 
@@ -295,17 +295,24 @@ Da das Image nun für die Funktions-App in Azure bereitgestellt wurde, können S
 
     # <a name="portal"></a>[Portal](#tab/portal)
 
-    1. Melden Sie sich am Azure-Portal an, und suchen Sie nach Ihrer Funktions-App, indem Sie im Feld **Suchen** oben auf der Seite den Namen Ihrer Funktions-App eingeben. Wählen Sie in den Ergebnissen die Ressource **App Service** aus.
+    1. Melden Sie sich beim Azure-Portal an, suchen Sie nach **Funktions-App**, und wählen Sie diese Option aus.
 
-    1. Wählen Sie im linken Navigationsbereich unter **Funktionen (schreibgeschützt)** den Namen Ihrer Funktion aus.
+    1. Wählen Sie die Funktion aus, die Sie überprüfen möchten.
 
-    1. Wählen im Bereich mit den Details die Option **</>Funktions-URL abrufen** aus:
+    1. Wählen Sie im linken Navigationsbereich die Option **Funktionen** und dann die zu überprüfende Funktion aus.
+
+        ![Befehl „Funktions-URL abrufen“ im Azure-Portal](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
+
     
-        ![Befehl „Funktions-URL abrufen“ im Azure-Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)   
+    1. Wählen Sie **Funktions-URL abrufen** aus.
 
-    1. Wählen Sie im Popupmenü die Option **default (Function key)** (Standard (Funktionsschlüssel)) und dann **Kopieren** aus. Der Schlüssel ist die Zeichenfolge nach `?code=`.
+        ![Befehl „Funktions-URL abrufen“ im Azure-Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
-        ![Kopieren der Funktions-URL aus dem Azure-Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key-popup.png)   
+    
+    1. Wählen Sie im Popupfenster die Option **Standard (Funktionstaste)** aus, und kopieren Sie die URL in die Zwischenablage. Der Schlüssel ist die Zeichenfolge nach `?code=`.
+
+        ![Befehl „Funktions-URL abrufen“ im Azure-Portal](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
+
 
     > [!NOTE]  
     > Da Ihre Funktions-App als Container bereitgestellt ist, können Sie im Portal keine Änderungen an Ihrem Funktionscode vornehmen. Stattdessen müssen Sie das Projekt im lokalen Image aktualisieren und wieder per Pushvorgang an die Registrierung übertragen und anschließend erneut in Azure bereitstellen. Sie können Continuous Deployment in einem späteren Abschnitt einrichten.
@@ -340,11 +347,11 @@ Da das Image nun für die Funktions-App in Azure bereitgestellt wurde, können S
 
     ---
 
-1. Fügen Sie die Funktions-URL in die Adressleiste Ihres Browsers ein, und fügen Sie den Parameter `&name=Azure` am Ende dieser URL hinzu. Im Browser sollte Text wie „Hello Azure“ angezeigt werden.
+1. Fügen Sie die Funktions-URL in die Adressleiste Ihres Browsers ein, und fügen Sie den Parameter `&name=Azure` am Ende dieser URL hinzu. Im Browser sollte Text wie „Hello, Azure“ angezeigt werden.
 
     ![Funktionsantwort im Browser.](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
 
-1. Entfernen Sie zum Testen der Autorisierung den Parameter „code=“ aus der URL, und vergewissern Sie sich, dass Sie keine Antwort von der Funktion erhalten.
+1. Entfernen Sie zum Testen der Autorisierung den Parameter `code=` aus der URL, und vergewissern Sie sich, dass Sie keine Antwort von der Funktion erhalten.
 
 
 ## <a name="enable-continuous-deployment-to-azure"></a>Aktivieren von Continuous Deployment in Azure
@@ -429,7 +436,7 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
 
 ## <a name="write-to-an-azure-storage-queue"></a>Schreiben in eine Azure Storage-Warteschlange
 
-Mit Azure Functions können Sie Ihre Funktionen mit anderen Azure-Diensten und -Ressourcen verbinden, ohne dass Sie Ihren eigenen Integrationscode schreiben müssen. Diese *Bindungen*, die sowohl Eingabe als auch Ausgabe darstellen, werden innerhalb der Funktionsdefinition deklariert. Daten von Bindungen werden der Funktion als Parameter bereitgestellt. Ein *Trigger* ist ein spezieller Typ von Eingabebindung. Eine Funktion hat zwar nur einen Trigger, kann aber mehrere Ein- und Ausgabebindungen haben. Weitere Informationen finden Sie unter [Konzepte der Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md).
+Mit Azure Functions können Sie Ihre Funktionen mit anderen Azure-Diensten und -Ressourcen verbinden, ohne dass Sie eigenen Integrationscode schreiben müssen. Diese *Bindungen*, die sowohl Eingabe als auch Ausgabe darstellen, werden innerhalb der Funktionsdefinition deklariert. Daten von Bindungen werden der Funktion als Parameter bereitgestellt. Ein *Trigger* ist ein spezieller Typ von Eingabebindung. Eine Funktion hat zwar nur einen Trigger, kann aber mehrere Ein- und Ausgabebindungen haben. Weitere Informationen finden Sie unter [Konzepte der Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md).
 
 In diesem Abschnitt wird gezeigt, wie Sie Ihre Funktion in eine Azure Storage-Warteschlange integrieren. Die Ausgabebindung, die Sie dieser Funktion hinzufügen, schreibt Daten aus einer HTTP-Anforderung in eine Nachricht in der Warteschlange.
 

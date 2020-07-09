@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 42596ba5470c6062efba4fd1050c1c9745b76e80
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 5b7eea37cbd926046c6b923b003cd47e0a0c2b0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637325"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387625"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph
 
@@ -67,7 +67,7 @@ In der Microsoft Graph-API werden sowohl lokale als auch Verbundidentitäten im 
 
 Die folgende **Identities**-Eigenschaft mit einer lokalen Kontoidentität mit einem Anmeldenamen, einer E-Mail-Adresse für die Anmeldung und einer Social Media-Identität. 
 
- ```JSON
+ ```json
  "identities": [
      {
        "signInType": "userName",
@@ -95,7 +95,7 @@ Für eine lokale Identität ist die **passwordProfile**-Eigenschaft erforderlich
 
 Für eine Verbundidentität (Identität eines sozialen Netzwerks) ist die **passwordProfile**-Eigenschaft nicht erforderlich.
 
-```JSON
+```json
 "passwordProfile" : {
     "password": "password-value",
     "forceChangePasswordNextSignIn": false
@@ -108,7 +108,7 @@ Die Kennwortrichtlinie von Azure AD B2C (für lokale Konten) basiert auf der Ri
 
 Wenn bei Benutzermigrationsvorgängen die Konten, die Sie migrieren möchten, über eine geringere Kennwortsicherheit als die [hohe Kennwortsicherheit](../active-directory/authentication/concept-sspr-policy.md) unter Azure AD B2C verfügen, können Sie die Erzwingung sicherer Kennwörter deaktivieren. Legen Sie zum Ändern der standardmäßigen Kennwortrichtlinie die Eigenschaft `passwordPolicies` auf `DisableStrongPassword` fest. Beispielsweise können Sie die Anforderung zum Erstellen eines Benutzers wie folgt ändern:
 
-```JSON
+```json
 "passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
 ```
 
@@ -118,7 +118,7 @@ Für jede kundenorientierte Anwendung gelten spezifische Anforderungen im Hinbli
 
 Die Microsoft Graph-API unterstützt das Erstellen und Aktualisieren eines Benutzers mit Erweiterungsattributen. Erweiterungsattribute in der Graph-API werden mithilfe der Konvention `extension_ApplicationObjectID_attributename` benannt. Beispiel:
 
-```JSON
+```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 

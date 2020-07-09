@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8862c33b7660b8130f692dc4beea89a7b6b5f5ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61272bee350fc7c7dd7d0e17adc55c436f4706ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804485"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84885960"
 ---
 # <a name="add-a-simple-data-layer"></a>Hinzufügen einer einfachen Datenschicht
 
@@ -89,7 +89,7 @@ Azure Maps- und GitHub-Stileigenschaften sind die beiden wichtigsten Gruppen unt
 
 Wenn der Reader auf eine weniger verbreitete Stileigenschaft stößt, konvertiert er sie in die naheliegendste Azure Maps-Stileigenschaft. Zusätzlich können die Standardstilausdrücke überschrieben werden, indem die `getLayers`-Funktion der einfachen Datenebene verwendet und die Optionen für beliebige der Ebenen aktualisiert werden.
 
-Die folgenden Abschnitte enthalten Einzelheiten zu den Standardstileigenschaften, die von der einfachen Datenebene unterstützt werden. Die Reihenfolge der unterstützten Eigenschaftsnamen ist gleichzeitig die Priorität der Eigenschaft. Wenn zwei Stileigenschaften für die gleiche Ebenenoption definiert sind, hat die erste in der Liste höhere Priorität.
+Die folgenden Abschnitte enthalten Einzelheiten zu den Standardstileigenschaften, die von der einfachen Datenebene unterstützt werden. Die Reihenfolge der unterstützten Eigenschaftsnamen ist gleichzeitig die Priorität der Eigenschaft. Wenn zwei Stileigenschaften für die gleiche Ebenenoption definiert sind, hat die erste in der Liste höhere Priorität. Farben können ein beliebiger CSS3-Farbwert sein. HEX, RGB, RGBA, HSL, HSLA oder ein benannter Farbwert.
 
 ### <a name="bubble-layer-style-properties"></a>Stileigenschaften auf der Blasenebene
 

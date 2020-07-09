@@ -8,23 +8,23 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: d9ae126753f55349f9bf3eefd20bc4d222866af1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ff59819c3bfda6e19d14cbe2deaea43e1694375
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73888200"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345239"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Verwenden des Dashboards zum Verbessern Ihrer App
 
-Finden und beheben Sie Probleme mit Absichten Ihrer trainierten App beim Verwenden von Beispieläußerungen. Auf dem Dashboard werden allgemeine App-Informationen angezeigt und die wichtigsten Absichten aufgeführt, die verbessert werden sollten. 
+Finden und beheben Sie Probleme mit Absichten Ihrer trainierten App beim Verwenden von Beispieläußerungen. Auf dem Dashboard werden allgemeine App-Informationen angezeigt und die wichtigsten Absichten aufgeführt, die verbessert werden sollten.
 
 Das Überprüfen von Dashboardanalysen ist ein iterativer Prozess, der immer dann erforderlich ist, wenn Sie Ihr Modell ändern und verbessern.
 
-Die auf dieser Seite beschriebenen Analysen sind nicht für Apps relevant, deren Absichten keine Beispieläußerungen enthalten. Diese Apps werden auch als _ausschließlich musterbasiert_ bezeichnet. 
+Die auf dieser Seite beschriebenen Analysen sind nicht für Apps relevant, deren Absichten keine Beispieläußerungen enthalten. Diese Apps werden auch als _ausschließlich musterbasiert_ bezeichnet.
 
 ## <a name="what-issues-can-be-fixed-from-dashboard"></a>Welche Probleme lassen sich über das Dashboard beheben?
 
@@ -38,37 +38,37 @@ Mit dem Dashboard können Sie die folgenden drei Probleme behandeln:
 
 Richtige Vorhersagen werden blau dargestellt.
 
-Auf dem Dashboard werden diese Probleme aufgeführt. Dort wird auch angezeigt, welche Absichten betroffen sind, und es werden Vorschläge zur Verbesserung der App gemacht. 
+Auf dem Dashboard werden diese Probleme aufgeführt. Dort wird auch angezeigt, welche Absichten betroffen sind, und es werden Vorschläge zur Verbesserung der App gemacht.
 
-## <a name="before-app-is-trained"></a>Status vor dem Trainieren der App 
+## <a name="before-app-is-trained"></a>Status vor dem Trainieren der App
 
-Das Dashboard enthält vor dem Trainieren der App keine Verbesserungsvorschläge. Diese werden erst nach dem Training angezeigt.  
+Das Dashboard enthält vor dem Trainieren der App keine Verbesserungsvorschläge. Diese werden erst nach dem Training angezeigt.
 
 ## <a name="check-your-publishing-status"></a>Überprüfen des Veröffentlichungsstatus
 
-Die Karte **Publishing status** (Veröffentlichungsstatus) enthält Informationen zur letzten Veröffentlichung der aktiven Version. 
+Die Karte **Publishing status** (Veröffentlichungsstatus) enthält Informationen zur letzten Veröffentlichung der aktiven Version.
 
-Überprüfen Sie, ob die aktive Version diejenige ist, die Sie verbessern möchten. 
+Überprüfen Sie, ob die aktive Version diejenige ist, die Sie verbessern möchten.
 
 ![Auf dem Dashboard werden die externen Dienste und veröffentlichten Regionen sowie die aggregierte Endpunkttrefferanzahl der App angezeigt.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
 
-Hier werden außerdem die externen Dienste und veröffentlichten Regionen sowie die aggregierte Endpunkttrefferanzahl angezeigt. 
+Hier werden außerdem die externen Dienste und veröffentlichten Regionen sowie die aggregierte Endpunkttrefferanzahl angezeigt.
 
 ## <a name="review-training-evaluation"></a>Überprüfen der Trainingsauswertung
 
-Die Karte **Training evaluation** (Trainingsauswertung) enthält die aggregierte Zusammenfassung für die Gesamtgenauigkeit Ihrer App und schlüsselt diese nach Bereichen auf. Die Bewertung gibt Aufschluss über die Qualität der Absicht. 
+Die Karte **Training evaluation** (Trainingsauswertung) enthält die aggregierte Zusammenfassung für die Gesamtgenauigkeit Ihrer App und schlüsselt diese nach Bereichen auf. Die Bewertung gibt Aufschluss über die Qualität der Absicht.
 
 ![Die Karte „Training evaluation“ (Trainingsauswertung) enthält den ersten Informationsbereich für die Gesamtgenauigkeit Ihrer App.](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
 
-Im Diagramm werden die richtig vorhergesagten Absichten und die Problembereiche mit unterschiedlichen Farben dargestellt. Wenn Sie die App mithilfe der Vorschläge verbessern, steigt die Bewertung. 
+Im Diagramm werden die richtig vorhergesagten Absichten und die Problembereiche mit unterschiedlichen Farben dargestellt. Wenn Sie die App mithilfe der Vorschläge verbessern, steigt die Bewertung.
 
-Die wichtigsten Verbesserungsvorschläge für Ihre App sind getrennt nach Problemtyp aufgeführt. Wenn Sie stattdessen Probleme mit einzelnen Absichten behandeln möchten, können Sie dazu die Karte **[Intents with errors](#intents-with-errors)** (Fehlerhafte Absichten) unten auf der Seite verwenden. 
+Die wichtigsten Verbesserungsvorschläge für Ihre App sind getrennt nach Problemtyp aufgeführt. Wenn Sie stattdessen Probleme mit einzelnen Absichten behandeln möchten, können Sie dazu die Karte **[Intents with errors](#intents-with-errors)** (Fehlerhafte Absichten) unten auf der Seite verwenden.
 
 Jeder Problembereich enthält Absichten, die verbessert werden müssen. Wenn Sie den Namen der Absicht auswählen, wird die Seite **Intent** (Absicht) mit einem Filter für die Äußerungen geöffnet. Mithilfe dieses Filters können Sie sich auf die Absichten konzentrieren, die das Problem verursachen.
 
 ### <a name="compare-changes-across-versions"></a>Vergleichen von Änderungen zwischen Versionen
 
-Erstellen Sie eine neue Version, bevor Sie Änderungen an der App vornehmen. Nehmen Sie in der neuen Version die vorgeschlagenen Änderungen an den Beispieläußerungen der Absicht vor, und trainieren Sie die App dann erneut. Verwenden Sie auf der Karte **Training evaluation** (Trainingsauswertung) der Dashboardseite die Option **Show change from trained version** (Änderungen gegenüber Trainingsversion anzeigen), um die Änderungen zu vergleichen. 
+Erstellen Sie eine neue Version, bevor Sie Änderungen an der App vornehmen. Nehmen Sie in der neuen Version die vorgeschlagenen Änderungen an den Beispieläußerungen der Absicht vor, und trainieren Sie die App dann erneut. Verwenden Sie auf der Karte **Training evaluation** (Trainingsauswertung) der Dashboardseite die Option **Show change from trained version** (Änderungen gegenüber Trainingsversion anzeigen), um die Änderungen zu vergleichen.
 
 ![Vergleichen von Änderungen zwischen Versionen](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
 
@@ -84,27 +84,27 @@ Beispieläußerungen sollten von einer Person hinzugefügt werden, die folgende 
 
 ### <a name="patterns-and-phrase-lists"></a>Muster und Begriffslisten
 
-Auf der Analyseseite wird nicht angegeben, wann [Muster](luis-concept-patterns.md) oder [Begriffslisten](luis-concept-feature.md) verwendet werden sollten. Wenn Sie diese hinzufügen, können zwar falsche oder unklare Vorhersagen korrigiert werden, doch das Problem unausgeglichener Daten wird auf diese Weise nicht behoben. 
+Auf der Analyseseite wird nicht angegeben, wann [Muster](luis-concept-patterns.md) oder [Begriffslisten](luis-concept-feature.md) verwendet werden sollten. Wenn Sie diese hinzufügen, können zwar falsche oder unklare Vorhersagen korrigiert werden, doch das Problem unausgeglichener Daten wird auf diese Weise nicht behoben.
 
 ### <a name="review-data-imbalance"></a>Überprüfen unausgeglichener Daten
 
 Behandeln Sie zuerst dieses Problem, da es möglicherweise die Grundursache für andere Probleme ist.
 
-Die Liste **data imbalance** (Unausgeglichene Daten) enthält Absichten, für die weitere Äußerungen erforderlich sind, damit das Ungleichgewicht korrigiert werden kann. 
+Die Liste **data imbalance** (Unausgeglichene Daten) enthält Absichten, für die weitere Äußerungen erforderlich sind, damit das Ungleichgewicht korrigiert werden kann.
 
 **So beheben Sie dieses Problem:**
 
-* Fügen Sie der Absicht mehr Äußerungen hinzu, und führen Sie den Trainingsvorgang erneut aus. 
+* Fügen Sie der Absicht mehr Äußerungen hinzu, und führen Sie den Trainingsvorgang erneut aus.
 
 Falls nicht anders auf dem Dashboard angegeben, sollten Sie der Absicht „None“ (Keine) keine Äußerungen hinzufügen.
 
 > [!Tip]
-> Auf der Seite finden Sie im dritten Bereich **Utterances per intent** (Äußerungen pro Absicht) die Einstellung **Utterances (number)** (Äußerungen (Anzahl)). Hier erhalten Sie einen Überblick darüber, für welche Absichten weitere Äußerungen erforderlich sind.  
+> Auf der Seite finden Sie im dritten Bereich **Utterances per intent** (Äußerungen pro Absicht) die Einstellung **Utterances (number)** (Äußerungen (Anzahl)). Hier erhalten Sie einen Überblick darüber, für welche Absichten weitere Äußerungen erforderlich sind.
     ![Verwenden Sie „Utterances (number)“ (Äußerungen (Anzahl)), um Absichten zu finden, die unausgeglichene Daten enthalten.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
 
 ### <a name="review-incorrect-predictions"></a>Überprüfen falscher Vorhersagen
 
-Die Liste **incorrect prediction** (Falsche Vorhersage) enthält Absichten mit Äußerungen, die zwar als Beispiele für eine bestimmte Absicht verwendet, aber für andere Absichten vorhergesagt werden. 
+Die Liste **incorrect prediction** (Falsche Vorhersage) enthält Absichten mit Äußerungen, die zwar als Beispiele für eine bestimmte Absicht verwendet, aber für andere Absichten vorhergesagt werden.
 
 **So beheben Sie dieses Problem:**
 
@@ -132,11 +132,11 @@ Im folgenden Diagramm ist eine unzureichend ausgeglichene App zu sehen, für die
 
 ![Im folgenden Diagramm ist eine ausgeglichene App zu sehen, für die fast keine zu behebenden Probleme vorliegen.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
-Zeigen Sie auf eine Säule, um sich Informationen zur zugehörigen Absicht anzusehen. 
+Zeigen Sie auf eine Säule, um sich Informationen zur zugehörigen Absicht anzusehen.
 
 ![Im folgenden Diagramm ist eine ausgeglichene App zu sehen, für die fast keine zu behebenden Probleme vorliegen.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
-Verwenden Sie das Feature **Sortieren nach**, um die Absichten nach Problemtyp anzuordnen. So können Sie sich auf die relevantesten Absichten mit genau diesem Problem konzentrieren. 
+Verwenden Sie das Feature **Sortieren nach**, um die Absichten nach Problemtyp anzuordnen. So können Sie sich auf die relevantesten Absichten mit genau diesem Problem konzentrieren.
 
 ## <a name="intents-with-errors"></a>Fehlerhafte Absichten
 
@@ -144,13 +144,13 @@ Auf dieser Karte können Sie Probleme mit einer bestimmten Absicht überprüfen.
 
 ![Auf der Karte mit fehlerhaften Absichten können Sie Probleme mit einer bestimmten Absicht überprüfen. Auf der Karte ist standardmäßig eine gefilterte Ansicht zu sehen, sodass nur die problematischsten Absichten angezeigt werden. Auf diese sollten Sie sich konzentrieren.](./media/luis-how-to-use-dashboard/most-problematic-intents-with-errors.png)
 
-Im Ringdiagramm ganz oben sind die Probleme mit einer Absicht für drei Problemtypen aufgeführt. Wenn ein Problem eines bestimmten Typs auftritt, werden für diesen weiter unten ein Diagramm und sehr ähnliche Absichten angezeigt. 
+Im Ringdiagramm ganz oben sind die Probleme mit einer Absicht für drei Problemtypen aufgeführt. Wenn ein Problem eines bestimmten Typs auftritt, werden für diesen weiter unten ein Diagramm und sehr ähnliche Absichten angezeigt.
 
 ### <a name="filter-intents-by-issue-and-percentage"></a>Filtern von Absichten nach Problem und Prozentwert
 
-In diesem Abschnitt der Karte finden Sie Beispieläußerungen, deren Werte unter oder über dem Fehlerschwellenwert liegen. Im Idealfall sollten richtige Vorhersagen signifikant sein. Der Prozentsatz hierfür ergibt sich aus Geschäfts- und Kundeninteressen. 
+In diesem Abschnitt der Karte finden Sie Beispieläußerungen, deren Werte unter oder über dem Fehlerschwellenwert liegen. Im Idealfall sollten richtige Vorhersagen signifikant sein. Der Prozentsatz hierfür ergibt sich aus Geschäfts- und Kundeninteressen.
 
-Sie können die Schwellenwerte in Prozent festlegen, die für Ihr Unternehmen geeignet sind. 
+Sie können die Schwellenwerte in Prozent festlegen, die für Ihr Unternehmen geeignet sind.
 
 Mit dem Filter können Sie Absichten mit einem bestimmten Problem suchen:
 
@@ -167,7 +167,7 @@ Sie selbst entscheiden, welcher Konfidenzwert für Vorhersagen akzeptabel sind. 
 
 ### <a name="unclear-or-incorrect-prediction-threshold"></a>Schwellenwert für unklare oder falsche Vorhersagen
 
-Mit diesen beiden Filtern können Sie Äußerungen in der ausgewählten Absicht finden, deren Werte über dem Schwellenwert liegen. Diese beiden Prozentsätze können als Fehlerquoten betrachtet werden. Wenn eine Fehlerhäufigkeit von 10 bis 15 % für Vorhersagen akzeptabel ist, legen Sie den Schwellenwert des Filters auf 15 % fest, um alle Äußerungen über diesem Wert zu finden. 
+Mit diesen beiden Filtern können Sie Äußerungen in der ausgewählten Absicht finden, deren Werte über dem Schwellenwert liegen. Diese beiden Prozentsätze können als Fehlerquoten betrachtet werden. Wenn eine Fehlerhäufigkeit von 10 bis 15 % für Vorhersagen akzeptabel ist, legen Sie den Schwellenwert des Filters auf 15 % fest, um alle Äußerungen über diesem Wert zu finden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

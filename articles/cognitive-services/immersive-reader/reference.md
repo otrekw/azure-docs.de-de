@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: cb88fb24ceed943d4104da6914959e4b79c35571
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5b1471cc43fc506ca798e81ac8e35a5051278ee0
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231916"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907379"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>SDK für plastischen Reader: Referenzhandbuch
 
@@ -111,7 +111,7 @@ Ein einzelner Datenblock, der in den Inhalt des Plastischen Readers übertragen 
 
 ### <a name="launchresponse"></a>LaunchResponse
 
-Enthält die Antwort aus dem Aufruf von `ImmersiveReader.launchAsync`.
+Enthält die Antwort aus dem Aufruf von `ImmersiveReader.launchAsync`. Beachten Sie, dass ein Verweis auf den `iframe`, der den Plastischen Reader enthält, über `container.firstChild` aufgerufen werden kann.
 
 ```typescript
 {
@@ -226,4 +226,4 @@ Verwenden Sie die neuesten Versionen der folgenden Browser, um mit dem Plastisch
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Schauen Sie sich das [SDK für den plastischen Reader auf GitHub](https://github.com/microsoft/immersive-reader-sdk) an.
-* [Schnellstart: Erstellen einer Web-App zum Starten des Plastischen Readers (C#)](./quickstart.md)
+* [Schnellstart: Erstellen einer Web-App zum Starten des Plastischen Readers (C#)](./quickstarts/client-libraries.md?pivots=programming-language-csharp)

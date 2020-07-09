@@ -9,13 +9,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - seo-python-october2019
+- tracking-python
 ms.date: 11/05/2019
-ms.openlocfilehash: 6ce3dd1cbb694988af3555765342a1c4ca3850b5
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 120708cc72117495e6200f41f13422e94a58c265
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010850"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556479"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Schnellstart: Erstellen einer Python-App, die Azure Cache for Redis verwendet
 
@@ -41,7 +42,7 @@ Im folgenden Beispiel wird *pip3* für Python 3 an einer Administrator-Eingabea
 
 ## <a name="read-and-write-to-the-cache"></a>Lese- und Schreibvorgänge für den Cache
 
-Führen Sie Python über die Befehlszeile aus, und testen Sie den Cache mit dem folgenden Code. Ersetzen Sie `<Your Host Name>` und `<Your Access Key>` durch die Werte für Ihre Azure Cache for Redis-Instanz. Der Hostname hat das Format *\<DNS-Name>.redis.cache.windows.net*.
+Führen Sie Python über die Befehlszeile aus, und testen Sie den Cache mit dem folgenden Code. Ersetzen Sie `<Your Host Name>` und `<Your Access Key>` durch die Werte für Ihre Azure Cache for Redis-Instanz. Der Hostname hat das Format *\<DNS name>.redis.cache.windows.net*.
 
 ```python
 >>> import redis
@@ -58,7 +59,7 @@ b'bar'
 
 ## <a name="create-a-python-sample-app"></a>Erstellen einer Python-Beispiel-App
 
-Erstellen Sie eine neue Textdatei, fügen Sie das folgende Skript hinzu, und speichern Sie die Datei als *PythonApplication1.py*. Ersetzen Sie `<Your Host Name>` und `<Your Access Key>` durch die Werte für Ihre Azure Cache for Redis-Instanz. Der Hostname hat das Format *\<DNS-Name>.redis.cache.windows.net*.
+Erstellen Sie eine neue Textdatei, fügen Sie das folgende Skript hinzu, und speichern Sie die Datei als *PythonApplication1.py*. Ersetzen Sie `<Your Host Name>` und `<Your Access Key>` durch die Werte für Ihre Azure Cache for Redis-Instanz. Der Hostname hat das Format *\<DNS name>.redis.cache.windows.net*.
 
 ```python
 import redis

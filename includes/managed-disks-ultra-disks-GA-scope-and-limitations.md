@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a5e0e459800e7cb57672518597f3d04a74f53118
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 5f14a269478541eaa5852697a917afb3d771841a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81008633"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196929"
 ---
 Derzeit gibt es für Ultra-Datenträger weitere Einschränkungen, die wie folgt lauten:
 
@@ -22,23 +22,30 @@ Die einzigen Optionen für die Infrastrukturredundanz, die derzeit für Disk Ult
 In der folgenden Tabelle sind die Regionen, in denen Disk Ultra-Datenträger verfügbar sind, sowie die entsprechenden Verfügbarkeitsoptionen aufgeführt:
 
 > [!NOTE]
-> Einige Verfügbarkeitszonen innerhalb dieser Regionen bieten keine Disk Ultra-Datenträger an.
+> Wenn eine Region in der folgenden Liste keine Verfügbarkeitszonen für Ultradatenträger enthält, müssen die virtuellen Computer in dieser Region ohne Optionen für die Infrastrukturredundanz bereitgestellt werden, um einen Ultradatenträger anzufügen.
 
-|Regions  |Keine Redundanz bei der Infrastruktur  |Verfügbarkeitszonen  |
-|---------|---------|---------|
-|USA (Westen)     |Ja         |Nein         |
-|USA, Westen 2    |Nein         |Ja         |
-|East US     |Nein         |Ja         |
-|USA (Ost) 2     |Nein         |Ja         |
-|Asien, Südosten     |Nein         |Ja         |
-|Nordeuropa     |Nein         |Ja         |
-|Europa, Westen     |Nein         |Ja         |
-|UK, Süden     |Nein         |Ja         |
+|Regions  |Anzahl von Verfügbarkeitszonen mit Unterstützung von Ultradatenträgern  |
+|---------|---------|
+|US Government, Virginia     |Keine         |
+|USA Süd Mitte     |Keine         |
+|USA (Mitte)     |Drei Zonen         |
+|USA (Westen)     |Keine         |
+|USA, Westen 2    |Drei Zonen         |
+|East US     |Drei Zonen         |
+|USA (Ost) 2     |Zwei Zonen         |
+|Asien, Südosten     |Drei Zonen         |
+|Nordeuropa     |Drei Zonen          |
+|Europa, Westen     |Drei Zonen          |
+|UK, Süden     |Drei Zonen          |
+|Japan, Osten     |Zwei Zonen         |
+
+
 
 - Werden nur auf den folgenden VM-Serien unterstützt:
-    - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
-    - [DSv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
-    - FSv2
+    - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
+    - [DSv3](../articles/virtual-machines/dv3-dsv3-series.md#dsv3-series)
+    - [FSv2](../articles/virtual-machines/fsv2-series.md)
+    - [LSv2](../articles/virtual-machines/lsv2-series.md)
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Nicht jede VM-Größe ist in allen unterstützten Regionen mit Ultra-Datenträgern verfügbar.

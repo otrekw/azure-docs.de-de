@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 5bae53c04867233138929867c4895e7f6a2f2149
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: f8a6e0b9f5cc63f79dcd57765f30c527382d51ca
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838772"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193354"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics
 Dieser Artikel veranschaulicht das Nutzen der Parallelisierung in Azure Stream Analytics. Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfigurieren der Eingabe in Partitionen und Optimieren der Analysenabfragedefinition skalieren.
@@ -279,7 +279,7 @@ Die [Event Hub](https://github.com/Azure-Samples/streaming-at-scale/tree/master/
 |    5 K   |   18 |  P4   |
 |    10 K  |   36 |  P6   |
 
-[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) unterstützt paralleles Schreiben, auch Partitionierungsvererbung genannt, was aber nicht standardmäßig aktiviert ist. Allerdings ist das Aktivieren der Partitionierungsvererbung zusammen mit einer vollständig parallelen Abfrage möglicherweise nicht ausreichend, um höhere Durchsätze zu erreichen. Die Schreibdurchsätze von SQL sind signifikant von Ihrer SQL Azure-Datenbankkonfiguration und dem Tabellenschema abhängig. Der Artikel [SQL-Ausgabeleistung](./stream-analytics-sql-output-perf.md) enthält weitere Details zu den Parametern, mit denen sich Ihr Schreibdurchsatz maximieren lässt. Wie im Artikel [Azure Stream Analytics-Ausgabe in Azure SQL-Datenbank](./stream-analytics-sql-output-perf.md#azure-stream-analytics) erwähnt, lässt sich diese Lösung nicht als vollständig parallele Pipeline linear über 8 Partitionen hinaus skalieren, und sie erfordert möglicherweise vor der SQL-Ausgabe eine Neupartitionierung (siehe unter [ INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Premium-SKUs sind erforderlich, um hohe E/A-Raten zusammen mit dem Mehraufwand durch Protokollsicherungen, die alle paar Minuten erfolgen, aufrechtzuerhalten.
+[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) unterstützt paralleles Schreiben, auch Partitionierungsvererbung genannt, was aber nicht standardmäßig aktiviert ist. Allerdings ist das Aktivieren der Partitionierungsvererbung zusammen mit einer vollständig parallelen Abfrage möglicherweise nicht ausreichend, um höhere Durchsätze zu erreichen. Die Schreibdurchsätze von SQL sind signifikant von Ihrer Datenbankkonfiguration und dem Tabellenschema abhängig. Der Artikel [SQL-Ausgabeleistung](./stream-analytics-sql-output-perf.md) enthält weitere Details zu den Parametern, mit denen sich Ihr Schreibdurchsatz maximieren lässt. Wie im Artikel [Azure Stream Analytics-Ausgabe in Azure SQL-Datenbank](./stream-analytics-sql-output-perf.md#azure-stream-analytics) erwähnt, lässt sich diese Lösung nicht als vollständig parallele Pipeline linear über 8 Partitionen hinaus skalieren, und sie erfordert möglicherweise vor der SQL-Ausgabe eine Neupartitionierung (siehe unter [ INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Premium-SKUs sind erforderlich, um hohe E/A-Raten zusammen mit dem Mehraufwand durch Protokollsicherungen, die alle paar Minuten erfolgen, aufrechtzuerhalten.
 
 #### <a name="cosmos-db"></a>Cosmos DB
 |Datenerfassungsrate (Ereignisse pro Sekunde) | Streaming-Einheiten | Ausgaberessourcen  |
@@ -315,7 +315,7 @@ Verwenden Sie den Bereich „Metriken“ in ihrem Azure Stream Analytics-Auftrag
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Weitere Unterstützung finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

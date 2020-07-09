@@ -4,12 +4,12 @@ description: Erstellen von Aktivitätsprotokollwarnungen über das Azure-Portal 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: bfbe2bc3ae3edf9285d3ec006ab0451f070cabd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45345d06e64194224df48a33fab1e74433a1eaac
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132407"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744264"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -67,6 +67,11 @@ Verwenden Sie das folgende Verfahren.
      **Anzeige „Kriterien hinzufügen“**
 
      ![Hinzufügen von Kriterien](media/alerts-activity-log/add-criteria.png)
+     
+     > [!NOTE]
+     > 
+     >  Um hochwertige und effektive Regeln zu erhalten, sollten Sie den Regeln mindestens eine weitere Bedingung mit dem Signal „Alle administrativen“ hinzufügen. 
+     > Als Teil der Definition der Warnung müssen Sie eines der Dropdownfelder ausfüllen: „Ereignisebene“, „Status“ oder „Initiiert von“, und so wird die Regel spezifischer.
 
      - **Verlaufszeit**: Die für den ausgewählten Vorgang verfügbaren Ereignisse können über die letzten 6, 12 bzw. 24 Stunden oder über die letzte Woche aufgezeichnet werden.
 
@@ -258,7 +263,7 @@ In Aktivitätsprotokollwarnungen stehen folgende dedizierte PowerShell-Cmdlets z
 - [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert): Deaktiviert eine vorhandene Aktivitätsprotokollwarnung und legt deren Tags fest.
 - [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert): Entfernt eine Aktivitätsprotokollwarnung.
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure CLI
 
 Unter [az monitor activity-log alert](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) stehen dedizierte Azure CLI-Befehle zum Verwalten von Aktivitätsprotokoll-Warnungsregeln zur Verfügung.
 

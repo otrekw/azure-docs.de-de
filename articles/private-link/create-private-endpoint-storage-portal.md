@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie eine private Verbindung mit einem Speicherkon
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 111e6e2f80c3460f363c496b7b32befdca16250d
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 1ccbb685ceb406fd7a52edf793b53d9e1c32630b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115107"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737324"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Herstellen einer privaten Verbindung mit einem Speicherkonto mithilfe eines privaten Azure-Endpunkts
 Der private Azure-Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren.
@@ -34,12 +34,12 @@ In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten w
 
 | Parameter                   | Wert                |
 |-----------------------------|----------------------|
-| **\<Ressourcengruppenname>**  | myResourceGroup |
-| **\<VNET-Name>** | myVirtualNetwork          |
-| **\<Regionsname>**          | USA, Westen-Mitte      |
-| **\<IPv4-Adressraum>**   | 10.1.0.0\16          |
-| **\<Subnetzname>**          | mySubnet        |
-| **\<Subnetzadressbereich>** | 10.1.0.0\24          |
+| **\<resource-group-name>**  | myResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>**          | USA, Westen-Mitte      |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -121,7 +121,7 @@ In diesem Abschnitt erstellen Sie ein privates Speicherkonto und verwenden für 
     | **PROJEKTDETAILS** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
-    |Position|Wählen Sie **WestCentralUS** aus.|
+    |Standort|Wählen Sie **WestCentralUS** aus.|
     |Name|Geben Sie *myPrivateEndpoint* ein.  |
     |Speicherunterressource|Übernehmen Sie den Standardwert **Blob**. |
     | **NETZWERK** |  |

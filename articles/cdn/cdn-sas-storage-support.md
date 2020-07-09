@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: c2580aa4ee22996c1bf0fe5c86064a6543450071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1deffe36df081908294d3c7fe58a17c8a454687
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260172"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887049"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Verwenden von Azure CDN mit SAS
 
@@ -48,7 +48,7 @@ Weitere Informationen zum Festlegen von Parametern finden Sie unter [Überlegung
 
 ![CDN-SAS-Einstellungen](./media/cdn-sas-storage-support/cdn-sas-settings.png)
 
-### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>Option 1: Verwenden von SAS mit Pass-Through zum BLOB-Speicher aus dem Azure CDN
+### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>Option 1: Verwenden von SAS mit Pass-Through zu Blob Storage aus dem Azure CDN
 
 Diese Option ist die einfachste und verwendet nur ein einziges SAS-Token, das vom Azure CDN an den Ursprungsserver übergeben wird.
  
@@ -67,7 +67,7 @@ Diese Option ist die einfachste und verwendet nur ein einziges SAS-Token, das vo
    
 3. Optimieren Sie die Dauer der Zwischenspeicherung entweder mithilfe von Cacheregeln oder durch das Hinzufügen von `Cache-Control`-Headern am Ursprungsserver. Da das Azure CDN das SAS-Token als einfache Abfragezeichenfolge betrachtet, sollten Sie als bewährte Methode eine Cachedauer festlegen, die mit oder vor dem SAS-Ablauf endet. Wenn eine Datei länger zwischengespeichert wird, als die SAS aktiv ist, ist die Datei vom Azure CDN-Ursprungsserver möglicherweise auch nach dem SAS-Ablauf weiter zugänglich. Wenn dieser Fall eintritt und Sie den Zugriff auf die Datei unterbinden möchten, müssen Sie einen Bereinigungsvorgang für die Datei durchführen, um sie aus dem Cache zu löschen. Informationen zum Festlegen der Aufbewahrungsdauer im Cache im Azure CDN finden Sie unter [Steuern des Verhaltens beim Zwischenspeichern im Azure CDN mit Cacheregeln](cdn-caching-rules.md).
 
-### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>Option 2: Ausgeblendetes CDN-SAS-Token mit Rewriteregel
+### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>Option 2: Ausgeblendetes CDN-SAS-Token mit Regel für das erneute Generieren
  
 Diese Option ist nur für **Azure CDN Premium von Verizon**-Profile verfügbar. Mit dieser Option können Sie den Blobspeicher auf dem Ursprungsserver schützen. Diese Option kann nützlich sein, wenn Sie keine besonderen Zugriffsbeschränkungen für die Datei benötigen, aber Benutzer am direkten Zugriff auf den Speicherursprung hindern möchten, um die Azure CDN-Auslagerungszeiten zu verbessern. Das SAS-Token ist dem Benutzer nicht bekannt und für jeden erforderlich, der auf Dateien im angegebenen Container des Ursprungsservers zugreift. Aufgrund der URL-Rewriteregel wird das SAS-Token am CDN-Endpunkt jedoch nicht benötigt.
  
@@ -97,7 +97,7 @@ Diese Option ist nur für **Azure CDN Premium von Verizon**-Profile verfügbar. 
 
 3. Optimieren Sie die Dauer der Zwischenspeicherung entweder mithilfe von Cacheregeln oder durch das Hinzufügen von `Cache-Control`-Headern am Ursprungsserver. Da das Azure CDN das SAS-Token als einfache Abfragezeichenfolge betrachtet, sollten Sie als bewährte Methode eine Cachedauer festlegen, die mit oder vor dem SAS-Ablauf endet. Wenn eine Datei länger zwischengespeichert wird, als die SAS aktiv ist, ist die Datei vom Azure CDN-Ursprungsserver möglicherweise auch nach dem SAS-Ablauf weiter zugänglich. Wenn dieser Fall eintritt und Sie den Zugriff auf die Datei unterbinden möchten, müssen Sie einen Bereinigungsvorgang für die Datei durchführen, um sie aus dem Cache zu löschen. Informationen zum Festlegen der Aufbewahrungsdauer im Cache im Azure CDN finden Sie unter [Steuern des Verhaltens beim Zwischenspeichern im Azure CDN mit Cacheregeln](cdn-caching-rules.md).
 
-### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>Option 3: Verwenden der CDN-Sicherheitstokenauthentifizierung mit einer Rewriteregel
+### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>Option 3: Verwenden der CDN-Sicherheitstokenauthentifizierung mit einer Regel für das erneute Generieren
 
 Um die Azure CDN-Sicherheitstokenauthentifizierung zu verwenden, müssen Sie über das Profil **Azure CDN Premium von Verizon** verfügen. Diese Option bietet die höchste Sicherheit und die meisten Anpassungsmöglichkeiten. Der Clientzugriff basiert auf den Sicherheitsparametern, die Sie für das CDN-Sicherheitstoken festlegen. Nachdem Sie das Sicherheitstoken erstellt und eingerichtet haben, ist es in allen CDN-Endpunkt-URLs erforderlich. Aufgrund der URL-Rewriteregel wird das SAS-Token am CDN-Endpunkt jedoch nicht benötigt. Falls das SAS-Token später ungültig wird, kann das Azure CDN den Inhalt vom Ursprungsserver nicht erneut validieren.
 

@@ -1,25 +1,14 @@
 ---
 title: Lokale oder cloudbasierte Hybridanwendung (.NET) mit Azure Windows Communication Foundation (WCF) Relay | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie einen lokalen Windows Communication Foundation-Anwendungsdienst (WCF-Dienst) für eine Webanwendung in der Cloud mit Azure Relay verfügbar machen.
-services: service-bus-relay
-documentationcenter: .net
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
-ms.service: service-bus-relay
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.author: spelluru
-ms.openlocfilehash: b86d535e4cbc275b3ee777d7c70146f7711c502c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204513"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314415"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Machen Sie einen lokalen Windows Communication Foundation-Anwendungsdienst (WCF-Dienst) für eine Webanwendung in der Cloud mit Azure Relay verfügbar.
 
@@ -364,7 +353,7 @@ Im nächsten Schritt wird der lokale Produktserver mit der ASP.NET-Webanwendung 
 1. Fügen Sie das NuGet-Paket den Projektverweisen hinzu, wie im Schritt [Erstellen eines lokalen Servers](#create-an-on-premises-server) beschrieben. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **ProductsPortal**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**.
 1. Suchen Sie nach *WindowsAzure.ServiceBus*, und wählen Sie das Element **WindowsAzure.ServiceBus** aus. Schließen Sie die Installation ab, und schließen Sie das Dialogfeld.
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **ProductsPortal**, und wählen Sie anschließend **Hinzufügen** > **Vorhandenes Element** aus.
-1. Navigieren Sie im Konsolenprojekt *ProductsServer* zur Datei **ProductsContract.cs**. Heben Sie *ProductsContract.cs* hervor. Wählen Sie den Pfeil nach unten neben **Hinzufügen** und dann **Als Link hinzufügen** aus.
+1. Navigieren Sie im Konsolenprojekt **ProductsServer** zur Datei *ProductsContract.cs*. Heben Sie *ProductsContract.cs* hervor. Wählen Sie den Pfeil nach unten neben **Hinzufügen** und dann **Als Link hinzufügen** aus.
 
    ![Als Link hinzufügen][24]
 

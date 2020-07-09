@@ -5,23 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 06/01/2020
 ms.author: victorh
-ms.openlocfilehash: e51f6de370a5340082f64a0ca15c61583f75962b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a467aa60b131e47e9251366369b3fae8dd95c004
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597274"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267697"
 ---
-# <a name="azure-firewall-forced-tunneling-preview"></a>Azure Firewall-Tunnelerzwingung (Vorschau)
+# <a name="azure-firewall-forced-tunneling"></a>Azure Firewall-Tunnelerzwingung
 
-Sie können Azure Firewall so konfigurieren, dass der gesamte Internetdatenverkehr an den festgelegten nächsten Hop weitergeleitet wird, statt dass er direkt ins Internet verläuft. So verfügen Sie vielleicht beispielsweise über eine lokale Edgefirewall oder ein anderes virtuelles Netzwerkgerät (Network Virtual Appliance, NVA), die bzw. das den Netzwerkverkehr erst verarbeitet, bevor er ans Internet übergeben wird.
-
-> [!IMPORTANT]
-> Die Azure Firewall-Tunnel Erzwingung befindet sich derzeit in der öffentlichen Vorschau.
->
-> Diese öffentliche Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Wenn Sie eine neue Azure Firewall konfigurieren, können Sie den gesamten Internetdatenverkehr an den festgelegten nächsten Hop weiterleiten, statt dass er direkt ins Internet verläuft. So verfügen Sie vielleicht beispielsweise über eine lokale Edgefirewall oder ein anderes virtuelles Netzwerkgerät (Network Virtual Appliance, NVA), die bzw. das den Netzwerkverkehr erst verarbeitet, bevor er ans Internet übergeben wird. Sie können jedoch eine vorhandene Firewall nicht für die Tunnelerzwingung konfigurieren.
 
 Standardmäßig ist die Tunnelerzwingung in Azure Firewall nicht zulässig, um sicherzustellen, dass alle ausgehenden Azure-Abhängigkeiten erfüllt werden. Benutzerdefinierte Routenkonfigurationen (User Defined Route, UDR) im Subnetz *AzureFirewallSubnet* mit einer Standardroute, die nicht direkt ins Internet verläuft, werden deaktiviert.
 
@@ -33,9 +28,13 @@ Wenn Sie über BGP eine Standardroute aufgerufen haben, um den Datenverkehr an e
 
 Innerhalb dieser Konfiguration kann das Subnetz *AzureFirewallSubnet* jetzt Routen zu jeder beliebigen lokalen Firewall oder jedem NVA enthalten, die bzw. das den Netzwerkverkehr erst verarbeitet, bevor er ans Internet übergeben wird. Sie können diese Routen auch über BGP an *AzureFirewallSubnet* veröffentlichen, wenn die **Routenverteilung des Gateways für virtuelle Netzwerke** in diesem Subnetz aktiviert ist.
 
-Sie können z. B. eine Standardroute im *AzureFirewallSubnet* mit Ihrem VPN-Gateway als nächstem Hop erstellen, um auf Ihr lokales Gerät zu gelangen. Sie können auch **Routenverteilung des Gateways für virtuelle Netzwerke** aktivieren, um die entsprechenden Routen zum lokalen Netzwerk abzurufen.
+Sie können z. B. eine Standardroute im Subnetz *AzureFirewallSubnet* mit Ihrem VPN-Gateway als nächstem Hop erstellen, um auf Ihr lokales Gerät zu gelangen. Sie können auch **Routenverteilung des Gateways für virtuelle Netzwerke** aktivieren, um die entsprechenden Routen zum lokalen Netzwerk abzurufen.
 
 ![Routenverteilung des Gateways für virtuelle Netzwerke](media/forced-tunneling/route-propagation.png)
+
+Wenn Sie jedoch die Tunnelerzwingung aktiviert haben, wird der Internet-gebundene Datenverkehr an eine der privaten IP-Adressen der Firewall in AzureFirewallSubnet übersetzt, wodurch die Quelle vor Ihrer lokalen Firewall verborgen wird.
+
+Wenn Ihre Organisation einen öffentlichen IP-Adressbereich für private Netzwerke verwendet, leitet Azure Firewall den Datenverkehr per SNAT an eine der privaten IP-Adressen der Firewall in AzureFirewallSubnet weiter. Sie können Azure Firewall jedoch so konfigurieren, dass Ihr öffentlicher IP-Adressbereich **nicht** per SNAT weitergeleitet wird. Weitere Informationen finden Sie unter [Azure Firewall SNAT – private Adressbereiche](snat-private-range.md).
 
 Nachdem Sie Azure Firewall zur Unterstützung von Tunnelerzwingung konfiguriert haben, können Sie diese Konfiguration nicht mehr rückgängig machen. Wenn Sie alle anderen IP-Konfigurationen in Ihrer Firewall entfernen, wird auch die IP-Konfiguration der Verwaltung entfernt, und die Zuordnung der Firewall wird aufgehoben. Die der Verwaltungs-IP-Konfiguration zugewiesene öffentliche IP-Adresse kann nicht entfernt werden, aber Sie können eine andere öffentliche IP-Adresse zuweisen.
 

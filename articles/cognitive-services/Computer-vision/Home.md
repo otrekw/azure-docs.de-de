@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: af49e80766d7ac4bd2d9ed677a2571fb0a5a3189
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cfd8dd7474cf7926ef2230e6be53a967a97645db
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131746"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554388"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Über den Azure-Dienst für maschinelles Sehen haben Entwickler Zugriff auf erweiterte Algorithmen, die Bilder verarbeiten und Informationen zurückgeben, je nachdem, welche visuellen Features für Sie von Interesse sind. So kann maschinelles Sehen beispielsweise erkennen, ob ein Bild nicht jugendfreie Inhalte enthält, oder alle menschlichen Gesichter in einem Bild finden.
+Über den Azure-Dienst für maschinelles Sehen haben Entwickler Zugriff auf erweiterte Algorithmen, die Bilder verarbeiten und Informationen anhand der für sie interessanten visuellen Features zurückgeben. Beispielsweise kann durch maschinelles Sehen ermittelt werden, ob ein Bild nicht jugendfreie Inhalte aufweist, oder es können bestimmte Marken oder Objekte oder menschliche Gesichter gesucht werden.
 
-Sie können maschinelles Sehen in Ihrer Anwendung entweder über ein natives SDK oder durch direktes Aufrufen der REST-API nutzen. Auf dieser Seite erfahren Sie ganz allgemein, welche Möglichkeiten maschinelles Sehen bietet.
+Sie können maschinelles Sehen in Ihrer Anwendung über ein Clientbibliothek-SDK oder durch direktes Aufrufen der REST-API nutzen. Auf dieser Seite erfahren Sie ganz allgemein, welche Möglichkeiten maschinelles Sehen bietet.
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Maschinelles Sehen für Digital Asset Management (DAM)
 
@@ -32,7 +32,7 @@ Das maschinelle Sehen kann viele DAM-Szenarien (Digital Asset Management) unters
 
 ## <a name="analyze-images-for-insight"></a>Analysieren von Bildern, um Erkenntnisse zu gewinnen
 
-Sie können Bilder analysieren, um visuelle Merkmale und Eigenschaften zu erkennen und Erkenntnisse zu gewinnen. Alle Features in der folgenden Tabelle werden von der [API für die Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) bereitgestellt.
+Sie können Bilder analysieren, um Erkenntnisse zu visuellen Merkmalen und Eigenschaften zu gewinnen. Alle Features in der folgenden Tabelle werden von der [API für die Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) bereitgestellt.
 
 | Aktion | Beschreibung |
 | ------ | ----------- |
@@ -48,11 +48,9 @@ Sie können Bilder analysieren, um visuelle Merkmale und Eigenschaften zu erkenn
 |**[Generieren einer Miniaturansicht](concept-generating-thumbnails.md)**|Analysieren Sie den Inhalt eines Bilds, um eine geeignete Miniaturansicht für das Bild zu generieren. Die Maschinelles Sehen-API generiert zunächst eine hochwertige Miniaturansicht und analysiert dann die Objekte im Bild, um den *relevanten Bereich* zu bestimmen. Anschließend wird das Bild auf den relevanten Bereich zugeschnitten. Das Seitenverhältnis der generierten Miniaturansicht kann sich bei Bedarf vom Seitenverhältnis des ursprünglichen Bilds unterscheiden.|
 |**[Abrufen des relevanten Bereichs](concept-generating-thumbnails.md#area-of-interest)**|Analysieren Sie den Inhalt eines Bilds, um die Koordinaten des *relevanten Bereichs* zurückzugeben. Anstatt das Bild zuzuschneiden und eine Miniaturansicht zu generieren, gibt maschinelles Sehen die Koordinaten des Begrenzungsrahmens des Bereichs zurück, sodass die aufrufende Anwendung das ursprüngliche Bild nach Bedarf ändern kann.|
 
-## <a name="extract-text-from-images"></a>Extrahieren von Text aus Bildern
+## <a name="detect-text-from-images"></a>Erkennen von Text in Bildern
 
-Mit der [Lese-API](concept-recognizing-text.md#read-api) des maschinellen Sehens können Sie gedruckten und handschriftlichen Text aus Bildern in einen maschinenlesbaren Zeichendatenstrom extrahieren. Die Lese-API verwendet unsere neuesten Modelle und kann für Text auf bzw. mit verschiedenen Oberflächen und Hintergründen verwendet werden. Hierzu zählen etwa Belege, Poster, Visitenkarten, Briefe und Whiteboards. Derzeit werden nur die Sprachen Englisch und Spanisch unterstützt.
-
-Sie können auch die [OCR](concept-recognizing-text.md#ocr-optical-character-recognition-api)-API (Optical Character Recognition, optische Zeichenerkennung) verwenden, um gedruckten Text in verschiedenen Sprachen zu extrahieren. Bei Bedarf korrigiert die optische Zeichenerkennung die Drehung des erkannten Texts und liefert die Frame-Koordinaten der einzelnen Wörter. Die optische Zeichenerkennung unterstützt 25 Sprachen und ermittelt automatisch die Sprache des erkannten Texts.
+Mit den [Texterkennungs-APIs](concept-recognizing-text.md) für maschinelles Sehen können Sie gedruckten und handschriftlichen Text aus Bildern in einen maschinenlesbaren Zeichendatenstrom extrahieren. Die Lese-API verwendet die neuesten Modelle und kann für Text mit verschiedenen Oberflächen und Hintergründen verwendet werden. Hierzu zählen etwa Belege, Poster, Visitenkarten, Briefe und Whiteboards. Die zwei Texterkennungs-APIs unterstützen das Extrahieren von gedrucktem Text in [mehreren Sprachen](./language-support.md).
 
 ## <a name="moderate-content-in-images"></a>Moderieren von Bildinhalten
 

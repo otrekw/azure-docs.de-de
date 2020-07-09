@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: af7d04bd74ada296b9f0e0f7c149c2a781cec579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd405513f8bdef09e6d3ab996fc2c04bd397db13
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73496468"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659436"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Hinzufügen der Volltextsuche zu Azure-Blobdaten mithilfe von Azure Cognitive Search
 
@@ -59,8 +59,13 @@ Wenn Sie einen Blobindexer auf einen Container anwenden, können Sie mit einer e
 
 Das Indizieren von benutzerdefinierten Metadaten sowie von Systemeigenschaften für jedes Blob ist ein häufig auftretendes Szenario, in dem Sie Blobs jedes Inhaltstyps unkompliziert durchsehen können. Auf diese Weise werden die Informationen für alle Blobs unabhängig vom Dokumenttyp indiziert und in einem Index in Ihrem Suchdienst gespeichert. Mit dem neuen Index können Sie dann den gesamten Blob Storage-Inhalt sortieren und filtern sowie Facetten bilden.
 
+> [!NOTE]
+> Blobindextags werden vom Blob Storage-Dienst nativ indiziert und für Abfragen verfügbar gemacht. Wenn die Schlüssel-Wert-Attribute des Blob Indizierungs- und Filterungsfunktionen erfordern, sollten Blobindextags anstelle von Metadaten genutzt werden.
+>
+> Weitere Informationen über den Blobindex finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex](../storage/blobs/storage-manage-find-blobs.md).
+
 ### <a name="indexing-json-blobs"></a>Indizieren von JSON-Blobs
-Indexer können so konfiguriert werden, dass sie strukturierten Inhalt aus Blobs extrahieren, die eine JSON-Datei enthalten. Ein Indexer kann aus JSON-Blobs lesen und den strukturierten Inhalt in den entsprechenden Felder in einem Suchdokument analysieren. Indexer können außerdem Blobs annehmen, die ein Array von JSON-Objekten enthalten und jedes Element mit einem separaten Suchdokument verknüpfen. Sie können einen Analysemodus festlegen, der den Typ des vom Indexer erzeugten JSON-Objekts beeinflusst.
+Indexer können so konfiguriert werden, dass sie strukturierten Inhalt aus Blobs extrahieren, die eine JSON-Datei enthalten. Ein Indexer kann aus JSON-Blobs lesen und den strukturierten Inhalt analysieren, um ihn den entsprechenden Feldern in einem Suchdokument zuzuweisen. Indexer können außerdem Blobs annehmen, die ein Array von JSON-Objekten enthalten und jedes Element mit einem separaten Suchdokument verknüpfen. Sie können einen Analysemodus festlegen, der den Typ des vom Indexer erzeugten JSON-Objekts beeinflusst.
 
 ## <a name="search-blob-content-in-a-search-index"></a>Durchsuchen von Blobinhalten in einem Suchindex 
 

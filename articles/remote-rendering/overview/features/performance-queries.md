@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 9a28dee2d1e6d1355b729a56e8eeb8447e4ed8c8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 3207ffca6fd0fbc943f4a2873b8b6c9029d565af
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679456"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022793"
 ---
 # <a name="server-side-performance-queries"></a>Serverseitige Leistungsabfragen
 
@@ -18,7 +18,7 @@ Eine gute Renderingleistung auf dem Server ist für stabile Bildfrequenzen und e
 
 Die größte Auswirkung auf die Renderingleistung haben die Modelleingabedaten. Sie können die Eingabedaten wie unter [Konfigurieren der Modellkonvertierung](../../how-tos/conversion/configure-model-conversion.md) beschrieben optimieren.
 
-Auch die clientseitige Anwendungsleistung kann einen Engpass darstellen. Wir empfehlen Ihnen, eine [Ablaufverfolgung für die Leistung](../../how-tos/performance-tracing.md) durchzuführen, um die clientseitige Leistung eingehend zu analysieren.
+Auch die clientseitige Anwendungsleistung kann einen Engpass darstellen. Es empfiehlt sich, eine [Ablaufverfolgung für die Leistung](../../how-tos/performance-tracing.md) (:::no-loc text="performance trace":::) durchzuführen, um die clientseitige Leistung eingehend zu analysieren.
 
 ## <a name="clientserver-timeline"></a>Zeitachse für Client/Server
 
@@ -37,7 +37,7 @@ Die Abbildung enthält folgende Informationen:
 
 Die Framestatistik enthält allgemeine Informationen zum letzten Frame, z. B. zur Latenz. Da die in der Struktur `FrameStatistics` bereitgestellten Daten auf der Clientseite gemessen werden, wird für die API ein synchroner Aufruf durchgeführt:
 
-````c#
+```cs
 void QueryFrameData(AzureSession session)
 {
     FrameStatistics frameStatistics;
@@ -46,7 +46,18 @@ void QueryFrameData(AzureSession session)
         // do something with the result
     }
 }
-````
+```
+
+```cpp
+void QueryFrameData(ApiHandle<AzureSession> session)
+{
+    FrameStatistics frameStatistics;
+    if (*session->GetGraphicsBinding()->GetLastFrameStatistics(&frameStatistics) == Result::Success)
+    {
+        // do something with the result
+    }
+}
+```
 
 Das abgerufene Objekt `FrameStatistics` enthält die folgenden Member:
 
@@ -75,7 +86,7 @@ Keiner der obigen Werte ist ein eindeutiger Hinweis auf die reine Netzwerklatenz
 
 *Abfragen zur Leistungsbewertung* liefern ausführlichere Informationen zur CPU- und GPU-Workload auf dem Server. Da die Daten vom Server angefordert werden, wird zum Abfragen einer Leistungsmomentaufnahme das übliche asynchrone Muster verwendet:
 
-``` cs
+```cs
 PerformanceAssessmentAsync _assessmentQuery = null;
 
 void QueryPerformanceAssessment(AzureSession session)
@@ -89,6 +100,20 @@ void QueryPerformanceAssessment(AzureSession session)
 
         _assessmentQuery = null;
     };
+}
+```
+
+```cpp
+void QueryPerformanceAssessment(ApiHandle<AzureSession> session)
+{
+    ApiHandle<PerformanceAssessmentAsync> assessmentQuery = *session->Actions()->QueryServerPerformanceAssessmentAsync();
+    assessmentQuery->Completed([] (ApiHandle<PerformanceAssessmentAsync> res)
+    {
+        // do something with the result:
+        PerformanceAssessment result = *res->Result();
+        // ...
+
+    });
 }
 ```
 
@@ -110,9 +135,9 @@ Diese Bewertungsmetrik ist ein grober Hinweis auf die Serverintegrität, der nic
 
 ## <a name="statistics-debug-output"></a>Debugausgabe für Statistik
 
-Die `ARRServiceStats`-Klasse umschließt sowohl die Framestatistik als auch die Abfragen zur Leistungsbewertung und verfügt über nützliche Funktionen, mit denen Statistiken als aggregierte Werte oder als vordefinierte Zeichenfolge zurückgegeben werden können. Der folgende Code ist die einfachste Möglichkeit, um in Ihrer Clientanwendung serverseitige Statistiken anzuzeigen.
+Die Klasse `ARRServiceStats` ist eine C#-Klasse, die sowohl die Framestatistik als auch die Abfragen zur Leistungsbewertung umschließt und über nützliche Funktionen verfügt, mit denen Statistiken als aggregierte Werte oder als vordefinierte Zeichenfolge zurückgegeben werden können. Der folgende Code ist die einfachste Möglichkeit, um in Ihrer Clientanwendung serverseitige Statistiken anzuzeigen.
 
-``` cs
+```cs
 ARRServiceStats _stats = null;
 
 void OnConnect()

@@ -8,17 +8,17 @@ author: genlin
 manager: dcscontentpm
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 6c37ba61005c9936e6421d06369d1f52b93ac264
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8ffadb8d54db0c2a99dc12e45b5990155a0505e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77201695"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135057"
 ---
 # <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Konfigurieren von Reverse-Lookupzonen für eine SMTP-Bannerüberprüfung
 
@@ -38,10 +38,12 @@ Um PTR-Einträge in Zonen im Besitz von Microsoft zu konfigurieren, verwenden Si
 
 Achten Sie beim Konfigurieren der PTR-Einträge darauf, dass die IP-Adresse und der Reverse-FQDN zum Abonnement gehören. Wenn Sie versuchen, einen Reverse-FQDN festzulegen, der nicht dem Abonnement angehört, erhalten Sie die folgende Fehlermeldung:
 
-    Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
-                        
-    1) ReverseFqdn stimmt mit dem FQDN einer beliebigen Ressource für eine öffentliche IP unter dem Abonnement überein.
-    2) ReverseFqdn wird (durch eine Kette von CNAME-Einträgen) in den FQDN einer beliebigen Ressource für eine öffentliche IP unter dem Abonnement aufgelöst.
-    3) ReverseFqdn wird (durch eine Kette von CNAME-Einträgen und A-Datensätzen) in die IP-Adresse einer Ressource für eine statische öffentliche IP unter dem Abonnement aufgelöst.
+```output
+Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
+                    
+1) ReverseFqdn matches fqdn of any public ip resource under the subscription;
+2) ReverseFqdn resolves to the fqdn (through CName records chain) of any public ip resource under the subscription;
+3) It resolves to the ip address (through CName and A records chain) of a static public ip resource under the subscription.
+```
 
 Wenn Sie Ihr SMTP-Banner manuell in unseren standardmäßigen Reverse-FQDN ändern, kann beim Remotemailserver trotzdem ein Fehler auftreten, da er möglicherweise erwartet, dass der SMTP-Bannerhost mit dem MX-Eintrag für die Domäne übereinstimmt.

@@ -10,41 +10,42 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 9219c9a72ce9e1cfba3504b0b8e16ade77f8a5e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18a9de8a2eaa2364e89e831db8dab5cbbb061c10
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369895"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299244"
 ---
 # <a name="what-is-a-voice-assistant"></a>Was ist ein Sprachassistent?
 
 Sprachassistenten, die den Speech-Dienst verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen.
 
-Der Dienst für Sprachassistenten ermöglicht eine schnelle und zuverlässige Interaktion zwischen einem Gerät und einer Assistentenimplementierung. Hierbei kommt zur Aufgabenausführung entweder der Direct Line Speech-Kanal im Bot Framework oder die Lösung „Benutzerdefinierte Befehle (Vorschau)“ zum Einsatz.
-
-Anwendungen stellen mit dem Speech Software Development Kit (SDK) eine Verbindung mit dem Sprachassistenten her.
-
-   ![Konzeptionelle Darstellung des Orchestrierungsdienstflows für den Sprachassistenten](media/voice-assistants/overview.png "Flow für Sprachassistenten")
+Der Sprachassistentendienst bietet eine schnelle, zuverlässige Interaktion zwischen einem Gerät und einer Assistentenimplementierung, die entweder (1) [Direct Line Speech](direct-line-speech.md) (über Azure Bot Service), um Ihren Bots Sprachfunktionen hinzuzufügen, oder (2) benutzerdefinierte Befehle für Szenarien mit Sprachsteuerung.
 
 ## <a name="choosing-an-assistant-solution"></a>Auswählen einer Assistenten-Lösung
 
-Im ersten Schritt zur Erstellung eines Sprach-Assistenten wird festgelegt, welches Ziel erreicht werden soll. Der Speech-Dienst verfügt über mehrere Lösungen für die Entwicklung Ihrer Assistenten-Interaktionen, die sich gegenseitig ergänzen. Für den Einstieg ist die Wahl der richtigen Tools wichtig – unabhängig davon, ob Sie die Flexibilität und Vielseitigkeit des [Direct Line Speech](direct-line-speech.md)-Kanals des Bot Frameworks oder die Einfachheit von [Benutzerdefinierte Befehle (Vorschauversion)](custom-commands.md) für unkomplizierte Szenarien benötigen.
+Im ersten Schritt zur Erstellung eines Sprach-Assistenten wird festgelegt, welches Ziel erreicht werden soll. Der Speech-Dienst verfügt über mehrere Lösungen für die Entwicklung Ihrer Assistenten-Interaktionen, die sich gegenseitig ergänzen. Mit dem [Direct Line Speech](direct-line-speech.md)-Kanal können Sie Ihrem flexiblen und vielseitigen Bot, der mit Azure Bot Service erstellt wurde, Voice-In- und Voice-Out-Funktionen hinzufügen oder die Einfachheit der Erstellung einer App für [benutzerdefinierte Befehle](custom-commands.md) für einfache Szenarien mit Sprachsteuerung nutzen.
 
 | Zielsetzung | Optionen | Beispiel |
 |-------------------|------------------|----------------|
-|Konversation mit offenem Ende mit Integration von stabilen Fähigkeiten und vollständiger Bereitstellungssteuerung | [Direct Line Speech](direct-line-speech.md)-Kanal des Bot Frameworks | <ul><li>„Ich möchte nach Stuttgart fahren“</li><li>„Welche Art von Pizza kann ich bestellen?“</li></ul>
-|Konversation vom Typ „Befehl und Steuerung“ oder aufgabenorientierte Konversation mit vereinfachter Erstellung und einfachem Hosting | [Benutzerdefinierte Befehle (Vorschau)](custom-commands.md) | <ul><li>„Deckenlampe einschalten“</li><li>„Temperatur um fünf Grad erhöhen“</ul>
+|Konversation mit offenem Ende mit Integration von stabilen Fähigkeiten und vollständiger Bereitstellungssteuerung | Azure Bot Service-Bot mit [Direct Line Speech](direct-line-speech.md)-Kanal | <ul><li>„Ich möchte nach Stuttgart fahren“</li><li>„Welche Art von Pizza kann ich bestellen?“</li></ul>
+|Sprachgesteuerte oder einfache aufgabenorientierte Unterhaltungen mit vereinfachter Erstellung und vereinfachtem Hosting | [Benutzerdefinierte Befehle](custom-commands.md) | <ul><li>„Deckenlampe einschalten“</li><li>„Temperatur um fünf Grad erhöhen“</li><li>Weitere Beispiele sind [hier verfügbar](https://speech.microsoft.com/customcommands).</li></ul>
 
 Wir empfehlen Ihnen die Verwendung von [Direct Line Speech](direct-line-speech.md) als Standardauswahl, falls Sie noch nicht genau wissen, wie Ihr Assistent eingesetzt werden soll. Hiermit erhalten Sie eine Integration mit umfassenden Tools und Erstellungshilfen, z. B. die [Lösung „Virtueller Assistent“ und die Unternehmensvorlage](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) sowie den [QnA Maker-Dienst](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview), um häufig verwendete Muster zu nutzen und zu erweitern und Ihre vorhandenen Wissensquellen zu verwenden.
 
-Bei [Benutzerdefinierte Befehle (Vorschauversion)](custom-commands.md) handelt es sich um eine optimierte Erstellungs- und Hostingumgebung, die für Szenarien vom Typ „Befehl und Steuerung“ in natürlicher Sprache konzipiert wurde.
+Mit [benutzerdefinierten Befehlen](custom-commands.md) ist es einfach, funktionsreiche Apps mit Sprachsteuerung zu erstellen, die für Voice-First-Interaktionserfahrungen optimiert sind. Sie bieten eine einheitliche Benutzeroberfläche für die Erstellung, ein automatisches Hostingmodell und eine relativ geringe Komplexität, sodass Sie sich auf die Entwicklung der besten Lösung für Ihre Szenarien mit Sprachsteuerung konzentrieren können.
 
    ![Vergleich von Assistentenlösungen](media/voice-assistants/assistant-solution-comparison.png "Vergleich von Assistentenlösungen")
 
+
+## <a name="reference-architecture-for-building-a-voice-assistant-using-the-speech-sdk"></a>Referenzarchitektur zum Erstellen eines Sprachassistenten mit dem Speech SDK
+
+   ![Konzeptionelle Darstellung des Orchestrierungsdienstflows für den Sprachassistenten](media/voice-assistants/overview.png "Flow für Sprachassistenten")
+
 ## <a name="core-features"></a>Wichtige Funktionen
 
-Sowohl bei Nutzung von [Direct Line Speech](direct-line-speech.md) als auch von [Benutzerdefinierte Befehle (Vorschauversion)](custom-commands.md) zum Erstellen Ihrer Assistenten-Interaktionen können Sie auf umfassende Anpassungsfunktionen zurückgreifen, mit denen Sie Ihren Assistenten an Ihre Wünsche in Bezug auf Marke, Produkt und Persönlichkeit anpassen können.
+Sowohl bei Nutzung von [Direct Line Speech](direct-line-speech.md) als auch von [Benutzerdefinierte Befehle](custom-commands.md) zum Erstellen Ihrer Assistenten-Interaktionen können Sie auf umfassende Anpassungsfunktionen zurückgreifen, mit denen Sie Ihren Assistenten an Ihre Wünsche in Bezug auf Marke, Produkt und Persönlichkeit anpassen können.
 
 | Category | Features |
 |----------|----------|
@@ -56,38 +57,31 @@ Sowohl bei Nutzung von [Direct Line Speech](direct-line-speech.md) als auch von 
 
 Wir bieten Schnellstarts an, die so konzipiert sind, dass Sie in weniger als 10 Minuten Code ausführen können. Diese Tabelle enthält eine Liste mit Schnellstarts für Sprachassistenten, die nach Sprache sortiert sind.
 
-| Schnellstart | Plattform | API-Referenz |
-|------------|----------|---------------|
-| C#, UWP | Windows | [Durchsuchen](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Durchsuchen](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Durchsuchen](https://aka.ms/csspeech/javaref) |
+* [Schnellstart: Erstellen eines benutzerdefinierten Sprachassistenten mit Direct Line Speech](quickstarts/voice-assistants.md)
+* [Schnellstart: Erstellen einer sprachgesteuerten App mit benutzerdefinierten Befehlen](quickstart-custom-commands-application.md)
 
-## <a name="sample-code"></a>Beispielcode
+## <a name="sample-code-and-tutorials"></a>Beispielcode und Tutorials
 
 Beispielcode für die Erstellung eines Sprachassistenten ist auf GitHub verfügbar. Diese Beispiele decken die Clientanwendung für die Verbindung mit Ihrem Assistenten in mehreren gängigen Programmiersprachen ab.
 
-* [Beispiele für Sprachassistenten (SDK)](https://aka.ms/csspeech/samples)
-* [Tutorial: Sprachaktivierung für Ihren Assistenten mit dem Speech SDK, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
-
-## <a name="tutorial"></a>Lernprogramm
-
-In diesem Tutorial erfahren Sie, wie Sie Ihren [Assistenten mithilfe des Speech SDK und des Direct Line-Speech-Kanals für Sprache aktivieren](tutorial-voice-enable-your-bot-speech-sdk.md).
+* [Beispiele für Sprachassistenten auf GitHub](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
+* [Tutorial: Aktivieren der Sprachsteuerung für Ihren Assistenten, der mit Azure Bot Service mit dem C# Speech SDK erstellt wurde](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Tutorial: Erstellen einer Anwendung für benutzerdefinierte Befehle mit einfachen Sprachbefehlen](how-to-custom-commands-create-application-with-simple-commands.md)
 
 ## <a name="customization"></a>Anpassung
 
-Sprachassistenten, die mithilfe des Speech-Dienstes erstellt wurden, können die gesamte Bandbreite der Anpassungsoptionen nutzen, die für [Spracherkennung](speech-to-text.md), [Sprachsynthese](text-to-speech.md) und die [Auswahl benutzerdefinierter Stichwörter](speech-devices-sdk-create-kws.md) zur Verfügung stehen.
+Sprachassistenten, die mit Azure Speech-Diensten erstellt wurden, können die gesamte Palette von Anpassungsoptionen nutzen.
+
+* [Custom Speech Service](how-to-custom-speech.md)
+* [Custom Voice](how-to-custom-voice.md)
+* [Benutzerdefiniertes Schlüsselwort](custom-keyword-overview.md)
 
 > [!NOTE]
-> Die Anpassungsoptionen unterscheiden sich je nach Sprache/Gebietsschema. Weitere Informationen erhalten Sie unter [Unterstützte Sprachen](supported-languages.md).
-
-## <a name="reference-docs"></a>Referenz
-
-* [Speech SDK](speech-sdk-reference.md)
-* [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+> Die Anpassungsoptionen unterscheiden sich je nach Sprache/Gebietsschema. Weitere Informationen erhalten Sie unter [Unterstützte Sprachen](language-support.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Kostenloses Testen des Speech-Diensts](get-started.md)
-* [Abrufen des Speech SDK](speech-sdk.md)
-* [Weitere Informationen zu „Benutzerdefinierte Befehle (Vorschau)“](custom-commands.md)
+* [Weitere Informationen zu „Benutzerdefinierte Befehle“](custom-commands.md)
 * [Informationen zu Direct Line Speech](direct-line-speech.md)
+* [Abrufen des Speech SDK](speech-sdk.md)

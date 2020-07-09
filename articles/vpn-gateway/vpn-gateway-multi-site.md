@@ -5,15 +5,15 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: yushwang
-ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5283e20b6121dbdc3ce57587d188ad5ad0e1b6b9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198093"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041029"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Hinzufügen einer Standort-zu-Standort-Verbindung mit einem VNet über eine vorhandene VPN-Gatewayverbindung (klassisch)
 
@@ -97,52 +97,54 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ## <a name="3-open-the-network-configuration-file"></a>3. Öffnen der Netzwerkkonfigurationsdatei
 Öffnen Sie die Netzwerkkonfigurationsdatei, die Sie im letzten Schritt heruntergeladen haben. Verwenden Sie dazu einen beliebigen XML-Editor. Die Datei sollte in etwa wie folgt aussehen:
 
-        <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
-          <VirtualNetworkConfiguration>
-            <LocalNetworkSites>
-              <LocalNetworkSite name="Site1">
-                <AddressSpace>
-                  <AddressPrefix>10.0.0.0/16</AddressPrefix>
-                  <AddressPrefix>10.1.0.0/16</AddressPrefix>
-                </AddressSpace>
-                <VPNGatewayAddress>131.2.3.4</VPNGatewayAddress>
-              </LocalNetworkSite>
-              <LocalNetworkSite name="Site2">
-                <AddressSpace>
-                  <AddressPrefix>10.2.0.0/16</AddressPrefix>
-                  <AddressPrefix>10.3.0.0/16</AddressPrefix>
-                </AddressSpace>
-                <VPNGatewayAddress>131.4.5.6</VPNGatewayAddress>
-              </LocalNetworkSite>
-            </LocalNetworkSites>
-            <VirtualNetworkSites>
-              <VirtualNetworkSite name="VNet1" AffinityGroup="USWest">
-                <AddressSpace>
-                  <AddressPrefix>10.20.0.0/16</AddressPrefix>
-                  <AddressPrefix>10.21.0.0/16</AddressPrefix>
-                </AddressSpace>
-                <Subnets>
-                  <Subnet name="FE">
-                    <AddressPrefix>10.20.0.0/24</AddressPrefix>
-                  </Subnet>
-                  <Subnet name="BE">
-                    <AddressPrefix>10.20.1.0/24</AddressPrefix>
-                  </Subnet>
-                  <Subnet name="GatewaySubnet">
-                    <AddressPrefix>10.20.2.0/29</AddressPrefix>
-                  </Subnet>
-                </Subnets>
-                <Gateway>
-                  <ConnectionsToLocalNetwork>
-                    <LocalNetworkSiteRef name="Site1">
-                      <Connection type="IPsec" />
-                    </LocalNetworkSiteRef>
-                  </ConnectionsToLocalNetwork>
-                </Gateway>
-              </VirtualNetworkSite>
-            </VirtualNetworkSites>
-          </VirtualNetworkConfiguration>
-        </NetworkConfiguration>
+```xml
+<NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+  <VirtualNetworkConfiguration>
+    <LocalNetworkSites>
+      <LocalNetworkSite name="Site1">
+        <AddressSpace>
+          <AddressPrefix>10.0.0.0/16</AddressPrefix>
+          <AddressPrefix>10.1.0.0/16</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>131.2.3.4</VPNGatewayAddress>
+      </LocalNetworkSite>
+      <LocalNetworkSite name="Site2">
+        <AddressSpace>
+          <AddressPrefix>10.2.0.0/16</AddressPrefix>
+          <AddressPrefix>10.3.0.0/16</AddressPrefix>
+        </AddressSpace>
+        <VPNGatewayAddress>131.4.5.6</VPNGatewayAddress>
+      </LocalNetworkSite>
+    </LocalNetworkSites>
+    <VirtualNetworkSites>
+      <VirtualNetworkSite name="VNet1" AffinityGroup="USWest">
+        <AddressSpace>
+          <AddressPrefix>10.20.0.0/16</AddressPrefix>
+          <AddressPrefix>10.21.0.0/16</AddressPrefix>
+        </AddressSpace>
+        <Subnets>
+          <Subnet name="FE">
+            <AddressPrefix>10.20.0.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="BE">
+            <AddressPrefix>10.20.1.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="GatewaySubnet">
+            <AddressPrefix>10.20.2.0/29</AddressPrefix>
+          </Subnet>
+        </Subnets>
+        <Gateway>
+          <ConnectionsToLocalNetwork>
+            <LocalNetworkSiteRef name="Site1">
+              <Connection type="IPsec" />
+            </LocalNetworkSiteRef>
+          </ConnectionsToLocalNetwork>
+        </Gateway>
+      </VirtualNetworkSite>
+    </VirtualNetworkSites>
+  </VirtualNetworkConfiguration>
+</NetworkConfiguration>
+```
 
 ## <a name="4-add-multiple-site-references"></a>4. Hinzufügen von mehreren Standortverweisen
 Beim Hinzufügen oder Entfernen der Informationen für Standortverweise nehmen Sie Konfigurationsänderungen an „ConnectionsToLocalNetwork/LocalNetworkSiteRef“ vor. Wenn Sie einen neuen Verweis für einen lokalen Standort hinzufügen, erstellt Azure einen neuen Tunnel. Das folgende Beispiel zeigt die Netzwerkkonfiguration für eine Einzelstandortverbindung. Speichern Sie die Datei, wenn Sie alle Änderungen vorgenommen haben.

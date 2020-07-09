@@ -4,19 +4,19 @@ description: Erstellen einer benutzerdefinierten Richtlinie für bedingten Zugri
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b92d833e6f32821ad907ff966771bbba8bbb77ce
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 09d07717895c6faa506d692becb261e834e44890
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755173"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995356"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Bedingter Zugriff: Vorschreiben der MFA für die Azure-Verwaltung
 
@@ -24,7 +24,7 @@ Organisationen verwenden verschiedenste Azure-Dienste und verwalten diese mit Az
 
 * Azure-Portal
 * Azure PowerShell
-* Azure-Befehlszeilenschnittstelle
+* Azure CLI
 
 Diese Tools bieten Zugriff mit umfassenden Berechtigungen auf Ressourcen, die die abonnementweiten Konfigurationen, Diensteinstellungen und die Abonnementabrechnung ändern können. Um diese Ressourcen mit umfassenden Berechtigungen zu schützen, empfiehlt Microsoft, die mehrstufige Authentifizierung für jeden Benutzer zu erfordern, der auf diese Ressourcen zugreift.
 
@@ -39,7 +39,7 @@ Richtlinien für bedingten Zugriff sind leistungsstarke Tools, daher wird empfoh
 
 ## <a name="create-a-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
 
-Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten Zugriff, nach der die zugewiesenen Administratorrollen eine mehrstufige Authentifizierung durchführen müssen.
+Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten Zugriff, nach der Benutzer mit Zugriff auf die [Microsoft Azure Management](concept-conditional-access-cloud-apps.md#microsoft-azure-management)-App mehrstufige Authentifizierung durchführen müssen.
 
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.

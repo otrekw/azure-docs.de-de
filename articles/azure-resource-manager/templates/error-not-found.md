@@ -2,13 +2,13 @@
 title: Fehler des Typs „Ressource nicht gefunden“
 description: Hier wird beschrieben, wie Sie Fehler beheben, wenn beim Bereitstellen mit einer Azure Resource Manager-Vorlage eine Ressource nicht gefunden wird.
 ms.topic: troubleshooting
-ms.date: 01/21/2020
-ms.openlocfilehash: b6f433118092e46f734d4b65040dd97c2fcb58d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/01/2020
+ms.openlocfilehash: 5d827f68ec97cfa77fb69a34284bd572286641a4
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76773260"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259353"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Beheben von Fehlern aufgrund nicht gefundener Azure-Ressourcen
 
@@ -95,8 +95,25 @@ Wenn Sie eine Ressource bereitstellen, die implizit eine [verwaltete Identität]
 
 Verwenden Sie in der Verweisfunktion `Full`, um alle Eigenschaften, einschließlich der verwalteten Identität, abzurufen.
 
-Um z. B. die Mandanten-ID für eine verwaltete Identität abzurufen, die auf eine VM-Skalierungsgruppe angewendet wird, verwenden Sie:
+Das Muster lautet:
+
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+
+> [!IMPORTANT]
+> Verwenden Sie nicht dieses Muster:
+>
+> `"[reference(concat(resourceId(<resource-provider-namespace>, <resource-name>),'/providers/Microsoft.ManagedIdentity/Identities/default'),<API-version>).principalId]"`
+>
+> Bei der Vorlage tritt ein Fehler auf.
+
+Um z. B. die Prizipal-ID für eine verwaltete Identität abzurufen, die auf einen virtuellen Computer angewandt wird, verwenden Sie:
 
 ```json
-"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+"[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
+```
+
+Um die Mandanten-ID für eine verwaltete Identität abzurufen, die auf eine VM-Skalierungsgruppe angewandt wird, verwenden Sie:
+
+```json
+"[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
 ```

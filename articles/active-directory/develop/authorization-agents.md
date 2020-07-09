@@ -12,12 +12,12 @@ ms.date: 09/05/2019
 ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83a33fa3891e01c484f298f22d67467bc54a7618
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551988"
 ---
 # <a name="authorization-agents-android"></a>Authorization Agents (Android)
 
@@ -76,7 +76,7 @@ Die Reihenfolge der Browser in der Browserliste richtet sich nach dem Betriebssy
 
 Die folgenden Browser wurden getestet, um zu prüfen, ob eine korrekte Umleitung zu dem in der Konfigurationsdatei angegebenen `"redirect_uri"` erfolgt:
 
-| | Integrierter Browser | Chrome | Opera  | Microsoft Edge | UC Browser | Firefox |
+| Sicherungsmedium | Integrierter Browser | Chrome | Opera  | Microsoft Edge | UC Browser | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
 | Nexus 4 (API 17) | erfolgreich | erfolgreich |nicht zutreffend |nicht zutreffend |nicht zutreffend |nicht zutreffend |
 | Samsung S7 (API 25) | erfolgreich* | erfolgreich | erfolgreich | erfolgreich | fehlerhaft |erfolgreich |

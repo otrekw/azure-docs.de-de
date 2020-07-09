@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie Azure Private Link für den Zugriff auf ein A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/27/2020
 ms.author: thweiss
-ms.openlocfilehash: 4b49d2aa61587d0156755bdd5c47b3eeb90090a5
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: c5b82e8cdea49f8dd761844ff5492df0ad109943
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270688"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116661"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurieren von Azure Private Link für ein Azure Cosmos-Konto
 
@@ -22,9 +22,6 @@ Private Link ermöglicht Benutzern den Zugriff auf ein Azure Cosmos-Konto innerh
 Mithilfe der automatischen oder manuellen Genehmigungsmethode können Sie eine Verbindung mit einem Azure Cosmos-Konto herstellen, das über Private Link konfiguriert wurde. Weitere Informationen finden Sie in der Dokumentation zu Private Link im Abschnitt zum [Genehmigungsworkflow](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow). 
 
 In diesem Artikel werden die Schritte zum Erstellen eines privaten Endpunkts beschrieben. Dabei wird vorausgesetzt, dass Sie die automatische Genehmigungsmethode verwenden.
-
-> [!NOTE]
-> Die Unterstützung privater Endpunkte ist derzeit nur für den Gatewayverbindungsmodus allgemein verfügbar. Im direkten Modus ist sie als Previewfunktion verfügbar.
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Erstellen eines privaten Endpunkts über das Azure-Portal
 
@@ -621,9 +618,11 @@ Folgende Fälle und Ergebnisse sind bei Verwendung von Private Link in Verbindun
 
 * Wenn Sie keine Firewallregeln konfigurieren, kann standardmäßig der gesamte Datenverkehr auf ein Azure Cosmos-Konto zugreifen.
 
-* Wenn Sie öffentlichen Datenverkehr oder einen Dienstendpunkt konfigurieren und private Endpunkte erstellen, werden verschiedene Arten von eingehendem Datenverkehr durch den entsprechenden Typ der Firewallregel autorisiert.
+* Wenn Sie öffentlichen Datenverkehr oder einen Dienstendpunkt konfigurieren und private Endpunkte erstellen, werden verschiedene Arten von eingehendem Datenverkehr durch den entsprechenden Typ der Firewallregel autorisiert. Wenn ein privater Endpunkt in einem Subnetz konfiguriert ist, in dem auch der Dienstendpunkt konfiguriert ist:
+  * Datenverkehr zu dem vom privaten Endpunkt zugeordneten Datenbankkonto wird über den privaten Endpunkt geleitet.
+  * Datenverkehr zu anderen Datenbankkonten aus dem Subnetz wird über den Dienstendpunkt geleitet.
 
-* Wenn Sie keinen öffentlichen Datenverkehr oder Dienstendpunkt konfigurieren und private Endpunkte erstellen, ist das Azure Cosmos-Konto nur über die privaten Endpunkte zugänglich. Wenn Sie keinen öffentlichen Datenverkehr oder einen Dienstendpunkt konfigurieren, ist das Konto nach dem Ablehnen oder Löschen aller genehmigten privaten Endpunkte für das gesamte Netzwerk offen.
+* Wenn Sie keinen öffentlichen Datenverkehr oder Dienstendpunkt konfigurieren und private Endpunkte erstellen, ist das Azure Cosmos-Konto nur über die privaten Endpunkte zugänglich. Wenn Sie keinen öffentlichen Datenverkehr oder einen Dienstendpunkt konfigurieren, ist das Konto nach dem Ablehnen oder Löschen aller genehmigten privaten Endpunkte für das gesamte Netzwerk offen, es sei denn, PublicNetworkAccess wurde deaktiviert (siehe Abschnitt unten).
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>Blockieren des Zugriffs auf öffentliche Netzwerke während der Kontoerstellung
 
@@ -643,21 +642,15 @@ Beim Entfernen einer Region können die gleichen Schritte verwendet werden. Nach
 
 Bei Verwendung von Private Link mit einem Azure Cosmos-Konto gelten die folgenden Einschränkungen:
 
-* Wenn Sie Private Link mit einem Azure Cosmos-Konto im direkten Verbindungsmodus verwenden, können Sie lediglich das TCP-Protokoll verwenden. Das HTTP-Protokoll wird noch nicht unterstützt.
-
-* Die Unterstützung privater Endpunkte ist derzeit nur für den Gatewayverbindungsmodus allgemein verfügbar. Im direkten Modus ist sie als Previewfunktion verfügbar.
+* Wenn Sie Private Link mit einem Azure Cosmos-Konto im direkten Verbindungsmodus verwenden, können Sie lediglich das TCP-Protokoll verwenden. Das HTTP-Protokoll wird derzeit nicht unterstützt.
 
 * Wenn Sie die Azure Cosmos DB-API für MongoDB-Konten verwenden, wird ein privater Endpunkt nur für Konten unter Serverversion 3.6 unterstützt (d. h. Konten mit Endpunkt im Format `*.mongo.cosmos.azure.com`). Private Link wird nicht für Konten unter Serverversion 3.2 unterstützt (d. h. Konten mit Endpunkt im Format `*.documents.azure.com`). Zur Verwendung von Private Link sollten Sie alte Konten zur neuen Version migrieren.
 
-* Wenn Sie die Azure Cosmos DB-API für MongoDB-Konten mit Private Link verwenden, können Sie Tools wie z. B. Robo 3T, Studio 3T oder Mongoose nicht verwenden. Für den Endpunkt ist die Unterstützung für Private Link nur möglich, wenn als Parameter `appName=<account name>` angegeben wird. z. B. `replicaSet=globaldb&appName=mydbaccountname`. Da diese Tools den Anwendungsnamen in der Verbindungszeichenfolge nicht an den Dienst übergeben, kann Private Link nicht verwendet werden. Sie können aber dennoch in der Version 3.6 mithilfe von SDK-Treibern auf diese Konten zugreifen.
+* Wenn Sie eine Azure Cosmos DB-API für ein MongoDB-Konto verwenden, das Private Link beinhaltet, funktionieren einige Tools oder Bibliotheken unter Umständen nicht, da sie automatisch den Parameter `appName` aus der Verbindungszeichenfolge entfernen. Dieser Parameter ist erforderlich, um über einen privaten Endpunkt eine Verbindung mit dem Konto herzustellen. Einige Tools wie Visual Studio Code entfernen diesen Parameter nicht aus der Verbindungszeichenfolge und sind daher kompatibel.
 
-* Sie können ein virtuelles Netzwerk nicht verschieben oder löschen, wenn es Private Link enthält.
+* Einem Netzwerkadministrator muss mindestens die Berechtigung `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` im Azure Cosmos-Kontobereich erteilt werden, damit er automatisch genehmigte private Endpunkte erstellen kann.
 
-* Sie können ein Azure Cosmos-Konto nicht löschen, wenn es an einen privaten Endpunkt angefügt ist.
-
-* Sie können für ein Azure Cosmos-Konto kein Failover auf eine Region durchführen, wenn diese nicht allen privaten Endpunkten zugeordnet ist, die an das Konto angefügt sind.
-
-* Einem Netzwerkadministrator muss mindestens die Berechtigung „*/PrivateEndpointConnectionsApproval“ im Azure Cosmos-Kontobereich erteilt werden, um automatisch genehmigte private Endpunkte erstellen zu können.
+* Der direkte Modus wird in China-basierten Azure-Regionen zurzeit nicht unterstützt.
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>Einschränkungen bei der Integration für eine private DNS-Zone
 

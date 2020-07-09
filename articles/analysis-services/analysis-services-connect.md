@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cc671629934d80b3e727ca69f9026f534d05e160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1b4e56dfeae2d4b7826f3ad30bc5eb4b8672b85
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361471"
 ---
 # <a name="connecting-to-servers"></a>Herstellen einer Verbindung mit Servern
 
@@ -20,7 +20,7 @@ Dieser Artikel beschreibt das Herstellen einer Verbindung mit einem Server mithi
 
 ## <a name="client-libraries"></a>Clientbibliotheken
 
-[Abrufen der neuesten Clientbibliotheken](analysis-services-data-providers.md)
+[Abrufen der neuesten Clientbibliotheken](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
 Für alle Verbindungen mit einem Server sind unabhängig vom Typ aktualisierte AMO-, ADOMD.NET- und OLEDB-Clientbibliotheken erforderlich, um eine Verbindung mit einem Analysis Services-Server herzustellen und mit ihm zu kommunizieren. Für SSMS, Visual Studio, Excel 2016 und höhere Versionen sowie Power BI werden die neuesten Clientbibliotheken installiert oder mit monatlichen Releases aktualisiert. In einigen Fällen ist es jedoch möglich, dass eine Anwendung nicht über die neuesten Clientbibliotheken verfügt. Dies kann beispielsweise der Fall sein, wenn Updates durch Richtlinien verzögert werden oder wenn Office 365-Updates über den verzögerten Kanal erfolgen.
 

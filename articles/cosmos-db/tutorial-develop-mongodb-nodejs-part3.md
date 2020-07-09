@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75444738"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114383"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB: Erstellen der Benutzeroberfläche mit Angular
 
@@ -51,7 +51,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
     Im Terminalfenster wird eine Bestätigung für die neuen Komponenten angezeigt.
 
-    ![Installieren der hero-Komponente](./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png" alt-text="Installieren der hero-Komponente":::
 
     Werfen wir einen Blick auf die Dateien, die erstellt und aktualisiert wurden. 
 
@@ -62,7 +62,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
 4. Öffnen Sie im gleichen Ordner die Datei **app.module.ts**, und beachten Sie, dass sie die `HeroesComponent` den Deklarationen in Zeile 5 hinzugefügt und sie in Zeile 10 auch importiert hat.
 
-    ![Öffnen der Datei „app-module.ts“](./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="Öffnen der Datei „app-module.ts“":::
 
 5. Navigieren Sie wieder zur Datei **heroes.component.html**, und fügen Sie den folgenden Code ein. `<div>` ist der Container für die gesamte Seite. Der Container enthält eine Liste mit Helden, die wir erstellen müssen, damit Sie auf der Benutzeroberfläche auf einen Helden klicken können, um ihn auszuwählen und zu bearbeiten oder zu löschen. Danach folgt im HTML-Code etwas Formatierung, um deutlich zu machen, welcher Held ausgewählt wurde. Darüber hinaus gibt es einen Bearbeitungsbereich, in dem Sie einen neuen Helden hinzufügen oder einen bereits vorhandenen Helden bearbeiten können. 
 
@@ -394,7 +394,7 @@ Wir verfügen nun also über die Komponente. Aber wie bekommen wir sie auf den B
 
 5. Klicken Sie auf den Begriff `Hero`. Daraufhin zeigt Visual Studio links neben dem Codeblock ein Glühbirnensymbol an. 
 
-    ![Glühbirne in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Glühbirne in Visual Studio Code":::
 
 6. Klicken Sie auf die Glühbirne und anschließend auf **"Hero" aus "/app/hero" importieren.** oder auf **"Hero" aus "./hero" importieren.** (Die Nachricht ist abhängig von Ihrem Setup.)
 
@@ -490,7 +490,7 @@ Wir verfügen nun also über die Komponente. Aber wie bekommen wir sie auf den B
 
 3. Navigieren Sie in einem Internetbrowser zu **localhost:3000**, um zur lokal ausgeführten App zu gelangen.
 
-     ![Lokal ausgeführte hero-Anwendung](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Lokal ausgeführte hero-Anwendung":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

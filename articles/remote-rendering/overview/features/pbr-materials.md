@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 64553506f75451c50a87932904f00a7275ea9286
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80678912"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021312"
 ---
 # <a name="pbr-materials"></a>PBR-Materialien
 
@@ -26,20 +26,20 @@ PBR-Materialien sind jedoch keine Universallösung. Es gibt Materialien, die Lic
 
 Diese Eigenschaften gelten für alle Materialien:
 
-* **albedoColor:** Diese Farbe wird mit anderen Farben multipliziert, z. B. mit *albedoMap* oder *Scheitelpunktfarben*. Wenn *transparency* für ein Material aktiviert ist, wird der Alphakanal verwendet, um die Deckkraft anzupassen, wobei `1` vollständig undurchsichtig und `0` vollständig transparent bedeutet. Die Standardfarbe ist Weiß.
+* **albedoColor**: Diese Farbe wird mit anderen Farben multipliziert, z. B. mit *albedoMap* oder *:::no-loc text="vertex ":::-Farben*. Wenn *transparency* für ein Material aktiviert ist, wird der Alphakanal verwendet, um die Deckkraft anzupassen, wobei `1` vollständig undurchsichtig und `0` vollständig transparent bedeutet. Die Standardfarbe ist Weiß.
 
   > [!NOTE]
   > Wenn ein PBR-Material vollständig transparent ist, z. B. ein vollkommen sauberes Glas, wird die Umgebung immer noch von ihm reflektiert. Helle Stellen wie die Sonne sind in der Reflexion immer noch sichtbar. Dies ist bei [Farbmaterialien](color-materials.md) anders.
 
 * **albedoMap:** Eine [2D-Textur](../../concepts/textures.md) für Albedo-Werte pro Pixel.
 
-* **alphaClipEnabled** und **alphaClipThreshold:** Wenn *alphaClipEnabled* „true“ ist, werden alle Pixel, deren Albedo-Alphawert geringer als *alphaClipThreshold* ist, nicht gezeichnet. Alphaclipping kann auch ohne Aktivierung der Transparenz verwendet werden, und es beschleunigt das Rendern. Materialien, auf die Alphaclipping angewendet wird, werden dennoch langsamer gerendert als vollständig undurchsichtige Materialien. Alphaclipping ist standardmäßig deaktiviert.
+* **alphaClipEnabled** und **alphaClipThreshold**: Wenn *alphaClipEnabled* „true“ ist, werden alle Pixel, deren Albedo-Alphawert geringer als *alphaClipThreshold* ist, nicht gezeichnet. Alphaclipping kann auch ohne Aktivierung der Transparenz verwendet werden, und es beschleunigt das Rendern. Materialien, auf die Alphaclipping angewendet wird, werden dennoch langsamer gerendert als vollständig undurchsichtige Materialien. Alphaclipping ist standardmäßig deaktiviert.
 
-* **textureCoordinateScale** und **textureCoordinateOffset:** Die Skalierung wird mit den UV-Texturkoordinaten multipliziert, und der Offset wird addiert. Kann zum Strecken und Verschieben der Texturen verwendet werden. Die Standardskalierung ist (1, 1) und der Standardoffset ist (0, 0).
+* **textureCoordinateScale** und **textureCoordinateOffset**: Die Skalierung wird mit den UV-Texturkoordinaten multipliziert, und der Offset wird addiert. Kann zum Strecken und Verschieben der Texturen verwendet werden. Die Standardskalierung ist (1, 1) und der Standardoffset ist (0, 0).
 
-* **useVertexColor:** Wenn das Gittermodell Scheitelpunktfarben enthält und diese Option aktiviert ist, werden die Scheitelpunktfarben des Gittermodells mit *albedoColor* und *albedoMap* multipliziert. Standardmäßig sind Scheitelpunktfarben deaktiviert.
+* **useVertexColor**: Wenn das Gittermodell :::no-loc text="vertex":::-Farben enthält und diese Option aktiviert ist, werden die :::no-loc text="vertex":::-Farben des Gittermodells in *albedoColor* und *albedoMap* multipliziert. Standardmäßig ist *useVertexColor* deaktiviert.
 
-* **isDoubleSided:** Wenn diese Eigenschaft auf „true“ festgelegt ist, werden Dreiecke mit diesem Material auch dann gerendert, wenn die Kamera auf ihre Rückseite gerichtet ist. Für die PBR-Materialien wird die Beleuchtung auch für die Rückseite korrekt berechnet. Diese Option ist standardmäßig deaktiviert. Siehe auch [Einseitiges Rendering](single-sided-rendering.md).
+* **isDoubleSided**: Wenn diese Eigenschaft auf „true“ festgelegt ist, werden Dreiecke mit diesem Material auch dann gerendert, wenn die Kamera auf ihre Rückseite gerichtet ist. Für die PBR-Materialien wird die Beleuchtung auch für die Rückseite korrekt berechnet. Diese Option ist standardmäßig deaktiviert. Weitere Informationen finden Sie unter [:::no-loc text="Single-sided":::-Rendering](single-sided-rendering.md).
 
 ## <a name="pbr-material-properties"></a>PBR-Materialeigenschaften
 

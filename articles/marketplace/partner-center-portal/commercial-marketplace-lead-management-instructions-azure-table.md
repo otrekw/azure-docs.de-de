@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 2ecca18e9de02bfe5f3bcb972d0b4034ab8012ac
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c115859c24b2c26ab2c221c4fdc35cb442d652b1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791016"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848012"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Verwenden von Azure-Tabellenspeicher zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -182,8 +182,9 @@ Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für
 
 1. Navigieren Sie zur Seite **Angebotseinrichtung** für Ihr Angebot.
 
-1. Wählen Sie im Abschnitt **Leadverwaltung** die Option **Verbinden** aus.
-     ![Leadverwaltung](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
+1. Wählen Sie im Abschnitt **Kundenleads** die Option **Verbinden** aus.
+
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Kundenleads":::
 
 1. Wählen Sie im Popupfenster **Verbindungsdetails** die Option **Azure-Tabelle** als **Leadziel** aus. 
      ![„Verbindungsdetails“ unter „Leadverwaltung“](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)

@@ -43,7 +43,7 @@ Angesichts der empfohlenen Technologiereihenfolge für das Streamen von Inhalten
 
 | Browser        | Betriebssystem                                                       | Erwartete Technologie (unverschlüsselt)  | Erwartete Technologie (AES)  | Erwartete Technologie (DRM)          |
 |----------------|----------------------------------------------------------|------------------------|----------------------|------------------------------|
-| Edge, IE 11      | Windows 10, Windows 8.1, Windows Phone 10.1               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
+| Microsoft Edge, IE 11      | Windows 10, Windows 8.1, Windows Phone 10.1               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
 | IE 11, IE 9–10.1  | Windows 7, Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | silverlightSS (PlayReady)    |
 | IE 11          | Windows Phone 8.1                                        | azureHtml5JS           | azureHtml5JS         | Nicht unterstützt                |
 | Microsoft Edge           | Xbox One<sup>1</sup> (Update von Nov 2015)                   | azureHtml5JS           | azureHtml5JS         | Nicht unterstützt                |

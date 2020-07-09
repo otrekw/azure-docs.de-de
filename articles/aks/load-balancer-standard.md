@@ -7,18 +7,19 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3be60888d3d12d37650ad2cffc1911fb3b5e6682
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: d550425cc5ab1bdf539464ad120f1ac4f14d4c6e
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790676"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267170"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden eines Lastenausgleichs mit einer Standard-SKU in Azure Kubernetes Service (AKS)
 
 Sie können eine Azure Load Balancer-Instanz verwenden, um über Kubernetes-Dienste Zugriff auf Anwendungen vom Typ `LoadBalancer` in Azure Kubernetes Service (AKS) zu ermöglichen. Ein in AKS ausgeführter Lastenausgleich kann als interner oder externer Lastenausgleich verwendet werden. Bei einem internen Lastenausgleich können nur Anwendungen, die im gleichen virtuellen Netzwerk ausgeführt werden wie der AKS-Cluster, auf einen Kubernetes-Dienst zugreifen. Ein externer Lastenausgleich erhält mindestens eine öffentliche IP-Adresse für eingehenden Datenverkehr, um externe Zugriffe auf einen Kubernetes-Dienst über die öffentlichen IP-Adressen zu ermöglichen.
 
 Azure Load Balancer ist in zwei SKUs verfügbar: *Basic* und *Standard*. Beim Erstellen eines AKS-Clusters wird normalerweise die SKU vom Typ *Standard* verwendet. Bei Verwendung eines Lastenausgleich mit einer *Standard*-SKU stehen zusätzliche Features und Funktionen zur Verfügung (etwa ein größerer Back-End-Pool und Verfügbarkeitszonen). Wichtig: Machen Sie sich mit den Unterschieden zwischen *Standard* und *Basic* vertraut, bevor Sie sich für einen Lastenausgleich entscheiden. Nach Erstellung eines AKS-Clusters kann die Lastenausgleichs-SKU für diesen Cluster nicht mehr geändert werden. Weitere Informationen zu den SKUs *Basic* und *Standard* finden Sie unter [Vergleich der Load Balancer-SKUs][azure-lb-comparison].
+Der AKS-Cluster muss den Lastenausgleich mit der SKU „Standard“ nutzen, um mehrere Knotenpools verwenden zu können. Das Feature wird für Lastenausgleichsmodule der SKU „Basic“ nicht unterstützt, siehe [Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)][use-multiple-node-pools].
 
 Für diesen Artikel werden Grundkenntnisse im Zusammenhang mit Kubernetes und Azure Load Balancer vorausgesetzt. Weitere Informationen finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][kubernetes-concepts] und [Was versteht man unter Azure Load Balancer?][azure-lb].
 
@@ -89,12 +90,17 @@ Wenn Sie einen *Standard*-SKU-Lastenausgleich verwenden, erstellt der AKS-Cluste
 
 Durch Einbinden mehrerer IP-Adressen oder IP-Präfixe können Sie mehrere unterstützende Dienste definieren, wenn Sie die IP-Adresse hinter einem einzelnen Lastenausgleichsobjekt definieren. Der Endpunkt für ausgehenden Datenverkehr bestimmter Knoten hängt von dem Dienst ab, dem sie zugeordnet sind.
 
-> [!IMPORTANT]
-> Sie müssen die öffentlichen IP-Adressen der *Standard*-SKU für ausgehenden Datenverkehr mit Ihrem *Standard*-SKU-Lastenausgleich verwenden. Sie können die SKU Ihrer öffentlichen IP-Adressen mit dem Befehl [az network public-ip show][az-network-public-ip-show] überprüfen:
->
-> ```azurecli-interactive
-> az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
-> ```
+### <a name="pre-requisites-to-bring-your-own-ip-addresses-or-ip-prefixes"></a>Voraussetzungen für die Verwendung eigener IP-Adressen oder IP-Präfixe
+1. Sie müssen die öffentlichen IP-Adressen der *Standard*-SKU für ausgehenden Datenverkehr mit Ihrem *Standard*-SKU-Lastenausgleich verwenden. Sie können die SKU Ihrer öffentlichen IP-Adressen mit dem Befehl [az network public-ip show][az-network-public-ip-show] überprüfen:
+
+   ```azurecli-interactive
+   az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
+   ```
+ 1. Die öffentlichen IP-Adressen und IP-Präfixe müssen sich in derselben Region wie Ihr AKS-Cluster befinden und Teil desselben Abonnements sein.
+ 1. Bei den öffentlichen IP-Adressen und IP-Präfixen kann es sich nicht um IP-Adressen/-Präfixe handeln, die von AKS als verwaltete IP-Adressen bzw. verwaltete IP-Präfixe erstellt wurden. Stellen Sie sicher, dass alle IP-Adressen/-Präfixe, die als benutzerdefinierte IP-Adressen/-Präfixe angegeben sind, manuell und nicht vom AKS-Dienst erstellt wurden.
+ 1. Die öffentlichen IP-Adressen und IP-Präfixe können nicht von einer anderen Ressource oder einem anderen Dienst verwendet werden.
+
+ ### <a name="define-your-own-public-ip-or-prefixes-on-an-existing-cluster"></a>Definieren eigener öffentlicher IP-Adressen oder IP-Präfixe auf einem vorhandenen Cluster
 
 Verwenden Sie den Befehl [az network public-ip show][az-network-public-ip-show], um die IDs Ihrer öffentlichen IP-Adressen aufzulisten.
 
@@ -131,9 +137,6 @@ az aks update \
     --name myAKSCluster \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
-
-> [!IMPORTANT]
-> Die öffentlichen IP-Adressen und IP-Präfixe müssen sich in derselben Region wie Ihr AKS-Cluster befinden und Teil desselben Abonnements sein. 
 
 ### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>Definieren eigener öffentlicher IP-Adressen oder IP-Präfixe zum Zeitpunkt der Clustererstellung
 
@@ -295,3 +298,4 @@ Weitere Informationen zu Kubernetes-Diensten finden Sie in der entsprechenden [D
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [calculate-required-quota]: #required-quota-for-customizing-allocatedoutboundports
+[use-multiple-node-pools]: use-multiple-node-pools.md

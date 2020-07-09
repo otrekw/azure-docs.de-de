@@ -1,15 +1,15 @@
 ---
 title: Erste Schritte mit PowerShell
 description: Schnelle Einführung in die Azure PowerShell-Cmdlets zum Verwalten von Batch-Ressourcen.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b768fac7fa6fe0f4821a4fbaf5fa11414b10f81d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 6108ac9c9f5f10de69369d7aed31cd0ce317044e
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995314"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779608"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Verwalten von Batch-Ressourcen mit PowerShell-Cmdlets
 
@@ -114,7 +114,7 @@ Bei der Verwendung von vielen dieser Cmdlets müssen Sie zusätzlich zum Überge
 
 ### <a name="create-a-batch-pool"></a>Batch-Pool erstellen
 
-Beim Erstellen oder Aktualisieren eines Batch-Pools wählen Sie entweder die Konfiguration der Clouddienste oder die VM-Konfiguration für das Betriebssystem auf den Computeknoten aus (siehe [Übersicht über Azure Batch-Features](batch-api-basics.md#pool)). Wenn Sie die Konfiguration der Clouddienste angeben, werden Ihre Computeknoten mit einem Image der [Azure-Gastbetriebssystemversionen](../cloud-services/cloud-services-guestos-update-matrix.md#releases) versehen. Wenn Sie die VM-Konfiguration angeben, können Sie entweder eines der unterstützten Linux- oder Windows-VM-Images aus dem [Marketplace für virtuelle Azure-Computer][vm_marketplace] angeben oder ein eigenes benutzerdefiniertes Image bereitstellen.
+Beim Erstellen oder Aktualisieren eines Batch-Pools wählen Sie entweder die Konfiguration der Clouddienste oder die VM-Konfiguration für das Betriebssystem auf den Computeknoten aus (siehe [Knoten und Pools](nodes-and-pools.md#configurations)). Wenn Sie die Konfiguration der Clouddienste angeben, werden Ihre Computeknoten mit einem Image der [Azure-Gastbetriebssystemversionen](../cloud-services/cloud-services-guestos-update-matrix.md#releases) versehen. Wenn Sie die VM-Konfiguration angeben, können Sie entweder eines der unterstützten Linux- oder Windows-VM-Images aus dem [Marketplace für virtuelle Azure-Computer][vm_marketplace] angeben oder ein eigenes benutzerdefiniertes Image bereitstellen.
 
 Übergeben Sie beim Ausführen von **New-AzBatchPool** die Betriebssystemeinstellungen in einem PSCloudServiceConfiguration- oder PSVirtualMachineConfiguration-Objekt. Der folgende Codeausschnitt erstellt beispielsweise einen Batch-Pool mit Computeknoten der Größe „Standard_A1“ in der VM-Konfiguration mit Ubuntu Server 18.04-LTS-Image. Hier gibt der Parameter **VirtualMachineConfiguration** die Variable *$configuration* als PSVirtualMachineConfiguration-Objekt an. Mit dem Parameter **BatchContext** wird eine zuvor definierte Variable *$context* als BatchAccountContext-Objekt angegeben.
 
@@ -247,9 +247,10 @@ $appPackageReference.ApplicationId = "MyBatchApplication"
 $appPackageReference.Version = "1.0"
 ```
 
-Erstellen Sie nun den Pool, und geben Sie das Paketverweisobjekt als Argument für die Option `ApplicationPackageReferences` an:
+Erstellen Sie jetzt die Konfiguration und den Pool. In diesem Beispiel wird der Parameter **CloudServiceConfiguration** mit einem in `$configuration` initialisierten Objekt vom Typ `PSCloudServiceConfiguration` verwendet, das **OSFamily** auf `6` (für Windows Server 2019) und **OSVersion** auf `*` festlegt. Geben Sie das Paketverweisobjekt als Argument für die Option `ApplicationPackageReferences` an:
 
 ```powershell
+$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(6,"*")  # 6 = OSFamily 'Windows Server 2019'
 New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 ```
 

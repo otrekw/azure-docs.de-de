@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: overview
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582901"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728366"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -118,7 +118,7 @@ Im Folgenden sind die Benutzereigenschaften aufgelistet, die Sie verwenden könn
 | streetAddress |Jeder string-Wert oder *null* |(user.streetAddress -eq "value") |
 | surname |Jeder string-Wert oder *null* |(user.surname -eq "value") |
 | telephoneNumber |Jeder string-Wert oder *null* |(user.telephoneNumber -eq "value") |
-| usageLocation |Aus zwei Buchstaben bestehender Ländercode. |(user.usageLocation -eq "US") |
+| usageLocation |Aus zwei Buchstaben bestehender Länder-/Regionscode |(user.usageLocation -eq "US") |
 | userPrincipalName |Ein beliebiger Zeichenfolgenwert |(user.userPrincipalName -eq "alias@domain") |
 | userType |member-Gast *null* |(user.userType -eq "Member") |
 
@@ -384,7 +384,7 @@ Die folgenden Geräteattribute können verwendet werden.
  deviceManufacturer | Jeder string-Wert. | (device.deviceManufacturer -eq "Samsung")
  deviceModel | Jeder string-Wert. | (device.deviceModel -eq "iPad Air")
  deviceOwnership | Personal, Unternehmen, Unbekannt | (device.deviceOwnership -eq "Company")
- enrollmentProfileName | Profil für Apple-Geräteregistrierung, Geräteregistrierung – Unternehmensgeräte-IDs (Android – Kiosk) oder Name des Windows Autopilot-Profils | (device.enrollmentProfileName -eq "DEP iPhones")
+ enrollmentProfileName | Profilname für Apple-Geräteregistrierung, Android Enterprise-Profilname für die Registrierung firmeneigener dedizierter Geräte oder Name des Windows Autopilot-Profils | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM (bei mobilen Geräten)<br>PC (bei Computern, die vom Intune-PC-Agent verwaltet werden) | (device.managementType -eq "MDM")
  deviceId | eine gültige Azure AD-Geräte-ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")

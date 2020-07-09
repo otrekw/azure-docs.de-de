@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: bb3f22223bd64c06cfa4a5f6ffabe7b128dff1d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 6496e5c953b3dd5e387a79906b22645ba4a24b4f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416466"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019978"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -51,7 +51,7 @@ Informationen zur Konformität von Azure und zur eigenständigen Sicherung der A
 
 In diesem Artikel werden Sicherheitsüberlegungen zu den beiden folgenden Datenverschiebungsszenarien erläutert: 
 
-- **Cloudszenario** In diesem Szenario sind sowohl Ihre Quelle als auch das Ziel über das Internet öffentlich zugänglich. Dazu gehören verwaltete Cloudspeicherdienste wie Azure Storage, Azure SQL Data Warehouse, Azure SQL-Datenbank, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-Dienste wie Salesforce und Webprotokolle wie FTP und OData. Eine vollständige Liste unterstützter Datenquellen finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
+- **Cloudszenario**: In diesem Szenario sind sowohl Ihre Quelle als auch das Ziel über das Internet öffentlich zugänglich. Dazu gehören verwaltete Cloudspeicherdienste wie Azure Storage, Azure SQL Data Warehouse, Azure SQL-Datenbank, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-Dienste wie Salesforce und Webprotokolle wie FTP und OData. Eine vollständige Liste unterstützter Datenquellen finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
 - **Hybridszenario**: In diesem Szenario befindet sich entweder Ihre Quelle oder Ihr Ziel hinter einer Firewall oder in einem lokalen Unternehmensnetzwerk. Oder der Datenspeicher befindet sich in einem privaten oder virtuellen Netzwerk (meist die Quelle) und ist nicht öffentlich zugänglich. Zu diesem Szenario zählen auch Datenbankserver, die auf virtuellen Computern gehostet werden.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -111,7 +111,7 @@ Der Befehlskanal ermöglicht Kommunikation zwischen Datenverschiebungsdiensten i
 ### <a name="on-premises-data-store-credentials"></a>Anmeldeinformationen für lokale Datenspeicher
 Die Anmeldeinformationen können in Data Factory gespeichert oder während der Laufzeit von Azure Key Vault von [Data Factory referenziert](store-credentials-in-key-vault.md) werden. Beim Speichern von Anmeldeinformationen innerhalb von Data Factory werden diese immer verschlüsselt für die selbstgehostete Integration Runtime gespeichert. 
  
-- **Lokales Speichern von Anmeldeinformationen.** Wenn Sie das Cmdlet **Set-AzDataFactoryV2LinkedService** mit den Verbindungszeichenfolgen und Anmeldeinformationen direkt inline im JSON verwenden, wird der verknüpfte Dienst verschlüsselt und für die selbstgehostete Integration Runtime gespeichert.  In diesem Fall werden die Anmeldeinformationen durch den überaus sicheren Azure-Back-End-Dienst zum selbstgehosteten Integrationscomputer übertragen, wo sie schließlich verschlüsselt und gespeichert werden. Die selbstgehostete Integration Runtime verwendet Windows-[DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) zum Verschlüsseln der vertraulichen Daten und Anmeldeinformationen.
+- **Lokales Speichern von Anmeldeinformationen.** Wenn Sie das Cmdlet **Set-AzDataFactoryV2LinkedService** mit den Verbindungszeichenfolgen und Anmeldeinformationen direkt inline im JSON verwenden, wird der verknüpfte Dienst verschlüsselt und für die selbstgehostete Integration Runtime gespeichert.  In diesem Fall werden die Anmeldeinformationen durch den Azure-Back-End-Dienst, der als sehr sicher gilt, zum selbstgehosteten Integrationscomputer übertragen, wo sie schließlich verschlüsselt und gespeichert werden. Die selbstgehostete Integration Runtime verwendet Windows-[DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) zum Verschlüsseln der vertraulichen Daten und Anmeldeinformationen.
 
 - **Speichern von Anmeldeinformationen in Azure Key Vault.** Eine weitere Möglichkeit ist das Speichern der Anmeldeinformationen für den Datenspeicher in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Die Anmeldeinformationen werden dann von Data Factory beim Ausführen einer Aktivität abgerufen. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md).
 
@@ -155,6 +155,12 @@ Die folgenden Abbildungen veranschaulichen die Verwendung der selbstgehosteten I
 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> Einrichten von Firewallkonfigurationen und Zulassungsliste für IP-Adressen
 
+> [!NOTE] 
+> Möglicherweise müssen Sie Ports verwalten oder eine Zulassungsliste für Domänen auf Ebene der Unternehmensfirewall entsprechend den Anforderungen der jeweiligen Datenquellen einrichten. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure SQL Data Warehouse und Azure Data Lake Store als Beispiele verwendet.
+
+> [!NOTE] 
+> Weitere Informationen zu Datenzugriffsstrategien über Azure Data Factory finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory).
+
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Firewallanforderungen für lokales/privates Netzwerk    
 In einem Unternehmen wird eine Unternehmensfirewall auf dem zentralen Router der Organisation ausgeführt. Die Windows-Firewall wird als Daemon auf dem lokalen Computer ausgeführt, auf dem die selbstgehostete Integration Runtime installiert ist. 
 
@@ -178,7 +184,7 @@ Einige Datenspeicher in der Cloud erfordern auch, dass die IP-Adresse des Comput
 
 Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Computers der selbstgehosteten Internet Runtime zugelassen wird. Einige dieser Datenspeicher erfordern standardmäßig möglicherweise keine Zulassungsliste. 
 
-- [Azure SQL-Datenbank](../sql-database/sql-database-firewall-configure.md) 
+- [Azure SQL-Datenbank](../azure-sql/database/firewall-configure.md) 
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)

@@ -5,15 +5,15 @@ author: normesta
 ms.service: storage
 ms.date: 02/14/2019
 ms.author: normesta
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: b7f7793016d2a408d6b286f417e3e89e7a22ca91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c5f2a041f03d53e1ea7c3f981683f4b70d3963b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232375"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465999"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Migrieren von lokalem HDFS-Speicher zu Azure Storage mit Azure Data Box
 
@@ -239,7 +239,7 @@ Führen Sie den folgenden Befehl aus, um Berechtigungen auf die Daten anzuwenden
 
 Bevor Sie Ihre Daten auf ein Data Box-Gerät verschieben, müssen Sie einige Hilfsskripts herunterladen, müssen Sie sicherstellen, dass Ihre Daten so organisiert sind, dass sie auf ein Data Box-Gerät passen, und müssen Sie alle nicht benötigten Dateien ausschließen.
 
-<a id="download-helper-scripts" />
+<a id="download-helper-scripts"></a>
 
 ### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>Herunterladen von Hilfsskripts und Einrichten Ihres Edgeknotens, um sie auszuführen
 

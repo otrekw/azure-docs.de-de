@@ -8,19 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: b3f279ea50e9923e63f7d6090f4dbaca939eb16c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d1c2da10270747aa09ecbcfdc537df567b4cdfc9
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238964"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929654"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Schnellstart: Vorschlagen von Suchabfragen mit der Bing-Vorschlagssuche-REST-API und Java
 
-
-In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-API aufrufen und die JSON-Antwort erhalten. Diese einfache Java-Anwendung sendet eine partielle Suchabfrage an die API und gibt Vorschläge für Suchen zurück. Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java).
+In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-API aufrufen und die JSON-Antwort lesen. Diese einfache Java-Anwendung sendet eine partielle Suchabfrage an die API und gibt Vorschläge für Suchen zurück. Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,7 +43,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-A
     import com.google.gson.JsonParser;
     ```
 
-2. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den API-Host und Pfad, Ihren [Market Code](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine Suchabfrage. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
+2. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den API-Host und Pfad, Ihren [Market Code](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine Suchabfrage. Verwenden Sie den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md), der im Azure-Portal für Ihre Ressource angezeigt wird.
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -84,7 +83,7 @@ public static String prettify(String json_text) {
       }
       ```
     
-   2. Erstellen Sie eine neue URL für die Anforderung mit dem API-Host, dem Pfad und den oben erstellten Parametern. 
+   2. Erstellen Sie für die Anforderung eine neue URL mit den Angaben für den Host, den Pfad und die Parameter der API, die Sie im vorherigen Schritt erstellt haben. 
     
        ```java
        //...
@@ -103,7 +102,7 @@ public static String prettify(String json_text) {
        //...
       ```
 
-   4. Lesen Sie die API-Antwort in einen `StringBuilder` ein. Nachdem die Antwort erfasst wurde, schließen Sie den `InputStreamReader`-Datenstrom, und geben Sie die Antwort zurück.
+   4. Speichern Sie die API-Antwort in `StringBuilder`. Nachdem die Antwort erfasst wurde, schließen Sie den `InputStreamReader`-Datenstrom, und geben Sie die Antwort zurück.
 
        ```java
        //...
@@ -119,7 +118,7 @@ public static String prettify(String json_text) {
        return response.toString();
        ```
 
-2. Rufen Sie in der main-Funktion Ihrer Anwendung `get_suggestions()` auf, und drucken Sie die Antwort mit `prettify()`.
+2. Rufen Sie in der main-Funktion Ihrer Anwendung `get_suggestions()` auf, und geben Sie die Antwort mit `prettify()` aus.
     
     ```java
     public static void main(String[] args) {

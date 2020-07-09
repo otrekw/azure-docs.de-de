@@ -4,12 +4,12 @@ description: Dieses Tutorial enthält Informationen zum Sichern lokaler Windows 
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
-ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 560a4907fc812aae027ad9e1a1c262fc994c0da9
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222467"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295540"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Sichern von Windows Server in Azure
 
@@ -23,7 +23,7 @@ Mit Azure Backup können Sie Ihre Windows Server-Instanzen vor Beschädigungen, 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an.
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 

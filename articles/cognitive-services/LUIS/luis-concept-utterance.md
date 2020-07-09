@@ -2,17 +2,17 @@
 title: Gute Beispieläußerungen – LUIS
 description: Äußerungen sind Eingaben vom Benutzer, die Ihre App interpretieren muss. Sammeln Sie Ausdrücke, die Benutzer möglicherweise eingeben. Fügen Sie Äußerungen ein, die dieselbe Bedeutung haben, aber andere Wortlängen oder einen anderen Satzbau aufweisen.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 184038ff2758fbe7c5834682c82c082ef6661234
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592864"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685277"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Grundlegendes zu geeigneten Äußerungen für Ihre LUIS-App
 
-**Äußerungen** sind Eingaben vom Benutzer, die Ihre App interpretieren muss. Es ist wichtig, eine Vielzahl verschiedener Beispieläußerungen für jede Absicht zu erfassen, um LUIS für die Extrahierung von Absichten und Entitäten zu trainieren. Das aktive Lernen bzw. der Prozess des kontinuierlichen Trainierens neuer Äußerungen ist ein grundlegender Bestandteil der Intelligenz durch Machine Learning, die LUIS bereitstellt.
+**Äußerungen** sind Eingaben vom Benutzer, die Ihre App interpretieren muss. Es ist wichtig, eine Vielzahl verschiedener Beispieläußerungen für jede Absicht zu erfassen, um LUIS für die Extrahierung von Absichten und Entitäten zu trainieren. Aktives Lernen bzw. der Prozess des kontinuierlichen Trainierens neuer Äußerungen ist ein grundlegender Bestandteil der Machine Learning-Intelligenz, die LUIS bereitstellt.
 
 Sammeln Sie Äußerungen, die Benutzer möglicherweise eingeben. Schließen Sie Äußerungen mit ein, die zwar die gleiche Bedeutung haben, aber unterschiedlich konstruiert sind:
 
@@ -84,7 +84,7 @@ Die Versionseinstellungen können über das LUIS-Portal, im Abschnitt **Verwalte
 
 ### <a name="word-forms"></a>Wortformen
 
-Bei der Normalisierung von **Wortformen** werden über den Wortstamm hinausgehende Unterschiede ignoriert. Die Wörter `run`, `running` und `runs` ändern sich beispielsweise abhängig von der Zeitform des Verbs.
+Bei der Normalisierung von **Wortformen** werden über den Wortstamm hinausgehende Unterschiede ignoriert.
 
 <a name="utterance-normalization-for-diacritics-and-punctuation"></a>
 

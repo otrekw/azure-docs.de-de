@@ -3,20 +3,20 @@ title: Herstellen einer Verbindung mit SQL Server oder einer Azure SQL-Datenbank
 description: Automatisieren von Aufgaben für SQL-Datenbanken lokal oder in der Cloud mithilfe von Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam; logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: 93b63d332f00c31a352c11e483fc3ce5cb45a922
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f63553ced8484b3ce328fb9537d5831ae1e27fe8
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74789193"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191487"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Automatisieren von Workflows für SQL Server oder Azure SQL-Datenbank mithilfe von Azure Logic Apps
 
-In diesem Artikel wird beschrieben, wie Sie über eine Logik-App mit dem SQL Server-Connector auf Daten in Ihrer SQL-Datenbank zugreifen können. Auf diese Weise können Sie durch Erstellung von Logik-Apps Aufgaben, Prozesse oder Workflows automatisieren, die SQL-Daten und Ressourcen verwalten. Der SQL Server-Connector funktioniert sowohl für [lokale SQL Server-Instanzen](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) als auch für die [cloudbasierte Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).
+In diesem Artikel wird beschrieben, wie Sie über eine Logik-App mit dem SQL Server-Connector auf Daten in Ihrer SQL-Datenbank zugreifen können. Auf diese Weise können Sie durch Erstellung von Logik-Apps Aufgaben, Prozesse oder Workflows automatisieren, die SQL-Daten und Ressourcen verwalten. Der SQL Server-Connector kann sowohl für [SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) als auch für [Azure SQL-Datenbank](../azure-sql/database/sql-database-paas-overview.md) und [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) verwendet werden.
 
 Sie können Logik-Apps erstellen, deren Ausführung durch Ereignisse in Ihrer SQL-Datenbank oder in anderen Systemen (wie z. B. Dynamics CRM Online) ausgelöst wird. Ihre Logik-Apps können auch Daten abrufen, einfügen und löschen sowie SQL-Abfragen und gespeicherte Prozeduren ausführen. Sie können beispielsweise eine Logik-App erstellen, die Dynamics CRM Online automatisch auf neue Datensätze überprüft, Ihrer SQL-Datenbank Elemente für alle neuen Datensätze hinzufügt und dann E-Mail-Benachrichtigungen über die hinzugefügten Elemente sendet.
 
@@ -26,7 +26,7 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
 * Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Eine [SQL Server-Datenbank](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) oder eine [Azure SQL-Datenbank](../sql-database/sql-database-get-started-portal.md)
+* Eine [SQL Server-Datenbank](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) oder eine [Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md)
 
   Ihre Tabellen müssen Daten enthalten, damit Ihre Logik-App beim Aufrufen von Vorgängen Ergebnisse zurückgeben kann. Wenn Sie eine Azure SQL-Datenbank erstellen, können Sie die enthaltenen Beispieldatenbanken verwenden.
 
@@ -129,6 +129,20 @@ Gelegentlich müssen Sie mit Resultsets arbeiten, die so groß sind, dass der Co
   * [SQL-Paginierung für die Massendatenübertragung mit Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
   * [SELECT - ORDER BY-Klausel](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
+
+### <a name="handle-dynamic-bulk-data"></a>Behandeln dynamischer Massendaten
+
+Wenn Sie eine gespeicherte Prozedur im SQL Server-Connector aufzurufen, ist die zurückgegebene Ausgabe manchmal dynamisch. Führen Sie in diesem Szenario die folgenden Schritte aus:
+
+1. Öffnen Sie den **Logik-App-Designer**.
+1. Führen Sie einen Testlauf Ihrer Logik-App aus, um das Ausgabeformat anzuzeigen. Kopieren Sie die Beispielausgabe.
+1. Wählen Sie im Designer unter der Aktion, in der die gespeicherte Prozedur aufgerufen wird, **Neuer Schritt** aus.
+1. Suchen Sie unter **Aktion auswählen** nach der Aktion [**JSON analysieren**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action), und wählen Sie sie aus.
+1. Wählen Sie in der Aktion **Parse JSON** die Option **Beispielnutzlast zum Generieren eines Schemas verwenden**.
+1. Fügen Sie im Fenster **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** Ihre Beispielnutzlast ein, und wählen Sie dann **Fertig** aus.
+1. Wenn Sie eine Fehlermeldung erhalten, dass Logic Apps kein Schema generieren kann, überprüfen Sie, ob die Syntax der Beispielausgabe richtig formatiert ist. Wenn Sie das Schema noch immer nicht generieren können, geben Sie es manuell in das Feld **Schema** ein.
+1. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
+1. Wenn Sie auf die JSON-Inhaltseigenschaften zugreifen möchten, verwenden Sie die Datentoken, die in der Liste mit den dynamischen Inhalten unter der [Aktion **JSON analysieren**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) angezeigt werden.
 
 ## <a name="connector-specific-details"></a>Connectorspezifische Details
 

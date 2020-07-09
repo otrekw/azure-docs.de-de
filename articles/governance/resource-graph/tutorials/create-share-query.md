@@ -3,12 +3,12 @@ title: 'Tutorial: Verwalten von Abfragen im Azure-Portal'
 description: In diesem Tutorial erstellen Sie im Azure-Portal eine Resource Graph-Abfrage und geben die neue Abfrage für andere Benutzer frei.
 ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 80725bd03d31a4985374005fe68a62e16aaef000
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83637764"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148020"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Tutorial: Erstellen und Freigeben einer Azure Resource Graph-Abfrage im Azure-Portal
 
@@ -44,7 +44,7 @@ Private Abfragen sind nur für das Konto sichtbar und zugänglich, das die Abfra
 
    Klicken Sie auf **Abfrage ausführen**, um die Abfrageergebnisse im unteren Bereich anzuzeigen.
 
-   Weitere Informationen über diese Abfrage finden Sie unter [Beispiele: Zählen von virtuellen Computern nach Betriebssystemtyp](../samples/starter.md#count-virtual-machines-by-os-type).
+   Weitere Informationen über diese Abfrage finden Sie unter [Beispiele: Zählen von virtuellen Computern nach Betriebssystemtyp](../samples/starter.md#count-os).
 
 
 1. Wählen Sie **Speichern** oder **Speichern unter** aus, geben Sie**VMs nach Betriebssystem zählen** als Namen ein, behalten Sie den Typ **Private Abfrage** bei, und klicken Sie dann unten im Bereich **Abfrage speichern** auf **Speichern**. Der Titel der Registerkarte ändert sich von **Abfrage 1** zu **VMs nach Betriebssystem zählen**.
@@ -76,7 +76,7 @@ Führen Sie die folgenden Schritte aus, um eine neue freigegebene Abfrage zu ers
     
    Klicken Sie auf **Abfrage ausführen**, um die Abfrageergebnisse im unteren Bereich anzuzeigen.
 
-   Weitere Informationen über diese Abfrage finden Sie unter [Beispiele: Zählen von virtuellen Computern nach Betriebssystemtyp](../samples/starter.md#count-virtual-machines-by-os-type).
+   Weitere Informationen über diese Abfrage finden Sie unter [Beispiele: Zählen von virtuellen Computern nach Betriebssystemtyp](../samples/starter.md#count-os).
 
 1. Wählen Sie **Speichern** oder **Speichern unter** aus.
 

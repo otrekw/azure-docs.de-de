@@ -5,16 +5,16 @@ services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4ec6e18aa4fa741ba784e68ccf9b5f87ad654eba
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2c5f65993909e142de6017b07591529cd7cb7b86
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591419"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200578"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Verwenden von OPENROWSET mit SQL On-Demand (Vorschauversion)
 
@@ -45,10 +45,12 @@ Dies ist eine schnelle und einfache Möglichkeit, den Inhalt der Dateien ohne Vo
                     TYPE = 'PARQUET') AS file
     ```
 
+
     Mit dieser Option können Sie den Speicherort des Speicherkontos in der Datenquelle konfigurieren und die Authentifizierungsmethode angeben, die für den Speicherzugriff verwendet werden soll. 
     
     > [!IMPORTANT]
-    > `OPENROWSET` ohne `DATA_SOURCE` bietet eine schnelle und einfache Möglichkeit, auf die Speicherdateien zuzugreifen, weist jedoch eingeschränkte Authentifizierungsoptionen auf. Beispielsweise kann der Azure AD-Prinzipal nur auf Dateien über deren [Azure AD-Identität](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) und nicht auf öffentlich verfügbare Dateien zugreifen. Wenn Sie leistungsfähigere Authentifizierungsoptionen benötigen, verwenden Sie die `DATA_SOURCE`-Option, und definieren Sie die Anmeldeinformation, die Sie für den Speicherzugriff verwenden möchten.
+    > `OPENROWSET` ohne `DATA_SOURCE` bietet eine schnelle und einfache Möglichkeit, auf die Speicherdateien zuzugreifen, weist jedoch eingeschränkte Authentifizierungsoptionen auf. Beispielsweise können Azure AD-Prinzipale nur auf Dateien über deren [Azure AD-Identität](develop-storage-files-storage-access-control.md?tabs=user-identity) oder öffentlich verfügbare Dateien zugreifen. Wenn Sie leistungsfähigere Authentifizierungsoptionen benötigen, verwenden Sie die `DATA_SOURCE`-Option, und definieren Sie die Anmeldeinformation, die Sie für den Speicherzugriff verwenden möchten.
+
 
 ## <a name="security"></a>Sicherheit
 
@@ -57,10 +59,11 @@ Ein Datenbankbenutzer muss über die Berechtigung `ADMINISTER BULK OPERATIONS` v
 Der Speicheradministrator muss einem Benutzer außerdem den Zugriff auf die Dateien ermöglichen, indem er ein gültiges SAS-Token bereitstellt oder dem Azure AD-Prinzipal den Zugriff auf Speicherdateien ermöglicht. Weitere Informationen zur Speicherzugriffssteuerung finden Sie in [diesem Artikel](develop-storage-files-storage-access-control.md).
 
 `OPENROWSET` verwendet die folgenden Regeln, um zu bestimmen, wie die Authentifizierung beim Speicher erfolgt:
-- Bei `OPENROWSET` mit `DATA_SOURCE` ist der Authentifizierungsmechanismus vom Aufrufertyp abhängig.
-  - AAD-Anmeldungen können nur über die eigene [Azure AD-Identität](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) auf Dateien zugreifen, wenn der Azure-Speicher dem Azure AD-Benutzer den Zugriff auf zugrunde liegende Dateien ermöglicht (z. B. wenn der Aufrufer über die Berechtigung als Leser für den Speicher verfügt) und wenn Sie die [Azure AD-Pass-Through-Authentifizierung](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) für den Synapse SQL-Dienst aktivieren.
-  - SQL-Anmeldungen können auch `OPENROWSET` ohne `DATA_SOURCE` verwenden, um auf öffentlich verfügbare Dateien, Dateien, die mit einem SAS-Token geschützt sind, oder eine verwaltete Identität des Synapse-Arbeitsbereichs zuzugreifen. Sie müssen eine [serverbezogene Anmeldeinformation erstellen](develop-storage-files-storage-access-control.md#examples), um den Zugriff auf Speicherdateien zuzulassen. 
-- Bei `OPENROWSET` mit `DATA_SOURCE` ist der Authentifizierungsmechanismus in der datenbankbezogenen Anmeldeinformation definiert, die der referenzierten Datenquelle zugewiesen ist. Mit dieser Option können Sie auf öffentlich verfügbaren Speicher zugreifen oder über ein SAS-Token, die verwaltete Identität des Arbeitsbereichs oder die [Azure AD-Identität des Aufrufers](develop-storage-files-storage-access-control.md?tabs=user-identity#) (wenn der Aufrufer der Azure AD-Prinzipal ist) auf den Speicher zugreifen. Wenn `DATA_SOURCE` auf den nicht öffentlichen Azure-Speicher verweist, müssen Sie eine [datenbankbezogene Anmeldeinformation erstellen](develop-storage-files-storage-access-control.md#examples) und in `DATA SOURCE` darauf verweisen, um den Zugriff auf Speicherdateien zuzulassen.
+- Bei `OPENROWSET` ohne `DATA_SOURCE` ist der Authentifizierungsmechanismus abhängig vom Aufrufertyp.
+  - Jeder Benutzer kann `OPENROWSET` ohne `DATA_SOURCE` zum Lesen öffentlich verfügbarer Dateien im Azure-Speicher verwenden.
+  - Azure AD-Anmeldungen können über die eigene [Azure AD-Identität](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) auf geschützte Dateien zugreifen, wenn der Azure-Speicher dem Azure AD-Benutzer den Zugriff auf zugrunde liegende Dateien erlaubt (z. B. wenn der Aufrufer über die Berechtigung `Storage Reader` für den Speicher verfügt).
+  - SQL-Anmeldungen können `OPENROWSET` auch ohne `DATA_SOURCE` verwenden, um auf öffentlich verfügbare Dateien, Dateien, die mit einem SAS-Token geschützt sind, oder eine verwaltete Identität des Synapse-Arbeitsbereichs zuzugreifen. Sie müssen eine [serverbezogene Anmeldeinformation erstellen](develop-storage-files-storage-access-control.md#examples), um den Zugriff auf Speicherdateien zuzulassen. 
+- Bei `OPENROWSET` mit `DATA_SOURCE` ist der Authentifizierungsmechanismus in der datenbankbezogenen Anmeldeinformation definiert, die der referenzierten Datenquelle zugewiesen wurde. Mit dieser Option können Sie auf öffentlich verfügbaren Speicher zugreifen oder über ein SAS-Token, die verwaltete Identität des Arbeitsbereichs oder die [Azure AD-Identität des Aufrufers](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) (wenn der Aufrufer der Azure AD-Prinzipal ist) auf den Speicher zugreifen. Wenn `DATA_SOURCE` auf nicht öffentlichen Azure-Speicher verweist, müssen Sie eine [datenbankbezogene Anmeldeinformation erstellen](develop-storage-files-storage-access-control.md#examples) und in `DATA SOURCE` darauf verweisen, um den Zugriff auf Speicherdateien zu erlauben.
 
 Der Aufrufer muss über die Berechtigung `REFERENCES` für die Anmeldeinformation verfügen, um sie für die Authentifizierung beim Speicher zu verwenden.
 
@@ -105,16 +108,16 @@ Bei den Eingabedateien mit den Zieldaten für die Abfrage stehen zwei Optionen z
 **'unstructured_data_path'**
 
 Bei dem Pfad für unstrukturierte Daten kann es sich um einen absoluten oder relativen Pfad handeln:
-- Der absolute Pfad im Format '\<Präfix>://\<Speicherkontopfad>/\<Speicherpfad>' ermöglicht einem Benutzer, die Dateien direkt zu lesen.
+- Der absolute Pfad im Format \<prefix>://\<storage_account_path>/\<storage_path> ermöglicht einem Benutzer, die Dateien direkt zu lesen.
 - Der relative Pfad im Format '<Speicherpfad>' muss mit dem Parameter `DATA_SOURCE` verwendet werden und beschreibt das Dateimuster innerhalb des Speicherorts <Speicherkontopfad>, der in `EXTERNAL DATA SOURCE` definiert ist. 
 
  Nachfolgend sind die relevanten <storage account path>-Werte für die Verknüpfung mit Ihrer speziellen externen Datenquelle angegeben. 
 
 | Externe Datenquelle       | Präfix | Speicherkontopfad                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
-| Azure Blob Storage         | https  | \<Speicherkonto>.blob.core.windows.net             |
-| Azure Data Lake Store Gen1 | https  | \<Speicherkonto>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Store Gen2 | https  | \<Speicherkonto>.dfs.core.windows.net              |
+| Azure Blob Storage         | https  | \<storage_account>.blob.core.windows.net             |
+| Azure Data Lake Store Gen1 | https  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Store Gen2 | https  | \<storage_account>.dfs.core.windows.net              |
 ||||
 
 '\<storage_path>'
@@ -175,7 +178,7 @@ ESCAPE_CHAR = 'char'
 
 Dient zum Angeben des Zeichens in der Datei, das als Escapezeichen für sich selbst und für alle Trennzeichenwerte in der Datei fungiert. Wenn auf das Escapezeichen ein Wert folgt, bei dem es sich nicht um das Escapezeichen selbst oder um einen der Trennzeichenwerte handelt, wird das Escapezeichen beim Lesen des Werts gelöscht. 
 
-Der ESCAPE_CHAR-Parameter wird unabhängig davon angewendet, ob FIELDQUOTE aktiviert ist. Er fungiert nicht als Escapezeichen für das Zitierzeichen. Das Anführungszeichen wird in Übereinstimmung mit dem CSV-Verhalten von Excel mit doppelten Anführungszeichen als Escapezeichen versehen.
+Der ESCAPE_CHAR-Parameter wird unabhängig davon angewendet, ob FIELDQUOTE aktiviert ist. Er fungiert nicht als Escapezeichen für das Zitierzeichen. Das Anführungszeichen muss mit einem weiteren Anführungszeichen als Escapezeichen versehen werden. Anführungszeichen können nur in Spaltenwerten enthalten sein, wenn der Wert mit Anführungszeichen gekapselt ist.
 
 FIRSTROW = 'first_row' 
 
@@ -193,18 +196,18 @@ Gibt die Komprimierungsmethode an. Die folgende Komprimierungsmethode wird unter
 
 PARSER_VERSION = 'parser_version'
 
-Gibt die beim Lesen von Dateien zu verwendende Parserversion an. Derzeit werden die CSV-Parserversionen 1.0 und 2.0 unterstützt.
+Gibt die beim Lesen von Dateien zu verwendende Parserversion an. Zurzeit werden die CSV-Parserversionen 1.0 und 2.0 unterstützt:
 
 - PARSER_VERSION = '1.0'
 - PARSER_VERSION = '2.0'
 
-CSV-Parserversion 1.0 ist die funktionsreiche Standardversion, während 2.0 für Leistung erstellt wurde und nicht alle Optionen und Codierungen unterstützt. 
+Die CSV-Parserversion 1.0 ist die funktionsreiche Standardversion, während 2.0 im Hinblick auf Leistung erstellt wurde und nicht alle Optionen und Codierungen unterstützt. 
 
 Einzelheiten zu CSV-Parserversion 2.0:
 
 - Nicht alle Datentypen werden unterstützt.
 - Die maximale Zeilengröße beträgt 8 MB.
-- Folgende Optionen werden nicht unterstützt: DATA_COMPRESSION.
+- Die folgenden Optionen werden nicht unterstützt: DATA_COMPRESSION.
 - Eine leere Zeichenfolge in Anführungszeichen ("") wird als leere Zeichenfolge interpretiert.
 
 ## <a name="examples"></a>Beispiele
@@ -236,10 +239,6 @@ FROM
     ) AS [r]
 ```
 
-Wenn Sie eine Fehlermeldung erhalten, die besagt, dass die Dateien nicht aufgelistet werden können, müssen Sie den Zugriff auf den öffentlichen Speicher in Synapse SQL On-Demand aktivieren:
-- Wenn Sie eine SQL-Anmeldung verwenden, müssen Sie eine [serverbezogene Anmeldeinformation erstellen, die den Zugriff auf den öffentlichen Speicher gestattet](develop-storage-files-storage-access-control.md#examples).
-- Wenn Sie einen Azure AD-Prinzipal für den Zugriff auf den öffentlichen Speicher verwenden, müssen Sie eine [serverbezogene Anmeldeinformation erstellen, die den Zugriff auf den öffentliche Speicher gestattet](develop-storage-files-storage-access-control.md#examples), und die [Azure AD-Pass-Through-Authentifizierung](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through) deaktivieren.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Beispiele finden Sie im [Schnellstart zum Abfragen von Daten im Speicher](query-data-storage.md). Dort erfahren Sie, wie Sie OPENROWSET zum Lesen von [CSV](query-single-csv-file.md)-, [PARQUET](query-parquet-files.md)- und [JSON](query-json-files.md)-Dateiformaten verwenden. Sie erfahren außerdem, wie Sie die Ergebnisse Ihrer Abfrage mithilfe von [CETAS](develop-tables-cetas.md) in Azure Storage speichern.
+Weitere Beispiele finden Sie im [Schnellstart zum Abfragen von Daten im Speicher](query-data-storage.md). Dort erfahren Sie, wie Sie `OPENROWSET` zum Lesen von [CSV](query-single-csv-file.md)-, [PARQUET](query-parquet-files.md)- und [JSON](query-json-files.md)-Dateiformaten verwenden. Sie erfahren außerdem, wie Sie die Ergebnisse Ihrer Abfrage mithilfe von [CETAS](develop-tables-cetas.md) in Azure Storage speichern.

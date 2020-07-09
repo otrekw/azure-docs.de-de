@@ -2,14 +2,14 @@
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 07/10/2019
+ms.date: 06/01/2020
 ms.author: danlep
-ms.openlocfilehash: 8106b1a77f11874b1b13f41bfc9e62ea800afc98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9e275cbdaf264df3d0a40f032693fd93553e520
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68361262"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317510"
 ---
 ### <a name="database-tier"></a>Datenbankschicht
 
@@ -17,7 +17,7 @@ Die Datenbankschicht enthält die Datenbankinstanzen für die Anwendung. Bei der
 
 Wenn die Wahl auf Oracle DB fällt, kann die Datenbankinstanz in Azure über die Oracle DB-Images bereitgestellt werden, die auf dem Azure Marketplace verfügbar sind. Alternativ können Sie auch die Verbindung zwischen Azure und der OCI verwenden, um Oracle DB in einem PaaS-Modell in der OCI bereitzustellen.
 
-Oracle RAC können Sie unter Azure CloudSimple per IaaS-Modell oder in der OCI per PaaS-Modell bereitstellen. Wir empfehlen Ihnen, ein RAC-System mit zwei Knoten zu verwenden. 
+Für Oracle RAC können Sie OCI in einem PaaS-Modell verwenden. Wir empfehlen Ihnen, ein RAC-System mit zwei Knoten zu verwenden. Oracle RAC kann zwar in einem IaaS-Modell in Azure CloudSimple bereitgestellt werden, dies ist jedoch keine von Oracle unterstützte Konfiguration. Weitere Informationen finden Sie unter [Oracle-Programme, die für autorisierte Cloudumgebungen zulässig sind](http://www.oracle.com/us/corporate/pricing/authorized-cloud-environments-3493562.pdf).
 
 Verwenden Sie für Exadata-Systeme die OCI-Verbindung, und stellen Sie das Exadata-System in der OCI bereit. Im obigen Architekturdiagramm ist ein Exadata-System dargestellt, das in der OCI in zwei Subnetzen bereitgestellt wurde.
 

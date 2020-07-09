@@ -6,12 +6,12 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: ee5a12b11e36f3d1e08d1154d21f198c0fd1b76e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 792f968f5d6eadd037043b01fa5764f8c3c9e193
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085212"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905961"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>Tutorial: Erstellen einer PHP- und MySQL-App in Azure
 
@@ -630,3 +630,8 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie der App eine
 
 > [!div class="nextstepaction"]
 > [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](app-service-web-tutorial-custom-domain.md)
+
+Weitere Ressourcen:
+
+> [!div class="nextstepaction"]
+> [Konfigurieren einer PHP-App](configure-language-php.md)

@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537235"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Rollover von Signaturschlüsseln in Azure Active Directory
@@ -273,7 +273,7 @@ Nachdem Sie diese Schritte ausgeführt haben, wird die „Web.config“-Datei Ih
 
 Gehen Sie folgendermaßen vor, um sicherzustellen, dass die Logik für das Schlüsselrollover funktioniert.
 
-1. Nachdem Sie sich vergewissert haben, dass Ihre Anwendung den oben dargestellten Code verwendet, öffnen Sie die Datei **Web.config**, navigieren Sie zum Block **\<issuerNameRegistry>** , und suchen Sie dort die folgenden Zeilen:
+1. Wenn Sie sich vergewissert haben, dass Ihre Anwendung den oben dargestellten Code verwendet, öffnen Sie die Datei **Web.config**, navigieren Sie zum Block **\<issuerNameRegistry>** , und suchen Sie dort die folgenden Zeilen:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -281,7 +281,7 @@ Gehen Sie folgendermaßen vor, um sicherzustellen, dass die Logik für das Schl�
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. Ändern Sie in der Einstellung **\<add thumbprint="">** den Fingerabdruckwert, indem Sie ein beliebiges Zeichen durch ein anderes ersetzen. Speichern Sie die Datei **Web.config** .
+2. In der Tabelle **\<add thumbprint="">** den Fingerabdruckwert, indem Sie ein beliebiges Zeichen durch ein anderes ersetzen. Speichern Sie die Datei **Web.config** .
 3. Erstellen Sie die Anwendung, und führen Sie sie anschließend aus. Wenn Sie den Anmeldevorgang abschließen, aktualisiert die Anwendung den Schlüssel, indem die erforderlichen Informationen vom Verbundmetadaten-Dokument Ihres Verzeichnisses heruntergeladen werden. Falls bei der Anmeldung Probleme auftreten, vergewissern Sie sich, dass die Änderungen in Ihrer Anwendung korrekt sind. Lesen Sie hierzu den Artikel [Hinzufügen einer Anmeldung zu einer Webanwendung mithilfe von Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect), oder laden Sie das folgende Codebeispiel herunter: [Mehrinstanzenfähige Cloudanwendung für Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>Mit Visual Studio 2008 oder 2010 und Windows Identity Foundation (WIF) v1.0 für .NET 3.5 erstellte Webanwendungen zum Schutz von Ressourcen

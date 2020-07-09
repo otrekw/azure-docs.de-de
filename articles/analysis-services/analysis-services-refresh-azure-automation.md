@@ -4,14 +4,14 @@ description: In diesem Artikel wird beschrieben, wie Sie Modellaktualisierungen 
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73572349"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926560"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualisieren mit Azure Automation
 
@@ -60,7 +60,7 @@ Der von Ihnen erstellte Dienstprinzipal muss über Serveradministratorberechtigu
 
     ![Erstellen von Anmeldeinformationen](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. Geben Sie die Details für die Anmeldeinformationen ein.  Geben Sie für den **Benutzernamen** die **SPN-Client-ID** und für das **Kennwort** das **SPN-Geheimnis** ein.
+2. Geben Sie die Details für die Anmeldeinformationen ein. Geben Sie bei **Benutzername** die Anwendungs-ID (App-ID) des Dienstprinzipals und dann bei **Kennwort** das Geheimnis für den Dienstprinzipal ein.
 
     ![Erstellen von Anmeldeinformationen](./media/analysis-services-refresh-azure-automation/7.png)
 
@@ -173,7 +173,7 @@ Ein virtueller Azure-Computer mit einer statischen öffentlichen IP-Adresse kann
 > [!IMPORTANT]
 > Stellen Sie sicher, dass die öffentliche IP-Adresse des virtuellen Computers als statische Adresse konfiguriert ist.
 >
->Weitere Informationen zum Konfigurieren von Azure Automation Hybrid Workern finden Sie unter [Automatisieren von Ressourcen im Rechenzentrum oder in der Cloud mit Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker).
+>Weitere Informationen zum Konfigurieren von Azure Automation Hybrid Worker finden Sie unter [Installieren eines Hybrid Runbook Workers](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation).
 
 Erstellen Sie nach dem Konfigurieren eines Hybrid Workers einen Webhook entsprechend der Beschreibung im Abschnitt [Nutzen mit Data Factory](#consume-with-data-factory).  Als einzigen Unterschied wählen Sie hier beim Konfigurieren des Webhooks die Option **Ausführen auf** > **Hybrid Worker** aus.
 

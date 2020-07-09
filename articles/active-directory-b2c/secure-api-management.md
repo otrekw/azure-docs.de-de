@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ffadca550a3a28b0ab490dd43c3b884602c93df
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638481"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385415"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Sichern einer Azure API Management-API mit Azure AD B2C
 
@@ -35,23 +35,23 @@ Sie benötigen die folgenden Ressourcen, bevor Sie mit den Schritten in diesem A
 
 Wenn Sie eine API in Azure API Management mit Azure AD B2C sichern, benötigen Sie mehrere Werte für die [eingehende Richtlinie](../api-management/api-management-howto-policies.md), die Sie in APIM erstellen. Notieren Sie sich zuerst die Anwendungs-ID einer Anwendung, die Sie zuvor in Ihrem Azure AD B2C-Mandanten registriert haben. Wenn Sie die Anwendung verwenden, die Sie in den Voraussetzungen erstellt haben, verwenden Sie die Anwendungs-ID für *webbapp1*.
 
-Sie können die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden, um die Anwendungs-ID abzurufen. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregintro)
+Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie unsere neue einheitliche Benutzeroberfläche für **App-Registrierungen** oder unsere alte Benutzeroberfläche für **Anwendungen (Legacy)** verwenden. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregtraining)
 
-#### <a name="applications"></a>[Anwendungen](#tab/applications/)
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
-1. Wählen Sie unter **Verwalten** die Option **Anwendungen**.
-1. Notieren Sie den Wert in der Spalte **ANWENDUNGS-ID** für *webapp1* oder eine andere Anwendung, die Sie zuvor erstellt haben.
-
-#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[App-Registrierungen](#tab/app-reg-ga/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
-1. Wählen Sie **App-Registrierungen (Vorschau)** und dann die Registerkarte **Anwendungen mit Besitzer** aus.
+1. Klicken Sie erst auf **App-Registrierungen** und dann auf die Registerkarte **Anwendungen mit Besitzer**.
 1. Notieren Sie den Wert in der Spalte **Anwendungs-ID (Client)** für *webapp1* oder eine andere Anwendung, die Sie zuvor erstellt haben.
+
+#### <a name="applications-legacy"></a>[Anwendungen (Legacy)](#tab/applications-legacy/)
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
+1. Klicken Sie unter **Verwalten** auf die Option **Applications (Legacy)** (Anwendungen (Legacy)).
+1. Notieren Sie den Wert in der Spalte **ANWENDUNGS-ID** für *webapp1* oder eine andere Anwendung, die Sie zuvor erstellt haben.
 
 * * *
 
@@ -88,7 +88,7 @@ Nun können Sie die eingehende Richtlinie, mit der API-Aufrufe überprüft werde
 1. Klicken Sie auf **APIs**.
 1. Wählen Sie die API aus, die Sie mit Azure AD B2C sichern möchten.
 1. Klicken Sie auf die Registerkarte **Entwurf**.
-1. Wählen Sie unter **Eingehende Verarbeitung** **\</\>** aus, um den Richtliniencode-Editor zu öffnen.
+1. Wählen Sie unter **Inbound processing** (Eingehende Verarbeitung) **\</\>** aus, um den Richtliniencode-Editor zu öffnen.
 1. Platzieren Sie das folgende `<validate-jwt>`-Tag in der `<inbound>`-Richtlinie.
 
     1. Aktualisieren Sie den `url`-Wert im `<openid-config>`-Element durch die bekannte Konfigurations-URL Ihrer Richtlinie.
@@ -171,7 +171,7 @@ Nachdem Sie sich das Zugriffstoken und den APIM-Abonnementschlüssel notiert hab
 
 1. Wählen Sie in Postman die Schaltfläche **Send** (Senden) aus, um die Anforderung auszuführen. Wenn Sie alles korrekt konfiguriert haben, wird Ihnen eine JSON-Antwort mit einer Sammlung von Konferenzsprechern angezeigt werden (hier abgeschnitten):
 
-    ```JSON
+    ```json
     {
       "collection": {
         "version": "1.0",
@@ -206,7 +206,7 @@ Nachdem Sie nun eine erfolgreiche Anforderung durchgeführt haben, testen Sie de
 
 1. Wählen Sie die Schaltfläche **Send** (Senden) aus, um die Anforderung auszuführen. Bei einem ungültigen Token ist das erwartete Ergebnis der nicht autorisierte Statuscode `401`:
 
-    ```JSON
+    ```json
     {
         "statusCode": 401,
         "message": "Unauthorized. Access token is missing or invalid."
@@ -219,7 +219,7 @@ Wenn Ihnen der Statuscode `401` angezeigt wird, haben Sie überprüft, dass nur 
 
 Mehrere Anwendungen interagieren in der Regel mit einer einzigen REST-API. Damit Ihre API Tokens für mehrere Apps akzeptieren kann, fügen Sie die entsprechenden App-Kennungen dem Element `<audiences>` in der APIM-Eingangsrichtlinie zu.
 
-```XML
+```xml
 <!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
@@ -229,7 +229,7 @@ Mehrere Anwendungen interagieren in der Regel mit einer einzigen REST-API. Damit
 
 Wenn Sie mehrere Tokenaussteller unterstützen möchten, fügen Sie deren Endpunkt-URIs zum `<issuers>`-Element in der eingehenden APIM-Richtlinie hinzu.
 
-```XML
+```xml
 <!-- Accept tokens from multiple issuers -->
 <issuers>
     <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
@@ -249,7 +249,7 @@ Gehen Sie wie folgt vor, um eine gestaffelte Migration durchzuführen:
 
 Die folgende eingehende APIM-Beispielrichtlinie zeigt, wie Token akzeptiert werden, die sowohl von b2clogin.com als auch von login.microsoftonline.com ausgestellt wurden. Außerdem unterstützt sie API-Anforderungen von zwei Anwendungen.
 
-```XML
+```xml
 <policies>
     <inbound>
         <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

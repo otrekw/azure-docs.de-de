@@ -4,15 +4,15 @@ description: Dieser Artikel bietet eine Übersicht über die Konfigurationen von
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00291373ae1e30eca2fdf5f9435fc2201a492e40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235754"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84988073"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Übersicht über Konfigurationen von VPN-Partnergeräten
 Dieser Artikel bietet eine Übersicht über das Konfigurieren von lokalen VPN-Geräten für die Verbindung mit Azure-VPN-Gateways. Um sich mit denselben Parametern mit verschiedenen lokalen VPN-Geräten zu verbinden, werden ein virtuelles Azure-Beispielnetzwerk und die VPN-Gatewayeinrichtung verwendet.

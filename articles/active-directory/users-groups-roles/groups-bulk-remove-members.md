@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b3c6e471a8e44236baf9bfc2c8eb6c9d5526d72
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: e9084b486681ded0c194c93f07a404f5f5e88fa6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203449"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728468"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Massenentfernung von Gruppenmitgliedern in Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "82203449"
 
 ## <a name="understand-the-csv-template"></a>Grundlegendes zur CSV-Vorlage
 
-Laden Sie die CSV-Vorlage für Massenuploads herunter, und füllen Sie sie aus, um mehrere Azure AD-Gruppenmitglieder in einem Vorgang hinzuzufügen. Ihre CSV-Vorlage ähnelt möglicherweise dem folgenden Beispiel:
+Laden Sie die CSV-Vorlage für den Massenupload herunter, und füllen Sie sie aus, um Azure AD-Gruppenmitglieder in einem Vorgang hinzuzufügen. Ihre CSV-Vorlage ähnelt etwa dem folgenden Beispiel:
 
 ![Hochzuladendes Arbeitsblatt mit Anmerkungen zum Zweck und den Werten für die Zeilen und Spalten](./media/groups-bulk-remove-members/template-example.png)
 
@@ -57,7 +57,7 @@ Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 
 1. Öffnen Sie die CSV-Datei, und fügen Sie für jedes aus der Gruppe zu entfernende Gruppenmitglied eine Zeile hinzu (die erforderlichen Werte sind „Mitgliedsobjekt-ID“ oder „Benutzerprinzipalname“). Speichern Sie dann die Datei.
 
-   ![Die CSV-Datei enthält Namen und IDs der zu entfernenden Mitglieder.](./media/groups-bulk-remove-members/csv-file.png)
+    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="Die CSV-Datei enthält Namen und IDs der zu entfernenden Mitglieder":::
 
 1. Navigieren Sie auf der Seite **Massenentfernung von Gruppenmitgliedern** unter **CSV-Datei hochladen** zur entsprechenden Datei. Wenn Sie die Datei auswählen, wird mit der Überprüfung der CSV-Datei begonnen.
 1. Nach der Überprüfung des Dateiinhalts wird auf der Seite für den Massenimport die Meldung **Datei erfolgreich hochgeladen** angezeigt. Wenn Fehler vorliegen, müssen Sie diese beheben, bevor Sie den Auftrag übermitteln können.

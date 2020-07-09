@@ -1,27 +1,14 @@
 ---
 title: Einrichten der Diagnoseprotokolle – Azure Event Hubs | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Aktivitäts- und Diagnoseprotokolle für Event Hubs in Azure einrichten.
-keywords: ''
-documentationcenter: ''
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.custom: seodec18
-ms.date: 04/28/2020
-ms.author: shvija
-ms.openlocfilehash: 0fb5da965a9b13667b8a128e83a5a4cd2c2b28d7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 06/23/2020
+ms.openlocfilehash: 976d8a7127438164c8b807b6f14d3ae877f44b65
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691841"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322454"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Einrichten von Diagnoseprotokollen für Azure Event Hubs
 
@@ -148,6 +135,16 @@ Die JSON-Zeichenfolge im Protokoll für automatische Skalierung enthält Element
 | resourceId | Azure Resource Manager-Ressourcen-ID |
 | `Message` | Informationsmeldung, die Details zur Aktion der automatischen Vergrößerung enthält. Die Meldung enthält den vorherigen und den aktuellen Wert der Durchsatzeinheit für einen bestimmten Namespace und den Grund, warum die Vergrößerung der Durchsatzeinheit ausgelöst wurde. |
 
+Beispiel für ein Autoskalierungsereignis: 
+
+```json
+{
+    "TrackingId": "fb1b3676-bb2d-4b17-85b7-be1c7aa1967e",
+    "Message": "Scaled-up EventHub TUs (UpdateStartTimeUTC: 5/13/2020 7:48:36 AM, PreviousValue: 1, UpdatedThroughputUnitValue: 2, AutoScaleReason: 'IncomingMessagesPerSecond reached 2170')",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name"
+}
+```
+
 ## <a name="kafka-coordinator-logs-schema"></a>Schema der Kafka-Koordinatorprotokolle
 Die JSON-Zeichenfolge im Kafka-Koordinatorprotokoll enthält Elemente, die in der folgenden Tabelle aufgeführt werden:
 
@@ -237,7 +234,7 @@ Die JSON-Zeichenfolge im Benutzerprotokoll für kundenseitig verwaltete Schlüss
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einführung in Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Übersicht über die Event Hubs-API](event-hubs-api-overview.md)
+- [Event Hubs-Beispiele](sdks.md)
 - Erste Schritte mit Event Hubs
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)

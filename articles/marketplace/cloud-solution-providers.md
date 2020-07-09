@@ -1,24 +1,24 @@
 ---
-title: Cloud Solution Provider (CSP) | Azure Marketplace
-description: Herausgeber können jetzt ihre Angebote über den Microsoft Cloud Solution Provider (CSP)-Partnerkanal verkaufen.
-author: dsindona
+title: Cloud Solution Provider – kommerzieller Microsoft-Marketplace
+description: Erfahren Sie, wie Sie Ihre Angebote über den Partnerkanal Microsoft Cloud Solution Provider-Programm (CSP) im kommerziellen Marketplace verkaufen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: b962610c585df288a9cb3297ed8e09c8abc5ac0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: d6c3af312717627a1719c5f1029ae638e7d4f827
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160646"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104434"
 ---
-# <a name="cloud-solution-providers"></a>Cloud Solution Provider (CSP)
+# <a name="cloud-solution-provider-program"></a>Cloud Solution Provider-Programm
 
-Softwareangebote können, zusätzlich zur öffentlichen Verfügbarkeit von Angeboten über die [Microsoft-Webstorefronts](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace), Millionen von berechtigten Microsoft-Kunden erreichen, die von Partnern des Cloud Solution Provider-Programms (CSP-Programm) betreut werden.
+In diesem Artikel wird erläutert, wie Sie Ihr Angebot so konfigurieren, dass es im Cloud Solution Provider-Programm (CSP) verfügbar ist. Sie können Ihre Angebote nicht nur über [Webstorefronts im kommerziellen Marketplace](comparing-appsource-azure-marketplace.md), sondern auch über das CSP-Programm verkaufen, um Millionen berechtigter Microsoft-Kunden zu erreichen, die das Programm nutzen können.
 
-Verleger konfigurieren Angebote für die Verfügbarkeit im CSP-Programm auf Abonnementbasis für ein neues oder vorhandenes Angebot, sodass Partner Ihre Produkte verkaufen und gebündelte Lösungen für Kunden erstellen können.
+Sie können neue oder bestehende Angebote für die Verfügbarkeit im CSP-Programm auf Abonnementbasis konfigurieren, sodass CSP-Partner Ihre Produkte verkaufen und gebündelte Lösungen für Kunden erstellen können.
 
 Die Herausgeber sind verantwortlich für die Bereitstellung des Supports zum Beheben von Problemen für den Endkunden. Außerdem müssen sie einen Mechanismus für Partner im CSP-Programm und/oder Kunden zur Kontaktaufnahme mit dem Support bereitstellen. Es hat sich bewährt, den Partnern im CSP-Programm Benutzerdokumentationen, Schulungen und Benachrichtigungen über Dienstintegrität/Dienstausfall (wie zutreffend) bereitzustellen, sodass die Partner im CSP-Programm für die Behandlung von Supportanforderungen der Ebene 1 von Kunden ausgerüstet sind.  
 
@@ -105,7 +105,7 @@ Wenn Sie einen Partner im CSP-Programm autorisiert haben und dieser Partner das 
 
 Wenn ein Partner im CSP-Programm Ihr Produkt noch nicht an seine Kunden verkauft hat und Sie den CSP entfernen möchten, nachdem das Angebot veröffentlicht wurde, gehen Sie folgendermaßen vor:
 
-1. Wechseln Sie zur Seite [Supportanfrage](https://partner.microsoft.com/support/v2/?stage=1). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
+1. Wechseln Sie zur Seite [Supportanfrage](https://aka.ms/marketplacepublishersupport). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
 
    > [!NOTE]
    > Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.
@@ -127,7 +127,7 @@ Verwenden Sie diesen Abschnitt, um zwischen den drei Optionen für CSP-Handelspa
 
 Wenn für Ihr Angebot derzeit **Option 1: Alle Partner im CSP-Programm** ausgewählt ist und Sie zu einer der beiden anderen Optionen wechseln möchten, gehen Sie folgendermaßen vor, um eine Anforderung zu erstellen:
 
-1. Wechseln Sie zur Seite [Supportanfrage](https://partner.microsoft.com/support/v2/?stage=1). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
+1. Wechseln Sie zur Seite [Supportanfrage](https://aka.ms/marketplacepublishersupport). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
 
    > [!NOTE]
    > Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.
@@ -145,7 +145,7 @@ Wenn für Ihr Angebot derzeit **Option 1: Alle Partner im CSP-Programm** ausgew�
 
 Wenn für Ihr Angebot derzeit **Option 2: Bestimmte, von mir ausgewählte Partner im CSP-Programm** ausgewählt ist und Sie zu **Option 1: Alle Partner im CSP-Programm** wechseln möchten, gehen Sie folgendermaßen vor, um eine Anforderung zu erstellen:
 
-1. Wechseln Sie zur Seite [Supportanfrage](https://partner.microsoft.com/support/v2/?stage=1). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
+1. Wechseln Sie zur Seite [Supportanfrage](https://aka.ms/marketplacepublishersupport). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
 
    > [!NOTE]
    > Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.
@@ -158,7 +158,7 @@ Wenn für Ihr Angebot derzeit **Option 2: Bestimmte, von mir ausgewählte Partne
 
  Wenn für Ihr Angebot derzeit **Option 2: Bestimmte, von mir ausgewählte Partner im CSP-Programm** ausgewählt ist und Sie zu **Option 3: Keine Partner im CSP-Programm** wechseln möchten, können Sie nur dann zu dieser Option wechseln, wenn die zuvor autorisierten Partner im CSP-Programm Ihr Angebot noch nicht an Endkunden verkauft haben. Gehen Sie folgendermaßen vor, um eine Anforderung zu erstellen:
 
-1. Wechseln Sie zur Seite [Supportanfrage](https://partner.microsoft.com/support/v2/?stage=1). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
+1. Wechseln Sie zur Seite [Supportanfrage](https://aka.ms/marketplacepublishersupport). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt.
 
    > [!NOTE]
    > Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.
@@ -191,7 +191,7 @@ Wenn Sie den CSP-Kanal abonniert haben, müssen Herausgeber im Cloud-Partnerport
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](marketplace-publishers-guide.md).
 
 Besuchen Sie [Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm), um weitere Informationen zu Marketplace-GTM-Diensten zu erhalten.
 

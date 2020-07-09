@@ -8,17 +8,17 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a71e476a214c44514c7d57c54a09a38218ad6d2a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74159114"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135674"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Einrichten der Notfallwiederherstellung für Azure-VMs nach der Migration in Azure 
 
 
-Lesen Sie diesen Artikel, wenn Sie mithilfe des [Site Recovery](site-recovery-overview.md)-Diensts [lokale Computer zu virtuellen Azure-Computern migriert](tutorial-migrate-on-premises-to-azure.md) haben und jetzt die virtuellen Computer für die Notfallwiederherstellung in einer sekundären Azure-Region einrichten möchten. In diesem Artikel erfahren Sie, wie Sie sicherstellen, dass der Azure-VM-Agent auf den migrierten virtuellen Computern installiert ist, und wie Sie den Site Recovery Mobility-Dienst entfernen, der nach der Migration nicht mehr erforderlich ist.
+Lesen Sie diesen Artikel, wenn Sie mithilfe des [Site Recovery](site-recovery-overview.md)-Diensts [lokale Computer zu virtuellen Azure-Computern migriert](./migrate-tutorial-on-premises-azure.md) haben und jetzt die virtuellen Computer für die Notfallwiederherstellung in einer sekundären Azure-Region einrichten möchten. In diesem Artikel erfahren Sie, wie Sie sicherstellen, dass der Azure-VM-Agent auf den migrierten virtuellen Computern installiert ist, und wie Sie den Site Recovery Mobility-Dienst entfernen, der nach der Migration nicht mehr erforderlich ist.
 
 
 
@@ -49,14 +49,14 @@ So überprüfen Sie, ob der Agent installiert ist
 2. Klicken Sie mit der rechten Maustaste auf die Datei, und wählen Sie in **Eigenschaften** die Registerkarte **Details** aus.
 3. Im Feld **Produktversion** sollte 2.6.1198.718 oder eine höhere Version angegeben sein.
 
-[Erfahren Sie mehr](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) über die Agent-Installation unter Windows.
+[Erfahren Sie mehr](../virtual-machines/extensions/agent-windows.md) über die Agent-Installation unter Windows.
 
 ### <a name="install-the-agent-on-linux-vms"></a>Installieren des Agents auf virtuellen Linux-Computern
 
 Installieren Sie den [Azure-Linux-VM](../virtual-machines/extensions/agent-linux.md)-Agent manuell wie folgt:
 
 1. Stellen Sie sicher, dass Sie auf dem virtuellen Computer über Administratorberechtigungen verfügen.
-2. Es wird dringend empfohlen, den Linux-VM-Agent mit einem RPM- oder DEB-Paket aus dem Paketrepository der Distribution zu installieren. Das Azure Linux-Agent-Paket wird von allen [unterstützten Distributionsanbietern](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) in ihre jeweiligen Images und Repositorys integriert.
+2. Es wird dringend empfohlen, den Linux-VM-Agent mit einem RPM- oder DEB-Paket aus dem Paketrepository der Distribution zu installieren. Das Azure Linux-Agent-Paket wird von allen [unterstützten Distributionsanbietern](../virtual-machines/linux/endorsed-distros.md) in ihre jeweiligen Images und Repositorys integriert.
     - Es wird dringend empfohlen, den Agent nur über ein Repository der Distribution zu aktualisieren.
     - Wir raten davon ab, den Linux-VM-Agent direkt von GitHub zu installieren und dann zu aktualisieren.
     -  Falls der aktuelle Agent für Ihre Distribution nicht verfügbar ist, können Sie sich an den zuständigen Support wenden, um Informationen zur Installation zu erhalten. 

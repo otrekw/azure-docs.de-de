@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67109329"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555387"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definieren einer Strategie zur Hybrididentitätsübernahme
 In dieser Aufgabe definieren Sie die Strategie zur Hybrididentitätsübernahme für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die hier erörtert wurden:
@@ -63,7 +63,7 @@ Von der Strategie, die Sie verwenden, hängt die Benutzeranmeldung ab.  Die folg
 
 **Einer Domäne angehörende und private Netzwerkanwendungen**:
 
-|  | Synchronisierte Identität | Verbundidentität |
+| Application | Synchronisierte Identität | Verbundidentität |
 | --- | --- | --- |
 | Webbrowser |Formularbasierte Authentifizierung |Einmaliges Anmelden, manchmal muss die Organisations-ID angegeben werden |
 | Outlook |Aufforderung zur Eingabe von Anmeldeinformationen |Aufforderung zur Eingabe von Anmeldeinformationen |
@@ -73,7 +73,7 @@ Von der Strategie, die Sie verwenden, hängt die Benutzeranmeldung ab.  Die folg
 
 **Externe oder nicht vertrauenswürdige Quellen**:
 
-|  | Synchronisierte Identität | Verbundidentität |
+| Application | Synchronisierte Identität | Verbundidentität |
 | --- | --- | --- |
 | Webbrowser |Formularbasierte Authentifizierung |Formularbasierte Authentifizierung |
 | Outlook, Skype for Business (Lync), OneDrive for Business, Office-Abonnement |Aufforderung zur Eingabe von Anmeldeinformationen |Aufforderung zur Eingabe von Anmeldeinformationen |

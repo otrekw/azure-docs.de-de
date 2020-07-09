@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ee9f2f0366cc680c874c6748d27e02dcadb82e35
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78942931"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673308"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Einführung in Azure Data Lake Storage Gen2
 
@@ -37,7 +37,7 @@ Data Lake Storage Gen2 ist darüber hinaus sehr kostengünstig, da diese SKU auf
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Besondere Features von Data Lake Storage Gen2
 
--   **Hadoop-kompatibler Zugriff:** Data Lake Storage Gen2 ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten sowie deren Verwaltung. Der neue [ABFS](data-lake-storage-abfs-driver.md)-Treiber ist in allen Apache Hadoop-Umgebungen verfügbar, einschließlich [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *,*  [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index) und [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/), um auf die in Data Lake Storage Gen2 gespeicherten Daten zuzugreifen.
+-   **Hadoop-kompatibler Zugriff:** Data Lake Storage Gen2 ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten sowie deren Verwaltung. Der neue [ABFS](data-lake-storage-abfs-driver.md)-Treiber ist in allen Apache Hadoop-Umgebungen verfügbar, einschließlich [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index) und [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics), um auf die in Data Lake Storage Gen2 gespeicherten Daten zuzugreifen.
 
 -   **Obermenge von POSIX-Berechtigungen:** Das Sicherheitsmodell für Data Lake Gen2 unterstützt Zugriffssteuerungslisten und POSIX-Berechtigungen sowie zusätzliche Granularität speziell für Data Lake Storage Gen2. Die Einstellungen können über den Storage-Explorer oder Frameworks wie Hive und Spark konfiguriert werden.
 
