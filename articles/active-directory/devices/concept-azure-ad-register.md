@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e2a8cad7cd4410a95a6ebd60ada22de456737bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1ce0723c0064cee711e851d16f4080a722e7539
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67462530"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554875"
 ---
 # <a name="azure-ad-registered-devices"></a>Bei Azure AD registrierte Geräte
 
 Ziel von bei Azure AD registrierten Geräten ist die Bereitstellung der Unterstützung für das BYOD-Szenario (Bring Your Own Device) oder von mobilen Geräten für Ihre Benutzer. In diesen Szenarien kann ein Benutzer mit einem persönlichen Gerät auf die über Azure Active Directory gesteuerten Ressourcen Ihres Unternehmens zugreifen.
 
-|   | Bei Azure AD registriert |
+| Bei Azure AD registriert | BESCHREIBUNG |
 | --- | --- |
 | **Definition** | Registrierung bei Azure AD, ohne dass ein Organisationskonto für die Anmeldung am Gerät verwendet werden muss |
 | **Hauptzielgruppe** | Gilt für alle Benutzer mit den folgenden Kriterien: |

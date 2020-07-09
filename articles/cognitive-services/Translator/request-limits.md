@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 06/29/2020
 ms.author: swmachan
-ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995784"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561469"
 ---
 # <a name="request-limits-for-translator"></a>Anforderungsgrenzwerte für Translator
 
@@ -66,14 +66,13 @@ Bei Verwendung der [BreakSentence](https://docs.microsoft.com/azure/cognitive-se
 
 | Sprache | Code | Zeichengrenzwert |
 |----------|------|-----------------|
-| Chinesisch | zh | 132 |
-| Deutsch | de | 290 |
-| Italienisch | it | 280 |
-| Japanisch | ja | 150 |
-| Portugiesisch | pt | 290 |
-| Spanisch | es | 280 |
-| Italienisch | it | 280 |
-| Thailändisch | th | 258 |
+| Chinesisch | zh | 166 |
+| Deutsch | de | 800 |
+| Italienisch | it | 800 |
+| Japanisch | ja | 166 |
+| Portugiesisch | pt | 800 |
+| Spanisch | es | 800 |
+| Thailändisch | th | 180 |
 
 > [!NOTE]
 > Dieser Grenzwert gilt nicht für Übersetzungen.

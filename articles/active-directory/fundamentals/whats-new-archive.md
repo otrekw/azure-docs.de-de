@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 06/30/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8fa352d81a6df70634c00978a3db155d5fb0d7e
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: f04fcae1ba218949019637e9a101492a487b430f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217005"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603739"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv für Neuerungen in Azure Active Directory
 
@@ -31,6 +31,44 @@ Der primäre Artikel [Neuerungen in Azure Active Directory – Anmerkungen zu di
 - Behebung von Programmfehlern
 - Veraltete Funktionen
 - Pläne für Änderungen
+
+---
+
+## <a name="december-2019"></a>Dezember 2019
+
+### <a name="integrate-sap-successfactors-provisioning-into-azure-ad-and-on-premises-ad-public-preview"></a>Integrieren der SAP SuccessFactors-Bereitstellung in Azure AD und lokale AD-Instanzen (Public Preview)
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** App-Bereitstellung  
+**Produktfunktion:** Identity Lifecycle Management
+
+Nun können Sie SAP SuccessFactors als autorisierende Identitätsquelle in Azure AD integrieren. Diese Integration unterstützt Sie bei der Automatisierung des gesamten Identitätslebenszyklus, einschließlich der Verwendung HR-basierter Ereignissen wie Neueinstellungen oder Kündigungen, um die Bereitstellung von Azure AD-Konten zu steuern.
+
+Weitere Informationen zur Einrichtung der eingehenden SAP SuccessFactors-Bereitstellung in Azure AD finden Sie im Tutorial [Konfigurieren der Benutzerbereitstellung von SAP SuccessFactors zu Active Directory](https://aka.ms/SAPSuccessFactorsInboundTutorial).
+
+---
+
+### <a name="support-for-customized-emails-in-azure-ad-b2c-public-preview"></a>Unterstützung für angepasste E-Mails in Azure AD B2C (Public Preview)
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** B2C – Verwaltung von Endbenutzeridentitäten  
+**Produktfunktion:** B2B/B2C
+
+Mit Azure AD B2C können Sie nun angepasste E-Mails erstellen, wenn Ihre Benutzer sich für Ihre Apps registrieren. Mithilfe von Anzeigesteuerelementen (Vorschauversion) und einem E-Mail-Drittanbieter wie [SendGrid](https://sendgrid.com/), [SparkPost](https://sparkpost.com/) oder einer benutzerdefinierten REST-API können Sie eigene Vorlagen, **Absenderadressen** und Betrefftexte verwenden. Darüber hinaus werden die Lokalisierung und benutzerdefinierte Einstellungen für einmalige Kennwörter unterstützt.
+
+Weitere Informationen finden Sie unter [Benutzerdefinierte E-Mail-Überprüfung in Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-email).
+
+---
+
+### <a name="replacement-of-baseline-policies-with-security-defaults"></a>Ersetzung von Baselinerichtlinien durch Sicherheitsstandards
+
+**Typ:** Geändertes Feature  
+**Dienstkategorie:** Andere  
+**Produktfunktion:** Identitätssicherheit und -schutz
+
+Als Teil eines standardmäßig sicheren Authentifizierungsmodells werden die vorhandenen Baselineschutzrichtlinien aus allen Mandanten entfernt. Diese Entfernung soll bis Ende Februar abgeschlossen sein. Sicherheitsstandards sind der Ersatz für diese Baselineschutzrichtlinien. Wenn Sie Baselineschutzrichtlinien verwenden, müssen Sie die Umstellung auf die neue Richtlinie mit Sicherheitsstandards oder den bedingten Zugriff planen. Wenn Sie diese Richtlinien nicht verwendet haben, müssen Sie keine Maßnahmen ergreifen.
+
+Weitere Informationen zu den neuen Sicherheitsstandards finden Sie unter [Was sind Sicherheitsstandards?](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults). Weitere Informationen über Richtlinien für den bedingten Zugriff finden Sie unter [Allgemeine Richtlinien für bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common).
 
 ---
 
@@ -2095,8 +2133,6 @@ Weitere Informationen zu den Apps finden Sie unter [SaaS-Anwendungsintegration m
 
 Mit unserem Update von OpenID Connect auf das OAuth 2.0-Codeberechtigungsprotokoll für unser Vorauthentifizierungsprotokoll müssen Sie keine zusätzliche Konfiguration zum Verwenden von Tableau mit dem Anwendungsproxy mehr vornehmen. Diese Protokolländerung hilft auch dem Anwendungsproxy bei der besseren Unterstützung moderner Apps mit Nur-HTTP-Umleitungen, die häufig in JavaScript- und HTML-Tags unterstützt werden.
 
-Weitere Informationen zu unserer nativen Unterstützung für Tableau finden Sie unter [Azure AD Application Proxy now with native Tableau support](https://blogs.technet.microsoft.com/applicationproxyblog/2018/08/14/azure-ad-application-proxy-now-with-native-tableau-support) (Azure AD-Anwendungsproxy jetzt auch mit nativer Unterstützung für Tableau).
-
 ---
 
 ### <a name="new-support-to-add-google-as-an-identity-provider-for-b2b-guest-users-in-azure-active-directory-preview"></a>Neu: Unterstützung für das Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer in Azure Active Directory (Vorschau)
@@ -2606,7 +2642,7 @@ Weitere Informationen finden Sie unter
 
 ### <a name="azure-ad-terms-of-use-now-has-per-user-reporting"></a>Azure AD-Nutzungsbedingungen jetzt mit benutzerbasierter Berichterstellung
 
-**Typ:** Neues Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Kompatibilität
+**Typ:** Neues Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Compliance
 
 Administratoren können jetzt bestimmte Nutzungsbedingungen auswählen und alle Benutzer anzeigen, die diesen Nutzungsbedingungen zugestimmt haben, sowie Datum/Uhrzeit der Zustimmung.
 
@@ -2642,7 +2678,7 @@ Weitere Informationen finden Sie unter [Konfigurieren des einmaligen Anmeldens f
 
 ### <a name="azure-ad-terms-of-use-now-generally-available"></a>Azure AD-Nutzungsbedingungen jetzt allgemein verfügbar
 
-**Typ:** Neues Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Kompatibilität
+**Typ:** Neues Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Compliance
 
 
 Azure AD-Nutzungsbedingungen wurden von „Public Preview“ in „Allgemein verfügbar“ geändert.
@@ -3087,7 +3123,7 @@ Weitere Informationen finden Sie unter
 
 ### <a name="terms-of-use-update-to-mobile-experience"></a>Update der Nutzungsbedingungen für Mobilgeräte
 
-**Typ:** Geändertes Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Kompatibilität
+**Typ:** Geändertes Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Compliance
 
 Wenn die Nutzungsbedingungen angezeigt werden, können Sie nun auf Folgendes klicken: **Probleme mit der Anzeige? Klicken Sie hier**. Durch Klicken auf diesen Link werden die Nutzungsbedingungen nativ auf Ihrem Gerät geöffnet. Unabhängig vom Schriftgrad des Dokuments oder der Bildschirmgröße des Geräts können Sie das Dokument bei Bedarf zoomen und lesen.
 
@@ -3187,7 +3223,7 @@ Weitere Informationen finden Sie unter
 
 ### <a name="terms-of-use-in-the-access-panel"></a>Nutzungsbedingungen im Zugriffsbereich
 
-**Typ:** Neues Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Kompatibilität
+**Typ:** Neues Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Compliance
 
 Ab sofort können Sie die von Ihnen zuvor akzeptierten Nutzungsbedingungen im Zugriffsbereich einsehen.
 
@@ -3229,7 +3265,7 @@ Weitere Informationen finden Sie unter [Weniger Anmeldeeingabeaufforderungen: Di
 
 ### <a name="add-configuration-to-require-the-terms-of-use-to-be-expanded-prior-to-accepting"></a>Hinzufügen einer Konfiguration, um vor dem Akzeptieren das Erweitern der Nutzungsbedingungen zu erfordern
 
-**Typ:** Neues Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Kompatibilität
+**Typ:** Neues Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Compliance
 
 Eine Option für Administratoren wurde hinzugefügt, mit der Benutzer aufgefordert werden können, die Nutzungsbedingungen vor dem Akzeptieren zu erweitern.
 
@@ -3345,7 +3381,7 @@ Weitere Informationen finden Sie unter
 
 ### <a name="terms-of-use-support-for-multiple-languages"></a>Unterstützung von Nutzungsbedingungen für mehrere Sprachen
 
-**Typ:** Neues Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Kompatibilität
+**Typ:** Neues Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Compliance
 
 Administratoren können jetzt neue Nutzungsbedingungen erstellen, die mehrere PDF-Dokumente enthalten. Diese PDF-Dateien können mit einer zugehörigen Sprache gekennzeichnet werden. Benutzern wird dann die PDF-Datei angezeigt, die der Sprache in den Einstellungen entspricht. Falls keine Übereinstimmung vorliegt, wird die Standardsprache angezeigt.
 
@@ -3534,7 +3570,7 @@ Weitere Informationen finden Sie in der [Referenz zur Berichterstellung für die
 
 ### <a name="terms-of-use"></a>Nutzungsbedingungen
 
-**Typ:** Neues Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Kompatibilität
+**Typ:** Neues Feature-**Dienstkategorie:** Nutzungsbedingungen-**Produktfunktion:** Compliance
 
 Mithilfe der Azure AD-Nutzungsbedingungen können Sie Benutzern Informationen wie relevante Haftungsausschlüsse zur Erfüllung gesetzlicher oder Complianceanforderungen zur Verfügung stellen.
 
@@ -3566,7 +3602,7 @@ Weitere Informationen finden Sie unter [Privileged Identity Management für Azur
 
 ### <a name="access-reviews"></a>Zugriffsüberprüfungen
 
-**Typ:** Neues Feature-**Dienstkategorie:** Zugriffsüberprüfungen-**Produktfunktion:** Kompatibilität
+**Typ:** Neues Feature-**Dienstkategorie:** Zugriffsüberprüfungen-**Produktfunktion:** Compliance
 
 Organisationen können mithilfe von Zugriffsüberprüfungen (in der Vorschauversion) effizient Gruppenmitgliedschaften und den Zugriff auf Unternehmensanwendungen verwalten:
 

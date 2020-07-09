@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22ab3e7403069ed1b579631b88c2ac2c41191ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf21f2ea5aacb36f3a76034e99b748bf4c6c363b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181323"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554773"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -41,13 +41,12 @@ Dieser Artikel setzt voraus, dass Sie die [Einführung in die Geräteidentitäts
 
 Um Ihre Azure AD-Hybridimplementierung zu planen, sollten Sie sich mit folgenden Themen vertraut machen:
 
-|   |   |
-| --- | --- |
-| ![Prüfen][1] | Überprüfung unterstützter Geräte |
-| ![Prüfen][1] | Überprüfung wichtiger Informationen |
-| ![Prüfen][1] | Überprüfung der kontrollierten Überprüfung der Azure AD-Hybrideinbindung |
-| ![Prüfen][1] | Auswählen Ihres Szenarios, basierend auf Ihrer Identitätsinfrastruktur |
-| ![Prüfen][1] | Überprüfung der lokalen AD UPN-Unterstützung (Benutzerprinzipalname) für Azure AD-Hybrideinbindung |
+> [!div class="checklist"]
+> - Überprüfung unterstützter Geräte
+> - Überprüfung wichtiger Informationen
+> - Überprüfung der kontrollierten Überprüfung der Azure AD-Hybrideinbindung
+> - Auswählen Ihres Szenarios, basierend auf Ihrer Identitätsinfrastruktur
+> - Überprüfung der lokalen AD UPN-Unterstützung (Benutzerprinzipalname) für Azure AD-Hybrideinbindung
 
 ## <a name="review-supported-devices"></a>Überprüfung unterstützter Geräte
 

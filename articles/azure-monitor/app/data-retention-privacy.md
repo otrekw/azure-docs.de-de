@@ -2,13 +2,13 @@
 title: Datenaufbewahrung und -speicherung in Azure Application Insights | Microsoft-Dokumentation
 description: Hinweis zur Datenaufbewahrung und Datenschutzrichtlinie
 ms.topic: conceptual
-ms.date: 09/29/2019
-ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234706"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601359"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datensammlung, -aufbewahrung und -speicherung in Application Insights
 
@@ -18,8 +18,8 @@ Zunächst die kurze Antwort:
 
 * Bei Verwendung der Standardtelemetriemodule in der vorkonfigurierten Form ist es äußerst unwahrscheinlich, dass sensible Daten an den Dienst übermittelt werden. Bei der Telemetrie dreht sich alles um Lade-, Leistungs- und Nutzungsmetriken sowie um Ausnahmeberichte und andere Diagnosedaten. In den Diagnoseberichten sind als Benutzerdaten hauptsächlich URLs sichtbar. Ihre App sollte jedoch in keinem Fall sensible Daten im Nur-Text-Format in eine URL einfügen.
 * Sie können Code schreiben, der zusätzliche benutzerdefinierte Telemetriedaten sendet, die Sie bei der Diagnose und Überwachung der Nutzung unterstützen. (Diese Erweiterbarkeit ist ein großartiges Feature von Application Insights.) Der Code kann theoretisch so geschrieben werden, dass versehentlich auch persönliche und andere sensible Daten einbezogen werden. Falls Ihre Anwendung mit solchen Daten arbeitet, müssen Sie sämtlichen Code, den Sie schreiben, einer gründlichen Prüfung unterziehen.
-* Beim Entwickeln und Testen Ihrer App können Sie problemlos überprüfen, was vom SDK gesendet wird. Die Daten erscheinen in den Debugging-Ausgabefenstern von IDE und Browser. 
-* Die Daten werden auf [Microsoft Azure](https://azure.com)-Servern in den USA oder in Europa gespeichert. (Ihre App kann jedoch überall ausgeführt werden.) Azure verfügt über [ausgefeilte Sicherheitsprozesse und erfüllt eine breite Palette von Kompatibilitätsstandards](https://azure.microsoft.com/support/trust-center/). Auf die Daten haben nur Sie selbst und Ihr Team Zugriff. Microsoft-Mitarbeiter können nur unter ganz bestimmten Bedingungen und mit Ihrem Wissen eingeschränkten Zugriff auf die Daten erlangen. Die Daten sind während der Übertragung und im Ruhezustand verschlüsselt.
+* Beim Entwickeln und Testen Ihrer App können Sie problemlos überprüfen, was vom SDK gesendet wird. Die Daten erscheinen in den Debugging-Ausgabefenstern von IDE und Browser.
+* Sie können den Speicherort auswählen, wenn Sie eine neue Application Insights-Ressource erstellen. Weitere Informationen über die Verfügbarkeit von Application Insights pro Region finden Sie [hier](https://azure.microsoft.com/global-infrastructure/services/?products=all).
 *   Überprüfen Sie die gesammelten Daten, da hierzu möglicherweise Daten zählen, die in einigen Fällen zulässig sind, in anderen hingegen nicht.  Ein gutes Beispiel dafür ist der Gerätename. Der Gerätename eines Servers hat keine datenschutzrelevanten Auswirkungen und ist hilfreich, der Gerätename eines Smartphones oder Laptops kann sich jedoch auf die Privatsphäre beziehen, und er ist möglicherweise weniger hilfreich. Ein SDK, das hauptsächlich auf Server abzielt, würde den Gerätenamen standardmäßig erfassen, und dies müsste sowohl für normale Ereignisse als auch Ausnahmen überschrieben werden.
 
 Im Rest dieses Artikels werden die obigen Antworten näher erläutert. Der Artikel ist in sich geschlossen, sodass Sie ihn auch Kollegen zeigen können, die nicht direkt Ihrem Team angehören.
@@ -202,8 +202,8 @@ Wir empfehlen nicht, Ihre Anwendung explizit so einzurichten, dass nur TLS 1.2 v
 
 |Plattform/Sprache | Support | Weitere Informationen |
 | --- | --- | --- |
-| Azure App Services  | Wird unterstützt, möglicherweise ist eine Konfiguration erforderlich. | Unterstützung wurde im April 2018 angekündigt. Informationen zur Ankündigung finden Sie in den [Konfigurationsdetails](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/).  |
-| Azure Function-Apps | Wird unterstützt, möglicherweise ist eine Konfiguration erforderlich. | Unterstützung wurde im April 2018 angekündigt. Informationen zur Ankündigung finden Sie in den [Konfigurationsdetails](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
+| Azure App Services  | Wird unterstützt, möglicherweise ist eine Konfiguration erforderlich. | Unterstützung wurde im April 2018 angekündigt. Informationen zur Ankündigung finden Sie in den [Konfigurationsdetails](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!).  |
+| Azure Function-Apps | Wird unterstützt, möglicherweise ist eine Konfiguration erforderlich. | Unterstützung wurde im April 2018 angekündigt. Informationen zur Ankündigung finden Sie in den [Konfigurationsdetails](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!). |
 |.NET | Wird unterstützt, Konfiguration hängt von der Version ab. | Ausführliche Informationen zur Konfiguration für .NET 4.7 und frühere Versionen finden Sie in [diesen Anweisungen](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
 |Statusmonitor | Wird unterstützt, Konfiguration erforderlich | Statusmonitor greift zur Unterstützung von TLS 1.2 auf die [Betriebssystemkonfiguration](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET-Konfiguration](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) zurück.
 |Node.js |  Wird in Version 10.5.0 unterstützt, möglicherweise ist eine Konfiguration erforderlich. | Informationen zu anwendungsspezifischen Konfigurationen finden Sie in der [offiziellen Dokumentation zu TLS/SSL bei Node.js](https://nodejs.org/api/tls.html). |

@@ -2,25 +2,25 @@
 title: Planen einer Azure Active Directory-Bereitstellung eines Zugriffsbereichs
 description: Anleitung zum Bereitstellen des Azure Active Directory-Zugriffsbereichs
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b8a74c85b63e3a532e49136ba3b33437d907694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76897076"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555304"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Planen einer Azure Active Directory-Bereitstellung eines Zugriffsbereichs
 
@@ -261,7 +261,7 @@ Zur Planung der Self-Service-Gruppenmitgliedschaft bestimmen Sie, ob Sie allen B
 
 Azure AD stellt [Berichte mit technischen und geschäftlichen Einblicken](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/) zur Verfügung. Arbeiten Sie mit den Besitzern Ihrer geschäftlichen und technischen Anwendungen zusammen, um den Besitz dieser Berichte zu übernehmen und sie regelmäßig zu nutzen. Die folgende Tabelle enthält einige Beispiele für typische Berichtsszenarien.
 
-|   | Risikomanagement| Steigerung der Produktivität| Governance und Einhaltung |
+| Beispiel | Risikomanagement| Steigerung der Produktivität| Governance und Einhaltung |
 |  - |- | - | - |
 | Berichtstypen|  Anwendungsberechtigungen und -nutzung| Kontobereitstellungsaktivität| Überprüfen, wer auf die Anwendungen zugreift |
 | Mögliche Aktionen| Überwachen des Zugriffs, Widerrufen von Berechtigungen| Beheben von Bereitstellungsfehlern| Widerrufen des Zugriffs |

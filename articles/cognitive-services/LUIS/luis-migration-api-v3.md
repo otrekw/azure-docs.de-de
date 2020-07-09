@@ -2,14 +2,14 @@
 title: Änderungen an Vorhersageendpunkten in der V3-API
 description: Die Abfragevorhersage-Endpunkt-APIs wurden in V3 geändert. In dieser Anleitung erfahren Sie, wie Sie zur Endpunkt-API-Version 3 migrieren.
 ms.topic: how-to
-ms.date: 05/15/2020
+ms.date: 06/30/2020
 ms.author: diberry
-ms.openlocfilehash: 293cbd583e1493c5f142604457a00a8055c7a802
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d3d8f4d77793390484c64b03393fb528dfa643b7
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338191"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610879"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Änderungen an Vorhersageendpunkten in V3
 
@@ -86,17 +86,7 @@ Falls Sie nach Version abfragen möchten, müssen Sie zuerst die [Veröffentlich
 
 ### <a name="query-string-changes"></a>Änderungen an Abfragezeichenfolgen
 
-In der API V3 stehen andere Abfragezeichenfolgen-Parameter zur Verfügung.
-
-|Parametername|type|Version|Standard|Zweck|
-|--|--|--|--|--|
-|`log`|boolean|V2 und V3|false|Speichern Sie die Abfrage in der Protokolldatei. Der Standardwert ist „false“.|
-|`query`|Zeichenfolge|Nur V3|Kein Standardwert: in GET-Anforderung erforderlich|**In V2** enthält der `q`-Parameter die vorherzusagende Äußerung. <br><br>**In V3** wird der `query`-Parameter verwendet, um anzugeben, dass dieses Feature verwendet werden soll.|
-|`show-all-intents`|boolean|Nur V3|false|Alle Absichten mit der entsprechenden Bewertung werden innerhalb des **prediction.intents**-Objekts zurückgegeben. Absichten werden als Objekte in einem übergeordneten `intents`-Objekt zurückgegeben. `prediction.intents.give` ermöglicht den programmgesteuerten Zugriff, ohne die Absicht im Array suchen zu müssen. In V2 werden diese Absichten in einem Array zurückgegeben. |
-|`verbose`|boolean|V2 und V3|false|Wenn **in V2** TRUE festgelegt wird, werden alle vorhergesagten Absichten zurückgegeben. Wenn Sie alle vorhergesagten Absichten abrufen müssen, verwenden Sie den V3-Parameter von `show-all-intents`.<br><br>**In V3** stellt dieser Parameter nur Details zu Entitätsmetadaten einer Entitätsvorhersage bereit.  |
-|`timezoneOffset`|Zeichenfolge|V2|-|Zeitzone angewendet auf datetimeV2-Entitäten.|
-|`datetimeReference`|Zeichenfolge|V3|-|[Zeitzone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) angewendet auf datetimeV2-Entitäten. Ersetzt `timezoneOffset` aus V2.|
-
+[!INCLUDE [V3 query params](./includes/v3-prediction-query-params.md)]
 
 ### <a name="v3-post-body"></a>V3 POST-Text
 

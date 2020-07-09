@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc429500081e65bf3fdf4d7f7557d2423f56ee23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229242"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611729"
 ---
 # <a name="service-fabric-terminology-overview"></a>Übersicht über Service Fabric-Terminologie
 
@@ -116,7 +116,7 @@ Weitere Informationen zum Bereitstellen von Anwendungen an den Imagespeicherdien
 
 **Repair Manager-Dienst**: Dies ist ein optionaler Systemdienst, mit dem Reparaturaktionen in einem Cluster auf sichere, automatisierbare und transparente Weise durchgeführt werden können. Der Reparatur-Manager wird für folgende Zwecke verwendet:
 
-   - Azure-Wartungsreparaturen in Azure Service Fabric-Clustern mit der [Dauerhaftigkeitsstufe „Silver“ und „Gold“](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)
+   - Azure-Wartungsreparaturen in Azure Service Fabric-Clustern mit der [Dauerhaftigkeitsstufe „Silver“ und „Gold“](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)
    - Reparaturaktionen für die [Anwendung für die Patchorchestrierung](service-fabric-patch-orchestration-application.md)
 
 ## <a name="deployment-and-application-models"></a>Bereitstellungs- und Anwendungsmodelle
