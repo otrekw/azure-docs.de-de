@@ -65,6 +65,10 @@
     - name: Leitfaden für gedrosselte Anforderungen
       displayName: 'pagination, batching, throttling, parallel'
       href: ./concepts/guidance-for-throttled-requests.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: Anleitungen
   items:
     - name: Abrufen von Ressourcenänderungen

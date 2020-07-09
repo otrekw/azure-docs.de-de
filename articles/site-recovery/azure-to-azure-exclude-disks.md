@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
-ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a21460279420c46b11c43615ae5ecc7bfa81de4d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75973674"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135807"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Ausschließen von Datenträgern von der PowerShell-Replikation von Azure-VMs
 
@@ -25,14 +25,14 @@ Vorbereitungen:
 
 - Stellen Sie sicher, dass Sie die [Architektur und die Komponenten zur Notfallwiederherstellung](azure-to-azure-architecture.md) verstehen.
 - Überprüfen Sie die [Supportanforderungen](azure-to-azure-support-matrix.md) für alle Komponenten.
-- Stellen Sie sicher, dass Sie über das PowerShell-Az-Modul AzureRm verfügen. Informationen zum Installieren oder Aktualisieren von PowerShell finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Stellen Sie sicher, dass Sie über das PowerShell-Az-Modul AzureRm verfügen. Informationen zum Installieren oder Aktualisieren von PowerShell finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
 - Stellen Sie sicher, dass Sie mindestens einmal einen Recovery Services-Tresor erstellt und virtuelle Computer geschützt haben. Wenn Sie diese Schritte noch nicht ausgeführt haben, führen Sie das Verfahren unter [Einrichten der Notfallwiederherstellung für virtuelle Azure-Computer über Azure PowerShell](azure-to-azure-powershell.md) aus.
 - Wenn Sie Informationen zum Hinzufügen von Datenträgern zu einer für die Replikation aktivierten Azure-VM suchen, [lesen Sie diesen Artikel](azure-to-azure-enable-replication-added-disk.md).
 
 ## <a name="why-exclude-disks-from-replication"></a>Gründe für das Ausschließen von Datenträgern von der Replikation
 Es kann folgende Gründe für das Ausschließen von Datenträgern von der Replikation geben:
 
-- Ihr virtueller Computer hat die [Azure Site Recovery-Grenzwerte zur Replikation von Datenänderungsraten](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix) erreicht.
+- Ihr virtueller Computer hat die [Azure Site Recovery-Grenzwerte zur Replikation von Datenänderungsraten](./azure-to-azure-support-matrix.md) erreicht.
 
 - Die auf dem ausgeschlossenen Datenträger verarbeiteten Daten sind nicht wichtig oder müssen nicht repliziert werden.
 

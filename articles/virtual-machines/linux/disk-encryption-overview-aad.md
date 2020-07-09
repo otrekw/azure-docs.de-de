@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: cc9f3b54d427a30b587d8335f6ce9b013f407374
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: dbd44c5a90a656b804ff4e3bb9984a059ec3a89a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792563"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135420"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure Disk Encryption mit Azure AD (vorherige Version)
 
@@ -35,16 +35,17 @@ Virtuelle IaaS-Computer (Infrastructure-as-a-Service) müssen die folgenden Anfo
   - Der virtuelle IaaS-Computer muss eine Verbindung mit dem Azure-Speicherendpunkt herstellen können, an dem das Azure-Erweiterungsrepository gehostet wird, sowie mit einem Azure Storage-Konto, das die VHD-Dateien hostet.
   -  Wenn Ihre Sicherheitsrichtlinie den Zugriff von virtuellen Azure-Computern auf das Internet beschränkt, können Sie den obigen URI auflösen und eine spezielle Regel konfigurieren, um ausgehende Verbindungen mit den IP-Adressen zuzulassen. Weitere Informationen finden Sie unter [Zugreifen auf Azure Key Vault hinter einer Firewall](../../key-vault/general/access-behind-firewall.md).
   - Wenn TLS 1.0 unter Windows explizit deaktiviert und die .NET-Version nicht mindestens auf 4.6 aktualisiert wurde, sorgt die folgende Registrierungsänderung dafür, dass Azure Disk Encryption die neuere TLS-Version verwenden kann:
+
+  ```config-registry
+  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+  "SystemDefaultTlsVersions"=dword:00000001
+  "SchUseStrongCrypto"=dword:00000001
     
-            [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-            "SystemDefaultTlsVersions"=dword:00000001
-            "SchUseStrongCrypto"=dword:00000001
-    
-            [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-            "SystemDefaultTlsVersions"=dword:00000001
-            "SchUseStrongCrypto"=dword:00000001` 
-         
-    
+  [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+  "SystemDefaultTlsVersions"=dword:00000001
+  "SchUseStrongCrypto"=dword:00000001` 
+  ```
+
 ### <a name="group-policy"></a>Gruppenrichtlinie
  - Die Azure Disk Encryption-Lösung verwendet für virtuelle Windows-IaaS-Computer die externe BitLocker-Schlüsselschutzvorrichtung. Pushen Sie für in eine Domäne eingebundene virtuelle Computer keine Gruppenrichtlinien, die TPM-Schutzvorrichtungen erzwingen. Informationen zur Gruppenrichtlinie für die Option **BitLocker ohne kompatibles TPM zulassen** finden Sie in der [Referenz zur BitLocker-Gruppenrichtlinie](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 

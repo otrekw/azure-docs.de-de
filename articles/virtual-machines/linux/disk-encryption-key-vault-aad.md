@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: fe3040bee56507fe40ce748d3e9e51b06eaa0213
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5afbeba4344073698e21675c3eca7e284841e99f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512892"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135340"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption mit Azure AD (vorheriges Release)
 
@@ -153,10 +153,10 @@ Ihre Azure AD-Anwendung benötigt Rechte zum Zugreifen auf die Schlüssel oder g
 Verwenden Sie [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy), um die Zugriffsrichtlinie festzulegen. Weitere Informationen finden Sie unter [Verwalten von Key Vault mit der CLI 2.0](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret).
 
 Erteilen Sie dem über die Azure CLI erstellten Dienstprinzipal Zugriff, damit er Geheimnisse abrufen und Schlüssel mit dem folgenden Befehl packen kann:
- 
-     ```azurecli-interactive
-     az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
-     ```
+
+```azurecli-interactive
+az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
+```
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-the-portal"></a><a name="bkmk_KVAPRM"></a> Festlegen der Zugriffsrichtlinie für den Schlüsseltresor für die Azure AD-App im Portal
 

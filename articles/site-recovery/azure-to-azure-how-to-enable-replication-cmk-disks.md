@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: mayg
-ms.openlocfilehash: 367f29237a3f2a634f209026df47b0cbd6ffc97c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e4dcd8847d7d79d816d80b453a37f58c45417fd
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75899066"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135732"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Replizieren von Computern mit Datenträgern, die für kundenseitig verwaltete Schlüssel (CMK) aktiviert sind
 
@@ -40,7 +40,7 @@ In Beispiel ist die primäre Azure-Region „Asien, Osten“, und die sekundäre
     - **Zielspeicherort**: Der Standort, an den die Daten Ihrer virtuellen Quellcomputer repliziert werden. Site Recovery stellt eine Liste geeigneter Zielregionen bereit, die auf dem Standort des ausgewählten Computers basiert. Es empfiehlt sich, denselben Standort wie für den Recovery Services-Tresor zu verwenden.
     - **Zielabonnement**: Das Zielabonnement für die Notfallwiederherstellung. Zielabonnement und Quellabonnement sind standardmäßig identisch.
     - **Zielressourcengruppe**: Die Ressourcengruppe, der all Ihre replizierten virtuellen Computer angehören. Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe. Der Name erhält das Suffix `asr`. Falls bereits eine von Azure Site Recovery erstellte Ressourcengruppe vorhanden ist, wird diese wiederverwendet. Sie können die Gruppe auch anpassen, wie im folgenden Abschnitt gezeigt. Der Speicherort der Zielressourcengruppe kann eine beliebige Azure-Region sein, mit Ausnahme der Region, in der die virtuellen Quellcomputer gehostet werden.
-    - **Virtuelles Zielnetzwerk**: Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk. Der Name erhält das Suffix `asr`. Es wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet. Informationen zur Netzwerkzuordnung finden Sie [hier](site-recovery-network-mapping-azure-to-azure.md).
+    - **Virtuelles Zielnetzwerk**: Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk. Der Name erhält das Suffix `asr`. Es wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet. Informationen zur Netzwerkzuordnung finden Sie [hier](./azure-to-azure-network-mapping.md).
     - **Zielspeicherkonten (wenn die Quell-VM keine verwalteten Datenträger verwendet)** : Standardmäßig erstellt Site Recovery ein neues Zielspeicherkonto und übernimmt dabei die Speicherkonfiguration Ihrer Quell-VM. Sollte bereits ein Speicherkonto vorhanden sein, wird dieses wiederverwendet.
     - **Verwaltete Replikatdatenträger (wenn die Quell-VM verwaltete Datenträger verwendet)** : Site Recovery erstellt neue verwaltete Replikatdatenträger in der Zielregion, um die verwalteten Datenträger der Quell-VM zu spiegeln. Dabei wird der gleiche Speichertyp (Standard oder Premium) verwendet wie für die verwalteten Datenträger der Quell-VM.
     - **Cachespeicherkonten**: Site Recovery benötigt als zusätzliches Speicherkonto in der Quellregion ein sogenanntes *Cachespeicherkonto*. Alle Änderungen an den virtuellen Quellcomputern werden nachverfolgt und an das Cachespeicherkonto gesendet. Anschließend werden sie an den Zielspeicherort repliziert.
@@ -81,4 +81,3 @@ Führen Sie die folgenden Schritte aus, um die Site Recovery-Standardzieleinstel
 * Ich habe dem replizierten Element einen neuen CMK-aktivierten Datenträger hinzugefügt. Wie kann ich diesen Datenträger mit Azure Site Recovery replizieren?
 
     Das Hinzufügen eines neuen CMK-aktivierten Datenträgers zu einem vorhandenen replizierten Element wird nicht unterstützt. Deaktivieren Sie die Replikation, und aktivieren Sie die Replikation für den virtuellen Computer dann erneut.
-

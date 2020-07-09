@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sideeksh
-ms.openlocfilehash: 3d33b5a89a718a41e5c547551f6e7eb4f7033a63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 429ffcab147142ae2e96de13b7c9e1e5ee1ac7ba
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79504122"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133217"
 ---
 # <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>Konfigurieren von Proxyeinstellungen für den Mobilitätsdienst: Azure-zu-Azure-Notfallwiederherstellung
 
@@ -54,5 +54,5 @@ In diesem Fall stellt der Kunde die benutzerdefinierten Anwendungsproxyeinstellu
 „ProxyInfo.conf“ enthält die folgende Vorlage: [proxy] Address=http://1.2.3.4 Port=5678 BypassList=hypervrecoverymanager.windowsazure.com,login.microsoftonline.com,blob.core.windows.net. Die Umgehungsliste (BypassList) unterstützt keine Platzhalter wie „*.windows.net“, aber das Angeben von „windows.net“ reicht für die Umleitung aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte:
-- Lesen Sie [Netzwerkkonzepte für die Replikation zwischen Azure-Standorten](site-recovery-azure-to-azure-networking-guidance.md) zum Replizieren von virtuellen Azure-Computern.
-- Stellen Sie die Notfallwiederherstellung bereit, indem Sie [Azure-VMs replizieren](site-recovery-azure-to-azure.md).
+- Lesen Sie [Netzwerkkonzepte für die Replikation zwischen Azure-Standorten](./azure-to-azure-about-networking.md) zum Replizieren von virtuellen Azure-Computern.
+- Stellen Sie die Notfallwiederherstellung bereit, indem Sie [Azure-VMs replizieren](./azure-to-azure-quickstart.md).

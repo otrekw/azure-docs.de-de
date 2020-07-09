@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 501cf161a22aaa1ec37abda2b750106b6eaf3dc4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661669"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135208"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Einstellen der Unterstützung für die Notfallwiederherstellung zwischen von Kunden verwalteten Standorten (mit VMM) mit Azure Site Recovery
 
@@ -39,7 +39,7 @@ Nachstehend finden Sie die Alternativen, mit denen der Kunde dafür sorgen kann,
 - Option 1 (empfohlen): Entscheiden Sie sich, ab sofort [Azure als DR-Ziel zu verwenden](hyper-v-vmm-azure-tutorial.md).
 
 
-- Option 2: Wenn Sie auswählen, dass Sie die Standort-zu-Standort-Replikation mit der zugrunde liegende [Hyper-V-Replikat-Lösung](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica) fortsetzen möchten, können Sie Konfigurationen für die Notfallwiederherstellung mithilfe von Azure Site Recovery im Azure-Portal aber nicht verwalten. 
+- Option 2: Wenn Sie auswählen, dass Sie die Standort-zu-Standort-Replikation mit der zugrunde liegende [Hyper-V-Replikat-Lösung](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica) fortsetzen möchten, können Sie Konfigurationen für die Notfallwiederherstellung mithilfe von Azure Site Recovery im Azure-Portal aber nicht verwalten. 
 
 
 ## <a name="remediation-steps"></a>Schritte zur Bereinigung

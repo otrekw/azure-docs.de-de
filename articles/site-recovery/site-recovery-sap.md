@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190798"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133706"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Einrichten der Notfallwiederherstellung für die Bereitstellung einer SAP NetWeaver-App mit mehreren Ebenen
 
@@ -28,9 +28,9 @@ Sie können SAP NetWeaver-Anwendungsbereitstellungen mit [Azure Site Recovery](s
 
 Bevor Sie beginnen, stellen Sie sicher, dass Sie wissen, wie Sie die folgenden Aufgaben ausführen:
 
-* [Replizieren eines virtuellen Computers in Azure](azure-to-azure-walkthrough-enable-replication.md)
-* [Entwerfen eines Netzwerks für die Wiederherstellung](site-recovery-azure-to-azure-networking-guidance.md)
-* [Ausführen eines Testfailovers in Azure](azure-to-azure-walkthrough-test-failover.md)
+* [Replizieren eines virtuellen Computers in Azure](./azure-to-azure-tutorial-enable-replication.md)
+* [Entwerfen eines Netzwerks für die Wiederherstellung](./azure-to-azure-about-networking.md)
+* [Ausführen eines Testfailovers in Azure](./azure-to-azure-tutorial-dr-drill.md)
 * [Ausführen eines Failovers in Azure](site-recovery-failover.md)
 * [Replizieren eines Domänencontrollers](site-recovery-active-directory.md)
 * [Replizieren einer SQL Server-Instanz](site-recovery-sql.md)
@@ -111,7 +111,7 @@ Nachfolgend ist die Empfehlung für eine Notfallwiederherstellung der einzelnen 
 
 ## <a name="replicate-virtual-machines"></a>Replizieren von virtuellen Computern
 
-Zu Beginn des Replizieren aller virtuellen Computer für SAP-Anwendungen in ein Azure-Notfallwiederherstellungsrechenzentrum folgen Sie der Anleitung unter [Replikation eines virtuellen Computers in Azure](azure-to-azure-walkthrough-enable-replication.md).
+Zu Beginn des Replizieren aller virtuellen Computer für SAP-Anwendungen in ein Azure-Notfallwiederherstellungsrechenzentrum folgen Sie der Anleitung unter [Replikation eines virtuellen Computers in Azure](./azure-to-azure-tutorial-enable-replication.md).
 
 * Eine Anleitung zum Schutz von Active Directory und DNS finden Sie unter [Schützen von Active Directory und DNS](site-recovery-active-directory.md).
 

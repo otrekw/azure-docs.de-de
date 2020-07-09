@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 011904d7ce14f346b678c753c10a8f3258730ee1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f41e1d8843783addf601becfda87607253e0a18
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014518"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135911"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP NetWeaver
 
@@ -459,7 +459,9 @@ Dieser Vorgang sollte nur wenige Minuten dauern. Um sicherzustellen, dass dieser
 
 Das Ergebnis sollte wie folgt aussehen:
 
-    Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
+```output
+Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
+```
 
 Wenn das nicht der Fall ist, BEENDEN Sie die SAP-Bereitstellung, und untersuchen Sie, warum der setup-Befehl nicht wie erwartet funktioniert hat. Die Bereitstellung von SAP NetWeaver-Anwendungen auf SQL Server-Instanzen mit anderen SQL Server-Codeseiten als den oben genannten wird **NICHT** unterstützt.
 

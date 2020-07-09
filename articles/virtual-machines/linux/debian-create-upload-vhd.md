@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: d54f7a11d929c31fee29a788eb3a2ae2cc8f2703
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ebd20b6187fd4f04ac525e0152d805d9d81de3ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066709"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134603"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Vorbereiten einer Debian-VHD für Azure
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -27,16 +27,18 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits ein Debian Linux-Be
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>Verwenden von azure-manage zum Erstellen von Debian-VHDs
 Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar (beispielsweise die [azure-manage](https://github.com/credativ/azure-manage)-Skripts von [Credativ](https://www.credativ.com/)). Dies ist der empfohlene Ansatz, mit dem vermieden werden kann, ein Image von Grund auf neu zu erstellen. Wenn Sie beispielsweise eine Debian 8-VHD erstellen möchten, führen Sie die folgenden Befehle aus, um das Hilfsprogramm `azure-manage` (einschließlich Abhängigkeiten) herunterzuladen und das Skript `azure_build_image` auszuführen:
 
-    # sudo apt-get update
-    # sudo apt-get install git qemu-utils mbr kpartx debootstrap
+```console
+# sudo apt-get update
+# sudo apt-get install git qemu-utils mbr kpartx debootstrap
 
-    # sudo apt-get install python3-pip python3-dateutil python3-cryptography
-    # sudo pip3 install azure-storage azure-servicemanagement-legacy azure-common pytest pyyaml
-    # git clone https://github.com/credativ/azure-manage.git
-    # cd azure-manage
-    # sudo pip3 install .
+# sudo apt-get install python3-pip python3-dateutil python3-cryptography
+# sudo pip3 install azure-storage azure-servicemanagement-legacy azure-common pytest pyyaml
+# git clone https://github.com/credativ/azure-manage.git
+# cd azure-manage
+# sudo pip3 install .
 
-    # sudo azure_build_image --option release=jessie --option image_size_gb=30 --option image_prefix=debian-jessie-azure section
+# sudo azure_build_image --option release=jessie --option image_size_gb=30 --option image_prefix=debian-jessie-azure section
+```
 
 
 ## <a name="manually-prepare-a-debian-vhd"></a>Manuelles Vorbereiten einer Debian-VHD
@@ -45,56 +47,70 @@ Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar (beispielsweise 
 3. Wenn Sie das Betriebssystem mithilfe einer ISO-Datei installiert haben, kommentieren Sie in `/etc/apt/source.list` alle Zeilen aus, die sich auf „`deb cdrom`“ beziehen.
 
 4. Bearbeiten Sie die Datei `/etc/default/grub`, und ändern Sie den **GRUB_CMDLINE_LINUX**-Parameter wie folgt, um zusätzliche Kernelparameter für Azure einzubinden.
-   
-        GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
+    ```
 
 5. Erstellen Sie Grub neu und führen Sie Folgendes aus:
 
-        # sudo update-grub
+    ```console
+    # sudo update-grub
+    ```
 
 6. Fügen Sie „/etc/apt/sources.list“ die Debian-Azure-Repositorys für Debian 8 oder 9 hinzu:
 
     **Debian 8.x „Jessie“**
 
-        deb http://debian-archive.trafficmanager.net/debian jessie main
-        deb-src http://debian-archive.trafficmanager.net/debian jessie main
-        deb http://debian-archive.trafficmanager.net/debian-security jessie/updates main
-        deb-src http://debian-archive.trafficmanager.net/debian-security jessie/updates
-        deb http://debian-archive.trafficmanager.net/debian jessie-updates main
-        deb-src http://debian-archive.trafficmanager.net/debian jessie-updates main
-        deb http://debian-archive.trafficmanager.net/debian jessie-backports main
-        deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
+    ```config-grub
+    deb http://debian-archive.trafficmanager.net/debian jessie main
+    deb-src http://debian-archive.trafficmanager.net/debian jessie main
+    deb http://debian-archive.trafficmanager.net/debian-security jessie/updates main
+    deb-src http://debian-archive.trafficmanager.net/debian-security jessie/updates
+    deb http://debian-archive.trafficmanager.net/debian jessie-updates main
+    deb-src http://debian-archive.trafficmanager.net/debian jessie-updates main
+    deb http://debian-archive.trafficmanager.net/debian jessie-backports main
+    deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
+    ```
 
     **Debian 9.x „Stretch“**
 
-        deb http://debian-archive.trafficmanager.net/debian stretch main
-        deb-src http://debian-archive.trafficmanager.net/debian stretch main
-        deb http://debian-archive.trafficmanager.net/debian-security stretch/updates main
-        deb-src http://debian-archive.trafficmanager.net/debian-security stretch/updates main
-        deb http://debian-archive.trafficmanager.net/debian stretch-updates main
-        deb-src http://debian-archive.trafficmanager.net/debian stretch-updates main
-        deb http://debian-archive.trafficmanager.net/debian stretch-backports main
-        deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
+    ```config-grub
+    deb http://debian-archive.trafficmanager.net/debian stretch main
+    deb-src http://debian-archive.trafficmanager.net/debian stretch main
+    deb http://debian-archive.trafficmanager.net/debian-security stretch/updates main
+    deb-src http://debian-archive.trafficmanager.net/debian-security stretch/updates main
+    deb http://debian-archive.trafficmanager.net/debian stretch-updates main
+    deb-src http://debian-archive.trafficmanager.net/debian stretch-updates main
+    deb http://debian-archive.trafficmanager.net/debian stretch-backports main
+    deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
+    ```
 
 
 7. Installieren des Azure Linux Agent:
-   
-        # sudo apt-get update
-        # sudo apt-get install waagent
+
+    ```console
+    # sudo apt-get update
+    # sudo apt-get install waagent
+    ```
 
 8. Ab Debian 9 empfiehlt es sich, für virtuelle Computer in Azure den neuen Debian Cloud-Kernel zu verwenden. Wenn Sie diesen neuen Kernel installieren möchten, erstellen Sie zunächst eine Datei namens „/etc/apt/preferences.d/linux.pref“ mit folgendem Inhalt:
-   
-        Package: linux-* initramfs-tools
-        Pin: release n=stretch-backports
-        Pin-Priority: 500
-   
+
+    ```config-pref
+    Package: linux-* initramfs-tools
+    Pin: release n=stretch-backports
+    Pin-Priority: 500
+    ```
+
     Führen Sie dann „sudo apt-get install linux-image-cloud-amd64“ aus, um den neuen Debian Cloud-Kernel zu installieren.
 
 9. Setzen Sie den virtuellen Computer zurück und bereiten Sie ihn für die Bereitstellung in Azure vor. Führen Sie Folgendes aus:
-   
-        # sudo waagent –force -deprovision
-        # export HISTSIZE=0
-        # logout
+
+    ```console
+    # sudo waagent –force -deprovision
+    # export HISTSIZE=0
+    # logout
+    ```
 
 10. Klicken Sie im Hyper-V-Manager auf **Aktion** > „Herunterfahren“. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0fd3a6bc62feeb3728fa88b4aad56c8713bce11
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082666"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134917"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Hyper-V zu Azure
 
@@ -67,14 +67,14 @@ Die folgende Tabelle und Grafik bieten eine Übersicht der Komponenten, die für
 ### <a name="enable-protection"></a>Schutz aktivieren
 
 1. Nachdem Sie den Schutz für einen virtuellen Hyper-V-Computer über das Azure-Portal oder lokal aktiviert haben, wird der Auftrag **Schutz aktivieren** gestartet.
-2. Im Rahmen des Auftrags wird überprüft, ob der Computer die Voraussetzungen erfüllt. Anschließend wird [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) aufgerufen, um die Replikation mit den konfigurierten Einstellungen einzurichten.
-3. Der Auftrag startet die erste Replikation durch Aufrufen der [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx)-Methode, um eine vollständige VM-Replikation zu initiieren, und übermittelt die virtuellen Datenträger des virtuellen Computers an Azure.
+2. Im Rahmen des Auftrags wird überprüft, ob der Computer die Voraussetzungen erfüllt. Anschließend wird [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) aufgerufen, um die Replikation mit den konfigurierten Einstellungen einzurichten.
+3. Der Auftrag startet die erste Replikation durch Aufrufen der [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice)-Methode, um eine vollständige VM-Replikation zu initiieren, und übermittelt die virtuellen Datenträger des virtuellen Computers an Azure.
 4. Sie können den Auftrag auf der Registerkarte **Aufträge** überwachen.      ![Auftragsliste](media/hyper-v-azure-architecture/image1.png) ![Drilldown für „Schutz aktivieren“](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Erste Datenreplikation
 
-1. Wenn die erste Replikation ausgelöst wird, wird eine [Momentaufnahem der Hyper-V-VM](https://technet.microsoft.com/library/dd560637.aspx) erstellt.
+1. Wenn die erste Replikation ausgelöst wird, wird eine [Momentaufnahem der Hyper-V-VM](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) erstellt.
 2. Virtuelle Festplatten auf der VM werden nacheinander repliziert, bis alle in Azure kopiert wurden. Die Dauer ist abhängig von der Größe der VM und von der Netzwerkbandbreite. [Erfahren Sie, wie](https://support.microsoft.com/kb/3056159) die Netzwerkbandbreite erhöht werden kann.
 3. Falls während der ersten Replikation Datenträgeränderungen auftreten, werden die Änderungen mit dem Replication Tracker für Hyper-V-Replikate in Form von Hyper-V-Replikationsprotokollen (.hrl) nachverfolgt. Diese Protokolldateien befinden sich im gleichen Ordner wie die Datenträger. Jeder Datenträger verfügt über eine zugeordnete HRL-Datei, die an den sekundären Speicher gesendet wird. Beachten Sie, dass die Momentaufnahme- und Protokolldateien Festplattenressourcen belegen, während die anfängliche Replikation durchgeführt wird.
 4. Nach Abschluss der ersten Replikation wird die Momentaufnahme des virtuellen Computers gelöscht.

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fe899eebb0139dffabef96da32ab1641c983f726
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd913b597e52f81c19b9c6bb20e83be23e5b35bd
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338406"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134707"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Automatisieren von Verwaltungsaufgaben auf Azure Virtual Machines mit der SQL Server-Agent-Erweiterung (klassisch)
 > [!div class="op_single_selector"]
@@ -61,20 +61,28 @@ Anforderungen für die Verwendung der Erweiterung für SQL Server-IaaS-Agent auf
 
 Starten Sie Windows PowerShell, und verknüpfen Sie dann mithilfe des Befehls **Add-AzureAccount** PowerShell mit Ihrem Azure-Abonnement.
 
-    Add-AzureAccount
+```azurepowershell
+Add-AzureAccount
+```
 
 Wenn Sie über mehrere Abonnements verfügen, verwenden Sie **Select-AzureSubscription** , um das Abonnement auszuwählen, das die klassische Ziel-VM enthält.
 
-    Select-AzureSubscription -SubscriptionName <subscriptionname>
+```azurepowershell
+Select-AzureSubscription -SubscriptionName <subscriptionname>
+```
 
 Zu diesem Zeitpunkt können Sie mit dem Befehl **Get-AzureVM** eine Liste der klassischen virtuellen Computer und der zugeordneten Dienstnamen abrufen.
 
-    Get-AzureVM
+```azurepowershell
+Get-AzureVM
+```
 
 ## <a name="installation"></a>Installation
 Bei klassischen virtuellen Computern müssen Sie PowerShell für die Installation der Erweiterung für SQL Server-IaaS-Agent verwenden und die zugehörigen Dienste konfigurieren. Verwenden Sie zum Installieren der Erweiterung das PowerShell-Cmdlet **Set-AzureVMSqlServerExtension** . Mit dem folgenden Befehl wird die Erweiterung beispielsweise auf einem virtuellen Windows Server-Computer (klassisch) erstellt und „SQLIaaSExtension“ genannt.
 
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
+```azurepowershell
+Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
+```
 
 Bei einer Aktualisierung auf die aktuelle Version der SQL-IaaS-Agent-Erweiterung müssen Sie den virtuellen Computer nach der Aktualisierung neu starten.
 
@@ -91,7 +99,9 @@ Eine Möglichkeit, zu überprüfen, ob die Erweiterung installiert ist, ist das 
 
 Sie können auch das Azure PowerShell-Cmdlet **Get-AzureVMSqlServerExtension** verwenden.
 
-    Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
+```azurepowershell
+Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
+```
 
 ## <a name="removal"></a>Entfernen
 Im Azure-Portal können Sie die Erweiterung deinstallieren, indem Sie in den Eigenschaften des virtuellen Computers auf dem Blatt **Erweiterungen** auf die Auslassungspunkte klicken. Klicken Sie anschließend auf **Deinstallieren**.
@@ -100,7 +110,9 @@ Im Azure-Portal können Sie die Erweiterung deinstallieren, indem Sie in den Eig
 
 Sie können auch das PowerShell-Cmdlet **Remove-AzureVMSqlServerExtension** verwenden.
 
-    Get-AzureVM –ServiceName "service" –Name "vmname" | Remove-AzureVMSqlServerExtension | Update-AzureVM
+```azurepowershell
+Get-AzureVM –ServiceName "service" –Name "vmname" | Remove-AzureVMSqlServerExtension | Update-AzureVM
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Verwenden Sie einen der von der Erweiterung unterstützten Dienste. Weitere Informationen finden Sie in den im Abschnitt [Unterstützte Dienste](#supported-services) in diesem Artikel aufgeführten Themen.

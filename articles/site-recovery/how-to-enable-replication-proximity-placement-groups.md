@@ -5,18 +5,18 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 9fabf6cf4c8a3afc2d119fca2c8cdc2526ddbebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c125f11400a75d221a62aa62020001104e05d167
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84415864"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134894"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replizieren von virtuellen Azure-Computern, die in Näherungsplatzierungsgruppen ausgeführt werden
 
 In diesem Artikel wird beschrieben, wie virtuelle Computer, die in einer Näherungsplatzierungsgruppe ausgeführt werden, in eine sekundäre Region repliziert werden und wie ein Failover bzw. Failback ausgeführt wird.
 
-[Näherungsplatzierungsgruppen](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups-portal) sind eine logische Gruppierungsfunktion von virtuellen Azure-Computern, die Sie verwenden können, um die Netzwerklatenz zwischen virtuellen Computern zu verringern, die Ihren Anwendungen zugeordnet sind. Wenn die VMs innerhalb derselben Näherungsplatzierungsgruppe bereitgestellt werden, sind sie physisch so nah wie möglich beieinander. Näherungsplatzierungsgruppen eignen sich besonders, um die Anforderungen von latenzsensiblen Workloads zu erfüllen.
+[Näherungsplatzierungsgruppen](../virtual-machines/windows/proximity-placement-groups-portal.md) sind eine logische Gruppierungsfunktion von virtuellen Azure-Computern, die Sie verwenden können, um die Netzwerklatenz zwischen virtuellen Computern zu verringern, die Ihren Anwendungen zugeordnet sind. Wenn die VMs innerhalb derselben Näherungsplatzierungsgruppe bereitgestellt werden, sind sie physisch so nah wie möglich beieinander. Näherungsplatzierungsgruppen eignen sich besonders, um die Anforderungen von latenzsensiblen Workloads zu erfüllen.
 
 ## <a name="disaster-recovery-with-proximity-placement-groups"></a>Notfallwiederherstellung mit Näherungsplatzierungsgruppen
 
@@ -33,21 +33,21 @@ In einem typischen Szenario können Ihre virtuellen Computer in einer Näherungs
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Stellen Sie sicher, dass Sie über das PowerShell-Modul „Az“ verfügen. Wenn Sie PowerShell installieren oder aktualisieren müssen, befolgen Sie die Anweisungen unter [Handbuch zum Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+1. Stellen Sie sicher, dass Sie über das PowerShell-Modul „Az“ verfügen. Wenn Sie PowerShell installieren oder aktualisieren müssen, befolgen Sie die Anweisungen unter [Handbuch zum Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Einrichten von Site Recovery für Virtual Machines in einer Näherungsplatzierungsgruppe
 
 ### <a name="azure-to-azure"></a>Azure zu Azure
 
-1. [Melden](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#sign-in-to-your-microsoft-azure-subscription) Sie sich bei Ihrem Azure-Konto an, und legen Sie Ihr Abonnement fest.
-2. Rufen Sie die Details des virtuellen Computers, den Sie replizieren möchten, wie [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#get-details-of-the-virtual-machine-to-be-replicated) beschrieben ab.
-3. [Erstellen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-recovery-services-vault) Sie Ihren Recovery Services-Tresor, und [legen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#set-the-vault-context) Sie den Tresorkontext fest.
-4. Bereiten Sie den Tresor für die Replikation des virtuellen Computers vor. Dies umfasst das Erstellen eines [Service Fabric-Objekts](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-site-recovery-fabric-object-to-represent-the-primary-source-region) sowohl für die primäre Region als auch für die Wiederherstellungsregionen.
-5. [Erstellen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-site-recovery-protection-container-in-the-primary-fabric) Sie einen Site Recovery-Schutzcontainer im primären Fabric und den Wiederherstellungsfabrics.
-6. [Erstellen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-replication-policy) Sie eine Replikationsrichtlinie.
-7. Erstellen Sie eine Schutzcontainerzuordnung zwischen dem primären Container und dem Wiederherstellungsschutzcontainer. Verwenden Sie dazu [diese](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container) Schritte sowie eine Schutzcontainerzuordnung für Failback, wie [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover) beschrieben.
-8. Erstellen Sie ein Cachespeicherkonto mit den [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-cache-storage-account-and-target-storage-account) beschriebenen Schritten.
-9. Erstellen Sie die erforderlichen Netzwerkzuordnungen, wie [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-network-mappings) beschrieben.
+1. [Melden](./azure-to-azure-powershell.md#sign-in-to-your-microsoft-azure-subscription) Sie sich bei Ihrem Azure-Konto an, und legen Sie Ihr Abonnement fest.
+2. Rufen Sie die Details des virtuellen Computers, den Sie replizieren möchten, wie [hier](./azure-to-azure-powershell.md#get-details-of-the-virtual-machine-to-be-replicated) beschrieben ab.
+3. [Erstellen](./azure-to-azure-powershell.md#create-a-recovery-services-vault) Sie Ihren Recovery Services-Tresor, und [legen](./azure-to-azure-powershell.md#set-the-vault-context) Sie den Tresorkontext fest.
+4. Bereiten Sie den Tresor für die Replikation des virtuellen Computers vor. Dies umfasst das Erstellen eines [Service Fabric-Objekts](./azure-to-azure-powershell.md#create-a-site-recovery-fabric-object-to-represent-the-primary-source-region) sowohl für die primäre Region als auch für die Wiederherstellungsregionen.
+5. [Erstellen](./azure-to-azure-powershell.md#create-a-site-recovery-protection-container-in-the-primary-fabric) Sie einen Site Recovery-Schutzcontainer im primären Fabric und den Wiederherstellungsfabrics.
+6. [Erstellen](./azure-to-azure-powershell.md#create-a-replication-policy) Sie eine Replikationsrichtlinie.
+7. Erstellen Sie eine Schutzcontainerzuordnung zwischen dem primären Container und dem Wiederherstellungsschutzcontainer. Verwenden Sie dazu [diese](./azure-to-azure-powershell.md#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container) Schritte sowie eine Schutzcontainerzuordnung für Failback, wie [hier](./azure-to-azure-powershell.md#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover) beschrieben.
+8. Erstellen Sie ein Cachespeicherkonto mit den [hier](./azure-to-azure-powershell.md#create-cache-storage-account-and-target-storage-account) beschriebenen Schritten.
+9. Erstellen Sie die erforderlichen Netzwerkzuordnungen, wie [hier](./azure-to-azure-powershell.md#create-network-mappings) beschrieben.
 10. Verwenden Sie das folgende PowerShell-Cmdlet, um den virtuellen Azure-Computer mit verwalteten Datenträgern zu replizieren: 
 
 ```azurepowershell
@@ -91,8 +91,8 @@ Sobald die erste Replikation abgeschlossen ist, wird in die Phase der differenzi
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
 
-11. Zum Ausführen eines Testfailovers und Überprüfen und Bereinigen des Testfailovers führen Sie [diese](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#do-a-test-failover-validate-and-cleanup-test-failover) Schritte aus.
-12. Führen Sie ein Failover mit den [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#fail-over-to-azure) beschriebenen Schritten aus.
+11. Zum Ausführen eines Testfailovers und Überprüfen und Bereinigen des Testfailovers führen Sie [diese](./azure-to-azure-powershell.md#do-a-test-failover-validate-and-cleanup-test-failover) Schritte aus.
+12. Führen Sie ein Failover mit den [hier](./azure-to-azure-powershell.md#fail-over-to-azure) beschriebenen Schritten aus.
 13. Verwenden Sie das folgende PowerShell-Cmdlet, um den Schutz wiederherzustellen und ein Failback in die Quellregion auszuführen:
 
 ```azurepowershell
@@ -103,16 +103,16 @@ $WestUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestoragewestus" 
 #Use the recovery protection container, new cache storage account in West US and the source region VM resource group 
 Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure -ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId -RecoveryProximityPlacementGroupId $vm.ProximityPlacementGroup.Id
 ```
-14. Führen Sie zum Deaktivieren der Replikation die [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#disable-replication) beschriebenen Schritte aus.
+14. Führen Sie zum Deaktivieren der Replikation die [hier](./azure-to-azure-powershell.md#disable-replication) beschriebenen Schritte aus.
 
 ### <a name="vmware-to-azure"></a>VMware zu Azure
 
-1. Stellen Sie sicher, dass Sie die Schritte unter [Vorbereiten lokaler VMware-Server](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises) für die Notfallwiederherstellung in Azure ausgeführt haben.
-2. Melden Sie sich bei Ihrem Azure-Konto an, und legen Sie Ihr Abonnement fest, wie [hier](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#log-into-azure) beschrieben.
-3. [Richten Sie einen Recovery Services-Tresor ein](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#set-up-a-recovery-services-vault), und [legen Sie den Tresorkontext fest](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#set-the-vault-context).
-4. [Überprüfen](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#validate-vault-registration) Sie die Tresorregistrierung.
-5. [Erstellen](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#create-a-replication-policy) Sie eine Replikationsrichtlinie.
-6. [Fügen](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#add-a-vcenter-server-and-discover-vms) Sie einen vCenter-Server hinzu, ermitteln Sie virtuelle Computer, und [erstellen](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#create-storage-accounts-for-replication) Sie Speicherkonten für die Replikation.
+1. Stellen Sie sicher, dass Sie die Schritte unter [Vorbereiten lokaler VMware-Server](./vmware-azure-tutorial-prepare-on-premises.md) für die Notfallwiederherstellung in Azure ausgeführt haben.
+2. Melden Sie sich bei Ihrem Azure-Konto an, und legen Sie Ihr Abonnement fest, wie [hier](./vmware-azure-disaster-recovery-powershell.md#log-into-azure) beschrieben.
+3. [Richten Sie einen Recovery Services-Tresor ein](./vmware-azure-disaster-recovery-powershell.md#set-up-a-recovery-services-vault), und [legen Sie den Tresorkontext fest](./vmware-azure-disaster-recovery-powershell.md#set-the-vault-context).
+4. [Überprüfen](./vmware-azure-disaster-recovery-powershell.md#validate-vault-registration) Sie die Tresorregistrierung.
+5. [Erstellen](./vmware-azure-disaster-recovery-powershell.md#create-a-replication-policy) Sie eine Replikationsrichtlinie.
+6. [Fügen](./vmware-azure-disaster-recovery-powershell.md#add-a-vcenter-server-and-discover-vms) Sie einen vCenter-Server hinzu, ermitteln Sie virtuelle Computer, und [erstellen](./vmware-azure-disaster-recovery-powershell.md#create-storage-accounts-for-replication) Sie Speicherkonten für die Replikation.
 7. Um virtuelle VMware-Computer zu replizieren, überprüfen Sie hier die Details, und verwenden Sie das folgende PowerShell-Cmdlet:
 
 ```azurepowershell
@@ -137,18 +137,18 @@ $Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMw
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $ProtectionContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
-9. Konfigurieren Sie die Failovereinstellungen, indem Sie die [hier](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#configure-failover-settings) beschriebenen Schritte ausführen.
-10. [Führen Sie ein Testfailover durch](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#run-a-test-failover). 
-11. Führen Sie das Failover auf Azure mithilfe [dieser](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#fail-over-to-azure) Schritte aus.
+9. Konfigurieren Sie die Failovereinstellungen, indem Sie die [hier](./vmware-azure-disaster-recovery-powershell.md#configure-failover-settings) beschriebenen Schritte ausführen.
+10. [Führen Sie ein Testfailover durch](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover). 
+11. Führen Sie das Failover auf Azure mithilfe [dieser](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure) Schritte aus.
 
 ### <a name="hyper-v-to-azure"></a>Hyper-V in Azure
 
-1. Stellen Sie sicher, dass Sie die Schritte unter [Vorbereiten lokaler Hyper-V-Server](https://docs.microsoft.com/azure/site-recovery/hyper-v-prepare-on-premises-tutorial) für die Notfallwiederherstellung in Azure ausgeführt haben.
-2. [Melden Sie sich bei Azure an](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-1-sign-in-to-your-azure-account).
-3. [Richten Sie den Tresor ein](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-2-set-up-the-vault), und [richten Sie den Tresorkontext ein](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-3-set-the-recovery-services-vault-context).
-4. [Erstellen](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-4-create-a-hyper-v-site) Sie eine Hyper-V-Site.
-5. [Installieren](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-5-install-the-provider-and-agent) Sie den Anbieter und den Agent.
-6. [Erstellen](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-6-create-a-replication-policy) Sie eine Replikationsrichtlinie.
+1. Stellen Sie sicher, dass Sie die Schritte unter [Vorbereiten lokaler Hyper-V-Server](./hyper-v-prepare-on-premises-tutorial.md) für die Notfallwiederherstellung in Azure ausgeführt haben.
+2. [Melden Sie sich bei Azure an](./hyper-v-azure-powershell-resource-manager.md#step-1-sign-in-to-your-azure-account).
+3. [Richten Sie den Tresor ein](./hyper-v-azure-powershell-resource-manager.md#step-2-set-up-the-vault), und [richten Sie den Tresorkontext ein](./hyper-v-azure-powershell-resource-manager.md#step-3-set-the-recovery-services-vault-context).
+4. [Erstellen](./hyper-v-azure-powershell-resource-manager.md#step-4-create-a-hyper-v-site) Sie eine Hyper-V-Site.
+5. [Installieren](./hyper-v-azure-powershell-resource-manager.md#step-5-install-the-provider-and-agent) Sie den Anbieter und den Agent.
+6. [Erstellen](./hyper-v-azure-powershell-resource-manager.md#step-6-create-a-replication-policy) Sie eine Replikationsrichtlinie.
 7. Aktivieren Sie die Replikation mithilfe der folgenden Schritte: 
     
     a. Rufen Sie das schützbare Element, das dem zu schützenden virtuellen Computer entspricht, wie folgt ab:
@@ -188,13 +188,13 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 
     Get-AzRecoveryServicesAsrJob -Job $job | Select-Object -ExpandProperty state
     ```
-8. Führen Sie ein [Testfailover](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-8-run-a-test-failover) durch.
+8. Führen Sie ein [Testfailover](./hyper-v-azure-powershell-resource-manager.md#step-8-run-a-test-failover) durch.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um den erneuten Schutz und das Failback für VMware zu Azure auszuführen, führen Sie die [hier](https://docs.microsoft.com/azure/site-recovery/vmware-azure-prepare-failback) beschriebenen Schritte aus.
+Um den erneuten Schutz und das Failback für VMware zu Azure auszuführen, führen Sie die [hier](./vmware-azure-prepare-failback.md) beschriebenen Schritte aus.
 
-Um ein Failover für Hyper-V zu Azure auszuführen, führen Sie die Schritte aus, die [hier](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover) beschrieben werden, und für die Ausführung eines Failback verwenden Sie die [hier](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-failback) beschriebenen Schritte.
+Um ein Failover für Hyper-V zu Azure auszuführen, führen Sie die Schritte aus, die [hier](./site-recovery-failover.md) beschrieben werden, und für die Ausführung eines Failback verwenden Sie die [hier](./hyper-v-azure-failback.md) beschriebenen Schritte.
 
 Weitere Informationen finden Sie unter [Failover in Site Recovery](site-recovery-failover.md).

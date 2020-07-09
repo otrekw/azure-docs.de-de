@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74084557"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134842"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>Einrichten der Notfallwiederherstellung für eine Citrix XenDesktop- und XenApp-Bereitstellung mit mehreren Ebenen
 
@@ -30,8 +30,8 @@ Dieses Dokument enthält detaillierte Schrittanleitungen zum Erstellen einer Not
 
 Stellen Sie zunächst sicher, dass Sie mit den folgenden Verfahren vertraut sind:
 
-1. [Replizieren von virtuellen VMware-Computern in Azure mithilfe von Site Recovery](site-recovery-vmware-to-azure.md)
-1. [Entwerfen Ihres Netzwerks für die Notfallwiederherstellung](site-recovery-network-design.md)
+1. [Replizieren von virtuellen VMware-Computern in Azure mithilfe von Site Recovery](./vmware-azure-tutorial.md)
+1. [Entwerfen Ihres Netzwerks für die Notfallwiederherstellung](./concepts-on-premises-to-azure-networking.md)
 1. [Testfailover in Azure in Site Recovery](site-recovery-test-failover-to-azure.md)
 1. [Failover in Site Recovery](site-recovery-failover.md)
 1. Replizieren eines Domänencontrollers unter [Schützen von Active Directory und DNS mit Azure Site Recovery](site-recovery-active-directory.md)
@@ -96,7 +96,7 @@ Unter [Schützen von Active Directory und DNS mit Azure Site Recovery](site-reco
 
 Unter [Schützen von SQL Server mit der Notfallwiederherstellung von SQL Server und Azure Site Recovery](site-recovery-sql.md) finden Sie technische Informationen zu den empfohlenen Optionen für den Schutz von SQL-Servern.
 
-Führen Sie [diese Schritte](site-recovery-vmware-to-azure.md) aus, um mit der Replikation der virtuellen Computer der anderen Komponenten zu beginnen.
+Führen Sie [diese Schritte](./vmware-azure-tutorial.md) aus, um mit der Replikation der virtuellen Computer der anderen Komponenten zu beginnen.
 
 ![Schutz von XenApp-Komponenten](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437506"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134012"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Einrichten der Notfallwiederherstellung für Hyper-V-VMs an einem sekundären lokalen Standort
 
@@ -48,10 +48,10 @@ Die [Netzwerkzuordnung](hyper-v-vmm-network-mapping.md) ist die Zuordnung zwisch
 
 Bereiten Sie VMM wie folgt vor:
 
-1. Stellen Sie sicher, dass [logische VMM-Netzwerke](https://docs.microsoft.com/system-center/vmm/network-logical) auf den Quell- und Ziel-VMM-Servern vorhanden sind.
+1. Stellen Sie sicher, dass [logische VMM-Netzwerke](/system-center/vmm/network-logical) auf den Quell- und Ziel-VMM-Servern vorhanden sind.
     - Das logische Netzwerk auf dem Quellserver sollte der Quellcloud zugeordnet sein, in der sich Hyper-V-Hosts befinden.
     - Das logische Netzwerk auf dem Zielserver sollte der Zielcloud zugeordnet werden.
-1. Stellen Sie sicher, dass [VM-Netzwerke](https://docs.microsoft.com/system-center/vmm/network-virtual) auf den Quell- und Ziel-VMM-Servern vorhanden sind. VM-Netzwerke sollten an jedem Standort mit dem logischen Netzwerk verknüpft werden.
+1. Stellen Sie sicher, dass [VM-Netzwerke](/system-center/vmm/network-virtual) auf den Quell- und Ziel-VMM-Servern vorhanden sind. VM-Netzwerke sollten an jedem Standort mit dem logischen Netzwerk verknüpft werden.
 2. Stellen Sie die Verbindung der virtuellen Computer auf den Hyper-V-Quellhosts mit dem VM-Quellnetzwerk her. 
 
 

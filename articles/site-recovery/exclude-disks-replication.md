@@ -3,12 +3,12 @@ title: Ausschließen von Datenträgern von der Replikation mit Azure Site Recove
 description: Es wird beschrieben, wie Sie Datenträger mit Azure Site Recovery von der Replikation in Azure ausschließen.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5a8d52bd0cc40b45f92039c537a1b3b63f0bec61
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740517"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135694"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Ausschließen von Datenträgern von der Notfallwiederherstellung
 
@@ -260,7 +260,6 @@ Unsere Einstellungen für die Auslagerungsdatei auf der Azure-VM lauten wie folg
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu den Richtlinien für den Datenträger zur temporären Speicherung:
-    - [Informieren Sie sich](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) über die Verwendung von SSDs auf Azure-VMs zum Speichern der SQL Server-Datenbank „TempDB“ und von Pufferpoolerweiterungen.
-    - [Informieren Sie sich](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance) über die bewährten Methoden in Bezug auf die Leistung für SQL Server auf Azure-VMs.
+    - [Informieren Sie sich](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) über die Verwendung von SSDs auf Azure-VMs zum Speichern der SQL Server-Datenbank „TempDB“ und von Pufferpoolerweiterungen.
+    - [Informieren Sie sich](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) über die bewährten Methoden in Bezug auf die Leistung für SQL Server auf Azure-VMs.
 - Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie sich über die unterschiedlichen Failoverarten [informieren](failover-failback-overview.md) .
-

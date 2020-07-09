@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c555b058e6d0b8c110a3273525b5a8c58baaff61
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309780"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135244"
 ---
 # <a name="azure-serial-console-for-windows"></a>Die serielle Azure-Konsole für Windows
 
@@ -102,15 +102,15 @@ Wenn Sie Windows-Startlade-Eingabeaufforderungen in der seriellen Konsole aktivi
 
     ![Herstellen einer Verbindung mit SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.    Geben Sie `cmd` ein, um einen Kanal zu erstellen, der über eine CMD-Instanz verfügt.
+1. Geben Sie `cmd` ein, um einen Kanal zu erstellen, der über eine CMD-Instanz verfügt.
 
-1.    Geben Sie `ch -si 1` ein, oder drücken Sie die Tastenkombination `<esc>+<tab>`, um zu dem Kanal zu wechseln, in dem die CMD-Instanz ausgeführt wird.
+1. Geben Sie `ch -si 1` ein, oder drücken Sie die Tastenkombination `<esc>+<tab>`, um zu dem Kanal zu wechseln, in dem die CMD-Instanz ausgeführt wird.
 
-1.    Drücken Sie die **EINGABETASTE**, und geben Sie dann die Anmeldeinformationen mit Administratorrechten ein.
+1. Drücken Sie die **EINGABETASTE**, und geben Sie dann die Anmeldeinformationen mit Administratorrechten ein.
 
-1.    Nachdem Sie gültige Anmeldeinformationen eingegeben haben, wird die CMD-Instanz geöffnet.
+1. Nachdem Sie gültige Anmeldeinformationen eingegeben haben, wird die CMD-Instanz geöffnet.
 
-1.    Geben Sie zum Starten einer PowerShell-Instanz `PowerShell` in der CMD-Instanz ein, und drücken Sie die **EINGABETASTE**.
+1. Geben Sie zum Starten einer PowerShell-Instanz `PowerShell` in der CMD-Instanz ein, und drücken Sie die **EINGABETASTE**.
 
     ![Öffnen einer PowerShell-Instanz](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 

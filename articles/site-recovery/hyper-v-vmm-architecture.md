@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 3e81e353d2912f56a932ce118a0424e45e758df7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbd11c279708cd828693baab3f9f6df91515bc48
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74133013"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133901"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektur – Hyper-V-Replikation an einem sekundären Standort
 
@@ -36,7 +36,7 @@ Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für
 
 ## <a name="replication-process"></a>Replikationsprozess
 
-1. Wenn die erste Replikation ausgelöst wird, wird eine [Momentaufnahem der Hyper-V-VM](https://technet.microsoft.com/library/dd560637.aspx) erstellt.
+1. Wenn die erste Replikation ausgelöst wird, wird eine [Momentaufnahem der Hyper-V-VM](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) erstellt.
 2. Virtuelle Festplatten auf der VM werden nacheinander an den sekundären Standort repliziert.
 3. Falls während der ersten Replikation Datenträgeränderungen auftreten, werden die Änderungen mit dem Replication Tracker für Hyper-V-Replikate in Form von Hyper-V-Replikationsprotokollen (.hrl) nachverfolgt. Diese Protokolldateien befinden sich im gleichen Ordner wie die Datenträger. Jeder Datenträger verfügt über eine zugeordnete HRL-Datei, die an den sekundären Speicher gesendet wird. Beachten Sie, dass die Momentaufnahme- und Protokolldateien Festplattenressourcen belegen, während die anfängliche Replikation durchgeführt wird.
 4. Nach Abschluss der ersten Replikation wird die Momentaufnahme des virtuellen Computers gelöscht, und die Deltareplikation beginnt.

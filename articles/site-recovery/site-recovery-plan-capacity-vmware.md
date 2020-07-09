@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 88f0ad795767d0b2f85845cb714ce7cb244f5084
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121536"
+ms.locfileid: "86135458"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planen der Kapazität und Skalierung der VMware-Notfallwiederherstellung für Azure
 
@@ -92,7 +92,7 @@ Nachdem Sie den [Site Recovery-Bereitstellungsplaner](site-recovery-deployment-p
 
     ![Screenshot des Dialogfelds „Eigenschaften von Azure Backup“](./media/site-recovery-vmware-to-azure/throttle2.png)
 
-Sie können auch das Cmdlet [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) verwenden, um die Drosselung festzulegen. Hier sehen Sie ein Beispiel:
+Sie können auch das Cmdlet [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) verwenden, um die Drosselung festzulegen. Hier sehen Sie ein Beispiel:
 
 ```azurepowershell-interactive
 $mon = [System.DayOfWeek]::Monday
