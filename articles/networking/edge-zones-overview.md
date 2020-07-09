@@ -5,14 +5,14 @@ services: vnf-manager
 author: ganesr
 ms.service: vnf-manager
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: 90e796c244950d6d374a02757b608099c229c1ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65a5f7e261913fa38c41930cc44341ca872d1b44
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146949"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086890"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Informationen zur Vorschau von Azure Edge Zone
 
@@ -74,7 +74,9 @@ Typische Anwendungsfälle sind:
 
 Edge Zones werden in Partnerschaft mit den folgenden Betreibern angeboten:
 
-- AT&T (Atlanta, Dallas und Los Angeles)
+- AT&T (Atlanta, Dallas und Los Angeles) 
+
+Weitere Informationen erhalten Sie beim [Supportteam für Azure Edge Zone-Zonen](https://aka.ms/EdgeZones).
 
 ## <a name="azure-private-edge-zones"></a><a name="private-edge-zones"></a>Azure Private Edge Zones
 
