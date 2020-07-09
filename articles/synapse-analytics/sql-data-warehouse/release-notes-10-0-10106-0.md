@@ -4,7 +4,7 @@ description: Versionshinweise für Azure Synapse Analytics.
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 4/30/2020
 author: anumjs
 ms.author: anjangsh
@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: bf74e520340690c3dda71496360e5d9a2fe54ae8
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6af05a6c17253a2032f493a7d2cd6254dafd352c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115376"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831419"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics: Versionshinweise
 
@@ -41,6 +41,13 @@ Vergewissern Sie sich für die Tooloptimierungen, dass die richtige Version inst
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
+## <a name="july-2020"></a>Juli 2020
+| Verbesserungen beim Dienst | Details |
+| --- | --- |
+|**Verschlüsselung auf Spaltenebene (Public Preview)**|Schützen Sie vertrauliche Informationen in Ihrem Synapse SQL Data Warehouse durch Anwenden symmetrischer Verschlüsselung auf eine Datenspalte mithilfe von Transact-SQL. Verschlüsselung auf Spaltenebene verfügt über integrierte Funktionen, mit denen Sie Daten mithilfe symmetrischer Schlüssel verschlüsseln können, die noch zusätzlich mit einem Zertifikat, Kennwort, einem symmetrischen oder asymmetrischen Schlüssel geschützt sind. Weitere Informationen finden Sie unter [Verschlüsseln einer Datenspalte](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest).|
+|**Kompatibilitätsgradunterstützung (Allgemeine Verfügbarkeit)**|Mit diesem Release können Benutzer jetzt den Kompatibilitätsgrad einer Datenbank festlegen, um das Verhalten der Sprache Transact-SQL und der Abfrageverarbeitung für eine bestimmte Version der Synapse SQL-Engine zu erhalten. Weitere Informationen finden Sie unter [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) und [Datenbankweit gültige Konfiguration ändern](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
+|**Sicherheit auf Zeilenebene**|Dieses Release enthält eine Verbesserung für Aktualisierungs- und Löschvorgänge an Zeilen, wobei für diese Sicherheit auf Zeilenebene (RLS) erzwungen wird. Mit diesem Release werden Aktualisierungs- und Löschvorgänge mit intrinsischen Funktionen wie „is_rolemember“ erfolgreich ausgeführt, wenn die intrinsische Funktion nicht auf eine Spalte in der DML-Zieltabelle verweist. Vor der Einführung dieser Verbesserung schlugen diese Vorgänge aufgrund von Einschränkungen in den zugrunde liegenden DML-Vorgängen fehl.|
+
 ## <a name="may-2020"></a>Mai 2020
 
 | Verbesserungen beim Dienst | Details |
@@ -48,9 +55,9 @@ Vergewissern Sie sich für die Tooloptimierungen, dass die richtige Version inst
 |**Workloadisolation (allgemeine Verfügbarkeit)**|Die [Workloadisolation](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation) ist nun allgemein verfügbar.  Über [Arbeitsauslastungsgruppen](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) können Ressourcen reserviert und abgegrenzt werden.  Außerdem können Abfragetimeouts konfiguriert werden, um Endlosabfragen abzubrechen.|
 |**Workloadverwaltungsportal (Vorschauversion)**| Benutzer können ihre Workloadverwaltungseinstellungen über das Azure-Portal konfigurieren und verwalten.  Außerdem können [Arbeitsauslastungsgruppen](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) und [Workloadklassifizierer](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) mit Wichtigkeit konfiguriert werden.|
 |**ALTER WORKLOAD GROUP**|Der Befehl [ALTER WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-workload-group-transact-sql?view=azure-sqldw-latest) kann nun verwendet werden.  Mit „ALTER“ können Sie die Konfiguration einer vorhandenen [Arbeitsauslastungsgruppe](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation) ändern.|
-|**Automatische Schemaerkennung für Parquet-Dateien mit dem COPY-Befehl (Vorschau)**|Vom [COPY-Befehl](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) wird jetzt die automatische Schemaerkennung beim Laden von Parquet-Dateien unterstützt. Durch den Befehl wird automatisch das Parquet-Dateischema erkannt und vor dem Laden die Tabelle erstellt. Wenden Sie sich an die folgende E-Mail-Verteilerliste, um in die Whitelist aufgenommen zu werden: sqldwcopypreview@service.microsoft.com. |
-|**Laden komplexer Parquet-Datentypen mit dem COPY-Befehl (Vorschau)**|Vom [COPY-Befehl](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) wird jetzt das Laden komplexer Parquet-Typen unterstützt. Sie können komplexe Typen wie Karten und Listen in Zeichenfolgenspalten laden.  Wenden Sie sich an die folgende E-Mail-Verteilerliste, um in die Whitelist aufgenommen zu werden: sqldwcopypreview@service.microsoft.com. |
-|**Automatische Komprimierungserkennung für Parquet-Dateien mit dem COPY-Befehl**|Vom [COPY-Befehl](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) wird jetzt die automatische Erkennung der Komprimierungsmethode für die Parquet-Dateien unterstützt.|
+|**Automatische Schemaerkennung für Parquet-Dateien mit dem COPY-Befehl (Vorschau)**|Vom [COPY-Befehl](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) wird jetzt die automatische Schemaerkennung beim Laden von Parquet-Dateien unterstützt. Durch den Befehl wird automatisch das Parquet-Dateischema erkannt und vor dem Laden die Tabelle erstellt. Wenden Sie sich an die folgende E-Mail-Verteilerliste, um diese Funktion aktiviert zu bekommen: sqldwcopypreview@service.microsoft.com. |
+|**Laden komplexer Parquet-Datentypen mit dem COPY-Befehl (Vorschau)**|Vom [COPY-Befehl](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) wird jetzt das Laden komplexer Parquet-Typen unterstützt. Sie können komplexe Typen wie Karten und Listen in Zeichenfolgenspalten laden.  Wenden Sie sich an die folgende E-Mail-Verteilerliste, um diese Funktion aktiviert zu bekommen: sqldwcopypreview@service.microsoft.com. |
+|**Automatische Komprimierungserkennung für Parquet-Dateien mit dem COPY-Befehl**|Vom [COPY-Befehl](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) wird jetzt die automatische Erkennung der Komprimierungsmethode für die Parquet-Dateien unterstützt. Wenden Sie sich an die folgende E-Mail-Verteilerliste, um diese Funktion aktiviert zu bekommen: sqldwcopypreview@service.microsoft.com.|
 |**Weitere Ladeempfehlungen**|[Ladeempfehlungen](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations) stehen jetzt für Synapse SQL zur Verfügung. Erhalten Sie proaktive Benachrichtigungen, wenn Sie Ihre Dateien für maximalen Durchsatz aufteilen, Ihr Speicherkonto am gleichen Ort wie Ihren SQL-Pool platzieren oder die Batchgröße bei Verwendung von Ladehilfsprogrammen wie SQLBulkCopy-API oder BCP erhöhen sollten.|
 |**Per T-SQL aktualisierbare Verteilungsspalte (allgemeine Verfügbarkeit)**|Benutzer können nun in der Verteilungsspalte gespeicherten Daten aktualisieren. Ausführliche Informationen finden Sie im [Leitfaden für das Entwerfen verteilter Tabellen im Synapse SQL-Pool](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute).|
 |**T-SQL: Aktualisieren/Löschen auf der Grundlage einer Verknüpfung (allgemeine Verfügbarkeit)**|Aktualisieren und Löschen auf der Grundlage von Ergebnissen einer Verknüpfung mit einer anderen Tabelle sind nun verfügbar. Ausführliche Informationen finden Sie in der Dokumentation zu [Update](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest) und [Delete](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest).|

@@ -2,14 +2,14 @@
 title: Häufig auftretende Probleme und Problembehandlung
 description: Informationen zum Beheben von häufigen Problemen beim Bereitstellen, Ausführen oder Verwalten von Azure Container Instances
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 06/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 07cdbfb27aaf9076e726ebda861ed24996e10135
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aeb4517f5be7fff9c29487d6521f80ee697c0e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74533394"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807841"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Beheben von häufigen Problemen in Azure Container Instances
 
@@ -20,16 +20,17 @@ Weitere Unterstützung finden Sie in den verfügbaren Optionen für **Hilfe und 
 ## <a name="issues-during-container-group-deployment"></a>Probleme bei der Bereitstellung von Containergruppen
 ### <a name="naming-conventions"></a>Benennungskonventionen
 
-Wenn Sie Ihre Containerspezifikation definieren, erfordern bestimmte Parameter die Einhaltung von Benennungseinschränkungen. Nachfolgend sehen Sie eine Tabelle mit bestimmten Anforderungen für Containergruppeneigenschaften. Weitere Informationen zu Benennungskonventionen für Azure finden Sie unter [Benennungskonventionen][azure-name-restrictions] Im Azure Architecture Center.
+Wenn Sie Ihre Containerspezifikation definieren, erfordern bestimmte Parameter die Einhaltung von Benennungseinschränkungen. Nachfolgend sehen Sie eine Tabelle mit bestimmten Anforderungen für Containergruppeneigenschaften. Weitere Informationen finden Sie unter [Benennungskonventionen][azure-name-restrictions] im Azure Architecture Center und unter [Benennungsregeln und -einschränkungen für Azure-Ressourcen][naming-rules].
 
 | `Scope` | Länge | Schreibweise | Gültige Zeichen | Vorgeschlagenes Muster | Beispiel |
 | --- | --- | --- | --- | --- | --- |
-| Containergruppenname | 1-64 |Groß-/Kleinschreibung nicht beachten |Alphanumerisch und Bindestrich (beliebig), außer das erste oder letzte Zeichen |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Containername | 1-64 |Groß-/Kleinschreibung nicht beachten |Alphanumerisch und Bindestrich (beliebig), außer das erste oder letzte Zeichen |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Containername<sup>1</sup> | 1 - 63 |Kleinbuchstaben | Alphanumerisch und Bindestrich (beliebig), außer das erste oder letzte Zeichen |`<name>-<role>-container<number>` |`web-batch-container1` |
 | Containerports | Zwischen 1 und 65535 |Integer |Eine ganze Zahl zwischen 1 und 65535 |`<port-number>` |`443` |
 | DNS-Namensbezeichnung | 5–63 |Groß-/Kleinschreibung nicht beachten |Alphanumerisch und Bindestrich (beliebig), außer das erste oder letzte Zeichen |`<name>` |`frontend-site1` |
 | Umgebungsvariable | 1 - 63 |Groß-/Kleinschreibung nicht beachten |Alphanumerisch und Unterstrich (beliebig), außer das erste oder letzte Zeichen |`<name>` |`MY_VARIABLE` |
-| Volumename | 5–63 |Groß-/Kleinschreibung nicht beachten |Kleinbuchstaben, Zahlen und Bindestriche (beliebig), außer das erste oder letzte Zeichen. Zwei aufeinanderfolgende Bindestriche sind nicht erlaubt. |`<name>` |`batch-output-volume` |
+| Volumename | 5–63 |Kleinbuchstaben |Alphanumerisch und Bindestriche an beliebiger Stelle, außer als erstes oder letztes Zeichen. Zwei aufeinanderfolgende Bindestriche sind nicht erlaubt. |`<name>` |`batch-output-volume` |
+
+<sup>1</sup>Einschränkung auch für Containergruppennamen, wenn sie nicht unabhängig von Containerinstanzen angegeben werden, z. B. mit Bereitstellungen mit dem Befehl `az container create`.
 
 ### <a name="os-version-of-image-not-supported"></a>Betriebssystemversion des Images wird nicht unterstützt
 
@@ -228,6 +229,7 @@ Erfahren Sie, wie Sie [Containerprotokolle und -ereignisse abrufen](container-in
 
 <!-- LINKS - External -->
 [azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
+[naming-rules]: ../azure-resource-manager/management/resource-name-rules.md
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore
@@ -235,4 +237,4 @@ Erfahren Sie, wie Sie [Containerprotokolle und -ereignisse abrufen](container-in
 
 <!-- LINKS - Internal -->
 [az-container-show]: /cli/azure/container#az-container-show
-[list-cached-images]: /rest/api/container-instances/listcachedimages
+[list-cached-images]: /rest/api/container-instances/location/listcachedimages

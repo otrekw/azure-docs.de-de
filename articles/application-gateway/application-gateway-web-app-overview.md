@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: a171dc795e685655b5a3c73d088d3963c2aaa4ae
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 308098bd1ac49510afccf0a7964face726906332
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312323"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628689"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Application Gateway-Unterstützung für mehrinstanzenfähige Back-Ends wie App Service
 
@@ -42,7 +42,7 @@ Mit dieser Funktion können Kunden die Optionen in den HTTP-Einstellungen und be
 
 ### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>TLS-Terminierung und End-to-End-TLS mit mehrinstanzenfähigen Diensten
 
-Sowohl die TLS-Terminierung als auch die End-to-End-TLS-Verschlüsselung werden für mehrinstanzenfähige Dienste unterstützt. Wenn die TLS-Terminierung im Anwendungsgateway durchgeführt werden soll, muss weiterhin ein TLS-Zertifikat zum Listener des Anwendungsgateways hinzugefügt werden. Bei der End-to-End-TLS-Verschlüsselung ist es für vertrauenswürdige Azure-Dienste wie Azure App Service-Web-Apps jedoch nicht erforderlich, die Back-Ends im Anwendungsgateway in eine Whitelist aufzunehmen. Daher müssen auch keine Authentifizierungszertifikate hinzugefügt werden. 
+Sowohl die TLS-Terminierung als auch die End-to-End-TLS-Verschlüsselung werden für mehrinstanzenfähige Dienste unterstützt. Wenn die TLS-Terminierung im Anwendungsgateway durchgeführt werden soll, muss weiterhin ein TLS-Zertifikat zum Listener des Anwendungsgateways hinzugefügt werden. Bei der End-to-End-TLS-Verschlüsselung ist es für vertrauenswürdige Azure-Dienste wie Azure App Service-Web-Apps jedoch nicht erforderlich, dass die Back-Ends im Anwendungsgateway zugelassen werden. Daher müssen auch keine Authentifizierungszertifikate hinzugefügt werden. 
 
 ![End-to-End-TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 

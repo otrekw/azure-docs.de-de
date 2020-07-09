@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 2/5/2019
+ms.date: 06/06/2020
 ms.author: absha
-ms.openlocfilehash: a4770b3ae7c52b9a05ff704915a3e9f401fd1741
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: bf02bdc4d824a47bdaad4821ffc9562b9fe2dd40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889608"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84482628"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriken für Application Gateway
 
@@ -24,7 +24,7 @@ Application Gateway veröffentlicht Datenpunkte, sogenannte Metriken, für die L
 
 Application Gateway bietet mehrere integrierte Zeitsteuerungsmetriken, die sich auf die Anforderung und die Antwort beziehen und jeweils in Millisekunden gemessen werden. 
 
-![](./media/application-gateway-metrics/application-gateway-metrics.png)
+![Diagramm der Timingmetriken für das Application Gateway.](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >

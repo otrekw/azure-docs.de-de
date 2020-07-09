@@ -2,27 +2,24 @@
 title: Beheben von Problemen bei der Azure Automation-Updateverwaltung
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Azure Automation-Updateverwaltung beheben.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/17/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 2989d85ddfca036a27ff6b886bd3b13a981c27a3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 95e3fc12a77124c32e220d700a112f52cbad08fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170255"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801885"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Beheben von Problemen bei der Updateverwaltung
 
 In diesem Artikel werden Probleme beschrieben, die bei der Bereitstellung des Features für die Updateverwaltung auf Ihren Computern auftreten können. Es gibt eine Agent-Problembehandlung für den Hybrid Runbook Worker-Agent, mit dem das zugrunde liegende Problem bestimmt werden kann. Informationen dazu finden Sie unter [Beheben von Problemen mit dem Windows Update-Agent](update-agent-issues.md) und [Beheben von Problemen mit dem Linux Update-Agent](update-agent-issues-linux.md). Informationen zu anderen Problemen bei der Bereitstellung von Features finden Sie unter [Behandeln von Problemen beim Onboarding von Lösungen](onboarding.md).
 
 >[!NOTE]
->Sehen Sie sich auf dem lokalen Computer das **Operations Manager**-Protokoll unter **Anwendungs- und Dienstprotokolle** an, wenn beim Bereitstellen der Updateverwaltung auf einer VM Probleme auftreten. Suchen Sie nach Ereignissen mit der Ereignis-ID 4502 und Ereignisdetails, die `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` enthalten.
+>Wenn beim Bereitstellen der Updateverwaltung auf einem Windows-Computer Probleme auftreten, öffnen Sie die Windows-Ereignisanzeige, und sehen Sie sich auf dem lokalen Computer das **Operations Manager**-Ereignisprotokoll unter **Anwendungs- und Dienstprotokolle** an. Suchen Sie nach Ereignissen mit der Ereignis-ID 4502 und Ereignisdetails, die `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` enthalten.
 
-## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Szenario: Sie erhalten die Fehlermeldung „Fehler beim Aktivieren der Updatelösung“.
+## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>Szenario: Sie erhalten die Fehlermeldung „Fehler beim Aktivieren der Updatelösung“.
 
 ### <a name="issue"></a>Problem
 
@@ -48,9 +45,7 @@ Dieser Fehler kann aus den folgenden Gründe auftreten:
 
 * Rufen Sie den Abschnitt [Netzwerkkonfiguration](../automation-hybrid-runbook-worker.md#network-planning) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit die Updateverwaltung funktioniert.  
 
-* Rufen Sie den Abschnitt [Netzwerkkonfiguration](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit der Log Analytics-Agent funktioniert.
-
-* Suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../automation-scope-configurations-update-management.md) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht im Portal für die Updateverwaltung angezeigt wird, müssen Sie die Bereichskonfiguration so festlegen, dass sie für die Computer gilt. Weitere Informationen zur Bereichskonfiguration finden Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
+* Suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../automation-scope-configurations-update-management.md) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht in der Updateverwaltung angezeigt wird, müssen Sie die Bereichskonfiguration so festlegen, dass sie auf die Computer ausgerichtet ist. Weitere Informationen zur Bereichskonfiguration finden Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 * Entfernen Sie die Workerkonfiguration, indem Sie die Schritte unter [Entfernen des Hybrid Runbook Workers von einem lokalen Windows-Computer](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) oder [Bereitstellen eines Linux-Hybrid Runbook Workers](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker) ausführen. 
 

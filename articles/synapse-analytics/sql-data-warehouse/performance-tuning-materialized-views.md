@@ -6,18 +6,18 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7a54d1d644d1069957db7f94d6f5e261e1a8dfb2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747549"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956388"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
+# <a name="performance-tune-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
 
 Die materialisierten Sichten im Synapse SQL-Pool bieten eine Methode mit geringer Wartung für komplexe analytische Abfragen, um eine schnelle Leistung ohne irgendeine Abfrageänderung zu erzielen. Dieser Artikel erläutert den allgemeinen Leitfaden zur Verwendung materialisierter Sichten.
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874083"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488748"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrieren von Azure Stream Analytics mit Azure Machine Learning (Vorschau)
 
@@ -24,7 +24,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie ein Machine Learning-Modell al
 
 1. Verwenden Sie Azure Machine Learning, um [Ihr Modell als Webdienst bereitzustellen](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
 
-2. Ihr Bewertungsskript sollte über [Beispieleingaben und -ausgaben](../machine-learning/how-to-deploy-and-where.md#example-entry-script) verfügen, mit denen Azure Machine Learning eine Schemaspezifikation generiert. Stream Analytics verwendet das Schema, um die Funktionssignatur Ihres Webdiensts zu verstehen.
+2. Ihr Bewertungsskript sollte über [Beispieleingaben und -ausgaben](../machine-learning/how-to-deploy-and-where.md#example-entry-script) verfügen, mit denen Azure Machine Learning eine Schemaspezifikation generiert. Stream Analytics verwendet das Schema, um die Funktionssignatur Ihres Webdiensts zu verstehen. Sie können diese [Swagger-Beispieldefinition](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) als Referenz verwenden, um sicherzustellen, dass Sie es ordnungsgemäß eingerichtet haben.
 
 3. Stellen Sie sicher, dass Ihr Webdienst serialisierte JSON-Daten akzeptiert und zurückgibt.
 

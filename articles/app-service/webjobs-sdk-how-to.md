@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: e4a7ae00edd8ff86e27037df1a26828c400f6ccf
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 97b17f7e80590b9b907b8dc25253e6d706117357
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774239"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807977"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -959,7 +959,7 @@ In Version 3.*x* muss der [`TelemetryClient`] nicht mehr geleert werden, wenn de
 
 #### <a name="version-2x"></a>Version 2.*x*
 
-In Version 2.*x* verwendet der [`TelemetryClient`], der intern durch den Application Insights-Anbieter für das WebJobs SDK erstellt wurde, [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll). Wenn der Application Insights-Endpunkt nicht verfügbar ist oder eingehende Anforderungen gedrosselt werden, [speichert dieser Kanal die Anforderungen im Dateisystem der Web-App und übermittelt sie später erneut](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+In Version 2.*x* verwendet der [`TelemetryClient`], der intern durch den Application Insights-Anbieter für das WebJobs SDK erstellt wurde, [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll). Wenn der Application Insights-Endpunkt nicht verfügbar ist oder eingehende Anforderungen gedrosselt werden, [speichert dieser Kanal die Anforderungen im Dateisystem der Web-App und übermittelt sie später erneut](https://apmtips.com/posts/2015-09-03-more-telemetry-channels/).
 
 Der Telemetrieclient ([`TelemetryClient`]) wird von einer Klasse erstellt, die `ITelemetryClientFactory` implementiert. Das ist standardmäßig [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/).
 

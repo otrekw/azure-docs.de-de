@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 17ba8f5bbbf0ac17e0ccb6881379a511afc7c1c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597914"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833271"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -58,7 +58,7 @@ Die App muss im Tarif **Standard**, **Premium** oder **I** ausgeführt werden, u
    
     ![Titel des Bereitstellungsslots](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    Der Stagingslot verfügt genau wie jede andere App Service-App über eine Verwaltungsseite. Sie können die Konfiguration des Slots ändern. Um Sie daran zu erinnern, dass Sie den Bereitstellungsslot sehen, wird der App-Name als **\<App-Name>/\<Slotname>** angezeigt, während der App-Typ **App Service (Slot)** lautet. Sie können den Slot auch als separate App in der Ressourcengruppe mit denselben Bezeichnungen sehen.
+    Der Stagingslot verfügt genau wie jede andere App Service-App über eine Verwaltungsseite. Sie können die Konfiguration des Slots ändern. Um Sie daran zu erinnern, dass Sie den Bereitstellungsslot sehen, wird der App-Name als **\<app-name>/\<slot-name>** angezeigt, während der App-Typ **App Service (Slot)** lautet. Sie können den Slot auch als separate App in der Ressourcengruppe mit denselben Bezeichnungen sehen.
 
 6. Wählen Sie auf der Ressourcenseite des Slots die App-URL aus. Der Bereitstellungsslot besitzt einen eigenen Hostnamen und ist außerdem eine Live-App. Informationen zum Beschränken des öffentlichen Zugriffs auf den Bereitstellungsslot finden Sie unter [Statische Azure App Service-IP-Einschränkungen](app-service-ip-restrictions.md).
 
@@ -183,7 +183,7 @@ Das Feature „Automatisch tauschen“ ermöglicht die Optimierung von Azure De
 
 So konfigurieren Sie automatisches Austauschen:
 
-1. Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots** >  *\<gewünschter Quellslot>*  > **Konfiguration** > **Allgemeine Einstellungen** aus.
+1. Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots** >  *\<desired source slot>*  > **Konfiguration** > **Allgemeine Einstellungen** aus.
    
 2. Legen Sie **Automatischer Tausch aktiviert** auf **Ein** fest. Wählen Sie anschließend unter **Bereitstellungsslot für automatischen Tausch** den gewünschten Zielslot und danach auf der Befehlsleiste die Option **Speichern** aus. 
    
@@ -199,12 +199,14 @@ Informationen zur Problembehandlung finden Sie bei Bedarf unter [Behandeln von P
 
 Für einige Apps müssen vor dem Austausch unter Umständen benutzerdefinierte Vorbereitungsschritte ausgeführt werden. Mithilfe des Konfigurationselements `applicationInitialization` in „web.config“ können Sie benutzerdefinierte Initialisierungsaktionen angeben. Der [Austausch](#AboutConfiguration) mit dem Zielslot erfolgt dann erst nach Abschluss dieser benutzerdefinierten Aufwärmphase. Hier sehen Sie ein Beispielfragment aus „web.config“:
 
-    <system.webServer>
-        <applicationInitialization>
-            <add initializationPage="/" hostName="[app hostname]" />
-            <add initializationPage="/Home/About" hostName="[app hostname]" />
-        </applicationInitialization>
-    </system.webServer>
+```xml
+<system.webServer>
+    <applicationInitialization>
+        <add initializationPage="/" hostName="[app hostname]" />
+        <add initializationPage="/Home/About" hostName="[app hostname]" />
+    </applicationInitialization>
+</system.webServer>
+```
 
 Weitere Informationen zum Anpassen des `applicationInitialization`-Elements finden Sie unter [Häufigste Bereitstellungsfehler beim Slotaustausch und Vorgehensweise zu deren Behebung](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
@@ -254,7 +256,7 @@ Neben dem automatischen Datenverkehrsrouting kann App Service Anforderungen auch
 
 Damit Benutzer die Nutzung Ihrer Beta-App beenden können, können Sie z. B. folgenden Link auf Ihrer Webseite bereitstellen:
 
-```HTML
+```html
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
@@ -272,7 +274,7 @@ Standardmäßig erhalten neue Slots eine Routingregel von `0%`, die in grau darg
 
 ## <a name="delete-a-slot"></a>Löschen eines Slots
 
-Suchen Sie nach Ihrer App, und wählen Sie sie aus. Wählen Sie **Bereitstellungsslots** >  *\<zu löschender Slot>*  > **Übersicht** aus. Der App-Typ lautet **App Service (Slot)** und soll Sie daran erinnern, dass Sie einen Bereitstellungsslot sehen. Wählen Sie auf der Befehlsleiste die Option **Löschen** aus.  
+Suchen Sie nach Ihrer App, und wählen Sie sie aus. Wählen Sie **Bereitstellungsslots** >  *\<slot to delete>*  > **Übersicht** aus. Der App-Typ lautet **App Service (Slot)** und soll Sie daran erinnern, dass Sie einen Bereitstellungsslot sehen. Wählen Sie auf der Befehlsleiste die Option **Löschen** aus.  
 
 ![Löschen eines Bereitstellungsslots](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

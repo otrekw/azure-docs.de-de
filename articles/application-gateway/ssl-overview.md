@@ -4,15 +4,15 @@ description: Dieser Artikel enthält eine Übersicht über die Unterstützung vo
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 5/13/2020
 ms.author: victorh
-ms.openlocfilehash: adaf3dea5855a4af75977cb820ae12675c7f2ced
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648140"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962100"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway
 
@@ -68,7 +68,7 @@ Bei der Application Gateway- und WAF v1-SKU gilt die TLS-Richtlinie für den Fr
 
 Bei der Application Gateway- und WAF v2-SKU gilt die TLS-Richtlinie nur für den Front-End-Datenverkehr. Alle Verschlüsselungen werden dem Back-End-Server angeboten, auf dem während des Handshakes die Auswahl spezifischer Verschlüsselungen und der TLS-Version gesteuert wird.
 
-Application Gateway kommuniziert nur mit den Back-End-Servern, deren Zertifikat in der Whitelist von Application Gateway enthalten ist oder deren Zertifikate von bekannten Zertifizierungsstellen signiert wurden und deren CN mit dem Hostnamen in den HTTP-Einstellungen auf dem Back-End übereinstimmt. Dazu zählen vertrauenswürdige Azure-Dienste wie Azure App Service oder Azure App Service-Web-Apps und Azure API Management.
+Application Gateway kommuniziert nur mit den Back-End-Servern, deren Zertifikat in der Zulassungsliste von Application Gateway enthalten ist oder deren Zertifikate von bekannten Zertifizierungsstellen signiert wurden und deren CN mit dem Hostnamen in den HTTP-Einstellungen auf dem Back-End übereinstimmt. Dazu zählen vertrauenswürdige Azure-Dienste wie Azure App Service oder Azure App Service-Web-Apps und Azure API Management.
 
 Wenn die Zertifikate der Mitglieder im Back-End-Pool nicht von bekannten Zertifizierungsstellen signiert wurden, muss jede Instanz im Back-End-Pool mit aktiviertem End-to-End-TLS mit einem Zertifikat konfiguriert werden, um die sichere Kommunikation zu ermöglichen. Durch das Hinzufügen des Zertifikats wird sichergestellt, dass das Anwendungsgateway nur mit bekannten Back-End-Instanzen kommuniziert. Außerdem wird auf diese Weise die End-to-End-Kommunikation gesichert.
 
@@ -80,9 +80,9 @@ Wenn die Zertifikate der Mitglieder im Back-End-Pool nicht von bekannten Zertifi
 
 In diesem Beispiel werden Anforderungen, für die TLS 1.2 verwendet wird, an Back-End-Server in Pool1 geleitet, indem End-to-End-TLS genutzt wird.
 
-## <a name="end-to-end-tls-and-whitelisting-of-certificates"></a>End-to-End-TLS und Whitelists für Zertifikate
+## <a name="end-to-end-tls-and-allow-listing-of-certificates"></a>End-to-End-TLS und Zulassungslisten für Zertifikate
 
-Application Gateway kommuniziert nur mit bekannten Back-End-Instanzen, deren Zertifikat in der Whitelist des Anwendungsgateways enthalten ist. In Bezug auf die verwendete Version von Application Gateway gibt es einige Unterschiede beim Prozess zum Einrichten von End-to-End-TLS. Im folgenden Abschnitt werden die einzelnen Vorgänge erläutert.
+Application Gateway kommuniziert nur mit bekannten Back-End-Instanzen, deren Zertifikat in der Zulassungsliste des Anwendungsgateways enthalten ist. In Bezug auf die verwendete Version von Application Gateway gibt es einige Unterschiede beim Prozess zum Einrichten von End-to-End-TLS. Im folgenden Abschnitt werden die einzelnen Vorgänge erläutert.
 
 ## <a name="end-to-end-tls-with-the-v1-sku"></a>End-to-End-TLS mit der v1-SKU
 
@@ -90,7 +90,7 @@ Zum Aktivieren von End-to-End-TLS mit den Back-End-Servern und zum Weiterleiten 
 
 Bei HTTPS-Integritätstests verwendet die Application Gateway v1-SKU eine genaue Entsprechung des Authentifizierungszertifikats (öffentlicher Schlüssel des Back-End-Serverzertifikats anstelle des Stammzertifikats), das in die HTTP-Einstellungen hochgeladen werden soll.
 
-Es sind dann nur Verbindungen mit bekannten und in Whitelists enthaltenen Back-Ends zulässig. Die übrigen Back-End-Server werden in den Integritätstests als fehlerhaft eingestuft. Selbstsignierte Zertifikate dienen nur zu Testzwecken und werden für Produktionsworkloads nicht empfohlen. Solche Zertifikate müssen, wie unter den obigen Schritten beschrieben, in der Whitelist des Anwendungsgateways enthalten sein, damit sie verwendet werden können.
+Es sind dann nur Verbindungen mit bekannten und zulässigen Back-Ends gestattet. Die übrigen Back-End-Server werden in den Integritätstests als fehlerhaft eingestuft. Selbstsignierte Zertifikate dienen nur zu Testzwecken und werden für Produktionsworkloads nicht empfohlen. Solche Zertifikate müssen, wie unter den obigen Schritten beschrieben, in der Zulassungsliste des Anwendungsgateways enthalten sein, damit sie verwendet werden können.
 
 > [!NOTE]
 > Die Einrichtung des Authentifizierungszertifikats und des vertrauenswürdigen Stammzertifikats ist für vertrauenswürdige Azure-Dienste wie Azure App Service nicht erforderlich. Diese Zertifikate werden standardmäßig als vertrauenswürdig eingestuft.
@@ -111,7 +111,7 @@ Authentifizierungszertifikate wurden als veraltet markiert und durch Trusted Roo
 
 - Zusätzlich zur Übereinstimmung des Stammzertifikats überprüft Application Gateway v2 auch, ob die Einstellung „Host“ in der HTTP-Einstellung des Back-Ends mit dem allgemeinen Namen (Common Name, CN) übereinstimmt, der vom TLS/SSL-Zertifikat des Back-End-Servers angegeben wird. Beim Herstellen einer TLS-Verbindung mit dem Back-End legt Application Gateway v2 die SNI-Erweiterung (Server Name Indication, Servernamensanzeige) auf den Host fest, der in der HTTP-Einstellung des Back-Ends angegeben wurde.
 
-- Wenn das **Auswählen des Hostnamen aus der Back-End-Adresse** anstelle des Felds „Host“ in der HTTP-Einstellung des Back-Ends ausgewählt wurde, wird der SNI-Header immer auf den FQDN des Back-End-Pools festgelegt, und der CN im TLS/SSL-Zertifikat des Back-End-Servers muss mit diesem FQDN übereinstimmen. Mitglieder des Back-End-Pools mit IP-Adressen werden in diesem Szenario nicht unterstützt.
+- Wenn das **Auswählen des Hostnamen aus dem Back-End-Ziel** anstelle des Felds „Host“ in der HTTP-Einstellung des Back-Ends ausgewählt wurde, wird der SNI-Header immer auf den FQDN des Back-End-Pools festgelegt, und der CN im TLS/SSL-Zertifikat des Back-End-Servers muss mit diesem FQDN übereinstimmen. Mitglieder des Back-End-Pools mit IP-Adressen werden in diesem Szenario nicht unterstützt.
 
 - Das Stammzertifikat ist ein Base64-codiertes Stammzertifikat aus den Zertifikaten des Back-End-Servers.
 
@@ -138,10 +138,10 @@ Szenario | v1 | V2 |
 Szenario | v1 | V2 |
 | --- | --- | --- |
 | SNI-Header (server_name) während des TLS-Handshakes als FQDN | Wird als FQDN über den Back-End-Pool festgelegt. Gemäß [RFC 6066](https://tools.ietf.org/html/rfc6066) sind IPv4- und IPv6-Literaladressen im SNI-Hostnamen nicht zulässig. <br> **Hinweis:** FQDN im Back-End-Pool sollte eine DNS-Auflösung in die IP-Adresse (öffentlich oder privat) des Back-End-Servers durchführen. | Der SNI-Header (server_name) wird als Hostname aus dem benutzerdefinierten Test festgelegt, der den HTTP-Einstellungen angefügt ist (sofern vorhanden), andernfalls aus dem in den HTTP-Einstellungen angegebenen Hostnamen, oder andernfalls aus dem im Back-End-Pool angegebenen FQDN. Dabei gilt folgende Rangfolge: benutzerdefinierter Test > HTTP-Einstellungen > Back-End-Pool. <br> **Hinweis:** Wenn die in den HTTP-Einstellungen und dem benutzerdefinierten Test konfigurierten Hostnamen sich unterscheiden, wird die SNI entsprechend der Rangfolge als Hostname aus dem benutzerdefinierten Test festgelegt.
-| Die Adresse des Back-End-Pools ist eine IP-Adresse (v1), oder der Hostname des benutzerdefinierten Tests ist als IP-Adresse konfiguriert (v2). | SNI (server_name) wird nicht festgelegt. <br> **Hinweis:** In diesem Fall sollte der Back-End-Server ein Standard- oder Fallbackzertifikat zurückgeben können. Dieses sollte in den HTTP-Einstellungen unter dem Authentifizierungszertifikat in der Whitelist enthalten sein. Wenn auf dem Back-End-Server kein Standard- oder Fallbackzertifikat konfiguriert ist und die SNI erwartet wird, setzt der Server die Verbindung möglicherweise zurück, was zu Testfehlern führt. | Wenn die IP-Adresse als Hostname festgelegt ist, wird die SNI in der zuvor genannten Rangfolge gemäß [RFC 6066](https://tools.ietf.org/html/rfc6066) nicht festgelegt. <br> **Hinweis:** Die SNI wird außerdem in v2-Tests nicht festgelegt, wenn kein benutzerdefinierter Test konfiguriert und in den HTTP-Einstellungen oder dem Back-End-Pool kein Hostname festgelegt ist. |
+| Die Adresse des Back-End-Pools ist eine IP-Adresse (v1), oder der Hostname des benutzerdefinierten Tests ist als IP-Adresse konfiguriert (v2). | SNI (server_name) wird nicht festgelegt. <br> **Hinweis:** In diesem Fall sollte der Back-End-Server ein Standard- oder Fallbackzertifikat zurückgeben können. Dieses sollte in den HTTP-Einstellungen unter dem Authentifizierungszertifikat in der Zulassungsliste enthalten sein. Wenn auf dem Back-End-Server kein Standard- oder Fallbackzertifikat konfiguriert ist und die SNI erwartet wird, setzt der Server die Verbindung möglicherweise zurück, was zu Testfehlern führt. | Wenn die IP-Adresse als Hostname festgelegt ist, wird die SNI in der zuvor genannten Rangfolge gemäß [RFC 6066](https://tools.ietf.org/html/rfc6066) nicht festgelegt. <br> **Hinweis:** Die SNI wird außerdem in v2-Tests nicht festgelegt, wenn kein benutzerdefinierter Test konfiguriert und in den HTTP-Einstellungen oder dem Back-End-Pool kein Hostname festgelegt ist. |
 
 > [!NOTE] 
-> Wenn kein benutzerdefinierter Test konfiguriert ist, sendet Application Gateway einen Standardtest im Format \<Protokoll\>://127.0.0.1:\<Port\>/. Beispielsweise wird https://127.0.0.1:443/ als HTTPS-Standardtest gesendet. Beachten Sie, dass „127.0.0.1“ nur als HTTP-Host-Header und gemäß RFC 6066 nicht als SNI-Header verwendet wird. Weitere Informationen zu Fehlern bei Integritätstests finden Sie in der Anleitung zum [Behandeln von Problemen mit der Back-End-Integrität](application-gateway-backend-health-troubleshooting.md).
+> Wenn kein benutzerdefinierter Test konfiguriert ist, sendet Application Gateway einen Standardtest im Format \<protocol\>://127.0.0.1:\<port\>/. Beispielsweise wird https://127.0.0.1:443/ als HTTPS-Standardtest gesendet. Beachten Sie, dass „127.0.0.1“ nur als HTTP-Host-Header und gemäß RFC 6066 nicht als SNI-Header verwendet wird. Weitere Informationen zu Fehlern bei Integritätstests finden Sie in der Anleitung zum [Behandeln von Problemen mit der Back-End-Integrität](application-gateway-backend-health-troubleshooting.md).
 
 #### <a name="for-live-traffic"></a>Beim Livedatenverkehr
 

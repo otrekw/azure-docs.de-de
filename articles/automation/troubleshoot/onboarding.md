@@ -2,18 +2,15 @@
 title: Beheben von Problemen bei der Azure Automation-Featurebereitstellung
 description: In diesem Artikel erfahren Sie, wie Sie Probleme lösen, die beim Bereitstellen von Azure Automation-Features auftreten können.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 05/22/2019
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 4c4c43d8522c6f507d458c56abc445e2da35fa6d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801028"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Beheben von Problemen bei der Featurebereitstellung
 
@@ -71,7 +68,7 @@ Dieser Fehler wird durch falsche oder fehlende Berechtigungen auf dem virtuellen
 
 #### <a name="resolution"></a>Lösung
 
-Stellen Sie sicher, dass Sie über die richtigen [Featurebereitstellungsberechtigungen](../automation-role-based-access-control.md#feature-setup-permissions) verfügen, und versuchen Sie dann nochmal, das Feature bereitzustellen. Wenn die Fehlermeldung `The solution cannot be enabled on this VM because the permission to read the workspace is missing` angezeigt wird, stellen Sie sicher, dass Sie über die Berechtigung `Microsoft.OperationalInsights/workspaces/read` verfügen, um herausfinden zu können, ob die VM für einen Arbeitsbereich aktiviert ist.
+Stellen Sie sicher, dass Sie über die richtigen [Featurebereitstellungsberechtigungen](../automation-role-based-access-control.md#feature-setup-permissions) verfügen, und versuchen Sie dann nochmal, das Feature bereitzustellen. Sollte die Fehlermeldung `The solution cannot be enabled on this VM because the permission to read the workspace is missing` angezeigt werden, berücksichtigen Sie die folgenden [Informationen zur Problembehandlung](update-management.md#failed-to-enable-error).
 
 ### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Szenario: Die Featurebereitstellung schlägt mit der Meldung „Fehler beim Konfigurieren eines Automation-Kontos für die Diagnoseprotokollierung“ fehl.
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 0f8e1be92d77dc928389dffb61da52f2db4c804d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142060"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960298"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Einrichten einer benutzerdefinierten Domäne in Azure Static Web Apps (Vorschau)
 
@@ -29,11 +29,11 @@ Beim Konfigurieren von Domänennamen werden A-Einträge verwendet, um Stammdomä
 
 Für eine Anwendung sind verschiedene Arten von DNS-Konfigurationen verfügbar.
 
-| Zweck                            | Then                                                |
-| ----------------------------------------- | --------------------------------------------------- |
-| Unterstützung für `www.example.com`                 | [Zuordnen eines CNAME-Eintrags](#map-a-cname-record)           |
-| Unterstützung für `example.com`                     | [Konfigurieren einer Stammdomäne](#configure-a-root-domain) |
-| Verweisen auf `www.example.com` für alle Unterdomänen | [Zuordnen eines Platzhalters](#map-a-wildcard-domain)                   |
+| Zweck                                 | Then                                                |
+| -----------------------------------------------| --------------------------------------------------- |
+| Unterstützung `www.example.com` oder `blog.example.net`| [Zuordnen eines CNAME-Eintrags](#map-a-cname-record)           |
+| Unterstützung für `example.com`                          | [Konfigurieren einer Stammdomäne](#configure-a-root-domain) |
+| Verweisen auf `www.example.com` für alle Unterdomänen      | [Zuordnen eines Platzhalters](#map-a-wildcard-domain)            |
 
 ## <a name="map-a-cname-record"></a>Zuordnen eines CNAME-Eintrags
 
