@@ -105,12 +105,8 @@
       items:
         - name: Hinzufügen einer Cloud-App
           items:
-            - name: Hinzufügen einer Katalog-App
-              href: add-gallery-app.md
             - name: Hinzufügen einer nicht im Katalog enthaltenen App
               href: add-non-gallery-app.md
-            - name: Ändern des App-Namens oder -Logos
-              href: change-name-or-logo-portal.md
         - name: Einmaliges Anmelden konfigurieren
           items:
             - name: Konfigurieren des SAML-basierten einmaligen Anmeldens

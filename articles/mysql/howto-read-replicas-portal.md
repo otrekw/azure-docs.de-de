@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie mit dem Azure-Portal Lesereplikate in Azure D
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 0aab6957f6078a59aafd0c9967b0d88e97e50cda
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.topic: how-to
+ms.date: 6/10/2020
+ms.openlocfilehash: a3342a626a104dc5eb77ef4b01146a8943dae2d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849432"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108072"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe des Azure-Portals
 
@@ -25,6 +25,9 @@ In diesem Artikel erfahren Sie, wie Sie Lesereplikate im Azure Database for MySQ
 > Das Feature für Lesereplikate ist nur für Azure Database for MySQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Masterserver einer dieser Tarife festgelegt ist.
 
 ## <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
+
+> [!IMPORTANT]
+> Wenn Sie ein Replikat für einen Master erstellen, der keine vorhandenen Replikate hat, startet der Master zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
 
 Ein Lesereplikatserver kann mit den folgenden Schritten erstellt werden:
 

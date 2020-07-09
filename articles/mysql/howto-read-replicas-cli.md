@@ -4,20 +4,20 @@ description: Erfahren Sie, wie Sie mit der Azure CLI oder der REST-API Leserepli
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: ed57003c7a9a5a1a9d87aa2e8934af8c48b1d819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/10/2020
+ms.openlocfilehash: 1df590bcec4dfed08dea81c60738a40ca9be8bee
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063328"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108735"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe der Azure CLI und REST-API
 
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate im Azure Database for MySQL-Dienst mithilfe der Azure CLI und REST-API erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Übersicht](concepts-read-replicas.md).
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure CLI
 Sie können Lesereplikate mithilfe der Azure CLI erstellen und verwalten.
 
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -29,6 +29,9 @@ Sie können Lesereplikate mithilfe der Azure CLI erstellen und verwalten.
 > Das Feature für Lesereplikate ist nur für Azure Database for MySQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Masterserver einer dieser Tarife festgelegt ist.
 
 ### <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
+
+> [!IMPORTANT]
+> Wenn Sie ein Replikat für einen Master erstellen, der keine vorhandenen Replikate hat, startet der Master zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
 
 Ein Lesereplikatserver kann mit dem folgenden Befehl erstellt werden:
 
