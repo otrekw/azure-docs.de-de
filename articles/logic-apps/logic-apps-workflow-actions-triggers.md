@@ -3,15 +3,15 @@ title: Schemareferenz zu Trigger- und Aktionstypen
 description: Schemareferenzhandbuch zu Trigger- und Aktionstypen in der Workflowdefinitionssprache für Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 01/19/2020
-ms.openlocfilehash: 7e14cc00d1bd716b3e4880e585b05447d2e55e2b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 06/10/2020
+ms.openlocfilehash: 7c220ff2882e12f5239dbd5abc5f87b900cb3807
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257435"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609399"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Schemareferenzhandbuch zu Trigger- und Aktionstypen für Azure Logic Apps
 
@@ -73,7 +73,7 @@ Jeder Triggertyp verfügt über eine andere Schnittstelle sowie über Eingaben, 
 
 | Triggertyp | BESCHREIBUNG | 
 |--------------|-------------| 
-| [**HTTP**](#http-trigger) | Überprüft alle Endpunkte bzw. *fragt diese ab*. Der Endpunkt muss einem bestimmten Triggervertrag entsprechen, und zwar durch Verwendung eines asynchronen Musters (202) oder durch Rückgabe eines Arrays. | 
+| [**HTTP**](#http-trigger) | Überprüft alle Endpunkte bzw. *fragt diese ab*. Der Endpunkt muss einem bestimmten Triggervertrag entsprechen, und zwar durch Verwendung eines asynchronen Musters (`202`) oder durch Rückgabe eines Arrays. | 
 | [**HTTPWebhook**](#http-webhook-trigger) | Erstellt einen aufrufbaren Endpunkt für Ihre Logik-App, aber ruft die angegebene URL auf, um die Registrierung bzw. die Aufhebung der Registrierung durchzuführen. |
 | [**Recurrence**](#recurrence-trigger) | Wird auf der Grundlage eines definierten Zeitplans ausgelöst. Sie können ein Datum und eine Uhrzeit in der Zukunft festlegen, um diesen Trigger auszulösen. Je nach Häufigkeit können Sie auch Zeiten und Tage für die Ausführung Ihres Workflows angeben. | 
 | [**Request**](#request-trigger)  | Erstellt einen aufrufbaren Endpunkt für Ihre Logik-App und wird auch als „manueller“ Trigger bezeichnet. Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten](../logic-apps/logic-apps-http-endpoint.md). | 
@@ -224,15 +224,15 @@ Dieser Trigger sendet eine Abonnementanforderung an einen Endpunkt, indem eine [
 |-------|------|-------------| 
 | <*connection-name*> | String | Name für die Verbindung mit der verwalteten API, die vom Workflow verwendet wird | 
 | <*body-content*> | JSON-Objekt | Nachrichteninhalt, der als Nutzlast an die verwaltete API gesendet wird | 
-|||| 
+||||
 
 *Optional*
 
-| Wert | type | BESCHREIBUNG | 
-|-------|------|-------------| 
-| <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in den API-Aufruf einbezogen werden sollen. <p>Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird dem Aufruf beispielsweise `?api-version=2018-01-01` hinzugefügt. | 
-| <*max-runs*> | Integer | Standardmäßig werden Workflowinstanzen gleichzeitig (oder parallel) bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
+| Wert | type | BESCHREIBUNG |
+|-------|------|-------------|
+| <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
+| <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in den API-Aufruf einbezogen werden sollen. <p>Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird dem Aufruf beispielsweise `?api-version=2018-01-01` hinzugefügt. |
+| <*max-runs*> | Integer | Standardmäßig werden Workflowinstanzen gleichzeitig (oder parallel) bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). |
 | <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
 | <*splitOn-expression*> | String | Für Trigger, die Arrays zurückgeben, verweist dieser Ausdruck auf das zu verwendende Array, damit Sie für jedes Arrayelement eine Workflowinstanz erstellen und ausführen können, anstatt eine „for each“-Schleife zu verwenden. <p>Dieser Ausdruck stellt beispielsweise ein Element im Array dar, das mit dem Inhalt des Triggers zurückgegeben wird: `@triggerbody()?['value']` |
 | <*operation-option*> | String | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
@@ -269,7 +269,7 @@ Diese Triggerdefinition abonniert die Office 365-Outlook-API, gibt eine Rückruf
 
 ### <a name="http-trigger"></a>HTTP-Trigger
 
-Dieser Trigger sendet eine Anforderung an den angegebenen HTTP- oder HTTPS-Endpunkt, basierend auf dem angegebenen Wiederholungszeitplan. Dieser Trigger überprüft dann die Antwort, um zu bestimmen, ob der Workflow ausgeführt wird.
+Dieser Trigger sendet eine Anforderung an den angegebenen HTTP- oder HTTPS-Endpunkt, basierend auf dem angegebenen Wiederholungszeitplan. Dieser Trigger überprüft dann die Antwort, um zu bestimmen, ob der Workflow ausgeführt wird. Weitere Informationen finden Sie unter [Aufrufen von Dienstendpunkten per HTTP oder HTTPS aus Azure Logic Apps](../connectors/connectors-native-http.md).
 
 ```json
 "HTTP": {
@@ -326,21 +326,21 @@ Dieser Trigger sendet eine Anforderung an den angegebenen HTTP- oder HTTPS-Endpu
 *Ausgaben*
 
 | Element | type | BESCHREIBUNG |
-|---------|------|-------------| 
-| headers | JSON-Objekt | Header aus der Antwort | 
-| body | JSON-Objekt | Text aus der Antwort | 
-| status code | Integer | Der Statuscode aus der Antwort | 
-|||| 
+|---------|------|-------------|
+| `headers` | JSON-Objekt | Header aus der Antwort |
+| `body` | JSON-Objekt | Text aus der Antwort |
+| `status code` | Integer | Der Statuscode aus der Antwort |
+||||
 
 *Erforderliche Voraussetzungen für eingehende Anforderungen*
 
-Damit der Endpunkt gut mit Ihrer Logik-App funktioniert, muss er einem bestimmten Triggermuster oder -vertrag entsprechen und diese Eigenschaften erkennen:  
-  
-| Antwort | Erforderlich | BESCHREIBUNG | 
-|----------|----------|-------------| 
-| Statuscode | Ja | Der Statuscode „200 OK“ startet eine Ausführung. Alle anderen Statuscodes starten keine Ausführung. | 
-| Retry-After-Header | Nein | Die Anzahl von Sekunden bis zur erneuten Abfrage des Endpunkts durch Ihre Logik-App. | 
-| Adressheader | Nein | Die URL, die im nächsten Abfrageintervall aufgerufen werden soll. Ohne Angabe wird die ursprüngliche URL verwendet. | 
+Damit der Endpunkt gut mit Ihrer Logik-App funktioniert, muss er einem bestimmten Triggermuster oder -vertrag entsprechen und diese Antworteigenschaften erkennen:
+
+| Eigenschaft | Erforderlich | BESCHREIBUNG |
+|----------|----------|-------------|
+| Statuscode | Ja | Der Statuscode „200 OK“ startet eine Ausführung. Alle anderen Statuscodes starten keine Ausführung. |
+| Retry-After-Header | Nein | Die Anzahl von Sekunden bis zur erneuten Abfrage des Endpunkts durch Ihre Logik-App. |
+| Adressheader | Nein | Die URL, die im nächsten Abfrageintervall aufgerufen werden soll. Ohne Angabe wird die ursprüngliche URL verwendet. |
 |||| 
 
 *Beispielverhalten für unterschiedliche Anforderungen*
@@ -1086,7 +1086,7 @@ Für das `includeTrigger`-Attribut können Sie `true`- oder `false`-Werte angebe
 
 *Beispiel 1*
 
-Diese Aktion führt Code aus, der den Namen Ihrer Logik-App abruft und den Text „Hello World from \<Name der Logik-App>“ als Ergebnis zurückgibt. In diesem Beispiel verweist der Code auf den Namen des Workflows, indem mithilfe des schreibgeschützten `workflowContext`-Objekts auf die Eigenschaft `workflowContext.workflow.name` zugegriffen wird. Weitere Informationen zur Verwendung des `workflowContext`-Objekts finden Sie unter [Reference trigger and action results in your code (Verweisen auf die Ergebnisse von Triggern und Aktionen in Ihrem Code)](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext).
+Diese Aktion führt Code aus, der den Namen Ihrer Logik-App abruft und den Text „Hello World from \<logic-app-name>“ als Ergebnis zurückgibt. In diesem Beispiel verweist der Code auf den Namen des Workflows, indem mithilfe des schreibgeschützten `workflowContext`-Objekts auf die Eigenschaft `workflowContext.workflow.name` zugegriffen wird. Weitere Informationen zur Verwendung des `workflowContext`-Objekts finden Sie unter [Reference trigger and action results in your code (Verweisen auf die Ergebnisse von Triggern und Aktionen in Ihrem Code)](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext).
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1201,7 +1201,7 @@ Mit dieser Aktionsdefinition wird die zuvor erstellte Funktion „GetProductID�
 
 ### <a name="http-action"></a>HTTP-Aktion
 
-Diese Aktion sendet eine Anforderung an den angegebenen HTTP- oder HTTPS-Endpunkt und überprüft anhand der Antwort, ob der Workflow ausgeführt wird.
+Diese Aktion sendet eine Anforderung an den angegebenen HTTP- oder HTTPS-Endpunkt und überprüft anhand der Antwort, ob der Workflow ausgeführt wird. Weitere Informationen finden Sie unter [Aufrufen von Dienstendpunkten per HTTP oder HTTPS aus Azure Logic Apps](../connectors/connectors-native-http.md).
 
 ```json
 "HTTP": {
@@ -1637,7 +1637,7 @@ Mit dieser Aktion wird aus einer CSV- oder HTML-Tabelle ein Array erstellt. Für
 
 | Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
-| \<CSV *oder* HTML>| String | Format für die Tabelle, die Sie erstellen möchten | 
+| \<CSV *or* HTML>| String | Format für die Tabelle, die Sie erstellen möchten | 
 | <*array*> | Array | Array oder Ausdruck, mit dem die Quellelemente für die Tabelle bereitgestellt werden <p>**Hinweis**: Wenn das Quellarray leer ist, wird mit der Aktion eine leere Tabelle erstellt. | 
 |||| 
 
@@ -2395,7 +2395,7 @@ Sie können das Standardverhalten für Trigger und Aktionen mit der `operationOp
 
 | Vorgangsoption | type | BESCHREIBUNG | Trigger oder Aktion | 
 |------------------|------|-------------|-------------------| 
-| `DisableAsyncPattern` | String | Dient zum synchronen Ausführen von HTTP-basierten Aktionen (anstatt asynchron). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Synchrones Ausführen von Aktionen](#asynchronous-patterns). | Aktionen: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Antwort](#response-action) | 
+| `DisableAsyncPattern` | String | Dient zum synchronen Ausführen von HTTP-basierten Aktionen (anstatt asynchron). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Synchrones Ausführen von Aktionen](#disable-asynchronous-pattern). | Aktionen: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Antwort](#response-action) | 
 | `OptimizedForHighThroughput` | String | Dient zum Ändern des [Standardlimits](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) für die Anzahl von Aktionsausführungen in einem Zeitraum von fünf Minuten in das [maximale Limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Ausführen im Modus mit hohem Durchsatz](#run-high-throughput-mode). | Alle Aktionen | 
 | `Sequential` | String | Dient zum einzelnen Ausführen der Iterationen von „for each“-Schleifen, anstatt alle auf einmal parallel. <p>Diese Option funktioniert genauso wie das Festlegen der `runtimeConfiguration.concurrency.repetitions`-Eigenschaft auf `1`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each).| Aktion: <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | String | Dient zum sequenziellen Ausführen des Triggers für jede Logik-App-Instanz. Es wird gewartet, bis die zuvor aktive Ausführung beendet ist, bevor die nächste Logik-App-Instanz ausgelöst wird. <p><p>Diese Option funktioniert genauso wie das Festlegen der `runtimeConfiguration.concurrency.runs`-Eigenschaft auf `1`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Festlegen dieser Option finden Sie unter [Sequenzielles Auslösen von Instanzen](#sequential-trigger). | Alle Trigger | 
@@ -2653,13 +2653,52 @@ Weitere Informationen finden Sie unter [Einstellungen für die Laufzeitkonfigura
 
 1. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den Wert `1`.
 
-<a name="asynchronous-patterns"></a>
+<a name="disable-asynchronous-pattern"></a>
 
-### <a name="run-actions-synchronously"></a>Synchrones Ausführen von Aktionen
+### <a name="run-actions-in-a-synchronous-operation-pattern"></a>Ausführen von Aktionen in einem synchronen Vorgangsmuster
 
-Standardmäßig befolgen alle HTTP-basierten Aktionen das Standardmuster für asynchrone Vorgänge. Mit diesem Muster wird angegeben, dass der Remoteserver die Antwort „202 AKZEPTIERT“ zurücksendet, wenn eine HTTP-basierte Aktion eine Anforderung an den angegebenen Endpunkt sendet. Diese Antwort bedeutet, dass der Server die Anforderung zur Verarbeitung akzeptiert hat. Die Logic Apps-Engine fährt mit dem Überprüfen der URL fort, die im Adressheader der Antwort angegeben ist, bis die Verarbeitung beendet wird (alle anderen Antworten als 202).
+Standardmäßig folgen die HTTP-Aktion und die APIConnection-Aktionen in Azure Logic Apps dem standardmäßigen [*asynchronen Vorgangsmuster*](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply), während die Response-Aktion (Antwort) dem *synchronen Vorgangsmuster* folgt. Das asynchrone Muster gibt an, dass der Empfänger, nachdem eine Aktion eine Anforderung aufgerufen oder an den Endpunkt, Dienst, das System oder die API gesendet hat, sofort eine [„202 ACCEPTED“](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)-Antwort zurückgibt. Dieser Code bestätigt, dass der Empfänger die Anforderung akzeptiert, aber die Verarbeitung noch nicht abgeschlossen hat. Die Antwort kann einen `location`-Header enthalten, in dem die URL und eine Aktualisierungs-ID angegeben sind, die der Aufrufer zum fortlaufenden Abrufen oder Überprüfen des Status der asynchronen Anforderung verwenden kann, bis der Empfänger die Verarbeitung beendet und eine [„200 OK“](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)-Erfolgsantwort oder eine andere Nicht-202-Antwort zurückgibt. Weitere Informationen finden Sie unter [Asynchrone Microservice-Integration erzwingt Microservice-Autonomie](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
 
-Anforderungen verfügen aber über ein Timeoutlimit. Für Aktionen mit langer Ausführungsdauer können Sie das asynchrone Verhalten also deaktivieren, indem Sie die `operationOptions`-Eigenschaft hinzufügen und unter den Eingaben der Aktion auf `DisableAsyncPattern` festlegen.
+* Im Logik-App-Designer verfügen die HTTP-Aktion, die APIConnection-Aktionen und die Response-Aktion über die Einstellung **Asynchrones Muster**. Wenn diese Einstellung aktiviert ist, gibt sie an, dass der Aufrufer nicht auf den Abschluss der Verarbeitung wartet, sondern mit der nächsten Aktion fortfahren kann, dass er aber weiterhin den Status überprüft, bis die Verarbeitung beendet wird. Wenn diese Einstellung deaktiviert ist, gibt sie an, dass der Aufrufer auf den Abschluss der Verarbeitung wartet, bevor mit der nächsten Aktion fortfährt. Führen Sie die folgenden Schritte aus, um diese Einstellung zu suchen:
+
+  1. Wählen Sie auf der Titelleiste der HTTP-Aktion die Schaltfläche mit den Auslassungspunkten ( **...** ) aus, woraufhin die Einstellungen der Aktion geöffnet werden.
+
+  1. Suchen Sie die Einstellung **Asynchrones Muster**.
+
+     ![Einstellung „Asynchrones Muster“](./media/logic-apps-workflow-actions-triggers/asynchronous-pattern-setting.png)
+
+* In der JSON-Definition (JavaScript Object Notation), die der Aktion zugrunde liegt, folgen die HTTP-Aktion und die APIConnection-Aktionen implizit dem asynchronen Vorgangsmuster.
+
+In einigen Szenarien möchten Sie eventuell, dass eine Aktion stattdessen dem synchronen Muster folgt. Beispielsweise, wenn Sie die HTTP-Aktion verwenden, möchten Sie möglicherweise Folgendes:
+
+* [Vermeiden von HTTP-Timeouts bei Aufgaben mit langer Ausführungszeit](../connectors/connectors-native-http.md#avoid-http-timeouts)
+* [Deaktivieren der Überprüfung von Location-Headern](../connectors/connectors-native-http.md#disable-location-header-check)
+
+In diesen Fällen können Sie veranlassen, dass eine Aktion synchron ausgeführt wird, indem Sie diese Optionen verwenden:
+
+* Ersetzen Sie die Abrufversion dieser Aktion durch eine Webhookversion, falls verfügbar.
+
+* Deaktivieren Sie das asynchrone Verhalten der Aktion, indem Sie eine der folgenden Optionen ausführen:
+
+  * [Deaktivieren Sie im Logik-App-Designer die Einstellung **Asynchrone Muster**](#turn-off-asynchronous-pattern-setting).
+
+  * [Fügen Sie in der JSON-Definition, die der Aktion zugrunde liegt, die Vorgangsoption `"DisableAsyncPattern"`](#add-disable-async-pattern-option) hinzu.
+
+<a name="turn-off-asynchronous-pattern-setting"></a>
+
+#### <a name="turn-off-asynchronous-pattern-setting"></a>Deaktivieren der Einstellung **Asynchrones Muster**
+
+1. Wählen Sie im Logik-App-Designer auf der Titelleiste der Aktion die Schaltfläche mit den Auslassungspunkten ( **...** ) aus, woraufhin die Einstellungen der Aktion geöffnet werden.
+
+1. Suchen Sie die Einstellung **Asynchrones Muster**, deaktivieren Sie die Einstellung, indem Sie sie auf **Aus** festlegen (falls sie aktiviert ist), und wählen Sie **Fertig** aus.
+
+   ![Deaktivieren der Einstellung „Asynchrones Muster“](./media/logic-apps-workflow-actions-triggers/disable-asynchronous-pattern-setting.png)
+
+<a name="add-disable-async-pattern-option"></a>
+
+#### <a name="disable-asynchronous-pattern-in-actions-json-definition"></a>Deaktivieren des asynchronen Musters in der JSON-Definition einer Aktion
+
+Fügen Sie in der JSON-Definition, die der Aktion zugrunde liegt, die Eigenschaft [„operationOptions“](#operation-options) hinzu, und legen Sie sie auf `"DisableAsyncPattern"` im Abschnitt `"inputs"` der Aktion fest, z. B.:
 
 ```json
 "<some-long-running-action>": {
@@ -2669,8 +2708,6 @@ Anforderungen verfügen aber über ein Timeoutlimit. Für Aktionen mit langer Au
    "runAfter": {}
 }
 ```
-
-Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options).
 
 <a name="run-high-throughput-mode"></a>
 

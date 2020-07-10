@@ -369,8 +369,10 @@
           href: backup-azure-security-feature.md
         - name: Private Endpunkte
           href: private-endpoints.md
-        - name: Verschlüsselung
+        - name: Verschlüsselung in Azure Backup
           href: backup-encryption.md
+        - name: Verschlüsselung mithilfe kundenseitig verwalteter Schlüssel
+          href: encryption-at-rest-with-cmk.md
         - name: Integrierte Sicherheitskontrollen
           href: backup-security-controls.md
         - name: Sicherheitsbaseline
@@ -415,7 +417,7 @@
       href: /azure/templates/microsoft.recoveryservices/allversions
 - name: Ressourcen
   items:
-    - name: Kompatibilität
+    - name: Compliance
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
