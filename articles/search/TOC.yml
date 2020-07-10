@@ -72,6 +72,8 @@
           href: cognitive-search-tutorial-blob-python.md
     - name: Debuggen eines Skillsets
       href: cognitive-search-tutorial-debug-sessions.md
+    - name: Erstellen eines benutzerdefinierten Analysetools
+      href: tutorial-create-custom-analyzer.md
     - name: Abfragen in Power Apps
       href: search-howto-powerapps.md
 - name: Beispiele

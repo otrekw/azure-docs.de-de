@@ -1,24 +1,25 @@
 ---
-title: Authentifizierungsmethoden | Microsoft Azure Maps
-description: In diesem Artikel wird die Authentifizierung per Azure Active Directory (Azure AD) und gemeinsam verwendetem Schlüssel beschrieben. Beide Verfahren werden für Microsoft Azure Maps-Dienste verwendet. Lesen Sie, wie Sie einen Azure Maps-Abonnementschlüssel erhalten.
+title: Authentifizierungsmethoden
+titleSuffix: Azure Maps
+description: In diesem Artikel wird die Authentifizierung per Azure Active Directory und gemeinsam verwendetem Schlüssel beschrieben. Beide Verfahren werden für Microsoft Azure Maps-Dienste verwendet. Lesen Sie, wie Sie einen Azure Maps-Abonnementschlüssel erhalten.
 author: philmea
 ms.author: philmea
-ms.date: 01/28/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 21d29cba85adfc147ec9deb6ab362a5da943bf10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe79b630291959ce4dc8b4743127986088a876ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987540"
 ---
 # <a name="authentication-with-azure-maps"></a>Authentifizierung mit Azure Maps
 
-Azure Maps unterstützt zwei Möglichkeiten für die Authentifizierung von Anforderungen: Authentifizierung per gemeinsam verwendetem Schlüssel und Azure Active Directory-Authentifizierung. In diesem Artikel werden diese Authentifizierungsmethoden beschrieben, um Ihnen bei Ihrer Implementierung von Azure Maps-Diensten zu helfen.
+Azure Maps unterstützt zwei Möglichkeiten für die Authentifizierung von Anforderungen: Authentifizierung per gemeinsam verwendetem Schlüssel und [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)-Authentifizierung. In diesem Artikel werden diese Authentifizierungsmethoden beschrieben, um Ihnen bei Ihrer Implementierung von Azure Maps-Diensten zu helfen.
 
 > [!NOTE]
 > Um die sichere Kommunikation mit Azure Maps zu verbessern, unterstützen wir nun TLS 1.2 (Transport Layer Security), und wir stellen die Unterstützung für TLS 1.0 und 1.1 ein. Um Dienstunterbrechungen zu vermeiden, **aktualisieren Sie Ihre Server und Anwendungen auf die Verwendung von TLS 1.2 vor dem 2. April 2020**.  Wenn Sie derzeit TLS 1.x verwenden, evaluieren Sie Ihre TLS 1.2-Bereitschaft, und entwickeln Sie einen Migrationsplan mit den in [Lösen des TLS 1.0-Problems](https://docs.microsoft.com/security/solving-tls1-problem) beschriebenen Tests.
@@ -32,11 +33,9 @@ Informationen zum Anzeigen der Schlüssel im Azure-Portal finden Sie unter [Verw
 > [!Tip]
 > Wir empfehlen Ihnen, Ihre Schlüssel regelmäßig neu zu generieren. Es werden zwei Schlüssel bereitgestellt, damit Sie die Verbindungen mit einem Schlüssel aufrechterhalten können, während Sie den anderen neu generieren. Bei der erneuten Generierung Ihrer Schlüssel müssen Sie alle Anwendungen, die auf Ihr Konto zugreifen, mit den neuen Schlüsseln aktualisieren.
 
-## <a name="authentication-with-azure-active-directory-preview"></a>Authentifizierung mit Azure Active Directory (Vorschauversion)
+## <a name="azure-ad-authentication"></a>Azure AD-Authentifizierung
 
-Azure Maps verfügt jetzt über die Anforderungsauthentifizierung für Azure Maps-Dienste mit [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis). Azure AD ermöglicht die identitätsbasierte Authentifizierung, einschließlich der [rollenbasierten Zugriffssteuerung (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). RBAC wird genutzt, um den Zugriff auf Azure Maps-Ressourcen auf Benutzerebene, Gruppenebene oder Anwendungsebene zu gewähren. In den nächsten Abschnitten werden die Konzepte und Komponenten der Azure Maps-Integration in Azure AD diskutiert.
-
-## <a name="authentication-with-oauth-access-tokens"></a>Authentifizierung mit OAuth-Zugriffstoken
+Azure-Abonnements werden mit einem Azure AD-Mandanten bereitgestellt, um eine differenzierte Zugriffssteuerung zu ermöglichen. Azure Maps bietet Authentifizierung für Azure Maps-Dienste unter Verwendung von Azure AD. Azure AD bietet identitätsbasierte Authentifizierung für Benutzer und Anwendungen, die beim Azure AD-Mandanten registriert sind.
 
 Azure Maps akzeptiert **OAuth 2.0**-Zugriffstoken für Azure AD-Mandanten, die einem Azure-Abonnement zugeordnet sind, in dem ein Azure Maps-Konto enthalten ist. Azure Maps akzeptiert auch Token für:
 
@@ -44,54 +43,95 @@ Azure Maps akzeptiert **OAuth 2.0**-Zugriffstoken für Azure AD-Mandanten, die e
 * Partneranwendungen, für die von Benutzern delegierte Berechtigungen verwendet werden
 * Verwaltete Identitäten für Azure-Ressourcen
 
-Azure Maps generiert für jedes Azure Maps-Konto einen *eindeutigen Bezeichner (Client-ID)* . Sie können Token von Azure AD anfordern, wenn Sie diese Client-ID mit zusätzlichen Parametern kombinieren. Zum Anfordern eines Tokens geben Sie die Werte in der folgenden Tabelle an, basierend auf Ihrer Azure-Umgebung.
-
-| Azure-Umgebung   | Azure AD-Tokenendpunkt |
-| --------------------|-------------------------|
-| Azure – Öffentlich        | https://login.microsoftonline.com |
-| Azure Government    | https://login.microsoftonline.us |
-
+Azure Maps generiert für jedes Azure Maps-Konto einen *eindeutigen Bezeichner (Client-ID)* . Sie können Token von Azure AD anfordern, wenn Sie diese Client-ID mit zusätzlichen Parametern kombinieren.
 
 Weitere Informationen zum Konfigurieren von Azure AD und Anforderungstoken für Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
 
-Allgemeine Informationen zum Anfordern von Token aus Azure AD finden Sie unter [Was ist Authentifizierung?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
+Allgemeine Informationen zur Authentifizierung bei Azure AD finden Sie unter [Was ist Authentifizierung?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 
-## <a name="request-azure-map-resources-with-oauth-tokens"></a>Anfordern von Azure Maps-Ressourcen mit OAuth-Token
+### <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Verwaltete Identitäten für Azure-Ressourcen und Azure Maps
 
-Nachdem Azure AD ein Token empfangen hat, sendet Azure Maps eine Anforderung mit dem folgenden Satz erforderlicher Anforderungsheader:
+[Verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) stellen Azure-Diensten einen automatisch verwalteten anwendungsbasierten Sicherheitsprinzipal bereit, der sich bei Azure AD authentifizieren kann. Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) kann der Sicherheitsprinzipal der verwalteten Identität für den Zugriff auf Azure Maps-Dienste autorisiert werden. Beispiele für verwaltete Identitäten sind: Azure App Service, Azure Functions und Azure Virtual Machines. Eine Liste der verwalteten Identitäten finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
 
-| Anforderungsheader    |    Wert    |
-|:------------------|:------------|
-| x-ms-client-id    | 30d7cc….9f55|
-| Authorization     | Bearer eyJ0e….HNIVN |
+### <a name="configuring-application-azure-ad-authentication"></a>Konfigurieren der Azure AD-Anwendungsauthentifizierung
+
+Anwendungen authentifizieren sich beim Azure AD-Mandanten mithilfe eines oder mehrerer unterstützter Szenarien, die von Azure AD bereitgestellt werden. Jedes Azure AD-Anwendungsszenario repräsentiert verschiedene Anforderungen auf der Grundlage der geschäftlichen Anforderungen. Für einige Anwendungen ist möglicherweise eine Benutzeranmeldungserfahrung erforderlich, während für andere Anwendungen eventuell eine Anwendungsanmeldungserfahrung erforderlich ist. Weitere Informationen finden Sie unter [Authentifizierungsflows und Anwendungsszenarien](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios).
+
+Nachdem die Anwendung ein Zugriffstoken erhalten hat, sendet das SDK und/oder die Anwendung eine HTTPS-Anforderung mit den folgenden erforderlichen HTTP-Headern zusätzlich zu anderen REST-API-HTTP-Headern:
+
+| Headername    | Wert               |
+| :------------- | :------------------ |
+| x-ms-client-id | 30d7cc….9f55        |
+| Authorization  | Bearer eyJ0e….HNIVN |
 
 > [!Note]
 > `x-ms-client-id` ist die auf dem Azure Maps-Konto basierende GUID, die auf der Azure Maps-Authentifizierungsseite angezeigt wird.
 
-Hier ist ein Beispiel für eine Azure Maps-Routenanforderung angegeben, für die ein OAuth-Token verwendet wird:
+Hier ist ein Beispiel für eine Azure Maps-Routenanforderung, die ein Azure AD-OAuth-Bearertoken verwendet:
 
-```
-GET /route/directions/json?api-version=1.0&query=52.50931,13.42936:52.50274,13.43872 
-Host: atlas.microsoft.com 
-x-ms-client-id: 30d7cc….9f55 
-Authorization: Bearer eyJ0e….HNIVN 
+```http
+GET /route/directions/json?api-version=1.0&query=52.50931,13.42936:52.50274,13.43872
+Host: atlas.microsoft.com
+x-ms-client-id: 30d7cc….9f55
+Authorization: Bearer eyJ0e….HNIVN
 ```
 
 Weitere Informationen zum Anzeigen Ihrer Client-ID finden Sie unter [Anzeigen von Authentifizierungsdetails](https://aka.ms/amauthdetails).
 
-## <a name="control-access-with-rbac"></a>Steuern des Zugriffs mit RBAC
+## <a name="authorization-with-role-based-access-control"></a>Autorisierung mit rollenbasierter Zugriffssteuerung
 
-Verwenden Sie RBAC in Azure AD, um den Zugriff auf geschützte Ressourcen zu steuern. Richten Sie Ihr Azure Maps-Konto ein, und registrieren Sie Ihren Azure AD-Mandanten für Azure Maps. Azure Maps unterstützt die Steuerung des Lesezugriffs für einzelne Azure AD-Benutzer, -Gruppen und -Anwendungen, Azure-Ressourcen sowie Azure-Dienste über verwaltete Identitäten für Azure-Ressourcen. Auf der Azure Maps-Portalseite können Sie RBAC für Ihre ausgewählten Rollen einrichten.
+Azure Maps unterstützt den Zugriff auf alle Prinzipaltypen für die [rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/overview) in Azure, einschließlich einzelner Azure AD-Benutzer, -Gruppen und -Anwendungen, Azure-Ressourcen sowie verwalteter Azure-Identitäten. Prinzipaltypen wird ein Berechtigungssatz gewährt, der auch als Rollendefinition bezeichnet wird. Eine Rollendefinition bietet Berechtigungen für REST-API-Aktionen. Das Anwenden des Zugriffs auf ein oder mehrere Azure Maps-Konten wird als Bereich bezeichnet. Durch das Anwenden eines Prinzipals, einer Rollendefinition und eines Bereichs wird eine Rollenzuweisung erstellt. 
 
-![Azure Maps-Datenleser (Vorschauversion)](./media/azure-maps-authentication/concept.png)
+In den nächsten Abschnitten werden die Konzepte und Komponenten der Azure Maps-Integration in die rollenbasierte Zugriffssteuerung in Azure AD diskutiert. Im Rahmen des Prozesses zum Einrichten Ihres Azure Maps Kontos wird ein Azure AD-Verzeichnis dem Azure-Abonnement zugeordnet, in dem sich das Azure Maps-Konto befindet. 
+
+Wenn Sie Azure RBAC konfigurieren, wählen Sie einen Sicherheitsprinzipal aus und wenden ihn auf eine Rollenzuweisung an. Informationen zum Hinzufügen von Rollenzuweisungen im Azure-Portal finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+
+### <a name="picking-a-role-definition"></a>Auswählen einer Rollendefinition
+
+Die folgenden Rollendefinitionstypen sind für die Unterstützung von Anwendungsszenarien vorhanden.
+
+| Azure-Rollendefinition       | BESCHREIBUNG                                                                                              |
+| :-------------------------- | :------------------------------------------------------------------------------------------------------- |
+| Azure Maps-Datenleser      | Bietet Zugriff auf unveränderliche Azure Maps-REST-APIs.                                                       |
+| Azure Maps-Datenmitwirkender | Bietet Zugriff auf veränderliche Azure Maps-REST-APIs. Veränderlichkeit wird durch die Aktionen „Write“ (Schreiben) und „Delete“ (Löschen) definiert. |
+| Benutzerdefinierte Rollendefinition      | Erstellen Sie eine gefertigte Rolle, um flexiblen eingeschränkten Zugriff auf Azure Maps-REST-APIs zu ermöglichen.                      |
+
+Einige Azure Maps-Dienste benötigen möglicherweise erhöhte Berechtigungen, um Schreib- oder Löschaktionen an Azure Maps-REST-APIs auszuführen. Die Rolle „Azure Maps-Datenmitwirkender“ ist für Dienste erforderlich, die Schreib- oder Löschaktionen bereitstellen. In der folgenden Tabelle wird beschrieben, auf welche Dienste Azure Maps-Datenmitwirkender gilt, wenn Schreib- oder Lösch Aktionen mit dem angegebenen Dienst verwendet werden. Wenn nur Leseaktionen mit dem Dienst verwendet werden, kann anstelle von „Azure Maps-Datenmitwirkender“ die Rolle „Azure Maps-Datenleser“ verwendet werden.
+
+| Azure Maps-Dienst | Azure Maps-Rollendefinition  |
+| :----------------- | :-------------------------- |
+| Daten               | Azure Maps-Datenmitwirkender |
+| Creator            | Azure Maps-Datenmitwirkender |
+| Spatial            | Azure Maps-Datenmitwirkender |
 
 Informationen zum Anzeigen Ihrer RBAC-Einstellungen finden Sie im Artikel zum Thema [Konfigurieren von RBAC für Azure Maps](https://aka.ms/amrbac).
 
-## <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Verwaltete Identitäten für Azure-Ressourcen und Azure Maps
+#### <a name="custom-role-definitions"></a>Benutzerdefinierte Rollendefinitionen
 
-Von [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) wird für Azure-Dienste eine automatisch verwaltete Identität bereitgestellt, die für den Zugriff auf Azure Maps-Dienste autorisiert werden kann. Beispiele für verwaltete Identitäten sind: Azure App Service, Azure Functions und Azure Virtual Machines.
+Ein Aspekt der Anwendungssicherheit ist das Anwenden des Prinzips der geringsten Rechte. Das Prinzip impliziert, dass dem Sicherheitsprinzipal nur der erforderliche Zugriff und kein zusätzlicher Zugriff gewährt werden sollte. Mit dem Erstellen benutzerdefinierter Rollendefinitionen lassen sich Anwendungsfälle unterstützen, die für die Zugriffssteuerung eine feinere Granularität benötigen. Um eine benutzerdefinierte Rollendefinition zu erstellen, können Sie bestimmte Datenaktionen auswählen, die in die Definition aufgenommen oder daraus ausgeschlossen werden sollen. 
+
+Die benutzerdefinierte Rollendefinition kann dann für jeden Sicherheitsprinzipal in einer Rollenzuweisung verwendet werden. Weitere Informationen zu benutzerdefinierten Azure-Rollendefinitionen finden Sie unter [Benutzerdefinierte Azure-Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
+
+Hier finden Sie einige Beispielszenarien, in denen benutzerdefinierte Rollen die Anwendungssicherheit verbessern können.
+
+| Szenario                                                                                                                                                                                                                 | Datenaktion(en) für benutzerdefinierte Rollen                                                                                                                  |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
+| Eine öffentliche oder interaktive Anmeldewebseite mit Basiskartenkacheln und keinen anderen REST-APIs.                                                                                                                              | `Microsoft.Maps/accounts/services/render/read`                                                                                              |
+| Eine Anwendung, die nur umgekehrte Geocodierung und keine anderen REST-APIs erfordert.                                                                                                                                             | `Microsoft.Maps/accounts/services/search/read`                                                                                              |
+| Eine Rolle für einen Sicherheitsprinzipal, der das Lesen von Azure Maps Creator-basierten Kartendaten und REST-APIs von Basiskartenkacheln anfordert.                                                                                                 | `Microsoft.Maps/accounts/services/data/read`, `Microsoft.Maps/accounts/services/render/read`                                                |
+| Eine Rolle für einen Sicherheitsprinzipal, der das Lesen, Schreiben und Löschen von Creator-basierten Kartendaten erfordert. Diese kann als die Rolle „Kartendaten-Editor“ definiert werden, erlaubt aber keinen Zugriff auf andere REST-APIs wie Basiskartenkacheln. | `Microsoft.Maps/accounts/services/data/read`, `Microsoft.Maps/accounts/services/data/write`, `Microsoft.Maps/accounts/services/data/delete` |
+
+### <a name="understanding-scope"></a>Grundlegendes zum Begriff „Bereich“
+
+Beim Erstellen einer Rollenzuweisung wird sie in der Azure-Ressourcenhierarchie definiert. Am Anfang der Hierarchie befindet sich eine [Verwaltungsgruppe](https://docs.microsoft.com/azure/governance/management-groups/overview), und die niedrigste Ebene ist eine Azure-Ressource wie ein Azure Maps-Konto.
+Wenn Sie einer Ressourcengruppe eine Rollenzuweisung zuweisen, kann dies den Zugriff auf mehrere Azure Maps-Konten oder -Ressourcen in der Gruppe aktivieren.
+
+> [!Tip]
+> Die allgemeine Empfehlung von Microsoft sind das Zuweisen des Zugriffs auf den Bereich des Azure Maps-Kontos, weil dadurch **unbeabsichtigter Zugriff auf andere Azure Maps-Konten**, die sich im selben Azure-Abonnement befinden, verhindert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+* Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) finden Sie unter [Übersicht zur rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/overview).
 
 * Weitere Informationen zur Authentifizierung einer Anwendung mit Azure AD und Azure Maps finden Sie im Artikel zum Thema [Verwalten der Authentifizierung in Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
 
