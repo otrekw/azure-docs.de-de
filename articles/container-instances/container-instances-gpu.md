@@ -2,13 +2,13 @@
 title: Bereitstellen GPU-fähiger Containerinstanzen
 description: Erfahren Sie, wie Sie Azure-Containerinstanzen zur Ausführung rechenintensiver Container-Apps unter Verwendung von GPU-Ressourcen bereitstellen.
 ms.topic: article
-ms.date: 02/19/2020
-ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/02/2020
+ms.openlocfilehash: 78b67843978583dd6b0f0aee2c1d8ad0e5a7ca77
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525285"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169747"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Bereitstellen von Containerinstanzen, die GPU-Ressourcen verwenden
 
@@ -73,7 +73,7 @@ Eine Möglichkeit zum Hinzufügen von GPU-Ressourcen besteht darin, eine Contain
 
 ```YAML
 additional_properties: {}
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 name: gpucontainergroup
 properties:
   containers:
@@ -139,7 +139,7 @@ Eine weitere Möglichkeit, eine Containergruppe mit GPU-Ressourcen bereitzustell
       {
         "name": "[parameters('containerGroupName')]",
         "type": "Microsoft.ContainerInstance/containerGroups",
-        "apiVersion": "2018-10-01",
+        "apiVersion": "2019-12-01",
         "location": "[resourceGroup().location]",
         "properties": {
             "containers": [
@@ -168,10 +168,10 @@ Eine weitere Möglichkeit, eine Containergruppe mit GPU-Ressourcen bereitzustell
 }
 ```
 
-Stellen Sie mit dem Befehl [az group deployment create][az-group-deployment-create] die Vorlage bereit. Sie müssen den Namen einer Ressourcengruppe angeben, die in einer Region (z. B. *eastus*) erstellt wurde, die GPU-Ressourcen unterstützt.
+Stellen Sie die Vorlage mit dem Befehl [az deployment group create][az-deployment-group-create] bereit. Sie müssen den Namen einer Ressourcengruppe angeben, die in einer Region (z. B. *eastus*) erstellt wurde, die GPU-Ressourcen unterstützt.
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file gpudeploy.json
+az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json
 ```
 
 Die Bereitstellung kann einige Minuten in Anspruch nehmen. Dann wird der Container gestartet, und der TensorFlow-Auftrag wird ausgeführt. Führen Sie den Befehl [az container logs][az-container-logs] aus, um die Protokollausgabe anzuzeigen:
@@ -240,4 +240,4 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 [az-container-show]: /cli/azure/container#az-container-show
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

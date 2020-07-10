@@ -3,12 +3,12 @@ title: Überwachen der Leistung von Azure App Services | Microsoft-Dokumentation
 description: Überwachung der Anwendungsleistung für Azure App Services. Ladezeit für Diagramme und Antwortzeit, Informationen zu den Abhängigkeiten und Festlegen von Benachrichtigungen zur Leistung.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 574aefa4d554be7b0027c921289d8d15cffb8e49
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733446"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169934"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
@@ -58,7 +58,7 @@ Es gibt zwei Methoden, um die Überwachung für in Azure App Services gehostete 
  
  Es folgt eine Übersicht über die gesammelten Daten für jede Route:
         
-|  | .NET – Basissammlung | .NET – Empfohlene Sammlung |
+| Daten | .NET – Basissammlung | .NET – Empfohlene Sammlung |
 | --- | --- | --- |
 | Fügt CPU-, Speicher- und E/A-Nutzungstrends hinzu. |Ja |Ja |
 | Sammelt Nutzungstrends und ermöglicht die Korrelation von Verfügbarkeitsergebnissen und Transaktionen. | Ja |Ja |

@@ -3,12 +3,12 @@ title: 'YAML-Referenz: ACR Tasks'
 description: Referenz für die Definition von Aufgaben in YAML für Azure Container Registry Tasks (ACR Tasks), einschließlich Aufgabeneigenschaften, Schritttypen, Schritteigenschaften und integrierter Variablen.
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: 9558f698b4a9dbca46431fc02ced6ae30de29121
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11771c32db3b3d7c975c0262bda228903a58978f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225778"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171056"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referenz zu ACR Tasks: YAML
 
@@ -141,7 +141,7 @@ Der Schritttyp `build` unterstützt die Parameter in der folgenden Tabelle. Dar�
 
 Der Schritttyp `build` unterstützt die folgenden Eigenschaften. Details zu diesen Eigenschaften finden Sie im Abschnitt [Aufgabenschritteigenschaften](#task-step-properties) dieses Artikels.
 
-| | | |
+| Eigenschaften | type | Erforderlich |
 | -------- | ---- | -------- |
 | `detach` | bool | Optional |
 | `disableWorkingDirectoryOverride` | bool | Optional |
@@ -213,7 +213,7 @@ steps:
 
 Der Schritttyp `push` unterstützt die folgenden Eigenschaften. Details zu diesen Eigenschaften finden Sie im Abschnitt [Aufgabenschritteigenschaften](#task-step-properties) dieses Artikels.
 
-| | | |
+| Eigenschaft | type | Erforderlich |
 | -------- | ---- | -------- |
 | `env` | [string, string, ...] | Optional |
 | `id` | Zeichenfolge | Optional |
@@ -258,7 +258,7 @@ steps:
 
 Der Schritttyp `cmd` unterstützt die folgenden Eigenschaften:
 
-| | | |
+| Eigenschaft | type | Erforderlich |
 | -------- | ---- | -------- |
 | `detach` | bool | Optional |
 | `disableWorkingDirectoryOverride` | bool | Optional |
