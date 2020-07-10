@@ -1,6 +1,6 @@
 ---
 title: Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement
-description: Hilft bei der Behebung von Problemen, aufgrund derer Sie sich nicht beim Azure-Portal oder Azure-Kontocenter anmelden können.
+description: Hilft bei der Behebung von Problemen, die das Anmelden beim Azure-Portal oder Azure-Kontocenter verhindern.
 services: cost-management-billing
 author: v-miegge
 manager: dcscontentpm
@@ -9,71 +9,82 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 08f278d56e742659ebe197695fae8dfa35383b17
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: e424a3d0e46f0dc154809eba501d2339bc94b1f5
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81639205"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85806702"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement
 
-Dieser Leitfaden hilft bei der Behebung von Problemen, aufgrund derer Sie sich nicht beim Azure-Portal oder Azure-Kontocenter anmelden können.
+Dieser Leitfaden enthält hilfreiche Informationen zur Behebung von Problemen, die das Anmelden beim Azure-Portal oder Azure-Kontocenter verhindern.
 
-## <a name="issues"></a>Probleme
+> [!NOTE]
+> Wenn Sie Probleme bei der Registrierung für ein neues Azure-Konto haben, helfen Ihnen die Informationen unter [Beheben von Problemen beim Registrieren eines neuen Kontos im Azure-Portal oder im Azure-Kontocenter](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up) weiter.
 
-### <a name="page-hangs-in-the-loading-status"></a>Seite hängt im Ladestatus
+## <a name="page-hangs-in-the-loading-status"></a>Seite hängt im Ladestatus
 
 Wenn Ihr Internetbrowser hängt, können Sie nacheinander die folgenden Schritte ausprobieren, bis Sie auf das Azure-Portal zugreifen können.
 
 - Aktualisieren Sie die Seite.
 - Verwenden Sie einen anderen Internetbrowser.
-- Verwenden Sie den privaten Modus in Ihrem Browser. Für Internet Explorer: Klicken Sie auf **Extras** > **Sicherheit** > **InPrivate-Browsen**, und navigieren Sie dann zum [Azure-Portal](https://portal.azure.com/) oder [Azure-Kontocenter](https://account.azure.com/Subscriptions).
+- Verwenden Sie den privaten Modus in Ihrem Browser:
 
-### <a name="you-are-automatically-signed-in-as-a-different-user"></a>Sie werden automatisch als ein anderer Benutzer angemeldet
+   - **Edge:** Öffnen Sie **Einstellungen** (drei Punkte neben Ihrem Profilbild), und wählen Sie die Option **Neues InPrivate-Fenster** aus. Navigieren Sie dann zum [Azure-Portal](https://portal.azure.com/) oder [Azure-Kontocenter](https://account.azure.com/Subscriptions), und melden Sie sich an. 
+   - **Chrome:** Wählen Sie den Modus **Inkognito** aus.
+   - **Safari:** Wählen Sie **Datei** und dann **Neues privates Fenster** aus.
+
+- Löschen Sie den Cache und die Internetcookies:
+
+   - **Edge:** Öffnen Sie **Einstellungen**, und wählen Sie **Datenschutz und Dienste** aus. Führen Sie die Schritte unter **Browserdaten löschen** aus. Vergewissern Sie sich, dass die Kontrollkästchen für **Browserverlauf**, **Downloadverlauf** und **Zwischengespeicherte Bilder und Dateien** aktiviert sind, und wählen Sie dann die Option **Löschen** aus.
+   - **Chrome:** Wählen Sie **Einstellungen** und unter **Datenschutz und Sicherheit** dann **Browserdaten löschen** aus.
+
+## <a name="you-are-automatically-signed-in-as-a-different-user"></a>Sie werden automatisch als ein anderer Benutzer angemeldet
 
 Dieses Problem kann auftreten, wenn Sie mehrere Benutzerkonten in einem Internetbrowser verwenden.
 
 Um dieses Problem zu lösen, probieren Sie eine der folgenden Methoden aus:
 
-- Löschen Sie Cache und Internetcookies. Klicken Sie in Internet Explorer auf **Extras** > **Internetoptionen** > **Löschen**. Stellen Sie sicher, dass die Kontrollkästchen für temporäre Dateien, Cookies, Kennwort und Verlauf aktiviert sind, und klicken Sie dann auf „Löschen“.
-- Setzen Sie die Internet Explorer-Einstellungen zurück, um alle persönlichen Einstellungen wiederherzustellen, die Sie vorgenommen haben. Klicken Sie hierzu auf **Extras** > **Internetoptionen** > **Erweitert**. Wählen Sie das Feld **Persönliche Einstellungen löschen** und dann **Zurücksetzen** aus.
-- Verwenden Sie den privaten Modus in Ihrem Browser. Für Internet Explorer:  Klicken Sie auf **Extras** > **Sicherheit** > **InPrivate-Browsen**, und navigieren Sie dann zum [Azure-Portal](https://portal.azure.com/) oder [Azure-Kontocenter](https://account.azure.com/Subscriptions).
+- Löschen Sie Cache und Internetcookies.
 
-### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>Ich kann mich zwar anmelden, aber es wird *Keine Abonnements gefunden* angezeigt
+   - **Edge:** Öffnen Sie **Einstellungen**, und wählen Sie **Datenschutz und Dienste** aus. Führen Sie die Schritte unter **Browserdaten löschen** aus. Vergewissern Sie sich, dass die Kontrollkästchen für **Browserverlauf**, **Downloadverlauf**, **Cookies** und **Zwischengespeicherte Bilder und Dateien** aktiviert sind, und wählen Sie dann die Option **Löschen** aus.
+   - **Chrome:** Wählen Sie **Einstellungen** und unter **Datenschutz und Sicherheit** dann **Browserdaten löschen** aus.
+- Setzen Sie Ihre Browsereinstellungen auf die Standardwerte zurück.
+- Verwenden Sie den privaten Modus in Ihrem Browser. 
+   - **Edge:** Öffnen Sie **Einstellungen** (drei Punkte neben Ihrem Profilbild), und wählen Sie die Option **Neues InPrivate-Fenster** aus. Navigieren Sie dann zum [Azure-Portal](https://portal.azure.com/) oder [Azure-Kontocenter](https://account.azure.com/Subscriptions), und melden Sie sich an. 
+   - **Chrome:** Wählen Sie den Modus **Inkognito** aus.
+   - **Safari:** Wählen Sie **Datei** und dann **Neues privates Fenster** aus.
+
+## <a name="i-can-sign-in-but-i-see-the-error-no-subscriptions-found"></a>Ich kann mich zwar anmelden, aber der Fehler „Keine Abonnements gefunden“ wird angezeigt
 
 Dieses Problem tritt auf, wenn Sie das falsche Verzeichnis ausgewählt haben oder Ihr Konto nicht über ausreichende Berechtigungen verfügt.
 
-**Szenario 1:** Die Fehlermeldung wird im [Azure-Portal](https://portal.azure.com/) angezeigt.
+**Szenario 1:** Sie erhalten die Fehlermeldung bei der Anmeldung beim [Azure-Portal](https://portal.azure.com/)
 
 So beheben Sie dieses Problem:
 
-- Vergewissern Sie sich, dass das richtige Azure-Verzeichnis ausgewählt ist, indem Sie oben rechts auf Ihr Konto klicken.
-- Wenn das richtige Azure-Verzeichnis ausgewählt ist, die Fehlermeldung jedoch immer noch ausgegeben wird, [lassen Sie Ihr Konto als Besitzer hinzufügen](add-change-subscription-administrator.md).
+- Vergewissern Sie sich, dass das richtige Azure-Verzeichnis ausgewählt ist, indem Sie oben rechts Ihr Konto auswählen.
+- Wenn das richtige Azure-Verzeichnis ausgewählt ist und die Fehlermeldung trotzdem noch ausgegeben wird, [sollten Sie Ihr Konto als Besitzer hinzufügen lassen](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator).
 
-**Szenario 2:** Die Fehlermeldung wird im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) angezeigt.
+**Szenario 2:** Sie erhalten die Fehlermeldung bei der Anmeldung beim [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions)
 
 Überprüfen Sie, ob das Konto, das Sie verwendet haben, das des Kontoadministrators ist. Gehen Sie folgendermaßen vor, um zu überprüfen, wer der Kontoadministrator ist:
 
-1. Melden Sie sich bei der [Ansicht „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) an.
-
-2. Wählen Sie das zu überprüfende Abonnement aus, und sehen Sie unter **Einstellungen** nach.
-
-3. Wählen Sie **Eigenschaften** aus. Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.
+1.  Melden Sie sich bei der [Ansicht „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) an.
+1.  Wählen Sie das zu überprüfende Abonnement und dann **Einstellungen**aus.
+1.  Wählen Sie **Eigenschaften** aus. Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.
 
 ## <a name="additional-help-resources"></a>Zusätzliche Hilferessourcen
 
 Weitere Artikel für die Problembehandlung bei Azure-Abrechnung und -Abonnements
 
-- [Karte abgelehnt](troubleshoot-declined-card.md)
-- [Probleme bei der Registrierung für ein Abonnement](troubleshoot-azure-sign-up.md)
-- [Keine Abonnements gefunden](no-subscriptions-found.md)
-- [Enterprise-Kostenansicht deaktiviert](enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [Karte abgelehnt](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
+- [Probleme bei der Registrierung für ein Abonnement](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)
+- [Keine Abonnements gefunden](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
+- [Enterprise-Kostenansicht deaktiviert](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [Dokumentation zur Azure-Abrechnung](https://docs.microsoft.com/azure/cost-management-billing/)
 
 ## <a name="contact-us-for-help"></a>Setzen Sie sich mit uns in Verbindung, um Hilfe zu erhalten.
 
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-
-## <a name="next-steps"></a>Nächste Schritte
-
-- [Dokumentation zur Azure-Abrechnung](../../billing/index.md)

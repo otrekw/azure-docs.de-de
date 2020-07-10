@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 766a41b61f32804c7d7f59c946530f8e1a7b869a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 3f84cd92a4c4f96831d39cac783df6710c5ea5f4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296269"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513422"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-sql-pool-by-using-an-arm-template"></a>Schnellstart: Erstellen eines Azure Synapse Analytics SQL-Pools mithilfe einer ARM-Vorlage
 
-Mit dieser Vorlage wird ein Azure Synapse Analytics SQL-Pool mit aktivierter Transparent Data Encryption erstellt. Ein Synapse SQL-Pool bezieht sich auf die Data Warehousing-Features für Unternehmen, die in Azure Synapse allgemein zur Verfügung stehen.
+Mit dieser Azure Resource Manager-Vorlage (ARM-Vorlage) wird ein Azure Synapse Analytics-SQL-Pool mit aktivierter Transparent Data Encryption erstellt. Ein Synapse SQL-Pool bezieht sich auf die Data Warehousing-Features für Unternehmen, die in Azure Synapse allgemein zur Verfügung stehen.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -107,8 +107,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie mithilfe einer Azure Resource Manager-Vorlage einen Azure Synapse Analytics SQL-Pool erstellt und die Bereitstellung überprüft. Weitere Informationen zu Azure Synapse Analytics und Azure Resource Manager finden Sie in den folgenden Artikeln.
+In dieser Schnellstartanleitung haben Sie mit einer ARM-Vorlage einen Azure Synapse Analytics-SQL-Pool erstellt und die Bereitstellung überprüft. Weitere Informationen zu Azure Synapse Analytics und Azure Resource Manager finden Sie in den folgenden Artikeln.
 
 - Lesen Sie [Eine Übersicht über Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
 - Lesen Sie weitere Informationen zu [Azure Resource Manager](../../azure-resource-manager/management/overview.md).
-- [Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+- [Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

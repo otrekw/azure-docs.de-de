@@ -1,16 +1,16 @@
 ---
 title: Organisieren Ihrer Ressourcen mit Verwaltungsgruppen – Azure Governance
 description: Informationen zu Verwaltungsgruppen und ihrer Verwendung sowie zur Funktionsweise ihrer Berechtigungen
-ms.date: 04/15/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773150"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963681"
 ---
-# <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen
+# <a name="what-are-azure-management-groups"></a>Was sind Azure-Verwaltungsgruppen?
 
 Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglicherweise eine Möglichkeit zur effizienten Verwaltung von Zugriff, Richtlinien und Konformität für diese Abonnements. Azure-Verwaltungsgruppen stellen einen abonnementübergreifenden Bereich dar. Sie organisieren Abonnements in Containern, die als „Verwaltungsgruppen“ bezeichnet werden, und wenden Ihre Governancebedingungen auf die Verwaltungsgruppen an. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Bedingungen. Verwaltungsgruppen ermöglichen Ihnen – unabhängig von den Arten Ihrer Abonnements – die unternehmenstaugliche Verwaltung in großem Umfang.
 Alle Abonnements innerhalb einer einzelnen Verwaltungsgruppe müssen demselben Azure Active Directory-Mandanten vertrauen.
@@ -199,6 +199,4 @@ Weitere Informationen zu Verwaltungsgruppen finden Sie unter folgenden Links:
 
 - [Erstellen von Verwaltungsgruppen zum Organisieren von Azure-Ressourcen](./create.md)
 - [Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen](./manage.md)
-- [Überprüfen von Verwaltungsgruppen im Azure PowerShell-Ressourcenmodul](/powershell/module/az.resources#resources)
-- [Überprüfen von Verwaltungsgruppen in der REST-API](/rest/api/resources/managementgroups)
-- [Überprüfen von Verwaltungsgruppen in der Azure CLI](/cli/azure/account/management-group)
+- Informieren Sie sich über die Optionen zum [Schützen der Ressourcenhierarchie](./how-to/protect-resource-hierarchy.md).

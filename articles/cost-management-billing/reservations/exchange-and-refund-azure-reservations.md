@@ -4,14 +4,14 @@ description: Es wird beschrieben, wie Sie für Azure-Reservierungen einen Umtaus
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/01/2020
 ms.author: banders
-ms.openlocfilehash: 3c2f92db1f65a4e9e57ad443a9f000ab3f6567d5
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 4a25bb13bfa5b2e4f13ddf437bcd9577f9602aed
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101019"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807688"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 
@@ -20,6 +20,9 @@ Mit Azure-Reservierungen können Sie Ihre sich ändernden Anforderungen flexibel
 Die Self-Service-Umtausch- und Stornierungsfunktion steht für US Government Enterprise Agreement-Kunden nicht zur Verfügung. Andere US Government-Abonnementtypen, einschließlich nutzungsbasierter Bezahlung und Cloud Solution Provider (CSP), werden unterstützt.
 
 Sie benötigen Besitzerzugriff auf den Reservierungsauftrag, um eine vorhandene Reservierung umzutauschen oder zurückzuerstatten. Sie können [Benutzer, die eine Reservierung verwalten können, hinzufügen oder ändern](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+
+> [!NOTE]
+> Microsoft berechnet derzeit bei Reservierungserstattungen keine Gebühren für die vorzeitige Kündigung. Unter Umständen werden zukünftig Gebühren bei Rückerstattungen fällig. Derzeit ist noch kein Startdatum für die Berechnung der Gebühren festgelegt.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Umtauschen oder Zurückerstatten einer vorhandenen Reservierung
 
@@ -72,7 +75,7 @@ In Azure gelten folgende Richtlinien für Stornierungen, Umtausch und Rückersta
 
 **Rückerstattungsrichtlinien**
 
-- Möglicherweise fällt für die vorzeitige Beendigung eine Gebühr in Höhe von 12 % an.
+- Zurzeit wird keine Gebühr für die vorzeitige Kündigung berechnet, aber in Zukunft kann bei Stornierungen ggf. eine Gebühr für die vorzeitige Beendigung in Höhe von 12 % anfallen.
 - Die stornierte Verpflichtung insgesamt darf in einem rollierenden Zeitfenster von zwölf Monaten den Wert von 50.000 US-Dollar nicht überschreiten. Beispiel: Bei einer dreijährigen Reservierung mit einem Wert von 100 US-Dollar pro Monat, die im 18. Monat zurückerstattet wird, beträgt die stornierte Verpflichtung 1.800 US-Dollar. Nach der Rückerstattung beträgt das neue verfügbare Rückerstattungslimit 48.200 US-Dollar. 365 Tage nach der Erstattung wird das Limit von 48.200 US-Dollar um 1.800 US-Dollar erhöht, und der neue Pool beläuft sich auf 50.000 US-Dollar. Durch jede weitere Reservierungsstornierung wird derselbe Pool verringert, und die gleiche Auffüllungslogik wird angewandt.
 - Rückerstattungen werden auf der Grundlage des niedrigsten Preises (Ihr Kaufpreis oder der aktuelle Preis für die Reservierung) berechnet.
 - Nur Besitzer von Reservierungsaufträgen können eine Erstattung verarbeiten. [Informieren Sie sich über das Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).

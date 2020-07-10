@@ -1,19 +1,18 @@
 ---
-title: Ankündigungen neuer Features
-titleSuffix: Azure Cognitive Search
+title: Neuerungen in der kognitiven Azure-Suche
 description: Ankündigungen neuer und erweiterter Features, einschließlich der Umbenennung des Diensts von Azure Search in kognitive Azure-Suche.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/08/2020
-ms.openlocfilehash: 97defe2af5b82cccbaf289ccbd805b608b978a43
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.date: 06/30/2020
+ms.openlocfilehash: 078892691bfaec62f71f9d601a42de3f80221149
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736083"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958156"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -23,23 +22,33 @@ Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen f
 
 ### <a name="june-2020"></a>Juni 2020
 
-Azure Machine Learning-Skill ist ein neuer Skilltyp zum Integrieren eines Rückschlussendpunkts aus Azure Machine Learning (AML). Das Portal bietet Unterstützung für die Ermittlung und Integration Ihres Azure Machine Learning-Endpunkts innerhalb eines Cognitive Search-Skillsets. Die Ermittlung erfordert es, dass Ihre Cognitive Search- und AML-Dienste in demselben Abonnement bereitgestellt werden. Wenn Sie sich für die AML-Skill-Vorschau registrieren möchten, [füllen Sie bitte das Formular aus](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u). Erste Schritte mit [diesem Tutorial](cognitive-search-tutorial-aml-custom-skill.md).
++ Der [Wissensspeicher](knowledge-store-concept-intro.md) ist jetzt allgemein verfügbar.
+
++ Die [Suchdienst-REST-API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) ist die neue stabile Version der REST-APIs. Zusätzlich zum Wissensspeicher enthält diese allgemein verfügbare Version Verbesserungen in Bezug auf die Suchrelevanz und Bewertung.
+
++ Der neue Rangfolgenalgorithmus in Bezug auf die Relevanz ist für alle neuen Dienste, die Sie erstellen, jetzt [BM25](https://en.wikipedia.org/wiki/Okapi_BM25). Für vorhandene Dienste können Sie dies aktivieren, indem Sie die Eigenschaft `similarity` für Indexfelder festlegen. Diese Eigenschaft ist allgemein verfügbar.
+
++ Der neue Indexer `executionEnvironment` kann explizit auf `private` festgelegt werden. Diese Funktion unterstützt den Indexerzugriff auf externe Daten über private Endpunkte und ist allgemein verfügbar.
+
++ [Azure Machine Learning (AML)](cognitive-search-aml-skill.md) ist ein neuer Skilltyp zum Integrieren eines Rückschlussendpunkts aus Azure Machine Learning. Das Portal bietet Unterstützung für die Ermittlung und Integration Ihres Azure Machine Learning-Endpunkts innerhalb eines Cognitive Search-Skillsets. Die Ermittlung erfordert es, dass Ihre Cognitive Search- und AML-Dienste in demselben Abonnement bereitgestellt werden. Dieser Skill ist allgemein verfügbar. Erste Schritte mit [diesem Tutorial](cognitive-search-tutorial-aml-custom-skill.md).
 
 ### <a name="may-2020-microsoft-build"></a>Mai 2020 (Microsoft Build)
 
-+ Features für [Debugsitzungen](cognitive-search-debug-session.md) befinden sich jetzt in der Vorschauphase. [Registrieren Sie sich, um Zugriff anzufordern](https://aka.ms/DebugSessions). Debugsitzungen bieten eine portalbasierte Schnittstelle zur Untersuchung und Lösung von Problemen mit einem Skillset. In der Debugsitzung erstellte Korrekturen können in Skillsets der Produktionsumgebungen gespeichert werden. Erste Schritte mit [diesem Tutorial](cognitive-search-tutorial-debug-sessions.md).
++ Features für [Debugsitzungen](cognitive-search-debug-session.md) befinden sich jetzt in der Vorschauphase. Debugsitzungen verfügen über eine portalbasierte Schnittstelle zur Untersuchung und Lösung von Problemen mit einem Skillset. In der Debugsitzung erstellte Korrekturen können in Skillsets der Produktionsumgebungen gespeichert werden. Erste Schritte mit [diesem Tutorial](cognitive-search-tutorial-debug-sessions.md).
 
-+ Zu den Sicherheitsverbesserungen gehört die Möglichkeit, [einen privaten Suchendpunkt einzurichten (Vorschau)](service-create-private-endpoint.md), auf den im öffentlichen Internet nicht zugegriffen werden kann. Sie können auch [IP-Regeln für die Unterstützung eingehender Firewalls konfigurieren (Vorschau)](service-configure-firewall.md).
++ Schirmen Sie einen Suchdienstendpunkt gegenüber dem öffentlichen Internet ab, indem Sie [IP-Regeln für die Unterstützung eingehender Firewalls konfigurieren](service-configure-firewall.md) oder [Azure Private Link für einen privaten Suchendpunkt](service-create-private-endpoint.md) nutzen. Beide Funktionen sind allgemein verfügbar.
 
 + Verwenden Sie eine [vom System verwaltete Identität (Vorschau)](search-howto-managed-identities-data-sources.md), um eine Verbindung zu einer Azure-Datenquelle für die Indexierung einzurichten. Gilt für [Indexer](search-indexer-overview.md), die Inhalte von Azure-Datenquellen wie Azure SQL Database, Azure Cosmos DB und Azure Storage erfassen.
 
-+ Ändern Sie die Grundlage für die Berechnung der Suchbewertungen von „pro Shard“ in „alle Shards“, indem Sie die Abfrageparameter [scoringStatistics=global](index-similarity-and-scoring.md#scoring-statistics) und „sessionId“ verwenden.
++ Ändern Sie die Grundlage für die Berechnung der Suchbewertungen von „pro Shard“ in „alle Shards“, indem Sie die Abfrageparameter [sessionId](index-similarity-and-scoring.md) und [scoringStatistics=global](index-similarity-and-scoring.md#scoring-statistics) verwenden. Diese Parameter sind allgemein verfügbar.
+
++ Fügen Sie einen Abfrageparameter vom Typ [featuresMode (Vorschau)](index-similarity-and-scoring.md#featuresMode-param) hinzu, um eine Relevanzbewertung zu erweitern, damit mehr Details angezeigt werden: Ähnlichkeitsergebnis pro Feld, Ausdruckshäufigkeit pro Feld und Anzahl von übereinstimmenden eindeutigen Token pro Feld. Sie können diese Datenpunkte in benutzerdefinierten Bewertungsalgorithmen verwenden. Ein Beispiel, in dem diese Funktion veranschaulicht wird, finden Sie unter [Hinzufügen von maschinellem Lernen (LearnToRank) zur Suchrelevanz](https://github.com/Azure-Samples/search-ranking-tutorial).
 
 ### <a name="march-2020"></a>März 2020
 
 + [Natives vorläufiges Löschen von Blobs (Vorschau)](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) bedeutet, dass der Azure Blob Storage-Indexer in Azure Cognitive Search Blobs erkennt, die sich im vorläufig gelöschten Zustand befinden. Das entsprechende Suchdokument wird während der Indizierung entfernt.
 
-+ Die neue stabile [Verwaltungs-REST-API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) ist jetzt verfügbar. 
++ Die neue stabile [Verwaltungs-REST-API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) ist jetzt allgemein verfügbar. 
 
 ### <a name="february-2020"></a>Februar 2020
 
@@ -49,17 +58,15 @@ Azure Machine Learning-Skill ist ein neuer Skilltyp zum Integrieren eines Rücks
 
 ### <a name="january-2020"></a>Januar 2020
 
-+ [Vom Kunden verwaltete Verschlüsselungsschlüssel](search-security-manage-encryption-keys.md) jetzt allgemein verfügbar. Wenn Sie REST verwenden, können Sie über `api-version=2019-05-06` auf das Feature zugreifen. Bei verwaltetem Code heißt das richtige Paket noch [.NET SDK Version 8.0-preview](search-dotnet-sdk-migration-version-9.md), auch wenn das Feature sich nicht mehr in der Vorschau befindet. 
++ [Vom Kunden verwaltete Verschlüsselungsschlüssel](search-security-manage-encryption-keys.md) jetzt allgemein verfügbar. Wenn Sie REST verwenden, können Sie über `api-version=2019-05-06` oder höher auf das Feature zugreifen. Bei verwaltetem Code heißt das richtige Paket noch [.NET SDK Version 8.0-preview](search-dotnet-sdk-migration-version-9.md), auch wenn das Feature sich nicht mehr in der Vorschau befindet. 
 
 + Privater Zugriff auf einen Suchdienst ist über zwei Mechanismen verfügbar (beider zurzeit in der Vorschau):
 
   + Sie können den Zugriff auf bestimmte IP-Adressen einschränken, indem Sie den Dienst mit der Verwaltungs-REST-API `api-version=2019-10-01-Preview` erstellen. Die Vorschau-API verfügt über neue **IpRule**- und **NetworkRuleSet**-Eigenschaften in der [CreateOrUpdate-API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Diese Previewfunktion ist in den ausgewählten Regionen verfügbar. Weitere Informationen finden Sie unter [Verwenden der Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 
-  + Sie können einen Azure Search-Dienst bereitstellen (zurzeit über eine Vorschau mit eingeschränktem Zugriff verfügbar), der den privaten Azure-Endpunkt für Verbindungen von Clients im gleichen virtuellen Netzwerk unterstützt. Weitere Informationen finden Sie unter [Erstellen eines privaten Endpunkts für sichere Verbindungen](service-create-private-endpoint.md).
-
 ### <a name="december-2019"></a>Dezember 2019
 
-+ [Such-App erstellen (Vorschau)](search-create-app-portal.md) ist ein neuer Assistent im Portal, der eine herunterladbare HTML-Datei generiert. Die Datei enthält ein eingebettetes Skript zum Rendern einer funktionierenden, Localhost-ähnlichen Web-App, die an einen Index Ihres Suchdiensts gebunden ist. Seiten können im Assistenten konfiguriert werden und eine Suchleiste, einen Ergebnisbereich, Randleistennavigation sowie Unterstützung von Eingabevorschlägen für Abfragen umfassen. Der HTML-Code kann offline geändert werden, um den Workflow oder die Darstellung zu erweitern oder anzupassen.
++ [Demo-App erstellen (Vorschau)](search-create-app-portal.md) ist ein neuer Assistent im Portal, mit dem eine herunterladbare HTML-Datei mit Abfragezugriff (schreibgeschützt) auf einen Index generiert wird. Die Datei enthält ein eingebettetes Skript zum Rendern einer funktionierenden, Localhost-ähnlichen Web-App, die an einen Index Ihres Suchdiensts gebunden ist. Seiten können im Assistenten konfiguriert werden und eine Suchleiste, einen Ergebnisbereich, Randleistennavigation sowie Unterstützung von Eingabevorschlägen für Abfragen umfassen. Der HTML-Code kann offline geändert werden, um den Workflow oder die Darstellung zu erweitern oder anzupassen. Eine Demo-App kann nicht ohne Weiteres so erweitert werden, dass sie über Ebenen für Sicherheit und Hosting verfügt, die in Produktionsszenarien normalerweise benötigt werden. Sie sollten sie nicht als Vorstufe einer vollständigen Client-App ansehen, sondern als Überprüfungs- und Testtool.
 
 + Unter [Erstellen eines privaten Endpunkts für sichere Verbindungen (Vorschau)](service-create-private-endpoint.md) wird erläutert, wie Sie einen Azure Private Link für sichere Verbindungen mit Ihrem Suchdienst einrichten. Diese Previewfunktion ist auf Anforderung verfügbar und verwendet [Azure Private Link](../private-link/private-link-overview.md) und [Azure Virtual Network-](../virtual-network/virtual-networks-overview.md) als Teil der Lösung.
 

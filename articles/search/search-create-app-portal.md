@@ -1,23 +1,25 @@
 ---
-title: Erstellen einer Such-App im Azure-Portal
+title: Erstellen einer Demo-App im Azure-Portal
 titleSuffix: Azure Cognitive Search
-description: Führen Sie den Assistenten für die App-Erstellung (Vorschau) aus, um HTML-Seiten und ein Skript für eine funktionierende Web-App zu generieren. Die Seite umfasst eine Suchleiste, einen Ergebnisbereich, eine Randleiste und Typeahead-Unterstützung.
+description: Führen Sie den Assistenten „Demo-App erstellen (Vorschau)“ aus, um HTML-Seiten und ein Skript für eine funktionierende Web-App zu generieren. Die Seite umfasst eine Suchleiste, einen Ergebnisbereich, eine Randleiste und Typeahead-Unterstützung.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 6c956c937027b16d51141ded4de5ff9b019c37d4
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 07/01/2020
+ms.openlocfilehash: 11dd12fce669d6b6a027eb182d5f9e6e493577ad
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488170"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955691"
 ---
-# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Schnellstart: Erstellen einer Such-App im Portal (Azure Cognitive Search)
+# <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Schnellstart: Erstellen einer Demo-App im Portal (Azure Cognitive Search)
 
-Verwenden Sie den Assistenten **Such-App erstellen** im Azure-Portal, um eine herunterladbare, Localhost-ähnliche Web-App zu generieren, die in einem Browser ausgeführt wird. Die generierte App ist abhängig von ihrer Konfiguration sofort einsatzbereit und verfügt über eine Liveverbindung mit einem Remoteindex. Eine Standard-App kann eine Suchleiste, einen Ergebnisbereich, Randleistenfilter und Typeahead-Unterstützung beinhalten.
+Verwenden Sie den Assistenten **Demo-App erstellen** im Azure-Portal, um eine herunterladbare, localhost-ähnliche Web-App zu generieren, die in einem Browser ausgeführt wird. Die generierte App ist abhängig von ihrer Konfiguration sofort einsatzbereit und verfügt über eine schreibgeschützte Liveverbindung mit einem Remoteindex. Eine Standard-App kann eine Suchleiste, einen Ergebnisbereich, Randleistenfilter und Typeahead-Unterstützung beinhalten.
+
+Mit der Demo-App können Sie visualisieren, wie ein Index in einer Client-App funktioniert, aber sie ist nicht für Produktionsszenarien bestimmt. Client-Apps sollten Logik für Sicherheit, Fehlerbehandlung und Hosting enthalten, die von der generierten HTML-Seite nicht bereitgestellt wird. Wenn Sie zum Erstellen einer Client-App bereit sind, können Sie die nächsten Schritte unter [Erstellen Ihrer ersten Such-App mit dem .NET SDK](tutorial-csharp-create-first-app.md) ausführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +47,7 @@ Wenn der Index bereit ist, fahren Sie mit dem nächsten Schritt fort.
 
 1. Wählen Sie in der Liste mit den bereits vorhandenen Indizes den Index *realestate-us-sample-index* aus.
 
-1. Wählen Sie oben auf der Indexseite die Option **Such-App erstellen (Vorschau)** aus, um den Assistenten zu starten.
+1. Wählen Sie oben auf der Indexseite die Option **Demo-App erstellen (Vorschau)** aus, um den Assistenten zu starten.
 
 1. Wählen Sie auf der ersten Seite des Assistenten **CORS aktivieren** (Cross-Origin Resource Sharing; Ressourcenfreigabe zwischen verschiedenen Ursprüngen) aus, um Ihrer Indexdefinition CORS-Unterstützung hinzuzufügen. Dieser Schritt ist zwar optional, ohne ihn stellt Ihre lokale Web-App jedoch keine Verbindung mit dem Remoteindex her.
 
@@ -85,7 +87,7 @@ Im folgenden Screenshot werden die Optionen im Assistenten einer gerenderten Sei
 
 ## <a name="create-download-and-execute"></a>Erstellen, Herunterladen und Ausführen
 
-1. Wählen Sie **Such-App erstellen** aus, um die HTML-Datei zu generieren.
+1. Wählen Sie **Demo-App erstellen** aus, um die HTML-Datei zu generieren.
 
 1. Wählen Sie nach entsprechender Aufforderung die Option **Download your app** (App herunterladen) aus, um die Datei herunterzuladen.
 

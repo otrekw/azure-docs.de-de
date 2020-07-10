@@ -6,20 +6,23 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/24/2019
 ms.author: banders
-ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e238a409adda674e1182c0ffd40a4f666d362731
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199686"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361505"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Nachverfolgen des Azure-Gutschriftensaldos der Microsoft-Kundenvereinbarung
 
 Sie können das Azure-Guthaben Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung im Azure-Portal oder über REST-APIs überprüfen.
 
 Guthaben wird im Abrechnungskonto für eine Microsoft-Kundenvereinbarung einem Abrechnungsprofil zugewiesen. Jedes Abrechnungsprofil verfügt über eigene Guthaben, die automatisch auf die Gebühren der Rechnung angewendet werden. Sie müssen über die Rolle „Besitzer“, „Mitwirkender“, „Leser“ oder „Rechnungs-Manager“ für das Abrechnungsprofil oder über die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ für das Abrechnungskonto verfügen, um das Azure-Guthaben für ein Abrechnungsprofil anzeigen zu können. Weitere Informationen zu den Rollen finden Sie unter [Grundlegendes zu Verwaltungsrollen für Microsoft-Kundenvereinbarungen in Azure](understand-mca-roles.md).
+
+> [!NOTE]
+> Es kann bis zu 24 Stunden dauern, bis neues Guthaben im Azure-Portal angezeigt wird. Wenn Sie neues Guthaben erhalten haben und es im Portal nicht angezeigt wird, sollten Sie zunächst 24 Stunden abwarten.
 
 Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
 

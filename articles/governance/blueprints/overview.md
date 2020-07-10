@@ -3,12 +3,12 @@ title: 'Azure Blueprint: Übersicht'
 description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
 ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 68baeb8030caa17a9880cb0846688f1db6a15c87
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 3a7cece81027bd8ac79250f2f2cd08da637b5f0b
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864503"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970925"
 ---
 # <a name="what-is-azure-blueprints"></a>Was ist Azure Blueprint?
 
@@ -18,20 +18,20 @@ Blaupausen sind eine deklarative Möglichkeit zum Orchestrieren der Bereitstellu
 
 - Rollenzuweisungen
 - Richtlinienzuweisungen
-- Azure-Ressourcen-Manager-Vorlagen
+- Azure Resource Manager-Vorlagen (ARM-Vorlagen)
 - Ressourcengruppen
 
 Der Azure-Dienst für Blaupausen wird vom global verteilten [Azure Cosmos DB](../../cosmos-db/introduction.md)-Dienst unterstützt. Blaupausenobjekte werden in mehreren Azure-Regionen repliziert. Diese Replikation bietet niedrige Wartezeiten, Hochverfügbarkeit und konsistenten Zugriff auf Ihre Blaupausenobjekte – unabhängig davon, in welcher Region Ihre Ressourcen von Azure Blueprints bereitgestellt werden.
 
-## <a name="how-its-different-from-resource-manager-templates"></a>Unterschied zu Resource Manager-Vorlagen
+## <a name="how-its-different-from-arm-templates"></a>Unterschiede zu ARM-Vorlagen
 
-Der Dienst soll die _Umgebungseinrichtung_ vereinfachen. Diese Einrichtung umfasst häufig eine Reihe von Ressourcengruppen, Richtlinien, Rollenzuweisungen und Resource Manager-Vorlagenbereitstellungen. Eine Blaupause ist ein Paket, in dem die einzelnen _Artefakttypen_ zusammengeführt werden. Mit diesen können Sie das Paket zusammenstellen und versionieren – auch über eine CI/CD-Pipeline. Letztlich wird jede in einem einzelnen Vorgang, der überwacht und nachverfolgt werden kann, einem Abonnement zugewiesen.
+Der Dienst soll die _Umgebungseinrichtung_ vereinfachen. Diese Einrichtung umfasst häufig eine Reihe von Ressourcengruppen, Richtlinien, Rollenzuweisungen und Bereitstellungen von ARM-Vorlagen. Eine Blaupause ist ein Paket, in dem die einzelnen _Artefakttypen_ zusammengeführt werden. Mit diesen können Sie das Paket zusammenstellen und versionieren – auch über eine CI/CD-Pipeline. Letztlich wird jede in einem einzelnen Vorgang, der überwacht und nachverfolgt werden kann, einem Abonnement zugewiesen.
 
-Nahezu alle Elemente, die Sie für die Bereitstellung in Azure Blueprints einfügen möchten, können über eine Resource Manager-Vorlage eingefügt werden. Eine Resource Manager-Vorlage ist jedoch ein Dokument, das in Azure nicht nativ vorhanden ist, sondern entweder lokal oder in der Quellcodeverwaltung gespeichert wird. Die Vorlage wird für die Bereitstellung einer oder mehrerer Azure-Ressourcen verwendet. Nach der Bereitstellung dieser Ressourcen besteht jedoch keine aktive Verbindung oder Beziehung mehr mit der Vorlage.
+Nahezu alle Elemente, die Sie für die Bereitstellung in Azure Blueprints einfügen möchten, können über eine ARM-Vorlage eingefügt werden. Eine ARM-Vorlage ist aber ein Dokument, das in Azure nicht nativ vorhanden ist, sondern entweder lokal oder in der Quellcodeverwaltung gespeichert wird. Die Vorlage wird für die Bereitstellung einer oder mehrerer Azure-Ressourcen verwendet. Nach der Bereitstellung dieser Ressourcen besteht jedoch keine aktive Verbindung oder Beziehung mehr mit der Vorlage.
 
 Mit Azure Blueprints bleibt die Beziehung zwischen der Blaupausendefinition (was _soll_ bereitgestellt werden) und der Blaupausenzuweisung (was _wurde_ bereitgestellt) erhalten. Diese Verbindung ermöglicht eine erweiterte Nachverfolgung und Überprüfung von Bereitstellungen. Mit Azure Blueprints lassen sich auch mehrere Abonnements, die der gleichen Blaupause unterliegen, gleichzeitig upgraden.
 
-Es besteht nicht die Notwendigkeit, zwischen einer Resource Manager-Vorlage und einer Blaupause zu wählen. Jede Blaupause kann aus keinem oder mehreren _Artefakten_ für Resource Manager-Vorlagen bestehen. Das bedeutet, dass frühere Bemühungen zur Entwicklung und Verwaltung einer Bibliothek von Resource Manager-Vorlagen in Azure Blueprints wiederverwendet werden können.
+Es besteht nicht die Notwendigkeit, zwischen einer ARM-Vorlage und einer Blaupause zu wählen. Jede Blaupause kann null oder mehr _Artefakte_ für ARM-Vorlagen umfassen. Dies bedeutet, dass bereits durchgeführte Leistungen zur Entwicklung und Verwaltung einer Bibliothek mit ARM-Vorlagen in Azure Blueprints genutzt werden können.
 
 ## <a name="how-its-different-from-azure-policy"></a>Unterschied zu Azure Policy
 
@@ -49,8 +49,8 @@ Eine Blaupause besteht aus _Artefakten_. Azure Blueprints unterstützt derzeit d
 
 |Resource  | Hierarchieoptionen| BESCHREIBUNG  |
 |---------|---------|---------|
-|Ressourcengruppen | Subscription | Erstellen einer neuen Ressourcengruppe zur Verwendung durch andere Artefakte innerhalb der Blaupause.  Diese Platzhalter-Ressourcengruppen ermöglichen es, Ressourcen genau auf die gewünschte Weise zu strukturieren. Sie umfassen eine Bereichsbeschränkung für enthaltene Richtlinien- und Rollenzuweisungsartefakte und Azure Resource Manager-Vorlagen. |
-|Azure Resource Manager-Vorlage | Abonnement, Ressourcengruppe | Vorlagen, einschließlich geschachtelter und verknüpfter Vorlagen, werden zum Erstellen komplexer Umgebungen verwendet. Beispielumgebungen: SharePoint-Farm, Azure Automation State Configuration oder Log Analytics-Arbeitsbereich. |
+|Ressourcengruppen | Subscription | Erstellen einer neuen Ressourcengruppe zur Verwendung durch andere Artefakte innerhalb der Blaupause.  Diese Platzhalter-Ressourcengruppen ermöglichen es, Ressourcen genau auf die gewünschte Weise zu strukturieren. Sie umfassen eine Bereichsbeschränkung für enthaltene Richtlinien- und Rollenzuweisungsartefakte und ARM-Vorlagen. |
+|ARM-Vorlage | Abonnement, Ressourcengruppe | Vorlagen, einschließlich geschachtelter und verknüpfter Vorlagen, werden zum Erstellen komplexer Umgebungen verwendet. Beispielumgebungen: SharePoint-Farm, Azure Automation State Configuration oder Log Analytics-Arbeitsbereich. |
 |Richtlinienzuweisung | Abonnement, Ressourcengruppe | Ermöglicht die Zuweisung einer Richtlinie oder Initiative zum Abonnement, dem die Blaupause zugewiesen ist. Die Richtlinie oder Initiative muss innerhalb des Bereichs des Definitionsspeicherorts der Blaupause liegen. Wenn die Richtlinie oder Initiative über Parameter verfügt, werden diese bei der Erstellung der Blaupause oder bei der Blaupausenzuweisung zugewiesen. |
 |Rollenzuweisung | Abonnement, Ressourcengruppe | Fügt einer integrierten Rolle einen vorhandenen Benutzer oder eine vorhandene Gruppe zu, um sicherzustellen, dass die richtigen Personen geeigneten Zugriff auf Ihre Ressourcen haben. Rollenzuweisungen können für das gesamte Abonnement definiert oder in einer bestimmten in der Blaupause enthaltenen Ressourcengruppe geschachtelt werden. |
 
@@ -60,9 +60,7 @@ Bei der Erstellung einer Blaupausendefinition legen Sie fest, wo die Blaupause g
 
 ### <a name="blueprint-parameters"></a>Blaupausenparameter
 
-Azure Blueprint kann Parameter entweder an eine Richtlinie oder Initiative oder an eine Azure Resource Manager-Vorlage übergeben.
-Beim Hinzufügen eines _Artefakts_ zu einer Blaupause entscheidet der Ersteller, ob er einen definierten Wert für jede Blaupausenzuweisung angeben möchte oder ob bei jeder Blaupausenzuweisung ein Wert angegeben werden kann.
-Diese Flexibilität bietet die Möglichkeit, einen vorab festgelegten Wert für alle Verwendungen der Blaupause zu definieren. Es ist auch möglich, diese Festlegung zum Zeitpunkt der Zuweisung vorzunehmen.
+Bei Blaupausen können Parameter entweder an eine Richtlinie oder Initiative oder an eine ARM-Vorlage übergeben werden. Beim Hinzufügen eines _Artefakts_ zu einer Blaupause entscheidet der Ersteller, ob er einen definierten Wert für jede Blaupausenzuweisung angeben möchte oder ob bei jeder Blaupausenzuweisung ein Wert angegeben werden kann. Diese Flexibilität bietet die Möglichkeit, einen vorab festgelegten Wert für alle Verwendungen der Blaupause zu definieren. Es ist auch möglich, diese Festlegung zum Zeitpunkt der Zuweisung vorzunehmen.
 
 > [!NOTE]
 > Eine Blaupause kann über eigene Parameter verfügen, diese können derzeit jedoch nur erstellt werden, wenn die Blaupause mit der REST-API und nicht im Portal generiert wird.

@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 718365119b8cdf9279dcabc5f8c54deb386e8500
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 609ca56419ed14f3cf4e449e9b906a75a4ff20ab
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019040"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807780"
 ---
 # <a name="buy-a-reservation"></a>Kaufen einer Reservierung
 
@@ -85,7 +85,7 @@ Sie können für Reservierungen auch monatlich bezahlen. Bei einem Kauf mit Vora
 
 Wird eine Reservierung über die Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) erworben, variiert Ihr monatlicher Zahlungsbetrag möglicherweise abhängig vom Wechselkurs des aktuellen Monats für Ihre lokale Währung.
 
-Monatliche Zahlungen sind für Folgendes nicht verfügbar: Databricks, SUSE Linux-Reservierungen, Red Hat-Pläne und Azure Red Hat OpenShift Compute.
+Monatliche Zahlungen sind für Folgendes nicht verfügbar: Databricks, SUSE Linux-Reservierungen, Red Hat-Pläne und Azure Red Hat OpenShift-Lizenzen.
 
 ### <a name="view-payments-made"></a>Anzeigen geleisteter Zahlungen
 

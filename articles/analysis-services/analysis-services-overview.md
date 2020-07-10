@@ -4,16 +4,16 @@ description: Lernen Sie Azure Analysis Services kennen, eine vollständig verwal
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 04/13/2020
+ms.date: 06/24/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 0fb0e9e2611ed882bffa1df62adeb617e7211354
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f1e70c5b7eb4efdde1bfc20b1ec3e058bfa5b054
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191983"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918947"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -65,14 +65,13 @@ Dieser Tarif ist am besten für unternehmenskritische Produktionsanwendungen gee
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8 <sup>[1](#depr)</sup>, <sup>[2](#rec)</sup>    |    320    |    200     |
-|S9 <sup>[1](#depr)</sup>, <sup>[2](#rec)</sup>    |    640    |    400     |
-|S8v2 <sup>[1](#depr)</sup>   |    640     |    200     |
-|S9v2 <sup>[1](#depr)</sup>    |    1280    |    400     |
+|S8 <sup>[1](#naar)</sup>, <sup>[2](#rec)</sup>   |    320    |    200     |
+|S9 <sup>[1](#naar)</sup>, <sup>[2](#rec)</sup>    |    640    |    400     |
+|S8v2 <sup>[1](#naar)</sup>   |    640     |    200     |
+|S9v2 <sup>[1](#naar)</sup>    |    1280    |    400     |
 
-<a name="depr">1</a> – nicht in allen Regionen verfügbar.   
-<a name="rec">2</a> – dieser Plan ist veraltet. v2 wird empfohlen.
-
+<a name="naar">1</a> – nicht in allen Regionen verfügbar.   
+<a name="rec">2</a>: Die Verwendung von v2 wird empfohlen.
 
 ## <a name="availability-by-region"></a>Verfügbarkeit nach Region
 
@@ -86,15 +85,15 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 |Kanada, Mitte    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |USA (Ost) 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|USA (Ost) 2     |     S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    1    |
+|USA (Ost) 2     |     S8, S9, S8v2, S9v2   |    1    |
 |USA Nord Mitte     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA (Mitte)     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA Süd Mitte     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA, Westen-Mitte   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA (Westen)     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|USA (Westen)     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    2  |
+|USA (Westen)     |    S8, S9, S8v2, S9v2   |    2  |
 |USA, Westen 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|USA, Westen 2    |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |    1     |
+|USA, Westen 2    |    S8, S9, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Europa
 
@@ -104,17 +103,17 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 |Nordeuropa     |    S8v2, S9v2      |    3     |
 |UK, Süden     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Europa, Westen     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Europa, Westen    |   S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |  1  |
+|Europa, Westen    |   S8, S9, S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Asien-Pazifik 
 
 |Region  | Unterstützte Pläne | Abfragereplikate (nur Standard-Pläne) |
 |---------|---------|:---------:|
 |Australien (Osten)     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Australien (Osten)     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2    |    1     |
+|Australien (Osten)     |    S8, S9, S8v2, S9v2    |    1     |
 |Australien, Südosten     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japan, Osten     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Asien, Südosten     |     B1, B2, S0, S1, S2, S4, S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2, D1     |   1      |
+|Asien, Südosten     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |Indien, Westen     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Bedarfsgerechte Skalierung
@@ -133,15 +132,17 @@ Wie beim Ändern des Tarifs auch, können Sie Abfragereplikate gemäß Ihren Anf
 
 ## <a name="pricing"></a>Preise
 
-Die Gesamtkosten richten sich nach verschiedenen Faktoren, z.B. gewählte Region, Tarif, Abfragereplikate und Anhalten/Fortsetzen. Verwenden Sie den Rechner unter [Azure Analysis Services – Preise](https://azure.microsoft.com/pricing/details/analysis-services/), um sich einen Überblick über die Preise für Ihre Region zu verschaffen. Mit diesem Tool werden die Preise für eine Einzelserverinstanz für eine einzelne Region berechnet. Beachten Sie, dass für Abfragereplikate die gleiche Rate wie für Server berechnet wird. 
+Die Gesamtkosten hängen von mehreren Faktoren ab. Beispiele hierfür sind ausgewählte Region, Tarif, Abfragereplikate und Anhalten/Fortsetzen-Verhalten. Verwenden Sie den Rechner unter [Azure Analysis Services – Preise](https://azure.microsoft.com/pricing/details/analysis-services/), um sich einen Überblick über die Preise für Ihre Region zu verschaffen. Mit diesem Tool werden die Preise für eine Einzelserverinstanz für eine einzelne Region berechnet. Beachten Sie, dass für Abfragereplikate die gleiche Rate wie für Server berechnet wird. 
 
 ## <a name="built-on-sql-server-analysis-services"></a>Aufbauend auf SQL Server Analysis Services
 
 Azure Analysis Services ist mit zahlreichen praktischen Features kompatibel, die bereits in SQL Server Analysis Services Enterprise Edition enthalten sind. Azure Analysis Services unterstützt tabellarische Modelle mit dem [Kompatibilitätsgrad](analysis-services-compat-level.md) 1200 oder höher. Tabellarische Modelle sind relationale Modellierungskonstrukte (Modell, Tabellen, Spalten), die in tabellarischen Metadatenobjektdefinitionen in TMSL- (Tabular Model Scripting Language) und TOM-Code (Tabellenobjektmodell) verfasst werden. Partitionen, Perspektiven, Sicherheit auf Zeilenebene, bidirektionale Beziehungen und Übersetzungen werden unterstützt.\* Mehrdimensionale Modelle und PowerPivot für SharePoint werden in Azure Analysis Services *nicht* unterstützt.
 
-Tabellarische Modelle werden sowohl im In-Memory- als auch im DirectQuery-Modus unterstützt. Für tabellarische Modelle im In-Memory-Modus (Standard) werden mehrere Datenquellen unterstützt. Da Modelldaten stark komprimiert und im Speicher zwischengespeichert werden, ermöglicht dieser Modus für große Datenmengen die schnellste Reaktion auf Abfragen. Außerdem bietet er die größtmögliche Flexibilität in Bezug auf komplexe Datasets und Abfragen. Die Partitionierung ermöglicht inkrementelle Lasten, erhöht die Parallelität und verringert den Speicherverbrauch. Andere erweiterte Features der Datenmodellierung, z.B. berechnete Tabellen, und alle DAX-Funktionen werden unterstützt. In-Memory-Modelle müssen aktualisiert (verarbeitet) werden, um zwischengespeicherte Daten von Datenquellen zu aktualisieren. Mit dem Azure-Dienstprinzipalsupport kann mit unbeaufsichtigten Aktualisierungsvorgängen per PowerShell, TOM, TMSL und REST flexibel sichergestellt werden, dass Ihre Modelldaten immer auf dem aktuellen Stand sind. 
+Tabellarische Modelle werden sowohl im In-Memory- als auch im DirectQuery-Modus unterstützt. Für tabellarische Modelle im In-Memory-Modus (Standard) werden mehrere Datenquellen unterstützt. Da Modelldaten stark komprimiert und im Speicher zwischengespeichert werden, ermöglicht dieser Modus für große Datenmengen die schnellste Reaktion auf Abfragen. Außerdem bietet er die größtmögliche Flexibilität in Bezug auf komplexe Datasets und Abfragen. 
 
-Im DirectQuery-Modus* wird die relationale Back-End-Datenbank für die Speicherung und Abfragenausführung genutzt. Sehr große Datasets werden in einzelnen Datenquellen von SQL Server, SQL Server Data Warehouse, Azure SQL-Datenbank, Azure Synapse Analytics (SQL Data Warehouse), Oracle und Teradata unterstützt. Für Back-End-Datasets kann der verfügbare Speicher für Serverressourcen überschritten werden. Komplexe Aktualisierungsszenarien für Datenmodelle sind nicht erforderlich. Es gelten auch einige Einschränkungen, z. B. eine begrenzte Zahl von Datenquellentypen, DAX-Formelbeschränkungen und fehlende Unterstützung einiger Features für die erweiterte Datenmodellierung. Lesen Sie die Informationen zum [DirectQuery-Modus](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular), bevor Sie den für Sie am besten geeigneten Modus ermitteln.
+Die Partitionierung ermöglicht inkrementelle Lasten, erhöht die Parallelität und verringert den Speicherverbrauch. Andere erweiterte Features der Datenmodellierung, z.B. berechnete Tabellen, und alle DAX-Funktionen werden unterstützt. In-Memory-Modelle müssen aktualisiert (verarbeitet) werden, um zwischengespeicherte Daten von Datenquellen zu aktualisieren. Mit dem Azure-Dienstprinzipalsupport kann mit unbeaufsichtigten Aktualisierungsvorgängen per PowerShell, TOM, TMSL und REST flexibel sichergestellt werden, dass Ihre Modelldaten immer auf dem aktuellen Stand sind. 
+
+Im DirectQuery-Modus* wird die relationale Back-End-Datenbank für die Speicherung und Abfragenausführung genutzt. Sehr große Datasets werden in einzelnen Datenquellen von SQL Server, SQL Server Data Warehouse, Azure SQL-Datenbank, Azure Synapse Analytics (vormals SQL Data Warehouse), Oracle und Teradata unterstützt. Für Back-End-Datasets kann der verfügbare Speicher für Serverressourcen überschritten werden. Komplexe Aktualisierungsszenarien für Datenmodelle sind nicht erforderlich. Es gelten auch einige Einschränkungen, z. B. eine begrenzte Zahl von Datenquellentypen, DAX-Formelbeschränkungen und fehlende Unterstützung einiger Features für die erweiterte Datenmodellierung. Lesen Sie die Informationen zum [DirectQuery-Modus](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular), bevor Sie den für Sie am besten geeigneten Modus ermitteln.
 
 \* Die Verfügbarkeit der Features hängt vom Tarif ab.
 
@@ -245,7 +246,7 @@ Da tabellarische Modelle in Azure Analysis Services den tabellarischen Modellen 
 
 ### <a name="contribute"></a>Beteiligen Sie sich!
 
-Die Analysis Services-Dokumentation, z.B. dieser Artikel, ist eine Open-Source-Dokumentation. Weitere Informationen dazu, wie Sie mitwirken können, finden Sie im [Leitfaden für Mitwirkende an der Microsoft-Dokumentation](https://docs.microsoft.com/contribute/). 
+Die Analysis Services-Dokumentation, z. B. dieser Artikel, ist eine Open-Source-Dokumentation. Weitere Informationen dazu, wie Sie mitwirken können, finden Sie im [Leitfaden für Mitwirkende an der Microsoft-Dokumentation](https://docs.microsoft.com/contribute/). 
 
 Für die Azure Analysis Services-Dokumentation wird auch [GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs) genutzt. Hierüber können Sie Feedback zum Produkt oder zur Dokumentation übermitteln. Verwenden Sie die Option **Feedback** am Ende des Artikels. „GitHub Issues“ ist für die gemeinsame Analysis Services-Dokumentation nicht aktiviert. 
 

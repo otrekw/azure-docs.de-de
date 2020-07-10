@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: banders
-ms.openlocfilehash: 8552b6732736d1d10711479639fa45114f8b039b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 5fb8a9cd5e00bf3a6ebeddaf44a09ac48b94fe7c
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298003"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849078"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Zahlen für Ihr Azure-Abonnement auf Rechnung
 
@@ -42,28 +42,28 @@ Wenn Sie zur Zahlung auf Rechnung wechseln, bedeutet dies, dass Sie Ihre Rechnun
 
 5. Geben Sie in das Feld **Details** die folgenden Informationen ein, und klicken Sie dann auf **Weiter**.
 
-         New or existing customer:
-         If existing, current payment method:
-         Order ID (requesting for invoice option):
-         Account Admins Live ID (or Org ID) (should be company domain):
-         Commerce Account ID:
-         Company Name (as registered under VAT or Government Website):
-         Company Address (as registered under VAT or Government Website):
-         Company Website:
-         Country:
-         TAX ID/ VAT ID:
-         Company Established on (Year):
-         Any prior business with Microsoft:
-         Contact Name:
-         Contact Phone:
-         Contact Email:
-         Justification on why you prefer Invoice option over credit card:
+     Neuer oder vorhandener Kunde:<br>
+     Derzeitige Zahlungsmethode (falls vorhandener Kunde):<br>
+     Bestell-ID (Anfordern der Zahlung auf Rechnung):<br>
+     Live-ID (oder Organisations-ID) der Kontoadministratoren (normalerweise die Unternehmensdomäne):<br>
+     Commerce-Konto-ID:<br>
+     Firmenname (wie unter „Mehrwertsteuer“ oder „Government-Website“ registriert):<br>
+     Firmenadresse (wie unter „Mehrwertsteuer“ oder „Government-Website“ registriert):<br>
+     Website des Unternehmens:<br>
+     Land:<br>
+     STEUERNUMMER/UST-IDNR.:<br>
+     Unternehmensgründung (Jahr):<br>
+     Frühere Geschäfte mit Microsoft:<br>
+     Name des Kontakts:<br>
+     Telefonnummer des Kontakts:<br>
+     E-Mail-Adresse des Kontakts:<br>
+     Begründung, warum Sie die Option „Auf Rechnung“ gegenüber der Zahlung per Kreditkarte bevorzugen:<br>
 
-         For cores increase, provide the following additional information:
+     Geben Sie für eine Erhöhung der Kernanzahl die folgenden zusätzlichen Informationen an:<br>
 
-         (Old quota) Existing Cores:
-         (New quota) Requested cores:
-         Specific region & series of Subscription:
+     (Altes Kontingent) Vorhandene Kerne:<br>
+     (Neues Kontingent) Angeforderte Kerne:<br>
+     Spezifische Region und Serie des Abonnements:<br>
 
     - Der **Firmenname** und die **Firmenadresse** sollten mit den Informationen übereinstimmen, die Sie für das Azure-Konto bereitgestellt haben. Einzelheiten zum Anzeigen oder Aktualisieren der Informationen finden Sie unter [Ändern von Profilinformationen für Ihr Azure-Konto](change-azure-account-profile.md).
     - Fügen Sie im Azure-Portal die Informationen zu Ihrem Rechnungskontakt hinzu, bevor das Guthabenlimit genehmigt werden kann. Die Kontaktdetails sollten im Zusammenhang mit der Kreditorenbuchhaltung oder der Finanzabteilung des Unternehmens stehen. Wechseln Sie zum [Azure-Kontocenter](https://account.azure.com/Profile), wenn Sie die Informationen zum Rechnungskontakt aktualisieren möchten.

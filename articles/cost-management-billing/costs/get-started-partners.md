@@ -3,23 +3,25 @@ title: Erste Schritte mit Azure Cost Management für Partner
 description: In diesem Artikel wird erläutert, wie Partner Features von Azure Cost Management verwenden und den Zugriff auf Cost Management für ihre Kunden aktivieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554561"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849867"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
-Azure Cost Management ist für direkte Partner, die ihre Kunden in eine Microsoft-Kundenvereinbarung aufgenommen und [einen Azure-Plan erworben](/partner-center/purchase-azure-plan) haben, nativ verfügbar. In diesem Artikel wird erläutert, wie Partner mithilfe der Funktionen von [Azure Cost Management](../index.yml) Kosten für Abonnements im Azure-Plan einsehen. Außerdem wird beschrieben, wie Partner ihren Kunden den Zugriff auf Cost Management ermöglichen.
+Azure Cost Management ist für direkte Partner, die ihre Kunden in eine Microsoft-Kundenvereinbarung aufgenommen und [einen Azure-Plan erworben](/partner-center/purchase-azure-plan) haben, nativ verfügbar. In diesem Artikel wird erläutert, wie Partner mithilfe der Funktionen von [Azure Cost Management](../index.yml) Kosten für Abonnements im Azure-Plan einsehen. Außerdem wird beschrieben, wie Partner ihren Kunden den Zugriff auf Cost Management zu Einzelhandelspreisen ermöglichen.
 
-Bei direkten Partnern und indirekten Anbietern können der globale Administrator und die Administrator-Agents des indirekten Anbieters im Partnermandanten auf Cost Management zugreifen. Handelspartner und Kunden können im Kundenmandanten auf Cost Management zugreifen und Kosten für die Abonnements anzeigen. Die Kosten werden in dieser Ansicht zu Einzelhandelspreisen berechnet und angezeigt. Allerdings müssen sie über RBAC-Zugriff auf das Abonnement im Kundenmandanten verfügen, um Kosten anzeigen zu können. Die Richtlinie für die Sichtbarkeit von Kosten muss vom Anbieter für den Kundenmandanten aktiviert werden.
+Bei direkten Partnern und indirekten Anbietern können der globale Administrator und die Administrator-Agents zu den fakturierten Preisen im Partnermandanten auf Cost Management zugreifen und die Kosten verwalten.
+
+Handelspartner und Kunden können im Kundenmandanten auf Cost Management zugreifen und Kosten für die Abonnements anzeigen. Die Kosten werden in dieser Ansicht zu Einzelhandelspreisen berechnet und angezeigt. Allerdings müssen sie über RBAC-Zugriff auf das Abonnement im Kundenmandanten verfügen, um Kosten anzeigen zu können. Die Richtlinie für die Sichtbarkeit von Kosten muss vom Anbieter für den Kundenmandanten aktiviert werden.
 
 Kunden können Cost Management-Funktionen verwenden, wenn sie von ihrem CSP-Partner aktiviert werden.
 
@@ -33,10 +35,12 @@ CSP-Partner verwenden Cost Management für folgende Zwecke:
 - Exportieren ihrer Daten zu Kosten und Nutzung eines Abonnements mit nutzungsbasierter Bezahlung in ein Speicherblob.
 
 Nachstehend finden Sie ein Beispiel, das die Kosten für alle Kunden anzeigt.
-![Beispiel, das die Kosten für alle Kunden anzeigt](./media/get-started-partners/customer-costs1.png)
+
+[![Beispiel: Kosten für alle Kunden](./media/get-started-partners/customer-costs1.png)](./media/get-started-partners/customer-costs1.png#lightbox)
 
 Das folgende Beispiel zeigt die Kosten für einen einzelnen Kunden an.
-![Beispiel, das die Kosten für einen einzelnen Kunden anzeigt](./media/get-started-partners/customer-costs2.png)
+
+[![Beispiel: Kosten für einen einzelnen Kunden](./media/get-started-partners/customer-costs2.png)](./media/get-started-partners/customer-costs2.png#lightbox)
 
 Alle Funktionen, die in Azure Cost Management verfügbar sind, sind auch mit Rest-APIs verfügbar. Verwenden Sie die APIs, um Kostenverwaltungsaufgaben zu automatisieren.
 
@@ -50,8 +54,7 @@ Azure Cost Management erfordert Lesezugriff auf Ihr Abrechnungskonto oder Ihr Ab
 
 Weitere Informationen zum Aktivieren und Zuweisen der Zugriffsrechte auf Azure Cost Management für ein Abrechnungskonto finden Sie unter [Zuweisen von Benutzerrollen und Berechtigungen](/partner-center/permissions-overview). Die Rollen **Globaler Administrator** und **Administrator-Agent** können die Kosten für ein Abrechnungskonto verwalten.
 
-Damit der Zugriff auf Azure Cost Management in den Abonnementbereichen möglich ist, können alle Benutzer, denen im Rahmen der rollenbasierten Zugriffssteuerung Zugriff auf ein Abonnement gewährt wurde, Kosten zu Einzelhandelspreisen (nutzungsbasierte Bezahlung) anzeigen. Die Richtlinie für die Sichtbarkeit von Kosten muss für den Kundenmandanten jedoch aktiviert sein. Eine vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md).
-
+Damit der Zugriff auf Azure Cost Management in den Abonnementbereichen möglich ist, können alle Benutzer, denen im Rahmen der rollenbasierten Zugriffssteuerung Zugriff auf ein Abonnement gewährt wurde, Kosten zu Einzelhandelspreisen (nutzungsbasierte Bezahlung) anzeigen. Die [Richtlinie für die Sichtbarkeit von Kosten muss für den Kundenmandanten](#enable-the-policy-to-view-azure-usage-charges) aber aktiviert sein. Eine vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md).
 
 ## <a name="how-cost-management-uses-scopes"></a>Zweck von Bereichen in Cost Management
 
@@ -110,13 +113,13 @@ Der Kundenbereich umfasst keine Kunden, die dem aktuellen CSP-Angebot unterliege
 
 Nur die Benutzer mit den Rollen **Globaler Administrator** und **Administrator-Agent** können Kosten für Abrechnungskonten, Abrechnungsprofile und Kunden direkt im Azure-Mandanten des Partners verwalten und anzeigen. Weitere Informationen zu Partner Center-Rollen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](/partner-center/permissions-overview).
 
-## <a name="enable-cost-management-in-the-customer-tenant"></a>Aktivieren der Kostenverwaltung im Kundenmandanten
+## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>Aktivieren der Kostenverwaltung für Abonnements des Kundenmandanten
 
-Partner können den Zugriff auf Cost Management aktivieren, nachdem Kunden in eine Microsoft-Kundenvereinbarung aufgenommen wurden. Partner können dann eine Richtlinie aktivieren, mit der Kunden ihre Kosten anzeigen können, die nach nutzungsbasierten Preisen berechnet werden. Die Kosten werden in der Abrechnungswährung der Kunden für ihren Verbrauch im RBAC-Abonnement- und Ressourcengruppenbereich angezeigt.
+Partner können den Zugriff auf Cost Management aktivieren, nachdem Kunden in eine Microsoft-Kundenvereinbarung aufgenommen wurden. Partner können dann eine Richtlinie aktivieren, mit der Kunden ihre Kosten für die in Azure genutzten Dienste anzeigen können, die nach nutzungsbasierten Preisen berechnet werden. Die Kosten werden in der Abrechnungswährung der Kunden für ihren Verbrauch im RBAC-Abonnement- und Ressourcengruppenbereich angezeigt.
 
 Wenn der Partner die Richtlinie für Kostensichtbarkeit aktiviert hat, kann jeder Benutzer mit Azure Resource Manager-Zugriff auf das Abonnement die Kosten, die sich aus nutzungsbasierten Preisen zusammensetzen, verwalten und analysieren. Reseller und Kunden, die über den entsprechenden RBAC-Zugriff auf die Azure-Abonnements verfügen, können Kosten anzeigen.
 
-Unabhängig von der Richtlinie können Partner die Kosten auch anzeigen, wenn sie Zugriff auf das Abonnement und die Ressourcengruppe haben.
+Unabhängig von der Richtlinie können globale Administratoren und Administrator-Agents des Anbieters die Abonnementkosten anzeigen, wenn sie Zugriff auf das Abonnement und die Ressourcengruppe haben.
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Aktivieren der Richtlinie zum Anzeigen von Azure-Nutzungsgebühren
 
@@ -126,7 +129,7 @@ Melden Sie sich im Azure-Portal beim Partnermandanten an, und wählen Sie **Kost
 
 Wählen Sie in der Liste der Kunden den Kunden aus, dem Sie die Anzeige von Kosten erlauben möchten.
 
-![Auswählen von Kunden in Cost Management](./media/get-started-partners/customer-list.png)
+[![Auswählen von Kunden in Cost Management](./media/get-started-partners/customer-list.png)](./media/get-started-partners/customer-list.png#lightbox)
 
 Wählen Sie unter **Einstellungen** die Option **Richtlinien** aus.
 
@@ -139,16 +142,17 @@ Wenn die Kostenrichtlinie auf **Ja** festgelegt ist, können Abonnementbenutzer,
 
 Wenn die Kostensichtbarkeits-Richtlinie aktiviert ist, werden für alle Dienste im Rahmen der Abonnementnutzung die durch nutzungsbasierte Gebühren anfallenden Kosten angezeigt. Die Reservierungsnutzung wird ohne Gebühren für tatsächliche und amortisierte Kosten angezeigt. Käufe und Berechtigungen werden keinem bestimmten Abonnement zugeordnet. Käufe werden also nicht im Abonnementbereich angezeigt.
 
+### <a name="view-subscription-costs-in-the-customer-tenant"></a>Anzeigen der Abonnementkosten auf dem Kundenmandanten
 
-### <a name="view-customer-costs"></a>Anzeigen der Kundenkosten
+Öffnen Sie zum Anzeigen der Kosten für ein Abonnement auf dem Azure-Mandanten des Kunden die Option **Kostenverwaltung + Abrechnung**. Wählen Sie die Option **Kostenanalyse** für das erforderliche Abonnement aus, um mit der Überprüfung der Kosten zu beginnen. Sie können die Verbrauchskosten für jedes Abonnement einzeln auf dem Kundenmandanten anzeigen.
 
-Öffnen Sie zum Anzeigen der Kosten für den Kundenmandanten **Kostenverwaltung + Abrechnung**. Wählen Sie **Kostenanalyse** aus, und legen Sie den Bereich auf das Abonnement des Kundenmandanten fest, um mit der Kostenüberprüfung zu beginnen.
-
-![Anzeigen der Kostenanalyse als Kunde ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+[![Anzeigen der Kostenanalyse als Kunde](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
 Kostenanalyse, Budgets und Warnungen sind für die Abonnement- und Ressourcengruppen-RBAC-Bereiche für nutzungsbasierte Kosten verfügbar.
 
 In amortisierten Ansichten und für tatsächlichen Koste für reservierte Instanzen in den RBAC-Bereichen werden keine Gebühren angezeigt. Kosten für reservierte Instanzen werden nur in Abrechnungsbereichen angezeigt, in denen die Einkäufe getätigt wurden.
+
+Die Einzelhandelspreise, die zum Berechnen der in der Ansicht enthaltenen Kosten verwendet werden, entsprechen den Preisen, die im Azure-Preisrechner für alle Kunden angezeigt werden. Die angezeigten Kosten enthalten keine Rabatte oder Guthaben, über die der Partner ggf. verfügt, z. B. vom Partner erworbene Guthaben, tarifspezifische Rabatte und Rabatte für globale Dienste.
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Analysieren von Kosten mithilfe der Kostenanalyse
 

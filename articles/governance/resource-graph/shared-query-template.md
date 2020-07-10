@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Erstellen einer freigegebenen Abfrage mit Vorlagen'
-description: In dieser Schnellstartanleitung verwenden Sie eine Resource Manager-Vorlage, um eine freigegebene Resource Graph-Abfrage zu erstellen, mit der virtuelle Computer nach Betriebssystem gezählt werden.
-ms.date: 04/28/2020
+description: In dieser Schnellstartanleitung verwenden Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage), um eine freigegebene Resource Graph-Abfrage zu erstellen, mit der virtuelle Computer nach Betriebssystem gezählt werden.
+ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 050cf26da2054883fceaa08b11f94c6af4c85a16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3cdcff4898a8644008193943a243be4a2ef9e8c4
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82254241"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969805"
 ---
-# <a name="quickstart-create-a-shared-query-by-using-a-resource-manager-template"></a>Schnellstart: Erstellen einer freigegebenen Abfrage unter Verwendung einer Resource Manager-Vorlage
+# <a name="quickstart-create-a-shared-query-by-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen einer freigegebenen Abfrage mit einer Azure Resource Manager-Vorlage
 
-Resource Graph-Abfragen können als _private Abfrage_ oder _freigegebene Abfrage_ gespeichert werden. Eine private Abfrage wird im Portalprofil eines Benutzers gespeichert und ist für andere Benutzer nicht sichtbar. Eine freigegebene Abfrage ist ein Resource Manager-Objekt, das über Berechtigungen und rollenbasierten Zugriff für andere Benutzer freigegeben werden kann. Eine freigegebene Abfrage ermöglicht eine allgemeine und konsistente Ausführung der Ressourcenermittlung. In dieser Schnellstartanleitung wird eine Resource Manager-Vorlage zum Erstellen einer freigegebenen Abfrage verwendet.
+Resource Graph-Abfragen können als _private Abfrage_ oder _freigegebene Abfrage_ gespeichert werden. Eine private Abfrage wird im Portalprofil eines Benutzers gespeichert und ist für andere Benutzer nicht sichtbar. Eine freigegebene Abfrage ist ein Resource Manager-Objekt, das über Berechtigungen und rollenbasierten Zugriff für andere Benutzer freigegeben werden kann. Eine freigegebene Abfrage ermöglicht eine allgemeine und konsistente Ausführung der Ressourcenermittlung. In dieser Schnellstartanleitung wird eine Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen einer freigegebenen Abfrage verwendet.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -42,7 +42,7 @@ In der Vorlage ist die folgende Ressource definiert:
 
 1. Wählen Sie die folgende Abbildung aus, um sich am Azure-Portal anzumelden und die Vorlage zu öffnen:
 
-   [![Bereitstellen der Policy-Vorlage in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json)
+   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen der ARM-Vorlage zum Erstellen einer freigegebenen Abfrage für Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
 
 1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein:
 
@@ -62,7 +62,7 @@ Einige zusätzliche Ressourcen:
 
 - Weitere Beispielvorlagen finden Sie unter [Azure-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular).
 - Navigieren Sie zur [Azure-Vorlagenreferenz](/azure/templates/microsoft.resourcegraph/allversions), um die Vorlagenreferenz anzuzeigen.
-- Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](../../azure-resource-manager/management/overview.md).
+- Informationen zur Entwicklung von ARM-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](../../azure-resource-manager/management/overview.md).
 - Informationen zur Bereitstellung auf Abonnementebene finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](../../azure-resource-manager/templates/deploy-to-subscription.md).
 
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung

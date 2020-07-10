@@ -1,14 +1,14 @@
 ---
 title: Übersicht über Azure Resource Graph
 description: Hier wird erläutert, wie der Azure Resource Graph-Dienst das komplexe bedarfsabhängige Abfragen von Ressourcen für Abonnements und Mandanten ermöglicht.
-ms.date: 03/02/2020
+ms.date: 06/29/2020
 ms.topic: overview
-ms.openlocfilehash: a084215f6f2d1b5a8ed34ca59266e1c0087f608b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 9c15ff12f21c1d3d168828eae67de51069cdcada
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167263"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970602"
 ---
 # <a name="what-is-azure-resource-graph"></a>Was ist Azure Resource Graph?
 
@@ -29,7 +29,7 @@ In dieser Dokumentation wird jedes Feature ausführlich beschrieben.
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Wie Resource Graph Azure Resource Manager ergänzt
 
-Azure Resource Manager unterstützt aktuelle Abfragen von einfachen Ressourcenfeldern, insbesondere Ressourcenname, ID, Typ, Ressourcengruppe, Abonnement und Speicherort. Resource Manager bietet darüber hinaus Funktionen zum Aufrufen einzelner Ressourcenanbieter, um jeweils für eine Ressource auf die Detaileigenschaften zuzugreifen.
+Resource Manager unterstützt derzeit aktuelle Abfragen von einfachen Ressourcenfeldern, insbesondere Ressourcenname, ID, Typ, Ressourcengruppe, Abonnement und Speicherort. Resource Manager bietet darüber hinaus Funktionen zum Aufrufen einzelner Ressourcenanbieter, um jeweils für eine Ressource auf die Detaileigenschaften zuzugreifen.
 
 Mit Azure Resource Graph können Sie auf diese Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen. Eine Liste der unterstützten Ressourcentypen finden Sie in der [Tabelle und der Referenz für Ressourcentypen](./reference/supported-tables-resources.md). Alternativ können Sie die unterstützten Ressourcentypen über den [Schemabrowser im Azure Resource Graph-Explorer](./first-query-portal.md#schema-browser) anzeigen.
 
@@ -52,8 +52,7 @@ Da Sie nun besser verstehen, was Azure Resource Graph ist, erfahren Sie nun, wie
 
 Es ist wichtig zu wissen, dass die Abfragesprache von Azure Resource Graph auf der von Azure Data Explorer verwendeten [Kusto-Abfragesprache](/azure/data-explorer/data-explorer-overview) basiert.
 
-Informationen zu Vorgängen und Funktionen, die mit Azure Resource Graph verwendet werden können, finden Sie unter [Grundlegendes zur Abfragesprache von Azure Resource Graph](./concepts/query-language.md).
-Wie Sie Ressourcen durchsuchen, erfahren Sie unter [Untersuchen Ihrer Azure-Ressourcen mit Resource Graph](./concepts/explore-resources.md).
+Informationen zu Vorgängen und Funktionen, die mit Azure Resource Graph verwendet werden können, finden Sie unter [Grundlegendes zur Abfragesprache von Azure Resource Graph](./concepts/query-language.md). Wie Sie Ressourcen durchsuchen, erfahren Sie unter [Untersuchen Ihrer Azure-Ressourcen mit Resource Graph](./concepts/explore-resources.md).
 
 ## <a name="permissions-in-azure-resource-graph"></a>Berechtigungen in Azure Resource Graph
 
@@ -62,8 +61,7 @@ Um Resource Graph verwenden zu können, müssen Sie über die richtigen Rechte f
 > [!NOTE]
 > Ressource Graph verwendet die Abonnements, die für einen Prinzipal während der Anmeldung verfügbar sind. Um Ressourcen eines neuen Abonnements anzuzeigen, die während einer aktiven Sitzung hinzugefügt wurden, muss der Prinzipal den Kontext aktualisieren. Diese Aktion erfolgt nach dem Abmelden und erneuten Anmelden automatisch.
 
-Die Azure-Befehlszeilenschnittstelle und Azure PowerShell nutzen Abonnements, auf die der Benutzer Zugriff hat. Bei der direkten Verwendung der REST-API wird die Abonnementliste vom Benutzer bereitgestellt. Hat der Benutzer Zugriff auf eins der Abonnements in der Liste, werden die Abfrageergebnisse für die Abonnements zurückgegeben, auf die der Benutzer Zugriff hat. Dies ist das gleiche Verhalten wie beim Aufrufen von [Resource Groups - List](/rest/api/resources/resourcegroups/list) (Ressourcengruppen – Liste): Sie erhalten Ressourcengruppen, auf die Sie Zugriff haben, ohne Hinweis darauf, dass es sich um ein Teilergebnis handeln könnte.
-Sind in der Abonnementliste keine Abonnements vorhanden, für die der Benutzer über die entsprechenden Berechtigungen verfügt, lautet die Antwort _403_ (Verboten).
+Die Azure-Befehlszeilenschnittstelle und Azure PowerShell nutzen Abonnements, auf die der Benutzer Zugriff hat. Bei der direkten Verwendung der REST-API wird die Abonnementliste vom Benutzer bereitgestellt. Hat der Benutzer Zugriff auf eins der Abonnements in der Liste, werden die Abfrageergebnisse für die Abonnements zurückgegeben, auf die der Benutzer Zugriff hat. Dies ist das gleiche Verhalten wie beim Aufrufen von [Resource Groups - List](/rest/api/resources/resourcegroups/list) (Ressourcengruppen – Liste): Sie erhalten Ressourcengruppen, auf die Sie Zugriff haben, ohne Hinweis darauf, dass es sich um ein Teilergebnis handeln könnte. Sind in der Abonnementliste keine Abonnements vorhanden, für die der Benutzer über die entsprechenden Berechtigungen verfügt, lautet die Antwort _403_ (Verboten).
 
 ## <a name="throttling"></a>Drosselung
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 03fe40cea5891e87f42f0d6a50eedee80a68f25e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: efcc5e8f629c8b6ccc903478473b54989c0e9fd6
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200536"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959468"
 ---
 ::: zone target="docs"
 
@@ -46,7 +46,7 @@ In diesem Tutorial werden folgende Themen behandelt:
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 - Sie haben die Schritte ausgeführt in [Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung](data-box-deploy-copy-data.md). 
-- Alle Kopieraufträge sind abgeschlossen. „Für Versand vorbereiten“ kann nicht ausgeführt werden, wenn noch Kopieraufträge ausgeführt werden.
+- Die Durchführung der Kopieraufträge ist abgeschlossen, und auf der Seite **Verbindung herstellen und Daten kopieren** werden keine Fehler angezeigt. Die Versandvorbereitung kann nicht durchgeführt werden, wenn noch Kopieraufträge in Bearbeitung oder auf der Seite **Verbindung herstellen und Daten kopieren** Fehler aufgeführt sind.
 
 ## <a name="prepare-to-ship"></a>Vorbereiten des Versands
 

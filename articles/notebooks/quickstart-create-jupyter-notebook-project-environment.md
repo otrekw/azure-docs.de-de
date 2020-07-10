@@ -4,18 +4,18 @@ description: Erstellen Sie ein neues Projekt in Azure Notebooks (Vorschauversion
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 03935b9672c25db11b91733fac1c63f1f5978b87
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c5f73b73b4bab99e07874c2d16d47da69f8026ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559750"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832898"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Schnellstart: Erstellen eines Projekts mit benutzerdefinierter Umgebung in Azure Notebooks (Vorschauversion)
 
-Ein Projekt in Azure Notebooks ist eine Sammlung von Dateien, wie etwa Notebooks, Datendateien, Dokumentation, Bildern usw. in Verbindung mit einer Umgebung, die mit bestimmten Setupbefehlen konfiguriert werden kann. Indem Sie die Umgebung zugleich mit dem Projekt definieren, verhelfen Sie jedem, der das Projekt in das eigene Azure Notebooks-Konto klont, zu allen Informationen, die zum Neuerstellen der erforderlichen Umgebung benötigt werden.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Ein Projekt in Azure Notebooks ist eine Sammlung von Dateien, wie etwa Notebooks, Datendateien, Dokumentation, Bildern usw. in Verbindung mit einer Umgebung, die mit bestimmten Setupbefehlen konfiguriert werden kann. Indem Sie die Umgebung zugleich mit dem Projekt definieren, verhelfen Sie jedem, der das Projekt in das eigene Azure Notebooks-Konto klont, zu allen Informationen, die zum Neuerstellen der erforderlichen Umgebung benötigt werden.
 
 ## <a name="create-a-project"></a>Erstellen eines Projekts
 
@@ -73,4 +73,4 @@ Ein Projekt in Azure Notebooks ist eine Sammlung von Dateien, wie etwa Notebooks
 > [Verwalten und Konfigurieren von Projekten in Azure Notebooks](configure-manage-azure-notebooks-projects.md)
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Ausführen eines Jupyter-Notebooks für lineare Regression](tutorial-create-run-jupyter-notebook.md)
+> [Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python](tutorial-create-run-jupyter-notebook.md)

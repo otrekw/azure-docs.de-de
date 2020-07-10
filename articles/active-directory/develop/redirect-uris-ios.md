@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: overview
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.openlocfilehash: 1291563a39e3cf3acd4b343302be8b150bf794ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 95bd7b5ac325ef5484bd01284c46489acb919a32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80883507"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830348"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Verwenden von Umleitungs-URIs mit der Microsoft Authentication Library für iOS und macOS
 
@@ -40,10 +40,12 @@ Die Umleitungs-URIs müssen für jede iOS-App unterschiedlich sein. So kann der 
 
 Im Azure-Portal ist die folgende Anwendungsregistrierung vorhanden:
 
-    Client ID: ABCDE-12345 (this is a single client ID)
-    RedirectUris: msauth.com.contoso.app1://auth, msauth.com.contoso.app2://auth, msauth.com.contoso.app3://auth
+* Client-ID: `ABCDE-12345` (ID für einen einzelnen Client)
+* RedirectUris: `msauth.com.contoso.app1://auth`, `msauth.com.contoso.app2://auth`, `msauth.com.contoso.app3://auth`
 
-App1 verwendet den Umleitungs-URI `msauth.com.contoso.app1://auth`, App2 verwendet `msauth.com.contoso.app2://auth`, App3 verwendet `msauth.com.contoso.app1://auth`
+App1 verwendet die Umleitung `msauth.com.contoso.app1://auth`.\
+App2 verwendet `msauth.com.contoso.app2://auth`.\
+App3 verwendet `msauth.com.contoso.app1://auth`.
 
 ### <a name="migrating-from-adal-to-msal"></a>Migrieren von ADAL zu MSAL
 
@@ -70,7 +72,6 @@ Wenn Sie Code, in dem die Azure AD-Authentifizierungsbibliothek (Azure AD Authen
         </dict>
     </array>
     ```
-    
 
 Die MSAL überprüft, ob der Umleitungs-URI ordnungsgemäß registriert ist, und gibt einen Fehler zurück, wenn dies nicht der Fall ist.
     

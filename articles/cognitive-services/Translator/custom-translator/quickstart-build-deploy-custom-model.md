@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: ea01fcd259075caee1e21eb091b8df1b326c553f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: b0992c4d18fdb9cb5201ab3ef52fba8ee3feb7a2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996464"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964378"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Schnellstart: Erstellen, Bereitstellen und Verwenden eines benutzerdefinierten Modells für die Übersetzung
 
@@ -24,13 +24,13 @@ Dieser Artikel enthält ausführliche Anweisungen zum Erstellen eines Übersetzu
 
 1. Für die Verwendung des [Custom Translator](https://portal.customtranslator.azure.ai)-Portals benötigen Sie ein [Microsoft-Konto](https://signup.live.com) oder [Azure AD-Konto](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (in Azure gehostetes Organisationskonto), um sich anzumelden.
 
-2. Ein Translator-Abonnement über das Azure-Portal. Der Translator-Abonnementschlüssel wird für die Zuordnung zu Ihrem Arbeitsbereich im benutzerdefinierten Translator benötigt. Eine Registrierungsanleitung für Translator finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
+2. Ein Translator-Abonnement über das Azure-Portal. Sie benötigen einen Translator-Abonnementschlüssel für die Zuordnung zu Ihrem Arbeitsbereich in „Benutzerdefinierter Translator“. Eine Registrierungsanleitung für Translator finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
 3. Sind die beiden Komponenten oben vorhanden, melden Sie sich beim Portal für den [benutzerdefinierten Translator](https://portal.customtranslator.azure.ai) an, um Arbeitsbereiche und Projekte zu erstellen, Dateien hochzuladen sowie Modelle zu erstellen und bereitzustellen.
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
-Als Erstbenutzer werden Sie aufgefordert, den Vertragsbedingungen zuzustimmen, einen Arbeitsbereich zu erstellen und den Arbeitsbereich dem Translator-Abonnement zuzuordnen.
+Als Erstbenutzer werden Sie aufgefordert, den Vertragsbedingungen zuzustimmen, einen Arbeitsbereich zu erstellen und den Arbeitsbereich Ihrem Translator-Abonnement zuzuordnen.
 
 ![Erstellen eines Arbeitsbereichs](media/quickstart/terms-of-service.png)
 ![Erstellen eines Arbeitsbereichs](media/quickstart/create-workspace-1.png)
@@ -83,7 +83,7 @@ Wenn Sie das trainierte Modell bereitstellen möchten, klicken Sie auf die Schal
 
 ## <a name="use-a-deployed-model"></a>Verwenden eines bereitgestellten Modells
 
-Auf bereitgestellte Modelle kann über die [Microsoft-Textübersetzungs-API V3 durch Angabe der Kategorie-ID](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) zugegriffen werden. Weitere Informationen zu Translator finden Sie auf der [Webseite mit der API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference).
+Auf bereitgestellte Systeme kann über Translator durch Angabe der Kategorie-ID(https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) zugegriffen werden. Weitere Informationen zu Translator finden Sie auf der Webseite mit der [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

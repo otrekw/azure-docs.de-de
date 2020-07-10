@@ -3,16 +3,16 @@ title: Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mi
 description: Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 685373203da14a6aa83c608d90d6416ab2b30ae4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061045"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515310"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files
 Sie können eine P2S-VPN-Verbindung (Point-to-Site) verwenden, um Ihre Azure-Dateifreigaben außerhalb von Azure über SMB einzubinden, ohne Port 445 zu öffnen. Eine P2S-VPN-Verbindung ist eine VPN-Verbindung zwischen Azure und einem einzelnen Client. Um eine P2S-VPN-Verbindung mit Azure Files zu verwenden, muss für jeden Client, der eine Verbindung herstellen möchte, eine P2S-VPN-Verbindung konfiguriert werden. Wenn Sie über viele Clients verfügen, die sich über Ihr lokales Netzwerk mit Ihren Azure-Dateifreigaben verbinden müssen, können Sie anstelle einer P2S-Verbindung für jeden Client eine S2S-VPN-Verbindung (Site-to-Site) verwenden. Weitere Informationen finden Sie unter [Konfigurieren eines S2S-VPN (Site-to-Site) zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md).
@@ -117,7 +117,9 @@ Das Azure-Gateway für virtuelle Netzwerke ist der Dienst, mit dem sich Ihre lok
 Denken Sie daran, `<desired-vpn-name-here>` durch den Namen zu ersetzen, den Sie für diese Ressourcen verwenden möchten.
 
 > [!Note]  
-> Die Bereitstellung eines Azure-Gateways für virtuelle Netzwerke kann bis zu 45 Minuten dauern. Während der Bereitstellung dieser Ressource wird dieses Bash-Skript blockiert, damit die Bereitstellung abgeschlossen werden kann. Dies entspricht dem erwarteten Verhalten.
+> Die Bereitstellung eines Azure-Gateways für virtuelle Netzwerke kann bis zu 45 Minuten dauern. Während der Bereitstellung dieser Ressource wird dieses Bash-Skript blockiert, damit die Bereitstellung abgeschlossen werden kann.
+>
+> P2S IKEv2-/OpenVPN-Verbindungen werden für die SKU **Basic** nicht unterstützt. In diesem Skript wird die SKU **VpnGw1** entsprechend für das Gateway für virtuelle Netzwerke verwendet.
 
 ```bash
 vpnName="<desired-vpn-name-here>"

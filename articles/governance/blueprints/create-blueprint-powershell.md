@@ -3,16 +3,16 @@ title: 'Schnellstart: Erstellen einer Blaupause mit PowerShell'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte mithilfe von PowerShell zu erstellen, zu definieren und bereitzustellen.
 ms.date: 05/06/2020
 ms.topic: quickstart
-ms.openlocfilehash: 79feafa48d5d180949b8a23163f2ee9b686e6076
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: b881731dfdcaf9e9e016d1437e51dbd5c1a7488a
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864112"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970500"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit PowerShell
 
-Wenn Sie mit der Erstellung und Zuweisung von Blaupausen vertraut sind, können Sie allgemeine Muster definieren, um wiederverwendbare und schnell bereitstellbare Konfigurationen zu entwickeln, die auf Resource Manager-Vorlagen, Richtlinien, Sicherheit usw. basieren. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Blueprint einige allgemeine Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Veröffentlichung und Zuweisung einer Blaupause ausführen:
+Wenn Sie mit der Erstellung und Zuweisung von Blaupausen vertraut sind, können Sie allgemeine Muster definieren, um wiederverwendbare und schnell bereitstellbare Konfigurationen zu entwickeln, die auf Azure Resource Manager-Vorlagen (ARM-Vorlagen), Richtlinien, Sicherheit usw. basieren. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Blueprint einige allgemeine Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Veröffentlichung und Zuweisung einer Blaupause ausführen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -24,7 +24,7 @@ Falls das Modul **AZ.Blueprint** nicht bereits installiert ist, befolgen Sie die
 
 ## <a name="create-a-blueprint"></a>Erstellen einer Blaupause
 
-Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wird eine Blaupause aus den verfügbaren Ressourcen erstellt. Wir erstellen eine Blaupause namens „MyBlueprint“, um Rollen- und Richtlinienzuweisungen für das Abonnement zu konfigurieren. Anschließend fügen wir eine Ressourcengruppe, eine Resource Manager-Vorlage und eine Rollenzuweisung für die Ressourcengruppe hinzu.
+Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wird eine Blaupause aus den verfügbaren Ressourcen erstellt. Wir erstellen eine Blaupause namens „MyBlueprint“, um Rollen- und Richtlinienzuweisungen für das Abonnement zu konfigurieren. Anschließend fügen wir eine Ressourcengruppe, eine ARM-Vorlage und eine Rollenzuweisung für die Ressourcengruppe hinzu.
 
 > [!NOTE]
 > Bei Verwendung von PowerShell wird als Erstes das Objekt _blueprint_ erstellt. Für jedes hinzugefügte _Artefakt_, das über Parameter verfügt, müssen die Parameter vorab in der anfänglichen _Blaupause_ definiert werden.
@@ -187,9 +187,9 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'policyStorageTags' -ArtifactFile .\artifacts\policyStorageTags.json
      ```
 
-1. Fügen Sie eine Vorlage unter der Ressourcengruppe hinzu. **TemplateFile** für eine Resource Manager-Vorlage enthält die normale JSON-Komponente der Vorlage. Darüber hinaus verwendet die Vorlage auch die Vorlagenparameter **storageAccountType**, **tagName** und **tagValue** wieder, indem sie jeweils an die Vorlage übergeben werden. Die Blaupausenparameter werden für die Vorlage mithilfe des Parameters **TemplateParameterFile** bereitgestellt, und innerhalb des JSON-Codes der Vorlage wird der Wert mithilfe dieses Schlüssel-Wert-Paars eingefügt. Die Namen des Blaupausen- und des Vorlagenparameters können identisch sein.
+1. Fügen Sie eine Vorlage unter der Ressourcengruppe hinzu. **TemplateFile** für eine ARM-Vorlage enthält die normale JSON-Komponente der Vorlage. Darüber hinaus verwendet die Vorlage auch die Vorlagenparameter **storageAccountType**, **tagName** und **tagValue** wieder, indem sie jeweils an die Vorlage übergeben werden. Die Blaupausenparameter werden für die Vorlage mithilfe des Parameters **TemplateParameterFile** bereitgestellt, und innerhalb des JSON-Codes der Vorlage wird der Wert mithilfe dieses Schlüssel-Wert-Paars eingefügt. Die Namen des Blaupausen- und des Vorlagenparameters können identisch sein.
 
-   - Azure Resource Manager-Vorlagendatei im JSON-Format: \artifacts\templateStorage.json
+   - JSON-ARM-Vorlagendatei: \artifacts\templateStorage.json
 
      ```json
      {
@@ -243,7 +243,7 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
      }
      ```
 
-   - Azure Resource Manager-Vorlagenparameterdatei im JSON-Format: \artifacts\templateStorageParams.json
+   - JSON-ARM-Vorlagenparameterdatei: \artifacts\templateStorageParams.json
 
      ```json
      {
