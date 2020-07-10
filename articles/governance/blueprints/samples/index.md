@@ -3,11 +3,12 @@ title: Index der Blaupausenbeispiele
 description: Index der Beispiele für Compliance und Standards für die Bereitstellung von Umgebungen, Richtlinien und Cloud Adoption Framework-Grundlagen mit Azure Blueprints.
 ms.date: 07/01/2020
 ms.topic: sample
-ms.openlocfilehash: 7e45cbbbf7cf6c2e267156dbb0087a19d8288aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef85ef0615fa0817a574240e65b7670daeaff33b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832320"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181555"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-Beispiele
 
@@ -15,7 +16,7 @@ In der folgenden Tabelle sind Links zu Beispielen für Azure Blueprints enthalte
 
 ## <a name="standards-based-blueprint-samples"></a>Standardbasierte Blaupausenbeispiele
 
-|  |  |
+| Beispiel | BESCHREIBUNG |
 |---------|---------|
 | [ISM PROTECTED der australischen Regierung](./ism-protected/control-mapping.md) | Stellt Schutzmaßnahmen für die Konformität mit ISM PROTECTED der australischen Regierung bereit. |
 | [Einführung zum Azure Security-Vergleichstest](./azure-security-benchmark.md) | Enthält Leitlinien für die Einhaltung des [Azure-Sicherheitsvergleichstests](../../../security/benchmarks/overview.md). |
