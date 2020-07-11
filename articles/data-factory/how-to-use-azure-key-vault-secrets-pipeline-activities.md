@@ -49,12 +49,12 @@ Diese Funktion basiert auf der verwalteten Data Factory-Identität.  Information
 
 4. Fügen Sie in der Data Factory-Pipeline eine neue Webaktivität hinzu, und konfigurieren Sie diese wie folgt.  
 
-    |Eigenschaft  |value  |
+    |Eigenschaft  |Wert  |
     |---------|---------|
     |Sichere Ausgabe     |True         |
     |URL     |[Ihr Geheimnis-URI]?api-version=7.0         |
     |Methode     |GET         |
-    |Authentication     |MSI         |
+    |Authentifizierung     |MSI         |
     |Resource        |https://vault.azure.net       |
 
     ![Webaktivität](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
@@ -65,7 +65,7 @@ Diese Funktion basiert auf der verwalteten Data Factory-Identität.  Information
     > [!CAUTION]
     > Legen Sie die Option „Sichere Ausgabe“ auf „True“ fest, um zu verhindern, dass der Geheimniswert als Klartext protokolliert wird.  Für alle weiteren Aktivitäten, die diesen Wert verwenden, sollte die Option „Sichere Eingabe“ auf „True“ festgelegt werden.
 
-5. Wenn Sie den Wert in einer anderen Aktivität nutzen möchten, verwenden Sie den Codeausdruck **@activity(‚web1‘).output.value**.
+5. Wenn Sie den Wert in einer anderen Aktivität nutzen möchten, verwenden Sie den Codeausdruck **\@activity(‚web1‘).output.value**.
 
     ![Codeausdruck](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

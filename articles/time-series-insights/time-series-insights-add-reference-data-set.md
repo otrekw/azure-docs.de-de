@@ -112,7 +112,7 @@ Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und
    > Für jede Zeile, die einen eindeutigen Schlüssel mit einer anderen Zeile gemeinsam verwendet, werden die Spalten von der letzten hinzugefügten Zeile, die den eindeutigen Schlüssel ebenfalls verwendet, überschrieben.
 
    > [!NOTE]
-   > Hinzugefügte Zeilen müssen **nicht***gleichwertig* sein: Sie können weniger, größere oder abweichende Spalten als die anderen Einträge im Referenzdataset aufweisen.
+   > Hinzugefügte Zeilen müssen **nicht** *gleichwertig* sein: Sie können weniger, größere oder abweichende Spalten als die anderen Einträge im Referenzdataset aufweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
