@@ -3,16 +3,16 @@ title: 'Azure EA: Vereinbarungen und Ergänzungen'
 description: In diesem Artikel wird erläutert, wie sich Azure EA-Vereinbarungen und -Zusatzvereinbarungen auf Ihre Azure EA-Portalnutzung auswirken.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4904390ce0642d0331e82610e8aef4b735b56f1f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 50f7a1bab17b9a98b7ca282387def52b24d448c4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298141"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044905"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA: Vereinbarungen und Ergänzungen
 
@@ -20,7 +20,7 @@ In diesem Artikel wird beschrieben, wie sich Azure-EA-Vereinbarungen und -Zusatz
 
 ## <a name="enrollment-provisioning-status"></a>Registrierungsbereitstellungsstatus
 
-Das Startdatum eines neuen Mindestverbrauchs wird durch das Datum definiert, an dem das regionale Betriebszentrum diesen verarbeitet hat. Da Mindestverbrauchsbestellungen über das Azure-EA-Portal in der Zeitzone „UTC“ verarbeitet werden, kann es zu Verzögerungen kommen, wenn Ihre Bestellung im Rahmen des Mindestverbrauchs in einer anderen Zeitzone verarbeitet wurde. Das Startdatum der Abdeckung in der Bestellung unter https://www.explore.ms zeigt den Beginn des Mindestverbrauchs an. Das Startdatum der Abdeckung ist dann, wenn der Mindestverbrauch im Azure EA-Portal angezeigt wird.
+Das Startdatum einer neuen Azure-Vorauszahlung wird durch das Datum definiert, an dem das regionale Betriebszentrum diese verarbeitet hat. Da Azure-Vorauszahlungsbestellungen über das Azure-EA-Portal in der Zeitzone „UTC“ verarbeitet werden, kann es zu Verzögerungen kommen, wenn Ihre Bestellung im Rahmen der Azure-Vorauszahlung in einer anderen Zeitzone verarbeitet wurde. Das Startdatum der Abdeckung in der Bestellung unter https://www.explore.ms zeigt den Beginn der Azure-Vorauszahlung an. Das Startdatum der Abdeckung ist dann, wenn die Azure-Vorauszahlung im Azure EA-Portal angezeigt wird.
 
 ## <a name="support-for-enterprise-customers"></a>Support für Unternehmenskunden
 
@@ -36,7 +36,7 @@ Eine Registrierung weist einen der folgenden Statuswerte auf. Jeder Wert bestimm
 
 **Indefinite Extended Term** (Unbestimmte Laufzeitverlängerung): Dieser Status wird angezeigt, wenn das Enddatum des Enterprise Agreements erreicht wurde. Bevor die EA-Registrierung das Enterprise Agreement-Enddatum erreicht, sollte der Registrierungsadministrator einen der folgende Schritte ausführen:
 
-- Erneuern der Registrierung durch Hinzufügen eines zusätzlichen Mindestverbrauchs
+- Verlängern der Registrierung durch Hinzufügen einer zusätzlichen Azure-Vorauszahlung
 - Übertragen der vorhandenen Registrierung in eine neue Registrierung
 - Migrieren zum Microsoft Online Subscription-Programm (MOSP)
 - Bestätigen der Deaktivierung aller Dienste, die der Registrierung zugeordnet sind
@@ -51,7 +51,7 @@ Neue Kündigungsformulare werden ab dem 1. August 2019 für kommerzielle Azure-
 
 Das Markup für Partnerpreise im Azure EA-Portal ermöglicht bessere Kostenberichte für die Kunden. Das Azure EA-Portal zeigt die Nutzung und die Preise an, die Partner für ihre Kunden konfiguriert haben.
 
-Mithilfe des Features „Markup“ können Partneradministratoren einen prozentualen Aufschlag zu ihren indirekten Enterprise Agreements hinzufügen. Der prozentuale Aufschlag gilt für alle Informationen zu Microsoft-Erstanbieterdiensten im Azure-EA-Portal, wie beispielsweise Preise für Verbrauchseinheiten, Mindestverbrauch und Aufträge. Nachdem der Aufschlag vom Partner veröffentlicht wurde, werden dem Kunden die Azure-Kosten im Azure-EA-Portal angezeigt. Dies sind beispielsweise die Nutzungszusammenfassung, Preislisten und heruntergeladene Nutzungsberichte.
+Mithilfe des Features „Markup“ können Partneradministratoren einen prozentualen Aufschlag zu ihren indirekten Enterprise Agreements hinzufügen. Der prozentuale Aufschlag gilt für alle Informationen zu Microsoft-Erstanbieterdiensten im Azure-EA-Portal, wie beispielsweise Preise für Verbrauchseinheiten, Azure-Vorauszahlung und Aufträge. Nachdem der Aufschlag vom Partner veröffentlicht wurde, werden dem Kunden die Azure-Kosten im Azure-EA-Portal angezeigt. Dies sind beispielsweise die Nutzungszusammenfassung, Preislisten und heruntergeladene Nutzungsberichte.
 
 Ab September 2019 können Partner während einer Laufzeit jederzeit Markups anwenden. Für ein Markup müssen sie nicht bis zum Jahrestag der Laufzeit warten.
 
@@ -61,7 +61,7 @@ Microsoft greift nur dann auf die angegebenen Aufschläge und zugehörigen Preis
 
 Der LSP gibt eine einstellige Prozentzahl im EA-Portal an.  Alle kaufmännischen Informationen im Portal werden um den vom LSP angegebenen Prozentsatz angehoben. Beispiel:
 
-- Ein Kunde unterzeichnet ein Enterprise Agreement mit einem Mindestverbrauch von 100.000 USD.
+- Ein Kunde unterzeichnet ein Enterprise Agreement mit einer Azure-Vorauszahlung von 100.000 USD.
 - Der Preis für Verbrauchseinheiten für Dienst A beträgt 10 USD/Stunde.
 - Der LSP legt im EA Portal einen Aufschlag von 10 % fest.
 - Das folgende Beispiel veranschaulicht, welche kaufmännischen Informationen dem Kunden angezeigt werden:
@@ -72,10 +72,10 @@ Der LSP gibt eine einstellige Prozentzahl im EA-Portal an.  Alle kaufmännische
 
 ### <a name="when-to-use-a-markup"></a>Verwenden eines Aufschlags
 
-Verwenden Sie dieses Feature, wenn Sie den gleichen Prozentsatz für den Aufschlag für ALLE kaufmännischen Transaktionen im EA festlegen möchten. Dies gilt beispielsweise für Mindestverbrauch, Verbrauchseinheitenpreise, Auftragsinformationen usw.
+Verwenden Sie dieses Feature, wenn Sie den gleichen Prozentsatz für den Aufschlag für ALLE kaufmännischen Transaktionen im EA festlegen möchten. Dies gilt beispielsweise für Informationen zur Azure-Vorauszahlung, Verbrauchseinheitenpreise, Auftragsinformationen usw.
 
 Verwenden Sie das Feature in folgenden Fällen nicht:
-- Sie legen für Mindestverbrauch und Verbrauchseinheitenpreise verschiedene Tarife fest.
+- Sie legen für Azure-Vorauszahlung und Verbrauchseinheitenpreise verschiedene Tarife fest.
 - Sie verwenden verschiedene Tarife für verschiedene Verbrauchseinheiten.
 
 Wenn Sie verschiedene Tarife für verschiedene Verbrauchseinheiten verwenden, empfiehlt sich die Entwicklung einer benutzerdefinierten Lösung basierend auf dem API-Schlüssel, der vom Kunden bereitgestellt werden kann, um Verbrauchsdaten abzurufen und Berichte zu erstellen.
@@ -97,11 +97,11 @@ Prüfen Sie alle kaufmännischen Informationen – Guthabensaldo, Preisliste usw
 
 **Schritt 2: Überprüfen und validieren**
 
-Überprüfen Sie den Aufschlagspreis in der _Nutzungszusammenfassung_ für die Laufzeit der Zusicherung in der Kundenansicht. Der Preis von Microsoft ist in der Partneransicht weiterhin verfügbar. Sie können mithilfe des Partnermarkups „Personen“ oben rechts zwischen den Ansichten wechseln.
+Überprüfen Sie den Aufschlagspreis in der _Nutzungszusammenfassung_ für die Laufzeit der Vorauszahlung in der Kundenansicht. Der Preis von Microsoft ist in der Partneransicht weiterhin verfügbar. Sie können mithilfe des Partnermarkups „Personen“ oben rechts zwischen den Ansichten wechseln.
 
 1. Überprüfen Sie die Preise auf dem Preisblatt.
 1. Sie können vor der Veröffentlichung Änderungen vornehmen, indem Sie auf der Registerkarte _Nutzungszusammenfassung anzeigen > Kundenansicht_ auf **Bearbeiten** klicken.
-  Sowohl für die Dienstpreise als auch für die Zusicherungssaldi wird der gleiche Prozentsatz als Aufschlag berechnet. Wenn Sie verschiedene Prozentsätze für Mindestverbrauch und Verbrauchseinheitspreise oder für verschiedene Dienste festgelegt haben, verwenden Sie dieses Feature nicht.
+  Sowohl für die Dienstpreise als auch für die Vorauszahlungssaldi wird der gleiche Prozentsatz als Aufschlag berechnet. Wenn Sie verschiedene Prozentsätze für Mindestverbrauch und Verbrauchseinheitspreise oder für verschiedene Dienste festgelegt haben, verwenden Sie dieses Feature nicht.
 
 **Schritt 3: Veröffentlichen**
 
@@ -121,7 +121,7 @@ Nach der Veröffentlichung des Partneraufschlags haben indirekte Kunden Zugriff 
 Partner können das Aufschlagfeature (in Azure EA) verwenden, nachdem die Änderung des Kanalpartners verarbeitet wurde; sie müssen nicht auf den nächsten Jahrestag warten.
 
 
-## <a name="resource-commitment-and-requesting-quota-increases"></a>Ressourcenzusicherung und Anfordern von Kontingenterhöhungen
+## <a name="resource-prepayment-and-requesting-quota-increases"></a>Vorauszahlung für Ressourcen und Anfordern von Kontingenterhöhungen
 
 **Das System erzwingt die folgenden Standardkontingente pro Abonnement:**
 
@@ -135,11 +135,11 @@ Partner können das Aufschlagfeature (in Azure EA) verwenden, nachdem die Änder
 | Zugriffssteuerung | 50 Namespaces pro Konto, 100 Millionen Access Control-Transaktionen pro Monat |   |
 | Service Bus | 50 Namespaces pro Konto, 40 Service Bus-Verbindungen | Für Kunden, die Service Bus-Verbindungen im Rahmen von Verbindungspaketen kaufen, gelten Kontingente, die dem Mittelwert zwischen dem erworbenen Paket und dem nächsthöheren Verbindungspaket entsprechen. So gilt beispielsweise für Kunden, die ein Paket mit 500 Verbindungen auswählen, ein Kontingent von 750. |
 
-## <a name="resource-commitment"></a>Zusicherung von Ressourcen
+## <a name="resource-prepayment"></a>Vorauszahlung für Ressourcen
 
-Microsoft bietet Ihnen Dienste mindestens auf der Ebene der zugeordneten Nutzung an, die in der von Ihnen erworbenen monatlichen Zusicherung enthalten ist (die Dienstverpflichtung). Alle anderen Erhöhungen der Nutzungsebene von Dienstressourcen (z. B. durch Hinzufügen weiterer ausgeführter Compute-Instanzen oder Vergrößern des genutzten Speichers) unterliegen der Verfügbarkeit dieser Dienstressourcen.
+Microsoft bietet Ihnen Dienste mindestens auf der Ebene der zugeordneten Nutzung an, die in der von Ihnen erworbenen monatlichen Vorauszahlung enthalten ist (die Dienstvorauszahlung). Alle anderen Erhöhungen der Nutzungsebene von Dienstressourcen (z. B. durch Hinzufügen weiterer ausgeführter Compute-Instanzen oder Vergrößern des genutzten Speichers) unterliegen der Verfügbarkeit dieser Dienstressourcen.
 
-Keines der oben beschriebenen Kontingente gilt als Dienstverpflichtung. Um die Anzahl der gleichzeitigen kleinen Compute-Instanzen (oder deren Äquivalente) zu bestimmen, die Microsoft im Rahmen einer Dienstverpflichtung bereitstellt, wird die Anzahl der zugesicherten Nutzungsstunden für kleine Compute-Instanzen, die in einem Monat erworben wurden, durch die Anzahl der Stunden im kürzesten Monat des Jahres (d. h. Februar – 672 Stunden) dividiert.
+Keines der oben beschriebenen Kontingente gilt als Dienstvorauszahlung. Um die Anzahl der gleichzeitigen kleinen Compute-Instanzen (oder deren Äquivalente) zu bestimmen, die Microsoft im Rahmen einer Dienstvorauszahlung bereitstellt, wird die Anzahl der zugesicherten Nutzungsstunden für kleine Compute-Instanzen, die in einem Monat erworben wurden, durch die Anzahl der Stunden im kürzesten Monat des Jahres (d. h. Februar – 672 Stunden) dividiert.
 
 ## <a name="requesting-a-quota-increase"></a>Anfordern einer Kontingenterhöhung
 

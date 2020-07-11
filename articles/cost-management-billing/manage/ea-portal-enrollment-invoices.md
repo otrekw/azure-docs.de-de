@@ -3,16 +3,16 @@ title: Rechnungen für die Azure Enterprise-Registrierung
 description: In diesem Artikel wird erläutert, wie Sie Ihre Azure-Unternehmensrechnung verwalten und Aktionen dafür ausführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5c26af74a392e3e6d3bb5557960b81604de7cdf3
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 5276780d06671b8358f615b1fcb6447c8e1310f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807795"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044871"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure Enterprise-Registrierung
 
@@ -46,14 +46,14 @@ Das Azure Enterprise Portal generiert automatisch eine Standardauftragsnummer (P
 
 ## <a name="azure-enterprise-billing-frequency"></a>Azure Enterprise-Fakturierungsintervall
 
-Microsoft erstellt jährlich am jeweiligen Registrierungsdatum eine Rechnung für alle Käufe von Microsoft Azure-Diensten im Rahmen von Verpflichtungen. Für die Nutzung, die über die Verpflichtungsbeträge hinausgeht, rechnet Microsoft nachträglich ab.
+Microsoft erstellt jährlich am jeweiligen Registrierungsdatum eine Rechnung für alle Vorauszahlungskäufe von Microsoft Azure-Diensten. Für die Nutzung, die über die Vorauszahlungsbeträge hinausgeht, rechnet Microsoft nachträglich ab.
 
-- Die Verpflichtungsgebühren werden basierend auf einem monatlichen Tarif festgelegt und im Voraus jährlich in Rechnung gestellt.
+- Die Vorauszahlungsgebühren werden basierend auf einem monatlichen Tarif festgelegt und im Voraus jährlich in Rechnung gestellt.
 - Überschreitungsgebühren werden monatlich berechnet und am Ende des Abrechnungszeitraums nachträglich in Rechnung gestellt.
 
 ### <a name="billing-intervals"></a>Abrechnungsintervalle
 
-Ihr Abrechnungsintervall hängt davon ab, wie Sie Ihre Verpflichtungskäufe durchführen. Stichtag Ihrer jährlichen Verpflichtung ist entweder:
+Ihr Abrechnungsintervall hängt davon ab, wie Sie Ihre Vorauszahlungskäufe durchführen. Stichtag Ihrer jährlichen Vorauszahlung ist entweder:
 
 - Der Jahrestag Ihrer Registrierung
 - Das Gültigkeitsdatum Ihres einjährigen Zusatzabonnements.
@@ -62,12 +62,12 @@ Wann Sie Ihre Überschreitungsrechnung erhalten, hängt vom Startdatum von Regis
 
 - **Direkte Registrierungen mit Startdatum vor dem 1. Mai 2018**:
   - Für direkte Enterprise Agreement-Kunden (EA) wird ein jährlicher Abrechnungszeitraum für Azure-Dienste eingerichtet, ausgenommen Azure Marketplace-Dienste. Ihr Abrechnungszeitraum basiert auf dem Jahrestag: dem Datum, an dem Ihre Vereinbarung wirksam wurde.
-  - Wenn Sie 150 % Ihres EA-Mindestverbrauchs (Monetary Commitment, MC) überschreiten, wird für Sie automatisch ein vierteljährlicher Abrechnungszeitraum eingerichtet, der auf Ihrem Jahrestag basiert. Außerdem erhalten Sie eine Rechnung für die Azure-Dienstüberschreitung.
-  - Wenn Sie nicht 150 % Ihres MC-Schwellenwerts überschreiten, verbleibt Ihre Registrierung in einem jährlichen Abrechnungszeitraum. Die Rechnung für die Überschreitung erhalten Sie am Ende des Verpflichtungsjahres.
+  - Wenn Sie 150 % Ihrer Azure EA-Vorauszahlung überschreiten, wird für Sie automatisch ein vierteljährlicher Abrechnungszeitraum eingerichtet, der auf Ihrem Jahrestag basiert. Außerdem erhalten Sie eine Rechnung für die Azure-Dienstüberschreitung.
+  - Wenn Sie nicht 150 % Ihres Azure-Vorauszahlungsschwellenwerts überschreiten, verbleibt Ihre Registrierung in einem jährlichen Abrechnungszeitraum. Die Rechnung für die Überschreitung erhalten Sie am Ende des Vorauszahlungsjahres.
 
 - **Direkte Registrierungen mit Startdatum nach dem 1. Mai 2018**:
   - Ihr Azure-Verbrauch und separat abgerechnete Gebühren werden in einem monatlichen Abrechnungszeitraum abgerechnet.
-  - Gebühren, die nicht durch ihren Mindestverbrauch abgedeckt werden, sind als Überschreitungszahlung fällig.  
+  - Gebühren, die nicht durch ihre Azure-Vorauszahlung abgedeckt werden, sind als Überschreitungszahlung fällig.  
 
 - **Indirekte Registrierungen mit Startdatum vor dem 1. Mai 2018**:
 
@@ -77,21 +77,21 @@ Wann Sie Ihre Überschreitungsrechnung erhalten, hängt vom Startdatum von Regis
 
   Für Sie gilt ein monatlicher Abrechnungszeitraum.  
 
-### <a name="increase-your-monetary-commitment"></a>Erhöhen Sie Ihren Mindestverbrauch
+### <a name="increase-your-azure-prepayment"></a>Möchten Sie Ihre Azure-Vorauszahlung erhöhen?
 
-Sie können ihre Verpflichtung jederzeit erhöhen. Ihnen wird die Anzahl der Monate in Rechnung gestellt, die im Verpflichtungszeitraum des betreffenden Jahrs verbleiben. Wenn Sie sich z. B. für ein einjähriges Zusatzabonnement registrieren und ihre Verpflichtung während des 6. Monats erhöhen, werden Ihnen die verbleibenden sechs Monate dieser Laufzeit in Rechnung gestellt. Die Höhe Ihrer Verpflichtung wird dann für die letzten sechs Monaten ihrer Verpflichtungslaufzeit aktualisiert. Diese neuen Mengen werden verwendet, um Überschreitungsgebühren zu ermitteln.
+Sie können ihre Vorauszahlung jederzeit erhöhen. Ihnen wird die Anzahl der Monate in Rechnung gestellt, die im Vorauszahlungszeitraum des betreffenden Jahrs verbleiben. Wenn Sie sich z. B. für ein einjähriges Zusatzabonnement registrieren und ihre Vorauszahlung während des 6. Monats erhöhen, werden Ihnen die verbleibenden sechs Monate dieser Laufzeit in Rechnung gestellt. Die Höhe Ihrer Vorauszahlung wird dann für die letzten sechs Monaten ihrer Vorauszahlungslaufzeit aktualisiert. Diese neuen Mengen werden verwendet, um Überschreitungsgebühren zu ermitteln.
 
 ### <a name="overage"></a>Überschreitung
 
-Bei Überschreitung werden Ihnen die Nutzung oder Reservierungen in Rechnung gestellt, die ihre Verpflichtung während des Abrechnungszeitraums überschreiten. Eine Aufschlüsselung der Berechnung der Überschreitungsmenge für einzelne Elemente finden Sie im Bericht der Nutzungszusammenfassung, oder wenden Sie sich an Ihren Channelpartner.
+Bei Überschreitung werden Ihnen die Nutzung oder Reservierungen in Rechnung gestellt, die ihre Vorauszahlung während des Abrechnungszeitraums überschreiten. Eine Aufschlüsselung der Berechnung der Überschreitungsmenge für einzelne Elemente finden Sie im Bericht der Nutzungszusammenfassung, oder wenden Sie sich an Ihren Channelpartner.
 
 Für jedes Element in der Rechnung wird Folgendes angezeigt:
 
 - **Erweiterter Betrag**: die Gesamtkosten
-- **Nutzung der Verpflichtung**: der zum Abdecken der Gebühren verwendete Betrag Ihrer Verpflichtung
-- **Nettobetrag**: die Gebühren, die ihre Verpflichtung überschreiten
+- **Nutzung der Vorauszahlung**: der zum Abdecken der Gebühren verwendete Betrag Ihrer Vorauszahlung
+- **Nettobetrag**: die Gebühren, die ihre Vorauszahlung überschreiten
 
-Die fälligen Steuern werden nur für den Nettobetrag berechnet, der Ihre Verpflichtung überschreitet.
+Die fälligen Steuern werden nur für den Nettobetrag berechnet, der Ihre Vorauszahlung überschreitet.
 
 Rechnungsstellung bei Überschreitung ist automatisiert. Der Zeitpunkt von Benachrichtigungen und Rechnungen hängt vom Enddatum des Abrechnungszeitraums ab.
 
@@ -130,18 +130,18 @@ So zeigen Sie Gutschriften an:
 1. Wählen Sie im [Azure Enterprise Portal](https://ea.azure.com) den Abschnitt **Berichte** aus.
 1. Wählen Sie **Nutzungszusammenfassung** aus.
 1. Ändern Sie oben rechts die **M**-Ansicht in die **C**-Ansicht.
-1. Erweitern Sie das Anpassungsfeld in der Tabelle „Mindestabnahme für Azure-Dienst“.
+1. Erweitern Sie das Anpassungsfeld in der Tabelle „Vorauszahlung für Azure-Dienst“.
 1. Es werden Gutschriften für Ihre Registrierung und eine kurze Erläuterung angezeigt. Beispiel: SLA-Gutschrift.
 
-## <a name="pay-your-overage-with-your-monetary-commitment"></a>Bezahlen der Überschreitung mit dem Mindestverbrauch
+## <a name="pay-your-overage-with-your-azure-prepayment"></a>Bezahlen Ihrer Überschreitung mit ihrer Azure-Vorauszahlung
 
-Sie müssen die folgenden Kriterien erfüllen, um Ihren Mindestverbrauch auf Überschreitungen anzuwenden:
+Sie müssen die folgenden Kriterien erfüllen, um Ihre Azure-Vorauszahlung auf Überschreitungen anzuwenden:
 
 - Bei Ihnen sind Überschreitungsgebühren angefallen, die noch nicht gezahlt wurden und innerhalb eines Jahres nach dem Enddatum des abgerechneten Diensts fällig sind.
-- Ihr verfügbarer Betrag für den Mindestverbrauch deckt die angefallenen Gebühren vollständig ab, einschließlich aller vergangenen unbezahlten Azure-Rechnungen.
+- Ihr verfügbarer Azure-Vorauszahlungsbetrag deckt die angefallenen Gebühren vollständig ab, einschließlich aller vergangenen unbezahlten Azure-Rechnungen.
 - Der Abrechnungszeitraum, den Sie abschließen möchten, muss vollständig geschlossen werden. Die Abrechnung wird am fünften Tag jedes Monats vollständig geschlossen.
 - Der Abrechnungszeitraum, den Sie ausgleichen möchten, muss vollständig geschlossen werden.
-- Ihr Azure-Vertragsrabatt (Azure Commitment Discount, ACD) basiert auf dem neuen Mindestverbrauch abzüglich der Beträge, die für den vorherigen Verbrauch geplant wurden. Diese Anforderung gilt nur für angefallene Überschreitungsgebühren. Sie gilt nur für Dienste, für die ein Mindestverbrauch gültig ist, und ist nicht auf Azure Marketplace-Gebühren anwendbar. Azure Marketplace-Gebühren werden separat in Rechnung gestellt.
+- Ihr Azure-Vorauszahlungsrabatt (Azure Prepayment Discount) basiert auf der neuen Vorauszahlung abzüglich der Beträge, die für den vorherigen Verbrauch geplant wurden. Diese Anforderung gilt nur für angefallene Überschreitungsgebühren. Sie gilt nur für Dienste, für die eine Azure-Vorauszahlung gültig ist, und ist nicht auf Azure Marketplace-Gebühren anwendbar. Azure Marketplace-Gebühren werden separat in Rechnung gestellt.
 
 Um einen Überschreitungsausgleich durchzuführen, können Sie oder das Kontoteam eine Supportanfrage eröffnen. Eine per E-Mail gesendete Genehmigung Ihres Unternehmensadministrators oder „Bill to Contact“ ist erforderlich.
 
@@ -178,13 +178,13 @@ In der folgenden Tabelle sind die Excel-Formeln aufgeführt, die Sie verwenden k
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Konvertierung zwischen Nutzungsdetailbericht und Nutzungszusammenfassungs-Seite
 
-Im heruntergeladenen Nutzungsdatenbericht können Sie die reine Ressourcennutzung auf bis zu sechs Dezimalstellen genau sehen. Allerdings werden die im Azure Enterprise Portal angezeigten Nutzungsdaten für Verpflichtungseinheiten auf vier Dezimalstellen gerundet, und bei Überschreitungseinheiten werden alle Dezimalstellen abgeschnitten. Die reinen Nutzungsdaten werden zuerst auf vier Ziffern gerundet, bevor sie in Einheiten konvertiert werden, die im Azure Enterprise Portal verwendet werden. Anschließend werden die konvertierten Enterprise-Einheiten erneut auf vier Ziffern gerundet. Die tatsächlich verbrauchten Stunden vor der Konvertierung werden im heruntergeladenen Nutzungsbericht und nicht im Azure Enterprise Portal angezeigt.
+Im heruntergeladenen Nutzungsdatenbericht können Sie die reine Ressourcennutzung auf bis zu sechs Dezimalstellen genau sehen. Allerdings werden die im Azure Enterprise Portal angezeigten Nutzungsdaten für Vorauszahlungseinheiten auf vier Dezimalstellen gerundet, und bei Überschreitungseinheiten werden alle Dezimalstellen abgeschnitten. Die reinen Nutzungsdaten werden zuerst auf vier Ziffern gerundet, bevor sie in Einheiten konvertiert werden, die im Azure Enterprise Portal verwendet werden. Anschließend werden die konvertierten Enterprise-Einheiten erneut auf vier Ziffern gerundet. Die tatsächlich verbrauchten Stunden vor der Konvertierung werden im heruntergeladenen Nutzungsbericht und nicht im Azure Enterprise Portal angezeigt.
 
 Beispiel: 694,533404 tatsächliche SQL Server-Stunden werden im Nutzungsdetailsbericht angezeigt. Diese Einheiten werden dann in 6,94533404 Einheiten von 100 Computestunden konvertiert, die dann zur Anzeige im Azure Enterprise Portal auf 6,9453 gerundet werden.
 
-- Um den erweiterten Abrechnungsbetrag zu bestimmen, werden die angezeigten Einheiten mit dem Preis je Einheit der Verpflichtung multipliziert, und das Ergebnis wird auf zwei Dezimalzahlen gekürzt. Für japanische Yen (JPY) und koreanische Won (KRW) wird der erweiterte Betrag auf null (0) Dezimalstellen gerundet.
+- Um den erweiterten Abrechnungsbetrag zu bestimmen, werden die angezeigten Einheiten mit dem Preis je Vorauszahlungseinheit multipliziert, und das Ergebnis wird auf zwei Dezimalzahlen gekürzt. Für japanische Yen (JPY) und koreanische Won (KRW) wird der erweiterte Betrag auf null (0) Dezimalstellen gerundet.
 - Bei einer Überschreitung werden die Abrechnungseinheiten auf sechs Stellen gekürzt und dann mit dem Preis je Einheit der Überschreitung multipliziert, um den erweiterten Abrechnungsbetrag zu bestimmen.
-- Bei der Abrechnung für Anbieter verwalteter Dienste (Managed Service Provider, MSP) wird die gesamte als MSP gekennzeichnete Verwendung einer Abteilung nach der Konvertierung in die EA-Maßeinheit auf null (0) Dezimalstellen gekürzt. Folglich kann die Summe dieser Nutzung niedriger sein als die Summe der gesamten im Azure Enterprise Portal berichteten Nutzung. Dies hängt davon ab, ob sich der MSP innerhalb des Mindestverbrauchs oder in Überschreitung befindet.
+- Bei der Abrechnung für Anbieter verwalteter Dienste (Managed Service Provider, MSP) wird die gesamte als MSP gekennzeichnete Verwendung einer Abteilung nach der Konvertierung in die EA-Maßeinheit auf null (0) Dezimalstellen gekürzt. Folglich kann die Summe dieser Nutzung niedriger sein als die Summe der gesamten im Azure Enterprise Portal berichteten Nutzung. Dies hängt davon ab, ob sich der MSP innerhalb der Azure-Vorauszahlung oder in Überschreitung befindet.
 
 ### <a name="graduated-pricing"></a>Gestaffelte Preise
 
@@ -226,13 +226,13 @@ Für Dienste, bei denen Zone und Region die Preise beeinflussen, zeigt die folge
 
 Es fallen keine Gebühren für den Datenausgang zwischen Diensten an, die im selben Rechenzentrum untergebracht sind. Beispiel: Microsoft 365 und Azure.
 
-### <a name="monetary-commitment-and-unbilled-usage"></a>Mindestverbrauch und nicht berechnete Nutzung
+### <a name="azure-prepayment-and-unbilled-usage"></a>Azure-Vorauszahlung und nicht berechnete Nutzung
 
-Der Mindestverbrauch von Azure ist ein Betrag, der vorab für Azure-Dienste gezahlt wird. Der Mindestverbrauch wird genutzt, wenn Dienste verwendet werden. Für Azure-Erstanbieterdienste wird der Mindestverbrauch abgerechnet. Einige Gebühren werden jedoch separat abgerechnet, und Azure Marketplace-Dienste beanspruchen keinen Mindestverbrauch.
+Die Azure-Vorauszahlung ist ein Betrag, der vorab für Azure-Dienste gezahlt wird. Die Azure-Vorauszahlung wird genutzt, wenn Dienste verwendet werden. Azure-Erstanbieterdienste werden gegen die Azure-Vorauszahlung abgerechnet. Einige Gebühren werden jedoch separat abgerechnet, und Azure Marketplace-Dienste werden nicht auf die Azure-Vorauszahlung angerechnet.
 
 ### <a name="charges-billed-separately"></a>Separat abgerechnete Gebühren
 
-Einige Produkte und Dienste, die aus Drittanbieterquellen bereitgestellt werden, werden nicht auf den Azure-Mindestverbrauch angerechnet. Stattdessen werden diese Elemente separat als Teil der Überschreitungsrechnung für den Standardabrechnungszyklus abgerechnet.
+Einige Produkte und Dienste, die aus Drittanbieterquellen bereitgestellt werden, werden nicht auf die Azure-Vorauszahlung angerechnet. Stattdessen werden diese Elemente separat als Teil der Überschreitungsrechnung für den Standardabrechnungszyklus abgerechnet.
 
 Wir haben alle Azure- und Azure Marketplace-Gebühren in einer einzigen Rechnung zusammengefasst, die sich am Abrechnungszyklus der Registrierung orientiert. Die kombinierte Rechnung gilt nicht für Azure-Kunden in Australien, Japan oder Singapur.
 
@@ -265,7 +265,7 @@ Die Rechnungen werden im Monat nach dem Ende des Abrechnungszeitraums veröffent
 
    | Titel | BESCHREIBUNG | Dateiname |
    | --- | --- | --- |
-   | [Anzeigedienstnamen](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Listet alle aktiven Dienste auf und umfasst Folgendes: <br>  <ul><li>Dienstkategorie</li>   <li>Anzeigedienstnamen</li>   <li>Verpflichtungsname und Artikelnummer</li> <li>Verbrauchsname und Artikelnummer</li>   <li>Maßeinheiten</li>   <li>Faktoren zur Konvertierung zwischen berichteter Verwendung und angezeigter Enterprise Portal-Verwendung</li></ul> | Friendly\_Service\_Names.xlsx |
+   | [Anzeigedienstnamen](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Listet alle aktiven Dienste auf und umfasst Folgendes: <br>  <ul><li>Dienstkategorie</li>   <li>Anzeigedienstnamen</li>   <li>Vorauszahlungsname und Artikelnummer</li> <li>Verbrauchsname und Artikelnummer</li>   <li>Maßeinheiten</li>   <li>Faktoren zur Konvertierung zwischen berichteter Verwendung und angezeigter Enterprise Portal-Verwendung</li></ul> | Friendly\_Service\_Names.xlsx |
    | [Dienstdownloadfelder](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Diese Tabelle enthält eine Liste aller möglichen Kombinationen dienstbezogener Felder im Verwendungsdownloadbericht. | Service\_Download\_Fields.xlsx |
 
 - Informationen zu Ihren Rechnungen und Gebühren finden Sie unter [Grundlegendes zu Ihrer Azure Enterprise-Rechnung](../understand/review-enterprise-agreement-bill.md).

@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: 5ad92fe9f243cf9884f29536cf6ebb66202338d5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d205f3ccc0adef7e2390274bb7f4511c6f994027
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299960"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038003"
 ---
 # <a name="azure-ea-pricing"></a>Azure EA-Preise
 
@@ -24,7 +24,7 @@ Dieser Abschnitt enthält Details zur Berechnung der Verwendung. Er beantwortet 
 
 ### <a name="price-protection"></a>Preisschutz
 
-Als Kunde oder Channelpartner erhalten Sie garantiert Preise, die denen auf Ihrem Kundenpreisblatt (Customer Price Sheet, CPS) entsprechen oder sie unterschreiten, oder dem Preis, der zum Gültigkeitsdatum Ihres Azure-Kaufs galt. Dieser Preis wird als Baselinepreis bezeichnet. Für Dienste, die nach diesem Azure-Kauf eingeführt wurden, wird Ihnen der Preis berechnet, der bei der Einführung des Diensts auf der gültigen Rabattebene gültig war. Dieser Preisschutz gilt für die Dauer Ihrer Verpflichtungslaufzeit, die je nach Enterprise Agreement ein oder drei Jahre betragen kann.
+Als Kunde oder Channelpartner erhalten Sie garantiert Preise, die denen auf Ihrem Kundenpreisblatt (Customer Price Sheet, CPS) entsprechen oder sie unterschreiten, oder dem Preis, der zum Gültigkeitsdatum Ihres Azure-Kaufs galt. Dieser Preis wird als Baselinepreis bezeichnet. Für Dienste, die nach diesem Azure-Kauf eingeführt wurden, wird Ihnen der Preis berechnet, der bei der Einführung des Diensts auf der gültigen Rabattebene gültig war. Dieser Preisschutz gilt für die Dauer der Vorauszahlungslaufzeit, die je nach Enterprise Agreement ein oder drei Jahre betragen kann.
 
 ### <a name="price-changes"></a>Preisänderungen
 

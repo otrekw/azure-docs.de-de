@@ -9,26 +9,28 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/20/2020
-ms.openlocfilehash: 670cebe1c0f1c9002e33b729d0db9ee9f9a01283
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2579249cc088063d98bb101c7a5b5118e4b07722
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682528"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027051"
 ---
-# <a name="quickstart-deploy-cognitive-search-using-a-resource-manager-template"></a>Schnellstart: Bereitstellen von Cognitive Search mithilfe einer Resource Manager-Vorlage
+# <a name="quickstart-deploy-cognitive-search-using-an-arm-template"></a>Schnellstart: Bereitstellen von Cognitive Search mithilfe einer ARM-Vorlage
 
-In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie mithilfe einer Resource Manager-Vorlage eine Azure Cognitive Search-Ressource im Azure-Portal bereitstellen.
+In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Azure Cognitive Search-Ressource im Azure-Portal bereitstellen.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-cognitive-search-service"></a>Erstellen eines Cognitive Search-Diensts
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-azure-search-create/).
 
@@ -36,15 +38,15 @@ Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit 
 
 In dieser Vorlage definierte Azure-Ressource:
 
-- [Microsoft.Search/searchServices](https://docs.microsoft.com/azure/templates/Microsoft.Search/2015-08-19/searchServices) zum Erstellen eines Azure Cognitive Search-Diensts
+- [Microsoft.Search/searchServices](/azure/templates/Microsoft.Search/searchServices) zum Erstellen eines Azure Cognitive Search-Diensts
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage dient zum Erstellen einer Azure Cognitive Search-Ressource.
 
 [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
 
-Im Portal wird ein Formular angezeigt, über das Sie ganz einfach Parameterwerte angeben können. Einige Parameter wurden bereits vorab mit den Standardwerten aus der Vorlage ausgefüllt. Geben Sie Ihr Abonnement, die Ressourcengruppe, den Standort und den Dienstnamen an. Wenn Sie Cognitive Services in einer [KI-Anreicherungspipeline](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) verwenden möchten, um beispielsweise binäre Bilddateien auf Text zu analysieren, wählen Sie einen Standort aus, an dem sowohl Cognitive Search als auch Cognitive Services zur Verfügung stehen. Für KI-Anreicherungsworkloads müssen sich beide Dienste in der gleichen Region befinden. Nachdem Sie das Formular ausgefüllt haben, müssen Sie den Nutzungsbedingungen zustimmen und anschließend die Schaltfläche „Kaufen“ auswählen, um die Bereitstellung abzuschließen.
+Im Portal wird ein Formular angezeigt, über das Sie ganz einfach Parameterwerte angeben können. Einige Parameter wurden bereits vorab mit den Standardwerten aus der Vorlage ausgefüllt. Geben Sie Ihr Abonnement, die Ressourcengruppe, den Standort und den Dienstnamen an. Wenn Sie Cognitive Services in einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) verwenden möchten, um beispielsweise binäre Bilddateien auf Text zu analysieren, wählen Sie einen Standort aus, an dem sowohl Cognitive Search als auch Cognitive Services zur Verfügung stehen. Für KI-Anreicherungsworkloads müssen sich beide Dienste in der gleichen Region befinden. Nachdem Sie das Formular ausgefüllt haben, müssen Sie den Nutzungsbedingungen zustimmen und anschließend die Schaltfläche „Kaufen“ auswählen, um die Bereitstellung abzuschließen.
 
 > [!div class="mx-imgBorder"]
 > ![Vorlage im Azure-Portal](./media/search-get-started-arm/arm-portalscrnsht.png)
@@ -59,11 +61,9 @@ Andere Schnellstartanleitungen und Tutorials für Cognitive Search bauen auf die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie mithilfe einer Azure Resource Manager-Vorlage einen Cognitive Search-Dienst erstellt und die Bereitstellung überprüft. Weitere Informationen zu Cognitive Search und Azure Resource Manager finden Sie in den folgenden Artikeln:
+In dieser Schnellstartanleitung haben Sie mithilfe einer ARM-Vorlage einen Cognitive Search-Dienst erstellt und die Bereitstellung überprüft. Weitere Informationen zu Cognitive Search und Azure Resource Manager finden Sie in den folgenden Artikeln:
 
- - [Was ist Azure Cognitive Search?](https://docs.microsoft.com/azure/search/search-what-is-azure-search)
- - [Schnellstart: Erstellen eines Index für Azure Cognitive Search im Azure-Portal](https://docs.microsoft.com/azure/search/search-get-started-portal)
- - [Schnellstart: Erstellen einer Such-App im Portal (Azure Cognitive Search)](https://docs.microsoft.com/azure/search/search-create-app-portal) (mithilfe des Portal-Assistenten)
- - [Schnellstart: Erstellen eines kognitiven Skillsets für Azure Cognitive Search über das Azure-Portal](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob) (zum Extrahieren von Informationen aus Ihren Daten)
-
-
+- Lesen Sie die [Übersicht über Azure Cognitive Search](search-what-is-azure-search.md).
+- [Erstellen eines Index](search-get-started-portal.md) für Ihren Suchdienst.
+- [Erstellen einer Demo-App](search-create-app-portal.md) mithilfe des Portal-Assistenten.
+- [Erstellen eines Skillsets](cognitive-search-quickstart-blob.md) zum Extrahieren von Informationen aus Ihren Daten.

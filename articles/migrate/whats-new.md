@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Neuerungen und aktuellen Updates des Az
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: be617590ce0c96c3ec8ea705732534c8395ac0ce
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052330"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85556928"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Neuerungen in Azure Migrate
 
@@ -17,6 +17,7 @@ ms.locfileid: "85052330"
 
 ## <a name="update-june-2020"></a>Update (Juni 2020)
 
+- Bewertungen für die Migration von lokalen VMware-VMs zu [Azure VMware Solution (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) werden jetzt unterstützt. [Weitere Informationen](how-to-create-azure-vmware-solution-assessment.md)
 - Unterstützung mehrerer Anmeldeinformationen für die Appliance zur Erkennung physischer Server
 - Unterstützung für die Azure-Anmeldung von der Appliance für Mandanten, für die eine Mandanteneinschränkung konfiguriert wurde
 - Folgende neue Versionen der Azure Migrate-Appliance:

@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 83b723c815825a255727e9a48d415fedd405c942
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/24/2020
+ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488221"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562540"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Diensts im Portal
 
@@ -24,6 +24,14 @@ In diesem Artikel erfahren Sie, wie Sie eine Ressource im [Azure-Portal](https:/
 [![Animiertes GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 Bevorzugen Sie PowerShell? Verwenden Sie die Azure Resource Manager-[Dienstvorlage](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Hilfe zu den ersten Schritten finden Sie unter [Verwalten des Azure Search-Diensts mit PowerShell](search-manage-powershell.md).
+
+## <a name="before-you-start"></a>Vorbereitung
+
+Die folgenden Diensteigenschaften sind für die Lebensdauer des Diensts festgelegt, und ihre Änderung erfordert einen neuen Dienst. Wenn Sie einen Dienst erstellen, denken Sie darüber nach, wie Sie ihn nutzen werden:
+
+* Name (schauen Sie sich [diese Vorschläge](#name-the-service) für Dienstnamen an)
+* Tarif (Free, Basic, Standard [wirkt sich auf die Abrechnung aus](search-sku-tier.md) und legt eine Obergrenze für die Kapazität fest)
+* Region (wählen Sie einen Standort mit verwandten Diensten aus. Für die Integration mit Cognitive Services oder Azure Machine Learning ist die Zusammenstellung von Diensten in derselben Region eine Anforderung)
 
 ## <a name="subscribe-free-or-paid"></a>Abonnieren (kostenlos oder kostenpflichtig)
 

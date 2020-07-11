@@ -3,16 +3,16 @@ title: Reservierte Azure EA-VM-Instanzen
 description: In diesem Artikel erfahren Sie, wie Azure-Reservierungen für reservierte VM-Instanzen zur Senkung der Kosten für Ihre Unternehmensregistrierung beitragen können.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/11/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: a06f416ed1d4df33cc6777eba878eee2b4f6b047
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b78abeaac3066839636918923636f4b7bdf9ee35
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735420"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044854"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Reservierte Azure EA-VM-Instanzen
 
@@ -83,9 +83,9 @@ Wenn Sie reservierte Azure-VM-Instanzen ohne den Azure-Hybridvorteil erworben ha
 
 ### <a name="reserved-instance-billing"></a>Abrechnung reservierter Instanzen
 
-Bei Unternehmenskunden wird der Mindestverbrauch verwendet, um reservierte Azure-VM-Instanzen zu erwerben. Wenn der Mindestverbrauchssaldo Ihrer Registrierung für den Erwerb der reservierten Instanzen ausreicht, wird der Betrag von Ihrem Mindestverbrauchssaldo abgezogen, und Sie erhalten keine Rechnung für den Erwerb.
+Bei Unternehmenskunden wird die Azure-Vorauszahlung verwendet, um reservierte Azure-VM-Instanzen zu erwerben. Wenn der Azure-Vorauszahlungssaldo Ihrer Registrierung für den Erwerb der reservierten Instanzen ausreicht, wird der Betrag von Ihrem Azure-Vorauszahlungssaldo abgezogen, und Sie erhalten keine Rechnung für den Erwerb.
 
-Reservierte Instanzen können auch erworben werden, wenn Azure EA-Kunden ihren Mindestverbrauch bereits vollständig ausgeschöpft haben. Diese Käufe werden dann in der nächsten Überschreitungsrechnung abgerechnet. Überschreitungen bei reservierten Instanzen werden, sofern vorhanden, in Ihre reguläre Überschreitungsrechnung aufgenommen.
+Reservierte Instanzen können auch erworben werden, wenn Azure EA-Kunden ihre Azure-Vorauszahlung bereits vollständig ausgeschöpft haben. Diese Käufe werden dann in der nächsten Überschreitungsrechnung abgerechnet. Überschreitungen bei reservierten Instanzen werden, sofern vorhanden, in Ihre reguläre Überschreitungsrechnung aufgenommen.
 
 ### <a name="reserved-instance-expiration"></a>Ablauf reservierter Instanzen
 

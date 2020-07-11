@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: a0846a07fd8107a87483753c8dbff1301fda4a0c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: ff10d9ec9b92b85d057e556a21c144b9e8f155cf
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299909"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043273"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise-Übertragungen
 
@@ -49,7 +49,7 @@ Andere Punkte, die vor einer Kontoübertragung zu beachten sind:
 
 Eine Registrierungsübertragung wird in folgenden Fällen in Betracht gezogen:
 
-- Die Verpflichtungslaufzeit einer aktuellen Registrierung ist abgelaufen.
+- Die Laufzeit der Vorauszahlung für eine aktuelle Registrierung ist abgelaufen.
 - Eine Registrierung befindet sich im Status abgelaufen/verlängert und eine neue Vereinbarung wird ausgehandelt.
 - Sie verfügen über mehrere Registrierungen und möchten alle Konten und Abrechnungen in einer einzigen Registrierung kombinieren.
 
@@ -60,7 +60,7 @@ Wenn Sie die Übertragung einer gesamten Unternehmensregistrierung in eine Regis
 - Alle Azure-Dienste, Abonnements, Konten, Abteilungen sowie die gesamte Registrierungsstruktur einschließlich aller EA-Abteilungsadministratoren werden in die neue Zielregistrierung übertragen.
 - Der Registrierungsstatus wird auf _Übertragen_ festgelegt. Die übertragene Registrierung ist nur für Berichte zum Nutzungsverlauf verfügbar.
 - Einer übertragenen Registrierung können Sie keine Rollen oder Abonnements hinzufügen. Der Status „Übertragen“ verhindert eine zusätzliche Nutzung in Bezug auf die Registrierung.
-- Verbleibendes Guthaben in Bezug auf den Mindestverbrauch im Vertrag geht dabei verloren. Dies umfasst auch zukünftige Bestimmungen.
+- Verbleibendes Guthaben in Bezug auf die Azure-Vorauszahlung in der Vereinbarung geht dabei verloren. Dies umfasst auch zukünftige Bestimmungen.
 -    Wenn die Registrierung, von der aus Sie die Übertragung durchführen, über RI-Käufe verfügt, verbleibt die Gebühr für RI-Käufe in der Quellregistrierung. Sämtliche RI-Vorteile werden aber in die neue Registrierung übertragen und stehen dort zur Verfügung.
 -    Die einmalige Gebühr für Marketplace-Käufe sowie feste Monatsgebühren, die ggf. bereits für die alte Registrierung angefallen sind, werden nicht in die neue Registrierung übertragen. Verbrauchsbasierte Marketplace-Gebühren werden übertragen.
 
@@ -68,7 +68,7 @@ Wenn Sie die Übertragung einer gesamten Unternehmensregistrierung in eine Regis
 
 Das effektive Datum der Übertragung kann ein Datum ab dem Startdatum der Zielregistrierung sein.
 
-Die Nutzung der Quellregistrierung wird in Form eines Mindestverbrauchs oder als Überschreitung abgerechnet. Die Nutzung, die nach dem effektiven Übertragungsdatum erfolgt, wird in die neue Registrierung übertragen und entsprechend abgerechnet.
+Die Nutzung der Quellregistrierung wird gegen eine Azure-Vorauszahlung oder als Überschreitung abgerechnet. Die Nutzung, die nach dem effektiven Übertragungsdatum erfolgt, wird in die neue Registrierung übertragen und entsprechend abgerechnet.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -84,9 +84,9 @@ Andere Punkte, die vor einer Registrierungsübertragung zu beachten sind:
 - Wenn eine Registrierungsübertragung Ihre Anforderungen nicht erfüllt, ziehen Sie eine Kontoübertragung in Betracht.
 - Der Quellregistrierungsstatus wird auf „übertragen“ aktualisiert und steht nur für die Nutzungsberichterstellung zur Verfügung.
 
-### <a name="monetary-commitment"></a>Finanzielle Verpflichtung
+### <a name="azure-prepayment"></a>Azure-Vorauszahlung
 
-Der Mindestverbrauch ist zwischen Registrierungen übertragbar. Salden in Bezug auf den Mindestverbrauch sind vertraglich an die Registrierung gebunden, für die sie bestellt wurden. Der Mindestverbrauch wird nicht als Teil des Übertragungsprozesses eines Kontos oder einer Registrierung übertragen.
+Die Azure-Vorauszahlung ist zwischen Registrierungen übertragbar. Salden in Bezug auf Azure-Vorauszahlungen sind vertraglich an die Registrierung gebunden, für die sie bestellt wurden. Die Azure-Vorauszahlung wird nicht als Teil des Konto- oder Registrierungstransferprozesses übertragen.
 
 ### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Für Konto- und Registrierungsübertragungen sind keine Dienste betroffen.
 

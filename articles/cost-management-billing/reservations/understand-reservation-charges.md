@@ -1,20 +1,20 @@
 ---
-title: Grundlegendes zu Rabatten für Reservierungen für Azure SQL-Datenbanken | Microsoft-Dokumentation
-description: Erfahren Sie, wie ein Rabatt für Reservierungen auf ausgeführte Azure SQL-Datenbanken angewendet wird.
+title: Grundlegendes zu Rabatten für Reservierungen für Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Erfahren Sie, wie ein Rabatt für Reservierungen auf ausgeführte Azure SQL-Datenbank-Instanzen angewendet wird.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: e402eabce5fd7af6ca9f51a1d67175cd8e5e1ce4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 736e046b5254de9aa18c898994d7df11efc98a9a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726059"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037986"
 ---
-# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Anwendung eines Rabatts für Reservierungen auf Azure SQL-Datenbanken
+# <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>Anwendung eines Rabatts für Reservierungen auf Azure SQL-Datenbank
 
 Nachdem Sie eine reservierte Azure SQL-Datenbank-Kapazität erworben haben, wird der Reservierungsrabatt automatisch auf SQL-Datenbank-Instanzen angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt die Computekosten Ihrer SQL-Datenbank-Instanz ab. Ihnen werden die regulären Gebühren für Software, Speicher und Netzwerke berechnet. Die Lizenzkosten für SQL-Datenbank-Instanzen können Sie mit dem [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) abdecken.
 
@@ -28,7 +28,7 @@ Reservierungsrabatte funktionieren nach dem Prinzip „*use-it-or-lose-it*“. D
 
 Wenn Sie eine Ressource beenden, wird der Reservierungsrabatt automatisch auf eine andere entsprechende Ressource im angegebenen Reservierungsumfang angewandt. Wenn keine übereinstimmenden Ressourcen im angegebenen Reservierungsumfang gefunden werden, gehen die reservierten Stunden *verloren*.
 
-## <a name="discount-applied-to-sql-databases"></a>Anwendung des Rabatts auf SQL-Datenbank-Instanzen
+## <a name="discount-applied-to-running-sql-databases"></a>Anwendung des Rabatts auf ausgeführte von SQL-Datenbank-Instanzen
 
  Der Rabatt für reservierte SQL-Datenbank-Kapazitäten wird auf ausgeführte SQL-Datenbank-Instanzen, die auf Stundenbasis abgerechnet werden, angewendet. Die Reservierung, die Sie kaufen, wird der Computenutzung zugeordnet, die von den ausgeführten SQL-Datenbank-Instanzen ausgegeben wird. Bei SQL-Datenbank-Instanzen, die nicht über die gesamte Stunde hinweg ausgeführt werden, wird die Reservierung automatisch auf andere SQL-Datenbank-Instanzen angewendet, die den Reservierungsattributen entsprechen. Der Rabatt kann auf SQL-Datenbank-Instanzen angewendet werden, die gleichzeitig ausgeführt werden. Wenn die den Reservierungsattributen entsprechenden SQL-Datenbank-Instanzen nicht über die gesamte Stunde hinweg ausgeführt werden, profitieren Sie nicht im vollen Umfang vom Reservierungsrabatt für diese Stunde.
 

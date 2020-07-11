@@ -3,16 +3,16 @@ title: Azure EA-Portalverwaltung
 description: In diesem Artikel werden die häufigsten Aufgaben erläutert, die Administratoren im Azure EA-Portal durchführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: eefd4a9ddf2150728578a4e058686a3204e34930
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 6169a18148b251540d66bce6e34374a16f697015
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456554"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044888"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -33,7 +33,7 @@ Unternehmensadministratoren können Abteilungen unter der Registrierung vorhande
 
 ## <a name="department-spending-quotas"></a>Ausgabenkontingente für Abteilungen
 
-EA-Kunden können für jede Abteilung unter einer Registrierung Ausgabenkontingente festlegen oder ändern. Die Höhe des Ausgabenkontingents wird für die aktuelle Laufzeit des Prepaidtarifs festgelegt. Am Ende der aktuellen Laufzeit des Prepaidtarifs wird das vorhandene Ausgabenkontingent automatisch auf die nächste Laufzeit des Prepaidtarifs verlängert, sofern die Werte nicht aktualisiert werden.
+EA-Kunden können für jede Abteilung unter einer Registrierung Ausgabenkontingente festlegen oder ändern. Die Höhe des Ausgabenkontingents wird für die aktuelle Laufzeit der Vorauszahlung festgelegt. Am Ende der aktuellen Laufzeit der Vorauszahlung wird das vorhandene Ausgabenkontingent automatisch auf die nächste Laufzeit der Vorauszahlung verlängert, sofern die Werte nicht aktualisiert werden.
 
 Der Abteilungsadministrator kann das Ausgabenkontingent zwar anzeigen, aber nur der Unternehmensadministrator kann den Kontingentbetrag aktualisieren. Unternehmensadministrator und Abteilungsadministrator erhalten Benachrichtigungen, sobald 50 Prozent, 75 Prozent, 90 Prozent und 100 Prozent des Kontingents erreicht werden.
 
@@ -48,9 +48,9 @@ Der Abteilungsadministrator kann das Ausgabenkontingent zwar anzeigen, aber nur 
     - Bei dieser Gelegenheit können Sie auch den Abteilungsnamen und die Kostenstelle bearbeiten.
  1. Wählen Sie **Speichern** aus.
 
-Das Ausgabenkontingent für die Abteilung wird nun auf der Registerkarte „Abteilung“ in der Abteilungsliste angezeigt. Am Ende des aktuellen Prepaidtarifs behält das Azure EA-Portal die Ausgabenkontingente für die nächste Laufzeit des Prepaidtarifs bei.
+Das Ausgabenkontingent für die Abteilung wird nun auf der Registerkarte „Abteilung“ in der Abteilungsliste angezeigt. Am Ende der aktuellen Vorauszahlung behält das Azure EA-Portal die Ausgabenkontingente für die nächste Laufzeit der Vorauszahlung bei.
 
-Die Höhe des Abteilungskontingents ist unabhängig vom aktuellen Mindestverbrauch, und die Höhe des Kontingents sowie die Warnungen gelten nur für die Erstanbieternutzung. Das Ausgabenkontingent für die Abteilung dient nur zur Information und erzwingt keine Ausgabenlimits.
+Die Höhe des Abteilungskontingents ist unabhängig von der aktuellen Azure-Vorauszahlung, und die Höhe des Kontingents sowie die Warnungen gelten nur für die Erstanbieternutzung. Das Ausgabenkontingent für die Abteilung dient nur zur Information und erzwingt keine Ausgabenlimits.
 
 ### <a name="department-administrator-to-view-the-quota"></a>Als Abteilungsadministrator können Sie das Kontingent wie folgt anzeigen:
 
@@ -174,7 +174,7 @@ In diesem Dokument werden häufig gestellte Fragen im Zusammenhang mit dem Konto
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Wie viele Azure-Kontobesitzer sind pro Abonnement zulässig?
 
-Pro Abonnement ist immer nur ein einzelner Kontobesitzer zulässig.  Weitere Rollen können mithilfe des rollenbasierten Zugriffs oder der Zugriffssteuerung (IAM) unter [portal.azure.com]](https://portal.azure.com) auf der Registerkarte „Abonnement“ (links oben auf der Seite) hinzugefügt werden.
+Pro Abonnement ist immer nur ein einzelner Kontobesitzer zulässig.  Weitere Rollen können mithilfe des rollenbasierten Zugriffs oder der Zugriffssteuerung (IAM) im [Azure-Portal](https://portal.azure.com) auf der Registerkarte „Abonnement“ (links oben auf der Seite) hinzugefügt werden.
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Kann ein Azure-Kontobesitzer unter mehreren Abteilungen aufgeführt werden?
 

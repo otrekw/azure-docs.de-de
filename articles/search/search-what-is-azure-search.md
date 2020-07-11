@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: 7075753049e6ba6f4804d23aa31796cbd5bc9141
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/30/2020
+ms.openlocfilehash: 9d081dea8e4a59a7b872bde8626cbb8674eebd7e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263227"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554329"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Was ist Azure Cognitive Search?
 
-Azure Cognitive Search ([ehemals „Azure Search“](whats-new.md#new-service-name)) ist eine Search-as-a-Service-Cloudlösung, die Entwicklern APIs und Tools zum Hinzufügen von umfangreichen Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet. Ihr Code oder ein Tool ruft die Datenerfassung (Indizierung) auf, um einen Index zu erstellen und zu laden. Optional können Sie kognitive Qualifikationen zum Anwenden von KI-Prozessen während der Indizierung hinzufügen. Dadurch können neue Informationen und Strukturen hinzugefügt werden, die nützlich für die Suche und andere Szenarien sind.
+Azure Cognitive Search ([ehemals „Azure Search“](whats-new.md#new-service-name)) ist eine Search-as-a-Service-Cloudlösung, die Entwicklern APIs und Tools zum Hinzufügen von umfangreichen Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet. 
 
-Auf der anderen Seite des Diensts gibt Ihr Anwendungscode Abfrageanforderungen aus und verarbeitet Antworten. Das Suchverhalten ist mit Funktionen aus Azure Cognitive Search in Ihrem Client definiert, und Abfragen werden in einem permanenten Index ausgeführt, den Sie erstellen, besitzen und in Ihrem Dienst speichern.
+Bei einer benutzerdefinierten Lösung befindet sich ein Suchdienst zwischen zwei primären Workloads: Inhaltserfassung und Abfragen. Ihr Code oder ein Tool definiert ein Schema und ruft die Datenerfassung (Indizierung) auf, um einen Index in Azure Cognitive Search zu laden. Optional können Sie kognitive Qualifikationen zum Anwenden von KI-Prozessen während der Indizierung hinzufügen. Dadurch können neue Informationen und Strukturen erstellt werden, die nützlich für die Suche und Wissensgewinnungsszenarien sind.
+
+Sobald ein Index vorhanden ist, gibt Ihr Anwendungscode Abfrageanforderungen an einen Suchdienst aus und verarbeitet Antworten. Das Suchverhalten ist mit Funktionen aus Azure Cognitive Search in Ihrem Client definiert, und Abfragen werden in einem permanenten Index ausgeführt, den Sie erstellen, besitzen und in Ihrem Dienst speichern.
 
 ![Architektur von Azure Cognitive Search](media/search-what-is-azure-search/azure-search-diagram.svg "Architektur von Azure Cognitive Search")
 
@@ -31,7 +33,7 @@ Azure Cognitive Search eignet sich sehr gut für die folgenden Anwendungsszenari
 
 + Konsolidierung von heterogenen Inhaltstypen in einem einzelnen privaten, durchsuchbaren Index. Abfragen erfolgen immer in einem Index, den Sie erstellen und in den Sie Dokumente laden. Der Index befindet sich immer in der Cloud in Ihrem Azure Cognitive Search-Dienst. Sie können einen Index mit Streams aus JSON-Dokumenten aus jeder beliebigen Quelle und von jeder beliebigen Plattform auffüllen. Bei Inhalten, die aus Azure stammen, können Sie alternativ dazu einen *Indexer* verwenden, um Daten per Pull in einen Index abzurufen. Die Definition sowie die Verwaltung bzw. der Besitz eines Index sind die Hauptgründe für die Verwendung von Azure Cognitive Search.
 
-+ Bei unformatiertem Inhalt handelt es sich um große Mengen von undifferenziertem Text oder um Bild- und Anwendungsdateien, etwa Office-Inhaltstypen in einer Azure-Datenquelle wie Azure Blob Storage oder Cosmos DB. Sie können während der Indizierung kognitive Qualifikationen anwenden, um Struktur hinzuzufügen oder aussagekräftige Informationen aus Image- und Anwendungsdateien zu gewinnen.
++ Bei unformatiertem Inhalt handelt es sich um große Mengen von undifferenziertem Text oder um Bild- und Anwendungsdateien, etwa Office-Inhaltstypen in einer Azure-Datenquelle wie Azure Blob Storage oder Cosmos DB. Sie können während der Indizierung kognitive Qualifikationen anwenden, um Struktur hinzuzufügen oder durchsuchbaren Text aus Image- und Anwendungsdateien zu gewinnen.
 
 + Einfache Implementierung von Features in Zusammenhang mit der Suche. Azure Cognitive Search-APIs vereinfachen Abfrageerstellung, Facettennavigation, Filter (einschließlich geografisch-räumlicher Suche), Synonymzuordnung, Abfragen mit automatischer Vervollständigung sowie die Optimierung der Relevanz. Mithilfe von integrierten Features können Sie die Erwartungen von Endbenutzern an einen Suchdienst erfüllen, der der Funktionalität von kommerziellen Suchmaschinen in nichts nachsteht.
 
@@ -53,8 +55,8 @@ Azure Cognitive Search eignet sich sehr gut für die folgenden Anwendungsszenari
 
 | KI-Anreicherung&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Features |
 |-------------------|----------|
-|KI-Verarbeitung während der Indizierung | [**KI-Anreicherung**](cognitive-search-concept-intro.md) für Bild- und Textanalyse kann auf eine Indizierungspipeline angewandt werden, um Textinformationen aus Rohdateninhalten zu extrahieren. Zu den [integrierten Skills](cognitive-search-predefined-skills.md) zählen beispielsweise die optische Zeichenerkennung (ermöglicht das Durchsuchen gescannter JPEG-Dateien), die Entitätserkennung (Ermitteln einer Organisation, eines Namens oder eines Standorts) und die Schlüsselbegriffserkennung. Sie können auch [benutzerdefinierte Skills codieren](cognitive-search-create-custom-skill-example.md) und sie an die Pipeline anfügen. |
-| Speichern von angereicherten Inhalten für die Analyse und Nutzung in Szenarien ohne Suche | [**Wissensspeicher (Vorschauversion)** ](knowledge-store-concept-intro.md) ist eine Erweiterung zur KI-basierten Indizierung. Mit Azure Storage als Back-End können Sie Anreicherungen speichern, die während der Indizierung erstellt werden. Mithilfe dieser Artefakte können Sie bessere Qualifikationsgruppen entwerfen oder Formen und Strukturen aus formlosen oder nicht eindeutigen Daten erstellen. Sie können Projektionen dieser Strukturen für bestimmte Workloads oder Benutzer erstellen. Sie können die extrahierten Daten zudem direkt analysieren oder in andere Apps laden.<br/><br/> |
+|KI-Verarbeitung während der Indizierung | [**KI-Anreicherung**](cognitive-search-concept-intro.md) für Bild- und Textanalyse kann auf eine Indizierungspipeline angewandt werden, um Textinformationen aus Rohdateninhalten zu extrahieren. Zu den [integrierten Skills](cognitive-search-predefined-skills.md) zählen beispielsweise die optische Zeichenerkennung (ermöglicht das Durchsuchen gescannter JPEG-Dateien), die Entitätserkennung (Ermitteln einer Organisation, eines Namens oder eines Standorts) und die Schlüsselbegriffserkennung. Sie können auch [benutzerdefinierte Skills codieren](cognitive-search-create-custom-skill-example.md) und sie an die Pipeline anfügen. Sie können auch [von Azure Machine Learning erstellte Qualifikationen integrieren](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-aml-custom-skill). |
+| Speichern von angereicherten Inhalten für die Analyse und Nutzung in Szenarien ohne Suche | [**Wissensspeicher**](knowledge-store-concept-intro.md) ist eine Erweiterung der auf KI basierenden Indizierung. Mit Azure Storage als Back-End können Sie Anreicherungen speichern, die während der Indizierung erstellt werden. Mithilfe dieser Artefakte können Sie bessere Qualifikationsgruppen entwerfen oder Formen und Strukturen aus formlosen oder nicht eindeutigen Daten erstellen. Sie können Projektionen dieser Strukturen für bestimmte Workloads oder Benutzer erstellen. Sie können die extrahierten Daten zudem direkt analysieren oder in andere Apps laden.<br/><br/> |
 | Zwischengespeicherte Inhalte | Bei der [**inkrementellen Anreicherung (Vorschauversion)** ](cognitive-search-incremental-indexing-conceptual.md) ist die Verarbeitung auf nur die Dokumente beschränkt, die durch eine spezifische Bearbeitung der Pipeline geändert werden, wobei für die unveränderten Teile der Pipeline zwischengespeicherte Inhalte verwendet werden. |
 
 | Datenimport&nbsp; und -indizierung | Features |
@@ -129,7 +131,7 @@ Auch wenn im Portal viele Aufgaben ausgeführt werden können, ist Azure Cogniti
 
 |Plattform |BESCHREIBUNG |
 |-----|------------|
-|[REST](/rest/api/searchservice/) | Durch eine beliebige Programmierplattform und -sprache (darunter Xamarin, Java und JavaScript) unterstützte HTTP-Befehle.|
+|[REST](/rest/api/searchservice/) | Durch eine beliebige Programmierplattform und -sprache (darunter Java, Python und JavaScript) unterstützte HTTP-Befehle|
 |[.NET SDK](search-howto-dotnet-sdk.md) | Der .NET-Wrapper für die REST-API ermöglicht eine effiziente Codierung in C# und andere Sprachen für verwalteten Code, die auf das .NET Framework ausgerichtet sind. |
 
 ## <a name="free-trial"></a>Kostenlose Testversion
