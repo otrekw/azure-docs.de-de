@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: b8f97bb27b3eb45c731b20ad51e35fde9b6a394a
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 252e7b8d13cf53a98ea1f25b207740c0e623f92c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126895"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242966"
 ---
 # <a name="api-management-policy-samples"></a>API Management-Richtlinienbeispiele
 
@@ -34,7 +34,7 @@ ms.locfileid: "85126895"
 | [Autorisieren von Anforderungen mit einem externen Autorisierer](./authorize-request-using-external-authorizer.md)                                                   | Veranschaulicht, wie Sie einen externen Autorisierer zum Sichern des API-Zugriffs verwenden.                                                                                                                                                               |
 | [Autorisieren des Zugriffs mithilfe von Google-OAuth-Token](./use-google-as-oauth-token-provider.md)                                            | Veranschaulicht, wie Sie den Zugriff auf Ihre Endpunkte mithilfe von Google als OAuth-Tokenanbieter autorisieren.                                                                                                                                    |
 | [Filtern von IP-Adressen bei Verwendung von Application Gateway](./filter-ip-addresses-when-using-appgw.md) | Zeigt, wie in Richtlinien nach IP-Adressen gefiltert wird, wenn auf die API Management-Instanz über Application Gateway zugegriffen wird.
-| [Generieren von Shared Access Signatures und Weiterleiten von Anforderungen an Azure Storage](./generate-shared-access-signature.md)                  | Veranschaulicht, wie Sie [Shared Access Signatures](../../storage/storage-dotnet-shared-access-signature-part-1.md) mithilfe von Ausdrücken generieren und die Anforderung mithilfe der rewrite-uri-Richtlinie an Azure Storage weiterleiten. |
+| [Generieren von Shared Access Signatures und Weiterleiten von Anforderungen an Azure Storage](./generate-shared-access-signature.md)                  | Veranschaulicht, wie Sie [Shared Access Signatures](../../storage/common/storage-sas-overview.md) mithilfe von Ausdrücken generieren und die Anforderung mithilfe der rewrite-uri-Richtlinie an Azure Storage weiterleiten. |
 | [Abrufen von OAuth2-Zugriffstoken aus AAD und Weiterleiten des Tokens an das Back-End](./use-oauth2-for-authorization.md)                             | Stellt ein Beispiel zur Verwendung von OAuth2 für die Autorisierung zwischen dem Gateway und einem Back-End bereit. Dieses zeigt, wie Sie ein Zugriffstoken aus AAD abrufen und an das Back-End weiterleiten.                                                    |
 | [Abrufen von X-CSRF-Token aus einem SAP-Gateway mit einer Richtlinie zum Senden einer Anforderung](./get-x-csrf-token-from-sap-gateway.md)                           | Veranschaulicht, wie Sie das von vielen APIs verwendete X-CSRF-Muster implementieren. Dieses Beispiel bezieht sich speziell auf das SAP-Gateway.                                                                                                                           |
 | [Weiterleiten der Anforderung basierend auf der Größe des Textkörpers](./route-requests-based-on-size.md)                                            | Veranschaulicht, wie Sie Anforderungen basierend auf der Größe des Textkörpers weiterleiten.                                                                                                                                                       |
