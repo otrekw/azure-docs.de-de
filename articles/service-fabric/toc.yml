@@ -111,7 +111,7 @@
 - name: Beispiele
   items:
     - name: Codebeispiele
-      href: 'https://docs.microsoft.com/samples/browse/'
+      href: /samples/browse/
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric-Befehlszeilenschnittstelle
@@ -491,7 +491,7 @@
             - name: Konfigurieren von „ReliableDictionaryActorStateProvider“
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
         - name: Erstellen eines ASP.NET Core-Diensts
-          href: service-fabric-add-a-web-frontend.md
+          href: ./service-fabric-reliable-services-communication-aspnetcore.md
         - name: Erstellen eines Apache Tomcat-Servercontainers unter Linux
           href: service-fabric-get-started-tomcat.md
         - name: Konfigurieren der Sicherheit
@@ -628,7 +628,7 @@
         - name: Einrichten von Continuous Integration
           items:
             - name: Einrichten von Continuous Integration mit Azure Pipelines
-              href: service-fabric-set-up-continuous-integration.md
+              href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: Bereitstellen von Linux-Anwendungen mithilfe von Jenkins
               href: service-fabric-cicd-your-linux-applications-with-jenkins.md
     - name: Einrichten und Konfigurieren eines Reverseproxys
@@ -897,7 +897,7 @@
     - name: Häufig gestellte Fragen
       href: service-fabric-common-questions.md
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
-      href: 'https://docs.microsoft.com/answers/topics/azure-service-fabric.html'
+      href: /answers/topics/azure-service-fabric.html
     - name: Schutzmaßnahmen für die Azure Resource Manager-Bereitstellung
       href: service-fabric-azure-resource-manager-guardrails.md
     - name: Preise
