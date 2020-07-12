@@ -12,8 +12,6 @@
       href: tutorial-hybrid-portal.md
     - name: Filtern von eingehendem Datenverkehr mit DNAT
       href: tutorial-firewall-dnat.md
-    - name: Diagnoseprotokolle überwachen
-      href: tutorial-diagnostics.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -86,6 +84,8 @@
       href: protect-azure-kubernetes-service.md
     - name: DNS-Einstellungen
       href: dns-settings.md
+    - name: Diagnoseprotokolle überwachen
+      href: firewall-diagnostics.md
 - name: Verweis
   items:
     - name: Azure CLI

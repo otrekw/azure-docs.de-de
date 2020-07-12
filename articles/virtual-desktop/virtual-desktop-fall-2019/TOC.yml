@@ -24,6 +24,8 @@
   items:
     - name: Herstellen einer Verbindung mit Windows Virtual Desktop-Ressourcen
       items:
+        - name: Herstellen einer Verbindung mit dem Windows-Desktopclient
+          href: connect-windows-7-10-2019.md
         - name: Herstellen einer Verbindung mit dem Webclient
           href: connect-web-2019.md
         - name: Herstellen einer Verbindung mit dem Android-Client
