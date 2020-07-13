@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 843cd74c85c619dbbd2b11a32fccf75d030b5613
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: be212de7a24b416ad4e5dc08998ba1147c6f3753
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855933"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen, IaaS-Containern und Azure-fremden Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Log Analytics-Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer.
@@ -199,7 +199,7 @@ Wenn der konfigurierte Arbeitsbereich ein Benutzerarbeitsbereich ist (nicht der 
 <br>
 Auf Linux-Computern wird das Multi-Homing von Agents noch nicht unterstützt, weshalb, wenn eine bestehende Agent-Installation erkannt wird, keine automatische Bereitstellung erfolgt und die Konfiguration des Computers nicht geändert wird.
 <br>
-Wenn für vorhandene Computer in Abonnements, die vor dem 17.03.2019 in Security Center integriert wurden, ein vorhandener Agent erkannt wurde, wird die Log Analytics-Agent-Erweiterung nicht installiert, und der Vorgang hat keine Auswirkungen auf den Computer. Für diese Computer wird die Empfehlung „Monitoring Agent-Integritätsprobleme auf Ihren Computern beheben“ angezeigt, damit Sie die Installationsprobleme des Agents auf diesen Computern beheben können.
+Wenn für vorhandene Computer in Abonnements, die vor dem 17. März 2019 in Security Center integriert wurden, ein vorhandener Agent erkannt wurde, wird die Log Analytics-Agent-Erweiterung nicht installiert, und der Computer ist nicht betroffen. Für diese Computer wird die Empfehlung „Monitoring Agent-Integritätsprobleme auf Ihren Computern beheben“ angezeigt, damit Sie die Installationsprobleme des Agents auf diesen Computern beheben können.
 
   
 - Der System Center Operations Manager-Agent ist auf dem Computer installiert.<br>
@@ -237,58 +237,44 @@ Es gibt mehrere Möglichkeiten, den Log Analytics-Agent manuell zu installieren.
 ### <a name="operations-management-suite-vm-extension-deployment"></a>Bereitstellung der Operations Management Suite-Erweiterung für virtuelle Computer 
 
 Damit Security Center Sicherheitsdaten auf virtuellen Computern erfassen und Empfehlungen und Warnungen bereitstellen kann, können Sie den Log Analytics-Agent manuell installieren.
-1. Wählen Sie für die automatische Bereitstellung „AUS“.
-2. Erstellen Sie einen Arbeitsbereich, und wählen Sie den Tarif für den Arbeitsbereich aus, den Sie für den Log Analytics-Agent festlegen möchten:
 
-   a.  Wählen Sie im Hauptmenü von Security Center die Option **Sicherheitsrichtlinie** aus.
-     
-   b.  Wählen Sie den Arbeitsbereich aus, in dem Sie den Agent verbinden möchten. Stellen Sie sicher, dass sich der Arbeitsbereich im gleichen Abonnement befindet, das Sie in Security Center verwenden, und dass Sie über Lese-/Schreibberechtigungen für den Arbeitsbereich verfügen.
-       ![Arbeitsbereich auswählen][8]
-3. Legen Sie den Tarif fest.
-   ![Tarif auswählen][9] 
-   >[!NOTE]
-   >Wenn für den Arbeitsbereich bereits eine **Security**- oder **SecurityCenterFree**-Lösung aktiviert ist, werden die Preise automatisch festgelegt. 
+1. Deaktivieren Sie die automatische Bereitstellung.
+
+1. Erstellen Sie optional einen Arbeitsbereich.
+
+1. Legen Sie den Arbeitsbereich, für den Sie den Log Analytics-Agent installieren, auf den Standard-Tarif fest:
+
+    1. Wählen Sie im Menü von Security Center **Preise und Einstellungen** aus.
+
+    1. Legen Sie den Arbeitsbereich fest, für den Sie den Agent installieren. Stellen Sie sicher, dass sich der Arbeitsbereich im gleichen Abonnement befindet, das Sie in Security Center verwenden, und dass Sie über Lese-/Schreibberechtigungen für den Arbeitsbereich verfügen.
+
+    1. Legen Sie den Standard-Tarif fest, und klicken Sie auf **Speichern**.
+
+        ![Festlegen eines Arbeitsbereichs auf den Standard-Tarif](.\media\security-center-enable-data-collection\workspace-to-standard-tier.gif)
+
+       >[!NOTE]
+       >Wenn für den Arbeitsbereich bereits eine **Security**- oder **SecurityCenterFree**-Lösung aktiviert ist, werden die Preise automatisch festgelegt. 
    > 
 
-4. Wenn Sie die Agents auf neuen virtuellen Computern mithilfe der Resource Manager-Vorlage bereitstellen möchten, installieren Sie die OMS-Erweiterung für virtuelle Computer:
+1. Wenn Sie die Agents auf neuen virtuellen Computern mithilfe der Resource Manager-Vorlage bereitstellen möchten, installieren Sie den Log Analytics-Agent:
 
-   a.  [Installieren der OMS-Azure-VM-Erweiterung für Windows](../virtual-machines/extensions/oms-windows.md)
+   a.  [Installieren des Log Analytics-Agents für Windows](../virtual-machines/extensions/oms-windows.md)
     
-   b.  [Installieren der OMS-Azure-VM-Erweiterung für Linux](../virtual-machines/extensions/oms-linux.md)
-5. Folgen Sie den Anweisungen in [Sammeln von Daten über virtuelle Azure-Computer](../azure-monitor/learn/quick-collect-azurevm.md), um die Erweiterungen auf vorhandenen virtuellen Computern bereitzustellen.
+   b.  [Installieren des Log Analytics-Agents für Linux](../virtual-machines/extensions/oms-linux.md)
+
+1. Folgen Sie den Anweisungen in [Sammeln von Daten über virtuelle Azure-Computer](../azure-monitor/learn/quick-collect-azurevm.md), um die Erweiterungen auf vorhandenen virtuellen Computern bereitzustellen.
 
    > [!NOTE]
    > Der Abschnitt **Sammeln von Ereignis- und Leistungsdaten** ist optional.
    >
-6. Wie Sie die Erweiterung mithilfe von PowerShell bereitstellen, können Sie dem folgenden PowerShell-Beispiel entnehmen:
-   
-   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-   
-   1. Rufen Sie **Log Analytics** auf, und klicken Sie auf **Erweiterte Einstellungen**.
-    
-      ![Festlegen der Protokollanalyse][11]
 
-   2. Kopieren Sie die Werte aus **WorkspaceID** und **Primärschlüssel**.
-  
-      ![Kopieren von Werten][12]
+1. Wenn Sie PowerShell zum Bereitstellen der Erweiterung verwenden möchten, befolgen Sie die Anweisungen in der Dokumentation zu virtuellen Computern:
 
-   3. Füllen Sie die öffentliche Konfiguration und die private Konfiguration mit diesen Werten aus:
-     
-           $PublicConf = @{
-               "workspaceId"= "<WorkspaceID value>"
-           }
- 
-           $PrivateConf = @{
-               "workspaceKey"= "<Primary key value>"
-           }
+    - [Für Windows-Computer](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
 
-      - Bei der Installation auf einem virtuellen Windows-Computer:
-        
-            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -settings $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
-    
-      - Bei der Installation auf einem virtuellen Linux-Computer:
-        
-            Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+    - [Für Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
+
+
 
 > [!NOTE]
 > Anweisungen für das Onboarding von Security Center mit PowerShell finden Sie unter [Automatisieren des Onboardings von Azure Security Center mit PowerShell](security-center-powershell-onboarding.md).

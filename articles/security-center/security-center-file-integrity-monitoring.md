@@ -13,15 +13,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: 46ff4d9c941af25fcec3a70d7a2e6da95da59f32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106694"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628288"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Überwachung der Dateiintegrität in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center konfigurieren.
+
+
+## <a name="availability"></a>Verfügbarkeit
+
+- Status des Release: **Allgemein verfügbar**
+- Erforderliche Rollen: Der **Besitzer des Arbeitsbereichs** kann FIM aktivieren/deaktivieren (weitere Informationen finden Sie unter [Azure-Rolles für Log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)). **Leser** können Ergebnisse anzeigen.
+- Clouds:
+    - ✔ Kommerzielle Clouds
+    - ✔ US Gov-Cloud
+    - ✘ China Gov/andere Gov
+
 
 ## <a name="what-is-fim-in-security-center"></a>Was ist die Überwachung der Dateiintegrität in Security Center?
 Die Überwachung der Dateiintegrität, auch als Überwachung von Änderungen bekannt, untersucht unter anderem Dateien und Registrierungen des Betriebssystems nach Änderungen, die auf einen Angriff deuten. Eine Vergleichsmethode wird verwendet, um zu bestimmen, ob der aktuelle Status der Datei sich von der letzten Überprüfung der Datei unterscheidet. Sie können diesen Vergleich nutzen, um zu bestimmen, ob gültige oder verdächtige Änderungen an Ihren Dateien vorgenommen wurden.

@@ -8,16 +8,18 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 0945743fb2cf3e37345ff562250e48511944cee6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125552"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84466169"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Erstellen eines privaten Endpunkts für sichere Verbindungen mit Azure Cognitive Search
 
 In diesem Artikel verwenden Sie das Azure-Portal, um eine neue Azure Cognitive Search-Dienstinstanz zu erstellen, auf die nicht über das Internet zugegriffen werden kann. Anschließend konfigurieren Sie einen virtuellen Azure-Computer im selben Netzwerk und greifen damit über einen privaten Endpunkt auf den Suchdienst zu.
+
+Private Endpunkte werden durch [Azure Private Link](../private-link/private-link-overview.md) als separater Dienst bereitgestellt. Weitere Informationen zu den Kosten finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/private-link/).
 
 > [!Important]
 > Die Unterstützung privater Endpunkte für Azure Cognitive Search kann mithilfe des Azure-Portals oder der [Verwaltungs-REST-API, Version 2020-03-13,](https://docs.microsoft.com/rest/api/searchmanagement/) konfiguriert werden. Wenn der Dienstendpunkt privat ist, sind einige Portalfunktionen deaktiviert. Sie können Informationen auf Dienstebene anzeigen und verwalten, aber der Portalzugriff auf Indexdaten und die verschiedenen Komponenten im Dienst sind aus Sicherheitsgründen eingeschränkt. Dazu zählen beispielsweise Index-, Indexer- und Skillsetdefinitionen.

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/22/2019
-ms.openlocfilehash: 171f897f6e110e8f759281c139addab477ecede3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/06/2020
+ms.openlocfilehash: fe8d2a2c083072ebc717b7476bb0738bb83301f1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77664693"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984623"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Containerüberwachungslösung in Azure Monitor
 
@@ -618,7 +618,6 @@ Wenn Sie Probleme mit einen bestimmten Fehler beheben möchten, kann es hilfreic
 - **KubeEvents_CL** Verwenden Sie diesen Typ, um die Kubernetes-Ereignisse anzuzeigen.
 - **KubePodInventory_CL** Verwenden Sie diesen Typ, wenn Sie Informationen zur Clusterhierarchie einsehen möchten.
 
-
 ### <a name="to-query-logs-for-container-data"></a>So fragen Sie Containerdaten in Protokollen ab
 
 * Wählen Sie ein Image aus, bei dem kürzlich ein Fehler aufgetreten ist, und suchen Sie die zugehörigen Fehlerprotokolle. Suchen Sie zunächst mit **ContainerInventory** nach dem Namen eines Containers, in dem das Image ausgeführt wird. Suchen Sie beispielsweise nach `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`.  
@@ -628,7 +627,7 @@ Wenn Sie Probleme mit einen bestimmten Fehler beheben möchten, kann es hilfreic
 
 ## <a name="example-log-queries"></a>Beispiele für Protokollabfragen
 
-Es ist oft hilfreich, die Erstellung von Abfragen ausgehend von einem oder zwei Beispielen zu beginnen und diese dann an die eigene Umgebung anzupassen. Als Ausgangspunkt können Sie im Bereich **Beispielabfragen** experimentieren, um komplexere Abfragen zu erstellen.
+Es ist oft hilfreich, die Erstellung von Abfragen ausgehend von einem oder zwei Beispielen zu beginnen und diese dann an die eigene Umgebung anzupassen. Als Ausgangspunkt können Sie mit dem Bereich **BEISPIELABFRAGEN** ganz rechts auf der Lösungsseite experimentieren, um Sie bei der Erstellung erweiterter Abfragen zu unterstützen.
 
 ![Containerabfragen](./media/containers/containers-queries.png)
 

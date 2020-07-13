@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80672731"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern/physischen Servern
@@ -138,7 +138,7 @@ Sie können den Konfigurationsserver bei Bedarf im selben Tresor erneut registri
    ```
 
     >[!NOTE]
-    >Um das **neueste Zertifikat** vom Konfigurationsserver auf den Prozessserver für die horizontale Skalierung zu pullen, führen Sie den folgenden Befehl aus: *"\<Installationslaufwerk>\Microsoft Azure Site Recovery\agent\cdpcli.exe" --registermt*.
+    >Um das **neueste Zertifikat** vom Konfigurationsserver auf den Prozessserver für die horizontale Skalierung zu pullen, führen Sie den folgenden Befehl aus: *"\<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>"--registermt*.
 
 8. Starten Sie den OBEngine-Dienst neu, indem Sie den folgenden Befehl ausführen.
    ```

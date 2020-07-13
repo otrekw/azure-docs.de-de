@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
-ms.date: 03/12/2019
-ms.openlocfilehash: f409a4c27e2b69993406f95301d21f05b547aed6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/06/2020
+ms.openlocfilehash: 7c451deb04c9fd8b394512979668ad266cadf02d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033911"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485468"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Code des Ziels „Ereignisdatei“ für erweiterte Ereignisse in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,6 @@ In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
 
 - PowerShell: Erstellen eines Azure-Speichercontainers in der Cloud.
 - Transact-SQL:
-  
   - Zuweisen des Azure-Speichercontainers zu einem Ereignisdateiziel.
   - Erstellen und Starten der Ereignissitzung usw.
 
@@ -71,7 +70,7 @@ Das Skript beginnt mit Befehlen zum Bereinigen nach einer möglichen vorherigen 
 
    - Wenn Sie das Skript ohne Unterbrechung der Sitzung erneut ausführen, können Sie den **Add-AzureAccount** -Befehl auf einfache Weise auskommentieren.
 
-![PowerShell ISE mit installiertem Azure-Modul, bereit für die Ausführung des Skripts.][30_powershell_ise]
+![PowerShell ISE mit installiertem Azure-Modul, bereit für die Ausführung des Skripts.](./media/xevent-code-event-file/event-file-powershell-ise-b30.png)
 
 ### <a name="powershell-code"></a>PowerShell-Code
 
@@ -232,6 +231,15 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 ```
 
 Beachten Sie die benannten Werte, die beim Beenden des PowerShell-Skripts ausgegeben werden. Diese Werte müssen Sie im Transact-SQL-Skript bearbeiten, das als Phase 2 folgt.
+
+<!--
+TODO:   Consider whether the preceding PowerShell code example deserves to be updated to the latest package (AzureRM.SQL?).
+2020/June/06   Adding the !NOTE below about "ADLS Gen2 storage accounts".
+Related to   https://github.com/MicrosoftDocs/azure-docs/issues/56520
+-->
+
+> [!NOTE]
+> Im vorherigen PowerShell-Codebeispiel sind erweiterte SQL-Ereignisse nicht mit den ADLS Gen2-Speicherkonten kompatibel.
 
 ## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>Phase 2: Transact-SQL-Code zum Verwenden des Azure-Speichercontainers
 
@@ -514,6 +522,3 @@ Weitere Informationen zu Konten und Containern im Azure Storage-Dienst finden Si
 - [Lektion 1: Erstellen einer gespeicherten Zugriffsrichtlinie und einer Shared Access Signature für einen Azure-Container](https://msdn.microsoft.com/library/dn466430.aspx)
   - [Lektion 2: Erstellen von SQL Server-Anmeldeinformationen mit einer Shared Access Signature (SAS)](https://msdn.microsoft.com/library/dn466435.aspx)
 - [Erweiterte Ereignisse für Microsoft SQL Server](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
-
-<!-- Image references. -->
-[30_powershell_ise]: ./media/xevent-code-event-file/event-file-powershell-ise-b30.png

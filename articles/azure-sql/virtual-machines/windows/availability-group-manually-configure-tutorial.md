@@ -1,10 +1,9 @@
 ---
-title: 'Tutorial: Konfigurieren von Verfügbarkeitsgruppen'
+title: 'Tutorial: Konfigurieren einer SQL Server-Always On-Verfügbarkeitsgruppe'
 description: In diesem Tutorial erfahren Sie, wie Sie eine SQL Server Always On-Verfügbarkeitsgruppe in Azure Virtual Machines erstellen.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
@@ -15,14 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8eaf799837b00c9f653ddd6dd894a5d309163575
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0b98838441325245b3f4322a32eb5e2376557313
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84037001"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960740"
 ---
-# <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Tutorial: Manuelles Konfigurieren einer Verfügbarkeitsgruppe auf einer Azure SQL Server-VM
+# <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Tutorial: Manuelles Konfigurieren einer SQL Server-Verfügbarkeitsgruppe in Azure Virtual Machines
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie eine SQL Server Always On-Verfügbarkeitsgruppe in Azure Virtual Machines erstellen. Im Rahmen des vollständigen Tutorials wird eine Verfügbarkeitsgruppe mit einem Datenbankreplikat in zwei SQL Server-Instanzen erstellt.
@@ -39,15 +39,15 @@ Für dieses Tutorial werden Grundkenntnisse über SQL Server AlwaysOn-Verfügbar
 
 Die folgende Tabelle gibt Aufschluss über die Voraussetzungen, die erfüllt sein müssen, bevor Sie mit dem Tutorial beginnen:
 
-|  |Anforderung |BESCHREIBUNG |
+| Anforderung |BESCHREIBUNG |
 |----- |----- |----- |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png) | Zwei SQL Server-Instanzen | - In einer Azure-Verfügbarkeitsgruppe <br/> - In einer einzelnen Domäne <br/> - Mit installiertem Failoverclustering-Feature |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)| Windows Server | Dateifreigabe für Clusterzeuge |  
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|SQL Server-Dienstkonto | Domänenkonto |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|SQL Server-Agent-Dienstkonto | Domänenkonto |  
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|Geöffnete Firewallports | - SQL Server: **1433** für die Standardinstanz <br/> - Datenbankspiegelungs-Endpunkt: **5022** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Verfügbarkeitsgruppen: **59999** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Hauptressourcen des Clusters: **58888** oder ein beliebiger verfügbarer Port |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|Hinzufügen des Failoverclustering-Features | Dieses Feature wird von beiden SQL Server-Instanzen benötigt. |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|Domänenkonto für die Installation | - Lokaler Administrator in jeder SQL Server-Instanz <br/> - Mitglied der festen SQL Server-Serverrolle „SysAdmin“ für jede Instanz von SQL Server  |
+|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **Zwei SQL Server-Instanzen** | - In einer Azure-Verfügbarkeitsgruppe <br/> - In einer einzelnen Domäne <br/> - Mit installiertem Failoverclustering-Feature |
+|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **Windows Server** | Dateifreigabe für Clusterzeuge |  
+|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server-Dienstkonto** | Domänenkonto |
+|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server-Agent-Dienstkonto** | Domänenkonto |  
+|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **Geöffnete Firewallports** | - SQL Server: **1433** für die Standardinstanz <br/> - Datenbankspiegelungs-Endpunkt: **5022** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Verfügbarkeitsgruppen: **59999** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Hauptressourcen des Clusters: **58888** oder ein beliebiger verfügbarer Port |
+|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **Hinzufügen des Failoverclustering-Features** | Dieses Feature wird von beiden SQL Server-Instanzen benötigt. |
+|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **Domänenkonto für die Installation** | - Lokaler Administrator in jeder SQL Server-Instanz <br/> - Mitglied der festen SQL Server-Serverrolle „SysAdmin“ für jede Instanz von SQL Server  |
 
 
 Vor Beginn des Tutorials müssen die [Schritte zum Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines](availability-group-manually-configure-prerequisites-tutorial.md) ausgeführt werden. Falls die Voraussetzungen bereits erfüllt werden, können Sie direkt mit dem [Erstellen des Clusters](#CreateCluster) fortfahren.
@@ -59,18 +59,21 @@ Vor Beginn des Tutorials müssen die [Schritte zum Erfüllen der Voraussetzungen
 <!--**Procedure**: *This is the first "step". Make titles H2's and short and clear – H2's appear in the right pane on the web page and are important for navigation.*-->
 
 <a name="CreateCluster"></a>
+
 ## <a name="create-the-cluster"></a>Erstellen Sie den Cluster.
 
 Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Server-Failovercluster mit zwei SQL Server-Instanzen und einem Zeugenserver erstellen.
 
-1. Stellen Sie eine RDP-Verbindung mit der ersten SQL Server-Instanz her. Verwenden Sie dabei ein Domänenkonto, das in beiden SQL Server-Instanzen sowie auf dem Zeugenserver über Administratorberechtigungen verfügt.
+1. Verwenden Sie das Remotedesktopprotokoll (RDP) zum Herstellen einer Verbindung mit der ersten SQL Server-Instanz. Verwenden Sie dabei ein Domänenkonto, das in beiden SQL Server-Instanzen sowie auf dem Zeugenserver über Administratorberechtigungen verfügt.
 
    >[!TIP]
    >Wenn Sie sich an das [Dokument mit den Voraussetzungen](availability-group-manually-configure-prerequisites-tutorial.md) gehalten haben, haben Sie ein Konto namens **CORP\Install** erstellt. Verwenden Sie dieses Konto.
 
 2. Wählen Sie im Dashboard **Server-Manager** die Option **Tools** aus, und klicken Sie dann auf **Failovercluster-Manager**.
 3. Klicken Sie im linken Bereich mit der rechten Maustaste auf **Failovercluster-Manager**, und klicken Sie anschließend auf **Cluster erstellen**.
+
    ![Cluster erstellen](./media/availability-group-manually-configure-tutorial/40-createcluster.png)
+
 4. Erstellen Sie im Clustererstellungs-Assistenten einen Cluster mit einem einzelnen Knoten, indem Sie die Seiten durchlaufen und dabei die Einstellungen aus der folgenden Tabelle verwenden:
 
    | Seite | Einstellungen |
@@ -84,7 +87,7 @@ Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Serv
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Festlegen der IP-Adresse des Windows Server-Failoverclusters
 
   > [!NOTE]
-  > Unter Windows Server 2019 wird für den Cluster ein **Name des verteilten Servers** anstelle des **Clusternetzwerknamens** erstellt. Wenn Sie mit Windows Server 2019 arbeiten, überspringen Sie alle Schritte, in denen in diesem Tutorial auf den Clusterhauptnamen verwiesen wird. Sie können einen Clusternetzwerknamen mit [PowerShell](failover-cluster-instance-storage-spaces-direct-manually-configure.md#windows-server-2019) erstellen. Lesen Sie den Blog [Failover Cluster: Cluster Network Object](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97), um weitere Informationen zu erhalten. 
+  > Unter Windows Server 2019 wird für den Cluster ein **Name des verteilten Servers** anstelle des **Clusternetzwerknamens** erstellt. Wenn Sie mit Windows Server 2019 arbeiten, überspringen Sie alle Schritte, in denen in diesem Tutorial auf den Clusterhauptnamen verwiesen wird. Sie können einen Clusternetzwerknamen mit [PowerShell](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-failover-cluster) erstellen. Lesen Sie den Blog [Failover Cluster: Cluster Network Object](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97), um weitere Informationen zu erhalten. 
 
 1. Scrollen Sie im **Failovercluster-Manager** nach unten bis zu **Hauptressourcen des Clusters**, und erweitern Sie die Clusterdetails. Die Ressource **Name** und **IP-Adresse** befinden sich im Zustand **Fehler**. Die IP-Adressressource kann nicht online geschaltet werden, da dem Cluster die gleiche IP-Adresse zugewiesen ist wie dem Computer selbst. Es liegt also eine doppelte Adresse vor.
 
@@ -94,30 +97,31 @@ Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Serv
 
 3. Wählen Sie **Statische IP-Adresse** aus, und geben Sie eine verfügbare Adresse aus dem gleichen Subnetz an, das auch Ihre virtuellen Computer enthält.
 
-4. Klicken Sie im Abschnitt **Hauptressourcen des Clusters** mit der rechten Maustaste auf den Clusternamen, und klicken Sie anschließend auf **Online schalten**. Warten Sie dann, bis beide Ressourcen online sind. Wenn die Clusternamensressource online ist, aktualisiert sie den DC-Server mit einem neuen AD-Computerkonto. Verwenden Sie dieses AD-Konto zum späteren Ausführen des Clusterdiensts der Verfügbarkeitsgruppe.
+4. Klicken Sie im Abschnitt **Hauptressourcen des Clusters** mit der rechten Maustaste auf den Clusternamen, und klicken Sie anschließend auf **Online schalten**. Warten Sie, bis beide Ressourcen online sind. Beim Onlineschalten der Clusternamenressource wird für den Domänencontrollerserver (DC) das Computerkonto in Active Directory (AD) aktualisiert. Verwenden Sie dieses AD-Konto zum späteren Ausführen des Clusterdiensts der Verfügbarkeitsgruppe.
 
 ### <a name="add-the-other-sql-server-to-cluster"></a><a name="addNode"></a>Hinzufügen der anderen SQL Server-Instanz zum Cluster
 
 Fügen Sie die andere SQL Server-Instanz dem Cluster hinzu.
 
-1. Klicken Sie in der Navigationsstruktur mit der rechten Maustaste auf den Cluster, und klicken Sie auf **Knoten hinzufügen**.
+1. Klicken Sie in der Browserstruktur mit der rechten Maustaste auf den Cluster, und klicken Sie dann auf **Knoten hinzufügen**.
 
     ![Hinzufügen eines Knotens zum Cluster](./media/availability-group-manually-configure-tutorial/44-addnode.png)
 
-1. Klicken Sie im **Assistenten „Knoten hinzufügen“** auf **Weiter**. Fügen Sie auf der Seite **Server auswählen** die zweite SQL Server-Instanz hinzu. Geben Sie unter **Servernamen eingeben** den Namen des Servers ein, und klicken Sie auf **Hinzufügen**. Wenn Sie fertig sind, klicken Sie auf **Weiter**.
+1. Klicken Sie im **Assistenten zum Hinzufügen von Knoten** auf **Weiter**. Fügen Sie auf der Seite **Server auswählen** die zweite SQL Server-Instanz hinzu. Geben Sie unter **Servernamen eingeben** den Namen des Servers ein, und klicken Sie auf **Hinzufügen**. Wenn Sie fertig sind, klicken Sie auf **Weiter**.
 
-1. Klicken Sie auf der Seite **Validierungswarnung** auf **Nein**. (In einem Produktionsszenario sollten Sie die Validierungstests ausführen.) Klicken Sie auf **Weiter**.
+1. Klicken Sie auf der Seite **Validierungswarnung** auf **Nein** (in einem Produktionsszenario sollten Sie die Validierungstests ausführen). Klicken Sie anschließend auf **Weiter**.
 
 8. Deaktivieren Sie bei Verwendung von Speicherplätzen das Kontrollkästchen **Der gesamte geeignete Speicher soll dem Cluster hinzugefügt werden.** auf der Seite **Bestätigung**.
 
    ![Bestätigung der Knotenhinzufügung](./media/availability-group-manually-configure-tutorial/46-addnodeconfirmation.png)
 
-    >[!WARNING]
+   >[!WARNING]
    >Wenn Sie Speicherplätze verwenden und das Kontrollkästchen **Der gesamte geeignete Speicher soll dem Cluster hinzugefügt werden.** nicht deaktivieren, trennt Windows die virtuellen Datenträger während des Clusterprozesses. Sie werden daher erst im Datenträger-Manager oder -Explorer angezeigt, nachdem die Speicherplätze aus dem Cluster entfernt und mithilfe von PowerShell erneut angefügt wurden. Mit Speicherplätzen werden mehrere Datenträger in Speicherpools gruppiert. Weitere Informationen finden Sie unter [Speicherplätze](https://technet.microsoft.com/library/hh831739).
+   >
 
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 
-1. Klicken Sie auf **Fertig stellen**.
+1. Wählen Sie **Fertig stellen** aus.
 
    Im Failovercluster-Manager sehen Sie nun, dass Ihr Cluster über einen neuen Knoten verfügt, und der Knoten wird im Container **Knoten** aufgelistet.
 
@@ -139,11 +143,11 @@ In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein
 
    Erstellen Sie mithilfe des **Assistenten zum Erstellen von Ordnerfreigaben** eine Freigabe.
 
-1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner, oder erstellen Sie einen Pfad. Klicken Sie auf **Weiter**.
+1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner, oder erstellen Sie einen Pfad. Wählen Sie **Weiter** aus.
 
-1. Überprüfen Sie unter **Name, Beschreibung und Einstellungen** den Freigabenamen und den Pfad. Klicken Sie auf **Weiter**.
+1. Überprüfen Sie unter **Name, Beschreibung und Einstellungen** den Freigabenamen und den Pfad. Wählen Sie **Weiter** aus.
 
-1. Legen Sie unter **Berechtigungen für freigegebene Ordner** die Option **Berechtigungen anpassen** fest. Klicken Sie auf **Benutzerdefiniert...** .
+1. Legen Sie unter **Berechtigungen für freigegebene Ordner** die Option **Berechtigungen anpassen** fest. Wählen Sie **Benutzerdefiniert...** aus.
 
 1. Klicken Sie unter **Berechtigungen anpassen** auf **Hinzufügen...** .
 
@@ -153,17 +157,17 @@ In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein
 
 1. Klicken Sie auf **OK**.
 
-1. Klicken Sie unter **Berechtigungen für freigegebene Ordner** auf **Fertig stellen**. Klicken Sie erneut auf **Fertig stellen**.  
+1. Klicken Sie unter **Berechtigungen für freigegebene Ordner** auf **Fertig stellen**. Wählen Sie erneut **Fertig stellen** aus.  
 
 1. Melden Sie sich vom Server ab.
 
-### <a name="configure-cluster-quorum"></a>Konfigurieren des Clusterquorums
+### <a name="configure-the-cluster-quorum"></a>Konfigurieren des Clusterquorums
 
 Legen Sie als Nächstes das Clusterquorum fest.
 
 1. Stellen Sie eine Remotedesktopverbindung mit dem ersten Clusterknoten her.
 
-1. Klicken Sie im **Failovercluster-Manager** mit der rechten Maustaste auf den Cluster, zeigen Sie auf **More Actions** (Weitere Aktionen), und klicken Sie auf **Clusterquorumeinstellungen konfigurieren...** .
+1. Klicken Sie im **Failovercluster-Manager** mit der rechten Maustaste auf den Cluster, zeigen Sie auf **Weitere Aktionen**, und klicken Sie auf **Clusterquorumeinstellungen konfigurieren**.
 
    ![Neue Freigabe](./media/availability-group-manually-configure-tutorial/52-configurequorum.png)
 
@@ -175,12 +179,13 @@ Legen Sie als Nächstes das Clusterquorum fest.
 
    >[!TIP]
    >Windows Server 2016 unterstützt einen Cloudzeugen. Bei Verwendung dieser Art von Zeuge benötigen Sie keinen Dateifreigabenzeugen. Weitere Informationen finden Sie unter [Deploy a cloud witness for a Failover Cluster](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness) (Bereitstellen eines Cloudzeugen für einen Failovercluster). In diesem Tutorial wird ein Dateifreigabenzeuge verwendet, der von älteren Betriebssystemen unterstützt wird.
+   >
 
-1. Geben Sie unter **Dateifreigabenzeugen konfigurieren** den Pfad für die erstellte Freigabe ein. Klicken Sie auf **Weiter**.
+1. Geben Sie unter **Dateifreigabenzeugen konfigurieren** den Pfad für die erstellte Freigabe ein. Wählen Sie **Weiter** aus.
 
-1. Überprüfen Sie unter **Bestätigung** die Einstellungen. Klicken Sie auf **Weiter**.
+1. Überprüfen Sie unter **Bestätigung** die Einstellungen. Wählen Sie **Weiter** aus.
 
-1. Klicken Sie auf **Fertig stellen**.
+1. Wählen Sie **Fertig stellen** aus.
 
 Die Hauptressourcen des Clusters werden mit einem Dateifreigabenzeugen konfiguriert.
 
@@ -194,7 +199,7 @@ Aktivieren Sie als Nächstes das Feature **Verfügbarkeitsgruppen**. Führen Sie
 
     ![AlwaysOn-Verfügbarkeitsgruppen aktivieren](./media/availability-group-manually-configure-tutorial/54-enableAlwaysOn.png)
 
-4. Klicken Sie auf **Anwenden**. Klicken Sie im Popupdialogfenster auf **OK** .
+4. Wählen Sie **Übernehmen**. Klicken Sie im Popupdialogfenster auf **OK**.
 
 5. Starten Sie den SQL Server-Dienst neu.
 
@@ -208,16 +213,16 @@ Each instance of SQL Server that participates in an Availability Group requires 
 On both SQL Servers, open the firewall for the TCP port for the database mirroring endpoint.
 
 1. On the first SQL Server **Start** screen, launch **Windows Firewall with Advanced Security**.
-2. In the left pane, select **Inbound Rules**. On the right pane, click **New Rule**.
+2. In the left pane, select **Inbound Rules**. On the right pane, select **New Rule**.
 3. For **Rule Type**, choose **Port**.
-1. For the port, specify TCP and choose an unused TCP port number. For example, type *5022* and click **Next**.
+1. For the port, specify TCP and choose an unused TCP port number. For example, type *5022* and select **Next**.
 
    >[!NOTE]
    >For this example, we're using TCP port 5022. You can use any available port.
 
-5. In the **Action** page, keep **Allow the connection** selected and click **Next**.
-6. In the **Profile** page, accept the default settings and click **Next**.
-7. In the **Name** page, specify a rule name, such as **Default Instance Mirroring Endpoint** in the **Name** text box, then click **Finish**.
+5. In the **Action** page, keep **Allow the connection** selected and select **Next**.
+6. In the **Profile** page, accept the default settings and select **Next**.
+7. In the **Name** page, specify a rule name, such as **Default Instance Mirroring Endpoint** in the **Name** text box, then select **Finish**.
 
 Repeat these steps on the second SQL Server.
 -------------------------->
@@ -241,11 +246,11 @@ Repeat these steps on the second SQL Server.
 
    Erstellen Sie mithilfe des **Assistenten zum Erstellen von Ordnerfreigaben** eine Freigabe.
 
-1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner der Datenbanksicherung, oder erstellen Sie einen Pfad. Klicken Sie auf **Weiter**.
+1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner der Datenbanksicherung, oder erstellen Sie einen Pfad. Wählen Sie **Weiter** aus.
 
-1. Überprüfen Sie unter **Name, Beschreibung und Einstellungen** den Freigabenamen und den Pfad. Klicken Sie auf **Weiter**.
+1. Überprüfen Sie unter **Name, Beschreibung und Einstellungen** den Freigabenamen und den Pfad. Wählen Sie **Weiter** aus.
 
-1. Legen Sie unter **Berechtigungen für freigegebene Ordner** die Option **Berechtigungen anpassen** fest. Klicken Sie auf **Benutzerdefiniert...** .
+1. Legen Sie unter **Berechtigungen für freigegebene Ordner** die Option **Berechtigungen anpassen** fest. Wählen Sie **Benutzerdefiniert...** aus.
 
 1. Klicken Sie unter **Berechtigungen anpassen** auf **Hinzufügen...** .
 
@@ -255,22 +260,23 @@ Repeat these steps on the second SQL Server.
 
 1. Klicken Sie auf **OK**.
 
-1. Klicken Sie unter **Berechtigungen für freigegebene Ordner** auf **Fertig stellen**. Klicken Sie erneut auf **Fertig stellen**.  
+1. Klicken Sie unter **Berechtigungen für freigegebene Ordner** auf **Fertig stellen**. Wählen Sie erneut **Fertig stellen** aus.  
 
 ### <a name="take-a-full-backup-of-the-database"></a>Erstellen einer vollständigen Sicherung der Datenbank
 
 Die neue Datenbank muss gesichert werden, um die Protokollkette zu initiieren. Wenn Sie die neue Datenbank nicht sichern, kann sie keiner Verfügbarkeitsgruppe hinzugefügt werden.
 
-1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Datenbank, zeigen Sie auf **Aufgaben...** , und klicken Sie anschließend auf **Back Up** (Sichern).
+1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Datenbank, zeigen Sie auf **Aufgaben...** , und klicken Sie anschließend auf **Sichern**.
 
 1. Klicken Sie auf **OK**, um eine vollständige Sicherung am Standardspeicherort für Sicherungen zu erstellen.
 
 ## <a name="create-the-availability-group"></a>Erstellen der Verfügbarkeitsgruppe
+
 Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie folgt vor:
 
 * Erstellen Sie eine Datenbank in der ersten SQL Server-Instanz.
-* Erstellen Sie sowohl eine vollständige Sicherung als auch eine Transaktionsprotokollsicherung der Datenbank.
-* Stellen Sie die vollständige Sicherung und die Protokollsicherung mit der **NORECOVERY** in der zweiten SQL Server-Instanz wieder her.
+* Erstellen sowohl einer vollständigen Sicherung als auch einer Transaktionsprotokollsicherung der Datenbank
+* Stellen Sie die vollständige Sicherung und die Protokollsicherung mit der **NORECOVERY** in der zweiten SQL Server-Instanz wieder her.
 * Erstellen Sie die Verfügbarkeitsgruppe (**AG1**) mit synchronem Commit, automatischem Failover und lesbaren, sekundären Replikaten.
 
 ### <a name="create-the-availability-group"></a>Erstellen der Verfügbarkeitsgruppe:
@@ -279,35 +285,39 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
 
     ![Starten des Assistenten für neue Verfügbarkeitsgruppen](./media/availability-group-manually-configure-tutorial/56-newagwiz.png)
 
-2. Klicken Sie auf der Seite **Einführung** auf **Weiter**. Geben Sie auf der Seite **Namen der Verfügbarkeitsgruppe angeben** unter **Name der Verfügbarkeitsgruppe** den Namen für die Verfügbarkeitsgruppe ein (beispielsweise **AG1**). Klicken Sie auf **Weiter**.
+2. Wählen Sie auf der Seite **Einführung** die Option **Weiter** aus. Geben Sie auf der Seite **Namen der Verfügbarkeitsgruppe angeben** unter **Name der Verfügbarkeitsgruppe** den Namen für die Verfügbarkeitsgruppe ein. Beispielsweise **AG1**. Wählen Sie **Weiter** aus.
 
     ![Assistent für neue Verfügbarkeitsgruppen, Namen der Verfügbarkeitsgruppe angeben](./media/availability-group-manually-configure-tutorial/58-newagname.png)
 
-3. Wählen Sie auf der Seite **Datenbanken auswählen** Ihre Datenbank aus, und klicken Sie auf **Weiter**.
+3. Wählen Sie auf der Seite **Datenbanken auswählen** Ihre Datenbank aus, und klicken Sie dann auf **Weiter**.
 
    >[!NOTE]
    >Die Datenbank erfüllt die Voraussetzungen für eine Verfügbarkeitsgruppe, da Sie mindestens eine vollständige Sicherung auf dem vorgesehenen primären Replikat erstellt haben.
+   >
 
    ![Assistent für neue Verfügbarkeitsgruppen, Datenbanken auswählen](./media/availability-group-manually-configure-tutorial/60-newagselectdatabase.png)
+
 4. Klicken Sie auf der Seite **Replikate angeben** auf **Replikat hinzufügen**.
 
    ![Assistent für neue Verfügbarkeitsgruppen, Replikate angeben](./media/availability-group-manually-configure-tutorial/62-newagaddreplica.png)
-5. Das Dialogfeld **Verbindung mit Server herstellen** wird angezeigt. Geben Sie unter **Servername** den Namen des zweiten Servers ein. Klicken Sie auf **Verbinden**.
+
+5. Das Dialogfeld **Verbindung mit Server herstellen** wird angezeigt. Geben Sie unter **Servername** den Namen des zweiten Servers ein. Wählen Sie **Verbinden**.
 
    Auf der Seite **Replikate angeben** wird nun unter **Verfügbarkeitsreplikate** der zweite Server aufgeführt. Konfigurieren Sie die Replikate wie folgt:
 
-   ![Assistent für neue Verfügbarkeitsgruppen, Replikate angeben (abgeschlossen)](./media/availability-group-manually-configure-tutorial/64-newagreplica.png)
+   ![Assistent für neue Verfügbarkeitsgruppen, Replikate angeben (vollständig)](./media/availability-group-manually-configure-tutorial/64-newagreplica.png)
 
-6. Klicken Sie auf **Endpunkte**, um den Datenbankspiegelungs-Endpunkt für diese Verfügbarkeitsgruppe anzuzeigen. Verwenden den gleichen Port, den Sie auch beim Festlegen der [Firewallregel für Datenbankspiegelungs-Endpunkte](availability-group-manually-configure-prerequisites-tutorial.md#endpoint-firewall) verwendet haben.
+6. Wählen Sie **Endpunkte**aus, um den Datenbankspiegelungs-Endpunkt für diese Verfügbarkeitsgruppe anzuzeigen. Verwenden den gleichen Port, den Sie auch beim Festlegen der [Firewallregel für Datenbankspiegelungs-Endpunkte](availability-group-manually-configure-prerequisites-tutorial.md#endpoint-firewall) verwendet haben.
 
-    ![Assistent für neue Verfügbarkeitsgruppen, anfängliche Datensynchronisierung auswählen](./media/availability-group-manually-configure-tutorial/66-endpoint.png)
+    ![Assistent für neue Verfügbarkeitsgruppen, Anfängliche Datensynchronisierung auswählen](./media/availability-group-manually-configure-tutorial/66-endpoint.png)
 
-8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel war dies **\\\\\<First SQL Server\>\Backup\\** . Klicken Sie auf **Weiter**.
+8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel: **\\\\Erste SQL Server-Instanz\>\Backup\\** . Wählen Sie **Weiter** aus.
 
    >[!NOTE]
    >Zur vollständigen Synchronisierung wird die Datenbank der ersten SQL Server-Instanz vollständig gesichert und in der zweiten Instanz wiederhergestellt. Bei umfangreichen Datenbanken wird von einer vollständigen Synchronisierung abgeraten, da sie sehr lange dauern kann. Sie können den Vorgang beschleunigen, indem Sie die Datenbank manuell sichern und mit `NO RECOVERY` wiederherstellen. Falls die Datenbank bereits vor dem Konfigurieren der Verfügbarkeitsgruppe mit `NO RECOVERY` in der zweiten SQL Server-Instanz wiederhergestellt wurde, wählen Sie **Nur verknüpfen** aus. Wenn Sie die Sicherung erst nach dem Konfigurieren der Verfügbarkeitsgruppe erstellen möchten, wählen Sie **Anfängliche Datensynchronisierung überspringen** aus.
+   >
 
-    ![Assistent für neue Verfügbarkeitsgruppen, anfängliche Datensynchronisierung auswählen](./media/availability-group-manually-configure-tutorial/70-datasynchronization.png)
+   ![Assistent für neue Verfügbarkeitsgruppen, Anfängliche Datensynchronisierung auswählen](./media/availability-group-manually-configure-tutorial/70-datasynchronization.png)
 
 9. Klicken Sie auf der Seite **Validierung** auf **Weiter**. Die Seite sollte in etwa der folgenden Abbildung entsprechen:
 
@@ -319,17 +329,18 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
 10. Klicken Sie auf der Seite **Zusammenfassung** auf **Fertig stellen**, und warten Sie, bis der Assistent die neue Verfügbarkeitsgruppe konfiguriert hat. Auf der Seite **Status** können Sie auf **Weitere Details** klicken, um den detaillierten Status anzuzeigen. Vergewissern Sie sich nach Abschluss des Assistenten auf der Seite **Ergebnisse**, dass die Verfügbarkeitsgruppe erfolgreich erstellt wurde.
 
      ![Assistent für neue Verfügbarkeitsgruppen, Ergebnisse](./media/availability-group-manually-configure-tutorial/74-results.png)
+
 11. Klicken Sie auf **Schließen**, um den Assistenten zu beenden.
 
 ### <a name="check-the-availability-group"></a>Überprüfen der Verfügbarkeitsgruppe
 
-1. Erweitern Sie im **Objekt-Explorer** den Eintrag **Hochverfügbarkeit mit AlwaysOn** und anschließend **Verfügbarkeitsgruppen**. In diesem Container sollte nun die neue Verfügbarkeitsgruppe angezeigt werden. Klicken Sie mit der rechten Maustaste auf die Verfügbarkeitsgruppe, und klicken Sie anschließend auf **Dashboard anzeigen**.
+1. Erweitern Sie im **Objekt-Explorer** den Eintrag **Hochverfügbarkeit mit Always On**, und erweitern Sie dann **Verfügbarkeitsgruppen**. In diesem Container sollte nun die neue Verfügbarkeitsgruppe angezeigt werden. Klicken Sie mit der rechten Maustaste auf die Verfügbarkeitsgruppe, und wählen Sie **Dashboard anzeigen** aus.
 
-   ![Anzeigen des Verfügbarkeitsgruppen-Dashboards](./media/availability-group-manually-configure-tutorial/76-showdashboard.png)
+   ![Dashboard „Verfügbarkeitsgruppe anzeigen“](./media/availability-group-manually-configure-tutorial/76-showdashboard.png)
 
-   Ihr **AlwaysOn-Dashboard** sollte in etwa wie folgt aussehen:
+   Ihr **Always On-Dashboard** sollte in etwa wie der folgende Screenshot aussehen:
 
-   ![Verfügbarkeitsgruppen-Dashboard](./media/availability-group-manually-configure-tutorial/78-agdashboard.png)
+   ![Dashboard „Verfügbarkeitsgruppe“](./media/availability-group-manually-configure-tutorial/78-agdashboard.png)
 
    Es werden die Replikate, der Failovermodus jedes Replikats und der Synchronisierungsstatus angezeigt.
 
@@ -349,7 +360,7 @@ Sie verfügen nun über eine Verfügbarkeitsgruppe mit Replikaten in zwei Instan
 
 Auf virtuellen Azure-Computern benötigt eine SQL Server-Verfügbarkeitsgruppe einen Lastenausgleich. Der Lastenausgleich speichert die IP-Adressen für die Verfügbarkeitsgruppenlistener und den Windows Server-Failovercluster. In diesem Abschnitt erfahren Sie, wie Sie den Lastenausgleich über das Azure-Portal erstellen.
 
-Bei Azure Load Balancer kann es sich entweder um Load Balancer Standard oder Load Balancer Basic handeln. Load Balancer Standard verfügt über mehr Funktionen als Load Balancer Basic. Für eine Verfügbarkeitsgruppe ist Load Balancer Standard erforderlich, wenn Sie eine Verfügbarkeitszone (anstelle einer Verfügbarkeitsgruppe) verwenden. Ausführliche Informationen zu den Unterschieden zwischen den Load Balancer-SKUs finden Sie unter [Vergleich der Load Balancer-SKUs](../../../load-balancer/skus.md).
+Bei einem Load Balancer in Azure kann es sich um Load Balancer Standard oder Load Balancer Basic handeln. Load Balancer Standard verfügt über mehr Funktionen als Load Balancer Basic. Für eine Verfügbarkeitsgruppe ist Load Balancer Standard erforderlich, wenn Sie eine Verfügbarkeitszone (anstelle einer Verfügbarkeitsgruppe) verwenden. Ausführliche Informationen zu den Unterschieden zwischen den Load Balancer-SKUs finden Sie unter [Vergleich der Load Balancer-SKUs](../../../load-balancer/skus.md).
 
 1. Navigieren Sie im Azure-Portal zu der Ressourcengruppe mit Ihren SQL Server-Instanzen, und klicken Sie auf **+ Hinzufügen**.
 1. Suchen Sie nach **Load Balancer**. Wählen Sie den von Microsoft veröffentlichten Lastenausgleich aus.
@@ -374,17 +385,17 @@ Bei Azure Load Balancer kann es sich entweder um Load Balancer Standard oder Loa
 
    ![Erstellen oder Aktualisieren eines Lastenausgleichs](./media/availability-group-manually-configure-tutorial/84-createloadbalancer.png)
 
-1. Klicken Sie auf **Erstellen**, um den Lastenausgleich zu generieren.
+1. Wählen Sie **Erstellen** aus, um den Load Balancer zu erstellen.
 
 Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen Test erstellen und die Lastenausgleichsregeln festlegen. Führen Sie diese Schritte im Azure-Portal aus.
 
-### <a name="add-backend-pool-for-the-availability-group-listener"></a>Hinzufügen eines Back-End-Pools für den Verfügbarkeitsgruppenlistener
+### <a name="add-a-backend-pool-for-the-availability-group-listener"></a>Hinzufügen eines Back-End-Pools für den Verfügbarkeitsgruppenlistener
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Verfügbarkeitsgruppe. Unter Umständen müssen Sie die Ansicht aktualisieren, damit der neu erstellte Lastenausgleich angezeigt wird.
 
    ![Navigieren zum Lastenausgleich in der Ressourcengruppe](./media/availability-group-manually-configure-tutorial/86-findloadbalancer.png)
 
-1. Klicken Sie auf den Lastenausgleich, auf **Back-End-Pools** und anschließend auf **+ Hinzufügen**.
+1. Wählen Sie den Lastenausgleich aus, und wählen Sie **Back-End-Pools** und dann **Hinzufügen** aus.
 
 1. Geben Sie einen Namen für den Back-End-Pool ein.
 
@@ -395,11 +406,11 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
    >[!NOTE]
    >Ohne Angabe der beiden virtuellen Computer können nur Verbindungen mit dem primären Replikat hergestellt werden.
 
-1. Klicken Sie auf **OK**, um den Back-End-Pool zu erstellen.
+1. Wählen Sie **OK** aus, um den Back-End-Pool zu erstellen.
 
 ### <a name="set-the-probe"></a>Festlegen des Tests
 
-1. Klicken Sie auf den Lastenausgleich, auf **Integritätstests** und anschließend auf **+ Hinzufügen**.
+1. Wählen Sie den Lastenausgleich aus, und wählen Sie dann **Integritätstests** und **+ Hinzufügen** aus.
 
 1. Legen Sie den Integritätstest für den Listener wie folgt fest:
 
@@ -411,11 +422,11 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
    | **Intervall**  | Der Zeitraum zwischen Testversuchen in Sekunden. |5 |
    | **Fehlerhafter Schwellenwert** | Die Anzahl aufeinander folgender Testfehler, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird.  | 2 |
 
-1. Klicken Sie auf **OK**, um den Integritätstest zu verwenden.
+1. Klicken Sie auf **OK**, um den Integritätstest festzulegen.
 
 ### <a name="set-the-load-balancing-rules"></a>Festlegen der Lastenausgleichsregeln
 
-1. Klicken Sie auf den Lastenausgleich, auf **Load balancing rules** (Lastenausgleichsregeln) und anschließend auf **+Hinzufügen**.
+1. Wählen Sie den Lastenausgleich aus, und wählen Sie dann **Lastenausgleichsregeln** und **+ Hinzufügen** aus.
 
 1. Konfigurieren Sie die Lastenausgleichsregeln für den Listener wie folgt:
 
@@ -433,6 +444,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
    > [!WARNING]
    > Direct Server Return wird bei der Erstellung festgelegt. Diese Einstellung kann nicht geändert werden.
+   >
 
 1. Klicken Sie auf **OK**, um die Lastenausgleichsregeln für den Listener festzulegen.
 
@@ -440,9 +452,9 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
 Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
 
-1. Klicken Sie im Portal für den gleichen Azure Load Balancer auf **Front-End-IP-Konfiguration** und dann auf **+Hinzufügen**. Verwenden Sie die IP-Adresse, die Sie für den WSFC in den Hauptressourcen des Clusters konfiguriert haben. Legen Sie die IP-Adresse als statisch fest.
+1. Navigieren Sie im Azure-Portal zum gleichen Azure Load Balancer. Wählen Sie **Front-End-IP-Konfiguration** und dann **+ Hinzufügen** aus. Verwenden Sie die IP-Adresse, die Sie für den WSFC in den Hauptressourcen des Clusters konfiguriert haben. Legen Sie die IP-Adresse als statisch fest.
 
-1. Klicken Sie für den Lastenausgleich auf **Integritätstests** und anschließend auf **+Hinzufügen**.
+1. Wählen Sie für den Lastenausgleich **Integritätstests** und dann **+ Hinzufügen** aus.
 
 1. Legen Sie den Integritätstest für die IP-Adresse der Hauptressourcen des WSFC-Clusters wie folgt fest:
 
@@ -454,9 +466,9 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
    | **Intervall**  | Der Zeitraum zwischen Testversuchen in Sekunden. |5 |
    | **Fehlerhafter Schwellenwert** | Die Anzahl aufeinander folgender Testfehler, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird.  | 2 |
 
-1. Klicken Sie auf **OK**, um den Integritätstest zu verwenden.
+1. Klicken Sie auf **OK**, um den Integritätstest festzulegen.
 
-1. Legen Sie die Lastenausgleichsregeln fest. Klicken Sie auf **Lastenausgleichsregeln** und auf **+Hinzufügen**.
+1. Legen Sie die Lastenausgleichsregeln fest. Wählen Sie **Lastenausgleichsregeln** und dann **+ Hinzufügen** aus.
 
 1. Konfigurieren Sie die Lastenausgleichsregeln für die IP-Adresse der Hauptressourcen des Clusters wie folgt:
 
@@ -474,6 +486,7 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
 
    > [!WARNING]
    > Direct Server Return wird bei der Erstellung festgelegt. Diese Einstellung kann nicht geändert werden.
+   >
 
 1. Klicken Sie auf **OK**, um die Lastenausgleichsregeln festzulegen.
 
@@ -484,7 +497,6 @@ Als Nächstes muss ein Verfügbarkeitsgruppenlistener für den Failovercluster k
 > [!NOTE]
 > In diesem Tutorial erfahren Sie, wie Sie einen einzelnen Listener mit einer einzelnen IP-Adresse eines internen Lastenausgleichs erstellen. Weitere Informationen zum Erstellen einzelner oder mehrerer Listener mit einer oder mehreren IP-Adressen finden Sie unter [Configure one or more Always On Availability Group Listeners - Resource Manager](availability-group-listener-powershell-configure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern – Resource Manager).
 >
->
 
 [!INCLUDE [ag-listener-configure](../../../../includes/virtual-machines-ag-listener-configure.md)]
 
@@ -494,11 +506,11 @@ Legen Sie in SQL Server Management Studio den Listenerport fest.
 
 1. Starten Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit dem primären Replikat her.
 
-1. Navigieren Sie zu **Hochverfügbarkeit mit Always On** | **Verfügbarkeitsgruppen** | **Verfügbarkeitsgruppenlistener**.
+1. Navigieren Sie zu **Hochverfügbarkeit mit Always On** > **Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppenlistener**.
 
-1. Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie auf **Eigenschaften**.
+1. Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und wählen Sie **Eigenschaften** aus.
 
-1. Geben Sie im Feld **Port** die Portnummer für den Verfügbarkeitsgruppenlistener an. 1433 ist die Standardeinstellung. Klicken Sie dann auf **OK**.
+1. Geben Sie im Feld **Port** die Portnummer für den Verfügbarkeitsgruppenlistener an. 1433 ist der Standardwert. Klicken Sie auf **OK**.
 
 Sie verfügen nun über eine SQL Server-Verfügbarkeitsgruppe auf virtuellen Azure-Computern im Azure Resource Manager-Modus.
 
@@ -506,15 +518,15 @@ Sie verfügen nun über eine SQL Server-Verfügbarkeitsgruppe auf virtuellen Azu
 
 Gehen Sie wie folgt vor, um die Verbindung zu testen:
 
-1. Stellen Sie eine RDP-Verbindung mit einem SQL Server her, der sich im gleichen virtuellen Netzwerk befindet, aber nicht für das Replikat zuständig ist. Sie können die andere SQL Server-Instanz im Cluster verwenden.
+1. Stellen Sie eine RDP-Verbindung mit einer SQL Server-Instanz her, die sich im gleichen virtuellen Netzwerk befindet, aber nicht für das Replikat zuständig ist. Sie können die andere SQL Server-Instanz im Cluster verwenden.
 
-1. Testen Sie die Verbindung mithilfe des **sqlcmd** -Hilfsprogramms. Das folgende Skript stellt beispielsweise über den Listener eine **sqlcmd** -Verbindung mit Windows-Authentifizierung mit dem primären Replikat her:
+1. Testen Sie die Verbindung mithilfe des Hilfsprogramms **sqlcmd**. Das folgende Skript stellt beispielsweise über den Listener eine **sqlcmd** -Verbindung mit Windows-Authentifizierung mit dem primären Replikat her:
 
    ```cmd
    sqlcmd -S <listenerName> -E
    ```
 
-   Geben Sie den Port in der Verbindungszeichenfolge an, wenn der Listener einen anderen Port als den Standardport (1433) verwendet. Mit dem folgenden sqlcmd-Befehl wird beispielsweise eine Verbindung mit einem Listener über Port 1435 hergestellt:
+   Geben Sie den Port in der Verbindungszeichenfolge an, wenn der Listener einen anderen Port als den Standardport (1433) verwendet. Mit dem folgenden `sqlcmd`-Befehl wird beispielsweise eine Verbindung mit einem Listener über Port 1435 hergestellt:
 
    ```cmd
    sqlcmd -S <listenerName>,1435 -E
@@ -524,6 +536,7 @@ Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, d
 
 > [!TIP]
 > Vergewissern Sie sich, dass der angegebene Port in der Firewall beider SQL Server geöffnet ist. Beide Server benötigen eine eingehende Regel für den TCP-Port, den Sie verwenden möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Bearbeiten einer Firewallregel](https://technet.microsoft.com/library/cc753558.aspx).
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

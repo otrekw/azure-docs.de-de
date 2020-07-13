@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: e8912ef5bc0fd6009443b736031fc9af57ab6c5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6abe6fca77251a16bcb7663a5192f46fef3476b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75465645"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080666"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Übersicht über eigenständige Service Fabric-Cluster
 
@@ -21,9 +21,16 @@ Ein Knotentyp definiert die Größe, Anzahl und Eigenschaften einer Gruppe von K
 Der Prozess zum lokalen Erstellen eines Service Fabric-Clusters ist vergleichbar mit der Erstellung eines Clusters in einer beliebigen Cloud mit einer Gruppe von VMs. Die ersten Schritte zum Bereitstellen der VMs sind abhängig von Ihrem Cloudanbieter bzw. von Ihrer lokalen Umgebung. Sobald Sie aber über eine Gruppe von VMs verfügen, die über ein Netzwerk verbunden sind, sind die Schritte zum Einrichten des Service Fabric-Pakets, Bearbeiten der Clustereinstellungen und Ausführen der Skripts zum Erstellen und Verwalten des Clusters identisch. Dadurch wird sichergestellt, dass Ihre Kompetenz und Erfahrung beim Betreiben und Verwalten von Service Fabric-Clustern bei Wahl einer neuen Hostingumgebung übertragbar sind.
 
 ## <a name="cluster-security"></a>Clustersicherheit
+
 Ein Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet.  Sie müssen Ihre Cluster schützen, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit ihnen herstellen. Ein sicherer Cluster ist besonders wichtig, wenn Sie Produktionsworkloads im Cluster ausführen.
 
+> [!NOTE]
+> Die Windows-Authentifizierung basiert auf Kerberos. NTLM wird als Authentifizierungstyp nicht unterstützt.
+>
+> Verwenden Sie nach Möglichkeit die X.509-Zertifikatauthentifizierung für Service Fabric-Cluster.
+
 ### <a name="node-to-node-security"></a>Knoten-zu-Knoten-Sicherheit
+
 Die Knoten-zu-Knoten-Sicherheit dient zum Schutz der Kommunikation zwischen den virtuellen und physischen Computern in einem Cluster. Dieses Sicherheitsszenario stellt sicher, dass nur Computer, die zum Clusterbeitritt berechtigt sind, Anwendungen und Dienste im Cluster hosten können. Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen.  Zum Schützen des Clusterdatenverkehrs und Bereitstellen von Cluster- und Serverauthentifizierung ist ein Clusterzertifikat erforderlich.  Selbstsignierte Zertifikate können für Testcluster verwendet werden. Zum Schutz von Produktionsclustern sollte jedoch ein Zertifikat einer vertrauenswürdigen Zertifizierungsstelle verwendet werden.
 
 Für einen eigenständigen Windows-Cluster kann auch die Windows-Sicherheit aktiviert werden. Wenn Sie über Windows Server 2012 R2 und Windows Active Directory verfügen, wird empfohlen, die Windows-Sicherheit mit gruppenverwalteten Dienstkonten zu verwenden. Verwenden Sie andernfalls die Windows-Sicherheit mit Windows-Konten.
@@ -31,6 +38,7 @@ Für einen eigenständigen Windows-Cluster kann auch die Windows-Sicherheit akti
 Weitere Informationen finden Sie unter [Knoten-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#node-to-node-security).
 
 ### <a name="client-to-node-security"></a>Client-zu-Knoten-Sicherheit
+
 Client-zu-Knoten-Sicherheit authentifiziert Clients und schützt die Kommunikation zwischen einem Client und einzelnen Knoten im Cluster. Diese Art von Sicherheit sorgt dafür, dass nur autorisierte Benutzer auf den Cluster und die im Cluster bereitgestellten Anwendungen zugreifen können. Clients werden über ihre Sicherheitsanmeldeinformationen für X.509-Zertifikate eindeutig identifiziert. Zum Authentifizieren von Administrator- oder Benutzerclients beim Cluster können beliebig viele optionale Clientzertifikate verwendet werden.
 
 Zusätzlich zu Clientzertifikaten kann auch Azure Active Directory für das Authentifizieren von Clients beim Cluster konfiguriert werden.
@@ -55,6 +63,7 @@ Ein eigenständiger Cluster ist eine Ressource, die Sie vollständig besitzen. S
 Weitere Informationen finden Sie unter [Aktualisieren eigenständiger Cluster](service-fabric-cluster-upgrade-standalone.md).
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
+
 Sie können Cluster auf VMs oder Computern mit diesen Betriebssystemen erstellen (Linux wird noch nicht unterstützt):
 
 * Windows Server 2012 R2
@@ -62,6 +71,7 @@ Sie können Cluster auf VMs oder Computern mit diesen Betriebssystemen erstellen
 * Windows Server 2019
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Erfahren Sie mehr über das [Schützen](service-fabric-cluster-security.md), [Skalieren](service-fabric-cluster-scaling-standalone.md) und [Aktualisieren](service-fabric-cluster-upgrade-standalone.md) eigenständiger Cluster.
 
 Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).

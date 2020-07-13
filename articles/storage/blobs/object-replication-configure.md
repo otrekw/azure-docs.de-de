@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 89a4c934a0245c39f6015a43d9de16db800691d8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170629"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888113"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Konfigurieren der Objektreplikation für Blockblobs (Vorschau)
 
@@ -28,7 +28,9 @@ In diesem Artikel wird beschrieben, wie Sie die Objektreplikation für Ihr Speic
 
 Bevor Sie die Objektreplikation konfigurieren, erstellen Sie die Quell- und Zielspeicherkonten, wenn diese noch nicht vorhanden sind. Beide Konten müssen Speicherkonten vom Typ „Universell v2“ sein. Weitere Informationen finden Sie unter [Erstellen eines Azure Storage-Kontos](../common/storage-account-create.md).
 
-Achten Sie auch darauf, dass Sie sich für die folgenden Funktionsvorschauversionen registriert haben:
+Ein Speicherkonto kann als Quellkonto für bis zu zwei Zielkonten fungieren. Und ein Zielkonto darf nicht mehr als zwei Quellkonten aufweisen. Quell- und Zielkonten dürfen sich in unterschiedlichen Regionen befinden. Sie können gesonderte Replikationsrichtlinien konfigurieren, um Daten in jedes der Zielkonten zu replizieren.
+
+Bevor Sie beginnen, achten Sie darauf, dass Sie sich für die folgenden Funktionsvorschauversionen registriert haben:
 
 - [Objektreplikation (Vorschau)](object-replication-overview.md)
 - [Blobversionsverwaltung (Vorschau)](versioning-overview.md)
@@ -41,7 +43,7 @@ Bevor Sie die Objektreplikation im Azure-Portal konfigurieren, erstellen Sie die
 Führen Sie die folgenden Schritte aus, um eine Replikationsrichtlinie im Azure-Portal zu erstellen:
 
 1. Navigieren Sie im Azure-Portal zum Quellspeicherkonto.
-1. Wählen Sie unter **Einstellungen** die Option **Objektreplikation** aus.
+1. Wählen Sie unter **Blob-Dienst** die Option **Objektreplikation** aus.
 1. Wählen Sie **Replikation einrichten** aus.
 1. Wählen Sie das Zielabonnement und das Zielspeicherkonto aus.
 1. Wählen Sie im Abschnitt **Containerpaare** einen Quellcontainer aus dem Quellkonto und einen Zielcontainer aus dem Zielkonto aus. Sie können bis zu 10 Containerpaare pro Replikationsrichtlinie erstellen.

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 00cf806bf6575fd96af435abf8d0b3dd8734338a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4c725fe74185088dea55b7506493fe667e71b7ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679658"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806634"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Ähnlichkeit und Bewertung in Azure Cognitive Search
 
@@ -38,7 +38,7 @@ Ein Bewertungsprofil ist Teil der Indexdefinition und besteht aus gewichteten Fe
 
 <a name="scoring-statistics"></a>
 
-## <a name="scoring-statistics-and-sticky-sessions-preview"></a>Bewertungsstatistiken und persistente Sitzungen (Vorschau)
+## <a name="scoring-statistics-and-sticky-sessions"></a>Bewertungsstatistiken und persistente Sitzungen
 
 Aus Gründen der Skalierbarkeit verteilt Azure Cognitive Search jeden Index horizontal mithilfe eines Shardingprozesses. Dies bedeutet, dass Teile eines Indexes physisch voneinander getrennt sind.
 
@@ -47,14 +47,14 @@ Standardmäßig wird die Bewertung eines Dokuments basierend auf statistischen E
 Wenn Sie die Bewertung lieber auf Grundlage der statistischen Eigenschaften in allen Shards berechnen möchten, können Sie dies tun, indem Sie *scoringStatistics=global* als [Abfrageparameter](https://docs.microsoft.com/rest/api/searchservice/search-documents) hinzufügen (oder *"scoringStatistics": "global"* als Textkörperparameter der [Abfrageanforderung](https://docs.microsoft.com/rest/api/searchservice/search-documents)).
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2019-05-06-Preview&search=[search term]
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2020-06-30&search=[search term]
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
 Durch die Verwendung von „scoringStatistics“ wird sichergestellt, dass alle Shards in demselben Replikat die gleichen Ergebnisse liefern. Dennoch können sich unterschiedliche Replikate geringfügig voneinander unterscheiden, da sie immer mit den neuesten Änderungen am Index aktualisiert werden. In einigen Szenarien möchten Sie möglicherweise, dass die Benutzer während einer Abfragesitzung konsistentere Ergebnisse erhalten. In solchen Szenarien können Sie eine `sessionId` in den Abfragen bereitstellen. Die `sessionId` ist eine eindeutige Zeichenfolge, die Sie erstellen, um auf eine eindeutige Benutzersitzung zu verweisen.
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2020-06-30&search=[search term]
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
@@ -72,6 +72,37 @@ Aktuell können Sie angeben, welchen Ähnlichkeitsalgorithmus für die Rangfolge
 Das folgende Videosegment bietet eine schnelle Übersicht über die in Azure Cognitive Search verwendeten Ähnlichkeitsalgorithmen. Sie können sich das vollständige Video ansehen, um weitere Hintergrundinformationen zu erhalten.
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
+
+<a name="featuresMode-param"></a>
+
+## <a name="featuresmode-parameter-preview"></a>featuresMode-Parameter (Vorschau)
+
+Anforderungen zur [Dokumentsuche](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents) weisen einen neuen [featuresMode](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents#featuresmode)-Parameter auf, der weitere Details über die Relevanz auf Feldebene bereitstellen kann. Während `@searchScore` für das gesamte Dokument berechnet wird (wie relevant ist dieses Dokument im Kontext dieser Abfrage) können Sie mithilfe von featuresMode Informationen zu einzelnen Feldern erhalten, wie in einer `@search.features`-Struktur ausgedrückt. Die Struktur enthält alle in der Abfrage verwendeten Felder (entweder spezifische Felder mithilfe von **searchFields** in einer Abfrage oder alle in einem Index als **searchable** gekennzeichneten Felder). Für jedes Feld erhalten Sie die folgenden Werte:
+
++ Anzahl der im Feld gefundenen eindeutigen Token
++ Ähnlichkeitsbewertung oder eine Kennzahl für die Ähnlichkeit des Feldinhalts im Verhältnis zum Abfrageausdruck
++ Ausdruckshäufigkeit oder Anzahl der Vorkommen des Ausdrucks im Feld
+
+Für eine Abfrage, die auf die Felder „Beschreibung“ und „Titel“ abzielt, könnte eine Antwort, die `@search.features` beinhaltet, etwa so aussehen:
+
+```json
+"value": [
+ {
+    "@search.score": 5.1958685,
+    "@search.features": {
+        "description": {
+            "uniqueTokenMatches": 1.0,
+            "similarityScore": 0.29541412,
+            "termFrequency" : 2
+        },
+        "title": {
+            "uniqueTokenMatches": 3.0,
+            "similarityScore": 1.75451557,
+            "termFrequency" : 6
+        }
+```
+
+Sie können diese Datenpunkte in [benutzerdefinierten Bewertungslösungen](https://github.com/Azure-Samples/search-ranking-tutorial) verbrauchen oder die Informationen zum Debuggen von Problemen bei der Suchrelevanz verwenden.
 
 ## <a name="see-also"></a>Weitere Informationen
 

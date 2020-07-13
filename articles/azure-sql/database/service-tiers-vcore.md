@@ -1,37 +1,37 @@
 ---
 title: Übersicht über das Kaufmodell für virtuelle Kerne
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Mit dem Kaufmodell für virtuelle Kerne können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis für Azure SQL-Datenbank und Azure SQL Managed Instance optimieren.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 1a6546ad587fa308ab5559d04814191c503ecdc3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7b5e4174da3ffa0dff5c840e5da1d98435e8d07b
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84029751"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985549"
 ---
-# <a name="vcore-model-overview---azure-sql-database--sql-managed-instance"></a>Azure SQL-Datenbank und SQL Managed Instance: Übersicht über das Kaufmodell für virtuelle Kerne 
+# <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Übersicht über das Modell für virtuelle Kerne – Azure SQL-Datenbank und Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Das Kaufmodell für virtuelle Kerne von Azure SQL-Datenbank und Azure SQL Managed Instance bietet einige Vorteile:
 
-- Höhere Limits für Compute, Arbeitsspeicher, E/A und Speicher
+- Höhere Grenzwerte für Compute, Arbeitsspeicher, E/A und Speicher
 - Kontrolle über die Hardwaregeneration, um besser auf Compute- und Arbeitsspeicheranforderungen der Workload reagieren zu können
 - Preisrabatte für [Azure-Hybridvorteil](../azure-hybrid-benefit.md) und [reservierte Instanzen (RI)](reserved-capacity-overview.md)
 - Mehr Transparenz bei den Hardwaredetails für das Computing zur besseren Planung von Migrationsvorgängen von lokalen Bereitstellungen
 
 ## <a name="service-tiers"></a>Dienstebenen
 
-Als Optionen für die Dienstebene stehen im V-Kern-Modell „Universell“, „Unternehmenskritisch“ und „Hyperscale“ zur Verfügung. Die Dienstebene definiert ganz allgemein Speicherarchitektur, Speicherplatz- und E/A-Limits sowie Optionen für die Geschäftskontinuität im Zusammenhang mit der Verfügbarkeit und Notfallwiederherstellung.
+Als Optionen für die Dienstebene stehen im V-Kern-Modell „Universell“, „Unternehmenskritisch“ und „Hyperscale“ zur Verfügung. Die Dienstebene definiert ganz allgemein die Speicherarchitektur, die Speicherplatz- und E/A-Grenzwerte sowie Optionen für die Geschäftskontinuität im Zusammenhang mit der Verfügbarkeit und Notfallwiederherstellung.
 
-||**Allgemeiner Zweck**|**Unternehmenskritisch**|**Hyperscale**|
+|-|**Allgemeiner Zweck**|**Unternehmenskritisch**|**Hyperscale**|
 |---|---|---|---|
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Bietet budgetorientierte, ausgewogene und skalierbare Compute- und Speicheroptionen. |Bietet Geschäftsanwendungen die höchste Resilienz gegenüber Fehlern durch die Verwendung mehrerer isolierter Replikate sowie die höchste E/A-Leistung pro Datenbankreplikat.|Die meisten geschäftlichen Workloads mit hohen Anforderungen an skalierbaren Speicher und Leseskalierung.  Bietet eine höhere Ausfallsicherheit, da mehrere isolierte Datenbankreplikate konfiguriert werden können. |
 |Storage|Verwendet Remotespeicher.<br/>**Bereitgestelltes SQL-Datenbank-Computing:**<br/>5 GB – 4 TB<br/>**Serverloses Computing**:<br/>5 GB bis 3 TB<br/>**SQL Managed Instance:** 32 GB – 8 TB |Verwendet lokalen SSD-Speicher.<br/>**Bereitgestelltes SQL-Datenbank-Computing:**<br/>5 GB – 4 TB<br/>**SQL Managed Instance:**<br/>32 GB – 4 TB |Flexible automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher. Verwendet lokalen SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Verwendet Azure-Remotespeicher als endgültigen langfristigen Datenspeicher. |
@@ -46,7 +46,7 @@ Als Optionen für die Dienstebene stehen im V-Kern-Modell „Universell“, „U
 
 Weitere Informationen zum Auswählen einer Dienstebene für die jeweilige Workload finden Sie in den folgenden Artikeln:
 
-- [Wann sollte die Dienstebene „Universell“ ausgewählt werden?](service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [Wann sollte die Dienstebene „Universell“ gewählt werden?](service-tier-general-purpose.md#when-to-choose-this-service-tier)
 - [Wann sollte die Dienstebene „Unternehmenskritisch“ ausgewählt werden?](service-tier-business-critical.md#when-to-choose-this-service-tier)
 - [Wann sollte die Dienstebene „Hyperscale“ ausgewählt werden?](service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
@@ -91,10 +91,11 @@ Fsv2-series wird von der Dienstebene „Universell“ nicht unterstützt.  Weite
 - Die M-Serie ist eine arbeitsspeicheroptimierte Hardwareoption für Workloads, die mehr Arbeitsspeicher und höhere Computegrenzwerte erfordert, als von Gen5 bereitgestellt werden.
 - Die M-Serie bietet 29 GB pro V-Kern und 128 V-Kerne. Dadurch erhöht sich der Grenzwert für den Arbeitsspeicher im Vergleich zu Gen5 um das Achtfache auf fast 4 TB.
 
-Die M-Serie wird nur auf der Dienstebene „Unternehmenskritisch“ unterstützt und unterstützt keine Zonenredundanz.
+Die M-Serie wird nur auf der Dienstebene „Unternehmenskritisch“ unterstützt und unterstützt keine Zonenredundanz.  Das Abonnement muss ein kostenpflichtiger Angebotstyp sein, einschließlich nutzungsbasierter Bezahlung oder Enterprise Agreement (EA).  Weitere Informationen zu Regionen, in denen die M-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der M-Serie](#m-series).
 
-Um Hardware der M-Serie für ein Abonnement und eine Region zu aktivieren, müssen Sie eine Supportanfrage erstellen. Das Abonnement muss ein kostenpflichtiger Angebotstyp sein, einschließlich nutzungsbasierter Bezahlung oder Enterprise Agreement (EA).  Wenn die Supportanfrage genehmigt wird, erfolgt die Auswahl und die Bereitstellung der M-Serie nach dem gleichen Muster wie bei anderen Hardwaregenerationen. Weitere Informationen zu Regionen, in denen die M-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der M-Serie](#m-series).
-
+<!--
+To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
+-->
 
 ### <a name="compute-and-memory-specifications"></a>Spezifikationen zu Compute- und Arbeitsspeicherressourcen
 
@@ -112,7 +113,7 @@ Weitere Informationen zu Ressourcenlimits finden Sie unter [Ressourcenlimits fü
 
 ### <a name="selecting-a-hardware-generation"></a>Auswählen einer Hardwaregeneration
 
-Sie können im Azure-Portal die Hardwaregeneration für eine SQL-Datenbank-Instanz oder einen Pool zum Zeitpunkt der Erstellung auswählen, und Sie können die Hardwaregeneration einer vorhandenen SQL-Datenbank-Instanz oder eines Pools ändern.
+Im Azure-Portal können Sie die Hardwaregeneration für eine Datenbank oder einen Pool in SQL-Datenbank zum Zeitpunkt der Erstellung auswählen. Sie können auch die Hardwaregeneration einer vorhandenen Datenbank oder eines Pools ändern.
 
 **So wählen Sie eine Hardwaregeneration beim Erstellen einer SQL-Datenbank oder eines Pools aus**
 
@@ -147,7 +148,7 @@ Wählen Sie auf der Registerkarte **Grundlagen** im Abschnitt **Compute und Spei
   
 **So ändern Sie die Hardwaregeneration einer vorhandenen Instanz von SQL Managed Instance**
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[Azure-Portal](#tab/azure-portal)
 
 Klicken Sie auf der SQL Managed Instance-Seite im Abschnitt „Einstellungen“ auf den Link **Tarif**.
 
@@ -165,7 +166,7 @@ Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" 
 
 Weitere Informationen finden Sie unter dem Befehl [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance).
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
 Verwenden Sie den folgenden CLI-Befehl:
 
@@ -193,32 +194,33 @@ Die Fsv2-Serie ist in den folgenden Regionen verfügbar: „Australien, Mitte“
 #### <a name="m-series"></a>M-Serie
 
 Die M-Serie ist in den folgenden Regionen verfügbar: „USA, Osten“, „Europa, Norden“, „Europa, Westen“, „USA, Westen 2“.
-In einigen weiteren Regionen ist die M-Serie möglicherweise eingeschränkt verfügbar. Sie können eine andere Region als die hier aufgelisteten anfordern, die Umsetzung ist jedoch eventuell nicht möglich.
+<!--
+M-series may also have limited availability in additional regions. You can request a different region than listed here, but fulfillment in a different region may not be possible.
 
-Um die Verfügbarkeit der M-Serie in einem Abonnement zu aktivieren, muss der Zugriff durch das [Erstellen einer neuen Supportanfrage](#create-a-support-request-to-enable-m-series) angefordert werden.
+To enable M-series availability in a subscription, access must be requested by [filing a new support request](#create-a-support-request-to-enable-m-series).
 
 
-##### <a name="create-a-support-request-to-enable-m-series"></a>Erstellen Sie eine Supportanfrage zum Aktivieren der M-Serie: 
+##### Create a support request to enable M-series: 
 
-1. Wählen Sie **Hilfe und Support** im Portal aus.
-2. Wählen Sie **Neue Supportanfrage** aus.
+1. Select **Help + support** in the portal.
+2. Select **New support request**.
 
-Geben Sie unter **Grundlagen** die Folgendes an:
+On the **Basics** page, provide the following:
 
-1. Wählen Sie unter **Problemtyp** den Eintrag **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
-2. Wählen Sie unter **Abonnement** das Abonnement aus, in dem Sie die M-Serie aktivieren möchten.
-3. Wählen Sie unter **Kontingenttyp** den Eintrag **SQL-Datenbank** aus.
-4. Wählen Sie **Weiter** aus, um zur Seite **Details** zu wechseln.
+1. For **Issue type**, select **Service and subscription limits (quotas)**.
+2. For **Subscription** = select the subscription to enable M-series.
+3. For **Quota type**, select **SQL database**.
+4. Select **Next** to go to the **Details** page.
 
-Geben Sie auf der Seite **Details** Folgendes an:
+On the **Details** page, provide the following:
 
-1. Wählen Sie im Abschnitt **PROBLEMDETAILS** den Link **Details angeben** aus. 
-2. Wählen Sie unter **Kontingenttyp für SQL-Datenbank** den Eintrag **M-Serie** aus.
-3. Wählen Sie für **Region** die Region aus, in der die M-Serie aktiviert werden soll.
-    Weitere Informationen zu Regionen, in denen die M-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der M-Serie](#m-series).
+1. In the **PROBLEM DETAILS** section select the **Provide details** link. 
+2. For **SQL Database quota type** select **M-series**.
+3. For **Region**, select the region to enable M-series.
+    For regions where M-series is available, see [M-series availability](#m-series).
 
-Genehmigte Supportanfragen werden in der Regel innerhalb von fünf Werktagen bearbeitet.
-
+Approved support requests are typically fulfilled within 5 business days.
+-->
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -228,7 +230,7 @@ Informationen zu den ersten Schritten finden Sie unter:
 
 Ausführliche Informationen zu Preisen finden Sie auf der [Preisseite für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
-Ausführliche Informationen zu den spezifischen Compute- und Speichergrößen der Dienstebenen „Universell“ und „Unternehmenskritisch“ finden Sie unter: 
+Ausführliche Informationen zu den spezifischen Compute- und Speichergrößen der Dienstebenen „Universell“ und „Unternehmenskritisch“ finden Sie unter:
 
 - [Ressourcenlimits des auf virtuellen Kernen basierenden Kaufmodells für Azure SQL-Datenbank](resource-limits-vcore-single-databases.md)
 - [Ressourcenlimits des auf virtuellen Kernen basierenden Kaufmodells für Azure SQL-Datenbank](resource-limits-vcore-elastic-pools.md)

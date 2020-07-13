@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76714415"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Aufgaben von Projektleitern im Team Data Science-Prozess
@@ -57,7 +57,7 @@ Um Repositorys zu klonen und deren Inhalt auf Ihrem lokalen Computer oder Ihrer 
 
 So erstellen Sie ein Projektrepository im Projekt **MyTeam** Ihres Teams
 
-1. Wechseln Sie zur Seite **Zusammenfassung** für das Projekt Ihres Teams unter *https:\//\<Servername>/\<Organisationsname>/\<Teamname>* , z. B. **https:\//dev.azure.com/DataScienceUnit/MyTeam**, und wählen Sie im linken Navigationsbereich **Repos** aus. 
+1. Wechseln Sie zur Seite **Zusammenfassung** für das Projekt Ihres Teams unter *https:\//\<server name>/\<organization name>/\<team name>* , z. B. **https:\//dev.azure.com/DataScienceUnit/MyTeam**, und wählen Sie im linken Navigationsbereich **Repos** aus. 
    
 1. Wählen Sie oben auf der Seite den Repositorynamen und dann in der Dropdownliste die Option **Neues Repository** aus.
    
@@ -83,7 +83,7 @@ So füllen Sie Ihr Projektrepository mit dem Inhalt Ihres Teamvorlagenrepository
    
    ![„Importieren“ auswählen](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. Wählen Sie im Dialogfeld **Git-Repository importieren** die Option **Git** als **Quelltyp** aus, und geben Sie die URL für Ihr Repository **TeamTemplate** unter **URL klonen** ein. Die URL lautet *https:\//\<Servername>/\<Organisationsname>/\<Teamname>/_git/\<Name des Teamvorlagenrepositorys>* . Beispiel: **https:\//dev.azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
+1. Wählen Sie im Dialogfeld **Git-Repository importieren** die Option **Git** als **Quelltyp** aus, und geben Sie die URL für Ihr Repository **TeamTemplate** unter **URL klonen** ein. Die URL ist *https:\//\<server name>/\<organization name>/\<team name>/_git/\<team template repository name>* . Beispiel: **https:\//dev.azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
    
 1. Wählen Sie **Importieren** aus. Der Inhalt Ihres Teamvorlagenrepositorys wird in Ihr Projektrepository importiert. 
    

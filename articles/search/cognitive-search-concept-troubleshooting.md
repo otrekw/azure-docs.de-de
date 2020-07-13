@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/08/2020
+ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225318"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510871"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
@@ -49,7 +49,16 @@ In diesem Fall sollten Sie den Indexer anweisen, Fehler zu ignorieren. Dazu setz
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>Tipp 4: Sehen Sie sich angereicherte Dokumente genauer an. 
+> [!NOTE]
+> Als bewährte Methode wird empfohlen, maxfaileditems, maxFailedItemsPerBatch für Produktionsworkloads auf 0 festzulegen.
+
+## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>Tipp 4: Verwenden Sie Debugsitzungen zum Identifizieren und Beheben von Problemen mit Ihrem Skillset 
+
+Bei den Debugsitzungen handelt es sich um einen visuellen Editor, der mit einem vorhandenen Skillset im Azure-Portal arbeitet. In einer Debugsitzung können Sie Fehler identifizieren und beheben sowie Änderungen überprüfen und an Produktionsskillsets in der KI-Anreicherungspipeline committen. Dies ist ein Vorschaufeature [Dokumentation lesen](https://docs.microsoft.com/azure/search/cognitive-search-debug-session). Weitere Informationen zu den Konzepten und den ersten Schritten finden Sie unter [Debugsitzungen](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions).
+
+Debugsitzungen funktionieren für ein einzelnes Dokument und sind eine gute Möglichkeit, iterativ komplexere Anreicherungspipelines zu erstellen.
+
+## <a name="tip-5-looking-at-enriched-documents-under-the-hood"></a>Tipp 5: Sehen Sie sich angereicherte Dokumente genauer an. 
 Angereicherte Dokumente sind temporäre Strukturen, die während der Anreicherung erstellt und nach Abschluss der Verarbeitung gelöscht werden.
 
 Zum Erstellen einer Momentaufnahme des angereicherten Dokuments, das während der Indizierung erstellt wurde, fügen Sie ein Feld namens ```enriched``` zu Ihrem Index hinzu. Der Indexer gibt für alle Anreicherungen dieses Dokuments automatisch eine Zeichenfolgendarstellung im Feld aus.
@@ -77,15 +86,15 @@ Fügen Sie ein Feld ```enriched``` als Teil Ihrer Indexdefinition zu Debuzwecken
 }
 ```
 
-## <a name="tip-5-expected-content-fails-to-appear"></a>Tipp 5: Prüfen Sie, ob die erwarteten Inhalte angezeigt werden.
+## <a name="tip-6-expected-content-fails-to-appear"></a>Tipp 6: Prüfen Sie, ob die erwarteten Inhalte angezeigt werden.
 
 Fehlender Inhalt könnte das Ergebnis von Dokumenten sein, die während der Indizierung verworfen werden. Für die Preisstufen Free und Basic gibt es niedrige Grenzwerte für die Dokumentgröße. Jede Datei, die den Grenzwert überschreitet, wird während der Indizierung verworfen. Sie können im Azure-Portal nach verworfenen Dokumenten suchen. Doppelklicken Sie im Dashboard des Suchdiensts auf die Kachel des Indexers. Überprüfen Sie das Verhältnis der erfolgreichen indizierten Dokumente. Wenn es nicht 100% ist, können Sie auf darauf klicken, um mehr Details zu erhalten. 
 
-Wenn das Problem mit der Dateigröße zusammenhängt, wird möglicherweise ein Fehler wie dieser angezeigt: „Das Blob "\<Dateiname>" ist \<Dateigröße> Bytes groß und überschreitet daher das Größenlimit für die Dokumentenextrahierung für Ihre aktuelle Dienstebene.“ Weitere Informationen zu Indexergrenzwerten finden Sie unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md).
+Wenn das Problem mit der Dateigröße zusammenhängt, wird möglicherweise ein Fehler wie dieser angezeigt: „Das Blob \<file-name>" ist \<file-size> Bytes groß und überschreitet daher das Größenlimit für die Dokumentenextrahierung für Ihre aktuelle Dienstebene.“ Weitere Informationen zu Indexergrenzwerten finden Sie unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md).
 
 Ein zweiter Grund dafür, dass Inhalte nicht angezeigt werden, können Zuordnungsfehler bei der Eingabe/Ausgabe sein, die zusammenhängen. Ein Beispiel hierfür wäre, wenn ein Ausgabezielname „Personen“ lautet, aber der Indexfeldname kleingeschrieben ist („personen“). Das System könnte 201 Erfolgsmeldungen für die gesamte Pipeline zurückgeben, sodass der Eindruck entsteht, dass die Indizierung erfolgreich war, obwohl tatsächlich ein Feld leer ist. 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Tipp 6: Verlängern Sie die Verarbeitung über die maximale Laufzeit hinaus (24-Stunden-Fenster).
+## <a name="tip-7-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Tipp 7: Verlängern Sie die Verarbeitung über die maximale Laufzeit hinaus (24-Stunden-Fenster).
 
 Die Bildanalyse ist selbst für einfache Fälle rechenintensiv, sodass die Verarbeitungsdauer bei besonders großen oder komplexen Bildern die maximal zulässige Zeit überschreiten kann. 
 
@@ -98,7 +107,7 @@ Bei geplanten Indexern wird die Indizierung beim letzten erfolgreich verarbeitet
 
 Bei der portalbasierten Indizierung (wie im Schnellstart beschrieben) wird durch die Indexeroption „Einmal ausführen“ die Verarbeitung auf eine Stunde (`"maxRunTime": "PT1H"`) eingeschränkt. Sie können das Verarbeitungsfenster auch erweitern.
 
-## <a name="tip-7-increase-indexing-throughput"></a>Tipp 7: Erhöhen Sie den Durchsatz der Indizierung.
+## <a name="tip-8-increase-indexing-throughput"></a>Tipp 8: Erhöhen Sie den Durchsatz der Indizierung.
 
 Für eine [parallele Indizierung](search-howto-large-index.md) platzieren Sie Ihre Daten in mehrere Container oder mehrere virtuelle Ordner innerhalb desselben Containers. Erstellen Sie dann mehrere Datenquellen-Indexer-Paare. Alle Indexer können das gleiche Skillset verwenden und in den gleichen Zielsuchindex schreiben, sodass Ihre Such-App über diese Partitionierung nicht informiert sein muss.
 Weitere Informationen finden Sie unter [Indizieren großer Datasets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).

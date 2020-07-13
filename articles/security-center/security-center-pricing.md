@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2020
 ms.author: memildin
-ms.openlocfilehash: 2eb302462e402e701cc5ae664239c457c90ab1b9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 4487d1452611b269eec756cdbc76e8e55c466cd2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612791"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801137"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Upgrade auf den Standard-Tarif für erhöhte Sicherheit
 
@@ -63,7 +63,9 @@ Security Center bietet mehr Sicherheit und besseren Schutz vor Bedrohungen für 
 - **Sicherheitswarnungen**: Verwenden Sie erweiterte Analysefunktionen und Microsoft Intelligent Security Graph, um neuen Arten von Cyberangriffen immer einen Schritt voraus zu sein. Nutzen Sie integrierte Verhaltensanalysen und Machine Learning, um Angriffe und Zero-Day-Exploits zu erkennen. Überwachen Sie Netzwerke, Computer und Clouddienste auf neue Angriffe und auf Aktivitäten nach einer Sicherheitsverletzung. Optimieren Sie die Untersuchung mit interaktiven Tools und kontextbezogenen Informationen zu Bedrohungen.
 - **Überprüfung auf Sicherheitsrisiken für virtuelle Computer**: Stellen Sie problemlos einen Scanner auf allen virtuellen Computern bereit, der die branchenweit fortgeschrittenste Lösung zum Umgang mit Sicherheitsrisiken bietet. Sie können die Ergebnisse direkt in Security Center anzeigen, untersuchen und behandeln. 
 - **Zugriffs- und Anwendungskontrollen**: Blockieren Sie Schadsoftware und andere unerwünschte Anwendungen mithilfe von Whitelist-Empfehlungen, die auf Ihre spezifischen Workloads abgestimmt sind und durch Machine Learning unterstützt werden. Verringern Sie die Angriffsfläche im Netzwerk mit kontrolliertem Just-in-Time-Zugriff auf Verwaltungsports auf Azure Virtual Machines. Dadurch wird das Risiko von Brute-Force- und anderen Netzwerkangriffen drastisch reduziert.
-- **Containersicherheitsfeatures**: Profitieren Sie in Ihren Containerumgebungen von der Handhabung von Sicherheitsrisiken und des Schutzes vor Bedrohungen in Echtzeit. Wenn Sie die Ressource „Containerregistrierungen“ aktivieren, kann es bis zu 12 Stunden dauern, bis alle Features aktiviert sind.
+- **Containersicherheitsfeatures**: Profitieren Sie in Ihren Containerumgebungen von der Handhabung von Sicherheitsrisiken und des Schutzes vor Bedrohungen in Echtzeit. Wenn Sie die Ressource „Containerregistrierungen“ aktivieren, kann es bis zu 12 Stunden dauern, bis alle Features aktiviert sind. Die Gebühren basieren auf der Anzahl der eindeutigen Containerimages, die in Ihre verbundene Registrierung gepusht werden. Nachdem ein Image ein Mal gescannt wurde, wird es nicht mehr in Rechnung gestellt, es sei denn, es wird geändert und noch einmal gepusht. 
+
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

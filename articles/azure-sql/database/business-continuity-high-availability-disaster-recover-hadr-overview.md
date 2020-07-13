@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Erfahren Sie, wie Azure SQL-Datenbank und Azure SQL Managed Instance die Geschäftskontinuität in der Cloud sowie die Datenbankwiederherstellung unterstützen und dafür sorgen, dass geschäftskritische Cloudanwendungen in Betrieb gehalten werden.
 keywords: Geschäftskontinuität,Geschäftskontinuität in der Cloud,Notfallwiederherstellung von Datenbanken,Datenbankwiederherstellung
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 8312fe1370ded990bd3523d531d168fd2cac5564
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 8ceef173e33c3603d9bc5d6ef217d54eef88609c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189762"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982471"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -65,14 +65,14 @@ Wenn der maximal unterstützte Aufbewahrungszeitraum für die Point-in-Time-Wied
 
 |                                              | Georeplikation | Failovergruppen  |
 |:---------------------------------------------| :-------------- | :----------------|
-| Automatisches Failover                           |     Nein          |      Ja         |
-| Gleichzeitiges Failover für mehrere Datenbanken  |     Nein          |      Ja         |
-| Benutzer muss Verbindungszeichenfolge nach einem Failover aktualisieren      |     Ja         |      Nein          |
-| Unterstützung für SQL Managed Instance                   |     Nein          |      Ja         |
-| Kann sich in der selben Region wie die primäre Instanz befinden             |     Ja         |      Nein          |
-| Mehrere Replikate                            |     Ja         |      Nein          |
-| Unterstützung der Leseskalierung                          |     Ja         |      Ja         |
-| &nbsp; | &nbsp; | &nbsp; |
+| **Automatisches Failover**                          |     Nein          |      Ja         |
+| **Gleichzeitiges Failover für mehrere Datenbanken**  |     Nein          |      Ja         |
+| **Benutzer muss Verbindungszeichenfolge nach einem Failover aktualisieren**      |     Ja         |      Nein          |
+| **Unterstützung für SQL Managed Instance**                   |     Nein          |      Ja         |
+| **Kann sich in derselben Region wie die primäre Instanz befinden**             |     Ja         |      Nein          |
+| **Mehrere Replikate**                            |     Ja         |      Nein          |
+| **Unterstützung der Leseskalierung**                          |     Ja         |      Ja         |
+
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Wiederherstellen einer Datenbank auf dem vorhandenen Server
 

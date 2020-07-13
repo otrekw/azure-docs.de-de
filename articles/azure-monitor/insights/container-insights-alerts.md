@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Warn
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75730924"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Einrichten von Warnungen für Leistungsprobleme in Azure Monitor für Container
@@ -100,7 +100,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->Die folgenden Abfragen verwenden die Platzhalterwerte \<<Ihr-Cluster-Name> und <Ihr-Controller-Name>\< zur Darstellung Ihres Clusters und Controllers. Ersetzen Sie sie durch spezifische Werte für Ihre Umgebung, wenn Sie Warnungen einrichten.
+>Die folgenden Abfragen verwenden die Platzhalterwerte \<your-cluster-name> und \<your-controller-name> zur Darstellung Ihres Clusters und Controllers. Ersetzen Sie sie durch spezifische Werte für Ihre Umgebung, wenn Sie Warnungen einrichten.
 
 Die folgende Abfrage berechnet die durchschnittliche CPU-Auslastung aller Container in einem Controller als durchschnittliche CPU-Auslastung der einzelnen Containerinstanzen in einem Controller pro Minute. Die Maßeinheit ist ein Prozentsatz des für einen Container eingerichteten Grenzwerts.
 
@@ -289,7 +289,7 @@ Führen Sie die folgenden Schritte aus, um eine Protokollwarnung in Azure Monito
 4. Wählen Sie im Bereich auf der linken Seite die Option **Protokolle** aus, um die Seite mit Azure Monitor-Protokollen zu öffnen. Über diese Seite können Sie Azure Log Analytics-Abfragen schreiben und ausführen.
 5. Fügen Sie auf der Seite **Protokolle** eine der zuvor bereitgestellten [Abfragen](#resource-utilization-log-search-queries) in das Feld **Suchabfrage** ein, und wählen Sie dann **Ausführen** aus, um die Ergebnisse zu überprüfen. Wenn Sie diesen Schritt nicht ausführen, steht die Option **+Neue Warnung** nicht zur Auswahl bereit.
 6. Wählen Sie **+Neue Warnung** aus, um eine Protokollwarnung zu erstellen.
-7. Wählen Sie im Abschnitt **Bedingung** die vordefinierte benutzerdefinierte Protokollbedingung **Immer wenn die benutzerdefinierte Protokollsuche ist \<<Logik nicht definiert>** aus. Der Signaltyp **benutzerdefinierte Protokollsuche** ist automatisch ausgewählt, weil eine Warnungsregel direkt über die Seite mit Azure Monitor-Protokollen erstellt wird.  
+7. Wählen Sie im Abschnitt **Bedingung** die vordefinierte benutzerdefinierte Protokollbedingung **Immer wenn die benutzerdefinierte Protokollsuche \<logic undefined> ist** aus. Der Signaltyp **benutzerdefinierte Protokollsuche** ist automatisch ausgewählt, weil eine Warnungsregel direkt über die Seite mit Azure Monitor-Protokollen erstellt wird.  
 8. Fügen Sie eine der zuvor bereitgestellten [Abfragen](#resource-utilization-log-search-queries) in das Feld **Suchabfrage** ein.
 9. Konfigurieren Sie die Warnung folgendermaßen:
 

@@ -2,7 +2,7 @@
 title: Erste Schritte mit temporalen Tabellen
 description: Hier finden Sie Informationen zu den ersten Schritten mit temporalen Tabellen in Azure SQL-Datenbank und Azure SQL Managed Instance.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,19 +11,19 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: e172c251f629dc53bd8f4479d63fe743bbe42095
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 219d3755794a09ef25cdb41afdbe154af3736538
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033541"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985481"
 ---
-# <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Erste Schritte mit temporalen Tabellen in Azure SQL-Datenbank und Azure SQL Managed Instance
+# <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Erste Schritte mit temporalen Tabellen in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 Temporale Tabellen sind eine neue Programmierfunktion von Azure SQL-Datenbank und Azure SQL Managed Instance, mit der Sie den vollständigen Verlauf von Änderungen in Ihren Daten ohne benutzerdefinierte Codierung nachverfolgen und analysieren können. Temporale Tabellen enthalten Daten, die eng mit dem zeitlichen Kontext verbunden sind, sodass gespeicherte Fakten nur im angegebenen Zeitraum als gültig interpretiert werden können. Diese Eigenschaft von temporalen Tabellen ermöglicht eine effiziente zeitbasierte Analyse und Einblicke in die Datenentwicklung.
 
-## <a name="temporal-scenario"></a>Temporales Szenario
+## <a name="temporal-scenario"></a>Szenario für temporale Tabellen
 
 In diesem Artikel werden die Schritte zum Verwenden temporaler Tabellen in einem Anwendungsszenario beschrieben. Stellen Sie sich vor, Sie möchten die Benutzeraktivität auf einer neuen Website nachverfolgen, die von Grund auf neu entwickelt wird, oder auf einer vorhandenen Website, die Sie mit der Benutzeraktivitätsanalyse erweitern möchten. In diesem vereinfachten Beispiel gehen wir davon aus, dass die Anzahl der besuchten Webseiten während eines Zeitraums ein Indikator ist, der in der Websitedatenbank erfasst und überwacht werden muss, die in Azure SQL-Datenbank oder Azure SQL Managed Instance gehostet wird. Die Verlaufsanalyse der Benutzeraktivität soll Anregungen zum Neuentwurf der Website und bessere Erkenntnisse über die Besucher liefern.
 

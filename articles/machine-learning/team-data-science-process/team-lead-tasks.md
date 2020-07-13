@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75864280"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Aufgaben für die Teamleitung in einem Team Data Science-Prozessteam
@@ -85,7 +85,7 @@ In jedem Fall müssen Teamleiter ihren Teammitgliedern mitteilen, welche Reposit
 
 So erstellen Sie ein separates Projekt für Ihr Team
 
-1. Wechseln Sie in Ihrem Webbrowser zur Startseite der Azure DevOps-Organisation Ihrer Gruppe unter der URL *https:\//\<Servername>/\<Organisationsname>* , und wählen Sie **Neues Projekt** aus. 
+1. Wechseln Sie in Ihrem Webbrowser zur Startseite der Azure DevOps-Organisation Ihrer Gruppe unter der URL *https:\//\<server name>/\<organization name>* , und wählen Sie **Neues Projekt** aus. 
    
    ![„Neues Projekt“ auswählen](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
@@ -95,7 +95,7 @@ So erstellen Sie ein separates Projekt für Ihr Team
    
    ![Projekt erstellen](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-Die Teamprojektseite **Zusammenfassung** wird mit der Seiten-URL *https:\//\<Servername>/\<Organisationsname>/\<Teamname>* geöffnet.
+Die Seite **Zusammenfassung** des Teamprojekts wird mit der Seiten-URL *https:\//\<server name>/\<organization name>/\<team name>* geöffnet.
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>Umbenennen des standardmäßigen Repositorys „MyTeam“ in „TeamUtilities“
 
@@ -140,7 +140,7 @@ So füllen Sie Ihre Teamrepositorys mit dem Inhalt der von Ihrem Gruppenleiter e
    
    ![„Importieren“ auswählen](./media/team-lead-tasks/import-repo.png)
    
-1. Wählen Sie im Dialogfeld **Git-Repository importieren** die Option **Git** als **Quelltyp** aus, und geben Sie die URL für Ihr allgemeines Gruppenvorlagenrepository unter **URL klonen** ein. Die URL lautet *https:\//\<Servername>/\<Organisationsname>/_git/\<Repositoryname>* . Beispiel: *https:\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. Wählen Sie im Dialogfeld **Git-Repository importieren** die Option **Git** als **Quelltyp** aus, und geben Sie die URL für Ihr allgemeines Gruppenvorlagenrepository unter **URL klonen** ein. Die URL ist *https:\//\<server name>/\<organization name>/_git/\<repository name>* . Beispiel: *https:\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
 1. Wählen Sie **Importieren** aus. Der Inhalt Ihres Gruppenvorlagenrepositorys wird in Ihr Teamvorlagenrepository importiert. 
    
@@ -199,7 +199,7 @@ So klonen Sie Repositorys
    
 1. Wechseln Sie in das von Ihnen erstellte Verzeichnis.
    
-1. Führen Sie in Git Bash den Befehl `git clone <clone URL>` aus, wobei \<Klon-URL> die URL ist, die Sie aus dem Dialogfeld zum **Klonen** kopiert haben.
+1. Führen Sie in Git Bash den Befehl `git clone <clone URL>` aus, wobei \<clone URL> die URL ist, die Sie aus dem Dialogfeld zum **Klonen** kopiert haben.
    
    Verwenden Sie z. B. einen der folgenden Befehle, um das Repository **TeamUtilities** in das Verzeichnis *MyTeam* auf Ihrem lokalen Computer zu kopieren. 
    

@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: e2414873db06ada4d0a260e007998ef2ba2f2cf9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6a8770cfaf5acedcf3549d92f1365948acda8bc7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038901"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84344644"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Entwerfen von global verfügbaren Diensten mit Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,7 +45,7 @@ Das folgende Diagramm zeigt diese Konfiguration vor einem Ausfall:
 
 ![Szenario 1: Konfiguration vor dem Ausfall](./media/designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
 
-Nach einem Ausfall in der primären Region erkennt SQL-Datenbank, dass auf die primäre Datenbank nicht zugegriffen werden kann, und löst basierend auf den Parametern der Richtlinie für automatisches Failover ein Failover auf die sekundäre Region aus (1). Abhängig von Ihrer Anwendungs-SLA können Sie eine Toleranzperiode konfigurieren, die die Zeit zwischen der Erkennung des Ausfalls und dem Failover selbst steuert. Es ist möglich, dass Traffic Manager das Endpunktfailover initiiert, bevor die Failovergruppe das Failover der Datenbank auslöst. In diesem Fall kann die Webanwendung die Verbindung mit der Datenbank nicht sofort wiederherstellen. Die Verbindungswiederherstellungen sind jedoch automatisch erfolgreich, sobald das Datenbankfailover abgeschlossen ist. Wenn die fehlerhafte Region wiederhergestellt und wieder online ist, stellt die alte primäre Datenbank automatisch wieder eine Verbindung als neue sekundäre Datenbank her. Das folgende Diagramm veranschaulicht die Konfiguration nach dem Failover.
+Nach einem Ausfall in der primären Region erkennt SQL-Datenbank, dass auf die primäre Datenbank nicht zugegriffen werden kann, und löst basierend auf den Parametern der Richtlinie für automatisches Failover ein Failover auf die sekundäre Region aus (1). Abhängig von Ihrer Anwendungs-SLA können Sie eine Toleranzperiode konfigurieren, die die Zeit zwischen der Erkennung des Ausfalls und dem Failover selbst steuert. Es ist möglich, dass Azure Traffic Manager das Endpunktfailover initiiert, bevor die Failovergruppe das Failover der Datenbank auslöst. In diesem Fall kann die Webanwendung die Verbindung mit der Datenbank nicht sofort wiederherstellen. Die Verbindungswiederherstellungen sind jedoch automatisch erfolgreich, sobald das Datenbankfailover abgeschlossen ist. Wenn die fehlerhafte Region wiederhergestellt und wieder online ist, stellt die alte primäre Datenbank automatisch wieder eine Verbindung als neue sekundäre Datenbank her. Das folgende Diagramm veranschaulicht die Konfiguration nach dem Failover.
 
 > [!NOTE]
 > Alle committeten Transaktionen nach dem Failover gehen bei der Verbindungswiederherstellung verloren. Nach Abschluss des Failovers kann die Anwendung in Region B die Verbindung wiederherstellen und die Verarbeitung der Benutzeranforderungen erneut starten. Sowohl die Webanwendung als auch die primäre Datenbank befinden sich nun in Region B und bleiben verbunden.
@@ -89,7 +89,7 @@ Wenn Traffic Manager einen Fehler bei der Verbindung mit Region A erkennt, leite
 
 ![Szenario 2: Phasen der Notfallwiederherstellung](./media/designing-cloud-solutions-for-disaster-recovery/scenario2-b.png)
 
-Bei einem Ausfall in Region B erkennt Traffic Manager den Ausfall des Endpunkts „web-app-2“ in Region B und markiert ihn als beeinträchtigt (1). In der Zwischenzeit leitet die Failovergruppe den schreibgeschützten Listener nach Region A um (2). Der Endbenutzer merkt nichts von diesem Ausfall, aber die primäre Datenbank wird während des Ausfalls verfügbar gemacht. Das folgende Diagramm zeigt einen Fehler in der sekundären Region:
+Bei einem Ausfall in Region B erkennt Traffic Manager den Ausfall des Endpunkts „web-app-2“ in Region B und markiert ihn als beeinträchtigt (1). In der Zwischenzeit leitet die Failovergruppe den schreibgeschützten Listener nach Region A um (2). Der Endbenutzer wird durch diesen Ausfall nicht beeinträchtigt, aber die primäre Datenbank wird während des Ausfalls verfügbar gemacht. Das folgende Diagramm zeigt einen Fehler in der sekundären Region:
 
 ![Szenario 2: Ausfall der sekundären Region](./media/designing-cloud-solutions-for-disaster-recovery/scenario2-c.png)
 
@@ -111,7 +111,7 @@ In diesem Szenario weist die Anwendung die folgenden Merkmale auf:
 * Der Schreibzugriff auf Daten sollte im gleichen geografischen Gebiet für die Mehrheit der Benutzer unterstützt werden.
 * Die Leselatenz ist für die Endbenutzer entscheidend.
 
-Um diese Anforderungen zu erfüllen, müssen Sie sicherstellen, dass das Benutzergerät **immer** eine Verbindung mit der Anwendung herstellt, die im selben Gebiet für die schreibgeschützten Vorgänge (z.B. Durchsuchen von Daten, Analysen usw.) bereitgestellt wird. Die OLTP-Vorgänge werden hingegen **meistens** im selben Gebiet verarbeitet. Tagsüber werden OLTP-Vorgänge beispielsweise im selben geografischen Gebiet verarbeitet, außerhalb der Arbeitszeiten können sie jedoch in einem anderen Gebiet verarbeitet werden. Wenn die Aktivitäten der Endbenutzer hauptsächlich während der Arbeitszeiten erfolgen, können Sie die optimale Leistung in den meisten Fällen für die Mehrheit der Benutzer garantieren. Im folgenden Diagramm wird diese Topologie veranschaulicht.
+Um diese Anforderungen zu erfüllen, müssen Sie sicherstellen, dass das Benutzergerät **immer** eine Verbindung mit der Anwendung herstellt, die im selben Gebiet für die schreibgeschützten Vorgänge (z.B. Durchsuchen von Daten, Analysen usw.) bereitgestellt wird. Die OLTP-Vorgänge werden dagegen **meistens** im selben Gebiet verarbeitet. Tagsüber werden OLTP-Vorgänge beispielsweise im selben geografischen Gebiet verarbeitet, außerhalb der Arbeitszeiten können sie jedoch in einem anderen Gebiet verarbeitet werden. Wenn die Aktivitäten der Endbenutzer hauptsächlich während der Arbeitszeiten stattfinden, können Sie die optimale Leistung in den meisten Fällen für die Mehrheit der Benutzer garantieren. Im folgenden Diagramm wird diese Topologie veranschaulicht.
 
 Die Ressourcen der Anwendung sollten in jedem Gebiet mit erheblichem Nutzungsbedarf bereitgestellt werden. Wenn die Anwendung beispielsweise in den USA, der Europäischen Union und in Südostasien aktiv genutzt wird, sollte sie in allen diesen Gebieten bereitgestellt werden. Die primäre Datenbank sollte am Ende der Arbeitszeiten dynamisch zwischen den Gebieten umgeleitet werden. Diese Methode wird als „Follow the sun“-Methode bezeichnet. Die OLTP-Workload stellt immer über den Lese-/Schreiblistener **&lt;Name der Failovergruppe&gt;.database.windows.net** eine Verbindung mit der Datenbank her (1). Die schreibgeschützte Workload stellt direkt über den Serverendpunkt der Datenbank **&lt;Servername&gt;.database.windows.net** eine Verbindung mit der lokalen Datenbank her (2). Traffic Manager ist mit der [leistungsorientierten Routingmethode](../../traffic-manager/traffic-manager-configure-performance-routing-method.md) konfiguriert. Dadurch wird sichergestellt, dass das Gerät des Endbenutzers mit dem Webdienst in der nächstgelegenen Region verbunden ist. Traffic Manager sollte mit aktivierter Endpunktüberwachung für jeden Webdienst-Endpunkt eingerichtet werden (3).
 
@@ -131,7 +131,7 @@ Das folgende Diagramm veranschaulicht die neue Konfiguration nach dem geplanten 
 
 ![Szenario 3: Umleiten des primären Servers nach „Europa, Norden“](./media/designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-Bei einem Ausfall in „Europa, Norden“ wird das automatische Datenbankfailover beispielsweise von der Failovergruppe initiiert. Dies führt dazu, dass die Anwendung vorzeitig in die nächste Region verschoben wird (1).  In diesem Fall ist „USA, Osten“ die einzige verbleibende sekundäre Region, bis „Europa, Norden“ wieder online ist. Die verbleibenden zwei Regionen sind durch das Wechseln ihrer Rollen für die Kunden in allen drei geografischen Gebieten verfügbar. Azure Logic Apps muss entsprechend angepasst werden. Da die verbleibenden Regionen zusätzlichen Benutzerdatenverkehr aus Europa erhalten, wird die Leistung der Anwendung nicht nur durch zusätzliche Latenz, sondern auch durch eine erhöhte Anzahl von Endbenutzerverbindungen beeinträchtigt. Nachdem der Ausfall in „Europa, Norden“ behoben wurde, wird die sekundäre Datenbank dort sofort mit der aktuellen primären Datenbank synchronisiert. Das folgende Diagramm veranschaulicht einen Ausfall in „Europa, Norden“:
+Bei einem Ausfall in „Europa, Norden“ wird das automatische Datenbankfailover beispielsweise von der Failovergruppe initiiert. Dies führt dazu, dass die Anwendung vorzeitig in die nächste Region verschoben wird (1).  In diesem Fall ist „USA, Osten“ die einzige verbleibende sekundäre Region, bis „Europa, Norden“ wieder online ist. Die verbleibenden zwei Regionen sind durch das Wechseln ihrer Rollen für die Kunden in allen drei geografischen Gebieten verfügbar. Azure Logic Apps muss entsprechend angepasst werden. Weil die verbleibenden Regionen zusätzlichen Benutzerdatenverkehr aus Europa erhalten, wird die Leistung der Anwendung nicht nur durch zusätzliche Latenz, sondern auch durch eine höhere Anzahl von Endbenutzerverbindungen beeinträchtigt. Nachdem der Ausfall in „Europa, Norden“ behoben wurde, wird die sekundäre Datenbank dort sofort mit der aktuellen primären Datenbank synchronisiert. Das folgende Diagramm veranschaulicht einen Ausfall in „Europa, Norden“:
 
 ![Szenario 3: Ausfall in „Europa, Norden“](./media/designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 

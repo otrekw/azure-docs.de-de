@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 4ff6972e2f7ea219a1c8c8dbabbf9fe12a8fa59e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.openlocfilehash: d535866881fa6ed73b51eb6039baa9d515b770b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369474"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080831"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Bildanalyse – kognitiver Skill
 
@@ -22,7 +22,7 @@ Der Skill **Bildanalyse** extrahiert einen umfangreichen Satz von visuellen Merk
 > [!NOTE]
 > Kleine Volumen (unter 20 Transaktionen) können in der kognitiven Azure-Suche kostenlos ausgeführt werden, größere Workloads erfordern jedoch das [Anfügen einer abrechnungsfähigen Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400) angegeben.
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/) angegeben.
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -34,15 +34,15 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| defaultLanguageCode   |  Eine Zeichenfolge, die angibt, welche Sprache zurückgegeben werden soll. Der Dienst gibt die Ergebnisse der Erkennung in einer bestimmten Sprache zurück. Wenn dieser Parameter nicht angegeben wird, ist der Standardwert „en“. <br/><br/>Unterstützte Sprachen: <br/>*en*: Englisch (Standard) <br/> *es:* Spanisch <br/> *ja:* Japanisch <br/> *pt:* Portugiesisch <br/> *zh*: vereinfachtes Chinesisch|
-| visualFeatures |  Ein Array aus Zeichenfolgen, die angibt, welche Arten von visuellen Merkmalen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig:  <ul><li>*adult:* erkennt, ob das Bild pornografischer Natur (Nacktheit oder sexuelle Handlungen) oder gewalttätig (extreme Gewalt oder Blut) ist. Zweideutige und freizügige Inhalte werden ebenfalls erkannt.</li><li>*brands:* erkennt verschiedene Marken in einem Bild, einschließlich der ungefähren Position. Das visuelle Feature *brands* ist nur für Englisch verfügbar.</li><li> *categories:* kategorisiert Bildinhalte gemäß einer Taxonomie, die in der [Dokumentation zum maschinellen Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy) in Cognitive Services definiert ist. </li><li>*description:* beschreibt den Bildinhalt in unterstützten Sprachen mit einem vollständigen Satz.</li><li>*faces*: Erkennt, ob Gesichter vorhanden sind. Wenn Gesichter vorhanden sind, generiert dieses Merkmal Informationen zu Koordinaten, Geschlecht und Alter.</li><li> *objects:* erkennt verschiedene Objekte in einem Bild, einschließlich der ungefähren Position. Das visuelle Feature *objects* ist nur für Englisch verfügbar.</li><li> *tags*: Erstellt Tags für das Bild in einer detaillierten Liste aus Wörtern, die sich auf den Bildinhalt beziehen.</li></ul> Bei den Namen der visuellen Merkmale wird die Groß- und Kleinschreibung beachtet. Beachten Sie, dass die visuellen Features *color* und *imageType* veraltet sind, auf diese Funktionalität aber weiterhin über eine [benutzerdefinierte Qualifikation](https://go.microsoft.com/fwlink/?linkid=2121117) zugegriffen werden kann.|
-| Details   | Ein Array aus Zeichenfolgen, die angeben, welche domänenspezifischen Informationen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig: <ul><li>*celebrities*: Identifiziert Prominente in einem Bild.</li><li>*landmarks*: Identifiziert Sehenswürdigkeiten in einem Bild. </li></ul> |
+| `defaultLanguageCode` |  Eine Zeichenfolge, die angibt, welche Sprache zurückgegeben werden soll. Der Dienst gibt die Ergebnisse der Erkennung in einer bestimmten Sprache zurück. Wenn dieser Parameter nicht angegeben wird, ist der Standardwert „en“. <br/><br/>Unterstützte Sprachen: <br/>*en*: Englisch (Standard) <br/> *es:* Spanisch <br/> *ja:* Japanisch <br/> *pt:* Portugiesisch <br/> *zh*: vereinfachtes Chinesisch|
+| `visualFeatures` |    Ein Array aus Zeichenfolgen, die angibt, welche Arten von visuellen Merkmalen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig:  <ul><li>*adult:* erkennt, ob das Bild pornografischer Natur (Nacktheit oder sexuelle Handlungen) oder gewalttätig (extreme Gewalt oder Blut) ist. Zweideutige und freizügige Inhalte werden ebenfalls erkannt.</li><li>*brands:* erkennt verschiedene Marken in einem Bild, einschließlich der ungefähren Position. Das visuelle Feature *brands* ist nur für Englisch verfügbar.</li><li> *categories:* kategorisiert Bildinhalte gemäß einer Taxonomie, die in der [Dokumentation zum maschinellen Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy) in Cognitive Services definiert ist. </li><li>*description:* beschreibt den Bildinhalt in unterstützten Sprachen mit einem vollständigen Satz.</li><li>*faces*: Erkennt, ob Gesichter vorhanden sind. Wenn Gesichter vorhanden sind, generiert dieses Merkmal Informationen zu Koordinaten, Geschlecht und Alter.</li><li>   *objects:* erkennt verschiedene Objekte in einem Bild, einschließlich der ungefähren Position. Das visuelle Feature *objects* ist nur für Englisch verfügbar.</li><li> *tags*: Erstellt Tags für das Bild in einer detaillierten Liste aus Wörtern, die sich auf den Bildinhalt beziehen.</li></ul> Bei den Namen der visuellen Merkmale wird die Groß- und Kleinschreibung beachtet. Beachten Sie, dass die visuellen Features *color* und *imageType* veraltet sind, auf diese Funktionalität aber weiterhin über eine [benutzerdefinierte Qualifikation](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface) zugegriffen werden kann.|
+| `details` | Ein Array aus Zeichenfolgen, die angeben, welche domänenspezifischen Informationen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig: <ul><li>*celebrities*: Identifiziert Prominente in einem Bild.</li><li>*landmarks*: Identifiziert Sehenswürdigkeiten in einem Bild. </li></ul> |
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
 | Eingabename      | BESCHREIBUNG                                          |
 |---------------|------------------------------------------------------|
-| image         | Komplexer Typ. Arbeitet derzeit mit dem Feld „/document/normalized_images“, das vom Azure Blob-Indexer generiert wird, wenn ```imageAction``` auf einen anderen Wert als ```none``` gesetzt ist. Weitere Informationen finden Sie im [Beispiel](#sample-output).|
+| `image`         | Komplexer Typ. Arbeitet derzeit mit dem Feld „/document/normalized_images“, das vom Azure Blob-Indexer generiert wird, wenn ```imageAction``` auf einen anderen Wert als ```none``` gesetzt ist. Weitere Informationen finden Sie im [Beispiel](#sample-output).|
 
 
 
@@ -514,13 +514,13 @@ In den folgenden Fällen werden keine Elemente extrahiert.
 
 | Fehlercode | BESCHREIBUNG |
 |------------|-------------|
-| NotSupportedLanguage | Die angegebene Sprache wird nicht unterstützt. |
-| InvalidImageUrl | Die Bild-URL ist falsch formatiert, oder es kann nicht darauf zugegriffen werden.|
-| InvalidImageFormat | Bei den Eingabedaten handelt es sich nicht um ein gültiges Bild. |
-| InvalidImageSize | Das Eingabebild ist zu groß. |
-| NotSupportedVisualFeature  | Der angegebene Merkmaltyp ist ungültig. |
-| NotSupportedImage | Nicht unterstütztes Bild, z.B. Kinderpornografie. |
-| InvalidDetails | Nicht unterstütztes domänenspezifisches Modell. |
+| `NotSupportedLanguage` | Die angegebene Sprache wird nicht unterstützt. |
+| `InvalidImageUrl` | Die Bild-URL ist falsch formatiert, oder es kann nicht darauf zugegriffen werden.|
+| `InvalidImageFormat` | Bei den Eingabedaten handelt es sich nicht um ein gültiges Bild. |
+| `InvalidImageSize` | Das Eingabebild ist zu groß. |
+| `NotSupportedVisualFeature`  | Der angegebene Merkmaltyp ist ungültig. |
+| `NotSupportedImage` | Nicht unterstütztes Bild, z.B. Kinderpornografie. |
+| `InvalidDetails` | Nicht unterstütztes domänenspezifisches Modell. |
 
 Wenn Sie eine Fehlermeldung ähnlich `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"` erhalten, überprüfen Sie den Pfad. Sowohl Prominente als auch Wahrzeichen sind Eigenschaften unter `detail`.
 

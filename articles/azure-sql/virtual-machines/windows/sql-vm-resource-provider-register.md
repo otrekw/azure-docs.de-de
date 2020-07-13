@@ -1,10 +1,9 @@
 ---
 title: Registrieren beim SQL-VM-Ressourcenanbieter
-description: Registrieren Sie Ihren virtuellen Azure SQL Server-Computer beim SQL-VM-Ressourcenanbieter, um Features für SQL Server-VMs zu aktivieren, die außerhalb von Azure Marketplace bereitgestellt werden, und um Compliance und eine einfachere Verwaltung zu gewährleisten.
+description: Registrieren Sie Ihren virtuellen Azure SQL Server-Computer beim SQL-VM-Ressourcenanbieter, um Features für virtuelle SQL Server-Computer zu aktivieren, die außerhalb von Azure Marketplace bereitgestellt werden, und um Compliance und eine einfachere Verwaltung zu gewährleisten.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
@@ -14,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: af2d23104f07991fc9833951bb4e2395d39be9b3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 60d184b3739d05063a0cddd108a2b2d7d49b57d7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84039831"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962746"
 ---
-# <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrieren von virtuellen SQL Server-Computern in Azure mit dem SQL-VM-Ressourcenanbieter
+# <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>Registrieren von SQL Server-VMs in Azure mit dem SQL-VM-Ressourcenanbieter (Resource Provider, RP)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Ihren virtuellen SQL Server-Computer (VM) in Azure beim SQL-VM-Ressourcenanbieter registrieren. Durch die Registrierung beim Ressourcenanbieter wird die _Ressource_ **Virtueller SQL-Computer** innerhalb Ihres Abonnements erstellt. Dabei handelt es sich um eine andere Ressource als die Ressource für Ihren virtuellen Computer. Wenn Sie die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter aufheben, wird die _Ressource_ **Virtueller SQL-Computer** entfernt, während der tatsächliche virtuelle Computer jedoch erhalten bleibt. 
+In diesem Artikel wird beschrieben, wie Sie Ihren virtuellen SQL Server-Computer (VM) in Azure beim SQL-VM-Ressourcenanbieter (RP) registrieren. Durch die Registrierung beim Ressourcenanbieter wird die _Ressource_ **Virtueller SQL-Computer** innerhalb Ihres Abonnements erstellt. Dabei handelt es sich um eine andere Ressource als die Ressource für Ihren virtuellen Computer. Wenn Sie die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter aufheben, wird die _Ressource_ **Virtueller SQL-Computer** entfernt, während der tatsächliche virtuelle Computer jedoch erhalten bleibt. 
 
 Durch das Bereitstellen eines SQL Server-VM-Azure Marketplace-Images über das Azure-Portal wird die SQL Server-VM automatisch beim Ressourcenanbieter registriert. Wenn Sie SQL Server aber auf einem virtuellen Azure-Computer selbst installieren oder einen virtuellen Azure-Computer von einer benutzerdefinierten VHD bereitstellen, sollten Sie Ihre SQL Server-VM beim Ressourcenanbieter registrieren, um folgende Vorteile zu nutzen:
 
@@ -32,7 +31,7 @@ Durch das Bereitstellen eines SQL Server-VM-Azure Marketplace-Images über das 
 
 - **Compliance**: Durch die Registrierung beim SQL-VM-Ressourcenanbieter können Sie auch einfacher Ihrer Verpflichtung nachkommen, Microsoft zu benachrichtigen, wenn der Azure-Hybridvorteil aktiviert wurde (wie in den Nutzungsbedingungen zum Produkt angegeben). Auf diese Weise können Sie darauf verzichten, für jede Ressource ein Lizenzregistrierungsformular zu verwalten.  
 
-- **Kostenlose Verwaltung**:  Die Registrierung beim SQL-VM-Ressourcenanbieter ist in allen drei Verwaltungsmodi völlig kostenlos. Es fallen keine zusätzlichen Kosten für den Ressourcenanbieter oder das Ändern von Verwaltungsmodi an. 
+- **Kostenlose Verwaltung**: Die Registrierung beim SQL-VM-Ressourcenanbieter ist in allen drei Verwaltungsmodi völlig kostenlos. Es fallen keine zusätzlichen Kosten für den Ressourcenanbieter oder das Ändern von Verwaltungsmodi an. 
 
 - **Vereinfachte Lizenzverwaltung**: Durch die Registrierung beim SQL-VM-Ressourcenanbieter wird die SQL Server-Lizenzverwaltung vereinfacht. Außerdem können Sie über das [Azure-Portal](manage-sql-vm-portal.md), die Azure-Befehlszeilenschnittstelle oder PowerShell schnell SQL Server-VMs mit aktiviertem Azure-Hybridvorteil identifizieren: 
 
@@ -95,14 +94,14 @@ Um Ihre SQL Server-VM beim SQL-VM-Ressourcenanbieter zu registrieren, müssen S
 1. Geben Sie im Filter **sql** ein, um die SQL-bezogenen Ressourcenanbieter aufzurufen. 
 1. Wählen Sie je nach gewünschter Aktion für den Anbieter **Microsoft.SqlVirtualMachine** eine der Optionen **Registrieren**, **Erneut registrieren** oder **Registrierung aufheben** aus. 
 
-![Ändern des Anbieters](./media/sql-vm-resource-provider-register/select-resource-provider-sql.png)
+   ![Ändern des Anbieters](./media/sql-vm-resource-provider-register/select-resource-provider-sql.png)
 
 
 ### <a name="command-line"></a>Befehlszeile
 
 Registrieren Sie Ihren SQL-VM-Ressourcenanbieter mithilfe der Azure-Befehlszeilenschnittstelle oder mit PowerShell bei Ihrem Azure-Abonnement. 
 
-# <a name="az-cli"></a>[Azure CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/bash)
 
 ```azurecli-interactive
 # Register the SQL VM resource provider to your subscription 
@@ -118,19 +117,19 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ---
 
-## <a name="register-sql-vm-with-rp"></a>Registrieren einer SQL-VM beim RP 
+## <a name="register-with-rp"></a>Mit Ressourcenanbieter registrieren
 
 ### <a name="lightweight-management-mode"></a>Verwaltungsmodus „Lightweight“
 
-Wenn die [SQL Server-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) nicht auf der VM installiert wurde, wird empfohlen, die Registrierung beim SQL-VM-Ressourcenanbieter im Modus „Lightweight“ auszuführen. Dadurch wird die SQL-IaaS-Erweiterung im [Modus „Lightweight“](#management-modes) installiert. Darüber hinaus wird verhindert, dass der SQL Server-Dienst neu gestartet wird. Sie können dann jederzeit ein Upgrade auf den Modus „Vollständig“ ausführen. Da hierdurch jedoch der SQL Server-Dienst neu gestartet wird, wird empfohlen, auf ein Fenster für die geplante Wartung zu warten. 
+Wenn die [SQL Server-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) nicht auf dem virtuellen Computer installiert wurde, wird empfohlen, die Registrierung beim SQL-VM-Ressourcenanbieter im Modus „Lightweight“ auszuführen. Dadurch wird die SQL-IaaS-Erweiterung im [Modus „Lightweight“](#management-modes) installiert. Darüber hinaus wird verhindert, dass der SQL Server-Dienst neu gestartet wird. Sie können dann jederzeit ein Upgrade auf den Modus „Vollständig“ ausführen. Da hierdurch jedoch der SQL Server-Dienst neu gestartet wird, wird empfohlen, auf ein Fenster für die geplante Wartung zu warten. 
 
 Den SQL Server-Lizenztyp können Sie als nutzungsbasierte Bezahlung (`PAYG`), Azure-Hybridvorteil (`AHUB`), um Ihre eigene Lizenz zu verwenden, oder Notfallwiederherstellung (`DR`), um das [kostenlose DR-Replikat in Azure](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure) zu aktivieren, angeben.
 
 Failoverclusterinstanzen und Bereitstellungen mit mehreren Instanzen können nur im Modus „Lightweight“ beim SQL-VM-Ressourcenanbieter registriert werden. 
 
-# <a name="az-cli"></a>[Azure CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/bash)
 
-Registrieren der SQL Server-VM im Modus „Lightweight“ mit der Azure-Befehlszeilenschnittstelle: 
+Registrieren einer SQL Server-VM im Modus „Lightweight“ mit der Azure CLI: 
 
   ```azurecli-interactive
   # Register Enterprise or Standard self-installed VM in Lightweight mode
@@ -140,7 +139,7 @@ Registrieren der SQL Server-VM im Modus „Lightweight“ mit der Azure-Befehlsz
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Registrieren der SQL Server-VM im Modus „Lightweight“ mit PowerShell:  
+Registrieren einer SQL Server-VM im Modus „Lightweight“ mit PowerShell:  
 
 
   ```powershell-interactive
@@ -157,7 +156,7 @@ Registrieren der SQL Server-VM im Modus „Lightweight“ mit PowerShell:
 ### <a name="full-management-mode"></a>Verwaltungsmodus „Vollständig“
 
 
-Wenn die SQL-IaaS-Erweiterung bereits manuell auf der VM installiert wurde, können Sie die SQL Server-VM im Modus „Vollständig“ registrieren, ohne den SQL Server-Dienst neu zu starten. **Wenn die SQL-IaaS-Erweiterung jedoch nicht installiert wurde, wird die SQL-IaaS-Erweiterung durch die Registrierung im Modus „Vollständig“ ebenfalls im Modus „Vollständig“ installiert. Darüber hinaus wird der SQL Server-Dienst neu gestartet. Sie sollten daher mit Vorsicht vorgehen.**
+Wenn die SQL-IaaS-Erweiterung bereits manuell auf dem virtuellen Computer installiert wurde, können Sie die SQL Server-VM im Modus „Vollständig“ registrieren, ohne den SQL Server-Dienst neu zu starten. **Wenn die SQL-IaaS-Erweiterung jedoch nicht installiert wurde, wird die SQL-IaaS-Erweiterung durch die Registrierung im Modus „Vollständig“ ebenfalls im Modus „Vollständig“ installiert. Darüber hinaus wird der SQL Server-Dienst neu gestartet. Sie sollten daher mit Vorsicht vorgehen.**
 
 
 Verwenden Sie den folgenden PowerShell-Befehl, um Ihre SQL Server-VM direkt im vollständigen Modus zu registrieren (und ggf. den SQL Server-Dienst neu zu starten): 
@@ -179,9 +178,9 @@ Geben Sie entweder `AHUB`, `PAYG` oder `DR` als **sqlLicenseType** und entweder 
 Verwenden Sie für die Registrierung Ihrer SQL Server 2008- oder 2008 R2-Instanz bei einer Windows Server 2008-Instanz den folgenden Codeausschnitt für die Azure CLI oder PowerShell: 
 
 
-# <a name="az-cli"></a>[Azure CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/bash)
 
-Registrieren Ihrer SQL Server 2008-VM im NoAgent-Modus mit der Azure-Befehlszeilenschnittstelle: 
+Registrieren Ihres virtuellen SQL Server 2008-Computers im NoAgent-Modus mit der Azure CLI: 
 
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
@@ -190,7 +189,7 @@ Registrieren Ihrer SQL Server 2008-VM im NoAgent-Modus mit der Azure-Befehlszei
  ```
  
  
-Registrieren Ihrer SQL Server 2008 R2-VM im NoAgent-Modus mit der Azure-Befehlszeilenschnittstelle: 
+Registrieren Ihres virtuellen SQL Server 2008 R2-Computers im NoAgent-Modus mit der Azure CLI: 
 
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
@@ -200,7 +199,7 @@ Registrieren Ihrer SQL Server 2008 R2-VM im NoAgent-Modus mit der Azure-Befehl
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Registrieren Ihrer SQL Server 2008-VM im NoAgent-Modus mit PowerShell: 
+Registrieren Ihres virtuellen SQL Server 2008-Computers im NoAgent-Modus mit PowerShell: 
 
 
   ```powershell-interactive
@@ -211,7 +210,7 @@ Registrieren Ihrer SQL Server 2008-VM im NoAgent-Modus mit PowerShell:
     -LicenseType PAYG -SqlManagementType NoAgent -Sku Standard -Offer SQL2008-WS2008
   ```
   
-  Registrieren Ihrer SQL Server 2008 R2-VM im NoAgent-Modus mit PowerShell: 
+  Registrieren Ihres virtuellen SQL Server 2008 R2-Computers im NoAgent-Modus mit PowerShell: 
 
 
   ```powershell-interactive
@@ -224,9 +223,9 @@ Registrieren Ihrer SQL Server 2008-VM im NoAgent-Modus mit PowerShell:
 
 ---
 
-## <a name="upgrade-to-full-management-mode"></a>Aktualisieren auf den Verwaltungsmodus „Vollständig“ 
+## <a name="upgrade-to-full"></a>Upgrade auf vollständige Version  
 
-Für SQL Server-VMs, auf denen die IaaS-Erweiterung im Modus *Lightweight* installiert ist, können Sie über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder PowerShell ein Upgrade auf den Modus _Vollständig_ durchführen. Für SQL Server-VMs im Modus _NoAgent_ kann ein Upgrade auf _Vollständig_ durchgeführt werden, nachdem das Betriebssystem auf Windows 2008 R2 oder höher aktualisiert wurde. Es ist nicht möglich, ein Downgrade auszuführen. Dazu müssen Sie die Registrierung der SQL Server-VM beim SQL-VM-Ressourcenanbieter [aufheben](#unregister-vm-from-rp). Dadurch wird die _Ressource_ **Virtueller SQL-Computer** entfernt, der tatsächliche virtuelle Computer aber nicht gelöscht. 
+Für SQL Server-VMs, auf denen die IaaS-Erweiterung im Modus *Lightweight* installiert ist, können Sie über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder PowerShell ein Upgrade auf den Modus _Vollständig_ durchführen. Für SQL Server-VMs im Modus _NoAgent_ kann ein Upgrade auf _Vollständig_ durchgeführt werden, nachdem das Betriebssystem auf Windows 2008 R2 oder höher aktualisiert wurde. Es ist nicht möglich, ein Downgrade auszuführen. Dazu müssen Sie die Registrierung der SQL Server-VM beim SQL-VM-Ressourcenanbieter [aufheben](#unregister-from-rp). Dadurch wird die _Ressource_ **Virtueller SQL-Computer** entfernt, der tatsächliche virtuelle Computer aber nicht gelöscht. 
 
 Über PowerShell können Sie den aktuellen Modus des SQL Server-IaaS-Agents anzeigen: 
 
@@ -243,7 +242,7 @@ So führen Sie Upgrade des Agent-Modus auf „Vollständig“ durch:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wechseln Sie zu Ihrer Ressource [Virtuelle SQL-Computer](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource). 
-1. Wählen Sie Ihren virtuellen SQL Server-Computer aus, und klicken Sie auf **Übersicht**. 
+1. Wählen Sie Ihre SQL Server-VM aus, und klicken Sie auf **Übersicht**. 
 1. Wählen Sie für SQL Server-VMs mit dem IaaS-Modus „NoAgent“ oder „Lightweight“ die Meldung **Mit der SQL-IaaS-Erweiterung sind nur Lizenztyp- und Editionsaktualisierungen verfügbar** aus.
 
    ![Auswahlmöglichkeiten zum Ändern des Modus im Portal](./media/sql-vm-resource-provider-register/change-sql-iaas-mode-portal.png)
@@ -254,7 +253,7 @@ So führen Sie Upgrade des Agent-Modus auf „Vollständig“ durch:
 
 ### <a name="command-line"></a>Befehlszeile
 
-# <a name="az-cli"></a>[Azure CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/bash)
 
 Führen Sie den folgenden Codeausschnitt in der Azure-Befehlszeilenschnittstelle aus:
 
@@ -283,17 +282,17 @@ Sie können über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder Po
 ### <a name="azure-portal"></a>Azure-Portal 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
-1. Navigieren Sie zu Ihren [SQL Server-VMs](manage-sql-vm-portal.md).
+1. Navigieren Sie zu Ihrem [SQL Server-VMs](manage-sql-vm-portal.md).
 1. Wählen Sie die SQL Server-VM in der Liste aus. Wenn Ihre SQL Server-VM hier nicht aufgeführt ist, wurde sie wahrscheinlich nicht beim SQL-VM-Ressourcenanbieter registriert. 
 1. Überprüfen Sie den Wert unter **Status**. Wenn **Status** den Wert **Erfolgreich** aufweist, wurde die SQL Server-VM beim SQL-VM-Ressourcenanbieter registriert. 
 
-![Überprüfen des Status per SQL RP-Registrierung](./media/sql-vm-resource-provider-register/verify-registration-status.png)
+   ![Überprüfen des Status per SQL RP-Registrierung](./media/sql-vm-resource-provider-register/verify-registration-status.png)
 
 ### <a name="command-line"></a>Befehlszeile
 
 Überprüfen Sie den aktuellen Registrierungsstatus der SQL Server-VM per Azure-Befehlszeilenschnittstelle oder PowerShell. `ProvisioningState` zeigt `Succeeded` an, wenn die Registrierung erfolgreich abgeschlossen wurde. 
 
-# <a name="az-cli"></a>[Azure CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/bash)
 
 
   ```azurecli-interactive
@@ -311,18 +310,18 @@ Sie können über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder Po
 Ein Fehler zeigt an, dass die SQL Server-VM nicht beim Ressourcenanbieter registriert wurde. 
 
 
-## <a name="unregister-vm-from-rp"></a>Aufheben der VM-Registrierung beim RP
+## <a name="unregister-from-rp"></a>Aufheben der Registrierung beim Ressourcenanbieter
 
-Um die Registrierung Ihrer SQL Server-VM beim SQL-VM-Ressourcenanbieter aufzuheben, löschen Sie die SQL-VM-*Ressource* über das Azure-Portal oder die Azure-Befehlszeilenschnittstelle. Das Löschen der SQL-VM-*Ressource* löscht nicht die SQL Server-VM. Seien Sie jedoch vorsichtig, und führen Sie die Schritte sorgfältig aus, da es möglich ist, den virtuellen Computer versehentlich zu löschen, wenn Sie versuchen, die *Ressource* zu entfernen. 
+Um die Registrierung Ihrer SQL Server-VM beim SQL-VM-Ressourcenanbieter aufzuheben, löschen Sie die SQL-VM-*Ressource* über das Azure-Portal oder die Azure CLI. Das Löschen der SQL-VM-*Ressource* löscht nicht die SQL Server-VM. Seien Sie jedoch vorsichtig, und führen Sie die Schritte sorgfältig aus, da es möglich ist, den virtuellen Computer versehentlich zu löschen, wenn Sie versuchen, die *Ressource* zu entfernen. 
 
-Das Aufheben der Registrierung der SQL-VM beim SQL-VM-Ressourcenanbieter ist notwendig, um den Verwaltungsmodus von „Vollständig“ herabzustufen. 
+Das Aufheben der Registrierung des virtuellen SQL-Computers beim SQL-VM-Ressourcenanbieter ist notwendig, um den Verwaltungsmodus von „Vollständig“ herabzustufen. 
 
 ### <a name="azure-portal"></a>Azure-Portal
 
 Gehen Sie wie folgt vor, um Ihre SQL Server-VM beim Ressourcenanbieter über das Azure-Portal abzumelden:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Navigieren Sie zur SQL Server-VM-Ressource. 
+1. Navigieren Sie zur SQL Server-VM-Ressource. 
   
    ![Ressource „Virtuelle SQL-Computer“](./media/sql-vm-resource-provider-register/sql-vm-manage.png)
 
@@ -337,12 +336,12 @@ Gehen Sie wie folgt vor, um Ihre SQL Server-VM beim Ressourcenanbieter über das
    >[!WARNING]
    > Wenn Sie das Kontrollkästchen neben dem Namen des virtuellen Computers nicht deaktivieren, wird der virtuelle Computer vollständig *gelöscht*. Deaktivieren Sie das Kontrollkästchen, um die Registrierung der SQL Server-VM beim Ressourcenanbieter aufzuheben, aber *den aktuellen virtuellen Computer nicht zu löschen*. 
 
-1. Wählen Sie **Löschen** aus, um das Löschen der SQL-VM-*Ressource* und nicht der SQL Server-VM zu bestätigen. 
+1. Wählen Sie **Löschen** aus, um das Löschen der SQL-VM-*Ressource* und nicht der SQL Server-VM zu bestätigen. 
 
 ### <a name="command-line"></a>Befehlszeile
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-Um die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter mithilfe der Azure-Befehlszeilenschnittstelle aufzuheben, verwenden Sie den Befehl [az sql vm delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete). Dadurch wird die SQL Server-VM-*Ressource* entfernt, aber der virtuelle Computer nicht gelöscht. 
+Um die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter mithilfe der Azure CLI aufzuheben, verwenden Sie den Befehl [az sql vm delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete). Dadurch wird die SQL Server-VM-*Ressource* entfernt, aber der virtuelle Computer nicht gelöscht. 
 
 
 ```azurecli-interactive
@@ -353,7 +352,7 @@ az sql vm delete
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Um die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter mithilfe der Azure-Befehlszeilenschnittstelle aufzuheben, verwenden Sie den Befehl [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm). Dadurch wird die SQL Server-VM-*Ressource* entfernt, aber der virtuelle Computer nicht gelöscht. 
+Um die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter mithilfe der Azure CLI aufzuheben, verwenden Sie den Befehl [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm). Dadurch wird die SQL Server-VM-*Ressource* entfernt, aber der virtuelle Computer nicht gelöscht. 
 
 ```powershell-interactive
 Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
@@ -380,7 +379,7 @@ Ja. Kunden sollten Ihre SQL Server-VM beim SQL-VM-Ressourcenanbieter registrier
 
 **Sollte ich mich beim SQL-VM-Ressourcenanbieter registrieren, wenn bei meiner SQL Server-VM die SQL Server-IaaS-Erweiterung bereits installiert wurde?**
 
-Wenn Ihre SQL Server-VM selbst installiert und nicht über die SQL-Images im Azure Marketplace bereitgestellt wurde, sollten Sie sich beim SQL-VM-Ressourcenanbieter auch dann registrieren, wenn Sie die SQL Server-IaaS-Erweiterung installiert haben. Bei der Registrierung beim SQL-VM-Ressourcenanbieter wird eine neue Ressource vom Typ „Microsoft.SqlVirtualMachines“ erstellt. Bei der Installation der SQL Server-IaaS-Erweiterung wird diese Ressource nicht erstellt.
+Wenn Ihre SQL Server-VM selbst installiert und nicht über die SQL-Images im Azure Marketplace bereitgestellt wurde, sollten Sie sich beim SQL-VM-Ressourcenanbieter auch dann registrieren, wenn Sie die SQL Server-IaaS-Erweiterung installiert haben. Bei der Registrierung beim SQL-VM-Ressourcenanbieter wird eine neue Ressource vom Typ „Microsoft.SqlVirtualMachine“ erstellt. Bei der Installation der SQL Server-IaaS-Erweiterung wird diese Ressource nicht erstellt.
 
 **Was ist der Standardverwaltungsmodus bei der Registrierung beim SQL-VM-Ressourcenanbieter?**
 
@@ -402,7 +401,7 @@ Nein. Bei der Registrierung beim SQL-VM-Ressourcenanbieter wird lediglich eine n
 
 Die SQL Server-IaaS-Erweiterung ist nur erforderlich, um vollständige Verwaltbarkeit zu aktivieren. Bei einem Upgrade des Verwaltungsmodus von „Lightweight“ auf „Vollständig“ wird die SQL Server-IaaS-Erweiterung installiert, und SQL Server wird neu gestartet.
 
-**Wird SQL Server durch die Registrierung beim SQL-VM-Ressourcenanbieter auf meiner VM neu gestartet?**
+**Wird SQL Server durch die Registrierung beim SQL-VM-Ressourcenanbieter auf meiner VM neu gestartet?**
 
 Das hängt von dem während der Registrierung angegebenen Modus ab. Wenn der Modus „Lightweight“ oder „NoAgent“ angegeben wurde, wird der SQL Server-Dienst nicht neu gestartet. Wenn jedoch der Verwaltungsmodus „Vollständig“ oder gar kein Verwaltungsmodus angegeben wurde, wird die SQL-IaaS-Erweiterung im Verwaltungsmodus „Vollständig“ installiert, wodurch der SQL Server-Dienst neu gestartet wird. 
 
@@ -428,7 +427,7 @@ Ja. Das Upgrade des SQL-Verwaltbarkeitsmodus von „Lightweight“ auf „Vollst
 
 Nein. Eine Herabstufung des Verwaltungsmodus für die SQL Server-IaaS-Erweiterung wird nicht unterstützt. Der SQL Server-Verwaltungsmodus kann vom Modus „Vollständig“ nicht auf „Lightweight“ oder „NoAgent“ herabgestuft werden und auch nicht vom Modus „Lightweight“ auf den Modus „NoAgent“. 
 
-Um den Verwaltbarkeitsmodus von „Vollständige Verwaltbarkeit“ zu ändern, heben Sie die [Registrierung](#unregister-vm-from-rp) der SQL Server-VM beim SQL Server-Ressourcenanbieter auf, indem Sie die SQL Server-*Ressource* verwerfen und die SQL Server-VM beim SQL-VM-Ressourcenanbieter in einem anderen Verwaltungsmodus erneut registrieren.
+Um den Verwaltbarkeitsmodus von „Vollständige Verwaltbarkeit“ zu ändern, heben Sie die [Registrierung](#unregister-from-rp) der SQL Server-VM beim SQL-VM-Ressourcenanbieter auf, indem Sie die SQL Server-*Ressource* verwerfen und die SQL Server-VM beim SQL-VM-Ressourcenanbieter in einem anderen Verwaltungsmodus erneut registrieren.
 
 **Kann ich mich über das Azure-Portal beim SQL-VM-Ressourcenanbieter registrieren?**
 

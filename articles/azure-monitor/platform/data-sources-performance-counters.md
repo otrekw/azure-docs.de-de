@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 446beca9b8491fb252a1e3284a9ec9a0e6dabef5
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739363"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955487"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows- und Linux-Leistungsdatenquellen in Azure Monitor
 Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Azure Monitor kann in sehr kurzen Intervallen Leistungsindikatoren abrufen, um Analysen nahezu in Echtzeit zu ermöglichen. Darüber hinaus kann Azure Monitor Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
@@ -58,17 +58,19 @@ Gehen Sie folgendermaßen vor, um einen neuen Linus-Leistungsindikator hinzuzuf�
 5. Wenn Sie mit dem Hinzufügen von Leistungsindikatoren fertig sind, klicken Sie auf die Schaltfläche **Speichern** am oberen Bildschirmrand, um die Konfiguration zu speichern.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Konfigurieren von Linux-Leistungsindikatoren in der Konfigurationsdatei
-Sie müssen die Linux-Leistungsindikatoren nicht mithilfe des Azure-Portals konfigurieren, sondern können die Konfigurationsdateien auch auf dem Linux-Agent bearbeiten.  Die gesammelten Leistungsmetriken, werden durch die Konfiguration in **/etc/opt/microsoft/omsagent/\<Arbeitsbereichs-ID\>/conf/omsagent.conf** gesteuert.
+Sie müssen die Linux-Leistungsindikatoren nicht mithilfe des Azure-Portals konfigurieren, sondern können die Konfigurationsdateien auch auf dem Linux-Agent bearbeiten.  Die Leistungsmetriken, die gesammelt werden, werden durch die Konfiguration in **/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** gesteuert.
 
 Jedes Objekt oder jede Kategorie von Leistungsindikatoren, die gesammelt werden sollen, sollten in der Konfigurationsdatei als einzelnes `<source>` -Element definiert sein. Die Syntax folgt dem unten angegebenen Muster.
 
-    <source>
-      type oms_omi  
-      object_name "Processor"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+```xml
+<source>
+    type oms_omi  
+    object_name "Processor"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
 
 Die in diesem Element verwendeten Parameter werden in der folgenden Tabelle beschrieben.
@@ -89,8 +91,8 @@ Die folgende Tabelle enthält die Objekte und Leistungsindikatoren, die Sie in d
 | Logischer Datenträger | % freier Speicher |
 | Logischer Datenträger | % verwendete Inodes |
 | Logischer Datenträger | % verwendeter Speicher |
-| Logischer Datenträger | Byte gelesen/s  |
-| Logischer Datenträger | Lesevorgänge/s  |
+| Logischer Datenträger | Byte gelesen/s |
+| Logischer Datenträger | Lesevorgänge/s |
 | Logischer Datenträger | Übertragungen/s |
 | Logischer Datenträger | Byte geschrieben/s |
 | Logischer Datenträger | Schreibvorgänge/s |
@@ -142,37 +144,39 @@ Die folgende Tabelle enthält die Objekte und Leistungsindikatoren, die Sie in d
 
 Im Folgenden wird die Standardkonfiguration für Leistungsmetriken beschrieben.
 
-    <source>
-      type oms_omi
-      object_name "Physical Disk"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+```xml
+<source>
+    type oms_omi
+    object_name "Physical Disk"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Logical Disk"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+<source>
+    type oms_omi
+    object_name "Logical Disk"
+    instance_regex ".*
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Processor"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Processor"
+    instance_regex ".*
+    counter_name_regex ".*"
+    interval 30s
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Memory"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Memory"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
 ## <a name="data-collection"></a>Datensammlung
 Azure Monitor sammelt alle angegebenen Leistungsindikatoren im angegebenen Stichprobenintervall auf allen Agents, auf denen diese Indikatoren installiert sind.  Die Daten werden nicht aggregiert, und die Rohdaten stehen während des durch Ihren Log Analytics-Arbeitsbereich festgelegten Zeitraums in allen Protokollabfrageansichten zur Verfügung.
@@ -184,7 +188,7 @@ Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgend
 |:--- |:--- |
 | Computer |Computer, auf dem das Ereignis gesammelt wurde. |
 | CounterName |Name des Leistungsindikators. |
-| CounterPath |Vollständiger Pfad des Leistungsindikators im Format \\\\\<Computer\\Objekt(Instanz)\\Indikator |
+| CounterPath |Vollständiger Pfad des Leistungsindikators im Format \\\\\<Computer>\\Objekt(Instanz)\\Leistungsindikator. |
 | CounterValue |Numerischer Wert des Leistungsindikators |
 | InstanceName |Name der Ereignisinstanz.  Leer, wenn keine Instanz vorhanden ist. |
 | ObjectName |Name des Leistungsobjekts. |
@@ -194,7 +198,7 @@ Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgend
 ## <a name="sizing-estimates"></a>Größeneinschätzung
  Bei der Sammlung der Daten von einem bestimmten Leistungsindikator mit einem Intervall von 10 Sekunden können Sie von etwa 1 MB pro Tag und Instanz ausgehen.  Sie können die Speicheranforderungen eines bestimmten Leistungsindikators anhand der folgenden Formel einschätzen.
 
-    1 MB x (number of counters) x (number of agents) x (number of instances)
+> 1 MB x (Anzahl der Leistungsindikatoren) x (Anzahl der Agents) x (Anzahl der Instanzen)
 
 ## <a name="log-queries-with-performance-records"></a>Protokollabfragen mit Leistungsdatensätzen
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, mit denen Leistungsdatensätze abgerufen werden.

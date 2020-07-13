@@ -2,22 +2,22 @@
 title: Advanced Data Security
 description: Erfahren Sie etwas über die Funktionen zur Ermittlung und Klassifizierung vertraulicher Daten, die Verwaltung von Datenbankrisiken und die Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank in Azure SQL-Datenbank, Azure SQL Managed Instance oder Azure Synapse darstellen können.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.devlang: ''
 ms.custom: sqldbrb=2
 ms.topic: conceptual
 ms.author: memildin
-author: memildin
 manager: rkarlin
+author: memildin
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: d600d174aa37c5c4d5d1011b9cb61e4487256c13
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 53765ee97f0f253db4df4ecca3c1c90d6068fb07
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195146"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983993"
 ---
 # <a name="advanced-data-security"></a>Advanced Data Security
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -62,7 +62,7 @@ Um die ADS-Einstellungen anzuzeigen und zu verwalten, navigieren Sie unterhalb d
 
 ![Servereinstellungen](./media/advanced-data-security/server_settings.png)
 
-## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. Verwalten von ADS-Einstellungen für eine SQL-Datenbank
+## <a name="4-manage-ads-settings-for-a-database"></a>4. Verwalten von ADS-Einstellungen für eine Datenbank
 
 Um die ADS-Einstellungen für eine bestimmte Datenbank außer Kraft zu setzen, aktivieren Sie das Kontrollkästchen **Advanced Data Security auf Datenbankebene aktivieren**. Verwenden Sie diese Option nur, wenn eine besondere Anforderung zum Empfangen von separaten Advanced Threat Protection-Warnungen oder Risikoanalyseergebnissen für diese Datenbank vorliegt, die anstelle der Warnungen für alle Datenbanken auf dem Server oder in der verwalteten Instanz oder zusätzlich zu diesen empfangen werden müssen.
 

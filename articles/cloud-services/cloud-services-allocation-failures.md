@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 470778e5c441bb05ffc7c5e1c5ef97a6c30d3359
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab6cc71478e80bc3ff9d81a3a91ce90fbb09adb3
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225950"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921596"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Behandeln von Zuordnungsfehlern bei der Bereitstellung von Clouddiensten in Azure
 ## <a name="summary"></a>Zusammenfassung
@@ -41,7 +41,7 @@ Wenn eine Zuordnungsanforderung mit einem Cluster verknüpft ist, ist die Wahrsc
 ### <a name="error-message"></a>Fehlermeldung
 Möglicherweise erhalten Sie die folgende Fehlermeldung:
 
-    "Azure operation '{operation id}' failed with code Compute.ConstrainedAllocationFailed. Details: Allocation failed; unable to satisfy constraints in request. The requested new service deployment is bound to an Affinity Group, or it targets a Virtual Network, or there is an existing deployment under this hosted service. Any of these conditions constrains the new deployment to specific Azure resources. Please retry later or try reducing the VM size or number of role instances. Alternatively, if possible, remove the aforementioned constraints or try deploying to a different region."
+> „Fehler bei Azure-Vorgang '{Vorgangs-ID}“ mit dem Code Compute.ConstrainedAllocationFailed. Details: Fehler bei der Zuordnung. Einschränkungen in der Anforderung konnten nicht erfüllt werden. Die angeforderte neue Dienstbereitstellung ist an eine Affinitätsgruppe gebunden oder auf ein virtuelles Netzwerk ausgerichtet, oder unter diesem gehosteten Dienst befindet sich eine vorhandene Bereitstellung. Alle diese Bedingungen beschränken die neue Bereitstellung auf bestimmte Azure-Ressourcen. Wiederholen Sie den Vorgang später. Reduzieren Sie die VM-Größe oder die Anzahl der Rolleninstanzen. Sie können, wenn möglich, auch die zuvor erwähnten Einschränkungen entfernen oder den virtuellen Computer in einer anderen Region bereitstellen.“
 
 ### <a name="common-issues"></a>Häufige Probleme
 Dies sind häufig vorkommende Zuordnungsszenarios, die bewirken, dass eine Zuordnungsanforderung mit einem einzelnen Cluster „verknüpft“ wird.

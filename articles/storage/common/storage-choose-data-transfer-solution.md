@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: df261dbf8af8ffdb4ccb10626594626150245748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7094fffa1ea8ca2c2557e75fcb31b700abc43da5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176395"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514444"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Auswählen einer Azure-Lösung für die Datenübertragung
 
@@ -35,7 +35,7 @@ Das Verschieben der Daten kann auf die folgende Weise erfolgen:
 
     - **Grafische Benutzeroberfläche**: Wenn Sie gelegentlich nur wenige Dateien übertragen und die Datenübertragung nicht automatisieren müssen, können Sie ein grafisches Benutzeroberflächentool wie Azure Storage Explorer oder ein webbasiertes Durchsuchungstool im Azure-Portal auswählen.
     - **Übertragung mit Skripts oder programmgesteuerte Übertragung**: Sie können optimierte Softwaretools verwenden, die von uns bereitgestellt werden, oder unsere REST-APIs/SDKs direkt aufrufen. Die verfügbaren skriptfähigen Tools sind AzCopy, Azure PowerShell und die Azure CLI. Verwenden Sie für eine programmgesteuerte Schnittstelle eines der SDKs für .NET, Java, Python, Node/JS, C++, Go, PHP oder Ruby.
-    - **Lokale Geräte**: Wir stellen ein physisches oder virtuelles Gerät bereit, das sich in Ihrem Datencenter befindet und die Datenübertragung über das Netzwerk optimiert. Diese Geräte bieten auch einen lokalen Cache für häufig verwendete Dateien. Das physische Gerät ist Data Box Edge, das virtuelle Gerät ist Data Box Gateway. Beide werden in Ihrer lokalen Umgebung dauerhaft ausgeführt und sind über das Netzwerk mit Azure verbunden.
+    - **Lokale Geräte**: Wir stellen ein physisches oder virtuelles Gerät bereit, das sich in Ihrem Datencenter befindet und die Datenübertragung über das Netzwerk optimiert. Diese Geräte bieten auch einen lokalen Cache für häufig verwendete Dateien. Das physische Gerät ist Azure Stack Edge, das virtuelle Gerät ist das Data Box Gateway. Beide werden in Ihrer lokalen Umgebung dauerhaft ausgeführt und sind über das Netzwerk mit Azure verbunden.
     - **Verwaltete Datenpipeline**: Sie können eine Cloudpipeline einrichten, um regelmäßig Dateien zwischen mehreren Azure-Diensten, lokal oder in einer Kombination aus beidem zu übertragen. Verwenden Sie Azure Data Factory, um Datenpipelines einzurichten und zu verwalten sowie Daten zur Analyse zu verschieben und zu transformieren.
 
 Die folgende Abbildung veranschaulicht die Richtlinien für die Auswahl der verschiedenen Azure-Datenübertragungstools in Abhängigkeit von der für die Übertragung verfügbaren Netzwerkbandbreite, der für die Übertragung vorgesehenen Datengröße und der Häufigkeit der Übertragung.
@@ -77,7 +77,7 @@ Sie können auch zu Ihrem Azure Storage-Konto im Azure-Portal wechseln und die F
 - Sie erhalten Informationen zu folgenden Themen:
 
     - [Azure Data Box, Azure Data Box Disk und Azure Data Box Heavy für Offlineübertragungen](https://docs.microsoft.com/azure/databox/).
-    - [Azure Data Box Gateway und Azure Data Box Edge für Onlineübertragungen](https://docs.microsoft.com/azure/databox-online/).
+    - [Azure Data Box Gateway und Azure Stack Edge für Onlineübertragungen](https://docs.microsoft.com/azure/databox-online/).
 - [Was ist Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)?
 - Verwenden der REST-APIs zum Übertragen von Daten
 

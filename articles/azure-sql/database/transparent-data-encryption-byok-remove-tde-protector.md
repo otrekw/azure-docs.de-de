@@ -1,5 +1,5 @@
 ---
-title: Entfernen der TDE-Schutzvorrichtung (PowerShell und Azure CLI)
+title: Entfernen der TDE-Schutzvorrichtung (PowerShell und Azure CLI)
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
 description: Erfahren Sie, wie Sie auf eine potenziell gefährdete TDE-Schutzvorrichtung für Azure SQL-Datenbank oder Azure Synapse Analytics mit TDE und BYOK-Unterstützung (Bring Your Own Key) reagieren können.
 services: sql-database
@@ -12,18 +12,18 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: e0817e21369824769a9248d7ac7c947bcc98ace5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9ffc2af0309f8a682db04b36675a3c29725c44fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84039571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324452"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Entfernen einer Transparent Data Encryption (TDE)-Schutzvorrichtung mithilfe von PowerShell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 
-In diesem Thema wird beschrieben, wie auf eine möglicherweise kompromittierte TDE-Schutzvorrichtung für eine Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz zu reagieren ist, die TDE mit vom Kunden verwalteten Schlüsseln in Azure Key Vault mit BYOK-Unterstützung (Bring Your Own Key) verwendet. Weitere Informationen zu BYOK-Unterstützung für TDE finden Sie auf der [Übersichtsseite](transparent-data-encryption-byok-overview.md).
+In diesem Thema wird beschrieben, wie Sie auf eine potenziell gefährdete TDE-Schutzvorrichtung für eine Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz reagieren können, die TDE mit vom Kunden verwalteten Schlüsseln in Azure Key Vault mit BYOK-Unterstützung (Bring Your Own Key) verwendet. Weitere Informationen zu BYOK-Unterstützung für TDE finden Sie auf der [Übersichtsseite](transparent-data-encryption-byok-overview.md).
 
 > [!CAUTION]
 > Die in diesem Artikel beschriebenen Verfahren sollten nur in Ausnahmefällen oder in Testumgebungen ausgeführt werden. Lesen Sie die Schritte sorgfältig, da das Löschen von aktiv verwendeten TDE-Schutzvorrichtungen aus Azure Key Vault zur **Nichtverfügbarkeit der Datenbank** führen kann.
@@ -34,8 +34,8 @@ Beachten Sie: Sobald die TDE-Schutzvorrichtung in Key Vault gelöscht ist, begin
 
 In diesem Leitfaden werden zwei Ansätze behandelt, die jeweils vom gewünschten Ergebnis nach der Reaktion auf kompromittierte Vorfälle abhängen:
 
-- So bleiben Datenbanken in Azure SQL-Datenbank/Azure Synapse **zugänglich**
-- So ist auf Datenbanken in Azure SQL-Datenbank/Data Warehouses **kein Zugriff** möglich
+- **Verhindern des Zugriffs** auf die Datenbanken in Azure SQL-Datenbank/Azure Synapse Analytics.
+- **Verhindern des Zugriffs** auf die Datenbanken in Azure SQL-Datenbank/Azure SQL Data Warehouse.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,7 +50,7 @@ In diesem Leitfaden werden zwei Ansätze behandelt, die jeweils vom gewünschten
 > [!IMPORTANT]
 > Das Azure Resource Manager-Modul (RM) von PowerShell wird weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Das AzureRM-Modul erhält mindestens bis Dezember 2020 weiterhin Fehlerbehebungen.  Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Weitere Informationen zur Kompatibilität finden Sie in der [Einführung in das neue Azure PowerShell Az-Modul](/powershell/azure/new-azureps-module-az).
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
 Informationen zur Installation finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
@@ -81,7 +81,7 @@ Alternativ können Sie PowerShell oder die Azure-Befehlszeilenschnittstelle verw
 
 Der PowerShell-Befehl **Get-AzureRmSqlServerKeyVaultKey**  stellt den Fingerabdruck der in der Abfrage verwendeten TDE-Schutzvorrichtung bereit, damit Sie sehen können, welche Schlüssel in AKV beibehalten und welche gelöscht werden müssen. Nur die von der Datenbank nicht mehr verwendeten Schlüssel können aus Azure Key Vault sicher gelöscht werden.
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
 Der PowerShell-Befehl **az sql server key show**  stellt den Fingerabdruck der in der Abfrage verwendeten TDE-Schutzvorrichtung bereit, damit Sie sehen können, welche Schlüssel in AKV beibehalten und welche gelöscht werden müssen. Nur die von der Datenbank nicht mehr verwendeten Schlüssel können aus Azure Key Vault sicher gelöscht werden.
 
@@ -132,7 +132,7 @@ Der PowerShell-Befehl **az sql server key show**  stellt den Fingerabdruck der
    Restore-AzKeyVaultKey -VaultName <KeyVaultName> -InputFile <BackupFilePath>
    ```
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
 Eine Befehlsreferenz finden Sie unter [Azure CLI: keyvault](/cli/azure/keyvault/key).
 

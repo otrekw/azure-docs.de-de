@@ -5,21 +5,20 @@ services: storsimple
 documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 116ac5c4efda87b5d16336dd326d516299f6955d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 825a10bec7a9d415bdcf76e5b6f28f04060bb411
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61481940"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514032"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>Deaktivieren und Löschen eines StorSimple-Geräts
 
@@ -36,28 +35,29 @@ Wenn Sie ein Gerät deaktivieren, sind alle Daten, die lokal auf dem Gerät gesp
 >
 > Das Zurücksetzen auf die Werkseinstellungen löscht alle Daten, die lokal auf Ihrem Gerät gespeichert wurden. Daher müssen Sie von allen Daten eine Momentaufnahme in der Cloud erstellen, ehe Sie ein Gerät deaktivieren. Mithilfe einer solchen Cloudmomentaufnahme können Sie alle Daten zu einem späteren Zeitpunkt wiederherstellen.
 
+> [!NOTE]
+>
+> - Bevor Sie ein physisches StorSimple-Gerät oder eine Cloud Appliance deaktivieren, stellen Sie sicher, dass die Daten im gelöschten Volumecontainer auch tatsächlich vom Gerät gelöscht werden. Sie können die Diagramme für die Cloudnutzung überwachen, und wenn Sie feststellen, dass die Nutzung aufgrund der gelöschten Sicherungen rapide sinkt, können Sie das Gerät deaktivieren. Wenn Sie das Gerät deaktivieren, bevor dieses Absinken auftritt, verbleiben die Daten im Speicherkonto und verursachen Gebühren.
+>
+> - Vor dem Deaktivieren eines physischen StorSimple-Geräts oder Cloudgeräts müssen alle von diesem Gerät abhängigen Clients und Hosts beendet oder entfernt werden.
+>
+> - Wenn Speicherkonten oder Container im Speicherkonto, die Volumecontainern zugeordnet sind, bereits vor dem Löschen der Daten vom Gerät gelöscht wurden, erhalten Sie eine Fehlermeldung und können die Daten möglicherweise nicht löschen. Es empfiehlt sich, die Daten auf dem Gerät zu löschen, bevor Sie das Speicherkonto oder darin enthaltene Container löschen. Allerdings müssen Sie in dieser Situation mit der Deaktivierung und Löschung von Geräten in der Annahme fortfahren, dass die Daten bereits aus dem Speicherkonto entfernt wurden.
+
 In diesem Tutorial lernen Sie Folgendes:
 
-* Deaktivieren eines Geräts und Löschen der Daten
-* Deaktivieren eines Geräts und Beibehalten der Daten
-
-> [!NOTE]
-> Vor dem Deaktivieren eines physischen StorSimple-Geräts oder Cloudgeräts müssen alle von diesem Gerät abhängigen Clients und Hosts beendet oder entfernt werden.
-
+- Deaktivieren eines Geräts und Löschen der Daten
+- Deaktivieren eines Geräts und Beibehalten der Daten
 
 ## <a name="deactivate-and-delete-data"></a>Deaktivieren und Löschen von Daten
 
 Wenn Sie das Gerät vollständig löschen und die Daten auf dem Gerät nicht beibehalten möchten, führen Sie die folgenden Schritte aus:
 
-#### <a name="to-deactivate-the-device-and-delete-the-data"></a>So deaktivieren Sie ein Gerät und löschen die Daten
+### <a name="to-deactivate-the-device-and-delete-the-data"></a>So deaktivieren Sie ein Gerät und löschen die Daten
 
-1. Vor dem Deaktivieren eines Geräts müssen Sie alle Volumecontainer (und die Volumes) löschen, die dem Gerät zugeordnet sind. Sie können Volumecontainer nur löschen, nachdem Sie die zugeordneten Sicherungen gelöscht haben.
-
-    > [!NOTE]
-    > Bevor Sie ein physisches StorSimple-Gerät oder eine Cloud Appliance deaktivieren, stellen Sie sicher, dass die Daten im gelöschten Volumecontainer auch tatsächlich vom Gerät gelöscht werden. Sie können die Diagramme für die Cloudnutzung überwachen, und wenn Sie feststellen, dass die Nutzung aufgrund der gelöschten Sicherungen rapide sinkt, können Sie das Gerät deaktivieren. Wenn Sie das Gerät deaktivieren, bevor dieses Absinken auftritt, verbleiben die Daten im Speicherkonto und verursachen Gebühren.
+1. Vor dem Deaktivieren eines Geräts müssen Sie alle Volumecontainer (und die Volumes) löschen, die dem Gerät zugeordnet sind. Sie können Volumecontainer nur löschen, nachdem Sie die zugeordneten Sicherungen gelöscht haben. Lesen Sie den Hinweis in der Übersicht oben, bevor Sie ein physisches StorSimple-Gerät oder eine Cloud Appliance deaktivieren.
 
 2. Deaktivieren Sie das Gerät wie folgt:
-   
+
    1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst, und klicken Sie auf **Geräte**. Klicken Sie auf dem Blatt **Geräte** auf das Gerät, das Sie deaktivieren möchten. Klicken Sie mit der rechten Maustaste, und klicken Sie dann auf **Deaktivieren**.
 
         ![Deaktivieren des StorSimple-Geräts](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
@@ -79,7 +79,8 @@ Wenn Sie das Gerät vollständig löschen und die Daten auf dem Gerät nicht bei
 
 Wenn Sie das Gerät löschen, aber die Daten beibehalten möchten, führen Sie die folgenden Schritte aus:
 
-#### <a name="to-deactivate-a-device-and-retain-the-data"></a>So deaktivieren Sie ein Gerät und behalten die Daten bei
+### <a name="to-deactivate-a-device-and-retain-the-data"></a>So deaktivieren Sie ein Gerät und behalten die Daten bei
+
 1. Deaktivieren Sie das Gerät. Alle Volumecontainer und die Momentaufnahmen des Geräts bleiben erhalten.
    
    1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst, und klicken Sie auf **Geräte**. Klicken Sie auf dem Blatt **Geräte** auf das Gerät, das Sie deaktivieren möchten. Klicken Sie mit der rechten Maustaste, und klicken Sie dann auf **Deaktivieren**.
@@ -99,7 +100,6 @@ Wenn Sie das Gerät löschen, aber die Daten beibehalten möchten, führen Sie d
        ![Deaktivieren des StorSimple-Geräts](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. Nachdem der Löschvorgang erfolgreich abgeschlossen wurde, werden Sie benachrichtigt. Die Geräteliste wird dem Löschvorgang entsprechend aktualisiert.
 
-     
 ## <a name="deactivate-and-delete-a-cloud-appliance"></a>Deaktivieren und Löschen eines Cloudgeräts
 
 Bei einer StorSimple Cloud Appliance erfolgt bei einer Deaktivierung im Portal das Aufheben der Zuordnung und Löschen des virtuellen Computers und der Ressourcen, die bei seiner Bereitstellung erstellt wurden. Nach der Deaktivierung kann das Cloudgerät nicht im vorherigen Zustand wiederhergestellt werden.

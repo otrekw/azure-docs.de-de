@@ -4,15 +4,15 @@ description: Bietet eine Übersicht über die Optionen zum Migrieren von Daten a
 services: storsimple
 author: priestlg
 ms.service: storsimple
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: v-grpr
-ms.openlocfilehash: 974bcc657b811a10e28b41150439e83d26a208d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39c78e1dc579f74207ba828f2f6a49ad44dd4a43
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514710"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>Optionen zum Migrieren von Daten aus StorSimple-Serie 8000
 
@@ -40,6 +40,12 @@ Weitere Informationen zum Migrieren von Daten mithilfe der Azure-Dateisynchronis
 Kunden, die die StorSimple 5000–7000-Serie und StorSimple 8000-Serie nutzen, können zu Panzura Freedom NAS migrieren, um ihre Daten in Azure beizubehalten. Die Panzura Freedom-Lösung bietet eine NAS-Lösung, die Rechenzentren, Niederlassungen sowie öffentliche und private Clouds umfasst. Die Lösung ermöglicht lokale, Hybrid- und In-Cloud-Datenworkflows für NFS, SMB und mobile Clients.
 
 Diese Migration wird von Panzura unterstützt, und können Kunden als ersten Schritt Migrationsunterstützung auf der [Panzura-Website](https://panzura.com/migrate-storsimple-panzura/) anfordern.
+
+#### <a name="migrate-to-nasuni"></a>Migrieren zu Nasuni
+
+Das Umstellen Ihrer gesamten StorSimple-Umgebung auf eine stabile, sichere und hochleistungsfähige Dateidienstplattform ist mit Nasuni einfach. Nasuni bietet die Sicherheit und Leistung lokaler Dateispeicherung, jedoch kombiniert mit der Skalierbarkeit und Dauerhaftigkeit von Azure.  Als führender unabhängiger Softwarehersteller (Independent Software Vendor, ISV) von Azure bietet Nasuni alle erforderlichen Tools zur Auslagerung Ihrer StorSimple-Daten auf eine moderne Plattform, die übergreifendes Teilen und Zusammenarbeit an ihren Dateien über mehrere Standorte hinweg ermöglicht.
+
+Legen Sie noch heute los: [Nasuni-Website](https://info.nasuni.com/storsimple8000-webinar).
 
 <!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity

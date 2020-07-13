@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
 ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609926"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Einrichten von Azure Monitor-Protokollen für einen Cluster
@@ -47,13 +47,13 @@ Wenn Sie Windows verwenden, fahren Sie mit den folgenden Schritten zum Verknüpf
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Verbinden des Log Analytics-Arbeitsbereichs mit Ihrem Cluster 
 
-1. Der Arbeitsbereich muss mit den Diagnosedaten aus Ihrem Cluster verknüpft werden. Navigieren Sie zu der Ressourcengruppe, in der Sie die Lösung der Service Fabric-Analyse erstellt haben. Wählen Sie **ServiceFabric\<-Arbeitsbereichsname\>** aus, und wechseln Sie zur zugehörigen Übersichtsseite. Dort können Sie Lösungseinstellungen und Arbeitsbereichseinstellungen ändern und auf den Log Analytics-Arbeitsbereich zugreifen.
+1. Der Arbeitsbereich muss mit den Diagnosedaten aus Ihrem Cluster verknüpft werden. Navigieren Sie zu der Ressourcengruppe, in der Sie die Lösung der Service Fabric-Analyse erstellt haben. Wählen Sie **ServiceFabric\<nameOfWorkspace\>** aus, und navigieren Sie zur zugehörigen Übersichtsseite. Dort können Sie Lösungseinstellungen und Arbeitsbereichseinstellungen ändern und auf den Log Analytics-Arbeitsbereich zugreifen.
 
 2. Wählen Sie im linken Navigationsmenü unter **Speicherkontoprotokolle** die Option **Arbeitsbereichsdatenquellen** aus.
 
 3. Wählen Sie auf der Seite **Speicherkontoprotokolle** ganz oben die Option **Hinzufügen** aus, um dem Arbeitsbereich die Protokolle Ihres Clusters hinzuzufügen.
 
-4. Wählen Sie **Speicherkonto** aus, um das geeignete in Ihrem Cluster erstellte Konto hinzuzufügen. Wenn Sie den Standardnamen verwendet haben, heißt das Speicherkonto **sfdg\<Ressourcengruppenname\>** . Sie können dies auch mithilfe der Azure Resource Manager-Vorlage überprüfen, die zum Bereitstellen des Clusters verwendet wurde, indem Sie den für **applicationDiagnosticsStorageAccountName** verwendeten Wert prüfen. Wenn der Name nicht angezeigt wird, scrollen Sie nach unten, und wählen Sie **Weitere laden** aus. Wählen Sie den Speicherkontonamen aus.
+4. Wählen Sie **Speicherkonto** aus, um das geeignete in Ihrem Cluster erstellte Konto hinzuzufügen. Wenn Sie den Standardnamen verwendet haben, heißt das Speicherkonto **sfdg\<resourceGroupName\>** . Sie können dies auch mithilfe der Azure Resource Manager-Vorlage überprüfen, die zum Bereitstellen des Clusters verwendet wurde, indem Sie den für **applicationDiagnosticsStorageAccountName** verwendeten Wert prüfen. Wenn der Name nicht angezeigt wird, scrollen Sie nach unten, und wählen Sie **Weitere laden** aus. Wählen Sie den Speicherkontonamen aus.
 
 5. Geben Sie den Datentyp an. Legen Sie ihn auf **Service Fabric-Ereignisse** fest.
 

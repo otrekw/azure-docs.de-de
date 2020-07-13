@@ -3,20 +3,20 @@ title: Azure-Hybridvorteil
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: In diesem Artikel erfahren Sie, wie Sie vorhandene SQL Server-Lizenzen für Rabatte bei Azure SQL-Datenbank und verwalteten SQL-Instanzen nutzen.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=4
-ms.subservice: service
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: e5af5c6b30c6f03930a61200a11bfa0bd2f72093
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b4af9fce3c5ca779866055d2835ebfebe9fbb9cf
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196451"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987007"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure-Hybridvorteil: Azure SQL-Datenbank und verwaltete SQL-Instanzen
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -30,9 +30,13 @@ Bei der bereitgestellten Computeebene des vCore-basierten Kaufmodells können Si
 
 ## <a name="choose-a-license-model"></a>Auswählen eines Lizenzmodells
 
-Mit dem Azure-Hybridvorteil können Sie wahlweise nur die zugrunde liegende Azure-Infrastruktur bezahlen und Ihre vorhandene SQL Server-Lizenz für die eigentliche SQL-Datenbank-Engine verwenden (Grundpreis für Computeleistung), oder Sie bezahlen für die zugrunde liegende Infrastruktur sowie für die SQL Server-Lizenz (Preismodell mit enthaltener Lizenz).
+Mit dem Azure-Hybridvorteil können Sie wahlweise nur die zugrunde liegende Azure-Infrastruktur bezahlen und Ihre vorhandene SQL Server-Lizenz für die eigentliche SQL Server-Datenbank-Engine verwenden (Grundpreis für Computeleistung), oder Sie bezahlen für die zugrunde liegende Infrastruktur sowie für die SQL Server-Lizenz (Preismodell mit enthaltener Lizenz).
 
-Sie können Ihr Lizenzierungsmodell im Azure-Portal oder mithilfe einer der folgenden APIs auswählen oder ändern:
+Sie können Ihr Lizenzierungsmodell im Azure-Portal wie folgt auswählen oder ändern: 
+- Wählen Sie bei neuen Datenbanken während der Erstellung auf der Registerkarte **Grundlagen** die Option **Datenbank konfigurieren** aus, und wählen Sie dann die Option aus, mit der Sie Geld sparen.
+- Wählen Sie bei vorhandenen Datenbanken im Menü **Einstellungen** die Option **Konfigurieren** aus, und wählen Sie dann die Option aus, mit der Sie Geld sparen.
+
+Sie können auch eine neue oder vorhandene Datenbank mithilfe einer der folgenden APIs konfigurieren:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -77,7 +81,7 @@ Wir bieten SQL Server-Kunden License Mobility-Leistungen im Rahmen von Software 
 Der Azure-Hybridvorteil für SQL Server unterscheidet sich in zwei wichtigen Bereichen von License Mobility:
 
 - Er ist mit wirtschaftlichen Vorteilen in Bezug auf das Verlagern von hochgradig virtualisierten Workloads nach Azure verbunden. Kunden mit SQL Server Enterprise Edition können in Azure für die SKU „Universell“ für jeden Kern, der lokal vorhanden ist, vier Kerne für hochgradig virtualisierte Anwendungen erhalten. Bei License Mobility ergeben sich bei der Verlagerung virtualisierter Workloads in die Cloud keine besonderen Kostenvorteile.
-- Es wird ein PaaS-Ziel in Azure (eine verwaltete SQL-Datenbankinstanz) bereitgestellt, das mit der SQL Server-Instanz in hohem Maß kompatibel ist.
+- Es wird ein PaaS-Ziel in Azure (SQL Managed Instance) bereitgestellt, das mit SQL Server in hohem Maß kompatibel ist.
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Welche spezifischen Rechte gelten für den Azure-Hybridvorteil für SQL Server?
 

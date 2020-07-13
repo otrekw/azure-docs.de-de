@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 4/6/2020
-ms.openlocfilehash: a2c376ec2bd1f03b626c11b0d6a6c3850c9ef8c4
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 7/1/2020
+ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804587"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964514"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – Konfigurationsoptionen für Hyperscale (Citus)
 
@@ -20,7 +20,7 @@ ms.locfileid: "80804587"
  
 Sie können die Compute- und Speichereinstellungen für Workerknoten und den Koordinatorknoten in einer Hyperscale (Citus)-Servergruppe unabhängig voneinander auswählen.  Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und repräsentieren die logische CPU der zugrunde liegenden Hardware. Die Speichergröße für die Bereitstellung bezieht sich auf die für die Koordinator- und Workerknoten in Ihrer Hyperscale (Citus)-Servergruppe verfügbare Kapazität. Der Speicher umfasst Datenbankdateien, temporäre Dateien, Transaktionsprotokolle und die Postgres-Serverprotokolle.
  
-|                       | Workerknoten           | Koordinatorknoten      |
+| Resource              | Workerknoten           | Koordinatorknoten      |
 |-----------------------|-----------------------|-----------------------|
 | Compute, virtuelle Kerne       | 4, 8, 16, 32, 64      | 4, 8, 16, 32, 64      |
 | Arbeitsspeicher pro V-Kern, GiB | 8                     | 4                     |
@@ -91,6 +91,33 @@ Hyperscale (Citus)-Servergruppen sind in den folgenden Azure-Regionen verfügbar
     * Europa, Westen
 
 Einige dieser Regionen sind anfangs möglicherweise nicht für alle Azure-Abonnements aktiviert. Öffnen Sie eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), wenn Sie eine Region aus der oben genannten Liste verwenden möchten, sie aber nicht in Ihrem Abonnement angezeigt wird, oder wenn Sie eine nicht in dieser Liste enthaltene Region verwenden möchten.
+
+## <a name="limits-and-limitations"></a>Grenzwerte und Einschränkungen
+
+In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen in Hyperscale (Citus) beschrieben.
+
+### <a name="maximum-connections"></a>Maximale Anzahl der Verbindungen
+
+Jede PostgreSQL-Verbindung (auch inaktive Verbindungen) verwendet mindestens 10 MB Arbeitsspeicher, daher ist es wichtig, gleichzeitige Verbindungen einzuschränken. Dies sind die Grenzwerte, die wir ausgewählt haben, um Knoten fehlerfrei zu halten:
+
+* Koordinatorknoten
+   * Maximale Anzahl von Verbindungen: 300
+   * Maximale Anzahl Benutzerverbindungen: 297
+* Workerknoten
+   * Maximale Anzahl von Verbindungen: 600
+   * Maximale Anzahl Benutzerverbindungen: 597
+
+Verbindungsversuche über diese Grenzwerte hinaus führen zu einem Fehler. Das System reserviert drei Verbindungen für die Überwachung von Knoten. Aus diesem Grund sind für Benutzerabfragen drei Verbindungen weniger verfügbar als Verbindungen insgesamt.
+
+Das Einrichten neuer Verbindungen nimmt Zeit in Anspruch. Dies spricht gegen die meisten Anwendungen, die viele kurzlebige Verbindungen anfordern. Wir empfehlen die Verwendung eines Verbindungspoolers, um Transaktionen im Leerlauf zu verringern und vorhandene Verbindungen wiederzuverwenden. Weitere Informationen finden Sie in unserem [Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717).
+
+### <a name="storage-scaling"></a>Speicherskalierung
+
+Der Speicher auf Koordinator- und Workerknoten kann hochskaliert (vergrößert) werden, er kann aber nicht herunterskaliert werden.
+
+### <a name="storage-size"></a>Speichergröße
+
+Für Koordinator- und Workerknoten wird eine Speicherkapazität von bis zu 2 TiB unterstützt. Weitere Informationen finden Sie in den verfügbaren Speicheroptionen und der IOPS-Berechnung [oben](#compute-and-storage) für Knoten- und Clustergrößen.
 
 ## <a name="pricing"></a>Preise
 Aktuelle Preisinformationen finden Sie auf der Seite [Azure-Datenbank für MySQL – Preise](https://azure.microsoft.com/pricing/details/postgresql/).

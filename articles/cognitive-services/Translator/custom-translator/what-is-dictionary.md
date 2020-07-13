@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 510c75b6e1a06ab800128534a72c5e1f6e510600
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 826da5c3754ad03ac1fb62288f0b03ee2353d1f3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997042"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962261"
 ---
 # <a name="what-is-a-dictionary"></a>Definition: Wörterbuch
 
-Ein Wörterbuch umfasst Dokumente, die paarweise zugeordnet sind, und gibt Ausdrücke oder Sätze mit ihren entsprechenden Übersetzungen an. Verwenden Sie ein Wörterbuch in Ihrem Training, wenn Sie Microsoft Translator für alle Instanzen des Ausgangssatzes bzw. -ausdrucks immer die Übersetzung verwenden soll, die Sie im Wörterbuch angegeben haben. Wörterbücher werden auch als Glossare oder Terminologiedatenbanken bezeichnet. Sie können sich das so vorstellen, dass das Wörterbuch für alle Begriffe, die Sie angeben, den Ansatz „Kopieren und Ersetzen“ verfolgt. Darüber hinaus erstellt der Microsoft Custom Translator-Dienst eigene Universalwörterbücher und verwendet sie, um die Qualität seiner Übersetzung zu steigern. Ein vom Kunden bereitgestelltes Wörterbuch hat jedoch Vorrang und wird zuerst nach Wörtern oder Sätzen durchsucht.
+Ein Wörterbuch umfasst Dokumente, die paarweise zugeordnet sind, und gibt Ausdrücke oder Sätze mit ihren entsprechenden Übersetzungen an. Verwenden Sie ein Wörterbuch in Ihrem Training, wenn Translator für alle Instanzen des Ausgangssatzes bzw. -ausdrucks immer die Übersetzung verwenden soll, die Sie im Wörterbuch angegeben haben. Wörterbücher werden auch als Glossare oder Terminologiedatenbanken bezeichnet. Sie können sich das so vorstellen, dass das Wörterbuch für alle Begriffe, die Sie angeben, den Ansatz „Kopieren und Ersetzen“ verfolgt. Darüber hinaus erstellt das Custom Translator-Feature eigene Universalwörterbücher und verwendet sie, um die Qualität seiner Übersetzung zu steigern. Ein vom Kunden bereitgestelltes Wörterbuch hat jedoch Vorrang und wird zuerst nach Wörtern oder Sätzen durchsucht.
 
 Wörterbücher eignen sich nur für Projekte mit Sprachpaaren, die auf einem vollständig unterstützten allgemeinen neuronalen Netzwerkmodell von Microsoft basieren. [Vollständige Liste der Sprachen anzeigen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 

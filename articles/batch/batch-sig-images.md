@@ -1,18 +1,19 @@
 ---
-title: Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Pools
-description: Benutzerdefinierte Images sind eine effiziente Möglichkeit zum Konfigurieren von Computeknoten, um Ihre Batch-Workloads auszuführen.
+title: Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Imagepools
+description: Benutzerdefinierte Imagepools sind eine effiziente Möglichkeit zum Konfigurieren von Computeknoten, um Ihre Batch-Workloads auszuführen.
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 6731086bfcbe6a671c579593791fb7467b280bca
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 07/01/2020
+ms.custom: tracking-python
+ms.openlocfilehash: 962b3c84e7f3cecc5f4d64febbfca635733a0bae
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844487"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851709"
 ---
-# <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Pools
+# <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Imagepools
 
-Wenn Sie einen Azure Batch-Pool mithilfe der Konfiguration des virtuellen Computers erstellen, geben Sie das Image eines virtuellen Computers (VM) an, das das Betriebssystem für jeden Computeknoten im Pool bereitstellt. Sie können einen Pool von virtuellen Computern mit einem unterstützten Azure Marketplace-Image erstellen, oder Sie erstellen ein benutzerdefiniertes Image mit [Shared Image Gallery](../virtual-machines/windows/shared-image-galleries.md).
+Wenn Sie einen Azure Batch-Pool mithilfe der Konfiguration des virtuellen Computers erstellen, geben Sie das Image eines virtuellen Computers (VM) an, das das Betriebssystem für jeden Computeknoten im Pool bereitstellt. Sie können einen Pool von virtuellen Computern mit einem unterstützten Azure Marketplace-Image erstellen, oder Sie erstellen ein benutzerdefiniertes Image aus einem [Shared Image Gallery-Image](../virtual-machines/windows/shared-image-galleries.md).
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>Vorteile von Shared Image Gallery
 
@@ -29,7 +30,7 @@ Die Verwendung eines für Ihr Szenario konfigurierten freigegebenen Image kann m
 - **Anwendungen vorab installieren**: Das Vorinstallieren von Anwendungen auf dem Betriebssystemdatenträger ist effizienter und weniger fehleranfällig als die Installation von Anwendungen nach der Bereitstellung der Computeknoten mit einem Starttask.
 - **Große Datenmengen einmalig kopieren**: Sie können statische Daten zu einem Teil des verwalteten freigegebenen Image machen, indem Sie die Daten auf die Datenträger eines verwalteten Image kopieren. Dieser Vorgang muss nur einmal ausgeführt werden und stellt Daten für jeden Knoten des Pools zur Verfügung.
 - **Pools auf größere Größen skalieren**: Mit Shared Image Gallery können Sie größere Pools mit Ihren benutzerdefinierten Images zusammen mit weiteren freigegebenen Imagereplikaten erstellen.
-- **Bessere Leistung als ein benutzerdefiniertes Image.** Bei Verwendung von freigegebenen Images verkürzt sich die Zeit, die der Pool benötigt, um den stabilen Status zu erreichen, um bis zu 25 %, und die Leerlaufzeit des virtuellen Computers verkürzt sich um bis zu 30 %.
+- **Bessere Leistung als bei einfacher Verwendung eines verwalteten Images als benutzerdefiniertes Image.** Bei Verwendung eines Shared Image-Pools benutzerdefinierter Images verkürzt sich die Zeit, die der Pool benötigt, um den stabilen Status zu erreichen, um bis zu 25 %, und die Leerlaufzeit des virtuellen Computers verkürzt sich um bis zu 30 %.
 - **Versionsverwaltung und Gruppierung von Images zur einfacheren Verwaltung**: Die Imagegruppierungsdefinition enthält Informationen darüber, warum das Image erstellt wurde, für welches Betriebssystem es vorgesehen ist und wie es verwendet wird. Das Gruppieren von Images ermöglicht eine einfachere Imageverwaltung. Weitere Informationen finden Sie unter [Imagedefinitionen](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -44,9 +45,11 @@ Die Verwendung eines für Ihr Szenario konfigurierten freigegebenen Image kann m
 > [!NOTE]
 > Ihr freigegebenes Image muss sich in demselben Abonnement befinden wie das Batch-Konto. Das Image kann sich in unterschiedlichen Regionen befinden, sofern es über Replikate in derselben Region verfügt wie Ihr Batch-Konto.
 
-## <a name="prepare-a-custom-image"></a>Vorbereiten eines benutzerdefinierten Images
+Wenn Sie eine Azure AD-Anwendung verwenden, um einen Pool mit benutzerdefinierten Images aus einem Shared Image Gallery-Image zu erstellen, muss dieser Anwendung eine [in Azure integrierte Rolle](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) erteilt worden sein, die ihr Zugriff auf das Shared Image gibt. Sie können diesen Zugriff im Azure-Portal erteilen, indem Sie zum Shared Image navigieren, **Zugriffssteuerung (IAM)** auswählen und eine Rollenzuweisung für die Anwendung hinzufügen.
 
-In Azure können Sie ein benutzerdefiniertes Image über folgende Komponenten vorbereiten:
+## <a name="prepare-a-shared-image"></a>Vorbereiten eines Shared Image
+
+In Azure können Sie ein freigegebenes Image aus einem verwalteten Image vorbereiten, das seinerseits aus Folgendem erstellt werden kann:
 
 - Momentaufnahmen des Betriebssystems und der Datenträger eines virtuellen Azure-Computers
 - Einen generalisierten virtuellen Azure-Computer mit verwalteten Datenträgern

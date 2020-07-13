@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670558"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963239"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Erfassen von Leistungsindikatoren für Linux-Anwendungen in Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -34,10 +34,10 @@ Die MySQL-Authentifizierungsdatei befindet sich in `/var/opt/microsoft/mysql-cim
 ### <a name="authentication-file-format"></a>Authentifizierungsdateiformat
 Die MySQL-OMI-Authentifizierungsdatei hat das folgende Format
 
-    [Port]=[Bind-Address], [username], [Base64 encoded Password]
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    AutoUpdate=[true|false]
+> [Port]=[Bind-Address], [Benutzername], [Base64-codiertes Kennwort]  
+> (Port)=(Bind-Address), (Benutzername), (Base64-codiertes Kennwort)  
+> (Port)=(Bind-Address), (Benutzername), (Base64-codiertes Kennwort)  
+> AutoUpdate = [true|false]  
 
 In der folgenden Tabelle werden die Einträge aus der Authentifizierungsdatei beschrieben.
 
@@ -63,7 +63,7 @@ Die folgende Tabelle enthält Beispielinstanzeinstellungen
 ### <a name="mysql-omi-authentication-file-program"></a>MySQL-OMI-Authentifizierungsdateiprogramm
 In der Installation von MySQL-OMI-Anbieter enthalten ist ein MySQL-OMI-Authentifizierungsdateiprogramm, mit dem die MySQL-OMI-Authentifizierungsdatei bearbeitet werden kann. Das Authentifizierungsdateiprogramm befindet sich an folgendem Speicherort.
 
-    /opt/microsoft/mysql-cimprov/bin/mycimprovauth
+`/opt/microsoft/mysql-cimprov/bin/mycimprovauth`
 
 > [!NOTE]
 > Die Datei mit den Anmeldeinformationen muss vom omsagent-Konto gelesen werden können. Es wird empfohlen, den „mycimprovauth“-Befehl als omsagent auszuführen.
@@ -81,15 +81,18 @@ Die folgende Tabelle enthält Details zur Syntax für die Verwendung von mycimpr
 
 Mit den folgenden Beispielbefehlen wird ein Standardbenutzerkonto für den MySQL-Server auf „localhost“ definiert.  In das Kennwortfeld sollte Nur-Text eingegeben werden, das Kennwort in der MySQL-OMI-Authentifizierungsdatei ist Base 64-codiert
 
-    sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
-    sudo /opt/omi/bin/service_control restart
+```console
+sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
+sudo /opt/omi/bin/service_control restart
+```
 
 ### <a name="database-permissions-required-for-mysql-performance-counters"></a>Datenbankberechtigungen für MySQL-Leistungsindikatoren
 Der MySQL-Benutzer benötigt Zugriff auf die folgenden Abfragen zum Erfassen von MySQL-Server-Leistungsdaten. 
 
-    SHOW GLOBAL STATUS;
-    SHOW GLOBAL VARIABLES:
-
+```sql
+SHOW GLOBAL STATUS;
+SHOW GLOBAL VARIABLES:
+```
 
 Der MySQL-Benutzer benötigt auch SELECT-Zugriff auf die folgenden Standardtabellen.
 
@@ -98,9 +101,10 @@ Der MySQL-Benutzer benötigt auch SELECT-Zugriff auf die folgenden Standardtabel
 
 Diese Berechtigungen können durch Ausführen der folgenden „grant“-Befehle erteilt werden.
 
-    GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
-    GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
-
+```sql
+GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
+GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
+```
 
 > [!NOTE]
 > Der gewährende Benutzer muss über die „GRANT-Option“-Berechtigung sowie über die Berechtigung verfügen, die gewährt wird, um einem Benutzer der MySQL-Überwachung Berechtigungen zu gewähren.
@@ -132,12 +136,14 @@ Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten an Azure Mon
 
 ## <a name="apache-http-server"></a>Apache HTTP Server 
 Falls Apache HTTP Server auf dem Computer erkannt wird, wenn das omsagent-Paket installiert wird, wird ein Leistungsüberwachungsanbieter für Apache HTTP Server automatisch installiert. Dieser Anbieter basiert auf einem Apache-Modul, das in den Apache HTTP Server geladen werden muss, um auf Leistungsdaten zuzugreifen. Das Modul kann mithilfe des folgenden Befehls geladen werden:
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
 ```
 
 Führen Sie folgenden Befehl aus, um das Apache-Überwachungsmodul zu entfernen:
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 

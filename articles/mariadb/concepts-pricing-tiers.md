@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: f00d93a639bacd1d0862fed7b6b003302bb2920e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/9/2020
+ms.openlocfilehash: 7ded54e0116e6c6e58c0ca8019942dfaaaa88480
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097658"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954193"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB – Tarife
 
 Sie können eine Azure Database for MariaDB-Serverinstanz basierend auf drei unterschiedlichen Tarifen erstellen: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Die Tarife unterscheiden sich anhand der bereitstellbaren Menge an Rechenleistung in V-Kernen, des Arbeitsspeichers pro V-Kern und der zum Speichern der Daten verwendeten Speichertechnologie. Alle Ressourcen werden auf der MariaDB-Serverebene bereitgestellt. Ein Server kann über eine oder mehrere Datenbanken verfügen.
 
-|    | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+| Resource | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|
 | Computegeneration | Gen 5 |Gen 5 | Gen 5 |
 | V-Kerne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -43,7 +43,7 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 
 Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die für Ihren Azure Database for MariaDB-Server zur Verfügung steht. Der Speicher wird für die Datenbankdateien, temporären Dateien, Transaktionsprotokolle und MariaDB-Serverprotokolle verwendet. Außerdem wird durch die Gesamtmenge an bereitgestelltem Speicher die E/A-Kapazität Ihres Servers definiert.
 
-|    | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+| Speicherattribute   | Basic | Universell | Arbeitsspeicheroptimiert |
 |:---|:----------|:--------------------|:---------------------|
 | Speichertyp | Storage Basic | Allgemeiner Speicher | Allgemeiner Speicher |
 | Speichergröße | 5 GB bis 1 TB | 5 GB bis 4 TB | 5 GB bis 4 TB |
@@ -58,6 +58,20 @@ Während und nach der Erstellung des Servers können Sie zusätzliche Speicherka
 Der Tarif „Basic“ umfasst keine IOPS-Garantie. Für die Tarife „Allgemein“ und „Arbeitsspeicheroptimiert“ wird der IOPS-Wert gegenüber der bereitgestellten Speichergröße in einem Verhältnis von 3:1 skaliert.
 
 Sie können Ihren E/A-Verbrauch im Azure-Portal oder mit Azure CLI-Befehlen überwachen. Die wichtigen zu überwachenden Metriken sind das [Speicherlimit, der Speicherprozentsatz, der genutzte Speicher und der E/A-Prozentsatz](concepts-monitoring.md).
+
+### <a name="large-storage-preview"></a>Großspeicher (Vorschauversion)
+
+Wir erhöhen die Speicherlimits für die Tarife „Universell“ und „Arbeitsspeicheroptimiert“. Neu erstellte Server, für die die Vorschauversion verwendet wird, können bis zu 16 TB an Speicher bereitstellen. Der IOPS-Wert kann im Verhältnis 3:1 auf bis zu 20.000 IOPS skaliert werden. Wie beim derzeit allgemein verfügbaren Speicher auch, können Sie nach der Erstellung des Servers zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher auf Grundlage des Speicherbedarfs Ihrer Workload automatisch zu vergrößern.
+
+| Speicherattribute | Universell | Arbeitsspeicheroptimiert |
+|:-------------|:--------------------|:---------------------|
+| Speichertyp | Azure Storage Premium | Azure Storage Premium |
+| Speichergröße | 32 GB bis 16 TB| 32 bis 16 TB |
+| Speicherinkrementgröße | 1 GB | 1 GB |
+| IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS| 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS |
+
+> [!IMPORTANT]
+> Großspeicher befindet sich in den folgenden Regionen derzeit in der öffentlichen Vorschauphase: „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Westen“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Australien, Osten“, „Australien, Südosten“, „USA, Westen 2“ und „USA, Westen-Mitte“.
 
 ### <a name="reaching-the-storage-limit"></a>Erreichen der Speicherbegrenzung
 

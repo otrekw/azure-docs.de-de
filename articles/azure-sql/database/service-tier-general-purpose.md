@@ -1,10 +1,10 @@
 ---
-title: Dienstebene „Allgemein“
-titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Erfahren Sie mehr über die Dienstebene „Universell“ für Azure SQL-Datenbank und Azure SQL Managed Instance.
+title: Universelle Dienstebene
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
+description: Hier erhalten Sie Informationen zur Dienstebene „Universell“ für Azure SQL-Datenbank und Azure SQL Managed Instance.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,27 +12,27 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
-ms.openlocfilehash: 7fd446e6894c3c88701527bb2d3668a570888a06
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ee218253309995e721c97f4a7f7b4547b32f7c36
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038061"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986640"
 ---
-# <a name="general-purpose-service-tier---azure-sql-database--sql-managed-instance"></a>Dienstebene „Universell“ – Azure SQL-Datenbank & SQL Managed Instance
+# <a name="general-purpose-service-tier---azure-sql-database-and-azure-sql-managed-instance"></a>Dienstebene „Universell“ – Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 > [!NOTE]
-> Die Dienstebene „Universell“ beim vCore-basierten Kaufmodell wird beim DTU-basierten Kaufmodell als Dienstebene „Standard“ bezeichnet. Einen Vergleich zwischen dem vCore-basierten Kaufmodell und dem DTU-basierten Kaufmodell finden Sie unter [Wahl zwischen dem vCore-basierten und dem DTU-basierten Kaufmodell – Azure SQL-Datenbank und SQL Managed Instance](purchasing-models.md).
+> Die Dienstebene „Universell“ im vCore-basierten Kaufmodell wird im DTU-basierten Kaufmodell als Dienstebene „Standard“ bezeichnet. Einen Vergleich zwischen dem vCore-basierten Kaufmodell und dem DTU-basierten Kaufmodell finden Sie unter [Wahl zwischen dem vCore-basierten und dem DTU-basierten Kaufmodell – Azure SQL-Datenbank und SQL Managed Instance](purchasing-models.md).
 
-Azure SQL-Datenbank und Azure SQL Managed Instance basieren beide auf der an die Cloudumgebung angepassten Architektur der SQL Server-Datenbank-Engine, um eine Verfügbarkeit von 99,99 % selbst bei Infrastrukturausfällen sicherzustellen. 
+Azure SQL-Datenbank und Azure SQL Managed Instance basieren auf der Architektur der SQL Server-Datenbank-Engine, die an die Cloudumgebung angepasst ist, um auch bei Infrastrukturfehlern eine Verfügbarkeit von 99,99 % sicherzustellen. 
 
 Es gibt zwei Dienstebenen für Azure SQL-Datenbank und SQL Managed Instance: 
 
-- Allgemeiner Zweck
+- Universell
 - Unternehmenskritisch
 
-Azure SQL-Datenbank verfügt noch über eine dritte Dienstebene, die derzeit nicht für Azure SQL Managed Instance verfügbar ist: 
+Azure SQL-Datenbank verfügt noch über eine dritte Dienstebene, die derzeit nicht für Azure SQL Managed Instance verfügbar ist:
 
 - Hyperscale
 
@@ -51,11 +51,11 @@ Bei einem Upgrade der Datenbank-Engine oder des Betriebssystems, einem Ausfall e
 
 ## <a name="when-to-choose-this-service-tier"></a>Wann sollte diese Dienstebene gewählt werden?
 
-Die Dienstebene „Universell“ ist eine Standarddienstebene in Azure SQL-Datenbank und Azure SQL Managed Instance, die für die meisten generischen Arbeitsauslastungen konzipiert ist. Wenn Sie eine vollständig verwaltete Datenbank-Engine mit einer 99,99%-SLA mit einer Speicherlatenz von 5 bis 10 ms benötigen (was in den meisten Fällen für SQL Server auf einer Azure-VM zutrifft) ist der Tarif „Universell“ für Sie die richtige Wahl.
+Die Dienstebene „Universell“ ist eine Standarddienstebene in Azure SQL-Datenbank und Azure SQL Managed Instance, die für die meisten generischen Workloads konzipiert ist. Wenn Sie eine vollständig verwaltete Datenbank-Engine mit einer 99,99%-SLA mit einer Speicherlatenz von 5 bis 10 ms benötigen, was in den meisten Fällen auf SQL Server auf einem virtuellen Azure-Computer (Virtual Machine, VM) zutrifft, ist der Tarif „Universell“ für Sie die richtige Wahl.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die Ressourcenmerkmale (Anzahl von Kernen, E/A, Arbeitsspeicher) der Ebene „Universell“ bzw. „Standard“ für [SQL Managed Instance](../managed-instance/resource-limits.md#service-tier-characteristics), für eine Einzeldatenbank beim [vCore-basierten Modell](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) bzw. [DTU-Modell](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes) oder für einen Pool für elastische Datenbanken beim [vCore-basierten Modell](resource-limits-vcore-elastic-pools.md#general-purpose---provisioned-compute---gen4) bzw. [DTU-Modell](resource-limits-dtu-elastic-pools.md#standard-elastic-pool-limits) an.
+- Sehen Sie sich die Ressourcenmerkmale (Anzahl von Kernen, E/A, Arbeitsspeicher) der Ebene „Universell“ bzw. „Standard“ für [SQL Managed Instance](../managed-instance/resource-limits.md#service-tier-characteristics), für eine Einzeldatenbank im [vCore-basierten Modell](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) oder im [DTU-Modell](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes) oder für einen Pool für elastische Datenbanken im [vCore-basierten Modell](resource-limits-vcore-elastic-pools.md#general-purpose---provisioned-compute---gen4) und im [DTU-Modell](resource-limits-dtu-elastic-pools.md#standard-elastic-pool-limits) an.
 - Informationen zu den Tarifen [Unternehmenskritisch](service-tier-business-critical.md) und [Hyperscale](service-tier-hyperscale.md)
 - Informationen zu [Service Fabric](../../service-fabric/service-fabric-overview.md)
 - Weitere Optionen zu Hochverfügbarkeit und Notfallwiederherstellung finden Sie unter [Geschäftskontinuität](business-continuity-high-availability-disaster-recover-hadr-overview.md).

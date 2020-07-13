@@ -10,24 +10,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/11/2020
+ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: d46e2a9820ec0c45d197f135428f1ace712b2fb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c01ed6dbbd6e1f7febfb99df11d2ee67cb1e5465
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125144"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800601"
 ---
 # <a name="container-security-in-security-center"></a>Containersicherheit in Security Center
 
-Azure Security Center ist die native Azure-Lösung für die Containersicherheit. Security Center ist auch die optimale zentralisierte Benutzeroberfläche für die Sicherheit Ihrer Cloudworkloads, VMs, Server und Container.
+Azure Security Center ist die native Azure-Lösung zum Sichern Ihrer Container. Security Center kann die folgenden Containerressourcentypen schützen:
 
-In diesem Artikel wird beschrieben, wie Security Center dabei hilft, die Sicherheit Ihrer Container und deren Apps zu verbessern, zu überwachen und zu verwalten. Sie erfahren, wie Security Center diese Kernaspekte der Containersicherheit unterstützt:
 
-* Verwaltung von Sicherheitsrisiken
-* Härtung der Containerumgebung
-* Laufzeitschutz
+
+|Resource |Name  |Details  |
+|:---------:|---------|---------|
+|![Containerhost](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)|Containerhosts (virtuelle Computer, die Docker ausführen)|Security Center scannt Ihre Docker-Konfigurationen und bietet Ihnen durch die Bereitstellung einer Liste aller festgestellten Regelverstöße Einblick in die Fehlkonfigurationen. Security Center bietet Richtlinien, mit denen Sie diese Probleme schnell beheben und Zeit sparen können. Security Center bewertet fortlaufend die Docker-Konfigurationen und unterrichtet Sie über deren aktuellen Zustand.|
+|![Kubernetes-Dienst](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)|AKS-Cluster (Azure Kubernetes Service)|Gewinnen Sie mit dem [optionalen AKS-Paket von Security Center](azure-kubernetes-service-integration.md) für Benutzer des Standard-Tarifs einen tieferen Einblick in Ihre AKS-Knoten, den Clouddatenverkehr und die Sicherheitssteuerungen.|
+|![Containerregistrierung](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)|Azure Container Registry-Registrierungen (ACR)|Verschaffen Sie sich tiefere Einblicke in die Sicherheitsrisiken der Images in ihren ARM-basierten ACR-Registrierungen, indem Sie das [optionale ACR-Paket von Security Center](azure-kubernetes-service-integration.md) für Benutzer des Standard-Tarifs verwenden.|
+||||
+
+
+In diesem Artikel wird beschrieben, wie Sie diese Pakete verwenden können, um die Sicherheit ihrer Container und deren Apps zu verbessern, zu überwachen und zu verwalten. Sie erfahren, wie Security Center diese Kernaspekte der Containersicherheit unterstützt:
+
+- [Verwaltung von Sicherheitsrisiken: Scannen von Containerimages](#vulnerability-management---scanning-container-images)
+- [Umgebungshärtung: kontinuierliche Überwachung ihrer Docker-Konfiguration und Kubernetes-Cluster](#environment-hardening)
+- [Laufzeitschutz: Bedrohungserkennung in Echtzeit](#run-time-protection---real-time-threat-detection)
 
 [![Registerkarte „Containersicherheit“ in Azure Security Center](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
@@ -65,36 +75,13 @@ Ausführliche Informationen zu den möglichen relevanten Security Center-Empfehl
 
 ## <a name="run-time-protection---real-time-threat-detection"></a>Laufzeitschutz: Bedrohungserkennung in Echtzeit
 
-Security Center bietet eine Echtzeit-Bedrohungserkennung für Ihre Containerumgebungen und generiert Warnungen für verdächtige Aktivitäten. Mit diesen Informationen können Sie schnell Sicherheitsprobleme lösen und die Sicherheit Ihrer Container verbessern.
-
-Bedrohungen werden auf Host- und AKS-Clusterebene erkannt. Ausführliche Informationen finden Sie unter [Bedrohungserkennung für Azure-Container](threat-protection.md#azure-containers).
+[!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
-## <a name="container-security-faq"></a>Containersicherheit – häufig gestellte Fragen (FAQ)
 
-### <a name="what-types-of-images-can-azure-security-center-scan"></a>Welche Imagetypen kann Azure Security Center scannen?
-Security Center scannt auf Linux-Betriebssystemen basierende Images, die Shellzugriff bereitstellen. 
-
-Der Qualys-Scanner unterstützt keine extrem minimalistischen Images wie [Docker-Scratch](https://hub.docker.com/_/scratch/)-Images oder Images ohne Distribution, die nur Ihre Anwendung und deren Laufzeitabhängigkeiten ohne Paket-Manager, Shell oder Betriebssystem enthalten.
-
-### <a name="how-does-azure-security-center-scan-an-image"></a>Wie scannt Azure Security Center ein Image?
-Das Image wird aus der Registrierung gepullt. Anschließend wird es in einer isolierten Sandbox mit dem Qualys-Scanner ausgeführt, der eine Liste bekannter Sicherheitsrisiken extrahiert.
-
-Security Center filtert und klassifiziert die Ergebnisse des Scanners. Wenn ein Image fehlerfrei ist, markiert Security Center es entsprechend. Security Center generiert Sicherheitsempfehlungen nur für Images, bei denen Probleme behoben werden müssen. Indem Sie nur benachrichtigt werden, wenn Probleme auftreten, reduziert Security Center das Potenzial von unerwünschten Informationswarnungen.
-
-### <a name="how-often-does-azure-security-center-scan-my-images"></a>Wie häufig scannt Azure Security Center meine Images?
-Imagescans werden bei jedem Push ausgelöst.
-
-### <a name="can-i-get-the-scan-results-via-rest-api"></a>Kann ich die Scanergebnisse über die REST-API abrufen?
-Ja. Die Ergebnisse befinden sich unter [Sub-Assessments Rest API](/rest/api/securitycenter/subassessments/list/) (Unterbewertungen-REST-API). Außerdem können Sie Azure Resource Graph (ARG) verwenden, die Kusto-ähnliche API für alle Ihre Ressourcen: Mit einer Abfrage kann ein bestimmter Scan abgerufen werden.
- 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Containersicherheit in Azure Security Center finden Sie in diesen verwandten Artikeln:
-
-* Informationen zum Sicherheitsstatus Ihrer containerbezogenen Ressourcen finden Sie im Abschnitt „Container“ unter [Schützen Ihrer Computer und Anwendungen](security-center-virtual-machine-protection.md#containers).
-
-* Ausführliche Informationen zur [Integration mit Azure Kubernetes Service](azure-kubernetes-service-integration.md)
-
-* Ausführliche Informationen zur [Integration mit Azure Container Registry](azure-container-registry-integration.md)
+In dieser Übersicht haben Sie die Kernelemente der Containersicherheit in Azure Security Center kennengelernt. Fahren Sie mit [Überwachen der Sicherheit Ihrer Container](monitor-container-security.md) fort.
+> [!div class="nextstepaction"]
+> [Überwachen der Sicherheit Ihrer Container](monitor-container-security.md)

@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721896"
 ---
 # <a name="collaborative-coding-with-git"></a>Gemeinsames Schreiben von Code mit Git
@@ -39,7 +39,7 @@ Sie können auch einen neuen Branch erstellen, indem Sie den folgenden Git Bash
 git checkout -b <new branch name> <base branch name>
 
 ```
-Wenn Sie keinen \<Namen für den Basisbranch> angeben, basiert der neue Branch auf `master`. 
+Wenn Sie keinen \<base branch name> angeben, basiert der neue Branch auf `master`. 
 
 Führen Sie den folgenden Befehl aus, um zu Ihrem Arbeitsbranch zu wechseln: 
 

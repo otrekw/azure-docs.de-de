@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 03/09/2020
-ms.openlocfilehash: 513e198f9184d5789d5b33de7f05cda0c5dc094d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/26/2020
+ms.openlocfilehash: 3d8bf23dcb9bfc390b9e165bcf38bf8feea5135f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033361"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833671"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -78,10 +78,10 @@ Details zum Migrieren von Datenverkehr zu neuen Gateways in bestimmten Regionen 
 | --- | --- |
 | Australien, Mitte    | 20.36.105.0 |
 | Australien, Mitte 2   | 20.36.113.0 |
-| Australien (Osten)       | 13.75.149.87, 40.79.161.1 |
+| Australien (Osten)       | 13.75.149.87, 40.79.161.1, 13.70.112.9 |
 | Australien, Südosten | 191.239.192.109, 13.73.109.251 |
 | Brasilien Süd         | 104.41.11.5, 191.233.200.14 |
-| Kanada, Mitte       | 40.85.224.249      |
+| Kanada, Mitte       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
 | Kanada, Osten          | 40.86.226.166      |
 | USA (Mitte)           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
 | China, Osten           | 139.219.130.35     |
@@ -102,13 +102,15 @@ Details zum Migrieren von Datenverkehr zu neuen Gateways in bestimmten Regionen 
 | Korea, Mitte        | 52.231.32.42       |
 | Korea, Süden          | 52.231.200.86      |
 | USA Nord Mitte     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
-| Nordeuropa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 |
+| Nordeuropa         | 40.113.93.91, 191.235.193.75, 52.138.224.1, 13.74.104.113 |
 | Norwegen, Osten          | 51.120.96.0        |
 | Norwegen, Westen          | 51.120.216.0       |
 | Südafrika, Norden   | 102.133.152.0      |
 | Südafrika, Westen    | 102.133.24.0       |
 | USA Süd Mitte     | 13.66.62.124, 23.98.162.75, 104.214.16.32   |
 | Südostasien      | 104.43.15.0, 23.100.117.95, 40.78.232.3   |
+| Schweiz, Norden    | 51.107.56.0, 51.107.57.0 |
+| Schweiz, Westen     | 51.107.152.0, 51.107.153.0 |
 | VAE, Mitte          | 20.37.72.64        |
 | Vereinigte Arabische Emirate, Norden            | 65.52.248.0        |
 | UK, Süden             | 51.140.184.11      |
@@ -116,7 +118,7 @@ Details zum Migrieren von Datenverkehr zu neuen Gateways in bestimmten Regionen 
 | USA, Westen-Mitte      | 13.78.145.25       |
 | Europa, Westen          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | USA (Westen)              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
-| USA, Westen 2            | 13.66.226.202      |
+| USA, Westen 2            | 13.66.226.202, 40.78.240.8  |
 |                      |                    |
 
 ## <a name="next-steps"></a>Nächste Schritte

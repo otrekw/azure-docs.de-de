@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
 ms.openlocfilehash: 39179c9b6d02d810561485f6a4af0102711ad0ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186633"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Fehler bei der Clustererstellung
@@ -26,7 +26,7 @@ In diesem Artikel werden Lösungen für Fehler beschrieben, die beim Erstellen v
 
 ### <a name="error"></a>Fehler
 
-„Script Action location cannot be accessed URI:\<SCRIPT ACTION URL\> (Zugriff auf Speicherort der Skriptaktion nicht möglich. URI: <URL DER SKRIPTAKTION>)“
+„Script Action location cannot be accessed URI: \<SCRIPT ACTION URL\>“ (Zugriff auf Speicherort der Skriptaktion nicht möglich. URI:)
 
 #### <a name="error-message"></a>Fehlermeldung
 
@@ -48,11 +48,11 @@ Der HDInsight-Dienst kann nicht auf die URL der Skriptaktion zugreifen, die Sie 
 
 ### <a name="error"></a>Fehler
 
-„Script Action location cannot be accessed URI: (Zugriff auf Speicherort der Skriptaktion nicht möglich. URI:) \<SCRIPT_ACTION_URL\> (<URL_DER_SKRIPTAKTION>)“
+„Script Action location cannot be accessed URI: \<SCRIPT_ACTION_URL\>“ (Zugriff auf Speicherort der Skriptaktion nicht möglich. URI:)
 
 #### <a name="error-message"></a>Fehlermeldung
 
-„The given script URI \<SCRIPT_URI\> is in ADLS, but this cluster has no data lake storage principal (Der angegebene Skript-URI <SKRIPT_URI> befindet sich in ADLS, dieser Cluster hat jedoch keinen Data Lake Storage-Prinzipal.)“
+„The given script URI \<SCRIPT_URI\> is in ADLS, but this cluster has no data lake storage principal“ (Das angegebene Skript-URI <SKRIPT_URI> befindet sich in ADLS, dieser Cluster hat jedoch keinen Data Lake Storage-Prinzipal)
 
 ### <a name="cause"></a>Ursache
 
@@ -68,7 +68,7 @@ Fügen Sie dem Cluster das entsprechende Azure Data Lake Store Gen1-Konto hinzu.
 
 ### <a name="error"></a>Fehler
 
-„VM size \<CUSTOMER_SPECIFIED_VM_SIZE\> provided in the request is invalid or not supported for role \<ROLE\>. (Die in der Anforderung angegebene VM-Größe <VOM_KUNDEN_ANGEGEBENE_VM-GRÖSSE> ist ungültig oder wird für die Rolle <ROLLE> nicht unterstützt.) Gültige Werte sind: \<VALID_VM_SIZE_FOR_ROLE\>. (<GÜLTIGE_VM-GRÖSSE_FÜR_ROLLE>.)“
+„Die in der Anforderung angegebene VM-Größe ‚\<CUSTOMER_SPECIFIED_VM_SIZE\>‘ ist ungültig oder wird für die Rolle ‚\<ROLE\>‘ nicht unterstützt. Gültige Werte sind: \<VALID_VM_SIZE_FOR_ROLE\>“.
 
 ### <a name="cause"></a>Ursache
 
@@ -84,7 +84,7 @@ In der Fehlermeldung sind die gültigen Werte für die VM-Größe aufgeführt. W
 
 ### <a name="error"></a>Fehler
 
-„Die VirtualNetworkId ist ungültig. VirtualNetworkId: \<BENUTZER_VIRTUALNETWORKID\>*“
+„Die VirtualNetworkId ist ungültig. VirtualNetworkId ‚\<USER_VIRTUALNETWORKID\>‘*“
 
 ### <a name="cause"></a>Ursache
 
@@ -108,11 +108,11 @@ Hier ein Beispiel für die ID eines virtuellen Netzwerks:
 
 ### <a name="error"></a>Fehler
 
-„Cluster deployment failed due to an error in the custom script action. (Fehler bei Clusterbereitstellung aufgrund eines Fehlers in der benutzerdefinierten Skriptaktion.) Failed Actions: \<SCRIPT_NAME\>, Please go to Ambari UI to further debug the failure. (<SKRIPTNAME>. Debuggen Sie den Fehler auf der Ambari-Benutzeroberfläche.)“
+„Cluster deployment failed due to an error in the custom script action. (Fehler bei Clusterbereitstellung aufgrund eines Fehlers in der benutzerdefinierten Skriptaktion.) Failed Actions: \<SCRIPT_NAME\>, Please go to Ambari UI to further debug the failure.“ (Fehlgeschlagene Aktionen: <SKRIPTNAME>. Debuggen Sie den Fehler auf der Ambari-Benutzeroberfläche)
 
 ### <a name="cause"></a>Ursache
 
-Das benutzerdefinierte Skript, das Sie bei der Anforderung zum Erstellen eines Clusters angegeben haben, wird nach der erfolgreichen Bereitstellung des Clusters ausgeführt. Dieser Fehlercode gibt an, dass während der Ausführung des benutzerdefinierten Skripts mit dem Namen \<SKRIPTNAME\> ein Fehler aufgetreten ist.
+Das benutzerdefinierte Skript, das Sie bei der Anforderung zum Erstellen eines Clusters angegeben haben, wird nach der erfolgreichen Bereitstellung des Clusters ausgeführt. Dieser Fehlercode gibt an, dass während der Ausführung des benutzerdefinierten Skripts mit dem Namen \<SCRIPT_NAME\> ein Fehler aufgetreten ist.
 
 ### <a name="resolution"></a>Lösung
 
@@ -124,7 +124,7 @@ Da es sich bei dem Skript um Ihr benutzerdefiniertes Skript handelt, empfiehlt e
 
 ### <a name="error"></a>Fehler
 
-„The \<META_STORE_TYPE\> Metastore schema version \<METASTORE_MAJOR_VERSION\> in database \<DATABASE_NAME\> is incompatible with cluster version \<CLUSTER_VERSION\> (Die Schemaversion <METASTORE_HAUPTVERSION> des Metastores <METASTORETYP> in der Datenbank <DATENBANKNAME> ist mit der Clusterversion <CLUSTERVERSION> nicht kompatibel.)“
+„Die \<META_STORE_TYPE\>-Metastore-Schemaversion \<METASTORE_MAJOR_VERSION\> in der Datenbank \<DATABASE_NAME\> ist mit der Clusterversion \<CLUSTER_VERSION\> nicht kompatibel“.
 
 ### <a name="cause"></a>Ursache
 
@@ -161,7 +161,7 @@ Wenn Sie Netzwerksicherheitsgruppen zum Steuern des Netzwerkdatenverkehrs verwen
 
 ### <a name="error"></a>Fehler
 
-„The Managed Identity does not have permissions on the storage account. (Die verwaltete Identität weist keine Berechtigungen für das Speicherkonto auf.) Please verify that 'Storage Blob Data Owner' role is assigned to the Managed Identity for the storage account. Storage: /subscriptions/ \<Subscription ID\> /resourceGroups/\< Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\>, Managed Identity: /subscriptions/ \<Subscription ID\> /resourceGroups/ /\< Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\> (Die verwaltete Identität weist keine Berechtigungen für das Speicherkonto auf. Überprüfen Sie, ob der verwalteten Identität die Rolle „Besitzer von Speicherblobdaten“ für das Speicherkonto zugewiesen wurde. Speicher: /subscriptions/ <Abonnement-ID> /resourceGroups/ <Ressourcengruppenname> /providers/Microsoft.Storage/storageAccounts/ <Speicherkontoname>, Verwaltete Identität: /subscriptions/ <Abonnement-ID> /resourceGroups/ / <Ressourcengruppenname> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ <Name der benutzerseitig zugewiesenen verwalteten Identität>)“
+„The Managed Identity does not have permissions on the storage account. (Die verwaltete Identität weist keine Berechtigungen für das Speicherkonto auf.) Please verify that 'Storage Blob Data Owner' role is assigned to the Managed Identity for the storage account. Storage: /subscriptions/ \<Subscription ID\> /resourceGroups/\< Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\>, Managed Identity: /subscriptions/ \<Subscription ID\> /resourceGroups/ /\< Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\>"
 
 ### <a name="cause"></a>Ursache
 
@@ -182,7 +182,7 @@ Weitere Informationen finden Sie unter [Festlegen von Berechtigungen für verwal
 
 ### <a name="error"></a>Fehler
 
-„The security rules in the Network Security Group /subscriptions/\<SubscriptionID\>/resourceGroups/<Resource Group name\> default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\> configured with subnet /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name\>/subnets/\<Subnet Name\> does not allow required inbound and/or outbound connectivity. (Die Sicherheitsregeln in der Netzwerksicherheitsgruppe /subscriptions/<SubscriptionID>/resourceGroups/<Name der Ressourcengruppe> default/providers/Microsoft.Network/networkSecurityGroups/<Name der Netzwerksicherheitsgruppe>, die mit Subnetz /subscriptions/<SubscriptionID>/resourceGroups/<Name der Ressourcengruppe> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/<Name des virtuellen Netzwerks>/subnets/<Subnetzname> konfiguriert wurde, lassen keine erforderlichen eingehenden und/oder ausgehenden Verbindungen zu.) For more information, please visit [Plan a virtual network for Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment), or contact support. (Weitere Informationen finden Sie unter „Planen eines virtuellen Netzwerks für Azure HDInsight“, oder wenden Sie sich an den Support.)“
+"The security rules in the Network Security Group /subscriptions/\<SubscriptionID\>/resourceGroups/<Resource Group name\> default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\> configured with subnet /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name\>/subnets/\<Subnet Name\> does not allow required inbound and/or outbound connectivity. („Die Sicherheitsregeln in der Netzwerksicherheitsgruppe /subscriptions/\<SubscriptionID\>/resourceGroups/<Resource Group name\> default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\>, die mit dem Subnetz /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name\>/subnets/\<Subnet Name\> konfiguriert ist, lässt keine eingehenden und/oder ausgehenden Verbindungen zu) For more information, please visit [Plan a virtual network for Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment), or contact support. (Weitere Informationen finden Sie unter „Planen eines virtuellen Netzwerks für Azure HDInsight“, oder wenden Sie sich an den Support.)“
 
 ### <a name="cause"></a>Ursache
 

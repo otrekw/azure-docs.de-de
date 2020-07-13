@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3393c661240ae5619597256a6691ae43608d622b
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74072111"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856715"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Beispiele für die Routerkonfiguration zum Einrichten und Verwalten von NAT
 
@@ -30,59 +30,71 @@ Diese Seite enthält NAT-Konfigurationsbeispiele für Router der Serien Cisco AS
 
 ## <a name="cisco-asa-firewalls"></a>Cisco ASA-Firewalls
 ### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>PAT-Konfiguration für den Datenverkehr von Kundennetzwerk zu Microsoft
-    object network MSFT-PAT
-      range <SNAT-START-IP> <SNAT-END-IP>
+
+```console
+object network MSFT-PAT
+  range <SNAT-START-IP> <SNAT-END-IP>
 
 
-    object-group network MSFT-Range
-      network-object <IP> <Subnet_Mask>
+object-group network MSFT-Range
+  network-object <IP> <Subnet_Mask>
 
-    object-group network on-prem-range-1
-      network-object <IP> <Subnet-Mask>
+object-group network on-prem-range-1
+  network-object <IP> <Subnet-Mask>
 
-    object-group network on-prem-range-2
-      network-object <IP> <Subnet-Mask>
+object-group network on-prem-range-2
+  network-object <IP> <Subnet-Mask>
 
-    object-group network on-prem
-      network-object object on-prem-range-1
-      network-object object on-prem-range-2
+object-group network on-prem
+  network-object object on-prem-range-1
+  network-object object on-prem-range-2
 
-    nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
+nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
+```
 
 ### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>PAT-Konfiguration für den Datenverkehr von Microsoft zum Kundennetzwerk
 
 **Schnittstellen und Richtung:**
 
-    Source Interface (where the traffic enters the ASA): inside
-    Destination Interface (where the traffic exits the ASA): outside
+Quellschnittstelle (bei der der Datenverkehr in die ASA gelangt): innerhalb Zielschnittstelle (bei der der Datenverkehr die ASA verlässt): außerhalb
 
 **Konfiguration:**
 
 NAT-Pool:
 
-    object network outbound-PAT
-        host <NAT-IP>
+```console
+object network outbound-PAT
+    host <NAT-IP>
+```
 
 Zielserver:
 
-    object network Customer-Network
-        network-object <IP> <Subnet-Mask>
+```console
+object network Customer-Network
+    network-object <IP> <Subnet-Mask>
+```
 
-Objektgruppe für Kunden-IP-Adressen
+Objektgruppe für Kunden-IP-Adressen:
 
-    object-group network MSFT-Network-1
-        network-object <MSFT-IP> <Subnet-Mask>
+```console
+object-group network MSFT-Network-1
+    network-object <MSFT-IP> <Subnet-Mask>
 
-    object-group network MSFT-PAT-Networks
-        network-object object MSFT-Network-1
+object-group network MSFT-PAT-Networks
+    network-object object MSFT-Network-1
+```
 
 NAT-Befehle:
 
-    nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
+```console
+nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
+```
 
 
 ## <a name="juniper-srx-series-routers"></a>Router der Juniper SRX-Serie
 ### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Erstellen redundanter Ethernet-Schnittstellen für den Cluster
+
+```console
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -112,17 +124,50 @@ NAT-Befehle:
             }
         }
     }
-
+```
 
 ### <a name="2-create-two-security-zones"></a>2. Erstellen von zwei Sicherheitszonen
 * Richten Sie eine Trust Zone für das interne Netzwerk und eine Untrust Zone für Edgerouter zum externen Netzwerk ein.
 * Weisen Sie den Zonen entsprechende Schnittstellen zu.
 * Lassen Sie Dienste an den Schnittstellen zu.
 
-    security {       zones {           security-zone Trust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth0.100;               }           }           security-zone Untrust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth1.100;               }           }       }   }
+```console
+    security {
+        zones {
+            security-zone Trust {
+                host-inbound-traffic {
+                    system-services {
+                        ping;
+                    }
+                    protocols {
+                        bgp;
+                    }
+                }
+                interfaces {
+                    reth0.100;
+                }
+            }
+            security-zone Untrust {
+                host-inbound-traffic {
+                    system-services {
+                        ping;
+                    }
+                    protocols {
+                        bgp;
+                    }
+                }
+                interfaces {
+                    reth1.100;
+                }
+            }
+        }
+    }
+```
 
 
 ### <a name="3-create-security-policies-between-zones"></a>3. Erstellen von Sicherheitsrichtlinien zwischen Zeitzonen
+
+```console
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -151,12 +196,13 @@ NAT-Befehle:
             }
         }
     }
-
+```
 
 ### <a name="4-configure-nat-policies"></a>4. Konfigurieren von NAT-Richtlinien
 * Erstellen Sie zwei NAT-Pools. Einer dient für an Microsoft ausgehenden NAT-Datenverkehr, der andere für NAT-Datenverkehr von Microsoft zum Kunden.
 * Erstellen Sie Regeln für die NAT des jeweiligen Datenverkehrs.
-  
+
+```console
        security {
            nat {
                source {
@@ -211,11 +257,14 @@ NAT-Befehle:
                }
            }
        }
+```
 
 ### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Konfigurieren von BGP zum Ankündigen selektiver Namespacepräfixe in jede Richtung
 Beispiele finden Sie auf der Seite [Beispiele für Routingkonfiguration ](expressroute-config-samples-routing.md).
 
 ### <a name="6-create-policies"></a>6. Erstellen von Richtlinien
+
+```console
     routing-options {
                   autonomous-system <Customer-ASN>;
     }
@@ -309,6 +358,7 @@ Beispiele finden Sie auf der Seite [Beispiele für Routingkonfiguration ](expres
             }
         }
     }
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md) .

@@ -6,30 +6,19 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 900398a701659bff593df042db16890792e5cffd
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744743"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801375"
 ---
-# <a name="monitoring-the-security-of-your-containers"></a>Überwachen der Sicherheit Ihrer Container
+# <a name="monitor-the-security-of-your-containers"></a>Überwachen der Sicherheit Ihrer Container
 
 Auf dieser Seite wird erläutert, wie Sie die Sicherheitsfunktionen für Container verwenden, die im Konzeptartikel [Containersicherheit](container-security.md) beschrieben werden.
 
-Azure Security Center deckt die folgenden drei Aspekte der Containersicherheit ab:
-
-- **Verwaltung von Sicherheitsrisiken**: Wenn Sie den Standard-Tarif von Security Center nutzen (siehe [Preise](/azure/security-center/security-center-pricing)), können Sie Ihre ARM-basierte Azure Container Registry nach jedem Pushvorgang für ein neues Image überprüfen. Der Scanner (von Qualys) stellt Ergebnisse in Form von Security Center-Empfehlungen dar.
-    Detaillierte Anweisungen finden Sie weiter unten im Abschnitt [Überprüfen von Containerregistrierungen auf Sicherheitsrisiken](#scanning-your-arm-based-container-registries-for-vulnerabilities).
-
-- **Härten der Docker-Hosts Ihrer Container**: Security Center sucht nach nicht verwalteten Containern, die auf Linux-IaaS-VMs oder anderen Linux-Computern mit Docker gehostet werden, und vergleicht die Konfigurationen der Container kontinuierlich mit der CIS-Benchmark (Center for Internet Security) für Docker. Security Center warnt Sie, wenn ein Container einen der Kontrollpunkte nicht erfüllt. Die kontinuierliche Überwachung auf Sicherheitsrisiken aufgrund von Konfigurationsfehlern ist ein wesentlicher Bestandteil jedes Sicherheitsprogramms. 
-    Detaillierte Anweisungen finden Sie weiter unten im Abschnitt [Härten der Docker-Hosts Ihrer Container](#hardening-your-containers-docker-hosts).
-
-- **Härten Ihrer Azure Kubernetes Service-Cluster**: Security Center bietet Empfehlungen, wenn Sicherheitsrisiken in der Konfiguration Ihrer Azure Kubernetes Service-Cluster gefunden werden. Details zu den einzelnen Empfehlungen, die angezeigt werden können, finden Sie in den [Empfehlungen für Kubernetes Service](recommendations-reference.md#recs-containers).
-
-- **Schutz zur Laufzeit**: Wenn Sie den Standard-Tarif von Security Center nutzen, profitieren Sie von einem Echtzeit-Bedrohungsschutz für Ihre auf Containern basierenden Umgebungen. Security Center generiert Warnungen bei verdächtigen Aktivitäten auf Ebene des Hosts und des AKS-Clusters. Details zu relevanten Sicherheitswarnungen, die möglicherweise angezeigt werden, finden Sie in der Referenztabelle für Warnungen in den Abschnitten [Warnungen für Container: Azure Kubernetes Service-Cluster](alerts-reference.md#alerts-akscluster) und [Warnungen für Container: Hostebene](alerts-reference.md#alerts-containerhost).
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Überprüfen von ARM-basierten Containerregistrierungen auf Sicherheitsrisiken 
 

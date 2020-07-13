@@ -3,14 +3,16 @@ title: Benutzerprofil und ID für die Nutzung von Azure Notebooks Preview
 description: Es wird beschrieben, wie Sie Ihr Benutzerprofil und die Benutzer-ID mit Azure Notebooks erstellen und verwalten. Dies fließt in die URL von freigegebenen Notebooks ein.
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: d90eebf1b7b463e038bc5e54f51df0eb6ca746c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75646278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831351"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Ihr Profil und Ihre Benutzer-ID für Azure Notebooks Preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Innerhalb des leistungsstarken, auf Zusammenarbeit ausgelegten Bereichs von Azure Notebooks stellt Ihr Benutzerprofil Ihr öffentliches Bild für andere dar:
 
@@ -23,8 +25,6 @@ Ihre Benutzer-ID ist Teil der URLs, die Sie zum Teilen von Projekten und Noteboo
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Projektdateien.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Klone eines bestimmten Projekts.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Die HTML-Vorschau eines bestimmten Notebooks oder einer bestimmten Datei.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="your-user-id"></a>Ihre Benutzer-ID
 
@@ -61,4 +61,4 @@ Zum Bearbeiten Ihres Profils verwenden Sie den Befehl **Edit Profile Information
 ## <a name="next-steps"></a>Nächste Schritte  
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Ausführen eines Jupyter-Notebooks für lineare Regression](tutorial-create-run-jupyter-notebook.md)
+> [Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python](tutorial-create-run-jupyter-notebook.md)

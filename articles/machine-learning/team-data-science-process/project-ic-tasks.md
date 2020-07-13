@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721250"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Aufgaben für einen einzelnen Mitwirkenden am Team Data Science-Prozess
@@ -55,7 +55,7 @@ Damit Sie Repositorys klonen und Inhalte auf Ihrem lokalen Computer oder Ihrer D
 
 Um lokal mit Repositorys zu arbeiten und Ihre Änderungen in die freigegebenen Team- und Projektrepositorys zu übertragen, kopieren oder *klonen* Sie zunächst die Repositorys auf Ihren lokalen Computer. 
 
-1. Wechseln Sie in Azure DevOps zur Übersichtsseite für das Projekt Ihres Teams unter *https:\//\<Servername>/\<Organisationsname>/\<Teamname>* , z. B. **https:\//dev.azure.com/DataScienceUnit/MyTeam**.
+1. Wechseln Sie in Azure DevOps zur Übersichtsseite für das Projekt Ihres Teams unter *https:\//\<server name>/\<organization name>/\<team name>* , z. B. **https:\//dev.azure.com/DataScienceUnit/MyTeam**.
    
 1. Wählen Sie im linken Navigationsbereich **Repos** und dann oben auf der Seite das Repository aus, das Sie klonen möchten.
    

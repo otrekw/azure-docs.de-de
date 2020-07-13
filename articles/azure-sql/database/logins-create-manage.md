@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Erfahren Sie, wie Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse Benutzer mithilfe von Anmeldungen und Benutzerkonten für den Zugriff authentifizieren. Außerdem erfahren Sie, wie Sie Datenbankrollen und explizite Berechtigungen zuweisen, um Anmeldungen und Benutzer zum Durchführen von Aktionen und Abfragen von Daten autorisieren.
 keywords: Sicherheit für SQL-Datenbank,Datenbanksicherheitsverwaltung,Anmeldesicherheit,Datenbanksicherheit,Datenbankzugriff
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=3
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 296bf84c22313723c328e1775f697ee19dcb8f04
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: fbcec1ace45927561c56449cd8ca0c8d3306b3bd
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220552"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986282"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorisieren des Datenbankzugriffs für Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -85,13 +85,13 @@ An diesem Punkt ist Ihr Server oder Ihre verwaltete Instanz lediglich für den Z
 
   - Erstellen Sie eine weitere SQL-Anmeldung in der Masterdatenbank.
   - Fügen Sie die Anmeldung mit der Anweisung [ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) zur [festen Serverrolle „sysadmin“](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) hinzu. Diese Anmeldung verfügt über vollständige Administratorberechtigungen.
-  - Alternativ können Sie eine [Azure AD-Anmeldung](authentication-aad-configure.md)#provision-azure-ad-admin-sql-managed-instance) mit der [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)-Syntax erstellen.
+  - Alternativ können Sie eine [Azure AD-Anmeldung](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) mithilfe der Syntax [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) erstellen.
 
 - **Erstellen von SQL-Anmeldungen mit eingeschränkten Administratorberechtigungen in Azure SQL-Datenbank**
 
   - Erstellen Sie eine weitere SQL-Anmeldung in der Masterdatenbank.
   - Erstellen Sie ein Benutzerkonto in der Masterdatenbank, das dieser neuen Anmeldung zugeordnet ist.
-  - Fügen Sie das Benutzerkonto mithilfe der Anweisung [ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) zu `dbmanager`, der Rolle `loginmanager` oder beiden in der `master`-Datenbank hinzu (verwenden Sie für Azure Synapse die Anweisung [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)).
+  - Fügen Sie das Benutzerkonto mithilfe der Anweisung [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) der Rolle `dbmanager`, `loginmanager` oder beiden in der `master`-Datenbank hinzu (verwenden Sie für Azure Synapse die Anweisung [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)).
 
   > [!NOTE]
   > Die Rollen `dbmanager` und `loginmanager` gelten **nicht** für SQL Managed Instance-Bereitstellungen.
@@ -155,7 +155,7 @@ Nachdem Sie ein Benutzerkonto basierend auf einer Anmeldung oder als eigenständ
 
 Bei der effizienten Zugriffsverwaltung werden Berechtigungen verwendet, die Active Directory-Sicherheitsgruppen sowie festen oder benutzerdefinierten Rollen anstelle einzelner Benutzer zugewiesen werden.
 
-- Wenn Sie die Active Directory-Authentifizierung verwenden, fügen Sie Azure Active Directory-Benutzer in Azure Active Directory-Sicherheitsgruppen ein. Erstellen Sie einen eigenständigen Datenbankbenutzer für die Gruppe. Weisen Sie mindestens einem Datenbankbenutzer eine benutzerdefinierte Datenbankrolle mit spezifischen Berechtigungen zu, die der jeweiligen Benutzergruppe entspricht.
+- Wenn Sie die Active Directory-Authentifizierung verwenden, fügen Sie Azure Active Directory-Benutzer in Azure Active Directory-Sicherheitsgruppen ein. Erstellen Sie einen eigenständigen Datenbankbenutzer für die Gruppe. Fügen Sie mindestens einen Datenbankbenutzer als Mitglied zu benutzerdefinierten oder integrierten Datenbankrollen mit den spezifischen Berechtigungen hinzu, die für diese Benutzergruppe geeignet sind.
 
 - Wenn Sie die SQL-Authentifizierung verwenden, erstellen Sie eigenständige Datenbankbenutzer in der Datenbank. Weisen Sie mindestens einem Datenbankbenutzer eine benutzerdefinierte Datenbankrolle mit spezifischen Berechtigungen zu, die der jeweiligen Benutzergruppe entspricht.
 

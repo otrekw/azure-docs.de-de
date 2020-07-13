@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie Blobs in einem Container in Ihrem Azure 
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 03/30/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 76142838d1ec138b75fb6c594414b2ff5d8cd939
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: ff7eac9e004a06925fbfa657278e6ec848a7d600
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883293"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851276"
 ---
 # <a name="list-blobs-with-net"></a>Auflisten von Blobs mit .NET
 
@@ -24,6 +24,15 @@ In diesem Artikel wird beschrieben, wie Blobs mithilfe der [Azure Storage-Client
 ## <a name="understand-blob-listing-options"></a>Grundlegendes zu den Optionen für das Auflisten von Blobs
 
 Rufen Sie zum Auflisten der Blobs in einem Speicherkonto eine der folgenden Methoden auf:
+
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 - [CloudBlobClient.ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
 - [CloudBlobClient.ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
@@ -37,11 +46,13 @@ Rufen Sie zum Auflisten der Blobs in einem Container eine der folgenden Methoden
 
 Die Überladungen dieser Methoden bieten zusätzliche Optionen zum Steuern, wie Blobs durch den Auflistungsvorgang zurückgegeben werden. Diese Optionen sind in den folgenden Abschnitten beschrieben.
 
+---
+
 ### <a name="manage-how-many-results-are-returned"></a>Festlegen der Anzahl der zurückgegebenen Ergebnisse
 
-Standardmäßig werden durch einen einzelnen Auflistungsvorgang bis zu 5.000 Ergebnisse zurückgegeben. Wenn ein kleinerer Ergebnissatz zurückgegeben werden soll, geben Sie beim Aufrufen einer der **ListBlobs**-Methoden einen Wert ungleich NULL für den Parameter `maxresults` an.
+Standardmäßig gibt ein Auflistungsvorgang bis zu 5000 Ergebnisse in einem Durchgang zurück, Sie können jedoch die Anzahl der Ergebnisse angeben, die von jedem Auflistungsvorgang zurückgegeben werden soll. Die Beispiele in diesem Artikel veranschaulichen dies.
 
-Wenn ein Auflistungsvorgang mehr als 5.000 Blobs zurückgibt oder wenn Sie einen Wert für `maxresults` angegeben haben, aufgrund dessen dieser Vorgang eine Teilmenge der Container im Speicherkonto zurückgibt, gibt Azure Storage ein *Fortsetzungstoken* mit der Liste der Blobs zurück. Ein Fortsetzungstoken ist ein nicht transparenter Wert, den Sie verwenden können, um den nächsten Satz von Ergebnissen aus Azure Storage abzurufen.
+Wenn ein Auflistungsvorgang mehr als 5000 Blobs zurückgibt oder die Anzahl der verfügbaren Blobs die von Ihnen angegebene Anzahl überschreitet, gibt Azure Storage ein *Fortsetzungstoken* mit der Liste der Blobs zurück. Ein Fortsetzungstoken ist ein nicht transparenter Wert, den Sie verwenden können, um den nächsten Satz von Ergebnissen aus Azure Storage abzurufen.
 
 Überprüfen Sie im Code den Wert des Fortsetzungstokens, um zu bestimmen, ob er NULL ist. Wenn das Fortsetzungstoken NULL ist, ist der Satz der Ergebnisse vollständig. Wenn das Fortsetzungstoken nicht NULL ist, rufen Sie den Auflistungsvorgang erneut auf, und übergeben Sie das Fortsetzungstoken, um den nächsten Ergebnissatz so oft abzurufen, bis das Fortsetzungstoken NULL ist.
 
@@ -51,7 +62,11 @@ Um die Liste der Container zu filtern, geben Sie für den `prefix`-Parameter ein
 
 ### <a name="return-metadata"></a>Zurückgeben von Metadaten
 
-Wenn mit den Ergebnissen Blobmetadaten zurückgegeben werden sollen, geben Sie für die Enumeration [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) den Wert **Metadata** an. Weil Azure Storage Metadaten für jedes zurückgegebene Blob enthält, müssen Sie in diesem Kontext keine der **FetchAttributes**-Methoden aufrufen, um die Blobmetadaten abzurufen.
+Sie können zusammen mit den Ergebnissen Blobmetadaten zurückgeben. 
+
+- Wenn Sie das .NET v12 SDK verwenden, geben Sie den Wert **Metadaten** für die [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet)-Enumeration an.
+
+- Wenn Sie das .NET v11 SDK verwenden, geben Sie für die Enumeration [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) den Wert **Metadata** an. Weil Azure Storage Metadaten für jedes zurückgegebene Blob enthält, müssen Sie in diesem Kontext keine der **FetchAttributes**-Methoden aufrufen, um die Blobmetadaten abzurufen.
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Flache Auflistung und hierarchische Auflistung im Vergleich
 
@@ -66,6 +81,14 @@ Wenn Sie Ihre Blobs mithilfe eines Trennzeichens benennen, können Sie sie hiera
 Ein Auflistungsvorgang gibt Blobs standardmäßig in einer flachen Auflistung zurück. In einer flachen Auflistung werden Blobs nicht nach virtuellem Verzeichnis organisiert.
 
 Im folgenden Beispiel werden die Blobs im angegebenen Container mithilfe einer flachen Auflistung aufgeführt, wobei eine optionale Segmentgröße angegeben und der Blobname in ein Konsolenfenster geschrieben wird.
+
+Wenn Sie für Ihr Konto das Feature für hierarchische Namespaces aktiviert haben, sind Verzeichnisse nicht virtuell. Vielmehr handelt es sich um konkrete, unabhängige Objekte. Daher werden Verzeichnisse in der Liste als Blobs mit der Länge 0 (null) angezeigt.
+
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -85,7 +108,6 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 
             foreach (var blobItem in resultSegment.Results)
             {
-                // A flat listing operation returns only blobs, not virtual directories.
                 blob = (CloudBlob)blobItem;
 
                 // Write out some blob properties.
@@ -108,6 +130,8 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
+---
+
 Die Beispielausgabe sieht ähnlich wie hier aus:
 
 ```
@@ -125,6 +149,16 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 ## <a name="use-a-hierarchical-listing"></a>Verwenden einer hierarchischen Auflistung
 
 Wenn Sie einen Auflistungsvorgang hierarchisch aufrufen, gibt Azure Storage die virtuellen Verzeichnisse und Blobs auf der ersten Hiearchieebene zurück. Die Eigenschaft [Prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) der einzelnen virtuellen Verzeichnisse ist so festgelegt, dass Sie das Präfix in einem rekursiven Aufruf übergeben können, um das nächste Verzeichnis abzurufen.
+
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+Um Blobs hierarchisch aufzulisten, müssen Sie die Methode [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet) oder [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) aufrufen.
+
+Im folgenden Beispiel werden die Blobs im angegebenen Container mithilfe einer hierarchischen Auflistung aufgeführt, wobei eine optionale Segmentgröße angegeben und der Blobname in das Konsolenfenster geschrieben wird.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsHierarchicalListing":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Wenn Blobs hierarchisch aufgelistet werden sollen, legen Sie den Parameter `useFlatBlobListing` der Auflistungsmethode auf **false** fest.
 
@@ -182,6 +216,8 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
     }
 }
 ```
+
+---
 
 Die Beispielausgabe sieht ähnlich wie hier aus:
 

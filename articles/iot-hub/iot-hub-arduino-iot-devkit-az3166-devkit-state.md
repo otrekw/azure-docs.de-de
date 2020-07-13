@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73483953"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
@@ -106,7 +106,7 @@ Führen Sie die folgenden Schritte aus, während Ihr MXChip IoT DevKit mit Ihrem
 ![Beispieltestprozedur](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Sie können die unformatierten Daten des Gerätezwillings im Azure-Portal anzeigen: IoT Hub –\> IoT-Geräte –\> *\<Ihr Gerät\>*  -\> Gerätezwilling.
+> Sie können die unformatierten Daten des Gerätezwillings im Azure-Portal anzeigen: IoT Hub –\> IoT-Geräte –\> *\<your device\>*  -\> Gerätezwilling.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

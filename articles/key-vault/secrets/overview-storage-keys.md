@@ -9,16 +9,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 1125bafa43ce1752c58d1cce0bba66a6bbd32c32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58f41742519effc3959a3868345ed77c64db6341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685434"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508502"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Verwalten von Speicherkontoschlüsseln mit Key Vault und der Azure-Befehlszeilenschnittstelle
 
-Ein Azure-Speicherkonto verwendet Anmeldeinformationen, die sich aus einem Kontonamen und einem Schlüssel zusammensetzen. Der Schlüssel wird automatisch generiert und fungiert eher als ein Kennwort denn als ein kryptografischer Schlüssel. Key Vault verwaltet diese Speicherkontoschlüssel, indem sie als Key Vault-Geheimnisse gespeichert werden. 
+Ein Azure-Speicherkonto verwendet Anmeldeinformationen, die sich aus einem Kontonamen und einem Schlüssel zusammensetzen. Der Schlüssel wird automatisch generiert und fungiert eher als ein Kennwort denn als ein kryptografischer Schlüssel. Key Vault verwaltet Speicherkontoschlüssel, indem sie im Speicherkonto regelmäßig neu generiert werden, und stellt SAS-Token für den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto zur Verfügung.
 
 Sie können das Key Vault-Feature für verwaltete Speicherkontoschlüssel verwenden, um Schlüssel für ein Azure Storage-Konto aufzulisten (synchronisieren) und die Schlüssel in regelmäßigen Abständen erneut zu generieren (rotieren). Sie können Schlüssel sowohl für Speicherkonten als auch für klassische Speicherkonten verwalten.
 
@@ -125,11 +125,11 @@ Nachdem der Vorgang erfolgreich ausgeführt wurde, kopieren Sie die Ausgabe.
 "se=2020-01-01&sp=***"
 ```
 
-Diese Ausgabe wird im nächsten Schritt an den Parameter `--template-id` übergeben.
+Diese Ausgabe wird im nächsten Schritt an den Parameter `--template-uri` übergeben.
 
 ### <a name="generate-a-shared-access-signature-definition"></a>Generieren einer SAS-Definition
 
-Verwenden Sie den Befehl [az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) der Azure-Befehlszeilenschnittstelle, indem Sie die Ausgabe des vorherigen Schritts an den Parameter `--template-id` übergeben, um eine SAS-Definition zu erstellen.  Sie können einen Namen Ihrer Wahl für den Parameter `-n` angeben.
+Verwenden Sie den Befehl [az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) der Azure-Befehlszeilenschnittstelle, indem Sie die Ausgabe des vorherigen Schritts an den Parameter `--template-uri` übergeben, um eine SAS-Definition zu erstellen.  Sie können einen Namen Ihrer Wahl für den Parameter `-n` angeben.
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>

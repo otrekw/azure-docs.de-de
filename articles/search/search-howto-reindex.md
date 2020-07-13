@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/18/2020
+ms.openlocfilehash: 96177686e78a0595ac4ad49b9969b22d862facd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77498379"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85051731"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Neuerstellen eines Index in Azure Cognitive Search.
 
@@ -21,7 +21,17 @@ In diesem Artikel werden die Neuerstellung eines Index der kognitiven Azure-Such
 
 Eine *Neuerstellung* bezieht sich auf Löschen und Neuerstellen der physischen Datenstrukturen, die einem Index zugeordnet sind, einschließlich aller auf Feldern basierenden invertierten Indizes. In der kognitiven Azure-Suche können einzelne Felder nicht gelöscht und neu erstellt werden. Um einen Index neu zu erstellen, muss der gesamte Feldspeicher gelöscht, basierend auf einem vorhandenen oder überarbeiteten Indexschema neu erstellt und dann mit Daten neu aufgefüllt werden, die mithilfe von Push an den Index übertragen oder per Pull aus externen Quellen bezogen werden. 
 
-Normalerweise werden Indizes während der Entwicklung neu erstellt. Es kann jedoch vorkommen, dass Sie einen Index auf Produktionsebene neu erstellen müssen, um Strukturänderungen zu berücksichtigen, wenn beispielsweise komplexe Typen oder Felder zu Vorschlagsfunktionen hinzugefügt werden.
+Normalerweise werden Indizes während der Entwicklung neu erstellt, wenn Sie den Indexentwurf durchlaufen. Es kann jedoch vorkommen, dass Sie einen Index auf Produktionsebene neu erstellen müssen, um Strukturänderungen zu berücksichtigen, wenn beispielsweise komplexe Typen oder Felder zu Vorschlagsfunktionen hinzugefügt werden.
+
+## <a name="rebuild-versus-refresh"></a>„Neu erstellen“ im Vergleich zu „Aktualisieren“
+
+Die Neuerstellung sollte nicht mit dem Aktualisieren des Inhalts eines Indexes mit neuen, geänderten oder gelöschten Dokumenten verwechselt werden. Die Aktualisierung eines Suchkorpus ist fast in jeder Suchanwendung eine Selbstverständlichkeit, wobei einige Szenarien aktuelle Aktualisierungen erfordern (z. B. wenn ein Suchkorpus Bestandsänderungen in einer Onlineverkaufsanwendung widerspiegeln muss).
+
+Solange Sie die Struktur des Index nicht ändern, können Sie einen Index mit den gleichen Techniken aktualisieren, mit denen Sie den Index anfänglich geladen haben:
+
+* Bei der Indizierung im Pushmodus können Sie [Dokumente hinzufügen, aktualisieren oder löschen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) aufrufen, um die Änderungen in einen Index zu pushen.
+
+* Für Indexer können Sie die [Indexerausführung planen](search-howto-schedule-indexers.md) und Änderungsnachverfolgung oder Zeitstempel verwenden, um das Delta zu identifizieren. Wenn Aktualisierungen schneller widergespiegelt werden müssen, als es von einem Scheduler geleistet werden kann, können Sie stattdessen die Indizierung im Pushmodus verwenden.
 
 ## <a name="rebuild-conditions"></a>Bedingungen für die Neuerstellung
 

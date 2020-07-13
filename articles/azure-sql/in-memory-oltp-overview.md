@@ -1,9 +1,9 @@
 ---
 title: In-Memory-Technologien
-description: In-Memory-Technologien in Azure SQL-Datenbank und Azure SQL Managed Instance verbessern die Leistung von Transaktions- und Analyseworkloads erheblich.
+description: Durch In-Memory-Technologien können Sie die Leistung von Transaktions- und Analyseworkloads in Azure SQL-Datenbank und Azure SQL Managed Instance erheblich verbessern.
 services: sql-database
-ms.service: sql-database
-ms.subservice: development
+ms.service: sql-db-mi
+ms.subservice: ''
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: c9b25912e1386520d61412a8ba05f6b02224fbe6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 43527e8e5860e0bbfc50643210156be943d2f174
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033751"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985189"
 ---
-# <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimieren der Leistung mithilfe von In-Memory-Technologien in Azure SQL-Datenbank und Azure SQL Managed Instance
+# <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimieren der Leistung mithilfe von In-Memory-Technologien in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 Mit In-Memory-Technologien können Sie die Leistung Ihrer Anwendung verbessern und die Kosten Ihrer Datenbank potenziell verringern.
 
-## <a name="when-to-use-in-memory-technologies"></a>Verwenden von In-Memory-Technologien
+## <a name="when-to-use-in-memory-technologies"></a>Verwendungszwecke von In-Memory-Technologien
 
 Durch die Verwendung von In-Memory-Technologien können Sie Leistungsverbesserungen bei verschiedenen Workloads erzielen:
 
@@ -35,7 +35,7 @@ In-Memory-Technologien können die Leistung dieser Workloads verbessern, indem s
 
 ## <a name="overview"></a>Übersicht
 
-Azure SQL-Datenbank und Azure SQL Managed Instance verfügen über die folgenden In-Memory-Technologien:
+Azure SQL-Datenbank und Azure SQL Managed Instance verfügen über die folgenden In-Memory-Technologien:
 
 - *[In-Memory-OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* erhöht die Anzahl von Transaktionen pro Sekunde und reduziert die Latenz für die Transaktionsverarbeitung. Szenarien, die von In-Memory-OLTP profitieren sind: hoher Durchsatz bei der Transaktionsverarbeitung z.B. Handel treiben, Spielen, Datenerfassung von Ereignissen oder IoT-Geräten, Zwischenspeichern, Laden von Daten, temporäre Tabellen und Szenarien mit Tabellenvariablen.
 - *Gruppierte Columnstore-Indizes* reduzieren den Speicherplatzbedarf (bis um das Zehnfache) und verbessern die Leistung für Berichts- und Analyseabfragen. Verwenden Sie sie mit Faktentabellen in Ihren Data Marts, um mehr Daten in Ihrer Datenbank zu speichern und die Leistung zu verbessern. Sie können sie auch mit Verlaufsdaten in der Betriebsdatenbank verwenden, um bis zu zehnmal mehr Daten zu archivieren und abfragen zu können.
@@ -44,13 +44,13 @@ Azure SQL-Datenbank und Azure SQL Managed Instance verfügen über die folgend
 
 Sowohl Columnstore-Indizes als auch In-Memory-OLTP gehören seit 2012 bzw. 2014 zum Funktionsumfang von SQL Server. Azure SQL-Datenbank, Azure SQL Managed Instance und SQL Server weisen dieselbe Implementierung von In-Memory-Technologien auf.
 
-## <a name="benefits-of-in-memory-technology"></a>Vorteile der In-Memory-Technologie
+## <a name="benefits-of-in-memory-technology"></a>Vorteile von In-Memory-Technologien
 
 Aufgrund der effizienteren Abfrage- und Transaktionsverarbeitung tragen In-Memory-Technologien auch zur Kostensenkung bei. Sie müssen in der Regel nicht zu einem höheren Datenbanktarif wechseln, um Leistungsvorteile zu erzielen. In einigen Fällen können Sie möglicherweise sogar zu einem niedrigen Tarif wechseln und dennoch in den Genuss von Leistungsverbesserungen durch In-Memory-Technologien kommen.
 
 Hier sind zwei Beispiele dafür, wie In-Memory-OLTP geholfen hat, die Leistung deutlich zu verbessern:
 
-- Mithilfe von In-Memory-OLTP [konnten Quorum Business Solutions ihre Workload verdoppeln und ihre DTUs um 70 % verbessern](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
+- Mithilfe von In-Memory-OLTP [konnten Quorum Business Solutions ihre Workload verdoppeln und ihre DTUs um 70 % verbessern](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu).
 - Das folgende Video veranschaulicht die erhebliche Verbesserung der Ressourcennutzung anhand einer Beispielworkload: [Video zu In-Memory-OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB). Weitere Informationen finden Sie in diesem Blogbeitrag: [In-Memory-OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
 > [!NOTE]  
@@ -76,7 +76,7 @@ Weitere Informationen zu In-Memory-OLTP in SQL Server finden Sie unter:
 
 ## <a name="in-memory-oltp"></a>In-Memory-OLTP
 
-In-Memory-OLTP-Technologie ermöglicht extrem schnelle Datenzugriffsvorgänge, indem sämtliche Daten im Arbeitsspeicher behalten werden. Die Technologie nutzt auch spezialisierte Indizes, die native Kompilierung von Abfragen sowie latchfreien Datenzugriff zur Verbesserung der Leistung der OLTP-Workload. Es gibt zwei Möglichkeiten, die In-Memory-OLTP-Daten zu organisieren:
+Die In-Memory-OLTP-Technologie ermöglicht extrem schnelle Datenzugriffsvorgänge, indem sämtliche Daten im Arbeitsspeicher gespeichert werden. Die Technologie nutzt auch spezialisierte Indizes, die native Kompilierung von Abfragen sowie latchfreien Datenzugriff zur Verbesserung der Leistung der OLTP-Workload. Es gibt zwei Möglichkeiten, die In-Memory-OLTP-Daten zu organisieren:
 
 - **Speicheroptimiertes Rowstoreformat**, in dem jede Zeile ein separates Arbeitsspeicherobjekt darstellt. Dies ist ein klassisches In-Memory-OLTP-Format, das für OLTP-Workloads mit hoher Leistung optimiert ist. Es gibt zwei Arten von speicheroptimierten Tabellen, die im speicheroptimierten Rowstoreformat verwendet werden können:
 
@@ -111,7 +111,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Datengröße und Speicherkapazität für In-Memory-OLTP
 
-In-Memory-OLTP enthält speicheroptimierte Tabellen, die zum Speichern von Benutzerdaten verwendet werden. Diese Tabellen sind müssen in den Arbeitsspeicher passen. Da Sie Arbeitsspeicher direkt im SQL-Datenbank-Dienst verwalten, arbeiten wir mit dem Konzept eines Kontingents für Benutzerdaten. Dieses Konzept wird als *In-Memory-OLTP-Speicher* bezeichnet.
+In-Memory-OLTP enthält speicheroptimierte Tabellen, die zum Speichern von Benutzerdaten verwendet werden. Diese Tabellen sind müssen in den Arbeitsspeicher passen. Weil Sie den Arbeitsspeicher direkt in SQL-Datenbank verwalten, arbeiten wir mit dem Konzept eines Kontingents für Benutzerdaten. Dieses Konzept wird als *In-Memory-OLTP-Speicher* bezeichnet.
 
 Jeder unterstützte Einzeldatenbank-Tarif und jeder Tarif für Pools für elastische Datenbanken beinhaltet eine bestimmte Menge an In-Memory-OLTP-Speicher.
 
@@ -129,7 +129,7 @@ Die folgenden Elemente werden bis zu Ihrer In-Memory-OLTP-Speicherkapazitätsobe
 
 Wenn Sie die Obergrenze erreichen, erhalten Sie einen Fehler vom Typ „Kontingent aufgebraucht“ und können dann keine Daten mehr einfügen oder aktualisieren. Eine Lösung dieses Fehlers besteht darin, Daten zu löschen oder zu einem höheren Datenbank- oder Pooltarif zu wechseln.
 
-Weitere Informationen zur Überwachung der In-Memory-OLTP-Speicherverwendung und zum Konfigurieren von Benachrichtigungen, wenn die Obergrenze fast erreicht ist, finden Sie unter [Überwachen des In-Memory-OLTP-Speichers](in-memory-oltp-monitor-space.md).
+Weitere Informationen zur Überwachung der In-Memory-OLTP-Speichernutzung und zum Konfigurieren von Benachrichtigungen, wenn die Obergrenze fast erreicht ist, finden Sie unter [Überwachen des In-Memory-OLTP-Speichers](in-memory-oltp-monitor-space.md).
 
 #### <a name="about-elastic-pools"></a>Hinweis zu Pools für elastische Datenbanken
 
@@ -164,7 +164,7 @@ Es gibt zwei Arten von Columnstoremodellen, die Sie zum Organisieren Ihrer Daten
 
 Ausführliche Videos zur Technologie:
 
-- [Columnstore-Index: Videos zur In-Memory-Analyse von der Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/) (in englischer Sprache)
+- [Columnstore-Index: Videos zur In-Memory-Analyse von der Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Datengröße und Speicher für Columnstore-Indizes
 
@@ -174,7 +174,7 @@ Wenn Sie gruppierte Columnstore-Indizes verwenden, wird eine Spaltenkomprimierun
 
 Wenn Sie z.B. eine Datenbank mit einer maximalen Größe von 1 Terabyte (TB) haben und mithilfe von Columnstore-Indizes eine zehnfache Komprimierung erreichen, können Sie insgesamt 10 TB Benutzerdaten in der Datenbank speichern.
 
-Bei Verwendung von nicht gruppierten Columnstore-Indizes wird die Basistabelle weiterhin im herkömmlichen Rowstore-Format gespeichert. Aus diesem Grund sind die Speichereinsparungen nicht so groß wie bei gruppierten Columnstore-Indizes. Wenn Sie jedoch mehrere herkömmliche nicht gruppierte Indizes durch einen einzelnen Columnstore-Index ersetzen, können Sie dennoch allgemeine Einsparungen beim Speicherbedarf für die Tabelle erzielen.
+Bei Verwendung von nicht gruppierten Columnstore-Indizes wird die Basistabelle weiterhin im herkömmlichen Rowstore-Format gespeichert. Daher sind die Speichereinsparungen nicht so signifikant wie bei gruppierten Columnstore-Indizes. Wenn Sie jedoch mehrere herkömmliche nicht gruppierte Indizes durch einen einzelnen Columnstore-Index ersetzen, können Sie dennoch allgemeine Einsparungen beim Speicherbedarf für die Tabelle erzielen.
 
 ### <a name="changing-service-tiers-of-databases-containing-columnstore-indexes"></a>Ändern der Dienstebenen für Datenbanken mit Columnstore-Indizes
 
@@ -183,7 +183,7 @@ Das *Herabstufen einer Einzeldatenbank auf die Tarife „Basic“ oder „Standa
 Wenn Sie über einen **gruppierten** Columnstore-Index verfügen, ist die gesamte Tabelle nach dem Downgrade nicht mehr verfügbar. Aus diesem Grund wird empfohlen, alle *gruppierten* Columnstore-Indizes vor dem Herabstufen Ihrer Datenbank auf einen nicht unterstützten Tarif bzw. auf eine nicht unterstützte Ebene zu löschen.
 
 > [!Note]
-> Verwaltete Azure SQL-Datenbank-Instanz unterstützt Columnstore-Indizes in allen Tarifen.
+> SQL Managed Instance unterstützt Columnstore-Indizes in allen Tarifen.
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
@@ -207,7 +207,7 @@ Wenn Sie über einen **gruppierten** Columnstore-Index verfügen, ist die gesamt
 
 ### <a name="application-design"></a>Anwendungsentwurf
 
-- [In-Memory OLTP (In-Memory Optimization)](https://msdn.microsoft.com/library/dn133186.aspx)
+- [In-Memory-OLTP (In-Memory-Optimierung)](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Verwenden von In-Memory-OLTP in einer vorhandenen Azure SQL-Anwendung](in-memory-oltp-configure.md)
 
 ### <a name="tools"></a>Tools

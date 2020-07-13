@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: e95f68610f8469a829255d6a16115dcf728ef612
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: ba3e8b9d7649d56d1639f7f608d85a2da04ff74a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856736"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465557"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Installieren der Azure IoT Edge-Runtime unter Windows
 
@@ -42,7 +42,7 @@ Informationen zur aktuellen Version von IoT Edge finden Sie auf der Website für
 IoT Edge für Windows erfordert Windows-Version 1809/Build 17763. Dies ist der neueste [Windows Long Term Support-Build](https://docs.microsoft.com/windows/release-information/). Im Hinblick auf die Unterstützung von Windows-SKUs informieren Sie sich, was unterstützt wird – je nachdem, ob Sie sich für Produktionsszenarien oder Entwicklungs- und Testszenarien vorbereiten:
 
 * **Produktion:** Neueste Informationen dazu, welche Betriebssysteme zurzeit für Produktionsszenarien unterstützt werden, finden Sie unter [Von Azure IoT Edge unterstützte Systeme](support.md#operating-systems).
-* **Entwickeln und Testen**: Für Entwicklungs- und Testszenarien kann Azure IoT Edge mit Windows-Containern unter jeder Version von Windows 10 oder Windows Server 2019 installiert werden, die das Containerfeature unterstützt.
+* **Entwickeln und Testen**: In Entwicklungs- und Testszenarien kann Azure IoT Edge mit Windows-Containern auf jeder SKU (Pro, Enterprise, Server usw.) von Windows-Build 17763 installiert werden, die das Containerfeature unterstützt.
 
 IoT Core-Geräte müssen zur Unterstützung der IoT Edge-Runtime das optionale Feature „IoT Core-Windows-Container“enthalten. Verwenden Sie den folgenden Befehl in einer [PowerShell-Remotesitzung](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell), um zu überprüfen, ob Windows-Container auf Ihrem Gerät unterstützt werden:
 

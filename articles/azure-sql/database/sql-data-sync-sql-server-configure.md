@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 405705bee3ada2d2c43e9a243724d823a5e28602
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6138dc06e8ed70ba85f4ccfc3370c044f34bd1f1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188697"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963953"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Tutorial: Einrichten der SQL-Datensynchronisierung zwischen Datenbanken in Azure SQL-Datenbank und SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,20 +34,20 @@ PowerShell-Beispiele für die Konfiguration der SQL-Datensynchronisierung finden
 
 ## <a name="create-sync-group"></a>Erstellen der Synchronisierungsgruppe
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), um Ihre SQL-Datenbank zu suchen. Suchen Sie nach **SQL-Datenbanken**, und wählen Sie diese Option aus.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um Ihre Datenbank in SQL-Datenbank zu suchen. Suchen Sie nach **SQL-Datenbanken**, und wählen Sie diese Option aus.
 
-    ![Suche nach SQL-Datenbanken, Microsoft Azure-Portal](./media/sql-data-sync-sql-server-configure/search-for-sql-databases.png)
+    ![Suchen nach Datenbanken, Microsoft Azure-Portal](./media/sql-data-sync-sql-server-configure/search-for-sql-databases.png)
 
 1. Wählen Sie die Datenbank aus, die Sie als die Hub-Datenbank für die Datensynchronisierung verwenden möchten.
 
-    ![Auswählen in der Liste der SQL-Datenbanken, Microsoft Azure-Portal](./media/sql-data-sync-sql-server-configure/select-sql-database.png)
+    ![Auswählen aus der Liste der Datenbanken, Microsoft Azure-Portal](./media/sql-data-sync-sql-server-configure/select-sql-database.png)
 
     > [!NOTE]
     > Die Hub-Datenbank ist der zentrale Endpunkt einer Synchronisierungstopologie, bei der eine Synchronisierungsgruppe mehrere Datenbankendpunkte enthält. Alle anderen Mitgliedsdatenbanken mit Endpunkten in der gleichen Synchronisierungsgruppe werden mit der Hub-Datenbank synchronisiert.
 
 1. Wählen Sie auf im Menü **SQL-Datenbank** für die ausgewählte Datenbank die Option **Mit anderen Datenbanken synchronisieren** aus.
 
-    ![Synchronisieren mit anderen Datenbanken, SQL-Datenbank, Microsoft Azure-Portal](./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png)
+    ![Synchronisieren mit anderen Datenbanken, Microsoft Azure-Portal](./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png)
 
 1. Wählen Sie auf der Seite **Mit anderen Datenbanken synchronisieren** die Option **Neue Synchronisierungsgruppe** aus. Die Seite **Neue Synchronisierungsgruppe** wird geöffnet, und **Synchronisierungsgruppe erstellen** (Schritt 1) ist hervorgehoben.
 
@@ -63,7 +63,7 @@ PowerShell-Beispiele für die Konfiguration der SQL-Datensynchronisierung finden
    | **Konfliktlösung** | Wählen Sie **Hub hat Vorrang** oder **Mitglied hat Vorrang** aus.<br/><br/>**Hub hat Vorrang** bedeutet, dass bei einem Konflikt die in Konflikt stehenden Daten in der Mitgliedsdatenbank durch die Daten in der Hub-Datenbank überschrieben werden.<br/><br/>**Mitglied hat Vorrang** bedeutet, dass bei einem Konflikt die in Konflikt stehenden Daten in der Hub-Datenbank durch die Daten in der Mitgliedsdatenbank überschrieben werden. |
 
    > [!NOTE]
-   > Microsoft empfiehlt, eine neue, leere Datenbank als **Datenbank für Synchronisierungsmetadaten** zu erstellen. Durch die Datensynchronisierung werden Tabellen in Datenbanken erstellt und eine häufige Workload ausgeführt. Diese Datenbank wird als **Datenbank für Synchronisierungsmetadaten** für alle Synchronisierungsgruppen in einer ausgewählten Region freigegeben. Die Datenbank und ihr Name können nicht geändert werden, ohne alle Synchronisierungsgruppen und Synchronisierungs-Agents in der Region zu entfernen.
+   > Microsoft empfiehlt, eine neue, leere Datenbank als **Datenbank für Synchronisierungsmetadaten** zu erstellen. Durch die Datensynchronisierung werden Tabellen in Datenbanken erstellt und eine häufige Workload ausgeführt. Diese Datenbank wird als **Datenbank für Synchronisierungsmetadaten** für alle Synchronisierungsgruppen in einer ausgewählten Region und in einem ausgewählten Abonnement freigegeben. Sie können die Datenbank oder den Datenbanknamen nicht ändern, ohne alle Synchronisierungsgruppen und Synchronisierungs-Agents in der Region zu entfernen.
 
    Wählen Sie **OK** aus, und warten Sie, bis die Synchronisierungsgruppe erstellt und bereitgestellt wurde.
 
@@ -75,9 +75,9 @@ Geben Sie im Abschnitt **Hub-Datenbank** die vorhandenen Anmeldeinformationen f�
 
 ![Einstellungen für Schritt 2](./media/sql-data-sync-sql-server-configure/steptwo.png)
 
-### <a name="to-add-an-azure-sql-database"></a>So fügen Sie eine Azure SQL-Datenbank hinzu
+### <a name="to-add-a-database-in-azure-sql-database"></a>So fügen Sie eine Datenbank in Azure SQL-Datenbank hinzu
 
-Im Abschnitt **Mitgliedsdatenbank** können Sie eine Azure SQL-Datenbank optional zur Synchronisierungsgruppe hinzufügen, indem Sie auf **Azure SQL-Datenbank hinzufügen** klicken. Die Seite **Azure SQL-Datenbank konfigurieren** wird geöffnet.
+Im Abschnitt **Mitgliedsdatenbank** können Sie optional eine Datenbank in Azure SQL-Datenbank zur Synchronisierungsgruppe hinzufügen, indem Sie **Azure SQL-Datenbank hinzufügen** auswählen. Die Seite **Azure SQL-Datenbank konfigurieren** wird geöffnet.
 
   ![Schritt 2: Konfigurieren der Datenbank](./media/sql-data-sync-sql-server-configure/steptwo-configure.png)
 
@@ -88,7 +88,7 @@ Im Abschnitt **Mitgliedsdatenbank** können Sie eine Azure SQL-Datenbank optiona
   | **Name des Synchronisierungsmitglieds** | Geben Sie einen Namen für das neue Synchronisierungsmitglied an. Dieser Name unterscheidet sich vom Namen der Datenbank. |
   | **Abonnement** | Wählen Sie das verknüpfte Azure-Abonnement für die Abrechnung aus. |
   | **Azure SQL Server** | Wählen Sie den vorhandenen Server aus. |
-  | **Azure SQL-Datenbank** | Wählen Sie die vorhandene SQL-Datenbank aus. |
+  | **Azure SQL-Datenbank** | Wählen Sie die vorhandene Datenbank in SQL-Datenbank aus. |
   | **Synchronisierungsrichtungen** | Wählen Sie **Bidirektionale Synchronisierung**, **Zum Hub** oder **Vom Hub** aus. |
   | **Benutzername** und **Kennwort** | Geben Sie die vorhandenen Anmeldeinformationen für den Server ein, auf dem sich die Mitgliedsdatenbank befindet. Geben Sie in diesem Abschnitt *keine* neuen Anmeldeinformationen ein. |
 
@@ -167,7 +167,7 @@ Nach der Erstellung und Bereitstellung der neuen Synchronisierungsgruppenmitglie
 
 1. Wählen Sie **Speichern** aus.
 
-1. Standardmäßig werden Datenbanken erst synchronisiert, wenn dies per Zeitplan konfiguriert oder eine manuelle Synchronisierung ausgeführt wird. Navigieren Sie zum Ausführen einer manuellen Synchronisierung im Azure-Portal zu Ihrer SQL-Datenbank, wählen Sie **Mit anderen Datenbanken synchronisieren** aus, und wählen Sie anschließend die Synchronisierungsgruppe aus. Die Seite **Datensynchronisierung** wird geöffnet. Klicken Sie auf **Synchronisieren**.
+1. Standardmäßig werden Datenbanken erst synchronisiert, wenn dies per Zeitplan konfiguriert oder eine manuelle Synchronisierung ausgeführt wird. Navigieren Sie zum Ausführen einer manuellen Synchronisierung im Azure-Portal zu Ihrer Datenbank in SQL-Datenbank, wählen Sie **Mit anderen Datenbanken synchronisieren** aus, und wählen Sie dann die Synchronisierungsgruppe aus. Die Seite **Datensynchronisierung** wird geöffnet. Klicken Sie auf **Synchronisieren**.
 
     ![Manuelle Synchronisierung](./media/sql-data-sync-sql-server-configure/datasync-sync.png)
 

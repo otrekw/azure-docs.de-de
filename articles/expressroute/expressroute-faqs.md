@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 882a94034831b1c710031031918e70bf3581a4a6
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266643"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987296"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -152,7 +152,7 @@ Wenn eine der Querverbindungen ausfällt, bleibt die Konnektivität bestehen. Es
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Wie implementiere ich Redundanz für privates Peering?
 
-Mehrere ExpressRoute-Verbindungen von verschiedenen Peeringstandorten können mit demselben virtuellen Netzwerk verbunden werden, um eine hohe Verfügbarkeit für den Fall zu gewährleisten, dass eine einzelne Verbindung nicht mehr verfügbar ist. Sie können der lokaler Verbindung eine [höhere Gewichtung zuweisen](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection), um eine spezifische Verbindung zu bevorzugen. Es wird dringend empfohlen, dass Kunden mindestens zwei ExpressRoute-Verbindungen einrichten, um Single Points of Failure zu vermeiden. 
+Mehrere ExpressRoute-Verbindungen von verschiedenen Peeringstandorten oder bis zu vier Verbindungen vom gleichen Peeringstandort können mit demselben virtuellen Netzwerk verbunden werden, um eine hohe Verfügbarkeit für den Fall zu gewährleisten, dass eine einzelne Verbindung nicht mehr verfügbar ist. Sie können der lokaler Verbindung eine [höhere Gewichtung zuweisen](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection), um eine spezifische Verbindung zu bevorzugen. Es wird dringend empfohlen, dass Kunden mindestens zwei ExpressRoute-Verbindungen einrichten, um Single Points of Failure zu vermeiden. 
 
 Weitere Informationen zum Entwerfen für Hochverfügbarkeit finden Sie [hier](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) und zum Entwerfen für Notfallwiederherstellung [hier](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering).  
 
@@ -164,7 +164,7 @@ Weitere Informationen zum Entwerfen für Hochverfügbarkeit finden Sie [hier](ht
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Wie stelle ich Hochverfügbarkeit in einem mit ExpressRoute verbundenen virtuellen Netzwerk sicher?
 
-Hochverfügbarkeit erreichen Sie, indem Sie ExpressRoute-Verbindungen an verschiedenen Peeringstandorten (z. B. Singapur, Singapur2) mit Ihrem virtuellen Netzwerk verbinden. Sollte eine ExpressRoute-Verbindung ausfallen, erfolgt ein Failover auf eine andere ExpressRoute-Verbindung. Standardmäßig wird Datenverkehr, der Ihr virtuelles Netzwerk verlässt, auf der Grundlage von ECMP (Equal Cost Multi-path Routing) weitergeleitet. Mit der Verbindungsgewichtung können Sie einer Verbindung den Vorzug geben. Weitere Informationen finden Sie unter [Optimieren von ExpressRoute-Routing](expressroute-optimize-routing.md).
+Hochverfügbarkeit erreichen Sie, indem Sie bis zu vier ExpressRoute-Verbindungen vom gleichen Peeringstandort mit Ihrem virtuellen Netzwerk verbinden oder ExpressRoute-Verbindungen an verschiedenen Peeringstandorten (z. B. Singapur, Singapur2) mit Ihrem virtuellen Netzwerk verbinden. Sollte eine ExpressRoute-Verbindung ausfallen, erfolgt ein Failover auf eine andere ExpressRoute-Verbindung. Standardmäßig wird Datenverkehr, der Ihr virtuelles Netzwerk verlässt, auf der Grundlage von ECMP (Equal Cost Multi-path Routing) weitergeleitet. Mit der Verbindungsgewichtung können Sie einer Verbindung den Vorzug geben. Weitere Informationen finden Sie unter [Optimieren von ExpressRoute-Routing](expressroute-optimize-routing.md).
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Wie stelle ich sicher, dass mein Datenverkehr mit öffentlichen Azure-Diensten wie Azure Storage und Azure SQL über Microsoft-Peering oder öffentliches Peering auf dem ExpressRoute-Pfad bevorzugt wird?
 

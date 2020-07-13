@@ -2,7 +2,7 @@
 title: Überwachen der Datenbankleistung mit Intelligent Insights
 description: Die integrierte Intelligent Insights-Logik in Azure SQL-Datenbank und verwalteten Azure SQL-Instanzen überwacht kontinuierlich die Datenbanknutzung durch künstliche Intelligenz und ermittelt Störungen, die zu schlechter Leistung führen.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 08904b3a5a1053d64e3b54582189da5d82f62dee
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/12/2020
+ms.openlocfilehash: 96557a6049b316a69c32e96012206eab128e024a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84040941"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986503"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights mit KI für die Überwachung und Problembehandlung der Datenbankleistung (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Intelligent Insights in Azure SQL-Datenbank in verwalteten Azure SQL-Instanzen informiert Sie über die Leistung Ihrer Datenbank.
+Intelligent Insights in Azure SQL-Datenbank und Azure SQL Managed Instance informiert Sie über die Leistung Ihrer Datenbank.
 
-Die in Intelligent Insights integrierte Logik überwacht kontinuierlich die Datenbanknutzung durch künstliche Intelligenz und ermittelt Störungen, die zu mangelhafter Leistung führen. Nach dem Ermitteln wird eine detaillierte Analyse durchgeführt, die ein Intelligent Insights-Ressourcenprotokoll (namens SQLInsights) mit einer intelligenten Bewertung des Problems generiert. Die Bewertung besteht aus einer Analyse der Grundursache des Leistungsproblems der Datenbank und nach Möglichkeit Empfehlungen für Leistungsverbesserungen.
+Die in Intelligent Insights integrierte Logik überwacht kontinuierlich die Datenbanknutzung durch künstliche Intelligenz und ermittelt Störungen, die zu mangelhafter Leistung führen. Nach der Ermittlung wird eine detaillierte Analyse durchgeführt, die ein Intelligent Insights-Ressourcenprotokoll (namens SQLInsights) mit einer intelligenten Bewertung des Problems generiert. Die Bewertung besteht aus einer Analyse der Grundursache des Leistungsproblems der Datenbank und nach Möglichkeit Empfehlungen für Leistungsverbesserungen.
 
 ## <a name="what-can-intelligent-insights-do-for-you"></a>Was kann Intelligent Insights für Sie tun?
 
@@ -75,8 +75,11 @@ Die folgenden Intelligent Insights-Optionen sind verfügbar:
 | :----------------------------- | ----- | ----- |
 | **Configure Intelligent Insights** (Intelligent Insights konfigurieren): Konfigurieren Sie eine Intelligent Insights-Analyse für Ihre Datenbanken. | Ja | Ja |
 | **Stream insights to Azure SQL Analytics** (Erkenntnisse an die Azure SQL-Analyse streamen): Streamen Sie Erkenntnisse an Azure SQL-Analyse. | Ja | Ja |
-| **Stream insights to Event Hub** (Erkenntnisse an den Event Hub streamen): Streamen Sie Erkenntnisse an Event Hubs, damit weitere benutzerdefinierte Integrationen erfolgen können. | Ja | Ja |
-| **Stream insights to Azure Storage** (Erkenntnisse an Azure Storage streamen): Streamen Sie Erkenntnisse an Azure Storage, damit diese näher analysiert und langfristig archiviert werden können. | Ja | Ja |
+| **Stream insights to Azure Event Hubs** (Erkenntnisse an Azure Event Hubs streamen): Streamen Sie Erkenntnisse an Event Hubs, damit weitere benutzerdefinierte Integrationen erfolgen können. | Ja | Ja |
+| **Stream insights to Azure Storage** (Erkenntnisse an Azure Storage streamen): Streamen Sie Erkenntnisse an Azure Storage, damit diese genauer analysiert und langfristig archiviert werden können. | Ja | Ja |
+
+> [!NOTE]
+> Intelligent Insights ist eine Vorschaufunktion, die in den folgenden Regionen nicht verfügbar ist: „Europa, Westen“, „Europa, Norden“, „USA, Westen 1“ und „USA, Osten 1“.
 
 ## <a name="configure-the-export-of-the-intelligent-insights-log"></a>Konfigurieren des Exports des Intelligent Insights-Protokolls
 
@@ -86,7 +89,7 @@ Die Ausgabe von Intelligent Insights kann zur Analyse an eines von mehreren Ziel
 - Die an Azure Event Hubs gestreamte Ausgabe kann für die Entwicklung benutzerdefinierter Überwachungs- und Benachrichtigungsszenarien verwendet werden.
 - Die an Azure Storage gestreamte Ausgabe kann für die Entwicklung benutzerdefinierter Anwendungen genutzt werden, wie z. B. benutzerdefinierte Berichte, langfristige Datenarchivierung usw.
 
-Die Integration von Azure SQL-Analyse, Azure Event Hubs, Azure Storage oder Produkten von Drittanbietern, erfolgt, indem zunächst auf dem Blatt „Diagnoseeinstellungen“ einer Datenbank die Intelligent Insights-Protokollierung (das Protokoll „SQLInsights“) aktiviert wird. Anschließend müssen die Intelligent Insights-Protokolldaten für das Streaming an eines dieser Ziele konfiguriert werden.
+Die Integration von Azure SQL-Analyse, Azure Event Hubs, Azure Storage oder Drittanbieterprodukten erfolgt, indem zunächst auf dem Blatt „Diagnoseeinstellungen“ einer Datenbank die Intelligent Insights-Protokollierung (das Protokoll „SQLInsights“) aktiviert wird. Anschließend müssen die Intelligent Insights-Protokolldaten für das Streaming an eines dieser Ziele konfiguriert werden.
 
 Weitere Informationen dazu, wie die Intelligent Insights-Protokollierung aktiviert wird und wie Metrik- und Ressourcenprotokolldaten für das Streaming an ein nutzendes Produkt konfiguriert werden, finden Sie unter [Protokollierung von Metriken und Diagnosen](metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
@@ -106,7 +109,7 @@ Im folgenden Beispiel wird ein Intelligent Insights-Bericht in der Azure SQL-Ana
 
 Um Intelligent Insights mit Event Hubs zu verwenden, konfigurieren Sie Intelligent Insights-Protokolldaten für das Streaming an Event Hubs. Informationen dazu finden Sie unter [Protokollierung von Metriken und Diagnosen](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) und [Streamen von Azure-Diagnoseprotokollen an Event Hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
-Informationen zum Verwenden von Event Hubs, um benutzerdefinierte Überwachungen und Warnungen einzurichten, finden Sie unter [Welche Vorgänge können mit Metriken und Diagnoseprotokollen in Event Hubs ausgeführt werden?](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs).
+Wenn Sie Event Hubs zum Einrichten von benutzerdefinierten Überwachungen und Warnungen verwenden möchten, lesen Sie [Welche Vorgänge können mit Metrik- und Diagnoseprotokollen in Event Hubs ausgeführt werden?](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)
 
 ### <a name="set-up-with-azure-storage"></a>Einrichten mit Azure Storage
 
@@ -114,7 +117,7 @@ Um Intelligent Insights mit Azure Storage zu verwenden, konfigurieren Sie Intell
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>Benutzerdefinierte Integrationen von Intelligent Insights-Protokollen
 
-Informationen, wie Intelligent Insights mit Tools von Drittanbietern oder zum Entwickeln von benutzerdefinierten Warnungen und Überwachungen verwendet werden kann, finden Sie unter [Verwenden des Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank](intelligent-insights-use-diagnostics-log.md).
+Informationen zum Verwenden von Intelligent Insights mit Drittanbietertools oder zum Entwickeln von benutzerdefinierten Warnungen und Überwachungen finden Sie unter [Verwenden des Intelligent Insights-Diagnoseprotokolls für Leistungsprobleme bei Azure SQL-Datenbank und Azure SQL Managed Instance](intelligent-insights-use-diagnostics-log.md).
 
 ## <a name="detection-metrics"></a>Erkennungsmetriken
 
@@ -133,7 +136,7 @@ Alle Metriken werden in verschiedenen Beziehungen über ein wissenschaftlich abg
 
 - Details zum erkannten Leistungsproblem
 - Eine Analyse der Grundursache des erkannten Problems
-- Empfehlungen zu möglichen Verbesserungen der Leistung der überwachten SQL-Datenbank
+- Empfehlungen zu möglichen Verbesserungen der Leistung der überwachten Datenbank
 
 ## <a name="query-duration"></a>Abfragedauer
 

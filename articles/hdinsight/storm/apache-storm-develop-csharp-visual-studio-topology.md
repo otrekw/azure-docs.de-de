@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.openlocfilehash: 1903c2faab865152d1f3666f3c9dadd745058b56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75612290"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Entwickeln von C#-Topologien für Apache Storm mithilfe von Data Lake-Tools für Visual Studio
@@ -686,7 +686,7 @@ Obwohl es relativ einfach ist, eine Topologie in einem Cluster bereitzustellen, 
 
 1. Speichern Sie die Änderungen, und wählen Sie dann **F5** oder **Debuggen** > **Debugging starten** aus, um das Projekt zu starten. Daraufhin sollte ein Konsolenfenster angezeigt und mit fortschreitendem Test der Status protokolliert werden. Wenn `Tests finished` angezeigt wird, drücken Sie auf eine beliebige Taste, um das Fenster zu schließen.
 
-1. Verwenden Sie **Windows Explorer**, um das Verzeichnis zu suchen, welches das Projekt enthält. (Zum Beispiel: *C:\\Users\\\<Ihr_Benutzername>\\source\\repos\\WordCount\\WordCount*.) Öffnen Sie in diesem Verzeichnis dann das Unterverzeichnis *Bin*, und wählen Sie *Debuggen* aus. Es sollten die beim Ausführen der Tests erstellten Textdateien vorhanden sein: *sentences.txt*, *counter.txt* und *splitter.txt*. Öffnen Sie die einzelnen Textdateien, und überprüfen Sie die Daten.
+1. Verwenden Sie **Windows Explorer**, um das Verzeichnis zu suchen, welches das Projekt enthält. (Zum Beispiel: *C:\\Benutzer\\\<your_user_name>\\source\\repos\\WordCount\\WordCount*.) Öffnen Sie in diesem Verzeichnis dann das Unterverzeichnis *Bin*, und wählen Sie *Debuggen* aus. Es sollten die beim Ausführen der Tests erstellten Textdateien vorhanden sein: *sentences.txt*, *counter.txt* und *splitter.txt*. Öffnen Sie die einzelnen Textdateien, und überprüfen Sie die Daten.
 
    > [!NOTE]  
    > Zeichenfolgendaten bleiben in diesen Dateien als Array von Dezimalwerten erhalten. Beispiel: `[[97,103,111]]` in der Datei **splitter.txt** entspricht dem Wort *ago*.

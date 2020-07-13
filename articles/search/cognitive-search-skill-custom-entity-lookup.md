@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: 00192ab3663944908f282f601396651cdd319df2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085738"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987470"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Cognitive Search-Qualifikation„Benutzerdefinierte Entitätssuche“
 
@@ -38,17 +38,17 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| entitiesDefinitionUri    | Pfad zu einer JSON- oder CSV-Datei, die den gesamten Zieltext enthält, mit dem verglichen werden soll. Diese Entitätsdefinition wird am Anfang der Ausführung eines Indexers gelesen. Alle Aktualisierungen an dieser Datei während der Ausführung werden erst in nachfolgenden Ausführungen berücksichtigt. Auf diese Konfiguration muss über HTTPS zugegriffen werden können. Weitere Informationen zum erwarteten CSV- oder JSON-Schema finden Sie unter [Benutzerdefiniertes Entitätsdefinitionsformat](#custom-entity-definition-format) weiter unten.|
-|inlineEntitiesDefinition | Inline-JSON-Entitätsdefinitionen. Dieser Parameter ersetzt den entitiesDefinitionUri-Parameter, falls vorhanden. Es können nicht mehr als 10 KB der Konfiguration inline bereitgestellt werden. Weitere Informationen zum erwarteten JSON-Schema finden Sie unter [Benutzerdefinierte Entitätsdefinition](#custom-entity-definition-format) weiter unten. |
-|defaultLanguageCode |    (Optional) Sprachcode des Eingabetexts, der verwendet wird, um den Eingabetext mit Token zu versehen und abzugrenzen. Die folgenden Sprachen werden unterstützt: `da, de, en, es, fi, fr, it, ko, pt`. Die Standardsprache ist Englisch (`en`). Wenn Sie ein Sprachcode-Ländercode-Format übergeben, wird nur der Sprachcodeteil des Formats verwendet.  |
+| `entitiesDefinitionUri`    | Pfad zu einer JSON- oder CSV-Datei, die den gesamten Zieltext enthält, mit dem verglichen werden soll. Diese Entitätsdefinition wird am Anfang der Ausführung eines Indexers gelesen. Alle Aktualisierungen an dieser Datei während der Ausführung werden erst in nachfolgenden Ausführungen berücksichtigt. Auf diese Konfiguration muss über HTTPS zugegriffen werden können. Weitere Informationen zum erwarteten CSV- oder JSON-Schema finden Sie unter [Benutzerdefiniertes Entitätsdefinitionsformat](#custom-entity-definition-format) weiter unten.|
+|`inlineEntitiesDefinition` | Inline-JSON-Entitätsdefinitionen. Dieser Parameter ersetzt den entitiesDefinitionUri-Parameter, falls vorhanden. Es können nicht mehr als 10 KB der Konfiguration inline bereitgestellt werden. Weitere Informationen zum erwarteten JSON-Schema finden Sie unter [Benutzerdefinierte Entitätsdefinition](#custom-entity-definition-format) weiter unten. |
+|`defaultLanguageCode` |    (Optional) Sprachcode des Eingabetexts, der verwendet wird, um den Eingabetext mit Token zu versehen und abzugrenzen. Die folgenden Sprachen werden unterstützt: `da, de, en, es, fi, fr, it, ko, pt`. Die Standardsprache ist Englisch (`en`). Wenn Sie ein Sprachcode-Ländercode-Format übergeben, wird nur der Sprachcodeteil des Formats verwendet.  |
 
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
 | Eingabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
-| text          | Der zu analysierende Text          |
-| languageCode    | Optional. Der Standardwert ist `"en"`.  |
+| `text`          | Der zu analysierende Text          |
+| `languageCode`    | Optional. Der Standardwert ist `"en"`.  |
 
 
 ## <a name="skill-outputs"></a>Skillausgaben
@@ -56,7 +56,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 | Ausgabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
-| entities | Ein Array von Objekten, die Informationen über die gefundenen Übereinstimmungen enthalten, sowie zugehörige Metadaten. Jede der identifizierten Entitäten kann die folgenden Felder enthalten:  <ul> <li> *name:* Identifizierte Entität der obersten Ebene. Die Entität stellt die „normalisierte“ Form dar. </li> <li> *id:*  Ein eindeutiger Bezeichner für die Entität, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert.</li> <li> *description*: Entitätsbeschreibung, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert. </li> <li> *type:* Entitätstyp, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert.</li> <li> *subtype:* Entitätsuntertyp, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert.</li>  <li> *matches*: Sammlung, die die einzelnen Übereinstimmungen für diese Entität im Quelltext beschreibt. Jede Übereinstimmung verfügt über die folgenden Elemente: </li> <ul> <li> *text*: Die unformatierte Textübereinstimmung aus dem Quelldokument. </li> <li> *offset*: Die Fundstelle der Übereinstimmung im Text. </li> <li> *length*:  Die Länge des übereinstimmenden Texts. </li> <li> *matchDistance*: Die Anzahl der Zeichen, in denen sich diese Übereinstimmung vom ursprünglichen Entitätsnamen oder -alias unterscheidet.  </li> </ul> </ul>
+| `entities` | Ein Array von Objekten, die Informationen über die gefundenen Übereinstimmungen enthalten, sowie zugehörige Metadaten. Jede der identifizierten Entitäten kann die folgenden Felder enthalten:  <ul> <li> *name:* Identifizierte Entität der obersten Ebene. Die Entität stellt die „normalisierte“ Form dar. </li> <li> *id:*  Ein eindeutiger Bezeichner für die Entität, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert.</li> <li> *description*: Entitätsbeschreibung, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert. </li> <li> *type:* Entitätstyp, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert.</li> <li> *subtype:* Entitätsuntertyp, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert.</li>  <li> *matches*: Sammlung, die die einzelnen Übereinstimmungen für diese Entität im Quelltext beschreibt. Jede Übereinstimmung verfügt über die folgenden Elemente: </li> <ul> <li> *text*: Die unformatierte Textübereinstimmung aus dem Quelldokument. </li> <li> *offset*: Die Fundstelle der Übereinstimmung im Text. </li> <li> *length*:  Die Länge des übereinstimmenden Texts. </li> <li> *matchDistance*: Die Anzahl der Zeichen, in denen sich diese Übereinstimmung vom ursprünglichen Entitätsnamen oder -alias unterscheidet.  </li> </ul> </ul>
   |
 
 ## <a name="custom-entity-definition-format"></a>Benutzerdefiniertes Entitätsdefinitionsformat
@@ -145,22 +145,22 @@ In den folgenden Tabellen werden die verschiedenen Konfigurationsparameter ausf�
 
 |  Feldname  |        BESCHREIBUNG  |
 |--------------|----------------------|
-| name | Entitätsdeskriptor der obersten Ebene. Übereinstimmungen in der Ausgabe der Qualifikation werden nach diesem Namen gruppiert; er sollte die „normalisierte“ Form des gefundenen Texts darstellen.  |
-| description  | (Optional) Dieses Feld kann als Pass-Through-Feld für benutzerdefinierte Metadaten über die übereinstimmenden Texte verwendet werden. Der Wert dieses Felds wird mit jeder Übereinstimmung zur Entität in der Ausgabe der Qualifikation angezeigt. |
-| type | (Optional) Dieses Feld kann als Pass-Through-Feld für benutzerdefinierte Metadaten über die übereinstimmenden Texte verwendet werden. Der Wert dieses Felds wird mit jeder Übereinstimmung zur Entität in der Ausgabe der Qualifikation angezeigt. |
-| subtype | (Optional) Dieses Feld kann als Pass-Through-Feld für benutzerdefinierte Metadaten über die übereinstimmenden Texte verwendet werden. Der Wert dieses Felds wird mit jeder Übereinstimmung zur Entität in der Ausgabe der Qualifikation angezeigt. |
-| id | (Optional) Dieses Feld kann als Pass-Through-Feld für benutzerdefinierte Metadaten über die übereinstimmenden Texte verwendet werden. Der Wert dieses Felds wird mit jeder Übereinstimmung zur Entität in der Ausgabe der Qualifikation angezeigt. |
-| caseSensitive | (Optional) Der Standardwert ist „false“. Boolescher Wert, der angibt, ob bei Vergleichen mit dem Entitätsnamen die Groß-/Kleinschreibung beachtet werden soll. Beispiel für Übereinstimmungen mit „Microsoft“ ohne Berücksichtigung der Groß-/Kleinschreibung: microsoft, microSoft, MICROSOFT |
-| fuzzyEditDistance | (Optional) Der Standardwert ist „0“. Der Maximalwert ist „5“. Legt die zulässige Anzahl von abweichenden Zeichen fest, die noch als eine Übereinstimmung mit dem Entitätsnamen betrachtet werden. Die kleinste mögliche Fuzzyübereinstimmung für eine bestimmte Übereinstimmung wird zurückgegeben.  Wenn die Bearbeitungsdistanz beispielsweise auf 3 festgelegt ist, stimmt „Windows 10“ noch überein mit „Windows“, „Windows 10“ und „Windows 7“. <br/> Ist die Groß-/Kleinschreibung auf „false“ festgelegt, werden Unterschiede in der Groß-/Kleinschreibung hinsichtlich der Fuzzyübereinstimmung nicht berücksichtigt; andernfalls schon. |
-| defaultCaseSensitive | (Optional) Ändert den Standardwert für die Groß-/Kleinschreibung dieser Entität. Es kann verwendet werden, um die Standardeinstellung für den caseSensitive-Wert aller Aliase zu ändern. |
-| defaultFuzzyEditDistance | (Optional) Ändert den Standardwert für die Fuzzybearbeitungsdistanz dieser Entität. Es kann verwendet werden, um die Standardeinstellung für den fuzzyEditDistance-Wert aller Aliase zu ändern. |
-| aliases | (Optional) Ein Array komplexer Objekte, die verwendet werden können, um alternative Schreibweisen oder Synonyme für den Stammnamen der Entität anzugeben. |
+| `name` | Entitätsdeskriptor der obersten Ebene. Übereinstimmungen in der Ausgabe der Qualifikation werden nach diesem Namen gruppiert; er sollte die „normalisierte“ Form des gefundenen Texts darstellen.  |
+| `description`  | (Optional) Dieses Feld kann als Pass-Through-Feld für benutzerdefinierte Metadaten über die übereinstimmenden Texte verwendet werden. Der Wert dieses Felds wird mit jeder Übereinstimmung zur Entität in der Ausgabe der Qualifikation angezeigt. |
+| `type` | (Optional) Dieses Feld kann als Pass-Through-Feld für benutzerdefinierte Metadaten über die übereinstimmenden Texte verwendet werden. Der Wert dieses Felds wird mit jeder Übereinstimmung zur Entität in der Ausgabe der Qualifikation angezeigt. |
+| `subtype` | (Optional) Dieses Feld kann als Pass-Through-Feld für benutzerdefinierte Metadaten über die übereinstimmenden Texte verwendet werden. Der Wert dieses Felds wird mit jeder Übereinstimmung zur Entität in der Ausgabe der Qualifikation angezeigt. |
+| `id` | (Optional) Dieses Feld kann als Pass-Through-Feld für benutzerdefinierte Metadaten über die übereinstimmenden Texte verwendet werden. Der Wert dieses Felds wird mit jeder Übereinstimmung zur Entität in der Ausgabe der Qualifikation angezeigt. |
+| `caseSensitive` | (Optional) Der Standardwert ist „false“. Boolescher Wert, der angibt, ob bei Vergleichen mit dem Entitätsnamen die Groß-/Kleinschreibung beachtet werden soll. Beispiel für Übereinstimmungen mit „Microsoft“ ohne Berücksichtigung der Groß-/Kleinschreibung: microsoft, microSoft, MICROSOFT |
+| `fuzzyEditDistance` | (Optional) Der Standardwert ist „0“. Der Maximalwert ist „5“. Legt die zulässige Anzahl von abweichenden Zeichen fest, die noch als eine Übereinstimmung mit dem Entitätsnamen betrachtet werden. Die kleinste mögliche Fuzzyübereinstimmung für eine bestimmte Übereinstimmung wird zurückgegeben.  Wenn die Bearbeitungsdistanz beispielsweise auf 3 festgelegt ist, stimmt „Windows 10“ noch überein mit „Windows“, „Windows 10“ und „Windows 7“. <br/> Ist die Groß-/Kleinschreibung auf „false“ festgelegt, werden Unterschiede in der Groß-/Kleinschreibung hinsichtlich der Fuzzyübereinstimmung nicht berücksichtigt; andernfalls schon. |
+| `defaultCaseSensitive` | (Optional) Ändert den Standardwert für die Groß-/Kleinschreibung dieser Entität. Es kann verwendet werden, um die Standardeinstellung für den caseSensitive-Wert aller Aliase zu ändern. |
+| `defaultFuzzyEditDistance` | (Optional) Ändert den Standardwert für die Fuzzybearbeitungsdistanz dieser Entität. Es kann verwendet werden, um die Standardeinstellung für den fuzzyEditDistance-Wert aller Aliase zu ändern. |
+| `aliases` | (Optional) Ein Array komplexer Objekte, die verwendet werden können, um alternative Schreibweisen oder Synonyme für den Stammnamen der Entität anzugeben. |
 
 | Aliaseigenschaften | BESCHREIBUNG |
 |------------------|-------------|
-| text  | Die alternative Schreibweise oder Darstellung eines bestimmten Zielentitätsnamens.  |
-| caseSensitive | (Optional) Funktioniert wie der oben beschriebene Parameter caseSensitive der Stammentität, gilt aber nur für diesen einen Alias. |
-| fuzzyEditDistance | (Optional) Funktioniert wie der oben beschriebene Parameter fuzzyEditDistance der Stammentität, gilt aber nur für diesen einen Alias. |
+| `text`  | Die alternative Schreibweise oder Darstellung eines bestimmten Zielentitätsnamens.  |
+| `caseSensitive` | (Optional) Funktioniert wie der oben beschriebene Parameter caseSensitive der Stammentität, gilt aber nur für diesen einen Alias. |
+| `fuzzyEditDistance` | (Optional) Funktioniert wie der oben beschriebene Parameter fuzzyEditDistance der Stammentität, gilt aber nur für diesen einen Alias. |
 
 
 ### <a name="inline-format"></a>Inlineformat
@@ -188,7 +188,7 @@ Eine Beispieldefinition einer Qualifikation mit einem Inlineformat wird unten ge
       }, 
       { 
         "name" : "Xbox One", 
-        "type": "Harware",
+        "type": "Hardware",
         "subtype" : "Gaming Device",
         "id" : "4e36bf9d-5550-4396-8647-8e43d7564a76",
         "description" : "The Xbox One product"
@@ -208,7 +208,7 @@ Eine Beispieldefinition einer Qualifikation mit einem Inlineformat wird unten ge
     ]
   }
 ```
-Wenn Sie sich alternativ dazu entschließen, einen Zeiger auf die Entitätsdefinitionsdatei bereitzustellen, sehen Sie im folgenden Beispiel eine Qualifikationsdefinition mit dem entitiesDefinitionUri-Format:
+Wenn Sie sich alternativ dazu entschließen, einen Zeiger auf die Entitätsdefinitionsdatei bereitzustellen, sehen Sie im folgenden Beispiel eine Qualifikationsdefinition mit dem `entitiesDefinitionUri`-Format:
 
 ```json
   {
@@ -240,7 +240,7 @@ Wenn Sie sich alternativ dazu entschließen, einen Zeiger auf die Entitätsdefin
         "recordId": "1",
         "data":
            {
-             "text": "The company microsoft was founded by Bill Gates. Microsoft's gaming console is called Xbox",
+             "text": "The company, Microsoft, was founded by Bill Gates. Microsoft's gaming console is called Xbox",
              "languageCode": "en"
            }
       }

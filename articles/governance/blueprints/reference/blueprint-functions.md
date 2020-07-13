@@ -3,16 +3,16 @@ title: Azure Blueprints-Funktionen
 description: Beschreibt die Funktionen, die mit Blaupausenartefakten in Azure Blueprints-Definitionen und -Zuweisungen verwendet werden können.
 ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c402075aa9f6beb52e72454179c2e96d148c271f
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834780"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970874"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funktionen für die Verwendung mit Azure Blueprints
 
-Azure Blueprints bietet Funktionen, durch die eine Blaupausendefinition dynamischer wird. Diese Funktionen dienen zur Verwendung mit Blaupausendefinitionen und Blaupausenartefakten. Ein Resource Manager-Vorlagenartefakt unterstützt die vollständige Verwendung von Resource Manager-Funktionen zusätzlich zum Abrufen eines dynamischen Werts über einen Blaupausenparameter.
+Azure Blueprints bietet Funktionen, durch die eine Blaupausendefinition dynamischer wird. Diese Funktionen dienen zur Verwendung mit Blaupausendefinitionen und Blaupausenartefakten. Ein Artefakt einer Azure Resource Manager-Vorlage (ARM-Vorlage) unterstützt die umfassende Verwendung von Resource Manager-Funktionen zusätzlich zum Abrufen eines dynamischen Werts über einen Blaupausenparameter.
 
 Folgende Funktionen werden unterstützt:
 
@@ -30,7 +30,7 @@ Folgende Funktionen werden unterstützt:
 Gibt ein Objekt von Eigenschaften zurück, die mit den Ausgaben dieses Blaupausenartefakts aufgefüllt sind.
 
 > [!NOTE]
-> Die `artifacts()`-Funktion kann nicht innerhalb einer Resource Manager-Vorlage verwendet werden. Die-Funktion kann nur im JSON-Code der Blaupausendefinition oder des Artifakts verwendet werden, wenn die Blaupause mit Azure PowerShell oder REST-API im Rahmen von [Blaupausen als Code](https://github.com/Azure/azure-blueprints/blob/master/README.md) verwaltet wird.
+> Die `artifacts()`-Funktion kann nicht in einer ARM-Vorlage verwendet werden. Die-Funktion kann nur im JSON-Code der Blaupausendefinition oder des Artifakts verwendet werden, wenn die Blaupause mit Azure PowerShell oder REST-API im Rahmen von [Blaupausen als Code](https://github.com/Azure/azure-blueprints/blob/master/README.md) verwaltet wird.
 
 ### <a name="parameters"></a>Parameter
 
@@ -60,9 +60,9 @@ Ein Objekt von Ausgabeeigenschaften. Die **Ausgaben**eigenschaften sind abhängi
 }
 ```
 
-#### <a name="resource-manager-template-artifact"></a>Resource Manager-Vorlagenartefakt
+#### <a name="arm-template-artifact"></a>ARM-Vorlagenartefakt
 
-Die **Ausgaben**eigenschaften des zurückgegebenen Objekts sind in der Resource Manager-Vorlage definiert und werden von der Bereitstellung zurückgegeben.
+Die **Ausgaben**eigenschaften des zurückgegebenen Objekts sind in der ARM-Vorlage definiert und werden von der Bereitstellung zurückgegeben.
 
 #### <a name="role-assignment-artifact"></a>Rollenzuweisungsartefakt
 
@@ -78,7 +78,7 @@ Die **Ausgaben**eigenschaften des zurückgegebenen Objekts sind in der Resource 
 
 ### <a name="example"></a>Beispiel
 
-Ein Resource Manager-Vorlagenartefakt mit der ID _myTemplateArtifact_, das die folgende Beispielausgabeeigenschaft enthält:
+Ein ARM-Vorlagenartefakt mit der ID _myTemplateArtifact_, das die folgende Beispielausgabeeigenschaft enthält:
 
 ```json
 {
@@ -134,7 +134,7 @@ Eine Zeichenfolge aus verketteten Werten.
 
 ### <a name="remarks"></a>Bemerkungen
 
-Die Azure Blueprint-Funktion unterscheidet sich von der Azure Resource Manager-Vorlagenfunktion darin, dass sie nur mit Zeichenfolgen arbeitet.
+Die Azure Blueprint-Funktion unterscheidet sich von der ARM-Vorlagenfunktion darin, dass sie nur mit Zeichenfolgen arbeitet.
 
 ### <a name="example"></a>Beispiel
 
@@ -158,7 +158,7 @@ Der Wert des angegebenen Blaupausen- oder Blaupausenartefaktparameters.
 
 ### <a name="remarks"></a>Bemerkungen
 
-Die Azure Blueprint-Funktion unterscheidet sich von der Azure Resource Manager-Vorlagenfunktion darin, dass sie nur mit Blaupausenparametern arbeitet.
+Die Azure Blueprint-Funktion unterscheidet sich von der ARM-Vorlagenfunktion darin, dass sie nur mit Blaupausenparametern arbeitet.
 
 ### <a name="example"></a>Beispiel
 
@@ -218,7 +218,7 @@ Das zurückgegebene Objekt hat das folgende Format:
 
 ### <a name="remarks"></a>Bemerkungen
 
-Die Azure Blueprint-Funktion unterscheidet sich von der Azure Resource Manager-Vorlagenfunktion. Die `resourceGroup()`-Funktion kann nicht in einem Artefakt der Abonnementebene oder der Blaupausendefinition verwendet werden. Sie kann nur in Blaupausenartefakten verwendet werden, die Teil eines Ressourcengruppenartefakts sind.
+Die Azure Blueprint-Funktion unterscheidet sich von der ARM-Vorlagenfunktion. Die `resourceGroup()`-Funktion kann nicht in einem Artefakt der Abonnementebene oder der Blaupausendefinition verwendet werden. Sie kann nur in Blaupausenartefakten verwendet werden, die Teil eines Ressourcengruppenartefakts sind.
 
 Die `resourceGroup()`-Funktion wird häufig verwendet, um Ressourcen am gleichen Speicherort wie das Ressourcengruppenartefakt zu erstellen.
 

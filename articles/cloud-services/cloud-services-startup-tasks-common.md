@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 73762c431c84de01ce3561d586c5a12bfd26ac81
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310124"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920073"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Allgemeine Starttasks für Clouddienste
 Dieser Artikel enthält einige Beispiele für häufiger ausgeführte Starttasks, die Sie vielleicht im Clouddienst ausführen möchten. Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Zu den Vorgängen, die Sie vielleicht ausführen möchten, gehören das Installieren von Komponenten, das Registrieren von COM-Komponenten, das Festlegen von Registrierungsschlüsseln und das Starten eines lang andauernden Prozesses. 
@@ -377,9 +377,7 @@ EXIT /B 0
 Hier sind einige bewährten Methoden, die Sie beim Konfigurieren eines Tasks für Ihre Web- oder Workerrolle befolgen sollten.
 
 ### <a name="always-log-startup-activities"></a>Protokollieren Sie stets alle Startaktivitäten
-Visual Studio bietet keinen Debugger zum schrittweisen Durchlaufen von Batchdateien, daher ist es ratsam, möglichst viele Daten über die Ausführung der Batchdateien zu erhalten. Beim Protokollieren der Ausgabe von Batchdateien können sowohl **stdout** als auch **stderr** wichtige Informationen beim Debuggen und Korrigieren von Batchdateien liefern. Um sowohl **stdout** als auch **stderr** in der Datei „StartupLog.txt“ in dem Verzeichnis zu protokollieren, auf das die **%TEMP%** -Umgebungsvariable verweist, fügen Sie den Text `>>  "%TEMP%\\StartupLog.txt" 2>&1` am Ende der Zeilen ein, die Sie protokollieren möchten. So führen Sie z.B. „setup.exe“ im **%PathToApp1Install%** -Verzeichnis aus:
-
-    "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
+Visual Studio bietet keinen Debugger zum schrittweisen Durchlaufen von Batchdateien, daher ist es ratsam, möglichst viele Daten über die Ausführung der Batchdateien zu erhalten. Beim Protokollieren der Ausgabe von Batchdateien können sowohl **stdout** als auch **stderr** wichtige Informationen beim Debuggen und Korrigieren von Batchdateien liefern. Um sowohl **stdout** als auch **stderr** in der Datei „StartupLog.txt“ in dem Verzeichnis zu protokollieren, auf das die **%TEMP%** -Umgebungsvariable verweist, fügen Sie den Text `>>  "%TEMP%\\StartupLog.txt" 2>&1` am Ende der Zeilen ein, die Sie protokollieren möchten. So führen Sie z.B. „setup.exe“ im **%PathToApp1Install%** -Verzeichnis aus: `"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 Zum Vereinfachen des XML-Codes können Sie eine *CMD*-Wrapperdatei erstellen, die alle Starttasks sowie die Protokollierung aufruft und sicherstellt, dass jeder untergeordnete Task die gleichen Umgebungsvariablen verwendet.
 

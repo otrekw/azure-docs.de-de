@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: f998cc238b997f2dfb8e8043693379e4c5a53546
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 777febb86e6a1fa719b6a7d74c32defebcf3b58c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170408"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099822"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Azure Database for MariaDB
 
@@ -101,7 +101,7 @@ Sie können mit der [rollenbasierten Zugriffssteuerung (RBAC)][rbac-what-is-813s
 > In einigen Fällen befinden sich Azure Database for MariaDB und das VNET-Subnetz in unterschiedlichen Abonnements. In diesen Fällen müssen Sie folgende Konfigurationen sicherstellen:
 > - Beide Abonnements müssen demselben Azure Active Directory-Mandanten zugeordnet sein.
 > - Der Benutzer muss über die erforderlichen Berechtigungen zum Initiieren der Vorgänge verfügen. Dazu gehören z.B. das Aktivieren von Dienstendpunkten und das Hinzufügen eines VNET-Subnetzes auf dem angegebenen Server.
-> - Stellen Sie sicher, dass für beide Abonnements der Ressourcenanbieter **Microsoft.Sql** registriert ist. Weitere Informationen finden Sie unter [Azure-Ressourcenanbieter und -typen][resource-manager-portal].
+> - Stellen Sie sicher, dass für beide Abonnements die Ressourcenanbieter **Microsoft.Sql** und **Microsoft.DBforMariaDB** registriert sind. Weitere Informationen finden Sie unter [Azure-Ressourcenanbieter und -typen][resource-manager-portal].
 
 ## <a name="limitations"></a>Einschränkungen
 

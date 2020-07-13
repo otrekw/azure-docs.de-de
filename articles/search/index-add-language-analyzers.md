@@ -1,38 +1,44 @@
 ---
 title: Hinzufügen von Sprachanalysetools zu Zeichenfolgenfeldern
 titleSuffix: Azure Cognitive Search
-description: Mehrsprachige lexikalische Textanalyse für nicht englischsprachige Abfragen und Indizes in der kognitiven Azure-Suche.
+description: Mehrsprachige lexikalische Analyse für nicht englischsprachige Abfragen und Indizes in Azure Cognitive Search.
+author: HeidiSteen
 manager: nitinme
-author: Yahnoosh
-ms.author: jlembicz
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/10/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/05/2020
+ms.openlocfilehash: 8f0909ee1cdce1e6180b91a30b2e9b281098c826
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236906"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85130550"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Hinzufügen von Sprachanalysetools zu Zeichenfolgenfeldern in einem Azure Cognitive Search-Index
 
-Ein *Sprachanalysetool* ist eine bestimmte Art einer [Textanalyse](search-analyzers.md), die eine lexikalische Analyse mithilfe der linguistischen Regeln der Zielsprache durchführt. Jedes durchsuchbare Feld verfügt über die Eigenschaft **analyzer**. Wenn Ihr Index übersetzte Zeichenfolgen enthält, wie z.B. separate Felder für englischen und chinesischen Text, können Sie für jedes Feld Sprachanalysetools angeben, um auf die umfangreichen linguistischen Funktionen dieser Sprachanalysetools zuzugreifen.  
+Ein *Sprachanalysetool* ist eine bestimmte Art einer [Textanalyse](search-analyzers.md), die eine lexikalische Analyse mithilfe der linguistischen Regeln der Zielsprache durchführt. Jedes durchsuchbare Feld verfügt über die Eigenschaft **analyzer**. Wenn Ihr Inhalt aus übersetzten Zeichenfolgen besteht, wie z. B. separaten Feldern für englischen und chinesischen Text, können Sie für jedes Feld Sprachanalysetools angeben, um auf die umfangreichen linguistischen Funktionen dieser Sprachanalysetools zuzugreifen.
 
-Die kognitive Azure-Suche unterstützt 35 Analysetools auf Basis von Lucene und 50 Analysetools, die von Microsoft-Technologien zur Verarbeitung natürlicher Sprache unterstützt werden, die in Office und Bing zum Einsatz kommen.
+## <a name="when-to-use-a-language-analyzer"></a>Anwendungsfälle für Sprachanalysetools
 
-## <a name="comparing-analyzers"></a>Vergleichen von Analysetools
+Sie sollten ein Sprachanalysetool in Erwägung ziehen, wenn der Wert der Textanalyse durch Sensitivität für die Wort- oder Satzstruktur steigt. Ein häufiges Beispiel ist die Zuordnung unregelmäßiger Verbformen („bringt“ und „brachte“) oder Pluralformen („Sphinx“ und „Sphingen“). Ohne linguistische Sensitivität werden diese Zeichen nur nach ihren physischen Merkmalen analysiert, wodurch die Verbindung nicht erkannt wird. Da große Textabschnitte mit höherer Wahrscheinlichkeit solche Inhalte aufweisen, sind Felder, die Beschreibungen, Rezensionen oder Zusammenfassungen enthalten, gute Kandidaten für ein Sprachanalysetool.
+
+Sie sollten Sprachanalysetools außerdem in Erwägung ziehen, wenn die Inhalte aus Zeichenfolgen in nicht westlichen Sprachen bestehen. Die [Standardanalyse](search-analyzers.md#default-analyzer) ist zwar nicht sprachsensitiv, das Konzept der Verwendung von Leerzeichen und Sonderzeichen (Bindestriche und Schrägstriche) zum Trennen von Zeichenfolgen lässt sich tendenziell aber eher auf westliche Sprachen als auch nicht westliche Sprachen anwenden. 
+
+Beispielsweise ist im Chinesischen, Japanischen, Koreanischen (CJK) und anderen asiatischen Sprachen ein Leerzeichen nicht zwangsläufig ein Trennzeichen für Wörter. Sehen Sie sich die folgende japanische Zeichenfolge an. Da sie keine Leerzeichen aufweist, wird die gesamte Zeichenfolge von einem nicht sprachsensitiven Analysetool wahrscheinlich als ein Token analysiert, während es sich bei dieser Zeichenfolge tatsächlich um einen Satz handelt.
+
+```
+これは私たちの銀河系の中ではもっとも重く明るいクラスの球状星団です。
+(This is the heaviest and brightest group of spherical stars in our galaxy.)
+```
+
+Für das Beispiel oben müsste eine erfolgreiche Abfrage das vollständige Token oder einen Teil des Tokens mit einem Suffix-Platzhalterzeichen enthalten, was zu einem unnatürlichen und eingeschränkten Suchverhalten führt.
+
+Ein besseres Verhalten ergibt sich bei der Suche nach einzelnen Wörtern: 明るい (hell), 私たちの (unsere), 銀河系 (Galaxie). Durch die Verwendung eines der japanischen Analysetools, die in Cognitive Search zur Verfügung stehen, lässt sich dieses Verhalten leichter aufbrechen, da diese Analysetools besser dafür ausgerüstet sind, den Textabschnitt in aussagekräftige Wörter in der Zielsprache aufzuteilen.
+
+## <a name="comparing-lucene-and-microsoft-analyzers"></a>Vergleich der Analysetools von Lucene und Microsoft
+
+Azure Cognitive Search unterstützt 35 Sprachanalysetools auf Basis von Lucene und 50 Sprachanalysetools, die von Microsoft-Technologien zur Verarbeitung natürlicher Sprache unterstützt werden, die in Office und Bing zum Einsatz kommen.
 
 Einige Entwickler bevorzugen möglicherweise die vertrautere, einfachere Open Source-Lösung von Lucene. Lucene-Sprachanalysetools sind schneller, während Microsoft-Sprachanalysetools erweiterte Funktionen bieten, wie z.B. Lemmatisierung, Wortzerlegung (in Sprachen wie Deutsch, Dänisch, Niederländisch, Schwedisch, Norwegisch, Estnisch, Finnisch, Ungarisch und Slowakisch) und Entitätserkennung (URLs, E-Mails, Datumsangaben und Zahlen). Vergleichen Sie nach Möglichkeit die Analyseprogramme von Microsoft und Lucene, um die für Ihre Anforderungen passendere Lösung zu ermitteln. 
 

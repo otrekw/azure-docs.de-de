@@ -3,17 +3,17 @@ title: Konfigurieren, Optimieren und Problembehandlung in AzCopy mit Azure Stora
 description: Konfigurieren, Optimieren und Problembehandlung in AzCopy.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c3ee0f335741c171c3a7ee1df3eea6dea9c4b728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176157"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504354"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurieren, Optimieren und Problembehandlung in AzCopy
 
@@ -34,9 +34,20 @@ Um die Proxyeinstellungen für AzCopy zu konfigurieren, legen Sie die Umgebungsv
 |--------|-----------|
 | **Windows** | Verwenden Sie in einer Eingabeaufforderung: `set https_proxy=<proxy IP>:<proxy port>`<br> Verwenden Sie in PowerShell: `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
 AzCopy unterstützt zurzeit keine Proxys, für die eine Authentifizierung mit NTLM oder Kerberos erforderlich ist.
+
+### <a name="bypassing-a-proxy"></a>Umgehen eines Proxys ###
+
+Wenn AzCopy unter Windows ausgeführt wird und Sie angeben möchten, dass gar _kein_ Proxy verwendet werden soll (anstatt die Einstellungen automatisch zu erkennen), verwenden Sie diese Befehle. Mit diesen Einstellungen sucht AzCopy keinen Proxy und versucht auch nicht, einen zu verwenden.
+
+| Betriebssystem | Environment | Befehle  |
+|--------|-----------|----------|
+| **Windows** | Befehlszeile (CMD) | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
+| **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
+
+Bei anderen Betriebssystemen belassen Sie die HTTPS_PROXY-Variable einfach nicht festgelegt, wenn Sie keinen Proxy verwenden möchten.
 
 ## <a name="optimize-performance"></a>Optimieren der Leistung
 
@@ -52,27 +63,27 @@ In diesem Abschnitt wird beschrieben, wie Sie diese Optimierungsaufgaben ausfüh
 
 ### <a name="run-benchmark-tests"></a>Ausführen von Vergleichstests
 
-Sie können einen Leistungsvergleichstest für bestimmte Blobcontainer ausführen, um allgemeine Leistungsstatistiken zu erhalten und Leistungsengpässe zu ermitteln. 
+Sie können einen Leistungsvergleichstest für bestimmte Blobcontainer oder Dateifreigaben ausführen, um allgemeine Leistungsstatistiken zu erhalten und Leistungsengpässe zu ermitteln. 
 
 Verwenden Sie den folgenden Befehl, um einen Leistungsvergleichstest auszuführen.
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
-| **Beispiel** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+| **Syntax** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Beispiel** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
 > In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
 Mit diesem Befehl wird ein Leistungsvergleichstest ausgeführt, indem Testdaten an ein angegebenes Ziel hochgeladen werden. Die Testdaten werden im Arbeitsspeicher generiert, an das Ziel hochgeladen und dann nach Abschluss des Tests aus dem Ziel gelöscht. Mithilfe optionaler Befehlsparameter können Sie angeben, wie viele Dateien und in welcher Größe generiert werden sollen.
 
-Ausführliche Referenzdokumente finden Sie unter [azcopy bench](storage-ref-azcopy-bench.md).
+Ausführliche Referenzdokumente finden Sie unter [azcopy benchmark](storage-ref-azcopy-bench.md).
 
-Wenn Sie ausführliche Hilfe zu diesem Befehl anzeigen möchten, geben Sie `azcopy bench -h` ein, und drücken Sie dann EINGABE.
+Wenn Sie ausführliche Hilfe zu diesem Befehl anzeigen möchten, geben Sie `azcopy benchmark -h` ein, und drücken Sie dann EINGABE.
 
 ### <a name="optimize-throughput"></a>Optimieren des Durchsatzes
 
-Mithilfe des Flags `cap-mbps` in den Befehlen können Sie eine Obergrenze für die Durchsatzdatenrate festlegen. Mit dem folgenden Befehl wird beispielsweise ein Auftrag fortgesetzt und der Durchsatz auf `10` Megabyte (MB) pro Sekunde begrenzt. 
+Mithilfe des Flags `cap-mbps` in den Befehlen können Sie eine Obergrenze für die Durchsatzdatenrate festlegen. Mit dem folgenden Befehl wird beispielsweise ein Auftrag fortgesetzt und der Durchsatz auf `10` Megabit (MBit) pro Sekunde begrenzt. 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10
@@ -86,7 +97,7 @@ Wenn Ihr Computer über weniger als 5 CPUs verfügt, wird der Wert dieser Variab
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
+| **macOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
 Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüfen. Wenn der Wert leer ist, können Sie den verwendeten Wert ermitteln, indem Sie sich den Anfang einer AzCopy-Protokolldatei ansehen. Dort sind der ausgewählte Wert und der Grund aufgeführt, warum er ausgewählt wurde.
 
@@ -101,7 +112,7 @@ Geben Sie diesen Wert in Gigabytes (GB) an.
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
-| **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+| **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
 ### <a name="optimize-file-synchronization"></a>Optimieren der Dateisynchronisierung
 
@@ -182,9 +193,9 @@ Verwenden Sie einen der folgende Befehle.
 
 | Betriebssystem | Get-Help  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Windows** | PowerShell: `$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> Verwenden Sie an einer Eingabeaufforderung: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
 Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüfen. Wenn der Wert leer ist, werden Plandateien an den Standardspeicherort geschrieben.
 
@@ -194,9 +205,9 @@ Verwenden Sie einen der folgende Befehle.
 
 | Betriebssystem | Get-Help  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
+| **Windows** | PowerShell:`$env:AZCOPY_LOG_LOCATION="<value>"` <br> Verwenden Sie an einer Eingabeaufforderung: `set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
 Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüfen. Wenn der Wert leer ist, werden Protokolle an den Standardspeicherort geschrieben.
 

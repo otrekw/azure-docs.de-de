@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 29928d78c2cfc2f21def363341f8383c4efa89d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.openlocfilehash: cb5ee7d3549e433fb184b8c55c28b9a28ed89272
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74484124"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982117"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Qualifikation „Benutzerdefinierte Web-API“ in einer Anreicherungspipeline der kognitiven Azure-Suche
 
@@ -36,12 +36,12 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| uri | Der URI der Web-API, an die die _JSON_-Nutzlast gesendet wird. Es ist nur ein **HTTPS**-URI-Schema zulässig. |
-| httpMethod | Diese Methode wird zum Senden der Nutzlast verwendet: Zulässige Methoden sind `PUT` oder `POST`. |
-| httpHeaders | Eine Sammlung von Schlüssel-Wert-Paaren, bei denen die Schlüssel Headernamen und -Werte Headerwerte darstellen, die zusammen mit der Nutzlast an Ihre Web-API gesendet werden. Die folgenden Header dürfen nicht in der Sammlung enthalten sein: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
-| timeout | (Optional) Wenn angegeben, wird damit das Zeitlimit für den HTTP-Client angegeben, der den API-Aufruf durchführt. Es muss als XSD-Wert „dayTimeDuration“ formatiert sein (eine eingeschränkte Teilmenge eines [ISO 8601-Zeitwerts](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)). Zum Beispiel `PT60S` für 60 Sekunden. Wenn kein Wert festgelegt ist, wird ein Standardwert von 30 Sekunden ausgewählt. Das Zeitlimit kann auf maximal 230 Sekunden und mindestens 1 Sekunde festgelegt werden. |
-| batchSize | (Optional) Gibt an, wie viele „Datensätze“ (siehe _JSON_ Nutzlaststruktur unten) pro API-Aufruf gesendet werden. Wenn kein Wert festgelegt ist, wird der Standardwert 1000 ausgewählt. Wir empfehlen Ihnen, diesen Parameter zu verwenden, um einen angemessenen Kompromiss zwischen Indexierungsdurchsatz und Auslastung Ihrer API zu erreichen. |
-| degreeOfParallelism | (Optional) Wenn angegeben, wird die Anzahl der Aufrufe angezeigt, die der Indexer parallel zum von Ihnen bereitgestellten Endpunkt vornimmt. Sie können diesen Wert herab setzen, wenn der Endpunkt bei einer zu hohen Anforderungslast ausfällt, oder herauf setzen, wenn der Endpunkt mehr Anforderungen verarbeiten kann und Sie die Leistung des Indexers erhöhen möchten.  Wenn kein Wert festgelegt ist, wird ein Standardwert von 5 verwendet. „degreeOfParallelism“ kann auf maximal 10 und mindestens 1 festgelegt werden. |
+| `uri` | Der URI der Web-API, an die die _JSON_-Nutzlast gesendet wird. Es ist nur ein **HTTPS**-URI-Schema zulässig. |
+| `httpMethod` | Diese Methode wird zum Senden der Nutzlast verwendet: Zulässige Methoden sind `PUT` oder `POST`. |
+| `httpHeaders` | Eine Sammlung von Schlüssel-Wert-Paaren, bei denen die Schlüssel Headernamen und -Werte Headerwerte darstellen, die zusammen mit der Nutzlast an Ihre Web-API gesendet werden. Die folgenden Header dürfen nicht in der Sammlung enthalten sein: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
+| `timeout` | (Optional) Wenn angegeben, wird damit das Zeitlimit für den HTTP-Client angegeben, der den API-Aufruf durchführt. Es muss als XSD-Wert „dayTimeDuration“ formatiert sein (eine eingeschränkte Teilmenge eines [ISO 8601-Zeitwerts](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)). Zum Beispiel `PT60S` für 60 Sekunden. Wenn kein Wert festgelegt ist, wird ein Standardwert von 30 Sekunden ausgewählt. Das Zeitlimit kann auf maximal 230 Sekunden und mindestens 1 Sekunde festgelegt werden. |
+| `batchSize` | (Optional) Gibt an, wie viele „Datensätze“ (siehe _JSON_ Nutzlaststruktur unten) pro API-Aufruf gesendet werden. Wenn kein Wert festgelegt ist, wird der Standardwert 1000 ausgewählt. Wir empfehlen Ihnen, diesen Parameter zu verwenden, um einen angemessenen Kompromiss zwischen Indexierungsdurchsatz und Auslastung Ihrer API zu erreichen. |
+| `degreeOfParallelism` | (Optional) Wenn angegeben, wird die Anzahl der Aufrufe angezeigt, die der Indexer parallel zum von Ihnen bereitgestellten Endpunkt vornimmt. Sie können diesen Wert herab setzen, wenn der Endpunkt bei einer zu hohen Anforderungslast ausfällt, oder herauf setzen, wenn der Endpunkt mehr Anforderungen verarbeiten kann und Sie die Leistung des Indexers erhöhen möchten.  Wenn kein Wert festgelegt ist, wird ein Standardwert von 5 verwendet. Der `degreeOfParallelism` kann auf maximal 10 und mindestens 1 festgelegt werden. |
 
 ## <a name="skill-inputs"></a>Skilleingaben
 

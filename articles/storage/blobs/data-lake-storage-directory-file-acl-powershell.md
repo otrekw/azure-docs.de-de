@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 580f8652fcfa4e9ff21abc00f6da36caf12dda51
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 67aa9fcb51742432dcd629073f15a65d14bf3597
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193468"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961199"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von PowerShell zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -83,13 +83,13 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-file-system"></a>Erstellen eines Dateisystems
 
-Ein Dateisystem fungiert als Container für Ihre Dateien. Mit dem Cmdlet `New-AzDatalakeGen2FileSystem` können Sie einen erstellen. 
+Ein Dateisystem fungiert als Container für Ihre Dateien. Mit dem Cmdlet `New-AzStorageContainer` können Sie einen erstellen. 
 
 In diesem Beispiel wird das Dateisystem `my-file-system` erstellt.
 
 ```powershell
 $filesystemName = "my-file-system"
-New-AzDatalakeGen2FileSystem -Context $ctx -Name $filesystemName
+New-AzStorageContainer -Context $ctx -Name $filesystemName
 ```
 
 ## <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
@@ -261,7 +261,7 @@ Mithilfe des Parameters `-Force` können Sie die Datei ohne Aufforderung entfern
 
 ## <a name="manage-access-permissions"></a>Verwalten von Zugriffsberechtigungen
 
-Sie können Zugriffsberechtigungen für Dateisysteme, Verzeichnisse und Dateien abrufen, festlegen und aktualisieren. Diese Berechtigungen werden in Zugriffssteuerungslisten (Access Control Lists, ACLs) erfasst.
+Sie können Zugriffsberechtigungen für Verzeichnisse und Dateien abrufen, festlegen und aktualisieren. Diese Berechtigungen werden in Zugriffssteuerungslisten (Access Control Lists, ACLs) erfasst.
 
 > [!NOTE]
 > Wenn Sie Azure Active Directory (Azure AD) verwenden, um Befehle zu autorisieren, stellen Sie sicher, dass Ihrem Sicherheitsprinzipal die Rolle [Besitzer von Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) zugewiesen wurde. Weitere Informationen dazu, wie ACL-Berechtigungen angewandt werden und wie sich Änderungen daran auswirken, finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -270,7 +270,7 @@ Sie können Zugriffsberechtigungen für Dateisysteme, Verzeichnisse und Dateien 
 
 Verwenden Sie das Cmdlet `Get-AzDataLakeGen2Item`, um die Zugriffssteuerungsliste eines Verzeichnisses oder einer Datei abzurufen.
 
-In diesem Beispiel wird die Zugriffssteuerungsliste eines **Dateisystems** abgerufen und dann in der Konsole ausgegeben.
+In diesem Beispiel wird die Zugriffssteuerungsliste des Stammverzeichnisses eines **Dateisystems** abgerufen und dann in der Konsole ausgegeben.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -305,7 +305,7 @@ In diesem Beispiel verfügt der zuständige Benutzer über Berechtigungen zum Le
 
 Verwenden Sie das Cmdlet `set-AzDataLakeGen2ItemAclObject`, um eine Zugriffssteuerungsliste für den zuständigen Benutzer, die zuständige Gruppe oder andere Benutzer zu erstellen. Verwenden Sie dann das Cmdlet `Update-AzDataLakeGen2Item`, um die Zugriffssteuerungsliste zu committen.
 
-In diesem Beispiel wird die Zugriffssteuerungsliste auf ein **Dateisystem** für den zuständigen Benutzer, die zuständige Gruppe oder andere Benutzer festgelegt und dann in der Konsole ausgegeben.
+In diesem Beispiel wird die Zugriffssteuerungsliste für das Stammverzeichnis auf ein **Dateisystem** für den zuständigen Benutzer, die zuständige Gruppe oder andere Benutzer festgelegt und dann in der Konsole ausgegeben.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -363,7 +363,7 @@ $Token = $Null
 do
 {
      $items = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -ContinuationToken $Token    
-     if($items.Length -le 0) { Break;}
+     if($items.Count -le 0) { Break;}
      $items | Update-AzDataLakeGen2Item -Acl $acl
      $Token = $items[$items.Count -1].ContinuationToken;
 }

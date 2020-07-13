@@ -4,21 +4,19 @@ description: Hier erfahren Sie mehr über das Konfigurieren der Windows-ACL-Bere
 author: roygara
 ms.service: storage
 ms.subservice: files
-ms.topic: conceptual
-ms.date: 05/29/2020
+ms.topic: how-to
+ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 6e49201b0574e0a1235cc9e2cb313b40b0563f93
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 38168db9706bd168b3edc2e740eaea40b23d4b0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510570"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Teil 3: Konfigurieren von Berechtigungen auf Verzeichnis- und Dateiebene über SMB 
 
-Stellen Sie sicher, dass Sie den vorherigen Artikel [Zuweisen von Berechtigungen auf Freigabeebene zu einer Identität](storage-files-identity-ad-ds-assign-permissions.md) gelesen haben, bevor Sie mit diesem Artikel beginnen. So stellen Sie sicher, dass Ihre Berechtigungen auf Freigabeebene vorhanden sind.
-
-Nachdem Sie mit RBAC Berechtigungen auf Freigabeebene zugewiesen haben, müssen Sie die richtigen Windows-ACLs (auch bekannt als NTFS-Berechtigungen) auf Stamm-, Verzeichnis- oder Dateiebene zuweisen, um die granulare Zugriffssteuerung nutzen zu können. Stellen Sie sich die RBAC-Berechtigungen auf der Freigabeebene als allgemeinen Gatekeeper vor, der festlegt, ob ein Benutzer auf die Freigabe zugreifen kann. Die Windows-ACLs agieren hingegen auf einer granulareren Ebene und legen fest, welche Vorgänge der Benutzer auf der Verzeichnis- oder Dateiebene ausführen kann.
+Lesen Sie den vorherigen Artikel [Zuweisen von Berechtigungen auf Freigabeebene zu einer Identität](storage-files-identity-ad-ds-assign-permissions.md), bevor Sie mit diesem Artikel beginnen, um sicherzustellen, dass Ihre Berechtigungen auf Freigabeebene eingerichtet wurden.
 
 Nachdem Sie mit RBAC Berechtigungen auf Freigabeebene zugewiesen haben, müssen Sie die richtigen Windows-ACLs (Zugriffssteuerungslisten) auf Stamm-, Verzeichnis- oder Dateiebene konfigurieren, um die granulare Zugriffssteuerung nutzen zu können. Stellen Sie sich die RBAC-Berechtigungen auf der Freigabeebene als allgemeinen Gatekeeper vor, der festlegt, ob ein Benutzer auf die Freigabe zugreifen kann. Die Windows-ACLs agieren hingegen auf einer granulareren Ebene und legen fest, welche Vorgänge der Benutzer auf der Verzeichnis- oder Dateiebene ausführen kann. Sowohl die Berechtigungen auf Freigabeebene als auch auf Datei- und Verzeichnisebene werden erzwungen, wenn ein Benutzer versucht, auf eine Datei oder ein Verzeichnis zuzugreifen. Wenn es zwischen diesen also einen Unterschied gibt, wird nur die restriktivste Berechtigung angewendet. Wenn ein Benutzer beispielsweise über Lese- und Schreibzugriff auf Dateiebene, aber nur über Schreibzugriff auf Freigabeebene verfügt, kann er diese Datei nur lesen. Dies gilt auch umgekehrt: Wenn ein Benutzer über Lese- und Schreibzugriff auf Freigabeebene, aber nur über Lesezugriff auf Dateiebene verfügt, kann er die Datei ebenfalls nur lesen.
 
@@ -31,12 +29,22 @@ Sie müssen die Freigabe mit Ihrem Speicherkontenschlüssel von Ihrem domänenge
 Die folgenden Berechtigungen sind im Stammverzeichnis einer Dateifreigabe enthalten:
 
 - BUILTIN\Administrators:(OI)(CI)(F)
-- NT AUTHORITY\SYSTEM:(OI)(CI)(F)
 - BUILTIN\Users:(RX)
 - BUILTIN\Users:(OI)(CI)(IO)(GR,GE)
 - NT AUTHORITY\Authenticated Users:(OI)(CI)(M)
+- NT AUTHORITY\SYSTEM:(OI)(CI)(F)
 - NT AUTHORITY\SYSTEM:(F)
 - CREATOR OWNER:(OI)(CI)(IO)(F)
+
+|Benutzer|Definition|
+|---|---|
+|BUILTIN\Administrators|Alle Benutzer, die Domänenadministratoren der lokalen AD DS-Umgebung sind.
+|BUILTIN\Users|Integrierte Sicherheitsgruppe in AD. Sie beinhaltet standardmäßig „NT AUTHORITY\Authenticated Users“. Für einen herkömmlichen Dateiserver können Sie die Mitgliedschaftsdefinition pro Server konfigurieren. Für Azure Files gibt es keinen Hostingserver, daher umfasst „BUILTIN\Users“ dieselbe Gruppe von Benutzern wie „NT AUTHORITY\Authenticated Users“.|
+|NT AUTHORITY\SYSTEM|Das Dienstkonto des Betriebssystems des Dateiservers. Ein derartiges Dienstkonto ist im Azure Files-Kontext nicht gültig. Es ist im Stammverzeichnis enthalten, um Konsistenz mit dem Verhalten von Windows Files Server in Hybridszenarien sicherzustellen.|
+|NT AUTHORITY\Authenticated Users|Alle Benutzer in AD, die ein gültiges Kerberos-Token erhalten können.|
+|CREATOR OWNER|Jedes Objekt, gleich ob Verzeichnis oder Datei, weist einen Besitzer für dieses Objekt auf. Wenn „CREATOR OWNER“ ACLs für dieses Objekt zugewiesen sind, besitzt der Benutzer, der Besitzer dieses Objekts ist, die durch die ACL definierten Berechtigungen für das Objekt.|
+
+
 
 ## <a name="mount-a-file-share-from-the-command-prompt"></a>Bereitstellen einer Dateifreigabe über die Eingabeaufforderung
 

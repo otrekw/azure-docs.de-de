@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3220a363025d80fd7636dbfc3af3d2d9d7bc040
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73b6029dfe52a4b32c9a8ce092fcd284ac1ec0e7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658281"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965038"
 ---
 # <a name="workbook-drop-down-parameters"></a>Dropdownparameter in Arbeitsmappen
 
@@ -48,7 +48,9 @@ Sie können ein Dropdown am einfachsten angeben, indem Sie in der Parametereinst
     ![Abbildung zum Erstellen eines statischen Dropdowns](./media/workbook-dropdowns/dropdown-create.png)
 
 ## <a name="creating-a-static-dropdown-with-groups-of-items"></a>Erstellen eines statischen Dropdowns mit Gruppen von Elementen
+
 Wenn Ihr Abfrageergebnis/JSON-Code ein Feld „group“ enthält, werden im Dropdown Gruppen von Werten angezeigt. Orientieren Sie sich am obigen Beispiel, verwenden Sie jedoch stattdessen den folgenden JSON-Code:
+
 ```json
 [
     { "value":"dev", "label":"Development", "group":"Development" },
@@ -59,7 +61,8 @@ Wenn Ihr Abfrageergebnis/JSON-Code ein Feld „group“ enthält, werden im Drop
     { "value":"prod2", "label":"Prod 2", "group":"Production" }
 ]
 ```
-    ![Image showing an example of a grouped dropdown](./media/workbook-dropdowns/grouped-dropDown.png)
+
+![Abbildung, die ein Beispiel für einen gruppierten Dropdownparameter zeigt](./media/workbook-dropdowns/grouped-dropDown.png)
 
 
 ## <a name="creating-a-dynamic-drop-down-parameter"></a>Erstellen eines dynamischen Dropdownparameters
@@ -86,6 +89,7 @@ Wenn Ihr Abfrageergebnis/JSON-Code ein Feld „group“ enthält, werden im Drop
     ![Abbildung zum Erstellen eines dynamischen Dropdowns](./media/workbook-dropdowns/dropdown-dynamic.png)
 
 ## <a name="referencing-drop-down-parameter"></a>Verweisen auf Dropdown-Parameter
+
 ### <a name="in-kql"></a>In einer KQL
 1. Fügen Sie der Arbeitsmappe ein Abfragesteuerelement hinzu, und wählen Sie eine Application Insights-Ressource aus.
 2. Geben Sie im KQL-Editor diesen Codeausschnitt ein:
@@ -122,7 +126,8 @@ dependencies
 | serialize Rank = row_number()
 | project value = name, label = strcat('🌐 ', name), selected = iff(Rank == 1, true, false), group = operation_Name
 ```
-    ![Image showing a drop-down parameter using value, label, selection and group options](./media/workbook-dropdowns/dropdown-more-options.png)
+
+![Abbildung, die einen Dropdownparameter unter Verwendung von Wert-, Bezeichnungs-, Auswahl- und Gruppierungsoptionen zeigt](./media/workbook-dropdowns/dropdown-more-options.png)
 
 
 ## <a name="drop-down-parameter-options"></a>Optionen für Dropdownparameter

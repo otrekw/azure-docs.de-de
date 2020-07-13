@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77252226"
 ---
 # <a name="automate-mobility-service-installation"></a>Automatisieren der Mobility Service-Installation
@@ -392,7 +392,7 @@ cd /tmp
    - Um unnötige Neustarts zu vermeiden, planen Sie die Installation des Pakets während Ihrer monatlichen Wartungsfensters oder der Zeitfenster für Softwareupdates.
 
 1. Konfigurieren Sie die Einstellungen auf der Seite **Verteilungspunkte** und beenden Sie den Assistenten.
-1. Überwachen Sie den Fortschritt der Bereitstellung in der Configuration Manager-Konsole. Wechseln Sie zu **Überwachung** > **Bereitstellungen** >  _\<Ihr Paketname\>_ .
+1. Überwachen Sie den Fortschritt der Bereitstellung in der Configuration Manager-Konsole. Wechseln Sie zu **Überwachung** > **Bereitstellungen** >  _\<your package name\>_ .
 
 ### <a name="uninstall-the-mobility-service"></a>Deinstallieren des Mobility Service
 

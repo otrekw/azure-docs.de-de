@@ -10,20 +10,20 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 42d3360b7defaab2ff0a62dc125a213860b13a6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 097d2b4dffd1dda02d8e342a11b3a907bad4e90a
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133620"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851656"
 ---
 # <a name="azure-networking-services-overview"></a>Übersicht über Azure-Netzwerkdienste
 
 Die Azure-Netzwerkdienste bieten eine Vielzahl von Netzwerkfunktionen, die einzeln oder zusammen verwendet werden können. Klicken Sie auf eine der folgenden Schlüsselfunktionen, um weitere Informationen zu erhalten:
 - [**Konnektivitätsdienste:** ](#connect) Vernetzen Sie Azure-Ressourcen und lokale Ressourcen mithilfe einer Kombination folgender Netzwerkdienste in Azure: Virtual Network (VNET), Virtual WAN, ExpressRoute, VPN Gateway, Virtual Network NAT Gateway, Azure DNS, Peering Service und Azure Bastion.
-- [**Anwendungsschutzdienste:** ](#protect) Diese Dienste schützen Ihrer Anwendungen mithilfe einer Kombination folgender Netzwerkdienste in Azure: Private Link, DDoS Protection, Firewall, Netzwerksicherheitsgruppen, Web Application Firewall und Virtual Network-Endpunkte.
-- [**Anwendungsbereitstellungsdienste:** ](#deliver) Stellen Sie Anwendungen im Azure-Netzwerk mithilfe einer Kombination aus folgenden Netzwerkdiensten in Azure bereit: Content Delivery Network (CDN), Azure Front Door Service, Traffic Manager, Application Gateway, Internet Analyzer und Load Balancer.
-- [**Netzwerküberwachungsdienste:** ](#monitor) Überwachen Sie Ihre Netzwerkressourcen mithilfe einer Kombination folgender Netzwerkdienste in Azure: Network Watcher, ExpressRoute-Monitor, Azure Monitor oder Terminalzugangspunkte für virtuelle Netzwerke.
+- [**Anwendungsschutzdienste**](#protect): Diese Dienste schützen Ihrer Anwendungen mithilfe einer Kombination folgender Netzwerkdienste in Azure: Private Link, DDoS Protection, Firewall, Netzwerksicherheitsgruppen, Web Application Firewall und Virtual Network-Endpunkte.
+- [**Dienste zur Anwendungsbereitstellung**](#deliver): Stellen Sie Anwendungen im Azure-Netzwerk mithilfe einer Kombination aus folgenden Netzwerkdiensten in Azure bereit: Content Delivery Network (CDN), Azure Front Door Service, Traffic Manager, Application Gateway, Internet Analyzer und Load Balancer.
+- [**Netzwerküberwachung**](#monitor): Überwachen Sie Ihre Netzwerkressourcen mithilfe einer Kombination folgender Netzwerkdienste in Azure: Network Watcher, ExpressRoute-Monitor, Azure Monitor oder Terminalzugangspunkte für virtuelle Netzwerke.
 
 ## <a name="connectivity-services"></a><a name="connect"></a>Konnektivitätsdienste
  
@@ -137,14 +137,14 @@ Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst verläuft üb
 
 ## <a name="application-delivery-services"></a><a name="deliver"></a>Anwendungsbereitstellungsdienste
 
-In diesem Abschnitt werden die Azure-Netzwerkdienste beschrieben, mit denen Sie Anwendungen bereitstellen können: Network Watcher, ExpressRoute-Monitor, Azure Monitor oder Terminalzugangspunkte für virtuelle Netzwerke.
+In diesem Abschnitt werden die Netzwerkdienste in Azure beschrieben, die bei der Bereitstellung von Anwendungen helfen – Content Delivery Network, Azure Front Door Service, Traffic Manager, Load Balancer und Application Gateway.
 
 |Dienst|Einsatzzweck|Szenario|
 |---|---|---|
 |[Content Delivery Network](#cdn)|Dieser Dienst übermittelt Inhalte mit hoher Bandbreite an Benutzer. In CDN-Instanzen werden zwischengespeicherte Inhalte auf Edgeservern an POP-Standorten (Point of Presence) gespeichert, die sich in der Nähe der Endbenutzer befinden, um die Wartezeit zu verringern.|<p>[Hinzufügen von CDN zu einer Web-App](../cdn/cdn-add-to-web-app.md)</p> <p>[Zugriff auf Speicherblobs unter Verwendung einer benutzerdefinierten Azure CDN-Domäne über HTTPS](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
 |[Azure Front Door Service](#frontdoor)|Ermöglicht die Definition, Verwaltung und Überwachung des globalen Routings für Ihren Webdatenverkehr, indem Optimierungen für die bestmögliche Leistung und sofortige globale Failover durchgeführt werden, um die Hochverfügbarkeit sicherzustellen|<p>[Hinzufügen einer benutzerdefinierten Domäne zu Azure Front Door Service](../frontdoor/front-door-custom-domain.md)</p> <p>[Konfigurieren von HTTPS in einer benutzerdefinierten Front Door-Domäne](../frontdoor/front-door-custom-domain-https.md)</p><p>[Einrichten einer Web Application Firewall-Richtlinie für Geofilterung](../frontdoor/front-door-tutorial-geo-filtering.md)|
 |[Traffic Manager](#trafficmanager)|Verteilt den Datenverkehr anhand des DNS auf Dienste in Azure-Regionen auf der ganzen Welt und sorgt gleichzeitig für Hochverfügbarkeit und Reaktionsfähigkeit|<p> [Weiterleiten von Datenverkehr für geringe Latenz](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[Weiterleiten von Datenverkehr an einen Prioritätsendpunkt](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [Steuern des Datenverkehrs mit gewichteten Endpunkten](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[Weiterleiten von Datenverkehr basierend auf dem geografischen Standort des Endpunkts](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [Weiterleiten von Datenverkehr basierend auf dem Subnetz des Benutzers](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
-|[Load Balancer](#loadbalancer)|Bietet regionalen Lastenausgleich durch Weiterleiten des Datenverkehrs über Verfügbarkeitszonen und in Ihre VNETs und internen Lastenausgleich durch Weiterleiten des Datenverkehrs über Ihre und zwischen Ihren Ressourcen, um eine regionale Anwendung zu erstellen|<p> [Vornehmen eines Lastausgleichs für Internetdatenverkehr virtueller Computer](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[Lastenausgleich für den Datenverkehrs für mehrere VMs in einem virtuellen Netzwerk](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[Portweiterleitung des Datenverkehrs an einen bestimmten Port auf bestimmten VMs](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [Konfigurieren von Lastenausgleichs- und Ausgangsregeln](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
+|[Load Balancer](#loadbalancer)|Bietet regionalen Lastenausgleich durch Weiterleiten des Datenverkehrs über Verfügbarkeitszonen und in Ihre VNETs und internen Lastenausgleich durch Weiterleiten des Datenverkehrs über Ihre und zwischen Ihren Ressourcen, um eine regionale Anwendung zu erstellen|<p> [Vornehmen eines Lastausgleichs für Internetdatenverkehr virtueller Computer](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[Lastenausgleich für den Datenverkehrs für mehrere VMs in einem virtuellen Netzwerk](../load-balancer/tutorial-load-balancer-standard-internal-portal.md)<p>[Portweiterleitung des Datenverkehrs an einen bestimmten Port auf bestimmten VMs](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [Konfigurieren von Lastenausgleichs- und Ausgangsregeln](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
 |[Application Gateway](#applicationgateway)|Azure Application Gateway ist ein Lastenausgleich für Webdatenverkehr, mit dem Sie eingehenden Datenverkehr für Ihre Webanwendungen verwalten können.|<p>[Weiterleiten von Webdatenverkehr über Azure Application Gateway](../application-gateway/quick-create-portal.md)</p><p>[Tutorial: Konfigurieren eines Anwendungsgateways mit TLS-Terminierung mithilfe des Azure-Portals](../application-gateway/create-ssl-portal.md)</p><p>[Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis](../application-gateway/create-url-route-portal.md) </p>|
 |
 

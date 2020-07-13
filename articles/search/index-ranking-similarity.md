@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: 1975c13162316b4132bae34659b1c5af8e416573
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5597528d395c2c8facd4a1b916b1378b659a646
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231610"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565298"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Ähnlichkeitsalgorithmus für die Rangfolge in Azure Cognitive Search
 
 > [!IMPORTANT]
 > Ab dem 15. Juli 2020 verwenden neu erstellte Suchdienste die BM25-Rangfolgefunktion automatisch, die sich in den meisten Fällen bewährt hat, um Suchrangfolgen bereitzustellen, die mit den Benutzererwartungen besser übereinstimmen als die aktuelle Standardrangfolge. Neben der höheren Rangfolge ermöglicht BM25 auch Konfigurationsoptionen, mit denen Ergebnisse auf der Basis von Faktoren wie der Dokumentgröße optimiert werden können.  
 >
-> Mit dieser Änderung wird die Reihenfolge Ihrer Suchergebnisse wahrscheinlich geringfügige Änderungen aufweisen. Für diejenigen, die die Auswirkung dieser Änderung testen möchten, ist der BM25-Algorithmus in der API-Version 2019-05-06-Preview verfügbar.  
+> Mit dieser Änderung wird die Reihenfolge Ihrer Suchergebnisse wahrscheinlich geringfügige Änderungen aufweisen. Für diejenigen, die die Auswirkung dieser Änderung testen möchten, ist der BM25-Algorithmus in der API-Version 2019-05-06-Preview und in 2020-06-30 verfügbar.  
 
 Dieser Artikel beschreibt, wie Sie den neuen BM25- Rangfolgealgorithmus bei vorhandenen Suchdiensten für neue Indizes verwenden können, die mit der Vorschau-API erstellt und abgefragt werden.
 
@@ -30,7 +30,7 @@ BM25 ist konzeptionell dem älteren klassischen Ähnlichkeitsalgorithmus ähnlic
 
 ## <a name="how-to-test-bm25-today"></a>Wie BM25 heute getestet werden kann
 
-Wenn Sie einen neuen Index erstellen, können Sie eine **Ähnlichkeitseigenschaft** festlegen, um den Algorithmus anzugeben. Sie müssen `api-version=2019-05-06-Preview` wie unten gezeigt verwenden.
+Wenn Sie einen neuen Index erstellen, können Sie eine **Ähnlichkeitseigenschaft** festlegen, um den Algorithmus anzugeben. Sie können die `api-version=2019-05-06-Preview` verwenden, wie unten dargestellt, oder `api-version=2020-06-30`.
 
 ```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: ff0ccbf201f2b83dd446859d8054d115a70f402e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.openlocfilehash: 01e33f7b0133eb5d081e6e8f3c3c9497c11bae95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064161"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84983414"
 ---
 # <a name="tune-model-hyperparameters"></a>Tune Model Hyperparameters
 
@@ -43,33 +43,35 @@ In diesem Abschnitt wird beschrieben, wie eine einfache Parameterbereinigung aus
 
 2.  Verbinden Sie ein untrainiertes Modell mit der am weitesten links befindlichen Eingabe. 
 
+    > [!NOTE] 
+    > **Tune Model Hyperparameters** kann nur mit integrierten Algorithmusmodulen des maschinellen Lernens verbunden werden und unterstützt keine angepassten Modelle, die in **Create Python Model** (Python-Modell erstellen) erstellt wurden.
 
 
-4.  Fügen Sie das Dataset hinzu, das Sie für das Training verwenden möchten, und verbinden Sie es mit der mittleren Eingabe von „Tune Model Hyperparameters“.  
+3.  Fügen Sie das Dataset hinzu, das Sie für das Training verwenden möchten, und verbinden Sie es mit der mittleren Eingabe von „Tune Model Hyperparameters“.  
 
     Wenn Sie ein mit Tags versehenes Dataset haben, können Sie es optional mit dem am weitesten rechts befindlichen Eingabeport (**Optional validation dataset**, „Optionales Validierungsdataset“) verbinden. Dies ermöglicht es Ihnen, die Genauigkeit beim Training und bei der Optimierung zu messen.
 
-5.  Wählen Sie im rechten Bereich von „Tune Model Hyperparameters“ einen Wert für **Parameter sweeping mode** (Parameterbereinigungsmodus) aus. Mit dieser Option wird gesteuert, wie die Parameter ausgewählt werden.
+4.  Wählen Sie im rechten Bereich von „Tune Model Hyperparameters“ einen Wert für **Parameter sweeping mode** (Parameterbereinigungsmodus) aus. Mit dieser Option wird gesteuert, wie die Parameter ausgewählt werden.
 
     - **Entire grid** (Gesamtes Raster): Wenn Sie diese Option auswählen, durchläuft das Modul ein vom System vordefiniertes Raster in einer Schleife, um unterschiedliche Kombinationen auszuprobieren und das beste Lernmodul zu ermitteln. Diese Option ist nützlich, falls Sie die besten Parametereinstellungen nicht kennen und alle möglichen Kombinationen von Werten ausprobieren möchten.
 
     - **Random sweep** (Zufällige Bereinigung): Wenn Sie diese Option auswählen, wählt das Modul nach dem Zufallsprinzip Parameterwerte für einen vom System definierten Bereich aus. Sie müssen die maximale Anzahl von Ausführungen angeben, die das Modul ausführen soll. Diese Option ist nützlich, wenn Sie die Modellleistung mit den von Ihnen gewünschten Metriken steigern, aber weiterhin Computeressourcen sparen möchten.    
 
-6.  Öffnen Sie für **Label column** (Bezeichnungsspalte) die Spaltenauswahl, um eine einzelne Bezeichnungsspalte auszuwählen.
+5.  Öffnen Sie für **Label column** (Bezeichnungsspalte) die Spaltenauswahl, um eine einzelne Bezeichnungsspalte auszuwählen.
 
-7.  Auswählen der Anzahl von Ausführungen:
+6.  Auswählen der Anzahl von Ausführungen:
 
-    1. **Maximum number of runs on random sweep**: Wenn Sie eine zufällige Bereinigung auswählen, können Sie angeben, wie oft das Modell mit einer zufälligen Kombination von Parameterwerten trainiert werden soll.
+    - **Maximum number of runs on random sweep**: Wenn Sie eine zufällige Bereinigung auswählen, können Sie angeben, wie oft das Modell mit einer zufälligen Kombination von Parameterwerten trainiert werden soll.
 
-8.  Wählen Sie unter **Rang** eine Metrik aus, die zum Zuweisen eines Rangs für die Modelle verwendet werden soll.
+7.  Wählen Sie unter **Rang** eine Metrik aus, die zum Zuweisen eines Rangs für die Modelle verwendet werden soll.
 
     Wenn Sie eine Parameterbereinigung ausführen, werden vom Modul alle zutreffenden Metriken für den Modelltyp berechnet und im Bericht **Sweep results** (Bereinigungsergebnisse) zurückgegeben. Das Modul nutzt separate Metriken für Regressions- und Klassifizierungsmodelle.
 
     Die von Ihnen gewählte Metrik bestimmt aber, wie die Modelle eingestuft werden. Nur das oberste Modell, eingestuft entsprechend der gewählten Metrik, wird als trainiertes Modell ausgegeben, das für die Bewertung verwendet werden soll.
 
-9.  Geben Sie für **Random seed** (Zufälliger Ausgangswert) eine Zahl ein, die zum Starten der Parameterbereinigung verwendet werden soll. 
+8.  Geben Sie für **Random seed** (Zufälliger Ausgangswert) eine Zahl ein, die zum Starten der Parameterbereinigung verwendet werden soll. 
 
-10. Übermitteln der Pipeline
+9. Übermitteln der Pipeline
 
 ## <a name="results-of-hyperparameter-tuning"></a>Ergebnisse einer Hyperparameteroptimierung
 

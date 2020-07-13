@@ -1,7 +1,7 @@
 ---
 title: Langfristiges Aufbewahren von Sicherungen
-titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Hier erfahren Sie, wie Azure SQL-Datenbank und SQL Managed Instance das Speichern vollständiger Datenbanksicherungen bei Verwendung der Richtlinie zur Langzeitaufbewahrung für bis zu 10 Jahre unterstützen.
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
+description: Hier erfahren Sie, wie Azure SQL-Datenbank und Azure SQL Managed Instance das Speichern vollständiger Datenbanksicherungen bei Verwendung der Richtlinie zur Langzeitaufbewahrung für bis zu 10 Jahre unterstützen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,15 +12,14 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 0e562b92db16456956ff2fe1cbec0f1addde87ef
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 992ad40d343fcc85b6c7c8fe0ed8b083a5b08238
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84035741"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84344508"
 ---
-# <a name="long-term-retention---azure-sql-database--sql-managed-instance"></a>Langzeitaufbewahrung: Azure SQL-Datenbank und SQL Managed Instance
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Langzeitaufbewahrung: Azure SQL-Datenbank und Azure SQL Managed Instance
 
 Viele Anwendungen dienen gesetzlichen, compliancebedingten oder anderen geschäftlichen Zwecken, die voraussetzen, dass Datenbanksicherungen länger als der Zeitraum von 7–35 Tagen, der für [automatische Sicherungen](automated-backups-overview.md) von Azure SQL-Datenbank und SQL Managed Instance zur Verfügung gestellt wird, aufbewahrt werden. Mithilfe des Features für die Langzeitaufbewahrung (Long-Term Retention, LTR) können Sie angegebene vollständige Sicherungen von SQL-Datenbank und SQL Managed Instance bis zu 10 Jahre lang in Azure-Blobspeicher mit georedundantem Speicher mit Lesezugriff speichern. Sie können dann jede Sicherung als neue Datenbank wiederherstellen. Weitere Informationen zur Azure Storage-Redundanz finden Sie unter [Azure Storage-Redundanz](../../storage/common/storage-redundancy.md). 
 
@@ -32,7 +31,7 @@ Die Langzeitaufbewahrung kann für Azure SQL-Datenbank aktiviert werden und befi
 
 ## <a name="how-long-term-retention-works"></a>Funktionsweise der Langzeitaufbewahrung
      
-Die langfristige Sicherungsaufbewahrung (LTR) nutzt die [automatischen](automated-backups-overview.md) vollständigen Datenbanksicherungen für die Point-in-Time-Wiederherstellung (Point In Time Restore, PITR). Wenn eine LTR-Richtlinie konfiguriert wurde, werden diese Sicherungen in verschiedene Blobs für langfristige Speicherung kopiert. Der Kopiervorgang ist ein Hintergrundauftrag, der keine Auswirkung auf die Leistung der Datenbankworkload hat. Die LTR-Richtlinie für jede SQL-Datenbank kann auch angeben, wie oft die LTR-Sicherungen erstellt werden.
+Die langfristige Sicherungsaufbewahrung (LTR) nutzt die [automatischen](automated-backups-overview.md) vollständigen Datenbanksicherungen für die Point-in-Time-Wiederherstellung (Point In Time Restore, PITR). Wenn eine LTR-Richtlinie konfiguriert wurde, werden diese Sicherungen in verschiedene Blobs für langfristige Speicherung kopiert. Der Kopiervorgang ist ein Hintergrundauftrag, der keine Auswirkung auf die Leistung der Datenbankworkload hat. In der LTR-Richtlinie für jede Datenbank in Azure SQL-Datenbank können Sie auch festlegen, wie oft die LTR-Sicherungen erstellt werden.
 
 Um von LTR zu profitieren, können Sie eine Richtlinie mit einer Kombination aus vier Parametern definieren: wöchentliche Sicherungsaufbewahrung (W), monatliche Sicherungsaufbewahrung (M), jährliche Sicherungsaufbewahrung (Y) und Woche des Jahres (WeekOfYear). Wenn Sie den Parameter „W“ angeben, wird eine wöchentliche Sicherung in den langfristigen Speicher kopiert. Wenn Sie den Parameter „M“ angeben, wird die erste Sicherung jedes Monats in den langfristigen Speicher kopiert. Wenn Sie den Parameter „Y“ angeben, wird eine Sicherung, die in der durch „WeekOfYear“ angegebenen Woche erstellt wird, in den langfristigen Speicher kopiert. Wenn die angegebene WeekOfYear beim Konfigurieren der Richtlinie in der Vergangenheit liegt, wird die erste LTR-Sicherung im Folgejahr erstellt. Jede Sicherung wird entsprechend den Richtlinienparametern, die beim Erstellen der LTR-Sicherung konfiguriert werden, im langfristigen Speicher aufbewahrt.
 
@@ -78,25 +77,26 @@ Wenn Sie aktive Georeplikation oder Failovergruppen als Geschäftskontinuitätsl
 > [!NOTE]
 > Wenn die ursprüngliche primäre Datenbank nach dem Ausfall, der zu einem Failover geführt hat, wiederhergestellt wird, wird sie zu einer neuen sekundären Datenbank. Daher wird die Sicherungserstellung nicht fortgesetzt und die bestehende LTR-Richtlinie wird erst wieder wirksam, wenn sie wieder die primäre Datenbank ist. 
 
-## <a name="managed-instance-support"></a>Unterstützung verwalteter Instanzen
+## <a name="sql-managed-instance-support"></a>Unterstützung für SQL Managed Instance
 
-Für die Verwendung der Langzeitaufbewahrung von Sicherungen mit einer Instanz von Azure SQL Managed Instance gelten die folgenden Einschränkungen:
+Für die Verwendung der langfristigen Sicherungsaufbewahrung mit Azure SQL Managed Instance gelten die folgenden Einschränkungen:
 
 - **Eingeschränkte öffentliche Vorschau**: Diese Vorschauversion ist nur für EA- und CSP-Abonnements verfügbar. Es gelten die Bestimmungen der eingeschränkten Verfügbarkeit.  
-- [**Nur PowerShell**](../managed-instance/long-term-backup-retention-configure.md): Das Azure-Portal wird derzeit nicht unterstützt. Die Langzeitaufbewahrung muss über PowerShell aktiviert werden. 
+- [**Nur PowerShell**](../managed-instance/long-term-backup-retention-configure.md), das Azure-Portal wird derzeit nicht unterstützt. Die Langzeitaufbewahrung muss über PowerShell aktiviert werden. 
 
-Wenn Sie eine Registrierung anfordern möchten, erstellen Sie ein [Azure-Supportticket](https://azure.microsoft.com/support/create-ticket/). Wählen Sie bei „Issuetyp“ die Option „Technisches Problem“, bei „Dienst“ die Option „Verwaltete SQL-Datenbank-Instanz“ und bei „Problemtyp“ die Option **Sicherung, Wiederherstellung und Geschäftskontinuität/Langfristige Sicherungsaufbewahrung**aus. Geben Sie in Ihrer Anforderung an, dass Sie in der eingeschränkten öffentlichen Vorschau von LTR für eine verwaltete Instanz registriert werden möchten.
+Wenn Sie eine Registrierung anfordern möchten, erstellen Sie ein [Azure-Supportticket](https://azure.microsoft.com/support/create-ticket/). Wählen Sie als Issuetyp die Option „Technisches Problem“, als Dienst „SQL Managed Instance“ und als Problemtyp die Option **Sicherung, Wiederherstellung und Geschäftskontinuität/Langfristige Sicherungsaufbewahrung** aus. Geben Sie in Ihrer Anforderung an, dass Sie in der eingeschränkten öffentlichen Vorschau von LTR für SQL Managed Instance registriert werden möchten.
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurieren der langfristigen Sicherungsaufbewahrung
 
-Sie können die Langzeitaufbewahrung über das Azure-Portal, mit PowerShell für eine Azure SQL-Datenbank-Instanz oder mit PowerShell für eine Instanz von Azure SQL Managed Instance konfigurieren. Zum Wiederherstellen einer Datenbank aus dem LTR-Speicher können Sie eine bestimmte Sicherung basierend auf ihrem Zeitstempel auswählen. Die Datenbank kann auf einem beliebigen vorhandenen Server oder einer verwalteten Instanz unter dem gleichen Abonnement wie die ursprüngliche Datenbank wiederhergestellt werden.
+Sie können die langfristige Sicherungsaufbewahrung im Azure-Portal, mit PowerShell für Azure SQL-Datenbank und mit PowerShell für Azure SQL Managed Instance konfigurieren. Zum Wiederherstellen einer Datenbank aus dem LTR-Speicher können Sie eine bestimmte Sicherung basierend auf ihrem Zeitstempel auswählen. Die Datenbank kann auf einem beliebigen vorhandenen Server oder einer verwalteten Instanz unter dem gleichen Abonnement wie die ursprüngliche Datenbank wiederhergestellt werden.
 
-Informationen zum Konfigurieren der Langzeitaufbewahrung oder der Wiederherstellung einer Datenbank aus einer Sicherung für eine Azure SQL-Datenbank-Instanz mithilfe des Azure-Portals oder mit PowerShell finden Sie unter [Verwalten der Langzeitaufbewahrung von Azure SQL-Datenbank](long-term-backup-retention-configure.md).
+Informationen zum Konfigurieren der Langzeitaufbewahrung oder zum Wiederherstellen einer Datenbank aus einer Sicherung für SQL-Datenbank im Azure-Portal oder mithilfe von PowerShell finden Sie unter [Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank](long-term-backup-retention-configure.md).
 
-Informationen zum Konfigurieren der Langzeitaufbewahrung oder der Wiederherstellung einer Datenbank aus einer Sicherung für eine Instanz von Azure SQL Managed Instance mithilfe von PowerShell finden Sie unter [Verwalten der Langzeitaufbewahrung von Azure SQL Managed Instance-Sicherungen](../managed-instance/long-term-backup-retention-configure.md). 
+Informationen zum Konfigurieren der Langzeitaufbewahrung oder zum Wiederherstellen einer Datenbank aus einer Sicherung für SQL Managed Instance mithilfe von PowerShell finden Sie unter [Verwalten der langfristigen Sicherungsaufbewahrung für Azure SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md).
 
-Zum Wiederherstellen einer Datenbank aus dem LTR-Speicher können Sie eine bestimmte Sicherung basierend auf ihrem Zeitstempel auswählen. Die Datenbank kann auf einem beliebigen vorhandenen Server unter dem gleichen Abonnement wie die ursprüngliche Datenbank wiederhergestellt werden. Informationen zum Wiederherstellen Ihrer Datenbank aus einer LTR-Sicherung mit dem Azure-Portal oder PowerShell finden Sie unter [Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank](long-term-backup-retention-configure.md). Geben Sie in Ihrer Anforderung an, dass Sie in der eingeschränkten öffentlichen Vorschau von LTR für eine verwaltete Instanz registriert werden möchten.
+Zum Wiederherstellen einer Datenbank aus dem LTR-Speicher können Sie eine bestimmte Sicherung basierend auf ihrem Zeitstempel auswählen. Die Datenbank kann auf einem beliebigen vorhandenen Server unter dem gleichen Abonnement wie die ursprüngliche Datenbank wiederhergestellt werden. Informationen zum Wiederherstellen Ihrer Datenbank aus einer LTR-Sicherung mit dem Azure-Portal oder PowerShell finden Sie unter [Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank](long-term-backup-retention-configure.md). Geben Sie in Ihrer Anforderung an, dass Sie in der eingeschränkten öffentlichen Vorschau von LTR für SQL Managed Instance registriert werden möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten vor versehentlichen Beschädigungen und Löschungen geschützt werden. Weitere Informationen zu den anderen Geschäftskontinuitätslösungen von SQL-Datenbank finden Sie unter [Übersicht über die Geschäftskontinuität](business-continuity-high-availability-disaster-recover-hadr-overview.md).
+ 

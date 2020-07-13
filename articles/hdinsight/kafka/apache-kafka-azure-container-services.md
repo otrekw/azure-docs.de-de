@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: 55373f71c78b6d45b9c78c52dea61a37b89b4a00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383056"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Verwenden von Azure Kubernetes Service mit Apache Kafka in HDInsight
@@ -92,9 +92,9 @@ Wenn Sie nicht bereits über einen AKS-Cluster verfügen, verwenden Sie eines de
 
     |Eigenschaft |Wert |
     |---|---|
-    |Name für das Peering zwischen \<diesem VNET> und dem virtuellen Remotenetzwerk|Geben Sie einen eindeutigen Namen für diese Peeringkonfiguration ein.|
+    |Name für das Peering zwischen \<this VN> und dem virtuellen Remotenetzwerk|Geben Sie einen eindeutigen Namen für diese Peeringkonfiguration ein.|
     |Virtuelles Netzwerk|Wählen Sie das virtuelle Netzwerk für den **AKS-Cluster** aus.|
-    |Name für das Peering zwischen dem \<AKS-VNET> und \<diesem VNET>|Geben Sie einen eindeutigen Namen ein.|
+    |Name für das Peering zwischen \<AKS VN> und \<this VN>|Geben Sie einen eindeutigen Namen ein.|
 
     Übernehmen Sie in allen anderen Feldern die Standardwerte, und wählen Sie dann __OK__ aus, um das Peering zu konfigurieren.
 

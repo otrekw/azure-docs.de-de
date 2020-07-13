@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 6a0a4c0885552d7f8697a1f13b8750e084d8770a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5aba4c690f91b515424eb866d387652ca9f40e7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84344610"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-azure-sql-database-from-code"></a>Abrufen der Client-ID und des Schlüssels für die Verbindung mit der Azure SQL-Datenbank aus dem Code
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Zum Erstellen und Verwalten der SQL-Datenbank über den Code müssen Sie Ihre App in der Azure Active Directory-Domäne (AAD) in dem Abonnement registrieren, in dem die Azure-Ressourcen erstellt wurden.
+Zum Erstellen und Verwalten von Azure SQL-Datenbank über den Code müssen Sie Ihre App in der Azure Active Directory-Domäne (Azure AD) in dem Abonnement registrieren, in dem Ihre Azure-Ressourcen erstellt wurden.
 
 ## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen aus einer Anwendung
 

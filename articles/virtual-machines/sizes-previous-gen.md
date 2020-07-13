@@ -1,25 +1,19 @@
 ---
-title: Azure Linux-VM-Größen – vorherige Generationen | Microsoft-Dokumentation
-description: Auflistung der vorherigen Generationen von verfügbaren Größen für virtuelle Linux-Computer in Azure. Dieser Artikel listet Informationen zur Anzahl von vCPUs, Datenträgern und Netzwerkschnittstellenkarten sowie zum Speicherdurchsatz und zur Netzwerkbandbreite für Größen dieser Serie auf.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Azure-VM-Größen – vorherige Generationen | Microsoft-Dokumentation
+description: Auflistung der vorherigen Generationen von verfügbaren Größen für virtuelle Computer in Azure. Dieser Artikel listet Informationen zur Anzahl von vCPUs, Datenträgern und Netzwerkschnittstellenkarten sowie zum Speicherdurchsatz und zur Netzwerkbandbreite für Größen dieser Serie auf.
+services: virtual-machines
+ms.subservice: sizes
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
-ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
-ms.author: jonbeck
-ms.openlocfilehash: ac49d2da9d05c9677dbb6f5328874ab3a45ff661
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 6ebd13317940d131facfb36987fb37358260ec05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081539"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119221"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Vorherige Generationen von Größen virtueller Computer
 
@@ -175,7 +169,7 @@ Die Größen A8 bis A11 und die Größen der H-Reihe werden auch als *recheninte
 
 ### <a name="d-series"></a>D-Serie  
 
-**Neuere Größenempfehlung**: [Dv3-Serie](dv3-dsv3-series.md)
+**Neuere Größenempfehlung**: [Dav4-Serie](dav4-dasv4-series.md), [Dv4-Serie](dv4-dsv4-series.md) und [Ddv4-Serie](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -196,7 +190,7 @@ Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 
 ### <a name="d-series---memory-optimized"></a>D-Serie – arbeitsspeicheroptimiert  
 
-**Neuere Größenempfehlung**: [Dv3-Serie](dv3-dsv3-series.md)
+**Neuere Größenempfehlung**: [Dav4-Serie](dav4-dasv4-series.md), [Dv4-Serie](dv4-dsv4-series.md) und [Ddv4-Serie](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -237,7 +231,7 @@ Die DC-Serie verwendet die neueste Generation von 3,7 GHz Intel XEON-E-2176g-Pr
 
 ### <a name="ds-series"></a>DS-Serie  
 
-**Neuere Größenempfehlung**: [Dsv3-Serie](dv3-dsv3-series.md)
+**Neuere Größenempfehlung**: [Dasv4-Serie](dav4-dasv4-series.md), [Dsv4-Serie](dv4-dsv4-series.md) und [Ddsv4-Serie](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -258,7 +252,7 @@ Storage Premium-Zwischenspeicherung:  Unterstützt
 
 ### <a name="ds-series---memory-optimized"></a>DS-Serie – arbeitsspeicheroptimiert  
 
-**Neuere Größenempfehlung**: [Dsv3-Serie](dv3-dsv3-series.md)
+**Neuere Größenempfehlung**: [Dasv4-Serie](dav4-dasv4-series.md), [Dsv4-Serie](dv4-dsv4-series.md) und [Ddsv4-Serie](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1,2</sup>
 
@@ -279,6 +273,8 @@ Storage Premium-Zwischenspeicherung:  Unterstützt
 <br>
 
 ### <a name="ls-series"></a>Ls-Serie
+
+**Neuere Größenempfehlung**: [Lsv2-Serie](lsv2-series.md)
 
 Die Ls-Reihe bietet bis zu 32 vCPUs aus der [Intel® Xeon® E5 v3-Prozessorfamilie](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Die Ls-Serie erreicht die gleiche CPU-Leistung wie die G/GS-Serie und bietet 8 GiB Arbeitsspeicher pro vCPU.
 
@@ -303,6 +299,8 @@ Der mit einem virtuellen Computer der Ls-Serie maximal mögliche Datenträgerdur
 
 ### <a name="gs-series"></a>GS-Serie
 
+**Neuere Größenempfehlung**: [Easv4-Serie](eav4-easv4-series.md), [Esv4-Serie](ev4-esv4-series.md), [Edsv4-Serie](edv4-edsv4-series.md) und [M-Serie](m-series.md)
+
 ACU: 180–240 <sup>1</sup>
 
 Storage Premium  Unterstützt
@@ -326,6 +324,8 @@ Storage Premium-Zwischenspeicherung:  Unterstützt
 <br>
 
 ### <a name="g-series"></a>G-Serie
+
+**Neuere Größenempfehlung**: [Eav4-Serie](eav4-easv4-series.md), [Ev4-Serie](ev4-esv4-series.md) und [Edv4-Serie](edv4-edsv4-series.md) und [M-Serie](m-series.md)
 
 ACU: 180–240
 
