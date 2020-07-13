@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672731"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134818"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern/physischen Servern
 
@@ -22,7 +22,7 @@ Sie richten einen lokalen Konfigurationsserver ein, wenn Sie [Azure Site Recover
 
 ## <a name="update-windows-license"></a>Aktualisieren der Windows-Lizenz
 
-Bei der mit der OVF-Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz mit einer Gültigkeit von 180 Tagen. Zur unterbrechungsfreien Nutzung müssen Sie Windows mit einer käuflich erworbenen Lizenz aktivieren. Das Lizenzupdate kann über einen eigenständigen Schlüssel oder einen KMS-Standardschlüssel durchgeführt werden. Anleitungen finden Sie unter [Windows Edition-Dienst-und-Wartung-Befehlszeilenoptionen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options). Informationen zum Abrufen der Schlüssel finden Sie unter [KMS-Clientsetupschlüssel](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys).
+Bei der mit der OVF-Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz mit einer Gültigkeit von 180 Tagen. Zur unterbrechungsfreien Nutzung müssen Sie Windows mit einer käuflich erworbenen Lizenz aktivieren. Das Lizenzupdate kann über einen eigenständigen Schlüssel oder einen KMS-Standardschlüssel durchgeführt werden. Anleitungen finden Sie unter [Windows Edition-Dienst-und-Wartung-Befehlszeilenoptionen](/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options). Informationen zum Abrufen der Schlüssel finden Sie unter [KMS-Clientsetupschlüssel](/windows-server/get-started/kmsclientkeys).
 
 ## <a name="access-configuration-server"></a>Zugreifen auf den Konfigurationsserver
 
@@ -266,7 +266,7 @@ ProxyPassword="Password"
 
 Optional können Sie den Konfigurationsserver mithilfe von PowerShell löschen:
 
-1. [Installieren](https://docs.microsoft.com/powershell/azure/install-Az-ps) Sie das Azure PowerShell-Modul.
+1. [Installieren](/powershell/azure/install-Az-ps) Sie das Azure PowerShell-Modul.
 2. Melden Sie sich mit diesem Befehl bei Ihrem Azure-Konto an:
 
     `Connect-AzAccount`
