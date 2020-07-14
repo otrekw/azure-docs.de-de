@@ -3,12 +3,12 @@ title: Sichern und Wiederherstellen von verschlüsselten virtuellen Azure-Comput
 description: Beschreibt, wie verschlüsselte virtuelle Azure-Computer (VMs) mit dem Azure Backup-Dienst gesichert und wiederhergestellt werden.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: ea4d2830fb9db9f95ba8ab87626a79d94aaecb8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0800a15b215b37ceb75abc0d6480331d642dc746
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124502"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers
 
@@ -132,7 +132,9 @@ So legen Sie Berechtigungen fest:
 
 ## <a name="restore-an-encrypted-vm"></a>Wiederherstellen eines verschlüsselten virtuellen Computers
 
-Verschlüsselte virtuelle Computer stellen Sie wie folgt wieder her:
+Verschlüsselte virtuelle Computer können nur durch Wiederherstellen des VM-Datenträgers wiederhergestellt werden, wie weiter unten erläutert. Die Funktionen **Vorhandene ersetzen** und **Virtuellen Computer wiederherstellen** werden nicht unterstützt.
+
+Stellen Sie verschlüsselte virtuelle Computer wie folgt wieder her:
 
 1. [Stellen Sie den VM-Datenträger wieder her](backup-azure-arm-restore-vms.md#restore-disks).
 2. Erstellen Sie die VM-Instanz neu, indem Sie eine der folgenden Aktionen ausführen:

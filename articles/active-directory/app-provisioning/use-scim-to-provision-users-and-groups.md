@@ -2,21 +2,21 @@
 title: Entwickeln eines SCIM-Endpunkts für die Benutzerbereitstellung in Apps von Azure AD
 description: Das System für die domänenübergreifende Identitätsverwaltung (System for Cross-domain Identity Management, SCIM) standardisiert die automatische Benutzerbereitstellung. Erfahren Sie, wie Sie einen SCIM-Endpunkt entwickeln, Ihre SCIM-API in Azure Active Directory integrieren und mit der Automatisierung der Bereitstellung von Benutzern und Gruppen in Ihren Cloudanwendungen beginnen.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/07/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 926c3315035534f393eba72cd1d3910bf6135347
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: b08509bed6b26cb56caebd4dc47fc3b7ac84ce27
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117317"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD
 
@@ -745,11 +745,7 @@ TLS 1.2-Verschlüsselungssammlungen (Minimum):
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP-Bereiche
-Der Azure AD-Bereitstellungsdienst arbeitet zurzeit unter den folgenden IP-Adressbereichen. 
-
-13.86.239.205; 52.188.178.195; 13.86.61.156; 40.67.254.206; 51.105.237.71; 20.44.38.166; 40.81.88.68; 52.184.94.250; 20.43.180.59; 20.193.16.105; 20.40.167.232; 13.86.3.57; 52.188.72.113; 13.88.140.233; 52.142.121.156; 51.124.0.213; 40.81.92.36; 20.44.39.175; 20.189.114.130; 20.44.193.163; 20.193.23.17; 20.40.173.237; 13.86.138.128; 52.142.29.23; 13.86.2.238; 40.127.246.167; 51.136.72.4; 20.44.39.244; 40.81.92.186; 20.189.114.131; 20.44.193.210; 20.193.2.21; 20.40.174.46; 13.86.219.18; 40.71.13.10; 20.44.16.38; 13.89.174.16; 13.69.66.182; 13.69.229.118; 104.211.147.176; 40.78.195.176; 13.67.9.240; 13.75.38.48; 13.70.73.48; 13.77.52.176;
-
-
+Der Azure AD-Bereitstellungsdienst kann derzeit in einem beliebigen IP-Adressbereich von Azure operieren. Es wird derzeit daran gearbeitet, den Satz von IP-Adressbereichen zu konsolidieren, mit denen der Dienst arbeitet. Dieses Dokument wird aktualisiert, sobald die Liste der IP-Adressbereiche konsolidiert ist. 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Schritt 3: Erstellen eines SCIM-Endpunkts
 
@@ -1198,7 +1194,8 @@ Die SCIM-Spezifikation definiert kein SCIM-spezifisches Schema für die Authenti
 |OAuth-Autorisierungscodegenehmigung|Zugriffstoken sind sehr viel kurzlebiger als Kennwörter und verfügen über einen automatischen Aktualisierungsmechanismus, den langlebige Bearertoken nicht haben.  Bei der ersten Autorisierung muss ein echter Benutzer anwesend sein, was einen gewissen Grad an Verantwortlichkeit bedeutet. |Ein Benutzer muss anwesend sein. Wenn der Benutzer das Unternehmen verlässt, wird das Token ungültig, und die Autorisierung muss erneut erfolgen.|Unterstützt für Katalog-Apps. Unterstützung für Nicht-Katalog-Apps ist in Arbeit.|
 |Genehmigung von OAuth-Clientanmeldeinformationen|Zugriffstoken sind sehr viel kurzlebiger als Kennwörter und verfügen über einen automatischen Aktualisierungsmechanismus, den langlebige Bearertoken nicht haben. Sowohl die Autorisierungscodegenehmigung als auch die Genehmigung von Clientanmeldeinformationen gehören zum gleichen Typ Zugriffstoken. Ein Wechsel zwischen diesen beiden Methoden ist daher für die API transparent.  Die Bereitstellung kann vollständig automatisiert werden. Neue Token können ohne Benutzerinteraktion und im Hintergrund angefordert werden. ||Nicht unterstützt für Katalog- und Nicht-Katalog-Apps. Diese Unterstützung befindet sich in unserem Backlog.|
 
-[!NOTE] Es wird nicht empfohlen, das Tokenfeld auf der Benutzeroberfläche der benutzerdefinierten App zur Konfiguration der Azure AD-Bereitstellung leer zu lassen. Das generierte Token steht in erster Linie zu Testzwecken zur Verfügung.
+> [!NOTE]
+> Es wird nicht empfohlen, das Tokenfeld auf der Benutzeroberfläche der benutzerdefinierten App zur Konfiguration der Azure AD-Bereitstellung leer zu lassen. Das generierte Token steht in erster Linie zu Testzwecken zur Verfügung.
 
 **Ablauf der OAuth-Autorisierungscodegenehmigung:** Der Bereitstellungsdienst unterstützt die [Autorisierungscodegenehmigung](https://tools.ietf.org/html/rfc6749#page-24). Nachdem Sie Ihre Anforderung zur Veröffentlichung Ihrer App im Katalog übermittelt haben, wird unser Team mit Ihnen zusammenarbeiten, um die folgenden Informationen zu sammeln:
 *  URL für Autorisierung: Eine URL des Clients, um die Autorisierung des Ressourcenbesitzers über die Umleitung des Benutzer-Agents zu erhalten. Der Benutzer wird zu dieser URL umgeleitet, um den Zugriff zu autorisieren. Beachten Sie, dass diese URL derzeit nicht für einzelne Mandanten konfiguriert werden kann.

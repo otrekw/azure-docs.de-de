@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/02/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45ca11af061e37cf4f804ce2d7ceed72a9448294
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 608c8206227a129a320a560e752cf31a4843dca3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84321681"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Lizenzierungsanforderungen für die Self-Service-Kennwortzurücksetzung in Azure Active Directory
 
-Um Helpdeskanrufe und Produktivitätsverluste zu minimieren, wenn sich ein Benutzer nicht bei seinem Gerät oder einer Anwendung anmelden kann, können Benutzerkonten in Azure Active Directory (Azure AD) für die Self-Service-Kennwortzurücksetzung (SSPR) aktiviert werden. Zu den SSPR-Features zählen das Ändern, Zurücksetzen und Entsperren von Kennwörtern sowie das Rückschreiben in ein lokales Verzeichnis. Grundlegende SSPR-Features stehen für Office 365- und alle Azure AD-Benutzer kostenlos zur Verfügung.
+Um Helpdeskanrufe und Produktivitätsverluste zu minimieren, wenn sich ein Benutzer nicht bei seinem Gerät oder einer Anwendung anmelden kann, können Benutzerkonten in Azure Active Directory (Azure AD) für die Self-Service-Kennwortzurücksetzung (SSPR) aktiviert werden. Zu den SSPR-Features zählen das Ändern, Zurücksetzen und Entsperren von Kennwörtern sowie das Rückschreiben in ein lokales Verzeichnis. Grundlegende SSPR-Funktionen sind in Microsoft 365 Business Standard oder höher und allen Azure AD Premium-SKUs kostenlos verfügbar.
 
 In diesem Artikel werden die verschiedenen Möglichkeiten für die Lizenzierung und Verwendung der Self-Service-Kennwortzurücksetzung erläutert. Ausführliche Informationen zur Preisgestaltung und Abrechnung finden Sie auf der Seite [Azure AD – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -30,14 +30,14 @@ SSPR wird pro Benutzer lizenziert. Aus Gründen der Compliance müssen Organisat
 
 In der folgenden Tabelle werden die verschiedenen SSPR-Szenarien für das Ändern, Zurücksetzen oder lokale Rückschreiben von Kennwörtern erläutert sowie welche SKUs die jeweilige Funktion bereitstellen.
 
-| Funktion | Azure AD Free | Office 365 Business Premium | Microsoft 365 Business | Azure AD Premium P1 oder P2 |
+| Funktion | Azure AD Free | Microsoft 365 Business Standard | Microsoft 365 Business Premium | Azure AD Premium P1 oder P2 |
 | --- |:---:|:---:|:---:|:---:|
 | **Ändern des Benutzerkennworts nur in der Cloud**<br />Wenn ein Benutzer in Azure AD sein Kennwort kennt und es ändern möchte. | ● | ● | ● | ● |
 | **Zurücksetzen des Benutzerkennworts nur in der Cloud**<br />Wenn ein Benutzer in Azure AD sein Kennwort vergessen hat und es zurücksetzen muss. | | ● | ● | ● |
 | **Ändern oder Zurücksetzen eines Hybridbenutzerkennworts mit lokalem Rückschreiben**<br />Wenn ein Benutzer in Azure AD, der mit Azure AD Connect von einem lokalen Verzeichnis aus synchronisiert wird, sein Kennwort ändern oder zurücksetzen und das neue Kennwort auch in das lokale Verzeichnis zurückschreiben möchte. | | | ● | ● |
 
 > [!WARNING]
-> Eigenständige Office 365-Lizenzierungspläne unterstützen kein SSPR mit lokalem Rückschreiben. Diese Office 365-Lizenzierungspläne erfordern Azure AD Premium P1, Premium P2 oder Microsoft 365 Business, damit diese Funktion verwendet werden kann.
+> Die Lizenzierungspläne für eigenständige Versionen von Microsoft 365 Basic und Standard unterstützen SSPR mit lokalem Rückschreiben nicht. Die Funktion für das lokale Rückschreiben setzt Azure AD Premium P1, Premium P2 oder Microsoft 365 Business Premium voraus.
 
 Weitere Informationen zur Lizenzierung, einschließlich der Kosten, finden Sie auf den folgenden Seiten:
 

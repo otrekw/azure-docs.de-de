@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a20d7cb05f4529d5aa8a115b7d1db6e4d812be0
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 7c22ad844f0a543cfbf2e007ab2bfc8f0fe22ef7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100859"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362933"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Tutorial: Erstellen eines Hostpools mit dem Azure-Portal
 
@@ -67,20 +67,23 @@ Zum Erstellen des neuen Hostpools führen Sie zunächst die folgenden Schritte a
    
    Die Metadaten für diesen Hostpool und die zugehörigen Objekte werden in der Azure-Geografie gespeichert, die den von Ihnen ausgewählten Regionen zugeordnet ist. Stellen Sie sicher, dass Sie die Regionen innerhalb der Geografie auswählen, in der die Dienstmetadaten gespeichert werden sollen.
 
-     ![Screenshot des Azure-Portals, der das Feld „Standort“ mit ausgewählter Region „USA, Osten“ zeigt. Neben dem Feld wird „Metadaten werden in ‚USA, Osten‘ gespeichert“ angezeigt.](media/portal-location-field.png)
+     > [!div class="mx-imgBorder"]
+     > ![Screenshot des Azure-Portals, der das Feld „Standort“ mit ausgewählter Region „USA, Osten“ zeigt. Neben dem Feld wird „Metadaten werden in ‚USA, Osten‘ gespeichert“ angezeigt.](media/portal-location-field.png)
 
 8. Wählen Sie unter „Host pool type“ (Hostpooltyp) die Option **Persönlich** oder **In Pool** für Ihren Hostpool aus.
 
     - Wählen Sie bei Auswahl von **Persönlich** im Feld „Zuweisungstyp“ die Option **Automatisch** oder **Direkt** aus.
 
-      ![Screenshot des Dropdownmenüs „Zuweisungstyp“. Der Benutzer hat „Automatisch“ ausgewählt.](media/assignment-type-field.png)
+      > [!div class="mx-imgBorder"]
+      > ![Screenshot des Dropdownmenüs „Zuweisungstyp“. Der Benutzer hat „Automatisch“ ausgewählt.](media/assignment-type-field.png)
 
 9. Geben Sie bei Auswahl von **In Pool** die folgenden Informationen ein:
 
      - Geben Sie für **Maximale Anzahl von Sitzungen** die Höchstanzahl von Benutzern ein, für die ein Lastenausgleich auf einem einzelnen Sitzungshost durchgeführt werden soll.
      - Wählen Sie für **Lastenausgleichsalgorithmus** je nach Nutzungsmuster „Breitenorientierter Lastenausgleich“ oder „Tiefenorientierter Lastenausgleich“ aus.
 
-       ![Screenshot des Dropdownmenüs „Zuweisungstyp“ mit ausgewählter Option „In Pool“. Der Benutzer zeigt mit dem Cursor auf die Option „Breitenorientierter Lastenausgleich“ im Dropdownmenü „Lastenausgleichsalgorithmus“.](media/pooled-assignment-type.png)
+       > [!div class="mx-imgBorder"]
+       > ![Screenshot des Dropdownmenüs „Zuweisungstyp“ mit ausgewählter Option „In Pool“. Der Benutzer zeigt mit dem Cursor auf die Option „Breitenorientierter Lastenausgleich“ im Dropdownmenü „Lastenausgleichsalgorithmus“.](media/pooled-assignment-type.png)
 
 10. Klicken Sie auf **Weiter: Details zum virtuellen Computer**.
 
@@ -117,11 +120,13 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
 
      Falls das gewünschte Image nicht angezeigt wird, wählen Sie **Alle Images und Datenträger durchsuchen** aus. Sie können dann ein anderes Image in Ihrem Katalog oder ein von Microsoft und anderen Herausgebern bereitgestelltes Image auswählen.
 
-     ![Screenshot des Marketplace mit einer Liste von Images von Microsoft.](media/marketplace-images.png)
+     > [!div class="mx-imgBorder"]
+     > ![Screenshot des Marketplace mit einer Liste von Images von Microsoft.](media/marketplace-images.png)
 
      Sie können auch zu **Meine Elemente** wechseln und ein benutzerdefiniertes Image auswählen, das Sie bereits hochgeladen haben.
 
-     ![Screenshot der Registerkarte „Meine Elemente“.](media/my-items.png)
+     > [!div class="mx-imgBorder"]
+     > ![Screenshot der Registerkarte „Meine Elemente“.](media/my-items.png)
 
     - Bei Auswahl von **Speicherblob** können Sie Ihren eigenen Imagebuild über Hyper-V oder auf einer Azure-VM nutzen. Sie müssen lediglich im Speicherblob den Speicherort des Images als URI eingeben.
 
@@ -136,7 +141,8 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
     >[!NOTE]
     >Aus Sicherheitsgründen empfehlen wir, öffentliche Eingangsports nicht zu öffnen.
 
-    ![Screenshot der Seite „Sicherheitsgruppe“ mit einer Liste verfügbarer Ports in einem Dropdownmenü.](media/available-ports.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot der Seite „Sicherheitsgruppe“ mit einer Liste verfügbarer Ports in einem Dropdownmenü.](media/available-ports.png)
     
     Wählen Sie bei Auswahl von **Erweitert** eine vorhandene Netzwerksicherheitsgruppe aus, die Sie bereits konfiguriert haben.
 

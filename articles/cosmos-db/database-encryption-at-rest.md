@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 541c6f4a6c728844524af794f5e2063f4e352cce
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fb3dda7a2f33fa76ab78a67f86fb015430c64099
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85114774"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Datenverschlüsselung in Azure Cosmos DB 
 
@@ -24,7 +24,7 @@ Als PaaS-Dienst ist Azure Cosmos DB sehr einfach zu verwenden. Da alle in Azure
 
 Die Verschlüsselung ruhender Daten wird über eine Reihe von Sicherheitstechnologien implementiert, einschließlich der Speichersysteme für sichere Schlüssel, verschlüsselter Netzwerke und Kryptografie-APIs. Systeme, die Daten verarbeiten und entschlüsseln, müssen mit Systemen kommunizieren, die Schlüssel verwalten. Das Diagramm veranschaulicht die Trennung zwischen der Speicherung von verschlüsselten Daten und der Verwaltung von Schlüsseln. 
 
-![Entwurfsdiagramm](./media/database-encryption-at-rest/design-diagram.png)
+:::image type="content" source="./media/database-encryption-at-rest/design-diagram.png" alt-text="Entwurfsdiagramm" border="false":::
 
 Der grundlegende Ablauf bei einer Benutzeranforderung sieht wie folgt aus:
 - Das Benutzerdatenbankkonto wird bereitgestellt, und die Speicherschlüssel werden über eine Anforderung an den Ressourcenanbieter für den Verwaltungsdienst abgerufen.
@@ -46,7 +46,7 @@ A: Die Schlüssel werden von Microsoft verwaltet.
 A: Microsoft verfügt über eine Reihe von internen Richtlinien für die Rotation der Verschlüsselungsschlüssel, die auch für Cosmos DB gelten. Die spezifischen Richtlinien werden nicht veröffentlicht. Microsoft veröffentlicht den [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx), der als eine Teilmenge der internen Richtlinien gilt und nützliche bewährte Methoden für Entwickler enthält.
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>F: Kann ich meine eigenen Verschlüsselungsschlüssel verwenden?
-A: Ja, dieses Feature ist jetzt für die neuen Cosmos-Konten verfügbar, und die entsprechende Eingabe sollte bei der Kontoerstellung erfolgen. Weitere Informationen finden Sie unter [Vom Kunden verwaltete Schlüssel](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk).
+A: Ja, dieses Feature ist jetzt für neue Azure Cosmos DB-Konten verfügbar, und dies sollte zum Zeitpunkt der Kontoerstellung erfolgen. Weitere Informationen finden Sie unter [Vom Kunden verwaltete Schlüssel](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk).
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>F: Für welche Regionen ist die Verschlüsselung aktiviert?
 A: Die Verschlüsselung ist für alle Azure Cosmos DB-Regionen und für alle Benutzerdaten aktiviert.

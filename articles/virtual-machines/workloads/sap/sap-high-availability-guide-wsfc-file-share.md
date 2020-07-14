@@ -17,10 +17,10 @@ ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2df092d49f2dfe9153b52be677e8ee6314dd9b60
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982971"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure
@@ -70,10 +70,10 @@ Diese Architektur weist in folgenden Bereichen Besonderheiten auf:
 
 * SAP Central Services (mit eigener Dateistruktur und Prozessen für Nachrichten und das Einreihen in die Warteschlange) sind von globalen SAP-Hostdateien getrennt.
 * SAP Central Services werden unter einer SAP ASCS/SCS-Instanz ausgeführt.
-* Die SAP ASCS/SCS-Instanz ist in einem Cluster enthalten und über den virtuellen Hostnamen des \<virtuellen ASCS/SCS-Hostnamens\> zugänglich.
-* Globale SAP-Dateien befinden sich in der SMB-Dateifreigabe, und es wird über den Hostnamen des \<globalen SAP-Hosts\> darauf zugegriffen: \\\\&lt;globaler SAP-Host&gt;\sapmnt\\&lt;SID&gt;\SYS\..
+* Die SAP ASCS/SCS-Instanz ist in einem Cluster enthalten und über den virtuellen Hostnamen des \<ASCS/SCS virtual host name\> zugänglich.
+* Globale SAP-Dateien befinden sich in der SMB-Dateifreigabe, und es wird über den Hostnamen des \<SAP global host\> darauf zugegriffen: \\\\&lt;globaler SAP-Host&gt;\sapmnt\\&lt;SID&gt;\SYS\..
 * Die SAP ASCS/SCS-Instanz wird auf einem lokalen Datenträger auf beiden Clusterknoten installiert.
-* Der Netzwerkname des \<virtuellen ASCS/SCS-Hostnamens\> unterscheidet sich vom &lt;globalen SAP-Host&gt;.
+* Der \<ASCS/SCS virtual host name\>-Netzwerkname unterscheidet sich vom &lt;globalen SAP-Host&gt;.
 
 ![Abbildung 2: SAP ASCS/SCS-Hochverfügbarkeitsarchitektur mit SMB-Dateifreigabe][sap-ha-guide-figure-8004]
 
@@ -137,11 +137,11 @@ Um eine Dateifreigabe mit horizontaler Skalierung verwenden zu können, muss Ihr
 * Um eine gute Netzwerkleistung zwischen VMs zu erzielen, die für die Datenträgersynchronisierung mit direkten Speicherplätzen erforderlich ist, sollten Sie einen VM-Typ verwenden, der mindestens über eine „hohe“ Netzwerkbandbreite verfügt.
     Weitere Informationen finden Sie in den Spezifikationen zur [DSv2-Serie][dv2-series] und [DS-Serie][ds-series].
 * Es wird empfohlen, eine gewisse nicht zugeordnete Kapazität im Speicherpool zu reservieren. Indem Sie nicht zugeordnete Kapazität im Speicherpool übrig lassen, erhalten Volumes Speicherplatz für „direkte“ Korrekturen, wenn ein Laufwerk ausfällt. Dies verbessert die Datensicherheit und die Leistung.  Weitere Informationen finden Sie unter [Auswählen der Volumegröße][choosing-the-size-of-volumes-s2d].
-* Sie müssen den internen Lastenausgleich von Azure nicht für den Netzwerknamen der Dateifreigabe mit horizontaler Skalierung konfigurieren wie bei \<globaler SAP-Host\>. Dies wird für den \<Namen des virtuellen ASCS/SCS-Hosts\> der SAP ASCS/SCS-Instanz oder für den DBMS erledigt. Eine Dateifreigabe mit horizontaler Skalierung skaliert die Last horizontal auf alle Clusterknoten. Der \<globale SAP-Host\> verwendet die lokale IP-Adresse für alle Clusterknoten.
+* Sie müssen den internen Lastenausgleich von Azure nicht für den Netzwerknamen der Dateifreigabe mit horizontaler Skalierung konfigurieren wie bei \<SAP global host\>. Dies geschieht für den \<ASCS/SCS virtual host name\> der SAP ASCS/SCS-Instanz oder für das DBMS. Eine Dateifreigabe mit horizontaler Skalierung skaliert die Last horizontal auf alle Clusterknoten. \<SAP global host\> verwendet die lokale IP-Adresse für alle Clusterknoten.
 
 
 > [!IMPORTANT]
-> Die SAPMNT-Dateifreigabe, die auf den \<globalen SAP-Host\> verweist, kann nicht umbenannt werden. SAP unterstützt ausschließlich den Freigabenamen „sapmnt“.
+> Die SAPMNT-Dateifreigabe, die auf den \<SAP global host\> verweist, kann nicht umbenannt werden. SAP unterstützt ausschließlich den Freigabenamen „sapmnt“.
 >
 > Weitere Informationen finden Sie unter [SAP-Hinweis 2492395 – Kann der Freigabename „sapmnt“ geändert werden?][2492395]
 

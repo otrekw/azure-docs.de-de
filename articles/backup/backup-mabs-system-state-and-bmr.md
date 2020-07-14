@@ -4,10 +4,10 @@ description: Verwenden Sie Azure Backup Server, um Ihren Systemstatus zu sichern
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: bab55ca607e0641ea0cc597de686f3abbb387598
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192364"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Sichern des Systemstatus und Durchführen einer Bare-Metal-Wiederherstellung mithilfe von Azure Backup Server
@@ -49,7 +49,7 @@ Das Laufwerk, das von Azure Backup Server für die Systemstatussicherung verwend
 
 1. Navigieren Sie auf dem geschützten Server zu *C:\Programme\Microsoft Data Protection Manager\MABS\Datasources*.
 1. Öffnen Sie die Datei *PSDataSourceConfig.xml*, um sie zu bearbeiten.
-1. Ändern Sie den Wert von \<FilesToProtect\> entsprechend dem Laufwerkbuchstaben.
+1. Ändern Sie den Wert \<FilesToProtect\> für den Laufwerksbuchstaben.
 1. Speichern und schließen Sie die Datei.
 
 Wenn eine Schutzgruppe zum Schützen des Systemstatus des Computers festgelegt ist, führen Sie eine Konsistenzprüfung durch. Sollte eine Warnung generiert werden, wählen Sie in der Warnung **Schutzgruppe ändern** aus, und durchlaufen Sie anschließend die Seiten des Assistenten. Führen Sie danach eine weitere Konsistenzprüfung aus.

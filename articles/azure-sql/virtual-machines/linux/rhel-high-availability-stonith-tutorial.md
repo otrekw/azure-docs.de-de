@@ -7,19 +7,19 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 06/18/2020
-ms.openlocfilehash: 56af098050315e1b2cb0bdde531cc38452db4738
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.date: 06/25/2020
+ms.openlocfilehash: cd4128328ac0c3e9f03ecc80abb6e7b17537b2ee
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079373"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483056"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Tutorial: Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf virtuellen RHEL-Computern in Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> In diesem Tutorial wird SQL Server 2017 mit RHEL 7.6 verwendet. Hochverfügbarkeit kann aber auch mit SQL Server 2019 in RHEL 7 oder RHEL 8 konfiguriert werden. Die Befehle zum Konfigurieren von Verfügbarkeitsgruppenressourcen haben sich in RHEL 8 geändert. Informationen zu den korrekten Befehlen finden Sie im Artikel [Erstellen von Verfügbarkeitsgruppenressourcen](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) sowie in RHEL 8-Ressourcen.
+> In diesem Tutorial wird SQL Server 2017 mit RHEL 7.6 verwendet. Hochverfügbarkeit kann aber auch mit SQL Server 2019 in RHEL 7 oder RHEL 8 konfiguriert werden. Die Befehle zum Konfigurieren des Pacemaker-Clusters und von Verfügbarkeitsgruppenressourcen haben sich in RHEL 8 geändert. Informationen zu den korrekten Befehlen finden Sie im Artikel [Erstellen von Verfügbarkeitsgruppenressourcen](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) sowie in den RHEL 8-Ressourcen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -103,32 +103,118 @@ Die Ergebnisse des abgeschlossenen Befehls sollten wie folgt aussehen:
 
     ```output
     [
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.4",
-              "urn": "RedHat:RHEL-HA:7.4:7.4.2019062021",
-              "version": "7.4.2019062021"
-            },
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.5",
-              "urn": "RedHat:RHEL-HA:7.5:7.5.2019062021",
-              "version": "7.5.2019062021"
-            },
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.6",
-              "urn": "RedHat:RHEL-HA:7.6:7.6.2019062019",
-              "version": "7.6.2019062019"
-            }
+      {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.4",
+    "urn": "RedHat:RHEL-HA:7.4:7.4.2019062021",
+    "version": "7.4.2019062021"
+       },
+       {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.5",
+    "urn": "RedHat:RHEL-HA:7.5:7.5.2019062021",
+    "version": "7.5.2019062021"
+        },
+        {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.6",
+    "urn": "RedHat:RHEL-HA:7.6:7.6.2019062019",
+    "version": "7.6.2019062019"
+         },
+         {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "8.0",
+    "urn": "RedHat:RHEL-HA:8.0:8.0.2020021914",
+    "version": "8.0.2020021914"
+         },
+         {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "8.1",
+    "urn": "RedHat:RHEL-HA:8.1:8.1.2020021914",
+    "version": "8.1.2020021914"
+          },
+          {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "80-gen2",
+    "urn": "RedHat:RHEL-HA:80-gen2:8.0.2020021915",
+    "version": "8.0.2020021915"
+           },
+           {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "81_gen2",
+    "urn": "RedHat:RHEL-HA:81_gen2:8.1.2020021915",
+    "version": "8.1.2020021915"
+           }
     ]
     ```
 
-    In diesem Tutorial wird das Image `RedHat:RHEL-HA:7.6:7.6.2019062019` verwendet.
+    Für dieses Tutorial wählen wir das Image `RedHat:RHEL-HA:7.6:7.6.2019062019` für das RHEL 7-Beispiel und `RedHat:RHEL-HA:8.1:8.1.2020021914` für das RHEL 8-Beispiel aus.
+    
+    Sie können auch die Option wählen, bei der SQL Server 2019 auf RHEL8-HA-Images vorinstalliert ist. Führen Sie zum Abrufen der Liste mit diesen Images den folgenden Befehl aus:  
+    
+    ```azurecli-interactive
+    az vm image list --all --offer "sql2019-rhel8"
+    ```
 
+    Die Ergebnisse sollten wie folgt aussehen:
+
+    ```output
+    [
+      {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "enterprise",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:enterprise:15.0.200317",
+    "version": "15.0.200317"
+       },
+       }
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "enterprise",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:enterprise:15.0.200512",
+    "version": "15.0.200512"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "sqldev",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:sqldev:15.0.200317",
+    "version": "15.0.200317"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "sqldev",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:sqldev:15.0.200512",
+    "version": "15.0.200512"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "standard",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:standard:15.0.200317",
+    "version": "15.0.200317"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "standard",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:standard:15.0.200512",
+    "version": "15.0.200512"
+       }
+    ]
+    ```
+
+    Wenn Sie eines der oben aufgeführten Images verwenden, um die virtuellen Computer zu erstellen, ist SQL Server 2019 vorinstalliert. Überspringen Sie den Abschnitt [Installieren von SQL Server und „mssql-tools“](#install-sql-server-and-mssql-tools) wie in diesem Artikel beschrieben.
+    
+    
     > [!IMPORTANT]
     > Computernamen müssen weniger als 15 Zeichen umfassen, um die Verfügbarkeitsgruppe einrichten zu können. Der Benutzername darf keine Großbuchstaben enthalten, und Kennwörter müssen länger als 12 Zeichen sein.
 
@@ -276,9 +362,22 @@ In diesem Abschnitt wird der pcsd-Dienst aktiviert und gestartet und anschließe
 
     - Wenn Sie den Befehl `pcs cluster auth` zum Authentifizieren der Clusterknoten ausführen, werden Sie zur Eingabe eines Kennworts aufgefordert. Geben Sie das Kennwort für den zuvor erstellten Benutzer **hacluster** ein.
 
+    **RHEL7**
+
     ```bash
     sudo pcs cluster auth <VM1> <VM2> <VM3> -u hacluster
     sudo pcs cluster setup --name az-hacluster <VM1> <VM2> <VM3> --token 30000
+    sudo pcs cluster start --all
+    sudo pcs cluster enable --all
+    ```
+
+    **RHEL8**
+
+    Bei RHEL 8 müssen Sie die Knoten separat authentifizieren. Geben Sie den Benutzernamen und das Kennwort für **hacluster** manuell ein, wenn Sie dazu aufgefordert werden.
+
+    ```bash
+    sudo pcs host auth <node1> <node2> <node3>
+    sudo pcs cluster setup <clusterName> <node1> <node2> <node3>
     sudo pcs cluster start --all
     sudo pcs cluster enable --all
     ```
@@ -289,6 +388,8 @@ In diesem Abschnitt wird der pcsd-Dienst aktiviert und gestartet und anschließe
     sudo pcs status
     ```
 
+   **RHEL 7** 
+   
     Sind alle Knoten online, sieht die Ausgabe in etwa wie folgt aus:
 
     ```output
@@ -315,7 +416,36 @@ In diesem Abschnitt wird der pcsd-Dienst aktiviert und gestartet und anschließe
           pacemaker: active/enabled
           pcsd: active/enabled
     ```
-
+   
+   **RHEL 8** 
+   
+    ```output
+    Cluster name: az-hacluster
+     
+    WARNINGS:
+    No stonith devices and stonith-enabled is not false
+     
+    Cluster Summary:
+    * Stack: corosync
+    * Current DC: <VM2> (version 1.1.19-8.el7_6.5-c3c624ea3d) - partition with quorum
+    * Last updated: Fri Aug 23 18:27:57 2019
+    * Last change: Fri Aug 23 18:27:56 2019 by hacluster via crmd on <VM2>
+    * 3 nodes configured
+    * 0 resource instances configured
+     
+   Node List:
+    * Online: [ <VM1> <VM2> <VM3> ]
+   
+   Full List of Resources:
+   * No resources
+     
+   Daemon Status:
+          corosync: active/enabled
+          pacemaker: active/enabled
+          pcsd: active/enabled
+    
+    ```
+    
 1. Legen Sie die erwarteten Stimmen im aktiven Cluster auf „3“ fest. Dieser Befehl betrifft nur den aktiven Cluster und hat keine Änderung der Konfigurationsdateien zur Folge.
 
     Legen Sie mithilfe des folgenden Befehls auf allen Knoten die erwarteten Stimmen fest:
@@ -469,12 +599,18 @@ sudo firewall-cmd --reload
 ```
 
 ## <a name="install-sql-server-and-mssql-tools"></a>Installieren von SQL Server und „mssql-tools“
- 
-In diesem Abschnitt werden SQL Server und „mssql-tools“ auf den virtuellen Computern installiert. Führen Sie jede dieser Aktionen auf allen Knoten aus. Weitere Informationen finden Sie unter [Schnellstart: Installieren von SQL Server und Erstellen einer Datenbank unter Red Hat](/sql/linux/quickstart-install-connect-red-hat).
+
+> [!NOTE]
+> Wenn Sie die VMs mit einer Vorinstallation von SQL Server 2019 unter RHEL8-HA erstellt haben, können Sie die unten angegebenen Schritte für die Installation von SQL Server und „mssql-tools“ überspringen. Starten Sie in diesem Fall mit dem Abschnitt **Konfigurieren einer Verfügbarkeitsgruppe**, nachdem Sie das Systemadministratorkennwort auf allen VMs eingerichtet haben, indem Sie den Befehl `sudo /opt/mssql/bin/mssql-conf set-sa-password` für alle VMs ausgeführt haben.
+
+In diesem Abschnitt werden SQL Server und „mssql-tools“ auf den virtuellen Computern installiert. Sie können eines der unten angegebenen Beispiele auswählen, um SQL Server 2017 auf RHEL 7 oder SQL Server 2019 auf RHEL 8 zu installieren. Führen Sie jede dieser Aktionen auf allen Knoten aus. Weitere Informationen finden Sie unter [Schnellstart: Installieren von SQL Server und Erstellen einer Datenbank unter Red Hat](/sql/linux/quickstart-install-connect-red-hat).
+
 
 ### <a name="installing-sql-server-on-the-vms"></a>Installieren von SQL Server auf den virtuellen Computern
 
 Die folgenden Befehle dienen zum Installieren von SQL Server:
+
+**RHEL 7 mit SQL Server 2017** 
 
 ```bash
 sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/7/mssql-server-2017.repo
@@ -483,6 +619,14 @@ sudo /opt/mssql/bin/mssql-conf setup
 sudo yum install mssql-server-ha
 ```
 
+**RHEL 8 mit SQL Server 2019** 
+
+```bash
+sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/8/mssql-server-2019.repo
+sudo yum install -y mssql-server
+sudo /opt/mssql/bin/mssql-conf setup
+sudo yum install mssql-server-ha
+```
 ### <a name="open-firewall-port-1433-for-remote-connections"></a>Öffnen des Firewallports 1433 für Remoteverbindungen
 
 Auf dem virtuellen Computer muss der Port 1433 geöffnet werden, um Remoteverbindungen zu ermöglichen. Verwenden Sie die folgenden Befehle, um den Port 1433 in der Firewall der einzelnen virtuellen Computer zu öffnen:
@@ -496,8 +640,17 @@ sudo firewall-cmd --reload
 
 Die folgenden Befehle dienen zum Installieren der SQL Server-Befehlszeilentools. Weitere Informationen finden Sie unter [Installieren der SQL Server-Befehlszeilentools](/sql/linux/quickstart-install-connect-red-hat#tools).
 
+**RHEL 7** 
+
 ```bash
 sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/7/prod.repo
+sudo yum install -y mssql-tools unixODBC-devel
+```
+
+**RHEL 8** 
+
+```bash
+sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/8/prod.repo
 sudo yum install -y mssql-tools unixODBC-devel
 ```
  
@@ -796,26 +949,47 @@ Wir gehen wie unter [Erstellen der Verfügbarkeitsgruppenressourcen im Pacemaker
 
 ### <a name="create-the-ag-cluster-resource"></a>Erstellen der Verfügbarkeitsgruppen-Clusterressource
 
-1. Verwenden Sie den folgenden Befehl, um die Ressource `ag_cluster` in der Verfügbarkeitsgruppe `ag1` zu erstellen.
+1. Verwenden Sie je nach Umgebung, die Sie oben ausgewählt haben, einen der folgenden Befehle, um die Ressource `ag_cluster` in der Verfügbarkeitsgruppe `ag1` zu erstellen.
 
-    ```bash
-    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
-    ```
+      **RHEL 7** 
+  
+        ```bash
+        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
+        ```
 
-1. Verwenden Sie den folgenden Befehl, um Ihre Ressource zu überprüfen und sich zu vergewissern, dass sie online ist, bevor Sie mit dem nächsten Schritt fortfahren:
+      **RHEL 8** 
+  
+        ```bash
+        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
+        ```
+
+2. Verwenden Sie den folgenden Befehl, um Ihre Ressource zu überprüfen und sich zu vergewissern, dass sie online ist, bevor Sie mit dem nächsten Schritt fortfahren:
 
     ```bash
     sudo pcs resource
     ```
 
     Die folgende Ausgabe wird angezeigt.
-
+    
+    **RHEL 7** 
+    
     ```output
     [<username>@VM1 ~]$ sudo pcs resource
     Master/Slave Set: ag_cluster-master [ag_cluster]
     Masters: [ <VM1> ]
     Slaves: [ <VM2> <VM3> ]
     ```
+    
+    **RHEL 8** 
+    
+    ```output
+    [<username>@VM1 ~]$ sudo pcs resource
+    * Clone Set: ag_cluster-clone [ag_cluster] (promotable):
+    * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel3 (Monitoring) 
+    * ag_cluster             (ocf::mssql:ag) :            Master VMrhel1 (Monitoring)
+    * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel2 (Monitoring)
+    ```
+
 
 ### <a name="create-a-virtual-ip-resource"></a>Erstellen einer virtuellen IP-Ressource
 
@@ -827,13 +1001,13 @@ Wir gehen wie unter [Erstellen der Verfügbarkeitsgruppenressourcen im Pacemaker
     # The above will scan for all IP addresses that are already occupied in the 10.0.0.x space.
     ```
 
-1. Legen Sie die Eigenschaft **stonith-enabled** auf „false“ fest.
+2. Legen Sie die Eigenschaft **stonith-enabled** auf „false“ fest.
 
     ```bash
     sudo pcs property set stonith-enabled=false
     ```
 
-1. Verwenden Sie den folgenden Befehl, um die virtuelle IP-Ressource zu erstellen:
+3. Verwenden Sie den folgenden Befehl, um die virtuelle IP-Ressource zu erstellen:
 
     - Ersetzen Sie den Wert `<availableIP>` durch eine ungenutzte IP-Adresse.
 
@@ -845,23 +1019,41 @@ Wir gehen wie unter [Erstellen der Verfügbarkeitsgruppenressourcen im Pacemaker
 
 1. Es muss eine Kollokationseinschränkung konfiguriert werden, um sicherzustellen, dass die IP-Adresse und die Verfügbarkeitsgruppenressource auf demselben Knoten ausgeführt werden. Führen Sie den folgenden Befehl aus:
 
+   **RHEL 7**
+  
     ```bash
     sudo pcs constraint colocation add virtualip ag_cluster-master INFINITY with-rsc-role=Master
     ```
 
-1. Erstellen Sie eine Sortierungseinschränkung, um sicherzustellen, dass die Verfügbarkeitsgruppenressource vor der IP-Adresse ausgeführt wird. Obwohl die Kollokationseinschränkung eine Sortierungseinschränkung impliziert, erzwingt sie diese.
+   **RHEL 8**
+   
+    ```bash
+     sudo pcs constraint colocation add virtualip with master ag_cluster-clone INFINITY with-rsc-role=Master
+    ```
+  
+2. Erstellen Sie eine Sortierungseinschränkung, um sicherzustellen, dass die Verfügbarkeitsgruppenressource vor der IP-Adresse ausgeführt wird. Obwohl die Kollokationseinschränkung eine Sortierungseinschränkung impliziert, erzwingt sie diese.
 
+   **RHEL 7**
+   
     ```bash
     sudo pcs constraint order promote ag_cluster-master then start virtualip
     ```
 
-1. Führen Sie den folgenden Befehl aus, um die Einschränkungen zu überprüfen:
+   **RHEL 8**
+   
+    ```bash
+    sudo pcs constraint order promote ag_cluster-clone then start virtualip
+    ```
+  
+3. Führen Sie den folgenden Befehl aus, um die Einschränkungen zu überprüfen:
 
     ```bash
     sudo pcs constraint list --full
     ```
 
     Die folgende Ausgabe wird angezeigt.
+    
+    **RHEL 7**
 
     ```
     Location Constraints:
@@ -869,6 +1061,17 @@ Wir gehen wie unter [Erstellen der Verfügbarkeitsgruppenressourcen im Pacemaker
           promote ag_cluster-master then start virtualip (kind:Mandatory) (id:order-ag_cluster-master-virtualip-mandatory)
     Colocation Constraints:
           virtualip with ag_cluster-master (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-master-INFINITY)
+    Ticket Constraints:
+    ```
+    
+    **RHEL 8**
+    
+    ```output
+    Location Constraints:
+    Ordering Constraints:
+            promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
+    Colocation Constraints:
+            virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
     Ticket Constraints:
     ```
 
@@ -917,12 +1120,22 @@ Wir führen ein Testfailover durch, um uns zu vergewissern, dass die bisherige K
 
 1. Führen Sie den folgenden Befehl aus, um ein manuelles Failover des primären Replikats auf `<VM2>` durchzuführen. Ersetzen Sie `<VM2>` durch Ihren Servernamen.
 
+   **RHEL 7**
+   
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
     ```
 
-1. Wenn Sie Ihre Einschränkungen erneut überprüfen, sehen Sie, dass aufgrund des manuellen Failovers eine weitere Einschränkung hinzugefügt wurde:
+   **RHEL 8**
+   
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master
+    ```
 
+2. Wenn Sie Ihre Einschränkungen erneut überprüfen, sehen Sie, dass aufgrund des manuellen Failovers eine weitere Einschränkung hinzugefügt wurde:
+    
+    **RHEL 7**
+    
     ```output
     [<username>@VM1 ~]$ sudo pcs constraint list --full
     Location Constraints:
@@ -935,10 +1148,32 @@ Wir führen ein Testfailover durch, um uns zu vergewissern, dass die bisherige K
     Ticket Constraints:
     ```
 
-1. Entfernen Sie die Einschränkung mit der ID `cli-prefer-ag_cluster-master` mithilfe des folgenden Befehls:
+    **RHEL 8**
+    
+    ```output
+    [<username>@VM1 ~]$ sudo pcs constraint list --full
+    Location Constraints:
+          Resource: ag_cluster-master
+            Enabled on: VM2 (score:INFINITY) (role: Master) (id:cli-prefer-ag_cluster-clone)
+    Ordering Constraints:
+            promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
+    Colocation Constraints:
+            virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
+    Ticket Constraints:
+    ```
+    
+3. Entfernen Sie die Einschränkung mit der ID `cli-prefer-ag_cluster-master` mithilfe des folgenden Befehls:
 
+    **RHEL 7**
+    
     ```bash
     sudo pcs constraint remove cli-prefer-ag_cluster-master
+    ```
+
+    **RHEL 8**
+    
+    ```bash
+    sudo pcs constraint remove cli-prefer-ag_cluster-clone
     ```
 
 1. Überprüfen Sie Ihre Clusterressourcen mithilfe des Befehls `sudo pcs resource`. Die primäre Instanz sollte nun `<VM2>` sein.

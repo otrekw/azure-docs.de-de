@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 584fc48aad6a64f8df54088e6dbfd990e8e112e8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655304"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119408"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Änderungsfeedprozessor in Azure Cosmos DB
 
@@ -35,7 +35,7 @@ Die Implementierung des Änderungsfeedprozessors umfasst vier Hauptkomponenten:
 
 Um besser zu verstehen, wie diese vier Elemente von Change Feed Processor zusammenarbeiten, sehen wir uns ein Beispiel in der folgenden Abbildung an. Der überwachte Container speichert Dokumente und verwendet „City“ als Partitionsschlüssel. Wie Sie sehen, sind die Partitionsschlüsselwerte auf Bereiche verteilt, die Elemente enthalten. Es gibt zwei Hostinstanzen, und der Änderungsfeedprozessor weist jeder Instanz unterschiedliche Bereiche von Partitionsschlüsselwerten zu, um die Computeverteilung zu maximieren. Die einzelnen Bereiche werden parallel gelesen, und der Fortschritt wird getrennt von anderen Bereichen im Leasecontainer verwaltet.
 
-![Beispiel für den Änderungsfeedprozessor](./media/change-feed-processor/changefeedprocessor.png)
+:::image type="content" source="./media/change-feed-processor/changefeedprocessor.png" alt-text="Beispiel für den Änderungsfeedprozessor" border="false":::
 
 ## <a name="implementing-the-change-feed-processor"></a>Implementieren des Änderungsfeedprozessors
 

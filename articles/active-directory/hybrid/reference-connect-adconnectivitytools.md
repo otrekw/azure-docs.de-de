@@ -11,13 +11,13 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66473783"
 ---
-# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: PowerShell-Referenz zu ADConnectivityTools
+# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:  PowerShell-Referenz zu ADConnectivityTools
 
 Die folgende Dokumentation enthält Referenzinformationen für das PowerShell-Modul „ADConnectivityTools.psm1“, das in Azure AD Connect enthalten ist.
 
@@ -310,7 +310,8 @@ Accept wildcard characters: False
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
 Wenn der Benutzer keine vom AD-Standort/Anmelde-DC bereitgestellten DNS-Dienste verwendet, sollte er eventuell die Überprüfung von Port 53 überspringen.
-Der Benutzer muss weiterhin in der Lage sein, „_.ldap._tcp.\<forestfqdn\>“ aufzulösen, damit die Active Directory Connector-Konfiguration erfolgreich erfolgen kann.
+Der Benutzer muss aber „_.ldap._tcp“ (\<forestfqdn\>) noch auflösen können,
+damit die Konfiguration des Active Directory-Connectors erfolgreich ist.
 
 ```yml
 Type: SwitchParameter
@@ -773,9 +774,9 @@ Accept wildcard characters: False
 
 #### <a name="-autocreateconnectoraccount"></a>-AutoCreateConnectorAccount
 
-Für benutzerdefinierte Installationen: Das Flag, das „$true“ ist, wenn der Benutzer im AD-Gesamtstrukturkonto-Fenster „Neues AD-Konto erstellen“ des AADConnect-Assistenten ausgewählt hat.
+Für benutzerdefinierte Installationen: Das Flag lautet „$true“, wenn der Benutzer im AD-Gesamtstrukturkonto-Fenster des AAD Connect-Assistenten die Option „Neues AD-Konto erstellen“ gewählt hat.
 „$False“, wenn der Benutzer „Vorhandenes AD-Konto verwenden“ ausgewählt hat.
-Für Expressinstallationen: Der Wert dieser Variablen muss für Expressinstallationen „$True“ sein.
+Für Expressinstallationen: Der Wert dieser Variablen muss für Expressinstallationen „$True“ lauten.
 
 ```yml
 Type: Boolean

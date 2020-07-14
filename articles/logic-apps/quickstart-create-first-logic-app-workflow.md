@@ -3,16 +3,16 @@ title: Erstellen Ihres ersten automatisierten Workflows
 description: 'Schnellstart: Erstellen Ihres ersten automatisierten Workflows mithilfe von Azure Logic Apps für Systemintegrationslösungen und EAI-Lösungen (Enterprise Application Integration)'
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 555230499ebda106cbca616b779ae632d65349ab
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 0b3559a27fe9fae6c34b07c648a289d205560bd8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807869"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321583"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Schnellstart: Erstellen Ihres ersten Workflows mithilfe von Azure Logic Apps – Azure-Portal
 
@@ -74,13 +74,13 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
    ![Auswählen des Triggers „Beim Veröffentlichen eines Feedelements“](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
-1. Geben Sie wie hier gezeigt und beschrieben die folgenden Informationen für Ihren Trigger ein:
+1. Geben Sie wie in der Tabelle beschrieben die Informationen für Ihren Trigger an:
 
    ![Einrichten eines Triggers mit RSS-Feed, Häufigkeit und Intervall](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
    | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
-   | **Die URL des RSS-Feeds** | `http://feeds.reuters.com/reuters/topNews` | Der Link für den RSS-Feed, den Sie überwachen möchten |
+   | **Die URL des RSS-Feeds** | <*RSS-feed-URL*> | Der Link für den RSS-Feed, den Sie überwachen möchten. In diesem Beispiel wird `http://feeds.reuters.com/reuters/topNews` verwendet. |
    | **Intervall** | 1 | Die Anzahl von Warteintervallen zwischen Überprüfungen |
    | **Frequency** | Minute | Die Zeiteinheit für die Intervalle zwischen Überprüfungen.  |
    ||||

@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine Übersicht zu Azure Front Door. Es wird beschrieben, ob dies die richtige Wahl für den Lastenausgleich des Benutzerdatenverkehrs für Ihre Anwendung ist.
+title: Azure Front Door
+description: Dieser Artikel enthält eine Liste der verschiedenen Übereinstimmungsbedingungen, die mit dem Azure Front Door-Regelmodul verfügbar sind.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 77c0d68f507e09b315c912d1d91fdf9cf63db6fa
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: d42b6b56f0cdd1f6ef2ea45b21a027f1b4c56b1c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515765"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321997"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Übereinstimmungsbedingungen des Azure Front Door-Regelmoduls
 
-Im [AFD-Regelmodul](front-door-rules-engine.md) besteht eine Regel aus null oder mehr Übereinstimmungsbedingungen und einer Aktion. Dieser Artikel enthält detaillierte Beschreibungen der Übereinstimmungsbedingungen, die Sie im AFD-Regelmodul verwenden können. 
+Im [AFD-Regelmodul](front-door-rules-engine.md) besteht eine Regel aus null oder mehr Übereinstimmungsbedingungen und einer Aktion. Dieser Artikel enthält detaillierte Beschreibungen der Übereinstimmungsbedingungen, die Sie im AFD-Regelmodul verwenden können.
 
-Der erste Teil einer Regel besteht aus einer Übereinstimmungsbedingung oder aus mehreren Übereinstimmungsbedingungen. Eine Regel kann aus bis zu 10 Übereinstimmungsbedingungen bestehen. Eine Übereinstimmungsbedingung gibt bestimmte Typen von Anforderungen an, für die definierte Aktionen ausgeführt werden. Wenn Sie mehrere Übereinstimmungsbedingungen verwenden, werden die Übereinstimmungsbedingungen mit UND-Logik gruppiert. Für alle Übereinstimmungsbedingungen, die mehrere Werte unterstützen (unten als „durch Leerzeichen getrennt“ angegeben), wird der Operator „ODER“ angenommen. 
+Der erste Teil einer Regel besteht aus einer Übereinstimmungsbedingung oder aus mehreren Übereinstimmungsbedingungen. Eine Regel kann aus bis zu 10 Übereinstimmungsbedingungen bestehen. Eine Übereinstimmungsbedingung gibt bestimmte Typen von Anforderungen an, für die definierte Aktionen ausgeführt werden. Wenn Sie mehrere Übereinstimmungsbedingungen verwenden, werden die Übereinstimmungsbedingungen mit UND-Logik gruppiert. Für alle Übereinstimmungsbedingungen, die mehrere Werte unterstützen (unten als „durch Leerzeichen getrennt“ angegeben), wird der Operator „ODER“ angenommen.
 
 Sie können eine Übereinstimmungsbedingung z.B. für Folgendes verwenden:
 
@@ -142,7 +142,7 @@ Operator | Anfrage-URL | Umwandlung der Groß-/Kleinschreibung
 
 #### <a name="key-information"></a>Wichtige Informationen
 
-- Wenn Sie diese Regelbedingung verwenden, achten Sie darauf, dass Sie Protokollinformationen einschließen. Beispiel: *https://www.\<yourdomain\>.com* .
+- Wenn Sie diese Regelbedingung verwenden, achten Sie darauf, dass Sie Protokollinformationen einschließen. Beispiel: *https://www.\<yourdomain\>.com*.
 
 ## <a name="request-file-extension"></a>Dateierweiterung der Anforderung
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18409f93ab50f7d031ec78a55b9eaf8ad1b85a49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 601af3a5e642b4bbda54f461b3139e72b01b21d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70101412"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193497"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One in Azure Virtual Machines
 Dieses Dokument enthält Anleitungen zum Bereitstellen von SAP Business One in Azure Virtual Machines. Diese Dokumentation ist kein Ersatz für die Installationsdokumentation für Business One für SAP. Die Dokumentation enthält grundlegende Planungs- und Bereitstellungsrichtlinien für die Azure-Infrastruktur zur Ausführung von Business One-Anwendungen.
@@ -67,13 +67,13 @@ Business One ist eine Anwendung mit zwei Ebenen:
 - Eine Clientebene mit einem Fat Client
 - Eine Datenbankebene, die das Datenbankschema für einen Mandanten enthält
 
-Eine bessere Übersicht darüber, welche Komponenten im Clientteil und welche Teile im Serverteil ausgeführt werden, finden Sie in [SAP Business One Administrator's Guide](https://help.sap.com/http.svc/rc/879bd9289df34a47af838e67d74ea302/9.3/en-US/AdministratorGuide_SQL.pdf) (Administratorhandbuch für SAP Business One). 
+Eine bessere Übersicht darüber, welche Komponenten im Clientteil und welche Teile im Serverteil ausgeführt werden, finden Sie in [SAP Business One Administrator's Guide](https://help.sap.com/doc/601fbd9113be4240b81d74626439cfa9/10.0/en-US/AdministratorGuide_SQL.pdf) (Administratorhandbuch für SAP Business One). 
 
 Da es eine starke latenzkritische Interaktion zwischen der Clientebene und der DBMS-Ebene gibt, müssen sich beide Ebenen in Azure befinden, wenn sie in Azure bereitgestellt werden. Es ist üblich, dass die Benutzer dann RDS in eine oder mehrere VMs mit einem RDS-Dienst für die Business One-Clientkomponenten einfügen.
 
 ### <a name="sizing-vms-for-sap-business-one"></a>Dimensionieren von VMs für SAP Business One
 
-Die Ressourcenanforderungen zur Dimensionierung der Client-VM(s) finden Sie im SAP-Dokument [SAP Business One Hardware Requirements Guide](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf) (Handbuch zur Hardwareanforderungen für SAP Business One). Für Azure müssen Sie sich auf die in Kapitel 2.4 des Dokuments genannten Anforderungen konzentrieren und diese zur Berechnung verwenden.
+Die Ressourcenanforderungen zur Dimensionierung der Client-VM(s) finden Sie im SAP-Dokument [SAP Business One Hardware Requirements Guide](https://help.sap.com/doc/bfa9770d12284cce8509956dcd4c5fcb/9.3/en-US/B1_Hardware_Requirements_Guide.pdf) (Handbuch zur Hardwareanforderungen für SAP Business One). Für Azure müssen Sie sich auf die in Kapitel 2.4 des Dokuments genannten Anforderungen konzentrieren und diese zur Berechnung verwenden.
 
 Zum Hosten der Business One-Clientkomponenten des DBMS-Hosts sind nur Azure-VMs zugelassen, die von SAP NetWeaver unterstützt werden. Eine Liste der von SAP NetWeaver unterstützten Azure-VMs finden Sie in [SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533) (SAP-Hinweis #1928533).
 

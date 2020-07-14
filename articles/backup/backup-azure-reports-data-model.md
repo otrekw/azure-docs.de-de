@@ -3,12 +3,12 @@ title: Datenmodell für Azure Backup-Diagnoseereignisse
 description: Dieses Datenmodell bezieht sich auf den ressourcenspezifischen Modus zum Senden von Diagnoseereignissen an Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 0713db1cee9d6737ce69cb108f3cb8f81d1eb2ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af1e4159ff2794f8d4dd11480eb7f1789e034c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484501"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Datenmodell für Azure Backup-Diagnoseereignisse
 
@@ -120,11 +120,11 @@ Diese Tabelle enthält Details zu auftragsbezogenen Feldern.
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | resourceId                     | Text          | Ressourcenbezeichner der Daten, die erfasst werden. Beispiel: Ressourcen-ID des Recovery Services-Tresors |
 | Vorgangsname                  | Text          | Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: Auftrag    |
-| Category                       | Text          | Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die mithilfe von Push an Azure Monitor-Protokolle übermittelt werden (z. B. AddonAzureBackupJobs) |
+| Category                       | Text          | Dieses Feld stellt die Kategorie der Diagnosedaten dar, die per Push an Azure Monitor-Protokolle übermittelt werden – AddonAzureBackupJobs |
 | AdhocOrScheduledJob            | Text          | Feld, um anzugeben, ob der Auftrag „Ad-hoc“ oder „Geplant“ ist           |
-| BackupItemUniqueId             | Text          | eindeutige ID zum Identifizieren des Sicherungselements, das mit der Speicherentität verbunden ist |
-| BackupManagementServerUniqueId | Text          | eindeutige ID zum Identifizieren des Sicherungsverwaltungsservers, der mit der Speicherentität verbunden ist |
-| BackupManagementType           | Text          | Anbietertyp zur Durchführung der Sicherung (z. B. IaaSVM und FileFolder), zu dem diese Warnung gehört |
+| BackupItemUniqueId             | Text          | Eindeutige ID, mithilfe derer das Sicherungselement bestimmt wird, das mit der Speicherentität verbunden ist |
+| BackupManagementServerUniqueId | Text          | Eindeutige ID, mithilfe derer das Sicherungselement bestimmt wird, das mit der Speicherentität verbunden ist |
+| BackupManagementType           | Text          | Anbietertyp für die Sicherung, zu der dieser Auftrag gehört, z.B. IaaSVM, FileFolder |
 | DataTransferredInMB            | Number        | Für diesen Auftrag übertragene Daten in MB                          |
 | JobDurationInSecs              | Number        | Gesamtdauer des Auftrags in Sekunden                                |
 | JobFailureCode                 | Text          | Zeichenfolge mit dem Fehlercode zum Angeben des Grunds des Auftragsfehlers    |
@@ -133,14 +133,14 @@ Diese Tabelle enthält Details zu auftragsbezogenen Feldern.
 | JobStartDateTime               | Datetime      | Datum und Uhrzeit des Starts des Auftrags                       |
 | Auftragsstatus                      | Text          | Status des beendeten Auftrags, z.B. „Abgeschlossen“, „Fehler“   |
 | JobUniqueId                    | Text          | Eindeutige ID zur Bezeichnung des Auftrags                                |
-| ProtectedContainerUniqueId     | Text          | eindeutiger Bezeichner des geschützten Servers, der der Warnung zugeordnet ist |
+| ProtectedContainerUniqueId     | Text          | Eindeutiger Bezeichner des geschützten Servers, der dem Auftrag zugeordnet ist |
 | RecoveryJobDestination         | Text          | Ziel eines Wiederherstellungsauftrags, an dem die Daten wiederhergestellt werden   |
 | RecoveryJobRPDateTime          | Datetime      | Datum und Uhrzeit, wann der Wiederherstellungspunkt, der wiederhergestellt wird, erstellt wurde |
 | RecoveryJobLocation            | Text          | Ort, an dem der Wiederherstellungspunkt, der wiederhergestellt wird, gespeichert wurde |
 | RecoveryLocationType           | Text          | Typ des Wiederherstellungsspeicherorts                                |
 | SchemaVersion                  | Text          | Aktuelle Version des Schemas, z. B. **V2**            |
-| State                          | Text          | aktueller Status des Warnungsobjekts (z. B. „Aktiv“ oder „Gelöscht“) |
-| VaultUniqueId                  | Text          | eindeutiger Bezeichner des geschützten Tresors, der der Warnung zugeordnet ist |
+| State                          | Text          | Aktueller Status des Auftragsobjekts, z.B. „Aktiv“, „Gelöscht“ |
+| VaultUniqueId                  | Text          | Eindeutiger Bezeichner des geschützten Tresors, der dem Auftrag zugeordnet ist |
 | SourceSystem                   | Text          | Quellsystem der aktuellen Daten: Azure                    |
 
 ## <a name="addonazurebackuppolicy"></a>AddonAzureBackupPolicy
@@ -205,7 +205,7 @@ Diese Tabelle enthält Details zu speicherbezogenen Feldern.
 | BackupManagementServerUniqueId | Text          | Feld zur eindeutigen Identifizierung des Servers für die Sicherungsverwaltung, durch den das Sicherungselement geschützt wird (falls zutreffend) |
 | BackupManagementType           | Text          | Anbietertyp für den Server, der den Sicherungsauftrag ausführt. Beispiel: IaaSVM und FileFolder |
 | PreferredWorkloadOnVolume      | Text          | Workload, für die dieses Volume der bevorzugte Speicher ist      |
-| ProtectedContainerUniqueId     | Text          | eindeutiger Bezeichner des geschützten Servers, der der Warnung zugeordnet ist |
+| ProtectedContainerUniqueId     | Text          | Eindeutiger Bezeichner des geschützten Containers, der dem Sicherungselement zugeordnet ist |
 | SchemaVersion                  | Text          | Version des Schemas. Beispiel: **V2**                   |
 | State                          | Text          | Status des Sicherungselementobjekts. Beispiel: Active (Aktiv) oder Deleted (Gelöscht) |
 | StorageAllocatedInMBs          | Number        | Speichergröße, die vom entsprechenden Sicherungselement im entsprechenden Speicher des Typs „Datenträger“ zugewiesen wird |

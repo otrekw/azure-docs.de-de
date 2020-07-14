@@ -3,12 +3,18 @@ ms.service: logic-apps
 ms.topic: include
 author: ecfan
 ms.author: estfan
-ms.date: 09/18/2019
-ms.openlocfilehash: 0e2d63db1afd4bb169e5aeb1c202674808f081ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/06/2020
+ms.openlocfilehash: 1113201941ce0757b58e361c08c9d79d7dd374cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74786883"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84449075"
 ---
-Wenn Sie einen Trigger oder eine Aktion verwenden, der oder die erstmals auf einen Dienst zugreift, werden Sie vom Designer für Logik-Apps aufgefordert, eine *Verbindung* mit diesem Dienst herzustellen. Sie können die erforderlichen Verbindungsinformationen dann direkt aus Ihrer Logik-App im Designer bereitstellen.
+Wenn Sie einen Trigger oder eine Aktion hinzufügen, der/die zum ersten Mal eine Verbindung mit einem Dienst oder System herstellt, werden Sie vom Logik-App-Designer aufgefordert, eine *Verbindung* herzustellen, indem Sie die erforderlichen Informationen bereitstellen, die je nach Verbindung variieren, z. B.:
+
+* Ein Name für die neue Verbindung.
+* Der Server- oder Systemnamen.
+* Die Anmeldeinformationen Ihres Benutzers oder Kontos.
+* Der zu verwendende Authentifizierungstyp
+* Das Azure-Abonnement und den Namen für das Datengateway, das Sie zuvor beim Herstellen einer Verbindung mit lokalen Datenquellen erstellt haben.

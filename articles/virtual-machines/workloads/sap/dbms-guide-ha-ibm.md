@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
 ms.openlocfilehash: a9041b373c215ac226764b737ee3bf35b008e5db
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82978381"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Hochverfügbarkeit von IBM Db2 LUW auf Azure-VMs unter SUSE Linux Enterprise Server mit Pacemaker
@@ -314,8 +314,8 @@ Die folgenden Elemente haben eines der folgenden Präfixe:
 - **[2]** : Gilt nur für Knoten 2
 
 **[A]** Voraussetzungen für die Pacemaker-Konfiguration
-1. Fahren Sie beide Datenbankserver mit Benutzer „db2\<sid>“ mit „db2stop“ herunter.
-1. Ändern Sie die Shellumgebung für „db2\<sid> Benutzer“ in */bin/ksh*. Es wird empfohlen, das Yast-Tool zu verwenden. 
+1. Fahren Sie beide Datenbankserver mit dem Benutzer „db2\<sid>“ mit „db2stop“ herunter.
+1. Ändern Sie die Shellumgebung für „db2\<sid>“ in */bin/ksh*. Es wird empfohlen, das Yast-Tool zu verwenden. 
 
 
 ### <a name="pacemaker-configuration"></a>Pacemaker-Konfiguration
@@ -541,7 +541,7 @@ Der ursprüngliche Status in einem SAP-System ist in „Transaction DBACOCKPIT -
 > Bevor Sie den Test zu starten, stellen Sie Folgendes sicher:
 > * Pacemaker keine fehlerhaften Aktionen (crm Status) aufweist.
 > * Es keine Speicherorteinschränkungen (Überbleibsel von Migrationstests) gibt.
-> * Die IBM Db2-HADR-Synchronisierung funktioniert. Überprüfen Sie mit dem Benutzer „db2\<sid>“. <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * Die IBM Db2-HADR-Synchronisierung funktioniert. Überprüfen Sie die Funktionsweise mit dem Benutzer „db2\<sid>“ <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Migrieren Sie den Knoten, auf dem die primäre Db2-Datenbank ausgeführt wird, indem Sie folgenden Befehl ausführen:
@@ -575,7 +575,7 @@ Migrieren Sie die Ressourcen zurück zu *azibmdb01*, und löschen Sie die Speich
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **crm resource migrate \<Ressourcenname> \<Host>:** Erstellt Speicherorteinschränkungen und kann Probleme mit Übernahmen verursachen.
+- **crm resource migrate \<res_name> \<host>:** Erstellt Speicherorteinschränkungen und kann Probleme mit Übernahmen verursachen.
 - **crm resource clear \<res_name>** : Löscht Speicherorteinschränkungen.
 - **crm resource cleanup \<res_name>** : Löscht alle Fehler der Ressource.
 

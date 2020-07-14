@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 14fe27c28e2eb6a527dc6f026916002cfb5b0147
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945255"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413891"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Beispiele zu PowerShell in Azure Monitor
 In diesem Artikel werden PowerShell-Beispielbefehle beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können.
@@ -220,6 +220,10 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 Die weiteren Webhookeigenschaften sind optional. Mit `Get-AzActivityLogAlert` erhalten Sie wieder den Inhalt einer Aktivitätsprotokollwarnung.
 
 ## <a name="create-and-manage-autoscale-settings"></a>Erstellen und Verwalten von Einstellungen zur automatischen Skalierung
+
+> [!NOTE] 
+> Für Cloud Services (Microsoft.ClassicCompute) wird von der Autoskalierung ein Aggregationsintervall von fünf Minuten (PT5M) unterstützt. Für die anderen Dienste unterstützt die Autoskalierung ein Aggregationsintervall von mindestens einer Minute (PT1M).
+
 Für eine Ressource (Web-App, virtueller Computer, Clouddienst oder VM-Skalierungsgruppe) kann nur eine Einstellung zur automatischen Skalierung konfiguriert werden.
 Allerdings kann jede Einstellung zur automatischen Skalierung mehrere Profile aufweisen. Beispielsweise kann ein Profil ein leistungsbasiertes Skalierungsprofil und ein zweites ein zeitplanbasiertes Profil sein. Für jedes Profil können mehrere Regeln konfiguriert werden. Weitere Informationen zur automatischen Skalierung finden Sie unter [Automatisches Skalieren einer Anwendung](../../cloud-services/cloud-services-how-to-scale-portal.md).
 

@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f96ec80b529c594a383be8d668fd28b77372cd80
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b9803726bf3a54eb31d3c2ebaddce11fb96472be
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900934"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413722"
 ---
 # <a name="about-azure-key-vault-keys"></a>Informationen zu Azure Key Vault-Schlüsseln
 
@@ -30,10 +30,10 @@ Kryptografische Schlüssel in Key Vault werden als JSON Web Key-Objekte (JWK) da
 
 Die grundlegenden JWK/JWA-Spezifikationen wurden erweitert, um Schlüsseltypen zu ermöglichen, die für die Key Vault-Implementierung eindeutig sind. Das Importieren von Schlüsseln mit anbieterspezifischer HSM-Paketerstellung ermöglicht einen sicheren Transport von Schlüsseln, die nur in Key Vault-HSMs verwendet werden dürfen. 
 
-Azure Key Vault unterstützt sowohl Soft-Schlüssel als auch Hard-Schlüssel:
+Azure Key Vault unterstützt sowohl softwaregeschützte als auch HSM-geschützte Schlüssel:
 
-- **„Soft“-Schlüssel**: Schlüssel, die in der Software von Key Vault verarbeitet, aber im Ruhezustand unter Verwendung eines Systemschlüssels, der sich in einem HSM befindet, verschlüsselt werden. Clients können einen vorhandenen RSA- oder EC-Schlüssel (Elliptic Curve, elliptische Kurve) importieren oder anfordern, dass Key Vault einen solchen Schlüssel generiert.
-- **„Hard“-Schlüssel**: Schlüssel, die in einem HSM (Hardwaresicherheitsmodul) verarbeitet werden. Diese Schlüssel werden in einer der HSM Security Worlds von Key Vault geschützt (es gibt in jeder geografischen Region eine Security World, um die Isolation aufrechtzuerhalten). Clients können einen RSA- oder EC-Schlüssel importieren, entweder in „Soft“-Form oder durch Exportieren von einem kompatiblen HSM-Gerät. Clients können auch anfordern, dass Key Vault einen Schlüssel generiert. Dieser Schlüsseltyp fügt dem JWK das key_hsm-Attribut hinzu, um das HSM-Schlüsselmaterial zu tragen.
+- **Softwaregeschützte Schlüssel**: Schlüssel, die in der Software von Key Vault verarbeitet, aber im Ruhezustand unter Verwendung eines Systemschlüssels, der sich in einem HSM befindet, verschlüsselt werden. Clients können einen vorhandenen RSA- oder EC-Schlüssel (Elliptic Curve, elliptische Kurve) importieren oder anfordern, dass Key Vault einen solchen Schlüssel generiert.
+- **HSM-geschützte Schlüssel**: Schlüssel, die in einem HSM (Hardwaresicherheitsmodul) verarbeitet werden. Diese Schlüssel werden in einer der HSM Security Worlds von Key Vault geschützt (es gibt in jeder geografischen Region eine Security World, um die Isolation aufrechtzuerhalten). Clients können einen RSA- oder EC-Schlüssel importieren, entweder in softwaregeschützter Form oder durch Exportieren von einem kompatiblen HSM-Gerät. Clients können auch anfordern, dass Key Vault einen Schlüssel generiert. Dieser Schlüsseltyp fügt dem JWK das key_hsm-Attribut hinzu, um das HSM-Schlüsselmaterial zu tragen.
 
 Weitere Informationen zu geografischen Grenzen finden Sie unter [Datenschutz](https://azure.microsoft.com/support/trust-center/privacy/).  
 
@@ -41,9 +41,9 @@ Weitere Informationen zu geografischen Grenzen finden Sie unter [Datenschutz](ht
 
 Key Vault unterstützt nur RSA- und Elliptic Curve-Schlüssel. 
 
--   **EC**: „Soft“-Elliptic Curve-Schlüssel.
+-   **EC**: Softwaregeschützter Elliptic Curve-Schlüssel.
 -   **EC-HSM**: „Hard“-Elliptic Curve-Schlüssel.
--   **RSA**: „Soft“-RSA-Schlüssel.
+-   **RSA**: Softwaregeschützter RSA-Schlüssel.
 -   **RSA-HSM**: „Hard“-RSA-Schlüssel.
 
 Key Vault unterstützt RSA-Schlüssel der Größen 2048, 3072 und 4096. Key Vault unterstützt die Elliptic Curve-Schlüsseltypen P-256, P-384, P-521 und P-256K (SECP256K1).

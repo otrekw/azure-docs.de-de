@@ -3,26 +3,38 @@ title: Erstellen eines Ressourcenanbieters
 description: Beschreibt das Erstellen eines Ressourcenanbieters und die Bereitstellung seiner benutzerdefinierten Ressourcentypen.
 author: MSEvanhi
 ms.topic: tutorial
-ms.date: 06/19/2020
+ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: ce547c010d3cc814d4e6f6182c19572248228fc3
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125003"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368106"
 ---
-# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Schnellstart: Erstellen eines benutzerdefinierten Anbieters und Bereitstellen von benutzerdefinierten Ressourcen
+# <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Schnellstart: Erstellen eines benutzerdefinierten Anbieters und Bereitstellen von benutzerdefinierten Ressourcen
 
 In dieser Schnellstartanleitung erstellen Sie Ihren eigenen Ressourcenanbieter und stellen benutzerdefinierte Ressourcentypen für diesen Ressourcenanbieter bereit. Weitere Informationen zu benutzerdefinierten Anbietern finden Sie unter [Azure Custom Providers (Vorschau): Übersicht](overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In dieser Schnellstartanleitung müssen `REST`-Vorgänge aufgerufen werden. Es gibt [verschiedene Möglichkeiten zum Senden von REST-Anforderungen](/rest/api/azure/).
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- In dieser Schnellstartanleitung müssen `REST`-Vorgänge aufgerufen werden. Es gibt [verschiedene Möglichkeiten zum Senden von REST-Anforderungen](/rest/api/azure/).
 
-Um Azure CLI-Befehle auszuführen, verwenden Sie [Bash in der Azure Cloud Shell](/azure/cloud-shell/quickstart). Die [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider)-Befehle erfordern eine Erweiterung. Weitere Informationen finden Sie unter [Verwenden von Erweiterungen mit der Azure CLI](/cli/azure/azure-cli-extensions-overview).
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Verwenden Sie PowerShell 7 oder höher und die Azure PowerShell-Module, um PowerShell-Befehle lokal auszuführen. Weitere Informationen finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/install-az-ps). Wenn Sie noch nicht über ein Tool für `REST`-Vorgänge verfügen, installieren Sie [ARMClient](https://github.com/projectkudu/ARMClient). Es handelt sich um ein Open-Source-Befehlszeilentool, das den Aufruf der Azure Resource Manager-API vereinfacht.
+- Die [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider)-Befehle erfordern eine Erweiterung. Weitere Informationen finden Sie unter [Verwenden von Erweiterungen mit der Azure CLI](/cli/azure/azure-cli-extensions-overview).
+- In Azure CLI-Beispielen wird `az rest` für Anforderungen vom Typ `REST` verwendet. Weitere Informationen finden Sie unter [az rest](/cli/azure/reference-index#az-rest).
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+- Die PowerShell-Befehle werden lokal ausgeführt, indem PowerShell 7 oder höher und die Azure PowerShell-Module verwendet werden. Weitere Informationen finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/install-az-ps).
+- Wenn Sie noch nicht über ein Tool für `REST`-Vorgänge verfügen, installieren Sie [ARMClient](https://github.com/projectkudu/ARMClient). Es handelt sich um ein Open-Source-Befehlszeilentool, das den Aufruf der Azure Resource Manager-API vereinfacht.
+- Nach der Installation von **ARMClient** können Sie die Nutzungsinformationen über einen PowerShell-Befehl anzeigen, indem Sie Folgendes eingeben: `armclient.exe`. Sie können auch im [ARMClient-Wiki](https://github.com/projectkudu/ARMClient/wiki) nachsehen.
+
+---
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="deploy-custom-provider"></a>Bereitstellen eines benutzerdefinierten Anbieters
 
@@ -30,14 +42,16 @@ Um den benutzerdefinierten Anbieter einzurichten, stellen Sie eine [Beispielvorl
 
 Nach dem Bereitstellen der Vorlage weist Ihr Abonnement die folgenden Ressourcen auf:
 
-* Funktions-App mit den Vorgängen für die Ressourcen und Aktionen.
-* Speicherkonto zum Speichern von Benutzern, die durch den benutzerdefinierten Anbieter erstellt werden.
-* Benutzerdefinierten Anbieter, der die benutzerdefinierten Ressourcentypen und Aktionen definiert. Der Endpunkt der Funktions-App wird zum Senden von Anforderungen verwendet.
-* Benutzerdefinierte Ressource vom benutzerdefinierten Anbieter.
+- Funktions-App mit den Vorgängen für die Ressourcen und Aktionen.
+- Speicherkonto zum Speichern von Benutzern, die durch den benutzerdefinierten Anbieter erstellt werden.
+- Benutzerdefinierten Anbieter, der die benutzerdefinierten Ressourcentypen und Aktionen definiert. Der Endpunkt der Funktions-App wird zum Senden von Anforderungen verwendet.
+- Benutzerdefinierte Ressource vom benutzerdefinierten Anbieter.
 
-Verwenden Sie zum Bereitstellen des benutzerdefinierten Anbieters Azure CLI oder PowerShell:
+Verwenden Sie die Azure CLI, PowerShell oder das Azure-Portal, um den benutzerdefinierten Anbieter bereitzustellen:
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+In diesem Beispiel werden Sie aufgefordert, eine Ressourcengruppe, einen Standort und den Funktions-App-Namen des Anbieters einzugeben. Die Namen werden in Variablen gespeichert, die in anderen Befehlen verwendet werden. Mit den Befehlen [az group create](/cli/azure/group#az-group-create) und [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) werden die Ressourcen bereitgestellt.
 
 ```azurecli-interactive
 read -p "Enter a resource group name:" rgName &&
@@ -52,6 +66,8 @@ read
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+In diesem Beispiel werden Sie aufgefordert, eine Ressourcengruppe, einen Standort und den Funktions-App-Namen des Anbieters einzugeben. Die Namen werden in Variablen gespeichert, die in anderen Befehlen verwendet werden. Mit den Befehlen [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) und [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) werden die Ressourcen bereitgestellt.
+
 ```powershell
 $rgName = Read-Host -Prompt "Enter a resource group name"
 $location = Read-Host -Prompt "Enter the location (i.e. eastus)"
@@ -64,7 +80,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ---
 
-Sie können die Lösung auch mithilfe der folgenden Schaltfläche aus dem Azure-Portal bereitstellen:
+Sie können die Lösung auch über das Azure-Portal bereitstellen. Wählen Sie die Schaltfläche **In Azure bereitstellen** aus, um die Vorlage im Azure-Portal zu öffnen.
 
 [![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json)
 
@@ -252,7 +268,7 @@ Verwenden Sie die [custom-providers](/cli/azure/ext/custom-providers/custom-prov
 
 ### <a name="list-custom-resource-providers"></a>Auflisten benutzerdefinierter Ressourcenanbieter
 
-Listen Sie alle benutzerdefinierten Ressourcenanbieter in einem Abonnement auf. In der Standardeinstellung werden benutzerdefinierte Ressourcenanbieter für das aktuelle Abonnement aufgelistet, oder Sie können den `--subscription`-Parameter angeben. Um für eine Ressourcengruppe aufzulisten, verwenden Sie den Parameter `--resource-group`.
+Verwenden Sie den Befehl `list`, um alle benutzerdefinierten Ressourcenanbieter eines Abonnements anzuzeigen. In der Standardeinstellung werden die benutzerdefinierten Ressourcenanbieter des aktuellen Abonnements aufgelistet, oder Sie können den Parameter `--subscription` angeben. Um für eine Ressourcengruppe aufzulisten, verwenden Sie den Parameter `--resource-group`.
 
 ```azurecli-interactive
 az custom-providers resource-provider list --subscription $subID
@@ -289,7 +305,7 @@ az custom-providers resource-provider list --subscription $subID
 
 ### <a name="show-the-properties"></a>Anzeigen der Eigenschaften
 
-Zeigen Sie die Eigenschaften für einen benutzerdefinierten Ressourcenanbieter an. Das Ausgabeformat ähnelt der Ausgabe von `list`.
+Verwenden Sie den Befehl `show`, um die Eigenschaften des benutzerdefinierten Ressourcenanbieters anzuzeigen. Das Ausgabeformat ähnelt der Ausgabe von `list`.
 
 ```azurecli-interactive
 az custom-providers resource-provider show --resource-group $rgName --name $funcName

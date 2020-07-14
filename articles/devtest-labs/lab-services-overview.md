@@ -1,26 +1,16 @@
 ---
-title: Informationen zu Azure Lab Services | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit Lab Services das Erstellen, Verwalten und Schützen von Labs mit virtuellen Computern vereinfachen können, die von Entwicklern, Testern, Lehrkräften, Kursteilnehmern und anderen genutzt werden können.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure Lab Services im Vergleich zu Azure DevTest Labs
+description: Vergleich von Azure DevTest Labs und Azure Lab Services.
 ms.topic: overview
-ms.date: 02/03/2020
-ms.author: spelluru
-ms.openlocfilehash: a1e42a415e99bfaec1c48204efdaacd178005705
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b1cd476faf6c457033ffeace03cd2e37b51e8578
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899370"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480081"
 ---
-# <a name="an-introduction-to-azure-lab-services"></a>Einführung in Azure Lab Services
+# <a name="compare-azure-devtest-labs-and-azure-lab-services"></a>Vergleich von Azure DevTest Labs und Azure Lab Services
 Es gibt zwei Dienste in Azure, mit denen Laborumgebungen in der Cloud eingerichtet werden können. 
 
 - **Azure DevTest Labs:** Mit diesem Dienst können Sie schnell eine Umgebung für Ihr Team (z. B. eine Entwicklungsumgebung oder Testumgebung in der Cloud) einrichten. Der Besitzer des Labs erstellt ein Lab, stellt virtuelle Windows- oder Linux-Computer bereit, installiert die erforderlichen Programme und Tools und stellt sie Lab-Benutzern zur Verfügung. Labbenutzer verbinden sich mit virtuellen Computern (VMs) im Lab und nutzen sie für ihre tägliche Arbeit und kurzzeitige Projekte. Sobald Benutzer die Ressourcen im Lab nutzen, kann ein Lab-Administrator die Kosten und Nutzung mehrerer Labs analysieren und übergreifende Richtlinien festlegen, um die Kosten Ihrer Organisation oder Ihres Teams zu optimieren.

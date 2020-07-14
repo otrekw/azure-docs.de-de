@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 67b476b2ec6ec0c841639f7aa1d94a0d9d3d3304
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: d670ee0cb2396858d908ac13f70819efd57d7f63
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262338"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391824"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Erkunden von Azure Digital Twins mit einer Beispielclient-App
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 In diesem Tutorial wird eine Beispielanwendung eingeführt, die eine Befehlszeilenclientanwendung für die Interaktion mit einer Azure Digital Twins-Instanz implementiert. Die Client-App ähnelt der unter [Tutorial: Codieren einer Client-App](tutorial-code.md) geschriebenen App.
 
@@ -81,7 +78,7 @@ Achten Sie darauf, die Datei vor dem Fortfahren zu speichern.
 > Wenn Sie ein eigenes Modell erstellen möchten, können Sie den *Room*-Modellcode in eine neue Datei einfügen, die Sie mit der Erweiterung *.json* im Ordner *AdtSampleApp\SampleClientApp\Models* speichern. Fügen Sie dann zum Experimentieren Eigenschaften und Beziehungen hinzu, um die gewünschten Informationen darzustellen. Sie können sich auch die anderen Beispielmodelle in diesem Ordner ansehen, um sich inspirieren zu lassen.
 
 > [!TIP] 
-> Es gibt ein sprachunabhängiges [DTDL-Überprüfungsbeispiel](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator), mit dem Sie Modelldokumente überprüfen können, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der DTDL-Parserbibliothek. Weitere Informationen dazu finden Sie im Thema zum [ Analysieren und Validieren von Modellen](how-to-use-parser.md).
+> Es gibt ein sprachunabhängiges [DTDL-Überprüfungsbeispiel](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator), mit dem Sie Modelldokumente überprüfen können, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der DTDL-Parserbibliothek. Weitere Informationen dazu finden Sie in [Gewusst wie: Analysieren und Validieren von Modellen](how-to-use-parser.md).
 
 ### <a name="get-started-with-the-command-line-app"></a>Erste Schritte mit der Befehlszeilen-App
 
@@ -131,7 +128,8 @@ Führen Sie den Befehl `CreateModels` erneut aus, um eins des soeben hochgeladen
 CreateModels Room
 ```
 
-Da Modelle nicht überschrieben werden können, wird jetzt ein Dienstfehler zurückgegeben:
+Da Modelle nicht überschrieben werden können, wird jetzt ein Dienstfehler zurückgegeben.
+Ausführliche Informationen zum Löschen von vorhandenen Modellen finden Sie unter [Gewusst wie: Verwalten benutzerdefinierter Modelle](how-to-manage-model.md).
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)

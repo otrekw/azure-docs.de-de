@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628945"
 ---
 # <a name="templates"></a>Vorlagen
@@ -56,7 +56,7 @@ Data Factory verwendet Azure Resource Manager-Vorlagen für das Speichern von Da
 
     -   [Deltakopie aus Datenbank](solution-template-delta-copy-with-control-table.md)
 
-    -   Kopieren aus \<Quelle\> in \<Ziel\>
+    -   Kopieren von \<source\> nach \<destination\>
 
         -   [Aus Amazon S3 in Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 

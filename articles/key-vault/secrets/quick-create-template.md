@@ -11,24 +11,28 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: 273a467f5db2201015352aaf4a232f5a42e29673
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 5206c73ac225f31ee8c40105e292726a9f951a79
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81618091"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478926"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Schnellstart: Festlegen und Abrufen eines Geheimnisses aus Azure Key Vault per Resource Manager-Vorlage
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>Schnellstart: Festlegen und Abrufen eines Geheimnisses aus Azure Key Vault mit einer ARM-Vorlage
 
-[Azure Key Vault](../general/overview.md) ist ein Clouddienst, der einen sicheren Speicher für Geheimnisse bereitstellt, z. B. für Schlüssel, Kennwörter, Zertifikate usw. In dieser Schnellstartanleitung geht es die Bereitstellung einer Resource Manager-Vorlage zum Erstellen eines Schlüsseltresors und eines Geheimnisses.
+[Azure Key Vault](../general/overview.md) ist ein Clouddienst, der einen sicheren Speicher für Geheimnisse bereitstellt, z. B. für Schlüssel, Kennwörter, Zertifikate usw. In dieser Schnellstartanleitung geht es die Bereitstellung einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen eines Schlüsseltresors und eines Geheimnisses.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-key-vault-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
+Führen Sie für diesen Artikel die folgenden Schritte aus:
+
+* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 * Ihre Azure AD-Benutzerobjekt-ID wird von der Vorlage zum Konfigurieren von Berechtigungen benötigt. Die folgende Prozedur ruft die Objekt-ID (GUID) ab.
 
@@ -53,22 +57,20 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
     2. Notieren Sie sich die Objekt-ID. Sie benötigen sie im nächsten Abschnitt dieser Schnellstartanleitung.
 
-## <a name="create-a-vault-and-a-secret"></a>Erstellen eines Tresors und eines Geheimnisses
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-key-vault-create/).
 
-:::code language="json" source="~/quickstart-templates/101-key-vault-create/azuredeploy.json" range="1-150" highlight="107-148":::
+:::code language="json" source="~/quickstart-templates/101-key-vault-create/azuredeploy.json" range="1-150" highlight="106-148":::
 
 Zwei Azure-Ressourcen sind in der Vorlage definiert:
 
 * [**Microsoft.KeyVault/vaults**](/azure/templates/microsoft.keyvault/vaults) zum Erstellen eines Azure-Schlüsseltresors
-* [**Microsoft.KeyVault/vaults/secrets**](/azure/templates/microsoft.keyvault/vaults/secrets) zum Erstellen eines Schlüsseltresorgeheimnisses
+* [**Microsoft.KeyVault/vaults/secrets**](/azure/templates/microsoft.keyvault/vaults/secrets) zum Erstellen eines Schlüsseltresorgeheimnisses.
 
-Weitere Beispiele für Azure Key Vault-Vorlagen finden Sie [hier](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault).
+Weitere Vorlagenbeispiele für Azure Key Vault finden Sie in [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt einen Schlüsseltresor und ein Geheimnis.
 
@@ -76,22 +78,22 @@ Weitere Beispiele für Azure Key Vault-Vorlagen finden Sie [hier](https://azure.
 
 2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 
-    ![Resource Manager-Vorlage: Key Vault-Integration – Bereitstellen (Portal)](../media/quick-create-template/create-key-vault-using-template-portal.png)
+    ![ARM-Vorlage, Key Vault-Integration, Bereitstellen (Portal)](../media/quick-create-template/create-key-vault-using-template-portal.png)
 
     Verwenden Sie den Standardwert, um den Schlüsseltresor und ein Geheimnis zu erstellen, sofern kein anderer Wert angegeben ist.
 
     * **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
     * **Ressourcengruppe**: Wählen Sie die Option **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie dann auf **OK**.
-    * **Standort**: Wählen Sie einen Standort aus.  Beispiel: **USA, Mitte**.
+    * **Standort**: Wählen Sie einen Standort aus. Beispiel: **USA, Mitte**.
     * **Schlüsseltresorname**: Geben Sie einen Namen für den Schlüsseltresor ein. Dieser muss im Namespace „.vault.azure.net“ global eindeutig sein. Sie benötigen den Namen im nächsten Abschnitt beim Überprüfen der Bereitstellung.
-    * **Mandanten-ID**: Die Vorlagenfunktion ruft automatisch Ihre Mandanten-ID ab.  Lassen Sie den Standardwert unverändert.
+    * **Mandanten-ID**: Die Vorlagenfunktion ruft automatisch Ihre Mandanten-ID ab. Lassen Sie den Standardwert unverändert.
     * **Ad User Id** (AD-Benutzer-ID): Geben Sie Ihre Azure AD-Benutzerobjekt-ID ein, die Sie unter [Voraussetzungen](#prerequisites) abgerufen haben.
-    * **Geheimnisname**: Geben Sie einen Namen für das Geheimnis ein, das Sie im Schlüsseltresor speichern.  Beispiel: **adminpassword**.
-    * **Geheimniswert**: Geben Sie den Geheimniswert ein.  Beim Speichern eines Kennworts wird die Verwendung des generierten Kennworts empfohlen, das Sie unter „Voraussetzungen“ erstellt haben.
+    * **Geheimnisname**: Geben Sie einen Namen für das Geheimnis ein, das Sie im Schlüsseltresor speichern. Beispiel: **adminpassword**.
+    * **Geheimniswert**: Geben Sie den Geheimniswert ein. Beim Speichern eines Kennworts wird die Verwendung des generierten Kennworts empfohlen, das Sie unter „Voraussetzungen“ erstellt haben.
     * **Ich stimme den oben genannten Geschäftsbedingungen zu**: Aktivieren Sie dieses Kontrollkästchen.
 3. Wählen Sie die Option **Kaufen**. Nach der erfolgreichen Bereitstellung des Schlüsseltresors erhalten Sie eine Benachrichtigung:
 
-    ![Resource Manager-Vorlage: Key Vault-Integration – Bereitstellen (Portal)](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+    ![ARM-Vorlage, Key Vault-Integration, Bereitstellen (Portalbenachrichtigung)](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
 Zum Bereitstellen der Vorlage wird das Azure-Portal verwendet. Neben dem Azure-Portal können Sie auch Azure PowerShell, die Azure-Befehlszeilenschnittstelle (Azure CLI) und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -122,13 +124,14 @@ Die Ausgabe sieht in etwa wie folgt aus:
 
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 
-![Resource Manager-Vorlage: Key Vault-Integration – Bereitstellen (Portal) – Überprüfungsausgabe](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
+![ARM-Vorlage, Key Vault-Integration, Bereitstellen (Portal), Überprüfungsausgabe](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-![Resource Manager-Vorlage: Key Vault-Integration – Bereitstellen (Portal) – Überprüfungsausgabe](../media/quick-create-template/resource-manager-template-portal-deployment-powershell-output.png)
+![ARM-Vorlage, Key Vault-Integration, Bereitstellen (Portal), Überprüfungsausgabe](../media/quick-create-template/resource-manager-template-portal-deployment-powershell-output.png)
 
 ---
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Andere Schnellstartanleitungen und Tutorials für Key Vault bauen auf dieser Schnellstartanleitung auf. Falls Sie mit weiteren Schnellstartanleitungen und Tutorials fortfahren möchten, sollten Sie die Ressourcen nicht bereinigen.
@@ -155,7 +158,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie mithilfe einer Azure Resource Manager-Vorlage einen Schlüsseltresor und ein Geheimnis erstellt und die Bereitstellung überprüft. Weitere Informationen zu Key Vault und Azure Resource Manager finden Sie in den folgenden Artikeln:
+In dieser Schnellstartanleitung haben Sie mithilfe einer ARM-Vorlage einen Schlüsseltresor und ein Geheimnis erstellt und die Bereitstellung überprüft. Weitere Informationen zu Key Vault und Azure Resource Manager finden Sie in den folgenden Artikeln:
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
 - Lesen Sie weitere Informationen zu [Azure Resource Manager](../../azure-resource-manager/management/overview.md).

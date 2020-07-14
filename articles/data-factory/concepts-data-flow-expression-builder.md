@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: dda2812b5e2cc79d53658d568ba0845d593f41d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/20/2020
+ms.openlocfilehash: 7e2b655b344af90c4555beb0af85fa11cbc6d1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85126160"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Erstellen von Ausdrücken im Zuordnungsdatenfluss
 
@@ -76,16 +76,12 @@ Einige Beispiele für Zeichenfolgeninterpolation:
 
 Fügen Sie Ihren Ausdrücken Kommentare hinzu. Verwenden Sie dabei eine einzeilige oder eine mehrzeilige Kommentarsyntax.
 
-![Einzeilige oder mehrzeilige Kommentarsyntax](media/data-flow/comments.png "Kommentare")
-
 Die folgenden Beispiele stellen gültige Kommentare dar:
 
 * ```/* This is my comment */```
 
 * ```/* This is a```
 *   ```multi-line comment */```
-   
-* ```// This is a single line comment```
 
 Wenn Sie einen Kommentar am Anfang des Ausdrucks einfügen, wird er im Transformationstextfeld angezeigt und dokumentiert Ihre Transformationsausdrücke.
 
@@ -133,6 +129,10 @@ Wenn Sie Millisekunden von einer Epoche in ein Datum oder einen Zeitstempel konv
 ```toTimestamp(1574127407*1000l)```
 
 Das nachgestellte „l“ am Ende des vorstehenden Ausdrucks gibt eine Konvertierung in einen long-Datentyp als inline-Syntax an.
+
+## <a name="find-time-from-epoch-or-unix-time"></a>Zeit aus Epochen- oder Unix-Zeit finden
+
+toLong( currentTimestamp() - toTimestamp('1970-01-01 00:00:00.000', 'yyyy-MM-dd HH:mm:ss.SSS') ) * 1000l
 
 ## <a name="next-steps"></a>Nächste Schritte
 

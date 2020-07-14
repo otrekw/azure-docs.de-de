@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: b398f739189232f39a2fee06fc6e6ff0d53348f0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656613"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84449514"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Häufig gestellte Fragen zum im Autoskalierungsmodus bereitgestellten Durchsatz von Azure Cosmos DB
 
@@ -86,6 +86,10 @@ Ja, die Autoskalierung wird für Datenbanken mit gemeinsam genutztem Durchsatz u
 
 ### <a name="what-is-the-number-of-allowed-containers-per-shared-throughput-database-when-autoscale-is-enabled"></a>Wie viele Container sind pro Datenbank mit gemeinsam genutztem Durchsatz zulässig, wenn die Autoskalierung aktiviert ist?
 Azure Cosmos DB erzwingt in einer Datenbank mit gemeinsam genutztem Durchsatz einen Höchstwert von 25 Container. Dieser Wert gilt für Datenbanken mit Autoskalierung und standardmäßig (manuell) bereitgestelltem Durchsatz. 
+
+### <a name="what-is-the-impact-of-autoscale-on-database-consistency-level"></a>Welche Auswirkungen hat die Autoskalierung auf der Datenbankkonsistenzebene?
+Es gibt keine Auswirkungen der Autoskalierung auf der Datenbankkonsistenzebene.
+Weitere Informationen zu verfügbaren Konsistenzebenen finden Sie im Artikel [Konsistenzebenen](consistency-levels.md).
 
 ### <a name="what-is-the-storage-limit-associated-with-each-max-rus-option"></a>Welches Speicherlimit gilt für die einzelnen „Max. RU/s“-Optionen?  
 Das Speicherlimit in GB für die einzelnen maximalen RU/s lautet: Max. RU/s der Datenbank oder des Containers / 100. Wenn z. B. der Wert für maximale RU/s 20.000 RU/s beträgt, kann die Ressource 200 GB Speicherplatz unterstützen. Informationen zu den verfügbaren maximalen RU/s und Speicheroptionen finden Sie im Artikel [Beschränkungen für den Autoskalierungsmodus](provision-throughput-autoscale.md#autoscale-limits). 

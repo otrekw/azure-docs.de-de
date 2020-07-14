@@ -1,65 +1,65 @@
 ---
-title: Verbessern der Verfügbarkeit Ihrer Anwendung mit Azure Advisor
-description: Mithilfe von Azure Advisor können Sie die Hochverfügbarkeit Ihrer Azure-Bereitstellungen sicherstellen.
+title: Verbessern der Zuverlässigkeit Ihrer Anwendung mit Advisor
+description: Verwenden Sie Azure Advisor, um die Zuverlässigkeit Ihrer geschäftskritischen Azure-Bereitstellungen sicherzustellen und zu verbessern.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 928e0b098cb2cf117eff40d2257fc79dbe114f85
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124621"
 ---
-# <a name="improve-availability-of-your-application-with-azure-advisor"></a>Verbessern der Verfügbarkeit Ihrer Anwendung mit Azure Advisor
+# <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Verbessern der Zuverlässigkeit Ihrer Anwendung mit Azure Advisor
 
-Der Azure Advisor hilft Ihnen, die ununterbrochene Verfügbarkeit Ihrer unternehmenskritischen Anwendungen zu gewährleisten und zu verbessern. Empfehlungen für Hochverfügbarkeit von Advisor erhalten Sie auf dem Advisor-Dashboard auf der Registerkarte **Hochverfügbarkeit**.
+Der Azure Advisor hilft Ihnen, die ununterbrochene Verfügbarkeit Ihrer unternehmenskritischen Anwendungen zu gewährleisten und zu verbessern. Sie können Empfehlungen von Advisor zur Zuverlässigkeit auf der Registerkarte **Zuverlässigkeit** des Advisor-Dashboards erhalten.
 
 ## <a name="ensure-virtual-machine-fault-tolerance"></a>Sicherstellen von Fehlertoleranz für virtuelle Computer
 
-Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierung von zwei oder mehr virtuellen Computern in einer Verfügbarkeitsgruppe. Advisor identifiziert virtuelle Computer, die nicht zu einer Verfügbarkeitsgruppe gehören und empfiehlt, diese in eine Verfügbarkeitsgruppe zu verschieben. Durch diese Konfiguration wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist und die Azure-SLA für virtuelle Computer eingehalten wird. Sie können eine Verfügbarkeitsgruppe für den virtuellen Computer erstellen oder diesen einer vorhandenen Verfügbarkeitsgruppe hinzufügen.
+Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierung von zwei oder mehr virtuellen Computern in einer Verfügbarkeitsgruppe. Advisor identifiziert virtuelle Computer, die nicht zu einer Verfügbarkeitsgruppe gehören und empfiehlt, diese in eine Verfügbarkeitsgruppe zu verschieben. Durch diese Konfiguration wird sichergestellt, dass während einer geplanten oder ungeplanten Wartung mindestens ein virtueller Computer verfügbar ist und die Azure-SLA für virtuelle Computer eingehalten wird. Sie können eine Verfügbarkeitsgruppe für den virtuellen Computer erstellen oder diesen einer vorhandenen Verfügbarkeitsgruppe hinzufügen.
 
 > [!NOTE]
 > Wenn Sie eine Verfügbarkeitsgruppe erstellen möchten, müssen Sie ihr mindestens einen weiteren virtuellen Computer hinzufügen. Wir empfehlen das Gruppieren von mindestens zwei virtuellen Computern in einer Verfügbarkeitsgruppe, um sicherzustellen, dass mindestens ein Computer bei einem Ausfall verfügbar ist.
 
 ## <a name="ensure-availability-set-fault-tolerance"></a>Sicherstellen von Fehlertoleranz für Verfügbarkeitsgruppen
 
-Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierung von zwei oder mehr virtuellen Computern in einer Verfügbarkeitsgruppe. Der Advisor ermittelt Verfügbarkeitsgruppen mit nur einem virtuellen Computer und empfiehlt, dieser weitere hinzuzufügen. Durch diese Konfiguration wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist und die Azure-SLA für virtuelle Computer eingehalten wird. Sie können einen virtuellen Computer erstellen oder der Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzufügen.  
+Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierung von zwei oder mehr virtuellen Computern in einer Verfügbarkeitsgruppe. Der Advisor ermittelt Verfügbarkeitsgruppen mit nur einem virtuellen Computer und empfiehlt, dieser weitere hinzuzufügen. Durch diese Konfiguration wird sichergestellt, dass während einer geplanten oder ungeplanten Wartung mindestens ein virtueller Computer verfügbar ist und die Azure-SLA für virtuelle Computer eingehalten wird. Sie können einen virtuellen Computer erstellen oder der Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzufügen.  
 
-## <a name="use-managed-disks-to-improve-data-reliability"></a>Verwenden von Managed Disks zur Erhöhung der Datenzuverlässigkeit
+## <a name="use-managed-disks-to-improve-data-reliability"></a>Verwenden von verwalteten Datenträgern zur Erhöhung der Datenzuverlässigkeit
 
-Virtuelle Computer, die sich in einer Verfügbarkeitsgruppe mit Datenträgern befinden, die entweder Speicherkonten oder Speicherskalierungseinheiten gemeinsam nutzen, sind nicht widerstandsfähig gegen Ausfälle einzelner Speicherskalierungseinheiten während eines Ausfalls. Advisor identifiziert diese Verfügbarkeitsgruppen und empfehlen die Migration zu Azure Managed Disks. Dadurch wird sichergestellt, dass die Datenträger der verschiedenen virtuellen Computer in der Verfügbarkeitsgruppe ausreichend isoliert sind, um einen Single Point of Failure zu vermeiden. 
+Virtuelle Computer, die sich in einer Verfügbarkeitsgruppe mit Datenträgern befinden, die entweder Speicherkonten oder Speicherskalierungseinheiten gemeinsam nutzen, sind nicht widerstandsfähig gegen Ausfälle einzelner Speicherskalierungseinheiten während eines Ausfalls. Advisor identifiziert diese Verfügbarkeitsgruppen und empfiehlt die Migration zu verwalteten Azure-Datenträgern. Durch diese Migration wird sichergestellt, dass die Datenträger der virtuellen Computer in der Verfügbarkeitsgruppe ausreichend isoliert sind, um einen Single Point of Failure zu vermeiden. 
 
-## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Bekanntes Problem mit der Version des Images des virtuellen Netzwerkgeräts von Check Point
+## <a name="check-the-version-of-your-check-point-network-virtual-appliance-image"></a>Überprüfen der Version des Images Ihres virtuellen Netzwerkgeräts von Check Point
 
-Azure Advisor kann ermitteln, ob für Ihren virtuellen Computer ggf. eine Version des Check Point-Images ausgeführt wird, bei der das bekannte Problem besteht, dass bei einem Wartungsvorgang für die Plattform Netzwerkkonnektivität verloren geht. Die Empfehlung von Azure Advisor hilft Ihnen, ein Upgrade auf eine neuere Version des Images durchzuführen, um dieses Problem zu beheben. Dadurch wird Geschäftskontinuität durch bessere Netzwerkkonnektivität sichergestellt.
+Azure Advisor kann ermitteln, ob Ihr virtueller Computer ggf. eine Version des Check Point-Images ausführt, bei der das bekannte Problem besteht, dass bei einem Wartungsvorgang für die Plattform Netzwerkkonnektivität verloren geht. Die Empfehlung von Azure Advisor hilft Ihnen, ein Upgrade auf eine neuere Version des Images durchzuführen, um dieses Problem zu beheben. Diese Prüfung stellt die Geschäftskontinuität durch bessere Netzwerkkonnektivität sicher.
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Sicherstellen von Fehlertoleranz für Anwendungsgateways
 
-Bei Einhaltung dieser Empfehlung wird die Geschäftskontinuität unternehmenskritischer Anwendungen sichergestellt, die von Anwendungsgateways unterstützt werden. Advisor identifiziert die Anwendungsgatewayinstanzen, die nicht für die Fehlertoleranz konfiguriert sind, und schlägt Aktionen vor, die Sie zur Problembehebung ausführen können. Der Advisor identifiziert mittelgroße oder große Einzelinstanz-Anwendungsgateways und empfiehlt, mindestens eine weitere Instanz hinzufügen. Identifiziert außerdem kleine Einzel- und Mehrinstanz-Anwendungsgateways und empfiehlt die Migration zu mittelgroßen oder großen SKUs. Der Advisor empfiehlt diese Aktionen, um sicherzustellen, dass Ihre Anwendungsgatewayinstanzen so konfiguriert sind, dass sie die aktuellen SLA-Anforderungen für diese Ressourcen erfüllen.
+Bei Einhaltung dieser Empfehlung wird die Geschäftskontinuität unternehmenskritischer Anwendungen sichergestellt, die von Anwendungsgateways unterstützt werden. Advisor identifiziert Application Gateway-Instanzen, die nicht für Fehlertoleranz konfiguriert sind. Anschließend werden Ihnen Aktionen zur Problembehebung vorgeschlagen, die Sie ergreifen können. Advisor identifiziert mittelgroße oder große Einzelinstanz-Anwendungsgateways und empfiehlt, mindestens eine weitere Instanz hinzufügen. Identifiziert außerdem kleine Einzel- und Mehrinstanz-Anwendungsgateways und empfiehlt die Migration zu mittelgroßen oder großen SKUs. Der Advisor empfiehlt diese Aktionen, um sicherzustellen, dass Ihre Application Gateway-Instanzen so konfiguriert sind, dass sie die aktuellen SLA-Anforderungen für diese Ressourcen erfüllen.
 
 ## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Schützen Ihrer VM-Daten vor zufälligem Löschen
 
-Durch das Einrichten der Sicherung eines virtuellen Computers wird die Verfügbarkeit Ihrer geschäftskritischen Daten sichergestellt, und Ihre Daten werden vor versehentlichem Löschen oder vor Beschädigung geschützt. Der Advisor identifiziert virtuelle Computer, auf denen die Sicherung nicht aktiviert ist, und empfiehlt das Aktivieren der Sicherung. 
+Durch das Einrichten der Sicherung eines virtuellen Computers wird die Verfügbarkeit Ihrer geschäftskritischen Daten sichergestellt, und Ihre Daten werden vor versehentlichem Löschen oder vor Beschädigung geschützt. Advisor identifiziert virtuelle Computer, auf denen die Sicherung nicht aktiviert ist, und empfiehlt das Aktivieren der Sicherung. 
 
-## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Sicherstellen, dass Sie bei Bedarf Zugang zu Azure-Cloudexperten haben
+## <a name="ensure-you-have-access-to-azure-experts-when-you-need-it"></a>Sicherstellen, dass Sie bei Bedarf Zugang zu Azure-Experten haben
 
-Bei unternehmenskritischen Workloads ist es wichtig, im Bedarfsfall Zugang zu technischem Support zu haben. Der Advisor ermittelt potenziell unternehmenskritische Abonnements, deren Supportplan keinen technischen Support enthält, und empfiehlt ein Upgrade auf eine Option mit technischem Support.
+Bei unternehmenskritischen Workloads ist es wichtig, bei Bedarf Zugang zu technischem Support zu haben. Advisor identifiziert potenzielle geschäftskritische Abonnements, die keinen technischen Support in den Supportplänen enthalten. Es wird ein Upgrade auf eine Option empfohlen, die den technischen Support umfasst.
 
-## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-issues-affect-you"></a>Erstellen von Azure Service Health-Warnungen für Benachrichtigungen bei Azure-Dienstproblemen
+## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-problems-affect-you"></a>Erstellen von Azure Service Health-Warnungen für Benachrichtigungen bei Azure-Problemen
 
-Es wird empfohlen, Azure Service Health-Warnungen einzurichten, um über Azure-Dienstprobleme benachrichtigt zu werden. [Azure Service Health](https://azure.microsoft.com/features/service-health/) ist ein kostenloser Dienst, der personalisierte Anleitungen und Unterstützung bietet, wenn Sie von einem Azure-Dienstproblem betroffen sind. Advisor ermittelt Abonnements, für die keine Warnungen konfiguriert sind, und empfiehlt, solche zu erstellen.
+Es wird empfohlen, Azure Service Health-Warnungen einzurichten, um über Azure-Dienstprobleme benachrichtigt zu werden. [Azure Service Health](https://azure.microsoft.com/features/service-health/) ist ein kostenloser Dienst, der personalisierte Anleitungen und Unterstützung bietet, wenn Sie von einem Azure-Dienstproblem betroffen sind. Advisor identifiziert Abonnements, für die keine Warnungen konfiguriert sind, und empfiehlt deren Konfiguration.
 
 ## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>Konfigurieren von Traffic Manager-Endpunkten für Resilienz
 
-Traffic Manager-Profile mit mehr als einem Endpunkt haben eine höhere Verfügbarkeit, wenn ein bestimmter Endpunkt ausfällt. Das Platzieren von Endpunkten in verschiedenen Regionen verbessert die Dienstzuverlässigkeit noch mehr. Advisor ermittelt Traffic Manager-Profile mit nur einem Endpunkt und empfiehlt, mindestens einen weiteren Endpunkt in einer anderen Region hinzuzufügen.
+Azure Traffic Manager-Profile mit mehr als einem Endpunkt haben eine höhere Verfügbarkeit, wenn ein bestimmter Endpunkt ausfällt. Das Platzieren von Endpunkten in verschiedenen Regionen verbessert die Dienstzuverlässigkeit noch mehr. Advisor ermittelt Traffic Manager-Profile mit nur einem Endpunkt und empfiehlt, mindestens einen weiteren Endpunkt in einer anderen Region hinzuzufügen.
 
 Wenn sich alle Endpunkte in einem Traffic Manager-Profil, das für das Näherungsrouting konfiguriert ist, in derselben Region befinden, kann es bei Benutzern in anderen Regionen zu Verbindungsverzögerungen kommen. Das Hinzufügen oder Verschieben eines Endpunkts in eine andere Region verbessert die Gesamtleistung und bietet eine höhere Verfügbarkeit, wenn alle Endpunkte in einer Region ausfallen. Advisor identifiziert für das Näherungsrouting konfigurierte Traffic Manager-Profile, bei denen sich alle Endpunkte in derselben Region befinden. Advisor empfiehlt das Hinzufügen oder Verschieben eines Endpunkts in eine andere Azure-Region.
 
-Wenn ein Traffic Manager-Profil für das geografische Routing konfiguriert ist, wird der Datenverkehr basierend auf definierten Regionen an die Endpunkte weitergeleitet. Wenn eine Region ausfällt, ist kein vordefiniertes Failover verfügbar. Durch das Konfigurieren eines Endpunkts mit der regionalen Gruppierung „Alle (Welt)“ wird das Verwerfen von Datenverkehr vermieden und die Dienstverfügbarkeit verbessert. Advisor identifiziert Traffic Manager-Profile, die für das geografische Routing konfiguriert sind und keinen Endpunkt haben, der mit der regionalen Gruppierung „Alle (Welt)“ konfiguriert ist. Advisor empfiehlt, die Konfiguration zu ändern, sodass ein Endpunkt mit „Alle (Welt)“ konfiguriert ist.
+Wenn ein Traffic Manager-Profil für das geografische Routing konfiguriert ist, wird der Datenverkehr basierend auf definierten Regionen an die Endpunkte weitergeleitet. Wenn eine Region ausfällt, ist kein vordefiniertes Failover verfügbar. Wenn Sie über einen Endpunkt verfügen, an dem die regionale Gruppierung auf **Alle (Welt)** konfiguriert ist, können Sie das Verwerfen von Datenverkehr vermeiden und die Dienstverfügbarkeit verbessern. Advisor identifiziert Traffic Manager-Profile, die für das geografische Routing konfiguriert sind und keinen Endpunkt haben, der mit der regionalen Gruppierung **Alle (Welt)** konfiguriert ist. Advisor empfiehlt, die Konfiguration zu ändern, sodass ein Endpunkt mit **Alle (Welt)** konfiguriert ist.
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Speichern und Wiederherstellen von Daten nach versehentlichem Überschreiben oder Löschen durch vorläufiges Löschen in Ihrem Azure Storage-Konto
 
-Aktivieren Sie [vorläufiges Löschen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) in Ihrem Speicherkonto, sodass gelöschte Blobs in einen vorläufig gelöschten Zustand übergehen, anstatt endgültig gelöscht zu werden. Wenn Daten überschrieben werden, wird eine vorläufig gelöschte Momentaufnahme generiert, um den Zustand der überschriebenen Daten zu speichern. Durch vorläufiges Löschen können Sie Daten wiederherstellen, wenn diese versehentlich gelöscht oder überschrieben wurden. Advisor identifiziert Azure Storage-Konten, bei denen das vorläufige Löschen deaktiviert ist, und schlägt vor, es zu aktivieren.
+Aktivieren Sie [vorläufiges Löschen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) in Ihrem Speicherkonto, sodass gelöschte Blobs in einen vorläufig gelöschten Zustand übergehen, anstatt endgültig gelöscht zu werden. Wenn Daten überschrieben werden, wird eine vorläufig gelöschte Momentaufnahme generiert, um den Zustand der überschriebenen Daten zu speichern. Durch vorläufiges Löschen können Sie Daten wiederherstellen, wenn diese versehentlich gelöscht oder überschrieben wurden. Advisor identifiziert Azure-Speicherkonten, bei denen das vorläufige Löschen nicht aktiviert ist, und schlägt vor, es zu aktivieren.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurieren des VPN-Gateway zu aktiv-aktiv für Verbindungsresilienz
 
@@ -67,47 +67,60 @@ In der Aktiv-Aktiv-Konfiguration richten beide Instanzen eines VPN-Gateways S2S-
 
 ## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Verwenden Sie zum Ausführen Ihrer Produktionsworkloads Produktions-VPN-Gateways.
 
-Azure Advisor überprüft alle VPN-Gateways, die eine Basic-SKU sind, und empfiehlt, stattdessen eine Produktions-SKU zu verwenden. Die Basic-SKU kann zu Entwicklungs- und Testzwecken eingesetzt werden. Produktions-SKUs bieten eine höhere Anzahl von Tunneln, BGP-Unterstützung, Aktiv-Aktiv-Konfigurationsoptionen, kundenspezifische Ipsec-/IKE-Richtlinien sowie höhere Stabilität und Verfügbarkeit.
+Azure Advisor überprüft alle VPN-Gateways, die eine Basic-SKU verwenden, und empfiehlt, stattdessen eine Produktions-SKU zu verwenden. Die Basic-SKU ist für Entwicklungs- und Testzwecke konzipiert. Produktions-SKUs bieten Folgendes:
+- Weitere Tunnel 
+- BGP-Unterstützung 
+- Aktiv/Aktiv-Konfigurationsoptionen 
+- Benutzerdefinierte IPsec-/IKE-Richtlinie 
+- Höhere Stabilität und Verfügbarkeit
 
 ## <a name="repair-invalid-log-alert-rules"></a>Reparieren ungültiger Protokollwarnungsregeln
 
-Azure Advisor erkennt Warnungsregeln mit ungültigen Abfragen im Bedingungsabschnitt. Protokollwarnungsregeln werden in Azure Monitor erstellt und verwendet, um in regelmäßigen Abständen Analytics-Abfragen durchzuführen. Anhand der Ergebnisse der Abfrage wird ermittelt, ob eine Warnung ausgelöst werden muss. Es kann vorkommen, dass Analytics-Abfragen aufgrund von Änderungen an referenzierten Ressourcen, Tabellen oder Befehlen im Laufe der Zeit ungültig werden. Von Advisor wird empfohlen, die Abfrage in der Warnungsregel zu korrigieren, um eine automatische Deaktivierung zu verhindern und die Überwachung Ihrer Ressourcen in Azure sicherzustellen. Weitere Informationen zur Behandlung von Problemen mit Warnungsregeln finden Sie [hier](https://aka.ms/aa_logalerts_queryrepair).
+Azure Advisor erkennt Warnungsregeln mit ungültigen Abfragen im Bedingungsabschnitt. Sie können in Azure Monitor Protokollwarnungsregeln erstellen und diese zum Ausführen von Analyseabfragen in bestimmten Intervallen verwenden. Anhand der Ergebnisse einer Abfrage wird ermittelt, ob eine Warnung ausgelöst werden muss. Es kann vorkommen, dass Analytics-Abfragen aufgrund von Änderungen an referenzierten Ressourcen, Tabellen oder Befehlen im Laufe der Zeit ungültig werden. Von Advisor wird empfohlen, die Abfrage in der Warnungsregel zu korrigieren, um eine automatische Deaktivierung zu verhindern und die Überwachung Ihrer Ressourcen in Azure sicherzustellen. [Weitere Informationen zur Behandlung von Problemen mit Warnungsregeln](https://aka.ms/aa_logalerts_queryrepair).
 
-## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Konfigurieren eines konsistenten Indizierungsmodus für Ihre Cosmos DB-Sammlung
+## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Konfigurieren eines konsistenten Indizierungsmodus für Ihre Azure Cosmos DB-Sammlung
 
-Azure Cosmos DB-Container, die mit dem Indizierungsmodus „Verzögert“ konfiguriert sind, beeinträchtigen unter Umständen die Aktualität der Abfrageergebnisse. Advisor erkennt Container mit dieser Konfiguration und empfiehlt, den Modus in „Konsistent“ zu ändern. Weitere Informationen zu Indizierungsrichtlinien in Cosmos DB finden Sie [hier](https://aka.ms/cosmosdb/how-to-manage-indexing-policy).
+Die Konfiguration von Azure Cosmos DB-Containern mit dem Indizierungsmodus „Verzögert“ könnte die Aktualität der Abfrageergebnisse beeinträchtigen. Advisor erkennt Container mit dieser Konfiguration und empfiehlt, den Modus in „Konsistent“ zu ändern. [Weitere Informationen zu Indizierungsrichtlinien in Azure Cosmos DB](https://aka.ms/cosmosdb/how-to-manage-indexing-policy).
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Konfigurieren Ihres Azure Cosmos DB-Containers mit einem Partitionsschlüssel
 
-Azure Advisor erkennt nicht partitionierte Azure Cosmos DB-Sammlungen, deren bereitgestelltes Speicherkontingent nahezu erschöpft ist. Es wird empfohlen, diese Sammlungen zu neuen Sammlungen mit einer Partitionsschlüsseldefinition zu migrieren, um die automatische Erweiterung durch den Dienst zu ermöglichen. Weitere Informationen zur Wahl eines Partitionsschlüssels finden Sie [hier](https://aka.ms/cosmosdb/choose-partitionkey).
+Azure Advisor erkennt nicht partitionierte Azure Cosmos DB-Sammlungen, deren bereitgestelltes Speicherkontingent nahezu erschöpft ist. Daraufhin wird empfohlen, dass Sie diese Sammlungen zu neuen Sammlungen mit einer Partitionsschlüsseldefinition migrieren, um das automatische Aufskalieren durch den Dienst zu ermöglichen. [Weitere Informationen zur Wahl eines Partitionsschlüssels](https://aka.ms/cosmosdb/choose-partitionkey).
 
 ## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Upgraden Ihres Azure Cosmos DB .NET SDK auf die aktuelle Version über NuGet
 
-Azure Advisor erkennt Azure Cosmos DB-Konten mit alten Versionen des .NET SDK und empfiehlt, über NuGet ein Upgrade auf die aktuelle Version auszuführen, um die neuesten Korrekturen, Leistungsverbesserungen und Features zu erhalten. Weitere Informationen zum Cosmos DB .NET SDK finden Sie [hier](https://aka.ms/cosmosdb/sql-api-sdk-dotnet).
+Azure Advisor identifiziert Azure Cosmos DB-Konten, die alte Versionen des .NET SDK verwenden. Es wird empfohlen, ein Upgrade auf die neueste Version von NuGet durchzuführen, um aktuelle Fixes, Leistungsverbesserungen und Funktionen zu erhalten. [Weitere Informationen zum Azure Cosmos DB .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet).
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Upgraden Ihres Azure Cosmos DB Java SDK auf die aktuelle Version über Maven
 
-Azure Advisor erkennt Azure Cosmos DB-Konten mit alten Versionen des Java SDK und empfiehlt, über Maven ein Upgrade auf die aktuelle Version auszuführen, um die neuesten Korrekturen, Leistungsverbesserungen und Features zu erhalten. Weitere Informationen zum Cosmos DB Java SDK finden Sie [hier](https://aka.ms/cosmosdb/sql-api-sdk-async-java).
+Azure Advisor identifiziert Azure Cosmos DB-Konten, die alte Versionen des Java-SDK verwenden. Es wird empfohlen, ein Upgrade auf die neueste Version von Maven durchzuführen, um aktuelle Fixes, Leistungsverbesserungen und Funktionen zu erhalten. [Weitere Informationen zum Azure Cosmos DB Java-SDK](https://aka.ms/cosmosdb/sql-api-sdk-async-java).
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Upgraden Ihres Azure Cosmos DB-Spark-Connectors auf die aktuelle Version über Maven
 
-Azure Advisor erkennt Azure Cosmos DB-Konten mit alten Versionen des Cosmos DB-Spark-Connectors und empfiehlt, über Maven ein Upgrade auf die aktuelle Version auszuführen, um die neuesten Korrekturen, Leistungsverbesserungen und Features zu erhalten. Weitere Informationen zum Cosmos DB-Spark-Connector finden Sie [hier](https://aka.ms/cosmosdb/spark-connector).
+Azure Advisor identifiziert Azure Cosmos DB-Konten, die alte Versionen des Azure Cosmos DB-Spark-Connectors verwenden. Es wird empfohlen, ein Upgrade auf die neueste Version von Maven durchzuführen, um aktuelle Fixes, Leistungsverbesserungen und Funktionen zu erhalten. [Weitere Informationen zum Azure Cosmos DB-Spark-Connector.](https://aka.ms/cosmosdb/spark-connector)
+
+## <a name="consider-moving-to-kafka-21-on-hdinsight-40"></a>Erwägen Sie einen Wechsel zu Kafka 2.1 unter HDInsight 4.0
+
+Ab dem 1. Juli 2020 wird es nicht mehr möglich sein, neue Kafka-Cluster mit Kafka 1.1 unter Azure HDInsight 4.0 zu erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Es empfiehlt sich, in HDInsight 4.0 bis zum 30. Juni 2020 auf Kafka 2.1 umzustellen, um potenzielle System-/Supportunterbrechungen zu vermeiden.
+
+## <a name="consider-upgrading-older-spark-versions-in-hdinsight-spark-clusters"></a>Erwägen Sie ein Upgrade älterer Spark-Versionen in HDInsight Spark-Clustern
+
+Ab dem 1. Juli 2020 können Sie keine neuen Spark-Cluster mehr erstellen, wenn Sie Spark 2.1 oder 2.2 unter HDInsight 3.6 verwenden. Sie können keine neuen Spark-Cluster erstellen, wenn Sie Spark 2.3 unter HDInsight 4.0 verwenden. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. 
 
 ## <a name="enable-virtual-machine-replication"></a>Aktivieren der Replikation der virtuellen Computer
-Virtuelle Computer, für die die Replikation in eine andere Region nicht aktiviert ist, sind gegenüber regionalen Ausfällen nicht resilient. Durch eine Replikation der VMs werden negative Auswirkungen auf das Geschäft während des Ausfalls einer Azure-Region reduziert. Advisor erkennt VMs, für die die Replikation nicht aktiviert ist, und empfiehlt die Aktivierung der Replikation, sodass Sie im Falle eines Ausfalls Ihre VMs schnell in einer entfernten Azure-Region aufrufen können. [Einrichten der Notfallwiederherstellung in einer sekundären Azure-Region für einen virtuellen Azure-Computer](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+Virtuelle Computer, für die die Replikation in eine andere Region nicht aktiviert ist, sind gegenüber regionalen Ausfällen nicht resilient. Durch eine Replikation der VMs werden negative Auswirkungen auf das Geschäft bei Ausfällen einer Azure-Region reduziert. Advisor erkennt virtuelle Computer, auf denen die Replikation nicht aktiviert ist, und empfiehlt deren Aktivierung. Wenn Sie die Replikation aktivieren, können Sie Ihre virtuellen Computer im Falle eines Ausfalls schnell in einer Azure-Remoteregion hochfahren. [Weitere Informationen zur Replikation virtueller Computer.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zu Hochverfügbarkeit
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie [Advisor](https://aka.ms/azureadvisordashboard).
 
-2.  Klicken Sie auf dem Advisor-Dashboard auf die Registerkarte **Hochverfügbarkeit**.
+2.  Wählen Sie auf dem Advisor-Dashboard die Registerkarte **Hochverfügbarkeit** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Advisor-Empfehlungen finden Sie unter:
-* [Einführung in Azure Advisor](advisor-overview.md)
+* [Einführung in Advisor](advisor-overview.md)
 * [Erste Schritte mit Advisor](advisor-get-started.md)
-* [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md)
-* [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
-* [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
-* [Advisor-Empfehlungen für einen optimalen Betrieb](advisor-operational-excellence-recommendations.md)
+* [Kostenempfehlungen von Advisor](advisor-cost-recommendations.md)
+* [Leistungsempfehlungen von Advisor](advisor-performance-recommendations.md)
+* [Sicherheitsempfehlungen von Advisor](advisor-security-recommendations.md)
+* [Empfehlungen von Advisor zum optimalen Betrieb](advisor-operational-excellence-recommendations.md)

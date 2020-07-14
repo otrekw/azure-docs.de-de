@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f33992c7aa205e503c7de150adad7180ff823881
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: c0a8185d81966932c17fd3b0590b5f8ef2f7b6df
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099672"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479792"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibm-digital-business-automation-on-cloud"></a>Tutorial: Integrieren von IBM Digital Business Automation on Cloud in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
 
@@ -93,7 +93,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > Sollten die Werte **Bezeichner** und **Antwort-URL** nicht automatisch aufgefüllt werden, geben Sie die erforderlichen Werte manuell ein.
 
     > [!Note]
-    > Kunden können die Metadatendatei für Ihr Cloud-Abonnement vom [DBAoC DevOps-Team](mailto:supportbpmoncloud@us.ibm.com) erhalten.
+    > Kunden können die Metadatendatei für ihr Cloudabonnement vom [Kundensupportteam von IBM Digital Business Automation on Cloud](mailto:supportbpmoncloud@us.ibm.com) erhalten.
 
 1. Wenn Sie keine **Metadatendatei des Dienstanbieters** haben, geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in den folgenden Felder ein, wenn Sie die Anwendung im **IdP**-initiierten Modus konfigurieren möchten:
 

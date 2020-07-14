@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82613267"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Erfassen historischer Telemetriedaten
@@ -27,7 +27,7 @@ Für diesen Artikel muss FarmBeats installiert sein, und Sie müssen bereits his
 
 Sie müssen die Partnerintegration für Ihre Azure FarmBeats-Instanz aktivieren. Durch diesen Schritt wird ein Client erstellt, der als Gerätepartner Zugriff auf Ihre Azure FarmBeats-Instanz hat und folgende Werte bereitstellt, die in den weiteren Schritten benötigt werden.
 
-- API-Endpunkt: Hierbei handelt es sich um die Datenhub-URL, z. B. https://\<Datenhub>.azurewebsites.net.
+- API-Endpunkt: Hierbei handelt es sich um die Datenhub-URL, z. B. https://\<datahub>.azurewebsites.net.
 - Mandanten-ID
 - Client-ID
 - Geheimer Clientschlüssel
@@ -109,7 +109,7 @@ Folgen Sie diesen Schritten:
 |   DeviceModelId     |     ID des zugeordneten Gerätemodells  |
 |  HardwareId          | Eindeutige ID für das Gerät, z. B. die MAC-Adresse
 |  ReportingInterval        |   Berichtsintervall in Sekunden
-|  Position            |  Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts
+|  Standort            |  Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts
 |ParentDeviceId       |    ID des übergeordneten Geräts, mit dem dieses Gerät verbunden ist. Beispielsweise ein Knoten, der mit einem Gateway verbunden ist. Ein Knoten weist die parentDeviceId als Gateway auf.  |
 |    Name            | Ein Name zum Identifizieren der Ressource. Gerätepartner müssen einen Namen senden, der mit dem Gerätenamen auf der Partnerseite konsistent ist. Ist der Partnergerätename benutzerdefiniert, muss der gleiche benutzerdefinierte Name in FarmBeats angegeben werden.|
 |     BESCHREIBUNG       |      Eine aussagekräftige Beschreibung |
@@ -129,7 +129,7 @@ Folgen Sie diesen Schritten:
 |    **Sensor**      |          |
 | HardwareId          |   Eindeutige, vom Hersteller festgelegte ID für den Sensor|
 |  SensorModelId     |    ID des zugeordneten Sensormodells|
-| Position          |  Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Sensors|
+| Standort          |  Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Sensors|
 |   Port > Name        |  Name und Typ des Ports, über den der Sensor mit dem Gerät verbunden ist. Hierbei muss es sich um denselben Namen handeln, der auch im Gerätemodell definiert ist.|
 |    DeviceID  |    ID des Geräts, mit dem der Sensor verbunden ist |
 | Name            |   Der Name zur Identifizierung der Ressource. Beispiel: Sensorname oder Produktname und Modellnummer oder Produktcode|
@@ -140,7 +140,7 @@ Weitere Informationen zu Objekten finden Sie unter [Swagger](https://aka.ms/Farm
 
 ### <a name="api-request-to-create-metadata"></a>API-Anforderung zum Erstellen von Metadaten
 
-Für eine API-Anforderung kombinieren Sie die HTTP-Methode (POST), die URL des API-Diensts und den URI einer Ressource zum Abfragen, Übermitteln, Erstellen oder Löschen einer Anforderung. Dann fügen Sie mindestens einen HTTP-Anforderungsheader hinzu. Die URL des API-Diensts ist der API-Endpunkt, d. h. die Datenhub-URL (https://\<ihrdatenhub>.azurewebsites.net).
+Für eine API-Anforderung kombinieren Sie die HTTP-Methode (POST), die URL des API-Diensts und den URI einer Ressource zum Abfragen, Übermitteln, Erstellen oder Löschen einer Anforderung. Dann fügen Sie mindestens einen HTTP-Anforderungsheader hinzu. Die URL des API-Diensts ist der API-Endpunkt, d. h. die Datenhub-URL (https://\<yourdatahub>.azurewebsites.net).
 
 ### <a name="authentication"></a>Authentifizierung
 

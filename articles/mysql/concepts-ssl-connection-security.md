@@ -1,19 +1,19 @@
 ---
-title: SSL-Konnektivität in Azure Database for MySQL
+title: SSL/TLS-Konnektivität in Azure Database for MySQL
 description: Informationen zum Konfigurieren von Azure-Datenbank für MySQL und zugehörigen Anwendungen für die richtige Verwendung von SSL-Verbindungen
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 6a12ef851823ab5eff2b11905d05be1950c82ef0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/02/2020
+ms.openlocfilehash: 2421f8a9396b47d04db35a7cad843f6baa6f6177
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474270"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84416102"
 ---
-# <a name="ssl-connectivity-in-azure-database-for-mysql"></a>SSL-Konnektivität in Azure-Datenbank für MySQL
+# <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>SSL/TLS-Konnektivität in Azure Database for MySQL
 
 Azure-Datenbank für MySQL unterstützt die Verbindung Ihres Datenbankservers mit Clientanwendungen, die Secure Sockets Layer (SSL) verwenden. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.
 
@@ -27,6 +27,33 @@ Verbindungszeichenfolgen für verschiedene Programmiersprachen werden im Azure-P
 
 Informationen zum Aktivieren oder Deaktivieren von SSL-Verbindungen bei der Anwendungsentwicklung finden Sie unter [Konfigurieren von SSL](howto-configure-ssl.md).
 
+## <a name="tls-enforcement-in-azure-database-for-mysql"></a>TLS-Erzwingung in Azure Database for MySQL
+
+Azure Database for MySQL unterstützt Verschlüsselung für Clients, die eine Verbindung mit dem Datenbankserver mithilfe von Transport Layer Security (TLS) herstellen. TLS ist ein Standardprotokoll der Branche, das sichere Netzwerkverbindungen zwischen dem Datenbankserver und Clientanwendungen gewährleistet, sodass Sie Konformitätsanforderungen einhalten können.
+
+### <a name="tls-settings"></a>TLS-Einstellungen
+
+Azure Database for MySQL bietet die Möglichkeit, die TLS-Version für die Clientverbindungen vorzuschreiben. Um die TLS-Version zu erzwingen, verwenden Sie die Optionseinstellung **TLS-Mindestversion**. Für diese Optionseinstellung sind die folgenden Werte zulässig:
+
+|  TLS-Mindesteinstellung             | Unterstützte Client-TLS-Version                |
+|:---------------------------------|-------------------------------------:|
+| TLSEnforcementDisabled (Standardwert) | Kein TLS erforderlich                      |
+| TLS1_0                           | TLS 1.0, TLS 1.1, TLS 1.2 und höher           |
+| TLS1_1                           | TLS 1.1, TLS 1.2 und höher                   |
+| TLS1_2                           | TLS-Version 1.2 und höher                     |
+
+
+Wenn Sie diese Mindesteinstellung für die TLS-Version beispielsweise auf TLS 1.0 festlegen, bedeutet das, dass Ihr Server Verbindungen von Clients mithilfe von TLS 1.0, 1.1 und 1.2+ zulässt. Alternativ bedeutet die Festlegung auf 1.2, dass Sie nur Verbindungen von Clients mithilfe von TLS 1.2+ zulassen und alle Verbindungen mit TLS 1.0 und TLS 1.1 abgewiesen werden.
+
+> [!Note] 
+> Standardmäßig ist für Azure Database for MySQL TLS für alle neuen Server deaktiviert.
+>
+> Aktuell werden von Azure Database for MySQL die TLS-Versionen TLS 1.0, 1.1 und 1.2 unterstützt. Wenn Sie erst eine bestimmte TLS-Mindestversion erzwungen haben, können Sie nicht mehr zu „deaktiviert“ zurückkehren.
+
+Informationen zum Festlegen der TLS-Einstellung für Ihren Azure Database for MySQL finden Sie unter [Konfigurieren der TLS-Einstellung](howto-tls-configurations.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Datenverbindungsbibliotheken für Azure-Datenbank für MySQL](concepts-connection-libraries.md)
+- [Datenverbindungsbibliotheken für Azure-Datenbank für MySQL](concepts-connection-libraries.md)
+- Erfahren Sie mehr über das [Konfigurieren von SSL](howto-configure-ssl.md).
+- Erfahren Sie mehr über das [Konfigurieren von TLS](howto-tls-configurations.md).

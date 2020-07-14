@@ -8,19 +8,19 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 93b150d47f1703662ebda5b017e1824cf74b7ab0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e40eb9cc22cdc071381cc847b49a01d4d713653d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233702"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318623"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Tutorial: Bereitstellen einer ASP.NET-App und von Azure SQL-Datenbank-Code mithilfe von Azure DevOps Starter
 
 Azure DevOps Starter bietet eine vereinfachte Umgebung, in der Sie Ihren vorhandenen Code und Ihr Git-Repository verwenden oder eine Beispielanwendung auswählen können, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen. 
 
 DevOps Starter ermöglicht außerdem:
-* Automatisches Erstellen von Azure-Ressourcen, etwa einer Azure SQL-Datenbank-Instanz
+* Automatisches Erstellen von Azure-Ressourcen, etwa einer Datenbank in Azure SQL-Datenbank
 * Erstellen und Konfigurieren einer Releasepipeline in Azure Pipelines, die eine Buildpipeline für CI enthält
 * Einrichten einer Releasepipeline für CD 
 * Erstellen einer Azure Application Insights-Ressource für die Überwachung
@@ -40,9 +40,9 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 * Ein Azure-Abonnement. Über [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) erhalten Sie ein kostenloses Abonnement.
 
-## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-an-azure-sql-database"></a>Erstellen eines Projekts in DevOps Projects für eine ASP.NET-App und Azure SQL-Datenbank
+## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-azure-sql-database"></a>Erstellen eines Projekts in DevOps Projects für eine ASP.NET-App und Azure SQL-Datenbank
 
-Mit DevOps Starter wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie können eine neue Azure DevOps-Organisation erstellen oder eine bestehende Organisation verwenden. Ferner werden mit DevOps Starter Azure-Ressourcen wie eine Azure SQL-Datenbank im Azure-Abonnement Ihrer Wahl erstellt.
+Mit DevOps Starter wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie können eine neue Azure DevOps-Organisation erstellen oder eine bestehende Organisation verwenden. Ferner werden mit DevOps Starter Azure-Ressourcen wie Azure SQL-Datenbank im Azure-Abonnement Ihrer Wahl erstellt.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -140,11 +140,11 @@ Nun können Sie mithilfe eines CI/CD-Prozesses, mit dem Ihre aktuelle Arbeit auf
 
 1. Aktualisieren Sie nach Abschluss des Release Ihre Anwendung, um Ihre Änderungen zu überprüfen.
 
-## <a name="connect-to-the-azure-sql-database"></a>Herstellen einer Verbindung mit Azure SQL-Datenbank
+## <a name="connect-to-azure-sql-database"></a>Herstellen einer Verbindung mit Azure SQL-Datenbank
 
-Zum Herstellen einer Verbindung mit der Azure SQL-Datenbank benötigen Sie die entsprechenden Berechtigungen.
+Zum Herstellen einer Verbindung mit Azure SQL-Datenbank benötigen Sie die entsprechenden Berechtigungen.
 
-1. Klicken Sie auf dem DevOps Starter-Dashboard auf **SQL-Datenbank**, um zur Verwaltungsseite für die SQL-Datenbank zu navigieren.
+1. Klicken Sie auf dem DevOps Starter-Dashboard auf **SQL-Datenbank**, um zur Verwaltungsseite für SQL-Datenbank zu navigieren.
    
 1. Wählen Sie **Serverfirewall festlegen** und anschließend **Client-IP-Adresse hinzufügen** aus. 
 
@@ -156,7 +156,7 @@ Zum Herstellen einer Verbindung mit der Azure SQL-Datenbank benötigen Sie die e
 
 1. Wählen Sie **Kennwort zurücksetzen** aus, geben Sie für die SQL Server-Administratoranmeldung ein Kennwort ein, und wählen Sie anschließend **Speichern** aus. Notieren Sie sich dieses Kennwort zur späteren Verwendung in diesem Tutorial.
 
-    Danach können Sie optional Clienttools wie SQL Server Management Studio oder Visual Studio verwenden, um eine Verbindung mit SQL Server und der Azure SQL-Datenbank herzustellen. Verwenden Sie zum Herstellen der Verbindung die Eigenschaft **Servername**.
+    Danach können Sie optional Clienttools wie SQL Server Management Studio oder Visual Studio verwenden, um eine Verbindung mit SQL Server und Azure SQL-Datenbank herzustellen. Verwenden Sie zum Herstellen der Verbindung die Eigenschaft **Servername**.
 
     Wenn Sie den Datenbank-Benutzernamen bei der Erstkonfiguration des Projekts in DevOps Projects nicht geändert haben, ist Ihr Benutzername der lokale Teil Ihrer E-Mail-Adresse. Wenn Ihre E-Mail-Adresse beispielsweise *johndoe\@microsoft.com* lautet, ist *johndoe* Ihr Benutzername.
 

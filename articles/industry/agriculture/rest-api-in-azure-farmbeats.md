@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437521"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488034"
 ---
 # <a name="references"></a>References
 
@@ -82,7 +82,7 @@ Akzeptieren | Das Antwortformat. Für Azure FarmBeats-Datenhub-APIs wird das JSO
 
 Zum Senden einer REST-API-Anforderung kombinieren Sie die HTTP-Methode (GET, POST, PUT oder DELETE), die URL zum API-Dienst und den Ressourcen-URI (zum Abfragen, Übermitteln von Daten, Aktualisieren oder Löschen) und fügen anschließend mindestens einen HTTP-Anforderungsheader hinzu.
 
-Die URL zum API-Dienst ist Ihre Datenhub-URL, z. B. „https://\<name_ihrer_datenhub-website>.azurewebsites.net“.
+Die URL zum API-Dienst ist Ihre Datenhub-URL, z. B. „https://\<yourdatahub-website-name>.azurewebsites.net.
 
 Optional können Sie Abfrageparameter in GET-Aufrufe einfügen, um Daten in den Antworten zu filtern, zu sortieren und deren Größe zu beschränken.
 
@@ -165,6 +165,15 @@ Auf Azure FarmBeats-APIs kann von einem Benutzer oder einer App-Registrierung in
 4. Wechseln Sie zum Datahub Swagger (https://<yourdatahub>.azurewebsites.net/swagger/index.html), und gehen Sie wie folgt vor:
     - Navigieren Sie zur **RoleAssignment-API**.
     - Führen Sie einen POST-Vorgang durch, um ein **RoleAssignment**-Objekt für die soeben erstellte **Objekt-ID** zu erstellen.
+ 
+```json
+{
+  "roleDefinitionId": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
+  "objectId": "objectId from step 3 above",
+  "objectIdType": "ServicePrincipalId",
+  "tenantId": "tenant id of your Azure subscription"
+}
+```
 
   > [!NOTE]
   > Weitere Informationen zum Hinzufügen von Benutzern und zur Active Directory-Registrierung finden Sie unter [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).

@@ -6,12 +6,12 @@ ms.author: paelaz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2249dbdebecc52a8f5d6decccb83d3b1fc0777f7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747376"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84431983"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Verwenden von Azure Policy zum Implementieren von Governance und Kontrollen für Azure Cosmos DB-Ressourcen
 
@@ -79,21 +79,24 @@ Mit diesen Befehlen geben Sie die Liste der Eigenschaftenaliasnamen für eine Az
 
 Sie können jeden dieser Eigenschaftenaliasnamen in den [benutzerdefinierten Richtliniendefinitionsregeln](../governance/policy/tutorials/create-custom-policy-definition.md#policy-rule) verwenden.
 
-Im Folgenden finden Sie ein Beispiel für eine Richtliniendefinition, die überprüft, ob der für eine Azure Cosmos DB-SQL-Datenbank bereitgestellte Durchsatz größer als das maximal zulässige Limit von 400 RU/s ist. Eine benutzerdefinierte Richtliniendefinition enthält zwei Regeln: eine zum Überprüfen des spezifischen Typs des Eigenschaftenalias und eine zweite für die jeweilige Eigenschaft dieses Typs. Beide Regeln verwenden die Aliasnamen.
+Im Folgenden finden Sie eine Beispielrichtliniendefinition, die prüft, ob ein Azure Cosmos DB-Konto für mehrere Schreibstandorte konfiguriert ist. Die benutzerdefinierte Richtliniendefinition umfasst zwei Regeln: Eine zur Prüfung auf den bestimmten Typ des Eigenschaftsalias und die zweite zur Prüfung auf die bestimmte Eigenschaft des Typs. In diesem Fall das Feld, in dem die Einstellung für mehrere Schreibstandorte gespeichert wird. Beide Regeln verwenden die Aliasnamen.
 
 ```json
 "policyRule": {
   "if": {
     "allOf": [
       {
-      "field": "type",
-      "equals": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings"
+        "field": "type",
+        "equals": "Microsoft.DocumentDB/databaseAccounts"
       },
       {
-      "field": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/default.resource.throughput",
-      "greater": 400
+        "field": "Microsoft.DocumentDB/databaseAccounts/enableMultipleWriteLocations",
+        "notEquals": true
       }
     ]
+  },
+  "then": {
+    "effect": "Audit"
   }
 }
 ```
@@ -106,21 +109,26 @@ Nach dem Erstellen der Richtlinienzuweisungen wertet Azure Policy die Ressourcen
 
 Sie können die Complianceergebnisse und Details zu den Korrekturmaßnahmen im [Azure-Portal](../governance/policy/how-to/get-compliance-data.md#portal), über die [Azure-Befehlszeilenschnittstelle](../governance/policy/how-to/get-compliance-data.md#command-line) oder in [Azure Monitor-Protokollen](../governance/policy/how-to/get-compliance-data.md#azure-monitor-logs) überprüfen.
 
-Der folgende Screenshot zeigt zwei Beispiele für Richtlinienzuweisungen. Eine Zuweisung basiert auf einer integrierten Richtliniendefinition, die überprüft, ob die Azure Cosmos DB-Ressourcen nur in den zulässigen Azure-Regionen bereitgestellt werden. Die andere Zuweisung basiert auf einer benutzerdefinierten Richtliniendefinition. Diese Zuweisung stellt sicher, dass der bereitgestellte Durchsatz für Azure Cosmos DB-Ressourcen eine angegebene Obergrenze nicht überschreitet.
+Der folgende Screenshot zeigt zwei Beispiele für Richtlinienzuweisungen.
 
-Nach der Bereitstellung der Richtlinienzuweisungen werden die Auswertungsergebnisse im Compliance-Dashboard angezeigt. Beachten Sie, dass dies nach der Bereitstellung einer Richtlinienzuweisung bis zu 30 Minuten dauern kann.
+Eine Zuweisung basiert auf einer integrierten Richtliniendefinition, die überprüft, ob die Azure Cosmos DB-Ressourcen nur in den zulässigen Azure-Regionen bereitgestellt werden. Ressourcenkonformität zeigt das Ergebnis der Richtlinienauswertung (konform oder nicht konform) für Ressourcen innerhalb des Geltungsbereichs.
 
-Der Screenshot zeigt die folgenden Ergebnisse der Compliancebewertung:
+Die andere Zuweisung basiert auf einer benutzerdefinierten Richtliniendefinition. Bei dieser Zuordnung wird geprüft, ob Cosmos DB-Konten für mehrere Schreibstandorte konfiguriert sind.
 
-- Keines der Azure Cosmos DB-Konten (null) im angegebenen Bereich ist mit der Richtlinienzuweisung konform, mit der überprüft wird, ob Ressourcen für zulässige Regionen bereitgestellt wurden.
-- Eine von zwei Azure Cosmos DB-Datenbank- oder -Sammlungsressourcen im angegebenen Bereich ist mit der Richtlinienzuweisung konform, mit der überprüft wird, ob der bereitgestellte Durchsatz die angegebene Obergrenze überschreitet.
+Nach der Bereitstellung der Richtlinienzuweisungen werden die Auswertungsergebnisse im Compliance-Dashboard angezeigt. Beachten Sie, dass dies nach der Bereitstellung einer Richtlinienzuweisung bis zu 30 Minuten dauern kann. Darüber hinaus können [Prüfungen zur Regelauswertung bei Bedarf gestartet werden](../governance/policy/how-to/get-compliance-data.md#on-demand-evaluation-scan), unmittelbar nach der Erstellung von Richtlinienzuweisungen.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Suchen integrierter Richtliniendefinitionen für Azure Cosmos DB":::
+Der Screenshot zeigt die folgenden Ergebnisse der Konformitätsauswertung für Azure Cosmos DB-Konten im Gültigkeitsbereich:
 
-Informationen zum Korrigieren nicht konformer Ressourcen finden Sie im Artikel zu [Wartungsmaßnahmen mit Azure Policy](../governance/policy/how-to/remediate-resources.md).
+- Null von zwei Konten entsprechen einer Richtlinie, dass die Virtual Network-Filterung (VNet) konfiguriert werden muss.
+- Null von zwei Konten entsprechen einer Richtlinie, die erfordert, dass das Konto für mehrere Schreibstandorte konfiguriert sein muss.
+- Null von zwei Konten entsprechen einer Richtlinie, wonach Ressourcen in zulässigen Azure-Regionen bereitgestellt wurden.
+
+:::image type="content" source="./media/policy/compliance.png" alt-text="Aufgeführte Konformitätsergebnisse für Azure Policy-Zuweisungen":::
+
+Informationen zum Korrigieren nicht konformer Ressourcen finden Sie im Artikel zum [Korrigieren von Ressourcen mit Azure Policy](../governance/policy/how-to/remediate-resources.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Überprüfen von Beispielen für integrierte Richtliniendefinitionen für Azure Cosmos DB](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)
+- [Überprüfen Sie benutzerdefinierte Richtliniendefinitionen für Azure Cosmos DB](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB), einschließlich der oben gezeigten Richtlinien für mehrere Schreibstandorte und VNet-Filterung.
 - [Erstellen einer Richtlinienzuweisung im Azure-Portal](../governance/policy/assign-policy-portal.md)
 - [Überprüfen der integrierten Azure Policy-Richtliniendefinitionen für Azure Cosmos DB](./policy-samples.md)

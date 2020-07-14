@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4f45ac40e7df865bdb4722d086325096c377cd59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 496b315e23beeb97d08befca13e05c4797268f36
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877541"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341563"
 ---
 # <a name="entity-functions"></a>Entitätsfunktionen
 
@@ -18,7 +18,7 @@ Entitätsfunktionen definieren Vorgänge zum Lesen und Aktualisieren kleinerer Z
 Mit Entitäten können Anwendungen horizontal hochskaliert werden, indem die Arbeit auf zahlreiche Entitäten verteilt wird, die jeweils nur eine relativ geringe Größe haben.
 
 > [!NOTE]
-> Entitätsfunktionen und zugehörige Funktionen sind nur in Durable Functions 2.0 und höher verfügbar.
+> Entitätsfunktionen und zugehörige Funktionen sind nur in Durable Functions 2.0 und höher verfügbar. Sie werden derzeit in .NET und JavaScript unterstützt.
 
 ## <a name="general-concepts"></a>Allgemeine Konzepte
 

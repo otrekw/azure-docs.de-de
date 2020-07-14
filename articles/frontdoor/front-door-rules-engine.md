@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine Übersicht zu Azure Front Door. Es wird beschrieben, ob dies die richtige Wahl für den Lastenausgleich des Benutzerdatenverkehrs für Ihre Anwendung ist.
+title: Azure Front Door
+description: Dieser Artikel enthält eine Übersicht zum Azure Front Door-Regelmodul-Feature.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,27 +12,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 19deb763c8e750490854892c90d0293d3e209c09
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ee981d08e53765003e88870d35b291a5802e6848
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515795"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322013"
 ---
 # <a name="what-is-rules-engine-for-azure-front-door"></a>Was ist das Regelmodul für Azure Front Door? 
 
 Mithilfe des Regelmoduls können Sie anpassen, wie HTTP-Anforderungen im Edge-Bereich behandelt werden, und Sie können das Verhalten Ihrer Webanwendung besser steuern. Das Regelmodul für Azure Front Door umfasst verschiedene wichtige Funktionen, darunter:
 
-- Headerbasiertes Routing: Leiten Sie Anforderungen basierend auf den Mustern im Inhalt von Anforderungsheadern, Cookies und Abfragezeichenfolgen.
-- Parameterbasiertes Routing: Nutzen Sie eine Reihe von Übereinstimmungsbedingungen wie POST-Argumente, Abfragezeichenfolgen, Cookies und Anforderungsmethoden zum Weiterleiten von Anforderungen basierend auf HTTP-Anforderungsparametern. 
-- Außerkraftsetzung von Routenkonfigurationen: 
-    - Verwenden Sie Umleitungsfunktionen, um die Umleitungen 301/302/307/308 an den Client zurückzugeben, um zu neuen Hostnamen, Pfaden und Protokollen umzuleiten. 
-    - Verwenden Sie Weiterleitungsfunktionen, um den Pfad der Anforderungs-URL ohne herkömmliche Umleitung umzuschreiben und die Anforderung an das entsprechende Back-End im konfigurierten Back-End-Pool weiterzuleiten. 
-    - Passen Sie die Cachekonfiguration an, und ändern Sie eine Route dynamisch basierend auf Übereinstimmungsbedingungen von Weiterleitung zu Caching. 
-
-> [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+- Erzwingen von HTTPS und Sicherstellen, dass alle Endbenutzer über eine sichere Verbindung mit Ihren Inhalten interagieren.
+- Implementieren von Sicherheitsheadern wie HTTP Strict-Transport-Security (HSTS), X-XSS-Protection, Content-Security-Policy, X-Frame-Options sowie Access-Control-Allow-Origin-Header für Cross-Origin Resource Sharing (CORS)-Szenarien, um browserbasierte Sicherheitsrisiken zu verhindern. Sicherheitsbasierte Attribute können auch mit Cookies definiert werden.
+- Weiterleiten von Anforderungen an mobile oder Desktopversionen Ihrer Anwendung, basierend auf den Mustern in den Inhalten von Anforderungsheadern, Cookies oder Abfragezeichenfolgen.
+- Verwenden von Umleitungsfunktionen, um die Umleitungen 301, 302, 307 und 308 an den Client zurückzugeben, um zu neuen Hostnamen, Pfaden oder Protokollen umzuleiten.
+- Dynamisches Ändern der Zwischenspeicherkonfiguration Ihrer Route, basierend auf den eingehenden Anforderungen.
+- Umschreiben des Pfads der URL-Anforderung und Weiterleiten der Anforderung an das entsprechende Back-End in Ihrem konfigurierten Back-End-Pool.
 
 ## <a name="architecture"></a>Aufbau 
 
@@ -52,7 +48,7 @@ In diesen beiden Beispielen wird die angegebene Routenregel ausgeführt, wenn ke
 
 Mit dem Azure Front Door-Regelmodul können Sie eine Reihe von Regelmodulkonfigurationen erstellen, die jeweils aus einer Reihe von Regeln bestehen. Im Folgenden finden Sie einige hilfreiche Begriffe, auf die Sie bei der Konfiguration Ihres Regelmoduls stoßen werden. 
 
-- *Regelmodulkonfiguration*: Ein Satz von Regeln, die auf eine einzelne Routenregel angewendet werden. Jede Konfiguration ist auf 5 Regeln beschränkt. Sie können bis zu 10 Konfigurationen erstellen. 
+- *Regelmodulkonfiguration*: Ein Satz von Regeln, die auf eine einzelne Routenregel angewendet werden. Jede Konfiguration ist auf 25 Regeln beschränkt. Sie können bis zu 10 Konfigurationen erstellen. 
 - *Regelmodulregel*: Eine Regel, die bis zu 10 Übereinstimmungsbedingungen und 5 Aktionen umfasst.
 - *Übereinstimmungsbedingung*: Es gibt zahlreiche Übereinstimmungsbedingungen, anhand derer Ihre eingehenden Anforderungen analysiert werden können. Eine Regel kann bis zu 10 Übereinstimmungsbedingungen enthalten. Übereinstimmungsbedingungen werden mit einem **UND**-Operator ausgewertet. Eine vollständige Liste der Übereinstimmungsbedingungen finden Sie [hier](front-door-rules-engine-match-conditions.md). 
 - *Aktion:* Aktionen geben vor, was mit Ihren eingehenden Anforderungen geschieht: Derzeit sind Anforderungs-/Antwortheaderaktionen, Weiterleitungen, Umleitungen und Umschreibungen verfügbar. Eine Regel kann bis zu 5 Aktionen enthalten, aber nur eine Außerkraftsetzung einer Routenkonfiguration.  Eine vollständige Liste der Aktionen finden Sie [hier](front-door-rules-engine-actions.md).

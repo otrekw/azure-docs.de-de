@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 081305170020aa35511ad574bd8c5575c192d577
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879121"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322294"
 ---
 # <a name="what-is-azure-front-door"></a>Was ist Azure Front Door?
-Über Azure Front Door können Sie das globale Routing für Ihren Webdatenverkehr definieren, verwalten und überwachen, indem Sie die Optimierung auf die bestmögliche Leistung und sofortige globale Failover durchführen, um die Hochverfügbarkeit sicherzustellen. Mit Front Door können Sie Ihre globalen Consumer- und Unternehmensanwendungen (in mehreren Regionen angeordnet) in stabile und hochleistungsfähige personalisierte moderne Anwendungen, APIs und Inhalte transformieren, mit denen über Azure eine globale Zielgruppe erreicht wird.
+Über Azure Front Door können Sie das globale Routing für Ihren Webdatenverkehr definieren, verwalten und überwachen, indem Sie eine Optimierung auf die bestmögliche Leistung und ein schnelles globales Failover durchführen, um die Hochverfügbarkeit sicherzustellen. Mit Front Door können Sie Ihre globalen Consumer- und Unternehmensanwendungen (in mehreren Regionen angeordnet) in stabile und hochleistungsfähige personalisierte moderne Anwendungen, APIs und Inhalte transformieren, mit denen über Azure eine globale Zielgruppe erreicht wird.
 
 Front Door arbeitet auf Layer 7 oder HTTP/HTTPS-Layer und verwendet das Anycast-Protokoll mit geteiltem TCP und dem globalen Netzwerk von Microsoft zur Verbesserung der globalen Konnektivität. So können Sie – je nach Ihrer Auswahl der Routingmethode in der Konfiguration – sicherstellen, dass Front Door Ihre Clientanforderungen an das schnellste und am häufigsten verfügbare Anwendungs-Back-End routet. Ein Anwendungs-Back-End ist ein Dienst mit Internetzugriff, der innerhalb oder außerhalb von Azure gehostet wird. Front Door bietet eine Reihe von [Datenverkehrsrouting-Methoden](front-door-routing-methods.md) und [Back-End-Systemüberwachungsoptionen](front-door-health-probes.md), die verschiedene Anwendungsanforderungen und automatische Failovermodelle erfüllen. Ähnlich wie [Traffic Manager](../traffic-manager/traffic-manager-overview.md) zeichnet sich Front Door durch eine geringe Fehleranfälligkeit aus, selbst wenn es zum Ausfall einer ganzen Azure-Region kommt.
 
@@ -36,7 +36,7 @@ Durch Verwendung des TCP-basierten geteilten Anycast-Protokolls stellt Front Doo
 
 ## <a name="increase-application-availability-with-smart-health-probes"></a>Erhöhen der Anwendungsverfügbarkeit mit intelligenten Integritätstests
 
-Front Door bietet Hochverfügbarkeit für Ihre kritischen Anwendungen. Dazu verwendet der Dienst intelligente Integritätstests, überwacht Ihre Back-Ends auf Latenz und Verfügbarkeit und sorgt für sofortiges automatisches Failover, wenn ein Back-End ausfällt. Deshalb können Sie geplante Wartungsarbeiten für Ihre Anwendungen ohne Ausfallzeiten ausführen. Front Door leitet den Datenverkehr während der Wartung an andere Back-Ends weiter.
+Front Door bietet Hochverfügbarkeit für Ihre kritischen Anwendungen. Dazu verwendet der Dienst intelligente Integritätstests, überwacht Ihre Back-Ends auf Latenz und Verfügbarkeit und sorgt für schnelles automatisches Failover, wenn ein Back-End ausfällt. Deshalb können Sie geplante Wartungsarbeiten für Ihre Anwendungen ohne Ausfallzeiten ausführen. Front Door leitet den Datenverkehr während der Wartung an andere Back-Ends weiter.
 
 ## <a name="url-based-routing"></a>URL-basiertes Routing
 Mit URL-pfadbasiertem Routing können Sie Datenverkehr auf Basis von URL-Pfaden der Anforderung an Back-End-Pools weiterleiten. Ein mögliches Szenario ist die Weiterleitung von Anforderungen für unterschiedliche Inhaltstypen an verschiedene Back-End-Pools.

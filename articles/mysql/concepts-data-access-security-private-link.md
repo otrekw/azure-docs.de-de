@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: c2cc4986542404281424286882c046dec39f5daf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f780bf946e81e9873a1828f9d697f69c81cef513
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509320"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Private Link für Azure Database for MySQL
 
@@ -45,7 +45,11 @@ Mit Private Link können Sie nun Netzwerkzugriffssteuerungen wie NSGs einrichten
 
 Wenn Sie von lokalen Computern aus eine Verbindung mit dem öffentlichen Endpunkt herstellen, muss Ihre IP-Adresse mithilfe einer Firewallregel auf Serverebene der IP-basierten Firewall hinzugefügt werden. Dieses Modell eignet sich zwar gut, um den Zugriff auf einzelne Computer für Entwicklungs- oder Testworkloads zuzulassen, in einer Produktionsumgebung gestaltet sich die Verwaltung jedoch schwierig.
 
-Mit Private Link können Sie standortübergreifenden Zugriff auf den privaten Endpunkt mittels [ExpressRoute](https://azure.microsoft.com/services/expressroute/), privatem Peering oder [VPN-Tunneln](https://docs.microsoft.com/azure/vpn-gateway/) ermöglichen. Anschließend kann der gesamte Zugriff über einen öffentlichen Endpunkt deaktiviert und auf die Verwendung der IP-basierten Firewall verzichtet werden.
+Mit Private Link können Sie standortübergreifenden Zugriff auf den privaten Endpunkt mittels [ExpressRoute](https://azure.microsoft.com/services/expressroute/), privatem Peering oder [VPN-Tunneln](https://docs.microsoft.com/azure/vpn-gateway/) ermöglichen. Anschließend können Sie den gesamten Zugriff über einen öffentlichen Endpunkt deaktivieren, ohne die IP-basierte Firewall zu verwenden.
+
+> [!NOTE]
+> In einigen Fällen befinden sich Azure Database for MySQL und das VNET-Subnetz in unterschiedlichen Abonnements. In diesen Fällen müssen Sie folgende Konfigurationen sicherstellen:
+> - Stellen Sie sicher, dass für beide Abonnements der Ressourcenanbieter **Microsoft.DBforMySQL** registriert ist. Weitere Informationen finden Sie unter [Azure-Ressourcenanbieter und -typen][resource-manager-portal].
 
 ## <a name="configure-private-link-for-azure-database-for-mysql"></a>Konfigurieren von Private Link für Azure Database for MySQL
 
@@ -111,7 +115,7 @@ Folgende Fälle und Ergebnisse sind bei Verwendung von Private Link in Verbindun
 
 Wenn Sie sich für den Zugriff auf Ihre Azure Database for MySQL-Instanz nur auf private Endpunkte verlassen möchten, können Sie das Festlegen aller öffentlichen Endpunkte (d. h. [Firewallregeln](concepts-firewall-rules.md) und [VNET-Dienstendpunkte](concepts-data-access-and-security-vnet.md)) deaktivieren, indem Sie die Konfiguration **Zugriff auf öffentliches Netzwerk verweigern** auf dem Datenbankserver festlegen. 
 
-Wenn diese Einstellung auf *Ja* festgelegt ist, sind nur Verbindungen über private Endpunkte mit Ihrer Azure Database for MySQL-Instanz zulässig. Wenn diese Einstellung auf *NEIN*festgelegt ist, können Clients basierend auf Ihren Firewall- oder VNET-Dienstendpunkt-Einstellungen eine Verbindung mit Ihrer Azure Database for MySQL-Instanz herstellen. Sobald der Wert des privaten Netzwerkzugriffs festgelegt ist, können Sie außerdem weder Firewall- oder VNET-Dienstendpunkt-Regeln hinzufügen noch vorhandene aktualisieren.
+Wenn diese Einstellung auf *Ja* festgelegt ist, sind nur Verbindungen über private Endpunkte mit Ihrer Azure Database for MySQL-Instanz zulässig. Wenn diese Einstellung auf *NEIN*festgelegt ist, können Clients basierend auf Ihren Firewall- oder VNET-Dienstendpunkt-Einstellungen eine Verbindung mit Ihrer Azure Database for MySQL-Instanz herstellen. Sobald der Wert des privaten Netzwerkzugriffs festgelegt ist, können Kunden außerdem weder Firewall- oder VNET-Dienstendpunkt-Regeln hinzufügen noch vorhandene aktualisieren.
 
 > [!Note]
 > Dieses Feature steht in allen Azure-Regionen zur Verfügung, in denen Azure Database for PostgreSQL-Einzelserver die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützen.
@@ -129,3 +133,6 @@ Weitere Informationen zu Sicherheitsfunktionen in Azure Database for MySQL finde
 * Informationen zum Konfigurieren eines VNET-Dienstendpunkts für Azure Database for MySQL finden Sie unter [Konfigurieren des Zugriffs über virtuelle Netzwerke](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet).
 
 * Eine Übersicht über die Konnektivität für Azure Database for MySQL finden Sie unter [Verbindungsarchitektur in Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture).
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

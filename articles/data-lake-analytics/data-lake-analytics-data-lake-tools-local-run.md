@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 42e58125fcbc3ab411c0d7503c42c14c28178428
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "62113934"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>Ausführen von U-SQL-Skripts auf dem lokalen Computer
@@ -57,7 +57,7 @@ Azure Data Lake Tools für Visual Studio umfasst eine integrierte Engine für di
  
 ## <a name="local-runs-with-a-local-machine-account"></a>Lokale Ausführungen mit einem „Local-machine“-Konto
 
-Ein **Local-machine**-Konto ist ein freigegebenes lokales Computekonto mit einem einzelnen lokalen Datenstammordner als lokales Speicherkonto. Der Datenstammordner befindet sich standardmäßig unter **C:\Users\<Benutzername> \AppData\Local\USQLDataRoot**. Es ist auch über **Tools** > **Data Lake** > **Optionen und Einstellungen** konfigurierbar.
+Ein **Local-machine**-Konto ist ein freigegebenes lokales Computekonto mit einem einzelnen lokalen Datenstammordner als lokales Speicherkonto. Der Datenstammordner befindet sich standardmäßig unter **C:\Users\<username>\AppData\Local\USQLDataRoot**. Es ist auch über **Tools** > **Data Lake** > **Optionen und Einstellungen** konfigurierbar.
 
 ![Konfigurieren eines lokalen Datenstammordners](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
   

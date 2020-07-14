@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471743"
 ---
 # <a name="caching-with-azure-front-door"></a>Zwischenspeicherung mit Azure Front Door
@@ -100,9 +100,9 @@ Bei Cachebereinigungen in Azure Front Door Service muss die Groß-/Kleinschreibu
 
 ## <a name="cache-expiration"></a>Cacheablauf
 Die folgende Headerreihenfolge wird verwendet, um zu bestimmen, wie lange ein Element im Cache gespeichert wird:</br>
-1. Cache-Control: s-maxage=\<Sekunden>
+1. Cache-Control: s-maxage=\<seconds>
 2. Cache-Control: max-age=\<seconds>
-3. Expires: \<HTTP-Datum>
+3. Expires: \<http-date>
 
 Cache-Control-Antwortheader, die angeben, dass die Antwort nicht zwischengespeichert wird (z. B. „Cache-Control: private“, „Cache-Control: no-cache“ und „Cache-Control: no-store“), werden berücksichtigt. Wenn auf einem POP-Server mehrere Anforderungen für dieselbe URL ausgeführt werden, gilt die Antwort jedoch möglicherweise für alle dieser Anforderungen. Ist keine Angabe für „Cache-Control“ vorhanden, ist das Standardverhalten wie folgt: Azure Front Door Service speichert die Ressource für einen Zeitraum X zwischen. Für X wird dabei ein zufällig gewählter Wert von ein bis drei Tagen verwendet.
 

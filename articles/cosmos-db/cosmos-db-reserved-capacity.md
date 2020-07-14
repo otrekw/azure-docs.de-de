@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 16e8f770445218e10ab7e7645a81325d11be55da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea1fec022227aba1be09e988b5802f0c1ecd4e8e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77505971"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85118932"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimieren der Kosten mit reservierter Kapazität in Azure Cosmos DB
 
@@ -52,7 +52,7 @@ Darüber hinaus können Sie Empfehlungen für den Gültigkeitsbereich einer einz
 
 Im Folgenden finden Sie eine Beispielempfehlung:
 
-![Empfehlungen für reservierte Kapazität](./media/cosmos-db-reserved-capacity/reserved-capacity-recommendation.png)
+:::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-recommendation.png" alt-text="Empfehlungen für reservierte Kapazität":::
 
 Diese Empfehlung zum Erwerb einer Reservierung von 30.000 RU/s weist darauf hin, dass im Rahmen einer Laufzeit von drei Jahren eine Reservierung in der Größenordnung von 30.000 RU/s zu maximalen Einsparungen führt. In diesem Fall wird die Empfehlung auf den letzten 30 Tagen der Nutzung von Azure Cosmos DB basierend berechnet. Wenn dieser Kunde davon ausgeht, dass die letzten 30 Tage der Nutzung von Azure Cosmos DB für den zukünftigen Gebrauch repräsentativ sind, werden die Einsparungen durch Erwerb einer Reservierung von 30.000 RU/s maximiert.
 
@@ -66,7 +66,7 @@ Diese Empfehlung zum Erwerb einer Reservierung von 30.000 RU/s weist darauf hin
 
 4. Füllen Sie die Pflichtfelder aus, wie in der folgenden Tabelle beschrieben:
 
-   ![Formular für die reservierte Kapazität ausfüllen](./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png)
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="Formular für die reservierte Kapazität ausfüllen":::
 
    |Feld  |BESCHREIBUNG  |
    |---------|---------|
@@ -82,7 +82,7 @@ Diese Empfehlung zum Erwerb einer Reservierung von 30.000 RU/s weist darauf hin
 
 6. Prüfen Sie im Bereich **Reservierungen erwerben** den Rabatt und den Preis der Reservierung. Dieser Reservierungspreis gilt für Azure Cosmos DB-Ressourcen mit Durchsatz, die in allen Regionen bereitgestellt werden.  
 
-   ![Zusammenfassung der reservierten Kapazität](./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png)
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="Zusammenfassung der reservierten Kapazität":::
 
 7. Wählen Sie **Review + buy** (Überprüfen und kaufen) und dann **Jetzt kaufen**. Nach einem erfolgreichen Kauf wird die folgende Seite angezeigt:
 

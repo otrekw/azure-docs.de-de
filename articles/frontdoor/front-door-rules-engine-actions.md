@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine Übersicht zu Azure Front Door. Es wird beschrieben, ob dies die richtige Wahl für den Lastenausgleich des Benutzerdatenverkehrs für Ihre Anwendung ist.
+title: Azure Front Door
+description: Dieser Artikel enthält eine Liste der verschiedenen Aktionen, die Sie mit dem Azure Front Door-Regelmodul durchführen können.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 3e7c9606a17736ea45b09a4d6981b4d55fa6dee6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e11555e883a323bcb5b0be1c62b2825bce77524e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515805"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314006"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Aktionen des Azure Front Door-Regelmoduls
 
 Im [AFD-Regelmodul](front-door-rules-engine.md) besteht eine Regel aus null oder mehr Übereinstimmungsbedingungen und Aktionen. Dieser Artikel enthält detaillierte Beschreibungen der Aktionen, die Sie im AFD-Regelmodul verwenden können.
 
-Eine Aktion definiert das Verhalten, das auf den Anforderungstyp angewendet wird, der durch mindestens eine Übereinstimmungsbedingung bestimmt wurde. Im AFD-Regelmodul kann eine Regel bis zu fünf Aktionen enthalten, aber nur eine davon darf eine Außerkraftsetzungsaktion (Weiter- oder Umleitung) für die Routenkonfiguration sein. 
+Eine Aktion definiert das Verhalten, das auf den Anforderungstyp angewendet wird, der durch mindestens eine Übereinstimmungsbedingung bestimmt wurde. Im AFD-Regelmodul kann eine Regel bis zu fünf Aktionen enthalten, aber nur eine davon darf eine Außerkraftsetzungsaktion (Weiter- oder Umleitung) für die Routenkonfiguration sein.
 
 Die folgenden Aktionen können auch im Azure Front Door-Regelmodul verwendet werden.  
 

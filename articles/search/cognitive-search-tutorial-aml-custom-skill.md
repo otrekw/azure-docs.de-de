@@ -8,24 +8,24 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 1ff29be9cde4a2bd53f0edbe57f3eab603c1796f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739494"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513809"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Tutorial: Erstellen und Bereitstellen eines benutzerdefinierten Skills mit Azure Machine Learning 
 
-In diesem Tutorial verwenden Sie das [Dataset mit Hotelrezensionen, „hotel reviews“](https://www.kaggle.com/datafiniti/hotel-reviews) (verteilt unter der Creative Commons-Lizenz [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) zum Erstellen eines [benutzerdefinierten Skills](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface) mithilfe von Azure Machine Learning, um eine aspektbasierte Stimmung aus den Rezensionen zu extrahieren. Dies ermöglicht die Zuweisung von positiver und negativer Stimmung innerhalb derselben Rezension, damit sie identifizierten Entitäten wie „Personal“, „Raum“, „Lobby“ oder „Pool“ ordnungsgemäß zugeschrieben wird.
+In diesem Tutorial verwenden Sie das [Dataset mit Hotelrezensionen, „hotel reviews“](https://www.kaggle.com/datafiniti/hotel-reviews) (verteilt unter der Creative Commons-Lizenz [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) zum Erstellen eines [benutzerdefinierten Skills](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill) mithilfe von Azure Machine Learning, um eine aspektbasierte Stimmung aus den Rezensionen zu extrahieren. Dies ermöglicht die Zuweisung von positiver und negativer Stimmung innerhalb derselben Rezension, damit sie identifizierten Entitäten wie „Personal“, „Raum“, „Lobby“ oder „Pool“ ordnungsgemäß zugeschrieben wird.
 
-Zum Trainieren des aspektbasierten Stimmungsmodells verwenden Sie das [NLP-Projektrepository](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa). Das Modell wird dann als Endpunkt in einem Azure Kubernetes-Cluster bereitgestellt. Nach der Bereitstellung wird das Modell als benutzerdefinierter Skill zur Anreicherungspipeline hinzugefügt, damit es vom Cognitive Search-Dienst verwendet werden kann.
+Zum Trainieren des aspektbasierten Stimmungsmodells in Azure Machine Learning verwenden Sie das [NLP-Projektrepository](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa). Das Modell wird dann als Endpunkt in einem Azure Kubernetes-Cluster bereitgestellt. Nach der Bereitstellung wird der Endpunkt der Anreicherungspipeline als AML-Skill hinzugefügt, um die Verwendung durch den Cognitive Search-Dienst zu ermöglichen.
 
 Es werden zwei Datasets bereitgestellt. Wenn Sie das Modell selbst trainieren möchten, wird die Datei „hotel_reviews_1000.csv“ benötigt. Möchten Sie den Trainingsschritt überspringen? Laden Sie die Datei „hotel_reviews_100.csv“ herunter.
 
 > [!div class="checklist"]
 > * Erstellen einer Azure Cognitive Search-Instanz
-> * Erstellen eines Azure Machine Learning-Arbeitsbereichs
+> * Erstellen eines Azure Machine Learning-Arbeitsbereichs (Suchdienst und Arbeitsbereich sollten sich unter demselben Abonnement befinden)
 > * Trainieren und Bereitstellen eines Modells in einem Azure Kubernetes-Cluster
 > * Verknüpfen einer KI-Anreicherungspipeline mit dem bereitgestellten Modell
 > * Erfassen der Ausgabe aus dem bereitgestellten Modell als benutzerdefinierter Skill

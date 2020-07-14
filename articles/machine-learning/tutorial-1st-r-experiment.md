@@ -10,17 +10,17 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: dea5b3fb6cf20924666668e59e370399664d6b28
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d95c0fc9baf1e53e6643660726c72660719908ba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684750"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483379"
 ---
-# <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>Tutorial: Verwenden von R zum Erstellen eines Machine Learning-Modells
+# <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Tutorial: Verwenden von R zum Erstellen eines Machine Learning-Modells (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Tutorial verwenden Sie das Azure Machine Learning R SDK, um ein logistisches Regressionsmodell zu erstellen, mit dem die Wahrscheinlichkeit einer tödlichen Verletzung bei einem Autounfall vorhergesagt wird. Es wird gezeigt, wie die Azure Machine Learning-Cloudressourcen mit R verwendet werden, um eine skalierbare Umgebung für das Trainieren und Bereitstellen eines Modells zu erhalten.  
+In diesem Tutorial verwenden Sie das Azure Machine Learning R SDK (Vorschau), um ein logistisches Regressionsmodell zu erstellen, mit dem die Wahrscheinlichkeit einer tödlichen Verletzung bei einem Autounfall vorhergesagt wird. Es wird gezeigt, wie die Azure Machine Learning-Cloudressourcen mit R verwendet werden, um eine skalierbare Umgebung für das Trainieren und Bereitstellen eines Modells zu erhalten.  
 
 In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 > [!div class="checklist"]
@@ -73,7 +73,7 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
 
 1. Eine Liste der Ordner mit den einzelnen Benutzern wird angezeigt, die auf den Arbeitsbereich zugreifen.  Wählen Sie Ihren Ordner aus, um den Ordner **Vignetten** dort zu klonen.
 
-## <a name="a-nameopenopen-rstudio"></a><a name="open">Öffnen von RStudio
+## <a name="open-rstudio"></a><a name="open"></a>Öffnen von RStudio
 
 Verwenden Sie RStudio in einer Compute-Instanz oder auf einer Notebook-VM für dieses Tutorial.  
 

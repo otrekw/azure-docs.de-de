@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: ETL-Vorgänge (Extrahieren, Transformieren und Laden) mit Interactive Query: Azure HDInsight'
-description: 'Tutorial: Erfahren Sie, wie Sie Daten aus einem unformatierten CSV-Dataset extrahieren. Transformieren Sie sie mit einer interaktiven Abfrage in HDInsight. Laden Sie dann die transformierten Daten mithilfe von Apache Sqoop in Azure SQL-Datenbank.'
+description: 'Tutorial: Erfahren Sie, wie Sie Daten aus einem unformatierten CSV-Dataset extrahieren. Transformieren Sie sie mit einer interaktiven Abfrage in HDInsight. Laden Sie die transformierten Daten anschließend mit Apache Sqoop in Azure SQL-Datenbank.'
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 431cd5efbb1087d99fc8521cec7a5c604856dac5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021737"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319190"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Interactive Query in Azure HDInsight
 
-In diesem Tutorial laden Sie eine Rohdaten-CSV-Datendatei mit öffentlich verfügbaren Flugdaten herunter. Importieren Sie sie in den HDInsight-Clusterspeicher, und transformieren Sie die Daten dann mithilfe der interaktiven Abfrage in Azure HDInsight. Danach laden Sie die transformierten Daten mithilfe von [Apache Sqoop](https://sqoop.apache.org/) in eine Azure SQL-Datenbank.
+In diesem Tutorial laden Sie eine Rohdaten-CSV-Datendatei mit öffentlich verfügbaren Flugdaten herunter. Importieren Sie sie in den HDInsight-Clusterspeicher, und transformieren Sie die Daten dann mithilfe der interaktiven Abfrage in Azure HDInsight. Anschließend laden Sie die transformierten Daten mit [Apache Sqoop](https://sqoop.apache.org/) in eine Datenbank in Azure SQL-Datenbank.
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -25,14 +25,14 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Herunterladen der Beispielflugdaten
 > * Hochladen von Daten in einen HDInsight-Cluster
 > * Transformieren der Daten mit Interactive Query
-> * Erstellen einer Tabelle in Azure SQL-Datenbank
-> * Exportieren von Daten in eine Azure SQL-Datenbank mithilfe von Sqoop
+> * Erstellen einer Tabelle in einer Datenbank in Azure SQL-Datenbank
+> * Exportieren von Daten in eine Datenbank in Azure SQL-Datenbank mit Sqoop
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Interactive Query-Cluster in HDInsight. Siehe [Erstellen von Apache Hadoop-Clustern im Azure-Portal](../hdinsight-hadoop-create-linux-clusters-portal.md), und wählen Sie **Interactive Query** für **Clustertyp** aus.
 
-* Azure SQL-Datenbank. Sie verwenden eine Azure SQL-Datenbank als Zieldatenspeicher. Wenn Sie keine SQL-Datenbank besitzen, finden Sie Informationen unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](/azure/sql-database/sql-database-single-database-get-started).
+* Sie benötigen eine Datenbank in Azure SQL-Datenbank. Sie verwenden die Datenbank als Zieldatenspeicher. Wenn Sie noch nicht über eine Datenbank in Azure SQL-Datenbank verfügen, helfen Ihnen die Informationen unter [Erstellen einer Datenbank in Azure SQL-Datenbank im Azure-Portal](/azure/sql-database/sql-database-single-database-get-started) weiter.
 
 * Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 

@@ -8,22 +8,20 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886758"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510994"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Tutorial: Diagnostizieren, Reparieren und Committen von Änderungen an Ihrem Skillset
 
 In diesem Artikel verwenden Sie das Azure-Portal, um auf Debugsitzungen zuzugreifen und Probleme mit dem bereitgestellten Skillset zu beheben. Das Skillset weist einige Fehler auf, die behoben werden müssen. Dieses Tutorial führt Sie durch eine Debugsitzung, um Probleme mit Qualifikationseingaben und -ausgaben zu identifizieren und zu beheben.
 
 > [!Important]
-> Die Unterstützung von Debugsitzungen für Azure Cognitive Search ist [auf Anforderung](https://aka.ms/DebugSessions) als Vorschauversion mit eingeschränktem Zugriff verfügbar. Previewfunktionen werden ohne Vereinbarung zum Servicelevel bereitgestellt und sind nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bei Debugsitzungen handelt es sich um eine Previewfunktion, die ohne Vereinbarung zum Servicelevel bereitgestellt wird und nicht für Produktionsworkloads vorgesehen ist. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Sobald Sie Zugriff auf die Vorschau erhalten haben, können Sie über das Azure-Portal auf Debugsitzungen für Ihren Dienst zugreifen und diese verwenden.
->   
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

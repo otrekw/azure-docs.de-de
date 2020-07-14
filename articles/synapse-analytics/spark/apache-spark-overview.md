@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 1f1a83bce3a8b46bb49bf78917690851390408e0
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 0a9a89b6ff3d0e2d3987d4b4281b9e4e1605475f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194687"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476783"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Was ist Apache Spark in Azure Synapse Analytics?
 
@@ -60,7 +60,7 @@ Das SparkContext-Objekt kann eine Verbindung mit dem Cluster-Manager herstellen,
 
 Das SparkContext-Objekt führt die Hauptfunktion des Benutzers und dann die verschiedenen parallelen Vorgänge auf den Knoten aus. Anschließend sammelt es die Ergebnisse der Vorgänge. Von den Knoten werden Daten aus dem Dateisystem gelesen und in das Dateisystem geschrieben. Außerdem werden transformierte Daten von den Knoten als RDDs (Resilient Distributed Datasets) im Arbeitsspeicher zwischengespeichert.
 
-Das SparkContext-Objekt stellt eine Verbindung mit dem Spark-Pool her und ist für die Konvertierung einer Anwendung in einen gerichteten (azyklischen) Graphen verantwortlich. Der Graph setzt sich aus einzelnen Aufgaben zusammen, die im Rahmen eines Executor-Prozesses auf den Knoten ausgeführt werden. Jede Anwendung erhält ihre eigenen Executor-Prozesse, die über die gesamte Anwendungsdauer aktiv bleiben und Aufgaben in mehreren Threads ausführen.
+Das SparkContext-Objekt stellt eine Verbindung mit dem Spark-Pool her und ist für die Konvertierung einer Anwendung in einen gerichteten azyklischen Graphen verantwortlich. Der Graph setzt sich aus einzelnen Aufgaben zusammen, die im Rahmen eines Executor-Prozesses auf den Knoten ausgeführt werden. Jede Anwendung erhält ihre eigenen Executor-Prozesse, die über die gesamte Anwendungsdauer aktiv bleiben und Aufgaben in mehreren Threads ausführen.
 
 ## <a name="apache-spark-in-synapse-analytics-use-cases"></a>Anwendungsfälle für Apache Spark in Synapse Analytics
 

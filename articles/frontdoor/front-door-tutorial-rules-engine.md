@@ -1,58 +1,56 @@
 ---
-title: Konfigurieren Ihres Regelmoduls – Azure Front Door
-description: In diesem Artikel wird das Konfigurieren Ihres Regelmoduls für Azure Front Door beschrieben.
+title: Azure Front Door
+description: Dieser Artikel bietet ein Tutorial zur Konfiguration des Regelmoduls sowohl im Azure-Portal als auch über die Befehlszeilenschnittstelle.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: how-to
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: ed54f26f37617d420fae1aaf3f51853b0439a349
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: a931a12889cec67baf6ef2db09091c8ec581ef08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743557"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321561"
 ---
-# <a name="configure-your-rules-engine"></a>Konfigurieren Ihres Regelmoduls 
+# <a name="configure-your-rules-engine"></a>Konfigurieren Ihres Regelmoduls
 
-> [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+Dieser Artikel enthält die Schritte zum Erstellen einer Regelmodulkonfiguration und Ihrer ersten Regel sowohl im Azure-Portal als auch über die Befehlszeilenschnittstelle. 
 
-## <a name="configure-rules-engine-in-azure-portal"></a>Konfigurieren des Regelmoduls im Azure-Portal 
+## <a name="configure-rules-engine-in-azure-portal"></a>Konfigurieren des Regelmoduls im Azure-Portal
 1. Erstellen Sie vor der Konfiguration des Regelmoduls eine [Front Door-Instanz](quickstart-create-front-door.md).
 
-2. Wechseln Sie in der Front-Door-Ressource zu **Einstellungen** und wählen Sie die Option zur **Regelmodulkonfiguration** aus. Klicken Sie auf **Hinzufügen**, geben Sie Ihrer Konfiguration einen Namen, und beginnen Sie mit dem Erstellen Ihrer ersten Regelmodulkonfiguration. 
+2. Wechseln Sie in der Front-Door-Ressource zu **Einstellungen** und wählen Sie die Option zur **Regelmodulkonfiguration** aus. Klicken Sie auf **Hinzufügen**, geben Sie Ihrer Konfiguration einen Namen, und beginnen Sie mit dem Erstellen Ihrer ersten Regelmodulkonfiguration.
 
-![Regelmodul finden](./media/front-door-rules-engine/rules-engine-tutorial-1.png)
+    ![Regelmodul finden](./media/front-door-rules-engine/rules-engine-tutorial-1.png)
 
-3. Klicken Sie auf **Regel hinzufügen**, um Ihre erste Regel zu erstellen. Dann klicken Sie auf **Bedingung hinzufügen** oder **Aktion hinzufügen**, um Ihre Regel zu definieren. 
+3. Klicken Sie auf **Regel hinzufügen**, um Ihre erste Regel zu erstellen. Dann klicken Sie auf **Bedingung hinzufügen** oder **Aktion hinzufügen**, um Ihre Regel zu definieren.
     
-    *Hinweise:*
-    - Zum Löschen einer Bedingung oder Aktion aus einer Regel verwenden Sie den Papierkorb auf der rechten Seite der jeweiligen Bedingung oder Aktion.
-    - Geben Sie keine Bedingungen an, um eine Regel zu erstellen, die für den gesamten eingehenden Datenverkehr gilt. 
-    - Um die Auswertung von Regeln zu unterbinden, sobald die erste Übereinstimmungsbedingung erfüllt ist, aktivieren Sie **Regelauswertung beenden**. 
+    > [!NOTE]
+    >- Zum Löschen einer Bedingung oder Aktion aus einer Regel verwenden Sie den Papierkorb auf der rechten Seite der jeweiligen Bedingung oder Aktion.
+    > - Geben Sie keine Bedingungen an, um eine Regel zu erstellen, die für den gesamten eingehenden Datenverkehr gilt.
+    > - Um die Auswertung von Regeln zu unterbinden, sobald die erste Übereinstimmungsbedingung erfüllt ist, aktivieren Sie **Auswertung der verbleibenden Regeln beenden**. Wenn diese Option aktiviert ist und alle Übereinstimmungsbedingungen einer bestimmten Regel erfüllt sind, werden die verbleibenden Regeln in der Konfiguration nicht ausgeführt.  
 
-![Regelmodul finden](./media/front-door-rules-engine/rules-engine-tutorial-4.png)
+    ![Regelmodul finden](./media/front-door-rules-engine/rules-engine-tutorial-4.png) 
 
-4. Bestimmen Sie die Priorität der Regeln in der Konfiguration, indem Sie die Schaltflächen zum Verschieben nach oben, nach unten und ganz nach oben verwenden. Die Priorität ist in aufsteigender Reihenfolge, was bedeutet, dass die erste aufgelistete Regel die wichtigste Regel ist. 
+4. Bestimmen Sie die Priorität der Regeln in der Konfiguration, indem Sie die Schaltflächen zum Verschieben nach oben, nach unten und ganz nach oben verwenden. Die Priorität ist in aufsteigender Reihenfolge, was bedeutet, dass die erste aufgelistete Regel die wichtigste Regel ist.
 
-5. Nachdem Sie eine oder mehrere Regeln erstellt haben, drücken Sie **Speichern**. Mit dieser Aktion wird die Konfiguration des Regelmoduls erstellt. 
+5. Nachdem Sie eine oder mehrere Regeln erstellt haben, drücken Sie **Speichern**. Mit dieser Aktion wird die Konfiguration des Regelmoduls erstellt.
 
-6. Nachdem Sie mindestens eine Konfiguration erstellt haben, ordnen Sie eine Regelmodulkonfiguration einer Routenregel zu. Eine einzelne Konfiguration kann zwar auf mehrere Routenregeln angewendet werden, aber eine Routenregel darf nur eine Regelmodulkonfiguration enthalten. Um die Zuordnung vorzunehmen, navigieren Sie im **Frontdoor-Designer** > zu **Routenregeln**. Wählen Sie die Routenregel aus, der Sie die Regelmodulkonfiguration hinzufügen möchten, navigieren Sie zu **Routendetails** > **Regelmodulkonfiguration**, und wählen Sie die Konfiguration aus, die Sie zuordnen möchten. 
+6. Nachdem Sie mindestens eine Konfiguration erstellt haben, ordnen Sie eine Regelmodulkonfiguration einer Routenregel zu. Eine einzelne Konfiguration kann zwar auf mehrere Routenregeln angewendet werden, aber eine Routenregel darf nur eine Regelmodulkonfiguration enthalten. Um die Zuordnung vorzunehmen, navigieren Sie im **Frontdoor-Designer** zu **Routenregeln**. Wählen Sie die Routenregel aus, der Sie die Regelmodulkonfiguration hinzufügen möchten, navigieren Sie zu **Routendetails** > **Regelmodulkonfiguration**, und wählen Sie die Konfiguration aus, die Sie zuordnen möchten.
 
-![Regelmodul finden](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
+    ![Regelmodul finden](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
 
 
-## <a name="configure-rules-engine-in-azure-cli"></a>Konfigurieren des Regelmoduls in der Azure CLI 
+## <a name="configure-rules-engine-in-azure-cli"></a>Konfigurieren des Regelmoduls in der Azure CLI
 
-1. Installieren Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), falls Sie dies noch nicht getan haben. Fügen Sie die Front Door-Erweiterung hinzu:- az extension add --name front-door. Melden Sie sich dann an, und wechseln Sie zu Ihrem Abonnement: az account set --subscription <Name_oder_ID>. 
+1. Installieren Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), falls Sie dies noch nicht getan haben. Fügen Sie die Front Door-Erweiterung hinzu:- az extension add --name front-door. Melden Sie sich dann an, und wechseln Sie zu Ihrem Abonnement: az account set --subscription <Name_oder_ID>.
 
 2. Beginnen Sie mit dem Erstellen eines Regelmoduls. In diesem Beispiel wird eine Regel mit einer headerbasierten Aktion und einer Übereinstimmungsbedingung gezeigt. 
 
@@ -60,31 +58,31 @@ ms.locfileid: "84743557"
 az network front-door rules-engine rule create -f {front_door} -g {resource_group} --rules-engine-name {rules_engine} --name {rule1} --priority 1 --action-type RequestHeader --header-action Overwrite --header-name Rewrite --header-value True --match-variable RequestFilenameExtension --operator Contains --match-values jpg png --transforms Lowercase
 ```
 
-2.  Listen Sie alle Regeln auf. 
+3. Listen Sie alle Regeln auf. 
 
 ```azurecli-interactive
 az network front-door rules-engine rule list -f {front_door} -g {rg} --name {rules_engine}
 ```
 
-3.  Fügen Sie eine Aktion zur Außerkraftsetzung der Weiterleitungsroute hinzu. 
+4. Fügen Sie eine Aktion zur Außerkraftsetzung der Weiterleitungsroute hinzu. 
 
 ```azurecli-interactive
 az network front-door rules-engine rule action add -f {front_door} -g {rg} --rules-engine-name {rules_engine} --name {rule1} --action-type ForwardRouteOverride --backend-pool {backend_pool_name} --caching Disabled
 ```
 
-4.  Listen Sie alle Aktionen in einer Regel auf. 
+5. Listen Sie alle Aktionen in einer Regel auf. 
 
 ```azurecli-interactive
 az network front-door rules-engine rule action list -f {front_door} -g {rg} -r {rules_engine} --name {rule1}
 ```
 
-5. Verknüpfen Sie eine Regelmodulkonfiguration mit einer Routingregel.  
+6. Verknüpfen Sie eine Regelmodulkonfiguration mit einer Routingregel.  
 
 ```azurecli-interactive
 az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --rules-engine {rules_engine}
 ```
 
-6. Heben Sie die Verknüpfung des Regelmoduls auf. 
+7. Heben Sie die Verknüpfung des Regelmoduls auf. 
 
 ```azurecli-interactive
 az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’

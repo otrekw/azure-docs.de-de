@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zum Sichern von Azure Files
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Schützen von Azure-Dateifreigaben mit dem Azure Backup-Dienst.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 70ed8594be09ab74478f4703aa632b9ce966b5ee
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ded1551dad1be34c116e61b9bf59f372169bca5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118007"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488697"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 
@@ -56,7 +56,7 @@ Für eine Dateifreigabe können jeweils bis zu 200 Momentaufnahmen vorhanden sei
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>Kann die Wiederherstellung auf der Grundlage einer gelöschten Azure-Dateifreigabe erfolgen?
 
-Beim Löschen einer Azure-Dateifreigabe wird die Liste mit den Sicherungen angezeigt, die gelöscht werden, und Sie werden zum Bestätigen aufgefordert. Zurzeit kann eine gelöschte Azure-Dateifreigabe nicht wiederhergestellt werden.
+Wenn sich die Dateifreigabe im Status „Vorläufig gelöscht“ befindet, müssen Sie zuerst den Löschvorgang der Dateifreigabe rückgängig machen, um den Wiederherstellungsvorgang auszuführen. Durch das Rückgängigmachen des Löschvorgangs wird die Dateifreigabe wieder in den aktiven Status versetzt, der eine Wiederherstellung zu einem beliebigen Zeitpunkt ermöglicht. Um zu erfahren, wie Sie die Dateifreigabe aus dem gelöschten Zustand wiederherstellen, besuchen Sie [diesen Link](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share), oder sehen Sie sich das [Skript zum Wiederherstellen einer Dateifreigabe](./scripts/backup-powershell-script-undelete-file-share.md) an. Wenn die Dateifreigabe dauerhaft gelöscht wird, können Sie Inhalte und Momentaufnahmen nicht wiederherstellen.
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Kann ich Sicherungen wiederherstellen, wenn ich den Schutz für eine Azure-Dateifreigabe beendet habe?
 
