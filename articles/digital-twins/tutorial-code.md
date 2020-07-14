@@ -7,17 +7,14 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 170901f3410c85ab53a306529053e611b36fa8ec
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298394"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027885"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Codieren mit den Azure Digital Twins-APIs
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Entwickler, die mit Azure Digital Twins arbeiten, schreiben in der Regel eine Clientanwendung, um mit ihrer Azure Digital Twins-Dienstinstanz zu interagieren. Dieses Tutorial für Entwickler bietet eine Einführung in die Programmierung für den Azure Digital Twins-Dienst unter Verwendung der [Azure IoT Digital Twin-Clientbibliothek für .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Sie werden Schritt für Schritt und von Grund auf durch die Entwicklung einer Client-App für die C#-Konsole geleitet.
 
@@ -288,6 +285,7 @@ Fügen Sie oben eine neue `using`-Anweisung hinzu, da Sie das integrierte .NET-J
 
 ```csharp
 using System.Text.Json;
+using Azure.DigitalTwins.Core.Serialization;
 ```
 
 Fügen Sie anschließend am Ende der `Main`-Methode den folgenden Code hinzu, um basierend auf diesem Modell drei digitale Zwillinge zu erstellen und zu initialisieren.
@@ -318,7 +316,7 @@ Beachten Sie, dass beim zweiten Erstellen der digitalen Zwillinge kein Fehler au
 
 Im nächsten Schritt können Sie **Beziehungen** zwischen den erstellten Zwillingen erstellen, um sie in einem **Zwillingsgraphen** zu verbinden. [Zwillingsgraphen](concepts-twins-graph.md) werden verwendet, um Ihre gesamte Umgebung darzustellen.
 
-Um Beziehungen erstellen zu können, fügen Sie eine `using`-Anweisung für den Beziehungsbasistyp im SDK hinzu:
+Um Beziehungen erstellen zu können, fügen Sie eine `using`-Anweisung für den Beziehungsbasistyp im SDK hinzu. Wenn bereits eine hinzugefügt ist, überspringen Sie diesen Schritt.
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
@@ -566,5 +564,5 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu untersuchen, welche Möglichke
 > [Tutorial: Untersuchen der Grundlagen mit einer Beispielclient-App](tutorial-command-line-app.md)
 
 Sie können den Code aus diesem Tutorial auch ergänzen, indem Sie mithilfe der Gewusst-wie-Artikel weitere Verwaltungsvorgänge kennenlernen oder anhand der Konzeptdokumentation mehr über die Elemente erfahren, mit denen Sie im Tutorial gearbeitet haben.
-* [Gewusst wie: Verwalten eines Zwillingsmodells](how-to-manage-model.md)
+* [Gewusst wie: Verwalten benutzerdefinierter Modelle](how-to-manage-model.md)
 * [Konzepte: Benutzerdefinierte Modelle](concepts-models.md)

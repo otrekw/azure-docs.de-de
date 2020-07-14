@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: cf0c2c75b795fcca347439714e163d4022b79fa4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: a3a7657aa83a675982adc304de01ba0fcc26d193
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261017"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045449"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Tutorial: Indizieren von Azure SQL-Daten mithilfe des .NET SDK
 
@@ -253,4 +253,4 @@ Ressourcen können im Portal über den Link „Alle Ressourcen“ oder „Ressou
 Nachdem Sie sich nun mit den Grundlagen der SQL-Datenbankindizierung vertraut gemacht haben, können Sie sich die Indexerkonfiguration genauer ansehen.
 
 > [!div class="nextstepaction"]
-> [Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung eines Azure Cognitive Search-Indexers](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+> [Konfigurieren eines SQL-Datenbank-Indexers](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

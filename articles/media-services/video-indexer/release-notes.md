@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: juliako
-ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5bd4c9aa3fde9e3fa596ce5a18b892edfab60af5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124583"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84325064"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -29,6 +29,20 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Bekannte Probleme
 * Behebung von Programmfehlern
 * Veraltete Funktionen
+
+## <a name="may-2020"></a>Mai 2020
+
+### <a name="video-indexer-deployed-in-the-east-us"></a>Video Indexer bereitgestellt für „USA, Osten“
+
+Sie können jetzt ein kostenpflichtiges Video Indexer-Konto in der Region „USA, Osten“ erstellen.
+ 
+### <a name="video-indexer-url"></a>Video Indexer-URL
+
+Regionale Video Indexer-Endpunkte wurden vereinheitlich und beginnen nun alle mit www. Keine Aktion erforderlich.
+
+Ab sofort greifen Sie unabhängig davon, ob Sie Widgets einbetten oder sich bei Video Indexer-Webanwendungen anmelden, auf www.videoindexer.ai zu.
+
+Beim Aufruf von wus.videoindexer.ai erfolgt eine Umleitung zur www-Adresse. Weitere Informationen finden Sie unter [Einbetten von Video Indexer-Widgets in Ihre Apps](video-indexer-embed-widgets.md).
 
 ## <a name="april-2020"></a>April 2020
 

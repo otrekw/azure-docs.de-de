@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.reviewer: trbye, jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 04/15/2020
+ms.date: 06/23/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: b26527321cf7fc5ca7fc4b061f11b86f8830ec29
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552313"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023362"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Ausführen von Batchrückschlüssen für große Datenmengen mithilfe von Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -112,9 +112,6 @@ Sie können diesen Schritt ändern, um auf Ihren Blobcontainer zu verweisen, ind
 from azureml.core import Datastore
 from azureml.core import Workspace
 
-# Load workspace authorization details from config.json
-ws = Workspace.from_config()
-
 mnist_blob = Datastore.register_azure_blob_container(ws, 
                       datastore_name="mnist_datastore", 
                       container_name="sampledata", 
@@ -140,8 +137,6 @@ Weitere Informationen zu Azure Machine Learning-Datasets finden Sie unter [Ers
 
 ```python
 from azureml.core.dataset import Dataset
-
-mnist_ds_name = 'mnist_sample_data'
 
 path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
@@ -210,7 +205,7 @@ Das Skript *muss zwei Funktionen enthalten*:
 - `init()`: Verwenden Sie diese Funktion für alle aufwendigen oder allgemeinen Vorbereitungsmaßnahmen für den späteren Rückschluss. Ein Beispiel wäre etwa das Laden des Modells in ein globales Objekt. Diese Funktion wird nur einmal zu Beginn des Prozesses aufgerufen.
 -  `run(mini_batch)`: Diese Funktion wird für jede Instanz vom Typ `mini_batch` ausgeführt.
     -  `mini_batch`: ParallelRunStep ruft die Run-Methode auf und übergibt entweder eine Liste oder einen Pandas-Datenrahmen als Argument an die Methode. Jeder Eintrag in „mini_batch“ ist entweder ein Dateipfad (bei Eingaben vom Typ „FileDataset“) oder ein Pandas-Datenrahmen (bei Eingaben vom Typ „TabularDataset“).
-    -  `response`: Die Run-Methode muss einen Pandas-Datenrahmen oder ein Array zurückgeben. Bei Verwendung von „append_row output_action“ werden diese zurückgegebenen Elemente am Ende der allgemeinen Ausgabedatei hinzugefügt. Bei Verwendung von „summary_only“ wird der Inhalt der Elemente ignoriert. Bei allen Ausgabeaktionen geben die zurückgegebenen Ausgabeelemente jeweils eine erfolgreiche Ausführung für ein Eingabeelement aus dem Eingabeminibatch an. Sie müssen sicherstellen, dass das Ausführungsergebnis genügend Daten für eine Zuordnung zwischen der Eingabe und der Ausgabe des Ausführungsergebnisses enthält. Die Ausführungsausgabe wird in die Ausgabedatei geschrieben. Da hierbei nicht unbedingt die Reihenfolge eingehalten wird, müssen Sie einen Schlüssel in der Ausgabe verwenden, um sie der Eingabe zuzuordnen.
+    -  `response`: Die Run-Methode muss einen Pandas-Datenrahmen oder ein Array zurückgeben. Bei Verwendung von „append_row output_action“ werden diese zurückgegebenen Elemente am Ende der allgemeinen Ausgabedatei hinzugefügt. Bei Verwendung von „summary_only“ wird der Inhalt der Elemente ignoriert. Bei allen Ausgabeaktionen geben die zurückgegebenen Ausgabeelemente jeweils eine erfolgreiche Ausführung für ein Eingabeelement aus dem Eingabeminibatch an. Stellen Sie sicher, dass das Ausführungsergebnis genügend Daten für eine Zuordnung zwischen der Eingabe und der Ausgabe des Ausführungsergebnisses enthält. Die Ausführungsausgabe wird in die Ausgabedatei geschrieben. Da hierbei nicht unbedingt die Reihenfolge eingehalten wird, müssen Sie einen Schlüssel in der Ausgabe verwenden, um sie der Eingabe zuzuordnen.
 
 ```python
 # Snippets from a sample script.
@@ -218,6 +213,7 @@ Das Skript *muss zwei Funktionen enthalten*:
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
+%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -311,12 +307,14 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 Sie können `mini_batch_size`, `node_count`, `process_count_per_node`, `logging_level`, `run_invocation_timeout` und `run_max_try` als `PipelineParameter` festlegen, sodass Sie die Parameterwerte beim erneuten Senden eines Pipelinelaufs optimieren können. In diesem Beispiel verwenden Sie PipelineParameter für `mini_batch_size` und `Process_count_per_node`, und Sie ändern diese Werte, wenn Sie später erneut einen Lauf senden. 
 
+In diesem Beispiel wird davon ausgegangen, dass Sie das `digit_identification.py`-Skript verwenden, das zuvor erläutert wurde. Wenn Sie ein eigenes Skript verwenden, ändern Sie die Parameter `source_directory` und `entry_script` entsprechend.
+
 ```python
 from azureml.pipeline.core import PipelineParameter
 from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
-    source_directory=scripts_folder,
+    source_directory='.',
     entry_script="digit_identification.py",
     mini_batch_size=PipelineParameter(name="batch_size_param", default_value="5"),
     error_threshold=10,
@@ -384,9 +382,8 @@ pipeline_run.wait_for_completion(show_output=True)
 Da Sie die Eingaben und mehrere Konfigurationen als `PipelineParameter` vorgenommen haben, können Sie einen Batch-Rückschlusslauf mit einer anderen Dataseteingabe erneut einreichen und dabei die Parameter optimieren, ohne eine ganz neue Pipeline erstellen zu müssen. Sie verwenden denselben Datenspeicher, aber nur ein einzelnes Bild als Dateneingabe.
 
 ```python
-path_on_datastore = mnist_data.path('mnist/0.png')
+path_on_datastore = mnist_blob.path('mnist/0.png')
 single_image_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
-single_image_ds._ensure_saved(ws)
 
 pipeline_run_2 = experiment.submit(pipeline, 
                                    pipeline_parameters={"mnist_param": single_image_ds, 

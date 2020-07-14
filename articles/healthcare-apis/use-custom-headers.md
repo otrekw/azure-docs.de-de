@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: d274160cc2ed1102dfc8fd11df358b34e40d9923
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "84870299"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081842"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>Hinzufügen von Daten zu Überwachungsprotokollen mithilfe benutzerdefinierter HTTP-Header
 
@@ -36,7 +36,7 @@ Mit benutzerdefinierten Headern können Sie verschiedene Arten von Informationen
 > [!IMPORTANT]
 > Beachten Sie, dass die in benutzerdefinierten Headern gesendeten Informationen nach der Bereitstellung in der Azure-Protokollüberwachung 30 Tage lang in einem internen Microsoft-Protokollierungssystem gespeichert werden. Es wird empfohlen, alle Informationen zu verschlüsseln, bevor diese benutzerdefinierten Headern hinzugefügt werden. Sie sollten keine Patienteninformationen über benutzerdefinierte Header übergeben.
 
-Sie müssen die folgende Benennungskonvention für Ihre HTTP-Header verwenden: X-MS-AZUREFHIR-AUDIT-AUDIT-\<Name>.
+Sie müssen die folgende Benennungskonvention für Ihre HTTP-Header verwenden: X-MS-AZUREFHIR-AUDIT-\<name>.
 
 Diese HTTP-Header sind in einer Eigenschaftensammlung enthalten, die dem Protokoll hinzugefügt wird. Beispiel:
 
@@ -63,7 +63,7 @@ Beim Hinzufügen zum Protokoll werden die Werte mit einer durch Trennzeichen get
  
 Sie können maximal zehn eindeutige Header hinzufügen (Wiederholungen desselben Headers mit unterschiedlichen Werten werden nur als einer gezählt). Die maximale Gesamtlänge des Werts für einen einzigen Header beträgt 2048 Zeichen.
 
-Wenn Sie die Firely C#-Client-API-Bibliothek verwenden, sieht der Code in etwa wie folgt aus:
+Wenn Sie die Firefly C#-Client-API-Bibliothek verwenden, sieht der Code in etwa wie folgt aus:
 
 ```C#
 FhirClient client;

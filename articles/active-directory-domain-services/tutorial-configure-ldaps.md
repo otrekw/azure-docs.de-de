@@ -7,18 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: f532976e80c4284addcf09d81d8a32fd5f6f8827
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 995ca20ed264d78e93e04a6f54e4f691ec551e84
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733941"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024858"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
-Zur Kommunikation mit Ihrer verwalteten Azure Active Directory Domain Services-Domäne (Azure AD DS) wird das Lightweight Directory Access Protocol (LDAP) verwendet. LDAP-Datenverkehr ist standardmäßig nicht verschlüsselt – dies führt in vielen Umgebungen zu Bedenken hinsichtlich der Sicherheit. Mit Azure AD DS können Sie die verwaltete Domäne für die Verwendung des Secure Lightweight Directory Access Protocol (LDAPS) konfigurieren. Bei Verwendung von Secure LDAP wird der Datenverkehr verschlüsselt. Secure LDAP ist auch bekannt als „LDAP über Secure Sockets Layer (SSL)/Transport Layer Security (TLS)“.
+Zur Kommunikation mit Ihrer verwalteten Azure Active Directory Domain Services-Domäne (Azure AD DS) wird das Lightweight Directory Access Protocol (LDAP) verwendet. LDAP-Datenverkehr ist standardmäßig nicht verschlüsselt – dies führt in vielen Umgebungen zu Bedenken hinsichtlich der Sicherheit.
+
+Mit Azure AD DS können Sie die verwaltete Domäne für die Verwendung des Secure Lightweight Directory Access Protocol (LDAPS) konfigurieren. Bei Verwendung von Secure LDAP wird der Datenverkehr verschlüsselt. Secure LDAP ist auch bekannt als „LDAP über Secure Sockets Layer (SSL)/Transport Layer Security (TLS)“.
 
 In diesem Tutorial wird gezeigt, wie Sie LDAPS für eine verwaltete Azure AD DS-Domäne konfigurieren.
 
@@ -68,7 +70,11 @@ Das Zertifikat, das Sie anfordern oder erstellen, muss die folgenden Anforderung
 * **Schlüsselverwendung**: Das Zertifikat muss für *digitale Signaturen* und *Schlüsselverschlüsselung* konfiguriert sein.
 * **Zertifikatzweck** : Das Zertifikat muss für die TLS-Serverauthentifizierung gültig sein.
 
-Es sind verschiedene Tools verfügbar, mit denen ein selbstsigniertes Zertifikat erstellt werden kann, z. B. OpenSSL, Keytool, MakeCert, Cmdlet [New-SelfSignedCertificate][New-SelfSignedCertificate] usw. In diesem Tutorial erstellen Sie mithilfe des Cmdlets [New-SelfSignedCertificate][New-SelfSignedCertificate] ein selbstsigniertes Zertifikat für Secure LDAP. Öffnen Sie ein PowerShell-Fenster als **Administrator**, und führen Sie die folgenden Befehle aus. Ersetzen Sie die Variable *$dnsName* durch den DNS-Namen, der von Ihrer verwalteten Domäne verwendet wird (z. B. *aaddscontoso.com*):
+Es sind verschiedene Tools verfügbar, mit denen ein selbstsigniertes Zertifikat erstellt werden kann, z. B. OpenSSL, Keytool, MakeCert, Cmdlet [New-SelfSignedCertificate][New-SelfSignedCertificate] usw.
+
+In diesem Tutorial erstellen Sie mithilfe des Cmdlets [New-SelfSignedCertificate][New-SelfSignedCertificate] ein selbstsigniertes Zertifikat für Secure LDAP.
+
+Öffnen Sie ein PowerShell-Fenster als **Administrator**, und führen Sie die folgenden Befehle aus. Ersetzen Sie die Variable *$dnsName* durch den DNS-Namen, der von Ihrer verwalteten Domäne verwendet wird (z. B. *aaddscontoso.com*):
 
 ```powershell
 # Define your own DNS name used by your managed domain
@@ -108,7 +114,9 @@ Zur Verwendung von Secure LDAP wird der Netzwerkdatenverkehr mithilfe einer Publ
     * Mit diesem öffentlichen Schlüssel wird der Datenverkehr über Secure LDAP *verschlüsselt*. Der öffentliche Schlüssel kann auf Clientcomputer verteilt werden.
     * Zertifikate ohne privaten Schlüssel verwenden das Dateiformat *CER*.
 
-Diese beiden Schlüssel, der *private* und der *öffentliche*, stellen sicher, dass nur geeignete Computer erfolgreich miteinander kommunizieren können. Wenn Sie eine öffentliche Zertifizierungsstelle oder eine Unternehmenszertifizierungsstelle verwenden, wird Ihnen ein Zertifikat ausgestellt, das den privaten Schlüssel enthält und auf eine verwaltete Domäne angewendet werden kann. Der öffentliche Schlüssel sollte den Clientcomputern bereits bekannt sein und von diesen als vertrauenswürdig eingestuft werden. In diesen Tutorial haben Sie ein selbstsigniertes Zertifikat mit dem privaten Schlüssel erstellt, daher müssen Sie die entsprechenden privaten und öffentlichen Komponenten exportieren.
+Diese beiden Schlüssel, der *private* und der *öffentliche*, stellen sicher, dass nur geeignete Computer erfolgreich miteinander kommunizieren können. Wenn Sie eine öffentliche Zertifizierungsstelle oder eine Unternehmenszertifizierungsstelle verwenden, wird Ihnen ein Zertifikat ausgestellt, das den privaten Schlüssel enthält und auf eine verwaltete Domäne angewendet werden kann. Der öffentliche Schlüssel sollte den Clientcomputern bereits bekannt sein und von diesen als vertrauenswürdig eingestuft werden.
+
+In diesen Tutorial haben Sie ein selbstsigniertes Zertifikat mit dem privaten Schlüssel erstellt, daher müssen Sie die entsprechenden privaten und öffentlichen Komponenten exportieren.
 
 ### <a name="export-a-certificate-for-azure-ad-ds"></a>Exportieren eines Zertifikats für Azure AD DS
 
@@ -148,7 +156,9 @@ Bevor Sie das im vorherigen Schritt erstellte digitale Zertifikat in Ihrer verwa
 
 ### <a name="export-a-certificate-for-client-computers"></a>Exportieren eines Zertifikats für Clientcomputer
 
-Clientcomputer müssen dem Aussteller des Secure LDAP-Zertifikats vertrauen, damit die Verbindung mit der verwalteten Domäne über LDAPS erfolgreich hergestellt werden kann. Die Clientcomputer benötigen ein Zertifikat, um Daten, die von Azure AD DS verschlüsselt wurden, erfolgreich zu entschlüsseln. Wenn Sie eine öffentliche Zertifizierungsstelle verwenden, muss der Computer diesen Zertifikatausstellern automatisch vertrauen und über ein entsprechendes Zertifikat verfügen. In diesem Tutorial verwenden Sie ein selbstsigniertes Zertifikat. Im vorherigen Schritt haben Sie ein Zertifikat generiert, das den privaten Schlüssel enthält. Jetzt exportieren Sie das selbstsignierte Zertifikat und installieren es dann im Speicher für vertrauenswürdige Zertifikate auf den Clientcomputern:
+Clientcomputer müssen dem Aussteller des Secure LDAP-Zertifikats vertrauen, damit die Verbindung mit der verwalteten Domäne über LDAPS erfolgreich hergestellt werden kann. Die Clientcomputer benötigen ein Zertifikat, um Daten, die von Azure AD DS verschlüsselt wurden, erfolgreich zu entschlüsseln. Wenn Sie eine öffentliche Zertifizierungsstelle verwenden, muss der Computer diesen Zertifikatausstellern automatisch vertrauen und über ein entsprechendes Zertifikat verfügen.
+
+In diesem Tutorial verwenden Sie ein selbstsigniertes Zertifikat. Im vorherigen Schritt haben Sie ein Zertifikat generiert, das den privaten Schlüssel enthält. Jetzt exportieren Sie das selbstsignierte Zertifikat und installieren es dann im Speicher für vertrauenswürdige Zertifikate auf den Clientcomputern:
 
 1. Navigieren Sie in der MMC zurück zu *Zertifikate (Lokaler Computer) > Eigene Zertifikate > Zertifikate*. Das zuvor erstellte selbstsignierte Zertifikat wird angezeigt (z. B. *aaddscontoso.com*). Klicken Sie mit der rechten Maustaste auf dieses Zertifikat, und wählen Sie **Alle Aufgaben > Exportieren...** aus.
 1. Klicken Sie im **Zertifikatexport-Assistenten** auf **Weiter**.
@@ -186,7 +196,10 @@ Sie haben ein digitales Zertifikat erstellt und exportiert, das den privaten Sch
 
 1. Klicken Sie auf das Ordnersymbol neben der **PFX-Datei mit Secure LDAP-Zertifikat**. Navigieren Sie zum Pfad der *PFX*-Datei, und wählen Sie das in einem vorherigen Schritt erstellte Zertifikat aus, das den privaten Schlüssel enthält.
 
-    Wie oben im Abschnitt mit den Zertifikatanforderungen erwähnt, können Sie mit der standardmäßigen Domäne *.onmicrosoft.com* kein Zertifikat von einer öffentlichen Zertifizierungsstelle verwenden. Die Domäne *.onmicrosoft.com* ist im Besitz von Microsoft, daher stellt keine öffentliche Zertifizierungsstelle ein Zertifikat aus. Stellen Sie sicher, dass Ihr Zertifikat im geeigneten Format vorliegt. Andernfalls generiert die Azure-Plattform Zertifikatüberprüfungsfehler, wenn Sie Secure LDAP aktivieren.
+    > [!IMPORTANT]
+    > Wie oben im Abschnitt mit den Zertifikatanforderungen erwähnt, können Sie mit der standardmäßigen Domäne *.onmicrosoft.com* kein Zertifikat von einer öffentlichen Zertifizierungsstelle verwenden. Die Domäne *.onmicrosoft.com* ist im Besitz von Microsoft, daher stellt keine öffentliche Zertifizierungsstelle ein Zertifikat aus.
+    >
+    > Stellen Sie sicher, dass Ihr Zertifikat im geeigneten Format vorliegt. Andernfalls generiert die Azure-Plattform Zertifikatüberprüfungsfehler, wenn Sie Secure LDAP aktivieren.
 
 1. Geben Sie das **Kennwort zum Entschlüsseln der PFX-Datei** ein, das Sie in einem vorherigen Schritt beim Exportieren des Zertifikats in eine *PFX*-Datei festgelegt haben.
 1. Klicken Sie auf **Speichern**, um Secure LDAP zu aktivieren.
@@ -195,7 +208,9 @@ Sie haben ein digitales Zertifikat erstellt und exportiert, das den privaten Sch
 
 Sie werden in einer Benachrichtigung darüber informiert, dass Secure LDAP für die verwaltete Domäne konfiguriert wird. Solange dieser Vorgang nicht abgeschlossen ist, können Sie keine anderen Einstellungen für die verwaltete Domäne ändern.
 
-Es dauert einige Minuten, bis Secure LDAP für Ihre verwaltete Domäne aktiviert ist. Wenn das von Ihnen bereitgestellte Secure LDAP-Zertifikat die erforderlichen Kriterien nicht erfüllt, tritt beim Aktivieren von Secure LDAP für die verwaltete Domäne ein Fehler auf. Häufige Gründe für Fehler sind: Der Domänenname ist falsch, oder das Zertifikat läuft bald ab oder ist bereits abgelaufen. Sie können das Zertifikat mit gültigen Parametern erneut erstellen und dann Secure LDAP mit diesem aktualisierten Zertifikat aktivieren.
+Es dauert einige Minuten, bis Secure LDAP für Ihre verwaltete Domäne aktiviert ist. Wenn das von Ihnen bereitgestellte Secure LDAP-Zertifikat die erforderlichen Kriterien nicht erfüllt, tritt beim Aktivieren von Secure LDAP für die verwaltete Domäne ein Fehler auf.
+
+Häufige Gründe für Fehler sind: Der Domänenname ist falsch, oder das Zertifikat läuft bald ab oder ist bereits abgelaufen. Sie können das Zertifikat mit gültigen Parametern erneut erstellen und dann Secure LDAP mit diesem aktualisierten Zertifikat aktivieren.
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Beschränken des Secure LDAP-Zugriffs über das Internet
 
@@ -230,7 +245,7 @@ Wenn der Secure LDAP-Zugriff über das Internet aktiviert wurde, aktualisieren S
 
 ![Anzeigen der externen Secure LDAP-IP-Adresse für Ihre verwaltete Domäne im Azure-Portal](./media/tutorial-configure-ldaps/ldaps-external-ip-address.png)
 
-Konfigurieren Sie Ihren externen DNS-Anbieter, und erstellen Sie einen Hosteintrag wie z. B. *ldaps*, um diesen in diese externe IP-Adresse aufzulösen. Um dieses Szenario zuerst auf Ihrem Computer zu testen, können Sie einen Eintrag in der Windows-Datei „hosts“ erstellen. Zum Bearbeiten der Datei „hosts“ auf Ihrem lokalen Computer öffnen Sie den *Editor* als Administrator. Dort öffnen Sie die hosts-Datei im Ordner *C:\Windows\System32\drivers\etc*.
+Konfigurieren Sie Ihren externen DNS-Anbieter, und erstellen Sie einen Hosteintrag wie z. B. *ldaps*, um diesen in diese externe IP-Adresse aufzulösen. Um dieses Szenario zuerst auf Ihrem Computer zu testen, können Sie einen Eintrag in der Windows-Datei „hosts“ erstellen. Zum Bearbeiten der Datei „hosts“ auf Ihrem lokalen Computer öffnen Sie den *Editor* als Administrator. Dort öffnen Sie die hosts-Datei im Ordner *C:\Windows\System32\drivers\etc\hosts*.
 
 Durch den folgenden DNS-Beispieleintrag (entweder bei Ihrem externen DNS-Anbieter oder in der lokalen Datei „hosts“) wird Datenverkehr für *ldaps.aaddscontoso.com* in die externe IP-Adresse *168.62.205.103* aufgelöst:
 
@@ -269,7 +284,7 @@ Wenn Sie einen bestimmten Container direkt abfragen möchten, können Sie im Men
 Wenn Sie der lokalen Datei „hosts“ auf Ihrem Computer einen DNS-Eintrag hinzugefügt haben, um für dieses Tutorial die Konnektivität zu testen, entfernen Sie diesen Eintrag, und fügen Sie einen formalen Eintrag in Ihrer DNS-Zone hinzu. Um den Eintrag aus der lokalen hosts-Datei zu entfernen, gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie den *Editor* auf Ihrem lokalen Computer als Administrator.
-1. Navigieren Sie zum Ordner *C:\Windows\System32\drivers\etc*, und öffnen Sie die Datei „hosts“.
+1. Navigieren Sie zu *C:\Windows\System32\drivers\etc\hosts*, und öffnen Sie die Datei.
 1. Löschen Sie die Zeile für den von Ihnen hinzugefügten Eintrag, z. B. `168.62.205.103    ldaps.aaddscontoso.com`.
 
 ## <a name="next-steps"></a>Nächste Schritte

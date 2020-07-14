@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9135873b61abf5a5ebd0d9c4d7f52ae314ee12
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 17d0c91d31f7746c53d62af87670c40e9902554c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84675053"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026830"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Akamai
 
@@ -79,7 +79,7 @@ Die Akamai EAA-Anwendung wird individuell im Azure AD-Portal eingerichtet. Der
 
 • Sie können individuelle Richtlinien für bedingten Zugriff definieren.
 
-• Alle Apps werden im 0365-Waffel-Menü und im Bereich „myApps.microsoft.com“ dargestellt.
+• Alle Apps werden im O365-Waffel-Menü und im Bereich „myApps.microsoft.com“ dargestellt.
 
 **Nachteile:**
 
@@ -102,7 +102,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 #### <a name="important"></a>Wichtig
 
-Alle unten aufgeführten Einrichtungsschritte gelten sowohl für das **Integrationsszenario 1** als auch für das **Szenario 2**. Für das **Integrationsszenario 2** haben Sie individuelle IDPs in der Akamai EAA-Instanz eingerichtet, und die URL-Eigenschaft muss geändert werden, um auf die Anwendungs-URL zu verweisen.
+Alle unten aufgeführten Einrichtungsschritte gelten sowohl für das **Integrationsszenario 1** als auch für das **Szenario 2**. Für das **Integrationsszenario 2** müssen Sie einen individuellen IdP in der Akamai EAA-Instanz einrichten, und die URL-Eigenschaft muss so geändert werden, dass sie auf die Anwendungs-URL verweist.
 
 ![Wichtig](./media/header-akamai-tutorial/important.png)
 
