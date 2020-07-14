@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3709511fa8da0a40f4faf4ab2dac9505d69003ab
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185046"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118510"
 ---
 # <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Tutorial: Verwenden der Referenz zu Resource Manager-Vorlagen
 
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Weitere Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von ARM-Vorlagen](use-vs-code-to-create-template.md).
+* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Weitere Informationen finden Sie unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
@@ -75,7 +75,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="find-the-template-reference"></a>Suchen der Vorlagenreferenz
 
-1. Navigieren Sie zu [Azure-Vorlagenreferenz](https://docs.microsoft.com/azure/templates/).
+1. Navigieren Sie zu [Azure-Vorlagenreferenz](/azure/templates/).
 1. Geben Sie im Feld **Nach Titel filtern** den Text **Speicherkonten** ein, und wählen Sie unter **Referenz > Storage** die ersten **Speicherkonten** aus.
 
     ![Resource Manager: Vorlagenreferenz -> Speicherkonto](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)

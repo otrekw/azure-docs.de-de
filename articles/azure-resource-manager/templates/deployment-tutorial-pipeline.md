@@ -4,12 +4,12 @@ description: Hier finden Sie Informationen zum kontinuierlichen Erstellen, Teste
 ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731933"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118918"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines
 
@@ -39,8 +39,8 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 * **Ein GitHub-Konto** zum Erstellen eines Repositorys für Ihre Vorlagen. Falls Sie keines haben, können Sie [kostenlos eines erstellen](https://github.com). Weitere Informationen zur Verwendung von GitHub-Repositorys finden Sie unter [Build GitHub repositories](/azure/devops/pipelines/repos/github) (Erstellen von GitHub-Repositorys).
 * **Git installieren**. In diesem Tutorial wird *Git Bash* oder *Git Shell* verwendet. Eine entsprechende Anleitung finden Sie unter [Install Git]( https://www.atlassian.com/git/tutorials/install-git) (Installieren von Git).
-* **Eine Azure DevOps-Organisation.** Sollten Sie über keine Organisation verfügen, können Sie kostenlos eine Organisation erstellen. Weitere Informationen finden Sie unter [Quickstart: Create an organization or project collection]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops) (Schnellstart: Erstellen einer Organisation oder einer Projektsammlung).
-* (Optional) **Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“** . Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](use-vs-code-to-create-template.md).
+* **Eine Azure DevOps-Organisation.** Sollten Sie über keine Organisation verfügen, können Sie kostenlos eine Organisation erstellen. Weitere Informationen finden Sie unter [Quickstart: Create an organization or project collection](/azure/devops/organizations/accounts/create-organization?view=azure-devops) (Schnellstart: Erstellen einer Organisation oder einer Projektsammlung).
+* (Optional) **Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“** . Weitere Informationen finden Sie unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="prepare-a-github-repository"></a>ein GitHub-Repository erstellen
 

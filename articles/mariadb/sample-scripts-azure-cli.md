@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 3/18/2020
-ms.openlocfilehash: d10d5b4885e826da9b6efd95dfc02940e1a9644a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8579f9294f55293cd32c8dfc1c13f9d4570aed67
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79529967"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110333"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>Azure CLI-Beispiele für Azure Database for MariaDB 
 Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Database for MariaDB.
 
-| |  |
+| Beispiellink | BESCHREIBUNG  |
 |---|---|
 |**Erstellen eines Servers**||
 | [Erstellen eines Servers und einer Firewallregel](./scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Ein Azure CLI-Skript, das einen Azure Database for MariaDB-Server erstellt und eine Firewallregel auf Serverebene konfiguriert |

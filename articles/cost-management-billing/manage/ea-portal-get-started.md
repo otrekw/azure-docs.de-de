@@ -3,16 +3,16 @@ title: Erste Schritte mit dem Azure Enterprise Portal
 description: In diesem Artikel wird erläutert, wie Azure EA-Kunden (Azure Enterprise Agreement) das Azure Enterprise Portal verwenden.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/29/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 6b31f3cd8ca6baa2d20d0281de51ed83424eca17
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 2d4fbf90afa93f3dbde12a3bc5ce02f9a60b6c5d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560366"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044956"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Erste Schritte mit dem Azure Enterprise Portal
 
@@ -372,7 +372,7 @@ Wenn Ihr Enterprise Agreement kein Supportabonnement umfasst und Sie dem Azure E
 
 ## <a name="view-usage-summary-and-download-reports"></a>Anzeigen der Verwendungszusammenfassung und Herunterladen von Berichten
 
-Unternehmensadministratoren können eine Zusammenfassung ihrer Nutzungsdaten, den genutzten Mindestverbrauch und die Gebühren für die zusätzliche Nutzung im Azure Enterprise Portal anzeigen. Die Gebühren werden auf der Übersichtsebene für alle Konten und Abonnements angezeigt.
+Unternehmensadministratoren können eine Zusammenfassung ihrer Nutzungsdaten, die in Anspruch genommene Azure-Vorauszahlung und die Gebühren für die zusätzliche Nutzung im Azure Enterprise Portal anzeigen. Die Gebühren werden auf der Übersichtsebene für alle Konten und Abonnements angezeigt.
 
 Laden Sie den Bericht mit den Nutzungsdetails herunter, um die ausführliche Nutzung für bestimmte Konten anzuzeigen:
 
@@ -390,7 +390,7 @@ So zeigen Sie die zusammengefassten Nutzungsberichte und -diagramme an:
 
 1. Melden Sie sich beim Azure Enterprise Portal an.
 
-1. Wählen Sie einen Zeitraum aus.
+1. Wählen Sie eine Laufzeit für die Vorauszahlung aus.
 
    Um den Datumsbereich für die **Nutzungszusammenfassung** zu ändern, können Sie in der rechten oberen Ecke der Seite von **M** (monatlich) zu **C** (benutzerdefiniert) wechseln und dann das benutzerdefinierte Start- und Enddatum eingeben.
 
@@ -455,7 +455,7 @@ Das Azure Enterprise Portal filtert inaktive Registrierungen aus der Ansicht her
 - **Konto:** Eine Organisationseinheit im Azure Enterprise Portal. Sie wird zur Abonnementverwaltung und Berichterstellung verwendet.
 - **Kontobesitzer:** Die Person, die Abonnements und Dienstadministratoren in Azure verwaltet. Kontobesitzer können Nutzungsdaten für dieses Konto und die zugehörigen Abonnements anzeigen.
 - **Zusatzabonnement:** Ein Jahres- oder Anschlussabonnement unter der Registrierungszusatzvereinbarung.
-- **Prepaidtarif:** Prepaidtarif in Form eines jährlichen Geldbetrags für Azure-Dienste zu einem rabattierten Satz für die Nutzung im Rahmen dieser Vorauszahlung.
+- **Vorauszahlung:** Vorauszahlung in Form eines jährlichen Geldbetrags für Azure-Dienste zu einem rabattierten Vorauszahlungssatz für die Nutzung im Rahmen dieser Vorauszahlung.
 - **Abteilungsadministrator:** Die Person, die Abteilungen verwalten, neue Konten und Kontobesitzer erstellen, Nutzungsdetails für die von ihr verwalteten Abteilungen einsehen sowie bei entsprechender Berechtigung Kosten anzeigen kann.
 - **Registrierungsnummer:** Ein eindeutiger, von Microsoft bereitgestellter Bezeichner zur Identifizierung der spezifischen Registrierung, die einem Enterprise Agreement zugeordnet ist.
 - **Unternehmensadministrator:** Die Person, die Abteilungen, Abteilungsbesitzer, Konten und Kontobesitzer in Azure verwaltet. Diese Personen können sowohl Unternehmensadministratoren verwalten als auch Nutzungsdaten, in Rechnung gestellte Mengen sowie nicht in Rechnung gestellte Gebühren für alle Konten und Abonnements anzeigen, die der Unternehmensregistrierung zugeordnet sind.
@@ -472,13 +472,13 @@ Das Azure Enterprise Portal filtert inaktive Registrierungen aus der Ansicht her
 ### <a name="enrollment-statuses"></a>Registrierungsstatus
 
 - **Neu:** Dieser Status wird einer Registrierung zugewiesen, die innerhalb von 24 Stunden erstellt wurde. Er wird innerhalb von 24 Stunden auf den Status „Ausstehend“ aktualisiert.
-- **Ausstehend**: Der Registrierungsadministrator muss sich beim Azure Enterprise Portal anmelden. Nach der Anmeldung wechselt die Registrierung den Status „Aktiv“.
+- **Pending**: Der Registrierungsadministrator muss sich beim Azure Enterprise Portal anmelden. Nach der Anmeldung wechselt die Registrierung den Status „Aktiv“.
 - **Aktiv:** Die Registrierung ist aktiv, und Konten und Abonnements können im Azure Enterprise Portal erstellt werden. Die Registrierung bleibt bis zum Enddatum des Enterprise Agreements aktiv.
 - **Indefinite Extended Term** (Unbestimmte Laufzeitverlängerung): Eine unbestimmte Laufzeitverlängerung tritt ein, wenn das Enddatum des Enterprise Agreements überschritten wurde. Mit diesem Status können Azure EA-Kunden, die sich für die Laufzeitverlängerung entschieden haben, Azure-Dienste am Ende ihres Enterprise Agreements unbefristet weiterverwenden.
 
    Bevor die Azure EA-Registrierung das Enddatum des Enterprise Agreements erreicht, muss der Registrierungsadministrator sich für eine der folgenden Optionen entscheiden:
 
-  - Verlängern der Registrierung durch Hinzufügen eines zusätzlichen Mindestverbrauchs
+  - Verlängern der Registrierung durch Hinzufügen einer zusätzlichen Azure-Vorauszahlung
   - Übertragen auf eine neue Registrierung
   - Migrieren zum Microsoft Online Subscription-Programm (MOSP)
   - Bestätigen der Deaktivierung aller Dienste, die der Registrierung zugeordnet sind

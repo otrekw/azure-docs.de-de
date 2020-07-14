@@ -4,14 +4,14 @@ description: Hier finden Sie Azure CLI-Beispiele für einige gängige App Servic
 tags: azure-service-management
 ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
-ms.date: 12/12/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 857d6cdc26e41f5ea7b1d66aaff6efb4056c47c4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: ce10c0e95d77103f386174c7bd0ffd56adff871b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254496"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054541"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>CLI-Beispiele für Azure App Service
 
@@ -25,7 +25,8 @@ Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe der Azure CLI 
 | [Erstellen einer App mit Continuous Deployment über GitHub](./scripts/cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine App Service-App mit kontinuierlicher Veröffentlichung aus einem GitHub-Repository, das sich in Ihrem Besitz befindet. |
 | [Erstellen einer App und Bereitstellen von Code über ein lokales GitHub-Repository](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt eine App Service-App und konfiguriert einen Codepush aus einem lokalen Git-Repository. |
 | [Erstellen einer App und Bereitstellen von Code in einer Stagingumgebung](./scripts/cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt eine App Service-App mit einem Bereitstellungsslot für Änderungen am Stagingcode. |
-| [Erstellen einer ASP.NET Core-App in einem Docker-Container](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine App Service-App unter Linux und lädt ein Docker-Image aus Docker Hub. |
+| [Erstellen einer ASP.NET Core-App in einem Docker-Container](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt eine App Service-App unter Linux und lädt ein Docker-Image aus Docker Hub. |
+| [Erstellen einer App und Verfügbarmachen der App mit einem privaten Endpunkt](./scripts/cli-deploy-privateendpoint.md?toc=%2fcli%2fazure%2ftoc.json) | Hier werden eine App Service-App und ein privater Endpunkt erstellt. |
 |**Konfigurieren der App**||
 | [Zuordnen einer benutzerdefinierten Domäne zu einer App](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine App Service-App und ordnet ihr einen benutzerdefinierten Domänennamen zu. |
 | [Binden eines benutzerdefinierten TLS-/SSL-Zertifikats an eine App](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine App Service-App und bindet das TLS-/SSL-Zertifikat eines benutzerdefinierten Domänennamens an die App. |

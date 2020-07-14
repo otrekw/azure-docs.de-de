@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 37f1f129122a64dc27227bee8a267702c7f9d903
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 40dd7f1b177fd1319b145036c8263ba2c6e30137
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733669"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024671"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Tutorial: Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services (Vorschauversion)
 
@@ -45,7 +45,9 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * [Erstellen und konfigurieren Sie eine verwaltete Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance-advanced], sofern erforderlich.
     
     > [!IMPORTANT]
-    > Erstellen Sie unbedingt eine verwaltete Domäne mithilfe einer *Ressourcengesamtstruktur*. Mit der Standardoption wird eine *Benutzergesamtstruktur* erstellt. Nur Ressourcengesamtstrukturen können Vertrauensstellungen für lokale AD DS-Umgebungen erstellen. Sie müssen außerdem mindestens ein *Enterprise*-SKU für Ihre verwaltete Domäne verwenden. [Ändern Sie die SKU ggf. in eine verwaltete Domäne.][howto-change-sku]
+    > Erstellen Sie unbedingt eine verwaltete Domäne mithilfe einer *Ressourcengesamtstruktur*. Mit der Standardoption wird eine *Benutzergesamtstruktur* erstellt. Nur Ressourcengesamtstrukturen können Vertrauensstellungen für lokale AD DS-Umgebungen erstellen.
+    >
+    > Sie müssen außerdem mindestens ein *Enterprise*-SKU für Ihre verwaltete Domäne verwenden. [Ändern Sie die SKU ggf. in eine verwaltete Domäne.][howto-change-sku]
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -72,7 +74,7 @@ Bevor Sie eine Gesamtstruktur-Vertrauensstellung in Azure AD DS konfigurieren, s
 Um die verwaltete Domäne ordnungsgemäß aus der lokalen Umgebung aufzulösen, müssen Sie möglicherweise Weiterleitungen zu den vorhandenen DNS-Servern hinzufügen. Wenn Sie die lokale Umgebung nicht für die Kommunikation mit der verwalteten Domäne konfiguriert haben, führen Sie auf einer Verwaltungsarbeitsstation die folgenden Schritte für die lokale AD DS-Domäne aus:
 
 1. Wählen Sie **Start | Verwaltung | DNS** aus.
-1. Klicken Sie mit der rechten Maustaste auf den DNS-Server, z. B. *meinAD01*, und wählen Sie **Eigenschaften** aus.
+1. Klicken Sie mit der rechten Maustaste auf den DNS-Server (beispielsweise *myAD01*), und wählen Sie **Eigenschaften** aus.
 1. Wählen Sie **Weiterleitungen** und dann **Bearbeiten** aus, um weitere Weiterleitungen hinzuzufügen.
 1. Fügen Sie die IP-Adressen der verwalteten Domäne hinzu, z. B. *10.0.2.4* und *10.0.2.5*.
 
@@ -83,9 +85,9 @@ Für die lokale AD DS-Domäne ist eine eingehende Gesamtstruktur-Vertrauensstel
 Um die eingehende Vertrauensstellung in der lokalen AD DS-Domäne zu konfigurieren, führen Sie für die lokale AD DS-Domäne die folgenden Schritte auf einer Verwaltungsarbeitsstation aus:
 
 1. Wählen Sie **Start | Verwaltung | Active Directory-Domänen und -Vertrauensstellungen** aus.
-1. Wählen Sie mit der rechten Maustaste eine Domäne aus, z. B. *onprem.contoso.com*, und wählen Sie **Eigenschaften** aus.
+1. Klicken Sie mit der rechten Maustaste auf eine Domäne (beispielsweise *onprem.contoso.com*), und wählen Sie anschließend **Eigenschaften** aus.
 1. Wählen Sie die Registerkarte **Vertrauensstellungen** aus, und wählen Sie dann **Neue Vertrauensstellung** aus.
-1. Geben Sie einen Namen für die Azure AD DS-Domäne ein, z. B. *aaddscontoso.com*, und wählen Sie dann **Weiter** aus.
+1. Geben Sie einen Namen für die Azure AD DS-Domäne ein (beispielsweise *aaddscontoso.com*), und wählen Sie anschließend **Weiter** aus.
 1. Wählen Sie die Option zum Erstellen einer **Gesamtstruktur-Vertrauenswürdigkeit** und dann die Option zum Erstellen einer **Unidirektional: eingehend**-Vertrauensstellung aus.
 1. Wählen Sie die Option aus, mit der die Vertrauensstellung **Nur für diese Domäne** erstellt wird. Im nächsten Schritt erstellen Sie die Vertrauensstellung im Azure-Portal für die verwaltete Domäne.
 1. Wählen Sie die Option zum Verwenden von **Gesamtstrukturweite Authentifizierung** aus, und geben Sie dann ein Vertrauensstellungskennwort ein. Dasselbe Kennwort wird auch im Azure-Portal im nächsten Abschnitt eingegeben.
@@ -94,7 +96,7 @@ Um die eingehende Vertrauensstellung in der lokalen AD DS-Domäne zu konfigurier
 
 ## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung in Azure AD DS
 
-Nachdem Sie die lokale AD DS-Domäne konfiguriert haben, um die verwaltete Domäne aufzulösen, und eine eingehende Gesamtstruktur-Vertrauensstellung erstellt haben, erstellen Sie nun die ausgehende Gesamtstruktur-Vertrauensstellung. Diese ausgehende Gesamtstruktur-Vertrauensstellung schließt die Vertrauensstellung zwischen der lokalen AD DS-Domäne und der verwalteten Domäne ab.
+Nachdem Sie die lokale AD DS-Domäne konfiguriert haben, um die verwaltete Domäne aufzulösen, und eine eingehende Gesamtstruktur-Vertrauensstellung erstellt haben, können Sie nun die ausgehende Gesamtstruktur-Vertrauensstellung erstellen. Diese ausgehende Gesamtstruktur-Vertrauensstellung schließt die Vertrauensstellung zwischen der lokalen AD DS-Domäne und der verwalteten Domäne ab.
 
 Führen Sie die folgenden Schritte aus, um die ausgehende Vertrauensstellung für die verwaltete Domäne im Azure-Portal zu erstellen:
 
@@ -124,7 +126,7 @@ Mit den folgenden gängigen Szenarien können Sie überprüfen, ob die Gesamtstr
 
 ### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>Lokale Benutzerauthentifizierung aus der Azure AD DS-Ressourcengesamtstruktur
 
-Sie sollten den virtuellen Windows Server-Computer mit der Azure AD DS-Ressourcendomäne verknüpft haben. Verwenden Sie diesen virtuellen Computer, um zu testen, ob der lokale Benutzer sich bei einem virtuellen Computer authentifizieren kann.
+Der virtuelle Windows Server-Computer muss mit der verwalteten Domäne verknüpft sein. Verwenden Sie diesen virtuellen Computer, um zu testen, ob der lokale Benutzer sich bei einem virtuellen Computer authentifizieren kann. Bei Bedarf können Sie [einen virtuellen Windows-Computer erstellen und mit der verwalteten Domäne verknüpfen][join-windows-vm].
 
 1. Stellen Sie über [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) und Ihre Azure AD DS-Administratoranmeldeinformationen eine Verbindung mit dem virtuellen Windows Server-Computer her, der mit der Azure AD DS-Ressourcengesamtstruktur verknüpft ist.
 1. Öffnen Sie eine Eingabeaufforderung, und verwenden Sie den `whoami`-Befehl, um den kennzeichnenden Namen (distinguished name) des derzeit authentifizierten Benutzers anzuzeigen:
@@ -167,7 +169,7 @@ Mit dem virtuellen Windows Server-Computer, der mit der Azure AD DS-Ressourcenge
 1. Geben Sie *Domänenbenutzer* in das Feld **Geben Sie die zu verwendenden Objektnamen ein** ein. Wählen Sie **Namen überprüfen** aus, geben Sie die Anmeldeinformationen für das lokale Active Directory an, und wählen Sie dann **OK** aus.
 
     > [!NOTE]
-    > Sie müssen Anmeldeinformationen angeben, weil die Vertrauensstellung nur unidirektional ist. Das heißt, dass Benutzer aus Azure AD DS weder auf Ressourcen in der vertrauenswürdigen (lokalen) Domäne zugreifen noch dort nach Benutzern oder Gruppen suchen können.
+    > Sie müssen Anmeldeinformationen angeben, weil die Vertrauensstellung nur unidirektional ist. Das heißt, dass Benutzer aus der verwalteten Azure AD DS-Domäne weder auf Ressourcen in der vertrauenswürdigen (lokalen) Domäne zugreifen noch dort nach Benutzern oder Gruppen suchen können.
 
 1. Die Gruppe **Domänenbenutzer** aus Ihrem lokalen Active Directory muss Mitglied der Gruppe **Dateiserverzugriff** sein. Wählen Sie **OK** aus, um die Gruppe zu speichern und das Fenster zu schließen.
 
@@ -216,3 +218,4 @@ Weitere konzeptbezogene Informationen zu Gesamtstrukturtypen in Azure AD DS fi
 [howto-change-sku]: change-sku.md
 [vpn-gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
 [expressroute]: ../expressroute/expressroute-introduction.md
+[join-windows-vm]: join-windows-vm.md

@@ -4,18 +4,18 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7943ea13d93fa68b76d333bda5438fb5738f5cd1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67178169"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050284"
 ---
 ## <a name="c-program-example"></a>Beispiel für C#-Programm
 
-In den nächsten Abschnitten dieses Artikels wird ein C#-Programm vorgestellt, das ADO.NET zum Senden von Transact-SQL-Anweisungen (T-SQL) an die SQL-Datenbank verwendet. Mit dem C#-Programm werden die folgenden Aktionen gezeigt:
+In den nächsten Abschnitten dieses Artikels wird ein C#-Programm vorgestellt, das ADO.NET zum Senden von Transact-SQL-Anweisungen (T-SQL) an SQL-Datenbank verwendet. Mit dem C#-Programm werden die folgenden Aktionen gezeigt:
 
-- [Verbinden mit der SQL-Datenbank über ADO.NET](#cs_1_connect)
+- [Herstellen einer Verbindung mit SQL-Datenbank über ADO.NET](#cs_1_connect)
 - [Methoden, die T-SQL-Anweisungen zurückgeben](#cs_2_return)
     - Erstellen von Tabellen
     - Auffüllen von Tabellen mit Daten
@@ -82,7 +82,7 @@ Das C#-Programm ist logisch eine CS-Datei und physisch in mehrere Codeblöcke un
 
 <a name="cs_1_connect"/>
 
-### <a name="connect-to-sql-database-using-adonet"></a>Verbinden mit der SQL-Datenbank über ADO.NET
+### <a name="connect-to-sql-database-using-adonet"></a>Herstellen einer Verbindung mit SQL-Datenbank über ADO.NET
 
 ```csharp
 using System;

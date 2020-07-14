@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d3f3842265e0c8a36c7eb4b14abca771bd3d38f2
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b8263e0445f7997469ba9165decbaccfa9ed2d6e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918927"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027849"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Tutorial: Anomalieerkennung für Streamingdaten mit Azure Databricks
 
@@ -41,7 +41,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 > [!Note]
 > * Dieses Tutorial erläutert einen Ansatz zum Implementieren der empfohlenen [Lösungsarchitektur](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) für die Anomalieerkennungs-API.
-> * Dieses Tutorial kann nicht mit einer kostenlosen Testversion für die Anomalieerkennungs-API oder Azure Databricks abgeschlossen werden. 
+> * Dieses Tutorial kann nicht mit einem kostenlosen Abonnement (`F0`) für die Anomalieerkennungs-API oder für Azure Databricks abgeschlossen werden. 
 
 Erstellen Sie ein [Azure-Abonnement](https://azure.microsoft.com/free/), wenn Sie noch keins besitzen.
 
@@ -165,7 +165,7 @@ In diesem Tutorial verwenden Sie die [Anomalieerkennungs-APIs von Azure Cognitiv
     |---------|---------|
     |Name     | Ein Name für die Anomalieerkennungsressource        |
     |Subscription     | Das Azure-Abonnement, dem die Ressource zugeordnet wird        |
-    |Position     | Ein Azure-Standort        |
+    |Standort     | Ein Azure-Standort        |
     |Tarif     | Ein Tarif für den Dienst. Weitere Informationen zu den Preisen für die Anomalieerkennung finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
     |Resource group     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene auswählen möchten.        |
 

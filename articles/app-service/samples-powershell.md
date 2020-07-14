@@ -4,14 +4,14 @@ description: Hier finden Sie Azure PowerShell-Beispiele für einige gängige App
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
-ms.date: 03/08/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 6300b9fe10d7b12d71f87adec85d3a86658a8c97
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 51693ad4d233ea180607bc7358a0847e23688099
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254479"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057907"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>PowerShell-Beispiele für Azure App Service
 
@@ -25,6 +25,7 @@ Die folgende Tabelle enthält Links zu PowerShell-Skripts, die mithilfe von Azur
 | [Erstellen einer App und Bereitstellen von Code mit FTP](./scripts/powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt eine App Service-App und lädt Dateien aus einem lokalen Verzeichnis per FTP hoch. |
 | [Erstellen einer App und Bereitstellen von Code über ein lokales GitHub-Repository](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt eine App Service-App und konfiguriert einen Codepush aus einem lokalen Git-Repository. |
 | [Erstellen einer App und Bereitstellen von Code in einer Stagingumgebung](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt eine App Service-App mit einem Bereitstellungsslot für Änderungen am Stagingcode. |
+|  [Erstellen einer App und Verfügbarmachen Ihrer App mit einem privaten Endpunkt](./scripts/powershell-deploy-private-endpoint.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Hier wird eine App Service-App mit einem privaten Endpunkt erstellt. |
 |**Konfigurieren der App**||
 | [Zuordnen einer benutzerdefinierten Domäne zu einer App](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellt eine App Service-App und ordnet ihr einen benutzerdefinierten Domänennamen zu. |
 | [Binden eines benutzerdefinierten TLS-/SSL-Zertifikats an eine App](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellt eine App Service-App und bindet das TLS-/SSL-Zertifikat eines benutzerdefinierten Domänennamens an die App. |

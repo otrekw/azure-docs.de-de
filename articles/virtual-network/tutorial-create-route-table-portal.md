@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 854bf2d1ed2155290c2ecebd17695049fdd0c8bb
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314285"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079648"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Tutorial: Weiterleiten von Netzwerkdatenverkehr mithilfe des Azure-Portals
 
@@ -131,7 +131,7 @@ Virtuelle Netzwerkgeräte (NVAs) sind VMs, die Netzwerkfunktionen unterstützen,
     | Name | *myRouteTablePublic* |
     | Subscription | Ihr Abonnement |
     | Resource group | **myResourceGroup** |
-    | Position | **USA, Osten** |
+    | Standort | **(USA) USA, Osten** |
     | Routenverteilung des Gateways für virtuelle Netzwerke | **Aktiviert** |
 
     ![Routingtabelle erstellen, Azure-Portal](./media/tutorial-create-route-table-portal/create-route-table.png)
@@ -359,3 +359,6 @@ Sie können zwar viele Azure-Ressourcen in einem virtuellen Netzwerk bereitstell
 
 > [!div class="nextstepaction"]
 > [Beschränken des Netzwerkzugriffs auf PaaS-Ressourcen](tutorial-restrict-network-access-to-resources.md)
+
+> [!NOTE] 
+> Azure-Dienste kosten Geld. Mit Azure Cost Management können Sie Budgets festlegen und Warnungen konfigurieren, um die Kontrolle über Ihre Ausgaben zu behalten. Analysieren, verwalten und optimieren Sie Ihre Azure-Kosten mit Cost Management. Weitere Informationen finden Sie in der [Schnellstartanleitung zur Kostenanalyse](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

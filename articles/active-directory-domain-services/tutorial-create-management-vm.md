@@ -7,20 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: f0b6e66a0d3a78a62fe105a175a7a519d0b37ccd
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: afeac24a5d3c21fce120512813d68c49a505c6c1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733414"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024603"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Erstellen einer Verwaltungs-VM zum Konfigurieren und Verwalten einer verwalteten Azure Active Directory Domain Services-Domäne
 
 Azure Active Directory Domain Services (Azure AD DS) stellt verwaltete Domänendienste bereit, z. B. Domänenbeitritt, Gruppenrichtlinie, LDAP und Kerberos-/NTLM-Authentifizierung, die mit Windows Server Active Directory vollständig kompatibel sind. Sie verwalten diese verwaltete Domäne mit den gleichen Remoteserver-Verwaltungstools (Remote Server Administration Tools, RSAT) wie eine lokale Active Directory Domain Services-Domäne. Da Azure AD DS ein verwalteter Dienst ist, können Sie einige administrative Aufgaben nicht ausführen. Beispielsweise können Sie mit dem Remotedesktopprotokoll (RDP) keine Verbindung mit den Domänencontrollern (DCs) herstellen.
 
-In diesem Tutorial wird gezeigt, wie Sie eine Windows Server-VM in Azure erstellen und die erforderlichen Tools zum Verwalten einer verwalteten Azure AD DS-Domäne installieren.
+In diesem Tutorial erfahren Sie, wie Sie einen virtuellen Windows Server-Computer in Azure konfigurieren und die erforderlichen Tools zum Verwalten einer verwalteten Azure AD DS-Domäne installieren.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -75,7 +75,7 @@ Die verwaltete Domäne ist gesperrt, sodass Sie für bestimmte administrative Au
 
 ## <a name="sign-in-to-the-windows-server-vm"></a>Anmelden bei der Windows-VM
 
-Im vorherigen Tutorial wurde eine Windows Server-VM erstellt und in die verwaltete Domäne eingebunden. Diese VM verwenden Sie nun, um die Verwaltungstools zu installieren. Führen Sie ggf. die [Schritte im Tutorial zum Erstellen einer Windows Server-VM und Einbinden der VM in eine verwaltete Domäne][create-join-windows-vm] aus.
+Im vorherigen Tutorial wurde eine Windows Server-VM erstellt und in die verwaltete Domäne eingebunden. Verwenden Sie diesen virtuellen Computer, um die Verwaltungstools zu installieren. Führen Sie ggf. die [Schritte im Tutorial zum Erstellen einer Windows Server-VM und Einbinden der VM in eine verwaltete Domäne][create-join-windows-vm] aus.
 
 > [!NOTE]
 > In diesem Tutorial verwenden Sie eine Windows Server-VM in Azure, die in die verwaltete Domäne eingebunden ist. Sie können auch einen in die verwaltete Domäne eingebundenen Windows-Client (z. B. Windows 10) verwenden.
@@ -97,7 +97,7 @@ Lassen Sie in Ihrem Webbrowser bei Bedarf das Öffnen von Popups zu, damit die B
 
 ## <a name="install-active-directory-administrative-tools"></a>Installieren der Active Directory-Verwaltungstools
 
-Verwaltete Domänen werden mit den gleichen Verwaltungstools verwaltet wie lokale AD DS-Umgebungen, beispielsweise mit dem Active Directory-Verwaltungscenter (Active Directory Administrative Center, ADAC) oder AD PowerShell. Diese Tools können als Teil des RSAT-Features auf Windows Server- und Windows-Clientcomputern installiert werden. Mitglieder der Gruppe der *AAD-DC-Administratoren* können verwaltete Domänen dann auf einem in die verwaltete Domäne eingebundenen Computer remote mit den AD-Verwaltungstools verwalten.
+In einer verwalteten Domäne werden die gleichen Verwaltungstools verwendet wie in lokalen AD DS-Umgebungen. Hierzu zählen beispielsweise das Active Directory-Verwaltungscenter (Active Directory Administrative Center, ADAC) und AD PowerShell. Diese Tools können als Teil des RSAT-Features auf Windows Server- und Windows-Clientcomputern installiert werden. Mitglieder der Gruppe der *AAD-DC-Administratoren* können verwaltete Domänen dann auf einem in die verwaltete Domäne eingebundenen Computer remote mit den AD-Verwaltungstools verwalten.
 
 Führen Sie die folgenden Schritte aus, um die Active Directory-Verwaltungstools auf einer in die Domäne eingebundenen VM zu installieren:
 
@@ -125,7 +125,7 @@ Nachdem Sie die Verwaltungstools installiert haben, sehen wir uns nun an, wie Si
     ![Liste der auf dem Server installierten Verwaltungstools](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. Wählen Sie **Active Directory-Verwaltungscenter** aus.
-1. Wählen Sie zum Durchsuchen der verwalteten Domäne im linken Bereich den Domänennamen aus (z. B. *aaddscontoso.com*). Am Anfang der Liste sehen Sie zwei Container mit den Namen *AADDC Computers* (Azure AD-DC-Computer) und *AADDC Users* (Azure AD-DC-Benutzer).
+1. Wählen Sie zum Durchsuchen der verwalteten Domäne im linken Bereich den Domänennamen aus (beispielsweise *aaddscontoso*). Am Anfang der Liste sehen Sie zwei Container mit den Namen *AADDC Computers* (Azure AD-DC-Computer) und *AADDC Users* (Azure AD-DC-Benutzer).
 
     ![Liste der verfügbaren Container, die Teil der verwalteten Domäne sind](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 
@@ -135,7 +135,7 @@ Nachdem Sie die Verwaltungstools installiert haben, sehen wir uns nun an, wie Si
 
     ![Anzeigen der Liste der Azure AD DS-Domänenbenutzer im Active Directory-Verwaltungscenter](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
-1. Wählen Sie den Container **AADDC Computers** (Azure AD-DC-Computer) aus, um die Computer anzuzeigen, die in die verwaltete Domäne eingebunden sind. Ein Eintrag für die aktuelle VM (z. B. *myVM*) wird angezeigt. Computerkonten für alle in die verwaltete Domäne eingebundenen Computer werden im Container *AADDC Computers* (Azure AD-DC-Computer) gespeichert.
+1. Wählen Sie den Container **AADDC Computers** (Azure AD-DC-Computer) aus, um die Computer anzuzeigen, die in die verwaltete Domäne eingebunden sind. Ein Eintrag für die aktuelle VM (z. B. *myVM*) wird angezeigt. Computerkonten für alle in die verwaltete Domäne eingebundenen Geräte werden im Container *AADDC Computers* (Azure AD-DC-Computer) gespeichert.
 
 Allgemeine Aktionen im Active Directory-Verwaltungscenter wie das Zurücksetzen des Kennworts für ein Benutzerkonto oder Verwalten der Gruppenmitgliedschaft sind verfügbar. Diese Aktionen können nur für Benutzer und Gruppen ausgeführt werden, die direkt in der verwalteten Domäne erstellt wurden. Identitätsinformationen werden nur *aus* Azure AD mit Azure AD DS synchronisiert. Es werden keine Daten aus Azure AD DS in Azure AD zurückgeschrieben. Sie können Kennwörter oder die Mitgliedschaft in verwalteten Gruppen für Benutzer, die aus Azure AD synchronisiert wurden, nicht ändern und die Änderungen wieder mit Azure AD synchronisieren.
 
@@ -150,7 +150,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Installieren der Active Directory-Verwaltungstools auf einer Windows Server-VM
 > * Verwenden des Active Directory-Verwaltungscenters zum Ausführen allgemeiner Aufgaben
 
-Aktivieren Sie zur sicheren Interaktion mit Ihrer verwalteten Domäne Secure LDAP (Lightweight Directory Access Protocol).
+Aktivieren Sie sicheres LDAP (Secure Lightweight Directory Access Protocol, LDAPS), um sicher von anderen Anwendungen aus mit Ihrer verwalteten Domäne interagieren zu können.
 
 > [!div class="nextstepaction"]
 > [Configure secure LDAP for your managed domain](tutorial-configure-ldaps.md) (Konfigurieren von sicherem LDAP für eine verwaltete Domäne)

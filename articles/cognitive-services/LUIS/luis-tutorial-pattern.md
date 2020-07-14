@@ -2,13 +2,13 @@
 title: 'Tutorial: Muster: LUIS'
 description: In diesem Tutorial werden Muster verwendet, um die Vorhersage von Absichten und Entitäten zu verbessern und zugleich weniger Beispieläußerungen anzugeben. Das Muster wird als Beispiel für eine Vorlagenäußerung bereitgestellt, die die Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält.
 ms.topic: tutorial
-ms.date: 05/07/2020
-ms.openlocfilehash: c9bbd521d49d669e8ebd18b29bda9f2add8f7739
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/06/2020
+ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592915"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039499"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Tutorial: Hinzufügen von Formaten für allgemeine Mustervorlagen, um Vorhersagen zu verbessern
 
@@ -39,12 +39,10 @@ Ein Muster wird als Kombination aus der Suche nach Übereinstimmungen mit Text u
 
 Führen Sie die folgenden Schritte durch:
 
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true) herunter, und speichern Sie sie.
+1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/tutorial-fix-unsure-predictions.json?raw=true) herunter, und speichern Sie sie.
 
 1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie Ihr **Abonnement** und Ihre **Erstellungsressource** aus, um die Apps anzuzeigen, die dieser Erstellungsressource zugewiesen sind.
-1. Importieren Sie die JSON-Datei im [LUIS-Portal](https://www.luis.ai) in eine neue App. Wählen Sie auf der Seite **Meine Apps** die Option **+ Neue App für Unterhaltung** und dann **Als JSON importieren** aus. Wählen Sie die Datei aus, die Sie im vorherigen Schritt heruntergeladen haben.
-
-1. Wählen Sie auf der Registerkarte **Versionen** im Abschnitt **Verwalten** die aktive Version und dann **Klonen** aus. Geben Sie für die geklonte Version den Namen `patterns` an. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
+1. Importieren Sie die JSON-Datei im [LUIS-Portal](https://www.luis.ai) in eine neue App. Wählen Sie auf der Seite **Meine Apps** die Option **+ Neue App für Unterhaltung** und dann **Als JSON importieren** aus. Wählen Sie die Datei aus, die Sie im vorherigen Schritt heruntergeladen haben, und nennen Sie die App `Patterns tutorial`.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Erstellen neuer Absichten samt Äußerungen
 
@@ -67,8 +65,6 @@ Die beiden Absichten ermitteln basierend auf dem Äußerungstext den Verwalter o
     |`Who is John W. Smith's manager?`|
     |`Who does Jill Jones directly report to?`|
     |`Who is Jill Jones supervisor?`|
-
-    Möglicherweise wird auch die keyPhrase-Entität in den Äußerungen der Absicht bezeichnet, anstelle der Employee-Entität. Beide werden im Testbereich und am Endpunkt korrekt vorhergesagt.
 
 1. Klicken Sie im linken Navigationsbereich auf **Absichten**.
 
@@ -109,50 +105,50 @@ Die beiden Absichten ermitteln basierend auf dem Äußerungstext den Verwalter o
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.313054234
+                    "score": 0.326605469
                 },
                 "OrgChart-Reports": {
-                    "score": 0.2462688
+                    "score": 0.127583548
                 },
                 "EmployeeFeedback": {
-                    "score": 0.0488328524
-                },
-                "GetJobInformation": {
-                    "score": 0.0156933
+                    "score": 0.0299124215
                 },
                 "MoveEmployee": {
-                    "score": 0.011265873
+                    "score": 0.01159851
                 },
-                "Utilities.StartOver": {
-                    "score": 0.003065792
-                },
-                "Utilities.Stop": {
-                    "score": 0.00300148362
-                },
-                "Utilities.Cancel": {
-                    "score": 0.00271081156
-                },
-                "None": {
-                    "score": 0.00212835032
+                "GetJobInformation": {
+                    "score": 0.0104600191
                 },
                 "ApplyForJob": {
-                    "score": 0.0020669254
+                    "score": 0.007508645
                 },
-                "Utilities.Confirm": {
-                    "score": 0.00200891262
+                "Utilities.StartOver": {
+                    "score": 0.00359402061
+                },
+                "Utilities.Stop": {
+                    "score": 0.00336530479
                 },
                 "FindForm": {
-                    "score": 0.00194145238
+                    "score": 0.002653719
+                },
+                "Utilities.Cancel": {
+                    "score": 0.00263288687
+                },
+                "None": {
+                    "score": 0.00238638581
                 },
                 "Utilities.Help": {
-                    "score": 0.00182301877
+                    "score": 0.00226386427
+                },
+                "Utilities.Confirm": {
+                    "score": 0.00211663754
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -171,9 +167,9 @@ Die beiden Absichten ermitteln basierend auf dem Äußerungstext den Verwalter o
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -190,13 +186,9 @@ Die beiden Absichten ermitteln basierend auf dem Äußerungstext den Verwalter o
     }
     ```
 
-Die Ergebnisse der beiden wichtigsten Absichten liegen nah beieinander, aber die höchstbewertete Absicht ist nicht signifikant hoch (über 60 %) und liegt nicht weit genug über der Bewertung der nächsten Absicht.
+Es wurde zwar die korrekte höchste Absicht (`OrgChart-Manager`) vorhergesagt, das Ergebnis liegt jedoch nicht über 70 Prozent und somit nicht hoch genug über der nächsthöchsten Absicht. Verwenden Sie Muster, um die Bewertung der richtigen Absicht deutlich zu erhöhen (in Prozent) und den Abstand zur nächst höheren Bewertung zu vergrößern.
 
-Da das Trainieren von LUIS nicht jedes Mal identisch abläuft (es gibt geringfügige Abweichungen), könnten sich diese beiden Werte im nächsten Trainingszyklus umkehren. Das Ergebnis ist, dass die falsche Absicht zurückgegeben werden konnte.
-
-Verwenden Sie Muster, um die Bewertung der richtigen Absicht deutlich zu erhöhen (in Prozent) und den Abstand zur nächst höheren Bewertung zu vergrößern.
-
-Lassen Sie das zweite Browserfenster geöffnet. Sie verwenden es später im Tutorial.
+Lassen Sie das zweite Browserfenster geöffnet. Es wird später im Tutorial erneut benötigt.
 
 ## <a name="template-utterances"></a>Vorlagenäußerungen
 Im Themenbereich Personalwesen gibt es einige häufig verwendete Methoden, um Mitarbeiterbeziehungen in Organisationen zu erfragen. Beispiel:
@@ -206,16 +198,16 @@ Im Themenbereich Personalwesen gibt es einige häufig verwendete Methoden, um Mi
 |`Who does Jill Jones report to?`|
 |`Who reports to Jill Jones?`|
 
-Diese Äußerungen sind zu ähnlich, um jeweils ihre kontextbezogene Eindeutigkeit zu ermitteln, ohne zahlreiche Beispieläußerungen anzugeben. Durch Hinzufügen eines Musters für eine Absicht lernt LUIS häufige Muster von Äußerungen für eine Absicht, ohne dass dafür viele Beispieläußerungen angegeben werden müssen.
+Diese Äußerungen sind zu ähnlich, um jeweils ihre kontextbezogene Eindeutigkeit zu ermitteln, ohne _zahlreiche_ Beispieläußerungen anzugeben. Durch Hinzufügen eines Musters für eine Absicht lernt LUIS häufige Muster von Äußerungen für eine Absicht, ohne dass dafür zahlreiche weitere Beispieläußerungen angegeben werden müssen.
 
 Zu den Beispielen für Vorlagenäußerungen zu dieser Absicht gehören:
 
 |Beispiele für Vorlagenäußerungen|Bedeutung der Syntax|
 |--|--|
-|`Who does {Employee} report to[?]`|austauschbar `{Employee}`<br>ignorieren `[?]`|
-|`Who reports to {Employee}[?]`|austauschbar `{Employee}`<br>ignorieren `[?]`|
+|`Who does {EmployeeListEntity} report to[?]`|austauschbar `{EmployeeListEntity}`<br>ignorieren `[?]`|
+|`Who reports to {EmployeeListEntity}[?]`|austauschbar `{EmployeeListEntity}`<br>ignorieren `[?]`|
 
-Die Syntax `{Employee}` markiert die Position der Entität innerhalb der Vorlagenäußerung sowie die Entität selbst. Die optionale Syntax (`[?]`) markiert Wörter oder [Satzzeichen](luis-reference-application-settings.md#punctuation-normalization), die optional sind. LUIS gleicht die Äußerung ab und ignoriert dabei den optionalen Text in den Klammern.
+Die Syntax `{EmployeeListEntity}` markiert die Position der Entität innerhalb der Vorlagenäußerung sowie die Entität selbst. Die optionale Syntax (`[?]`) markiert Wörter oder [Satzzeichen](luis-reference-application-settings.md#punctuation-normalization), die optional sind. LUIS gleicht die Äußerung ab und ignoriert dabei den optionalen Text in den Klammern.
 
 Zwar sieht die Syntax nach einem regulären Ausdruck aus, es handelt sich aber nicht um einen regulären Ausdruck. Es wird nur die Syntax mit geschweiften `{}` und eckigen `[]` Klammern unterstützt. Sie können bis zu zwei Ebenen tief geschachtelt werden.
 
@@ -233,25 +225,25 @@ Damit ein Muster mit einer Äußerung übereinstimmt, müssen _zunächst_ die En
 
     |Vorlagenäußerungen|
     |:--|
-    |`Who is {Employee} the subordinate of[?]`|
-    |`Who does {Employee} report to[?]`|
-    |`Who is {Employee}['s] manager[?]`|
-    |`Who does {Employee} directly report to[?]`|
-    |`Who is {Employee}['s] supervisor[?]`|
-    |`Who is the boss of {Employee}[?]`|
+    |`Who is {EmployeeListEntity} the subordinate of[?]`|
+    |`Who does {EmployeeListEntity} report to[?]`|
+    |`Who is {EmployeeListEntity}['s] manager[?]`|
+    |`Who does {EmployeeListEntity} directly report to[?]`|
+    |`Who is {EmployeeListEntity}['s] supervisor[?]`|
+    |`Who is the boss of {EmployeeListEntity}[?]`|
 
-    Diese Vorlagenäußerungen umfassen die Entität **Employee** in geschweiften Klammern.
+    Diese Vorlagenäußerungen enthalten die Entität **EmployeeListEntity** in geschweiften Klammern.
 
 1. Wählen Sie auf der Seite „Muster“ die Absicht **OrgChart-Reports** aus, und geben Sie dann die folgenden Vorlagenäußerungen ein:
 
     |Vorlagenäußerungen|
     |:--|
-    |`Who are {Employee}['s] subordinates[?]`|
-    |`Who reports to {Employee}[?]`|
-    |`Who does {Employee} manage[?]`|
-    |`Who are {Employee} direct reports[?]`|
-    |`Who does {Employee} supervise[?]`|
-    |`Who does {Employee} boss[?]`|
+    |`Who are {EmployeeListEntity}['s] subordinates[?]`|
+    |`Who reports to {EmployeeListEntity}[?]`|
+    |`Who does {EmployeeListEntity} manage[?]`|
+    |`Who are {EmployeeListEntity} direct reports[?]`|
+    |`Who does {EmployeeListEntity} supervise[?]`|
+    |`Who does {EmployeeListEntity} boss[?]`|
 
 ### <a name="query-endpoint-when-patterns-are-used"></a>Abfragen des Endpunkts mit Mustern
 
@@ -261,7 +253,7 @@ Nachdem die Muster der App nun hinzugefügt wurden, können Sie die App auf dem 
 
 1. Wechseln Sie nach Abschluss der Veröffentlichung in den Browserregisterkarten wieder zur Endpunkt-URL-Registerkarte.
 
-1. Ersetzen Sie in der Adressleiste am Ende der URL _IHRE_ABFRAGE_ durch: `Who is the boss of Jill Jones?`
+1. Vergewissern Sie sich am Ende der URL in der Adressleiste, dass Ihre Abfrage immer noch `Who is the boss of Jill Jones?` lautet, und übermitteln Sie die URL anschließend für eine neue Vorhersage.
 
     ```json
     {
@@ -270,50 +262,50 @@ Nachdem die Muster der App nun hinzugefügt wurden, können Sie die App auf dem 
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.999997854
+                    "score": 0.999999046
                 },
                 "OrgChart-Reports": {
-                    "score": 6.13748343E-05
+                    "score": 3.237443E-05
                 },
                 "EmployeeFeedback": {
-                    "score": 8.052567E-06
+                    "score": 4.364242E-06
                 },
                 "GetJobInformation": {
-                    "score": 1.18197136E-06
+                    "score": 1.616159E-06
                 },
                 "MoveEmployee": {
-                    "score": 7.65549657E-07
-                },
-                "None": {
-                    "score": 3.975E-09
-                },
-                "Utilities.StartOver": {
-                    "score": 1.53E-09
-                },
-                "Utilities.Confirm": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Help": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Stop": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Cancel": {
-                    "score": 1.25833333E-09
-                },
-                "FindForm": {
-                    "score": 1.15384613E-09
+                    "score": 7.575752E-07
                 },
                 "ApplyForJob": {
-                    "score": 5.26923061E-10
+                    "score": 5.234157E-07
+                },
+                "None": {
+                    "score": 3.3E-09
+                },
+                "Utilities.StartOver": {
+                    "score": 1.26E-09
+                },
+                "FindForm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Cancel": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Confirm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Help": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Stop": {
+                    "score": 1.13636367E-09
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -332,9 +324,9 @@ Nachdem die Muster der App nun hinzugefügt wurden, können Sie die App auf dem 
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -351,7 +343,7 @@ Nachdem die Muster der App nun hinzugefügt wurden, können Sie die App auf dem 
     }
     ```
 
-Die beabsichtigte Vorhersage ist nun erheblich sicherer und die Bewertung der am nächsthöchsten bewerteten Absicht erheblich niedriger. Zwischen diesen beiden Absichten tritt beim Training kein Flip-Flop-Effekt auf.
+Die Absichtsvorhersage ist nun deutlich zuverlässiger und die Bewertung der nächsthöchsten Absicht deutlich niedriger. Zwischen diesen beiden Absichten tritt beim Training kein Flip-Flop-Effekt auf.
 
 ### <a name="working-with-optional-text-and-prebuilt-entities"></a>Arbeiten mit optionalem Text und vordefinierten Entitäten
 
@@ -372,8 +364,8 @@ Beispielvorlagenäußerungen, die diese optionalen Informationen ermöglichen:
 
 |Intent|Beispieläußerungen mit optionalem Text und vordefinierten Entitäten|
 |:--|:--|
-|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-|OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who is {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 
 Durch die Verwendung der optionalen Syntax von eckigen Klammern, `[]`, kann dieser optionale Text zur Vorlagenäußerung hinzugefügt und bis zu einer zweiten Ebene, `[[]]`, verschachtelt werden und Entitäten oder Text enthalten.
@@ -383,9 +375,10 @@ Durch die Verwendung der optionalen Syntax von eckigen Klammern, `[]`, kann dies
 
 **Frage: Warum ist die vordefinierte Zahl nicht Teil der Vorlagenäußerung, wenn der 3. März sowohl als Zahl `3` als auch als Datum `March 3` vorhergesagt wird?** Die Vorlagenäußerung verwendet kontextuell ein Datum, entweder wörtlich wie in `March 3` oder abstrahiert wie `in a month`. Ein Datum kann eine Zahl enthalten, aber eine Zahl muss nicht unbedingt als Datum angesehen werden. Verwenden Sie immer die Entität, die den Typ am besten repräsentiert, den Sie in den JSON-Vorhersageergebnissen zurückgeben möchten.
 
-**Frage: Wie ist es bei schlecht formulierten Äußerungen, z.B. `Who will {Employee}['s] manager be on March 3?`** Grammatisch unterschiedliche Verbformen wie diese, bei denen `will` und `be` getrennt sind, müssen eine neue Vorlagenäußerung sein. Die vorhandene Vorlagenäußerung wird nicht übereinstimmen. Die Absicht der Äußerung nicht sich zwar nicht geändert, die Wortstellung aber schon. Diese Änderung wirkt sich auf die Vorhersage in LUIS aus. Sie können [Gruppen und den OR-Operator](#use-the-or-operator-and-groups) mit den Verbzeitformen verwenden, um diese Äußerungen zu kombinieren.
+**Frage: Wie ist es bei schlecht formulierten Äußerungen, z.B. `Who will {EmployeeListEntity}['s] manager be on March 3?`** Grammatisch unterschiedliche Verbformen wie diese, bei denen `will` und `be` getrennt sind, müssen eine neue Vorlagenäußerung sein. Die vorhandene Vorlagenäußerung wird nicht übereinstimmen. Die Absicht der Äußerung nicht sich zwar nicht geändert, die Wortstellung aber schon. Diese Änderung wirkt sich auf die Vorhersage in LUIS aus. Sie können [Gruppen und den OR-Operator](#use-the-or-operator-and-groups) mit den Verbzeitformen verwenden, um diese Äußerungen zu kombinieren.
 
-**Beachten Sie: Entitäten werden zuerst gefunden, dann wird das Muster verglichen.**
+> [!CAUTION]
+> **Beachten Sie: Entitäten werden zuerst gefunden, dann wird das Muster verglichen.**
 
 ### <a name="add-new-pattern-template-utterances"></a>Hinzufügen von neuen Mustervorlagenäußerungen
 
@@ -393,9 +386,9 @@ Durch die Verwendung der optionalen Syntax von eckigen Klammern, `[]`, kann dies
 
     |Intent|Beispieläußerungen mit optionalem Text und vordefinierten Entitäten|
     |--|--|
-    |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 2. Wählen Sie auf der Navigationsleiste **Trainieren** aus, um die App zu trainieren.
 
@@ -403,7 +396,7 @@ Durch die Verwendung der optionalen Syntax von eckigen Klammern, `[]`, kann dies
 
 4. Geben Sie mehrere Testäußerungen ein, um zu überprüfen, ob dieses Muster abgeglichen wird und die Absichtsbewertung hoch genug ist.
 
-    Nachdem Sie die erste Äußerung eingegeben haben, wählen Sie in den Ergebnissen **Untersuchen**, damit alle Vorhersageergebnisse angezeigt werden. Jede Äußerung sollte über die Absicht **OrgChart-Manager** verfügen und die Werte für die Entitäten von „Employee“ und „datetimeV2“ extrahieren.
+    Nachdem Sie die erste Äußerung eingegeben haben, wählen Sie in den Ergebnissen **Untersuchen**, damit alle Vorhersageergebnisse angezeigt werden. Jede Äußerung sollte über die Absicht **OrgChart-Manager** verfügen und die Werte für die Entitäten `EmployeeListEntity` und `datetimeV2` extrahieren.
 
     |Äußerung|
     |--|
@@ -425,18 +418,21 @@ Diese Verwendung von Mustern hat für Folgendes gesorgt:
 
 Einige der obigen Vorlagenäußerungen sind sich sehr ähnlich. Nutzen Sie die Syntax **group** `()` und **OR** `|`, um die Anzahl von Vorlagenäußerungen zu reduzieren.
 
-Die beiden folgenden Muster können zu einem Muster kombiniert werden, indem die Syntax „group“ `()` und OR `|` verwendet wird.
+Die beiden folgenden Muster können mithilfe der Syntax für „Gruppieren“ (`()`) und „ODER“ (`|`) kombiniert werden.
 
 |Intent|Beispieläußerungen mit optionalem Text und vordefinierten Entitäten|
 |--|--|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 Die neue Vorlagenäußerung lautet dann:
 
-`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
+`who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`.
 
 Hier wird **group** für die erforderlichen Verbzeitformen und die optionale Angabe `in` bzw. `on` mit einem **OR**-Pipezeichen dazwischen verwendet.
+
+> [!NOTE]
+> Bei Verwendung des Pipezeichens für _ODER_ (`|`) muss sich in der Beispielvorlage sowohl vor als auch nach dem Symbol ein Leerzeichen befinden.
 
 1. Wählen Sie auf der Seite **Muster** den Filter **OrgChart-Manager** aus. Grenzen Sie die Liste ein, indem Sie nach `manager` suchen.
 
@@ -444,7 +440,7 @@ Hier wird **group** für die erforderlichen Verbzeitformen und die optionale Ang
 
 1. Ändern Sie die Vorlagenäußerung in:
 
-    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
+    `who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`
 
 2. Wählen Sie auf der Navigationsleiste **Trainieren** aus, um die App zu trainieren.
 

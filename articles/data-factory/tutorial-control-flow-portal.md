@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: edb6846d199470818e07a208feb778aca3021d9e
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253663"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077649"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Verzweigen und Verketten von Aktivitäten in einer Azure Data Factory-Pipeline mithilfe des Azure-Portals
 
@@ -139,7 +139,8 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
    Der Name der Azure Data Factory muss **global eindeutig**sein. Sollte der folgende Fehler auftreten, ändern Sie den Namen der Data Factory (beispielsweise in „<IhrName>ADFTutorialDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Artikel [Azure Data Factory – Benennungsregeln](naming-rules.md).
 
-       `Data factory name “ADFTutorialDataFactory” is not available`
+   *Der Data Factory-Name „ADFTutorialDataFactory“ ist nicht verfügbar.*
+
 3. Wählen Sie Ihr **Azure-Abonnement** aus, in dem die Data Factory erstellt werden soll.
 4. Führen Sie für die **Ressourcengruppe** einen der folgenden Schritte aus:
 
@@ -202,10 +203,11 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
    ![Neuer mit Azure Storage verknüpfter Dienst](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Geben Sie `@pipeline().parameters.sourceBlobContainer` für den Ordner und `emp.txt` für den Dateinamen ein. Mit dem Pipelineparameter „sourceBlobContainer“ legen Sie den Ordnerpfad für das Dataset fest.
 
-   ![Einstellungen des Quelldatasets](./media/tutorial-control-flow-portal/source-dataset-settings.png)
-13. Wechseln Sie zur Registerkarte **Pipeline**, oder klicken Sie in der Strukturansicht auf die Pipeline. Vergewissern Sie sich, dass unter **Source Dataset** (Quelldataset) die Option **SourceBlobDataset** ausgewählt ist.
+    ![Einstellungen des Quelldatasets](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 
-    ![Quelldataset](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+13. Wechseln Sie zur Registerkarte **Pipeline**, oder klicken Sie in der Strukturansicht auf die Pipeline. Vergewissern Sie sich, dass unter **Source Dataset** (Quelldataset) die Option **SourceBlobDataset** ausgewählt ist.
+      
+   ![Quelldataset](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 
 13. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Senke**, und klicken Sie für **Sink Dataset** (Senkendataset) auf **+ Neu**. In diesem Schritt erstellen Sie ein Senkendataset für die Kopieraktivität. Die Vorgehensweise ähnelt dabei der Erstellung des Quelldatasets.
 

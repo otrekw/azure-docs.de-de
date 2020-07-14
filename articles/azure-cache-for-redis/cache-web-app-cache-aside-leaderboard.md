@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: ca70262a7980df9d427fbd7e58e08b41c37d7133
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 177aa42991612d8ce2e899576599aafc43015c58
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195574"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082776"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Tutorial: Erstellen eines cachefremden Leaderboards in ASP.NET
 
@@ -680,8 +680,8 @@ In diesem Abschnitt stellen Sie eine neue Datenbank in SQL-Datenbank für die Ap
 
     | Platzhalter | Vorgeschlagener Wert |
     | --- | --- |
-    | *{Ihr_Benutzername}* | Verwenden Sie die **Serveradministratoranmeldung** für den Datenbankserver, den Sie gerade erstellt haben. |
-    | *{Ihr_Kennwort}* | Verwenden Sie das Kennwort für den Datenbankserver, den Sie gerade erstellt haben. |
+    | *{Ihr_Benutzername}* | Verwenden Sie die **Serveradministratoranmeldung** für den Server, den Sie gerade erstellt haben. |
+    | *{Ihr_Kennwort}* | Verwenden Sie das Kennwort für den Server, den Sie gerade erstellt haben. |
 
     Wenn Sie den Benutzernamen und das Kennwort als Anwendungseinstellung hinzufügen, sind Ihr Benutzername und Ihr Kennwort nicht in Ihrem Code enthalten. Diese Vorgehensweise hilft, diese Anmeldeinformationen zu schützen.
 

@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ac7af2f4500f6702dcacad546b0985e41159dc6e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 8123608cbf2c1a4cbe0dc51d81d42b288bf2a91d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734672"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024926"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Azure Active Directory Domain Services-Domäne
 
@@ -72,7 +72,7 @@ Wenn Sie bereits über einen virtuellen Computer verfügen, den Sie in die Domä
     | Username             | Geben Sie einen Benutzernamen für das lokale Administratorkonto ein, das auf der VM erstellt werden soll, z. B. *azureuser*. |
     | Kennwort             | Geben Sie ein sicheres Kennwort für das auf der VM zu erstellende lokale Administratorkonto ein, und bestätigen Sie es. Geben Sie nicht die Anmeldeinformationen eines Domänenbenutzerkontos ein. |
 
-1. Auf virtuelle Computer, die in Azure erstellt werden, kann standardmäßig nicht per RDP über das Internet zugegriffen werden. Wenn das Remotedesktopprotokoll aktiviert ist, treten wahrscheinlich Angriffe durch automatisierte Anmeldeversuche auf, wodurch Konten mit allgemeinen Namen wie *Admin* oder *Administrator* aufgrund mehrerer aufeinanderfolgender fehlerhafter Anmeldeversuche deaktiviert werden können.
+1. Auf virtuelle Computer, die in Azure erstellt werden, kann standardmäßig nicht per RDP über das Internet zugegriffen werden. Bei aktiviertem Remotedesktopprotokoll sind Angriffe durch automatisierte Anmeldeversuche wahrscheinlich, wodurch Konten mit gängigen Namen wie *Admin* oder *Administrator* aufgrund mehrerer fehlerhafter Anmeldeversuche deaktiviert werden können.
 
     RDP sollte nur aktiviert werden, wenn es benötigt wird, und es sollte auf eine Reihe autorisierter IP-Adressbereiche beschränkt werden. Diese Konfiguration trägt zur Sicherheit der VM bei und reduziert potenzielle Angriffsflächen. Alternativ können Sie einen Azure Bastion-Host erstellen und verwenden, der den Zugriff auf das Azure-Portal nur über TLS zulässt. Im nächsten Schritt dieses Tutorials wird ein Azure Bastion-Host verwendet, um eine sichere Verbindung mit dem virtuellen Computer herzustellen.
 
@@ -110,7 +110,7 @@ Wenn Sie bereits über einen virtuellen Computer verfügen, den Sie in die Domä
 
 1. Das Erstellen des Subnetzes dauert einige Sekunden. Klicken Sie nach dem Erstellen auf das *X*, um das Subnetzfenster zu schließen.
 1. Wählen Sie für die VM-Erstellung im Bereich **Netzwerk** im Dropdownmenü das erstellte Subnetz aus (hier also *management*). Vergewissern Sie sich, dass Sie das richtige Subnetz auswählen und die VM nicht in demselben Subnetz bereitstellen wie Ihre verwaltete Domäne.
-1. Wählen Sie unter **Öffentliche IP-Adresse** im Dropdownmenü *Keine* aus, da Sie Azure Bastion zum Herstellen einer Verbindung mit „management“ verwenden keine öffentliche IP-Adresse zugewiesen werden muss.
+1. Wählen Sie im Dropdownmenü unter **Öffentliche IP-Adresse** die Option *Keine* aus. Da in diesem Tutorial Azure Bastion verwendet wird, um eine Verbindung mit der Verwaltung herzustellen, muss dem virtuellen Computer keine öffentliche IP-Adresse zugewiesen werden.
 1. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **Verwaltung**.
 1. Legen Sie **Startdiagnose** auf *Aus* fest. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **Überprüfen + erstellen**.
 1. Überprüfen Sie die VM-Einstellungen, und klicken Sie dann auf **Erstellen**.
@@ -121,7 +121,7 @@ Das Erstellen der VM dauert einige Minuten. Im Azure-Portal wird der Status der 
 
 ## <a name="connect-to-the-windows-server-vm"></a>Herstellen einer Verbindung mit der Windows Server-VM
 
-Verwenden Sie einen Azure Bastion-Host, um eine sichere Verbindung mit Ihren virtuellen Computern herzustellen. Bei Verwendung von Azure Bastion wird in Ihrem virtuellen Netzwerk ein verwalteter Host bereitgestellt, der webbasierte RDP- oder SSH-Verbindungen mit virtuellen Computern ermöglicht. Für die virtuellen Computer sind keine öffentlichen IP-Adressen erforderlich, und Sie müssen keine Netzwerksicherheitsgruppen-Regeln für externen Remotedatenverkehr öffnen. Die Verbindung mit virtuellen Computern wird im Webbrowser über das Azure-Portal hergestellt.
+Verwenden Sie einen Azure Bastion-Host, um eine sichere Verbindung mit Ihren virtuellen Computern herzustellen. Bei Verwendung von Azure Bastion wird in Ihrem virtuellen Netzwerk ein verwalteter Host bereitgestellt, der webbasierte RDP- oder SSH-Verbindungen mit virtuellen Computern ermöglicht. Für die virtuellen Computer sind keine öffentlichen IP-Adressen erforderlich, und Sie müssen keine Netzwerksicherheitsgruppen-Regeln für externen Remotedatenverkehr öffnen. Die Verbindung mit virtuellen Computern wird im Webbrowser über das Azure-Portal hergestellt. Eine Anleitung zum Erstellen eines Azure Bastion-Hosts finden Sie [hier][azure-bastion].
 
 Gehen Sie wie folgt vor, um für die Verbindungsherstellung mit Ihrem virtuellen Computer einen Bastionhost zu verwenden:
 
@@ -152,7 +152,9 @@ Nach dem Erstellen des virtuellen Computers und dem Herstellen einer webbasierte
 
     ![Angeben der verwalteten Domäne für die Einbindung](./media/join-windows-vm/join-domain.png)
 
-1. Geben Sie für die Einbindung in die Domäne Domänenanmeldeinformationen ein. Verwenden Sie die Anmeldeinformationen für einen Benutzer, der Teil der verwalteten Domäne ist. Das Konto muss Teil der verwalteten Domäne oder des Azure AD-Mandanten sein. Konten aus externen Verzeichnissen, die Ihrem Azure AD-Mandanten zugeordnet sind, können während der Einbindung in die Domäne nicht richtig authentifiziert werden. Anmeldeinformationen können auf eine der folgenden Arten angegeben werden:
+1. Geben Sie für die Einbindung in die Domäne Domänenanmeldeinformationen ein. Geben Sie Anmeldeinformationen für einen Benutzer an, der der verwalteten Domäne angehört. Das Konto muss Teil der verwalteten Domäne oder des Azure AD-Mandanten sein. Konten aus externen Verzeichnissen, die Ihrem Azure AD-Mandanten zugeordnet sind, können während der Einbindung in die Domäne nicht richtig authentifiziert werden.
+
+    Anmeldeinformationen können auf eine der folgenden Arten angegeben werden:
 
     * **UPN-Format** (empfohlen): Geben Sie das Suffix für den Benutzerprinzipalnamen (User Principal Name, UPN) für das Benutzerkonto an, wie in Azure AD konfiguriert. Das UPN-Suffix des Benutzers *contosoadmin* würde beispielsweise `contosoadmin@aaddscontoso.onmicrosoft.com` lauten. Es gibt einige Anwendungsfälle, in denen das UPN-Format zuverlässig anstelle des *SAMAccountName*-Formats zum Anmelden bei der Domäne verwendet werden kann:
         * Wenn das UPN-Präfix eines Benutzers lang ist (z.B. *Janwirklichlangerbenutzername*), wird der *SAMAccountName* möglicherweise automatisch generiert.
@@ -174,13 +176,13 @@ Nach dem Erstellen des virtuellen Computers und dem Herstellen einer webbasierte
 >
 > Wenn Sie eine VM in die Domäne einbinden möchten, ohne eine Verbindung damit herzustellen und die Verbindung manuell zu konfigurieren, können Sie das Azure PowerShell-Cmdlet [Set-AzVmAdDomainExtension][set-azvmaddomainextension] nutzen.
 
-Nachdem die Windows Server-VM neu gestartet wurde, werden alle auf die verwaltete Domäne angewendeten Richtlinien per Push an die VM übertragen. Sie können sich jetzt auch mit den geeigneten Domänenanmeldeinformationen bei der Windows Server-VM anmelden.
+Nachdem der virtuelle Windows Server-Computer neu gestartet wurde, werden alle in der verwalteten Domäne angewendeten Richtlinien an den virtuellen Computer gepusht. Sie können sich jetzt auch mit den geeigneten Domänenanmeldeinformationen bei der Windows Server-VM anmelden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Im nächsten Tutorial verwenden Sie diese Windows Server-VM, um die Verwaltungstools zu installieren, mit denen Sie die verwaltete Domäne verwalten. Wenn Sie die Tutorialreihe nicht fortsetzen möchten, führen Sie die folgenden Bereinigungsschritte zum [Löschen des virtuellen Computers](#delete-the-vm) aus. Andernfalls [fahren Sie mit dem nächsten Tutorial fort](#next-steps).
 
-### <a name="un-join-the-vm-from-the-managed-domain"></a>Entfernen der VM aus der verwalteten Domäne
+### <a name="unjoin-the-vm-from-the-managed-domain"></a>Entfernen des virtuellen Computers aus der verwalteten Domäne
 
 Führen Sie zum Entfernen der VM aus der verwalteten Domäne erneut die Schritte zum [Einbinden der VM in eine Domäne](#join-the-vm-to-the-managed-domain) aus. Statt die VM in die verwaltete Domäne einzubinden, wählen Sie die Einbindung in eine Arbeitsgruppe (z. B. in die Standardgruppe *WORKGROUP*) aus. Nach dem Neustart der VM wird das Computerobjekt aus der verwalteten Domäne entfernt.
 
@@ -220,7 +222,7 @@ Führen Sie die folgenden Problembehandlungsschritte aus, und versuchen Sie erne
 * Stellen Sie sicher, dass das angegebene Benutzerkonto zur verwalteten Domäne gehört.
 * Vergewissern Sie sich, dass das Konto Teil der verwalteten Domäne oder des Azure AD-Mandanten ist. Konten aus externen Verzeichnissen, die Ihrem Azure AD-Mandanten zugeordnet sind, können während der Einbindung in die Domäne nicht richtig authentifiziert werden.
 * Geben Sie die Anmeldeinformationen im UPN-Format an, z. B. als `contosoadmin@aaddscontoso.onmicrosoft.com`. Wenn mehrere Benutzer in Ihrem Mandanten das gleiche UPN-Präfix verwenden oder das UPN-Präfix sehr lang ist, wird der *SAMAccountName* für Ihr Konto möglicherweise automatisch generiert. In diesen Fällen ist das *SAMAccountName*-Format für Ihr Konto möglicherweise anders als Sie erwarten bzw. unterscheidet sich von dem, was Sie in Ihrer lokalen Domäne verwenden.
-* Überprüfen Sie, ob Sie die [Kennwortsynchronisierung für Ihre verwaltete Domäne aktiviert haben][password-sync]. Ohne diesen Konfigurationsschritt sind die erforderlichen Kennworthashes in der verwalteten Domäne nicht vorhanden und können Ihren Anmeldeversuch nicht ordnungsgemäß authentifizieren.
+* Überprüfen Sie, ob Sie die [Kennwortsynchronisierung für Ihre verwaltete Domäne aktiviert haben][password-sync]. Ohne diesen Konfigurationsschritt sind die erforderlichen Kennworthashes in der verwalteten Domäne nicht vorhanden, und Ihr Anmeldeversuch kann nicht ordnungsgemäß authentifiziert werden.
 * Warten Sie, bis die Kennwortsynchronisierung abgeschlossen ist. Wird das Kennwort eines Benutzerkontos geändert, aktualisiert eine automatische Hintergrundsynchronisierung von Azure AD das Kennwort in Azure AD DS. Es dauert einige Zeit, bis das Kennwort für das Einbinden in die Domäne verfügbar ist.
 
 ## <a name="next-steps"></a>Nächste Schritte

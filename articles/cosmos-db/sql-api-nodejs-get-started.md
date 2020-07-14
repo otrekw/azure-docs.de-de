@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: dech
-ms.openlocfilehash: ef493b6b21eb0ba0ad6d22a21e4e205a9fecacb6
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 5d41f467efafa42bd73fce258ca97e4412a7cf48
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858073"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026847"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Tutorial: Erstellen einer Node.js-Konsolen-App mit dem JavaScript SDK zum Verwalten von Daten der Azure Cosmos DB-SQL-API
 
@@ -90,7 +90,7 @@ Ihre App ist erstellt. Stellen Sie nun sicher, dass sie mit Azure Cosmos DB komm
 
    Sie finden den Endpunkt und die Schlüsseldetails im Bereich **Schlüssel** des [Azure-Portals](https://portal.azure.com).
 
-   ![Screenshot: Abrufen von Schlüsseln über das Azure-Portal][keys]
+   :::image type="content" source="media/sql-api-nodejs-get-started/node-js-tutorial-keys.png" alt-text="Screenshot: Abrufen von Schlüsseln über das Azure-Portal":::
 
 Das JavaScript SDK verwendet die generischen Begriffe *Container* und *Element*. Ein Container kann eine Sammlung, ein Graph oder eine Tabelle sein. Ein Element kann ein Dokument, ein Edge/Vertex oder eine Zeile sein und stellt den Inhalt eines Containers dar. Im vorherigen Codeausschnitt wird der `module.exports = config;`-Code verwendet, um das Konfigurationsobjekt zu exportieren, sodass Sie in der Datei *app. js* darauf verweisen können.
 
@@ -223,4 +223,3 @@ Wenn die Ressourcengruppe, das Azure Cosmos DB-Konto und die dazugehörigen Ress
 > [Überwachen eines Azure Cosmos DB-Kontos](monitor-accounts.md)
 
 [create-account]: create-sql-api-dotnet.md#create-account
-[keys]: media/sql-api-nodejs-get-started/node-js-tutorial-keys.png

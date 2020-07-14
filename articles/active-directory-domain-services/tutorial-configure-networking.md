@@ -7,18 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 1e3b94208c3ead6e7ed4e15dac7c32b50025064a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e0d2b235f671ca9b30bf61aef254cb850b25373e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733805"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024773"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren Sie virtuelle Netzwerke für eine verwaltete Azure Active Directory Domain Services-Domäne.
 
-Um Konnektivität für Benutzer und Anwendungen bereitzustellen, wird eine verwaltete Azure AD DS-Domäne (Azure Active Directory Domain Services) in einem Azure-VNET-Subnetz bereitgestellt. Dieses VNET-Subnetz darf nur für die von der Azure-Plattform bereitgestellten Ressourcen der verwalteten Domäne verwendet werden. Selbst erstellte virtuelle Computer und Anwendungen dürfen nicht im gleichen VNET-Subnetz bereitgestellt werden. Stattdessen müssen Ihre Anwendungen in einem separaten VNET-Subnetz oder in einem separaten virtuellen Netzwerk erstellt und bereitgestellt werden, das mittels Peering mit dem virtuellen Azure AD DS-Netzwerk verbunden ist.
+Um Konnektivität für Benutzer und Anwendungen bereitzustellen, wird eine verwaltete Azure AD DS-Domäne (Azure Active Directory Domain Services) in einem Azure-VNET-Subnetz bereitgestellt. Dieses VNET-Subnetz darf nur für die von der Azure-Plattform bereitgestellten Ressourcen der verwalteten Domäne verwendet werden.
+
+Selbst erstellte virtuelle Computer und Anwendungen dürfen nicht im gleichen VNET-Subnetz bereitgestellt werden. Stattdessen müssen Ihre Anwendungen in einem separaten VNET-Subnetz oder in einem separaten virtuellen Netzwerk erstellt und bereitgestellt werden, das mittels Peering mit dem virtuellen Azure AD DS-Netzwerk verbunden ist.
 
 In diesem Tutorial erfahren Sie, wie Sie ein dediziertes VNET-Subnetz erstellen und konfigurieren oder ein anderes Netzwerk mittels Peering mit dem virtuellen Netzwerk der verwalteten Azure AD DS-Domäne verbinden.
 
@@ -39,7 +41,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
-* Sie benötigen Berechtigungen als *globaler Administrator* in Ihrem Azure AD-Mandanten, um Azure AD DS zu aktivieren.
+* Sie benötigen in Ihrem Azure AD-Mandanten Berechtigungen vom Typ *Globaler Administrator*, um Azure AD DS zu konfigurieren.
 * Sie benötigen Berechtigungen als *Mitwirkender* in Ihrem Azure-Abonnement, um die erforderlichen Azure AD DS-Ressourcen zu erstellen.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * Falls Sie keine solche Domäne haben, gehen Sie wie im ersten Tutorial beschrieben vor, um eine [verwaltete Azure Active Directory Domain Services-Domäne zu erstellen und zu konfigurieren][create-azure-ad-ds-instance].
@@ -54,12 +56,16 @@ Im vorherigen Tutorial wurde eine verwaltete Domäne mit einigen Standardkonfigu
 
 Wenn Sie virtuelle Computer erstellen und ausführen, die die verwaltete Domäne benötigen, ist Netzwerkkonnektivität erforderlich. Diese Netzwerkkonnektivität kann auf eine der folgenden Arten bereitgestellt werden:
 
-* Erstellen Sie im virtuellen Standardnetzwerk der verwalteten Domäne ein zusätzliches VNET-Subnetz. In diesem zusätzlichen Subnetz können Sie dann Ihre virtuellen Computer erstellen und verbinden.
+* Erstellen Sie im virtuellen Netzwerk der verwalteten Domäne ein zusätzliches VNET-Subnetz. In diesem zusätzlichen Subnetz können Sie dann Ihre virtuellen Computer erstellen und verbinden.
     * Da die virtuellen Computer dem gleichen virtuellen Netzwerk angehören, können sie automatisch eine Namensauflösung durchführen und mit den Azure AD DS-Domänencontrollern kommunizieren.
 * Konfigurieren Sie das Peering virtueller Azure-Netzwerke zwischen dem virtuellen Netzwerk der verwalteten Domäne und mindestens einem separaten virtuellen Netzwerk. In diesen separaten virtuellen Netzwerken können Sie Ihre virtuellen Computer erstellen und verbinden.
     * Wenn Sie das Peering virtueller Netzwerke konfigurieren, müssen Sie auch DNS-Einstellungen konfigurieren, um die Namensauflösung für die Azure AD DS-Domänencontroller zu verwenden.
 
-In der Regel wird nur eine dieser Netzwerkkonnektivitätsoptionen verwendet. Die Wahl der Option hängt häufig davon ab, wie Sie Ihre Azure-Ressourcen verwalten/trennen möchten. Wenn Sie Azure AD DS und verbundene virtuelle Computer als einzelne Ressourcengruppe verwalten möchten, können Sie ein zusätzliches VNET-Subnetz für virtuelle Computer zu erstellen. Wenn Sie Azure AD DS und verbundene virtuelle Computer getrennt verwalten möchten, können Sie das Peering virtueller Netzwerke verwenden. Das Peering virtueller Netzwerke kann auch verwendet werden, um Konnektivität für vorhandene virtuelle Computer in Ihrer Azure-Umgebung bereitzustellen, die mit einem vorhandenen virtuellen Netzwerk verbunden sind.
+In der Regel wird nur eine dieser Netzwerkkonnektivitätsoptionen verwendet. Die Wahl der Option hängt häufig davon ab, wie Sie Ihre Azure-Ressourcen verwalten/trennen möchten.
+
+* Wenn Sie Azure AD DS und verbundene virtuelle Computer als einzelne Ressourcengruppe verwalten möchten, können Sie ein zusätzliches VNET-Subnetz für virtuelle Computer zu erstellen.
+* Wenn Sie Azure AD DS und verbundene virtuelle Computer getrennt verwalten möchten, können Sie das Peering virtueller Netzwerke verwenden.
+    * Das Peering virtueller Netzwerke kann auch verwendet werden, um Konnektivität für vorhandene virtuelle Computer in Ihrer Azure-Umgebung bereitzustellen, die mit einem vorhandenen virtuellen Netzwerk verbunden sind.
 
 In diesem Tutorial muss lediglich eine dieser Verbindungsoptionen für das virtuelle Netzwerk konfiguriert werden.
 
@@ -95,7 +101,9 @@ Wenn Sie einen virtuellen Computer erstellen, der die verwaltete Domäne verwend
 
 Möglicherweise verfügen Sie über ein bereits vorhandenes virtuelles Azure-Netzwerk für virtuelle Computer oder möchten Ihr virtuelles Netzwerk der verwalteten Domäne separat nutzen. Um die verwaltete Domäne verwenden zu können, müssen virtuelle Computer in anderen virtuellen Netzwerken mit den Azure AD DS-Domänencontrollern kommunizieren können. Diese Konnektivität kann mithilfe des Peerings virtueller Azure-Netzwerke bereitgestellt werden.
 
-Mithilfe des Peerings virtueller Azure-Netzwerke werden zwei virtuelle Netzwerke ohne Verwendung eines VPN-Geräts (virtuelles privates Netzwerk) miteinander verbunden. Per Netzwerkpeering können Sie schnell eine Verbindung zwischen virtuellen Netzwerken herstellen und Datenverkehrsflüsse in Ihrer gesamten Azure-Umgebung definieren. Weitere Informationen zum Peering finden Sie in der [Übersicht über das Peering virtueller Azure-Netzwerke][peering-overview].
+Mithilfe des Peerings virtueller Azure-Netzwerke werden zwei virtuelle Netzwerke ohne Verwendung eines VPN-Geräts (virtuelles privates Netzwerk) miteinander verbunden. Per Netzwerkpeering können Sie schnell eine Verbindung zwischen virtuellen Netzwerken herstellen und Datenverkehrsflüsse in Ihrer gesamten Azure-Umgebung definieren.
+
+Weitere Informationen zum Peering finden Sie in der [Übersicht über das Peering virtueller Azure-Netzwerke][peering-overview].
 
 Gehen Sie wie folgt vor, wenn Sie ein virtuelles Netzwerk mittels Peering mit dem virtuellen Netzwerk der verwalteten Domäne verbinden möchten:
 
@@ -159,3 +167,4 @@ Um diese verwaltete Domäne in Aktion zu erleben, erstellen Sie eine VM, und bin
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
 [peering-overview]: ../virtual-network/virtual-network-peering-overview.md
+[network-considerations]: network-considerations.md

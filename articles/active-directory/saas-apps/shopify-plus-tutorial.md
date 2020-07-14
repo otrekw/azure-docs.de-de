@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebbb73b6fc4e2a934c7c4235cfcdc39b8fa81b60
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 18dc2e4393175751f5ac52d53e0c331c82fce7e8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85127190"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078118"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Shopify Plus
 
@@ -103,7 +103,8 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | ---------------| --------------- | --------- |
     | email | | user.mail |
 
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
+1. Ändern Sie das Format der Namens-ID (**Name ID**) in **Permanent**. Wählen Sie die Option **Eindeutiger Benutzerbezeichner (Namens-ID)** und anschließend das Format **Namensbezeichner** aus. Wählen Sie für diese Option den Wert **Permanent** aus. Speichern Sie die Änderungen.
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die Kopierschaltfläche aus, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
@@ -139,11 +140,31 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-shopify-plus-sso"></a>Konfigurieren des einmaligen Anmeldens für Shopify Plus
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Shopify Plus** müssen Sie die **App-Verbundmetadaten-URL** an das [Shopify Plus-Supportteam](mailto:plus-user-management@shopify.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Die vollständigen Schritte finden Sie in der [Shopify-Dokumentation zum Einrichten von SAML-Integrationen](https://help.shopify.com/en/manual/shopify-plus/saml).
+
+Kopieren Sie zum Konfigurieren des einmaligen Anmeldens aufseiten von **Shopify Plus** die **App-Verbundmetadaten-URL** aus Azure Active Directory. Melden Sie sich anschließend als [Organisationsadministrator](https://shopify.plus) an, und navigieren Sie zu **Users** > **Security** („Benutzer“ > „Sicherheit“). Wählen Sie **Set up configuration** (Konfiguration einrichten) aus, und fügen Sie anschließend im Abschnitt **Identity provider metadata URL** (Metadaten-URL des Identitätsanbieters) Ihre App-Verbundmetadaten-URL ein. Wählen Sie **Add** (Hinzufügen) aus, um den Schritt abzuschließen.
 
 ### <a name="create-shopify-plus-test-user"></a>Erstellen eines Shopify Plus-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Shopify Plus einen Benutzer namens B. Simon. Arbeiten Sie mit dem  [Supportteam von Shopify Plus](mailto:plus-user-management@shopify.com) zusammen, um die Benutzer auf der Shopify Plus-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Shopify Plus einen Benutzer namens B. Simon. Kehren Sie zum Abschnitt **Users** (Benutzer) zurück, und fügen Sie einen Benutzer hinzu, indem Sie dessen E-Mail-Adresse und Berechtigungen eingeben. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+
+### <a name="enforce-saml-authentication"></a>Erzwingen der SAML-Authentifizierung
+
+> [!NOTE]
+> Es empfiehlt sich, die Integration vor der allgemeinen Einführung zunächst mit einzelnen Benutzern zu testen.
+
+Vorgehensweise für einzelne Benutzer:
+1. Navigieren Sie in Shopify Plus zur Seite eines einzelnen Benutzers mit einer E-Mail-Domäne, die von Azure AD verwaltet wird und in Shopify Plus überprüft wurde.
+1. Wählen Sie im Abschnitt für die SAML-Authentifizierung die Option **Edit** (Bearbeiten) aus, wählen Sie **Required** (Erforderlich) aus, und wählen Sie anschließend **Save** (Speichern) aus.
+1. Vergewissern Sie sich, dass sich dieser Benutzer erfolgreich über den IdP-initiierten und den SP-initiierten Flow anmelden kann.
+
+Vorgehensweise für alle Benutzer unter einer E-Mail-Domäne:
+1. Kehren Sie zur Seite **Security** (Sicherheit) zurück.
+1. Wählen Sie **Required** (Erforderlich) für Ihre SAML-Authentifizierungseinstellung aus. Dadurch wird SAML in Shopify Plus für alle Benutzer mit dieser E-Mail-Domäne erzwungen.
+1. Wählen Sie **Save** (Speichern) aus.
+
+> [!IMPORTANT]
+> Die Aktivierung von SAML für alle Benutzer unter einer E-Mail-Domäne wirkt sich auf alle Benutzer aus, die diese Anwendung verwenden. Die Benutzer können sich nicht über ihre reguläre Anmeldeseite anmelden. Sie können nur über Azure Active Directory auf die App zugreifen. Shopify bietet keine alternative Anmelde-URL, über die sich Benutzer mit Ihrem normalen Benutzernamen und Kennwort anmelden können. Wenden Sie sich zur Deaktivierung von SAML bei Bedarf an den Support von Shopify.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
@@ -153,7 +174,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Shopify Plus“ klicken, sollten S
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
