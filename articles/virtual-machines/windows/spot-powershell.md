@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 321983fbe99d17dc78198feb195eed8ea26de569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f615ed5183142ca7684c7e705fa6a42bd3124d19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100616"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514820"
 ---
 # <a name="deploy-spot-vms-using-azure-powershell"></a>Bereitstellen von Spot-VMs mit Azure PowerShell
 
@@ -32,7 +32,8 @@ Erstellen Sie eine Spot-VM mithilfe von [New-AzVmConfig](/powershell/module/az.c
 - einen Dollarbetrag mit bis zu 5 Stellen. Beispielsweise bedeutet `-MaxPrice .98765`, dass die Zuordnung des virtuellen Computers aufgehoben wird, sobald der Preis für eine Spot-VM ca. 0,98765 USD pro Stunde übersteigt.
 
 
-In diesem Beispiel wird eine Spot-VM erstellt, deren Zuordnung nicht basierend auf den Preisen aufgehoben wird. (Dies erfolgt nur, wenn Azure die Kapazität wieder benötigt.)
+In diesem Beispiel wird eine Spot-VM erstellt, deren Zuordnung nicht basierend auf den Preisen aufgehoben wird. (Dies erfolgt nur, wenn Azure die Kapazität wieder benötigt.) Die Entfernungsrichtlinie wird so festgelegt, dass die Zuordnung der VM aufgehoben wird. Dadurch kann sie zu einem späteren Zeitpunkt neu gestartet werden. Wenn Sie die VM und den zugrunde liegenden Datenträger beim Entfernen löschen möchten, legen Sie `-EvictionPolicy` in `New-AzVMConfig` auf `Delete` fest.
+
 
 ```azurepowershell-interactive
 $resourceGroup = "mySpotRG"
@@ -57,7 +58,7 @@ $nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Loc
 
 # Create a virtual machine configuration and set this to be a Spot VM
 
-$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1 -Priority "Spot" -MaxPrice -1| `
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1 -Priority "Spot" -MaxPrice -1 -EvictionPolicy Deallocate | `
 Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
 Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter -Version latest | `
 Add-AzVMNetworkInterface -Id $nic.Id
@@ -74,6 +75,6 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können eine Spot-VM auch mit der [Azure-Befehlszeilenschnittstelle](../linux/spot-cli.md) oder einer [Vorlage](../linux/spot-template.md) erstellen.
+Sie können eine Spot-VM auch über die [Azure-Befehlszeilenschnittstelle](../linux/spot-cli.md), das [Portal](spot-portal.md) oder eine [Vorlage](../linux/spot-template.md) erstellen.
 
 Informationen zu eventuell auftretenden Fehlern finden Sie unter [Fehlercodes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

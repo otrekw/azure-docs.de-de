@@ -1,15 +1,14 @@
 ---
 title: Verschieben von Recovery Services-Tresoren in Azure Backup
 description: Hier finden Sie Anweisungen zum Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen.
-ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 93c3f2db6500023755796d50e71d44a427a2ce82
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 9373ea41c3cd5d35c86b8b306a20b5c106105217
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597993"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85368225"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen
 
@@ -37,7 +36,11 @@ Frankreich, Mitte; Frankreich, Süden; Deutschland, Nordosten; Deutschland, Mitt
 - Informationen zum Verschieben eines virtuellen Computers mit verwalteten Datenträgern finden Sie in diesem [Artikel](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
 - Die Optionen zum Verschieben von Ressourcen, die über das klassische Modell bereitgestellt wurden, unterscheiden sich in Abhängigkeit davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - Für den Tresor definierte Sicherungsrichtlinien werden beibehalten, nachdem der Tresor zwischen Abonnements oder in eine neue Ressourcengruppe verschoben worden ist.
-- Sie können einen Tresor nur verschieben, wenn sich nur virtuelle Azure-Computer als Sicherungselemente im Tresor befinden.
+- Sie können nur Tresore verschieben, die eine der folgenden Typen von Sicherungselementen enthalten. Alle Sicherungselemente von Typen, die nicht unten aufgeführt sind, müssen beendet werden, und die Daten müssen vor dem Verschieben des Tresors dauerhaft gelöscht werden.
+  - Azure Virtual Machines
+  - Microsoft Azure Recovery Services-Agent (MARS)
+  - Microsoft Azure Backup Server (MABS)
+  - Data Protection Manager (DPM)
 - Wenn Sie einen Tresor mit VM-Sicherungsdaten abonnementübergreifend verschieben, müssen Sie Ihre VMs in dasselbe Abonnement verschieben und denselben Namen (wie im alten Abonnement) für die VM-Zielressourcengruppe verwenden, um weiterhin Sicherungen durchführen zu können.
 
 > [!NOTE]

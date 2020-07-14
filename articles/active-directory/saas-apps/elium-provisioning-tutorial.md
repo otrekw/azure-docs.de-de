@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058463"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Elium für die automatische Benutzerbereitstellung

@@ -4,16 +4,16 @@ description: Vorbereiten, Anpassen und Hochladen eines Windows Virtual Desktop-M
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fc6eb22f81279003a5355993db231ffec8e31b7d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: fe354991ce19031cc4a51b07098ab12240569a90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832524"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
@@ -37,11 +37,13 @@ Erstellen Sie wie folgt eine VM mit der kopierten VHD:
 
 2. Wählen Sie auf der Seite „Generation angeben“ die Option **Generation 1** aus.
 
-    ![Screenshot: Seite „Generation angeben“. Die Option „Generation 1“ ist ausgewählt.](media/a41174fd41302a181e46385e1e701975.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Seite „Generation angeben“. Die Option „Generation 1“ ist ausgewählt.](media/a41174fd41302a181e46385e1e701975.png)
 
 3. Deaktivieren Sie unter „Prüfpunkttyp“ die Prüfpunkte, indem Sie das Kontrollkästchen deaktivieren.
 
-    ![Screenshot: Abschnitt „Prüfpunkttyp“ auf der Seite „Prüfpunkte“](media/20c6dda51d7cafef33251188ae1c0c6a.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Abschnitt „Prüfpunkttyp“ auf der Seite „Prüfpunkte“](media/20c6dda51d7cafef33251188ae1c0c6a.png)
 
 Sie können auch das folgende Cmdlet in PowerShell ausführen, um Prüfpunkte zu deaktivieren.
 
@@ -53,7 +55,8 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 Wenn Sie eine VM aus einer vorhandenen VHD erstellen, wird standardmäßig ein dynamischer Datenträger erstellt. Sie können stattdessen einen Datenträger mit fester Größe erstellen, indem Sie wie in der folgenden Abbildung gezeigt die Option **Datenträger bearbeiten...** wählen. Eine ausführlichere Anleitung finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md).
 
-![Screenshot: Option „Datenträger bearbeiten“](media/35772414b5a0f81f06f54065561d1414.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Option „Datenträger bearbeiten“](media/35772414b5a0f81f06f54065561d1414.png)
 
 Sie können auch das folgende PowerShell-Cmdlet ausführen, um den Datenträger in einen Datenträger mit fester Größe zu ändern.
 
@@ -63,9 +66,9 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 ## <a name="software-preparation-and-installation"></a>Software: Vorbereitung und Installation
 
-In diesem Abschnitt erfahren Sie, wie Sie FSLogix und Windows Defender vorbereiten und installieren, und Sie lernen einige grundlegende Konfigurationsoptionen für Apps und die Registrierung Ihres Images kennen. 
+In diesem Abschnitt erfahren Sie, wie Sie FSLogix und Windows Defender vorbereiten und installieren, und Sie lernen einige grundlegende Konfigurationsoptionen für Apps und die Registrierung Ihres Images kennen.
 
-Wenn Sie Office 365 ProPlus und OneDrive auf Ihrer VM installieren, navigieren Sie zu [Installieren von Office für ein VHD-Masterimage](install-office-on-wvd-master-image.md) und befolgen die Anweisungen, um die Apps zu installieren. Wenn Sie fertig sind, kehren Sie zu diesem Artikel zurück.
+Wenn Sie Microsoft 365-Apps for Enterprise und OneDrive auf Ihrer VM installieren, navigieren Sie zu [Installieren von Office für ein VHD-Masterimage](install-office-on-wvd-master-image.md) und befolgen die Anweisungen, um die Apps zu installieren. Wenn Sie fertig sind, kehren Sie zu diesem Artikel zurück.
 
 Wenn Ihre Benutzer auf bestimmte Branchenanwendungen zugreifen müssen, empfehlen wir Ihnen, die Installation durchzuführen, nachdem Sie die Anleitung in diesem Abschnitt befolgt haben.
 
@@ -126,7 +129,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 Für Windows Virtual Desktop-Sitzungshosts, für die Windows 10 Enterprise oder Windows 10 Enterprise (mehrere Sitzungen) verwendet wird, empfehlen wir die Deaktivierung der Speicheroptimierung. Sie können die Speicheroptimierung im Menü „Einstellungen“ unter **Speicher** deaktivieren, wie im folgenden Screenshot gezeigt:
 
-![Screenshot: Menü „Speicher“ unter „Einstellungen“. Die Option „Speicheroptimierung“ ist deaktiviert.](media/storagesense.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Menü „Speicher“ unter „Einstellungen“. Die Option „Speicheroptimierung“ ist deaktiviert.](media/storagesense.png)
 
 Sie können die Einstellung auch über die Registrierung ändern, indem Sie den folgenden Befehl ausführen:
 
@@ -183,21 +187,24 @@ Stellen Sie nach dem Vorbereiten des Images für den Upload sicher, dass die VM 
 
 Dieser Abschnitt gilt nur, wenn das Masterimage lokal erstellt wurde.
 
-In der folgenden Anleitung wird beschrieben, wie Sie Ihr Masterimage in ein Azure-Speicherkonto hochladen. Falls Sie nicht bereits über ein Azure-Speicherkonto verfügen, können Sie die Anleitung in [diesem Artikel](/azure/javascript/tutorial-vscode-static-website-node-03) verwenden, um ein Konto zu erstellen.
+In der folgenden Anleitung wird beschrieben, wie Sie Ihr Masterimage in ein Azure-Speicherkonto hochladen. Falls Sie nicht bereits über ein Azure-Speicherkonto verfügen, können Sie die Anleitung in [diesem Artikel](/azure/developer/javascript/tutorial-vscode-static-website-node-03) verwenden, um ein Konto zu erstellen.
 
 1. Konvertieren Sie das VM-Image (VHD) in „Fixed“ (Fest), falls dies noch nicht geschehen ist. Wenn Sie das Image nicht in „Fixed“ (Fest) konvertieren, ist die Imageerstellung nicht erfolgreich.
 
 2. Laden Sie die VHD in einen Blobcontainer in Ihrem Speicherkonto hoch. Sie können den Upload mit dem [Storage-Explorer-Tool](https://azure.microsoft.com/features/storage-explorer/) schnell durchführen. Weitere Informationen zum Storage-Explorer-Tool finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
-    ![Screenshot: Fenster „Suchen“ im Tool Microsoft Azure Storage-Explorer Das Kontrollkästchen „Upload .vhd or vhdx files as page blobs (recommended)“ (VHD-/VHDX-Dateien als Seitenblobs hochladen (empfohlen))“ ist aktiviert.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Fenster „Suchen“ im Tool Microsoft Azure Storage-Explorer Das Kontrollkästchen „Upload .vhd or vhdx files as page blobs (recommended)“ (VHD-/VHDX-Dateien als Seitenblobs hochladen (empfohlen))“ ist aktiviert.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
 
 3. Navigieren Sie anschließend in Ihrem Browser zum Azure-Portal, und suchen Sie nach „Images“. Ihre Suche sollte Sie zur Seite **Image erstellen** führen, wie im folgenden Screenshot dargestellt:
 
-    ![Screenshot: Seite „Image erstellen“ im Azure-Portal mit Beispielwerten für das Image](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Seite „Image erstellen“ im Azure-Portal mit Beispielwerten für das Image](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
 
 4. Nachdem Sie das Image erstellt haben, sollte eine Benachrichtigung wie im folgenden Screenshot angezeigt werden:
 
-    ![Screenshot: Benachrichtigung „Image erfolgreich erstellt“](media/1f41b7192824a2950718a2b7bb9e9d69.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Benachrichtigung „Image erfolgreich erstellt“](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

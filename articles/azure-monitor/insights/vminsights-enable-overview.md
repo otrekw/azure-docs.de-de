@@ -5,23 +5,29 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/28/2020
-ms.openlocfilehash: 3c9c5e69eea72b20da485ffb1edf806f2c9f3b41
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/25/2020
+ms.openlocfilehash: 261e5f17e787fd96697b06a9b338e74ea0409454
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195303"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507074"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Aktivieren von Azure Monitor für VMs: Übersicht
 
-Dieser Artikel bietet eine Übersicht über die verfügbaren Optionen zum Aktivieren von Azure Monitor für VMs auf Ihren virtuellen Computern, um die Integrität und Leistung zu überwachen. Erkennen Sie Anwendungsabhängigkeiten, die für virtuelle Azure-Computer (VMs) und VM-Skalierungsgruppen, lokale virtuelle Computer oder virtuelle Computer in einer anderen Cloudumgebung ausgeführt werden.  
+Dieser Artikel bietet eine Übersicht über die verfügbaren Optionen zum Aktivieren von Azure Monitor für VMs, um die Integrität und Leistung folgender Elemente zu überwachen:
+
+- Virtuelle Azure-Computer 
+- Azure-VM-Skalierungsgruppen
+- Hybrid-VMs, die mit Azure Arc verbunden sind
+- Lokale virtuelle Computer
+- In einer anderen Cloudumgebung gehostete virtuelle Computer  
 
 So richten Sie Azure Monitor für VMs ein
 
-* Aktivieren Sie einen einzelnen virtuellen Azure-Computer bzw. eine VM-Skalierungsgruppe, indem Sie direkt auf der VM oder in der VM-Skalierungsgruppe die Option **Insights**  wählen.
-* Aktivieren Sie zwei oder mehr Azure-VMs und VM-Skalierungsgruppen, indem Sie Azure Policy verwenden. Diese Methode stellt sicher, dass bei bestehenden und neuen virtuellen Computern und Skalierungsgruppen die erforderlichen Abhängigkeiten installiert und ordnungsgemäß konfiguriert werden. Nicht konforme VMs und Skalierungsgruppen werden gemeldet, sodass Sie entscheiden können, ob Sie sie aktivieren und den Zustand korrigieren möchten.
-* Aktivieren Sie mindestens zwei virtuelle Azure-Computer oder VM-Skalierungsgruppen über ein bestimmtes Abonnement oder eine bestimmte Ressourcengruppe mithilfe von PowerShell.
+* Aktivieren Sie eine einzelne Azure-VM, eine einzelne Azure-VMSS oder einen einzelnen Azure Arc-Computer, indem Sie **Insights** direkt im entsprechenden Menü im Azure-Portal aktivieren.
+* Aktivieren Sie mehrere Azure-VMs, Azure-VMSS oder Azure Arc-Computer mithilfe von Azure Policy. Diese Methode stellt sicher, dass bei bestehenden und neuen virtuellen Computern und Skalierungsgruppen die erforderlichen Abhängigkeiten installiert und ordnungsgemäß konfiguriert werden. Nicht konforme VMs und Skalierungsgruppen werden gemeldet, sodass Sie entscheiden können, ob Sie sie aktivieren und den Zustand korrigieren möchten.
+* Aktivieren Sie mehrere Azure-VMs, Azure Arc-VMs, Azure-VMSS oder Azure Arc-Computer über ein angegebenes Abonnement oder eine angegebene Ressourcengruppe mithilfe von PowerShell.
 * Aktivieren Sie Azure Monitor für VMs zum Überwachen von virtuellen Computern oder physischen Computern, die in Ihrem Unternehmensnetzwerk oder einer anderen Cloudumgebung gehostet werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -43,6 +49,8 @@ Azure Monitor für VMs unterstützt einen Log Analytics-Arbeitsbereich in den fo
 - USA (Ost 2)
 - USA (Mitte)
 - USA Nord Mitte
+- US Gov Az
+- US Gov Va
 - Kanada, Mitte
 - UK, Süden
 - Nordeuropa
@@ -66,15 +74,13 @@ Wenn Sie über keinen Log Analytics-Arbeitsbereich verfügen, können Sie einen 
 
 Sie können auch einen Arbeitsbereich erstellen, während Sie im Azure-Portal die Überwachung für einen einzelnen virtuellen Azure-Computer oder eine VM-Skalierungsgruppe aktivieren.
 
-So richten Sie in Ihrem Log Analytics-Arbeitsbereich ein bedarfsorientiertes Szenario ein, das Vorlagen für Azure Policy, Azure PowerShell oder Azure Resource Manager verwendet
-
-* Installieren Sie die Projektmappen *ServiceMap* und *InfrastructureInsights*. Sie können diese Installation mithilfe einer bereitgestellten Azure Resource Manager-Vorlage abschließen. Oder wählen Sie auf der Registerkarte **Erste Schritte** im Azure-Portal die Option **Arbeitsbereich konfigurieren** aus.
-* Konfigurieren Sie den Log Analytics-Arbeitsbereich zur Erfassung von Leistungsindikatoren.
-
-Verwenden Sie zum Konfigurieren Ihres Arbeitsbereichs für das bedarfsorientierte Szenario eine der folgenden Methoden:
+Zum Einrichten eines bedarfsorientierten Szenarios, das Vorlagen für Azure Policy, Azure PowerShell oder Azure Resource Manager verwendet, müssen Sie die Lösung *VMInsights* installieren. Hierfür können Sie eine der folgenden Methoden verwenden:
 
 * Mithilfe von [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace)
 * Wählen Sie auf der Seite zur [**Richtlinienabdeckung**](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview) von Azure Monitor für VMs die Option **Arbeitsbereich konfigurieren** aus. 
+
+### <a name="azure-arc-machines"></a>Azure Arc-Computer
+Azure Monitor für VMs ist für Azure Arc-fähige Server in Regionen verfügbar, in denen der Arc-Erweiterungsdienst verfügbar ist. Benutzer müssen Arc Agent, Version 0.9 oder höher ausführen, um Azure Monitor für VMs auf ihren Arc-fähigen Servern zu aktivieren.
 
 ### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
@@ -190,10 +196,10 @@ Aktivieren Sie Azure Monitor für VMs, indem Sie eine der in dieser Tabelle besc
 
 | Bereitstellungszustand | Methode | BESCHREIBUNG |
 |------------------|--------|-------------|
-| Einzelne Azure-VM oder VM-Skalierungsgruppe | [Über die VM aktivieren](vminsights-enable-single-vm.md) | Sie können einen einzelnen virtuellen Azure-Computer aktivieren, indem Sie direkt auf der VM oder in der VM-Skalierungsgruppe die Option **Insights** wählen. |
-| Mehrere Azure-VMs oder VM-Skalierungsgruppen | [Über Azure Policy aktivieren](vminsights-enable-at-scale-policy.md) | Sie können mehrere Azure-VMs aktivieren, indem Sie Azure Policy und die verfügbaren Richtliniendefinitionen verwenden. |
-| Mehrere Azure-VMs oder VM-Skalierungsgruppen | [Über Azure PowerShell- oder Azure Resource Manager-Vorlagen aktivieren](vminsights-enable-at-scale-powershell.md) | Sie können mehrere Azure-VMs oder VM-Skalierungsgruppen übergreifend für ein angegebenes Abonnement oder eine Ressourcengruppe aktivieren, indem Sie Azure PowerShell- oder Azure Resource Manager-Vorlagen verwenden. |
-| Hybrid Cloud | [Für Hybridumgebungen aktivieren](vminsights-enable-hybrid-cloud.md) | Sie können die Bereitstellung auf virtuellen oder physischen Computern durchführen, die in Ihrem Rechenzentrum oder in anderen Cloudumgebungen gehostet werden. |
+| Einzelne Azure-VM, einzelne Azure-VMSS oder einzelner Azure Arc-Computer | [Über das Portal aktivieren](vminsights-enable-single-vm.md) | Wählen Sie **Insights** direkt im Menü im Azure-Portal aus. |
+| Mehrere Azure-VMs, Azure-VMSS oder Azure Arc-Computer | [Über Azure Policy aktivieren](vminsights-enable-at-scale-policy.md) | Verwenden Sie Azure Policy für die automatische Aktivierung beim Erstellen einer VM oder VMSS. |
+| | [Über Azure PowerShell- oder Azure Resource Manager-Vorlagen aktivieren](vminsights-enable-at-scale-powershell.md) | Verwenden Sie Azure PowerShell- oder Azure Resource Manager-Vorlagen, um mehrere Azure-VMs, Azure Arc-VMs oder Azure-VMSS für ein bestimmtes Abonnement oder eine bestimmte Ressourcengruppe zu aktivieren. |
+| Hybrid Cloud | [Für Hybridumgebungen aktivieren](vminsights-enable-hybrid-cloud.md) | Führen Sie die Bereitstellung auf virtuellen oder physischen Computern durch, die in Ihrem Rechenzentrum oder in anderen Cloudumgebungen gehostet werden. |
 
 ## <a name="management-packs"></a>Management Packs
 

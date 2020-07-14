@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: e5c8bc2fe64d489c9e8490a63f4d7c4680f21ce0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4e08cba2b49f43baea16b01ec709d8d9ab6a18d
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71846394"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856949"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Unterstützung für 32-Bit-Betriebssysteme auf virtuellen Azure-Computern
 
-Microsoft Azure ermöglicht es Benutzern jetzt, ihre 32-Bit-Windows-Betriebssysteme in Azure zu übernehmen. Da einige dieser Betriebssysteme das Ende des Supportlebensdauer-Vertrags erreicht haben, bietet Microsoft möglicherweise keinen weiteren Support für diese an. Ebenfalls kein Support wird für auf Linux oder BSD (Berkeley Software Distribution) basierende Betriebssysteme geboten, die auf einem virtuellen Microsoft Azure-Computer (VM) ausgeführt werden.
+Microsoft Azure ermöglicht es Benutzern jetzt, ihre 32-Bit-Windows-Betriebssysteme in Azure zu übernehmen. Es werden ausschließlich spezialisierte VHDs unterstützt, und generalisierte Images funktionieren in Azure nicht. Da einige dieser Betriebssysteme das Ende des Supportlebensdauer-Vertrags erreicht haben, bietet Microsoft möglicherweise keinen weiteren Support für diese an. Ebenfalls kein Support wird für auf Linux oder BSD (Berkeley Software Distribution) basierende Betriebssysteme geboten, die auf einem virtuellen Microsoft Azure-Computer (VM) ausgeführt werden.
 
 ## <a name="more-information"></a>Weitere Informationen
 

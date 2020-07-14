@@ -2,14 +2,14 @@
 title: Anmerkungen zu dieser Version für Microsoft Azure Backup Server v3
 description: Dieser Artikel enthält Informationen zu bekannten Problemen und Problemumgehungen für Microsoft Azure Backup Server (MABS) v3.
 ms.topic: conceptual
-ms.date: 11/22/2018
+ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: a5c99bcb95fde39bddc9e9db9ab000881c89081a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f67b73612bd970c903b179a4a02c787ee0320b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185624"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629160"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Anmerkungen zu dieser Version für Microsoft Azure Backup Server
 
@@ -17,9 +17,9 @@ Dieser Artikel enthält Informationen über die bekannten Probleme und Problemum
 
 ## <a name="backup-and-recovery-fails-for-clustered-workloads"></a>Sicherung und Wiederherstellung ist für gruppierte Workloads nicht möglich
 
-**Beschreibung:** Bei Sicherung/Wiederherstellung gruppierter Datenquellen wie z.B. Hyper-V-Cluster oder SQL-Cluster (SQL AlwaysOn) oder Exchange in einer Datenbankverfügbarkeitsgruppe (Database Availability Group, DAG) tritt nach dem Upgrade von MABS V2 auf MABS V3 ein Fehler auf.
+**Beschreibung:** Beim Sichern/Wiederherstellen gruppierter Datenquellen wie z.B. Hyper-V-Cluster oder SQL-Cluster (SQL AlwaysOn) oder Exchange in einer Datenbankverfügbarkeitsgruppe (Database Availability Group, DAG) tritt nach dem Upgrade von MABS V2 auf MABS V3 ein Fehler auf.
 
-**Problemumgehung:** Um dies zu verhindern, öffnen Sie SQL Server Management Studio (SSMS), und führen Sie das folgende SQL-Skript auf der DPM-Datenbank aus:
+**Problemumgehung:** Um dies zu verhindern, öffnen Sie SQL Server Management Studio (SSMS), und führen Sie das folgende SQL-Skript für die DPM-Datenbank aus:
 
 ```sql
     IF EXISTS (SELECT * FROM dbo.sysobjects
@@ -52,7 +52,7 @@ Dieser Artikel enthält Informationen über die bekannten Probleme und Problemum
 
 **Beschreibung:** Beim Upgrade von MABS V2 auf MABS V3 tritt im russischen Gebietsschema ein Fehler mit dem Fehlercode **4387** auf.
 
-**Problemumgehung:** Führen Sie zum Upgrade auf MABS V3 mithilfe des russischen Installationspakets die folgenden Schritte aus:
+**Problemumgehung:** Führen Sie zum Durchführen des Upgrades auf MABS V3 mithilfe des russischen Installationspakets die folgenden Schritte aus:
 
 1. [Sichern](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) Sie Ihre SQL-Datenbank, und deinstallieren Sie MABS V2 (wählen Sie das Beibehalten der geschützten Daten während der Deinstallation aus).
 2. Führen Sie ein Upgrade auf SQL 2017 (Enterprise) durch, und deinstallieren Sie die Berichterstellung als Teil des Upgrades.
@@ -71,6 +71,40 @@ Dieser Artikel enthält Informationen über die bekannten Probleme und Problemum
 
 9. Starten Sie den MSDPM-Dienst.
 
+## <a name="after-installing-ur1-the-mabs-reports-arent-updated-with-new-rdl-files"></a>Nach der Installation von UR1 werden die MABS-Berichte nicht mit neuen RDL-Dateien aktualisiert.
+
+**Beschreibung**: Mit UR1 ist das Problem mit der Formatierung von MABS-Berichten mit aktualisierten RDL-Dateien behoben. Die neuen RDL-Dateien werden nicht automatisch durch vorhandene Dateien ersetzt.
+
+**Problemumgehung**: Führen Sie die folgenden Schritte aus, um die RDL-Dateien zu ersetzen:
+
+1. Rufen Sie auf dem MABS-Computer die URL für das SQL Reporting Services-Webportal auf.
+1. Unter der Webportal-URL ist der Ordner „DPMReports“ im Format **`DPMReports_<GUID>`** vorhanden.
+
+    >[!NOTE]
+    >Es gibt immer nur einen Ordner mit dieser Benennungskonvention. Wenn MABS von einer früheren Version aktualisiert wird, ist möglicherweise auch ein anderer älterer Ordner vorhanden, diesen können Sie jedoch nicht öffnen.
+
+    ![Ordner „DPMReports“](./media/backup-mabs-release-notes-v3/dpm-reports-folder.png)
+
+1. Wählen Sie den Ordner **`DPMReports_<GUID>`** aus, und öffnen Sie ihn. Die einzelnen Berichtsdateien werden wie unten dargestellt aufgelistet.
+
+    ![Liste der einzelnen Berichtsdateien](./media/backup-mabs-release-notes-v3/individual-report-files.png)
+
+1. Wählen Sie die Berichtsdateien aus, deren Name nicht auf **Report** endet, klicken Sie mit der rechten Maustaste auf **Option**, und wählen Sie **Verwalten** aus.
+
+    ![Auswählen von „Verwalten“ für Berichtsdateien](./media/backup-mabs-release-notes-v3/manage-files.png)
+
+1. Wählen Sie auf der neuen Seite die Option **Ersetzen** aus, um die Dateien durch die aktuellen Berichtsdateien zu ersetzen.
+
+    Die aktuellen Berichtsdateien befinden sich unter dem Pfad `<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`.
+
+    Beispiel: `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+
+    ![Ersetzen der Dateien durch die aktuellen Berichtsdateien](./media/backup-mabs-release-notes-v3/replace-files.png)
+
+    Nachdem die Dateien ersetzt wurden, stellen Sie sicher, dass **Name** und **Beschreibung** korrekt und nicht leer sind.
+
+1. Starten Sie nach dem Ersetzen der Dateien die MABS-Dienste neu, und verwenden Sie die Berichtsdateien.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Neuerungen in MABS V3](backup-mabs-whats-new-mabs.md)
+[Neuerungen in MABS](backup-mabs-whats-new-mabs.md)

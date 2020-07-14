@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 94a2398879007e7ecd6d2f1920157eb4627f33cb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 205a4bd119a7324c4e6524a0e29d432aa57bf315
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848212"
 ---
-# <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+# <a name="load-balancer-frequently-asked-questions"></a>Häufig gestellte Fragen zu Load Balancer
 
 ## <a name="what-types-of-load-balancer-exist"></a>Welche Typen von Load Balancer sind vorhanden?
 Interne Lastenausgleichsmodule, die Datenverkehr in einem VNET ausgleichen, und externe Lastenausgleichsmodule, die Datenverkehr zu und von einem mit dem Internet verbundenen Endpunkt ausgleichen. Weitere Informationen finden Sie unter [Load Balancer-Typen](components.md#frontend-ip-configurations). 
@@ -35,6 +35,19 @@ NAT-Regeln werden verwendet, um eine Back-End-Ressource anzugeben, an die Datenv
 
 ## <a name="what-is-ip-1686312916"></a>Was ist IP 168.63.129.16?
 Die virtuelle IP-Adresse für den Host, der als Load Balancer für die Azure-Infrastruktur gekennzeichnet ist und als Ausgangspunkt für die Integritätstests von Azure dient. Beim Konfigurieren von Back-End-Instanzen müssen diese Datenverkehr von dieser IP-Adresse zulassen, um erfolgreich auf Integritätstests reagieren zu können. Diese Regel interagiert nicht mit dem Zugriff auf das Load Balancer-Front-End. Sie können diese Regel außer Kraft setzen, wenn Sie den Azure Load Balancer nicht verwenden. Weitere Informationen zu Diensttags finden Sie [hier](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags).
+
+## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>Kann ich das globale VNet-Peering mit Load Balancer Basic verwenden?
+Nein. Load Balancer Basic unterstützt kein globales VNet-Peering. Sie können stattdessen Load Balancer Standard verwenden. Informationen zu einem nahtlosen Upgrade finden Sie im Artikel [Aktualisieren von „Basic“ auf „Standard“](upgrade-basic-standard.md).
+
+## <a name="how-can-i-discover-the-public-ip-that-an-azure-vm-uses"></a>Wie kann ich die von einer Azure-VM verwendete öffentliche IP-Adresse ermitteln?
+
+Es gibt viele Möglichkeiten, die öffentliche IP-Quelladresse einer ausgehenden Verbindung zu bestimmen. OpenDNS bietet einen Dienst, der die öffentliche IP-Adresse Ihrer VM anzeigen kann.
+Mit dem Befehl „nslookup“ können Sie eine DNS-Abfrage für den Namen „myip.opendns.com“ an den OpenDNS-Resolver senden. Der Dienst gibt die IP-Quelladresse zurück, die zum Senden der Abfrage verwendet wurde. Wenn Sie die folgende Abfrage auf Ihrem virtuellen Computer ausführen, wird die öffentliche IP-Adresse zurückgegeben, die für diesen virtuellen Computer verwendet wird:
+
+ ```nslookup myip.opendns.com resolver1.opendns.com```
+
+## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Wie funktionieren Verbindungen mit Azure Storage in derselben Region?
+Eine ausgehende Konnektivität mithilfe der oben genannten Szenarios ist nicht erforderlich, um eine Verbindung mit Azure Storage in derselben Region wie die VM herzustellen. Alternativ können Sie NSGs (Netzwerksicherheitsgruppen) verwenden, wenn Sie dies nicht möchten. Für Verbindungen mit Azure Storage in anderen Regionen ist die ausgehende Konnektivität erforderlich. Beachten Sie, dass es sich bei der Quell-IP-Adresse in den Azure Storage-Diagnoseprotokollen um eine interne Anbieteradresse handelt und nicht um die öffentliche IP-Adresse Ihrer VM, wenn Sie eine Verbindung mit Azure Storage über eine VM in derselben Region herstellen. Wenn Sie den Zugriff auf Ihr Azure Storage-Konto für VMs in mindestens einem Subnetz des virtuellen Netzwerks innerhalb derselben Region einschränken möchten, sollten Sie [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) anstelle Ihrer öffentlichen IP-Adresse verwenden, wenn Sie die Firewall für Ihr Speicherkonto konfigurieren. Sobald die Dienstendpunkte konfiguriert wurden, wird Ihre private VNET-IP-Adresse in Ihren Azure Storage-Diagnoseprotokollen anstelle der internen Anbieteradresse angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Ihre Frage oben nicht aufgeführt wird, senden Sie uns Feedback zu dieser Seite mit Ihrer Frage. Dadurch wird ein Issue auf GitHub für das Produktteam erstellt, um sicherzustellen, dass alle wichtigen Fragen unserer Kunden beantwortet werden.

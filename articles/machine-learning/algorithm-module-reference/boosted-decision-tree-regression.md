@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: cb7f11f184ba8e19eb8786817da58edf8ddee44e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b72d80f0be65af22bf334752052757346457a67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137092"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84448630"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Modul „Boosted Decision Tree Regression“ (Regression bei verstärktem Entscheidungsbaum)
 
@@ -99,7 +99,7 @@ Die Gradient Boosting-Methode kann auch für Klassifizierungsprobleme verwendet 
 
 Nach Abschluss des Trainings:
 
-+ Wenn Sie das Modell zur Bewertung verwenden möchten, verbinden Sie es mit [Score Model](./score-model.md) (Modell bewerten), um Werte für neue Eingabebeispiele vorherzusagen.
++ Wenn Sie das Modell zur Bewertung verwenden möchten, verbinden Sie [Train Model](train-model.md) (Modell trainieren) mit [Score Model](./score-model.md) (Modell bewerten), um Werte für neue Eingabebeispiele vorherzusagen.
 
 + Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Registerkarte **Ausgaben** im rechten Bereich des Moduls **Trained model** (Trainiertes Modell) aus, und klicken Sie dann auf das Symbol für **Dataset registrieren**. Die Kopie des trainierten Modells wird als Modul in der Modulstruktur gespeichert und wird bei aufeinanderfolgenden Durchläufen der Pipeline nicht aktualisiert.
 

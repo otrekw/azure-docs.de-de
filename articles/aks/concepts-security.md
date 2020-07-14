@@ -2,14 +2,16 @@
 title: Konzepte – Sicherheit in Azure Kubernetes Service (AKS)
 description: Erfahren Sie mehr über die Sicherheit in Azure Kubernetes Service (AKS), einschließlich Master- und Knoten-Kommunikation, Netzwerkrichtlinien und Kubernetes-Geheimnisse.
 services: container-service
+author: mlearned
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: f3c4fd922ef0e4243344b34dd90f7e48f903abcd
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 07/01/2020
+ms.author: mlearned
+ms.openlocfilehash: 15bd0791917ca95e61a441b71947b70c81c0598e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981390"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831538"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)
 
@@ -78,6 +80,8 @@ Ein Kubernetes-*Geheimnis* wird verwendet, um sensible Daten wie Anmeldeinformat
 
 Die Verwendung von Geheimnissen reduziert die vertraulichen Informationen, die im YAML-Manifest für den Pod oder den Dienst definiert werden. Stattdessen fordern Sie im Rahmen Ihres YAML-Manifests das im Kubernetes-API-Server gespeicherte Geheimnis an. Mit diesem Ansatz erhält nur der spezielle Pod Zugriff auf das Geheimnis. Hinweis: Die unformatierten geheimen Manifestdateien enthalten die geheimen Daten im Base64-Format (weitere Einzelheiten finden Sie in der [offiziellen Dokumentation][secret-risks]). Aus diesem Grund sollte diese Datei wie vertrauliche Daten behandelt und nie in die Quellcodeverwaltung committet werden.
 
+Kubernetes-Geheimnisse werden in „etcd“ gespeichert, einem verteilten Schlüssel-Wert-Speicher. Der etcd-Speicher wird vollständig von AKS verwaltet, und [Daten werden im Ruhezustand innerhalb der Azure Platform verschlüsselt][encryption-atrest]. 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Die ersten Schritte zum Sichern Ihrer AKS-Cluster sind unter [Aktualisieren eines AKS-Clusters][aks-upgrade-cluster] beschrieben.
@@ -96,6 +100,7 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
+[encryption-atrest]: https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets

@@ -5,23 +5,24 @@ description: Steuern Sie den Zugriff auf Azure Machine Learning-Arbeitsbereiche 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
-ms.openlocfilehash: 40c25dda3fefa9c54df832e16149a68a4aa5a33b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: tracking-python
+ms.openlocfilehash: 31daec93352c0e142075a55c61f2b8d3a6d56fab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981964"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080217"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Verwenden des Arbeitsbereichs hinter Azure Firewall für Azure Machine Learning
 
 In diesem Artikel erfahren Sie, wie Sie Azure Firewall für die Verwendung mit einem Azure Machine Learning-Arbeitsbereich konfigurieren.
 
-Azure Firewall kann verwendet werden, um den Zugriff auf Ihren Azure Machine Learning-Arbeitsbereich und das öffentliche Internet zu steuern. Wenn sie nicht ordnungsgemäß konfiguriert ist, kann die Firewall Probleme bei der Verwendung Ihres Arbeitsbereichs verursachen.
+Azure Firewall kann verwendet werden, um den Zugriff auf Ihren Azure Machine Learning-Arbeitsbereich und das öffentliche Internet zu steuern. Wenn sie nicht ordnungsgemäß konfiguriert ist, kann die Firewall Probleme bei der Verwendung Ihres Arbeitsbereichs verursachen. Es gibt eine Vielzahl von Hostnamen, die alle vom Azure Machine Learning-Arbeitsbereich verwendet werden; dies wird im vorliegenden Artikel beschrieben.
 
 ## <a name="network-rules"></a>Netzwerkregeln
 
@@ -40,16 +41,18 @@ Die Hosts in diesem Abschnitt befinden sich im Besitz von Microsoft und stellen 
 | ---- | ---- |
 | **\*.batchai.core.windows.net** | Trainingscluster |
 | **ml.azure.com** | Azure Machine Learning Studio |
+| **default.exp-tas.com** | Von Azure Machine Learning Studio verwendet |
 | **\*.azureml.ms** | Von Azure Machine Learning-APIs verwendet |
-| **\*.experiments.azureml.net** | Von Experimenten verwendet, die in Azure Machine Learning ausgeführt werden|
+| **\*.experiments.azureml.net** | Von Experimenten verwendet, die in Azure Machine Learning ausgeführt werden |
 | **\*.modelmanagement.azureml.net** | Zum Registrieren und Bereitstellen von Modellen verwendet|
 | **mlworkspace.azure.ai** | Vom Azure-Portal beim Anzeigen eines Arbeitsbereichs verwendet |
 | **\*.aether.ms** | Beim Ausführen von Azure Machine Learning-Pipelines verwendet |
 | **\*.instances.azureml.net** | Azure Machine Learning-Computeinstanzen |
+| **\*.instances.azureml.ms** | Azure Machine Learning-Computeinstanzen, wenn für den Arbeitsbereich Private Link aktiviert ist |
 | **windows.net** | Azure Blob Storage |
 | **vault.azure.net** | Azure-Schlüsseltresor |
-| **microsoft.com** | Basis-Docker-Images |
 | **azurecr.io** | Azure Container Registry |
+| **mcr.microsoft.com** | Microsoft Container Registry für Basis-Docker-Images |
 
 ## <a name="python-hosts"></a>Python-Hosts
 

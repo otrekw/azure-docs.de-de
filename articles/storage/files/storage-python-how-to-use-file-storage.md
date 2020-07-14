@@ -3,16 +3,17 @@ title: Entwickeln für Azure Files mit Python | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Python-Anwendungen und -Dienste entwickeln, die Azure Files zum Speichern von Dateidaten verwenden.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 139e3009722761172b7bbd57805a7f5b07e55fc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: tracking-python
+ms.openlocfilehash: c612ddc324144a818dd738b440660d473ec3a1bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68699392"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509641"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Entwickeln für Azure Files mit Python
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -47,7 +48,7 @@ pip install azure-storage-file
 Informationen zu alternativen Installationsmethoden finden Sie im [Azure Storage SDK für Python auf GitHub](https://github.com/Azure/azure-storage-python/).
 
 ## <a name="view-the-sample-application"></a>Anzeigen der Beispielanwendung
-Um eine Beispielanwendung anzuzeigen und auszuführen, die zeigt, wie Python mit Azure Files verwendet wird, finden Sie unter [Azure Storage: Erste Schritte mit Azure Files in Python](https://github.com/Azure-Samples/storage-file-python-getting-started). 
+Um eine Beispielanwendung anzuzeigen und auszuführen, die zeigt, wie Python mit Azure Files verwendet wird, lesen Sie [Azure Storage: Erste Schritte mit Azure Files in Python](https://github.com/Azure-Samples/storage-file-python-getting-started). 
 
 Um die Beispielanwendung auszuführen, stellen Sie sicher, dass Sie die `azure-storage-file`- und `azure-storage-common`-Pakete beide installiert haben.
 

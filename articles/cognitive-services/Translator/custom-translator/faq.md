@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: fefd3fcd82454d505099f83944b0e251b71410f0
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 2edc5e9e255af321a30521ba1e707eea30d81f73
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996906"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957595"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Häufig gestellte Fragen: Benutzerdefinierter Translator
 
@@ -41,7 +41,7 @@ Die Bereitstellung dauert in der Regel weniger als eine Stunde.
 
 ## <a name="how-do-you-access-a-deployed-system"></a>Wie erfolgt der Zugriff auf ein bereitgestelltes System?
 
-Auf bereitgestellte Systeme kann über Microsoft Translator V3 durch Angabe der Kategorie-ID zugegriffen werden. Weitere Informationen zu Translator finden Sie auf der [Webseite mit der API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference).
+Auf bereitgestellte Systeme kann über Translator durch Angabe der Kategorie-ID zugegriffen werden. Weitere Informationen zu Translator finden Sie auf der Webseite mit der [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference).
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Wie kann ich Abstimmung und Satzaufteilung überspringen, wenn die Sätze in meinen Daten bereits abgestimmt sind?
 

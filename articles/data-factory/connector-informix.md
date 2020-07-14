@@ -1,6 +1,6 @@
 ---
-title: Kopieren von Daten aus IBM Informix-Quellen mithilfe von Azure Data Factory
-description: Erfahren Sie, wie Daten aus IBM Informix-Quellen mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
+title: Kopieren von Daten aus und in IBM Informix mithilfe von Azure Data Factory
+description: Hier erfahren Sie, wie Daten mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline aus und in IBM Informix kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,16 +9,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 06/28/2020
 ms.author: jingwang
-ms.openlocfilehash: b4fb6662491443db5d10825635cad8496e56e7f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93f484bd30de1ba0ca0f7aa5db263243bebc5b09
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414979"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508808"
 ---
-# <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Kopieren von Daten aus IBM Informix-Datenspeichern bzw. in IBM Informix-Datenspeicher mithilfe von Azure Data Factory
+# <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Kopieren von Daten aus und in IBM Informix mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einem bzw. in einen IBM Informix-Datenspeicher zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
@@ -30,7 +30,7 @@ Der Informix-Connector wird für die folgenden Aktivitäten unterstützt:
 - [Kopieraktivität](copy-activity-overview.md) mit [unterstützter Quellen/Senken-Matrix](copy-activity-overview.md)
 - [Lookup-Aktivität](control-flow-lookup-activity.md)
 
-Sie können Daten aus einer Informix-Quelle in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Sie können Daten aus einer Informix-Quelle in jeden unterstützten Senkendatenspeicher oder Daten aus jedem unterstützten Quelldatenspeicher in eine Informix-Senke kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -151,6 +151,48 @@ Wenn Sie Daten aus Informix kopieren möchten, werden die folgenden Eigenschafte
             },
             "sink": {
                 "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+### <a name="informix-as-sink"></a>Informix als Senke
+
+Beim Kopieren von Daten in Informix werden die folgenden Eigenschaften im Abschnitt **sink** der Copy-Aktivität unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt sein: **InformixSink** | Ja |
+| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br/>Zulässige Werte: Zeitraum Beispiel: „00:30:00“ (30 Minuten). |Nein |
+| writeBatchSize |Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht.<br/>Zulässige Werte: Ganze Zahlen (Anzahl der Zeilen). |Nein (Standard ist 0 – automatisch erkannt) |
+| preCopyScript |Geben Sie eine auszuführende SQL-Abfrage für die Kopieraktivität an, ehe Sie bei der jeder Ausführung Daten in Datenspeicher schreiben. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. |Nein |
+
+**Beispiel:**
+
+```json
+"activities":[
+    {
+        "name": "CopyToInformix",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Informix output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "InformixSink"
             }
         }
     }

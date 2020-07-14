@@ -5,18 +5,18 @@ description: Sie können Ihre im Produkt enthaltenen Benutzerdaten im Azure KI-K
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bf0d889d70272988c9d2b243ae255f9654656bd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204544"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955589"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Anzeigen und Löschen von im Produkt enthaltenen Benutzerdaten im Azure KI-Katalog
 
@@ -45,11 +45,13 @@ Katalogantworten werden im JSON-Format zurückgegeben.
 ### <a name="get-an-author-id"></a>Abrufen einer Autor-ID
 Die Autor-ID basiert auf der E-Mail-Adresse, die beim Veröffentlichen im Azure KI-Katalog verwendet wurde. Sie wird nicht geändert:
 
-1.    Melden Sie sich beim [Azure KI-Katalog](https://gallery.azure.ai/) an.
-2.    Klicken Sie auf das Profilfoto in der oberen rechten Ecke und dann auf den Kontonamen, um Ihre Profilseite zu laden.
-3.    Die URL in der Adressleiste zeigt im Anschluss an `authorId=` die alphanumerische ID. Zum Beispiel für die URL: `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
-        
-    Die Autor-ID: `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+1. Melden Sie sich beim [Azure KI-Katalog](https://gallery.azure.ai/) an.
+2. Klicken Sie auf das Profilfoto in der oberen rechten Ecke und dann auf den Kontonamen, um Ihre Profilseite zu laden.
+3. Die URL in der Adressleiste zeigt im Anschluss an `authorId=` die alphanumerische ID. Beispielsweise für die URL: \
+    `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+
+    ID des Autors: \
+    `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
 ### <a name="get-your-access-token"></a>Abrufen eines Zugriffstokens
 
@@ -67,16 +69,17 @@ Um ein Zugriffstoken abzurufen, müssen Sie den Header `DataLabAccessToken` eine
 ### <a name="view-user-information"></a>Anzeigen von Benutzerinformationen
 Zeigen Sie mithilfe der in den vorherigen Schritten abgerufenen Autor-ID Informationen im Profil eines Benutzers an, indem Sie `[AuthorId]` in der folgenden URL ersetzen:
 
-    https://catalog.cortanaanalytics.com/users/[AuthorID]
+`https://catalog.cortanaanalytics.com/users/[AuthorID]`
 
 Beispielsweise gibt die folgende URL-Anforderung:
-    
-    https://catalog.cortanaanalytics.com/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA
+
+`https://catalog.cortanaanalytics.com/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
 eine Antwort wie folgt zurück:
 
-    {"entities_count":9,"contribution_score":86.351575190956922,"scored_at":"2018-05-07T14:30:25.9305671+00:00","contributed_at":"2018-05-07T14:26:55.0381756+00:00","created_at":"2017-12-15T00:49:15.6733094+00:00","updated_at":"2017-12-15T00:49:15.6733094+00:00","name":"First Last","slugs":["First-Last"],"tenant_id":"14b2744cf8d6418c87ffddc3f3127242","community_id":"9502630827244d60a1214f250e3bbca7","id":"99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA","_links":{"self":"https://catalog.azureml.net/tenants/14b2744cf8d6418c87ffddc3f3127242/communities/9502630827244d60a1214f250e3bbca7/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA"},"etag":"\"2100d185-0000-0000-0000-5af063010000\""}
-
+```json
+{"entities_count":9,"contribution_score":86.351575190956922,"scored_at":"2018-05-07T14:30:25.9305671+00:00","contributed_at":"2018-05-07T14:26:55.0381756+00:00","created_at":"2017-12-15T00:49:15.6733094+00:00","updated_at":"2017-12-15T00:49:15.6733094+00:00","name":"First Last","slugs":["First-Last"],"tenant_id":"14b2744cf8d6418c87ffddc3f3127242","community_id":"9502630827244d60a1214f250e3bbca7","id":"99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA","_links":{"self":"https://catalog.azureml.net/tenants/14b2744cf8d6418c87ffddc3f3127242/communities/9502630827244d60a1214f250e3bbca7/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA"},"etag":"\"2100d185-0000-0000-0000-5af063010000\""}
+```
 
 ### <a name="view-public-entities"></a>Anzeigen öffentlicher Entitäten
 
@@ -84,11 +87,11 @@ Die Katalog-API speichert Informationen zu im Azure KI-Katalog veröffentlichten
 
 Zum Anzeigen von veröffentlichten Entitäten rufen Sie die folgende URL auf, wobei Sie `[AuthorId]` durch die Autor-ID ersetzen, die Sie im Abschnitt [Abrufen einer Autor-ID](#get-an-author-id) weiter oben erhalten haben.
 
-    https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
+`https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'`
 
 Beispiel:
 
-    https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'
+`https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'`
 
 ### <a name="view-unlisted-and-public-entities"></a>Anzeigen von nicht aufgelisteten und öffentlichen Entitäten
 

@@ -1,18 +1,18 @@
 ---
 title: 'Zertifizierung virtueller Azure-Computer: Azure Marketplace'
 description: Es wird beschrieben, wie Sie ein VM-Angebot im kommerziellen Marketplace testen und übermitteln.
-author: emuench
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: emuench
+ms.author: mingshen
 ms.date: 04/09/2020
-ms.openlocfilehash: fe04cb12dc1afea78b023eab623927a07224888c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: d3b89945c077b9c26bab1709bd6d1def20959e33
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726144"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110044"
 ---
 # <a name="azure-virtual-machine-vm-image-certification"></a>Azure-VM-Imagezertifizierung
 
@@ -649,4 +649,4 @@ Wählen Sie abschließend **Bericht generieren** aus, um zusätzlich zu Ihren An
 
 ## <a name="next-step"></a>Nächster Schritt
 
-- [Abrufen des Shared Access Signature-URI für Ihr VM-Image](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)
+- [Häufige SAS-URI-Probleme und ihre Behebung](common-sas-uri-issues.md)

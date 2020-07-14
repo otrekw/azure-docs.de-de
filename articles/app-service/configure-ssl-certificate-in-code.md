@@ -6,10 +6,10 @@ ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811700"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Verwenden eines TLS-/SSL-Zertifikats in Ihrem Code in Azure App Service
@@ -29,7 +29,7 @@ Im Rahmen dieser Schrittanleitung müssen Sie folgende Schritte durchführen:
 
 ## <a name="find-the-thumbprint"></a>Ermitteln des Fingerabdrucks
 
-Wählen Sie im linken Menü des <a href="https://portal.azure.com" target="_blank">Azure-Portals</a> die Optionen **App Services** >  **\<App-Name>** aus.
+Wählen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> im linken Menü **App Services** >  **\<app-name>** aus.
 
 Wählen Sie im linken Navigationsbereich Ihrer App **TLS-/SSL-Einstellungen** und dann **Private Schlüsselzertifikate (PFX)** oder **Öffentliche Schlüsselzertifikate (CER)** aus.
 

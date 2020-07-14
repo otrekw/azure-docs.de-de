@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 42717b1e9b4ba12c2fe42dbd13ef44223ef2ba43
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c8480557d0f27594fa369e4e2451a5d0fe7ad3cc
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220217"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856733"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services und maschinelles Lernen
 

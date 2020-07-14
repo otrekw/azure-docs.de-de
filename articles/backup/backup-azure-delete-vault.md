@@ -2,13 +2,13 @@
 title: Löschen eines Microsoft Azure Recovery Services-Tresors
 description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Azure Backup-Recovery Services-Tresors aufheben und ihn dann löschen.
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 5fcf8004cd5792b30ec57537d5d8ab0bc085dfb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: e6aaab80cabbdd8a58d8adc64409bf1bcd8ebf03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183754"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563110"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
@@ -16,33 +16,41 @@ In diesem Artikel wird beschrieben, wie Sie einen Recovery Services-Tresor von [
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-Sie können keinen Recovery Services-Tresor löschen, der über Abhängigkeiten verfügt, z.B. geschützte Server oder Server für die Sicherungsverwaltung, die ihm zugeordnet sind.
+Es ist nicht möglich, einen Recovery Services-Tresor zu löschen, der über die folgenden Abhängigkeiten verfügt:
 
-- Tresore mit Sicherungsdaten können nicht gelöscht werden (selbst wenn Sie den Schutz beendet und die Sicherungsdaten beibehalten haben).
+- Es ist nicht möglich, einen Tresor zu löschen, der geschützte Datenquellen (z. B. IaaS-VMs, SQL-Datenbanken, Azure-Dateifreigaben usw.) enthält.  
+- Es ist nicht möglich, einen Tresor zu löschen, der Sicherungsdaten enthält. Nachdem die Sicherungsdaten gelöscht wurden, werden sie in den vorläufig gelöschten Zustand versetzt.
+- Es ist nicht möglich, einen Tresor zu löschen, der Sicherungsdaten im vorläufig gelöschten Zustand enthält.
+- Es ist nicht möglich, einen Tresor zu löschen, der über registrierte Speicherkonten verfügt.
 
-- Wenn Sie einen Tresor löschen, der Abhängigkeiten enthält, wird die folgende Meldung angezeigt:
+Wenn Sie versuchen, den Tresor zu löschen, ohne die Abhängigkeiten zu entfernen, wird eine der folgenden Fehlermeldungen angezeigt:
 
-  ![Fehler beim Löschen des Tresors](./media/backup-azure-delete-vault/error.png)
+- Der Tresor kann nicht gelöscht werden, weil darin Ressourcen vorhanden sind. Stellen Sie sicher, dass diesem Tresor keine Sicherungselemente, geschützten Server oder Sicherungsverwaltungsserver zugeordnet sind. Heben Sie die Registrierung der folgenden Container auf, die diesem Tresor zugeordnet sind, bevor Sie mit dem Löschen fortfahren.
 
-- Wenn Sie ein lokales geschütztes Element aus einem Portal löschen, das Abhängigkeiten enthält, wird eine Warnmeldung angezeigt:
+- Der Recovery Services-Tresor kann nicht gelöscht werden, da sich darin vorläufig gelöschte Sicherungselemente befinden. Die vorläufig gelöschten Elemente werden 14 Tage nach dem ersten Löschvorgang endgültig gelöscht. Versuchen Sie erst, den Tresor zu löschen, nachdem die Sicherungselemente endgültig gelöscht wurden und im Tresor kein Element mit dem Status „Vorläufig gelöscht“ mehr vorhanden ist. Weitere Informationen finden Sie unter [Vorläufiges Löschen für Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
 
-  ![Serverfehler beim Löschen eines geschützten Elements](./media/backup-azure-delete-vault/error-message.jpg)
+## <a name="proper-way-to-delete-a-vault"></a>So Löschen Sie einen Tresor ordnungsgemäß
 
-- Wenn sich Sicherungselemente im vorläufig gelöschten Zustand befinden, wird die Warnmeldung unten angezeigt, und Sie müssen warten, bis sie dauerhaft gelöscht werden. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
+>[!WARNING]
+>Der folgende Vorgang ist destruktiv und kann nicht rückgängig gemacht werden. Alle Sicherungsdaten und Sicherungselemente, die dem geschützten Server zugeordnet sind, werden dauerhaft gelöscht. Gehen Sie daher mit Bedacht vor.
 
-   ![Fehler beim Löschen des Tresors](./media/backup-azure-delete-vault/error-message-soft-delete.png)
+Zum ordnungsgemäßen Löschen eines Tresors müssen Sie die Schritte in dieser Reihenfolge ausführen:
 
-- Tresore mit registrierten Speicherkonten können nicht gelöscht werden. Weitere Informationen zum Aufheben der Registrierung des Kontos finden Sie unter [Aufheben der Registrierung eines Speicherkontos](manage-afs-backup.md#unregister-a-storage-account).
-  
-Wählen Sie zum Löschen des Tresors das Szenario, das Ihrem Setup entspricht, und führen Sie die empfohlenen Schritte aus:
+- **Schritt 1:** Deaktivieren Sie das Feature für vorläufiges Löschen. [Hier](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) finden Sie die Schritte zum Deaktivieren des vorläufigen Löschens.
 
-Szenario | Schritte zum Entfernen von Abhängigkeiten beim Löschen eines Tresors |
--- | --
-Ich verfüge über lokale Dateien und Ordner, die per Azure Backup-Agent geschützt sind und in Azure gesichert werden. | Führen Sie die Schritte unter [Löschen von Sicherungselementen über die MARS-Verwaltungskonsole](#delete-backup-items-from-the-mars-management-console) aus.
-Ich verfüge über lokale Computer, die per MABS (Microsoft Azure Backup Server) oder DPM (System Center Data Protection Manager) in Azure geschützt sind. | Führen Sie die Schritte unter [Löschen von Sicherungselementen über die MABS-Verwaltungskonsole](#delete-backup-items-from-the-mabs-management-console) aus.
-Ich verfüge über geschützte Elemente in der Cloud (z.B. einen virtuellen IaaS-Computer oder eine Azure Files-Freigabe).  | Führen Sie die Schritte unter [Löschen von geschützten Elementen in der Cloud](#delete-protected-items-in-the-cloud) aus.
-Ich verfüge sowohl lokal als auch in der Cloud über geschützte Elemente. | Führen Sie die Schritte in den folgenden Abschnitten in der angegebenen Reihenfolge aus: <br> 1. [Löschen von geschützten Elementen in der Cloud](#delete-protected-items-in-the-cloud)<br> 2. [Löschen von Sicherungselementen über die MARS-Verwaltungskonsole](#delete-backup-items-from-the-mars-management-console) <br> 3. [Löschen von Sicherungselementen über die MABS-Verwaltungskonsole](#delete-backup-items-from-the-mabs-management-console)
-Ich verfüge weder lokal noch in der Cloud über geschützte Elemente, erhalte aber immer noch den „Fehler beim Löschen von Tresor“. | Führen Sie die Schritte unter [Löschen des Recovery Services-Tresors mit Azure Resource Manager](#delete-the-recovery-services-vault-by-using-azure-resource-manager) aus. <br><br> Stellen Sie sicher, dass keine Speicherkonten beim Tresor registriert sind. Weitere Informationen zum Aufheben der Registrierung des Kontos finden Sie unter [Aufheben der Registrierung eines Speicherkontos](manage-afs-backup.md#unregister-a-storage-account).
+- **Schritt 2:** Nachdem Sie das vorläufige Löschen deaktiviert haben, überprüfen Sie, ob Elemente im vorläufig gelöschten Zustand verbleiben. Wenn es Elemente gibt, die sich im vorläufig gelöschten Zustand befinden, müssen Sie den *Löschvorgang rückgängig machen* und die Elemente erneut *löschen*. [Befolgen Sie diese Schritte](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items), um Elemente im vorläufig gelöschten Zustand zu finden und dauerhaft zu löschen.
+
+- **Schritt 3:** Überprüfen Sie, ob an den folgenden drei Stellen geschützte Elemente vorhanden sind:
+
+  - **In der Cloud geschützte Elemente**: Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungselemente** aus. Alle hier aufgelisteten Elemente müssen mit **Sicherung abbrechen** oder **Sicherungsdaten löschen** zusammen mit den zugehörigen Sicherungsdaten gelöscht werden.  [Führen Sie die folgenden Schritte aus](#delete-protected-items-in-the-cloud), um diese Elemente zu entfernen.
+  - **MARS-geschützte Server**: Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Geschützte Server** aus. Wenn Sie über Mars-geschützte Server verfügen, müssen alle hier aufgeführten Elemente zusammen mit den zugehörigen Sicherungsdaten gelöscht werden. [Führen Sie die folgenden Schritte aus](#delete-protected-items-on-premises), um MARS-geschützten Server zu löschen.
+  - **MABS- oder DPM-Verwaltungs Server**: Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Server für die Sicherungsverwaltung** aus. Wenn Sie über DPM- oder Azure Backup Server (MABS) verfügen, müssen alle hier aufgelisteten Elemente zusammen mit den zugehörigen Sicherungsdaten gelöscht werden bzw deren Registrierung muss aufgehoben werden. [Führen Sie die folgenden Schritte aus](#delete-protected-items-on-premises), um die Verwaltungsserver zu löschen.
+
+- **Schritt 4:** Sie müssen sicherstellen, dass alle registrierten Speicherkonten gelöscht werden. Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Speicherkonten** aus. Wenn hier Speicherkonten aufgeführt sind, müssen Sie die Registrierung für alle diese Kosten aufheben. Weitere Informationen zum Aufheben der Registrierung des Kontos finden Sie unter [Aufheben der Registrierung eines Speicherkontos](manage-afs-backup.md#unregister-a-storage-account).
+
+Nachdem Sie diese Schritte abgeschlossen haben, können Sie mit dem [Löschen des Tresors](#delete-the-recovery-services-vault) fortfahren.
+
+Wenn Sie lokal oder in der Cloud über keine geschützten Elemente verfügen, aber immer noch den Tresorlöschfehler erhalten, führen Sie die Schritte unter[Löschen des Recovery Services-Tresors mit Azure Resource Manager](#delete-the-recovery-services-vault-by-using-azure-resource-manager) aus.
 
 ## <a name="delete-protected-items-in-the-cloud"></a>Löschen von geschützten Elementen in der Cloud
 
@@ -82,7 +90,7 @@ Lesen Sie zuerst den Abschnitt **[Vorbereitung](#before-you-start)** , um sich m
 
       - Wählen Sie für MABS oder DPM die Option **Sicherungsverwaltungsserver** aus. Wählen Sie anschließend den Server aus, den Sie löschen möchten.
 
-          ![MABS: Auswählen des Tresors zum Öffnen des zugehörigen Dashboards](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
+          ![MABS oder DPM: Auswählen des Tresors zum Öffnen des zugehörigen Dashboards.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
 3. Der Bereich **Löschen** wird geöffnet und zeigt eine Warnmeldung an.
 
@@ -100,12 +108,18 @@ Lesen Sie zuerst den Abschnitt **[Vorbereitung](#before-you-start)** , um sich m
 5. Überprüfen Sie das Symbol **Benachrichtigung**![Sicherungsdaten löschen](./media/backup-azure-delete-vault/messages.png). Nach Abschluss des Vorgangs zeigt der Dienst die folgende Meldung an: *Sicherung beenden und Sicherungsdaten für „Sicherungselement“ löschen.* *Der Vorgang wurde erfolgreich abgeschlossen.*
 6. Wählen Sie im Menü **Sicherungselemente** die Option **Aktualisieren** aus, um sich zu vergewissern, dass das Sicherungselement gelöscht wurde.
 
+>[!NOTE]
+>Wenn Sie ein lokales geschütztes Element, das Abhängigkeiten aufweist, aus einem Portal löschen, wird eine Warnung angezeigt, die besagt, dass das Löschen der Serverregistrierung ein destruktiver Vorgang ist und nicht rückgängig gemacht werden kann, und dass alle Sicherungsdaten (zum Wiederherstellen der Daten benötigte Wiederherstellungspunkte) und Sicherungselemente, die dem geschützten Server zugeordnet sind, dauerhaft gelöscht werden.
+
 Nach Abschluss dieses Vorgangs können Sie die Sicherungselemente über die Verwaltungskonsole löschen:
 
 - [Löschen von Sicherungselementen über die MARS-Verwaltungskonsole](#delete-backup-items-from-the-mars-management-console)
-- [Löschen von Sicherungselementen über die MABS-Verwaltungskonsole](#delete-backup-items-from-the-mabs-management-console)
+- [Löschen von Sicherungselementen über die MABS- oder DPM-Verwaltungskonsole](#delete-backup-items-from-the-mabs-or-dpm-management-console)
 
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>Löschen von Sicherungselementen über die MARS-Verwaltungskonsole
+
+>[!NOTE]
+>Wenn Sie den Quellcomputer gelöscht oder verloren haben, ohne die Sicherung zu beenden, tritt bei der nächsten geplanten Sicherung ein Fehler auf. Der alte Wiederherstellungspunkt läuft gemäß der Richtlinie ab. Der letzte Einzelwiederherstellungspunkt wird jedoch immer beibehalten, bis Sie die Sicherung beenden und die Daten löschen. Dazu müssen Sie die Schritte in [diesem Abschnitt](#delete-protected-items-on-premises) ausführen.
 
 1. Öffnen Sie die MARS-Verwaltungskonsole, navigieren Sie zum Bereich **Aktionen**, und wählen Sie **Sicherung planen** aus.
 2. Wählen Sie auf der Seite **Geplante Sicherung ändern oder beenden** die Option **Sicherungszeitplan nicht länger verwenden und alle gespeicherten Sicherungen löschen** aus. Klicken Sie anschließend auf **Weiter**.
@@ -128,9 +142,12 @@ Nach Abschluss dieses Vorgangs können Sie die Sicherungselemente über die Verw
 
 Nachdem Sie die lokalen Sicherungselemente gelöscht haben, führen Sie die nächsten Schritte im Portal aus.
 
-### <a name="delete-backup-items-from-the-mabs-management-console"></a>Löschen von Sicherungselementen über die MABS-Verwaltungskonsole
+### <a name="delete-backup-items-from-the-mabs-or-dpm-management-console"></a>Löschen von Sicherungselementen über die MABS- oder DPM-Verwaltungskonsole
 
-Es gibt zwei Methoden zum Löschen von Sicherungselementen über die MABS-Verwaltungskonsole.
+>[!NOTE]
+>Wenn Sie den Ursprungscomputer gelöscht oder verloren haben, ohne die geplante Sicherung zu beenden, schlägt die nächste geplante Sicherung fehl. Der alte Wiederherstellungspunkt läuft gemäß der Richtlinie ab. Der letzte Einzelwiederherstellungspunkt wird jedoch immer beibehalten, bis Sie die Sicherung beenden und die Daten löschen. Dazu müssen Sie die Schritte in [diesem Abschnitt](#delete-protected-items-on-premises) ausführen.
+
+Es gibt zwei Methoden zum Löschen von Sicherungselementen über die MABS- oder DPM-Verwaltungskonsole.
 
 #### <a name="method-1"></a>Methode 1
 
@@ -154,7 +171,7 @@ Führen Sie die folgenden Schritte aus, um den Schutz zu beenden und die Sicheru
 
 #### <a name="method-2"></a>Methode 2
 
-Öffnen Sie die **MABS-Verwaltungskonsole**. Deaktivieren Sie unter **Datenschutzmethode auswählen** das Kontrollkästchen **Ich möchte Onlineschutz**.
+Öffnen Sie die **MABS-Verwaltungskonsole** oder die **DPM-Verwaltungskonsole**. Deaktivieren Sie unter **Datenschutzmethode auswählen** das Kontrollkästchen **Ich möchte Onlineschutz**.
 
   ![Wählen Sie die Methoden zum Schützen der Daten aus.](./media/backup-azure-delete-vault/data-protection-method.png)
 
@@ -352,5 +369,5 @@ Weitere Informationen zum ARMClient-Befehl finden Sie unter [ARMClient README](h
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Übersicht über Recovery Services-Tresore](backup-azure-recovery-services-vault-overview.md)<br/>
+[Übersicht über Recovery Services-Tresore](backup-azure-recovery-services-vault-overview.md)
 [Überwachen und Verwalten von Recovery Services-Tresoren](backup-azure-manage-windows-server.md)

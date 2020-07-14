@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
-ms.openlocfilehash: f0b738f394c4a544ddb31e25b4570890ccfa9235
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: cdbb5bbde1e5efef9bef992a62a54f1525a16df7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995869"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052574"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Benutzerdefinierte Azure Functions-Handler (Vorschau)
 
@@ -447,9 +447,14 @@ Dieses Beispiel gilt für Node.js. Sie müssen dieses Beispiel daher möglicherw
 
 Ein benutzerdefinierter Handler kann für nahezu jede Azure Functions-Hostingoption bereitgestellt werden (siehe [Einschränkungen](#restrictions)). Wenn Ihr Handler benutzerdefinierte Abhängigkeiten erfordert (z. B. eine Sprachlaufzeit), müssen Sie möglicherweise einen [benutzerdefinierten Container](./functions-create-function-linux-custom-image.md) verwenden.
 
+Zum Bereitstellen einer benutzerdefinierten Handler-App mit den Azure Functions Core Tools führen Sie den folgenden Befehl aus.
+
+```bash
+func azure functionapp publish $functionAppName --no-build --force
+```
+
 ## <a name="restrictions"></a>Beschränkungen
 
-- Benutzerdefinierte Handler werden in Linux-Nutzungsplänen nicht unterstützt.
 - Der Webserver muss innerhalb von 60 Sekunden gestartet werden.
 
 ## <a name="samples"></a>Beispiele

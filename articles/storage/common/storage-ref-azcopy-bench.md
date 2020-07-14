@@ -8,22 +8,22 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 331d0cd4a20cb4351a1bc9a204c500386c499ada
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 40ff6c6c76e255945681e678ef296ffcf9978f61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220146"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485185"
 ---
-# <a name="azcopy-bench"></a>azcopy bench
+# <a name="azcopy-benchmark"></a>azcopy bench
 
 Führt einen Leistungsvergleichstest aus, indem Testdaten an ein angegebenes Ziel hochgeladen werden. Die Testdaten werden automatisch generiert.
 
 Mit dem Befehl „bench“ wird derselbe Uploadvorgang wie mit „copy“ ausgeführt. Allerdings bestehen folgende Unterschiede:
 
-  - Es gibt keinen Quellparameter.  Der Befehl erfordert nur eine Ziel-URL. In der aktuellen Version muss diese Ziel-URL auf einen Blobcontainer verweisen.
+  - Es gibt keinen Quellparameter.  Der Befehl erfordert nur eine Ziel-URL. 
   
-  - Die Nutzlast wird durch Befehlszeilenparameter definiert, die steuern, wie viele Dateien automatisch und in welcher Größe generiert werden. Die Dateien werden vollständig im Arbeitsspeicher generiert. Es wird kein Datenträger verwendet.
+  - Die Nutzlast wird durch Befehlszeilenparameter definiert, die steuern, wie viele Dateien automatisch generiert werden und wie groß diese Dateien sind. Die Dateien werden vollständig im Arbeitsspeicher generiert. Es wird kein Datenträger verwendet.
   
   - Es werden nur einige der optionalen Parameter unterstützt, die für den Befehl „copy“ verfügbar sind.
   
@@ -38,18 +38,18 @@ Alle üblichen Authentifizierungstypen werden unterstützt. Der einfachste Ansat
 ## <a name="examples"></a>Beispiele
 
 ```azcopy
-azcopy bench [destination] [flags]
+azcopy benchmark [destination] [flags]
 ```
 
 Ausführen eines Vergleichstests mit Standardparametern (geeignet für das Testen von Netzwerken mit bis zu 1 GBit/s):
 
 - azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>"
 
-Ausführen eines Vergleichstests, bei dem 100 Dateien von jeweils 2 GiB hochgeladen werden (geeignet für das Testen von schnellen Netzwerken, z. B. mit 10 GBit/s):
+Ausführen eines Vergleichstests, bei dem 100 Dateien von jeweils 2 GiB hochgeladen werden (geeignet für das Testen von schnellen Netzwerken, z. B. mit 10 GBit/s):
 
-- azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-count 100 --size-per-file 2G
+- azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>"--file-count 100 --size-per-file 2G
 
-Wie oben, allerdings werden 50.000 Dateien von jeweils 8 MiB verwendet und deren MD5-Hashes berechnet. (Funktioniert auf dieselbe Weise wie mit dem „--put-md5“-Flag im Befehl „copy“.) Mit „--put-md5“ soll bei Vergleichstests ermittelt werden, ob die MD5-Berechnung den Durchsatz der ausgewählten Dateianzahl und -größe beeinflusst:
+Ausführen eines Vergleichstests, allerdings werden 50.000 Dateien von jeweils 8 MiB verwendet und deren MD5-Hashes berechnet. (Funktioniert auf dieselbe Weise wie mit dem `--put-md5`-Flag im Befehl „copy“.) Mit `--put-md5` soll bei Vergleichstests ermittelt werden, ob die MD5-Berechnung den Durchsatz der ausgewählten Dateianzahl und -größe beeinflusst:
 
 - azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-count 50000 --size-per-file 8M --put-md5
 

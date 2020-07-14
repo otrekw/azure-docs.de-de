@@ -3,12 +3,12 @@ title: Sichern einer SAP HANA-Datenbank mit Azure Backup in Azure
 description: In diesem Artikel erfahren Sie, wie Sie eine SAP HANA-Datenbanken mit dem Azure Backup-Dienst auf virtuellen Azure-Computern sichern können.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 20086516dc37538474a31c7735e9b2d3b1a3d5b2
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: c9f9841ac40a39fc51c0e722415c871650bec86d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248565"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667317"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -191,7 +191,7 @@ Sicherungen werden gemäß dem Richtlinienzeitplan ausgeführt. Eine bedarfsgest
 
 1. Klicken Sie im Tresormenü auf **Sicherungselemente**.
 2. Wählen Sie unter **Sicherungselemente** den virtuellen Computer aus, auf dem die SAP HANA-Datenbank ausgeführt wird, und klicken Sie dann auf **Jetzt sichern**.
-3. Verwenden Sie unter **Jetzt sichern** den Kalender, um den letzten Tag zur Beibehaltung des Wiederherstellungspunkts auszuwählen. Klicken Sie dann auf **OK**.
+3. Wählen Sie in **Jetzt sichern** den Sicherungstyp aus, den Sie durchführen möchten. Klicken Sie dann auf **OK**. Diese Sicherung wird gemäß der diesem Sicherungselement zugeordneten Richtlinie aufbewahrt.
 4. Überwachen Sie die Portalbenachrichtigungen. Sie können den Auftragsstatus im Dashboard des Tresors unter **Sicherungsaufträge** > **In Bearbeitung** überwachen. Je nach Größe Ihrer Datenbank kann das Erstellen der ersten Sicherung einige Zeit dauern.
 
 ## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>Ausführen einer SAP HANA Studio-Sicherung einer Datenbank, für die Azure Backup aktiviert ist

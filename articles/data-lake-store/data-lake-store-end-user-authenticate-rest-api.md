@@ -3,15 +3,15 @@ title: Authentifizierung von Endbenutzern – REST bei Data Lake Storage Gen1�
 description: Hier erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe von Azure Active Directory und der REST-API umsetzen.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: ac06c9ef355eeba489d2006c435a48b7efcfd7f0
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 84e85e6e817972b8ec0bee0e8b441b3585d2d9dd
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688078"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984850"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe der REST-API
 > [!div class="op_single_selector"]
@@ -41,23 +41,25 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
 
 1. Leiten Sie den Benutzer über die Anwendung an die folgende URL um:
 
-        https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
+    `https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>`
 
    > [!NOTE]
-   > \<REDIRECT-URI&gt; muss für die Verwendung in einer URL codiert werden. Für https://localhost verwenden Sie also `https%3A%2F%2Flocalhost` ).
+   > \<REDIRECT-URI> muss für die Verwendung in einer URL codiert werden. Für https://localhost verwenden Sie also `https%3A%2F%2Flocalhost` ).
 
     In diesem Tutorial können Sie die Platzhalterwerte in der URL oben ersetzen und in der Adressleiste des Webbrowsers einfügen. Sie werden umgeleitet und authentifizieren sich mit Ihrer Azure-Anmeldung. Nachdem Sie sich erfolgreich angemeldet haben, wird die Antwort in der Adressleiste des Browsers angezeigt. Die Antwort wird im folgenden Format angezeigt:
 
-        http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
+    `http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>`
 
 2. Erfassen Sie den in der Antwort angegebenen Autorisierungscode. In diesem Tutorial können Sie den Autorisierungscode aus der Adressleiste des Webbrowsers kopieren und wie im folgenden Codeausschnitt gezeigt in der POST-Anforderung an den Tokenendpunkt übergeben:
 
-        curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
-        -F redirect_uri=<REDIRECT-URI> \
-        -F grant_type=authorization_code \
-        -F resource=https://management.core.windows.net/ \
-        -F client_id=<APPLICATION-ID> \
-        -F code=<AUTHORIZATION-CODE>
+    ```console
+    curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
+    -F redirect_uri=<REDIRECT-URI> \
+    -F grant_type=authorization_code \
+    -F resource=https://management.core.windows.net/ \
+    -F client_id=<APPLICATION-ID> \
+    -F code=<AUTHORIZATION-CODE>
+    ```
 
    > [!NOTE]
    > In diesem Fall muss \<REDIRECT-URI> nicht codiert werden.
@@ -66,15 +68,19 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
 
 3. Die Antwort ist ein JSON-Objekt, das ein Zugriffstoken (z.B. `"access_token": "<ACCESS_TOKEN>"`) und ein Aktualisierungstoken (z.B. `"refresh_token": "<REFRESH_TOKEN>"`) enthält. Die Anwendung verwendet das Zugriffstoken beim Zugriff auf Azure Data Lake Storage Gen1 und das Aktualisierungstoken zum Abrufen eines anderen Zugriffstokens, wenn ein Zugriffstoken abläuft.
 
-        {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
+    ```json
+    {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
+    ```
 
 4. Wenn das Zugriffstoken abläuft, können Sie wie im folgenden Codeausschnitt gezeigt mithilfe des Aktualisierungstokens ein neues Zugriffstoken anfordern:
 
-        curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
-             -F grant_type=refresh_token \
-             -F resource=https://management.core.windows.net/ \
-             -F client_id=<APPLICATION-ID> \
-             -F refresh_token=<REFRESH-TOKEN>
+    ```console
+    curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
+         -F grant_type=refresh_token \
+         -F resource=https://management.core.windows.net/ \
+         -F client_id=<APPLICATION-ID> \
+         -F refresh_token=<REFRESH-TOKEN>
+    ```
 
 Weitere Informationen zur interaktiven Benutzerauthentifizierung finden Sie unter [Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory](https://msdn.microsoft.com/library/azure/dn645542.aspx).
 

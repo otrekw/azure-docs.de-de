@@ -2,7 +2,7 @@
 title: Skalieren von Ressourcen
 description: In diesem Artikel erfahren Sie, wie Sie Ihre Datenbank in Azure SQL-Datenbank und SQL Managed Instance durch Hinzufügen oder Entfernen von zugeordneten Ressourcen skalieren.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 19703557ce03100888dffc7a6c7f41b72b036214
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 180fca9ae40bc07be762665a3d16270e905d2e02
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038301"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984140"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamisches Skalieren von Datenbankressourcen bei minimaler Downtime
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,11 +25,11 @@ Mit Azure SQL-Datenbank und SQL Managed Instance können Sie mit minimaler [Down
 
 ## <a name="overview"></a>Übersicht
 
-Wenn die Nachfrage nach Ihrer App von einer Handvoll Geräten und Kunden in den Millionenbereich steigt, können Azure SQL-Datenbank und SQL Managed Instance im laufenden Betrieb mit minimaler Downtime skaliert werden. Die Skalierbarkeit ist eines der wichtigsten Merkmale von PaaS, mit dem Sie Ihrem Dienst bei Bedarf dynamisch weitere Ressourcen hinzufügen können. Mit Azure SQL-Datenbank können Sie Ressourcen (CPU-Leistung, Arbeitsspeicher, E/A-Durchsatz und Speicher), die Ihren Datenbanken zugeordnet sind, leicht ändern.
+Wenn die Nachfrage nach Ihrer App von einigen wenigen Geräten und Kunden bis in den Millionenbereich zunimmt, können Azure SQL-Datenbank und SQL Managed Instance im laufenden Betrieb mit minimaler Downtime skaliert werden. Die Skalierbarkeit ist eines der wichtigsten Merkmale von PaaS (Platform-as-a-Service), mit dem Sie Ihrem Dienst bei Bedarf dynamisch weitere Ressourcen hinzufügen können. Mit Azure SQL-Datenbank können Sie Ressourcen (CPU-Leistung, Arbeitsspeicher, E/A-Durchsatz und Speicher), die Ihren Datenbanken zugeordnet sind, leicht ändern.
 
 Sie können Leistungsprobleme beheben, die aufgrund der vermehrten Nutzung Ihrer Anwendung auftreten und sich per Indizierung oder mit Methoden zum Umschreiben von Abfragen nicht beseitigen lassen. Durch das Hinzufügen von weiteren Ressourcen können Sie schnell reagieren, wenn Ihre Datenbank die derzeitigen Ressourcenlimits erreicht und eine höhere Leistung benötigt, um die eingehende Workload verarbeiten zu können. Mit Azure SQL-Datenbank können Sie die Ressourcen auch zentral herunterskalieren, wenn sie nicht benötigt werden, um die Kosten zu senken.
 
-Sie müssen sich nicht mit dem Kauf von Hardware und der Änderung der zugrunde liegenden Infrastruktur befassen. Sie können die Datenbank skalieren, indem Sie einfach im Azure-Portal einen Schieberegler verwenden.
+Sie müssen sich nicht mit dem Kauf von Hardware und der Änderung der zugrunde liegenden Infrastruktur befassen. Sie können eine Datenbank einfach im Azure-Portal über einen Schieberegler skalieren.
 
 ![Skalieren der Datenbankleistung](./media/scale-resources/scale-performance.svg)
 
@@ -44,7 +44,7 @@ Sie können zu einer geringen monatlichen Gebühr Ihre erste App in einer kleine
 > Dynamische Skalierbarkeit ist nicht dasselbe wie automatische Skalierung. Bei der automatischen Skalierung wird ein Dienst automatisch auf der Grundlage von Kriterien skaliert. Die dynamische Skalierbarkeit ermöglicht dagegen eine manuelle Skalierung mit minimaler Downtime.
 
 Einzeldatenbanken in Azure SQL-Datenbank unterstützen die manuelle dynamische Skalierbarkeit, aber keine Autoskalierung. Ein höheres Maß an *Automatisierung* lässt sich bei Bedarf mithilfe von Pools für elastische Datenbanken erzielen, die die gemeinsame Nutzung eines Ressourcenpools auf der Grundlage individueller Datenbankanforderungen ermöglichen.
-Es gibt allerdings auch Skripts, die Sie bei der Automatisierung der Skalierbarkeit für eine einzelne Azure SQL-Datenbank unterstützen. Ein Beispiel finden Sie unter [Überwachen und Skalieren einer einzelnen SQL­-Datenbank mit PowerShell](scripts/monitor-and-scale-database-powershell.md).
+Es gibt allerdings auch Skripts, die Sie bei der Automatisierung der Skalierbarkeit für eine einzelne Datenbank in Azure SQL-Datenbank unterstützen. Ein Beispiel finden Sie unter [Überwachen und Skalieren einer einzelnen SQL­-Datenbank mit PowerShell](scripts/monitor-and-scale-database-powershell.md).
 
 Sie können [DTU-Dienstebenen](service-tiers-dtu.md) oder [V-Kern-Merkmale](resource-limits-vcore-single-databases.md) jederzeit ändern und die Ausfallzeiten für Ihre Anwendung dabei gering halten (im Durchschnitt meist unter vier Sekunden). Für viele Unternehmen und Apps genügt es, wenn Datenbanken erstellt werden können und sich die Leistung nach oben oder unten anpassen lässt – insbesondere, wenn die Nutzungsmuster relativ gut vorhersagbar sind. Bei unvorhersagbaren Nutzungsmustern kann es jedoch schwer sein, die Kosten und Ihr Geschäftsmodell zu verwalten. In diesem Szenario verwenden Sie einen Pool für elastische Datenbanken mit einer bestimmten Anzahl von eDTUs, die von mehreren Datenbanken im Pool gemeinsam genutzt werden.
 
@@ -57,7 +57,7 @@ Azure SQL-Datenbank ermöglicht ein dynamisches Skalieren Ihrer Datenbanken:
 
 In Azure SQL Managed Instance ist ebenfalls ein Skalieren möglich: 
 
-- [SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) verwendet den Modus [Virtuelle Kerne](../managed-instance/sql-managed-instance-paas-overview.md#vcore-based-purchasing-model) und ermöglicht Ihnen das Definieren der maximalen Anzahl von CPU-Kernen und des maximalen Speichers für Ihre Instanz. Alle Datenbanken innerhalb der Instanz nutzen die der Instanz zugeordneten Ressourcen gemeinsam.
+- [SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) verwendet den Modus [Virtuelle Kerne](../managed-instance/sql-managed-instance-paas-overview.md#vcore-based-purchasing-model) und ermöglicht Ihnen das Definieren der maximalen Anzahl von CPU-Kernen und des maximalen Speichers für Ihre Instanz. Alle Datenbanken innerhalb der verwalteten Instanz nutzen die der Instanz zugeordneten Ressourcen gemeinsam.
 
 Wenn Sie die Aktion zum Hoch- oder Herunterskalieren in einer der Varianten initiieren, wird der Datenbank-Engine-Prozess neu gestartet und bei Bedarf auf einen anderen virtuellen Computer verschoben. Das Verschieben des Datenbank-Engine-Prozesses auf einen neuen virtuellen Computer ist ein **Onlineprozess**, bei dem Sie den vorhandenen Azure SQL-Datenbank-Dienst weiterhin verwenden können, während der Prozess ausgeführt wird. Sobald die Zieldatenbank-Engine vollständig initialisiert und zum Verarbeiten der Abfragen bereit ist, werden die Verbindungen [von der Quell- zur Zieldatenbank-Engine umgeleitet](single-database-scale.md#impact).
 
@@ -68,7 +68,7 @@ Wenn Sie die Aktion zum Hoch- oder Herunterskalieren in einer der Varianten init
 
 Die Skalierung von Ressourcen ist die einfachste und effektivste Möglichkeit, die Leistung Ihrer Datenbank zu verbessern, ohne die Datenbank oder den Anwendungscode zu ändern. Manchmal kann es vorkommen, dass auch die höchsten Dienstebenen, Computegrößen und Leistungsoptimierungen nicht zu einer erfolgreichen und kostengünstigen Verarbeitung Ihrer Workload führen. In diesen Fällen haben Sie weitere Möglichkeiten zum Skalieren Ihrer Datenbank:
 
-- Die [horizontale Leseskalierung](read-scale-out.md) ist ein verfügbares Feature, bei dem Sie ein schreibgeschütztes Replikat Ihrer Daten erhalten, über das Sie anspruchsvolle schreibgeschützte Abfragen (z.B. Berichte) ausführen können. Mit dem schreibgeschützten Replikat wird Ihre schreibgeschützte Workload verarbeitet, ohne dass sich Auswirkungen auf die Ressourcenverwendung in Ihrer primären Datenbank ergeben.
+- Die [horizontale Leseskalierung](read-scale-out.md) ist ein verfügbares Feature, bei dem Sie ein schreibgeschütztes Replikat Ihrer Daten erhalten, über das Sie anspruchsvolle schreibgeschützte Abfragen (z. B. Berichte) ausführen können. Mit einem schreibgeschützten Replikat wird Ihre schreibgeschützte Workload verarbeitet, ohne dass sich Auswirkungen auf die Ressourcenverwendung in Ihrer primären Datenbank ergeben.
 - Das [Datenbank-Sharding](elastic-scale-introduction.md) umfasst eine Reihe von Verfahren, mit denen Sie Ihre Daten in mehrere Datenbanken aufteilen und unabhängig voneinander skalieren können.
 
 ## <a name="next-steps"></a>Nächste Schritte

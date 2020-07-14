@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 8faff37e127e80447e0f066ef17e2885d4bcb597
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435630"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799733"
 ---
 # <a name="protect-your-machines-and-applications"></a>Schützen Ihrer Computer und Anwendungen
 Werden potenzielle Sicherheitslücken erkannt, erstellt Azure Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Härten und Schützen Ihrer Ressourcen unterstützen.
@@ -163,15 +163,13 @@ Wenn Sie die Registerkarte **Container** öffnen, wird je nach Ihrer Umgebung m�
 
 ![Containerhost](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) Containerhosts – VMs auf denen Docker ausgeführt wird 
 
-![Kubernetes-Dienst](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) AKS-Cluster (Azure Kubernetes Service)
+![Kubernetes Service](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) – AKS-Cluster (Azure Kubernetes Service). [Weitere Informationen zum AKS-Paket von Security Center](azure-kubernetes-service-integration.md)
 
-![Containerregistrierung](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) ACR-Registrierungen (Azure Container Registry) – Wird nur in der Standardpreisstufe angezeigt und wenn das Azure Container Registry-Paket aktiviert ist.
+![Containerregistrierung](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) – Registrierungen in Azure Container Registry (ACR). [Weitere Informationen zum ACR-Paket von Security Center](azure-container-registry-integration.md)
 
 Anweisungen zur Verwendung der Containersicherheitsfeatures finden Sie unter [Überwachung der Sicherheit Ihrer Container](monitor-container-security.md).
 
-Die Vorteile des Azure Container Registry-Pakets werden [hier](azure-container-registry-integration.md) erklärt.
 
-Die Vorteile des Kubernetes Services-Pakets werden [hier](azure-kubernetes-service-integration.md) erklärt.
 
 [![Container-Registerkarte](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
 

@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 03/25/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 80601170a39333ea0075bb4ec262dd48c7f2d76d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c83f754fdc236cc7a08f5a6a6e62ca3cf620b536
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506044"
 ---
 # <a name="use-spot-vms-in-azure"></a>Verwenden von Spot-VMs in Azure
 
@@ -23,6 +23,6 @@ ms.locfileid: "81758335"
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Verwenden Sie die [Befehlszeilenschnittstelle](spot-cli.md), das [Portal](../windows/spot-portal.md) oder [PowerShell](../windows/spot-powershell.md), um Spot-VMs bereitzustellen.
+Verwenden Sie die [Befehlszeilenschnittstelle](spot-cli.md), das [Portal](../windows/spot-portal.md), [ARM-Vorlagen](spot-template.md) oder [PowerShell](../windows/spot-powershell.md), um Spot-VMs bereitzustellen.
 
 Sie können auch eine [Skalierungsgruppe mit Spot-VM-Instanzen](../../virtual-machine-scale-sets/use-spot.md) bereitstellen.

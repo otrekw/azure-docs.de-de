@@ -1,22 +1,22 @@
 ---
 title: Erstellen eines Azure IoT Edge-Modulangebots im Azure Marketplace mit Partner Center
 description: Erfahren Sie, wie Sie mithilfe von Partner Center ein IoT Edge-Modulangebot im Azure Marketplace erstellen, konfigurieren und veröffentlichen.
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 5798e3c9c2a345c5cf9d8fd254130b4252a696d8
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+author: anbene
+ms.author: mingshen
+ms.date: 06/17/2020
+ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847972"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119292"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Erstellen, Konfigurieren und Veröffentlichen eines IoT Edge-Modulangebots im Azure Marketplace
 
-In diesem Artikel wird beschrieben, wie Sie ein IoT Edge-Modulangebot (Internet der Dinge) für den Azure Marketplace erstellen und veröffentlichen. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), sofern dies noch nicht geschehen ist. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
+In diesem Artikel wird beschrieben, wie Sie ein IoT Edge-Modulangebot (Internet der Dinge) für den Azure Marketplace erstellen und veröffentlichen. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](create-account.md), sofern dies noch nicht geschehen ist. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
@@ -50,10 +50,10 @@ Die Seite **Angebotsübersicht** zeigt eine visuelle Darstellung der zum Veröff
 
 Diese Seite enthält Links zum Durchführen von Vorgängen für dieses Angebot auf der Grundlage der von Ihnen ausgewählten Optionen. Beispiel:
 
-- Wenn das Angebot einen Entwurf darstellt: [Delete draft offer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer) (Angebotsentwurf löschen)
-- Wenn es sich um ein Liveangebot handelt: [Stop selling the offer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) (Angebot nicht mehr verkaufen)
-- Wenn das Angebot in der Vorschau ist: [Go-live](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval) (Live schalten)
-- Wenn Sie die Abmeldung beim Herausgeber nicht abgeschlossen haben: [Cancel publishing](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing) (Veröffentlichung abbrechen).
+- Wenn das Angebot einen Entwurf darstellt: [Delete draft offer](update-existing-offer.md#delete-a-draft-offer) (Angebotsentwurf löschen)
+- Wenn es sich um ein Liveangebot handelt: [Stop selling the offer](update-existing-offer.md#stop-selling-an-offer-or-plan) (Angebot nicht mehr verkaufen)
+- Wenn das Angebot in der Vorschau ist: [Go-live](publishing-status.md#publisher-approval) (Live schalten)
+- Wenn keine Bestätigung durch den Herausgeber erfolgt ist: [Cancel publishing](update-existing-offer.md#cancel-publishing) (Veröffentlichung abbrechen)
 
 ## <a name="offer-setup"></a>Angebotseinrichtung
 
@@ -65,12 +65,12 @@ Wenn Sie Ihr Angebot mithilfe des Partner Centers im Marketplace veröffentliche
 
 1. Wählen Sie ein Leadziel aus, an das wir Kundenleads senden sollen. Das Partner Center unterstützt die folgenden CRM-Systeme:
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Wenn Ihr CRM-System oben nicht aufgeführt ist, verwenden Sie eine [Azure-Tabelle](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) oder einen [HTTPS-Endpunkt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https), um die Leaddaten von Kunden zu speichern, und exportieren Sie die Daten dann in Ihr CRM-System.
+    > Wenn Ihr CRM-System oben nicht aufgeführt ist, verwenden Sie eine [Azure-Tabelle](commercial-marketplace-lead-management-instructions-azure-table.md) oder einen [HTTPS-Endpunkt](commercial-marketplace-lead-management-instructions-https.md), um die Leaddaten von Kunden zu speichern, und exportieren Sie die Daten dann in Ihr CRM-System.
 
 2. Verbinden Sie Ihr Angebot bei der Veröffentlichung im Partner Center mit dem Leadziel.
 3. Vergewissern Sie sich, dass die Verbindung mit dem Leadziel ordnungsgemäß konfiguriert ist. Nach der Veröffentlichung Ihres Angebots im Partner Center überprüfen wir die Verbindung und senden Ihnen einen Testlead. Während Sie das Angebot vor der Liveschaltung als Vorschau anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu kaufen.
@@ -78,9 +78,9 @@ Wenn Sie Ihr Angebot mithilfe des Partner Centers im Marketplace veröffentliche
 
 Hier finden Sie einige zusätzliche Ressourcen zur Leadverwaltung:
 
-- [Übersicht über die Leadverwaltung](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Häufig gestellte Fragen zur Leadverwaltung](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [Übersicht über die Leadverwaltung](commercial-marketplace-get-customer-leads.md)
+- [Häufig gestellte Fragen zur Leadverwaltung](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [Häufige Leadkonfigurationsfehler](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - [Übersicht über die Leadverwaltung](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)-PDF-Datei (vergewissern Sie sich, dass Ihr Popupblocker deaktiviert ist).
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
@@ -91,7 +91,12 @@ Auf dieser Seite können Sie die Kategorien, die zum Gruppieren Ihres Angebots i
 
 #### <a name="category"></a>Category
 
-Wählen Sie mindestens eine und höchstens fünf Kategorien aus. Diese Kategorien werden verwendet, um Ihr Angebot in den geeigneten Marketplace-Suchbereichen zu platzieren und werden auf der Detailseite zu Ihrem Angebot angezeigt. Erläutern Sie in der Angebotsbeschreibung, inwiefern Ihr Angebot diesen Kategorien entspricht. Auf den Seiten zum Durchsuchen werden alle IoT Edge-Module unter der Kategorie  **Internet der Dinge > IoT Edge-Modul**  angezeigt.
+Wählen Sie Kategorien und Unterkategorien aus, um Ihr Angebot in den geeigneten Marketplace-Suchbereichen zu platzieren. Vergessen Sie nicht, in der Angebotsbeschreibung anzugeben, inwiefern Ihr Angebot diesen Kategorien entspricht. Wählen Sie Folgendes:
+
+- Mindestens eine und bis zu zwei Kategorien, einschließlich einer primären und einer sekundären Kategorie (optional).
+- Bis zu zwei Unterkategorien für jede primäre und/oder sekundäre Kategorie. Wenn keine Unterkategorie auf Ihr Angebot anwendbar ist, wählen Sie **Nicht zutreffend** aus.
+
+Eine vollständige Liste der Kategorien und Unterkategorien finden Sie unter [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md). Im Marketplace werden IoT Edge-Module immer unter der Kategorie  **Internet der Dinge** > **IoT Edge-Modul** angezeigt.
 
 #### <a name="legal"></a>Rechtliche Hinweise
 
@@ -104,14 +109,14 @@ Sie müssen die Nutzungsbedingungen für das Angebot angeben. Sie haben zwei Mö
 
 Wir bieten eine Vorlage für einen Standardvertrag, um Ihnen Transaktionen im kommerziellen Marketplace zu erleichtern. Sie können sich entscheiden, Ihr Angebot unter dem Standardvertrag anzubieten, der von Kunden nur einmal markiert und akzeptiert werden muss. Dies ist eine gute Option, wenn Sie keine benutzerdefinierten Geschäftsbedingungen austüfteln möchten.
 
-Weitere Informationen zum Standardvertrag finden Sie unter [Standardvertrag für den kommerziellen Microsoft-Marketplace](https://docs.microsoft.com/azure/marketplace/standard-contract). Sie können auch den [Standardvertrag](https://go.microsoft.com/fwlink/?linkid=2041178) als PDF-Datei herunterladen (achten Sie darauf, Ihren Popupblocker zu deaktivieren).
+Weitere Informationen zum Standardvertrag finden Sie unter [Standardvertrag für den kommerziellen Microsoft-Marketplace](../standard-contract.md). Sie können auch den [Standardvertrag](https://go.microsoft.com/fwlink/?linkid=2041178) als PDF-Datei herunterladen (achten Sie darauf, Ihren Popupblocker zu deaktivieren).
 
 Um den Standardvertrag zu verwenden, aktivieren Sie das Kontrollkästchen **Use the Standard Contract for Microsoft's commercial marketplace** (Standardvertrag für den kommerziellen Marketplace von Microsoft verwenden), und klicken Sie dann auf **Accept** (Akzeptieren).
 
 > [!NOTE]
 > Nachdem Sie ein Angebot mit dem Standardvertrag für den kommerziellen Microsoft-Marketplace veröffentlicht haben, können Sie keine eigenen benutzerdefinierten Geschäftsbedingungen mehr verwenden. Entweder bieten Sie Ihre Lösung im Rahmen des Standardvertrags oder Ihrer eigenen Geschäftsbedingungen an.
 
-![Darstellung des Kontrollkästchens zum Verwenden des Standardvertrags für den kommerziellen Marketplace von Microsoft.](./media/iot-edge-module-creation/iot-edge-module-standard-contract-checkbox.png)
+![Darstellung des Kontrollkästchens zum Verwenden des Standardvertrags für den kommerziellen Marketplace von Microsoft.](media//iot-edge-module-standard-contract-checkbox.png)
 
 ##### <a name="your-own-terms-and-conditions"></a>Ihre eigenen Geschäftsbedingungen
 
@@ -165,7 +170,7 @@ Geben Sie die Webadresse der Datenschutzrichtlinien Ihrer Organisation ein. Es l
 Stellen Sie ergänzende Onlinedokumente zu Ihrem Angebot bereit. Sie können bis zu 25 Links hinzufügen. Um einen Link hinzuzufügen, wählen Sie **+ Link hinzufügen** aus, und füllen Sie dann die folgenden Felder aus:
 
 - **Titel**: Kunden wird der Titel auf der Detailseite Ihres Angebots angezeigt.
-- **Link (URL)** : Geben Sie einen Link für Kunden ein, um Ihr Onlinedokument anzuzeigen. Der Link muss mit http:// oder https:// beginnen.
+- **Link (URL)** : Geben Sie einen Link für Kunden ein, um Ihr Onlinedokument anzuzeigen. Der Link muss mit `http://` oder `https://` beginnen.
 
 Fügen Sie mindestens einen Link zu Ihrer Dokumentation und einen Link zu den kompatiblen IoT Edge-Geräten aus dem  [Azure IoT-Gerätekatalog](https://catalog.azureiotsolutions.com/) hinzu.
 
@@ -183,7 +188,7 @@ Geben Sie im Abschnitt **CSP-Programm-Kontakt** den Link (**Marketingmaterial f�
 
 #### <a name="additional-marketplace-listing-resources"></a>Zusätzliche Ressourcen für Marketplace-Listen
 
-Weitere Informationen zum Erstellen von Angebotslistungen finden Sie unter [Bewährte Methoden für Angebotslistung](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
+Weitere Informationen zum Erstellen von Angebotslistungen finden Sie unter [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md).
 
 ### <a name="marketplace-images"></a>Marketplace-Bilder
 
@@ -205,33 +210,63 @@ Alle vier Logos sind erforderlich und werden an verschiedenen Stellen in der Mar
 
 #### <a name="screenshots-optional"></a>Screenshots (optional)
 
-Fügen Sie bis zu fünf Screenshots hinzu, die zeigen, wie Ihr Angebot funktioniert. Jeder muss 1280 x 720 Pixel groß sein und im PNG-Format vorliegen.
+Fügen Sie bis zu fünf Screenshots hinzu, die zeigen, wie Ihr Angebot funktioniert. Jeder muss 1.280 x 720 Pixel groß sein und im PNG-Format vorliegen.
 
 #### <a name="videos-optional"></a>Videos (optional)
 
-Fügen Sie optional bis zu fünf Videos hinzu, die Ihr Angebot vorstellen. Geben Sie den Namen des Videos, seine Webadresse und ein Miniaturbild des Videos im PNG-Format mit einer Größe von 1280 x 720 Pixel ein.
+Fügen Sie optional bis zu fünf Videos hinzu, die Ihr Angebot vorstellen. Geben Sie den Namen des Videos, seine Webadresse und ein Miniaturbild des Videos im PNG-Format mit einer Größe von 1.280 x 720 Pixel ein.
 
-#### <a name="offer-examples"></a>Angebotsbeispiele
+#### <a name="marketplace--examples"></a>Marketplace-Beispiele
 
-In den folgenden Beispielen wird gezeigt, wie die Felder der Angebotsauflistung an verschiedenen Stellen des Angebots dargestellt werden.
+Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure Marketplace angezeigt werden:
 
-Dieser Screenshot zeigt die Seite **Angebotsliste** in Azure Marketplace.
+:::image type="content" source="media/example-iot-azure-marketplace-offer.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-offer-listing-page.png" alt-text="Darstellung der Seite „Angebotsliste“ in Azure Marketplace.":::
+#### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
-Dieser Screenshot zeigt die Suchergebnisse in Azure Marketplace:
+1. Großes Logo
+2. Kategorien
+3. Supportadresse (Link)
+4. Geschäftsbedingungen
+5. Adresse der Datenschutzrichtlinie (Link)
+6. Name
+7. Zusammenfassung
+8. BESCHREIBUNG
+9. Nützliche Links
+10. Screenshots/Videos
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-marketplace-search-results.png" alt-text="Darstellung der Suchergebnisse in Azure Marketplace.":::
+<br>Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen in Azure Marketplace-Suchergebnissen angezeigt werden:
 
-Dieser Screenshot zeigt die Seite **Angebotsliste** im Azure-Portal.
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Veranschaulicht, wie dieses Angebot in Azure Marketplace-Suchergebnissen angezeigt wird.":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-listing-page-azure-portal.png" alt-text="Darstellung der Seite „Angebotsliste“ im Azure-Portal.":::
+#### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
-Dieser Screenshot zeigt Suchergebnisse im Azure-Portal.
+1. Kleines Logo
+2. Angebotsname
+3. Zusammenfassung der Suchergebnisse
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-azure-portal-search-results.png" alt-text="Darstellung der Seite „Angebotsliste“ im Azure-Portal.":::
+<br>Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure-Portal angezeigt werden:
 
-Wählen Sie **Entwurf speichern** aus, bevor Sie mit dem nächsten Abschnitt „Vorschau“ fortfahren.
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure-Portal angezeigt wird.":::
+
+#### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
+
+1. Name
+2. BESCHREIBUNG
+3. Nützliche Links
+4. Screenshots
+
+<br>Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen in den Suchergebnissen im Azure-Portal angezeigt werden:
+
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Veranschaulicht, wie dieses Angebot in den Suchergebnissen im Azure-Portal angezeigt wird.":::
+
+#### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
+
+1. Kleines Logo
+2. Angebotsname
+3. Zusammenfassung der Suchergebnisse
+
+<br>Wählen Sie **Entwurf speichern** aus, bevor Sie mit dem nächsten Abschnitt „Vorschau“ fortfahren.
 
 ## <a name="preview"></a>Vorschau
 
@@ -246,9 +281,6 @@ Geben Sie Ihre Vorschauzielgruppe mithilfe der GUIDs der Azure-Abonnement-ID an,
 > Sie finden Ihre Azure-Abonnement-ID auf der Seite „Abonnement“ im Azure-Portal.
 
 Fügen Sie mindestens eine Azure-Abonnement-ID hinzu, entweder einzeln (bis zu 10) oder durch Hochladen einer CSV-Datei (bis zu 100). Durch Hinzufügen dieser Abonnement-IDs definieren Sie, wer Ihr Angebot als Vorschau anzeigen kann, bevor es live veröffentlicht wird. Wenn Ihr Angebot bereits live geschaltet ist, können Sie eine Vorschauzielgruppe für das Testen von Änderungen oder Aktualisierungen Ihres Angebots definieren.
-
-> [!NOTE]
-> Die Vorschauzielgruppe unterscheidet sich von einer privaten Zielgruppe. Eine **Vorschauzielgruppe** kann alle Angebotspläne sehen und überprüfen, bevor sie live im Marketplace verfügbar sind, einschließlich solcher, die nur für eine **private** Zielgruppe veröffentlicht werden (auf der Registerkarte „Verfügbarkeit“ festgelegt).
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie mit dem nächsten Abschnitt „Planübersicht“ fortfahren.
 
@@ -286,20 +318,18 @@ Klicken Sie auf **Erstellen**.
 
 Auf dieser Registerkarte können Sie konfigurieren, in welchen Clouds der Plan verfügbar sein soll. Ihre Antworten auf dieser Registerkarte haben Einfluss darauf, welche Felder auf anderen Registerkarten angezeigt werden.
 
-#### <a name="cloud-availability"></a>Cloudverfügbarkeit
+#### <a name="azure-regions"></a>Azure-Regionen
 
-Jeder Plan muss mithilfe von Azure IoT Hub in mindestens einer Cloud verfügbar gemacht werden.
+Alle Pläne für IoT Edge-Modulangebote werden automatisch in **Azure Global** verfügbar gemacht.  Ihr Plan kann von Kunden in allen Azure-Regionen weltweit verwendet werden, die den Marketplace nutzen. Details finden Sie unter [Geografische Verfügbarkeit und Unterstützung von Währungen](../marketplace-geo-availability-currencies.md).
 
-Wählen Sie die Option **Azure Global** aus, damit Ihr Plan von Kunden in allen Azure-Regionen weltweit verwendet werden kann, die den Marketplace nutzen. Details finden Sie unter [Geografische Verfügbarkeit und Unterstützung von Währungen](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
-
-Wählen Sie die Option [Azure Government-Cloud](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) aus, um Ihre Lösung dort zu veröffentlichen. Dies ist eine Government-Community-Cloud mit kontrolliertem Zugriff für Kunden der US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- und Stammesgebietsebene sowie für Partner, die Kunden erbringen. Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden für diese Cloudcommunity verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden). Testen und bestätigen Sie Ihre Lösung vor dem [Veröffentlichen](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) innerhalb dieses Gebiets, da sich die Ergebnisse unterscheiden können. Fordern Sie für Staging und Test Ihrer Lösung ein Testkonto bei der [Microsoft Azure Government-Testversion](https://azure.microsoft.com/global-infrastructure/government/request/) an.
+Wählen Sie [Azure Government](../../azure-government/documentation-government-welcome.md) aus, um Ihre Lösung dort zu veröffentlichen. Dies ist eine Government-Community-Cloud mit kontrolliertem Zugriff für Kunden der US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- und Stammesgebietsebene sowie für Partner, die Kunden erbringen. Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden für diese Cloudcommunity verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden). Testen und bestätigen Sie Ihre Lösung vor dem [Veröffentlichen](../../azure-government/documentation-government-manage-marketplace-partners.md) innerhalb dieses Gebiets, da sich die Ergebnisse unterscheiden können. Fordern Sie für Staging und Test Ihrer Lösung ein Testkonto bei der [Microsoft Azure Government-Testversion](https://azure.microsoft.com/global-infrastructure/government/request/) an.
 
 > [!NOTE]
-> Nachdem ihr Plan veröffentlicht und in einer bestimmten Cloud verfügbar gemacht wurde, können Sie diese Cloud nicht mehr entfernen.
+> Nachdem Ihr Plan veröffentlicht und in einer bestimmten Region verfügbar gemacht wurde, können Sie diese Region nicht mehr entfernen.
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Government Cloud-Zertifizierungen
+#### <a name="azure-government-certifications"></a>Azure Government-Zertifizierungen
 
-Diese Option ist nur sichtbar, wenn **Azure Government Cloud** unter **Cloudverfügbarkeit** ausgewählt ist.
+Diese Option ist nur sichtbar, wenn **Azure Government** unter **Cloudverfügbarkeit** ausgewählt ist.
 
 Azure Government-Dienste verarbeiten Daten, die bestimmten behördlichen Vorschriften und Anforderungen unterliegen. Beispielsweise FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 und CJIS. Um bei Ihren Zertifizierungen ein Bewusstsein für diese Programme zu schaffen, können Sie bis zu 100 Links bereitstellen, in denen Ihre Zertifizierungen beschrieben werden. Hierbei kann es sich um Links zu Ihren Auflistungen direkt im Programm oder auf Ihrer eigenen Website handeln. Diese Links sind nur für Azure Government-Kunden sichtbar.
 
@@ -309,7 +339,7 @@ Auf dieser Registerkarte werden spezifische Informationen für jeden Plan innerh
 
 ### <a name="plan-name"></a>Planname
 
-Dieser ist mit dem Namen voraufgefüllt, den Sie Ihrem Plan beim Erstellen gegeben haben. Sie können diesen Namen bei Bedarf ändern. Der Name kann bis zu 50 Zeichen lang sein. Dieser Name wird in Azure Marketplace und im Azure-Portal als Titel dieses Plans angezeigt. Er wird als Standardmodulname verwendet, nachdem der Plan zur Verwendung bereit ist.
+Dieser ist mit dem Namen voraufgefüllt, den Sie Ihrem Plan beim Erstellen gegeben haben. Sie können diesen Namen bei Bedarf ändern. Der Name kann bis zu 50 Zeichen lang sein. Dieser Name wird in Azure Marketplace und im Azure-Portal als der Titel dieses Plans angezeigt. Er wird als Standardmodulname verwendet, nachdem der Plan zur Verwendung bereit ist.
 
 ### <a name="plan-summary"></a>Planzusammenfassung
 
@@ -323,15 +353,25 @@ Klicken Sie auf **Entwurf speichern**, nachdem Sie die Angaben in diesen Feldern
 
 #### <a name="plan-examples"></a>Planbeispiele
 
-In den folgenden Beispielen wird gezeigt, wie die Felder der Planauflistung in verschiedenen Ansichten dargestellt werden.
+Hier sehen Sie ein Beispiel für Plandetails im Azure Marketplace (die aufgelisteten Preise dienen lediglich als Beispiele und stellen keine tatsächlichen Kosten dar):
 
-Dies sind die Felder, die in Azure Marketplace für Plandetails angezeigt werden:
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Darstellung von Plandetails im Azure Marketplace.":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-marketplace-plan-details.png" alt-text="Darstellung der sichtbaren Felder in den Plandetails im Azure Marketplace.":::
+#### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
-Dies sind Plandetails im Azure-Portal:
+1. Angebotsname
+2. Planname
+3. Planbeschreibung
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-azure-portal-plan-details.png" alt-text="Darstellung der Plandetails im Azure-Portal.":::
+<br>Hier sehen Sie ein Beispiel für die Plandetails im Azure-Portal (die aufgelisteten Preise dienen lediglich als Beispiele und stellen keine tatsächlichen Kosten dar):
+
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Darstellung der Plandetails im Azure-Portal.":::
+
+#### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
+
+1. Angebotsname
+2. Planname
+3. Planbeschreibung
 
 ## <a name="availability"></a>Verfügbarkeit
 
@@ -350,7 +390,7 @@ Der Angebotstyp **IoT Edge-Modul** ist ein spezifischer Typ Container, der auf e
 
 Nach dem Veröffentlichen des Angebots wird Ihr IoT Edge-Containerimage in Azure Marketplace in eine bestimmte öffentliche Containerregistrierung kopiert. Alle Anforderungen von Azure-Benutzern zur Verwendung Ihres Moduls werden von der öffentlichen Containerregistrierung von Azure Marketplace bedient, nicht von Ihrer privaten Containerregistrierung.
 
-Mithilfe von Tags können Sie mehrere Plattformen anzielen und verschiedene Versionen des Containerimages Ihres Moduls bereitstellen. Weitere Informationen zu Tags und Versionsverwaltung finden Sie unter [Vorbereiten der technischen Ressourcen für das IoT Edge-Modul](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset).
+Mithilfe von Tags können Sie mehrere Plattformen anzielen und verschiedene Versionen des Containerimages Ihres Moduls bereitstellen. Weitere Informationen zu Tags und Versionsverwaltung finden Sie unter [Vorbereiten der technischen Ressourcen für das IoT Edge-Modul](create-iot-edge-module-asset.md).
 
 ### <a name="image-repository-details"></a>Details des Imagerepositorys
 
@@ -360,25 +400,35 @@ Auf der Registerkarte **Image repository details** (Details des Imagerepositorys
 
 **Azure-Abonnement-ID**: Geben Sie die Abonnement-ID an, unter der die Ressourcennutzung gemeldet und Dienste für die Azure Container Registry abgerechnet werden, die Ihr Containerimage enthält. Sie finden diese ID auf der Seite [Abonnements](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) im Azure-Portal.
 
-**Name der Azure-Ressourcengruppe**: Geben Sie den Namen der [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) an, die die Azure Container Registry mit Ihrem Containerimage enthält. Der Zugriff auf die Ressourcengruppe muss über die Abonnement-ID (oben) möglich sein. Sie finden den Namen im Azure-Portal auf der Seite [Ressourcengruppen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups).
+**Name der Azure-Ressourcengruppe**: Geben Sie den Namen der [Ressourcengruppe](../../azure-resource-manager/management/manage-resource-groups-portal.md) an, die die Azure Container Registry mit Ihrem Containerimage enthält. Der Zugriff auf die Ressourcengruppe muss über die Abonnement-ID (oben) möglich sein. Sie finden den Namen im Azure-Portal auf der Seite [Ressourcengruppen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups).
 
-**Name der Azure-Containerregistrierung**: Geben Sie den Namen der [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) an, die Ihr Containerimage enthält. Die Containerregistrierung muss in der Azure-Ressourcengruppe vorhanden sein, die Sie zuvor angegeben haben. Geben Sie nur den Registrierungs Namen und nicht den vollständigen Anmelde Servernamen an. Achten Sie unbedingt darauf, **azurecr.io** nicht in den Namen einzuschließen. Sie finden den Registrierungsnamen auf der Seite [Containerregistrierungen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) im Azure-Portal.
+**Name der Azure-Containerregistrierung**: Geben Sie den Namen der [Azure Container Registry](../../container-registry/container-registry-intro.md) an, die Ihr Containerimage enthält. Die Containerregistrierung muss in der Azure-Ressourcengruppe vorhanden sein, die Sie zuvor angegeben haben. Geben Sie nur den Registrierungs Namen und nicht den vollständigen Anmelde Servernamen an. Achten Sie unbedingt darauf, **azurecr.io** nicht in den Namen einzuschließen. Sie finden den Registrierungsnamen auf der Seite [Containerregistrierungen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) im Azure-Portal.
 
-**Administratorbenutzername für die Azure Container Registry**: Geben Sie den [Administratorbenutzernamen](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) ein, der der Azure Container Registry zugeordnet ist, die Ihr Containerimage enthält. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Um den Administratorbenutzernamen und das zugeordnete Kennwort abzurufen, legen Sie die Eigenschaft **admin-enabled** (Von Administrator aktiviert) an der Azure-Befehlszeilenschnittstelle auf **True** fest. Optional können Sie im Azure-Portal **Administratorbenutzer** auf **Aktivieren** festlegen.
+**Administratorbenutzername für die Azure Container Registry**: Geben Sie den [Administratorbenutzernamen](../../container-registry/container-registry-authentication.md#admin-account) ein, der der Azure Container Registry zugeordnet ist, die Ihr Containerimage enthält. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Um den Administratorbenutzernamen und das zugeordnete Kennwort abzurufen, legen Sie die Eigenschaft **admin-enabled** (Von Administrator aktiviert) an der Azure-Befehlszeilenschnittstelle auf **True** fest. Optional können Sie im Azure-Portal **Administratorbenutzer** auf **Aktivieren** festlegen.
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="Darstellung des Dialogfelds „Containerregistrierung aktualisieren“.":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Darstellung des Dialogfelds „Containerregistrierung aktualisieren“.":::
 
-**Kennwort für die Azure Container Registry**: Geben Sie das Kennwort für den Administratorbenutzernamen ein, der der Azure Container Registry zugeordnet ist, die Ihr Containerimage enthält. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Sie können das Kennwort im Azure-Portal abrufen, indem Sie zu **Containerregistrierung** > **Zugriffsschlüssel** wechseln oder die Azure-Befehlszeilenschnittstelle und den Befehl [show](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) verwenden.
+#### <a name="call-out-description"></a>Beschreibungen zu den Nummern
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="Darstellung des Zugriffsschlüssel-Bildschirms im Azure-Portal.":::
+1. Administratorbenutzer
 
-**Repositoryname innerhalb der Azure Container Registry**. Geben Sie den Namen des Azure Container Registry-Repositorys ein, das Ihr Image enthält. Sie geben den Namen des Repositorys an, wenn Sie das Image per Push an die Registrierung übertragen. Sie finden den Namen des Repositorys auf der Seite [Container Registry](https://azure.microsoft.com/services/container-registry/) > **Repositorys**. Weitere Informationen finden Sie unter [Anzeigen von Azure Container Registry-Repositorys im Azure-Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories). Nachdem der Name festgelegt wurde, kann er nicht mehr geändert werden. Verwenden Sie für jedes Angebot in Ihrem Konto einen eindeutigen Namen.
+<br>**Kennwort für die Azure Container Registry**: Geben Sie das Kennwort für den Administratorbenutzernamen ein, der der Azure Container Registry zugeordnet ist, die Ihr Containerimage enthält. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Sie können das Kennwort im Azure-Portal abrufen, indem Sie zu **Containerregistrierung** > **Zugriffsschlüssel** wechseln oder die Azure-Befehlszeilenschnittstelle und den Befehl [show](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) verwenden.
+
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="Darstellung des Zugriffsschlüssel-Bildschirms im Azure-Portal.":::
+
+#### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
+
+1. Zugriffsschlüssel
+2. Username
+3. Kennwort
+
+**Repositoryname innerhalb der Azure Container Registry**. Geben Sie den Namen des Azure Container Registry-Repositorys ein, das Ihr Image enthält. Sie geben den Namen des Repositorys an, wenn Sie das Image per Push an die Registrierung übertragen. Sie finden den Namen des Repositorys auf der Seite [Container Registry](https://azure.microsoft.com/services/container-registry/) > **Repositorys**. Weitere Informationen finden Sie unter [Anzeigen von Azure Container Registry-Repositorys im Azure-Portal](../../container-registry/container-registry-repositories.md). Nachdem der Name festgelegt wurde, kann er nicht mehr geändert werden. Verwenden Sie für jedes Angebot in Ihrem Konto einen eindeutigen Namen.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Imagetags für neue Versionen Ihres Angebots
 
 Kunden müssen imstande sein, Updates beim Azure Marketplace automatisch abzurufen, wenn Sie ein Update veröffentlichen. Wenn sie kein Update ausführen möchten, müssen sie die Möglichkeit haben, bei einer bestimmten Version Ihres Images zu bleiben. Sie können dies erreichen, indem Sie für jedes Update des Images neue Imagetags hinzufügen.
 
-**Imagetag**. Dieses Feld muss ein **aktuellstes** Tag enthalten, das auf die letzte Version Ihres Images auf allen unterstützten Plattformen verweist. Es muss außerdem ein Versionstag enthalten (beispielsweise beginnend mit xx.xx.xx, wobei xx eine Zahl ist). Kunden sollten [Manifesttags](https://github.com/estesp/manifest-tool) verwenden, um mehrere Zielplattformen anzugeben. Zudem müssen alle Tags, auf die von einem Manifesttag verwiesen wird, hinzugefügt werden, damit wir sie hochladen können. Alle Manifesttags (mit Ausnahme des aktuellsten Tags) müssen entweder mit X.Y- oder X.Y.Z- beginnen, wobei X, Y und Z ganze Zahlen sind. Wenn beispielsweise ein aktuellstes Tag auf 1.0.1-linux-x64, 1.0.1-linux-arm32 und 1.0.1-windows-arm32 verweist, müssen diesem Feld diese sechs Tags hinzugefügt werden. Weitere Details zu Tags und Versionsverwaltung finden Sie unter [Vorbereiten der technischen Ressourcen für das IoT-Edge-Modul.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)
+**Imagetag**. Dieses Feld muss ein **aktuellstes** Tag enthalten, das auf die letzte Version Ihres Images auf allen unterstützten Plattformen verweist. Es muss außerdem ein Versionstag enthalten (beispielsweise beginnend mit xx.xx.xx, wobei xx eine Zahl ist). Kunden sollten [Manifesttags](https://github.com/estesp/manifest-tool) verwenden, um mehrere Zielplattformen anzugeben. Zudem müssen alle Tags, auf die von einem Manifesttag verwiesen wird, hinzugefügt werden, damit wir sie hochladen können. Alle Manifesttags (mit Ausnahme des aktuellsten Tags) müssen entweder mit X.Y- oder X.Y.Z- beginnen, wobei X, Y und Z ganze Zahlen sind. Wenn beispielsweise ein aktuellstes Tag auf 1.0.1-linux-x64, 1.0.1-linux-arm32 und 1.0.1-windows-arm32 verweist, müssen diesem Feld diese sechs Tags hinzugefügt werden. Weitere Details zu Tags und Versionsverwaltung finden Sie unter [Vorbereiten der technischen Ressourcen für das IoT-Edge-Modul.](create-iot-edge-module-asset.md)
 
 ### <a name="default-deployment-settings-optional"></a>Standardeinstellungen für die Bereitstellung (optional)
 
@@ -386,7 +436,7 @@ Definieren Sie die am häufigsten verwendeten Einstellungen zum Bereitstellen de
 
 **Standardrouten**. Der IoT Edge-Hub verwaltet die Kommunikation zwischen Modulen, IoT Hub und Geräten. Sie können Routen für die Datenein- und -ausgabe zwischen Modulen und dem IoT Hub festlegen. So können Sie Nachrichten flexibel an das gewünschte Ziel senden, ohne zusätzliche Dienste zum Verarbeiten von Nachrichten zu benötigen oder zusätzlichen Code schreiben zu müssen. Routen werden mit Name-Wert-Paaren erstellt. Sie können Namen für bis zu fünf Standardrouten definieren, von denen jeder bis zu 512 Zeichen lang sein darf.
 
-Achten Sie darauf, die ordnungsgemäße [Routensyntax](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) in Ihrem Routenwert zu verwenden (normalerweise definiert als FROM/message/* INTO $upstream). Dies bedeutet, dass alle Nachrichten, die von beliebigen Modulen gesendet werden, an Ihren IoT Hub geleitet werden. Um auf Ihr Modul zu verweisen, verwenden Sie seinen Standardmodulnamen, der aus Ihrem **Angebotsnamen** ohne Leerzeichen und Sonderzeichen besteht. Um auf weitere Module zu verweisen, die derzeit noch nicht bekannt sind, verwenden Sie die Konvention <VON_MODULNAME>, um Ihren Kunden deutlich zu machen, dass sie diese Informationen aktualisieren müssen. Ausführliche Informationen zu IoT Edge-Routen finden Sie unter [Deklarieren von Routen](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes).
+Achten Sie darauf, die ordnungsgemäße [Routensyntax](../../iot-edge/module-composition.md#declare-routes) in Ihrem Routenwert zu verwenden (normalerweise definiert als „FROM/message/* INTO $upstream“). Dies bedeutet, dass alle Nachrichten, die von beliebigen Modulen gesendet werden, an Ihren IoT Hub geleitet werden. Um auf Ihr Modul zu verweisen, verwenden Sie seinen Standardmodulnamen, der aus Ihrem **Angebotsnamen** ohne Leerzeichen und Sonderzeichen besteht. Um auf weitere Module zu verweisen, die derzeit noch nicht bekannt sind, verwenden Sie die Konvention <VON_MODULNAME>, um Ihren Kunden deutlich zu machen, dass sie diese Informationen aktualisieren müssen. Ausführliche Informationen zu IoT Edge-Routen finden Sie unter [Deklarieren von Routen](../../iot-edge/module-composition.md#declare-routes).
 
 Wenn beispielsweise das Modul ContosoModule an ContosoInput nach Eingaben und an ContosoOutput nach Ausgaben lauscht, ist es sinnvoll, die folgenden beiden Standardrouten zu definieren:
 
@@ -395,7 +445,7 @@ Wenn beispielsweise das Modul ContosoModule an ContosoInput nach Eingaben und an
 - Name 2: FromContosoModuleToCloud
 - Wert 2: FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream
 
-**Gewünschte Standardeigenschaften für Modulzwilling**. Ein Modulzwilling ist ein auf dem IoT Hub gespeichertes JSON-Dokument mit den Zustandsinformationen für eine Modulinstanz, einschließlich der gewünschten Eigenschaften. Gewünschte Eigenschaften werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Modulkonfigurationen oder -zuständen verwendet. Das Lösungs-Back-End kann gewünschte Eigenschaften festlegen, die vom Modul gelesen werden können. Das Modul kann außerdem Änderungsbenachrichtigungen zu den gewünschten Eigenschaften erhalten. Gewünschte Eigenschaften werden aus bis zu fünf Name-Wert-Paaren erstellt, und jeder Standardwert muss weniger als 512 Zeichen umfassen. Sie können bis zu fünf Namen und Werte für gewünschte Eigenschaften von Gerätezwillingen definieren. Die Werte für gewünschte Eigenschaften von Gerätezwillingen müssen gültige JSON-Werte ohne Escapezeichen und ohne Arrays sein. Sie können eine geschachtelte Hierarchie mit maximal vier Ebenen aufweisen. In einem Szenario, in dem ein für einen Standardwert erforderlicher Parameter nicht sinnvoll ist (z. B. die IP-Adresse eines Kundenservers), können Sie einen Parameter als Standardwert hinzufügen. Weitere Informationen zu gewünschten Eigenschaften finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties).
+**Gewünschte Standardeigenschaften für Modulzwilling**. Ein Modulzwilling ist ein auf dem IoT Hub gespeichertes JSON-Dokument mit den Zustandsinformationen für eine Modulinstanz, einschließlich der gewünschten Eigenschaften. Gewünschte Eigenschaften werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Modulkonfigurationen oder -zuständen verwendet. Das Lösungs-Back-End kann gewünschte Eigenschaften festlegen, die vom Modul gelesen werden können. Das Modul kann außerdem Änderungsbenachrichtigungen zu den gewünschten Eigenschaften erhalten. Gewünschte Eigenschaften werden aus bis zu fünf Name-Wert-Paaren erstellt, und jeder Standardwert muss weniger als 512 Zeichen umfassen. Sie können bis zu fünf Namen und Werte für gewünschte Eigenschaften von Gerätezwillingen definieren. Die Werte für gewünschte Eigenschaften von Gerätezwillingen müssen gültige JSON-Werte ohne Escapezeichen und ohne Arrays sein. Sie können eine geschachtelte Hierarchie mit maximal vier Ebenen aufweisen. In einem Szenario, in dem ein für einen Standardwert erforderlicher Parameter nicht sinnvoll ist (z. B. die IP-Adresse eines Kundenservers), können Sie einen Parameter als Standardwert hinzufügen. Weitere Informationen zu gewünschten Eigenschaften von Gerätezwillingen finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](../../iot-edge/module-composition.md#define-or-update-desired-properties).
 
 Wenn ein Modul z. B. mithilfe von gewünschten Eigenschaften von Gerätezwillingen eine dynamisch konfigurierbare Aktualisierungsrate unterstützt, empfiehlt es sich, die folgende gewünschte Standardeigenschaft für Gerätezwillinge zu definieren:
 
@@ -431,7 +481,7 @@ Auf der Überprüfungsseite wird der Veröffentlichungsstatus angezeigt:
 
 Um das Angebot zur Veröffentlichung einzureichen, wählen Sie **Veröffentlichen** aus.
 
-Wir senden Ihnen eine E-Mail, um Ihnen mitzuteilen, wann eine Vorschauversion des Angebots zur Überprüfung und Genehmigung verfügbar ist. Um Ihr Angebot für die Öffentlichkeit zugänglich zu machen (oder für eine private Zielgruppe, wenn es sich um ein privates Angebot handelt), navigieren Sie zum Partner Center, und wählen Sie **Live schalten** aus.
+Wir senden Ihnen eine E-Mail, um Ihnen mitzuteilen, wann eine Vorschauversion des Angebots zur Überprüfung und Genehmigung verfügbar ist. Kehren Sie zu Partner Center zurück, und wählen Sie **Live schalten** aus, um das Angebot für eine öffentliche Zielgruppe zu veröffentlichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

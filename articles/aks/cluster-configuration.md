@@ -3,13 +3,15 @@ title: Clusterkonfiguration in Azure Kubernetes Services (AKS)
 description: Erfahren Sie, wie Sie in Azure Kubernetes Service (AKS) einen Cluster konfigurieren.
 services: container-service
 ms.topic: conceptual
-ms.date: 03/12/2020
-ms.openlocfilehash: fe5ce13d9db8f2bc2231f87de7e602e63d239bfa
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 07/02/2020
+ms.author: jpalma
+author: palma21
+ms.openlocfilehash: 3c8d374935c777548d1dc0d43ccd131fe21fd509
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725145"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856085"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurieren eines AKS-Clusters
 
@@ -19,9 +21,14 @@ Im Rahmen der Erstellung eines AKS-Clusters müssen Sie möglicherweise Ihre Clu
 
 AKS unterstützt jetzt in der Vorschau Ubuntu 18.04 als Knotenbetriebssystem. In der Vorschauphase sind sowohl Ubuntu 16.04 als auch Ubuntu 18.04 verfügbar.
 
+> [!IMPORTANT]
+> Knotenpools, die auf Kubernetes 1.18 oder höher erstellt wurden, verwenden standardmäßig ein erforderliches `AKS Ubuntu 18.04`-Knotenimage. Knotenpools auf einer unterstützten Kubernetes-Version vor 1.18 erhalten `AKS Ubuntu 16.04` als Knotenimage, werden jedoch auf `AKS Ubuntu 18.04` aktualisiert, sobald die Kubernetes-Version des Knotenpools auf 1.18 oder höher aktualisiert wird.
+> 
+> Es wird dringend empfohlen, Ihre Workloads auf AKS Ubuntu 18.04-Knotenpools zu testen, bevor Sie Cluster auf 1.18 oder höher verwenden. Informieren Sie sich über das [Testen von Ubuntu 18.04-Knotenpools](#use-aks-ubuntu-1804-existing-clusters-preview).
+
 Die folgenden Ressourcen müssen installiert sein:
 
-- Azure CLI ab Version 2.2.0
+- [Azure CLI][azure-cli-install] ab Version 2.2.0
 - Die Erweiterung aks-preview 0.4.35
 
 Verwenden Sie zum Installieren der Erweiterung aks-preview 0.4.35 oder höher die folgenden Azure CLI-Befehle:
@@ -49,26 +56,182 @@ Wenn der Status als registriert angezeigt wird, können Sie die Registrierung de
 az provider register --namespace Microsoft.ContainerService
 ```
 
-### <a name="new-clusters"></a>Neue Cluster
+### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Verwenden von AKS Ubuntu 18.04 auf neuen Clustern (Vorschau)
 
 Konfigurieren Sie den Cluster für die Verwendung von Ubuntu 18,04, wenn der Cluster erstellt wird. Verwenden Sie das Flag `--aks-custom-headers`, um Ubuntu 18.04 als Standardbetriebssystem festzulegen.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
 ```
 
-Wenn Sie einen herkömmlichen Ubuntu 16.04-Cluster erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg.
+Wenn Sie Cluster mit dem AKS Ubuntu 16.04-Image erstellen möchten, lassen Sie dazu das benutzerdefinierte Tag `--aks-custom-headers` weg.
 
-### <a name="existing-clusters"></a>Vorhandene Cluster
+### <a name="use-aks-ubuntu-1804-existing-clusters-preview"></a>Verwenden von AKS Ubuntu 18.04 auf vorhandenen Clustern (Vorschau)
 
 Konfigurieren Sie einen neuen Knotenpool zur Verwendung von Ubuntu 18.04. Verwenden Sie das Flag `--aks-custom-headers`, um Ubuntu 18.04 als Standardbetriebssystem für diesen Knotenpool festzulegen.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
 ```
 
-Wenn Sie einen herkömmlichen Ubuntu 16.04-Knotenpool erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg.
+Wenn Sie Knotenpools mit dem AKS Ubuntu 16.04-Image erstellen möchten, lassen Sie dazu das benutzerdefinierte Tag `--aks-custom-headers` weg.
 
+
+## <a name="container-runtime-configuration-preview"></a>Konfiguration der Containerruntime (Vorschau)
+
+Eine Containerruntime ist eine Software, die Container ausführt und Containerimages auf einem Knoten verwaltet. Die Runtime erleichtert die Abstraktion von sys-Aufrufen oder betriebssystemspezifischen Funktionen zum Ausführen von Containern unter Linux oder Windows. Heute verwendet AKS [Moby](https://mobyproject.org/) (Upstream-Docker) als Containerruntime. 
+    
+![Docker CRI](media/cluster-configuration/docker-cri.png)
+
+[`Containerd`](https://containerd.io/) ist eine mit [OCI](https://opencontainers.org/) (Open Container Initiative) kompatible Kerncontainerruntime, die den Mindestsatz erforderlicher Funktionen zum Ausführen von Containern und zum Verwalten von Images auf einem Knoten bereitstellt. Sie wurde im März 2017 an die Cloud Native Compute Foundation (CNCF) [übergeben](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/). Die aktuelle Moby-Version, die AKS heute verwendet, baut bereits auf `containerd` auf, wie oben dargestellt. 
+
+Bei Knoten und Knotenpools, die auf containerd basieren, kommuniziert das Kubelet statt mit `dockershim` direkt über das CRI-Plug-In (Container Runtime Interface) mit `containerd`. Gegenüber der Docker CRI-Implementierung benötigt der Flow so weniger Hops. Daraus ergibt sich eine verringerte Latenz beim Podstart und eine geringere Ressourcenauslastung (CPU und Arbeitsspeicher).
+
+Durch die Verwendung von `containerd` für AKS-Knoten werden die Podstartlatenz und der Ressourcenverbrauch durch die Containerlaufzeit auf dem Knoten verringert. Diese Verbesserungen sind eine Folge der neuen Architektur, bei der das Kubelet direkt über das CRI-Plug-In mit `containerd` kommuniziert. Bei der Moby/Docker-Architektur kommuniziert das Kubelet hingegen mit `dockershim` und der Docker-Engine, bevor `containerd` erreicht wird, was zu zusätzlichen Hops im Flow führt.
+
+![Docker CRI](media/cluster-configuration/containerd-cri.png)
+
+`Containerd` funktioniert mit jeder allgemein verfügbaren Version von Kubernetes in AKS und mit jeder Upstream-Kubernetes-Version ab 1.10 und unterstützt alle Features von Kubernetes und AKS.
+
+> [!IMPORTANT]
+> Mit der allgemeinen Verfügbarkeit von `containerd` in AKS wird es die Standard und einzig verfügbare Option für die Containerruntime auf neuen Clustern. Sie können Moby-Knotenpools und -Cluster unter älteren unterstützten Versionen verwenden, solange diese noch unterstützt werden. 
+> 
+> Es wird empfohlen, Workloads auf `containerd`-Knotenpools zu testen, bevor Sie ein Upgrade durchführen oder neue Cluster mit dieser Containerruntime erstellen.
+
+### <a name="use-containerd-as-your-container-runtime-preview"></a>Verwenden von `containerd` als Containerruntime (Vorschau)
+
+Die folgenden Voraussetzungen müssen erfüllt sein:
+
+- Installation der [Azure CLI][azure-cli-install] ab Version 2.8.0
+- aks-preview-Erweiterung ab Version 0.4.53
+- Registrierung des `UseCustomizedContainerRuntime`-Featureflags
+- Registrierung des `UseCustomizedUbuntuPreview`-Featureflags
+
+Verwenden Sie zum Installieren von Version 0.4.53 oder höher der aks-preview-Erweiterung die folgenden Azure CLI-Befehle:
+
+```azurecli
+az extension add --name aks-preview
+az extension list
+```
+
+Registrieren Sie die Features `UseCustomizedContainerRuntime` und `UseCustomizedUbuntuPreview`:
+
+```azurecli
+az feature register --name UseCustomizedContainerRuntime --namespace Microsoft.ContainerService
+az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
+
+```
+
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) überprüfen:
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
+```
+
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) aktualisieren:
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```  
+
+### <a name="use-containerd-on-new-clusters-preview"></a>Verwenden von `containerd` auf neuen Clustern (Vorschau)
+
+Konfigurieren Sie den Cluster bei der Erstellen so, dass `containerd` verwendet wird. Legen Sie die Containerruntime mit dem Flag `--aks-custom-headers` auf `containerd` fest.
+
+> [!NOTE]
+> Die `containerd`-Runtime wird nur für Knoten und Knotenpools unterstützt, die das AKS Ubuntu 18.04-Image verwenden.
+
+```azurecli
+az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804,ContainerRuntime=containerd
+```
+
+Wenn Sie Cluster mit der Moby-(Docker-)Runtime erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg.
+
+### <a name="use-containerd-on-existing-clusters-preview"></a>Verwenden von `containerd` auf vorhandenen Clustern (Vorschau)
+
+Konfigurieren Sie einen neuen Knotenpool so, dass er `containerd` verwendet. Legen Sie die Runtime für den Knotenpool mit dem Flag `--aks-custom-headers` auf `containerd` fest.
+
+```azurecli
+az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804,ContainerRuntime=containerd
+```
+
+Wenn Sie Knotenpools mit der Moby-(Docker-)Runtime erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg.
+
+
+### <a name="containerd-limitationsdifferences"></a>Einschränkungen und Unterschiede von `Containerd`
+
+* Wenn Sie `containerd` als Containerruntime verwenden möchten, müssen Sie AKS Ubuntu 18.04 als Betriebssystem-Basisimage verwenden.
+* Obwohl das Docker-Toolset weiterhin auf den Knoten vorhanden ist, verwendet Kubernetes `containerd` als Containerruntime. Da Moby/Docker mit Kubernetes erstellte Container auf den Knoten nicht verwaltet, ist es nicht möglich, die Container mithilfe von Docker-Befehlen (wie `docker ps`) oder der Docker-API anzuzeigen oder mit ihnen zu interagieren.
+* Bei `containerd` wird empfohlen, [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) anstelle der Docker-CLI als Ersatz-CLI für die **Problembehandlung** bei Pods, Containern und Containerimages auf Kubernetes-Knoten zu verwenden (z. B. `crictl ps`). 
+   * Diese unterstützt nicht alle Funktionen der Docker-CLI. Sie ist nur für die Problembehandlung gedacht.
+   * `crictl` bietet eine für Kubernetes besser geeignete Ansicht von Containern mit Unterstützung von Konzepten wie Pods.
+* Bei `Containerd` wird die Protokollierung im standardisierten `cri`-Protokollierungsformat eingerichtet. (Dieses unterscheidet sich vom Format des aktuellen Docker-JSON-Treibers.) Ihre Protokollierungslösung muss das `cri`-Protokollierungsformat unterstützen (wie z. B. [Azure Monitor für Container](../azure-monitor/insights/container-insights-enable-new-cluster.md)).
+* Sie können nicht mehr auf die Docker-Engine `/var/run/docker.sock` zugreifen oder Docker-in-Docker (DinD) verwenden.
+  * Wenn Sie zurzeit Anwendungsprotokolle oder Überwachungsdaten aus der Docker-Engine extrahieren, verwenden Sie stattdessen z. B. [Azure Monitor für Container](../azure-monitor/insights/container-insights-enable-new-cluster.md). Darüber hinaus unterstützt AKS keine Ausführung von Out-of-Band-Befehlen auf den Agent-Knoten, die zu einer Instabilität führen könnten.
+  * Selbst bei Verwendung von Moby/Docker wird dringend davon abgeraten, direkt über die oben genannten Methoden Images zu erstellen und die Docker-Engine zu nutzen. Kubernetes erkennt diese genutzten Ressourcen nicht vollständig, und diese Ansätze bringen zahlreiche Probleme mit sich, die z. B. [hier](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) und [hier](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/) erläutert werden.
+* Erstellen von Images: Die empfohlene Vorgehensweise zum Erstellen von Images besteht in der Verwendung von [ACR-Aufgaben](../container-registry/container-registry-quickstart-task-cli.md). Ein alternativer Ansatz besteht darin, sicherere clusterinterne Optionen wie [docker buildx](https://github.com/docker/buildx) zu verwenden.
+
+## <a name="generation-2-virtual-machines-preview"></a>Virtuelle Computer der Generation 2 (Vorschau)
+
+Azure unterstützt [virtuelle Computer (VMs) der Generation 2 (Gen2)](../virtual-machines/windows/generation-2.md). VMs der Generation 2 unterstützen wichtige Features, die bei VMs der Generation 1 (Gen1) nicht unterstützt werden. Zu diesen Features gehören mehr Speicher, Intel Software Guard Extensions (Intel SGX) und virtualisierter persistenter Speicher (vPMEM).
+
+VMs der Generation 2 verwenden die neue UEFI-basierte Startarchitektur und nicht mehr die BIOS-basierte Architektur von VMs der Generation 1.
+Nur bestimmte SKUs und Größen unterstützen Gen2-VMs. Überprüfen Sie die [Liste der unterstützten Größen](../virtual-machines/windows/generation-2.md#generation-2-vm-sizes), um festzustellen, ob Ihre SKU Gen2 unterstützt oder erfordert.
+
+Zusätzlich unterstützen nicht alle VM-Images Gen2. Auf AKS-Gen2 wird für VMs das neue [AKS Ubuntu 18.04-Image](#os-configuration-preview) verwendet. Dieses Image unterstützt alle Gen2-SKUs und -Größen.
+
+Um Gen2-VMs während der Vorschauphase verwenden zu können, benötigen Sie Folgendes:
+- Installation der `aks-preview`-CLI-Erweiterung
+- Registrierung des `Gen2VMPreview`-Featureflags
+
+Registrieren Sie das Feature `Gen2VMPreview`:
+
+```azurecli
+az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
+```
+
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) überprüfen:
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
+```
+
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) aktualisieren:
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+Verwenden Sie zum Installieren der aks-preview-CLI-Erweiterung die folgenden Azure CLI-Befehle:
+
+```azurecli
+az extension add --name aks-preview
+```
+
+Verwenden Sie zum Aktualisieren der aks-preview-CLI-Erweiterung die folgenden Azure CLI-Befehle:
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-gen2-vms-on-new-clusters-preview"></a>Verwenden von Gen2-VMs auf neuen Clustern (Vorschau)
+Konfigurieren Sie Gen2-VMs auf dem Cluster für die ausgewählte SKU, wenn der Cluster erstellt wird. Legen Sie Gen2 mit dem Flag `--aks-custom-headers` als VM-Generation auf einem neuen Cluster fest.
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
+```
+
+Wenn Sie einen herkömmlichen Cluster mit Generation 1-VMs (Gen1) erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg. Sie können auch weitere Gen1- oder Gen2-VMs wie weiter unten beschrieben hinzufügen.
+
+### <a name="use-gen2-vms-on-existing-clusters-preview"></a>Verwenden von Gen2-VMs auf vorhandenen Clustern (Vorschau)
+Konfigurieren Sie Gen2-VMs auf einem neuen Knotenpool. Legen Sie Gen2 mit dem Flag `--aks-custom-headers` als VM-Generation für diesen Knotenpool fest.
+
+```azure-cli
+az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
+```
+
+Wenn Sie einen herkömmlichen Gen1-Knotenpool erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg.
 
 ## <a name="custom-resource-group-name"></a>Name der benutzerdefinierten Ressourcengruppe
 
@@ -94,4 +257,17 @@ Denken Sie bei der Arbeit mit der Knotenressourcengruppe daran, dass Folgendes n
 
 - Erfahren Sie, wie Sie mit `Kured` in Ihrem Cluster [Sicherheits- und Kernelupdates auf Linux-Knoten anwenden können](node-updates-kured.md).
 - Unter [Upgrade eines Azure Kubernetes Service-Clusters (AKS)](upgrade-cluster.md) erfahren Sie, wie Sie Ihren Cluster auf die neueste Version von Kubernetes aktualisieren können.
+- Weitere Informationen zu [`containerd` und Kubernetes](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/)
 - In der Liste der [Häufig gestellten Fragen zu AKS](faq.md) finden Sie Antworten auf einige häufig gestellte Fragen zu AKS.
+
+
+<!-- LINKS - internal -->
+[azure-cli-install]: /cli/azure/install-azure-cli
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

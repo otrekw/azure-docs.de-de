@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f07efc8fd77f1c34ef96d31f55089726942d05df
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ca244136178c9c05f2b88a917219035451d5e391
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871219"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848475"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -65,13 +65,21 @@ Diese Bibliotheken werden automatisch mit der Erweiterung installiert.
 
 Das Microsoft Azure Active Directory-Modul für Windows PowerShell wird, sofern es nicht bereits vorhanden ist, über ein Konfigurationsskript installiert, das Sie als Teil des Installationsvorgangs ausführen. Es ist nicht erforderlich, dieses Modul vorab zu installieren, wenn es nicht bereits installiert ist.
 
+Sie müssen die folgende Bibliothek manuell installieren:
+
+- [Visual C++ Redistributable für Visual Studio 2015](https://www.microsoft.com/download/details.aspx?id=48145)
+
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
 Alle Benutzer der NPS-Erweiterung müssen mithilfe von Azure AD Connect mit Azure Active Directory synchronisiert und für MFA registriert werden.
 
-Wenn Sie die Erweiterung installieren, benötigen Sie die Verzeichnis-ID und die Administratoranmeldeinformationen für Ihren Azure AD-Mandanten. Ihre Verzeichnis-ID finden Sie im [Azure-Portal](https://portal.azure.com). Melden Sie sich als Administrator an. Suchen Sie nach **Azure Active Directory**, und wählen Sie dann **Eigenschaften** aus. Kopieren Sie die GUID in das Feld **Verzeichnis-ID**, und speichern Sie sie. Wenn Sie die NPS-Erweiterung installieren, verwenden Sie diese GUID als Mandanten-ID.
+Wenn Sie die Erweiterung installieren, benötigen Sie die *Mandanten-ID* und die Administratoranmeldeinformationen für Ihren Azure AD-Mandanten. Führen Sie die folgenden Schritte aus, um die Mandanten-ID abzurufen:
 
-![Ihre Verzeichnis-ID finden Sie in den Azure Active Directory-Eigenschaften](./media/howto-mfa-nps-extension/properties-directory-id.png)
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) als globaler Administrator des Azure-Mandanten an.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie es aus.
+1. Auf der Seite **Übersicht** werden die *Mandanteninformationen* angezeigt. Wählen Sie neben der *Mandanten-ID* das Symbol **Kopieren** aus, wie im folgenden Beispielscreenshot gezeigt:
+
+   ![Abrufen der Mandanten-ID aus dem Azure-Portal](./media/howto-mfa-nps-extension/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="network-requirements"></a>Netzwerkanforderungen
 
@@ -186,14 +194,23 @@ Außer wenn Sie Ihre eigenen Zertifikate nutzen möchten (anstelle der selbstsig
 1. Führen Sie Windows PowerShell als Administrator aus.
 2. Wechseln Sie das Verzeichnis.
 
-   `cd "C:\Program Files\Microsoft\AzureMfa\Config"`
+   ```powershell
+   cd "C:\Program Files\Microsoft\AzureMfa\Config"
+   ```
 
 3. Führen Sie das PowerShell-Skript aus, das vom Installationsprogramm erstellt wurde.
 
-   `.\AzureMfaNpsExtnConfigSetup.ps1`
+   > [!IMPORTANT]
+   > Für Kunden, die die Azure Government- oder Azure China 21ViaNet-Cloud verwenden, bearbeiten Sie zunächst die `Connect-MsolService`-Cmdlets im Skript *AzureMfaNpsExtnConfigSetup.ps1* so, dass die *AzureEnvironment*-Parameter für die betreffende Cloud enthalten sind. Geben Sie z. B. *-AzureEnvironment USGovernment* oder *-AzureEnvironment AzureChinaCloud* an.
+   >
+   > Weitere Informationen finden Sie in der [Referenz der Connect-MsolService-Parameter](/powershell/module/msonline/connect-msolservice#parameters).
+
+   ```powershell
+   .\AzureMfaNpsExtnConfigSetup.ps1
+   ```
 
 4. Melden Sie sich bei Azure AD als Administrator an.
-5. PowerShell fordert Sie zur Angabe Ihrer Mandanten-ID auf. Verwenden Sie die Verzeichnis-ID-GUID, die Sie im Abschnitt „Voraussetzungen“ aus dem Azure-Portal kopiert haben.
+5. PowerShell fordert Sie zur Angabe Ihrer Mandanten-ID auf. Verwenden Sie die *Mandanten-ID*-GUID, die Sie im Abschnitt „Voraussetzungen“ aus dem Azure-Portal kopiert haben.
 6. PowerShell zeigt eine Erfolgsmeldung an, wenn die Skriptausführung abgeschlossen wurde.  
 
 Wiederholen Sie diese Schritte für alle zusätzlichen NPS-Server, die Sie für den Lastenausgleich einrichten möchten.
@@ -201,22 +218,30 @@ Wiederholen Sie diese Schritte für alle zusätzlichen NPS-Server, die Sie für 
 Wenn das vorherige Computerzertifikat abgelaufen ist und ein neues Zertifikat generiert wurde, sollten Sie alle abgelaufenen Zertifikate löschen. Bei abgelaufenen Zertifikaten können beim Start der NPS-Erweiterung Probleme auftreten.
 
 > [!NOTE]
-> Wenn Sie Ihre eigenen Zertifikate verwenden, statt diese mit dem PowerShell-Skript zu generieren, stellen Sie sicher, dass sie den NPS-Namenskonventionen entsprechen. Der Antragstellernamen muss **CN=\<Mandanten-ID\>,OU=Microsoft NPS Extension** sein. 
+> Wenn Sie Ihre eigenen Zertifikate verwenden, statt diese mit dem PowerShell-Skript zu generieren, stellen Sie sicher, dass sie den NPS-Namenskonventionen entsprechen. Der Antragstellernamen muss **CN=\<TenantID\>,OU=Microsoft NPS Extension** lauten.
 
-### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Government – Zusätzliche Schritte
+### <a name="microsoft-azure-government-or-azure-china-21vianet-additional-steps"></a>Zusätzliche Schritte für Microsoft Azure Government oder Azure China 21ViaNet
 
-Für Kunden, die Azure Government Cloud verwenden, sind auf jedem NPS-Server die folgenden zusätzlichen Konfigurationsschritte erforderlich.
+Für Kunden, die die Azure Government- oder Azure China 21Vianet-Cloud verwenden, sind auf jedem NPS-Server die folgenden zusätzlichen Konfigurationsschritte erforderlich.
 
 > [!IMPORTANT]
-> Konfigurieren Sie diese Registrierungseinstellungen nur, wenn Sie ein Azure Government-Kunde sind.
+> Konfigurieren Sie diese Registrierungseinstellungen nur, wenn Sie Azure Government- oder Azure China 21Vianet-Kunde sind.
 
-1. Wenn Sie ein Azure Government-Kunde sind, öffnen Sie den **Registrierungs-Editor** auf dem NPS-Server.
-1. Navigieren Sie zu `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`. Legen Sie die folgenden Hauptwerte fest:
+1. Wenn Sie Azure Government- oder Azure China 21Vianet-Kunde sind, öffnen Sie den **Registrierungs-Editor** auf dem NPS-Server.
+1. Navigieren Sie zu `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`.
+1. Legen Sie für Azure Government Kunden die folgenden Schlüsselwerte fest:
 
     | Registrierungsschlüssel       | Wert |
     |--------------------|-----------------------------------|
     | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
     | STS_URL            | https://login.microsoftonline.us/ |
+
+1. Legen Sie für Azure China 21ViaNet-Kunden die folgenden Schlüsselwerte fest:
+
+    | Registrierungsschlüssel       | Wert |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.cn   |
+    | STS_URL            | https://login.chinacloudapi.cn/   |
 
 1. Wiederholen Sie die beiden vorherigen Schritte, um für jeden NPS-Server die Registrierungsschlüsselwerte festzulegen.
 1. Starten Sie auf jedem NPS-Server den NPS-Dienst erneut.
@@ -271,7 +296,7 @@ Zum Ausführen der Schritte der grundlegenden Integritätsprüfung bei der Probl
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Wie überprüfe ich, ob das Clientzertifikat wie erwartet installiert ist?
 
-Suchen Sie das vom Installationsprogramm erstellte selbstsignierte Zertifikat im Zertifikatspeicher, und prüfen Sie, ob der private Schlüssel dem Benutzer **NETZWERKDIENST** Berechtigungen erteilt. Das Zertifikat hat den Antragstellernamen **CN \<Mandanten-ID\>, OU = Microsoft NPS Extension**.
+Suchen Sie das vom Installationsprogramm erstellte selbstsignierte Zertifikat im Zertifikatspeicher, und prüfen Sie, ob der private Schlüssel dem Benutzer **NETZWERKDIENST** Berechtigungen erteilt. Das Zertifikat hat den Antragstellernamen **CN \<tenantid\>, OU = Microsoft NPS Extension**.
 
 Selbstsignierte Zertifikate, die mit dem Skript *AzureMfaNpsExtnConfigSetup.ps1* generiert werden, haben eine Gültigkeitsdauer von zwei Jahren. Wenn Sie überprüfen, ob das Zertifikat installiert ist, sollten Sie auch überprüfen, ob das Zertifikat nicht abgelaufen ist.
 
@@ -281,7 +306,7 @@ Selbstsignierte Zertifikate, die mit dem Skript *AzureMfaNpsExtnConfigSetup.ps1*
 
 Öffnen Sie eine PowerShell-Eingabeaufforderung, und führen Sie die folgenden Befehle aus:
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
@@ -291,7 +316,7 @@ Diese Befehle geben alle Zertifikate aus, die Ihren Mandanten Ihrer Instanz der 
 
 Der folgende Befehl erstellt eine Datei namens „npscertificate“ im CER-Format auf dem Laufwerk „C:“.
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertificate.cer

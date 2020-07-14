@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773133"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985425"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Lösungen auf virtuellen Azure-Computern
 
@@ -69,6 +69,9 @@ az vm list-skus
     --size dc 
     --query "[?family=='standardDCSv2Family']"
 ```
+### <a name="dedicated-host-requirements"></a>Anforderungen an dedizierte Hosts
+Beim Bereitstellen einer VM der Größe **Standard_DC8_v2** in der VM-Familie der DCSv2-Serie wird der komplette Host belegt, und eine Freigabe für andere Mandanten oder Abonnements ist nicht möglich. Diese VM-SKU-Familie bietet die Isolation, die Sie u. U. benötigen, um gesetzliche Vorgaben in Bezug auf Compliance und Sicherheit zu erfüllen, die in der Regel durch einen dedizierten Hostdienst erfüllt werden. Bei Auswahl einer **Standard_DC8_v2**-SKU weist der physische Hostserver alle verfügbaren Hardwareressourcen einschließlich des EPC-Speichers ausschließlich Ihrer VM zu. Beachten Sie, dass diese Funktionalität auf den Infrastrukturentwurf zurückgeht und alle Features von **Standard_DC8_v2** unterstützt werden. Diese Bereitstellung ist nicht identisch mit dem Dienst [Azure Dedicated Host](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts), der von anderen Azure VM-Familien bereitgestellt wird.
+
 
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 

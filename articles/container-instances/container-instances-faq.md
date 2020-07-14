@@ -3,13 +3,13 @@ title: Häufig gestellte Fragen
 description: Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azure Container Instances-Dienst
 author: dkkapur
 ms.topic: article
-ms.date: 04/10/2020
-ms.openlocfilehash: 4fca198356c8db006c4190e0f16b20f78dc1d477
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: 21643ccfb6bb256e29114435ccb39a009d1b8dae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115226"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806600"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Häufig gestellte Fragen zu Azure Container Instances
 
@@ -27,25 +27,28 @@ Die Größe Ihres Containerimages wirkt sich auf die Dauer des Bereitstellungsvo
 
 Da die Imagegröße einer der wichtigsten Faktoren für die Bereitstellungszeiten ist, suchen Sie nach Möglichkeiten zum Verringern der Größe. Entfernen Sie unnötige Ebenen, oder verringern Sie die Größe der Ebenen im Image (durch Auswahl eines leichteren Basisbetriebssystem-Images). Wenn Sie beispielsweise Linux-Container ausführen, erwägen Sie die Verwendung von Alpine als Basisimage anstelle eines vollständigen Ubuntu-Servers. Ebenso können Sie für Windows-Container nach Möglichkeit ein Nano Server-Basisimage einsetzen. 
 
-Sie sollten auch die Liste der vorab zwischengespeicherten Images in Azure-Containerimages überprüfen, die über die API [List Cached Images](/rest/api/container-instances/listcachedimages) (Zwischengespeicherte Images auflisten) verfügbar ist. Für eines der vorab zwischengespeicherten Images können Sie möglicherweise eine Imageebene deaktivieren. 
+Sie sollten auch die Liste der vorab zwischengespeicherten Images in Azure-Containerimages überprüfen, die über die API [List Cached Images](/rest/api/container-instances/location/listcachedimages) (Zwischengespeicherte Images auflisten) verfügbar ist. Für eines der vorab zwischengespeicherten Images können Sie möglicherweise eine Imageebene deaktivieren. 
 
 Weitere Informationen finden Sie in der [ausführlichen Anleitung](container-instances-troubleshooting.md#container-takes-a-long-time-to-start) zum Verringern der Dauer des Containerstartvorgangs.
 
 ### <a name="what-windows-base-os-images-are-supported"></a>Welche Windows-Basisbetriebssystem-Images werden unterstützt?
 
+> [!NOTE]
+> Aufgrund von Problemen mit der Abwärtskompatibilität nach den Windows-Updates im Jahr 2020 schließen die folgenden Imageversionen die Versionsnummer ein, die für Ihr Basisimage mindestens empfohlen wird. Aktuelle Bereitstellungen, in denen ältere Imageversionen verwendet werden, sind nicht betroffen, in neuen Bereitstellungen sollten jedoch die folgenden Basisimages verwendet werden. 
+
 #### <a name="windows-server-2016-base-images"></a>Windows Server 2016-Basisimages
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`, `sac2016`
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`, `10.0.14393.x`
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `sac2016`, `10.0.14393.3506` oder neuer
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`, `10.0.14393.3506` oder neuer
 
 > [!NOTE]
 > Windows-Images, die auf dem halbjährlichen Kanalrelease 1709 oder 1803 basieren, werden nicht unterstützt.
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 und Clientbasisimages (Vorschau)
 
-* [Nano Server:](https://hub.docker.com/_/microsoft-windows-nanoserver) `1809`, `10.0.17763.914` oder früher
-* [Windows Server Core:](https://hub.docker.com/_/microsoft-windows-servercore) `ltsc2019`, `1809`, `10.0.17763.914` oder früher
-* [Windows:](https://hub.docker.com/_/microsoft-windows) `1809`, `10.0.17763.914` oder früher
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`, `10.0.17763.1040` oder neuer
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809`, `10.0.17763.1040` oder neuer
+* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`, `10.0.17763.1040` oder neuer
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Welche .NET oder .NET Core-Imageebene sollte ich in meinem Container verwenden? 
 

@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 06/18/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: d2ccdd0a8000cb6c78244445a34529bc8f37d7f9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 85689661e7f0d170cd88edde8985f46285e679c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84016626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987778"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrisieren von verknüpften Diensten in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,15 +33,16 @@ Das folgende Video enthält eine siebenminütige Einführung und Demonstration d
 
 ## <a name="supported-data-stores"></a>Unterstützte Datenspeicher
 
-Zurzeit wird die Parametrisierung verknüpfter Dienste in der Data Factory-Benutzeroberfläche im Azure-Portal für die folgenden Datenspeicher unterstützt. Für alle anderen Datenspeicher können Sie den verknüpften Dienst parametrisieren, indem Sie auf der Registerkarte **Verbindungen** das Symbol **Code** auswählen und den JSON-Editor verwenden.
-- Azure SQL-Datenbank
-- Azure SQL Data Warehouse
-- SQL Server
-- Oracle
-- Cosmos DB
+Zurzeit wird die Parametrisierung verknüpfter Dienste in der Data Factory-Benutzeroberfläche für die folgenden Datenspeicher unterstützt. Für alle anderen Datenspeicher können Sie den verknüpften Dienst parametrisieren, indem Sie auf der Registerkarte **Verbindungen** das Symbol **Code** auswählen und den JSON-Editor verwenden.
+
 - Amazon Redshift
-- MySQL
+- Azure Cosmos DB (SQL-API)
 - Azure Database for MySQL
+- Azure SQL-Datenbank
+- Azure Synapse Analytics (ehemals SQL DW)
+- MySQL
+- Oracle
+- SQL Server
 
 ## <a name="data-factory-ui"></a>Data Factory-Benutzeroberfläche
 

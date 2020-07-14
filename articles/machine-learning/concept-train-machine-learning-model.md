@@ -9,12 +9,13 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.openlocfilehash: 99e2c878443b9a4256eec495429dbe57a88557d0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: tracking-python
+ms.openlocfilehash: a8c70254c7ba7a9525b843240230ac158e29a338
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683012"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985734"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trainieren von Modellen mit Azure Machine Learning
 
@@ -29,7 +30,7 @@ Azure Machine Learning bietet verschiedene Methoden zum Trainieren von Modellen,
     | [Schätzfunktionen](#estimators) | Mithilfe der Estimator-Klassen können **Modelle auf Grundlage beliebter Frameworks für maschinelles Lernen einfach trainiert werden**. Es gibt Estimator-Klassen für **Scikit-learn**, **PyTorch**, **TensorFlow**, **Chainer** und **Ray RLlib**. Es gibt auch einen allgemeinen Estimator, der mit Frameworks verwendet werden kann, die noch keine dedizierte Estimator-Klasse aufweisen. Sie müssen sich nicht um die Definition einer Laufzeitkonfiguration kümmern, wenn Sie Estimators verwenden. |
     | [Machine Learning-Pipeline](#machine-learning-pipeline) | Pipelines sind keine andere Trainingsmethode, sondern eine **Möglichkeit, einen Workflow mit modularen, wiederverwendbaren Schritten zu definieren**, die Training als Teil des Workflows enthalten können. Machine Learning-Pipelines unterstützen die Verwendung des automatisierten maschinellen Lernens sowie die Verwendung von Estimators und der Laufzeitkonfiguration zum Trainieren von Modellen. Da Pipelines nicht speziell auf das Training ausgerichtet sind, variieren die Gründe für den Einsatz einer Pipeline stärker als die anderen Trainingsmethoden. Im Allgemeinen können Sie eine Pipeline in folgenden Situationen verwenden:<br>* Sie möchten **unbeaufsichtigte Prozesse planen**, z. B. zeitintensive Trainingsaufträge oder Datenaufbereitungen.<br>* Sie möchten **mehrere Schritte** verwenden, die über heterogene Computeressourcen und Speicherorte hinweg koordiniert sind.<br>* Sie möchten die Pipeline als **wiederverwendbare Vorlage** für bestimmte Szenarien verwenden, z. B. für erneutes Training oder Batchbewertungen.<br>* **Nachverfolgung und Versionierung von Datenquellen, Eingaben und Ausgaben** für Ihren Workflow.<br>* Ihr Workflow wird von **verschiedenen Teams implementiert, die unabhängig voneinander an bestimmten Schritten arbeiten**. Die Schritte können dann in einer Pipeline zusammengeführt werden, um den Workflow zu implementieren. |
 
-+ [Azure Machine Learning SDK für Python](#r-sdk): Das SDK verwendet das Paket reticulate zur Bindung an das Python-SDK von Azure Machine Learning. Dadurch erhalten Sie Zugriff auf die im Python-SDK implementierten Kernobjekte und -methoden aus jeder R-Umgebung.
++ [Azure Machine Learning SDK für R](#r-sdk): Das SDK für R verwendet das Paket „reticulate“ zur Bindung an das Python-SDK von Azure Machine Learning. Dadurch erhalten Sie Zugriff auf die im Python-SDK implementierten Kernobjekte und -methoden aus jeder R-Umgebung.
 
 + **Designer**: Azure Machine Learning-Designer (Vorschauversion) bietet einen einfachen Einstiegspunkt in das maschinelle Lernen zum Erstellen von Proof of Concepts oder für Benutzer mit wenig Programmiererfahrung. Sie ermöglicht es Ihnen, Modelle per Drag & Drop über eine webbasierte Benutzeroberfläche zu trainieren. Sie können Python-Code als Teil des Designs verwenden oder Modelle trainieren, ohne Code zu schreiben.
 

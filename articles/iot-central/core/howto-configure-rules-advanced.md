@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: e2018f4d6f8e0813892a43c66975961356333bff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 07e5ce5cb6fee11e3f55ce808da51ccad59b9ff2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801358"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Integrieren Ihrer Azure IoT Central-Anwendung in andere Clouddienste mithilfe von Workflows
 
@@ -20,27 +20,36 @@ ms.locfileid: "83663748"
 
 Sie können Regeln in IoT Central erstellen, um als Reaktion auf telemetriebasierte Bedingungen (etwa eine Gerätetemperatur, die einen Schwellenwert übersteigt) Aktionen wie etwa das Senden einer E-Mail auszulösen.
 
-Der IoT Central-Connector für Power Automate und Azure Logic Apps ermöglicht die Erstellung komplexerer Regeln, um Vorgänge in IoT Central zu automatisieren:
+Der Azure IoT Central V3-Connector für Power Automate und Azure Logic Apps ermöglicht die Erstellung komplexerer Regeln, um Vorgänge in IoT Central zu automatisieren:
 
 - Wenn eine Regel in Ihrer Azure IoT Central-App ausgelöst wird, kann ein Workflow in Power Automate oder Azure Logic Apps ausgelöst werden. Durch diese Workflows können Aktionen in anderen Clouddiensten (beispielsweise Office 365) oder in einem Drittanbieterdienst ausgeführt werden.
 - Durch ein Ereignis in einem anderen Clouddienst (beispielsweise Office 365) kann ein Workflow in Power Automate oder Azure Logic Apps ausgelöst werden. Durch diese Workflows können Aktionen ausgeführt oder Daten aus Ihrer IoT Central-Anwendung abgerufen werden.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Um die in dieser Anleitung aufgeführten Schritte ausführen zu können, benötigen Sie ein aktives Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+Zum Einrichten der Lösung ist eine IoT Central-Anwendung der Version 3 erforderlich. Informationen zum Überprüfen Ihrer Anwendungsversion finden Sie unter [Über Ihre Anwendung](./howto-get-app-info.md). Informationen zum Erstellen einer IoT Central--Anwendung finden Sie unter [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md).
+
+> [!NOTE]
+> Wenn Sie eine IoT Central-Anwendung der Version 2 verwenden, lesen Sie [Erstellen von Workflows mit dem IoT Central-Connector in Azure Logic Apps](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) auf der Dokumentationswebsite der vorherigen Version, und verwenden Sie den Azure IoT Central V2-Connector
 
 ## <a name="trigger-a-workflow-from-a-rule"></a>Auslösen eines Workflows über eine Regel
 
 Um einen Workflow in Power Automate oder Azure Logic Apps auslösen zu können, benötigen Sie zunächst eine Regel in Ihrer IoT Central-Anwendung. Weitere Informationen finden Sie unter [Konfigurieren von Regeln](./howto-configure-rules.md).
 
-Gehen Sie wie folgt vor, um den Connector **Azure IoT Central - preview** (Azure IoT Central (Vorschauversion)) als Trigger in Power Automate hinzuzufügen:
+Gehen Sie wie folgt vor, um den **Azure IoT Central V3 – Vorschau**-Connector in Power Automate als Trigger hinzuzufügen:
 
 1. Wählen Sie in Power Automate **+ Erstellen** und anschließend die Registerkarte **Benutzerdefiniert** aus.
-1. Suchen Sie nach *IoT Central*, und wählen Sie den Connector **Azure IoT Central - preview** (Azure IoT Central (Vorschauversion)) aus.
+1. Suchen Sie nach *IoT Central*, und wählen Sie den **Azure IoT Central V3 – Vorschau**-Connector aus.
 1. Wählen Sie in der Liste mit den Triggern die Option **When a rule is fired (preview)** (Beim Auslösen einer Regel (Vorschauversion)) aus.
 1. Wählen Sie im Schritt **When a rule is fired** (Beim Auslösen einer Regel) Ihre IoT Central-Anwendung und die verwendete Regel aus.
 
-Gehen Sie wie folgt vor, um den Connector **Azure IoT Central - preview** (Azure IoT Central (Vorschauversion)) als Trigger in Azure Logic Apps hinzuzufügen:
+Gehen Sie wie folgt vor, um den **Azure IoT Central V3 – Vorschau**-Connector in Azure Logic Apps als Trigger hinzuzufügen:
 
 1. Wählen Sie im **Designer für Logik-Apps** die Vorlage **Leere Logik-App** aus.
 1. Wählen Sie im Designer die Registerkarte **Benutzerdefiniert** aus.
-1. Suchen Sie nach *IoT Central*, und wählen Sie den Connector **Azure IoT Central - preview** (Azure IoT Central (Vorschauversion)) aus.
+1. Suchen Sie nach *IoT Central*, und wählen Sie den **Azure IoT Central V3 – Vorschau**-Connector aus.
 1. Wählen Sie in der Liste mit den Triggern die Option **When a rule is fired (preview)** (Beim Auslösen einer Regel (Vorschauversion)) aus.
 1. Wählen Sie im Schritt **When a rule is fired** (Beim Auslösen einer Regel) Ihre IoT Central-Anwendung und die verwendete Regel aus.
 
@@ -50,59 +59,59 @@ Nun können Sie Ihrem Workflow weitere Schritte hinzufügen, um Ihr Integrations
 
 ## <a name="run-an-action"></a>Ausführen einer Aktion
 
-Sie können Aktionen in einer IoT Central-Anwendung über Power Automate- und Azure Logic Apps-Workflows ausführen. Erstellen Sie zunächst Ihren Workflow, und verwenden Sie einen Connector, um einen Trigger zum Starten des Workflows zu definieren. Verwenden Sie dann den Connector **Azure IoT Central - preview** (Azure IoT Central (Vorschauversion)) als Aktion.
+Sie können Aktionen in einer IoT Central-Anwendung über Power Automate- und Azure Logic Apps-Workflows ausführen. Erstellen Sie zunächst Ihren Workflow, und verwenden Sie einen Connector, um einen Trigger zum Starten des Workflows zu definieren. Verwenden Sie dann den **Azure IoT Central V3 – Vorschau**-Connector als Aktion.
 
-Gehen Sie wie folgt vor, um den Connector **Azure IoT Central - preview** (Azure IoT Central (Vorschauversion)) als Aktion in Power Automate hinzuzufügen:
+Gehen Sie wie folgt vor, um den **Azure IoT Central V3 – Vorschau**-Connector in Power Automate als Aktion hinzuzufügen:
 
 1. Wählen Sie in Power Automate im Bereich **Aktion auswählen** die Registerkarte **Benutzerdefiniert** aus.
-1. Suchen Sie nach *IoT Central*, und wählen Sie den Connector **Azure IoT Central - preview** (Azure IoT Central (Vorschauversion)) aus.
+1. Suchen Sie nach *IoT Central*, und wählen Sie den **Azure IoT Central V3 – Vorschau**-Connector aus.
 1. Wählen Sie in der Liste mit den Aktionen die gewünschte IoT Central-Aktion aus.
 1. Schließen Sie im Aktionsschritt die Konfiguration für die ausgewählte Aktion ab. Klicken Sie dann auf **Speichern**.
 
-Gehen Sie wie folgt vor, um den Connector **Azure IoT Central - preview** (Azure IoT Central (Vorschauversion)) als Aktion in Azure Logic Apps hinzuzufügen:
+Gehen Sie wie folgt vor, um den **Azure IoT Central V3 – Vorschau**-Connector in Azure Logic Apps als Aktion hinzuzufügen:
 
 1. Wählen Sie im **Designer für Logik-Apps** im Bereich **Aktion auswählen** die Registerkarte **Benutzerdefiniert** aus.
-1. Suchen Sie nach *IoT Central*, und wählen Sie den Connector **Azure IoT Central - preview** (Azure IoT Central (Vorschauversion)) aus.
+1. Suchen Sie nach *IoT Central*, und wählen Sie den **Azure IoT Central V3 – Vorschau**-Connector aus.
 1. Wählen Sie in der Liste mit den Aktionen die gewünschte IoT Central-Aktion aus.
 1. Schließen Sie im Aktionsschritt die Konfiguration für die ausgewählte Aktion ab. Klicken Sie dann auf **Speichern**.
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Suchen nach dem Connector „Azure IoT Central - preview“ (Azure IoT Central (Vorschauversion)) und Auswählen einer Aktion":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Suchen nach dem Azure IoT Central V3-Connector, und wählen Sie eine Aktion aus":::
 
 ## <a name="list-of-actions"></a>Liste mit Aktionen
 
-Die folgende Liste enthält alle verfügbaren IoT Central-Aktionen für den Connector **Azure IoT Central - preview** (Azure IoT Central (Vorschauversion)) sowie die zugehörigen Konfigurationsoptionen. Viele der Felder können über dynamisch generierten Inhalt verfügen. So kann beispielsweise in einem vorherigen Schritt die Geräte-ID bestimmt werden, auf der der aktuelle Schritt basieren soll.
+Die folgende Liste enthält alle verfügbaren IoT Central-Aktionen für den **Azure IoT Central V3 – Vorschau**-Connector sowie die zugehörigen Konfigurationsoptionen. Viele der Felder können über dynamisch generierten Inhalt verfügen. So kann beispielsweise in einem vorherigen Schritt die Geräte-ID bestimmt werden, auf der der aktuelle Schritt basieren soll.
 
 ### <a name="create-or-update-a-device"></a>„Create or update a device“ (Gerät erstellen oder aktualisieren)
 
 Verwenden Sie diese Aktion, um ein Gerät in Ihrer IoT Central-Anwendung zu erstellen oder zu aktualisieren.
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
-| Gerät | Die eindeutige ID des Geräts, das erstellt oder aktualisiert werden soll. |
+| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Sicherungsmedium | Die eindeutige ID des Geräts, das erstellt oder aktualisiert werden soll. |
 | Genehmigt | Wählen Sie aus, ob für das Gerät die Verbindungsherstellung mit IoT Central genehmigt wurde. |
 | Gerätebeschreibung | Eine detaillierte Beschreibung des Geräts. |
 | Gerätename | Der Anzeigename des Geräts. |
 | Gerätevorlage | Wählen Sie eine Vorlage aus der Liste mit Gerätevorlagen in Ihrer IoT Central-Anwendung aus. |
 | Simuliert | Wählen Sie aus, ob es sich um ein simuliertes Gerät handelt. |
 
-### <a name="delete-a-device"></a>„Delete a device“ (Gerät löschen)
+### <a name="delete-a-device"></a>Löschen eines Mediums
 
 Verwenden Sie diese Aktion, um ein Gerät aus Ihrer IoT Central-Anwendung zu löschen.
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
-| Gerät | Die eindeutige ID des zu löschenden Geräts. |
+| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 
 ### <a name="execute-a-device-command"></a>„Execute a device command“ (Gerätebefehl ausführen)
 
 Verwenden Sie diese Aktion, um einen Befehl auszuführen, der in einer der Schnittstellen des Geräts definiert ist.
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
-| Gerät | Die eindeutige ID des zu löschenden Geräts. |
+| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 | „Device Component“ (Gerätekomponente) | Die Schnittstelle in der Gerätevorlage, die den Befehl enthält. |
 | Gerätebefehl | Wählen Sie einen der Befehle für die ausgewählte Schnittstelle aus. |
 | Gerätevorlage | Wählen Sie eine Vorlage aus der Liste mit Gerätevorlagen in Ihrer IoT Central-Anwendung aus. |
@@ -115,10 +124,10 @@ Verwenden Sie diese Aktion, um einen Befehl auszuführen, der in einer der Schni
 
 Verwenden Sie diese Aktion, um die Details des Geräts abzurufen.
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
-| Gerät | Die eindeutige ID des zu löschenden Geräts. |
+| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 
 Die zurückgegebenen Details können in den dynamischen Ausdrücken in anderen Aktionen verwendet werden. Folgende Gerätedetails werden zurückgegeben: **Genehmigt**, **Text**, **Gerätebeschreibung**, **Gerätename**, **Gerätevorlage**, **Bereitgestellt** und **Simuliert**.
 
@@ -126,10 +135,10 @@ Die zurückgegebenen Details können in den dynamischen Ausdrücken in anderen A
 
 Verwenden Sie diese Aktion, um die Cloudeigenschaftswerte für ein bestimmtes Gerät abzurufen.
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
-| Gerät | Die eindeutige ID des zu löschenden Geräts. |
+| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 | Gerätevorlage | Wählen Sie eine Vorlage aus der Liste mit Gerätevorlagen in Ihrer IoT Central-Anwendung aus. |
 
 Die zurückgegebenen Cloudeigenschaftswerte können in den dynamischen Ausdrücken in anderen Aktionen verwendet werden.
@@ -138,10 +147,10 @@ Die zurückgegebenen Cloudeigenschaftswerte können in den dynamischen Ausdrück
 
 Verwenden Sie diese Aktion, um die Eigenschaftswerte für ein bestimmtes Gerät abzurufen.
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
-| Gerät | Die eindeutige ID des zu löschenden Geräts. |
+| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 | Gerätevorlage | Wählen Sie eine Vorlage aus der Liste mit Gerätevorlagen in Ihrer IoT Central-Anwendung aus. |
 
 Die zurückgegebenen Eigenschaftswerte können in den dynamischen Ausdrücken in anderen Aktionen verwendet werden.
@@ -150,10 +159,10 @@ Die zurückgegebenen Eigenschaftswerte können in den dynamischen Ausdrücken in
 
 Verwenden Sie diese Aktion, um die Telemetriewerte für ein bestimmtes Gerät abzurufen.
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
-| Gerät | Die eindeutige ID des zu löschenden Geräts. |
+| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 | Gerätevorlage | Wählen Sie eine Vorlage aus der Liste mit Gerätevorlagen in Ihrer IoT Central-Anwendung aus. |
 
 Die zurückgegebenen Telemetriewerte können in den dynamischen Ausdrücken in anderen Aktionen verwendet werden.
@@ -162,10 +171,10 @@ Die zurückgegebenen Telemetriewerte können in den dynamischen Ausdrücken in a
 
 Verwenden Sie diese Aktion, um die Cloudeigenschaftswerte für ein bestimmtes Gerät zu aktualisieren.
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
-| Gerät | Die eindeutige ID des zu löschenden Geräts. |
+| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 | Gerätevorlage | Wählen Sie eine Vorlage aus der Liste mit Gerätevorlagen in Ihrer IoT Central-Anwendung aus. |
 | Cloudeigenschaften | Nach dem Auswählen einer Gerätevorlage wird ein Feld für jede Cloudeigenschaft hinzugefügt, die in der Vorlage definiert ist. |
 
@@ -173,10 +182,10 @@ Verwenden Sie diese Aktion, um die Cloudeigenschaftswerte für ein bestimmtes Ge
 
 Verwenden Sie diese Aktion, um die schreibbaren Eigenschaftswerte für ein bestimmtes Gerät zu aktualisieren.
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
-| Gerät | Die eindeutige ID des zu löschenden Geräts. |
+| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 | Gerätevorlage | Wählen Sie eine Vorlage aus der Liste mit Gerätevorlagen in Ihrer IoT Central-Anwendung aus. |
 | „Writeable properties“ (Schreibbare Eigenschaften) | Nach dem Auswählen einer Gerätevorlage wird ein Feld für jede schreibbare Eigenschaft hinzugefügt, die in der Vorlage definiert ist. |
 

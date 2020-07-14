@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: 16fad7f57d3054c193da2571f1b33cfd77fdd51c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 59feabce099087edb011df471561229bfa88a289
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663398"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85118728"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Bereitstellen von automatisch skaliertem Durchsatz für eine Datenbank oder einen Container in Azure Cosmos DB
 
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie automatisch skalierten Durchsatz für ei
 
 1. Wählen Sie **Neuer Container** aus. Geben Sie einen Namen für die Datenbank und den Container sowie einen Partitionsschlüssel an. Wählen Sie unter **Durchsatz** die Option **Autoskalierung** aus, und legen Sie den [maximalen Durchsatz (RU/s)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) fest, auf den die Datenbank oder der Container skalierbar sein soll.
 
-   ![Erstellen eines Containers und Konfigurieren der Durchsatzbereitstellung mit Autoskalierung](./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Erstellen eines Containers und Konfigurieren der Durchsatzbereitstellung mit Autoskalierung":::
 
 1. Klicken Sie auf **OK**.
 
@@ -45,7 +45,7 @@ Wenn Sie die Autoskalierung für eine Datenbank mit gemeinsam genutztem Durchsat
 
 1. Wählen Sie unter **Skalieren** die Option **Autoskalierung** und anschließend **Speichern** aus.
 
-   ![Aktivieren der Autoskalierung für einen vorhandenen Container](./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Aktivieren der Autoskalierung für einen vorhandenen Container":::
 
 > [!NOTE]
 > Wenn Sie die Autoskalierung für eine vorhandene Datenbank oder für einen vorhandenen Container aktivieren, wird der Startwert für die maximale Anzahl von RU/s durch das System bestimmt (basierend auf den aktuellen Einstellungen für manuell bereitgestellten Durchsatz sowie auf dem Speicher). Nach Abschluss des Vorgangs kann die maximale Anzahl von RU/s bei Bedarf geändert werden. [Weitere Informationen.](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
@@ -226,7 +226,7 @@ int currentThroughput = autoscaleContainerThroughput.Throughput;
 container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newAutoscaleMaxThroughput)).block();
 ```
 
-#### <a name="sync"></a>[Synchron](#tab/api-sync)
+#### <a name="sync"></a>[Sync](#tab/api-sync)
 
 ```java
 // Change the autoscale max throughput (RU/s)

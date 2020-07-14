@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 401317f6b47c97a76ef2ded603063821a420933a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: e2113df2db89e204fd5d2c0a62234e0c1f7b16cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192540"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125667"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in die Azure-Sicherheit
 ## <a name="overview"></a>Übersicht
@@ -223,7 +223,7 @@ Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) 
 
 ![ExpressRoute](./media/overview/azure-security-fig1.png)
 
-Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten herstellen, z. B. Microsoft Azure, Office 365 und CRM Online. Die Konnektivität kann über ein Any-to-Any-Netzwerk (IP VPN), ein Point-to-Point-Ethernet-Netzwerk oder eine virtuelle Querverbindung über einen Konnektivitätsanbieter in einer Co-Location-Einrichtung bereitgestellt werden.
+Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten herstellen, z. B. Microsoft Azure, Microsoft 365 und CRM Online. Die Konnektivität kann über ein Any-to-Any-Netzwerk (IP VPN), ein Point-to-Point-Ethernet-Netzwerk oder eine virtuelle Querverbindung über einen Konnektivitätsanbieter in einer Co-Location-Einrichtung bereitgestellt werden.
 
 ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet und können somit als sicherer angesehen werden als VPN-basierte Lösungen. Auf diese Weise können ExpressRoute-Verbindungen eine höhere Sicherheit, größere Zuverlässigkeit und schnellere Geschwindigkeit bei geringerer Latenz als herkömmliche Verbindungen über das Internet bieten.
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie eine Azure Migrate-Appliance für die Bewertung p
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: ddc70ee9430d3a767ce01191824c150a4dbd5e6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d9cc071ad5d81a09a14b12fe2acdf564c2ea6c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538272"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84331779"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Einrichten einer Appliance für physische Server
 
@@ -51,20 +51,19 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung für die öffentliche Cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
     - Beispielverwendung für die Government-Cloud: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  Überprüfen der Hashwerte:
+3.  Überprüfen Sie die aktuelle Version der Appliance und die Hashwerte:
  
-    - Für die öffentliche Cloud (für die aktuelle Applianceversion):
+    - Öffentliche Cloud:
 
-        **Algorithmus** | **Hashwert**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+        **Szenario** | **Herunterladen*** | **Hashwert**
+        --- | --- | ---
+        Physisch (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
 
-    - Für Azure Government (für die aktuelle Applianceversion):
+    - Azure Government:
 
-        **Algorithmus** | **Hashwert**
-          --- | ---
-          MD5 | f81c155fc4a1409901caea948713913f
+        **Szenario** | **Herunterladen*** | **Hashwert**
+        --- | --- | ---
+        Physisch (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Ausführen des Azure Migrate-Installationsskripts

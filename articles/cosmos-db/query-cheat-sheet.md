@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 51660fb416aa9850381f515a3a31cc57519094b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66256975"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117980"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Abfragespickzettel für Azure Cosmos DB
 
@@ -23,12 +23,12 @@ Wählen Sie zwischen einem Download im Letter- oder A3-Format.
 
 Laden Sie die [Abfragespickzettel für Azure Cosmos DB im Letter-Format](https://go.microsoft.com/fwlink/?LinkId=623215) herunter, wenn Sie auf Papier im Letter-Format (8,5" x 11") drucken möchten.
 
-![Azure Cosmos DB-Abfragespickzettel – im Letter-Format, mit Abfragen und Funktionen für SQL-API, JavaScript, MongoDB, Gremlin und Tabellen-API](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png" alt-text="Azure Cosmos DB-Spickzettel – im Letter-Format, mit Abfragen und Funktionen für SQL-API, JavaScript, MongoDB, Gremlin und Tabellen-API" border="false":::
 
 ## <a name="oversized-cheat-sheets"></a>Übergroße Spickzettel
 Laden Sie die [Abfragespickzettel für Azure Cosmos DB im A3-Format](https://go.microsoft.com/fwlink/?linkid=870413) herunter, wenn Sie mit einem Plotter oder Großformatdrucker auf A3-Papier (11,7" x 16,5") drucken möchten.
 
-![Azure Cosmos DB-Abfragespickzettel – im Format A3, mit Abfragen und Funktionen für SQL-API, JavaScript, MongoDB, Gremlin und Tabellen-API](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB-Abfragespickzettel – im Format A3, mit Abfragen und Funktionen für SQL-API, JavaScript, MongoDB, Gremlin und Tabellen-API" border="false":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Schreiben von Abfragen finden Sie in den folgenden Artikeln:

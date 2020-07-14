@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 192e58b101b824ca0cc0c732e02647838be6dc35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4af70a4e2a698bd280c8c41018bc5aaa1bfa27f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81456480"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512542"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault über das Azure-Portal
 
@@ -32,7 +32,7 @@ Informationen zum Aktivieren dieser Eigenschaften für einen vorhandenen Schlüs
 - [Verwenden des vorläufigen Löschens mit PowerShell](../../key-vault/general/soft-delete-powershell.md)
 - [Verwenden des vorläufigen Löschens mit der CLI](../../key-vault/general/soft-delete-cli.md)
 
-Für die Azure Storage-Verschlüsselung werden nur 2048-Bit-RSA- und RSA-HSM-Schlüssel unterstützt. Weitere Informationen zu Schlüsseln finden Sie unter **Key Vault-Schlüssel** in [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten in Azure Key Vault](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+Die Azure Storage-Verschlüsselung unterstützt RSA- und RSA-HSM-Schlüssel der Größen 2048, 3072 und 4096. Weitere Informationen zu Schlüsseln finden Sie unter **Key Vault-Schlüssel** in [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten in Azure Key Vault](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 
 ## <a name="enable-customer-managed-keys"></a>Aktivieren von vom Kunden verwalteten Schlüsseln
 

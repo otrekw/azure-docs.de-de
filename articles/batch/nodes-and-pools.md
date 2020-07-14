@@ -2,19 +2,19 @@
 title: Knoten und Pools in Azure Batch
 description: Erfahren Sie mehr über Computeknoten und Pools und deren Verwendung in einem Azure Batch-Workflow aus Entwicklersicht.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: eadc5236926fed12ebee087f7354c492ae5fc745
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 06/16/2020
+ms.openlocfilehash: f71be75c0358dbc7f76a61680df2c54f44bc4173
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790917"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964041"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoten und Pools in Azure Batch
 
 In einem Azure Batch-Workflow ist ein *Computeknoten* (bzw. *Knoten*) ein virtueller Computer, der einen Teil der Workload Ihrer Anwendung verarbeitet. Ein *Pool* ist eine Sammlung von Knoten, auf denen Ihre Anwendung ausgeführt wird. In diesem Artikel erfahren Sie mehr über Knoten und Pools sowie Aspekte bei deren Erstellung und Nutzung in einem Azure Batch-Workflow.
 
-## <a name="nodes"></a>Knoten
+## <a name="nodes"></a>Nodes
 
 Ein Computeknoten ist eine Azure- oder Clouddienst-VM, die für die Verarbeitung eines Teils der Anwendungsworkload fest zugeordnet ist. Die Größe eines Knotens bestimmt die Anzahl von CPU-Kernen, die Speicherkapazität und die lokale Dateisystemgröße, die dem Knoten zugeordnet werden.
 
@@ -27,6 +27,8 @@ Alle Computeknoten in Batch enthalten außerdem Folgendes:
 - Eine standardmäßige [Ordnerstruktur](files-and-directories.md) und die dazugehörigen [Umgebungsvariablen](jobs-and-tasks.md), die zur Referenzierung durch Tasks verfügbar sind.
 - **Firewalleinstellungeneinstellungen** .
 - [Remotezugriff](error-handling.md#connect-to-compute-nodes) auf Windows-Knoten (Remotedesktopprotokoll, RDP) und Linux-Knoten (Secure Shell, SSH).
+
+Standardmäßig können Knoten miteinander kommunizieren, sie können jedoch nicht mit virtuellen Computern kommunizieren, die nicht Teil desselben Pools sind. Um die sichere Kommunikation zwischen Knoten und anderen VMs oder einem lokalen Netzwerk zu ermöglichen, können Sie den Pool in einem [Subnetz eines virtuellen Azure-Netzwerks (VNet)](batch-virtual-network.md) bereitstellen. Sie können dann über öffentliche IP-Adressen auf Ihre Knoten zugreifen. Diese öffentlichen IP-Adressen werden von Batch erstellt und können sich im Laufe der Lebensdauer des Pools ändern. Sie können auch einen [Pool mit statischen öffentlichen IP-Adressen erstellen](create-pool-public-ip.md), die von Ihnen gesteuert werden, sodass sichergestellt ist, dass sie sich nicht unerwartet ändern.
 
 ## <a name="pools"></a>Pools
 
@@ -78,7 +80,7 @@ Genau wie bei Workerrollen innerhalb von Cloud Services können Sie eine *Betrie
 
 ### <a name="node-agent-skus"></a>Knoten-Agent-SKUs
 
-Wenn Sie einen Pool erstellen, müssen Sie je nach dem Betriebssystem des Basisimages Ihrer VHD die entsprechende **nodeAgentSkuId** auswählen. Eine Zuordnung der verfügbaren Knoten-Agent-SKU-IDs zu ihren Betriebssystemimages erhalten Sie durch den Aufruf des Vorgangs unter [List Supported Node Agent SKUs](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) (Auflisten der unterstützten Knoten-Agent-SKUs).
+Wenn Sie einen Pool erstellen, müssen Sie je nach dem Betriebssystem des Basisimages Ihrer VHD die entsprechende **nodeAgentSkuId** auswählen. Eine Zuordnung der verfügbaren Knoten-Agent-SKU-IDs zu ihren Betriebssystemimages erhalten Sie durch den Aufruf des Vorgangs unter [List Supported Node Agent SKUs](/rest/api/batchservice/list-supported-node-agent-skus) (Auflisten der unterstützten Knoten-Agent-SKUs).
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>Benutzerdefinierte Images für Pools virtueller Computer
 
@@ -127,7 +129,7 @@ Eine Skalierungsformel kann auf den folgenden Metriken basieren:
 - **Ressourcenmetriken** : Basieren auf CPU-Auslastung, Bandbreitenauslastung, Speicherauslastung und Knotenanzahl.
 - **Taskmetriken**: Basieren auf dem Taskstatus – beispielsweise *Aktiv* (in der Warteschlange), *Wird ausgeführt* oder *Abgeschlossen*.
 
-Wenn die Anzahl von Computeknoten in einem Pool durch die automatische Skalierung verringert wird, müssen Sie sich überlegen, wie Sie Tasks behandeln, die zum Zeitpunkt des Verringerungsvorgangs ausgeführt werden. Hierfür verfügt Batch über eine [*Option zum Aufheben der Knotenzuordnung*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption), die Sie in Ihre Formeln einfügen können. Sie können beispielsweise angeben, dass ausgeführte Tasks sofort beendet und dann für die Ausführung auf einem anderen Knoten erneut in die Warteschlange eingereiht werden oder dass die Fertigstellung abgewartet werden soll, bevor der Knoten aus dem Pool entfernt wird. Beachten Sie, dass das Festlegen der Optionen zum Aufheben der Knotenzuordnung auf `taskcompletion` oder `retaineddata` Vorgänge zum Ändern der Poolgröße verhindert, bis alle Aufgaben abgeschlossen sind bzw. alle Aufbewahrungszeiträume von Tasks abgelaufen sind.
+Wenn die Anzahl von Computeknoten in einem Pool durch die automatische Skalierung verringert wird, müssen Sie sich überlegen, wie Sie Tasks behandeln, die zum Zeitpunkt des Verringerungsvorgangs ausgeführt werden. Hierfür verfügt Batch über eine [*Option zum Aufheben der Knotenzuordnung*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption), die Sie in Ihre Formeln einfügen können. Sie können beispielsweise angeben, dass ausgeführte Tasks sofort beendet und dann für die Ausführung auf einem anderen Knoten erneut in die Warteschlange eingereiht werden oder dass die Fertigstellung abgewartet werden soll, bevor der Knoten aus dem Pool entfernt wird. Beachten Sie, dass das Festlegen der Optionen zum Aufheben der Knotenzuordnung auf `taskcompletion` oder `retaineddata` Vorgänge zum Ändern der Poolgröße verhindert, bis alle Aufgaben abgeschlossen sind bzw. alle Aufbewahrungszeiträume von Tasks abgelaufen sind.
 
 Weitere Informationen zur automatischen Skalierung einer Anwendung finden Sie unter [Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool](batch-automatic-scaling.md).
 
@@ -162,13 +164,16 @@ Weitere Informationen zum Bereitstellen von Anwendungen für Batch-Knoten mithil
 
 ## <a name="virtual-network-vnet-and-firewall-configuration"></a>Virtuelles Netzwerk (VNET) und Firewallkonfiguration
 
-Wenn Sie in Batch einen Computeknotenpool bereitstellen, können Sie den Pool einem Subnetz eines [virtuellen Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md) zuordnen. Zur Verwendung eines Azure VNETs muss die Batch-Client-API die Azure Active Directory-Authentifizierung verwenden. Die Azure Batch-Unterstützung für Azure AD ist unter [Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory](batch-aad-auth.md) dokumentiert.  
+Wenn Sie in Batch einen Computeknotenpool bereitstellen, können Sie den Pool einem Subnetz eines [virtuellen Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md) zuordnen. Zur Verwendung eines Azure VNETs muss die Batch-Client-API die Azure Active Directory-Authentifizierung verwenden. Die Azure Batch-Unterstützung für Azure AD ist unter [Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory](batch-aad-auth.md) dokumentiert.
 
 ### <a name="vnet-requirements"></a>VNET-Anforderungen
 
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
 Weitere Informationen zum Einrichten eines Batch-Pools in einem VNet finden Sie unter [Create an Azure Batch pool in a virtual network](batch-virtual-network.md) (Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk).
+
+> [!TIP]
+> Um sicherzustellen, dass sich die öffentlichen IP-Adressen für den Zugriff auf Knoten nicht ändern, können Sie einen [Pool mit festgelegten öffentlichen IP-Adressen erstellen](create-pool-public-ip.md), die von Ihnen gesteuert werden.
 
 ## <a name="pool-and-compute-node-lifetime"></a>Gültigkeitsdauer für Pools und Computeknoten
 
@@ -184,7 +189,7 @@ Zur Bewältigung einer variablen, kontinuierlichen Auslastung wird in der Regel 
 
 Zertifikate müssen in der Regel beim Ver- und Entschlüsseln vertraulicher Informationen für Tasks verwendet werden. Ein Beispiel wäre etwa der Schlüssel für ein [Azure-Speicherkonto](accounts.md#azure-storage-accounts). Hierzu können Sie Zertifikate auf Knoten installieren. Verschlüsselte geheime Schlüssel werden über Befehlszeilenparameter an Tasks übergeben oder in einer der Taskressourcen eingebettet. Zum Entschlüsseln können dann installierte Zertifikate verwendet werden.
 
-Zum Hinzufügen eines Zertifikats zu einem Batch-Konto können Sie den Vorgang [Hinzufügen eines Zertifikats](https://docs.microsoft.com/rest/api/batchservice/certificate/add) (Batch REST) oder die Methode [CertificateOperations.CreateCertificate](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificateoperations) (Batch .NET) verwenden. Sie können das Zertifikat dann einem neuen oder vorhandenen Pool zuordnen.
+Zum Hinzufügen eines Zertifikats zu einem Batch-Konto können Sie den Vorgang [Hinzufügen eines Zertifikats](/rest/api/batchservice/certificate/add) (Batch REST) oder die Methode [CertificateOperations.CreateCertificate](/dotnet/api/microsoft.azure.batch.certificateoperations) (Batch .NET) verwenden. Sie können das Zertifikat dann einem neuen oder vorhandenen Pool zuordnen.
 
 Wenn ein Zertifikat einem Pool zugeordnet ist, installiert der Batch-Dienst das Zertifikat auf jedem Knoten im Pool. Der Batch-Dienst installiert die entsprechenden Zertifikate beim Start des Knotens, bevor Tasks gestartet werden (einschließlich [Starttask](jobs-and-tasks.md#start-task) und [Auftrags-Manager-Task](jobs-and-tasks.md#job-manager-task)).
 

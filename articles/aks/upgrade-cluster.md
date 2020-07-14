@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Upgrade eines Azure Kubernetes Service-Cl
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: 761df8abc60671341fcdd74e7c66111cfeb105ad
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: ea9f0154c221fe99d683cc58d5f6dccfce8d948c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259234"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800493"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
@@ -53,6 +53,8 @@ ERROR: Table output unavailable. Use the --query option to specify an appropriat
 
 > [!Important]
 > Knotenanstiege erfordern ein Abonnementkontingent für die angeforderte maximale Anstiegsanzahl für jeden Upgradevorgang. Beispielsweise umfasst ein Cluster mit 5 Knotenpools, von denen jeder über 4 Knoten verfügt, insgesamt 20 Knoten. Wenn für jeden Knotenpool ein maximaler Anstiegswert von 50 % gilt, sind zusätzliche Compute- und IP-Kontingente von 10 Knoten (2 Knoten * 5 Pools) erforderlich, um das Upgrade abzuschließen.
+>
+> Wenn Sie Azure CNI verwenden, stellen Sie sicher, dass im Subnetz IPs verfügbar sind und die [Anforderungen von Azure CNI an IPs](configure-azure-cni.md) erfüllt werden.
 
 Standardmäßig konfiguriert AKS Upgrades für einen Anstieg mit einem zusätzlichen Knoten. Ein Standardwert von „1“ für die Einstellung des maximalen Anstiegs ermöglicht AKS das Minimieren von Workloadunterbrechungen, indem vor dem Absperren/Ausgleichen vorhandener Anwendungen ein zusätzlicher Knoten erstellt wird, um einen Knoten einer älterer Version zu ersetzen. Der maximale Anstiegswert kann pro Knotenpool angepasst werden, um einen Kompromiss zwischen Upgradegeschwindigkeit und Upgradeunterbrechung zu ermöglichen. Wenn Sie den maximalen Anstiegswert erhöhen, wird der Upgradevorgang schneller abgeschlossen, aber das Festlegen eines hohen Werts für den maximalen Anstieg kann zu Unterbrechungen während des Upgradevorgangs führen. 
 
@@ -105,13 +107,14 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 Wenn Sie die Liste der verfügbaren Versionen für Ihren AKS-Cluster angezeigt haben, verwenden Sie den Befehl [az aks upgrade][az-aks-upgrade], um den Cluster zu aktualisieren. Während des Upgradeprozesses fügt AKS dem Cluster einen neuen Knoten hinzu, auf dem die angegebene Kubernetes-Version ausgeführt wird. Danach sorgt AKS dafür, dass einer der alten Knoten [als unplanbar markiert und entleert wird][kubernetes-drain] (cordon/drain), um die Beeinträchtigung für ausgeführte Anwendungen möglichst gering zu halten. Wenn für den neuen Knoten die Ausführung von Anwendungspods bestätigt wird, wird der alte Knoten gelöscht. Dieser Prozess wird wiederholt, bis alle Knoten im Cluster aktualisiert wurden.
 
-Im folgenden Beispiel wird ein Cluster auf Version *1.13.10* aktualisiert:
-
 ```azurecli-interactive
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version KUBERNETES_VERSION
 ```
 
-Die Dauer des Clusterupgrades hängt von der Anzahl der vorhanden Knoten ab und kann einige Minuten in Anspruch nehmen. 
+Die Dauer des Clusterupgrades hängt von der Anzahl der vorhanden Knoten ab und kann einige Minuten in Anspruch nehmen.
 
 > [!NOTE]
 > Für den Abschluss von Clusterupgrades besteht eine zulässige Gesamtzeit. Diese Zeit wird als das Produkt aus `10 minutes * total number of nodes in the cluster` berechnet. Beispielsweise müssen Upgradevorgänge in einem Cluster mit 20 Knoten in 200 Minuten erfolgreich ausgeführt werden. Andernfalls löst AKS einen Fehler aus, um einen nicht behebbaren Clusterstatus zu vermeiden. Um bei einem Upgradefehler eine Wiederherstellung auszuführen, wiederholen Sie den Upgradevorgang, nachdem das Timeout aufgetreten ist.

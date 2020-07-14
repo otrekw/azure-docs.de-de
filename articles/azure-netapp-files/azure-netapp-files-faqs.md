@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 06/08/2020
 ms.author: b-juche
-ms.openlocfilehash: a8c299a6f0e6732d50b40fc29bde07179fc2c412
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be18a9d54049562eebc27720988b085c3e14f2da
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185641"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956508"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -125,6 +125,10 @@ Das Root Squashing wird derzeit nicht unterstützt.
 
 ## <a name="smb-faqs"></a>Häufig gestellte Fragen zu SMB
 
+### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Welche SMB-Versionen werden von Azure NetApp Files unterstützt?
+
+Azure NetApp Files unterstützt SMB 2.1 und SMB 3.1 (Unterstützung für SMB 3.0 ist hierbei eingeschlossen).    
+
 ### <a name="is-an-active-directory-connection-required-for-smb-access"></a>Ist für den SMB-Zugriff eine Active Directory-Verbindung erforderlich? 
 
 Ja, Sie müssen eine Active Directory-Verbindung erstellen, bevor Sie ein SMB-Volume bereitstellen. Damit erfolgreich eine Verbindung hergestellt werden kann, muss das delegierte Subnetz von Azure NetApp Files auf die angegebenen Domänencontroller zugreifen können.  Ausführliche Informationen dazu finden Sie unter [Erstellen eines SMB-Volumes](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb). 
@@ -173,23 +177,26 @@ Nein. Azure NetApp Files wird vom Azure Storage-Explorer nicht unterstützt.
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Wie bestimme ich, ob ein Verzeichnis dabei ist, sein Größenlimit zu erreichen?
 
-Sie können den Befehl `stat` von einem Client aus verwenden, um festzustellen, ob sich ein Verzeichnis der maximal zulässigen Größe nähert (320 MB).
+Sie können den Befehl `stat` von einem Client aus verwenden, um festzustellen, ob sich ein Verzeichnis der maximal zulässigen Größe für Verzeichnismetadaten (320 MB) nähert.
 
 Bei einem Verzeichnis mit 320 MB beträgt die Anzahl der Blöcke 655360, wobei jeder Block die Größe von 512 Bytes hat.  (D. h., 320x1024x1024/512.)  
 
 Beispiele:
 
-    [makam@cycrh6rtp07 ~]$ stat bin
-    File: 'bin'
-    Size: 4096            Blocks: 8          IO Block: 65536  directory
+```console
+[makam@cycrh6rtp07 ~]$ stat bin
+File: 'bin'
+Size: 4096            Blocks: 8          IO Block: 65536  directory
 
-    [makam@cycrh6rtp07 ~]$ stat tmp
-    File: 'tmp'
-    Size: 12288           Blocks: 24         IO Block: 65536  directory
+[makam@cycrh6rtp07 ~]$ stat tmp
+File: 'tmp'
+Size: 12288           Blocks: 24         IO Block: 65536  directory
  
-    [makam@cycrh6rtp07 ~]$ stat tmp1
-    File: 'tmp1'
-    Size: 4096            Blocks: 8          IO Block: 65536  directory
+[makam@cycrh6rtp07 ~]$ stat tmp1
+File: 'tmp1'
+Size: 4096            Blocks: 8          IO Block: 65536  directory
+```
+
 
 ## <a name="data-migration-and-protection-faqs"></a>Häufig gestellte Fragen zu Datenmigration und -schutz
 
@@ -234,5 +241,5 @@ Nein. Der Azure Import/Export-Dienst unterstützt Azure NetApp Files derzeit nic
 - [Häufig gestellte Fragen zu Microsoft Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 - [Häufig gestellte Fragen zu Microsoft Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
 - [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
-- [Azure Data Box](https://docs.microsoft.com/azure/databox-family/)
+- [Azure Data Box](https://docs.microsoft.com/azure/databox)
 - [Häufig gestellte Fragen zur Leistung von SMB für Azure NetApp Files](azure-netapp-files-smb-performance.md)

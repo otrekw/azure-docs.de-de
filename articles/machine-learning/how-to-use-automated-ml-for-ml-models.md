@@ -5,18 +5,18 @@ description: Hier erfahren Sie, wie Sie mit Azure Machine Learning automatisiert
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: nibaccam
 author: aniththa
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/20/2020
-ms.openlocfilehash: 20d98f8eb4971d2aba1ecfbf8abeaba261cde8c4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 9871d2ef46a4bbcaa0de7a2aee7d2c91f2bfefab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115911"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831912"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Erstellen, Überprüfen und Bereitstellen von automatisierten Machine Learning-Modellen mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -106,7 +106,7 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
 
     Wählen Sie **Weiter** aus.
 
-1. Wählen Sie auf dem Formular **Aufgabentyp und Einstellungen** den Aufgabentyp aus: Klassifizierung, Regression oder Prognose (Vorhersage). Weitere Informationen finden Sie unter [Definieren einer Aufgabe für maschinelles Lernen](how-to-define-task-type.md).
+1. Wählen Sie auf dem Formular **Aufgabentyp und Einstellungen** den Aufgabentyp aus: Klassifizierung, Regression oder Prognose (Vorhersage). Weitere Informationen finden Sie unter [Unterstützte Aufgabentypen](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast).
 
     1. Für eine Klassifizierung können Sie auch Deep Learning aktivieren, das für Textmerkmalserstellungen verwendet wird.
 
@@ -124,7 +124,7 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
     Explain best model (Bestes Modell erläutern) | Wählen Sie diese Option aus, um die Erläuterungsfähigkeit des empfohlenen besten Modells anzuzeigen oder zu deaktivieren.
     Blocked algorithm (Blockierter Algorithmus)| Wählen Sie Algorithmen aus, die Sie aus den Trainingsauftrag ausschließen möchten.
     Beendigungskriterium| Wenn eines dieser Kriterien erfüllt ist, wird der Trainingsauftrag beendet. <br> *Training job time (hours)* Trainingsauftragszeit (Stunden): Gibt an, wie lange der Trainingsauftrag ausgeführt werden soll. <br> *Metric score threshold* (Metrischer Bewertungsschwellenwert):  Die Metrikmindestbewertung für alle Pipelines. Auf diese Weise wird sichergestellt, dass Sie nicht mehr Zeit für den Trainingsauftrag aufwenden als nötig, wenn Sie eine definierte Zielmetrik verwenden, die Sie erreichen möchten.
-    Überprüfen| Wählen Sie eine der Optionen für Kreuzvalidierung aus, die im Trainingsauftrag verwendet werden soll. [Weitere Informationen zur Kreuzvalidierung](how-to-configure-auto-train.md).
+    Überprüfen| Wählen Sie eine der Optionen für Kreuzvalidierung aus, die im Trainingsauftrag verwendet werden soll. [Weitere Informationen zur Kreuzvalidierung](how-to-configure-cross-validation-data-splits.md#prerequisites).
     Parallelität| *Max concurrent iterations* (Maximale Anzahl gleichzeitiger Iterationen): Die maximale Anzahl von Pipelines (Iterationen), die im Trainingsauftrag getestet werden. Der Auftrag wird nicht häufiger als die angegebene Anzahl von Iterationen ausgeführt.
 
 1. (Optional) Anzeigen von Featurisierungseinstellungen: Wenn Sie im Formular **Additional configuration settings** (Zusätzliche Konfigurationseinstellungen) die Option **Automatische Featurisierung** aktivieren, werden standardmäßige Featurisierungstechniken angewendet. Diese Standardeinstellungen können unter **Featurisierungseinstellungen anzeigen** geändert und entsprechend angepasst werden. Informationen zum Anpassen von Featurisierungen finden Sie [hier](#customize-featurization). 
@@ -163,7 +163,7 @@ Im Formular **Featurisierung** können Sie die automatische Featurisierung aktiv
 
 In der folgenden Tabelle sind die derzeit in Studio verfügbaren Anpassungen zusammengefasst: 
 
-Spalte| Anpassung
+Column| Anpassung
 ---|---
 Enthalten | Gibt an, welche Spalten in das Training einbezogen werden sollen.
 Featuretyp| Dient zum Ändern des Werttyps für die ausgewählte Spalte.

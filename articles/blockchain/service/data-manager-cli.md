@@ -2,14 +2,14 @@
 title: 'Konfigurieren von Blockchain Data Manager mithilfe der Azure CLI: Azure Blockchain Service'
 description: Erstellen und Verwalten von Blockchain Data Manager-Instanzen für Azure Blockchain Service mithilfe der Azure CLI
 ms.date: 03/30/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e490803fabeed7d6234bd6984acbfb9f5270e0c0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b7b897f35cb864e2a1fa904bbb3ec13b56986598
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254409"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85200459"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurieren von Blockchain Data Manager mithilfe der Azure CLI
 
@@ -133,7 +133,7 @@ az resource create \
 
 ### <a name="input-examples"></a>Beispiele für Eingaben
 
-JSON-Konfigurationsbeispiel zum Erstellen einer Eingaberessource in der Region *USA, Osten*, die mit \<Blockchain member\> verbunden ist
+JSON-Konfigurationsbeispiel zum Erstellen einer Eingaberessource in der Region *USA, Osten*, die mit \<Blockchain member\> verbunden ist.
 
 ``` json
 {
@@ -205,7 +205,7 @@ az resource create \
 
 ### <a name="output-examples"></a>Beispiele für Ausgaben
 
-JSON-Konfigurationsbeispiel zum Erstellen einer Ausgaberessource in der Region *USA, Osten*, die mit einem Event Grid-Thema namens \<event grid topic\> verbunden ist
+JSON-Konfigurationsbeispiel zum Erstellen einer Ausgaberessource in der Region *USA, Osten*, die mit dem Event Grid-Thema \<event grid topic\> verbunden ist.
 
 ``` json
 {

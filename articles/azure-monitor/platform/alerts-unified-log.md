@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e81d48f4e709a9a0bb8ebb33c7029d3841167b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665220"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609045"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokollwarnungen in Azure Monitor
 
-Dieser Artikel enthält Details zu Protokollwarnungen. Dies ist einer der Typen von Warnungen, die im Rahmen der [Azure-Warnungen](../../azure-monitor/platform/alerts-overview.md) unterstützt werden. Sie ermöglichen es Benutzern, die Analyseplattform von Azure als Basis für die Bereitstellung von Warnungen zu verwenden.
+Protokollwarnungen sind einer der Warnungstypen, die in [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) unterstützt werden. Mithilfe von Protokollwarnungen können Benutzer die Azure Analytics-Plattform als Grundlage für Benachrichtigungen verwenden.
 
 Protokollwarnungen bestehen aus Regeln für die Protokollsuche, die für [Azure Monitor-Protokolle](../../azure-monitor/learn/tutorial-viewdata.md) oder [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) erstellt werden. Weitere Informationen zur Verwendung finden Sie unter [Erstellen von Protokollwarnungen in Azure](../../azure-monitor/platform/alerts-log.md).
 

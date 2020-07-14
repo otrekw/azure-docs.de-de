@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: f2a5ad78ecf4bf02e84b9bf2e37fea13c708e072
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987610"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Verwenden Sie einen sequenziellen Konvoi in Azure Logic Apps mit Azure Service Bus, um verwandte Nachrichten in der richtigen Reihenfolge zu senden
 
@@ -249,7 +249,7 @@ Diese [**Until**-Schleife](../logic-apps/logic-apps-control-flow-loops.md#until-
 1. Geben Sie in der Service Bus-Aktion **Weitere Nachrichten aus Sitzung abrufen** den Namen Ihrer Service Bus-Warteschlange an. Übernehmen Sie alle anderen Standardeigenschaftswerte in der Aktion.
 
    > [!NOTE]
-   > Die maximale Anzahl von Nachrichten ist standardmäßig auf `175` festgelegt. Dieses Limit wird jedoch durch die Nachrichtengröße und durch die Eigenschaft für die maximale Nachrichtengröße in Service Bus beeinflusst. Derzeit beträgt das Limit 256 KB für Standard und 1 MB für Premium.
+   > Die maximale Anzahl von Nachrichten ist standardmäßig auf `175` festgelegt. Dieses Limit wird jedoch durch die Nachrichtengröße und durch die Eigenschaft für die maximale Nachrichtengröße in Service Bus beeinflusst. Weitere Informationen finden Sie unter [Nachrichtengröße für eine Warteschlange](../service-bus-messaging/service-bus-quotas.md).
 
    ![Service Bus-Aktion „Weitere Nachrichten aus Sitzung abrufen“](./media/send-related-messages-sequential-convoy/get-additional-messages-from-session.png)
 

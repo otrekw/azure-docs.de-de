@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: e7986add466bc42b092763acfeceebc8a6523bbe
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80473990"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Schnellstart: Verwalten von Blobs mit Java SDK, Version 8
@@ -53,7 +53,7 @@ public static final String storageConnectionString =
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
 
-Diese Beispielanwendung erstellt eine Testdatei in Ihrem Standardverzeichnis (*C:\Benutzer\<Benutzer>\AppData\Local\Temp* für Windows-Benutzer), lädt diese in Blob Storage hoch, listet die Blobs im Container auf und lädt die Datei dann mit einem neuen Namen herunter, sodass Sie die alte und die neue Datei vergleichen können.
+Mit dieser Beispielanwendung wird eine Testdatei in Ihrem Standardverzeichnis (*C:\Benutzer\<user>\AppData\Local\Temp* für Windows-Benutzer) erstellt. Anschließend wird diese Datei in Blob Storage hochgeladen, die Blobs werden im Container aufgelistet und die Datei wird mit einem neuen Namen heruntergeladen, sodass Sie die alte und die neue Datei vergleichen können.
 
 Führen Sie das Beispiel mithilfe von Maven über die Befehlszeile aus. Öffnen Sie eine Shell, und navigieren Sie in Ihrem geklonten Verzeichnis zu **blobAzureApp**. Geben Sie dann `mvn compile exec:java` ein.
 
@@ -72,7 +72,7 @@ Deleting the container
 Deleting the source, and downloaded files
 ```
 
-Überprüfen Sie, ob die Beispieldatei in Ihrem Standardverzeichnis (*C:\Benutzer\<Benutzer>\AppData\Local\Temp* für Windows-Benutzer) vorhanden ist, bevor Sie fortfahren. Kopieren Sie die URL für das Blob aus dem Konsolenfenster, und fügen Sie sie in einem Browser ein, um den Inhalt der Datei in Blob Storage anzuzeigen. Wenn Sie die Beispieldatei in Ihrem Verzeichnis mit dem in Blob Storage gespeicherten Inhalt vergleichen, sehen Sie, dass sie identisch sind.
+Überprüfen Sie, ob die Beispieldatei in Ihrem Standardverzeichnis (*C:\Benutzer\<user>\AppData\Local\Temp* für Windows-Benutzer) vorhanden ist, bevor Sie fortfahren. Kopieren Sie die URL für das Blob aus dem Konsolenfenster, und fügen Sie sie in einem Browser ein, um den Inhalt der Datei in Blob Storage anzuzeigen. Wenn Sie die Beispieldatei in Ihrem Verzeichnis mit dem in Blob Storage gespeicherten Inhalt vergleichen, sehen Sie, dass sie identisch sind.
 
   >[!NOTE]
   >Sie können zum Anzeigen der Dateien in Blob Storage auch ein Tool, z.B. den [Azure Storage-Explorer](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), verwenden. Der Azure Storage-Explorer ist ein kostenloses plattformübergreifendes Tool, das Ihnen den Zugriff auf die Speicherkontoinformationen ermöglicht.

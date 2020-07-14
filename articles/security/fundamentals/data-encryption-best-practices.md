@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b6fcf38f9f69976e6ed8d64040cfbcf44f090e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224706"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124050"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Bewährte Methoden für Datensicherheit und Datenverschlüsselung in Azure
 In diesem Artikel werden bewährte Methoden für die Datensicherheit und -verschlüsselung beschrieben.
@@ -121,7 +121,7 @@ Sie möchten E-Mails, Dokumente und vertrauliche Daten, die Sie außerhalb Ihres
 
 Die Klassifizierung ist jederzeit identifizierbar, unabhängig davon, wo die Daten gespeichert oder mit wem sie geteilt werden. Die Bezeichnungen umfassen visuelle Markierungen wie Kopfzeilen, Fußzeilen oder Wasserzeichen. Metadaten werden Dateien und E-Mail-Headern als Klartext hinzugefügt. Der Klartext stellt sicher, dass andere Dienste, z.B. Lösungen zum Verhindern von Datenverlust, die Klassifizierung identifizieren und entsprechende Maßnahmen ergreifen können.
 
-Die Schutztechnologie nutzt Azure Rights Management (Azure RMS). Diese Technologie ist in andere Microsoft-Clouddienste und Anwendungen, z.B. Office 365 und Azure Active Directory, integriert. Diese Schutztechnologie verwendet Verschlüsselungs-, Identitäts- und Autorisierungsrichtlinien. Der Schutz, der durch Azure RMS angewendet wird, verbleibt innerhalb der Dokumente und E-Mails. Der Speicherort spielt dabei keine Rolle: innerhalb oder außerhalb Ihrer Organisation, Netzwerke, Dateiserver oder Anwendungen.
+Die Schutztechnologie nutzt Azure Rights Management (Azure RMS). Diese Technologie ist in andere Microsoft-Clouddienste und Anwendungen integriert, z. B. Microsoft 365 und Azure Active Directory. Diese Schutztechnologie verwendet Verschlüsselungs-, Identitäts- und Autorisierungsrichtlinien. Der Schutz, der durch Azure RMS angewendet wird, verbleibt innerhalb der Dokumente und E-Mails. Der Speicherort spielt dabei keine Rolle: innerhalb oder außerhalb Ihrer Organisation, Netzwerke, Dateiserver oder Anwendungen.
 
 Mit dieser Lösung für den Schutz von Informationen behalten Sie die Kontrolle über Ihre Daten auch dann, wenn diese für andere Personen freigegeben werden. Sie können Azure RMS auch für Ihre eigenen Branchenanwendungen und Informationsschutzlösungen von Softwareanbietern verwenden, ganz gleich ob diese Anwendungen und Lösungen lokal oder in der Cloud bereitstehen.
 

@@ -3,16 +3,16 @@ title: Verwenden von Azure AD Domain Services zum Autorisieren des Zugriffs auf 
 description: Erfahren Sie, wie Sie eine identitätsbasierte Authentifizierung über SMB (Server Message Block) für Azure Files über Azure Active Directory Domain Services aktivieren. Ihre in die Domäne eingebundenen virtuellen Windows-Computer (VMs) können dann mit Azure AD-Anmeldeinformationen auf Azure-Dateifreigaben zugreifen.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ccaa1945101c252f7dd32be6f9340b51541ed48d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 2d9f7eccae6b87923b52119ded90ced5e4206d7b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296633"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510384"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Aktivieren der Azure Active Directory Domain Services-Authentifizierung über Azure Files
 
@@ -55,6 +55,10 @@ Bevor Sie Azure AD über SMB für Azure-Dateifreigaben aktivieren, sollten Sie s
 1.  **Überprüfen Sie die Konnektivität von Azure Files, indem Sie Azure-Dateifreigaben mit Ihrem Speicherkontenschlüssel einbinden.**
 
     Um sicherzustellen, dass Ihr virtueller Computer und die Dateifreigabe richtig konfiguriert sind, versuchen Sie, die Dateifreigabe mit Ihrem Speicherkontenschlüssel einzubinden. Weitere Informationen finden Sie unter [Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows](storage-how-to-use-files-windows.md).
+
+## <a name="regional-availability"></a>Regionale Verfügbarkeit
+
+Die Azure Files-Authentifizierung mit Azure AD DS ist [in allen öffentlichen Azure-Regionen](https://azure.microsoft.com/global-infrastructure/locations/) verfügbar.
 
 ## <a name="overview-of-the-workflow"></a>Übersicht über den Workflow
 

@@ -7,18 +7,21 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 0a0947a5e2b57f728023b0f923428814b3e439ec
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: e63c3f329cb9c1fd5ca91274540f5145c3ad098a
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626682"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921553"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformationsfunktionen im Wranglingdatenfluss
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Der Wranglingdatenfluss in Azure Data Factory ermöglicht die codefreie agile Datenaufbereitung und Data Wrangling für die Cloud. Der Wranglingdatenfluss kann in [Power Query Online](https://docs.microsoft.com/powerquery-m/power-query-m-reference) integriert werden und stellt Power Query M-Funktionen für Data Wrangling über Spark-Ausführung bereit. 
+
+> [!NOTE]
+> Wranglingdatenflüsse sind derzeit in der öffentlichen Vorschau verfügbar
 
 Derzeit werden nicht alle Power Query M-Funktionen für Data Wrangling unterstützt, obwohl sie während der Erstellung verfügbar sind. Beim Erstellen von Wranglingdatenflüssen wird die folgende Fehlermeldung angezeigt, wenn eine Funktion nicht unterstützt wird:
 

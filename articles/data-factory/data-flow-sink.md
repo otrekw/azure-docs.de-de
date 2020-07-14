@@ -8,42 +8,56 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 4b10a4c98abd6bec4074bf35764a9cbb85d5b157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 143c94527b947495709d2e94f107dc578e7f2866
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605968"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610178"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Senkentransformation in einem Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Nach der Transformation Ihrer Daten können Sie die Daten in ein Zieldataset als Senke übertragen. Jeder Datenfluss erfordert mindestens eine Senkentransformation. Sie können aber so viele Senken wie erforderlich hinzufügen, um Ihren Transformationsfluss zu realisieren. Um in weitere Senken zu schreiben, erstellen Sie über neue Verzweigungen und bedingte Teilungen neue Datenströme.
+Nachdem Sie die Datentransformation abgeschlossen haben, schreiben Sie sie mithilfe der Senkentransformation in einen Zielspeicher. Jeder Datenfluss erfordert mindestens eine Senkentransformation. Sie können aber so viele Senken wie erforderlich hinzufügen, um Ihren Transformationsfluss zu realisieren. Um in weitere Senken zu schreiben, erstellen Sie über neue Verzweigungen und bedingte Teilungen neue Datenströme.
 
-Jede Senkentransformation ist genau einem Data Factory-Dataset zugeordnet. Das Dataset definiert die Form und Position der Daten, in die geschrieben werden soll.
+Jede Senkentransformation ist genau einem Azure Data Factory-Datasetobjekt oder einem verknüpften Dienst zugeordnet. Die Form und Position der Daten, in die geschrieben werden soll, richtet sich nach der Senkentransformation.
 
-## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Unterstützte Senkenconnectors im Zuordnungsdatenfluss
+## <a name="inline-datasets"></a>Inlinedatasets
 
-Derzeit können die folgenden Datasets in einer Senkentransformation verwendet werden:
-    
-* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, Text, Parquet)
-* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, Text, Parquet)
-* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, Text, Parquet)
-* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL-Datenbank](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
+Beim Erstellen einer Senkentransformation legen Sie fest, ob Ihre Senkeninformationen innerhalb eines Datasetobjekts oder innerhalb der Senkentransformation definiert sind. Die meisten Formate sind nur in einem von beiden verfügbar. Weitere Informationen zur Verwendung eines bestimmten Connectors finden Sie im Dokument zu diesem Connector.
 
-Die für diese Connectors spezifischen Einstellungen befinden sich auf der Registerkarte **Einstellungen**. Informationen zu diesen Einstellungen finden Sie in der Connector-Dokumentation. 
+Wenn ein Format sowohl für Inline- als auch in einem Datasetobjekt unterstützt wird, hat beides seine Vorteile. Datasetobjekte sind wiederverwendbare Entitäten, die in anderen Datenflüssen und Aktivitäten wie Kopiervorgängen genutzt werden können. Diese sind besonders nützlich, wenn ein festgeschriebenes Schema verwendet wird. Die Datasets basieren nicht auf Spark, und gelegentlich kann es erforderlich sein, bestimmte Einstellungen oder Schemaprojektionen in der Senkentransformation außer Kraft zu setzen.
 
-Azure Data Factory hat Zugriff auf über [90 native Connectors](connector-overview.md). Um Daten in diese anderen Quellen ausgehend von Ihrem Datenfluss zu schreiben, verwenden Sie die Kopieraktivität, um die Daten nach Abschluss des Datenflusses aus einem der unterstützten Stagingbereiche zu laden.
+Inlinedatasets werden empfohlen, wenn flexible Schemas, einmalig genutzte Senkeninstanzen oder parametrisierte Senken verwendet werden. Wenn Ihre Senke stark parametrisiert ist, können Sie mit Inlinedatasets kein Dummyobjekt erstellen. Inlinedatasets basieren auf Spark und ihre Eigenschaften sind für den Datenfluss nativ.
+
+Um ein Inlinedataset zu verwenden, wählen Sie das gewünschte Format im Selektor **Senkentyp** aus. Anstatt ein Senkendataset auszuwählen, wählen Sie den verknüpften Dienst aus, mit dem Sie eine Verbindung herstellen möchten.
+
+![Inlinedataset](media/data-flow/inline-selector.png "Inlinedataset")
+
+##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> Unterstützte Senkentypen
+
+Die Zuordnung des Datenflusses folgt einem Ansatz zum Extrahieren, Laden und Transformieren (ELT) und funktioniert mit *Stagingdatasets* in Azure. Derzeit können die folgenden Datasets in einer Quelltransformation verwendet werden:
+
+| Connector | Format | Dataset/Inline |
+| --------- | ------ | -------------- |
+| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Text mit Trennzeichen](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Text mit Trennzeichen](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Text mit Trennzeichen](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Common Data Model (Vorschau)](format-common-data-model.md#sink-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL-Datenbank](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure CosmosDB (SQL-API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+
+Die für diese Connectors spezifischen Einstellungen befinden sich auf der Registerkarte **Einstellungen**. Informationen und Beispiele zu Datenflussskripts zu diesen Einstellungen finden Sie in der Connectordokumentation. 
+
+Azure Data Factory hat Zugriff auf über [90 native Connectors](connector-overview.md). Um Daten aus Ihrem Datenfluss in diese anderen Quellen zu schreiben, verwenden Sie die Kopieraktivität zum Laden der Daten aus einer unterstützten Senke.
 
 ## <a name="sink-settings"></a>Senkeneinstellungen
 
 Nachdem Sie eine Senke hinzugefügt haben, konfigurieren Sie die Senke über die Registerkarte **Senke**. Hier können Sie das Dataset auswählen oder erstellen, in das die Senke schreibt. Unten finden Sie ein Video, in dem verschiedene Senkenoptionen für Dateitypen mit Texttrennzeichen beschrieben werden:
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
 ![Senkeneinstellungen](media/data-flow/sink-settings.png "Senkeneinstellungen")
 

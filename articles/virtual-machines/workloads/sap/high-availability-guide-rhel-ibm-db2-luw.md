@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.openlocfilehash: 1a00a3c1e0d34a8c7abbcd5bfc7a6771d9e2a4c3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82983039"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Hochverfügbarkeit von IBM DB2 LUW auf virtuellen Azure-Computern unter Red Hat Enterprise Linux Server
@@ -336,8 +336,8 @@ Die folgenden Elemente haben eines der folgenden Präfixe:
 - **[2]** : Gilt nur für Knoten 2
 
 **[A]** Voraussetzung für die Pacemaker-Konfiguration:
-1. Fahren Sie beide Datenbankserver mit Benutzer „db2\<sid>“ mit „db2stop“ herunter.
-1. Ändern Sie die Shellumgebung für „db2\<sid> Benutzer“ in */bin/ksh*:
+1. Fahren Sie beide Datenbankserver mit dem Benutzer „db2\<sid>“ mit „db2stop“ herunter.
+1. Ändern Sie die Shellumgebung für „db2\<sid>“ in */bin/ksh*:
 <pre><code># Install korn shell:
 sudo yum install ksh
 # Change users shell:
@@ -557,7 +557,7 @@ Der ursprüngliche Status in einem SAP-System ist in „Transaction DBACOCKPIT -
 > Bevor Sie den Test zu starten, stellen Sie Folgendes sicher:
 > * Pacemaker keine fehlerhaften Aktionen (pcs status) aufweist.
 > * Es keine Speicherorteinschränkungen (Überbleibsel von Migrationstests) gibt.
-> * Die IBM Db2-HADR-Synchronisierung funktioniert. Überprüfen Sie mit dem Benutzer „db2\<sid>“. <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * Die IBM Db2-HADR-Synchronisierung funktioniert. Überprüfen Sie die Funktionsweise mit dem Benutzer „db2\<sid>“ <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Migrieren Sie den Knoten, auf dem die primäre Db2-Datenbank ausgeführt wird, indem Sie folgenden Befehl ausführen:

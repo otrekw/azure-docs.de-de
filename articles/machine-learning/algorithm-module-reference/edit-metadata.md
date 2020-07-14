@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 9853a3decc8d145fee58d1da526926e224ee2030
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/10/2020
+ms.openlocfilehash: 5078e625f86affb8d16ffab538d11b839d2d7bda
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064241"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965007"
 ---
 # <a name="edit-metadata-module"></a>Modul „Metadaten bearbeiten“
 
@@ -55,7 +55,8 @@ Typische Metadatenänderungen können Folgendes umfassen:
     + Der Spaltentyp und die Werte werden geändert, nachdem Sie den Vorgang „Metadaten bearbeiten“ ausgeführt haben. Sie können den ursprünglichen Datentyp jederzeit wiederherstellen, indem Sie „Metadaten bearbeiten“ verwenden, um den Spaltendatentyp zurückzusetzen.  
 
     > [!NOTE]
-    > Wenn Sie einen beliebigen Zahlentyp in den Datentyp **DateTime** ändern, lassen Sie das Feld **Format für „DateTime“** leer. Aktuell ist es nicht möglich, das Zieldatenformat festzulegen.  
+    > Das **DateTime-Format** folgt dem [integrierten DateTime-Format von Python](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior).  
+    > Wenn Sie einen beliebigen Zahlentyp in den Datentyp **DateTime** ändern, lassen Sie das Feld **Format für „DateTime“** leer. Aktuell ist es nicht möglich, das Zieldatenformat festzulegen.
 
 1. Wählen Sie die Option **Kategorie** aus, um festzulegen, dass die Werte in den ausgewählten Spalten als Kategorien behandelt werden sollen.
 

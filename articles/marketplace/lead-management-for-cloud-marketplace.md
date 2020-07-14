@@ -1,18 +1,18 @@
 ---
 title: Leadverwaltung für kommerziellen Marketplace | Azure Marketplace und AppSource
 description: Eine Übersicht über verschiedene Themen zur Veröffentlichung von Angeboten und technischen Artefakten für Azure Marketplace und AppSource
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 2abbef88ed7bac41b84eb06c8c0ec9c8a906b2f6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798590"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119445"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Leadverwaltung für kommerziellen Marketplace
 
@@ -91,7 +91,7 @@ Eine Dokumentation finden Sie unter [Generieren von Kundenleads](./partner-cente
 **Muss ich ein Leadziel konfigurieren, um ein Angebot im Marketplace zu veröffentlichen?**
 
 Ja, wenn Sie eine „Contact Me SaaS-App“ oder Beratungsdienste veröffentlichen.  
- 
+
 **Wie kann ich bestätigen, dass die Leadkonfiguration richtig ist?**
 
 Nachdem Sie Ihr Angebot und Ihr Leadziel eingerichtet haben, veröffentlichen Sie Ihr Angebot. Im Rahmen der Leadvalidierung sendet Marketplace einen Testlead an das in Ihrem Angebot konfigurierte Leadziel. 
@@ -100,6 +100,7 @@ Nachdem Sie Ihr Angebot und Ihr Leadziel eingerichtet haben, veröffentlichen Si
 
 Suchen Sie in Ihrem Leadziel nach „MSFT_TEST“. Beispiel für Testleaddaten: 
 
+```text
 company = MSFT_TEST_636573304831318844 
 
 country = US 
@@ -123,57 +124,43 @@ oid = 00Do0000000ZHog
 phone = 1234567890 
 
 title = MSFT_TEST_636573304831318844 
+```
 
 **Ich verfüge über ein Liveangebot, aber warum sehe ich keine Leads?**
 
-Für jeden Lead werden Daten in Feldern des ausgewählten Leadziels übergeben. Die Leads werden in folgendem Format bereitgestellt: **Quellaktion|Angebot** 
+Für jeden Lead werden Daten in Feldern des ausgewählten Leadziels übergeben. Die Leads werden in folgendem Format bereitgestellt: **Quellaktion|Angebot**
 
-  *Quellen:*
+- *Quellen:*
+  - AzureMarketplace
+  - AzurePortal
+  - TestDrive  
+  - SPZA (Akronym für AppSource)
 
-    "AzureMarketplace", 
-    "AzurePortal", 
-    "TestDrive",  
-    "SPZA" (acronym for AppSource) 
+- *Aktionen:*
+  - „INS“: Steht für „Installation“. Diese Aktion wird immer dann im Azure Marketplace oder in AppSource angezeigt, wenn ein Kunde auf die Schaltfläche zum Erwerb Ihres Produkts klickt.
+  - „PLT“: Steht für „Partner Led Trial“ (partnergesteuerte Testversion). Diese Aktion wird immer dann in AppSource angezeigt, wenn ein Kunde auf die Schaltfläche „Kontakt mit mir aufnehmen“ klickt.
+  - „DNC“: Steht für „Do Not Contact“ (Nicht kontaktieren). Diese Aktion wird immer dann in AppSource angezeigt, wenn ein Partner, der auf Ihrer App-Seite querverwiesen wurde, um eine Kontaktaufnahme gebeten wird. Wir übermitteln die Vorwarnung, dass dieser Kunde zu Ihrer App querverwiesen wurde, jedoch nicht kontaktiert werden muss.
+  - „Erstellen“: Diese Aktion ist nur im Azure-Portal vorhanden und wird immer dann angezeigt, wenn ein Kunde mit seinem Konto Ihr Angebot erwirbt.
+  - „StartTestDrive“: Diese Aktion gilt nur für Testversionen (Test Drives) und wird immer dann angezeigt, wenn ein Kunde seine Testversion startet.
 
-  *Aktionen:*
+- *Angebote:*
+  - „checkpoint.check-point-r77-10sg-byol“,
+  - „bitnami.openedxcypress“,
+  - „docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a“
 
-    "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
-    "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
+*Hier sind einige Beispieldaten der Kundeninformationen*
 
-    "DNC" - Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
-
-    "Create" - This is inside Azure portal only and is whenever a customer purchases your offer to their account. 
-
-    "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
-
-
-  *Angebote:*
-
-    "checkpoint.check-point-r77-10sg-byol", 
-    "bitnami.openedxcypress", 
-    "docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a" 
-
- 
-
-  *Hier sind einige Beispieldaten der Kundeninformationen*
-
-    { 
-
-    "FirstName":"John", 
-
-    "LastName":"Smith", 
-
-    "Email":"jsmith@microsoft.com", 
-
-    "Phone":"1234567890", 
-
-    "Country":"US", 
-
-    "Company":"Microsoft", 
-
-    "Title":"CTO" 
-
-    } 
+```json
+{ 
+"FirstName":"John",
+"LastName":"Smith",
+"Email":"jsmith@microsoft.com",
+"Phone":"1234567890",
+"Country":"US",
+"Company":"Microsoft",
+"Title":"CTO"
+}
+```
 
 Weitere Informationen finden Sie unter [Leadinformationen](./partner-center-portal/commercial-marketplace-get-customer-leads.md). 
 

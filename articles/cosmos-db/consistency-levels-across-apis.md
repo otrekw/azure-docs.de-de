@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 2851968b102bdcbae95a81352439f39f5837020b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2398e95d9a119fe24c97f3887d16aa5b86c6ac76
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191786"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119306"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konsistenzebenen und Azure Cosmos DB-APIs
 
@@ -32,7 +32,7 @@ Im Gegensatz zu Azure Cosmos DB bietet Apache Cassandra nativ keine genau defini
 
 Die folgende Tabelle veranschaulicht, wie die nativen Cassandra-Konsistenzebenen den Konsistenzebenen von Azure Cosmos DB zugeordnet werden, wenn die Cassandra-API verwendet wird:  
 
-[![Zuordnung zum Cassandra-Konsistenzmodell](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
+:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png" alt-text="Zuordnung zum Cassandra-Konsistenzmodell" lightbox="./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png" :::
 
 ## <a name="mapping-between-mongodb-and-azure-cosmos-db-consistency-levels"></a><a id="mongo-mapping"></a>Zuordnung zwischen Konsistenzebenen von MongoDB und Azure Cosmos DB
 
@@ -50,7 +50,7 @@ Bei Verwenden der Azure Cosmos DB-API für MongoDB gilt Folgendes:
 
 Die folgende Tabelle veranschaulicht, wie die nativen Schreib- und Lesebestätigungen von MongoDB den Konsistenzebenen von Azure Cosmos DB zugeordnet werden, wenn die Azure Cosmos DB-API für MongoDB verwendet wird:
 
-[![Zuordnung zum MongoDB-Konsistenzmodell](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
+:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="Zuordnung zum MongoDB-Konsistenzmodell" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

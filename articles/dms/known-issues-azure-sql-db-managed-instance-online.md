@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 65bbc9f66ceb732a8f773f0b49cd46f99750a7d5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 871ea665d23a5fba644448ddb6c596179d47bb3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196305"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85106396"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Bekannte Probleme/Einschränkungen bei Onlinemigrationsvorgängen zu verwalteten Azure SQL-Instanzen
 
@@ -50,7 +50,7 @@ Im Folgenden werden bekannte Probleme und Einschränkungen in Bezug auf Onlinemi
 
 ## <a name="sql-server-features"></a>SQL Server-Funktionen
 
-- **FileStream/FileTables**
+- **Filestream/Dateitabellen**
 
     Verwaltete SQL-Instanzen unterstützen derzeit weder FileStream noch FileTables. Bei Workloads, für die diese Features erforderlich sind, empfiehlt es sich, SQL-Server, die auf Azure-VMs ausgeführt werden, als Azure-Ziel auszuwählen.
 
@@ -62,6 +62,6 @@ Im Folgenden werden bekannte Probleme und Einschränkungen in Bezug auf Onlinemi
 
 - **Bereitstellungen**
 
-    Verwaltete SQL-Instanzen sind ein PaaS-Dienst mit automatischen Patches und Versionsupdates. Während der Migration Ihrer verwalteten SQL-Instanz werden nicht kritische Updates bis zu 36 Stunden zurückgehalten. Danach (und bei kritischen Updates) wird der Prozess bei einer Unterbrechung der Migration auf den vollständigen Wiederherstellungszustand zurückgesetzt.
+    Verwaltete SQL-Instanzen sind ein PaaS-Dienst mit automatischen Patches und Versionsupdates. Während der Migration von SQL Managed Instance werden nicht kritische Updates bis zu 36 Stunden zurückgehalten. Danach (und bei kritischen Updates) wird der Prozess bei einer Unterbrechung der Migration auf den vollständigen Wiederherstellungszustand zurückgesetzt.
 
     Die Migrationsübernahme kann erst nach der Wiederherstellung der vollständigen Sicherung aufgerufen werden, wobei dann auch alle Protokollsicherungen erfasst werden. Wenden Sie sich an den [Azure DMS-Feedbackalias](mailto:dmsfeedback@microsoft.com), wenn Migrationsübernahmen aus der Produktion betroffen sind.

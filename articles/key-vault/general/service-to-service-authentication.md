@@ -3,21 +3,23 @@ title: Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
 description: Verwenden Sie Bibliothek „Microsoft.Azure.Services.AppAuthentication“ zur Authentifizierung beim Azure Key Vault mithilfe von .NET.
 keywords: Lokale Anmeldeinformationen für die Authentifizierung bei Azure Key Vault
 author: msmbaldwin
-manager: rkarlin
 services: key-vault
 ms.author: mbaldwin
-ms.date: 08/28/2019
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 84cf12aa91de72ae54e63f2cfe7a61586b6bf457
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 7ad3af46be26816231a15156d13fbec3275a5559
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857085"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855083"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
+
+> [!NOTE]
+> Die in diesem Artikel dokumentierten Authentifizierungsmethoden gelten nicht mehr als bewährte Methoden. Wir empfehlen Ihnen, die aktualisierten Authentifizierungsmethoden in [Authentifizieren bei Azure Key Vault](authentication.md) einzuführen.
 
 Zum Authentifizieren in Azure Key Vault benötigen Sie die Anmeldeinformationen eines Azure Active Directory (Azure AD), und zwar entweder einen gemeinsamen geheimen Schlüssel oder ein Zertifikat.
 
@@ -130,9 +132,9 @@ Dieses Vorgehen betrifft nur die lokale Entwicklung. Wenn Ihre Lösung in Azure 
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>Ausführen der Anwendung mithilfe einer verwalteten Identität oder benutzerseitig zugewiesenen Identität
 
-Wenn Sie den Code auf einer Azure App Service-Instanz oder einem virtuellen Azure-Computer ausführen und eine verwaltete Identität aktiviert ist, verwendet die Bibliothek automatisch die verwaltete Identität. Es sind keine Codeänderungen erforderlich, aber die verwaltete Identität muss über *GET*-Berechtigungen für den Schlüsseltresor verfügen. Über die *Zugriffsrichtlinien* des Schlüsseltresors können Sie der verwalteten Identität *GET*-Berechtigungen erteilen.
+Wenn Sie den Code auf einer Azure App Service-Instanz oder einem virtuellen Azure-Computer ausführen und eine verwaltete Identität aktiviert ist, verwendet die Bibliothek automatisch die verwaltete Identität. Es sind keine Codeänderungen erforderlich, die verwaltete Identität muss jedoch über *GET*-Berechtigungen für den Schlüsseltresor verfügen. Über die *Zugriffsrichtlinien* des Schlüsseltresors können Sie der verwalteten Identität *GET*-Berechtigungen erteilen.
 
-Alternativ können Sie sich auch mit einer benutzerseitig zugewiesenen Identität authentifizieren. Weitere Informationen zu benutzerseitig zugewiesenen Identitäten finden Sie unter [Informationen zu verwalteten Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work). Um sich mit einer vom Benutzer zugewiesenen Identität zu authentifizieren, müssen Sie die Client-ID der vom Benutzer zugewiesenen Identität in der Verbindungszeichenfolge angeben. Die Verbindungszeichenfolge ist in [Unterstützung der Verbindungszeichenfolge](#connection-string-support) angegeben.
+Alternativ können Sie sich auch mit einer benutzerseitig zugewiesenen Identität authentifizieren. Weitere Informationen zu benutzerseitig zugewiesenen Identitäten finden Sie unter [Informationen zu verwalteten Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Um sich mit einer vom Benutzer zugewiesenen Identität zu authentifizieren, müssen Sie die Client-ID der vom Benutzer zugewiesenen Identität in der Verbindungszeichenfolge angeben. Die Verbindungszeichenfolge ist in [Unterstützung der Verbindungszeichenfolge](#connection-string-support) angegeben.
 
 ## <a name="running-the-application-using-a-service-principal"></a>Ausführen der Anwendung mithilfe eines Dienstprinzipals
 
@@ -236,7 +238,7 @@ Die folgenden Optionen werden unterstützt:
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Lokale Entwicklung | `AzureServiceTokenProvider` verwendet Visual Studio, um das Token abzurufen. |
 | `RunAs=CurrentUser` | Lokale Entwicklung | `AzureServiceTokenProvider` verwendet die integrierte Azure AD-Authentifizierung zum Abrufen des Tokens. |
 | `RunAs=App` | [Verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider` verwendet eine verwaltete Identität, um das Token abzurufen. |
-| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Benutzerseitig zugewiesene Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | `AzureServiceTokenProvider` verwendet eine vom Benutzer zugewiesene Identität, um das Token abzurufen. |
+| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Benutzerseitig zugewiesene Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) | `AzureServiceTokenProvider` verwendet eine vom Benutzer zugewiesene Identität, um das Token abzurufen. |
 | `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Benutzerdefinierte Dienstauthentifizierung | `KeyVaultCertificateSecretIdentifier` ist die geheime ID des Zertifikats. |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| Dienstprinzipal | `AzureServiceTokenProvider` verwendet ein Zertifikat zum Abrufen des Tokens von Azure AD. |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Dienstprinzipal | `AzureServiceTokenProvider` verwendet ein Zertifikat zum Abrufen des Tokens von Azure AD.|

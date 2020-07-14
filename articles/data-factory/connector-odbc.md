@@ -1,6 +1,6 @@
 ---
-title: Kopieren von Daten aus ODBC-Quellen mithilfe von Azure Data Factory
-description: Erfahren Sie, wie Daten aus OData-Quellen mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
+title: Kopieren von Daten aus ODBC-Datenspeichern bzw. in ODBC-Datenspeicher mithilfe von Azure Data Factory
+description: Hier erfahren Sie, wie Daten mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline aus und in ODBC-Datenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 71b05d8607c174dbe9298a1c02f4927ed2218374
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: c92428666f0766f78475be16416027cdc6e71f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891414"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506530"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopieren von Daten aus ODBC-Datenspeichern bzw. in ODBC-Datenspeicher mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]

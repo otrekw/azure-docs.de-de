@@ -2,7 +2,7 @@
 title: Aktivieren der automatischen Optimierung
 description: Sie können über das Azure-Portal ganz einfach die automatische Optimierung für Ihre Datenbanken aktivieren.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 02a6bba2dd4162a1cd9f05249174c2174a85b931
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6ffc81f7fc5cf36ff4e9bada8f72cfef013afcbc
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84029171"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982785"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Aktivieren der automatischen Optimierung im Azure-Portal zum Überwachen von Abfragen und Verbessern der Workloadleistung
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,6 @@ ms.locfileid: "84029171"
 Azure SQL-Datenbank verwaltet Datendienste automatisch, die kontinuierlich Ihre Abfragen überwachen, und teilt Ihnen mit, wie Sie die Leistung Ihrer Workload verbessern können. Sie können Empfehlungen prüfen und manuell anwenden oder Azure SQL-Datenbank die Maßnahmen automatisch anwenden lassen. Letzteres wird als **automatischer Optimierungsmodus** bezeichnet.
 
 Die automatische Optimierung kann auf Server- oder auf Datenbankebene über eine der folgenden Optionen aktiviert werden:
-
 
 - Das [Azure-Portal](automatic-tuning-enable.md#azure-portal)
 - [REST-API](automatic-tuning-enable.md#rest-api)-Aufrufe
@@ -42,7 +41,7 @@ Die automatische Optimierung kann auf Server- oder auf Datenbankebene über eine
 Auf Serverebene kann auf Wunsch die Konfiguration der automatischen Optimierung von „Azure-Standardwerte“ geerbt werden. In den Azure-Standardwerten ist FORCE_LAST_GOOD_PLAN aktiviert, CREATE_INDEX und DROP_INDEX sind deaktiviert.
 
 > [!IMPORTANT]
-> Ab März 2020 lauten die Standardwerte für die automatische Optimierung in Azure folgendermaßen:
+> Ab März 2020 lauten die neuen Standardwerte für die automatische Optimierung in Azure wie folgt:
 >
 > - FORCE_LAST_GOOD_PLAN = aktiviert, CREATE_INDEX = deaktiviert und DROP_INDEX = deaktiviert.
 > - Vorhandene Server ohne konfigurierte automatische Optimierungseinstellungen werden automatisch so konfiguriert, dass sie die neuen Azure-Standardeinstellungen ERBEN. Dies gilt für alle Kunden, bei denen sich die automatische Optimierung von Servereinstellungen in einem nicht definierten Zustand befindet.

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: c2a3b40f5ac79d11e0a80ba31c3bbc10f4e82276
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 06/28/2020
+ms.openlocfilehash: d39dbc640dc89febc29c7b6c4942da88837c670a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299586"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506592"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Kopieren von Daten in und aus SQL Server mithilfe von Azure Data Factory
 
@@ -40,7 +40,7 @@ Sie können Daten aus einer SQL Server-Datenbank in jeden unterstützten Senkend
 
 Dieser SQL Server-Connector unterstützt insbesondere Folgendes:
 
-- Die SQL Server-Versionen 2016, 2014, 2012, 2008 R2, 2008 und 2005
+- SQL Server, Version 2005 und höher.
 - Kopieren von Daten unter Verwendung der SQL- oder Windows-Authentifizierung
 - Als Quelle das Abrufen von Daten mithilfe einer SQL-Abfrage oder gespeicherten Prozedur
 - Als Senke das automatische Erstellen einer Zieltabelle (sofern nicht vorhanden) basierend auf dem Quellschema. Außerdem das Anfügen von Daten an eine Tabelle oder das Aufrufen einer gespeicherten Prozedur mit benutzerdefinierter Logik während des Kopiervorgangs. 

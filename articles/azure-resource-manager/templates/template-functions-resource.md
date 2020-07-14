@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Ressourcen
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Werten zu Ressourcen verwendet werden können.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: a31aadb02ed3fff83ee6dc62a71aa32d0b716629
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.date: 06/18/2020
+ms.openlocfilehash: f79fa3420420a2ff440c3228f227cc71436b4a1c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259438"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099262"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Ressourcenfunktionen für ARM-Vorlagen
 
@@ -83,7 +83,7 @@ Im folgenden Beispiel wird die Ressourcen-ID für eine Ressourcengruppensperre z
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "lockName":{
@@ -101,8 +101,8 @@ Im folgenden Beispiel wird die Ressourcen-ID für eine Ressourcengruppensperre z
 }
 ```
 
-<a id="listkeys" />
-<a id="list" />
+<a id="listkeys"></a>
+<a id="list"></a>
 
 ## <a name="list"></a>list*
 
@@ -120,7 +120,9 @@ Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgän
 
 ### <a name="valid-uses"></a>Gültige Verwendungen
 
-Die Listenfunktionen können nur in den Eigenschaften einer Ressourcendefinition und im Abschnitt „outputs“ einer Vorlage oder Bereitstellung verwendet werden. Wenn sie mit [Eigenschafteniteration](copy-properties.md) verwendet werden, können Sie die Listenfunktionen für `input` verwenden, weil der Ausdruck der Ressourceneigenschaft zugewiesen wird. Sie können sie nicht mit `count` verwenden, weil die Anzahl bestimmt werden muss, bevor die Listenfunktion aufgelöst wird.
+Die list-Funktionen können in den Eigenschaften einer Ressourcendefinition verwendet werden. Verwenden Sie keine list-Funktionen, die vertrauliche Informationen im Ausgabeabschnitt einer Vorlage offenlegen. Ausgabewerte werden im Bereitstellungsverlauf gespeichert und könnten von einem böswilligen Benutzer abgerufen werden.
+
+Wenn sie mit [Eigenschafteniteration](copy-properties.md) verwendet werden, können Sie die Listenfunktionen für `input` verwenden, weil der Ausdruck der Ressourceneigenschaft zugewiesen wird. Sie können sie nicht mit `count` verwenden, weil die Anzahl bestimmt werden muss, bevor die Listenfunktion aufgelöst wird.
 
 ### <a name="implementations"></a>Implementierungen
 
@@ -167,8 +169,8 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
-| Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
+| Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
+| Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/version2020-06-01/topics/listsharedaccesskeys) |
 | Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub) |
 | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub) |
 | Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub) |
@@ -284,71 +286,31 @@ Bei Verwendung einer **list**-Funktion mit einer Ressource mit bedingter Bereits
 
 ### <a name="list-example"></a>list-Beispiel
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) zeigt, wie die Primär- und Sekundärschlüssel von einem Speicherkonto im Abschnitt „outputs“ zurückgegeben werden können. Es wird auch ein SAS-Token für das Speicherkonto zurückgegeben.
-
-Um das SAS-Token abzurufen, übergeben Sie ein Objekt für die Ablaufzeit. Die Ablaufzeit muss in der Zukunft liegen. Dieses Beispiel soll Ihnen zeigen, wie Sie die Listenfunktionen verwenden können. In der Regel würden Sie das SAS-Token eher in einem Ressourcenwert verwenden, statt es als Ausgabewert zurückzugeben. Ausgabewerte werden im Bereitstellungsverlauf gespeichert und sind nicht sicher.
+Im folgenden Beispiel wird listKeys beim Festlegen eines Werts für [Bereitstellungsskripts](deployment-script-template.md) verwendet.
 
 ```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storagename": {
-            "type": "string"
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "southcentralus"
-        },
-        "accountSasProperties": {
-            "type": "object",
-            "defaultValue": {
-                "signedServices": "b",
-                "signedPermission": "r",
-                "signedExpiry": "2018-08-20T11:00:00Z",
-                "signedResourceTypes": "s"
-            }
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2018-02-01",
-            "name": "[parameters('storagename')]",
-            "location": "[parameters('location')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "StorageV2",
-            "properties": {
-                "supportsHttpsTrafficOnly": false,
-                "accessTier": "Hot",
-                "encryption": {
-                    "services": {
-                        "blob": {
-                            "enabled": true
-                        },
-                        "file": {
-                            "enabled": true
-                        }
-                    },
-                    "keySource": "Microsoft.Storage"
-                }
-            },
-            "dependsOn": []
-        }
-    ],
-    "outputs": {
-        "keys": {
-            "type": "object",
-            "value": "[listKeys(parameters('storagename'), '2018-02-01')]"
-        },
-        "accountSAS": {
-            "type": "object",
-            "value": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties'))]"
+"storageAccountSettings": {
+    "storageAccountName": "[variables('storageAccountName')]",
+    "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+}
+```
+
+Das nächste Beispiel zeigt eine list-Funktion, die einen Parameter verwendet. In diesem Fall handelt es sich um die Funktion **listAccountSas**. Übergeben Sie ein Objekt für die Ablaufzeit. Die Ablaufzeit muss in der Zukunft liegen.
+
+```json
+"parameters": {
+    "accountSasProperties": {
+        "type": "object",
+        "defaultValue": {
+            "signedServices": "b",
+            "signedPermission": "r",
+            "signedExpiry": "2020-08-20T11:00:00Z",
+            "signedResourceTypes": "s"
         }
     }
-}
+},
+...
+"sasToken": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties')).accountSasToken]"
 ```
 
 Ein listKeyValue-Beispiel finden Sie unter [Schnellstart: Automatisierte VM-Bereitstellung mit App Configuration und Resource Manager-Vorlage](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values).
@@ -386,7 +348,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "providerNamespace": {
@@ -559,7 +521,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "storageAccountName": {
@@ -653,7 +615,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageResourceGroup": {
@@ -725,7 +687,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -827,7 +789,7 @@ Sie müssen diese Funktion oft nutzen, wenn Sie ein Speicherkonto oder einen vir
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "virtualNetworkName": {
@@ -873,7 +835,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -935,7 +897,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -982,7 +944,7 @@ Mit der folgenden Vorlage wird eine integrierte Rolle zugewiesen. Sie können di
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "principalId": {

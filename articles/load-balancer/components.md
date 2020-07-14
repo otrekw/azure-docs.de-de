@@ -11,16 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: b696cdf2d54c42d3967041c5d10b1bd9bb5a3065
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: a055216634775254867421854aa0b456fa90c709
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84448681"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85551083"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer-Komponenten
 
-Azure Load Balancer besteht aus ein paar Komponenten. Diese können in Ihrem Abonnement über das Azure-Portal, die Azure-Befehlszeilenschnittstelle, Azure PowerShell oder Vorlagen konfiguriert werden.
+Azure Load Balancer umfasst ein paar Hauptkomponenten. Diese Komponenten können in Ihrem Abonnement auf folgende Weise konfiguriert werden:
+
+* Azure-Portal
+* Azure CLI
+* Azure PowerShell
+* Resource Manager-Vorlagen
 
 ## <a name="frontend-ip-configuration"></a>Front-End-IP-Konfiguration<a name = "frontend-ip-configurations"></a>
 
@@ -51,7 +56,7 @@ Halten Sie bei der Gestaltung Ihres Back-End-Pools die Anzahl der einzelnen Back
 
 ## <a name="health-probes"></a>Integritätstests
 
-Mithilfe eines Integritätstest wird der Integritätsstatus der Instanzen im Back-End-Pool ermittelt. Wenn Sie einen Load Balancer erstellen, müssen Sie einen Integritätstest konfigurieren, mit dem Ihr Load Balancer ermitteln kann, ob eine Instanz fehlerfrei ist, um dann Datenverkehr an diese weiterzuleiten.
+Mithilfe eines Integritätstest wird der Integritätsstatus der Instanzen im Back-End-Pool ermittelt. Konfigurieren Sie während der Erstellung des Lastenausgleichs einen Integritätstest, den der Lastenausgleich verwenden soll.  Dieser Integritätstest bestimmt, ob eine Instanz fehlerfrei ist und Datenverkehr empfangen kann.
 
 Sie können den gewünschten Fehlerschwellenwert für Ihre Integritätstests definieren. Wenn ein Test nicht reagiert, beendet der Load Balancer das Senden neuer Verbindungen an die fehlerhaften Instanzen. Ein Testfehler wirkt sich nicht auf vorhandene Verbindungen aus. Die Verbindung bleibt so lange bestehen, bis die Anwendung:
 
@@ -67,32 +72,55 @@ Vom Load Balancer im Tarif „Basic“ werden keine HTTPS-Tests unterstützt. Vo
 
 Mithilfe einer Lastenausgleichsregel wird definiert, wie eingehender Datenverkehr auf **alle** Instanzen innerhalb des Back-End-Pools verteilt werden soll. Eine Lastenausgleichsregel ordnet mehreren Back-End-IP-Adressen und Ports eine bestimmte Front-End-IP-Konfiguration und einen Port zu.
 
-Wenn Sie z. B. Datenverkehr an Port 80 (oder einen anderen Port) Ihrer Front-End-IP-Adresse an Port 80 aller Ihrer Back-End-Instanzen umleiten möchten, verwenden Sie eine Lastenausgleichsregel, um dies zu erreichen.
+Verwenden Sie z. B. eine Lastenausgleichsregel für Port 80, um Datenverkehr von Ihrer Front-End-IP-Adresse an Port 80 ihrer Back-End-Instanzen umzuleiten.
 
-### <a name="high-availability-ports"></a>Hochverfügbarkeitsports
+<p align="center">
+  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="Lastenausgleichsregeln">
+</p>
 
-Eine mit „protocol - all“ und „port - 0“ konfigurierte Load Balancer-Regel. Dies ermöglicht das Bereitstellen einer einzelnen Regel für den Lastenausgleich aller TCP- und UDP-Datenflüsse, die an allen Ports einer internen Load Balancer Standard-Instanz eingehen. Die Entscheidung über den Lastenausgleich erfolgt pro Datenfluss. Diese Lösung basiert auf der folgenden Verbindung mit fünf Tupeln: 
+*Abbildung: Lastenausgleichsregeln*
+
+## <a name="high-availability-ports"></a>Hochverfügbarkeitsports
+
+Eine mit **„protocol - all“ und „port - 0“** konfigurierte Lastenausgleichsregel. 
+
+Diese Regel ermöglicht es, dass eine einzige Regel den Lastenausgleich aller TCP- und UDP-Datenflüsse vornimmt, die an allen Ports einer internen Load Balancer Standard-Instanz eingehen. 
+
+Die Entscheidung über den Lastenausgleich erfolgt pro Datenfluss. Diese Lösung basiert auf der folgenden Verbindung mit fünf Tupeln: 
+
 1. Quell-IP-Adresse
 2. Quellport
 3. Ziel-IP-Adresse
 4. Zielport
 5. Protokoll
 
-Die Lastenausgleichsregeln für Hochverfügbarkeitsports unterstützen Sie bei wichtigen Szenarien, z. B. Hochverfügbarkeit und Skalierung für virtuelle Netzwerkgeräte in virtuellen Netzwerken. Das Feature kann auch hilfreich sein, wenn für eine große Anzahl von Ports ein Lastenausgleich vorgenommen werden muss.
+Die Lastenausgleichsregeln für Hochverfügbarkeitsports unterstützen Sie bei wichtigen Szenarien, z. B. Hochverfügbarkeit und Skalierung für virtuelle Netzwerkgeräte in virtuellen Netzwerken. Das Feature kann hilfreich sein, wenn für eine große Anzahl von Ports ein Lastenausgleich vorgenommen werden muss.
 
-Erfahren Sie mehr über [Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md).
+<p align="center">
+  <img src="./media/load-balancer-components/harules.svg" width="512" title="Hochverfügbarkeitsport-Regeln">
+</p>
+
+*Abbildung: Hochverfügbarkeitsport-Regeln*
+
+Weitere Informationen zu [Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md).
 
 ## <a name="inbound-nat-rules"></a>Eingehende NAT-Regeln
 
-Eine NAT-Regel für eingehenden Datenverkehr leitet eingehenden Datenverkehr, der an eine ausgewählte Kombination aus Front-End-IP-Adresse und -Port gesendet wird, an einen **bestimmten** virtuellen Computer oder eine bestimmte Instanz im Back-End-Pool weiter. Der Portweiterleitung liegt die gleiche hashbasierte Verteilung zugrunde wie dem Lastenausgleich.
+Eine NAT-Regel für eingehenden Datenverkehr leitet eingehenden Datenverkehr, der an eine Kombination aus Front-End-IP-Adresse und Port gesendet wird weiter. Der Datenverkehr wird an einen **bestimmten** virtuellen Computer oder eine Instanz im Back-End-Pool gesendet. Der Portweiterleitung liegt die gleiche hashbasierte Verteilung zugrunde wie dem Lastenausgleich.
 
 Beispielsweise, wenn Sie RDP-Sitzungen (Remote Desktop Protocol, Remotedesktopprotokoll) oder SSH-Sitzungen (Secure Shell) zum Trennen von VM-Instanzen innerhalb eines Back-End-Pools verwenden möchten. Ports können mehrere interne Endpunkte unter derselben Front-End-IP-Adresse zugeordnet werden. Sie können die Front-End-IP-Adressen verwenden, um für Ihre VMs die Remoteverwaltung ohne zusätzliche Jumpbox durchzuführen.
 
-NAT-Regeln für eingehenden Datenverkehr im Kontext von Virtual Machine Scale Sets (VMSS) sind NAT-Pools für eingehenden Datenverkehr. Erfahren Sie mehr zu [Load Balancer-Komponenten und VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer).
+<p align="center">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="Eingehende NAT-Regeln">
+</p>
+
+*Abbildung: NAT-Regeln für eingehenden Datenverkehr*
+
+NAT-Regeln für eingehenden Datenverkehr im Kontext von Virtual Machine Scale Sets sind NAT-Pools für eingehenden Datenverkehr. Weitere Informationen zu [Load Balancer-Komponenten und VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer).
 
 ## <a name="outbound-rules"></a>Ausgangsregeln
 
-Eine Ausgangsregel konfiguriert die Netzwerkadressenübersetzung (Network Address Translation, NAT) für ausgehenden Datenverkehr für alle virtuellen Computer oder Instanzen, die vom Back-End-Pool identifiziert wurden. Dadurch können Instanzen im Back-End (ausgehend) mit dem Internet oder anderen Endpunkten kommunizieren.
+Eine Ausgangsregel konfiguriert die Netzwerkadressenübersetzung (Network Address Translation, NAT) für ausgehenden Datenverkehr für alle virtuellen Computer oder Instanzen, die vom Back-End-Pool identifiziert wurden. Durch diese Regel können Instanzen im Back-End (ausgehend) mit dem Internet oder anderen Endpunkten kommunizieren.
 
 Erfahren Sie mehr zu [ausgehenden Verbindungen und Regeln](load-balancer-outbound-connections.md).
 

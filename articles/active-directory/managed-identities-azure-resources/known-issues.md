@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: d29689b088759b73465b24d06d4341571b599782
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 6f18c9fe43b0b714e5709b014c051520b3722138
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714048"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855137"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -32,6 +32,24 @@ ms.locfileid: "83714048"
 
 > [!NOTE]
 > „Verwaltete Identitäten für Azure-Ressourcen“ ist der neue Name für den Dienst, der früher als „Verwaltete Dienstidentität“ (Managed Service Identity, MSI) bezeichnet wurde.
+
+
+### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>Wie können Sie nach Ressourcen mit einer verwalteten Identität suchen?
+
+Die Liste der Ressourcen, die über eine vom System zugewiesene verwaltete Identität verfügen, können Sie mit dem folgenden Azure CLI-Befehl abrufen: 
+
+`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
+
+
+
+
+### <a name="do-managed-identities-have-a-backing-app-object"></a>Verfügen verwaltete Identitäten über ein unterstützendes App-Objekt?
+
+Nein. Verwaltete Identitäten und Azure AD-App-Registrierungen sind im Verzeichnis nicht identisch. 
+
+App-Registrierungen setzen sich aus zwei Komponenten zusammen: Ein Anwendungsobjekt und ein Dienstprinzipalobjekt. Verwaltete Identitäten für Azure-Ressourcen verfügen nur über eine dieser Komponenten: Ein Dienstprinzipalobjekt. 
+
+Verwaltete Identitäten haben kein Anwendungsobjekt im Verzeichnis, womit im Allgemeinen App-Berechtigungen für MS Graph erteilt werden. Stattdessen müssen dem Dienstprinzipal MS Graph-Berechtigungen für verwaltete Identitäten direkt erteilt werden.  
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Können verwaltete Identitäten für Azure-Ressourcen mit Azure Cloud Services verwendet werden?
 
@@ -114,6 +132,8 @@ Problemumgehung für verwaltete Identitäten in einem Abonnement, die in ein and
 
  - Für vom System zugewiesene verwaltete Identitäten: Deaktivieren Sie die Identitäten, und aktivieren Sie sie erneut. 
  - Für vom Benutzer zugewiesene verwaltete Identitäten: Löschen Sie die Identitäten, erstellen Sie sie neu, und fügen Sie sie erneut an die erforderlichen Ressourcen an (z. B. VMs).
+
+Weitere Informationen finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis (Vorschau)](../../role-based-access-control/transfer-subscription.md).
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Verschieben einer benutzerseitig zugewiesenen verwalteten Identität in eine andere Ressourcengruppe/ein anderes Abonnement
 

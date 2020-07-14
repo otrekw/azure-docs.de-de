@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0cbe91de889b787d6f417afbe74720b40c3026e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657142"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833382"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Vorbereiten einer Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud
 
@@ -39,6 +39,7 @@ Spring Boot-Version | Spring Cloud-Version
 ---|---
 2.1 | Greenwich.RELEASE
 2.2 | Hoxton.RELEASE
+2.3 | Hoxton.SR5
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Abhängigkeiten für die Spring Boot-Version 2.1
 
@@ -91,7 +92,31 @@ Für Spring Boot-Version 2.2 fügen Sie die folgenden Abhängigkeiten zur POM-Da
         </dependencies>
     </dependencyManagement>
 ```
+### <a name="dependencies-for-spring-boot-version-23"></a>Abhängigkeiten für die Spring Boot-Version 2.3
 
+Für Spring Boot-Version 2.3 fügen Sie der POM-Datei der Anwendung die folgenden Abhängigkeiten hinzu.
+
+```xml
+    <!-- Spring Boot dependencies -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.0.RELEASE</version>
+    </parent>
+
+    <!-- Spring Cloud dependencies -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR5</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+```
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud-Clientabhängigkeit
 
 Azure Spring Cloud hostet und verwaltet Spring Cloud-Komponenten. Die Komponenten beinhalten Spring Cloud-Dienstregistrierung und Spring Cloud-Konfigurationsserver. Schließen Sie die Azure Spring Cloud-Clientbibliothek in Ihre Abhängigkeiten ein, um die Kommunikation mit der Azure Spring Cloud-Dienstinstanz zu ermöglichen.
@@ -102,6 +127,7 @@ Spring Boot-Version | Spring Cloud-Version | Azure Spring Cloud-Version
 ---|---|---
 2.1 | Greenwich.RELEASE | 2.1
 2.2 | Hoxton.RELEASE | 2.2
+2.3 | Hoxton.SR5 | 2.3
 
 Schließen Sie eine der folgenden Abhängigkeiten in die Datei „pom.xml“ ein. Wählen Sie die Abhängigkeit aus, deren Azure Spring Cloud-Version Ihrer eigenen Version entspricht.
 
@@ -113,7 +139,7 @@ Für Spring Boot-Version 2.1 fügen Sie die folgende Abhängigkeit zur POM-Datei
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.1</version>
+        <version>2.1.2</version>
 </dependency>
 ```
 
@@ -125,7 +151,17 @@ Für Spring Boot-Version 2.2 fügen Sie die folgende Abhängigkeit zur POM-Datei
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.2.0</version>
+        <version>2.2.1</version>
+</dependency>
+```
+
+Für Spring Boot-Version 2.3 fügen Sie der POM-Datei der Anwendung die folgende Abhängigkeit hinzu.
+
+```xml
+<dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+        <version>2.3.0</version>
 </dependency>
 ```
 
@@ -198,6 +234,9 @@ Schließen Sie die Abhängigkeit `spring-boot-starter-actuator` in den Abhängig
 ```
 
  Metriken werden in regelmäßigen Abständen von den JMX-Endpunkten gepullt. Die Metriken können über das Azure-Portal visualisiert werden.
+
+ > [!WARNING]
+ > Geben Sie `spring.jmx.enabled=true` in der Konfigurationseigenschaft an. Andernfalls können Metriken nicht im Azure-Portal visualisiert werden.
 
 ### <a name="distributed-tracing"></a>Verteilte Ablaufverfolgung
 

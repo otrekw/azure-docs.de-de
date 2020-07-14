@@ -5,17 +5,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/11/2020
-ms.openlocfilehash: 6f65ba96f768a4b88aa13c073cc66920b8c5e049
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/25/2020
+ms.openlocfilehash: f058ce1ae5b7328c6864684994a74f2fd118ca6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480486"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506989"
 ---
 # <a name="what-is-azure-monitor-for-vms"></a>Was ist Azure Monitor for VMs?
 
-Azure Monitor für VMs überwacht Ihre virtuellen Azure-Computer (VM) und VM-Skalierungsgruppen bedarfsorientiert. Der Dienst analysiert die Leistung und Integrität Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen. Er beinhaltet Unterstützung für die Überwachung von Leistung und Anwendungsabhängigkeiten für virtuelle Computer, die lokal oder bei einem anderen Cloudanbieter gehostet werden. Die folgenden wichtigen Features bieten tief greifende Erkenntnisse:
+Azure Monitor für VMs überwacht Ihre virtuellen Computer, VM-Skalierungsgruppen und Azure Arc-Computer bedarfsorientiert. Der Dienst analysiert die Leistung und Integrität Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen. Er beinhaltet Unterstützung für die Überwachung von Leistung und Anwendungsabhängigkeiten für virtuelle Computer, die lokal oder bei einem anderen Cloudanbieter gehostet werden. Die folgenden wichtigen Features bieten tief greifende Erkenntnisse:
 
 - **Vordefinierte Diagramme zu Leistungstrends**: Zeigen Kernleistungsmetriken des Gast-VM-Betriebssystems an.
 

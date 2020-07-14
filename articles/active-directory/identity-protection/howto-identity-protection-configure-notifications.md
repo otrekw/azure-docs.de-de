@@ -4,19 +4,19 @@ description: Erfahren Sie, wie Benachrichtigungen Ihre Untersuchungsaktivitäten
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 05/05/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 200ede6b4c5565a8eab95b0398abaa1c056c612f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 9090ca5b8057179b0cbef1d0a87ae563303ed2c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853129"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85130431"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection Benachrichtigungen
 
@@ -31,7 +31,11 @@ Dieser Artikel gibt Ihnen eine Übersicht zu beiden Benachrichtigungs-E-Mails.
 
 Als Reaktion auf ein erkanntes gefährdetes Konto erstellt Azure Active Directory Identity Protection eine E-Mail-Warnung mit dem Betreff **Gefährdete Benutzer erkannt**. Die E-Mail enthält einen Link zum Bericht vom Typ **[Benutzer mit Risikokennzeichnung](../reports-monitoring/concept-user-at-risk.md)** . Als bewährte Methode sollten Sie die gefährdeten Benutzer sofort untersuchen.
 
-Durch Konfiguration dieser Warnung können Sie angeben, bei welcher Benutzerrisikostufe die Warnung generiert werden soll. Die E-Mail wird generiert, wenn die Risikostufe des Benutzers den angegebenen Wert erreicht. Allerdings erhalten Sie für diesen Benutzer keine neuen E-Mail-Warnungen des Typs „Gefährdete Benutzer erkannt“ mehr, nachdem der Benutzer diese Risikostufe erreicht hat. Wenn Sie beispielsweise die Richtlinie für Warnungen auf ein mittleres Benutzerrisiko festlegen und der Benutzer Johann die mittlere Risikostufe erreicht, erhalten Sie für Johann eine E-Mail des Typs „Gefährdete Benutzer erkannt“. Sie erhalten allerdings keine zweite Warnung des Typs „Gefährdeter Benutzer erkannt“, wenn Johann anschließend eine höhere Risikostufe erreicht oder zusätzliche Risikoerkennungen auftreten.
+Durch Konfiguration dieser Warnung können Sie angeben, bei welcher Benutzerrisikostufe die Warnung generiert werden soll. Die E-Mail wird generiert, wenn die angegebene Risikostufe des Benutzers erreicht wird. Wenn Sie beispielsweise die Richtlinie für Warnungen auf ein mittleres Benutzerrisiko festlegen und die Risikobewertung Ihres Benutzers Johann aufgrund eines Echtzeit-Anmelderisikos die mittlere Risikostufe erreicht, erhalten Sie eine E-Mail des Typs „Gefährdete Benutzer erkannt“. Wenn für den Benutzer anschließend erneut Risiken ermittelt werden, aufgrund derer die Risikostufe des Benutzers die festgelegte Risikostufe bzw. eine höhere Risikostufe erreicht, erhalten Sie weitere E-Mails dieses Typs, sobald die Risikobewertung des Benutzers neu berechnet wurde. Wenn für einen Benutzer z. B. am 1. Januar die mittlere Risikostufe erreicht wird und Sie in Ihren Einstellungen festgelegt haben, dass bei mittlerem Risiko eine Warnung ausgegeben werden soll, erhalten Sie eine E-Mail-Benachrichtigung. Wenn für denselben Benutzer am 5. Januar ein weiteres mittleres Risiko ermittelt wird und die Risikobewertung des Benutzers nach der Neuberechnung weiterhin ein mittleres Risiko anzeigt, erhalten Sie eine weitere E-Mail-Benachrichtigung. 
+
+Diese zusätzliche E-Mail-Benachrichtigung wird jedoch nur gesendet, wenn der Zeitpunkt der Risikoermittlung (aufgrund derer die Risikostufe des Benutzers geändert wurde) nach dem Zeitpunkt liegt, an dem die letzte E-Mail gesendet wurde. Beispiel: Ein Benutzer meldet sich am 1. Januar um 5:00 Uhr an, und es liegt kein Echtzeitrisiko vor (aufgrund dieser Anmeldung würde also keine E-Mail generiert). Zehn Minuten später, um 5:10 Uhr, meldet sich der Benutzer erneut an, dieses Mal jedoch mit einem hohen Echtzeitrisiko. Aufgrund dieser Anmeldung würde die Risikostufe des Benutzers in „Hoch“ geändert, und es würde eine E-Mail gesendet. Um 5:15 Uhr wird die Offlinerisikobewertung für die ursprüngliche Anmeldung um 5:00 Uhr durch die Offlinerisikoverarbeitung in ein hohes Risiko geändert. Da der Zeitpunkt der ersten Anmeldung vor dem Zeitpunkt der zweiten Anmeldung liegt, für die bereits eine E-Mail-Benachrichtigung gesendet wurde, wird keine zusätzliche E-Mail gesendet.
+
+Um eine übermäßig große Anzahl von E-Mails zu vermeiden, erhalten Sie innerhalb eines Zeitraums von fünf Sekunden nur eine E-Mail für erkannte gefährdete Benutzer. Wenn innerhalb dieses Zeitraums von fünf Sekunden für mehrere Benutzer die angegebene Risikostufe erreicht wird, wird diese Änderung der Risikostufe für alle Benutzer in einer E-Mail zusammengefasst.
 
 ![E-Mail für erkannte gefährdete Benutzer](./media/howto-identity-protection-configure-notifications/01.png)
 

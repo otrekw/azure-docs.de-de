@@ -3,16 +3,16 @@ title: Erstellen einer Azure-Premium-Dateifreigabe
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure-Premium-Dateifreigabe erstellen.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7680a28b165dc252159cf95311439508d3c867e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae40f94ca6c8c0b92c85a49e634aa02c81a98eff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509981"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>So erstellen Sie eine Azure-Premium-Dateifreigabe
 Premium-Dateifreigaben werden auf SSD-Speichermedien (Solid-State Disk) angeboten und eignen sich für E/A-intensive Workloads, z. B. Hosten von Datenbanken und High Performance Computing (HPC). Premium-Dateifreigaben werden in einem speziell dafür vorgesehenen Speicherkontotyp gehostet, der als FileStorage-Konto bezeichnet wird. Premium-Dateifreigaben sind für hochleistungsfähige Anwendungen auf Unternehmensniveau konzipiert, die eine konsistent niedrige Latenz, hohe IOPS-Leistung und hohe Durchsatzraten bieten.
@@ -46,6 +46,9 @@ Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourc
 1. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
 1. Wählen Sie einen Standort für Ihr Speicherkonto aus, oder verwenden Sie den Standardstandort.
 1. Wählen Sie für **Leistung** den Wert **Premium** aus.
+
+    Sie müssen **Premium** auswählen, damit **FileStorage** in der Dropdownliste **Kontoart** verfügbar ist.
+
 1. Wählen Sie **Kontoart** und dann **FileStorage** aus.
 1. Behalten Sie für **Replikation** den Standardwert **Lokal redundanter Speicher (LRS)** bei.
 

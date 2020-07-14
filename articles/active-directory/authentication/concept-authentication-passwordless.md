@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4de359f60b556390b8271b728580ef66ae53ffa
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 3a0295a73d325d8de7673b9a66c7047a80d82b09
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201719"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981854"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Optionen für die kennwortlose Authentifizierung für Azure Active Directory
 
 Die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ist eine großartige Möglichkeit zum Schutz Ihrer Organisation, aber für Benutzer ist es oft lästig, sich als zusätzliche Sicherheit auch noch ihre Kennwörter merken zu müssen. Kennwortlose Authentifizierungsmethoden sind bequemer, weil das Kennwort entfällt und durch etwas ersetzt wird, das Sie haben, plus etwas, das Sie sind oder das Sie wissen.
 
-|   | Etwas, das Sie haben | Etwas, das Sie wissen |
+| Authentifizierung  | Etwas, das Sie haben | Etwas, das Sie wissen |
 | --- | --- | --- |
 | Kennwortlos | Windows 10-Gerät, Smartphone oder Sicherheitsschlüssel | Biometrische Daten oder PIN |
 
@@ -110,13 +110,13 @@ Ein Sicherheitsschlüssel **MUSS** die folgenden Features und Erweiterungen aus 
 
 Die folgenden Anbieter bieten FIDO2-Sicherheitsschlüssel in verschiedenen Formfaktoren an, die bekanntermaßen mit der kennwortlosen Benutzererfahrung kompatibel sind. Wir empfehlen Ihnen, die Sicherheitseigenschaften dieser Schlüssel zu bewerten, indem sie sich an den Hersteller und die FIDO Alliance wenden.
 
-| Anbieter | Kontakt |
+| Anbieter | Contact |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
 | HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
-| eWBM | [https://www.ewbm.com/support](https://www.ewbm.com/support) |
+| TrustKey-Lösungen | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 | Gemalto (Thales Group) | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
 | OneSpan Inc. | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |

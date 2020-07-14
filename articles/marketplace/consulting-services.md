@@ -1,18 +1,16 @@
 ---
 title: Beratungsdienste im kommerziellen Microsoft-Marketplace
 description: In diesem Artikel werden die Eignungskriterien und Veröffentlichungsbedingungen für neue Beratungsdienstangebote in Microsoft AppSource und dem Azure Marketplace beschrieben.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.author: dsindona
-ms.openlocfilehash: da2588125b455deaf18110687d54adc04a7dd4c0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.date: 06/08/2020
+ms.openlocfilehash: 4a45239836779fc83aa2e3927c6e3ff752c87182
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799864"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103754"
 ---
 # <a name="consulting-service-offers"></a>Beratungsdienstangebote
 
@@ -22,20 +20,11 @@ Beratungsdienstangebote sind kundengebundene Angebote. Herausgeber können den A
 
 ## <a name="compare-consulting-services"></a>Vergleichen von Beratungsdiensten
 
-Die Storefronts des kommerziellen Marketplace, Microsoft AppSource und der Azure Marketplace, orientieren sich an Zielgruppen und Cloudprodukten, damit Kunden das finden, was sie benötigen. Jede Storefront verfügt über spezielle Veröffentlichungsoptionen, damit sich Ihre Investitionen in die Veröffentlichung noch besser amortisieren. Diese Optionen sind in der folgenden Tabelle zusammengefasst:
-
-|         |Azure Marketplace  |Microsoft AppSource |
-|---------|---------|---------|
-|Zielgruppe      |IT-Profis und Cloudentwickler|Geschäftsbenutzer und Branchenentscheidungsträger|
-|Lösungsrelevanz      |Für Azure oder auf Basis von Azure erstellte technische Apps|Geschäfts-Apps, die Dynamics 365, Power BI, Office 365 Azure nutzen oder erweitern (fertig gestellte Add-In- oder Add-On-Apps)|
-|Veröffentlichungsoptionen      |Kontakt mit mir aufnehmen, Testversion, Transact oder Dienste für Azure|Kontakt mit mir aufnehmen, Testversion oder Dienste für Dynamics 365 und Power BI|
-|Produktinterne Oberfläche      |Azure-Portal|Dynamics 365, Office 365, Office-Client-Apps| 
-|Andere      |Lokale Veröffentlichung über Azure Stack, Beratungsdienste für Azure, verwaltete Dienste für Azure|Beratungsdienste für Dynamics 365 und Power BI|
-||
+Die Storefronts des kommerziellen Marketplace, Microsoft AppSource und der Azure Marketplace, orientieren sich an Zielgruppen und Cloudprodukten, damit Kunden das finden, was sie benötigen. Jede Storefront verfügt über spezielle Veröffentlichungsoptionen, damit sich Ihre Investitionen in die Veröffentlichung noch besser amortisieren. Weitere Informationen zum Unterschied zwischen den beiden Storefronts finden Sie unter [Vergleich von Microsoft AppSource und Azure Marketplace](comparing-appsource-azure-marketplace.md).
 
 Die auf Dynamics 365, Power Apps und Power BI basierenden Beratungsdienstangebote sind für das Listing in AppSource geeignet. Weitere Informationen finden Sie in der herunterladbaren PDF-Datei mit den [Richtlinien zum Listing von Microsoft AppSource-Beratungsdiensten](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409).
 
-Beratungsdienstangebote und Angebote verwalteter Dienste, die auf Microsoft Azure basieren, sind für das Listing im Azure Marketplace geeignet. Weitere Informationen finden Sie unter [Veröffentlichen eines Azure-Beratungsdienstangebots](./partner-center-portal/create-consulting-service-offer.md) und [Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers).
+Beratungsdienstangebote und Angebote verwalteter Dienste, die auf Microsoft Azure basieren, sind für das Listing im Azure Marketplace geeignet. Weitere Informationen finden Sie unter [Veröffentlichen eines Azure-Beratungsdienstangebots](./partner-center-portal/create-consulting-service-offer.md) und [Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace](../lighthouse/how-to/publish-managed-services-offers.md).
 
 > [!Note]
 > Beratungsdienste im Azure Marketplace sollten sich auf Angebote für eine technische Zielgruppe konzentrieren und den Schwerpunkt auf technische Azure-Lösungen und -Dienste legen.
@@ -79,21 +68,20 @@ Zusätzliche Ressourcen und Support:
 
 Weitere Informationen zu Kompetenzen finden Sie auf der Seite zu [Kompetenzen im Microsoft Partner Network](https://partner.microsoft.com/membership/competencies).
 
-Systemintegratorpartner können Beratungsdienstangebote für die folgenden 21 Länder/Regionen übermitteln:
+Systemintegratorpartner können Beratungsdienstangebote für die folgenden 20 Länder/Regionen übermitteln:
 
-|   |   |   |   |
+| Länder  | (Fortsetzung...)   | (Fortsetzung...)  | (Fortsetzung...)  |
 |---------|----------|----------|----------|
 | Australien | Belgien | Canada | Dänemark |
 | Finnland  | Frankreich | Deutschland  | Indien   |
 | Italien    | Japan  |  Mexiko  |  Niederlande  |
 |  Neuseeland  |  Norwegen  |  Polen  | Südafrika |
-|  Spanien  | Schweden  | Schweiz  |  USA  |
-| United Kingdom  |
+|  Schweden  | Schweiz  |  USA  | United Kingdom  |
 ||
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Registrieren für Beratungsdienste im kommerziellen Marketplace
 
-[Registrieren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) Sie zunächst ihre Unternehmensinformationen in Azure Marketplace. Eine vollständige Prüfliste der Registrierungsanforderungen finden Sie unter [Ihr Weg zum Herausgeber im Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher). 
+[Registrieren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) Sie zunächst ihre Unternehmensinformationen in Azure Marketplace. Eine vollständige Prüfliste der Registrierungsanforderungen finden Sie unter [Ihr Weg zum Herausgeber im Marketplace](become-publisher.md). 
 
 ## <a name="prepare-your-publishing-artifacts"></a>Vorbereiten von Veröffentlichungsartefakten
 Vor der Registrierung können Sie mit der Sammlung und Vorbereitung der Inhalte beginnen, mit denen Sie im Rahmen Ihrer Auflistung den Wert Ihres Diensts und Ihrer Lösung gegenüber Ihrem Zielkunden darstellen können. 

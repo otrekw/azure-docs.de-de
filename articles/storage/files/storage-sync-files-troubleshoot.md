@@ -3,16 +3,16 @@ title: Problembehandlung bei der Azure-Dateisynchronisierung | Microsoft-Dokumen
 description: Beheben von häufigen Problemen bei der Azure-Dateisynchronisierung
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
-ms.date: 1/22/2019
+ms.topic: troubleshooting
+ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 39106f863352061cdaa583bde96f50d3f91a07e9
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ec7469210bcfae53407a157a325c749aee2c2b08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836514"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512057"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -315,6 +315,7 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Auf die mehrstufige Datei auf dem Server kann nicht zugegriffen werden. Dieses Problem tritt auf, wenn die mehrstufige Datei vor dem Löschen eines Serverendpunkts nicht zurückgerufen wurde. | Informationen zur Behebung dieses Problems finden Sie unter [Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Die Datei- oder Verzeichnisänderung kann noch nicht synchronisiert werden, da ein abhängiger Ordner noch nicht synchronisiert ist. Dieses Element wird synchronisiert, sobald die abhängigen Änderungen synchronisiert wurden. | Keine weiteren Maßnahmen erforderlich. Wenn der Fehler mehrere Tage auftritt, ermitteln Sie mithilfe des PowerShell-Skripts „FileSyncErrorsReport.ps1“, weshalb der abhängige Ordner noch nicht synchronisiert wurde. |
+| 0x80C8028A | -2134375798 | ECS_E_SYNC_CONSTRAINT_CONFLICT_ON_FAILED_DEPENDEE | Die Datei- oder Verzeichnisänderung kann noch nicht synchronisiert werden, da ein abhängiger Ordner noch nicht synchronisiert ist. Dieses Element wird synchronisiert, sobald die abhängigen Änderungen synchronisiert wurden. | Keine weiteren Maßnahmen erforderlich. Wenn der Fehler mehrere Tage auftritt, ermitteln Sie mithilfe des PowerShell-Skripts „FileSyncErrorsReport.ps1“, weshalb der abhängige Ordner noch nicht synchronisiert wurde. |
 | 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | Die Datei- oder Verzeichnisänderung kann noch nicht synchronisiert werden, da ein abhängiger Ordner noch nicht synchronisiert ist und ein Fehler bei der Synchronisierungssitzung auftrat. Dieses Element wird synchronisiert, sobald die abhängigen Änderungen synchronisiert wurden. | Keine weiteren Maßnahmen erforderlich. Wenn der Fehler weiterhin auftritt, untersuchen Sie den Fehler in der Synchronisierungssitzung. |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | Der Datei- oder Verzeichnisname ist ungültig. | Benennen Sie die jeweiligen Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters). |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | Der Datei- oder Verzeichnisname ist ungültig. | Benennen Sie die jeweiligen Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters). |
@@ -552,13 +553,13 @@ Falls die Azure-Dateifreigabe gelöscht wurde, müssen Sie eine neue Dateifreiga
 
 Dieser Fehler tritt auf, wenn das Azure-Abonnement ausgesetzt ist. Die Synchronisierung wird erneut aktiviert, wenn das Azure-Abonnement wiederhergestellt wurde. Weitere Informationen finden Sie unter [Warum ist mein Azure-Abonnement deaktiviert, und wie reaktiviere ich es?](../../cost-management-billing/manage/subscription-disabled.md).
 
-<a id="-2134364052"></a>**Für das Speicherkonto wurden eine Firewall oder virtuelle Netzwerke konfiguriert.**  
+<a id="-2134375618"></a>**Für das Speicherkonto wurden eine Firewall oder virtuelle Netzwerke konfiguriert.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8306c |
-| **HRESULT (dezimal)** | -2134364052 |
-| **Fehlerzeichenfolge** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
+| **HRESULT** | 0x80c8033e |
+| **HRESULT (dezimal)** | -2134375618 |
+| **Fehlerzeichenfolge** | ECS_E_SERVER_BLOCKED_BY_NETWORK_ACL |
 | **Korrektur erforderlich** | Ja |
 
 Dieser Fehler tritt auf, wenn aufgrund einer Firewall oder der Zugehörigkeit des Speicherkontos zu einem virtuellen Netzwerk nicht auf die Azure-Dateifreigabe zugegriffen werden kann. Überprüfen Sie, ob die Einstellungen für die Firewall und das virtuelle Netzwerk im Speicherkonto ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren der Einstellungen für die Firewall und das virtuelle Netzwerk](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings). 
@@ -1087,6 +1088,7 @@ Wenn Tieringfehler von Dateien auf Azure Files auftreten:
 
 | HRESULT | HRESULT (dezimal) | Fehlerzeichenfolge | Problem | Wiederherstellung |
 |---------|-------------------|--------------|-------|-------------|
+| 0x80c86045 | -2134351803 | ECS_E_INITIAL_UPLOAD_PENDING | Tieringfehler bei der Datei, da der erste Upload gerade läuft. | Keine weiteren Maßnahmen erforderlich. Das Tiering erfolgt für die Datei nach Abschluss des ersten Uploads. |
 | 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie gerade verwendet wird. | Keine weiteren Maßnahmen erforderlich. Bei der Datei wird das Tiering durchgeführt, wenn sie nicht mehr verwendet wird. |
 | 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie von der Synchronisierung ausgeschlossen ist. | Keine weiteren Maßnahmen erforderlich. Für Dateien in der Synchronisierungsausschlussliste kann kein Tiering durchgeführt werden. |
 | 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie auf dem Server nicht gefunden wurde. | Keine weiteren Maßnahmen erforderlich. Wenn der Fehler weiterhin auftritt, überprüfen Sie, ob die Datei auf dem Server vorhanden ist. |
@@ -1108,6 +1110,8 @@ Wenn Tieringfehler von Dateien auf Azure Files auftreten:
 | 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | Bei der Datei ist aufgrund eines Netzwerkproblems ein Tieringfehler aufgetreten. | Keine weiteren Maßnahmen erforderlich. Falls der Fehler weiterhin auftritt, überprüfen Sie die Netzwerkverbindung mit der Azure-Dateifreigabe. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie geändert wurde. | Keine weiteren Maßnahmen erforderlich. Bei der Datei wird das Tiering durchgeführt, sobald sie mit der Azure-Dateifreigabe synchronisiert wurde. |
 | 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Bei der Datei ist aufgrund unzureichender Systemressourcen ein Tieringfehler aufgetreten. | Wenn der Fehler weiterhin auftritt, überprüfen Sie, welche Anwendung oder welcher Kernelmodustreiber zu viele Systemressourcen beansprucht. |
+| 0x8e5e03fe | -1906441218 | JET_errDiskIO | Tieringfehler für die Datei aufgrund eines E/A-Fehlers beim Schreiben in die Cloudtieringdatenbank. | Wenn der Fehler weiterhin auftritt, führen Sie CHKDSK auf dem Volume aus, und überprüfen Sie die Speicherhardware. |
+| 0x8e5e0442 | -1906441150 | JET_errInstanceUnavailable | Tieringfehler bei der Datei, da die Cloudtieringdatenbank nicht ausgeführt wird. | Um dieses Problem zu beheben, starten Sie den FileSyncSvc-Dienst oder -Server neu. Wenn der Fehler weiterhin auftritt, führen Sie CHKDSK auf dem Volume aus, und überprüfen Sie die Speicherhardware. |
 
 
 

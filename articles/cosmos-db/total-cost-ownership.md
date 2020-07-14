@@ -7,22 +7,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b24b69716e472082abfdb388e7d79e88a8e23e64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72754794"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954654"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Gesamtkosten mit Azure Cosmos DB
 
 Azure Cosmos DB ist mit differenzierter Mehrinstanzenfähigkeit und Ressourcenkontrolle konzipiert. Dank dieses Designs kann Azure Cosmos DB zu deutlich niedrigeren Kosten betrieben werden und hilft so dem Benutzer, Geld zu sparen. Azure Cosmos DB unterstützt derzeit mehr als 280 Kundenworkloads auf einem einzelnen Computer (wobei sich die Dichte ständig erhöht) und zigtausend Kundenworkloads innerhalb eines Clusters. Für Replikate von Kundenworkloads wird ein Lastenausgleich über verschiedene Computer in einem Cluster und über mehrere Cluster in einem Rechenzentrum hinweg vorgenommen. Weitere Informationen finden Sie unter [Azure Cosmos DB: Erweitern der Grenzen global verteilter Datenbanken](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Aufgrund der Ressourcenkontrolle, der Mehrinstanzenfähigkeit und der nativen Integration in die übrige Azure-Infrastruktur ist Azure Cosmos DB im Durchschnitt um das 4- bis 6-Fache günstiger als MongoDB, Cassandra oder andere OSS-NoSQL-Datenbanken, die über IaaS ausgeführt werden, und bis um das 10-Fache günstiger als lokal ausgeführte Datenbank-Engines. Lesen Sie hierzu das Whitepaper [Total Cost of (Non) Ownership of a NoSQL Database Cloud Service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf) (Gesamtkosten eines NoSQL-Datenbank-Clouddiensts).
 
-OSS-NoSQL-Datenbanklösungen wie Apache Cassandra, MongoDB und HBase wurden für die lokale Nutzung entwickelt. Wenn sie als verwalteter Dienst angeboten werden, entsprechen sie einer Resource Manager-Vorlage mit einer Mandantendatenbank zum Verwalten der bereitgestellten Cluster und zum Überwachen des Supports. OSS-NoSQL-Architekturen erfordern erheblichen Betriebsaufwand und sehr viel Know-how, das möglicherweise nur mit hohem finanziellen Aufwand zu finden ist. Andererseits ist Azure Cosmos DB ein vollständig verwalteter Clouddienst, der Entwicklern die Möglichkeit bietet, sich auf geschäftliche Innovationen statt auf die Verwaltung und Wartung der Datenbankinfrastruktur zu konzentrieren. 
+OSS-NoSQL-Datenbanklösungen wie Apache Cassandra, MongoDB und HBase wurden für die lokale Nutzung entwickelt. Wenn sie als verwalteter Dienst angeboten werden, entsprechen sie einer Resource Manager-Vorlage mit einer Mandantendatenbank zum Verwalten der bereitgestellten Cluster und zum Überwachen des Supports. OSS-NoSQL-Architekturen erfordern erheblichen Betriebsaufwand und sehr viel Know-how, das möglicherweise nur mit hohem finanziellen Aufwand zu finden ist. Andererseits ist Azure Cosmos DB ein vollständig verwalteter Clouddienst, der Entwicklern die Möglichkeit bietet, sich auf geschäftliche Innovationen statt auf die Verwaltung und Wartung der Datenbankinfrastruktur zu konzentrieren.
 
 Im Gegensatz zu dem cloudnativen Datenbankdienst Azure Cosmos DB wurden OSS-NoSQL-Datenbank-Engines nicht mit Ressourcenkontrolle oder differenzierter Mehrinstanzenfähigkeit als architektonischem Grundprinzip entworfen und erstellt. OSS-NoSQL-Datenbank-Engines wie Cassandra und MongoDB gehen von der Grundannahme aus, dass alle Ressourcen des virtuellen Computers, auf dem sie ausgeführt werden, für die Verwendung verfügbar sind. Viele dieser Datenbank-Engines können nicht funktionieren, wenn die Menge der Ressourcen unter einen bestimmten Schwellenwert sinkt. Zum Beispiel bei kleinen VM-Instanzen sind sie mit vom Hersteller empfohlenen Konfigurationen verfügbar, die in der Regel umfangreiche virtuelle Computer zu höheren Kosten nahelegen. Daher ist es nicht möglich, eine OSS-NoSQL- oder eine beliebige andere lokale Datenbank-Engine zu hosten und sie über ein nutzungsbasiertes Abrechnungsmodell wie „Anforderungen pro Sekunde (RPS)“ oder „Speicherverbrauch“ zur Verfügung zu stellen.
 
-## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Gesamtkosten von Azure Cosmos DB 
+## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Gesamtkosten von Azure Cosmos DB
 
 Durch das serverlose Bereitstellungsmodell von Azure Cosmos DB entfällt die Bereitstellung überdimensionierter Kapazitäten für die Datenbankinfrastruktur. Azure Cosmos DB-Ressourcen werden bereitgestellt, ohne dass spezielle Konfigurationen oder eine Lizenzierung erforderlich sind. Daher können beim Ausführen von Anwendungen mit Azure Cosmos DB-Unterstützung mehr als 70 % der Gesamtkosten gegenüber OSS-NoSQL-Datenbanken eingespart werden. Einige Echtzeitbeispiele finden Sie unter [Anwendungsfälle von Kunden](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc). Das Preismodell für Azure Cosmos DB bietet folgende weitere Vorteile:
 
@@ -30,7 +30,7 @@ Durch das serverlose Bereitstellungsmodell von Azure Cosmos DB entfällt die Ber
 
 * **Keine NoSQL-DevOps-Verwaltung erforderlich:** Mit Azure Cosmos DB sind keine DevOps zum Verwalten von Bereitstellungen, Ausführen von Wartungsarbeiten, für Skalierung oder Patches erforderlich. Sie können alle Workloads ausführen, die Sie mit einem lokal oder über eine Cloudinfrastruktur gehosteten OSS-NoSQL-Cluster ausführen würden.
 
-![Gesamtkosten von Azure Cosmos DB](./media/total-cost-ownership/tco.png)
+:::image type="content" source="./media/total-cost-ownership/tco.png" alt-text="Gesamtkosten von Azure Cosmos DB" border="false":::
 
 * **Möglichkeit zur elastischen Skalierung:** Der Durchsatz von Azure Cosmos DB kann zentral hoch- und herunterskaliert werden, sodass Sie die Gesamtkosten außerhalb der Spitzenzeiten senken können. OSS-NoSQL-Cluster, die in einer Cloudinfrastruktur bereitgestellt werden, bieten nur begrenzte Elastizität, und lokale Bereitstellungen sind per se nicht elastisch. In Azure Cosmos DB ist eine lineare Skalierung des Durchsatzes garantiert, wenn Sie mehr Durchsatz bereitstellen. Diese Garantie (im 99. Perzentil bei beliebiger Skalierung) wird durch SLAs mit finanzieller Absicherung zugesichert.
 

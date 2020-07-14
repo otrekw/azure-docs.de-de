@@ -8,16 +8,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 454420d9b2f4e3cf834490da79f3571691f25bc1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8cd9c1ba85666a6556e24e4966e1e6cb9b7ef124
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121115"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84449310"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Verwalten von Speicherkontoschlüsseln mit Key Vault und Azure PowerShell
 
-Ein Azure-Speicherkonto verwendet Anmeldeinformationen, die sich aus einem Kontonamen und einem Schlüssel zusammensetzen. Der Schlüssel wird automatisch generiert und fungiert eher als ein Kennwort denn als ein kryptografischer Schlüssel. Key Vault verwaltet diese Speicherkontoschlüssel, indem sie als Key Vault-Geheimnisse gespeichert werden. 
+Ein Azure-Speicherkonto verwendet Anmeldeinformationen, die sich aus einem Kontonamen und einem Schlüssel zusammensetzen. Der Schlüssel wird automatisch generiert und fungiert eher als ein Kennwort denn als ein kryptografischer Schlüssel. Key Vault verwaltet Speicherkontoschlüssel, indem sie im Speicherkonto regelmäßig neu generiert werden, und stellt SAS-Token für den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto zur Verfügung.
 
 Sie können das Key Vault-Feature für verwaltete Speicherkontoschlüssel verwenden, um Schlüssel für ein Azure Storage-Konto aufzulisten (synchronisieren) und die Schlüssel in regelmäßigen Abständen erneut zu generieren (rotieren). Sie können Schlüssel sowohl für Speicherkonten als auch für klassische Speicherkonten verwalten.
 

@@ -3,12 +3,12 @@ title: Sichern einer Azure-Dateifreigabe mithilfe von PowerShell
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure Files-Dateifreigabe mit dem Azure Backup-Dienst und PowerShell sichern.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 53187152802908e94ee4a8a231d3b7874cf42422
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 18c03eda9d9daca3a0fa536843e32f7fc3158287
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199351"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971027"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>Sichern einer Azure-Dateifreigabe mithilfe von PowerShell
 
@@ -19,7 +19,7 @@ In diesem Artikel wird Folgendes erläutert:
 > [!div class="checklist"]
 >
 > * Einrichten von PowerShell und Registrieren des Recovery Services-Anbieters
-> * Erstellen eines Recovery Services-Tresors
+> * Erstellen Sie einen Recovery Services-Tresor.
 > * Konfigurieren der Sicherung für eine Azure-Dateifreigabe
 > * Ausführen eines Sicherungsauftrags
 
@@ -60,8 +60,8 @@ Richten Sie PowerShell wie folgt ein:
 5. Auf der daraufhin angezeigten Webseite werden Sie aufgefordert, Ihre Kontoanmeldeinformationen einzugeben.
 
     Alternativ können Sie Ihre Kontoanmeldeinformationen als Parameter im Cmdlet **Connect-AzAccount** mit **-Credential** angeben.
-   
-    Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden mit dessen Mandanten-ID oder primären Mandantendomänennamen als Mandanten an. Use their tenant ID or tenant primary domain name. Beispiel: **Connect-AzAccount -Tenant "fabrikam.com"** .
+
+    Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden als Mandanten an. Geben Sie dabei seine Mandanten-ID oder den primären Domänennamen des Mandanten an. Beispiel: **Connect-AzAccount -Tenant "fabrikam.com"** .
 
 6. Da ein Konto mehrere Abonnements enthalten kann, müssen Sie das Abonnement, das Sie verwenden möchten, dem Konto zuordnen:
 
@@ -95,20 +95,11 @@ Führen Sie die nachstehenden Schritte aus, um einen Recovery Services-Tresors z
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-2. Verwenden Sie das Cmdlet [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) zum Erstellen des Tresors. Geben Sie für den Tresor den Speicherort an, den Sie auch für die Ressourcengruppe ausgewählt haben.
+1. Verwenden Sie das Cmdlet [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) zum Erstellen des Tresors. Geben Sie für den Tresor den Speicherort an, den Sie auch für die Ressourcengruppe ausgewählt haben.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
-
-3. Geben Sie den für den Tresorspeicher zu verwendenden Redundanztyp an. Sie können [lokal redundanten Speicher](../storage/common/storage-redundancy-lrs.md) oder [georedundanten Speicher](../storage/common/storage-redundancy-grs.md) verwenden.
-   
-   Im folgenden Beispiel wird die Option **-BackupStorageRedundancy** für das Cmdlet [Set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) für **testvault** auf den Wert **GeoRedundant** festgelegt:
-
-   ```powershell
-   $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
-   Set-AzRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
-   ```
 
 ### <a name="view-the-vaults-in-a-subscription"></a>Anzeigen von Tresoren in einem Abonnement
 
@@ -246,20 +237,22 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
+Weitere Informationen zum Abrufen einer Liste von Dateifreigaben für ein Speicherkonto finden Sie in [diesem Artikel](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageshare?view=azps-4.3.0).
+
 ## <a name="important-notice-backup-item-identification"></a>Wichtiger Hinweis: Bestimmen von Sicherungselementen
 
 In diesem Abschnitt wird eine wichtige Änderung bei Sicherungen von Azure-Dateifreigaben in Vorbereitung auf die allgemeine Verfügbarkeit dargelegt.
 
-Wenn Sie eine Sicherung für Azure-Dateifreigaben aktivieren, gibt der Benutzer dem Kunden einen Dateifreigabenamen als Entitätsnamen an. Daraufhin wird ein Sicherungselement erstellt. Der Name des Sicherungselements ist ein eindeutiger Bezeichner, den der Azure Backup-Dienst erstellt. Der Bezeichner ist in der Regel ein benutzerfreundlicher Name. Doch für das Szenario des vorläufigen Löschens, bei dem eine Dateifreigabe gelöscht und eine andere Freigabe mit dem gleichen Namen erstellt werden kann, ist der eindeutige Bezeichner einer Azure-Dateifreigabe nun eine ID. 
+Wenn Sie eine Sicherung für Azure-Dateifreigaben aktivieren, gibt der Benutzer dem Kunden einen Dateifreigabenamen als Entitätsnamen an. Daraufhin wird ein Sicherungselement erstellt. Der Name des Sicherungselements ist ein eindeutiger Bezeichner, den der Azure Backup-Dienst erstellt. Der Bezeichner ist in der Regel ein benutzerfreundlicher Name. Doch für das Szenario des vorläufigen Löschens, bei dem eine Dateifreigabe gelöscht und eine andere Freigabe mit dem gleichen Namen erstellt werden kann, ist der eindeutige Bezeichner einer Azure-Dateifreigabe nun eine ID.
 
-Um die eindeutige ID jedes Elements zu ermitteln, führen Sie den Befehl **Get-AzRecoveryServicesBackupItem** mit den entsprechenden Filtern für **backupManagementType** und **WorkloadType** aus, um alle relevanten Elemente abzurufen. Beobachten Sie dann das Namensfeld im zurückgegebenen PowerShell-Objekt bzw. in der PowerShell-Antwort. 
+Um die eindeutige ID jedes Elements zu ermitteln, führen Sie den Befehl **Get-AzRecoveryServicesBackupItem** mit den entsprechenden Filtern für **backupManagementType** und **WorkloadType** aus, um alle relevanten Elemente abzurufen. Beobachten Sie dann das Namensfeld im zurückgegebenen PowerShell-Objekt bzw. in der PowerShell-Antwort.
 
 Es wird immer empfohlen, Elemente aufzulisten und dann ihren eindeutigen Namen aus dem Feld „Name“ in der Antwort abzurufen. Verwenden Sie diesen Wert, um die Elemente mit dem Parameter *Name* zu filtern. Verwenden Sie andernfalls den Parameter *FriendlyName*, um das Element mit seiner ID abzurufen.
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass PowerShell auf die Mindestversion (Az.RecoveryServices 2.6.0) für Sicherungen von Azure-Dateifreigaben aktualisiert wird. Bei dieser Version ist der Filter *FriendlyName* für den Befehl **Get-AzRecoveryServicesBackupItem** verfügbar. 
+> Stellen Sie sicher, dass PowerShell auf die Mindestversion (Az.RecoveryServices 2.6.0) für Sicherungen von Azure-Dateifreigaben aktualisiert wird. Bei dieser Version ist der Filter *FriendlyName* für den Befehl **Get-AzRecoveryServicesBackupItem** verfügbar.
 >
-> Übergeben Sie den Namen der Azure-Dateifreigabe an den Parameter *friendlyName*. Wenn Sie den Namen der Dateifreigabe an den Parameter *Name* übergeben, löst diese Version die Warnung aus, dass dieser Name an den Parameter *friendlyName* übergeben werden muss. 
+> Übergeben Sie den Namen der Azure-Dateifreigabe an den Parameter *friendlyName*. Wenn Sie den Namen der Dateifreigabe an den Parameter *Name* übergeben, löst diese Version die Warnung aus, dass dieser Name an den Parameter *friendlyName* übergeben werden muss.
 >
 > Wenn Sie diese Mindestversion nicht installieren, kann dies zu Fehlern bei vorhandenen Skripts führen. Installieren Sie die Mindestversion von PowerShell mit dem folgenden Befehl:
 >
@@ -295,5 +288,5 @@ Momentaufnahmen von Azure-Dateifreigaben werden verwendet, während die Sicherun
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über das [Sichern von Azure-Dateifreigaben im Azure-Portal](backup-afs.md).
-- Informationen zum Planen von Sicherungen mit einem Azure Automation-Runbook finden Sie im [Beispielskript auf GitHub](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup).
+* Informieren Sie sich über das [Sichern von Azure-Dateifreigaben im Azure-Portal](backup-afs.md).
+* Informationen zum Planen von Sicherungen mit einem Azure Automation-Runbook finden Sie im [Beispielskript auf GitHub](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup).

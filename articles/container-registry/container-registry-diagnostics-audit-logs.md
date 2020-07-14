@@ -2,13 +2,13 @@
 title: Erfassen und Analysieren von Ressourcenprotokollen
 description: Aufzeichnen und Analysieren von Ressourcenprotokollereignissen für Azure Container Registry wie Authentifizierung, Imagepush und Imagepull.
 ms.topic: article
-ms.date: 01/03/2020
-ms.openlocfilehash: 00f9468721126bd166051df47cec1596356e9b54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/01/2020
+ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409642"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343182"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry-Protokolle für die Diagnoseauswertung und -überwachung
 
@@ -24,12 +24,14 @@ Das Sammeln von Ressourcenprotokolldaten mithilfe von Azure Monitor kann zusätz
 
 Die folgenden Ereignisse auf Repositoryebene für Images und andere Artefakte werden zurzeit protokolliert:
 
-* **Push-Ereignisse**
-* **Pull-Ereignisse**
-* **Untag-Ereignisse (Markierung entfernen)**
-* **Delete-Ereignisse (Löschen)** (einschließlich Repository-Löschereignissen)
+* **Push**
+* **Pull**
+* **Markierung aufheben**
+* **Löschen** (einschließlich Repository-Löschereignisse)
+* **Tag endgültig löschen** und **Manifest endgültig löschen**
 
-Ereignisse auf Repositoryebene, die derzeit nicht protokolliert werden: Purge-Ereignisse (Bereinigen).
+> [!NOTE]
+> Ereignisse zum endgültigen Löschen werden nur protokolliert, wenn eine [Aufbewahrungsrichtlinie](container-registry-retention-policy.md)-Registrierung konfiguriert ist.
 
 ## <a name="registry-resource-logs"></a>Registrierungsressourcenprotokolle
 
@@ -83,16 +85,58 @@ Ein Tutorial zur Verwendung von Log Analytics im Azure-Portal finden Sie unter [
 
 Weitere Informationen zu Protokollabfragen finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
 
-### <a name="additional-query-examples"></a>Zusätzliche Abfragebeispiele
+## <a name="query-examples"></a>Beispiele für Abfragen
 
-#### <a name="100-most-recent-registry-events"></a>Die 100 jüngsten Registrierungsereignisse
+### <a name="error-events-from-the-last-hour"></a>Fehlerereignisse innerhalb der letzten Stunde
+
+```Kusto
+union Event, Syslog // Event table stores Windows event records, Syslog stores Linux records
+| where TimeGenerated > ago(1h)
+| where EventLevelName == "Error" // EventLevelName is used in the Event (Windows) records
+    or SeverityLevel== "err" // SeverityLevel is used in Syslog (Linux) records
+```
+
+### <a name="100-most-recent-registry-events"></a>Die 100 jüngsten Registrierungsereignisse
 
 ```Kusto
 ContainerRegistryRepositoryEvents
 | union ContainerRegistryLoginEvents
 | top 100 by TimeGenerated
-| project TimeGenerated, LoginServer , OperationName , Identity , Repository , DurationMs , Region , ResultType
+| project TimeGenerated, LoginServer, OperationName, Identity, Repository, DurationMs, Region , ResultType
 ```
+
+### <a name="identity-of-user-or-object-that-deleted-repository"></a>Identität des Benutzers oder Objekts, der bzw. das das Repository gelöscht hat
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Delete"
+| project LoginServer, OperationName, Repository, Identity, CallerIpAddress
+```
+
+### <a name="identity-of-user-or-object-that-deleted-tag"></a>Identität des Benutzers oder Objekts, der bzw. das die Markierung gelöscht hat
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Untag"
+| project LoginServer, OperationName, Repository, Tag, Identity, CallerIpAddress
+```
+
+### <a name="reposity-level-operation-failures"></a>Vorgangsfehler auf Reposityebene
+
+```kusto
+ContainerRegistryRepositoryEvents 
+| where ResultDescription contains "40"
+| project TimeGenerated, OperationName, Repository, Tag, ResultDescription
+```
+
+### <a name="registry-authentication-failures"></a>Authentifizierungsfehler für die Registrierung
+
+```kusto
+ContainerRegistryLoginEvents 
+| where ResultDescription != "200"
+| project TimeGenerated, Identity, CallerIpAddress, ResultDescription
+```
+
 
 ## <a name="additional-log-destinations"></a>Zusätzliche Protokollziele
 

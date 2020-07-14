@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: b78e227159065d2ae85d9b1dc989e8ea192ae26a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5028417758bb8be38505d27d3dfb5e2fc055c3ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982801"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125820"
 ---
 # <a name="microsoft-global-network"></a>Globales Microsoft-Netzwerk
 
@@ -38,7 +38,7 @@ Ganz gleich, ob Sie eine Verbindung von London nach Tokio oder von Washington DC
 
 Wenn beispielsweise ein Benutzer in London versucht, auf einen Dienst in Tokio zuzugreifen, trifft Internetdatenverkehr an einem unserer Edges in London ein, läuft über das Microsoft-WAN durch Frankreich, über unsere Pfade in der Vermittlungsregion Arabien zwischen Europa und Indien und trifft dann in Japan ein, wo der Dienst gehostet wird. Der Antwortdatenverkehr ist symmetrisch. Dies wird manchmal als [Cold-Potato-Routing](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) bezeichnet, d. h., der Datenverkehr bleibt so lange wie möglich im Microsoft-Netzwerk, bevor wir ihn übergeben.  
   
-Bezieht sich das auf den gesamten Datenverkehr bei der Verwendung von Microsoft-Diensten? Ja, jeder Datenverkehr zwischen Rechenzentren, innerhalb von Microsoft Azure oder zwischen Microsoft-Diensten wie Virtual Machines, Office 365, XBox, SQL DBs, Storage und zwischen virtuellen Netzwerken wird innerhalb unseres globalen Netzwerks und niemals über das öffentliche Internet geleitet, um die optimale Leistung und Integrität sicherzustellen.  
+Bezieht sich das auf den gesamten Datenverkehr bei der Verwendung von Microsoft-Diensten? Ja, jeder Datenverkehr zwischen Rechenzentren, innerhalb von Microsoft Azure oder zwischen Microsoft-Diensten wie Virtual Machines, Microsoft 365, XBox, SQL DBs, Storage und zwischen virtuellen Netzwerken wird innerhalb unseres globalen Netzwerks und niemals über das öffentliche Internet geleitet, um die optimale Leistung und Integrität sicherzustellen.  
  
 Gewaltige Investitionen in Glasfaserkapazitäten und die Vielfalt hinsichtlich unter-, überirdischer und unterseeischer Wege sind entscheidend für uns, um einen konsistenten und hohen Servicelevel aufrechtzuerhalten und gleichzeitig das extreme Wachstum unserer Cloud- und Onlinedienste zu fördern. Die neuesten Erweiterungen unseres globalen Netzwerks sind unser [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea)-Überseekabel, das branchenweit erste unter dem Meeresboden gelegene Open Line System (OLS) zwischen Bilbao, Spanien und Virginia Beach, Virginia, USA sowie das [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) zwischen New York, USA und Dublin, Irland und [New Cross Pacific (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) zwischen Tokio, Japan und Portland, Oregon, USA. 
  

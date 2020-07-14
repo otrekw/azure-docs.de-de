@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: yelevin
 ms.openlocfilehash: 87ca322cbdfdd8a53a3ecefcb120a961ea1bb936
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77587922"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel
@@ -99,7 +99,7 @@ Es gibt sieben mögliche Azure Sentinel-Incidents, für die Warnungen zu einem u
     
     Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> mit einem unmöglichen Ortswechsel zum atypischen Ort \<*location*>, gefolgt von der Festlegung einer verdächtigen Weiterleitungsregel im Posteingang eines Benutzers.
     
-    Dies kann bedeuten, dass das Konto kompromittiert wurde und das Postfach genutzt wird, um Informationen Ihrer Organisation abzuschöpfen (Exfiltration). Der Benutzer \<*account name*> hat eine Weiterleitungsregel für den Posteingang erstellt oder aktualisiert, mit der alle eingehenden E-Mails an die externe Adresse \<*email address*> weitergeleitet werden.
+    Dies kann bedeuten, dass das Konto kompromittiert wurde und das Postfach genutzt wird, um Informationen Ihrer Organisation abzuschöpfen (Exfiltration). Der Benutzer \<*account name*> hat eine Weiterleitungsregel für den Posteingang erstellt oder aktualisiert, durch die alle eingehenden E-Mails an die externe Adresse \<*email address*> weitergeleitet werden.
 
 - **Unmöglicher Ortswechsel zu atypischen Orten, der zu verdächtiger Verwaltungsaktivität für die Cloud-App führt**
     
@@ -117,7 +117,7 @@ Es gibt sieben mögliche Azure Sentinel-Incidents, für die Warnungen zu einem u
     
     Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> mit einem unmöglichen Ortswechsel zum atypischen Ort \<*location*>. 
     
-    Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung \<*number of*> eindeutige Dateien heruntergeladen.
+    Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung mehr als \<*number of*> eindeutige Dateien heruntergeladen.
 
 - **Unmöglicher Ortswechsel zu atypischen Orten, der zu einem Office 365-Identitätswechsel führt**
     
@@ -148,41 +148,41 @@ Es gibt sieben mögliche Azure Sentinel-Incidents, für die Warnungen zu einer A
     
     Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> am unbekannten Ort \<*location*>, gefolgt von der Festlegung einer verdächtigen Weiterleitungsregel im Posteingang eines Benutzers.
     
-    Dies kann bedeuten, dass das Konto kompromittiert wurde und das Postfach genutzt wird, um Informationen Ihrer Organisation abzuschöpfen (Exfiltration). Der Benutzer \<*account name*> hat eine Weiterleitungsregel für den Posteingang erstellt oder aktualisiert, mit der alle eingehenden E-Mails an die externe Adresse \<*email address*> weitergeleitet werden. 
+    Dies kann bedeuten, dass das Konto kompromittiert wurde und das Postfach genutzt wird, um Informationen Ihrer Organisation abzuschöpfen (Exfiltration). Der Benutzer \<*account name*> hat eine Weiterleitungsregel für den Posteingang erstellt oder aktualisiert, durch die alle eingehenden E-Mails an die externe Adresse \<*email address*> weitergeleitet werden. 
 
 - **Anmeldeereignis von einem unbekannten Ort, das zu verdächtiger Verwaltungsaktivität für die Cloud-App führt**
     
-    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> vom unbekannten Ort \<*location*>. 
+    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> am unbekannten Ort \<*location*>. 
     
     Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung mehr als \<*number of*> Verwaltungsaktivitäten durchgeführt.
 
 - **Anmeldeereignis von einem unbekannten Ort, das zur Massenlöschung von Dateien führt**
     
-    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> vom unbekannten Ort \<*location*>. 
+    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> am unbekannten Ort \<*location*>. 
     
     Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung \<*number of*> eindeutige Dateien gelöscht.
 
 - **Anmeldeereignis von einem unbekannten Ort, das zum Massendownload von Dateien führt**
     
-    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> vom unbekannten Ort \<*location*>. 
+    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> am unbekannten Ort \<*location*>. 
     
-    Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung \<*number of*> eindeutige Dateien heruntergeladen.
+    Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung mehr als \<*number of*> eindeutige Dateien heruntergeladen.
 
 - **Anmeldeereignis von einem unbekannten Ort, das zu einem Office 365-Identitätswechsel führt**
     
-    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> vom unbekannten Ort \<*location*>.
+    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> am unbekannten Ort \<*location*>.
     
     Anschließend wurde über das Konto \<*account name*> in nur einer Sitzung für mehr als \<*number of*> unterschiedliche Konten ein Identitätswechsel durchgeführt.
 
 - **Anmeldeereignis von einem unbekannten Ort, das zur Massenfreigabe von Dateien führt**
     
-    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> vom unbekannten Ort \<*location*>. 
+    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> am unbekannten Ort \<*location*>. 
     
     Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung mehr als \<*number of*> eindeutige Dateien freigegeben.
 
 - **Anmeldeereignis von einem unbekannten Ort, das zum Vorhandensein von Ransomware in der Cloud-App führt**
     
-    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> vom unbekannten Ort \<*location*>. 
+    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> am unbekannten Ort \<*location*>. 
     
     Anschließend wurden über das Konto \<*account name*> \<*number of*> Dateien hochgeladen und insgesamt \<*number of*> Dateien gelöscht. 
     
@@ -194,43 +194,43 @@ Es gibt sieben mögliche Azure Sentinel-Incidents, für die Warnungen zu einer A
 
 - **Anmeldeereignis mit einem infizierten Gerät, das zu einer Exfiltration des Office 365-Postfachs führt**
     
-    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> von einem Gerät, das unter Umständen mit Schadsoftware infiziert ist, gefolgt von der Festlegung einer verdächtigen Weiterleitungsregel im Posteingang eines Benutzers.
+    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> über ein Gerät, das unter Umständen mit Schadsoftware infiziert ist, gefolgt von der Festlegung einer verdächtigen Weiterleitungsregel im Posteingang eines Benutzers.
     
-    Dies kann bedeuten, dass das Konto kompromittiert wurde und das Postfach genutzt wird, um Informationen Ihrer Organisation abzuschöpfen (Exfiltration). Der Benutzer \<*account name*> hat eine Weiterleitungsregel für den Posteingang erstellt oder aktualisiert, mit der alle eingehenden E-Mails an die externe Adresse \<*email address*> weitergeleitet werden. 
+    Dies kann bedeuten, dass das Konto kompromittiert wurde und das Postfach genutzt wird, um Informationen Ihrer Organisation abzuschöpfen (Exfiltration). Der Benutzer \<*account name*> hat eine Weiterleitungsregel für den Posteingang erstellt oder aktualisiert, durch die alle eingehenden E-Mails an die externe Adresse \<*email address*> weitergeleitet werden. 
 
 - **Anmeldeereignis mit einem infizierten Gerät, das zu verdächtiger Verwaltungsaktivität für die Cloud-App führt**
     
-    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> mit einem Gerät, das unter Umständen mit Schadsoftware infiziert ist.
+    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> über ein Gerät, das unter Umständen mit Schadsoftware infiziert ist.
     
     Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung mehr als \<*number of*> Verwaltungsaktivitäten durchgeführt.
 
 - **Anmeldeereignis mit einem infizierten Gerät, das zur Massenlöschung von Dateien führt**
     
-    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> mit einem Gerät, das unter Umständen mit Schadsoftware infiziert ist. 
+    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> über ein Gerät, das unter Umständen mit Schadsoftware infiziert ist. 
     
     Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung \<*number of*> eindeutige Dateien gelöscht.
 
 - **Anmeldeereignis mit einem infizierten Gerät, das zum Massendownload von Dateien führt**
     
-    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> mit einem Gerät, das unter Umständen mit Schadsoftware infiziert ist. 
+    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> über ein Gerät, das unter Umständen mit Schadsoftware infiziert ist. 
     
-    Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung \<*number of*> eindeutige Dateien heruntergeladen.
+    Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung mehr als \<*number of*> eindeutige Dateien heruntergeladen.
 
 - **Anmeldeereignis mit einem infizierten Gerät, das zu einem Office 365-Identitätswechsel führt**
     
-    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> mit einem Gerät, das unter Umständen mit Schadsoftware infiziert ist. 
+    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> über ein Gerät, das unter Umständen mit Schadsoftware infiziert ist. 
     
     Anschließend wurde über das Konto \<*account name*> in nur einer Sitzung für mehr als \<*number of*> unterschiedliche Konten ein Identitätswechsel durchgeführt.
 
 - **Anmeldeereignis mit einem infizierten Gerät, das zur Massenfreigabe von Dateien führt**
     
-    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> mit einem Gerät, das unter Umständen mit Schadsoftware infiziert ist. 
+    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> über ein Gerät, das unter Umständen mit Schadsoftware infiziert ist. 
     
     Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung mehr als \<*number of*> eindeutige Dateien freigegeben.
 
 - **Anmeldeereignis mit einem infizierten Gerät, das zum Vorhandensein von Ransomware in der Cloud-App führt**
     
-    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> mit einem Gerät, das unter Umständen mit Schadsoftware infiziert ist. 
+    Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> über ein Gerät, das unter Umständen mit Schadsoftware infiziert ist. 
     
     Anschließend wurden über das Konto \<*account name*> \<*number of*> Dateien hochgeladen und insgesamt \<*number of*> Dateien gelöscht. 
     
@@ -244,7 +244,7 @@ Es gibt sieben mögliche Azure Sentinel-Incidents, für die Warnungen zu einer A
     
     Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> von der anonymen Proxy-IP-Adresse \<*IP address*>, gefolgt von der Festlegung einer verdächtigen Weiterleitungsregel im Posteingang eines Benutzers.
     
-    Dies kann bedeuten, dass das Konto kompromittiert wurde und das Postfach genutzt wird, um Informationen Ihrer Organisation abzuschöpfen (Exfiltration). Der Benutzer \<*account name*> hat eine Weiterleitungsregel für den Posteingang erstellt oder aktualisiert, mit der alle eingehenden E-Mails an die externe Adresse \<*email address*> weitergeleitet werden. 
+    Dies kann bedeuten, dass das Konto kompromittiert wurde und das Postfach genutzt wird, um Informationen Ihrer Organisation abzuschöpfen (Exfiltration). Der Benutzer \<*account name*> hat eine Weiterleitungsregel für den Posteingang erstellt oder aktualisiert, durch die alle eingehenden E-Mails an die externe Adresse \<*email address*> weitergeleitet werden. 
 
 - **Anmeldeereignis von einer anonymen IP-Adresse, das zu verdächtiger Verwaltungsaktivität für die Cloud-App führt**
     
@@ -262,7 +262,7 @@ Es gibt sieben mögliche Azure Sentinel-Incidents, für die Warnungen zu einer A
     
     Diese Warnung ist ein Hinweis auf ein Anmeldeereignis von \<*account name*> von der anonymen Proxy-IP-Adresse \<*IP address*>. 
     
-    Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung \<*number of*> eindeutige Dateien heruntergeladen.
+    Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung mehr als \<*number of*> eindeutige Dateien heruntergeladen.
 
 - **Anmeldeereignis von einer anonymen IP-Adresse, das zu einem Office 365-Identitätswechsel führt**
     
@@ -290,43 +290,43 @@ Es gibt sieben mögliche Azure Sentinel-Incidents, für die Warnungen zu einer A
 
 - **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zur Exfiltration des Office 365-Postfachs führt**
     
-    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis mit \<*account name*> kompromittierte Anmeldeinformationen verwendet wurden, gefolgt von der Festlegung einer verdächtigen Weiterleitungsregel im Posteingang eines Benutzers. 
+    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis von \<*account name*> kompromittierte Anmeldeinformationen verwendet wurden, gefolgt von der Festlegung einer verdächtigen Weiterleitungsregel im Posteingang eines Benutzers. 
     
-    Dies kann bedeuten, dass das Konto kompromittiert wurde und das Postfach genutzt wird, um Informationen Ihrer Organisation abzuschöpfen (Exfiltration). Der Benutzer \<*account name*> hat eine Weiterleitungsregel für den Posteingang erstellt oder aktualisiert, mit der alle eingehenden E-Mails an die externe Adresse \<*email address*> weitergeleitet werden. 
+    Dies kann bedeuten, dass das Konto kompromittiert wurde und das Postfach genutzt wird, um Informationen Ihrer Organisation abzuschöpfen (Exfiltration). Der Benutzer \<*account name*> hat eine Weiterleitungsregel für den Posteingang erstellt oder aktualisiert, durch die alle eingehenden E-Mails an die externe Adresse \<*email address*> weitergeleitet werden. 
 
 - **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zu verdächtiger Verwaltungsaktivität für die Cloud-App führt**
     
-    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis mit \<*account name*> kompromittierte Anmeldeinformationen genutzt wurden.
+    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis von \<*account name*> kompromittierte Anmeldeinformationen genutzt wurden.
     
     Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung mehr als \<*number of*> Verwaltungsaktivitäten durchgeführt.
 
 - **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zur Massenlöschung von Dateien führt**
     
-    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis mit \<*account name*> kompromittierte Anmeldeinformationen genutzt wurden.
+    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis von \<*account name*> kompromittierte Anmeldeinformationen genutzt wurden.
     
     Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung \<*number of*> eindeutige Dateien gelöscht.
 
 - **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zum Massendownload von Dateien führt**
     
-    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis mit \<*account name*> kompromittierte Anmeldeinformationen genutzt wurden.
+    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis von \<*account name*> kompromittierte Anmeldeinformationen genutzt wurden.
     
-    Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung \<*number of*> eindeutige Dateien heruntergeladen.
+    Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung mehr als \<*number of*> eindeutige Dateien heruntergeladen.
 
 - **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zu einem Office 365-Identitätswechsel führt**
     
-    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis mit \<*account name*> kompromittierte Anmeldeinformationen genutzt wurden. 
+    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis von \<*account name*> kompromittierte Anmeldeinformationen genutzt wurden. 
     
     Anschließend wurde über das Konto \<*account name*> in nur einer Sitzung für mehr als \<*number of*> unterschiedliche Konten ein Identitätswechsel durchgeführt.
 
 - **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zur Massenfreigabe von Dateien führt**
     
-    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis mit \<*account name*> kompromittierte Anmeldeinformationen genutzt wurden.
+    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis von \<*account name*> kompromittierte Anmeldeinformationen genutzt wurden.
     
     Anschließend wurden über das Konto \<*account name*> in nur einer Sitzung mehr als \<*number of*> eindeutige Dateien freigegeben.
 
 - **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zum Vorhandensein von Ransomware in der Cloud-App führt**
     
-    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis mit \<*account name*> kompromittierte Anmeldeinformationen genutzt wurden. 
+    Diese Warnung ist ein Hinweis darauf, dass für das Anmeldeereignis von \<*account name*> kompromittierte Anmeldeinformationen genutzt wurden. 
     
     Anschließend wurden über das Konto \<*account name*> \<*number of*> Dateien hochgeladen und insgesamt \<*number of*> Dateien gelöscht. 
     

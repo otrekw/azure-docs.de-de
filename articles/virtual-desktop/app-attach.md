@@ -4,22 +4,23 @@ description: Einrichten des MSIX-Features zum Anfügen von Apps für Windows Vir
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 05/11/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c23528fbb60b471a7613f372fe5316a4883ae733
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310613"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204471"
 ---
 # <a name="set-up-msix-app-attach"></a>Einrichten des MSIX-Features zum Anfügen von Apps
 
 > [!IMPORTANT]
 > Das MSIX-Features zum Anfügen von Apps befindet sich zurzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 In diesem Thema wird erläutert, wie Sie das MSIX-Feature zum Anfügen von Apps in einer Windows Virtual Desktop-Umgebung einrichten.
 
@@ -29,11 +30,29 @@ Bevor Sie beginnen, müssen Sie Folgendes für das MSIX-Feature zum Anfügen von
 
 - Zugriff auf das Windows-Insider-Portal, um die Version von Windows 10 mit Unterstützung für die APIs für das MSIX-Feature zum Anfügen von Apps abzurufen.
 - Eine funktionierende Windows Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung der Windows Virtual Desktop-Release vom Herbst 2019 finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zur Bereitstellung der Windows Virtual Desktop-Release vom Frühjahr 2020 finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
+- Das MSIX-Pakettool.
+- Eine Netzwerkfreigabe in der Windows Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird.
 
-- Das MSIX-Pakettool
-- Eine Netzwerkfreigabe in der Windows Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird
+## <a name="get-the-os-image"></a>Abrufen des Betriebssystemimages
 
-## <a name="get-the-os-image-from-the-technology-adoption-program-tap-portal"></a>Abrufen des Betriebssystemimages aus dem TAP-Portal (Technology Adoption Program)
+Zuerst müssen Sie das Betriebssystemimage abrufen. Sie können das Betriebssystemimage über das Azure-Portal abrufen. Wenn Sie jedoch Mitglied des Windows Insider-Programms sind, haben Sie die Möglichkeit, stattdessen das Windows Insider-Portal zu verwenden.
+
+### <a name="get-the-os-image-from-the-azure-portal"></a>Abrufen des Betriebssystemimages aus dem Azure-Portal
+
+So rufen Sie das Betriebssystemimage aus dem Azure-Portal ab:
+
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich an.
+
+2. Wechseln Sie zu **Erstellen eines virtuellen Computers**.
+
+3. Wählen Sie auf der Registerkarte **Grundlegend** die Option **Windows 10 Enterprise (mehrere Sitzungen), Version 2004**aus.
+
+4. Befolgen Sie die weiteren Anweisungen, um die Erstellung des virtuellen Computers durchzuführen.
+
+     >[!NOTE]
+     >Mit dieser VM können Sie das Anfügen der MSIX-App direkt testen. Weitere Informationen finden Sie weiter unten unter [Generieren eines VHD- oder VHDX-Pakets für MSIX](#generate-a-vhd-or-vhdx-package-for-msix). Lesen Sie andernfalls diesen Abschnitt.
+
+### <a name="get-the-os-image-from-the-windows-insider-portal"></a>Abrufen des Betriebssystemimages aus dem Windows Insider-Portal
 
 So rufen Sie das Betriebssystemimage aus dem Windows Insider-Portal ab:
 
@@ -45,30 +64,15 @@ So rufen Sie das Betriebssystemimage aus dem Windows Insider-Portal ab:
 2. Scrollen Sie nach unten zum Abschnitt **Edition auswählen**, und wählen Sie **Windows 10 Insider Preview Enterprise (FAST) – Build 19041** oder höher aus.
 
 3. Wählen Sie **Bestätigen** aus, und wählen Sie dann die gewünschte Sprache aus. Wählen Sie anschließend **Bestätigen** erneut aus.
-    
+
      >[!NOTE]
      >Zurzeit ist Englisch die einzige Sprache, die mit dem Feature getestet wurde. Sie können andere Sprachen auswählen, aber sie werden möglicherweise nicht wie vorgesehen angezeigt.
-    
+
 4. Wenn der Downloadlink generiert wird, wählen Sie den **64-Bit-Download** aus, und speichern Sie ihn auf der lokalen Festplatte.
 
-## <a name="get-the-os-image-from-the-azure-portal"></a>Abrufen des Betriebssystemimages aus dem Azure-Portal
+## <a name="prepare-the-vhd-image-for-azure"></a>Vorbereiten des VHD-Images für Azure
 
-So rufen Sie das Betriebssystemimage aus dem Azure-Portal ab:
-
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich an.
-
-2. Wechseln Sie zu **Erstellen eines virtuellen Computers**.
-
-3. Wählen Sie auf der Registerkarte **Grundlegend** die Option **Windows 10 Enterprise (mehrere Sitzungen), Version 2004**aus.
-      
-4. Befolgen Sie die weiteren Anweisungen, um die Erstellung des virtuellen Computers durchzuführen.
-
-     >[!NOTE]
-     >Mit dieser VM können Sie das Anfügen der MSIX-App direkt testen. Weitere Informationen finden Sie weiter unten unter [Generieren eines VHD- oder VHDX-Pakets für MSIX](#generate-a-vhd-or-vhdx-package-for-msix). Lesen Sie andernfalls diesen Abschnitt.
-
-## <a name="prepare-the-vhd-image-for-azure"></a>Vorbereiten des VHD-Images für Azure 
-
-Bevor Sie beginnen, müssen Sie ein VHD-Masterimage erstellen. Wenn Sie das VHD-Masterimage noch nicht erstellt haben, navigieren Sie zu [Vorbereiten und Anpassen eines VHD-Masterimages](set-up-customize-master-image.md), und befolgen Sie die dort beschriebenen Anweisungen. 
+Als nächstes müssen Sie ein VHD-Masterimage erstellen. Wenn Sie das VHD-Masterimage noch nicht erstellt haben, navigieren Sie zu [Vorbereiten und Anpassen eines VHD-Masterimages](set-up-customize-master-image.md), und befolgen Sie die dort beschriebenen Anweisungen.
 
 Nachdem Sie das VHD-Masterimage erstellt haben, müssen Sie automatische Updates für das MSIX-Feature zum Anfügen von Apps deaktivieren. Um automatische Updates zu deaktivieren, müssen Sie an einer Eingabeaufforderung mit erhöhten Rechten die folgenden Befehle ausführen:
 
@@ -90,7 +94,7 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-Nachdem Sie die automatischen Updates deaktiviert haben, müssen Sie Hyper-V aktivieren, da Sie den „Mount-VHD“-Befehl zum Stagen und „Dismount-VHD“ zum Aufheben des Stagings verwenden. 
+Nachdem Sie die automatischen Updates deaktiviert haben, müssen Sie Hyper-V aktivieren, da Sie den „Mount-VHD“-Befehl zum Stagen und „Dismount-VHD“ zum Aufheben des Stagings verwenden.
 
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
@@ -102,7 +106,7 @@ Bereiten Sie im nächsten Schritt die VM-VHD für Azure vor, und laden Sie den s
 
 Nachdem Sie die VHD in Azure hochgeladen haben, erstellen Sie einen Hostpool, der auf diesem neuen Image basiert, indem Sie die Anweisungen im Tutorial [Erstellen eines Hostpools mithilfe von Azure Marketplace](create-host-pools-azure-marketplace.md) befolgen.
 
-## <a name="prepare-the-application-for-msix-app-attach"></a>Vorbereiten der Anwendung für das MSIX-Feature zum Anfügen von Apps 
+## <a name="prepare-the-application-for-msix-app-attach"></a>Vorbereiten der Anwendung für das MSIX-Feature zum Anfügen von Apps
 
 Wenn Sie bereits über ein MSIX-Paket verfügen, fahren Sie mit [Konfigurieren der Windows Virtual Desktop-Infrastruktur](#configure-windows-virtual-desktop-infrastructure) fort. Wenn Sie Legacyanwendungen testen möchten, befolgen Sie die Anweisungen unter [Erstellen eines MSIX-Pakets aus einem Desktopinstaller auf einem virtuellen Computer](/windows/msix/packaging-tool/create-app-package-msi-vm/), um die Legacyanwendung in ein MSIX-Paket zu konvertieren.
 
@@ -185,7 +189,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass Ihre Netzwerkfreigabe die folgenden
 - Die Freigabe ist SMB-kompatibel.
 - Die VMs, die Teil des Sitzungshostpools sind, verfügen über NTFS-Berechtigungen für die Freigabe.
 
-### <a name="set-up-an-msix-app-attach-share"></a>Einrichten einer Freigabe für das Feature zum Anfügen von Apps 
+### <a name="set-up-an-msix-app-attach-share"></a>Einrichten einer Freigabe für das Feature zum Anfügen von Apps
 
 Erstellen Sie in Ihrer Windows Virtual Desktop-Umgebung eine Netzwerkfreigabe, und verschieben Sie das Paket dorthin.
 
@@ -426,16 +430,16 @@ Jedes dieser automatischen Skripts führt eine Phase der Skripts zum Anfügen vo
 
 ## <a name="use-packages-offline"></a>Offlineverwendung von Paketen
 
-Bei der Verwendung von Paketen aus [Microsoft Store for Business](https://businessstore.microsoft.com/) oder [Microsoft Store for Education](https://educationstore.microsoft.com/) in Ihrem Netzwerk oder auf Geräten, die nicht mit dem Internet verbunden sind, müssen Sie die Paketlizenzen aus dem Microsoft Store abrufen und auf Ihrem Gerät installieren, um die App erfolgreich ausführen zu können. Wenn Ihr Gerät online ist und eine Verbindung mit Microsoft Store for Business herstellen kann, sollten die erforderlichen Lizenzen automatisch heruntergeladen werden. Wenn Sie jedoch offline sind, müssen Sie die Lizenzen manuell einrichten. 
+Bei der Verwendung von Paketen aus [Microsoft Store for Business](https://businessstore.microsoft.com/) oder [Microsoft Store for Education](https://educationstore.microsoft.com/) in Ihrem Netzwerk oder auf Geräten, die nicht mit dem Internet verbunden sind, müssen Sie die Paketlizenzen aus dem Microsoft Store abrufen und auf Ihrem Gerät installieren, um die App erfolgreich ausführen zu können. Wenn Ihr Gerät online ist und eine Verbindung mit Microsoft Store for Business herstellen kann, sollten die erforderlichen Lizenzen automatisch heruntergeladen werden. Wenn Sie jedoch offline sind, müssen Sie die Lizenzen manuell einrichten.
 
-Um die Lizenzdateien zu installieren, müssen Sie ein PowerShell-Skript verwenden, das die MDM_EnterpriseModernAppManagement_StoreLicenses02_01-Klasse im WMI-Bridge-Anbieter aufruft.  
+Um die Lizenzdateien zu installieren, müssen Sie ein PowerShell-Skript verwenden, das die MDM_EnterpriseModernAppManagement_StoreLicenses02_01-Klasse im WMI-Bridge-Anbieter aufruft.
 
-So richten Sie die Lizenzen für die Offlineverwendung ein: 
+So richten Sie die Lizenzen für die Offlineverwendung ein:
 
 1. Laden Sie das App-Paket, die Lizenzen und die erforderlichen Frameworks aus Microsoft Store for Business herunter. Sie benötigen sowohl die codierten als auch die nicht codierten Lizenzdateien. Ausführliche Downloadanweisungen finden Sie [hier](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
 2. Aktualisieren Sie die folgenden Variablen im Skript für Schritt 3:
       1. `$contentID` ist der ContentID-Wert aus der nicht codierten Lizenzdatei (XML-Datei). Sie können die Lizenzdatei in einem Text-Editor Ihrer Wahl öffnen.
-      2. `$licenseBlob` ist die vollständige Zeichenfolge für das Lizenzierungsblob in der codierten Lizenzdatei (BIN-Datei). Sie können die codierte Lizenzdatei in einem Text-Editor Ihrer Wahl öffnen. 
+      2. `$licenseBlob` ist die vollständige Zeichenfolge für das Lizenzierungsblob in der codierten Lizenzdatei (BIN-Datei). Sie können die codierte Lizenzdatei in einem Text-Editor Ihrer Wahl öffnen.
 3. Führen Sie das folgende Skript an einer PowerShell-Eingabeaufforderung mit erhöhten Rechten aus. Ein guter Zeitpunkt, um die Lizenzinstallation durchzuführen, ist am Ende des [Stagingskripts](#stage-the-powershell-script), das ebenfalls an einer Eingabeaufforderung mit Administratorberechtigungen ausgeführt werden muss.
 
 ```powershell
@@ -450,14 +454,14 @@ $contentID = "{'ContentID'_in_unencoded_license_file}"
 #TODO - Update $licenseBlob with the entire String in the encoded license file (.bin)
 $licenseBlob = "{Entire_String_in_encoded_license_file}"
 
-$session = New-CimSession 
+$session = New-CimSession
 
 #The final string passed into the AddLicenseMethod should be of the form <License Content="encoded license blob" />
-$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />' 
+$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />'
 
 $params = New-Object Microsoft.Management.Infrastructure.CimMethodParametersCollection
 $param = [Microsoft.Management.Infrastructure.CimMethodParameter]::Create("param",$licenseString ,"String", "In")
-$params.Add($param) 
+$params.Add($param)
 
 
 try
@@ -469,7 +473,7 @@ try
 catch [Exception]
 {
      write-host $_ | out-string
-}  
+}
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

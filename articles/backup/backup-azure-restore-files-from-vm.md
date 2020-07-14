@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus eine
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 68fa3bb2b17da01004220f5876911fa3289a2e7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ded26718f176629f6c53ae90abf3c7e69b4df893
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124986"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027164"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -247,9 +247,9 @@ Der Zugriff auf `download.microsoft.com` ist erforderlich, um die Komponenten f�
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Dateiwiederherstellung von Sicherungen virtueller Computer mit großen Datenträgern
 
-In diesem Abschnitt wird erläutert, wie die Dateiwiederherstellung aus Sicherungen virtueller Azure-Computer durchgeführt wird, die über mehr als 16 Datenträger mit einer Größe von jeweils mehr als 32 TB verfügen.
+In diesem Abschnitt wird erläutert, wie die Dateiwiederherstellung aus Sicherungen virtueller Azure-Computer durchgeführt wird, die über mehr als 16 Datenträger mit einer Größe von jeweils mehr als 4 TB verfügen.
 
-Da bei der Dateiwiederherstellung alle Datenträger aus der Sicherung angefügt werden, sollten bei einer großen Anzahl von Datenträgern (> 16) oder großen Datenträgern (> 32 TB) die folgenden Aktionspunkte berücksichtigt werden:
+Da bei der Dateiwiederherstellung alle Datenträger aus der Sicherung angefügt werden, sollten bei einer großen Anzahl von Datenträgern (> 16) oder großen Datenträgern (> 4 TB) die folgenden Aktionspunkte berücksichtigt werden:
 
 - Verwalten Sie einen separaten Wiederherstellungsserver (Azure-VM der D2v3-Serie) für die Dateiwiederherstellung. Sie können diesen nur für die Dateiwiederherstellung verwenden und dann herunterfahren, wenn er nicht mehr benötigt wird. Die Wiederherstellung auf dem ursprünglichen Computer wird nicht empfohlen, da dies erhebliche Auswirkungen auf die VM selbst hat.
 - Führen Sie dann das Skript einmal aus, um zu überprüfen, ob die Dateiwiederherstellung erfolgreich durchgeführt wird.

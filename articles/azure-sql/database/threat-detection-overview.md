@@ -1,9 +1,9 @@
 ---
 title: Erweiterter Schutz vor Bedrohungen
-titleSuffix: Azure SQL Database, SQL Managed Instance, & Azure Synapse
-description: Advanced Threat Protection erkennt anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken in Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse hindeuten.
+titleSuffix: Azure SQL Database, SQL Managed Instance, & Azure Synapse Analytics
+description: Advanced Threat Protection erkennt anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken in Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics hindeuten.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.devlang: ''
 ms.custom: sqldbrb=2
@@ -13,17 +13,17 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: 27d44ba8be56839f248312e1bdb4b0e4b7761110
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 822d4267d5b163ddda50302e2caea5c3ade3b7c4
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033931"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985370"
 ---
-# <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance--azure-synapse"></a>Advanced Threat Protection für Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse
+# <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Advanced Threat Protection für Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Advanced Threat Protection für [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) erkennt anomale Aktivitäten, die auf ungewöhnliche und möglicherweise schädigende Zugriffs- oder Exploitversuche auf Datenbanken hinweisen.
+Advanced Threat Protection für [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) erkennt anomale Aktivitäten, die auf ungewöhnliche und möglicherweise schädigende Zugriffs- oder Exploitversuche auf Datenbanken hinweisen.
 
 Advanced Threat Protection ist Teil des Pakets [Advanced Data Security](advanced-data-security.md). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf Advanced Threat Protection und dessen Verwaltung sind über das zentrale SQL ADS-Portal möglich.
 
@@ -47,13 +47,13 @@ Bei Erkennung anormaler Datenbankaktivitäten erhalten Sie eine E-Mail-Benachric
 
    ![Aktivitätsbedrohungen](./media/threat-detection-overview/active_threats.png)
 
-2. Klicken Sie auf eine bestimmte Warnung, um weitere Details und Aktionen zum Untersuchen der entsprechenden Bedrohung und Abwehren zukünftiger Bedrohungen anzuzeigen.
+1. Klicken Sie auf eine bestimmte Warnung, um weitere Details und Aktionen zum Untersuchen der entsprechenden Bedrohung und Abwehren zukünftiger Bedrohungen anzuzeigen.
 
    Beispielsweise ist die Einschleusung von SQL-Befehlen das häufigste Sicherheitsproblem für Webanwendungen im Internet, das für Angriffe auf datengesteuerte Anwendungen verwendet wird. Die Angreifer nutzen Sicherheitslücken der Anwendung, um böswillige SQL-Anweisungen in Eingabefelder der Anwendung einzuschleusen, sodass Daten in der Datenbank manipuliert oder verändert werden können. Bei Warnungen in Bezug auf die Einschleusung von SQL-Befehlen schließen die Details der Warnung die anfällige missbräuchlich genutzte SQL-Anweisung ein.
 
    ![Spezifische Warnung](./media/threat-detection-overview/specific_alert.png)
 
-## <a name="explore-alerts-in-azure-portal"></a>Untersuchen von Warnungen im Azure-Portal
+## <a name="explore-alerts-in-the-azure-portal"></a>Warnungen im Azure-Portal
 
 Warnungen von Advanced Threat Protection sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert. Auf Livekacheln von SQL Advanced Threat Protection innerhalb der Datenbank und auf den Blättern von SQL ADS im Azure-Portal lässt sich der Status aktiver Bedrohungen nachverfolgen.
 

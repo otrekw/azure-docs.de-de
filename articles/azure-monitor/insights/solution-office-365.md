@@ -1,17 +1,17 @@
 ---
-title: Office 365-Verwaltungslösung in Azure | Microsoft-Dokumentation
+title: Office 365-Verwaltungslösung in Azure
 description: Dieser Artikel bietet Einzelheiten zur Konfiguration und Verwendung der Office 365-Lösung in Azure.  Er enthält eine ausführliche Beschreibung der Office 365-Datensätze, die in Azure Monitor erstellt werden.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d89c64b7ceea730dab61ffe1254d838d219b785
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82023604"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971044"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -19,7 +19,7 @@ ms.locfileid: "82023604"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Lösungsaktualisierung
-> Diese Lösung wurde durch die [Office 365](../../sentinel/connect-office-365.md)-Lösung für allgemeine Verfügbarkeit in [Azure Sentinel](../../sentinel/overview.md) und die [Azure AD-Lösung für Berichterstellung und Überwachung](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) ersetzt. Gemeinsam bieten diese eine aktualisierte Version der bisherigen Office 365-Lösung in Azure Monitor mit einer verbesserten Konfigurationsumgebung. Die vorhandene Lösung kann bis zum 30. Juli 2020 weiterhin verwendet werden.
+> Diese Lösung wurde durch die [Office 365](../../sentinel/connect-office-365.md)-Lösung für allgemeine Verfügbarkeit in [Azure Sentinel](../../sentinel/overview.md) und die [Azure AD-Lösung für Berichterstellung und Überwachung](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) ersetzt. Gemeinsam bieten diese eine aktualisierte Version der bisherigen Office 365-Lösung in Azure Monitor mit einer verbesserten Konfigurationsumgebung. Die vorhandene Lösung kann bis zum 31. Oktober 2020 weiterhin verwendet werden.
 > 
 > Azure Sentinel ist eine cloudnative SIEM-Lösung (Security Information & Event Management), die Protokolle erfasst und zusätzliche SIEM-Funktionalität bereitstellt, einschließlich Erkennungen, Untersuchungen, Hunting und Einblicke auf Grundlage von Machine Learning. Mit Azure Sentinel können Sie nun Office 365 SharePoint-Aktivitäts- und Exchange-Verwaltungsprotokolle erfassen.
 > 
@@ -35,8 +35,8 @@ ms.locfileid: "82023604"
 >
 > ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>F: Ist es möglich, ein Onboarding der Office 365-Lösung in Azure Monitor vom jetzigen Zeitpunkt bis zum 30. Juli durchzuführen?
-> Nein, die Onboardingskripts für die Office 365-Lösung in Azure Monitor sind nicht mehr verfügbar. Die Lösung wird am 30. Juli entfernt.
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-october-31"></a>F: Ist es möglich, ein Onboarding der Office 365-Lösung in Azure Monitor vom jetzigen Zeitpunkt bis zum 31. Oktober durchzuführen?
+> Nein, die Onboardingskripts für die Office 365-Lösung in Azure Monitor sind nicht mehr verfügbar. Die Lösung wird am 31. Oktober entfernt.
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>F: Werden die Tabellen und Schemas geändert?
 > Der Name und das Schema der Tabelle **OfficeActivity** bleiben gegenüber der aktuellen Lösung unverändert. Sie können in der neuen Lösung weiterhin die gleichen Abfragen verwenden, mit Ausnahme von Abfragen, die auf Azure AD-Daten verweisen.
@@ -102,11 +102,11 @@ ms.locfileid: "82023604"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>F: Stellt Azure Sentinel zusätzliche Connectors als Teil der Lösung bereit?
 > Ja. Informationen dazu finden Sie unter [Herstellen einer Verbindung mit Datenquellen in Azure Sentinel](../../sentinel/connect-data-sources.md).
 > 
-> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>F: Was geschieht am 30. Juli? Muss ich vorab ein Offboarding durchführen?
+> ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>F: Was geschieht am 31. Oktober? Muss ich vorab ein Offboarding durchführen?
 > 
 > - Sie können keine Daten mehr von der **Office 365**-Lösung empfangen. Die Lösung ist nicht mehr im Marketplace verfügbar.
 > - Für Azure Sentinel-Kunden wird die Log Analytics-Arbeitsbereichslösung **Office365** in die Azure Sentinel-Lösung **SecurityInsights** eingeschlossen.
-> - Wenn Sie kein manuelles Offboarding für die Lösung durchführen, werden Ihre Daten am 30. Juli automatisch getrennt.
+> - Wenn Sie kein manuelles Offboarding für die Lösung durchführen, werden Ihre Daten am 31. Oktober automatisch getrennt.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>F: Werden meine Daten in die neue Lösung übertragen?
 > Ja. Wenn Sie die **Office 365**-Lösung aus Ihrem Arbeitsbereich entfernen, sind die Daten vorübergehend nicht verfügbar, da das Schema entfernt wird. Sobald Sie den neuen **Office 365**-Connector in Sentinel aktivieren, wird das Schema im Arbeitsbereich wiederhergestellt, und alle bereits erfassten Daten sind wieder verfügbar. 
@@ -272,7 +272,7 @@ Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
 | ResultStatus | Gibt an, ob die Aktion (angegeben in der Eigenschaft „Operation“) erfolgreich war oder nicht. Mögliche Werte sind „Succeeded“, „PartiallySucceeded“ oder „Failed“. Bei Exchange-Administratoraktivitäten ist der Wert entweder „True“ oder „False“. |
 | UserId | Der Benutzerprinzipalname (User Principal Name, UPN) des Benutzers, der die Aktion ausgeführt hat, die zum Protokollieren des Datensatzes geführt hat, beispielsweise my_name@my_domain_name. Beachten Sie, dass auch Datensätze für die von Systemkonten ausgeführten Aktivitäten (z.B. „SHAREPOINT\system“ oder „NTAUTHORITY\SYSTEM“) enthalten sind. | 
 | UserKey | Eine alternative ID für den Benutzer, der in der Eigenschaft „UserId“ identifiziert wird.  Beispiel: Diese Eigenschaft wird für Ereignisse, die von Benutzern in SharePoint, OneDrive for Business und Exchange ausgeführt werden, mit der eindeutigen Passport-ID (PUID) aufgefüllt. Diese Eigenschaft kann für Ereignisse, die in anderen Diensten und Ereignissen von Systemkonten ausgeführt werden, auch den gleichen Wert wie die Eigenschaft „UserID“ angeben.|
-| UserType | Der Typ des Benutzers, der den Vorgang ausgeführt hat.<br><br>Admin<br>Application<br>DcAdmin<br>Regulär <br>Reserved<br>ServicePrincipal<br>System |
+| UserType | Der Typ des Benutzers, der den Vorgang ausgeführt hat.<br><br>Admin<br>Application<br>DcAdmin<br>Regulär<br>Reserved<br>ServicePrincipal<br>System |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory-Basis

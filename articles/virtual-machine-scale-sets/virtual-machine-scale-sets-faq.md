@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: faq
-ms.date: 05/24/2019
+ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: a3074fdd10ef960a1c0b58b973d57da14d888af4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cf58b62001ce5d193e3a06973215d82138ad4b59
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200163"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855594"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -234,7 +234,7 @@ Ein Beispiel finden Sie in der [GitHub-Schnellstartvorlage „101-vm-sshkey“](
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Wenn ich `Update-AzVmss` ausführe, nachdem ich mehrere Zertifikate aus dem gleichen Schlüsseltresor hinzugefügt habe, erhalte ich die folgende Meldung:
 
->Update-AzVmss: Die Liste „secret“ enthält wiederholte Instanzen von „/subscriptions/\<Meine Abonnement-ID>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev“, was nicht zulässig ist.
+>Update-AzVmss: Die Liste „secret“ enthält wiederholte Instanzen von „/subscriptions/\<my-subscription-id>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev“, was nicht zulässig ist.
 
 Dieser Fall kann eintreten, wenn Sie versuchen, den gleichen Tresor erneut hinzuzufügen, anstatt ein neues Zertifikat für den vorhandenen Quelltresor zu verwenden. Die Befehl `Add-AzVmssSecret` funktioniert nicht ordnungsgemäß, wenn Sie zusätzliche Geheimnisse hinzufügen.
 

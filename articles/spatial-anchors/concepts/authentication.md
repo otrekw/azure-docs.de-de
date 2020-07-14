@@ -1,19 +1,19 @@
 ---
 title: Authentifizierung und Autorisierung
 description: Lernen Sie die verschiedenen Möglichkeiten kennen, mit denen eine App oder ein Dienst sich bei Azure Spatial Anchors authentifizieren kann, und erfahren Sie, auf welchen Ebenen Sie den Zugriff auf Azure Spatial Anchors steuern können.
-author: julianparismorgan
+author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
-ms.author: pmorgan
+ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9a3b326f97246ffac386ad43cfa08ce413eea899
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: baf5252a6b158855739546c2a03e63dceee6701e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653375"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84456503"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Authentifizierung und Autorisierung bei Azure Spatial Anchors
 
@@ -39,7 +39,6 @@ Azure AD-Authentifizierungstoken können auf zwei Arten abgerufen werden:
 Die Verwendung von Kontoschlüsseln für den Zugriff auf Ihr Azure Spatial Anchors-Konto ist die einfachste Möglichkeit für den Einstieg. Sie finden Ihre Kontoschlüssel im Azure-Portal. Navigieren Sie zu Ihrem Konto, und wählen Sie die Registerkarte „Schlüssel“ aus.
 
 ![Übersicht über die Authentifizierung bei Azure Spatial Anchors](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
-
 
 Zwei Schlüssel stehen zur Verfügung, und beide sind gleichzeitig für den Zugriff auf das Spatial Anchors-Konto gültig. Es wird empfohlen, den Schlüssel, den Sie für den Zugriff auf das Konto verwenden, regelmäßig zu aktualisieren. Da zwei separate gültige Schlüssel verfügbar sind, sind solche Updates ohne Ausfallzeiten möglich: Sie müssen nur den primären und den sekundären Schlüssel abwechselnd aktualisieren.
 
@@ -175,13 +174,14 @@ Das Azure AD-Zugriffstoken wird mithilfe der [MSAL-Bibliothek](../../active-dir
         1.  Navigieren Sie im Azure-Portal zu **Azure Active Directory**, und wählen Sie **App-Registrierungen** aus.
         2.  Wählen Sie **Registrierung einer neuen Anwendung** aus.
         3.  Geben Sie den Namen Ihrer Anwendung ein, wählen Sie **Web-App/API** als Anwendungstyp aus, und geben Sie die Authentifizierungs-URL für Ihren Dienst ein. Klicken Sie dann auf **Erstellen**.
-        4.  Klicken Sie in dieser Anwendung auf **Einstellungen**, und wählen Sie die Registerkarte **Schlüssel** aus. Geben Sie den Namen Ihres Schlüssels ein, wählen Sie eine Laufzeit aus, und klicken Sie auf **Speichern**. Stellen Sie sicher, dass Sie den Schlüssel speichern, der zu diesem Zeitpunkt angezeigt wird – Sie müssen diesen in den Code Ihres Webdiensts einfügen.
+        4.  Klicken Sie in dieser Anwendung auf **Einstellungen**, und wählen Sie die Registerkarte **Zertifikate und Geheimnisse** aus. Erstellen Sie einen neuen geheimen Clientschlüssel, wählen Sie eine Dauer aus, und klicken Sie auf **Hinzufügen**. Sie müssen den Wert des geheimen Schlüssels speichern, da Sie ihn in den Code Ihres Webdienstes einschließen müssen.
     2.  Gewähren Sie Ihrer Anwendung bzw. den Benutzern Zugriff auf Ihre Ressource:
         1.  Navigieren Sie im Azure-Portal zu Ihrer Spatial Anchors-Ressource.
         2.  Wechseln Sie zur Registerkarte **Zugriffssteuerung (IAM)** .
         3.  Klicken Sie auf **Rollenzuweisung hinzufügen**.
         1.  [Wählen Sie eine Rolle aus](#role-based-access-control).
         2.  Geben Sie im Feld **Auswählen** die Namen der Anwendungen ein, die Sie erstellt haben und denen Sie Zugriff gewähren möchten. Wenn Sie möchten, dass die Benutzer Ihrer App unterschiedliche Rollen im Spatial Anchors-Konto einnehmen, müssen Sie mehrere Anwendungen in Azure AD erstellen und jeder eine separate Rolle zuweisen. Implementieren Sie dann Ihre Autorisierungslogik, damit die richtige Rolle für Ihre Benutzer verwendet wird.
+        3.  Hinweis: Es empfiehlt sich, in der Auswahl **Rollenzuweisung hinzufügen** die Option **Zugriff zuweisen zu** auf „Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal“ festzulegen.
     3.  Klicken Sie auf **Speichern**.
 2.  Gehen Sie in Ihrem Code folgendermaßen vor (Hinweis: Sie können das Dienstbeispiel aus GitHub verwenden):
     1.  Stellen Sie sicher, dass Sie die Anwendungs-ID, das Anwendungsgeheimnis und den Umleitungs-URI Ihrer eigenen Azure AD-Anwendung als Parameter für Client-ID, Geheimnis und Umleitungs-URI in MSAL verwenden.

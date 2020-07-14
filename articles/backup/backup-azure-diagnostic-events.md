@@ -3,12 +3,12 @@ title: Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 description: In diesem Artikel wird beschrieben, wie die alten und neuen Diagnoseereignisse für Azure Backup verwendet werden.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 4efc00da96493c751c4a85dbdcc280d1ca0ef5ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be99b73a4dac12c9e70e4cb8a85f34b97f5c42d7
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183703"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854807"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 
@@ -28,6 +28,8 @@ Azure Backup stellt die folgenden Diagnoseereignisse bereit. Jedes Ereignis biet
 * AddonAzureBackupJobs
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
+
+Wenn Sie das [Legacy-Ereignis](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) AzureBackupReport verwenden, sollten Sie so bald wie möglich zu den oben aufgeführten Ereignissen wechseln.
 
 Weitere Informationen finden Sie unter [Datenmodell für Azure Backup-Diagnoseereignisse](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model).
 
