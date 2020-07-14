@@ -5,6 +5,8 @@
   items:
     - name: Worum handelt es sich bei der Anwendungsverwaltung?
       href: what-is-application-management.md
+    - name: 'Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?'
+      href: what-is-single-sign-on.md
 - name: Schnellstarts
   items:
     - name: Anzeigen Ihrer Apps
@@ -19,6 +21,8 @@
       href: delete-application-portal.md
 - name: Tutorials
   items:
+    - name: Hinzufügen einer nicht im Katalog aufgeführten App
+      href: add-non-gallery-app.md
     - name: "Integrierte Katalog-Apps (z.\_B. ServiceNow, Salesforce, Dropbox)"
       href: /azure/active-directory/saas-apps/
     - name: Hinzufügen einer lokalen App mit dem Anwendungsproxy
@@ -46,8 +50,6 @@
               href: developer-guidance-for-integrating-applications.md
         - name: Einmaliges Anmelden
           items:
-            - name: Worum handelt es sich beim einmaligen Anmelden?
-              href: what-is-single-sign-on.md
             - name: Aktivieren von SSO für Ihre mehrinstanzenfähige Anwendung
               href: isv-sso-content.md
             - name: Erstellen eines Azure-Mandanten für eine mehrinstanzenfähige Anwendung
@@ -103,10 +105,6 @@
   items:
     - name: Cloud-Apps und einmaliges Anmelden
       items:
-        - name: Hinzufügen einer Cloud-App
-          items:
-            - name: Hinzufügen einer nicht im Katalog enthaltenen App
-              href: add-non-gallery-app.md
         - name: Einmaliges Anmelden konfigurieren
           items:
             - name: Konfigurieren des SAML-basierten einmaligen Anmeldens
@@ -143,6 +141,8 @@
               href: configure-admin-consent-workflow.md
             - name: Zuweisen eines Benutzers oder einer Gruppe zu einer App
               href: assign-user-or-group-access-portal.md
+            - name: 'Überprüfen von Berechtigungen, die Apps erteilt wurden'
+              href: manage-application-permissions.md
             - name: Erstellen von Auflistungen in „Meine Apps“
               href: access-panel-collections.md
             - name: Verwenden des Self-Service-App-Zugriffs

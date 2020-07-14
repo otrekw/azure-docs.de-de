@@ -23,7 +23,7 @@
     - name: Herstellen einer Verbindung mit Windows Virtual Desktop-Ressourcen
       items:
         - name: Herstellen einer Verbindung mit dem Windows-Desktopclient
-          href: connect-windows-7-and-10.md
+          href: connect-windows-7-10.md
         - name: Herstellen einer Verbindung mit dem Webclient
           href: connect-web.md
         - name: Herstellen einer Verbindung mit dem Android-Client
@@ -38,6 +38,8 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: "Bereitstellen eines virtuellen Windows\_7-Computers"
+          href: deploy-windows-7-virtual-machine.md
         - name: Bereitstellen eines GPU-basierten Sitzungshosts
           href: configure-vm-gpu.md
         - name: Erweitern eines vorhandenen Hostpools
@@ -90,6 +92,8 @@
       href: language-packs.md
 - name: Konzepte
   items:
+    - name: Liste der sicheren URLs
+      href: safe-url-list.md
     - name: Windows Virtual Desktop-Umgebung
       href: environment-setup.md
     - name: Bestimmen der Wartezeit für Benutzerverbindungen

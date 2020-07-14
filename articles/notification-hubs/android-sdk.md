@@ -46,7 +46,7 @@ Der erste Schritt zum Erstellen eines Projekts in Android Studio:
 
 2. Wählen Sie  **Datei** aus, und wählen Sie dann **Neu** und schließlich **Neues Projekt** aus.
 
-3. Wählen Sie auf der Seite  **Projekt auswählen** die Option  **Leere Aktivität ** und dann  **Weiter** aus.
+3. Wählen Sie auf der Seite  **Projekt auswählen**  die Option  **Leere Aktivität ** und dann  **Weiter** aus.
 
 4. Führen Sie auf der Seite  **Projekt konfigurieren** die folgenden Schritte aus:
    1. Geben Sie einen Namen für die Anwendung ein.
@@ -63,7 +63,7 @@ Der erste Schritt zum Erstellen eines Projekts in Android Studio:
 
    :::image type="content" source="media/android-sdk/get-started.png" alt-text="Firebase hinzufügen":::
 
-3. Führen Sie auf der Seite  **Add Firebase to your Android app** (Firebase der Android-App hinzufügen) Folgendes aus:
+3. Führen Sie auf der Seite  **Add Firebase to your Android app**  (Firebase der Android-App hinzufügen) Folgendes aus:
 
    1. Kopieren Sie für  **Android package name** (Name des Android-Pakets) den Wert der **applicationId** in die Datei **build.gradle** Ihrer Anwendung. In diesem Beispiel lautet er  `com.fabrikam.fcmtutorial1app`.
 
@@ -118,7 +118,7 @@ Der erste Schritt zum Erstellen eines Projekts in Android Studio:
    :::image type="content" source="media/android-sdk/access-policies.png" alt-text="Zugriffsrichtlinien":::
 
    > [!IMPORTANT]
-   > Verwenden Sie in Ihrer Anwendung nicht die Richtlinie  **DefaultFullSharedAccessSignature**. Diese Richtlinie darf nur im App-Back-End verwendet werden.
+   > Verwenden  **Sie in Ihrer Anwendung nicht die Richtlinie** DefaultFullSharedAccessSignature. Diese Richtlinie darf nur im App-Back-End verwendet werden.
 
 ## <a name="configure-firebase-cloud-messaging-settings-for-the-hub"></a>Konfigurieren von Firebase Cloud Messaging-Einstellungen für den Hub
 
@@ -130,7 +130,7 @@ Der erste Schritt zum Erstellen eines Projekts in Android Studio:
 
    :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="Serverschlüssel":::
 
-4. Im Azure-Portal wird in einer Meldung angezeigt, dass der Hub aktualisiert wurde. Die Schaltfläche **Speichern** ist deaktiviert.
+4. Im Azure-Portal wird in einer Meldung angezeigt, dass der Hub aktualisiert wurde. Die Schaltfläche **Speichern**  ist deaktiviert.
 
 Ihr Benachrichtigungshub ist jetzt für die Verwendung mit Firebase Cloud Messaging konfiguriert. Sie verfügen außerdem über die Verbindungszeichenfolgen, die erforderlich sind, um Benachrichtigungen an ein Gerät zu senden und eine App für den Empfang von Benachrichtigungen zu registrieren.
 
@@ -138,7 +138,7 @@ Ihr Benachrichtigungshub ist jetzt für die Verwendung mit Firebase Cloud Messag
 
 ### <a name="add-google-play-services-to-the-project"></a>Hinzufügen von Google Play Services zum Projekt
 
-1. Wählen Sie in Android Studio im Menü **Tools** und dann **SDK-Manager** aus.
+1. Wählen Sie in Android Studio im Menü **Tools**  und dann **SDK-Manager** aus.
 
 2. Wählen Sie die Zielversion des Android SDK aus, das in Ihrem Projekt verwendet wird. Wählen Sie dann **Paketdetails anzeigen** aus.
 
@@ -148,13 +148,13 @@ Ihr Benachrichtigungshub ist jetzt für die Verwendung mit Firebase Cloud Messag
 
    :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="APIs":::
 
-4. Wechseln Sie zur Registerkarte **SDK Tools**. Wählen Sie Google Play Services noch nicht installiert haben, wählen Sie **Google Play Services**, wie in der folgenden Abbildung gezeigt, aus. Wählen Sie dann **Anwenden** aus, um die Installation auszuführen. Notieren Sie den SDK-Pfad, den Sie in einem späteren Schritt angeben müssen.
+4. Wechseln Sie zur Registerkarte **SDK** Tools. Wählen Sie Google Play Services noch nicht installiert haben, wählen Sie **Google Play Services** , wie in der folgenden Abbildung gezeigt, aus. Wählen Sie dann **Anwenden** aus, um die Installation auszuführen. Notieren Sie den SDK-Pfad, den Sie in einem späteren Schritt angeben müssen.
 
    :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="Play Services":::
 
-5. Wählen Sie **OK** aus, wenn das Dialogfeld **Änderung bestätigen** angezeigt wird. Die gewünschten Komponenten werden mit dem entsprechenden Installationsprogramm installiert. Wählen Sie **Fertig stellen** aus, wenn die Installation der Komponenten abgeschlossen ist.
+5. Wählen Sie **OK** aus, wenn das Dialogfeld **Änderung bestätigen** angezeigt wird. Die gewünschten Komponenten werden mit dem entsprechenden Installationsprogramm installiert. Wählen Sie **Fertig stellen**  aus, wenn die Installation der Komponenten abgeschlossen ist.
 
-6. Wählen Sie **OK** aus, um das Dialogfeld **Settings for New Projects** (Einstellungen für neue Projekte) zu schließen.
+6. Wählen Sie **OK** aus, um das Dialogfeld **Settings for New Projects** (Einstellungen für neue Projekte) zu schließen.
 
 ### <a name="add-azure-notification-hubs-libraries"></a>Hinzufügen von Azure Notification Hubs-Bibliotheken
 
@@ -187,7 +187,7 @@ Ihr Benachrichtigungshub ist jetzt für die Verwendung mit Firebase Cloud Messag
    apply plugin: 'com.google.gms.google-services'
    ```
 
-2. Wählen Sie auf der Symbolleiste **Jetzt synchronisieren** aus.
+2. Wählen Sie auf der Symbolleiste **Jetzt synchronisieren**  aus.
 
 ### <a name="add-code"></a>Code hinzufügen
 
@@ -214,7 +214,7 @@ Ihr Benachrichtigungshub ist jetzt für die Verwendung mit Firebase Cloud Messag
    }
    ```
 
-2. Fügen Sie in der `OnCreate`-Methode der -Klasse den folgenden Code hinzu, um den Initialisierungsprozess von Notification Hubs zu starten, wenn die Aktivität erstellt wird:
+2. Fügen Sie in der `OnCreate` -Methode der- `MainActivity` Klasse den folgenden Code hinzu, um den Initialisierungsprozess von Notification Hubs zu starten, wenn die Aktivität erstellt wird:
 
    ```java
    @Override
@@ -228,7 +228,7 @@ Ihr Benachrichtigungshub ist jetzt für die Verwendung mit Firebase Cloud Messag
    }
    ```
 
-3. Wählen Sie in Android Studio auf der Menüleiste **Build** **(Erstellen) und dann**Rebuild Project  (Projekt neu erstellen) aus, um sicherzustellen, dass im Code keine Fehler enthalten sind. Wenn eine Fehlermeldung zum **ic_launcher**-Symbol angezeigt wird, entfernen Sie die folgende Anweisung aus der Datei „AndroidManifest.xml“:
+3. Wählen Sie in Android Studio auf der Menüleiste **Build** **(Erstellen) und dann**Rebuild Project  (Projekt neu erstellen) aus, um sicherzustellen, dass im Code keine Fehler enthalten sind. Wenn eine Fehlermeldung zum **ic_launcher** -Symbol angezeigt wird, entfernen Sie die folgende Anweisung aus der Datei „AndroidManifest.xml“:
 
    ```xml
    android:icon="@mipmap/ic_launcher"
@@ -253,7 +253,7 @@ Sie können Pushbenachrichtigungen aus dem [Azure-Portal](https://portal.azure.
 
 2. Wählen Sie in **Plattformen** die Option **Android** aus.
 
-3. Wählen Sie **Senden** aus. Es wird noch keine Benachrichtigung auf dem Android-Gerät angezeigt, da Sie die mobile App nicht darauf ausgeführt haben. Wählen Sie nach dem Ausführen der mobilen App erneut die Schaltfläche **Senden** aus, um die Benachrichtigung anzuzeigen.
+3. Wählen Sie **Senden** aus. Es wird noch keine Benachrichtigung auf dem Android-Gerät angezeigt, da Sie die mobile App nicht darauf ausgeführt haben. Wählen Sie nach dem Ausführen der mobilen App erneut die Schaltfläche **Senden** aus, um die Benachrichtigung anzuzeigen.
 
 4. Sie sehen das Ergebnis des Vorgangs in der Liste am unteren Rand der Portalseite.
 
@@ -265,9 +265,9 @@ Pushbenachrichtigungen werden normalerweise mithilfe einer kompatiblen Bibliothe
 
 ## <a name="run-the-mobile-app-on-emulator"></a>Ausführen der mobilen App im Emulator
 
-Vor dem Testen von Pushbenachrichtigungen in einem Emulator müssen Sie sicherstellen, dass das Emulatorimage die Google-API-Ebene unterstützt, die Sie für die App ausgewählt haben. Wenn Ihr Image keine nativen Google-APIs unterstützt, wird unter Umständen die Ausnahme **SERVICE_NOT_AVAILABEL** angezeigt.
+Vor dem Testen von Pushbenachrichtigungen in einem Emulator müssen Sie sicherstellen, dass das Emulatorimage die Google-API-Ebene unterstützt, die Sie für die App ausgewählt haben. Wenn Ihr Image keine nativen Google-APIs unterstützt, wird unter Umständen die Ausnahme **SERVICE_NOT_AVAILABEL**  angezeigt.
 
-Stellen Sie zusätzlich sicher, dass Ihr Google-Konto dem ausgeführten Emulator unter **Einstellungen** > **Konten** hinzugefügt wurde. Andernfalls führt die Registrierung bei FCM möglicherweise zur Ausnahme **AUTHENTICATION_FAILED**.
+Stellen Sie zusätzlich sicher, dass Ihr Google-Konto dem ausgeführten Emulator unter **Einstellungen** > **Konten** hinzugefügt wurde. Andernfalls führt die Registrierung bei FCM möglicherweise zur Ausnahme **AUTHENTICATION_FAILED** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
