@@ -3,16 +3,16 @@ title: Einrichten einer Azure Migrate-Appliance in Azure Government
 description: Hier erfahren Sie, wie Sie eine Azure Migrate-Appliance in Azure Government einrichten.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: fd97161ffa075a6165ea963ef80bfabf8904576e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0ebc882646b5ff3f62ddddf91cffc85cb5e0da6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81725743"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109976"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Einrichten einer Appliance in Azure Government 
 
-In diesem Artikel finden Sie Informationen zum Bereitstellen einer [Azure Migrate-Appliance](deploy-appliance.md) für VMware-VMs, Hyper-V-VMs und physische Server in einer Azure Government-Cloud. Sie führen ein Skript aus, um die Appliance zu erstellen und zu überprüfen, ob sie eine Verbindung mit Azure herstellen kann. Wenn Sie eine Appliance in der öffentlichen Cloud einrichten möchten, lesen Sie [diesen Artikel](deploy-appliance-script.md).
+In diesem Artikel finden Sie Informationen zum Bereitstellen einer [Azure Migrate-Appliance](./migrate-appliance-architecture.md) für VMware-VMs, Hyper-V-VMs und physische Server in einer Azure Government-Cloud. Sie führen ein Skript aus, um die Appliance zu erstellen und zu überprüfen, ob sie eine Verbindung mit Azure herstellen kann. Wenn Sie eine Appliance in der öffentlichen Cloud einrichten möchten, lesen Sie [diesen Artikel](deploy-appliance-script.md).
 
 
 > [!NOTE]
@@ -45,14 +45,14 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 1. Öffnen Sie auf dem Computer, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip MD5```
+    - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
 
-3. Überprüfen Sie die generierten Hashwerte. Für die neueste Applianceversion:
+3. Überprüfen Sie die aktuelle Applianceversion und die Hashwerte:
 
-    **Algorithmus** | **Hashwert**
-    --- | ---
-    MD5 | 6316bcc8bc932204295bfe33f4be3949
-          
+    **Algorithmus** | **Download** | **SHA256**
+    --- | --- | ---
+    VMware (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+
 
 ### <a name="run-the-script"></a>Führen Sie das Skript aus.
 
@@ -97,13 +97,14 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 1. Öffnen Sie auf dem Computer, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip MD5```
+    - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
 
-3. Überprüfen Sie die generierten Hashwerte. Für die neueste Applianceversion:
+3. Überprüfen Sie die aktuelle Applianceversion und die Hashwerte:
 
-    **Algorithmus** | **Hashwert**
-    --- | ---
-    MD5 | 717f8b9185f565006b5aff0215ecadac
+    **Szenario** | **Download** | **SHA256**
+    --- | --- | ---
+    Hyper-V (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+
           
 
 ### <a name="run-the-script"></a>Führen Sie das Skript aus.
@@ -149,13 +150,13 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 1. Öffnen Sie auf dem Computer, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5```
+    - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
 
-3. Überprüfen Sie die generierten Hashwerte. Für die neueste Applianceversion:
+3. Überprüfen Sie die aktuelle Applianceversion und die Hashwerte:
 
-    **Algorithmus** | **Hashwert**
-    --- | ---
-    MD5 | f81c155fc4a1409901caea948713913f
+    **Szenario** | **Herunterladen*** | **Hashwert**
+    --- | --- | ---
+    Physisch (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
           
 
 ### <a name="run-the-script"></a>Führen Sie das Skript aus.

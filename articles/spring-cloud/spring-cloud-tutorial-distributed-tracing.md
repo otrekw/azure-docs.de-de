@@ -1,17 +1,17 @@
 ---
-title: 'Tutorial: Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud'
-description: In diesem Tutorial erfahren Sie, wie Sie die verteilte Ablaufverfolgung von Spring Cloud über Azure Application Insights verwenden.
+title: Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud
+description: Hier erfahren Sie, wie Sie die verteilte Ablaufverfolgung von Spring Cloud über Azure Application Insights verwenden.
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ccaf58465c1ade0228daea2b535d06fb6168d64f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78273212"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142125"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud
 
@@ -27,7 +27,7 @@ In diesem Artikel wird Folgendes behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um dieses Tutorial abzuschließen, benötigen Sie einen Azure Spring Cloud-Dienst, der bereits bereitgestellt ist und ausgeführt wird. Führen Sie den [Schnellstart zum Bereitstellen einer App über die Azure CLI](spring-cloud-quickstart-launch-app-cli.md) aus, um einen Azure Spring Cloud-Dienst bereitzustellen und auszuführen.
+Um diese Prozeduren zu befolgen, benötigen Sie einen Azure Spring Cloud-Dienst, der bereits bereitgestellt ist und ausgeführt wird. Führen Sie den [Schnellstart zum Bereitstellen einer App über die Azure CLI](spring-cloud-quickstart-launch-app-cli.md) aus, um einen Azure Spring Cloud-Dienst bereitzustellen und auszuführen.
     
 ## <a name="add-dependencies"></a>Hinzufügen von Abhängigkeiten
 
@@ -102,7 +102,4 @@ Application Insights bietet neben Anwendungsübersicht und Suchfunktion auch Üb
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie weitere Informationen zur verteilten Ablaufverfolgung erhalten und erfahren, wie Sie die Funktion in Azure Spring Cloud aktivieren. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre Anwendung an eine Azure Cosmos DB-Datenbank binden.
-
-> [!div class="nextstepaction"]
-> [Erfahren Sie, wie Sie eine Azure Cosmos DB-Datenbank an Ihre Azure Spring Cloud-Anwendung binden](spring-cloud-tutorial-bind-cosmos.md)
+In diesem Artikel haben Sie weitere Informationen zur verteilten Ablaufverfolgung erhalten und erfahren, wie Sie die Funktion in Azure Spring Cloud aktivieren. Informationen zum Binden von Diensten an eine Anwendung finden Sie unter [Binden einer Azure Cosmos DB-Datenbank an Ihre Azure Spring Cloud-Anwendung](spring-cloud-tutorial-bind-cosmos.md).

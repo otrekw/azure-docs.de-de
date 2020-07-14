@@ -1,16 +1,16 @@
 ---
 title: Übersicht über die Verwaltung in Azure – Azure Governance
 description: Dieser Artikel enthält eine Übersicht über die Verwaltungsbereiche für Azure-Anwendungen und -Ressourcen sowie Links zu Inhalten zu Azure-Verwaltungstools.
-ms.date: 05/22/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828146"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041913"
 ---
-# <a name="overview-of-management-services-in-azure"></a>Übersicht der Verwaltungsdienste in Azure
+# <a name="what-are-the-azure-management-areas"></a>Was sind die Azure-Verwaltungsbereiche?
 
 Governance in Azure ist ein Aspekt der Azure-Verwaltung. Dieser Artikel behandelt die verschiedenen Verwaltungsbereiche für die Bereitstellung und Verwaltung Ihrer Ressourcen in Azure.
 
@@ -26,7 +26,7 @@ In den folgenden Abschnitten werden verschiedenen Verwaltungsbereiche kurz besch
 
 ## <a name="monitor"></a>Überwachen
 
-„Überwachung“ ist das Erfassen und Analysieren von Daten, um die Leistung, Integrität und Verfügbarkeit Ihrer Ressourcen zu überwachen. Eine effektive Überwachungsstrategie hilft Ihnen, den Betrieb von Komponenten zu verstehen und die Verfügbarkeit durch Benachrichtigungen zu steigern. Eine Übersicht über die Überwachung, die die verschiedenen verwendeten Dienste abdeckt, finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](../monitoring/monitoring-overview.md).
+„Überwachung“ ist das Erfassen und Analysieren von Daten, um die Leistung, Integrität und Verfügbarkeit Ihrer Ressourcen zu überwachen. Eine effektive Überwachungsstrategie hilft Ihnen, den Betrieb von Komponenten zu verstehen und die Verfügbarkeit durch Benachrichtigungen zu steigern. Eine Übersicht über die Überwachung, die die verschiedenen verwendeten Dienste abdeckt, finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](../azure-monitor/overview.md).
 
 ## <a name="configure"></a>Konfigurieren
 
@@ -46,9 +46,16 @@ Verwalten Sie die Sicherheit Ihrer Ressourcen und Daten. Ein Sicherheitsprogramm
 
 ## <a name="protect"></a>Schützen
 
-„Schutz“ bezieht sich auf das Bereitstellen Ihrer Anwendungen und Daten auch bei Ausfällen, die außerhalb Ihrer Einflussmöglichkeiten liegen. Schutz in Azure wird durch zwei Dienste bereitgestellt. [Azure Backup](../backup/backup-introduction-to-azure-backup.md) bietet die Sicherung und Wiederherstellung Ihrer Daten entweder in der Cloud oder lokal. [Azure Site Recovery](../site-recovery/site-recovery-overview.md) bietet Geschäftskontinuität und sofortige Wiederherstellung im Katastrophenfall.
+„Schutz“ bezieht sich auf das Bereitstellen Ihrer Anwendungen und Daten auch bei Ausfällen, die außerhalb Ihrer Einflussmöglichkeiten liegen. Schutz in Azure wird durch zwei Dienste bereitgestellt. [Azure Backup](../backup/backup-overview.md) bietet die Sicherung und Wiederherstellung Ihrer Daten entweder in der Cloud oder lokal. [Azure Site Recovery](../site-recovery/site-recovery-overview.md) bietet Geschäftskontinuität und sofortige Wiederherstellung im Katastrophenfall.
 
 ## <a name="migrate"></a>Migrieren
 
 „Migration“ bezieht sich auf den Übergang von Workloads, die derzeit lokal ausgeführt werden, in die Azure-Cloud.
-[Azure Migrate](../migrate/migrate-overview.md) ist ein Dienst für die Bewertung der Migrationseignung von lokalen virtuellen Computern zu Azure. Azure Site Recovery migriert virtuelle Computer [aus einer lokalen Umgebung](../site-recovery/migrate-tutorial-on-premises-azure.md) oder aus [Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md). [Azure Database Migration](../dms/dms-overview.md) hilft Ihnen bei der Migration von Datenbankenquellen zu Azure Data-Plattformen.
+[Azure Migrate](../migrate/migrate-services-overview.md) ist ein Dienst für die Bewertung der Migrationseignung von lokalen virtuellen Computern zu Azure. Azure Site Recovery migriert virtuelle Computer [aus einer lokalen Umgebung](../site-recovery/migrate-tutorial-on-premises-azure.md) oder aus [Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md). [Azure Database Migration](../dms/dms-overview.md) hilft Ihnen bei der Migration von Datenbankenquellen zu Azure Data-Plattformen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu Azure Governance finden Sie in den folgenden Artikeln:
+
+- [Azure Governance-Hub](./index.yml)
+- [Governance für die Einführung der Microsoft Cloud für Azure (Microsoft Cloud Adoption Framework)](/azure/cloud-adoption-framework/govern/)

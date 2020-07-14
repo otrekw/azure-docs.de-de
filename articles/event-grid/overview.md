@@ -1,20 +1,14 @@
 ---
 title: Was ist Azure Event Grid?
 description: Senden Sie Ereignisdaten mit Azure Event Grid aus einer Quelle an Handler. Erstellen Sie ereignisbasierte Anwendungen, und integrieren Sie sie in Azure-Dienste.
-services: event-grid
-author: femila
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
-ms.date: 02/20/2020
-ms.author: femila
-ms.custom: seodec18
-ms.openlocfilehash: 38f0218a7dedd243cccfab4b0b5ecfb73d3a626a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 07/07/2020
+ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560304"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116130"
 ---
 # <a name="what-is-azure-event-grid"></a>Was ist Azure Event Grid?
 
@@ -103,7 +97,7 @@ Event Grid verknüpft Datenquellen und Ereignishandler. Verwenden Sie Event Grid
 
 ![Betriebsautomatisierung](./media/overview/Ops_automation.png)
 
-Mit Event Grid können Sie die Automatisierung beschleunigen und die Richtlinienerzwingung vereinfachen. Nutzen Sie Event Grid z.B., um Azure Automation zu benachrichtigen, wenn ein virtueller Computer oder eine SQL-Datenbankinstanz erstellt wird. Verwenden Sie diese Ereignisse, um automatisch die Kompatibilität von Dienstkonfigurationen zu überprüfen, Metadaten in Betriebstools einzulesen, virtuelle Computer zu kennzeichnen oder Arbeitselemente abzulegen.
+Mit Event Grid können Sie die Automatisierung beschleunigen und die Richtlinienerzwingung vereinfachen. Nutzen Sie Event Grid z. B., um Azure Automation zu benachrichtigen, wenn ein virtueller Computer oder eine Datenbank in Azure SQL erstellt wird. Verwenden Sie diese Ereignisse, um automatisch die Kompatibilität von Dienstkonfigurationen zu überprüfen, Metadaten in Betriebstools einzulesen, virtuelle Computer zu kennzeichnen oder Arbeitselemente abzulegen.
 
 ### <a name="application-integration"></a>Anwendungsintegration
 

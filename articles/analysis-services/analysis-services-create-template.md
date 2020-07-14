@@ -8,35 +8,37 @@ ms.service: analysis-services
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 6f0d5f084c5cd48abf399e351c627d64951ce719
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 4dd7906ed32faa630ba074cb29e7987a64205cb5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697451"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042100"
 ---
-# <a name="quickstart-create-a-server---azure-resource-manager-template"></a>Schnellstart: Erstellen eines Servers – Azure Resource Manager-Vorlage
+# <a name="quickstart-create-a-server---arm-template"></a>Schnellstart: Erstellen eines Servers: ARM-Vorlage
 
-In dieser Schnellstartanleitung wird erläutert, wie eine Analysis Services-Serverressource in Ihrem Azure-Abonnement mithilfe einer Resource Manager-Vorlage erstellt wird.
+In dieser Schnellstartanleitung wird erläutert, wie eine Analysis Services-Serverressource in Ihrem Azure-Abonnement mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellt wird.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Azure-Abonnement**: Besuchen Sie die Webseite [Kostenlose Azure-Testversion](https://azure.microsoft.com/offers/ms-azr-0044p/), und erstellen Sie ein Konto.
 * **Azure Active Directory:** Ihr Abonnement muss einem Azure Active Directory-Mandanten zugeordnet sein. Und Sie müssen bei Azure mit einem Konto in diesem Azure Active Directory angemeldet sein. Weitere Informationen finden Sie unter [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md).
 
-## <a name="create-a-server"></a>Erstellen eines Servers
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-analysis-services-create/).
 
 :::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json" range="1-79" highlight="63-78":::
 
-In der Vorlage ist eine einzelne [Microsoft.AnalysisServices/servers](https://docs.microsoft.com/azure/templates/microsoft.analysisservices/2017-08-01/servers)-Ressource mit einer Firewallregel definiert. 
+In der Vorlage ist eine einzelne [Microsoft.AnalysisServices/servers](/azure/templates/microsoft.analysisservices/servers)-Ressource mit einer Firewallregel definiert.
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 1. Wählen Sie den folgenden „Bereitstellung in Azure“-Link aus, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage wird zum Erstellen einer Analysis Services-Serverressource und Festlegen der erforderlichen und optionalen Eigenschaften verwendet.
 
@@ -61,7 +63,7 @@ In der Vorlage ist eine einzelne [Microsoft.AnalysisServices/servers](https://do
 
 3. Wählen Sie die Option **Kaufen**. Nach der erfolgreichen Bereitstellung des Servers erhalten Sie eine Benachrichtigung:
 
-   ![Resource Manager-Vorlage, Benachrichtigung zur Bereitstellung](./media/analysis-services-create-template/notification.png)
+   ![ARM-Vorlage, Benachrichtigung zur Bereitstellung](./media/analysis-services-create-template/notification.png)
 
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 
@@ -102,7 +104,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Azure Resource Manager-Vorlage verwendet, um eine neue Ressourcengruppe und eine Azure Analysis Services-Serverressource zu erstellen. Nachdem Sie eine Serverressource anhand einer Vorlage erstellt haben, könnten die folgenden Themen für Sie relevant sein:
+In dieser Schnellstartanleitung haben Sie eine ARM-Vorlage verwendet, um eine neue Ressourcengruppe und eine Azure Analysis Services-Serverressource zu erstellen. Nachdem Sie eine Serverressource anhand einer Vorlage erstellt haben, könnten die folgenden Themen für Sie relevant sein:
+
 - [Schnellstart: Erstellen eines Servers – PowerShell](analysis-services-create-powershell.md)
 - [Hinzufügen eines Beispielmodells über das Portal](analysis-services-create-sample-model.md)
 - [Konfigurieren von Serveradministrator- und Benutzerrollen](tutorials/analysis-services-tutorial-roles.md)

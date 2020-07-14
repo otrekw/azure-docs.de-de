@@ -103,6 +103,8 @@
       href: howto-import-export-data.md
     - name: Routing von Ereignissen an einen benutzerdefinierten Endpunkt
       href: howto-app-configuration-event.md
+    - name: Konfigurationsspeicher automatisch sichern
+      href: howto-backup-config-store.md
     - name: Bewährte Methoden
       href: howto-best-practices.md
 - name: Verweis

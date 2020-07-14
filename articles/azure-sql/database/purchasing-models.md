@@ -3,8 +3,8 @@ title: Kaufmodelle
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Informieren Sie sich über die Kaufmodelle, die für Azure SQL-Datenbank und Azure SQL Managed Instance verfügbar sind.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,35 +12,39 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/28/2020
-ms.openlocfilehash: 88d5c36829e2920e18a1be44ba43d7defe883d3e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a11894eb94b73d8d31ca7135be2ba9c05eca5e04
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84231243"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075878"
 ---
-# <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database--sql-managed-instance"></a>Auswahl zwischen den Kaufmodellen vCore und DTU – Azure SQL-Datenbank und SQL Managed Instance
+# <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Auswählen zwischen dem vCore-basierten und dem DTU-basierten Kaufmodell – Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL-Datenbank und SQL Managed Instance ermöglicht Ihnen den einfachen Kauf einer vollständig verwalteten PaaS-Datenbank-Engine (Platform-as-a-Service), die Ihre Anforderungen an Leistung und Kosten erfüllt. Je nach dem Bereitstellungsmodell, das Sie für Azure SQL-Datenbank ausgewählt haben, können Sie das Kaufmodell auswählen, das für Sie funktioniert:
+Azure SQL-Datenbank und Azure SQL Managed Instance ermöglichen Ihnen den einfachen Kauf einer vollständig verwalteten PaaS-Datenbank-Engine (Platform-as-a-Service), die Ihre Anforderungen an Leistung und Kosten erfüllt. Je nach dem Bereitstellungsmodell, das Sie für Azure SQL-Datenbank ausgewählt haben, können Sie das Kaufmodell auswählen, das für Sie funktioniert:
 
 - [Auf virtuellem Kern basierendes (vCore-basiertes) Kaufmodell](service-tiers-vcore.md) (empfohlen). Dieses Kaufmodell ermöglicht die Wahl zwischen einer bereitgestellten Computeebene und einer serverlosen Computeebene. Mit der bereitgestellten Computeebene wählen Sie die genaue Menge an Computeressourcen aus, die immer für Ihre Workload bereitgestellt werden. Mit der serverlosen Computeebene geben Sie die automatische Skalierung der Computeressourcen über einen konfigurierbaren Computebereich an. Mit dieser Computeebene haben Sie auch die Möglichkeit, die Datenbank entsprechend der Workloadaktivität automatisch anzuhalten und fortzusetzen. Der V-Kern-Einzelpreis pro Zeiteinheit ist auf der bereitgestellten Computeebene niedriger als auf der serverlosen Computeebene.
 - [Auf Datenbanktransaktionseinheit basierendes (DTU-basiertes) Kaufmodell](service-tiers-dtu.md). Dieses Kaufmodell bietet gebündelte Compute- und Speicherpakete, die für gängige Workloads zusammengestellt wurden.
 
 Es gibt zwei Kaufmodelle:
 
-- Das [vCore-basierte Kaufmodell](service-tiers-vcore.md) ist sowohl für [Azure SQL-Datenbank](sql-database-paas-overview.md) als auch für [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) verfügbar. Die [Dienstebene „Hyperscale“](service-tier-hyperscale.md) ist für einzelne SQL-Datenbanken verfügbar, für die das [vCore-basierte Kaufmodell](service-tiers-vcore.md) verwendet wird.
+- Das [vCore-basierte Kaufmodell](service-tiers-vcore.md) ist sowohl für [Azure SQL-Datenbank](sql-database-paas-overview.md) als auch für [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) verfügbar. Die [Dienstebene „Hyperscale“](service-tier-hyperscale.md) ist für Einzeldatenbanken verfügbar, für die das [vCore-basierte Kaufmodell](service-tiers-vcore.md) verwendet wird.
 - Das [DTU-basierte Kaufmodell](service-tiers-dtu.md) ist für [Azure SQL-Datenbank](single-database-manage.md) verfügbar.
 
 In der folgenden Tabelle und im Diagramm werden die Kaufmodelle „V-Kern-basiertes Modell“ und „DTU-basiertes Modell“ verglichen und gegenübergestellt:
 
 |**Kaufmodell**|**Beschreibung**|**Am besten geeignet für**|
 |---|---|---|
-|DTU-basiertes Modell|Dieses Modell basiert auf einem Paket mit Compute-, Speicher- und E/A-Ressourcen. Computegrößen werden für Einzeldatenbanken in DTUs und für Pools für elastische Datenbanken in elastischen Datenbanktransaktionseinheiten (eDTUs) ausgedrückt. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Was sind DTUs und eDTUs?](purchasing-models.md#dtu-based-purchasing-model).|Eignet sich am besten für Kunden, die einfache, vorkonfigurierte Ressourcenoptionen benötigen.|
-|V-Kern-basiertes Modell|Mit diesem Modell können Sie Compute- und Speicherressourcen einzeln auswählen. Mit dem vCore-basierten Kaufmodell können Sie auch den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) für SQL Server nutzen, um Kosten einzusparen.|Eignet sich am besten für Kunden, für die Flexibilität, Kontrolle und Transparenz im Vordergrund stehen.|
+|DTU-basiertes Modell|Dieses Modell basiert auf einem Paket mit Compute-, Speicher- und E/A-Ressourcen. Computegrößen werden für Einzeldatenbanken in DTUs und für Pools für elastische Datenbanken in elastischen Datenbanktransaktionseinheiten (eDTUs) ausgedrückt. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Was sind DTUs und eDTUs?](purchasing-models.md#dtu-based-purchasing-model).|Kunden, die einfache, vorkonfigurierte Ressourcenoptionen wünschen|
+|vCore-basiertes Modell|Mit diesem Modell können Sie Compute- und Speicherressourcen einzeln auswählen. Mit dem vCore-basierten Kaufmodell können Sie auch den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) für SQL Server nutzen, um Kosten einzusparen.|Kunden, die Flexibilität, Kontrolle und Transparenz schätzen|
 ||||  
 
 ![Vergleich der Preismodelle](./media/purchasing-models/pricing-model.png)
+
+Möchten Sie Ihre Cloudausgaben optimieren und somit Geld sparen?
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="compute-costs"></a>Computekosten
 
@@ -48,19 +52,19 @@ In der folgenden Tabelle und im Diagramm werden die Kaufmodelle „V-Kern-basier
 
 In der bereitgestellten Computeebene spiegeln die Computekosten die gesamte Computekapazität wider, die für die Anwendung bereitgestellt wird.
 
-Für die Dienstebene „Unternehmenskritisch“ werden automatisch mindestens drei Replikate zugeordnet. Um diese zusätzliche Zuordnung von Computeressourcen widerzuspiegeln, ist der Preis im vCore-basierten Kaufmodell für die Dienstebene „Unternehmenskritisch“ ungefähr 2,7 Mal höher als für die Dienstebene „Universell“. Entsprechend spiegelt der höhere Speicherpreis pro GB für die Dienstebene „Unternehmenskritisch“ die höheren E/A-Grenzwerte und die geringere Latenz des SSD-Speichers wider.
+In der Dienstebene „Unternehmenskritisch“ werden mindestens drei Replikate automatisch zugeordnet. Um diese zusätzliche Zuordnung von Computeressourcen widerzuspiegeln, ist der Preis im vCore-basierten Kaufmodell in der Dienstebene „Unternehmenskritisch“ ungefähr 2,7 Mal höher als in der Dienstebene „Universell“. Entsprechend spiegelt der höhere Speicherpreis pro GB für die Dienstebene „Unternehmenskritisch“ die höheren E/A-Grenzwerte und die geringere Latenz des SSD-Speichers wider.
 
 Die Kosten für Sicherungsspeicher sind für die Dienstebene „Unternehmenskritisch“ und die Dienstebene „Universell“ identisch, weil beide Ebenen Standardspeicher für Sicherungen verwenden.
 
 ### <a name="serverless-compute-costs"></a>Serverlose Computekosten
 
-Eine Beschreibung, wie Computekapazität definiert ist und Kosten für die serverlose Computeebene berechnet werden, finden Sie unter [SQL-Datenbank – serverlos](serverless-tier-overview.md).
+Eine Beschreibung, wie Computekapazität definiert ist und Kosten für die serverlose Computeebene berechnet werden, finden Sie unter [Azure SQL-Datenbank – Serverlos](serverless-tier-overview.md).
 
 ## <a name="storage-costs"></a>Speicherkosten
 
 Unterschiedliche Arten von Speicher werden auch unterschiedlich berechnet. Für Datenspeicher wird Ihnen der bereitgestellte Speicher basierend auf der von Ihnen gewählten maximalen Datenbank- oder Poolgröße berechnet. Die Kosten ändern sich nicht, sofern Sie dieses Maximum nicht verringern oder erhöhen. Der Sicherungsspeicher ist mit den automatischen Sicherungen Ihrer Instanz verbunden und wird dynamisch zugeordnet. Durch eine Verlängerung des Aufbewahrungszeitraums für Ihre Sicherungen erhöht sich auch der von Ihrer Instanz verbrauchte Sicherungsspeicher.
 
-Standardmäßig werden automatisierte Sicherungen Ihrer Datenbanken für einen Zeitraum von 7 Tagen in ein Standard-BLOB-Speicherkonto mit georedundantem Speicher mit Lesezugriff (RA-GRS) kopiert. Dieser Speicher wird für wöchentliche vollständige Sicherungen, tägliche differenzielle Sicherungen und im 5-Minuten-Takt kopierte Sicherungen von Transaktionsprotokollen verwendet. Die Größen der Transaktionsprotokolle hängen von der Änderungsrate der Datenbank ab. Eine Mindestspeichermenge, die 100 Prozent der Datenbankgröße entspricht, wird kostenlos zur Verfügung gestellt. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet.
+Standardmäßig werden automatisierte Sicherungen Ihrer Datenbanken von einem Zeitraum von sieben Tagen in ein Blob-Standardspeicherkonto mit georedundantem Speicher mit Lesezugriff (Read-Access Geo-Redundant Storage, RA-GRS) kopiert. Dieser Speicher wird für wöchentliche vollständige Sicherungen, tägliche differenzielle Sicherungen und im 5-Minuten-Takt kopierte Sicherungen von Transaktionsprotokollen verwendet. Die Größen der Transaktionsprotokolle hängen von der Änderungsrate der Datenbank ab. Eine Mindestspeichermenge, die 100 Prozent der Datenbankgröße entspricht, wird kostenlos zur Verfügung gestellt. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet.
 
 Weitere Informationen zu den Preisen für Storage finden Sie auf der Seite [Azure SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
@@ -68,7 +72,7 @@ Weitere Informationen zu den Preisen für Storage finden Sie auf der Seite [Azur
 
 Ein virtueller Kern (V-Kern) repräsentiert eine logische CPU und bietet Ihnen die Möglichkeit, zwischen verschiedenen Hardwaregenerationen und den physischen Hardwaremerkmalen (z.B. der Anzahl der Kerne, dem Arbeitsspeicher, der Speichergröße) zu wählen. Beim vCore-basierten Kaufmodell erhalten Sie Flexibilität, Kontrolle und Transparenz in Bezug auf den individuellen Ressourcenverbrauch. Außerdem können Sie die lokalen Workloadanforderungen leicht auf die Cloud übertragen. Mit diesem Modell können Sie Compute-, Arbeitsspeicher- und Speicherressourcen entsprechend Ihren jeweiligen Workloadanforderungen auswählen.
 
-Beim vCore-basierten Kaufmodell können Sie für SQL-Datenbank und SQL Managed Instance zwischen den Dienstebenen [Universell](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) und [Unternehmenskritisch](high-availability-sla.md#premium-and-business-critical-service-tier-availability) wählen.  Für einzelne Azure SQL-Datenbanken können Sie auch die [Dienstebene „Hyperscale“](service-tier-hyperscale.md) auswählen.
+Beim vCore-basierten Kaufmodell können Sie für SQL-Datenbank und SQL Managed Instance zwischen den Dienstebenen [Universell](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) und [Unternehmenskritisch](high-availability-sla.md#premium-and-business-critical-service-tier-availability) wählen.  Für Einzeldatenbanken können Sie auch die [Dienstebene „Hyperscale“](service-tier-hyperscale.md) auswählen.
 
 Mit dem vCore-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln auswählen, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Beim vCore-basierten Kaufmodell zahlen Sie für Folgendes:
 
@@ -78,9 +82,9 @@ Mit dem vCore-basierten Kaufmodell können Sie Compute- und Speicherressourcen e
 
 > [!IMPORTANT]
 > Computeressourcen, E/A sowie Daten- und Protokollspeicher werden pro Datenbank oder Pool für elastische Datenbanken berechnet. Sicherungsspeicher wird pro Datenbank berechnet. Weitere Informationen zu den Kosten für SQL Managed Instance finden Sie unter [SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md).
-> **Regionseinschränkungen:** Die aktuelle Liste der unterstützten Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Wenn Sie eine SQL Managed Instance-Instanz in einer Region erstellen möchten, die derzeit nicht unterstützt wird, [senden Sie eine Supportanfrage über das Azure-Portal](quota-increase-request.md).
+> **Regionseinschränkungen:** Die aktuelle Liste der unterstützten Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Wenn Sie eine verwaltete Instanz in einer Region erstellen möchten, die derzeit nicht unterstützt wird, [senden Sie eine Supportanfrage über das Azure-Portal](quota-increase-request.md).
 
-Wenn Ihre Azure SQL-Datenbank mehr als 300 DTUs verbraucht, können Sie Ihre Kosten durch eine Umstellung auf das vCore-basierte Kaufmodell möglicherweise senken. Sie können für die Umstellung die von Ihnen bevorzugte API oder das Azure-Portal verwenden, ohne dass es zu Ausfallzeit kommt. Allerdings ist eine Umstellung nicht erforderlich und erfolgt nicht automatisch. Wenn das DTU-basierte Kaufmodell Ihre Leistungs- und Geschäftsanforderungen erfüllt, sollten Sie es weiter nutzen.
+Wenn Ihre Datenbank mehr als 300 DTUs verbraucht, können Sie durch eine Umstellung auf das vCore-basierte Kaufmodell möglicherweise Ihre Kosten senken. Sie können für die Umstellung die von Ihnen bevorzugte API oder das Azure-Portal verwenden, ohne dass es zu Ausfallzeit kommt. Allerdings ist eine Umstellung nicht erforderlich und erfolgt nicht automatisch. Wenn das DTU-basierte Kaufmodell Ihre Leistungs- und Geschäftsanforderungen erfüllt, sollten Sie es weiter nutzen.
 
 Informationen zum Wechsel vom DTU-basierten Kaufmodell zum vCore-basierten Kaufmodell finden Sie unter [Migrieren von DTU zu vCore](migrate-dtu-to-vcore.md).
 
@@ -96,14 +100,14 @@ Für eine einzelne Datenbank in einer bestimmten Computegröße innerhalb einer 
 
 Das Verhältnis zwischen diesen Ressourcen wurde ursprünglich anhand einer [OLTP-Benchmark-Workload](service-tiers-dtu.md) ermittelt, die für realistische Onlinetransaktionsverarbeitungs-Workloads (Online Transaction Processing, OLTP) typisch ist. Wenn Ihre Workload den Umfang einer dieser Ressourcen überschreitet, wird der Durchsatz gedrosselt, wodurch eine niedrigere Leistung und Timeouts verursacht werden.
 
-Die Ressourcen, die von Ihrer Workload verwendet werden, wirken sich nicht auf die Ressourcen aus, die für andere SQL-Datenbanken in der Azure-Cloud verfügbar sind. Umgekehrt wirken sich die Ressourcen, die von anderen Workloads verwendet werden, nicht auf die Ressourcen aus, die für Ihre SQL-Datenbank verfügbar sind.
+Die von Ihrer Workload verwendeten Ressourcen wirken sich nicht auf die Ressourcen aus, die für andere Datenbanken in der Azure-Cloud verfügbar sind. Umgekehrt wirken sich die von anderen Workloads verwendeten Ressourcen nicht auf die Ressourcen aus, die für Ihre Datenbank verfügbar sind.
 
 ![Begrenzungsrahmen](./media/purchasing-models/bounding-box.png)
 
-DTUs sind besonders nützlich, um die relativen Ressourcen zu verstehen, die für Azure SQL-Datenbanken bei unterschiedlichen Computegrößen und Diensttarifen zugeordnet werden. Beispiel:
+DTUs sind besonders aufschlussreich, um die relativen Ressourcen zu verstehen, die für Datenbanken in unterschiedlichen Computegrößen und Dienstebenen zugeordnet werden. Beispiel:
 
 - Eine Verdoppelung der DTUs durch Erhöhen der Computegröße einer Datenbank entspricht einer Verdoppelung des Satzes von Ressourcen, die dieser Datenbank zur Verfügung stehen.
-- Eine Premium-Dienstebene-P11-Datenbank mit 1750 DTUs bietet eine 350 Mal höhere DTU-Computeleistung als eine Basic-Dienstebene-Datenbank mit fünf DTUs.  
+- Eine P11-Datenbank in der Dienstebene „Premium“ mit 1750 DTUs bietet eine 350 Mal höhere DTU-Computeleistung als eine Datenbank in der Dienstebene „Basic“mit fünf DTUs.  
 
 Um einen tieferen Einblick in den Ressourcenverbrauch (DTU) Ihrer Workload zu erhalten, verwenden Sie die [Statistik zur Abfrageleistung](query-performance-insight-use.md) für die folgenden Aufgaben:
 
@@ -113,7 +117,7 @@ Um einen tieferen Einblick in den Ressourcenverbrauch (DTU) Ihrer Workload zu er
 
 ### <a name="elastic-database-transaction-units-edtus"></a>Transaktionseinheiten in elastischer Datenbank (eDTUs)
 
-Für SQL-Datenbanken, die immer verfügbar sind, können Sie diese Datenbanken, statt eine dedizierte Menge von Ressourcen (DTUs) bereitzustellen, die nicht immer benötigt werden, in einem [Pool für elastische Datenbanken](elastic-pool-overview.md) platzieren. Die Datenbanken in einem Pool für elastische Datenbanken befinden sich auf einem einzigen Server und nutzen gemeinsam einen Pool von Ressourcen.
+Sie können Datenbanken, die immer verfügbar sind, in einem [Pool für elastische Datenbanken](elastic-pool-overview.md) platzieren, statt eine dedizierte Menge von Ressourcen (DTUs) für sie bereitzustellen, die nicht immer benötigt werden. Die Datenbanken in einem Pool für elastische Datenbanken befinden sich auf einem einzigen Server und nutzen gemeinsam einen Pool von Ressourcen.
 
 Die gemeinsam genutzten Ressourcen in einem Pool für elastische Datenbanken werden als elastische Datenbanktransaktionseinheiten (elastic Database Transaction Units, eDTUs) gemessen. Pools für elastische Datenbanken stellen eine einfache und kostengünstige Lösung dar, um Leistungsziele für mehrere Datenbanken mit unterschiedlichsten und unvorhersehbaren Nutzungsmustern zu verwalten. Mit einem Pool für elastische Datenbanken wird sichergestellt, dass eine einzelne Datenbank im Pool nicht alle Ressourcen nur für sich nutzen kann, wodurch dafür gesorgt ist, dass jeder Datenbank im Pool immer eine Mindestmenge an erforderlichen Ressourcen zur Verfügung steht.
 
@@ -134,7 +138,7 @@ Verwenden Sie die folgende Formel, um den durchschnittlichen Prozentsatz der DTU
 Die Eingabewerte für diese Formel können aus den DMVs [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) und [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) abgerufen werden. Anders ausgedrückt: Um den Prozentsatz der DTU-/eDTU-Nutzung für den DTU-/eDTU-Grenzwert einer Datenbank oder eines Pools für elastische Datenbanken zu ermitteln, wählen Sie den größten Prozentwert aus `avg_cpu_percent`, `avg_data_io_percent` und `avg_log_write_percent` zu einem bestimmten Zeitpunkt aus.
 
 > [!NOTE]
-> Der DTU-Grenzwert einer Datenbank wird durch die für die Datenbank verfügbaren Werte von CPU, Lesevorgängen, Schreibvorgängen und Arbeitsspeicher bestimmt. Da die SQL-Datenbank-Engine jedoch in der Regel den gesamten verfügbaren Arbeitsspeicher für den Datencache verwendet, um die Leistung zu verbessern, liegt der `avg_memory_usage_percent`-Wert unabhängig von der aktuellen Datenbankauslastung normalerweise nahe bei 100 %. Daher wird der Arbeitsspeicher nicht in der DTU-Nutzungsformel verwendet, obwohl er den DTU-Grenzwert indirekt beeinflusst.
+> Der DTU-Grenzwert einer Datenbank wird durch die für die Datenbank verfügbaren Werte von CPU, Lesevorgängen, Schreibvorgängen und Arbeitsspeicher bestimmt. Da die SQL-Datenbank-Engine jedoch in der Regel den gesamten verfügbaren Arbeitsspeicher für den Datencache verwendet, um die Leistung zu verbessern, liegt der `avg_memory_usage_percent`-Wert unabhängig von der aktuellen Datenbankauslastung normalerweise nahe bei 100 Prozent. Daher wird der Arbeitsspeicher nicht in der DTU-Nutzungsformel verwendet, obwohl er den DTU-Grenzwert indirekt beeinflusst.
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Workloads, die von einem elastischen Ressourcenpool profitieren
 
@@ -144,15 +148,15 @@ Pools eignen sich sehr gut für Datenbanken mit einer geringen durchschnittliche
 
 Im DTU-basierten Kaufmodell können Kunden die für ihre Datenbanken verwendete Hardwaregeneration nicht wählen. Während eine bestimmte Datenbank normalerweise für einen längeren Zeitraum (in der Regel mehrere Monate) auf einer bestimmten Hardwaregeneration verbleibt, gibt es bestimmte Ereignisse, die dazu führen können, dass eine Datenbank auf eine andere Hardwaregeneration verschoben wird.
 
-Beispielsweise kann eine Datenbank auf eine andere Hardwaregeneration verschoben werden, wenn sie auf ein anderes Dienstziel hoch- oder herunterskaliert wird, oder aber wenn die aktuelle Infrastruktur in einem Rechenzentrum ihre Kapazitätsgrenzen erreicht oder wenn die derzeit verwendete Hardware aufgrund ihres Lebenszyklus außer Betrieb gesetzt wird.
+Beispielsweise kann eine Datenbank auf eine andere Hardwaregeneration verschoben werden, wenn sie auf ein anderes Dienstziel hoch- oder herunterskaliert wird, oder aber wenn die aktuelle Infrastruktur in einem Rechenzentrum ihre Kapazitätsgrenzen erreicht oder die aktuell verwendete Hardware aufgrund ihres Lebenszyklus außer Betrieb genommen wird.
 
 Wenn eine Datenbank auf eine andere Hardware verschoben wird, kann sich die Workloadleistung ändern. Das DTU-Modell gewährleistet, dass der Durchsatz und die Reaktionszeit der [DTU-Benchmark](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark)-Workload im Wesentlichen identisch bleiben, wenn die Datenbank auf eine andere Hardwaregeneration verschoben wird, solange das Dienstziel (die Anzahl der DTUs) unverändert bleibt.
 
 Allerdings können die Auswirkungen der Verwendung unterschiedlicher Hardware für dasselbe Dienstziel über das gesamte Spektrum der in Azure SQL-Datenbank ausgeführten Kundenworkloads ausgeprägter sein. Unterschiedliche Workloads profitieren von unterschiedlichen Hardwarekonfigurationen und Features. Deshalb ist es für andere Workloads als der DTU-Benchmark möglich, Leistungsunterschiede zu erkennen, wenn die Datenbank von einer Hardwaregeneration auf eine andere verschoben wird.
 
-So ist beispielsweise die Leistung bei einer Anwendung, die von Netzwerklatenz abhängig ist, auf einer Gen5-Hardware besser als auf Gen4 aufgrund der Nutzung von beschleunigtem Netzwerkbetrieb in Gen5, während bei einer Anwendung mit intensiven E/A-Lesevorgängen die Leistung auf Gen4-Hardware besser ist als auf Gen5 aufgrund von höherem Arbeitsspeicher-pro-Kern-Verhältnis auf Gen4.
+So ist beispielsweise die Leistung bei einer Anwendung, die von Netzwerklatenz abhängig ist, auf einer Gen5-Hardware besser als auf Gen4 aufgrund der Nutzung von beschleunigtem Netzwerkbetrieb in Gen5, während bei einer Anwendung mit intensiven E/A-Lesevorgängen die Leistung auf Gen4-Hardware aufgrund eines höheren Arbeitsspeicher-pro-Kern-Verhältnisses auf Gen4 besser ist als auf Gen5.
 
-Kunden mit Workloads, die von Hardwareänderungen abhängig sind, oder Kunden, die die Auswahl der Hardwaregeneration für ihre Datenbank steuern möchten, können das Modell [V-Kern](service-tiers-vcore.md) verwenden, um beim Erstellen und Skalieren von Datenbanken ihre bevorzugte Hardwaregeneration auszuwählen. Im Modell „V-Kern“ werden Ressourcenlimits der jeweiligen Dienstziele auf jeder Hardwaregeneration dokumentiert – sowohl für [Einzeldatenbanken](resource-limits-vcore-single-databases.md) (Singletons) als auch für [Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md). Weitere Informationen zu Hardwaregenerationen im Modell „V-Kern“ finden Sie unter [Hardwaregenerationen](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
+Kunden mit Workloads, die von Hardwareänderungen abhängig sind, oder Kunden, die die Auswahl der Hardwaregeneration für ihre Datenbank steuern möchten, können das [Kaufmodell für virtuelle Kerne](service-tiers-vcore.md) verwenden, um beim Erstellen und Skalieren von Datenbanken ihre bevorzugte Hardwaregeneration auszuwählen. Im Modell „V-Kern“ werden Ressourcenlimits der jeweiligen Dienstziele auf jeder Hardwaregeneration dokumentiert – sowohl für [Einzeldatenbanken](resource-limits-vcore-single-databases.md) (Singletons) als auch für [Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md). Weitere Informationen zu Hardwaregenerationen im vCore-basierten Modell finden Sie unter [Hardwaregenerationen](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
 
 ## <a name="frequently-asked-questions-faqs"></a>Häufig gestellte Fragen (FAQs)
 

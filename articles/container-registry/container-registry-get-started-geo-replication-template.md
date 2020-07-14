@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen einer georeplizierten Registrierung – Resource Manager-Vorlage'
+title: 'Schnellstart: Erstellen einer georeplizierten Registrierung – Azure Resource Manager-Vorlage'
 description: Erfahren Sie, wie Sie mit einer Azure Resource Manager-Vorlage eine georeplizierte Azure Container Registry-Instanz erstellen.
 services: azure-resource-manager
 author: dlepow
@@ -8,28 +8,28 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
-ms.openlocfilehash: c94cd3b4b455691e85e7525007fcdf7a056a2b28
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3ed160780e15cc36648f7e2ad77e726901ee86c3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558078"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119853"
 ---
-# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-a-resource-manager-template"></a>Schnellstart: Erstellen einer georeplizierten Containerregistrierung mithilfe einer Resource Manager-Vorlage
+# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Schnellstart: Erstellen einer georeplizierten Containerregistrierung mithilfe einer ARM-Vorlage
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage eine Azure Container Registry-Instanz erstellen. Die Vorlage richtet eine [georeplizierte](container-registry-geo-replication.md) Registrierung ein, die automatisch Registrierungsinhalte über mehr als eine Azure-Region synchronisiert. Georeplikation ermöglicht den netzwerknahen Zugriff auf Images aus regionalen Bereitstellungen, bei gleichzeitiger Bereitstellung einer einzigen Verwaltungserfahrung. Es handelt sich um eine Funktion des Registrierungstarifs [Premium](container-registry-skus.md). 
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Azure Container Registry-Instanz erstellen. Die Vorlage richtet eine [georeplizierte](container-registry-geo-replication.md) Registrierung ein, die automatisch Registrierungsinhalte über mehr als eine Azure-Region synchronisiert. Georeplikation ermöglicht den netzwerknahen Zugriff auf Images aus regionalen Bereitstellungen, bei gleichzeitiger Bereitstellung einer einzigen Verwaltungserfahrung. Es handelt sich um eine Funktion des Registrierungstarifs [Premium](container-registry-skus.md).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Keine.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-geo-replicated-registry"></a>Erstellen einer georeplizierten Registrierung
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/). Die Vorlage richtet eine Registrierung und ein zusätzliches regionales Replikat ein.
 
@@ -42,7 +42,7 @@ Die folgenden Ressourcen sind in der Vorlage definiert:
 
 Weitere Beispiele für Azure Container Registry-Vorlagen finden Sie im [Schnellstartvorlagenkatalog](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerregistry&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
  1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen.
 
@@ -86,7 +86,7 @@ Sie können die Ressourcengruppe, die Registrierung und das Registrierungsreplik
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Azure Container Registry-Instanz mithilfe einer Resource Manager-Vorlage erstellt sowie an einem anderen Standort ein Registrierungsreplikat konfiguriert. Fahren Sie mit den Azure Container Registry-Tutorials fort, um eingehendere Informationen zu ACR zu erhalten.
+In dieser Schnellstartanleitung haben Sie eine Azure Container Registry-Instanz mithilfe einer ARM-Vorlage erstellt sowie an einem anderen Standort ein Registrierungsreplikat konfiguriert. Fahren Sie mit den Azure Container Registry-Tutorials fort, um eingehendere Informationen zu ACR zu erhalten.
 
 > [!div class="nextstepaction"]
 > [Tutorials zu Azure Container Registry](container-registry-tutorial-prepare-registry.md)
@@ -94,4 +94,4 @@ In dieser Schnellstartanleitung haben Sie eine Azure Container Registry-Instanz 
 Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen einer Vorlage finden Sie unter folgendem Link:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

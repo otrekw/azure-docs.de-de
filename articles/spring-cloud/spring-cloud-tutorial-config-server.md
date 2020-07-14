@@ -1,19 +1,19 @@
 ---
-title: 'Tutorial: Einrichten einer Konfigurationsserverinstanz in Azure Spring Cloud'
-description: In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal eine Spring Cloud-Konfigurationsserverinstanz für Azure Spring Cloud einrichten.
+title: Einrichten einer Config Server-Instanz in Azure Spring Cloud
+description: Erfahren Sie, wie Sie über das Azure-Portal eine Spring Cloud Config Server-Instanz für Azure Spring Cloud einrichten.
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 4c8b2e92cd7e88dde434e42971d091db689bfbc9
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: bfce1ce54da9d9e8e7feaa8e8eb5cd676866a1cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791298"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142185"
 ---
-# <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Tutorial: Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst
+# <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst
 
 In diesem Artikel wird gezeigt, wie Sie eine Spring Cloud-Konfigurationsserverinstanz mit Ihrem Azure Spring Cloud-Dienst verbinden.
 
@@ -190,7 +190,4 @@ Nachdem Sie Ihre Konfigurationsdatei gespeichert haben, wird auf der Registerkar
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie Ihre Spring Cloud-Konfigurationsserverinstanz aktivieren und konfigurieren. Weitere Informationen zum Verwalten Ihrer Anwendung finden Sie im Tutorial zur manuellen Skalierung Ihrer App.
-
-> [!div class="nextstepaction"]
-> [Tutorial: Skalieren einer Anwendung in Azure Spring Cloud](spring-cloud-tutorial-scale-manual.md)
+In diesem Artikel haben Sie erfahren, wie Sie Ihre Spring Cloud-Konfigurationsserverinstanz aktivieren und konfigurieren. Weitere Informationen zum Verwalten Ihrer Anwendung finden Sie unter [Skalieren einer Anwendung in Azure Spring Cloud](spring-cloud-tutorial-scale-manual.md).

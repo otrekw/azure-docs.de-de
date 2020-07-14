@@ -1,5 +1,5 @@
 ---
-title: Einmaliges Anmelden bei Anwendungen – Azure Active Directory | Microsoft-Dokumentation
+title: Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO) von Azure?
 description: Erfahren Sie, wie Sie beim Konfigurieren von Anwendungen in Azure Active Directory (Azure AD) eine Methode für einmaliges Anmelden auswählen. Verwenden Sie einmaliges Anmelden, damit Benutzer sich nicht die Kennwörter für jede Anwendung merken müssen, und um die Kontoverwaltung zu vereinfachen.
 services: active-directory
 author: kenwith
@@ -12,14 +12,14 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8b20d7d285f30eb0aa9ba5ac22739b57856d6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a50f2cf6fc00189c8cc764a132b550153b80b52e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479707"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144601"
 ---
-# <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Einmaliges Anmelden bei Anwendungen in Azure Active Directory
+# <a name="what-is-single-sign-on-sso"></a>Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?
 
 Mit dem einmaligen Anmelden (Single Sign-On, SSO) ist für Sicherheit und Komfort gesorgt, wenn sich Benutzer in Azure Active Directory (Azure AD) an Anwendungen anmelden. In diesem Artikel werden die Methoden für einmaliges Anmelden beschrieben, und Sie erhalten Hilfestellung beim Auswählen der am besten geeigneten SSO-Methode zum Konfigurieren Ihrer Anwendungen.
 
@@ -99,8 +99,8 @@ Das kennwortbasierte einmalige Anmelden wird für jede cloudbasierte Anwendung u
 - Microsoft Edge in Windows 10 Anniversary Edition oder höher
 - Microsoft Edge für iOS und Android
 - Intune Managed Browser
-- Chrome unter Windows 7 oder höher und macOS X oder höher
-- Firefox 26.0 oder höher unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
+- Chrome: Unter Windows 7 oder höher und macOS X oder höher
+- Firefox 26.0 oder höher: Unter Windows XP SP2 oder höher und macOS X 10.6 oder höher
 
 Informationen zum Konfigurieren einer Cloudanwendung für kennwortbasiertes einmaliges Anmelden finden Sie unter [Konfigurieren des einmaligen Anmeldens per Kennwort](configure-password-single-sign-on-non-gallery-applications.md).
 

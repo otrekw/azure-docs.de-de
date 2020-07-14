@@ -10,18 +10,22 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
-ms.openlocfilehash: 127a8550b7f4ca89b8b3a8e61880b295a806e5d0
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: b7217df7fe7ccedf2419480b1114fa1ef6c8e24a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449361"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043545"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-the-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe einer Azure Resource Manager-Vorlage
+# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe einer ARM-Vorlage
 
-In dieser Schnellstartanleitung verwenden Sie eine Azure Resource Manager-Vorlage, um einen Azure Stream Analytics-Auftrag zu erstellen. Nachdem der Auftrag erstellt wurde, überprüfen Sie die Bereitstellung.
+In dieser Schnellstartanleitung verwenden Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage), um einen Azure Stream Analytics-Auftrag zu erstellen. Nachdem der Auftrag erstellt wurde, überprüfen Sie die Bereitstellung.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-streamanalytics-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,9 +33,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 * Ein Azure-Abonnement ([kostenloses Abonnement erstellen](https://azure.microsoft.com/free/)).
 
-## <a name="create-an-azure-stream-analytics-job"></a>Erstellen eines Azure Stream Analytics-Auftrags
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-streamanalytics-create/).
 
@@ -39,9 +41,9 @@ Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit 
 
 Die in der Vorlage definierte Azure-Ressource ist [Microsoft.StreamAnalytics/StreamingJobs](/azure/templates/microsoft.streamanalytics/streamingjobs): Erstellen eines Azure Stream Analytics-Auftrags.
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-In diesem Abschnitt erstellen Sie mithilfe der Azure Resource Manager-Vorlage einen Azure Stream Analytics-Auftrag.
+In diesem Abschnitt erstellen Sie mithilfe der ARM-Vorlage einen Azure Stream Analytics-Auftrag.
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt einen Azure Stream Analytics-Auftrag.
 
@@ -108,7 +110,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie mithilfe einer Azure Resource Manager-Vorlage einen Azure Stream Analytics-Auftrag erstellt und die Bereitstellung überprüft. Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie Sie eine Azure Resource Manager-Vorlage für einen vorhandenen Auftrag mithilfe von VS Code exportieren.
+In dieser Schnellstartanleitung haben Sie mithilfe einer ARM-Vorlage einen Azure Stream Analytics-Auftrag erstellt und die Bereitstellung überprüft. Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie Sie eine ARM-Vorlage für einen vorhandenen Auftrag mithilfe von VS Code exportieren.
 
 > [!div class="nextstepaction"]
-> [Exportieren einer Azure Resource Manager-Vorlage für einen Azure Stream Analytics-Auftrag](resource-manager-export.md)
+> [Exportieren einer ARM-Vorlage für einen Azure Stream Analytics-Auftrag](resource-manager-export.md)

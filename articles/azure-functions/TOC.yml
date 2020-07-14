@@ -55,6 +55,7 @@
       href: machine-learning-pytorch.md
     - name: Erstellen eines benutzerdefinierten Linux-Images
       href: functions-create-function-linux-custom-image.md
+      displayName: 'container, docker'
     - name: Functions auf einem IoT Edge-Gerät
       href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Java mit Azure Cosmos DB und Event Hubs
@@ -252,7 +253,7 @@
           href: run-functions-from-deployment-package.md
         - name: Funktionen in Kubernetes
           href: functions-kubernetes-keda.md
-          displayName: keda
+          displayName: 'keda, container, docker'
         - name: Automatische Ressourcenbereitstellung
           href: functions-infrastructure-as-code.md
         - name: Lokale Funktionen
@@ -296,6 +297,8 @@
               href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Authentifizierung über Twitter
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: Authentifizieren mit einem OpenID Connect-Anbieter (Vorschau)
+              href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Erweiterte Authentifizierung
           href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Beschränken von IP-Adressen
@@ -500,6 +503,8 @@
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
       href: /learn/browse/?products=azure-functions
+    - name: Anleitung zur Architektur
+      href: 'https://docs.microsoft.com/azure/architecture/serverless-quest/serverless-overview'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Preise

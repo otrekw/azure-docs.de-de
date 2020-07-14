@@ -3,16 +3,16 @@ title: Einrichten einer Azure Migrate-Appliance mit einem Skript
 description: Erfahren Sie, wie Sie eine Azure Migrate-Appliance mit einem Skript einrichten.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c4d85909bbfa623b5ad8590e973250474d9d95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47b6b35e62d484b4d7a33f6a53796c59e01817fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676314"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102445"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Einrichten einer Appliance mit einem Skript
 
-In diesem Artikel erstellen Sie eine [Azure Migrate-Appliance](deploy-appliance.md) für die Bewertung/Migration von VMware-VMs und Hyper-V-VMs. Sie führen ein Skript aus, um die Appliance zu erstellen und zu überprüfen, ob sie eine Verbindung mit Azure herstellen kann. 
+In diesem Artikel erstellen Sie eine [Azure Migrate-Appliance](./migrate-appliance-architecture.md) für die Bewertung/Migration von VMware-VMs und Hyper-V-VMs. Sie führen ein Skript aus, um die Appliance zu erstellen und zu überprüfen, ob sie eine Verbindung mit Azure herstellen kann. 
 
 Sie können die Appliance für VMware- und Hyper-V-VMs mithilfe eines Skripts bereitstellen oder eine Vorlage nutzen, die Sie aus dem Azure-Portal herunterladen. Die Verwendung eines Skripts ist sinnvoll, wenn Sie mit der heruntergeladenen Vorlage keine VM erstellen können.
 
@@ -24,19 +24,19 @@ Sie können die Appliance für VMware- und Hyper-V-VMs mithilfe eines Skripts be
 
 Das Skript richtet die Azure Migrate-Appliance auf einem vorhandenen physischen Computer oder virtuellen Computer ein.
 
-- Auf dem Computer, der als Appliance fungieren soll, müssen Windows Server 2016 mit 32 GB Arbeitsspeicher, acht vCPUs, ca. 80 GB Festplattenspeicher und ein externer virtueller Switch ausgeführt werden. Er benötigt eine statische oder dynamische IP-Adresse und Internetzugriff.
-- Überprüfen Sie vor der Bereitstellung der Appliance ihre detaillierten Anforderungen für [VMware-VMs](migrate-appliance.md#appliance---vmware), [Hyper-V-VMs](migrate-appliance.md#appliance---hyper-v) und [physische Server](migrate-appliance.md#appliance---physical).
+- Der Computer, der als Appliance fungieren soll, muss die folgenden Hardware- und Betriebssystemanforderungen erfüllen:
+
+Szenario | Requirements (Anforderungen)
+--- | ---
+VMware | Windows Server 2016 mit 32 GB Arbeitsspeicher, acht vCPUs, ungefähr 80 GB Speicherplatz auf dem Datenträger
+Hyper-V | Windows Server 2016 mit 16 GB Arbeitsspeicher, acht vCPUs, ungefähr 80 GB Speicherplatzauf dem Datenträger
+- Der Computer benötigt auch einen externen virtuellen Switch. Er benötigt eine statische oder dynamische IP-Adresse und Internetzugriff.
+- Überprüfen Sie vor der Bereitstellung der Appliance ihre detaillierten Anforderungen für [VMware-VMs](migrate-appliance.md#appliance---vmware) und [Hyper-V-VMs](migrate-appliance.md#appliance---hyper-v).
 - Führen Sie das Skript nicht auf einer vorhandenen Azure Migrate-Appliance aus.
 
 ## <a name="set-up-the-appliance-for-vmware"></a>Einrichten der Appliance für VMware
 
-Um die Appliance für VMware einzurichten, laden Sie eine ZIP-Datei aus dem Azure-Portal herunter und extrahieren den Inhalt. Zum Starten der Appliance-Web-App führen Sie das PowerShell-Skript aus. Dann richten Sie die Appliance ein und führen die Erstkonfiguration aus. Anschließend registrieren Sie die Appliance beim Azure Migrate-Projekt.
-
-### <a name="download-the-script"></a>Herunterladen des Skripts
-
-1.  Klicken Sie unter **Migrationsziele** > **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Ermitteln**.
-2.  Wählen Sie unter **Computer ermitteln** > **Sind Ihre Computer virtualisiert?** die Option **Ja, mit VMware vSphere Hypervisor** aus.
-3.  Klicken Sie auf **Herunterladen**, um die ZIP-Datei herunterzuladen. 
+Zum Einrichten der Appliance für VMware laden Sie die ZIP-Datei mit dem Namen „AzureMigrateInstaller.zip“ von [hier](https://go.microsoft.com/fwlink/?linkid=2105112) herunter, und extrahieren Sie den Inhalt. Zum Starten der Appliance-Web-App führen Sie das PowerShell-Skript aus. Dann richten Sie die Appliance ein und führen die Erstkonfiguration aus. Anschließend registrieren Sie die Appliance beim Azure Migrate-Projekt.
 
 
 ### <a name="verify-file-security"></a>Überprüfen der Dateisicherheit
@@ -47,12 +47,11 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
-3. Überprüfen Sie den generierten Hashwert. Für die neueste Applianceversion:
+3. Überprüfen Sie die neueste Geräteversion und das Skript für die öffentliche Azure-Cloud:
 
-    **Algorithmus** | **Hashwert**
-    --- | ---
-    MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-    SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+    **Algorithmus** | **Download** | **SHA256**
+    --- | --- | ---
+    VMware (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
 
 
 
@@ -85,13 +84,7 @@ Stellen Sie sicher, dass die Appliance eine Verbindung mit Azure-URLs für die [
 
 ## <a name="set-up-the-appliance-for-hyper-v"></a>Einrichten der Appliance für Hyper-V
 
-Um die Appliance für Hyper-V einzurichten, laden Sie eine ZIP-Datei aus dem Azure-Portal herunter und extrahieren den Inhalt. Zum Starten der Appliance-Web-App führen Sie das PowerShell-Skript aus. Dann richten Sie die Appliance ein und führen die Erstkonfiguration aus. Anschließend registrieren Sie die Appliance beim Azure Migrate-Projekt.
-
-### <a name="download-the-script"></a>Herunterladen des Skripts
-
-1.  Klicken Sie unter **Migrationsziele** > **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Ermitteln**.
-2.  Wählen Sie unter **Computer ermitteln** > **Sind Ihre Computer virtualisiert?** die Option **Ja, mit Hyper-V**.
-3.  Klicken Sie auf **Herunterladen**, um die ZIP-Datei herunterzuladen. 
+Zum Einrichten der Appliance für Hyper-V laden Sie die ZIP-Datei mit dem Namen „AzureMigrateInstaller.zip“ von [hier](https://go.microsoft.com/fwlink/?linkid=2105112) herunter, und extrahieren Sie den Inhalt. Zum Starten der Appliance-Web-App führen Sie das PowerShell-Skript aus. Dann richten Sie die Appliance ein und führen die Erstkonfiguration aus. Anschließend registrieren Sie die Appliance beim Azure Migrate-Projekt.
 
 
 ### <a name="verify-file-security"></a>Überprüfen der Dateisicherheit
@@ -103,12 +96,11 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
 
-3. Überprüfen Sie die generierten Hashwerte. Für die neueste Applianceversion:
+3. Überprüfen Sie die neueste Geräteversion und das Skript für die öffentliche Azure-Cloud:
 
-    **Algorithmus** | **Hashwert**
-    --- | ---
-    MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-    SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+    **Szenario** | **Download** | **SHA256**
+    --- | --- | ---
+    Hyper-V (63,1 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2105112) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
 
 ### <a name="run-the-script"></a>Führen Sie das Skript aus.
 

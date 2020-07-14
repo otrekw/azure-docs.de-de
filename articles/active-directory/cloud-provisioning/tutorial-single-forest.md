@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c922b95154f16a199660bcd5e58f792e46eade7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4fbfe9222971ccd1d28ceaddc91b137c6106e12
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360604"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146751"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Tutorial: Integrieren einer einzelnen Gesamtstruktur in einen einzelnen Azure AD-Mandanten
 
@@ -41,7 +41,7 @@ Die Umgebung, die Sie in diesem Tutorial erstellen, können Sie zu Testzwecken v
 
      | Portnummer | Wie diese verwendet wird |
      | --- | --- |
-     | **80** | Herunterladen der Zertifikatsperrlisten (CRLs) bei der Überprüfung des TLS-/SSL-Zertifikats |
+     | **80** | Herunterladen der Zertifikatsperrlisten (Certificate Revocation Lists, CRLs) bei der Überprüfung des TLS/SSL-Zertifikats |
      | **443** | Verarbeitung der gesamten ausgehende Kommunikation mit dem Dienst |
      | **8080** (optional) | Agents melden ihren Status alle zehn Minuten über den Port 8080, wenn der Port 443 nicht verfügbar ist. Dieser Status wird im Azure AD-Portal angezeigt. |
      
@@ -108,13 +108,13 @@ Führen Sie die folgenden Schritte aus, um sicherzustellen, dass der Agent ausge
 2.  Klicken Sie auf **Azure Active Directory**.
 3.  Klicken Sie auf **Azure AD Connect**.
 4.  Wählen Sie **Bereitstellung verwalten (Vorschau)** 
-![](media/how-to-configure/manage1.png) aus.
+![Screenshot mit dem Link „Bereitstellung verwalten (Vorschau)“ aus.](media/how-to-configure/manage1.png)
 5.  Klicken Sie auf **Neue Konfiguration**
-![](media/tutorial-single-forest/configure1.png).
+![Screenshot des Bildschirms „Azure AD-Bereitstellung (Vorschau)“ mit hervorgehobenem Link „Neue Konfiguration“.](media/tutorial-single-forest/configure1.png)
 7.  Geben Sie im Konfigurationsbildschirm eine **E-Mail-Adresse für Benachrichtigungen** ein, verschieben Sie den Selektor auf **Aktivieren**, und klicken Sie auf **Speichern**.
-![](media/tutorial-single-forest/configure2.png)
+![Screenshot des Bildschirms „Konfigurieren“ mit ausgefüllter Benachrichtigungs-E-Mail und ausgewählter Option „Aktivieren“](media/tutorial-single-forest/configure2.png)
 1.  Der Konfigurationsstatus sollte jetzt **Fehlerfrei** lauten.
-![](media/how-to-configure/manage4.png)
+![Screenshot des Bildschirms „Azure AD-Bereitstellung (Vorschau)“, der den Status „Fehlerfrei“ anzeigt](media/how-to-configure/manage4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>Überprüfen, ob Benutzer erstellt wurden und die Synchronisierung erfolgt
 Überprüfen Sie als Nächstes, ob die Benutzer, die in unserem lokalen Verzeichnis enthalten waren, synchronisiert wurden und jetzt in unserem Azure AD-Mandanten vorhanden sind.  Seien Sie sich im Klaren darüber, dass dies einige Stunden dauern kann.  Gehen Sie wie folgt vor, um zu überprüfen, ob Benutzer synchronisiert werden:

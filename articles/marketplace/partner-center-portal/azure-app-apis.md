@@ -1,18 +1,16 @@
 ---
 title: Partner Center-Übermittlungs-API zum Integrieren von Azure-Apps im kommerziellen Microsoft-Marketplace
 description: Informieren Sie sich über die Voraussetzungen für die Verwendung der Partner Center-Übermittlungs-API für Azure-Apps im kommerziellen Marketplace im Microsoft Partner Center.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: e50534639f5f46b1675ba5c074fb8fdd843ac87e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c8343f0954f02423fc48347911f10cf5b9ddee96
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770056"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121995"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>Partner Center-Übermittlungs-API zum Integrieren von Azure-Apps im Partner Center
 
@@ -29,7 +27,7 @@ Es gibt einige programmgesteuerte Ressourcen, die Sie benötigen, um die Partner
 
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie mit dem Schreiben von Code zum Aufrufen der Partner Center-Übermittlungs-API beginnen.
 
-- Sie (oder Ihre Organisation) müssen über ein Azure AD-Verzeichnis verfügen, und Ihnen müssen die Berechtigungen [globaler Administrator](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) für das Verzeichnis gewährt worden sein. Wenn Sie Office 365 oder andere Unternehmensdienste von Microsoft verwenden, verfügen Sie bereits über ein Azure AD-Verzeichnis. Andernfalls können Sie ohne zusätzliche Kosten [eine neue Azure AD-Instanz in Partner Center erstellen](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account).
+- Sie (oder Ihre Organisation) müssen über ein Azure AD-Verzeichnis verfügen, und Ihnen müssen die Berechtigungen [globaler Administrator](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) für das Verzeichnis gewährt worden sein. Wenn Sie Microsoft 365 oder andere Unternehmensdienste von Microsoft verwenden, verfügen Sie bereits über ein Azure AD-Verzeichnis. Andernfalls können Sie ohne zusätzliche Kosten [eine neue Azure AD-Instanz in Partner Center erstellen](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account).
 
 - Sie müssen [Ihrem Partner Center-Konto eine Azure AD-Anwendung zuordnen](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account) und Ihre Mandanten-ID, die Client-ID und den Schlüssel abrufen. Sie benötigen diese Werte, um ein Azure AD-Zugriffstoken zu erhalten, das Sie in Aufrufen der Microsoft Store-Übermittlungs-API verwenden.
 

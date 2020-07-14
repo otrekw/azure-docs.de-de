@@ -1,18 +1,18 @@
 ---
 title: Verwalten eines Kontos im kommerziellen Marketplace in Microsoft Partner Center
 description: Erfahren Sie, wie Sie ein Konto im kommerziellen Marketplace in Microsoft Partner Center verwalten.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/27/2020
-ms.openlocfilehash: 76eb0638d2b67e7859b25cdda8a6f4cbda285920
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 90ce9e48515213460fdb3db4fed57fd6f5d2688a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800215"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112849"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center
 
@@ -128,7 +128,7 @@ Wenn Sie ein Produkt mithilfe einer Vorlage bereitstellen und das Produkt sowohl
 
 Die Berichterstellung erfolgt über den Partnerwert (Microsoft-Partner-ID) und die GUIDs. Sie können GUIDs auch auf einer detaillierteren Ebene nachverfolgen und an jedem Plan innerhalb Ihres Angebots ausrichten.
 
-Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Nachverfolgung der Azure-Kundennutzung mit GUIDs](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq).
+Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Nachverfolgung der Azure-Kundennutzung mit GUIDs](../azure-partner-customer-usage-attribution.md#faq).
 
 ## <a name="create-a-billing-profile"></a>Erstellen eines Abrechnungsprofils
 
@@ -138,7 +138,7 @@ Die Abrechnungsadresse ist von Ihrer juristischen Entität bereits ausgefüllt. 
 
 ## <a name="multi-user-account-management"></a>Kontoverwaltung für mehrere Benutzer
 
-Partner Center nutzt [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) für den Zugriff auf und die Verwaltung von Mehrbenutzerkonten. Das Azure AD Ihrer Organisation wird im Rahmen des Registrierungsprozesses automatisch mit Ihrem Partner Center-Konto verknüpft.
+Partner Center nutzt [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) für den Zugriff auf und die Verwaltung von Mehrbenutzerkonten. Das Azure AD Ihrer Organisation wird im Rahmen des Registrierungsprozesses automatisch mit Ihrem Partner Center-Konto verknüpft.
 
 ## <a name="manage-users"></a>Verwalten von Benutzern
 
@@ -168,7 +168,7 @@ So fügen Sie Ihrem Partner Center-Konto Benutzer hinzu, die bereits im [Geschä
 
 ### <a name="create-new-users"></a>Erstellen neuer Benutzer
 
-Um neue Benutzerkonten zu erstellen, benötigen Sie ein Konto mit den Berechtigungen [**Globaler Administrator**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles). 
+Um neue Benutzerkonten zu erstellen, benötigen Sie ein Konto mit den Berechtigungen [**Globaler Administrator**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md). 
 
 1. Wechseln Sie zu **Benutzer** (unter **Kontoeinstellungen**), und wählen Sie **Benutzer hinzufügen** und dann **Neue Benutzer erstellen** aus.
 1. Geben Sie einen Vornamen, einen Nachnamen und einen Benutzernamen für jeden neuen Benutzer ein. 
@@ -182,7 +182,7 @@ Wenn Sie einen neuen Benutzer in Partner Center erstellen, wird für diesen Benu
 
 ### <a name="invite-new-users-by-email"></a>Einladen neuer Benutzer per E-Mail
 
-Um Benutzer per E-Mail einzuladen, die derzeit nicht zum Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens gehören, benötigen Sie ein Konto mit Berechtigungen als [**globaler Administrator**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).
+Um Benutzer per E-Mail einzuladen, die derzeit nicht zum Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens gehören, benötigen Sie ein Konto mit Berechtigungen als [**globaler Administrator**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 1. Wechseln Sie zu **Benutzer** (unter **Kontoeinstellungen**), und wählen Sie dann **Benutzer hinzufügen** und anschließend **Benutzer per E-Mail einladen** aus.
 2. Geben Sie eine oder mehrere E-Mail-Adressen (bis zu 10) getrennt durch Kommas oder Semikolons ein.
@@ -202,7 +202,7 @@ Um einen Benutzer aus Ihrem Geschäftskonto (Azure AD-Mandant) zu entfernen, wec
 
 ### <a name="change-a-user-password"></a>Ändern eines Benutzerkennworts
 
-Ein Benutzer kann sein Kennwort bei Bedarf selbst ändern, sofern Sie beim Erstellen des Benutzerkontos eine **E-Mail-Adresse zur Kenntwortwiederherstellung** angegeben haben. Sie können das Kennwort eines Benutzers auch aktualisieren, indem Sie die folgenden Schritte ausführen. Um das Kennwort eines Benutzers im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens zu ändern, müssen Sie bei einem Konto mit den Berechtigungen als [**globaler Administrator**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) angemeldet sein. Beachten Sie, dass hierdurch das Kennwort des Benutzers in Ihrem Azure AD-Mandanten sowie das Kennwort geändert werden, das er zum Zugriff auf Partner Center verwendet.
+Ein Benutzer kann sein Kennwort bei Bedarf selbst ändern, sofern Sie beim Erstellen des Benutzerkontos eine **E-Mail-Adresse zur Kenntwortwiederherstellung** angegeben haben. Sie können das Kennwort eines Benutzers auch aktualisieren, indem Sie die folgenden Schritte ausführen. Um das Kennwort eines Benutzers im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens zu ändern, müssen Sie bei einem Konto mit den Berechtigungen als [**globaler Administrator**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) angemeldet sein. Beachten Sie, dass hierdurch das Kennwort des Benutzers in Ihrem Azure AD-Mandanten sowie das Kennwort geändert werden, das er zum Zugriff auf Partner Center verwendet.
 
 1. Wählen Sie auf der Seite **Benutzer** (unter **Kontoeinstellungen**) den Namen des Benutzerkontos aus, das Sie bearbeiten möchten.
 2. Wählen Sie unten auf der Seite die Schaltfläche **Kennwort zurücksetzen** aus.
@@ -264,7 +264,7 @@ Wenn Sie einem neuen Azure AD-Anwendungskonto Partner Center-Zugriff gewähren m
 1. Wählen Sie auf der Seite **Benutzer** (unter **Kontoeinstellungen**) die Option **Azure AD-Anwendungen hinzufügen** aus.
 2. Wählen Sie auf der nächsten Seite **Neue Azure AD-Anwendung** aus.
 3. Geben Sie die **Antwort-URL** für die neue Azure AD-Anwendung ein. Dies ist die URL, über die sich die Benutzer anmelden und Ihre Azure AD-Anwendung verwenden können (auch bekannt als App-URL oder Anmelde-URL). Die **Antwort-URL** darf nicht länger als 256 Zeichen sein und muss in Ihrem Verzeichnis eindeutig sein.
-4. Geben Sie den **App-ID-URI** für die neue Azure AD-Anwendung ein. Dies ist ein logischer Bezeichner für die Azure AD-Anwendung, der angezeigt wird, wenn eine Anforderung für einmaliges Anmelden an Azure AD gesendet wird. Beachten Sie, dass der **App ID-URI** für jede Azure AD-Anwendung in Ihrem Verzeichnis eindeutig sein muss. Diese ID darf nicht länger als 256 Zeichen sein. Weitere Informationen zum App-ID-URI finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts).
+4. Geben Sie den **App-ID-URI** für die neue Azure AD-Anwendung ein. Dies ist ein logischer Bezeichner für die Azure AD-Anwendung, der angezeigt wird, wenn eine Anforderung für einmaliges Anmelden an Azure AD gesendet wird. Beachten Sie, dass der **App ID-URI** für jede Azure AD-Anwendung in Ihrem Verzeichnis eindeutig sein muss. Diese ID darf nicht länger als 256 Zeichen sein. Weitere Informationen zum App-ID-URI finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts).
 5. Geben Sie im Abschnitt **Rollen** die Rolle(n) oder die benutzerdefinierten Berechtigungen für die Azure AD-Anwendung an.
 6. Wählen Sie **Speichern** aus.
 
@@ -328,7 +328,7 @@ So erstellen Sie einen neuen Azure AD-Mandanten mit Ihrem Partner Center-Konto
 3. Wählen Sie **Erstellen** aus, um die neuen Domänen- und Kontoinformationen zu bestätigen.
 4. Melden Sie sich mit Ihrem neuen Benutzernamen und Kennwort als globaler Azure AD-Administrator an, um [Benutzer hinzufügen und zu verwalten](#manage-users).
 
-Weitere Informationen zum Erstellen neuer Mandanten im Azure-Portal statt im Partner Center-Portal finden Sie im Artikel [Erstellen eines neuen Mandanten in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+Weitere Informationen zum Erstellen neuer Mandanten im Azure-Portal statt im Partner Center-Portal finden Sie im Artikel [Erstellen eines neuen Mandanten in Azure Active Directory](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
 ### <a name="remove-a-tenant"></a>Entfernen eines Mandanten
 

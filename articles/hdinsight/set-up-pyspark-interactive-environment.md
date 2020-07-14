@@ -6,25 +6,25 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: seoapr2020
+ms.topic: how-to
+ms.custom: seoapr2020, tracking-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 47f774f7b848e34aa7dc219ee4b08fb083cbd813
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea2bda905879f6bdc6cc515f43474ff570e881b4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188207"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078883"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Einrichten einer interaktiven PySpark-Umgebung für Visual Studio Code
 
-Die folgenden Schritte zeigen Ihnen, wie Sie die interaktive PySpark-Umgebung in VS Code einrichten.
+Die folgenden Schritte zeigen das Einrichten der interaktiven PySpark-Umgebung in VS Code. Dieser Schritt betrifft nur nicht-Windows-Benutzer.
 
 Mit dem Befehl **python/pip** wird die virtuelle Umgebung in Ihrem Home-Pfad erstellt. Wenn Sie eine andere Version verwenden möchten, müssen Sie die Standardversion des Befehls **python/pip** manuell ändern. Weitere Informationen finden Sie unter [update-alternatives](https://linux.die.net/man/8/update-alternatives).
 
 1. Installieren Sie [Python](https://www.python.org/downloads/) und [pip](https://pip.pypa.io/en/stable/installing/).
 
-   * Installieren Sie Python über [https://www.python.org/downloads/](https://www.python.org/downloads/).
+   * Installieren Sie Python über [https://www.python.org/downloads/](https://www.python.org/downloads/). 
    * Installieren Sie pip über [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) (wenn nicht aus der Python-Installation installiert).
    * Überprüfen Sie mit den folgenden Befehlen, ob Python und pip erfolgreich installiert wurden. (Optional)
 
@@ -41,7 +41,7 @@ Mit dem Befehl **python/pip** wird die virtuelle Umgebung in Ihrem Home-Pfad ers
 
 ## <a name="other-packages"></a>Andere Pakete
 
-Wenn eine Fehlermeldung ausgegeben wird, installieren Sie die erforderlichen Pakete, indem Sie die folgenden Befehle ausführen:
+Wenn unter Linux die Fehlermeldung unten ausgegeben wird, installieren Sie die erforderlichen Pakete, indem Sie die folgenden zwei Befehle ausführen:
 
    ![Installieren des libkrb5-Pakets für Python](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
 
@@ -53,13 +53,13 @@ sudo apt-get install libkrb5-dev
 sudo apt-get install python-dev
 ```
 
-Starten Sie VS Code neu, und navigieren Sie zurück zum Skript-Editor, der **HDInsight: PySpark Interactive** ausführt.
+Starten Sie VSCode erneut, wechseln Sie dann zurück zum VSCode-Editor, und führen Sie den Befehl **Spark: PySPark Interactive** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 ### <a name="demo"></a>Demo
 
-* HDInsight für VS Code: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
+* HDInsight for VS Code: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Tools und Erweiterungen
 

@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 8b340bdbd4bea4fcd865d6c27d688e5dbed86bb8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6a449c078b18b5bc9e005a873c51d92ad29417f6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052342"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084986"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-using-the-azure-portal"></a>Schnellstart: Erstellen einer Firewallregel auf Serverebene mit dem Azure-Portal
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,12 +33,12 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Erstellen einer IP-Firewallregel auf Serverebene
 
- Von SQL-Datenbank wird eine Firewall auf Serverebene für Einzel- und Pooldatenbanken erstellt. Diese Firewall verhindert, dass Clientanwendungen eine Verbindung mit dem Server oder einer seiner Einzel- oder Pooldatenbanken herstellen, sofern Sie keine IP-Firewallregel erstellen, mit der die Firewall geöffnet wird. Für eine Verbindung über eine IP-Adresse, die sich außerhalb von Azure befindet, müssen Sie eine Firewallregel für eine bestimmte IP-Adresse oder für einen Bereich von Adressen erstellen, über die eine Verbindung möglich sein soll. Weitere Informationen zu IP-Firewallregeln auf Server- und Datenbankebene finden Sie im Thema zu [IP-Firewallregeln auf Serverebene und Datenbankebene](firewall-configure.md).
+ Von SQL-Datenbank wird eine Firewall auf Serverebene für Einzel- und Pooldatenbanken erstellt. Diese Firewall verhindert, dass Clientanwendungen eine Verbindung mit dem Server oder einer seiner Datenbanken herstellen, sofern Sie keine IP-Firewallregel erstellen, mit der die Firewall geöffnet wird. Für eine Verbindung über eine IP-Adresse, die sich außerhalb von Azure befindet, müssen Sie eine Firewallregel für eine bestimmte IP-Adresse oder für einen Bereich von Adressen erstellen, über die eine Verbindung möglich sein soll. Weitere Informationen zu IP-Firewallregeln auf Server- und Datenbankebene finden Sie im Thema zu [IP-Firewallregeln auf Serverebene und Datenbankebene](firewall-configure.md).
 
 > [!NOTE]
 > Azure SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
 > [!IMPORTANT]
-> Bei Verwendung der Firewallregel 0.0.0.0 können alle Azure-Dienste die Firewall auf Serverebene passieren und über den Server eine Verbindung mit einer Einzel- oder Pooldatenbank herstellen.
+> Bei Verwendung der Firewallregel 0.0.0.0 können alle Azure-Dienste die Firewall auf Serverebene passieren und versuchen, über den Server eine Verbindung mit einer Datenbank herzustellen.
 
 Führen Sie die hier angegebenen Schritte aus, um eine IP-Firewallregel auf Serverebene für die IP-Adresse Ihres Clients zu erstellen und um externe Verbindungen durch die Azure SQL-Datenbank-Firewall nur für Ihre IP-Adresse zuzulassen.
 

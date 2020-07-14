@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4a9639343827ebc5bb17a6d62d9b65d0b561e932
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bde0db179216426c4279e5b03b416a04176430bb
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595129"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056785"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Routen in Azure Static Web Apps (Vorschau)
 
-Mit dem Routing in Azure Static Web Apps werden Back-End-Routingregeln und das Autorisierungsverhalten für statischen Inhalt und für APIs definiert. Die Regeln werden in der Datei _routes.json_ als Array mit Regeln definiert.
+Mit dem Routing in Azure Static Web Apps werden Back-End-Routingregeln und das Autorisierungsverhalten für statischen Inhalt und für APIs definiert<sup>1</sup>. Die Regeln werden in der Datei _routes.json_ als Array mit Regeln definiert.
 
 - Die Datei _routes.json_ muss im Stammverzeichnis des Ordners mit den Buildartefakten der App enthalten sein.
 - Regeln werden in der Reihenfolge ausgeführt, in der sie im Array `routes` angezeigt werden.
@@ -25,6 +25,8 @@ Mit dem Routing in Azure Static Web Apps werden Back-End-Routingregeln und das A
 - Sie haben die vollständige Kontrolle über Rollennamen.
 
 Das Thema „Routing“ weist starke Überschneidungen mit den Authentifizierungs- und Autorisierungskonzepten auf. Lesen Sie zusätzlich zu diesem Artikel den Leitfaden zur [Authentifizierung und Autorisierung](authentication-authorization.md).
+
+Details finden Sie unter [Beispiel für eine Routendatei](#example-route-file).
 
 ## <a name="location"></a>Standort
 
@@ -46,7 +48,7 @@ Routen werden in der Datei _routes.json_ als Array mit Routenregeln in der Eigen
 | Regeleigenschaft  | Erforderlich | Standardwert | Comment                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
 | `route`        | Ja      | –          | Das vom Aufrufer angeforderte Routenmuster.<ul><li>[Platzhalter](#wildcards) am Ende der Routenpfade werden unterstützt. Für die Route _admin/\*_ ergeben sich beispielsweise Übereinstimmungen mit allen Routen unter dem Pfad _admin_.<li>Die Standarddatei einer Route ist _index.html_.</ul>|
-| `serve`        | Nein       | –          | Definiert die Datei oder den Pfad, die bzw. der von der Anforderung zurückgegeben wird. Der Pfad und Name der Datei können sich gegenüber dem angeforderten Pfad unterscheiden. Wenn ein Wert für `serve` definiert wird, wird der angeforderte Pfad verwendet. |
+| `serve`        | Nein       | –          | Definiert die Datei oder den Pfad, die bzw. der von der Anforderung zurückgegeben wird. Der Pfad und Name der Datei können sich gegenüber dem angeforderten Pfad unterscheiden. Wenn kein `serve`-Wert definiert wird, wird der angeforderte Pfad verwendet. QueryString-Parameter werden nicht unterstützt, und `serve`-Werte müssen auf tatsächliche Dateien verweisen.  |
 | `allowedRoles` | Nein       | anonymous     | Ein Array mit Rollennamen. <ul><li>Gültige Zeichen sind `a-z`, `A-Z`, `0-9` und `_`.<li>Die integrierte Rolle `anonymous` gilt für alle nicht authentifizierten Benutzer.<li>Die integrierte Rolle `authenticated` gilt für alle angemeldeten Benutzer.<li>Benutzern muss mindestens eine Rolle zugewiesen sein.<li>Rollen werden nach dem Muster _OR_ (ODER) abgeglichen. Wenn einem Benutzer eine beliebige aufgelistete Rolle zugewiesen ist, wird der Zugriff gewährt.<li>Einzelne Benutzer werden Rollen mithilfe von [Einladungen](authentication-authorization.md) zugeordnet.</ul> |
 | `statusCode`   | Nein       | 200           | Hierbei handelt es sich um die [HTTP-Statuscode](https://wikipedia.org/wiki/List_of_HTTP_status_codes)-Antwort für die Anforderung. |
 
@@ -150,6 +152,9 @@ Umleitungen funktionieren auch mit Pfaden, bei denen keine einzelnen Dateien def
 
 Für Benutzer kann es zu unterschiedlichen Situationen kommen, die ggf. zu einem Fehler führen. Mit dem Array `platformErrorOverrides` können Sie als Reaktion auf diese Fehler eine benutzerdefinierte Oberfläche bereitstellen. Informationen zur Platzierung des Arrays in der Datei _routes.json_ finden Sie unter [Beispiel für eine Routendatei](#example-route-file).
 
+> [!NOTE]
+> Wenn eine Anforderung bis zur Plattform-Außerkraftsetzungsebene gelangt, werden die Routenregeln nicht erneut ausgeführt.
+
 In der folgenden Tabelle sind die verfügbaren Außerkraftsetzungen für Plattformfehler aufgeführt:
 
 | Fehlertyp  | HTTP-Statuscode | BESCHREIBUNG |
@@ -161,6 +166,53 @@ In der folgenden Tabelle sind die verfügbaren Außerkraftsetzungen für Plattfo
 | `Unauthorized_MissingRoles` | 401 | Der Benutzer ist kein Mitglied einer erforderlichen Rolle. |
 | `Unauthorized_TooManyUsers` | 401 | Für die Website wurde die maximale Anzahl von Benutzern erreicht, und der Server verfügt über eine Begrenzung in Bezug auf weitere Hinzufügungen. Dieser Fehler tritt für den Client auf, weil es kein Limit für die Anzahl von [Einladungen](authentication-authorization.md) gibt, die Sie generieren können, und weil einige Benutzer die Einladung ggf. niemals annehmen.|
 | `Unauthorized_Unknown` | 401 | Beim Versuch, den Benutzer zu authentifizieren, ist ein unbekannter Fehler aufgetreten. Ein Grund für diesen Fehler ist ggf., dass der Benutzer nicht erkannt wird, weil er seine Einwilligung für die Anwendung nicht erteilt hat.|
+
+## <a name="custom-mime-types"></a>Benutzerdefinierte MIME-Typen
+
+Das `mimeTypes`-Objekt, das auf derselben Ebene wie das `routes`-Array aufgelistet ist, ermöglicht es Ihnen, [MIME-Typen](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) zu Dateierweiterungen zuzuordnen.
+
+```json
+{
+    "routes": [],
+    "mimeTypes": {
+        "custom": "text/html"
+    }
+}
+```
+
+Im obigen Beispiel werden alle Dateien mit der `.custom`-Erweiterung von dem MIME-Typ `text/html` bedient.
+
+Die folgenden Überlegungen sind wichtig, wenn Sie mit MIME-Typen arbeiten:
+
+- Schlüsseln können nicht Null oder leer oder mehr als 50 Zeichen lang sein.
+- Werte können nicht Null oder leer oder mehr als 1000 Zeichen lang sein.
+
+## <a name="default-headers"></a>Standardheader
+
+Das `defaultHeaders`-Objekt, das auf derselben Ebene wie das `routes`-Array aufgelistet ist, ermöglicht es Ihnen, [Antwortheader](https://developer.mozilla.org/docs/Web/HTTP/Headers) hinzuzufügen, zu ändern oder zu entfernen.
+
+Wenn Sie einen Wert für einen Header angeben, wird der Header entweder hinzugefügt oder geändert. Wenn Sie einen leeren Wert angeben, wird der Header entfernt und dem Client nicht mehr bereitgestellt.
+
+```json
+{
+    "routes": [],
+    "defaultHeaders": {
+      "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'",
+      "cache-control": "must-revalidate, max-age=6000",
+      "x-dns-prefetch-control": ""
+    }
+}
+```
+
+Im obigen Beispiel wird ein neuer `content-security-policy`-Header hinzugefügt, der `cache-control`-Header ändert den Serverstandardwert, und der `x-dns-prefectch-control`-Header wird entfernt.
+
+Die folgenden Überlegungen sind wichtig, wenn Sie mit Headern arbeiten:
+
+- Schlüssel können weder Null noch leer sein.
+- Null-Werte oder leere Werte entfernen einen Header aus der Verarbeitung.
+- Schlüssel oder Werte können nicht länger als 8.000 Zeichen sein.
+- Definierte Header werden mit allen Anforderungen bedient.
+- In _routes.json_ definierte Header gelten nur für statischen Inhalt. Sie können Antwortheader eines API-Endpunkts im Code der Funktion anpassen.
 
 ## <a name="example-route-file"></a>Beispiel für eine Routendatei
 
@@ -214,33 +266,47 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie Routenregeln für statischen
     },
     {
       "errorType": "Unauthenticated",
+      "statusCode": "302",
       "serve": "/login"
     }
-  ]
+  ],
+  "defaultHeaders": {
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+  },
+  "mimeTypes": {
+      "custom": "text/html"
+  }
 }
 ```
 
 In den folgenden Beispielen ist beschrieben, was passiert, wenn eine Anforderung zu einer Übereinstimmung mit einer Regel führt.
 
-|Anforderungen:  | Ergebnis: |
-|---------|---------|---------|
+| Anforderungen: | Ergebnis: |
+|--|--|--|
 | _/profile_ | Für authentifizierte Benutzer wird die Datei _/profile/index.html_ bereitgestellt. Nicht authentifizierte Benutzer werden an _/login_ umgeleitet. |
-| _/admin/reports_ | Für authentifizierte Benutzer mit der Rolle _administrators_ wird die Datei _/admin/reports/index.html_ bereitgestellt. Für authentifizierte Benutzer, die nicht über die Rolle _administrators_ verfügen, wird ein 401-Fehler<sup>1</sup> angezeigt. Nicht authentifizierte Benutzer werden an _/login_ umgeleitet. |
+| _/admin/reports_ | Für authentifizierte Benutzer mit der Rolle _administrators_ wird die Datei _/admin/reports/index.html_ bereitgestellt. Für authentifizierte Benutzer, die nicht über die Rolle _administrators_ verfügen, wird ein 401-Fehler<sup>2</sup> angezeigt. Nicht authentifizierte Benutzer werden an _/login_ umgeleitet. |
 | _/api/admin_ | Anforderungen von authentifizierten Benutzern mit der Rolle _administrators_ werden an die API gesendet. Für authentifizierte Benutzer, die nicht über die Rolle _administrators_ verfügen, und nicht authentifizierte Benutzer wird ein 401-Fehler angezeigt. |
-| _/customers/contoso_ | Für authentifizierte Benutzer, die entweder über die Rolle _administrators_ oder _customers\_contoso_ verfügen, wird die Datei _/customers/contoso/index.html_ bereitgestellt<sup>1</sup>. Für authentifizierte Benutzer, die nicht über die Rolle _administrators_ oder _customers\_contoso_ verfügen, wird ein 401-Fehler angezeigt. Nicht authentifizierte Benutzer werden an _/login_ umgeleitet. |
-| _/login_     | Nicht authentifizierte Benutzer werden aufgefordert, sich bei GitHub zu authentifizieren. |
-| _/.auth/login/twitter_     | Die Autorisierung mit Twitter ist deaktiviert. Der Server antwortet mit einem 404-Fehler. |
-| _/logout_     | Benutzer werden von allen Authentifizierungsanbietern abgemeldet. |
+| _/customers/contoso_ | Für authentifizierte Benutzer, die entweder über die Rolle _administrators_ oder _customers\_contoso_ verfügen, wird die Datei _/customers/contoso/index.html_ bereitgestellt<sup>2</sup>. Für authentifizierte Benutzer, die nicht über die Rolle _administrators_ oder _customers\_contoso_ verfügen, wird ein 401-Fehler angezeigt. Nicht authentifizierte Benutzer werden an _/login_ umgeleitet. |
+| _/login_ | Nicht authentifizierte Benutzer werden aufgefordert, sich bei GitHub zu authentifizieren. |
+| _/.auth/login/twitter_ | Die Autorisierung mit Twitter ist deaktiviert. Der Server antwortet mit einem 404-Fehler. |
+| _/logout_ | Benutzer werden von allen Authentifizierungsanbietern abgemeldet. |
 | _/calendar/2020/01_ | Für den Browser wird die Datei _/calendar.html_ bereitgestellt. |
 | _/specials_ | Der Browser wird an _/deals_ umgeleitet. |
-| _/unknown-folder_     | Die Datei _/custom-404.html_ wird bereitgestellt. |
+| _/unknown-folder_ | Die Datei _/custom-404.html_ wird bereitgestellt. |
+| Dateien mit der Erweiterung `.custom` | werden von dem MIME-Typ `text/html` bedient. |
 
-<sup>1</sup> Sie können eine benutzerdefinierte Fehlerseite bereitstellen, indem Sie im Array `platformErrorOverrides` eine Regel vom Typ `Unauthorized_MissingRoles` definieren.
+- Alle Antworten umfassen die `content-security-policy`-Header mit einem Wert von `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'`.
+
+<sup>1</sup> Routenregeln für API-Funktionen unterstützen nur [Umleitungen](#redirects) und das [Sichern von Routen mit Rollen](#securing-routes-with-roles).
+
+<sup>2</sup> Sie können eine benutzerdefinierte Fehlerseite bereitstellen, indem Sie im `platformErrorOverrides`-Array eine Regel vom Typ `Unauthorized_MissingRoles` definieren.
 
 ## <a name="restrictions"></a>Beschränkungen
 
 - Die Datei _routes.json_ kann nicht größer als 100 KB sein.
 - Die Datei _routes.json_ unterstützt maximal 50 einzelne Rollen.
+
+Allgemeine Einschränkungen und Grenzwerte finden Sie im [Artikel zu Kontingenten](quotas.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

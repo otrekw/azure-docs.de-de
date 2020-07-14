@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 367ca77b0f3a142d8aa36143052993d1ed96f052
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1a522193e9e704dce967daeeef70f82a6c0b1378
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996498"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135715"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Aktivieren der Notfallwiederherstellung zwischen Zonen für virtuelle Azure-Computer
 
@@ -20,7 +20,7 @@ In diesem Artikel wird beschrieben, wie Sie Replikation, Failover und Failback f
 
 >[!NOTE]
 >
->- Site Recovery unterstützt derzeit keine Wiederherstellungspläne für die Notfallwiederherstellung zwischen Zonen. 
+>- Site Recovery unterstützt derzeit keine Wiederherstellungspläne für die Notfallwiederherstellung zwischen Zonen über das Portal. Verwenden Sie PowerShell oder die REST-API, um Wiederherstellungspläne für die Notfallwiederherstellung zwischen Zonen zu verwenden. 
 >- Unterstützung für Notfallwiederherstellung zwischen Zonen ist derzeit auf zwei Regionen beschränkt: „Asien, Südosten“ und „Vereinigtes Königreich, Süden“.  
 
 Der Site Recovery-Dienst unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Es handelt sich dabei um die empfohlene Notfallwiederherstellungsoption, um Ihre Anwendungen bei regionalen Ausfällen aktiv und betriebsbereit zu halten.
@@ -98,7 +98,7 @@ Melden Sie sich am Azure-Portal an.
 
 5. Wenn Sie Änderungen an den Replikationseinstellungen vornehmen möchten, klicken Sie auf „Weiter: Erweiterte Einstellungen“.
 
-6. Ändern Sie die Standardeinstellung bei Bedarf. Benutzer von Azure-zu-Azure-Notfallwiederherstellung sind mit dieser Seite möglicherweise bereits vertraut. Weitere Einzelheiten zu den auf diesem Blatt verfügbaren Optionen finden Sie [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication).
+6. Ändern Sie die Standardeinstellung bei Bedarf. Benutzer von Azure-zu-Azure-Notfallwiederherstellung sind mit dieser Seite möglicherweise bereits vertraut. Weitere Einzelheiten zu den auf diesem Blatt verfügbaren Optionen finden Sie [hier](./azure-to-azure-tutorial-enable-replication.md).
 
     ![Seite „Erweiterte Einstellungen“](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png)
 
@@ -116,7 +116,7 @@ Die RTO-SLA ist identisch mit der SLA für Site Recovery insgesamt. Wir versprec
 Das Site Recovery-Team und das Azure-Kapazitätsverwaltungsteam planen eine ausreichende Infrastrukturkapazität. Wenn Sie ein Failover starten, können die Teams auch dabei helfen, sicherzustellen, dass die durch Site Recovery geschützten VM-Instanzen in der Zielzone bereitgestellt werden.
 
 **4. Welche Betriebssysteme werden unterstützt?**
-Notfallwiederherstellung zwischen Zonen unterstützt dieselben Betriebssysteme wie Azure-zu-Azure-Notfallwiederherstellung. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix) in der Unterstützungsmatrix.
+Notfallwiederherstellung zwischen Zonen unterstützt dieselben Betriebssysteme wie Azure-zu-Azure-Notfallwiederherstellung. Weitere Informationen finden Sie [hier](./azure-to-azure-support-matrix.md) in der Unterstützungsmatrix.
 
 **5. Können Quell- und Zielressourcengruppen identisch sein?**
 Nein, Sie müssen ein Failover auf eine andere Ressourcengruppe durchführen.
@@ -125,8 +125,8 @@ Nein, Sie müssen ein Failover auf eine andere Ressourcengruppe durchführen.
 
 Die Schritte, die für eine Notfallwiederherstellungsübung, Failover, erneuten Schutz und Failback ausgeführt werden müssen, entsprechen den Schritten im Szenario für Azure-zu-Azure-Notfallwiederherstellung.
 
-Um eine Notfallwiederherstellungsübung auszuführen, befolgen Sie die [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-dr-drill) beschriebenen Schritte.
+Um eine Notfallwiederherstellungsübung auszuführen, befolgen Sie die [hier](./azure-to-azure-tutorial-dr-drill.md) beschriebenen Schritte.
 
-Um ein Failover durchzuführen und VMs in der sekundären Zone erneut zu schützen, folgen Sie den [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) beschriebenen Schritten.
+Um ein Failover durchzuführen und VMs in der sekundären Zone erneut zu schützen, folgen Sie den [hier](./azure-to-azure-tutorial-failover-failback.md) beschriebenen Schritten.
 
-Um ein Failback zur primären Zone auszuführen, führen Sie die [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failback) beschriebenen Schritte aus.
+Um ein Failback zur primären Zone auszuführen, führen Sie die [hier](./azure-to-azure-tutorial-failback.md) beschriebenen Schritte aus.

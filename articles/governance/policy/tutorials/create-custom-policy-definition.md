@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition'
 description: In diesem Tutorial erstellen Sie eine benutzerdefinierte Richtliniendefinition für Azure Policy, um benutzerdefinierte Geschäftsregeln für Ihre Azure-Ressourcen zu erzwingen.
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: f8702e84923762b2f417eee882a473228d6bafb8
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888155"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044616"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition
 
@@ -53,7 +53,7 @@ Basierend auf der geschäftlichen Anforderung ist die Azure-Ressource, die mit A
 Es gibt viele Möglichkeiten, die Eigenschaften für eine Azure-Ressource zu ermitteln. In diesem Tutorial sehen wir uns die einzelnen Fälle an:
 
 - Azure Policy-Erweiterung für VS Code
-- Resource Manager-Vorlagen
+- Azure Resource Manager-Vorlagen (ARM-Vorlagen)
   - Export der vorhandenen Ressource
   - Umgebung für die Erstellung
   - Schnellstartvorlagen (GitHub)
@@ -64,9 +64,9 @@ Es gibt viele Möglichkeiten, die Eigenschaften für eine Azure-Ressource zu erm
 
 Mit der [VS Code-Erweiterung](../how-to/extension-for-vscode.md#search-for-and-view-resources) können Sie Ressourcen in Ihrer Umgebung durchsuchen und die Resource Manager-Eigenschaften der einzelnen Ressourcen anzeigen.
 
-### <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
+### <a name="arm-templates"></a>ARM-Vorlagen
 
-Es gibt mehrere Möglichkeiten, sich eine [Resource Manager-Vorlage](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) anzusehen, die die zu verwaltende Eigenschaft enthält.
+Es gibt mehrere Möglichkeiten, sich eine [Resource Manager-Vorlage](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) anzusehen, die die zu verwaltende Eigenschaft enthält.
 
 #### <a name="existing-resource-in-the-portal"></a>Vorhandene Ressource im Portal
 
@@ -144,12 +144,11 @@ Hier wird der Eigenschaftentyp angegeben und außerdem bestätigt, dass es sich 
 
 #### <a name="quickstart-templates-on-github"></a>Schnellstartvorlagen auf GitHub
 
-Unter [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) auf GitHub finden Sie Hunderte von Resource Manager-Vorlagen, die für unterschiedliche Ressourcen bestimmt sind. Diese Vorlagen können eine gute Möglichkeit darstellen, um nach der gewünschten Ressourceneigenschaft zu suchen. Bei einigen Eigenschaften kann es erscheinen, als ob sie den gewünschten Zweck erfüllen, während sie eigentlich für die Steuerung eines anderen Sachverhalts gedacht sind.
+Unter [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) auf GitHub finden Sie Hunderte von ARM-Vorlagen, die für unterschiedliche Ressourcen bestimmt sind. Diese Vorlagen können eine gute Möglichkeit darstellen, um nach der gewünschten Ressourceneigenschaft zu suchen. Bei einigen Eigenschaften kann es erscheinen, als ob sie den gewünschten Zweck erfüllen, während sie eigentlich für die Steuerung eines anderen Sachverhalts gedacht sind.
 
 #### <a name="resource-reference-docs"></a>Referenzdokumente zu Ressourcen
 
-Gehen Sie wie folgt vor, um sich zu vergewissern, dass **supportsHttpsTrafficOnly** die richtige Eigenschaft ist: Überprüfen Sie die Resource Manager-Vorlagenreferenz für die [Speicherkontoressource](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) des Speicheranbieters.
-Das properties-Objekt verfügt über eine Liste mit gültigen Parametern. Wenn Sie den Link [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) auswählen, wird eine Tabelle mit zulässigen Eigenschaften angezeigt. **supportsHttpsTrafficOnly** ist vorhanden, und die Beschreibung passt zu den zu erfüllenden geschäftlichen Anforderungen.
+Gehen Sie wie folgt vor, um sich zu vergewissern, dass **supportsHttpsTrafficOnly** die richtige Eigenschaft ist: Überprüfen Sie die ARM-Vorlagenreferenz für die [Speicherkontoressource](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) des Speicheranbieters. Das properties-Objekt verfügt über eine Liste mit gültigen Parametern. Wenn Sie den Link [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) auswählen, wird eine Tabelle mit zulässigen Eigenschaften angezeigt. **supportsHttpsTrafficOnly** ist vorhanden, und die Beschreibung passt zu den zu erfüllenden geschäftlichen Anforderungen.
 
 ### <a name="azure-resource-explorer"></a>Azure-Ressourcen-Explorer
 
@@ -219,7 +218,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Die Ergebnisse ähneln den Daten, die in den Resource Manager-Vorlagen enthalten sind und über den Azure-Ressourcen-Explorer bereitgestellt werden. Azure Resource Graph-Ergebnisse können aber auch [Aliasdetails](../concepts/definition-structure.md#aliases) enthalten, indem die _Projektion_ für den _Aliasarray_ ausgeführt wird:
+Die Ergebnisse ähneln den Daten, die in den ARM-Vorlagen enthalten sind und über den Azure-Ressourcen-Explorer bereitgestellt werden. Azure Resource Graph-Ergebnisse können aber auch [Aliasdetails](../concepts/definition-structure.md#aliases) enthalten, indem die _Projektion_ für den _Aliasarray_ ausgeführt wird:
 
 ```kusto
 Resources

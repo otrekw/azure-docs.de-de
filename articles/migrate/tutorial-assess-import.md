@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 519520538c16b1bde18f0810344864d37090accf
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 98675b0f986ecb78ff122ed052a01d521aac1f6f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342645"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114209"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Bewerten von Servern anhand von importierten Daten
 
@@ -66,7 +66,7 @@ So richten Sie ein neues Azure Migrate-Projekt ein:
 
 4. Wählen Sie unter **Erste Schritte** die Option **Tools hinzufügen** aus.
 5. Wählen Sie unter **Projekt migrieren** Ihr Azure-Abonnement aus, und erstellen Sie bei Bedarf eine Ressourcengruppe.
-6. Geben Sie unter **PROJEKTDETAILS** den Projektnamen und die geografische Region an, in der Sie das Projekt erstellen möchten. Weitere Informationen finden Sie unter:
+6. Geben Sie unter **Projektdetails** den Projektnamen und die geografische Region an, in der Sie das Projekt erstellen möchten. Weitere Informationen finden Sie unter:
 
     - Beachten Sie die unterstützten geografischen Regionen für [öffentliche Clouds](migrate-support-matrix.md#supported-geographies-public-cloud) und [Azure Government-Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
     - Beim Ausführen einer Migration kann eine beliebige Zielregion ausgewählt werden.
@@ -179,10 +179,21 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass die Server nach der Ermit
 
 Mit der Serverbewertung können zwei Arten von Bewertungen erstellt werden.
 
-**Bewertungstyp** | **Details** | **Daten**
+
+**Bewertungstyp** | **Details**
+--- | --- 
+**Azure-VM** | Bewertungen zum Migrieren Ihrer lokalen Server zu virtuellen Azure-Computern. <br/><br/> Sie können Ihre lokalen [VMware-VMs](how-to-set-up-appliance-vmware.md), [Hyper-V-VMs](how-to-set-up-appliance-hyper-v.md) und [physischen Server](how-to-set-up-appliance-physical.md) für die Migration zu Azure bewerten, indem Sie diesen Bewertungstyp verwenden.(concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Bewertungen zum Migrieren Ihrer lokalen Server zu [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> Sie können Ihre lokalen [VMware-VMs](how-to-set-up-appliance-vmware.md) für die Migration zu Azure VMware Solution (AVS) bewerten, indem Sie diesen Bewertungstyp verwenden. [Weitere Informationen](concepts-azure-vmware-solution-assessment-calculation.md)
+
+### <a name="sizing-criteria"></a>Größenkriterien
+
+Die Serverbewertung verfügt über zwei Optionen für Größenkriterien:
+
+**Größenkriterien** | **Details** | **Daten**
 --- | --- | ---
-**Leistungsbasiert** | Bewertungen auf der Grundlage angegebener Leistungsdatenwerte | **Empfohlene VM-Größe**: Basierend auf Daten zur CPU- und Arbeitsspeicherauslastung<br/><br/> **Empfohlener Datenträgertyp (Verwalteter Datenträger vom Typ Standard oder Premium)** : Basierend auf den Ein-/Ausgabevorgängen pro Sekunde (Input/Output Per Second, IOPS) und dem Durchsatz der lokalen Datenträger
-**Wie lokal** | Bewertungen basierend auf lokaler Größenanpassung | **Empfohlene VM-Größe**: Basierend auf der angegebenen Servergröße<br/><br> **Empfohlener Datenträgertyp**: Basierend auf der für die Bewertung ausgewählten Speichertypeinstellung
+**Leistungsbasiert** | Bewertungen, die Empfehlungen auf der Grundlage der erfassten Leistungsdaten aussprechen | **Bewertung vom Typ „Virtueller Azure-Computer“** : Die Empfehlung zur VM-Größe basiert auf CPU- und Speicherauslastungsdaten.<br/><br/> Die Empfehlung zum Datenträgertyp (HDD/SSD Standard oder Premium) basiert auf dem IOPS und dem Durchsatz der lokalen Datenträger.<br/><br/> **Bewertung vom Typ „Azure VMware Solution (AVS)“** : Die Empfehlung zu AVS-Knoten basiert auf CPU- und Speicherauslastungsdaten.
+**Aktuelle lokale Umgebung** | Bewertungen, die keine Leistungsdaten verwenden, um Empfehlungen auszusprechen. | **Bewertung vom Typ „Virtueller Azure-Computer“** : Die Empfehlung zur VM-Größe basiert auf der lokalen VM-Größe<br/><br> Der empfohlene Datenträgertyp basiert auf dem, was Sie in der Speichertypeinstellung für die Bewertung auswählen.<br/><br/> **Bewertung vom Typ „Azure VMware Solution (AVS)“** : Die Empfehlung zu AVS-Knoten basiert auf der lokalen VM-Größe.
+
 
 So führen Sie eine Bewertung aus:
 
@@ -191,24 +202,31 @@ So führen Sie eine Bewertung aus:
 
     ![Bewerten](./media/tutorial-assess-physical/assess.png)
 
-3. Geben Sie unter **Server bewerten** einen Namen für die Bewertung an.
+3. Geben Sie unter **Server bewerten** den Bewertungsnamen an, und wählen Sie als Typ der **Bewertung** die Option *Azure-VM* aus, wenn Sie Bewertungen von Azure-VMs durchführen möchten. Wählen Sie *Azure VMware Solution (AVS)* aus, falls Sie AVS-Bewertungen durchführen möchten.
+
+    ![Grundlagen der Bewertung](./media/how-to-create-assessment/assess-servers-azurevm.png)
+
 4. Wählen Sie unter **Ermittlungsquelle** die Option **Machines added via import to Azure Migrate** (Per Azure Migrate-Import hinzugefügte Computer) aus.
+
 5. Wählen Sie **Alle anzeigen** aus, um die Eigenschaften der Bewertung zu überprüfen.
 
     ![Bewertungseigenschaften](./media/tutorial-assess-physical/view-all.png)
 
-6. Wählen Sie unter **Gruppe auswählen oder erstellen** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Gruppe ein. Eine Gruppe enthält mindestens eine zu bewertende VM.
+6. Klicken Sie auf **Weiter**, um zu **Computer für die Bewertung auswählen** zu gelangen. Wählen Sie unter **Gruppe auswählen oder erstellen** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Gruppe ein. Eine Gruppe enthält mindestens eine zu bewertende VM.
 7. Wählen Sie unter **Computer zur Gruppe hinzufügen** die Server aus, die der Gruppe hinzugefügt werden sollen.
-8. Wählen Sie **Bewertung erstellen** aus, um die Gruppe zu erstellen, und führen Sie anschließend die Bewertung aus.
+8. Klicken Sie auf **Weiter**, um unter **Überprüfen + Bewertung erstellen** die Bewertungsdetails zu überprüfen.
+9. Klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen, und führen Sie anschließend die Bewertung aus.
 
     ![Erstellen einer Bewertung](./media/tutorial-assess-physical/assessment-create.png)
 
 9. Zeigen Sie die erstellte Bewertung unter **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) > **Bewertungen** an.
 10. Wählen Sie **Bewertung exportieren** aus, um sie als Microsoft Excel-Datei herunterzuladen.
 
-## <a name="review-an-assessment"></a>Überprüfen einer Bewertung
+Weitere Informationen zur Bewertung vom Typ **Azure VMware Solution (AVS)** finden Sie [hier](how-to-create-azure-vmware-solution-assessment.md). 
 
-Eine Bewertung beschreibt Folgendes:
+## <a name="review-an-azure-vm-assessment"></a>Überprüfen einer Azure-VM-Bewertung
+
+Bei einer Azure-VM-Bewertung wird Folgendes beschrieben:
 
 - **Azure-Bereitschaft**: Gibt an, ob Server für die Migration zu Azure geeignet sind.
 - **Geschätzte monatliche Kosten**: Die geschätzten monatlichen Compute- und Speicherkosten für die Ausführung der Server in Azure.

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: b45af924b75392374265ca41bd4dc1627edd4e01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89e3aa1fec2157d77ac5c180bc4dd193f10398cd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190808"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078951"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Verwenden von Data Lake Storage Gen1 mit Azure HDInsight-Clustern
 
@@ -42,12 +42,12 @@ Derzeit unterstützen nur einige HDInsight-Clustertypen/-versionen Data Lake Sto
 
 | HDInsight-Clustertyp | Data Lake Storage Gen1 als Standardspeicher | Data Lake Storage Gen1 als zusätzlicher Speicher| Notizen |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight-Version 4.0 | Nein  | Nein  |ADLS Gen1 wird mit HDInsight 4.0 nicht unterstützt |
+| HDInsight-Version 4.0 | Nein | Nein |ADLS Gen1 wird mit HDInsight 4.0 nicht unterstützt |
 | HDInsight-Version 3.6 | Ja | Ja | Mit Ausnahme von HBase|
 | HDInsight-Version 3.5 | Ja | Ja | Mit Ausnahme von HBase|
-| HDInsight-Version 3.4 | Nein  | Ja | |
-| HDInsight, Version 3.3 | Nein  | Nein  | |
-| HDInsight, Version 3.2 | Nein  | Ja | |
+| HDInsight-Version 3.4 | Nein | Ja | |
+| HDInsight, Version 3.3 | Nein | Nein | |
+| HDInsight, Version 3.2 | Nein | Ja | |
 | Storm | | |Sie können Data Lake Storage Gen1 verwenden, um dort Daten aus einer Storm-Topologie zu schreiben. Sie können Data Lake Storage auch zum Speichern von Verweisdaten verwenden, die anschließend von einer Storm-Topologie gelesen werden.|
 
 > [!WARNING]  
@@ -62,7 +62,7 @@ Wenn HDInsight mit Data Lake Storage Gen1 als Standardspeicher bereitgestellt wi
 * Cluster1 kann den Pfad `adl://mydatalakestore/cluster1storage` nutzen.
 * Cluster2 kann den Pfad `adl://mydatalakestore/cluster2storage` nutzen.
 
-Beachten Sie, dass für beide Cluster dasselbe Data Lake Storage Gen1-Konto **mydatalakestore** verwendet wird. Jeder Cluster hat in Data Lake Storage Zugriff auf sein eigenes Stammdateisystem. Bei der Bereitstellung im Azure-Portal werden Sie aufgefordert, für den Stammpfad einen Ordnernamen wie **/clusters/\<Clustername>** zu verwenden.
+Beachten Sie, dass für beide Cluster dasselbe Data Lake Storage Gen1-Konto **mydatalakestore** verwendet wird. Jeder Cluster hat in Data Lake Storage Zugriff auf sein eigenes Stammdateisystem. Bei der Bereitstellung im Azure-Portal werden Sie aufgefordert, für den Stammpfad einen Ordnernamen wie **/clusters/\<clustername>** zu verwenden.
 
 Um Data Lake Storage Gen1 als Standardspeicher zu verwenden, müssen Sie dem Dienstprinzipal Zugriff auf die folgenden Pfade gewähren:
 
@@ -110,13 +110,13 @@ New-AzResourceGroupDeployment `
 
 Sie können Data Lake Storage Gen1 zudem als zusätzlichen Speicher für den Cluster verwenden. In solchen Fällen kann der Clusterstandardspeicher ein Azure Storage Blob- oder ein Data Lake Storage-Konto sein. Wenn Sie HDInsight-Aufträge mit den in Data Lake Storage gespeicherten Daten als zusätzlichem Speicher ausführen, verwenden Sie den vollqualifizierten Pfad. Beispiel:
 
-    adl://mydatalakestore.azuredatalakestore.net/<file_path>
+`adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
 Die URL enthält jetzt keinen **cluster_root_path**. Dies liegt daran, dass Data Lake Storage in diesem Fall kein Standardspeicher ist. Sie müssen daher nur den Pfad zu den Dateien angeben.
 
 Um Data Lake Storage Gen1 als zusätzlichen Speicher zu verwenden, gewähren Sie dem Dienstprinzipal Zugriff auf die Pfade, in denen Ihre Dateien gespeichert sind.  Beispiel:
 
-    adl://mydatalakestore.azuredatalakestore.net/<file_path>
+`adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
 Weitere Informationen zum Erstellen von Dienstprinzipalen und zum Gewähren des Zugriffs für diese finden Sie unter „Konfigurieren des Data Lake Storage-Zugriffs“.
 

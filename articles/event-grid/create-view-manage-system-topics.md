@@ -1,35 +1,23 @@
 ---
-title: Erstellen, Anzeigen und Verwalten von Systemthemen in Azure Event Grid
+title: Erstellen, Anzeigen und Verwalten von Systemthemen in Azure Event Grid (Portal)
 description: In diesem Artikel wird gezeigt, wie Sie vorhandene Systemthemen anzeigen und Azure Event Grid-Systemthemen mithilfe des Azure-Portals erstellen können.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.author: spelluru
-ms.openlocfilehash: ac22afb351973397960e66c2a8fe86031e0b213a
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.date: 07/07/2020
+ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316341"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115110"
 ---
-# <a name="create-view-and-manage-system-topics-in-azure-event-grid"></a>Erstellen, Anzeigen und Verwalten von Systemthemen in Azure Event Grid
-In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
-
-- Erstellen eines Systemthemas
-- Anzeigen aller vorhandenen Systemthemen 
-- Löscht ein Systemthema
-- Erstellen eines Ereignisabonnements für ein Systemthema
-
+# <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Erstellen, Anzeigen und Verwalten von Event Grid-Systemthemen im Azure-Portal
+In diesem Artikel wird beschrieben, wie Sie Systemthemen im Azure-Portal erstellen und verwalten. Eine Übersicht zu Systemthemen finden Sie unter [Systemthemen](system-topics.md).
 
 ## <a name="create-a-system-topic"></a>Erstellen eines Systemthemas
-Sie können ein Systemthema für eine Azure-Ressource auf zwei Arten erstellen:
+Sie können ein Systemthema für eine Azure-Ressource (Speicherkonto, Event Hubs-Namespace usw.) auf zweierlei Weise erstellen:
 
-- Mithilfe der Ressourcenseite, z. B. der Seite "Speicherkonto" oder "Event Hubs-Namespace". 
-- Mithilfe der Seite **Event Grid-Systemthemen**. 
-
-Ein Beispiel für die Erstellung eines Systemthemas unter Verwendung einer Ressourcenseite finden Sie in dieser [Schnellstartanleitung](blob-event-quickstart-portal.md) (Registerkarte **Ereignisse** einer Ressourcenseite im Azure-Portal). Die folgenden Schritte dienen zum Erstellen eines Systemthemas unter Verwendung der Seite **Event Grid-Systemthemen**. 
+- Mithilfe der Seite **Ereignisse** einer Ressource, z. B. der Seite „Speicherkonto“ oder „Event Hubs-Namespace“. Wenn Sie die Seite **Ereignisse** im Azure-Portal verwenden, um ein Ereignisabonnement für ein Ereignis zu erstellen, das von einer Azure-Quelle ausgelöst wird (Beispiel: Azure Storage Konto), erstellt das Portal ein Systemthema für die Azure-Ressource und dann ein Abonnement für das Systemthema. Sie geben den Namen des Systemthemas an, wenn Sie zum ersten Mal ein Ereignisabonnement für die Azure-Ressource erstellen. Ab dem zweiten Mal wird Ihnen der Name des Systemthemas im schreibgeschützten Modus angezeigt. Weitere Informationen finden Sie unter [Schnellstart: Weiterleiten von Blob Storage-Ereignissen an einen Webendpunkt über das Azure-Portal](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage). Dort finden Sie ausführliche Schritte.
+- Mithilfe der Seite **Event Grid-Systemthemen**. Die folgenden Schritte dienen zum Erstellen eines Systemthemas unter Verwendung der Seite **Event Grid-Systemthemen**. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Geben Sie in das Suchfeld oben **Event Grid-Systemthemen** ein, und drücken Sie dann die **EINGABETASTE**. 
@@ -57,11 +45,9 @@ Ein Beispiel für die Erstellung eines Systemthemas unter Verwendung einer Resso
 
         ![Seite „Systemthema“](./media/create-view-manage-system-topics/system-topic-page.png)
 
+
 ## <a name="view-all-system-topics"></a>Anzeigen aller Systemthemen
 Führen Sie die folgenden Schritte aus, um alle vorhandenen Event Grid-Systemthemen anzuzeigen. 
-
-> [!NOTE]
-> Wenn Sie zuvor ein Abonnement für ein Ereignis erstellt haben, das durch Azure-Quellen ausgelöst wurde, hat der Event Grid-Dienst automatisch ein Systemthema mit einem zufällig generierten Namen erstellt. Jetzt können Sie beim Erstellen des Themas einen Namen für das Systemthema angeben. Sie können diese Systemthemaressource verwenden, um Metriken und Diagnoseprotokolle zu ermitteln.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Geben Sie in das Suchfeld oben **Event Grid-Systemthemen** ein, und drücken Sie dann die **EINGABETASTE**. 
@@ -100,7 +86,6 @@ Führen Sie die folgenden Schritte aus, um alle vorhandenen Event Grid-Systemthe
 3. Bestätigen Sie, dass die Felder **Thementyp**, **Quellressource** und **Themenname** automatisch ausgefüllt sind. Geben Sie einen Namen ein, wählen Sie einen **Endpunkttyp** aus, und geben Sie dann den **Endpunkt** an. Wählen Sie dann **Erstellen** aus, um das Ereignisabonnement zu erstellen. 
 
     ![Systemthema – Ereignisabonnement erstellen](./media/create-view-manage-system-topics/create-event-subscription.png)
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 Im Abschnitt [Systemthemen in Azure Event Grid](system-topics.md) erfahren Sie mehr über Systemthemen und Thementypen, die von Azure Event Grid unterstützt werden. 

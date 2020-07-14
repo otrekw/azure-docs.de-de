@@ -4,18 +4,22 @@ description: In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Bat
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 5f26aeead41fa1ffcebefdeaabae84490dfdae2b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d92751d1463a20c8fb0cb83fe678789860957189
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959822"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086125"
 ---
-# <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Batch-Kontos unter Verwendung einer Azure Resource Manager-Vorlage
+# <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Schnellstart: Erstellen eines Batch-Kontos mithilfe einer ARM-Vorlage
 
-Sie benötigen ein Batch-Konto zum Erstellen von Computeressourcen (Pools mit Computeknoten) und Batch-Aufträgen. Sie können ein Azure Storage-Konto mit Ihrem Batch-Konto verknüpfen. Dies ist nützlich zum Bereitstellen von Anwendungen und Speichern von Eingabe- und Ausgabedaten für die meisten Workloads in der Praxis. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine Azure Resource Manager-Vorlage verwenden, um ein Batch-Konto einschließlich Speicher zu erstellen. Nach Abschluss dieser Schnellstartanleitung sind Sie mit den wichtigsten Konzepten des Batch-Diensts vertraut und können Batch mit realistischeren Workloads und in größerem Umfang ausprobieren.
+Sie benötigen ein Batch-Konto zum Erstellen von Computeressourcen (Pools mit Computeknoten) und Batch-Aufträgen. Sie können ein Azure Storage-Konto mit Ihrem Batch-Konto verknüpfen. Dies ist nützlich zum Bereitstellen von Anwendungen und Speichern von Eingabe- und Ausgabedaten für die meisten Workloads in der Praxis. In dieser Schnellstartanleitung wird erläutert, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) ein Batch-Konto einschließlich Speicher erstellen. Nach Abschluss dieser Schnellstartanleitung sind Sie mit den wichtigsten Konzepten des Batch-Diensts vertraut und können Batch mit realistischeren Workloads und in größerem Umfang ausprobieren.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-batchaccount-with-storage%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -23,9 +27,7 @@ Sie benötigen ein aktives Azure-Abonnement.
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-batch-account-with-storage"></a>Erstellen eines Batch-Kontos mit Storage
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/).
 
@@ -36,7 +38,7 @@ Zwei Azure-Ressourcen sind in der Vorlage definiert:
 - [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): Erstellt ein Speicherkonto.
 - [Microsoft.Batch/batchAccounts](/azure/templates/microsoft.batch/batchaccounts): Erstellt ein Batch-Konto
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt ein Azure Batch-Konto und ein Speicherkonto.
 

@@ -1,18 +1,14 @@
 ---
 title: Sichere WebHook-Zustellung mit Azure AD in Azure Event Grid
 description: Beschreibt, wie Ereignisse mittels Azure Event Grid an HTTPS-Endpunkte zugestellt werden, die von Azure Active Directory geschützt werden.
-services: event-grid
-author: banisadr
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.author: babanisa
-ms.openlocfilehash: 86d647ebfcf6e4c1ea8d05f58dd1f559d6e30cfc
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.date: 07/07/2020
+ms.openlocfilehash: b0503d7da9e191e9d6764076392ead8faa5109a1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900470"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119122"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Veröffentlichen von Ereignissen auf mit Azure Active Directory geschützten Endpunkten
 
@@ -29,7 +25,7 @@ Beginnen Sie damit, eine Azure AD-Anwendung für Ihren geschützten Endpunkt zu 
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Aktivieren von Event Grid zur Verwendung Ihrer Azure AD-Anwendung
 
-Verwenden Sie das folgende PowerShell-Skript, um eine Rolle und einen Dienstprinzipal in ihrer Azure AD-Anwendung zu erstellen. Sie benötigen die Mandanten-ID und die Objekt-ID aus ihrer Azure AD-Anwendung:
+Verwenden Sie das folgende PowerShell-Skript, um eine Rolle und einen Dienstprinzipal in ihrer Azure AD-Anwendung zu erstellen. Sie benötigen die Mandanten-ID und die Objekt-ID aus ihrer Azure AD-Anwendung:
 
    > [!NOTE]
    > Sie müssen Mitglied der [Rolle „Azure AD-Anwendungsadministrator“](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) sein, um dieses Skript ausführen zu können.

@@ -40,6 +40,8 @@
       items:
         - name: Informationen zu Verbindungen und Peering
           href: expressroute-circuit-peerings.md
+        - name: Informationen zum Upgrade der Verbindungsbandbreite
+          href: about-upgrade-circuit-bandwidth.md
         - name: Umstellen von Verbindungen vom klassischen Modell auf das Resource Manager-Modell
           href: expressroute-move.md
     - name: BFD über ExpressRoute

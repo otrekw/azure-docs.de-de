@@ -7,26 +7,28 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 2db3dffbbf0f6d98fe6da7a0cec5400f7f2c03da
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1cb6dc56a5d4fa975f68c1dea08920a7c7db3904
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722455"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119496"
 ---
-# <a name="quickstart-create-a-service-fabric-cluster-using-resource-manager-template"></a>Schnellstart: Erstellen eines Service Fabric-Clusters mithilfe einer Resource Manager-Vorlage
+# <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Schnellstart: Erstellen eines Service Fabric-Clusters mithilfe einer ARM-Vorlage
 
-Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices und Container vereinfacht. Ein *Service Fabric-Cluster* ist eine vernetzte Gruppe von virtuellen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden.
+Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices und Container vereinfacht. Ein *Service Fabric-Cluster* ist eine vernetzte Gruppe von virtuellen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Dieser Artikel beschreibt die Bereitstellung eines Service Fabric-Testclusters in Azure mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Dieser Artikel beschreibt die Bereitstellung eines Service Fabric-Testclusters in Azure mithilfe von Resource Manager. Dieser Windows-Cluster mit fünf Knoten wird mit einem selbstsignierten Zertifikat geschützt und ist daher nur zur Veranschaulichung (und nicht für Produktionsworkloads) gedacht.
+Dieser Windows-Cluster mit fünf Knoten wird mit einem selbstsignierten Zertifikat geschützt und ist daher nur zur Veranschaulichung (und nicht für Produktionsworkloads) gedacht. Zum Bereitstellen der Vorlage wird Azure PowerShell verwendet. Neben Azure PowerShell können Sie auch das Azure-Portal, die Azure-CLI und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../azure-resource-manager/templates/deploy-portal.md).
 
-Zum Bereitstellen der Vorlage wird Azure PowerShell verwendet. Neben Azure PowerShell können Sie auch das Azure-Portal, die Azure-CLI und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../azure-resource-manager/templates/deploy-portal.md).
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-secure-cluster-5-node-1-nodetype%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ### <a name="install-service-fabric-sdk-and-powershell-modules"></a>Installieren des Service Fabric SDK und der PowerShell-Module
 
@@ -87,9 +89,7 @@ $certUrlValue = "<Certificate URL>"
 $certThumbprint = "<Certificate Thumbprint>"
 ```
 
-## <a name="create-a-service-fabric-cluster"></a>Erstellen von Service Fabric-Clustern
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/). Die Vorlage für diesen Artikel ist zu lang und kann hier nicht angezeigt werden. Die Vorlage können Sie sich über die Datei [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) ansehen.
 
@@ -144,7 +144,7 @@ Beispiel:
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Speichern Sie die Pfade der Resource Manager-Vorlagendateien und Parameterdateien in Variablen, und stellen Sie anschließend die Vorlage bereit.
+Speichern Sie die Pfade Ihrer ARM-Vorlagen- und Parameterdateien in Variablen, und stellen Sie anschließend die Vorlage bereit.
 
 ```powershell
 $templateFilePath = "<full path to azuredeploy.json>"
