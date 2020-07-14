@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Installati
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1d1397519b39ffbc439cdd0d3e78d9b553ea302e
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: cb9e5cf48f960a70c6a699df1163089eb4e8bc31
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598010"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056599"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -165,6 +165,25 @@ Set-ExecutionPolicy Unrestricted
 Fehler | Mögliche Ursachen | Empfohlene Aktionen
 --- | --- | ---
 Fehler beim aktuellen Vorgang aufgrund eines internen Dienstfehlers: „Ressource nicht im Dienststempel angegeben“. Wiederholen Sie den Vorgang nach einiger Zeit. (ID: 230006) | Der geschützte Server wurde umbenannt. | <li> Benennen Sie den Server wieder in den ursprünglichen Namen um, der beim Tresor registriert ist. <br> <li> Registrieren Sie den Server mit dem neuen Namen erneut beim Tresor.
+
+## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>Der Auftrag konnte nicht gestartet werden, weil ein anderer Auftrag ausgeführt wurde.
+
+Wenn Sie in der **MARS-Konsole** unter **Auftragsverlauf** eine Warnmeldung angezeigt wird, die besagt: „Auftrag konnte nicht gestartet werden, da ein anderer Auftrag in Bearbeitung ist“, dann könnte dies auf eine doppelte Instanz des vom Taskplaner ausgelösten Auftrags zurückzuführen sein.
+
+![Der Auftrag konnte nicht gestartet werden, weil ein anderer Auftrag ausgeführt wurde.](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
+
+So lösen Sie das Problem:
+
+1. Starten Sie das Snap-in „Taskplaner“, indem Sie *taskschd. msc* im Fenster „Ausführen“ eingeben.
+1. Navigieren Sie im linken Bereich zu **Taskplanerbibliothek** -> **Microsoft** -> **Onlinebackup**.
+1. Doppelklicken Sie für jede Aufgabe in dieser Bibliothek auf die Aufgabe, um die Eigenschaften zu öffnen, und führen Sie die folgenden Schritte aus:
+    1. Wechseln Sie zur Registerkarte **Einstellungen**.
+
+         ![Registerkarte "Einstellungen"](./media/backup-azure-mars-troubleshoot/settings-tab.png)
+
+    1. Ändern Sie die Option für **Folgende Regel anwenden, falls die Aufgabe bereits ausgeführt wird** in **Keine neue Instanz starten**.
+
+         ![Ändern Sie die Regel so, dass keine neue Instanz gestartet wird.](./media/backup-azure-mars-troubleshoot/change-rule.png)
 
 ## <a name="troubleshoot-restore-problems"></a>Behandlung von Problemen bei der Wiederherstellung
 

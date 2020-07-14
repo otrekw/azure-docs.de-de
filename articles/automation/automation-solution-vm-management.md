@@ -5,18 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424073"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185873"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht
 
 Die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ startet bzw. beendet aktivierte virtuelle Azure-Computer. Damit können Sie Computer nach benutzerdefinierten Zeitplänen starten und beenden und außerdem über Azure Monitor-Protokolle Erkenntnisse aus Ihren Daten ziehen und durch die Nutzung von [Aktionsgruppen](../azure-monitor/platform/action-groups.md) optional E-Mails senden. Die Funktion kann in den meisten Szenarien sowohl auf Azure Resource Manager-VMs als auch auf klassischen VMs aktiviert werden. 
 
-Diese Funktion verwendet das Cmdlet [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) zum Starten von VMs. Zum Beenden von VMs wird [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) verwendet.
+Diese Funktion verwendet das Cmdlet [Start-AzVm](/powershell/module/az.compute/start-azvm) zum Starten von VMs. Zum Beenden von VMs wird [Stop-AzVM](/powershell/module/az.compute/stop-azvm) verwendet.
 
 > [!NOTE]
 > Die Runbooks wurden zwar aktualisiert und verwenden die neuen Cmdlets des Azure Az-Moduls, verwenden aber weiterhin den AzureRM-Präfixalias.
@@ -37,7 +37,7 @@ Die aktuelle Funktion hat folgende Einschränkungen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Runbooks für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ funktionieren mit einem [ausführenden Azure-Konto](automation-create-runas-account.md). Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
+Die Runbooks für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ funktionieren mit einem [ausführenden Azure-Konto](./manage-runas-account.md). Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
 
 Sie sollten für die Arbeit mit VMs, die für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ aktiviert sind, ein separates Automation-Konto verwenden. Die Azure-Modulversionen werden häufig aktualisiert, und ihre Parameter können sich ändern. Die Funktion wird nicht mit derselben Häufigkeit aktualisiert, sodass sie eventuell nicht mit neueren Versionen der verwendeten Cmdlets funktioniert. Sie sollten zum Testen auf Modulupdates ein Automation-Testkonto verwenden, bevor Sie sie in Ihre Automation-Konten für die Produktion importieren.
 
@@ -122,7 +122,7 @@ Alle übergeordneten Runbooks enthalten den Parameter `WhatIf`. Bei der Festlegu
 In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen aufgeführt. Ändern Sie nur Variablen, die das Präfix `External` aufweisen. Wenn Sie Variablen mit dem Präfix `Internal` ändern, hat dies unerwünschte Auswirkungen.
 
 > [!NOTE]
-> Die Einschränkungen beim VM-Namen und der Ressourcengruppe sind größtenteils durch die Variablengröße bedingt. Weitere Informationen finden Sie unter [Variable Objekte in Azure Automation](https://docs.microsoft.com/azure/automation/shared-resources/variables).
+> Die Einschränkungen beim VM-Namen und der Ressourcengruppe sind größtenteils durch die Variablengröße bedingt. Weitere Informationen finden Sie unter [Variable Objekte in Azure Automation](./shared-resources/variables.md).
 
 |Variable | BESCHREIBUNG|
 |---------|------------|
@@ -177,7 +177,7 @@ Wenn Sie über mehr als 20 VMs pro Clouddienst verfügen, beachten Sie folgende
 
 Wenn andernfalls der Automatisierungsauftrag für diese Funktion mehr als drei Stunden ausgeführt wird, wird er gemäß dem Limit für [gleichmäßige Verteilung](automation-runbook-execution.md#fair-share) vorübergehend entladen oder angehalten.
 
-Azure CSP-Abonnements unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Wenn die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ ausgeführt wird, werden möglicherweise Fehler ausgegeben, da sie Cmdlets für die Verwaltung klassischer Ressourcen enthält. Weitere Informationen zu CSP finden Sie unter [Verfügbare Dienste in CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services). Wenn Sie ein CSP-Abonnement verwenden, sollten Sie die Variable [External_EnableClassicVMs](#variables) nach der Bereitstellung auf FALSE festlegen.
+Azure CSP-Abonnements unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Wenn die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ ausgeführt wird, werden möglicherweise Fehler ausgegeben, da sie Cmdlets für die Verwaltung klassischer Ressourcen enthält. Weitere Informationen zu CSP finden Sie unter [Verfügbare Dienste in CSP-Abonnements](/azure/cloud-solution-provider/overview/azure-csp-available-services). Wenn Sie ein CSP-Abonnement verwenden, sollten Sie die Variable [External_EnableClassicVMs](#variables) nach der Bereitstellung auf FALSE festlegen.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

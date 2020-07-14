@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201700"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181334"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Anleitung für das Verwenden replizierter Tabellen im Synapse SQL-Pool
 
@@ -149,9 +149,9 @@ Versuchen Sie beim Laden von Daten in replizierte Tabellen Neuerstellungen zu mi
 
 Beispielsweise werden in diesem Auslastungsmuster Daten aus vier Quellen geladen und vier Neuerstellungen aufgerufen.
 
-        Load from source 1.
+- Laden aus Quelle 1.
 - Eine SELECT-Anweisung löst Neuerstellung 1 aus.
-        Laden aus Quelle 2.
+- Laden aus Quelle 2.
 - Eine SELECT-Anweisung löst Neuerstellung 2 aus.
 - Laden aus Quelle 3.
 - Eine SELECT-Anweisung löst Neuerstellung 3 aus.

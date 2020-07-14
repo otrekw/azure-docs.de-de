@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dbaebac2228c11aef5fb33af4588f75ea15677a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc96f2dd81b618b4170acd4b415a09248adbb7d5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343053"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186162"
 ---
 # <a name="management-of-azure-automation-data"></a>Verwaltung von Azure Automation-Daten
 
@@ -37,9 +37,9 @@ Informationen zur TLS 1.2-Unterstützung mit dem Log Analytics-Agent für Windo
 |Plattform/Sprache | Support | Weitere Informationen |
 | --- | --- | --- |
 |Linux | Linux-Distributionen greifen zur Unterstützung von TLS 1.2 tendenziell auf [OpenSSL](https://www.openssl.org) zurück.  | Überprüfen Sie anhand des [OpenSSL-Änderungsprotokolls](https://www.openssl.org/news/changelog.html), ob Ihre Version von OpenSSL unterstützt wird.|
-| Windows 8.0 bis 10 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) verwenden.  |
-| Windows Server 2012 bis 2016 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) verwenden. |
-| Windows 7 SP1 und Windows Server 2008 R2 SP1 | Wird unterstützt, ist jedoch standardmäßig deaktiviert. | Details zur Aktivierung finden Sie auf der Seite [Transport Layer Security (TLS) registry settings (Registrierungseinstellungen für Transport Layer Security (TLS))](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
+| Windows 8.0 bis 10 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](/windows-server/security/tls/tls-registry-settings) verwenden.  |
+| Windows Server 2012 bis 2016 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](/windows-server/security/tls/tls-registry-settings) verwenden. |
+| Windows 7 SP1 und Windows Server 2008 R2 SP1 | Wird unterstützt, ist jedoch standardmäßig deaktiviert. | Details zur Aktivierung finden Sie auf der Seite [Transport Layer Security (TLS) registry settings (Registrierungseinstellungen für Transport Layer Security (TLS))](/windows-server/security/tls/tls-registry-settings).  |
 
 ## <a name="data-retention"></a>Beibehaltung von Daten
 
@@ -51,7 +51,7 @@ Die folgende Tabelle zeigt die Aufbewahrungsrichtlinie für unterschiedliche Res
 |:--- |:--- |
 | Konten |Ein Konto wird 30 Tage nach seiner Löschung durch den Benutzer endgültig entfernt. |
 | Objekte |Ein Objekt wird 30 Tage nach seiner Löschung durch den Benutzer endgültig entfernt oder 30 Tage, nachdem ein Benutzer ein Konto gelöscht hat, das das Objekt enthält. |
-| DSC-Knoten |Ein DSC-Knoten wird 30 Tage nach Aufhebung seiner Registrierung im Automation-Konto über das Azure-Portal oder mit dem Cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) in Windows PowerShell endgültig entfernt. Auch ein Knoten wird nach 30 Tagen endgültig entfernt, nachdem ein Benutzer das Konto gelöscht hat, das den Knoten enthält. |
+| DSC-Knoten |Ein DSC-Knoten wird 30 Tage nach Aufhebung seiner Registrierung im Automation-Konto über das Azure-Portal oder mit dem Cmdlet [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) in Windows PowerShell endgültig entfernt. Auch ein Knoten wird nach 30 Tagen endgültig entfernt, nachdem ein Benutzer das Konto gelöscht hat, das den Knoten enthält. |
 | Aufträge |Ein Auftrag wird 30 Tage nach der Änderung gelöscht und endgültig entfernt, z. B. nachdem der Auftrag abgeschlossen, beendet oder angehalten wurde. |
 | Module |Ein Modul wird 30 Tage nach seiner Löschung durch einen Benutzer endgültig entfernt oder 30 Tage, nachdem ein Benutzer das Konto gelöscht hat, das das Modul enthält. |
 | Knotenkonfigurationen/MOF-Dateien |Eine alte Knotenkonfiguration wird 30 Tage nach dem Generieren einer neuen Knotenkonfiguration endgültig entfernt. |
@@ -66,7 +66,7 @@ Wenn Sie ein Automation-Konto in Azure löschen, werden auch alle Objekt in dem 
 
 ### <a name="runbooks"></a>Runbooks
 
-Sie können Ihre Runbooks entweder unter Verwendung des Azure-Portals oder mithilfe des Cmdlets [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) in Windows PowerShell in Skriptdateien exportieren. Sie können diese Skriptdateien in ein anderes Automation-Konto importieren, wie unter [Verwalten von Runbooks in Azure Automation](manage-runbooks.md) besprochen.
+Sie können Ihre Runbooks entweder unter Verwendung des Azure-Portals oder mithilfe des Cmdlets [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) in Windows PowerShell in Skriptdateien exportieren. Sie können diese Skriptdateien in ein anderes Automation-Konto importieren, wie unter [Verwalten von Runbooks in Azure Automation](manage-runbooks.md) besprochen.
 
 ### <a name="integration-modules"></a>Integrationsmodule
 
@@ -80,8 +80,7 @@ Es ist nicht möglich, die Werte verschlüsselter Variablen oder die Kennwortfel
 
 ### <a name="dsc-configurations"></a>DSC-Konfigurationen
 
-Sie können Ihre DSC-Konfigurationen unter Verwendung des Azure-Portals oder mithilfe des Cmdlets [Export-AzureRmAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
-) in Windows PowerShell in Skriptdateien exportieren. Sie können diese Konfigurationen in ein anderes Automation-Konto importiert importieren und darin verwenden.
+Sie können Ihre DSC-Konfigurationen unter Verwendung des Azure-Portals oder mithilfe des Cmdlets [Export-AzureRmAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) in Windows PowerShell in Skriptdateien exportieren. Sie können diese Konfigurationen in ein anderes Automation-Konto importiert importieren und darin verwenden.
 
 ## <a name="geo-replication-in-azure-automation"></a>Georeplikation in Azure Automation
 
@@ -103,4 +102,4 @@ Externe Kunden können nicht direkt auf den Automation-Georeplikationsdienst zug
 
 * Weitere Informationen zu sicheren Objekten in Azure Automation finden Sie unter [Verschlüsseln sicherer Ressourcen in Azure Automation](automation-secure-asset-encryption.md).
 
-* Weitere Informationen zur Georeplikation finden Sie unter [Erstellen und Verwenden der aktiven Georeplikation](../sql-database/sql-database-active-geo-replication.md).
+* Weitere Informationen zur Georeplikation finden Sie unter [Erstellen und Verwenden der aktiven Georeplikation](../azure-sql/database/active-geo-replication-overview.md).

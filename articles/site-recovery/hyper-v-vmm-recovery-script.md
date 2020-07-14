@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb690dfb90c0f7b8216368cb6b26a9af7d895d18
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826280"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130122"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Hinzufügen eines VMM-Skripts zu einem Wiederherstellungsplan
 
 Dieser Artikel beschreibt, wie Sie ein System Center Virtual Machine Manager-Skript (VMM) erstellen und einem Wiederherstellungsplan in [Azure Site Recovery](site-recovery-overview.md) hinzufügen.
 
-Kommentare oder Fragen können Sie am Ende dieses Artikels oder auf der [Microsoft F&A-Seite für Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html) veröffentlichen.
+Kommentare oder Fragen können Sie am Ende dieses Artikels oder auf der [Microsoft F&A-Seite für Azure Recovery Services](/answers/topics/azure-site-recovery.html) veröffentlichen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +38,7 @@ Sie können PowerShell-Skripts in Ihren Wiederherstellungsplänen verwenden. Sie
 
     `Import-Module -Name virtualmachinemanager`
 
-    Weitere Informationen finden Sie unter [Erste Schritte mit Windows PowerShell und VMM](https://technet.microsoft.com/library/hh875013.aspx).
+    Weitere Informationen finden Sie unter [Erste Schritte mit Windows PowerShell und VMM](/previous-versions/system-center/system-center-2012-R2/hh875013(v=sc.12)).
 * Stellen Sie sicher, dass Ihre VMM-Bereitstellung mindestens einen Bibliothekserver enthält. Standardmäßig befindet sich der Bibliotheksfreigabepfad für einen VMM-Server lokal auf dem VMM-Server. Der Ordnername lautet „MSCVMMLibrary“.
 
   Wenn Ihr Bibliotheksfreigabepfad remote ist (oder lokal, aber nicht für „MSCVMMLibrary“ freigegeben), konfigurieren Sie die Freigabe wie folgt (hier dient „\\libserver2.contoso.com\share\“ als Beispiel):
@@ -51,7 +51,7 @@ Sie können PowerShell-Skripts in Ihren Wiederherstellungsplänen verwenden. Sie
 
      a. Öffnen Sie die **Windows PowerShell-Konsole (64 Bit)** als Administrator.
      
-     b. Geben Sie Folgendes ein: **Set-executionpolicy bypass**. Weitere Informationen finden Sie unter [Verwenden des Cmdlets Set-ExecutionPolicy](https://technet.microsoft.com/library/ee176961.aspx).
+     b. Geben Sie Folgendes ein: **Set-executionpolicy bypass**. Weitere Informationen finden Sie unter [Verwenden des Cmdlets Set-ExecutionPolicy](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10)).
 
      > [!IMPORTANT]
      > Legen Sie **Set-Executionpolicy Bypass** nur in der 64-Bit-Konsole von PowerShell fest. Wenn Sie den Wert in der 32-Bit-Konsole von PowerShell festlegen, werden die Skripts nicht ausgeführt.

@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Azure Active Directory zum Authentifiziere
 ms.topic: how-to
 ms.date: 04/27/2017
 ms.custom: has-adal-ref
-ms.openlocfilehash: b82d6b5f166f67752ea809353e074c01ac953a48
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 829a742c144f2bba39f1ca392e80db25640d4dee
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848982"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141963"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Authentifizieren von Batch Management-Lösungen mit Active Directory
 
@@ -23,9 +23,9 @@ Weitere Informationen zur Nutzung der Batch Management .NET-Bibliothek und des A
 
 ## <a name="register-your-application-with-azure-ad"></a>Registrieren Ihrer Anwendung bei Azure AD
 
-Die Azure [Active Directory-Authentifizierungsbibliothek](../active-directory/active-directory-authentication-libraries.md) (Active Directory Authentication Library, ADAL) stellt eine programmgesteuerte Schnittstelle für Azure AD bereit, die Sie in Ihren Anwendungen einsetzen können. Zum Aufrufen von ADAL aus Ihrer Anwendung müssen Sie Ihre Anwendung in einem Azure AD-Mandanten registrieren. Beim Registrieren Ihrer Anwendung stellen Sie für Azure AD Informationen zu Ihrer Anwendung bereit, einschließlich eines entsprechenden Namens im Azure AD-Mandanten. Azure AD stellt dann eine Anwendungs-ID bereit, die Sie verwenden, um Ihre Anwendung zur Laufzeit Azure AD zuzuordnen. Weitere Informationen zur Anwendungs-ID finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
+Die Azure [Active Directory-Authentifizierungsbibliothek](../active-directory/azuread-dev/active-directory-authentication-libraries.md) (Active Directory Authentication Library, ADAL) stellt eine programmgesteuerte Schnittstelle für Azure AD bereit, die Sie in Ihren Anwendungen einsetzen können. Zum Aufrufen von ADAL aus Ihrer Anwendung müssen Sie Ihre Anwendung in einem Azure AD-Mandanten registrieren. Beim Registrieren Ihrer Anwendung stellen Sie für Azure AD Informationen zu Ihrer Anwendung bereit, einschließlich eines entsprechenden Namens im Azure AD-Mandanten. Azure AD stellt dann eine Anwendungs-ID bereit, die Sie verwenden, um Ihre Anwendung zur Laufzeit Azure AD zuzuordnen. Weitere Informationen zur Anwendungs-ID finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Führen Sie die Schritte im Abschnitt [Adding an Application](../active-directory/develop/quickstart-register-app.md) (Hinzufügen einer Anwendung) des Artikels [Integrating applications with Azure Active Directory](../active-directory/active-directory-integrating-applications.md) (Integrieren von Anwendungen in Azure Active Directory) aus, um die AccountManagement-Beispielanwendung zu registrieren. Geben Sie als Typ der Anwendung **Systemeigene Clientanwendung** an. Der OAuth 2.0-URI nach Industriestandard für den **Umleitungs-URI** ist `urn:ietf:wg:oauth:2.0:oob`. Für den **Umleitungs-URI** können Sie einen beliebigen gültigen URI angeben (z. B. `http://myaccountmanagementsample`), da dies kein echter Endpunkt sein muss.
+Führen Sie die Schritte im Abschnitt [Adding an Application](../active-directory/develop/quickstart-register-app.md) (Hinzufügen einer Anwendung) des Artikels [Integrating applications with Azure Active Directory](../active-directory/develop/quickstart-register-app.md) (Integrieren von Anwendungen in Azure Active Directory) aus, um die AccountManagement-Beispielanwendung zu registrieren. Geben Sie als Typ der Anwendung **Systemeigene Clientanwendung** an. Der OAuth 2.0-URI nach Industriestandard für den **Umleitungs-URI** ist `urn:ietf:wg:oauth:2.0:oob`. Für den **Umleitungs-URI** können Sie einen beliebigen gültigen URI angeben (z. B. `http://myaccountmanagementsample`), da dies kein echter Endpunkt sein muss.
 
 ![Hinzufügen einer Anwendung](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
