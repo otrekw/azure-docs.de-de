@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9006a70ae941abb700412a7c596627939c994028
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1c45aae35c7c1cf2fbde436303a2ac000dfdd5ec
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587509"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339599"
 ---
 # <a name="compare-solutions-for-external-identities-in-azure-active-directory"></a>Vergleichen von Lösungen für Externe Identitäten in Azure Active Directory
 
@@ -36,11 +36,11 @@ Die nachstehende Tabelle enthält einen detaillierten Vergleich der verschiedene
 
 | Mehrinstanzenfähige Anwendungen  | Zusammenarbeit mit externem Benutzer (B2B) | Apps für Consumer oder Kunden (B2C)  |
 | ---- | --- | --- |
-| Primäres Szenario: Enterprise Software-as-a-Service (SaaS) | Primäres Szenario: Zusammenarbeit mithilfe von Microsoft-Anwendungen (Office 365, Teams, ...) oder Ihrer eigenen Software für die Zusammenarbeit.  | Primäres Szenario: Transaktionsanwendungen mit benutzerdefiniert entwickelten Anwendungen.   |
+| Primäres Szenario: Enterprise Software-as-a-Service (SaaS) | Primäres Szenario: Zusammenarbeit mithilfe von Microsoft-Anwendungen (Microsoft 365, Teams usw.) oder Ihrer eigenen Software für die Zusammenarbeit.  | Primäres Szenario: Transaktionsanwendungen mit benutzerdefiniert entwickelten Anwendungen.   |
 | Vorgesehen für: Organisationen, die Software für viele Unternehmenskunden bereitstellen möchten.    | Vorgesehen für: Organisationen, die Benutzer einer Partnerorganisation unabhängig vom Identitätsanbieter authentifizieren möchten.    | Vorgesehen für: Einladung von Kunden Ihrer mobilen Apps und Web-Apps (Einzelpersonen, Institutionen oder Organisationen) in ein Azure AD Verzeichnis, das vom Verzeichnis Ihrer Organisation getrennt ist. |
 | Unterstützte Identitäten: Mitarbeiter mit Azure AD-Konten. | Unterstützte Identitäten: Mitarbeiter mit Geschäfts-, Schul- oder Unikonto, Partner mit Geschäfts-, Schul- oder Unikonto oder beliebige E-Mail-Adressen. Direkter Verbund wird in Kürze unterstützt.      | Unterstützte Identitäten: Endbenutzer mit lokalem Anwendungskonto (E-Mail-Adresse oder Benutzername) oder eine beliebige unterstützte soziale Identität mit direktem Verbund.       |
 | Externe Benutzer werden in einem eigenen Verzeichnis verwaltet, das isoliert ist von dem Verzeichnis, in dem die Anwendung registriert wurde.    | Externe Benutzer werden im gleichen Verzeichnis verwaltet wie Mitarbeiter, aber speziell gekennzeichnet. Sie können auf dieselbe Weise wie Mitarbeiter verwaltet, denselben Gruppen hinzugefügt werden usw.    | Externe Benutzer werden im Anwendungsverzeichnis verwaltet. Sie werden getrennt vom Verzeichnis für Mitarbeiter und Partner (sofern vorhanden) der Organisation verwaltet.  |
-| Einmaliges Anmelden: Einmaliges Anmelden (Single Sign-On, SSO) bei allen mit Azure AD verbundenen Apps wird unterstützt.          | Einmaliges Anmelden: Einmaliges Anmelden (Single Sign-On, SSO) bei allen mit Azure AD verbundenen Apps wird unterstützt. Beispielsweise können Sie den Zugriff auf Office 365 oder lokale Apps und auf andere SaaS-Apps wie z.B. Salesforce oder Workday bereitstellen.    | Einmaliges Anmelden: Einmaliges Anmelden bei Kunden-Apps innerhalb der Azure AD B2C-Mandanten wird unterstützt. Einmaliges Anmelden bei Office 365 oder anderen Microsoft-SaaS-Apps wird nicht unterstützt.    |
+| Einmaliges Anmelden: Einmaliges Anmelden (Single Sign-On, SSO) bei allen mit Azure AD verbundenen Apps wird unterstützt.          | Einmaliges Anmelden: Einmaliges Anmelden (Single Sign-On, SSO) bei allen mit Azure AD verbundenen Apps wird unterstützt. Beispielsweise können Sie den Zugriff auf Microsoft 365 oder lokale Apps und auf andere SaaS-Apps wie z. B. Salesforce oder Workday bereitstellen.    | Einmaliges Anmelden: Einmaliges Anmelden bei Kunden-Apps innerhalb der Azure AD B2C-Mandanten wird unterstützt. Einmaliges Anmelden bei Microsoft 365 oder anderen SaaS-Apps von Microsoft wird nicht unterstützt.    |
 | Kundenlebenszyklus: Wird von der eigenen Organisation des Benutzers verwaltet.      | Partnerlebenszyklus: Wird von der Hostorganisation/einladenden Organisation verwaltet.    | Kundenlebenszyklus: Self-Service oder von der Anwendung verwaltet.      |
 | Sicherheitsrichtlinie und Compliance: Wird von der Hostorganisation/einladenden Organisation verwaltet (beispielsweise mit [Richtlinien für den bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)).           | Sicherheitsrichtlinie und Compliance: Wird von der Hostorganisation/einladenden Organisation verwaltet (beispielsweise mit [Richtlinien für den bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)). | Sicherheitsrichtlinie und Compliance: Von der Anwendung verwaltet.        |
 | Branding: Das Branding der Hostorganisation/einladenden Organisation wird verwendet.   | Branding: Das Branding der Hostorganisation/einladenden Organisation wird verwendet.    | Branding: Von der Anwendung verwaltet. Normalerweise wird eher das Produktbranding verwendet, und die Organisation tritt in den Hintergrund.   |

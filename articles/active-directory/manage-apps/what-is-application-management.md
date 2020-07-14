@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Anwendungen mit Azure Active Directory | Microsoft Docs
-description: Dieser Artikel erläutert die Vorteile der Integration von Azure Active Directory in lokale, Cloud- und SaaS-Anwendungen.
+description: Eine Übersicht über die Verwendung von Azure Active Directory (AD) als Identitäts- und Zugriffsverwaltungssystem (Identity and Access Management, IAM) für Ihre cloudbasierten und lokalen Anwendungen.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -8,26 +8,50 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
-ms.date: 06/05/2019
+ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f826f5cc3e56dcf88ee110265724779a9d1f624
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 9aae292d97457ebe1d36a839b779b9233037ea60
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84762920"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055204"
 ---
-# <a name="application-management-with-azure-active-directory"></a>Anwendungsverwaltung mit Azure Active Directory
+# <a name="what-is-application-management"></a>Worum handelt es sich bei der Anwendungsverwaltung?
 
-Azure Active Directory (Azure AD) vereinfacht die Verwaltung von Anwendungen durch ein einziges Identitätssystem für Ihre cloudbasierten und lokalen Apps. Sie können Azure AD Ihre SaaS-Anwendungen (Software-as-a-Service), lokalen Anwendungen und branchenspezifischen Apps hinzufügen. Die Benutzer melden sich einmal an, um sicher und nahtlos auf diese Anwendungen sowie auf Office 365 und andere Geschäftsanwendungen von Microsoft zuzugreifen. Durch die [Automatisierung der Benutzerbereitstellung](../app-provisioning/user-provisioning.md) können Sie die Verwaltungskosten senken. Sie können die mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff verwenden, um sicheren Zugriff auf Anwendungen zu ermöglichen.
+Azure AD ist ein Identitäts- und Zugriffsverwaltungsystem (Identity and Access Management, IAM). Es stellt einen zentralen Ort zum Speichern von Informationen zu digitalen Identitäten bereit. Sie können Ihre Softwareanwendungen so konfigurieren, dass sie Azure AD als Speicherort für die Benutzerinformationen verwenden. 
 
-![Diagramm: Apps im Verbund über Azure AD](media/what-is-application-management/app-management-overview.png)
+Azure AD muss für die Integration mit einer Anwendung konfiguriert werden. Anders ausgedrückt: Azure AD muss wissen, von welchen Anwendungen es als Identitätssystem verwendet wird. Der Prozess, der als Anwendungsverwaltung bezeichnet wird, bedeutet, dass Azure AD stets über diese Anwendungen informiert ist und weiß, wie sie zu behandeln sind.
+
+Sie verwalten die Anwendungen im Azure Active Directory-Portal unter „Verwalten“ auf dem Blatt **Unternehmensanwendungen**.
+
+![Option „Unternehmensanwendungen“ im Azure AD-Portal im Abschnitt „Verwalten“.](media/what-is-application-management/enterprise-applications-in-nav.png)
+
+## <a name="what-is-an-identity-and-access-management-iam-system"></a>Was ist ein Identitäts- und Zugriffsverwaltungsystem (IAM-System)?
+Bei einer Anwendung handelt es sich um eine Software, die für bestimmte Zwecke verwendet wird. Bei den meisten Anwendungen müssen sich die Benutzer anmelden, damit die Anwendung für den jeweiligen Benutzer eine angepasste Umgebung bereitstellen kann. Anders ausgedrückt: Die Anwendung muss die Identität des Benutzers kennen, der die Anwendung verwendet. Dadurch weiß sie, welche Funktionen für den Benutzer bereitgestellt oder entfernt werden sollen.
+
+Wenn jede Anwendung Benutzer separat nachverfolgte, ergäbe sich daraus ein Silo mit verschiedenen Benutzernamen und Anmeldungen für jede Anwendung. Eine Anwendung wüsste nichts über die Benutzer in anderen Anwendungen.
+
+Ein zentrales Identitätssystem löst dieses Problem, indem es einen zentralen Ort zum Speichern von Benutzerinformationen bereitstellt, die dann von allen Anwendungen verwendet werden können. Diese Systeme werden als IAM-Systeme (Identitäts- und Zugriffsverwaltungssysteme) bezeichnet. Azure AD ist das IAM-System für die Microsoft-Cloud.
+
+>[!TIP]
+>Ein IAM-System stellt einen zentralen Ort zum Nachverfolgen der Benutzeridentitäten bereit. Azure AD ist das IAM-System für die Microsoft-Cloud.
+
 
 ## <a name="why-manage-applications-with-a-cloud-solution"></a>Gründe für die Verwaltung von Anwendungen mit einer Cloudlösung
 
 Organisationen besitzen häufig Hunderte von Anwendungen, die für die Arbeit ihrer Benutzer unerlässlich sind. Der Benutzerzugriff auf diese Anwendungen erfolgt über eine Vielzahl von Geräten und Standorten. Tagtäglich werden neue Anwendungen hinzugefügt und entwickelt. Angesichts dieser Vielzahl an Anwendungen und Zugriffspunkte gewinnt die Verwaltung des Benutzerzugriffs auf alle Anwendungen über eine cloudbasierte Lösung zunehmend an Bedeutung.
+
+>[!TIP]
+>Der App-Katalog von Azure AD enthält viele beliebte Anwendungen, die bereits für die Verwendung mit Azure AD als Identitätsanbieter vorkonfiguriert sind.
+
+## <a name="how-does-azure-ad-work-with-applications"></a>Wie funktioniert Azure AD mit Anwendungen?
+
+Azure AD vereinfacht die Verwaltung von Anwendungen, indem es ein einziges Identitätssystem für Ihre cloudbasierten und lokalen Apps bereitstellt. Sie können Azure AD Ihre SaaS-Anwendungen (Software-as-a-Service), lokalen Anwendungen und branchenspezifischen Apps hinzufügen. Die Benutzer melden sich einmal an, um sicher und nahtlos auf diese Anwendungen sowie auf Office 365 und andere Geschäftsanwendungen von Microsoft zuzugreifen. Durch die [Automatisierung der Benutzerbereitstellung](../app-provisioning/user-provisioning.md) können Sie die Verwaltungskosten senken. Sie können die mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff verwenden, um sicheren Zugriff auf Anwendungen zu ermöglichen.
+
+![Diagramm: Apps im Verbund über Azure AD](media/what-is-application-management/app-management-overview.png)
 
 ## <a name="what-types-of-applications-can-i-integrate-with-azure-ad"></a>Welche Typen von Anwendungen kann ich in Azure AD integrieren?
 
@@ -35,11 +59,17 @@ Es gibt vier Haupttypen von Anwendungen, die Sie Ihren **Unternehmensanwendungen
 
 - **Azure AD-Kataloganwendungen**: Azure AD bietet einen Katalog mit Tausenden von Anwendungen, die für einmaliges Anmelden mit Azure AD vorab integriert wurden. Einige der von Ihrer Organisation verwendeten Anwendungen sind wahrscheinlich im Katalog enthalten. [Erfahren Sie mehr über das Planen der App-Integration](plan-an-application-integration.md), oder informieren Sie sich in den [Tutorials für SaaS-Anwendungen](https://docs.microsoft.com/azure/active-directory/saas-apps/) über die detaillierten Schritte für einzelne Apps.
 
-- **Lokale Anwendungen mit dem Anwendungsproxy**: Mit dem Azure AD-Anwendungsproxy können Sie lokale Web-Apps in Azure AD integrieren, um einmaliges Anmelden zu unterstützen. Dann können Endbenutzer auf Ihre lokalen Web-Apps auf die gleiche Weise zugreifen wie auf Office 365 und andere SaaS-Apps. [Informieren Sie sich über die Verwendung und Funktionsweise des Anwendungsproxys](what-is-application-proxy.md).
+- **Lokale Anwendungen mit dem Anwendungsproxy**: Mit dem Azure AD-Anwendungsproxy können Sie lokale Web-Apps in Azure AD integrieren, um einmaliges Anmelden zu unterstützen. Endbenutzer können dann auf die gleiche Weise auf die lokalen Web-Apps zugreifen, wie sie auch auf Office 365 und andere SaaS-Apps zugreifen. Lesen Sie hierzu auch [Bereitstellen des Remotezugriffs auf lokale Anwendungen über den Azure AD-Anwendungsproxy](application-proxy.md).
 
 - **Benutzerdefinierte Anwendungen**: Wenn Sie eigene branchenspezifische Anwendungen erstellen, können Sie sie in Azure AD integrieren, um einmaliges Anmelden zu unterstützen. Durch das Integrieren der Anwendung in Azure AD haben Sie die Kontrolle über die für die Anwendung festgelegte Authentifizierungsrichtlinie. Weitere Informationen finden Sie in der [Anleitung für Entwickler](developer-guidance-for-integrating-applications.md).
 
-- **Nicht im Katalog vorhandene Anwendungen**: Nutzen Sie Ihre eigenen Anwendungen (BYOD, Bring Your Own Applications). Unterstützen Sie einmaliges Anmelden für andere Apps, indem Sie sie Azure AD hinzufügen. Sie können beliebige Weblinks oder Anwendungen integrieren, die Felder für Benutzername und Kennwort generieren oder SAML, OpenID Connect-Protokolle oder SCIM unterstützen. Weitere Informationen finden Sie unter [Konfigurieren des einmaligen Anmeldens für Nicht-Kataloganwendungen in Azure Active Directory](configure-single-sign-on-non-gallery-applications.md).
+- **Nicht im Katalog vorhandene Anwendungen**: Nutzen Sie Ihre eigenen Anwendungen (BYOD, Bring Your Own Applications). Unterstützen Sie einmaliges Anmelden für andere Apps, indem Sie sie Azure AD hinzufügen. Es gibt mehrere Möglichkeiten, eine Anwendung zu integrieren. Einige sind nachstehend aufgeführt. Weitere Informationen finden Sie unter [Konfigurieren des einmaligen Anmeldens für Nicht-Kataloganwendungen in Azure Active Directory](configure-single-sign-on-non-gallery-applications.md).
+
+>[!TIP]
+>Sie können Azure AD auch dann in eine Anwendung integrieren, wenn sie nicht bereits vorkonfiguriert ist und sich nicht im App-Katalog befindet. Sie können **Azure AD mit folgenden Anwendungen integrieren**
+> - Beliebiger Weblink (oder Anwendung), der ein **Feld mit Benutzername und Kennwort** rendert
+> - Beliebige Anwendung, die **SAML- oder OpenID Connect-Protokolle** unterstützt
+> - Beliebige Anwendung, die den **SCIM-Standard (System for Cross-domain Identity Management)** unterstützt
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>Risikomanagement durch Richtlinien für bedingten Zugriff
 
@@ -59,7 +89,12 @@ Mit Azure AD können Sie Anmeldungen bei Anwendungen durch Berichte überwachen,
 
 Durch eine Migration zu Azure AD können Sie Ihre Kosten senken und sich den Aufwand der Verwaltung Ihrer lokalen Infrastruktur ersparen. Azure AD bietet außerdem Self-Service-Zugriff auf Anwendungen, was sowohl Administratoren als auch Benutzern Zeit erspart. Einmaliges Anmelden macht anwendungsspezifische Kennwörter überflüssig. Diese Option für die einmalige Anmeldung spart Kosten für das Zurücksetzen von Kennwörtern für Anwendungen und vermeidet Produktivitätsverluste durch das Abrufen von Kennwörtern.
 
+Bei Anwendungen mit Schwerpunkt Personalwesen oder anderen Anwendungen mit einer großen Zahl von Benutzern können Sie die App-Bereitstellung nutzen, um den Prozess zum Bereitstellen (und Aufheben der Bereitstellung) von Benutzern zu automatisieren. Lesen Sie hierzu auch [Was ist die Anwendungsbereitstellung?](../app-provisioning/user-provisioning.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist der Anwendungsproxy?](what-is-application-proxy.md)
+- [Anzeigen von bereits im Azure AD-Mandanten konfigurierten Anwendungen](view-applications-portal.md)
 - [Schnellstart: Hinzufügen einer Kataloganwendung zu Ihrem Azure AD-Mandanten](add-application-portal.md)
+- [Hinzufügen einer Katalog-App zu Ihrer Azure AD-Organisation](add-gallery-app.md)
+- [Erste Schritte mit der Anwendungsintegration](plan-an-application-integration.md)
+- [Automatisieren der Benutzerbereitstellung](../app-provisioning/user-provisioning.md)

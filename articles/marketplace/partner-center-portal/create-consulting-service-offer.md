@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: bd9d643708515855e81ac6729843388a690b2c45
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.date: 06/17/2020
+ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700956"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984269"
 ---
 # <a name="create-a-consulting-service-offer"></a>Erstellen eines Beratungsdienstangebots
 
-In diesem Artikel wird beschrieben, wie Sie ein Beratungsdienstangebot in [Microsoft AppSource](https://appsource.microsoft.com/) oder [Azure Marketplace](https://azuremarketplace.microsoft.com/) veröffentlichen. Beratungsdienstangebote auf Basis von Microsoft [Dynamics 365](https://dynamics.microsoft.com/) und Power Platform sollten in AppSource aufgelistet werden. Beratungsdienstangebote auf Basis von Microsoft Azure sollten im Azure Marketplace aufgelistet werden. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), sofern Sie dies noch nicht getan haben. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
+In diesem Artikel wird beschrieben, wie Sie ein Beratungsdienstangebot in [Microsoft AppSource](https://appsource.microsoft.com/) oder [Azure Marketplace](https://azuremarketplace.microsoft.com/) veröffentlichen. Beratungsdienstangebote auf Basis von Microsoft [Dynamics 365](https://dynamics.microsoft.com/) und Power Platform sollten in AppSource aufgelistet werden. Beratungsdienstangebote auf Basis von Microsoft Azure sollten im Azure Marketplace aufgelistet werden. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](create-account.md), sofern Sie dies noch nicht getan haben. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
-Bevor Sie Ihr Angebot erstellen, sollten Sie sich unter [Voraussetzungen für Beratungsdienst](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites) über die Voraussetzungen informieren.
+Bevor Sie Ihr Angebot erstellen, sollten Sie sich unter [Voraussetzungen für Beratungsdienst](consulting-service-prerequisites.md) über die Voraussetzungen informieren.
 
 ## <a name="publishing-benefits"></a>Vorteile der Veröffentlichung
 
@@ -63,12 +63,12 @@ Wenn Sie Ihr Angebot mithilfe des Partner Centers im Marketplace veröffentliche
 
 1. Wählen Sie **Verbinden** aus, um ein Ziel anzugeben, an das wir Kundenleads übermitteln sollen. Das Partner Center unterstützt die folgenden Systeme:
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Wenn Ihr CRM-System oben nicht aufgeführt ist, verwenden Sie eine [Azure-Tabelle](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) oder einen [HTTPS-Endpunkt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https), um die Leaddaten von Kunden zu speichern, und exportieren Sie die Daten dann in Ihr CRM-System.
+    > Wenn Ihr CRM-System oben nicht aufgeführt ist, verwenden Sie eine [Azure-Tabelle](commercial-marketplace-lead-management-instructions-azure-table.md) oder einen [HTTPS-Endpunkt](commercial-marketplace-lead-management-instructions-https.md), um die Leaddaten von Kunden zu speichern, und exportieren Sie die Daten dann in Ihr CRM-System.
 
 2. Verbinden Sie Ihr Angebot bei der Veröffentlichung im Partner Center mit dem Leadziel.
 3. Vergewissern Sie sich, dass die Verbindung mit dem Leadziel ordnungsgemäß konfiguriert ist. Nach der Veröffentlichung Ihres Angebots im Partner Center überprüfen wir die Verbindung und senden Ihnen einen Testlead. Während Sie das Angebot vor der Liveschaltung als Vorschau anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu kaufen.
@@ -76,9 +76,9 @@ Wenn Sie Ihr Angebot mithilfe des Partner Centers im Marketplace veröffentliche
 
 Hier finden Sie einige zusätzliche Ressourcen zur Leadverwaltung:
 
-- [Übersicht über die Leadverwaltung](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Häufig gestellte Fragen zur Leadverwaltung](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [Übersicht über die Leadverwaltung](commercial-marketplace-get-customer-leads.md)
+- [Häufig gestellte Fragen zur Leadverwaltung](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [Häufige Leadkonfigurationsfehler](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - [Übersicht über die Leadverwaltung](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) (PDF – vergewissern Sie sich, dass Ihr Popupblocker deaktiviert ist.)
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
@@ -96,10 +96,19 @@ Auf dieser Seite können Sie das primäre Produkt festlegen, für das Ihr Beratu
     - **Proof of Concept**: Eine Implementierung in einem begrenzten Bereich, um zu bestimmen, ob eine Lösung die Anforderungen eines Kunden erfüllt
     - **Workshop**: Ein interaktives Angebot, das beim Kunden vor Ort durchgeführt wird. Dabei kann es sich um Schulungen, Einweisungen, Bewertungen oder Demos handeln, die auf den Daten oder der Umgebung des Kunden aufbauen.
 
-3. Wenn Sie ein **Azure-Produkt** als primäres Produkt ausgewählt haben, wählen Sie bis zu drei **Lösungsbereiche** aus. Diese erleichtern es Kunden, Ihr Angebot in Azure Marketplace zu finden. Wenn Sie sich nicht für Azure entschieden haben, überspringen Sie diesen Schritt.
-4. Wenn Sie ein _anderes_ als ein Azure-Produkt als primäres Produkt ausgewählt haben, wählen Sie bis zu drei **Anwendbare Produkte** aus. Diese erleichtern es Kunden, Ihr Angebot in AppSource zu finden. Ausführliche Informationen finden Sie unter [Richtlinien zum Listing von Microsoft AppSource-Beratungsdiensten](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
-5. Wählen Sie bis zu sechs **Branchen** aus, für die das Angebot gilt. Diese erleichtern es Kunden, Ihr Angebot zu finden.
-6. Fügen Sie bis zu drei **Kompetenzen** hinzu, die Ihr Unternehmen erworben hat und die in der Angebotsliste Ihres Beratungsdiensts angezeigt werden sollen. Es ist mindestens eine Kompetenz erforderlich, außer für Azure Expert MSPs und Azure Networking MSPs.
+3. Wenn Sie **Azure** als primäres Produkt ausgewählt haben, wählen Sie bis zu drei **Lösungsbereiche** aus. Diese erleichtern es Kunden, Ihr Angebot in Azure Marketplace zu finden. Wenn Sie sich nicht für Azure entschieden haben, überspringen Sie diesen Schritt.
+
+    | Lösungsbereich | | | |
+    | --- | --- | --- | --- |
+    | Analytics | Backup | DevOps | Migration |
+    | App-Modernisierung | Big Data | Notfallwiederherstellung | Netzwerk |
+    | Archivieren | Datenplattform | Identity | Sicherheit |
+    | KI und Machine Learning | Rechenzentrumsverwaltung | Internet der Dinge | Storage |
+
+1. Wenn Sie **Azure** als primäres Produkt ausgewählt haben, können Sie bis zu sechs **Branchen** auswählen. Diese erleichtern es Kunden, Ihr Angebot in Azure Marketplace zu finden. Eine vollständige Liste der Branchen finden Sie unter [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md). Wenn Sie sich nicht für Azure entschieden haben, überspringen Sie diesen Schritt.
+1. Wenn Sie ein *anderes* als ein Azure-Produkt als primäres Produkt ausgewählt haben, wählen Sie bis zu drei **Anwendbare Produkte** aus. Diese erleichtern es Kunden, Ihr Angebot in AppSource zu finden. Ausführliche Informationen finden Sie unter [Richtlinien zum Listing von Microsoft AppSource-Beratungsdiensten](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
+1. Wenn Sie ein *anderes* als ein Azure-Produkt als primäres Produkt ausgewählt haben, können Sie bis zu zwei **Branchen** und zwei **Sektoren** für jede Branche auswählen. Diese erleichtern es Kunden, Ihr Angebot in AppSource zu finden. Eine vollständige Liste der Branchen und Sektoren finden Sie unter [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md).
+1. Fügen Sie bis zu drei **Kompetenzen** hinzu, die Ihr Unternehmen erworben hat und die in der Angebotsliste Ihres Beratungsdiensts angezeigt werden sollen. Es ist mindestens eine Kompetenz erforderlich, außer für Azure Expert MSPs und Azure Networking MSPs.
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
@@ -109,6 +118,37 @@ Hier definieren Sie die Angebotsdetails, die im Marketplace angezeigt werden. Da
 
 > [!NOTE]
 > Eine Angabe der Angebotsdetails in englischer Sprache ist nicht erforderlich, sofern die Angebotsbeschreibung mit dem Satz &quot;Diese Anwendung ist nur auf [nicht englische Sprache] erhältlich&quot; beginnt. Es ist auch in Ordnung, einen Nützlichen Link mit Inhalten in einer anderen Sprache als der für die Details der Angebotsliste verwendeten bereitzustellen.
+
+Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure Marketplace angezeigt werden (die aufgelisteten Preise dienen lediglich als Beispiele und stellen keine tatsächlichen Kosten dar):
+
+:::image type="content" source="media/example-consulting-service-offer.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
+
+#### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
+
+1. Logo
+2. Preis
+3. Lösungsbereiche
+4. Branchen
+5. Angebotsname
+6. Zusammenfassung
+7. BESCHREIBUNG
+8. Screenshots/Videos
+
+<br>Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen in Microsoft AppSource angezeigt werden (die aufgelisteten Preise dienen lediglich als Beispiele und stellen keine tatsächlichen Kosten dar):
+
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Veranschaulicht, wie dieses Angebot in Microsoft AppSource angezeigt wird.":::
+
+#### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
+
+1. Logo
+2. Preis
+3. Produkte
+4. Branchen
+5. Angebotsname
+6. Zusammenfassung
+7. BESCHREIBUNG
+8. Screenshots/Videos
+9. Dokumente
 
 ### <a name="name"></a>Name
 
@@ -199,8 +239,8 @@ Nachdem Sie alle erforderlichen Abschnitte des Angebots durchgearbeitet haben, k
 4. Wählen Sie **Senden** aus, wenn Sie fertig sind.
 5. Auf der Seite **Angebotsübersicht** wird angezeigt, in welcher Veröffentlichungsphase sich Ihr Angebot befindet.
 
-Weitere Informationen dazu, wie lange Ihr Angebot zum Durchlaufen der einzelnen Veröffentlichungsphasen benötigt, finden Sie unter [Überprüfen des Veröffentlichungsstatus Ihres Commercial Marketplace-Angebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status).
+Weitere Informationen dazu, wie lange Ihr Angebot zum Durchlaufen der einzelnen Veröffentlichungsphasen benötigt, finden Sie unter [Überprüfen des Veröffentlichungsstatus Ihres Commercial Marketplace-Angebots](publishing-status.md).
 
 ## <a name="update-your-existing-consulting-service-offers"></a>Aktualisieren Ihrer bestehenden Beratungsdienstangebote
 
-- [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](update-existing-offer.md)

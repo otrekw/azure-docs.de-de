@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren verwalteter Identitäten in Azure-VMSS mithilfe von REST – Azure AD
-description: Schrittweise Anweisungen für ein Konfigurieren von system- und benutzerzugewiesenen verwalteten Identitäten in einer Azure VM-Skalierungsgruppe mithilfe von CURL zum Durchführen von REST-API-Aufrufen.
+title: Konfigurieren verwalteter Identitäten für eine Azure-VM-Skalierungsgruppe mithilfe von REST– Azure AD
+description: Schrittweise Anweisungen zum Konfigurieren von vom System und dem Benutzer zugewiesenen verwalteten Identitäten für eine Azure-VM-Skalierungsgruppe mithilfe von CURL zum Durchführen von REST-API-Aufrufen.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dce9894b26d03c351a2209792cc076de91feba54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06bce15dfbd2ccd3ac97f6a4f1e4efb5a24db85d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609097"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe mithilfe von REST-API-Aufrufen
 
@@ -35,7 +35,7 @@ In diesem Artikel erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe a
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#how-does-the-managed-identities-for-azure-resources-work)** bewusst.
+- Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#managed-identity-types)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 - Um die Verwaltungsvorgänge in diesem Artikel auszuführen, benötigt Ihr Konto die folgenden Zuweisungen der rollenbasierten Azure-Zugriffssteuerung:
 
@@ -337,7 +337,7 @@ In diesem Abschnitt erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe
    az account get-access-token
    ``` 
 
-4. Erstellen Sie eine benutzerzugewiesene verwaltete Identität anhand der Anweisungen unter [Erstellen einer vom Benutzer zugewiesenen verwalteten Identität](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+4. Erstellen Sie eine benutzerseitig zugewiesene Identität anhand der Anweisungen unter [Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
 5. Erstellen Sie eine VM-Skalierungsgruppe mithilfe von CURL zum Aufrufen des Azure Resource Manager-REST-Endpunkts. Im folgenden Beispiel wird eine VM-Skalierungsgruppe namens *myVMSS* in der Ressourcengruppe *myResourceGroup* mit einer benutzerzugewiesenen verwaltete Identität `ID1` erstellt, wie es im Anforderungstext durch den Wert `"identity":{"type":"UserAssigned"}` angegeben ist. Ersetzen Sie `<ACCESS TOKEN>` durch den Wert, den Sie im vorherigen Schritt zum Anfordern eines Bearer-Zugriffstokens erhalten haben, und ersetzen Sie den Wert `<SUBSCRIPTION ID>` entsprechend Ihrer Umgebung.
  

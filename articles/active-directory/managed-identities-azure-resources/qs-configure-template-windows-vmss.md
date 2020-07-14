@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d5e324ea20b2ea82fac5b5132893d3558bd3b41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5afb11a275275ac49178b30929d7896c8a082591
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77425560"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609009"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer Azure VM-Skalierungsgruppe mithilfe einer Vorlage
 
@@ -34,7 +34,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure Resource Manager-Bere
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#how-does-the-managed-identities-for-azure-resources-work)** bewusst.
+- Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#managed-identity-types)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 - Um die Verwaltungsvorgänge in diesem Artikel auszuführen, benötigt Ihr Konto die folgenden Zuweisungen der rollenbasierten Azure-Zugriffssteuerung:
 
@@ -133,7 +133,7 @@ Wenn für die VM-Skalierungsgruppe keine vom System zugewiesene verwaltete Ident
 
 
 
-   Das folgende Beispiel zeigt, wie Sie eine systemzugewiesene verwaltete Identität aus einer VM-Skalierungsgruppe ohne benutzerzugewiesene verwaltete Identitäten entfernen:
+   Das folgende Beispiel zeigt, wie Sie eine vom System zugewiesene verwaltete Identität aus einer VM-Skalierungsgruppe ohne vom Benutzer zugewiesene verwaltete Identitäten entfernen:
 
    ```json
    {
@@ -293,7 +293,7 @@ Wenn für die VM-Skalierungsgruppe eine benutzerzugewiesene verwaltete Identitä
 
 2. Laden Sie die Vorlage in einen [Editor](#azure-resource-manager-templates), und suchen Sie nach der gewünschten `Microsoft.Compute/virtualMachineScaleSets`-Ressource im Abschnitt `resources`. Wenn Ihre VM-Skalierungsgruppe nur über eine vom Benutzer zugewiesene verwaltete Identität verfügt, können Sie diese deaktivieren, indem Sie den Identitätstyp in `None` ändern.
 
-   Das folgende Beispiel zeigt, wie Sie alle vom Benutzer zugewiesenen verwalteten Identitäten von einer VM ohne vom System zugewiesene verwaltete Identitäten entfernen:
+   Das folgende Beispiel zeigt, wie Sie alle vom Benutzer zugewiesenen verwalteten Identitäten von einem virtuellen Computer ohne vom System zugewiesene verwaltete Identitäten entfernen:
 
    ```json
    {
@@ -310,13 +310,13 @@ Wenn für die VM-Skalierungsgruppe eine benutzerzugewiesene verwaltete Identitä
 
    Um eine einzelne verwaltete Identität, die von einem Benutzer zugewiesen wurde, aus einer VM-Skalierungsgruppe zu entfernen, müssen Sie sie aus dem `userAssignedIdentities`-Wörterbuch entfernen.
 
-   Wenn Sie eine systemzugewiesene Identität verwenden, behalten Sie sie im Wert `type` unter dem Wert `identity` bei.
+   Wenn Sie eine vom System zugewiesene Identität verwenden, behalten Sie den Wert `type` unter dem Wert `identity` bei.
 
    **Microsoft.Compute/virtualMachineScaleSets-API, Version 2017-12-01**
 
    Um eine einzelne benutzerzugewiesene verwaltete Identität aus einer VM-Skalierungsgruppe zu entfernen, entfernen Sie sie aus dem `identityIds`-Array.
 
-   Wenn Sie eine vom System zugewiesene verwaltete Identität verwenden, behalten Sie sie im Wert `type` unter dem Wert `identity` bei.
+   Wenn Sie eine vom System zugewiesene verwaltete Identität verwenden, behalten Sie den Wert `type` unter dem Wert `identity` bei.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

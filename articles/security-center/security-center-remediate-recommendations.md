@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 8f191fffd1c8d66ac959953c55cbc79b3807c803
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 9beb617ed8626b1fda1c9db98d626ca70ee01755
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204551"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042916"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Umsetzen von Empfehlungen in Azure Security Center
 
@@ -79,7 +79,7 @@ Beim Korrekturvorgang wird ein Vorlagenbereitstellungs- oder REST PATCH-API-Aufr
 |Für SQL Managed Instance muss eine Sicherheitsrisikobewertung aktiviert sein.|Durch diese Aktion wird die SQL-Sicherheitsrisikobewertung für die ausgewählten SQL Managed Instance-Instanzen aktiviert. <br>**Hinweis**:<ul><li>Die SQL-Sicherheitsrisikobewertung ist Teil des SQL-Pakets für Advanced Data Security (ADS). Wenn ADS noch nicht aktiviert ist, wird diese Funktion automatisch für die verwaltete Instanz aktiviert.</li><li>Für jede Region und Ressourcengruppe der ausgewählten SQL Managed Instance-Instanzen wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Instanzen in dieser Region gemeinsam genutzt.</li><li>ADS wird mit 15 US-Dollar pro SQL-Datenbank abgerechnet.</li></ul>||
 |Advanced Data Security sollte für Ihre SQL-Datenbank aktiviert sein.|Durch diese Aktion wird Advanced Data Security (ADS) für diese ausgewählten Server und deren Datenbanken aktiviert. <br>**Hinweis**:<ul><li>Für jede Region und Ressourcengruppe der ausgewählten SQL-Datenbank wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Servern in dieser Region gemeinsam genutzt.</li><li>ADS wird mit 15 US-Dollar pro SQL-Datenbank abgerechnet.</li></ul>||
 |Für Ihre SQL-Datenbank sollte die Sicherheitsrisikobewertung aktiviert sein.|Durch diese Aktion wird die SQL-Sicherheitsrisikobewertung für diese ausgewählten verwalteten Server und deren Datenbanken aktiviert. <br>**Hinweis**:<ul><li>Die SQL-Sicherheitsrisikobewertung ist Teil des SQL-Pakets für Advanced Data Security (ADS). Wenn ADS noch nicht aktiviert ist, wird diese Funktion automatisch für die SQL-Datenbank aktiviert.</li><li>Für jede Region und Ressourcengruppe der ausgewählten SQL-Datenbank wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Instanzen in dieser Region gemeinsam genutzt.</li><li>ADS wird mit 15 US-Dollar pro SQL-Datenbank abgerechnet.</li></ul>||
-|Transparent Data Encryption für SQL-Datenbanken aktivieren|Durch diese Aktion wird Transparent Data Encryption (TDE) von SQL-Datenbank für die ausgewählten Datenbanken aktiviert. <br>**Hinweis**: Standardmäßig werden vom Dienst verwaltete TDE-Schlüssel verwendet.
+|Für SQL-Datenbank sollte TDE (Transparent Data Encryption) aktiviert sein|Durch diese Aktion wird Transparent Data Encryption (TDE) von SQL-Datenbank für die ausgewählten Datenbanken aktiviert. <br>**Hinweis**: Standardmäßig werden vom Dienst verwaltete TDE-Schlüssel verwendet.
 |Sichere Übertragung in Speicherkonten sollte aktiviert werden.|Durch diese Aktion wird die Sicherheit des Speicherkontos so aktualisiert, dass nur Anforderungen von sicheren Verbindungen (HTTPS) zugelassen werden. <br>**Hinweis**:<ul><li>Alle Anforderungen, die HTTP verwenden, werden abgelehnt.</li><li>Wenn Sie den Azure Files-Dienst verwenden, schlägt jede Verbindung ohne Verschlüsselung fehl. Dies schließt auch Szenarien ein, in denen SMB 2.1, SMB 3.0 ohne Verschlüsselung und einige Versionen des Linux SMB-Clients verwendet werden. Weitere Informationen</li></ul>|
 |Zugriff auf Webanwendung nur über HTTPS gestatten|Durch diese Aktion wird der gesamte Datenverkehr auf den ausgewählten Ressourcen von HTTP zu HTTPS umgeleitet. <br>**Hinweis**:<ul><li>Ein HTTPS-Endpunkt, der nicht über ein SSL-Zertifikat verfügt, wird im Browser mit einem „Datenschutzfehler“ angezeigt. Daher müssen Benutzer mit einer benutzerdefinierten Domäne sicherstellen, dass sie ein SSL-Zertifikat eingerichtet haben.</li><li>Vergewissern Sie sich, dass die Firewalls für Pakete und Webanwendungen, die den App Service schützen, die Weiterleitung über HTTPS-Sitzungen zulassen.</li></ul>|
 |Zugriff auf Funktions-App nur über HTTPS gestatten|Durch diese Aktion wird der gesamte Datenverkehr auf den ausgewählten Ressourcen von HTTP zu HTTPS umgeleitet. <br>**Hinweis**:<ul><li>Ein HTTPS-Endpunkt, der nicht über ein SSL-Zertifikat verfügt, wird im Browser mit einem „Datenschutzfehler“ angezeigt. Daher müssen Benutzer mit einer benutzerdefinierten Domäne sicherstellen, dass sie ein SSL-Zertifikat eingerichtet haben.</li><li>Vergewissern Sie sich, dass die Firewalls für Pakete und Webanwendungen, die den App Service schützen, die Weiterleitung über HTTPS-Sitzungen zulassen.</li></ul>|

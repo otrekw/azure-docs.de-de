@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: cc4e267c6912b8938db1ba5497a27f9c0026bd79
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b24e0487aef73ed7852cb4a64766a1f8d92aff94
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887332"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677429"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Sichern Ihrer Verwaltungsports mit Just-in-Time-Zugriff (JIT)
 
@@ -211,7 +211,7 @@ Führen Sie hierfür Folgendes in PowerShell aus:
 
 1.    Weisen Sie eine Variable zu, die die Just-In-Time-VM-Zugriffsrichtlinie für eine VM enthält:
 
-        $JitPolicy = (@{    id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"   ports=(@{        number=22;        protocol="\*";        allowedSourceAddressPrefix=@("\*");        maxRequestAccessDuration="PT3H"},        @{        number=3389;        protocol="\*";        allowedSourceAddressPrefix=@("\*");        maxRequestAccessDuration="PT3H"})})
+        $JitPolicy = (@{    id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";   ports=(@{        number=22;        protocol="\*";        allowedSourceAddressPrefix=@("\*");        maxRequestAccessDuration="PT3H"},        @{        number=3389;        protocol="\*";        allowedSourceAddressPrefix=@("\*");        maxRequestAccessDuration="PT3H"})})
 
 2.    Fügen Sie einem Array die Just-In-Time-VM-Zugriffsrichtlinie hinzu:
     
@@ -228,7 +228,7 @@ Im folgenden Beispiel können Sie eine Just-In-Time-VM-Zugriffsanforderung für 
 Führen Sie die folgenden Schritte in PowerShell aus:
 1.    Konfigurieren Sie die Eigenschaften für die VM-Zugriffsanforderung.
 
-        $JitPolicyVm1 = (@{     id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"   ports=(@{      number=22;      endTimeUtc="2018-09-17T17:00:00.3658798Z";      allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
+        $JitPolicyVm1 = (@{     id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";   ports=(@{      number=22;      endTimeUtc="2018-09-17T17:00:00.3658798Z";      allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
 2.    Fügen Sie die Parameter für die VM-Zugriffsanforderung zu einem Array hinzu:
 
         $JitPolicyArr=@($JitPolicyVm1)

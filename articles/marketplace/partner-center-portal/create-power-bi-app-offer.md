@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 16b44b3a4496e98f8b6b643bf76aa5aa7ce593c6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/17/2020
+ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849092"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980345"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Erstellen einer Power BI-App für Microsoft AppSource
 
 In diesem Artikel wird beschrieben, wie Sie ein Power BI-App-Angebot erstellen und in Microsoft [AppSource](https://appsource.microsoft.com/) veröffentlichen.
 
-Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), sofern Sie dies noch nicht getan haben. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
+Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](create-account.md), sofern Sie dies noch nicht getan haben. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
@@ -26,7 +26,7 @@ Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Par
 2. Klicken Sie im linken Navigationsmenü auf **Kommerzieller Marketplace** > **Übersicht**.
 3. Wählen Sie auf der Übersichtsseite die Option **+ Neues Angebot** > **Power BI-Dienst-App** aus.
 
-   ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-pbi-app.png)
+   ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
 > Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in der digitalen Ladenzeile angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
@@ -55,10 +55,10 @@ Diese Seite zeigt eine visuelle Darstellung der zum Veröffentlichen dieses Ange
 
 Sie enthält Links zum Durchführen von Vorgängen für dieses Angebot auf der Grundlage der von Ihnen ausgewählten Optionen. Beispiel:
 
-- Wenn das Angebot einen Entwurf darstellt: [Delete draft offer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer) (Angebotsentwurf löschen)
-- Wenn es sich um ein Liveangebot handelt: [Stop selling the offer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) (Angebot nicht mehr verkaufen)
-- Wenn das Angebot in der Vorschau ist: [Go-live](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval) (Live schalten)
-- Wenn Sie die Abmeldung beim Herausgeber nicht abgeschlossen haben, gehen Sie wie unter [Stornieren der Veröffentlichung](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing) beschrieben vor.
+- Wenn das Angebot einen Entwurf darstellt: [Delete draft offer](update-existing-offer.md#delete-a-draft-offer) (Angebotsentwurf löschen)
+- Wenn es sich um ein Liveangebot handelt: [Stop selling the offer](update-existing-offer.md#stop-selling-an-offer-or-plan) (Angebot nicht mehr verkaufen)
+- Wenn das Angebot in der Vorschau ist: [Go-live](publishing-status.md#publisher-approval) (Live schalten)
+- Wenn keine Bestätigung durch den Herausgeber erfolgt ist: [Cancel publishing](update-existing-offer.md#cancel-publishing) (Veröffentlichung abbrechen)
 
 ## <a name="offer-setup"></a>Angebotseinrichtung
 
@@ -68,12 +68,12 @@ Wenn Sie Ihr Angebot mithilfe des Partner Centers im Marketplace veröffentliche
 
 1. Wählen Sie ein Leadziel aus, an das wir Kundenleads senden sollen. Das Partner Center unterstützt die folgenden CRM-Systeme:
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Wenn Ihr CRM-System oben nicht aufgeführt ist, verwenden Sie eine [Azure-Tabelle](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) oder einen [HTTPS-Endpunkt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https), um die Leaddaten von Kunden zu speichern. Exportieren Sie die Daten dann in Ihr CRM-System.
+    > Wenn Ihr CRM-System oben nicht aufgeführt ist, verwenden Sie eine [Azure-Tabelle](commercial-marketplace-lead-management-instructions-azure-table.md) oder einen [HTTPS-Endpunkt](commercial-marketplace-lead-management-instructions-https.md), um die Leaddaten von Kunden zu speichern. Exportieren Sie die Daten dann in Ihr CRM-System.
 
 2. Verbinden Sie Ihr Angebot bei der Veröffentlichung im Partner Center mit dem Leadziel.
 3. Vergewissern Sie sich, dass die Verbindung mit dem Leadziel ordnungsgemäß konfiguriert ist. Nach der Veröffentlichung Ihres Angebots im Partner Center überprüfen wir die Verbindung und senden Ihnen einen Testlead. Während Sie das Angebot vor der Liveschaltung als Vorschau anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu kaufen.
@@ -81,9 +81,9 @@ Wenn Sie Ihr Angebot mithilfe des Partner Centers im Marketplace veröffentliche
 
 Hier finden Sie einige zusätzliche Ressourcen zur Leadverwaltung:
 
-- [Übersicht über die Leadverwaltung](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Häufig gestellte Fragen zur Leadverwaltung](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Übersicht über die Leadverwaltung](commercial-marketplace-get-customer-leads.md)
+- [Häufig gestellte Fragen zur Leadverwaltung](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [Häufige Leadkonfigurationsfehler](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - [Übersicht über die Leadverwaltung](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) (PDF – vergewissern Sie sich, dass Ihr Popupblocker deaktiviert ist.)
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
@@ -94,33 +94,16 @@ Auf dieser Seite können Sie die Kategorien und Branchen, die zum Gruppieren Ihr
 
 ### <a name="category"></a>Category
 
-Wählen Sie mindestens eine und höchstens drei Kategorien aus. Diese Kategorien werden verwendet, um Ihr Angebot in den geeigneten Marketplace-Suchbereichen zu platzieren, und werden auf der Detailseite zu Ihrem Angebot angezeigt. Erläutern Sie in der Angebotsbeschreibung, inwiefern Ihr Angebot diesen Kategorien entspricht.
+Wählen Sie Kategorien und Unterkategorien aus, um Ihr Angebot in den geeigneten Marketplace-Suchbereichen zu platzieren. Vergessen Sie nicht, in der Angebotsbeschreibung anzugeben, inwiefern Ihr Angebot diesen Kategorien entspricht. Wählen Sie Folgendes:
+
+- Mindestens eine und bis zu zwei Kategorien, einschließlich einer primären und einer sekundären Kategorie (optional).
+- Bis zu zwei Unterkategorien für jede primäre und/oder sekundäre Kategorie. Wenn keine Unterkategorie auf Ihr Angebot anwendbar ist, wählen Sie **Nicht zutreffend** aus.
+
+Eine vollständige Liste der Kategorien und Unterkategorien finden Sie unter [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md).
 
 ### <a name="industry"></a>Branche
 
-Sie können optional bis zu zwei Branchen und zwei Sektoren in jeder Branche auswählen. Kategorien werden zum Anzeigen Ihres Angebots verwendet, Branchen und Sektoren dienen hingegen als Suchfilter und werden in der Storefront übernommen. Wenn Ihr Angebot auf eine bestimmte Branche und/oder einen Sektor ausgerichtet ist, sollten Sie in der Angebotsbeschreibung erläutern, wie Ihr Angebot die ausgewählten Branchen oder Sektoren unterstützt. Wenn Ihr Angebot nicht für eine bestimmte Branche bestimmt ist, lassen Sie diesen Abschnitt leer.
-
-> [!NOTE]
-> Wir arbeiten daran, neue Branchen und Sektoren einzuführen, um die Angebotsermittlung zu verbessern, daher sind einige Branchen oder Sektoren möglicherweise noch nicht in der Storefront präsent. Branchen und Sektoren mit einem Sternchen (*) werden zu einem späteren Zeitpunkt verfügbar sein. Alle veröffentlichten Angebote sind über die Schlüsselwortsuche auffindbar.
-<p>&nbsp;
-
-| **Branche** | **Unterbranche** |
-| --- | --- |
-| *Automobilbau | *Automobilbau |
-| Landwirtschaft | *Sonstige – nicht segmentiert |
-| Distribution | *Großhandel<br>Päckchen- und Paketversand |
-| Fortbildung | *Hochschulbildung<br>* Grund- und Sekundarschulbildung/K-12<br>*Bibliotheken und Museen |
-| Finanzdienstleistungen | *Bankwesen und Kapitalmärkte<br>* Versicherungswesen |
-| Behörden | *Verteidigung und Geheimdienste (bisher als „Nationale und öffentliche Sicherheit“ bezeichnet)<br>* Öffentliche Sicherheit und Justizwesen<br>*Zivilregierung |
-| Gesundheitswesen | *Kostenträger für Gesundheitssystem<br>* Gesundheitsdienstleister<br>*Pharmazeutika |
-| Produktion und Ressourcen (bisher als „Fertigungsindustrie“ bezeichnet) | *Chemie und Agrochemie<br>* Diskrete Fertigung<br>*Energieversorgung |
-| Einzelhandel und Konsumgüter (bisher als „Einzelhandel“ bezeichnet) | *Konsumgüter<br>* Händler |
-| *Medien und Kommunikation (bisher als „Medien und Unterhaltung“ bezeichnet) | *Medien und Unterhaltung<br>* Telekommunikation |
-| Dienstleistungsunternehmen | *Recht<br>* Professionelle Partnerdienstleistungen |
-| *Architektur und Baugewerbe (bisher als „Architektur und Ingenieurwesen“ bezeichnet) | *Sonstige – nicht segmentiert |
-| *Hotel- und Gaststättengewerbe, Tourismus | *Hotels und Freizeit<br>* Reisen und Transportwesen<br>*Restaurants und Gastronomie |
-| *Andere Industriezweige im öffentlichen Sektor | *Forstwirtschaft und Fischerei<br>* Gemeinnützige Organisationen |
-| *Immobilien | *Sonstige – nicht segmentiert |
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="legal"></a>Rechtliche Hinweise
 
@@ -144,6 +127,24 @@ Definieren Sie für jede Sprache/jeden Markt Marketplace-Informationen (z. B. An
 
 > [!NOTE]
 > Eine Angabe der Angebotsdetails in englischer Sprache ist nicht erforderlich, sofern die Angebotsbeschreibung mit dem Satz „Diese Anwendung ist nur auf [nicht englische Sprache] erhältlich“ beginnt. Sie können auch einen nützlichen Link mit Inhalten in einer anderen Sprache bereitstellen als der Sprache, die für die Angebotsliste verwendet wird.
+
+Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen in Microsoft AppSource angezeigt werden (die aufgelisteten Preise dienen lediglich als Beispiele und stellen keine tatsächlichen Kosten dar):
+
+:::image type="content" source="media/example-power-bi-app.png" alt-text="Veranschaulicht, wie dieses Angebot in Microsoft AppSource angezeigt wird.":::
+
+#### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
+
+1. Logo
+2. Produkte
+3. Kategorien
+4. Branchen
+5. Supportadresse (Link)
+6. Nutzungsbedingungen
+7. Datenschutzrichtlinie
+8. Angebotsname
+9. Zusammenfassung
+10. BESCHREIBUNG
+11. Screenshots/Videos
 
 ### <a name="name"></a>Name
 
@@ -202,7 +203,7 @@ Geben Sie mindestens ein und bis zu drei verwandte Marketingdokumente im PDF-For
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Unscharfe Bilder werden abgelehnt.
 
 >[!NOTE]
->Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
+>Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst `https://upload.xboxlive.com` nicht blockiert.
 
 #### <a name="store-logos"></a>Store-Logos
 
@@ -214,7 +215,7 @@ Beide Logos sind erforderlich und werden an verschiedenen Stellen in der Marketp
 
 #### <a name="screenshots"></a>Screenshots
 
-Fügen Sie mindestens einen und bis zu fünf Screenshots hinzu, die zeigen, wie Ihr Angebot funktioniert. Jeder muss 1280 x 720 Pixel groß sein und im PNG-Format vorliegen.
+Fügen Sie mindestens einen und bis zu fünf Screenshots hinzu, die zeigen, wie Ihr Angebot funktioniert. Jeder muss 1.280 x 720 Pixel groß sein und im PNG-Format vorliegen.
 
 #### <a name="videos-optional"></a>Videos (optional)
 
@@ -222,7 +223,7 @@ Fügen Sie optional bis zu fünf Videos hinzu, die Ihr Angebot vorstellen. Geben
 
 #### <a name="additional-marketplace-listing-resources"></a>Zusätzliche Ressourcen für Marketplace-Listen
 
-Weitere Informationen zum Erstellen von Angebotslistungen finden Sie unter [Bewährte Methoden für Angebotslistung](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
+Weitere Informationen zum Erstellen von Angebotslistungen finden Sie unter [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md).
 
 ## <a name="technical-configuration"></a>Technische Konfiguration
 
@@ -252,4 +253,4 @@ Auf der Überprüfungsseite haben Sie folgende Möglichkeiten:
 
 Um das Angebot zur Veröffentlichung einzureichen, wählen Sie **Veröffentlichen** aus.
 
-Wir senden Ihnen eine E-Mail, um Ihnen mitzuteilen, wann eine Vorschauversion des Angebots zur Überprüfung und Genehmigung verfügbar ist. Um Ihr Angebot für die Öffentlichkeit zugänglich zu machen (oder für eine private Zielgruppe, wenn es sich um ein privates Angebot handelt), navigieren Sie zum Partner Center, und wählen Sie **Live schalten** aus.
+Wir senden Ihnen eine E-Mail, um Ihnen mitzuteilen, wann eine Vorschauversion des Angebots zur Überprüfung und Genehmigung verfügbar ist. Kehren Sie zu Partner Center zurück, und wählen Sie **Live schalten** aus, um das Angebot für eine öffentliche Zielgruppe zu veröffentlichen.

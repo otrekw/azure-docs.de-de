@@ -9,20 +9,20 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5540697e8e64586d73e34d253fb95e549fc0301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7970f321f301cc394732b1557d65974e7902574
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75972143"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609026"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe einer Vorlage
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-templates"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von Vorlagen
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure Resource Manager-Bere
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie nicht mit der Verwendung der Azure Resource Manager-Bereitstellungsvorlage vertraut sind, sehen Sie sich die [Übersicht](overview.md) an. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#how-does-the-managed-identities-for-azure-resources-work)** bewusst.
+- Wenn Sie nicht mit der Verwendung der Azure Resource Manager-Bereitstellungsvorlage vertraut sind, sehen Sie sich die [Übersicht](overview.md) an. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#managed-identity-types)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 
 ## <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
@@ -66,7 +66,7 @@ Zum Aktivieren der systemseitig zugewiesenen verwalteten Identität auf einem vi
 
 
 
-3. Wenn Sie fertig sind, sollten die folgenden Abschnitte dem Abschnitt `resource` der Vorlage hinzugefügt worden sein, und diese sollte wie folgt aussehen:
+3. Wenn Sie fertig sind, sollten die folgenden Abschnitte dem Abschnitt `resource` der Vorlage hinzugefügt worden sein. Diese sollte wie folgt aussehen:
 
    ```JSON
    "resources": [
@@ -165,7 +165,7 @@ Zum Entfernen der systemseitig zugewiesenen verwalteten Identität von einem vir
 
    Wenn `2017-12-01` als `apiVersion` verwendet wird und Ihre VM sowohl vom System als auch vom Benutzer zugewiesene verwaltete Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit dem `identityIds`-Array der vom Benutzer zugewiesenen verwalteten Identitäten bei.  
 
-Das folgende Beispiel zeigt, wie Sie eine vom System zugewiesene verwaltete Identität von einer VM ohne vom Benutzer zugewiesene verwaltete Identitäten entfernen:
+Das folgende Beispiel zeigt, wie Sie eine vom System zugewiesene verwaltete Identität von einem virtuellen Computer ohne vom Benutzer zugewiesene verwaltete Identitäten entfernen:
 
  ```JSON
  {
@@ -230,7 +230,7 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
    }
    ```
 
-3. Wenn Sie fertig sind, sollten die folgenden Abschnitte dem Abschnitt `resource` der Vorlage hinzugefügt worden sein, und diese sollte wie folgt aussehen:
+3. Wenn Sie fertig sind, sollten die folgenden Abschnitte dem Abschnitt `resource` der Vorlage hinzugefügt worden sein. Diese sollte wie folgt aussehen:
 
    **Microsoft.Compute/virtualMachines-API, Version 2018-06-01**    
 
@@ -336,13 +336,13 @@ Für das Entfernen einer benutzerseitig zugewiesenen Identität von einem virtue
 
    Um eine einzelne vom Benutzer zugewiesene verwaltete Identität von einem virtuellen Computer zu entfernen, entfernen Sie diese aus dem `useraAssignedIdentities`-Wörterbuch.
 
-   Wenn Sie eine vom System zugewiesene verwaltete Identität verwenden, behalten Sie sie im Wert `type` unter dem Wert `identity` bei.
+   Wenn Sie eine vom System zugewiesene verwaltete Identität verwenden, behalten Sie den Wert `type` unter dem Wert `identity` bei.
 
    **Microsoft.Compute/virtualMachines-API, Version 2017-12-01**
 
    Um eine einzelne benutzerseitig zugewiesene verwaltete Identität von einem virtuellen Computer zu entfernen, entfernen Sie diese aus dem `identityIds`-Array.
 
-   Wenn Sie eine vom System zugewiesene verwaltete Identität verwenden, behalten Sie sie im Wert `type` unter dem Wert `identity` bei.
+   Wenn Sie eine vom System zugewiesene verwaltete Identität verwenden, behalten Sie den Wert `type` unter dem Wert `identity` bei.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

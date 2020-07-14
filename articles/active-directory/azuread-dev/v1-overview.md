@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: overview
 ms.workload: identity
 ms.date: 10/24/2018
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ade350c91ebd2f3a68b52011e598f739a14c220f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db158a50cfc164a0fc839e858cc6e7c46558eb77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154490"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551592"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>Azure Active Directory für Entwickler (v1.0) – Übersicht
 
@@ -29,17 +29,14 @@ Azure Active Directory (Azure AD) ist ein Cloudidentitätsdienst, mit dem Entwic
 > [!NOTE]
 > Auf dieser Seite geht es hauptsächlich um den v1.0-Endpunkt und die v1.0-Plattform, die beide nur Geschäfts-, Schul- oder Unikonten von Microsoft unterstützen. Wenn Sie die Anmeldung für Endverbraucher oder persönliche Microsoft-Konten durchführen möchten, lesen Sie die Informationen zum [v2.0-Endpunkt und zur v2.0-Plattform](../develop/v2-overview.md). Der v2.0-Endpunkt bietet eine einheitliche Entwicklungsumgebung für Apps, die alle Microsoft-Identitäten anmelden möchten.
 
-| | |
-| --- | --- |
-|[Authentifizierungsszenarien für Azure AD](v1-authentication-scenarios.md) | Eine Einführung in die Authentifizierung mit Azure AD. |
-|[Anwendungsarten](app-types.md) | Eine Übersicht über die von Azure AD unterstützten Authentifizierungsszenarien. |
-| | |
+- [Authentifizierungsgrundlagen](v1-authentication-scenarios.md) Eine Einführung in die Authentifizierung mit Azure AD.
+- [Anwendungsarten](app-types.md) Eine Übersicht über die von Azure AD unterstützten Authentifizierungsszenarien.
 
 ## <a name="get-started"></a>Erste Schritte
 
 In den Schnellstartanleitungen und Tutorials zu v1.0 wird Schritt für Schritt die Erstellung einer App auf Ihrer bevorzugten Plattform mit dem ADAL SDK (Azure AD Authentication Library) beschrieben. Informationen zu den ersten Schritten finden Sie unter [Microsoft identity platform (Azure Active Directory for developers)](index.yml) (Microsoft-Identitätsplattform (Azure Active Directory für Entwickler)) in den **Schnellstartanleitungen zu v1.0** und in den **Tutorials zu v1.0**.
 
-## <a name="how-to-guides"></a>Gewusst-wie-Anleitungen
+## <a name="how-to-guides"></a>Anleitungen
 
 Ausführliche Informationen und exemplarische Vorgehensweisen für die gängigsten Aufgaben in Azure AD finden Sie in den **Schrittanleitungen zu v1.0**.
 
@@ -47,12 +44,9 @@ Ausführliche Informationen und exemplarische Vorgehensweisen für die gängigst
 
 Die folgenden Artikel enthalten ausführliche Informationen zu APIs, Protokollmeldungen und Begriffen, die in Azure AD verwendet werden.
 
-|                                                                                   | |
-| ----------------------------------------------------------------------------------| --- |
-| [Authentifizierungsbibliotheken (ADAL)](active-directory-authentication-libraries.md)   | Eine Übersicht über die von Azure AD bereitgestellten Bibliotheken und SDKs. |
-| [Codebeispiele](sample-v1-code.md)                                  | Eine Liste mit allen Azure AD-Codebeispielen. |
-| [Glossar](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | Begriffe und Definitionen von Wörtern, die in dieser Dokumentation verwendet werden. |
-|  |  |
+- [Authentifizierungsbibliotheken (ADAL)](active-directory-authentication-libraries.md) Eine Übersicht über die von Azure AD bereitgestellten Bibliotheken und SDKs.
+- [Codebeispiele](sample-v1-code.md) Eine Liste mit allen Azure AD-Codebeispielen.
+- [Glossar](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) Begriffe und Definitionen von Wörtern, die in dieser Dokumentation verwendet werden.
 
 ## <a name="videos"></a>Videos
 

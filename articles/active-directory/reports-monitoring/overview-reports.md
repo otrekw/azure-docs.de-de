@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b655fa2f12eac894e97c61cc931983aa58fff7a9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74007930"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481390"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Was sind Azure Active Directory-Berichte?
 
@@ -81,7 +81,7 @@ Der [Bericht „Überwachungsprotokolle“](concept-audit-logs.md) enthält Date
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Welche Azure AD-Lizenz benötigen Sie, um auf den Bericht „Überwachungsprotokolle“ zuzugreifen?  
 
-Der Bericht „Überwachungsprotokolle“ ist für Features verfügbar, für die Sie über Lizenzen verfügen. Wenn Sie im Besitz einer Lizenz für ein bestimmtes Feature sind, haben Sie auch Zugriff auf die dazugehörigen Informationen zum Überwachungsprotokoll. Weitere Informationen finden Sie unter [Azure Active Directory-Features und -Funktionen](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
+Der Bericht „Überwachungsprotokolle“ ist für Features verfügbar, für die Sie über Lizenzen verfügen. Wenn Sie im Besitz einer Lizenz für ein bestimmtes Feature sind, haben Sie auch Zugriff auf die dazugehörigen Informationen zum Überwachungsprotokoll. Einen detaillierten Vergleich der Funktionen bei den [verschiedenen Lizenztypen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses) finden Sie auf der Seite [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/). Weitere Informationen finden Sie unter [Azure Active Directory-Features und -Funktionen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad).
 
 ### <a name="sign-ins-report"></a>Bericht zu Anmeldeaktivitäten
 

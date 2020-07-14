@@ -5,6 +5,8 @@
   items:
     - name: Was ist Cognitive Services?
       href: Welcome.md
+    - name: Neues in der Cognitive Services-Dokumentation
+      href: whats-new-docs.md
     - name: Cognitive Services und maschinelles Lernen
       href: cognitive-services-and-machine-learning.md
     - name: Benutzerdefinierte Unterdomänen für Cognitive Services
@@ -64,6 +66,24 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Service (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
+- name: Big Data
+  items:
+    - name: Cognitive Services für Big Data
+      href: ./big-data/cognitive-services-for-big-data.md
+    - name: Erste Schritte
+      href: ./big-data/getting-started.md
+    - name: Beispiele
+      items:
+        - name: Python
+          href: ./big-data/samples-python.md
+        - name: Scala
+          href: ./big-data/samples-scala.md
+    - name: Rezepte
+      items:
+        - name: 'Rezept: Anomalieerkennung'
+          href: ./big-data/recipes/anomaly-detection.md
+        - name: 'Rezept: Art-Explorer'
+          href: ./big-data/recipes/art-explorer.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

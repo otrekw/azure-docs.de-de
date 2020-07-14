@@ -434,6 +434,8 @@
                   items:
                     - name: Von einem virtuellen Computer
                       href: ../image-version-vm-powershell.md
+                    - name: Von einer VHD oder Momentaufnahme
+                      href: ../image-version-snapshot-powershell.md
                     - name: Migrieren von einem verwalteten Image
                       href: ../image-version-managed-image-powershell.md
                     - name: Kopieren aus einem anderen Katalog
@@ -454,6 +456,8 @@
                   items:
                     - name: Von einem virtuellen Computer
                       href: ../image-version-vm-cli.md
+                    - name: Von einer VHD oder Momentaufnahme
+                      href: ../image-version-snapshot-cli.md
                     - name: Migrieren von einem verwalteten Image
                       href: ../image-version-managed-image-cli.md
                     - name: Kopieren aus einem anderen Katalog
@@ -508,6 +512,8 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Suchen und Verwenden von Images
           href: cli-ps-findimage.md
+        - name: Informationen zum Erwerbsplan
+          href: ../marketplace-images.md
         - name: Vorbereiten des virtuellen Computers für den Upload
           href: prepare-for-upload-vhd-image.md
         - name: Erfassen eines virtuellen Computers als Image
@@ -853,10 +859,18 @@
           href: disks-incremental-snapshots-portal.md
         - name: Sichern nicht verwalteter Datenträger
           href: incremental-snapshots.md
+        - name: Verschlüsselung
+          items:
+            - name: 'Aktivieren der hostbasierten Verschlüsselung: PowerShell'
+              href: disks-enable-host-based-encryption-powershell.md
+            - name: 'Aktivieren von kundenseitig verwalteten Schlüsseln: PowerShell'
+              href: disks-enable-customer-managed-keys-powershell.md
+            - name: 'Aktivieren von kundenseitig verwalteten Schlüsseln: Portal'
+              href: disks-enable-customer-managed-keys-portal.md
+            - name: Aktivieren der doppelten Verschlüsselung im Ruhezustand
+              href: disks-enable-double-encryption-at-rest-powershell.md
         - name: Migration und Konvertierung
           items:
-            - name: Umstellen auf die serverseitige Verschlüsselung
-              href: disks-ade-sse-conversion-powershell.md
             - name: Konvertieren von Datenträgern zwischen Standard und Premium
               href: convert-disk-storage.md
             - name: Migrieren zu Storage Premium mit Azure Site Recovery

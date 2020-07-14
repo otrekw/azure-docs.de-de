@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 568f284a22f170c2a6a0d60d9e2cfed0645937ba
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 3e40eecce3ff0ea5b252fd135ae553fa20e0a77b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261374"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386350"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Was ist die Kennworthashsynchronisierung mit Azure AD?
 Die Kennworthashsynchronisierung ist eine der Anmeldemethoden, die zur Implementierung von Hybrididentitäten verwendet wird. Azure AD Connect synchronisiert einen Hash eines Benutzerkennworthashs aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure AD-Instanz.
@@ -29,6 +29,12 @@ Dank der Kennworthashsynchronisierung benötigen Benutzer nur noch ein einzelnes
 
 * Verbessern der Produktivität Ihrer Benutzer
 * Reduzieren der Helpdeskkosten  
+
+Mit der Kennworthashsynchronisierung wird auch die [Ermittlung kompromittierter Anmeldeinformationen](../identity-protection/concept-identity-protection-risks.md#user-risk) für Ihre Hybridkonten aktiviert. Microsoft arbeitet mit Darknet-Ermittlern und Justizbehörden zusammen, um öffentlich verfügbare Benutzername/Kennwort-Paare zu finden. Wenn eines dieser Paare mit denen unserer Benutzer identisch ist, wird für das zugehörige Konto der Status „Hohes Risiko“ aktiviert. 
+
+>[!NOTE]
+> Nur kompromittierte Anmeldeinformationen, die nach dem Aktivieren der Kennworthashsynchronisierung neu gefunden wurden, werden für Ihren Mandanten verarbeitet. Eine Überprüfung anhand zuvor gefundener Anmeldeinformationspaare erfolgt nicht.
+
 
 Wenn Sie sich bei der Anmeldemethode für einen [Verbund mit Active Directory Federation Services (AD FS)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) entscheiden, können Sie die Kennworthashsynchronisierung optional als zusätzliche Sicherheitsmaßnahme aktivieren.
 

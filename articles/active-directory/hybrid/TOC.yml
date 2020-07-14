@@ -106,6 +106,8 @@
           href: how-to-connect-install-express.md
         - name: Installieren eines Azure AD Connect-Verbunds oder andere benutzerdefinierte Einstellungen
           href: how-to-connect-install-custom.md
+        - name: Einstellungen der Import- und Exportkonfiguration
+          href: how-to-connect-import-export-config.md
         - name: 'Installieren von Azure AD Connect mit Passthrough-Authentifizierung (Pass-Through Authentication, PTA)'
           href: how-to-connect-pta-quick-start.md
         - name: Installieren von Azure AD Connect Health

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44c8a46c844b9bc4b92702323df18addb207dd6c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 2f05fa9f9f31011f04aee0d2bedbcd4c4dad5d39
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85078164"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338195"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Was ist die Azure AD-Berechtigungsverwaltung?
 
@@ -67,13 +67,13 @@ Die Berechtigungsverwaltung führt in Azure AD das Konzept von *Zugriffspaketen*
  Mit der Berechtigungsverwaltung können Sie den Benutzerzugriff auf folgende Ressourcen verwalten:
 
 - Mitgliedschaft in Azure AD-Sicherheitsgruppen
-- Mitgliedschaft in Office 365-Gruppen und -Teams
+- Mitgliedschaft in Microsoft 365-Gruppen und -Teams
 - Zuweisung zu Azure AD-Unternehmensanwendungen wie SaaS-Anwendungen und kundenspezifisch integrierten Anwendungen, die Verbund-/Einzelanmeldung und/oder Bereitstellung unterstützen
 - Mitgliedschaft in SharePoint Online-Websites
 
-Sie können auch den Zugriff auf andere Ressourcen steuern, die auf Azure AD-Sicherheitsgruppen oder Office 365-Gruppen basieren.  Beispiel:
+Sie können auch den Zugriff auf andere Ressourcen steuern, die auf Azure AD-Sicherheitsgruppen oder Microsoft 365-Gruppen basieren.  Beispiel:
 
-- Sie können Benutzerlizenzen für Microsoft Office 365 mit einer Azure AD-Sicherheitsgruppe in einem Zugriffspaket und Konfigurieren der [gruppenbasierten Lizenzierung](../users-groups-roles/licensing-groups-assign.md) für diese Gruppe vergeben.
+- Sie können Benutzerlizenzen für Microsoft 365 mit einer Azure AD-Sicherheitsgruppe in einem Zugriffspaket vergeben und die [gruppenbasierte Lizenzierung](../users-groups-roles/licensing-groups-assign.md) für diese Gruppe konfigurieren.
 - Sie können Benutzern mithilfe einer Azure AD-Sicherheitsgruppe in einem Zugriffspaket und Erstellen einer [Azure-Rollenzuweisung](../../role-based-access-control/role-assignments-portal.md) für diese Gruppe Zugriff zum Verwalten von Azure-Ressourcen erteilen.
 
 ## <a name="how-do-i-control-who-gets-access"></a>Wie kann gesteuert werden, wer Zugriff erhält?

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 7c25d5ee7ed730747317ea52286174968eb0e2fd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024437"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103703"
 ---
 # <a name="what-is-a-device-identity"></a>Was ist eine Geräteidentität?
 
@@ -45,7 +45,7 @@ Um ein Gerät in Azure AD aufzunehmen, haben Sie mehrere Möglichkeiten:
 - **In Azure AD eingebunden**
    - Geräte, die in Azure AD eingebunden sind, gehören einer Organisation und werden mit einem Azure AD-Konto angemeldet, das zu der Organisation gehört. Sie sind nur in der Cloud vorhanden.
       - Windows 10 
-      - Windows Server 2019 (Server Core wird nicht unterstützt.)
+      - [Virtuelle Computer mit Windows Server 2019, die in Azure ausgeführt werden] (./howto-vm-sign-in-azure-ad-windows.md) (Server Core wird nicht unterstützt)
 - **eingebunden in Hybrid Azure AD**
    - Geräte, die in Hybrid Azure AD eingebunden sind, gehören einer Organisation und werden mit einem Azure AD-Konto angemeldet, das zu der Organisation gehört. Sie sind in der Cloud und lokal vorhanden.
       - Windows 7, 8.1 oder 10

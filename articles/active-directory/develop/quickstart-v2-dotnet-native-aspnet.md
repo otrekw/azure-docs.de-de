@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 084083a704a007e6675234883c62350d1d9a0849
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 22bf7e85a48e0d138bfdbca82cf032287d982899
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536147"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339591"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Schnellstart: Aufrufen einer durch Microsoft Identity Platform geschützten ASP.NET-Web-API
 
@@ -30,7 +30,7 @@ Zum Ausführen dieses Beispiels benötigen Sie Folgendes:
 
 * Visual Studio 2017 oder 2019.  [Laden Sie Visual Studio kostenlos herunter](https://www.visualstudio.com/downloads/).
 
-* Entweder ein [Microsoft-Konto](https://www.outlook.com) oder ein [Office 365-Entwicklerprogramm](/office/developer-program/office-365-developer-program).
+* Ein [Microsoft-Konto](https://www.outlook.com) oder ein [Microsoft 365-Entwicklerprogramm](/office/developer-program/office-365-developer-program)
 
 ## <a name="download-or-clone-this-sample"></a>Herunterladen oder Klonen dieses Beispiels
 

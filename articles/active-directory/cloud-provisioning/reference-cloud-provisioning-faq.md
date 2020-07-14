@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: overview
-ms.date: 02/26/2020
+ms.topic: reference
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3ef482804c80602771963633bcc46feaf014c363
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77916573"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373827"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -62,7 +62,7 @@ Ja, bei der Cloudbereitstellung wird ein Dienstprinzipal für die Bereitstellung
 
 **F: Was geschieht, wenn ein synchronisierter Benutzer das Kennwort bei der nächsten Anmeldung ändern muss?**
 
-Wenn bei der Cloudbereitstellung die Kennworthashsynchronisierung aktiviert ist und der synchronisierte Benutzer bei der nächsten Anmeldung bei der lokalen AD-Instanz das Kennwort ändern muss, wird der zu ändernde Kennworthash nicht in Azure AD bereitgestellt. Sobald der Benutzer das Kennwort ändert, wird der Benutzerkennworthash von AD in Azure AD bereitgestellt.
+Wenn bei der Cloudbereitstellung die Kennworthashsynchronisierung aktiviert ist und der synchronisierte Benutzer bei der nächsten Anmeldung bei der lokalen AD-Instanz das Kennwort ändern muss, wird der „zu ändernde“ Kennworthash nicht in Azure AD bereitgestellt. Sobald der Benutzer das Kennwort ändert, wird der Benutzerkennworthash von AD in Azure AD bereitgestellt.
 
 **F: Unterstützt die Cloudbereitstellung das Rückschreiben von „ms-ds-consistencyGUID“ für Objekte?**
 
@@ -70,7 +70,7 @@ Nein, die Cloudbereitstellung unterstützt das Rückschreiben von „ms-ds-consi
 
 **F: Ich stelle Benutzer mithilfe der Cloudbereitstellung bereit. Ich habe die Konfiguration gelöscht. Warum werden die alten synchronisierten Objekte weiterhin in Azure AD angezeigt?** 
 
-Wenn Sie die Konfiguration löschen, werden die synchronisierten Objekte in Azure AD bei der Cloudbereitstellung nicht bereinigt. Wenn Sie sicherstellen möchten, dass keine alten Objekte vorhanden sind, ändern Sie den Bereich der Konfiguration in eine leere Gruppe oder in Organisationseinheiten. Wenn die Bereitstellung läuft und die Objekte bereinigt, deaktivieren und löschen Sie die Konfiguration. 
+Wenn Sie die Konfiguration löschen, werden die synchronisierten Objekte in Azure AD von der Cloudbereitstellung nicht automatisch entfernt. Wenn Sie sicherstellen möchten, dass keine alten Objekte vorhanden sind, ändern Sie den Bereich der Konfiguration in eine leere Gruppe oder in Organisationseinheiten. Wenn die Bereitstellung läuft und die Objekte bereinigt, deaktivieren und löschen Sie die Konfiguration. 
 
 **F:  Was bedeutet es, dass das Exchange-Hybridbereitstellungsfeature nicht unterstützt wird?**
 
@@ -79,6 +79,10 @@ Das Exchange-Hybridbereitstellungsfeature ermöglicht die Koexistenz lokaler und
 **F:  Kann ich den Agent für die Cloudbereitstellung unter Windows Server Core installieren?**
 
 Nein. Die Installation des Agents unter Server Core wird nicht unterstützt.
+
+**F:  Kann ich zusammen mit dem Cloudbereitstellungs-Agent einen Stagingserver verwenden?**
+
+Nein, Stagingserver werden nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
