@@ -1,18 +1,18 @@
 ---
 title: 'Auszahlungsrichtliniendetails: Azure Marketplace'
 description: Details zu Auszahlungsrichtlinien, einschließlich Zeitplänen und Entschädigung.
-author: mingshen
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: mingshen
+ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: 6aa40d0914237a28c7bbd32b15bf0d8d02140192
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: f26e006998b0818ba84fa23ee1941a1033ef205b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82782559"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118289"
 ---
 # <a name="payout-policy-details"></a>Auszahlungsrichtliniendetails
 
@@ -25,7 +25,7 @@ Wählen Sie rechts oben im Partner Center-Portal die Option **Auszahlung** aus:
 ![Auszahlungssymbol rechts oben im Partner Center-Portal](./media/payout-overview.png)
 
 > [!TIP]
-> Nicht alle Kontorollen haben Zugriff auf Auszahlungsinformationen. Ausführliche Informationen zu Rollen und Berechtigungen für den Zugriff auf den Auszahlungsbericht finden Sie [hier](./payout-summary.md).
+> Nicht alle Kontorollen haben Zugriff auf Auszahlungsinformationen. Ausführliche Informationen zu Rollen und Berechtigungen für den Zugriff auf den Auszahlungsbericht finden Sie [hier](./payout-summary-overview.md#roles-and-permissions).
 
 ## <a name="payment-schedules"></a>Zahlungspläne
 
@@ -40,7 +40,7 @@ Ab dem 1. Mai 2020 aktualisieren wir unsere Auszahlungsrichtlinie für Produkt
 > [!NOTE]
 > Unter [Prozess bei Nichtzahlung des Kunden](#process-for-customer-non-payment) erfahren Sie, welche Maßnahmen wir ergreifen, wenn der Kunde nicht bezahlt und wir bereits eine Auszahlung an Sie geleistet haben.
 
-| Ereignis  | Datum  | Partnersichtbarkeit: Partner Center-Auszahlungsbericht  |  Partnersichtbarkeit: Partner Center-Analysen\* |
+| Ereignis  | Date  | Partnersichtbarkeit: Partner Center-Auszahlungsbericht  |  Partnersichtbarkeit: Partner Center-Analysen\* |
 | --- | --- | --- | --- |
 | Transaktion oder Nutzungsmonat | 01.08.2020–31.08.2020 | – | **Nutzungsbericht**: Anzeige des neuen Verbrauchs (wird alle vier Stunden aktualisiert)<br>**Auftragsbericht**: – |
 | Laufzeitende (Monat) | 31.08.2020 | – | **Nutzungsbericht**: Anzeige des Verbrauchs am Monatsende<br>**Auftragsbericht**: – |
@@ -57,7 +57,7 @@ Ab dem 1. Mai 2020 aktualisieren wir unsere Auszahlungsrichtlinie für Produkt
 
 Für alle Käufe mit Kreditkarte oder monatlicher Rechnung gilt ein Einbehaltungszeitraum von 30 Tagen, um sicherzustellen, dass die Zahlung tatsächlich erfolgt und es zu keinen Rückbuchungen oder möglichen Betrugsfällen kommt.
 
-| Ereignis  | Datum  | Partnersichtbarkeit: Partner Center-Auszahlungsbericht  |  Partnersichtbarkeit: Partner Center-Analysen\*  |
+| Ereignis  | Date  | Partnersichtbarkeit: Partner Center-Auszahlungsbericht  |  Partnersichtbarkeit: Partner Center-Analysen\*  |
 | --- | --- | --- | --- |
 | Transaktion oder Nutzungsmonat | 01.08.2019–31.08.2019 | – | **Nutzungsbericht**: Anzeige des neuen Verbrauchs (wird alle vier Stunden aktualisiert)<br>**Auftragsbericht**: – |
 | Laufzeitende (Monat) | 31.08.2019 | – | **Nutzungsbericht**: Anzeige des Verbrauchs am Monatsende<br>**Auftragsbericht**: – |
@@ -74,7 +74,7 @@ Für alle Käufe mit Kreditkarte oder monatlicher Rechnung gilt ein Einbehaltung
 
 Alle Käufe vor diesem Datum werden gemäß dem folgenden Zeitplan verarbeitet und bezahlt, nachdem Microsoft die Zahlung von Kunden erhalten und die Marketplace-Gebühr verarbeitet hat.
 
-| Ereignis  | Datum  | Partnersichtbarkeit: Partner Center-Auszahlungsbericht  |  Partnersichtbarkeit: Partner Center-Analysen\*  |
+| Ereignis  | Date  | Partnersichtbarkeit: Partner Center-Auszahlungsbericht  |  Partnersichtbarkeit: Partner Center-Analysen\*  |
 | --- | --- | --- | --- |
 | Transaktion oder Nutzungsmonat | 01.08.2019–31.08.2019 | – | **Nutzungsbericht**: Anzeige des neuen Verbrauchs (wird alle vier Stunden aktualisiert)<br>**Auftragsbericht**: – |
 | Laufzeitende (Monat) | 31.08.2019 | – | **Nutzungsbericht**: Anzeige des Verbrauchs am Monatsende<br>**Auftragsbericht**: – |
@@ -102,12 +102,12 @@ Im Anschluss finden Sie einen Beispielzeitplan:
 | Exemplarisches Auszahlungsdatum | 15.10.2020 | Kennzeichnung als **Gesendet** im Transaktionsverlauf und im Auszahlungsabschnitt des Auszahlungsdashboards |
 | <font color="red">Ausbleibende Kundenzahlung an Microsoft</font> | 02.12.2020–05.12.2020 | Keine Änderung, wie oben |
 | Kunde erhält erste E-Mail wegen Zahlungsverzug | 06.12.2020 | Keine |
-| Kunde erhält regelmäßig E-Mails mit zunehmender Dringlichkeit | 07.12.2020–31.12.2020 | Keine |
-| Herausgeber wird über voraussichtliche Abschreibung informiert | 07.01.2020 | Herausgeber erhält eine E-Mail-Benachrichtigung mit der Information, dass der Kunde noch nicht bezahlt hat. Transaktions-ID und Dollarbetrag sind angegeben. |
-| Kunde erhält Kündigungsbenachrichtigung | 01.02.2020 | Keine |
-| Inkassoprozess endet/Betrag wird abgeschrieben | 15.02.2020 | Herausgeber erhält eine E-Mail-Benachrichtigung mit der Information, dass der Betrag abgeschrieben wurde. Transaktions-ID und Dollarbetrag sind angegeben. |
-| Auszahlung wird abgezogen | 01.03.2020 | Partner Center-Auszahlungsauszug des Herausgebers enthält negative Transaktion |
-| Auszahlung wird einbehalten | 15.03.2020 | Partner Center-Auszahlungsauszug enthält zukünftige Auszahlungen. Zahlungen an den Herausgeber werden erst wieder geleistet, wenn der Saldo nicht mehr negativ ist.  |
+| Kunde erhält regelmäßig E-Mails mit zunehmender Dringlichkeit | 07.12.2020–31.01.2021 | Keine |
+| Herausgeber wird über voraussichtliche Abschreibung informiert | 07.01.2021 | Herausgeber erhält eine E-Mail-Benachrichtigung mit der Information, dass der Kunde noch nicht bezahlt hat. Transaktions-ID und Dollarbetrag sind angegeben. |
+| Kunde erhält Kündigungsbenachrichtigung | 01.02.2021 | Keine |
+| Inkassoprozess endet/Betrag wird abgeschrieben | 15.02.2021 | Herausgeber erhält eine E-Mail-Benachrichtigung mit der Information, dass der Betrag abgeschrieben wurde. Transaktions-ID und Dollarbetrag sind angegeben. |
+| Auszahlung wird abgezogen | 01.03.2021 | Partner Center-Auszahlungsauszug des Herausgebers enthält negative Transaktion |
+| Auszahlung wird einbehalten | 15.03.2021 | Partner Center-Auszahlungsauszug enthält zukünftige Auszahlungen. Zahlungen an den Herausgeber werden erst wieder geleistet, wenn der Saldo nicht mehr negativ ist.  |
 |||
 
 ## <a name="next-step"></a>Nächster Schritt

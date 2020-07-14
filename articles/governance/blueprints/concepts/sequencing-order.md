@@ -3,12 +3,12 @@ title: Verstehen der Bereitstellungsreihenfolge
 description: Erfahren Sie mehr über die Standardreihenfolge, in der Blaupausenartefakte während einer Blaupausenzuweisung bereitgestellt werden, und wie Sie die Bereitstellungsreihenfolge anpassen können.
 ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: d4a3b07e158aa7e4514ea9543bf44ad57e379d24
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864520"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970619"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Verstehen der Bereitstellungsreihenfolge in Azure Blueprint
 
@@ -28,21 +28,21 @@ Wenn die Blaupausendefinition keine Anweisung zum Bereitstellen von Artefakten e
 
 - **Rollenzuweisungsartefakte** auf Abonnementebene werden nach Artefaktnamen sortiert
 - **Richtlinienzuweisungsartefakte** auf Abonnementebene werden nach Artefaktnamen sortiert
-- **Azure Resource Manager-Vorlagenartefakte** auf Abonnementebene werden nach Artefaktnamen sortiert
+- Artefakte von **Azure Resource Manager-Vorlagen** (ARM-Vorlagen) auf Abonnementebene werden nach Artefaktnamen sortiert
 - **Ressourcengruppenartefakte** (und untergeordnete Artefakte) werden nach Platzhalternamen sortiert
 
 In jedem Artefakt vom Typ **Ressourcengruppe** wird für Artefakte, die innerhalb dieser Ressourcengruppe erstellt werden, die folgende Reihenfolge verwendet:
 
 - Einer Ressourcengruppe untergeordnete **Rollenzuweisungsartefakte** werden nach Artefaktnamen sortiert
 - Einer Ressourcengruppe untergeordnete **Richtlinienzuweisungsartefakte** werden nach Artefaktnamen sortiert
-- Einer Ressourcengruppe untergeordnete **Azure Resource Manager-Vorlagenartefakte** werden nach Artefaktnamen sortiert
+- Einer Ressourcengruppe untergeordnete Artefakte von **Azure Resource Manager-Vorlagen** (ARM-Vorlagen) werden nach Artefaktnamen sortiert
 
 > [!NOTE]
 > Die Verwendung von [artifacts()](../reference/blueprint-functions.md#artifacts) erzeugt eine implizite Abhängigkeit von dem betreffenden Artefakt.
 
 ## <a name="customizing-the-sequencing-order"></a>Anpassen der Reihenfolge
 
-Beim Erstellen großer Blaupausendefinitionen müssen Ressourcen ggf. in einer bestimmten Reihenfolge erstellt werden. Im gängigsten Muster dieses Szenarios enthält eine Blaupausendefinition mehrere Azure Resource Manager-Vorlagen. Für diesen Fall ermöglicht Azure Blueprints das Definieren der Reihenfolge.
+Beim Erstellen großer Blaupausendefinitionen müssen Ressourcen ggf. in einer bestimmten Reihenfolge erstellt werden. Im gängigsten Anwendungsmuster dieses Szenarios enthält eine Blaupausendefinition mehrere ARM-Vorlagen. Für diesen Fall ermöglicht Azure Blueprints das Definieren der Reihenfolge.
 
 Zum Angeben der Reihenfolge wird im JSON-Code eine Eigenschaft vom Typ `dependsOn` definiert. Die Blaupausendefinition für Ressourcengruppen und Artefaktobjekte unterstützen diese Eigenschaft. `dependsOn` ist ein Zeichenfolgenarray von Artefaktnamen, das das jeweilige Artefakt im Vorfeld für seine Erstellung benötigt.
 
@@ -81,7 +81,7 @@ Diese exemplarische Blaupausendefinition verfügt über eine Ressourcengruppe mi
 
 ### <a name="example---artifact-with-custom-order"></a>Beispiel: Artefakt mit benutzerdefinierter Reihenfolge
 
-Bei diesem Beispiel handelt es sich um ein Richtlinienartefakt, das von einer Azure Resource Manager-Vorlage abhängt. Standardmäßig wird ein Richtlinienartefakt vor der Azure Resource Manager-Vorlage erstellt. Bei Verwendung dieser Reihenfolge kann das Richtlinienartefakt warten, bis die Azure Resource Manager-Vorlage erstellt wurde.
+Bei diesem Beispiel handelt es sich um ein Richtlinienartefakt, das von einer ARM-Vorlage abhängt. In der Standardreihenfolge wird ein Richtlinienartefakt vor der ARM-Vorlage erstellt. Bei Verwendung dieser Reihenfolge kann das Richtlinienartefakt warten, bis die ARM-Vorlage erstellt wurde.
 
 ```json
 {
@@ -100,7 +100,7 @@ Bei diesem Beispiel handelt es sich um ein Richtlinienartefakt, das von einer Az
 
 ### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>Beispiel: Von einer Ressourcengruppe abhängiges Vorlagenartefakt auf Abonnementebene
 
-In diesem Beispiel wird eine Resource Manager-Vorlage, die auf Abonnementebene bereitgestellt wird, von einer Ressourcengruppe abhängig gemacht. Bei der Standardreihenfolge werden die Artefakte auf Abonnementebene vor allen Ressourcengruppen und untergeordneten Artefakten in diesen Ressourcengruppen erstellt. Die Ressourcengruppe wird in der Blaupausendefinition wie folgt definiert:
+In diesem Beispiel wird eine Abhängigkeit einer auf Abonnementebene bereitgestellten ARM-Vorlage von einer Ressourcengruppe erstellt. Bei der Standardreihenfolge werden die Artefakte auf Abonnementebene vor allen Ressourcengruppen und untergeordneten Artefakten in diesen Ressourcengruppen erstellt. Die Ressourcengruppe wird in der Blaupausendefinition wie folgt definiert:
 
 ```json
 "resourceGroups": {

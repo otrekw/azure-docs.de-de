@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ihre Cluster durch Verwendung von IP-Adressbe
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 45f82d5a6531b2a9584140d6ff309a799656926a
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 4d9030e21c3b8f31c18c26fc54dc76d5b8d84a17
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299569"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85100050"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Sicherer Zugriff auf den API-Server mit autorisierten IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ Dieser Artikel veranschaulicht die Verwendung der vom API-Server autorisierten I
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Vom API-Server autorisierte IP-Adressbereiche funktionieren nur für neue AKS-Cluster, die Sie erstellen. In diesem Artikel wird beschrieben, wie Sie einen AKS-Cluster über die Azure-Befehlszeilenschnittstelle erstellen.
+In diesem Artikel wird beschrieben, wie Sie einen AKS-Cluster über die Azure-Befehlszeilenschnittstelle erstellen.
 
 Azure CLI-Version 2.0.76 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
@@ -30,16 +30,16 @@ Azure CLI-Version 2.0.76 oder höher muss installiert und konfiguriert sein. Fü
 
 Die zugrunde liegenden Kubernetes-APIs werden auf dem Kubernetes-API-Server verfügbar gemacht. Diese Komponente ermöglicht die Interaktion für Verwaltungstools, z.B. `kubectl` oder das Kubernetes-Dashboard. AKS stellt einen Clustermaster mit Einzelmandant mit einem dedizierten API-Server bereit. Standardmäßig wird der API-Server einer öffentlichen IP-Adresse zugewiesen, und Sie sollten den Zugriff mithilfe der rollenbasierten Zugriffssteuerung (RBAC, Role-based Access Control) steuern.
 
-Zum Absichern des Zugriffs auf AKS-Steuerungsebene/API-Server, die andernfalls öffentlich zugänglich sind, können Sie autorisierte IP-Adressbereiche aktivieren und verwenden. Diese autorisierten IP-Adressbereiche erlauben nur definierten IP-Adressbereichen die Kommunikation mit dem API-Server. Eine Anforderung einer IP-Adresse, die nicht Teil dieser autorisierten IP-Adressbereiche ist, an den API-Server wird blockiert. Verwenden Sie weiterhin die RBAC, um Benutzer und die von ihnen angeforderten Aktionen zu autorisieren.
+Zum Absichern des Zugriffs auf AKS-Steuerungsebene/API-Server, die andernfalls öffentlich zugänglich sind, können Sie autorisierte IP-Adressbereiche aktivieren und verwenden. Diese autorisierten IP-Adressbereiche erlauben nur definierten IP-Adressbereichen die Kommunikation mit dem API-Server. Eine Anforderung an den API-Server von einer IP-Adresse, die nicht Teil dieser autorisierten IP-Adressbereiche ist, wird blockiert. Verwenden Sie weiterhin die RBAC, um Benutzer und die von ihnen angeforderten Aktionen zu autorisieren.
 
 Weitere Informationen zum API-Server und anderen Clusterkomponenten finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][concepts-clusters-workloads].
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>Erstellen eines AKS-Clusters mit aktivierten vom API-Server autorisierten IP-Adressbereichen
 
-Vom API-Server autorisierte IP-Adressbereiche funktionieren nur für neue AKS-Cluster und werden für private AKS-Cluster nicht unterstützt. Erstellen Sie mithilfe von [az aks create][az-aks-create] einen Cluster, und geben Sie den Parameter *--api-server-authorized-ip-ranges* an, um eine Liste mit autorisierten IP-Adressbereichen bereitzustellen. Dabei handelt es sich in der Regel um IP-Adressbereiche, die von lokalen Netzwerken oder öffentlichen IP-Adressen verwendet werden. Wenn Sie einen CIDR-Bereich angeben, beginnen Sie mit der ersten IP-Adresse im Bereich. *137.117.106.90/29* ist z.B. ein gültiger Bereich, aber stellen Sie sicher, dass Sie die erste IP-Adresse im Bereich angeben, z.B. *137.117.106.88/29*.
+Vom API-Server autorisierte IP-Adressbereiche funktionieren nur für neue AKS-Cluster und werden für private AKS-Cluster nicht unterstützt. Erstellen Sie mithilfe von [az aks create][az-aks-create] einen Cluster, und geben Sie den Parameter *`--api-server-authorized-ip-ranges`* an, um eine Liste mit autorisierten IP-Adressbereichen bereitzustellen. Dabei handelt es sich in der Regel um IP-Adressbereiche, die von lokalen Netzwerken oder öffentlichen IP-Adressen verwendet werden. Wenn Sie einen CIDR-Bereich angeben, beginnen Sie mit der ersten IP-Adresse im Bereich. *137.117.106.90/29* ist z.B. ein gültiger Bereich, aber stellen Sie sicher, dass Sie die erste IP-Adresse im Bereich angeben, z.B. *137.117.106.88/29*.
 
 > [!IMPORTANT]
-> Der Cluster verwendet standardmäßig den [Lastenausgleich mit einer Standard-SKU][standard-sku-lb], den Sie zum Konfigurieren des Ausgangsgateways verwenden können. Wenn Sie vom API-Server autorisierte IP-Adressbereiche bei der Clustererstellung aktivieren, wird neben den von Ihnen angegebenen Bereichen standardmäßig auch die öffentliche IP-Adresse für Ihren Cluster zugelassen. Wenn Sie *""* oder keinen Wert für *--api-server-authorized-ip-ranges* angeben, werden vom API-Server autorisierte IP-Adressbereiche deaktiviert. Geben Sie bei Verwendung von PowerShell *--api-server-authorized-ip-ranges=""* (mit Gleichheitszeichen) ein, um Analysefehler zu vermeiden.
+> Der Cluster verwendet standardmäßig den [Lastenausgleich mit einer Standard-SKU][standard-sku-lb], den Sie zum Konfigurieren des Ausgangsgateways verwenden können. Wenn Sie vom API-Server autorisierte IP-Adressbereiche bei der Clustererstellung aktivieren, wird neben den von Ihnen angegebenen Bereichen standardmäßig auch die öffentliche IP-Adresse für Ihren Cluster zugelassen. Wenn Sie *""* oder keinen Wert für *`--api-server-authorized-ip-ranges`* angeben, werden vom API-Server autorisierte IP-Adressbereiche deaktiviert. Beachten Sie Folgendes: Geben Sie bei Verwendung von PowerShell *`--api-server-authorized-ip-ranges=""`* (mit Gleichheitszeichen) ein, um Analysefehler zu vermeiden.
 
 Im folgenden Beispiel wird in der Ressourcengruppe *myResourceGroup* ein Cluster namens *myAKSCluster* mit einem einzelnen Knoten und mit aktivierten vom API-Server autorisierten IP-Adressbereichen erstellt. Dabei werden die IP-Adressbereiche *73.140.245.0/24* zugelassen:
 
@@ -78,13 +78,13 @@ az aks create \
     --generate-ssh-keys
 ```
 
-Im obigen Beispiel werden alle IP-Adressen zugelassen, die im Parameter *--load-balancer-outbound-ip-prefixes* oder *--api-server-authorized-ip-ranges* angegeben sind.
+Im obigen Beispiel sind alle im Parameter *`--load-balancer-outbound-ip-prefixes`* angegebenen IP-Adressen zulässig, ebenso wie die IP-Adressen im Parameter *`--api-server-authorized-ip-ranges`* .
 
-Alternativ können Sie den Parameter *--load-balancer-outbound-ip-prefixes* angeben, um ausgehende IP-Präfixe des Lastenausgleichs zuzulassen.
+Alternativ dazu können Sie den Parameter *`--load-balancer-outbound-ip-prefixes`* angeben, um Präfixe für ausgehende IP-Adressen des Lastenausgleichs zuzulassen.
 
 ### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>Ausschließliches Zulassen der ausgehenden öffentlichen IP-Adresse des Lastenausgleichs mit Standard-SKU
 
-Wenn Sie vom API-Server autorisierte IP-Adressbereiche bei der Clustererstellung aktivieren, wird neben den von Ihnen angegebenen Bereichen standardmäßig auch die ausgehende öffentliche IP-Adresse des Lastenausgleichs mit Standard-SKU für Ihren Cluster zugelassen. Soll nur die ausgehende öffentliche IP-Adresse des Lastenausgleichs mit Standard-SKU zugelassen werden, verwenden Sie *0.0.0.0/32*, wenn Sie den Parameter *--api-server-authorized-ip-ranges* angeben.
+Wenn Sie vom API-Server autorisierte IP-Adressbereiche bei der Clustererstellung aktivieren, wird neben den von Ihnen angegebenen Bereichen standardmäßig auch die ausgehende öffentliche IP-Adresse des Lastenausgleichs mit Standard-SKU für Ihren Cluster zugelassen. Soll nur die ausgehende öffentliche IP-Adresse des Lastenausgleichs mit Standard-SKU zugelassen werden, verwenden Sie *0.0.0.0/32*, wenn Sie den Parameter *`--api-server-authorized-ip-ranges`* angeben.
 
 Im folgenden Beispiel wird nur die ausgehende öffentliche IP-Adresse des Lastenausgleichs mit Standard-SKU zugelassen, und auf den API-Server kann nur über die Knoten innerhalb des Clusters zugegriffen werden.
 
@@ -101,7 +101,7 @@ az aks create \
 
 ## <a name="update-a-clusters-api-server-authorized-ip-ranges"></a>Aktualisieren der vom API-Server autorisierten IP-Adressbereiche eines Clusters
 
-Wenn Sie die vom API-Server autorisierten IP-Adressbereiche für einen vorhandenen Cluster aktualisieren möchten, verwenden Sie den Befehl [az aks update][az-aks-update] mit den Parametern *--api-server-authorized-ip-ranges*, *--load-balancer-outbound-ip-prefixes*, *--load-balancer-outbound-ips* oder *--load-balancer-outbound-ip-prefixes*.
+Wenn Sie die vom API-Server autorisierten IP-Adressbereiche für einen vorhandenen Cluster aktualisieren möchten, verwenden Sie den Befehl [az aks update][az-aks-update] mit den Parametern *`--api-server-authorized-ip-ranges`* , *--load-balancer-outbound-ip-prefixes *, *`--load-balancer-outbound-ips`* oder *--load-balancer-outbound-ip-prefixes*.
 
 Im folgenden Beispiel werden vom API-Server autorisierte IP-Adressbereiche für den Cluster namens *myAKSCluster* in der Ressourcengruppe *myResourceGroup* aktualisiert. Der zu autorisierende IP-Adressbereich lautet *73.140.245.0/24*:
 
@@ -112,7 +112,7 @@ az aks update \
     --api-server-authorized-ip-ranges  73.140.245.0/24
 ```
 
-Sie können auch *0.0.0.0/32* verwenden, wenn Sie den Parameter *--api-server-authorized-ip-ranges* angeben, um nur die öffentliche IP-Adresse des Lastenausgleichs mit Standard-SKU zuzulassen.
+Sie können auch *0.0.0.0/32* verwenden, wenn Sie den Parameter *`--api-server-authorized-ip-ranges`* angeben, um nur die öffentliche IP-Adresse des Lastenausgleichs mit Standard-SKU zuzulassen.
 
 ## <a name="disable-authorized-ip-ranges"></a>Deaktivieren autorisierter IP-Adressbereiche
 

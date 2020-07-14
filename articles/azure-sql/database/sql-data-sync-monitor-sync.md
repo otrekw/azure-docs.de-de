@@ -1,6 +1,6 @@
 ---
 title: Überwachen der SQL-Datensynchronisierung mit Azure Monitor-Protokollen
-description: Erfahren Sie, wie Sie die SQL-Datensynchronisierung mithilfe von Azure Monitor-Protokollen überwachen
+description: Erfahren Sie, wie Sie die SQL-Datensynchronisierung mithilfe von Azure Monitor-Protokollen überwachen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,15 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: b7c801d75d778deccae645e0945fba557dbc6782
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 307e501743d01b94cfca3692cc09c05cc90ed3ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188797"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343233"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Überwachen der SQL-Datensynchronisierung mit Azure Monitor-Protokollen 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Zur Überprüfung des Aktivitätsprotokolls der SQL-Datensynchronisierung sowie zur Erkennung von Fehlern und Warnungen mussten Sie bislang die SQL-Datensynchronisierung manuell im Azure-Portal überprüfen oder hierfür PowerShell oder die REST-API verwenden. Mit den Schritten in diesem Artikel können Sie eine benutzerdefinierte Lösung konfigurieren, die die Überwachung der Datensynchronisierung verbessert. Diese Lösung kann an Ihr individuelles Szenario angepasst werden.
 
@@ -28,7 +27,7 @@ Zur Überprüfung des Aktivitätsprotokolls der SQL-Datensynchronisierung sowie 
 Eine Übersicht über die SQL-Datensynchronisierung finden Sie unter [Was ist SQL-Datensynchronisierung für Azure?](sql-data-sync-data-sql-server-sql-database.md).
 
 > [!IMPORTANT]
-> SQL-Datensynchronisierung unterstützt derzeit **keine** verwalteten Azure SQL-Instanzen.
+> Azure SQL Managed Instance wird von der SQL-Datensynchronisierung derzeit **nicht** unterstützt.
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Überwachungsdashboard für alle Synchronisierungsgruppen 
 
@@ -100,7 +99,7 @@ Weitere Informationen zum Erstellen eines Runbooks finden Sie unter [Mein erstes
 
     1.  Azure-Informationen
 
-    2.  Informationen zur Synchronisierungsgruppe
+    2.  Informationen zur Synchronisierungsgruppe.
 
     3.  Informationen in Azure Monitor-Protokollen Diese Informationen finden Sie im Azure-Portal unter „Einstellungen“ > „Verbundene Quellen“. Weitere Informationen zum Senden von Daten an Azure Monitor-Protokolle finden Sie unter [Senden von Daten an Azure Monitor-Protokolle mit der HTTP-Datensammler-API (Vorschauversion)](../../azure-monitor/platform/data-collector-api.md).
 
@@ -207,7 +206,7 @@ Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
     - Mit PowerShell
         -  [Verwenden von PowerShell zum Synchronisieren zwischen mehreren Datenbanken in Azure SQL-Datenbank](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Verwenden von PowerShell zum Synchronisieren zwischen einer Datenbank in Azure SQL-Datenbank und einer Datenbank in einer SQL Server-Instanz](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
--   Datensynchronisierungs-Agent: [Datensynchronisierungs-Agent für die SQL-Datensynchronisierung in Azure](sql-data-sync-agent-overview.md)
+-   Data Sync Agent: [Data Sync Agent für die SQL-Datensynchronisierung in Azure](sql-data-sync-agent-overview.md)
 -   Bewährte Methoden: [Bewährte Methoden für die SQL-Datensynchronisierung in Azure](sql-data-sync-best-practices.md)
 -   Problembehandlung: [Behandeln von Problemen mit der SQL-Datensynchronisierung in Azure](sql-data-sync-troubleshoot.md)
 -   Aktualisieren des Synchronisierungsschemas

@@ -1,6 +1,6 @@
 ---
 title: Untersuchen von Vorfällen mit Azure Sentinel | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie Vorfälle mit Azure Sentinel untersuchen.
+description: In diesem Tutorial erfahren Sie, wie Sie Azure Sentinel verwenden, um erweiterte Warnungsregeln zu erstellen, die Incidents generieren, die Sie zuweisen und untersuchen können.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: ecd8c508d05bfeb541a6cb5efbcdf2fffd3c78d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 564041da0be6874acae1bec69e4ab2d744d89323
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565245"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Tutorial: Untersuchen von Vorfällen mit Azure Sentinel
 
@@ -107,7 +107,21 @@ So verwenden Sie das Untersuchungsdiagramm:
 
     ![Warnungen anhand von Zeitachse in Diagramm untersuchen](media/tutorial-investigate-cases/use-timeline.png)
 
+## <a name="closing-an-incident"></a>Schließen eines Incidents
 
+Nachdem Sie einen bestimmten Incident gelöst haben (beispielsweise dann, wenn die Untersuchung abgeschlossen wurde), sollten Sie den Status des Incidents auf **Geschlossen** festlegen. Dabei werden Sie gefragt, ob Sie den Incident klassifizieren möchten, indem Sie den Grund für die Schließung angeben. Dieser Schritt ist obligatorisch. Klicken Sie auf **Klassifizierung auswählen**, und wählen Sie aus der Dropdownliste eine der folgenden Optionen aus:
+
+- Richtig positiv – verdächtige Aktivität
+- Unschädlich positiv – verdächtig, aber erwartet
+- Falsch positiv – falsche Warnungslogik
+- Falsch positiv – falsche Daten
+- Unbestimmt
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{alt-text}":::
+
+Nachdem Sie eine geeignete Klassifizierung ausgewählt haben, fügen Sie in das Feld **Kommentar** einen beschreibenden Text hinzu. Dies ist nützlich, falls Sie sich noch einmal auf diesen Incident beziehen müssen. Wenn Sie fertig sind, klicken Sie auf **Anwenden**. Der Incident wird geschlossen.
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt-text}":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie eine Einführung erhalten, wie Vorfälle mithilfe von Azure Sentinel untersucht werden. Fahren Sie mit dem [Tutorial: Einrichten automatisierter Reaktionen auf Bedrohungen in der Vorschauversion von Azure Sentinel](tutorial-respond-threats-playbook.md) fort.

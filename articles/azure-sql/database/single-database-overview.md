@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: f6b705da74fc939cab5f72e6335278207b98dc1a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8f92fe8e4a4ebbc2d970bf28e415859249b9f67c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026431"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343318"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Was ist eine Einzeldatenbank in Azure SQL-Datenbank?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Der Ressourcentyp für Einzeldatenbanken erstellt eine Datenbank in Azure SQL-Datenbank mit einem eigenen Satz von Ressourcen und wird über einen [Server](logical-servers.md) verwaltet. Bei einer Einzeldatenbank ist jede Datenbank isoliert und somit portabel, außerdem besitzt jede Datenbank eine eigene Dienstebene im [DTU-basierten Kaufmodell](service-tiers-dtu.md) oder [vCore-basierten Kaufmodell](service-tiers-vcore.md) mit einer garantierten Computegröße.
+Der Ressourcentyp für Einzeldatenbanken erstellt eine Datenbank in Azure SQL-Datenbank mit einem eigenen Satz von Ressourcen und wird über einen [Server](logical-servers.md) verwaltet. Bei einer einzelnen Datenbank ist jede Datenbank isoliert und portabel. Jede verfügt über eine eigene Dienstebene innerhalb des [DTU-basierten Kaufmodells](service-tiers-dtu.md) oder [vCore-basierten Kaufmodells](service-tiers-vcore.md) und eine garantierte Computegröße.
 
 > [!IMPORTANT]
 > Eine Einzeldatenbank ist ein Ressourcentyp für Azure SQL-Datenbank. Der andere Typ ist [Pools für elastische Datenbanken](elastic-pool-overview.md).
@@ -55,7 +55,7 @@ Weitere Informationen finden Sie unter [Auflösen von Transact-SQL-Unterschieden
 SQL-Datenbank bietet eine Reihe von [integrierten Sicherheits- und Konformitätsfeatures](security-overview.md), mit der Sie Ihre Anwendung an verschiedene Sicherheits- und Konformitätsanforderungen anpassen können.
 
 > [!IMPORTANT]
-> Azure SQL-Datenbank wurde anhand einer Reihe von Konformitätsstandards zertifiziert. Weitere Informationen finden Sie im [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), wo die aktuellste Liste von Compliance-Zertifizierungen für SQL-Datenbank angezeigt wird.
+> Azure SQL-Datenbank wurde anhand einer Reihe von Konformitätsstandards zertifiziert. Weitere Informationen finden Sie im [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), wo die aktuelle Liste von Konformitätszertifizierungen für Azure SQL-Datenbank angezeigt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

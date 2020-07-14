@@ -4,12 +4,12 @@ description: Erfahren Sie etwas über das Verwalten und Überwachen von MARS-Age
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 0afe83edc638cba4cd14cc27b84a98937175fc86
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248599"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057822"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Verwalten von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst
 
@@ -167,6 +167,27 @@ Eine Passphrase wird zum Verschlüsseln und Entschlüsseln von Daten während de
 
     ![Generieren Sie die Passphrase.](./media/backup-azure-manage-mars/passphrase2.png)
 - Stellen Sie sicher, dass die Passphrase an einem alternativen Speicherort (nicht auf dem Quellcomputer) sicher gespeichert wird, vorzugsweise im Azure Key Vault. Halten Sie alle Passphrasen nach, wenn Sie über mehrere mit den MARS-Agents gesicherte Computer verfügen.
+
+## <a name="managing-backup-data-for-unavailable-machines"></a>Verwalten von Sicherungsdaten für nicht verfügbare Computer
+
+In diesem Abschnitt wird ein Szenario besprochen, in dem Ihr Quellcomputer, der mit MARS geschützt war, nicht mehr verfügbar ist, weil er gelöscht, beschädigt, mit Malware/Bransomware infiziert oder außer Betrieb genommen wurde.
+
+Für diese Computer stellt der Azure Backup-Dienst sicher, dass der letzte Wiederherstellungspunkt gemäß den in der Sicherungsrichtlinie festgelegten Aufbewahrungsregeln nicht abläuft (d. h. nicht gelöscht wird). Daher ist eine sichere Wiederherstellung des Computers möglich.  Beachten Sie die folgenden Szenarien, die Sie für die gesicherten Daten ausführen können:
+
+### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>Szenario 1: Der Quellcomputer ist nicht verfügbar, und Sie müssen die Sicherungsdaten nicht mehr beibehalten.
+
+- Mithilfe der in [diesem Artikel](backup-azure-delete-vault.md#delete-protected-items-on-premises) aufgeführten Schritte können Sie die gesicherten Daten aus dem Azure-Portal löschen.
+
+### <a name="scenario-2-the-source-machine-is-unavailable-and-you-need-to-retain-backup-data"></a>Szenario 2: Der Quellcomputer ist nicht verfügbar, und Sie müssen die Sicherungsdaten beibehalten.
+
+Das Verwalten der Sicherungsrichtlinie für MARS erfolgt über die MARS-Konsole und nicht über das Portal. Wenn Sie die Aufbewahrungseinstellungen für vorhandene Wiederherstellungspunkte verlängern müssen, bevor diese ablaufen, müssen Sie den Computer wiederherstellen, die MARS-Konsole installieren und die Richtlinie verlängern.
+
+- Um den Computer wiederherzustellen, führen Sie die folgenden Schritte aus:
+  - [Wiederherstellen des virtuellen Computers auf einem alternativen Zielcomputer](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  - Erstellen Sie den Zielcomputer mit dem gleichen Hostnamen wie der Quellcomputer neu.
+  - Installieren Sie den Agent, und registrieren Sie sich erneut beim gleichen Tresor und mit der gleichen Passphrase.
+  - Starten Sie den MARS-Client, um die Aufbewahrungsdauer entsprechend Ihren Anforderungen zu verlängern.
+- Der neu wiederhergestellte Computer, der mit MARS geschützt wird, führt weiter Sicherungen durch.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

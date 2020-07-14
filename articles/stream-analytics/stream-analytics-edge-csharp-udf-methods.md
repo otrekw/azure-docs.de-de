@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53ebf8adb99362b5aaf27676bbd50fb8b525f526
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 4f9d117ccc763744411bfe24163ed955532e8e56
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921848"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Entwickeln von benutzerdefinierten .NET Standard-Funktionen für Azure Stream Analytics-Aufträge (Vorschau)
 
@@ -50,7 +50,7 @@ Damit Azure Stream Analytics-Werte in C# verwendet werden können, müssen sie v
 |float | double |
 |nvarchar(max) | Zeichenfolge |
 |datetime | Datetime |
-|Datensatz | Dictionary\<Zeichenfolge, Objekt> |
+|Datensatz | Wörterbuch\<string, object> |
 |Array | Objekt[] |
 
 Dasselbe gilt, wenn Daten von C# nach Azure Stream Analytics gemarshallt werden müssen, was beim Ausgabewert einer UDF erfolgt. Die folgende Tabelle zeigt, welche Typen unterstützt werden:
@@ -64,7 +64,7 @@ Dasselbe gilt, wenn Daten von C# nach Azure Stream Analytics gemarshallt werden 
 |struct  |  Datensatz   |
 |Objekt (object)  |  Datensatz   |
 |Objekt[]  |  Array   |
-|Dictionary\<Zeichenfolge, Objekt>  |  Datensatz   |
+|Wörterbuch\<string, object>  |  Datensatz   |
 
 ## <a name="codebehind"></a>CodeBehind
 Sie können benutzerdefinierte Funktionen im CodeBehind **Script.asql** schreiben. Visual Studio-Tools kompilieren automatisch die CodeBehind-Datei in eine Assemblydatei. Die Assemblys werden als ZIP-Datei verpackt und in Ihr Speicherkonto hochgeladen, wenn Sie Ihren Auftrag an Azure übermitteln. Im Tutorial [C#-UDF für Stream Analytics-Edge-Aufträge](stream-analytics-edge-csharp-udf.md) erfahren Sie, wie Sie eine UDF in C# mit CodeBehind schreiben. 
@@ -186,6 +186,10 @@ Für die Vorschauversion für benutzerdefinierte Funktionen gelten derzeit folge
 * Der Abfrage-Editor im Azure-Portal zeigt einen Fehler an, wenn Sie eine .NET Standard-UDF im Portal verwenden. 
 
 * Da der benutzerdefinierte Code den Kontext mit der Azure Stream Analytics-Engine gemeinsam nutzt, kann benutzerdefinierter Code nicht auf Elemente verweisen, deren Namespace oder DLL-Name in Konflikt mit Azure Stream Analytics-Code steht. Sie können beispielsweise nicht auf *Newtonsoft Json* verweisen.
+
+* Im Projekt enthaltene unterstützende Dateien werden in die ZIP-Datei mit dem benutzerdefinierten Code kopiert, die verwendet wird, wenn Sie den Auftrag in der Cloud veröffentlichen. Alle Dateien in Unterordnern werden beim Entpacken direkt in den Stammordner für den benutzerdefinierten Code in der Cloud kopiert. Die ZIP-Datei wird beim Dekomprimieren „vereinfacht“.
+
+* Benutzerdefinierter Code unterstützt keine leeren Ordner. Fügen Sie den unterstützenden Dateien im Projekt keine leeren Ordner hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

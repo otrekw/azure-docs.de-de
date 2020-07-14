@@ -7,16 +7,23 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74069623"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609164"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Von Azure HDInsight unterstützte Hochverfügbarkeitsdienste
 
  HDInsight wurde mit einer einzigartigen Architektur entwickelt, um Hochverfügbarkeit (HA) wichtiger Dienste sicherzustellen und Ihnen ein optimales Maß an Verfügbarkeit für Ihre Analysekomponenten bereitzustellen. Einige Komponenten dieser Architektur wurden von Microsoft zur Bereitstellung eines automatischen Failovers entwickelt. Andere Komponenten sind standardmäßige Apache-Komponenten, die zur Unterstützung bestimmter Dienste bereitgestellt werden. In diesem Artikel wird die Architektur des Hochverfügbarkeitsdienst-Modells in HDInsight erläutert und erklärt, wie HDInsight Failover für Hochverfügbarkeitsdienste unterstützt. Außerdem werden bewährte Methoden für die Wiederherstellung nach anderen Dienstunterbrechungen vorgestellt.
+ 
+> [!NOTE]
+> Vorurteilsfreie Kommunikation
+>
+> Microsoft setzt sich für Diversität und Inklusion ein. In diesem Artikel wird das Wort _Slave_ verwendet. Laut dem [Microsoft-Styleguide für vorurteilsfreie Kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) sollte dieses Wort jedoch vermieden werden. In diesem Artikel wird es aus Konsistenzgründen gebraucht, da das Wort derzeit noch in der Software vorkommt. Wenn die Software aktualisiert und um dieses Wort bereinigt wird, wird auch der Artikel entsprechend aktualisiert.
+>
+
 
 ## <a name="high-availability-infrastructure"></a>Hochverfügbarkeitsinfrastruktur
 

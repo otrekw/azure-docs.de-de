@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
 ms.openlocfilehash: e1afc389508eb75313d046b759bcc9c03a50daad
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648406"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Systemüberwachung des Application Gateways – Übersicht
@@ -69,7 +69,7 @@ Nachdem Sie die Abgleichskriterien angegeben haben, können sie der Testkonfigur
 > [!NOTE]
 > Dieser Port stimmt mit dem Port in den HTTP-Einstellungen des Back-Ends überein.
 
-Der Standardtest untersucht nur „http:\//127.0.0.1:\<Port\>“, um den Integritätsstatus zu bestimmen. Wenn Sie die Integritätsüberprüfung für eine benutzerdefinierte URL konfigurieren oder andere Einstellungen ändern möchten, müssen Sie benutzerdefinierte Überprüfungen verwenden. Weitere Informationen zu HTTP-Tests finden Sie unter [Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway](ssl-overview.md#for-probe-traffic).
+Der Standardtest untersucht nur „http:\//127.0.0.1:\<port\>“, um den Integritätsstatus zu bestimmen. Wenn Sie die Integritätsüberprüfung für eine benutzerdefinierte URL konfigurieren oder andere Einstellungen ändern möchten, müssen Sie benutzerdefinierte Überprüfungen verwenden. Weitere Informationen zu HTTP-Tests finden Sie unter [Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway](ssl-overview.md#for-probe-traffic).
 
 ### <a name="probe-intervals"></a>Testintervalle
 
@@ -97,7 +97,7 @@ Die folgende Tabelle enthält Definitionen der Eigenschaften eines benutzerdefin
 
 > [!IMPORTANT]
 > Falls Application Gateway für einen einzelnen Standort konfiguriert ist, muss der Hostname standardmäßig als „127.0.0.1“ angegeben werden, sofern in der benutzerdefinierten Überprüfung nichts anderes konfiguriert ist.
-> Als Verweis wird ein Test an \<Protokoll\>://\<Host\>:\<Port\>\<Pfad\> gesendet. Dieser Port ist immer der gleiche Port, der in den HTTP-Einstellungen des Back-Ends definiert ist.
+> Als Verweis wird ein Test an „\<protocol\>://\<host\>:\<port\>\<path\>“ gesendet. Dieser Port ist immer der gleiche Port, der in den HTTP-Einstellungen des Back-Ends definiert ist.
 
 ## <a name="nsg-considerations"></a>NSG-Aspekte
 

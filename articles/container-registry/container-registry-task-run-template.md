@@ -4,10 +4,10 @@ description: Einstellen einer ACR-Taskausführung in die Warteschlange, um ein I
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927767"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Ausführen von ACR Tasks mithilfe von Resource Manager-Vorlagen
@@ -187,7 +187,7 @@ Geben Sie in diesem Beispiel Werte für die folgenden Vorlagenparameter an:
 |userAssignedIdentity |Die Ressourcen-ID der benutzerseitig zugewiesenen Identität, die in dem Task aktiviert ist.|
 |customRegistryIdentity | Die Client-ID der benutzerseitig zugewiesenen Identität, die in dem Task aktiviert ist, die für die Authentifizierung mit der benutzerdefinierten Registrierung verwendet wird. |
 |customRegistry |Der Name des Anmeldeservers der benutzerdefinierten Registrierung, auf die in dem Task zugegriffen wird, z. B. *mybaseregistry.azurecr.io*|
-|sourceLocation     |Der Remotekontext für den Buildtask, z. B. *https://github.com/\<your-GitHub-ID\>/acr-build-helloworld-node.* |
+|sourceLocation     |Der Remotekontext für den Buildtask, z. B. *https://github.com/\<your-GitHub-ID\> /acr-build-helloworld-node.* |
 |dockerFilePath | Der Pfad zur Dockerfile im Remotekontext, die zum Erstellen des Image verwendet wird. |
 
 ### <a name="deploy-the-template"></a>Bereitstellen der Vorlage

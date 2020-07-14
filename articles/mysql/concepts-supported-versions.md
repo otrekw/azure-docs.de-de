@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 197b3100190711a51cfe125fe1214a59c18e1491
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/3/2020
+ms.openlocfilehash: 4d5b858e2384ffc7dd531444aaff17ca3739b408
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536971"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84337698"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Unterstützte Azure-Datenbank für MySQL-Serverversionen
 
@@ -26,15 +26,15 @@ Azure Database for MySQL unterstützt derzeit die folgenden Versionen:
 
 ## <a name="mysql-version-56"></a>MySQL-Version 5.6
 
-Version zur Fehlerbehebung: 5.6.45
+Version zur Fehlerbehebung: 5.6.47
 
-Weitere Informationen zu Verbesserungen und Fehlerbehebungen in dieser Version finden Sie in den [Versionshinweisen](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-45.html) zu MySQL.
+Weitere Informationen zu Verbesserungen und Fehlerbehebungen in dieser Version finden Sie in den [Versionshinweisen](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) zu MySQL.
 
 ## <a name="mysql-version-57"></a>MySQL-Version 5.7
 
-Version zur Fehlerbehebung: 5.7.27
+Version zur Fehlerbehebung: 5.7.29
 
-Weitere Informationen zu Verbesserungen und Fehlerbehebungen in dieser Version finden Sie in den [Versionshinweisen](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-27.html) zu MySQL.
+Weitere Informationen zu Verbesserungen und Fehlerbehebungen in dieser Version finden Sie in den [Versionshinweisen](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) zu MySQL.
 
 ## <a name="mysql-version-80"></a>MySQL, Version 8.0
 

@@ -3,12 +3,12 @@ title: Aktualisieren einer vorhandenen Zuweisung über das Portal
 description: Hier werden die Mechanismen beim Aktualisieren einer vorhandenen Blaupausenzuweisung in Azure Blueprints über das Portal erläutert.
 ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 03c954517662c1f54fcca9fbb96ebdf48afdedef
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381785"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969463"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Aktualisieren einer vorhandenen Blaupausenzuweisung
 
@@ -50,18 +50,18 @@ Bei der Bereitstellung der aktualisierten Zuweisungen werden einige wichtige Reg
   - Wird die Definition der Richtlinienzuweisung geändert, wird eine neue Richtlinienzuweisung erstellt.
     Zuvor bereitgestellte Richtlinienzuweisungen werden beibehalten.
   - Wird das Artefakt der Richtlinienzuweisung aus der Blaupause entfernt, werden bereitgestellte Richtlinienzuweisung beibehalten.
-- Azure-Ressourcen-Manager-Vorlagen
+- Azure Resource Manager-Vorlagen (ARM-Vorlagen)
   - Die Vorlage wird über den Ressourcen-Manager als **PUT** verarbeitet. Da diese Aktion für jeden Ressourcentyp anders behandelt wird, sehen Sie sich die Dokumentation der einzelnen eingeschlossenen Ressourcen an, um die Auswirkung dieser von Blaupausen ausgeführten Aktion zu bestimmen.
 
 ## <a name="possible-errors-on-updating-assignments"></a>Mögliche Fehler beim Aktualisieren von Zuweisungen
 
-Beim Aktualisieren von Zuweisungen können Änderungen vorgenommen werden, die bei der Ausführung eine Unterbrechung bewirken. Ein Beispiel hierfür ist das Ändern des Speicherorts einer Ressourcengruppe, nachdem diese bereits bereitgestellt wurde. Jede von [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) unterstützte Änderung kann vorgenommen werden. Jede Änderung, die bei Azure Resource Manager einen Fehler verursacht, bewirkt jedoch ebenso das Fehlschlagen der Zuweisung.
+Beim Aktualisieren von Zuweisungen können Änderungen vorgenommen werden, die bei der Ausführung eine Unterbrechung bewirken. Ein Beispiel hierfür ist das Ändern des Speicherorts einer Ressourcengruppe, nachdem diese bereits bereitgestellt wurde. Jede von [Resource Manager](../../../azure-resource-manager/management/overview.md) unterstützte Änderung kann vorgenommen werden. Jede Änderung, die bei Resource Manager einen Fehler verursacht, bewirkt jedoch ebenso einen Fehler bei der Zuweisung.
 
 Es gibt keine Beschränkung in Bezug darauf, wie oft eine Zuweisung aktualisiert werden kann. Wenn ein Fehler auftritt, identifizieren Sie ihn, und aktualisieren Sie die Zuweisung erneut.  Beispielszenarien für Fehler:
 
 - Falscher Parameter
 - Ein bereits vorhandenes Objekt
-- Eine Änderung, die von Azure Resource Manager nicht unterstützt wird
+- Eine von Resource Manager nicht unterstützte Änderung
 
 ## <a name="next-steps"></a>Nächste Schritte
 

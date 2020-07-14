@@ -1,50 +1,66 @@
 ---
-title: Verbessern des optimalen Betriebs für Ihre Azure-Abonnements mit Azure Advisor
-description: Verwenden von Advisor, um den optimalen Betrieb für Ihre Azure-Abonnements zu verbessern und weiterzuentwickeln
+title: Verbessern des optimalen Betriebs mit Advisor
+description: Verwenden Sie Azure Advisor, um den optimalen Betrieb für Ihre Azure-Abonnements zu verbessern und weiterzuentwickeln.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 4133fbe40c0fc1bdaf9c3f734bc19f94437c9acb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1cac5a3f93df8422a3896b1251857bf552731fb4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125394"
 ---
-# <a name="achieve-operational-excellence-with-azure-advisor"></a>Sicherstellen des optimalen Betriebs mit Azure Advisor
+# <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Sicherstellen des optimalen Betriebs mit Azure Advisor
 
-Die Empfehlungen zum optimalen Betrieb von Azure Advisor unterstützen Kunden in Bezug auf die Prozess- und Workfloweffizienz, die Verwaltbarkeit von Ressourcen und bewährte Methoden für die Bereitstellung. Diese Empfehlungen von Advisor stehen auf der Registerkarte **Optimaler Betrieb** des Advisor-Dashboards zur Verfügung.
+Empfehlungen zum optimalen Betrieb in Azure Advisor können Sie bei folgenden Aspekten unterstützen: 
+- Effizienz von Prozessen und Workflows.
+- Verwaltbarkeit von Ressourcen.
+- Bewährte Methoden für die Bereitstellung. 
 
-## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-issues-affect-you"></a>Erstellen von Azure Service Health-Warnungen für Benachrichtigungen bei Azure-Dienstproblemen
+Diese Empfehlungen stehen Ihnen auf der Registerkarte **Erstklassige Betriebsprozesse** des Advisor-Dashboards zur Verfügung.
 
-Es wird empfohlen, Azure Service Health-Warnungen einzurichten, um über Azure-Dienstprobleme benachrichtigt zu werden. [Azure Service Health](https://azure.microsoft.com/features/service-health/) ist ein kostenloser Dienst, der personalisierte Anleitungen und Unterstützung bietet, wenn Sie von einem Azure-Dienstproblem betroffen sind. Advisor ermittelt Abonnements, für die keine Warnungen konfiguriert sind, und empfiehlt, solche zu erstellen.
+## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-problems-affect-you"></a>Erstellen von Azure Service Health-Warnungen für Benachrichtigungen bei Azure-Problemen
 
-## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Entwerfen Ihrer Speicherkonten, damit die maximale Abonnementgrenze nicht erreicht wird
+Es wird empfohlen, Azure Service Health-Warnungen einzurichten, um über Azure-Dienstprobleme benachrichtigt zu werden. [Azure Service Health](https://azure.microsoft.com/features/service-health/) ist ein kostenloser Dienst, der personalisierte Anleitungen und Unterstützung bietet, wenn Sie von einem Azure-Dienstproblem betroffen sind. Advisor identifiziert Abonnements, für die keine Warnungen konfiguriert sind, und empfiehlt deren Konfiguration.
 
-In einer Azure-Region können maximal 250 Speicherkonten pro Abonnement unterstützt werden. Wenn das Limit erreicht ist, können Sie keine weiteren Speicherkonten in dieser Region-Abonnement-Kombination mehr erstellen. Advisor überprüft Ihre Abonnements und zeigt Empfehlungen an, damit Sie weniger Speicherkonten für Abonnements entwerfen, bei denen das maximale Limit bald erreicht ist.
+
+## <a name="design-your-storage-accounts-to-prevent-reaching-the-maximum-subscription-limit"></a>Speicherkontenentwurf zum Vermeiden der maximalen Abonnementgrenze
+
+In einer Azure-Region können maximal 250 Speicherkonten pro Abonnement unterstützt werden. Wenn Sie dieses Limit erreichen, können Sie keine weiteren Speicherkonten mit dieser Kombination aus Abonnement und Region erstellen. Advisor überprüft Ihre Abonnements und bietet Empfehlungen, damit Sie weniger Speicherkonten für Regionen/Abonnements entwerfen, bei denen das Höchstlimit bald erreicht ist.
 
 ## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Sicherstellen, dass Sie bei Bedarf Zugang zu Azure-Cloudexperten haben
 
-Bei unternehmenskritischen Workloads ist es wichtig, im Bedarfsfall Zugang zu technischem Support zu haben. Der Advisor ermittelt potenziell unternehmenskritische Abonnements, deren Supportplan keinen technischen Support enthält, und empfiehlt ein Upgrade auf eine Option mit technischem Support.
+Bei unternehmenskritischen Workloads ist es wichtig, bei Bedarf Zugang zu technischem Support zu haben. Advisor identifiziert potenzielle geschäftskritische Abonnements, die keinen technischen Support im Supportplan enthalten. Es wird ein Upgrade auf eine Option empfohlen, die den technischen Support umfasst.
+
+## <a name="delete-and-re-create-your-pool-to-remove-a-deprecated-internal-component"></a>Löschen und erneutes Erstellen Ihres Pools, um eine veraltete interne Komponente zu entfernen
+
+Wenn Ihr Pool eine veraltete interne Komponente verwendet, löschen Sie den Pool, und erstellen Sie ihn neu, um Stabilität und Leistung zu verbessern.
 
 ## <a name="repair-invalid-log-alert-rules"></a>Reparieren ungültiger Protokollwarnungsregeln
 
-Azure Advisor erkennt Warnungsregeln mit ungültigen Abfragen im Bedingungsabschnitt. Protokollwarnungsregeln werden in Azure Monitor erstellt und verwendet, um in regelmäßigen Abständen Analytics-Abfragen durchzuführen. Anhand der Ergebnisse der Abfrage wird ermittelt, ob eine Warnung ausgelöst werden muss. Es kann vorkommen, dass Analytics-Abfragen aufgrund von Änderungen an referenzierten Ressourcen, Tabellen oder Befehlen im Laufe der Zeit ungültig werden. Von Advisor wird empfohlen, die Abfrage in der Warnungsregel zu korrigieren, um eine automatische Deaktivierung zu verhindern und die Überwachung Ihrer Ressourcen in Azure sicherzustellen. Weitere Informationen zur Behandlung von Problemen mit Warnungsregeln finden Sie [hier](https://aka.ms/aa_logalerts_queryrepair).
+Azure Advisor erkennt Warnungsregeln mit ungültigen Abfragen im Bedingungsabschnitt. Sie können in Azure Monitor Protokollwarnungsregeln erstellen und diese zum Ausführen von Analyseabfragen in bestimmten Intervallen verwenden. Anhand der Ergebnisse der Abfrage wird ermittelt, ob eine Warnung ausgelöst werden muss. Es kann vorkommen, dass Analytics-Abfragen aufgrund von Änderungen an referenzierten Ressourcen, Tabellen oder Befehlen im Laufe der Zeit ungültig werden. Von Advisor wird empfohlen, die Abfrage in der Warnungsregel zu korrigieren, um eine automatische Deaktivierung zu verhindern und die Überwachung Ihrer Ressourcen in Azure sicherzustellen. [Weitere Informationen zur Behandlung von Problemen mit Warnungsregeln](https://aka.ms/aa_logalerts_queryrepair).
 
-## <a name="follow-best-practices-using-azure-policy"></a>Befolgen der bewährten Methoden mithilfe von Azure Policy
+## <a name="use-azure-policy-recommendations"></a>Verwenden von Azure Policy-Empfehlungen
 
-Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweisen und verwalten können. Mit diesen Richtlinien werden verschiedene Regeln und Auswirkungen für Ihre Ressourcen erzwungen. Die folgenden Azure Policy-Empfehlungen sollen Sie beim Sicherstellen des optimalen Betriebs unterstützen: 
-1. Verwalten von Tags mit Azure Policy: Diese Richtlinie dient zum Hinzufügen oder Ersetzen des angegebenen Tags und des zugehörigen Werts, wenn eine Ressource erstellt oder aktualisiert wird. Bereits vorhandene Ressourcen können durch Auslösen eines Wartungstasks gewartet werden. Tags für Ressourcengruppen werden nicht geändert.
-2. Erzwingen von geografischen Konformitätsanforderungen mit Azure Policy: Mit der Richtlinie können Sie die Speicherorte einschränken, die Ihre Organisation beim Bereitstellen von Ressourcen angeben kann. 
-3. Angeben von zulässigen VM-SKUs für Bereitstellungen: Über diese Richtlinie können Sie einen Satz von SKUs für virtuelle Computer angeben, die Ihre Organisation bereitstellen kann.
-4. Erzwingen von „Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden“ mit Azure Policy
-5. Verwenden der Option „Inherit a tag from resource groups“ (Tag von der Ressourcengruppe erben) mithilfe von Azure Policy: Die Richtlinie dient zum Hinzufügen oder Ersetzen des angegebenen Tags aus der übergeordneten Ressourcengruppe und des zugehörigen Werts, wenn eine Ressource erstellt oder aktualisiert wird. Bereits vorhandene Ressourcen können durch Auslösen eines Wartungstasks gewartet werden.
+Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweisen und verwalten können. Mit diesen Richtlinien werden Regeln und Auswirkungen für Ihre Ressourcen erzwungen. Die folgenden Azure Policy-Empfehlungen sollen Sie beim Sicherstellen des optimalen Betriebs unterstützen: 
+
+**Markierungen verwalten.** Diese Richtlinie dient zum Hinzufügen oder Ersetzen des angegebenen Tags und des zugehörigen Werts, wenn eine Ressource erstellt oder aktualisiert wird. Vorhandene Ressourcen können durch Auslösen eines Wartungstasks gewartet werden. Tags für Ressourcengruppen werden von dieser Richtlinie nicht geändert.
+
+**Erzwingen von geografischen Konformitätsanforderungen.** Mit dieser Richtlinie können Sie die Speicherorte einschränken, die Ihre Organisation beim Bereitstellen von Ressourcen angeben kann. 
+
+**Angeben von zulässigen VM-SKUs für Bereitstellungen.** Über diese Richtlinie können Sie einen Satz von SKUs für virtuelle Computer angeben, die Ihre Organisation bereitstellen kann.
+
+**Erzwingen Sie *Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden*.**
+
+**Aktivieren Sie *Tag von der Ressourcengruppe erben*.** Diese Richtlinie dient zum Hinzufügen oder Ersetzen des angegebenen Tags aus der übergeordneten Ressourcengruppe und des zugehörigen Werts, wenn eine Ressource erstellt oder aktualisiert wird. Vorhandene Ressourcen können durch Auslösen eines Wartungstasks gewartet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Hier finden Sie weitere Informationen zu Empfehlungen des Advisor:
 * [Einführung in Advisor](advisor-overview.md)
 * [Erste Schritte](advisor-get-started.md)
-* [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md)
-* [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
-* [Advisor-Empfehlungen für Hochverfügbarkeit](advisor-high-availability-recommendations.md)
-* [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
+* [Kostenempfehlungen von Advisor](advisor-cost-recommendations.md)
+* [Leistungsempfehlungen von Advisor](advisor-performance-recommendations.md)
+* [Zuverlässigkeitsempfehlungen von Advisor](advisor-high-availability-recommendations.md)
+* [Sicherheitsempfehlungen von Advisor](advisor-security-recommendations.md)
+* [Advisor-REST-API](https://docs.microsoft.com/rest/api/advisor/)

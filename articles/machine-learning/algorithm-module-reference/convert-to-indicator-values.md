@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477662"
 ---
 # <a name="convert-to-indicator-values"></a>Konvertieren in Indikatorwerte
@@ -63,7 +63,7 @@ Die Konvertierung funktioniert folgendermaßen:
 
 -   Die Spalte **Failure score** (Fehlerscore), die das Risiko beschreibt, kann nur drei mögliche Werte (hoch, mittel und niedrig) und keine fehlenden Werte aufweisen. Daher werden genau drei neue Spalten erstellt.  
 
--   Die neuen Indikatorspalten werden basierend auf den Spaltenüberschriften und Werten der Quellspalte nach diesem Muster benannt: *\<Quellspalte>- \<Datenwert>* .  
+-   Die neuen Indikatorspalten werden basierend auf den Spaltenüberschriften und Werten der Quellspalte nach diesem Muster benannt: *\<source column>- \<data value>* .  
 
 -   Es sollte in genau einer Indikatorspalte eine 1 und in allen anderen Indikatorspalten eine 0 enthalten sein, da jeder Server nur eine Risikobewertung aufweisen kann.  
 
@@ -98,13 +98,13 @@ Dieser Abschnitt enthält Implementierungsdetails, Tipps und Antworten auf häuf
 
 -   Nur Spalten, die als Kategorie markiert sind, können in Indikatorspalten konvertiert werden. Wenn der folgende Fehler angezeigt wird, ist wahrscheinlich eine der ausgewählten Spalten keine Kategorie:  
 
-     Fehler 0056: Die Spalte mit dem Namen \<Spaltenname> ist nicht in einer zulässigen Kategorie vorhanden.  
+     Fehler 0056: Die Spalte namens \<column name> befindet sich nicht in einer zulässigen Kategorie.  
 
      Standardmäßig werden die meisten Zeichenfolgenspalten als Zeichenfolgenfeatures behandelt, sodass Sie sie explizit mithilfe von [Edit Metadata](edit-metadata.md) als Kategorie markieren müssen.  
 
 -   Die Anzahl von Spalten, die Sie in Indikatorspalten konvertieren können, ist nicht beschränkt. Da jedoch jede Spalte mit Werten mehrere Indikatorspalten ergeben kann, empfiehlt es sich, jeweils nur einige Spalten auf einmal zu konvertieren und zu überprüfen.  
 
--   Wenn in der Spalte Werte fehlen, wird für die fehlende Kategorie eine separate Indikatorspalte mit dem folgenden Namen erstellt: *\<Quellspalte>- Missing*.  
+-   Wenn in der Spalte Werte fehlen, wird für die fehlende Kategorie eine separate Indikatorspalte mit dem folgenden Namen erstellt: *\<source column>- Missing*.  
 
 -   Wenn die Spalte, die Sie in Indikatorwerte konvertieren, Zahlen enthält, muss diese wie jede andere Featurespalte als Kategorie markiert werden. Anschließend werden die Zahlen als diskrete Werte behandelt. Wenn beispielsweise eine numerische Spalte mit Verbrauchswerten in MPG (Miles per Gallon) zwischen 25 und 30 vorhanden ist, wird für jeden diskreten Wert eine neue Indikatorspalte erstellt:  
 

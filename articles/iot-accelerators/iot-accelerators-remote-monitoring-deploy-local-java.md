@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: b201200ebf6807d7301dfd8c52e3137a29784eb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187210"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – IntelliJ
@@ -98,7 +98,7 @@ Wenn Sie die erforderlichen Azure-Ressourcen noch nicht erstellt haben, führen 
    Mit dem Skript werden auf dem lokalen Computer außerdem mehrere Umgebungsvariablen hinzugefügt. Jeder Variablenname hat das Präfix **PCS**. Diese Umgebungsvariablen liefern Details, die der Remoteüberwachung das Lesen ihrer Konfigurationswerte aus einer Azure Key Vault-Ressource ermöglichen.
 
    > [!TIP]
-   > Nach Abschluss des Skripts werden die Umgebungsvariablen in der Datei **\<Ihr Stammordner\>\\.pcs\\\<Lösungsname\>.env** gespeichert. Sie können sie für zukünftige Bereitstellungen des Solution Accelerators verwenden. Beachten Sie, dass alle auf Ihrem lokalen Computer festgelegten Umgebungsvariablen die Werte in der Datei **services\\scripts\\local\\.env** überschreiben, wenn Sie **docker-compose** ausführen.
+   > Nach Abschluss des Skripts werden die Umgebungsvariablen in einer Datei namens **\<your home folder\>\\.pcs\\\<solution name\>.env** gespeichert. Sie können sie für zukünftige Bereitstellungen des Solution Accelerators verwenden. Beachten Sie, dass alle auf Ihrem lokalen Computer festgelegten Umgebungsvariablen die Werte in der Datei **services\\scripts\\local\\.env** überschreiben, wenn Sie **docker-compose** ausführen.
 
 1. Schließen Sie die Befehlszeilenumgebung.
 
@@ -109,7 +109,7 @@ Wenn Sie die erforderlichen Azure-Ressourcen bereits erstellt haben, legen Sie d
 * **PCS_AAD_APPID**: Die ID der Azure Active Directory-Anwendung (Azure AD).
 * **PCS_AAD_APPSECRET**: Das Geheimnis der Azure AD-Anwendung.
 
-Konfigurationswerte werden aus dieser Key Vault-Ressource gelesen. Diese Umgebungsvariablen können in der Datei **\<Ihr Stammordner\>\\.pcs\\\<Lösungsname\>.env** aus der Bereitstellung gespeichert werden. Beachten Sie, dass die auf dem lokalen Computer festgelegten Umgebungsvariablen die Werte in der Datei **services\\scripts\\local\\.env** überschreiben, wenn Sie **docker-compose** ausführen.
+Konfigurationswerte werden aus dieser Key Vault-Ressource gelesen. Diese Umgebungsvariablen können in der Datei **\<your home folder\>\\.pcs\\\<solution name\>.env** aus der Bereitstellung gespeichert werden. Beachten Sie, dass die auf dem lokalen Computer festgelegten Umgebungsvariablen die Werte in der Datei **services\\scripts\\local\\.env** überschreiben, wenn Sie **docker-compose** ausführen.
 
 Ein Teil der vom Microservice benötigten Konfiguration wird in einer Key Vault-Instanz gespeichert, die bei der ersten Bereitstellung erstellt wurde. Die entsprechenden Variablen im Schlüsseltresor sollten nach Bedarf geändert werden.
 

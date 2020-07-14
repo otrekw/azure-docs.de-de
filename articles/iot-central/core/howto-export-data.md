@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Daten aus Ihrer Azure IoT Central-Anwendung 
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 04/07/2020
+ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: c83c97aab43b6978922202cc96ff92e1e046a7e2
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 6660f413c741b36f4dd28f6e1bcf83873e4f5c26
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811627"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483923"
 ---
 # <a name="export-iot-data-to-destinations-in-azure"></a>Exportieren von IoT-Daten zu Zielen in Azure
 
@@ -82,27 +82,31 @@ Sie haben jetzt ein Exportziel für Ihre Daten. Führen Sie als Nächstes die fo
     > [!Tip]
     > Falls **Datenexport** dort nicht angezeigt wird, haben Sie keine Berechtigungen zum Konfigurieren des Datenexports in Ihrer App. Wenden Sie sich an Ihren Administrator, damit dieser den Datenexport einrichtet.
 
-3. Wählen Sie oben rechts die Schaltfläche **+ Neu** aus. Wählen Sie einen der Einträge **Azure Event Hubs**, **Azure Service Bus** oder **Azure Blob Storage** als Ziel für Ihren Export aus. Die maximale Anzahl von Exporten pro Anwendung beträgt 5.
+3. Wählen Sie die Schaltfläche **+ Neu** aus. Wählen Sie einen der Einträge **Azure Blob Storage**, **Azure Event Hubs**, **Azure Service Bus-Warteschlange** oder **Azure Service Bus-Thema** als Ziel für Ihren Export aus. Die maximale Anzahl von Exporten pro Anwendung beträgt 5.
 
-    ![Erstellen des neuen Datenexports](media/howto-export-data/new-export-definition.png)
+4. Geben Sie einen Namen für den Export ein. Wählen Sie im Dropdown-Listenfeld Ihren **Namespace** aus, oder entscheiden Sie sich für **Verbindungszeichenfolge eingeben**.
 
-4. Wählen Sie im Dropdown-Listenfeld Ihren **Event Hubs-Namespace**, **Service Bus-Namespace** oder **Speicherkonto-Namespace** aus, oder **geben Sie eine Verbindungszeichenfolge ein**.
-
-    - Es werden Ihnen nur Speicherkonten, Event Hubs-Namespaces und Service Bus-Namespaces aus demselben Abonnement wie dem Ihrer IoT Central-Anwendung angezeigt. Wenn Sie in ein Ziel außerhalb dieses Abonnements exportieren möchten, wählen Sie **Verbindungszeichenfolge eingeben** aus, und lesen Sie den nächsten Schritt.
+    - Es werden Ihnen nur Speicherkonten, Event Hubs-Namespaces und Service Bus-Namespaces aus demselben Abonnement wie dem Ihrer IoT Central-Anwendung angezeigt. Wenn Sie in ein Ziel außerhalb dieses Abonnements exportieren möchten, wählen Sie **Verbindungszeichenfolge eingeben** aus, und fahren Sie mit Schritt 6 fort.
     - Bei Apps, die mit dem Tarif „Free“ erstellt werden, ist die einzige Möglichkeit zum Konfigurieren des Datenexports die Verwendung einer Verbindungszeichenfolge. Apps unter dem Free-Tarif ist kein Azure-Abonnement zugeordnet.
 
     ![Erstellen eines neuen Event Hubs](media/howto-export-data/export-event-hub.png)
 
-5. (Optional) Wenn Sie **Verbindungszeichenfolge eingeben** ausgewählt haben, wird ein neues Feld angezeigt, in das Sie Ihre Verbindungszeichenfolge einfügen können. Um die Verbindungszeichenfolge für
-    - Ihre Event Hubs oder Ihren Service Bus abzurufen, wechseln Sie im Azure-Portal zum Namespace:
-        - Wählen Sie unter **Einstellungen** die Option **Freigegebene Zugriffsrichtlinien** aus.
-        - Wählen Sie die Standardrichtlinie **RootManageSharedAccessKey** aus, oder erstellen Sie eine neue.
-        - Kopieren Sie die primäre oder die sekundäre Verbindungszeichenfolge.
-    - Ihr Speicherkonto abzurufen, wechseln Sie im Azure-Portal zu diesem Konto:
-        - Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
-        - Kopieren Sie entweder die Verbindungszeichenfolge „key1“ oder die Verbindungszeichenfolge „key2“.
+5. Wählen Sie im Dropdown-Listenfeld einen Event Hub, eine Warteschlange, ein Thema oder einen Container aus.
 
-6. Wählen Sie im Dropdown-Listenfeld einen Event Hub, eine Warteschlange, ein Thema oder einen Container aus.
+6. (Optional) Wenn Sie **Verbindungszeichenfolge eingeben** ausgewählt haben, wird ein neues Feld angezeigt, in das Sie Ihre Verbindungszeichenfolge einfügen können. Um die Verbindungszeichenfolge für
+
+    - Ihre Event Hubs oder Ihren Service Bus abzurufen, wechseln Sie im Azure-Portal zum Namespace:
+        - So verwenden Sie eine Verbindungszeichenfolge für den gesamten Namespace:
+            1. Wählen Sie unter **Einstellungen** die Option **Freigegebene Zugriffsrichtlinien** aus.
+            2. Erstellen Sie einen neuen Schlüssel, oder wählen Sie einen vorhandenen Schlüssel aus, der über Berechtigungen zum **Senden** verfügt.
+            3. Kopieren Sie die primäre oder die sekundäre Verbindungszeichenfolge.
+        - Um die Verbindungszeichenfolge für eine bestimmte Event Hub-Instanz oder Service Bus-Warteschlange oder ein Thema zu verwenden, navigieren Sie zu **Entitäten > Event Hubs** oder **Entitäten > Warteschlangen** oder **Entitäten > Themen**. Wählen Sie eine bestimmte Instanz aus, und führen Sie dieselben Schritte wie oben aus, um eine Verbindungszeichenfolge zu erhalten.
+    - Ihr Speicherkonto abzurufen, wechseln Sie im Azure-Portal zu diesem Konto:
+        - Es werden nur Verbindungszeichenfolgen für das gesamte Speicherkonto unterstützt. Verbindungszeichenfolgen, die auf einen einzelnen Container bezogen sind, werden nicht unterstützt.
+          1. Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
+          2. Kopieren Sie entweder die Verbindungszeichenfolge „key1“ oder die Verbindungszeichenfolge „key2“.
+
+    Fügen Sie sie in die Verbindungszeichenfolge ein. Geben Sie die Instanz oder den **Containernamen** ein. Beachten Sie dabei die Groß-/Kleinschreibung.
 
 7. Wählen Sie unter **Zu exportierende Daten** die Typen der zu exportierenden Daten aus, indem Sie den Typ jeweils auf **Ein** festlegen.
 
@@ -748,4 +752,4 @@ Wichtige Unterschiede zwischen dem alten und dem neuen Datenformat für **Device
 Nachdem Sie sich mit dem Exportieren Ihrer Daten in Azure Event Hubs, Azure Service Bus und Azure Blob Storage vertraut gemacht haben, können Sie jetzt zum nächsten Schritt übergehen:
 
 > [!div class="nextstepaction"]
-> [Erstellen von Webhooks](./howto-create-webhooks.md)
+> [Ausführen einer benutzerdefinierten Analyse mit Databricks](./howto-create-custom-analytics.md)

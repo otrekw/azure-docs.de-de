@@ -11,27 +11,27 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 04/15/2020
-ms.openlocfilehash: d2a5928d8326c4a0628ebc1bfb7eec3cd20f9254
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 06/03/2020
+ms.openlocfilehash: 576861265771977f7e13140dd595f47bf556e585
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747518"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84331898"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Anpassen des Setups für eine Azure-SSIS Integration Runtime
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Das benutzerdefinierte Setup für eine Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) bietet eine Schnittstelle zum Hinzufügen Ihrer eigenen Schritte während der Einrichtung oder Neukonfiguration Ihrer Azure-SSIS IR. 
+Das benutzerdefinierte Setup für eine Integration Runtime (IR) für Azure-SQL Server Integration Services (Azure-SSIS) in Azure Data Factory (ADF) bietet eine Schnittstelle zum Hinzufügen Ihrer eigenen Schritte während der Einrichtung oder Neukonfiguration Ihrer Azure-SSIS IR. 
 
-Mithilfe des benutzerdefinierten Setups können Sie die Standardkonfiguration des Betriebssystems oder der Umgebung ändern, um beispielsweise zusätzliche Windows-Dienste zu starten, die Zugriffsanmeldeinformationen für Dateifreigaben beizubehalten oder eine starke Kryptografie/ein sichereres Netzwerkprotokoll (TLS 1.2) zu verwenden. Oder Sie können zusätzliche Komponenten, z. B. Assemblys, Treiber oder Erweiterungen, auf jedem Knoten ihrer Azure-SSIS IR installieren.
+Mithilfe des benutzerdefinierten Setups können Sie die Standardkonfiguration des Betriebssystems oder der Umgebung ändern, um beispielsweise zusätzliche Windows-Dienste zu starten, die Zugriffsanmeldeinformationen für Dateifreigaben beizubehalten oder eine starke Kryptografie/ein sichereres Netzwerkprotokoll (TLS 1.2) zu verwenden. Sie können auch zusätzliche benutzerdefinierte oder Drittanbieterkomponenten auf jedem Knoten Ihrer Azure-SSIS IR installieren, z. B. Assemblys, Treiber oder Erweiterungen. Weitere Informationen zu integrierten/vorinstallierten Komponenten finden Sie unter [Integrierte/vorinstallierte Komponenten für Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime).
 
 Es gibt zwei Möglichkeiten zur Durchführung benutzerdefinierter Setups auf Ihrer Azure-SSIS IR: 
-* **Benutzerdefiniertes Express-Setup ohne ein Skript**: Führen Sie einige gängige Systemkonfigurationen und Windows-Befehle aus, oder installieren Sie einige beliebte oder empfohlene zusätzliche Komponenten, ohne Skripts zu verwenden.
 * **Benutzerdefiniertes Standard-Setup mit einem Skript**: Bereiten Sie ein Skript und die zugehörigen Dateien vor, und laden Sie alle zusammen in einen Blobcontainer in Ihrem Azure Storage-Konto hoch. Sie müssen dann einen SAS-URI (Shared Access Signature-Uniform Resource Identifier) für Ihren Container bereitstellen, wenn Sie Azure-SSIS IR einrichten oder neu konfigurieren. Anschließend lädt jeder Knoten Ihrer Azure-SSIS IR das Skript und die zugehörigen Dateien aus Ihrem Container herunter und führt Ihr benutzerdefiniertes Setup mit erhöhten Berechtigungen aus. Wenn Ihr benutzerdefiniertes Setup abgeschlossen ist, lädt jeder Knoten die standardmäßige Ausgabe der Ausführung und andere Protokolle in den Container hoch.
+* **Benutzerdefiniertes Express-Setup ohne ein Skript**: Führen Sie einige gängige Systemkonfigurationen und Windows-Befehle aus, oder installieren Sie einige beliebte oder empfohlene zusätzliche Komponenten, ohne Skripts zu verwenden.
 
-Sie können sowohl kostenlose, nicht lizenzierte als auch kostenpflichtige, lizenzierte Komponenten mit benutzerdefinierten Express- und Standard-Setups installieren. Wenn Sie ein unabhängiger Softwareanbieter (Independent Software Vendor, ISV) sind, finden Sie weitere Informationen unter [Entwickeln kostenpflichtiger oder lizenzierter Komponenten für eine Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md).
+Sie können sowohl kostenlose, nicht lizenzierte als auch kostenpflichtige, lizenzierte Komponenten mit benutzerdefinierten Standard- und Express-Setups installieren. Informationen für unabhängige Softwareanbieter (Independent Software Vendor, ISV) finden Sie unter [Installieren kostenpflichtiger oder lizenzierter benutzerdefinierter Komponenten für Azure-SSIS Integration Runtime](how-to-develop-azure-ssis-ir-licensed-components.md).
 
 > [!IMPORTANT]
 > Um von zukünftigen Verbesserungen zu profitieren, empfehlen wir die Verwendung von mindestens V3 für Ihre Azure-SSIS IR mit benutzerdefiniertem Setup.
@@ -62,7 +62,11 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
 
 ## <a name="instructions"></a>Instructions
 
-1. Wenn Sie Ihre Azure-SSIS IR mit PowerShell einrichten oder neu konfigurieren möchten, müssen Sie [Azure PowerShell](/powershell/azure/install-az-ps) herunterladen und installieren. Fahren Sie bei benutzerdefinierten Express-Setups mit Schritt 4 fort.
+Sie können Ihre Azure-SSIS IR mit benutzerdefinierten Setups auf der ADF-Benutzeroberfläche bereitstellen oder neu konfigurieren. Wenn Sie diese Vorgänge über PowerShell ausführen möchten, laden Sie [Azure PowerShell](/powershell/azure/install-az-ps) herunter, und installieren Sie das Tool.
+
+### <a name="standard-custom-setup"></a>Benutzerdefiniertes Standardsetup
+
+Um Ihre Azure-SSIS IR mit benutzerdefinierten Standardsetups bereitzustellen oder neu zu konfigurieren, führen Sie die folgenden Schritte aus.
 
 1. Bereiten Sie Ihr benutzerdefiniertes Setupskript und die zugehörigen Dateien (z. B. BAT-, CMD-, EXE-, DLL-, MSI- oder PS1-Dateien) vor.
 
@@ -70,7 +74,7 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
    * Um sicherzustellen, dass das Skript im Hintergrund ausgeführt werden kann, empfehlen wir, es zuerst auf Ihrem lokalen Computer zu testen.  
    * Wenn Sie möchten, dass zusätzliche Protokolle, die von anderen Tools (z. B. *msiexec.exe*) generiert wurden, in Ihren Container hochgeladen werden, geben Sie die vordefinierte Umgebungsvariable, `CUSTOM_SETUP_SCRIPT_LOG_DIR`, als Protokollordner in Ihren Skripts an (z. B. *msiexec/i xxx.msi/quiet/lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log*).
 
-1. Laden Sie [Azure Storage-Explorer](https://storageexplorer.com/) herunter, installieren und öffnen Sie ihn. Gehen Sie folgendermaßen vor:
+1. Laden Sie [Azure Storage-Explorer](https://storageexplorer.com/) herunter, installieren und öffnen Sie ihn.
 
    a. Klicken Sie unter **(Lokal und angefügt)** mit der rechten Maustaste auf **Speicherkonten**, und wählen Sie dann **Verbindung mit Azure Storage herstellen** aus.
 
@@ -107,11 +111,17 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
 
       ![Kopieren und Speichern der Shared Access Signature](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-1. Wenn Sie Ihre Azure-SSIS IR über eine Data Factory-Benutzeroberfläche einrichten oder neu konfigurieren, können Sie benutzerdefinierte Setups hinzufügen oder entfernen, indem Sie im Abschnitt **Erweiterte Einstellungen** des Bereichs **Integration Runtime-Setup** das Kontrollkästchen **Azure-SSIS Integration Runtime mit zusätzlichen Systemkonfigurationen/Komponenteninstallationen anpassen** aktivieren. 
+1. Wenn Sie Ihre Azure-SSIS IR über die ADF-Benutzeroberfläche bereitstellen oder neu konfigurieren, aktivieren Sie das Kontrollkästchen **Azure-SSIS Integration Runtime mit zusätzlichen Systemkonfigurationen/Komponenteninstallationen anpassen** auf der Seite **Erweiterte Einstellungen** des Bereichs **Setup für Integration Runtime**, und geben Sie den SAS-URI Ihres Containers in das Feld **SAS-URI des Containers für benutzerdefinierte Setups** ein.
 
-   Wenn Sie benutzerdefinierte Standard-Setups hinzufügen möchten, geben Sie den SAS-URI Ihres Containers im Feld **SAS-URI des Containers für benutzerdefinierte Setups** ein. 
-   
-   Wenn Sie benutzerdefinierte Express-Setups hinzufügen möchten, wählen Sie **Neu** aus, um den Bereich **Benutzerdefiniertes Express-Setup hinzufügen** zu öffnen, und wählen Sie dann in der Dropdownliste **Typ des benutzerdefinierten Express-Setups** den gewünschten Typ aus:
+   ![Erweiterte Einstellungen bei benutzerdefinierten Setups](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
+
+### <a name="express-custom-setup"></a>Benutzerdefiniertes Express-Setup
+
+Um Ihre Azure-SSIS IR mit benutzerdefinierten Express-Setups bereitzustellen oder neu zu konfigurieren, führen Sie die folgenden Schritte aus.
+
+1. Wenn Sie Ihre Azure-SSIS IR über die ADF-Benutzeroberfläche bereitstellen oder neu konfigurieren, aktivieren Sie das Kontrollkästchen **Azure-SSIS Integration Runtime mit zusätzlichen Systemkonfigurationen/Komponenteninstallationen anpassen** auf der Seite **Erweiterte Einstellungen** des Bereichs **Setup für Integration Runtime**. 
+
+1. Wählen Sie **Neu** aus, um den Bereich **Benutzerdefiniertes Express-Setup hinzufügen** zu öffnen, und wählen Sie dann in der Dropdownliste **Typ des benutzerdefinierten Express-Setups** den gewünschten Typ aus:
 
    * Wenn Sie den Typ **Befehl „cmdkey“ ausführen** auswählen, können Sie die Zugriffsanmeldeinformationen für Ihre Dateifreigaben oder Azure Files-Freigaben in Azure-SSIS IR beibehalten, indem Sie in den Feldern **/Add**, **/User** und **/Pass** die Namen Ihres Zielcomputers oder Ihrer Domäne, Ihres Kontos oder Ihres Benutzers sowie den Kontoschlüssel oder das Kennwort eingeben. Dies ist vergleichbar mit der Ausführung des Windows-Befehls [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) auf Ihrem lokalen Computer.
    
@@ -131,12 +141,16 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
 
      * Wenn Sie die Komponente **Theobald Software's Xtract IS** auswählen, können Sie die [Xtract IS](https://theobald-software.com/en/xtract-is/)-Suite von Connectors für das SAP-System (ERP, S/4HANA, BW) aus Theobald Software in Ihrer Azure-SSIS IR installieren, indem Sie die erworbene Produktlizenzdatei in das Feld **Lizenzdatei** ziehen und ablegen/hochladen. Die aktuelle integrierte Version ist **6.1.1.3**.
 
-   Die hinzugefügten benutzerdefinierten Express-Setups werden im Abschnitt **Erweiterte Einstellungen** angezeigt. Wenn Sie sie entfernen möchten, können Sie die entsprechenden Kontrollkästchen aktivieren und dann **Löschen** auswählen.
+Ihre hinzugefügten benutzerdefinierten Express-Setups werden auf der Seite **Erweiterte Einstellungen** angezeigt. Wenn Sie sie entfernen möchten, können Sie die entsprechenden Kontrollkästchen aktivieren und dann **Löschen** auswählen.
 
-   ![Erweiterte Einstellungen bei benutzerdefinierten Setups](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
+### <a name="azure-powershell"></a>Azure PowerShell
 
-1. Wenn Sie Ihre Azure-SSIS IR mit PowerShell einrichten oder neu konfigurieren, können Sie die benutzerdefinierten Setups hinzufügen oder entfernen, indem Sie das Cmdlet `Set-AzDataFactoryV2IntegrationRuntime` ausführen, bevor Sie die Azure-SSIS IR starten.
-   
+Um Ihre Azure-SSIS IR über Azure PowerShell mit benutzerdefinierten Setups bereitzustellen oder neu zu konfigurieren, führen Sie die folgenden Schritte aus.
+
+1. Wenn Ihre Azure-SSIS IR bereits ausgeführt wird, halten Sie sie zuerst an.
+
+1. Dann können Sie benutzerdefinierte Setups hinzufügen oder entfernen, indem Sie das Cmdlet `Set-AzDataFactoryV2IntegrationRuntime` ausführen, bevor Sie Ihre Azure-SSIS IR starten.
+
    ```powershell
    $ResourceGroupName = "[your Azure resource group name]"
    $DataFactoryName = "[your data factory name]"
@@ -214,10 +228,14 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
        -Name $AzureSSISName `
        -Force
    ```
-   
-   Nachdem Ihr benutzerdefiniertes Standard-Setup abgeschlossen und Ihre Azure-SSIS IR gestartet wurde, finden Sie die Standardausgabe von *main.cmd* und andere Ausführungsprotokolle im Ordner *main.cmd.log* Ihres Speichercontainers.
 
-1. Wenn Sie einige Beispiele für benutzerdefinierte Standard-Setups anzeigen möchten, stellen Sie über Azure Storage-Explorer eine Verbindung zu unserem Container „Öffentliche Vorschau“ her.
+1. Nachdem Ihr benutzerdefiniertes Standardsetup abgeschlossen und Ihre Azure-SSIS IR gestartet wurde, finden Sie die Standardausgabe von *main.cmd* und andere Ausführungsprotokolle im Ordner *main.cmd.log* Ihres Containers.
+
+### <a name="standard-custom-setup-samples"></a>Beispiele für benutzerdefinierte Standardsetups
+
+Um Beispiele für benutzerdefinierte Standardsetups anzuzeigen und wiederzuverwenden, führen Sie die folgenden Schritte aus.
+
+1. Stellen Sie über Azure Storage-Explorer eine Verbindung mit unserem Public Preview-Container her.
 
    a. Klicken Sie unter **(Lokal und angefügt)** mit der rechten Maustaste auf **Speicherkonten**, und wählen Sie nacheinander **Mit Azure-Speicher verbinden**, **Verbindungszeichenfolge oder SAS-URI verwenden** und **Weiter** aus.
 
@@ -295,13 +313,15 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
 
         ![Ordner im Ordner „Benutzerszenarios“](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 
-   f. Zum Ausprobieren dieser Beispiele für ein benutzerdefiniertes Setup kopieren Sie den Inhalt aus dem ausgewählten Ordner in Ihren Container.
+   f. Um diese Beispiele für benutzerdefinierte Standardsetups wiederzuverwenden, kopieren Sie den Inhalt des ausgewählten Ordners in Ihren Container.
+
+1. Wenn Sie Ihre Azure-SSIS IR über die ADF-Benutzeroberfläche bereitstellen oder neu konfigurieren, aktivieren Sie das Kontrollkästchen **Azure-SSIS Integration Runtime mit zusätzlichen Systemkonfigurationen/Komponenteninstallationen anpassen** auf der Seite **Erweiterte Einstellungen** des Bereichs **Setup für Integration Runtime**, und geben Sie den SAS-URI Ihres Containers in das Feld **SAS-URI des Containers für benutzerdefinierte Setups** ein.
    
-      Wenn Sie Ihre Azure-SSIS IR über die Data Factory-Benutzeroberfläche einrichten oder neu konfigurieren, aktivieren Sie im Abschnitt **Erweiterte Einstellungen** das Kontrollkästchen **Azure-SSIS Integration Runtime mit zusätzlichen Systemkonfigurationen/Komponenteninstallationen anpassen**, und geben Sie dann den SAS-URI Ihres Containers im Feld **SAS-URI des Containers für benutzerdefinierte Setups** ein.
-   
-      Wenn Sie Ihre Azure-SSIS IR mit PowerShell einrichten oder neu konfigurieren, führen Sie das Cmdlet `Set-AzDataFactoryV2IntegrationRuntime` mit dem SAS-URI Ihres Containers als Wert für den Parameter `SetupScriptContainerSasUri` aus.
+1. Wenn Sie Ihre Azure-SSIS IR über Azure PowerShell bereitstellen oder neu konfigurieren, halten Sie die Runtime an, falls sie bereits ausgeführt wird. Führen Sie dann das Cmdlet `Set-AzDataFactoryV2IntegrationRuntime` mit dem SAS-URI Ihres Containers als Wert für den Parameter `SetupScriptContainerSasUri` aus, und starten Sie die Azure-SSIS IR neu.
+
+1. Nachdem Ihr benutzerdefiniertes Standardsetup abgeschlossen und Ihre Azure-SSIS IR gestartet wurde, finden Sie die Standardausgabe von *main.cmd* und andere Ausführungsprotokolle im Ordner *main.cmd.log* Ihres Containers.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Einrichten der Enterprise Edition der Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-enterprise-edition.md)
-- [Entwickeln kostenpflichtiger oder lizenzierter benutzerdefinierter Komponenten für die Azure-SSIS Integration Runtime](how-to-develop-azure-ssis-ir-licensed-components.md)
+- [Einrichten der Enterprise Edition der Azure-SSIS IR](how-to-configure-azure-ssis-ir-enterprise-edition.md)
+- [Entwickeln von zahlungspflichtigen oder lizenzierten Komponenten für die Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md)

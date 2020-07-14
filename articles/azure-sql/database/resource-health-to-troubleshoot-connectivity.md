@@ -2,7 +2,7 @@
 title: Überwachen der Datenbankintegrität mithilfe von Azure Resource Health
 description: Mithilfe von Azure Resource Health können Sie die Integrität von Azure SQL-Datenbank und der verwalteten Azure SQL-Instanz überwachen, um Probleme zu diagnostizieren und Unterstützung zu erhalten, wenn sich ein Azure-bezogenes Problem auf Ihre SQL-Ressourcen auswirkt.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,19 +11,17 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/26/2019
-ms.openlocfilehash: fd4804ccbd98bd3cab9f5b55c56274f8cbc34c65
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 27865afd356be9eac64083c1ebdeb6ced43dbd18
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84039651"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986941"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Behandeln von Konnektivitätsproblemen für Azure SQL-Datenbank und verwalteten Azure SQL-Instanzen mithilfe von Resource Health
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-## <a name="overview"></a>Übersicht
-
-Mithilfe von [Resource Health](../../service-health/resource-health-overview.md#get-started) für Azure SQL-Datenbank können Sie die Integrität von Azure SQL-Datenbank und verwalteten Azure SQL-Instanzen überwachen, um Probleme zu diagnostizieren und Unterstützung zu erhalten, wenn sich ein Azure-bezogenes Problem auf Ihre SQL-Ressourcen auswirkt. Der Dienst informiert Sie über die aktuelle und frühere Integrität Ihrer Ressourcen und unterstützt Sie beim Beheben von Problemen. Resource Health bietet technischen Support, wenn Sie Unterstützung bei Azure-Dienstproblemen benötigen.
+Mit [Resource Health](../../service-health/resource-health-overview.md#get-started) können Sie die Integrität von Azure SQL-Datenbank und Azure SQL Managed Instance diagnostizieren und Unterstützung erhalten, wenn sich ein Azure-bezogenes Problem auf Ihre SQL-Ressourcen auswirkt. Der Dienst informiert Sie über die aktuelle und frühere Integrität Ihrer Ressourcen und unterstützt Sie beim Beheben von Problemen. Resource Health bietet technischen Support, wenn Sie Unterstützung bei Azure-Dienstproblemen benötigen.
 
 ![Übersicht](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-overview.jpg)
 
@@ -59,7 +57,7 @@ Der Integritätsstatus **Unbekannt** gibt an, dass Resource Health seit mehr als
 
 ## <a name="historical-information"></a>Verlaufsinformationen
 
-Im Abschnitt „Integritätsverlauf“ von Resource Health stehen bis zu 14 Tage alte Integritätsverlaufsdaten zur Verfügung. Dieser Abschnitt enthält auch die Ursache für von Resource Health gemeldete Downtime (sofern verfügbar). Derzeit zeigt Azure die Downtime für Ihre Datenbankressource auf zwei Minuten genau an. Die tatsächliche Downtime beträgt wahrscheinlich weniger als einer Minute. (Der Durchschnitt liegt bei acht Sekunden.)
+Im Abschnitt „Integritätsverlauf“ von Resource Health stehen bis zu 14 Tage alte Integritätsverlaufsdaten zur Verfügung. Dieser Abschnitt enthält auch die Ursache für von Resource Health gemeldete Downtime (sofern verfügbar). Derzeit zeigt Azure die Downtime für Ihre Datenbankressource auf zwei Minuten genau an. Die tatsächliche Downtime beträgt wahrscheinlich weniger als einer Minute. Die durchschnittliche Dauer beträgt 8 Sekunden.
 
 ### <a name="downtime-reasons"></a>Ursachen für Downtime
 
@@ -67,7 +65,7 @@ Bei einer Downtime Ihrer Datenbank wird eine Analyse durchgeführt, um eine Ursa
 
 #### <a name="planned-maintenance"></a>Geplante Wartung
 
-Für die Azure-Infrastruktur werden in regelmäßigen Abständen geplante Wartungsmaßnahmen (Hardware- oder Softwareupgrades im Rechenzentrum) durchgeführt. Während die Datenbank gewartet wird, werden von SQL unter Umständen einige bestehende Verbindungen getrennt und neue Verbindungen abgelehnt. Anmeldefehler während einer geplanten Wartung sind in der Regel vorübergehend, und deren Auswirkungen lassen sich durch eine [Wiederholungslogik](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) reduzieren. Sollten weiterhin Anmeldefehler auftreten, wenden Sie sich an den Support.
+Für die Azure-Infrastruktur werden in regelmäßigen Abständen geplante Wartungsmaßnahmen (Hardware- oder Softwareupgrades im Rechenzentrum) durchgeführt. Während die Datenbank gewartet wird, werden von Azure SQL unter Umständen einige bestehende Verbindungen getrennt und neue Verbindungen abgelehnt. Anmeldefehler während einer geplanten Wartung sind in der Regel vorübergehend, und deren Auswirkungen lassen sich durch eine [Wiederholungslogik](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) reduzieren. Sollten weiterhin Anmeldefehler auftreten, wenden Sie sich an den Support.
 
 #### <a name="reconfiguration"></a>Reconfiguration
 
@@ -77,6 +75,6 @@ Neukonfigurationen gelten als vorübergehende Bedingungen und werden von Zeit zu
 
 - Informieren Sie sich ausführlicher über [Wiederholungslogik für vorübergehende Fehler](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors).
 - Machen Sie sich mit [Durchführen der Problembehandlung, Diagnose und Verhinderung von SQL-Verbindungsfehlern und vorübergehenden Fehlern für SQL-Datenbank](troubleshoot-common-connectivity-issues.md) vertraut.
-- Beschäftigen Sie sich eingehender mit dem [Konfigurieren von Resource Health-Warnungen](../../service-health/resource-health-alert-arm-template-guide.md).
+- Erfahren Sie mehr über das [Konfigurieren von Resource Health-Warnungen](../../service-health/resource-health-alert-arm-template-guide.md).
 - Verschaffen Sie sich einen Überblick über [Resource Health](../../application-gateway/resource-health-overview.md).
-- Lesen Sie die [häufig gestellten Fragen zu Resource Health](../../service-health/resource-health-faq.md).
+- Lesen Sie [Azure Resource Health – FAQ](../../service-health/resource-health-faq.md).

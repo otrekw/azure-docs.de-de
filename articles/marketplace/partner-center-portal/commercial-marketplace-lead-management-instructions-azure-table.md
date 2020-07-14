@@ -1,18 +1,18 @@
 ---
 title: Leadverwaltung mit Azure-Tabellenspeicher – kommerzieller Microsoft-Marketplace
 description: Hier erfahren Sie, wie Sie Azure-Tabellenspeicher zum Konfigurieren von Leads für Microsoft AppSource und Azure Marketplace verwenden.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: c115859c24b2c26ab2c221c4fdc35cb442d652b1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 485da8549175af8813a9d0c3052d1e77f336e619
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848012"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120839"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Verwenden von Azure-Tabellenspeicher zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -26,11 +26,11 @@ Wenn Ihr CRM-System (Customer Relationship Management) in Partner Center nicht e
 
     1. Wählen Sie im Menü auf der linken Seite **+ Ressource erstellen** aus. Der Bereich **Neu** wird rechts angezeigt.
     1. Wählen Sie im Bereich **Neu** die Option **Speicher** aus. Die Liste **Highlights** wird rechts angezeigt.
-    1. Wählen Sie **Speicherkonto** aus, um mit der Kontoerstellung zu beginnen. Befolgen Sie die Anweisungen unter [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+    1. Wählen Sie **Speicherkonto** aus, um mit der Kontoerstellung zu beginnen. Befolgen Sie die Anweisungen unter [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
 
         ![Schritte zum Erstellen eines Azure Storage-Kontos](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
 
-        Weitere Informationen zu Speicherkonten finden Sie im [Schnellstarttutorial](https://docs.microsoft.com/azure/storage/). Weitere Informationen zu den Preisen für Storage finden Sie unter [Übersicht über die Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+        Weitere Informationen zu Speicherkonten finden Sie im [Schnellstarttutorial](../../storage/index.yml). Weitere Informationen zu den Preisen für Storage finden Sie unter [Übersicht über die Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 1. Warten Sie, bis das Speicherkonto bereitgestellt wurde. Dieser Vorgang dauert in der Regel einige Minuten. 
 
@@ -107,7 +107,7 @@ In diesem Beispiel wird ein Flow erstellt, in dem automatisch eine E-Mail-Benach
 
    Nachdem Sie **Erstellen** ausgewählt haben, wird das Fenster **Entitäten abrufen** angezeigt. Wählen Sie **Erweiterte Optionen anzeigen** aus, und geben Sie Informationen für die folgenden Felder an:
 
-   * **Tabelle**: Wählen Sie den Namen der Tabelle aus (aus [Tabelle erstellen](#create-a-table-in-your-storage-account)). Die nächste Abbildung zeigt die Eingabeaufforderung, wenn für dieses Beispiel die Tabelle „marketplaceleads“ ausgewählt wurde.
+   * **Tabelle**: Wählen Sie den Namen der Tabelle aus (aus [Tabelle erstellen](#create-a-table-in-your-storage-account)). Die nächste Abbildung zeigt die Eingabeaufforderung, wenn für dieses Beispiel die Tabelle `marketplaceleads` ausgewählt wurde.
 
      ![Fenster „Entitäten abrufen“](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 

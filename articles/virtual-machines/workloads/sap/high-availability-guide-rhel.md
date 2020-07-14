@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 73b958149d9d6d907785fe1c2c56b8198bb91f70
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80351103"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux
@@ -176,7 +176,7 @@ Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschl
          1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.7**).
          1. OK klicken
       1. IP-Adresse 10.0.0.8 für ASCS ERS
-         * Wiederholen Sie die oben stehenden Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **10.0.0.8** und **nw1-aers-frontend**).
+         * Wiederholen Sie die obigen Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **10.0.0.8** und **nw1-aers-frontend**).
    1. Erstellen des Back-End-Pools
       1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
       1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-backend**).
@@ -210,7 +210,7 @@ Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschl
          1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.7**).
          1. OK klicken
       1. IP-Adresse 10.0.0.8 für ASCS ERS
-         * Wiederholen Sie die oben stehenden Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **10.0.0.8** und **nw1-aers-frontend**).
+         * Wiederholen Sie die obigen Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **10.0.0.8** und **nw1-aers-frontend**).
    1. Erstellen des Back-End-Pools
       1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
       1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-backend**).
@@ -742,7 +742,7 @@ Führen Sie die folgenden Schritte durch, um einen SAP-Anwendungsserver zu insta
 
    Ändern Sie den sicheren SAP HANA-Speicher dahingehend, dass er auf den virtuellen Namen der Einrichtung der SAP HANA-Systemreplikation zeigt.
 
-   Führen Sie den folgenden Befehl aus, um die Einträge als \<sapsid>adm aufzulisten.
+   Führen Sie den folgenden Befehl aus, um die Einträge als „\<sapsid>adm“ aufzulisten
 
    <pre><code>hdbuserstore List
    </code></pre>

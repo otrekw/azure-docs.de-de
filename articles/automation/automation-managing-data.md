@@ -1,20 +1,45 @@
 ---
-title: Verwaltung von Azure Automation-Daten
-description: Dieser Artikel enthält Konzepte der Datenverwaltung in Azure Automation, einschließlich Datenaufbewahrung und -sicherung.
+title: Datensicherheit in Azure Automation
+description: In diesem Artikel erfahren Sie, wie Azure Automation Ihre Privatsphäre schützt und Ihre Daten sichert.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/23/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: de60ef31a39a698f9a797a5836546f9b75b67594
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2dbaebac2228c11aef5fb33af4588f75ea15677a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835205"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343053"
 ---
 # <a name="management-of-azure-automation-data"></a>Verwaltung von Azure Automation-Daten
 
-Dieser Artikel enthält mehrere Themen zum Verwalten von Daten in einer Azure Automation-Umgebung.
+Dieser Artikel enthält verschiedene Themen, in denen erläutert wird, wie die Daten in einer Azure Automation-Umgebung geschützt und gesichert werden.
+
+## <a name="tls-12-enforcement-for-azure-automation"></a>Erzwingen von TLS 1.2 für Azure Automation
+
+Um die Sicherheit von Daten bei der Übertragung an Azure Automation zu gewährleisten, wird dringend empfohlen, den Computer für die Verwendung von TLS 1.2 (Transport Layer Security) zu konfigurieren. Im Folgenden sehen Sie eine Liste der Methoden bzw. Clients, die über HTTPS mit dem Automation-Dienst kommunizieren:
+
+* Webhookaufrufe
+
+* Hybrid Runbook Worker, einschließlich Computern, die über die Updateverwaltung sowie „Änderungsnachverfolgung und Bestand“ verwaltet werden.
+
+* DSC-Knoten
+
+Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**. Ab September 2020 beginnen wir damit, TLS 1.2 und höhere Versionen des Verschlüsselungsprotokolls zu erzwingen.
+
+Es wird nicht empfohlen, Ihren Agent explizit so einzurichten, dass nur TLS 1.2 verwendet wird, es sei denn, dies ist unbedingt erforderlich. Denn dadurch können Sicherheitsfeatures auf Plattformebene deaktiviert werden, mit deren Hilfe neuere, sicherere Protokolle wie TLS 1.3 automatisch erkannt und genutzt werden können, sobald diese verfügbar sind.
+
+Informationen zur TLS 1.2-Unterstützung mit dem Log Analytics-Agent für Windows und Linux, bei dem es sich um eine Abhängigkeit für die Hybrid Runbook Worker-Rolle handelt, finden Sie unter [Übersicht über den Log Analytics-Agent – TLS 1.2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol). 
+
+### <a name="platform-specific-guidance"></a>Plattformspezifische Anleitungen
+
+|Plattform/Sprache | Support | Weitere Informationen |
+| --- | --- | --- |
+|Linux | Linux-Distributionen greifen zur Unterstützung von TLS 1.2 tendenziell auf [OpenSSL](https://www.openssl.org) zurück.  | Überprüfen Sie anhand des [OpenSSL-Änderungsprotokolls](https://www.openssl.org/news/changelog.html), ob Ihre Version von OpenSSL unterstützt wird.|
+| Windows 8.0 bis 10 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) verwenden.  |
+| Windows Server 2012 bis 2016 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) verwenden. |
+| Windows 7 SP1 und Windows Server 2008 R2 SP1 | Wird unterstützt, ist jedoch standardmäßig deaktiviert. | Details zur Aktivierung finden Sie auf der Seite [Transport Layer Security (TLS) registry settings (Registrierungseinstellungen für Transport Layer Security (TLS))](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
 
 ## <a name="data-retention"></a>Beibehaltung von Daten
 
@@ -53,16 +78,16 @@ Sie können keine Azure Automation-Objekte exportieren: Zertifikate, Verbindunge
 
 Es ist nicht möglich, die Werte verschlüsselter Variablen oder die Kennwortfelder für Anmeldeinformationen mithilfe von Cmdlets abzurufen. Wenn Sie diese Werte nicht kennen, können Sie sie aus einem Runbook abrufen. Informationen zum Abrufen von Variablenwerten finden Sie unter [Variablenobjekte in Azure Automation](shared-resources/variables.md). Weitere Informationen zum Abrufen von Anmeldeinformationswerten finden Sie unter [Anmeldeinformationsobjekte in Azure Automation](shared-resources/credentials.md).
 
- ### <a name="dsc-configurations"></a>DSC-Konfigurationen
+### <a name="dsc-configurations"></a>DSC-Konfigurationen
 
 Sie können Ihre DSC-Konfigurationen unter Verwendung des Azure-Portals oder mithilfe des Cmdlets [Export-AzureRmAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
 ) in Windows PowerShell in Skriptdateien exportieren. Sie können diese Konfigurationen in ein anderes Automation-Konto importiert importieren und darin verwenden.
 
 ## <a name="geo-replication-in-azure-automation"></a>Georeplikation in Azure Automation
 
-Georeplikation ist Standard in Azure Automation-Kontos. Bei der Einrichtung Ihres Kontos wählen Sie eine primäre Region aus. Der interne Automation-Georeplikationsdienst weist dem Konto automatisch eine sekundäre Region zu. Der Dienst sichert dann kontinuierlich Kontodaten aus der primären Region in der sekundären Region. Die vollständige Liste der primären und sekundären Regionen finden Sie unter [Business Continuity und Disaster Recovery (BCDR): Azure-Regionspaare](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
+Georeplikation ist Standard in Azure Automation-Kontos. Bei der Einrichtung Ihres Kontos wählen Sie eine primäre Region aus. Der interne Automation-Georeplikationsdienst weist dem Konto automatisch eine sekundäre Region zu. Der Dienst sichert dann kontinuierlich Kontodaten aus der primären Region in der sekundären Region. Die vollständige Liste der primären und sekundären Regionen finden Sie unter [Business Continuity und Disaster Recovery (BCDR): Azure-Regionspaare](../best-practices-availability-paired-regions.md).
 
-Die vom Automation-Georeplikationsdienst erstellte Sicherung ist eine vollständige Kopie der Automation-Objekte, -Konfigurationen usw. Diese Sicherung kann verwendet werden, wenn die primäre Region ausfällt und Daten verloren gehen. Microsoft versucht im unwahrscheinlichen Fall, dass Daten in einer primären Region verloren gehen, diese wiederherzustellen. Wenn das Unternehmen die primären Daten nicht wiederherstellen kann, verwendet es automatisches Failover und informiert Sie über die Situation über Ihr Azure-Abonnement. 
+Die vom Automation-Georeplikationsdienst erstellte Sicherung ist eine vollständige Kopie der Automation-Objekte, -Konfigurationen usw. Diese Sicherung kann verwendet werden, wenn die primäre Region ausfällt und Daten verloren gehen. Microsoft versucht im unwahrscheinlichen Fall, dass Daten in einer primären Region verloren gehen, diese wiederherzustellen. Wenn das Unternehmen die primären Daten nicht wiederherstellen kann, verwendet es automatisches Failover und informiert Sie über die Situation über Ihr Azure-Abonnement.
 
 Externe Kunden können nicht direkt auf den Automation-Georeplikationsdienst zugreifen, wenn es zu einem regionalen Ausfall kommt. Wenn Sie Automation-Konfigurationen und -Runbooks während regionaler Ausfälle beibehalten möchten:
 
@@ -77,4 +102,5 @@ Externe Kunden können nicht direkt auf den Automation-Georeplikationsdienst zug
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu sicheren Objekten in Azure Automation finden Sie unter [Verschlüsseln sicherer Ressourcen in Azure Automation](automation-secure-asset-encryption.md).
-* Weitere Informationen zur Georeplikation finden Sie unter [Erstellen und Verwenden der aktiven Georeplikation](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication).
+
+* Weitere Informationen zur Georeplikation finden Sie unter [Erstellen und Verwenden der aktiven Georeplikation](../sql-database/sql-database-active-geo-replication.md).

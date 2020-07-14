@@ -9,10 +9,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
 ms.openlocfilehash: 270e6a0173ed0088ff5d37c989947f5272634200
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687202"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver
@@ -122,7 +122,7 @@ Der IoT Edge-Daemon verwendet immer HTTPS, um Anforderungen an IoT Hub zu senden
 sudo systemctl edit iotedge
 ```
 
-Geben Sie den folgenden Text ein, und ersetzen Sie dabei **\<proxy URL>** mit der Adresse und dem Port Ihres Proxyservers. Wählen Sie dann „Speichern“ und „Beenden“ aus.
+Geben Sie den folgenden Text ein, und ersetzen Sie dabei **\<proxy URL>** durch die Adresse und den Port Ihres Proxyservers. Wählen Sie dann „Speichern“ und „Beenden“ aus.
 
 ```ini
 [Service]
@@ -149,7 +149,7 @@ systemctl show --property=Environment iotedge
 
 #### <a name="windows"></a>Windows
 
-Öffnen Sie ein PowerShell-Fenster als Administrator, und führen Sie den folgenden Befehl zum Bearbeiten der Registrierung mit der neuen Umgebungsvariable aus. Ersetzen Sie **\<proxy URL>** mit der Adresse und dem Port Ihres Proxyservers.
+Öffnen Sie ein PowerShell-Fenster als Administrator, und führen Sie den folgenden Befehl zum Bearbeiten der Registrierung mit der neuen Umgebungsvariable aus. Ersetzen Sie **\<proxy url>** durch die Adresse und den Port Ihres Proxyservers.
 
 ```powershell
 reg add HKLM\SYSTEM\CurrentControlSet\Services\iotedge /v Environment /t REG_MULTI_SZ /d https_proxy=<proxy URL>

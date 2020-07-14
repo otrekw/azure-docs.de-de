@@ -16,10 +16,10 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 602eed65745eea1fd9096508c442a27ea79bcba9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057733"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Jive für die automatische Benutzerbereitstellung
@@ -80,7 +80,7 @@ Im Rahmen dieses Verfahrens werden Sie zur Angabe eines Benutzersicherheitstoken
       
       > [!NOTE]
       > Die Jive-Mandanten-URL ist die URL, die von Ihrer Organisation zum Anmelden bei Jive verwendet wird.  
-      > In der Regel hat die URL folgendes Format: **www.\<Organisation\>.jive.com**.          
+      > In der Regel weist die URL folgendes Format auf: **www.\<organization\>.jive.com**.          
 
 1. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Jive-App herstellen kann.
 

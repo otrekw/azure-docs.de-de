@@ -1,19 +1,19 @@
 ---
 title: Sicherheitsfilter zum Einschränken von Ergebnissen mit Active Directory
 titleSuffix: Azure Cognitive Search
-description: Zugriffssteuerung für Inhalte der kognitiven Azure-Suche mithilfe von Sicherheitsfiltern und Azure Active Directory-Identitäten (AAD).
+description: Hier finden Sie Informationen zu Sicherheitsberechtigungen auf Dokumentebene für Azure Cognitive Search-Suchergebnisse sowie zur Verwendung von Sicherheitsfiltern und AAD-Identitäten (Azure Active Directory).
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/04/2020
+ms.openlocfilehash: ee742eae38ae95756cf31d60b877f18629c569d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72794302"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080502"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Sicherheitsfilter zum Einschränken von Ergebnissen der kognitiven Azure-Suche mit Active Directory-Identitäten
 
@@ -28,7 +28,7 @@ In diesem Artikel werden die folgenden Aufgaben behandelt:
 > - Ausgeben einer Suchanfrage mit Gruppenbezeichnerfilter
 > 
 > [!NOTE]
-> Beispielcodeausschnitte in diesem Artikel sind in C# geschrieben. Den vollständigen Quellcode finden Sie [auf GitHub](https://aka.ms/search-dotnet-howto). 
+> Beispielcodeausschnitte in diesem Artikel sind in C# geschrieben. Den vollständigen Quellcode finden Sie [auf GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

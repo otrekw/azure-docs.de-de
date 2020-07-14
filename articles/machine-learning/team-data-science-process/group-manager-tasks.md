@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721352"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Aufgaben eines Gruppenleiters im Team Data Science-Prozess
@@ -57,7 +57,7 @@ Das folgende Tutorial führt ausführlich durch die entsprechenden Schritte.
    
    ![Projekt erstellen](./media/group-manager-tasks/create-project.png)
 
-Die Seite **Zusammenfassung** des Projekts **GroupCommon** wird geöffnet. Die Seiten-URL lautet: *https:\//\<Servername>/\<Organisationsname>/GroupCommon*.
+Die Seite **Zusammenfassung** des Projekts **GroupCommon** wird geöffnet. Die Seiten-URL lautet *https:\//\<servername>/\<organization-name>/GroupCommon*.
 
 ![Seite „Zusammenfassung“ für das Projekt](./media/group-manager-tasks/project-summary.png)
 

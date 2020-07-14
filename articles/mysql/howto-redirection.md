@@ -4,21 +4,27 @@ description: In diesem Artikel wird beschrieben, wie Sie Ihre Anwendung konfigur
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 608206ed1c1ffe1015f579d69868385ebd32208c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.topic: how-to
+ms.date: 6/8/2020
+ms.openlocfilehash: be660101a28d5ef289de1b25f8f7d33fbe9f617b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660275"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107817"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Herstellen einer Verbindung mit Azure Database for MySQL mit Umleitung
 
 In diesem Thema wird erläutert, wie Sie eine Anwendung mit Ihrem Azure Database for MySQL-Server im Umleitungsmodus verbinden. Mithilfe der Umleitung soll die Netzwerklatenz zwischen Clientanwendungen und MySQL-Servern dadurch verringert werden, dass Anwendungen eine direkte Verbindung mit Back-End-Serverknoten herstellen dürfen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen Sie einen Azure Database for MySQL-Server mit der Engine-Version 5.6, 5.7 oder 8.0. Weitere Informationen finden Sie unter [Erstellen von Azure-Datenbank für MySQL-Server im Portal](quickstart-create-mysql-server-database-using-azure-portal.md) oder [Erstellen von Azure-Datenbank für MySQL-Server mithilfe der Befehlszeilenschnittstelle](quickstart-create-mysql-server-database-using-azure-cli.md).
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen Sie einen Azure Database for MySQL-Server mit der Engine-Version 5.6, 5.7 oder 8.0. 
+
+Weitere Informationen finden Sie unter den Ausführungen zum Erstellen eines Azure Database for MySQL-Servers mit dem [Azure-Portal](quickstart-create-mysql-server-database-using-azure-portal.md) oder der [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+
+## <a name="enable-redirection"></a>Aktivieren der Umleitung
+
+Konfigurieren Sie auf Ihrem Azure Database for MySQL-Server den `redirect_enabled`-Parameter auf `ON`, um Verbindungen mit Umleitungsmodus zuzulassen. Verwenden Sie zum Aktualisieren dieses Serverparameters das [Azure-Portal](howto-server-parameters.md) oder die [Azure CLI](howto-configure-server-parameters-using-cli.md).
 
 ## <a name="php"></a>PHP
 

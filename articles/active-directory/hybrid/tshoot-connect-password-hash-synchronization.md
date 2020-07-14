@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227798"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807603"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problembehandlung für die Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 
@@ -288,12 +288,15 @@ Wenn Sie eine benutzerdefinierte Installation verwendet haben, legen Sie die Ber
 6. Sind die Domänencontroller durch Azure AD Connect erreichbar? Wenn der Connect-Server mit keinem der Domänencontroller eine Verbindung herstellen kann, konfigurieren Sie **Nur bevorzugten Domänencontroller verwenden**.  
     
     ![Vom Active Directory-Connector verwendeter Domänencontroller](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
-    
+
 7. Navigieren Sie zurück zum **Synchronization Service Manager** und **Verzeichnispartition konfigurieren**. 
  
 8. Wählen Sie unter **Verzeichnispartitionen auswählen** Ihre Domäne aus, aktivieren Sie das Kontrollkästchen **Nur bevorzugten Domänencontroller verwenden**, und klicken Sie auf **Konfigurieren**. 
 
 9. Geben Sie in der Liste die Domänencontroller ein, die Connect zur Kennwortsynchronisierung verwenden soll. Die gleiche Liste wird ebenfalls für den Import und Export verwendet. Führen Sie diese Schritte für alle Ihre Domänen aus.
+
+> [!NOTE]
+> Um diese Änderungen anzuwenden, starten Sie den Dienst **Microsoft Azure AD Sync** (AADSync) neu.
 
 10. Wenn der Skriptausgabe zufolge kein Takt vorhanden ist, führen Sie das Skript unter [Auslösen einer vollständigen Synchronisierung aller Kennwörter](#trigger-a-full-sync-of-all-passwords) aus.
 

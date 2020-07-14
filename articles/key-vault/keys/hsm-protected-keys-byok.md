@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: b03e9c6148243376c5e1c588e2b4a82e1a1adb40
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 52214d42467dfa86b5e085a660a9416904b7de59
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84416697"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>Importieren von durch HSM geschützten Schlüsseln in Key Vault (BYOK)
 
@@ -59,7 +59,7 @@ In der folgenden Tabelle sind die Voraussetzungen für die Verwendung von BYOK i
 |Herstellername|Herstellertyp|Unterstützte HSM-Modelle|Weitere Informationen|
 |---|---|---|---|
 |nCipher|Hersteller,<br/>HSM als Dienst|<ul><li>HSM-Produktfamilie „nShield“</li><li>nShield als Dienst</ul>|[nCipher – Neues BYOK-Tool und -Dokumentation](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|
-|Thales|Hersteller|<ul><li>Produktfamilie „SafeNet Luna HSM 7“ mit Firmwareversion 7.3 oder neuer</li></ul>| [SafeNet Luna – BYOK-Tool und -Dokumentation](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|Thales|Hersteller|<ul><li>Produktfamilie „Luna HSM 7“ mit Firmwareversion 7.3 oder neuer</li></ul>| [Luna – BYOK-Tool und -Dokumentation](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
 |Fortanix|Hersteller,<br/>HSM als Dienst|<ul><li>Self-Defending Key Management Service (SDKMS, selbstverteidigender Schlüsselverwaltungsdienst)</li><li>Equinix SmartKey</li></ul>|[Exportieren von SDKMS-Schlüsseln nach Cloudanbietern für BYOK – Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Hersteller|Alle Liquid Security-HSMs mit<ul><li>Firmwareversion 2.0.4 oder höher</li><li>Firmwareversion 3.2 oder höher</li></ul>|[Marvell – BYOK-Tool und -Dokumentation](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (Enterprise Key Management System)|Mehrere HSM-Marken und -Modelle, einschließlich<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>Weitere Informationen finden Sie auf der [Cryptomathic-Website](https://www.cryptomathic.com/azurebyok).|[Cryptomathic – BYOK-Tool und -Dokumentation](https://www.cryptomathic.com/azurebyok)|
@@ -119,7 +119,7 @@ Informieren Sie sich in der Dokumentation Ihres HSM-Anbieters darüber, wie Sie 
 > [!NOTE] 
 > Das Importieren von RSA-Schlüsseln mit 1.024 Bit wird nicht unterstützt. Derzeit wird das Importieren eines EC-Schlüssels (Elliptic Curve, elliptische Kurve) nicht unterstützt.
 > 
-> **Bekanntes Problem:** Das Importieren eines RSA 4K-Zielschlüssels von SafeNet Luna HSMs wird nur mit Firmware 7.4.0 oder höher unterstützt.
+> **Bekanntes Problem:** Das Importieren eines RSA 4K-Zielschlüssels von Luna HSMs wird nur mit Firmware 7.4.0 oder höher unterstützt.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>Schritt 4: Übertragen des Schlüssels an Azure Key Vault
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 415f76fc7c8b52a79bc864e61e1f85759e3f5d1f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 523fd3103585865a969f6463b3dc41fe362b9130
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84028731"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324718"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Tutorial: Implementieren einer geografisch verteilten Datenbank (Azure SQL-Datenbank)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,8 +42,8 @@ Für dieses Tutorial muss Folgendes installiert sein:
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 - Eine Einzeldatenbank in einer Azure SQL-Datenbank. Verwenden Sie für die Erstellung Folgendes:
-  - [Portal](single-database-create-quickstart.md)
-  - [BEFEHLSZEILENSCHNITTSTELLE (CLI)](az-cli-script-samples-content-guide.md)
+  - [Das Azure-Portal](single-database-create-quickstart.md)
+  - [Die Azure-CLI](az-cli-script-samples-content-guide.md)
   - [PowerShell](powershell-script-content-guide.md)
 
   > [!NOTE]
@@ -92,7 +92,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -Databas
     Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName $resourceGroup -ServerName $server -FailoverGroupName $failoverGroup
 ```
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
 > [!IMPORTANT]
 > Führen Sie `az login` aus, um sich bei Azure anzumelden.
@@ -344,7 +344,7 @@ So testen Sie ein Failover
     -ServerName $server -FailoverGroupName $failoverGroup
    ```
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
 Sie können während des Tests mit dem folgenden Befehl die Rolle des Notfallwiederherstellungsservers überprüfen:
 
@@ -378,7 +378,7 @@ In diesem Tutorial haben Sie eine Azure SQL-Datenbank-Instanz und eine Anwendung
 > - Ausführen einer Java-Anwendung zum Abfragen einer Datenbank in SQL-Datenbank
 > - Testfailover
 
-Fahren Sie mit dem nächsten Tutorial fort, in dem beschrieben wird, wie Sie einer Failovergruppe eine verwaltete Azure SQL-Instanz hinzufügen:
+Fahren Sie mit dem nächsten Tutorial fort, in dem beschrieben wird, wie Sie einer Failovergruppe eine Instanz von Azure SQL Managed Instance hinzufügen:
 
 > [!div class="nextstepaction"]
-> [Hinzufügen einer verwalteten Azure SQL-Instanz zu einer Failovergruppe](../managed-instance/failover-group-add-instance-tutorial.md)
+> [Tutorial: Hinzufügen einer Instanz von SQL Managed Instance zu einer Failovergruppe](../managed-instance/failover-group-add-instance-tutorial.md)

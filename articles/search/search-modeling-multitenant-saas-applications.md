@@ -8,20 +8,24 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 90a9672e3a58a068d1a4488a514a6fd51c272a56
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549010"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85081104"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und die kognitive Azure-Suche
+
 Eine mehrinstanzenfähige Anwendung bietet dieselben Dienste und Funktionen einer beliebigen Anzahl von Mandanten, die die Daten der anderen Mandaten nicht anzeigen oder mit diesen gemeinsam nutzen können. In diesem Dokument werden Strategien zur Isolierung von Mandanten für mehrinstanzenfähige Anwendungen erläutert, die mit der kognitiven Azure-Suche erstellt werden.
 
 ## <a name="azure-cognitive-search-concepts"></a>Konzepte der kognitiven Azure-Suche
-Die kognitive Azure-Suche ist eine Search-as-a-Service-Lösung, die Entwicklern ermöglicht, Anwendungen umfassende Suchfunktionen hinzuzufügen, ohne Infrastruktur verwalten oder Experte für das Abrufen von Informationen werden zu müssen. Daten werden in den Dienst hochgeladen und dann in der Cloud gespeichert. Mithilfe einfacher an die API der kognitiven Azure-Suche gerichteter Anforderungen können die Daten geändert und durchsucht werden. Eine Übersicht über den Dienst finden Sie im [in diesem Artikel](https://aka.ms/whatisazsearch). Bevor wir näher auf Entwurfsmuster eingehen, ist es wichtig, einige Konzepte der kognitiven Azure-Suche zu verstehen.
+[Azure Cognitive Search](search-what-is-azure-search.md) ist eine Search-as-a-Service-Lösung, die es Entwicklern ermöglicht, Anwendungen umfassende Suchfunktionen hinzuzufügen, ohne Infrastruktur verwalten oder Experte für das Abrufen von Informationen werden zu müssen. Daten werden in den Dienst hochgeladen und dann in der Cloud gespeichert. Mithilfe einfacher an die API der kognitiven Azure-Suche gerichteter Anforderungen können die Daten geändert und durchsucht werden. 
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Suchdienste, Indizes, Felder und Dokumente
+
+Bevor wir näher auf Entwurfsmuster eingehen, müssen Sie einige grundlegende Konzepte kennen und verstehen.
+
 Zur Verwendung der kognitiven Azure-Suche muss ein *Suchdienst* abonniert werden. Die in die kognitive Azure-Suche hochgeladenen Daten werden in einem *Index* innerhalb des Suchdiensts gespeichert. In einem einzelnen Dienst kann es mehrere Indizes geben. Analog zu den vertrauten Konzepten von Datenbanken kann der Suchdienst mit einer Datenbank verglichen werden, während die Indizes im Dienst mit Tabellen in einer Datenbank vergleichbar sind.
 
 Jeder Index in einen Suchdienst hat ein eigenes Schema, das mithilfe verschiedener anpassbarer *Felder*definiert wird. Daten werden einem Index der kognitiven Azure-Suche in Form einzelner *Dokumente* hinzugefügt. Jedes Dokument muss in einen bestimmten Index hochgeladen werden und dem Schema dieses Indexes entsprechen. Beim Durchsuchen von Daten mithilfe der kognitiven Azure-Suche werden die Volltextsuchabfragen auf einen bestimmten Index angewandt.  Wiederum analog zu Datenbanken können Felder mit den Spalten einer Tabelle und Dokumente mit Zeilen verglichen werden.

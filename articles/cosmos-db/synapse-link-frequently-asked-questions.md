@@ -6,12 +6,12 @@ ms.author: srchi
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 36be05f72597ae9864eff812862589cafb1f5b0d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bead905a3bd4b1cdd46c4cd27775f9d7e03040d5
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596469"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921194"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Häufig gestellte Fragen zu Azure Synapse Link für Azure Cosmos DB
 
@@ -29,6 +29,9 @@ Wenn Sie die Konfiguration eines Azure Cosmos-Kontos in mehreren Regionen mit Un
 
 ### <a name="can-i-choose-to-enable-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Kann ich auswählen, dass Synapse Link in einem Konto mit mehreren Regionen nur für eine bestimmte Region und nicht für alle Regionen eingerichtet werden soll?
 Wenn Synapse Link in der Vorschauversion für ein Konto mit mehreren Regionen aktiviert ist, wird der Analysespeicher in allen Regionen erstellt. Die zugrunde liegenden Daten sind für Durchsatz und Transaktionskonsistenz im Transaktionsspeicher optimiert.
+
+### <a name="is-backup-and-restore-supported-for-synapse-link-enabled-accounts"></a>Wird die Sicherung und Wiederherstellung für Konten mit aktiviertem Synapse Link unterstützt?
+In der Vorschau werden die Sicherung und Wiederherstellung von Containern für Datenbankkonten mit Synapse Link-Aktivierung nicht unterstützt. Wenn Sie die Funktionen zur Sicherung und Wiederherstellung für Produktionsworkloads benötigen, sollten Sie Synapse Link in diesen Datenbankkonten nicht aktivieren. 
 
 ### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>Kann ich die Synapse Link-Funktion für mein Azure Cosmos-Konto deaktivieren?
 Wenn die Synapse Link-Funktion auf Kontoebene aktiviert ist, ist es derzeit nicht möglich, sie zu deaktivieren.  Wenn Sie die Funktion deaktivieren möchten, müssen Sie Ihr Azure Cosmos-Konto löschen und ein neues erstellen.
@@ -118,11 +121,11 @@ Die Unterstützung für strukturiertes Spark-Streaming für Azure Cosmos DB wird
 ### <a name="in-the-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>Wie erkenne ich in Synapse Studio, ob eine Verbindung mit einem Azure Cosmos DB-Container besteht, der mit dem Analysespeicher aktiviert ist?
 Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist, weist das folgende Symbol auf:
 
-![Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist – Symbol](./media/synapse-link-frequently-asked-questions/analytical-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/analytical-store-icon.png" alt-text="Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist – Symbol":::
 
 Ein Transaktionsspeichercontainer wird durch das folgende Symbol dargestellt:
 
-![Ein Azure Cosmos DB Container, der mit dem Transaktionsspeicher aktiviert ist – Symbol](./media/synapse-link-frequently-asked-questions/transactional-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Ein Azure Cosmos DB Container, der mit dem Transaktionsspeicher aktiviert ist – Symbol":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>Wie werden Azure Cosmos DB-Anmeldeinformationen von Synapse Studio übermittelt?
 Derzeit werden Azure Cosmos DB-Anmeldeinformationen beim Erstellen des verknüpften Diensts von dem Benutzer übermittelt, der Zugriff auf die Azure Cosmos DB-Datenbanken hat. Der Zugriff auf diesen Speicher steht anderen Benutzern zur Verfügung, die Zugriff auf den Arbeitsbereich haben.

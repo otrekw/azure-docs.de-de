@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fceaa203944074b0c3fcf5cb6254f1e87ac16cba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480979"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Verzeichnisintegration zwischen Azure MFA-Server und Active Directory
@@ -80,7 +80,7 @@ Attribute können manuell eingegeben werden und müssen nicht mit einem Attribut
 | --- | --- |
 | Eindeutiger Bezeichner |Geben Sie den Attributnamen des Attributs ein, das als eindeutiger Bezeichner von Container-, Sicherheitsgruppen- und Benutzerdatensätzen dient.  In Active Directory ist dies normalerweise „objectGUID“. In anderen LDAP-Implementierungen kann dies „entryUUID“ oder etwas Ähnliches sein.  Der Standardwert lautet „objectGUID“. |
 | Typ des eindeutigen Bezeichners |Wählen Sie den Typ des eindeutigen Bezeichnerattributs aus.  In Active Directory hat das objectGUID-Attribut den Typ GUID. In anderen LDAP-Implementierungen kann der Typ „ASCII-Bytearray“ oder „Zeichenfolge“ lauten.  Der Standardwert lautet GUID. <br><br>Es ist wichtig, diesen Typ richtig festzulegen, weil auf Synchronisierungselemente anhand ihres eindeutigen Bezeichners verwiesen wird. Der Typ des eindeutigen Bezeichners wird verwendet, um das Objekt im Verzeichnis direkt zu ermitteln.  Falls dieser Typ auf „Zeichenfolge“ festgelegt wird, wenn der Wert im Verzeichnis als Bytearray mit ASCII-Zeichen gespeichert wird, funktioniert die Synchronisierung nicht richtig. |
-| Distinguished Name |Geben Sie den Attributnamen des Attributs ein, das den Distinguished Name für die einzelnen Datensätze enthält.  In Active Directory ist dies normalerweise „distinguishedName“. In anderen LDAP-Implementierungen kann dies „entryDN“ oder etwas Ähnliches sein.  Der Standardwert lautet „distinguishedName“. <br><br>Wenn kein Attribut vorhanden ist, das nur den Distinguished Name enthält, kann das ads path-Attribut verwendet werden.  Der Teil „LDAP://\<Server\>/“ des Pfads wird automatisch entfernt, sodass nur der Distinguished Name des Objekts übrig bleibt. |
+| Distinguished Name |Geben Sie den Attributnamen des Attributs ein, das den Distinguished Name für die einzelnen Datensätze enthält.  In Active Directory ist dies normalerweise „distinguishedName“. In anderen LDAP-Implementierungen kann dies „entryDN“ oder etwas Ähnliches sein.  Der Standardwert lautet „distinguishedName“. <br><br>Wenn kein Attribut vorhanden ist, das nur den Distinguished Name enthält, kann das ads path-Attribut verwendet werden.  Der Teil „LDAP://\<server\>/“ des Pfads wird automatisch entfernt, sodass nur der Distinguished Name des Objekts übrig bleibt. |
 | Containername |Geben Sie den Attributnamen des Attributs ein, das den Namen in einem Containerdatensatz enthält.  Der Wert dieses Attributs wird in der Containerhierarchie angezeigt, wenn aus Active Directory importiert wird oder Synchronisierungselemente hinzugefügt werden.  Die Standardeinstellung lautet „name“. <br><br>Verwenden Sie Semikolons, um mehrere Containernamenattribute voneinander zu trennen, wenn für unterschiedliche Container verschiedene Attribute für ihre Namen verwendet werden.  Das erste Containernamenattribut eines Containerobjekts wird zum Anzeigen des Namens verwendet. |
 | Sicherheitsgruppenname |Geben Sie den Attributnamen des Attributs ein, das den Namen in einem Sicherheitsgruppendatensatz enthält.  Der Wert dieses Attributs wird in der Liste „Sicherheitsgruppe“ angezeigt, wenn aus Active Directory importiert wird oder Synchronisierungselemente hinzugefügt werden.  Die Standardeinstellung lautet „name“. |
 | Username |Geben Sie den Attributnamen des Attributs ein, das den Benutzernamen in einem Benutzerdatensatz enthält.  Der Wert dieses Attributs wird als Benutzername für den Multi-Factor Authentication-Server verwendet.  Ein zweites Attribut kann als Backup für das erste Attribut angegeben werden.  Das zweite Attribut wird nur verwendet, wenn das erste Attribut keinen Wert für den Benutzer enthält.  Die Standardwerte lauten „userPrincipalName“ und „sAMAccountName“. |

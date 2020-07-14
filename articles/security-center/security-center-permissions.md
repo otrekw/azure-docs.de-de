@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: 6e61571400930d4a781d6d67647bd662a7f2d350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 953881b0c576ad6ce12a4dc44bb0980edd7bcd50
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106218"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970551"
 ---
 # <a name="permissions-in-azure-security-center"></a>Berechtigungen in Azure Security Center
 
@@ -35,21 +35,20 @@ Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
 > [!NOTE]
 > Die beiden Sicherheitsrollen (Sicherheitsleseberechtigter und Sicherheitsadministrator) haben nur in Security Center Zugriff. Die Sicherheitsrollen haben keinen Zugriff auf andere Dienstbereiche von Azure wie Storage, Web & Mobile oder Internet der Dinge (IoT).
 >
->
 
 ## <a name="roles-and-allowed-actions"></a>Rollen und zulässige Aktionen
 
 In der folgenden Tabelle sind die Rollen und zulässigen Aktionen von Security Center aufgeführt.
 
-| Role | Sicherheitsrichtlinie bearbeiten | Sicherheitsempfehlungen für eine Ressource anwenden</br> (einschließlich „Quick Fix!“) | Warnungen und Empfehlungen verwerfen | Warnungen und Empfehlungen anzeigen |
-|:--- |:---:|:---:|:---:|:---:|
-| Besitzer des Abonnements | ✔ | ✔ | ✔ | ✔ |
-| Mitwirkender des Abonnements | -- | ✔ | ✔ | ✔ |
-| Ressourcengruppenbesitzer | -- | ✔ | -- | ✔ |
-| Ressourcengruppenmitwirkender | -- | ✔ | -- | ✔ |
-| Leser | -- | -- | -- | ✔ |
-| Sicherheitsadministrator | ✔ | -- | ✔ | ✔ |
-| Sicherheitsleseberechtigter | -- | -- | -- | ✔ |
+|Aktion|Sicherheitsleseberechtigter / <br> Leser |Sicherheitsadministrator  |Ressourcengruppenmitwirkender / <br> Ressourcengruppenbesitzer  |Mitwirkender des Abonnements  |Besitzer des Abonnements  |
+|:--- |:---:|:---:|:---:|:---:|:---:|
+|Sicherheitsrichtlinie bearbeiten|-|✔|-|-|✔|
+|Initiativen hinzufügen/zuweisen (einschließlich Standards für die Einhaltung gesetzlicher Bestimmungen)|-|-|-|-|✔|
+|Tarif für Abonnement ändern|-|✔|-|-|✔|
+|Automatische Bereitstellung aktivieren/deaktivieren|-|✔|✔|-|✔|
+|Sicherheitsempfehlungen für eine Ressource anwenden</br> (und [Schnelle Problembehebung](security-center-remediate-recommendations.md#quick-fix-remediation) verwenden)|-|-|✔|✔|✔|
+|Warnungen verwerfen|-|✔|-|✔|✔|
+|Warnungen und Empfehlungen anzeigen|✔|✔|✔|✔|✔|
 
 > [!NOTE]
 > Es empfiehlt sich, den Benutzern eine Rolle zuzuweisen, die jeweils nur so viele Berechtigungen umfasst wie für die Erfüllung ihrer Aufgaben erforderlich sind. Weisen Sie die Rolle „Leser“ etwa Benutzern zu, die nur Informationen zur Sicherheitsintegrität einer Ressource anzeigen, aber keine Aktionen durchführen müssen (also beispielsweise keine Empfehlungen umsetzen oder Richtlinien bearbeiten).

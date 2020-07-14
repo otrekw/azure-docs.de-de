@@ -7,15 +7,15 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd696539cda5b24d801da692822b13de143249dd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60333859"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121519"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Gewusst wie: Einrichten einer CI/CD-Pipeline für Azure Data Lake Analytics  
 
@@ -43,8 +43,8 @@ Vergewissern Sie sich vor dem Einrichten eines Buildtasks für ein U-SQL-Projekt
 
 Wenn dies nicht der Fall ist, stehen zwei Optionen zur Verfügung, um das Projekt zu migrieren:
 
-- Option 1: Ändern des alten in das vorherige Importelement.
-- Option 2: Öffnen des alten Projekts in Azure Data Lake Tools für Visual Studio. Verwenden Sie eine neuere Version als 2.3.3000.0. Die alte Projektvorlage wird automatisch auf die neueste Version aktualisiert. Neue Projekte, die mit höheren Versionen als 2.3.3000.0 erstellt wurden, verwenden die neue Vorlage.
+- Option 1: Ändern Sie das alte Importelement in das vorherige Importelement.
+- Option 2: Öffnen Sie das alte Projekt in Azure Data Lake Tools für Visual Studio. Verwenden Sie eine neuere Version als 2.3.3000.0. Die alte Projektvorlage wird automatisch auf die neueste Version aktualisiert. Neue Projekte, die mit höheren Versionen als 2.3.3000.0 erstellt wurden, verwenden die neue Vorlage.
 
 ### <a name="get-nuget"></a>Abrufen von NuGet
 
@@ -79,11 +79,11 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 Die Definition und die Werte der Argumente lauten wie folgt:
 
-* **USQLSDKPath=\<U-SQL-NuGet-Paket>\build\runtime**. Dieser Parameter verweist auf den Installationspfad des NuGet-Pakets für den U-SQL-Sprachdienst.
+* **USQLSDKPath=\<U-SQL Nuget package>\build\runtime**. Dieser Parameter verweist auf den Installationspfad des NuGet-Pakets für den U-SQL-Sprachdienst.
 * **USQLTargetType=Merge oder SyntaxCheck**:
     * **Merge**. Der Merge-Modus kompiliert CodeBehind-Dateien. Beispiele sind **CS**-, **PY**- und **R**-Dateien. Die resultierende benutzerdefinierte Codebibliothek wird inline im U-SQL-Skript erstellt. Beispiele sind DLL-Binärdateien, Python- oder R-Code.
     * **SyntaxCheck**. Der SyntaxCheck-Modus führt zunächst CodeBehind-Dateien im U-SQL-Skript zusammen. Anschließend wird zur Überprüfung Ihres Codes das U-SQL-Skript kompiliert.
-* **DataRoot=\<DataRoot-Pfad>** . DataRoot wird nur für den SyntaxCheck-Modus benötigt. Beim Erstellen des Skripts mit dem SyntaxCheck-Modus überprüft MSBuild die Verweise im Skript auf Datenbankobjekte. Richten Sie vor dem Erstellen eine entsprechende lokale Umgebung, die die referenzierten Objekte aus der U-SQL-Datenbank enthält, im DataRoot-Ordner des Buildcomputers ein. Sie können diese Datenbankabhängigkeiten auch durch [Verweisen auf ein U-SQL-Datenbankprojekt](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project) verwalten. MSBuild überprüft nur Verweise auf Datenbankobjekte und keine Dateien.
+* **DataRoot=\<DataRoot path>** . DataRoot wird nur für den SyntaxCheck-Modus benötigt. Beim Erstellen des Skripts mit dem SyntaxCheck-Modus überprüft MSBuild die Verweise im Skript auf Datenbankobjekte. Richten Sie vor dem Erstellen eine entsprechende lokale Umgebung, die die referenzierten Objekte aus der U-SQL-Datenbank enthält, im DataRoot-Ordner des Buildcomputers ein. Sie können diese Datenbankabhängigkeiten auch durch [Verweisen auf ein U-SQL-Datenbankprojekt](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project) verwalten. MSBuild überprüft nur Verweise auf Datenbankobjekte und keine Dateien.
 * **EnableDeployment=true** oder **false**. EnableDeployment gibt an, ob die Bereitstellung referenzierter U-SQL-Datenbanken während des Buildprozesses zulässig ist. Wenn Sie auf das U-SQL-Datenbankprojekt verweisen und die Datenbankobjekte in Ihrem U-SQL-Skript nutzen, legen Sie für diesen Parameter **true** fest.
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>Continuous Integration über Azure Pipelines
@@ -315,7 +315,7 @@ Um den NuGet-Paketverweis hinzuzufügen, klicken Sie im Visual Studio-Projektmap
 
 Um Ihr U-SQL-Datenbankprojekt zu erstellen, rufen Sie die MSBuild-Standardbefehlszeile auf, und übergeben Sie den Verweis auf das U-SQL SDK-NuGet-Paket als zusätzliches Argument. Sehen Sie sich folgendes Beispiel an: 
 
-```
+```console
 msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime
 ```
 
@@ -325,8 +325,7 @@ Das Argument `USQLSDKPath=<U-SQL Nuget package>\build\runtime` verweist auf den 
 
 Neben der Befehlszeile können Sie auch Visual Studio Build oder einen MSBuild-Task verwenden, um U-SQL-Datenbankprojekte in Azure Pipelines zu erstellen. Fügen Sie zum Einrichten eines Buildtasks zwei Tasks in der Buildpipeline hinzu: einen NuGet-Wiederherstellungstask und einen MSBuild-Task.
 
-   ![CI/CD-MSBuild-Task für ein U-SQL-Projekt](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
-
+   ![CI/CD-MSBuild-Task für ein U-SQL-Projekt](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png)
 
 1. Fügen Sie einen NuGet-Wiederherstellungstask hinzu, um das NuGet-Paket mit der referenzierten Projektmappe einschließlich `Azure.DataLake.USQL.SDK` abzurufen, sodass MSBuild die Ziele der U-SQL-Sprache finden kann. Legen Sie für **Erweitert** > **Zielverzeichnis** den Wert `$(Build.SourcesDirectory)/packages` fest, wenn Sie das MSBuild-Argumentbeispiel in Schritt 2 direkt verwenden möchten.
 
@@ -334,12 +333,12 @@ Neben der Befehlszeile können Sie auch Visual Studio Build oder einen MSBuild-T
 
 2. Legen Sie MSBuild-Argumente in Visual Studio Build Tools oder in einem MSBuild-Task fest, wie im folgenden Beispiel gezeigt wird. Alternativ können Sie Variablen für diese Argumente in der Azure Pipelines-Buildpipeline definieren.
 
-   ![Definieren von CI/CD-MSBuild-Variablen für ein U-SQL-Datenbankprojekt](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
+   ![Definieren von CI/CD-MSBuild-Variablen für ein U-SQL-Datenbankprojekt](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png)
 
-   ```
+   ```console
    /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
    ```
- 
+
 ### <a name="u-sql-database-project-build-output"></a>Buildausgabe für das U-SQL-Datenbankprojekt
 
 Die Buildausgabe für ein U-SQL-Datenbankprojekt ist ein U-SQL-Datenbankbereitstellungspaket, das mit dem Suffix `.usqldbpack` benannt ist. Bei dem Paket `.usqldbpack` handelt es sich um eine ZIP-Datei, die alle DDL-Anweisungen in einem einzigen U-SQL-Skript in einem DDL-Ordner enthält. Es enthält alle **DLL**-Dateien und zusätzliche Dateien für die Assembly in einem temporären Ordner.
@@ -369,7 +368,7 @@ Führen Sie die folgenden Schritte aus, um einen Task für die Datenbankbereitst
     <#
         This script is used for getting dependencies and SDKs for U-SQL database deployment.
         PowerShell command line support for deploying U-SQL database package(.usqldbpack file) will come soon.
-        
+
         Example :
             GetUSQLDBDeploymentSDK.ps1 -AzureSDK "AzureSDKFolderPath" -DBDeploymentTool "DBDeploymentToolFolderPath"
     #>
@@ -459,7 +458,7 @@ Führen Sie die folgenden Schritte aus, um einen Task für die Datenbankbereitst
 |Paket|Der Pfad des bereitzustellenden U-SQL-Datenbankbereitstellungspakets.|NULL|true|
 |Datenbank|Der Name der Datenbank, in der die Bereitstellung erfolgt oder die erstellt wird.|master|false|
 |LogFile|Der Pfad der Datei für die Protokollierung, standardmäßig zur Standardausgabe (Konsole).|NULL|false|
-|LogLevel|Protokollebene: Ausführlich, Normal, Warnung oder Fehler.|LogLevel.Normal|false|
+|LogLevel|Protokollierungsgrad: „Ausführlich“, „Normal“, „Warnung“ oder „Fehler“.|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>Parameter für die lokale Bereitstellung
 

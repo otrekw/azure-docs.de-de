@@ -4,12 +4,12 @@ description: Lernen Sie Sicherheitsszenarien für einen Azure Service Fabric-Clu
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080687"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
 
@@ -33,13 +33,18 @@ Cluster unter Azure und eigenständige Cluster unter Windows können beide entwe
 
 Service Fabric verwendet X.509-Serverzertifikate, die Sie als Teil der Knotentypkonfiguration angeben, wenn Sie einen Cluster erstellen. Ein kurzer Überblick darüber, was diese Zertifikate sind und wie Sie sie abrufen oder erstellen können, wird am Ende dieses Artikels bereitgestellt.
 
-Richten Sie die Zertifikatsicherheit beim Erstellen des Clusters im Azure-Portal, über Azure Resource Manager-Vorlagen oder eine eigenständige JSON-Vorlage ein. Das Standardverhalten des Service Fabric SDK ist die Bereitstellung und Installation des Zertifikats mit dem am weitesten in der Zukunft ablaufenden Zertifikat. Das klassische Verhalten erlaubt die Definition von primären und sekundären Zertifikaten, um manuell initiierte Rollover zu ermöglichen, und wird nicht für die Verwendung über der neuen Funktionalität empfohlen. Die primären Zertifikate, die verwendet werden, weisen das am weitesten in die Zukunft reichende Ablaufdatum auf und sollten sich vom Verwaltungsclient und den schreibgeschützten Clientzertifikaten unterscheiden, die Sie für [Client-zu-Knoten-Sicherheit](#client-to-node-security) festgelegt haben.
+Richten Sie die Zertifikatsicherheit beim Erstellen des Clusters im Azure-Portal, über Azure Resource Manager-Vorlagen oder eine eigenständige JSON-Vorlage ein. Das Standardverhalten des Service Fabric SDK ist die Bereitstellung und Installation des Zertifikats mit dem am weitesten in der Zukunft liegenden Ablaufdatum. Das klassische Verhalten erlaubt die Definition von primären und sekundären Zertifikaten, um manuell initiierte Rollover zu ermöglichen, und wird nicht für die Verwendung mit der neuen Funktionalität empfohlen. Die primären Zertifikate, die verwendet werden, weisen das am weitesten in die Zukunft reichende Ablaufdatum auf und sollten sich vom Verwaltungsclient und den schreibgeschützten Clientzertifikaten unterscheiden, die Sie für [Client-zu-Knoten-Sicherheit](#client-to-node-security) festgelegt haben.
 
 Informationen zum Einrichten der Zertifikatsicherheit in einem Cluster für Azure finden Sie unter [Einrichten eines Clusters mit einer Azure Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md).
 
 Informationen zum Einrichten der Zertifikatsicherheit in einem Cluster für einen eigenständigen Windows Server-Cluster finden Sie unter [Schützen eines eigenständigen Windows-Clusters mithilfe von X.509-Zertifikaten](service-fabric-windows-cluster-x509-security.md).
 
 ### <a name="node-to-node-windows-security"></a>Windows-Sicherheit (Knoten zu Knoten)
+
+> [!NOTE]
+> Die Windows-Authentifizierung basiert auf Kerberos. NTLM wird als Authentifizierungstyp nicht unterstützt.
+>
+> Verwenden Sie nach Möglichkeit die X.509-Zertifikatauthentifizierung für Service Fabric-Clusters.
 
 Informationen zum Einrichten der Windows-Sicherheit für einen eigenständigen Windows Server-Cluster finden Sie unter [Schützen eines eigenständigen Windows-Clusters mit Windows-Sicherheit](service-fabric-windows-cluster-windows-security.md).
 
@@ -49,7 +54,7 @@ Client-zu-Knoten-Sicherheit authentifiziert Clients und schützt die Kommunikati
 
 ![Diagramm für die Kommunikation zwischen Client und Knoten][Client-to-Node]
 
-Cluster unter Azure und eigenständige Cluster unter Windows können entweder [Zertifikatsicherheit](https://msdn.microsoft.com/library/ff649801.aspx) oder [Windows-Sicherheit](https://msdn.microsoft.com/library/ff649396.aspx) verwenden.
+Sowohl in Azure ausgeführte Cluster als auch eigenständige Cluster unter Windows können entweder die [Zertifikatsicherheit](https://msdn.microsoft.com/library/ff649801.aspx) oder die [Windows-Sicherheit](https://msdn.microsoft.com/library/ff649396.aspx) verwenden. Empfohlen wird jedoch die Verwendung der X.509-Zertifikatauthentifizierung, wann immer dies möglich ist.
 
 ### <a name="client-to-node-certificate-security"></a>Zertifikatsicherheit (Client zu Knoten)
 

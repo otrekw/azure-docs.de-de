@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
 ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562065"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Verwenden von Azure-Funktionsproxys
@@ -76,8 +76,8 @@ Wenn ein Proxy etwa eine Routenvorlage wie `/pets/{petId}` hat, kann die Back-En
 Zusätzlich zu den Routenvorlagenparametern können die folgenden Werte in Konfigurationswerten verwendet werden:
 
 * **{request.method}** : Die HTTP-Methode, die in der ursprünglichen Anforderung verwendet wird.
-* **{request.headers.\<Headername\>}** : Ein Header, der aus der ursprünglichen Anforderung gelesen werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie lesen möchten. Wenn der Header nicht in der Anforderung enthalten ist, wird der Wert eine leere Zeichenfolge sein.
-* **{request.querystring.\<Parametername\>}** : Ein Abfragezeichenfolgen-Parameter, der aus der ursprünglichen Anforderung gelesen werden kann. Ersetzen Sie *\<ParameterName\>* durch den Namen des Parameters, den Sie lesen möchten. Wenn der Parameter nicht in der Anforderung enthalten ist, wird der Wert eine leere Zeichenfolge sein.
+* **{request.headers.\<HeaderName\>}** : Ein Header, der aus der ursprünglichen Anforderung gelesen werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie lesen möchten. Wenn der Header nicht in der Anforderung enthalten ist, wird der Wert eine leere Zeichenfolge sein.
+* **{request.querystring.\<ParameterName\>}** : Ein Abfragezeichenfolgen-Parameter, der aus der ursprünglichen Anforderung gelesen werden kann. Ersetzen Sie *\<ParameterName\>* durch den Namen des Parameters, den Sie lesen möchten. Wenn der Parameter nicht in der Anforderung enthalten ist, wird der Wert eine leere Zeichenfolge sein.
 
 ### <a name="reference-back-end-response-parameters"></a><a name="response-parameters"></a>Verweisen auf Back-End-Antwortparameter
 
@@ -85,7 +85,7 @@ Antwortparameter können als Teil der Änderung der Antwort an den Client verwen
 
 * **{backend.response.statusCode}** : Der HTTP-Statuscode, der in der Back-End-Antwort zurückgegeben wird.
 * **{backend.response.statusReason}** : Der HTTP-Ursachentext, der in der Back-End-Antwort zurückgegeben wird.
-* **{backend.response.headers.\<Headername\>}** : Ein Header, der aus der Back-End-Antwort gelesen werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie lesen möchten. Wenn der Header nicht in der Antwort enthalten ist, wird der Wert eine leere Zeichenfolge sein.
+* **{backend.response.headers.\<HeaderName\>}** : Ein Header, der aus der Back-End-Antwort gelesen werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie lesen möchten. Wenn der Header nicht in der Antwort enthalten ist, wird der Wert eine leere Zeichenfolge sein.
 
 ### <a name="reference-application-settings"></a><a name="use-appsettings"></a>Verweisen auf Anwendungseinstellungen
 
@@ -184,8 +184,8 @@ Proxys lesen alle Zeichenfolgen aus einer JSON-Datei und verwenden \ als Escapes
 Das requestOverrides-Objekt definiert Änderungen an der Anforderung, wenn die Back-End-Ressource aufgerufen wird. Das Objekt wird durch folgende Eigenschaften definiert:
 
 * **backend.request.method**: Die HTTP-Methode, mit der das Back-End aufgerufen wird.
-* **backend.request.querystring.\<Parametername\>** : Ein Abfragezeichenfolgen-Parameter, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<ParameterName\>* durch den Namen des Parameters, den Sie festlegen möchten. Beachten Sie Folgendes: Wenn eine leere Zeichenfolge angegeben wird, wird der Parameter weiterhin in die Back-End-Anforderung einbezogen.
-* **backend.request.headers.\<Headername\>** : Ein Header, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie festlegen möchten. Beachten Sie Folgendes: Wenn eine leere Zeichenfolge angegeben wird, wird der Parameter weiterhin in die Back-End-Anforderung einbezogen.
+* **backend.request.querystring.\<ParameterName\>** : Ein Abfragezeichenfolgen-Parameter, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<ParameterName\>* durch den Namen des Parameters, den Sie festlegen möchten. Beachten Sie Folgendes: Wenn eine leere Zeichenfolge angegeben wird, wird der Parameter weiterhin in die Back-End-Anforderung einbezogen.
+* **backend.request.headers.\<HeaderName\>** : Ein Header, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie festlegen möchten. Beachten Sie Folgendes: Wenn eine leere Zeichenfolge angegeben wird, wird der Parameter weiterhin in die Back-End-Anforderung einbezogen.
 
 Die Werte können auf Anwendungseinstellungen und Parameter aus der ursprünglichen Clientanforderung verweisen.
 
@@ -217,7 +217,7 @@ Das responseOverrides-Objekt definiert Änderungen an der Antwort, die an den Cl
 * **response.statusCode**: Der HTTP-Statuscode, der an den Client zurückgegeben werden soll.
 * **response.statusReason**: Der HTTP-Ursachentext, der an den Client zurückgegeben werden soll.
 * **response.body**: Die Zeichenfolgendarstellung des Texts, der an den Client zurückgegeben werden soll.
-* **response.headers.\<Headername\>** : Ein Header, der für die Antwort an den Client festgelegt werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie festlegen möchten. Wenn Sie die leere Zeichenfolge angeben, wird der Header nicht in die Antwort einbezogen.
+* **response.headers.\<HeaderName\>** : Ein Header, der für die Antwort an den Client festgelegt werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie festlegen möchten. Wenn Sie die leere Zeichenfolge angeben, wird der Header nicht in die Antwort einbezogen.
 
 Die Werte können auf Anwendungseinstellungen, Parameter aus der ursprünglichen Clientanforderung und Parameter aus der Back-End-Antwort verweisen.
 

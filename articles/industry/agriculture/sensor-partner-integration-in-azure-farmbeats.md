@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684022"
 ---
 # <a name="sensor-partner-integration"></a>Integration von Partnern für Sensordaten
@@ -101,7 +101,7 @@ Akzeptieren | Das Antwortformat. Für FarmBeats-Datenhub-APIs wird das Format �
 
 **API-Anforderungen**
 
-Um eine REST-API-Anforderung auszuführen, kombinieren Sie die HTTP (GET, POST oder PUT)-Methode, die URL für den API-Dienst, den URI (Uniform Resource Identifier) für eine Ressource, die abgefragt, aktualisiert oder gelöscht bzw. an die Daten übermittelt werden sollen, und mindestens einen HTTP-Anforderungsheader. Die URL für den API-Dienst entspricht dem von Ihnen bereitgestellten API-Endpunkt. Hier ein Beispiel: https://\<Datenhub-Websitename>.azurewebsites.net
+Um eine REST-API-Anforderung auszuführen, kombinieren Sie die HTTP (GET, POST oder PUT)-Methode, die URL für den API-Dienst, den URI (Uniform Resource Identifier) für eine Ressource, die abgefragt, aktualisiert oder gelöscht bzw. an die Daten übermittelt werden sollen, und mindestens einen HTTP-Anforderungsheader. Die URL für den API-Dienst entspricht dem von Ihnen bereitgestellten API-Endpunkt. Hier ist ein Beispiel: https://\<yourdatahub-website-name>.azurewebsites.net
 
 Optional können Sie Abfrageparameter in GET-Aufrufe einfügen, um Daten in den Antworten zu filtern, zu sortieren und deren Größe zu beschränken.
 
@@ -144,7 +144,7 @@ Der FarmBeats-Datenhub bietet folgende APIs, die Geräte-Partnerunternehmen die 
   DeviceModelId  |ID des zugeordneten Gerätemodells |
   HardwareId   |Eindeutige ID für das Gerät (beispielsweise MAC-Adresse).  |
   ReportingInterval |Berichtsintervall in Sekunden |
-  Position    |Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts |
+  Standort    |Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts |
   ParentDeviceId | ID des übergeordneten Geräts, mit dem dieses Gerät verbunden ist. Z. B., wenn ein Knoten mit einem Gateway verbunden ist, besitzt der Knoten den parentDeviceID-Wert als Gateway. |
   Name  | Name zum Identifizieren der Ressource. Gerätepartner müssen einen Namen senden, der mit dem Gerätenamen auf der Partnerseite übereinstimmt. Wenn der Gerätename auf der Seite des Gerätepartners benutzerdefiniert ist, muss derselbe benutzerdefinierte Name in FarmBeats angegeben werden.  |
   BESCHREIBUNG  | Eine aussagekräftige Beschreibung  |
@@ -166,7 +166,7 @@ Der FarmBeats-Datenhub bietet folgende APIs, die Geräte-Partnerunternehmen die 
   **Sensor**  |  |
   HardwareId  | Eindeutige, vom Hersteller festgelegte ID für den Sensor
   SensorModelId  | ID des zugeordneten Sensormodells
-  Position  | Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Sensors
+  Standort  | Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Sensors
   Port > Name  |Name und Typ des Ports, über den der Sensor mit dem Gerät verbunden ist. Hierbei muss es sich um denselben Namen handeln, der auch im Gerätemodell definiert ist.
   deviceId  | ID des Geräts, mit dem der Sensor verbunden ist
   Name  | Name zum Identifizieren der Ressource. Beispiel: der Sensorname oder Produktname und Modellnummer oder Produktcode.

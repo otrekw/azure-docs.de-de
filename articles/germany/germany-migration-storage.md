@@ -6,15 +6,15 @@ services: germany
 cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 12/12/2018
-ms.topic: article
+ms.date: 06/22/2020
+ms.topic: how-to
 ms.custom: bfmigrate
-ms.openlocfilehash: 21cfecf2df68b6de526079f56dc10a25fb6903cf
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 1ba632afeb5e1b629b2999c446a66d85a2c8f3ef
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75436653"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85979927"
 ---
 # <a name="migrate-storage-resources-to-global-azure"></a>Migrieren von Speicherressourcen zu Azure weltweit
 
@@ -142,6 +142,70 @@ Weitere Informationen finden Sie unter:
 - Erfahren Sie, wie Sie [über die API](/rest/api/compute/disks/grantaccess) auf den Datenträger exportieren, indem Sie einen Shared Access Signature-URI abrufen. 
 - Erfahren Sie, wie Sie einen verwalteten Datenträger [über die API](/rest/api/compute/disks/createorupdate#create-a-managed-disk-by-importing-an-unmanaged-blob-from-a-different-subscription.) aus einem nicht verwalteten Blob erstellen.
 
+## <a name="tables"></a>Tabellen
+
+Sie können Tabellen in Azure über den Storage-Explorer migrieren. Der Storage-Explorer ist ein Tool zur Verwaltung Ihrer Cloudspeicherressourcen in Azure. Über den Storage-Explorer können Sie eine Verbindung mit dem Quellkonto in Deutschland herstellen und Tabellen in das Zielspeicherkonto für Azure weltweit kopieren.
+
+Als Erstes installieren Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
+
+### <a name="connect-to-source"></a>Herstellen einer Verbindung mit der Quelle
+
+Sie können den Storage-Explorer verwenden, um Tabellen vom Azure Storage-Quellkonto zu kopieren. 
+
+Verbinden Sie den Storage-Explorer mit Ihren Quelltabellenressourcen in Microsoft Azure Deutschland. Sie können sich [anmelden, um auf Ressourcen in Ihrem Abonnement zuzugreifen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#sign-in-to-azure) oder [bestimmte Storage-Ressourcen anfügen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#attach-a-specific-resource). 
+
+### <a name="connect-to-target"></a>Mit Ziel verbinden
+
+Sie können den Storage-Explorer verwenden, um Tabellen in das Azure Storage-Zielkonto einzufügen.
+
+Verbinden Sie den Storage-Explorer mit Ihrem Microsoft Azure-Abonnement oder Ihrer Azure Storage-Instanz. Sie können sich [anmelden, um auf Ressourcen in Ihrem Abonnement zuzugreifen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#sign-in-to-azure) oder [bestimmte Storage-Ressourcen anfügen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#attach-a-specific-resource). 
+
+
+### <a name="migrate-tables"></a>Migrieren von Tabellen
+
+Kopieren Sie über den Storage-Explorer Tabellen von Azure Deutschland an einen der weltweiten Azure-Standorte. Sie können Tabellen kopieren, indem Sie mit der rechten Maustaste auf die gewünschte Tabelle klicken und aus dem Kontextmenü die Option **Tabelle kopieren** auswählen. Das folgende Beispiel zeigt den Kopiervorgang für *testmigrationtable* aus einem *Abonnement in Azure Deutschland*.
+
+![Kontextmenüeintrag „Tabelle kopieren“, ausgewählt in Abonnement in Azure Deutschland](./media/germany-migration-storage/copy-table.png)
+
+Fügen Sie die Tabelle über den Storage-Explorer in das Azure Storage-Zielkonto ein. Sie können Tabellen einfügen, indem Sie im Azure Storage-Zielkonto mit der rechten Maustaste auf den Knoten *Tabellen* klicken. Das folgende Beispiel zeigt den Einfügevorgang für *testmigrationtable* in ein verbundenes Azure Storage-Konto.
+ 
+![Kontextmenüeintrag „Tabelle einfügen“, ausgewählt im Azure Storage-Zielkonto](./media/germany-migration-storage/paste-table.png)
+
+Wiederholen Sie die Schritte zum Kopieren und Einfügen für jede Tabelle, die Sie migrieren möchten.
+
+## <a name="file-shares"></a>Dateifreigaben
+
+Verwenden Sie AzCopy für die Migration, um Dateifreigaben direkt von Azure Deutschland nach Azure weltweit zu kopieren. AzCopy ist ein kostenloses Tool, mit dem Sie Blobs, Dateien und Tabellen kopieren können.
+
+Als Erstes [laden Sie AzCopy herunter](https://aka.ms/downloadazcopy) und installieren das Tool.
+
+AzCopy verwendet die Begriffe **Source** und **Dest**, ausgedrückt als URIs. URIs für Azure Deutschland weisen immer das folgende Format auf:
+
+```http
+https://<storageaccountname>.blob.core.cloudapi.de/<filesharename>
+```
+
+URIs für Azure weltweit weisen immer das folgende Format auf:
+
+```http
+https://<storageaccountname>.blob.core.windows.net/<filesharename>
+```
+Sie benötigen das SAS-Speicherkontotoken, um auf das Azure Storage-Konto zugreifen zu können. 
+
+Der folgende Beispielbefehl kopiert alle Dateifreigaben, Verzeichnisse und Dateien aus einem Speicherkonto in Azure Deutschland in ein Zielspeicherkonto für Azure weltweit. Eine vollständige Referenz finden Sie in der [AzCopy-Dokumentation](../storage/common/storage-use-azcopy.md).
+
+URI-Teil | Beispielwert
+-------- | --------------
+Quell-storageAccount | `migratetest`
+Quelldateifreigabe | `sourcefileshare`
+Ziel-storageAccount | `migratetarget`
+Zieldateifreigabe | `targetfileshare`
+
+```cmd
+azcopy copy "https://migratetest.blob.core.cloudapi.de/sourcefileshare?<SAS-token>" "https://migratetarget.blob.core.windows.net/targetfileshare?<SAS-token>" --recursive=true
+```
+
+Weitere Informationen zu AzCopy finden Sie in der [AzCopy-Dokumentation](../storage/common/storage-use-azcopy.md) sowie unter [Übertragen von Daten mit AzCopy und Dateispeicher](../storage/common/storage-use-azcopy-files.md#copy-files-between-storage-accounts).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

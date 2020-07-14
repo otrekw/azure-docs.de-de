@@ -15,16 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 3acc2c271e590bddb13aaa01498f404da4340036
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8aaa82a3913bcafbe8f86b85d63c39d44f08ac9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77058419"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84323755"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Dropbox für Unternehmen für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in Dropbox für Unternehmen und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in Dropbox für Unternehmen zu konfigurieren.
+
+> [!IMPORTANT]
+> Microsoft und Dropbox nehmen die alte Dropbox-Integration ab 1.4.2021 außer Betrieb. Um Dienstunterbrechungen zu vermeiden, empfehlen wir, zur neuen Dropbox-Integration zu migrieren, die Gruppen unterstützt. Zur Migration zur neuen Dropbox-Integration führen Sie die folgenden Schritte aus, um eine neue Dropbox-Instanz zur Bereitstellung in Ihrem Azure AD-Mandanten hinzuzufügen und zu konfigurieren. Sobald Sie die neue Dropbox-Integration konfiguriert haben, deaktivieren Sie die Bereitstellung der alten Integration, um Bereitstellungskonflikte zu vermeiden.
 
 > [!NOTE]
 > In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).

@@ -9,10 +9,10 @@ ms.author: asabbour
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
 ms.openlocfilehash: 45da3034891e5a82fb8423adb6bcd5e867f9d4e2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204799"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Konfigurieren von Azure Active Directory-Authentifizierung für einen Azure Red Hat OpenShift 4-Cluster (CLI)
@@ -24,7 +24,7 @@ Rufen Sie die clusterspezifischen URLs ab, die zum Konfigurieren der Azure Activ
 Erstellen Sie die OAuth-Rückruf-URL des Clusters, und speichern Sie sie in einer Variablen **oauthCallbackURL**. Stellen Sie sicher, dass Sie **aro-rg** durch den Namen Ihrer Ressourcengruppe ersetzen und **aro-cluster** durch den Namen Ihres Clusters.
 
 > [!NOTE]
-> Der `AAD` Abschnitt in der OAuth-Rückruf-URL sollte mit dem Namen des OAuth-Identitätsanbieters identisch sein, den Sie später einrichten.
+> Der Abschnitt `AAD` in der OAuth-Rückruf-URL sollte mit dem Namen des OAuth-Identitätsanbieters identisch sein, den Sie später einrichten.
 
 ```azurecli-interactive
 domain=$(az aro show -g aro-rg -n aro-cluster --query clusterProfile.domain -o tsv)
@@ -97,7 +97,7 @@ EOF
 
 ## <a name="update-the-azure-active-directory-applications-optionalclaims-with-a-manifest"></a>Aktualisieren der optionalClaims der Azure Active Directory-Anwendung mit einem Manifest
 
-Ersetzen Sie **\<AppId>** durch die ID, die Sie zuvor abgerufen haben.
+Ersetzen Sie **\<AppID>** durch die ID, die Sie zuvor abgerufen haben.
 
 ```azurecli-interactive
 az ad app update \
@@ -109,7 +109,7 @@ az ad app update \
 
 Um die Benutzerinformationen aus Azure Active Directory lesen zu können, müssen wir die richtigen Bereiche definieren.
 
-Ersetzen Sie **\<AppId>** durch die ID, die Sie zuvor abgerufen haben.
+Ersetzen Sie **\<AppID>** durch die ID, die Sie zuvor abgerufen haben.
 
 Fügen Sie die Berechtigung für den Bereich **Azure Active Directory Graph.User.Read** hinzu, um die Anmeldung zu ermöglichen und das Benutzerprofil zu lesen.
 
@@ -129,7 +129,7 @@ Anwendungen, die für einen Azure AD-Mandanten (Azure Active Directory) registri
 
 Befolgen Sie die Anweisungen in der Azure Active Directory-Dokumentation, um der [App Benutzer und Gruppen zuzuweisen](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration).
 
-## <a name="configure-openshift-openid-authentication"></a>Konfigurieren von OpenShift OpenID-Authentifizierung
+## <a name="configure-openshift-openid-authentication"></a>Konfigurieren der OpenID-Authentifizierung für OpenShift
 
 Rufen Sie die `kubeadmin`-Anmeldeinformationen ab. Führen Sie den folgenden Befehl aus, um das Kennwort für den Benutzer `kubeadmin` zu suchen:
 
@@ -162,7 +162,7 @@ oc create secret generic openid-client-secret-azuread \
   --from-literal=clientSecret=<ClientSecret>
 ```    
 
-Erstellen Sie eine Datei **oidc.yaml**, um OpenShift OpenID-Authentifizierung für Azure Active Directory zu konfigurieren. Ersetzen Sie **\<AppId>** und **\<TenantId>** durch die Werte, die Sie zuvor abgerufen haben.
+Erstellen Sie eine Datei **oidc.yaml**, um OpenShift OpenID-Authentifizierung für Azure Active Directory zu konfigurieren. Ersetzen Sie **\<AppID>** und **\<TenantId>** durch die Werte, die Sie vorher abgerufen haben.
 
 ```bash
 cat > oidc.yaml<< EOF

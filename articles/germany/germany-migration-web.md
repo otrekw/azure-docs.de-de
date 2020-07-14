@@ -6,15 +6,15 @@ services: germany
 cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 12/12/2019
+ms.date: 07/02/2020
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 494555ca5927326b7368a579ea69e73586fa7fdf
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 1a7129b11a82e37dab7fa527734c3be3b57d188a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548241"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985182"
 ---
 # <a name="migrate-web-resources-to-global-azure"></a>Migrieren von Webressourcen zu Azure weltweit
 
@@ -33,6 +33,45 @@ Migrieren von Apps, die Sie mit dem Web Apps-Feature von Azure App Service erste
 
 > [!IMPORTANT]
 > Ändern Sie den Standort, Azure Key Vault-Geheimnisse, Zertifikate und andere GUIDs, damit diese konsistent mit der neuen Region sind.
+
+### <a name="migrate-web-app-resource"></a>Migrieren einer Web-App-Ressource
+
+1. [Exportieren Sie die Web-App und den App Service-Plan als Vorlage](../azure-resource-manager/templates/export-template-portal.md) aus Ihrem Abonnement in Azure Deutschland. Wählen Sie aus der Web-App-Ressourcengruppe die Ressourcen aus, die Sie migrieren möchten, und exportieren Sie diese als Vorlage.
+1. Laden Sie die Vorlage als ZIP-Datei herunter. 
+1. Ändern Sie die location-Eigenschaft in der Datei **template.json** in eine der weltweiten Azure-Regionen. Die folgende JSON-Datei weist z. B. die Zielregion *USA, Westen* auf.
+
+    ```json
+        "resources": [
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('serverfarms_myappservice_name')]",
+            "location": "West US",
+
+    ```
+1. Stellen Sie die geänderte Vorlage in Azure weltweit bereit. Für die Bereitstellung können Sie beispielsweise PowerShell verwenden.
+
+    ```powershell
+    az deployment group create --name "<web app name>" \
+        --resource-group "<resource group name>" \
+        --template-file "<path of your template.json file>"
+    ```
+
+### <a name="migrate-web-app-content"></a>Migrieren von Web-App-Inhalten
+
+1. Wählen Sie im Portal von Azure Deutschland Ihre Web-App aus.
+1. Wählen Sie **Entwicklungstools > Erweiterte Tools** aus.
+1. Wählen Sie im Menü oben die Option **Debugkonsole** und dann **PowerShell** aus.
+1. Wählen Sie **Standort** aus.
+1. Klicken Sie auf das **Downloadsymbol** neben dem Ordner **wwwroot**. Die heruntergeladene ZIP-Datei enthält den Quellcode Ihrer Web-App.
+1. Stellen Sie den Webstamm in der migrierten Web-App in Azure weltweit bereit. Sie können beispielsweise das folgende PowerShell-Skript verwenden.
+
+    ``` powershell
+    az webapp deployment source config-zip \
+        --resource-group "<resource group name>" \
+        --name "<web App name>" \
+        --src "path to webroot folder zip file"
+    ```
 
 Weitere Informationen finden Sie unter:
 
@@ -55,6 +94,20 @@ Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Notification Hubs-Tutorials](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) durcharbeiten.
 - Lesen Sie die [Übersicht über Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md).
+
+## <a name="event-hubs"></a>Event Hubs
+
+Um einen Azure Event Hub zu migrieren, exportieren Sie die Event Hub-Ressourcenvorlage aus Azure Deutschland und stellen sie dann in Azure weltweit bereit.
+
+1. [Exportieren Sie Event Hub als Vorlage](../azure-resource-manager/templates/export-template-portal.md) aus Ihrem Abonnement in Azure Deutschland.
+1. [Stellen Sie die Event Hub-Vorlage als benutzerdefinierte Vorlage](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) in Ihrem globalen Azure-Abonnement bereit. Laden Sie die Vorlage, die Sie aus Ihrem Abonnement in Azure Deutschland, und stellen Sie sie bereit.
+
+Weitere Informationen finden Sie unter:
+
+- Lesen Sie die [Übersicht über Event Hubs](../event-hubs/event-hubs-about.md).
+- Lesen Sie die [Übersicht über Azure Resource Manager](../azure-resource-manager/management/overview.md).
+- Informieren Sie sich darüber, wie [Azure Resource Manager-Vorlagen exportiert werden](../azure-resource-manager/templates/export-template-portal.md).
+- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

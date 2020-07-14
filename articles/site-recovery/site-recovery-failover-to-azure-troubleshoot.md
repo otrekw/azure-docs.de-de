@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 9ef38829a18f9e43f38cbdb291a799110d710cd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834729"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133760"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Beheben von Fehlern beim Ausführen eines Failovers einer VMware-VM oder eines physischen Computers nach Azure
 
@@ -74,6 +74,10 @@ Um den Starttyp der Treiber für das **Windows-Gastbetriebssystem** manuell zu �
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Fehler beim Verbindungsaufbau über RDP/SSH mit dem virtuellen Computer (VM), für den ein Failover ausgeführt wurde, aufgrund ausgegrauter Schaltfläche „Verbinden“ auf der VM
 
+Ausführliche Anweisungen zur Behandlung von RDP-Problemen finden Sie in der Dokumentation [hier](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md).
+
+Ausführliche Anweisungen zur Behandlung von SSH-Problemen finden Sie in der Dokumentation [hier](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md).
+
 Wenn die Schaltfläche **Verbinden** auf dem fehlerhaften virtuellen Computer abgeblendet ist und Sie nicht über ExpressRoute oder Site-to-Site-VPN mit Azure verbunden sind, gehen Sie wie folgt vor:
 
 1. Navigieren Sie zu **VM** > **Netzwerk**, und klicken Sie auf den Namen der jeweiligen Netzwerkschnittstelle.  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
@@ -86,7 +90,7 @@ Wenn die Schaltfläche **Verbinden** auf dem fehlerhaften virtuellen Computer ab
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Verbindung nicht möglich/RDP/SSH – Schaltfläche zum Verbinden des virtuellen Computers verfügbar
 
-Wenn die Schaltfläche **Verbinden** auf dem fehlerhaften virtuellen Computer in Azure verfügbar ist (nicht abgeblendet), überprüfen Sie **Startdiagnose** auf Ihrem virtuellen Computer, und suchen Sie nach den in [diesem Artikel](../virtual-machines/windows/boot-diagnostics.md) aufgeführten Fehlern.
+Wenn die Schaltfläche **Verbinden** auf dem fehlerhaften virtuellen Computer in Azure verfügbar ist (nicht abgeblendet), überprüfen Sie **Startdiagnose** auf Ihrem virtuellen Computer, und suchen Sie nach den in [diesem Artikel](../virtual-machines/troubleshooting/boot-diagnostics.md) aufgeführten Fehlern.
 
 1. Falls der virtuelle Computer nicht gestartet wurde, führen Sie ein Failover auf einen früheren Wiederherstellungspunkt aus.
 2. Wird die Anwendung auf dem virtuellen Computer nicht gestartet, führen Sie ein Failover auf einen anwendungskonsistenten Wiederherstellungspunkt aus.
@@ -170,7 +174,7 @@ So lösen Sie das Problem:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Beheben von Fehlern bei der [RDP-Verbindung mit einem virtuellen Windows-Computer](../virtual-machines/windows/troubleshoot-rdp-connection.md)
-- Beheben von Fehlern bei der [SSH-Verbindung mit einem virtuellen Linux-Computer](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)
+- Beheben von Fehlern bei der [RDP-Verbindung mit einem virtuellen Windows-Computer](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)
+- Beheben von Fehlern bei der [SSH-Verbindung mit einem virtuellen Linux-Computer](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md)
 
-Wenn Sie weitere Hilfe benötigen, veröffentlichen Sie Ihre Anfrage auf der [Microsoft F&A-Seite für Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html), oder hinterlassen einen Kommentar am Ende dieses Dokuments. Wir verfügen über eine aktive Community, die Sie unterstützen kann.
+Wenn Sie weitere Hilfe benötigen, veröffentlichen Sie Ihre Anfrage auf der [Microsoft F&A-Seite für Site Recovery](/answers/topics/azure-site-recovery.html), oder hinterlassen einen Kommentar am Ende dieses Dokuments. Wir verfügen über eine aktive Community, die Sie unterstützen kann.

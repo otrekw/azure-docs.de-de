@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 19e4c61ba930bb9b127e2401174bcea3fd240dce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57417a80ea83005c01b6f2a17206d46e6c049719
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234209"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85112777"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitionierung und horizontale Skalierung in Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Der für einen Container bereitgestellte Durchsatz wird gleichmäßig auf physis
 
 Sie können die physischen Partitionen Ihres Containers im Azure-Portal auf dem Blatt **Metriken** im Abschnitt **Speicher** anzeigen:
 
-[![Anzeigen der Anzahl von physischen Partitionen](./media/partition-data/view-partitions-zoomed-out.png) ](./media/partition-data/view-partitions-zoomed-in.png#lightbox)
+:::image type="content" source="./media/partition-data/view-partitions-zoomed-out.png" alt-text="Anzeigen der Anzahl von physischen Partitionen" lightbox="./media/partition-data/view-partitions-zoomed-in.png" ::: 
 
 In diesem Beispielcontainer, für den wir `/foodGroup` als Partitionsschlüssel ausgewählt haben, stellt jedes der drei Rechtecke eine physische Partition dar. In der Abbildung entspricht der **Partitionsschlüsselbereich** einer physischen Partition. Die ausgewählte physische Partition enthält drei logische Partitionen: `Beef Products`, `Vegetable and Vegetable Products` und `Soups, Sauces, and Gravies`.
 
@@ -54,7 +54,7 @@ Die meisten kleinen Cosmos-Container benötigen nur eine einzige physische Parti
 
 Die folgende Abbildung zeigt, wie logische Partitionen physischen Partitionen zugeordnet werden, die global verteilt sind:
 
-![Abbildung zur Veranschaulichung der Azure Cosmos DB-Partitionierung](./media/partition-data/logical-partitions.png)
+:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="Abbildung zur Veranschaulichung der Azure Cosmos DB-Partitionierung" border="false":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

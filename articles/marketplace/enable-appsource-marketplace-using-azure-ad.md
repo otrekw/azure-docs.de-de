@@ -1,18 +1,18 @@
 ---
 title: Integrieren Ihres Microsoft-Angebots im kommerziellen Marketplace mit Azure Active Directory
 description: Authentifizieren Sie Ihre Microsoft AppSource- und Azure Marketplace-Angebote mithilfe von Azure Active Directory.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: 17cbfe92744ad96f2b5651b7e2f47a6443337068
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658042"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103622"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Integrieren Ihres Eintrags im kommerziellen Marketplace mit Azure Active Directory
 
@@ -29,11 +29,10 @@ Microsoft AppSource- und Azure Marketplace-Kunden nutzen die produktinternen Umg
 
 ## <a name="offers-that-require-azure-ad"></a>Angebote, die Azure AD erfordern
 
-Die verschiedenen [Auflistungsoptionen und Angebotstypen](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) für den kommerziellen Marketplace weisen unterschiedliche Anforderungen an die Azure AD-Implementierung auf. Details finden Sie in der folgenden Tabelle.
+Die verschiedenen [Auflistungsoptionen und Angebotstypen](determine-your-listing-type.md) für den kommerziellen Marketplace weisen unterschiedliche Anforderungen an die Azure AD-Implementierung auf. Details finden Sie in der folgenden Tabelle.
 
-| **Angebotstyp**    | **Azure AD-SSO erforderlich?**  |  |   |  |
+| Angebotstyp    | Azure AD-SSO für Kontaktformular erforderlich?  | Azure AD-SSO für Testversion erforderlich? | Azure AD-SSO für Test erforderlich?  | Azure AD-SSO für Transaktion erforderlich? |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-|  | Kontaktformular | Testversion | Testversion | Transaktion |
 | Virtual Machine | – | Nein | Nein | Nein |
 | Azure-Apps (Lösungsvorlage)  | – | – | – | – |
 | Verwaltete Apps  | – | – | – | Nein |
@@ -41,18 +40,18 @@ Die verschiedenen [Auflistungsoptionen und Angebotstypen](https://docs.microsoft
 | Container  | – | – | – | Nein |
 | Beratungsdienste  | Nein | – | – | – |
 
-Weitere Informationen zu den technischen Anforderungen für SaaS finden Sie unter [SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
+Weitere Informationen zu den technischen Anforderungen für SaaS finden Sie unter [SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten](marketplace-saas-applications-technical-publishing-guide.md).
 
 ## <a name="azure-ad-integration"></a>Azure AD-Integration
 
-- Informationen zum Aktivieren der einmaligen Anmeldung (Single Sign-On) durch die Integration von Azure AD in Ihr Angebot finden Sie unter [Azure Active Directory für Entwickler]( https://docs.microsoft.com/azure/active-directory/develop/).
-- Weitere Informationen zur einmaligen Anmeldung mit Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+- Informationen zum Aktivieren der einmaligen Anmeldung (Single Sign-On) durch die Integration von Azure AD in Ihr Angebot finden Sie unter [Azure Active Directory für Entwickler](../active-directory/develop/index.yml).
+- Weitere Informationen zur einmaligen Anmeldung mit Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../active-directory/manage-apps/what-is-single-sign-on.md).
 
 ## <a name="enable-a-trial-listing"></a>Aktivieren einer Testauflistung
 
 Eine automatisierte Kundeneinrichtung kann die Wahrscheinlichkeit einer Konvertierung erhöhen. Wenn Ihr Kunde Ihre Testauflistung auswählt und in Ihre Testumgebung umgeleitet wird, können Sie den Kunden direkt einrichten, ohne dass zusätzliche Anmeldeverfahren erforderlich sind.
 
-Während der Authentifizierung sendet Azure AD ein Token an Ihre App oder Ihr Angebot. Die vom Token bereitgestellten Benutzerinformationen ermöglichen die Erstellung eines Benutzerkontos in Ihrer App oder Ihrem Angebot. Weitere Informationen finden Sie unter [Beispieltoken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+Während der Authentifizierung sendet Azure AD ein Token an Ihre App oder Ihr Angebot. Die vom Token bereitgestellten Benutzerinformationen ermöglichen die Erstellung eines Benutzerkontos in Ihrer App oder Ihrem Angebot. Weitere Informationen finden Sie unter [Beispieltoken](../active-directory/develop/id-tokens.md).
 
 Wenn Sie Azure AD verwenden, um die Authentifizierung mit einem Klick in Ihrer App oder Ihrer Testauflistung zu aktivieren, erreichen Sie Folgendes:
 
@@ -67,20 +66,20 @@ Wenn Sie Azure AD verwenden, um die Authentifizierung mit einem Klick in Ihrer A
 
 Mit Azure AD können Sie die folgenden Aktionen unterstützen:
 
-- Registrieren Sie Ihre App in einer der Marketplace-Storefronts. Weitere Informationen finden Sie unter [App-Registrierung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) oder [AppSource-Zertifizierung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified).
+- Registrieren Sie Ihre App in einer der Marketplace-Storefronts. Weitere Informationen finden Sie unter [App-Registrierung](../active-directory/develop/quickstart-register-app.md) oder [AppSource-Zertifizierung](../active-directory/azuread-dev/howto-get-appsource-certified.md).
 - Aktivieren Sie das Feature für die Unterstützung der Mehrinstanzenfähigkeit in Azure AD, um für die Testversion die Nutzung per einfachem Klick zu ermöglichen.
 
 Wenn Sie das einmalige Anmelden (Single Sign-On, SSO) im Azure AD-Verbund nicht verwenden, führen Sie diese Schritte aus:
 
 1. Registrieren Sie Ihre App im Marketplace.
-1. Richten Sie das einmalige Anmelden mit Azure AD mithilfe von [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) oder [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) ein.
+1. Richten Sie das einmalige Anmelden mit Azure AD mithilfe von [OAuth 2.0](../active-directory/azuread-dev/v1-protocols-oauth-code.md) oder [OpenID Connect](../active-directory/azuread-dev/v1-protocols-openid-connect-code.md) ein.
 1. Aktivieren Sie das Feature für die Unterstützung der Mehrinstanzenfähigkeit in Azure AD, um für Ihre Testversion die Nutzung per einfachem Klick zu ermöglichen.
 
 ### <a name="single-tenant-solutions"></a>Lösungen mit nur einem Mandanten
 
 Mit Azure AD können Sie eine der folgenden Aktionen unterstützen:
 
-- Fügen Sie Gastbenutzer mithilfe von [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) zu Ihrem Verzeichnis hinzu.
+- Fügen Sie Gastbenutzer mithilfe von [Azure AD B2B](../active-directory/b2b/what-is-b2b.md) zu Ihrem Verzeichnis hinzu.
 - Sie können auch manuell Testversionen für Kunden einrichten, indem Sie die Veröffentlichungsoption **Kontaktformular** auswählen.
 - Entwickeln einer Testversion pro Kunde
 - Erstellen einer mehrinstanzenfähigen Beispieldemo-App, die SSO verwendet.

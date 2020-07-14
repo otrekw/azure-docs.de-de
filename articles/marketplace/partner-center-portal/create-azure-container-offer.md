@@ -1,30 +1,32 @@
 ---
 title: Erstellen eines Azure-Containerangebots – Azure Marketplace
 description: Hier wird erläutert, wie Sie ein Containerangebot für Azure Marketplace erstellen und dort veröffentlichen.
-author: mingshen
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 1a027eb4cb3351934738319f342afac8d8407e6f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+author: mingshen
+ms.author: mingshen
+ms.date: 06/17/2020
+ms.openlocfilehash: cea4a43724629793123098084098299e3915be7c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848803"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109657"
 ---
-# <a name="create-an-azure-container-offer"></a>Erstellen eines Azure-Containerangebots
+# <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Erstellen eines Azure-Containerangebots in Azure Marketplace
 
-In diesem Artikel wird beschrieben, wie Sie ein Containerangebot für Azure Marketplace erstellen und dort veröffentlichen. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), sofern Sie dies noch nicht getan haben. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
+In diesem Artikel wird beschrieben, wie Sie ein Containerangebot für Azure Marketplace erstellen und dort veröffentlichen. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](create-account.md), sofern Sie dies noch nicht getan haben. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+
 2. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
+
 3. Wählen Sie auf der Übersichtsseite die Option **+ Neues Angebot** > **Azure-Container** aus.
 
-    ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-azure-container.png)
+   ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-azure-container.png)
 
 > [!TIP]
 > Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in der digitalen Ladenzeile angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
@@ -50,10 +52,10 @@ Die Seite **Angebotsübersicht** zeigt eine visuelle Darstellung der zum Veröff
 
 Auf dieser Seite werden basierend auf dem aktuellen Status des Angebots unterschiedliche Links angezeigt. Beispiel:
 
-- Wenn das Angebot einen Entwurf darstellt: [Delete draft offer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer) (Angebotsentwurf löschen)
-- Wenn es sich um ein Liveangebot handelt: [Stop selling the offer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) (Angebot nicht mehr verkaufen)
-- Wenn das Angebot in der Vorschau ist: [Go-live](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval) (Live schalten)
-- Wenn Sie die Abmeldung beim Herausgeber nicht abgeschlossen haben, gehen Sie wie unter [Stornieren der Veröffentlichung](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing) beschrieben vor.
+- Wenn das Angebot einen Entwurf darstellt: [Delete draft offer](update-existing-offer.md#delete-a-draft-offer) (Angebotsentwurf löschen)
+- Wenn es sich um ein Liveangebot handelt: [Stop selling the offer](update-existing-offer.md#stop-selling-an-offer-or-plan) (Angebot nicht mehr verkaufen)
+- Wenn das Angebot in der Vorschau ist: [Go-live](publishing-status.md#publisher-approval) (Live schalten)
+- Wenn Sie die Abmeldung beim Herausgeber nicht abgeschlossen haben, gehen Sie wie unter [Stornieren der Veröffentlichung](update-existing-offer.md#cancel-publishing) beschrieben vor.
 
 ## <a name="offer-setup"></a>Angebotseinrichtung
 
@@ -65,12 +67,12 @@ Wenn Sie Ihr Angebot mithilfe des Partner Centers im kommerziellen Marketplace v
 
 1. **Wählen Sie ein Leadziel aus, an das wir Kundenleads senden sollen**. Das Partner Center unterstützt die folgenden CRM-Systeme:
 
-   - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-   - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-   - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+   - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+   - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+   - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
    > [!NOTE]
-   > Wenn Ihr CRM-System oben nicht aufgeführt ist, verwenden Sie eine [Azure-Tabelle](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) oder einen [HTTPS-Endpunkt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https), um die Leaddaten von Kunden zu speichern, und exportieren Sie die Daten dann in Ihr CRM-System.
+   > Wenn Ihr CRM-System oben nicht aufgeführt ist, verwenden Sie eine [Azure-Tabelle](commercial-marketplace-lead-management-instructions-azure-table.md) oder einen [HTTPS-Endpunkt](commercial-marketplace-lead-management-instructions-https.md), um die Leaddaten von Kunden zu speichern, und exportieren Sie die Daten dann in Ihr CRM-System.
 
 2. Verbinden Sie Ihr Angebot bei der Veröffentlichung im Partner Center mit dem Leadziel.
 3. Vergewissern Sie sich, dass die Verbindung mit dem Leadziel korrekt konfiguriert ist. Nach der Veröffentlichung Ihres Angebots im Partner Center überprüfen wir die Verbindung und senden Ihnen einen Testlead. Während Sie das Angebot vor der Liveschaltung als Vorschau anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu kaufen.
@@ -78,9 +80,9 @@ Wenn Sie Ihr Angebot mithilfe des Partner Centers im kommerziellen Marketplace v
 
 Hier finden Sie einige zusätzliche Ressourcen zur Leadverwaltung:
 
-- [Übersicht über die Leadverwaltung](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Häufig gestellte Fragen zur Leadverwaltung](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [Übersicht über die Leadverwaltung](commercial-marketplace-get-customer-leads.md)
+- [Häufig gestellte Fragen zur Leadverwaltung](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [Häufige Leadkonfigurationsfehler](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - [Übersicht über die Leadverwaltung](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) (PDF – vergewissern Sie sich, dass Ihr Popupblocker deaktiviert ist.)
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
@@ -91,7 +93,12 @@ Auf dieser Seite können Sie die Kategorien, die zum Gruppieren Ihres Angebots i
 
 #### <a name="category"></a>Category
 
-Wählen Sie mindestens eine und höchstens fünf Kategorien aus. Diese Kategorien werden verwendet, um Ihr Angebot in den geeigneten Marketplace-Suchbereichen zu platzieren, und werden auf der Detailseite Ihres Angebots angezeigt. Erläutern Sie in der Angebotsbeschreibung, inwiefern Ihr Angebot diesen Kategorien entspricht. Container werden unter **Container** und dann in der Kategorie **Containerimages** angezeigt.
+Wählen Sie Kategorien und Unterkategorien aus, um Ihr Angebot in den geeigneten Marketplace-Suchbereichen zu platzieren. Vergessen Sie nicht, in der Angebotsbeschreibung anzugeben, inwiefern Ihr Angebot diesen Kategorien entspricht. Wählen Sie Folgendes:
+
+- Mindestens eine und bis zu zwei Kategorien, einschließlich einer primären und einer sekundären Kategorie (optional).
+- Bis zu zwei Unterkategorien für jede primäre und/oder sekundäre Kategorie. Wenn keine Unterkategorie auf Ihr Angebot anwendbar ist, wählen Sie **Nicht zutreffend** aus.
+
+Eine vollständige Liste der Kategorien und Unterkategorien finden Sie unter [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md). Container werden immer unter **Container** und dann in der Kategorie **Containerimages** angezeigt.
 
 #### <a name="legal"></a>Rechtliche Hinweise
 
@@ -100,13 +107,13 @@ Sie müssen die Nutzungsbedingungen für das Angebot angeben. Es gibt zwei Optio
 - Verwenden des Standardvertrags für den kommerziellen Microsoft-Marketplace.
 - Angeben eigener Geschäftsbedingungen.
 
-##### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standardvertrag für den kommerziellen Microsoft-Marketplace
+#### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standardvertrag für den kommerziellen Microsoft-Marketplace
 
 Wir bieten eine Vorlage für einen Standardvertrag, um Ihnen Transaktionen im kommerziellen Marketplace zu erleichtern. Sie können sich entscheiden, Ihr Angebot unter dem Standardvertrag anzubieten, der von Kunden nur einmal markiert und akzeptiert werden muss. Dies ist eine gute Option, wenn Sie keine benutzerdefinierten Geschäftsbedingungen erstellen möchten.
 
-Weitere Informationen zum Standardvertrag finden Sie unter [Standardvertrag für den kommerziellen Microsoft-Marketplace](https://docs.microsoft.com/azure/marketplace/standard-contract). Sie können auch den [Standardvertrag](https://go.microsoft.com/fwlink/?linkid=2041178) als PDF-Datei herunterladen (achten Sie darauf, Ihren Popupblocker zu deaktivieren).
+Weitere Informationen zum Standardvertrag finden Sie unter [Standardvertrag für den kommerziellen Microsoft-Marketplace](../standard-contract.md). Sie können auch den [Standardvertrag](https://go.microsoft.com/fwlink/?linkid=2041178) als PDF-Datei herunterladen (achten Sie darauf, Ihren Popupblocker zu deaktivieren).
 
-Um den Standardvertrag zu verwenden, aktivieren Sie das Kontrollkästchen **Use the Standard Contract for Microsoft's commercial marketplace** (Standardvertrag für den kommerziellen Marketplace von Microsoft verwenden), und klicken Sie dann auf **Accept** (Akzeptieren).
+Um den Standardvertrag zu verwenden, aktivieren Sie die Option „**Use the Standard Contract for Microsoft's commercial marketplace](../standard-contract.md)“ (Standardvertrag für den kommerziellen Marketplace von Microsoft verwenden).
 
 > [!NOTE]
 > Nachdem Sie ein Angebot mit dem Standardvertrag für den kommerziellen Microsoft-Marketplace veröffentlicht haben, können Sie keine eigenen benutzerdefinierten Geschäftsbedingungen mehr verwenden. Entweder bieten Sie Ihre Lösung im Rahmen des Standardvertrags oder Ihrer eigenen Geschäftsbedingungen an.
@@ -177,7 +184,7 @@ Geben Sie im Abschnitt **CSP-Programm-Kontakt** den Link (**Marketingmaterial f�
 
 #### <a name="additional-marketplace-listing-resources"></a>Zusätzliche Ressourcen für Marketplace-Listen
 
-Weitere Informationen zum Erstellen von Angebotslistungen finden Sie unter [Bewährte Methoden für Angebotslistung](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
+Weitere Informationen zum Erstellen von Angebotslistungen finden Sie unter [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md).
 
 ### <a name="marketplace-images"></a>Marketplace-Bilder
 
@@ -239,9 +246,6 @@ Geben Sie Ihre Vorschauzielgruppe mithilfe der GUIDs der Azure-Abonnement-ID an,
 
 Fügen Sie mindestens eine Azure-Abonnement-ID hinzu, entweder einzeln (bis zu 10) oder durch Hochladen einer CSV-Datei (bis zu 100). Durch das Hinzufügen dieser Abonnement-IDs legen Sie fest, wer Ihr Angebot als Vorschau anzeigen kann, bevor es live veröffentlicht wird. Wenn Ihr Angebot bereits live geschaltet ist, können Sie eine Vorschauzielgruppe für das Testen von Änderungen oder Aktualisierungen Ihres Angebots auswählen.
 
-> [!NOTE]
-> Die Vorschauzielgruppe unterscheidet sich von einer privaten Zielgruppe. Eine **Vorschauzielgruppe** kann alle Angebotspläne sehen und überprüfen, bevor sie live im Marketplace verfügbar sind, einschließlich solcher, die nur für eine **private** Zielgruppe veröffentlicht werden (auf der Registerkarte „Verfügbarkeit“ festgelegt).
-
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ### <a name="plan-overview"></a>Planübersicht
@@ -276,22 +280,20 @@ Geben Sie im Feld **Planname** einen Namen für diesen Plan ein. Kunden sehen di
 
 Auf dieser Registerkarte können Sie auswählen, in welchen Clouds der Plan verfügbar sein soll. Ihre Antworten auf dieser Registerkarte haben Einfluss darauf, welche Felder auf anderen Registerkarten angezeigt werden.
 
-#### <a name="cloud-availability"></a>Cloudverfügbarkeit
+#### <a name="azure-regions"></a>Azure-Regionen
 
-Ihr Plan muss in mindestens einer Cloud verfügbar sein.
+Alle Pläne für Angebote für Azure-Container werden automatisch in **Azure Global** verfügbar gemacht.  Ihr Plan kann von Kunden in allen Azure-Regionen weltweit verwendet werden, die den kommerziellen Marketplace nutzen. Details finden Sie unter [Geografische Verfügbarkeit und Unterstützung von Währungen](../marketplace-geo-availability-currencies.md).
 
-Wählen Sie **Azure Global** aus, damit Ihr Plan von Kunden in allen Azure-Regionen weltweit verwendet werden kann, die den kommerziellen Marketplace nutzen. Details finden Sie unter [Geografische Verfügbarkeit und Unterstützung von Währungen](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
+Wählen Sie [**Azure Government**](../../azure-government/documentation-government-welcome.md) aus, um Ihre Lösung dort zu veröffentlichen. Dabei handelt es sich um eine Government Community Cloud mit kontrolliertem Zugang für Kunden von US-Behörden, siehe s](../marketplace-geo-availability-currencies.md). Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden für diese Cloudcommunity verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden).
 
-Wählen Sie [**Azure Government-Cloud**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) aus, um Ihre Lösung dort zu veröffentlichen. Dies ist eine Government-Community-Cloud mit kontrolliertem Zugriff für Kunden der US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- und Stammesgebietsebene sowie für Partner, die Kunden erbringen. Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden für diese Cloudcommunity verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden).
-
-Testen und bestätigen Sie Ihre Lösung vor dem [Veröffentlichen](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) innerhalb dieses Gebiets, da sich die Ergebnisse unterscheiden können. Beantragen Sie zum Erstellen und Testen Ihrer Lösung ein Testkonto für die [Microsoft Azure Government-Testversion](https://azure.microsoft.com/global-infrastructure/government/request/).
+Testen und bestätigen Sie Ihre Lösung vor dem [Veröffentlichen](../../azure-government/documentation-government-manage-marketplace-partners.md) innerhalb dieses Gebiets, da sich die Ergebnisse unterscheiden können. Beantragen Sie zum Erstellen und Testen Ihrer Lösung ein Testkonto für die [Microsoft Azure Government-Testversion](https://azure.microsoft.com/global-infrastructure/government/request/).
 
 > [!NOTE]
-> Nachdem ihr Plan veröffentlicht und in einer bestimmten Cloud verfügbar gemacht wurde, können Sie diese Cloud nicht mehr entfernen.
+> Nachdem Ihr Plan veröffentlicht und in einer bestimmten Region verfügbar gemacht wurde, können Sie diese Region nicht mehr entfernen.
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Government Cloud-Zertifizierungen
+#### <a name="azure-government-certifications"></a>Azure Government-Zertifizierungen
 
-Diese Option ist nur sichtbar, wenn **Azure Government-Cloud** unter **Cloudverfügbarkeit** ausgewählt ist.
+Diese Option ist nur sichtbar, wenn **Azure Government** unter **Cloudverfügbarkeit** ausgewählt ist.
 
 Azure Government-Dienste verarbeiten Daten, die bestimmten behördlichen Vorschriften und Anforderungen unterliegen. Beispielsweise FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 und CJIS.
 
@@ -342,7 +344,7 @@ Dieses Kontrollkästchen wird in den folgenden Fällen verwendet:
 
 Containerimages müssen in einer privaten [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)-Instanz gehostet werden. Auf der Registerkarte **Technische Konfiguration** geben Sie Referenzinformationen für Ihr Containerimagerepository innerhalb der Azure Container Registry-Instanz an.
 
-Nach dem Veröffentlichen des Angebots wird Ihr Containerimage in Azure Marketplace in eine bestimmte öffentliche Containerregistrierung kopiert. Alle Anforderungen zur Verwendung Ihrer Containerimages werden mit der öffentlichen Azure Marketplace-Containerregistrierung verarbeitet, nicht Ihrer private Containerregistrierung. Weitere Informationen finden Sie unter [Vorbereiten Ihrer technischen Azure-Containerressourcen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets).
+Nach dem Veröffentlichen des Angebots wird Ihr Containerimage in Azure Marketplace in eine bestimmte öffentliche Containerregistrierung kopiert. Alle Anforderungen zur Verwendung Ihrer Containerimages werden mit der öffentlichen Azure Marketplace-Containerregistrierung verarbeitet, nicht Ihrer private Containerregistrierung. Weitere Informationen finden Sie unter [Vorbereiten Ihrer technischen Azure-Containerressourcen](create-azure-container-technical-assets.md).
 
 ### <a name="image-repository-details"></a>Details des Imagerepositorys
 
@@ -350,11 +352,11 @@ Geben Sie auf der Registerkarte **Image repository details** (Details des Imager
 
 **Azure-Abonnement-ID**: Geben Sie die Abonnement-ID an, unter der der Verbrauch gemeldet und Dienste für die Azure Container Registry-Instanz mit Ihrem Containerimage abgerechnet werden. Sie finden diese ID auf der Seite [Abonnements](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) im Azure-Portal.
 
-**Azure-Ressourcengruppenname**: Geben Sie den Namen der [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) an, die die Azure Container Registry-Instanz mit Ihrem Containerimage enthält. Der Zugriff auf die Ressourcengruppe muss über die Abonnement-ID (oben) möglich sein. Sie finden den Namen im Azure-Portal auf der Seite [Ressourcengruppen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups).
+**Azure-Ressourcengruppenname**: Geben Sie den Namen der [Ressourcengruppe](../../azure-resource-manager/management/manage-resource-groups-portal.md) an, die die Azure Container Registry-Instanz mit Ihrem Containerimage enthält. Der Zugriff auf die Ressourcengruppe muss über die Abonnement-ID (oben) möglich sein. Sie finden den Namen im Azure-Portal auf der Seite [Ressourcengruppen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups).
 
-**Azure Container Registry-Name**: Geben Sie den Namen der [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro)-Instanz an, die Ihr Containerimage enthält. Die Containerregistrierung muss der Azure-Ressourcengruppe zugeordnet sein, die Sie zuvor angegeben haben. Geben Sie nur den Registrierungsnamen an, nicht den vollständigen Namen des Anmeldeservers. Achten Sie unbedingt darauf, **azurecr.io** nicht in den Namen einzuschließen. Sie finden den Registrierungsnamen auf der Seite [Containerregistrierungen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) im Azure-Portal.
+**Azure Container Registry-Name**: Geben Sie den Namen der [Azure Container Registry](../../container-registry/container-registry-intro.md)-Instanz an, die Ihr Containerimage enthält. Die Containerregistrierung muss der Azure-Ressourcengruppe zugeordnet sein, die Sie zuvor angegeben haben. Geben Sie nur den Registrierungsnamen an, nicht den vollständigen Namen des Anmeldeservers. Achten Sie unbedingt darauf, **azurecr.io** nicht in den Namen einzuschließen. Sie finden den Registrierungsnamen auf der Seite [Containerregistrierungen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) im Azure-Portal.
 
-**Administratorbenutzername für die Azure Container Registry**: Geben Sie den [Administratorbenutzernamen](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) an, der mit der Azure Container Registry-Instanz mit Ihrem Containerimage verknüpft ist. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Um den Administratorbenutzernamen und das zugeordnete Kennwort abzurufen, legen Sie die Eigenschaft **admin-enabled** (Von Administrator aktiviert) an der Azure-Befehlszeilenschnittstelle auf **True** fest. Optional können Sie im Azure-Portal **Administratorbenutzer** auf **Aktivieren** festlegen.
+**Administratorbenutzername für die Azure Container Registry**: Geben Sie den [Administratorbenutzernamen](../../container-registry/container-registry-authentication.md#admin-account) an, der mit der Azure Container Registry-Instanz mit Ihrem Containerimage verknüpft ist. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Um den Administratorbenutzernamen und das zugeordnete Kennwort abzurufen, legen Sie die Eigenschaft **admin-enabled** (Von Administrator aktiviert) an der Azure-Befehlszeilenschnittstelle auf **True** fest. Optional können Sie im Azure-Portal **Administratorbenutzer** auf **Aktivieren** festlegen.
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Darstellung des Dialogfelds „Containerregistrierung aktualisieren“.":::
 
@@ -362,7 +364,7 @@ Geben Sie auf der Registerkarte **Image repository details** (Details des Imager
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Menü „Zugriffsschlüssel“.":::
 
-**Repositoryname innerhalb der Azure Container Registry**. Geben Sie den Namen des Azure Container Registry-Repositorys ein, das Ihr Image enthält. Sie geben den Namen des Repositorys an, wenn Sie das Image in die Registrierung pushen. Sie finden den Namen des Repositorys auf der Seite [Containerregistrierung](https://azure.microsoft.com/services/container-registry/) > **Repositorys**. Weitere Informationen finden Sie unter [Anzeigen von Containerregistrierungsrepositorys im Azure-Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories).
+**Repositoryname innerhalb der Azure Container Registry**. Geben Sie den Namen des Azure Container Registry-Repositorys ein, das Ihr Image enthält. Sie geben den Namen des Repositorys an, wenn Sie das Image in die Registrierung pushen. Sie finden den Namen des Repositorys auf der Seite [Containerregistrierung](https://azure.microsoft.com/services/container-registry/) > **Repositorys**. Weitere Informationen finden Sie unter [Anzeigen von Containerregistrierungsrepositorys im Azure-Portal](../../container-registry/container-registry-repositories.md).
 
 > [!NOTE]
 > Nachdem der Name festgelegt wurde, kann er nicht mehr geändert werden. Verwenden Sie für jedes Angebot in Ihrem Konto einen eindeutigen Namen.
@@ -375,7 +377,7 @@ Kunden müssen imstande sein, Updates beim Azure Marketplace automatisch abzuruf
 
 Dieses Feld muss ein **aktuellstes** Tag enthalten, das auf die letzte Version Ihres Images auf allen unterstützten Plattformen verweist. Es muss außerdem ein Versionstag enthalten (beispielsweise beginnend mit xx.xx.xx, wobei xx eine Zahl ist). Kunden sollten [Manifesttags](https://github.com/estesp/manifest-tool) verwenden, um mehrere Zielplattformen anzugeben. Zudem müssen alle Tags, auf die von einem Manifesttag verwiesen wird, hinzugefügt werden, damit wir sie hochladen können.
 
-Alle Manifesttags (mit Ausnahme des aktuellsten Tags) müssen entweder mit X.Y **-**  oder X.Y.Z- beginnen, wobei X, Y und Z ganze Zahlen sind. Wenn beispielsweise ein **aktuellstes** Tag auf 1.0.1-linux-x64, 1.0.1-linux-arm32 und 1.0.1-windows-arm32 verweist, müssen dem Feld diese sechs Tags hinzugefügt werden. Weitere Informationen finden Sie unter [Vorbereiten Ihrer technischen Azure-Containerressourcen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets).
+Alle Manifesttags (mit Ausnahme des aktuellsten Tags) müssen entweder mit X.Y **-**  oder X.Y.Z- beginnen, wobei X, Y und Z ganze Zahlen sind. Wenn beispielsweise ein **aktuellstes** Tag auf 1.0.1-linux-x64, 1.0.1-linux-arm32 und 1.0.1-windows-arm32 verweist, müssen dem Feld diese sechs Tags hinzugefügt werden. Weitere Informationen finden Sie unter [Vorbereiten Ihrer technischen Azure-Containerressourcen](create-azure-container-technical-assets.md).
 
 > [!NOTE]
 > Sie sollten Ihrem Image unbedingt ein Testtag hinzufügen, damit Sie das Image beim Testen erkennen können.
@@ -398,8 +400,8 @@ Um das Angebot zur Veröffentlichung einzureichen, wählen Sie **Veröffentliche
 
 Wir senden Ihnen eine E-Mail, um Ihnen mitzuteilen, wann eine Vorschauversion des Angebots zur Überprüfung und Genehmigung verfügbar ist.
 
-Um Ihr Angebot für die Öffentlichkeit zugänglich zu machen (oder für eine private Zielgruppe, wenn es sich um ein privates Angebot handelt), navigieren Sie zum Partner Center, und wählen Sie **Live schalten** aus.
+Kehren Sie zu Partner Center zurück, und wählen Sie **Live schalten** aus, um das Angebot für die Öffentlichkeit zu veröffentlichen.
 
 ## <a name="next-step"></a>Nächster Schritt
 
-- [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](update-existing-offer.md)

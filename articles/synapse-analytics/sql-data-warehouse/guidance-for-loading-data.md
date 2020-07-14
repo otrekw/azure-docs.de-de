@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e170a789727fb0de36705895245cc638d30ee3d7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 10a6c2e4f6f9dcbb29eb16cbfabd8fba31668f06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201632"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Bewährte Methoden für das Laden von Daten mit einem Synapse SQL-Pool
 
@@ -28,8 +28,6 @@ Zur Minimierung der Latenz sollten sich Speicherebene und SQL-Pool am gleichen O
 
 Beim Exportieren von Daten in ein ORC-Dateiformat erhalten Sie unter Umständen Java-Fehler vom Typ „Nicht genügend Speicherplatz“, falls umfangreiche Textspalten vorhanden sind. Diese Einschränkung können Sie umgehen, indem Sie nur eine Teilmenge der Spalten exportieren.
 
-Mit PolyBase können keine Zeilen geladen werden, die Daten mit mehr als einer Million Bytes enthalten. Wenn Sie Daten in Textdateien in Azure Blob Storage oder Azure Data Lake Store platzieren, müssen diese jeweils Daten mit weniger als einer Million Bytes enthalten. Dieses Bytelimit gilt unabhängig vom Tabellenschema.
-
 Alle Dateiformate weisen unterschiedliche Leistungsmerkmale auf. Am schnellsten können Sie komprimierte, durch Trennzeichen getrennte Textdateien laden. Der Unterschied zwischen UTF-8 und UTF-16 wirkt sich nur minimal auf die Leistung aus.
 
 Teilen Sie große komprimierte Dateien in kleinere komprimierte Dateien.
@@ -38,38 +36,47 @@ Teilen Sie große komprimierte Dateien in kleinere komprimierte Dateien.
 
 Führen Sie immer nur einen einzelnen Ladeauftrag aus, um die bestmögliche Ladegeschwindigkeit zu erzielen. Sollte das nicht möglich sein, führen Sie eine möglichst geringe Anzahl von Ladevorgängen gleichzeitig aus. Wenn ein umfangreicher Ladeauftrag ansteht, empfiehlt es sich unter Umständen, Ihren SQL-Pool Data Warehouse vor dem Laden zentral hochzuskalieren.
 
-Erstellen Sie „Ladebenutzer“, die für das Ausführen von Ladevorgängen vorgesehen sind, um Ladevorgänge mit den geeigneten Computeressourcen durchzuführen. Weisen Sie jedem Ladebenutzer eine bestimmte Ressourcenklasse oder Arbeitsauslastungsgruppe zu. Melden Sie sich zum Ausführen eines Ladevorgangs als ein Ladebenutzer an, und führen Sie den Ladevorgang aus. Der Ladevorgang wird mit der Ressourcenklasse des Benutzers ausgeführt.  
-
-> [!NOTE]
-> Diese Methode ist einfacher als der Versuch, die Ressourcenklasse eines Benutzers zu ändern, um die jeweilige Ressourcenklassenanforderung zu erfüllen.
+Erstellen Sie „Ladebenutzer“, die für das Ausführen von Ladevorgängen vorgesehen sind, um Ladevorgänge mit den geeigneten Computeressourcen durchzuführen. Klassifizieren Sie jeden Ladebenutzer mit einer bestimmten Arbeitsauslastungsgruppe. Melden Sie sich zum Ausführen eines Ladevorgangs als ein Ladebenutzer an, und führen Sie den Ladevorgang aus. Der Ladevorgang wird mit der Arbeitsauslastungsgruppe des Benutzers ausgeführt.  
 
 ### <a name="example-of-creating-a-loading-user"></a>Beispiel für die Erstellung eines Ladebenutzers
 
-In diesem Beispiel wird ein Ladebenutzer für die Ressourcenklasse „staticrc20“ erstellt. Der erste Schritt umfasst das **Herstellen einer Verbindung mit dem Master** und das Erstellen einer Anmeldung.
+In diesem Beispiel wird ein für eine bestimmte Arbeitsauslastungsgruppe klassifizierter Ladebenutzer erstellt. Der erste Schritt umfasst das **Herstellen einer Verbindung mit dem Master** und das Erstellen einer Anmeldung.
 
 ```sql
    -- Connect to master
-   CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
+   CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-Stellen Sie eine Verbindung mit dem SQL-Pool her, und erstellen Sie einen Benutzer. Beim folgenden Code wird vorausgesetzt, dass Sie über eine Verbindung mit der Datenbank „mySampleDataWarehouse“ verfügen. Es wird veranschaulicht, wie Sie den Benutzer „LoaderRC20“ erstellen und ihm die CONTROL-Berechtigung für eine Datenbank gewähren. Anschließend wird der Benutzer als Mitglied der Datenbankrolle „staticrc20“ hinzugefügt.  
+Stellen Sie eine Verbindung mit dem SQL-Pool her, und erstellen Sie einen Benutzer. Beim folgenden Code wird vorausgesetzt, dass Sie über eine Verbindung mit der Datenbank „mySampleDataWarehouse“ verfügen. Es wird gezeigt, wie ein Benutzer namens „loader“ erstellt wird, und er erhält Berechtigungen zum Erstellen von Tabellen und Laden mithilfe der [COPY-Anweisung](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Anschließend wird der Benutzer für die Arbeitsauslastungsgruppe DataLoads mit maximalen Ressourcen klassifiziert. 
 
 ```sql
-   -- Connect to the database
-   CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
-   GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
-   EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
+   -- Connect to the SQL pool
+   CREATE USER loader FOR LOGIN loader;
+   GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
+   GRANT INSERT ON <yourtablename> TO loader;
+   GRANT SELECT ON <yourtablename> TO loader;
+   GRANT CREATE TABLE TO loader;
+   GRANT ALTER ON SCHEMA::dbo TO loader;
+   
+   CREATE WORKLOAD GROUP DataLoads
+   WITH ( 
+      MIN_PERCENTAGE_RESOURCE = 100
+       ,CAP_PERCENTAGE_RESOURCE = 100
+       ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 100
+    );
+
+   CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
+   WITH (
+         WORKLOAD_GROUP = 'DataLoads'
+       ,MEMBERNAME = 'loader'
+   );
 ```
 
-Melden Sie sich zum Ausführen eines Ladevorgangs mit Ressourcen für die Ressourcenklasse „staticRC20“ als „LoaderRC20“ an, und führen Sie den Ladevorgang aus.
+Um einen Ladevorgang mit Ressourcen für die Arbeitsauslastungsgruppe auszuführen, melden Sie sich als „loader“ an, und führen Sie den Ladevorgang aus.
 
-Führen Sie Ladevorgänge nicht unter dynamischen Ressourcenklassen, sondern unter statischen Ressourcenklassen aus. Wenn Sie die statischen Ressourcenklassen verwenden, ist unabhängig von Ihren [Data Warehouse-Einheiten](what-is-a-data-warehouse-unit-dwu-cdwu.md) garantiert, dass dieselben Ressourcen genutzt werden. Wenn Sie eine dynamische Ressourcenklasse verwenden, variieren die Ressourcen je nach Ihrer Dienstebene.
+## <a name="allowing-multiple-users-to-load-polybase"></a>Ermöglichen von Ladevorgängen für mehrere Benutzer (PolyBase)
 
-Für dynamische Klassen bedeutet eine niedrigere Dienstebene, dass Sie für Ihren Ladebenutzer wahrscheinlich eine größere Ressourcenklasse nutzen müssen.
-
-## <a name="allowing-multiple-users-to-load"></a>Ermöglichen von Ladevorgängen für mehrere Benutzer
-
-Oftmals müssen mehrere Benutzer in der Lage sein, Daten in einen SQL-Pool zu laden. Das Laden mit [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) setzt CONTROL-Berechtigungen der Datenbank voraus.  Die CONTROL-Berechtigung erteilt Steuerungszugriff auf alle Schemas.
+Oftmals müssen mehrere Benutzer in der Lage sein, Daten in einen SQL-Pool zu laden. Das Laden mit [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (PolyBase) setzt CONTROL-Berechtigungen der Datenbank voraus.  Die CONTROL-Berechtigung erteilt Steuerungszugriff auf alle Schemas.
 
 Unter Umständen sollen aber nicht alle Benutzer, die Daten laden, über Steuerungszugriff auf alle Schemas verfügen. Berechtigungen können mithilfe der DENY CONTROL-Anweisung eingeschränkt werden.
 
@@ -97,14 +104,14 @@ Columnstore-Indizes erfordern große Mengen an Arbeitsspeicher, um Daten in Zeil
 Wenn der Arbeitsspeicher knapp ist, können für den Columnstore-Index unter Umständen nicht die maximalen Komprimierungsraten erzielt werden. Dieses Szenario wirkt sich wiederum auf die Abfrageleistung aus. Ausführliche Informationen hierzu finden Sie unter [Maximieren der Zeilengruppenqualität für Columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 - Verwenden Sie Ladebenutzer, die Mitglieder einer mittelgroßen oder großen Ressourcenklasse sind, um sicherzustellen, dass der Ladebenutzer über genügend Arbeitsspeicher zur Erreichung der maximalen Komprimierungsraten verfügt.
-- Laden Sie eine ausreichende Zahl von Zeilen, um neue Zeilengruppen vollständig zu füllen. Während eines Massenladevorgangs werden alle 1.048.576 Zeilen im Columnstore direkt als vollständige Zeilengruppe komprimiert. Ladevorgänge mit weniger als 102.400 Zeilen senden die Zeilen an den Deltastore, in dem Zeilen in einem B-Strukturindex gespeichert werden.
+- Laden Sie eine ausreichende Zahl von Zeilen, um neue Zeilengruppen vollständig zu füllen. Während eines Massenladevorgangs werden alle 1.048.576 Zeilen im Columnstore direkt als vollständige Zeilengruppe komprimiert. Ladevorgänge mit weniger als 102.400 Zeilen senden die Zeilen an den Deltaspeicher, in dem Zeilen in einem B-Strukturindex gespeichert werden.
 
 > [!NOTE]
 > Wenn Sie eine zu kleine Zahl von Zeilen laden, werden diese ggf. allesamt an den Deltastore weitergeleitet und nicht sofort in das Columnstore-Format komprimiert.
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Vergrößern von Batches bei Verwendung der SqLBulkCopy-API oder von bcp
 
-Beim Laden mit PolyBase wird der höchste Durchsatz für einen SQL-Pool erzielt. Falls Sie zum Laden nicht PolyBase verwenden können, sondern die [SqLBulkCopy-API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oder [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) nutzen müssen, sollten Sie für einen höheren Durchsatz den Batch vergrößern.
+Beim Laden mit der COPY-Anweisung wird der höchste Durchsatz für einen SQL-Pool erzielt. Falls Sie zum Laden nicht die COPY-Anweisung verwenden können, sondern die [SqLBulkCopy-API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oder [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) nutzen müssen, sollten Sie für einen höheren Durchsatz den Batch vergrößern.
 
 > [!TIP]
 > Eine Batchgröße zwischen 100.000 und einer Million Zeilen ist der empfohlene Ausgangswert zum Ermitteln der optimalen Batchkapazität.
@@ -142,7 +149,7 @@ create statistics [Speed] on [Customer_Speed] ([Speed]);
 create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 ```
 
-## <a name="rotate-storage-keys"></a>Durchführen einer Rotation von Speicherschlüsseln
+## <a name="rotate-storage-keys-polybase"></a>Durchführen einer Rotation von Speicherschlüsseln (PolyBase)
 
 Eine bewährte Sicherheitsmethode besteht darin, den Zugriffsschlüssel für Ihren Blobspeicher regelmäßig zu ändern. Sie verfügen über zwei Speicherschlüssel für Ihr Blobspeicherkonto und haben somit die Möglichkeit, einen Schlüsselübergang durchzuführen.
 
@@ -168,6 +175,6 @@ Es sind keine weiteren Änderungen an zugrunde liegenden externen Datenquellen e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu PolyBase und zum Entwerfen eines ELT-Prozesses (Extrahieren, Laden und Transformieren) finden Sie unter [Designing Extract, Load, and Transform (ELT) for Azure SQL Data Warehouse](design-elt-data-loading.md) (ELT-Entwurf (Extrahieren, Laden und Transformieren) für Azure SQL Data Warehouse).
-- Ein Tutorial zum Ladevorgang finden Sie unter [Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage in Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
+- Weitere Informationen zur COPY-Anweisung oder zu PolyBase beim Entwerfen eines ELT-Prozesses (Extrahieren, Laden und Transformieren) finden Sie unter [Datenladestrategien für Synapse SQL-Pools](design-elt-data-loading.md).
+- Ein Tutorial zum Ladevorgang finden Sie unter [Tutorial: Laden des New York Taxicab-Datasets](load-data-from-azure-blob-storage-using-polybase.md).
 - Informationen zum Überwachen von Datenladevorgängen finden Sie unter [Überwachen Ihrer Workload mit dynamischen Verwaltungssichten](sql-data-warehouse-manage-monitor.md).

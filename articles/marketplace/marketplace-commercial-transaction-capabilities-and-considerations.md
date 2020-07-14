@@ -1,18 +1,16 @@
 ---
 title: Transaktionsfunktionen im kommerziellen Microsoft Marketplace
 description: In diesem Artikel werden Überlegungen zur Preisgestaltung, Abrechnung, Rechnungsstellung und Auszahlung für die Transaktionsoption im kommerziellen Marketplace beschrieben.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 8818b06e84f6ffe05398087c4aaeba282adc8b2e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 06/15/2020
+ms.openlocfilehash: 653c55fa7476fa5fed077002db226297a33dfef6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298209"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119428"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
@@ -42,7 +40,7 @@ Die Veröffentlichungsoption „Transaktion“ wird derzeit für die folgenden A
 
 ### <a name="billing-infrastructure-costs"></a>Abrechnung von Infrastrukturkosten
 
-Für **virtuelle Computer und Azure-Anwendungen** werden die Nutzungsgebühren für Azure-Infrastruktur im Azure-Abonnement des Kunden in Rechnung gestellt. Auf der Rechnung des Kunden werden die Infrastrukturnutzungsgebühren separat von den Lizenzgebühren des Softwareanbieters ausgewiesen.
+Für **virtuelle Computer** und **Azure-Anwendungen** werden die Nutzungsgebühren für Azure-Infrastruktur im Azure-Abonnement des Kunden in Rechnung gestellt. Auf der Rechnung des Kunden werden die Infrastrukturnutzungsgebühren separat von den Lizenzgebühren des Softwareanbieters ausgewiesen.
 
 Bei **SaaS-Apps** müssen Sie als Herausgeber die Nutzungsgebühren für Azure-Infrastruktur und Softwarelizenzgebühren als einen Kostenposten verrechnen.  Diese werden dem Kunden als Pauschalgebühr angegeben. Die Nutzung der Azure-Infrastruktur wird verwaltet und dem Partner direkt in Rechnung gestellt. Tatsächliche Nutzungsgebühren für die Infrastruktur werden dem Kunden nicht angezeigt. Herausgeber entscheiden sich in der Regel dafür, die Nutzungsgebühren für Azure-Infrastruktur in ihren Softwarelizenzpreis einfließen zu lassen. Softwarelizenzgebühren werden nicht gemessen oder nutzungsabhängig berechnet.
 
@@ -51,8 +49,8 @@ Bei **SaaS-Apps** müssen Sie als Herausgeber die Nutzungsgebühren für Azure-I
 Je nach verwendeter Transaktionsoption fallen folgende Softwarelizenzgebühren an:
 
 - **Kostenlos**: Keine Kosten für Softwarelizenzen.
-- **Bring-Your-Own-License (BYOL, Verwendung Ihrer eigenen Lizenz)** : Alle anfallenden Gebühren für Softwarelizenzen werden direkt zwischen Herausgeber und Kunde geregelt. Microsoft wickelt nur die Nutzungsgebühren für Azure-Infrastruktur ab. Dies gilt nur für Virtual Machines und Azure-Anwendungen.
-- **Nutzungsbasierte Bezahlung**: Softwarelizenzgebühren werden basierend auf der verwendeten Azure-Infrastruktur als Preis pro Stunde und pro Kern (vCPU) ausgewiesen. Dies gilt nur für Virtual Machines und Azure-Anwendungen.
+- **Bring-Your-Own-License (BYOL, Verwendung Ihrer eigenen Lizenz)** : Alle anfallenden Gebühren für Softwarelizenzen werden direkt zwischen Herausgeber und Kunde geregelt. Microsoft wickelt nur die Nutzungsgebühren für Azure-Infrastruktur ab. Dies gilt nur für virtuelle Computer und Azure-Anwendungen.
+- **Nutzungsbasierte Bezahlung**: Softwarelizenzgebühren werden basierend auf der verwendeten Azure-Infrastruktur als Preis pro Stunde und pro Kern (vCPU) ausgewiesen. Dies gilt nur für virtuelle Computer und Azure-Anwendungen.
 - **Abonnementpreise**: Softwarelizenzgebühren fallen als monatliche oder jährliche wiederkehrende Gebühren an, die als Pauschalgebühr oder pro Arbeitsplatz berechnet werden. Dies gilt nur für SaaS-Apps (monatlich oder jährlich) und verwaltete Azure-Apps (monatlich).
 - **Kostenlose Testversion der Software**: Keine Kosten für Softwarelizenzen für 30 bzw. 90 Tage.
 
@@ -136,7 +134,7 @@ In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rech
 |Microsoft zahlt Ihnen 80% Ihrer Lizenzkosten <br> \* Für jede qualifizierte SaaS-App zahlt Microsoft 90 % Ihrer Lizenzkosten.   |   80,00 USD pro Monat <br> \* 90,00 USD pro Monat    |
 |Microsoft behält 20% Ihrer Lizenzkosten ein <br> \* Für jede qualifizierte SaaS-App behält Microsoft 10 % Ihrer Lizenzkosten.  |  20,00 USD pro Monat <br> \* 10,00 USD     |
 
-Für bestimmte SaaS-Produkte, die Sie in unserem kommerziellen Marketplace veröffentlichen, reduziert Microsoft die **Marketplace-Dienstgebühr** von 20 % (wie in der Microsoft-Herausgebervereinbarung angegeben) auf 10 %. Damit Ihr Angebot qualifiziert ist, muss mindestens eines Ihrer Angebote von Microsoft als bereit für IP-Co-Selling oder als priorisiert für IP-Co-Selling gekennzeichnet sein. Die Berechtigung muss mindestens fünf Arbeitstage vor dem Ende des vorherigen Kalendermonats bestehen, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann. Die reduzierte Marketplace-Dienstgebühr gilt nicht für virtuelle Computer, verwaltete Apps oder andere Produkte, die über den kommerziellen Marketplace zur Verfügung gestellt werden. Diese reduzierte Gebühr ist für qualifizierte Angebote verfügbar, wobei die Lizenzgebühren von Microsoft zwischen dem 1. Mai 2019 und dem 30. Juni 2020 vereinnahmt werden. Nach diesem Zeitpunkt gilt für die Gebühr wieder der normale Betrag.
+Für bestimmte SaaS-Produkte, die Sie im kommerziellen Marketplace veröffentlichen, reduziert Microsoft die **Marketplace-Dienstgebühr** von 20 % (wie in der Microsoft-Herausgebervereinbarung angegeben) auf 10 %. Damit Ihr Angebot qualifiziert ist, muss mindestens eines Ihrer Angebote von Microsoft als bereit für IP-Co-Selling oder als priorisiert für IP-Co-Selling gekennzeichnet sein. Die Berechtigung muss mindestens fünf Arbeitstage vor dem Ende des vorherigen Kalendermonats bestehen, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann. Die reduzierte Marketplace-Dienstgebühr gilt nicht für virtuelle Computer, verwaltete Apps oder andere Produkte, die über den kommerziellen Marketplace zur Verfügung gestellt werden. Diese reduzierte Gebühr ist für qualifizierte Angebote verfügbar, wobei die Lizenzgebühren von Microsoft zwischen dem 1. Mai 2019 und dem 30. Juni 2020 vereinnahmt werden. Nach diesem Zeitpunkt gilt für die Gebühr wieder der normale Betrag.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Rechnungsstellung für den Kunden, Zahlung, Abrechnung und Inkasso
 
@@ -176,14 +174,17 @@ In diesem Abschnitt werden die Transaktionsanforderungen für verschiedene Angeb
 - Für die Veröffentlichungsoption „Transaktion“ sind unabhängig vom Preismodell des Angebots ein Microsoft-Konto und Finanzinformationen erforderlich.
 - Obligatorische Finanzinformationen sind beispielsweise ein Auszahlungskonto und ein Steuerprofil.
 
-Weitere Informationen zum Einrichten dieser Konten finden Sie unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+Weitere Informationen zum Einrichten dieser Konten finden Sie unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](partner-center-portal/manage-account.md).
 
 ### <a name="requirements-for-specific-offer-types"></a>Anforderungen für bestimmte Angebotstypen
 
 Die Veröffentlichungsoption „Transaktion“ ist nur für die folgenden Typen von Marketplace-Angeboten verfügbar:
 
 - **Virtueller Computer**: Wählen Sie aus den Preismodellen „Kostenlos“, „Bring-Your-Own-License“ oder „Nutzungsbasierte Bezahlung“ aus, und weisen Sie sie als auf Angebotsebene definierte SKUs aus. Auf der Azure-Rechnung des Kunden weist Microsoft die Softwarelizenzgebühren des Herausgebers getrennt von den zugrunde liegenden Azure-Infrastrukturgebühren aus. Azure-Infrastrukturgebühren hängen von der Verwendung der Software des Herausgebers ab.
-- **Azure-Anwendungen: Lösungsvorlage oder verwaltete App**: Muss einen oder mehrere virtuelle Computer bereitstellen und zieht sich durch die Summe der Preise für virtuelle Computer. Für verwaltete Apps mit einem Einzelplan kann anstelle der Preise für virtuelle Computer ein pauschales Monatsabonnement als Preismodell gewählt werden. In einigen Fällen werden dem Kunden die Nutzungsgebühren der Azure-Infrastruktur getrennt von den Softwarelizenzgebühren in Rechnung gestellt – aber auf derselben Abrechnung. Wenn Sie allerdings ein Angebot für eine verwaltete App für ISV-Infrastrukturgebühren konfigurieren, werden die Azure-Ressourcen dem Herausgeber berechnet. Für den Kunden wird eine Pauschalgebühr verwendet, die die Kosten für die Infrastruktur, Softwarelizenzen und Verwaltungsdienste abdeckt.
+
+- **Azure-Anwendung: Lösungsvorlage oder verwaltete App**: Muss einen oder mehrere virtuelle Computer bereitstellen und zieht sich durch die Summe der Preise für virtuelle Computer. Für verwaltete Apps mit einem Einzelplan kann anstelle der Preise für virtuelle Computer ein pauschales Monatsabonnement als Preismodell gewählt werden. In einigen Fällen werden dem Kunden die Nutzungsgebühren der Azure-Infrastruktur getrennt von den Softwarelizenzgebühren in Rechnung gestellt – aber auf derselben Abrechnung. Wenn Sie allerdings ein Angebot für eine verwaltete App für ISV-Infrastrukturgebühren konfigurieren, werden die Azure-Ressourcen dem Herausgeber berechnet. Für den Kunden wird eine Pauschalgebühr verwendet, die die Kosten für die Infrastruktur, Softwarelizenzen und Verwaltungsdienste abdeckt.
+
+- **SaaS-Anwendung**: Muss eine mehrinstanzenfähige Lösung sein, [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) für die Authentifizierung verwenden und mit den [SaaS-Fulfillment-APIs](partner-center-portal/pc-saas-fulfillment-api-v2.md) integriert sein. Die Nutzung der Azure-Infrastruktur wird direkt mit Ihnen (dem Partner) verwaltet und abgerechnet. Daher sind Sie als einzige Kostenstelle für Azure-Infrastruktur-Nutzungsgebühren und Softwarelizenzgebühren verantwortlich. Ausführliche Anleitungen erhalten Sie unter [Erstellen eines neuen SaaS-Angebots im kommerziellen Marketplace](partner-center-portal/create-new-saas-offer.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81534464"
 ---
 # <a name="application-configuration-options"></a>Anwendungskonfigurationsoptionen
@@ -35,7 +35,7 @@ In Ihrem Code initialisieren Sie eine neue öffentliche oder vertrauliche Client
 
 Die Autorität ist eine URL, die ein Verzeichnis angibt, aus dem die MSAL Token anfordern kann. Gängige Autoritäten sind folgende:
 
-- https\://login.microsoftonline.com/\<Mandant\>/, wobei &lt;Mandant&gt; die Mandanten-ID des Azure AD-Mandanten (Azure Active Directory) oder eine Domäne ist, die diesem Azure AD-Mandanten zugeordnet ist. Diese wird nur für die Anmeldung von Benutzern einer bestimmten Organisation verwendet.
+- https\://login.microsoftonline.com/\<tenant\>/, wobei &lt;tenant&gt; die Mandanten-ID des Azure AD-Mandanten (Azure Active Directory) oder eine Domäne ist, die diesem Azure AD-Mandanten zugeordnet ist. Diese wird nur für die Anmeldung von Benutzern einer bestimmten Organisation verwendet.
 - https\://login.microsoftonline.com/common/. Hiermit werden Benutzer mit Geschäfts-, Schul- und Unikonten oder persönlichen Microsoft-Konten angemeldet.
 - https\://login.microsoftonline.com/organizations/. Damit werden Benutzer mit Geschäfts-, Schul- oder Unikonten angemeldet.
 - https\://login.microsoftonline.com/consumers/. Hiermit werden Benutzer angemeldet, die nur über ein persönliches Microsoft-Konto verfügen (früher als Windows Live ID-Konto bezeichnet).

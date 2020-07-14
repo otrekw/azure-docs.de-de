@@ -3,12 +3,12 @@ title: Sichern von Dateien und Ordnern – Häufig gestellte Fragen
 description: Hierin geht es um häufig gestellte Fragen zum Sichern von Dateien und Ordnern mit Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 0ecff00fdfaf9b0ca494cd1c78d0a5e16b198995
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254749"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056173"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Häufig gestellte Fragen zum Sichern von Dateien und Ordnern
 
@@ -159,7 +159,8 @@ Ja, Sie können die Option **Eigenschaften ändern** im MARS-Agent verwenden, um
 
 ### <a name="manage"></a>Verwalten
 
-**Kann ich eine Wiederherstellung vornehmen, wenn ich meine Passphrase vergessen habe?**
+#### <a name="can-i-recover-if-i-forgot-my-passphrase"></a>Kann ich eine Wiederherstellung vornehmen, wenn ich meine Passphrase vergessen habe?
+
 Der Azure Backup-Agent benötigt eine Passphrase (die Sie bei der Registrierung angegeben haben), um die gesicherten Daten während der Wiederherstellung zu entschlüsseln. Überprüfen Sie die folgenden Szenarien, um Ihre Möglichkeiten bei einer verlorenen Passphrase zu verstehen:
 
 | Ursprünglicher Computer <br> *(Quellcomputer, auf dem Sicherungen erstellt wurden)* | Passphrase | Verfügbare Optionen |
@@ -177,7 +178,7 @@ Unter den folgenden Bedingungen ziehen Sie Folgendes in Betracht:
   * einer *anderen Passphrase*, dann können Sie Ihre gesicherten Daten nicht wiederherstellen.
 * Wenn der ursprüngliche Computer beschädigt ist (Sie also die Passphrase nicht über die MARS-Konsole neu generieren können), Sie den ursprünglichen, vom MARS-Agent verwendeten Ablageordner aber wiederherstellen bzw. darauf zugreifen können, ist die Wiederherstellung ggf. möglich, wenn Sie das Kennwort vergessen haben. Weitere Unterstützung erhalten Sie vom Kundensupport.
 
-**Wie kann ich die Daten wiederherstellen, wenn ich mein Originalgerät (auf dem die Backups erstellt wurden) verloren habe?**
+#### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>Wie kann ich die Daten wiederherstellen, wenn ich mein Originalcomputer (auf dem die Sicherungen erstellt wurden) verloren habe?
 
 Wenn Sie über die gleiche Passphrase (die Sie bei der Registrierung angegeben haben) auf dem ursprünglichen Computer verfügen, können Sie die gesicherten Daten auf einem anderen Computer wiederherstellen. Überprüfen Sie die folgenden Szenarien, um Ihre Wiederherstellungsoptionen zu verstehen.
 
@@ -185,6 +186,10 @@ Wenn Sie über die gleiche Passphrase (die Sie bei der Registrierung angegeben h
 | --- | --- | --- |
 | Verloren |Verfügbar |Sie können den MARS-Agent auf einem anderen Computer mit der gleichen Passphrase, die Sie bei der Registrierung des ursprünglichen Computers angegeben haben, installieren und registrieren. Wählen Sie **Wiederherstellungsoption** > **Anderer Speicherort** aus, um die Wiederherstellung auszuführen. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Verloren |Verloren |Die Wiederherstellung der Daten ist nicht möglich, oder die Daten sind nicht verfügbar. |
+
+### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Meine Sicherungsaufträge schlagen fehl oder werden schon lange nicht mehr ausgeführt. Der Aufbewahrungszeitraum ist überschritten. Kann ich dennoch eine Wiederherstellung ausführen?
+
+Als Sicherheitsmaßnahme bewahrt Azure Backup den letzten Wiederherstellungspunkt auf, auch wenn die Aufbewahrungsfrist überschritten ist. Sobald die Sicherungen wieder aufgenommen werden und neue Wiederherstellungspunkte verfügbar sind, wird der ältere Wiederherstellungspunkt entsprechend der festgelegten Aufbewahrung entfernt.
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Was geschieht, wenn ich einen laufenden Wiederherstellungsauftrag abbreche?
 

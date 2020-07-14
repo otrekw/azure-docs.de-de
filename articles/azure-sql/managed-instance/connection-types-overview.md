@@ -3,19 +3,19 @@ title: Verbindungstypen
 titleSuffix: Azure SQL Managed Instance
 description: Erfahren Sie mehr über Verbindungstypen für Azure SQL Managed Instance
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: cee913e846ebfef174a3cd6383401eace89187f0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6c6774fb462a21e721b19ae53d1d018d780b28ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84030101"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85517319"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Azure SQL Managed Instance: Verbindungstypen
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -31,24 +31,28 @@ Azure SQL Managed Instance unterstützt die zwei folgenden Verbindungstypen:
 
 ## <a name="redirect-connection-type"></a>Umleitungsverbindungstyp
 
-Der Umleitungsverbindungstyp bedeutet, dass die Clientsitzung nach dem Einrichten der TCP-Sitzung mit der SQL-Engine die virtuelle IP-Zieladresse des virtuellen Clusterknotens vom Lastenausgleich abruft. Nachfolgende Pakete gelangen unter Umgehung des Gateways direkt zum virtuellen Clusterknoten. Das folgende Diagramm veranschaulicht diesen Datenverkehrfluss.
+Im Umleitungsverbindungstyp ruft die Clientsitzung nach dem Einrichten der TCP-Sitzung mit der SQL-Engine die virtuelle IP-Zieladresse des virtuellen Clusterknotens vom Lastenausgleich ab. Nachfolgende Pakete gelangen unter Umgehung des Gateways direkt zum virtuellen Clusterknoten. Das folgende Diagramm veranschaulicht diesen Datenverkehrfluss.
 
 ![redirect.png](./media/connection-types-overview/redirect.png)
 
 > [!IMPORTANT]
-> Der Umleitungsverbindungstyp funktioniert zurzeit nur für den privaten Endpunkt. Unabhängig von der Verbindungstypeinstellung erfolgen Verbindungen über den öffentlichen Endpunkt über einen Proxy.
+> Der Umleitungsverbindungstyp funktioniert zurzeit nur für einen privaten Endpunkt. Unabhängig von der Verbindungstypeinstellung erfolgen Verbindungen über den öffentlichen Endpunkt über einen Proxy.
 
 ## <a name="proxy-connection-type"></a>Proxyverbindungstyp
 
-Der Proxyverbindungstyp bedeutet, dass die TCP-Sitzung über das Gateway eingerichtet wird und alle nachfolgenden Pakete dieses durchlaufen. Das folgende Diagramm veranschaulicht diesen Datenverkehrfluss.
+Im Proxyverbindungstyp wird die TCP-Sitzung über das Gateway eingerichtet und alle nachfolgenden Pakete durchlaufen es. Das folgende Diagramm veranschaulicht diesen Datenverkehrfluss.
 
 ![proxy.png](./media/connection-types-overview/proxy.png)
 
-## <a name="script-to-change-connection-type-settings-using-powershell"></a>Skript zum Ändern der Verbindungstypeinstellungen mit PowerShell
+## <a name="changing-connection-type"></a>Ändern des Verbindungstyps
+
+- **Verwenden des Portals:** Um den Verbindungstyp mithilfe des Azure-Portals zu ändern, öffnen Sie die Seite „Virtuelles Netzwerk“, und verwenden Sie die Einstellung **Verbindungstyp**, um den Verbindungstyp zu ändern und die Änderungen zu speichern.
+
+- **Skript zum Ändern der Verbindungstypeinstellungen mit PowerShell:**
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Das folgende PowerShell-Skript zeigt, wie der Verbindungstyp für eine SQL Managed Instance in `Redirect` geändert werden kann.
+Das folgende PowerShell-Skript zeigt, wie der Verbindungstyp für eine verwaltete Instanz in `Redirect` geändert werden kann.
 
 ```powershell
 Install-Module -Name Az
@@ -60,13 +64,13 @@ Connect-AzAccount
 Get-AzSubscription
 # Use your SubscriptionId in place of {subscription-id} below
 Select-AzSubscription -SubscriptionId {subscription-id}
-# Replace {rg-name} with the resource group for your SQL Managed Instance, and replace {mi-name} with the name of your SQL Managed Instance
+# Replace {rg-name} with the resource group for your managed instance, and replace {mi-name} with the name of your managed instance
 $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Wiederherstellen einer Datenbank in einer verwalteten SQL-Instanz](restore-sample-database-quickstart.md)
+- [Wiederherstellen einer Datenbank in SQL Managed Instance](restore-sample-database-quickstart.md)
 - Weitere Informationen zum [Konfigurieren eines öffentlichen Endpunkts für SQL Managed Instance](public-endpoint-configure.md)
 - Weitere Informationen zur [Konnektivitätsarchitektur für SQL Managed Instance](connectivity-architecture-overview.md)

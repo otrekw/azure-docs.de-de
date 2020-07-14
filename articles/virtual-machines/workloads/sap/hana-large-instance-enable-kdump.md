@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 16dc15b4369904643d0138a4b8e5b94c47868d31
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 6d723e95212e457a81eedf7726bf3c5bd2499643
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204779"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488884"
 ---
 # <a name="enable-kdump-service"></a>Aktivieren des Kdump-Diensts
 
@@ -30,14 +30,30 @@ In diesem Artikel wird das Aktivieren des Kdump-Diensts für große Azure HANA-I
 |-----------------------------|--------------|-----------------------|-------------|
 |   Typ I                    |  SuSE        |   SLES 12 SP3         |  S224m      |
 |   Typ I                    |  SuSE        |   SLES 12 SP4         |  S224m      |
+|   Typ I                    |  SuSE        |   SLES 12 SP2         |  S72        |
 |   Typ I                    |  SuSE        |   SLES 12 SP2         |  S72m       |
 |   Typ I                    |  SuSE        |   SLES 12 SP3         |  S72m       |
 |   Typ I                    |  SuSE        |   SLES 12 SP2         |  S96        |
 |   Typ I                    |  SuSE        |   SLES 12 SP3         |  S96        |
+|   Typ I                    |  SuSE        |   SLES 12 SP2         |  S192       |
+|   Typ I                    |  SuSE        |   SLES 12 SP3         |  S192       |
+|   Typ I                    |  SuSE        |   SLES 12 SP4         |  S192       |
+|   Typ I                    |  SuSE        |   SLES 12 SP2         |  S192m      |
+|   Typ I                    |  SuSE        |   SLES 12 SP3         |  S192m      |
+|   Typ I                    |  SuSE        |   SLES 12 SP4         |  S192m      |
+|   Typ I                    |  SuSE        |   SLES 12 SP2         |  S144       |
+|   Typ I                    |  SuSE        |   SLES 12 SP3         |  S144       |
+|   Typ I                    |  SuSE        |   SLES 12 SP2         |  S144m      |
+|   Typ I                    |  SuSE        |   SLES 12 SP3         |  S144m      |
+|   Typ II                   |  SuSE        |   SLES 12 SP2         |  S384       |
 |   Typ II                   |  SuSE        |   SLES 12 SP3         |  S384       |
-|   Typ II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
+|   Typ II                   |  SuSE        |   SLES 12 SP4         |  S384       |
+|   Typ II                   |  SuSE        |   SLES 12 SP2         |  S384xm     |
 |   Typ II                   |  SuSE        |   SLES 12 SP3         |  S384xm     |
 |   Typ II                   |  SuSE        |   SLES 12 SP4         |  S384xm     |
+|   Typ II                   |  SuSE        |   SLES 12 SP2         |  S576m      |
+|   Typ II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
+|   Typ II                   |  SuSE        |   SLES 12 SP4         |  S576m      |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -68,7 +84,6 @@ In diesem Artikel wird das Aktivieren des Kdump-Diensts für große Azure HANA-I
 - Lösen Sie einen Kernel-Absturz aus.
 
     ```bash
-    echo 1 > /proc/sys/kernel/sysrq
     echo c > /proc/sysrq-trigger
     ```
 

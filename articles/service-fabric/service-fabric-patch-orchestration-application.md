@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: 5a5ffdf217483c60836f67213c20ff3afd9043d5
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82608914"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
@@ -277,7 +277,7 @@ Sie erfahren nun Schritt für Schritt, wie Updates auf einem Knoten durchgeführ
 
 1. Der auf jedem Knoten ausgeführte NodeAgentNTService sucht zum geplanten Zeitpunkt nach verfügbaren Windows-Updates. Wenn Updates verfügbar sind, werden sie auf den Knoten heruntergeladen.
 
-1. Nachdem die Updates heruntergeladen wurden, erstellt der Knoten-Agent-NT-Dienst einen entsprechenden Reparaturtask für den Knoten mit dem Namen *POS___\<eindeutige ID>* . Sie können diese Reparaturtasks mithilfe des Cmdlets [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) oder mithilfe von SFX im Detailbereich des Knotens anzeigen. Nach dem Erstellen des Reparaturtasks wechselt dieser schnell in den [Status *Claimed*](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
+1. Nachdem die Updates heruntergeladen wurden, erstellt der Knoten-Agent-NT-Dienst einen entsprechenden Reparaturtask für den Knoten mit dem Namen *POS___\<unique_id>* . Sie können diese Reparaturtasks mithilfe des Cmdlets [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) oder mithilfe von SFX im Detailbereich des Knotens anzeigen. Nach dem Erstellen des Reparaturtasks wechselt dieser schnell in den [Status *Claimed*](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
 
 1. Der Koordinatordienst sucht in regelmäßigen Abständen nach Reparaturtasks mit dem Status *Claimed* und aktualisiert sie basierend auf TaskApprovalPolicy in den Status *Preparing*. Wenn TaskApprovalPolicy als NodeWise konfiguriert ist, wird ein Reparaturtask, der einem Knoten entspricht, nur dann vorbereitet, wenn sich derzeit kein anderer Reparaturtask im Status *Preparing*, *Approved*, *Executing* oder *Restoring* befindet. 
 
@@ -294,7 +294,7 @@ Sie erfahren nun Schritt für Schritt, wie Updates auf einem Knoten durchgeführ
 
 1. Wenn ein Reparaturtask sich im Status *Executing* befindet, wird die Patchinstallation auf diesem Knoten gestartet. Nachdem der Patch installiert wurde, wird der Knoten je nach Patch neu gestartet oder nicht neu gestartet. Anschließend wird der Reparaturtask in den Status *Restoring* geändert. Dadurch wird der Knoten erneut aktiviert. Der Reparaturtask wird dann als abgeschlossen markiert.
 
-   In POA ab Version 1.4.0 können Sie den Status des Updates ermitteln, indem Sie die Integritätsereignisse für NodeAgentService mit der Eigenschaft „WUOperationStatus-\<Knotenname>“ anzeigen. Die hervorgehobenen Abschnitte in den folgenden Abbildungen zeigen den Status von Windows-Updates für die Knoten *poanode_0* und *poanode_2*:
+   In POA ab Version 1.4.0 können Sie den Status des Updates ermitteln, indem Sie die Integritätsereignisse für NodeAgentService mit der Eigenschaft „WUOperationStatus-\<NodeName>“ anzeigen. Die hervorgehobenen Abschnitte in den folgenden Abbildungen zeigen den Status von Windows-Updates für die Knoten *poanode_0* und *poanode_2*:
 
    [![Abbildung des Status des Windows Update-Vorgangs](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 

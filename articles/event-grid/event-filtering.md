@@ -1,18 +1,14 @@
 ---
 title: Ereignisfilter für Azure Event Grid
 description: Hier erfahren Sie, wie Sie Ereignisse beim Erstellen eines Azure Event Grid-Abonnements filtern können.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.author: spelluru
-ms.openlocfilehash: 0f503b21d5a7d0fdfbee79354c198775789c0b91
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 07/07/2020
+ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888780"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120091"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements
 
@@ -155,7 +151,7 @@ Diese Werte sind möglich:
 
 Für die erweiterte Filterung gelten folgende Einschränkungen:
 
-* Fünf erweiterte Filter pro Event Grid-Abonnement
+* 5 erweiterte Filter und 25 Filterwerte für alle Filter pro Event Grid-Abonnement
 * 512 Zeichen pro Zeichenfolgenwert
 * Fünf Werte für **in**- und **not in**-Operatoren
 * Schlüssel mit enthaltenem **`.` (Punktzeichen)** . Zum Beispiel: `http://schemas.microsoft.com/claims/authnclassreference` oder `john.doe@contoso.com`. Derzeit gibt es keine Unterstützung für Escapezeichen in Schlüsseln. 

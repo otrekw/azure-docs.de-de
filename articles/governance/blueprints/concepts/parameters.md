@@ -3,16 +3,16 @@ title: Verwenden von Parametern für das Erstellen dynamischer Blaupausen
 description: Hier erhalten Sie Informationen zu statischen und dynamischen Parametern und dazu, wie Sie sie zum Erstellung sicherer und dynamischer Blaupausen verwenden können.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458487"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970636"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Erstellen dynamischer Blaupausen mithilfe von Parametern
 
-Eine vollständig definierte Blaupause mit verschiedenen Artefakten (etwa Ressourcengruppen, Resource Manager-Vorlagen, Richtlinien oder Rollenzuweisungen) ermöglicht eine schnelle und konsistente Bereitstellung von Objekten in Azure. Um eine flexible Verwendung dieser wiederverwendbaren Entwurfsmuster und Container zu ermöglichen, unterstützt Azure Blueprint die Verwendung von Parametern. Der Parameter gewährleistet sowohl bei der Definition als auch bei der Zuweisung die Flexibilität, Eigenschaften für die von der Blaupause bereitgestellten Artefakte zu ändern.
+Eine vollständig definierte Blaupause mit verschiedenen Artefakten – z. B. etwa Ressourcengruppen, Azure Resource Manager-Vorlagen (ARM-Vorlagen), Richtlinien oder Rollenzuweisungen – ermöglicht die schnelle und konsistente Bereitstellung von Objekten in Azure. Um eine flexible Verwendung dieser wiederverwendbaren Entwurfsmuster und Container zu ermöglichen, unterstützt Azure Blueprint die Verwendung von Parametern. Der Parameter gewährleistet sowohl bei der Definition als auch bei der Zuweisung die Flexibilität, Eigenschaften für die von der Blaupause bereitgestellten Artefakte zu ändern.
 
 Ein einfaches Beispiel ist das Ressourcengruppenartefakt. Bei der Erstellung einer Ressourcengruppe müssen zwei erforderliche Werte angegeben werden: Name und Standort. Gäbe es keine Parameter, müssten Sie beim Hinzufügen einer Ressourcengruppe zur Blaupause diesen Namen und Standort bei jeder Verwendung der Blaupause definieren. Diese Wiederholung würde dazu führen, dass bei jeder Verwendung der Blaupause Artefakte in derselben Ressourcengruppe erstellt werden. Ressourcen innerhalb der Ressourcengruppe würden dadurch dupliziert und einen Konflikt verursachen.
 
@@ -28,7 +28,7 @@ Dieses Problem lässt sich mithilfe von Parametern lösen. Mit Azure Blueprints 
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>Verwenden der Parameter „secureString“ und „secureObject“
 
-Während ein _Artefakt_ der Resource Manager-Vorlage Parameter der Typen **secureString** und **secureObject** unterstützt, müssen diese in Azure Blueprint jeweils mit einem Azure-Schlüsseltresor verbunden sein. Diese Sicherheitsmaßnahme verhindert die unsichere Vorgehensweise, Geheimnisse zusammen mit der Blaupause zu speichern, und fördert die Verwendung sicherer Muster. Azure Blueprints unterstützt diese Sicherheitsmaßnahme und erkennt, ob ein _Artefakt_ einer Resource Manager-Vorlage einen der sicheren Parameter enthält. Während der Zuweisung fordert der Dienst dann bei jedem erkannten sicheren Parameter zur Eingabe der folgenden Key Vault-Eigenschaften auf:
+Während ein _Artefakt_ einer ARM-Vorlage Parameter der Typen **secureString** und **secureObject** unterstützt, müssen diese in Azure Blueprints jeweils mit einer Azure Key Vault-Instanz verbunden sein. Diese Sicherheitsmaßnahme verhindert die unsichere Vorgehensweise, Geheimnisse zusammen mit der Blaupause zu speichern, und fördert die Verwendung sicherer Muster. Azure Blueprints unterstützt diese Sicherheitsmaßnahme und erkennt, ob ein _Artefakt_ einer ARM-Vorlage einen der sicheren Parameter enthält. Während der Zuweisung fordert der Dienst dann bei jedem erkannten sicheren Parameter zur Eingabe der folgenden Key Vault-Eigenschaften auf:
 
 - Key Vault-Ressourcen-ID
 - Name des Key Vault-Geheimnisses
@@ -180,7 +180,7 @@ Das Gegenteil eines statischen Parameters ist ein **dynamischer Parameter**. Die
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Festlegen dynamischer Parameter über die REST-API
 
-Zum Festlegen von **dynamischen Parametern** während der Zuweisung wird der jeweilige Wert direkt eingegeben. Anstelle einer Funktion wie [parameters()](../reference/blueprint-functions.md#parameters) wird eine passende Zeichenfolge als Wert angegeben. Artefakte für eine Ressourcengruppe werden mit einem Vorlagennamen und den Eigenschaften **name** und **location** definiert. Alle anderen Parameter für das enthaltene Artefakt werden unter **parameters** mit einem **\<Name\>** -**Wert**-Schlüsselpaar definiert. Wenn die Blaupause für einen dynamischen Parameter konfiguriert ist, der bei der Zuweisung nicht angegeben wird, tritt bei der Zuweisung ein Fehler auf.
+Zum Festlegen von **dynamischen Parametern** während der Zuweisung wird der jeweilige Wert direkt eingegeben. Anstelle einer Funktion wie [parameters()](../reference/blueprint-functions.md#parameters) wird eine passende Zeichenfolge als Wert angegeben. Artefakte für eine Ressourcengruppe werden mit einem Vorlagennamen und den Eigenschaften **name** und **location** definiert. Alle anderen Parameter für das enthaltene Artefakt werden unter **parameters** mit einem **\<name\>** -**Wert**-Schlüsselpaar definiert. Wenn die Blaupause für einen dynamischen Parameter konfiguriert ist, der bei der Zuweisung nicht angegeben wird, tritt bei der Zuweisung ein Fehler auf.
 
 - REST-API-URI
 

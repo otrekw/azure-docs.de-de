@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6f3418d73496ae25782b57a43e3357dc0bc7131a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201700"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Anleitung für das Verwenden replizierter Tabellen im Synapse SQL-Pool
 
@@ -126,7 +126,7 @@ Wir haben `DimDate` und `DimSalesTerritory` als replizierte Tabellen neu erstell
 
 Der SQL-Pool implementiert eine replizierte Tabelle, indem eine Masterversion der Tabelle erhalten bleibt. Die Masterversion wird in die erste Verteilungsdatenbank auf jedem Computeknoten kopiert. Wenn eine Änderung eintritt, wird zunächst die Masterversion aktualisiert. Anschließend werden dann die Tabellen auf den einzelnen Serverknoten neu erstellt. Das Neuerstellen einer replizierten Tabelle umfasst das Kopieren der Tabelle auf jeden Serverknoten und das anschließende Erstellen der Indizes.  Beispielsweise verfügt eine replizierte Tabelle auf einem DW2000c über 5 Kopien der Daten.  Eine Masterkopie und eine vollständige Kopie auf jedem Serverknoten.  Alle Daten werden in Verteilungsdatenbanken gespeichert. Der SQL-Pool unterstützt mit diesem Modell schnellere Datenänderungsanweisungen und flexible Skalierungsvorgänge.
 
-Nach folgenden Vorgängen ist eine Neuerstellung erforderlich:
+Asynchrone Rebuilds werden von der ersten Abfrage der replizierten Tabelle ausgelöst:
 
 - Daten werden geladen oder geändert.
 - Die Synapse SQL-Instanz wird auf eine andere Ebene skaliert.

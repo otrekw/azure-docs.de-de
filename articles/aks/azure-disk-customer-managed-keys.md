@@ -4,12 +4,12 @@ description: Bring Your Own Key(BYOK) zum Verschlüsseln von AKS-Datenträgern f
 services: container-service
 ms.topic: article
 ms.date: 01/12/2020
-ms.openlocfilehash: ac6c4d2c4b3f309e2098ff6a6513aab8a3f8ea5f
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 9fd04b44be969e03eec2ed18f618068316572066
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141533"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84882529"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Bring Your Own Key (BYOK) mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -105,14 +105,13 @@ diskEncryptionSetId=$(az resource show -n mydiskEncryptionSetName -g myResourceG
 az group create -n myResourceGroup -l myAzureRegionName
 
 # Create the AKS cluster
-az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version 1.17.0 --generate-ssh-keys
+az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version KUBERNETES_VERSION --generate-ssh-keys
 ```
 
 Wenn dem oben erstellten Cluster neue Knotenpools hinzugefügt werden, wird der während der Erstellung bereitgestellte kundenseitig verwaltete Schlüssel zum Verschlüsseln des Betriebssystemdatenträgers verwendet.
 
-## <a name="encrypt-your-aks-cluster-data-disk"></a>Verschlüsseln Ihres AKS-Clusterdatenträgers für Daten
-
-Sie können auch die AKS-Datenträger für Daten mit ihren eigenen Schlüsseln verschlüsseln.
+## <a name="encrypt-your-aks-cluster-data-diskoptional"></a>Verschlüsseln Ihres AKS-Clusterdatenträgers für Daten (optional)
+Der Verschlüsselungsschlüssel für den Betriebssystem-Datenträger wird zum Verschlüsseln des Datenträgers verwendet, wenn der Schlüssel nicht von v1.17.2 für den Datenträger bereitgestellt wird. Sie können auch AKS-Datenträger mit ihren anderen Schlüsseln verschlüsseln.
 
 > [!IMPORTANT]
 > Stellen Sie sicher, dass Sie über die richtigen AKS-Anmeldeinformationen verfügen. Der Dienstprinzipal benötigt „Mitwirkender“-Zugriff auf die Ressourcengruppe, in der Ihr DiskEncryptionSet bereitgestellt ist. Andernfalls erhalten Sie eine Fehlermeldung, die darauf hinweist, dass der Dienstprinzipal keine Berechtigungen besitzt.
@@ -166,11 +165,9 @@ kubectl apply -f byok-azure-disk.yaml
 ## <a name="limitations"></a>Einschränkungen
 
 * BYOK ist derzeit allgemein und als Preview nur in bestimmten [Azure-Regionen][supported-regions] verfügbar.
-* Verschlüsselung von Betriebssystemdatenträger mit Kubernetes, Version 1.17 und höher.   
+* Verschlüsselung des Datenträgers für Daten wird mit Version 1.17 und höher von Kubernetes unterstützt   
 * Nur in Regionen verfügbar, in denen BYOK unterstützt wird.
 * Verschlüsselung mit kundenseitig verwalteten Schlüsseln ist derzeit nur für neue AKS-Cluster vorgesehen, ein Upgrade vorhandener Cluster ist nicht möglich.
-* AKS-Cluster, die Virtual Machine Scale Sets verwenden, sind erforderlich; keine Unterstützung für VM-Verfügbarkeitsgruppen.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

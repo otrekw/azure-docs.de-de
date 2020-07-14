@@ -7,10 +7,10 @@ ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77152991"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-Bereitstellung in Azure App Service
@@ -64,7 +64,7 @@ Beide Befehle geben eine URL zurück wie `https://<deployment-username>@<app-nam
 
 Statt diese URL auf Kontoebene zu verwenden, können Sie auch lokales Git mithilfe von Anmeldeinformationen auf App-Ebene aktivieren. Azure App Service generiert diese Anmeldeinformationen automatisch für jede App. 
 
-Rufen Sie die App-Anmeldeinformationen ab, indem Sie den folgenden Befehl in Cloud Shell ausführen. Ersetzen Sie \<app-name> und \<group-name> durch den Namen Ihrer App und den Namen der Azure-Ressourcengruppe.
+Rufen Sie die App-Anmeldeinformationen ab, indem Sie den folgenden Befehl in Cloud Shell ausführen. Ersetzen Sie \<app-name> und \<group-name> durch die Namen Ihrer App und der zugehörigen Azure-Ressourcengruppe.
 
 ```azurecli-interactive
 az webapp deployment list-publishing-credentials --name <app-name> --resource-group <group-name> --query scmUri --output tsv
@@ -125,7 +125,7 @@ So aktivieren Sie die lokale Git-Bereitstellung für Ihre App mit Azure Pipeline
    
    ![Die Git-Repository-URL kopieren](media/app-service-deploy-local-git/vsts-repo-ready.png)
 
-1. Fügen Sie in Ihrem lokalen Terminalfenster Ihrem lokalen Git-Repository ein Azure-Remoterepository hinzu. Ersetzen Sie im Befehl \<url > durch die URL des Git-Repositorys, die Sie im vorherigen Schritt abgerufen haben.
+1. Fügen Sie in Ihrem lokalen Terminalfenster Ihrem lokalen Git-Repository ein Azure-Remoterepository hinzu. Ersetzen Sie im Befehl \<url> durch die URL des Git-Repositorys, die Sie im vorherigen Schritt abgerufen haben.
    
    ```bash
    git remote add azure <url>

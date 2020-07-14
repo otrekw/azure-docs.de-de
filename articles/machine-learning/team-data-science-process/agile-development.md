@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76722100"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agile Entwicklung von Data Science-Projekten
@@ -39,7 +39,7 @@ Im TDSP-Sprintplanungsframework gibt es vier häufig verwendete Typen von *Arbei
 
 Dies sind die Definitionen für die Arbeitselementtypen:
 
-- **Feature**: Ein Feature entspricht einem Projektauftrag. Unterschiedliche Aufträge von einem Kunden sind unterschiedliche Features, und es ist am besten, verschiedene Phasen eines Projekts als unterschiedliche Features zu betrachten. Wenn Sie zum Benennen Ihrer Features ein Schema wie *\<Kundenname>-\<Auftragsname>* verwenden, können Sie den Kontext des Projekts/Auftrags problemlos dem Namen entnehmen.
+- **Feature**: Ein Feature entspricht einem Projektauftrag. Unterschiedliche Aufträge von einem Kunden sind unterschiedliche Features, und es ist am besten, verschiedene Phasen eines Projekts als unterschiedliche Features zu betrachten. Wenn Sie zum Benennen Ihrer Features ein Schema wie *\<ClientName>-\<EngagementName>* verwenden, können Sie den Kontext des Projekts/Auftrags problemlos dem Namen entnehmen.
   
 - **User Story**: User Storys sind Arbeitselemente, die für die End-to-End-Ausführung eines Features erforderlich sind. Beispiele für User Storys sind:
   - Datensammlung 

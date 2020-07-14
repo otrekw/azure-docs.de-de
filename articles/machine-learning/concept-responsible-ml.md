@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: 3cef3c2179019f6d84de5596e61abaf8d7d3182c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 09bb7710df19482e9625c1834d2646f70368fc1d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595009"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920352"
 ---
 # <a name="responsible-machine-learning-ml"></a>Verantwortungsvolles maschinelles Lernen (ML)
 
@@ -36,7 +36,7 @@ Da sich künstliche Intelligenz und autonome Systeme immer mehr in das Gefüge d
 
 ## <a name="interpret-and-explain-model-behavior"></a>Interpretieren und Erläutern des Modellverhaltens
 
-Schwer zu erklärende oder Blackbox-Systeme können problematisch sein, da sie es Projektbeteiligten wie Systementwicklern, Regulierungsbehörden, Benutzern und Entscheidungsträgern schwer machen zu verstehen, warum Systeme bestimmte Entscheidungen treffen. Einige KI-Systeme sind leichter zu erklären als andere, und gelegentlich gibt es einen Kompromiss zwischen einem System mit höherer Genauigkeit und einem, das leichter zu erklären ist.
+Schwer zu erklärende oder Opakbox-Systeme können problematisch sein, da sie Projektbeteiligten wie Systementwicklern, Regulierungsbehörden, Benutzern und Entscheidungsträgern schwer machen zu verstehen, warum Systeme bestimmte Entscheidungen treffen. Einige KI-Systeme sind leichter zu erklären als andere, und gelegentlich gibt es einen Kompromiss zwischen einem System mit höherer Genauigkeit und einem, das leichter zu erklären ist.
 
 Für die Erstellung interpretierbarer KI-Systeme verwenden Sie [InterpretML](https://github.com/interpretml/interpret), ein von Microsoft erstelltes Open-Source-Paket. [InterpretML kann innerhalb von Azure Machine Learning](how-to-machine-learning-interpretability.md) verwendet werden, um [Ihre Machine Learning-Modelle zu interpretieren und zu erklären](how-to-machine-learning-interpretability-aml.md), einschließlich [automatisierter Machine Learning-Modelle](how-to-machine-learning-interpretability-automl.md).
 
@@ -61,11 +61,14 @@ In herkömmlichen Szenarien werden die Rohdaten in Dateien und Datenbanken gespe
 
 Das Implementieren differenzieller privater Systeme ist schwierig. [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) ist ein Open-Source-Projekt, das verschiedene Komponenten zum Erstellen globaler, differenzieller privater Systeme enthält. Weitere Informationen zum differenziellen Datenschutz und dem WhiteNoise-Projekt finden Sie im Artikel [Bewahren des Datenschutzes mithilfe des differenziellen Datenschutzes und mit WhiteNoise](./concept-differential-privacy.md).
 
+> [!NOTE]
+> Beachten Sie, dass wir das Toolkit umbenennen und den neuen Namen in den nächsten Wochen einführen werden. 
+
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>Dokumentieren des Machine Learning-Lebenszyklus mit Datenblättern
 
 Das Dokumentieren der richtigen Informationen im Machine Learning-Prozess ist der Schlüssel zu verantwortungsvollen Entscheidungen in jeder Phase. Datenblätter sind eine Möglichkeit zum Dokumentieren von Machine Learning-Ressourcen, die im Rahmen des Machine Learning-Lebenszyklus verwendet und erstellt werden.
 
-Modelle werden oft als „Blackbox“ betrachtet, und häufig gibt es nur wenige Informationen über sie. Da Machine Learning-Systeme immer weiter verbreitet sind und zur Entscheidungsfindung eingesetzt werden, ist die Verwendung von Datenblättern ein Schritt in Richtung der Entwicklung verantwortungsvollerer Machine Learning-Systeme.
+Modelle werden oft als „Opakbox“ betrachtet, und häufig gibt es nur wenige Informationen über sie. Da Machine Learning-Systeme immer weiter verbreitet sind und zur Entscheidungsfindung eingesetzt werden, ist die Verwendung von Datenblättern ein Schritt in Richtung der Entwicklung verantwortungsvollerer Machine Learning-Systeme.
 
 Einige Modellinformationen, die Sie vielleicht im Rahmen eines Datenblattes dokumentieren möchten:
 
@@ -80,4 +83,5 @@ Im folgenden Beispiel erfahren Sie, wie das Azure Machine Learning SDK zur Imple
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
+- Verwenden Sie homomorphe Verschlüsselung zum [Bereitstellen eines Webdiensts für verschlüsselte Rückschlüsse](how-to-homomorphic-encryption-seal.md).
 - Erfahren Sie mehr über die [ABOUT ML](https://www.partnershiponai.org/about-ml/)-Richtlinien zum Dokumentieren von Machine Learning-Systemen.

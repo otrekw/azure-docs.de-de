@@ -3,12 +3,12 @@ title: Erste Schritte mit Azure Advisor
 description: Erste Schritte mit Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229670"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117861"
 ---
 # <a name="get-started-with-azure-advisor"></a>Erste Schritte mit Azure Advisor
 
@@ -27,7 +27,7 @@ Erfahren Sie, wie Sie über das Azure-Portal auf den Advisor zugreifen, und wie 
 
 1. Das Advisor-Dashboard zeigt eine Zusammenfassung Ihrer Empfehlungen für alle ausgewählten Abonnements an.  Sie können mithilfe der Abonnementfilter-Dropdownliste die Abonnements auswählen, für die Empfehlungen angezeigt werden sollen.
 
-1. Um Empfehlungen zu einer bestimmten Kategorie zu erhalten, klicken Sie auf eine dieser Registerkarten: **Hochverfügbarkeit**, **Sicherheit**, **Leistung** oder **Kosten**. 
+1. Um Empfehlungen zu einer bestimmten Kategorie zu erhalten, klicken Sie auf eine dieser Registerkarten: **Zuverlässigkeit**, **Sicherheit**, **Leistung** oder **Kosten**. 
 
    ![Azure Advisor-Dashboard](./media/advisor-overview/advisor-dashboard.png)
 
@@ -124,7 +124,8 @@ Die Option zum Herunterladen berücksichtigt alle Filter, die Sie auf dem Adviso
 Weitere Informationen zum Advisor:
 
 - [Einführung in Azure Advisor](advisor-overview.md)
-- [Advisor-Empfehlungen für Hochverfügbarkeit](advisor-high-availability-recommendations.md)
+- [Advisor-Empfehlungen zur Zuverlässigkeit](advisor-high-availability-recommendations.md)
 - [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
 - [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
-- [Advisor-Empfehlungen zu Kosten](advisor-performance-recommendations.md)
+- [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md)
+- [Advisor-Empfehlungen für einen optimalen Betrieb](advisor-operational-excellence-recommendations.md)

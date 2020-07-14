@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
 ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80293942"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-Connector für Azure
@@ -153,7 +153,7 @@ Es wird empfohlen, für alle VMs, die Sie mit SAP LaMa verwalten möchten, ein e
 > [!NOTE]
 > Wenn möglich, entfernen Sie alle Erweiterungen der VM, da sie lange Laufzeiten beim Trennen von Datenträgern von einer VM verursachen können.
 
-Überprüfen Sie, ob Benutzer „\<hanasid>adm“ und „\<sapsid>adm“ sowie die Gruppe „sapsys“ mit der gleichen ID und GID auf dem Zielcomputer vorhanden sind, oder verwenden Sie LDAP. Aktivieren und starten Sie den NFS-Server auf der VM, auf der SAP NetWeaver (A)SCS ausgeführt werden sollen.
+Vergewissern Sie sich, dass die Benutzer „\<hanasid>adm“ und „\<sapsid>adm“ sowie die Gruppe „sapsys“ mit der gleichen ID und GID auf dem Zielcomputer vorhanden sind, oder verwenden Sie LDAP. Aktivieren und starten Sie den NFS-Server auf der VM, auf der SAP NetWeaver (A)SCS ausgeführt werden sollen.
 
 ### <a name="manual-deployment"></a>Manuelle Bereitstellung
 
@@ -163,7 +163,7 @@ SAP LaMa kommuniziert mit dem SAP-Host-Agent mit dem virtuellen Computer. Wenn S
 
 Erstellen Sie eine neue VM mit einem unterstützten Betriebssystem (siehe SAP-Hinweis [2343511]). Fügen Sie den SAP-Instanzen zusätzliche IP-Konfigurationen hinzu. Jede Instanz benötigt mindestens eine IP-Adresse und muss mit einem virtuellen Hostnamen installiert werden.
 
-Die SAP NetWeaver ASCS-Instanz benötigt Datenträger für /sapmnt/\<SAPSID>, /usr/sap/\<SAPSID>, /usr/sap/trans und /usr/sap/\<sapsid>adm. Für die SAP NetWeaver-Anwendungsserver sind keine zusätzlichen Datenträger erforderlich. Alle Elemente mit Bezug auf die SAP-Instanz müssen auf der ASCS-Instanz gespeichert und über NFS exportiert werden. Ansonsten ist es derzeit nicht möglich, weitere Anwendungsserver über SAP LaMa hinzuzufügen.
+Die SAP NetWeaver ASCS-Instanz benötigt Datenträger für „/sapmnt/\<SAPSID>“, „/usr/sap/\<SAPSID>“, „/usr/sap/trans“ und „/usr/sap/\<sapsid>adm“. Für die SAP NetWeaver-Anwendungsserver sind keine zusätzlichen Datenträger erforderlich. Alle Elemente mit Bezug auf die SAP-Instanz müssen auf der ASCS-Instanz gespeichert und über NFS exportiert werden. Ansonsten ist es derzeit nicht möglich, weitere Anwendungsserver über SAP LaMa hinzuzufügen.
 
 ![SAP NetWeaver ASCS unter Linux](media/lama/sap-lama-ascs-app-linux.png)
 
@@ -212,7 +212,7 @@ Sie benötigen diese Komponenten, um die Vorlage bereitzustellen. So stellen Sie
 
 Die Vorlagen haben die folgenden Parameter:
 
-* sapSystemId: Die SAP-System-ID. Mit ihr wird das Datenträgerlayout erstellt (z.B. /usr/sap/\<sapsid>).
+* sapSystemId: Die SAP-System-ID. Hiermit wird das Datenträgerlayout erstellt (z. B. „/usr/sap/\<sapsid>“).
 
 * computerName: Der Computername der neuen VM. Dieser Parameter wird auch von SAP LaMa verwendet. Wenn Sie diese Vorlage verwenden, um eine neue VM als Teil einer Systemkopie bereitzustellen, wartet SAP LaMa, bis der Host mit diesem Computernamen erreicht werden kann.
 
@@ -319,7 +319,7 @@ Innerhalb des NetApp-Kontos gibt der Kapazitätspool die Größe und den Typ der
 
 ![SAP LaMa – NetApp-Kapazitätspool wurde erstellt ](media/lama/sap-lama-capacitypool-list.png)
 
-Jetzt können die NFS-Volumes definiert werden. Da es Volumes für mehrere Systeme in einem einzigen Pool geben wird, sollte ein selbsterklärendes Benennungsschema ausgewählt werden. Durch das Hinzufügen der Sicherheits-ID (SID) können verwandte Volumes gruppiert werden. Für ASCS und die AS-Instanz sind die folgenden Einbindungen erforderlich: */sapmnt/\<SID\>* , */usr/sap/\<SID\>* und */home/\<sid\>adm*. Optional wird */usr/sap/trans* für das zentrale Übertragungsverzeichnis benötigt, das mindestens von allen Systemen einer einzigen Landschaft verwendet wird.
+Jetzt können die NFS-Volumes definiert werden. Da es Volumes für mehrere Systeme in einem einzigen Pool geben wird, sollte ein selbsterklärendes Benennungsschema ausgewählt werden. Durch das Hinzufügen der Sicherheits-ID (SID) können verwandte Volumes gruppiert werden. Für ASCS und die AS-Instanz sind die folgenden Einbindungen erforderlich: „ */sapmnt/\<SID\>* “, „ */usr/sap/\<SID\>* “ und „ */home/\<sid\>adm*“. Optional wird */usr/sap/trans* für das zentrale Übertragungsverzeichnis benötigt, das mindestens von allen Systemen einer einzigen Landschaft verwendet wird.
 
 > [!NOTE]
 > Während der BETA-Phase muss der Name der Volumes im Abonnement eindeutig sein.
@@ -545,12 +545,12 @@ Verwenden Sie *as1-di-0* als *PAS-Instanzhostnamen* im Dialogfeld *Primäre Anwe
     Legen Sie den Profilparameter „OS_UNICODE=uc“ im Standardprofil des SAP-Systems fest, um dieses Problem zu umgehen.
 
 * Fehler beim Ausführen des „SAPinst“-Schritts: dCheckGivenServer
-  * Fehler beim Ausführen des „SAPinst“-Schritts: dCheckGivenServer", version="1.0", FEHLER: (Letzter vom Schritt gemeldeter Fehler: \<p> Installation wurde vom Benutzer abgebrochen. \</p>
+  * Fehler beim Ausführen des „SAPinst“-Schritts: dCheckGivenServer", version="1.0", FEHLER: (Letzter vom Schritt gemeldeter Fehler: \<p> Die Installation wurde vom Benutzer abgebrochen. \</p>
   * Lösung  
     Stellen Sie sicher, dass SWPM mit einem Benutzer ausgeführt wird, der Zugriff auf das Profil hat. Dieser Benutzer kann im Installations-Assistenten des Anwendungsservers konfiguriert werden.
 
 * Fehler beim Ausführen des „SAPinst“-Schritts: checkClient
-  * Fehler beim Ausführen des „SAPinst“-Schritts: checkClient", version = "1.0", FEHLER: (Letzter vom Schritt gemeldeter Fehler: \<p> Installation wurde vom Benutzer abgebrochen. \</p>)
+  * Fehler beim Ausführen des „SAPinst“-Schritts: checkClient", version = "1.0", FEHLER: (Letzter vom Schritt gemeldeter Fehler: \<p> Die Installation wurde vom Benutzer abgebrochen. \</p>)
   * Lösung  
     Überprüfen Sie, ob Microsoft ODBC Driver for SQL Server auf der VM installiert ist, auf der Sie den Anwendungsserver installieren möchten.
 

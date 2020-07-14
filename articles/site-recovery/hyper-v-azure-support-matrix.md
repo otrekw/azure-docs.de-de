@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: 99204657b7604250826ff0a4a870ad92fdb4df32
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: b48dfba6fa5dc270a4d711864d15e9128f4beb98
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249143"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132415"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -32,9 +32,13 @@ Hyper-V ohne Virtual Machine Manager | Sie können die Notfallwiederherstellung 
 
 **Server** | **Anforderungen** | **Details**
 --- | --- | ---
-Hyper-V (Ausführung ohne Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (einschließlich Server Core-Installation), Windows Server 2012 R2 mit den neuesten Updates | Wenn Sie Windows Server 2012 R2 mit SCVMM 2012 R2 mit Azure Site Recovery bzw. nur SCVMM 2012 R2 mit Azure Site Recovery konfiguriert haben und nun ein Upgrade des Betriebssystems durchführen möchten, befolgen Sie die Anweisungen in der [Dokumentation](upgrade-2012R2-to-2016.md). <br/><br/> Hinweis: In der Server Core-Version von Windows Server 2019 wird Failback nicht unterstützt.
-Hyper-V (Ausführung mit Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Wenn Virtual Machine Manager verwendet wird, sollten Windows Server 2019-Hosts in Virtual Machine Manager 2019 verwaltet werden. Ebenso sollten Windows Server 2016-Hosts in Virtual Machine Manager 2016 verwaltet werden.<br/><br/> Hinweis: Ein Failback auf einen alternativen Standort wird für Windows Server 2019-Hosts nicht unterstützt.
+Hyper-V (Ausführung ohne Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 mit aktuellen Updates (einschließlich von Server Core-Installationen dieser Betriebssysteme, außer Windows Server 2019) | Wenn Sie Windows Server 2012 R2 mit SCVMM 2012 R2 mit Azure Site Recovery bzw. nur SCVMM 2012 R2 mit Azure Site Recovery konfiguriert haben und nun ein Upgrade des Betriebssystems durchführen möchten, befolgen Sie die Anweisungen in der [Dokumentation](upgrade-2012R2-to-2016.md).
+Hyper-V (Ausführung mit Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 (einschließlich von Server Core-Installationen dieser Betriebssysteme, außer Virtual Machine Manager 2019) | Wenn Virtual Machine Manager verwendet wird, sollten Windows Server 2019-Hosts in Virtual Machine Manager 2019 verwaltet werden. Ebenso sollten Windows Server 2016-Hosts in Virtual Machine Manager 2016 verwaltet werden.
 
+> [!NOTE]
+>
+> - Stellen Sie sicher, dass auf dem lokalen Server .NET Framework 4.6.2 oder höher vorhanden ist.
+> - Failover und Failback zu einem alternativen Standort oder zum ursprünglichen Standort mit oder ohne Ausführung von Virtual Machine Manager wird für die Server Core-Version von Windows Server 2019 nicht unterstützt.
 
 ## <a name="replicated-vms"></a>Replizierte VMs
 
@@ -44,7 +48,7 @@ In der folgenden Tabelle wird die VM-Unterstützung zusammengefasst. Site Recove
  **Komponente** | **Details**
 --- | ---
 Konfiguration des virtuellen Computers | Virtuelle Computer, die nach Azure repliziert werden sollen, müssen die [Azure-Anforderungen](#azure-vm-requirements) erfüllen.
-Gastbetriebssystem | Alle [für Azure unterstützten](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases) Gastbetriebssysteme.<br/><br/> Windows Server 2016 Nano Server wird nicht unterstützt.
+Gastbetriebssystem | Alle [für Azure unterstützten](../cloud-services/cloud-services-guestos-update-matrix.md#family-5-releases) Gastbetriebssysteme.<br/><br/> Windows Server 2016 Nano Server wird nicht unterstützt.
 
 
 ## <a name="vmdisk-management"></a>VM-/Datenträgerverwaltung
@@ -133,6 +137,7 @@ Blockblobs | Nein | Nein
 Verschlüsselung ruhender Daten (SSE)| Ja | Ja
 Verschlüsselung ruhender Daten (CMK) <br></br> (Nur für Failover auf verwalteten Datenträgern)| Ja (über PowerShell ab Az-Modulversion 3.3.0) | Ja (über PowerShell ab Az-Modulversion 3.3.0)
 Storage Premium | Ja | Ja
+Standardspeicher | Ja | Ja
 Import/Export-Dienst | Nein | Nein
 Azure-Speicherkonten mit aktivierter Firewall | Ja. Für Zielspeicher und Cache | Ja. Für Zielspeicher und Cache
 Speicherkonto ändern | Nein. Das betreffende Azure-Zielspeicherkonto kann nach Aktivieren der Replikation nicht geändert werden. Zum Ändern muss die Notfallwiederherstellung deaktiviert und anschließend erneut aktiviert werden. | Nein
@@ -152,7 +157,7 @@ Lokale virtuelle Computer, die Sie in Azure replizieren, müssen die in dieser T
 
 **Komponente** | **Anforderungen** | **Details**
 --- | --- | ---
-Gastbetriebssystem | Site Recovery unterstützt alle Betriebssysteme, die [von Azure unterstützt werden](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Gastbetriebssystem | Site Recovery unterstützt alle Betriebssysteme, die [von Azure unterstützt werden](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794868(v=ws.10)).  | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Architektur des Gastbetriebssystems | 32 Bit (Windows Server 2008)/64 Bit | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Größe des Betriebssystem-Datenträgers | Bis zu 2.048 GB für VMs der 1. Generation.<br/><br/> Bis zu 300 GB für VMs der 2. Generation.  | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Anzahl von Betriebssystem-Datenträgern | 1 | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.

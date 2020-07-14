@@ -3,20 +3,23 @@ title: Übersicht der Azure Automation-Funktion „VMs außerhalb der Geschäfts
 description: In diesem Artikel wird die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ beschrieben, die VMs gemäß einem Zeitplan startet oder beendet und sie proaktiv in Azure Monitor-Protokollen überwacht.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/28/2020
+ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7c0cc2b4996c1002aae0656234c356c805923811
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205125"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84424073"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht
 
 Die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ startet bzw. beendet aktivierte virtuelle Azure-Computer. Damit können Sie Computer nach benutzerdefinierten Zeitplänen starten und beenden und außerdem über Azure Monitor-Protokolle Erkenntnisse aus Ihren Daten ziehen und durch die Nutzung von [Aktionsgruppen](../azure-monitor/platform/action-groups.md) optional E-Mails senden. Die Funktion kann in den meisten Szenarien sowohl auf Azure Resource Manager-VMs als auch auf klassischen VMs aktiviert werden. 
 
-Diese Funktion verwendet das Cmdlet [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) zum Starten von VMs. Zum Beenden von VMs wird [Stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) verwendet.
+Diese Funktion verwendet das Cmdlet [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) zum Starten von VMs. Zum Beenden von VMs wird [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) verwendet.
+
+> [!NOTE]
+> Die Runbooks wurden zwar aktualisiert und verwenden die neuen Cmdlets des Azure Az-Moduls, verwenden aber weiterhin den AzureRM-Präfixalias.
 
 > [!NOTE]
 > Die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ wurde dahingehend aktualisiert, dass sie die neuesten verfügbaren Versionen der Azure-Module unterstützt. Die aktualisierte Version dieser Funktion, die im Marketplace verfügbar ist, bietet keine Unterstützung für AzureRM-Module, da eine Migration von AzureRM- zu Az-Modulen durchgeführt wurde.
@@ -132,7 +135,7 @@ In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen
 |External_AutoStop_TimeAggregationOperator | Der Zeitaggregationsoperator, der auf die ausgewählte Fenstergröße angewandt wird, um die Bedingung auszuwerten. Mögliche Werte sind `Average`, `Minimum`, `Maximum`, `Total` und `Last`.|
 |External_AutoStop_TimeWindow | Das Zeitfenster, in dem Azure ausgewählte Metriken zum Auslösen einer Warnung analysiert. Für diesen Parameter können Zeiträume eingegeben werden. Mögliche Werte reichen von 5 Minuten bis 6 Stunden.|
 |External_EnableClassicVMs| Dieser Wert gibt an, ob die Funktion auf klassische virtuelle Computer abzielt. Der Standardwert lautet „True“. Legen Sie diese Variable für Azure Cloud Solution Provider-Abonnements (CSP) auf FALSE fest. Für klassische VMs ist ein [klassisches ausführendes Konto](automation-create-standalone-account.md#create-a-classic-run-as-account) erforderlich.|
-|External_ExcludeVMNames | Durch Trennzeichen getrennte Liste mit den Namen der auszuschließenden VMs (begrenzt auf 140 VMs). Wenn Sie dieser Liste mehr als 140 VMs hinzufügen, kann es bei VMs, für die Ausschluss festgelegt ist, zu unbeabsichtigtem Starten oder Beenden kommen.|
+|External_ExcludeVMNames | Durch Trennzeichen getrennte Liste mit den Namen der auszuschließenden VMs (begrenzt auf 140 VMs). Wenn Sie dieser Liste mehr als 140 VMs hinzufügen, können VMs, für die ein Ausschluss festgelegt ist, unbeabsichtigt gestartet oder beendet werden.|
 |External_Start_ResourceGroupNames | Durch Trennzeichen getrennte Liste mit mindestens einer Ressourcengruppe als Ziel für die Startaktionen.|
 |External_Stop_ResourceGroupNames | Durch Trennzeichen getrennte Liste mit mindestens einer Ressourcengruppe als Ziel für die Beendigungsaktionen.|
 |External_WaitTimeForVMRetrySeconds |Die Wartezeit in Sekunden für die Aktionen, die mit den VMs für das Runbook **SequencedStartStop_Parent** ausgeführt werden sollen. Diese Variable ermöglicht es dem Runbook, die angegebene Anzahl von Sekunden auf die untergeordneten Vorgänge zu warten, bevor es mit der nächsten Aktion fortfährt. Die maximale Wartezeit beträgt 10.800 Sekunden (3 Stunden). Der Standardwert beträgt 2.100 Sekunden.|

@@ -3,16 +3,16 @@ title: Erstellen eines virtuellen Windows-Computers mit Azure Image Builder (Vor
 description: Erstellen Sie mit Azure Image Builder einen virtuellen Windows-Computer.
 author: cynthn
 ms.author: cynthn
-ms.date: 07/31/2019
+ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 269b2f4674f2c99fc438c1a7be65e5660ca58d08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6fa1f6bcc6c91a493225726bc0df60d2d0b4a1e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869506"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119187"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Vorschau: Erstellen eines virtuellen Windows-Computers mit Azure Image Builder
 
@@ -21,6 +21,11 @@ In diesem Artikel erfahren Sie, wie Sie mit Azure VM Image Builder ein benutzerd
 - Windows-Neustart: startet die VM neu.
 - PowerShell (inline): führt einen spezifischen Befehl aus. In diesem Beispiel wird mit `mkdir c:\\buildActions` ein Verzeichnis auf dem virtuellen Computer erstellt.
 - Datei: kopiert eine Datei aus GitHub auf den virtuellen Computer. In diesem Beispiel wird [index.md](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) in `c:\buildArtifacts\index.html` auf den virtuellen Computer kopiert.
+- buildTimeoutInMinutes: Der Standardwert hierfür beträgt 240 Minuten, und Sie können die Buildzeit erhöhen, um zeitintensivere Builds zu ermöglichen.
+- vmProfile: Geben Sie Eigenschaften für VM-Größe und Netzwerk an.
+- osDiskSizeGB: Sie können ein Image vergrößern.
+- identity: Geben Sie eine Identität an, die Azure Image Builder während des Buildprozesses verwendet.
+
 
 Sie können auch `buildTimeoutInMinutes` angeben. Der Standardwert ist 240 Minuten, und Sie können die Buildzeit vergrößern, um zeitintensive Builds zuzulassen.
 
@@ -50,7 +55,8 @@ az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachine
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
@@ -58,9 +64,11 @@ Wenn nicht „registered“ ausgegeben wird, führen Sie den folgenden Befehl au
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
+
 
 ## <a name="set-variables"></a>Festlegen von Variablen
 
@@ -93,18 +101,41 @@ Diese Ressourcengruppe wird verwendet, um das Artefakt und Image der Imagekonfig
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>Festlegen von Berechtigungen für die Ressourcengruppe
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Erstellen einer vom Benutzer zugewiesenen Identität und Festlegen von Berechtigungen für die Ressourcengruppe
+Image Builder verwendet die angegebene [Benutzeridentität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity), um das Image in die Ressourcengruppe einzufügen. In diesem Beispiel erstellen Sie eine Azure-Rollendefinition, die über die präzisen Aktionen zur Verteilung des Images verfügt. Die Rollendefinition wird dann der Benutzeridentität zugewiesen.
 
-Erteilen Sie die Image Builder-Berechtigung „Mitwirkender“, um das Image in der Ressourcengruppe zu erstellen. Wird dies nicht erledigt, tritt beim Imagebuild ein Fehler auf. 
+## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>Erstellen einer benutzerseitig zugewiesenen verwalteten Identität und Gewähren von Berechtigungen 
+```bash
+# create user assigned identity for image builder to access the storage account where the script is located
+idenityName=aibBuiUserId$(date +'%s')
+az identity create -g $imageResourceGroup -n $idenityName
 
-Der Wert `--assignee` ist die App-Registrierungs-ID für den Image Builder-Dienst. 
+# get identity id
+imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
 
-```azurecli-interactive
+# get the user identity URI, needed for the template
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+
+# download preconfigured role definition example
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+
+imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
+
+# update the definition
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
+sed -i -e "s/<rgName>/$imageResourceGroup/g" aibRoleImageCreation.json
+sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g" aibRoleImageCreation.json
+
+# create role definitions
+az role definition create --role-definition ./aibRoleImageCreation.json
+
+# grant role definition to the user assigned identity
 az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
+    --assignee $imgBuilderCliId \
+    --role $imageRoleDefName \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 ```
+
 
 
 ## <a name="download-the-image-configuration-template-example"></a>Herunterladen des Beispiels für die Imagekonfigurationsvorlage
@@ -119,18 +150,19 @@ sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateWin.json
 sed -i -e "s/<region>/$location/g" helloImageTemplateWin.json
 sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateWin.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateWin.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateWin.json
 
 ```
 
 Sie können dieses Beispiel im Terminal mithilfe eines Text-Editors wie `vi` ändern.
 
 ```azurecli-interactive
-vi helloImageTemplateLinux.json
+vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
 > Für das Quellimage müssen Sie immer [eine Version angeben](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure). Sie können nicht `latest` verwenden.
-> Wenn Sie die Ressourcengruppe, in der das Image verteilt wird, hinzufügen oder ändern, müssen Sie sicherstellen, dass die [Berechtigungen für die Ressourcengruppe festgelegt sind](#set-permissions-on-the-resource-group).
+> Wenn Sie die Ressourcengruppe, in der das Image verteilt wird, hinzufügen oder ändern, müssen Sie sicherstellen, dass die [Berechtigungen für die Ressourcengruppe festgelegt sind](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group).
  
 ## <a name="create-the-image"></a>Erstellen des Images
 
@@ -181,7 +213,7 @@ Wenn Fehler auftreten sollten, prüfen Sie die Schritte unter [Problembehandlung
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers
 
-Erstellen Sie den virtuellen Computer mithilfe des erstellten Images. Ersetzen Sie *\<Kennwort>* durch Ihr eigenes Kennwort für `aibuser` auf dem virtuellen Computer.
+Erstellen Sie den virtuellen Computer mithilfe des erstellten Images. Ersetzen Sie *\<password>* durch Ihr eigenes Kennwort für `aibuser` auf dem virtuellen Computer.
 
 ```azurecli-interactive
 az vm create \
@@ -216,6 +248,18 @@ az resource delete \
     --resource-group $imageResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
     -n helloImageTemplateWin01
+```
+
+### <a name="delete-the-role-assignment-role-definition-and-user-identity"></a>Löschen Sie die Rollenzuweisung, die Rollendefinition und die Benutzeridentität.
+```azurecli-interactive
+az role assignment delete \
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
+
+az role definition delete --name "$imageRoleDefName"
+
+az identity delete --ids $imgBuilderId
 ```
 
 ### <a name="delete-the-image-resource-group"></a>Löschen der Imageressourcengruppe

@@ -1,7 +1,7 @@
 ---
-title: Rotation in einer TDE-Schutzvorrichtung (PowerShell und Azure CLI)
+title: Rotation in einer TDE-Schutzvorrichtung (PowerShell und die Azure CLI)
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Erfahren Sie, wie Sie für einen Server in Azure, der von Azure SQL-Datenbank und Azure Synapse Analytics verwendet wird, mithilfe von PowerShell und Azure CLI eine Rotation in der TDE-Schutzvorrichtung (Transparent Data Encryption) durchführen.
+description: Erfahren Sie, wie Sie für einen Server in Azure, der von Azure SQL-Datenbank und Azure Synapse Analytics verwendet wird, mithilfe von PowerShell und der Azure CLI eine Rotation in der TDE-Schutzvorrichtung (Transparent Data Encryption) durchführen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,18 +12,18 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 36706372f4b49150aad5511e3d8c6c23f5be12ec
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b2729975db154fbaf4569afc5aa9b5eaab358146
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84039861"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84321351"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>Durchführen einer Rotation in der Transparent Data Encryption-Schutzvorrichtung (TDE)
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 
-Dieser Artikel beschreibt die Schlüsselrotation für einen [Server](logical-servers.md) mithilfe einer TDE-Schutzvorrichtung aus Azure Key Vault. Die Rotation der TDE-Schutzvorrichtung für einen Server bewirkt einen Wechsel zu einem neuen asymmetrischen Schlüssel, der die Datenbanken auf dem Server schützt. Die Schlüsselrotation ist ein Onlinevorgang, der in wenigen Sekunden abgeschlossen sein sollte, da nur der Datenverschlüsselungsschlüssel der Datenbank entschlüsselt und wieder verschlüsselt wird, aber nicht die gesamte Datenbank.
+Dieser Artikel beschreibt die Schlüsselrotation für einen [Server](logical-servers.md) mithilfe einer TDE-Schutzvorrichtung aus Azure Key Vault. Die Rotation der logischen TDE-Schutzvorrichtung für einen Server bewirkt einen Wechsel zu einem neuen asymmetrischen Schlüssel, der die Datenbanken auf dem Server schützt. Die Schlüsselrotation ist ein Onlinevorgang, der in wenigen Sekunden abgeschlossen sein sollte, da nur der Datenverschlüsselungsschlüssel der Datenbank entschlüsselt und wieder verschlüsselt wird, aber nicht die gesamte Datenbank.
 
 Dieser Leitfaden erläutert zwei Optionen zum Rotieren der TDE-Schutzvorrichtung auf dem Server.
 
@@ -35,7 +35,7 @@ Dieser Leitfaden erläutert zwei Optionen zum Rotieren der TDE-Schutzvorrichtung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- In diesem Leitfaden wird davon ausgegangen, dass Sie bereits einen Schlüssel aus Azure Key Vault als TDE-Schutzvorrichtung für Azure SQL-Datenbank oder Azure Synapse verwenden. Siehe [Transparent Data Encryption mit BYOK-Unterstützung](transparent-data-encryption-byok-overview.md).
+- In diesem Leitfaden wird davon ausgegangen, dass Sie bereits einen Schlüssel aus Azure Key Vault als TDE-Schutzvorrichtung für Azure SQL-Datenbank oder Azure Synapse Analytics verwenden. Siehe [Transparent Data Encryption mit BYOK-Unterstützung](transparent-data-encryption-byok-overview.md).
 - Azure PowerShell muss installiert sein und ausgeführt werden.
 - [Empfohlen, aber optional] Erstellen Sie das Schlüsselmaterial für die TDE-Schutzvorrichtung zunächst in einem Hardwaresicherheitsmodul (HSM) oder einem lokalen Schlüsselspeicher, und importieren Sie das Schlüsselmaterial in Azure Key Vault. Weitere Informationen erhalten Sie, wenn Sie die [Anweisungen zur Verwendung eines Hardwaresicherheitsmodells (HSM) und Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started) befolgen.
 
@@ -46,7 +46,7 @@ Anweisungen zur Installation des Az-Moduls finden Sie unter [Install Azure Power
 > [!IMPORTANT]
 > Das Azure Resource Manager-Modul (RM) von PowerShell wird weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Das AzureRM-Modul erhält mindestens bis Dezember 2020 weiterhin Fehlerbehebungen.  Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Weitere Informationen zur Kompatibilität finden Sie in der [Einführung in das neue Azure PowerShell Az-Modul](/powershell/azure/new-azureps-module-az).
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
 Informationen zur Installation finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
@@ -75,7 +75,7 @@ Set-AzSqlServerTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId <ke
    -ServerName <logicalServerName> -ResourceGroup <SQLDatabaseResourceGroupName>
 ```
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
 Verwenden Sie die Befehle [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create), [az sql server key create](/cli/azure/sql/server/key#az-sql-server-key-create) und [az sql server tde-key set](/cli/azure/sql/server/tde-key#az-sql-server-tde-key-set).
 
@@ -110,7 +110,7 @@ az sql server tde-key set --server-key-type AzureKeyVault --kid <keyVaultKeyId> 
        -ServerName <logicalServerName> -ResourceGroup <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
 In den folgenden Beispielen wird der Befehl [az sql server tde-key set](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) verwendet,
 
@@ -130,6 +130,6 @@ In den folgenden Beispielen wird der Befehl [az sql server tde-key set](/powersh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Im Falle eines Sicherheitsrisikos können Sie hier nachsehen, wie Sie eine möglicherweise kompromittierte TDE-Schutzvorrichtung entfernen: [Entfernen eines möglicherweise kompromittierten Schlüssels](transparent-data-encryption-byok-remove-tde-protector.md)
+- Im Falle eines Sicherheitsrisikos können Sie hier nachsehen, wie Sie eine möglicherweise kompromittierte TDE-Schutzvorrichtung entfernen: [Entfernen eines möglicherweise kompromittierten Schlüssels](transparent-data-encryption-byok-remove-tde-protector.md).
 
-- Erste Schritte mit der Azure Key Vault-Integration und BYOK-Unterstützung (Bring Your Own Key) für TDE: [Aktivieren von TDE mit BYOK aus Key Vault mithilfe von PowerShell](transparent-data-encryption-byok-configure.md)
+- Erste Schritte mit der Azure Key Vault-Integration und BYOK-Unterstützung (Bring Your Own Key) für TDE: [Aktivieren von TDE mit BYOK aus Key Vault mithilfe von PowerShell](transparent-data-encryption-byok-configure.md).

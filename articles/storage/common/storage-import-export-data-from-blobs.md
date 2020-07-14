@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Exportaufträge im Azure-Portal erstellen und
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: fe58f59147db43b1c15298f83a2945b50766f8a8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513503"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
 
@@ -39,7 +39,7 @@ Die Voraussetzungen lauten wie folgt:
 
 Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag zu erstellen.
 
-1. Melden Sie sich bei https://portal.azure.com/ an.
+1. Melden Sie sich bei <https://portal.azure.com/> an.
 2. Wechseln Sie zu **Alle Dienste > Speicher > Import-/Exportaufträge**.
 
     ![Wechseln zu „Import/Exportaufträge“](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -129,7 +129,11 @@ Der Export ist abgeschlossen.
 
 Wenn Sie Version 1.4.0.300 des WAImportExport-Tools verwenden, entsperren Sie das Laufwerk mit dem folgenden Befehl:
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+
+Hier sehen Sie eine Beispieleingabe.
+
+   `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
 
 Wenn Sie frühere Versionen des Tools verwenden, entsperren Sie das Laufwerk über das BitLocker-Dialogfeld.
 
@@ -143,11 +147,11 @@ Mit diesem *optionalen* Schritt können Sie die Anzahl der Laufwerke, die für d
 2. Entzippen Sie die Dateien in den Standardordner `waimportexportv1`. Beispiel: `C:\WaImportExportV1`.
 3. Öffnen Sie ein PowerShell- oder Befehlszeilenfenster mit Administratorrechten. Um das Verzeichnis in den Ordner mit den entzippten Daten zu ändern, führen Sie den folgenden Befehl aus:
 
-    `cd C:\WaImportExportV1`
+   `cd C:\WaImportExportV1`
 
 4. Um die erforderliche Anzahl von Datenträgern für die ausgewählten Blobs zu überprüfen, führen Sie den folgenden Befehl aus:
 
-    `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
+   `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
 
     Die Parameter werden in der folgenden Tabelle beschrieben:
 

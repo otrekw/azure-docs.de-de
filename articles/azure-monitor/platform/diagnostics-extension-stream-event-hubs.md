@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233464"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Senden von Daten aus der Windows Azure-Diagnoseerweiterung an Azure Event Hubs
@@ -39,7 +39,7 @@ Azure-Diagnose sendet Protokolle und Metriken stets an ein Azure Storage-Konto. 
 | Eigenschaft | BESCHREIBUNG |
 |:---|:---|
 | Name | Beschreibender Name für die Senke. Wird in der Konfiguration verwendet, um die Datenquellen anzugeben, die an die Senke senden sollen. |
-| url  | URL des Event Hubs in der Form \<event-hubs-namespace\>.servicebus.windows.net/\<event-hub-name\>.          |
+| url  | URL des Event Hubs im Format \<event-hubs-namespace\>.servicebus.windows.net/\<event-hub-name\>.          |
 | SharedAccessKeyName | Name einer SAS-Richtlinie für den Event Hub, der mindestens über **Senden**-Autorität verfügt. |
 | SharedAccessKey     | Primärer oder sekundär Schlüssel aus der SAS-Richtlinie für den Event Hub. |
 

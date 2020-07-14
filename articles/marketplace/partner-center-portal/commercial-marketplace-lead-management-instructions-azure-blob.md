@@ -1,18 +1,18 @@
 ---
 title: Leadverwaltung mit Azure Blob Storage – kommerzieller Microsoft-Marketplace
 description: Erfahren Sie, wie Sie Azure Blob zum Konfigurieren von Leads für Microsoft AppSource und Azure Marketplace verwenden.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 05/01/2020
-ms.author: dsindona
-ms.openlocfilehash: 9ac7640dd8b63c72bac83c98e07cf861fb26c870
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845787"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121910"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Verwenden von Azure Blob Storage zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -33,11 +33,11 @@ ms.locfileid: "83845787"
 3. Gehen Sie folgendermaßen vor, um im Azure-Portal ein Speicherkonto zu erstellen.  
     1. Wählen Sie im Menü auf der linken Seite **+ Ressource erstellen** aus.  Auf der rechten Seite wird der Bereich (das Blatt) **Neu** angezeigt.
     2. Wählen Sie im Bereich **Neu** die Option **Speicher** aus.  Auf der rechten Seite wird eine Liste **Empfohlen** angezeigt.
-    3. Wählen Sie das **Speicherkonto** aus, um mit der Kontoerstellung zu beginnen.  Befolgen Sie die Anweisungen im Artikel [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+    3. Wählen Sie das **Speicherkonto** aus, um mit der Kontoerstellung zu beginnen.  Befolgen Sie die Anweisungen im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
 
     ![Schritte zum Erstellen eines Azure Storage-Kontos](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
-    Weitere Informationen zu Speicherkonten finden Sie im [Schnellstarttutorial](https://docs.microsoft.com/azure/storage/).  Weitere Informationen zu den Preisen für Storage finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+    Weitere Informationen zu Speicherkonten finden Sie in diesem [Schnellstart](../../storage/blobs/storage-quickstart-blobs-portal.md).  Weitere Informationen zu den Preisen für Storage finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 4. Warten Sie, bis Ihr Speicherkonto bereitgestellt wird. Dieser Prozess nimmt in der Regel einige Minuten in Anspruch.  Greifen Sie über die **Homepage** des Azure-Portals auf Ihr Speicherkonto zu, indem Sie **All Ihre Ressourcen anzeigen** oder im linken Navigationsbereich des Azure-Portals **Alle Ressourcen** auswählen.
 

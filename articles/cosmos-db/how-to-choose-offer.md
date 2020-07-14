@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: b8c4fd3804bfa02b86f62912641eb936ff8cd15e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662928"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85116807"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Auswählen zwischen standardmäßig (manuell) bereitgestelltem und automatisch skaliertem Durchsatz 
 
@@ -61,7 +61,7 @@ Nachdem Sie einen Durchsatztyp festgelegt haben, sollten Sie Ihre Anwendung im Z
 
 Wenn Sie die Autoskalierung verwenden, können Sie sich mit Azure Monitor die bereitgestellte maximale Anzahl von RU/s (**Autoscale Max Throughput** [Maximaler Durchsatz bei Autoskalierung]) sowie die RU/s anzeigen lassen, auf die das System zurzeit skaliert ist (**Provisioned Throughput** [Bereitgestellter Durchsatz]). Nachstehend finden Sie ein Beispiel für eine variable oder nicht vorhersehbare Workload mit automatisch skaliertem Durchsatz. Beachten Sie, dass das System die RU/s auf den Mindestwert von 10 % der maximalen RU/s skaliert (in diesem Fall 5.000 RU/s bzw. 50.000 RU/s), wenn kein Datenverkehr vorhanden ist. 
 
-![Beispiel für eine Workload mit automatisch skaliertem Durchsatz](media/how-to-choose-offer/autoscale-metrics-azure-monitor.png)
+:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Beispiel für eine Workload mit automatisch skaliertem Durchsatz":::
 
 > [!NOTE]
 > Wenn Sie den standardmäßig (manuell) bereitgestellten Durchsatz verwenden, bezieht sich die Metrik **Provisioned Throughput** (Bereitgestellte Durchsatz) auf den Wert, den Sie als Benutzer festgelegt haben. Bei Verwendung des automatisch skalierten Durchsatzes bezieht sich diese Metrik auf die Anzahl von RU/s, auf die das System zurzeit skaliert ist.

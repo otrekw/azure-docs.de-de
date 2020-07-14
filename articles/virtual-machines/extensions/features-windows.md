@@ -16,10 +16,10 @@ ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066856"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
@@ -252,7 +252,7 @@ Durch Verschieben der Eigenschaft **CommandToExecute** in die **protected**-Konf
 }
 ```
 
-Auf einer Azure-IaaS-VM, die Erweiterungen verwendet, werden möglicherweise Zertifikate des Antragstellers **_Windows Azure CRP Certificate Generator_** angezeigt. Auf einer klassischen RDFE-VM tragen diese Zertifikate den Antragstellernamen **_Windows Azure Service Management for Extensions_** .
+Auf einer Azure-IaaS-VM, die Erweiterungen verwendet, werden möglicherweise Zertifikate des Antragstellers **_Windows Azure CRP Certificate Generator_** angezeigt. Auf einer klassischen RDFE-VM tragen diese Zertifikate den Antragstellernamen **_Windows Azure Service Management for Extensions_**.
 
 Diese Zertifikate sichern die Kommunikation zwischen dem virtuellen Computer und seinem Host während der Übertragung geschützter Einstellungen (Kennwort, andere Anmeldeinformationen), die von Erweiterungen verwendet werden. Die Zertifikate werden von Azure Fabric Controller generiert und an den VM-Agent übermittelt. Wenn Sie den virtuellen Computer jeden Tag beenden und starten, wird möglicherweise ein neues Zertifikat von Fabric Controller erstellt. Das Zertifikat wird im persönlichen Zertifikatspeicher des Computers gespeichert. Diese Zertifikate können gelöscht werden. Der VM-Agent erstellt Zertifikate bei Bedarf neu.
 
@@ -355,7 +355,7 @@ Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
 
 1. Um die Protokolldatei des Windows-Gast-Agents zu überprüfen, sollten Sie die Aktivität bei der Bereitstellung der Erweiterung in *C:\WindowsAzure\Logs\WaAppAgent.log* näher betrachten.
 
-2. Überprüfen Sie die tatsächlichen Erweiterungsprotokolle unter *C:\WindowsAzure\Logs\Plugins\<extensionName>* für weitere Einzelheiten.
+2. Überprüfen Sie die tatsächlichen Erweiterungsprotokolle unter *C:\WindowsAzure\Logs\Plugins\<extensionName>* , um weitere Einzelheiten zu erhalten.
 
 3. Lesen Sie die Abschnitte zur Problembehandlung in der Dokumentation zu Erweiterungen für Fehlercodes, bekannte Probleme, etc.
 

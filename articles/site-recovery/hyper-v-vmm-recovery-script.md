@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826280"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Hinzufügen eines VMM-Skripts zu einem Wiederherstellungsplan
@@ -60,9 +60,9 @@ Sie können PowerShell-Skripts in Ihren Wiederherstellungsplänen verwenden. Sie
 
 Falls Sie über eine VMM-Quellwebsite verfügen, können Sie ein Skript auf dem VMM-Server erstellen. Fügen Sie das Skript dann in Ihren Wiederherstellungsplan ein.
 
-1. Erstellen Sie einen neuen Ordner in der Bibliothekfreigabe. Beispiel: „\<VMM-Servername >\MSSCVMMLibrary\RPScripts“. Platzieren Sie den Ordner auf dem VMM-Quell- und -Zielserver.
+1. Erstellen Sie einen neuen Ordner in der Bibliothekfreigabe. Beispiel: \<VMM server name>\MSSCVMMLibrary\RPScripts. Platzieren Sie den Ordner auf dem VMM-Quell- und -Zielserver.
 1. Erstellen Sie das Skript. Geben Sie dem Skript beispielsweise den Namen „RPScript“. Überprüfen Sie, ob das Skript erwartungsgemäß funktioniert.
-1. Platzieren Sie das Skript im Ordner „\<VMM-Servername>\MSSCVMMLibrary“ auf den VMM-Quell- und -Zielservern.
+1. Platzieren Sie das Skript auf den VMM-Quell- und -Zielservern im Ordner „\<VMM server name>\MSSCVMMLibrary“.
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>Hinzufügen des Skripts zu einem Wiederherstellungsplan
 

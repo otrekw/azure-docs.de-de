@@ -17,10 +17,10 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202395"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrieren von Azure Active Directory mit E Sales Manager Remix
@@ -101,9 +101,9 @@ Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigur
 
     ![SSO-Informationen zur Domäne und zu den URLs für E Sales Manager Remix](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: *https://\<serverbasierteURL>/\<Unterdomäne>/esales-pc*.
+    a. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: *https://\<Server-Based-URL>/\<sub-domain>/esales-pc*.
 
-    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: *https://\<serverbasierteURL>/\<Unterdomäne>/* .
+    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: *https://\<Server-Based-URL>/\<sub-domain>/* .
 
     c. Notieren Sie den Wert von **Bezeichner** zur späteren Verwendung in diesem Tutorial.
     

@@ -3,15 +3,15 @@ title: 'Leistungsoptimierung: Spark mit Azure Data Lake Storage Gen1'
 description: Erfahren Sie, wie Sie die Leistung für Spark in Azure HDInsight und Azure Data Lake Storage Gen1 optimieren.
 author: stewu
 ms.service: data-lake-store
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 665fd3bf29f0ec4d2196bd29be300ee909364e31
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 7012808e4ebcd936f30aba767731e7888d92161f
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691104"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856925"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Anleitung für die Leistungsoptimierung für Spark in HDInsight und Azure Data Lake Storage Gen1 Spark
 
@@ -55,26 +55,30 @@ Es gibt einige allgemeine Möglichkeiten, die Parallelität für E/A-intensive A
 
 **Schritt 3: Festlegen von „executor-cores“** : Für E/A-intensive Workloads ohne komplexe Vorgänge empfiehlt es sich, mit einer großen Anzahl von Executorkernen zu beginnen, um die Anzahl von parallelen Tasks pro Executor zu erhöhen. Das Festlegen von vier Executorkernen ist ein guter Ausgangspunkt.
 
-    executor-cores = 4
+```console
+executor-cores = 4
+```
+
 Durch Erhöhen der Anzahl von Executorkernen steigt die Parallelität, sodass Sie mit verschiedenen Executorkernen experimentieren können. Bei Aufträgen mit komplexeren Vorgängen sollten Sie die Anzahl von Kernen pro Executor reduzieren. Wenn der Wert für „executor-cores“ höher als 4 ist, wird die Garbage Collection möglicherweise ineffizient und senkt die Leistung.
 
 **Schritt 4: Ermitteln der YARN-Arbeitsspeichermenge im Cluster**: Diese Informationen sind in Ambari verfügbar. Navigieren Sie zu YARN, und zeigen Sie die Registerkarte „Configs“ (Konfigurationen) an. Die Größe des YARN-Arbeitsspeichers wird in diesem Fenster angezeigt.
 Beachten Sie, dass auch die Größe des YARN-Standardcontainers in diesem Fenster angezeigt wird. Die YARN-Containergröße entspricht dem Parameter für die Menge des Arbeitsspeichers pro Executor.
 
-    Total YARN memory = nodes * YARN memory per node
+YARN-Arbeitsspeicher gesamt = Knoten × YARN-Arbeitsspeicher pro Knoten
+
 **Schritt 5: Berechnen von „num-executors“**
 
 **Berechnen der Arbeitsspeicherbeschränkung**: Der Parameter „num-executors“ wird entweder durch den Arbeitsspeicher oder durch die CPU beschränkt. Die Speicherbeschränkung wird durch die Menge des verfügbaren YARN-Arbeitsspeichers für Ihre Anwendung bestimmt. Teilen Sie den YARN-Gesamtarbeitsspeicher durch „executor-memory“. Die Beschränkung muss an die Anzahl von Apps angepasst werden, daher wird durch die Anzahl von Apps dividiert.
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps
+Arbeitsspeicherbeschränkung = (YARN-Arbeitsspeicher gesamt / Executor-Arbeitsspeicher) / Anzahl von Apps
+
 **Berechnen der CPU-Beschränkung**: Die CPU-Beschränkung wird als Gesamtanzahl virtueller Kerne dividiert durch die Anzahl von Kernen pro Executor berechnet. Für jeden physischen Kern gibt es zwei virtuelle Kerne. Ähnlich wie bei der Arbeitsspeicherbeschränkung muss auch hier durch die Anzahl von Apps dividiert werden.
 
-    virtual cores = (nodes in cluster * # of physical cores in node * 2)
-    CPU constraint = (total virtual cores / # of cores per executor) / # of apps
+Virtuelle Kerne = (Knoten im Cluster × Anzahl physischer Knoten im Kern × 2) CPU-Beschränkung = (Gesamtanzahl virtueller Kerne / Anzahl von Kernen pro Executor) / Anzahl von Apps
+
 **Festlegen von „num-executors“** : Der Parameter „num-executors“ wird durch die Mindestwerte für die Arbeitsspeicher- und CPU-Beschränkung bestimmt. 
 
-    num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)
-Durch Festlegen eines höheren Werts für „num-executors“ wird die Leistung nicht unbedingt erhöht. Denken Sie daran, dass beim Hinzufügen weiterer Executors auch zusätzlicher Overhead für jeden zusätzlichen Executor entsteht, wodurch die Leistung beeinträchtigt werden kann. Der Wert für „num-executors“ ist durch die Clusterressourcen begrenzt.
+num-executors = Min (Gesamtanzahl virtueller Kerne / Anzahl von Kernen pro Executor, verfügbarer YARN-Arbeitsspeicher / Executor-Arbeitsspeicher) Die Angabe eines hohen Werts für „num-executors“ führt nicht notwendigerweise zu einer Leistungssteigerung. Denken Sie daran, dass beim Hinzufügen weiterer Executors auch zusätzlicher Overhead für jeden zusätzlichen Executor entsteht, wodurch die Leistung beeinträchtigt werden kann. Der Wert für „num-executors“ ist durch die Clusterressourcen begrenzt.
 
 ## <a name="example-calculation"></a>Beispielberechnung
 
@@ -84,30 +88,28 @@ Angenommen, Sie haben zurzeit einen Cluster aus acht D4v2-Knoten, in dem zwei Ap
 
 **Schritt 2: Festlegen von „executor-memory“** : Für dieses Beispiel legen wir fest, dass ein Wert von 6 GB für „executor-memory“ für einen E/A-intensiven Auftrag ausreichend ist.
 
-    executor-memory = 6GB
+```console
+executor-memory = 6GB
+```
+
 **Schritt 3: Festlegen von „executor-cores“:** Da es sich um einen E/A-intensiven Auftrag handelt, können Sie die Anzahl von Kernen für jeden Executor auf vier festlegen. Wenn mehr als vier Kerne pro Executor festgelegt werden, können Probleme mit der Garbage Collection auftreten.
 
-    executor-cores = 4
+```console
+executor-cores = 4
+```
+
 **Schritt 4: Ermitteln der YARN-Arbeitsspeichermenge im Cluster**: Wir wechseln zu Ambari und ermitteln, dass jeder D4v2-Knoten über 25 GB YARN-Arbeitsspeicher verfügt. Da acht Knoten vorhanden sind, wird der verfügbare YARN-Arbeitsspeicher mit 8 multipliziert.
 
-    Total YARN memory = nodes * YARN memory* per node
-    Total YARN memory = 8 nodes * 25 GB = 200 GB
+YARN-Arbeitsspeicher gesamt = Knoten × YARN-Arbeitsspeicher × YARN-Arbeitsspeicher gesamt pro Knoten = 8 Knoten × 25 GB = 200 GB
+
 **Schritt 5: Berechnen von „num-executors“** : Der Parameter „num-executors“ wird ermittelt, indem die Mindestwerte für die Arbeitsspeicher- und CPU-Beschränkung dividiert durch die Anzahl von in Spark ausgeführten Apps verwendet werden.
 
 **Berechnen der Arbeitsspeicherbeschränkung**: Die Arbeitsspeicherbeschränkung wird als YARN-Gesamtarbeitsspeicher dividiert durch die Arbeitsspeichermenge pro Executor berechnet.
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps 
-    Memory constraint = (200 GB / 6 GB) / 2
-    Memory constraint = 16 (rounded)
-**Berechnen der CPU-Beschränkung**: Die CPU-Beschränkung wird als Gesamtanzahl der YARN-Kerne dividiert durch die Anzahl von Kernen pro Executor berechnet.
-    
-    YARN cores = nodes in cluster * # of cores per node * 2
-    YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
-    CPU constraint = (total YARN cores / # of cores per executor) / # of apps
-    CPU constraint = (128 / 4) / 2
-    CPU constraint = 16
+Arbeitsspeicherbeschränkung = (YARN-Arbeitsspeicher gesamt / Executor-Arbeitsspeicher) / Anzahl von Apps Arbeitsspeicherbeschränkung = (200 GB / 6 GB) / 2 Arbeitsspeicherbeschränkung = 16 (gerundet) **Berechnen der CPU-Beschränkung**: Die CPU-Beschränkung wird als Gesamtanzahl von YARN-Kernen dividiert durch die Anzahl von Kernen pro Executor berechnet.
+
+YARN-Kerne = Knoten im Cluster × Anzahl von Kernen pro Knoten × 2 YARN-Kerne = 8 Knoten × 8 Kerne pro D14 × 2 = 128 CPU-Beschränkung = (YARN-Kerne gesamt / Anzahl von Kernen pro Executor) / Anzahl von Apps CPU-Beschränkung = (128 / 4) / 2 CPU-Beschränkung = 16
+
 **Festlegen von „num-executors“**
 
-    num-executors = Min (memory constraint, CPU constraint)
-    num-executors = Min (16, 16)
-    num-executors = 16
+num-executors = Min (Arbeitsspeicherbeschränkung, CPU-Beschränkung) num-executors = Min (16, 16) num-executors = 16

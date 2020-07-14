@@ -4,12 +4,12 @@ description: Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azu
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 21c8ea5ff50cc78b60ccb3b09c953b184757f3c9
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 862455175497fe5496c7eea459c32772074671ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84246984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255142"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azure-Computern mit PowerShell
 
@@ -499,7 +499,7 @@ Wenn die Ausgabe verloren geht oder Sie die relevante Auftrags-ID abrufen möcht
 
 ### <a name="change-policy-for-backup-items"></a>Ändern der Richtlinie für Sicherungselemente
 
-Der Benutzer kann entweder die vorhandene Richtlinie bearbeiten oder die Richtlinie des gesicherten Elements von Richtlinie 1 in Richtlinie 2 ändern. Zum Wechseln der Richtlinien für ein gesichertes Element rufen Sie die entsprechende Richtlinie und das Sicherungselement ab, und verwenden Sie den Befehl [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) mit dem Sicherungselement als Parameter.
+Der Benutzer kann die Richtlinie des gesicherten Elements von Richtlinie 1 in Richtlinie 2 ändern. Zum Wechseln der Richtlinien für ein gesichertes Element rufen Sie die entsprechende Richtlinie und das Sicherungselement ab, und verwenden Sie den Befehl [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) mit dem Sicherungselement als Parameter.
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -513,6 +513,19 @@ Der Befehl wartet, bis die Sicherungskonfiguration abgeschlossen ist, und gibt d
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 master           ConfigureBackup      Completed            3/18/2019 8:00:21 PM      3/18/2019 8:02:16 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
+```
+
+### <a name="edit-an-existing-backup-policy"></a>Bearbeiten einer vorhandenen Sicherungsrichtlinie
+
+Zum Bearbeiten einer vorhandenen Richtlinie verwenden Sie den Befehl [Set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-3.8.0).
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
+```
+Überprüfen Sie die Sicherungsaufträge nach einiger Zeit, um eventuelle Fehler zu zu entdecken. Wenn es Probleme gibt, müssen Sie sie beheben. Führen Sie dann den Befehl „Richtlinie bearbeiten“ mit dem Parameter **FixForInconsistentItems** erneut aus, um die Bearbeitung der Richtlinie für alle Sicherungsobjekte, für die der Vorgang zuvor fehlgeschlagen ist, erneut zu versuchen.
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -FixForInconsistentItems
 ```
 
 ### <a name="re-register-sql-vms"></a>Erneutes Registrieren von virtuellen SQL-Computern
@@ -597,4 +610,4 @@ Angenommen, eine SQL-Verfügbarkeitsgruppe hat zwei Knoten („sql-server-0“ u
 
 Beim [Auflisten von Sicherungscontainern](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0) werden auch „sql-server-0“ und „sql-server-1“ als „AzureVMAppContainer“ aufgeführt.
 
-Rufen Sie einfach die entsprechende SQL-Datenbank ab, um die [Sicherung zu aktivieren](#configuring-backup). Die PS-Cmdlets für die [bedarfsgesteuerte Sicherung](#on-demand-backup) und [Wiederherstellung](#restore-sql-dbs) sind identisch.
+Rufen Sie einfach die entsprechende Datenbank ab, um die [Sicherung zu aktivieren](#configuring-backup). Die PS-Cmdlets für die [bedarfsgesteuerte Sicherung](#on-demand-backup) und [Wiederherstellung](#restore-sql-dbs) sind identisch.

@@ -4,10 +4,10 @@ description: Hier erfahren Sie, wie Sie eine Azure Files-Freigabe von Computekno
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: cb7e6f158e246319e851ee2edd5b21bae33c3723
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83780281"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Verwenden einer Azure-Dateifreigabe mit einem Batch-Pool
@@ -39,8 +39,8 @@ In Batch müssen Sie die Freigabe jedes Mal einbinden, wenn ein Task auf einem W
 
 Fügen Sie z.B. in die Befehlszeile für jeden Task einen `net use`-Befehl zum Einbinden der Dateifreigabe ein. Zum Einbinden der Dateifreigabe sind folgende Anmeldeinformationen erforderlich:
 
-* **Benutzername**: AZURE\\\<storageaccountname\>. Beispiel: AZURE\\*mystorageaccountname*
-* **Kennwort**: \<StorageAccountKeyWhichEnds in==>, z. B. *XXXXXXXXXXXXXXXXXXXXX==*
+* **Benutzername**: AZURE\\\<storageaccountname\>, z. B: AZURE\\*mystorageaccountname*
+* **Kennwort**: \<StorageAccountKeyWhichEnds in==>, z. B.: *XXXXXXXXXXXXXXXXXXXXX==*
 
 Der folgende Befehl bindet die Dateifreigabe *myfileshare* als Laufwerk *S:* in das Speicherkonto *mystorageaccountname* ein:
 
@@ -116,8 +116,8 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 
 Führen Sie dann den Befehl `mount` aus, um die Dateifreigabe einzubinden, und geben Sie die folgenden Anmeldeinformationen an:
 
-* **Benutzername**: \<storageaccountname\>. Beispiel: *mystorageaccountname*
-* **Kennwort**: \<StorageAccountKeyWhichEnds in==>, z. B. *XXXXXXXXXXXXXXXXXXXXX==*
+* **Benutzername**: \<storageaccountname\>, z. B.: *mystorageaccountname*
+* **Kennwort**: \<StorageAccountKeyWhichEnds in==>, z. B.: *XXXXXXXXXXXXXXXXXXXXX==*
 
 Der folgende Befehl bindet die Dateifreigabe *myfileshare* unter */mnt/MyAzureFileShare* in das Speicherkonto *mystorageaccountname* ein: 
 

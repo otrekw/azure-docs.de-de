@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb8243041bb93ba8be6a65bb83df6f84affaee3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807586"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Aufgaben nach der Konfiguration für die Hybrid-Azure AD-Einbindung
 
@@ -86,15 +86,10 @@ Dieses Installationsprogramm erstellt einen geplanten Task auf dem Gerätesystem
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Konfigurieren der Gruppenrichtlinie, um die Geräteregistrierung zuzulassen
 
-* Erstellen Sie ein Gruppenrichtlinienobjekt in Ihrer Active Directory-Instanz, falls Sie dies nicht bereits getan haben.
-* Geben Sie ihm einen Namen (z.B. „Hybrid-Azure AD-Einbindung“).
-* Bearbeiten Sie und navigieren Sie zu:  „Computerkonfiguration“ > „Richtlinien“ > „Administrative Vorlagen“ > „Windows-Komponenten“ > „Geräteregistrierung“.
-* Aktivieren Sie:  „In die Domäne eingebundene Computer als Geräte registrieren“.
-* Übernehmen Sie die Änderung, und klicken Sie auf „OK“.
-* Verknüpfen Sie das GPO mit dem Speicherort Ihrer Wahl (Organisationseinheit, Sicherheitsgruppe oder Domäne für alle Geräte).
+Informationen zum Zulassen einer Azure AD-Hybrideinbindung für einzelne Geräte finden Sie unter [Kontrollierte Überprüfung der Azure AD-Hybrideinbindung](../devices/hybrid-azuread-join-control.md).
 
->[!NOTE]
->Für 2012R2 befinden sich die Richtlinieneinstellungen unter **Computerkonfiguration > Richtlinien > Administrative Vorlagen > Windows-Komponenten > Arbeitsbereichverknüpfung > Clientcomputer automatisch in Arbeitsbereich einbinden**
+> [!NOTE]
+> Für 2012 R2 befinden sich die Richtlinieneinstellungen unter **Computerkonfiguration > Richtlinien > Administrative Vorlagen > Windows-Komponenten > Workplace Join > Clientcomputer automatisch in Arbeitsbereich einbinden**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Konfigurieren des Geräterückschreibens](how-to-connect-device-writeback.md)

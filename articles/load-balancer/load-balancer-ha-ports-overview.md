@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: da776c679d5ded6f53cd0d224828fffee058d37d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476979"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920611"
 ---
 # <a name="high-availability-ports-overview"></a>Übersicht über Hochverfügbarkeitsports
 
@@ -87,20 +87,17 @@ Wenn Ihr Szenario erfordert, dass Sie mehrere Front-Ends mit Hochverfügbarkeits
 
 ### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>Ein interner Load Balancer mit Hochverfügbarkeitsports und ein öffentlicher Load Balancer auf derselben Back-End-Instanz
 
-Sie können *eine* öffentliche Standard Load Balancer-Ressource für die Back-End-Ressourcen zusammen mit einem einzigen internen Standard Load Balancer mit Hochverfügbarkeitsports konfigurieren.
-
->[!NOTE]
->Diese Funktion ist derzeit über die Azure Resource Manager-Vorlagen verfügbar, jedoch nicht über das Azure-Portal.
+Sie können *eine* öffentliche Load Balancer Standard-Ressource für die Back-End-Ressourcen zusammen mit einem einzigen internen Load Balancer Standard mit Hochverfügbarkeitsports konfigurieren.
 
 ## <a name="limitations"></a>Einschränkungen
 
 - Lastenausgleichsregeln für Hochverfügbarkeitsports stehen nur für interne Load Balancer Standard zur Verfügung.
-- Die Kombination auch einer Lastenausgleichsregel mit und einer ohne Hochverfügbarkeitsports, die auf dieselbe Back-End-IP-Konfiguration verweisen, wird nicht unterstützt.
+- Die Kombination auch einer Lastenausgleichsregel mit und einer ohne Hochverfügbarkeitsports, die auf dieselbe Back-End-IP-Konfiguration verweisen, wird nicht unterstützt, es sei denn, bei beiden ist Floating IP aktiviert.
 - Vorhandene IP-Fragmente werden von Lastenausgleichsregeln für Hochverfügbarkeitsports an dasselbe Ziel wie das erste Paket weitergeleitet.  Die IP-Fragmentierung eines UDP- oder TCP-Pakets wird nicht unterstützt.
 - Flowsymmetrie (in erster Linie für Szenarien mit virtuellen Netzwerkgeräten) wird über die Back-End-Instanz und ein einzelnes NIC (und eine einzelne IP-Konfiguration) nur dann unterstützt, wenn der Einsatz wie im obigen Diagramm erfolgt und Lastenausgleichsregeln für Hochverfügbarkeitsports verwendet werden. In anderen Szenarien wird sie nicht unetrstützt. Dies bedeutet, dass zwei oder mehr Load Balancer-Ressourcen mit ihren jeweiligen Regeln unabhängige Entscheidungen treffen und nie miteinander koordiniert werden. Sehen Sie sich die Beschreibung und das Diagramm unter [Virtuelle Netzwerkgeräte](#nva) an. Wenn Sie mehrere NICs verwenden oder das virtuelle Netzwerkgerät in Sandwichmanier zwischen einem öffentlichen und internen Load Balancer einbetten, ist keine Flowsymmetrie verfügbar.  Sie können das Problem möglicherweise umgehen, indem Sie per Adressübersetzung den eingehenden Datenfluss an die IP-Adresse des Geräts leiten, um den Eingang von Antworten auf demselben virtuellen Netzwerkgerät zu ermöglichen.  Es wird allerdings dringend empfohlen, ein einzelnes NIC und die im obigen Diagramm gezeigte Referenzarchitektur zu verwenden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Konfigurieren von Hochverfügbarkeitsports für einen internen Standard Load Balancer](load-balancer-configure-ha-ports.md)
+- Erfahren Sie, wie Sie HA-Ports für Ihren ILB über das Portal(tutorial-load-balancer-standard-internal-portal.mdl#create-a-load-balancer-rule), [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), die [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule) oder über [Vorlagen](load-balancer-get-started-ilb-arm-template.md) konfigurieren.
 - [Übersicht über Standard Load Balancer](load-balancer-standard-overview.md)

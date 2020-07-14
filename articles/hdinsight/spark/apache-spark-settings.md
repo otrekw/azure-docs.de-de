@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188156"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurieren von Apache Spark-Einstellungen
@@ -50,7 +50,7 @@ spark.sql.files.maxPartitionBytes 1099511627776
 spark.sql.files.openCostInBytes 1099511627776
 ```
 
-In diesem Beispiel werden mehrere Standardwerte für fünf Spark-Konfigurationsparameter überschrieben.  Bei diesen Werten handelt es sich um den Komprimierungscodec, die minimale Teilungsgröße für Apache Hadoop MapReduce und Parquet-Blockgrößen sowie um die Spark SQL-Partition und Standardwerte für offene Dateigrößen.  These configuration changes are chosen because the associated data and jobs (in this example, genomic data) have particular characteristics. Diese Eigenschaften funktionieren besser, wenn Sie diese benutzerdefinierten Konfigurationseinstellungen verwenden.
+In diesem Beispiel werden mehrere Standardwerte für fünf Spark-Konfigurationsparameter überschrieben.  Bei diesen Werten handelt es sich um den Komprimierungscodec, die minimale Teilungsgröße für Apache Hadoop MapReduce und Parquet-Blockgrößen sowie um die Spark SQL-Partition und Standardwerte für offene Dateigrößen.  Diese Konfigurationsänderungen werden ausgewählt, weil die zugehörigen Daten und Aufträge (in diesem Beispiel Genomdaten) bestimmte Merkmale aufweisen. Diese Merkmale funktionieren besser, wenn Sie diese benutzerdefinierten Konfigurationseinstellungen verwenden.
 
 ---
 

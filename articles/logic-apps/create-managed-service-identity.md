@@ -1,17 +1,17 @@
 ---
 title: Authentifizieren mit verwalteten Dienstidentitäten
-description: Zugreifen auf Ressourcen, die von Azure Active Directory geschützt werden, ohne Anmeldung mit Anmeldeinformationen oder Geheimnissen unter Verwendung einer verwalteten Identität
+description: Erfahren Sie, wie Sie ohne Anmeldung mit Anmeldeinformationen oder Geheimnissen auf von Azure Active Directory geschützte Ressourcen zugreifen, indem Sie eine verwaltete Identität verwenden.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 73f3e7561b97574c4603e480b972eaf2a9a1ed48
-ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
+ms.openlocfilehash: 190cc74bc2967cdee7f3154e0d6a6fedd8ee90dd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83708039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565034"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps
 

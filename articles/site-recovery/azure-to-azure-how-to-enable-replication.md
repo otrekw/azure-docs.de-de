@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a1ac6dd940ea5d31adae45a435c5425497362b1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75973694"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135775"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Replizieren virtueller Azure-Computer zu einer anderen Azure-Region
 
@@ -50,7 +50,7 @@ Aktivieren Sie die Replikation. In diesem Verfahren wird davon ausgegangen, dass
        - Falls eine von Site Recovery erstellte Ressourcengruppe bereits vorhanden ist, wird sie wiederverwendet.
        - Sie können die Einstellungen der Ressourcengruppe anpassen.
        - Der Speicherort der Zielressourcengruppe kann eine beliebige Azure-Region sein – mit Ausnahme der Region, in der die Quell-VMs gehostet werden.
-   - **Virtuelles Zielnetzwerk**: Site Recovery erstellt in der Zielregion standardmäßig ein neues virtuelles Netzwerk mit dem Suffix „asr“ im Namen. Dieses wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet werden. Informationen zur Netzwerkzuordnung finden Sie [hier](site-recovery-network-mapping-azure-to-azure.md).
+   - **Virtuelles Zielnetzwerk**: Site Recovery erstellt in der Zielregion standardmäßig ein neues virtuelles Netzwerk mit dem Suffix „asr“ im Namen. Dieses wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet werden. Informationen zur Netzwerkzuordnung finden Sie [hier](./azure-to-azure-network-mapping.md).
    - **Zielspeicherkonten (Quell-VM verwendet keine verwalteten Datenträger)** : Standardmäßig erstellt Site Recovery ein neues Zielspeicherkonto und übernimmt dabei die Speicherkonfiguration Ihrer Quell-VM. Sollte bereits ein Speicherkonto vorhanden sein, wird dieses wiederverwendet.
    - **Verwaltete Replikatdatenträger (Quell-VM verwendet verwaltete Datenträger)** : Site Recovery erstellt in der Zielregion neue verwaltete Replikatdatenträger, um die verwalteten Datenträger der Quell-VM zu spiegeln. Dabei wird der gleiche Speichertyp („Standard“ oder „Premium“) wie für den verwalteten Datenträger der Quell-VM verwendet.
    - **Cachespeicherkonten**: Site Recovery benötigt als zusätzliches Speicherkonto in der Quellregion ein so genanntes Cachespeicherkonto. Alle Änderungen an den virtuellen Quellcomputern werden nachverfolgt und vor der Replikation dieser Computer am Zielspeicherort an das Cachespeicherkonto gesendet. Es sollte sich um ein Speicherkonto des Typs Standard handeln.
@@ -117,8 +117,9 @@ Sie können die von Site Recovery verwendeten Standardzieleinstellungen ändern.
 6. Nachdem Sie die Replikation für die virtuellen Computer aktiviert haben, können Sie unter **Replizierte Elemente** den VM-Integritätsstatus überprüfen.
 
 >[!NOTE]
->Die Aktualisierung des Status kann während der Erstreplikation einige Zeit dauern, und zu Beginn wird unter Umständen kein Fortschritt angezeigt. Klicken Sie auf die Schaltfläche **Aktualisieren**, um den aktuellen Status abzurufen.
 >
+> - Die Aktualisierung des Status kann während der Erstreplikation einige Zeit dauern, und zu Beginn wird unter Umständen kein Fortschritt angezeigt. Klicken Sie auf die Schaltfläche **Aktualisieren**, um den aktuellen Status abzurufen.
+> - Wenn in den letzten 60 Minuten kein ein Wiederherstellungspunkt generiert wurde, nimmt der virtuelle Computer einen kritischen Replikationszustand an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

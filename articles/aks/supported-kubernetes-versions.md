@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: 77d64391888957a1697a5823a1485413686682d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f396ba6ec1ecc6bd111e048ce34e3546c7364dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77593443"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84345035"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -95,10 +95,10 @@ New Supported Version List
 * Bei neuen **Nebenversionen** von Kubernetes:
   * Alle Benutzer werden öffentlich über die neue Version benachrichtigt. Außerdem wird mitgeteilt, welche Version entfernt wird.
   * Wenn eine neue Patchversion veröffentlicht wird, wird gleichzeitig die älteste Patchversion entfernt.
-  * Kunden haben ab dem Datum der öffentlichen Benachrichtigung **30 Tage** Zeit, ein Upgrade auf ein unterstütztes Release der Nebenversion durchzuführen.
+  * Der Azure-Support gewährt Kunden ab dem Datum der öffentlichen Benachrichtigung **30 Tage** Zeit, um ein Upgrade auf ein unterstütztes Release der Nebenversion durchzuführen. Nach Ablauf dieser 30 Tage werden Sie aufgefordert, Ihre Nebenversion zu aktualisieren, um weiterhin Support erhalten zu können.
 * Bei neuen **Patchversionen** von Kubernetes:
   * Alle Benutzer werden über die neue Patchversion benachrichtigt. Außerdem werden sie aufgefordert, ein Upgrade auf das neueste Patchrelease vorzunehmen.
-  * Benutzern verbleiben **30 Tage** für das Upgrade auf eine neuere, unterstützte Patchversion, bevor die älteste entfernt wird.
+  * Der Azure-Support gewährt Kunden **30 Tage** Zeit, um ein Upgrade auf ein unterstütztes Patchrelease durchzuführen, nachdem eine ältere Patchversion entfernt wurde. Nach Ablauf dieser 30 Tage werden Sie aufgefordert, Ihre Patchversion zu aktualisieren, um weiterhin Support erhalten zu können.
 
 In AKS ist eine „veröffentlichte Version“ als allgemein verfügbare Version definiert, die in allen SLO/QoS-Messungen (Quality of Service/Service Level Objective) aktiviert und in allen Regionen verfügbar ist. AKS unterstützt möglicherweise auch Vorschauversionen, die explizit bezeichnet werden und den Nutzungsbedingungen für Vorschauversionen unterliegen.
 
@@ -155,7 +155,7 @@ Bei Nebenversionen, die nicht von AKS unterstützt werden, sollte das horizontal
 
 **Kann ein Kunde für immer eine Kubernetes-Version verwenden?**
 
-Ja. Wenn der Cluster jedoch keine der von AKS unterstützten Versionen verwendet, gelten die AKS-Supportrichtlinien nicht für den Cluster. Azure führt kein automatisches Upgrade Ihres Clusters durch und löscht ihn nicht.
+Wenn ein Cluster für mehr als 3 Nebenversionen keinen Supportanspruch mehr hat und Sicherheitsrisiken für ihn festgestellt wurden, setzt Azure sich bezüglich eines proaktiven Upgrades Ihres Cluster mit Ihnen in Verbindung. Wenn Sie keine weiteren Maßnahmen ergreifen, behält Azure sich das Recht vor, in Ihrem Namen ein Upgrade Ihres Clusters zu erzwingen.
 
 **Welche Version wird von der Steuerungsebene unterstützt, wenn der Knotenpool keine der unterstützten AKS-Versionen verwendet?**
 

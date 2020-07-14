@@ -1,28 +1,25 @@
 ---
-title: Einführung in den Wissensspeicher (Vorschauversion)
+title: 'Wissensspeicher: Konzepte'
 titleSuffix: Azure Cognitive Search
-description: Senden Sie angereicherte Dokumente an Azure Storage, um sie in Azure Cognitive Search sowie in anderen Anwendungen anzeigen, umstrukturieren und nutzen zu können. Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.
+description: Senden Sie angereicherte Dokumente an Azure Storage, um sie in Azure Cognitive Search sowie in anderen Anwendungen anzeigen, umstrukturieren und nutzen zu können.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 20819bc6ec091eddf5d65b1c0d7aa57c821b2fc1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 06/30/2020
+ms.openlocfilehash: 75ecfcca24aa801c2ec277e810f60dbc0a9167fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858802"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565267"
 ---
-# <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Einführung in Wissensspeicher in Azure Cognitive Search
+# <a name="knowledge-store-in-azure-cognitive-search"></a>Wissensspeicher in Azure Cognitive Search
 
-> [!IMPORTANT] 
-> „Wissensspeicher“ ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previewfunktionen werden von der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
+Der Wissensspeicher ist ein Feature von Azure Cognitive Search, das Ausgaben aus einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) zur unabhängigen Analyse oder Downstreamverarbeitung speichert. Ein *angereichertes Dokument* ist eine Pipelineausgabe, die auf der Grundlage von Inhalten erstellt wurde, die mithilfe von KI-Prozessen extrahiert, strukturiert und analysiert wurden. In einer KI-Standardpipeline sind angereicherte Dokumente kurzlebig: Sie werden nur während der Indizierung verwendet und anschließend verworfen. Indem Sie einen Wissensspeicher erstellen, können Sie die angereicherten Dokumente dauerhaft aufbewahren. 
 
-Der Wissensspeicher ist ein Feature von Azure Cognitive Search, das Ausgaben aus einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) zur unabhängigen Analyse oder Downstreamverarbeitung speichert. Ein *angereichertes Dokument* ist eine Pipelineausgabe, die auf der Grundlage von Inhalten erstellt wurde, die mithilfe von KI-Prozessen extrahiert, strukturiert und analysiert wurden. In einer KI-Standardpipeline sind angereicherte Dokumente kurzlebig: Sie werden nur während der Indizierung verwendet und anschließend verworfen. Mit dem Wissensspeicher bleiben erweiterte Dokumente erhalten. 
-
-Wenn Sie in der Vergangenheit kognitive Fähigkeiten genutzt haben, wissen Sie bereits, dass Dokumente mithilfe von *Skillsets* auf verschiedene Weisen angereichert werden. Bei der Ausgabe kann es sich um einen Suchindex oder (neu in dieser Vorschauversion) um Projektionen in einem Wissensspeicher handeln. Die beiden Ausgaben in Form des Suchindexes und Wissensspeichers werden durch dieselbe Pipeline erzeugt. Sie werden von denselben Eingaben abgeleitet, resultieren jedoch in einer Ausgabe, die auf sehr unterschiedliche Weisen strukturiert, gespeichert und verwendet wird.
+Wenn Sie in der Vergangenheit kognitive Fähigkeiten genutzt haben, wissen Sie bereits, dass Dokumente mithilfe von *Skillsets* auf verschiedene Weisen angereichert werden. Bei der Ausgabe kann es sich um einen Suchindex oder um Projektionen in einem Wissensspeicher handeln. Die beiden Ausgaben in Form des Suchindexes und Wissensspeichers werden durch dieselbe Pipeline erzeugt. Sie werden von denselben Eingaben abgeleitet, resultieren jedoch in einer Ausgabe, die auf sehr unterschiedliche Weisen strukturiert, gespeichert und verwendet wird.
 
 Physisch betrachtet handelt es sich bei einem Wissensspeicher um [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview) (Azure Table Storage, Azure Blob Storage oder beides). Jedes Tool und jeder Prozess, das bzw. der eine Verbindung mit Azure Storage herstellen kann, kann die Inhalte eines Wissensspeichers nutzen.
 
@@ -103,7 +100,7 @@ Ein [Indexer](search-indexer-overview.md) ist erforderlich. Ein Skillset wird vo
 
 ## <a name="how-to-create-a-knowledge-store"></a>Erstellen eines Wissensspeichers
 
-Verwenden Sie das Portal oder die Vorschauversion der REST-API (`api-version=2019-05-06-Preview`), um einen Wissensspeicher zu erstellen.
+Verwenden Sie das Portal oder die REST-API (`api-version=2020-06-30`), um einen Wissensspeicher zu erstellen.
 
 ### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
@@ -117,13 +114,11 @@ Der **Datenimport**-Assistent bietet Optionen zum Erstellen eines Wissensspeiche
 
 1. Führen Sie den Assistenten aus. Die Extraktion, Anreicherung und Speicherung erfolgen in diesem letzten Schritt.
 
-### <a name="use-create-skillset-and-the-preview-rest-api"></a>Verwenden von „Create Skillset“ und der Vorschauversion der REST-API
+### <a name="use-create-skillset-rest-api"></a>Verwenden von „Create Skillset“ (REST-API)
 
 `knowledgeStore` wird innerhalb eines [Skillsets](cognitive-search-working-with-skillsets.md) definiert, das wiederum von einem [Indexer](search-indexer-overview.md) aufgerufen wird. Während der Anreicherung wird von Azure Cognitive Search ein Bereich in Ihrem Azure Storage-Konto erstellt. Anschließend werden die angereicherten Dokumente je nach Konfiguration als Blobs oder in Tabellen projiziert.
 
-Die Vorschauversion der REST-API ist derzeit der einzige Mechanismus, mit dem Sie einen Wissensspeicher programmgesteuert erstellen können. Um sich auf einfache Weise damit vertraut zu machen, erstellen Sie Ihren [ersten Wissensspeicher mithilfe von Postman und der REST-API](knowledge-store-create-rest.md).
-
-Referenzinformationen zu dieser Previewfunktion finden Sie im Abschnitt [API-Referenz](#kstore-rest-api) in diesem Artikel. 
+Die REST-API ist ein Mechanismus, mit dem Sie einen Wissensspeicher programmgesteuert erstellen können. Um sich auf einfache Weise damit vertraut zu machen, erstellen Sie Ihren [ersten Wissensspeicher mithilfe von Postman und der REST-API](knowledge-store-create-rest.md).
 
 <a name="tools-and-apps"></a>
 
@@ -141,10 +136,10 @@ Wenn die Anreicherungen in Storage gespeichert sind, können Sie beliebige Tools
 
 ## <a name="api-reference"></a>API-Referenz
 
-Die REST-API-Version `2019-05-06-Preview` stellt den Wissensspeicher mithilfe zusätzlicher Definitionen für Skillsets bereit. Weitere Informationen zum Abrufen der APIs finden Sie neben der Referenz auch unter [Erstellen eines Wissensspeichers mithilfe von Postman](knowledge-store-create-rest.md).
+Die REST-API-Version `2020-06-30` stellt den Wissensspeicher mithilfe zusätzlicher Definitionen für Skillsets bereit. Weitere Informationen zum Abrufen der APIs finden Sie neben der Referenz auch unter [Erstellen eines Wissensspeichers mithilfe von Postman](knowledge-store-create-rest.md).
 
-+ [Erstellen einer Qualifikationsgruppe (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
-+ [Aktualisieren eines Skillsets (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
++ [Create Skillset (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/create-skillset)
++ [Update Skillset (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/update-skillset)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

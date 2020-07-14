@@ -2,13 +2,13 @@
 title: Markieren von Ressourcen, Ressourcengruppen und Abonnements für die logische Organisation
 description: Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die Abrechnung und Verwaltung anwenden können.
 ms.topic: conceptual
-ms.date: 05/06/2020
-ms.openlocfilehash: 9ba7c58f6fa56b8ef2c233a5fe7f8f8e04fe29e1
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.date: 07/01/2020
+ms.openlocfilehash: 9dd025818a64a8ece1f4218a8341a40ecc617829
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864486"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056921"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie
 
@@ -17,7 +17,9 @@ Durch Anwenden von Tags können Sie Ihre Ressourcen, Ressourcengruppen und Abonn
 Empfehlungen zum Implementieren einer Tagstrategie finden Sie unter [Leitfaden zur Entscheidungsfindung für Ressourcenbenennung und -markierung](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json).
 
 > [!IMPORTANT]
-> Bei Tagnamen wird die Groß-/Kleinschreibung nicht beachtet. Bei den Tagwerten wird Groß- und Kleinschreibung unterschieden.
+> Bei Tagnamen wird für Vorgänge die Groß-/Kleinschreibung nicht beachtet. Ein Tag mit einem Tagnamen (unabhängig von der Groß-/Kleinschreibung) wird aktualisiert oder abgerufen. Der Ressourcenanbieter übernimmt jedoch möglicherweise die Groß-/Kleinschreibung, die Sie für den Tagnamen verwenden. Diese Groß-/Kleinschreibung erscheint in Kostenberichten.
+> 
+> Bei den Tagwerten wird Groß- und Kleinschreibung unterschieden.
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 
@@ -263,7 +265,7 @@ Verwenden Sie Folgendes, um ein Tag zu vorhandenen Tags einer Ressourcengruppe a
 az group update -n examplegroup --set tags.'Status'='Approved'
 ```
 
-Derzeit wird in der Azure-Befehlszeilenschnittstelle das Anwenden von Tags auf Abonnements nicht unterstützt.
+Die Azure-Befehlszeilenschnittstelle verfügt derzeit nicht über einen Befehl zum Anwenden von Tags auf Abonnements. Sie können die Befehlszeilenschnittstelle jedoch zum Bereitstellen einer ARM-Vorlage verwenden, mit der die Tags auf ein Abonnement angewendet werden. Weitere Informationen finden Sie unter [Anwenden von Tags auf Ressourcengruppen oder Abonnements](#apply-tags-to-resource-groups-or-subscriptions).
 
 ### <a name="list-tags"></a>Auflisten von Tags
 
@@ -523,6 +525,8 @@ New-AzSubscriptionDeployment -name tagresourcegroup -Location westus2 -TemplateU
 az deployment sub create --name tagresourcegroup --location westus2 --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
 ```
 
+Weitere Informationen zu Abonnementbereitstellungen finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](../templates/deploy-to-subscription.md).
+
 Mit der folgenden Vorlage werden die Tags eines Objekts entweder in einer Ressourcengruppe oder einem Abonnement hinzugefügt.
 
 ```json
@@ -574,7 +578,7 @@ Auf eine Ressourcengruppe oder ein Abonnement angewandte Tags werden von den Res
 
 Abrechnungsdaten können mithilfe von Tags gruppiert werden. Wenn Sie beispielsweise mehrere virtuelle Computer für verschiedene Organisationen betreiben, können Sie die Nutzung mithilfe von Tags nach Kostenstelle organisieren. Mit Tags können Sie auch Kosten nach Runtimeumgebung kategorisieren, beispielsweise zur Abrechnung der Nutzung virtueller Computer in der Produktionsumgebung.
 
-Informationen zu Tags können Sie über die [Azure-Ressourcennutzungs- und RateCard-APIs](../../billing/billing-usage-rate-card-overview.md) oder aus der Nutzungsdatei im CSV-Format abrufen. Sie laden die Nutzungsdatei aus dem [Azure-Kontocenter](https://account.azure.com/Subscriptions) oder dem Azure-Portal herunter. Weitere Informationen finden Sie unter [Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten](../../billing/billing-download-azure-invoice-daily-usage-date.md). Wählen Sie beim Herunterladen der Nutzungsdatei aus dem Azure-Kontocenter die Option **Version 2**. Für Dienste, die die Verwendung von Tags für die Abrechnung unterstützen, sind die Tags in der Spalte **Tags** enthalten.
+Informationen zu Tags können Sie über die [Azure-Ressourcennutzungs- und RateCard-APIs](../../cost-management-billing/manage/usage-rate-card-overview.md) oder aus der Nutzungsdatei im CSV-Format abrufen. Sie laden die Nutzungsdatei aus dem [Azure-Kontocenter](https://account.azure.com/Subscriptions) oder dem Azure-Portal herunter. Weitere Informationen finden Sie unter [Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Wählen Sie beim Herunterladen der Nutzungsdatei aus dem Azure-Kontocenter die Option **Version 2**. Für Dienste, die die Verwendung von Tags für die Abrechnung unterstützen, sind die Tags in der Spalte **Tags** enthalten.
 
 Hinweise zu REST-API-Vorgängen finden Sie unter [Azure Billing REST API Reference (Preview)](/rest/api/billing/)(in englischer Sprache).
 
@@ -583,10 +587,8 @@ Hinweise zu REST-API-Vorgängen finden Sie unter [Azure Billing REST API Referen
 Für Tags gelten folgende Einschränkungen:
 
 * Nicht alle Ressourcentypen unterstützen Tags. Um festzustellen, ob Sie ein Tag auf einen Ressourcentyp anwenden können, lesen Sie [Tagunterstützung für Azure-Ressourcen](tag-support.md).
-* In Verwaltungsgruppen werden aktuell keine Tags unterstützt.
 * Jede Ressource, jede Ressourcengruppe und jedes Abonnement kann maximal 50 Tagname-Wert-Paare enthalten. Wenn Sie mehr Tags als die maximal zulässige Anzahl anwenden müssen, verwenden Sie für den Tagwert eine JSON-Zeichenfolge. Die JSON-Zeichenfolge kann zahlreiche Werte enthalten, die auf einen einzelnen Tagnamen angewendet werden. Eine Ressourcengruppe oder ein Abonnement kann zahlreiche Ressourcen mit jeweils 50 Tagname-Wert-Paaren enthalten.
 * Der Tagname ist auf 512 Zeichen beschränkt und der Tagwert auf 256 Zeichen. Bei Speicherkonten ist der Tagname auf 128 Zeichen beschränkt und der Tagwert auf 256 Zeichen.
-* Generalisierte VMs unterstützen keine Tags.
 * Tags können nicht auf klassische Ressourcen wie Cloud Services angewendet werden.
 * Tag-Namen dürfen die folgenden Zeichen nicht enthalten: `<`, `>`, `%`, `&`, `\`, `?`, `/`
 

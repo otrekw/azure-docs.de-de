@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594813"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Vorbereiten der Azure-Infrastruktur für SAP HA mit einem Windows-Failovercluster und einem freigegebenen Datenträger für SAP ASCS/SCS
@@ -194,14 +194,14 @@ _**Abbildung 1:** Festlegen von Azure Resource Manager-Parametern für die Hochv
   Mit den Vorlagen wird Folgendes erstellt:
 
   * **Virtuelle Computer:**
-    * Virtuelle Computer für SAP-Anwendungsserver: \<SAPSystemSID\>-di-\<Anzahl\>
-    * Virtuelle ASCS/SCS-Clustercomputer: \<SAPSystemSID\>-ascs-\<Anzahl\>
-    * DBMS-Cluster: \<SAPSystemSID\>-db-\<Anzahl\>
+    * Virtuelle Computer für SAP-Anwendungsserver: \<SAPSystemSID\>-di-\<Number\>
+    * Virtuelle ASCS/SCS-Clustercomputer: \<SAPSystemSID\>-ascs-\<Number\>
+    * DBMS-Cluster: \<SAPSystemSID\>-db-\<Number\>
 
   * **Netzwerkkarten für alle virtuellen Computer mit zugeordneten IP-Adressen:**
-    * \<SAPSystemSID\>-nic-di-\<Anzahl\>
-    * \<SAPSystemSID\>-nic-ascs-\<Anzahl\>
-    * \<SAPSystemSID\>-nic-db-\<Anzahl\>
+    * \<SAPSystemSID\>-nic-di-\<Number\>
+    * \<SAPSystemSID\>-nic-ascs-\<Number\>
+    * \<SAPSystemSID\>-nic-db-\<Number\>
 
   * **Azure-Speicherkonten (nur nicht verwaltete Datenträger)** :
 
@@ -211,11 +211,11 @@ _**Abbildung 1:** Festlegen von Azure Resource Manager-Parametern für die Hochv
     * Virtuelle DBMS-Clustercomputer: \<SAPSystemSID\>-avset-db
 
   * **Interner Azure Load Balancer:**
-    * Mit allen Ports für die ASCS/SCS-Instanz und IP-Adresse \<SAPSystemSID\>-lb-ascs
-    * Mit allen Ports für das SQL Server-DBMS und IP-Adresse \<SAPSystemSID\>-lb-db
+    * Mit allen Ports für die ASCS/SCS-Instanz und IP-Adresse: \<SAPSystemSID\>-lb-ascs
+    * Mit allen Ports für das SQL Server-DBMS und IP-Adresse: \<SAPSystemSID\>-lb-db
 
   * **Netzwerksicherheitsgruppe**: \<SAPSystemSID\>-nsg-ascs-0  
-    * Mit einem offenen externen RDP-Port (Remotedesktopprotokoll) zum virtuellen Computer \<SAPSystemSID\>-ascs-0
+    * Mit einem offenen externen RDP-Port (Remotedesktopprotokoll) zum virtuellen Computer: \<SAPSystemSID\>-ascs-0
 
 > [!NOTE]
 > Sämtliche IP-Adressen für die Netzwerkkarten und den internen Azure Load Balancer sind standardmäßig dynamisch. Ändern Sie diese in statische IP-Adressen. Die Vorgehensweise wird weiter unten in diesem Artikel beschrieben.
@@ -305,7 +305,7 @@ Geben Sie in der [ASCS/SCS-Multi-SID-Vorlage][sap-templates-3-tier-multisid-xscs
 - **Neues oder vorhandenes Subnetz:** Legen Sie fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt oder ein vorhandenes Subnetz verwendet werden soll. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **vorhanden** aus.
 - **Subnetz-ID**: Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID sieht normalerweise wie folgt aus:
 
-  /subscriptions/\<Abonnement-ID\>/resourceGroups/\<Ressourcengruppenname\>/providers/Microsoft.Network/virtualNetworks/\<Name des virtuellen Netzwerks\>/subnets/\<Subnetzname\>
+  /subscriptions/\<subscription id\>/resourceGroups/\<resource group name\>/providers/Microsoft.Network/virtualNetworks/\<virtual network name\>/subnets/\<subnet name\>
 
 Die Vorlage stellt eine Azure Load Balancer-Instanz bereit, die mehrere SAP-Systeme unterstützt:
 
@@ -521,7 +521,7 @@ Legen Sie die IP-Adresse des Lastenausgleichs „pr1-lb-dbms“ auf die IP-Adres
 
 Wenn Sie andere Nummern für die SAP ASCS- oder SCS-Instanzen verwenden möchten, müssen Sie die Namen und Werte der entsprechenden Ports in der Standardeinstellung ändern.
 
-1. Wählen Sie im Azure-Portal **\<SID\>-lb-ascs load balancer** > **Lastenausgleichsregeln**.
+1. Wählen Sie im Azure-Portal **\<SID\>-lb-ascs load balancer** > **Lastenausgleichsregeln** aus.
 2. Ändern Sie für alle zur SAP ASCS- oder SCS-Instanz gehörenden Lastenausgleichsregeln die folgenden Werte:
 
    * Name

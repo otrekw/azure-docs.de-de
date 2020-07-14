@@ -6,15 +6,15 @@ services: germany
 cloud: Azure Germany
 ms.author: juliako
 ms.service: germany
-ms.date: 11/12/2019
-ms.topic: article
+ms.date: 05/27/2020
+ms.topic: how-to
 ms.custom: bfmigrate
-ms.openlocfilehash: 3c52b48c5d5eae796a6f1cbab57fcab76fcab8a1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9c9a236f4b9572bfd2af9b4274ae7a2a118dac8e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022446"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981128"
 ---
 # <a name="migrate-database-resources-to-global-azure"></a>Migrieren von Datenbankressourcen zu Azure weltweit
 
@@ -54,7 +54,8 @@ Wenn Sie Azure SQL Data Warehouse-Ressourcen von Azure Deutschland zu Azure welt
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Sie können das Azure Cosmos DB-Datenmigrationstool verwenden, um Daten zu Azure Cosmos DB zu migrieren. Das Azure Cosmos DB-Datenmigrationstool ist eine Open-Source-Lösung, mit der Daten aus verschiedenen Quellen in Azure Cosmos DB importiert werden können.
+Sie können das Azure Cosmos DB-Datenmigrationstool verwenden, um Daten zu Azure Cosmos DB zu migrieren. Das Azure Cosmos DB-Datenmigrationstool ist eine Open-Source-Lösung, mit der Daten aus verschiedenen Quellen in Azure Cosmos DB importiert werden können. Folgende Quellen können verwendet werden: JSON-Dateien, MongoDB, SQL Server, CSV-Dateien, Azure-Tabellenspeicher, Amazon DynamoDB, HBase und Azure Cosmos-Container.
+
 
 Das Azure Cosmos DB-Datenmigrationstool steht als GUI-Tool oder als Befehlszeilentool zur Verfügung. Der Quellcode ist im GitHub-Repository [Azure Cosmos DB Data Migration Tool](https://github.com/azure/azure-documentdb-datamigrationtool) verfügbar. Eine [kompilierte Version des Tools](https://www.microsoft.com/download/details.aspx?id=46436) ist im Microsoft Download Center verfügbar.
 
@@ -74,8 +75,9 @@ Um Azure Cosmos DB-Ressourcen zu migrieren, sollten Sie die folgenden Schritte a
 
 Weitere Informationen finden Sie unter:
 
-- Lesen Sie eine [Einführung in Azure Cosmos DB](../cosmos-db/introduction.md).
-- Erfahren Sie, wie [Daten in Azure Cosmos DB importiert werden](../cosmos-db/import-data.md).
+- Informationen zur Verwendung des Datenmigrationstools finden Sie im [Tutorial: Migrieren Ihrer Daten zu Azure Cosmos DB mithilfe des Datenmigrationstools](../cosmos-db/import-data.md).
+- Informationen zu Cosmos DB finden Sie unter [Willkommen bei Azure Cosmos DB](../cosmos-db/introduction.md).
+
 
 ## <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 

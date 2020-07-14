@@ -4,14 +4,14 @@ description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrik
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 04/28/2020
+ms.date: 06/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 605d1f550335417a26340b6ee54736321ad69f80
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 36ff80bc0858d6d08cc120d126628de02ba6e703
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302662"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85130737"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -191,6 +191,33 @@ Zum Erstellen einer Metrikwarnungsregel benötigen Sie die folgenden Berechtigun
 - Leseberechtigung für die Zielressource der Warnungsregel
 - Schreibberechtigung für die Ressourcengruppe, in der die Warnungsregel erstellt wird (wenn Sie die Warnungsregel über das Azure-Portal erstellen, wird die Warnungsregel in derselben Ressourcengruppe erstellt, in der sich die Zielressource befindet).
 - Leseberechtigung für jede Aktionsgruppe, die der Warnungsregel zugeordnet ist (falls zutreffend)
+
+
+## <a name="naming-restrictions-for-metric-alert-rules"></a>Benennungseinschränkungen für Metrikwarnungsregeln
+
+Beachten Sie die folgenden Einschränkungen für die Namen von Metrikwarnungsregeln:
+
+- Namen von Metrikwarnungsregeln können nach der Erstellung nicht geändert werden (keine Umbenennung möglich)
+- Namen von Metrikwarnungsregeln müssen innerhalb einer Ressourcengruppe eindeutig sein
+- Namen von Metrikwarnungsregeln dürfen die folgenden Zeichen nicht enthalten: * # & + : < > ? @ % { } \ / 
+- Namen von Metrikwarnungsregeln dürfen nicht mit folgendem Zeichen enden: .
+
+
+## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>Einschränkungen bei der Verwendung von Dimensionen in einer Metrikwarnungsregel mit mehreren Bedingungen
+
+Metrikwarnungen unterstützen das Warnen bei mehrdimensionalen Metriken und das Definieren mehrerer Bedingungen (bis zu fünf Bedingungen pro Warnungsregel).
+
+Für das Verwenden von Dimensionen in einer Warnungsregel, in der mehrere Bedingungen enthalten sind, gibt es die folgenden Einschränkungen:
+1. Innerhalb jeder Bedingung kann jeweils nur ein Wert pro Dimension ausgewählt werden.
+2. Sie können die Option „Alle aktuellen und zukünftigen Werte auswählen“ nicht verwenden (Select \*).
+3. Wenn Metriken, die in verschiedenen Bedingungen konfiguriert sind, dieselbe Dimension unterstützen, dann muss auf gleiche Weise ein konfigurierter Dimensionswert explizit für alle relevanten Bedingungen dieser Metriken festgelegt werden.
+Beispiel:
+    - Stellen Sie sich eine Metrikwarnungsregel vor, die für ein Speicherkonto definiert ist und zwei Bedingungen überwacht:
+        * Gesamte **Transactions** > 5
+        * Durchschnittliche **SuccessE2ELatency** > 250 ms
+    - Ich möchte die erste Bedingung aktualisieren und nur Transaktionen überwachen, bei denen die Dimension **ApiName** *"GetBlob"* entspricht.
+    - Da die Metriken **Transactions** und **SuccessE2ELatency** beide eine Dimension **ApiName** unterstützen, muss ich beide Bedingungen aktualisieren und dafür sorgen, dass beide die Dimension **ApiName** mit dem Wert *"GetBlob"* angeben.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

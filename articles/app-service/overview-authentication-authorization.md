@@ -7,10 +7,10 @@ ms.date: 04/15/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
 ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83196435"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Authentifizierung und Autorisierung in Azure App Service und Azure Functions
@@ -125,7 +125,7 @@ Diese Option bietet mehr Flexibilität bei der Verarbeitung anonymer Anforderung
 
 ### <a name="allow-only-authenticated-requests"></a>Nur authentifizierte Anforderungen zulassen
 
-Die Option lautet **Mit \<Anbieter> anmelden**. App Service leitet alle anonymen Anforderungen an `/.auth/login/<provider>` für den ausgewählten Anbieter um. Wenn die anonyme Anforderung von einer nativen mobilen App stammt, wird `HTTP 401 Unauthorized` als Antwort zurückgegeben.
+Die Option lautet **Mit \<provider> anmelden**. App Service leitet alle anonymen Anforderungen an `/.auth/login/<provider>` für den ausgewählten Anbieter um. Wenn die anonyme Anforderung von einer nativen mobilen App stammt, wird `HTTP 401 Unauthorized` als Antwort zurückgegeben.
 
 Mit dieser Option müssen Sie in Ihrer App keinen Authentifizierungscode schreiben. Eine genauere Autorisierung, z.B. rollenspezifische Autorisierung, kann durch das Untersuchen der Ansprüche des Benutzers durchgeführt werden (siehe [Zugriff auf Benutzeransprüche](app-service-authentication-how-to.md#access-user-claims)).
 

@@ -3,16 +3,16 @@ title: 'Gewusst wie: Verwenden der systemseitig zugewiesenen verwalteten Identit
 description: Hier erfahren Sie, wie Sie eine vom System zugewiesene verwaltete Azure Active Directory (Azure AD)-Identität (verwaltete Dienstidentität) für den Zugriff auf Schlüssel aus Azure Cosmos DB konfigurieren.
 author: j-patrick
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 8136ad7a1fe29bc3394e959c10aafc52988c0a23
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 2555719e13b0cba38150d3bce7a18f043158d5b5
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641232"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970959"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Verwenden von systemseitig zugewiesenen verwalteten Identitäten für den Zugriff auf Azure Cosmos DB-Daten
 
@@ -30,11 +30,11 @@ In diesem Schritt weisen Sie Ihrer Funktions-App eine vom System zugewiesene ver
 
 1. Öffnen Sie die Registerkarte **Plattformfeatures** > **Identität**: 
 
-   ![Screenshot von Plattformfeatures und Identitätsoptionen für die Funktions-App](./media/managed-identity-based-authentication/identity-tab-selection.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="Screenshot von Plattformfeatures und Identitätsoptionen für die Funktions-App.":::
 
 1. Legen Sie auf der Registerkarte **Identität** den **Status** der Systemidentität auf **Ein** fest, und wählen Sie **Speichern** aus. Der Bereich **Identität** sollte so aussehen:  
 
-   ![Screenshot, auf dem der „Status“ der Systemidentität auf „Ein“ festgelegt ist](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Screenshot, auf dem der „Status“ der Systemidentität auf „Ein“ festgelegt ist.":::
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>Gewähren des Zugriffs auf Ihr Azure Cosmos-Konto
 
@@ -43,7 +43,7 @@ In diesem Schritt weisen Sie der vom System zugewiesenen verwalteten Identität 
 |Integrierte Rolle  |BESCHREIBUNG  |
 |---------|---------|
 |[Mitwirkender von DocumentDB-Konto](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kann Azure Cosmos DB-Konten verwalten. Ermöglicht das Abrufen von Lese-/Schreibschlüsseln. |
-|[Cosmos DB-Kontoleser](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kann Azure Cosmos DB-Kontodaten lesen. Ermöglicht das Abrufen von Leseschlüsseln. |
+|[Cosmos DB-Rolle „Kontoleser“](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kann Azure Cosmos DB-Kontodaten lesen. Ermöglicht das Abrufen von Leseschlüsseln. |
 
 > [!IMPORTANT]
 > Die Unterstützung für rollenbasierte Zugriffssteuerung in Azure Cosmos DB gilt nur für Vorgänge auf Steuerungsebene. Vorgänge auf Datenebene werden über Hauptschlüssel oder Ressourcentoken abgesichert. Weitere Informationen finden Sie im Artikel [Sicherer Zugriff auf Daten](secure-access-to-data.md).
@@ -55,19 +55,19 @@ In diesem Szenario liest die Funktions-App die Temperatur des Aquariums und schr
 
 1. Melden Sie sich beim Azure-Portal an, und wechseln Sie zu Ihrem Azure Cosmos DB-Konto. Öffnen Sie den Bereich **Zugriffssteuerung (IAM)** und dann die Registerkarte **Rollenzuweisungen**:
 
-   ![Screenshot des Bereichs „Zugriffssteuerung“ und der Registerkarte „Rollenzuweisungen“](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Screenshot des Bereichs „Zugriffssteuerung“ und der Registerkarte „Rollenzuweisungen“.":::
 
 1. Wählen Sie **+Hinzufügen** > **Rollenzuweisung hinzufügen** aus.
 
 1. Rechts wird der Bereich **Rollenzuweisung hinzufügen** geöffnet:
 
-   ![Screenshot des Bereichs „Rollenzuweisung hinzufügen“](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="Screenshot des Bereichs „Rollenzuweisung hinzufügen“.":::
 
    * **Rolle**: Wählen Sie **DocumentDB-Kontomitwirkender** aus.
    * **Zugriff zuweisen zu**: Wählen Sie im Unterabschnitt **Systemseitig zugewiesene verwaltete Identität** die Option **Funktions-App** aus.
    * **Select**: Im Bereich werden alle Funktions-Apps in Ihrem Abonnement eingetragen, die über eine **verwaltete Systemidentität** verfügen. Wählen Sie in diesem Fall die Funktions-App **FishTankTemperatureService** aus: 
 
-      ![Screenshot des Bereichs „Rollenzuweisung hinzufügen“ mit Beispielen](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
+      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Screenshot des Bereichs „Rollenzuweisung hinzufügen“ mit Beispielen.":::
 
 1. Nachdem Sie Ihre Funktions-App ausgewählt haben, wählen Sie **Speichern** aus.
 
@@ -75,10 +75,10 @@ In diesem Szenario liest die Funktions-App die Temperatur des Aquariums und schr
 
 Nun haben Sie eine Funktions-App, die in den Azure Cosmos DB-Berechtigungen über eine vom System zugewiesene verwaltete Identität mit der Rolle **DocumentDB-Kontomitwirkender** verfügt. Der folgende Funktions-App-Code ruft die Azure Cosmos DB-Schlüssel ab, erstellt ein CosmosClient-Objekt, ruft die Temperatur des Aquariums ab und speichert sie dann in Azure Cosmos DB.
 
-In diesem Beispiel wird die [List Keys-API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) verwendet, um auf die Azure Cosmos DB Kontoschlüssel zuzugreifen.
+In diesem Beispiel wird die [List Keys-API](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) verwendet, um auf die Azure Cosmos DB Kontoschlüssel zuzugreifen.
 
 > [!IMPORTANT] 
-> Wenn Sie die Rolle [„Cosmos DB-Kontoleser“ zuweisen](#grant-access-to-your-azure-cosmos-account) möchten, müssen Sie die [schreibgeschützte List Keys-API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys) verwenden. Damit werden nur die schreibgeschützten Schlüssel aufgefüllt.
+> Wenn Sie die Rolle [„Cosmos DB-Kontoleser“ zuweisen](#grant-access-to-your-azure-cosmos-account) möchten, müssen Sie die [schreibgeschützte List Keys-API](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys) verwenden. Damit werden nur die schreibgeschützten Schlüssel aufgefüllt.
 
 Die List Keys-API gibt das `DatabaseAccountListKeysResult`-Objekt zurück. Dieser Typ ist in den C# Bibliotheken nicht definiert. Im folgenden Codebeispiel wird die Implementierung dieser Klasse veranschaulicht:  
 

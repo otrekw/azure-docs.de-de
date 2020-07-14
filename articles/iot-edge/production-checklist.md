@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780741"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84431923"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -218,7 +218,7 @@ Diese Prüfliste ist ein Ausgangspunkt für Firewallregeln:
 
    | URL (\* = Platzhalter) | Ausgehende TCP-Ports | Verwendung |
    | ----- | ----- | ----- |
-   | mcr.microsoft.com  | 443 | Microsoft-Containerregistrierung |
+   | mcr.microsoft.com  | 443 | Microsoft Container Registry |
    | global.azure-devices-provisioning.net  | 443 | DPS-Zugriff (optional) |
    | \*.azurecr.io | 443 | Persönliche Containerregistrierungen und Containerregistrierungen von Drittanbietern |
    | \*.blob.core.windows.net | 443 | Herunterladen von Azure Container Registry-Imagedeltas aus Blobspeicher |
@@ -226,6 +226,10 @@ Diese Prüfliste ist ein Ausgangspunkt für Firewallregeln:
    | \*.docker.io  | 443 | Docker Hub-Zugriff (optional) |
 
 Einige dieser Firewallregeln werden von Azure Container Registry geerbt. Weitere Informationen finden Sie unter [Konfigurieren von Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall](../container-registry/container-registry-firewall-access-rules.md).
+
+> [!NOTE]
+> Um einen konsistenten vollqualifizierten Domänennamen zwischen dem REST-Endpunkt und den Datenendpunkten bereitzustellen, wird der Datenendpunkt für die Microsoft Container Registry ab **15. Juni 2020** von `*.cdn.mscr.io` in `*.data.mcr.microsoft.com` geändert.  
+> Weitere Informationen finden Sie unter [Microsoft Container Registry (MCR) Client Firewall Rules Configuration](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md) (Konfiguration der Firewallregeln für Microsoft Container Registry-Clients).
 
 Wenn Sie Ihre Firewall nicht so konfigurieren möchten, dass sie den Zugriff auf öffentliche Containerregistrierungen zulässt, können Sie Images in Ihrer privaten Containerregistrierung speichern, wie unter [Speichern von Runtimecontainern in Ihrer privaten Registrierung](#store-runtime-containers-in-your-private-registry) beschrieben.
 
