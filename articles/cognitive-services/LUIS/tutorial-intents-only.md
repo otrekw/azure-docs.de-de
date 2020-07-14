@@ -3,12 +3,12 @@ title: 'Tutorial: Vorhersagen von Absichten: LUIS'
 description: In diesem Tutorial erstellen Sie eine benutzerdefinierte App, die die Absicht eines Benutzers auf der Grundlage seiner Äußerung (Text) vorhersagt.
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: c76273d7c180928d25be70e0abd7abf26c90b44a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d0a625708e730094ab4dea8f705852f38ee6e1da
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588940"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959858"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Tutorial: Erstellen einer LUIS-App zum Bestimmen von Benutzerabsichten
 
@@ -113,9 +113,8 @@ Um eine Äußerung klassifizieren zu können, werden Beispiele von Benutzeräuß
 
     `get a medium vegetarian pizza for delivery`
 
-    Dies ist nicht genau dasselbe wie eine Beispieläußerung, also ist es ein guter Test, um zu prüfen, ob LUIS lernen kann, was mit dieser Absicht vorhergesagt werden sollte.
-
-    Der letzte Parameter der Abfragezeichenfolge lautet `query` (für die Abfrage (**query**) der Äußerung). Diese Äußerung stimmt nicht mit einer der Beispieläußerungen überein. Sie stellt einen guten Test dar und sollte die Absicht `OrderPizza` als Absicht mit der höchsten Bewertung zurückgeben.
+  
+    Der Abfragezeichenfolgenparameter ist `query`, und die Äußerung für die Abfrage (**query**) wird im URI übergeben. Diese Äußerung stimmt nicht mit einer der Beispieläußerungen überein. Dies ist ein guter Test, um zu überprüfen, ob LUIS lernt und die Absicht `OrderPizza` als Absicht mit der höchsten Bewertung vorhersagt.
 
     ```JSON
     {

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 5b9bc78f6af833d89a3404de0295ddad78ebdf20
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5283916194d407cebd30ef072907c56ded1c6cb0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74870138"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848946"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Abfragen von Daten mit der API für MongoDB von Azure Cosmos DB
 
@@ -63,12 +63,15 @@ Die Abfragen in diesem Artikel verwenden das folgende Beispieldokument.
 Im Beispiel des obigen Familienbeispieldokuments gibt die folgende Abfrage die Dokumente zurück, in denen das Feld „id“ mit `WakefieldFamily` übereinstimmt.
 
 **Abfrage**
-    
-    db.families.find({ id: "WakefieldFamily"})
+
+```bash
+db.families.find({ id: "WakefieldFamily"})
+```
 
 **Ergebnisse**
 
-    {
+```json
+{
     "_id": "ObjectId(\"58f65e1198f3a12c7090e68c\")",
     "id": "WakefieldFamily",
     "parents": [
@@ -106,19 +109,23 @@ Im Beispiel des obigen Familienbeispieldokuments gibt die folgende Abfrage die D
     },
     "creationDate": 1431620462,
     "isRegistered": false
-    }
+}
+```
 
 ## <a name="example-query-2"></a><a id="examplequery2"></a>Beispielabfrage 2 
 
 Die nächste Abfrage gibt alle Kinder in der Familie zurück. 
 
 **Abfrage**
-    
-    db.families.find( { id: "WakefieldFamily" }, { children: true } )
+
+```bash 
+db.families.find( { id: "WakefieldFamily" }, { children: true } )
+``` 
 
 **Ergebnisse**
 
-    {
+```json
+{
     "_id": "ObjectId("58f65e1198f3a12c7090e68c")",
     "children": [
       {
@@ -138,28 +145,37 @@ Die nächste Abfrage gibt alle Kinder in der Familie zurück.
         "grade": 8
       }
     ]
-    }
-
+}
+```
 
 ## <a name="example-query-3"></a><a id="examplequery3"></a> Beispielabfrage 3 
 
 Die nächste Abfrage gibt alle registrierten Familien zurück. 
 
 **Abfrage**
-    
-    db.families.find( { "isRegistered" : true })
-**Ergebnisse** Kein Dokument wird zurückgegeben. 
+
+```bash
+db.families.find( { "isRegistered" : true })
+``` 
+
+**Ergebnisse**
+
+Kein Dokument wird zurückgegeben. 
 
 ## <a name="example-query-4"></a><a id="examplequery4"></a> Beispielabfrage 4
 
 Die nächste Abfrage gibt alle nicht registrierten Familien zurück. 
 
 **Abfrage**
-    
-    db.families.find( { "isRegistered" : false })
+
+```bash
+db.families.find( { "isRegistered" : false })
+``` 
+
 **Ergebnisse**
 
-     {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -193,18 +209,22 @@ Die nächste Abfrage gibt alle nicht registrierten Familien zurück.
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
 ## <a name="example-query-5"></a><a id="examplequery5"></a> Beispielabfrage 5
 
 Die nächste Abfrage gibt alle nicht registrierten Familien im Bundesstaat NY zurück. 
 
 **Abfrage**
-    
-     db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+
+```bash
+db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+``` 
 
 **Ergebnisse**
 
-     {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -238,19 +258,22 @@ Die nächste Abfrage gibt alle nicht registrierten Familien im Bundesstaat NY zu
     "creationDate": 1431620462,
     "isRegistered": false
 }
-
+```
 
 ## <a name="example-query-6"></a><a id="examplequery6"></a> Beispielabfrage 6
 
 Die nächste Abfrage gibt alle Familien zurück, deren Kinder in Klasse 8 gehen.
 
 **Abfrage**
-  
-     db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+
+```bash
+db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+```
 
 **Ergebnisse**
 
-     {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -284,14 +307,17 @@ Die nächste Abfrage gibt alle Familien zurück, deren Kinder in Klasse 8 gehen.
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
 ## <a name="example-query-7"></a><a id="examplequery7"></a> Beispielabfrage 7
 
 Die nächste Abfrage gibt alle Familien zurück, wo das Kinderarray die Größe 3 hat.
 
 **Abfrage**
-  
-      db.Family.find( {children: { $size:3} } )
+
+```bash
+db.Family.find( {children: { $size:3} } )
+```
 
 **Ergebnisse**
 

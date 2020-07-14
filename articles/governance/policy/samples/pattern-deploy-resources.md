@@ -3,20 +3,20 @@ title: 'Muster: Bereitstellen von Ressourcen mit einer Richtliniendefinition'
 description: Dieses Azure Policy-Muster enthält ein Beispiel für die Bereitstellung von Ressourcen mit einer Richtliniendefinition.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: a8b6528afbd21c7c667e48965574c9b48c403654
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7ce93f4895a86905cd31889e853f95a3de640b13
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77169988"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970857"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy-Muster: Bereitstellen von Ressourcen
 
-Die Auswirkung [deployIfNotExists](../concepts/effects.md#deployifnotexists) ermöglicht das Bereitstellen einer [Azure Resource Manager-Vorlage](../../../azure-resource-manager/templates/overview.md) beim Erstellen oder Aktualisieren einer nicht kompatiblen Ressource. Dieser Ansatz ist ggf. der Auswirkung [deny](../concepts/effects.md#deny) vorzuziehen, da er die Fortsetzung der Ressourcenerstellung ermöglicht, aber dafür sorgt, dass die erforderlichen Änderungen vorgenommen werden, um die Ressourcen kompatibel zu machen.
+Die Auswirkung [deployIfNotExists](../concepts/effects.md#deployifnotexists) ermöglicht das Bereitstellen einer [Azure Resource Manager-Vorlage](../../../azure-resource-manager/templates/overview.md) (ARM-Vorlage) beim Erstellen oder Aktualisieren einer nicht kompatiblen Ressource. Dieser Ansatz ist ggf. der Auswirkung [deny](../concepts/effects.md#deny) vorzuziehen, da er die Fortsetzung der Ressourcenerstellung ermöglicht, aber dafür sorgt, dass die erforderlichen Änderungen vorgenommen werden, um die Ressourcen kompatibel zu machen.
 
 ## <a name="sample-policy-definition"></a>Beispielrichtliniendefinition
 
-In dieser Richtliniendefinition wird der Operator **field** (Feld) verwendet, um den Typ (`type`) der erstellten oder aktualisierten Ressource auszuwerten. Wenn es sich bei der Ressource um eine Ressource vom Typ _Microsoft.Network/virtualNetworks_ handelt, sucht die Richtlinie am Ort der neuen oder aktualisierten Ressource nach einer Network Watcher-Ressource. Sollte keine passende Network Watcher-Ressource gefunden werden, wird die Resource Manager-Vorlage bereitgestellt, um die fehlende Ressource zu erstellen.
+In dieser Richtliniendefinition wird der Operator **field** (Feld) verwendet, um den Typ (`type`) der erstellten oder aktualisierten Ressource auszuwerten. Wenn es sich bei der Ressource um eine Ressource vom Typ _Microsoft.Network/virtualNetworks_ handelt, sucht die Richtlinie am Ort der neuen oder aktualisierten Ressource nach einer Network Watcher-Ressource. Sollte keine passende Network Watcher-Ressource gefunden werden, wird die ARM-Vorlage bereitgestellt, um die fehlende Ressource zu erstellen.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json":::
 

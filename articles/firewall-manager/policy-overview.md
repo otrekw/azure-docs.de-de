@@ -1,22 +1,20 @@
 ---
-title: Richtlinienübersicht für Azure Firewall Manager (Vorschau)
+title: Übersicht über die Azure Firewall Manager-Richtlinie
 description: Hier finden Sie Informationen zu den Richtlinien von Azure Firewall Manager.
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 1308f4ba3335f2fd2633f6e39a679cd6477a4b5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88b7dc60b865325ef7dcd9e79015fdee10b4f9a2
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77444950"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563712"
 ---
-# <a name="azure-firewall-manager-preview-policy-overview"></a>Richtlinienübersicht für Azure Firewall Manager (Vorschau)
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+# <a name="azure-firewall-manager-policy-overview"></a>Übersicht über die Azure Firewall Manager-Richtlinie
 
 Bei einer Firewallrichtlinie handelt es sich um eine Azure-Ressource, die sowohl NAT-, Netzwerk- und Anwendungsregelsammlungen als auch Threat Intelligence-Einstellungen enthält. Sie ist eine globale Ressource, die über mehrere Azure Firewall-Instanzen hinweg in geschützten virtuellen Hubs sowie in virtuellen Hubnetzwerken verwendet werden kann. Richtlinien können regions- und abonnementübergreifend verwendet werden.
 
@@ -26,7 +24,7 @@ Bei einer Firewallrichtlinie handelt es sich um eine Azure-Ressource, die sowohl
 
 Eine Richtlinie kann auf verschiedene Arten erstellt und verwaltet werden – etwa über das Azure-Portal, per REST-API, mithilfe von Vorlagen, per Azure PowerShell oder über die Befehlszeilenschnittstelle.
 
-Darüber hinaus können bereits vorhandene Regeln über das Portal oder per Azure PowerShell aus Azure Firewall migriert werden, um Richtlinien zu erstellen. Weitere Informationen finden Sie unter [Migrieren von Azure Firewall-Konfigurationen zu einer Azure Firewall-Richtlinie (Vorschau)](migrate-to-policy.md). 
+Darüber hinaus können bereits vorhandene Regeln über das Portal oder per Azure PowerShell aus Azure Firewall migriert werden, um Richtlinien zu erstellen. Weitere Informationen finden Sie unter [Migrieren von Azure Firewall-Konfigurationen zu einer Azure Firewall-Richtlinie](migrate-to-policy.md). 
 
 Richtlinien können virtuellen Hubs oder VNETs zugeordnet werden. Die Firewall kann sich in einem beliebigen, Ihrem Konto zugeordneten Abonnement und in einer beliebigen Region befinden.
 
@@ -37,6 +35,8 @@ Neue Richtlinien können von Grund auf neu erstellt oder von vorhandenen Richtli
 Richtlinien, die mit nicht leeren übergeordneten Richtlinien erstellt werden, erben alle Regelsammlungen der übergeordneten Richtlinie. Netzwerkregelsammlungen, die von einer übergeordneten Richtlinie geerbt wurden, haben immer Vorrang vor Netzwerkregelsammlungen, die als Teil einer neuen Richtlinie definiert werden. Gleiches gilt auch für Anwendungsregelsammlungen. Allerdings werden Netzwerkregelsammlungen unabhängig von der Vererbung immer vor Anwendungsregelsammlungen verarbeitet.
 
 Der Threat Intelligence-Modus wird ebenfalls von der übergeordneten Richtlinie geerbt. Sie können Ihren Threat Intelligence-Modus auf einen anderen Wert festlegen, um dieses Verhalten zu überschreiben, Sie können den Modus jedoch nicht deaktivieren. Er kann nur mit einem strengeren Wert überschrieben werden. Beispiel: Wenn die übergeordnete Richtlinie auf **Nur Warnung** festgelegt ist, können Sie diese lokale Richtlinie mit **Warnen und ablehnen** konfigurieren.
+
+Wie der Threat Intelligence-Modus wird auch die Threat Intelligence-Zulassungsliste von der übergeordneten Richtlinie geerbt. Die untergeordnete Richtlinie kann der Zulassungsliste zusätzliche IP-Adressen hinzufügen.
 
 NAT-Regelsammlungen werden nicht geerbt, da sie für eine bestimmte Firewall spezifisch sind.
 
@@ -49,13 +49,12 @@ Azure Firewall unterstützt sowohl herkömmliche Regeln und als auch herkömmlic
 
 |         |Richtlinie  |Regeln  |
 |---------|---------|---------|
-|Enthält     |NAT-, Netzwerk- und Anwendungsregeln sowie Threat Intelligence-Einstellungen|NAT-, Netzwerk- und Anwendungsregeln |
+|Enthält     |NAT, Netzwerk, Anwendungsregeln, benutzerdefinierte DNS- und DNS-Proxy-Einstellungen, IP-Gruppen und Threat Intelligence-Einstellungen (einschließlich Zulassungsliste)|NAT, Netzwerk, Anwendungsregeln, benutzerdefinierte DNS- und DNS-Proxy-Einstellungen, IP-Gruppen und Threat Intelligence-Einstellungen (einschließlich Zulassungsliste)|
 |Schutz     |Virtuelle Hubs und virtuelle Netzwerke|Nur virtuelle Netzwerke|
 |Portalfunktion     |Zentrale Verwaltung mithilfe von Firewall Manager|Eigenständige Firewallumgebung|
 |Unterstützung mehrerer Firewalls     |Die Firewallrichtlinie ist eine separate Ressource und kann firewallübergreifend verwendet werden.|Sie können Regeln manuell exportieren und importieren oder Verwaltungslösungen von Drittanbietern verwenden. |
 |Preise     |Abrechnung auf der Grundlage der Firewallzuordnung. Siehe [Preise](#pricing).|Kostenlos|
 |Unterstützte Bereitstellungsmechanismen     |Portal, REST-API, Vorlagen, Azure PowerShell und Befehlszeilenschnittstelle|Portal, REST-API, Vorlagen, PowerShell und Befehlszeilenschnittstelle |
-|Releasestatus     |Öffentliche Vorschau|Allgemeine Verfügbarkeit|
 
 ## <a name="pricing"></a>Preise
 
@@ -63,4 +62,4 @@ Richtlinien werden basierend auf der Firewallzuordnung abgerechnet. Richtlinien 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wie Sie eine Azure Firewall-Instanz bereitstellen, erfahren Sie unter [Tutorial: Schützen Ihres Cloudnetzwerks mithilfe von Azure Firewall Manager (Vorschauversion) unter Verwendung des Azure-Portals](secure-cloud-network.md)
+Wie Sie eine Azure Firewall-Instanz bereitstellen, erfahren Sie unter [Tutorial: Schützen Ihres Cloudnetzwerks mithilfe von Azure Firewall Manager unter Verwendung des Azure-Portals](secure-cloud-network.md).

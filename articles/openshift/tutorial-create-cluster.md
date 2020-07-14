@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: f8b34f1678d39471a1d0b91756ac93a01cbfedba
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 61b6ad0bedb4817c262b4269a6e9f6930a6caa6c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800168"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985687"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Tutorial: Erstellen eines Azure Red Hat OpenShift 4-Clusters
 
@@ -26,7 +26,7 @@ Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchte
 
 ### <a name="verify-your-permissions"></a>Überprüfen von Berechtigungen
 
-Überprüfen Sie zum Erstellen eines Azure Red Hat OpenShift-Clusters die folgenden Berechtigungen für Ihr Azure-Konto und Ihren Benutzer:
+Überprüfen Sie für die Erstellung eines Azure Red Hat OpenShift-Clusters die folgenden Berechtigungen für Ihr Azure-Abonnement, den Azure Active Directory-Benutzer oder den Dienstprinzipal:
 
 |Berechtigungen|Ressourcengruppe, die das VNet enthält|Benutzer führt `az aro create` aus|Dienstprinzipal wurde als `–client-id` übergeben|
 |----|:----:|:----:|:----:|

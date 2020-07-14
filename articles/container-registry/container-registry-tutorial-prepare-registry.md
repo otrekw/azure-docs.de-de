@@ -2,14 +2,14 @@
 title: 'Tutorial: Erstellen einer Registrierung mit Georeplikation'
 description: Es wird beschrieben, wie Sie eine Azure-Containerregistrierung erstellen, die Georeplikation konfigurieren, ein Docker-Image vorbereiten und es für die Registrierung bereitstellen. Dieses Tutorial ist der erste Teil einer dreiteiligen Reihe.
 ms.topic: tutorial
-ms.date: 04/30/2017
+ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 159426b7258d83fc28fc7d126c064167bbe00975
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84693227"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799457"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Tutorial: Vorbereiten einer georeplizierten Azure-Containerregistrierung
 
@@ -27,7 +27,7 @@ In nachfolgenden Tutorials stellen Sie den Container aus Ihrer privaten Registri
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für dieses Tutorial wird eine lokale Installation der Azure CLI (ab Version 2.0.31) benötigt. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Für dieses Tutorial wird eine lokale Installation der Azure CLI (ab Version 2.0.31) benötigt. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 Sie sollten mit zentralen Docker-Konzepten wie Containern und Containerimages sowie mit grundlegenden Docker CLI-Befehlen vertraut sein. Eine Einführung in Container finden Sie bei Bedarf unter [Get started with Docker]( https://docs.docker.com/get-started/) (Erste Schritte mit Docker).
 
@@ -37,53 +37,66 @@ Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der ein
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
+Für dieses Tutorial benötigen Sie eine Azure-Containerregistrierung auf der Dienstebene „Premium“. Führen Sie die Schritte in diesem Abschnitt aus, um eine neue Azure-Containerregistrierung zu erstellen.
+
+> [!TIP]
+> Falls Sie bereits eine Registrierung erstellt haben und ein Upgrade durchführen müssen, helfen Ihnen die Informationen unter [Wechseln von Tarifen](container-registry-skus.md#changing-tiers) weiter. 
+
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 Klicken Sie auf **Ressource erstellen** > **Container** > **Azure Container Registry**.
 
-![Erstellen einer Containerregistrierung über das Azure-Portal][tut-portal-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-01.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
 
-Konfigurieren Sie Ihre neue Registrierung mit den folgenden Einstellungen:
+Konfigurieren Sie Ihre neue Registrierung mit den folgenden Einstellungen. Auf der Registerkarte **Grundlagen**:
 
-* **Registrierungsname**: Erstellen Sie einen Registrierungsnamen, der in Azure global eindeutig ist und 5 bis 50 alphanumerische Zeichen enthält.
+* **Registrierungsname:** Erstellen Sie einen Registrierungsnamen, der in Azure global eindeutig ist und 5 bis 50 alphanumerische Zeichen enthält.
 * **Ressourcengruppe**: **Neu erstellen** > `myResourceGroup`
 * **Standort**: `West US`
-* **Administratorbenutzer**: `Enable` (für Web-App für Container zum Pullen von Images erforderlich)
 * **SKU**: `Premium` (für die Georeplikation erforderlich)
 
-Klicken Sie auf **Erstellen**, um die ACR-Instanz bereitzustellen.
+Wählen Sie **Bewerten + erstellen** und dann **Erstellen** aus, um die Registrierungsinstanz zu erstellen.
 
-![Erstellen einer Containerregistrierung über das Azure-Portal][tut-portal-02]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Konfigurieren einer Containerregistrierung über das Azure-Portal":::
 
 Im restlichen Teil dieses Tutorials verwenden wir `<acrName>` als Platzhalter für den von Ihnen gewählten **Registrierungsnamen** des Containers.
 
 > [!TIP]
 > Da es sich bei Azure-Containerregistrierungen normalerweise um Ressourcen mit langer Lebensdauer handelt, die übergreifend für mehrere Containerhosts verwendet werden, empfehlen wir Ihnen, Ihre Registrierung in einer eigenen Ressourcengruppe zu erstellen. Wenn Sie georeplizierte Registrierungen und Webhooks konfigurieren, werden diese zusätzlichen Ressourcen in derselben Ressourcengruppe angeordnet.
->
 
 ## <a name="configure-geo-replication"></a>Konfigurieren der Georeplikation
 
 Nachdem Sie nun über eine Premium-Registrierung verfügen, können Sie die Georeplikation konfigurieren. Ihre Web-App, die Sie im nächsten Tutorial für die Ausführung in zwei Regionen konfigurieren, kann ihre Containerimages dann per Pullvorgang aus der nächstgelegenen Registrierung beziehen.
 
-Navigieren Sie im Azure-Portal zu Ihrer neuen Containerregistrierung, und wählen Sie unter **DIENSTE** die Option **Replikationen**:
+Navigieren Sie im Azure-Portal zu Ihrer neuen Containerregistrierung, und wählen Sie unter **Dienste** die Option **Replikationen** aus:
 
-![Replikationen auf der Benutzeroberfläche für Containerregistrierungen im Azure-Portal][tut-portal-03]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Replikationen auf der Benutzeroberfläche für Containerregistrierungen im Azure-Portal":::
 
 Es wird eine Karte mit grünen Sechsecken angezeigt, die für die Azure-Regionen stehen, für die eine Georeplikation möglich ist:
 
- ![Karte mit Regionen im Azure-Portal][tut-map-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Karte mit Regionen im Azure-Portal":::
 
 Replizieren Sie Ihre Registrierung in der Region „USA, Osten“, indem Sie das grüne Sechseck auswählen, und wählen Sie dann unter **Replikation erstellen** die Option **Erstellen**:
 
- ![Benutzeroberfläche zum Erstellen von Replikaten im Azure-Portal][tut-portal-04]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Benutzeroberfläche zum Erstellen von Replikaten im Azure-Portal":::
 
 Wenn die Replikation abgeschlossen ist, wird im Portal für beide Regionen *Bereit* angezeigt. Verwenden Sie die Schaltfläche **Aktualisieren**, um den Status der Replikation zu aktualisieren. Es kann ca. eine Minute dauern, bis die Replikate erstellt und synchronisiert wurden.
 
-![Benutzeroberfläche für den Replikatstatus im Azure-Portal][tut-portal-05]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Benutzeroberfläche für den Replikatstatus im Azure-Portal":::
+
+
+## <a name="enable-admin-account"></a>Aktivieren des Administratorkontos
+
+In den nachfolgenden Tutorials stellen Sie ein Containerimage aus der Registrierung direkt für Web-App für Container bereit. Zum Aktivieren dieser Funktion müssen Sie auch das [Administratorkonto](container-registry-authentication.md#admin-account) der Registrierung aktivieren.
+
+Navigieren Sie im Azure-Portal zu Ihrer neuen Containerregistrierung, und wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Klicken Sie unter **Administratorbenutzer** auf **Aktivieren**.
+
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Aktivieren des Administratorkontos im Azure-Portal":::
+
 
 ## <a name="container-registry-login"></a>Anmeldung bei der Containerregistrierung
 
-Nachdem Sie nun die Georeplikation konfiguriert haben, erstellen Sie ein Containerimage und übertragen es per Pushvorgang in Ihre Registrierung. Sie müssen sich zuerst bei der ACR-Instanz anmelden, damit Sie Images per Push übertragen können.
+Nachdem Sie nun die Georeplikation konfiguriert haben, erstellen Sie ein Containerimage und übertragen es per Pushvorgang in Ihre Registrierung. Sie müssen sich zuerst bei Ihrer Registrierung anmelden, bevor Sie dafür Images per Pushvorgang übertragen können.
 
 Verwenden Sie den Befehl [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login), um sich zu authentifizieren und die Anmeldeinformationen für Ihre Registrierung zwischenzuspeichern. Ersetzen Sie `<acrName>` durch den Namen der Registrierung, die Sie zuvor erstellt haben.
 
@@ -97,7 +110,7 @@ Der Befehl gibt `Login Succeeded` zurück, wenn der Vorgang abgeschlossen ist.
 
 Das Beispiel in diesem Tutorial enthält eine kleine Webanwendung, die mit [ASP.NET Core][aspnet-core] erstellt wurde. Die App stellt eine HTML-Seite bereit, auf der die Region angezeigt wird, aus der das Image von Azure Container Registry bereitgestellt wurde.
 
-![Tutorial-App im Browser][tut-app-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Tutorial-App im Browser":::
 
 Verwenden Sie Git, um das Beispiel in ein lokales Verzeichnis herunterzuladen, und wechseln Sie mit `cd` in das Verzeichnis:
 
@@ -205,7 +218,7 @@ Verwenden Sie als Nächstes den Befehl `docker push`, um das Image *acr-hellowor
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Da Sie Ihre Registrierung für die Georeplikation konfiguriert haben, wird Ihr Image mit diesem einzelnen *-Befehl automatisch sowohl in der Region* USA, Westen*als auch in*USA, Osten`docker push` repliziert.
+Da Sie Ihre Registrierung für die Georeplikation konfiguriert haben, wird Ihr Image mit diesem einzelnen `docker push`-Befehl automatisch sowohl in der Region *USA, Westen* als auch in *USA, Osten* repliziert.
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
@@ -228,15 +241,6 @@ Im nächsten Tutorial erfahren Sie, wie Sie Ihren Container in mehreren Instanze
 
 > [!div class="nextstepaction"]
 > [Bereitstellen einer Web-App über Azure Container Registry](container-registry-tutorial-deploy-app.md)
-
-<!-- IMAGES -->
-[tut-portal-01]: ./media/container-registry-tutorial-prepare-registry/tut-portal-01.png
-[tut-portal-02]: ./media/container-registry-tutorial-prepare-registry/tut-portal-02.png
-[tut-portal-03]: ./media/container-registry-tutorial-prepare-registry/tut-portal-03.png
-[tut-portal-04]: ./media/container-registry-tutorial-prepare-registry/tut-portal-04.png
-[tut-portal-05]: ./media/container-registry-tutorial-prepare-registry/tut-portal-05.png
-[tut-app-01]: ./media/container-registry-tutorial-prepare-registry/tut-app-01.png
-[tut-map-01]: ./media/container-registry-tutorial-prepare-registry/tut-map-01.png
 
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip

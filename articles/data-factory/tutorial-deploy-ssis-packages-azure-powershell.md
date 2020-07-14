@@ -9,28 +9,28 @@ ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
+ms.date: 07/06/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 2c3f2ccd80f2f329a7495beda1a002d84d769802
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: bcb30e2f653a0f22e2407cb95058431b95ef7db5
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253918"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969701"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>Einrichten von Azure-SSIS Integration Runtime in Azure Data Factory mithilfe von PowerShell
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In diesem Tutorial werden die Schritte für die Verwendung von PowerShell zum Bereitstellen einer Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) in Azure Data Factory beschrieben. Azure-SSIS IR unterstützt das Ausführen von Paketen, die für Folgendes bereitgestellt wurden:
+In diesem Tutorial werden die Schritte für die Verwendung von PowerShell zum Bereitstellen einer Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) in Azure Data Factory (ADF) beschrieben. Die Azure-SSIS IR unterstützt Folgendes:
 
-* Einen SSIS-Katalog (SSISDB), der in SQL-Datenbank oder einer verwalteten SQL-Instanz (dem Projektbereitstellungsmodell) gehostet wird.
-* Dateisysteme, Dateifreigaben oder eine Azure Files-Freigabe (Paketbereitstellungsmodell) 
+- Ausführen von Paketen, die im SSIS-Katalog (SSISDB) bereitgestellt werden, wobei zum Hosten ein Azure SQL-Datenbank-Server/eine verwaltete Instanz verwendet wird (Projektbereitstellungsmodell)
+- Ausführen von Paketen, die im Dateisystem, in Azure Files oder SQL Server-Datenbank (MSDB) bereitgestellt werden, wobei zum Hosten eine verwaltete Azure SQL-Instanz verwendet wird (Paketbereitstellungsmodell)
 
-Nach der Bereitstellung einer Azure-SSIS IR können Sie die vertrauten Tools nutzen, um Ihre Pakete in Azure bereitzustellen und auszuführen. Beispiele für diese Tools sind SQL Server Data Tools (SSDT), SQL Server Management Studio (SSMS) und Befehlszeilentools wie `dtinstall`, `dtutil` und `dtexec`.
+Nach der Bereitstellung einer Azure-SSIS IR können Sie die vertrauten Tools nutzen, um Ihre Pakete in Azure bereitzustellen und auszuführen. Diese Tools sind bereits Azure-fähig und enthalten SQL Server Data Tools (SSDT), SQL Server Management Studio (SSMS) sowie Befehlszeilen-Hilfsprogramme wie [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) und [AzureDTExec](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-azure-enabled-dtexec).
 
 Konzeptionelle Informationen zu Azure-SSIS IRs finden Sie unter [Azure-SSIS-Integrationslaufzeit](concepts-integration-runtime.md#azure-ssis-integration-runtime).
 
@@ -49,18 +49,27 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Ein Azure-Abonnement**: Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen. Konzeptionelle Informationen zu Azure-SSIS IR finden Sie unter [Azure-SSIS-Integrationslaufzeit](concepts-integration-runtime.md#azure-ssis-integration-runtime).
+- **Azure-Abonnement**. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-- **SQL-Datenbank oder verwaltete SQL-Instanz**: Wenn Sie noch keine davon haben, erstellen Sie eine im Azure-Portal, bevor Sie beginnen. Azure Data Factory erstellt wiederum SSISDB für diese SQL-Datenbank oder verwaltete SQL-Instanz. Wir empfehlen, dass Sie SQL-Datenbank oder eine verwaltete SQL-Instanz in derselben Azure-Region wie die Integration Runtime erstellen. Diese Konfiguration ermöglicht es der Integration Runtime, Ausführungsprotokolle in SSISDB zu schreiben, ohne Azure-Regionen zu überschreiten. 
-    - Basierend auf dem ausgewählten Datenbankserver kann SSISDB für Sie als einzelne Datenbank, als Teil eines Pools für elastische Datenbanken in SQL-Datenbank oder in einer verwalteten SQL-Instanz erstellt werden und in einem öffentlichen Netzwerk oder durch die Einbindung in ein virtuelles Netzwerk zugänglich sein. Einen Leitfaden zum Auswählen des Datenbankservertyps zum Hosten von SSISDB finden Sie unter [Vergleich zwischen SQL-Datenbank und einer verwalteten SQL-Instanz](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).
-    
-      Wenn Sie SQL-Datenbank mit einer IP-Firewall oder mit VNET-Dienstendpunkten oder aber eine verwaltete SQL-Instanz mit einem privaten Endpunkt zum Hosten von SSISDB verwenden oder wenn Sie auf lokale Daten ohne Konfiguration einer selbstgehosteten IR zugreifen müssen, binden Sie Ihre Azure-SSIS IR-Instanz in ein virtuelles Netzwerk ein. Weitere Informationen finden Sie unter [Erstellen von Azure-SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
-    - Vergewissern Sie sich, dass die Einstellung **Zugriff auf Azure-Dienste zulassen** für SQL-Datenbank aktiviert wurde. Diese Einstellung gilt nicht, wenn Sie SQL-Datenbank mit IP-Firewallregeln oder VNET-Dienstendpunkten oder aber eine verwaltete SQL-Instanz mit einem privaten Endpunkt zum Hosten von SSISDB verwenden. Weitere Informationen finden Sie unter [Schützen der Azure SQL-Datenbank](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules). Informationen zum Aktivieren dieser Einstellung mithilfe von PowerShell finden Sie unter [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
-    - Fügen Sie der Client-IP-Adressenliste in den Firewalleinstellungen für SQL-Datenbank die IP-Adresse des Clientcomputers oder einen IP-Adressbereich hinzu, der die IP-Adresse des Clientcomputers enthält. Weitere Informationen finden Sie unter [Firewallregeln auf Server- und Datenbankebene](../azure-sql/database/firewall-configure.md).
-    - Sie können eine Verbindung mit SQL-Datenbank oder einer verwalteten SQL-Instanz herstellen, indem Sie die SQL-Authentifizierung mit Ihren Serveradministrator-Anmeldeinformationen oder die Azure AD-Authentifizierung (Azure Active Directory) mit der verwalteten Identität für Ihre Data Factory verwenden. Sehen Sie sich für die Azure AD-Authentifizierung den Artikel [Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime) an. Dort erfahren Sie, wie Sie die verwaltete Identität für Ihre Data Factory zu einer Azure AD-Gruppe mit Zugriffsberechtigungen für den Datenbankserver hinzufügen.
-    - Vergewissern Sie sich, dass SQL-Datenbank oder eine verwaltete SQL-Instanz nicht bereits über eine SSISDB verfügen. Die Verwendung einer vorhandenen SSISDB-Instanz wird bei der Azure-SSIS IR-Einrichtung nicht unterstützt.
+- **Azure SQL-Datenbank-Server oder verwaltete Instanz (optional)** . Wenn Sie noch nicht über einen Datenbankserver verfügen, erstellen Sie einen im Azure-Portal, bevor Sie beginnen. Mit Data Factory wird wiederum eine SSISDB-Instanz auf diesem Datenbankserver erstellt. 
 
-- Azure PowerShell. Wenn Sie ein PowerShell-Skript für die Azure-SSIS IR-Einrichtung ausführen möchten, gehen Sie wie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) beschrieben vor.
+  Es empfiehlt sich, den Datenbankserver in derselben Azure-Region zu erstellen, in der sich auch die Integration Runtime befindet. Diese Konfiguration ermöglicht es der Integration Runtime, Ausführungsprotokolle in SSISDB zu schreiben, ohne Azure-Regionen zu überschreiten.
+
+  Beachten Sie Folgendes:
+
+  - Basierend auf dem ausgewählten Datenbankserver kann die SSISDB-Instanz in Ihrem Namen als Einzeldatenbank, als Teil eines Pools für elastische Datenbanken oder auf einer verwalteten Instanz erstellt werden. Der Zugriff kann über ein öffentliches Netzwerk oder durch den Beitritt zu einem virtuellen Netzwerk erfolgen. Einen Leitfaden zum Auswählen des Datenbankservertyps zum Hosten von SSISDB finden Sie unter [Vergleich zwischen SQL-Datenbank und einer verwalteten SQL-Instanz](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance). 
+  
+    Wenn Sie einen Azure SQL-Datenbankserver mit IP-Firewallregeln/VNET-Dienstendpunkten oder eine verwaltete Instanz mit privatem Endpunkt zum Hosten der SSISDB verwenden oder Zugriff auf lokale Daten ohne Konfiguration einer selbstgehosteten IR benötigen, müssen Sie Ihre Azure-SSIS IR-Instanz mit einem virtuellen Netzwerk verknüpfen. Weitere Informationen finden Sie unter [Erstellen von Azure-SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+
+  - Vergewissern Sie sich, dass die Einstellung **Zugriff auf Azure-Dienste zulassen** für den Datenbankserver aktiviert ist. Diese Einstellung gilt nicht, wenn Sie einen Azure SQL-Datenbankserver mit IP-Firewallregeln/VNET-Dienstendpunkten oder eine verwaltete Instanz mit privatem Endpunkt zum Hosten der SSISDB verwenden. Weitere Informationen finden Sie unter [Schützen der Azure SQL-Datenbank](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Informationen zum Aktivieren dieser Einstellung mithilfe von PowerShell finden Sie unter [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
+
+  - Fügen Sie der Client-IP-Adressenliste in den Firewalleinstellungen für den Datenbankserver die IP-Adresse des Clientcomputers oder einen IP-Adressbereich hinzu, der die IP-Adresse des Clientcomputers enthält. Weitere Informationen finden Sie unter [Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank](../sql-database/sql-database-firewall-configure.md).
+
+  - Sie können eine Verbindung mit dem Datenbankserver herstellen, indem Sie die SQL-Authentifizierung mit Ihren Serveradministrator-Anmeldeinformationen oder die Azure AD-Authentifizierung mit der verwalteten Identität für Ihre Data Factory-Instanz verwenden. Im letzteren Fall müssen Sie die verwaltete Identität für Ihre Data Factory-Instanz einer Azure AD-Gruppe mit Zugriffsberechtigungen für den Datenbankserver hinzufügen. Weitere Informationen finden Sie unter [Erstellen von Azure-SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+
+  - Vergewissern Sie sich, dass Ihr Datenbankserver noch nicht über eine SSISDB-Instanz verfügt. Für die Bereitstellung einer Azure-SSIS IR wird die Verwendung einer vorhandenen SSISDB-Instanz nicht unterstützt.
+
+- **Azure PowerShell**. Wenn Sie ein PowerShell-Skript für die Azure-SSIS IR-Einrichtung ausführen möchten, gehen Sie wie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) beschrieben vor.
 
 > [!NOTE]
 > Eine Liste mit den Azure-Regionen, in denen Azure Data Factory und Azure-SSIS IR derzeit verfügbar sind, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 
@@ -317,11 +326,11 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 ```
 
 > [!NOTE]
-> Dieser Prozess sollte innerhalb von fünf Minuten abgeschlossen sein (ohne Zeitaufwand für benutzerdefiniertes Setup).
+> Abgesehen von einer benutzerdefinierten Einrichtungszeit sollte dieser Prozess innerhalb von fünf Minuten abgeschlossen sein.
 >
-> Bei Verwendung von SSISDB stellt der Azure Data Factory-Dienst eine Verbindung mit Ihrem Datenbankserver her, um SSISDB vorzubereiten. 
+> Bei Verwendung der SSISDB stellt der Data Factory-Dienst eine Verbindung mit Ihrem Datenbankserver her, um die SSISDB vorzubereiten. 
 > 
-> Wenn Sie Azure-SSIS IR einrichten, werden auch die Access Redistributable-Komponente und das Azure Feature Pack für SSIS installiert. Diese Komponenten ermöglichen nicht nur die Konnektivität mit Excel- und Access-Dateien und verschiedenen Azure-Datenquellen, sondern auch mit den Datenquellen, die bereits von integrierten Komponenten unterstützt werden. Sie können auch weitere Komponenten installieren. Weitere Informationen dazu finden Sie unter [Benutzerdefiniertes Setup für Azure-SSIS IR](how-to-configure-azure-ssis-ir-custom-setup.md).
+> Wenn Sie Azure-SSIS IR bereitstellen, werden auch die Access Redistributable-Komponente und das Azure Feature Pack für SSIS installiert. Diese Komponenten ermöglichen nicht nur die Konnektivität mit Excel-Dateien, Access-Dateien und verschiedenen Azure-Datenquellen, sondern auch mit den Datenquellen, die von integrierten Komponenten bereits unterstützt werden. Weitere Informationen zu integrierten/vorinstallierten Komponenten finden Sie unter [Integrierte/vorinstallierte Komponenten für Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime). Weitere Informationen zu zusätzlichen Komponenten, die Sie installieren können, finden Sie unter [Custom setups for Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup) (Benutzerdefinierte Setups for Azure-SSIS IR).
 
 ## <a name="full-script"></a>Vollständiges Skript
 
@@ -540,11 +549,17 @@ Informationen zur Überwachung und Verwaltung von Azure-SSIS IR finden Sie hier
 
 ## <a name="deploy-ssis-packages"></a>Bereitstellen von SSIS-Paketen
 
-Bei Verwendung von SSISDB können Sie Ihre Pakete darin bereitstellen und in der Azure-SSIS IR-Instanz ausführen, indem Sie SQL Server Data Tools (SSDT) oder SSMS-Tools (SQL Server Management Studio) verwenden, die über den Serverendpunkt Ihres Datenbankservers eine Verbindung mit dem Server herstellen. Für SQL-Datenbank oder eine verwaltete SQL-Instanz mit einem öffentlichen Endpunkt verwendet der Serverendpunkt das Format *<server name>.database.windows.net* bzw. *<server name>.public.<dns prefix>.database.windows.net,3342*. 
+Wenn Sie SSISDB verwenden, können Sie Ihre Pakete darin bereitstellen und sie mithilfe der Azure-fähigen SSDT- oder SSMS-Tools in Ihrer Azure-SSIS IR ausführen. Mit diesen Tools wird über den zugehörigen Serverendpunkt eine Verbindung mit Ihrem Datenbankserver hergestellt: 
 
-Falls Sie keine SSISDB-Instanz verwenden, können Sie Ihre Pakete in Dateisystemen, in Dateifreigaben oder in einer Azure Files-Freigabe bereitstellen und sie mithilfe eines Befehlszeilenprogramms (`dtinstall`/`dtutil`/`dtexec`) in der Azure-SSIS IR-Instanz ausführen. Weitere Informationen finden Sie unter [Bereitstellen von SSIS-Paketen](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). 
+- Bei einem Azure SQL-Datenbankserver weist der Serverendpunkt das Format `<server name>.database.windows.net` auf.
+- Bei einer verwalteten Instanz mit privatem Endpunkt weist der Serverendpunkt das Format `<server name>.<dns prefix>.database.windows.net` auf.
+- Bei einer verwalteten Instanz mit öffentlichem Endpunkt weist der Serverendpunkt das Format `<server name>.public.<dns prefix>.database.windows.net,3342` auf. 
 
-In beiden Fällen können Sie Ihre bereitgestellten Pakete auch in der Azure-SSIS IR-Instanz ausführen, indem Sie die Aktivität zum Ausführen von SSIS-Paketen in Azure Data Factory-Pipelines verwenden. Weitere Informationen finden Sie unter [Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Wenn Sie SSISDB nicht verwenden, können Sie Ihre Pakete im Dateisystem, in Azure Files oder der MSDB bereitstellen, das bzw. die von Ihrer verwalteten Azure SQL-Instanz gehostet wird, und sie mit den Befehlszeilen-Hilfsprogrammen [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) und [AzureDTExec](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-azure-enabled-dtexec) in Ihrer Azure-SSIS IR ausführen. 
+
+Weitere Informationen finden Sie unter [Bereitstellen von SSIS-Projekten/Paketen](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-ver15).
+
+In beiden Fällen können Sie Ihre bereitgestellten Pakete auch in der Azure-SSIS IR-Instanz ausführen, indem Sie die Aktivität „SSIS-Paket ausführen“ in Data Factory-Pipelines verwenden. Weitere Informationen finden Sie unter [Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 
 Weiteres SSIS-Dokumentationsmaterial finden Sie hier: 
 

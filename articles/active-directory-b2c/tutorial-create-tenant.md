@@ -6,18 +6,18 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/28/2019
+ms.topic: tutorial
+ms.date: 07/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c31f3c4c6688af7d2142180e8d9b7100965bad96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 044a2d2cb23e36234256b9b19363462e542176fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186402"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806849"
 ---
-# <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutorial zum Erstellen eines Azure Active Directory B2C-Mandanten
+# <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten
 
 Bevor Ihre Anwendungen mit Azure Active Directory B2C (Azure AD B2C) interagieren können, müssen sie in einem von Ihnen verwalteten Mandanten registriert werden.
 
@@ -31,7 +31,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Im nächsten Tutorial erfahren Sie, wie Sie eine Anwendung registrieren.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Erstellen eines Azure AD B2C-Mandanten
 
@@ -49,27 +49,20 @@ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](h
 
     ![„Neuen Azure AD B2C-Mandanten erstellen“ im Azure-Portal ausgewählt](media/tutorial-create-tenant/portal-02-create-tenant.png)
 
-1. Geben Sie die gewünschten Namen in **Organisationsname** und **Name der Anfangsdomäne** ein. Wählen Sie einen Eintrag in **Land oder Region** aus (diese Auswahl kann später nicht geändert werden), und wählen Sie dann **Erstellen** aus.
+1. Geben Sie auf der Seite **Verzeichnis erstellen** Folgendes ein:
 
-    Der Domänenname wird als Teil Ihres vollständigen Mandantendomänennamens verwendet. In diesem Beispiel lautet der Mandantenname *contosob2c.onmicrosoft.com*:
+   - **Organisationsname**: Geben Sie einen Namen für Ihren Azure AD B2C-Mandanten ein.
+   - **Name der Anfangsdomäne**: Geben Sie einen Domänennamen für Ihren Azure AD B2C-Mandanten ein.
+   - **Land oder Region**: Wählen Sie in der Liste Ihr Land oder Ihre Region aus. Diese Auswahl kann später nicht mehr geändert werden.
+   - **Abonnement**: Wählen Sie in der Liste Ihr Abonnement aus.
+   - **Ressourcengruppe**: Wählen Sie eine Ressourcengruppe aus, die den Mandanten enthalten soll. Oder wählen Sie **Neu erstellen** aus, geben Sie unter **Name** einen Namen für die Ressourcengruppe ein, wählen Sie den **Standort der Ressourcengruppe** aus, und wählen Sie dann **OK** aus.
 
-    ![Formular „Mandanten erstellen“ mit Beispielwerten im Azure-Portal](media/tutorial-create-tenant/portal-03-tenant-naming.png)
+    ![Formular „Mandanten erstellen“ mit Beispielwerten im Azure-Portal](media/tutorial-create-tenant/review-and-create-tenant.png)
 
-1. Wählen Sie nach Abschluss der Mandantenerstellung oben auf der Seite für die Mandantenerstellung den Link **Neuen B2C-Mandanten erstellen oder mit vorhandenem Mandanten verknüpfen** aus.
+1. Klicken Sie auf **Überprüfen + erstellen**.
+1. Überprüfen Sie Ihre Verzeichniseinstellungen. Klicken Sie anschließend auf **Erstellen**.
 
-    ![Breadcrumb-Link zum Verknüpfen des Mandanten im Azure-Portal hervorgehoben](media/tutorial-create-tenant/portal-04-select-link-sub-link.png)
-
-1. Wählen Sie **Vorhandenen Azure AD B2C Mandanten mit meinem Azure-Abonnement verknüpfen** aus.
-
-   ![Auswahl von „Mit vorhandenem Abonnement verknüpfen“ im Azure-Portal](media/tutorial-create-tenant/portal-05-link-subscription.png)
-
-1. Wählen Sie den erstellten **Azure AD B2C-Mandanten** und dann Ihr **Abonnement** aus.
-
-    Wählen Sie für **Ressourcengruppe** die Option **Neu erstellen** aus. Geben Sie einen **Namen** für die Ressourcengruppe ein, die den Mandanten enthalten soll, wählen Sie den **Ressourcengruppenstandort** und dann **Erstellen** aus.
-
-    ![Formular zum Verknüpfen von Abonnementeinstellungen im Azure-Portal](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
-
-    Sie können mehrere Azure AD B2C-Mandanten zu Abrechnungszwecken mit einem einzelnen Azure-Abonnement verknüpfen.
+Sie können mehrere Azure AD B2C-Mandanten zu Abrechnungszwecken mit einem einzelnen Azure-Abonnement verknüpfen. Zum Verknüpfen eines Mandanten müssen Sie auf dem Azure AD B2C-Mandanten ein Administrator sein, und Ihnen muss unter dem Azure-Abonnement mindestens die Rolle „Mitwirkender“ zugewiesen sein. Weitere Informationen finden Sie unter [Verknüpfen eines Azure AD B2C-Mandanten mit einem Abonnement](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
 
 ## <a name="select-your-b2c-tenant-directory"></a>Auswählen Ihres B2C-Mandantenverzeichnisses
 

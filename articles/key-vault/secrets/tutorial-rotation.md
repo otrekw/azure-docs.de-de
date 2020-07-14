@@ -1,6 +1,6 @@
 ---
-title: Tutorial zur Rotation eines einzelnen Benutzers/Kennworts
-description: In diesem Tutorial erfahren Sie, wie Sie die Rotation eines Geheimnisses für Ressourcen automatisieren, die die Authentifizierung mit einem einzelnen Benutzer/Kennwort verwenden.
+title: 'Tutorial: Rotation für Ressourcen mit einem Satz mit Anmeldeinformationen für die Authentifizierung'
+description: In diesem Tutorial erfahren Sie, wie Sie die Rotation eines Geheimnisses für Ressourcen automatisieren, bei denen ein Satz mit Anmeldeinformationen für die Authentifizierung verwendet wird.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f9c0dca29d173eb2c7893a20b2ab41dd31522e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9bff8c040f4cfed612278dd83ebb354b31a3a1f3
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183210"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801443"
 ---
-# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-single-usersingle-password-authentication"></a>Automatisieren der Rotation eines Geheimnisses für Ressourcen, die die Authentifizierung mit einem einzelnen Benutzer/Kennwort verwenden
+# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatisieren der Rotation eines Geheimnisses für Ressourcen mit einem Satz mit Anmeldeinformationen für die Authentifizierung
 
 Die beste Möglichkeit zur Authentifizierung bei Azure-Diensten ist die Verwendung einer [verwalteten Identität](../general/managed-identity.md). Es gibt jedoch einige Szenarien, in denen dies nicht möglich ist. In diesen Fällen werden Zugriffsschlüssel oder Geheimnisse verwendet. Sie sollten Zugriffsschlüssel und Geheimnisse regelmäßig rotieren.
 
-In diesem Tutorial wird gezeigt, wie Sie die regelmäßige Rotation von Geheimnissen für Datenbanken und Dienste automatisieren, die die Authentifizierung mit einem einzelnen Benutzer/Kennwort verwenden. Genauer gesagt werden in diesem Tutorial in Azure Key Vault gespeicherte SQL Server-Kennwörter mithilfe einer Funktion rotiert, die durch eine Azure Event Grid-Benachrichtigung ausgelöst wird:
+In diesem Tutorial wird gezeigt, wie Sie die regelmäßige Rotation von Geheimnissen für Datenbanken und Dienste automatisieren, bei denen ein Satz mit Anmeldeinformationen für die Authentifizierung verwendet wird. Genauer gesagt werden in diesem Tutorial in Azure Key Vault gespeicherte SQL Server-Kennwörter mithilfe einer Funktion rotiert, die durch eine Azure Event Grid-Benachrichtigung ausgelöst wird:
 
 ![Diagramm der Rotationslösung](../media/rotate1.png)
 

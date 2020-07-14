@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 918a7700df6b5be3ebca7949875127e42f8d3a91
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b8fcef13fbe41ac26b2a31d6871896428649eaa1
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75780695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920856"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>Tutorial: Ausgleichen der internen Datenverkehrslast mithilfe eines Lastenausgleichs im Tarif „Standard“ über das Azure-Portal
 
@@ -180,6 +180,8 @@ Mit der Lastenausgleichsregel **MyLoadBalancerRule** wird über Port 80 des Fron
    - **Back-End-Pool**: Wählen Sie **MyBackendPool** aus.
    - **Integritätstest**: Wählen Sie **MyHealthProbe** aus. 
    
+Aktivieren Sie zum Konfigurieren von [Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md) mithilfe des Azure-Portals das Kontrollkästchen **Hochverfügbarkeitsports**. Wenn diese ausgewählt ist, wird die entsprechende Port- und Protokollkonfiguration automatisch ausgefüllt. 
+
 1. Klicken Sie auf **OK**.
    
    ![Hinzufügen einer Lastenausgleichsregel](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)

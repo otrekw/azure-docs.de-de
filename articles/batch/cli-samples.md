@@ -1,30 +1,23 @@
 ---
-title: Beispiele für die Azure-Befehlszeilenschnittstelle
-description: Azure CLI-Beispiele für den Azur Batch-Dienst Hier erfahren Sie, wie Sie ein Batch-Konto erstellen und eine Anwendung hinzufügen.
+title: Azure CLI-Beispiele für Azure Batch
+description: Es wird beschrieben, wie Sie mit der Azure CLI ein Batch-Konto erstellen und eine Anwendung hinzufügen.
 ms.topic: sample
-ms.date: 01/29/2018
+ms.date: 07/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 59fc944024e2d51b16193db01ff06f2d434ad1e7
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ff18043f4d411a70be7ad7f4d373d7c6a8b0e4e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725753"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832269"
 ---
 # <a name="azure-cli-examples-for-azure-batch"></a>Azure CLI-Beispiele für Azure Batch
 
-Die folgende Tabelle enthält Links zu Azure CLI-Beispielen für Azure Batch.
+In den folgenden Beispielen wird veranschaulicht, wie Sie die Azure CLI für die Arbeit mit Batch verwenden.
 
-|  |  |
-|---|---|
-|**Erstellen eines Batch-Kontos**||
-| [Erstellen eines Batch-Kontos im Modus „Batch-Dienst“](./scripts/batch-cli-sample-create-account.md) | Erstellt ein Batch-Konto im Standardmodus und verknüpft es mit einem Speicherkonto. |
-| [Erstellen eines Batch-Kontos im Modus „Benutzerabonnement“](./scripts/batch-cli-sample-create-user-subscription-account.md) | Erstellt ein Batch-Konto im Modus „Benutzerabonnement“. |
-|**Hinzufügen einer Anwendung**||
-| [Hinzufügen einer Anwendung zu einem Batch-Konto](./scripts/batch-cli-sample-add-application.md) | Fügt eine Anwendung hinzu und lädt die gepackten Binärdateien hoch|
-|**Erstellen und Verwalten von Pools mit Computeknoten**||
-| [Erstellen und Verwalten eines Linux-Pools](./scripts/batch-cli-sample-manage-linux-pool.md) | Veranschaulicht das Erstellen und Verwalten eines Linux-Pools sowie das Anpassen seiner Größe. |
-| [Erstellen und Verwalten eines Windows-Pools](./scripts/batch-cli-sample-manage-windows-pool.md) | Veranschaulicht das Erstellen und Verwalten eines Windows-Pools sowie das Anpassen seiner Größe. |
-|**Ausführen von Aufträgen und Aufgaben**||
-| [Ausführen eines Auftrags und von Tasks mit Batch](./scripts/batch-cli-sample-run-job.md) | Veranschaulicht die Ausführung eines Auftrags und das Hinzufügen von Tasks |
-
+- [Erstellen eines Batch-Kontos im Standardmodus und Zuordnen zu einem Speicherkonto](./scripts/batch-cli-sample-create-account.md)
+- [Erstellen eines Batch-Kontos im Modus „Benutzerabonnement“](./scripts/batch-cli-sample-create-user-subscription-account.md)
+- [Hinzufügen einer Anwendung zu einem Batch-Konto und Hochladen von gepackten Binärdateien](./scripts/batch-cli-sample-add-application.md)
+- [Erstellen und Verwalten eines Linux-Pools](./scripts/batch-cli-sample-manage-linux-pool.md)
+- [Erstellen und Verwalten eines Windows-Pools](./scripts/batch-cli-sample-manage-windows-pool.md)
+- [Ausführen eines Auftrags und von Tasks mit Batch](./scripts/batch-cli-sample-run-job.md)

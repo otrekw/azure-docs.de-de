@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen Service Fabric-Clus
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ed212083a29836e1da593ec42c31bbf86b907546
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788820"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611644"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Tutorial: Skalieren eines Service Fabric-Clusters in Azure
 
@@ -833,13 +833,12 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>Erhöhen von Knotenressourcen 
-Nach dem Erstellen eines Service Fabric-Clusters können Sie einen Clusterknotentyp vertikal skalieren (die Ressourcen der Knoten ändern) oder das Betriebssystem der Knotentyp-VMs aktualisieren.  
+Nach der Erstellung eines Service Fabric-Clusters können Sie einen Clusterknotentyp vertikal skalieren (Ressourcen der Knoten ändern) oder das Betriebssystem der Knotentyp-VMs aktualisieren, indem Sie den ursprünglichen Knotentyp durch einen neuen Knotentyp (mit aktualisierter VM-SKU oder Betriebssystemimage) ersetzen. Weitere Informationen finden Sie unter [Hochskalieren eines Azure Service Fabric-Knotentyps](service-fabric-scale-up-node-type.md).
 
-> [!WARNING]
-> Wir empfehlen Ihnen, die VM-SKU einer Skalierungsgruppe bzw. eines Knotentyps nur dann zu ändern, wenn sie mit der Dauerhaftigkeitsstufe „Silber“ oder höher ausgeführt wird. Bei der Änderung der VM-SKU-Größe handelt es sich um einen für Daten schädlichen direkten Infrastrukturvorgang. Ohne eine Möglichkeit der Verzögerung oder Überwachung dieser Änderung ist es möglich, dass der Vorgang bei zustandsbehafteten Diensten zu Datenverlusten führt oder selbst bei zustandslosen Workloads unvorhergesehene Probleme auftreten.
+> [!IMPORTANT]
+> Versuchen Sie niemals, eine direkte Änderung der VM-SKU oder des Betriebssystemimages durchzuführen, da dies ein gefährlicher und nicht unterstützter Vorgang ist.
 
-> [!WARNING]
-> Wir empfehlen Ihnen, die VM-SKU des primären Knotentyps nicht zu ändern, wobei es sich um einen gefährlichen Vorgang handelt, der auch nicht unterstützt wird.  Wenn Sie eine höhere Clusterkapazität benötigen, können Sie mehr VM-Instanzen oder zusätzliche Knotentypen hinzufügen.  Sollte dies nicht möglich sein, können Sie einen neuen Cluster erstellen und eine [Wiederherstellung des Anwendungszustands](service-fabric-reliable-services-backup-restore.md) (falls zutreffend) vom alten Cluster durchführen.  Sollte dies nicht möglich sein, können Sie [die VM-SKU des primären Knotentyps ändern](service-fabric-scale-up-node-type.md).
+Sollte dies nicht möglich sein, können Sie einen neuen Cluster erstellen und eine [Wiederherstellung des Anwendungszustands](service-fabric-reliable-services-backup-restore.md) (falls zutreffend) vom alten Cluster durchführen. Sie müssen keine Systemdienstzustände wiederherstellen, denn diese werden neu erstellt, wenn Sie Ihre Anwendungen im neuen Cluster bereitstellen. Wenn Sie in Ihrem Cluster ausschließlich zustandslose Anwendungen ausführen, stellen Sie lediglich Ihre Anwendungen im neuen Cluster bereit und müssen nichts wiederherstellen.
 
 ### <a name="update-the-template"></a>Aktualisieren der Vorlage
 
@@ -873,19 +872,7 @@ Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Runtime 
 > [!div class="nextstepaction"]
 > [Aktualisieren der Runtime eines Clusters](service-fabric-tutorial-upgrade-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
-[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
-[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
-
-> * Hinzufügen und Entfernen von Knotentypen (Auf- und Abskalieren)
-> * Erhöhen von Knotenressourcen (Hochskalieren)
-
-Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Runtime eines Clusters aktualisieren:
-> [!div class="nextstepaction"]
-> [Aktualisieren der Runtime eines Clusters](service-fabric-tutorial-upgrade-cluster.md)
-
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

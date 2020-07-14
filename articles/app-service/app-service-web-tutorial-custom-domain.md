@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 116ec218b1f3947b85b4ab865df30477f05c601a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 46c27f18f8f16f783248790f03364654d0b3c2fe
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559884"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986826"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -95,9 +95,7 @@ Wenn die unten angegebene Benachrichtigung angezeigt wird, ist der Skalierungsvo
 
 ## <a name="get-domain-verification-id"></a>Abrufen der Verifizierungs-ID für eine Domäne
 
-Wenn Sie Ihrer App eine benutzerdefinierte Domäne hinzufügen möchten, müssen Sie den Besitz der Domäne bestätigen, indem Sie bei Ihrem Domänenanbieter eine Verifizierungs-ID als TXT-Datensatz hinzufügen. Klicken Sie im linken Navigationsbereich der App-Seite unter **Entwicklungstools** auf **Ressourcen-Explorer** und anschließend auf **Starten**.
-
-Suchen Sie in der JSON-Ansicht der App-Eigenschaften nach `customDomainVerificationId`, und kopieren Sie den Wert in doppelten Anführungszeichen. Sie benötigen diese Verifizierungs-ID für den nächsten Schritt.
+Wenn Sie Ihrer App eine benutzerdefinierte Domäne hinzufügen möchten, müssen Sie den Besitz der Domäne bestätigen, indem Sie bei Ihrem Domänenanbieter eine Verifizierungs-ID als TXT-Datensatz hinzufügen. Klicken Sie im linken Navigationsbereich Ihrer App-Seite unter **Einstellungen** auf **Benutzerdefinierte Domänen**. Kopieren Sie hier den Wert der Verifizierungs-ID für benutzerdefinierte Domänen. Sie benötigen diese Verifizierungs-ID für den nächsten Schritt.
 
 ## <a name="map-your-domain"></a>Zuordnen Ihrer Domäne
 
@@ -113,6 +111,8 @@ Verwenden Sie für die Zuordnung eines benutzerdefinierten DNS-Namens zu App Ser
 ### <a name="map-a-cname-record"></a>Zuordnen eines CNAME-Eintrags
 
 Im Tutorialbeispiel fügen Sie einen CNAME-Eintrag für die Unterdomäne `www` (z.B. `www.contoso.com`) hinzu.
+
+Falls Sie eine andere Unterdomäne als `www` verwenden, müssen Sie `www` durch Ihre Unterdomäne ersetzen (z. B. durch `sub`, wenn Ihre benutzerdefinierte Domäne `sub.constoso.com` lautet).
 
 #### <a name="access-dns-records-with-domain-provider"></a>Zugreifen auf DNS-Einträge mit Domänenanbieter
 

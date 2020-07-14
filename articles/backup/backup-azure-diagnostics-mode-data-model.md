@@ -3,12 +3,12 @@ title: Datenmodell „Azure Monitor-Protokolle“
 description: In diesem Artikel werden die Details des Azure Monitor Log Analytics-Datenmodells für Azure Backup-Daten vorgestellt.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: ba50e10eee61c571249a9b99c7e3b53d74474382
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: e776649ff22e3249e2472adbe298c869ff5c946a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248922"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854756"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
 
@@ -466,6 +466,30 @@ Früher wurden Diagnosedaten für Azure Backup-Agent und Azure VM-Sicherungen an
 Aus Gründen der Abwärtskompatibilität werden Diagnosedaten für Azure Backup-Agent und Azure VM-Sicherungen aktuell sowohl im V1- als auch im V2-Schema an die Azure-Diagnosetabelle gesendet (wobei das V1-Schema mittlerweile als veralteter Zweig geführt wird). Sie können erkennen, welche Datensätze in der Protokollanalyse dem V1-Schema entsprechen, indem Sie Datensätze in Ihren Protokollabfragen nach „SchemaVersion_s=="V1"“ filtern. 
 
 Im oben beschriebenen [Datenmodell](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model) sehen Sie in der dritten Spalte (Beschreibung), welche Spalten nur zum V1-Schema gehören.
+
+### <a name="modifying-your-queries-to-use-the-v2-schema"></a>Ändern der Abfragen zur Verwendung des V2-Schemas
+Da das V1-Schema bereits als veraltet gekennzeichnet wurde, empfiehlt es sich, bei allen benutzerdefinierten Abfragen von Azure Backup-Diagnosedaten nur das V2-Schema zu verwenden. Im folgenden Beispiel erfahren Sie, wie Sie Ihre Abfragen aktualisieren, um die Abhängigkeit vom V1-Schema zu entfernen:
+
+1. Stellen Sie fest, ob Ihre Abfrage ein Feld verwendet, das nur für das V1-Schema gilt. Angenommen, Sie haben die folgende Abfrage, um alle Sicherungselemente und die zugehörigen geschützten Server aufzulisten:
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+````
+
+Die obige Abfrage verwendet das Feld „ProtectedServerUniqueId_s“, das nur für das V1-Schema gilt. Die Entsprechung dieses Felds im V2-Schema lautet „ProtectedContainerUniqueId_s“ (siehe obige Tabellen). Das Feld „BackupItemUniqueId_s“ gilt auch für das V2-Schema, und in dieser Abfrage kann das gleiche Feld verwendet werden.
+
+2. Aktualisieren Sie die Abfrage so, dass die Feldnamen des V2-Schemas verwendet werden. Es ist eine empfehlenswerte Methode, in allen Abfragen den Filter 'where SchemaVersion_s=="V2"' zu verwenden, damit nur Datensätze, die dem V2-Schema entsprechen, von der Abfrage analysiert werden:
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| where SchemaVersion_s=="V2"
+| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
+````
 
 ## <a name="next-steps"></a>Nächste Schritte
 

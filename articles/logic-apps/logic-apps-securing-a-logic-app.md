@@ -3,31 +3,42 @@ title: Sichern des Zugriffs und der Daten
 description: Schützen des Zugriffs auf Eingaben, Ausgaben, anforderungsbasierte Trigger, Verlaufsprotokolle, Verwaltungsaufgaben und des Zugriffs auf andere Ressourcen in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 8fe53b7a27c922462f9134bc78ff648aca3aca62
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 07/03/2020
+ms.openlocfilehash: 769d82cae6b5f9039587018ba5a7cde407f74e4c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715544"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964242"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
-Um den Zugriff zu steuern und vertrauliche Daten in Azure Logic Apps zu schützen, können Sie die Sicherheit für diese Bereiche einrichten:
+Azure Logic Apps nutzt [Azure Storage](https://docs.microsoft.com/azure/storage/) zum Speichern und automatischen [Verschlüsseln von ruhenden Daten](../security/fundamentals/encryption-atrest.md). Diese Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Azure Storage verwendet standardmäßig von Microsoft verwaltete Schlüssel, um Ihre Daten zu verschlüsseln. Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md).
+
+Um den Zugriff stärker zu steuern und vertrauliche Daten in Azure Logic Apps zu schützen, können Sie zusätzliche Sicherheit in diesen Bereichen einrichten:
 
 * [Zugriff auf anforderungsbasierte Trigger](#secure-triggers)
 * [Zugriff auf Logik-App-Vorgänge](#secure-operations)
 * [Zugriff auf Eingaben und Ausgaben von Ausführungsverläufen](#secure-run-history)
 * [Zugriff auf Parametereingaben](#secure-action-parameters)
 * [Zugriff auf Dienste und Systeme, die von Logik-Apps aus aufgerufen werden](#secure-outbound-requests)
+* [Blockieren des Erstellens von Verbindungen für bestimmte Connectors](#block-connections)
+* [Isolationsanleitung für Logik-Apps](#isolation-logic-apps)
+* [Azure-Sicherheitsbaseline für Azure Logic Apps](../logic-apps/security-baseline.md)
+
+Weitere Informationen zur Sicherheit in Azure finden Sie in diesen Themen:
+
+* [Übersicht über die Azure-Verschlüsselung](../security/fundamentals/encryption-overview.md)
+* [Azure-Datenverschlüsselung ruhender Daten](../security/fundamentals/encryption-atrest.md)
+* [Einführung zum Azure Security-Vergleichstest](../security/benchmarks/overview.md)
 
 <a name="secure-triggers"></a>
 
 ## <a name="access-to-request-based-triggers"></a>Zugriff auf anforderungsbasierte Trigger
 
-Wenn Ihre Logik-App einen anforderungsbasierten Trigger verwendet, der eingehende Aufrufe oder Anforderungen empfängt, z. B. den Trigger [Anforderung](../connectors/connectors-native-reqres.md) oder [Webhook](../connectors/connectors-native-webhook.md), können Sie den Zugriff so einschränken, dass nur autorisierte Clients die Logik-App aufrufen können. Alle von einer Logik-App empfangenen Anforderungen werden mit dem Transport Layer Security-Protokoll (TLS), zuvor als Secure Sockets Layer-Protokoll (SSL) bezeichnet, verschlüsselt und gesichert.
+Wenn Ihre Logik-App einen anforderungsbasierten Trigger verwendet, der eingehende Aufrufe oder Anforderungen empfängt, z. B. den Trigger [Anforderung](../connectors/connectors-native-reqres.md) oder [Webhook](../connectors/connectors-native-webhook.md), können Sie den Zugriff so einschränken, dass nur autorisierte Clients die Logik-App aufrufen können. Alle von einer Logik-App empfangenen Anforderungen werden mit dem Transport Layer Security-Protokoll (TLS), zuvor als Secure Sockets Layer (SSL) bezeichnet, verschlüsselt und gesichert.
 
 Mit diesen Optionen können Sie den Zugriff auf diesen Triggertyp absichern:
 
@@ -99,17 +110,13 @@ Schließen Sie in den Textkörper die `KeyType`-Eigenschaft als `Primary` oder a
 
 ### <a name="enable-azure-active-directory-oauth"></a>Aktivieren von Azure Active Directory OAuth
 
-Wenn Ihre Logik-App mit einem Anforderungstrigger beginnt, können Sie [Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) für die Autorisierung eingehender Aufrufe ihrer Logik-App aktivieren. Bevor Sie diese Authentifizierung aktivieren, berücksichtigen Sie die folgenden Überlegungen:
+Wenn Ihre Logik-App mit einem [Anforderungstrigger](../connectors/connectors-native-reqres.md) beginnt, können Sie [Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) aktivieren, indem Sie eine Autorisierungsrichtlinie für eingehende Aufrufe an den Anforderungstrigger erstellen. Bevor Sie diese Authentifizierung aktivieren, berücksichtigen Sie die folgenden Überlegungen:
+
+* Bei einem eingehenden Aufruf Ihrer Logik-App kann nur ein Autorisierungsschema verwendet werden, entweder Azure AD OAuth oder [Shared Access Signature (SAS)](#sas). Nur Autorisierungsschemata vom [Typ „Bearer“](../active-directory/develop/active-directory-v2-protocols.md#tokens) werden für OAuth-Token unterstützt, die nur für den Anforderungstrigger unterstützt werden.
 
 * Ihre Logik-App ist auf eine maximale Anzahl von Autorisierungsrichtlinien beschränkt. Jede Autorisierungsrichtlinie verfügt auch über eine maximale Anzahl von [Ansprüchen](../active-directory/develop/developer-glossary.md#claim). Weitere Informationen finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits).
 
-* Eine Autorisierungsrichtlinie muss mindestens den Anspruch **Aussteller** enthalten, dem ein Wert ab `https://sts.windows.net/` als Azure AD-Aussteller-ID zugeordnet ist.
-
-* Bei einem eingehenden Aufruf Ihrer Logik-App kann nur ein Autorisierungsschema verwendet werden, entweder Azure AD OAuth oder [Shared Access Signature (SAS)](#sas).
-
-* OAuth-Token werden nur für den Anforderungstrigger unterstützt.
-
-* Nur Autorisierungsschemata vom [Typ Bearer](../active-directory/develop/active-directory-v2-protocols.md#tokens) werden für OAuth-Token unterstützt.
+* Eine Autorisierungsrichtlinie muss mindestens den Anspruch **Aussteller** enthalten, dem ein Wert ab `https://sts.windows.net/` oder `https://login.microsoftonline.com/` (OAuth V2) als Azure AD-Aussteller-ID zugeordnet ist. Weitere Informationen zu Zugriffstoken finden Sie unter [Microsoft Identity Platform-Zugriffstoken](../active-directory/develop/access-tokens.md).
 
 Um Azure AD OAuth zu aktivieren, führen Sie die folgenden Schritte aus, um Ihrer Logik-App mindestens eine Autorisierungsrichtlinie hinzuzufügen.
 
@@ -126,7 +133,7 @@ Um Azure AD OAuth zu aktivieren, führen Sie die folgenden Schritte aus, um Ihre
    | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
    | **Richtlinienname** | Ja | Der Name, den Sie für die Autorisierungsinstanz verwenden möchten |
-   | **Ansprüche** | Ja | Die Anspruchstypen und -werte, die ihre Logik-App von eingehenden Aufrufen akzeptiert. Im Folgenden finden Sie die verfügbaren Anspruchstypen: <p><p>- **Aussteller** <br>- **Zielgruppe** <br>- **Betreff** <br>- **JWT-ID** (JSON Web Token-ID) <p><p>Die Liste **Ansprüche** muss mindestens den Anspruch **Aussteller** enthalten, dem ein Wert ab `https://sts.windows.net/` als Azure AD-Aussteller-ID zugeordnet ist. Weitere Informationen zu diesen Anspruchstypen finden Sie unter [Ansprüche in Sicherheitstoken von Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Sie können auch Ihren eigenen Anspruchstyp und -wert angeben. |
+   | **Ansprüche** | Ja | Die Anspruchstypen und -werte, die ihre Logik-App von eingehenden Aufrufen akzeptiert. Im Folgenden finden Sie die verfügbaren Anspruchstypen: <p><p>- **Aussteller** <br>- **Zielgruppe** <br>- **Betreff** <br>- **JWT-ID** (JSON Web Token-ID) <p><p>Die Liste **Ansprüche** muss mindestens den Anspruch **Aussteller** enthalten, dem ein Wert ab `https://sts.windows.net/` oder `https://login.microsoftonline.com/` als Azure AD-Aussteller-ID zugeordnet ist. Weitere Informationen zu diesen Anspruchstypen finden Sie unter [Ansprüche in Sicherheitstoken von Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Sie können auch Ihren eigenen Anspruchstyp und -wert angeben. |
    |||
 
 1. Zum Hinzufügen eines weiteren Anspruchs wählen Sie eine der folgenden Optionen aus:
@@ -188,7 +195,7 @@ Angenommen, Ihre Logik-App verfügt über eine Autorisierungsrichtlinie, die zwe
 
 ### <a name="restrict-inbound-ip-addresses"></a>Einschränken eingehender IP-Adressen
 
-Zusätzlich zur Shared Access Signature (SAS) empfiehlt es sich, spezifisch die Clients einzuschränken, die Ihre Logik-App aufrufen können. Beispiel: Wenn Sie den Anforderungsendpunkt mit Azure API Management verwalten, können Sie für die Logik-App festlegen, dass sie Anforderungen nur von der IP-Adresse der API Management-Instanz annimmt.
+Zusätzlich zur Shared Access Signature (SAS) empfiehlt es sich, spezifisch die Clients einzuschränken, die Ihre Logik-App aufrufen können. Beispiel: Wenn Sie den Anforderungsendpunkt mit [Azure API Management](../api-management/api-management-key-concepts.md) verwalten, können Sie für die Logik-App festlegen, dass sie Anforderungen nur von der IP-Adresse der [von Ihnen erstellten API Management-Dienstinstanz](../api-management/get-started-create-service-instance.md) annimmt.
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>Einschränken eingehender IP-Adressbereiche im Azure-Portal
 
@@ -205,7 +212,7 @@ Zusätzlich zur Shared Access Signature (SAS) empfiehlt es sich, spezifisch die 
 Wenn Sie Ihre Logik-App nur als geschachtelte Logik-App auslösen möchten, wählen Sie in der Liste **Zulässige eingehende IP-Adressen** die Option **Nur andere Logik-Apps** aus. Diese Option schreibt ein leeres Array in Ihre Logik-App-Ressource. Auf diese Weise können nur Aufrufe über den Logic Apps-Dienst (übergeordnete Logik-Apps) die geschachtelte Logik-App auslösen.
 
 > [!NOTE]
-> Unabhängig von der IP-Adresse können Sie eine Logik-App, die einen anforderungsbasierten Trigger hat, mithilfe von `/triggers/<trigger-name>/run` über die Azure-REST-API oder über API Management weiterhin ausführen. In diesem Szenario ist jedoch weiterhin eine [Authentifizierung](../active-directory/develop/authentication-scenarios.md) über die Azure-REST-API erforderlich. Alle Ereignisse werden im Azure-Überwachungsprotokoll angezeigt. Achten Sie darauf, die Richtlinien für die Zugriffssteuerung entsprechend festzulegen.
+> Unabhängig von der IP-Adresse können Sie eine Logik-App weiterhin ausführen, die einen anforderungsbasierten Trigger hat, indem Sie die Anforderung [Logic Apps-REST-API:  Workflowtrigger – Ausführen](https://docs.microsoft.com/rest/api/logic/workflowtriggers/run) oder die API Management verwenden. In diesem Szenario ist jedoch weiterhin eine [Authentifizierung](../active-directory/develop/authentication-scenarios.md) über die Azure-REST-API erforderlich. Alle Ereignisse werden im Azure-Überwachungsprotokoll angezeigt. Achten Sie darauf, die Richtlinien für die Zugriffssteuerung entsprechend festzulegen.
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Einschränken eingehender IP-Adressbereich in der Azure Resource Manager-Vorlage
 
@@ -690,18 +697,41 @@ Hier sind einige Möglichkeiten, wie Sie Endpunkte schützen können, die Anrufe
 
   * Verbindung über Azure API Management
 
-    [Azure API Management](../api-management/api-management-key-concepts.md) bietet lokale Konnektivitätsoptionen wie die Integration von Site-to-Site-VPN und ExpressRoute für geschützte Proxys und die Kommunikation mit lokalen Systemen. Im Logik-App-Designer Ihres Logik-App-Workflows können Sie eine API auswählen, die über API Management verfügbar gemacht wird. So wird der Zugriff auf lokale Systeme schneller bereitgestellt.
+    [Azure API Management](../api-management/api-management-key-concepts.md) bietet lokale Konnektivitätsoptionen wie die Integration von Site-to-Site-VPN und [ExpressRoute](../expressroute/expressroute-introduction.md) für geschützte Proxys und die Kommunikation mit lokalen Systemen. Wenn Sie über eine API verfügen, die Zugriff auf Ihr lokales System bietet, und Sie diese API durch das Erstellen einer [API Management-Dienstinstanz](../api-management/get-started-create-service-instance.md) verfügbar gemacht haben, können Sie diese API im Workflow ihrer Logik-App aufrufen, indem Sie den integrierten API Management-Trigger bzw. die integrierte API Management-Aktion im Logik-App-Designer auswählen.
+
+    > [!NOTE]
+    > Der Connector zeigt nur die API Management-Dienste an, für die Sie über Berechtigungen zum Anzeigen und Verbinden verfügen, aber keine verbrauchsbasierten API Management Dienste.
+
+    1. Geben Sie im Logik-App-Designer im Suchfeld `api management` ein. Wählen Sie den Schritt aus, je nachdem, ob Sie einen Trigger oder eine Aktion hinzufügen:<p>
+
+       * Wenn Sie einen Trigger hinzufügen, bei dem es sich immer um den ersten Schritt in Ihrem Workflow handelt, wählen Sie **Azure API Management-Trigger auswählen** aus.
+
+       * Wenn Sie eine Aktion hinzufügen, wählen Sie **Azure API Management-Aktion auswählen** aus.
+
+       Im folgenden Beispiel wird ein Trigger hinzugefügt:
+
+       ![Hinzufügen eines Azure API Management-Triggers](./media/logic-apps-securing-a-logic-app/select-api-management.png)
+
+    1. Wählen Sie Ihre zuvor erstellte API Management-Dienstinstanz aus.
+
+       ![Auswählen der API Management-Dienstinstanz](./media/logic-apps-securing-a-logic-app/select-api-management-service-instance.png)
+
+    1. Wählen Sie den zu verwendenden API-Aufruf aus.
+
+       ![Auswählen der vorhandenen API](./media/logic-apps-securing-a-logic-app/select-api.png)
 
 <a name="add-authentication-outbound"></a>
 
 ## <a name="add-authentication-to-outbound-calls"></a>Hinzufügen der Authentifizierung zu ausgehenden Aufrufen
 
-HTTP- und HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung. Basierend auf dem Trigger oder der Aktion, mit dem/der Sie ausgehende Aufrufe oder Anforderungen ausführen, die auf diese Endpunkte zugreifen, können Sie aus verschiedenen Bereichen von Authentifizierungstypen auswählen. Um sicherzustellen, dass Sie alle vertraulichen Informationen schützen, die Ihre Logik-App verarbeitet, verwenden Sie abgesicherte Parameter, und verschlüsseln Sie Daten nach Bedarf. Weitere Informationen zum Verwenden und Absichern von Parametern finden Sie unter [Zugriff auf Parametereingaben](#secure-action-parameters).
+HTTP- und HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung. Bei einigen Triggern und Aktionen, die Sie zum Senden ausgehender Aufrufe oder Anforderungen an diese Endpunkte verwenden, können Sie einen Authentifizierungstyp angeben. Im Logik-App-Designer besitzen Trigger und Aktionen, die die Auswahl eines Authentifizierungstyps unterstützen, eine Eigenschaft **Authentifizierung**. Diese Eigenschaft wird jedoch möglicherweise nicht immer standardmäßig angezeigt. In diesen Fällen öffnen Sie für den Trigger oder die Aktion die Liste **Neuen Parameter hinzufügen**, und wählen Sie **Authentifizierung** aus.
 
-> [!NOTE]
-> Im Logik-App-Designer kann die Eigenschaft **Authentifizierung** bei einigen Triggern und Aktionen ausgeblendet sein, bei denen Sie den Authentifizierungstyp angeben können. Um die Eigenschaft in diesen Fällen anzuzeigen, öffnen Sie für den Trigger oder die Aktion die Liste **Neuen Parameter hinzufügen**, und wählen Sie **Authentifizierung** aus. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs mithilfe einer verwalteten Identität](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity).
+> [!IMPORTANT]
+> Um vertrauliche Informationen, die Ihre Logik-App verarbeitet, zu schützen, verwenden Sie abgesicherte Parameter, und verschlüsseln Sie Daten nach Bedarf. Weitere Informationen zum Verwenden und Absichern von Parametern finden Sie unter [Zugriff auf Parametereingaben](#secure-action-parameters).
 
-| Authentifizierungsart | Unterstützt von |
+In dieser Tabelle werden die Authentifizierungstypen aufgeführt, die für die Trigger und Aktionen verfügbar sind, bei denen Sie einen Authentifizierungstyp auswählen können:
+
+| Authentifizierungsart | Verfügbarkeit |
 |---------------------|--------------|
 | [Grundlegend](#basic-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Clientzertifikat](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Webhook |
@@ -749,7 +779,7 @@ Wenn die Option [Clientzertifikat](../active-directory/authentication/active-dir
 
 | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
 |---------------------|-----------------|----------|-------|-------------|
-| **Authentifizierung** | `type` | Ja | **Clientzertifikat** <br>oder <br>`ClientCertificate` | Der für TLS-/SSL-Clientzertifikate zu verwendende Authentifizierungstyp. <p><p>**Hinweis**: Obwohl selbstsignierte Zertifikate unterstützt werden, gilt dies nicht für selbstsignierte Zertifikate für TLS/SSL. Der HTTP-Connector unterstützt keine zwischengeschalteten TLS/SSL-Zertifikate. |
+| **Authentifizierung** | `type` | Ja | **Clientzertifikat** <br>oder <br>`ClientCertificate` | Der zu verwendende Authentifizierungstyp. Sie können Zertifikate mit [Azure API Management](../api-management/api-management-howto-mutual-certificates.md) verwalten. <p></p>**Hinweis**: Benutzerdefinierte Connectors unterstützen sowohl für eingehende als auch für ausgehende Aufrufe keine zertifikatbasierte Authentifizierung. |
 | **Pfx** | `pfx` | Ja | <*encoded-pfx-file-content*> | Der base64-codierte Inhalt aus einer Personal Information Exchange-Datei (PFX) <p><p>Zum Konvertieren der PFX-Datei in ein base64-codiertes Format können Sie PowerShell verwenden, indem Sie die folgenden Schritte ausführen: <p>1. Speichern Sie den Zertifikatsinhalt in einer Variablen: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Konvertieren Sie den Zertifikatsinhalt mithilfe der `ToBase64String()`-Funktion, und speichern Sie den Inhalt in einer Textdatei: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Kennwort** | `password`| Nein | <*password-for-pfx-file*> | Der Parameter für den Zugriff auf die PFX-Datei |
 |||||
@@ -900,9 +930,43 @@ Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-a
    }
    ```
 
+<a name="block-connections"></a>
+
+## <a name="block-creating-connections"></a>Blockieren der Verbindungserstellung
+
+Falls Ihre Organisation das Herstellen einer Verbindung mit bestimmten Ressourcen mithilfe der Connectors in Azure Logic Apps nicht erlaubt, können Sie mithilfe von [Azure Policy](../governance/policy/overview.md) für bestimmte Connectors in Logik-App-Workflows die [Funktion zum Erstellen dieser Verbindungen blockieren](../logic-apps/block-connections-connectors.md) Weitere Informationen finden Sie unter [Blockieren der von Connectors in Azure Logic Apps erstellten Verbindungen](../logic-apps/block-connections-connectors.md)
+
+<a name="isolation-logic-apps"></a>
+
+## <a name="isolation-guidance-for-logic-apps"></a>Isolationsanleitung für Logik-Apps
+
+Sie können Azure Logic Apps in [Azure Government](../azure-government/documentation-government-welcome.md) verwenden und dabei alle Auswirkungsstufen in den Regionen unterstützen, die in der [Azure Government Auswirkungsstufe 5-Isolationsanleitung](../azure-government/documentation-government-impact-level-5.md#azure-logic-apps) sowie im [US Department of Defense Cloud Computing Security Requirements Guide (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/SRG/index.html) beschrieben sind. Um diese Anforderungen zu erfüllen, bietet Ihnen Logic Apps die Möglichkeit, Workflows in einer Umgebung mit dedizierten Ressourcen zu erstellen und auszuführen, damit Sie die Leistungsauswirkungen durch andere Azure-Mandanten auf Ihre Logik-Apps verringern und die Freigabe von Computingressourcen für andere Mandanten vermeiden können.
+
+* Um Ihren eigenen Code auszuführen oder eine XML-Transformation auszuführen, [erstellen und rufen Sie eine Azure-Funktion auf](../logic-apps/logic-apps-azure-functions.md), anstatt die [Inlinecodefunktion](../logic-apps/logic-apps-add-run-inline-code.md) zu verwenden, oder stellen Sie [als Zuordnungen zu verwendende Assemblys bereit](../logic-apps/logic-apps-enterprise-integration-maps.md). Richten Sie außerdem die Hostingumgebung für ihre Funktions-App so ein, dass Sie Ihren Isolationsanforderungen entspricht.
+
+  Um z. B. Anforderungen der Auswirkungsstufe 5 zu erfüllen, erstellen Sie Ihre Funktions-App mit dem [App Service Plan](../azure-functions/functions-scale.md#app-service-plan), der den Tarif [**Isoliert**](../app-service/overview-hosting-plans.md) zusammen mit einer [App Service-Umgebung (ASE)](../app-service/environment/intro.md) verwendet, die ebenfalls den Tarif **Isoliert** verwendet. In dieser Umgebung werden Funktions-Apps auf dedizierte Azure-VMs und in dedizierten virtuellen Azure-Netzwerken ausgeführt, die zusätzlich zur Computeisolation eine Netzwerkisolation für Ihre Apps bieten sowie maximale horizontale Skalierungsmöglichkeiten. Weitere Informationen finden Sie unter [Azure Government-Auswirkungsstufe 5-Isolationsanleitung – Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions).
+
+  Weitere Informationen finden Sie in den folgenden Themen:<p>
+
+  * [Azure App Service-Pläne](../app-service/overview-hosting-plans.md)
+  * [Netzwerkoptionen von Azure Functions](../azure-functions/functions-networking-options.md)
+  * [Azure Dedicated Hosts für virtuelle Computer](../virtual-machines/windows/dedicated-hosts.md)
+  * [Isolation von virtuellen Computern in Azure](../virtual-machines/windows/isolation.md)
+  * [Bereitstellen von dedizierten Azure-Diensten in virtuellen Netzwerken](../virtual-network/virtual-network-for-azure-services.md)
+
+* Um Logik-Apps zu erstellen, die auf dedizierten Ressourcen ausgeführt werden und die auf Ressourcen zugreifen können, die von einem virtuellen Azure-Netzwerk geschützt werden, können Sie eine [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erstellen.
+
+  * Einige virtuelle Azure-Netzwerke verwenden private Endpunkte ([Azure Private Link](../private-link/private-link-overview.md)), um den Zugriff auf Azure-PaaS-Dienste wie Azure Storage, Azure Cosmos DB oder Azure SQL-Datenbank sowie auf Partnerdienste oder auf Kundendienste zu ermöglichen, die in Azure gehostet werden. Falls Ihre Logik-Apps Zugriff auf virtuelle Netzwerke mit privaten Endpunkten benötigen, müssen diese Logik-Apps in einer ISE erstellt, bereitgestellt und ausgeführt werden.
+
+  * Für mehr Kontrolle über die von Azure Storage verwendeten Verschlüsselungsschlüssel können Sie mit [Azure Key Vault](../key-vault/general/overview.md) Ihren eigenen Schlüssel einrichten, verwenden und verwalten. Diese Funktion wird auch als „Bring Your Own Key“ (BYOK) bezeichnet, und Ihr Schlüssel wird als „vom Kunden verwalteter Schlüssel“ bezeichnet. Weitere Informationen finden Sie unter [Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps](../logic-apps/customer-managed-keys-integration-service-environment.md).
+
+Weitere Informationen finden Sie in den folgenden Themen:
+
+* [Isolation in der öffentlichen Azure-Cloud](../security/fundamentals/isolation-choices.md)
+* [Sicherheit für höchst sensible IaaS-Apps in Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/high-security-iaas)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Automatisieren der Bereitstellung für Azure Logic Apps](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)  
-* [Überwachen von Logik-Apps](../logic-apps/monitor-logic-apps-log-analytics.md)  
-* [Diagnostizieren von Fehlern und Problemen bei Logik-Apps](../logic-apps/logic-apps-diagnosing-failures.md)  
-* [Automatisieren der Logik-App-Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Azure-Sicherheitsbaseline für Azure Logic Apps](../logic-apps/security-baseline.md)
+* [Automatisieren der Bereitstellung für Azure Logic Apps](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Überwachen von Logik-Apps](../logic-apps/monitor-logic-apps-log-analytics.md)

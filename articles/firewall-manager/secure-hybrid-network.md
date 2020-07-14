@@ -1,26 +1,24 @@
 ---
-title: 'Tutorial: Schützen Ihres virtuellen Hubnetzwerks per Azure Firewall Manager (Vorschauversion)'
+title: 'Tutorial: Schützen Ihres virtuellen Hubnetzwerks per Azure Firewall Manager'
 description: In diesem Tutorial erfahren Sie, wie Sie Ihr virtuelles Netzwerk mit Azure Firewall Manager über das Azure-Portal schützen.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: cdd416bdb833e4784334a6847d724a7375e2ef8d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3d4d1e65c2200aee178abefb46d3e330acbd3108
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77459952"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563643"
 ---
-# <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager-preview"></a>Tutorial: Schützen Ihres virtuellen Hubnetzwerks per Azure Firewall Manager (Vorschauversion) 
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+# <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>Tutorial: Schützen Ihres virtuellen Hubnetzwerks per Azure Firewall Manager
 
 Wenn Sie Ihr lokales Netzwerk mit einem virtuellen Azure-Netzwerk verbinden, um ein Hybridnetzwerk zu erstellen, ist das Steuern des Zugriffs auf Ihre Azure-Netzwerkressourcen ein wichtiger Bestandteil des globalen Sicherheitsplans.
 
-Mit Azure Firewall Manager (Vorschauversion) können Sie ein virtuelles Hubnetzwerk erstellen, um den für private IP-Adressen, für Azure-PaaS und für das Internet bestimmten Datenverkehr Ihres Hybridnetzwerks zu schützen. Mit Azure Firewall Manager können Sie den Netzwerkzugriff in einem Hybridnetzwerk mithilfe von Richtlinien steuern, die den zulässigen und unzulässigen Netzwerkdatenverkehr definieren.
+Mit Azure Firewall Manager können Sie ein virtuelles Hubnetzwerk erstellen, um den für private IP-Adressen, für Azure-PaaS und für das Internet bestimmten Datenverkehr Ihres Hybridnetzwerks zu schützen. Mit Azure Firewall Manager können Sie den Netzwerkzugriff in einem Hybridnetzwerk mithilfe von Richtlinien steuern, die den zulässigen und unzulässigen Netzwerkdatenverkehr definieren.
 
 Für Firewall Manager wird auch eine Architektur mit einem geschützten virtuellen Hub unterstützt. Einen Vergleich der Architekturtypen für geschützte virtuelle Hubs und virtuelle Hubnetzwerke finden Sie unter [Welche Architekturoptionen gibt es für Azure Firewall Manager?](vhubs-and-vnets.md).
 
@@ -444,4 +442,4 @@ Sie können die Firewallressourcen für das nächste Tutorial behalten oder die 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Schützen Ihres virtuellen WAN mithilfe von Azure Firewall Manager (Vorschauversion)](secure-cloud-network.md)
+> [Tutorial: Schützen Ihres virtuellen WAN mithilfe von Azure Firewall Manager](secure-cloud-network.md)

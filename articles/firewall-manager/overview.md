@@ -1,24 +1,22 @@
 ---
-title: Was ist Azure Firewall Manager (Vorschau)?
+title: Was ist Azure Firewall Manager?
 description: Informationen zu den Features von Azure Firewall Manager
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/11/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: bef948def487e2b60764641e6cf38a3e122e2f87
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 8b457198655af50427545a0e93e2cfe6903131c8
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792155"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563736"
 ---
-# <a name="what-is-azure-firewall-manager-preview"></a>Was ist Azure Firewall Manager (Vorschau)?
+# <a name="what-is-azure-firewall-manager"></a>Was ist Azure Firewall Manager?
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Azure Firewall Manager (Vorschau) ist ein Sicherheitsverwaltungsdienst, der eine zentrale Sicherheitsrichtlinien- und Routenverwaltung für cloudbasierte Sicherheitsperimeter bereitstellt. 
+Azure Firewall Manager ist ein Sicherheitsverwaltungsdienst, der eine zentrale Sicherheitsrichtlinien- und Routenverwaltung für cloudbasierte Sicherheitsperimeter bereitstellt. 
 
 Firewall Manager bietet eine Sicherheitsverwaltung für zwei Netzwerkarchitekturtypen:
 
@@ -33,9 +31,9 @@ Einen ausführlichen Vergleich des *geschützten virtuellen Hubs* und des *virtu
 
 ![Firewall Manager](media/overview/trusted-security-partners.png)
 
-## <a name="azure-firewall-manager-preview-features"></a>Features von Azure Firewall Manager (Vorschau)
+## <a name="azure-firewall-manager-features"></a>Azure Firewall Manager-Features
 
-Die Vorschau von Azure Firewall Manager bietet die folgenden Features:
+Azure Firewall Manager bietet die folgenden Features:
 
 ### <a name="central-azure-firewall-deployment-and-configuration"></a>Zentrale Azure Firewall-Bereitstellung und -Konfiguration
 
@@ -43,7 +41,7 @@ Sie können zentral mehrere Azure Firewall-Instanzen bereitstellen und konfiguri
 
 ### <a name="hierarchical-policies-global-and-local"></a>Hierarchische Richtlinien (global und lokal)
 
-Sie können mit Azure Firewall Manager (Vorschau) Azure Firewall-Richtlinien für mehrere geschützte virtuelle Hubs zentral verwalten. Ihre zentralen IT-Teams können globale Firewallrichtlinien erstellen, um organisationsweite und teamübergreifende Firewallrichtlinien zu erzwingen. Lokal erstellte Firewallrichtlinien ermöglichen ein DevOps-Self-Service-Modell für mehr Agilität.
+Sie können mit Azure Firewall Manager Azure Firewall-Richtlinien für mehrere geschützte virtuelle Hubs zentral verwalten. Ihre zentralen IT-Teams können globale Firewallrichtlinien erstellen, um organisationsweite und teamübergreifende Firewallrichtlinien zu erzwingen. Lokal erstellte Firewallrichtlinien ermöglichen ein DevOps-Self-Service-Modell für mehr Agilität.
 
 ### <a name="integrated-with-third-party-security-as-a-service-for-advanced-security"></a>Integration von Drittanbieter-SECaaS-Lösungen für höhere Sicherheit
 
@@ -60,7 +58,7 @@ Dieses Feature ist nur für Bereitstellungen von geschützten virtuellen Hubs ve
 
    Nutzen Sie Ihre Azure-Konnektivität und die globale Verteilung, um für B2I-Szenarien auf einfache Weise eine Drittanbieterfilterung hinzuzufügen.
 
-Weitere Informationen zu vertrauenswürdigen Sicherheitsanbietern finden Sie unter [Was sind vertrauenswürdige Sicherheitsanbieter (Vorschau)?](trusted-security-partners.md).
+Weitere Informationen zu Sicherheitspartneranbietern finden Sie unter [Was sind Azure Firewall Manager-Sicherheitspartneranbieter?](trusted-security-partners.md).
 
 ### <a name="centralized-route-management"></a>Zentrale Routenverwaltung
 
@@ -76,20 +74,17 @@ Azure Firewall-Richtlinien können regionsübergreifend verwendet werden. Beispi
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-Für Azure Firewall Manager (Vorschau) sind die folgenden Probleme bekannt:
+Für Azure Firewall Manager sind die folgenden Probleme bekannt:
 
 |Problem  |BESCHREIBUNG  |Minderung  |
 |---------|---------|---------|
-|Einschränkungen für Drittanbieterfilterung.|Eine V2I-Datenverkehrsfilterung mit Anbietern von Drittanbietern wird mit Azure Firewall B2V und V2V nicht unterstützt.|Wird untersucht|
 |Die Trennung des Datenverkehrs wird derzeit nicht unterstützt.|Die Trennung von Office 365- und öffentlichem Azure-PaaS-Datenverkehr wird aktuell nicht unterstützt. Daher wird bei Auswahl eines Drittanbieters für V2I oder B2I auch der gesamte öffentliche Azure-PaaS- und Office 365-Datenverkehr über den Partnerdienst gesendet.|Die Datenverkehrstrennung am Hub wird untersucht.
 |Ein geschützter virtueller Hub pro Region.|Sie können nicht mehr als einen geschützten virtuellen Hub pro Region verwenden.|Erstellen Sie mehrere virtuelle WANs in einer Region.|
 |Basisrichtlinien müssen in derselben Region wie die lokale Richtlinie vorliegen.|Erstellen Sie sämtliche Ihrer lokalen Richtlinien in derselben Region wie die Basisrichtlinie. Eine in einer Region erstellte Richtlinie kann weiterhin auf einen geschützten Hub aus einer anderen Region angewendet werden.|Wird untersucht|
 |Die Kommunikation zwischen Hubs funktioniert nicht mit dem geschützten virtuellen Hub.|Die Kommunikation zwischen geschützten virtuellen Hubs wird noch nicht unterstützt.|Wird untersucht|
 |Alle geschützten virtuellen Hubs, die das gleiche virtuelle WAN nutzen, müssen sich in derselben Ressourcengruppe befinden.|Dieses Verhalten orientiert sich heute an Virtual WAN-Hubs.|Erstellen Sie mehrere Virtual WAN-Instanzen, um die Erstellung von geschützten virtuellen Hubs in verschiedenen Ressourcengruppen zu ermöglichen.|
-|IP-Adressgruppen werden in der Firewallrichtlinie nicht unterstützt.|IP-Adressgruppen befinden sich in der öffentlichen Vorschauphase und werden derzeit nur mit herkömmlichen Firewallregeln unterstützt.|Fix wird angewendet.
-|Keine Unterstützung von CSP-Abonnements (Cloud Solution Provider).|[CSP-Abonnements](https://azure.microsoft.com/offers/ms-azr-0145p/) werden derzeit nicht unterstützt.|Wird untersucht
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Übersicht über die Bereitstellung von Azure Firewall Manager (Vorschau)](deployment-overview.md)
+- Ziehen Sie [Übersicht über die Bereitstellung mit Azure Firewall Manager](deployment-overview.md) zurate.
 - Weitere Informationen über [geschützte virtuelle Hubs](secured-virtual-hub.md)

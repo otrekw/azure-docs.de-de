@@ -3,16 +3,16 @@ title: Automatisieren von Aufgaben für die Unternehmensintegration
 description: Hier erfahren Sie mehr darüber, wie Sie mithilfe von Azure Logic Apps Workflows zum Integrieren von Apps, Daten, Diensten und Systemen mit minimalem Code für die Unternehmensintegration automatisieren.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 789ddf39e4493d11d63a07f2341ab36ac161f32d
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 08b3863ac9a03cda2659cf4934b781eeb9330e17
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659595"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563809"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Übersicht: Was ist Azure Logic Apps?
 
@@ -32,7 +32,7 @@ Zum Erstellen von Lösungen für die Unternehmensintegration mit Azure Logic App
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
-## <a name="how-does-logic-apps-work"></a>Wie funktioniert Logic Apps? 
+## <a name="how-do-logic-apps-work"></a>Wie funktionieren Logik-Apps? 
 
 Jeder Logik-App-Workflow beginnt mit einem Trigger, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder neue verfügbare Daten bestimmte Kriterien erfüllen. Viele von den Connectors in Logic Apps bereitgestellten Trigger enthalten grundlegende Planungsfunktionen, damit Sie festlegen können, wie regelmäßig Ihre Workloads ausgeführt werden. Für eine komplexere Zeitplanung oder fortgeschrittene Serien können Sie einen Recurrence-Trigger als ersten Schritt in einem Workflow verwenden. Informieren Sie sich über [zeitplanbasierte Workflows](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
@@ -42,7 +42,7 @@ Bei jeder Auslösung des Triggers erstellt das Logic Apps-Modul eine Logik-App-I
 
 Sie können Ihre Logik-Apps visuell mit dem Designer für Logik-Apps erstellen, der im Azure-Portal über Ihren Browser und in Visual Studio verfügbar ist. Für stärker benutzerdefinierte Logik-Apps können Sie Logik-App-Definitionen im JSON-Format (JavaScript Object Notation) erstellen bzw. bearbeiten, indem Sie den Editor „Codeansicht“ nutzen. Sie können auch Azure PowerShell-Befehle und Azure Resource Manager-Vorlagen für bestimmte Aufgaben verwenden. Logik-Apps werden in der Cloud unter Azure bereitgestellt und ausgeführt. Sehen Sie sich dieses Video an, um eine detailliertere Einführung zu erhalten: [Use Azure Enterprise Integration Services to run cloud apps at scale](https://channel9.msdn.com/Events/Connect/2017/T119/) (Verwenden von Azure Enterprise Integration Services zum bedarfsorientierten Ausführen von Cloud-Apps)
 
-## <a name="why-use-logic-apps"></a>Gründe für die Verwendung von Logic Apps
+## <a name="why-use-logic-apps"></a>Gründe für die Verwendung von Logik-Apps
 
 Unternehmen setzen immer stärker auf die Digitalisierung, und mithilfe von Logik-Apps können Sie sowohl Legacysysteme als auch hochmoderne Systeme einfacher und schneller verbinden, indem Sie vordefinierte APIs als von Microsoft verwaltete Connectors angeben. So können Sie sich auf die Geschäftslogik und Funktionalität Ihrer Apps konzentrieren. Sie müssen sich nicht mit dem Erstellen, Hosten, Skalieren, Verwalten, Pflegen und Überwachen Ihrer Apps beschäftigen. Diese Aufgaben übernimmt Logic Apps für Sie. Außerdem zahlen Sie beim nutzungsabhängigen [Preismodell](../logic-apps/logic-apps-pricing.md) nur für die tatsächlich verwendeten Ressourcen.
 

@@ -3,12 +3,12 @@ title: Antworten auf häufig gestellte Fragen
 description: 'Antworten auf häufig gestellte Fragen zu: Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 04921cd617a688ebcf31bcec29cf26681914f44b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247664"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970483"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 
@@ -22,12 +22,12 @@ Ja. Pro Abonnement können für jede unterstützte Region von Azure Backup bis z
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Gibt es Beschränkungen im Hinblick auf die Anzahl von Servern/Computern, die pro Tresor registriert werden können?
 
-Sie können bis zu 1.000 virtuelle Azure-Computer pro Tresor registrieren. Bei Verwendung des Microsoft Azure Backup-Agents können Sie pro Tresor bis zu 50 MARS-Agents registrieren. Außerdem können Sie 50 MABS-Server/DPM-Server bei einem Tresor registrieren.
+Sie können bis zu 1.000 virtuelle Azure-Computer pro Tresor registrieren. Bei Verwendung des Microsoft Azure Backup-Agents können Sie pro Tresor bis zu 50 MARS-Agents registrieren. Außerdem können Sie 50 MABS-Server/DPM-Server bei einem Tresor registrieren.
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Wie viele Datenquellen/Elemente können in einem Tresor geschützt werden?
 
 Sie können bis zu 2.000 Datenquellen/Elemente für alle Workloads (IaaS-VM, SQL, AFS usw.) in einem Tresor schützen.
-Wenn Sie beispielsweise bereits 500 virtuelle Computer und 400 Azure Files-Freigaben im Tresor geschützt haben, können Sie nur maximal 1100 SQL-Datenbanken darin schützen.
+Wenn Sie beispielsweise bereits 500 virtuelle Computer und 400 Azure-Dateifreigaben im Tresor geschützt haben, können Sie nur maximal 1100 SQL-Datenbanken darin schützen.
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>Wie viele Richtlinien kann ich pro Tresor erstellen?
 
@@ -47,7 +47,11 @@ Nein. In einem Tresor gespeicherte Sicherungsdaten können nicht in einen andere
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>Kann ich nach einer Sicherung von GRS zu LRS wechseln?
 
-Nein. Die Speicheroptionen eines Recovery Services-Tresors können nur geändert werden, bevor Sicherungen gespeichert wurden.
+Der Speicherreplikationstyp ist standardmäßig auf „Georedundant“ (GRS) festgelegt. Nachdem Sie die Sicherung konfiguriert haben, ist die Option zum Ändern deaktiviert, und der Typ kann nicht mehr geändert werden.
+
+![Speicherreplikationstyp](./media/backup-azure-backup-faq/storage-replication-type.png)
+
+Wenn Sie die Sicherung bereits konfiguriert haben und von GRS zu LRS wechseln müssen, finden Sie weitere Informationen unter [Wechseln von GRS zu LRS nach dem Konfigurieren einer Sicherung](backup-create-rs-vault.md#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Kann ich für virtuelle Computer, die in einem Recovery Services-Tresor gesichert wurden, eine Wiederherstellung auf Elementebene durchführen?
 
@@ -116,7 +120,7 @@ In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengröße
 **Datenquelle** | **Details**
 --- | ---
 Volume |Die Datenmenge, die von einem virtuellen Computer mit einem Volume gesichert wird.
-SQL Server-Datenbank |Größe einer einzelnen zu sichernden SQL-Datenbank
+SQL Server-Datenbank |Größe einer einzelnen Datenbank, die gesichert wird.
 SharePoint | Summe der Inhalts- und Konfigurationsdatenbanken in einer zu sichernden SharePoint-Farm
 Exchange |Summe aller Exchange-Datenbanken eines zu sichernden Exchange-Servers
 BMR/Systemstatus |Jede einzelne Kopie der BMR oder des Systemstatus des zu sichernden Computers

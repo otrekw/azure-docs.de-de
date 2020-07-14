@@ -3,15 +3,15 @@ title: Bereitstellen des Containerdurchsatzes in Azure Cosmos DB
 description: Erfahren Sie, wie Sie Durchsatz auf Containerebene in Azure Cosmos DB mit dem Azure-Portal, mit der CLI, mit PowerShell und mit verschiedenen anderen SDKs bereitstellen.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6ade9baaf7dc125bac6738b44134ee496b8a2be4
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9167df9c763f4004324a3435ba1a2b0fd0171ac4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851680"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Bereitstellen von Standarddurchsatz (manuell) für einen Azure Cosmos-Container
 
@@ -31,7 +31,7 @@ In diesem Artikel erfahren Sie, wie Sie Standarddurchsatz (manuell) für einen C
    * Geben Sie den bereitzustellenden Durchsatz an (etwa 1.000 RUs).
    * Klicken Sie auf **OK**.
 
-    ![Screenshot des Daten-Explorers mit hervorgehobener Option „Neue Sammlung“](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
+    :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png" alt-text="Screenshot des Daten-Explorers mit hervorgehobener Option „Neue Sammlung“":::
 
 ## <a name="azure-cli-or-powershell"></a>Azure CLI oder PowerShell
 
@@ -99,7 +99,7 @@ offer.content.offerThroughput = 2000;
 await client.offer(offer.id).replace(offer);
 ```
 
-### <a name="mongodb-api"></a><a id="dotnet-cassandra"></a>MongoDB-API
+### <a name="mongodb-api"></a><a id="dotnet-mongodb"></a>MongoDB-API
 
 ```csharp
 // refer to MongoDB .NET Driver

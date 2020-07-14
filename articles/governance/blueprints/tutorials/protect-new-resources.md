@@ -3,16 +3,16 @@ title: 'Tutorial: Schützen neuer Ressourcen mit Sperren'
 description: In diesem Tutorial verwenden Sie die Ressourcensperrenoptionen „Schreibgeschützt“ und „Nicht löschen“ von Azure Blueprints, um neu bereitgestellte Ressourcen zu schützen.
 ms.date: 05/06/2020
 ms.topic: tutorial
-ms.openlocfilehash: 90ffb0f5b8c1b6d3919b05abf778c5082bfee0dc
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 738c627d350c5e11b41a65d159cf2cc7de807334
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864163"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969640"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Tutorial: Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren
 
-Mit Azure Blueprints-[Ressourcensperren](../concepts/resource-locking.md) können Sie neu bereitgestellte Ressourcen schützen, sodass sie nicht einmal von einem Konto mit der Rolle _Besitzer_ manipuliert werden können. Sie können diesen Schutz in den Blaupausendefinitionen von Ressourcen hinzufügen, die mithilfe eines Resource Manager-Vorlagenartefakts erstellt wurden.
+Mit Azure Blueprints-[Ressourcensperren](../concepts/resource-locking.md) können Sie neu bereitgestellte Ressourcen schützen, sodass sie nicht einmal von einem Konto mit der Rolle _Besitzer_ manipuliert werden können. Sie können diesen Schutz in den Blaupausendefinitionen von Ressourcen hinzufügen, die mit einem Artefakt einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellt wurden.
 
 Dieses Tutorial umfasst folgende Schritte:
 
@@ -55,8 +55,7 @@ Erstellen Sie zunächst die Blaupausendefinition.
 1. Fügen Sie unter der Ressourcengruppe eine Vorlage hinzu:
    1. Wählen Sie unter dem Eintrag **RGtoLock** die Zeile **Artefakt hinzufügen** aus.
    1. Wählen Sie unter **Artefakttyp** die Option **Azure Resource Manager-Vorlage** aus, legen Sie für **Anzeigename für Artefakt** die Option **StorageAccount** fest, und lassen Sie **Beschreibung** leer.
-   1. Fügen Sie auf der Registerkarte **Vorlage** im Editorfeld die folgende Resource Manager-Vorlage ein.
-      Wählen Sie nach dem Einfügen der Vorlage **Hinzufügen** aus, um das Artefakt zur Blaupause hinzuzufügen.
+   1. Fügen Sie auf der Registerkarte **Vorlage** im Editorfeld die folgende ARM-Vorlage ein. Wählen Sie nach dem Einfügen der Vorlage **Hinzufügen** aus, um das Artefakt zur Blaupause hinzuzufügen.
 
    ```json
    {
@@ -155,7 +154,7 @@ Nach der Veröffentlichung der Blaupausendefinition können Sie sie einem Abonne
      |Artefaktname|Artefakttyp|Parametername|Wert|BESCHREIBUNG|
      |-|-|-|-|-|
      |Ressourcengruppe „RGtoLock“|Resource group|Name|TestingBPLocks|Definiert den Namen der neuen Ressourcengruppe, auf die Blaupausensperren angewendet werden sollen.|
-     |Ressourcengruppe „RGtoLock“|Resource group|Position|USA, Westen 2|Definiert den Standort der neuen Ressourcengruppe, auf die Blaupausensperren angewendet werden sollen.|
+     |Ressourcengruppe „RGtoLock“|Resource group|Standort|USA, Westen 2|Definiert den Standort der neuen Ressourcengruppe, auf die Blaupausensperren angewendet werden sollen.|
      |StorageAccount|Resource Manager-Vorlage|storageAccountType (StorageAccount)|Standard_GRS|Speicher-SKU. Der Standardwert lautet _Standard_LRS_.|
 
 1. Nachdem Sie alle Parameter eingegeben haben, wählen Sie unten auf der Seite die Option **Zuweisen** aus.
@@ -166,7 +165,7 @@ Sobald die Portalbenachrichtigung **Blaupausendefinition erfolgreich zugewiesen*
 
 ## <a name="inspect-resources-deployed-by-the-assignment"></a>Überprüfen der durch die Zuweisung bereitgestellten Ressourcen
 
-Die Zuweisung erstellt die Ressourcengruppe _TestingBPLocks_ und das vom Resource Manager-Vorlagenartefakt bereitgestellte Speicherkonto. Die neue Ressourcengruppe und der ausgewählte Sperrzustand werden auf der Seite mit den Zuweisungsdetails angezeigt.
+Die Zuweisung erstellt die Ressourcengruppe _TestingBPLocks_ und das vom ARM-Vorlagenartefakt bereitgestellte Speicherkonto. Die neue Ressourcengruppe und der ausgewählte Sperrzustand werden auf der Seite mit den Zuweisungsdetails angezeigt.
 
 1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 

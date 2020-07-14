@@ -4,19 +4,19 @@ description: Hier erfahren Sie, wie Sie gerätebasierte bedingte Zugriffsrichtli
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 11/22/2019
+ms.topic: how-to
+ms.date: 06/08/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a3c71534febc3cdb6429d3092225ebc73f6cbe7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf3fd50b907e69311c475af844c7969f081a3094
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849927"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -96,7 +96,31 @@ Bei einem als kompatibel markierten Gerät können Sie Folgendes voraussetzen:
 - Ihre Unternehmensdaten sind durch eine bessere Kontrolle der Zugriffs- und Freigabemöglichkeiten Ihrer Mitarbeiter geschützt
 - Das Gerät und seine Apps sind kompatibel mit den Sicherheitsanforderungen des Unternehmens
 
+### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>Szenario: Geräteregistrierung für iOS- und Android-Geräte erforderlich
+
+In diesem Szenario hat Contoso entschieden, dass für den gesamten mobilen Zugriff auf Office 365-Ressourcen ein registriertes Gerät verwendet werden muss. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
+
+Organisationen müssen die folgenden Schritte ausführen, um die Verwendung eines registrierten mobilen Geräts anzufordern.
+
+1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
+1. Wählen Sie **Neue Richtlinie**.
+1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
+1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
+   1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** oder bestimmte **Benutzer und Gruppen** aus, auf die Sie diese Richtlinie anwenden möchten. 
+   1. Wählen Sie **Fertig**aus.
+1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Office 365 (Vorschau)** aus.
+1. Wählen Sie unter **Bedingungen** die Option **Geräteplattformen** aus.
+   1. Legen Sie **Konfigurieren** auf **Ja** fest.
+   1. Schließen Sie **Android** und **iOS** ein.
+1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die folgenden Optionen aus:
+   - **Markieren des Geräts als kompatibel erforderlich**
+1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
+1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
+
 ### <a name="known-behavior"></a>Bekanntes Verhalten
+
+Bei Verwendung des [OAuth-Gerätecodeflows](../develop/v2-oauth2-device-code.md) werden das Gewährungssteuerelement „Verwaltetes Gerät erforderlich“ oder eine Gerätestatusbedingung nicht unterstützt. Dies liegt daran, dass das Gerät, das die Authentifizierung ausführt, seinen Gerätestatus nicht für das Gerät bereitstellen kann, das einen Code bereitstellt. Zudem ist der Gerätestatus im Token für das Gerät, das die Authentifizierung ausführt, gesperrt. Verwenden Sie stattdessen das Gewährungssteuerelement „Mehrstufige Authentifizierung erforderlich“.
 
 Unter Windows 7, iOS, Android, macOS und einigen Webbrowsern von Drittanbietern identifiziert Azure AD das Gerät anhand eines Clientzertifikats, das beim Registrieren des Geräts bei Azure AD bereitgestellt wird. Wenn sich ein Benutzer zum ersten Mal über den Browser anmeldet, wird er zum Auswählen des Zertifikats aufgefordert. Der Endbenutzer muss dieses Zertifikat auswählen, bevor der Browser verwendet werden kann.
 

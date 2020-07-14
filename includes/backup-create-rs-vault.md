@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 2c74783ea8246232cb5c4270691daf3f83fe9a30
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0f717e26534151585a51badf4bb1fe1ba58eb00
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204643"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970523"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
-Bei einem Recovery Services-Tresor handelt es sich um eine Speicherentität zum Speichern der im Laufe der Zeit erstellten Wiederherstellungspunkte. Er enthält auch die zugehörigen Sicherungsrichtlinien für die geschützten Elemente.
+Ein Recovery Services-Tresor ist eine Verwaltungsentität, unter der die im Laufe der Zeit erstellten Wiederherstellungspunkte gespeichert werden. Darüber hinaus verfügt er über eine Benutzeroberfläche zum Durchführen von sicherungsbezogenen Vorgängen. Hierzu gehören das Erstellen von bedarfsgesteuerten Sicherungen, Durchführen von Wiederherstellungen und Erstellen von Sicherungsrichtlinien.
 
 Führen Sie die folgenden Schritte aus, um einen Recovery Services-Tresor zu erstellen:
 
@@ -59,3 +59,6 @@ Führen Sie die folgenden Schritte aus, um einen Recovery Services-Tresor zu er
     Es kann einige Zeit dauern, denn Recovery Services-Tresor zu erstellen. Verfolgen Sie die Statusbenachrichtigungen im **Benachrichtigungsbereich** in der oberen rechten Ecke im Portal. Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Recovery Services-Tresoren angezeigt. Sollte der Tresor nicht angezeigt werden, wählen Sie **Aktualisieren**.
 
      ![Aktualisieren der Liste der Sicherungstresore](./media/backup-create-rs-vault/refresh-button.png)
+
+>[!IMPORTANT]
+> Es wird dringend empfohlen, vor dem Konfigurieren von Sicherungen im Tresor die Standardeinstellungen für **Speicherreplikationstyp** und **Sicherheitseinstellungen** zu überprüfen. Weitere Informationen finden Sie im Abschnitt [Festlegen der Speicherredundanz](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy).

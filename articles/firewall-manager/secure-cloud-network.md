@@ -1,24 +1,22 @@
 ---
-title: 'Tutorial: Schützen Ihres virtuellen WAN mithilfe von Azure Firewall Manager (Vorschauversion)'
-description: In diesem Tutorial erfahren Sie, wie Sie Ihr virtuelles WAN mithilfe von Azure Firewall Manager unter Verwendung des Azure-Portals schützen.
+title: 'Tutorial: Schützen Ihres virtuellen Hubs mit Azure Firewall Manager'
+description: In diesem Tutorial erfahren Sie, wie Sie Ihren virtuellen Hub mit Azure Firewall Manager über das Azure-Portal schützen.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 05/01/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b13f3b4eeb57c34f51152bb6d1914f6c80f31be1
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: c44daa67b4029c73c57ca82d72ee0a9759dd4c2d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691033"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563663"
 ---
-# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Tutorial: Schützen Ihres virtuellen WAN mithilfe von Azure Firewall Manager (Vorschauversion) 
+# <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Tutorial: Schützen Ihres virtuellen Hubs mit Azure Firewall Manager
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Mithilfe von Azure Firewall Manager (Vorschauversion) können Sie geschützte virtuelle Hubs erstellen, um für private IP-Adressen, für Azure-PaaS und für das Internet bestimmten Datenverkehr Ihres Cloudnetzwerks zu schützen. Das Datenverkehrsrouting an die Firewall ist automatisiert, sodass keine benutzerdefinierten Routen (User Defined Routes, UDRs) erstellt werden müssen.
+Mit Azure Firewall Manager können Sie geschützte virtuelle Hubs erstellen, um für private IP-Adressen, für Azure PaaS und für das Internet bestimmten Datenverkehr Ihres Cloudnetzwerks zu schützen. Das Datenverkehrsrouting an die Firewall ist automatisiert, sodass keine benutzerdefinierten Routen (User Defined Routes, UDRs) erstellt werden müssen.
 
 ![Schützen des Cloudnetzwerks](media/secure-cloud-network/secure-cloud-network.png)
 
@@ -95,7 +93,7 @@ Nun können Sie das Peering für die Hub-and-Spoke-VNETs durchführen.
 5. Wählen Sie unter **Hubs** die Option **Hub-01** aus.
 6. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe **FW-Manager** aus.
 7. Wählen Sie unter **Virtuelles Netzwerk** die Option **Spoke-01** aus.
-8. Klicken Sie auf **OK**.
+8. Klicken Sie auf **Erstellen**.
 
 ## <a name="create-a-firewall-policy-and-secure-your-hub"></a>Erstellen einer Firewallrichtlinie und Schützen Ihres Hubs
 
@@ -111,16 +109,18 @@ Eine Firewallrichtlinie definiert Regelsammlungen für die Weiterleitung von Dat
 8. Geben Sie unter **Priorität** den Wert **100** ein.
 9. Vergewissern Sie sich, dass die **Regelsammlungsaktion** auf **Zulassen** festgelegt ist.
 10. Geben Sie unter **Name** den Regelnamen **Allow-msft** ein.
-11. Geben Sie unter **Quelladresse** die Adresse **\*** ein.
-12. Geben Sie unter **Protokoll** Folgendes ein: **http,https**.
-13. Vergewissern Sie sich, dass der Zieltyp **FQDN** lautet.
-14. Geben Sie unter **Ziel** das Ziel **\*.microsoft.com** ein.
-15. Wählen Sie **Hinzufügen**.
-16. Klicken Sie auf **Weiter: Hubs**.
-17. Wählen Sie auf der Registerkarte **Hubs** die Option **Virtuelle Hubs zuordnen** aus.
-18. Wählen Sie **Hub-01** und dann **Hinzufügen** aus.
-1. Klicken Sie auf **Überprüfen + erstellen**.
-2. Klicken Sie auf **Erstellen**.
+11. Wählen Sie unter **Quellentyp** die Option **IP-Adresse** aus.
+12. Geben Sie unter **Quelle** die Zeichenfolge **\*** ein.
+13. Geben Sie unter **Protokoll** Folgendes ein: **http,https**.
+14. Vergewissern Sie sich, dass **Zieltyp** auf **FQDN** festgelegt ist.
+15. Geben Sie unter **Ziel** das Ziel **\*.microsoft.com** ein.
+16. Wählen Sie **Hinzufügen**.
+17. Wählen Sie **Weiter: Threat Intelligence** aus.
+18. Klicken Sie auf **Weiter: Hubs**.
+19. Wählen Sie auf der Registerkarte **Hubs** die Option **Virtuelle Hubs zuordnen** aus.
+20. Wählen Sie **Hub-01** und dann **Hinzufügen** aus.
+21. Klicken Sie auf **Überprüfen + erstellen**.
+22. Klicken Sie auf **Erstellen**.
 
 Dieser Vorgang dauert etwa fünf Minuten (oder länger).
 
@@ -130,13 +130,11 @@ Als Nächstes müssen Sie sicherstellen, dass Netzwerkdatenverkehr durch Ihre Fi
 
 1. Wählen Sie in Firewall Manager die Option **Geschützte virtuelle Hubs** aus.
 2. Wählen Sie **Hub-01** aus.
-3. Wählen Sie unter **Einstellungen** die Option **Weiterleitungseinstellungen** aus.
-4. Wählen Sie unter **Internetdatenverkehr** > **Datenverkehr von virtuellen Netzwerken** die Option **Send via Azure Firewall** (Über Azure Firewall senden) aus.
-5. Wählen Sie unter **Privater Azure-Datenverkehr** > **Datenverkehr von virtuellen Netzwerken** die Option **Send via Azure Firewall** (Über Azure Firewall senden) aus.
-6. Wählen Sie **IP-Adresspräfix(e) bearbeiten** aus.
-8. Geben Sie **10.0.1.0/24** als Adresse des Workloadsubnetzes ein, und wählen Sie **Speichern** aus.
-9. Wählen Sie unter **Einstellungen** die Option **Verbindungen** aus.
+3. Wählen Sie unter **Einstellungen** die Option **Sicherheitskonfiguration** aus.
+4. Wählen Sie unter **Internetdatenverkehr** die Option **Azure Firewall** aus.
+5. Wählen Sie unter **Private traffic** (Privater Datenverkehr) die Option **Send via Azure Firewall** (Über Azure Firewall senden) aus.
 10. Vergewissern Sie sich, dass für die **Hub-Spoke-Verbindung** unter **Internetdatenverkehr** die Option **Geschützt** angezeigt wird.
+11. Wählen Sie **Speichern** aus.
 
 
 ## <a name="test-your-firewall"></a>Testen Ihrer Firewall

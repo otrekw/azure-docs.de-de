@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b331fe757fc18029aa270f805c72150161a38f47
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 904240e066a83fa1278d663b8614b5b9269ba4d3
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849415"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970670"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -17,7 +17,7 @@ Mit dem [Azure Backup-Dienst](backup-overview.md) können Sie lokale Computer un
 Andere Unterstützungsmatrizen:
 
 - [Allgemeine Unterstützungsmatrix](backup-support-matrix.md) für Azure Backup
-- [Unterstützungsmatrix](backup-support-matrix-mabs-dpm.md) für Azure Backup-Server bzw. System Center Data Protection Manager-Sicherungen
+- [Unterstützungsmatrix](backup-support-matrix-mabs-dpm.md) für Azure Backup-Server/System Center Data Protection Manager (DPM)-Sicherungen
 - [Unterstützungsmatrix](backup-support-matrix-mars-agent.md) für die Sicherung mit dem Microsoft Azure Recovery Services-Agent (MARS)
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
@@ -63,7 +63,7 @@ In der folgenden Tabelle sind die unterstützten Betriebssysteme für die Sicher
 
 **Szenario** | **Betriebssystemunterstützung**
 --- | ---
-Sicherung mit der Azure-VM-Agent-Erweiterung | – Windows 10 Client (nur 64 Bit) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM und SP1 Standard)  <br/><br/> – Windows Server 2008 (nur 64 Bit)
+Sicherung mit der Azure-VM-Agent-Erweiterung | – Windows 10 Client (nur 64 Bit) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2012 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM und SP1 Standard)  <br/><br/> – Windows Server 2008 (nur 64 Bit)
 Sicherung mit dem MARS-Agent | [Unterstützte](backup-support-matrix-mars-agent.md#supported-operating-systems) Betriebssysteme
 Sicherung mit DPM/MABS | Unterstützte Betriebssysteme für die Sicherung mit [MABS](backup-mabs-protection-matrix.md) und [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807)
 
@@ -153,12 +153,13 @@ Sichern der Konsistenz mehrerer virtueller Computer | Azure Backup bietet keine 
 Sichern mit [Diagnoseeinstellungen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Nicht unterstützt. <br/><br/> Wenn die Wiederherstellung der Azure-VM mit Diagnoseeinstellungen mithilfe der Option [Neu erstellen](backup-azure-arm-restore-vms.md#create-a-vm) ausgelöst wird, tritt bei der Wiederherstellung ein Fehler auf.
 Wiederherstellen von an Zonen angehefteten virtuellen Computern | Unterstützt (für virtuelle Computer, die nach Januar 2019 gesichert wurden und bei denen es [Verfügbarkeitszonen](https://azure.microsoft.com/global-infrastructure/availability-zones/) gibt).<br/><br/>Wir unterstützen derzeit die Wiederherstellung in derselben Zone, die in virtuellen Computern angeheftet ist. Wenn aber die Zone nicht verfügbar ist, schlägt die Wiederherstellung fehl.
 Gen2-VMS | Unterstützt <br> Azure Backup unterstützt die Sicherung und Wiederherstellung von [Gen2-VMS](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Bei Wiederherstellung über einen Wiederherstellungspunkt werden diese virtuellen Computer als [Gen2-VMs](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) wiederhergestellt.
+Sicherung virtueller Azure-Computer mit Sperren | Wird für nicht verwaltete virtuelle Computer nicht unterstützt. <br><br> Wird für verwaltete virtuelle Computer unterstützt.
 
 ## <a name="vm-storage-support"></a>Unterstützung für VM-Speicher
 
 **Komponente** | **Unterstützung**
 --- | ---
-Azure-VM-Datenträger (für Daten) | Die Unterstützung der Sicherung virtueller Azure-Computer mit bis zu 32 Datenträgern befindet sich in [diesen Regionen](#backup-of-azure-virtual-machines-with-up-to-32-disks) in der öffentlichen Vorschau.<br><br> Die Unterstützung für die Sicherung virtueller Azure-Computer mit nicht verwalteten Datenträgern oder klassischer VMs umfasst nur bis zu 16 Datenträger.
+Azure-VM-Datenträger (für Daten) | Die Unterstützung für die Sicherung virtueller Azure-Computer mit bis zu 32 Datenträgern ist in allen Regionen mit Ausnahme von nationalen Clouds (Azure Government, Azure China und Azure Deutschland) in der öffentlichen Vorschau verfügbar.<br><br> Die Unterstützung für die Sicherung virtueller Azure-Computer mit nicht verwalteten Datenträgern oder klassischer VMs umfasst nur bis zu 16 Datenträger.
 Datenträgergröße | Die Größe einzelner Datenträger kann bis zu 32 TB und maximal 256 TB für alle Datenträger in einer VM betragen.
 Speichertyp | HDD Standard, SSD Standard, SSD Premium.
 Verwaltete Datenträger | Unterstützt.
@@ -169,13 +170,6 @@ Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstüt
 Ändern der Datenträgergröße auf geschütztem virtuellen Computer | Unterstützt.
 Freigegebener Speicher| Das Sichern von VMs mit Cluster Shared Volume (CSV) oder Dateiservern mit horizontaler Skalierung wird nicht unterstützt. Bei CSV-Schreibern treten während der Sicherung voraussichtlich Fehler auf. Bei der Wiederherstellung werden Datenträger, die CSV-Volumes enthalten, möglicherweise nicht hochgefahren.
 [Freigegebene Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | Wird nicht unterstützt.
-
-### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>Sicherung virtueller Azure-Computer mit bis zu 32 Datenträgern
-
-Azure Backup unterstützt jetzt die Sicherung von virtuellen Azure-Computern mit bis zu 32 angeschlossenen Datenträgern.  Diese Funktion befindet sich in den folgenden Regionen in der öffentlichen Vorschau: USA, Westen-Mitte; Kanada, Mitte; Asien, Südosten; Brasilien, Süden; Kanada, Osten; Frankreich, Mitte; Frankreich, Süden; Indien, Mitte; Indien, Süden; Japan, Osten; Japan, Westen; Südkorea, Mitte; Südkorea, Süden; Südafrika, Norden, Vereinigtes Königreich, Süden, Vereinigtes Königreich, Westen; Australien, Osten.  Wenn Sie an diesem Feature in anderen Regionen interessiert sind, registrieren Sie sich für die eingeschränkte Vorschau, indem Sie an AskAzureBackupTeam@microsoft.com schreiben.  
-
->[!NOTE]
->Azure Backup unterstützt nur bis zu 16 Datenträger für virtuelle Azure-Computer mit nicht verwalteten Datenträgern oder klassische VMs.
 
 ## <a name="vm-network-support"></a>Netzwerkunterstützung bei virtuellen Computern
 

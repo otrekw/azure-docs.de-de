@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: c60f9df87930519684c6c29b1194624342b11528
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a8f6fe49faf0624f6ef6d4fa8a346e22c69da599
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555056"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851730"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Tutorial: Ausführen von Python-Skripts per Azure Data Factory mit Azure Batch
 
@@ -116,27 +116,27 @@ In diesem Abschnitt erstellen und überprüfen Sie eine Pipeline, indem Sie Ihr 
 1. Wählen Sie im Feld **Factory-Ressourcen** die Schaltfläche mit dem Pluszeichen (+) und dann **Pipeline** aus.
 1. Legen Sie auf der Registerkarte **Allgemein** den Namen der Pipeline auf „Run Python“ fest.
 
-    ![](./media/run-python-batch-azure-data-factory/create-pipeline.png)
+    ![Legen Sie auf der Registerkarte „Allgemein“ den Namen der Pipeline auf „Run Python“ fest.](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
 1. Erweitern Sie im Feld **Aktivitäten** die Option **Batch-Dienst**. Ziehen Sie die benutzerdefinierte Aktivität aus der Toolbox **Aktivitäten** auf die Oberfläche des Pipeline-Designers.
 1. Geben Sie auf der Registerkarte **Allgemein** die Zeichenfolge **testPipeline** als Namen an.
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task.png)
+    ![Geben Sie auf der Registerkarte „Allgemein“ die Zeichenfolge „testPipeline“ als Namen an.](./media/run-python-batch-azure-data-factory/create-custom-task.png)
 1. Fügen Sie auf der Registerkarte **Azure Batch** das **Batch-Konto** hinzu, das in den vorherigen Schritten erstellt wurde, und verwenden Sie **Verbindung testen**, um die richtige Funktionsweise sicherzustellen.
 
-    ![](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
+    ![Fügen Sie auf der Registerkarte „Azure Batch“ das Batch-Konto hinzu, das in den vorherigen Schritten erstellt wurde, und verwenden Sie dann „Verbindung testen“.](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
 1. Geben Sie auf der Registerkarte **Einstellungen** den Befehl `python main.py` ein.
 1. Fügen Sie für **Resource Linked Service** (Ressourcenverknüpfungsdienst) das Speicherkonto hinzu, das in den vorherigen Schritten erstellt wurde. Testen Sie die Verbindung, um sicherzustellen, dass sie erfolgreich hergestellt werden kann.
 1. Wählen Sie unter **Ordnerpfad** den Namen des **Azure Blob Storage**-Containers aus, in dem das Python-Skript und die zugeordneten Eingaben enthalten sind. Hierdurch werden die ausgewählten Dateien vom Container auf die Poolknoteninstanzen heruntergeladen, bevor das Python-Skript ausgeführt wird.
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
+    ![Wählen Sie im Ordnerpfad den Namen des Azure Blob Storage-Containers aus.](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 1. Klicken Sie zum Überprüfen der Pipelineeinstellungen oberhalb der Canvas auf der Symbolleiste für die Pipeline auf **Überprüfen**. Vergewissern Sie sich, dass die Pipeline überprüft wurde. Klicken Sie auf die Schaltfläche &gt;&gt; (Pfeil nach rechts), um die Ausgabe der Überprüfung zu schließen.
 1. Klicken Sie auf **Debuggen**, um die Pipeline zu testen und sicherzustellen, dass sie richtig funktioniert.
 1. Klicken Sie auf **Veröffentlichen**, um die Pipeline zu veröffentlichen.
 1. Klicken Sie auf **Trigger**, um das Python-Skript als Teil eines Batchprozesses auszuführen.
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
+    ![Klicken Sie auf „Trigger“, um das Python-Skript als Teil eines Batchprozesses auszuführen.](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
 
 ### <a name="monitor-the-log-files"></a>Überwachen der Protokolldateien
 

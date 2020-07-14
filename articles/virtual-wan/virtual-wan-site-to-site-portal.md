@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: b4278cb2e8c5152f522258a37c37acda5efbacf8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 13949bef7b26058c577a3ab85b4fb2e736bba8f5
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687921"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562970"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Tutorial: Erstellen einer Site-to-Site-Verbindung per Azure Virtual WAN
 
@@ -29,7 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Herstellen einer VPN-Verbindung zwischen einer Site und einem Hub
 > * Verbinden eines VNET mit einem Hub
 > * Herunterladen einer Konfigurationsdatei
-> * Anzeigen Ihrer Virtual WAN-Instanz
+> * Konfigurieren Ihres VPN-Gateways
 
 > [!NOTE]
 > Falls Sie über viele Sites verfügen, verwenden Sie normalerweise einen [Virtual WAN-Partner](https://aka.ms/virtualwan), um diese Konfiguration zu erstellen. Sie können diese Konfiguration aber auch selbst erstellen, wenn Sie mit Netzwerken vertraut sind und sich mit der Konfiguration Ihres eigenen VPN-Geräts auskennen.
@@ -251,11 +251,20 @@ Falls Sie eine Anleitung für die Konfiguration Ihres Geräts benötigen, könne
 * Für eine neue Virtual WAN-Instanz können IKEv1 und IKEv2 unterstützt werden.
 * Für Virtual WAN können sowohl richtlinienbasierte als auch routenbasierte VPN-Geräte und die entsprechenden Geräteanweisungen verwendet werden.
 
-## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>Anzeigen Ihrer Virtual WAN-Instanz
+## <a name="configure-your-vpn-gateway"></a><a name="gateway-config"></a>Konfigurieren Ihres VPN-Gateways
 
-1. Navigieren Sie zum virtuellen WAN.
-2. Auf der Seite **Übersicht** steht jeder Punkt auf der Karte für einen Hub. Bewegen Sie den Mauszeiger auf einen beliebigen Punkt, um die Zusammenfassung zur Integrität des Hubs, den Verbindungsstatus und die ein- und ausgehenden Bytes anzuzeigen.
-3. Im Abschnitt „Hubs und Verbindungen“ können Sie den Hubstatus, die VPN-Sites und weitere Daten anzeigen. Sie können auf einen bestimmten Hubnamen klicken und zur VPN-Site navigieren, um weitere Informationen zu erhalten.
+Sie können Ihre VPN Gateway-Einstellungen jederzeit anzeigen und konfigurieren, indem Sie **Anzeigen/Konfigurieren** auswählen.
+
+:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="Anzeigen der Konfiguration" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
+
+Auf der Seite **VPN-Gateway bearbeiten** werden die folgenden Einstellungen angezeigt:
+
+* Öffentliche IP-Adresse für VPN Gateway (von Azure zugewiesen)
+* Private IP-Adresse für VPN Gateway (von Azure zugewiesen)
+* BGP-IP-Standardadresse für VPN Gateway (von Azure zugewiesen)
+* Konfigurationsoption für benutzerdefinierte BGP-IP-Adresse: Dieses Feld ist für APIPA (Automatic Private IP Addressing) reserviert. Azure unterstützt BGP-IP-Adressen in den Bereichen „169.254.21.*“ und „169.254.22.*“.
+
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Anzeigen der Konfiguration" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

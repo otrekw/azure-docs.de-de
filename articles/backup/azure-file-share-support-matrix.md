@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8198c06c1151dd86d99bc64f825764d0a4988287
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5670f4702a8e8d199b9762d87793a053cf6e53b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193866"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806870"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Unterstützungsmatrix für Sicherungen von Azure-Dateifreigaben
 
@@ -23,7 +23,7 @@ Die Sicherung von Azure-Dateifreigaben ist in allen Regionen verfügbar **mit Au
 
 ### <a name="supported-regions-for-accidental-delete-protection"></a>Unterstützte Regionen für Schutz vor versehentlichem Löschen
 
-USA, Westen-Mitte
+USA, Westen-Mitte; Australien, Südosten; Kanada, Mitte
 
 ## <a name="supported-storage-accounts"></a>Unterstützte Speicherkonten
 
@@ -31,7 +31,8 @@ USA, Westen-Mitte
 | ------------------------ | ------------------------------------------------------------ |
 | Kontoart            | Azure Backup unterstützt Azure-Dateifreigaben unter den Speicherkonten Universell V1, Universell V2 und im Dateispeicher-Kontotyp. |
 | Leistung              | Azure Backup unterstützt Dateifreigaben sowohl unter Standard- als auch unter Storage Premium-Konten. |
-| Replikation              | Azure-Dateifreigaben werden unter Speicherkonten aller Replikationstypen unterstützt |
+| Replikation              | Unterstützt werden Azure-Dateifreigaben in Speicherkonten mit allen Replikationstypen |
+| Firewall aktiviert         | Unterstützt werden Azure-Dateifreigaben in Speicherkonten mit Firewallregeln, die Microsoft Azure Services den Zugriff auf das Speicherkonto erlauben|
 
 ## <a name="supported-file-shares"></a>Ausgewählte Dateifreigaben
 
@@ -46,14 +47,16 @@ USA, Westen-Mitte
 
 | Einstellung                                                      | Begrenzung |
 | ------------------------------------------------------------ | ----- |
-| Maximale Anzahl von Dateifreigaben, die pro Tag pro Tresor geschützt werden können | 200   |
+| Maximale Anzahl von Dateifreigaben, die pro Tag und pro Tresor geschützt werden können| 200   |
 | Maximale Anzahl von Speicherkonten, die pro Tresor pro Tag registriert werden können | 50    |
+| Maximale Anzahl von Dateifreigaben, die pro Tresor geschützt werden können | 2000   |
+| Maximale Anzahl von Speicherkonten, die pro Tresor registriert werden können | 200   |
 
 ## <a name="backup-limits"></a>Backup-Grenzwerte
 
 | Einstellung                                      | Begrenzung |
 | -------------------------------------------- | ----- |
-| Maximale Anzahl bedarfsgesteuerter Sicherungen pro Tag | 4     |
+| Maximale Anzahl bedarfsgesteuerter Sicherungen pro Tag | 10   |
 | Maximale Anzahl geplanter Sicherungen pro Tag | 1     |
 
 ## <a name="restore-limits"></a>Wiederherstellungslimits

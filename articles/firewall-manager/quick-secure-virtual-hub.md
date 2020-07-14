@@ -1,27 +1,27 @@
 ---
-title: 'Schnellstart: Schützen eines virtuellen Hubs mit Azure Firewall Manager (Vorschauversion) mithilfe einer Resource Manager-Vorlage'
-description: Hier erfahren Sie, wie Sie Ihren virtuellen Hub mithilfe von Azure Firewall Manager (Vorschauversion) schützen.
+title: 'Schnellstart: Schützen des virtuellen Hubs mit Azure Firewall Manager mithilfe einer Resource Manager-Vorlage'
+description: Hier erfahren Sie, wie Sie Ihren virtuellen Hub mithilfe von Azure Firewall Manager schützen.
 services: firewall-manager
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 05/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c51fdb5142159e390ac4fcf59a04aa3dd747469
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167195"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563691"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>Schnellstart: Schützen Ihres virtuellen Hubs mit Azure Firewall Manager mithilfe einer Resource Manager-Vorlage
 
-In dieser Schnellstartanleitung verwenden Sie eine Resource Manager-Vorlage, um Ihren virtuellen Hub mithilfe von Azure Firewall Manager (Vorschauversion) zu schützen. Die bereitgestellte Firewall verfügt über eine Anwendungsregel, die Verbindungen mit `www.microsoft.com` zulässt. Zum Testen der Firewall werden zwei virtuelle Computer unter Windows Server 2019 bereitgestellt. Ein Jumpserver wird zum Herstellen einer Verbindung mit dem Workloadserver verwendet. Auf dem Workloadserver können Sie nur eine Verbindung mit `www.microsoft.com` herstellen.
+In dieser Schnellstartanleitung verwenden Sie eine Resource Manager-Vorlage, um Ihren virtuellen Hub mithilfe von Azure Firewall Manager zu schützen. Die bereitgestellte Firewall verfügt über eine Anwendungsregel, die Verbindungen mit `www.microsoft.com` zulässt. Zum Testen der Firewall werden zwei virtuelle Computer unter Windows Server 2019 bereitgestellt. Ein Jumpserver wird zum Herstellen einer Verbindung mit dem Workloadserver verwendet. Auf dem Workloadserver können Sie nur eine Verbindung mit `www.microsoft.com` herstellen.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Unter [Was ist Azure Firewall Manager (Vorschau)?](overview.md) finden Sie weitere Informationen zur Vorschauversion von Azure Firewall Manager.
+Unter [Was ist Azure Firewall Manager?](overview.md) finden Sie weitere Informationen zu Azure Firewall Manager.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,7 +29,7 @@ Unter [Was ist Azure Firewall Manager (Vorschau)?](overview.md) finden Sie weite
 
 ## <a name="create-a-secured-virtual-hub"></a>Erstellen eines geschützten virtuellen Hubs
 
-Mithilfe dieser Vorlage erstellen Sie einen geschützten virtuellen Hub mit Azure Firewall Manager (Vorschauversion) sowie die erforderlichen Ressourcen zur Unterstützung des Szenarios.
+Mithilfe dieser Vorlage erstellen Sie einen geschützten virtuellen Hub mit Azure Firewall Manager sowie die erforderlichen Ressourcen zur Unterstützung des Szenarios.
 
 ### <a name="review-the-template"></a>Überprüfen der Vorlage
 
@@ -101,4 +101,4 @@ Remove-AzResourceGroup -Name "<your resource group name>"
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Was sind vertrauenswürdige Sicherheitspartner (Vorschau)?](trusted-security-partners.md)
+> [Weitere Informationen zu Sicherheitspartneranbietern](trusted-security-partners.md)

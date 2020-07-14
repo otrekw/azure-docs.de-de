@@ -1,24 +1,22 @@
 ---
-title: Übersicht über die Bereitstellung von Azure Firewall Manager (Vorschau)
-description: Informieren Sie sich über die allgemeinen Schritte zur Bereitstellung von Azure Firewall Manager (Vorschau).
+title: Übersicht über die Bereitstellung mit Azure Firewall Manager
+description: Informieren Sie sich über die allgemeinen Schritte zur Bereitstellung von Azure Firewall Manager.
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77443124"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565799"
 ---
-# <a name="azure-firewall-manager-preview-deployment-overview"></a>Übersicht über die Bereitstellung von Azure Firewall Manager (Vorschau)
+# <a name="azure-firewall-manager-deployment-overview"></a>Übersicht über die Bereitstellung mit Azure Firewall Manager
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Es gibt mehrere Möglichkeiten, die Vorschauversion von Azure Firewall Manager bereitzustellen, jedoch sollten Sie den folgenden allgemeinen Prozess nutzen.
+Es gibt mehrere Möglichkeiten, Azure Firewall Manager bereitzustellen, jedoch sollten Sie den folgenden allgemeinen Prozess nutzen.
 
 ## <a name="general-deployment-process"></a>Allgemeiner Bereitstellungsprozess
 
@@ -70,4 +68,4 @@ Es gibt mehrere Möglichkeiten, die Vorschauversion von Azure Firewall Manager b
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Schützen Ihres Cloudnetzwerks mithilfe von Azure Firewall Manager (Vorschauversion) unter Verwendung des Azure-Portals](secure-cloud-network.md)
+- [Tutorial: Schützen Ihres Cloudnetzwerks mithilfe von Azure Firewall Manager unter Verwendung des Azure-Portals](secure-cloud-network.md)

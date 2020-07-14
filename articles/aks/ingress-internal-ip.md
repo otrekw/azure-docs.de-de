@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller für ein internes privates Netzwerk in einem Azure Kubernetes Service-Cluster (AKS) installieren und konfigurieren.
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: 749c9904244dd702e41a63e0266c5ff6b1344261
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.date: 07/02/2020
+ms.openlocfilehash: 8f1a538364284863cbfe3786213434b14918f214
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561946"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920235"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers für ein internes virtuelles Netzwerk in Azure Kubernetes Service (AKS)
 
@@ -59,6 +59,9 @@ Der Eingangscontroller muss ebenfalls auf einem Linux-Knoten geplant werden. Win
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
+# Add the official stable repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
 # Use Helm to deploy an NGINX ingress controller
 helm install nginx-ingress stable/nginx-ingress \
     --namespace ingress-basic \
@@ -68,7 +71,13 @@ helm install nginx-ingress stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Wird der Kubernetes-Lastenausgleichsdienst für den NGINX-Eingangscontroller erstellt, wird Ihre interne IP-Adresse zugewiesen, wie in der folgenden Beispielausgabe gezeigt:
+Wird der Kubernetes-Lastenausgleichsdienst für den NGINX-Eingangscontroller erstellt, wird Ihre interne IP-Adresse zugewiesen. Sie rufen die öffentliche IP-Adresse mit dem Befehl `kubectl get service` ab.
+
+```console
+kubectl get service -l app=nginx-ingress --namespace ingress-basic
+```
+
+Es dauert ein paar Minuten, bis die IP-Adresse dem Dienst zugewiesen ist, wie in der folgenden Beispielausgabe gezeigt wird:
 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
@@ -201,6 +210,12 @@ spec:
 
 Erstellen Sie die Eingangsressource mit dem Befehl `kubectl apply -f hello-world-ingress.yaml`.
 
+```console
+kubectl apply -f hello-world-ingress.yaml
+```
+
+Die folgende Beispielausgabe zeigt, wie die Eingangsressource erstellt wird.
+
 ```
 $ kubectl apply -f hello-world-ingress.yaml
 
@@ -267,7 +282,13 @@ kubectl delete namespace ingress-basic
 
 ### <a name="delete-resources-individually"></a>Löschen einzelner Ressourcen
 
-Mehr Kontrolle bietet eine andere Vorgehensweise, bei der Sie einzelne Ressourcen löschen. Listen Sie mit dem Befehl `helm list` die Helm-Releases auf. Suchen Sie nach Diagrammen mit den Namen *nginx-ingress* und *aks-helloworld*, wie in der folgenden Beispielausgabe gezeigt:
+Mehr Kontrolle bietet eine andere Vorgehensweise, bei der Sie einzelne Ressourcen löschen. Listen Sie mit dem Befehl `helm list` die Helm-Releases auf. 
+
+```console
+helm list --namespace ingress-basic
+```
+
+Suchen Sie nach Diagrammen mit den Namen *nginx-ingress* und *aks-helloworld*, wie in der folgenden Beispielausgabe gezeigt:
 
 ```
 $ helm list --namespace ingress-basic
@@ -276,7 +297,13 @@ NAME                    NAMESPACE       REVISION        UPDATED                 
 nginx-ingress           ingress-basic   1               2020-01-06 19:55:46.358275 -0600 CST    deployed        nginx-ingress-1.27.1    0.26.1  
 ```
 
-Deinstallieren Sie die Versionen mit dem Befehl `helm uninstall`. Im folgenden Beispiel wird die NGINX-Eingangsbereitstellung deinstalliert.
+Deinstallieren Sie die Versionen mit dem Befehl `helm uninstall`.
+
+```console
+helm uninstall nginx-ingress --namespace ingress-basic
+```
+
+Im folgenden Beispiel wird die NGINX-Eingangsbereitstellung deinstalliert.
 
 ```
 $ helm uninstall nginx-ingress --namespace ingress-basic

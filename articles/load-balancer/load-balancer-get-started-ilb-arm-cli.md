@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines internen Lastenausgleichs im Tarif „Basic“ – Azure CLI
+title: Internen Lastenausgleich erstellen – Azure CLI
 titleSuffix: Azure Load Balancer
 description: In diesem Artikel erfahren Sie, wie Sie eine interne Load Balancer-Instanz mit der Azure CLI erstellen.
 services: load-balancer
@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/27/2018
+ms.date: 07/02/2020
 ms.author: allensu
-ms.openlocfilehash: 51df1936e5d8725b2243e7c0084973370139c540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2557ac6f3fb8e9091faad5c9c219db529838495d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79457010"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921723"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Erstellen eines internen Load Balancers für den Lastenausgleich virtueller Computer mit der Azure CLI
 
@@ -26,7 +26,7 @@ In diesem Artikel wird veranschaulicht, wie Sie einen internen Load Balancer ers
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.28 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.28 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -52,7 +52,7 @@ Erstellen Sie ein virtuelles Netzwerk mit dem Namen *myVnet* und dem Subnetz *my
     --subnet-name mySubnet
 ```
 
-## <a name="create-basic-load-balancer"></a>Erstellen eines Load Balancers im Tarif „Basic“
+## <a name="create-standard-load-balancer"></a>Erstellen einer Load Balancer Standard-Instanz
 
 In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenausgleichs erstellen und konfigurieren:
   - Front-End-IP-Konfiguration, über die der eingehende Netzwerkdatenverkehr für den Lastenausgleich empfangen wird
@@ -62,12 +62,15 @@ In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenau
 
 ### <a name="create-the-load-balancer"></a>Erstellen des Lastenausgleichs
 
-Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) einen internen Load Balancer mit dem Namen **myLoadBalancer**, der über eine Front-End-IP-Konfiguration mit dem Namen **myFrontEnd** und den Back-End-Pool **myBackEndPool** (mit Zuordnung der privaten IP-Adresse **10.0.0.7) verfügt.
+Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) einen internen Load Balancer mit dem Namen **myLoadBalancer**, der über eine Front-End-IP-Konfiguration mit dem Namen **myFrontEnd** und den Back-End-Pool **myBackEndPool** (mit Zuordnung der privaten IP-Adresse **10.0.0.7**) verfügt. 
+
+Verwenden Sie `--sku basic`, um eine Load Balancer Basic-Instanz zu erstellen. Microsoft empfiehlt für Produktionsworkloads die Standard-SKU.
 
 ```azurecli-interactive
   az network lb create \
     --resource-group myResourceGroupILB \
     --name myLoadBalancer \
+    --sku standard \
     --frontend-ip-name myFrontEnd \
     --private-ip-address 10.0.0.7 \
     --backend-pool-name myBackEndPool \
@@ -85,7 +88,7 @@ Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass die
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
-    --port 80   
+    --port 80
 ```
 
 ### <a name="create-the-load-balancer-rule"></a>Erstellen der Lastenausgleichsregel
@@ -103,6 +106,12 @@ Mit einer Lastenausgleichsregel wird die Front-End-IP-Konfiguration für den ein
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
     --probe-name myHealthProbe  
+```
+
+Sie können auch eine Lastenausgleichsregel für [HA-Ports](load-balancer-ha-ports-overview.md) erstellen, indem Sie die nachstehende Konfiguration mit Load Balancer Standard verwenden.
+
+```azurecli-interactive
+az network lb rule create --resource-group myResourceGroupILB --lb-name myLoadBalancer --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name myFrontEnd --backend-address-pool-name myBackEndPool
 ```
 
 ## <a name="create-servers-for-the-backend-address-pool"></a>Erstellen von Servern für den Back-End-Adresspool

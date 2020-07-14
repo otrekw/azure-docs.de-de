@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1cc89beb1e704428fdb4e10868e72e837804d3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 0b5a52d0a54a9671052b9b7d46810cc65c22951f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765258"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799892"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hub-planner"></a>Tutorial: Integrieren von Hub Planner in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
 
@@ -43,7 +43,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Hub Planner unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Hub Planner unterstützt **SP**-initiiertes einmaliges Anmelden.
 * Nach dem Konfigurieren von Hub Planner können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-hub-planner-from-the-gallery"></a>Hinzufügen von Hub Planner aus dem Katalog
@@ -85,9 +85,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.hubplanner.com`
 
-    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.hubplanner.com/sso/metadata`.
+    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `https://app.hubplanner.com/sso/metadata`.
 
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.hubplanner.com/sso/callback`
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://app.hubplanner.com/sso/callback`
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an das [Kundensupportteam von Hub Planner](mailto:hello@hubplanner.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -133,9 +133,29 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Hub Planner** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Hub Planner](mailto:hello@hubplanner.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
+### <a name="install-the-extension-in-hub-planner"></a>Installieren der Erweiterung in Hub Planner
+
+Um die SSO-Funktionalität zu aktivieren, müssen Sie zunächst die Erweiterung aktivieren. Führen Sie als Kontobesitzer oder mit den entsprechenden Berechtigungen die folgenden Schritte aus:
+
+1. Wechseln Sie zu **Einstellungen**.
+1. Wählen Sie im seitlichen Menü die Option **Erweiterungen verwalten** > **Erweiterungen hinzufügen/entfernen** aus.
+1. Suchen Sie nach der Erweiterung für einmaliges Anmelden, und fügen Sie sie hinzu (oder wählen Sie „Kostenlos testen“ aus).
+1. Stimmen Sie nach entsprechender Aufforderung den Nutzungsbedingungen zu, und wählen Sie anschließend **Jetzt hinzufügen** aus.
+
+### <a name="enable-sso"></a>Aktivieren von SSO
+
+Nachdem die Erweiterung aktiviert wurde, müssen Sie SSO für Ihr Konto aktivieren. 
+
+1. Wechseln Sie zu **Einstellungen**.
+1. Wählen Sie im seitlichen Menü die Option **Authentifizierung** aus.
+1. Wählen Sie **SSO (Single Sign-On)** aus.
+1. Geben Sie zusätzliche Authentifizierungsinformationen wie in der folgenden Abbildung dargestellt ein, und wählen Sie dann **Speichern** aus.
+
+![Screenshot: SSO-Einstellungen](media/hub-planner-tutorial/sso-settings.png)
+
 ### <a name="create-hub-planner-test-user"></a>Erstellen eines Hub Planner-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Hub Planner einen Benutzer mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur Hub Planner-Plattform vom [Supportteam von Hub Planner](mailto:hello@hubplanner.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+Wenn Sie weitere Benutzer hinzufügen möchten, können Sie dies unter **Einstellungen** > **Ressourcen verwalten** durchführen. Achten Sie darauf, dass Sie die entsprechenden E-Mail-Adressen hinzufügen und die Benutzer einladen. Nach dem Absenden der Einladung erhalten die Benutzer eine E-Mail und können SSO nutzen. 
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

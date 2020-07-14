@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: f56abe2bf6ccea1f55f9b3fe94b75016d449b46b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dcb3afd14a7355a08291cd8553d5050d96919aec
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77670178"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801426"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Erste Schritte mit Protokollabfragen in Azure Monitor
 
 > [!NOTE]
-> Sie können diese Übung in Ihrer eigenen Umgebung durcharbeiten, wenn Sie Daten von mindestens einem virtuellen Computer sammeln. Andernfalls verwenden Sie die [Demoumgebung](https://portal.loganalytics.io/demo), die eine Vielzahl von Beispieldaten enthält.
+> Sie können diese Übung in Ihrer eigenen Umgebung durcharbeiten, wenn Sie Daten von mindestens einem virtuellen Computer sammeln. Andernfalls verwenden Sie die [Demoumgebung](https://portal.loganalytics.io/demo), die eine Vielzahl von Beispieldaten enthält.  Falls Sie bereits wissen, wie Sie Abfragen in KQL ausführen, und nur schnell nützliche Abfragen basierend auf Ressourcentypen erstellen möchten, hilft Ihnen der [Bereich mit den gespeicherten Beispielabfragen](saved-queries.md) weiter.
 
 In diesem Tutorial erfahren Sie, wie Sie Protokollabfragen in Azure Monitor schreiben. Es wird Folgendes vermittelt:
 
@@ -36,12 +36,14 @@ Sehen Sie sich die Videoversion dieses Tutorials an:
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>Schreiben einer neuen Abfrage
+
 Abfragen können entweder mit einem Tabellennamen oder dem *search*-Befehl beginnen. Sie sollten mit einem Tabellennamen beginnen, da er einen klaren Gültigkeitsbereich für die Abfrage definiert und die Abfrageleistung und -relevanz der Ergebnisse verbessert.
 
 > [!NOTE]
 > Bei der in Azure Monitor verwendeten Abfragesprache Kusto wird die Groß-/Kleinschreibung berücksichtigt. Programmiersprachen-Schlüsselwörter werden in der Regel in Kleinbuchstaben geschrieben. Verwenden Sie die richtige Schreibweise bei Tabellen- oder Spaltennamen in einer Abfrage, wie im Schemabereich angezeigt wird.
 
 ### <a name="table-based-queries"></a>Tabellenbasierte Abfragen
+
 In Azure Monitor werden Protokolldaten in Tabellen bestehend aus mehreren Spalten organisiert. Alle Tabellen und Spalten werden im Schemabereich in Log Analytics im Analytics-Portal angezeigt. Identifizieren Sie eine Tabelle, die Sie interessiert, und untersuchen Sie dann einen Teil der Daten:
 
 ```Kusto
@@ -58,6 +60,7 @@ Die oben gezeigte Abfrage gibt in keiner bestimmten Reihenfolge 10 Ergebnisse au
 Die Abfrage könnte sogar ohne Hinzufügen von `| take 10` ausgeführt werden. Dies wäre zwar eine gültige Abfrage, könnte jedoch bis zu 10.000 Ergebnisse zurückgeben.
 
 ### <a name="search-queries"></a>Suchabfragen
+
 Suchabfragen sind weniger strukturiert und in der Regel besser geeignet für die Suche nach Datensätzen, die einen bestimmten Wert in einer der Spalten enthalten:
 
 ```Kusto
@@ -132,12 +135,14 @@ SecurityEvent
 ## <a name="specify-a-time-range"></a>Festlegen eines Zeitbereichs
 
 ### <a name="time-picker"></a>Zeitauswahl
+
 Die Zeitauswahl befindet sich neben der Schaltfläche „Ausführen“ und zeigt an, dass nur Datensätze aus den letzten 24 Stunden abgefragt werden. Dies ist der Standardzeitbereich, der auf alle Abfragen angewendet wird. Um nur Datensätze von der letzten Stunde zu erhalten, wählen Sie _Letzte Stunde_ aus und führen die Abfrage erneut aus.
 
 ![Zeitauswahl](media/get-started-queries/timepicker.png)
 
 
 ### <a name="time-filter-in-query"></a>Zeitfilter in Abfragen
+
 Sie können auch einen eigenen Zeitbereich definieren, indem Sie einen Zeitfilter zur Abfrage hinzufügen. Der Zeitfilter sollte idealerweise unmittelbar nach dem Tabellennamen platziert werden: 
 
 ```Kusto
@@ -150,6 +155,7 @@ SecurityEvent
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>„project“ und „extend“: Auswählen und Berechnen von Spalten
+
 Mit **project** können Sie bestimmte Spalten zur Einbeziehung in die Ergebnisse auswählen:
 
 ```Kusto

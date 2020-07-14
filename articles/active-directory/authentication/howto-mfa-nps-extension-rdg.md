@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c61bea7f3ca1105edfec54501c5f0725a5a10225
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 21b8748cf74a5061e9dfa154047f867df4cb5428
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654113"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848751"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
@@ -115,24 +115,24 @@ Führen Sie die Schritte in [Was ist Azure Multi-Factor Authentication?](../user
 
 Dieser Abschnitt enthält Anweisungen zum Konfigurieren der RDS-Infrastruktur zur Verwendung der Azure MFA für die Clientauthentifizierung mit dem Remotedesktopgateway.
 
-### <a name="acquire-azure-active-directory-guid-id"></a>Abrufen der GUID-ID von Azure Active Directory
+### <a name="acquire-azure-active-directory-tenant-id"></a>Abrufen der Azure Active Directory-Mandanten-ID
 
-Im Rahmen der Konfiguration der NPS-Erweiterung müssen Sie Administratoranmeldeinformationen und Azure AD-ID für Ihren Azure AD-Mandanten angeben. Die folgenden Schritte veranschaulichen das Abrufen der Mandanten-ID.
+Im Rahmen der Konfiguration der NPS-Erweiterung müssen Sie Administratoranmeldeinformationen und Azure AD-ID für Ihren Azure AD-Mandanten angeben. Führen Sie die folgenden Schritte aus, um die Mandanten-ID abzurufen:
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) als globaler Administrator des Azure-Mandanten an.
 1. Wählen Sie im Menü des Azure-Portals die Option **Azure Active Directory** aus. Sie können auch auf einer beliebigen Seite nach **Azure Active Directory** suchen und diese Option auswählen.
-1. Wählen Sie **Eigenschaften** aus.
-1. Klicken Sie auf dem Blatt „Eigenschaften“ neben der Verzeichnis-ID wie unten dargestellt auf das **Kopieren**-Symbol um die ID in die Zwischenablage kopieren.
+1. Auf der Seite **Übersicht** werden die *Mandanteninformationen* angezeigt. Wählen Sie neben der *Mandanten-ID* das Symbol **Kopieren** aus, wie im folgenden Beispielscreenshot gezeigt:
 
-   ![Abrufen der Verzeichnis-ID aus dem Azure-Portal](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
+   ![Abrufen der Mandanten-ID aus dem Azure-Portal](./media/howto-mfa-nps-extension-rdg/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>Installieren der NPS-Erweiterung
 
 Installieren Sie die NPS-Erweiterung auf einem Server, auf dem die Netzwerkrichtlinien- und Zugriffsdienste-Rolle (NPS) installiert ist. Diese fungiert als RADIUS-Server für den Entwurf.
 
-> [!Important]
-> Installieren Sie auf keinen Fall die NPS-Erweiterung auf Ihrem Remotedesktopgateway-Server.
+> [!IMPORTANT]
+> Installieren Sie die NPS-Erweiterung nicht auf Ihrem Remotedesktop-Gatewayserver. Der Remotedesktop-Gatewayserver verwendet mit seinem Client das RADIUS-Protokoll nicht und kann daher die Erweiterung weder interpretieren noch die mehrstufige Authentifizierung (MFA) ausführen.
 >
+> Auch wenn der Remotedesktop-Gatewayserver und der NPS-Server mit NPS-Erweiterung unterschiedliche Server sind, verwendet der Remotedesktop-Gatewayserver doch intern die Netzwerkrichtlinien- und Zugriffsdienste-Rolle (NPS) für die Kommunikation mit anderen NPS-Servern und RADIUS als Protokoll für die ordnungsgemäße Kommunikation.
 
 1. Laden Sie die [NPS-Erweiterung](https://aka.ms/npsmfa) herunter.
 1. Kopieren Sie die ausführbare Setupdatei (NpsExtnForAzureMfaInstaller.exe) auf den NPS-Server.
@@ -166,9 +166,9 @@ Um das Skript zu verwenden, geben Sie die Erweiterung mit Ihren Azure AD-Adminis
 
    ![Authentifizieren bei Azure AD in PowerShell](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. Fügen Sie bei entsprechender Aufforderung die Verzeichnis-ID ein, die Sie zuvor in die Zwischenablage kopiert haben, und drücken Sie die **EINGABETASTE**.
+1. Wenn Sie aufgefordert werden, fügen Sie die *Mandanten-ID* ein, die Sie vorher in die Zwischenablage kopiert haben, und drücken Sie die **EINGABETASTE**.
 
-   ![Eingeben der Verzeichnis-ID in PowerShell](./media/howto-mfa-nps-extension-rdg/image6.png)
+   ![Eingeben der Mandanten-ID in PowerShell](./media/howto-mfa-nps-extension-rdg/image6.png)
 
 1. Das Skript erstellt ein selbstsigniertes Zertifikat und führt andere Änderungen an der Konfiguration durch. Die Ausgabe sollte dem folgenden Bild ähneln.
 

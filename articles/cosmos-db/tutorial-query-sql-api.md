@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Wie werden Abfragen mit SQL in Azure Cosmos DB durchgeführt?'
-description: 'Tutorial: Hier erfahren Sie, wie SQL-Abfragen in Azure Cosmos DB mithilfe des Abfrageplaygrounds durchführen.'
+description: 'Tutorial: Hier wird beschrieben, wie Sie SQL-Abfragen in Azure Cosmos DB mithilfe des Abfrageplaygrounds durchführen.'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e8d1498520ea0c59372ec4e1096b6f2b4bcf885f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74870070"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921130"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der SQL-API
 
@@ -56,6 +56,7 @@ Die SQL-Abfragen in diesem Artikel verwenden das folgende Beispieldokument.
   "isRegistered": false
 }
 ```
+
 ## <a name="where-can-i-run-sql-queries"></a>Wo kann ich SQL-Abfragen durchführen?
 
 Sie können Abfragen mit dem Daten-Explorer im Azure-Portal, über die [REST-API und SDKs](sql-api-sdk-dotnet.md) und auch auf dem [Query Playground](https://www.documentdb.com/sql/demo) durchführen, der Abfragen an einem vorhandenen Satz von Beispieldaten durchführt.
@@ -65,17 +66,19 @@ Weitere Informationen zu SQL-Abfragen finden Sie hier:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieses Tutorial setzt voraus, dass Sie über Azure Cosmos DB-Konto und -Sammlung verfügen. Sie haben beides nicht? Führen Sie den [5-Minuten-Schnellstart](create-cosmosdb-resources-portal.md) aus.
+Dieses Tutorial setzt voraus, dass Sie über Azure Cosmos DB-Konto und -Sammlung verfügen. Sie verfügen über keine dieser Ressourcen? Führen Sie den [5-Minuten-Schnellstart](create-cosmosdb-resources-portal.md) aus.
 
 ## <a name="example-query-1"></a>Beispielabfrage 1
 
-Im Beispiel des obigen Familienbeispieldokuments gibt die folgende SQL-Abfrage die Dokumente zurück, in denen das Feld „id“ mit `WakefieldFamily` übereinstimmt. Da es sich um eine `SELECT *`-Anweisung handelt, ist die Ausgabe der Abfrage das komplette JSON-Dokument:
+Im obigen Familienbeispieldokument gibt die folgende SQL-Abfrage die Dokumente zurück, in denen das Feld „ID“ mit `WakefieldFamily` übereinstimmt. Da es sich um eine `SELECT *`-Anweisung handelt, ist die Ausgabe der Abfrage das komplette JSON-Dokument:
 
 **Abfrage**
 
+```sql
     SELECT * 
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
+```
 
 **Ergebnisse**
 
@@ -110,18 +113,29 @@ Im Beispiel des obigen Familienbeispieldokuments gibt die folgende SQL-Abfrage d
 
 ## <a name="example-query-2"></a>Beispielabfrage 2
 
-Die nächste Abfrage gibt alle Vornamen von Kindern der Familie zurück, deren „id“ `WakefieldFamily` entspricht, und zwar geordnet nach Schulklassen.
+Die nächste Abfrage gibt alle Vornamen von Kindern der Familie zurück, deren „ID“ `WakefieldFamily` entspricht, und zwar geordnet nach Schulklassen.
 
 **Abfrage**
 
+```sql
     SELECT c.givenName 
     FROM Families f 
     JOIN c IN f.children 
     WHERE f.id = 'WakefieldFamily'
+```
 
 **Ergebnisse**
 
-[ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
+```
+[
+    {
+        "givenName": "Jesse"
+    },
+    {
+        "givenName": "Lisa"
+    }
+]
+```
 
 
 ## <a name="next-steps"></a>Nächste Schritte

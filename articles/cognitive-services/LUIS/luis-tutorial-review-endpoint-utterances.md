@@ -3,13 +3,13 @@ title: 'Tutorial: Überprüfung von Endpunktäußerungen: LUIS'
 description: In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie über den LUIS-HTTP-Endpunkt erhaltene Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Bei einigen Äußerungen kann eine Überprüfung hinsichtlich der Absicht und bei anderen eine Überprüfung hinsichtlich der Entität erforderlich sein.
 services: cognitive-services
 ms.topic: tutorial
-ms.date: 06/22/2020
-ms.openlocfilehash: c2df8cdba3422c522aa4ccf1fe4138a510355d12
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.date: 07/02/2020
+ms.openlocfilehash: 082e625efeeb4764aaa1ac5101eb2b0013348b19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445922"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959026"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Tutorial: Beheben unsicherer Vorhersagen durch Überprüfung von Endpunktäußerungen
 In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie über den LUIS-HTTPS-Endpunkt erhaltene Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Endpunktäußerungen sollten regelmäßig im Rahmen der geplanten LUIS-Wartung überprüft werden.
@@ -35,11 +35,16 @@ Indem Sie die Endpunktäußerungen überprüfen, verifizieren bzw. korrigieren S
 
 ## <a name="download-json-file-for-app"></a>Herunterladen der JSON-Datei für die App
 
-Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) herunter, und speichern Sie sie.
+Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/tutorial-fix-unsure-predictions.json?raw=true) herunter, und speichern Sie sie.
 
 ## <a name="import-json-file-for-app"></a>Importieren der JSON-Datei für die App
 
-[!INCLUDE [Import app steps](includes/import-app-steps.md)]
+
+1. Wählen Sie im [LUIS-Portal](https://www.luis.ai) auf der Seite **Meine Apps** die Option **+ New app for conversation** (+ Neue App für die Konversation) und dann **Als JSON importieren** aus. Suchen Sie die gespeicherte JSON-Datei aus dem vorherigen Schritt. Sie müssen den Namen der App nicht ändern. Wählen Sie **Fertig**aus.
+
+1. Wählen Sie **Erstellen** und dann **Absichten** aus, um die wichtigsten Bausteine einer LUIS-App anzuzeigen, nämlich die Absichten.
+
+    :::image type="content" source="media/luis-tutorial-review-endpoint-utterances/initial-intents-in-app.png" alt-text="Wechseln von der Seite „Versionen“ zur Seite „Absichten“":::
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Trainieren der App zum Anwenden der Entitätsänderungen auf die App
 
@@ -77,15 +82,11 @@ In dieser App sind Absichten und Entitäten vorhanden, aber keine Endpunktverwen
 
 1. Wählen Sie im Portalabschnitt **Erstellen** im linken Navigationsbereich die Option **Endpunktäußerungen überprüfen** aus. Die Liste wird für die Absicht **ApplyForJob** gefiltert.
 
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot: Schaltfläche „Endpunktäußerungen überprüfen“ im linken Navigationsbereich](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
+    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Screenshot: Schaltfläche „Endpunktäußerungen überprüfen“ im linken Navigationsbereich":::
 
-    Diese Äußerung (`I'm looking for a job with Natural Language Processing`) weist nicht die richtige Absicht auf.
+    Die Äußerung `I'm looking for a job with Natural Language Processing` weist nicht die richtige Absicht _GetJobInformation_ auf. Dies wurde fälschlicherweise als _ApplyForJob_ vorhergesagt, weil sich die Stellennamen und Verben in den beiden Absichten ähneln.
 
-1.  Wählen Sie zum Zuordnen dieser Äußerung in der Zeile der Äußerung die korrekte Option für **Zugeordnete Absicht** aus (in diesem Fall: `GetJobInformation`). Wählen Sie das Häkchen aus, um die geänderte Äußerung der App hinzuzufügen.
-
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot: Schaltfläche „Endpunktäußerungen überprüfen“ im linken Navigationsbereich](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
+1.  Wählen Sie zum Ausrichten dieser Äußerung die richtige **zugeordnete Absicht** von `GetJobInformation` aus. Wählen Sie das Häkchen aus, um die geänderte Äußerung der App hinzuzufügen.
 
     Überprüfen Sie die restlichen Äußerungen in dieser Absicht, und korrigieren Sie bei Bedarf die zugeordnete Absicht. Verwenden Sie die ursprüngliche Äußerungstabelle in diesem Tutorial, um sich die zugeordnete Absicht anzusehen.
 
@@ -110,37 +111,37 @@ Vergewissern Sie sich mithilfe einer Äußerung, die der korrigierten Äußerung
             "topIntent": "GetJobInformation",
             "intents": {
                 "GetJobInformation": {
-                    "score": 0.903607249
-                },
-                "EmployeeFeedback": {
-                    "score": 0.0312187821
+                    "score": 0.901367366
                 },
                 "ApplyForJob": {
-                    "score": 0.0230276529
+                    "score": 0.0307973567
+                },
+                "EmployeeFeedback": {
+                    "score": 0.0296942145
                 },
                 "MoveEmployee": {
-                    "score": 0.008322801
-                },
-                "Utilities.Stop": {
-                    "score": 0.004480808
+                    "score": 0.00739785144
                 },
                 "FindForm": {
-                    "score": 0.00425248267
+                    "score": 0.00449316856
+                },
+                "Utilities.Stop": {
+                    "score": 0.00417657848
                 },
                 "Utilities.StartOver": {
-                    "score": 0.004224336
+                    "score": 0.00407167152
                 },
                 "Utilities.Help": {
-                    "score": 0.00373591436
+                    "score": 0.003662492
                 },
                 "None": {
-                    "score": 0.0034621188
+                    "score": 0.00335733569
                 },
                 "Utilities.Cancel": {
-                    "score": 0.00230977475
+                    "score": 0.002225436
                 },
                 "Utilities.Confirm": {
-                    "score": 0.00112078607
+                    "score": 0.00107437756
                 }
             },
             "entities": {
@@ -156,7 +157,7 @@ Vergewissern Sie sich mithilfe einer Äußerung, die der korrigierten Äußerung
                                 "timex": "PRESENT_REF",
                                 "resolution": [
                                     {
-                                        "value": "2019-12-05 23:23:53"
+                                        "value": "2020-07-02 21:45:50"
                                     }
                                 ]
                             }

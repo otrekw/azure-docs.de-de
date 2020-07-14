@@ -1,9 +1,8 @@
 ---
-title: Azure-Ressourcen-Manager-Vorlagen
-titleSuffix: Azure SQL Database & SQL Managed Instance
+title: 'Azure Resource Manager-Vorlagen: Azure SQL-Datenbank und SQL Managed Instance'
 description: Verwenden Sie Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren von Azure SQL-Datenbank und verwalteten Azure SQL-Instanzen.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
@@ -12,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 76b9b1301a0aeee24b698b15a3871754de8ca0b9
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: ee2c6580285246d3b170602e507aed038b2507f4
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718800"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983637"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure Resource Manager-Vorlagen für Azure SQL-Datenbank und verwaltete SQL-Instanzen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +27,7 @@ Mit Azure Resource Manager-Vorlagen können Sie Ihre Infrastruktur als Code defi
 
 Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für Azure SQL-Datenbank:
 
-| |  |
+|Link |BESCHREIBUNG|
 |---|---|
 | [SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Diese Azure Resource Manager-Vorlage erstellt eine einzelne Datenbank in Azure SQL-Datenbank und konfiguriert IP-Firewallregeln auf Serverebene. |
 | [Server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Diese Azure Resource Manager-Vorlage erstellt einen Server für Azure SQL-Datenbank. |
@@ -47,7 +46,7 @@ Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für Azur
 
 Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für verwaltete Azure SQL-Instanzen.
 
-| |  |
+|Link|BESCHREIBUNG|
 |---|---|
 | [Verwaltete SQL-Instanz in einem neuen VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Diese Azure Resource Manager-Vorlage erstellt ein neues konfiguriertes virtuelles Azure-Netzwerk und eine verwaltete Instanz im virtuellen Netzwerk. |
 | [Netzwerkumgebung für die verwaltete SQL-Instanz](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Diese Bereitstellung erstellt ein konfiguriertes virtuelles Azure-Netzwerk mit zwei Subnetzen: eins für Ihre verwalteten Instanzen und eins für andere Ressourcen (virtuelle Computer, App Service-Umgebungen usw.). Diese Vorlage erstellt eine ordnungsgemäß konfigurierte Netzwerkumgebung, in der Sie verwaltete Instanzen bereitstellen können. |

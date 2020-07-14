@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115277"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961097"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Tutorial: Erstellen eines Notebooks in Azure Cosmos DB zum Analysieren und Visualisieren der Daten
 
@@ -235,7 +235,7 @@ In diesem Abschnitt führen Sie einige Abfragen für die abgerufenen Daten aus.
 
    In der Ausgabe wird die Weltkarte mit unterschiedlichen Farben angezeigt. Die von dunkel nach hell verlaufenden Farben stellen die Länder/Regionen mit dem höchsten bzw. niedrigsten Umsatz dar.
 
-   ![Visualisierung des Umsatzes nach Ländern/Regionen auf einer Karte](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Visualisierung des Umsatzes nach Ländern/Regionen auf einer Karte":::
 
 1. Sehen wir uns einen weiteren Fall der Datenvisualisierung an. Der Container „WebsiteData“ enthält einen Verlauf der Benutzer, die ein Element angezeigt, zum ihrem Warenkorb hinzugefügt und gekauft haben. Wir stellen die Konvertierungsrate der erworbenen Elemente als Plot dar. Führen Sie den folgenden Code in einer neuen Zelle aus, um die Konvertierungsrate der einzelnen Elemente zu visualisieren:
 

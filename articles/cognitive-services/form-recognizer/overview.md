@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 8885f66b3501217ead302486d2e5ef7de63f5f47
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 2193bd85265103957c5cafad10a243b266f7e5bc
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563244"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026881"
 ---
 # <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
 
@@ -57,18 +57,20 @@ Die Formularerkennung kann auch Text- und Tabellenstruktur (die Zeilen- und Spal
 
 Befolgen Sie einen Schnellstart zum Extrahieren von Daten aus Ihren Formularen. Sie sollten den kostenlosen Dienst nutzen, wenn Sie die Technologie erlernen. Bedenken Sie, dass die Anzahl der kostenlosen Seiten auf 500 pro Monat beschränkt ist.
 
-* Benutzerdefiniert – Trainieren eines Modells für Ihre Formulare
-  * Trainieren ohne Beschriftungen
-    * [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit cURL](quickstarts/curl-train-extract.md)
-    * [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit Python](quickstarts/python-train-extract.md)
-  * Trainieren mit Beschriftungen
-    * [Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen](quickstarts/label-tool.md)
-    * [Trainieren eines Formularerkennungsmodells mit Beschriftungen mit der REST-API und Python](quickstarts/python-labeled-data.md)
-* Vordefinierte Belege: Extrahieren von Daten aus USA-Verkaufsbelegen
-  * [Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe von cURL](quickstarts/curl-receipts.md)
-  * [Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe von Python](quickstarts/python-receipts.md)
-* Layout: Extrahieren von Text- und Tabellenstruktur aus Formularen
-  * [Schnellstart: Extrahieren von Layoutdaten mithilfe von Python](quickstarts/python-layout.md)
+* [Schnellstart zur Clientbibliothek](./quickstarts/client-library.md) (alle Sprachen, mehrere Szenarien)
+* Schnellstartanleitungen für Webbenutzeroberfläche
+  * [Trainieren mit Beschriftungen: Tool für die Beschriftung von Beispielen](quickstarts/label-tool.md)
+* REST-Schnellstarts
+  * Trainieren von benutzerdefinierten Modellen und Extrahieren von Formulardaten
+    * [Trainieren ohne Beschriftungen: cURL](quickstarts/curl-train-extract.md)
+    * [Trainieren ohne Beschriftungen: Python](quickstarts/python-train-extract.md)
+    * [Trainieren mit Beschriftungen: Python](quickstarts/python-labeled-data.md)
+  * Extrahieren von Daten aus USA-Verkaufsbelegen
+    * [Extrahieren von Verkaufsbelegdaten: cURL](quickstarts/curl-receipts.md)
+    * [Extrahieren von Verkaufsbelegdaten: Python](quickstarts/python-receipts.md)
+  * Extrahieren von Text- und Tabellenstruktur aus Formularen
+    * [Extrahieren von Layoutdaten: Python](quickstarts/python-layout.md)
+
 
 ### <a name="review-the-rest-apis"></a>Überprüfen der REST-APIs
 
@@ -81,7 +83,7 @@ Verwenden Sie die folgenden APIs zum Trainieren von Modellen und Extrahieren str
 | **Analysieren des Belegs** |Analysieren eines einzelnen Belegdokuments, um wichtige Informationen und anderen Belegtext zu extrahieren.|
 | **Analysieren des Layouts** |Analysieren des Layouts eines Formulars, um Text- und Tabellenstruktur zu extrahieren.|
 
-Sehen Sie sich die [Referenzdokumentation zur REST-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) an, um mehr zu erfahren. Wenn Sie mit einer früheren Version der API vertraut sind, finden Sie im Artikel [Neuerungen](./whats-new.md) weitere Informationen zu den aktuellen Änderungen.
+Sehen Sie sich die [Referenzdokumentation zur REST-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) an, um mehr zu erfahren. Wenn Sie mit einer früheren Version der API vertraut sind, finden Sie im Artikel [Neuerungen](./whats-new.md) weitere Informationen zu den aktuellen Änderungen.
 
 ## <a name="input-requirements"></a>Eingabeanforderungen
 ### <a name="custom-model"></a>Benutzerdefiniertes Modell
@@ -104,4 +106,4 @@ Wie bei allen Cognitive Services-Diensten müssen Entwickler, die den Formularer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Absolvieren Sie einen [Schnellstart](quickstarts/curl-train-extract.md) zu den ersten Schritten mit den [Formularerkennungs-APIs](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm).
+Absolvieren Sie einen [Schnellstart](quickstarts/curl-train-extract.md) zu den ersten Schritten mit den [Formularerkennungs-APIs](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm).

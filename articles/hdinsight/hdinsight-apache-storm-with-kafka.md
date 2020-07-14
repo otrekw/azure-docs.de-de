@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6c600c4cfe96b849786664aa878ec1f84407da5b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494354"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963528"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von Apache Storm mit Apache Kafka in HDInsight
 
@@ -410,7 +410,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
       | --- | --- |
       | Subscription | Ihr Azure-Abonnement |
       | Resource group | Die Ressourcengruppe mit den Ressourcen. |
-      | Position | Die Azure-Region, in der die Ressourcen erstellt werden. |
+      | Standort | Die Azure-Region, in der die Ressourcen erstellt werden. |
       | Kafka Cluster Name (Kafka-Clustername) | Der Name des Kafka-Clusters. |
       | Storm Cluster Name (Storm-Clustername) | Der Name des Storm-Clusters. |
       | Benutzername für Clusteranmeldung | Der Administratorbenutzername für die Cluster. |
@@ -500,7 +500,9 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
 
     Der zurückgegebene Wert ähnelt dem folgenden Text:
 
-        zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```output
+    zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```
 
     > [!IMPORTANT]  
     > Obwohl mehr als zwei Zookeeper-Knoten vorhanden sind, müssen Sie keine vollständige Liste aller Hosts für Clients angeben. Ein oder zwei genügen.
@@ -509,9 +511,11 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
 
 3. Bearbeiten Sie die Datei `dev.properties` im Stammverzeichnis des Projekts. Fügen Sie die Broker- und Zookeeper-Hostinformationen für den __Kafka__-Cluster in die entsprechenden Zeilen in dieser Datei ein. Das folgende Beispiel wird mithilfe der Beispielwerte aus den vorherigen Schritten konfiguriert:
 
-        kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
-        kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
-        kafka.topic: stormtopic
+    ```bash
+    kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+    kafka.topic: stormtopic
+    ```
 
     > [!IMPORTANT]  
     > Der `hdfs.url`-Eintrag wurde für einen Cluster konfiguriert, der ein Azure Storage-Konto verwendet. Um diese Topologie mit einem Storm-Cluster zu verwenden, der Data Lake Storage verwendet, ändern Sie diesen Wert von `wasb` in `adl`.
@@ -590,11 +594,13 @@ Kafka speichert die Daten in einem _Thema_. Sie müssen das Thema erstellen, bev
 
     Die Ausgabe sieht in etwa wie folgender Text aus:
 
-        Found 173 items
-        -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
-        -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
-        -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
-        ...
+    ```output
+    Found 173 items
+      -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
+      -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
+      -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
+      ...
+    ```
 
 3. Sie können den Inhalt der Datei mit dem folgenden Befehl anzeigen. Ersetzen Sie `filename.txt` durch den Namen einer Datei:
 
@@ -604,13 +610,19 @@ Kafka speichert die Daten in einem _Thema_. Sie müssen das Thema erstellen, bev
 
     Der folgende Text ist ein Beispiel für den Dateiinhalt:
 
-        four score and seven years ago
-        snow white and the seven dwarfs
-        i am at two with nature
-        snow white and the seven dwarfs
-        i am at two with nature
-        four score and seven years ago
-        an apple a day keeps the doctor away
+    > four score and seven years ago
+    >
+    > snow white and the seven dwarfs
+    >
+    > i am at two with nature
+    >
+    > snow white and the seven dwarfs
+    >
+    > i am at two with nature
+    >
+    > four score and seven years ago
+    >
+    > an apple a day keeps the doctor away
 
 ## <a name="stop-the-topologies"></a>Beenden der Topologien
 
