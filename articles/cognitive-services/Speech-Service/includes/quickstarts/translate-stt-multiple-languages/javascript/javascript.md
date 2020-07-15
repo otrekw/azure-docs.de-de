@@ -3,13 +3,13 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: fdba6fdf8956c4eefe86b17ae2d6f8007a11161e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.author: trbye
+ms.openlocfilehash: af65ae6b71b12b55745951895f424e7c5fd0c950
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978758"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035686"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,7 +41,7 @@ Erstellen Sie eine neue Datei im Ordner `index.html`, und öffnen Sie diese Date
 Wenn Sie die Webseite auf einem Webserver hosten möchten, können Sie optional eine Tokenquelle für die Demoanwendung bereitstellen.
 Auf diese Weise verlässt Ihr Abonnementschlüssel nie den Server, während Benutzer gleichzeitig die Sprachfunktionen verwenden können, ohne selbst Autorisierungscode eingeben zu müssen.
 
-Erstellen Sie eine neue Datei mit dem Namen `token.php`. In diesem Beispiel wird davon ausgegangen, dass der Webserver die PHP-Skriptsprache unterstützt. Geben Sie den folgenden Code ein:
+Erstellen Sie eine neue Datei mit dem Namen `token.php`. In diesem Beispiel wird davon ausgegangen, dass der Webserver die PHP-Skriptsprache mit aktiviertem cURL unterstützt. Geben Sie den folgenden Code ein:
 
 ```php
 <?php
@@ -71,7 +71,7 @@ Um die App zu starten, doppelklicken Sie auf die Datei „index.html“, oder ö
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>Erstellen und Ausführen des Beispiels über einen Webserver
 
-Starten Sie Ihre App, öffnen Sie Ihren bevorzugten Browser, und verweisen Sie in diesem auf die öffentliche URL, unter der Sie den Ordner hosten. Geben Sie Ihre [Region](../../../../regions.md) ein, und lösen Sie die Synthese des Eingabetexts aus. Wenn dies konfiguriert wurde, wird ein Token aus der Tokenquelle abgerufen.
+Starten Sie Ihre App, öffnen Sie Ihren bevorzugten Browser, und verweisen Sie darin auf die öffentliche URL, unter der Sie den Ordner hosten. Geben Sie Ihre [Region](../../../../regions.md) ein, und lösen Sie die Synthese des Eingabetexts aus. Wenn dies konfiguriert wurde, wird ein Token aus der Tokenquelle abgerufen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 2b6f4bb707d6c5c07dd6a1205ce7be542a220f17
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a5bd7b3e6262fa21865f04a6b65d1a75faafefa4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268669"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038360"
 ---
 Der [plastische Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken zur Verbesserung des Leseverständnisses implementiert.
 
@@ -305,7 +305,8 @@ Wenn Sie auf die Schaltfläche „Plastischer Reader“ klicken, sehen Sie, dass
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sehen Sie sich die [Node.js-Schnellstartanleitung](../../quickstart-nodejs.md) an, um zu erfahren, welche weiteren Möglichkeiten die Node.js-Clientbibliothek für den plastischen Reader bietet.
+* Sehen Sie sich die [Node.js-Schnellstartanleitung](../../tutorial-nodejs.md) an, um zu erfahren, welche weiteren Möglichkeiten die Node.js-Clientbibliothek für den plastischen Reader bietet.
+* Sehen Sie sich das [Android-Tutorial](../../tutorial-android.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Java oder Kotlin für Android bietet.
+* Sehen Sie sich das [iOS-Tutorial](../../tutorial-ios.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Swift für iOS bietet.
 * Sehen Sie sich das [Python-Tutorial](../../tutorial-python.md) an, um zu erfahren, welche weiteren Möglichkeiten die Python-Clientbibliothek für den plastischen Reader bietet.
-* Sehen Sie sich das [iOS-Tutorial](../../tutorial-ios-picture-immersive-reader.md) an, um zu erfahren, welche weiteren Möglichkeiten die Swift-Clientbibliothek für den plastischen Reader bietet.
 * Machen Sie sich mit dem [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](../../reference.md) vertraut.

@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: ed533f571ada4cacf053157b397cca07cd65e6f8
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300571"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565518"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Schnellstart: Rendern eines Modells mit Unity
 
 In dieser Schnellstartanleitung wird die Ausführung eines Unity-Beispiels beschrieben, bei dem ein integriertes Modell mit dem Dienst „Azure Remote Rendering“ (ARR) per Remotezugriff gerendert wird.
 
-Die ARR-API selbst und die Einrichtung eines neuen Unity-Projekts werden hier nicht ausführlicher beschrieben. Eine Beschreibung dieser Themen finden Sie unter [Tutorial: Einrichten eines ganz neuen Unity-Projekts](../tutorials/unity/project-setup.md).
+Die ARR-API selbst und die Einrichtung eines neuen Unity-Projekts werden hier nicht ausführlicher beschrieben. Eine Beschreibung dieser Themen finden Sie unter [Tutorial: Anzeigen eines remote gerenderten Modells](../tutorials/unity/view-remote-models/view-remote-models.md).
 
 In dieser Schnellstartanleitung wird Folgendes vermittelt:
 > [!div class="checklist"]

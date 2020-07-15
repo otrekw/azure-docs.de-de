@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: c57187ae15e5f15a601edbc74921b3c879abe715
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: b0f70fccf3f7f4a6856ae64d0946c2c473fed93c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800693"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050263"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,6 +27,10 @@ Führen Sie diese Schritte aus, um die Speech-Befehlszeilenschnittstelle unter W
 3. Wechseln Sie in das Stammverzeichnis `spx-zips`, das Sie aus dem Download extrahiert haben, und extrahieren Sie das benötigte Unterverzeichnis (`spx-net471` für .NET Framework 4.7 oder `spx-netcore-win-x64` für .NET Core 3.0 auf einer x64-CPU).
 
 Wechseln Sie an der Eingabeaufforderung das Verzeichnis zu diesem Speicherort, und geben Sie dann `spx` ein, um die Hilfe zur Speech-Befehlszeilenschnittstelle anzuzeigen.
+
+> [!NOTE]
+> PowerShell prüft bei der Suche nach einem Befehl nicht das lokale Verzeichnis. Ändern Sie in Powershell das Verzeichnis zum Speicherort von `spx`, und rufen Sie das Tool auf, indem Sie `.\spx` eingeben.
+> Wenn Sie dieses Verzeichnis Ihrem Pfad hinzufügen, finden Powershell und die Windows-Eingabeaufforderung `spx` von jedem Verzeichnis aus auch ohne enthaltenes Präfix `.\`.
 
 #### <a name="linux-install"></a>[Linux-Installation](#tab/linuxinstall)
 

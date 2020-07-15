@@ -3,13 +3,13 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 904144b044a0a0223d4807372407b5ce0b9f127b
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.author: trbye
+ms.openlocfilehash: 4889d9b0f142206bf26a69f275cb60598fba577f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85570215"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035765"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>Beginnen mit Codebausteinen
 
@@ -245,7 +245,7 @@ Fügen Sie den folgenden Code unterhalb der Modellergänzung ein:
 Wenn Sie die Webseite auf einem Webserver hosten möchten, können Sie optional eine Tokenquelle für die Demoanwendung bereitstellen.
 Auf diese Weise verlässt Ihr Abonnementschlüssel nie den Server, während Benutzer gleichzeitig die Sprachfunktionen verwenden können, ohne selbst Autorisierungscode eingeben zu müssen.
 
-Erstellen Sie eine neue Datei mit dem Namen `token.php`. In diesem Beispiel wird davon ausgegangen, dass der Webserver die PHP-Skriptsprache unterstützt. Geben Sie den folgenden Code ein:
+Erstellen Sie eine neue Datei mit dem Namen `token.php`. In diesem Beispiel wird davon ausgegangen, dass der Webserver die PHP-Skriptsprache mit aktiviertem cURL unterstützt. Geben Sie den folgenden Code ein:
 
 ```php
 <?php

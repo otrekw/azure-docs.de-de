@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4e9ddeddf616c581b116d48738e110dd8cdac2d3
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: dc566d2702fb24ef551e4900bed7b828d2597383
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659928"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557055"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Schnellstart: Bereitstellen des Unity-Beispiels für den Desktop
 
@@ -38,7 +38,7 @@ Derzeit werden nur flache Desktop-Apps auf dem Desktop unterstützt. Die VR-Unte
 1. Wählen Sie auf der linken Seite **Player** aus.
 1. Wählen Sie die Registerkarte **Universal Windows Platform settings** (UWP-Einstellungen) aus.
 1. Erweitern Sie den Eintrag **XR Settings** (XR-Einstellungen).
-1. Deaktivieren Sie **Virtual Reality Supported** (Unterstützung für virtuelle Realität).
+1. Deaktivieren Sie **Virtual Reality Supported** (Unterstützung für virtuelle Realität).\
     ![Playereinstellungen](./media/unity-disable-xr.png)
 1. Erweitern Sie oberhalb von *XR Settings* (XR-Einstellungen) die Option **Publishing Settings** (Veröffentlichungseinstellungen).
 1. Vergewissern Sie sich unter **Supported Device Families** (Unterstützte Gerätefamilien), ob **Desktop** aktiviert ist.
@@ -49,13 +49,13 @@ Derzeit werden nur flache Desktop-Apps auf dem Desktop unterstützt. Die VR-Unte
 1. Ändern Sie *Plattform* in **Universelle Windows-Plattform**. (**Eigenständiger PC** wird ebenfalls unterstützt, aber hier nicht verwendet. Siehe [Plattformeinschränkungen](../reference/limits.md#platform-limitations))
 1. Legen Sie *Target Device* (Zielgerät) auf **PC** fest.
 1. Legen Sie *Architecture* (Architektur) auf **x86** fest.
-1. Legen Sie *Build Type* (Buildtyp) auf **D3D Project** (D3D-Projekt) fest.
+1. Legen Sie *Build Type* (Buildtyp) auf **D3D Project** (D3D-Projekt) fest.\
   ![Buildeinstellungen](./media/unity-build-settings-pc.png)
 1. Wählen Sie **Switch to Platform** (Zu Plattform wechseln) aus.
 1. Wenn Sie auf **Build** (Erstellen) oder „Build And Rund“ (Erstellen und ausführen) klicken, werden Sie zur Auswahl eines Ordners aufgefordert, in dem die Projektmappe gespeichert werden soll.
 1. Öffnen Sie die generierte Datei **Quickstart.sln** mit Visual Studio.
 1. Ändern Sie die Konfiguration in **Release** und **x86**.
-1. Ändern Sie den Debuggermodus in **Local Machine** (Lokaler Computer).
+1. Ändern Sie den Debuggermodus in **Local Machine** (Lokaler Computer).\
   ![Projektmappenkonfiguration](./media/unity-deploy-config-pc.png)
 1. Erstellen Sie die Projektmappe (F7).
 

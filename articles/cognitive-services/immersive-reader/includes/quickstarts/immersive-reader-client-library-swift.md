@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Swift-Clientbibliothek für den plastischen Reader'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung erstellen Sie eine Web-App von Grund auf neu und fügen die Funktion der API für den plastischen Reader hinzu.
+description: In dieser Schnellstartanleitung erstellen Sie eine iOS-App von Grund auf neu und fügen die Funktion der API für den plastischen Reader hinzu.
 services: cognitive-services
 author: pasta
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 191d802064d477babd8aa1f782ad15876b821d11
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3d0a8444312f37b1f59817d50bdc50d3aff22164
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268685"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038363"
 ---
 Der [plastische Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken zur Verbesserung des Leseverständnisses implementiert.
 
@@ -573,4 +573,4 @@ Wenn Sie auf die Schaltfläche **Plastischer Reader** klicken, sehen Sie, dass d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Lesen Sie die [Referenz zum SDK für den plastischen Reader](../../reference.md).
+* Machen Sie sich mit dem [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](../../reference.md) vertraut.

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 7ba8d201c29b5e3835fec52d8c479a388ca07f71
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: d457e911dec481e2b1a8bdae1ca05f80452bb883
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312992"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557190"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Schnellstart: Konvertieren eines Modells für das Rendering
 
@@ -157,7 +157,7 @@ Alle Daten unter dem Pfad **localAssetDirectoryPath** werden in den Blobcontaine
 
 Nachdem das Modell konvertiert wurde, wird es in den Speichercontainer zurückgeschrieben, der unter **blobOutputContainerName** angegeben ist. Sie können einen Unterpfad angeben, indem Sie optional einen Wert für **outputFolderPath** einfügen. Im obigen Beispiel wird das sich ergebende Element „robot.arrAsset“ in den Ausgabeblobcontainer unter „converted/robot“ kopiert.
 
-Mit der Konfigurationseinstellung **outputAssetFileName** wird der Name der konvertierten Ressource ermittelt. Der Parameter ist optional, und wenn er nicht vorhanden ist, wird der Ausgabedateiname vom Eingabedateinamen abgeleitet. 
+Mit der Konfigurationseinstellung **outputAssetFileName** wird der Name der konvertierten Ressource ermittelt. Der Parameter ist optional, und wenn er nicht vorhanden ist, wird der Ausgabedateiname vom Eingabedateinamen abgeleitet.
 
 Öffnen Sie eine PowerShell-Instanz, und vergewissern Sie sich, dass Sie *Azure PowerShell* gemäß den [Voraussetzungen](#prerequisites) installiert haben. Melden Sie sich dann mit dem folgenden Befehl bei Ihrem Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm:
 
@@ -175,6 +175,8 @@ Wechseln Sie zum Verzeichnis `azure-remote-rendering\Scripts`, und führen Sie d
 ```
 
 Die Ausgabe sollte folgendermaßen aussehen: ![Conversion.ps1](./media/successful-conversion.png)
+
+## <a name="insert-new-model-into-quickstart-sample-app"></a>Einfügen eines neuen Modells in die Schnellstart-Beispiel-App
 
 Das Konvertierungsskript generiert einen *SAS*-URI (Shared Access Signature) für das konvertierte Modell. Sie können diesen URI jetzt als **Modellnamen** in die Beispiel-App der Schnellstartanleitung kopieren (siehe [Schnellstart: Rendern eines Modells mit Unity](render-model.md)).
 
@@ -198,4 +200,4 @@ Nachdem Sie sich nun mit den Grundlagen vertraut gemacht haben, können Sie mit 
 Details zur Modellkonvertierung finden Sie im Artikel zur [REST-API für die Modellkonvertierung](../how-tos/conversion/conversion-rest-api.md).
 
 > [!div class="nextstepaction"]
-> [Tutorial: Einrichten eines ganz neuen Unity-Projekts](../tutorials/unity/project-setup.md)
+> [Tutorial: Anzeigen eines remote gerenderten Modells](../tutorials/unity/view-remote-models/view-remote-models.md)

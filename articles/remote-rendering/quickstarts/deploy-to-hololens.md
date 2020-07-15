@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 75b6629ea924ec17888ec2f981ff85ed917434c9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677615"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557048"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>Schnellstart: Bereitstellen des Unity-Beispiels für HoloLens
 
@@ -36,12 +36,14 @@ Stellen Sie sicher, dass Ihre Anmeldeinformationen ordnungsgemäß mit der Szene
 1. Ändern Sie *Platform* (Plattform) in **Universal Windows Platform** (Universelle Windows-Plattform).
 1. Legen Sie *Target Device* (Zielgerät) auf **HoloLens** fest.
 1. Legen Sie *Architecture* (Architektur) auf **ARM64** fest.
-1. Legen Sie *Build Type* (Buildtyp) auf **D3D Project** (D3D-Projekt) fest. ![Buildeinstellungen](./media/unity-build-settings.png)
+1. Legen Sie *Build Type* (Buildtyp) auf **D3D Project**\ (D3D-Projekt) fest.
+    ![Buildeinstellungen](./media/unity-build-settings.png)
 1. Wählen Sie **Switch to Platform** (Zu Plattform wechseln) aus.
 1. Wenn Sie auf **Build** (Erstellen) oder „Build And Run“ (Erstellen und ausführen) klicken, werden Sie zur Auswahl eines Ordners aufgefordert, in dem die Projektmappe gespeichert werden soll.
 1. Öffnen Sie die generierte Datei **Quickstart.sln** mit Visual Studio.
 1. Ändern Sie die Konfiguration in **Release** und **ARM64**.
-1. Ändern Sie den Debuggermodus in **Local Machine** (Lokaler Computer). ![Projektmappenkonfiguration](media/unity-deploy-config.png)
+1. Ändern Sie den Debuggermodus in **Remote Machine**\ (Remotecomputer).
+    ![Projektmappenkonfiguration](media/unity-deploy-config.png)
 1. Erstellen Sie die Projektmappe (F7).
 1. Navigieren Sie für das Projekt „Schnellstart“ zu *Properties > Debugging* (Eigenschaften > Debuggen).
     1. Stellen Sie sicher, dass die Konfiguration *Release* aktiv ist.

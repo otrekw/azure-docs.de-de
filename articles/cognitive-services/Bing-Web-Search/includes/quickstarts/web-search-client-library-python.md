@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: b6ab34019207ccbeec5448b848e501e063707d16
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bdbd183ba161c96e0ed8e160ce602da2ec30dfb7
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81384953"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85940412"
 ---
 Die Clientbibliothek für die Bing-Websuche erleichtert die Integration der Bing-Websuche in Ihre Python-Anwendung. In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Anforderung senden, eine JSON-Antwort empfangen und die Ergebnisse filtern und analysieren.
 
@@ -167,7 +167,7 @@ Wenn die Antwort Webseiten, Bilder, Nachrichten oder Videos enthält, wird jewei
 
 1. Ersetzen Sie `SUBSCRIPTION_KEY` durch einen gültigen Abonnementschlüssel.
 
-1. Ersetzen Sie `YOUR_ENDPOINT` durch Ihre Endpunkt-URL im Portal.
+1. Ersetzen Sie `YOUR_ENDPOINT` im Portal durch ihre Endpunkt-URL, und entfernen Sie den Abschnitt für „bing/v7.0“ aus dem Endpunkt.
 
 1. Führen Sie das Programm aus. Beispiel: `python your_program.py`.
 
