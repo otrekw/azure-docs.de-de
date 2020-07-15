@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 43223db298e4ad170ea6d0687a342b3aee35500e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80130764"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231351"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Tutorial: Einbinden des Clusters
 
@@ -93,14 +93,14 @@ Um eine problemlose Clienteinbindung sicherzustellen, übergeben Sie diese Einst
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Erforderliche Einstellungen | |
+| Erforderliche Einstellungen | BESCHREIBUNG |
 --- | ---
 ``hard`` | Bei zeitweiligen Einbindungen in den Azure FXT Edge Filer-Cluster kommt es zu Anwendungsfehlern und möglichen Datenverlusten.
 ``proto=netid`` | Diese Option unterstützt eine angemessene Behandlung von NFS-Netzwerkfehlern.
 ``mountproto=netid`` | Diese Option unterstützt die angemessene Behandlung von Netzwerkfehlern für Einbindungsvorgänge.
 ``retry=n`` | Legen Sie ``retry=30`` fest, um vorübergehende Einbindungsfehler zu vermeiden. (Bei Einbindungen im Vordergrund wird ein anderer Wert empfohlen.)
 
-| Bevorzugte Einstellungen  | |
+| Bevorzugte Einstellungen  | BESCHREIBUNG |
 --- | ---
 ``nointr``            | Verwenden Sie diese Option, wenn Ihre Clients ältere Betriebssystemkernel (vor April 2008) verwenden, die diese Option unterstützen. Standardmäßig wird die Option „intr“ verwendet.
 

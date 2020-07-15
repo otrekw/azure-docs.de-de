@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2019
 ms.author: ralfwi
-ms.openlocfilehash: 5b02053204131e33f9750437cf9a310ac40484b8
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 5fd3e3f46ded877f9b22499aa5400e6b113d8257
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75436669"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206420"
 ---
 # <a name="connect-to-azure-germany-by-using-powershell"></a>Herstellen einer Verbindung mit Azure Deutschland über PowerShell
 
@@ -68,13 +68,17 @@ Nach erfolgreicher Verbindungsherstellung besteht ein weiterer Unterschied in de
 
 Wenn Sie die verfügbaren Regionen in Azure Deutschland überprüfen möchten, können Sie den folgenden Befehl ausführen und die aktuelle Liste ausgeben. Verwenden Sie für klassische Bereitstellungen den ersten Befehl. Verwenden Sie für Resource Manager-Bereitstellungen den zweiten Befehl.
 
-    Get-AzureLocation
-    Get-AzLocation
+```azurepowershell
+Get-AzureLocation
+Get-AzLocation
+```
 
 Wenn Sie sich für die in Azure verfügbaren Umgebungen interessieren, können Sie den folgenden Befehl ausführen:
 
-    Get-AzureEnvironment
-    Get-AzEnvironment
+```azurepowershell
+Get-AzureEnvironment
+Get-AzEnvironment
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Herstellen der Verbindung mit Azure Deutschland finden Sie in den folgenden Ressourcen:

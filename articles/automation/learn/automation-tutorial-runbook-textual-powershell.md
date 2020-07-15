@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: bf06515f98b21c24f5222b51e1b1c97b702c12d4
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e7c73bf45adba0638074b9d2ab1bab28970ed9b8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714490"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185431"
 ---
 # <a name="tutorial-create-a-powershell-runbook"></a>Tutorial: Erstellen eines PowerShell-Runbooks
 
@@ -43,7 +43,7 @@ PowerShell-Runbooks verfügen über den gleichen Lebenszyklus, die gleichen Funk
 | Befehlsausführung | Unterstützen nur die serielle Ausführung. | Unterstützen sowohl die serielle als auch die parallele Ausführung.|
 | Runspace | Sämtliche Skriptschritte werden von einem einzelnen Runspace ausgeführt. | Ein separater Runspace kann für eine Aktivität, einen Befehl oder einen Skriptblock verwendet werden. |
 
-Neben diesen Unterschieden gibt es einige [syntaktische Unterschiede](https://technet.microsoft.com/magazine/dn151046.aspx) zwischen PowerShell-Runbooks und PowerShell-Workflow-Runbooks.
+Neben diesen Unterschieden gibt es einige [syntaktische Unterschiede](/previous-versions/technet-magazine/dn151046(v=msdn.10)) zwischen PowerShell-Runbooks und PowerShell-Workflow-Runbooks.
 
 ## <a name="step-1---create-runbook"></a>Schritt 1: Erstellen eines Runbooks
 
@@ -131,7 +131,7 @@ Das erstellte Runbook befindet sich immer noch im Entwurfsmodus. Es muss veröff
 
 Sie haben Ihr Runbook inzwischen zwar getestet und veröffentlicht, bislang ist es aber noch nicht sonderlich hilfreich. Sie möchten damit ja eigentlich Azure-Ressourcen verwalten. Zu diesem Zweck muss sich das Runbook mit dem ausführenden Konto authentifizieren können, das automatisch bei der Erstellung des Automation-Kontos erstellt wurde.
 
-Die Verbindung für das ausführende Konto wird wie im folgenden Beispiel zu sehen mithilfe des Cmdlets [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) hergestellt. Sollten Sie Ressourcen für mehrere Abonnements verwalten, verwenden Sie [Get-AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0) mit dem Parameter `AzContext`.
+Die Verbindung für das ausführende Konto wird wie im folgenden Beispiel zu sehen mithilfe des Cmdlets [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) hergestellt. Sollten Sie Ressourcen für mehrere Abonnements verwalten, verwenden Sie [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0) mit dem Parameter `AzContext`.
 
 > [!NOTE]
 > Für PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für `Connect-AzAccount`. Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](../automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.
@@ -198,7 +198,7 @@ Die Verbindung für das ausführende Konto wird wie im folgenden Beispiel zu seh
 
 Nachdem das Runbook jetzt in Ihrem Azure-Abonnement authentifiziert ist, können Sie Ressourcen verwalten. Fügen Sie nun einen Befehl zum Starten eines virtuellen Computers hinzu. Sie können einen beliebigen virtuellen Computer in Ihrem Azure-Abonnement auswählen und den Namen vorerst einfach im Runbook hartcodieren.
 
-1. Fügen Sie Ihrem Runbookskript das Cmdlet [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) hinzu, um den virtuellen Computer zu starten. Das Cmdlet startet einen virtuellen Computer mit dem Namen `VMName` und einer Ressourcengruppe namens `ResourceGroupName`, wie hier zu sehen:
+1. Fügen Sie Ihrem Runbookskript das Cmdlet [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) hinzu, um den virtuellen Computer zu starten. Das Cmdlet startet einen virtuellen Computer mit dem Namen `VMName` und einer Ressourcengruppe namens `ResourceGroupName`, wie hier zu sehen:
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -274,9 +274,9 @@ Ihr Runbook startet derzeit den virtuellen Computer, den Sie im Runbook hartcodi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [PowerShell-Dokumentationen](/powershell/scripting/overview)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
-* [Erstellen eines grafischen Runbooks](automation-tutorial-runbook-graphical.md)
-* [Erstellen eines PowerShell-Workflow-Runbooks](automation-tutorial-runbook-textual.md)
-* [Azure Automation-Runbooktypen](../automation-runbook-types.md)
-* [Native PowerShell-Skriptunterstützung in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
+* Weitere Informationen zur PowerShell, einschließlich Sprachreferenz und Lernmodulen, finden Sie in der [PowerShell-Dokumentation](/powershell/scripting/overview).
+* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Erstellen eines grafischen Runbooks](automation-tutorial-runbook-graphical.md).
+* Informationen zu den ersten Schritten mit PowerShell-Workflow-Runbooks finden Sie unter [Erstellen eines PowerShell-Workflow-Runbooks](automation-tutorial-runbook-textual.md).
+* Weitere Informationen zu den verschiedenen Runbooktypen sowie zu ihren Vorteilen und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](../automation-runbook-types.md).
+* Weitere Informationen zur PowerShell-Skriptunterstützung finden Sie unter [Ankündigung der nativen PowerShell-Skriptunterstützung in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).

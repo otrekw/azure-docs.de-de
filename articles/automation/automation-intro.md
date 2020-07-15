@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, State Configuration, Updateverwaltu
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 30cfadcec1f0c28a463740ddaefa8fc76f04af3f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835273"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186179"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Einführung in Azure Automation
 
@@ -53,14 +53,14 @@ Azure Automation bietet eine Reihe von gemeinsam genutzten Funktionen. Dazu zäh
 
 Azure Automation besteht aus einem Satz von gemeinsam genutzten Ressourcen, die Ihnen das bedarfsabhängige Automatisieren und Konfigurieren Ihrer Umgebungen erleichtern.
 
-* **[Zeitpläne](automation-schedules.md)** : Auslösen von Automation-Vorgängen zu vorgegebenen Zeiten.
-* **[Module](automation-integration-modules.md)** : Verwalten von Azure und anderen Systemen. Sie können Module für Microsoft-, Drittanbieter-, Community- oder benutzerdefinierte Cmdlets und DSC-Ressourcen in das Automation-Konto importieren.
+* **[Zeitpläne](./shared-resources/schedules.md)** : Auslösen von Automation-Vorgängen zu vorgegebenen Zeiten.
+* **[Module](./shared-resources/modules.md)** : Verwalten von Azure und anderen Systemen. Sie können Module für Microsoft-, Drittanbieter-, Community- oder benutzerdefinierte Cmdlets und DSC-Ressourcen in das Automation-Konto importieren.
 * **[Modulkatalog](automation-runbook-gallery.md)** : Unterstützung einer nativen PowerShell-Katalogintegration, um Runbooks anzuzeigen und in das Automation-Konto zu importieren. Mithilfe des Katalogs können Sie im Handumdrehen mit dem Integrieren und Erstellen Ihrer Prozesse aus dem PowerShell-Katalog und Microsoft Script Center beginnen.
 * **[Python 2-Pakete](python-packages.md)** : Unterstützung von Python 2-Runbooks für Ihr Automation-Konto.
-* **[Anmeldeinformationen](automation-credentials.md)** : Sicheres Speichern von vertraulichen Informationen, die zur Laufzeit von Runbooks und Konfigurationen verwendet werden können.
+* **[Anmeldeinformationen](./shared-resources/credentials.md)** : Sicheres Speichern von vertraulichen Informationen, die zur Laufzeit von Runbooks und Konfigurationen verwendet werden können.
 * **[Verbindungen](automation-connections.md)** : Speichern von Name/Wert-Paaren gemeinsamer Informationen für Verbindungen mit Systemen. Verbindungen werden vom Autor eines Moduls für die Nutzung in Runbooks und Konfigurationen zur Laufzeit definiert.
-* **[Zertifikate](automation-certificates.md)** : Definition von Informationen, die zur Authentifizierung und zum Schützen von bereitgestellten Ressourcen verwendet werden, wenn Runbooks oder DSC-Konfigurationen zur Laufzeit darauf zugreifen. 
-* **[Variablen](automation-variables.md)** : Definition von Inhalten, die für verschiedene Runbooks und Konfigurationen verwendet werden können. Sie können Variablenwerte ändern, ohne die Runbooks oder Konfigurationen bearbeiten zu müssen, die darauf verweisen.
+* **[Zertifikate](./shared-resources/certificates.md)** : Definition von Informationen, die zur Authentifizierung und zum Schützen von bereitgestellten Ressourcen verwendet werden, wenn Runbooks oder DSC-Konfigurationen zur Laufzeit darauf zugreifen. 
+* **[Variablen](./shared-resources/variables.md)** : Definition von Inhalten, die für verschiedene Runbooks und Konfigurationen verwendet werden können. Sie können Variablenwerte ändern, ohne die Runbooks oder Konfigurationen bearbeiten zu müssen, die darauf verweisen.
 
 ### <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 

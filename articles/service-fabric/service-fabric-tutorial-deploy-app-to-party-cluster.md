@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 9951610732cbb1c5884a7b7e830033f427db0ab1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4cd21669b30b8ec83d6a0538c90d4cec5cafe32a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75646006"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244989"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Tutorial: Bereitstellen einer Service Fabric-Anwendung in einem Cluster in Azure
 
@@ -53,7 +53,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="create-a-cluster"></a>Erstellen eines Clusters
 
-Die Anwendung ist nun bereit, und Sie können einen Service Fabric-Cluster erstellen und die Anwendung im Cluster bereitstellen. Ein [Service Fabric-Cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere) enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden.
+Die Anwendung ist nun bereit, und Sie können einen Service Fabric-Cluster erstellen und die Anwendung im Cluster bereitstellen. Ein [Service Fabric-Cluster](./service-fabric-deploy-anywhere.md) enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden.
 
 In diesem Tutorial erstellen Sie einen neuen Testcluster mit drei Knoten in der Visual Studio-IDE und veröffentlichen dann die Anwendung in diesem Cluster. Informationen zum Erstellen eines Produktionsclusters finden Sie unter [Tutorial: Bereitstellen eines Service Fabric-Windows-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-windows-cluster.md). Sie können die Anwendung auch in einem vorhandenen Cluster bereitstellen, den Sie zuvor mithilfe von [PowerShell](https://portal.azure.com)- oder [Azure CLI](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)-Skripts im [Azure-Portal](./scripts/cli-create-cluster.md) oder über eine [Azure Resource Manager-Vorlage](service-fabric-tutorial-create-vnet-and-windows-cluster.md) erstellt haben.
 

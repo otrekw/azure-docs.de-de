@@ -7,12 +7,12 @@ keywords: DSC, Konfiguration, Automatisierung
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 28e8f921fa7620d1fec7dec1788ed769026624d7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836718"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186077"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Konfigurieren eines virtuellen Computers mit Desired State Configuration
 
@@ -23,7 +23,7 @@ Wenn Sie Azure Automation State Configuration aktivieren, können Sie die Konfig
 Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/).
-* Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](automation-sec-configure-azure-runas-account.md)(Ausführendes Azure-Konto).
+* Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](./manage-runas-account.md)(Ausführendes Azure-Konto).
 * Eine Azure Resource Manager-VM (nicht klassisch) mit Red Hat Enterprise Linux, CentOS oder Oracle Linux. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Linux-Computers im Azure-Portal](../virtual-machines/linux/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
@@ -31,7 +31,7 @@ Melden Sie sich unter https://portal.azure.com bei Azure an.
 
 ## <a name="enable-a-virtual-machine"></a>Aktivieren eines virtuellen Computers
 
-Es gibt viele verschiedene Methoden, um einen Computer für das State Configuration-Feature zu aktivieren. In diesem Schnellstart erfahren Sie, wie Sie das Feature für eine VM mit einem Automation-Konto aktivieren. Sie können mehr über verschiedene Methoden zur Aktivierung Ihrer Computer für State Configuration erfahren, indem Sie [Aktivieren von Computern zur Verwaltung durch Azure Automation State Configuration](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding) lesen.
+Es gibt viele verschiedene Methoden, um einen Computer für das State Configuration-Feature zu aktivieren. In diesem Schnellstart erfahren Sie, wie Sie das Feature für eine VM mit einem Automation-Konto aktivieren. Sie können mehr über verschiedene Methoden zur Aktivierung Ihrer Computer für State Configuration erfahren, indem Sie [Aktivieren von Computern zur Verwaltung durch Azure Automation State Configuration](./automation-dsc-onboarding.md) lesen.
 
 1. Wählen Sie links im Azure-Portal die Option **Automation-Konten**. Sollte die Option im linken Bereich nicht angezeigt werden, können Sie auf **Alle Dienste** klicken und in der daraufhin angezeigten Ansicht danach suchen.
 1. Wählen Sie in der Liste ein Automation-Konto aus.
@@ -39,7 +39,7 @@ Es gibt viele verschiedene Methoden, um einen Computer für das State Configurat
 2. Klicken Sie auf **Hinzufügen**, um die Seite zum Auswählen des virtuellen Computers zu öffnen.
 3. Suchen Sie nach dem virtuellen Computer, für den DSC aktiviert werden soll. Sie können das Suchfeld verwenden und die Optionen filtern, um einen bestimmten virtuellen Computer zu ermitteln.
 4. Klicken Sie auf den virtuellen Computer und anschließend auf **Verbinden**.
-5. Wählen Sie die gewünschten DSC-Einstellungen für den virtuellen Computer aus. Wenn Sie bereits eine Konfiguration vorbereitet haben, können Sie sie als `Node Configuration Name` angeben. Sie können den [Konfigurationsmodus](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig) festlegen, um das Konfigurationsverhalten für den Computer zu steuern.
+5. Wählen Sie die gewünschten DSC-Einstellungen für den virtuellen Computer aus. Wenn Sie bereits eine Konfiguration vorbereitet haben, können Sie sie als `Node Configuration Name` angeben. Sie können den [Konfigurationsmodus](/powershell/scripting/dsc/managing-nodes/metaConfig) festlegen, um das Konfigurationsverhalten für den Computer zu steuern.
 6. Klicken Sie auf **OK**. Während der Bereitstellung der DSC-Erweiterung auf dem virtuellen Computer wird der Status `Connecting` angezeigt.
 
 ![Aktivieren einer Azure-VM für DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
@@ -57,7 +57,7 @@ Module enthalten DSC-Ressourcen. Viele davon stehen im [PowerShell-Katalog](http
 
 ## <a name="import-the-configuration"></a>Importieren der Konfiguration
 
-In dieser Schnellstartanleitung wird eine DSC-Konfiguration verwendet, mit der Apache HTTP Server, MySQL und PHP auf dem Computer konfiguriert werden. Weitere Informationen finden Sie unter [DSC-Konfigurationen](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations).
+In dieser Schnellstartanleitung wird eine DSC-Konfiguration verwendet, mit der Apache HTTP Server, MySQL und PHP auf dem Computer konfiguriert werden. Weitere Informationen finden Sie unter [DSC-Konfigurationen](/powershell/scripting/dsc/configurations/configurations).
 
 Geben Sie in einem Texteditor Folgendes ein, und speichern Sie die Datei lokal als **AMPServer.ps1**.
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75494940"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248389"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Tutorial: Bereitstellen einer Anwendung in Service Fabric Mesh mithilfe einer Vorlage
 
@@ -171,7 +171,7 @@ Die vorhergehende Ausgabe bestätigt das Vorhandensein von `azure-mesh-todo-serv
 ## <a name="retrieve-credentials-for-the-registry"></a>Abrufen von Anmeldeinformationen für die Registrierung
 
 > [!IMPORTANT]
-> Die Aktivierung des Administratorbenutzers in einer ACR-Instanz wird für Produktionsszenarien nicht empfohlen. Der Einfachheit halber wird er hier aktiviert. Verwenden Sie in Produktionsszenarien sowohl für die Benutzer- als auch die Systemauthentifizierung einen [Dienstprinzipal](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal).
+> Die Aktivierung des Administratorbenutzers in einer ACR-Instanz wird für Produktionsszenarien nicht empfohlen. Der Einfachheit halber wird er hier aktiviert. Verwenden Sie in Produktionsszenarien sowohl für die Benutzer- als auch die Systemauthentifizierung einen [Dienstprinzipal](../container-registry/container-registry-auth-service-principal.md).
 
 Um eine Containerinstanz aus der Registrierung bereitzustellen, die mithilfe einer Vorlage erstellt wurde, müssen Sie bei der Bereitstellung die Registrierungsanmeldeinformationen angeben. Aktivieren Sie zunächst den Administratorbenutzer in Ihrer Registrierung mit dem folgenden Befehl:
 
@@ -191,7 +191,7 @@ Verwenden Sie die zurückgegebenen Werte für Name, Benutzername und Kennwort de
 
 ## <a name="download-and-explore-the-template-and-parameters-files"></a>Herunterladen und Erkunden der Vorlage und der Parameterdateien
 
-Eine Service Fabric Mesh-Anwendung ist eine Azure-Ressource, die Sie mithilfe von Azure Resource Manager-Vorlagen (RM) bereitstellen und verwalten können. Wenn Sie mit den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen nicht vertraut sind, lesen Sie die Informationen unter [Übersicht über Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) und [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](/azure/azure-resource-manager/resource-group-authoring-templates).
+Eine Service Fabric Mesh-Anwendung ist eine Azure-Ressource, die Sie mithilfe von Azure Resource Manager-Vorlagen (RM) bereitstellen und verwalten können. Wenn Sie mit den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen nicht vertraut sind, lesen Sie die Informationen unter [Übersicht über Azure Resource Manager](../azure-resource-manager/management/overview.md) und [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md).
 
 In diesem Tutorial wird die Aufgabenlistenanwendung als Beispiel verwendet.  Laden Sie die Dateien [mesh_rp.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) (Bereitstellungsvorlage) und [mesh_rp.windows.parameter.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) (Parameterdatei) herunter, statt eine neue Vorlage und neue Parameterdateien zu erstellen.
 

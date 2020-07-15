@@ -7,12 +7,12 @@ keywords: Änderung, Nachverfolgung, Änderungsnachverfolgung, Bestand, Automati
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 211b34b4424fa5bc9b82dc1cc2a2da574ffc5d96
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743687"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185805"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Problembehandlung bei Änderungen auf einem virtuellen Azure-Computer
 
@@ -35,7 +35,7 @@ In diesem Tutorial lernen Sie Folgendes:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
-* Ein [Automation-Konto](automation-offering-get-started.md) für die Watcher- und Aktionsrunbooks und den Watchertask.
+* Ein [Automation-Konto](./index.yml) für die Watcher- und Aktionsrunbooks und den Watchertask.
 * Ein [virtueller Computer](../virtual-machines/windows/quick-create-portal.md) zur Aktivierung für das Feature.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
@@ -54,7 +54,7 @@ In diesem Tutorial müssen Sie zuerst die Änderungsnachverfolgung und die Besta
 
     ![Änderung aktivieren](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
 
-3. Wählen Sie den Arbeitsbereich [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) aus. Dieser Arbeitsbereich sammelt Daten, die durch Features wie „Änderungsnachverfolgung“ und „Bestand“ generiert werden. Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
+3. Wählen Sie den Arbeitsbereich [Log Analytics](../azure-monitor/log-query/log-query-overview.md) aus. Dieser Arbeitsbereich sammelt Daten, die durch Features wie „Änderungsnachverfolgung“ und „Bestand“ generiert werden. Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
 
     [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -238,4 +238,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Fahren Sie mit der Übersicht über das Feature für die Änderungsnachverfolgung und den Bestand fort, um mehr darüber zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Übersicht über Änderungsnachverfolgung und Bestand](automation-change-tracking.md)
+> [Übersicht über Änderungsnachverfolgung und Bestand](./change-tracking.md)

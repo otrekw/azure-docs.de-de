@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982049"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243238"
 ---
 # <a name="monitor-published-apis"></a>Überwachen von veröffentlichten APIs
 
@@ -43,7 +43,7 @@ Im folgenden Video wird die Überwachung von API Management mithilfe von Azure M
 
 ## <a name="view-metrics-of-your-apis"></a>Anzeigen von Metriken Ihrer API
 
-Von API Management werden jede Minute Metriken ausgegeben, sodass Sie einen Überblick über den Zustand und die Integrität Ihrer APIs nahezu in Echtzeit erhalten. Im Folgenden finden Sie die beiden am häufigsten verwendeten Metriken. Eine Liste aller verfügbaren Metriken finden Sie unter [unterstützte Metriken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice).
+Von API Management werden jede Minute Metriken ausgegeben, sodass Sie einen Überblick über den Zustand und die Integrität Ihrer APIs nahezu in Echtzeit erhalten. Im Folgenden finden Sie die beiden am häufigsten verwendeten Metriken. Eine Liste aller verfügbaren Metriken finden Sie unter [unterstützte Metriken](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice).
 
 * Kapazität: Unterstützt Sie beim Treffen von Entscheidungen in Bezug auf Upgrades/Downgrades Ihrer APIM-Dienste. Die Metrik wird minütlich ausgegeben und spiegelt die Gatewaykapazität zum Zeitpunkt der Meldung wider. Der Wert der Metrik kann zwischen 0 und 100 liegen und wird basierend auf Gatewayressourcen wie CPU und Speicherauslastung berechnet.
 * Anforderungen: Unterstützen Sie bei der Analyse von API-Datenverkehr, der über Ihre APIM-Dienste läuft. Die Metrik wird pro Minute ausgegeben und meldet die Anzahl von Gatewayanforderungen mit Dimensionen, einschließlich Antwortcodes, Standort, Hostname und Fehlern. 

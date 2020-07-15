@@ -10,18 +10,18 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: a376c5d223121774b6c707b3bdc8edce42649e42
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 53731540c4a2861c77c02b1a4b25b60fd0e23872
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800056"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184139"
 ---
 # <a name="tutorial-single-page-web-app"></a>Tutorial: Einzelseiten-Web-App
 
 Mit der Bing-Entitätssuche-API können Sie das Web nach Informationen zu *Entitäten* und *Orten* durchsuchen. Sie können in einer Abfrage einen oder auch beide Ergebnistypen anfordern. Orte und Entitäten sind wie folgt definiert:
 
-|||
+| Ergebnis | BESCHREIBUNG |
 |-|-|
 |Entitäten|Bekannte Personen, Orte und Objekte, die durch die Angabe eines Namens gefunden werden können|
 |Orte|Restaurants, Hotels und andere lokale Unternehmen, die durch die Angabe eines Namens *oder* eines Typs (beispielsweise „Italienische Restaurants“) gefunden werden können|
@@ -141,7 +141,7 @@ Der HTML-Tag `<body>` enthält ein `onload`-Attribut, das nach dem Laden der Sei
 
 Das HTML-Formular enthält die folgenden Steuerelemente:
 
-| | |
+| Control | BESCHREIBUNG |
 |-|-|
 |`where`|Ein Dropdownmenü zur Auswahl des Markts (Ort und Sprache), der für die Suche verwendet wird.|
 |`query`|Das Textfeld, in das die Suchbegriffe eingegeben werden.|
@@ -411,7 +411,7 @@ Die letzte Collection `sidebar` verweist auf Hilfssuchergebnisse. Diese können 
 
 Jedes Element in einer `rankingResponse`-Collection verweist auf die tatsächlichen Suchergebnisse. Dieser Verweis kann auf zwei Arten erfolgen.
 
-| | |
+| Element | BESCHREIBUNG |
 |-|-|
 |`id`|`id` ähnelt einer URL, sollte allerdings nicht für Links verwendet werden. Der `id`-Typ eines Rangfolgenergebnisses stimmt mit der `id` eines Suchergebniselements in einer Antwortcollection *oder* einer gesamten Antwortcollection (beispielsweise `Entities`) überein.
 |`answerType`<br>`resultIndex`|`answerType` verweist auf die übergeordnete Antwortcollection, die das Ergebnis enthält (beispielsweise `Entities`). `resultIndex` verweist auf den Ergebnisindex innerhalb dieser Collection. Wenn `resultIndex` nicht angegeben wird, verweist das Rangfolgenergebnis auf die gesamte Collection.
@@ -452,7 +452,7 @@ searchItemRenderers = {
 
 Für eine Rendererfunktion können die folgenden Parameter angegeben werden:
 
-| | |
+| Parameter | BESCHREIBUNG |
 |-|-|
 |`item`|Das JavaScript-Objekt mit Eigenschaften des Elements, z.B. seine URL und Beschreibung.|
 |`index`|Der Index des Ergebniselements innerhalb der Auflistung.|
