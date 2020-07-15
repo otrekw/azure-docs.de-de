@@ -6,10 +6,10 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649119"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
@@ -23,7 +23,7 @@ Sie können die Anmeldeinformationen auf Benutzerebene auf der [Ressourcenseite]
 
 ### <a name="in-the-cloud-shell"></a>In der Cloud Shell
 
-Führen Sie zum Konfigurieren des Bereitstellungsbenutzers in der [Cloud Shell](https://shell.azure.com) den Befehl [az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) aus. Ersetzen Sie „\<username>“ und „\<password>“ durch Ihren Benutzernamen und Ihr Kennwort für die Bereitstellung. 
+Führen Sie zum Konfigurieren des Bereitstellungsbenutzers in der [Cloud Shell](https://shell.azure.com) den Befehl [az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) aus. Ersetzen Sie \<username> und \<password> durch Ihren Benutzernamen und Ihr Kennwort für die Bereitstellung. 
 
 - Der Benutzername muss in Azure eindeutig sein und darf bei lokalen Git-Pushes nicht das Symbol „@“ enthalten. 
 - Das Kennwort muss mindestens acht Zeichen lang sein und zwei der folgenden drei Elemente enthalten: Buchstaben, Zahlen und Symbole. 
@@ -38,7 +38,7 @@ In der JSON-Ausgabe wird das Kennwort als `null` angezeigt. Wenn Sie den Fehler 
 
 Im Azure-Portal muss mindestens eine App vorhanden sein, bevor Sie auf die Seite mit den Anmeldeinformationen für die Bereitstellung zugreifen können. So konfigurieren Sie die Anmeldeinformationen auf Benutzerebene
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Menü **App Services** >  **\<beliebige_App>**  > **Bereitstellungscenter** > **FTP** > **Dashboard** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Menü die Optionen **App Services** >  **\<any_app>**  > **Bereitstellungscenter** > **FTP** > **Dashboard** aus.
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 

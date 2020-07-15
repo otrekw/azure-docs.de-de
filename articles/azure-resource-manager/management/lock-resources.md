@@ -2,19 +2,19 @@
 title: Sperren von Ressourcen, um Änderungen zu verhindern
 description: Verhindern Sie, dass Benutzer kritische Azure-Ressourcen aktualisieren oder löschen, indem Sie eine Sperre für alle Benutzer und Rollen anwenden.
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 2060a7ed2de4956eb15bc85fb1a905705e21f813
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/17/2020
+ms.openlocfilehash: 7fe735cf523758f51fd9d6751de8507b2af46737
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847666"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057584"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern
 
 Als Administrator möchten Sie möglicherweise ein Abonnement, eine Ressourcengruppe oder eine Ressource sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern. Sie können die Sperrebene auf **CanNotDelete** oder **ReadOnly** festlegen. Im Portal heißen die Sperren **Löschen** und **Schreibgeschützt**.
 
-* **CanNotDelete** bedeutet, dass autorisierte Benutzer weiterhin eine Ressource lesen und ändern, aber nicht löschen können. 
+* **CanNotDelete** bedeutet, dass autorisierte Benutzer weiterhin eine Ressource lesen und ändern, aber nicht löschen können.
 * **ReadOnly** bedeutet, dass autorisierte Benutzer eine Ressource zwar lesen, aber nicht löschen oder aktualisieren können. Mit dieser Sperre erzielen Sie einen ähnlichen Effekt wie durch die Beschränkung sämtlicher autorisierter Benutzer auf die Berechtigungen der **Leserolle**.
 
 ## <a name="how-locks-are-applied"></a>Anwenden von Sperren
@@ -35,9 +35,11 @@ Das Anwenden von Sperren kann zu unerwarteten Ergebnissen führen, da einige Vor
 
 * Eine Schreibschutzsperre für eine **Ressourcengruppe**, die einen **virtuellen Computer** enthält, hindert alle Benutzer am Starten bzw. Neustarten des virtuellen Computers. Diese Vorgänge erfordern eine POST-Anforderung.
 
-* Eine Schreibschutzsperre für ein **Abonnement** verhindert, dass **Azure Advisor** ordnungsgemäß funktioniert. Advisor kann die Ergebnisse seiner Abfragen nicht speichern.
+* Eine Löschschutzsperre für eine **Ressourcengruppe** verhindert, dass mit Azure Resource Manager automatisch Bereitstellungen aus dem Verlauf [gelöscht](../templates/deployment-history-deletions.md) werden. Wenn im Verlauf 800 Bereitstellungen erreicht werden, treten bei weiteren Bereitstellungen Fehler auf.
 
 * Eine vom **Azure Backup-Dienst** erstellte Löschschutzsperre für die **Ressourcengruppe** führt dazu, dass Sicherungen fehlschlagen. Der Dienst unterstützt maximal 18 Wiederherstellungspunkte. Bei einer Sperrung kann der Sicherungsdienst Wiederherstellungspunkte nicht bereinigen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Sichern von Azure-VMs](../../backup/backup-azure-vm-backup-faq.md).
+
+* Eine Schreibschutzsperre für ein **Abonnement** verhindert, dass **Azure Advisor** ordnungsgemäß funktioniert. Advisor kann die Ergebnisse seiner Abfragen nicht speichern.
 
 ## <a name="who-can-create-or-delete-locks"></a>Voraussetzungen für das Erstellen oder Löschen von Sperren
 
@@ -85,62 +87,63 @@ Das folgende Beispiel zeigt eine Vorlage, die einen App Service-Plan, eine Websi
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "hostingPlanName": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "hostingPlanName": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "siteName": "[concat('ExampleSite', uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2019-08-01",
+      "name": "[parameters('hostingPlanName')]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "tier": "Free",
+        "name": "f1",
+        "capacity": 0
+      },
+      "properties": {
+        "targetWorkerCount": 1
+      }
     },
-    "variables": {
-        "siteName": "[concat('ExampleSite', uniqueString(resourceGroup().id))]"
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2019-08-01",
+      "name": "[variables('siteName')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+      ],
+      "properties": {
+        "serverFarmId": "[parameters('hostingPlanName')]"
+      }
     },
-    "resources": [
-        {
-            "apiVersion": "2016-09-01",
-            "type": "Microsoft.Web/serverfarms",
-            "name": "[parameters('hostingPlanName')]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "tier": "Free",
-                "name": "f1",
-                "capacity": 0
-            },
-            "properties": {
-                "targetWorkerCount": 1
-            }
-        },
-        {
-            "apiVersion": "2016-08-01",
-            "name": "[variables('siteName')]",
-            "type": "Microsoft.Web/sites",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
-            ],
-            "properties": {
-                "serverFarmId": "[parameters('hostingPlanName')]"
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/providers/locks",
-            "apiVersion": "2016-09-01",
-            "name": "[concat(variables('siteName'), '/Microsoft.Authorization/siteLock')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
-            ],
-            "properties": {
-                "level": "CanNotDelete",
-                "notes": "Site should not be deleted."
-            }
-        }
-    ]
+    {
+      "type": "Microsoft.Web/sites/providers/locks",
+      "apiVersion": "2016-09-01",
+      "name": "[concat(variables('siteName'), '/Microsoft.Authorization/siteLock')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
+      ],
+      "properties": {
+        "level": "CanNotDelete",
+        "notes": "Site should not be deleted."
+      }
+    }
+  ]
 }
 ```
 
-Ein Beispiel für das Festlegen einer Sperre für eine Ressourcengruppe finden Sie unter [Erstellen und Sperren einer Ressourcengruppe](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
+Ein Beispiel für das Festlegen einer Sperre für eine Ressourcengruppe finden Sie unter [Erstellen und Sperren einer Ressourcengruppe](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment).
 
 ## <a name="powershell"></a>PowerShell
+
 Sie sperren bereitgestellte Ressourcen mit Azure PowerShell über den Befehl [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock).
 
 Geben Sie zum Sperren einer Ressource den Namen der Ressource, ihren Ressourcentyp und ihren Ressourcengruppennamen an.
@@ -222,25 +225,30 @@ az lock delete --ids $lockid
 ```
 
 ## <a name="rest-api"></a>REST-API
-Sie können bereitgestellte Ressourcen mit der [REST-API für Verwaltungssperren](https://docs.microsoft.com/rest/api/resources/managementlocks) sperren. Die REST-API ermöglicht es Ihnen, Sperren zu erstellen und zu löschen sowie Informationen zu vorhandenen Sperren abzurufen.
+
+Sie können bereitgestellte Ressourcen mit der [REST-API für Verwaltungssperren](/rest/api/resources/managementlocks) sperren. Die REST-API ermöglicht es Ihnen, Sperren zu erstellen und zu löschen sowie Informationen zu vorhandenen Sperren abzurufen.
 
 Führen Sie zum Erstellen einer Sperre Folgendes durch:
 
-    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
+```http
+PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
+```
 
 Bei dem Bereich kann es sich um ein Abonnement, die Ressourcengruppe oder die Ressource handeln. Geben Sie für "lock-name" den jeweiligen Namen der Sperre ein. Verwenden Sie als „api-version“ die Einstellung **2016-09-01**.
 
 Schließen Sie in die Anforderung ein JSON-Objekt ein, das die Eigenschaften für die Sperre angibt.
 
-    {
-      "properties": {
-        "level": "CanNotDelete",
-        "notes": "Optional text notes."
-      }
-    } 
+```json
+{
+  "properties": {
+  "level": "CanNotDelete",
+  "notes": "Optional text notes."
+  }
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Informationen zum logischen Organisieren von Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](tag-resources.md).
 * Sie können mithilfe benutzerdefinierter Richtlinien Einschränkungen und Konventionen für Ihr Abonnement festlegen. Weitere Informationen finden Sie unter [Was ist Azure Policy?](../../governance/policy/overview.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance).
-

@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 0789a866ebda270f3e5e8b150e072c7aedea7f04
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790608"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Verwenden eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS)
@@ -54,7 +54,7 @@ kubectl apply -f internal-lb.yaml
 
 Ein Azure-Lastenausgleich wird in der Knotenressourcengruppe erstellt und mit dem gleichen virtuellen Netzwerk wie der AKS-Cluster verbunden.
 
-Beim Anzeigen der Dienstdetails wird die IP-Adresse des internen Lastenausgleichs in der Spalte *EXTERNAL-IP* angezeigt. In diesem Zusammenhang bezieht sich *External* auf die externe Schnittstelle des Load Balancers, nicht etwa darauf, dass er eine öffentliche, externe IP-Adresse erhält. Es dauert möglicherweise ein oder zwei Minuten, bis sich die IP-Adresse von *\<ausstehend\>* in eine tatsächliche interne IP-Adresse ändert, wie im folgenden Beispiel gezeigt:
+Beim Anzeigen der Dienstdetails wird die IP-Adresse des internen Lastenausgleichs in der Spalte *EXTERNAL-IP* angezeigt. In diesem Zusammenhang bezieht sich *External* auf die externe Schnittstelle des Load Balancers, nicht etwa darauf, dass er eine öffentliche, externe IP-Adresse erhält. Es dauert möglicherweise ein oder zwei Minuten, bis sich die IP-Adresse von *\<pending\>* in eine tatsächliche interne IP-Adresse ändert, wie im folgenden Beispiel gezeigt:
 
 ```
 $ kubectl get service internal-app

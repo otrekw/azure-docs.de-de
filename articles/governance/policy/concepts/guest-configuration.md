@@ -3,16 +3,17 @@ title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurations-Agents Einstellungen in VMs überprüft.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: f37364f62550a76360ea0dbb35b92f8aac67f22f
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259149"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971095"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
-Von Azure Policy können Einstellungen innerhalb eines Computers überwacht werden. Für die Überprüfung verwenden Sie die Erweiterung und den Client Guest Configuration. Die Erweiterung überprüft über den Client u. a. die folgenden Einstellungen:
+Mit Azure Policy können Einstellungen innerhalb eines Computers überwacht werden. Dies gilt für in Azure ausgeführte Computer sowie für [über Arc verbundene Computer](../../../azure-arc/servers/overview.md).
+Für die Überprüfung verwenden Sie die Erweiterung und den Client Guest Configuration. Die Erweiterung überprüft über den Client u. a. die folgenden Einstellungen:
 
 - Die Konfiguration des Betriebssystems
 - Die Konfiguration oder das Vorhandensein der Anwendung
@@ -21,13 +22,17 @@ Von Azure Policy können Einstellungen innerhalb eines Computers überwacht werd
 Derzeit wird für die meisten Richtlinien der Azure Policy-Gastkonfiguration nur eine Überprüfung der Einstellungen auf dem Computer durchgeführt.
 Es werden keine Konfigurationen angewendet. Eine Ausnahme ist hierbei eine integrierte Richtlinie, die [weiter unten beschrieben ist](#applying-configurations-using-guest-configuration).
 
+## <a name="enable-guest-configuration"></a>Aktivieren der Gastkonfiguration
+
+Überprüfen Sie die folgenden Details, um den Status von Computern in Ihrer Umgebung zu überwachen, einschließlich Computern in Azure und über Arc verbundener Computer.
+
 ## <a name="resource-provider"></a>Ressourcenanbieter
 
 Bevor Sie Guest Configuration verwenden können, müssen Sie den Ressourcenanbieter registrieren. Der Ressourcenanbieter wird automatisch registriert, wenn die Zuweisung einer Guest Configuration-Richtlinie über das Portal erfolgt. Hierfür können Sie über das [Portal](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), die [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell) oder [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) manuell registrieren.
 
-## <a name="extension-and-client"></a>Erweiterung und Client
+## <a name="deploy-requirements-for-azure-virtual-machines"></a>Bereitstellen von Anforderungen für virtuelle Azure-Computer
 
-Zur Überprüfung von Einstellungen auf einem Computer wird eine [VM-Erweiterung](../../../virtual-machines/extensions/overview.md) aktiviert. Mit der Erweiterung werden anwendbare Richtlinienzuweisungen sowie die entsprechende Konfigurationsdefinition heruntergeladen.
+Zum Überwachen von Einstellungen innerhalb eines Computers ist eine [VM-Erweiterung](../../../virtual-machines/extensions/overview.md) aktiviert, und der Computer muss über eine systemseitig verwaltete Identität verfügen. Mit der Erweiterung werden anwendbare Richtlinienzuweisungen sowie die entsprechende Konfigurationsdefinition heruntergeladen. Die Identität wird verwendet, um den Computer zu authentifizieren, wenn Lese- und Schreibvorgänge im Gastkonfigurationsdienst durchgeführt werden. Die Erweiterung ist für über Arc verbundene Computer nicht erforderlich, da sie im Agent für über Arc verbundene Computer enthalten ist.
 
 > [!IMPORTANT]
 > Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich. Weisen Sie die folgenden Richtliniendefinitionen zu, um die Erweiterung im gewünschten Umfang bereitzustellen: 
@@ -36,13 +41,13 @@ Zur Überprüfung von Einstellungen auf einem Computer wird eine [VM-Erweiterung
 
 ### <a name="limits-set-on-the-extension"></a>Für die Erweiterung festgelegte Grenzwerte
 
-Um die Auswirkungen der Erweiterung auf die auf dem Computer ausgeführten Anwendungen zu beschränken, darf die Gastkonfiguration höchstens 5 % der CPU auslasten. Diese Einschränkung gilt sowohl für integrierte als auch für angepasste Definitionen.
+Um die Auswirkungen der Erweiterung auf die auf dem Computer ausgeführten Anwendungen zu beschränken, darf die Gastkonfiguration höchstens 5 % der CPU auslasten. Diese Einschränkung gilt sowohl für integrierte als auch für angepasste Definitionen. Dies gilt auch für den Gastkonfigurationsdienst im Agent für über Arc verbundene Computer.
 
 ### <a name="validation-tools"></a>Überprüfungstools
 
 Auf dem Computer verwendet der Gastkonfigurationsclient lokale Tools zum Ausführen der Überprüfung.
 
-In der folgenden Tabelle sind die lokalen Tools aufgeführt, die unter den jeweiligen unterstützten Betriebssystemen verwendet werden:
+In der folgenden Tabelle sind die lokalen Tools aufgeführt, die unter den jeweiligen unterstützten Betriebssystemen verwendet werden. Bei integrierten Inhalten werden diese Tools in der Gastkonfiguration automatisch geladen.
 
 |Betriebssystem|Überprüfungstool|Notizen|
 |-|-|-|
@@ -65,14 +70,10 @@ In der folgenden Tabelle sind die in Azure-Images unterstützten Betriebssysteme
 |Microsoft|Windows Server|2012 und höher|
 |Microsoft|Windows-Client|Windows 10|
 |OpenLogic|CentOS|7.3 und höher|
-|Red Hat|Red Hat Enterprise Linux|7.4 und höher|
+|Red Hat|Red Hat Enterprise Linux|7.4–7.8, 9.0 und höher|
 |Suse|SLES|12 SP3 und höher|
 
 Benutzerdefinierte Images von virtuellen Computern werden von Gastkonfigurationsrichtlinien unterstützt, sofern es sich um eines der Betriebssysteme in der obigen Tabelle handelt.
-
-### <a name="unsupported-client-types"></a>Nicht unterstützte Clienttypen
-
-Windows Server Nano Server wird in keiner Version unterstützt.
 
 ## <a name="guest-configuration-extension-network-requirements"></a>Netzwerkanforderungen für die Gastkonfigurationserweiterung
 
@@ -116,7 +117,7 @@ Passen Sie die Richtlinie an Ihre Anforderungen an, oder ordnen Sie die Richtlin
 
 Einige Parameter unterstützen einen ganzzahligen Wertebereich. Beispielsweise könnte mit der Einstellung „Maximales Kennwortalter“ die effektive „Gruppenrichtlinie“-Einstellung überwacht werden. Der Bereich „1,70“ würde sicherstellen, dass Benutzer ihre Kennwörter mindestens alle 70 Tage, aber nicht früher als nach einem Tag ändern müssen.
 
-Wenn Sie die Richtlinie mithilfe einer Azure Resource Manager-Bereitstellungsvorlage zuweisen, verwenden Sie eine Parameterdatei, um Ausnahmen zu verwalten. Checken Sie die Dateien in ein Versionskontrollsystem ein, z. B. Git. Kommentare zu Dateiänderungen geben Aufschluss darüber, warum eine Zuweisung eine Ausnahme vom erwarteten Wert darstellt.
+Wenn Sie die Richtlinie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) zuweisen, verwenden Sie eine Parameterdatei, um Ausnahmen zu verwalten. Checken Sie die Dateien in ein Versionskontrollsystem ein, z. B. Git. Kommentare zu Dateiänderungen geben Aufschluss darüber, warum eine Zuweisung eine Ausnahme vom erwarteten Wert darstellt.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Anwenden von Konfigurationen mithilfe der Gastkonfiguration
 

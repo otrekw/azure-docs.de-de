@@ -5,17 +5,17 @@ description: Erfahren Sie anhand der WhiteNoise-Pakete, wie Sie unterschiedliche
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 05/17/2020
-ms.openlocfilehash: 47497f23da94e529826b8dddb05b869727fb528e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b43fd25e77e07b7b64416d8784d47c14fed48ea7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663668"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84981845"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning"></a>Verwenden von differenziellem Datenschutz in Azure Machine Learning
 
@@ -24,6 +24,9 @@ ms.locfileid: "83663668"
 Erfahren Sie anhand der WhiteNoise Python-Pakete, wie Sie unterschiedliche bewährte Datenschutzmethoden auf Azure Machine Learning-Modelle anwenden können.
 
 Der differenzielle Datenschutz ist die Premiumdefinition des Datenschutzes. Systeme, die sich an diese Definition des Datenschutzes halten, bieten umfassende Schutzmaßnahmen gegen ein breites Spektrum von Angriffen durch Datenwiederherstellung und erneute Identifizierung, einschließlich Angriffen von Angreifern, die über zusätzliche Informationen verfügen. Erfahren Sie mehr darüber, wie der [differenzielle Datenschutz funktioniert](./concept-differential-privacy.md).
+
+> [!NOTE]
+> Beachten Sie, dass wir das Toolkit umbenennen und den neuen Namen in den nächsten Wochen einführen werden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

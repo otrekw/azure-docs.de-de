@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982954"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure
@@ -60,8 +60,8 @@ In Windows enthält eine SAP ASCS/SCS-Instanz SAP Central Services, SAP Message 
 Eine SAP ASCS/SCS-Instanz verfügt über die folgenden Komponenten:
 
 * SAP Central Services:
-    * Zwei Prozesse, Nachrichtenserver und Server zum Einreihen in die Warteschlange sowie ein \<virtueller ASCS/SCS-Hostname> für den Zugriff auf diese beiden Prozesse.
-    * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<Instanzanzahl\>
+    * Zwei Prozesse, Nachrichtenserver und Server zum Einreihen in die Warteschlange sowie \<ASCS/SCS virtual host name> für den Zugriff auf diese beiden Prozesse.
+    * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<instance number\>
 
 
 * Globaler SAP-Hostname:
@@ -83,7 +83,7 @@ _**Abbildung 3:** SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger_
 
 > [!IMPORTANT]
 > Diese beiden Komponenten werden unter der gleichen SAP ASCS/SCS-Instanz ausgeführt:
->* Es wird derselbe \<virtuelle ASCS/SCS-Hostname> für den Zugriff auf Prozesse des SAP Message Servers und des Servers zum Einreihen in die Warteschlange sowie auf Dateien des globalen SAP-Hosts über die sapmnt-Dateifreigabe verwendet.
+>* Es wird derselbe \<ASCS/SCS virtual host name> für den Zugriff auf Prozesse des SAP Message Servers und des Servers zum Einreihen in die Warteschlange sowie auf Dateien des globalen SAP-Hosts über die sapmnt-Dateifreigabe verwendet.
 >* Es wird derselbe freigegebene Clusterdatenträger (Laufwerk S:) gemeinsam genutzt.
 >
 

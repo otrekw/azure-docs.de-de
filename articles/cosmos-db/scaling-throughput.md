@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cc8f2c90e74b5b3ab6df3169df0524f1134b66e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873504"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113601"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Globales Skalieren von bereitgestelltem Durchsatz 
 
 In Azure Cosmos DB wird der bereitgestellte Durchsatz als Anforderungseinheit/Sekunde (RU/s oder die Pluralform RUs) dargestellt. Anforderungseinheiten messen die Kosten für Lese- und Schreibvorgänge für Ihre Cosmos-Container wie in der folgenden Abbildung dargestellt:
 
-![Anforderungseinheiten](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+:::image type="content" source="./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png" alt-text="Anforderungseinheiten" border="false":::
 
 Sie können Anforderungseinheiten für einen Cosmos-Container oder eine Cosmos-Datenbanken bereitstellen. In einem Container bereitgestellte Anforderungseinheiten stehen ausschließlich für die Vorgänge zur Verfügung, die in diesem Container ausgeführt werden. In einer Datenbank bereitgestellte Anforderungseinheiten werden für alle Container in dieser Datenbank (ausgenommen Container mit exklusiv zugewiesenen RUs) freigegeben.
 

@@ -3,15 +3,15 @@ title: Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines
 description: Erfahren Sie anhand eines praktischen Beispiels, wie Sie Daten mithilfe der Azure Cosmos DB-Kern-API modellieren und partitionieren.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 10f8ffd90215a21ca03e112aea463d444c623d06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af5211e82820c1052b9ea17ce1fbdb0ebd5b9f3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800374"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels
 
@@ -65,10 +65,12 @@ Wir beginnen mit zwei Containern: `users` und `posts`.
 
 In diesem Container werden nur Benutzerelemente gespeichert:
 
-    {
-      "id": "<user-id>",
-      "username": "<username>"
-    }
+```json
+{
+    "id": "<user-id>",
+    "username": "<username>"
+}
+```
 
 Wir partitionieren diesen Container nach `id`, d. h. jede logische Partition innerhalb des Containers enthält nur ein Element.
 
@@ -76,32 +78,34 @@ Wir partitionieren diesen Container nach `id`, d. h. jede logische Partition in
 
 Dieser Container hostet Beiträge, Kommentare und „Gefällt mir“-Markierungen:
 
-    {
-      "id": "<post-id>",
-      "type": "post",
-      "postId": "<post-id>",
-      "userId": "<post-author-id>",
-      "title": "<post-title>",
-      "content": "<post-content>",
-      "creationDate": "<post-creation-date>"
-    }
+```json
+{
+    "id": "<post-id>",
+    "type": "post",
+    "postId": "<post-id>",
+    "userId": "<post-author-id>",
+    "title": "<post-title>",
+    "content": "<post-content>",
+    "creationDate": "<post-creation-date>"
+}
 
-    {
-      "id": "<comment-id>",
-      "type": "comment",
-      "postId": "<post-id>",
-      "userId": "<comment-author-id>",
-      "content": "<comment-content>",
-      "creationDate": "<comment-creation-date>"
-    }
+{
+    "id": "<comment-id>",
+    "type": "comment",
+    "postId": "<post-id>",
+    "userId": "<comment-author-id>",
+    "content": "<comment-content>",
+    "creationDate": "<comment-creation-date>"
+}
 
-    {
-      "id": "<like-id>",
-      "type": "like",
-      "postId": "<post-id>",
-      "userId": "<liker-id>",
-      "creationDate": "<like-creation-date>"
-    }
+{
+    "id": "<like-id>",
+    "type": "like",
+    "postId": "<post-id>",
+    "userId": "<liker-id>",
+    "creationDate": "<like-creation-date>"
+}
+```
 
 Wir partitionieren diesen Container nach `postId`, d. h. jede logische Partition innerhalb des Containers enthält einen Beitrag, alle Kommentare zu diesem Beitrag und alle „Gefällt mir“-Markierungen des Beitrags.
 
@@ -122,7 +126,7 @@ Der nächste Schritt besteht darin, die Leistung und Skalierbarkeit der ersten V
 
 Diese Anforderung ist einfach zu implementieren, da lediglich ein Element im Container `users` erstellt oder aktualisiert wird. Die Anforderungen werden dank des Partitionsschlüssels `id` gut auf alle Partitionen verteilt.
 
-![Schreiben eines einzelnen Elements in den Container „users“](./media/how-to-model-partition-example/V1-C1.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-C1.png" alt-text="Schreiben eines einzelnen Elements in den Container „users“" border="false":::
 
 | **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
@@ -132,7 +136,7 @@ Diese Anforderung ist einfach zu implementieren, da lediglich ein Element im Con
 
 Zum Abrufen eines Benutzers wird das entsprechende Element aus dem Container `users` gelesen.
 
-![Abrufen eines einzelnen Elements aus dem Container „users“](./media/how-to-model-partition-example/V1-Q1.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="Abrufen eines einzelnen Elements aus dem Container „users“" border="false":::
 
 | **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
@@ -142,7 +146,7 @@ Zum Abrufen eines Benutzers wird das entsprechende Element aus dem Container `us
 
 Ähnlich wie bei **[C1]** muss bei dieser Anforderung nur in den Container `posts` geschrieben werden.
 
-![Schreiben eines einzelnen Elements in den Container „posts“](./media/how-to-model-partition-example/V1-C2.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Schreiben eines einzelnen Elements in den Container „posts“" border="false":::
 
 | **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
@@ -152,7 +156,7 @@ Zum Abrufen eines Benutzers wird das entsprechende Element aus dem Container `us
 
 Zunächst rufen wir das entsprechende Dokument aus dem Container `posts` ab. Da gemäß unserer Spezifikation der Benutzername des Beitragsautors und die Anzahl von Kommentaren und „Gefällt mir“-Markierungen des Beitrags aggregiert werden müssen, reicht dies jedoch nicht aus, und es müssen drei weitere SQL-Abfragen ausgegeben werden.
 
-![Abrufen eines Beitrags und Aggregieren der zusätzlichen Daten](./media/how-to-model-partition-example/V1-Q2.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="Abrufen eines Beitrags und Aggregieren der zusätzlichen Daten" border="false":::
 
 Jede der zusätzlichen Abfragen filtert nach dem Partitionsschlüssel des jeweiligen Containers. Dies ist das erwünschte Verhalten, da dadurch die Leistung und Skalierbarkeit maximiert werden. Im Endeffekt müssen jedoch zum Zurückgeben eines einzelnen Beitrags vier Vorgänge ausgeführt werden. Dies werden wir in einer der nächsten Iterationen verbessern.
 
@@ -164,7 +168,7 @@ Jede der zusätzlichen Abfragen filtert nach dem Partitionsschlüssel des jeweil
 
 Zunächst müssen wir die gewünschten Beiträge mit einer SQL-Abfrage abrufen, die die entsprechenden Beiträge für den jeweiligen Benutzer abruft. Außerdem müssen wir aber weitere Abfragen ausführen, um den Benutzernamen des Autors und die Anzahl von Kommentaren und „Gefällt mir“-Markierungen zu aggregieren.
 
-![Abrufen aller Beiträge für einen Benutzer und Aggregieren der zusätzlichen Daten](./media/how-to-model-partition-example/V1-Q3.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="Abrufen aller Beiträge für einen Benutzer und Aggregieren der zusätzlichen Daten" border="false":::
 
 Diese Implementierung hat viele Nachteile:
 
@@ -179,7 +183,7 @@ Diese Implementierung hat viele Nachteile:
 
 Ein Kommentar wird erstellt, indem das entsprechende Element in den Container `posts` geschrieben wird.
 
-![Schreiben eines einzelnen Elements in den Container „posts“](./media/how-to-model-partition-example/V1-C2.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Schreiben eines einzelnen Elements in den Container „posts“" border="false":::
 
 | **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
@@ -189,7 +193,7 @@ Ein Kommentar wird erstellt, indem das entsprechende Element in den Container `p
 
 Wir beginnen mit einer Abfrage, die alle Kommentare für den jeweiligen Beitrag abruft. Zudem müssen wir auch hier die Benutzernamen separat für jeden Kommentar aggregieren.
 
-![Abrufen aller Kommentare für einen Beitrag und Aggregieren der zusätzlichen Daten](./media/how-to-model-partition-example/V1-Q4.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="Abrufen aller Kommentare für einen Beitrag und Aggregieren der zusätzlichen Daten" border="false":::
 
 Obwohl die Hauptabfrage nach dem Partitionsschlüssel des Containers filtert, beeinträchtig das separate Aggregieren der Benutzernamen die Gesamtleistung. Dies werden wir später verbessern.
 
@@ -201,7 +205,7 @@ Obwohl die Hauptabfrage nach dem Partitionsschlüssel des Containers filtert, be
 
 Wie bei **[C3]** erstellen wir das entsprechende Element im Container `posts`.
 
-![Schreiben eines einzelnen Elements in den Container „posts“](./media/how-to-model-partition-example/V1-C2.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Schreiben eines einzelnen Elements in den Container „posts“" border="false":::
 
 | **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
@@ -211,7 +215,7 @@ Wie bei **[C3]** erstellen wir das entsprechende Element im Container `posts`.
 
 Wie bei **[Q4]** fragen wir die „Gefällt mir“-Markierungen für den Beitrag ab, und anschließend aggregieren wir die zugehörigen Benutzernamen.
 
-![Abrufen aller „Gefällt mir“-Markierungen für einen Beitrag und Aggregieren der zusätzlichen Daten](./media/how-to-model-partition-example/V1-Q5.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="Abrufen aller „Gefällt mir“-Markierungen für einen Beitrag und Aggregieren der zusätzlichen Daten" border="false":::
 
 | **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
@@ -221,7 +225,7 @@ Wie bei **[Q4]** fragen wir die „Gefällt mir“-Markierungen für den Beitra
 
 Wir rufen die neuesten Beiträge ab, indem wir den Container `posts` absteigend nach Erstellungsdatum sortiert abfragen, und anschließend aggregieren wir die Benutzernamen sowie die Anzahl von Kommentaren und „Gefällt mir“-Markierungen für jeden der Beiträge.
 
-![Abrufen der neuesten Beiträge und Aggregieren der zusätzlichen Daten](./media/how-to-model-partition-example/V1-Q6.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="Abrufen der neuesten Beiträge und Aggregieren der zusätzlichen Daten" border="false":::
 
 Auch hier filtert die ursprüngliche Abfrage nicht nach dem Partitionsschlüssel des Containers `posts`, was zu einer kostspieligen Auffächerung führt. In diesem Fall sind die Auswirkungen sogar noch gravierender, da das Resultset wesentlich größer ist und die Ergebnisse mit einer `ORDER BY`-Klausel sortiert werden, die die Kosten aufgrund der erforderlichen Anforderungseinheiten erhöht.
 
@@ -244,39 +248,43 @@ Der Grund, weshalb in einigen Fällen zusätzliche Anforderungen erforderlich si
 
 In unserem Beispiel ändern wir die Beitragselemente, indem wir den Benutzernamen des Beitragsautors, die Anzahl von Kommentaren und die Anzahl von „Gefällt mir“-Markierungen hinzufügen:
 
-    {
-      "id": "<post-id>",
-      "type": "post",
-      "postId": "<post-id>",
-      "userId": "<post-author-id>",
-      "userUsername": "<post-author-username>",
-      "title": "<post-title>",
-      "content": "<post-content>",
-      "commentCount": <count-of-comments>,
-      "likeCount": <count-of-likes>,
-      "creationDate": "<post-creation-date>"
-    }
+```json
+{
+    "id": "<post-id>",
+    "type": "post",
+    "postId": "<post-id>",
+    "userId": "<post-author-id>",
+    "userUsername": "<post-author-username>",
+    "title": "<post-title>",
+    "content": "<post-content>",
+    "commentCount": <count-of-comments>,
+    "likeCount": <count-of-likes>,
+    "creationDate": "<post-creation-date>"
+}
+```
 
 Außerdem ändern wir die Kommentar- und „Gefällt mir“-Markierungselemente, indem wir den Benutzernamen des Benutzers hinzufügen, von denen sie erstellt wurden:
 
-    {
-      "id": "<comment-id>",
-      "type": "comment",
-      "postId": "<post-id>",
-      "userId": "<comment-author-id>",
-      "userUsername": "<comment-author-username>",
-      "content": "<comment-content>",
-      "creationDate": "<comment-creation-date>"
-    }
+```json
+{
+    "id": "<comment-id>",
+    "type": "comment",
+    "postId": "<post-id>",
+    "userId": "<comment-author-id>",
+    "userUsername": "<comment-author-username>",
+    "content": "<comment-content>",
+    "creationDate": "<comment-creation-date>"
+}
 
-    {
-      "id": "<like-id>",
-      "type": "like",
-      "postId": "<post-id>",
-      "userId": "<liker-id>",
-      "userUsername": "<liker-username>",
-      "creationDate": "<like-creation-date>"
-    }
+{
+    "id": "<like-id>",
+    "type": "like",
+    "postId": "<post-id>",
+    "userId": "<liker-id>",
+    "userUsername": "<liker-username>",
+    "creationDate": "<like-creation-date>"
+}
+```
 
 ### <a name="denormalizing-comment-and-like-counts"></a>Denormalisieren der Anzahl von Kommentaren und „Gefällt mir“-Markierungen
 
@@ -328,7 +336,7 @@ Benutzernamen erfordern eine andere Herangehensweise, da sich Benutzer nicht nur
 
 In unserem Beispiel verwenden wir den Änderungsfeed des Containers `users`, um auf jede von Benutzern durchgeführte Aktualisierung des Benutzernamens zu reagieren. Wenn ein Benutzer seinen Benutzernamen aktualisiert, verteilen wir die Änderung, indem wir eine weitere gespeicherte Prozedur für den Container `posts` aufrufen:
 
-![Denormalisieren von Benutzernamen im Container „posts“](./media/how-to-model-partition-example/denormalization-1.png)
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="Denormalisieren von Benutzernamen im Container „posts“" border="false":::
 
 ```javascript
 function updateUsernames(userId, username) {
@@ -368,7 +376,7 @@ Diese gespeicherte Prozedur akzeptiert die ID des Benutzers und seinen neuen Ben
 
 Da wir die Denormalisierung hinzugefügt haben, müssen wir zum Verarbeiten dieser Anforderung nur ein einziges Element abrufen.
 
-![Abrufen eines einzelnen Elements aus dem Container „posts“](./media/how-to-model-partition-example/V2-Q2.png)
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="Abrufen eines einzelnen Elements aus dem Container „posts“" border="false":::
 
 | **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
@@ -378,7 +386,7 @@ Da wir die Denormalisierung hinzugefügt haben, müssen wir zum Verarbeiten dies
 
 Auch in diesem Fall können wir die zusätzlichen Anforderungen zum Abrufen der Benutzernamen weglassen und stattdessen eine einzige Abfrage verwenden, die nach dem Partitionsschlüssel filtert.
 
-![Abrufen aller Kommentare für einen Beitrag](./media/how-to-model-partition-example/V2-Q4.png)
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="Abrufen aller Kommentare für einen Beitrag" border="false":::
 
 | **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
@@ -388,7 +396,7 @@ Auch in diesem Fall können wir die zusätzlichen Anforderungen zum Abrufen der 
 
 Beim Auflisten der „Gefällt mir“-Markierungen haben wir die gleiche Situation.
 
-![Abrufen aller „Gefällt mir“-Markierungen für einen Beitrag](./media/how-to-model-partition-example/V2-Q5.png)
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="Abrufen aller „Gefällt mir“-Markierungen für einen Beitrag" border="false":::
 
 | **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
@@ -402,7 +410,7 @@ Wenn wir uns die Verbesserungen der Gesamtleistung ansehen, fällt auf, dass wir
 
 Diese Anforderung profitiert bereits von den Verbesserungen, die wir zur Vermeidung zusätzlicher Abfragen in Version 2 eingeführt haben.
 
-![Abrufen aller Beiträge für einen Benutzer](./media/how-to-model-partition-example/V2-Q3.png)
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="Abrufen aller Beiträge für einen Benutzer" border="false":::
 
 Die verbleibende Abfrage filtert jedoch noch immer nicht nach dem Partitionsschlüssel des Containers `posts`.
 
@@ -417,25 +425,27 @@ Wir fügen daher eine zweite Denormalisierungsebene hinzu, indem wir alle Posts 
 
 Der Container `users` enthält jetzt zwei Arten von Elementen:
 
-    {
-      "id": "<user-id>",
-      "type": "user",
-      "userId": "<user-id>",
-      "username": "<username>"
-    }
+```json
+{
+    "id": "<user-id>",
+    "type": "user",
+    "userId": "<user-id>",
+    "username": "<username>"
+}
 
-    {
-      "id": "<post-id>",
-      "type": "post",
-      "postId": "<post-id>",
-      "userId": "<post-author-id>",
-      "userUsername": "<post-author-username>",
-      "title": "<post-title>",
-      "content": "<post-content>",
-      "commentCount": <count-of-comments>,
-      "likeCount": <count-of-likes>,
-      "creationDate": "<post-creation-date>"
-    }
+{
+    "id": "<post-id>",
+    "type": "post",
+    "postId": "<post-id>",
+    "userId": "<post-author-id>",
+    "userUsername": "<post-author-username>",
+    "title": "<post-title>",
+    "content": "<post-content>",
+    "commentCount": <count-of-comments>,
+    "likeCount": <count-of-likes>,
+    "creationDate": "<post-creation-date>"
+}
+```
 
 Beachten Sie dabei Folgendes:
 
@@ -444,11 +454,11 @@ Beachten Sie dabei Folgendes:
 
 Um diese Denormalisierung zu erreichen, verwenden wir wieder den Änderungsfeed. Dieses Mal reagieren wir auf den Änderungsfeed des Containers `posts`, um alle neuen oder aktualisierten Beiträge im Container `users` zu verteilen. Da zum Auflisten von Beiträgen nicht der vollständige Inhalt zurückgegeben werden muss, können wir die Beiträge zudem im Prozess abschneiden.
 
-![Denormalisieren von Beiträgen im Container „users“](./media/how-to-model-partition-example/denormalization-2.png)
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="Denormalisieren von Beiträgen im Container „users“" border="false":::
 
 Jetzt können wir unsere Abfrage an den Container `users` weiterleiten und dabei nach dem Partitionsschlüssel des Containers filtern.
 
-![Abrufen aller Beiträge für einen Benutzer](./media/how-to-model-partition-example/V3-Q3.png)
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="Abrufen aller Beiträge für einen Benutzer" border="false":::
 
 | **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
@@ -458,30 +468,32 @@ Jetzt können wir unsere Abfrage an den Container `users` weiterleiten und dabei
 
 Hier haben wir es mit einer ähnlichen Situation zu tun: Auch nach dem Beseitigen der zusätzlichen Abfragen durch das Hinzufügen der Denormalisierung in Version 2 filtert die verbleibende Abfrage nicht nach dem Partitionsschlüssel des Containers:
 
-![Abrufen der neuesten Beiträge](./media/how-to-model-partition-example/V2-Q6.png)
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="Abrufen der neuesten Beiträge" border="false":::
 
 Gemäß dem obigen Ansatz muss die Anforderung auf eine Partition beschränkt werden, um die Leistung und Skalierbarkeit der Anforderung zu maximieren. Dies ist möglich, da wir nur eine begrenzte Anzahl von Elementen zurückgeben müssen. Zum Auffüllen der Startseite unserer Blogplattform müssen wir nur die 100 neuesten Beiträge abrufen, ohne das gesamte Dataset zu paginieren.
 
 Zum Optimieren dieser letzten Anforderung fügen wir unserem Entwurf daher einen dritten Container hinzu, der einzig zur Verarbeitung dieser Anforderung dient. Wir denormalisieren unsere Beiträge im neuen Container `feed`:
 
-    {
-      "id": "<post-id>",
-      "type": "post",
-      "postId": "<post-id>",
-      "userId": "<post-author-id>",
-      "userUsername": "<post-author-username>",
-      "title": "<post-title>",
-      "content": "<post-content>",
-      "commentCount": <count-of-comments>,
-      "likeCount": <count-of-likes>,
-      "creationDate": "<post-creation-date>"
-    }
+```json
+{
+    "id": "<post-id>",
+    "type": "post",
+    "postId": "<post-id>",
+    "userId": "<post-author-id>",
+    "userUsername": "<post-author-username>",
+    "title": "<post-title>",
+    "content": "<post-content>",
+    "commentCount": <count-of-comments>,
+    "likeCount": <count-of-likes>,
+    "creationDate": "<post-creation-date>"
+}
+```
 
 Dieser Container ist nach `type` partitioniert, und der Typ ist bei unseren Elementen immer `post`. Dadurch wird sichergestellt, dass sich alle Elemente in diesem Container in derselben Partition befinden.
 
 Zum Erreichen der Denormalisierung müssen wir nur die Änderungsfeedpipeline verknüpfen, die wir zuvor hinzugefügt haben, um die Beiträge an den neuen Container zu verteilen. Wichtig ist hierbei, dass nur die 100 neuesten Beiträge gespeichert werden dürfen. Andernfalls kann der Inhalt des Containers die maximale Größe einer Partition überschreiten. Zu diesem Zweck wird jedes Mal, wenn ein Dokument im Container hinzugefügt wird, ein [nachgestellter Trigger](stored-procedures-triggers-udfs.md#triggers) aufgerufen:
 
-![Denormalisieren von Beiträgen im Container „feed“](./media/how-to-model-partition-example/denormalization-3.png)
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="Denormalisieren von Beiträgen im Container „feed“" border="false":::
 
 Hier sehen Sie den Text des nachgestellten Triggers, der die Auflistung abschneidet:
 
@@ -532,7 +544,7 @@ function truncateFeed() {
 
 Im letzten Schritt müssen Sie die Abfrage an den neuen Container `feed` umleiten:
 
-![Abrufen der neuesten Beiträge](./media/how-to-model-partition-example/V3-Q6.png)
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="Abrufen der neuesten Beiträge" border="false":::
 
 | **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |

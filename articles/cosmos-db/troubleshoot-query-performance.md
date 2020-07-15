@@ -8,12 +8,12 @@ ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 977b2fa40e2ce27a2711e5a44f5fb487433c9462
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714558"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117912"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Behandeln von Problemen bei Verwendung von Azure Cosmos DB
 
@@ -47,7 +47,7 @@ Bevor Sie diesen Leitfaden lesen, sollten Sie sich mit einigen gängigen SDK-Pro
 
 Beim Optimieren einer Abfrage in Azure Cosmos DB ist der erste Schritt immer das [Abrufen der Abfragemetriken](profile-sql-api-query.md) für Ihre Abfrage. Diese Metriken sind auch über das Azure-Portal verfügbar. Sobald Sie Ihre Abfrage im Data Explorer ausführen, werden die Abfragemetriken neben der Registerkarte **Ergebnisse** angezeigt:
 
-[ ![Abrufen von Abfragemetriken](./media/troubleshoot-query-performance/obtain-query-metrics.png) ](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+:::image type="content" source="./media/troubleshoot-query-performance/obtain-query-metrics.png" alt-text="Abrufen von Abfragemetriken" lightbox="./media/troubleshoot-query-performance/obtain-query-metrics.png":::
 
 Vergleichen Sie nach dem Abrufen der Abfragemetriken die **Anzahl der abgerufenen Dokumente** mit der **Anzahl der Ausgabedokumente** für Ihre Abfrage. Verwenden Sie diesen Vergleich zum Identifizieren der relevanten Abschnitte, auf die in diesem Artikel verwiesen werden soll.
 

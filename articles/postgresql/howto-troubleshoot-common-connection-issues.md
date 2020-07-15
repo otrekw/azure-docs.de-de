@@ -5,14 +5,14 @@ keywords: PostgreSQL-Verbindung, Verbindungszeichenfolge, Verbindungsprobleme, v
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: cf051da4e2976ca54c95b54cd6ac89cb6f6cc1b1
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: c97e8e0d55a99e0b022bdc6e97edc778d7b6588a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562218"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107596"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL – Einzelserver
 
@@ -50,6 +50,7 @@ Wenn die Anwendung dauerhaft keine Verbindung mit Azure Database for PostgreSQL 
 * Konfiguration der Clientfirewall: Die Firewall auf dem Client muss Verbindungen mit Ihrem Datenbankserver zulassen. IP-Adressen und Ports des Servers, mit dem Sie eine Verbindung herstellen, sowie Anwendungsnamen wie PostgreSQL müssen in einigen Firewalls zugelassen sein.
 * Benutzerfehler: Sie haben möglicherweise Verbindungsparameter wie den Servernamen in der Verbindungszeichenfolge falsch geschrieben, oder es fehlt das Suffix *\@Servername* im Benutzernamen.
 * Sollte ein Fehler mit dem Hinweis angezeigt werden, dass der _Server nicht für das Zulassen von IPv6-Verbindungen konfiguriert ist_, beachten Sie, dass im Basic-Tarif keine VNET-Dienstendpunkte unterstützt werden. Entfernen Sie den Endpunkt „Microsoft.Sql“ aus dem Subnetz, das mit dem Basic-Server verbunden werden soll.
+* Wenn der Verbindungsfehler _sslmode value „***“ invalid when SSL support is not compiled in_ (sslmode-Wert „***“ ungültig, wenn keine SSL-Unterstützung mitkompiliert wurde) angezeigt wird, bedeutet das, dass der PostgreSQL-Client SSL nicht unterstützt. Höchstwahrscheinlich wurde die clientseitige libpq nicht mit dem Flag „--with-openssl“ kompiliert. Versuchen Sie, eine Verbindung mit einem PostgreSQL-Client herzustellen, der SSL unterstützt. 
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Schritte zum Beheben dauerhafter Verbindungsprobleme
 

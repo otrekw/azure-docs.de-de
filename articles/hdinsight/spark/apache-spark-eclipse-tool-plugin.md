@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 5ae9190213f753f8b9440ced52e4d04626af13f9
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732997"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Erstellen von Apache Spark-Anwendungen für HDInsight-Cluster mit dem Azure-Toolkit für Eclipse
@@ -50,8 +50,8 @@ Wenn Sie Eclipse öffnen, erkennen die HDInsight Tools automatisch, ob das Scala
 1. Wählen Sie die Registerkarte **Installiert** aus.
 
 1. Es sollte mindestens Folgendes angezeigt werden:
-    * Azure-Toolkit für Eclipse \<-Version>.
-    * Scala-IDE \<-Version>.
+    * Azure-Toolkit für Eclipse \<version>
+    * Scala-IDE \<version>
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Melden Sie sich bei Ihrem Azure-Abonnement an.
 

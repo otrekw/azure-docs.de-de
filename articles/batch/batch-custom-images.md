@@ -1,21 +1,23 @@
 ---
-title: Bereitstellen eines benutzerdefinierten Pools aus einem verwalteten Image
-description: Erstellen Sie einen Batch-Pool über eine verwaltete Imageressource, um Serverknoten mit den Softwarekomponenten und Daten für Ihre Anwendung bereitzustellen.
+title: Verwenden eines verwalteten Images zum Erstellen eines benutzerdefinierten Imagepools
+description: Erstellen Sie einen benutzerdefinierten Batch-Imagepool über ein verwaltetes Image, um Serverknoten mit den Softwarekomponenten und Daten für Ihre Anwendung bereitzustellen.
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: fbb336ff9d3d53cc53004c577e291afdba7702f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 07/01/2020
+ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851284"
 ---
-# <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Verwenden eines verwalteten Images zum Erstellen eines VM-Pools
+# <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>Verwenden eines verwalteten Images zum Erstellen eines benutzerdefinierten Imagepools
 
-Zum Erstellen eines benutzerdefinierten Images für die virtuellen Computer des Batch-Pools können Sie ein verwaltetes Image zum Erstellen einer [Shared Image Gallery](batch-sig-images.md) verwenden. Die ausschließliche Verwendung eines verwalteten Images wird ebenfalls unterstützt, jedoch nur für API-Versionen bis einschließlich 2019-08-01.
+Zum Erstellen eines benutzerdefinierten Imagepools für die virtuellen Computer des Batch-Pools können Sie ein verwaltetes Image zum Erstellen eines [Shared Image Gallery-Images](batch-sig-images.md) verwenden. Die ausschließliche Verwendung eines verwalteten Images wird ebenfalls unterstützt, jedoch nur für API-Versionen bis einschließlich 2019-08-01. 
 
 > [!IMPORTANT]
 > In den meisten Fällen sollten Sie benutzerdefinierte Images mithilfe von Shared Image Gallery erstellen. Durch die Verwendung von Shared Image Gallery können Sie Pools schneller bereitstellen, eine größere Anzahl von virtuellen Computern skalieren und die Zuverlässigkeit bei der Bereitstellung virtueller Computer verbessern. Weitere Informationen finden Sie unter [Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Pools](batch-sig-images.md).
+
+In diesem Thema wird erläutert, wie ein benutzerdefinierter Imagepool nur mithilfe eines verwalteten Images erstellt wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -26,7 +28,7 @@ Zum Erstellen eines benutzerdefinierten Images für die virtuellen Computer des 
 
 - **Azure Active Directory-Authentifizierung (Azure AD)** . Die Batch-Client-API muss die Azure AD-Authentifizierung verwenden. Die Azure Batch-Unterstützung für Azure AD ist unter [Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory](batch-aad-auth.md) dokumentiert.
 
-## <a name="prepare-a-custom-image"></a>Vorbereiten eines benutzerdefinierten Images
+## <a name="prepare-a-managed-image"></a>Vorbereiten eines verwalteten Images
 
 In Azure können Sie ein verwaltetes Image über folgende Komponenten vorbereiten:
 
@@ -57,7 +59,7 @@ Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer VHD. 
 
 Verwenden Sie zum Erstellen eines verwalteten Images auf der Grundlage einer Momentaufnahme Azure-Befehlszeilentools, etwa den Befehl [az image create](/cli/azure/image). Sie können ein Image erstellen, indem Sie eine Momentaufnahme des Betriebssystemdatenträgers und optional Momentaufnahmen der Datenträger angeben.
 
-## <a name="create-a-pool-from-a-custom-image"></a>Erstellen eines Pools aus einem benutzerdefinierten Image
+## <a name="create-a-pool-from-a-managed-image"></a>Erstellen eines Pools aus einem verwalteten Image
 
 Nachdem Sie die Ressourcen-ID des verwalteten Images gefunden haben, erstellen Sie einen benutzerdefinierten Imagepool aus diesem Image. In den folgenden Schritten wird gezeigt, wie Sie einen benutzerdefinierten Imagepool mit dem Batch-Dienst oder dem Batch Management erstellen.
 

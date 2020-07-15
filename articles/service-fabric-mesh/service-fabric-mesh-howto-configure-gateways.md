@@ -7,10 +7,10 @@ ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75461957"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurieren einer Gatewayressource zum Weiterleiten von Anforderungen
@@ -219,8 +219,8 @@ Die vollständige Konfiguration einer Gatewayressource sieht folgendermaßen aus
 ```
 
 Dieses Gateway wird für eine Linux-Anwendung „MeshAppLinux“ konfiguriert, die aus mindestens zwei Diensten besteht („helloWorldService“ und „counterService“) und an Port 80 lauscht. Abhängig von der URL-Struktur der eingehenden Anforderung wird die Anforderung an einen dieser Dienste weitergeleitet. 
-* Bei „\<IPAddress>:80/helloWorld/\<Anforderung\>“ wird eine Anforderung an den helloWorldListener im helloWorldService weitergeleitet. 
-* Bei „\<IPAddress>:80/counter/\<Anforderung\>“ wird eine Anforderung an den counterListener im counterService weitergeleitet. 
+* Bei „\<IPAddress>:80/helloWorld/\<request\>“ wird eine Anforderung an helloWorldListener in helloWorldService weitergeleitet. 
+* Bei „\<IPAddress>:80/counter/\<request\>“ wird eine Anforderung an counterListener in counterService weitergeleitet. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Bereitstellen des [Eingangsbeispiels](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress), um Gateways in Aktion zu erleben

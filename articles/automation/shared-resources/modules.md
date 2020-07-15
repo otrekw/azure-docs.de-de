@@ -8,11 +8,11 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82bec23ac35f4f0e6c65720d0c3a36355fa4224d
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 14b26c4c5a72ef2919aca1f872b198257b9f37f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83713453"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Verwalten von Modulen in Azure Automation
@@ -372,5 +372,5 @@ Remove-AzAutomationModule -Name <moduleName> -AutomationAccountName <automationA
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-3.7.0)
-* [Schreiben eines Windows PowerShell-Moduls](https://docs.microsoft.com/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7)
+* Weitere Informationen zur Verwendung von Azure PowerShell-Modulen finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-3.7.0).
+* Weitere Informationen zum Erstellen von PowerShell-Modulen finden Sie unter [Schreiben eines Windows PowerShell-Moduls](https://docs.microsoft.com/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7).

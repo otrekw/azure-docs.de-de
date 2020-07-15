@@ -1,14 +1,14 @@
 ---
 title: Einrichten einer privaten Verbindung
-description: Hier erfahren Sie, wie Sie einen privaten Endpunkt in einer Containerregistrierung einrichten und Zugriff auf ein virtuelles Netzwerk über eine private Verbindung ermöglichen.
+description: Richten Sie einen privaten Endpunkt in einer Containerregistrierung ein, und ermöglichen Sie den Zugriff auf ein virtuelles Netzwerk über eine private Verbindung. Der Zugriff auf private Links ist ein Feature der Dienstebene Premium.
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: da51a35b66b793294f146c5a0a30b6a91d8aa01b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850044"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509337"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Konfigurieren von Azure Private Link für eine Azure-Containerregistrierung 
 

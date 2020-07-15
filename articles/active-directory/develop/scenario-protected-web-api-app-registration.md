@@ -13,10 +13,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868846"
 ---
 # <a name="protected-web-api-app-registration"></a>Geschützte Web-API: App-Registrierung
@@ -141,7 +141,7 @@ So fügen Sie diese erhöhte Sicherheit hinzu
 
    > [!IMPORTANT]
    >
-   > Wenn Sie **Benutzerzuweisung erforderlich?** auf **Ja** einstellen, überprüft Azure AD die App-Rollenzuweisungen des Clients, wenn er ein Zugriffstoken für die Web-API anfordert. Wenn dem Client keinen App-Rollen zugewiesen sind, gibt Azure AD folgenden Fehler zurück: „invalid_client: AADSTS501051: Anwendung \<Anwendungsname\> ist keine Rolle für die \<Web-API\> zugewiesen“.
+   > Wenn Sie **Benutzerzuweisung erforderlich?** auf **Ja** einstellen, überprüft Azure AD die App-Rollenzuweisungen des Clients, wenn er ein Zugriffstoken für die Web-API anfordert. Wenn dem Client keinen App-Rollen zugewiesen sind, gibt Azure AD folgenden Fehler zurück: „invalid_client: AADSTS501051: Anwendung \<application name\> ist keine Rolle für die \<web API\> zugewiesen“.
    >
    > Wenn Sie **Benutzerzuweisung erforderlich?** auf **Nein** eingestellt lassen, überprüft Azure AD die App-Rollenzuweisungen nicht, wenn ein Client ein Zugriffstoken für Ihre Web-API anfordert. Jeder Daemon-Client (d. h. jeder Client, der den Clientanmeldeinformations-Flow verwendet) kann ein Zugriffstoken für die API abrufen, indem er lediglich seine Zielgruppe angibt. Jede Anwendung kann auf die API zugreifen, ohne für sie Berechtigungen anfordern zu müssen.
    >

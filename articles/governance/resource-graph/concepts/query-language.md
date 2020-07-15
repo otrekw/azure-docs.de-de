@@ -1,14 +1,14 @@
 ---
 title: Grundlegendes zur Abfragesprache
 description: Beschreibt Resource Graph-Tabellen und die verfügbaren Kusto-Datentypen, -Operatoren und -Funktionen, die mit Azure Resource Graph verwendet werden können.
-ms.date: 03/07/2020
+ms.date: 06/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 944d0f2676f1a82c80be33a6c1a91d34bc8a32f7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4c545a8a5113f800545660a3ea812b61711630c2
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654449"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970449"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Grundlegendes zur Azure Resource Graph-Abfragesprache
 
@@ -17,12 +17,13 @@ Die Abfragesprache für Azure Resource Graph unterstützt eine Reihe von Operato
 In diesem Artikel werden die von Resource Graph unterstützten Sprachkomponenten behandelt:
 
 - [Resource Graph-Tabellen](#resource-graph-tables)
+- [Benutzerdefinierte Sprachelemente in Resource Graph](#resource-graph-custom-language-elements)
 - [Unterstützte KQL-Sprachelemente](#supported-kql-language-elements)
 - [Escapezeichen](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Resource Graph-Tabellen
 
-Resource Graph stellt mehrere Tabellen für die Daten bereit, die in Bezug auf Resource Manager-Ressourcentypen und deren Eigenschaften gespeichert werden. Diese Tabellen können mit den Operatoren `join` oder `union` verwendet werden, um Eigenschaften von verknüpften Ressourcentypen zu erhalten. Es folgt eine Liste der in Resource Graph verfügbaren Tabellen:
+Resource Graph umfasst mehrere Tabellen für die Daten, die in Bezug auf Azure Resource Manager-Ressourcentypen und deren Eigenschaften gespeichert werden. Diese Tabellen können mit den Operatoren `join` oder `union` verwendet werden, um Eigenschaften von verknüpften Ressourcentypen zu erhalten. Es folgt eine Liste der in Resource Graph verfügbaren Tabellen:
 
 |Resource Graph-Tabellen |BESCHREIBUNG |
 |---|---|
@@ -61,6 +62,33 @@ Resources
 
 > [!NOTE]
 > Wenn Sie die Ergebnisse von `join` mit `project` einschränken, muss die Eigenschaft, die von `join` zum Verknüpfen der beiden Tabellen verwendet wird (_subscriptionId_ im obigen Beispiel), in `project` enthalten sein.
+
+## <a name="resource-graph-custom-language-elements"></a>Benutzerdefinierte Sprachelemente in Resource Graph
+
+### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>Syntax für freigegebene Abfragen (Vorschauversion)
+
+Als Previewfunktion kann der Zugriff auf eine [freigegebene Abfrage](../tutorials/create-share-query.md) direkt in einer Resource Graph-Abfrage erfolgen. Dieses Szenario ermöglicht es, Standardabfragen als freigegebene Abfragen zu erstellen und wiederzuverwenden. Verwenden Sie die Syntax `{{shared-query-uri}}`, um eine freigegebene Abfrage innerhalb einer Resource Graph-Abfrage aufzurufen. Der URI der freigegebenen Abfrage entspricht der _Ressourcen-ID_ der freigegebenen Abfrage auf der Seite **Einstellungen** für diese Abfrage. In diesem Beispiel ist `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS` der URI für die freigegebene Abfrage.
+Dieser URI verweist auf das Abonnement, die Ressourcengruppe und den vollständigen Namen der freigegebenen Abfrage, auf die in einer anderen Abfrage verwiesen werden soll. Diese Abfrage ist identisch mit der Abfrage, die unter [Tutorial: Erstellen und Freigeben einer Abfrage](../tutorials/create-share-query.md) erstellt wird.
+
+> [!NOTE]
+> Eine Abfrage, die auf eine freigegebene Abfrage verweist, kann nicht als freigegebene Abfrage gespeichert werden.
+
+Beispiel 1: Alleiniges Verwenden der freigegebenen Abfrage
+
+Die Ergebnisse dieser Resource Graph-Abfrage sind identisch mit denen der in der freigegebenen Abfrage gespeicherten.
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+```
+
+Beispiel 2: Einfügen der freigegebenen Abfrage als Teil einer größeren Abfrage
+
+Bei dieser Abfrage wird zunächst die freigegebene Abfrage und dann `limit` verwendet, um die Ergebnisse weiter einzugrenzen.
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+| where properties_storageProfile_osDisk_osType =~ 'Windows'
+```
 
 ## <a name="supported-kql-language-elements"></a>Unterstützte KQL-Sprachelemente
 

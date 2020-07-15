@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: edf22c7f1086c1d13717adaff514c42aab3a4cfd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b33d8db9d43b151cb0405ea24e0bea87e21cbdc9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033791"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84345341"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Erkennbare Typen von Problemen mit Engpässen bei der Abfrageleistung in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -153,11 +153,11 @@ Eine langsame Abfrageleistung, die nicht auf suboptimale Abfragepläne und fehle
 - Erkennen von Ressourcenlimits mithilfe von [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#reaching-resource-limits)
 - Erkennen von Ressourcenproblemen mithilfe von [DMVs](database/monitoring-with-dmvs.md):
 
-  - Die DMV [sys.dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) gibt die CPU-, E/A- und Arbeitsspeichernutzung für eine SQL-Datenbank zurück. Für alle 15 Sekunden ist eine Zeile enthalten, selbst wenn keine Aktivität in der Datenbank erfolgt ist. Verlaufsdaten werden eine Stunde lang aufbewahrt.
+  - Die DMV [sys.dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) gibt die CPU-, E/A- und Arbeitsspeichernutzung für die Datenbank zurück. Für alle 15 Sekunden ist eine Zeile enthalten, selbst wenn keine Aktivität in der Datenbank erfolgt ist. Verlaufsdaten werden eine Stunde lang aufbewahrt.
   - Die DMV [sys.resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) gibt CPU-Auslastungs- und Speicherdaten für Azure SQL-Datenbank zurück. Die Daten werden in Intervallen von fünf Minuten gesammelt und aggregiert.
   - [Viele einzelne Abfragen, die zusammen zu einer hohen CPU-Auslastung führen](database/monitoring-with-dmvs.md#many-individual-queries-that-cumulatively-consume-high-cpu)
 
-Wenn Sie das Problem als unzureichende Ressource identifizieren, können Sie die Ressourcen ausbauen, um die Kapazität Ihrer SQL-Datenbank-Instanz zu erhöhen und die CPU-Anforderungen zu erfüllen. Weitere Informationen finden Sie unter [Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank](database/single-database-scale.md) sowie unter [Skalieren von Ressourcen für Pools für elastische Datenbanken in Azure SQL-Datenbank](database/elastic-pool-scale.md). Informationen zum Skalieren einer verwalteten Instanz finden Sie unter [Ressourcenlimits der Dienstebene](managed-instance/resource-limits.md#service-tier-characteristics).
+Wenn Sie herausfinden, dass das Problem durch unzureichende Ressourcen entstanden ist, können Sie die Ressourcen ausbauen, um die Kapazität Ihrer Datenbank zu erhöhen und die CPU-Anforderungen zu erfüllen. Weitere Informationen finden Sie unter [Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank](database/single-database-scale.md) sowie unter [Skalieren von Ressourcen für Pools für elastische Datenbanken in Azure SQL-Datenbank](database/elastic-pool-scale.md). Informationen zum Skalieren einer verwalteten Instanz finden Sie unter [Ressourcenlimits der Dienstebene](managed-instance/resource-limits.md#service-tier-characteristics).
 
 ## <a name="performance-problems-caused-by-increased-workload-volume"></a>Leistungsprobleme aufgrund eines erhöhten Workloadaufkommens
 

@@ -1,9 +1,9 @@
 ---
-title: Überwachen der Leistung mithilfe von dynamischen Verwaltungssichten
+title: Überwachen der Leistung mithilfe von DMVs
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Erfahren Sie, wie Sie allgemeine Leistungsprobleme mithilfe der dynamischen Verwaltungssichten zum Überwachen von Microsoft Azure SQL-Datenbank und Azure SQL Managed Instance ermitteln und diagnostizieren.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 04/19/2020
-ms.openlocfilehash: 68ae42faaf4f3aea851fa1649ba033f60f2b199a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f0a9e36113226a40f4bd21a7b171ca7a65930f95
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193912"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987235"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Überwachen der Leistung von Microsoft Azure SQL-Datenbank und Azure SQL Managed Instance mithilfe von dynamischen Verwaltungssichten
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -364,7 +364,7 @@ GROUP BY wait_type
 ORDER BY SUM(wait_time) DESC;
 ```
 
-### <a name="identity-high-memory-consuming-statements"></a>Ermitteln von Anweisungen mit hohem Arbeitsspeicherverbrauch
+### <a name="identify-high-memory-consuming-statements"></a>Ermitteln von Anweisungen mit hohem Arbeitsspeicherverbrauch
 
 Verwenden Sie die folgende Abfrage, um Anweisungen mit hohem Arbeitsspeicherverbrauch zu identifizieren:
 

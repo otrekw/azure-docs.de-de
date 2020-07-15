@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: df9135c39c1ff27abe8915c221185fca517a5614
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 44a51972e459f64f44a791ef1cf40825dddedf91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849789"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85798152"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
 
@@ -41,7 +41,7 @@ Betrachten Sie z. B. dieses Element:
 
 Es wird durch die folgende Struktur dargestellt:
 
-![Das vorherige Element als Struktur dargestellt](./media/index-overview/item-as-tree.png)
+:::image type="content" source="./media/index-overview/item-as-tree.png" alt-text="Das vorherige Element als Struktur dargestellt" border="false":::
 
 Beachten Sie, wie Arrays in der Struktur codiert werden: Jeder Eintrag in einem Array erhält direkt einen Zwischenknoten, der mit dem Index dieses Eintrags innerhalb des Arrays bezeichnet ist (0, 1 usw.).
 
@@ -51,14 +51,14 @@ Azure Cosmos DB transformiert die Elemente in Strukturen, da so über die Pfade
 
 Dies sind die Pfade für jede Eigenschaft aus dem oben beschriebenen Beispielelement:
 
-    /locations/0/country: "Germany"
-    /locations/0/city: "Berlin"
-    /locations/1/country: "France"
-    /locations/1/city: "Paris"
-    /headquarters/country: "Belgium"
-    /headquarters/employees: 250
-    /exports/0/city: "Moscow"
-    /exports/1/city: "Athens"
+- /locations/0/country: "Germany"
+- /locations/0/city: "Berlin"
+- /locations/1/country: "France"
+- /locations/1/city: "Paris"
+- /headquarters/country: "Belgium"
+- /headquarters/employees: 250
+- /exports/0/city: "Moscow"
+- /exports/1/city: "Athens"
 
 Wenn ein Element geschrieben wird, indiziert Azure Cosmos DB den Pfad jeder Eigenschaft und den zugehörigen Wert.
 
@@ -181,7 +181,7 @@ Die während der Indizierung der Daten extrahierten Pfade vereinfachen das Suche
 
 Betrachten Sie beispielsweise die folgende Abfrage: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Das Abfrageprädikat (nach Elementen filtern, die an beliebiger Stelle „France“ als Land oder Region enthalten) würde dem Pfad entsprechen, der rot hervorgehoben ist:
 
-![Abgleichen mit einem bestimmten Pfad in einer Struktur](./media/index-overview/matching-path.png)
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Abgleichen mit einem bestimmten Pfad in einer Struktur" border="false":::
 
 > [!NOTE]
 > Eine `ORDER BY`-Klausel, die anhand einer einzelnen Eigenschaft geordnet wird, benötigt *immer* einen Range-Index. Falls der referenzierte Pfad diesen nicht aufweist, tritt ein Fehler auf. Ebenso benötigt eine `ORDER BY`-Abfrage, die nach mehreren Eigenschaften sortiert, *immer* einen zusammengesetzten Index.

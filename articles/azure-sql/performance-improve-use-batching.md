@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 0b0ece8adf58d894d9ccafbbc97dea9fba2b3c5d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 01e1c63a4cfea367a0f721ac33986abade8b5b35
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033611"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343828"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Gewusst wie: Verbessern der Leistung von Azure SQL-Datenbank- und Azure SQL Managed Instance-Anwendungen mithilfe der Batchverarbeitung
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 Mit Batchvorgängen für Azure SQL-Datenbank und Azure SQL Managed Instance können Sie die Leistung und Skalierbarkeit Ihrer Anwendungen erheblich verbessern. Zur Veranschaulichung der Vorteile werden im ersten Teil dieses Artikels einige Beispieltestergebnisse angeführt, in denen sequenzielle und batchbasierte Anforderungen an eine Datenbank in Azure SQL-Datenbank oder Azure SQL Managed Instance verglichen werden. Der Rest des Artikels geht auf Techniken, Szenarien und Überlegungen ein, die Sie bei der erfolgreichen Verwendung der Batchverarbeitung in Ihrer Azure-Anwendung unterstützen.
 
-## <a name="why-is-batching-important-for-azure-sql-database-and-azure-sql-managed-instance"></a>Die Bedeutung der Batchverarbeitung für Azure SQL-Datenbank und Azure SQL Managed Instance
+## <a name="why-is-batching-important-for-azure-sql-database-and-azure-sql-managed-instance"></a>Die Bedeutung der Batchverarbeitung für Azure SQL-Datenbank und Azure SQL Managed Instance
 
 Die Batchverarbeitung von Aufrufen an einen Remotedienst ist eine bewährte Strategie zur Verbesserung von Leistung und Skalierbarkeit. Für jede Interaktion mit einem Remotedienst (also etwa für Serialisierung, Netzwerkübertragung und Deserialisierung) fallen feste Verarbeitungskosten an. Durch das Zusammenfassen vieler einzelner Transaktionen in einem einzigen Batch werden diese Kosten minimiert.
 
@@ -331,7 +331,7 @@ In unseren Tests hatte die Aufspaltung großer Batches in kleinere Blöcke in de
 > [!NOTE]
 > Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Artikels](#note-about-timing-results-in-this-article).
 
-Wie Sie sehen, erzielen Sie bei 1000 Zeilen ein optimales Ergebnis, wenn Sie alle auf einmal übermitteln. In anderen (hier nicht gezeigten) Tests wurde bei einem Batch mit 10.000 Zeilen ein geringer Leistungszuwachs erzielt, indem der Batch in zwei Batches mit jeweils 5.000 Zeilen aufgeteilt wurde. Das Tabellenschema für diese Tests ist verhältnismäßig einfach. Führen Sie daher am besten Tests mit Ihren spezifischen Daten und Batchgrößen durch, um diese Ergebnisse zu überprüfen.
+Wie Sie sehen, erzielen Sie bei 1000 Zeilen ein optimales Ergebnis, wenn Sie alle auf einmal übermitteln. In anderen (hier nicht gezeigten) Tests wurde bei einem Batch mit 10.000 Zeilen ein geringer Leistungszuwachs erzielt, indem er in zwei Batches mit jeweils 5.000 Zeilen aufgeteilt wurde. Das Tabellenschema für diese Tests ist verhältnismäßig einfach. Führen Sie daher am besten Tests mit Ihren spezifischen Daten und Batchgrößen durch, um diese Ergebnisse zu überprüfen.
 
 Ein weiterer zu beachtender Faktor ist, dass Azure SQL-Datenbank oder Azure SQL Managed Instance möglicherweise mit einer Drosselung reagiert und den Commit für den Batch verweigert, wenn der gesamte Batch zu groß wird. Testen Sie Ihr jeweiliges Szenario, um die ideale Batchgröße zu ermitteln und optimale Ergebnisse zu erzielen. Ermöglichen Sie die Konfiguration der Batchgröße zur Laufzeit, um sie auf der Grundlage von Leistung oder Fehlern schnell anpassen zu können.
 

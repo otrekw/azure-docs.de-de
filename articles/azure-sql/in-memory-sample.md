@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: aa26b0c6e30413366e06673a0890b21434fc842b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84034391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84345273"
 ---
 # <a name="in-memory-sample"></a>In-Memory-Beispiel
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -47,7 +47,7 @@ Eine einfachere, aber visuell ansprechendere Demo der Leistung von In-Memory-OLT
 
 ### <a name="installation-steps"></a>Installationsschritte
 
-1. Erstellen Sie im [Azure-Portal](https://portal.azure.com/) auf einem Server eine Datenbank vom Typ „Premium“ oder „Unternehmenskritisch“. Legen Sie die Beispieldatenbank „AdventureWorksLT“ als **Quelle** fest. Detaillierte Anweisungen finden Sie unter [Erstellen Ihrer ersten Azure SQL-Datenbank](database/single-database-create-quickstart.md).
+1. Erstellen Sie im [Azure-Portal](https://portal.azure.com/) auf einem Server eine Datenbank vom Typ „Premium“ oder „Unternehmenskritisch“. Legen Sie die Beispieldatenbank „AdventureWorksLT“ als **Quelle** fest. Ausführliche Anweisungen finden Sie unter [Erstellen Ihrer ersten Datenbank in Azure SQL-Datenbank](database/single-database-create-quickstart.md).
 
 2. Stellen Sie eine Verbindung mit der Datenbank mit SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx)her.
 

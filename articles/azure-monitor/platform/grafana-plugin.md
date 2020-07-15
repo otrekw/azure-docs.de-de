@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
 ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672207"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Überwachen Ihrer Azure-Dienste in Grafana
@@ -42,7 +42,7 @@ Um einen lokalen Grafana-Server einzurichten, müssen Sie [Grafana herunterladen
 
 ## <a name="sign-in-to-grafana"></a>Anmelden an Grafana
 
-1. Verwenden Sie die IP-Adresse Ihres Servers, und öffnen Sie die Anmeldeseite unter *http://\<IP-Adresse\>:3000* oder *\<DNS-Name>\:3000* in Ihrem Browser. 3000 ist zwar der Standardport, aber beachten Sie, dass Sie bei der Einrichtung möglicherweise einen anderen Port ausgewählt haben. Es sollte eine Anmeldeseite für den zuvor erstellten Grafana-Server angezeigt werden.
+1. Verwenden Sie die IP-Adresse Ihres Servers, und öffnen Sie die Anmeldeseite unter *http://\<IP address\>:3000* oder *\<DNSName>\:3000* in Ihrem Browser. 3000 ist zwar der Standardport, aber beachten Sie, dass Sie bei der Einrichtung möglicherweise einen anderen Port ausgewählt haben. Es sollte eine Anmeldeseite für den zuvor erstellten Grafana-Server angezeigt werden.
 
     ![Grafana-Anmeldebildschirm](./media/grafana-plugin/grafana-login-screen.png)
 

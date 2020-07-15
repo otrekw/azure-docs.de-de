@@ -3,14 +3,14 @@ title: 'Azure Automation: Übersicht über Änderungsnachverfolgung und Bestand'
 description: In diesem Artikel wird das Feature „Änderungsnachverfolgung und Bestand“ beschrieben, mit dem Sie Änderungen an Software und Microsoft-Diensten in Ihrer Umgebung erkennen können.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/28/2019
+ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a1c5d5371663f3520e76060c9c2a8df0a18449c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117540"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84555033"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Übersicht über Änderungsnachverfolgung und Bestand
 
@@ -33,26 +33,29 @@ Dieser Artikel bietet eine Einführung in Änderungsnachverfolgung und Bestand i
 
 Änderungsnachverfolgung und Bestand unterstützt die folgenden Elemente derzeit nicht:
 
-* Rekursion für die Nachverfolgung der Windows-Registrierung
-* Netzwerkdateisysteme
-* Verschiedene Installationsmethoden
-* ***EXE**-Dateien für Windows
+- Rekursion für die Nachverfolgung der Windows-Registrierung
+- Netzwerkdateisysteme
+- Verschiedene Installationsmethoden
+- ***EXE**-Dateien für Windows
 
 Weitere Einschränkungen:
 
-* Die Spalte **Maximale Dateigröße** und ihre Werte werden in der aktuellen Implementierung nicht genutzt.
-* Wenn Sie im 30-minütigen Sammlungszyklus mehr als 2.500 Dateien erfassen, wird „Änderungsnachverfolgung und Bestand“ möglicherweise beeinträchtigt.
-* Wenn der Netzwerkverkehr hoch ist, kann es bis zu sechs Stunden dauern, bis Änderungsdatensätze angezeigt werden.
-* Wenn Sie eine Konfiguration ändern, während ein Computer heruntergefahren ist, stellt der Computer möglicherweise Änderungen bereit, die zur vorherigen Konfiguration gehören.
+- Die Spalte **Maximale Dateigröße** und ihre Werte werden in der aktuellen Implementierung nicht genutzt.
+- Wenn Sie im 30-minütigen Sammlungszyklus mehr als 2.500 Dateien erfassen, wird „Änderungsnachverfolgung und Bestand“ möglicherweise beeinträchtigt.
+- Wenn der Netzwerkverkehr hoch ist, kann es bis zu sechs Stunden dauern, bis Änderungsdatensätze angezeigt werden.
+- Wenn Sie eine Konfiguration ändern, während ein Computer heruntergefahren ist, stellt der Computer möglicherweise Änderungen bereit, die zur vorherigen Konfiguration gehören.
 
 Folgende Probleme treten derzeit mit Änderungsnachverfolgung und Bestand auf:
 
-* Hotfix-Updates werden für Computer mit Windows Server 2016 Core RS3 nicht erfasst.
-* Für Linux-Daemons wird möglicherweise ein geänderter Zustand angezeigt, obwohl keine Änderung aufgetreten ist. Dieses Problem wird durch die Art der Erfassung von `SvcRunLevels`-Daten im Azure Monitor-Protokoll [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) verursacht.
+- Hotfix-Updates werden für Computer mit Windows Server 2016 Core RS3 nicht erfasst.
+
+- Für Linux-Daemons wird möglicherweise ein geänderter Zustand angezeigt, obwohl keine Änderung aufgetreten ist. Dieses Problem wird durch die Art der Erfassung von `SvcRunLevels`-Daten im Azure Monitor-Protokoll [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) verursacht.
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Änderungsnachverfolgung und Bestand werden unter allen Betriebssystemen unterstützt, die die Anforderungen des Log Analytics-Agent erfüllen. Die offiziellen Betriebssystemversionen sind Windows Server 2008 SP1 oder höher und Windows 7 SP1 oder höher. Das Feature wird auch von einigen Linux-Betriebssystemen unterstützt. Informationen zu Betriebssystemen, die Log Analytics unterstützen, finden Sie in der [Übersicht über den Log Analytics-Agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
+Änderungsnachverfolgung und Bestand werden unter allen Betriebssystemen unterstützt, die die Anforderungen des Log Analytics-Agent erfüllen. Die offiziellen Betriebssystemversionen sind Windows Server 2008 SP1 oder höher und Windows 7 SP1 oder höher. Das Feature wird auch von einigen Linux-Betriebssystemen unterstützt. Informationen zu Betriebssystemen, die Log Analytics unterstützen, finden Sie in der [Übersicht über den Log Analytics-Agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
+
+Informationen zu den Clientanforderungen für TLS 1.2 finden Sie unter [Erzwingen von TLS 1.2 für Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 ## <a name="network-requirements"></a>Netzwerkanforderungen
 
@@ -75,12 +78,12 @@ Dropdownmenüs stehen am oberen Rand des Dashboards zur Verfügung. Damit könne
 
 Sie können auf eine Änderung oder ein Ereignis klicken, um die zugehörigen Details anzuzeigen. Die verfügbaren Änderungstypen sind:
 
-* Events
-* Daemons
-* Dateien
-* Registrierung
-* Software
-* Microsoft-Dienste
+- Events
+- Daemons
+- Dateien
+- Registrierung
+- Software
+- Microsoft-Dienste
 
 Sie können jede Änderung hinzufügen, ändern oder entfernen. Wie aus dem Beispiel unten hervorgeht, wurde der Starttyp des Diensts von „Manuell“ in „Automatisch“ geändert.
 
@@ -135,10 +138,13 @@ Zum Nachverfolgen von Änderungen unter Windows und Linux verwendet Änderungsna
 
 Änderungsnachverfolgung und Bestand unterstützt Rekursion, sodass Sie Platzhalter angeben können, um die Nachverfolgung über Verzeichnisse hinweg zu vereinfachen. Die Rekursion bietet auch Umgebungsvariablen, mit denen Sie Dateien in mehreren Umgebungen mit unterschiedlichen oder dynamischen Laufwerknamen nachverfolgen können. Die folgende Liste enthält allgemeine Informationen, mit denen Sie beim Konfigurieren der Rekursion vertraut sein sollten:
 
-* Platzhalter werden zum Nachverfolgen mehrerer Dateien benötigt.
-* Platzhalter können Sie nur im letzten Segment eines Pfads verwenden, z. B. **C:\Ordner\\Datei*** oder **/etc/*.conf**.
-* Wenn eine Umgebungsvariable einen ungültigen Pfad besitzt, verläuft die Überprüfung zwar erfolgreich, doch bei der Ausführung tritt ein Fehler für den Pfad auf.
-* Sie sollten allgemeine Pfadnamen beim Festlegen des Pfads vermeiden, da diese Art von Einstellung dazu führen kann, dass zu viele Ordner durchlaufen werden müssen.
+- Platzhalter werden zum Nachverfolgen mehrerer Dateien benötigt.
+
+- Platzhalter können Sie nur im letzten Segment eines Pfads verwenden, z. B. **C:\Ordner\\Datei*** oder **/etc/*.conf**.
+
+- Wenn eine Umgebungsvariable einen ungültigen Pfad besitzt, verläuft die Überprüfung zwar erfolgreich, doch bei der Ausführung tritt ein Fehler für den Pfad auf.
+
+- Sie sollten allgemeine Pfadnamen beim Festlegen des Pfads vermeiden, da diese Art von Einstellung dazu führen kann, dass zu viele Ordner durchlaufen werden müssen.
 
 ## <a name="change-tracking-and-inventory-data-collection"></a>Datensammlung durch Änderungsnachverfolgung und Bestand
 
@@ -165,7 +171,7 @@ Die folgende Tabelle zeigt die Grenzwerte der nachverfolgten Elemente pro Comput
 |Dienste|250|
 |Daemons|250|
 
-Die durchschnittliche Nutzung von Log Analytics-Daten für einen Computer mit Änderungsnachverfolgung und Bestand beträgt je nach Umgebung ungefähr 40 MB pro Monat. Mithilfe der Funktion „Nutzung und geschätzte Kosten“ im Log Analytics-Arbeitsbereich können Sie die von „Änderungsnachverfolgung und Bestand“ erfassten Daten in einem Nutzungsdiagramm anzeigen. Verwenden Sie diese Datenansicht, um die Datennutzung und die damit verbundenen Kosten zu analysieren. Weitere Informationen finden Sie unter [Verstehen Ihrer Nutzung und Schätzen von Kosten](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs). 
+Die durchschnittliche Nutzung von Log Analytics-Daten für einen Computer mit Änderungsnachverfolgung und Bestand beträgt je nach Umgebung ungefähr 40 MB pro Monat. Mithilfe der Funktion „Nutzung und geschätzte Kosten“ im Log Analytics-Arbeitsbereich können Sie die von „Änderungsnachverfolgung und Bestand“ erfassten Daten in einem Nutzungsdiagramm anzeigen. Verwenden Sie diese Datenansicht, um die Datennutzung und die damit verbundenen Kosten zu analysieren. Weitere Informationen finden Sie unter [Verstehen Ihrer Nutzung und Schätzen von Kosten](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Daten zu Microsoft-Diensten
 
@@ -180,13 +186,13 @@ Zum Optimieren der Leistung verfolgt der Log Analytics-Agent ausschließlich Än
 
 ## <a name="support-for-alerts-on-configuration-state"></a>Unterstützung für Warnungen zum Konfigurationszustand
 
-Eine Schlüsselfunktion von Änderungsnachverfolgung und Bestand sind Warnungen bei Änderungen am Konfigurationszustand Ihrer Hybridumgebung. Es sind viele hilfreiche Aktionen verfügbar, die als Reaktion auf Warnungen ausgelöst werden können, z. B. Aktionen in Azure Functions, Automation-Runbooks, Webhooks. Warnungen zu Änderungen an der Datei **c:\windows\system32\drivers\etc\hosts** für einen Computer sind eine gute Anwendung von Warnungen für Daten von „Änderungsnachverfolgung und Bestand“. Es gibt noch viele weitere Szenarien für Warnungen, einschließlich der in der nächsten Tabelle definierten Abfrageszenarien. 
+Eine Schlüsselfunktion von Änderungsnachverfolgung und Bestand sind Warnungen bei Änderungen am Konfigurationszustand Ihrer Hybridumgebung. Es sind viele hilfreiche Aktionen verfügbar, die als Reaktion auf Warnungen ausgelöst werden können, z. B. Aktionen in Azure Functions, Automation-Runbooks, Webhooks. Warnungen zu Änderungen an der Datei **c:\windows\system32\drivers\etc\hosts** für einen Computer sind eine gute Anwendung von Warnungen für Daten von „Änderungsnachverfolgung und Bestand“. Es gibt noch viele weitere Szenarien für Warnungen, einschließlich der in der nächsten Tabelle definierten Abfrageszenarien.
 
 |Abfrage  |BESCHREIBUNG  |
 |---------|---------|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|Nützlich für das Nachverfolgen von Änderungen an kritischen Systemdateien|
 |ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|Nützlich für das Nachverfolgen von Änderungen an wichtige Konfigurationsdateien|
-|ConfigurationChange <br>&#124; where ConfigChangeType == "Microsoft services" and SvcName contains "w3svc" and SvcState == "Stopped"|Nützlich für das Nachverfolgen von Änderungen an für das System wichtigen Diensten.|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "WindowsServices" and SvcName contains "w3svc" and SvcState == "Stopped"|Nützlich für das Nachverfolgen von Änderungen an für das System wichtigen Diensten.|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Daemons" and SvcName contains "ssh" and SvcState!= "Running"|Nützlich für das Nachverfolgen von Änderungen an für das System wichtigen Diensten.|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Added"|Nützlich für Umgebungen, in denen Softwarekonfigurationen gesperrt werden müssen|
 |ConfigurationData <br>&#124; where SoftwareName contains "Monitoring Agent" and CurrentVersion!= "8.0.11081.0"|Nützlich, um zu ermitteln, auf welchen Computern eine veraltete oder nicht konforme Softwareversion installiert ist. Mit dieser Abfrage wird der letzte gemeldete Konfigurationszustand ausgegeben, aber es werden keine Änderungen gemeldet.|
@@ -195,7 +201,10 @@ Eine Schlüsselfunktion von Änderungsnachverfolgung und Bestand sind Warnungen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Aktivieren des Features über ein Automation-Konto finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über ein Automation-Konto](automation-enable-changes-from-auto-acct.md).
-* Informationen zum Aktivieren des Features durch das Durchsuchen des Azure-Portals finden Sie unter [Aktivieren von „Änderungsnachverfolgung und Bestand“ über das Azure-Portal](automation-onboard-solutions-from-browse.md).
-* Informationen zum Aktivieren des Features aus einem Runbook finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über ein Runbook](automation-enable-changes-from-runbook.md).
-* Informationen zum Aktivieren des Features über eine Azure-VM finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über einen virtuellen Azure-Computer](automation-enable-changes-from-vm.md).
+- Informationen zum Aktivieren des Features über ein Automation-Konto finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über ein Automation-Konto](automation-enable-changes-from-auto-acct.md).
+
+- Informationen zum Aktivieren des Features durch das Durchsuchen des Azure-Portals finden Sie unter [Aktivieren von „Änderungsnachverfolgung und Bestand“ über das Azure-Portal](automation-onboard-solutions-from-browse.md).
+
+- Informationen zum Aktivieren des Features aus einem Runbook finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über ein Runbook](automation-enable-changes-from-runbook.md).
+
+- Informationen zum Aktivieren des Features über eine Azure-VM finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über einen virtuellen Azure-Computer](automation-enable-changes-from-vm.md).

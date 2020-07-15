@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: b95ee80a7a99009918f4869b62a3e3768e6e58d3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f0fba815cdc8425f016b74be7df36e5b28dfee3d
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828269"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856970"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Häufig gestellte Fragen zu Azure Cache for Redis
 In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Cache for Redis.
@@ -100,7 +100,7 @@ Nachfolgend sind verschiedene Aspekte aufgeführt, die Ihnen bei der Wahl helfen
 * **Netzwerkleistung**: Bei einer Workload, die einen hohen Durchsatz erfordert, bietet der Premium-Tarif im Vergleich zum Standard- oder Basic-Tarif eine größere Bandbreite. Zudem haben die größeren Caches aufgrund des zugrunde liegenden virtuellen Computers, der den Cache hostet, bei jedem Tarif eine höhere Bandbreite. Weitere Informationen finden Sie in der [folgenden Tabelle](#cache-performance).
 * **Durchsatz**: Der Premium-Tarif bietet den maximal verfügbaren Durchsatz. Wenn Cacheserver oder -clients die Bandbreitengrenzwerte erreichen, können Timeouts auf der Clientseite auftreten. Ausführlichere Informationen finden Sie in der unten stehenden Tabelle.
 * **Hochverfügbarkeit/SLA**: Azure Cache for Redis garantiert, dass ein Standard-/Premium-Cache mindestens 99,9 % der Zeit zur Verfügung steht. Weitere Informationen zu unserer SLA finden Sie unter [Azure Cache for Redis – Preise](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Die SLA deckt nur die Konnektivität zu den Cache-Endpunkten ab. Sie bezieht sich dagegen nicht auf Schutz vor Datenverlusten. Es wird empfohlen, das Redis-Feature für Datenpersistenz im Premium-Tarif zu verwenden, um den Schutz vor Datenverlusten zu erhöhen.
-* **Redis-Datenpersistenz**: Der Tarif "Premium" ermöglicht die Persistenz der Cachedaten in einem Azure Storage-Konto. In einem Basic- oder Standard-Cache werden alle Daten nur im Arbeitsspeicher gespeichert. Probleme mit der zugrunde liegenden Infrastruktur können zu potenziellen Datenverlusten führen. Es wird empfohlen, das Redis-Feature für Datenpersistenz im Premium-Tarif zu verwenden, um den Schutz vor Datenverlusten zu erhöhen. Azure Cache for Redis bietet RDB- und AOF-Optionen (demnächst verfügbar) bei der „Redis-Persistenz“. Weitere Informationen finden Sie unter [Konfigurieren von Persistenz für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-persistence.md).
+* **Redis-Datenpersistenz**: Der Tarif "Premium" ermöglicht die Persistenz der Cachedaten in einem Azure Storage-Konto. In einem Basic- oder Standard-Cache werden alle Daten nur im Arbeitsspeicher gespeichert. Probleme mit der zugrunde liegenden Infrastruktur können zu potenziellen Datenverlusten führen. Es wird empfohlen, das Redis-Feature für Datenpersistenz im Premium-Tarif zu verwenden, um den Schutz vor Datenverlusten zu erhöhen. Azure Cache for Redis bietet RDB- und AOF-Optionen (Vorschauversion) bei der Redis-Persistenz. Weitere Informationen finden Sie unter [Konfigurieren von Persistenz für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-persistence.md).
 * **Redis-Cluster**: Zum Erstellen von Caches mit einer Größe von über 120 GB oder zum horizontalen Partitionieren („Sharding“) von Daten über mehrere Redis-Knoten hinweg können Sie das im Premium-Tarif verfügbare Redis-Clustering verwenden. Für Hochverfügbarkeit besteht jeder Knoten aus einem Paar aus primärem Cache und Replikatcache. Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-clustering.md).
 * **Verbesserte Sicherheit und Netzwerkisolation**: Die Bereitstellung über Azure Virtual Network (VNET) bietet ein höheres Maß an Sicherheit und Isolation sowohl für Ihre Azure Cache for Redis-Instanz als auch für Ihre Subnetze. Sie profitieren außerdem von Richtlinien für die Zugriffssteuerung sowie von weiteren Features zur Begrenzung des Zugriffs. Weitere Informationen finden Sie unter [Konfigurieren der Unterstützung virtueller Netzwerke für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-vnet.md).
 * **Konfigurieren von Redis**: Sowohl im Standard- als auch im Premium-Tarif können Sie Redis für Keyspace-Benachrichtigungen konfigurieren.
@@ -213,22 +213,23 @@ Einer der großen Vorteile von Redis ist, dass es viele Clients gibt, die viele 
 ### <a name="is-there-a-local-emulator-for-azure-cache-for-redis"></a>Gibt es einen lokalen Emulator für Azure Cache for Redis?
 Für Azure Cache for Redis ist kein lokaler Emulator verfügbar. Sie können jedoch die MSOpenTech-Version von „redis-server.exe“ über die [Redis-Befehlszeilentools](https://github.com/MSOpenTech/redis/releases/) auf dem lokalen Computer ausführen und eine Verbindung herstellen, um ein ähnliches Verhalten wie bei einem lokalen Cache-Emulator zu erhalten. Dies wird im folgenden Beispiel gezeigt:
 
-    private static Lazy<ConnectionMultiplexer>
-          lazyConnection = new Lazy<ConnectionMultiplexer>
-        (() =>
-        {
-            // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
-            return ConnectionMultiplexer.Connect("127.0.0.1:6379");
-        });
+```csharp
+private static Lazy<ConnectionMultiplexer>
+      lazyConnection = new Lazy<ConnectionMultiplexer>
+    (() =>
+    {
+        // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
+        return ConnectionMultiplexer.Connect("127.0.0.1:6379");
+    });
 
-        public static ConnectionMultiplexer Connection
+    public static ConnectionMultiplexer Connection
+    {
+        get
         {
-            get
-            {
-                return lazyConnection.Value;
-            }
+            return lazyConnection.Value;
         }
-
+    }
+```
 
 Optional können Sie die Datei [redis.conf](https://redis.io/topics/config) konfigurieren, um bei Bedarf eine bessere Abstimmung mit den [standardmäßigen Cacheeinstellungen](cache-configure.md#default-redis-server-configuration) für Ihren Online-Azure Cache for Redis zu erreichen.
 
@@ -289,7 +290,7 @@ Der Redis-Server bietet keine native TLS-Unterstützung, während dies für Azur
 >
 >
 
-Redis-Tools wie `redis-cli` funktionieren nicht mit dem TLS-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem TLS-Port herzustellen. Anweisungen hierzu finden Sie im Blogbeitrag zur [Ankündigung des ASP.NET-Sitzungsstatusanbieters für Redis-Vorschauversion](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+Redis-Tools wie `redis-cli` funktionieren nicht mit dem TLS-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem TLS-Port herzustellen. Anweisungen hierzu finden Sie im Blogbeitrag zur [Ankündigung des ASP.NET-Sitzungsstatusanbieters für Redis-Vorschauversion](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/).
 
 Anweisungen zum Herunterladen der Redis-Tools finden Sie im Abschnitt [Wie führe ich Redis-Befehle aus?](#cache-commands) .
 
@@ -366,10 +367,12 @@ Im Grunde genommen heißt dass: Wenn die Anzahl von ausgelasteten Threads größ
 
 Betrachten wir eine Beispielfehlermeldung aus StackExchange.Redis (Build 1.0.450 oder höher). Sie sehen, dass nun Threadpool-Statistiken ausgegeben werden (siehe die Details für IOCP und WORKER unten).
 
+```output
     System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
     queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
     IOCP: (Busy=6,Free=994,Min=4,Max=1000),
     WORKER: (Busy=3,Free=997,Min=4,Max=1000)
+```
 
 Im obigen Beispiel sehen Sie, dass bei den IOCP-Threads sechs Threads ausgelastet sind, und dass das System für ein Minimum von vier Threads konfiguriert ist. In diesem Fall wird der Client wahrscheinlich zwei Verzögerungen von 500 ms hingenommen haben, weil 6 größer als 4 ist.
 

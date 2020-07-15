@@ -3,12 +3,12 @@ title: Erstellen von Verwaltungsgruppen zum Organisieren von Ressourcen – Azur
 description: Hier erfahren Sie, wie Sie Azure-Verwaltungsgruppen zum Verwalten mehrerer Ressourcen über das Portal, mithilfe von Azure PowerShell oder mithilfe der Azure CLI erstellen.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0abecf02062dd4461274a9bc3722d46e6e7cc3d1
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 6fe7f2ea74c697701084321e068042b36acbdb11
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220761"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971134"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen
 
@@ -21,7 +21,7 @@ Es kann bis zu 15 Minuten dauern, bis die Erstellung der ersten Verwaltungsgrupp
 Alle Azure AD-Benutzer im Mandanten können eine Verwaltungsgruppe erstellen, ohne dafür die Schreibberechtigung für die Verwaltungsgruppe zu benötigen. Diese neue Verwaltungsgruppe ist dann der Stammverwaltungsgruppe untergeordnet, und dem Ersteller wird die Rolle „Besitzer“ zugewiesen. Der Verwaltungsgruppendienst ermöglicht dies, damit Rollen nicht auf Stammebene zugewiesen werden müssen. Bei der Erstellung der Stammverwaltungsgruppe hat kein Benutzer Zugriff auf sie. Damit nicht erst nach den globalen Azure AD-Administratoren gesucht werden muss, um mit der Verwendung von Verwaltungsgruppen beginnen zu können, lassen wir die Erstellung der ersten Verwaltungsgruppen auf  
 Stammebene zu.
 
-Sie können die Verwaltungsgruppe im Portal, mit einer [Resource Manager-Vorlage](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group), mithilfe von PowerShell oder über die Azure CLI erstellen.
+Sie können die Verwaltungsgruppe im Portal, mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group), mithilfe von PowerShell oder über die Azure-Befehlszeilenschnittstelle erstellen.
 
 ### <a name="create-in-portal"></a>Erstellen im Portal
 

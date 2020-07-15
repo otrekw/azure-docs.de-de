@@ -1,7 +1,7 @@
 ---
 title: Verbesserte Wiederherstellung von Datenbanken
 titleSuffix: Azure SQL
-description: Die beschleunigte Datenbankwiederherstellung ermöglicht eine schnelle und konsistente Datenbankwiederherstellung, den sofortigen Transaktionsrollback und eine aggressive Protokollkürzung für Datenbanken im Azure SQL-Dienstportfolio.
+description: Die beschleunigte Datenbankwiederherstellung ermöglicht eine schnelle und konsistente Datenbankwiederherstellung, den sofortigen Transaktionsrollback und eine aggressive Protokollkürzung für Datenbanken im Azure SQL-Portfolio.
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=4
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 05/19/2020
-ms.openlocfilehash: c0243ecea778a02238b205f1659d796165f7b316
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84030131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84344695"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Beschleunigte Datenbankwiederherstellung in Azure SQL 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-Die **beschleunigte Datenbankwiederherstellung (Accelerated Database Recovery, ADR)** ist ein Feature der SQL-Datenbank-Engine. Damit wird die Datenbankverfügbarkeit aufgrund eines neuen Entwurfs des Wiederherstellungsprozesses der SQL-Datenbank-Engine erheblich verbessert, insbesondere bei zeitintensiven Transaktionen. ADR ist derzeit für Azure SQL-Datenbank, Azure SQL Managed Instance, SQL Server auf Azure-VMs und für Datenbanken in Azure Synapse (zurzeit in der Vorschau) verfügbar. Die Hauptvorteile der schnellen Datenbankwiederherstellung sind:
+Die **beschleunigte Datenbankwiederherstellung (Accelerated Database Recovery, ADR)** ist ein Feature der SQL Server-Datenbank-Engine, das die Datenbankverfügbarkeit erheblich verbessert, insbesondere bei zeitintensiven Transaktionen. Dies ist auf einen Neuentwurf des Wiederherstellungsverfahrens der SQL Server-Datenbank-Engine zurückzuführen. ADR ist derzeit für Azure SQL-Datenbank, Azure SQL Managed Instance, SQL Server auf Azure-VM und für Datenbanken in Azure Synapse Analytics (zurzeit in der Vorschauphase) verfügbar. Die Hauptvorteile der schnellen Datenbankwiederherstellung sind:
 
 - **Schnelle und konsistente Datenbankwiederherstellung**
 
@@ -53,15 +53,15 @@ Die Datenbankwiederherstellung basiert auf dem [ARIES](https://people.eecs.berke
 
   Für jede Transaktion, die zum Zeitpunkt des Absturzes aktiv war, wird das Protokoll in umgekehrter Richtung durchlaufen, um die von dieser Transaktion durchgeführten Vorgänge rückgängig zu machen.
 
-Basierend auf diesem Entwurf ist die Zeit, die das SQL-Datenbankmodul für die Wiederherstellung nach einem unerwarteten Neustart benötigt, (ungefähr) proportional zur Größe der Transaktion, die zum Zeitpunkt des Absturzes im System am längsten aktiv war. Die Wiederherstellung erfordert ein Rollback aller unvollständigen Transaktionen. Die erforderliche Zeitspanne verhält sich proportional zum Umfang der von der Transaktion ausgeführten Aufgaben und der Dauer ihrer Aktivität. Daher kann der Wiederherstellungsprozess bei zeitintensiven Transaktionen (z. B. bei umfangreichen Masseneinfügungsvorgängen oder Indexerstellungvorgängen für eine große Tabelle) sehr lange dauern.
+Basierend auf diesem Entwurf ist die Zeit, die die SQL Server-Datenbank-Engine für die Wiederherstellung nach einem unerwarteten Neustart benötigt, ungefähr proportional zur Größe der Transaktion, die zum Zeitpunkt des Absturzes im System am längsten aktiv war. Die Wiederherstellung erfordert ein Rollback aller unvollständigen Transaktionen. Die erforderliche Zeitspanne verhält sich proportional zum Umfang der von der Transaktion ausgeführten Aufgaben und der Dauer ihrer Aktivität. Daher kann der Wiederherstellungsprozess bei zeitintensiven Transaktionen (z. B. bei umfangreichen Masseneinfügungsvorgängen oder Indexerstellungvorgängen für eine große Tabelle) sehr lange dauern.
 
 Auch das Abbrechen bzw. Durchführen eines Rollbacks für eine Transaktion kann bei diesem Entwurf sehr lange dauern, da die gleiche Rückgängig/Wiederherstellen-Phase wie oben beschrieben genutzt wird.
 
-Darüber hinaus kann die SQL-Datenbank-Engine das Transaktionsprotokoll nicht kürzen, wenn Transaktionen mit langer Laufzeit vorhanden sind, da die entsprechenden Protokolldatensätze für die Wiederherstellungs- und Rollbackprozesse benötigt werden. Aufgrund dieses Designs der SQL-Datenbank-Engine hatten einige Kunden das Problem, dass das Transaktionsprotokoll sehr groß wird und sehr viel Festplattenspeicher belegt.
+Darüber hinaus kann die SQL Server-Datenbank-Engine das Transaktionsprotokoll nicht kürzen, wenn Transaktionen mit langer Laufzeit vorhanden sind, da die entsprechenden Protokolldatensätze für die Wiederherstellungs- und Rollbackprozesse benötigt werden. Aufgrund dieser Eigenschaft der SQL Server-Datenbank-Engine bestand bei einigen Kunden das Problem, dass das Transaktionsprotokoll sehr groß wird und sehr viel Festplattenspeicher belegt.
 
 ## <a name="the-accelerated-database-recovery-process"></a>Prozess für die schnellere Datenbankwiederherstellung
 
-Mit ADR wird auf die obigen Probleme reagiert, indem der Wiederherstellungsprozess des SQL-Datenbankmoduls vollständig neu entworfen wird, um Folgendes zu erreichen:
+Mit ADR wird auf die obigen Probleme reagiert, indem das Wiederherstellungsverfahren des SQL Server-Datenbankmoduls vollständig neu entworfen wurde, um Folgendes zu erreichen:
 
 - Wählen Sie eine konstante Zeit bzw. die umgehende Wiederherstellung, indem Sie vermeiden, dass das Protokoll vom/zum Anfang der ältesten aktiven Transaktion gescannt werden muss. Bei ADR wird das Transaktionsprotokoll nur ab dem letzten erfolgreichen Prüfpunkt verarbeitet (bzw. ab der Protokollfolgenummer (Log Sequence Number, LSN) der ältesten modifizierten Seite). Dadurch wird die Wiederherstellungszeit nicht durch zeitintensive Transaktionen beeinflusst.
 - Minimieren Sie den erforderlichen Speicherplatz für das Transaktionsprotokoll, da das Protokoll für die gesamte Transaktion nicht mehr verarbeitet werden muss. Folglich kann das Transaktionsprotokoll beim Auftreten von Prüfpunkten und Sicherungen konsequent abgeschnitten werden.
@@ -95,9 +95,9 @@ Die schnelle Datenbankwiederherstellung (ADR) besteht aus den gleichen drei Phas
 
 Die vier wichtigsten Komponenten von ADR sind:
 
-- **Persistenter Versionsspeicher**
+- **Persistenter Versionsspeicher (PVS)**
 
-  Der persistente Versionsspeicher ist ein neuer Mechanismus der SQL-Datenbank-Engine, mit dem die in der Datenbank generierten Zeilenversionen persistent gemacht werden, anstatt im herkömmlichen `tempdb`-Versionsspeicher. Mit dem persistenten Versionsspeicher wird die Ressourcenisolation ermöglicht und die Verfügbarkeit von lesbaren sekundären Replikaten verbessert.
+  Der persistente Versionsspeicher ist ein neuer Mechanismus der SQL Server-Datenbank-Engine, mit dem die in der Datenbank generierten Zeilenversionen beibehalten werden, nicht die im herkömmlichen `tempdb`-Versionsspeicher. Mit dem persistenten Versionsspeicher wird die Ressourcenisolation ermöglicht und die Verfügbarkeit von lesbaren sekundären Replikaten verbessert.
 
 - **Logische Wiederherstellung**
 

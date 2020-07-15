@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 05/21/2020
 ms.author: radeltch
 ms.openlocfilehash: ed53b77587e307926689b2c20d7223212f3394d4
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83800277"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter Red Hat Enterprise Linux
@@ -108,7 +108,7 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
     * **SAP-Systemgröße**: Geben Sie die SAPS-Anzahl an, die das neue System bereitstellen soll. Wenn Sie nicht sicher sind, welche SAPS-Anzahl für das System benötigt wird, können Sie sich an den SAP-Technologiepartner oder -Systemintegrator wenden.
     * **Systemverfügbarkeit**: Wählen Sie **HA** (Hohe Verfügbarkeit).
     * **Administratorbenutzername, Administratorkennwort oder SSH-Schlüssel**: Ein neuer Benutzer wird erstellt, der für die Anmeldung beim Computer verwendet werden kann.
-    * **Subnetz-ID**: Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: **/subscriptions/\<Abonnement-ID>/resourceGroups/\<Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/\<Name des virtuellen Netzwerks>/subnets/\<Name des Subnetzes>** . Lassen Sie das Feld leer, wenn Sie ein neues virtuelles Netzwerk erstellen möchten.
+    * **Subnetz-ID**: Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID sieht in der Regel wie folgt aus: **/subscriptions/\<subscription ID>/resourceGroups/\<resource group name>/providers/Microsoft.Network/virtualNetworks/\<virtual network name>/subnets/\<subnet name>** . Lassen Sie das Feld leer, wenn Sie ein neues virtuelles Netzwerk erstellen möchten.
 
 ### <a name="manual-deployment"></a>Manuelle Bereitstellung
 

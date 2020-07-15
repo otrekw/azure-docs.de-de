@@ -2,18 +2,19 @@
 title: Anfordern einer Kontingenterhöhung
 description: Auf dieser Seite wird beschrieben, wie Sie eine Supportanfrage zum Erhöhen der Kontingente für Azure SQL-Datenbank und Azure SQL Managed Instance erstellen.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: service
 ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
-ms.date: 02/04/2020
-ms.openlocfilehash: 53160fa5a2d24f747b0653673a6f817ae14a7975
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/04/2020
+ms.openlocfilehash: 4557d2ecdb49cd50396986f0ea30277f50ecf9f7
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118863"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987284"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -49,19 +50,20 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal eine neue Supportanfr
 
    ![Auswählen eines Kontingenttyps](./media/quota-increase-request/select-quota-type.png)
 
-1. Wählen Sie im Fenster **Details** die Option **Details angeben** aus, um zusätzliche Informationen einzugeben.
+1. Wählen Sie im Fenster **Details** die Option **Details eingeben** aus, um zusätzliche Informationen einzugeben.
 
-   ![Der Link „Details angeben“](./media/quota-increase-request/provide-details-link.png)
+   ![Link zum Eingeben von Details](./media/quota-increase-request/provide-details-link.png)
 
-Wenn Sie auf **Details angeben** klicken, wird das Fenster **Kontingentdetails** angezeigt, in dem Sie zusätzliche Informationen hinzufügen können. In den folgenden Abschnitten werden die verschiedenen Optionen für die Kontingenttypen von **SQL-Datenbank** und **Verwaltete SQL-Datenbank-Instanz** beschrieben.
+Wenn Sie auf **Details eingeben** klicken, wird das Fenster **Kontingentdetails** angezeigt, in dem Sie zusätzliche Informationen hinzufügen können. In den folgenden Abschnitten werden die verschiedenen Optionen für die Kontingenttypen von **SQL-Datenbank** und **Verwaltete SQL-Datenbank-Instanz** beschrieben.
 
 ## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a> Kontingenttypen von SQL-Datenbank
 
-In den folgenden Abschnitten werden drei Optionen für das Erhöhen der Kontingente für die Kontingenttypen von **SQL-Datenbank** beschrieben:
+In den folgenden Abschnitten werden die Optionen zum Erhöhen der Kontingente für die Kontingenttypen von **SQL-Datenbank** beschrieben:
 
 - Datenbanktransaktionseinheiten (DTUs) pro Server
 - Server pro Abonnement
-- Aktivieren des Abonnementzugriffs auf eine Region
+- Regionszugriff für die M-Serie
+- Regionszugriff
 
 ### <a name="database-transaction-units-dtus-per-server"></a>Datenbanktransaktionseinheiten (DTUs) pro Server
 
@@ -91,15 +93,32 @@ Führen Sie die folgenden Schritte aus, um eine Erhöhung der Anzahl der Server 
 
 Weitere Informationen finden Sie unter [SQL-Datenbank-Ressourcenlimits und -Ressourcenkontrolle](resource-limits-logical-server.md).
 
-### <a name="enable-subscription-access-to-a-region"></a><a id="other"></a> Aktivieren des Abonnementzugriffs auf eine Region
+### <a name="enable-subscription-access-to-a-region"></a><a id="region"></a> Aktivieren des Abonnementzugriffs auf eine Region
 
 Einige Angebotstypen sind nicht in allen Regionen verfügbar. Unter Umständen wird beispielsweise folgender Fehler angezeigt:
 
-`This location is not available for subscription`
+`Your subscription does not have access to create a server in the selected region. For the latest information about region availability for your subscription, go to aka.ms/sqlcapacity. Please try another region or create a support ticket to request access.`
 
-Wenn Ihr Abonnement Zugriff auf eine bestimmte Region benötigt, verwenden Sie die Option **Andere Kontingentanforderung**, um den Zugriff anzufordern. Geben Sie in Ihrer Anforderung die Details zu dem Angebot und der SKU an, die Sie für die Region aktivieren möchten. Informationen zu den Angebots- und SKU-Optionen finden Sie unter [Azure SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/single/).
+Wenn Ihr Abonnement Zugriff auf eine bestimmte Region benötigt, wählen Sie die Option **Regionszugriff** aus. Geben Sie in Ihrer Anforderung die Details zu dem Angebot und der SKU an, die Sie für die Region aktivieren möchten. Informationen zu den Angebots- und SKU-Optionen finden Sie unter [Azure SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
-![Weitere Kontingentdetails](./media/quota-increase-request/quota-details-whitelisting.png)
+1. Wählen Sie den Kontingenttyp **Regionszugriff** aus.
+
+1. Wählen Sie in der Liste **Standort auswählen** die zu verwendende Azure-Region aus. Das Kontingent gilt pro Abonnement in jeder Region.
+
+1. Geben Sie das **Kaufmodell** und die Details für **Erwartete Nutzung** ein.
+
+   ![Anfordern des Zugriffs auf eine Region](./media/quota-increase-request/quota-details-whitelisting.png)
+
+### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a> Aktivieren des Zugriffs auf eine Region für die M-Serie
+
+Um Hardware der M-Serie für ein Abonnement und eine Region zu aktivieren, müssen Sie eine Supportanfrage erstellen.
+
+1. Wählen Sie den Kontingenttyp **Zugriff auf die Region der M-Serie** aus.
+
+1. Wählen Sie in der Liste **Standort auswählen** die zu verwendende Azure-Region aus. Das Kontingent gilt pro Abonnement in jeder Region.
+
+
+   ![Anfordern des Zugriffs auf eine Region](./media/quota-increase-request/quota-m-series.png)
 
 ## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> Kontingenttyp für SQL Managed Instance
 

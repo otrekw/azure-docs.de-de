@@ -8,10 +8,10 @@ ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78247987"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
@@ -172,7 +172,7 @@ Sie können den Tarif auf einem Server mit mehreren Replikaten ändern. Der glei
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-**Problem:** Benutzer erhalten die Fehlermeldung **Serverinstanz „\<Name des Servers>“ im Verbindungsmodus „ReadOnly“ nicht gefunden.**
+**Problem:** Benutzer erhalten die Fehlermeldung **Serverinstanz „\<Name of the server>“ im Verbindungsmodus „ReadOnly“ nicht gefunden.**
 
 **Lösung:** Beim Auswählen der Option **Verarbeitungsserver vom Abfragepool trennen** werden Clientverbindungen, die die Standardverbindungszeichenfolge (ohne `:rw`) verwenden, an Abfragepoolreplikate umgeleitet. Wenn Replikate im Abfragepool noch nicht online sind, weil die Synchronisierung noch nicht abgeschlossen ist, können umgeleitete Clientverbindungen fehlschlagen. Um Verbindungsfehler zu verhindern, müssen beim Durchführen einer Synchronisierung mindestens zwei Server im Abfragepool enthalten sein. Jeder Server wird einzeln synchronisiert, während andere Server online bleiben. Wenn der Verarbeitungsserver während der Verarbeitung nicht im Abfragepool enthalten sein soll, können Sie ihn für die Verarbeitung aus dem Pool entfernen und dann nach Abschluss der Verarbeitung, jedoch vor der Synchronisierung, wieder zum Pool hinzufügen. Verwenden Sie die Metriken „Arbeitsspeicher“ und „QPU“, um den Synchronisierungsstatus zu überwachen.
 

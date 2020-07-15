@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: f71476d7d41ae45d2f1014ed1b257870622487e6
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: c0e94c0bef5087665ca8746a65ccd34a0f61deef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010833"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829736"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Erstellen und Verwalten von Azure Cache for Redis mit der klassischen Azure CLI
 > [!div class="op_single_selector"]
@@ -49,216 +49,246 @@ Die folgenden Eigenschaften werden beim Erstellen und Aktualisieren von Azure Ca
 | Shard-Anzahl |-r, --shard-count |Die Anzahl der zu erstellenden Shards auf einem Premium-Clustercache mit Clustering. |
 | Virtual Network |-v, --virtual-network |Gibt die genaue ARM-Ressourcen-ID des Virtual Network an, in dem der Cache bereitgestellt wird, wenn Sie den Azure Cache for Redis in einem VNET hosten. Beispielformat: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | key type |-t, --key-type |Der Typ des zu erneuernden Schlüssels. Gültige Werte: [Primary, Secondary] |
-| StaticIP |-p, --static-ip \<statische IP-Adresse\> |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit eine eindeutige IP-Adresse im Subnetz für den Cache an. Wird keine IP-Adresse angegeben, wird eine für Sie aus dem Subnetz ausgewählt. |
-| Subnet |t, --subnet \<Subnetz\> |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. |
-| VirtualNetwork |-v, --virtual-network \<virtuelles Netzwerk\> |Gibt die genaue ARM-Ressourcen-ID des Virtual Network an, in dem der Cache bereitgestellt wird, wenn Sie den Azure Cache for Redis in einem VNET hosten. Beispielformat: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| StaticIP |-p, --static-ip \<static-ip\> |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit eine eindeutige IP-Adresse im Subnetz für den Cache an. Wird keine IP-Adresse angegeben, wird eine für Sie aus dem Subnetz ausgewählt. |
+| Subnet |t, --subnet \<subnet\> |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. |
+| VirtualNetwork |-v, --virtual-network \<virtual-network\> |Gibt die genaue ARM-Ressourcen-ID des Virtual Network an, in dem der Cache bereitgestellt wird, wenn Sie den Azure Cache for Redis in einem VNET hosten. Beispielformat: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Subscription |-s, --subscription |Die Abonnement-ID. |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>Siehe alle Azure Cache for Redis-Befehle
 Wenn Sie alle Azure Cache for Redis-Befehle und deren Parameter anzeigen möchten, verwenden Sie den `azure rediscache -h` -Befehl.
 
-    C:\>azure rediscache -h
-    help:    Commands to manage your Azure Cache for Redis(s)
-    help:
-    help:    Create an Azure Cache for Redis
-    help:      rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
-    help:
-    help:    Delete an existing Azure Cache for Redis
-    help:      rediscache delete [--name <name> --resource-group <resource-group> ]
-    help:
-    help:    List all Azure Cache for Redis within your Subscription or Resource Group
-    help:      rediscache list [options]
-    help:
-    help:    Show properties of an existing Azure Cache for Redis
-    help:      rediscache show [--name <name> --resource-group <resource-group>]
-    help:
-    help:    Change settings of an existing Azure Cache for Redis
-    help:      rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
-    help:
-    help:    Renew the authentication key for an existing Azure Cache for Redis
-    help:      rediscache renew-key [--name <name> --resource-group <resource-group> ]
-    help:
-    help:    Lists Primary and Secondary key of an existing Azure Cache for Redis
-    help:      rediscache list-keys [--name <name> --resource-group <resource-group>]
-    help:
-    help:    Options:
-    help:      -h, --help  output usage information
-    help:
-    help:    Current Mode: arm (Azure Resource Management)
+```azurecli
+C:\>azure rediscache -h
+help:    Commands to manage your Azure Cache for Redis(s)
+help:
+help:    Create an Azure Cache for Redis
+help:      rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
+help:
+help:    Delete an existing Azure Cache for Redis
+help:      rediscache delete [--name <name> --resource-group <resource-group> ]
+help:
+help:    List all Azure Cache for Redis within your Subscription or Resource Group
+help:      rediscache list [options]
+help:
+help:    Show properties of an existing Azure Cache for Redis
+help:      rediscache show [--name <name> --resource-group <resource-group>]
+help:
+help:    Change settings of an existing Azure Cache for Redis
+help:      rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
+help:
+help:    Renew the authentication key for an existing Azure Cache for Redis
+help:      rediscache renew-key [--name <name> --resource-group <resource-group> ]
+help:
+help:    Lists Primary and Secondary key of an existing Azure Cache for Redis
+help:      rediscache list-keys [--name <name> --resource-group <resource-group>]
+help:
+help:    Options:
+help:      -h, --help  output usage information
+help:
+help:    Current Mode: arm (Azure Resource Management)
+```
 
 ## <a name="create-an-azure-cache-for-redis"></a>Erstellen einer Azure Cache for Redis-Instanz
 Verwenden Sie zum Erstellen eines Azure Cache for Redis den folgenden Befehl:
 
+```azurecli
     azure rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
+```
 
 Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache create -h` -Befehl aus.
 
-    C:\>azure rediscache create -h
-    help:    Create an Azure Cache for Redis
-    help:
-    help:    Usage: rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
-    help:
-    help:    Options:
-    help:      -h, --help                                               output usage information
-    help:      -v, --verbose                                            use verbose output
-    help:      -vv                                                      more verbose with debug output
-    help:      --json                                                   use json output
-    help:      -n, --name <name>                                        Name of the Azure Cache for Redis.
-    help:      -g, --resource-group <resource-group>                    Name of the Resource Group
-    help:      -l, --location <location>                                Location to create cache.
-    help:      -z, --size <size>                                        Size of the Azure Cache for Redis. Valid values: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4]
-    help:      -x, --sku <sku>                                          Redis SKU. Should be one of : [Basic, Standard, Premium]
-    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the non-TLS/SSL Port for your cache
-    help:      -c, --redis-configuration <redis-configuration>          Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:"{"<key1>":"<value1>","<key2>":"<value2>"}"
-    help:      -f, --redis-configuration-file <redisConfigurationFile>  Redis Configuration. Enter the path of a file containing configuration keys and values here. Format for the file entry: {"<key1>":"<value1>","<key2>":"<value2>"}
-    help:      -r, --shard-count <shard-count>                          Number of Shards to create on a Premium Cluster Cache
-    help:      -v, --virtual-network <virtual-network>                  The exact ARM resource ID of the virtual network to deploy the Azure Cache for Redis in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1
-    help:      -t, --subnet <subnet>                                    Required when deploying an Azure Cache for Redis inside an existing Azure Virtual Network
-    help:      -p, --static-ip <static-ip>                              Required when deploying an Azure Cache for Redis inside an existing Azure Virtual Network
-    help:      -s, --subscription <id>                                  the subscription identifier
-    help:
-    help:    Current Mode: arm (Azure Resource Management)
+```azurecli
+C:\>azure rediscache create -h
+help:    Create an Azure Cache for Redis
+help:
+help:    Usage: rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
+help:
+help:    Options:
+help:      -h, --help                                               output usage information
+help:      -v, --verbose                                            use verbose output
+help:      -vv                                                      more verbose with debug output
+help:      --json                                                   use json output
+help:      -n, --name <name>                                        Name of the Azure Cache for Redis.
+help:      -g, --resource-group <resource-group>                    Name of the Resource Group
+help:      -l, --location <location>                                Location to create cache.
+help:      -z, --size <size>                                        Size of the Azure Cache for Redis. Valid values: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4]
+help:      -x, --sku <sku>                                          Redis SKU. Should be one of : [Basic, Standard, Premium]
+help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the non-TLS/SSL Port for your cache
+help:      -c, --redis-configuration <redis-configuration>          Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:"{"<key1>":"<value1>","<key2>":"<value2>"}"
+help:      -f, --redis-configuration-file <redisConfigurationFile>  Redis Configuration. Enter the path of a file containing configuration keys and values here. Format for the file entry: {"<key1>":"<value1>","<key2>":"<value2>"}
+help:      -r, --shard-count <shard-count>                          Number of Shards to create on a Premium Cluster Cache
+help:      -v, --virtual-network <virtual-network>                  The exact ARM resource ID of the virtual network to deploy the Azure Cache for Redis in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1
+help:      -t, --subnet <subnet>                                    Required when deploying an Azure Cache for Redis inside an existing Azure Virtual Network
+help:      -p, --static-ip <static-ip>                              Required when deploying an Azure Cache for Redis inside an existing Azure Virtual Network
+help:      -s, --subscription <id>                                  the subscription identifier
+help:
+help:    Current Mode: arm (Azure Resource Management)
+```
 
 ## <a name="delete-an-existing-azure-cache-for-redis"></a>Löschen eines vorhandenen Azure Cache for Redis
 Verwenden Sie zum Löschen eines Azure Cache for Redis den folgenden Befehl:
 
+```azurecli
     azure rediscache delete [--name <name> --resource-group <resource-group> ]
+```
 
 Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache delete -h` -Befehl aus.
 
-    C:\>azure rediscache delete -h
-    help:    Delete an existing Azure Cache for Redis
-    help:
-    help:    Usage: rediscache delete [--name <name> --resource-group <resource-group> ]
-    help:
-    help:    Options:
-    help:      -h, --help                             output usage information
-    help:      -v, --verbose                          use verbose output
-    help:      -vv                                    more verbose with debug output
-    help:      --json                                 use json output
-    help:      -n, --name <name>                      Name of the Azure Cache for Redis.
-    help:      -g, --resource-group <resource-group>  Name of the Resource Group under which the cache exists
-    help:      -s, --subscription <subscription>      the subscription identifier
-    help:
-    help:    Current Mode: arm (Azure Resource Management)
+```azurecli
+C:\>azure rediscache delete -h
+help:    Delete an existing Azure Cache for Redis
+help:
+help:    Usage: rediscache delete [--name <name> --resource-group <resource-group> ]
+help:
+help:    Options:
+help:      -h, --help                             output usage information
+help:      -v, --verbose                          use verbose output
+help:      -vv                                    more verbose with debug output
+help:      --json                                 use json output
+help:      -n, --name <name>                      Name of the Azure Cache for Redis.
+help:      -g, --resource-group <resource-group>  Name of the Resource Group under which the cache exists
+help:      -s, --subscription <subscription>      the subscription identifier
+help:
+help:    Current Mode: arm (Azure Resource Management)
+```
 
 ## <a name="list-all-azure-cache-for-redis-within-your-subscription-or-resource-group"></a>Auflisten aller Azure Cache for Redis-Instanzen in Ihrem Abonnement oder Ihrer Ressourcengruppe
 Verwenden Sie zum Auflisten aller Azure Cache for Redis-Instanzen in Ihrem Abonnement oder Ihrer Ressourcengruppe den folgenden Befehl:
 
+```azurecli
     azure rediscache list [options]
+```
 
 Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache list -h` -Befehl aus.
 
-    C:\>azure rediscache list -h
-    help:    List all Azure Cache for Redis within your Subscription or Resource Group
-    help:
-    help:    Usage: rediscache list [options]
-    help:
-    help:    Options:
-    help:      -h, --help                             output usage information
-    help:      -v, --verbose                          use verbose output
-    help:      -vv                                    more verbose with debug output
-    help:      --json                                 use json output
-    help:      -g, --resource-group <resource-group>  Name of the Resource Group
-    help:      -s, --subscription <subscription>      the subscription identifier
-    help:
-    help:    Current Mode: arm (Azure Resource Management)
+```azurecli
+C:\>azure rediscache list -h
+help:    List all Azure Cache for Redis within your Subscription or Resource Group
+help:
+help:    Usage: rediscache list [options]
+help:
+help:    Options:
+help:      -h, --help                             output usage information
+help:      -v, --verbose                          use verbose output
+help:      -vv                                    more verbose with debug output
+help:      --json                                 use json output
+help:      -g, --resource-group <resource-group>  Name of the Resource Group
+help:      -s, --subscription <subscription>      the subscription identifier
+help:
+help:    Current Mode: arm (Azure Resource Management)
+```
 
 ## <a name="show-properties-of-an-existing-azure-cache-for-redis"></a>Anzeigen der Eigenschaften eines vorhandenen Azure Cache for Redis
 Verwenden Sie zum Anzeigen der Eigenschaften eines vorhandenen Azure Cache for Redis den folgenden Befehl:
 
+```azurecli
     azure rediscache show [--name <name> --resource-group <resource-group>]
+```
 
 Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache show -h` -Befehl aus.
 
-    C:\>azure rediscache show -h
-    help:    Show properties of an existing Azure Cache for Redis
-    help:
-    help:    Usage: rediscache show [--name <name> --resource-group <resource-group>]
-    help:
-    help:    Options:
-    help:      -h, --help                             output usage information
-    help:      -v, --verbose                          use verbose output
-    help:      -vv                                    more verbose with debug output
-    help:      --json                                 use json output
-    help:      -n, --name <name>                      Name of the Azure Cache for Redis.
-    help:      -g, --resource-group <resource-group>  Name of the Resource Group
-    help:      -s, --subscription <subscription>      the subscription identifier
-    help:
-    help:    Current Mode: arm (Azure Resource Management)
+```azurecli
+C:\>azure rediscache show -h
+help:    Show properties of an existing Azure Cache for Redis
+help:
+help:    Usage: rediscache show [--name <name> --resource-group <resource-group>]
+help:
+help:    Options:
+help:      -h, --help                             output usage information
+help:      -v, --verbose                          use verbose output
+help:      -vv                                    more verbose with debug output
+help:      --json                                 use json output
+help:      -n, --name <name>                      Name of the Azure Cache for Redis.
+help:      -g, --resource-group <resource-group>  Name of the Resource Group
+help:      -s, --subscription <subscription>      the subscription identifier
+help:
+help:    Current Mode: arm (Azure Resource Management)
+```
 
 <a name="scale"></a>
 
 ## <a name="change-settings-of-an-existing-azure-cache-for-redis"></a>Ändern der Eigenschaften eines vorhandenen Azure Cache for Redis
 Verwenden Sie zum Ändern der Eigenschaften eines vorhandenen Azure Cache for Redis den folgenden Befehl:
 
+```azurecli
     azure rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
+```
 
 Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache set -h` -Befehl aus.
 
-    C:\>azure rediscache set -h
-    help:    Change settings of an existing Azure Cache for Redis
-    help:
-    help:    Usage: rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
-    help:
-    help:    Options:
-    help:      -h, --help                                               output usage information
-    help:      -v, --verbose                                            use verbose output
-    help:      -vv                                                      more verbose with debug output
-    help:      --json                                                   use json output
-    help:      -n, --name <name>                                        Name of the Azure Cache for Redis.
-    help:      -g, --resource-group <resource-group>                    Name of the Resource Group
-    help:      -c, --redis-configuration <redis-configuration>          Redis Configuration. Enter a JSON formatted string of configuration keys and values here.
-    help:      -f, --redis-configuration-file <redisConfigurationFile>  Redis Configuration. Enter the path of a file containing configuration keys and values here.
-    help:      -s, --subscription <subscription>                        the subscription identifier
-    help:
-    help:    Current Mode: arm (Azure Resource Management)
+```azurecli
+C:\>azure rediscache set -h
+help:    Change settings of an existing Azure Cache for Redis
+help:
+help:    Usage: rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
+help:
+help:    Options:
+help:      -h, --help                                               output usage information
+help:      -v, --verbose                                            use verbose output
+help:      -vv                                                      more verbose with debug output
+help:      --json                                                   use json output
+help:      -n, --name <name>                                        Name of the Azure Cache for Redis.
+help:      -g, --resource-group <resource-group>                    Name of the Resource Group
+help:      -c, --redis-configuration <redis-configuration>          Redis Configuration. Enter a JSON formatted string of configuration keys and values here.
+help:      -f, --redis-configuration-file <redisConfigurationFile>  Redis Configuration. Enter the path of a file containing configuration keys and values here.
+help:      -s, --subscription <subscription>                        the subscription identifier
+help:
+help:    Current Mode: arm (Azure Resource Management)
+```
 
 ## <a name="renew-the-authentication-key-for-an-existing-azure-cache-for-redis"></a>Erneuern des Authentifizierungsschlüssels für einen vorhandenen Azure Cache for Redis
 Verwenden Sie zum Erneuern des Authentifizierungsschlüssels für einen vorhandenen Azure Cache for Redis den folgenden Befehl:
 
+```azurecli
     azure rediscache renew-key [--name <name> --resource-group <resource-group> --key-type <key-type>]
+```
 
 Geben Sie `Primary` oder `Secondary` für `key-type` an.
 
 Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache renew-key -h` -Befehl aus.
 
-    C:\>azure rediscache renew-key -h
-    help:    Renew the authentication key for an existing Azure Cache for Redis
-    help:
-    help:    Usage: rediscache renew-key [--name <name> --resource-group <resource-group> ]
-    help:
-    help:    Options:
-    help:      -h, --help                             output usage information
-    help:      -v, --verbose                          use verbose output
-    help:      -vv                                    more verbose with debug output
-    help:      --json                                 use json output
-    help:      -n, --name <name>                      Name of the Azure Cache for Redis.
-    help:      -g, --resource-group <resource-group>  Name of the Resource Group under which cache exists
-    help:      -t, --key-type <key-type>              type of key to renew. Valid values are: 'Primary', 'Secondary'.
-    help:      -s, --subscription <subscription>      the subscription identifier
-    help:
-    help:    Current Mode: arm (Azure Resource Management)
+```azurecli
+C:\>azure rediscache renew-key -h
+help:    Renew the authentication key for an existing Azure Cache for Redis
+help:
+help:    Usage: rediscache renew-key [--name <name> --resource-group <resource-group> ]
+help:
+help:    Options:
+help:      -h, --help                             output usage information
+help:      -v, --verbose                          use verbose output
+help:      -vv                                    more verbose with debug output
+help:      --json                                 use json output
+help:      -n, --name <name>                      Name of the Azure Cache for Redis.
+help:      -g, --resource-group <resource-group>  Name of the Resource Group under which cache exists
+help:      -t, --key-type <key-type>              type of key to renew. Valid values are: 'Primary', 'Secondary'.
+help:      -s, --subscription <subscription>      the subscription identifier
+help:
+help:    Current Mode: arm (Azure Resource Management)
+```
 
 ## <a name="list-primary-and-secondary-keys-of-an-existing-azure-cache-for-redis"></a>Auflisten der primären und sekundären Schlüssel eines vorhandenen Azure Cache for Redis
 Verwenden Sie zum Auflisten der primären und sekundären Schlüssel eines vorhandenen Azure Cache for Redis den folgenden Befehl:
 
+```azurecli
     azure rediscache list-keys [--name <name> --resource-group <resource-group>]
+```
 
 Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache list-keys -h` -Befehl aus.
 
-    C:\>azure rediscache list-keys -h
-    help:    Lists Primary and Secondary key of an existing Azure Cache for Redis
-    help:
-    help:    Usage: rediscache list-keys [--name <name> --resource-group <resource-group>]
-    help:
-    help:    Options:
-    help:      -h, --help                             output usage information
-    help:      -v, --verbose                          use verbose output
-    help:      -vv                                    more verbose with debug output
-    help:      --json                                 use json output
-    help:      -n, --name <name>                      Name of the Azure Cache for Redis.
-    help:      -g, --resource-group <resource-group>  Name of the Resource Group under which Cache exists
-    help:      -s, --subscription <subscription>      the subscription identifier
-    help:
-    help:    Current Mode: arm (Azure Resource Management)
+```azurecli
+C:\>azure rediscache list-keys -h
+help:    Lists Primary and Secondary key of an existing Azure Cache for Redis
+help:
+help:    Usage: rediscache list-keys [--name <name> --resource-group <resource-group>]
+help:
+help:    Options:
+help:      -h, --help                             output usage information
+help:      -v, --verbose                          use verbose output
+help:      -vv                                    more verbose with debug output
+help:      --json                                 use json output
+help:      -n, --name <name>                      Name of the Azure Cache for Redis.
+help:      -g, --resource-group <resource-group>  Name of the Resource Group under which Cache exists
+help:      -s, --subscription <subscription>      the subscription identifier
+help:
+help:    Current Mode: arm (Azure Resource Management)
+```

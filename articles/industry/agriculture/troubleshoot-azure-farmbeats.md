@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656821"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
@@ -110,7 +110,7 @@ Informationen zum Herunterladen von Protokollen finden Sie im Abschnitt [Manuell
 > [!NOTE]
 > Die Partner-ID des Sensorpartners, an dem Sie interessiert sind.
 
-3. Wechseln Sie zurück zur Partner-API, und wählen Sie **GET/\<ID>** aus.
+3. Wechseln Sie zurück zur Partner-API, und wählen Sie **Get/\<ID>** aus.
 4. Geben Sie die Partner-ID aus Schritt 3 an, und wählen Sie dann **Ausführen** aus.
 
    Die API-Antwort sollte die Event Hubs-Verbindungszeichenfolge enthalten.
@@ -250,7 +250,7 @@ Dieses Problem kann auftreten, wenn auf dem Sentinel-Server Wartungsaktivitäten
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: Maximale Anzahl von Verbindungen erreicht
 
-**Auftragsfehlermeldung**: „Die maximale Anzahl von zwei gleichzeitigen Flows wurde durch den Benutzer ‚\<Benutzername>‘ erreicht.“
+**Auftragsfehlermeldung**: „Die maximale Anzahl von zwei gleichzeitigen Flows wurde durch den Benutzer ‚\<username>‘ erreicht.“
 
 **Bedeutung**: Wenn ein Auftrag fehlschlägt, weil die maximale Anzahl von Verbindungen erreicht wurde, wird dasselbe Sentinel-Konto für mehrere Aufträge verwendet.
 

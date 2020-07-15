@@ -13,10 +13,10 @@ ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83745732"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation
@@ -61,7 +61,7 @@ Um sicherzustellen, dass Sie eingebunden wurden, können Sie Ihre Einstellungen 
 
     ![Konten auf dem Bildschirm „Einstellungen“](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *\<Ihre_Organisation>* Azure AD**.
+2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *\<your_organization>* Azure AD**.
 
     ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit verbundenem Contoso-Konto](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -106,7 +106,7 @@ Um sicherzustellen, dass Sie eingebunden wurden, können Sie Ihre Einstellungen 
 
     ![Konten auf dem Bildschirm „Einstellungen“](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *\<Ihre_Organisation>* Azure AD**.
+2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *\<your_organization>* Azure AD**.
 
     ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit verbundenem Contoso-Konto](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

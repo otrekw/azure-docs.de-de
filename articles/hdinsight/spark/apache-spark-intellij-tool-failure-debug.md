@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857420"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Debuggen von fehlgeschlagenen Spark-Aufträgen mit dem Azure-Toolkit für IntelliJ (Vorschau)
@@ -90,7 +90,7 @@ Erstellen Sie eine Spark-Scala/Java-Anwendung, und führen Sie dann die Anwendun
 
 Wenn die Auftragsübermittlung fehlschlägt, können Sie das Profil des fehlgeschlagenen Auftrags zum weiteren Debuggen auf den lokalen Computer herunterladen.
 
-1. Öffnen Sie den **Microsoft Azure Storage-Explorer**, suchen Sie das HDInsight-Konto des Clusters für den fehlgeschlagenen Auftrag, und laden Sie die Ressourcen des fehlgeschlagenen Auftrags vom Speicherort **\hdp\spark2-events\\.spark-failures\\\<Anwendungs-ID>** in einen lokalen Ordner herunter. Im Fenster **Aktivitäten** wird der Fortschritt des Downloads angezeigt.
+1. Öffnen Sie den **Microsoft Azure Storage-Explorer**, suchen Sie das HDInsight-Konto des Clusters für den fehlerhaften Auftrag, und laden Sie die Ressourcen des fehlerhaften Auftrags vom Speicherort **\hdp\spark2-events\\.spark-failures\\\<application ID>** in einen lokalen Ordner herunter. Im Fenster **Aktivitäten** wird der Fortschritt des Downloads angezeigt.
 
    ![Azure Storage-Explorer – Download fehlerhaft](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 

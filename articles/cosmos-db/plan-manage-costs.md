@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: cf259dfa0b00393cf0fee259b199527569ba1792
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42421f745759d9aee75b285c3fbc6ea7217ba5c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152583"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85112700"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Planen und Verwalten von Kosten für Azure Cosmos DB
 
@@ -30,7 +30,7 @@ Verwenden Sie den [Azure Cosmos DB Capacity Calculator](https://cosmos.azure.com
 
 Im folgenden Screenshot sind der Durchsatz und die Kostenschätzung bei Verwendung des Capacity Calculators dargestellt:
 
-![Kostenschätzung im Azure Cosmos DB Capacity Calculator](./media/plan-manage-costs/capacity-calculator-cost-estimate.png)
+:::image type="content" source="./media/plan-manage-costs/capacity-calculator-cost-estimate.png" alt-text="Kostenschätzung im Azure Cosmos DB Capacity Calculator":::
 
 ## <a name="review-estimated-costs-from-the-azure-portal"></a>Überprüfen von geschätzten Kosten im Azure-Portal
 
@@ -41,7 +41,7 @@ Beim Erstellen von Azure Cosmos DB-Ressourcen im Azure-Portal werden die geschä
 1. Erstellen Sie einen neuen Container, z. B. einen Graph-Container.
 1. Geben Sie den Durchsatz ein, der für Ihre Workload benötigt wird, z. B. 400 RU/s. Nach dem Eingeben des Durchsatzwerts wird die Kostenschätzung wie im folgenden Screenshot angezeigt:
 
-   ![Kostenschätzung im Azure-Portal](./media/plan-manage-costs/cost-estimate-portal.png)
+   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Kostenschätzung im Azure-Portal":::
 
 Wenn Ihr Azure-Abonnement über ein Ausgabenlimit verfügt, wird von Azure verhindert, dass Ihre Ausgaben den Guthabenbetrag übersteigen. Beim Erstellen und Nutzen von Azure-Ressourcen wird Ihr Guthaben verwendet. Wenn Sie Ihr Guthabenlimit erreicht haben, werden die von Ihnen bereitgestellten Ressourcen für den Rest des Abrechnungszeitraums deaktiviert. Sie können Ihr Guthabenlimit nicht ändern, aber Sie können es entfernen. Weitere Informationen zu Ausgabenlimits finden Sie unter [Azure-Ausgabenlimit](../billing/billing-spending-limit.md).
 
@@ -63,7 +63,7 @@ Bei Verwendung der Kostenanalyse können Sie die Azure Cosmos DB-Kosten in Graph
 
 1. Wählen Sie zum Eingrenzen der Kosten auf einen Dienst, z. B. Azure Cosmos DB, die Option **Filter hinzufügen** und dann **Dienstname** aus. Wählen Sie anschließend in der Liste die Option **Azure Cosmos DB** aus. In diesem Beispiel werden nur die Kosten für Azure Cosmos DB angezeigt:
  
-   ![Überwachen der Kosten im Bereich „Kostenanalyse“](./media/plan-manage-costs/cost-analysis-pane.png)
+   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Überwachen der Kosten im Bereich „Kostenanalyse“":::
 
 Im obigen Beispiel sind die aktuellen Kosten für Azure Cosmos DB für den Monat Februar angegeben. Darüber hinaus enthalten die Diagramme auch die Azure Cosmos DB-Kosten nach Standort und Ressourcengruppe.
 

@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086606"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Tutorial: Reagieren auf Blob Storage-Ereignisse in IoT Edge (Preview)
@@ -348,7 +348,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | contentType | Zeichenfolge | Der für das Blob angegebene Inhaltstyp. |
 | contentLength | integer | Die Größe des Blobs in Byte. |
 | blobType | Zeichenfolge | Der Blobtyp. Gültige Werte sind „BlockBlob“ oder „PageBlob“. |
-| url | Zeichenfolge | Der Pfad des Blobs. <br>Wenn der Client eine Blob-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.blob.core.windows.net/\<Containername\>/\<Dateiname\>* . <br>Wenn der Client eine Data Lake Storage-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.dfs.core.windows.net/\<Dateisystemname\>/\<Dateiname\>* . |
+| url | Zeichenfolge | Der Pfad des Blobs. <br>Wenn der Client eine Blob-REST-API verwendet, hat die URL die folgende Struktur: *\<storage-account-name\>.blob.core.windows.net/\<container-name\>/\<file-name\>* . <br>Wenn der Client eine Data Lake Storage-REST-API verwendet, hat die URL die folgende Struktur: *\<storage-account-name\>.dfs.core.windows.net/\<file-system-name\>/\<file-name\>* . |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

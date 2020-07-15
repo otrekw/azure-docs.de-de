@@ -3,15 +3,15 @@ title: 'Leistungsoptimierung: Hive bei Azure Data Lake Storage Gen1'
 description: Anleitung für die Leistungsoptimierung für Hive in HDInsight und Azure Data Lake Storage Gen1
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 2e44332ddab9387c05a45d15101ccd2bdec3ada4
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: c49388d50b79b037b0a0923f2c5e9ac72105c54e
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690519"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855756"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Anleitung für die Leistungsoptimierung für Hive in HDInsight und Azure Data Lake Storage Gen1
 
@@ -55,17 +55,15 @@ E/A-intensive Workloads können von einem höheren Maß an Parallelität profiti
 
 Die Anzahl von gleichzeitigen Tasks bzw. die Parallelität wird durch die Gesamtmenge an YARN-Arbeitsspeicher begrenzt.  Die Anzahl von YARN-Containern bestimmt, wie viele gleichzeitige Tasks ausgeführt werden können.  Die Menge an YARN-Arbeitsspeicher pro Knoten finden Sie bei Ambari.  Navigieren Sie zu YARN, und zeigen Sie die Registerkarte für die Konfiguration an.  Die Größe des YARN-Arbeitsspeichers wird in diesem Fenster angezeigt.  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+> Gesamter YARN-Arbeitsspeicher = Knoten × YARN-Arbeitsspeicher pro Knoten. Anzahl der YARN-Container = gesamter YARN-Arbeitsspeicher / Tez-Containergröße
+
 Entscheidend für die Verbesserung der Leistung bei Data Lake Storage Gen1 ist es, die Parallelität so weit wie möglich zu erhöhen.  Tez berechnet automatisch die Anzahl von Tasks, die erstellt werden müssen – darum müssen Sie sich nicht kümmern.   
 
 ## <a name="example-calculation"></a>Beispielberechnung
 
 Angenommen, Sie haben einen D14-Cluster mit 8 Knoten.  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+> Gesamter YARN-Arbeitsspeicher = Knoten × YARN-Arbeitsspeicher pro Knoten. Gesamter YARN-Arbeitsspeicher = 8 Knoten × 96 GB = 768 GB. Anzahl der YARN-Container = 768 GB / 3.072 MB = 256
 
 ## <a name="limitations"></a>Einschränkungen
 

@@ -1,21 +1,21 @@
 ---
 title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
-ms.date: 05/11/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: de9b3c5242f361c9f0cf7128a5ec32c0e7dce428
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 28f4e3a99b7241711e46ce92fdfd2d7689b4527b
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205023"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971112"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
 Azure Policy richtet Konventionen für Ressourcen ein. Richtliniendefinitionen beschreiben [Bedingungen](#conditions) für die Ressourcenkonformität und die Maßnahmen, die ergriffen werden, wenn eine Bedingung erfüllt ist. Eine Bedingung vergleicht ein [Feld](#fields) einer Ressourceneigenschaft mit einem erforderlichen Wert. Der Zugriff auf Ressourceneigenschaftsfelder erfolgt über [Aliase](#aliases). Ein Ressourceneigenschaftsfeld ist entweder ein einwertiges Feld oder ein [Array](#understanding-the--alias) mehrerer Werte. Die Auswertung der Bedingung erfolgt bei Arrays auf andere Weise.
 Erfahren Sie mehr über [Bedingungen](#conditions).
 
-Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. Sie können beispielsweise angeben, dass nur bestimmte Typen virtueller Computer zulässig sind. Oder Sie können festlegen, dass alle Ressourcen ein bestimmtes Tag aufweisen. Richtlinien werden von allen untergeordneten Ressourcen geerbt. Wenn eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie für alle Ressourcen in dieser Ressourcengruppe.
+Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. Sie können beispielsweise angeben, dass nur bestimmte Typen virtueller Computer zulässig sind. Oder Sie können festlegen, dass Ressourcen ein bestimmtes Tag aufweisen. Richtlinienzuweisungen werden von untergeordneten Ressourcen geerbt. Wenn eine Richtlinienzuweisung auf eine Ressourcengruppe angewandt wird, gilt sie für alle Ressourcen in dieser Ressourcengruppe.
 
 Das Richtliniendefinitionsschema finden Sie hier: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
@@ -37,7 +37,7 @@ Die folgende JSON-Datei zeigt beispielsweise eine Richtlinie, die einschränkt, 
     "properties": {
         "displayName": "Allowed locations",
         "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
-        "mode": "all",
+        "mode": "Indexed",
         "metadata": {
             "version": "1.0.0",
             "category": "Locations"
@@ -91,7 +91,7 @@ Der Modus (**mode**) wird abhängig davon konfiguriert, ob die Richtlinie für e
 
 ### <a name="resource-manager-modes"></a>Ressourcen-Manager-Modi
 
-Der Modus (**mode**) bestimmt, welche Ressourcentypen für eine Richtlinie ausgewertet werden. Unterstützte Modi:
+Der Modus (**mode**) bestimmt, welche Ressourcentypen für eine Richtliniendefinition ausgewertet werden. Unterstützte Modi:
 
 - `all`: Ressourcengruppen, Abonnements und alle Ressourcentypen werden ausgewertet.
 - `indexed`: Nur Ressourcentypen, die Tags und Speicherort unterstützen, werden ausgewertet.
@@ -106,8 +106,8 @@ Es wird empfohlen, **mode** in den meisten Fällen auf `all` zu setzen. Alle üb
 
 Die folgenden Ressourcenanbietermodi werden derzeit in der Vorschauphase unterstützt:
 
-- `Microsoft.ContainerService.Data` zur Verwaltung der Zugangscontrollerregeln für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md). Richtlinien, die diesen Ressourcenanbietermodus verwenden, **müssen** die Auswirkung [EnforceRegoPolicy](./effects.md#enforceregopolicy) verwenden. Dieses Modell ist _veraltet_.
-- `Microsoft.Kubernetes.Data` zum Verwalten Ihrer Kubernetes-Cluster in oder außerhalb von Azure. Richtlinien, die diesen Ressourcenanbietermodus verwenden, **müssen** die Auswirkung [EnforceOPAConstraint](./effects.md#enforceopaconstraint) verwenden.
+- `Microsoft.ContainerService.Data` zur Verwaltung der Zugangscontrollerregeln für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md). Definitionen, die diesen Ressourcenanbietermodus verwenden, **müssen** die Auswirkung [EnforceRegoPolicy](./effects.md#enforceregopolicy) verwenden. Dieses Modell ist _veraltet_.
+- `Microsoft.Kubernetes.Data` zum Verwalten Ihrer Kubernetes-Cluster in oder außerhalb von Azure. Definitionen, die diesen Ressourcenanbietermodus nutzen, verwenden die Auswirkungen _audit_, _deny_ und _disabled_. Die Verwendung der Auswirkung [EnforceOPAConstraint](./effects.md#enforceopaconstraint) ist nun _veraltet_.
 - `Microsoft.KeyVault.Data` zur Verwaltung von Tresoren und Zertifikaten in [Azure Key Vault](../../../key-vault/general/overview.md).
 
 > [!NOTE]
@@ -207,7 +207,7 @@ Beim Erstellen einer Initiative oder Richtlinie muss der Speicherort der Definit
 Für den Definitionsspeicherort gilt Folgendes:
 
 - **Abonnement:** Die Richtlinie kann nur Ressourcen innerhalb dieses Abonnements zugewiesen werden.
-- **Verwaltungsgruppe:** Die Richtlinie kann nur Ressourcen innerhalb untergeordneter Verwaltungsgruppen und untergeordneter Abonnements zugewiesen werden. Wenn Sie diese Richtliniendefinition mehreren Abonnements zuordnen möchten, muss der Speicherort eine Verwaltungsgruppe sein, die diese Abonnements enthält.
+- **Verwaltungsgruppe:** Die Richtlinie kann nur Ressourcen innerhalb untergeordneter Verwaltungsgruppen und untergeordneter Abonnements zugewiesen werden. Wenn Sie diese Richtliniendefinition mehreren Abonnements zuordnen möchten, muss der Speicherort eine Verwaltungsgruppe sein, die Abonnements enthält.
 
 ## <a name="policy-rule"></a>Richtlinienregel
 
@@ -603,9 +603,9 @@ Alle [Resource Manager-Vorlagenfunktionen](../../../azure-resource-manager/templ
 > [!NOTE]
 > Diese Funktionen sind weiterhin innerhalb des Teils `details.deployment.properties.template` der Vorlagenbereitstellung in der Definition der Richtlinie **deployIfNotExists** verfügbar.
 
-Die folgende Funktion steht zur Verwendung in einer Richtlinienregel zur Verfügung, unterscheidet sich jedoch von der Verwendung in einer Azure Resource Manager-Vorlage:
+Die folgende Funktion steht zur Verwendung in einer Richtlinienregel zur Verfügung, unterscheidet sich jedoch von der Verwendung in einer Azure Resource Manager-Vorlage (ARM-Vorlage):
 
-- `utcNow()`: Im Gegensatz zu einer Resource Manager-Vorlage kann dies auch außerhalb von defaultValue verwendet werden.
+- `utcNow()`: Im Gegensatz zu einer ARM-Vorlage kann diese Eigenschaft auch außerhalb von _defaultValue_ verwendet werden.
   - Gibt eine Zeichenfolge zurück, die auf das aktuelle Datum und die aktuelle Uhrzeit im Universal ISO 8601 DateTime-Format 'jjjj-MM-ttTHH:mm:ss.fffffffZ' festgelegt ist.
 
 Die folgenden Funktionen sind nur in Richtlinienregeln verfügbar:
@@ -619,7 +619,7 @@ Die folgenden Funktionen sind nur in Richtlinienregeln verfügbar:
   - `field` ist in erster Linie für die Verwendung mit **AuditIfNotExists** und **DeployIfNotExists** zum Verweisen auf Felder in der Ressource bestimmt, die ausgewertet werden. Ein Beispiel hierfür finden Sie im [Beispiel für DeployIfNotExists](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
   - Gibt die API-Version der Anforderung zurück, die die Richtlinienauswertung ausgelöst hat (z. B. `2019-09-01`).
-    Dabei handelt es sich um die API-Version, die in der PUT/PATCH-Anforderung für Auswertungen bei der Erstellung/Aktualisierung von Ressourcen verwendet wurde. Bei der Kompatibilitätsauswertung vorhandener Ressourcen wird immer die neueste API-Version verwendet.
+    Dieser Wert ist die API-Version, die in der PUT/PATCH-Anforderung für Auswertungen bei der Erstellung/Aktualisierung von Ressourcen verwendet wurde. Bei der Kompatibilitätsauswertung vorhandener Ressourcen wird immer die neueste API-Version verwendet.
   
 #### <a name="policy-function-example"></a>Beispiel für Richtlinienfunktion
 

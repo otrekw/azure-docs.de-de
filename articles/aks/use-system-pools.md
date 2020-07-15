@@ -3,17 +3,18 @@ title: Verwenden von Systemknotenpools in Azure Kubernetes Service (AKS)
 description: Informationen zum Erstellen und Verwalten von Systemknotenpools in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 04/28/2020
-ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/18/2020
+ms.author: mlearned
+ms.openlocfilehash: 9b6270f81e7af8bd508d29510698e6cf9a5a2010
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125246"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052645"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Verwalten von Systemknotenpools in Azure Kubernetes Service (AKS)
 
-Im Azure Kubernetes Service (AKS) werden Knoten derselben Konfiguration zu *Knotenpools* zusammengefasst. Knotenpools enthalten die zugrunde liegenden virtuellen Computer, auf denen Ihre Anwendungen ausgeführt werden. Systemknotenpools und Benutzerknotenpools sind zwei verschiedene Knotenpoolmodi für AKS-Cluster. Systemknotenpools dienen dem primären Zweck, kritische Systempods wie CoreDNS und tunnelfront zu hosten. Benutzerknotenpools dienen dem primären Zweck, Ihre Anwendungspods zu hosten. Anwendungspods lassen sich jedoch auf Systemknotenpools planen, wenn Sie nur einen Pool in Ihrem AKS-Cluster haben möchten. Jeder AKS-Cluster muss mindestens einen Systemknotenpool mit mindestens einem Knoten enthalten. 
+Im Azure Kubernetes Service (AKS) werden Knoten derselben Konfiguration zu *Knotenpools* zusammengefasst. Knotenpools enthalten die zugrunde liegenden virtuellen Computer, auf denen Ihre Anwendungen ausgeführt werden. Systemknotenpools und Benutzerknotenpools sind zwei verschiedene Knotenpoolmodi für AKS-Cluster. Systemknotenpools dienen dem primären Zweck, kritische Systempods wie CoreDNS und tunnelfront zu hosten. Benutzerknotenpools dienen dem primären Zweck, Ihre Anwendungspods zu hosten. Anwendungspods lassen sich jedoch auf Systemknotenpools planen, wenn Sie nur einen Pool in Ihrem AKS-Cluster haben möchten. Jeder AKS-Cluster muss mindestens einen Systemknotenpool mit mindestens einem Knoten enthalten.
 
 > [!Important]
 > Wenn Sie für Ihren AKS-Cluster nur einen Systemknotenpool in einer Produktionsumgebung ausführen, sollten Sie für den Knotenpool mindestens drei Knoten verwenden.
@@ -29,7 +30,7 @@ Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS
 * Siehe [Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)][quotas-skus-regions].
 * Der AKS-Cluster muss mit VM-Skalierungsgruppen als VM-Typ erstellt werden.
 * Der Name eines Knotenpools darf nur Kleinbuchstaben und Ziffern enthalten und muss mit einem Kleinbuchstaben beginnen. Bei Linux-Knotenpools muss die Länge zwischen 1 und 12 Zeichen betragen. Bei Windows-Knotenpools muss die Länge zwischen 1 und 6 Zeichen betragen.
-* Zum Festlegen des Modus für einen Knotenpool muss eine API der Version 2020-03-01 oder höher verwendet werden.
+* Zum Festlegen des Modus für einen Knotenpool muss eine API der Version 2020-03-01 oder höher verwendet werden. Cluster, die in älteren API-Versionen als 2020-03-01 erstellt werden, enthalten nur Benutzerknotenpools, können aber durch Ausführen der Schritte zum [Aktualisieren des Poolmodus](#update-existing-cluster-system-and-user-node-pools) migriert werden, sodass sie Systemknotenpools enthalten.
 * Der Modus eines Knotenpools ist eine erforderliche Eigenschaft und muss explizit festgelegt werden, wenn ARM-Vorlagen oder direkte API-Aufrufe verwendet werden.
 
 ## <a name="system-and-user-node-pools"></a>System- und Benutzerknotenpools
@@ -115,7 +116,10 @@ Für Systemknotenpools wurde ein Modus vom Typ **system** definiert, für Benutz
 }
 ```
 
-## <a name="update-system-and-user-node-pools"></a>Aktualisieren von System- und Benutzerknotenpools
+## <a name="update-existing-cluster-system-and-user-node-pools"></a>Aktualisieren von vorhandenen System- und Benutzerknotenpools in Clustern
+
+> [!NOTE]
+> Zum Festlegen des Modus für einen Systemknotenpool muss eine API der Version 2020-03-01 oder höher verwendet werden. Cluster, die in älteren API-Versionen als 2020-03-01 erstellt werden, enthalten somit nur Benutzerknotenpools. Aktualisieren Sie den Modus vorhandener Knotenpools mit den folgenden Befehlen in der neuesten Version der Azure-Befehlszeilenschnittstelle, um die Funktionen und Vorteile von Systemknotenpools für ältere Cluster zu ermöglichen.
 
 Der Modus für System- und Benutzerknotenpools kann geändert werden. Sie können aus einem Systemknotenpool nur dann einen Benutzerpool machen, wenn im AKS-Cluster bereits ein anderer Systemknotenpool vorhanden ist.
 

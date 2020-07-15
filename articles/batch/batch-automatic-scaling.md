@@ -1,16 +1,15 @@
 ---
 title: Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool
 description: Aktivieren Sie das automatische Skalieren in einem Cloudpool, um die Anzahl von Computeknoten im Pool dynamisch anzupassen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: b790ee286d9edd8cee04ef1db719be6395509be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb40ea72dad2313618fb3c38bf73bf822f4b4433
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113560"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960842"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -23,7 +22,7 @@ Sie können die automatische Skalierung beim Erstellen eines Pools oder für ein
 In diesem Artikel werden die verschiedenen Entitäten erläutert, aus denen sich Ihre Formeln für die automatische Skalierung zusammensetzen. Dazu zählen Variablen, Operatoren, Operationen und Funktionen. Es wird erläutert, wie verschiedene Metriken zu Compute-Ressourcen und Aufgaben in Batch abgerufen werden können. Sie können diese Metriken verwenden, um die Knotenanzahl des Pools basierend auf Ressourcenverbrauch und Aufgabenstatus automatisch anzupassen. Anschließend wird beschrieben, wie Sie mit der REST-API und der .NET-API von Batch eine Formel erstellen und die automatische Skalierung für einen Pool aktivieren. Zum Abschluss werden nun verschiedene Beispielformeln gezeigt.
 
 > [!IMPORTANT]
-> Wenn Sie ein Batch-Konto erstellen, können Sie die [Kontokonfiguration](batch-api-basics.md#account) angeben, die bestimmt, ob Pools in einem Batch-Dienstabonnement (Standard) oder in Ihrem Benutzerabonnement zugeordnet werden. Wenn Sie Ihr Batch-Konto mit der Batch-Standarddienstkonfiguration erstellt haben, ist Ihr Konto auf eine maximale Anzahl von Kernen beschränkt, die für die Verarbeitung verwendet werden können. Der Batch-Dienst skaliert Computeknoten nur bis zu diesem Kernspeichergrenzwert. Aus diesem Grund erreicht der Batch-Dienst möglicherweise nicht die Zielanzahl der von einer Formel für die automatische Skalierung angegebenen Computeknoten. Unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md) finden Sie Informationen zum Anzeigen und Erhöhen Ihrer Kontokontingente.
+> Wenn Sie ein Batch-Konto erstellen, können Sie die [Kontokonfiguration](accounts.md) angeben, die bestimmt, ob Pools in einem Batch-Dienstabonnement (Standard) oder in Ihrem Benutzerabonnement zugeordnet werden. Wenn Sie Ihr Batch-Konto mit der Batch-Standarddienstkonfiguration erstellt haben, ist Ihr Konto auf eine maximale Anzahl von Kernen beschränkt, die für die Verarbeitung verwendet werden können. Der Batch-Dienst skaliert Computeknoten nur bis zu diesem Kernspeichergrenzwert. Aus diesem Grund erreicht der Batch-Dienst möglicherweise nicht die Zielanzahl der von einer Formel für die automatische Skalierung angegebenen Computeknoten. Unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md) finden Sie Informationen zum Anzeigen und Erhöhen Ihrer Kontokontingente.
 >
 >Wenn Sie Ihr Konto mit der Konfiguration „Benutzerabonnement“ erstellt haben, teilt Ihr Konto das Kernkontingent für das Abonnement. Weitere Informationen finden Sie unter [Virtual Machines-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits) in [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 >
@@ -128,6 +127,9 @@ Sie können den Wert dieser vom Dienst definierten Variablen abrufen, um Anpassu
 | $CurrentLowPriorityNodes |Die aktuelle Anzahl der Computeknoten mit niedriger Priorität einschließlich aller Knoten, die vorzeitig entfernt wurden. |
 | $PreemptedNodeCount | Die Anzahl der Knoten im Pool, die sich im Zustand „Vorzeitig entfernt“ befinden. |
 
+> [!IMPORTANT]
+> Aufgaben zur Auftragsfreigabe sind derzeit nicht in den obigen Variablen enthalten, die die Aufgabenanzahl angeben, z. B. $ActiveTasks und $PendingTasks. Je nach verwendeter Formel für die automatische Skalierung kann dies dazu führen, dass Knoten entfernt werden und keine Knoten mehr verfügbar sind, um die Aufgaben zur Auftragsfreigabe auszuführen.
+
 > [!TIP]
 > Die oben in der Tabelle angezeigten, vom Dienst definierten schreibgeschützten Variablen sind *Objekte*, die verschiedene Methoden für den Zugriff auf die zum jeweiligen Objekt gehörigen Daten bereitstellen. Weitere Informationen finden Sie weiter unten in diesem Artikel unter [Abrufen von Beispieldaten](#getsampledata).
 >
@@ -140,7 +142,7 @@ Folgende Typen werden in einer Formel unterstützt:
 * double
 * doubleVec
 * doubleVecList
-* string
+* Zeichenfolge
 * timestamp – „timestamp“ ist eine Verbundstruktur, die folgende Member enthält:
 
   * year
@@ -279,7 +281,7 @@ Weil bei der Verfügbarkeit von Stichproben eine Verzögerung auftreten kann, m�
 >
 >
 
-## <a name="metrics"></a>metrics
+## <a name="metrics"></a>Metriken
 
 Für das Definieren einer Formel können Sie sowohl Ressourcenmetriken als auch Aufgabenmetriken verwenden. Sie passen die vorgegebene Anzahl dedizierter Knoten im Pool basierend auf den Metrikdaten an, die Sie abrufen und auswerten. Im Abschnitt [Variablen](#variables) finden Sie weitere Informationen zu den einzelnen Metriken.
 
@@ -373,17 +375,17 @@ $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 
 ## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>Erstellen eines Pools mit aktivierter Autoskalierung mit Batch SDKs
 
-Die automatische Skalierung für Pools kann mit einem der [Batch SDKs](batch-apis-tools.md#azure-accounts-for-batch-development), den [Batch-PowerShell-Cmdlets](https://docs.microsoft.com/rest/api/batchservice/) der [Batch REST-API](batch-powershell-cmdlets-get-started.md) und der [Batch-CLI](batch-cli-get-started.md) konfiguriert werden. In diesem Abschnitt sehen Sie Beispiele sowohl für .NET als auch für Python.
+Die automatische Skalierung für Pools kann mit einem der [Batch SDKs](batch-apis-tools.md#azure-accounts-for-batch-development), den [Batch-PowerShell-Cmdlets](batch-powershell-cmdlets-get-started.md) der [Batch REST-API](/rest/api/batchservice/) und der [Batch-CLI](batch-cli-get-started.md) konfiguriert werden. In diesem Abschnitt sehen Sie Beispiele sowohl für .NET als auch für Python.
 
 ### <a name="net"></a>.NET
 
 Gehen Sie wie folgt vor, um einen Pool mit automatischer Skalierung in .NET zu erstellen:
 
-1. Erstellen Sie den Pool mit [BatchClient.PoolOperations.CreatePool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
-1. Legen Sie die [CloudPool.AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled)-Eigenschaft auf `true` fest.
-1. Legen Sie die [CloudPool.AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula)-Eigenschaft mit Ihrer Formel für die automatische Skalierung fest.
-1. (Optional) Legen Sie die [CloudPool.AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval)-Eigenschaft fest (Standardeinstellung ist 15 Minuten).
-1. Führen Sie für den Pool mit [CloudPool.Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) oder [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) einen Commit durch.
+1. Erstellen Sie den Pool mit [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
+1. Legen Sie die [CloudPool.AutoScaleEnabled](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled)-Eigenschaft auf `true` fest.
+1. Legen Sie die [CloudPool.AutoScaleFormula](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula)-Eigenschaft mit Ihrer Formel für die automatische Skalierung fest.
+1. (Optional) Legen Sie die [CloudPool.AutoScaleEvaluationInterval](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval)-Eigenschaft fest (Standardeinstellung ist 15 Minuten).
+1. Führen Sie für den Pool mit [CloudPool.Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) oder [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) einen Commit durch.
 
 Mit dem folgenden Codeausschnitt wird ein Pool mit aktivierter automatischer Skalierung in .NET erstellt. Die Formel für die automatische Skalierung des Pools legt die vorgegebene Anzahl dedizierter Knoten auf 5 am Montag und auf 1 an allen anderen Wochentagen fest. Das [Intervall für die automatische Skalierung](#automatic-scaling-interval) wird auf 30 Minuten festgelegt. In diesem und anderen C#-Codeausschnitten in diesem Artikel ist `myBatchClient` eine ordnungsgemäß initialisierte Instanz der Klasse [BatchClient][net_batchclient].
 
@@ -520,11 +522,11 @@ Sie können eine Formel auswerten, bevor Sie sie auf einen Pool anwenden. Auf di
 
 Damit Sie eine Formel für die automatische Skalierung auswerten können, müssen Sie zunächst die automatische Skalierung für den Pool mit einer gültigen Formel aktivieren. Wenn Sie eine Formel für einen Pool testen möchten, für den die automatische Skalierung noch nicht aktiviert wurde, verwenden Sie beim ersten Aktivieren der automatischen Skalierung die einzeilige Formel `$TargetDedicatedNodes = 0`. Verwenden Sie anschließend eines der folgenden Verfahren, um die zu testende Formel auszuwerten:
 
-* [BatchClient.PoolOperations.EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) oder [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
+* [BatchClient.PoolOperations.EvaluateAutoScale](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) oder [EvaluateAutoScaleAsync](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
 
     Für diese Batch .NET-Methoden sind die ID eines vorhandenen Pools und eine Zeichenfolge mit der auszuwertenden autoscale-Formel erforderlich.
 
-* [Auswerten einer Formel für die automatische Skalierung](https://docs.microsoft.com/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
+* [Auswerten einer Formel für die automatische Skalierung](/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
 
     Geben Sie in dieser REST-API-Anforderung die Pool-ID im URI und die autoscale-Formel im *autoScaleFormula*-Element des Anforderungstexts an. Die bei der Anfrage generierte Antwort enthält Fehlerinformationen, die in Zusammenhang mit der Formel stehen können.
 
@@ -610,13 +612,13 @@ AutoScaleRun.Results:
 
 Um sicherzustellen, dass die Formel wie erwartet funktioniert, sind regelmäßige Überprüfungen der Ergebnisse von Ausführungen der automatischen Skalierung ratsam, die von Batch für den Pool vorgenommen werden. Rufen Sie hierzu einen Verweis auf den Pool auf (oder aktualisieren Sie ihn), und untersuchen Sie die Eigenschaften der letzten Ausführung der automatischen Skalierung.
 
-In Batch .NET verfügt die Eigenschaft [CloudPool.AutoScaleRun](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) über mehrere Eigenschaften, die Informationen zur letzten Ausführung der automatischen Skalierung für den Pool liefern:
+In Batch .NET verfügt die Eigenschaft [CloudPool.AutoScaleRun](/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) über mehrere Eigenschaften, die Informationen zur letzten Ausführung der automatischen Skalierung für den Pool liefern:
 
-* [AutoScaleRun.Timestamp](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
-* [AutoScaleRun.Results](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.results)
-* [AutoScaleRun.Error](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.error)
+* [AutoScaleRun.Timestamp](/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
+* [AutoScaleRun.Results](/dotnet/api/microsoft.azure.batch.autoscalerun.results)
+* [AutoScaleRun.Error](/dotnet/api/microsoft.azure.batch.autoscalerun.error)
 
-In der REST-API gibt die Anforderung zum [Abrufen von Informationen zu einem Pool](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) Informationen zum Pool zurück, z.B. zur letzten Ausführung der automatischen Skalierung in der Eigenschaft [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool).
+In der REST-API gibt die Anforderung zum [Abrufen von Informationen zu einem Pool](/rest/api/batchservice/get-information-about-a-pool) Informationen zum Pool zurück, z.B. zur letzten Ausführung der automatischen Skalierung in der Eigenschaft [autoScaleRun](/rest/api/batchservice/get-information-about-a-pool).
 
 Im folgenden C#-Codeausschnitt wird die Batch .NET-Bibliothek verwendet, um Informationen zur letzten Ausführung der automatischen Skalierung für den Pool _myPool_ auszugeben:
 
@@ -733,15 +735,15 @@ string formula = string.Format(@"
 * [Maximieren der Azure Batch-Computeressourcenauslastung mit parallelen Knotenaufgaben](batch-parallel-node-tasks.md) enthält Informationen dazu, wie Sie auf den Computeknoten im Pool mehrere Tasks gleichzeitig ausführen können. Zusätzlich zur automatischen Skalierung können Sie mit diesem Feature die Auftragsdauer für einige Workloads verringern und so Geld sparen.
 * Um die Effizienz weiter zu steigern, stellen Sie sicher, dass die Batch-Anwendung den Batch-Dienst in optimaler Weise abfragt. Unter [Effizientes Abfragen des Azure Batch-Diensts](batch-efficient-list-queries.md) erfahren Sie, wie Sie die Datenmenge beschränken, die übertragen wird, wenn Sie den Status von möglicherweise Tausenden von Computeknoten oder -aufgaben abfragen.
 
-[net_api]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch
-[net_batchclient]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient
-[net_cloudpool_autoscaleformula]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
-[net_cloudpool_autoscaleevalinterval]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
-[net_enableautoscaleasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
-[net_maxtasks]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
-[net_poolops_resizepoolasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
+[net_api]: /dotnet/api/microsoft.azure.batch
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudpool_autoscaleformula]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
+[net_cloudpool_autoscaleevalinterval]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
+[net_enableautoscaleasync]: /dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
+[net_maxtasks]: /dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
+[net_poolops_resizepoolasync]: /dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
 
-[rest_api]: https://docs.microsoft.com/rest/api/batchservice/
-[rest_autoscaleformula]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_autoscaleinterval]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_enableautoscale]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_api]: /rest/api/batchservice/
+[rest_autoscaleformula]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_autoscaleinterval]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_enableautoscale]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool

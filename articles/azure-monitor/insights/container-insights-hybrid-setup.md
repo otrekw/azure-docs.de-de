@@ -2,13 +2,13 @@
 title: Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container zum Überwachen von Kubernetes-Clustern konfigurieren können, die in Azure Stack oder einer anderen Umgebung gehostet werden.
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: a0008f7a2d6b808a8ff55d85330801305361d7c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: c7a92476fca2bc61d51ab518c22ff0c436fb78f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185964"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801460"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Container
 
@@ -18,27 +18,27 @@ Azure Monitor für Container bietet umfassende Überwachungsfunktionen für Azur
 
 Folgende Konfigurationen werden offiziell für Azure Monitor für Container unterstützt.
 
-* Umgebungen: 
+- Umgebungen:
 
-    * Lokales Kubernetes
+    - Lokales Kubernetes
     
-    * AKS-Engine in Azure und Azure Stack Weitere Informationen finden Sie unter [AKS-Engine in Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
+    - AKS-Engine in Azure und Azure Stack Weitere Informationen finden Sie unter [AKS-Engine in Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
     
-    * [Openshift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) Version 4 und höher, lokale oder andere Cloudumgebungen.
+    - [Openshift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) Version 4 und höher, lokale oder andere Cloudumgebungen.
 
-* Die Versionen von Kubernetes und die Supportrichtlinie entsprechen den unterstützten Versionen von [AKS](../../aks/supported-kubernetes-versions.md).
+- Die Versionen von Kubernetes und die Supportrichtlinie entsprechen den unterstützten Versionen von [AKS](../../aks/supported-kubernetes-versions.md).
 
-* Containerruntime: Docker-, Moby- und CRI-kompatible Runtimes wie CRI-O und ContainerD.
+- Folgende Containerruntimes werden unterstützt: Docker-, Moby- und CRI-kompatible Runtimes wie CRI-O und ContainerD.
 
-* Linux-Betriebssystemrelease für Master- und Workerknoten: Ubuntu (18.04 LTS und 16.04 LTS) und Red Hat Enterprise Linux CoreOS 43.81.
+- Unterstützte Linux-Betriebssystemreleases für Master- und Workerknoten: Ubuntu (18.04 LTS und 16.04 LTS) und Red Hat Enterprise Linux CoreOS 43.81.
 
-* Unterstützte Zugriffssteuerung: Kubernetes mit und ohne RBAC
+- Unterstützte Zugriffssteuerung: Kubernetes mit und ohne RBAC
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
-* Einen Log Analytics-Arbeitsbereich
+- Einen [Log Analytics-Arbeitsbereich](../platform/design-logs-deployment.md).
 
     Azure Monitor für Container unterstützt einen Log Analytics-Arbeitsbereich in den unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) aufgeführten Regionen in Azure. Ihren eigenen Arbeitsbereich können Sie über [Azure Resource Manager](../platform/template-workspace-configuration.md), über [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder im [Azure-Portal](../learn/quick-create-workspace.md) erstellen.
 
@@ -46,11 +46,13 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
     >Die Aktivierung der Überwachung mehrerer Cluster mit dem gleichen Clusternamen im gleichen Log Analytics-Arbeitsbereich ist nicht möglich. Clusternamen müssen eindeutig sein.
     >
 
-* Sie müssen der **Rolle „Log Analytics-Mitwirkender“ angehören**, um die Containerüberwachung aktivieren zu können. Weitere Informationen zum Steuern des Zugriffs auf einen Log Analytics-Arbeitsbereich finden Sie unter [Verwalten des Zugriffs auf Arbeitsbereich und Logdaten](../platform/manage-access.md).
+- Sie müssen der **Rolle „Log Analytics-Mitwirkender“ angehören**, um die Containerüberwachung aktivieren zu können. Weitere Informationen zum Steuern des Zugriffs auf einen Log Analytics-Arbeitsbereich finden Sie unter [Verwalten des Zugriffs auf Arbeitsbereich und Logdaten](../platform/manage-access.md).
 
-* [HELM-Client](https://helm.sh/docs/using_helm/) zum Integrieren des Azure Monitor für Containercharts für den angegebenen Kubernetes-Cluster
+- Sie müssen über die Rolle [*Log Analytics-Leser*](../platform/manage-access.md#manage-access-using-azure-permissions) im mit Azure Monitor für Container konfigurierten Log Analytics-Arbeitsbereich verfügen, um die Überwachungsdaten anzeigen zu können.
 
-* Für die Kommunikation zwischen der Containerversion des Log Analytics-Agents für Linux und Azure Monitor sind die folgenden Proxy- und Firewallkonfigurationsinformationen erforderlich:
+- [HELM-Client](https://helm.sh/docs/using_helm/) zum Integrieren des Azure Monitor für Containercharts für den angegebenen Kubernetes-Cluster
+
+- Für die Kommunikation zwischen der Containerversion des Log Analytics-Agents für Linux und Azure Monitor sind die folgenden Proxy- und Firewallkonfigurationsinformationen erforderlich:
 
     |Agent-Ressource|Ports |
     |------|---------|
@@ -58,9 +60,9 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
     |*.oms.opinsights.azure.com |Port 443 |
     |*.dc.services.visualstudio.com |Port 443 |
 
-* Für den Container-Agent muss `cAdvisor secure port: 10250` oder `unsecure port :10255` von Kubelet auf allen Knoten im Cluster geöffnet werden, damit Leistungsmetriken erfasst werden können. Es wird empfohlen, `secure port: 10250` in cAdvisor von Kubelet zu konfigurieren, wenn dieser noch nicht konfiguriert ist.
+- Für den Container-Agent muss `cAdvisor secure port: 10250` oder `unsecure port :10255` von Kubelet auf allen Knoten im Cluster geöffnet werden, damit Leistungsmetriken erfasst werden können. Es wird empfohlen, `secure port: 10250` in cAdvisor von Kubelet zu konfigurieren, wenn dieser noch nicht konfiguriert ist.
 
-* Für den Container-Agent müssen die folgenden Umgebungsvariablen im Container angegeben werden, damit die Kommunikation mit dem Kubernetes-API-Dienst innerhalb des Clusters zum Erfassen von Bestandsdaten möglich ist: `KUBERNETES_SERVICE_HOST` und `KUBERNETES_PORT_443_TCP_PORT`.
+- Für den Container-Agent müssen die folgenden Umgebungsvariablen im Container angegeben werden, damit die Kommunikation mit dem Kubernetes-API-Dienst innerhalb des Clusters zum Erfassen von Bestandsdaten möglich ist: `KUBERNETES_SERVICE_HOST` und `KUBERNETES_PORT_443_TCP_PORT`.
 
 >[!IMPORTANT]
 >Die für die Überwachung von Kubernetes-Hybridclustern unterstützte Agent-Mindestversion ist ciprod10182019 oder höher.
@@ -79,9 +81,9 @@ Sie können die Lösung mit der bereitgestellten Azure Resource Manager-Vorlage 
 
 Wenn Sie mit der Bereitstellung von Ressourcen mithilfe einer Vorlage nicht vertraut sind, finden Sie weitere Informationen unter:
 
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
+- [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
 
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
+- [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
 Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.59 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -103,7 +105,7 @@ Führen Sie die folgenden Schritte aus, um zunächst die für den Wert des `work
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault
     ------------------------------------  -----------  ------------------------------------  -------  -----------
-    Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
+    Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
     Kopieren Sie den Wert für **SubscriptionId**.
@@ -206,21 +208,21 @@ Führen Sie die folgenden Schritte aus, um zunächst die für den Wert des `work
 
 9. Nun können Sie die Vorlage bereitstellen.
 
-   * Verwenden Sie zum Bereitstellen mit Azure PowerShell die folgenden Befehle in dem Ordner mit der Vorlage:
+   - Verwenden Sie zum Bereitstellen mit Azure PowerShell die folgenden Befehle in dem Ordner mit der Vorlage:
 
        ```powershell
-       # configure and login to the cloud of log analytics workspace.Specify the corresponding cloud environment of your workspace to below command.
+       # configure and login to the cloud of Log Analytics workspace.Specify the corresponding cloud environment of your workspace to below command.
        Connect-AzureRmAccount -Environment <AzureCloud | AzureChinaCloud | AzureUSGovernment>
        ```
 
        ```powershell
        # set the context of the subscription of Log Analytics workspace
-       Set-AzureRmContext -SubscriptionId <subscription Id of log analytics workspace>
+       Set-AzureRmContext -SubscriptionId <subscription Id of Log Analytics workspace>
        ```
 
        ```powershell
-       # execute deployment command to add container insights solution to the specified Log Analytics workspace
-       New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <resource group of log analytics workspace> -TemplateFile .\containerSolution.json -TemplateParameterFile .\containerSolutionParams.json
+       # execute deployment command to add Container Insights solution to the specified Log Analytics workspace
+       New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <resource group of Log Analytics workspace> -TemplateFile .\containerSolution.json -TemplateParameterFile .\containerSolutionParams.json
        ```
 
        Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
@@ -229,7 +231,7 @@ Führen Sie die folgenden Schritte aus, um zunächst die für den Wert des `work
        provisioningState       : Succeeded
        ```
 
-   * Führen Sie zum Bereitstellen mit Azure CLI die folgenden Befehle aus:
+   - Führen Sie zum Bereitstellen mit Azure CLI die folgenden Befehle aus:
 
        ```azurecli
        az login
@@ -248,43 +250,58 @@ Führen Sie die folgenden Schritte aus, um zunächst die für den Wert des `work
 
        Nach dem Aktivieren der Überwachung kann es ca. 15 Minuten dauern, bis Integritätsmetriken für den Cluster angezeigt werden.
 
-## <a name="install-the-chart"></a>Installieren des Charts
+## <a name="install-the-helm-chart"></a>Installieren des Helm-Charts
+
+In diesem Abschnitt installieren Sie den Container-Agent für Azure Monitor für Container. Zunächst müssen Sie die für den Parameter `omsagent.secret.wsid` erforderliche Arbeitsbereichs-ID und den für den Parameter `omsagent.secret.key` erforderlichen Primärschlüssel ermitteln. Diese Informationen können Sie durch Ausführen der folgenden Schritte ermitteln. Führen Sie dann die Befehle zum Installieren des Agents mithilfe des Helm-Charts aus.
+
+1. Führen Sie den folgenden Befehl aus, um die Arbeitsbereichs-ID zu ermitteln:
+
+    `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
+
+    Suchen Sie in der Ausgabe den Namen des Arbeitsbereichs im Feld **name**, und kopieren Sie die Arbeitsbereichs-ID dieses Log Analytics-Arbeitsbereichs dann in das Feld **customerID**.
+
+2. Führen Sie den folgenden Befehl aus, um den Primärschlüssel für den Arbeitsbereich zu ermitteln:
+
+    `az monitor log-analytics workspace get-shared-keys --resource-group <resourceGroupName> --workspace-name <logAnalyticsWorkspaceName>`
+
+    Suchen Sie in der Ausgabe den Primärschlüssel im Feld **primarySharedKey**, und kopieren Sie den Wert.
 
 >[!NOTE]
->Die folgenden Befehle gelten nur für die Helm-Version 2. Die Verwendung des Parameters `--name` gilt nicht für die Helm-Version 3.
+>Die folgenden Befehle gelten nur für die Helm-Version 2. Die Verwendung des Parameters `--name` gilt nicht für die Helm-Version 3. 
 
-Gehen Sie zum Aktivieren des HELM-Charts folgendermaßen vor:
+>[!NOTE]
+>Wenn der Kubernetes-Cluster über einen Proxyserver kommuniziert, konfigurieren Sie den Parameter `omsagent.proxy` mit der URL des Proxyservers. Wenn der Cluster nicht über einen Proxyserver kommuniziert, müssen Sie diesen Parameter nicht angeben. Weitere Informationen finden Sie unter [Konfigurieren des Proxyendpunkts](#configure-proxy-endpoint) weiter unten in diesem Artikel.
 
-1. Führen Sie folgenden Befehl aus, um das Repository der Azure-Charts in die lokale Liste einzufügen:
+3. Führen Sie folgenden Befehl aus, um das Repository der Azure-Charts in die lokale Liste einzufügen:
 
     ```
     helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
     ````
 
-2. Installieren Sie das Chart, indem Sie den folgenden Befehl ausführen:
+4. Installieren Sie das Chart, indem Sie den folgenden Befehl ausführen:
 
     ```
     $ helm install --name myrelease-1 \
-    --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
+    --set omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
     ```
 
-    Wenn sich der Log Analytics-Arbeitsbereich in einer Azure-Region in China befindet, führen Sie den folgenden Befehl aus:
+    Wenn sich der Log Analytics-Arbeitsbereich in Azure China 21Vianet befindet, führen Sie den folgenden Befehl aus:
 
     ```
     $ helm install --name myrelease-1 \
-     --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+     --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
     Wenn sich der Log Analytics-Arbeitsbereich in einer Azure-Region von „US Government“ befindet, führen Sie den folgenden Befehl aus:
 
     ```
     $ helm install --name myrelease-1 \
-    --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+    --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
 ### <a name="enable-the-helm-chart-using-the-api-model"></a>Aktivieren des Helm-Diagramms mit dem API-Modell
 
-Sie können ein Add-On in der JSON-Datei mit der Clusterspezifikation der AKS-Engine angeben, das auch als API-Modell bezeichnet wird. Stellen Sie in diesem Add-On die Base64-codierte Version von `WorkspaceGUID` und `WorkspaceKey` des Log Analytics-Arbeitsbereichs bereit, in dem die gesammelten Überwachungsdaten gespeichert werden.
+Sie können ein Add-On in der JSON-Datei mit der Clusterspezifikation der AKS-Engine angeben, das auch als API-Modell bezeichnet wird. Stellen Sie in diesem Add-On die Base64-codierte Version von `WorkspaceGUID` und `WorkspaceKey` des Log Analytics-Arbeitsbereichs bereit, in dem die gesammelten Überwachungsdaten gespeichert werden. `WorkspaceGUID` und `WorkspaceKey` ermitteln Sie mit den Schritten 1 und 2 im vorherigen Abschnitt.
 
 Unterstützte API-Definitionen für den Azure Stack Hub-Cluster finden Sie in diesem Beispiel: [kubernetes-container-monitoring_existing_workspace_id_and_key.json](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Suchen Sie nach der **addons**-Eigenschaft im Abschnitt **kubernetesConfig**:
 
@@ -296,7 +313,7 @@ Unterstützte API-Definitionen für den Azure Stack Hub-Cluster finden Sie in d
              "name": "container-monitoring",
              "enabled": true,
              "config": {
-               "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
+               "workspaceGuid": "<Azure Log Analytics Workspace Id in Base-64 encoded>",
                "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
              }
            }
@@ -313,18 +330,39 @@ Nachdem Sie das Chart erfolgreich bereitgestellt haben, können Sie im Azure-Por
 >[!NOTE]
 >Die Latenz bei der Erfassung liegt bei rund fünf bis zehn Minuten, vom Agent bis zum Commit im Azure Log Analytics-Arbeitsbereich. Als Status des Clusters wird der Wert **Keine Daten** oder **Unbekannt** angegeben, bis alle erforderlichen Überwachungsdaten in Azure Monitor verfügbar sind.
 
+## <a name="configure-proxy-endpoint"></a>Konfigurieren des Proxyendpunkts
+
+Ab Chartversion 2.7.1 kann im Chart der Proxyendpunkt mit dem Chartparameter `omsagent.proxy` angegeben werden. Dies ermöglicht die Kommunikation über den Proxyserver. Die Kommunikation zwischen dem Azure Monitor für Container-Agent und Azure Monitor kann über einen HTTP- oder HTTPS-Proxyserver erfolgen. Außerdem werden die anonyme und die Standardauthentifizierung (mit Benutzername und Kennwort) unterstützt.
+
+Der Wert für die Proxykonfiguration weist folgende Syntax auf: `[protocol://][user:password@]proxyhost[:port]`
+
+> [!NOTE]
+>Wenn für den Proxyserver keine Authentifizierung erforderlich ist, müssen Sie dennoch einen Pseudobenutzernamen und ein Pseudokennwort angeben. Dies kann ein beliebiger Benutzername oder ein beliebiges Kennwort sein.
+
+|Eigenschaft| BESCHREIBUNG |
+|--------|-------------|
+|Protocol | HTTP oder HTTPS |
+|user | Optionaler Benutzername für die Proxyauthentifizierung |
+|password | Optionales Kennwort für die Proxyauthentifizierung |
+|proxyhost | Adresse oder FQDN des Proxyservers |
+|port | Optionale Portnummer für den Proxyserver |
+
+Beispiel: `omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
+
+Wenn Sie das Protokoll als **http** angeben, werden die HTTP-Anforderungen mit einer sicheren SSL/TLS-Verbindung erstellt. Der Proxyserver muss SSL/TLS-Protokolle unterstützen.
+
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Tritt beim Aktivieren der Überwachung für Ihren Kubernetes-Hybridcluster ein Fehler auf, kopieren Sie das PowerShell-Skript [TroubleshootError_nonAzureK8s.ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1), und speichern Sie es in einem Ordner auf Ihrem Computer. Dieses Skript soll Ihnen beim Erkennen und Beheben von Problemen helfen. Es wurde entworfen, um die folgenden Probleme zu erkennen und zu beheben:
 
-* Der angegebene Log Analytics-Arbeitsbereich ist gültig.
-* Der Log Analytics-Arbeitsbereich ist mit der Lösung „Azure Monitor für Container“ konfiguriert. Ist das nicht der Fall, konfigurieren Sie den Arbeitsbereich.
-* ReplicaSet-Pods des OMS-Agents werden ausgeführt.
-* DaemonSet-Pods des OMS-Agents werden ausgeführt.
-* Der Integritätsdienst des OMS-Agents wird ausgeführt.
-* Die ID und der Schlüssel des Log Analytics-Arbeitsbereichs, die für den Container-Agent konfiguriert wurden, entsprechen dem Arbeitsbereich, mit dem Insight konfiguriert ist.
-* Überprüfen Sie, ob alle Linux-Workerknoten über die Bezeichnung `kubernetes.io/role=agent` verfügen, um den RS-Pod zu planen. Fügen Sie sie anderenfalls hinzu.
-* Vergewissern Sie sich, dass `cAdvisor secure port:10250` oder `unsecure port: 10255` für alle Knoten im Cluster geöffnet ist.
+- Der angegebene Log Analytics-Arbeitsbereich ist gültig.
+- Der Log Analytics-Arbeitsbereich ist mit der Lösung „Azure Monitor für Container“ konfiguriert. Ist das nicht der Fall, konfigurieren Sie den Arbeitsbereich.
+- ReplicaSet-Pods des OMS-Agents werden ausgeführt.
+- DaemonSet-Pods des OMS-Agents werden ausgeführt.
+- Der Integritätsdienst des OMS-Agents wird ausgeführt.
+- Die ID und der Schlüssel des Log Analytics-Arbeitsbereichs, die für den Container-Agent konfiguriert wurden, entsprechen dem Arbeitsbereich, mit dem Insight konfiguriert ist.
+- Überprüfen Sie, ob alle Linux-Workerknoten über die Bezeichnung `kubernetes.io/role=agent` verfügen, um den RS-Pod zu planen. Fügen Sie sie anderenfalls hinzu.
+- Vergewissern Sie sich, dass `cAdvisor secure port:10250` oder `unsecure port: 10255` für alle Knoten im Cluster geöffnet ist.
 
 Verwenden Sie zum Ausführen mit Azure PowerShell die folgenden Befehle in dem Ordner mit dem Skript:
 

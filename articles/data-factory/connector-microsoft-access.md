@@ -1,6 +1,6 @@
 ---
-title: Kopieren von Daten aus Microsoft Access-Quellen
-description: Erfahren Sie, wie Daten aus Microsoft Access-Quellen mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
+title: Kopieren von Daten aus und in Microsoft Access
+description: Erfahren Sie, wie Daten mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline aus und in Microsoft Access kopiert werden.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/27/2019
-ms.openlocfilehash: fc2179efcda4ee11dda3b424b16a072a2bb2c26e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/28/2020
+ms.openlocfilehash: 00966af4e0fc83015726d86a4c7cb5724ad38633
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418183"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513368"
 ---
-# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Kopieren von Daten aus Microsoft Access-Datenspeichern bzw. in Microsoft Access-Datenspeicher mithilfe von Azure Data Factory
+# <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>Kopieren von Daten aus und in Microsoft Access mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Copy-Aktivität in Azure Data Factory verwenden, um Daten aus einem Microsoft Access-Datenspeicher zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
@@ -30,7 +30,7 @@ Der Microsoft Access-Connector wird für die folgenden Aktivitäten unterstütz
 - [Kopieraktivität](copy-activity-overview.md) mit [unterstützter Quellen/Senken-Matrix](copy-activity-overview.md)
 - [Lookup-Aktivität](control-flow-lookup-activity.md)
 
-Sie können Daten aus einer Microsoft Access-Quelle in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Sie können Daten aus einer Microsoft Access-Quelle in jeden unterstützten Senkendatenspeicher oder Daten aus jedem unterstützten Quelldatenspeicher in eine Microsoft Access-Senke kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -68,7 +68,7 @@ Die folgenden Eigenschaften werden für den mit Microsoft Access verknüpften Di
 {
     "name": "MicrosoftAccessLinkedService",
     "properties": {
-        "type": "Microsoft Access",
+        "type": "MicrosoftAccess",
         "typeProperties": {
             "connectionString": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;",
             "authenticationType": "Basic",
@@ -121,7 +121,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 ### <a name="microsoft-access-as-source"></a>Microsoft Access als Quelle
 
-Zum Kopieren von Daten aus einem mit Microsoft Access kompatiblen Datenspeicher werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
+Beim Kopieren von Daten aus Microsoft Access werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -154,6 +154,48 @@ Zum Kopieren von Daten aus einem mit Microsoft Access kompatiblen Datenspeicher 
             },
             "sink": {
                 "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+### <a name="microsoft-access-as-sink"></a>Microsoft Access als Senke
+
+Beim Kopieren von Daten in Microsoft Access werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt sein: **MicrosoftAccessSink** | Ja |
+| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br/>Zulässige Werte: Zeitraum Beispiel: „00:30:00“ (30 Minuten). |Nein |
+| writeBatchSize |Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht.<br/>Zulässige Werte: Ganze Zahlen (Anzahl der Zeilen). |Nein (Standard ist 0 – automatisch erkannt) |
+| preCopyScript |Geben Sie eine auszuführende SQL-Abfrage für die Kopieraktivität an, ehe Sie bei der jeder Ausführung Daten in Datenspeicher schreiben. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. |Nein |
+
+**Beispiel:**
+
+```json
+"activities":[
+    {
+        "name": "CopyToMicrosoftAccess",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Microsoft Access output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "MicrosoftAccessSink"
             }
         }
     }

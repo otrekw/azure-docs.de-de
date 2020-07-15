@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren einer domänenunabhängigen Verfügbarkeitsgruppe für eine Arbeitsgruppe
-description: Erfahren Sie, wie Sie eine domänenunabhängige Active Directory-Always On-Verfügbarkeitsgruppe für eine Arbeitsgruppe auf einem virtuellen SQL-Server-Computer in Azure konfigurieren.
+description: Erfahren Sie, wie Sie eine domänenunabhängige Active Directory-Always On-Verfügbarkeitsgruppe für eine Arbeitsgruppe auf einem virtuellen SQL-Server-Computer in Azure konfigurieren.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 36c4a141acf38d83ff925bafaa75c294847a7d74
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 93819332def05022272eabc130e0f2240938f244
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84037231"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955504"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurieren einer Verfügbarkeitsgruppe für eine Arbeitsgruppe 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +46,7 @@ In diesem Artikel werden die folgenden Parameter verwendet, die jedoch nach Beda
 | **Name der Arbeitsgruppe** | AGWorkgroup | 
 | &nbsp; | &nbsp; |
 
-## <a name="set-dns-suffix"></a>Festlegen des DNS-Suffix 
+## <a name="set-a-dns-suffix"></a>Festlegen eines DNS-Suffix 
 
 In diesem Schritt konfigurieren Sie das DNS-Suffix für beide Server. Beispiel: `ag.wgcluster.example.com`. Auf diese Weise können Sie den Namen des Objekts, mit dem Sie eine Verbindung herstellen möchten, als vollqualifizierte Adresse in Ihrem Netzwerk verwenden, z. B. `AGNode1.ag.wgcluster.example.com`. 
 
@@ -71,13 +71,13 @@ Führen Sie zum Konfigurieren des DNS-Suffix diese Schritte aus:
 1. Starten Sie den Server neu, wenn Sie dazu aufgefordert werden. 
 1. Wiederholen Sie diese Schritte für alle anderen Knoten, die für die Verfügbarkeitsgruppe verwendet werden sollen. 
 
-## <a name="edit-host-file"></a>Bearbeiten der Hostdatei
+## <a name="edit-a-host-file"></a>Bearbeiten einer Hostdatei
 
 Da kein Active Directory vorhanden ist, gibt es keine Möglichkeit, Windows-Verbindungen zu authentifizieren. Weisen Sie daher eine Vertrauensstellung zu, indem Sie die Hostdatei mit einem Text-Editor bearbeiten. 
 
 Gehen Sie folgendermaßen vor, um die Hostdatei zu bearbeiten:
 
-1. Stellen Sie per RDP eine Verbindung mit Ihrem virtuellen Computer her. 
+1. Melden Sie sich per RDP beim virtuellen Computer an. 
 1. Wechseln Sie im **Datei-Explorer** zu `c:\windows\system32\drivers\etc`. 
 1. Klicken Sie mit der rechten Maustaste auf die Datei **hosts**, und öffnen Sie die Datei mit **Windows-Editor** (oder einem anderen Text-Editor).
 1. Fügen Sie am Ende der Datei einen Eintrag für jeden Knoten, die Verfügbarkeitsgruppe und den Listener in der Form `IP Address, DNS Suffix #comment` wie folgt hinzu: 
@@ -104,7 +104,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-the-failover-cluster"></a>Erstellen des Failoverclusters
 
-In diesem Schritt erstellen Sie den Failovercluster. Wenn Sie mit diesen Schritten nicht vertraut sind, können Sie sich im [Tutorial für Failovercluster](failover-cluster-instance-storage-spaces-direct-manually-configure.md#step-2-configure-the-windows-server-failover-cluster-with-storage-spaces-direct) darüber informieren.
+In diesem Schritt erstellen Sie den Failovercluster. Wenn Sie mit diesen Schritten nicht vertraut sind, können Sie sich im [Tutorial für Failovercluster](failover-cluster-instance-storage-spaces-direct-manually-configure.md) darüber informieren.
 
 Wichtige Unterschiede zwischen dem Tutorial und den Aktionen, die für einen Arbeitsgruppencluster durchgeführt werden sollten:
 - Deaktivieren Sie beim Ausführen der Clusterüberprüfung **Speicher** und **Direkte Speicherplätze**. 
@@ -130,13 +130,13 @@ Weisen Sie nach dem Erstellen des Clusters eine statische Cluster-IP-Adresse zu.
 
 ## <a name="create-a-cloud-witness"></a>Erstellen eines Cloudzeugen 
 
-In diesem Schritt konfigurieren Sie einen Cloudfreigabezeugen. Wenn Sie mit den Schritten nicht vertraut sind, finden Sie weitere Informationen im [Tutorial zu Failoverclustern](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-a-cloud-witness). 
+In diesem Schritt konfigurieren Sie einen Cloudfreigabezeugen. Wenn Sie mit den Schritten nicht vertraut sind, finden Sie weitere Informationen unter [Bereitstellen eines Cloudzeugen für einen Failovercluster](/windows-server/failover-clustering/deploy-cloud-witness). 
 
-## <a name="enable-availability-group-feature"></a>Aktivieren des Features für Verfügbarkeitsgruppen 
+## <a name="enable-the-availability-group-feature"></a>Aktivieren des Verfügbarkeitsgruppenfeatures 
 
 In diesem Schritt aktivieren Sie das Feature für Verfügbarkeitsgruppen. Wenn Sie mit den Schritten nicht vertraut sind, finden Sie weitere Informationen im [Tutorial zu Verfügbarkeitsgruppen](availability-group-manually-configure-tutorial.md#enable-availability-groups). 
 
-## <a name="create-keys-and-certificate"></a>Erstellen von Schlüsseln und Zertifikaten
+## <a name="create-keys-and-certificates"></a>Erstellen von Schlüsseln und Zertifikaten
 
 In diesem Schritt erstellen Sie Zertifikate, die in einer SQL-Anmeldung beim verschlüsselten Endpunkt verwendet werden. Erstellen Sie auf jedem Knoten einen Ordner, in dem die Zertifikatsicherungen gespeichert werden sollen, z. B. `c:\certs`. 
 
@@ -277,14 +277,14 @@ GO
 
 Wenn weitere Knoten im Cluster vorhanden sind, wiederholen Sie diese Schritte auch dort, und ändern Sie dabei die jeweiligen Zertifikat- und Benutzernamen. 
 
-## <a name="configure-availability-group"></a>Konfigurieren von Verfügbarkeitsgruppen
+## <a name="configure-an-availability-group"></a>Konfigurieren einer Verfügbarkeitsgruppe
 
 In diesem Schritt konfigurieren Sie die Verfügbarkeitsgruppe und fügen ihr Ihre Datenbanken hinzu. Erstellen Sie zu diesem Zeitpunkt keinen Listener. Wenn Sie mit den Schritten nicht vertraut sind, finden Sie weitere Informationen im [Tutorial zu Verfügbarkeitsgruppen](availability-group-manually-configure-tutorial.md#create-the-availability-group). Initiieren Sie unbedingt ein Failover und ein Failback, um sicherzustellen, dass alles ordnungsgemäß funktioniert. 
 
    > [!NOTE]
    > Wenn während des Synchronisierungsvorgangs ein Fehler auftritt, müssen Sie möglicherweise `NT AUTHORITY\SYSTEM` vorübergehend Systemadmininistratorberechtigungen erteilen, um Clusterressourcen auf dem ersten Knoten zu erstellen, z. B. `AGNode1`. 
 
-## <a name="configure-load-balancer"></a>Konfigurieren des Lastenausgleichs
+## <a name="configure-a-load-balancer"></a>Konfigurieren eines Lastenausgleichs
 
 In diesem letzten Schritt konfigurieren Sie den Lastenausgleich im [Azure-Portal](availability-group-load-balancer-portal-configure.md) oder mit [PowerShell](availability-group-listener-powershell-configure.md).
 

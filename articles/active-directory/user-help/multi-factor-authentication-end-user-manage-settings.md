@@ -10,14 +10,14 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/20/2020
+ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: c9304f4a958360d01d404d9b510feb5659e5436d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746743"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983304"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>Ändern der zweistufigen Überprüfungsmethode und der Einstellungen
 
@@ -88,7 +88,7 @@ Auf der Seite **Zusätzliche Sicherheitsüberprüfung** können Sie neue Telefon
 
 1. Aktualisieren Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** im Abschnitt **Wie möchten Sie antworten?** die Telefonnummer für Ihr **Authentifizierungstelefon** (Ihr primäres mobiles Gerät) und Ihr **Bürotelefon**.
 
-1. Wählen Sie das Feld neben der Option **Alternatives Authentifizierungstelefon** aus, und geben Sie eine sekundäre Telefonnummer ein, unter der Sie SMS oder Anrufe empfangen können, falls Sie nicht auf Ihr primäres Telefon zugreifen können.
+1. Wählen Sie das Feld neben der Option **Alternative Telefonnummer für Authentifizierung** aus, und geben Sie eine sekundäre Telefonnummer ein, unter der Sie Anrufe empfangen können, falls Sie nicht auf Ihr primäres Telefon zugreifen können.
 
 1. Wählen Sie **Speichern** aus.
 

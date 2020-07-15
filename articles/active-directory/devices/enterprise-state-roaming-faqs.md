@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672391"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Roaming von Einstellungen und Daten – Häufig gestellte Fragen
@@ -77,7 +77,7 @@ In den Windows 10-Versionen ab November 2015 wird Enterprise State Roaming nur f
 Wenn sich mehrere Azure AD-Konten von verschiedenen Azure AD-Mandanten auf demselben Gerät befinden, müssen Sie die Registrierung des Geräts aktualisieren, um mit dem Azure Rights Management-Dienst für jeden Azure AD-Mandanten zu kommunizieren.  
 
 1. Suchen Sie die GUID für jeden Azure AD-Mandanten. Öffnen Sie das Azure-Portal, und wählen Sie einen Azure AD-Mandanten aus. Die GUID für den Mandanten befindet sich auf der Seite „Eigenschaften“ für den ausgewählten Mandanten (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties), mit der Bezeichnung **Verzeichnis-ID**. 
-2. Wenn Sie die GUID ermittelt haben, müssen Sie den folgenden Registrierungsschlüssel hinzufügen: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<Mandanten-ID-GUID>** .
+2. Wenn Sie die GUID ermittelt haben, müssen Sie den Registrierungsschlüssel **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>** hinzufügen.
    Erstellen Sie im Schlüssel **Mandanten-ID-GUID** einen neuen mehrteiligen Zeichenfolgenwert (REG-MULTI-SZ) namens **AllowedRMSServerUrls**. Geben Sie als Daten die URLs der Lizenzverteilungspunkte der anderen Azure-Mandanten an, auf die das Gerät zugreift.
 3. Sie können die Lizenzverteilungspunkt-URLs ermitteln, indem Sie das Cmdlet **Get-AadrmConfiguration** aus dem AADRM-Modul ausführen. Falls sich die Werte für **LicensingIntranetDistributionPointUrl** und **LicensingExtranetDistributionPointUrl** unterscheiden, müssen Sie beide Werte angeben. Wenn die Werte gleich sind, müssen Sie den Wert nur einmal angeben.
 

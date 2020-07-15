@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: a386c7d44cf5ba7eda895006cda7ce1fa9b798ac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a45c8ce820532d11f18758924dc3399818cb9158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663708"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610218"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Datenkonsistenzprüfung in der Kopieraktivität (Vorschau)
 
@@ -93,9 +93,8 @@ path | Der Pfad der Protokolldateien. | Geben Sie den Pfad an, in dem die Protok
 
 >[!NOTE]
 >- Die Datenkonsistenz wird im Stagingkopierszenario nicht unterstützt. 
->- Beim Kopieren von Binärdateien aus einem beliebigen Storage-Speicher in Azure Blob Storage oder Azure Data Lake Storage Gen2 überprüft die Kopieraktivität die Dateigröße und die MD5-Prüfsumme, um die Datenkonsistenz zwischen Quell- und Zielspeicher sicherzustellen. 
->- Beim Kopieren von Binärdateien aus einem beliebigen anderen Storage-Speicher als Azure Blob Storage oder Azure Data Lake Storage Gen2 überprüft die Kopieraktivität die Dateigröße, um die Datenkonsistenz zwischen Quell- und Zielspeicher sicherzustellen.
-
+>- Beim Kopieren von Dateien aus oder in Azure-Blobs oder Azure Data Lake Storage Gen2 überprüft ADF unter Verwendung der [Azure-Blob-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) und der [Azure Data Lake Storage Gen2-API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) die MD5-Prüfsumme auf Blockebene. Wenn ContentMD5 in Dateien im Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenquelle vorhanden ist, führt ADF nach dem Lesen der Dateien auch eine Überprüfung der MD5-Prüfsumme auf Dateiebene durch. Nach dem Kopieren von Dateien in das Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenziel schreibt ADF ContentMD5 in das Ziel. Dies kann in Downstreamanwendungen zur Überprüfung der Datenkonsistenz weiterverwendet werden.
+>- Beim Kopieren von Dateien zwischen Speichern führt ADF eine Überprüfung der Dateigröße durch.
 
 ## <a name="monitoring"></a>Überwachung
 

@@ -3,17 +3,17 @@ title: Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK f
 description: Verwenden Sie Features wie clientseitige Protokollierung und andere Tools von Drittanbietern, um bei Verwenden des .NET SDK Probleme im Zusammenhang mit Azure Cosmos DB zu erkennen, zu diagnostizieren und zu beheben.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/06/2020
+ms.date: 06/16/2020
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 55c462795b29cd678a5fd7816211bce720d554e1
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0eb5d9cd86be05e5ad69bc9543231987e3c1dd2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170357"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799264"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB
 
@@ -32,10 +32,10 @@ Gehen Sie die folgende Prüfliste durch, bevor Sie Ihre Anwendung in die Produkt
 *    Verwenden Sie das neueste [SDK](sql-api-sdk-dotnet-standard.md). SDKs in der Vorschauversion sollten nicht für die Produktion verwendet werden. Dadurch wird verhindert, dass bekannte Probleme, die bereits behoben wurden, erneut auftreten.
 *    Überprüfen Sie die [Leistungstipps](performance-tips.md), und implementieren Sie die Empfehlungen. Dadurch können Skalierungs-, Latenz- und andere Leistungsprobleme vermieden werden.
 *    Aktivieren Sie die SDK-Protokollierung, um die Problembehandlung zu unterstützen. Die Aktivierung der Protokollierung kann die Leistung beeinträchtigen, weshalb es am besten ist, sie nur für die Problembehandlung zu aktivieren. Sie können die folgenden Protokolle aktivieren:
-    *    [Protokollmetriken](monitor-accounts.md) im Azure-Portal. Metriken im Portal zeigen die Azure Cosmos DB-Telemetriedaten, die hilfreich sind, um festzustellen, ob das Problem im Zusammenhang mit Azure Cosmos DB steht oder ob es von der Clientseite kommt.
-    *    Protokollieren Sie die [DiagnosticsString](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)-Eigenschaft im V2 SDK oder die [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics)-Eigenschaft im V3 SDK in den Antworten der Punktoperationen.
-    *    Protokollieren Sie in allen Abfrageantworten die [SQL-Abfragemetriken](sql-api-query-metrics.md). 
-    *    Führen Sie das Setup für die [SDK-Protokollierung]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md) aus.
+*    [Protokollmetriken](monitor-accounts.md) im Azure-Portal. Metriken im Portal zeigen die Azure Cosmos DB-Telemetriedaten, die hilfreich sind, um festzustellen, ob das Problem im Zusammenhang mit Azure Cosmos DB steht oder ob es von der Clientseite kommt.
+*    Protokollieren Sie die [DiagnosticsString](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)-Eigenschaft im V2 SDK oder die [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics)-Eigenschaft im V3 SDK in den Antworten der Punktoperationen.
+*    Protokollieren Sie in allen Abfrageantworten die [SQL-Abfragemetriken](sql-api-query-metrics.md). 
+*    Führen Sie das Setup für die [SDK-Protokollierung]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md) aus.
 
 Sehen Sie sich den Abschnitt [Häufig auftretende Probleme und Problemumgehungen](#common-issues-workarounds) in diesem Artikel an.
 
@@ -87,7 +87,7 @@ Diese Latenz kann mehrere Ursachen haben:
 
 ### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT-Portauslastung (PAT)
 
-Wenn Ihre App auf einem [virtuellen Azure-Computer ohne öffentliche IP-Adresse](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) bereitgestellt wird, werden standardmäßig [Azure SNAT-Ports](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) verwendet, um Verbindungen mit beliebigen Endpunkten außerhalb Ihres virtuellen Computers herzustellen. Die Anzahl zulässiger Verbindungen des virtuellen Computers mit dem Azure Cosmos DB-Endpunkt wird durch die [Azure SNAT-Konfiguration](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) eingeschränkt. Diese Situation kann zu einer Bandbreiteneinschränkung der Verbindung, zum Beenden der Verbindung oder den oben erwähnten [Timeouts von Anforderungen](#request-timeouts) führen.
+Wenn Ihre App auf einem [virtuellen Azure-Computer ohne öffentliche IP-Adresse](../load-balancer/load-balancer-outbound-connections.md) bereitgestellt wird, werden standardmäßig [Azure SNAT-Ports](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) verwendet, um Verbindungen mit beliebigen Endpunkten außerhalb Ihres virtuellen Computers herzustellen. Die Anzahl zulässiger Verbindungen des virtuellen Computers mit dem Azure Cosmos DB-Endpunkt wird durch die [Azure SNAT-Konfiguration](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) eingeschränkt. Diese Situation kann zu einer Bandbreiteneinschränkung der Verbindung, zum Beenden der Verbindung oder den oben erwähnten [Timeouts von Anforderungen](#request-timeouts) führen.
 
  Azure SNAT-Ports werden nur verwendet, wenn Ihr virtueller Computer eine private IP-Adresse besitzt und eine Verbindung mit einer öffentlichen IP-Adresse hergestellt wird. Es gibt zwei Problemumgehungen, um die Azure-SNAT-Einschränkung zu vermeiden (vorausgesetzt, dass Sie bereits eine einzelne Clientinstanz für die gesamte Anwendung verwenden):
 
@@ -113,9 +113,11 @@ Wenn Sie die folgende 401-Fehlermeldung erhalten haben: „Die in der HTTP-Anfor
 
 1. Der Schlüssel wurde rotiert und entsprach nicht den [bewährten Methoden](secure-access-to-data.md#key-rotation). Dies ist normalerweise der Fall. Abhängig von der Größe des Cosmos DB-Kontos kann die Schlüsselrotation für das Cosmos DB-Konto nur wenige Sekunden bis möglicherweise Tage dauern.
    1. Die 401-MAC-Signatur wird kurz nach der Schlüsselrotation angezeigt und schließlich ohne Änderungen angehalten. 
-2. Der Schlüssel ist für die Anwendung falsch konfiguriert, sodass er nicht mit dem Konto übereinstimmt.
+1. Der Schlüssel ist für die Anwendung falsch konfiguriert, sodass er nicht mit dem Konto übereinstimmt.
    1. Das Problem mit der 401-MAC-Signatur ist konsistent und tritt bei allen Aufrufen auf.
-3. Es liegt eine Racebedingung bei der Containererstellung vor. Eine Anwendungsinstanz versucht, auf den Container zuzugreifen, bevor die Containererstellung abgeschlossen ist. Dies ist das häufigste Szenario, wenn die Anwendung ausgeführt wird und der Container gelöscht und mit demselben Namen neu erstellt wird, während die Anwendung ausgeführt wird. Das SDK versucht, den neuen Container zu verwenden, aber die Containererstellung wird noch ausgeführt, sodass die Schlüssel noch nicht verfügbar sind.
+1. Die Anwendung verwendet die [schreibgeschützten Schlüssel](secure-access-to-data.md#master-keys) für Schreibvorgänge.
+   1. Der Fehler 401 zur MAC-Signatur tritt nur auf, wenn die Anwendung Schreibanforderungen durchführt – Leseanforderungen sind jedoch erfolgreich.
+1. Es liegt eine Racebedingung bei der Containererstellung vor. Eine Anwendungsinstanz versucht, auf den Container zuzugreifen, bevor die Containererstellung abgeschlossen ist. Dies ist das häufigste Szenario, wenn die Anwendung ausgeführt wird und der Container gelöscht und mit demselben Namen neu erstellt wird, während die Anwendung ausgeführt wird. Das SDK versucht, den neuen Container zu verwenden, aber die Containererstellung wird noch ausgeführt, sodass die Schlüssel noch nicht verfügbar sind.
    1. Das Problem mit der 401-MAC-Signatur tritt kurz nach der Erstellung eines Containers auf und besteht nur, bis die Containererstellung abgeschlossen ist.
  
  ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP-Fehler 400. Die Anforderungsheader sind zu lang.

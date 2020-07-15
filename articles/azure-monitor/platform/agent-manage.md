@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79234430"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Verwalten und Warten des Log Analytics-Agents für Windows und Linux
@@ -28,7 +28,7 @@ Der Log Analytics-Agent für Windows und Linux kann manuell oder automatisch auf
 
 ### <a name="upgrade-windows-agent"></a>Aktualisieren des Windows-Agents 
 
-Um den Agent auf einer Windows-VM auf die neueste Version zu aktualisieren, die nicht über die VM-Erweiterung für Log Analytics installiert wurde, erfolgt die Ausführung entweder über die Eingabeaufforderung, das Skript oder eine andere Automatisierungslösung oder über den msi-Setup-Assistenten für die MMASetup-\<Plattform\>.  
+Um den Agent auf einem virtuellen Windows-Computer auf die neueste Version zu aktualisieren, die nicht über die VM-Erweiterung für Log Analytics installiert wurde, erfolgt die Ausführung entweder über die Eingabeaufforderung, das Skript oder eine andere Automatisierungslösung oder über den msi-Setup-Assistenten für MMASetup-\<platform\>.  
 
 Sie können die neueste Version des Windows-Agents aus Ihrem Log Analytics-Arbeitsbereich herunterladen, indem Sie die folgenden Schritte ausführen.
 
@@ -50,7 +50,7 @@ Sie können die neueste Version des Windows-Agents aus Ihrem Log Analytics-Arbei
 
 1. Melden Sie sich auf dem Computer mit einem Konto an, das über Administratorrechte verfügt.
 
-2. Führen Sie die **MMASetup-\<platform\>.exe** aus, um den Setup-Assistenten zu starten.
+2. Führen Sie **MMASetup-\<platform\>.exe** aus, um den Setup-Assistenten zu starten.
 
 3. Klicken Sie auf der ersten Seite des Setup-Assistenten auf **Weiter**.
 
@@ -236,7 +236,7 @@ Verwenden Sie eines der folgenden Verfahren, um den Windows- oder Linux-Agent ü
 3. Klicken Sie in **Programme und Features** auf die Option **Microsoft Monitoring Agent**, dann auf **Deinstallieren** und anschließend auf **Ja**.
 
 >[!NOTE]
->Der Agent-Setup-Assistent kann auch durch Doppelklicken auf die Datei **MMASetup-\<Plattform\>.exe** ausgeführt werden, die aus einem Arbeitsbereich im Azure-Portal heruntergeladen werden kann.
+>Der Agent-Setup-Assistent kann auch durch Doppelklicken auf die Datei **MMASetup-\<platform\>.exe** ausgeführt werden, die von einem Arbeitsbereich im Azure-Portal heruntergeladen werden kann.
 
 #### <a name="uninstall-from-the-command-line"></a>Deinstallieren über die Befehlszeile
 Die heruntergeladene Datei für den Agent ist ein eigenständiges Installationspaket, das mit IExpress erstellt wurde. Das Setup-Programm für den Agent und die unterstützenden Dateien sind im Paket enthalten und müssen extrahiert werden, um eine ordnungsgemäße Deinstallation mit der im folgenden Beispiel gezeigten Befehlszeile durchführen zu können.

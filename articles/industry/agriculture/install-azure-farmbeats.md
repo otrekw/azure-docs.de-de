@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79479558"
 ---
 # <a name="install-azure-farmbeats"></a>Installieren von Azure FarmBeats
@@ -124,7 +124,7 @@ Führen Sie die folgenden Schritte in einer Cloud Shell-Instanz unter Verwendung
 
 4. Das Skript fragt nach den folgenden drei Eingaben:
 
-    - **Name der FarmBeats-Website**: Das eindeutige URL-Präfix für Ihre FarmBeats-Webanwendung. Falls das Präfix bereits verwendet wird, endet das Skript mit einem Fehler. Nach der Installation kann über „https://\<FarmBeats-Websitename>.azurewebsites.net“ auf Ihre FarmBeats-Bereitstellung zugegriffen werden, und die Swagger-APIs befinden sich unter „https://\<FarmBeats-Websitename>-api.azurewebsites.net“.
+    - **Name der FarmBeats-Website**: Das eindeutige URL-Präfix für Ihre FarmBeats-Webanwendung. Falls das Präfix bereits verwendet wird, endet das Skript mit einem Fehler. Nach der Installation kann über „https://\<FarmBeats-website-name>.azurewebsites.net“ auf Ihre FarmBeats-Bereitstellung zugegriffen werden. Die Swagger-APIs befinden sich unter „https://\<FarmBeats-website-name>-api.azurewebsites.net“.
 
     - **Azure-Anmelde-ID**: Geben Sie die Azure-Anmelde-ID für den Benutzer an, den Sie als Administrator von FarmBeats hinzufügen möchten. Dieser Benutzer kann dann anderen Benutzern Zugriff auf FarmBeats-Webanwendungen gewähren. Die Anmelde-ID hat im Allgemeinen die Form john.doe@domain.com. Der Azure-UPN wird ebenfalls unterstützt.
 
@@ -168,9 +168,9 @@ Sie können nun FarmBeats installieren. Folgen Sie den Schritten unten, um die I
 
 8. Sobald die eingegebenen Daten bestätigt sind, wählen Sie **OK** aus. Die Seite „Nutzungsbedingungen“ wird angezeigt. Überprüfen Sie die Bestimmungen, und wählen Sie **Erstellen** aus, um die Installation zu starten. Sie werden zu der Seite umgeleitet, auf der Sie den Installationsfortschritt verfolgen können.
 
-Nachdem die Installation abgeschlossen ist, können Sie die Installation überprüfen und das FarmBeats-Portal verwenden, indem Sie zu dem Websitenamen navigieren, den Sie während der Installation angegeben haben: https://\<FarmBeats-Websitename>.azurewebsites.net. Sie sollten die FarmBeats-Benutzeroberfläche mit einer Option zum Erstellen von landwirtschaftlichen Betrieben sehen.
+Nachdem die Installation abgeschlossen ist, können Sie die Installation überprüfen und das FarmBeats-Portal verwenden, indem Sie zu dem Websitenamen navigieren, den Sie während der Installation angegeben haben: https://\<FarmBeats-website-name>.azurewebsites.net. Sie sollten die FarmBeats-Benutzeroberfläche mit einer Option zum Erstellen von landwirtschaftlichen Betrieben sehen.
 
-Der **Datahub** kann unter „https://\<FarmBeats-Websitename>-api.azurewebsites.net/swagger“ gefunden werden. Hier werden die verschiedenen FarmBeats-API-Objekte angezeigt und REST-Vorgänge für die APIs durchgeführt.
+Der **Datenhub** befindet sich unter „https://\<FarmBeats-website-name>-api.azurewebsites.net/swagger“. Hier werden die verschiedenen FarmBeats-API-Objekte angezeigt und REST-Vorgänge für die APIs durchgeführt.
 
 ## <a name="upgrade"></a>Aktualisieren
 

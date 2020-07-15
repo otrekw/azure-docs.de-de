@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617330"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Installieren von SAP NetWeaver-Hochverfügbarkeit in einem Windows-Failovercluster und auf einer Windows-Dateifreigabe für SAP ASCS-/SCS-Instanzen in Azure
@@ -299,7 +299,7 @@ Erstellen Sie wie unter [Erstellen eines virtuellen Hostnamens für die SAP ASCS
 
 Installieren Sie eine ASCS/SCS-Instanz auf dem ersten ASCS/SCS-Clusterknoten. Navigieren Sie zum Installieren der Instanz im SAP SWPM-Installationstool zu:
 
-**\<Produkt>**  >  **\<DBMS>**  > **Installation** > **Anwendungsserver ABAP** (oder **Java**) > **Hochverfügbarkeitssystem** > **ASCS/SCS-Instanz** > **Erster Clusterknoten**.
+**\<Product>**  >  **\<DBMS>**  > **Installation** > **Anwendungsserver ABAP** (oder **Java**) > **Hochverfügbarkeitssystem** > **ASCS/SCS-Instanz** > **Erster Clusterknoten**.
 
 ### <a name="add-a-probe-port"></a>Hinzufügen eines Testports
 
@@ -309,7 +309,7 @@ Konfigurieren Sie eine SAP-Clusterressource und den SAP-SID-IP-Testport mithilfe
 
 Installieren Sie eine ASCS/SCS-Instanz auf dem zweiten ASCS/SCS-Clusterknoten. Navigieren Sie zum Installieren der Instanz im SAP SWPM-Installationstool zu:
 
-**\<Produkt>**  >  **\<DBMS>**  > **Installation** > **Anwendungsserver ABAP** (oder **Java**) > **Hochverfügbarkeitssystem** > **ASCS/SCS-Instanz** > **Weiterer Clusterknoten**.
+**\<Product>**  >  **\<DBMS>**  > **Installation** > **Anwendungsserver ABAP** (oder **Java**) > **Hochverfügbarkeitssystem** > **ASCS/SCS-Instanz** > **Weiterer Clusterknoten**.
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>Aktualisieren des SAP ASCS/SCS-Instanzprofils

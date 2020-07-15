@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4121482c37afcda0f580656bbe583128b7720fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225170"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829396"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -124,13 +124,13 @@ Die meisten Anwendungen müssen Daten speichern, daher spielt es keine Rolle, wi
 
   > **Einsatzgebiete**: Wenn Ihre App nicht relationale Daten speichert, wie Schlüssel-Wert-Paare (Tabellen), Blobs, Dateifreigaben oder Meldungen (Warteschlangen).
   >
-  > **Erste Schritte**: Wählen Sie aus den folgenden Speichertypen aus: [Blobs](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [Tabellen](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Warteschlangen](../../storage/queues/storage-dotnet-how-to-use-queues.md) oder [Dateien](../../storage/files/storage-dotnet-how-to-use-files.md).
+  > **Erste Schritte**: Wählen Sie einen Typ aus den folgenden Speichertypen aus: [Blobs](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [Tabellen](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Warteschlangen](../../storage/queues/storage-dotnet-how-to-use-queues.md) oder [Dateien](../../storage/files/storage-dotnet-how-to-use-files.md).
 
 - **Azure SQL-Datenbank**: Eine auf Azure basierende Version der Microsoft SQL Server-Engine zum Speichern relationaler Tabellendaten in der Cloud. SQL-Datenbank bietet vorhersagbare Leistung, Skalierbarkeit ohne Downtime, Geschäftskontinuität, und Datenschutz.
 
   > **Einsatzgebiete**: Wenn Ihre Anwendung Datenspeicherung mit referentieller Integrität, Transaktionsunterstützung und Unterstützung für TSQL-Abfragen erfordert.
   >
-  > **Erste Schritte**: [Erstellen einer SQL-Datenbank in Minuten mit dem Azure-Portal](../../sql-database/sql-database-get-started.md).
+  > **Erste Schritte**: [Erstellen Sie eine Datenbank in Azure SQL-Datenbank in wenigen Minuten über das Azure-Portal](../../sql-database/sql-database-get-started.md).
 
 
 Sie können [Azure Data Factory](../../data-factory/introduction.md) verwenden, um vorhandene lokale Daten in Azure zu verschieben. Wenn Sie nicht dazu bereit sind, Daten in die Cloud zu verschieben, können Sie mit [Hybrid Connections](../../app-service/app-service-hybrid-connections.md) in Azure App Service eine Verbindung Ihrer von App Service gehosteten App mit lokalen Ressourcen herstellen. Sie können von Ihren lokalen Anwendungen aus auch eine Verbindung mit Azure-Daten und Speicherdiensten herstellen.
@@ -255,7 +255,7 @@ Azure basiert auf einem Satz von REST-APIs, die die Benutzeroberfläche des Azur
 Neben den REST-APIs können Sie mithilfe von vielen Azure-Diensten auch programmgesteuert Ressourcen von Ihren Anwendungen verwalten, indem Sie plattformspezifische Azure SDKs verwenden, einschließlich SDKs für die folgenden Entwicklungsplattformen:
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/azure/javascript/)
+-   [Node.js](https://docs.microsoft.com/azure/developer/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)
@@ -268,7 +268,7 @@ Dienste wie [Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-how
 
 Wenn Sie Ihre App in Azure ausführen, müssen Sie wahrscheinlich mit mehreren Azure-Diensten arbeiten. Diese Dienste folgen demselben Lebenszyklus und können als logische Einheit betrachtet werden. Eine Web-App könnte beispielsweise die Dienste Web-Apps, SQL-Datenbank, Storage, Azure Cache für Redis und Azure Content Delivery Network verwenden. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) ermöglicht es Ihnen, mit den Ressourcen in Ihrer Anwendung als Gruppe zu arbeiten. Sie können alle Ressourcen in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
 
-Zusätzlich zur logischen Gruppierung und dem Verwalten von zugehörigen Ressourcen umfasst Azure Resource Manager Bereitstellungsfunktionen, mit deren Hilfe Sie die Bereitstellung und die Konfiguration zugehöriger Ressourcen anpassen können. Beispielsweise können Sie mit dem Resource Manager eine Anwendung bereitstellen und konfigurieren. Diese Anwendung kann aus mehreren virtuellen Computern, einem Lastenausgleichsmodul und einer Azure SQL-Datenbank als einzelne Einheit bestehen.
+Zusätzlich zur logischen Gruppierung und dem Verwalten von zugehörigen Ressourcen umfasst Azure Resource Manager Bereitstellungsfunktionen, mit deren Hilfe Sie die Bereitstellung und die Konfiguration zugehöriger Ressourcen anpassen können. Beispielsweise können Sie mit dem Resource Manager eine Anwendung bereitstellen und konfigurieren. Diese Anwendung kann aus mehreren virtuellen Computern, einem Load Balancer und einer Datenbank in Azure SQL-Datenbank als einzelne Einheit bestehen.
 
 Sie entwickeln diese Bereitstellungen, indem Sie eine Azure Resource Manager-Vorlage verwenden, einem JSON-formatierten Dokument. Mit Vorlagen können Sie eine Bereitstellung definieren und Ihre Anwendungen verwalten, indem Sie deklarative Vorlagen anstelle von Skripts verwenden. Ihre Vorlagen können für unterschiedliche Umgebungen geeignet sein, z.B. Testing, Staging und Produktion. Beispielsweise können Sie durch anhand von Vorlagen eine Schaltfläche zu einem GitHub-Repository hinzufügen, die den Code im Repository für eine Reihe von Azure-Diensten mit einem einzigen Klick bereitstellt.
 

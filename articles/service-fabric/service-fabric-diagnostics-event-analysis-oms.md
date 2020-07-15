@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
 ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464742"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Ereignisanalyse und -visualisierung mit Azure Monitor-Protokollen
@@ -34,7 +34,7 @@ Nachdem Daten von Azure Monitor-Protokollen empfangen wurden, verfügt Azure üb
 
 Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu der Ressourcengruppe, in der Sie die Service Fabric-Analyse-Lösung erstellt haben.
 
-Wählen Sie die Ressource **ServiceFabric\<OMS-Arbeitsbereichsname\>** aus.
+Wählen Sie die Ressource **ServiceFabric\<nameOfOMSWorkspace\>** aus.
 
 In `Summary` werden Kacheln in Form eines Graphs für jede der aktivierten Lösungen angezeigt, dies schließt Service Fabric ein. Klicken Sie auf den Graph **Service Fabric**, um mit der Service Fabric-Analyse-Lösung fortzufahren.
 

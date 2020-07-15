@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: 870182af6a00e4d2e2a762ce92b569fb9eeb7f0a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d31fd8cca9df2ea21bf19beed26810568fc6481e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033781"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84345307"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Verwenden von In-Memory-OLTP zur Verbesserung der Anwendungsleistung in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "84033781"
 [In-Memory-OLTP](in-memory-oltp-overview.md) kann verwendet werden, um die Leistung der Transaktionsverarbeitung, der Datenerfassung und der vorübergehenden Datenszenarien in Datenbanken des Tarifs [„Premium“ und „Unternehmenskritisch“](database/service-tiers-vcore.md) zu verbessern, ohne den Tarif zu erhöhen.
 
 > [!NOTE]
-> Erfahren Sie mehr darüber, wie ein [Quorum die Arbeitslast der wichtigen Datenbank verdoppelt, während die DTU mit SQL-Datenbank um 70 Prozent verringert wird](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
+> Erfahren Sie mehr darüber, wie ein [Quorum die Workload der wichtigen Datenbanken verdoppelt, während die DTU mit Azure SQL-Datenbank um 70 % verringert wird](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
 
 Führen Sie diese Schritte durch, um In-Memory-OLTP in Ihrer vorhandenen Datenbank zu übernehmen.
 

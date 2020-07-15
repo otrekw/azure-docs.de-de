@@ -3,7 +3,7 @@ title: Hochverfügbarkeit
 titleSuffix: Azure SQL Database and SQL Managed Instance
 description: Erfahren Sie mehr über die Hochverfügbarkeitsfunktionen des Azure SQL-Datenbank- und SQL Managed Instance-Diensts.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: 527fe8fa2ad8916f9e5209e4823457d81e745034
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 01906935de76b2b262f2058563a3eee0e297e8a4
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219371"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985326"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hochverfügbarkeit für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -75,12 +75,14 @@ Weitere Informationen zur Hochverfügbarkeit in Hyperscale finden Sie unter [Hoc
 
 ## <a name="zone-redundant-configuration"></a>Zonenredundante Konfiguration
 
-In der Standardeinstellung wird der Cluster von Knoten für das Premium-Verfügbarkeitsmodell im selben Rechenzentrum erstellt. Mit der Einführung von [Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md) können Azure SQL-Datenbank und SQL Managed Instance nun verschiedene Replikate von Datenbanken des Typs „Unternehmenskritisch“ in unterschiedlichen Verfügbarkeitszonen in derselben Region platzieren. Um einen Single Point of Failure auszuschließen, wird der Steuerring zudem in mehreren Zonen als drei Gatewayringe (GW) kopiert. Die Weiterleitung an einen bestimmten Gatewayring wird durch [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) (ATM) gesteuert. Da bei der zonenredundanten Konfiguration in den Dienstebenen „Premium“ oder „Unternehmenskritisch“ keine zusätzliche Datenbankredundanz erzeugt wird, können Sie sie ohne Zusatzkosten aktivieren. Durch die Auswahl einer zonenredundanten Konfiguration können Sie Ihre Datenbanken der Dienstebenen „Premium“ oder „Unternehmenskritisch“ für deutlich mehr Ausfallszenarien resistent machen (z.B. für schwerwiegende Ausfälle von Rechenzentren), ohne Änderungen an der Anwendungslogik vornehmen zu müssen. Sie können zudem alle vorhandenen Datenbanken oder Pools der Dienstebenen „Premium“ oder „Unternehmenskritisch“ in die zonenredundante Konfiguration konvertieren.
+In der Standardeinstellung wird der Cluster von Knoten für das Premium-Verfügbarkeitsmodell im selben Rechenzentrum erstellt. Mit der Einführung von [Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md) kann Azure SQL-Datenbank nun verschiedene Replikate von Datenbanken des Typs „Unternehmenskritisch“ in unterschiedlichen Verfügbarkeitszonen in derselben Region platzieren. Um einen Single Point of Failure auszuschließen, wird der Steuerring zudem in mehreren Zonen als drei Gatewayringe (GW) kopiert. Die Weiterleitung an einen bestimmten Gatewayring wird durch [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) (ATM) gesteuert. Da bei der zonenredundanten Konfiguration in den Dienstebenen „Premium“ oder „Unternehmenskritisch“ keine zusätzliche Datenbankredundanz erzeugt wird, können Sie sie ohne Zusatzkosten aktivieren. Durch die Auswahl einer zonenredundanten Konfiguration können Sie Ihre Datenbanken der Dienstebenen „Premium“ oder „Unternehmenskritisch“ für deutlich mehr Ausfallszenarien resistent machen (z.B. für schwerwiegende Ausfälle von Rechenzentren), ohne Änderungen an der Anwendungslogik vornehmen zu müssen. Sie können zudem alle vorhandenen Datenbanken oder Pools der Dienstebenen „Premium“ oder „Unternehmenskritisch“ in die zonenredundante Konfiguration konvertieren.
 
 Da die zonenredundanten Datenbanken über Replikate in verschiedenen Rechenzentren mit einiger Entfernung dazwischen verfügen, kann sich durch die erhöhte Netzwerklatenz die Commitzeit erhöhen und dadurch die Leistung einiger OLTP-Workloads beeinträchtigt werden. Sie können jederzeit zur Einzelzonenkonfiguration zurückkehren, indem Sie die zonenredundante Einstellung deaktivieren. Dieser Prozess ist ein Onlinevorgang und ähnelt dem regulären Dienstebenen-Upgrade. Am Ende des Prozesses wird die Datenbank oder der Pool aus einem zonenredundanten Ring zum Ring einer einzelnen Zone migriert (oder umgekehrt).
 
 > [!IMPORTANT]
-> Zonenredundante Datenbanken und Pools für elastische Datenbanken werden derzeit nur auf den Dienstebenen „Premium“ und „Unternehmenskritisch“ in ausgewählten Regionen unterstützt. Bei Verwendung des Tarifs „Unternehmenskritisch“ ist die zonenredundante Konfiguration nur verfügbar, wenn die Gen5-Computehardware ausgewählt ist. Aktuelle Informationen über die Regionen, die zonenredundante Datenbanken unterstützen, finden Sie unter [Unterstützung der Dienste nach Region](../../availability-zones/az-region.md).  
+> Zonenredundante Datenbanken und Pools für elastische Datenbanken werden derzeit nur auf den Dienstebenen „Premium“ und „Unternehmenskritisch“ in ausgewählten Regionen unterstützt. Bei Verwendung des Tarifs „Unternehmenskritisch“ ist die zonenredundante Konfiguration nur verfügbar, wenn die Gen5-Computehardware ausgewählt ist. Aktuelle Informationen über die Regionen, die zonenredundante Datenbanken unterstützen, finden Sie unter [Unterstützung der Dienste nach Region](../../availability-zones/az-region.md).
+
+> [!NOTE]
 > Dieses Feature steht in einer SQL Managed Instance nicht zur Verfügung.
 
 Die zonenredundante Version der Hochverfügbarkeitsarchitektur wird im folgenden Diagramm veranschaulicht:
@@ -89,7 +91,7 @@ Die zonenredundante Version der Hochverfügbarkeitsarchitektur wird im folgenden
 
 ## <a name="accelerated-database-recovery-adr"></a>Schnellere Datenbankwiederherstellung
 
-Die [schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR)](../accelerated-database-recovery.md) ist eine neue Funktion der SQL-Datenbank-Engine. Mit dieser Funktion wird die Datenbankverfügbarkeit erheblich verbessert, insbesondere bei Transaktionen mit langer Ausführungsdauer. ADR ist derzeit für Azure SQL-Datenbank, Azure SQL Managed Instance und Azure SQL Data Warehouse verfügbar.
+Die [schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR)](../accelerated-database-recovery.md) ist ein neues Feature der SQL-Datenbank-Engine, das die Datenbankverfügbarkeit erheblich verbessert, insbesondere bei Transaktionen mit langer Ausführungsdauer. ADR ist derzeit für Azure SQL-Datenbank, Azure SQL Managed Instance und Azure SQL Data Warehouse verfügbar.
 
 ## <a name="testing-application-fault-resiliency"></a>Testen der Resilienz von Anwendungsfehlern
 

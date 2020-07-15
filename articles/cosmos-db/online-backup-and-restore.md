@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: f5cc4339d7d6dce6d49c8d3eb744fca7fa5774d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ed9e23b178b8eeefbd3c3a690491124e6901180
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240433"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85112921"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Onlinesicherung und bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Azure Cosmos DB sorgt nicht nur dafür, dass Ihre Daten, sondern auch die Sicher
 
 Die folgende Abbildung zeigt, wie ein Azure Cosmos DB-Container (mit allen drei primären physischen Partitionen in „USA, Westen“) in einem Azure Blob Storage-Remotekonto in „USA, Westen“ gesichert und anschließend nach „USA, Osten“ repliziert wird:
 
-![Regelmäßige vollständige Sicherungen aller Cosmos DB-Entitäten in georedundantem Azure Storage](./media/online-backup-and-restore/automatic-backup.png)
+:::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="Regelmäßige vollständige Sicherungen aller Cosmos DB-Entitäten in georedundantem Azure Storage" border="false":::
 
 ## <a name="options-to-manage-your-own-backups"></a>Optionen für das Verwalten Ihrer eigenen Sicherungen
 

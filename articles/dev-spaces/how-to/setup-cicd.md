@@ -9,10 +9,10 @@ manager: gwallace
 description: Einrichten von Continuous Integration/Continuous Deployment mithilfe von Azure DevOps mit Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
 ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81685637"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Verwenden von CI/CD mit Azure Dev Spaces
@@ -41,7 +41,7 @@ Erstellen Sie einen neuen Bereich namens _dev_ mit dem Befehl `azds space select
 azds space select -n dev
 ```
 
-Wenn Sie zum Auswählen eines übergeordneten Entwicklungsbereichs aufgefordert werden, wählen Sie _\<Kein\>_ aus.
+Wenn Sie zum Auswählen eines übergeordneten Entwicklungsbereichs aufgefordert werden, wählen Sie _\<none\>_ aus.
 
 Nachdem Ihr dev-Bereich erstellt wurde, müssen Sie das Hostsuffix bestimmen. Verwenden Sie den Befehl `azds show-context`, um das Hostsuffix des Eingangscontrollers von Azure Dev Spaces anzuzeigen.
 

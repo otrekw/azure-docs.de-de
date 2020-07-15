@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
 ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649034"
 ---
 # <a name="security-in-azure-app-service"></a>Sicherheit in Azure App Service
@@ -22,7 +22,7 @@ In den folgenden Abschnitten wird gezeigt, wie Sie Ihre App Service-App noch bes
 
 ## <a name="https-and-certificates"></a>HTTPS und Zertifikate
 
-App Service ermöglicht den Schutz von Apps mit [HTTPS](https://wikipedia.org/wiki/HTTPS). Der Standarddomänenname (\<App-Name>.azurewebsites.net) Ihrer App ist nach der App-Erstellung bereits über HTTPS zugänglich. Wenn Sie [eine benutzerdefinierte Domäne für Ihre App konfigurieren](app-service-web-tutorial-custom-domain.md), sollten Sie sie auch [mit einem TLS-/SSL-Zertifikat schützen](configure-ssl-bindings.md), damit Clientbrowser sichere HTTPS-Verbindungen mit Ihrer benutzerdefinierten Domäne herstellen können. Es gibt mehrere Arten von Zertifikaten, die von App Service unterstützt werden:
+App Service ermöglicht den Schutz von Apps mit [HTTPS](https://wikipedia.org/wiki/HTTPS). Der Standarddomänenname (\<app_name>) Ihrer App ist nach der App-Erstellung bereits über HTTPS zugänglich. Wenn Sie [eine benutzerdefinierte Domäne für Ihre App konfigurieren](app-service-web-tutorial-custom-domain.md), sollten Sie sie auch [mit einem TLS-/SSL-Zertifikat schützen](configure-ssl-bindings.md), damit Clientbrowser sichere HTTPS-Verbindungen mit Ihrer benutzerdefinierten Domäne herstellen können. Es gibt mehrere Arten von Zertifikaten, die von App Service unterstützt werden:
 
 - Kostenloses, von App Service verwaltetes Zertifikat
 - App Service-Zertifikat
@@ -43,7 +43,7 @@ Für die Dateibereitstellung unterstützt App Service sowohl FTP als auch FTPS. 
 
 Standardmäßig akzeptiert Ihre App Service-App Anforderungen von allen IP-Adressen aus dem Internet, der Zugriff kann aber auf eine kleine Teilmenge von IP-Adressen beschränkt werden. In App Service unter Windows können Sie eine Liste mit IP-Adressen definieren, die auf Ihre App zugreifen dürfen. Die Liste mit den zulässigen IP-Adressen kann einzelne IP-Adressen oder einen durch eine Subnetzmaske definierten IP-Adressbereich enthalten. Weitere Informationen finden Sie unter [Statische Azure App Service-IP-Einschränkungen](app-service-ip-restrictions.md).
 
-Für App Service unter Windows können Sie IP-Adressen auch dynamisch einschränken, indem Sie _web.config_ konfigurieren. Weitere Informationen finden Sie unter [Dynamische IP-Sicherheit\<dynamicIpSecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Für App Service unter Windows können Sie IP-Adressen auch dynamisch einschränken, indem Sie _web.config_ konfigurieren. Weitere Informationen finden Sie unter [Dynamic IP Security \<dynamicIpSecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/) (Dynamische IP-Sicherheit: <dynamicIpSecurity>).
 
 ## <a name="client-authentication-and-authorization"></a>Clientauthentifizierung und -autorisierung
 

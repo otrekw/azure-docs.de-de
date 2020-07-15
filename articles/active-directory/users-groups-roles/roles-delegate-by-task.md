@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: reference
 ms.date: 05/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4837b654e5b538dda6f55eae9b15ddf0c5604693
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 3bc1546566e5bb79a207899fab7418480e5cfab0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299467"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117878"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -38,7 +38,7 @@ Anwendungsproxy deaktivieren | Anwendungsadministrator |
 Herunterladen eines Connectordiensts | Anwendungsadministrator | 
 Lesen aller Konfigurationen | Anwendungsadministrator | 
 
-## <a name="b2c"></a>B2C
+## <a name="external-identitiesb2c"></a>Externe Identitäten/B2C
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
@@ -47,11 +47,11 @@ Erstellen von B2C-Anwendungen | Globaler Administrator |
 Erstellen von Unternehmensanwendungen | Cloudanwendungsadministrator | Anwendungsadministrator
 Erstellen, Lesen, Aktualisieren und Löschen von B2C-Richtlinien | B2C-IEF-Richtlinienadministrator | 
 Erstellen, Lesen, Aktualisieren und Löschen von Identitätsanbietern | Externer Identitätsanbieteradministrator | 
-Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Kennwortzurücksetzung | B2C-Benutzerflowadministrator | 
-Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Profilbearbeitung | B2C-Benutzerflowadministrator | 
-Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Anmeldung | B2C-Benutzerflowadministrator | 
-Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Registrierung |B2C-Benutzerflowadministrator | 
-Erstellen, Lesen, Aktualisieren und Löschen von Benutzerattributen | B2C-Administrator für Benutzerflowattribute | 
+Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Kennwortzurücksetzung | Administrator für Benutzerflows mit externer ID | 
+Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Profilbearbeitung | Administrator für Benutzerflows mit externer ID | 
+Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Anmeldung | Administrator für Benutzerflows mit externer ID | 
+Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Registrierung |Administrator für Benutzerflows mit externer ID | 
+Erstellen, Lesen, Aktualisieren und Löschen von Benutzerattributen | Administrator für Benutzerflowattribute mit externer ID | 
 Erstellen, Lesen, Aktualisieren und Löschen von Benutzern | Benutzeradministrator
 Lesen aller Konfigurationen | Globaler Leser | 
 Lesen von B2C-Überwachungsprotokollen | Globaler Leser (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
@@ -73,6 +73,14 @@ Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 Konfigurieren von Unternehmenseigenschaften | Globaler Administrator | 
 
 ## <a name="connect"></a>Verbinden
+
+Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
+---- | --------------------- | ----------------
+Pass-Through-Authentifizierung | Globaler Administrator  | 
+Lesen aller Konfigurationen | Globaler Leser | Globaler Administrator  |
+Nahtloses einmaliges Anmelden | Globaler Administrator  | 
+
+## <a name="cloud-provisioning"></a>Cloudbereitstellung
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
@@ -109,7 +117,7 @@ Lesen aller Konfigurationen | Rolle „Verzeichnis lesen“ | Standardbenutzerro
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Erstellen einer Azure AD Domain Services-Instanz | Globaler Administrator | 
-Ausführen aller Azure AD Domain Services-Aufgaben | Administratorengruppe für Azure AD-Domänencontroller (siehe [Dokumentation](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-an-azure-ad-ds-managed-domain)) | 
+Ausführen aller Azure AD Domain Services-Aufgaben | Administratorengruppe für Azure AD-Domänencontroller (siehe [Dokumentation](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
 Lesen aller Konfigurationen | Leser für Azure-Abonnements, die den AD DS-Dienst umfassen | 
 
 ## <a name="devices"></a>Geräte

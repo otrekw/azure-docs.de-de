@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82782619"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Häufig auftretende Probleme und Lösungen für Azure IoT Edge
@@ -210,7 +210,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 **Grundursache:**
 
-Die IoT Edge-Runtime unterstützt nur Hostnamen, die kürzer als 64 Zeichen sind. Physische Computer weisen in der Regel keine langen Hostnamen auf, das Problem ist eher bei virtuellen Computern üblich. Die automatisch generierten Hostnamen für in Azure gehostete virtuelle Windows-Computer sind tendenziell lang sein.
+Die IoT-Edge-Runtime unterstützt nur Hostnamen, die kürzer als 64 Zeichen sind. Physische Computer weisen in der Regel keine langen Hostnamen auf, das Problem ist eher bei virtuellen Computern üblich. Die automatisch generierten Hostnamen für in Azure gehostete virtuelle Windows-Computer sind tendenziell lang sein.
 
 **Lösung:**
 
@@ -222,7 +222,7 @@ Wenn dieser Fehler angezeigt wird, können Sie ihn durch Konfigurieren des DNS-N
    ![Konfigurieren des DNS-Namens der VM](./media/troubleshoot/configure-dns.png)
 
 3. Geben Sie einen Wert für **DNS-Namensbezeichnung** ein, und wählen Sie **Speichern**.
-4. Kopieren Sie den neuen DNS-Namen, der das Format **\<DNS-Namensbezeichnung\>.\< VM-Speicherort\>. cloudapp.azure.com** aufweisen sollte.
+4. Kopieren Sie den neuen DNS-Namen, der das Format **\<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com** aufweisen sollte.
 5. Verwenden Sie innerhalb des virtuellen Computers den folgenden Befehl zum Einrichten der IoT Edge-Runtime mit Ihrem DNS-Namen:
 
    * Unter Linux:

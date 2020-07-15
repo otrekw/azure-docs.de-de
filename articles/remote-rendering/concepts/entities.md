@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7981a28db23ab8c0aed05013dd260ffd97a11c07
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5f6f7fc52a186117afcb92f6a2f80bf068e50ab9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758723"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509201"
 ---
 # <a name="entities"></a>Entitäten
 
@@ -25,6 +25,33 @@ Der wichtigste Aspekt der Entität selbst ist die Hierarchie und die sich ergebe
 Eine Entität befindet sich im Besitz ihres übergeordneten Elements. Wenn das übergeordnete Element mit `Entity.Destroy()` zerstört wird, gilt dies daher auch für die untergeordneten Elemente und alle verbundenen [Komponenten](components.md). Daher wird das Entfernen eines Modells aus der Szene erreicht, indem `Destroy` für den Stammknoten eines Modells aufgerufen wird, das von `AzureSession.Actions.LoadModelAsync()` oder dessen SAS-Variante `AzureSession.Actions.LoadModelFromSASAsync()` zurückgegeben wird.
 
 Entitäten werden erstellt, wenn der Server Inhalte lädt oder der Benutzer der Szene ein Objekt hinzufügen möchte. Wenn ein Benutzer beispielsweise eine Schnittebene hinzufügen möchte, um das Innere eines Gittermodells visuell darzustellen, kann der Benutzer eine Entität erstellen, in der die Ebene vorhanden sein sollte, und ihr dann die Schnittebenenkomponente hinzufügen.
+
+## <a name="create-an-entity"></a>Erstellen einer Entität
+
+Verwenden Sie den folgenden Code, um der Szene eine neue Entität hinzuzufügen, z. B. wenn Sie sie als Stammobjekt zum Laden von Modellen oder zum Anfügen von Komponenten übergeben möchten.
+
+```cs
+Entity CreateNewEntity(AzureSession session)
+{
+    Entity entity = session.Actions.CreateEntity();
+    entity.Position = new LocalPosition(1, 2, 3);
+    return entity;
+}
+```
+
+```cpp
+ApiHandle<Entity> CreateNewEntity(ApiHandle<AzureSession> session)
+{
+    ApiHandle<Entity> entity(nullptr);
+    if (auto entityRes = session->Actions()->CreateEntity())
+    {
+        entity = entityRes.value();
+        entity->Position(Double3{ 1, 2, 3 });
+        return entity;
+    }
+    return entity;
+}
+```
 
 ## <a name="query-functions"></a>Abfragefunktionen
 

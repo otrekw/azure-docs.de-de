@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617120"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Überprüfen und Problembehandlung beim Setup der SAP HANA-Hochverfügbarkeitskonfiguration zur horizontalen Skalierung unter SLES 12 SP3 
@@ -457,7 +457,7 @@ Während der Tests und Überprüfungen war das SBD-Gerät nach dem Neustart eine
 5. Stellen Sie sicher, dass oberhalb des Initiatornamens der Wert **Dienststart** auf **Beim Starten** festgelegt ist.
 6. Falls nicht, legen Sie diesen anstelle von **Manuell** auf **Beim Starten** fest.
 7. Wechseln Sie als Nächstes im oberen Bereich zur Registerkarte **Verbundene Ziele**.
-8. Auf dem Bildschirm **Verbundene Ziele** sollte ein Eintrag für das SBD-Gerät angezeigt werden, der ungefähr wie im folgenden Beispiel aussieht: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**.
+8. Auf dem Bildschirm **Verbundene Ziele** sollte ein Eintrag für das SBD-Gerät angezeigt werden, der dem folgenden Beispiel ähnelt: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**.
 9. Überprüfen Sie, ob der Wert für **Start** auf **Beim Starten** festgelegt ist.
 10. Falls nicht, wählen Sie **Bearbeiten** aus, und ändern Sie ihn.
 11. Speichern Sie die Änderungen, und beenden Sie YaST2.
@@ -656,7 +656,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>Failover oder Übernahme
 
-Wie im Abschnitt mit [wichtigen Hinweisen](#important-notes) erwähnt, sollten Sie kein standardmäßiges ordnungsgemäßes Herunterfahren verwenden, um das Clusterfailover oder die SAP HANA-HSR-Übernahme zu testen. Stattdessen wird empfohlen, einen Kernelwarnhinweis auszulösen, eine Ressourcenmigration zu erzwingen oder möglichst alle Netzwerke auf der Betriebssystemebene einer VM herunterzufahren. Eine andere Methode ist der Befehl **crm \<Knoten\> standby**. Informationen hierzu finden Sie im [SUSE-Dokument][sles-12-ha-paper]. 
+Wie im Abschnitt mit [wichtigen Hinweisen](#important-notes) erwähnt, sollten Sie kein standardmäßiges ordnungsgemäßes Herunterfahren verwenden, um das Clusterfailover oder die SAP HANA-HSR-Übernahme zu testen. Stattdessen wird empfohlen, einen Kernelwarnhinweis auszulösen, eine Ressourcenmigration zu erzwingen oder möglichst alle Netzwerke auf der Betriebssystemebene einer VM herunterzufahren. Eine andere Methode ist der Befehl **crm \<node\> standby**. Informationen hierzu finden Sie im [SUSE-Dokument][sles-12-ha-paper]. 
 
 Mit den folgenden drei Beispielbefehlen können Sie ein Clusterfailover erzwingen:
 
@@ -682,7 +682,7 @@ Außerdem kann es hilfreich sein, den Status der SAP HANA-Landschaft mit einem S
 
 Es gibt einige Wiederholungen, um unnötige Failover zu vermeiden. Der Cluster reagiert nur, wenn sich der Status von **Ok** (Rückgabewert **4**) in **error** (Rückgabewert **1**) ändert. Es ist daher korrekt, wenn die Ausgabe von **SAPHanaSR-showAttr** einen virtuellen Computer mit dem Status **offline** zeigt. Es gibt jedoch noch keine Aktivität für den Wechsel zwischen primärem und sekundärem Knoten. Es wird nur dann eine Clusteraktivität ausgelöst, wenn SAP HANA einen Fehler zurückgibt.
 
-Sie können den Integritätsstatus der SAP HANA-Landschaft als Benutzer **\<HANA-SID\>adm** überwachen, indem Sie das SAP-Python-Skript wie folgt aufrufen. Möglicherweise müssen Sie den Pfad anpassen:
+Sie können den Integritätsstatus der SAP HANA-Landschaft als Benutzer **\<HANA SID\>adm** überwachen, indem Sie das SAP-Python-Skript wie folgt aufrufen. Möglicherweise müssen Sie den Pfad anpassen:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py

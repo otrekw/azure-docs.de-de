@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25290a66da3d5c8325513b2bea6d27d12ca7da70
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229010"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134797"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen
 
@@ -56,6 +56,9 @@ Wenn ein Skript ausgeführt wird, wird ein Kontext für den Wiederherstellungspl
 | CloudServiceName |Der Name des Azure-Clouddiensts, unter dem die VM erstellt wurde. |
 | RoleName |Der Name der Azure-VM. |
 | RecoveryPointId|Der Zeitstempel für die Wiederherstellung der VM. |
+
+>[!Note]
+>Der Wert der Variable „FailoverDirection“ ist „PrimaryToSecondary“ bei einem Failover und „SecondaryToPrimary“ bei einem Failback.
 
 Im folgenden Beispiel wird eine Kontextvariable angezeigt:
 
@@ -126,7 +129,7 @@ In Aman Sharmas Blog auf [Harvesting Clouds](http://harvestingclouds.com) finden
 
 Sie können ein einzelnes Runbookskript in mehreren Wiederherstellungsplänen nutzen, indem Sie externe Variablen verwenden. 
 
-- Sie können [Azure Automation-Variablen](../automation/automation-variables.md) zum Speichern von Parametern für die Ausführung eines Wiederherstellungsplans verwenden.
+- Sie können [Azure Automation-Variablen](../automation/shared-resources/variables.md) zum Speichern von Parametern für die Ausführung eines Wiederherstellungsplans verwenden.
 - Indem Sie der Variablen den Namen des Wiederherstellungsplans als Präfix hinzufügen, können Sie für jeden Wiederherstellungsplan einzelne Variablen erstellen. Verwenden Sie die Variablen anschließend als Parameter.
 - Sie können einen Parameter ändern, ohne das Skript zu ändern, und für die Funktionsweise des Skripts trotzdem eine Änderung erzielen.
 
@@ -196,7 +199,7 @@ In einigen Szenarios können Sie möglicherweise keine separaten Variablen für 
 - Eine SharePoint-Wiederherstellung verfügt über zwei Front-Ends. Eine einfache Branchenanwendung (LOB-Anwendung) hat nur ein Front-End.
 - In diesem Szenario können Sie nicht für jeden Wiederherstellungsplan separate Variablen erstellen.
 
-Im folgenden Beispiel erstellen wie eine [komplexe Variable](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable) im Azure Automation-Konto.
+Im folgenden Beispiel erstellen wie eine [komplexe Variable](/powershell/module/servicemanagement/azure/set-azureautomationvariable) im Azure Automation-Konto.
 
 Hierzu geben wir mithilfe von Azure PowerShell mehrere Werte an.
 
@@ -261,9 +264,6 @@ Dieses Video enthält ein weiteres Beispiel. Es wird veranschaulicht, wie Sie ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu einem [Ausführenden Azure Automation-Konto](../automation/automation-create-runas-account.md)
+- Weitere Informationen zu einem [Ausführenden Azure Automation-Konto](../automation/manage-runas-account.md)
 - Sehen Sie sich die [Beispielskripts für Azure Automation an](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team).
 - [Weitere Informationen](site-recovery-failover.md) zum Ausführen von Failovern
-
-
-

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: f0efaf593725fd676ae8e85ff9c190c8b850fef1
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 493a2b0d0aab47c2e38648ec8f6be75685dfd7ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744681"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119493"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link für Azure Cosmos DB: Anwendungsfälle für Analysen in Quasi-Echtzeit
 
@@ -34,7 +34,7 @@ Hersteller führen ein Onboarding auf cloudnative Technologien durch, um die Ein
 
 Die folgende Architektur zeigt die Leistungsfähigkeit von Azure Cosmos DB als cloudnative Betriebsdatenbank und Synapse Link in der Lieferkettenanalyse:
 
-![Azure Synapse Link für Azure Cosmos DB in der Lieferkettenanalyse ](./media/synapse-link-use-cases/supply-chain-analytics.png)
+:::image type="content" source="./media/synapse-link-use-cases/supply-chain-analytics.png" alt-text="Azure Synapse Link für Azure Cosmos DB in der Lieferkettenanalyse" border="false":::
 
 Basierend auf der vorherigen Architektur sind die folgenden Anwendungsfälle mit Synapse Link für Azure Cosmos DB möglich:
 
@@ -70,7 +70,7 @@ Im Folgenden finden Sie eine Anleitung für die Datenintegration für Batch- und
 
 Einzelhändler müssen sichere und skalierbare E-Commerce-Lösungen erstellen, die die Anforderungen von Kunden und Unternehmen erfüllen. Diese E-Commerce-Lösungen müssen eine Kundenbindung durch angepasste Produkte und Angebote herstellen, Transaktionen schnell und sicher verarbeiten und sich auf Fulfillment und Kundendienst konzentrieren. Azure Cosmos DB und Synapse Link für Azure Cosmos DB ermöglichen es Einzelhändlern, personalisierte Empfehlungen für Kunden in Echtzeit zu generieren. Sie verwenden anpassbare Konsistenzeinstellungen mit geringer Wartezeit, um unmittelbare Erkenntnisse zu erhalten, wie sie in der folgenden Architektur dargestellt sind:
 
-![Azure Synapse Link für Azure Cosmos DB in Echtzeitpersonalisierung](./media/synapse-link-use-cases/real-time-personalization.png)
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Azure Synapse Link für Azure Cosmos DB in Echtzeitpersonalisierung" border="false":::
 
 Anwendungsfälle für Synapse Link für Azure Cosmos DB:
 
@@ -82,7 +82,7 @@ Industrielle IOT-Innovationen haben die Ausfallzeiten von Geräten enorm verring
 
 Im Folgenden sehen Sie eine Architektur, die die cloudnativen HTAP-Funktionen von Azure Synapse Link für Azure Cosmos DB in IOT-Predictive Maintenance nutzt:
 
-![Azure Synapse Link für Azure Cosmos DB in IOT-Predictive Maintenance](./media/synapse-link-use-cases/iot-predictive-maintenance.png)
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Azure Synapse Link für Azure Cosmos DB in IoT-Predictive Maintenance" border="false" :::
 
 Anwendungsfälle für Synapse Link für Azure Cosmos DB:
 
@@ -104,7 +104,7 @@ In der folgenden Liste finden Sie eine Übersicht über die verschiedenen Worklo
 
 Azure Synapse Link ermöglicht Azure Cosmos DB nicht nur die Unterstützung von Transaktionsworkloads, sondern auch das Durchführen von Analyseworkloads in Quasi-Echtzeit für operative Verlaufsdaten. Dies geschieht ohne ETL-Anforderungen und mit einer garantierten Leistungsisolation von den Transaktionsworkloads.
 
-Die folgende Abbildung zeigt Workloadmuster mithilfe von Azure Cosmos DB: ![Workloadmuster für Azure Synapse Link für Azure Cosmos DB](./media/synapse-link-use-cases/synapse-link-workload-patterns.png)
+Die folgende Abbildung zeigt Workloadmuster mithilfe von Azure Cosmos DB: :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Workloadmuster für Azure Synapse Link für Azure Cosmos DB" border="false":::
 
 Die Vorteile von Azure Cosmos DB als einzelne Echtzeitdatenbank, die sowohl transaktionale als auch analytische Anforderungen einer Bestandsverwaltungsplattform unterstützt, soll am Beispiel des E-Commerce-Unternehmens CompanyXYZ verdeutlicht werden, das in mehr als 20 Ländern/Regionen tätig ist.
 

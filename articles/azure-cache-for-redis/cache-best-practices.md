@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478607"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84457302"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Bewährte Methoden für Azure Cache for Redis 
 Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung und kostengünstige Verwendung Ihrer Azure Cache for Redis-Instanz.
@@ -38,6 +38,8 @@ Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung
  * **Vermeiden Sie speicherintensive Vorgänge**: Einige Redis-Vorgänge (z.B. der [KEYS-Befehl](https://redis.io/commands/keys)) sind *sehr* speicherintensiv und sollten vermieden werden.  Weitere Informationen finden Sie unter [Einige Überlegungen zu Befehlen mit langer Ausführungsdauer](cache-troubleshoot-server.md#long-running-commands).
 
  * **Verwenden Sie die TLS-Verschlüsselung**: Azure Cache for Redis setzt standardmäßig eine von TLS verschlüsselte Kommunikation voraus.  Derzeit werden die TLS-Versionen 1.0, 1.1 und 1.2 unterstützt.  Die Unterstützung von TLS 1.0 und 1.1 wird jedoch branchenweit eingestellt werden. Verwenden Sie daher nach Möglichkeit TLS 1.2.  Wenn die Clientbibliothek oder das Tool TLS nicht unterstützt, kann die Aktivierung unverschlüsselter Verbindungen [über das Azure-Portal](cache-configure.md#access-ports) oder über [Verwaltungs-APIs](https://docs.microsoft.com/rest/api/redis/redis/update) vorgenommen werden.  Wenn verschlüsselte Verbindungen nicht möglich sind, empfiehlt es sich, den Cache und die Clientanwendung in ein virtuelles Netzwerk einzubinden.  Weitere Informationen zu den im virtuellen Netzwerkcache-Szenario verwendeten Ports finden Sie in dieser [Tabelle](cache-how-to-premium-vnet.md#outbound-port-requirements).
+ 
+ * **Leerlaufzeitüberschreitung:** Azure Redis weist derzeit ein Leerlauftimeout von 10 Minuten auf. Daher sollte dieser Wert auf weniger als 10 Minuten festgelegt werden.
  
 ## <a name="memory-management"></a>Speicherverwaltung
 Es gibt mehrere Dinge im Zusammenhang mit der Speicherauslastung in Ihrer Redis-Serverinstanz, die Sie ggf. berücksichtigen sollten.  Hier sind einige Beispiele:

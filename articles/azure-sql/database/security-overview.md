@@ -1,9 +1,9 @@
 ---
 title: Sicherheitsübersicht
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Erfahren Sie mehr über die Sicherheit in Azure SQL-Datenbank und Azure SQL Managed Instance, einschließlich der Unterschiede gegenüber SQL Server.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,15 +12,14 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 7beaae92d8f08aaaa3625240bc2c70256ed0e1d4
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: bfb7c94f1a29eaaf849dbf18a2b6137102617be8
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266048"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986846"
 ---
-# <a name="an-overview-of-azure-sql-database--sql-managed-instance-security-capabilities"></a>Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank und SQL Managed Instance
-
+# <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 In diesem Artikel werden die Grundlagen zum Schutz der Datenschicht einer Anwendung mit [Azure SQL-Datenbank](sql-database-paas-overview.md) und [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) beschrieben. Die beschriebene Sicherheitsstrategie folgt dem Defense-in-Depth-Schichtenmodell, das in der folgenden Abbildung dargestellt ist und von außen nach innen durchlaufen wird:
@@ -42,7 +41,7 @@ IP-Firewallregeln gewähren den Datenbankzugriff auf der Grundlage der Ursprungs
 Mithilfe von [VNET-Regeln](vnet-service-endpoint-rule-overview.md) kann Azure SQL-Datenbank nur Verbindungen akzeptieren, die von ausgewählten Subnetzen innerhalb eines virtuellen Netzwerks stammen.
 
 > [!NOTE]
-> Die Zugriffssteuerung mit Firewallregeln gilt *nicht* für **SQL Managed Instance**. Weitere Informationen zur erforderlichen Netzwerkkonfiguration finden Sie unter [Herstellen einer Verbindung mit einer verwalteten SQL-Datenbank-Instanz](../managed-instance/connect-application-instance.md).
+> Die Zugriffssteuerung mit Firewallregeln gilt *nicht* für **SQL Managed Instance**. Weitere Informationen zur erforderlichen Netzwerkkonfiguration finden Sie unter [Herstellen einer Verbindung mit einer verwalteten Instanz](../managed-instance/connect-application-instance.md).
 
 ## <a name="access-management"></a>Zugriffsverwaltung
 
@@ -55,7 +54,7 @@ Die Authentifizierung ist der Prozess, bei dem bestätigt wird, dass der Benutze
 
 - **SQL-Authentifizierung**:
 
-    SQL-Datenbank-Authentifizierung bezieht sich auf die Authentifizierung eines Benutzers beim Herstellen einer Verbindung mit Azure SQL-Datenbank oder Azure SQL Managed Instance mithilfe von Benutzername und Kennwort. Beim Erstellen des Servers müssen Anmeldeinformationen für einen **Serveradministrator** mit einem Benutzernamen und einem Kennwort angegeben werden. Mit diesen Anmeldeinformationen kann sich ein **Serveradministrator** bei jeder Datenbank auf diesem Server oder dieser Instanz als Datenbankbesitzer authentifizieren. Danach können zusätzliche SQL-Anmeldungen und -Benutzer durch den Serveradministrator erstellt werden, sodass Benutzer eine Verbindung mithilfe von Benutzername und Kennwort herstellen können.
+    Der Begriff SQL-Authentifizierung bezieht sich auf die Authentifizierung eines Benutzers beim Herstellen einer Verbindung mit Azure SQL-Datenbank oder Azure SQL Managed Instance mithilfe von Benutzername und Kennwort. Beim Erstellen des Servers müssen Anmeldeinformationen für einen **Serveradministrator** mit einem Benutzernamen und einem Kennwort angegeben werden. Mit diesen Anmeldeinformationen kann sich ein **Serveradministrator** bei jeder Datenbank auf diesem Server oder dieser Instanz als Datenbankbesitzer authentifizieren. Danach können zusätzliche SQL-Anmeldungen und -Benutzer durch den Serveradministrator erstellt werden, sodass Benutzer eine Verbindung mithilfe von Benutzername und Kennwort herstellen können.
 
 - **Azure Active Directory-Authentifizierung**:
 
@@ -70,7 +69,7 @@ Die Authentifizierung ist der Prozess, bei dem bestätigt wird, dass der Benutze
 
 ## <a name="authorization"></a>Authorization
 
-Der Begriff Autorisierung bezieht sich auf die Berechtigungen, die einem Benutzer in Azure SQL-Datenbank oder SQL Managed Instance zugewiesen sind und festlegen, welche Aktionen der Benutzer ausführen darf. Berechtigungen werden gesteuert, indem Benutzerkonten zu [Datenbankrollen](/sql/relational-databases/security/authentication-access/database-level-roles) hinzugefügt und diesen Rollen Berechtigungen auf Datenbankebene zugewiesen oder dem Benutzer bestimmte [Berechtigungen auf Objektebene](/sql/relational-databases/security/permissions-database-engine) erteilt werden. Weitere Informationen finden Sie unter [Anmeldungen und Benutzer](logins-create-manage.md).
+Der Begriff Autorisierung bezieht sich auf die Berechtigungen, die einem Benutzer in einer Datenbank in Azure SQL-Datenbank oder Azure SQL Managed Instance zugewiesen sind und festlegen, welche Aktionen der Benutzer ausführen darf. Berechtigungen werden gesteuert, indem Benutzerkonten zu [Datenbankrollen](/sql/relational-databases/security/authentication-access/database-level-roles) hinzugefügt und diesen Rollen Berechtigungen auf Datenbankebene zugewiesen oder dem Benutzer bestimmte [Berechtigungen auf Objektebene](/sql/relational-databases/security/permissions-database-engine) erteilt werden. Weitere Informationen finden Sie unter [Anmeldungen und Benutzer](logins-create-manage.md).
 
 Es hat sich bewährt, benutzerdefinierte Rollen bei Bedarf zu erstellen. Fügen Sie Benutzer dann derjenigen Rolle hinzu, die die geringsten Berechtigungen besitzt, um die erforderliche Aufgabe noch erfüllen zu können. Weisen Sie Benutzern Berechtigungen nicht direkt zu. Das Serveradministratorkonto gehört zur integrierten Rolle „db_owner“, die über umfassende Berechtigungen verfügt und nur wenigen Benutzern mit administrativen Aufgaben erteilt werden sollte. Verwenden Sie bei Anwendungen die Option [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) zur Angabe des Ausführungskontexts für das aufgerufene Modul, oder verwenden Sie [Anwendungsrollen](/sql/relational-databases/security/authentication-access/application-roles) mit eingeschränkten Berechtigungen. Durch diese Vorgehensweise wird sichergestellt, dass eine Anwendung, die eine Verbindung mit der Datenbank herstellt, nur über die geringsten Berechtigungen verfügt, die von der Anwendung benötigt werden. Diese bewährten Methoden fördern auch die Aufgabentrennung.
 
@@ -96,9 +95,9 @@ Advanced Threat Protection analysiert Ihre Protokolle auf ungewöhnliches Verhal
 
 ## <a name="information-protection-and-encryption"></a>Informationsschutz und -verschlüsselung
 
-### <a name="transport-layer-security-tls-encryption-in-transit"></a>Transport Layer Security, TLS (Verschlüsselung bei der Übertragung)
+### <a name="transport-layer-security-encryption-in-transit"></a>Transport Layer Security (Verschlüsselung bei der Übertragung)
 
-SQL-Datenbank und SQL Managed Instance schützen Kundendaten durch das Verschlüsseln von Daten bei der Übertragung mit [Transport Layer Security](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) (TLS).
+SQL-Datenbank und SQL Managed Instance schützen Kundendaten durch das Verschlüsseln von Daten bei der Übertragung mit [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
 
 SQL-Datenbank und SQL Managed Instance erzwingen die Verschlüsselung (SSL/TLS) jederzeit und für alle Verbindungen. Dadurch wird sichergestellt, dass alle Daten „im Übergang“ zwischen Client und Server verschlüsselt werden, und zwar unabhängig von der Einstellung von **Encrypt** oder **TrustServerCertificate** in der Verbindungszeichenfolge.
 
@@ -115,7 +114,7 @@ Bei Verwendung des ADO.NET-Treibers erfolgt dies z. B. über **Encrypt=True** u
 
 [Transparent Data Encryption (TDE) für Azure SQL-Datenbank und SQL Managed Instance](transparent-data-encryption-tde-overview.md) fügt eine zusätzliche Sicherheitsebene zum Schutz ruhender Daten vor nicht autorisiertem oder Offlinezugriff auf Rohdatendateien oder Sicherungen hinzu. Entsprechende Szenarien umfassen häufig den Diebstahl im Rechenzentrum oder die unsichere Entsorgung von Hardware oder Medien, wie z. B. Festplatten und Sicherungsbändern. TDE verschlüsselt die gesamte Datenbank mit einem AES-Verschlüsselungsalgorithmus. Dies erfordert von den Anwendungsentwicklern keine Änderungen an vorhandenen Anwendungen.
 
-In Azure werden standardmäßig alle neu erstellten Datenbanken verschlüsselt, und der Datenbankverschlüsselungsschlüssel wird mit einem integrierten Serverzertifikat geschützt.  Zertifikatwartung und -rotation werden vom Dienst verwaltet und erfordern keine Aktion durch den Benutzer. Kunden, die volle Kontrolle über die Verschlüsselungsschlüssel benötigen, können die Schlüssel in [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md) verwalten.
+In Azure werden standardmäßig alle neu erstellten Datenbanken verschlüsselt, und der Datenbankverschlüsselungsschlüssel wird mit einem integrierten Serverzertifikat geschützt.  Zertifikatwartung und -rotation werden vom Dienst verwaltet und erfordern keine Eingaben des Benutzers. Kunden, die volle Kontrolle über die Verschlüsselungsschlüssel benötigen, können die Schlüssel in [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md) verwalten.
 
 ### <a name="key-management-with-azure-key-vault"></a>Schlüsselverwaltung mit Azure Key Vault
 
@@ -125,7 +124,7 @@ In Azure werden standardmäßig alle neu erstellten Datenbanken verschlüsselt, 
 
 ![azure-database-ae.png](./media/security-overview/azure-database-ae.png)
 
-[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) ist eine Funktion zum Schutz vor dem Zugriff auf vertrauliche Daten (z.B. Kreditkartennummern, nationale Identifikationsnummern oder Daten, die _nur bei Bedarf bekannt sein sollten_), die in bestimmten Datenbankspalten gespeichert sind. Dies schließt Datenbankadministratoren und anderen privilegierte Benutzer ein, die autorisiert sind, für Verwaltungsaufgaben auf die Datenbank zuzugreifen, jedoch keinen Zugriff auf die entsprechenden Daten in den verschlüsselten Spalten benötigen. Die Daten werden immer verschlüsselt. Das bedeutet, dass die verschlüsselten Daten nur für die Verarbeitung durch Clientanwendungen mit Zugriff auf den Verschlüsselungsschlüssel entschlüsselt werden.  Der Verschlüsselungsschlüssel wird nie für SQL verfügbar gemacht und kann im [Windows-Zertifikatspeicher](always-encrypted-certificate-store-configure.md) oder in [Azure Key Vault](always-encrypted-azure-key-vault-configure.md) gespeichert werden.
+[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) ist eine Funktion zum Schutz vor dem Zugriff auf vertrauliche Daten (z.B. Kreditkartennummern, nationale Identifikationsnummern oder Daten, die _nur bei Bedarf bekannt sein sollten_), die in bestimmten Datenbankspalten gespeichert sind. Dies schließt Datenbankadministratoren und anderen privilegierte Benutzer ein, die autorisiert sind, für Verwaltungsaufgaben auf die Datenbank zuzugreifen, jedoch keinen Zugriff auf die entsprechenden Daten in den verschlüsselten Spalten benötigen. Die Daten werden immer verschlüsselt. Das bedeutet, dass die verschlüsselten Daten nur für die Verarbeitung durch Clientanwendungen mit Zugriff auf den Verschlüsselungsschlüssel entschlüsselt werden. Der Verschlüsselungsschlüssel wird nie gegenüber SQL-Datenbank oder SQL Managed Instance offengelegt und kann im [Windows-Zertifikatspeicher](always-encrypted-certificate-store-configure.md) oder in [Azure Key Vault](always-encrypted-azure-key-vault-configure.md) gespeichert werden.
 
 ### <a name="dynamic-data-masking"></a>Dynamische Datenmaskierung
 
@@ -139,17 +138,17 @@ Die dynamische Datenmaskierung beschränkt die Offenlegung vertraulicher Daten, 
 
 Die [Sicherheitsrisikobewertung](sql-vulnerability-assessment.md) ist ein einfach zu konfigurierender Dienst, mit dem potenzielle Schwachstellen in der Datenbank ermittelt, nachverfolgt und behoben werden können. Damit soll die allgemeine Datenbanksicherheit proaktiv verbessert werden. Die Sicherheitsrisikobewertung ist Bestandteil des Angebots „Advanced Data Security“. Dabei handelt es sich um ein vereinheitlichtes Paket mit erweiterten SQL-Sicherheitsfunktionen. Die Sicherheitsrisikobewertung kann über das zentrale SQL Advanced Data Security-Portal geöffnet und verwaltet werden.
 
-### <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
+### <a name="data-discovery-and-classification"></a>Datenermittlung und -klassifizierung
 
-Datenermittlung und -klassifizierung (zurzeit in der Vorschau) bietet erweiterte Funktionen für Azure SQL-Datenbank und SQL Managed Instance zum Ermitteln, Klassifizieren, Bezeichnen und Schützen vertraulicher Daten in Ihren Datenbanken. Das Ermitteln und Klassifizieren Ihrer vertraulichen Daten (Geschäfts-/Finanz-/Gesundheits-, personenbezogene Daten usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Sie kann für Folgendes als Infrastruktur gelten:
+Datenermittlung und -klassifizierung (derzeit in der Vorschauphase) bietet erweiterte Funktionen für Azure SQL-Datenbank und SQL Managed Instance zum Ermitteln, Klassifizieren, Bezeichnen und Schützen vertraulicher Daten in Ihren Datenbanken. Das Ermitteln und Klassifizieren Ihrer vertraulichen Daten (Geschäfts-/Finanz-/Gesundheits-, personenbezogene Daten usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Sie kann für Folgendes als Infrastruktur gelten:
 
 - Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnungen bei abweichendem Zugriff auf sensible Daten
 - Steuern des Zugriffs auf und Härten der Sicherheit von Datenbanken, die sensible Daten enthalten
 - Unterstützen der Einhaltung von Datenschutzstandards und gesetzlicher Bestimmungen
 
-Weitere Informationen finden Sie unter [Erste Schritte bei der Datenermittlung und -klassifizierung](data-discovery-and-classification-overview.md).
+Weitere Informationen finden Sie unter [Erste Schritte mit der Datenermittlung und -klassifizierung](data-discovery-and-classification-overview.md).
 
-### <a name="compliance"></a>Kompatibilität
+### <a name="compliance"></a>Compliance
 
 Zusätzlich zu den oben aufgeführten Features und Funktionen, mit denen Ihre Anwendung eine Reihe von Sicherheitsanforderungen erfüllen kann, wird Azure SQL-Datenbank außerdem regelmäßigen Überprüfungen unterzogen und ist für eine Reihe von Compliancestandards zertifiziert. Weitere Informationen finden Sie im [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), wo die aktuellste Liste von Compliance-Zertifizierungen für SQL-Datenbank angezeigt wird.
 

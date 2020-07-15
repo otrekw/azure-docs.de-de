@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: e61ce629e723f56524ee22d8b127243f9568a835
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196505"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84981998"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -73,7 +73,13 @@ Wenn Sie eine öffentliche IP-Adresse als Endpunkt verwenden, finden Sie die Inf
 
 *Keep-Alive-Timeout* steuert, wie lange das Application Gateway wartet, bis ein Client eine andere HTTP-Anforderung über eine persistente Verbindung sendet, bevor diese wiederverwendet oder geschlossen wird. *TCP-Leerlauftimeout* steuert, wie lange eine TCP-Verbindung bei fehlender Aktivität offengehalten wird. 
 
-Der *Keep-Alive-Timeout* in der Application Gateway v1-SKU beträgt 120 Sekunden und in der v2-SKU 75 Sekunden. Der *TCP-Leerlauftimeout* beträgt standardmäßig 4 Minuten für die virtuelle IP (VIP) des Front-Ends von Application Gateway sowohl für die v1- als auch die v2-SKU. Sie können diese Werte nicht ändern.
+Der *Keep-Alive-Timeout* in der Application Gateway v1-SKU beträgt 120 Sekunden und in der v2-SKU 75 Sekunden. Der *TCP-Leerlauftimeout* beträgt standardmäßig 4 Minuten für die virtuelle IP (VIP) des Front-Ends von Application Gateway sowohl für die v1- als auch die v2-SKU. Sie können den Wert für das TCP-Leerlauftimeout für v1- und v2-Anwendungsgateways zwischen 4 Minuten und 30 Minuten festlegen. Für v1- und v2-Anwendungsgateways müssen Sie zur öffentlichen IP-Adresse des Anwendungsgateways navigieren und das TCP-Leerlauftimeout auf dem Blatt „Konfiguration“ der öffentlichen IP-Adresse im Portal ändern. Sie können den Wert für das TCP-Leerlauftimeout der öffentlichen IP-Adresse über PowerShell festlegen, indem Sie folgende Befehle ausführen: 
+
+```azurepowershell-interactive
+$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
+$publicIP.IdleTimeoutInMinutes = "15"
+Set-AzPublicIpAddress -PublicIpAddress $publicIP
+```
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Ändert sich die IP-Adresse oder der DNS-Name während der Lebensdauer des Anwendungsgateways?
 
@@ -338,11 +344,31 @@ Nein, verwenden Sie nur alphanumerische Zeichen in Ihrem PFX-Dateikennwort.
 Kubernetes ermöglicht die Erstellung von `deployment`- und `service`-Ressourcen, um eine Gruppe von Pods intern im Cluster bereitzustellen. Um denselben Dienst extern verfügbar zu machen, wird eine [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/)-Ressource definiert, die Lastenausgleich, TLS-Terminierung und namensbasiertes virtuelles Hosting bereitstellt.
 Um diese `Ingress`-Ressource zu bedienen, ist ein Eingangscontroller erforderlich, der auf Änderungen an `Ingress`-Ressourcen lauscht und die Lastenausgleichsrichtlinien konfiguriert.
 
-Der Application Gateway-Eingangscontroller ermöglicht die Verwendung von [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) als Eingangsressource für einen [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/), der auch als AKS-Cluster bezeichnet wird.
+Der Application Gateway-Eingangscontroller (AGIC) ermöglicht die Verwendung von [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) als Eingangsressource für einen [Azure Kubernetes Service-Cluster](https://azure.microsoft.com/services/kubernetes-service/) (auch als AKS-Cluster bezeichnet).
 
 ### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>Kann eine einzelne Eingangscontrollerinstanz mehrere Application Gateways verwalten?
 
 Derzeit kann eine Instanz des Eingangscontrollers nur einem Application Gateway zugeordnet werden.
+
+### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>Warum funktioniert mein AKS-Cluster mit kubenet nicht mit dem Application Gateway-Eingangscontroller?
+
+Der Application Gateway-Eingangscontroller versucht, die Routingtabellenressource automatisch dem Application Gateway-Subnetz zuzuordnen. Dabei können jedoch aufgrund fehlender Berechtigungen des Application Gateway-Eingangscontrollers Fehler auftreten. Wenn der Application Gateway-Eingangscontroller die Routingtabelle nicht dem Application Gateway-Subnetz zuordnen kann, wird in seinen Protokollen ein entsprechender Fehler angezeigt. In diesem Fall müssen Sie die vom AKS-Cluster erstellte Routingtabelle dem Application Gateway-Subnetz manuell zuordnen. Weitere Informationen finden Sie in diesen [Anweisungen](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet).
+
+### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>Kann ich meinen AKS-Cluster und Application Gateway in separaten virtuellen Netzwerken verbinden? 
+
+Ja, solange die virtuellen Netzwerke mittels Peering verknüpft sind und keine Adressräume mit Überschneidungen aufweisen. Wenn Sie AKS mit kubenet ausführen, müssen Sie die von AKS generierte Routingtabelle dem Application Gateway-Subnetz zuordnen. 
+
+### <a name="what-features-are-not-supported-on-the-agic-add-on"></a>Welche Funktionen werden für das AGIC-Add-On nicht unterstützt? 
+
+Die Unterschiede zwischen dem über Helm bereitgestellten AGIC und dem als AKS-Add-On bereitgestellten AGIC finden Sie [hier](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on).
+
+### <a name="when-should-i-use-the-add-on-versus-the-helm-deployment"></a>Wann sollte ich das Add-On anstelle der Bereitstellung über Helm verwenden? 
+
+Die Unterschiede zwischen dem über Helm bereitgestellten AGIC und dem als AKS-Add-On bereitgestellten AGIC finden Sie [hier](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). Beachten Sie dabei insbesondere die Tabellen, in denen beschrieben wird, welche Szenarien unterstützt werden, wenn der AGIC über Helm bereitgestellt wird im Gegensatz zur Bereitstellung als AKS-Add-On. Im Allgemeinen können Sie durch die Bereitstellung über Helm Betafunktionen und Release Candidates vor einem offiziellen Release testen. 
+
+### <a name="can-i-control-which-version-of-agic-will-be-deployed-with-the-add-on"></a>Kann ich steuern, welche AGIC-Version mit dem Add-On bereitgestellt wird?
+
+Nein, das AGIC-Add-On ist ein verwalteter Dienst, d. h., Microsoft aktualisiert das Add-On automatisch auf die neueste stabile Version. 
 
 ## <a name="diagnostics-and-logging"></a>Diagnose und Protokollierung
 

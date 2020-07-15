@@ -5,14 +5,14 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 684116f92544e61a892b3653f8539f9f8f03e0c9
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 85366b8b3e3ba7d612373e6b754aa9805d00f8f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584080"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116963"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Erstellen von Benutzern in Azure Database for PostgreSQL: Hyperscale (Citus)
 
@@ -66,16 +66,11 @@ Um z. B. `db_user` das Lesen von `mytable` zu erlauben, erteilen Sie die folgen
 GRANT SELECT ON mytable TO db_user;
 ```
 
-Hyperscale (Citus) gibt eine GRANT-Anweisung für einzelne Tabellen über den gesamten Cluster weiter und wendet sie auf alle Workerknoten an. Systemweite GRANTs (z. B. für alle Tabellen in einem Schema) müssen jedoch auf jedem Datumsknoten ausgeführt werden.  Verwenden Sie die Hilfsfunktion `run_command_on_workers()`:
+Hyperscale (Citus) gibt eine GRANT-Anweisung für einzelne Tabellen über den gesamten Cluster weiter und wendet sie auf alle Workerknoten an. Außerdem werden systemweite GRANT-Anweisungen weitergegeben (z. B. für alle Tabellen in einem Schema):
 
 ```sql
--- applies to the coordinator node
+-- applies to the coordinator node and propagates to workers
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
-
--- make it apply to workers as well
-SELECT run_command_on_workers(
-  'GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;'
-);
 ```
 
 ## <a name="how-to-delete-a-user-role-or-change-their-password"></a>So löschen Sie eine Benutzerrolle oder ändern das Kennwort eines Benutzers

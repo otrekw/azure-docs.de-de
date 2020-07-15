@@ -4,10 +4,10 @@ description: Erhalten Sie personalisierte Benachrichtigungen zu Service Health-E
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654068"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Senden von Azure Service Health-Warnungen mit PagerDuty mit Webhooks
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Benachrichtigungen 
 
     a. **Integrationstyp**: Microsoft Azure
 
-    b. **Name der Integration**: \<Name\>
+    b. **Name der Integration:** \<Name\>
 
     ![„Integration Settings“ in PagerDuty](./media/webhook-alerts/pagerduty-integration-settings.png)
 

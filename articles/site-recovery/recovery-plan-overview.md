@@ -3,12 +3,12 @@ title: Informationen zu Wiederherstellungsplänen in Azure Site Recovery
 description: Erfahren Sie mehr über Wiederherstellungspläne in Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d191781cacc37242dd1be31d6cb87ef196e5e7a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229098"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343913"
 ---
 # <a name="about-recovery-plans"></a>Informationen zu Wiederherstellungsplänen
 
@@ -17,7 +17,7 @@ Dieser Artikel enthält eine Übersicht über die Wiederherstellungspläne in [A
 Ein Wiederherstellungsplan fasst Computer zu Failoverzwecken in Wiederherstellungsgruppen zusammen. Mit einem Wiederherstellungsplan können Sie einen systematischen Wiederherstellungsprozess definieren, indem Sie kleine unabhängige Einheiten erstellen, für die Sie ein Failover ausführen können. Eine Einheit stellt normalerweise eine App in Ihrer Umgebung dar.
 
 - Ein Wiederherstellungsplan definiert, wie ein Failover für Computer ausgeführt wird, und gibt die Reihenfolge an, in der sie nach dem Failover gestartet werden.
-- Wiederherstellungspläne werden für Failover auf Azure verwendet, können aber nicht für Failbacks von Azure verwendet werden.
+- Wiederherstellungspläne können sowohl für das Failover als auch für das Failback von Azure verwendet werden.
 - Einem Wiederherstellungsplan können bis zu 100 geschützte Instanzen hinzugefügt werden.
 - Sie können einen Plan anpassen, indem Sie ihn eine Reihenfolge, Anweisungen und Aufgaben hinzufügen.
 - Nach dem Definieren eines Plans können Sie ein Failover für den Plan ausführen.
@@ -62,11 +62,11 @@ Mit dieser Anpassung geschieht Folgendes beim Ausführen eines Failovers für de
 
 Das Wiederherstellen von großen Anwendungen kann eine komplexe Aufgabe sein. Manuelle Schritte machen den Vorgang fehleranfällig, und die Person, die das Failover ausführt, ist sich möglicherweise der Komplexität der App nicht bewusst. Sie können mit einem Wiederherstellungsplan die Reihenfolge vorgeben und mithilfe von Azure Automation-Runbooks für Failover in Azure oder Skripts die in jedem Schritt erforderlichen Aktionen automatisieren. Für Aufgaben, die nicht automatisiert werden können, können Sie Pausen für manuelle Aktionen in die Wiederherstellungspläne einfügen. Sie können verschiedene Aufgabentypen konfigurieren:
 
-* **Aufgaben auf dem virtuellen Azure-Computer nach dem Failover**: Wenn Sie ein Failover zu Azure ausführen, müssen Sie normalerweise Aktionen ausführen, damit Sie nach dem Failover eine Verbindung mit dem virtuellen Computer herstellen können. Beispiel: 
+* **Aufgaben für die Azure-VM nach dem Failover**: Wenn Sie ein Failover zu Azure ausführen, müssen Sie normalerweise Aktionen ausführen, damit Sie nach dem Failover eine Verbindung mit der VM herstellen können. Beispiel: 
     * Erstellen einer öffentlichen IP-Adresse auf dem virtuellen Azure-Computer
     * Zuweisen einer Netzwerksicherheitsgruppe zum Netzwerkadapter des virtuellen Azure-Computers
     * Hinzufügen eines Lastenausgleichs zu einer Verfügbarkeitsgruppe.
-* **Aufgaben innerhalb des virtuellen Computers nach dem Failover**: Mit diesen Aufgaben wird in der Regel die auf dem Computer ausgeführte App neu konfiguriert, damit sie in der neuen Umgebung weiterhin ordnungsgemäß funktioniert. Beispiel:
+* **Aufgaben innerhalb der VM nach dem Failover**: Mit diesen Aufgaben wird in der Regel die auf dem Computer ausgeführte App neu konfiguriert, damit sie in der neuen Umgebung weiterhin ordnungsgemäß funktioniert. Beispiel:
     * Ändern der Datenbank-Verbindungszeichenfolge innerhalb des Computers
     * Ändern der Webserverkonfiguration oder -regeln.
 

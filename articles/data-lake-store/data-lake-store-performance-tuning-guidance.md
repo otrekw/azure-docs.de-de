@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 2521700e0f07691541ee6cbbf085a8be72f08129
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51716bdd6ab7f5b5102ccba3e6d57855dee5df33
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73904624"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855921"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Optimieren der Leistung von Azure Data Lake Storage Gen1
 
@@ -65,15 +65,11 @@ Manchmal können Datenpipelines Rohdaten mit vielen kleinen Dateien nur begrenzt
 
 Bei Hive- und ADLA-Workloads kann durch Partitionsbereinigung von Zeitreihendaten bewirkt werden, dass einige Abfragen nur eine Teilmenge der Daten lesen. Dies führt zu einer Leistungsverbesserung.
 
-Diese Pipelines, die Zeitreihendaten erfassen, versehen ihre Dateien oftmals mit einer strukturierten Benennung für Dateien und Ordner. Das nachstehende gängige Beispiel zeigt Daten, die nach Datum strukturiert sind:
-
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+Diese Pipelines, die Zeitreihendaten erfassen, versehen ihre Dateien oftmals mit einer strukturierten Benennung für Dateien und Ordner. Dieses gängige Beispiel zeigt Daten, die nach Datum strukturiert sind: *\DataSet\JJJJ\MM\TT\datafile_JJJJ_MM_TT.tsv*.
 
 Beachten Sie, dass Informationen zu Datum/Uhrzeit sowohl im Ordnernamen als auch im Dateinamen angegeben werden.
 
-Im Folgenden wird ein allgemeines Muster für Datums- und Uhrzeitangaben vorgestellt:
-
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+Für Datums- und Zeitangaben ist folgendes Muster üblich: *\DataSet\JJJJ\MM\TT\HH\mm\datafile_JJJJ_MM_TT_HH_mm.tsv*.
 
 Auch hier sollte die Wahl, die Sie bei der Ordner- und Dateiorganisation treffen, für größere Dateien und eine angemessene Anzahl von Dateien in den einzelnen Ordnern optimiert sein.
 

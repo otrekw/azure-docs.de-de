@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/06/2020
 ms.author: diberry
-ms.openlocfilehash: 0545be9ebe067a62b398c6c89b79a8484f0b48d4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 560a7d9106b9eaef0f82766615253715deb9238a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683114"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057873"
 ---
 # <a name="iterative-app-design-for-luis"></a>Iteratives App-Design für LUIS
 
@@ -107,11 +107,22 @@ Sie können im Staging- und/oder im Produktionsslot veröffentlichen. Jeder Slot
 
 Trainierte Versionen stehen nicht automatisch am [Endpunkt](luis-glossary.md#endpoint) Ihrer LUIS-App zur Verfügung. Sie müssen eine Version [veröffentlichen](luis-how-to-publish-app.md) oder erneut veröffentlichen, damit sie am Endpunkt der LUIS-App verfügbar ist. Sie können für das **Staging** und die **Produktion** veröffentlichen. Damit stehen Ihnen am Endpunkt zwei Versionen zur Verfügung. Wenn Sie weitere Versionen der App an einem Endpunkt benötigen, sollten Sie die Version exportieren und in eine neue App importieren. Die neue App hat eine andere App-ID.
 
-### <a name="import-and-export-a-version"></a>Importieren und Exportieren von Versionen
+### <a name="import-a-version"></a>Importieren einer Version
 
-Versionen können auf App-Ebene importiert werden. Diese Version wird die aktive Version und verwendet die Versions-ID in der `versionId`-Eigenschaft der App-Datei. Sie können auch auf Versionsebene in eine vorhandene App importieren. Die neue Version wird die aktive Version.
+Eine Version kann wie folgt **importiert** werden:
+* Als neue App mit einer neuen App-ID
+* Als neue Version einer vorhandenen App
 
-Versionen können auf der App- oder der Versionsebene exportiert werden. Der einzige Unterschied besteht darin, dass die auf App-Ebene exportierte Version die derzeit aktive Version ist, während Sie beim Exportieren auf Versionsebene auf der Seite **[Einstellungen](luis-how-to-manage-versions.md)** die zu exportierende Version auswählen können.
+Diese Version wird die aktive Version und verwendet die Versions-ID in der `versionId`-Eigenschaft der App-Datei.
+
+### <a name="export-a-version"></a>Exportieren einer Version
+
+Eine Version kann über das LUIS-Portal entweder auf App-Ebene oder auf Versionsebene **exportiert** werden:
+
+* App-Ebene: Wählen Sie auf der Seite **Meine Apps** die App und dann **Exportieren** aus.
+* Versionsebene: Wählen Sie auf der Seite **Meine Apps** den App-Link und anschließend **Verwalten** und **Versionen** aus.
+
+Der einzige Unterschied besteht darin, dass die auf App-Ebene exportierte Version die derzeit aktive Version ist, während Sie beim Exportieren auf Versionsebene auf der Seite **[Einstellungen](luis-how-to-manage-versions.md)** die zu exportierende Version auswählen können.
 
 Die exportierte Datei enthält folgende Informationen **nicht**:
 
@@ -132,7 +143,7 @@ Zunächst [klonen](luis-how-to-manage-versions.md#clone-a-version) Sie für jede
 
 Jeder Ersteller ändert seine eigene Version der App. Wenn jeder Ersteller mit seinem Modell zufrieden ist, werden die neuen Versionen in JSON-Dateien exportiert.
 
-Exportierte Apps, JSON- oder LU-Dateien können auf hin Änderungen verglichen werden. Kombinieren Sie die Dateien, um eine einzelne Datei der neuen Version zu erstellen. Ändern Sie die `versionId`-Eigenschaft, um die neue zusammengeführte Version zu kennzeichnen. Importieren Sie diese Version in die ursprüngliche App.
+Exportierte Apps sowie Dateien mit den Endungen `.json` oder `.lu` können auf Änderungen verglichen werden. Kombinieren Sie die Dateien, um eine einzelne Datei der neuen Version zu erstellen. Ändern Sie die `versionId`-Eigenschaft, um die neue zusammengeführte Version zu kennzeichnen. Importieren Sie diese Version in die ursprüngliche App.
 
 Diese Methode erlaubt eine aktive Version, eine Stagingversion und eine veröffentlichte Version. Sie können die Ergebnisse der aktiven Version mit einer veröffentlichten Version (Staging oder Produktion) im [Bereich für interaktives Testen](luis-interactive-test.md) vergleichen.
 
@@ -150,4 +161,4 @@ Wenn Sie einen Iterationszyklus abgeschlossen haben, können Sie den Vorgang wie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über die Konzepte der [Zusammenarbeit](luis-concept-keys.md).
+Informieren Sie sich über die Konzepte der [Zusammenarbeit](luis-how-to-azure-subscription.md).

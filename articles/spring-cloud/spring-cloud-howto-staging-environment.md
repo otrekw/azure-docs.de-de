@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.openlocfilehash: 2e29f6a75b303518ac34ecf9b570bd7638cf0c3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471029"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Einrichten einer Stagingumgebung in Azure Spring Cloud
@@ -67,10 +67,10 @@ Navigieren Sie im Azure-Portal zu Ihrer Dienstinstanz, und wählen Sie **Bereits
 
 >[!TIP]
 > * Vergewissern Sie sich, dass der Testendpunkt mit einem Schrägstrich (/) endet, um sicherzustellen, dass die CSS-Datei richtig geladen wird.  
-> * Wenn Sie zum Anzeigen der Seite Anmeldeinformationen im Browser eingeben müssen, verwenden Sie [URL-Decodierung](https://www.urldecoder.org/), um den Testendpunkt zu decodieren. Nach der URL-Decodierung wird eine URL im Format „https://\<Benutzername>:\<Kennwort>@\<Clustername>.test.azureapps.io/gateway/green“ zurückgegeben.  Verwenden Sie dieses Format für den Zugriff auf Ihren Endpunkt.
+> * Wenn Sie zum Anzeigen der Seite Anmeldeinformationen im Browser eingeben müssen, verwenden Sie [URL-Decodierung](https://www.urldecoder.org/), um den Testendpunkt zu decodieren. Nach der URL-Decodierung wird eine URL im Format „https://\<username>:\<password>@\<cluster-name>.test.azureapps.io/gateway/green“ zurückgegeben.  Verwenden Sie dieses Format für den Zugriff auf Ihren Endpunkt.
 
 >[!NOTE]    
-> Die Konfigurationsservereinstellungen gelten sowohl für die Stagingumgebung als auch für die Produktion. Beispiel: Wenn Sie als Kontextpfad (`server.servlet.context-path`) für App Gateway auf dem Konfigurationsserver *somepath* festgelegt haben, ändert sich der Pfad zu Ihrer grünen Bereitstellung in „https://\<Benutzername>:\<Kennwort>@\<Clustername>.test.azureapps.io/gateway/green/somepath/...“.
+> Die Konfigurationsservereinstellungen gelten sowohl für die Stagingumgebung als auch für die Produktion. Beispiel: Wenn Sie als Kontextpfad (`server.servlet.context-path`) für App Gateway auf dem Konfigurationsserver *somepath* festgelegt haben, ändert sich der Pfad zu Ihrer grünen Bereitstellung in „https://\<username>:\<password>@\<cluster-name>.test.azureapps.io/gateway/green/somepath/...“.
  
  Wenn Sie jetzt die öffentliche App Gateway-Instanz aufrufen, wird die alte Seite ohne die Änderung angezeigt.
     

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21654a3b325e8b8f0a3e49ee64b7624c8540d0d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dc1198ab9c546ef1defa1891777c4c8081171e9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77461078"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957177"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Event Grid-Bindungen für Azure Functions
 
@@ -38,7 +38,7 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 
 | Sprache                                        | Hinzufügen nach...                                   | Bemerkungen 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | Installieren des [NuGet-Paket], Version 3.x | |
+| C#                                              | Installieren von Version 2.x des [NuGet-Paket] | |
 | C#-Skript, Java, JavaScript, Python, PowerShell | Registrieren des [Erweiterungspaket]          | Die [Erweiterung für Azure-Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) wird zur Verwendung mit Visual Studio Code empfohlen. |
 | C#-Skript (nur online im Azure-Portal)         | Hinzufügen einer Bindung                            | Informationen zum Aktualisieren vorhandener Bindungserweiterungen, ohne Ihre Funktions-App erneut veröffentlichen zu müssen, finden Sie unter [Aktualisieren Ihrer Erweiterungen]. |
 

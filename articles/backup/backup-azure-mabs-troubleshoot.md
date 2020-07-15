@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.openlocfilehash: 3d27b6d96dfd6c815cedc6194e6bb6e8a101dec2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83735914"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
@@ -62,7 +62,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
-| Übertragen von Agents auf geschützte Server mithilfe von Push | Fehler beim Agent-Vorgang. Bei der Kommunikation mit dem DPM-Agent-Koordinator-Dienst auf \<Servername> ist ein Fehler aufgetreten. | **Falls die im Produkt empfohlene Aktion nicht funktioniert, können Sie die folgenden Schritte ausführen**: <ul><li> Falls Sie einen Computer aus einer nicht vertrauenswürdigen Domäne anfügen, führen Sie [diese Schritte](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019) aus. <br> (ODER) </li><li> Falls Sie einen Computer aus einer vertrauenswürdigen Domäne anfügen, verwenden Sie die Problembehandlungsschritte aus [diesem Blog](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>(ODER)</li><li> Deaktivieren Sie die Antivirensoftware als Problembehandlungsschritt. Wird das Problem dadurch behoben, ändern Sie die Antivireneinstellungen, wie in [diesem Artikel](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019) beschrieben.</li></ul> |
+| Übertragen von Agents auf geschützte Server mithilfe von Push | Fehler beim Agent-Vorgang. Bei der Kommunikation mit dem DPM-Agent-Koordinator-Dienst auf \<ServerName> ist ein Fehler aufgetreten. | **Falls die im Produkt empfohlene Aktion nicht funktioniert, können Sie die folgenden Schritte ausführen**: <ul><li> Falls Sie einen Computer aus einer nicht vertrauenswürdigen Domäne anfügen, führen Sie [diese Schritte](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019) aus. <br> (ODER) </li><li> Falls Sie einen Computer aus einer vertrauenswürdigen Domäne anfügen, verwenden Sie die Problembehandlungsschritte aus [diesem Blog](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>(ODER)</li><li> Deaktivieren Sie die Antivirensoftware als Problembehandlungsschritt. Wird das Problem dadurch behoben, ändern Sie die Antivireneinstellungen, wie in [diesem Artikel](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019) beschrieben.</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Setup konnte Registrierungsmetadaten nicht aktualisieren.
 

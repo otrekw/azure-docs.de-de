@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82889703"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-End-Integrität und Diagnoseprotokolle für Application Gateway
@@ -113,11 +113,11 @@ Sie haben drei Möglichkeiten, um Ihre Protokolle zu speichern:
 
 Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressourcen aktiviert. Sie müssen die Zugriffs- und Leistungsprotokollierung aktivieren, um mit der Erfassung von Daten aus diesen Protokollen zu beginnen. Führen Sie zum Aktivieren der Protokollierung die folgenden Schritte aus:
 
-1. Notieren Sie sich die Ressourcen-ID Ihres Speicherkontos, unter dem die Protokolldaten gespeichert werden. Dieser Wert weist folgendes Format auf: /subscriptions/\<Abonnement-ID\>/resourceGroups/\<Ressourcengruppenname\>/providers/Microsoft.Storage/storageAccounts/\<Speicherkontoname\>. Sie können jedes Speicherkonto Ihres Abonnements verwenden. Sie können das Azure-Portal verwenden, um nach diesen Informationen zu suchen.
+1. Notieren Sie sich die Ressourcen-ID Ihres Speicherkontos, unter dem die Protokolldaten gespeichert werden. Dieser Wert hat das folgende Format: /subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Storage/storageAccounts/\<storage account name\>. Sie können jedes Speicherkonto Ihres Abonnements verwenden. Sie können das Azure-Portal verwenden, um nach diesen Informationen zu suchen.
 
     ![Portal: Ressourcen-ID für Speicherkonto](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Notieren Sie sich die Ressourcen-ID Ihres Anwendungsgateways, für das die Protokollierung aktiviert ist. Dieser Wert weist folgendes Format auf: /subscriptions/\<Abonnement-ID\>/resourceGroups/\<Ressourcengruppenname\>/providers/Microsoft.Network/applicationGateways/\<Anwendungsgatewayname\>. Sie können das Portal verwenden, um nach diesen Informationen zu suchen.
+2. Notieren Sie sich die Ressourcen-ID Ihres Anwendungsgateways, für das die Protokollierung aktiviert ist. Dieser Wert hat das folgende Format: /subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Network/applicationGateways/\<application gateway name\>. Sie können das Portal verwenden, um nach diesen Informationen zu suchen.
 
     ![Portal: Ressourcen-ID für das Anwendungsgateway](./media/application-gateway-diagnostics/diagnostics2.png)
 
@@ -216,7 +216,7 @@ Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzli
 |sentBytes| Größe des gesendeten Pakets in Byte|
 |timeTaken| Dauer (in **Sekunden**), bis eine Anforderung verarbeitet und die dazugehörige Antwort gesendet wurde. Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Hierbei ist der Hinweis wichtig, dass das Feld „Time-Taken“ normalerweise die Zeitdauer enthält, die von den Anforderungs- und Antwortpaketen für die Übermittlung über das Netzwerk benötigt wird. |
 |sslEnabled| Gibt an, ob für die Kommunikation mit den Back-End-Pools TLS verwendet wurde. Gültige Werte sind „on“ und „off“.|
-|sslCipher| Verschlüsselungssammlung, die für die TLS-Kommunikation verwendet wird (sofern TLS aktiviert ist)|
+|sslCipher| Verschlüsselungssammlung, die für die TLS-Kommunikation verwendet wird (sofern TLS aktiviert ist).|
 |sslProtocol| Das verwendete SSL-/TLS-Protokoll (sofern TLS aktiviert ist)|
 |serverRouted| Back-End-Server, an den das Anwendungsgateway die Anforderung weiterleitet|
 |serverStatus| HTTP-Statuscode des Back-End-Servers|

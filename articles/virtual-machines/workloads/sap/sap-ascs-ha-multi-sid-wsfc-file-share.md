@@ -17,10 +17,10 @@ ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1de9c07c99666ed4011214bd9b426eac8f494991
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82978177"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Hochverfügbarkeit von SAP ASCS/SCS-Instanzen mit Multi-SID-Konfiguration mithilfe von Windows Server-Failoverclustering und Dateifreigaben in Azure
@@ -76,7 +76,7 @@ Die Vorgehensweise für die Installation eines zusätzlichen **SAP-\<SID2>** -Sy
 
 ### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>Vorbereiten der Infrastruktur auf dem Domänencontroller
 
-Erstellen Sie die Domänengruppe **\<Domäne>\SAP_\<SID2>_GlobalAdmin**, und legen Sie für \<SID2> beispielsweise „PR2“ fest. Der Name der Domänengruppe lautet „\<Domäne>\SAP_PR2_GlobalAdmin“.
+Erstellen Sie die Domänengruppe **\<Domain>\SAP_\<SID2>_GlobalAdmin**, und legen Sie für \<SID2> beispielsweise „PR2“ fest. Der Name der Domänengruppe lautet „\<Domain>\SAP_PR2_GlobalAdmin“.
 
 ### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>Vorbereiten der Infrastruktur im ASCS/SCS-Cluster
 
@@ -90,15 +90,15 @@ Diese Schritte werden unter [Vorbereiten der Infrastruktur auf ein SAP-Multi-SID
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>Vorbereiten der Infrastruktur in einem SOFS-Cluster unter Verwendung des vorhandenen globalen SAP-Hosts
 
-Sie können den vorhandenen \<globalen SAP-Host> und Volume1 des ersten SAP-\<SID1>-Systems wiederverwenden.
+Sie können den vorhandenen \<SAPGlobalHost> und Volume1 des ersten SAP-\<SID1>-Systems wiederverwenden.
 
 ![Abbildung 3: Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Hosts][sap-ha-guide-figure-8014]
 
 _**Abbildung 3:** Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Hosts_
 
 > [!IMPORTANT]
->Für das zweite **SAP-\<SID2>** -System werden ebenfalls Volume1 und derselbe Netzwerkname des **\<globalen SAP-Hosts>** verwendet.
->Da Sie **SAPMNT** bereits als der Freigabenamen für verschiedene SAP-Systeme festgelegt haben, müssen Sie zum Wiederverwenden des Netzwerknamens des **\<globalen SAP-Hosts>** dasselbe **Volume1** verwenden.
+>Für das zweite **SAP-\<SID2>** -System werden ebenfalls Volume1 und derselbe Netzwerkname für **\<SAPGlobalHost>** verwendet.
+>Da Sie **SAPMNT** bereits als Freigabename für verschiedene SAP-Systeme festgelegt haben, müssen Sie zum Wiederverwenden des Netzwerknamens **\<SAPGlobalHost>** dasselbe **Volume1** verwenden.
 >
 >Der Dateipfad für den globalen \<SID2>-Host lautet „C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\\.“.
 >
@@ -156,7 +156,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>Vorbereiten der Infrastruktur im SOFS-Cluster unter Verwendung eines anderen globalen SAP-Hosts
 
-Sie können den zweiten SOFS-Cluster konfigurieren (z.B. für die zweite SOFS-Clusterrolle mit **\<SAPGlobalHost2>** und einem anderen **Volume2** für die zweite **\<SID2>** ).
+Sie können den zweiten SOFS-Cluster konfigurieren (z. B. für die zweite SOFS-Clusterrolle mit **\<SAPGlobalHost2>** und einem anderen **Volume2** für die zweite **\<SID2>** ).
 
 ![Abbildung 4: Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Hosts 2][sap-ha-guide-figure-8015]
 

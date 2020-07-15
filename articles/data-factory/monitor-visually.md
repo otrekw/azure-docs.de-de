@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/15/2020
-ms.openlocfilehash: 44a95430ece9c55bb088ae5b968c33691f25b4c5
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.date: 06/30/2020
+ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860786"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801523"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Visuelles Überwachen von Azure Data Factory
 
@@ -191,6 +191,10 @@ Das folgende Video enthält eine siebenminütige Einführung und Demonstration d
     ![Feld für Zielkriterien](media/monitor-visually/add-criteria-1.png)
 
     ![Liste der Kriterien](media/monitor-visually/add-criteria-2.png)
+
+    ![Liste der Kriterien](media/monitor-visually/add-criteria-3.png)
+
+    Sie können Warnungen für verschiedene Metriken erstellen, z. B. für Anzahl und Größe der ADF-Entität, Aktivitäts-, Pipeline- und Triggerausführung, CPU-Auslastung, Speicher, Knotenanzahl und Warteschlange von Integration Runtime (IR) sowie für SSIS-Paketausführungen und Vorgänge zum Starten und Beenden von SSIS IR.
 
 1.  Konfigurieren Sie die Warnungslogik. Sie können eine Warnung für die ausgewählte Metrik für alle Pipelines und entsprechenden Aktivitäten erstellen. Sie können außerdem einen bestimmten Aktivitätstyp, Aktivitätsnamen, Pipelinenamen oder Fehlertyp auswählen.
 

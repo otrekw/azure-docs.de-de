@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 709b442fde94d88adc7fe4cce16ee1a50bf06c6b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ff64f3f4891aac27a32b642b50ebd51dea9bd34a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674333"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025776"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Was ist Azure Synapse Link für Azure Cosmos DB (Vorschau)?
 
@@ -25,7 +25,7 @@ Mithilfe des [Azure Cosmos DB-Analysespeichers](analytical-store-introduction.md
 
 Die folgende Abbildung zeigt die Integration von Azure Synapse Link in Azure Cosmos DB und Azure Synapse Analytics: 
 
-![Architekturdiagramm für die Integration von Azure Synapse Analytics in Azure Cosmos DB](./media/synapse-link/synapse-analytics-cosmos-db-architecture.png)
+:::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Architekturdiagramm für die Integration von Azure Synapse Analytics in Azure Cosmos DB" border="false":::
 
 ## <a name="benefits"></a><a id="synapse-link-benefits"></a> Vorteile
 
@@ -121,6 +121,8 @@ Synapse Link wird nicht empfohlen, wenn Sie herkömmliche Data Warehouse-Anforde
 * In der öffentlichen Vorschauversion wird Azure Synapse Link nur für die Azure Cosmos DB SQL (Core)-API unterstützt. Die Unterstützung für die Azure Cosmos DB-API für MongoDB und die Cassandra-API befindet sich derzeit in der geschlossenen Vorschau. Wenn Sie Zugriff auf die geschlossene Vorschau anfordern möchten, wenden Sie sich per E-Mail an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com).
 
 * Derzeit kann der Analysespeicher nur für neue Container (in neuen und vorhandenen Azure Cosmos DB-Konten) aktiviert werden.
+
+* In der Vorschau werden die Sicherung und Wiederherstellung von Containern für Datenbankkonten mit Synapse Link-Aktivierung nicht unterstützt. Wenn Sie die Funktionen zur Sicherung und Wiederherstellung für Produktionsworkloads benötigen, empfiehlt es sich, Synapse Link in diesen Datenbankkonten zu aktivieren. 
 
 * Der Zugriff auf den Azure Cosmos DB-Analysespeicher mit Synapse SQL (serverlos) befindet sich derzeit in der geschlossenen Vorschau. Wenn Sie Zugriff anfordern möchten, wenden Sie sich per E-Mail an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com).
 

@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: a37fd886e1bc70226b2e54750540dfcb79ee5973
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f08d6b8a2ce2381c3bc85891a292ac05561cf34
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75768876"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832558"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategien zum Testen Ihres Codes in Azure Functions
 
-In diesem Artikel wird veranschaulicht, wie Sie automatisierte Tests für Azure Functions erstellen. 
+In diesem Artikel wird veranschaulicht, wie Sie automatisierte Tests für Azure Functions erstellen.
 
 Das Testen des gesamten Codes wird empfohlen, jedoch erhalten Sie möglicherweise die besten Ergebnisse, wenn Sie die Logik einer Funktion umschließen und Tests außerhalb der Funktion erstellen. Das Abstrahieren von Logik begrenzt immer die Codezeilen einer Funktion und gestattet es der Funktion, allein für das Aufrufen anderer Klassen oder Module verantwortlich zu sein. In diesem Artikel wird jedoch das Erstellen automatisierter Tests für HTTP- und per Zeitgeber ausgelöste Funktionen veranschaulicht.
 
@@ -26,6 +26,7 @@ Der Inhalt, der folgt, ist in zwei verschiedene Abschnitte unterteilt, die sich 
 Das Beispielrepository ist auf [GitHub](https://github.com/Azure-Samples/azure-functions-tests) verfügbar.
 
 ## <a name="c-in-visual-studio"></a>C# in Visual Studio
+
 Im folgenden Beispiel wird beschrieben, wie Sie eine C#-Funktions-App in Visual Studio erstellen und mit [xUnit](https://xunit.github.io) ausführen und testen.
 
 ![Testen von Azure Functions mit C# in Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
@@ -34,22 +35,22 @@ Im folgenden Beispiel wird beschrieben, wie Sie eine C#-Funktions-App in Visual 
 
 Um Ihre Umgebung einzurichten, erstellen Sie eine Funktion und Test-App. Die folgenden Schritte helfen Ihnen beim Erstellen der zur Unterstützung der Tests erforderlichen Apps und Funktionen:
 
-1. [Erstellen Sie eine neue Functions-App](./functions-create-first-azure-function.md), und nennen Sie sie *Functions*
-2. [Erstellen Sie eine HTTP-Funktion aus der Vorlage](./functions-create-first-azure-function.md), und nennen Sie sie *HttpTrigger*.
-3. [Erstellen Sie eine Zeitgeberfunktion aus der Vorlage](./functions-create-scheduled-function.md), und nennen Sie sie *TimerTrigger*.
-4. [Eine xUnit-Test-App erstellen Sie](https://xunit.github.io/docs/getting-started-dotnet-core) in Visual Studio, indem Sie auf **Datei > Neu > Projekt > Visual C# > .NET Core > xUnit-Testprojekt** klicken und sie *Functions.Test* nennen. 
+1. [Erstellen Sie eine neue Functions-App](./functions-create-first-azure-function.md), und nennen Sie sie **Functions**
+2. [Erstellen Sie eine HTTP-Funktion aus der Vorlage](./functions-create-first-azure-function.md), und nennen Sie sie **MyHttpTrigger**.
+3. [Erstellen Sie eine Zeitgeberfunktion aus der Vorlage](./functions-create-scheduled-function.md), und nennen Sie sie **MyTimerTrigger**.
+4. [Erstellen Sie eine xUnit-Test-App](https://xunit.github.io/docs/getting-started-dotnet-core) in der Projektmappe, und nennen Sie sie **Functions.Tests**.
 5. Fügen Sie mithilfe von NuGet einen Verweis von der Test-App auf [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) hinzu.
-6. [Verweisen Sie aus der *Functions.Test*-App auf die *Functions*-App](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017).
+6. [Verweisen Sie aus der *Functions.Tests*-App auf die *Functions*-App](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017).
 
 ### <a name="create-test-classes"></a>Erstellen von Testklassen
 
-Nachdem die Anwendungen nun erstellt sind, können Sie die Klassen erstellen, die zum Ausführen der automatisierten Tests verwendet werden.
+Nachdem nun die Projekte erstellt wurden, können Sie die Klassen erstellen, die zum Ausführen der automatisierten Tests verwendet werden.
 
 Jede Funktion nimmt eine Instanz von [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger), um die Nachrichtenprotokollierung zu behandeln. Einige Tests protokollieren entweder keine Nachrichten oder ignorieren, wie die Protokollierung implementiert wird. Andere Tests müssen protokollierte Nachrichten auswerten, um zu bestimmen, ob ein Test bestanden wird.
 
-Die `ListLogger`-Klasse implementiert die `ILogger`-Schnittstelle und enthält eine interne Liste von Nachrichten für die Evaluierung während eines Tests.
+Sie erstellen eine neue Klasse mit dem Namen `ListLogger`, die eine interne Liste von während Tests ausgewerteten Nachrichten enthält. Zum Implementieren der erforderlichen `ILogger`-Schnittstelle benötigt die Klasse einen Gültigkeitsbereich. Die folgende Klasse simuliert einen Bereich für die Testfälle, die an die `ListLogger`-Klasse übergeben werden sollen.
 
-**Klicken Sie mit der rechten Maustaste** auf die *Functions.Test*-Anwendung, und wählen Sie **Hinzufügen > Klasse** aus, nennen Sie dies **NullScope.cs**, und geben Sie den folgenden Code ein:
+Erstellen Sie im Projekt *Functions.Tests* eine neue Klasse mit dem Namen **NullScope.cs**, und geben Sie folgenden Code ein:
 
 ```csharp
 using System;
@@ -67,7 +68,7 @@ namespace Functions.Tests
 }
 ```
 
-**Klicken Sie anschließend mit der rechten Maustaste** auf die *Functions.Test*-Anwendung, und wählen Sie **Hinzufügen > Klasse** aus, nennen Sie dies **ListLogger.cs**, und geben Sie den folgenden Code ein:
+Erstellen Sie dann im Projekt *Functions.Tests* eine neue Klasse mit dem Namen **ListLogger.cs**, und geben Sie folgenden Code ein:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -90,7 +91,7 @@ namespace Functions.Tests
             this.Logs = new List<string>();
         }
 
-        public void Log<TState>(LogLevel logLevel, 
+        public void Log<TState>(LogLevel logLevel,
                                 EventId eventId,
                                 TState state,
                                 Exception exception,
@@ -113,7 +114,7 @@ Die `ListLogger`-Klasse implementiert die folgenden Elemente, wie durch die `ILo
 
 Die `Logs`-Auflistung ist eine Instanz von `List<string>` und wird im Konstruktor initialisiert.
 
-Als Nächstes **klicken Sie mit der rechten Maustaste** auf die *Functions.Test*-Anwendung, und wählen Sie **Hinzufügen > Klasse** aus, nennen Sie dies **LoggerTypes.cs**, und geben Sie den folgenden Code ein:
+Erstellen Sie dann im Projekt *Functions.Tests* eine neue Datei mit dem Namen **LoggerTypes.cs**, und geben Sie folgenden Code ein:
 
 ```csharp
 namespace Functions.Tests
@@ -125,9 +126,10 @@ namespace Functions.Tests
     }
 }
 ```
-Diese Enumeration gibt den Typ der Protokollierung an, die von den Tests verwendet wird. 
 
-Als Nächstes **klicken Sie mit der rechten Maustaste** auf die *Functions.Test*-Anwendung, und wählen Sie **Hinzufügen > Klasse** aus, nennen Sie dies **TestFactory.cs**, und geben Sie den folgenden Code ein:
+Diese Enumeration gibt den Typ der Protokollierung an, die von den Tests verwendet wird.
+
+Erstellen Sie dann im Projekt *Functions.Tests* eine neue Klasse mit dem Namen **TestFactory.cs**, und geben Sie folgenden Code ein:
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -161,12 +163,11 @@ namespace Functions.Tests
             return qs;
         }
 
-        public static DefaultHttpRequest CreateHttpRequest(string queryStringKey, string queryStringValue)
+        public static HttpRequest CreateHttpRequest(string queryStringKey, string queryStringValue)
         {
-            var request = new DefaultHttpRequest(new DefaultHttpContext())
-            {
-                Query = new QueryCollection(CreateDictionary(queryStringKey, queryStringValue))
-            };
+            var context = new DefaultHttpContext();
+            var request = context.Request;
+            request.Query = new QueryCollection(CreateDictionary(queryStringKey, queryStringValue));
             return request;
         }
 
@@ -188,6 +189,7 @@ namespace Functions.Tests
     }
 }
 ```
+
 Die `TestFactory`-Klasse implementiert die folgenden Elemente:
 
 - **Data:** Diese Eigenschaft gibt eine [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable)-Auflistung von Beispieldaten zurück. Die Schlüssel-/Wertpaare stellen Werte dar, die in eine Abfragezeichenfolge übergeben werden.
@@ -198,7 +200,7 @@ Die `TestFactory`-Klasse implementiert die folgenden Elemente:
 
 - **CreateLogger**: Basierend auf dem Typ des Protokollierungstools gibt diese Methode eine Protokollierungsklasse zurück, die zum Testen verwendet wird. `ListLogger` verfolgt die protokollierten Nachrichten, die zur Evaluierung in Tests zur Verfügung stehen.
 
-Als Nächstes **klicken Sie mit der rechten Maustaste** auf die *Functions.Test*-Anwendung, und wählen Sie **Hinzufügen > Klasse** aus, nennen Sie dies **FunctionsTests.cs**, und geben Sie den folgenden Code ein:
+Erstellen Sie schließlich im Projekt *Functions.Tests* eine neue Klasse mit dem Namen **FunctionsTests.cs**, und geben Sie folgenden Code ein:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -215,8 +217,8 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string()
         {
             var request = TestFactory.CreateHttpRequest("name", "Bill");
-            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
-            Assert.Equal("Hello, Bill", response.Value);
+            var response = (OkObjectResult)await MyHttpTrigger.Run(request, logger);
+            Assert.Equal("Hello, Bill. This HTTP triggered function executed successfully.", response.Value);
         }
 
         [Theory]
@@ -224,21 +226,22 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string_from_member_data(string queryStringKey, string queryStringValue)
         {
             var request = TestFactory.CreateHttpRequest(queryStringKey, queryStringValue);
-            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
-            Assert.Equal($"Hello, {queryStringValue}", response.Value);
+            var response = (OkObjectResult)await MyHttpTrigger.Run(request, logger);
+            Assert.Equal($"Hello, {queryStringValue}. This HTTP triggered function executed successfully.", response.Value);
         }
 
         [Fact]
         public void Timer_should_log_message()
         {
             var logger = (ListLogger)TestFactory.CreateLogger(LoggerTypes.List);
-            TimerTrigger.Run(null, logger);
+            MyTimerTrigger.Run(null, logger);
             var msg = logger.Logs[0];
             Assert.Contains("C# Timer trigger function executed at", msg);
         }
     }
 }
 ```
+
 Die in dieser Klasse implementierten Elemente sind:
 
 - **Http_trigger_should_return_known_string**: Dieser Test erstellt eine Anforderung mit den Abfragezeichenfolgenwerten von `name=Bill` an eine HTTP-Funktion und überprüft, ob die erwartete Antwort zurückgegeben wird.
@@ -272,11 +275,13 @@ Um Ihre Umgebung einzurichten, initialisieren Sie eine neue Node.js-App in einem
 ```bash
 npm init -y
 ```
+
 Als Nächstes installieren Sie Jest, indem Sie den folgenden Befehl ausführen:
 
 ```bash
 npm i jest
 ```
+
 Jetzt aktualisieren Sie _package.json_, um den vorhandenen Testbefehl durch den folgenden Befehl zu ersetzen:
 
 ```bash
@@ -286,6 +291,7 @@ Jetzt aktualisieren Sie _package.json_, um den vorhandenen Testbefehl durch den 
 ```
 
 ### <a name="create-test-modules"></a>Erstellen von Testmodulen
+
 Nachdem das Projekt initialisiert wurde, können Sie die Module erstellen, die zum Ausführen der automatisierten Tests verwendet werden. Beginnen Sie damit, einen neuen Ordner namens *testing* zu erstellen, der die Unterstützungsmodule aufnehmen soll.
 
 Fügen Sie im Ordner *testing* eine neue Datei hinzu, nennen Sie sie **defaultContext.js**, und fügen Sie den folgenden Code hinzu:
@@ -295,6 +301,7 @@ module.exports = {
     log: jest.fn()
 };
 ```
+
 Dieses Modul simuliert die *log*-Funktion, um den Standardausführungskontext darzustellen.
 
 Als Nächstes fügen Sie eine neue Datei hinzu, nennen Sie sie **defaultTimer.js**, und fügen Sie den folgenden Code hinzu:
@@ -307,7 +314,7 @@ module.exports = {
 
 Dieses Modul implementiert die `IsPastDue`-Eigenschaft so, dass sie als Fake-Zeitgeberinstanz fungiert. Zeitgeberkonfigurationen wie NCRONTAB-Ausdrücke sind hier nicht erforderlich, da die Testumgebung die Funktion einfach direkt aufruft, um das Ergebnis zu testen.
 
-Verwenden Sie als Nächstes die VS Code-Functions-Erweiterungen, um [eine neue JavaScript-HTTP-Funktion zu erstellen](/azure/javascript/tutorial-vscode-serverless-node-01), und nennen Sie sie *HttpTrigger*. Nachdem die Funktion erstellt wurde, fügen Sie im selben Ordner eine neue Datei namens **index.test.js** hinzu, und fügen Sie den folgenden Code hinzu:
+Verwenden Sie als Nächstes die VS Code-Functions-Erweiterungen, um [eine neue JavaScript-HTTP-Funktion zu erstellen](/azure/developer/javascript/tutorial-vscode-serverless-node-01), und nennen Sie sie *HttpTrigger*. Nachdem die Funktion erstellt wurde, fügen Sie im selben Ordner eine neue Datei namens **index.test.js** hinzu, und fügen Sie den folgenden Code hinzu:
 
 ```javascript
 const httpFunction = require('./index');
@@ -325,6 +332,7 @@ test('Http trigger should return known text', async () => {
     expect(context.res.body).toEqual('Hello Bill');
 });
 ```
+
 Die HTTP-Funktion aus der Vorlage gibt die Zeichenfolge „Hello“ zurück, verkettet mit dem in der Abfragezeichenfolge angegebenen Namen. Dieser Test erstellt eine Instanz einer Anforderung und übergibt sie an eine HTTP-Funktion. Der Test überprüft, ob die *log*-Methode einmal aufgerufen wird, und ob der zurückgegebene Text „Hello Bill“ lautet.
 
 Verwenden Sie als Nächstes die VS Code-Functions-Erweiterungen, um eine neue JavaScript-Zeitgeberfunktion zu erstellen, und nennen Sie sie *TimerTrigger*. Nachdem die Funktion erstellt wurde, fügen Sie im selben Ordner eine neue Datei namens **index.test.js** hinzu, und fügen Sie den folgenden Code hinzu:
@@ -339,9 +347,11 @@ test('Timer trigger should log message', () => {
     expect(context.log.mock.calls.length).toBe(1);
 });
 ```
+
 Die Zeitgeberfunktion aus der Vorlage protokolliert eine Meldung am Ende des Hauptteils der Funktion. Dieser Test stellt sicher, dass die *log*-Funktion einmal aufgerufen wird.
 
 ### <a name="run-tests"></a>Ausführen von Tests
+
 Um die Tests auszuführen, drücken Sie **STRG+~** , um das Befehlsfenster zu öffnen, und führen Sie `npm test` aus:
 
 ```bash
@@ -373,6 +383,7 @@ Legen Sie als Nächstes einen Breakpoint in Ihrem Test fest, und drücken Sie **
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wo Sie jetzt wissen, wie Sie automatisierte Tests für Ihre Funktionen schreiben, fahren Sie mit diesen Ressourcen fort:
+
 - [Manuelles Ausführen einer Funktion ohne HTTP-Trigger](./functions-manually-run-non-http.md)
 - [Azure Functions – Fehlerbehandlung](./functions-bindings-error-pages.md)
 - [Lokales Debuggen von Azure-Funktionen mit Event Grid-Trigger](./functions-debug-event-grid-trigger-local.md)
