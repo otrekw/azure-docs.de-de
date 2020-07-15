@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verwenden von R zum Erstellen eines Machine Learning-Modells'
+title: 'Tutorial: Verwenden von R zum Erstellen eines Machine Learning-Modells (Vorschau)'
 titleSuffix: Azure Machine Learning
 description: In diesem Tutorial verwenden Sie das Azure Machine Learning R SDK, um ein logistisches Regressionsmodell zu erstellen, mit dem die Wahrscheinlichkeit einer tödlichen Verletzung bei einem Autounfall vorhergesagt wird.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: d95c0fc9baf1e53e6643660726c72660719908ba
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: cb4afac3b1e73a95fa3fe703fc5bd9d3f621f23a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483379"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134678"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Tutorial: Verwenden von R zum Erstellen eines Machine Learning-Modells (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: acaf16e7469b3ea4e5e391db91e37dc76be3b261
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d99a5feb344f970b10925b596726520b9dba9464
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78298529"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134015"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Verschieben von virtuellen Azure IaaS-Computern zwischen Azure Government und öffentlichen Regionen 
 
@@ -32,7 +32,7 @@ In diesem Tutorial erfahren Sie, wie Sie virtuelle Azure-Computer mithilfe von A
 > * Verwerfen der Ressourcen in der Quellregion
 
 > [!IMPORTANT]
-> Dieses Tutorial veranschaulicht, wie Sie virtuelle Azure-Computer zwischen Azure Government und öffentlichen Regionen oder zwischen Regionspaaren verschieben, die von der normalen Notfallwiederherstellungslösung für virtuelle Azure-Computer nicht unterstützt werden. Falls Ihre Paare aus Quell- und Zielregionen [unterstützt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support) werden, finden Sie in diesem [Dokument](azure-to-azure-tutorial-migrate.md) Informationen zum Verschieben. Falls Sie die Verfügbarkeit durch das Migrieren von virtuellen Computern in einer Verfügbarkeitsgruppe zu an Zonen angehefteten virtuellen Computern verbessern möchten, finden Sie in [diesem Tutorial](move-azure-VMs-AVset-Azone.md) weitere Informationen.
+> Dieses Tutorial veranschaulicht, wie Sie virtuelle Azure-Computer zwischen Azure Government und öffentlichen Regionen oder zwischen Regionspaaren verschieben, die von der normalen Notfallwiederherstellungslösung für virtuelle Azure-Computer nicht unterstützt werden. Falls Ihre Paare aus Quell- und Zielregionen [unterstützt](./azure-to-azure-support-matrix.md#region-support) werden, finden Sie in diesem [Dokument](azure-to-azure-tutorial-migrate.md) Informationen zum Verschieben. Falls Sie die Verfügbarkeit durch das Migrieren von virtuellen Computern in einer Verfügbarkeitsgruppe zu an Zonen angehefteten virtuellen Computern verbessern möchten, finden Sie in [diesem Tutorial](move-azure-VMs-AVset-Azone.md) weitere Informationen.
 
 > [!IMPORTANT]
 > Das Verwenden dieser Methode zum Konfigurieren von DR zwischen nicht unterstützten Regionspaaren ist nicht ratsam, da die Paare unter Berücksichtigung der Datenlatenz definiert werden, was für ein DR-Szenario kritisch ist.
@@ -96,13 +96,13 @@ Der Mobilitätsdienst muss auf jedem Computer installiert sein, den Sie replizie
 
      Informationen zum Erstellen der für Sie relevanten am häufigsten verwendeten Netzwerkressourcen auf Grundlage der Quell-VM-Konfiguration finden Sie in den folgenden Dokumenten.
 
-    - [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Load Balancer](https://docs.microsoft.com/azure/load-balancer)
+    - [Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md)
+    - [Load Balancer](../load-balancer/index.yml)
     - [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
     
-    Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/?pivot=products&panel=network) zum Netzwerk.
+    Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation](../index.yml?pivot=products&panel=network) zum Netzwerk.
 
-4. [Erstellen Sie manuell ein nicht für die Produktion vorgesehenes Netzwerk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) in der Zielregion, wenn Sie die Konfiguration vor der endgültigen Verschiebung in die Zielregion testen möchten. Diese Vorgehensweise wird empfohlen, da es so nur zu minimalen Beeinträchtigungen in der Produktionsumgebung kommt.
+4. [Erstellen Sie manuell ein nicht für die Produktion vorgesehenes Netzwerk](../virtual-network/quick-create-portal.md) in der Zielregion, wenn Sie die Konfiguration vor der endgültigen Verschiebung in die Zielregion testen möchten. Diese Vorgehensweise wird empfohlen, da es so nur zu minimalen Beeinträchtigungen in der Produktionsumgebung kommt.
 
 ## <a name="copy-data-to-the-target-region"></a>Kopieren von Daten in die Zielregion
 Im Folgenden wird erläutert, wie Sie Daten mithilfe von Azure Site Recovery in die Zielregion kopieren.
@@ -136,7 +136,7 @@ Richten Sie den Konfigurationsserver ein, registrieren Sie ihn im Tresor, und er
 Führen Sie zunächst folgende Schritte aus: 
 
 #### <a name="verify-time-accuracy"></a>Überprüfen der Zeitgenauigkeit
-Stellen Sie auf dem Konfigurationsservercomputer sicher, dass die Systemuhr mit einem [Zeitserver](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) synchronisiert ist. Die Zeiten sollten übereinstimmen. Falls der Unterschied 15 Minuten beträgt, ist das Setup unter Umständen nicht erfolgreich.
+Stellen Sie auf dem Konfigurationsservercomputer sicher, dass die Systemuhr mit einem [Zeitserver](/windows-server/networking/windows-time-service/windows-time-service-top) synchronisiert ist. Die Zeiten sollten übereinstimmen. Falls der Unterschied 15 Minuten beträgt, ist das Setup unter Umständen nicht erfolgreich.
 
 #### <a name="verify-connectivity"></a>Überprüfen der Konnektivität
 Stellen Sie sicher, dass der Computer ausgehend von Ihrer Umgebung auf die folgenden URLs zugreifen kann: 

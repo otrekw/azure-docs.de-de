@@ -4,12 +4,12 @@ description: Hier erhalten Sie eine Übersicht über den Azure Site Recovery-Die
 ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
-ms.openlocfilehash: ee387682e935522b37a5b4f9f32e53712bfb9150
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2b8268a47a141bb7254571a762bb9603e1a31b04
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80067539"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135235"
 ---
 # <a name="about-site-recovery"></a>Informationen zu Azure Site Recovery
 
@@ -20,7 +20,7 @@ Organisationen benötigen eine BCDR-Strategie (Business Continuity and Disaster 
 Azure Recovery Services unterstützt Sie bei Ihrer BCDR-Strategie:
 
 - **Site Recovery-Dienst**: Site Recovery sorgt dafür, dass geschäftliche Apps und Workloads während Ausfällen weiter ausgeführt werden, und trägt so zur Aufrechterhaltung der Geschäftskontinuität bei. Site Recovery repliziert Workloads, die auf physischen und virtuellen Computern ausgeführt werden, von einem primären Standort an einen sekundären Standort. Im Falle eines Ausfalls am primären Standort können Sie ein Failover auf den sekundären Standort ausführen und von dort aus auf die Apps zugreifen. Wenn der primäre Standort dann wieder verfügbar ist, können Sie ein Failback ausführen.
-- **Backup-Dienst**: Mit dem [Azure Backup](/azure/backup/)-Dienst sind Ihre Daten geschützt und wiederherstellbar.
+- **Backup-Dienst**: Mit dem [Azure Backup](../backup/index.yml)-Dienst sind Ihre Daten geschützt und wiederherstellbar.
 
 Site Recovery kann die Replikation für folgende Bereiche verwalten:
 

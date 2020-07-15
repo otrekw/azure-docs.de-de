@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 09a00d2c6a889f396e5c18da29530c94a624568b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78303935"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134436"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Verschieben virtueller Azure-Computer in eine andere Region
 
@@ -37,7 +37,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Stellen Sie sicher, dass sich die Azure-VMs in der Azure-Region befinden, aus der Sie verschieben möchten.
-- Überprüfen Sie, ob die von Ihnen ausgewählte [Kombination aus Quell- und Zielregion unterstützt wird](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support), und treffen Sie eine fundierte Entscheidung bezüglich der Zielregion.
+- Überprüfen Sie, ob die von Ihnen ausgewählte [Kombination aus Quell- und Zielregion unterstützt wird](./azure-to-azure-support-matrix.md#region-support), und treffen Sie eine fundierte Entscheidung bezüglich der Zielregion.
 - Stellen Sie sicher, dass Sie die [Architektur und die Komponenten des Szenarios](azure-to-azure-architecture.md) verstehen.
 - Lesen Sie die [Einschränkungen und Anforderungen der Unterstützung](azure-to-azure-support-matrix.md).
 - Überprüfen Sie die Kontoberechtigungen. Wenn Sie ein kostenloses Azure-Konto erstellt haben, sind Sie der Administrator Ihres Abonnements. Wenn Sie nicht der Abonnementadministrator sind, wenden Sie sich an den Administrator, damit dieser Ihnen die erforderlichen Berechtigungen zuweist. Um die Replikation für einen virtuellen Computer zu aktivieren und Daten mithilfe von Azure Site Recovery zu kopieren, benötigen Sie Folgendes:
@@ -70,10 +70,10 @@ In diesem Lernprogramm lernen Sie Folgendes:
      > Azure Site Recovery erkennt und erstellt automatisch ein virtuelles Netzwerk, wenn Sie die Replikation für den virtuellen Quellcomputer aktivieren. Sie können auch vorab ein Netzwerk erstellen und es dem virtuellen Computer im Benutzerflow zum Aktivieren der Replikation zuweisen. Alle anderen Ressourcen müssen (wie weiter unten angegeben) manuell in der Zielregion erstellt werden.
 
     Informationen zum Erstellen der für Sie relevanten und am häufigsten verwendeten Netzwerkressourcen auf Grundlage der Konfiguration des virtuellen Quellcomputers finden Sie in der folgenden Dokumentation:
-    - [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Load Balancer](https://docs.microsoft.com/azure/load-balancer)
+    - [Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md)
+    - [Load Balancer](../load-balancer/index.yml)
     -  [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
-    - Informationen zu anderen Netzwerkkomponenten finden Sie in der [Netzwerkdokumentation](https://docs.microsoft.com/azure/?pivot=products&panel=network).
+    - Informationen zu anderen Netzwerkkomponenten finden Sie in der [Netzwerkdokumentation](../index.yml?pivot=products&panel=network).
 
 
 
@@ -146,4 +146,3 @@ In diesem Tutorial haben Sie einen virtuellen Azure-Computer in eine andere Azur
 
 > [!div class="nextstepaction"]
 > [Einrichten der Notfallwiederherstellung nach der Migration](azure-to-azure-quickstart.md)
-

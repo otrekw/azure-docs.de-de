@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 98b82047c1744fbd63ecd3665e804e9d8f6c5221
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28ea1e68441a57d67fef1e78153e00eb1bd09211
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565989"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143915"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Muss der Benutzer über eine Hub-and-Spoke-Anordnung mit SD-WAN/VPN-Geräten verfügen, um Azure Virtual WAN nutzen zu können?
 
@@ -25,7 +25,7 @@ Virtual WAN ist in zwei Varianten verfügbar: Basic und Standard. In Virtual WAN
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Wie werden Verfügbarkeitszonen und Resilienz in Virtual WAN gehandhabt?
 
-Virtual WAN ist eine Sammlung von Hubs und Diensten, die innerhalb des Hubs zur Verfügung gestellt werden. Der Benutzer kann gemäß seinen Anforderungen beliebig viele virtuelle WANs besitzen. In einem Virtual WAN-Hub gibt es mehrere Dienste wie VPN, ExpressRoute usw. Jeder dieser Dienste wird in einer Region der Verfügbarkeitszonen eingesetzt, wenn die Region Verfügbarkeitszonen unterstützt. Wenn eine Region nach der anfänglichen Bereitstellung im Hub zu einer Verfügbarkeitszone wird, kann der Benutzer die Gateways neu erstellen, wodurch eine Bereitstellung der Verfügbarkeitszone ausgelöst wird. Alle Gateways werden in einem Hub als „Aktiv/Aktiv“ zur Verfügung gestellt, was bedeutet, dass in einem Hub die Resilienz integriert ist. Benutzer können Verbindungen mit mehreren Hubs herstellen, wenn sie eine regionsübergreifende Resilienz wünschen. Obwohl das Konzept von Virtual WAN global ist, basiert die eigentliche virtuelle WAN-Ressource auf dem Resource Manager und wird regional bereitgestellt. Falls die virtuelle WAN-Region selbst ein Problem aufweisen sollte, werden alle Hubs in diesem virtuellen WAN weiterhin unverändert funktionieren, aber der Benutzer kann keine neuen Hubs erstellen, bis die virtuelle WAN-Region verfügbar ist.
+Virtual WAN ist eine Sammlung von Hubs und Diensten, die innerhalb des Hubs zur Verfügung gestellt werden. Der Benutzer kann gemäß seinen Anforderungen beliebig viele Virtual WAN-Instanzen besitzen. In einem Virtual WAN-Hub gibt es mehrere Dienste wie VPN, ExpressRoute usw. Jeder dieser Dienste (mit Ausnahme der Azure Firewall) wird in einer Region der Verfügbarkeitszonen eingesetzt, sofern die Region Verfügbarkeitszonen unterstützt. Wenn eine Region nach der anfänglichen Bereitstellung im Hub zu einer Verfügbarkeitszone wird, kann der Benutzer die Gateways neu erstellen, wodurch eine Bereitstellung der Verfügbarkeitszone ausgelöst wird. Alle Gateways werden in einem Hub als „Aktiv/Aktiv“ zur Verfügung gestellt, was bedeutet, dass in einem Hub die Resilienz integriert ist. Benutzer können Verbindungen mit mehreren Hubs herstellen, wenn sie eine regionsübergreifende Resilienz wünschen. Obwohl das Konzept von Virtual WAN global ist, basiert die eigentliche virtuelle WAN-Ressource auf dem Resource Manager und wird regional bereitgestellt. Falls die virtuelle WAN-Region selbst ein Problem aufweisen sollte, werden alle Hubs in diesem virtuellen WAN weiterhin unverändert funktionieren, aber der Benutzer kann keine neuen Hubs erstellen, bis die virtuelle WAN-Region verfügbar ist.
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Welcher Client wird für Azure Virtual WAN-Benutzer-VPN (Point-to-Site) unterstützt?
 

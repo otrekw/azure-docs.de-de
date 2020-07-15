@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ba5ecc29edbcd69324500e87add846e4395ce0a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 312723818c4cef82ad6c96b013d7ec81ede276cc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067564"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130913"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Vorbereiten von Azure für die lokale Notfallwiederherstellung in Azure
 
@@ -90,8 +90,8 @@ Die Erstellung des virtuellen Netzwerks dauert ein paar Sekunden. Nach der Erste
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- VMware-Notfallwiederherstellung: [Vorbereiten der lokalen VMware-Infrastruktur](tutorial-prepare-on-premises-vmware.md)
+- VMware-Notfallwiederherstellung: [Vorbereiten der lokalen VMware-Infrastruktur](./vmware-azure-tutorial-prepare-on-premises.md)
 - Hyper-V-Notfallwiederherstellung: [Vorbereiten lokaler Hyper-V-Server](hyper-v-prepare-on-premises-tutorial.md)
 - Notfallwiederherstellung physischer Server: [Einrichten des Konfigurationsservers und der Quellumgebung](physical-azure-disaster-recovery.md)
-- [Informationen zu](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) Azure-Netzwerken.
-- [Informationen zu verwalteten Datenträgern](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)
+- [Informationen zu](../virtual-network/virtual-networks-overview.md) Azure-Netzwerken.
+- [Informationen zu verwalteten Datenträgern](../virtual-machines/windows/managed-disks-overview.md)

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6f24a259d2d71aa6599f6dd417d5e9fc99734e99
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84691100"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135655"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Vorbereiten lokaler Hyper-V-Server für die Notfallwiederherstellung in Azure
 
@@ -56,12 +56,12 @@ Wenn Hyper-V-Hosts von VMM verwaltet werden, müssen Sie den lokalen VMM-Server 
 
 ### <a name="prepare-vmm-for-network-mapping"></a>Vorbereiten von VMM für die Netzwerkzuordnung
 
-Bei Verwendung von VMM gilt die [Netzwerkzuordnung](site-recovery-network-mapping.md) zwischen lokalen VMM-VM-Netzwerken und virtuellen Azure-Netzwerken. Die Zuordnung stellt sicher, dass Azure-VMs mit dem richtigen Netzwerk verbunden sind, wenn sie nach einem Failover erstellt werden.
+Bei Verwendung von VMM gilt die [Netzwerkzuordnung](./hyper-v-vmm-network-mapping.md) zwischen lokalen VMM-VM-Netzwerken und virtuellen Azure-Netzwerken. Die Zuordnung stellt sicher, dass Azure-VMs mit dem richtigen Netzwerk verbunden sind, wenn sie nach einem Failover erstellt werden.
 
 Bereiten Sie VMM wie folgt für die Netzwerkzuordnung vor:
 
-1. Bereiten Sie ein [logisches VMM-Netzwerk](https://docs.microsoft.com/system-center/vmm/network-logical) vor, das der Cloud zugeordnet ist, in der sich die Hyper-V-Hosts befinden.
-2. Stellen Sie sicher, dass Sie über ein [VM-Netzwerk](https://docs.microsoft.com/system-center/vmm/network-virtual) verfügen, das mit dem logischen Netzwerk verknüpft ist.
+1. Bereiten Sie ein [logisches VMM-Netzwerk](/system-center/vmm/network-logical) vor, das der Cloud zugeordnet ist, in der sich die Hyper-V-Hosts befinden.
+2. Stellen Sie sicher, dass Sie über ein [VM-Netzwerk](/system-center/vmm/network-virtual) verfügen, das mit dem logischen Netzwerk verknüpft ist.
 3. Verbinden Sie in VMM die virtuellen Computer mit dem VM-Netzwerk.
 
 ## <a name="verify-internet-access"></a>Überprüfen des Internetzugriffs
@@ -94,5 +94,5 @@ Nach dem Failover können Sie mit derselben IP-Adresse wie die lokale repliziert
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs](tutorial-hyper-v-to-azure.md)
-> [Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs in VMM-Clouds](tutorial-hyper-v-vmm-to-azure.md)
+> [Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs](./hyper-v-azure-tutorial.md)
+> [Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs in VMM-Clouds](./hyper-v-vmm-azure-tutorial.md)

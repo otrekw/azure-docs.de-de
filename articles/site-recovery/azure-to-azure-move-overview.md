@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3f715af835df6783ae5d59dd073a042a553fba4d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0c7efc94bcde18e7b6ff43726602fa87641f3e76
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75498047"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130630"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Verschieben von Azure-VMs in eine andere Azure-Region
 
@@ -51,11 +51,11 @@ In diesem Abschnitt werden die gängigsten Bereitstellungsarchitekturen für ein
 
      ![Bereitstellung von Einzelinstanz-VMs über verschiedene Ebenen](media/move-vm-overview/regular-deployment.png)
 
-* **Virtuelle Computer auf den einzelnen Ebenen mit Bereitstellung über Verfügbarkeitsgruppen:** Jeder virtuelle Computer auf einer Ebene wird in einer Verfügbarkeitsgruppe konfiguriert. [Verfügbarkeitsgruppen](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) sorgen dafür, dass die von Ihnen in Azure bereitgestellten virtuellen Computer auf mehrere isolierte Hardwareknoten in einem Cluster verteilt werden. Dadurch wird sichergestellt, dass sich Hardware- oder Softwarefehler in Azure nur auf einen Teil Ihrer virtuellen Computer auswirken und die Lösung insgesamt verfügbar und betriebsbereit bleibt.
+* **Virtuelle Computer auf den einzelnen Ebenen mit Bereitstellung über Verfügbarkeitsgruppen:** Jeder virtuelle Computer auf einer Ebene wird in einer Verfügbarkeitsgruppe konfiguriert. [Verfügbarkeitsgruppen](../virtual-machines/windows/tutorial-availability-sets.md) sorgen dafür, dass die von Ihnen in Azure bereitgestellten virtuellen Computer auf mehrere isolierte Hardwareknoten in einem Cluster verteilt werden. Dadurch wird sichergestellt, dass sich Hardware- oder Softwarefehler in Azure nur auf einen Teil Ihrer virtuellen Computer auswirken und die Lösung insgesamt verfügbar und betriebsbereit bleibt.
 
      ![VM-Bereitstellung über Verfügbarkeitsgruppen](media/move-vm-overview/avset.png)
 
-* **Virtuelle Computer auf den einzelnen Ebenen mit Bereitstellung über Verfügbarkeitszonen:** Jeder virtuelle Computer auf einer Ebene wird über [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) konfiguriert. Eine Verfügbarkeitszone in einer Azure-Region ist eine Kombination aus einer Fehlerdomäne und einer Updatedomäne. Wenn Sie z.B. drei oder mehr virtuelle Computer über drei Zonen verteilt in einer Azure-Region erstellen, werden Ihre virtuellen Computer effektiv auf drei Fehlerdomänen und drei Updatedomänen verteilt. Die Azure-Plattform erkennt diese Updatedomänen übergreifende Verteilung, um sicherzustellen, dass virtuelle Computer in unterschiedlichen Zonen nicht gleichzeitig aktualisiert werden.
+* **Virtuelle Computer auf den einzelnen Ebenen mit Bereitstellung über Verfügbarkeitszonen:** Jeder virtuelle Computer auf einer Ebene wird über [Verfügbarkeitszonen](../availability-zones/az-overview.md) konfiguriert. Eine Verfügbarkeitszone in einer Azure-Region ist eine Kombination aus einer Fehlerdomäne und einer Updatedomäne. Wenn Sie z.B. drei oder mehr virtuelle Computer über drei Zonen verteilt in einer Azure-Region erstellen, werden Ihre virtuellen Computer effektiv auf drei Fehlerdomänen und drei Updatedomänen verteilt. Die Azure-Plattform erkennt diese Updatedomänen übergreifende Verteilung, um sicherzustellen, dass virtuelle Computer in unterschiedlichen Zonen nicht gleichzeitig aktualisiert werden.
 
      ![Bereitstellung über Verfügbarkeitszonen](media/move-vm-overview/zone.png)
 

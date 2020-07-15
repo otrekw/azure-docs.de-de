@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 03826abf6da94859c510f4c127dfce035aa79370
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b46a2ea12a697afde8223cc3595365c1286512c7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75498160"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132460"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>Ausführen eines Failovers auf Azure für virtuelle Hyper-V-Computer
 
@@ -27,8 +27,8 @@ In diesem Tutorial erfahren Sie, wie Sie mit [Azure Site Recovery](site-recovery
 Dies ist das fünfte Tutorial in einer Reihe. Es wird davon ausgegangen, dass Sie bereits die Aufgaben in den vorherigen Tutorials durchgearbeitet haben.    
 
 1. [Vorbereiten von Azure](tutorial-prepare-azure.md)
-2. [Vorbereiten lokaler Hyper-V-Instanzen](tutorial-prepare-on-premises-hyper-v.md)
-3. Einrichten der Notfallwiederherstellung für [Hyper-V-VMs](tutorial-hyper-v-to-azure.md) oder [in System Center VMM-Clouds verwaltete Hyper-V-VMs](tutorial-hyper-v-vmm-to-azure.md)
+2. [Vorbereiten lokaler Hyper-V-Instanzen](./hyper-v-prepare-on-premises-tutorial.md)
+3. Einrichten der Notfallwiederherstellung für [Hyper-V-VMs](./hyper-v-azure-tutorial.md) oder [in System Center VMM-Clouds verwaltete Hyper-V-VMs](./hyper-v-vmm-azure-tutorial.md)
 4. [Durchführen eines Notfallwiederherstellungsverfahrens](tutorial-dr-drill-azure.md)
 
 [Erfahren Sie mehr](failover-failback-overview.md#types-of-failover) über verschiedene Failovertypen. Wenn Sie ein Failover für mehrere VMs in einem Wiederherstellungsplan ausführen möchten, lesen Sie [diesen Artikel](site-recovery-failover.md).

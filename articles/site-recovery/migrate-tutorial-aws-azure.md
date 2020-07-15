@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 929bc0695bda2e64f77f7e9286e06cee787822ba
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: 1070230d968a6239a5a4aab5ac412280393d17da
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80388966"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133166"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
@@ -133,7 +133,7 @@ Wählen Sie unter **Haben Sie die Bereitstellungsplanung abgeschlossen?** die Op
 Wählen Sie auf der Seite **Quelle vorbereiten** die Option **+ Konfigurationsserver**.
 
 1. Verwenden Sie eine EC2-Instanz, die unter Windows Server 2012 R2 ausgeführt wird, um einen Konfigurationsserver zu erstellen, und registrieren Sie ihn bei Ihrem Recovery-Tresor.
-2. Konfigurieren Sie den Proxy auf der VM mit der EC2-Instanz, die Sie als Konfigurationsserver verwenden, damit der Zugriff auf die [Dienst-URLs](site-recovery-support-matrix-to-azure.md) möglich ist.
+2. Konfigurieren Sie den Proxy auf der VM mit der EC2-Instanz, die Sie als Konfigurationsserver verwenden, damit der Zugriff auf die [Dienst-URLs](./vmware-physical-azure-support-matrix.md) möglich ist.
 3. Laden Sie das [Microsoft Azure Site Recovery Unified Setup](https://aka.ms/unifiedinstaller_wus) (Einheitliches Setup von Microsoft Azure Site Recovery) herunter. Sie können es auf den lokalen Computer herunterladen und anschließend auf die VM kopieren, die Sie als Konfigurationsserver verwenden.
 4. Wählen Sie die Schaltfläche **Herunterladen**, um den Schlüssel für die Tresorregistrierung herunterzuladen. Kopieren Sie die heruntergeladene Datei auf die VM, die Sie als Konfigurationsserver verwenden.
 5. Klicken Sie auf der VM mit der rechten Maustaste auf das heruntergeladene Installationsprogramm für das einheitliche Setup von Microsoft Azure Site Recovery, und wählen Sie dann **Als Administrator ausführen**.

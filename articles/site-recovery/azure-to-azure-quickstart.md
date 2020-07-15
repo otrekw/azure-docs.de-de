@@ -4,12 +4,12 @@ description: Richten Sie in wenigen Schritten die Notfallwiederherstellung für 
 ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
-ms.openlocfilehash: e26c2a1f24a88dc979f4ec68de65afc618740c00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371874"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135710"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Schnellstart: Einrichten der Notfallwiederherstellung in einer sekundären Azure-Region für einen virtuellen Azure-Computer
 
@@ -22,7 +22,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Notfallwiederherstellu
 Zum Durcharbeiten dieses Tutorials benötigen Sie ein Azure-Abonnement und eine VM.
 
 - Falls Sie nicht über ein Azure-Abonnement mit einem aktiven Abonnement verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Eine VM mit mindestens 1 GB RAM wird empfohlen. [Erfahren Sie mehr](/azure/virtual-machines/windows/quick-create-portal) über die Erstellung einer VM.
+- Eine VM mit mindestens 1 GB RAM wird empfohlen. [Erfahren Sie mehr](../virtual-machines/windows/quick-create-portal.md) über die Erstellung einer VM.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

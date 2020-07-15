@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 463bd290c304d9436316c9e08778f37ce8bd0b55
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78303918"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135430"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Verschieben von Azure-VMs in eine andere Azure-Region
 
@@ -35,7 +35,7 @@ Vielleicht möchten Sie Azure Infrastructure-as-a-Service-VMs (IaaS) von einer 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Stellen Sie sicher, dass in der Azure-Quellregion, *aus* der Sie VMs verschieben möchten, Azure-VMs vorhanden sind.
-- Überprüfen Sie, ob die von Ihnen ausgewählte [Kombination von Quell- und Zielregion unterstützt wird](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support), und wählen Sie die Zielregion sorgfältig aus.
+- Überprüfen Sie, ob die von Ihnen ausgewählte [Kombination von Quell- und Zielregion unterstützt wird](./azure-to-azure-support-matrix.md#region-support), und wählen Sie die Zielregion sorgfältig aus.
 - Stellen Sie sicher, dass Sie die [Architektur und die Komponenten des Szenarios](azure-to-azure-architecture.md) verstehen.
 - Lesen Sie die [Einschränkungen und Anforderungen der Unterstützung](azure-to-azure-support-matrix.md).
 - Überprüfen Sie die Kontoberechtigungen. Wenn Sie gerade ein kostenloses Azure-Konto erstellt haben, sind *Sie* der Administrator Ihres Abonnements. Falls Sie nicht der Administrator sind, bitten Sie den Administrator, Ihnen die erforderlichen Berechtigungen zuzuweisen:
@@ -66,13 +66,13 @@ Vielleicht möchten Sie Azure Infrastructure-as-a-Service-VMs (IaaS) von einer 
 
    Azure Site Recovery erkennt und erstellt automatisch ein virtuelles Netzwerk und Speicherkonto, wenn Sie die Replikation für den virtuellen Quellcomputer aktivieren. Sie können diese Ressourcen auch vorab erstellen und sie beim Aktivieren der Replikation der VM zuweisen. Alle anderen Ressourcen in der Zielregion müssen jedoch manuell erstellt werden. Informationen zum Erstellen der am häufigsten verwendeten Netzwerkressourcen auf Grundlage der Quell-VM-Konfiguration finden Sie in den folgenden Dokumenten:
 
-   - [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-   - [Load Balancer](https://docs.microsoft.com/azure/load-balancer)
+   - [Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md)
+   - [Load Balancer](../load-balancer/index.yml)
    - [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
     
-   Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation zum Azure-Netzwerk](https://docs.microsoft.com/azure/?pivot=products&panel=network). 
+   Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation zum Azure-Netzwerk](../index.yml?pivot=products&panel=network). 
 
-4. Wenn Sie die Konfiguration vor dem Verschieben testen möchten, [erstellen Sie manuell ein nicht für die Produktion vorgesehenes Netzwerk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) in der Zielregion. Das Testen der Einrichtung verursacht nur minimale Beeinträchtigungen in der Produktionsumgebung und wird empfohlen.
+4. Wenn Sie die Konfiguration vor dem Verschieben testen möchten, [erstellen Sie manuell ein nicht für die Produktion vorgesehenes Netzwerk](../virtual-network/quick-create-portal.md) in der Zielregion. Das Testen der Einrichtung verursacht nur minimale Beeinträchtigungen in der Produktionsumgebung und wird empfohlen.
     
 ## <a name="copy-data-to-the-target-region"></a>Kopieren von Daten in die Zielregion
 In den folgenden Schritten werden Daten mithilfe von Azure Site Recovery in die Zielregion kopiert.
@@ -149,4 +149,3 @@ In diesem Tutorial haben Sie erfahren, wie Sie Azure-VMs in eine andere Azure-Re
 
 > [!div class="nextstepaction"]
 > [Einrichten der Notfallwiederherstellung nach der Migration](azure-to-azure-quickstart.md)
-
