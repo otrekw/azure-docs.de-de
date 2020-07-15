@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Service Bus Messaging
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Service Bus Messaging. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 7170a6ad7a69e54e34dfd15be1b4165d4e3b59ac
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b487e8aa57bbad1e25fc244a9ab73dea06f5e321
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321278"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276504"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-service-bus-messaging"></a>Integrierte Azure Policy-Definitionen für Azure Service Bus Messaging
 
