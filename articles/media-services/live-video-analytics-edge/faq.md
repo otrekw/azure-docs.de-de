@@ -60,7 +60,7 @@ Kann ich das Edgemodul für Medien auf einem Windows 10-Gerät bereitstellen?
     * [Shaka Player](https://github.com/google/shaka-player)
     * [ExoPlayer](https://github.com/google/ExoPlayer)
     * [Natives HTTP Live Streaming (HLS) von Apple](https://developer.apple.com/streaming/)
-    * Edge, Chrome oder Safari mit integriertem HTML5-Videoplayer
+    * Microsoft Edge, Chrome oder Safari mit integriertem HTML5-Videoplayer
     * Kommerzielle Player, die die HLS- oder DASH-Wiedergabe unterstützen
 * Welche Einschränkungen gelten für das Streaming eines Medienobjekts aus einem Mediendiagramm?
     * Beim Streamen von Liveinhalten oder aufgezeichneten Medienobjekten aus einem Mediendiagramm wird dieselbe hochskalierbare Infrastruktur und derselbe Streamingendpunkt verwendet, die Media Services auch für das On-Demand- und Livestreaming von Medien- und Unterhaltungs-, OTT- und Übertragungskunden unterstützt. Sie können also ganz einfach und schnell Dienste wie Azure CDN, Verizon oder Akamai aktivieren, um Ihre Inhalte je nach Szenario für ein Publikum von wenigen einzelnen bis zu Millionen von Zuschauern bereitzustellen.
