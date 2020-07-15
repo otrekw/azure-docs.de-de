@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 5586704e098fc568c714e779c2eed44aa3d1df9c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 205d7991551ca48c3ea2e61baef53f5d06bdcbd2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382998"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200485"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Worum handelt es sich bei der Bing-Rechtschreibprüfungs-API?
 
@@ -23,8 +23,7 @@ Mit der Bing-Rechtschreibprüfungs-API können Sie Grammatik und Rechtschreibung
 
 ## <a name="features"></a>Features
 
-
-|  |  |
+| Funktion | BESCHREIBUNG |
 |---------|---------|
 |Mehrere Modi für die Rechtschreibprüfung     | Mit mehreren Modi für die Rechtschreibprüfung können Sie Korrekturen in Bezug auf die Grammatik bzw. Rechtschreibung erhalten. |
 |Erkennung von Jargon und Umgangssprache     | Es werden häufig verwendete Ausdrücke und umgangssprachliche Begriffe erkannt, die im Text verwendet werden.         |
@@ -43,6 +42,6 @@ Die Bing-Rechtschreibprüfungs-API kann problemlos in jeder Programmiersprache a
 
 Probieren Sie zunächst das [interaktive Demo](https://azure.microsoft.com/services/cognitive-services/spell-check/) der Such-API für die Bing-Rechtschreibprüfung aus, um zu erfahren, wie Sie viele verschiedene Texte schnell überprüfen können.
 
-Wenn Sie zum Aufrufen der API bereit sind, erstellen Sie ein [Cognitive Services-API-Konto](../../cognitive-services/cognitive-services-apis-create-account.md). Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses [Konto erstellen](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+Wenn Sie zum Aufrufen der API bereit sind, erstellen Sie ein [Cognitive Services-API-Konto](../../cognitive-services/cognitive-services-apis-create-account.md). Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses [Konto erstellen](https://azure.microsoft.com/free/cognitive-services/).
 
 Sie können auch die Seite [Was ist die Bing-Websuche-API?](../bing-web-search/search-the-web.md) besuchen, um die anderen verfügbaren APIs zu untersuchen.

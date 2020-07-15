@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c7efccf35ddb47bf349d9a21628e9445e37b7699
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c1b640fa5104ceb0f330c9aee9813ed8b3914d33
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211305"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166041"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Schnellstart: Erstellen und Abfragen eines Synapse-SQL-Pools mit dem Azure-Portal
 
@@ -128,7 +128,7 @@ Rufen Sie den vollqualifizierten Servernamen für Ihren Server im Azure-Portal a
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Herstellen einer Verbindung mit dem Server als Serveradministrator
 
-In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) zum Herstellen einer Verbindung mit Ihrem Server verwendet.
+In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) zum Herstellen einer Verbindung mit Ihrem Server verwendet.
 
 1. Öffnen Sie SQL Server Management Studio.
 
@@ -199,6 +199,10 @@ Führen Sie die folgenden Schritte aus, um nicht länger benötigte Ressourcen z
 4. Wählen Sie zum Entfernen des von Ihnen erstellten Servers die Option **sqlpoolservername.database.windows.net** (siehe Abbildung oben) und dann **Löschen** aus. Seien Sie bei diesem Löschvorgang vorsichtig, da beim Löschen des Servers auch alle Datenbanken gelöscht werden, die dem Server zugewiesen sind.
 
 5. Wählen Sie zum Entfernen der Ressourcengruppe die Option **myResourceGroup** und dann **Ressourcengruppe löschen**.
+
+Möchten Sie Ihre Cloudausgaben optimieren und Geld sparen?
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

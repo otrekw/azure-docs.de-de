@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Apache Spark-Pools (Vorschau) mithilfe von Synapse Studio'
+title: 'Schnellstart: Erstellen eines Apache Spark-Pools (Vorschau) mithilfe von Synapse Studio'
 description: Erstellen Sie anhand der Schritte in diesem Leitfaden einen neuen Apache Spark-Pool mithilfe von Synapse Studio.
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c945e56aa0b6f851f54cf7679276558190b4bc10
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 87fcbef5a3cedab3142fe9ad47c68752515fdd2e
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194956"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274338"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>Schnellstart: Erstellen eines Apache Spark-Pools (Vorschau) mithilfe von Synapse Studio
 
@@ -40,8 +40,8 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 
 1. Navigieren Sie zum Synapse-Arbeitsbereich, 0in dem der Apache Spark-Pool erstellt werden soll, indem Sie den Dienstnamen (oder direkt den Ressourcennamen) in die Suchleiste eingeben.
 ![Suchleiste im Azure-Portal mit der Eingabe „Synapse-Arbeitsbereiche“.](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
-1. Geben Sie in der Liste der Arbeitsbereiche den Namen (oder einen Teil des Namens) des zu öffnenden Arbeitsbereichs ein. In diesem Beispiel verwenden wir einen Arbeitsbereich namens **condesoanalytics**.
-![Auflistung von Synapse-Arbeitsbereichen, die so gefiltert wurden, dass diejenigen angezeigt werden, die den Namen „Contoso“ enthalten.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
+1. Geben Sie in der Liste der Arbeitsbereiche den Namen (oder einen Teil des Namens) des zu öffnenden Arbeitsbereichs ein. In diesem Beispiel verwenden wir einen Arbeitsbereich namens **contosoanalytics**.
+![Auflistung von Synapse-Arbeitsbereichen, die so gefiltert wurden, dass diejenigen, die den Namen „Contoso“ enthalten, angezeigt werden](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
 ## <a name="launch-synapse-studio"></a>Starten von Synapse Studio 
 

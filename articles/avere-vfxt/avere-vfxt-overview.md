@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7967b58819523173fd66d45eeabeaddc8605a21d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76153190"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229464"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Was ist Avere vFXT für Azure?
 
@@ -66,7 +66,7 @@ Der vFXT Avere-Cluster speichert Dateien zwischen, wenn diese angefordert werden
 
 Avere vFXT for Azure verwendet folgende Azure-Ressourcen:
 
-|Azure-Komponente|   |
+|Azure-Komponente| Resource |
 |----------|-----------|
 |Virtuelle Computer|Mindestens drei E32s_v3|
 |SSD Premium-Speicher|200 GB Speicherplatz für das Betriebssystem plus 1 bis 4 TB Cachespeicherplatz pro Knoten |

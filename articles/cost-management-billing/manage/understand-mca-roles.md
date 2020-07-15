@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 1003e26fa670a804328d5e34def7c9d78eced9c0
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 76aa21aea647e5096ba47fb691622ea5146d9901
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84702600"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207216"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Grundlegendes zu Verwaltungsrollen für Microsoft-Kundenvereinbarungen in Azure
 
@@ -141,12 +141,12 @@ In den folgenden Tabellen wird aufgezeigt, welche Rolle Sie zum Ausführen von A
 
 ### <a name="manage-invoice-section-permissions-and-properties"></a>Verwalten von Berechtigungen und Eigenschaften für einen Rechnungsabschnitt
 
-|Aufgaben|Rechnungsabschnitt (Besitzer)|Rechnungsabschnitt (Mitwirkender)|Rechnungsabschnitt (Leser)|Azure-Abonnementersteller|Besitzer des Abrechnungskontos|Mitwirkender am Abrechnungskonto|Benutzer mit Leseberechtigung für Abrechnungskonto | |
-|---|---|---|---|---|---|---|---|---|
-|Anzeigen aller Berechtigungen für den Rechnungsabschnitt|✔|✔|✔|✔|✔|✔|✔| |
-|Zuweisen von Berechtigungen zum Anzeigen und Verwalten des Rechnungsabschnitts für andere Benutzer|✔|✘|✘|✘|✘|✘|✘| |
-|Anzeigen der Eigenschaften des Rechnungsabschnitts|✔|✔|✔|✔|✔|✔|✔| |
-|Aktualisieren der Eigenschaften des Rechnungsabschnitts|✔|✔|✘|✘|✘|✘|✘|✘|
+|Aufgaben|Rechnungsabschnitt (Besitzer)|Rechnungsabschnitt (Mitwirkender)|Rechnungsabschnitt (Leser)|Azure-Abonnementersteller|Besitzer des Abrechnungskontos|Mitwirkender am Abrechnungskonto|Benutzer mit Leseberechtigung für Abrechnungskonto |
+|---|---|---|---|---|---|---|---|
+|Anzeigen aller Berechtigungen für den Rechnungsabschnitt|✔|✔|✔|✔|✔|✔|✔|
+|Zuweisen von Berechtigungen zum Anzeigen und Verwalten des Rechnungsabschnitts für andere Benutzer|✔|✘|✘|✘|✘|✘|✘|
+|Anzeigen der Eigenschaften des Rechnungsabschnitts|✔|✔|✔|✔|✔|✔|✔|
+|Aktualisieren der Eigenschaften des Rechnungsabschnitts|✔|✔|✘|✘|✘|✘|✘|
 
 ### <a name="manage-products-for-invoice-section"></a>Verwalten von Produkten für einen Rechnungsabschnitt
 

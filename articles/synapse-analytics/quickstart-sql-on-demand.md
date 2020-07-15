@@ -1,5 +1,5 @@
 ---
-title: Verwenden von SQL On-Demand (Vorschauversion)
+title: 'Schnellstart: Verwenden von SQL On-Demand'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit SQL On-Demand (Vorschauversion) ganz einfach verschiedene Dateitypen abfragen.
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: cbc13695610e8fe190793a7dc925a414f5da2e53
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: fe07192b0077518cdd73092f53342c298034cfa8
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207429"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274168"
 ---
 # <a name="quickstart-use-sql-on-demand"></a>Schnellstart: Verwenden von SQL On-Demand
 
