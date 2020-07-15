@@ -1,22 +1,22 @@
 ---
-title: Abfragen von Ordnern und mehreren CSV-Dateien mit SQL On-Demand (Vorschauversion)
+title: Abfragen von Ordnern und mehreren Dateien mit SQL On-Demand (Vorschauversion)
 description: SQL On-Demand (Vorschauversion) unterstützt das Lesen mehrerer Dateien/Ordner durch die Verwendung von Platzhalterzeichen, die den in Windows-Betriebssystemen verwendeten Platzhalterzeichen ähnlich sind.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cb136fa9a3dc63144d26820b7170250b3598ba77
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235425"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207630"
 ---
-# <a name="query-folders-and-multiple-csv-files"></a>Abfragen von Ordnern und mehreren CSV-Dateien  
+# <a name="query-folders-and-multiple-files"></a>Abfragen von Ordnern und mehreren Dateien  
 
 In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics schreiben können.
 

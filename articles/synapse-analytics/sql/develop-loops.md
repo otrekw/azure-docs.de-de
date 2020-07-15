@@ -6,18 +6,18 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: baff2806b1a8c3c99546365c2496238c24b2b243
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ec15f87bdbf381b71faa7cefd986dd5e55e17a19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427054"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964990"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql"></a>Verwenden von T-SQL-Schleifen in Synapse SQL
+# <a name="use-t-sql-loops-in-synapse-sql"></a>Verwenden von T-SQL-Schleifen in Synapse SQL
 In diesem Artikel erhalten Sie wichtige Tipps zur Verwendung von T-SQL-Schleifen, zum Ersetzen von Cursorn und zur Entwicklung verwandter Lösungen mit SQL-Pool in Synapse SQL.
 
 ## <a name="purpose-of-while-loops"></a>Zweck der WHILE-Schleifen

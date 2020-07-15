@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 10d6e562301e089700940ac5dfb212bcc4e09653
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ffe00c3df4abd924fca202d2bcdd0ec458dd3eb
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79088084"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355334"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Was ist der Team Data Science-Prozess (TDSP)?
 
@@ -26,12 +26,12 @@ Dieser Artikel bietet eine Übersicht über den TDSP und seine Hauptkomponenten.
 
 ## <a name="key-components-of-the-tdsp"></a>Hauptkomponenten des TDSP
 
-Der TDSP umfasst die folgenden Hauptkomponenten:
+TDSP weist die folgenden Hauptkomponenten auf:
 
 - Eine Definition des **Data Science-Lebenszyklus**
 - Eine **standardisierte Projektstruktur**
-- **Infrastruktur und Ressourcen** für Data Science-Projekte
-- **Tools und Hilfsprogramme** für die Projektausführung
+- **Infrastruktur und Ressourcen**, die für Data Science-Projekte empfohlen werden
+- **Tools und Hilfsprogramme**, die für die Projektausführung empfohlen werden
 
 
 ## <a name="data-science-lifecycle"></a>Data Science-Lebenszyklus
@@ -48,7 +48,6 @@ Der Lebenszyklus beschreibt die wichtigsten Phasen, die Projekte typischerweise,
 * **Datenerfassung und -auswertung**
 * **Modellierung**
 * **Bereitstellung**
-* **Kundenakzeptanz**
 
 Hier ist der **Team Data Science-Prozesslebenszyklus** grafisch dargestellt. 
 
@@ -58,7 +57,9 @@ Die Ziele, Aufgaben und Dokumentationsartefakte für die einzelnen Phasen des Le
 
 - Lösungsarchitekt
 - Projektmanager
+- Datentechniker
 - Data Scientist
+- Anwendungsentwickler
 - Projektleiter 
 
 Im folgenden Diagramm ist eine Rasteransicht der Aufgaben (blau) und Artefakte (grün) dargestellt, die den einzelnen Phasen des Lebenszyklus (auf der horizontalen Achse) für diese Rollen (auf der vertikalen Achse) zugeordnet sind. 
@@ -87,7 +88,7 @@ Der TDSP umfasst Empfehlungen zum Verwalten der freigegebenen Analyse- und Speic
 
 - Clouddateisysteme zum Speichern von Datasets 
 - databases
-- Big Data-Cluster (Hadoop oder Spark) 
+- Big Data-Cluster (SQL oder Spark) 
 - Machine Learning-Dienst 
 
 Die Analyse- und Speicherinfrastruktur, in der unverarbeitete und verarbeitete Datasets gespeichert werden, kann sich in der Cloud oder in der lokalen Umgebung befinden. Diese Infrastruktur ermöglicht reproduzierbare Analysen. Sie verhindert außerdem die Duplizierung, die zu Inkonsistenzen und unnötigen Infrastrukturkosten führen kann. Tools werden bereitgestellt, um freigegebene Ressourcen bereitzustellen und nachzuverfolgen sowie jedem Teammitglied zu ermöglichen, eine sichere Verbindung mit diesen Ressourcen herzustellen. Es empfiehlt sich außerdem, dass Projektmitglieder eine einheitliche Computeumgebung erstellen. Verschiedene Teammitglieder können dann Experimente replizieren und überprüfen.
@@ -104,4 +105,4 @@ Die Einführung von Prozessen stellt in den meisten Organisationen eine große H
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Team Data Science Process: Roles and tasks](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) (Team Data Science-Prozess: Rollen und Aufgaben): Beschreibung der wichtigsten Mitarbeiterrollen und der zugeordneten Aufgaben für ein Data Science-Team, das eine Standardisierung entsprechend diesem Prozess durchführt. 
+[Team Data Science-Prozess: Rollen und Aufgaben](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md): Beschreibung der wichtigsten Mitarbeiterrollen und der zugeordneten Aufgaben für ein Data Science-Team, das eine Standardisierung entsprechend diesem Prozess durchführt. 

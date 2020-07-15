@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 192fd0fe73a34ca4d6ffc49badeac7ca8a080793
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555033"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185584"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Übersicht über Änderungsnachverfolgung und Bestand
 
@@ -49,11 +49,11 @@ Folgende Probleme treten derzeit mit Änderungsnachverfolgung und Bestand auf:
 
 - Hotfix-Updates werden für Computer mit Windows Server 2016 Core RS3 nicht erfasst.
 
-- Für Linux-Daemons wird möglicherweise ein geänderter Zustand angezeigt, obwohl keine Änderung aufgetreten ist. Dieses Problem wird durch die Art der Erfassung von `SvcRunLevels`-Daten im Azure Monitor-Protokoll [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) verursacht.
+- Für Linux-Daemons wird möglicherweise ein geänderter Zustand angezeigt, obwohl keine Änderung aufgetreten ist. Dieses Problem wird durch die Art der Erfassung von `SvcRunLevels`-Daten im Azure Monitor-Protokoll [ConfigurationChange](/azure/azure-monitor/reference/tables/configurationchange) verursacht.
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Änderungsnachverfolgung und Bestand werden unter allen Betriebssystemen unterstützt, die die Anforderungen des Log Analytics-Agent erfüllen. Die offiziellen Betriebssystemversionen sind Windows Server 2008 SP1 oder höher und Windows 7 SP1 oder höher. Das Feature wird auch von einigen Linux-Betriebssystemen unterstützt. Informationen zu Betriebssystemen, die Log Analytics unterstützen, finden Sie in der [Übersicht über den Log Analytics-Agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
+Änderungsnachverfolgung und Bestand werden unter allen Betriebssystemen unterstützt, die die Anforderungen des Log Analytics-Agent erfüllen. Die offiziellen Betriebssystemversionen sind Windows Server 2008 SP1 oder höher und Windows 7 SP1 oder höher. Das Feature wird auch von einigen Linux-Betriebssystemen unterstützt. Informationen zu Betriebssystemen, die Log Analytics unterstützen, finden Sie in der [Übersicht über den Log Analytics-Agent](../azure-monitor/platform/log-analytics-agent.md).
 
 Informationen zu den Clientanforderungen für TLS 1.2 finden Sie unter [Erzwingen von TLS 1.2 für Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -91,7 +91,7 @@ Sie können jede Änderung hinzufügen, ändern oder entfernen. Wie aus dem Beis
 
 ## <a name="fim-support-in-azure-security-center"></a>FIM-Unterstützung in Azure Security Center
 
-Änderungsnachverfolgung und Bestand nutzt die [Überwachung der Dateiintegrität (File Integrity Monitoring, FIM) von Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring). FIM überwacht nur Dateien und Registrierungen. Die vollständige Lösung Änderungsnachverfolgung und Bestand überwacht darüber hinaus Folgendes:
+Änderungsnachverfolgung und Bestand nutzt die [Überwachung der Dateiintegrität (File Integrity Monitoring, FIM) von Azure Security Center](../security-center/security-center-file-integrity-monitoring.md). FIM überwacht nur Dateien und Registrierungen. Die vollständige Lösung Änderungsnachverfolgung und Bestand überwacht darüber hinaus Folgendes:
 
 - Softwareänderungen
 - Microsoft-Dienste
@@ -106,7 +106,7 @@ Zum Nachverfolgen von Änderungen unter Windows und Linux verwendet Änderungsna
 
 ## <a name="tracking-of-file-content-changes"></a>Nachverfolgen von Änderungen am Dateiinhalt
 
-„Änderungsnachverfolgung und Bestand“ ermöglicht Ihnen, den Inhalt einer Windows- oder Linux-Datei anzuzeigen. Für jede Dateiänderung speichert Änderungsnachverfolgung und Bestand den Inhalt der Datei in einem [Azure Storage-Konto](../storage/common/storage-create-storage-account.md). Wenn Sie eine Datei nachverfolgen, können Sie ihren Inhalt vor oder nach einer Änderung anzeigen. Der Inhalt der Datei kann entweder inline oder nebeneinander angezeigt werden. 
+„Änderungsnachverfolgung und Bestand“ ermöglicht Ihnen, den Inhalt einer Windows- oder Linux-Datei anzuzeigen. Für jede Dateiänderung speichert Änderungsnachverfolgung und Bestand den Inhalt der Datei in einem [Azure Storage-Konto](../storage/common/storage-account-create.md). Wenn Sie eine Datei nachverfolgen, können Sie ihren Inhalt vor oder nach einer Änderung anzeigen. Der Inhalt der Datei kann entweder inline oder nebeneinander angezeigt werden. 
 
 ![Anzeigen von Änderungen in einer Datei](./media/change-tracking/view-file-changes.png)
 
@@ -171,7 +171,7 @@ Die folgende Tabelle zeigt die Grenzwerte der nachverfolgten Elemente pro Comput
 |Dienste|250|
 |Daemons|250|
 
-Die durchschnittliche Nutzung von Log Analytics-Daten für einen Computer mit Änderungsnachverfolgung und Bestand beträgt je nach Umgebung ungefähr 40 MB pro Monat. Mithilfe der Funktion „Nutzung und geschätzte Kosten“ im Log Analytics-Arbeitsbereich können Sie die von „Änderungsnachverfolgung und Bestand“ erfassten Daten in einem Nutzungsdiagramm anzeigen. Verwenden Sie diese Datenansicht, um die Datennutzung und die damit verbundenen Kosten zu analysieren. Weitere Informationen finden Sie unter [Verstehen Ihrer Nutzung und Schätzen von Kosten](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
+Die durchschnittliche Nutzung von Log Analytics-Daten für einen Computer mit Änderungsnachverfolgung und Bestand beträgt je nach Umgebung ungefähr 40 MB pro Monat. Mithilfe der Funktion „Nutzung und geschätzte Kosten“ im Log Analytics-Arbeitsbereich können Sie die von „Änderungsnachverfolgung und Bestand“ erfassten Daten in einem Nutzungsdiagramm anzeigen. Verwenden Sie diese Datenansicht, um die Datennutzung und die damit verbundenen Kosten zu analysieren. Weitere Informationen finden Sie unter [Verstehen Ihrer Nutzung und Schätzen von Kosten](../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Daten zu Microsoft-Diensten
 

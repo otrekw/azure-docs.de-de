@@ -3,22 +3,22 @@ title: Anmelden bei Azure Notebooks (Vorschau)
 description: Konfigurieren Sie Ihr Benutzerkonto für Azure Notebooks mithilfe eines Microsoft-Kontos oder eines Geschäfts-, Schul- oder Unikontos.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 929a21785b5b48c81c2d2016874feed61021d3c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75646295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832184"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Ihr Benutzerkonto für Azure Notebooks (Vorschau)
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Sie können Azure Notebooks mit oder ohne Anmeldung mit einem Benutzerkonto verwenden:
 
 - Ohne Anmeldung können Sie Notebooks erstellen und ausführen, Notebooks oder Datendateien bleiben aber nicht als Teil von Projekten erhalten. Benutzer, die einen Link zu einem Azure Notebook erhalten, können beispielsweise das Notebook nutzen, ohne sich anmelden zu müssen.
 - Wenn Sie angemeldet sind, bewahrt Azure Notebooks alle Ihre Projekte unter Ihrem Konto auf. Angemeldete Benutzer verfügen darüber hinaus über eine Benutzer-ID, die es ihnen erlaubt, ihre Projekte und Notebooks mit anderen Personen zu teilen.
 - Wenn das für Azure Notebooks verwendete Konto außerdem einem Azure-Abonnement zugeordnet ist, können Sie zusätzliche Vorteile genießen, z. B. das Ausführen von Notebooks auf leistungsstärkeren Servern, das Erstellen privater Notebooks und das Erteilen von Berechtigungen für Notebooks für einzelne Benutzer.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Für das Anmelden bei Azure Notebooks ist entweder ein Microsoft-Konto oder ein Geschäfts-, Schul- oder Unikonto erforderlich. Sie werden zur Eingabe Ihres Kontos aufgefordert, wenn Sie den Befehl **Anmelden** in der rechten oberen Ecke der Notebookseite auswählen:
 
@@ -53,7 +53,7 @@ Um den Zugriff zu ermöglichen, muss ein Elternteil die folgenden Schritte ausf�
 
 ## <a name="work-or-school-accounts"></a>Geschäfts-, Schul- oder Unikonten
 
-Ein Geschäfts-, Schul- oder Unikonto wird vom Administrator einer Organisation erstellt, um einem Mitglied der Organisation den Zugriff auf Microsoft-Clouddienste wie Office 365 oder die Anmeldung bei Windows auf einem Computer zu ermöglichen, der Mitglied einer Domäne ist. Für ein Geschäfts-, Schul- oder Unikonto wird normalerweise die E-Mail-Adresse einer Organisation verwendet, wie z. B. any-user@contoso.com.
+Ein Geschäfts-, Schul- oder Unikonto wird vom Administrator einer Organisation erstellt, um einem Mitglied der Organisation den Zugriff auf Microsoft-Clouddienste wie Microsoft 365 oder die Anmeldung bei Windows auf einem in die Domäne eingebundenen Computer zu ermöglichen. Für ein Geschäfts-, Schul- oder Unikonto wird normalerweise die E-Mail-Adresse einer Organisation verwendet, wie z. B. any-user@contoso.com.
 
 Für die Anmeldung bei Azure Notebooks mit einem Geschäfts-, Schul- oder Unikonto ist möglicherweise die Zustimmung des Administrators erforderlich, da Azure Notebooks Informationen wie die E-Mail-Adresse des Kontos und die Browserinformationen des Benutzers sammelt (aber nicht offenlegt). (Browserdaten werden zur Optimierung von Funktionen auf der Grundlage von Benutzerpräferenzen verwendet.)
 

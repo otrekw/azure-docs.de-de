@@ -7,23 +7,23 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9384b974463c963cc130e7ca0d4a9ee815a92e53
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 596296069686e843d0be1899cce8929417b70bcc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647724"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964582"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 
 Als vollständig verwalteter cloudnativer Datenbankdienst vereinfacht Azure Cosmos DB die Abrechnung, da nur der bereitgestellte Durchsatz und die Speichernutzung berechnet werden. Im Vergleich zu lokalen oder über IaaS gehostete Alternativen gibt es keine zusätzlichen Lizenzgebühren und keine Kosten für Hardware, Hilfsprogramme oder Gebäude. Wenn Sie dazu noch die Funktionalität zum Einbeziehen mehrerer Regionen berücksichtigen, sorgt der Datenbankdienst gegenüber vorhandenen lokalen oder über IaaS gehosteten Lösungen für eine deutliche Reduzierung der Kosten.
 
-Azure Cosmos DB wird auf Stundenbasis und auf Grundlage des bereitgestellten Durchsatzes und des genutzten Speichers berechnet. Die Einheit für die Berechnung des bereitgestellten Durchsatzes ist 100 RUs/Sek., die – öffentliche Standardpreise vorausgesetzt – mit 0,008 US-Dollar pro Stunde abgerechnet wird (siehe [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/)). Der genutzte Speicher wird mit 0,25 US-Dollar pro 1 GB Speicher/Monat in Rechnung gestellt (siehe [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/)). 
+Azure Cosmos DB wird auf Stundenbasis und auf Grundlage des bereitgestellten Durchsatzes und des genutzten Speichers berechnet. Die Abrechnungseinheit für bereitgestellten Durchsatz ist 100 RUs/Sek. pro Stunde. Aktuelle Preisinformationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Die Speichernutzung wird pro 1 GB/Monat berechnet. Aktuelle Preisinformationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-Dieser Artikel enthält einige Beispiele, damit die einzelnen Positionen auf der monatlichen Rechnung besser verständlich sind. Die in den Beispielen genannten Zahlen können von Ihren Zahlen abweichen, wenn Sie für Ihre Azure Cosmos-Container eine andere Menge als bereitgestellten Umsatz ausgewählt haben, die Container sich über mehrere Regionen erstrecken oder ein anderer Ausführungszeitraum abgerechnet wird (z. B. mehr als ein Monat).
+Dieser Artikel enthält einige Beispiele, damit die einzelnen Positionen auf der monatlichen Rechnung besser verständlich sind. Die in den Beispielen genannten Zahlen können von Ihren Zahlen abweichen, wenn Sie für Ihre Azure Cosmos-Container eine andere Menge als bereitgestellten Umsatz ausgewählt haben, die Container sich über mehrere Regionen erstrecken oder ein anderer Ausführungszeitraum abgerechnet wird (z. B. mehr als ein Monat). Die Berechnung der Rechnung basiert in den Beispielen dieses Artikels jeweils auf den Preisinformationen, die auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/) angegeben sind.
 
 > [!NOTE]
-> Die Abrechnung erfolgt für einen beliebigen Teil einer Stunde, nicht die Dauer von 60 Minuten.
+> Die Abrechnung erfolgt für einen beliebigen Teil einer Stunde, nicht die Dauer von 60 Minuten. Alle in diesem Dokument gezeigten Beispiele basieren auf dem Preis für ein Azure Cosmos-Konto, das in einer Region in den USA bereitgestellt wird, bei der es sich nicht um eine Government-Region handelt. Die Preise und die Berechnung variieren je nach verwendeter Region. Aktuelle Preisinformationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 ## <a name="billing-examples"></a>Abrechnungsbeispiele
 
@@ -73,7 +73,7 @@ Wenn Sie um 9.30 Uhr den bereitgestellten Durchsatz für einen oder mehrere Cont
 
 * Wenn in einem Monat mit 720 Stunden (24 Stunden x 30 Tage) Ihr bereitgestellter Durchsatz 500 Stunden lang 1.200 RUs/Sek. und während der restlichen 220 Stunden 22.200 RUs/Sek. betrug, wird auf Ihrer Monatsrechnung Folgendes ausgewiesen: (500 x 0,096 US-Dollar/Stunde) + (220 x 1,776 US-Dollar/Stunde) = 438,72 US-Dollar pro Monat.
 
-![Abrechnungsbeispiel für dedizierten Durchsatz](./media/understand-your-bill/bill-example1.png)
+:::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="Abrechnungsbeispiel für dedizierten Durchsatz":::
 
 ### <a name="billing-example-containers-with-shared-throughput-mode"></a>Abrechnungsbeispiel: Mehrere Container mit gemeinsam genutztem Durchsatz
 
@@ -87,7 +87,7 @@ Wenn Sie um 9.30 Uhr den bereitgestellten Durchsatz für einen oder mehrere Cont
 
 * Wenn in einem Monat mit 720 Stunden Ihr bereitgestellter Durchsatz 300 Stunden lang 120.000 RUs/Sek. und während der restlichen 420 Stunden 155.000 RUs/Sek. betrug, weist Ihre Monatsrechnung Folgendes aus: (300 x 9,60 US-Dollar/Stunde) + (420 x 12,40 US-Dollar/Stunde) = 2.880 + 5.208 = 8.088 US-Dollar pro Monat. 
 
-![Abrechnungsbeispiel für gemeinsam genutzten Durchsatz](./media/understand-your-bill/bill-example2.png)
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Abrechnungsbeispiel für gemeinsam genutzten Durchsatz":::
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Abrechnungsbeispiele mit Georeplikation und Multimasterkonfiguration  
 
@@ -177,7 +177,7 @@ Betrachten Sie das folgende Beispiel für ein Azure Cosmos-Konto mit mehreren Re
 
 Visuell werden die Änderungen im insgesamt bereitgestellten Durchsatz während der 720 Stunden im Monat in der folgenden Abbildung dargestellt: 
 
-![Beispiel für die Praxis](./media/understand-your-bill/bill-example3.png)
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Praxisbeispiel":::
 
 Die monatliche Gesamtrechnung wird (30 Tage und 720 Stunden im Monat vorausgesetzt) wie folgt berechnet:
 
@@ -234,19 +234,18 @@ In diesem Beispiel werden [Multimasterpreise](https://azure.microsoft.com/pricin
 
 Betrachten wir ein weiteres Beispiel, bei dem Sie vor dem Monatsende proaktiv Ihren Rechnungsbetrag schätzen möchten. Sie können Ihre Rechnung wie folgt schätzen:
 
-|**Speicherkosten** | |
-|----|----|
-|Durchschnittliche Datensatzgröße (KB) |1 |
-|Anzahl der Datensätze  |100.000.000  |
-|Gesamtspeicher (GB)  |100 |
-|Monatliche Kosten pro GB  |0,25 US-Dollar  |
-|Erwartete monatliche Speicherkosten   |25,00 US-Dollar  |
+**Speicherkosten**
 
-<br>
+* Durchschnittliche Datensatzgröße (KB): 1 
+* Anzahl von Datensätzen: 100.000.000 
+* Gesamtspeicher (GB): 100 
+* Monatliche Kosten pro GB: 0,25 USD 
+* Erwartete monatliche Speicherkosten: 25,00 USD 
 
-|**Durchsatzkosten** | | | |
+**Durchsatzkosten**
+
+|Vorgangsart| Anforderungen/Sek.| Durchschn. RU/Anforderung| RUs erforderlich|
 |----|----|----|----|
-|Vorgangstyp| Anforderungen/Sek.| Durchschn. RU/Anforderung| RUs erforderlich|
 |Schreiben| 100 | 5 | 500|
 |Lesen| 400| 1| 400|
 

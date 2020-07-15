@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 26816a545cb83e0a3d996a8056b96154830e58b6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a994111d2f7e938ecdd71236858e4cb8773b00f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195516"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832864"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
@@ -36,11 +36,8 @@ Um Dienste zu registrieren, erstellen Sie eine Methode zum Konfigurieren und Hin
 Fügen Sie zum Registrieren der Methode das `FunctionsStartup`-Assembly-Attribut hinzu, mit dem der Typname angegeben wird, der beim Starten verwendet wird.
 
 ```csharp
-using System;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Http;
-using Microsoft.Extensions.Logging;
 
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
 
@@ -52,7 +49,7 @@ namespace MyNamespace
         {
             builder.Services.AddHttpClient();
 
-            builder.Services.AddSingleton((s) => {
+            builder.Services.AddSingleton<IMyService>((s) => {
                 return new MyService();
             });
 
@@ -61,6 +58,8 @@ namespace MyNamespace
     }
 }
 ```
+
+In diesem Beispiel wird das Paket [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) verwendet, das beim Start `HttpClient` registrieren muss.
 
 ### <a name="caveats"></a>Vorbehalte
 
@@ -72,48 +71,47 @@ Eine Reihe von Registrierungsschritten wird vor und nach dem Verarbeiten der Sta
 
 ## <a name="use-injected-dependencies"></a>Verwenden von eingefügten Abhängigkeiten
 
-Die Konstruktorinjektion wird verwendet, um Ihre Abhängigkeiten in einer Funktion verfügbar zu machen. Die Verwendung der Konstruktorinjektion erfordert den Verzicht auf statische Klassen.
+Die Konstruktorinjektion wird verwendet, um Ihre Abhängigkeiten in einer Funktion verfügbar zu machen. Bei Verwendung der Konstruktorinjektion dürfen keine statischen Klassen für eingefügte Dienste oder für Ihre Funktionsklassen verwendet werden.
 
-Im folgenden Beispiel wird veranschaulicht, wie die Abhängigkeiten `IMyService` und `HttpClient` in eine per HTTP ausgelöste Funktion eingefügt werden. In diesem Beispiel wird das Paket [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) verwendet, das beim Start `HttpClient` registrieren muss.
+Im folgenden Beispiel wird veranschaulicht, wie die Abhängigkeiten `IMyService` und `HttpClient` in eine per HTTP ausgelöste Funktion eingefügt werden.
 
 ```csharp
-using System;
-using System.IO;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace MyNamespace
 {
-    public class HttpTrigger
+    public class MyHttpTrigger
     {
-        private readonly IMyService _service;
         private readonly HttpClient _client;
+        private readonly IMyService _service;
 
-        public HttpTrigger(IMyService service, HttpClient httpClient)
+        public MyHttpTrigger(HttpClient httpClient, MyService service)
         {
-            _service = service;
-            _client = httpClient;
+            this._client = httpClient;
+            this._service = service;
         }
 
-        [FunctionName("GetPosts")]
-        public async Task<IActionResult> Get(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "posts")] HttpRequest req,
+        [FunctionName("MyHttpTrigger")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-            var res = await _client.GetAsync("https://microsoft.com");
-            await _service.AddResponse(res);
+            var response = await _client.GetAsync("https://microsoft.com");
+            var message = _service.GetMessage();
 
-            return new OkResult();
+            return new OkObjectResult("Response from function with injected dependencies.");
         }
     }
 }
 ```
+
+In diesem Beispiel wird das Paket [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) verwendet, das beim Start `HttpClient` registrieren muss.
 
 ## <a name="service-lifetimes"></a>Dienstlebensdauer
 
@@ -121,13 +119,15 @@ Azure Functions-Apps bieten dieselbe Dienstlebensdauer wie die [ASP.NET-Abhängi
 
 - **Vorübergehend**: Bei jeder Anforderung des Diensts werden vorübergehende Dienste erstellt.
 - **Bereichsbezogen**: Die bereichsbezogene Lebensdauer eines Diensts entspricht der Ausführungslebensdauer einer Funktion. Bereichsbezogene Dienste werden einmal pro Ausführung erstellt. In späteren Anforderungen für diesen Dienst während der Ausführung wird die vorhandene Dienstinstanz wiederverwendet.
-- **Singleton**: Die Lebensdauer eines Singletondiensts entspricht der Lebensdauer des Hosts und wird für Funktionsausführungen dieser Instanz wiederverwendet. Dienste mit Singleton-Lebensdauer werden für Verbindungen und Clients empfohlen, z. B. Instanzen von `SqlConnection` oder `HttpClient`.
+- **Singleton**: Die Lebensdauer eines Singletondiensts entspricht der Lebensdauer des Hosts und wird für Funktionsausführungen dieser Instanz wiederverwendet. Dienste mit Singleton-Lebensdauer werden für Verbindungen und Clients empfohlen, z. B. Instanzen von `DocumentClient` oder `HttpClient`.
 
 Sie können auf GitHub ein [Beispiel für verschiedene Dienstlebensdauern](https://aka.ms/functions/di-sample) anzeigen bzw. herunterladen.
 
 ## <a name="logging-services"></a>Protokollierungsdienste
 
-Wenn Sie einen eigenen Protokollierungsanbieter benötigen, registrieren Sie einen benutzerdefinierten Typ als `ILoggerProvider`-Instanz. Application Insights wird von Azure Functions automatisch hinzugefügt.
+Wenn Sie einen eigenen Protokollierungsanbieter benötigen, registrieren Sie einen benutzerdefinierten Typ als eine Instanz von [`ILoggerProvider`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory) (verfügbar über das NuGet-Paket [Microsoft.Extensions.Logging.Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/)).
+
+Application Insights wird von Azure Functions automatisch hinzugefügt.
 
 > [!WARNING]
 > - Fügen Sie `AddApplicationInsightsTelemetry()` nicht der Dienstsammlung hinzu, da sonst Dienste registriert werden, für die Konflikte mit den von der Umgebung bereitgestellten Diensten auftreten können.
@@ -135,7 +135,9 @@ Wenn Sie einen eigenen Protokollierungsanbieter benötigen, registrieren Sie ein
 
 ### <a name="iloggert-and-iloggerfactory"></a>„ILogger<T>“ und „ILoggerFactory“
 
-Der Host fügt die Dienste `ILogger<T>` und `ILoggerFactory` in Konstruktoren ein.  Diese neuen Protokollierungsfilter werden jedoch standardmäßig aus den Funktionsprotokollen herausgefiltert.  Sie müssen die Datei `host.json` ändern, um der Verwendung zusätzlicher Filter und Kategorien zuzustimmen.  Im folgenden Beispiel wird das Hinzufügen von `ILogger<HttpTrigger>` mit Protokollen gezeigt, die vom Host verfügbar gemacht werden:
+Vom Host werden die Dienste `ILogger<T>` und `ILoggerFactory` in Konstruktoren eingefügt.  Diese neuen Protokollierungsfilter werden jedoch standardmäßig aus den Funktionsprotokollen herausgefiltert.  Sie müssen die Datei `host.json` ändern, um zusätzliche Filter und Kategorien verwenden zu können.
+
+Im folgenden Beispiel wird ein Element vom Typ `ILogger<HttpTrigger>` mit Protokollen hinzugefügt, die für den Host verfügbar gemacht werden:
 
 ```csharp
 namespace MyNamespace
@@ -160,7 +162,7 @@ namespace MyNamespace
 }
 ```
 
-Und eine Datei vom Typ `host.json` zum Hinzufügen des Protokollfilters:
+In der folgenden Beispieldatei `host.json` wird der Protokollfilter hinzugefügt:
 
 ```json
 {

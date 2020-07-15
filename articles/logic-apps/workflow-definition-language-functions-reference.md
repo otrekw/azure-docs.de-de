@@ -3,15 +3,15 @@ title: Referenzhandbuch für Funktionen in Ausdrücken
 description: Referenzhandbuch für Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: d879429eef68d1bc2448150e2d8eece9cfa35da2
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.date: 07/01/2020
+ms.openlocfilehash: 30806880b3ce9ab89479cedbce60435f44024efd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204853"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833017"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
@@ -477,6 +477,9 @@ Dies ist das zurückgegebene Ergebnis:
 Gibt die Ausgabe einer Aktion zur Laufzeit oder Werte aus anderen JSON-Name/Wert-Paaren zurück, die Sie einem Ausdruck zuweisen können. Standardmäßig verweist die Funktion auf das gesamte Aktionsobjekt, Sie können aber optional eine Eigenschaft angeben, deren Wert Sie abrufen möchten.
 Kurzformversionen finden Sie unter [actionBody()](#actionBody), [actionOutputs()](#actionOutputs) und [body()](#body).
 Informationen hinsichtlich der aktuellen Aktion finden Sie unter [action()](#action).
+
+> [!TIP]
+> Die Ausgabe der Funktion `actions()` wird als Zeichenfolge zurückgegeben. Wenn Sie als Rückgabewert ein JSON-Objekt benötigen, müssen Sie den Zeichenfolgenwert erst konvertieren. Der Zeichenfolgenwert kann mithilfe der [Aktion „Parse JSON“](logic-apps-perform-data-operations.md#parse-json-action) in ein JSON-Objekt transformiert werden.
 
 > [!NOTE]
 > Bisher konnten Sie die `actions()`-Funktion oder das `conditions`-Element verwenden, wenn Sie angeben haben, dass eine Aktion auf Basis der Ausgabe einer anderen Aktion ausgeführt wurde. Sie müssen nun aber, um Abhängigkeiten zwischen Aktionen explizit zu deklarieren, die `runAfter`-Eigenschaft der abhängigen Aktion verwenden.
@@ -2046,7 +2049,7 @@ formatNumber(<number>, <format>, <locale>?)
 Angenommen, Sie möchten die Zahl `1234567890` formatieren. In diesem Beispiel wird diese Zahl als Zeichenfolge „1,234,567,890.00“ formatiert.
 
 ```
-formatNumber(1234567890, '{0:0,0.00}', 'en-us')
+formatNumber(1234567890, '0,0.00', 'en-us')
 ```
 
 *Beispiel 2:
@@ -2054,7 +2057,7 @@ formatNumber(1234567890, '{0:0,0.00}', 'en-us')
 Angenommen, Sie möchten die Zahl `1234567890` formatieren. In diesem Beispiel wird diese Zahl als Zeichenfolge „1.234.567.890,00“ formatiert.
 
 ```
-formatNumber(1234567890, '{0:0,0.00}', 'is-is')
+formatNumber(1234567890, '0,0.00', 'is-is')
 ```
 
 *Beispiel 3*

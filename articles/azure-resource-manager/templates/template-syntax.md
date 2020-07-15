@@ -2,13 +2,13 @@
 title: Vorlagenstruktur und -syntax
 description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Manager-Vorlagen mithilfe deklarativer JSON-Syntax.
 ms.topic: conceptual
-ms.date: 04/20/2020
-ms.openlocfilehash: 60d800eb5251fb3454ba60a67bd109261c6ff9d4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 06/22/2020
+ms.openlocfilehash: ae2c5a5fe1440c3adbae475cd4c7652a3b01c285
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687869"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116538"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -35,7 +35,7 @@ In der einfachsten Struktur weist eine Vorlage die folgenden Elemente auf:
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| $schema |Ja |Speicherort der JSON-Schemadatei, die die Version der Vorlagensprache beschreibt. Die von Ihnen verwendete Versionsnummer hängt vom Umfang der Bereitstellung und vom JSON-Editor ab.<br><br>Wenn Sie [VS Code mit der Erweiterung für Azure Resource Manager-Tools](use-vs-code-to-create-template.md) nutzen, verwenden Sie die aktuelle Version für Bereitstellungen von Ressourcengruppen:<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>Andere Editoren (einschließlich Visual Studio) können dieses Schema unter Umständen nicht verarbeiten. Verwenden Sie für diese Editoren Folgendes:<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Verwenden Sie Folgendes für Bereitstellungen von Abonnements:<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>Verwenden Sie für Bereitstellungen von Verwaltungsgruppen Folgendes:<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>Verwenden Sie für Bereitstellungen von Mandanten Folgendes:<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
+| $schema |Ja |Speicherort der JSON-Schemadatei, die die Version der Vorlagensprache beschreibt. Die von Ihnen verwendete Versionsnummer hängt vom Umfang der Bereitstellung und vom JSON-Editor ab.<br><br>Wenn Sie [VS Code mit der Erweiterung für Azure Resource Manager-Tools](quickstart-create-templates-use-visual-studio-code.md) nutzen, verwenden Sie die aktuelle Version für Bereitstellungen von Ressourcengruppen:<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>Andere Editoren (einschließlich Visual Studio) können dieses Schema unter Umständen nicht verarbeiten. Verwenden Sie für diese Editoren Folgendes:<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Verwenden Sie Folgendes für Bereitstellungen von Abonnements:<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>Verwenden Sie für Bereitstellungen von Verwaltungsgruppen Folgendes:<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>Verwenden Sie für Bereitstellungen von Mandanten Folgendes:<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
 | contentVersion |Ja |Version der Vorlage (z. B. 1.0.0.0). Sie können einen beliebigen Wert für dieses Element resources. Mit diesem Wert können Sie wichtige Änderungen in der Vorlage dokumentieren. Bei der Bereitstellung von Ressourcen mithilfe der Vorlage kann mit diesem Wert sichergestellt werden, dass die richtige Vorlage verwendet wird. |
 | apiProfile |Nein | Eine API-Version, die als Sammlung von API-Versionen für Ressourcentypen dient. Verwenden Sie diesen Wert, um zu vermeiden, dass Sie API-Versionen für jede Ressource in der Vorlage angeben müssen. Wenn Sie eine API-Profilversion aber keine API-Version für den Ressourcentyp angeben, verwendet Resource Manager die API-Version für diesen Ressourcentyp, der im Profil bestimmt wurde.<br><br>Die API-Profileigenschaft ist besonders hilfreich, wenn Sie eine Vorlage in verschiedenen Umgebungen wie Azure Stack und der globalen Azure-Umgebung bereitstellen. Verwenden Sie die API-Profilversion, um sicherzustellen, dass Ihre Vorlage automatisch Versionen verwendet, die in beiden Umgebungen unterstützt werden. Eine Liste der im Profil definierten aktuellen API-Profilversionen und Ressourcen-API-Versionen finden Sie unter [API Profile (API-Profil)](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Weitere Informationen finden Sie unter [Nachverfolgen von Versionen mithilfe von API-Profilen](templates-cloud-consistency.md#track-versions-using-api-profiles). |
 | [parameters](#parameters) |Nein |Werte, die bei der Bereitstellung angegeben werden, um die Bereitstellung der Ressourcen anpassen. |
@@ -91,7 +91,7 @@ Schließen Sie Boolesche und Integerwerte in Ihrer Vorlage nicht in Anführungsz
 
 Objekte beginnen mit einer linken geschweiften Klammer und enden mit einer rechten geschweiften Klammer. Arrays beginnen mit einer linken eckigen Klammer und enden mit einer rechten eckigen Klammer.
 
-Sichere Zeichenfolgen und sichere Objekte können nach der Bereitstellung der Ressource nicht mehr gelesen werden.
+Wenn Sie einen Parameter auf eine sichere Zeichenfolge oder ein sicheres Objekt festlegen, wird der Wert des-Parameters weder im Bereitstellungsverlauf gespeichert noch protokolliert. Wenn Sie diesen sicheren Wert jedoch auf eine Eigenschaft festlegen, die keinen sicheren Wert erwartet, wird der Wert nicht geschützt. Wenn Sie z. B. eine sichere Zeichenfolge auf ein Tag festlegen, wird dieser Wert als reiner Text gespeichert. Verwenden Sie sichere Zeichenfolgen für Kennwörter und Geheimnisse.
 
 Beispiele zum Formatieren von Datentypen finden Sie unter [Parametertypformate](parameter-files.md#parameter-type-formats).
 
@@ -282,7 +282,7 @@ Das folgende Beispiel zeigt die Struktur einer Ausgabedefinition:
 
 Beispiele für die Verwendung von Ausgaben finden Sie unter [Ausgaben in einer Azure Resource Manager-Vorlage](template-outputs.md).
 
-<a id="comments" />
+<a id="comments"></a>
 
 ## <a name="comments-and-metadata"></a>Kommentare und Metadaten
 
@@ -290,7 +290,7 @@ Es gibt mehrere Möglichkeiten, um Kommentare und Metadaten in Ihrer Vorlage hin
 
 ### <a name="comments"></a>Kommentare
 
-Für Inlinekommentare können Sie entweder `//` oder `/* ... */` verwenden, aber diese Syntax funktioniert nicht mit allen Tools. Sie können nicht den Vorlagen-Editor des Portals verwenden, um Vorlagen mit Inlinekommentaren zu bearbeiten. Wenn Sie diese Art von Kommentar hinzufügen, stellen Sie sicher, dass die von Ihnen verwendeten Tools JSON-Inlinekommentare unterstützen.
+Für Inlinekommentare können Sie entweder `//` oder `/* ... */` verwenden, aber diese Syntax funktioniert nicht mit allen Tools. Wenn Sie diese Art von Kommentar hinzufügen, stellen Sie sicher, dass die von Ihnen verwendeten Tools JSON-Inlinekommentare unterstützen.
 
 > [!NOTE]
 > Wenn Sie Vorlagen mit Kommentaren mithilfe der Azure CLI, Version 2.3.0 oder niedriger, bereitstellen möchten, müssen Sie den Switch `--handle-extended-json-format` verwenden.
@@ -307,7 +307,7 @@ Für Inlinekommentare können Sie entweder `//` oder `/* ... */` verwenden, aber
   ],
 ```
 
-In Visual Studio Code kann die [Azure Resource Manager-Tools-Erweiterung](use-vs-code-to-create-template.md#install-resource-manager-tools-extension) Resource Manager-Vorlage automatisch erkennen und den Sprachmodus entsprechend ändern. Wenn in der rechten unteren Ecke von VS Code **Azure Resource Manager-Vorlage** angezeigt wird, können Sie die Inline-Kommentare verwenden. Die Inlinekommentare werden nicht mehr als ungültig markiert.
+In Visual Studio Code kann die [Azure Resource Manager-Tools-Erweiterung](quickstart-create-templates-use-visual-studio-code.md) Resource Manager-Vorlage automatisch erkennen und den Sprachmodus entsprechend ändern. Wenn in der rechten unteren Ecke von VS Code **Azure Resource Manager-Vorlage** angezeigt wird, können Sie die Inline-Kommentare verwenden. Die Inlinekommentare werden nicht mehr als ungültig markiert.
 
 ![Azure Resource Manager-Vorlagenmodus in Visual Studio Code](./media/template-syntax/resource-manager-template-editor-mode.png)
 
@@ -412,4 +412,4 @@ Wenn Sie Vorlagen mit mehrzeiligen Zeichenfolgen mithilfe der Azure CLI, Version
 * Ausführliche Informationen zu den Funktionen, die Sie innerhalb einer Vorlage nutzen können, finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](template-functions.md).
 * Informationen zum Zusammenführen mehrerer Vorlagen während der Bereitstellung finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure Resource Manager](linked-templates.md).
 * Empfehlungen zum Erstellen von Vorlagen finden Sie unter [Azure Resource Manager template best practices (Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen)](template-best-practices.md).
-* Weitere Empfehlungen zum Erstellen von Resource Manager-Vorlagen, die Sie in allen Azure-Umgebungen und in Azure Stack verwenden können, finden Sie unter [Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](templates-cloud-consistency.md).
+* Antworten auf gängige Fragen finden Sie unter [Häufig gestellte Fragen zu ARM-Vorlagen](frequently-asked-questions.md).

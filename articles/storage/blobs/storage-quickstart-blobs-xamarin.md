@@ -7,12 +7,12 @@ ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: e0845e7cdc2ce6dc57ed5a18d263f117f0c2005c
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c66766b39ae104cf4a031c3fd73c173e81d47fb8
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006386"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563481"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 mit Xamarin
 
@@ -151,7 +151,7 @@ protected async override void OnAppearing()
 Der folgende Codeausschnitt führt folgende Aktionen durch:
 
 1. Erstellen eines Speicherstreams (`MemoryStream`) mit Text
-1. Hochladen des Texts in ein Blob durch Aufrufen der Funktion [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) der Klasse [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient), wobei sowohl der in der Klassenebenenvariablen definierte Dateiname als auch der Speicherstream (`MemoryStream`) mit dem Text übergeben werden Mit dieser Methode wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, sofern es bereits vorhanden ist.
+1. Hochladen des Texts in ein Blob durch Aufrufen der Funktion [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) der Klasse [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient), wobei sowohl der Dateiname als auch der Speicherstream (`MemoryStream`) mit dem Text übergeben werden. Mit dieser Methode wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, sofern es bereits vorhanden ist.
 
 Fügen Sie der Datei *MainPage.xaml.cs* den folgenden Code hinzu:
 

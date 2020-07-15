@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie einen Dienstprinzipal zum Automatisieren von 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9797b4c8f8059f9cfefbb70672aa202c7a3f4825
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168334"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077370"
 ---
 # <a name="automation-with-service-principals"></a>Automatisierung mit Dienstprinzipalen
 
@@ -20,7 +20,7 @@ Dienstprinzipale sind eine Azure Active Directory-Anwendungsressource, die Sie i
 
 In Analysis Services werden Dienstprinzipale mit Azure Automation, PowerShell im unbeaufsichtigten Modus, benutzerdefinierten Clientanwendungen und Web-Apps zum Automatisieren von allgemeinen Aufgaben verwendet. So können beispielsweise Aufgaben wie das Bereitstellen von Servern, das Bereitstellen von Modellen, das Aktualisieren von Daten, das Hoch-/Herunterskalieren sowie Anhalten/Fortsetzen mithilfe von Dienstprinzipalen automatisiert werden. Berechtigungen werden Dienstprinzipalen über Rollenmitgliedschaften zugewiesen, ähnlich wie bei Azure AD-UPN-Standardkonten.
 
-Analysis Services unterstützt außerdem Vorgänge, die von verwalteten Identitäten unter Verwendung von Dienstprinzipalen ausgeführt werden. Weitere Informationen finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) und [Azure-Dienste, die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services).  
+Analysis Services unterstützt außerdem Vorgänge, die von verwalteten Identitäten unter Verwendung von Dienstprinzipalen ausgeführt werden. Weitere Informationen finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) und [Azure-Dienste, die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services).    
 
 ## <a name="create-service-principals"></a>Erstellen von Dienstprinzipalen
  
@@ -38,7 +38,7 @@ Anmeldeinformationen und Zertifikate von Dienstprinzipalen können in Azure Auto
 
 ## <a name="add-service-principals-to-server-admin-role"></a>Hinzufügen von Dienstprinzipalen zur Serveradministratorrolle
 
-Bevor Sie einen Dienstprinzipal für Analysis Services-Serververwaltungsvorgänge verwenden können, müssen Sie ihn zur Serveradministratorrolle hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle](analysis-services-addservprinc-admins.md).
+Bevor Sie einen Dienstprinzipal für Analysis Services-Serververwaltungsvorgänge verwenden können, müssen Sie ihn zur Serveradministratorrolle hinzufügen. Dienstprinzipale müssen der Serveradministratorrolle direkt hinzugefügt werden. Das Hinzufügen eines Dienstprinzipals zu einer Sicherheitsgruppe und das anschließende Hinzufügen dieser Sicherheitsgruppe zur Serveradministratorrolle wird nicht unterstützt. Weitere Informationen finden Sie unter [Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle](analysis-services-addservprinc-admins.md).
 
 ## <a name="service-principals-in-connection-strings"></a>Dienstprinzipale in Verbindungszeichenfolgen
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO und ADOMD 
 
-Beim Herstellen von Verbindungen mit Clientanwendungen und Web-Apps, unterstützen [AMO- und ADOMD-Clientbibliotheken](analysis-services-data-providers.md) und installierbare NuGet-Pakete (Version 15.0.2 und höher) Dienstprinzipale in Verbindungszeichenfolgen mit der folgenden Syntax: `app:AppID` und Kennwort oder `cert:thumbprint`. 
+Beim Herstellen von Verbindungen mit Clientanwendungen und Web-Apps, unterstützen [AMO- und ADOMD-Clientbibliotheken](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) und installierbare NuGet-Pakete (Version 15.0.2 und höher) Dienstprinzipale in Verbindungszeichenfolgen mit der folgenden Syntax: `app:AppID` und Kennwort oder `cert:thumbprint`. 
 
 Im folgenden Beispiel werden `appID` und ein `password` verwendet, um einen Aktualisierungsvorgang für eine Modelldatenbank auszuführen:
 

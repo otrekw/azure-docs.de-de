@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 7efae8fb3c00868e2740eac2d4d5bcb3c82f663a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/29/2020
+ms.openlocfilehash: 05a76a1434b5a63229b335fb3973897896ec733d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75977542"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955811"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Preismodell in Azure Cosmos DB 
 
@@ -28,18 +28,18 @@ Der bereitgestellte Durchsatz, der in [Anforderungseinheiten](request-units.md) 
 
 Weitere Informationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/) und unter [Erläuterungen zu Ihrer Azure Cosmos DB-Rechnung](understand-your-bill.md).
 
-Das Preismodell in Azure Cosmos DB ist für alle APIs einheitlich. Weitere Informationen finden Sie unter [Warum ist das Preismodell von Azure Cosmos DB kosteneffizient für den Kunden?](total-cost-ownership.md). Für die SLA-Garantie ist ein Mindestdurchsatz für eine Datenbank oder einen Container erforderlich. Und Sie können den bereitgestellten Durchsatz zum Preis von 6 USD pro 100 RUs/Sek. erhöhen oder reduzieren.
+Das Preismodell in Azure Cosmos DB ist für alle APIs einheitlich. Weitere Informationen finden Sie unter [Warum ist das Preismodell von Azure Cosmos DB kosteneffizient für den Kunden?](total-cost-ownership.md). Für die SLA-Garantie ist ein Mindestdurchsatz für eine Datenbank oder einen Container erforderlich, und Sie können den bereitgestellten Durchsatz pro 100 RUs/Sek. erhöhen oder verringern.
 
-Der Mindestpreis für datenbank- und containerbasierten Durchsatz beträgt derzeit 24 USD pro Monat (die aktuellen Informationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/)). Wenn für Ihre Workload mehrere Container verwendet werden, lassen sich die Kosten anhand von Durchsatz auf Datenbankebene optimieren, mit dem beliebig viele Container in einer Datenbank den Durchsatz gemeinsam nutzen können. Die folgende Tabelle enthält eine Übersicht über den bereitgestellten Durchsatz und die Kosten für unterschiedliche Entitäten:
+Wenn Sie Ihr Azure Cosmos DB-Konto in einer Region in den USA bereitstellen und es sich dabei nicht um eine Government-Region handelt, beträgt der Mindestpreis für datenbank- und containerbasierten Durchsatz derzeit ungefähr 24 USD pro Monat. Die Preise variieren je nach verwendeter Region. Aktuelle Preisinformationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Wenn für Ihre Workload mehrere Container verwendet werden, lassen sich die Kosten anhand von Durchsatz auf Datenbankebene optimieren, mit dem beliebig viele Container in einer Datenbank den Durchsatz gemeinsam nutzen können. Die folgende Tabelle enthält eine Übersicht über den bereitgestellten Durchsatz und die Kosten für unterschiedliche Entitäten:
 
-|**Entität**  | **Mindestdurchsatz und Kosten** |**Skalierungseinheiten und Kosten** |**Bereitstellungsumfang** |
+|**Entität**  | **Mindestdurchsatz** |**Skalierungseinheiten** |**Bereitstellungsumfang** |
 |---------|---------|---------|-------|
-|Datenbank    | 400 RUs/Sek. (24 USD/Monat)    | 100 RUs/Sek. (6 USD/Monat)   |Der Durchsatz ist für die Datenbank reserviert und wird von Containern in der Datenbank gemeinsam genutzt |
-|Container     | 400 RUs/Sek. (24 USD/Monat)    | 100 RUs/Sek. (6 USD/Monat)  |Der Durchsatz ist für einen bestimmten Container reserviert |
+|Datenbank    | 400 RUs/Sek.    | 100 RUs/Sek.   |Der Durchsatz ist für die Datenbank reserviert und wird von Containern in der Datenbank gemeinsam genutzt |
+|Container     | 400 RUs/Sek.   | 100 RUs/Sek.  |Der Durchsatz ist für einen bestimmten Container reserviert |
 
-Wie aus der vorherigen Tabelle hervorgeht, ist als Mindestdurchsatz in Azure Cosmos DB ein Preis ab 24 USD/Monat festgelegt. Wenn Sie mit dem Mindestdurchsatz beginnen und den Durchsatz mit der Zeit hochskalieren, um Ihre Workloads in der Produktion zu unterstützen, erhöhen sich die Kosten moderat in Schritten von 6 USD/Monat. Das Preismodell für Azure Cosmos DB ist elastisch, die Preiserhöhung (Preissenkung) für das Hochskalieren (Herunterskalieren) ist moderat.
+Wie in der obigen Tabelle zu sehen, beginnt der Preis für den Mindestdurchsatz in Azure Cosmos DB bei etwa 24 USD/Monat. Wenn Sie mit dem Mindestdurchsatz beginnen und den Durchsatz mit der Zeit hochskalieren, um Ihre Workloads in der Produktion zu unterstützen, erhöhen sich die Kosten nach und nach in Schritten von etwa 6 USD/Monat. Die Preise variieren je nach verwendeter Region. Aktuelle Preisinformationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Das Preismodell für Azure Cosmos DB ist elastisch, die Preiserhöhung (Preissenkung) für das Hochskalieren (Herunterskalieren) ist moderat.
 
-## <a name="try-azure-cosmos-db-for-free"></a>Azure Cosmos DB kostenlos testen 
+## <a name="try-azure-cosmos-db-for-free"></a>Azure Cosmos DB kostenlos testen
 
 Azure Cosmos DB bietet für Entwickler verschiedene Optionen kostenlos an. Die Optionen umfassen:
 

@@ -3,12 +3,12 @@ title: Azure Service Fabric-Anwendungsmodell
 description: Hier erfahren Sie mehr über das Modellieren und Beschreiben von Anwendungen und Diensten in Azure Service Fabric mit einer Anwendung und Dienstmanifestdateien.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 7179686b7d4ef2df267cb95ece8f83d5fb7682b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 84e6b2309fdb206771d4ea01aa03c7f355d6ff19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75551878"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963732"
 ---
 # <a name="model-an-application-in-service-fabric"></a>Modellieren von Anwendungen in Service Fabric
 Dieser Artikel bietet eine Übersicht über das Azure Service Fabric-Anwendungsmodell und erläutert, wie eine Anwendung und ein Dienst über Manifestdateien definiert werden.
@@ -22,7 +22,7 @@ Ein Anwendungstyp ist eine Kategorisierung einer Anwendung und besteht aus einem
 
 Klassen (oder „Typen“) von Anwendungen und Diensten werden über XML-Dateien (Anwendungsmanifeste und Dienstmanifeste) beschrieben.  Die Manifeste beschreiben Anwendungen und Dienste und sind die Vorlagen, anhand derer Anwendungen aus dem Imagespeicher des Clusters instanziiert werden können.  Manifeste werden unter [Anwendungs- und Dienstmanifeste](service-fabric-application-and-service-manifests.md) ausführlich behandelt. Die Schemadefinition für die Dateien „ServiceManifest.xml“ und „ApplicationManifest.xml“ wird mit dem Service Fabric SDK und den Service Fabric-Tools unter *C:\Programme\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* installiert. Eine Dokumentation des XML-Schemas finden Sie unter [ServiceFabricServiceModel.xsd – Schemadokumentation](service-fabric-service-model-schema.md).
 
-Die Codes für verschiedene Anwendungsinstanzen werden als separate Prozesse ausgeführt, selbst wenn sie im gleichen Service Fabric-Knoten gehostet werden. Darüber hinaus kann der Lebenszyklus jeder Anwendungsinstanz unabhängig verwaltet (z.B. Durchführen eines Upgrades). Die folgende schematische Darstellung zeigt die Gliederung von Anwendungstypen in Diensttypen, die wiederum aus Code, Konfiguration und Datenpaketen bestehen. Obwohl jeder Diensttyp normalerweise einige oder alle dieser Pakettypen enthält, werden nur die Code-/Konfigurations-/Datenpakete für `ServiceType4` angezeigt, um das Diagramm zu vereinfachen.
+Der Code für verschiedene Anwendungsinstanzen wird jeweils als separater Prozess ausgeführt, auch wenn der gleiche Service Fabric-Knoten als Host fungiert. Darüber hinaus kann der Lebenszyklus jeder Anwendungsinstanz unabhängig verwaltet (z.B. Durchführen eines Upgrades). Die folgende schematische Darstellung zeigt die Gliederung von Anwendungstypen in Diensttypen, die wiederum aus Code, Konfiguration und Datenpaketen bestehen. Obwohl jeder Diensttyp normalerweise einige oder alle dieser Pakettypen enthält, werden nur die Code-/Konfigurations-/Datenpakete für `ServiceType4` angezeigt, um das Diagramm zu vereinfachen.
 
 ![Service Fabric-Anwendungstypen und Diensttypen][cluster-imagestore-apptypes]
 

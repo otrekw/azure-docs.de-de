@@ -8,38 +8,41 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 74b1c25c8bab11c0b2a72510fd419df239e2c23a
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 5d8d9ba6d3152435382d180fe32dd78e62e5fd63
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81603579"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087584"
 ---
-# <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Schnellstart: Erstellen eines Interactive Query-Clusters in Azure HDInsight mit einer Resource Manager-Vorlage
+# <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-arm-template"></a>Schnellstart: Erstellen eines Interactive Query-Clusters in Azure HDInsight mit einer ARM-Vorlage
 
-In dieser Schnellstartanleitung verwenden Sie eine Azure Resource Manager-Vorlage, um einen [Interactive Query](./apache-interactive-query-get-started.md)-Cluster in Azure HDInsight zu erstellen. Interactive Query (auch Apache Hive LLAP oder [Low Latency Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP) genannt) ist ein Azure HDInsight-[Clustertyp](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type).
+In dieser Schnellstartanleitung verwenden Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage), um einen [Interactive Query](./apache-interactive-query-get-started.md)-Cluster in Azure HDInsight zu erstellen. Interactive Query (auch Apache Hive LLAP oder [Low Latency Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP) genannt) ist ein Azure HDInsight-[Clustertyp](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type).
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Voraussetzungen
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-an-interactive-query-cluster"></a>Erstellen eines Interactive Query-Clusters
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-### <a name="review-the-template"></a>Überprüfen der Vorlage
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-hdinsight-interactive-hive/).
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-interactive-hive).
-
-:::code language="json" source="~/quickstart-templates/101-hdinsight-interactive-hive/azuredeploy.json" range="1-158":::
-
+:::code language="json" source="~/quickstart-templates/101-hdinsight-interactive-hive/azuredeploy.json" range="1-158" highlight="49-82":::
 
 Zwei Azure-Ressourcen sind in der Vorlage definiert:
 
-* [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): Erstellen eines Azure Storage-Kontos
-* [Microsoft.HDInsight/cluster](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/clusters): Erstellen eines HDInsight-Clusters
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): Erstellen eines Azure Storage-Kontos
+* [Microsoft.HDInsight/cluster](/azure/templates/microsoft.hdinsight/clusters): Erstellen eines HDInsight-Clusters
 
 ### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-1. Wählen Sie unten die Schaltfläche **In Azure bereitstellen** aus, um sich bei Azure anzumelden und die Resource Manager-Vorlage zu öffnen.
+1. Wählen Sie unten die Schaltfläche **In Azure bereitstellen** aus, um sich bei Azure anzumelden und die ARM-Vorlage zu öffnen.
 
     [![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json)
 
@@ -76,7 +79,7 @@ Sie können auch den Namen der Ressourcengruppe auswählen, um die Seite für di
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung wurde beschrieben, wie Sie einen Interactive Query-Cluster in HDInsight mit einer Resource Manager-Vorlage erstellen. Im nächsten Artikel wird beschrieben, wie Sie Apache Hive-Abfragen mit Apache Zeppelin ausführen.
+In dieser Schnellstartanleitung wurde beschrieben, wie Sie einen Interactive Query-Cluster in HDInsight mit einer ARM-Vorlage erstellen. Im nächsten Artikel wird beschrieben, wie Sie Apache Hive-Abfragen mit Apache Zeppelin ausführen.
 
 > [!div class="nextstepaction"]
 > [Ausführen von Apache Hive-Abfragen in Azure HDInsight mit Apache Zeppelin](./hdinsight-connect-hive-zeppelin.md)

@@ -9,12 +9,12 @@ ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
 ms.date: 05/14/2020
 tags: connectors
-ms.openlocfilehash: 17143257fcb6b9c71bb56e1f4c4958dce503c234
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652469"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609502"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Herstellen einer Verbindung mit dem IBM MQ-Server über Azure Logic Apps
 
@@ -94,7 +94,7 @@ Wenn die Logik-App versucht, eine Verbindung mit dem lokalen MQ-Server herzustel
      > [!IMPORTANT]
      > Stellen Sie sicher, dass Sie das Zertifikat im Speicher **Zertifikate – Lokaler Computer** > **Vertrauenswürdige Stammzertifizierungsstellen** installieren.
 
-* Für den MQ-Server muss eine Verschlüsselungsspezifikation definiert werden, die für SSL-Verbindungen verwendet werden soll. In SsLStream in .NET ist es jedoch nicht möglich, dass Sie die Reihenfolge für Verschlüsselungsspezifikationen angeben. Um diese Einschränkung zu umgehen, können Sie die Konfiguration des MQ-Servers so ändern, dass die erste Verschlüsselungsspezifikation in der Auflistung verwendet wird, die der Connector in der SSL-Aushandlung sendet.
+* Für den MQ-Server ist es erforderlich, dass Sie die Verschlüsselungsspezifikation definieren, die für TLS/SSL-Verbindungen verwendet werden soll. In SsLStream in .NET ist es jedoch nicht möglich, dass Sie die Reihenfolge für Verschlüsselungsspezifikationen angeben. Um diese Einschränkung zu umgehen, können Sie die Konfiguration des MQ-Servers so ändern, dass die erste Verschlüsselungsspezifikation in der Auflistung verwendet wird, die der Connector in der TLS/SSL-Aushandlung sendet.
 
   Wenn Sie die Verbindung testen, protokolliert der MQ-Server eine Ereignismeldung, die angibt, dass die Verbindung nicht hergestellt werden konnte, da am anderen Ende die falsche Verschlüsselungsspezifikation verwendet wurde. Die Ereignismeldung enthält die Verschlüsselungsspezifikation, die oben in der Liste angezeigt wird. Aktualisieren Sie die Verschlüsselungsspezifikation in der Kanalkonfiguration so, dass sie der Verschlüsselungsspezifikation in der Ereignismeldung entspricht.
 

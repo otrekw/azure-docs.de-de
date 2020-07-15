@@ -3,12 +3,12 @@ title: Resource Manager-Bereitstellung und klassische Bereitstellung
 description: Beschreibt die Unterschiede zwischen dem Ressourcen-Manager-Bereitstellungsmodell und dem klassischen Bereitstellungsmodell (auch als "Dienstverwaltungsmodell" bekannt).
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e44128da9b6e180bd2857f4574c0b384fdffef2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064511"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057567"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager und klassische Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen
 
@@ -78,6 +78,8 @@ Das folgende Diagramm zeigt die Compute-, Netzwerk- und Speicherressourcen, die 
 
 ![Resource Manager – Architektur](./media/deployment-models/arm_arch3.png)
 
+SRP: Speicherressourcenanbieter, CRP: Anbieter von Computerressourcen, NRP: Anbieter von Netzwerkressourcen
+
 Beachten Sie die folgenden Beziehungen zwischen den Ressourcen:
 
 * Alle Ressourcen sind innerhalb einer Ressourcengruppe vorhanden.
@@ -123,7 +125,7 @@ Wenn Sie bereit zum Migrieren Ihrer Ressourcen von der klassischen Bereitstellun
 1. [Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
 2. [Platform supported migration of IaaS resources from Classic to Azure Resource Manager (Plattformgestützte Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager)](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 3. [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von Azure PowerShell](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
-4. [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle](../../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
+4. [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -150,4 +152,3 @@ Einen umfassenden Satz von Startervorlagen finden Sie unter [Schnellstartvorlage
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Die Befehle zum Bereitstellen einer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](../templates/deploy-powershell.md).
-

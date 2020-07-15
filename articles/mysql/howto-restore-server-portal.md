@@ -4,14 +4,14 @@ description: In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal ei
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 3/27/2020
-ms.openlocfilehash: 619dc05d709f41941d16764bf32b49a0d2a11958
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 6/30/2020
+ms.openlocfilehash: 1a10d61c5dc35a19a8b02769a517d9f1c7aac601
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372991"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119224"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit dem Azure-Portal
 
@@ -80,16 +80,39 @@ Wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben, kann au
 
 1. Klicken Sie in der linken oberen Ecke des Portals auf die Schaltfläche **Ressource erstellen** (+). Wählen Sie **Datenbanken** > **Azure-Datenbank für MySQL** aus.
 
-   ![Option „Azure Database for MySQL“](./media/howto-restore-server-portal/2_navigate-to-mysql.png)
+   :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="Navigieren zu Azure Database for MySQL":::
+ 
+2. Geben Sie das Abonnement, die Ressourcengruppe und den Namen des neuen Servers an. 
 
-2. Wählen Sie in der Dropdownliste **Quelle auswählen** des Formulars die Option **Sicherung**. Mit dieser Aktion wird eine Liste mit Servern geladen, für die georedundante Sicherungen aktiviert sind. Wählen Sie eine dieser Sicherungen als Quelle für den neuen Server aus.
-   ![Quelle auswählen: Sicherung und Liste mit georedundanten Sicherungen](./media/howto-restore-server-portal/2-georestore.png)
-
+3. Wählen Sie unter **Datenquelle** die Option **Sicherung** aus. Dadurch wird eine Dropdownliste mit Servern geladen, für die georedundante Sicherungen aktiviert sind.
+   
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Auswählen der Datenquelle":::
+    
    > [!NOTE]
    > Für einen neu erstellten Server kann möglicherweise nicht sofort eine Geowiederherstellung durchgeführt werden. Es kann einige Stunden dauern, bis die erforderlichen Metadaten aufgefüllt wurden.
    >
 
-3. Geben Sie im Rest des Formulars Ihre bevorzugten Einstellungen an. Sie können einen beliebigen **Standort** auswählen. Nachdem Sie den Standort ausgewählt haben, können Sie die Option **Tarif** wählen. Standardmäßig werden die Parameter für den vorhandenen Server angezeigt, für den die Wiederherstellung durchgeführt wird. Sie können ohne weitere Änderungen auf **OK** klicken, um diese Einstellungen zu erben. Oder Sie können **Computegeneration** (falls in der gewählten Region verfügbar), die Anzahl von **virtuellen Kernen**, die **Aufbewahrungszeit für Sicherung** und die **Optionen für Sicherungsredundanz** wählen. Das Ändern des **Tarifs** („Basic“, „Allgemein“ oder „Arbeitsspeicheroptimiert“) oder der Größe des **Speichers** während der Wiederherstellung wird nicht unterstützt.
+4. Wählen Sie die Dropdownliste **Sicherung** aus.
+   
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Auswählen der Dropdownliste „Sicherung“":::
+
+5. Wählen Sie den Quellserver für die Wiederherstellung aus.
+   
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Auswählen der Sicherung":::
+
+6. Für den Server werden Standardwerte für die **Anzahl virtueller Kerne**, den **Aufbewahrungszeitraum für Sicherungen**, die **Option für Sicherungsredundanz**, die **Engine-Version** und die **Administrator-Anmeldeinformationen** verwendet. Wählen Sie **Weiter**. 
+   
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Fortfahren mit Sicherung":::
+
+7. Geben Sie im Rest des Formulars Ihre bevorzugten Einstellungen an. Sie können einen beliebigen **Standort** auswählen.
+
+    Nach der Wahl des Standorts können Sie **Server konfigurieren** auswählen, um die **Computegeneration** (sofern in der ausgewählten Region verfügbar), die Anzahl von **virtuellen Kernen**, den **Aufbewahrungszeitraum für Sicherungen** und die **Option für Sicherungsredundanz** zu aktualisieren. Das Ändern des **Tarifs** („Basic“, „Allgemein“ oder „Arbeitsspeicheroptimiert“) oder der Größe des **Speichers** während der Wiederherstellung wird nicht unterstützt.
+
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Ausfüllen des Formulars"::: 
+
+8. Wählen Sie **Überprüfen + erstellen** aus, um ihre Auswahl zu überprüfen. 
+
+9. Wählen Sie **Erstellen** aus, um den Server bereitzustellen. Dieser Vorgang kann einige Minuten dauern.
 
 Der neue Server, der durch die Geowiederherstellung erstellt wurde, verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server bei der Initiierung der Wiederherstellung gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
 

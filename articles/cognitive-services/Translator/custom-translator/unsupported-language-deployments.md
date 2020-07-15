@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: ea2761712e4bbb7a3abd1483766f4eae47b7c350
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996362"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964684"
 ---
 # <a name="unsupported-language-deployments"></a>Bereitstellungen in nicht unterstützten Sprachen
 
@@ -47,7 +47,7 @@ Nach der Übermittlung ist das Modell nicht mehr auf der Registerkarte für **ni
 
 ## <a name="whats-next"></a>Wie geht es weiter?
 
-Die von Ihnen für die Bereitstellung ausgewählten Modelle werden gespeichert, sobald der Hub außer Betrieb genommen wird und die Bereitstellung aller Modelle aufgehoben wird.  Sie haben bis zum 24. Mai Zeit, um Anforderungen für die Bereitstellung von nicht unterstützten Modellen zu übermitteln.  Wir werden diese Modelle am 15. Juni bereitstellen. Ab diesem Zeitpunkt werden sie über die Translator V3-API zugänglich sein.  Darüber hinaus werden sie bis zum 1. Juli über die V2-API verfügbar sein.  
+Die von Ihnen für die Bereitstellung ausgewählten Modelle werden gespeichert, sobald der Hub außer Betrieb genommen wird und die Bereitstellung aller Modelle aufgehoben wird.  Sie haben bis zum 24. Mai Zeit, um Anforderungen für die Bereitstellung von nicht unterstützten Modellen zu übermitteln.  Diese Modelle werden am 15. Juni bereitgestellt und stehen dann über Translator V3 zur Verfügung.  Darüber hinaus sind sie noch bis zum 1. Juli über Translator V2 verfügbar.  
 
 Weitere Informationen zu wichtigen Terminen zur Einstellung des Hubs finden Sie [hier](https://www.microsoft.com/translator/business/hub/).
 Nach der Bereitstellung fallen normale Hostinggebühren an.  Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/).  

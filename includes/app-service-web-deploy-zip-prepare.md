@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 6b5aa4f409b8c2f5a9125ab01e8587f4ac9c4ee5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 035399924216434de85865102db8838ea3fa15a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75945162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570186"
 ---
 ## <a name="create-a-project-zip-file"></a>Erstellen einer ZIP-Datei für das Projekt
 
@@ -27,7 +27,7 @@ Dieses Verzeichnis sollte die Eingabedatei für Ihre Web-App enthalten, z.B. _in
 
 Wenn Sie nicht möchten, dass App Service die Bereitstellungsautomatisierung für Sie ausführt, führen Sie alle Buildaufgaben (z. B. `npm`, `bower`, `gulp`, `composer` und `pip`) aus, und stellen Sie sicher, dass Sie über alle Dateien verfügen, die Sie zum Ausführen der App benötigen. Dieser Schritt ist erforderlich, wenn Sie [Ihr Paket direkt ausführen möchten](../articles/app-service/deploy-run-package.md).
 
-Erstellen Sie ein ZIP-Archiv mit allen Elementen Ihres Projekts. Mit dem folgenden Befehl wird das Standardtool in Ihrem Terminal verwendet:
+Erstellen Sie ein ZIP-Archiv mit allen Elementen Ihres Projekts. Bei `dotnet`-Projekten ist dieser Ordner der Ausgabeordner des `dotnet publish`-Befehls. Mit dem folgenden Befehl wird das Standardtool in Ihrem Terminal verwendet:
 
 ```
 # Bash

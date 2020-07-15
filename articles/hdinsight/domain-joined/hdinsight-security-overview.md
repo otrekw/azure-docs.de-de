@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 65df89aff0232d7bf9809cdffc4262d1a640a5a1
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771120"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367103"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Übersicht über die Unternehmenssicherheit in Azure HDInsight
 
@@ -61,7 +61,7 @@ Der Schutz von Daten ist wichtig, um die Sicherheits- und Compliance-Anforderung
 
 Azure Storage und Data Lake Storage Gen1/Gen2 unterstützen die transparente serverseitige [Verschlüsselung von Daten](../../storage/common/storage-service-encryption.md) im Ruhezustand. Sichere HDInsight-Cluster funktionieren nahtlos mit serverseitiger Verschlüsselung ruhender Daten.
 
-### <a name="compliance"></a>Kompatibilität
+### <a name="compliance"></a>Compliance
 
 Azure-Complianceangebote basieren auf unterschiedlichen Arten von Zusicherungen, z. B. formalen Zertifizierungen, Nachweisen, Validierungen und Autorisierungen und Bewertungen, die von unabhängigen externen Prüfungsgesellschaften erstellt wurden, sowie Vertragsänderungen, Selbstbewertungen und Kundenleitfäden, die von Microsoft erstellt wurden. Informationen zur HDInsight-Compliance finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trust-center) und in der [Übersicht der Microsoft Azure-Complianceangebote](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) (in englischer Sprache).
 
@@ -81,6 +81,7 @@ Die folgende Tabelle enthält Links zu Ressourcen für jede Art von Sicherheitsl
 |  | Konfigurieren von [Azure Virtual Network-Dienstendpunkten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) für Cosmos DB und [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Kunde |
 |  | Sicherstellen, dass die [TLS-Verschlüsselung](../../storage/common/storage-security-tls.md) für Daten während der Übertragung aktiviert ist | Kunde |
 |  | Konfigurieren von [Kunden verwalteter Schlüssel](../../storage/common/storage-encryption-keys-portal.md) für die Azure Storage-Verschlüsselung | Kunde |
+|  | Steuern des Zugriffs auf Ihre Daten durch Azure-Support mit [Kunden-Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) | Kunde |
 | Anwendungs- und Middleware-Sicherheit | Integrieren mit AAD-DS und [Konfigurieren der Authentifizierung](apache-domain-joined-configure-using-azure-adds.md) | Kunde |
 |  | Konfigurieren der Richtlinien für die [Apache Ranger-Autorisierung](apache-domain-joined-run-hive.md) | Kunde |
 |  | Verwenden von [Azure Monitor-Protokollen](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | Kunde |

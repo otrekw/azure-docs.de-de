@@ -2,13 +2,13 @@
 title: Verschieben virtueller Azure-Computer in ein neues Abonnement oder in eine neue Ressourcengruppe
 description: Verwenden Sie Azure Resource Manager, um virtuelle Computer in eine neue Ressourcengruppe oder ein neues Abonnement zu verschieben.
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: e5bd004b6619db9c9882b8e9e6005309317b8ca5
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.date: 07/06/2020
+ms.openlocfilehash: c85ec175d802a29de7a8a87ee7a51c0916762a5a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744633"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044548"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Anleitung zum Verschieben virtueller Computer
 
@@ -24,6 +24,18 @@ Folgende Szenarios werden noch nicht unterstützt:
 * Virtuelle Computer in einem vorhandenen virtuellen Netzwerk können nicht zu einem neuen Abonnement verschoben werden, wenn Sie nicht alle Ressourcen im virtuellen Netzwerk verschieben.
 * Virtuelle Computer mit niedriger Priorität und VM-Skalierungsgruppen mit niedriger Priorität können nicht ressourcengruppen- oder abonnementübergreifend verschoben werden.
 * Virtuelle Computer in einer Verfügbarkeitsgruppe können nicht einzeln verschoben werden.
+
+## <a name="azure-disk-encryption"></a>Azure Disk Encryption
+
+Sie können einen virtuellen Computer, der in einen Schlüsseltresor integriert ist, nicht verschieben, um [Azure Disk Encryption für virtuelle Linux-Computer](../../../virtual-machines/linux/disk-encryption-overview.md) oder [Azure Disk Encryption für virtuelle Windows-Computer](../../../virtual-machines/windows/disk-encryption-overview.md) zu implementieren. Um den virtuellen Computer zu verschieben, müssen Sie die Verschlüsselung deaktivieren.
+
+```azurecli-interactive
+az vm encryption disable --resource-group demoRG --name myVm1
+```
+
+```azurepowershell-interactive
+Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
+```
 
 ## <a name="virtual-machines-with-azure-backup"></a>Virtuelle Computer mit Azure Backup
 

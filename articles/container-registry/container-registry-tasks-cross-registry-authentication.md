@@ -2,13 +2,13 @@
 title: Registrierungsübergreifende Authentifizierung über eine ACR-Aufgabe
 description: Konfigurieren einer ACR-Aufgabe (Azure Container Registry) für den Zugriff auf eine andere private Azure Container Registry mithilfe einer verwalteten Identität für Azure-Ressourcen
 ms.topic: article
-ms.date: 01/14/2020
-ms.openlocfilehash: 47b2a50784cf56b089fea0981e5a06d581b8ba3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/06/2020
+ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842491"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057353"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Registrierungsübergreifende Authentifizierung in einer ACR-Aufgabe unter Verwendung einer in Azure verwalteten Identität 
 
@@ -44,6 +44,7 @@ Erstellen Sie zunächst ein Arbeitsverzeichnis und anschließend eine Datei name
 ```bash
 echo FROM node:9-alpine > Dockerfile
 ```
+
 Führen Sie im aktuellen Verzeichnis den Befehl [az acr build][az-acr-build] aus, um das Basisimage zu erstellen und an die Basisregistrierung zu pushen. In der Praxis kann die Basisregistrierung von einem anderen Team oder Prozess in der Organisation verwaltet werden.
     
 ```azurecli
@@ -85,6 +86,27 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Erteilen von Basisregistrierungs-Pullberechtigungen für die Identität
+
+In diesem Abschnitt werden der verwalteten Identität Berechtigungen zum Pullen von Images aus der Basisregistrierung *mybaseregistry* erteilt.
+
+Verwenden Sie den Befehl [az acr show][az-acr-show], um die Ressourcen-ID der Basisregistrierung abzurufen und in einer Variablen zu speichern:
+
+```azurecli
+baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
+```
+
+Verwenden Sie den Befehl [az role assignment create][az-role-assignment-create], um der Identität die Rolle `acrpull` für die Basisregistrierung zuzuweisen. Diese Rolle ist nur zum Pullen von Images aus der Registrierung berechtigt.
+
+```azurecli
+az role assignment create \
+  --assignee $principalID \
+  --scope $baseregID \
+  --role acrpull
+```
+
+Fahren Sie fort mit [Hinzufügen von Zielregistrierungs-Anmeldeinformationen zur Aufgabe](#add-target-registry-credentials-to-task).
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>Option 2: Erstellen einer Aufgabe mit systemseitig zugewiesener Identität
 
 Mit den Schritten in diesem Abschnitt wird eine Aufgabe erstellt und eine systemseitig zugewiesene Identität aktiviert. Wenn Sie stattdessen eine benutzerseitig zugewiesene Identität aktivieren möchten, navigieren Sie zu [Option 1: Erstellen einer Aufgabe mit benutzerseitig zugewiesener Identität](#option-1-create-task-with-user-assigned-identity). 
@@ -103,7 +125,7 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="give-identity-pull-permissions-to-the-base-registry"></a>Erteilen von Basisregistrierungs-Pullberechtigungen für die Identität
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Erteilen von Basisregistrierungs-Pullberechtigungen für die Identität
 
 In diesem Abschnitt werden der verwalteten Identität Berechtigungen zum Pullen von Images aus der Basisregistrierung *mybaseregistry* erteilt.
 

@@ -5,16 +5,16 @@ services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: bbe5d9ac21ae9e03d629a1667567a915c8653a8a
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 447af1580f601c1f55690434b371aeeed2d335a0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81602657"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106321"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) mithilfe einer Azure Resource Manager-Vorlage
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>Schnellstart: Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) mithilfe einer ARM-Vorlage
 
-Azure Kubernetes Service (AKS) ist ein verwalteter Kubernetes-Dienst, mit dem Sie schnell Cluster bereitstellen und verwalten können. In diesem Schnellstart stellen Sie einen AKS-Cluster mithilfe einer Azure Resource Manager-Vorlage bereit. In dem Cluster wird eine Anwendung mit mehreren Containern ausgeführt, die ein Web-Front-End und eine Redis-Instanz enthält.
+Azure Kubernetes Service (AKS) ist ein verwalteter Kubernetes-Dienst, mit dem Sie schnell Cluster bereitstellen und verwalten können. In diesem Schnellstart stellen Sie einen AKS-Cluster mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) bereit. In dem Cluster wird eine Anwendung mit mehreren Containern ausgeführt, die ein Web-Front-End und eine Redis-Instanz enthält.
 
 ![Abbildung der Navigation zu Azure Vote](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
@@ -22,7 +22,9 @@ Azure Kubernetes Service (AKS) ist ein verwalteter Kubernetes-Dienst, mit dem Si
 
 Für diese Schnellstartanleitung werden Grundkenntnisse in Bezug auf die Kubernetes-Konzepte vorausgesetzt. Weitere Informationen finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -30,7 +32,9 @@ Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchte
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um einen AKS-Cluster mithilfe einer Resource Manager-Vorlage zu erstellen, geben Sie einen öffentlichen SSH-Schlüssel und einen Azure Active Directory-Dienstprinzipal an.  Alternativ können Sie anstelle eines Dienstprinzipals für Berechtigungen eine [verwaltete Identität](use-managed-identity.md) verwenden. Wenn Sie eine dieser Ressourcen benötigen, finden Sie im folgenden Abschnitt Informationen, andernfalls fahren Sie mit dem Abschnitt [Erstellen eines AKS-Clusters](#create-an-aks-cluster) fort.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+Um einen AKS-Cluster mithilfe einer Resource Manager-Vorlage zu erstellen, geben Sie einen öffentlichen SSH-Schlüssel und einen Azure Active Directory-Dienstprinzipal an. Alternativ können Sie anstelle eines Dienstprinzipals für Berechtigungen eine [verwaltete Identität](use-managed-identity.md) verwenden. Wenn Sie eine dieser Ressourcen benötigen, finden Sie im folgenden Abschnitt Informationen, andernfalls fahren Sie mit dem Abschnitt [Überprüfen der Vorlage](#review-the-template) fort.
 
 ### <a name="create-an-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
 
@@ -68,9 +72,7 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
 Notieren Sie sich die App-ID (*appId*) und das Kennwort (*password*). Diese Werte werden in den folgenden Schritten verwendet.
 
-## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-aks/).
 
@@ -78,7 +80,7 @@ Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit 
 
 Weitere AKS-Beispiele finden Sie unter [Azure Schnellstartvorlagen][aks-quickstart-templates].
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen.
 

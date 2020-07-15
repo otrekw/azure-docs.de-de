@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: a279aebdd19ebd3a41ddad0c1c279937e00838c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77168458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921015"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -71,7 +71,7 @@ Wenn Sie ein Modell mit Baseline v1.0 angepasst und bereitgestellt haben, bleibt
 
 **F: Werden meine Anforderungen protokolliert?**
 
-**A:** Sie haben die Wahl, wenn Sie eine Bereitstellung erstellen, die Ablaufverfolgung zu deaktivieren. Ab diesem Zeitpunkt werden dann keine Audiodaten oder Transkriptionen mehr protokolliert. Andernfalls werden Anforderungen normalerweise im sicheren Speicher in Azure protokolliert.
+**A:** Standardmäßig werden Anforderungen nicht protokolliert (weder Audio noch Transkription). Beim [Erstellen eines benutzerdefinierten Endpunkts](how-to-custom-speech-deploy-model.md) kann bei Bedarf die Option *Log content from this endpoint* (Inhalte dieses Endpunkts protokollieren) aktiviert werden, um die Nachverfolgung zu ermöglichen. Anforderungen werden dann in Azure in einem sicheren Speicher protokolliert.
 
 **F: Werden meine Anforderungen gedrosselt?**
 
@@ -118,6 +118,13 @@ oder
   - wählen Sie aus den angezeigten Diensten den Speech-Dienst aus, für den Sie die Parallelität erhöhen möchten,
   - zeigen Sie die `Properties` für diesen Dienst an,
   - und kopieren Sie die gesamte Ressourcen-ID (`Resource ID`).
+  
+**F: Erhöhen sich meine Kosten, wenn ich das Parallelitätslimit erhöhe?**
+
+**A:** Nein. Die Kosten basieren auf der Nutzung. Eine Erhöhung der Parallelität führt nicht zu höheren Kosten. Ausführliche Informationen zu Kosten finden Sie auf der Seite [Cognitive Services-Preise – Sprachdienste](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). 
+  
+>[!NOTE]
+>Für [Container](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto) muss das Parallelitätslimit nicht erhöht werden, da Container einzig durch die CPUs der Hardware eingeschränkt sind, auf der sie gehostet werden.
 
 ## <a name="importing-data"></a>Importieren von Daten
 

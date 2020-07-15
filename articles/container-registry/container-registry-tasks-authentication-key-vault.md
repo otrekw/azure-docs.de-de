@@ -2,13 +2,13 @@
 title: Externe Authentifizierung aus ACR-Aufgabe
 description: Konfigurieren Sie eine Azure Container Registry-Aufgabe (ACR-Aufgabe), damit die in einem Azure-Schlüsseltresor gespeicherten Docker Hub-Anmeldeinformationen mithilfe einer verwalteten Identität für Azure-Ressourcen gelesen werden können.
 ms.topic: article
-ms.date: 01/14/2020
-ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/06/2020
+ms.openlocfilehash: 0bc43f958a14016146160a06372af0b36a9fff75
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76842519"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058128"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Externe Authentifizierung in einer ACR-Aufgabe unter Verwendung einer in Azure verwalteten Identität 
 
@@ -117,6 +117,20 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+
+### <a name="grant-identity-access-to-key-vault"></a>Gewähren des Zugriffs auf den Schlüsseltresor für die Identität
+
+Führen Sie den folgenden Befehl vom Typ [az keyvault set-policy][az-keyvault-set-policy] aus, um eine Zugriffsrichtlinie für den Schlüsseltresor festzulegen. Das folgende Beispiel ermöglicht der Identität das Lesen von Geheimnissen aus dem Schlüsseltresor. 
+
+```azurecli
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
+```
+
+Fahren Sie fort mit [Manuelles Ausführen der Aufgabe](#manually-run-the-task).
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>Option 2: Erstellen einer Aufgabe mit systemseitig zugewiesener Identität
 
 Mit den Schritten in diesem Abschnitt wird eine Aufgabe erstellt und eine systemseitig zugewiesene Identität aktiviert. Wenn Sie stattdessen eine benutzerseitig zugewiesene Identität aktivieren möchten, navigieren Sie zu [Option 1: Erstellen einer Aufgabe mit benutzerseitig zugewiesener Identität](#option-1-create-task-with-user-assigned-identity). 
@@ -136,7 +150,7 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="grant-identity-access-to-key-vault"></a>Gewähren des Zugriffs auf den Schlüsseltresor für die Identität
+### <a name="grant-identity-access-to-key-vault"></a>Gewähren des Zugriffs auf den Schlüsseltresor für die Identität
 
 Führen Sie den folgenden Befehl vom Typ [az keyvault set-policy][az-keyvault-set-policy] aus, um eine Zugriffsrichtlinie für den Schlüsseltresor festzulegen. Das folgende Beispiel ermöglicht der Identität das Lesen von Geheimnissen aus dem Schlüsseltresor. 
 

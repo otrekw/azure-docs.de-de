@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: cd787881957d78f179107e46b2650de4618c7724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ccb95064f756ef035b7da92d029680f1c195982b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282323"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958734"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Unterstützte Datenplattformen für Data Science Virtual Machine
 
@@ -41,10 +41,12 @@ Folgende Datenplattformen werden von der DSVM unterstützt.
 
 Der Datenbankserver ist bereits vorkonfiguriert, und für die Windows-Dienste für SQL Server (etwa `SQL Server (MSSQLSERVER)`) ist automatische Ausführung festgelegt. Der einzige manuelle Schritt besteht darin, datenbankinterne Analysen mithilfe von Microsoft Machine Learning Server zu aktivieren. Sie können die Analyse aktivieren, indem Sie den folgenden Befehl als einmalige Aktion in SQL Server Management Studio (SSMS) ausführen. Führen Sie diesen Befehl aus, nachdem Sie sich als Computeradministrator angemeldet haben, öffnen Sie eine neue Abfrage in SSMS, und stellen Sie sicher, dass die ausgewählte Datenbank `master` ist:
 
-        CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
+```sql
+CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
+```
 
-        (Replace %COMPUTERNAME% with your VM name.)
-       
+(Ersetzen Sie „%COMPUTERNAME%“ durch den Namen Ihres virtuellen Computers.)
+
 Zum Ausführen von SQL Server Management Studio können Sie in der Programmliste oder über die Windows-Suche nach „SQL Server Management Studio“ suchen und das Programm ausführen. Wenn Sie zum Eingeben von Anmeldeinformationen aufgefordert werden, wählen Sie **Windows-Authentifizierung** aus, und verwenden Sie den Computernamen oder ```localhost``` im Feld **SQL Server-Name**.
 
 ### <a name="how-to-use-and-run-it"></a>Verwenden und Ausführen
@@ -76,13 +78,15 @@ Spark kann über R mit auf der DSVM verfügbaren Bibliotheken wie SparkR, Sparkl
 ### <a name="setup"></a>Einrichten
 Vor dem Ausführen im Spark-Kontext in Microsoft Machine Learning Server unter der Ubuntu Linux-Edition der DSVM müssen Sie einen einmaligen Einrichtungsschritt ausführen, um eine lokale Hadoop HDFS- und Yarn-Instanz mit einem einzelnen Knoten zu aktivieren. Standardmäßig gilt, dass die Hadoop-Dienste installiert, aber auf der DSVM deaktiviert sind. Um sie zu aktivieren, müssen Sie die folgenden Befehle beim ersten Mal als „root“ ausführen:
 
-    echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
-    cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
-    chmod 0600 ~hadoop/.ssh/authorized_keys
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
-    chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
-    systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+```bash
+echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
+cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
+chmod 0600 ~hadoop/.ssh/authorized_keys
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
+chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
+systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+```
 
 Sie können die Hadoop-bezogenen Dienste beenden, wenn Sie sie nicht mehr benötigen, indem Sie ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` ausführen.
 

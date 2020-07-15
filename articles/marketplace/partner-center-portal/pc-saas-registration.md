@@ -1,125 +1,113 @@
 ---
 title: Registrieren einer SaaS-Anwendung – Azure Marketplace
 description: Erfahren Sie, wie Sie über das Azure-Portal eine SaaS-Anwendung registrieren und ein Azure Active Directory-Sicherheitstoken erhalten.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: dsindona
-ms.openlocfilehash: b3c20d25917d66cba8ae3d811eddaa6455b87722
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 06/10/2020
+ms.openlocfilehash: 85bd6f4192f5c1f47856851ab53521a101340007
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792954"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109262"
 ---
 # <a name="register-a-saas-application"></a>Registrieren einer SaaS-Anwendung
 
-In diesem Artikel wird die Registrierung einer SaaS-Anwendung über das [Microsoft Azure-Portal](https://portal.azure.com/) erläutert.  Nach der erfolgreichen Registrierung erhalten Sie ein Azure Active Directory-Sicherheitstoken (Azure AD), über das Sie auf die SaaS-Fulfillment-APIs zugreifen können.  Weitere Informationen zu Azure AD finden Sie unter [Was ist Authentifizierung?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
+In diesem Artikel erfahren Sie, wie Sie eine SaaS-Anwendung über das [Azure-Portal](https://portal.azure.com/) von Microsoft registrieren und das Zugriffstoken des Herausgebers (Azure Active Directory-Zugriffstoken) abrufen. Dieses Token wird vom Herausgeber verwendet, um die SaaS-Anwendung durch Aufrufen der SaaS-Fulfillment-APIs zu authentifizieren.  Von den Fulfillment-APIs werden die OAuth 2.0-Clientanmeldeinformationen für den Gewährungsflow auf Azure Active Directory-Endpunkten (v1.0) verwendet, um eine Dienst-zu-Dienst-Zugriffstokenanforderung durchzuführen.
 
-## <a name="service-to-service-authentication-flow"></a>Ablauf der Dienst-zu-Dienst-Authentifizierung
+Von Azure Marketplace werden keinerlei Vorgaben hinsichtlich der Authentifizierungsmethode gemacht, die von Ihrem SaaS-Dienst für Endbenutzer verwendet wird. Der folgende Flow ist nur zum Authentifizieren des SaaS-Diensts in Azure Marketplace erforderlich.
 
-Das folgende Diagramm zeigt den Ablauf des Abonnements eines neuen Kunden und die Verwendung dieser APIs:
-
-![SaaS-Angebot: API-Ablauf](./media/saas-offer-publish-api-flow-v1.png)
-
-Azure legt keine Einschränkungen für die Authentifizierung fest, die die SaaS-Lösung für ihre Endbenutzer verfügbar macht. Die Authentifizierung über die SaaS-Fulfillment-APIs erfolgt jedoch mit einem Azure AD-Sicherheitstoken, das normalerweise durch die Registrierung der SaaS-App im Azure-Portal abgerufen wird. 
+Weitere Informationen zu Azure Active Directory (AD) finden Sie unter [Was ist Authentifizierung?](../../active-directory/develop/authentication-scenarios.md).
 
 ## <a name="register-an-azure-ad-secured-app"></a>Registrieren einer über Azure AD geschützten App
 
-Jede Anwendung muss zunächst in einem Azure AD-Mandanten registriert werden, um die Funktionen von Azure AD nutzen zu können. Dieser Registrierungsvorgang umfasst das Angeben von Details zu Ihrer Anwendung in Azure AD. Beispielsweise muss die URL für den Speicherort angegeben werden, die URL, an die nach der Authentifizierung eines Benutzers Antworten gesendet werden sollen, der URI zum Identifizieren der App usw.  Führen Sie die folgenden Schritte aus, um mit dem Azure-Portal eine neue Anwendung zu registrieren:
+Jede Anwendung muss zunächst in einem Azure AD-Mandanten registriert werden, um die Funktionen von Azure AD nutzen zu können. Im Rahmen dieses Registrierungsvorgangs müssen einige Details zu Ihrer Anwendung an Azure AD weitergegeben werden. Führen Sie die folgenden Schritte aus, um mit dem Azure-Portal eine neue Anwendung zu registrieren:
 
-1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2.  Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
-3.  Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen** und **Registrierung einer neuen Anwendung**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
+3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen** und **Registrierung einer neuen Anwendung**.
 
     ![SaaS: AD-App-Registrierungen](./media/saas-offer-app-registration-v1.png)
 
-4.  Geben Sie auf der Seite „Erstellen“ die Registrierungsinformationen\' für Ihre Anwendung ein:
+4. Geben Sie auf der Seite „Erstellen“ die Registrierungsinformationen\' für Ihre Anwendung ein:
     -   **Name**: Geben Sie einen aussagekräftigen Anwendungsnamen ein.
-    -   **Anwendungstyp**: 
-        - Wählen Sie für [Clientanwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application), die lokal auf dem Gerät installiert sind, die Option **Nativ** aus. Diese Einstellung wird für öffentliche [native OAuth-Clients](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client) verwendet.
-        - Wählen Sie die Option **Web-App/API** für [Clientanwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) und [Ressourcen-/API-Anwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) aus, die auf einem sicheren Server installiert sind. Diese Einstellung wird für vertrauliche OAuth-[Webclients](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) und für öffentliche [Clients auf Basis von Benutzer-Agents](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client) verwendet.
+    -   **Anwendungstyp**:  
+        
+        Wählen Sie die Option **Web-App/API** für [Clientanwendungen](../../active-directory/develop/active-directory-dev-glossary.md#client-application) und [Ressourcen-/API-Anwendungen](../../active-directory/develop/active-directory-dev-glossary.md#resource-server) aus, die auf einem sicheren Server installiert sind. Diese Einstellung wird für vertrauliche OAuth-[Webclients](../../active-directory/develop/active-directory-dev-glossary.md#web-client) und für öffentliche [Clients auf Basis von Benutzer-Agents](../../active-directory/develop/active-directory-dev-glossary.md#user-agent-based-client) verwendet.
         Außerdem kann dieselbe Anwendung sowohl einen Client als auch eine Ressource/API verfügbar machen.
-    -   **Anmelde-URL**: Geben Sie für Web-Apps/API-Anwendungen die Basis-URL Ihrer App an. **http://localhost:31544** kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können sich mit dieser URL dann bei einer Webclientanwendung anmelden.
-    -   **Umleitungs-URI**: Geben Sie für native Anwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. **http://MyFirstAADApp** .
 
-        ![SaaS: AD-App-Registrierungen](./media/saas-offer-app-registration-v1-2.png)
+        Spezifische Beispiele für Webanwendungen finden Sie in den Schnellstart-Einrichtungsanleitungen, die im Abschnitt [Erste Schritte](../../active-directory/develop/quickstart-create-new-tenant.md) des [Azure AD-Entwicklerleitfadens](../../active-directory/develop/index.yml) zur Verfügung stehen.
 
-        Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in den Schnellstart-Einrichtungsanleitungen, die im Abschnitt *Erste Schritte* des [Azure AD-Entwicklerleitfadens](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide) verfügbar sind.
+5. Klicken Sie abschließend auf **Registrieren**.  Ihrer neuen Anwendung wird von Azure AD eine eindeutige *Anwendungs-ID* zugewiesen. Es empfiehlt sich, eine einzelne App zu registrieren, die nur auf die API zugreift (als einzelner Mandant).
 
-5.  Klicken Sie auf **Erstellen**, wenn Sie fertig sind. Azure AD weist Ihrer Anwendung eine eindeutige *Anwendungs-ID* zu, und Sie gelangen auf die Hauptseite für die Registrierung Ihrer Anwendung. Je nachdem, ob es sich bei Ihrer Anwendung um eine Web- oder eine systemeigene Anwendung handelt, werden jeweils andere Optionen zum Hinzufügen weiterer Funktionen zu Ihrer Anwendung bereitgestellt.
+6. Navigieren Sie zum Erstellen eines geheimen Clientschlüssels zur Seite **Certificates & secrets** (Zertifikate und Geheimnisse), und klicken Sie auf **+Neuer geheimer Clientschlüssel**.  Kopieren Sie den Geheimniswert für die Verwendung in Ihrem Code.
+
+Die **Azure AD-App-ID** ist Ihrer Herausgeber-ID zugeordnet. Achten Sie daher darauf, dass in allen Ihren Angeboten die gleiche *App-ID* verwendet wird.
 
 >[!Note]
->Die neu registrierte Anwendung wird standardmäßig so konfiguriert, dass sich nur Benutzer desselben Mandanten an Ihrer Anwendung anmelden können.
+>Wenn ein Herausgeber in Partner Center über zwei unterschiedliche Konten verfügt, müssen auch zwei unterschiedliche Azure AD-App-IDs verwendet werden.  Von jedem Partnerkonto in Partner Center muss eine eindeutige Azure AD-App-ID für alle SaaS-Angebote verwendet werden, die über dieses Konto veröffentlicht werden.
 
-## <a name="using-the-azure-ad-security-token"></a>Verwenden des Azure AD-Sicherheitstokens
+## <a name="how-to-get-the-publishers-authorization-token"></a>Abrufen des Autorisierungstokens des Herausgebers
 
-Nach der Registrierung der Anwendung können Sie programmgesteuert ein Azure AD-Sicherheitstoken anfordern.  Es wird erwartet, dass der Herausgeber dieses Token verwendet und eine Anforderung zu dessen Auflösung stellt.  Bei Verwendung der verschiedenen Fulfillment-APIs ist der Tokenabfrageparameter in der URL enthalten, wenn der Benutzer von Azure zur SaaS-Website umgeleitet wird.  Dieses Token ist nur eine Stunde lang gültig.  Zusätzlich sollten Sie eine URL-Decodierung des Tokenwerts im Browser durchführen, bevor Sie ihn verwenden.
+Nachdem Sie Ihre Anwendung registriert haben, können Sie das Autorisierungstoken des Herausgebers (Azure AD-Zugriffstoken, über den Azure AD v1-Endpunkt) programmgesteuert anfordern. Der Herausgeber muss dieses Token beim Aufrufen der verschiedenen SaaS-Fulfillment-APIs verwenden. Dieses Token ist nur eine Stunde lang gültig. 
 
-Weitere Informationen zu diesen Token finden Sie unter [Azure Active Directory-Zugriffstoken](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
+Weitere Informationen zu diesen Token finden Sie unter [Azure Active Directory-Zugriffstoken](../../active-directory/develop/access-tokens.md).  Beachten Sie, dass im folgenden Flow das V1-Endpunkttoken verwendet wird.
 
+### <a name="get-the-token-with-an-http-post"></a>Abrufen des Tokens mit „HTTP POST“
 
-### <a name="get-a-token-based-on-the-azure-ad-app"></a>Abrufen eines Tokens basierend auf der Azure AD-App
+#### <a name="http-method"></a>HTTP-Methode
 
-HTTP-Methode
+Post<br>
 
-`POST`
+##### <a name="request-url"></a>*Anforderungs-URL* 
 
-*Anforderungs-URL*
+`https://login.microsoftonline.com/*{tenantId}*/oauth2/token`
 
-**https://login.microsoftonline.com/ *{tenantId}* /oauth2/token**
+##### <a name="uri-parameter"></a>*URI-Parameter*
 
-*URI-Parameter*
+|  Parametername    |  Erforderlich         |  BESCHREIBUNG |
+|  ---------------   |  ---------------  | ------------ |
+|  `tenantId`        |  True      |  Die Mandanten-ID der registrierten AAD-Anwendung. |
 
-|  **Parametername**  | **Erforderlich**  | **Beschreibung**                               |
-|  ------------------  | ------------- | --------------------------------------------- |
-| tenantId             | True          | Mandanten-ID der registrierten AAD-Anwendung   |
-|  |  |  |
+##### <a name="request-header"></a>*Anforderungsheader*
 
+|  Headername       |  Erforderlich         |  BESCHREIBUNG |
+|  ---------------   |  ---------------  | ------------ |
+|  `content-type`    |  True      |  Der Anforderung zugeordneter Inhaltstyp. Standardwert: `application/x-www-form-urlencoded`. |
 
-*Anforderungsheader*
+##### <a name="request-body"></a>*Anforderungstext*
 
-|  **Headername**  | **Erforderlich** |  **Beschreibung**                                   |
-|  --------------   | ------------ |  ------------------------------------------------- |
-|  Content-Type     | True         | Der Anforderung zugeordneter Inhaltstyp. Standardwert: `application/x-www-form-urlencoded`.  |
-|  |  |  |
+|  Eigenschaftenname     |  Erforderlich         |  BESCHREIBUNG |
+|  ---------------   |  ---------------  | ------------ |
+|  `grant-type`      |  True      |  Gewährungstyp. Verwenden Sie `"client_credentials"`. |
+|  `client_id`       |  True      |  Der Azure AD-App zugeordneter Client-/App-Bezeichner. |
+|  `client_secret`   |  True      |  Der Azure AD-App zugeordnetes Geheimnis. |
+|  `resource`        |  True      |  Zielressource, für die das Token angefordert wird. Verwenden Sie `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`, da die Marketplace-SaaS-API in diesem Fall immer die Zielressource ist. |
 
+##### <a name="response"></a>*Antwort*
 
-*Anforderungstext*
+|  Name     |  type         |  BESCHREIBUNG |
+|  ------   |  ---------------  | ------------ |
+|  200 – OK   |  TokenResponse    |  Anforderung erfolgreich. |
 
-| **Eigenschaftenname**   | **Erforderlich** |  **Beschreibung**                                                          |
-| -----------------   | -----------  | ------------------------------------------------------------------------- |
-|  Grant_type         | True         | Gewährungstyp. Standardwert: `client_credentials`.                    |
-|  Client_id          | True         |  Der Azure AD-App zugeordneter Client-/App-Bezeichner.                  |
-|  client_secret      | True         |  Der Azure AD-App zugeordnetes Kennwort.                               |
-|  Resource           | True         |  Zielressource, für die das Token angefordert wird. Standardwert: `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
-|  |  |  |
+##### <a name="tokenresponse"></a>*TokenResponse*
 
+Beispiel für eine Antwort:
 
-*Antwort*
-
-|  **Name**  | **Typ**       |  **Beschreibung**    |
-| ---------- | -------------  | ------------------- |
-| 200 – OK    | TokenResponse  | Anforderung erfolgreich   |
-|  |  |  |
-
-*TokenResponse*
-
-Beispiel für Antworttoken:
-
-``` json
-  {
+```json
+{
       "token_type": "Bearer",
       "expires_in": "3600",
       "ext_expires_in": "0",
       "expires_on": "15251…",
       "not_before": "15251…",
-      "resource": "62d94f6c-d599-489b-a797-3e10e42fbe22",
+      "resource": "20e940b3-4c77-4b0b-9a53-9e16a1b010a7",
       "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
-  }               
+  }
 ```
+
+Der Wert von `"access_token"` in der Antwort ist das Zugriffstoken (`<access_token>`), das Sie beim Aufrufen aller SaaS-Fulfillment- und Marketplace-Messungs-APIs übergeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

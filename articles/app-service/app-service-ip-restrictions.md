@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: a77172aacc4c58e6430339328410744cc866def3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81639264"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207123"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service-Zugriffseinschränkungen
 
@@ -59,6 +59,10 @@ Dienstendpunkte ermöglichen das Einschränken des Zugriffs auf ausgewählte Sub
 Der Zugriff auf Apps, die in einer App Service-Umgebung ausgeführt werden, kann nicht mit Dienstendpunkten eingeschränkt werden. Wenn Ihre App in einer App Service-Umgebung enthalten ist, können Sie den Zugriff darauf mit IP-Zugriffsregeln steuern. 
 
 Bei Dienstendpunkten können Sie Ihre App mit Anwendungsgateways oder anderen WAF-Geräten konfigurieren. Sie können auch Anwendungen mit mehreren Ebenen und sicheren Back-Ends konfigurieren. Weitere Informationen zu diesen Möglichkeiten finden Sie unter [App Service-Netzwerkfunktionen](networking-features.md) und [Application Gateway-Integration mit Dienstendpunkten](networking/app-gateway-with-service-endpoints.md).
+
+> [!NOTE]
+> Dienstendpunkte werden derzeit für Web-Apps nicht unterstützt, die eine virtuelle IP (VIP) mit IP-SSL verwenden. 
+>
 
 ## <a name="managing-access-restriction-rules"></a>Verwalten von Zugriffseinschränkungsregeln
 

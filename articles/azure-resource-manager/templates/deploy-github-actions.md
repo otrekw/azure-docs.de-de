@@ -2,13 +2,13 @@
 title: Bereitstellen von Resource Manager-Vorlagen mithilfe von GitHub Actions
 description: In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Vorlagen mithilfe von GitHub Actions bereitstellen.
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: f2e0d73c838d16c161605972b87d6f07ef8869b9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 07/02/2020
+ms.openlocfilehash: 313354499901bc69ec6e00f0ba7c385065cae615
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869182"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854739"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Bereitstellen von Azure Resource Manager-Vorlagen mithilfe von GitHub Actions
 
@@ -82,7 +82,7 @@ Sie können die Datei an einer beliebigen Stelle im Repository ablegen. Im Workf
 
 ## <a name="create-workflow"></a>Erstellen des Workflows
 
-Die Workflowdatei muss im Repositorystamm im Ordner **.github/workflow** gespeichert werden. Die Erweiterung der Workflowdatei kann entweder **.yml** oder **.yaml** lauten.
+Die Workflowdatei muss am Repositorystamm im Ordner **.github/workflows** gespeichert werden. Die Erweiterung der Workflowdatei kann entweder **.yml** oder **.yaml** lauten.
 
 Sie können entweder eine Workflowdatei erstellen und diese dann in das Repository pushen/hochladen oder wie folgt vorgehen:
 

@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 07/01/2020
 ms.author: tamram
-ms.openlocfilehash: c66b521b5cd75825fcafe07b24d5d527c45f5153
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 455595a2e41ecc05f7064044e09df8efcd9d4548
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79135920"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833399"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Verwalten von Containereigenschaften und -metadaten mit .NET
 
@@ -25,14 +25,27 @@ Blobcontainer unterstützen neben den enthaltenen Daten auch Systemeigenschaften
 
 - **Benutzerdefinierte Metadaten**: Benutzerdefinierte Metadaten bestehen aus mindestens einem Name-Wert-Paar, das Sie für eine Blobspeicherressource angeben. Metadaten können verwendet werden, um zusätzliche Werte mit der Ressource zu speichern. Metadatenwerte sind nur für Ihre eigenen Zwecke bestimmt und wirken sich nicht auf das Verhalten der Ressource aus.
 
+Name-Wert-Paare für Metadaten sind gültige HTTP-Header und sollten daher allen Einschränkungen für HTTP-Header entsprechen. Metadatennamen müssen gültige HTTP-Headernamen und gültige C#-Bezeichner sein, dürfen nur ASCII-Zeichen enthalten und sollten als „Keine Beachtung von Groß-/Kleinschreibung“ behandelt werden. Metadatenwerte mit Nicht-ASCII-Zeichen sollten Base64- oder URL-codiert werden.
+
+## <a name="retrieve-container-properties"></a>Abrufen von Containereigenschaften
+
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+Rufen Sie zum Abrufen von Containereigenschaften eine der folgenden Methoden auf:
+
+- [GetProperties](/dotnet/api/azure.storage.blobs.blobcontainerclient.getproperties)
+- [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getpropertiesasync)
+
+Das folgende Codebeispiel ruft die Systemeigenschaften eines Containers ab und schreibt einige Eigenschaftswerte in ein Konsolenfenster:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerProperties":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
 Das Abrufen von Eigenschafts- und Metadatenwerten einer Blobspeicherressource ist ein zweistufiger Prozess. Bevor Sie diese Werte lesen können, müssen Sie sie explizit durch Aufrufen der **FetchAttributesAsync** oder **FetchAttributesAsync**-Methode abrufen. Ausnahme: Die Methoden **Exists** und **ExistsAsync** rufen die entsprechende Methode vom Typ **FetchAttributes** im Hintergrund auf. Wenn Sie eine dieser Methoden aufrufen, müssen Sie **FetchAttributes** nicht aufrufen.
 
 > [!IMPORTANT]
 > Wenn Sie feststellen, dass Eigenschaften- oder Metadatenwerte für eine Speicherressource nicht ausgefüllt wurden, überprüfen Sie, ob Ihr Code die **FetchAttributes**- oder **FetchAttributesAsync**-Methode aufruft.
-
-Name-Wert-Paare für Metadaten sind gültige HTTP-Header und sollten daher allen Einschränkungen für HTTP-Header entsprechen. Metadatennamen müssen gültige HTTP-Headernamen und gültige C#-Bezeichner sein, dürfen nur ASCII-Zeichen enthalten und sollten als „Keine Beachtung von Groß-/Kleinschreibung“ behandelt werden. Metadatenwerte mit Nicht-ASCII-Zeichen sollten Base64- oder URL-codiert werden.
-
-## <a name="retrieve-container-properties"></a>Abrufen von Containereigenschaften
 
 Rufen Sie zum Abrufen von Containereigenschaften eine der folgenden Methoden auf:
 
@@ -63,14 +76,40 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 }
 ```
 
+---
+
 ## <a name="set-and-retrieve-metadata"></a>Festlegen und Abrufen von Metadaten
+
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+Sie können Metadaten als ein oder mehrere Name-Wert-Paare für eine Blob- oder Containerressource angeben. Fügen Sie zum Festlegen von Metadaten Name-Wert-Paare zu einem Objekt vom Typ [IDictionary](/dotnet/api/system.collections.idictionary) hinzu, und rufen Sie dann eine der folgenden Methoden auf, um die Werte zu schreiben:
+
+- [SetMetadata](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadata)
+- [SetMetadataAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadataasync)
+
+Der Name der Metadaten muss den Benennungskonventionen für C#-Bezeichner entsprechen. Bei Metadatennamen wird die Groß-/Kleinschreibung beibehalten, mit der sie erstellt wurden. Beim Festlegen oder Lesen wird die Groß-/Kleinschreibung allerdings ignoriert. Werden für eine Ressource mehrere Metadatenheader mit dem gleichen Namen übermittelt, werden die Werte durch Kommas getrennt und verkettet. Anschließend wird der HTTP-Antwortcode 200 (OK) zurückgegeben.
+
+Das folgende Codebeispiel legt die Metadaten für einen Container fest.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_AddContainerMetadata":::
+
+Rufen Sie zum Abrufen von Metadaten eine der folgenden Methoden auf:
+
+- [GetProperties](/dotnet/api/azure.storage.blobs.blobcontainerclient.getproperties)
+- [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getpropertiesasync)
+
+Lesen Sie anschließend die Werte, wie im folgenden Beispiel gezeigt:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerMetadata":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Sie können Metadaten als ein oder mehrere Name-Wert-Paare für eine Blob- oder Containerressource angeben. Fügen Sie zum Festlegen von Metadaten Name-Wert-Paare zur Sammlung **Metadaten** der Ressource hinzu, und rufen Sie dann eine der folgenden Methoden auf, um die Werte zu schreiben:
 
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadataasync)
 
-Der Name der Metadaten muss den Benennungskonventionen für C#-Bezeichner entsprechen. Bei Metadatennamen wird die Groß-/Kleinschreibung beibehalten, mit der sie erstellt wurden. Beim Festlegen oder Lesen wird die Groß-/Kleinschreibung allerdings ignoriert. Werden für eine Ressource mehrere Metadatenheader mit dem gleichen Namen übermittelt, gibt der Blobspeicher den HTTP-Fehlercode 400 (Ungültige Anforderung) zurück.
+Der Name der Metadaten muss den Benennungskonventionen für C#-Bezeichner entsprechen. Bei Metadatennamen wird die Groß-/Kleinschreibung beibehalten, mit der sie erstellt wurden. Beim Festlegen oder Lesen wird die Groß-/Kleinschreibung allerdings ignoriert. Werden für eine Ressource mehrere Metadatenheader mit dem gleichen Namen übermittelt, werden die Werte durch Kommas getrennt und verkettet. Anschließend wird der HTTP-Antwortcode 200 (OK) zurückgegeben.
 
 Das folgende Codebeispiel legt die Metadaten für einen Container fest. Mittels der **Hinzufügen** -Methode der Sammlung wird ein Wert festgelegt. Der andere Wert wird mit der impliziten Schlüssel-Wert-Syntax festgelegt. Beide eignen sich hierzu.
 
@@ -126,10 +165,12 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
 }
 ```
 
+---
+
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Get Container Properties](/rest/api/storageservices/get-container-properties)
 - [Set Container Metadata](/rest/api/storageservices/set-container-metadata)
-- [Get Container Metadata](/rest/api/storageservices/set-container-metadata)
+- [Get Container Metadata](/rest/api/storageservices/get-container-metadata)

@@ -8,28 +8,28 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 6ef929a2934d8480ce6d1eca8bb7ba3b70580110
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d74994609799c155453f0c7cac887f2e033ea90b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84551993"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087281"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-using-a-resource-manager-template"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mit einer Resource Manager-Vorlage
+# <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mithilfe einer ARM-Vorlage
 
-In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine Resource Manager-Vorlage zum Bereitstellen eines virtuellen Windows-Computers (VM) in Azure verwenden. 
+In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) zum Bereitstellen eines virtuellen Windows-Computers (VM) in Azure verwenden.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Keine.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-windows-virtual-machine"></a>Erstellen eines virtuellen Windows-Computers
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
 
@@ -48,7 +48,7 @@ In der Vorlage sind mehrere Ressourcen definiert:
 
 
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt einen Schlüsseltresor und ein Geheimnis.
 
@@ -86,7 +86,7 @@ Löschen Sie die Ressourcengruppe, wenn Sie die Ressourcen nicht mehr benötigen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie mit einer Resource Manager-Vorlage einen einfachen virtuellen Computer bereitgestellt. Fahren Sie mit dem Tutorial für virtuelle Linux-Computer fort, um weitere Informationen zu virtuellen Azure-Computern zu erhalten.
+In dieser Schnellstartanleitung haben Sie mit einer ARM-Vorlage einen einfachen virtuellen Computer bereitgestellt. Fahren Sie mit dem Tutorial für virtuelle Linux-Computer fort, um weitere Informationen zu virtuellen Azure-Computern zu erhalten.
 
 
 > [!div class="nextstepaction"]

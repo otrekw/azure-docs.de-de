@@ -2,25 +2,21 @@
 title: Bewährte Methoden für Vorlagen
 description: Beschreibt die empfohlenen Vorgehensweisen zum Erstellen von Azure Resource Manager-Vorlagen. Bietet Vorschläge zur Vermeidung häufig auftretender Probleme bei der Verwendung von Vorlagen.
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/09/2020
+ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156411"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058060"
 ---
 # <a name="arm-template-best-practices"></a>Bewährte Methoden für ARM-Vorlagen
 
-Dieser Artikel bietet Empfehlungen für die Erstellung Ihrer ARM-Vorlage (Azure Resource Manager). Anhand dieser Empfehlungen können Sie häufig auftretende Probleme vermeiden, wenn Sie eine ARM-Vorlage zum Bereitstellen einer Lösung verwenden.
-
-Empfehlungen zur Verwaltung Ihrer Azure-Abonnements finden Sie unter [Azure-Unternehmensgerüst – präskriptive Abonnementgovernance](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json).
-
-Empfehlungen zur Erstellung von Vorlagen, die in allen Azure-Cloudumgebungen funktionieren, finden Sie unter [Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](templates-cloud-consistency.md).
+Dieser Artikel zeigt, wie Sie empfohlene Vorgehensweisen beim Erstellen der ARM-Vorlage verwenden. Anhand dieser Empfehlungen können Sie häufig auftretende Probleme vermeiden, wenn Sie eine ARM-Vorlage zum Bereitstellen einer Lösung verwenden.
 
 ## <a name="template-limits"></a>Vorlagengrenzwerte
 
-Begrenzen Sie die Größe der Vorlage auf 4 MB und die jeder Parameterdatei auf 64 KB. Die 4-MB-Beschränkung gilt für den endgültigen Status der Vorlage, nachdem sie durch iterative Ressourcendefinitionen und Werte für variables und Parameter erweitert wurde. 
+Begrenzen Sie die Größe der Vorlage auf 4 MB und die jeder Parameterdatei auf 64 KB. Die 4-MB-Beschränkung gilt für den endgültigen Status der Vorlage, nachdem sie durch iterative Ressourcendefinitionen und Werte für variables und Parameter erweitert wurde.
 
 Außerdem gelten folgenden Beschränkungen:
 
@@ -234,7 +230,7 @@ Die folgenden Informationen können bei der Arbeit mit [Ressourcen](template-syn
    * [Einrichten des Zugriffs auf WinRM für virtuelle Computer in Azure Resource Manager](../../virtual-machines/windows/winrm.md)
    * [Öffnen von Ports für einen virtuellen Computer in Azure mithilfe des Azure-Portals](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [Öffnen von Ports und Endpunkten für einen virtuellen Computer in Azure mithilfe von PowerShell](../../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Öffnen von Ports und Endpunkten für einen virtuellen Linux-Computer mithilfe der Azure CLI](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+   * [Öffnen von Ports und Endpunkten für einen virtuellen Linux-Computer mithilfe der Azure CLI](../../virtual-machines/linux/nsg-quickstart.md)
 
 * Die Eigenschaft **domainNameLabel** für öffentliche IP-Adressen muss eindeutig sein. Der Wert **domainNameLabel** muss 3 bis 63 Zeichen lang sein und den Regeln des regulären Ausdrucks `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` entsprechen. Da die **uniqueString**-Funktion eine Zeichenfolge mit 13 Zeichen erstellt, ist der **dnsPrefixString**-Parameter auf 50 Zeichen beschränkt:
 
@@ -275,7 +271,12 @@ Die folgenden Informationen können bei der Arbeit mit [Ressourcen](template-syn
    > [!NOTE]
    > Zum Sicherzustellen der Verschlüsselung von Geheimnissen, die als Parameter an virtuelle Computer und Erweiterungen übergeben werden, verwenden Sie die **protectedSettings**-Eigenschaft der entsprechenden Erweiterungen.
    > 
-   > 
+
+## <a name="use-test-toolkit"></a>Verwenden des Testtoolkits
+
+Das ARM-Vorlagen-Testtoolkit ist ein Skript, das überprüft, ob Ihre Vorlage die empfohlenen Vorgehensweisen verwendet. Wenn Ihre Vorlage mit den empfohlenen Vorgehensweisen nicht kompatibel ist, wird eine Liste mit Warnungen ausgegeben, die vorgeschlagene Änderungen enthält. Das Testtoolkit kann Ihnen dabei helfen zu erfahren, wie Sie bewährte Methoden in Ihre Vorlage implementieren.
+
+Nachdem Sie Ihre Vorlage abgeschlossen haben, führen Sie das Testtoolkit aus, um zu überprüfen, ob es Möglichkeiten gibt, die Implementierung zu verbessern. Weitere Informationen finden Sie unter [ARM-Vorlagen-Testtoolkit](test-toolkit.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

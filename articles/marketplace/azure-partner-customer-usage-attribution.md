@@ -1,18 +1,18 @@
 ---
 title: Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketplace
 description: Hier erhalten Sie einen Überblick über die Nachverfolgung der Kundennutzung für Azure Marketplace-Lösungen.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 9c70f8d728786e8aff8da33f9a39b8c2cfaafdc4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6997c1aaab8cbe635ccef21967a0fce1f735c1ab
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295591"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103023"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketplace
 
@@ -66,7 +66,7 @@ Nachdem Sie Ihrer Vorlage oder im Benutzer-Agent eine GUID hinzugefügt und die 
 
 1. Registrieren Sie sich als [kommerzieller Marketplace-Herausgeber](https://aka.ms/JoinMarketplace).
 
-   * Partner müssen [über ein Profil im Partner Center verfügen](https://docs.microsoft.com/azure/marketplace/become-publisher). Wir empfehlen Ihnen, das Angebot im Azure Marketplace oder in AppSource aufzulisten.
+   * Partner müssen [über ein Profil im Partner Center verfügen](become-publisher.md). Wir empfehlen Ihnen, das Angebot im Azure Marketplace oder in AppSource aufzulisten.
    * Partner können mehrere GUIDs registrieren.
    * Partner können auch GUIDs für nicht im Marketplace verfügbare Lösungsvorlagen und Angebote registrieren.
 
@@ -74,7 +74,7 @@ Nachdem Sie Ihrer Vorlage oder im Benutzer-Agent eine GUID hinzugefügt und die 
 
 1. Wählen Sie auf der Seite **Kontoeinstellungen** die Option **Nachverfolgungs-GUID hinzufügen** aus.
 
-1. Geben Sie im Feld **GUID** Ihre Nachverfolgungs-GUID ein. Geben Sie nur die GUID ohne das Präfix **pid-** ein. Geben Sie im Feld **Beschreibung** den Angebotsnamen oder eine Beschreibung ein.
+1. Geben Sie im Feld **GUID** Ihre Nachverfolgungs-GUID ein. Geben Sie nur die GUID ohne das Präfix `pid-` ein. Geben Sie im Feld **Beschreibung** den Angebotsnamen oder eine Beschreibung ein.
 
 1. Wenn Sie mehrere GUIDs registrieren möchten, klicken Sie erneut auf **Nachverfolgungs-GUID hinzufügen**. Auf der Seite werden weitere Felder angezeigt.
 
@@ -85,7 +85,7 @@ Viele Partnerlösungen werden mithilfe von Azure Resource Manager-Vorlagen berei
 
 > [!NOTE]
 > Weitere Informationen zum Erstellen und Veröffentlichen von Lösungsvorlagen finden Sie unter:
-> * [Erstellen und Bereitstellen Ihrer ersten Resource Manager-Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)
+> * [Erstellen und Bereitstellen Ihrer ersten Resource Manager-Vorlage](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 >* [Azure-Anwendungsangebot](./partner-center-portal/create-new-azure-apps-offer.md)
 >* Video: [Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603)
 
@@ -98,7 +98,7 @@ Um einen global eindeutigen Bezeichner (GUID) hinzuzufügen, nehmen Sie an der H
 
 1. Fügen Sie eine neue Ressource in der Hauptvorlagendatei hinzu. Die Ressource darf sich nur in der Datei **mainTemplate.json** oder **azuredeploy.json** befinden, nicht in geschachtelten oder verknüpften Vorlagen.
 
-1. Geben Sie den GUID-Wert nach dem Präfix **pid-** ein (z. B. pid-eb7927c8-dd66-43e1-b0cf-c346a422063).
+1. Geben Sie den GUID-Wert nach dem Präfix `pid-` ein (Beispiel: pid-eb7927c8-dd66-43e1-b0cf-c346a422063).
 
 1. Überprüfen Sie die Vorlage auf Fehler.
 
@@ -137,12 +137,12 @@ Wenn Sie eine Azure Resource Manager-Vorlage verwenden, sollten Sie Ihre Lösung
 
 ### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>Markieren einer Bereitstellung mithilfe der Resource Manager-APIs
 
-Fügen Sie Entwerfen Ihrer API-Aufrufe eine GUID in den Benutzer-Agent-Header in der Anforderung ein, um die Zuordnung der Nutzung durch Kunden zu aktivieren. Fügen Sie die GUID für jedes Angebot oder SKU hinzu. Formatieren Sie die Zeichenfolge mit dem Präfix **pid-** , und fügen Sie die vom Partner generierte GUID ein. Nachfolgend finden Sie ein Beispiel für das GUID-Format zum Einfügen in den Benutzer-Agent:
+Fügen Sie Entwerfen Ihrer API-Aufrufe eine GUID in den Benutzer-Agent-Header in der Anforderung ein, um die Zuordnung der Nutzung durch Kunden zu aktivieren. Fügen Sie die GUID für jedes Angebot oder SKU hinzu. Formatieren Sie die Zeichenfolge mit dem Präfix `pid-`, und fügen Sie die vom Partner generierte GUID ein. Nachfolgend finden Sie ein Beispiel für das GUID-Format zum Einfügen in den Benutzer-Agent:
 
 ![GUID-Beispielformat](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
 > [!NOTE]
-> Das Format der Zeichenfolge ist wichtig. Wenn das Präfix **pid-** nicht enthalten ist, können die Daten nicht abgefragt werden. Verschiedene SDKs gehen bei der Nachverfolgung unterschiedlich vor. Zum Implementieren dieser Methode müssen Sie die Unterstützung und den Nachverfolgungsansatz Ihres bevorzugten Azure SDK überprüfen.
+> Das Format der Zeichenfolge ist wichtig. Wenn das Präfix `pid-` nicht enthalten ist, können die Daten nicht abgefragt werden. Verschiedene SDKs gehen bei der Nachverfolgung unterschiedlich vor. Zum Implementieren dieser Methode müssen Sie die Unterstützung und den Nachverfolgungsansatz Ihres bevorzugten Azure SDK überprüfen.
 
 #### <a name="example-the-python-sdk"></a>Beispiel: Python SDK
 
@@ -168,7 +168,7 @@ Wenn Sie Ihre GUID mithilfe der Azure CLI anfügen, legen Sie die Umgebungsvaria
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-Weitere Informationen finden Sie unter [Azure SDK für Go](https://docs.microsoft.com/azure/go/).
+Weitere Informationen finden Sie unter [Azure SDK für Go](https://docs.microsoft.com/azure/developer/go/).
 
 ## <a name="use-terraform"></a>Einsatz von Terraform
 
@@ -257,7 +257,7 @@ Es gibt zwei Supportkanäle, abhängig vom Problem, mit dem Sie sich befassen.
 
 Wenn Probleme im Partner Center auftreten, z.B. beim Anzeigen des Berichts über die Zuordnung der Nutzung durch Kunden oder beim Anmelden, erstellen Sie hier eine Supportanfrage an das Partner Center-Supportteam: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
-![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
+![Screenshot: Seite „Support erhalten“](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
 Wenn Sie Unterstützung beim Marketplace-Onboarding und/oder beim Zuordnen der Nutzung durch Kunden im Allgemeinen benötigen, wie z. B. beim Einrichten der Zuordnen der Nutzung durch Kunden, führen Sie die folgenden Schritte aus:
 
@@ -332,7 +332,7 @@ Das GUID-Generatorformular von Azure Storage generiert eine GUID garantiert im e
 
 **Kann ich eine private, benutzerdefinierte virtuelle Festplatte für ein Angebot für Lösungsvorlagen im Azure Marketplace verwenden?**
 
-Nein, das ist nicht möglich. Das VM-Image muss aus dem Azure Marketplace stammen. Weitere Informationen finden Sie unter [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines).
+Nein, das ist nicht möglich. Das VM-Image muss aus dem Azure Marketplace stammen. Weitere Informationen finden Sie unter [Leitfaden für die Veröffentlichung von Virtual Machine-Angeboten](marketplace-virtual-machines.md).
 
 Sie können ein mit einer benutzerdefinierten virtuellen Festplatte ein VM-Angebot im Marketplace erstellen und es als „Privat“ markieren, sodass andere Benutzer dieses nicht einsehen können. Verweisen Sie dann in der Lösungsvorlage auf diese VM.
 
