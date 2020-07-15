@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 686d6e2ff01fd4d8283350ab8097e1f73c914af0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d90b212286b555bf5b858990fd5dcb062348be8d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81260995"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254723"
 ---
 # <a name="create-and-publish-a-product"></a>Erstellen und Veröffentlichen eines Produkts  
 
@@ -85,7 +85,7 @@ Entwickler müssen ein Produkt zunächst abonnieren, um Zugriff auf die API zu e
 4. Wählen Sie eine API aus, und klicken Sie auf **Auswählen**.
 
 > [!TIP]
-> Sie können ein Benutzerabonnement für ein *Produkt* unter Verwendung benutzerdefinierter Abonnementschlüssel über die [REST-API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription/createorupdate) oder einen PowerShell-Befehl erstellen oder aktualisieren.
+> Sie können ein Benutzerabonnement für ein *Produkt* unter Verwendung benutzerdefinierter Abonnementschlüssel über die [REST-API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) oder einen PowerShell-Befehl erstellen oder aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

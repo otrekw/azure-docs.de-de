@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: fc615149b092aebfdde767fb3b716fb897bfd551
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 833b8fff65de7e7fdfc36565e91d18a1644723d1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77121509"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254315"
 ---
 # <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Schnellstart:  Bereitstellen einer Java-App in Azure Service Fabric unter Linux
 
@@ -21,9 +21,9 @@ Azure Service Fabric ist eine Plattform, mit der verteilte Systeme bereitgestell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Java-Umgebung](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) und [Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-- [Eclipse Neon (4.6) oder höher](https://www.eclipse.org/downloads/packages/) und [Eclipse-Plug-In für Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#install-the-eclipse-plug-in-optional)
-- [Service Fabric SDK und die Befehlszeilenschnittstelle (Command Line Interface, CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Java-Umgebung](./service-fabric-get-started-linux.md#set-up-java-development) und [Yeoman](./service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Eclipse Neon (4.6) oder höher](https://www.eclipse.org/downloads/packages/) und [Eclipse-Plug-In für Service Fabric](./service-fabric-get-started-linux.md#install-the-eclipse-plug-in-optional)
+- [Service Fabric SDK und die Befehlszeilenschnittstelle (Command Line Interface, CLI)](./service-fabric-get-started-linux.md#installation-methods)
 - [Git-Client](https://git-scm.com/downloads)
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels

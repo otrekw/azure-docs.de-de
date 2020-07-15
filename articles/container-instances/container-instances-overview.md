@@ -4,12 +4,12 @@ description: Mit den Azure Container Instances-Dienst lassen sich isolierte Cont
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 261e5d0159b4201aab0e8aad1e05fa320cc76a14
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84695283"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259501"
 ---
 # <a name="what-is-azure-container-instances"></a>Was ist Azure Container Instances?
 
@@ -43,7 +43,7 @@ Bei rechenintensiven Aufträgen wie maschinelles Lernen kann Azure Container Ins
 
 ## <a name="persistent-storage"></a>Permanenter Speicher
 
-Dank der Möglichkeit zur durch Azure Storage gesicherten direkten [Einbindung von Azure Files-Freigaben](container-instances-mounting-azure-files-volume.md) können Sie mit Azure Container Instances den Zustand abrufen und speichern.
+Dank der Möglichkeit zur durch Azure Storage gesicherten direkten [Einbindung von Azure Files-Freigaben](./container-instances-volume-azure-files.md) können Sie mit Azure Container Instances den Zustand abrufen und speichern.
 
 ## <a name="linux-and-windows-containers"></a>Linux- und Windows-Container
 

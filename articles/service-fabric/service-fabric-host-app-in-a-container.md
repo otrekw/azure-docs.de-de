@@ -3,16 +3,16 @@ title: Bereitstellen einer .NET-App in einem Container in Azure Service Fabric
 description: Hier erfahren Sie, wie Sie eine vorhandene .NET-Anwendung mit Visual Studio in einen Container packen und Container in Service Fabric lokal debuggen. Die Containeranwendung wird per Push an eine Azure-Containerregistrierung übertragen und in einem Service Fabric-Cluster bereitgestellt. Bei der Bereitstellung in Azure nutzt die Anwendung Azure SQL-Datenbank für die dauerhafte Speicherung von Daten.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: aa99897da99ff1a1443e548e98ae415b6a8d49f5
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4970cf6492da38ad76a51df88eeb73538c850c67
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234238"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258876"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Tutorial: Bereitstellen einer .NET-App in einem Windows-Container in Azure Service Fabric
 
-In diesem Tutorial wird gezeigt, wie Sie eine vorhandene ASP.NET-Anwendung in einen Container und als Service Fabric-Anwendung packen.  Führen Sie die Container lokal im Service Fabric-Bereitstellungscluster aus, und stellen Sie dann die Anwendung in Azure bereit.  Die Anwendung speichert Daten dauerhaft in [Azure SQL-Datenbank](/azure/sql-database/sql-database-technical-overview).
+In diesem Tutorial wird gezeigt, wie Sie eine vorhandene ASP.NET-Anwendung in einen Container und als Service Fabric-Anwendung packen.  Führen Sie die Container lokal im Service Fabric-Bereitstellungscluster aus, und stellen Sie dann die Anwendung in Azure bereit.  Die Anwendung speichert Daten dauerhaft in [Azure SQL-Datenbank](../azure-sql/database/sql-database-paas-overview.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -55,7 +55,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Wenn Sie die Fabrikam Fiber CallCenter-Anwendung in der Produktion ausführen, müssen die Dateien dauerhaft in einer Datenbank gespeichert werden. Derzeit besteht keine Möglichkeit, die dauerhafte Speicherung von Daten in einem Container sicherzustellen. Daher können Sie Produktionsdaten in SQL Server nicht in einem Container speichern.
 
-Wir empfehlen [Azure SQL-Datenbank](/azure/sql-database/sql-database-get-started-powershell). Führen Sie zum Einrichten und Ausführen einer verwalteten SQL Server-Datenbank in Azure das folgende Skript aus.  Ändern Sie die Skriptvariablen nach Bedarf. *clientIP* ist die IP-Adresse Ihres Entwicklungscomputers. Notieren Sie sich den vom Skript ausgegebenen Servernamen.
+Wir empfehlen [Azure SQL-Datenbank](../azure-sql/database/powershell-script-content-guide.md). Führen Sie zum Einrichten und Ausführen einer verwalteten SQL Server-Datenbank in Azure das folgende Skript aus.  Ändern Sie die Skriptvariablen nach Bedarf. *clientIP* ist die IP-Adresse Ihres Entwicklungscomputers. Notieren Sie sich den vom Skript ausgegebenen Servernamen.
 
 ```powershell
 $subscriptionID="<subscription ID>"
@@ -126,7 +126,7 @@ Drücken Sie **F5**, um die Anwendung in einem Container im lokalen Service Fabr
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
-Die Anwendung wird lokal ausgeführt. Bereiten Sie nun die Bereitstellung in Azure vor.  Containerimages müssen in einer Containerregistrierung gespeichert werden.  Erstellen Sie mit dem folgenden Skript eine [Azure-Containerregistrierung](/azure/container-registry/container-registry-intro). Der Containerregistrierungsname ist für andere Azure-Abonnements sichtbar, daher muss er eindeutig sein.
+Die Anwendung wird lokal ausgeführt. Bereiten Sie nun die Bereitstellung in Azure vor.  Containerimages müssen in einer Containerregistrierung gespeichert werden.  Erstellen Sie mit dem folgenden Skript eine [Azure-Containerregistrierung](../container-registry/container-registry-intro.md). Der Containerregistrierungsname ist für andere Azure-Abonnements sichtbar, daher muss er eindeutig sein.
 Vor der Bereitstellung der Anwendung in Azure übertragen Sie das Containerimage per Push an diese Registrierung.  Bei der Bereitstellung im Cluster in Azure durch die Anwendung wird das Containerimage aus dieser Registrierung abgerufen.
 
 ```powershell
@@ -179,7 +179,7 @@ Beim Erstellen des Clusters:
 
 ## <a name="allow-your-application-running-in-azure-to-access-sql-database"></a>Zulassen des Zugriffs auf die SQL-Datenbank durch die in Azure ausgeführte Anwendung
 
-Sie haben zuvor eine SQL-Firewallregel erstellt, um Ihrer lokal ausgeführten Anwendung den Zugriff zu gewähren.  Als Nächstes müssen Sie der in Azure ausgeführten Anwendung den Zugriff auf die SQL-Datenbank erteilen.  Erstellen Sie einen [VNET-Dienstendpunkt](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) für den Service Fabric-Cluster und anschließend eine Regel, um diesem Endpunkt den Zugriff auf die SQL-Datenbank zu gewähren. Geben Sie unbedingt die Variable der Clusterressourcengruppe an, die Sie beim Erstellen des Clusters notiert haben.
+Sie haben zuvor eine SQL-Firewallregel erstellt, um Ihrer lokal ausgeführten Anwendung den Zugriff zu gewähren.  Als Nächstes müssen Sie der in Azure ausgeführten Anwendung den Zugriff auf die SQL-Datenbank erteilen.  Erstellen Sie einen [VNET-Dienstendpunkt](../azure-sql/database/vnet-service-endpoint-rule-overview.md) für den Service Fabric-Cluster und anschließend eine Regel, um diesem Endpunkt den Zugriff auf die SQL-Datenbank zu gewähren. Geben Sie unbedingt die Variable der Clusterressourcengruppe an, die Sie beim Erstellen des Clusters notiert haben.
 
 ```powershell
 # Create a virtual network service endpoint
