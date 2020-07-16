@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57e312df31682ea868443423f40d54369cab6699
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846711"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231298"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Spezifikationen von Azure FXT Edge Filer
 
@@ -46,7 +46,7 @@ Azure FXT Edge Filer passt in ein 19-Zoll-Standard-Rack und hat eine Höhe von e
 
 <!-- 10x2.5 inches version -->
 
-| Abmessungen Filer           |                          |
+| Abmessungen Filer            | Wert                    |
 |-----------------------------|--------------------------|
 | Höhe                      | 42,8 mm (1,68 Zoll)    |
 | Breite (einschließlich Rack-Ohren) | 482 mm (18,97 Zoll)  |
@@ -56,7 +56,7 @@ Azure FXT Edge Filer passt in ein 19-Zoll-Standard-Rack und hat eine Höhe von e
 | Tiefe – Rack-Ohren bis zum weitesten vorderen Überstand ohne Blende | 22 mm (0,87 Zoll)  |
 | Tiefe – Rack-Ohren bis zum weitesten vorderen Überstand mit Blende    | 35,84 mm (1.41 Zoll) |
 
-| Weight | |
+| Weight | Wert |
 |-----------------|----------------------|
 | Knotengewicht (ohne Verpackung, ohne Zubehör) | 18,1 kg (40 lbs) |
 | Nettogewicht (ohne Verpackung, einschließlich Zubehör) | 23,1 kg (51 lbs)|

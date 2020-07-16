@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78196925"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202586"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurieren von Apache Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 
@@ -121,7 +121,9 @@ Im letzten Abschnitt haben Sie zwei Richtlinien konfiguriert.  „hiveuser1“ v
 
 1. Wählen Sie die Registerkarte **Definition** aus. Befehlstext:
 
-       SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"`
+    ```
 
    Gemäß den definierten Ranger-Richtlinien verfügt „hiveuser1“ über die Auswahlberechtigung für alle Spalten.  Diese Abfrage kann daher mit den Anmeldeinformationen von „hiveuser1“ verwendet werden, nicht aber mit den Anmeldeinformationen von „hiveuser2“.
 
@@ -136,15 +138,21 @@ So testen Sie die zweite Richtlinie (read-hivesampletable-devicemake), die Sie i
 1. Fügen Sie in Excel ein neues Arbeitsblatt ein.
 2. Führen Sie das letzte Verfahren durch, um die Daten zu importieren.  Geben Sie dabei allerdings anstelle der Anmeldeinformationen von „hiveuser1“ die Anmeldeinformationen von „hiveuser2“ an. Das funktioniert jedoch nicht, da „hiveuser2“ nur zum Anzeigen von zwei Spalten berechtigt ist. Sie erhalten den folgenden Fehler:
 
-        [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
-        
+    ```output
+    [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
+    ```
+
 3. Führen Sie das gleiche Datenimportverfahren durch. Verwenden Sie diesmal die Anmeldeinformationen von „hiveuser2“, und ändern Sie auch die select-Anweisung von:
 
-        SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```
 
     in:
 
-        SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```
 
     Nach Abschluss des Vorgangs wurden zwei Datenspalten importiert.
 

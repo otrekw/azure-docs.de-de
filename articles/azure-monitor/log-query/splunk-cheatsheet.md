@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: 6346055f1169bfa533d5dbfe441ecf27fb0d78a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00fdaf93553c97112c67caa66cb2246756b63c33
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75397748"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207478"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Von Splunk zur Azure Monitor-Protokollabfrage
 
@@ -68,146 +68,108 @@ Die folgenden Abschnitte enthalten Beispiele für die Verwendung verschiedener O
 ### <a name="search"></a>Suchen,
 In Splunk können Sie das Schlüsselwort `search` auslassen und eine Zeichenfolge ohne Anführungszeichen eingeben. In Azure Monitor müssen Sie jede Abfrage mit `find` beginnen, eine nicht in Anführungszeichen eingeschlossene Zeichenfolge ist ein Spaltenname, und der Suchwert muss eine Zeichenfolge in Anführungszeichen sein. 
 
-| |  | |
+| | Operator | Beispiel |
 |:---|:---|:---|
-| Splunk | **search** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
-| Azure Monitor | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
-| | |
+| **Splunk** | **search** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
+| **Azure Monitor** | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
+
 
 ### <a name="filter"></a>Filtern
 Azure Monitor-Protokollabfragen beginnen in einem tabellarischen Resultset mit dem „where“-Filter. In Splunk ist Filtern der Standardvorgang für den aktuellen Index. Sie können auch den `where`-Operator in Splunk verwenden, doch wird dies nicht empfohlen.
 
-| |  | |
+| | Operator | Beispiel |
 |:---|:---|:---|
-| Splunk | **search** | <code>Event.Rule="330009.2" Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" _indextime>-24h</code> |
-| Azure Monitor | **where** | <code>Office_Hub_OHubBGTaskError<br>&#124; where Session_Id == "c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time() > ago(24h)</code> |
-| | |
-
+| **Splunk** | **search** | <code>Event.Rule="330009.2" Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" _indextime>-24h</code> |
+| **Azure Monitor** | **where** | <code>Office_Hub_OHubBGTaskError<br>&#124; where Session_Id == "c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time() > ago(24h)</code> |
 
 ### <a name="getting-n-eventsrows-for-inspection"></a>Abrufen von n Ereignissen/Zeilen zur Überprüfung 
 Azure Monitor-Protokollabfragen unterstützen auch `take` als Alias für `limit`. Wenn in Splunk die Ergebnisse sortiert sind, gibt `head` die ersten n Ergebnisse zurück. In Azure Monitor ist „limit“ nicht sortiert, doch werden die ersten n Zeilen zurückgegeben, die gefunden werden.
 
-| |  | |
+| | Operator | Beispiel |
 |:---|:---|:---|
-| Splunk | **head** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
-| Azure Monitor | **limit** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
-| | |
-
-
+| **Splunk** | **head** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
+| **Azure Monitor** | **limit** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
 
 ### <a name="getting-the-first-n-eventsrows-ordered-by-a-fieldcolumn"></a>Abrufen der ersten n Ereignisse/Zeilen nach Feld/Spalte sortiert
 Für niedrigste Ergebnisse in Splunk verwenden Sie `tail`. In Azure Monitor können Sie die Sortierrichtung mit `asc` angeben.
 
-| |  | |
+| | Operator | Beispiel |
 |:---|:---|:---|
-| Splunk | **head** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
-| Azure Monitor | **top** | <code>Office_Hub_OHubBGTaskError<br>&#124; top 20 by Event_Sequence</code> |
-| | |
-
-
-
+| **Splunk** | **head** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
+| **Azure Monitor** | **top** | <code>Office_Hub_OHubBGTaskError<br>&#124; top 20 by Event_Sequence</code> |
 
 ### <a name="extending-the-result-set-with-new-fieldscolumns"></a>Erweitern des Resultset mit neuen Feldern/Spalten
 Splunk verfügt auch über eine `eval`-Funktion, die nicht mit dem `eval`-Operator vergleichbar ist. Sowohl der `eval`-Operator in Splunk als auch der `extend`-Operator in Azure Monitor unterstützen nur skalare Funktionen und arithmetische Operatoren.
 
-| |  | |
+| | Operator | Beispiel |
 |:---|:---|:---|
-| Splunk | **eval** |  <code>Event.Rule=330009.2<br>&#124; eval state= if(Data.Exception = "0", "success", "error")</code> |
-| Azure Monitor | **extend** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend state = iif(Data_Exception == 0,"success" ,"error")</code> |
-| | |
-
+| **Splunk** | **eval** |  <code>Event.Rule=330009.2<br>&#124; eval state= if(Data.Exception = "0", "success", "error")</code> |
+| **Azure Monitor** | **extend** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend state = iif(Data_Exception == 0,"success" ,"error")</code> |
 
 ### <a name="rename"></a>Umbenennen 
 Azure Monitor verwendet zum Umbenennen eines Felds den `project-rename`-Operator. `project-rename` ermöglicht der Abfrage, alle für ein Feld vorab erstellten Indizes zu nutzen. Splunk verfügt für den gleichen Zweck über einen `rename`-Operator.
 
-| |  | |
+| | Operator | Beispiel |
 |:---|:---|:---|
-| Splunk | **rename** |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
-| Azure Monitor | **project-rename** | <code>Office_Hub_OHubBGTaskError<br>&#124; project-rename exception = Date_Exception</code> |
-| | |
-
-
-
+| **Splunk** | **rename** |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
+| **Azure Monitor** | **project-rename** | <code>Office_Hub_OHubBGTaskError<br>&#124; project-rename exception = Date_Exception</code> |
 
 ### <a name="format-resultsprojection"></a>Formatieren von Ergebnissen/Projektion
 Splunk scheint keinen Operator aufzuweisen, der `project-away` ähnelt. Sie können die Benutzeroberfläche verwenden, um Felder auszufiltern.
 
-| |  | |
+| | Operator | Beispiel |
 |:---|:---|:---|
-| Splunk | **Tabelle** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
-| Azure Monitor | **project**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
-| | |
-
-
+| **Splunk** | **Tabelle** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
+| **Azure Monitor** | **project**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 
 ### <a name="aggregation"></a>Aggregation
 Informationen zu den verschiedenen Aggregationsfunktionen finden Sie unter [Aggregationen in Azure Monitor-Protokollabfragen](aggregations.md).
 
-| |  | |
+| | Operator | Beispiel |
 |:---|:---|:---|
-| Splunk | **stats** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
-| Azure Monitor | **summarize** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
-| | |
-
+| **Splunk** | **stats** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
+| **Azure Monitor** | **summarize** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
 
 
 ### <a name="join"></a>Join
 Das Verknüpfen in Splunk weist wesentliche Einschränkungen auf. Für die Unterabfrage gilt ein Grenzwert von 10000 Ergebnissen (in der Bereitstellungskonfigurationsdatei festgelegt) sowie eine begrenzte Anzahl von Verknüpfungskonfigurationen.
 
-| |  | |
+| | Operator | Beispiel |
 |:---|:---|:---|
-| Splunk | **join** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
-| Azure Monitor | **join** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
-| | |
-
-
+| **Splunk** | **join** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
+| **Azure Monitor** | **join** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
 
 ### <a name="sort"></a>Sortieren
 In Splunk müssen Sie zum Sortieren in aufsteigender Reihenfolge den `reverse`-Operator verwenden. In Azure Monitor kann auch definiert werden, wo Nullen zu platzieren sind, am Anfang oder am Ende.
 
-| |  | |
+| | Operator | Beispiel |
 |:---|:---|:---|
-| Splunk | **sort** |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
-| Azure Monitor | **order by** | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
-| | |
-
-
+| **Splunk** | **sort** |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
+| **Azure Monitor** | **order by** | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
 
 ### <a name="multivalue-expand"></a>Erweiterung für mehrere Werte
 Dies ist in Splunk und Azure Monitor ein ähnlicher Operator.
 
-| |  | |
+| | Operator | Beispiel |
 |:---|:---|:---|
-| Splunk | **mvexpand** |  `mvexpand foo` |
-| Azure Monitor | **mvexpand** | `mvexpand foo` |
-| | |
-
-
-
+| **Splunk** | **mvexpand** |  `mvexpand foo` |
+| **Azure Monitor** | **mvexpand** | `mvexpand foo` |
 
 ### <a name="results-facets-interesting-fields"></a>Ergebnisfacets, interessante Felder
 In Log Analytics im Azure-Portal wird nur die erste Spalte verfügbar gemacht. Alle Spalten stehen über die API zur Verfügung.
 
-| |  | |
+| | Operator | Beispiel |
 |:---|:---|:---|
-| Splunk | **fields** |  <code>Event.Rule=330009.2<br>&#124; fields App.Version, App.Platform</code> |
-| Azure Monitor | **facets** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
-| | |
-
-
-
+| **Splunk** | **fields** |  <code>Event.Rule=330009.2<br>&#124; fields App.Version, App.Platform</code> |
+| **Azure Monitor** | **facets** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
 
 ### <a name="de-duplicate"></a>Deduplizieren
 Sie können stattdessen `summarize arg_min()` verwenden, um die Reihenfolge umzukehren, in der ein Datensatz ausgewählt wird.
 
-| |  | |
+| | Operator | Beispiel |
 |:---|:---|:---|
-| Splunk | **dedup** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
-| Azure Monitor | **summarize arg_max()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
-| | |
-
-
-
+| **Splunk** | **dedup** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
+| **Azure Monitor** | **summarize arg_max()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

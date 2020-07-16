@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ec7469210bcfae53407a157a325c749aee2c2b08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c8f846201553d3cfa9a2d68b8b4a7ab655c378
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512057"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232377"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -690,7 +690,9 @@ Dieser Fehler tritt auf, weil das Löschen des Serverendpunkts fehlgeschlagen is
 | **HRESULT (dezimal)** | -1906441711 |
 | **Fehlerzeichenfolge** | JET_errLogDiskFull |
 | **Korrektur erforderlich** | Ja |
+
 | | |
+|-|-|
 | **HRESULT** | 0x80c8031a |
 | **HRESULT (dezimal)** | -2134375654 |
 | **Fehlerzeichenfolge** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
@@ -717,12 +719,16 @@ Dieser Fehler tritt auf, weil der Cloudendpunkt mit Inhalten erstellt wurde, die
 | **HRESULT (dezimal)** | –2.134.375.877 |
 | **Fehlerzeichenfolge** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **Korrektur erforderlich** | Ja |
+
 | | |
+|-|-|
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (dezimal)** | -2134375908 |
 | **Fehlerzeichenfolge** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **Korrektur erforderlich** | Ja |
+
 | | |
+|-|-|
 | **HRESULT** | 0x80c80253 |
 | **HRESULT (dezimal)** | -2134375853 |
 | **Fehlerzeichenfolge** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |

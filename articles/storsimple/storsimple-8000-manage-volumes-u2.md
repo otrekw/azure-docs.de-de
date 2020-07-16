@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 3d8ab6da9327048469c8b781657bb03b6a4b9669
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508247"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204457"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Verwalten von Volumes mithilfe des StorSimple-Geräte-Manager-Diensts (Update 3 und höher)
 
@@ -25,8 +25,8 @@ Der StorSimple-Geräte-Manager-Dienst ist eine Erweiterung im Azure-Portal, mit 
 
 Folgende StorSimple-Volumes sind möglich:
 
-* **Lokale Volumes**: Daten in diesen Volumes verbleiben jederzeit auf dem lokalen StorSimple-Gerät.
-* **Mehrstufige Volumes**: Daten in diesen Volumes können in die Cloud überlaufen.
+* **Lokal angeheftete Volumes**: Die Daten in diesen Volumes verbleiben jederzeit auf dem lokalen StorSimple-Gerät.
+* **Mehrstufige Volumes**: Die Daten in diesen Volumes können in die Cloud ausweichen.
 
 Ein Archivierungsvolume ist ein mehrstufiger Volumetyp. Die für Archivierungsvolumes verwendeten größeren Deduplizierungsblöcke ermöglichen dem Gerät die Übertragung größerer Datensegmente in die Cloud.
 
@@ -51,7 +51,7 @@ Bei Verwendung des mehrstufigen Volumes für Archivdaten wird durch Aktivieren d
 
 In der folgenden Tabelle finden Sie die bereitgestellte Maximalkapazität für die einzelnen Geräte und Volumetypen. (Beachten Sie, dass lokale Volumes nicht auf einem virtuellen Gerät verfügbar sind.)
 
-|  | Maximale Größe mehrstufiger Volumes | Maximale Größe lokaler Volumes |
+| type | Maximale Größe mehrstufiger Volumes | Maximale Größe lokaler Volumes |
 | --- | --- | --- |
 | **Physische Geräte** | | |
 | 8100 |64 TB |8 TB |

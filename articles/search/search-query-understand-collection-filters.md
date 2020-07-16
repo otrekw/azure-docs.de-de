@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 861e011c4bd368a274998859170e78cf444400a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113068"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206179"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Grundlegendes zu OData-Sammlungsfiltern in der kognitiven Azure-Suche
 
@@ -50,13 +50,17 @@ Der erste Grund ist nur eine Folge der Definition der OData-Sprache und des EDM-
 
 Wenn mehrere Filterkriterien auf eine Sammlung komplexer Objekte angewendet werden, sind die Kriterien **korreliert**, da sie sich auf *jedes Objekt in der Sammlung* beziehen. Der folgende Filter gibt beispielsweise Hotels zurück, die mindestens ein Luxuszimmer mit einem Preis von weniger als 100 haben:
 
+```odata-filter-expr
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
+```
 
 Wenn die Filterung *unkorreliert* wäre, kann der obige Filter Hotels zurückgeben, in denen ein Zimmer deluxe ist und ein anderes Zimmer einen Basispreis von weniger als 100 hat. Das wäre nicht sinnvoll, da beide Klauseln des Lambdaausdrucks für die gleiche Bereichsvariable gelten, nämlich für `room`. Aus diesem Grund sind solche Filter korreliert.
 
 Bei der Volltextsuche gibt es jedoch keine Möglichkeit, auf eine bestimmte Bereichsvariable zu verweisen. Wenn Sie die feldbezogene Suche verwenden, um eine [vollständige Lucene-Abfrage](query-lucene-syntax.md) wie diese auszugeben:
 
+```odata-filter-expr
     Rooms/Type:deluxe AND Rooms/Description:"city view"
+```
 
 erhalten Sie möglicherweise Hotels zurück, in denen ein Zimmer deluxe ist und für ein anderes Zimmer „city view“ (Aussicht auf die Stadt) in der Beschreibung erwähnt wird. Beispielsweise würde das folgende Dokument mit einer `Id` von `1` der Abfrage entsprechen:
 
@@ -149,19 +153,27 @@ Diese Datenstruktur ist so konzipiert, dass sie eine Frage sehr schnell beantwor
 
 Aufbauend auf der Gleichheit untersuchen wir nun, wie es möglich ist, mehrere Gleichheitsüberprüfungen für die gleiche Bereichsvariable mit `or` zu kombinieren. Dies funktioniert dank Algebra und [der distributiven Eigenschaft von Quantifizierern](https://en.wikipedia.org/wiki/Existential_quantification#Negation). Der folgende Ausdruck:
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 entspricht:
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
+```
 
 und jeder der beiden `any`-Unterausdrücke kann effizient mithilfe des invertierten Index ausgeführt werden. Dank [dem Negationsgesetz von Quantifizierern](https://en.wikipedia.org/wiki/Existential_quantification#Negation) ist auch dieser Ausdruck:
 
+```odata-filter-expr
     seasons/all(s: s ne 'winter' and s ne 'fall')
+```
 
 entspricht:
 
+```odata-filter-expr
     not seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 Deshalb ist es möglich, `all` mit `ne` und `and` zu verwenden.
 

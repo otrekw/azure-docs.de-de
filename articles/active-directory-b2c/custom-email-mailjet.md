@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b66ef1a28faf97759045d40ea0f649282b2d837
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91360776c50ce514985ad36242606223becbd933
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85397973"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230875"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Benutzerdefinierte E-Mail-Überprüfung mit Mailjet
 
@@ -57,7 +57,7 @@ Speichern Sie als Nächstes den Mailjet-API-Schlüssel in einem Azure AD B2C-R
 
 ## <a name="create-a-mailjet-template"></a>Erstellen einer Mailjet-Vorlage
 
-Wenn Sie ein Mailjet-Konto erstellt und den Mailjet-API-Schlüssel in einem Azure AD B2C-Richtlinienschlüssel gespeichert haben, erstellen Sie eine [dynamische Mailjet-Transaktionsvorlage](https://Mailjet.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/).
+Wenn Sie ein Mailjet-Konto erstellt und den Mailjet-API-Schlüssel in einem Azure AD B2C-Richtlinienschlüssel gespeichert haben, erstellen Sie eine [dynamische Mailjet-Transaktionsvorlage](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/).
 
 1. Öffnen Sie auf der Mailjet-Website die Seite [Transaktionsvorlagen](https://app.mailjet.com/templates/transactional), und wählen Sie **Neue Vorlage erstellen** aus.
 1. Wählen Sie **In HTML codieren** aus, und wählen Sie dann **Code von Grund auf neu erstellen** aus.

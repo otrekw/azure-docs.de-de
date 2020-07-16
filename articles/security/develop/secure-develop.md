@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34294bf29ec861d7bbb954ece7016de37769a332
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266762"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232694"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Entwickeln sicherer Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwickeln. Es werden Sicherheitsfragen und -konzepten behandelt, die Sie während der Implementierungs- und Überprüfungsphase von Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -134,7 +134,7 @@ Führen Sie DAST aus, vorzugsweise mit Unterstützung eines Sicherheitsexperten 
 
 Beim [Fuzzing](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) lösen Sie Programmfehler aus, indem Sie absichtlich falsch formatierte oder zufällige Daten in eine Anwendung einführen. Das Auslösen eines Programmfehlers hilft dabei, potenzielle Sicherheitsprobleme aufzudecken, bevor die Anwendung veröffentlicht wird.
 
-[Erkennung von Sicherheitsrisiken](https://docs.microsoft.com/security-risk-detection/) ist der einzigartige Fuzzing-Dienst von Microsoft zum Auffinden sicherheitskritischer Fehler in Software.
+[Erkennung von Sicherheitsrisiken](https://www.microsoft.com/en-us/security-risk-detection/) ist der einzigartige Fuzzing-Dienst von Microsoft zum Auffinden sicherheitskritischer Fehler in Software.
 
 ### <a name="conduct-attack-surface-review"></a>Durchführen einer Überprüfung der Angriffsfläche
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3db8ae98302ad6df7355ce03f5a33b5d21f1ea09
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334044"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242099"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Unterstützte Kartenstile in Azure Maps
 Azure Maps unterstützt mehrere integrierte Kartenstile, die im Folgenden beschrieben werden.
@@ -28,6 +28,7 @@ Der Kartenstil **Straße** ist eine Standardkarte, die Straßen, natürliche und
 * [Kartenkachel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web-SDK-Kartensteuerelement
 * Android-Kartensteuerelement
+* Power BI-Visualisierung
 
 ## <a name="blank-and-blank_accessible"></a>„blank“ und „blank_accessible“
 
@@ -48,6 +49,7 @@ Der Kartenstil **Satellit** ist eine Kombination aus Satellitenbildern und Lufta
 * [Satellitenkachel](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
 * Web-SDK-Kartensteuerelement
 * Android-Kartensteuerelement
+* Power BI-Visualisierung
 
 ## <a name="satellite_road_labels"></a>Satellite_Road_Labels
 Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen Satellitenbilder und Luftaufnahmen überlagern.
@@ -57,6 +59,7 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 **Anwendbare APIs:**
 * Web-SDK-Kartensteuerelement
 * Android-Kartensteuerelement
+* Power BI-Visualisierung
 
 ## <a name="grayscale_dark"></a>grayscale_dark
 **grayscale_dark** ist eine dunkle Version des Kartenstils „Straße“.
@@ -68,6 +71,7 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 * [Kartenkachel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web-SDK-Kartensteuerelement 
 * Android-Kartensteuerelement
+* Power BI-Visualisierung
 
 
 ## <a name="grayscale_light"></a>grayscale_light
@@ -78,6 +82,7 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 **Anwendbare APIs:**
 * Web-SDK-Kartensteuerelement
 * Android-Kartensteuerelement
+* Power BI-Visualisierung
 
 
 ## <a name="night"></a>Nacht
@@ -88,6 +93,7 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 **Anwendbare APIs:**
 * Web-SDK-Kartensteuerelement
 * Android-Kartensteuerelement
+* Power BI-Visualisierung
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 **road shaded relief** (Relief mit schattierten Straßen) ist eine Azure Maps-Hauptformatvorlage mit Konturen der Erde.
@@ -98,6 +104,7 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 * [Kartenkachel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web-SDK-Kartensteuerelement
 * Android-Kartensteuerelement
+* Power BI-Visualisierung
 
 ## <a name="high_contrast_dark"></a>high_contrast_dark
 
@@ -107,6 +114,7 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 
 **Anwendbare APIs:**
 * Web-SDK-Kartensteuerelement
+* Power BI-Visualisierung
 
 ## <a name="next-steps"></a>Nächste Schritte
 

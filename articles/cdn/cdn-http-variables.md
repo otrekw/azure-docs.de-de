@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e601e3e06965faf8ec0fd238c54115570150b61
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84340673"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203570"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-Variablen für Azure CDN-Regel-Engine
 HTTP-Variablen stellen die Methoden für den Abruf von HTTP-Anforderungs- und -Antwortmetadaten bereit. Diese Metadaten können dann zur dynamischen Änderung einer Anforderung oder Antwort verwendet werden. Die Verwendung von HTTP-Variablen ist auf die folgenden Regel-Engine-Features beschränkt :
@@ -187,7 +187,7 @@ In diesem Beispielszenario ist die Variable *request_uri* festgelegt auf:
 
 In der folgenden Tabelle wird veranschaulicht, wie diese Syntax funktioniert.
 
-| Beispielsyntax | Ergebnisse | |
+| Beispielsyntax | Ergebnisse | BESCHREIBUNG |
 | ------------- | ------- | --- |
 | %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | Da die Variable mit dem Muster beginnt, wurde sie ersetzt. |
 | %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | Da die Variable nicht mit dem Muster endet, wurde keine Änderung vorgenommen.|

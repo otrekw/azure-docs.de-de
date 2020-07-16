@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466169"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206900"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Erstellen eines privaten Endpunkts für sichere Verbindungen mit Azure Cognitive Search
 
@@ -86,11 +86,11 @@ In diesem Abschnitt erstellen Sie einen neuen Azure Cognitive Search-Dienst mit 
     | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
     | Standort | Wählen Sie **USA, Westen** aus.|
-    | Name | Geben Sie *myPrivateEndpoint* ein.  |
+    | Name | Geben Sie *myPrivateEndpoint* ein.  |
     | Zielunterressource | Übernehmen Sie den Standardwert **searchService**. |
     | **NETZWERK** |  |
-    | Virtuelles Netzwerk  | Wählen Sie *MyVirtualNetwork* in der Ressourcengruppe *myResourceGroup* aus. |
-    | Subnet | Wählen Sie *mySubnet* aus. |
+    | Virtuelles Netzwerk  | Wählen Sie *MyVirtualNetwork* in der Ressourcengruppe *myResourceGroup* aus. |
+    | Subnet | Wählen Sie *mySubnet* aus. |
     | **PRIVATE DNS-INTEGRATION** |  |
     | Integration in eine private DNS-Zone  | Übernehmen Sie den Standardwert **Ja**. |
     | Private DNS-Zone  | Übernehmen Sie den Standardwert **(Neu) privatelink.search.windows.net**. |
@@ -189,7 +189,7 @@ In diesem Abschnitt überprüfen Sie den Zugriff im privaten Netzwerk auf den Su
 
 Wenn der Suchdienst-Endpunkt privat ist, sind einige Portalfunktionen deaktiviert. Sie können Einstellungen auf Dienstebene anzeigen und verwalten, aber der Portalzugriff auf Indexdaten und verschiedene andere Komponenten im Dienst sind aus Sicherheitsgründen eingeschränkt. Dazu zählen beispielsweise Index-, Indexer- und Skillsetdefinitionen.
 
-1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVM*.
+1. Öffnen Sie auf dem Remotedesktop von *myVM* PowerShell.
 
 1. Geben Sie „nslookup [Suchdienstname].search.windows.net“ ein.
 
@@ -207,7 +207,7 @@ Wenn der Suchdienst-Endpunkt privat ist, sind einige Portalfunktionen deaktivier
 
 1. Das Ausführen der Schritte des Schnellstarts über den virtuellen Computer dient zur Überprüfung, ob der Dienst voll funktionsfähig ist.
 
-1. Schließen Sie die Remotedesktopverbindung mit  *myVM*. 
+1. Schließen Sie die Remotedesktopverbindung mit *myVM*. 
 
 1. Um sicherzustellen, dass der Dienst nicht über einen öffentlichen Endpunkt zugänglich ist, öffnen Sie Postman in Ihrer lokalen Arbeitsstation, und führen Sie die ersten Schritte im Schnellstart aus. Wenn eine Fehlermeldung darüber angezeigt wird, dass der Remoteserver nicht vorhanden ist, haben Sie erfolgreich einen privaten Endpunkt für den Suchdienst konfiguriert.
 

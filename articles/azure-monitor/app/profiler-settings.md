@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b6f98f3c7f540e00743ae27b532b24d2310453e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188925"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205706"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurieren von Application Insights Profiler
 
@@ -32,7 +32,7 @@ Hiermit wird eine Seite geöffnet, die in etwa wie folgt aussieht:
 
 Die Seite **Application Insights Profiler konfigurieren** enthält diese Funktionen:
 
-| | |
+| Funktion | BESCHREIBUNG |
 |-|-|
 Jetzt Profil erstellen | Startet die Profilerstellungssitzungen für alle Apps, die mit dieser Instanz von Application Insights verknüpft sind.
 Trigger | Ermöglicht Ihnen das Konfigurieren von Triggern, die die Ausführung des Profilers bewirken. 
@@ -48,7 +48,7 @@ Damit ein Benutzer eine Profilersitzung manuell auslösen kann, muss er in seine
 
 Wenn Sie in der Menüleiste auf die Schaltfläche „Trigger“ klicken, wird das Feld mit den „Triggereinstellungen“ geöffnet. Sie können einen Trigger einrichten, der die Profilerstellung startet, wenn der Prozentsatz der CPU- oder Arbeitsspeicherverwendung das festgelegte Niveau erreicht.
 
-| | |
+| Einstellung | BESCHREIBUNG |
 |-|-|
 Schaltfläche „Ein/Aus“ | Ein: Profiler kann von diesem Trigger gestartet werden. Aus: Profiler wird von diesem Trigger nicht gestartet.
 Schwellenwert für Arbeitsspeicher | Wenn dieser Prozentsatz des Arbeitsspeichers verwendet wird, wird der Profiler gestartet.
@@ -58,7 +58,7 @@ Abkühlen | Legt die Zeitspanne fest, die der Profiler wartet, bevor nach seiner
 ## <a name="recent-profiling-sessions"></a>Letzte Profilerstellungssitzungen
 In diesem Abschnitt werden Informationen zu den letzten Profilerstellungssitzungen angezeigt. Eine Profilerstellungssitzung stellt den Zeitraum dar, in dem der Profiler-Agent ein Profil auf einem der Computer, auf dem Ihre Anwendung gehostet wird, erfasst hat. Sie können die Profile aus einer Sitzung öffnen, indem Sie auf eine der Zeilen klicken. Für jede Sitzung wird Folgendes angezeigt:
 
-| | |
+| Einstellung | BESCHREIBUNG |
 |-|-|
 Ausgelöst von | Wie die Sitzung gestartet wurde, entweder von einem Trigger, mit „Jetzt Profil erstellen“ oder per „Standard-Stichprobennahme“. 
 App-Name | Name der Anwendung, für die ein Profil erstellt wurde.

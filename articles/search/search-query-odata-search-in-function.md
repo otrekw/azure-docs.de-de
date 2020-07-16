@@ -19,22 +19,26 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b43c46599cbacaf40bc9583e364d088fa27a3ac9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1748a334c024401d845145947ecd55519f61e5e3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113122"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206917"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>OData-Funktion `search.in` in der kognitiven Azure-Suche
 
 Ein gängiges Szenario für [OData-Filterausdrücke](query-odata-filter-orderby-syntax.md) ist die Überprüfung, ob ein einzelnes Feld in den Dokumenten jeweils einem von vielen möglichen Werten entspricht. So wird in einigen Anwendungen beispielsweise zur Implementierung der [Einschränkung aus Sicherheitsgründen](search-security-trimming-for-azure-search.md) ein Feld, das eine oder mehrere Prinzipal-IDs enthält, mit einer Liste von Prinzipal-IDs verglichen, die den Benutzer darstellen, der die Abfrage ausführt. Eine solche Abfrage kann beispielsweise mithilfe der Operatoren [`eq`](search-query-odata-comparison-operators.md) und [`or`](search-query-odata-logical-operators.md) erstellt werden:
 
+```odata-filter-expr
     group_ids/any(g: g eq '123' or g eq '456' or g eq '789')
+```
 
 Die Funktion `search.in` bietet hier eine kürzere Möglichkeit:
 
+```odata-filter-expr
     group_ids/any(g: search.in(g, '123, 456, 789'))
+```
 
 > [!IMPORTANT]
 > Diese Methode ist kürzer und besser lesbar. Darüber hinaus bietet die Verwendung der Funktion `search.in` auch [Leistungsvorteile](#bkmk_performance) und ermöglicht die Vermeidung bestimmter [Größeneinschränkungen von Filtern](search-query-odata-filter.md#bkmk_limits), wenn hunderte oder sogar tausende Werte in den Filter eingeschlossen werden. Aus diesem Grund empfehlen wir dringend, anstelle einer komplexeren Disjunktion von Gleichheitsausdrücken die Funktion `search.in` zu verwenden.
@@ -86,23 +90,33 @@ Bei der Verwendung von `search.in` ist eine Antwortzeit von unter einer Sekunde 
 
 Suche nach allen Hotels, deren Name „Sea View motel“ oder „Budget hotel“ entspricht. Ausdrücke enthalten Leerzeichen, die Standardtrennzeichen sind. Sie können ein alternatives Trennzeichen in einfachen Anführungszeichen als dritten Zeichenfolgenparameter angeben:  
 
+```odata-filter-expr
     search.in(HotelName, 'Sea View motel,Budget hotel', ',')
+```
 
 Suche nach allen Hotels, deren Name „Sea View motel“ oder „Budget hotel“ entspricht (getrennt durch „|“):
 
+```odata-filter-expr
     search.in(HotelName, 'Sea View motel|Budget hotel', '|')
+```
 
 Suche nach allen Hotels mit Zimmern, die über das Tag „wifi“ oder „tub“ verfügen:
 
+```odata-filter-expr
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub')))
+```
 
 Suchen Sie eine Übereinstimmung mit Ausdrücken innerhalb einer Sammlung, z.B. „beheizte Handtuchhalter“ oder „Haartrockner inklusive“ in Tags.
 
+```odata-filter-expr
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
+```
 
 Suche nach allen Hotels ohne das Tag „motel“ oder „cabin“:
 
+```odata-filter-expr
     Tags/all(tag: not search.in(tag, 'motel, cabin'))
+```
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

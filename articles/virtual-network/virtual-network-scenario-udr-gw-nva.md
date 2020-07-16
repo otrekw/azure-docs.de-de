@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
-ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81455361"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231708"
 ---
 # <a name="virtual-appliance-scenario"></a>Szenario für virtuelle Geräte
 Als gängiges Szenario müssen größere Azure-Kunden eine Anwendung mit zwei Ebenen bereitstellen, die über das Internet verfügbar ist und gleichzeitig den Zugriff auf die Back-End-Ebene über ein lokales Rechenzentrum ermöglicht. In diesem Dokument wird schrittweise ein Szenario mit benutzerdefinierten Routen (User Defined Routes, UDR), einem VPN-Gateway und virtuellen Netzwerkgeräten zum Bereitstellen einer Umgebung mit zwei Ebenen erläutert, die folgende Anforderungen erfüllt:
@@ -33,8 +33,8 @@ Dabei handelt es sich um ein Umkreisnetzwerk-Standardszenario (auch als DMZ beze
 
 |  | Vorteile | Nachteile |
 | --- | --- | --- |
-| NSG |Keine Kosten. <br/>In Azure RBAC integriert. <br/>Regeln können in Azure Resource Manager-Vorlagen erstellt werden. |Komplexität kann in größeren Umgebungen variieren. |
-| Firewall |Vollständige Kontrolle über die Datenebene. <br/>Zentrale Verwaltung über Firewallkonsole. |Kosten der Firewallgeräte. <br/>Nicht in Azure RBAC integriert. |
+| **NSG** |Keine Kosten. <br/>In Azure RBAC integriert. <br/>Regeln können in Azure Resource Manager-Vorlagen erstellt werden. |Komplexität kann in größeren Umgebungen variieren. |
+| **Firewall** |Vollständige Kontrolle über die Datenebene. <br/>Zentrale Verwaltung über Firewallkonsole. |Kosten der Firewallgeräte. <br/>Nicht in Azure RBAC integriert. |
 
 In der unten beschriebenen Lösung wird ein Szenario mit einem Umkreisnetzwerk (DMZ) bzw. ein geschütztes Netzwerk mithilfe virtueller Firewallgeräte implementiert.
 

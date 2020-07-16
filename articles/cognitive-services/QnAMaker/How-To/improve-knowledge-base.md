@@ -3,12 +3,12 @@ title: Verbessern der Wissensdatenbank – QnA Maker
 description: Nutzen Sie aktives Lernen, um die Qualität Ihrer Wissensdatenbank zu verbessern. Sie können Einträge überprüfen, annehmen oder ablehnen und hinzufügen, ohne vorhandene Fragen zu entfernen oder zu ändern.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 88ccbc52e0eb3447d0b99cac9ba41761e292a6fd
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650762"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231776"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Akzeptieren von Fragevorschlägen des aktiven Lernens in der Wissensdatenbank
 
@@ -199,7 +199,7 @@ Ihr Bot Framework-Code muss die Trainings-API aufrufen, wenn die Abfrage des Be
 * Bestimmen, ob die Abfrage für aktives Lernen verwendet werden soll
 * Zurücksenden der Abfrage an die Trainings-API für aktives Lernen von QnA Maker
 
-Im [Azure-Botbeispiel](https://aka.ms/activelearningsamplebot) wurden beide Aktivitäten programmiert.
+Im [Azure-Botbeispiel](https://github.com/microsoft/BotBuilder-Samples) wurden beide Aktivitäten programmiert.
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>C#-Beispielcode für die Trainings-API mit Bot Framework 4.x
 

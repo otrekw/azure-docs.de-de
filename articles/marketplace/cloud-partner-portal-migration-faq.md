@@ -7,12 +7,12 @@ ms.topic: article
 author: anbene
 ms.author: mingshen
 ms.date: 06/29/2020
-ms.openlocfilehash: 2192b3757281bf6796fbf93f83cab6e71deb29f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e708d9a32d63c306a2d1ee8d06b044652f108dde
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120553"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231878"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Häufig gestellte Fragen zur Umstellung vom Cloud-Partnerportal auf Partner Center
 
@@ -76,7 +76,7 @@ Für die in Partner Center unterstützten Angebotstypen wurden alle Angebote una
 | Beratungsdienst | Ja | Melden Sie sich bei Partner Center an, um neue Angebote zu erstellen und Angebote, die im Cloud-Partnerportal erstellt wurden, zu verwalten. Weitere Informationen finden Sie unter [Erstellen eines Beratungsdienstangebots](partner-center-portal/create-consulting-service-offer.md). |
 | Verwalteter Dienst | Ja | Melden Sie sich bei Partner Center an, um neue Angebote zu erstellen und Angebote, die im Cloud-Partnerportal erstellt wurden, zu verwalten. Weitere Informationen finden Sie unter [Erstellen eines Angebots für einen verwalteten Dienst](partner-center-portal/create-new-managed-service-offer.md). |
 | Verwalteter Dynamics NAV-Dienst | Nein | Microsoft hat „Verwalteter Dynamics NAV-Dienst“ zu [Dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/) weiterentwickelt. Aus diesem Grund wurden Liveangebote für „Verwalteter Dynamics NAV-Dienst“ aus AppSource entfernt. Diese Angebote sind für Kunden nicht mehr auffindbar und wurden nicht nach Partner Center verschoben. Passen Sie Ihre Angebote an die Dynamics 365 Business Central-Angebote an, und übermitteln Sie sie im [Partner Center](https://partner.microsoft.com/), um sie in AppSource verfügbar zu machen. Weitere Informationen finden Sie unter [Erstellen eines Angebots für Dynamics 365 Business Central](partner-center-portal/create-new-business-central-offer.md). |
-| Cortana Intelligence | Nein | Da Microsoft die Produktroadmap für Cortana Intelligence weiterentwickelt hat, wurden Cortana Intelligence-Liveangebote aus AppSource entfernt. Diese Angebote sind für Kunden nicht mehr auffindbar und wurden nicht nach Partner Center verschoben. Passen Sie Ihre Angebote an die SaaS-Angebote (Software-as-a-Service) an, und übermitteln Sie sie im [Partner Center](hhttps://partner.microsoft.com/), um sie auf dem kommerziellen Marketplace verfügbar zu machen. Weitere Informationen finden Sie unter [Prüfliste für die Erstellung von SaaS-Angeboten](partner-center-portal/offer-creation-checklist.md). |
+| Cortana Intelligence | Nein | Da Microsoft die Produktroadmap für Cortana Intelligence weiterentwickelt hat, wurden Cortana Intelligence-Liveangebote aus AppSource entfernt. Diese Angebote sind für Kunden nicht mehr auffindbar und wurden nicht nach Partner Center verschoben. Passen Sie Ihre Angebote an die SaaS-Angebote (Software-as-a-Service) an, und übermitteln Sie sie im [Partner Center](https://partner.microsoft.com/), um sie auf dem kommerziellen Marketplace verfügbar zu machen. Weitere Informationen finden Sie unter [Prüfliste für die Erstellung von SaaS-Angeboten](partner-center-portal/offer-creation-checklist.md). |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>Ich kann meine Cloud-Partnerportal-Angebote im Partner Center nicht finden
 

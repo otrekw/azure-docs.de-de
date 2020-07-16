@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 896e69bad9cd75b57ef2bf93048c332ef4d974c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847446"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207710"
 ---
 # <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights
 
@@ -101,9 +101,8 @@ Bei der Ausführung einer erweiterten Leistungsanalyse wählen Sie Ablaufverfolg
 
 Informationen zu virtuellen Windows-Computern, Datenträger- oder Speicherpoolkonfiguration, Leistungsindikatoren, Protokollen und verschiedenen Ablaufverfolgungen werden erfasst. Dies hängt vom verwendeten Leistungsszenario ab. Details finden Sie in der folgenden Tabelle:
 
-|Gesammelte Daten                              |  |  | Leistungsszenarien |  |  | |
-|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Schnelle Leistungsanalyse | Benchmarktests | Leistungsanalyse | Azure Files-Analyse | Erweiterte Leistungsanalyse |
+| Gesammelte Daten | Schnelle Leistungsanalyse | Benchmarktests | Leistungsanalyse | Azure Files-Analyse | Erweiterte Leistungsanalyse |
+|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|
 | Informationen aus Ereignisprotokollen       | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Systeminformationen                | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Volumezuordnung                        | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |

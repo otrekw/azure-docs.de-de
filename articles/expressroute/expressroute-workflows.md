@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: e833e20085d7cfd8f727acb394851e96e7e19368
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58914709838c72246678ce92005de5ac18695a1f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75864365"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204161"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände
 Auf dieser Seite erhalten Sie einen Überblick über die Workflows zur Dienstbereitstellung und Routingkonfiguration.
@@ -55,33 +55,37 @@ In diesem Abschnitt sind die möglichen Zustände einer ExpressRoute-Verbindung 
 
 Von der ExpressRoute-Verbindung werden während der Ressourcenerstellung folgende Zustände gemeldet.
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 **Der Konnektivitätsanbieter stellt die Verbindung gerade bereit**:
 
 Von der ExpressRoute-Verbindung werden folgende Zustände gemeldet, während der Konnektivitätsanbieter an der Bereitstellung der Verbindung arbeitet.
 
-    ServiceProviderProvisioningState : Provisioning
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioning
+Status                           : Enabled
+```
 
 **Der Konnektivitätsanbieter hat die Bereitstellung abgeschlossen**:
 
 Von der ExpressRoute-Verbindung werden folgende Zustände gemeldet, sobald der Konnektivitätsanbieter die Verbindung erfolgreich bereitgestellt hat.
 
-    ServiceProviderProvisioningState : Provisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioned
+Status                           : Enabled
+```
 
 **Der Konnektivitätsanbieter hebt die Verbindungsbereitstellung auf**:
 
 Wenn die Bereitstellung der ExpressRoute-Verbindung aufgehoben werden muss, werden von der Verbindung die folgenden Zustände gemeldet, sobald der Dienstanbieter die Bereitstellung vollständig aufgehoben hat.
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 Sie können sie bei Bedarf erneut aktivieren oder PowerShell-Cmdlets ausführen, um die Verbindung zu löschen.  
 

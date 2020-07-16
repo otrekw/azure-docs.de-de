@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 37df5ae8e88bf7832fbbeae37555d60943fca446
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: eea4de106fe566b55ae30330d4c9d101f7126bbf
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187301"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229617"
 ---
 # <a name="use-source-control-integration"></a>Verwenden der Integration der Quellcodeverwaltung
 
@@ -202,7 +202,7 @@ Wenn mehrere Personen in Ihrem Quellcodeverwaltungs-Repository Runbooks mit unte
 Derzeit können Sie das PAT in der Quellcodeverwaltung nicht über das Azure-Portal aktualisieren. Nach Ablauf oder Widerruf Ihres PAT können Sie die Quellcodeverwaltung auf eine der folgenden Weisen mit einem neuen Zugriffstoken aktualisieren:
 
 * Verwenden Sie die [REST-API](/rest/api/automation/sourcecontrol/update).
-* Verwenden Sie das Cmdlet [Update-AzAutomationSourceControl](//powershell/module/az.automation/update-azautomationsourcecontrol).
+* Verwenden Sie das Cmdlet [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

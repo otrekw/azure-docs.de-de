@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: 95ca527d8f7912e2c455f94036fe61828b220257
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: abad72145b095b4da77ec499f936c6912fd970a6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121468"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229447"
 ---
 # <a name="what-is-a-test-drive"></a>Worum handelt es sich bei einer Testversion?
 
@@ -74,7 +74,7 @@ Der Vorgang zum Transformieren einer Ressourcenarchitektur in eine Testversion k
 
 ## <a name="generate-leads-from-your-test-drive"></a>Generieren von Leads mithilfe der Testversion
 
-Eine kommerzielle Marketplace-Testversion ist ein hervorragendes Tool für Vermarkter. Wir empfehlen Ihnen, es in Ihre Markteinführungsaktivitäten einzubeziehen, um mehr Leads für Ihr Unternehmen zu generieren. Eine detaillierte Anleitung finden Sie unter [Kundenleads aus Ihrem Angebot im kommerziellen Marketplace](https://github.com/partner-center-portal/commercial-marketplace-get-customer-leads.md).
+Eine kommerzielle Marketplace-Testversion ist ein hervorragendes Tool für Vermarkter. Wir empfehlen Ihnen, es in Ihre Markteinführungsaktivitäten einzubeziehen, um mehr Leads für Ihr Unternehmen zu generieren. Eine detaillierte Anleitung finden Sie unter [Kundenleads aus Ihrem Angebot im kommerziellen Marketplace](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
 Wenn es dank eines Testversionsleads zu einem Geschäftsabschluss kommt, denken Sie daran, diesen bei [Microsoft Partner Sales Connect](https://support.microsoft.com/help/3155788/getting-started-with-microsoft-partner-sales-connect) zu registrieren. Darüber hinaus freuen wir uns über Berichte, wie eine Testversion zur Kundengewinnung beigetragen hat.
 

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 744b186b32927f81be21ff067c9195bddb33c416
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4c7f82b729355e59ff05d5513e22fa143d53a5e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362090"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206852"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurieren und Anpassen der Buildtasks
 
@@ -64,9 +64,11 @@ Details zur Taskkonfiguration finden Sie im folgenden Screenshot und in der List
     - Verzeichnisangaben müssen immer mit „\\*“ enden.
     - Beispiele:
 
+```binskim-targets
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
+```
 
 - Wenn Sie in der Liste **Type** (Typ) die Option **Command Line** (Befehlszeile) auswählen, müssen Sie „binskim.exe“ ausführen:
      - Stellen Sie sicher, dass es sich beim ersten Argument für „binskim.exe“ um das Verb **analyze** gefolgt von mindestens einer Pfadangabe handelt. Jeder Pfad kann entweder ein vollständiger Pfad oder ein Pfad relativ zum Quellverzeichnis sein.
@@ -74,11 +76,13 @@ Details zur Taskkonfiguration finden Sie im folgenden Screenshot und in der List
      - Sie können die Option **/o** oder **/output** weglassen. Der Ausgabewert wird für Sie hinzugefügt oder ersetzt.
      - Standardmäßige Befehlszeilenkonfigurationen sehen wie folgt aus.
 
+```binskim-line-args
            analyze $(Build.StagingDirectory)\* --recurse --verbose
            analyze *.dll *.exe --recurse --verbose
+```
 
-          > [!NOTE]
-          > Die nachstehenden Zeichen „\\*“ sind wichtig, wenn Sie Verzeichnisse für das Ziel angeben.
+> [!NOTE]
+> Die nachstehenden Zeichen „\\*“ sind wichtig, wenn Sie Verzeichnisse für das Ziel angeben.
 
 Weitere Informationen zu BinSkim-Befehlszeilenargumenten, Regeln nach ID oder Exitcodes finden Sie im [BinSkim-Benutzerhandbuch](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md).
 

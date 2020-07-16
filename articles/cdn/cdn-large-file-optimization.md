@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 22ec4058d9485858489162af223bb6d6c381797e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fb136b6c37c8ef14f85455431fea80099088936
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887664"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206719"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimierung großer Dateidownloads mit Azure CDN
 
@@ -107,11 +107,10 @@ Das CDN speichert alle Blöcke zwischen, sobald sie eingetroffen sind. Es ist ni
 ### <a name="caching"></a>Caching
 Für die Optimierung großer Dateien werden unterschiedliche Standardzeiten für den Ablauf der Zwischenspeicherung verwendet, die von der allgemeinen Webbereitstellung abweichen. Die Unterscheidung erfolgt zwischen der positiven und negativen Zwischenspeicherung basierend auf HTTP-Antwortcodes. Wenn der Ursprungsserver in der Antwort eine Ablaufzeit per Cache-Control- oder Expires-Header angibt, wird dieser Wert vom CDN berücksichtigt. Macht der Ursprungsserver keine Angabe und erfüllt die Datei die Typ- und Größenbedingungen für diesen Optimierungstyp, dann verwendet das CDN die Standardwerte für die Optimierung großer Dateien. Andernfalls verwendet das CDN die Standardeinstellungen für die allgemeine Webbereitstellung.
 
-
-|    | Allgemeine Webübermittlung | Optimierung großer Dateien 
+| Caching  | Allgemeine Webübermittlung | Optimierung großer Dateien 
 --- | --- | --- 
-Caching: positiv <br> HTTP 200, 203, 300, <br> 301, 302 und 410 | 7 Tage |1 Tag  
-Caching: negativ <br> HTTP 204, 305, 404 <br> und 405 | Keine | 1 Sekunde 
+Caching: Positiv <br> HTTP 200, 203, 300, <br> 301, 302 und 410 | 7 Tage |1 Tag  
+Caching: Negativ <br> HTTP 204, 305, 404 <br> und 405 | Keine | 1 Sekunde 
 
 ### <a name="deal-with-origin-failure"></a>Behandeln eines Ausfalls des Ursprungsservers
 

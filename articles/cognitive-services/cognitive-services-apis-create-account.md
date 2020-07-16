@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
-ms.openlocfilehash: 4a73ff517347baa2cf589432be025bd922597ed3
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: f76b444f737c4deb0fc61953c839c8826f379d5e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611389"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207269"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals
 
@@ -37,11 +37,17 @@ Verwenden Sie diese Schnellstartanleitung, um mit der Verwendung von Azure Cogni
 
     Zu diesem Zeitpunkt ermöglicht die Ressource für mehrere Dienste den Zugriff auf die folgenden Cognitive Services:
 
-    |                  |                                                      |                    |                               |                  |
-    |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
-    | Maschinelles Sehen  | Content Moderator                                    | Gesicht               | Language Understanding (LUIS) | Textanalyse   |
-    | Übersetzer  | Bing-Suche v7 <br>(Web, Bild, Neuigkeiten, Video, Visual) | Benutzerdefinierte Bing-Suche | Bing-Entitätssuche            | Bing-Vorschlagssuche |
-    | Bing-Rechtschreibprüfung |                                                      |                    |                               |                  |
+    - Maschinelles Sehen
+    - Content Moderator
+    - Gesicht
+    - Language Understanding (LUIS)
+    - Textanalyse
+    - Übersetzer
+    - Bing-Suche v7 <br>(Web, Bild, Neuigkeiten, Video, Visual)
+    - Benutzerdefinierte Bing-Suche
+    - Bing-Entitätssuche
+    - Bing-Vorschlagssuche
+    - Bing-Rechtschreibprüfung
 
     #### <a name="single-service-resource"></a>[Ressource für einen einzelnen Dienst](#tab/singleservice)
 

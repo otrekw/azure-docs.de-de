@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984269"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203800"
 ---
 # <a name="create-a-consulting-service-offer"></a>Erstellen eines Beratungsdienstangebots
 
@@ -98,12 +98,22 @@ Auf dieser Seite können Sie das primäre Produkt festlegen, für das Ihr Beratu
 
 3. Wenn Sie **Azure** als primäres Produkt ausgewählt haben, wählen Sie bis zu drei **Lösungsbereiche** aus. Diese erleichtern es Kunden, Ihr Angebot in Azure Marketplace zu finden. Wenn Sie sich nicht für Azure entschieden haben, überspringen Sie diesen Schritt.
 
-    | Lösungsbereich | | | |
-    | --- | --- | --- | --- |
-    | Analytics | Backup | DevOps | Migration |
-    | App-Modernisierung | Big Data | Notfallwiederherstellung | Netzwerk |
-    | Archivieren | Datenplattform | Identity | Sicherheit |
-    | KI und Machine Learning | Rechenzentrumsverwaltung | Internet der Dinge | Storage |
+    - Analytics
+    - App-Modernisierung
+    - Archivieren
+    - KI und Machine Learning
+    - Backup
+    - Big Data
+    - Datenplattform
+    - Rechenzentrumsverwaltung
+    - DevOps
+    - Notfallwiederherstellung
+    - Identity
+    - Internet der Dinge
+    - Migration
+    - Netzwerk
+    - Sicherheit
+    - Storage
 
 1. Wenn Sie **Azure** als primäres Produkt ausgewählt haben, können Sie bis zu sechs **Branchen** auswählen. Diese erleichtern es Kunden, Ihr Angebot in Azure Marketplace zu finden. Eine vollständige Liste der Branchen finden Sie unter [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md). Wenn Sie sich nicht für Azure entschieden haben, überspringen Sie diesen Schritt.
 1. Wenn Sie ein *anderes* als ein Azure-Produkt als primäres Produkt ausgewählt haben, wählen Sie bis zu drei **Anwendbare Produkte** aus. Diese erleichtern es Kunden, Ihr Angebot in AppSource zu finden. Ausführliche Informationen finden Sie unter [Richtlinien zum Listing von Microsoft AppSource-Beratungsdiensten](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).

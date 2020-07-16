@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f4b76bd91a47f14104a9f7f23a4a545ee3d40e59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a48467100e396ed1b43544d1b10ae5007415e3e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477854"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201963"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Gewusst wie: Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster
 
@@ -71,15 +71,21 @@ Webanwendungen und Web-APIs empfangen und überprüfen Token von Microsoft Ident
 
 Sehen wir uns an, wie eine Anwendung Token überprüft, die sie von Microsoft Identity Platform erhält. Eine Anwendung mit einem einzigen Mandanten verwendet normalerweise einen Endpunktwert wie den folgenden:
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com
+```
 
 Hieraus wird eine Metadaten-URL (in diesem Fall OpenID Connect) wie die folgende erstellt:
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
+```
 
 Damit können zwei wichtige Informationen heruntergeladen werden, die zum Überprüfen von Token verwendet werden: die Signaturschlüssel und der Ausstellerwert des Mandanten. Jeder Azure AD-Mandant weist einen eindeutigen Ausstellerwert in folgender Form auf:
 
+```http
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
+```
 
 Dabei ist der GUID-Wert die nicht änderbare Version der Mandanten-ID des Mandanten. Wenn Sie den vorhergehenden Metadatenlink für `contoso.onmicrosoft.com` wählen, können Sie diesen Ausstellerwert im Dokument sehen.
 
@@ -87,7 +93,9 @@ Wenn eine Anwendung mit einem einzigen Mandanten ein Token überprüft, wird die
 
 Da der Endpunkt „/common“ keinem Mandanten entspricht und kein Aussteller ist, hat der Ausstellerwert in den Metadaten für „/common“ eine Vorlagen-URL anstatt eines tatsächlichen Werts:
 
+```http
     https://sts.windows.net/{tenantid}/
+```
 
 Aus diesem Grund kann eine mehrinstanzenfähige Anwendung keine Token überprüfen, indem einfach der Ausstellerwert in den Metadaten mit dem `issuer` -Wert im Token abgeglichen wird. Eine mehrinstanzenfähige Anwendung benötigt Logik, um basierend auf der Mandanten-ID im Ausstellerwert zu entscheiden, welche Ausstellerwerte zulässig sind. 
 
@@ -135,7 +143,9 @@ Ihre Anwendung weist möglicherweise mehrere Ebenen auf, die in Azure AD jeweils
 
 Dies kann ein Problem sein, wenn die logische Anwendung aus zwei oder mehr Anwendungsregistrierungen besteht, z.B. separate Clients und Ressourcen. Wie sorgen Sie zuerst dafür, dass die Ressource im Mandanten des Kunden vorhanden ist? Azure AD behandelt diesen Fall, indem der Client und die Ressource, der zugestimmt werden soll, in einem einzigen Schritt aktiviert werden. Der Benutzer sieht die Gesamtsumme der Berechtigungen, die sowohl vom Client als auch von der Ressource auf der Seite „Zustimmung“ angefordert werden. Um dieses Verhalten zu ermöglichen, muss die Anwendungsregistrierung der Ressource die App-ID des Clients als `knownClientApplications` im [Anwendungsmanifest][AAD-App-Manifest] enthalten. Beispiel:
 
+```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
+```
 
 Dies wird in einem Beispiel eines nativen Clients mit mehreren Ebenen, der eine Web-API aufruft, im Abschnitt [Verwandte Inhalte](#related-content) am Ende dieses Artikels veranschaulicht. Die folgende Abbildung zeigt eine Übersicht über die Zustimmung für eine Mehrparteien-App, die in einem einzigen Mandanten registriert wurde.
 

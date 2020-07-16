@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: fb3e4fd4935afc4869e50ccbc35c53333d43b1df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10f8e92138878381b5267742b8211df81e0c49d4
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515517"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232677"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Einbinden einer Azure HPC Cache-Instanz
 
@@ -115,7 +115,7 @@ Um eine problemlose Clienteinbindung sicherzustellen, übergeben Sie diese Einst
 
 > mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${CACHE_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}
 
-| Empfohlene Einstellungen für den mount-Befehl | |
+| Empfohlene Einstellungen für den mount-Befehl | BESCHREIBUNG |
 --- | ---
 ``hard`` | Softwareseitige Einbindungen für Azure HPC Cache sind Anwendungsfehlern und möglichen Datenverlusten zugeordnet.
 ``proto=tcp`` | Diese Option unterstützt eine angemessene Behandlung von NFS-Netzwerkfehlern.

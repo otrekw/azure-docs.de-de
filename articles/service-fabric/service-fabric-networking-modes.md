@@ -5,12 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6174f35bd54b3ca0b2c5240a663369350b30ce8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75639801"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241895"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Netzwerkmodi für Service Fabric-Container
 
@@ -21,7 +21,7 @@ Wenn in Ihrem Dienstmanifest ein Containerdienst mit einem statischen Endpunkt e
 Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten verschoben wird, ändert sich die IP-Adresse. Aus diesem Grund wird nicht empfohlen, die dynamisch zugewiesene IP-Adresse zum Ermitteln von Containerdiensten zu verwenden. Für die Dienstermittlung sollte nur der „Service Fabric Naming Service“ oder der „DNS-Dienst“ genutzt werden. 
 
 >[!WARNING]
->In Azure sind maximal 65.356 IPs pro virtuellem Netzwerk zulässig. Die Summe aus Knotenanzahl und Anzahl von Containerdienstinstanzen (mit Verwendung des Modus „Open“) darf in einem virtuellen Netzwerk 65.356 IPs nicht übersteigen. Für Szenarien mit hoher Dichte ist es ratsam, den Netzwerkmodus „nat“ zu verwenden. Darüber hinaus sind für andere Abhängigkeiten wie z.B. den Lastenausgleich andere [Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) zu beachten. Zurzeit wurden bis zu 50 IPs pro Knoten getestet und für stabil befunden. 
+>In Azure sind maximal 65.356 IPs pro virtuellem Netzwerk zulässig. Die Summe aus Knotenanzahl und Anzahl von Containerdienstinstanzen (mit Verwendung des Modus „Open“) darf in einem virtuellen Netzwerk 65.356 IPs nicht übersteigen. Für Szenarien mit hoher Dichte ist es ratsam, den Netzwerkmodus „nat“ zu verwenden. Darüber hinaus sind für andere Abhängigkeiten wie z.B. den Lastenausgleich andere [Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md) zu beachten. Zurzeit wurden bis zu 50 IPs pro Knoten getestet und für stabil befunden. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Einrichten des Netzwerkmodus „Open“
@@ -191,15 +191,14 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
  
 3. Richten Sie nur für Windows-Cluster eine Azure-Netzwerksicherheitsgruppen-Regel, mit der Port UDP/53 für das virtuelle Netzwerk geöffnet wird, mit den folgenden Werten ein:
 
-   |Einstellung |value | |
-   | --- | --- | --- |
-   |Priority |2000 | |
-   |Name |Custom_Dns  | |
-   |`Source` |VirtualNetwork | |
-   |Destination | VirtualNetwork | |
-   |Dienst | DNS (UDP/53) | |
-   |Action | Allow  | |
-   | | |
+   |Einstellung |value |
+   | --- | --- |
+   |Priority |2000 |
+   |Name |Custom_Dns  |
+   |`Source` |VirtualNetwork |
+   |Destination | VirtualNetwork |
+   |Dienst | DNS (UDP/53) |
+   |Action | Allow  |
 
 4. Geben Sie im Anwendungsmanifest für jeden Dienst den Netzwerkmodus an: `<NetworkConfig NetworkType="Open">`. Im Netzwerkmodus **Open** erhält der Dienst eine dedizierte IP-Adresse. Wenn kein Modus angegeben ist, wird für den Dienst standardmäßig der Modus **nat** verwendet. Im folgenden Beispielmanifest können die Dienste `NodeContainerServicePackage1` und `NodeContainerServicePackage2` über denselben Port lauschen. (Beide Dienste lauschen über `Endpoint1`.) Wenn der Netzwerkmodus „Open“ angegeben ist, können keine `PortBinding`-Konfigurationen angegeben werden.
 
@@ -264,6 +263,6 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
  
 ## <a name="next-steps"></a>Nächste Schritte
 * [Modellieren von Anwendungen in Service Fabric](service-fabric-application-model.md)
-* [Angeben von Ressourcen in einem Dienstmanifest](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
+* [Angeben von Ressourcen in einem Dienstmanifest](./service-fabric-service-manifest-resources.md)
 * [Bereitstellen eines Windows-Containers in Service Fabric unter Windows Server 2016](service-fabric-get-started-containers.md)
 * [Bereitstellen eines Docker-Containers in Service Fabric unter Linux](service-fabric-get-started-containers-linux.md)

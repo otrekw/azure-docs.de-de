@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfe438f6940d3ccd5632a47be1389a30748716b0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113103"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206890"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData-Syntax von „$select“ in der kognitiven Azure-Suche
 
@@ -63,7 +63,9 @@ Wenn Sie ein komplexes Feld auflisten, ohne die zugehörigen Unterfelder explizi
 
 Beziehen Sie die Felder `HotelId`, `HotelName` und `Rating` (Felder der obersten Ebene) sowie das Unterfeld `City` von `Address` in die Ergebnisse ein:
 
+```odata-filter-expr
     $select=HotelId, HotelName, Rating, Address/City
+```
 
 Ein Beispielergebnis könnte wie folgt aussehen:
 
@@ -80,7 +82,9 @@ Ein Beispielergebnis könnte wie folgt aussehen:
 
 Beziehen Sie in die Ergebnisse das Feld `HotelName` (Feld der obersten Ebene) und alle Unterfelder von `Address` sowie die Unterfelder `Type` und `BaseRate` jedes Objekts der Sammlung `Rooms` ein:
 
+```odata-filter-expr
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
+```
 
 Ein Beispielergebnis könnte wie folgt aussehen:
 
