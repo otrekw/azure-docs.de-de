@@ -6,12 +6,12 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 376808a6d8f61d4dc03d17061323a473d48053a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c842a065f108a924c6bffd70d6c2edbbd31b6dff
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76907341"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260153"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Verschieben einer Service Fabric Mesh-Anwendung in eine andere Azure-Region
 
@@ -21,14 +21,14 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Service Fabric Mesh-Anwendung u
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Eingangscontroller (z. B. [Application Gateway](https://docs.microsoft.com/azure/application-gateway/)), der als Vermittler für das Routing von Datenverkehr zwischen Clients und Ihrer Service Fabric Mesh-Anwendung dient.
+* Eingangscontroller (z. B. [Application Gateway](../application-gateway/index.yml)), der als Vermittler für das Routing von Datenverkehr zwischen Clients und Ihrer Service Fabric Mesh-Anwendung dient.
 * Verfügbarkeit von Service Fabric Mesh (Vorschau) in der Azure-Zielregion (`westus`, `eastus` oder `westeurope`).
 
 ## <a name="prepare"></a>Vorbereiten
 
-1. Erstellen Sie eine „Momentaufnahme“ des aktuellen Status Ihrer Service Fabric Mesh-Anwendung, indem Sie die Azure Resource Manager-Vorlage und die Parameter aus der aktuellen Bereitstellung exportieren. Befolgen Sie hierzu die Schritte unter [Exportieren einer Vorlage nach der Bereitstellung](../azure-resource-manager/templates/export-template-portal.md#export-template-after-deployment) mithilfe des Azure-Portals. Sie können auch die [Azure CLI](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates) oder die [REST-API](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate) verwenden.
+1. Erstellen Sie eine „Momentaufnahme“ des aktuellen Status Ihrer Service Fabric Mesh-Anwendung, indem Sie die Azure Resource Manager-Vorlage und die Parameter aus der aktuellen Bereitstellung exportieren. Befolgen Sie hierzu die Schritte unter [Exportieren einer Vorlage nach der Bereitstellung](../azure-resource-manager/templates/export-template-portal.md#export-template-after-deployment) mithilfe des Azure-Portals. Sie können auch die [Azure CLI](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates) oder die [REST-API](/rest/api/resources/resourcegroups/exporttemplate) verwenden.
 
-2. [Exportieren Sie ggf. andere Ressourcen in derselben Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource-group) für eine erneute Bereitstellung in der Zielregion.
+2. [Exportieren Sie ggf. andere Ressourcen in derselben Ressourcengruppe](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource-group) für eine erneute Bereitstellung in der Zielregion.
 
 3. Überprüfen Sie die exportierte Vorlage (und bearbeiten Sie sie bei Bedarf), um sicherzustellen, dass die vorhandenen Eigenschaftswerte den Werten entsprechen, die Sie in der Zielregion verwenden möchten. Das neue `location`-Element (Azure-Region) ist ein Parameter, den Sie während der erneuten Bereitstellung angeben.
 
@@ -36,7 +36,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Service Fabric Mesh-Anwendung u
 
 1. Erstellen Sie eine neue Ressourcengruppe in der Zielregion (oder verwenden Sie eine bereits vorhandene Ressourcengruppe).
 
-2. Führen Sie mit der exportierten Vorlage die Schritte in [Bereitstellen von Ressourcen aus einer benutzerdefinierten Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template) mithilfe des Azure-Portals aus. Sie können auch die [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), [Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell) oder die [REST-API](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-rest) verwenden.
+2. Führen Sie mit der exportierten Vorlage die Schritte in [Bereitstellen von Ressourcen aus einer benutzerdefinierten Vorlage](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) mithilfe des Azure-Portals aus. Sie können auch die [Azure CLI](../azure-resource-manager/templates/deploy-cli.md), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) oder die [REST-API](../azure-resource-manager/templates/deploy-rest.md) verwenden.
 
 3. Anleitungen zum Verschieben verwandter Ressourcen (z. B. [Azure Storage Konten](../storage/common/storage-account-move.md)) finden Sie in den Anweisungen für einzelne Dienste, die unter dem Thema [Regionsübergreifendes Verschieben von Azure-Ressourcen](../azure-resource-manager/management/move-region.md) aufgeführt werden.
 
@@ -44,7 +44,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Service Fabric Mesh-Anwendung u
 
 1. Testen Sie nach Abschluss der Bereitstellung die Anwendungsendpunkte, um die Funktionalität der Anwendung zu überprüfen.
 
-2. Sie können den Status der Anwendung auch überprüfen, indem Sie den Anwendungsstatus überprüfen ([az mesh app show](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) und die Anwendungsprotokolle und -Befehle mithilfe der [Azure Service Fabric Mesh CLI](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-quickstart-deploy-container#set-up-service-fabric-mesh-cli) überprüfen ([az mesh code-package-log](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)).
+2. Sie können den Status der Anwendung auch überprüfen, indem Sie den Anwendungsstatus überprüfen ([az mesh app show](/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) und die Anwendungsprotokolle und -Befehle mithilfe der [Azure Service Fabric Mesh CLI](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli) überprüfen ([az mesh code-package-log](/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)).
 
 ## <a name="commit"></a>Commit
 

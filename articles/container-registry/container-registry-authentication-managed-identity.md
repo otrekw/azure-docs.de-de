@@ -3,12 +3,12 @@ title: Authentifizieren mit einer verwalteten Identität
 description: Ermöglichen Sie Zugriff auf Images in Ihrer privaten Containerregistrierung, indem Sie eine benutzerseitig oder systemseitig zugewiesene verwaltete Azure-Identität verwenden.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3a1f0f9c9e814cabaa205fbb0abf05333fd6daf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74456494"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259101"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Verwenden einer verwalteten Azure-Identität für die Azure Container Registry-Authentifizierung 
 
@@ -239,7 +239,7 @@ In diesem Artikel haben Sie mehr über die Verwendung verwalteter Identitäten m
 > * Gewähren des Zugriffs auf eine Azure Container Registry-Instanz für die Identität
 > * Verwenden der verwalteten Identität, um auf die Registrierung zuzugreifen und ein Containerimage abzurufen
 
-* Erfahren Sie mehr über [verwaltete Identitäten für Azure-Ressourcen](/azure/active-directory/managed-identities-azure-resources/).
+* Erfahren Sie mehr über [verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/index.yml).
 
 
 <!-- LINKS - external -->

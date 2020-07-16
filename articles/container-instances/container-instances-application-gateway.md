@@ -3,12 +3,12 @@ title: Statische IP-Adresse für eine Containergruppe
 description: Erstellen einer Containergruppe in einem virtuellen Netzwerk und Verwenden eines Azure-Anwendungsgateways, um eine statische Front-End-IP-Adresse für eine Container-Web-App verfügbar zu machen
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299161"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260786"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Verfügbarmachen einer statischen IP-Adresse für eine Containergruppe
 
@@ -103,7 +103,7 @@ ACI_IP=$(az container show \
 
 ## <a name="create-application-gateway"></a>Erstellen eines Anwendungsgateways
 
-Erstellen Sie wie im [Schnellstart für Application Gateway](../application-gateway/quick-create-cli.md) beschrieben ein Anwendungsgateway im virtuellen Netzwerk. Der folgende Befehl [az network application-gateway create][az-network-application-gateway-create] erstellt ein Gateway mit einer öffentlichen Front-End-IP-Adresse und eine Route zur Back-End-Containergruppe. Ausführliche Informationen zu den Gatewayeinstellungen finden Sie in der [Dokumentation zu Application Gateway](/azure/application-gateway/).
+Erstellen Sie wie im [Schnellstart für Application Gateway](../application-gateway/quick-create-cli.md) beschrieben ein Anwendungsgateway im virtuellen Netzwerk. Der folgende Befehl [az network application-gateway create][az-network-application-gateway-create] erstellt ein Gateway mit einer öffentlichen Front-End-IP-Adresse und eine Route zur Back-End-Containergruppe. Ausführliche Informationen zu den Gatewayeinstellungen finden Sie in der [Dokumentation zu Application Gateway](../application-gateway/index.yml).
 
 ```azurecli
 az network application-gateway create \

@@ -5,15 +5,15 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92fd8dbd1afbd2bdcabbaebbd5dc056d912ae118
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699809"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253115"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnosefunktionen für zustandsbehaftete Reliable Services
-Die StatefulServiceBase-Klasse der zustandsbehafteten zuverlässigen Dienste in Azure Service Fabric gibt [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx)-Ereignisse aus. Diese können verwendet werden, um den Dienst zu debuggen, Einblicke in den Laufzeitbetrieb zu erhalten und Fehler zu beheben.
+Die StatefulServiceBase-Klasse der zustandsbehafteten zuverlässigen Dienste in Azure Service Fabric gibt [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)-Ereignisse aus. Diese können verwendet werden, um den Dienst zu debuggen, Einblicke in den Laufzeitbetrieb zu erhalten und Fehler zu beheben.
 
 ## <a name="eventsource-events"></a>EventSource-Ereignisse
 Der Name des EventSource-Ereignisses für die Klasse „StatefulServiceBase“ der zustandsbehafteten zuverlässigen Dienste lautet „Microsoft-ServiceFabric-Services“. Ereignisse aus dieser Ereignisquelle werden beim [Debuggen des Diensts in Visual Studio](service-fabric-debugging-your-application.md) im Fenster für [Diagnoseereignisse](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) angezeigt.
@@ -46,11 +46,11 @@ Die Reliable Services-Runtime definiert die folgenden Leistungsindikatorkategori
 | Service Fabric-Transaktionsreplikator |Spezifische Leistungsindikatoren für den Azure Service Fabric-Transaktionsreplikator. |
 | Service Fabric TStore |Spezifische Leistungsindikatoren für den Azure Service Fabric TStore |
 
-Der [Reliable State Manager](service-fabric-reliable-services-reliable-collections-internals.md) verwendet den Service Fabric-Transaktionsreplikator zum Replizieren von Transaktionen in einer bestimmten Gruppe von [Replikaten](service-fabric-concepts-replica-lifecycle.md).
+Der [Reliable State Manager](./service-fabric-reliable-services-introduction.md) verwendet den Service Fabric-Transaktionsreplikator zum Replizieren von Transaktionen in einer bestimmten Gruppe von [Replikaten](service-fabric-concepts-replica-lifecycle.md).
 
-Der Service Fabric TStore ist eine Komponente, die in [zuverlässigen Sammlungen](service-fabric-reliable-services-reliable-collections-internals.md) zum Speichern und Abrufen von Schlüssel-Wert-Paaren verwendet wird.
+Der Service Fabric TStore ist eine Komponente, die in [zuverlässigen Sammlungen](./service-fabric-reliable-services-introduction.md) zum Speichern und Abrufen von Schlüssel-Wert-Paaren verwendet wird.
 
-Die Anwendung [Windows-Systemmonitor](https://technet.microsoft.com/library/cc749249.aspx) , die standardmäßig im Windows-Betriebssystem verfügbar ist, kann zum Erfassen und Anzeigen von Leistungsindikatordaten verwendet werden. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) ist eine weitere Option für das Erfassen von Leistungsindikatordaten und Hochladen in Azure-Tabellen.
+Die Anwendung [Windows-Systemmonitor](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) , die standardmäßig im Windows-Betriebssystem verfügbar ist, kann zum Erfassen und Anzeigen von Leistungsindikatordaten verwendet werden. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) ist eine weitere Option für das Erfassen von Leistungsindikatordaten und Hochladen in Azure-Tabellen.
 
 ### <a name="performance-counter-instance-names"></a>Namen von Leistungsindikatorinstanzen
 Ein Cluster mit einer großen Anzahl von Reliable Services oder Reliable Service-Partitionen weist eine große Anzahl von Transaktionsreplikator-Leistungsindikatorinstanzen auf. Dies gilt auch für TStore-Leistungsindikatoren, wird jedoch auch durch die Anzahl der verwendeten zuverlässigen Wörterbüchern und zuverlässigen Warteschlangen multipliziert. Die Namen der Leistungsindikatorinstanzen können die Identifizierung spezifischer [Partitionen](service-fabric-concepts-partitioning.md), Dienstreplikate und Zustandsanbieter erleichtern, mit denen die Leistungsindikatorinstanz verknüpft ist.
@@ -60,7 +60,7 @@ Für die Kategorie `Service Fabric Transactional Replicator`haben die Namen von 
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*ServiceFabricPartitionId* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe von [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) mit dem Formatbezeichner „D“ generiert.
+*ServiceFabricPartitionId* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe von [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) mit dem Formatbezeichner „D“ generiert.
 
 *ServiceFabricReplicaId* die ID, die einem bestimmten Replikat eines Reliable Service zugeordnet ist. Die Replikat-ID wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen, von derselben Partition generierten Leistungsindikatorinstanzen zu vermeiden. Weitere Details zu Replikaten und ihrer Rolle in Reliable Services finden Sie [hier](service-fabric-concepts-replica-lifecycle.md).
 
@@ -75,7 +75,7 @@ Für die Kategorie `Service Fabric TStore`haben die Namen von Leistungsindikator
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*ServiceFabricPartitionId* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe von [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) mit dem Formatbezeichner „D“ generiert.
+*ServiceFabricPartitionId* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe von [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) mit dem Formatbezeichner „D“ generiert.
 
 *ServiceFabricReplicaId* die ID, die einem bestimmten Replikat eines Reliable Service zugeordnet ist. Die Replikat-ID wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen, von derselben Partition generierten Leistungsindikatorinstanzen zu vermeiden. Weitere Details zu Replikaten und ihrer Rolle in Reliable Services finden Sie [hier](service-fabric-concepts-replica-lifecycle.md).
 
@@ -116,4 +116,4 @@ Die Reliable Services-Runtime gibt die folgenden Ereignisse unter der `Service F
 | Beim Kopieren des Datenträgers übertragene Bytes/s | Die Anzahl gelesener (auf primärem Replikat) oder geschriebener (auf sekundärem Replikat) Datenträgerbytes pro Sekunde beim Speichern einer Kopie|
 
 ## <a name="next-steps"></a>Nächste Schritte
-[EventSource-Anbieter in PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+[EventSource-Anbieter in PerfView](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

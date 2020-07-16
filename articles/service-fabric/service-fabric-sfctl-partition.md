@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: c038ef3266a727bf6984a5bd88ca540a589380db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fff569c586548d84ed55018764363ad7f05e526d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76905837"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257086"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 Ermöglicht es, Partitionen für jeden Dienst abzufragen und zu verwalten.
@@ -400,4 +400,4 @@ Ruft den Namen des Diensts für die angegebene Partition ab. Ein 404-Fehler wird
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle
-- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](/azure/service-fabric/scripts/sfctl-upgrade-application)
+- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](./scripts/sfctl-upgrade-application.md)

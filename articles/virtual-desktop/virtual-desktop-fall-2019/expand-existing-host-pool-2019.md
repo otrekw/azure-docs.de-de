@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 956934bd536d8eb5e692ed193cad1424929db24b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214280"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260770"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Erweitern eines vorhandenen Hostpools um neue Sitzungshosts
 
@@ -130,7 +130,7 @@ Befolgen Sie die Anweisungen unter [Ausführen der Azure Resource Manager-Vorlag
 
 Nachdem Sie Ihren vorhandenen Hostpool erweitert haben, können Sie sich bei einem Windows Virtual Desktop-Client anmelden, um die Einstellungen im Rahmen einer Benutzersitzung zu testen. Sie können jeden der folgenden Clients verwenden, um eine Verbindung mit einer Sitzung herzustellen:
 
-- [Herstellen einer Verbindung mit dem Windows-Desktopclient](../connect-windows-7-and-10.md)
+- [Herstellen einer Verbindung mit dem Windows-Desktopclient](connect-windows-7-10-2019.md)
 - [Herstellen einer Verbindung mit dem Webclient](connect-web-2019.md)
 - [Herstellen einer Verbindung mit dem Android-Client](connect-android-2019.md)
 - [Herstellen einer Verbindung mit dem macOS-Client](connect-macos-2019.md)

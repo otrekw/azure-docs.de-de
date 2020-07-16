@@ -4,12 +4,12 @@ description: 'Vorgehensweise: Aktivieren der Unterstützung der verwalteten Iden
 ms.topic: article
 ms.date: 03/11/2019
 ms.custom: sfrev
-ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 722c507300cc5766d162f336f77f60293c5c90dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415692"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257621"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Konfigurieren von Unterstützung der verwalteten Identität in einem vorhandenen Service Fabric-Cluster
 
@@ -40,7 +40,7 @@ Um den Tokendienst für verwaltete Identitäten in einem vorhandenen Cluster zu 
 ]
 ```
 
-Damit die Änderungen wirksam werden, müssen Sie auch die Upgraderichtlinie ändern, um auf jedem Knoten einen Neustart der Service Fabric-Runtime zu erzwingen, wenn das Upgrade den Cluster durchläuft. Mit diesem Neustart wird sichergestellt, dass der neu aktivierte Systemdienst auf jedem Knoten gestartet und ausgeführt wird. Im folgenden Codeausschnitt ist `forceRestart` die wesentliche Einstellung, um den Neustart zu aktivieren. Verwenden Sie für die restlichen Parameter die unten beschriebenen Werte, oder verwenden Sie vorhandene benutzerdefinierte Werte, die bereits für die Clusterressource angegeben wurden. Benutzerdefinierte Einstellungen für die Fabric-Upgraderichtlinie („upgradeDescription“) können im Azure-Portal angezeigt werden, indem Sie in der Service Fabric-Ressource oder in „resources.azure.com“ die Option „Fabric-Upgrades“ auswählen. Standardoptionen für die Upgraderichtlinie („upgradeDescription“) können nicht über PowerShell oder „resources.azure.com“ angezeigt werden. Weitere Informationen finden Sie unter [ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet).  
+Damit die Änderungen wirksam werden, müssen Sie auch die Upgraderichtlinie ändern, um auf jedem Knoten einen Neustart der Service Fabric-Runtime zu erzwingen, wenn das Upgrade den Cluster durchläuft. Mit diesem Neustart wird sichergestellt, dass der neu aktivierte Systemdienst auf jedem Knoten gestartet und ausgeführt wird. Im folgenden Codeausschnitt ist `forceRestart` die wesentliche Einstellung, um den Neustart zu aktivieren. Verwenden Sie für die restlichen Parameter die unten beschriebenen Werte, oder verwenden Sie vorhandene benutzerdefinierte Werte, die bereits für die Clusterressource angegeben wurden. Benutzerdefinierte Einstellungen für die Fabric-Upgraderichtlinie („upgradeDescription“) können im Azure-Portal angezeigt werden, indem Sie in der Service Fabric-Ressource oder in „resources.azure.com“ die Option „Fabric-Upgrades“ auswählen. Standardoptionen für die Upgraderichtlinie („upgradeDescription“) können nicht über PowerShell oder „resources.azure.com“ angezeigt werden. Weitere Informationen finden Sie unter [ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet).  
 
 ```json
 "upgradeDescription": {

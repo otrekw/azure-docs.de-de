@@ -3,12 +3,12 @@ title: Upgrade der Azure Service Fabric-Version eines Clusters
 description: Upgraden Sie den Service Fabric-Code und/oder die Konfiguration für die Ausführung eines Service Fabric-Clusters, und machen Sie sich unter anderem mit dem Festlegen des Clusteraktualisierungsmodus, dem Upgraden von Zertifikaten, dem Hinzufügen von Anwendungsports und dem Anwenden von Betriebssystempatches vertraut. Was können Sie erwarten, wenn die Upgrades durchgeführt werden?
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 802e7402f60370b7151c5e373c8a4921a5af7c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0fef612725d606f1415e7e8d004aacee025cedf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82789599"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261052"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Aktualisieren der Service Fabric-Version eines Clusters
 
@@ -19,7 +19,7 @@ Sie können Ihren Cluster so konfigurieren, dass er Fabric-Upgrades automatisch 
 Hierzu legen Sie die Clusterkonfiguration „upgradeMode“ über das Portal oder mithilfe von Resource Manager fest – entweder zum Zeitpunkt der Clustererstellung oder später für einen aktiven Cluster. 
 
 > [!NOTE]
-> Achten Sie immer darauf, dass in Ihrem Cluster eine unterstützte Fabric-Version ausgeführt wird. Nach der Ankündigung einer neuen Service Fabric-Version beträgt die verbleibende Supportdauer der vorherigen Version noch mindestens 60 Tage. Neue Versionen werden im [Blog des Service Fabric-Teams](https://blogs.msdn.microsoft.com/azureservicefabric/)angekündigt. Ab dann kann die neue Version ausgewählt werden. 
+> Achten Sie immer darauf, dass in Ihrem Cluster eine unterstützte Fabric-Version ausgeführt wird. Nach der Ankündigung einer neuen Service Fabric-Version beträgt die verbleibende Supportdauer der vorherigen Version noch mindestens 60 Tage. Neue Versionen werden im [Blog des Service Fabric-Teams](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)angekündigt. Ab dann kann die neue Version ausgewählt werden. 
 > 
 > 
 

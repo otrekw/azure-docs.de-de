@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Upgrade eines Azure Kubernetes Service-Cl
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: ea9f0154c221fe99d683cc58d5f6dccfce8d948c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 603a27f0ecffb762a18f58847110c4dd3de68425
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800493"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250990"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
@@ -22,7 +22,7 @@ Informationen zu AKS-Clustern, für die mehrere Knotenpools oder Windows Server-
 Der Artikel setzt voraus, dass Sie mindestens Version 2.0.65 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 > [!WARNING]
-> Durch ein AKS-Clusterupgrade werden Ihre Knoten als nicht planbar markiert und entleert (cordon/drain). Wenn Sie nur über ein geringes Computekontingent verfügen, kann das Upgrade möglicherweise nicht durchgeführt werden. Weitere Informationen finden Sie unter [Anfordern einer Kontingenterhöhung](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+> Durch ein AKS-Clusterupgrade werden Ihre Knoten als nicht planbar markiert und entleert (cordon/drain). Wenn Sie nur über ein geringes Computekontingent verfügen, kann das Upgrade möglicherweise nicht durchgeführt werden. Weitere Informationen finden Sie unter [Anfordern einer Kontingenterhöhung](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Suchen nach verfügbaren AKS-Clusterupgrades
 

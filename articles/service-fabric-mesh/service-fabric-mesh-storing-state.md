@@ -5,16 +5,16 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692681"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246825"
 ---
 # <a name="state-management-with-service-fabric"></a>Zustandsverwaltung mit Service Fabric
 
-Service Fabric unterstützt viele verschiedene Optionen für die Zustandsspeicherung. Eine grundlegende Übersicht über die Zustandsverwaltungsmuster und Service Fabric finden Sie unter [Service Fabric-Konzepte: Zustand](/azure/service-fabric/service-fabric-concepts-state). Alle diese Konzepte gelten unabhängig davon, ob Ihre Dienste innerhalb oder außerhalb von Service Fabric Mesh ausgeführt werden. 
+Service Fabric unterstützt viele verschiedene Optionen für die Zustandsspeicherung. Eine grundlegende Übersicht über die Zustandsverwaltungsmuster und Service Fabric finden Sie unter [Service Fabric-Konzepte: Zustand](../service-fabric/service-fabric-concepts-state.md). Alle diese Konzepte gelten unabhängig davon, ob Ihre Dienste innerhalb oder außerhalb von Service Fabric Mesh ausgeführt werden. 
 
 Mit Service Fabric Mesh können Sie ganz einfach eine neue Anwendung bereitstellen und mit einem bestehenden Datenspeicher verbinden, der in Azure gehostet wird. Neben der Verwendung einer beliebigen Remotedatenbank gibt es weitere Möglichkeiten, Daten zu speichern, je nachdem, ob der Dienst lokal oder remote gespeichert werden soll. 
 

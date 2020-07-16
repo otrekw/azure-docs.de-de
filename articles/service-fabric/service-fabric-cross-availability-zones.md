@@ -5,17 +5,17 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 54382e74899d2cbb56ccf424b0f39bd874e31630
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: a8f883457c2d6da6d2776bb2119caf5d09565170
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259370"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246417"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
 Verfügbarkeitszonen sind in Azure ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Eine Verfügbarkeitszone ist ein eindeutiger physischer Standort, der mit unabhängiger Stromversorgung, Kühlung und Netzwerk innerhalb einer Azure-Region ausgestattet ist.
 
-Service Fabric unterstützt Cluster, die sich über Verfügbarkeitszonen erstrecken, indem Knotentypen bereitgestellt werden, die an bestimmte Zonen angeheftet sind. Dadurch wird die Hochverfügbarkeit Ihrer Anwendungen sichergestellt. Azure-Verfügbarkeitszonen sind nur in ausgewählten Regionen verfügbar. Weitere Informationen finden Sie unter [Übersicht über Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Service Fabric unterstützt Cluster, die sich über Verfügbarkeitszonen erstrecken, indem Knotentypen bereitgestellt werden, die an bestimmte Zonen angeheftet sind. Dadurch wird die Hochverfügbarkeit Ihrer Anwendungen sichergestellt. Azure-Verfügbarkeitszonen sind nur in ausgewählten Regionen verfügbar. Weitere Informationen finden Sie unter [Übersicht über Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md).
 
 Es sind Beispielvorlagen verfügbar: [Verfügbarkeitszonenübergreifende Service Fabric-Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
@@ -136,7 +136,7 @@ Die NAT-Regeln für eingehenden Datenverkehr des Lastenausgleichs müssen mit de
 ```
 
 ### <a name="standard-sku-load-balancer-outbound-rules"></a>Load Balancer-Ausgangsregeln der Standard-SKU
-Load Balancer Standard und Standard Public IP führen im Vergleich zur Verwendung der Basic-SKUs neue Fähigkeiten und andere Verhaltensweisen für ausgehende Verbindungen ein. Wenn Sie bei der Arbeit mit Standard-SKUs ausgehende Verbindungen wünschen, müssen Sie diese explizit entweder mit Standard Public IP-Adressen oder Standard Public Load Balancer definieren. Weitere Informationen finden Sie unter [Ausgehende Verbindungen](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust) und [Azure Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
+Load Balancer Standard und Standard Public IP führen im Vergleich zur Verwendung der Basic-SKUs neue Fähigkeiten und andere Verhaltensweisen für ausgehende Verbindungen ein. Wenn Sie bei der Arbeit mit Standard-SKUs ausgehende Verbindungen wünschen, müssen Sie diese explizit entweder mit Standard Public IP-Adressen oder Standard Public Load Balancer definieren. Weitere Informationen finden Sie unter [Ausgehende Verbindungen](../load-balancer/load-balancer-outbound-connections.md) und [Azure Load Balancer Standard](../load-balancer/load-balancer-overview.md).
 
 >[!NOTE]
 > Die Standardvorlage verweist auf eine Netzwerksicherheitsgruppe, die standardmäßig den gesamten ausgehenden Datenverkehr gestattet. Der eingehende Datenverkehr ist auf die Ports beschränkt, die für Vorgänge zur Service Fabric-Verwaltung erforderlich sind. Die Regeln der Netzwerksicherheitsgruppe können an Ihre Anforderungen angepasst werden.

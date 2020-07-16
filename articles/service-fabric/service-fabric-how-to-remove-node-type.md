@@ -6,12 +6,12 @@ manager: sridmad
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
-ms.openlocfilehash: d9562c09fe99372a9b1106d3ae891f65663cf307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cc7cbcc8344c5015d60d9721c682b6a856cbb6e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610098"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247233"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Entfernen eines Knotentyps in Service Fabric
 In diesem Artikel wird beschrieben, wie Sie einen Azure Service Fabric-Cluster skalieren, indem Sie einen vorhandenen Knotentyp aus einem Cluster entfernen. Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern als Gruppe bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeder Knotentyp kann dann separat verwaltet werden. Nachdem Sie einen Service Fabric-Cluster erstellt haben, können Sie einen Cluster horizontal skalieren, indem Sie einen Knotentyp (VM-Skalierungsgruppe) und alle seine Knoten entfernen.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
@@ -20,7 +20,7 @@ In diesem Artikel wird beschrieben, wie Sie einen Azure Service Fabric-Cluster s
 > Es wird nicht empfohlen, diesen Ansatz regelmäßig zu befolgen, um einen Knotentyp aus einem Produktionscluster zu entfernen. Es handelt sich um einen sehr gefährlichen Befehl, da er die VM-Skalierungsgruppenressource hinter dem Knotentyp löscht. 
 
 ## <a name="durability-characteristics"></a>Dauerhaftigkeitsmerkmale
-Bei der Verwendung von „Remove-AzServiceFabricNodeType“ wird die Sicherheit über die Geschwindigkeit gestellt. Der Knotentyp muss aus den folgenden Gründen die [Dauerhaftigkeitsstufe](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster) „Silber“ oder „Gold“ aufweisen:
+Bei der Verwendung von „Remove-AzServiceFabricNodeType“ wird die Sicherheit über die Geschwindigkeit gestellt. Der Knotentyp muss aus den folgenden Gründen die [Dauerhaftigkeitsstufe](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) „Silber“ oder „Gold“ aufweisen:
 - „Bronze“ gibt Ihnen keine Garantie für die Speicherung von Zustandsinformationen.
 - Die Dauerhaftigkeit von Typ „Silber“ und „Gold“ fängt alle Änderungen an der Skalierungsgruppe ab.
 - Mit „Gold“ erhalten Sie außerdem Kontrolle über die Azure-Updates, die im Hintergrund der Skalierungsgruppe erfolgen.
@@ -175,6 +175,6 @@ Wenn Sie einen Knotentyp „Bronze“ entfernen, fallen alle Knoten im Knotentyp
     - Warten Sie, bis die Bereitstellung abgeschlossen ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über die [Dauerhaftigkeitsmerkmale](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster) eines Clusters.
+- Erfahren Sie mehr über die [Dauerhaftigkeitsmerkmale](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) eines Clusters.
 - Erfahren Sie mehr über [Knotentypen und VM-Skalierungsgruppen](service-fabric-cluster-nodetypes.md).
 - Erfahren Sie mehr über [Service Fabric-Clusterskalierung](service-fabric-cluster-scaling.md).

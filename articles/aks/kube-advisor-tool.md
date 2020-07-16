@@ -7,12 +7,12 @@ author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 9dc5a38a05ef73863f85e4dbe92d52eb94b2715f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b0078f1aff3ef81ee270f67de0fffddec3abab9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83773802"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255250"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Überprüfen auf Best Practices von Kubernetes in Ihrem Cluster
 
@@ -29,7 +29,7 @@ Das kube-advisor-Tool kann Berichte zur Ressourcenanforderung und zu Grenzwerten
 
 ## <a name="running-kube-advisor"></a>Ausführung von kube-advisor
 
-Um das Tool auf einem Cluster auszuführen, der für die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](azure-ad-integration.md) konfiguriert ist, verwenden Sie die folgenden Befehle. Der erste Befehl erstellt ein Kubernetes-Dienstkonto. Der zweite Befehl führt das Tool unter Verwendung dieses Dienstkontos in einem Pod aus und konfiguriert den Pod für die Löschung nach dem Beenden. 
+Um das Tool auf einem Cluster auszuführen, der für die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](./azure-ad-integration-cli.md) konfiguriert ist, verwenden Sie die folgenden Befehle. Der erste Befehl erstellt ein Kubernetes-Dienstkonto. Der zweite Befehl führt das Tool unter Verwendung dieses Dienstkontos in einem Pod aus und konfiguriert den Pod für die Löschung nach dem Beenden. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml

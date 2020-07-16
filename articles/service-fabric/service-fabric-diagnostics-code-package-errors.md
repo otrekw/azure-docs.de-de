@@ -5,12 +5,12 @@ author: grzuber
 ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 983d45a7a240701fa6441d2d9edeeda16f1ed18b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75463098"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256491"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Diagnostizieren von häufigen Fehlern im Zusammenhang mit Codepaketen mit Service Fabric
 
@@ -57,6 +57,6 @@ Exitcode | Hexadezimalwert | Kurze Beschreibung | Grundursache | Mögliche Lösu
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zur [Diagnose weiterer häufiger Szenarien](service-fabric-diagnostics-common-scenarios.md).
-* Eine ausführlichere Übersicht über Azure Monitor-Protokolle und ihre Inhalte finden Sie unter [Azure Monitor: Übersicht.](../operations-management-suite/operations-management-suite-overview.md)
-* Erfahren Sie mehr über die [Warnungen](../log-analytics/log-analytics-alerts.md) von Azure Monitor-Protokollen, die bei der Erkennung und Diagnose hilfreich sein können.
-* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokollen vertraut, die als Bestandteil von Azure Monitor-Protokollen angeboten werden.
+* Eine ausführlichere Übersicht über Azure Monitor-Protokolle und ihre Inhalte finden Sie unter [Azure Monitor: Übersicht.](../azure-monitor/overview.md)
+* Erfahren Sie mehr über die [Warnungen](../azure-monitor/platform/alerts-overview.md) von Azure Monitor-Protokollen, die bei der Erkennung und Diagnose hilfreich sein können.
+* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../azure-monitor/log-query/log-query-overview.md) in Azure Monitor-Protokollen vertraut, die als Bestandteil von Azure Monitor-Protokollen angeboten werden.

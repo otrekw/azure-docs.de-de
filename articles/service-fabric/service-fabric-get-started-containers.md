@@ -4,12 +4,12 @@ description: Erstellen Sie Ihre erste Windows-Containeranwendung unter Azure Ser
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: tracking-python
-ms.openlocfilehash: d7076226b63fa3b45eaae82c2964997d3065ed88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0baad5d2596de04b629c4cf9eb86c51b37b8cdc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560662"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247403"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 
@@ -17,7 +17,7 @@ ms.locfileid: "84560662"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Zum Ausführen einer vorhandenen Anwendung eines Windows-Containers in einem Service Fabric-Cluster sind keine Änderungen an Ihrer Anwendung erforderlich. In diesem Artikel werden die einzelnen Schritte vorgestellt, mit denen Sie ein Docker-Image mit einer Python [Flask](http://flask.pocoo.org/)-Webanwendung erstellen und in einem Azure Service Fabric-Cluster bereitstellen. Außerdem stellen Sie Ihre Containeranwendung per [Azure Container Registry](/azure/container-registry/) bereit. In diesem Artikel werden grundlegende Kenntnisse von Docker vorausgesetzt. Weitere Informationen zu Docker finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/understanding-docker/).
+Zum Ausführen einer vorhandenen Anwendung eines Windows-Containers in einem Service Fabric-Cluster sind keine Änderungen an Ihrer Anwendung erforderlich. In diesem Artikel werden die einzelnen Schritte vorgestellt, mit denen Sie ein Docker-Image mit einer Python [Flask](http://flask.pocoo.org/)-Webanwendung erstellen und in einem Azure Service Fabric-Cluster bereitstellen. Außerdem stellen Sie Ihre Containeranwendung per [Azure Container Registry](../container-registry/index.yml) bereit. In diesem Artikel werden grundlegende Kenntnisse von Docker vorausgesetzt. Weitere Informationen zu Docker finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/understanding-docker/).
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf eine Windows-Entwicklungsumgebung.  Die Service Fabric-Clusterruntime und die Docker-Runtime müssen unter dem gleichen Betriebssystem ausgeführt werden.  Sie können Windows-Container nicht in einem Linux-Cluster ausführen.
@@ -333,7 +333,7 @@ Die Anwendung ist bereit, wenn Sie sich im Zustand ```Ready``` befindet: ![Berei
 
 ## <a name="clean-up"></a>Bereinigung
 
-Während der Ausführung des Clusters fallen weiterhin Gebühren an. [Löschen](service-fabric-cluster-delete.md) Sie Ihren Cluster daher ggf.
+Während der Ausführung des Clusters fallen weiterhin Gebühren an. [Löschen](./service-fabric-tutorial-delete-cluster.md) Sie Ihren Cluster daher ggf.
 
 Wenn Sie das Image mithilfe von Push an die Containerregistrierung übertragen haben, können Sie das lokale Image von Ihrem Entwicklungscomputer löschen:
 
@@ -350,7 +350,7 @@ Windows Server-Container sind nicht mit allen Versionen eines Hostbetriebssystem
 - Windows Server-Container, die mit Windows Server 2016 erstellt wurden, funktionieren im Hyper-V-Isolationsmodus nur auf Hosts unter Windows Server Version 1709. 
 - Mit Windows Server-Containern, die mit Windows Server 2016 erstellt wurden, ist es möglicherweise erforderlich, sicherzustellen, dass die Revision des Containerbetriebssystems und des Hostbetriebssystems sind identisch, sofern die Ausführung im Isolationsmodus auf einem Host unter Windows Server 2016 erfolgt.
  
-Weitere Informationen finden Sie unter [Versionskompatibilität von Windows-Containern](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+Weitere Informationen finden Sie unter [Versionskompatibilität von Windows-Containern](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
 Beachten Sie die Kompatibilität von Hostbetriebssystem und Containerbetriebssystem beim Erstellen und Bereitstellen von Containern in Ihrem Service Fabric-Cluster. Beispiel:
 

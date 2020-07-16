@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f4a29c7cb7e35e69eb9410dd7ddc9f07757e3565
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 069fc95d226e4417bb650b6092a7d00953f69e8d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128718"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252844"
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
 Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](api-management-howto-policies.md).  
@@ -50,12 +50,12 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
     -   [Variable festlegen](api-management-advanced-policies.md#set-variable) – speichert einen Wert in einer benannten Kontextvariablen, um später darauf zugreifen zu können.  
     -   [Anforderungsmethode festlegen](api-management-advanced-policies.md#SetRequestMethod) – dient der Vornahme von Änderungen der HTTP-Anforderungsmethode.  
     -   [Statuscode festlegen](api-management-advanced-policies.md#SetStatus) – Ändert den HTTP-Statuscode in den angegebenen Wert.  
-    -   [Ablaufverfolgung](api-management-advanced-policies.md#Trace) – Hinzufügen von benutzerdefinierten Ablaufverfolgungen zur [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ausgabe, zu Application Insights-Telemetrien und Ressourcenprotokollen.  
+    -   [Ablaufverfolgung](api-management-advanced-policies.md#Trace) – Hinzufügen von benutzerdefinierten Ablaufverfolgungen zur [API-Inspektor](./api-management-howto-api-inspector.md)-Ausgabe, zu Application Insights-Telemetrien und Ressourcenprotokollen.  
     -   [Warten](api-management-advanced-policies.md#Wait) – wartet darauf, dass eingeschlossene Richtlinien für [Send request](api-management-advanced-policies.md#SendRequest) (Sendeanforderung), [Get value from cache](api-management-caching-policies.md#GetFromCacheByKey) (Wert aus dem Cache abrufen) oder [Control flow](api-management-advanced-policies.md#choose) (Ablaufsteuerung) abgeschlossen werden, bevor der Vorgang fortgesetzt wird.  
 -   [Authentifizierungsrichtlinien](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [Standardauthentifizierung](api-management-authentication-policies.md#Basic) – Authentifizierung mit einem Back-End-Dienst unter Verwendung der Standardauthentifizierung.  
     -   [Authentifizierung mit Clientzertifikat](api-management-authentication-policies.md#ClientCertificate) – Authentifizierung mit einem Back-End-Dienst unter Verwendung von Clientzertifikaten.  
-    -   [Authentifizierung mit einer verwalteten Identität](api-management-authentication-policies.md#ManagedIdentity) – Authentifizierung mit einem Back-End-Dienst unter Verwendung einer [verwalteten Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).  
+    -   [Authentifizierung mit einer verwalteten Identität](api-management-authentication-policies.md#ManagedIdentity) – Authentifizierung mit einem Back-End-Dienst unter Verwendung einer [verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md).  
 -   [Cachingrichtlinien](api-management-caching-policies.md#CachingPolicies)  
     -   [Aus Cache abrufen](api-management-caching-policies.md#GetFromCache) – Führt eine Cachesuche aus und gibt ggf. eine gültige Antwort aus dem Cache zurück.  
     -   [In Cache ablegen](api-management-caching-policies.md#StoreToCache) – Cacheantwort gemäß der angegebenen Konfiguration für die Cachesteuerung.  

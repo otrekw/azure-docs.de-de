@@ -3,12 +3,12 @@ title: Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Anwendung
 description: In diesem Artikel wird erläutert, wie Sie Ihrer Service Fabric-Anwendung, die verwaltete Identitäten nutzen kann, Zugriff auf andere Azure-Ressourcen gewähren, die die Azure Active Directory-basierte Authentifizierung unterstützen.
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 638176ca2665146a64fb7a6bd83253eba3434a7f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614792"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258959"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Gewähren des Zugriffs auf Azure-Ressourcen für die verwaltete Identität einer Service Fabric-Anwendung (Vorschau)
 
@@ -102,7 +102,7 @@ Vom System zugewiesene verwaltete Identitäten:
     }
 ```
 
-Weitere Informationen finden Sie unter [Tresore: Aktualisieren der Zugriffsrichtlinie](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).
+Weitere Informationen finden Sie unter [Tresore: Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

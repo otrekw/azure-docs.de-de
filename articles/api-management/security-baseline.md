@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ceaa44429d105c2a6a1d0883ab29ed11b63ad497
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5640a42c0fdcb0bd958011db28c19854b16a547
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83736074"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252758"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-Sicherheitsbaseline für API Management
 
 Die Azure-Sicherheitsbaseline für API Management enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
 
-Die Baseline für diesen Dienst wird von [Azure Security Benchmark-Version 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
+Die Baseline für diesen Dienst wird von [Azure Security Benchmark-Version 1.0](../security/benchmarks/overview.md) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
 
-Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbaselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Netzwerksicherheit
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Netzwerksicherheit](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Netzwerksicherheit](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Schützen von Ressourcen mithilfe von Netzwerksicherheitsgruppen oder Azure Firewall in Virtual Network
 
@@ -34,11 +34,11 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 Ein- und ausgehender Datenverkehr im Subnetz, in dem API Management bereitgestellt wurde, kann mithilfe einer Netzwerksicherheitsgruppe gesteuert werden.
 
-* [Verwenden von Azure API Management mit virtuellen Netzwerken](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
+* [Verwenden von Azure API Management mit virtuellen Netzwerken](./api-management-using-with-vnet.md)
 
-* [Verwenden von Azure API Management mit einem internen virtuellen Netzwerk](https://docs.microsoft.com/azure/api-management/api-management-using-with-internal-vnet)
+* [Verwenden von Azure API Management mit einem internen virtuellen Netzwerk](./api-management-using-with-internal-vnet.md)
 
-* [Integrieren von API Management in ein internes VNET mit Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Integrieren von API Management in ein internes VNET mit Application Gateway](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -50,11 +50,11 @@ Ein- und ausgehender Datenverkehr im Subnetz, in dem API Management bereitgestel
 
 Vorsicht: Beim Konfigurieren einer NSG im API Management-Subnetz müssen einige Ports geöffnet sein. Wenn diese Ports nicht verfügbar sind, funktioniert API Management möglicherweise nicht ordnungsgemäß und kann möglicherweise nicht mehr aufgerufen werden.
 
-* [Verwenden von Azure API Management mit virtuellen Netzwerken: Allgemeine Probleme mit der Netzwerkkonfiguration](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+* [Verwenden von Azure API Management mit virtuellen Netzwerken: Allgemeine Probleme mit der Netzwerkkonfiguration](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
-* [Aktivieren der NSG-Flussprotokolle](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Aktivieren der NSG-Flussprotokolle](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Aktivieren und Verwenden von Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Aktivieren und Verwenden von Traffic Analytics](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -71,9 +71,9 @@ Die Kombination aus einer Bereitstellung von API Management in einem internen VN
 
 Hinweis: Diese Funktion ist auf den Ebenen „Premium“ und „Developer“ von API Management verfügbar.
 
-* [Integrieren von API Management in ein internes VNET mit Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Integrieren von API Management in ein internes VNET mit Application Gateway](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Dokumentation zu Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/)
+* [Dokumentation zu Azure Application Gateway](../application-gateway/index.yml)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -94,13 +94,13 @@ Aktivieren Sie Azure DDoS Protection Standard in dem VNET, das Ihrer API Managem
 
 Verwenden Sie die in Azure Security Center integrierte Threat Intelligence, um die Kommunikation mit bekannten schädlichen oder nicht genutzten IP-Adressen zu verweigern.
 
-* [Integrieren von API Management in ein internes VNET mit Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Integrieren von API Management in ein internes VNET mit Application Gateway](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Dokumentation zu Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/)
+* [Dokumentation zu Azure Application Gateway](../application-gateway/index.yml)
 
-* [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](../virtual-network/manage-ddos-protection.md)
 
-* [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/threat-protection.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -112,11 +112,11 @@ Verwenden Sie die in Azure Security Center integrierte Threat Intelligence, um d
 
 Vorsicht: Beim Konfigurieren einer NSG im API Management-Subnetz müssen einige Ports geöffnet sein. Wenn diese Ports nicht verfügbar sind, funktioniert API Management möglicherweise nicht ordnungsgemäß und kann möglicherweise nicht mehr aufgerufen werden.
 
-* [Verwenden von Azure API Management mit virtuellen Netzwerken: Allgemeine Probleme mit der Netzwerkkonfiguration](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+* [Verwenden von Azure API Management mit virtuellen Netzwerken: Allgemeine Probleme mit der Netzwerkkonfiguration](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
-* [Aktivieren der NSG-Flussprotokolle](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Aktivieren der NSG-Flussprotokolle](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Aktivieren und Verwenden von Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Aktivieren und Verwenden von Traffic Analytics](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -135,9 +135,9 @@ Die Kombination aus einer Bereitstellung von API Management in einem internen VN
 
 Hinweis: Diese Funktion ist auf den Ebenen „Premium“ und „Developer“ von API Management verfügbar.
 
-* [Integrieren von API Management in ein internes VNET mit Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Integrieren von API Management in ein internes VNET mit Application Gateway](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Azure Web Application Firewall für Azure Application Gateway](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
+* [Azure Web Application Firewall für Azure Application Gateway](../web-application-firewall/ag/ag-overview.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -156,13 +156,13 @@ Die Kombination aus einer Bereitstellung von API Management in einem internen VN
 
 Hinweis: Diese Funktion ist auf den Ebenen „Premium“ und „Developer“ von API Management verfügbar.
 
-* [Veröffentlichen interner APIs für externe Benutzer](https://docs.microsoft.com/azure/architecture/example-scenario/apps/publish-internal-apis-externally)
+* [Veröffentlichen interner APIs für externe Benutzer](/azure/architecture/example-scenario/apps/publish-internal-apis-externally)
 
-* [Verwenden von Azure API Management mit virtuellen Netzwerken](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
+* [Verwenden von Azure API Management mit virtuellen Netzwerken](./api-management-using-with-vnet.md)
 
-* [Azure Web Application Firewall für Azure Application Gateway](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
+* [Azure Web Application Firewall für Azure Application Gateway](../web-application-firewall/ag/ag-overview.md)
 
-* [Dokumentation zu Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/overview)
+* [Dokumentation zu Azure Application Gateway](../application-gateway/overview.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -174,9 +174,9 @@ Hinweis: Diese Funktion ist auf den Ebenen „Premium“ und „Developer“ von
 
 Vorsicht: Beim Konfigurieren einer NSG im API Management-Subnetz müssen einige Ports geöffnet sein. Wenn diese Ports nicht verfügbar sind, funktioniert API Management möglicherweise nicht ordnungsgemäß und kann möglicherweise nicht mehr aufgerufen werden.
 
-* [Diensttags in virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [Diensttags in virtuellen Netzwerken](../virtual-network/service-tags-overview.md)
 
-* [Für API Management erforderliche Ports](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+* [Für API Management erforderliche Ports](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -189,9 +189,9 @@ Vorsicht: Beim Konfigurieren einer NSG im API Management-Subnetz müssen einige 
 
 Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte, z. B. Azure Resource Manager-Vorlagen, rollenbasierte Zugriffssteuerung (RBAC) und Richtlinien, gemeinsam in einer Blaupausendefinition gepackt werden. Sie können die Blaupause ganz einfach auf neue Abonnements und Umgebungen anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
 
-* [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Erstellen einer Azure-Blaupause](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Erstellen einer Azure-Blaupause](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -201,11 +201,11 @@ Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellun
 
 **Leitfaden**: Verwenden Sie Tags für Netzwerksicherheitsgruppen (NSGs) und andere Ressourcen im Zusammenhang mit Netzwerksicherheit und Datenverkehrsfluss. Für einzelne NSG-Regeln können Sie das Feld „Beschreibung“ verwenden, um geschäftliche Anforderungen bzw. deren Dauer (usw.) für alle Regeln festzulegen, die Datenverkehr in ein bzw. aus einem Netzwerk zulassen.
 
-* [Erstellen und Verwenden von Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
-* [Erstellen eines virtuellen Netzwerks](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Erstellen eines virtuellen Netzwerks](../virtual-network/quick-create-portal.md)
 
-* [Erstellen einer NSG mit einer Sicherheitskonfiguration](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Erstellen einer NSG mit einer Sicherheitskonfiguration](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -215,9 +215,9 @@ Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellun
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen, die Ihren Azure API Management-Bereitstellungen zugeordnet sind. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Erstellen von Warnungen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -225,7 +225,7 @@ Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellun
 
 ## <a name="logging-and-monitoring"></a>Protokollierung und Überwachung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Protokollierung und Überwachung](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Protokollierung und Überwachung](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Verwenden von genehmigten Zeitsynchronisierungsquellen
 
@@ -243,15 +243,15 @@ Zusätzlich zu Azure Monitor kann Azure API Management auch in einen oder mehrer
 
 Optional können Sie auch Azure Sentinel oder die SIEM-Lösung (Security Incident and Event Management) eines Drittanbieters aktivieren und dafür Daten integrieren.
 
-* [Erstellen von Diagnoseeinstellungen im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-in-azure-portal)
+* [Erstellen von Diagnoseeinstellungen im Azure-Portal](../azure-monitor/platform/diagnostic-settings.md#create-in-azure-portal)
 
-* [Durchführen des Onboardings für Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 * [Erste Schritte mit Azure Monitor und der Integration einer SIEM-Drittanbieterlösung](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-* [Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-log-event-hubs)
+* [Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management](./api-management-howto-log-event-hubs.md)
 
-* [Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)
+* [Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights](./api-management-howto-app-insights.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -263,9 +263,9 @@ Optional können Sie auch Azure Sentinel oder die SIEM-Lösung (Security Inciden
 
 Für die Überwachungsprotokollierung auf Datenebene enthalten Diagnoseprotokolle umfassende Informationen zu Vorgängen und Fehlern, die für die Überwachung und Problembehandlung relevant sind. Diagnoseprotokolle unterscheiden sich von Aktivitätsprotokollen. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure-Ressourcen ausgeführt wurden. Diagnoseprotokolle bieten Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
 
-* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
 
-* [Überwachen von veröffentlichten APIs](https://docs.microsoft.com/Azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)
+* [Überwachen von veröffentlichten APIs](./api-management-howto-use-azure-monitor.md#activity-logs)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -283,9 +283,9 @@ Für die Überwachungsprotokollierung auf Datenebene enthalten Diagnoseprotokoll
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum Ihres Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihrer Organisation fest. Verwenden Sie Azure Storage-Konten für die langfristige Speicherung oder Archivierung.
 
-* [Ändern des Datenaufbewahrungszeitraums](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-* [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage)
+* [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -297,13 +297,13 @@ Für die Überwachungsprotokollierung auf Datenebene enthalten Diagnoseprotokoll
 
 Optional können Sie API Management in Azure Application Insights integrieren und als primäres oder sekundäres Tool für die Überwachung, Nachverfolgung, Berichterstellung und Benachrichtigung nutzen.
 
-* [Überwachen von veröffentlichten APIs](https://docs.microsoft.com/Azure/api-management/api-management-howto-use-azure-monitor)
+* [Überwachen von veröffentlichten APIs](./api-management-howto-use-azure-monitor.md)
 
-* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/get-started-portal.md)
 
-* [Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)
+* [Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights](./api-management-howto-app-insights.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -319,17 +319,17 @@ Optional können Sie API Management in Azure Application Insights integrieren un
 
 Optional können Sie auch Azure Sentinel oder die SIEM-Lösung eines Drittanbieters aktivieren und dafür Daten integrieren.
 
-* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
 
-* [Überwachen von veröffentlichten APIs](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)
+* [Überwachen von veröffentlichten APIs](./api-management-howto-use-azure-monitor.md#activity-logs)
 
-* [Einrichten einer Warnungsregel für nicht autorisierte Anforderungen](https://docs.microsoft.com/Azure/api-management/api-management-howto-use-azure-monitor#set-up-an-alert-rule-for-unauthorized-request)
+* [Einrichten einer Warnungsregel für nicht autorisierte Anforderungen](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule-for-unauthorized-request)
 
-* [Kapazität einer Azure API Management-Instanz](https://docs.microsoft.com/azure/api-management/api-management-capacity)
+* [Kapazität einer Azure API Management-Instanz](./api-management-capacity.md)
 
-* [Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)
+* [Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights](./api-management-howto-app-insights.md)
 
-* [Durchführen des Onboardings für Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -361,7 +361,7 @@ Optional können Sie auch Azure Sentinel oder die SIEM-Lösung eines Drittanbiet
 
 ## <a name="identity-and-access-control"></a>Identität und Zugriffssteuerung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Identität und Zugriffssteuerung](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Identität und Zugriffssteuerung](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Verwalten eines Bestands von Administratorkonten
 
@@ -373,15 +373,15 @@ Darüber hinaus enthält API Management in seinem Benutzersystem auch die integr
 
 Befolgen Sie die Empfehlungen aus Azure Security Center, die sich auf die Verwaltung und Pflege von Administratorkonten beziehen.
 
-* [Verwenden der rollenbasierten Zugriffssteuerung in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-role-based-access-control)
+* [Verwenden der rollenbasierten Zugriffssteuerung in Azure API Management](./api-management-role-based-access-control.md)
 
-* [Abrufen einer Liste mit Benutzern unter einer Azure API Management-Instanz](https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [Abrufen einer Liste mit Benutzern unter einer Azure API Management-Instanz](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
 
-* [Abrufen einer Liste mit Benutzern, die in Azure AD einer Verzeichnisrolle zugewiesen sind, mit PowerShell](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)
+* [Abrufen einer Liste mit Benutzern, die in Azure AD einer Verzeichnisrolle zugewiesen sind, mit PowerShell](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)
 
-* [Abrufen einer Verzeichnisrollendefinition in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition?view=azps-3.7.0)
+* [Abrufen einer Verzeichnisrollendefinition in Azure AD mit PowerShell](/powershell/module/az.resources/get-azroledefinition?view=azps-3.7.0)
 
-* [Empfehlungen für Identität und Zugriff](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-identity)
+* [Empfehlungen für Identität und Zugriff](../security-center/recommendations-reference.md#recs-identity)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -393,7 +393,7 @@ Befolgen Sie die Empfehlungen aus Azure Security Center, die sich auf die Verwal
 
 Für Azure API Management-Abonnements, die eine Möglichkeit zum Schützen des Zugriffs auf APIs darstellen, wird aber ein Paar mit Abonnementschlüsseln generiert. Kunden können diese Abonnementschlüssel jederzeit neu generieren.
 
-* [Abonnements in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-subscriptions)
+* [Abonnements in Azure API Management](./api-management-subscriptions.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -408,9 +408,9 @@ Zusätzlich können Sie, um den Überblick über dedizierte Verwaltungskonten zu
 - Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
 - Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
 
-* [Überwachen der Identität und des Zugriffs](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Überwachen der Identität und des Zugriffs](../security-center/security-center-identity-access.md)
 
-* [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -420,11 +420,11 @@ Zusätzlich können Sie, um den Überblick über dedizierte Verwaltungskonten zu
 
 **Leitfaden**: Azure API Management kann so konfiguriert werden, dass Azure Active Directory als Identitätsanbieter zum Authentifizieren von Benutzern im Entwicklerportal genutzt wird, um von den SSO-Funktionen von Azure AD profitieren zu können. Nach der Konfiguration können neue Benutzer des Entwicklerportals auswählen, ob sie den Standardanmeldeprozess nutzen, indem sie sich zuerst per Azure AD authentifizieren und nach Abschluss des Vorgangs dann den Anmeldeprozess im Portal durchführen.
 
-* [Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
+* [Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management](./api-management-howto-aad.md)
 
 Alternativ kann der Anmelde- bzw. Registrierungsvorgang per Delegierung auch weiter angepasst werden. Mit der Delegierung können Sie Anmeldung, Registrierung und Produktabonnierung von Entwicklern mit Ihrer vorhandenen Website umsetzen, anstatt die integrierte Funktion im Entwicklerportal zu verwenden. Dadurch besitzt die Website die Benutzerdaten und kann die Prüfung dieser Schritte auf selbst definierte Weise durchführen.
 
-* [Delegieren von Benutzerregistrierung und Produktabonnierung](https://docs.microsoft.com/azure/api-management/api-management-howto-setup-delegation)
+* [Delegieren von Benutzerregistrierung und Produktabonnierung](./api-management-howto-setup-delegation.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -434,9 +434,9 @@ Alternativ kann der Anmelde- bzw. Registrierungsvorgang per Delegierung auch wei
 
 **Leitfaden**: Aktivieren Sie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für Azure Active Directory (AAD), und befolgen Sie die Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center.
 
-* [Aktivieren von MFA in Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Aktivieren von MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Überwachen von Identität und Zugriff in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Überwachen von Identität und Zugriff in Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -446,9 +446,9 @@ Alternativ kann der Anmelde- bzw. Registrierungsvorgang per Delegierung auch wei
 
 **Leitfaden**: Verwenden Sie Arbeitsstationen mit privilegiertem Zugriff (Privileged Access Workstations, PAW) mit Multi-Factor Authentication (MFA), die für die Anmeldung und Konfiguration von Azure-Ressourcen konfiguriert sind.
 
-* [Informationen zu Arbeitsstationen mit privilegiertem Zugriff](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Informationen zu Arbeitsstationen mit privilegiertem Zugriff](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Aktivieren von MFA in Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Aktivieren von MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -460,9 +460,9 @@ Alternativ kann der Anmelde- bzw. Registrierungsvorgang per Delegierung auch wei
 
 Verwenden Sie zusätzlich Azure AD-Risikoerkennungen, um Warnungen und Berichte zu riskantem Benutzerverhalten anzuzeigen.
 
-* [Bereitstellen von Azure AD Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Bereitstellen von Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure Active Directory-Risikoerkennungen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Azure Active Directory-Risikoerkennungen](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -472,7 +472,7 @@ Verwenden Sie zusätzlich Azure AD-Risikoerkennungen, um Warnungen und Berichte 
 
 **Leitfaden**: Verwenden Sie benannte Standorte mit bedingtem Zugriff, um den Zugriff auf das Azure-Portal nur über bestimmte logische Gruppierungen von IP-Adressbereichen oder Ländern/Regionen zuzulassen.
 
-* [Konfigurieren benannter Standorte in Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Konfigurieren benannter Standorte in Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -486,11 +486,11 @@ Konfigurieren Sie Ihr Entwicklerportal für Azure API Management, um Entwicklerk
 
 Konfigurieren Sie Ihre Azure API Management-Instanz so, dass Ihre APIs über das OAuth 2.0-Protokoll mit Azure Active Directory (AD) geschützt sind.
 
-* [Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
+* [Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management](./api-management-howto-aad.md)
 
-* [Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)
+* [Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management](./api-management-howto-protect-backend-with-aad.md)
 
-* [Erstellen und Konfigurieren einer AAD-Instanz](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Erstellen und Konfigurieren einer AAD-Instanz](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -504,13 +504,13 @@ Kunden können einen Bestand an Benutzerkonten für API Management verwalten und
 
 Administratoren können benutzerdefinierte Gruppen erstellen oder externe Gruppen in zugeordneten Azure Active Directory-Mandanten verwenden. Benutzerdefinierte und externe Gruppen können gemeinsam mit Systemgruppen verwendet werden, um API-Produkte für Entwickler sichtbar zu machen und ihnen den Zugriff auf die API-Produkte zu ermöglichen.
 
-* [Verwalten von Benutzerkonten in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-create-or-invite-developers)
+* [Verwalten von Benutzerkonten in Azure API Management](./api-management-howto-create-or-invite-developers.md)
 
-* [Abrufen einer Liste mit API Management-Benutzern](https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [Abrufen einer Liste mit API Management-Benutzern](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
 
-* [Erstellen und Verwenden von Gruppen für Entwicklerkonten in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups)
+* [Erstellen und Verwenden von Gruppen für Entwicklerkonten in Azure API Management](./api-management-howto-create-groups.md)
 
-* [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -528,17 +528,17 @@ Erstellen Sie Diagnoseeinstellungen für Azure AD-Benutzerkonten, und senden Sie
 
 Konfigurieren Sie die erweiterte Überwachung mit API Management, indem Sie die Richtlinie `log-to-eventhub` verwenden, alle zusätzlichen Kontextinformationen erfassen, die für die Sicherheitsanalyse benötigt werden, und die Daten an Azure Sentinel oder die SIEM-Lösung eines Drittanbieters senden.
 
-* [Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
+* [Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management](./api-management-howto-aad.md)
 
-* [Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)
+* [Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management](./api-management-howto-protect-backend-with-aad.md)
 
-* [API Management-Richtlinien für die Zugriffsbeschränkung](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies)
+* [API Management-Richtlinien für die Zugriffsbeschränkung](./api-management-access-restriction-policies.md)
 
-* [Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Schnellstart: Ausführen des Onboardings für Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Schnellstart: Ausführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Überwachen von APIs mit Azure API Management, Event Hubs und Moesif](https://docs.microsoft.com/azure/api-management/api-management-log-to-eventhub-sample)
+* [Überwachen von APIs mit Azure API Management, Event Hubs und Moesif](./api-management-log-to-eventhub-sample.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -548,11 +548,11 @@ Konfigurieren Sie die erweiterte Überwachung mit API Management, indem Sie die 
 
 **Leitfaden**: Falls bei der Kontoanmeldung auf Steuerungsebene (Azure-Portal) ein abweichendes Anmeldeverhalten auftritt, sollten Sie Azure Active Directory (AD) Identity Protection und Risikoerkennungsfeatures verwenden, um automatisierte Reaktionen auf erkannte verdächtige Aktionen im Zusammenhang mit Benutzeridentitäten zu konfigurieren. Außerdem können Sie Daten zur weiteren Untersuchung in Azure Sentinel erfassen.
 
-* [Anzeigen riskanter Azure AD-Anmeldungen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Anzeigen riskanter Azure AD-Anmeldungen](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Konfigurieren und Aktivieren von Risikorichtlinien für den Identitätsschutz](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Konfigurieren und Aktivieren von Risikorichtlinien für den Identitätsschutz](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Durchführen des Onboardings für Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -562,7 +562,7 @@ Konfigurieren Sie die erweiterte Überwachung mit API Management, indem Sie die 
 
 **Leitfaden**: Derzeit nicht verfügbar. Kunden-Lockbox wird für Azure API Management derzeit nicht unterstützt.
 
-* [Unterstützte Dienste und Szenarios bei allgemeiner Verfügbarkeit](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Unterstützte Dienste und Szenarios bei allgemeiner Verfügbarkeit](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -570,13 +570,13 @@ Konfigurieren Sie die erweiterte Überwachung mit API Management, indem Sie die 
 
 ## <a name="data-protection"></a>Schutz von Daten
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenschutz](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenschutz](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Verwalten eines Bestands an vertraulichen Informationen
 
 **Leitfaden**: Verwenden Sie Tags für die Nachverfolgung von Azure-Ressourcen, die vertrauliche Informationen speichern oder verarbeiten.
 
-* [Erstellen und Verwenden von Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -586,13 +586,13 @@ Konfigurieren Sie die erweiterte Überwachung mit API Management, indem Sie die 
 
 **Leitfaden**: Implementieren Sie separate Abonnements und/oder Verwaltungsgruppen für Entwicklungs-, Test- und Produktionsumgebungen. Azure API Management-Instanzen müssen durch ein virtuelles Netzwerk (VNET) bzw. Subnetz getrennt und entsprechend mit Tags versehen werden.
 
-* [Erstellen zusätzlicher Azure-Abonnements](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create.md)
 
-* [Erstellen und Verwenden von Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
-* [Verwenden von Azure API Management mit virtuellen Netzwerken](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
+* [Verwenden von Azure API Management mit virtuellen Netzwerken](./api-management-using-with-vnet.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -604,7 +604,7 @@ Konfigurieren Sie die erweiterte Überwachung mit API Management, indem Sie die 
 
 Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Management und hat strenge Kontrollen implementiert, um Verluste oder Offenlegungen von Kundendaten zu verhindern.
 
-* [Grundlegendes zum Schutz von Kundendaten in Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -614,13 +614,13 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Managemen
 
 **Leitfaden**: Aufrufe auf Verwaltungsebene erfolgen über Azure Resource Manager und TLS. Ein gültiges JSON Web Token (JWT) ist erforderlich. Aufrufe auf Datenebene können mit TLS und einem der unterstützten Authentifizierungsmechanismen (z. B. Clientzertifikat oder JWT) geschützt werden.
 
-* [Schutz von Daten](https://docs.microsoft.com/azure/api-management/api-management-security-controls#data-protection)
+* [Schutz von Daten](./api-management-security-controls.md#data-protection)
 
-* [Verwalten von Protokollen und Verschlüsselungen in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-manage-protocols-ciphers)
+* [Verwalten von Protokollen und Verschlüsselungen in Azure API Management](./api-management-howto-manage-protocols-ciphers.md)
 
-* [Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)
+* [Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management](./api-management-howto-protect-backend-with-aad.md)
 
-* [Schützen des SPA-Back-Ends mit OAuth 2.0, Azure Active Directory B2C und Azure API Management](https://docs.microsoft.com/azure/api-management/howto-protect-backend-frontend-azure-ad-b2c)
+* [Schützen des SPA-Back-Ends mit OAuth 2.0, Azure Active Directory B2C und Azure API Management](./howto-protect-backend-frontend-azure-ad-b2c.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -632,7 +632,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Managemen
 
 Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt Microsoft alle Kundeninhalte als vertraulich und unternimmt große Anstrengungen, um Kundendaten vor Verlust und Gefährdung zu schützen. Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Microsoft eine Reihe von robusten Datenschutzkontrollen und -funktionen implementiert und kümmert sich um deren Verwaltung.
 
-* [Grundlegendes zum Schutz von Kundendaten in Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -642,7 +642,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung, um den Zugriff auf Azure API Management zu steuern. Azure API Management basiert auf der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure, um eine differenzierte Zugriffsverwaltung für API Management-Dienste und -Entitäten (etwa APIs und Richtlinien) zu ermöglichen.
 
-* [Verwenden der rollenbasierten Zugriffssteuerung in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-role-based-access-control)
+* [Verwenden der rollenbasierten Zugriffssteuerung in Azure API Management](./api-management-role-based-access-control.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -654,7 +654,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Management und hat strenge Kontrollen implementiert, um Verluste oder Offenlegungen von Kundendaten zu verhindern.
 
-* [Grundlegendes zum Schutz von Kundendaten in Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -664,7 +664,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Managemen
 
 **Leitfaden**: Vertrauliche Daten, z. B. Zertifikate, Schlüssel und als geheim gekennzeichnete Werte, werden mit vom Dienst verwalteten Schlüsseln für die jeweilige Dienstinstanz verschlüsselt. Alle Verschlüsselungsschlüssel gelten pro Dienstinstanz und werden vom Dienst verwaltet.
 
-* [Schutz von Daten](https://docs.microsoft.com/azure/api-management/api-management-security-controls#data-protection)
+* [Schutz von Daten](./api-management-security-controls.md#data-protection)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -674,9 +674,9 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Managemen
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Azure-Funktions-Apps für die Produktion und an anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
 
-* [Überwachen von veröffentlichten APIs](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor)
+* [Überwachen von veröffentlichten APIs](./api-management-howto-use-azure-monitor.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -684,7 +684,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Managemen
 
 ## <a name="vulnerability-management"></a>Verwaltung von Sicherheitsrisiken
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Verwaltung von Sicherheitsrisiken](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Verwaltung von Sicherheitsrisiken](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Ausführen automatisierter Scan-Tools für Sicherheitsrisiken
 
@@ -692,7 +692,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Managemen
 
 Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Überprüfen Sie die verfügbaren Sicherheitsfunktionen, um Sicherheitsrisiken im Zusammenhang mit der Dienstkonfiguration zu minimieren.
 
-* [Sicherheitskontrollen für API Management](https://docs.microsoft.com/azure/api-management/api-management-security-controls)
+* [Sicherheitskontrollen für API Management](./api-management-security-controls.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -728,7 +728,7 @@ Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Üb
 
 Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Kunden sollten die für sie verfügbaren Sicherheitsfunktionen überprüfen, um Sicherheitsrisiken im Zusammenhang mit der Dienstkonfiguration zu minimieren.
 
-* [Sicherheitskontrollen für API Management](https://docs.microsoft.com/azure/api-management/api-management-security-controls)
+* [Sicherheitskontrollen für API Management](./api-management-security-controls.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -736,7 +736,7 @@ Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Kun
 
 ## <a name="inventory-and-asset-management"></a>Bestands- und Ressourcenverwaltung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Bestands- und Ressourcenverwaltung](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Bestands- und Ressourcenverwaltung](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1: Verwenden von Azure Asset Discovery
 
@@ -744,11 +744,11 @@ Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Kun
 
 Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden können, wird dringend empfohlen, Azure Resource Manager-Ressourcen zu erstellen und zu verwenden.
 
-* [Erstellen von Abfragen mit Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Erstellen von Abfragen mit Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [Anzeigen Ihrer Azure-Abonnements](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Grundlegendes zu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -758,7 +758,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 **Leitfaden**: Wenden Sie Tags auf Ihre Azure-Ressourcen an, die Metadaten erzeugen, um sie logisch in einer Taxonomie zu organisieren.
 
-* [Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -772,11 +772,11 @@ Verwenden Sie darüber hinaus Azure Policy, um Einschränkungen für den Typ der
 - Not allowed resource types (Unzulässige Ressourcentypen)
 - Zulässige Ressourcentypen
 
-* [Erstellen zusätzlicher Azure-Abonnements](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create.md)
 
-* [Erstellen und Verwenden von Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -798,9 +798,9 @@ Verwenden Sie darüber hinaus Azure Policy, um Einschränkungen für den Typ der
 
 Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufragen und zu ermitteln. Stellen Sie sicher, dass alle in der Umgebung vorhandenen Azure-Ressourcen genehmigt sind.
 
-* [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Erstellen von Abfragen mit Azure Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Erstellen von Abfragen mit Azure Graph](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -836,9 +836,9 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 - Not allowed resource types (Unzulässige Ressourcentypen)
 - Zulässige Ressourcentypen
 
-* [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -856,9 +856,9 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 **Leitfaden**: Konfigurieren Sie bedingten Azure-Zugriff, um die Möglichkeiten der Benutzer zur Interaktion mit Azure Resource Manager einzuschränken, indem Sie „Zugriff blockieren“ für die App zur „Verwaltung von Microsoft Azure“ konfigurieren.
 
-* [Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff](../role-based-access-control/conditional-access-azure-management.md)
 
-* [Verwenden der rollenbasierten Zugriffssteuerung in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-role-based-access-control)
+* [Verwenden der rollenbasierten Zugriffssteuerung in Azure API Management](./api-management-role-based-access-control.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -882,15 +882,15 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ## <a name="secure-configuration"></a>Sichere Konfiguration
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Sichere Konfiguration](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Sichere Konfiguration](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Einrichten sicherer Konfigurationen für alle Azure-Ressourcen
 
 **Leitfaden**: Definieren und implementieren Sie mit Azure Policy Standardsicherheitskonfigurationen für Ihren Azure API Management-Dienst. Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.ApiManagement“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration Ihrer Azure API Management-Dienste zu erstellen.
 
-* [Anzeigen verfügbarer Azure Policy-Aliase](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -908,9 +908,9 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 **Leitfaden**: Definieren und implementieren Sie mit Azure Policy Standardsicherheitskonfigurationen für Ihre Azure API Management-Dienste. Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.ApiManagement“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration von Azure API Management-Instanzen zu erstellen. Verwenden Sie die Azure-Richtlinien [Verweigern] und [Bereitstellen, falls nicht vorhanden], um sichere Einstellungen in den Azure-Ressourcen zu erzwingen.
 
-* [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Grundlegendes zu Azure Policy-Auswirkungen](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Grundlegendes zu Azure Policy-Auswirkungen](../governance/policy/concepts/effects.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -928,11 +928,11 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 **Leitfaden**: Nutzen Sie bei Verwendung von benutzerdefinierten Azure-Richtliniendefinitionen Azure DevOps oder Azure Repos, um die Konfiguration Ihres Azure API Management-Diensts sicher zu speichern und zu verwalten.
 
-* [Speichern von Dateien in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Speichern von Dateien in Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Dokumentation zu Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Dokumentation zu Azure Repos](/azure/devops/repos/index?view=azure-devops)
 
-* [Konfigurationsverwaltung](https://docs.microsoft.com/azure/api-management/api-management-security-controls#configuration-management)
+* [Konfigurationsverwaltung](./api-management-security-controls.md#configuration-management)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -950,9 +950,9 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 **Leitfaden**: Definieren und implementieren Sie mit Azure Policy Standardsicherheitskonfigurationen für Ihre Azure API Management-Dienste. Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.ApiManagement“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration von Azure API Management-Instanzen zu erstellen. Verwenden Sie die Azure-Richtlinien [Verweigern] und [Bereitstellen, falls nicht vorhanden], um sichere Einstellungen in den Azure-Ressourcen zu erzwingen.
 
-* [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Grundlegendes zu Azure Policy-Auswirkungen](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Grundlegendes zu Azure Policy-Auswirkungen](../governance/policy/concepts/effects.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -972,11 +972,11 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 Definieren und implementieren Sie zusätzlich mit Azure Policy Standardsicherheitskonfigurationen für Ihre Azure API Management-Dienste. Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.ApiManagement“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration von Azure API Management-Instanzen zu erstellen. Verwenden Sie die Azure-Richtlinien [Verweigern] und [Bereitstellen, falls nicht vorhanden], um sichere Einstellungen in den Azure-Ressourcen zu erzwingen.
 
-* [Konfigurationsverwaltung](https://docs.microsoft.com/azure/api-management/api-management-security-controls#configuration-management)
+* [Konfigurationsverwaltung](./api-management-security-controls.md#configuration-management)
 
-* [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Grundlegendes zu Azure Policy-Auswirkungen](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Grundlegendes zu Azure Policy-Auswirkungen](../governance/policy/concepts/effects.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -994,7 +994,7 @@ Definieren und implementieren Sie zusätzlich mit Azure Policy Standardsicherhei
 
 **Leitfaden**: Nutzen Sie Key Vault zum Verwalten von Zertifikaten, und legen Sie die automatische Rotation fest. Falls Sie mit Azure Key Vault das benutzerdefinierte SSL-Domänenzertifikat verwalten, sollten Sie sicherstellen, dass es in Key Vault nicht als Geheimnis, sondern als Zertifikat eingefügt wird.
 
-* [Konfigurieren eines benutzerdefinierten Domänennamens](https://docs.microsoft.com/azure/api-management/configure-custom-domain)
+* [Konfigurieren eines benutzerdefinierten Domänennamens](./configure-custom-domain.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1004,9 +1004,9 @@ Definieren und implementieren Sie zusätzlich mit Azure Policy Standardsicherhei
 
 **Leitfaden**: Verwenden Sie die von Azure Active Directory (AD) generierte verwaltete Dienstidentität, um zuzulassen, dass Ihre API Management-Instanz einfach und sicher auf andere mit Azure AD geschützte Ressourcen wie Azure Key Vault zugreifen kann.
 
-* [Verwenden von verwalteten Identitäten in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity)
+* [Verwenden von verwalteten Identitäten in Azure API Management](./api-management-howto-use-managed-service-identity.md)
 
-* [Authentifizierung mit verwalteter Identität](https://docs.microsoft.com/azure/api-management/api-management-authentication-policies#ManagedIdentity)
+* [Authentifizierung mit verwalteter Identität](./api-management-authentication-policies.md#ManagedIdentity)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1024,7 +1024,7 @@ Definieren und implementieren Sie zusätzlich mit Azure Policy Standardsicherhei
 
 ## <a name="malware-defense"></a>Schutz vor Schadsoftware
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Schutz vor Schadsoftware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Schutz vor Schadsoftware](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Verwenden einer zentral verwalteten Antischadsoftware
 
@@ -1058,7 +1058,7 @@ Microsoft Antimalware ist auf dem zugrunde liegenden Host für die Azure-Dienste
 
 ## <a name="data-recovery"></a>Datenwiederherstellung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenwiederherstellung](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenwiederherstellung](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Sicherstellen regelmäßiger automatisierter Sicherungen
 
@@ -1066,9 +1066,9 @@ Microsoft Antimalware ist auf dem zugrunde liegenden Host für die Azure-Dienste
 
 Die API Management-Features zur Sicherung und Wiederherstellung von Diensten enthalten die notwendigen Bausteine für die Implementierung einer Notfallwiederherstellungsstrategie. Sicherungs- und Wiederherstellungsvorgänge können manuell oder automatisiert durchgeführt werden.
 
-* [Bereitstellen einer Azure API Management-Dienstinstanz für mehrere Azure-Regionen](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region)
+* [Bereitstellen einer Azure API Management-Dienstinstanz für mehrere Azure-Regionen](./api-management-howto-deploy-multi-region.md)
 
-* [Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+* [Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
 * [Aufrufen des API Management-Sicherungsvorgangs](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)
 
@@ -1084,9 +1084,9 @@ Die API Management-Features zur Sicherung und Wiederherstellung von Diensten ent
 
 Verwaltete Identitäten können für das Abrufen von Zertifikaten aus Azure Key Vault für benutzerdefinierte API Management-Domänennamen verwendet werden. Sichern Sie alle Zertifikate, die in Azure Key Vault gespeichert werden.
 
-* [Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+* [Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-* [Sichern von Azure Key Vault-Zertifikaten](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [Sichern von Azure Key Vault-Zertifikaten](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate?view=azurermps-6.13.0)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1096,9 +1096,9 @@ Verwaltete Identitäten können für das Abrufen von Zertifikaten aus Azure Key 
 
 **Leitfaden**: Überprüfen Sie die Sicherungen, indem Sie testweise eine Wiederherstellung des Diensts und der Zertifikate aus Sicherungskopien durchführen.
 
-* [Aufrufen des API Management-Wiederherstellungsvorgangs](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
+* [Aufrufen des API Management-Wiederherstellungsvorgangs](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
-* [Wiederherstellen von Azure Key Vault-Zertifikaten](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [Wiederherstellen von Azure Key Vault-Zertifikaten](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1108,13 +1108,13 @@ Verwaltete Identitäten können für das Abrufen von Zertifikaten aus Azure Key 
 
 **Leitfaden**: Bei Azure API Management werden Sicherungen in Azure Storage-Konten geschrieben, die sich im Besitz des Kunden befinden. Befolgen Sie die Sicherheitsempfehlungen für Azure Storage, um Ihre Sicherungen zu schützen.
 
-* [Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+* [Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-* [Sicherheitsempfehlungen für Blob Storage](https://docs.microsoft.com/azure/storage/blobs/security-recommendations)
+* [Sicherheitsempfehlungen für Blob Storage](../storage/blobs/security-recommendations.md)
 
 Aktivieren Sie das vorläufige Löschen in Key Vault, um Schlüssel vor dem versehentlichen oder böswilligen Löschen zu schützen.
 
-* [Aktivieren des vorläufigen Löschens in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Aktivieren des vorläufigen Löschens in Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1122,7 +1122,7 @@ Aktivieren Sie das vorläufige Löschen in Key Vault, um Schlüssel vor dem vers
 
 ## <a name="incident-response"></a>Reaktion auf Vorfälle
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Reaktion auf Vorfälle](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Reaktion auf Vorfälle](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1: Erstellen eines Leitfadens für die Reaktion auf Vorfälle
 
@@ -1144,9 +1144,9 @@ Aktivieren Sie das vorläufige Löschen in Key Vault, um Schlüssel vor dem vers
 
 Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion) mithilfe von Tags, und erstellen Sie ein Namenssystem, um Azure-Ressourcen eindeutig zu identifizieren und zu kategorisieren, insbesondere solche, die vertrauliche Daten verarbeiten. Die Priorisierung der Behebung von Warnungen basierend auf der Wichtigkeit der Azure-Ressourcen und der Umgebung, in der der Vorfall aufgetreten ist, liegt in Ihrer Verantwortung.
 
-* [Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Sicherheitswarnungen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [Verwenden von Tags zum Organisieren von Azure-Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1166,7 +1166,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 **Leitfaden**: Microsoft kontaktiert Sie unter den für Sicherheitsvorfälle angegebenen Kontaktdaten, wenn das Microsoft Security Response Center (MSRC) feststellt, dass Personen unrechtmäßig oder unbefugt auf Ihre Daten zugegriffen haben. Überprüfen Sie die Vorfälle anschließend, um sicherzustellen, dass die Probleme behoben wurden.
 
-* [Festlegen der Kontaktinformationen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Festlegen der Kontaktinformationen in Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1176,9 +1176,9 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 **Leitfaden**: Exportieren Sie die Azure Security Center-Warnungen und -Empfehlungen über die Funktion „Fortlaufender Export“, um Risiken für Azure-Ressourcen zu ermitteln. Über „Fortlaufender Export“ können Sie Warnungen und Empfehlungen entweder manuell oder kontinuierlich exportieren. Sie können den Azure Security Center-Datenconnector verwenden, um die Warnungen an Azure Sentinel zu streamen.
 
-* [Konfigurieren des fortlaufenden Exports](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Konfigurieren des fortlaufenden Exports](../security-center/continuous-export.md)
 
-* [Streamen von Warnungen in Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Streamen von Warnungen in Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1188,7 +1188,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 **Leitfaden**: Nutzen Sie die Funktion „Workflowautomatisierung“ in Azure Security Center, um über „Logic Apps“ automatisch Reaktionen auf Sicherheitswarnungen und -empfehlungen auszulösen.
 
-* [Konfigurieren von Workflowautomatisierung und Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Konfigurieren von Workflowautomatisierung und Logic Apps](../security-center/workflow-automation.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1196,7 +1196,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstests und Red Team-Übungen
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Penetrationstests und Red Team-Übungen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Penetrationstests und Red Team-Übungen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11.1: Durchführen regelmäßiger Penetrationstests ihrer Azure-Ressourcen und Sicherstellen der Behebung aller kritischen Sicherheitsergebnisse innerhalb von 60 Tagen
 
@@ -1210,5 +1210,5 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](https://docs.microsoft.com/azure/security/benchmarks/overview).
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](../security/benchmarks/overview.md).
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).

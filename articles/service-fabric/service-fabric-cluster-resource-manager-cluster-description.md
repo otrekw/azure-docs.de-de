@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: f473b70d260c552dc67d00715b6ee4bc56b670e0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259472"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246553"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Beschreiben eines Service Fabric-Clusters in Azure mithilfe des Clusterressourcen-Managers
 Der Clusterressourcen-Manager ist ein Feature von Azure Service Fabric, das verschiedene Methoden zum Beschreiben eines Clusters bereitstellt:
@@ -36,7 +36,7 @@ In der Azure-Umgebung nutzt Service Fabric die von der Umgebung bereitgestellten
 > [!WARNING]
 > Die Fehlerdomäneninformationen für Service Fabric müssen korrekt sein. Angenommen, die Knoten Ihres Service Fabric-Clusters werden auf zehn VMs ausgeführt, die auf fünf physischen Hosts betrieben werden. In diesem Fall gibt es trotz der zehn VMs lediglich fünf verschiedene Fehlerdomänen (der obersten Ebene). Die gemeinsame Verwendung eines physischen Hosts bewirkt, dass VMs dieselbe Stammfehlerdomäne gemeinsam nutzen, da die VMs bei einem Ausfall ihres physischen Hosts koordiniert ausfallen.  
 >
-> In Service Fabric ist nicht vorgesehen, dass sich Fehlerdomänen eines Knotens ändern. Dies liegt daran, dass andere Mechanismen, mit denen die Hochverfügbarkeit von VMs sichergestellt wird (etwa im Fall von [Hochverfügbarkeits-VMs](https://technet.microsoft.com/library/cc967323.aspx)), zu Konflikten mit Service Fabric führen könnten. Bei diesen Mechanismen wird eine transparente Migration von VMs zwischen Hosts eingesetzt. Der ausgeführte Code wird dabei in der VM weder neu konfiguriert noch benachrichtigt. Derartige Mechanismen werden deswegen *nicht* als Grundlage für Umgebungen unterstützt, in denen Service Fabric-Cluster betrieben werden. 
+> In Service Fabric ist nicht vorgesehen, dass sich Fehlerdomänen eines Knotens ändern. Dies liegt daran, dass andere Mechanismen, mit denen die Hochverfügbarkeit von VMs sichergestellt wird (etwa im Fall von [Hochverfügbarkeits-VMs](/previous-versions/system-center/virtual-machine-manager-2008-r2/cc967323(v=technet.10))), zu Konflikten mit Service Fabric führen könnten. Bei diesen Mechanismen wird eine transparente Migration von VMs zwischen Hosts eingesetzt. Der ausgeführte Code wird dabei in der VM weder neu konfiguriert noch benachrichtigt. Derartige Mechanismen werden deswegen *nicht* als Grundlage für Umgebungen unterstützt, in denen Service Fabric-Cluster betrieben werden. 
 >
 > Service Fabric sollte die einzige eingesetzte Hochverfügbarkeitstechnologie sein. Mechanismen wie die Livemigration von VMs und SANs sind nicht erforderlich. Wenn diese in Verbindung mit Service Fabric verwendet werden, _verringern_ sie die Verfügbarkeit und Zuverlässigkeit einer Anwendung. Der Grund dafür ist, dass sie zu zusätzlicher Komplexität führen, zentrale Fehlerquellen hinzufügen und Zuverlässigkeits- sowie Verfügbarkeitsstrategien nutzen, die mit denen von Service Fabric kollidieren. 
 >

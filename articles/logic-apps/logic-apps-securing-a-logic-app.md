@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 07/03/2020
-ms.openlocfilehash: 769d82cae6b5f9039587018ba5a7cde407f74e4c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 902c48f2edcca6eb25958a9f22d6760faf1fcbc2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964242"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248712"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -110,7 +110,7 @@ Schließen Sie in den Textkörper die `KeyType`-Eigenschaft als `Primary` oder a
 
 ### <a name="enable-azure-active-directory-oauth"></a>Aktivieren von Azure Active Directory OAuth
 
-Wenn Ihre Logik-App mit einem [Anforderungstrigger](../connectors/connectors-native-reqres.md) beginnt, können Sie [Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) aktivieren, indem Sie eine Autorisierungsrichtlinie für eingehende Aufrufe an den Anforderungstrigger erstellen. Bevor Sie diese Authentifizierung aktivieren, berücksichtigen Sie die folgenden Überlegungen:
+Wenn Ihre Logik-App mit einem [Anforderungstrigger](../connectors/connectors-native-reqres.md) beginnt, können Sie [Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) aktivieren, indem Sie eine Autorisierungsrichtlinie für eingehende Aufrufe an den Anforderungstrigger erstellen. Bevor Sie diese Authentifizierung aktivieren, berücksichtigen Sie die folgenden Überlegungen:
 
 * Bei einem eingehenden Aufruf Ihrer Logik-App kann nur ein Autorisierungsschema verwendet werden, entweder Azure AD OAuth oder [Shared Access Signature (SAS)](#sas). Nur Autorisierungsschemata vom [Typ „Bearer“](../active-directory/develop/active-directory-v2-protocols.md#tokens) werden für OAuth-Token unterstützt, die nur für den Anforderungstrigger unterstützt werden.
 
@@ -309,7 +309,7 @@ Sie können den Zugriff auf die Ein- und Ausgaben im Ausführungsverlauf Ihrer L
 
 1. Wählen Sie unter **Konfiguration der Zugriffssteuerung** > **Zulässige eingehende IP-Adressen** die Option **Spezifische IP-Bereiche** aus.
 
-1. Geben Sie unter **IP-Bereiche für Inhalte** die IP-Adressbereiche an, die auf Inhalte von Eingaben und Ausgaben zugreifen können. 
+1. Geben Sie unter **IP-Bereiche für Inhalte** die IP-Adressbereiche an, die auf Inhalte von Eingaben und Ausgaben zugreifen können.
 
    Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x*.
 
@@ -462,7 +462,8 @@ Wenn Sie Bereitstellungen in verschiedenen Umgebungen durchführen, sollten Sie 
 Wenn Sie z. B. HTTP-Aktionen mit [Azure Active Directory Open Authentication](#azure-active-directory-oauth-authentication) (Azure AD OAuth) authentifizieren, können Sie die Parameter definieren und verbergen, die die Client-ID und das Clientgeheimnis akzeptieren, die für die Authentifizierung verwendet werden. Um diese Parameter für Ihre Logik-App zu definieren, verwenden Sie den Abschnitt `parameters` innerhalb der Workflowdefinition Ihrer Logik-App und eine Resource Manager-Vorlage zur Bereitstellung. Um die Parameterwerte zu schützen, die beim Bearbeiten der Logik-App oder beim Anzeigen des Ausführungsverlaufs nicht angezeigt werden sollen, können Sie Parameter des Typs `securestring` oder `secureobject` definieren und bei Bedarf codieren. Parameter dieses Typs werden nicht mit der Ressourcendefinition zurückgegeben und sind beim Anzeigen der Ressource nach der Bereitstellung nicht zugänglich. Um zur Laufzeit auf diese Parameterwerte zuzugreifen, verwenden Sie den Ausdruck `@parameters('<parameter-name>')` in Ihrer Workflowdefinition. Dieser Ausdruck wird nur zur Laufzeit ausgewertet und durch die [Workflowdefinitionssprache](../logic-apps/logic-apps-workflow-definition-language.md) beschrieben.
 
 > [!NOTE]
-> Wenn Sie einen Parameter im Anforderungsheader oder -text verwenden, kann dieser Parameter sichtbar sein, wenn Sie den Ausführungsverlauf Ihrer Logik-App und die ausgehende HTTP-Anforderung anzeigen. Achten Sie darauf, Ihre Richtlinien für den Zugriff auf Inhalte entsprechend festzulegen. Sie können auch [Obfuskation](#obfuscate) verwenden, um Ein- und Ausgaben im Ausführungsverlauf auszublenden. Autorisierungsheader sind nie über Eingaben oder Ausgaben sichtbar. Wenn hier ein Geheimnis verwendet wird, ist dieses daher nicht abrufbar.
+> Wenn Sie einen Parameter im Anforderungsheader oder -text verwenden, kann dieser Parameter sichtbar sein, wenn Sie den Ausführungsverlauf Ihrer Logik-App und die ausgehende HTTP-Anforderung anzeigen. Achten Sie darauf, Ihre Richtlinien für den Zugriff auf Inhalte entsprechend festzulegen.
+> Sie können auch [Obfuskation](#obfuscate) verwenden, um Ein- und Ausgaben im Ausführungsverlauf auszublenden. Autorisierungsheader sind nie über Eingaben oder Ausgaben sichtbar. Wenn hier ein Geheimnis verwendet wird, ist dieses daher nicht abrufbar.
 
 Weitere Informationen finden in diesem Artikel in diesen Abschnitten:
 
@@ -680,7 +681,7 @@ Hier sind einige Möglichkeiten, wie Sie Endpunkte schützen können, die Anrufe
   * [Active Directory OAuth-Authentifizierung](#azure-active-directory-oauth-authentication)
 
   * [Authentifizierung der verwalteten Identität](#managed-identity-authentication)
-  
+
   Weitere Informationen finden Sie weiter unten in diesem Thema unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](#add-authentication-outbound).
 
 * Schränken Sie den Zugriff von IP-Adressen von Logik-Apps ein.
@@ -727,7 +728,8 @@ Hier sind einige Möglichkeiten, wie Sie Endpunkte schützen können, die Anrufe
 HTTP- und HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung. Bei einigen Triggern und Aktionen, die Sie zum Senden ausgehender Aufrufe oder Anforderungen an diese Endpunkte verwenden, können Sie einen Authentifizierungstyp angeben. Im Logik-App-Designer besitzen Trigger und Aktionen, die die Auswahl eines Authentifizierungstyps unterstützen, eine Eigenschaft **Authentifizierung**. Diese Eigenschaft wird jedoch möglicherweise nicht immer standardmäßig angezeigt. In diesen Fällen öffnen Sie für den Trigger oder die Aktion die Liste **Neuen Parameter hinzufügen**, und wählen Sie **Authentifizierung** aus.
 
 > [!IMPORTANT]
-> Um vertrauliche Informationen, die Ihre Logik-App verarbeitet, zu schützen, verwenden Sie abgesicherte Parameter, und verschlüsseln Sie Daten nach Bedarf. Weitere Informationen zum Verwenden und Absichern von Parametern finden Sie unter [Zugriff auf Parametereingaben](#secure-action-parameters).
+> Um vertrauliche Informationen, die Ihre Logik-App verarbeitet, zu schützen, verwenden Sie abgesicherte Parameter, und verschlüsseln Sie Daten nach Bedarf.
+> Weitere Informationen zum Verwenden und Absichern von Parametern finden Sie unter [Zugriff auf Parametereingaben](#secure-action-parameters).
 
 In dieser Tabelle werden die Authentifizierungstypen aufgeführt, die für die Trigger und Aktionen verfügbar sind, bei denen Sie einen Authentifizierungstyp auswählen können:
 
@@ -814,7 +816,7 @@ Weitere Informationen zum Absichern von Diensten mithilfe der Clientzertifikatau
 
 ### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory Open Authentication
 
-Bei Anforderungstriggern können Sie nach der [Einrichtung von Azure AD-Autorisierungsrichtlinien](#enable-oauth) mit [Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) eingehende Anrufe für Ihre Logik-App authentifizieren. Geben Sie für alle anderen Trigger und Aktionen, die Ihnen den **Active Directory OAuth**-Authentifizierungstyp zur Auswahl bereitstellen, die folgenden Eigenschaftswerte an:
+Bei Anforderungstriggern können Sie nach der [Einrichtung von Azure AD-Autorisierungsrichtlinien](#enable-oauth) mit [Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) eingehende Anrufe für Ihre Logik-App authentifizieren. Geben Sie für alle anderen Trigger und Aktionen, die Ihnen den **Active Directory OAuth**-Authentifizierungstyp zur Auswahl bereitstellen, die folgenden Eigenschaftswerte an:
 
 | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
 |---------------------|-----------------|----------|-------|-------------|

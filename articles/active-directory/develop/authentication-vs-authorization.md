@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 2e9a50553a12c57c0043c7f2924245f6a907242a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 095bc5594cf9b6eaf0df7929ea83c25a401793e2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83825957"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252112"
 ---
 # <a name="authentication-vs-authorization"></a>Authentifizierung im Vergleich zu Autorisierung
 
@@ -38,7 +38,7 @@ Statt Apps zu erstellen, die jeweils über eigene Informationen in Bezug auf Ben
 
 Azure Active Directory (Azure AD) ist ein zentraler Identitätsanbieter in der Cloud. Die Delegierung der Authentifizierung und Autorisierung an den Anbieter ermöglicht beispielsweise die Verwendung von Richtlinien für bedingten Zugriff, die erfordern, dass sich ein Benutzer an einem bestimmten Ort befindet, die Verwendung der [mehrstufigen Authentifizierung](../authentication/concept-mfa-howitworks.md) (manchmal auch als zweistufige Authentifizierung oder 2FA bezeichnet) sowie die Schaffung der Möglichkeit, dass sich Benutzer nur einmal anmelden müssen und dann automatisch bei allen Web-Apps angemeldet werden, die dasselbe zentralisierte Verzeichnis nutzen. Diese Funktion wird als **einmaliges Anmelden** (Single Sign-On, SSO) bezeichnet.
 
-Microsoft Identity Platform vereinfacht die Autorisierung und Authentifizierung für Anwendungsentwickler durch die Bereitstellung von Identity-as-a-Service mit Unterstützung für branchenübliche Protokolle wie OAuth 2.0 und OpenID Connect sowie Open-Source-Bibliotheken für verschiedene Plattformen, damit Sie schnell mit der Programmierung beginnen können. Sie ermöglicht Entwicklern nicht nur das Erstellen von Anwendungen, mit denen alle Microsoft-Identitäten angemeldet werden, sondern auch das Abrufen von Token zum Aufrufen von [Microsoft Graph](https://developer.microsoft.com/graph/), anderen Microsoft-APIs oder von Entwicklern erstellten APIs. Weitere Informationen finden Sie unter [Entwicklung der Microsoft Identity Platform](about-microsoft-identity-platform.md).
+Microsoft Identity Platform vereinfacht die Autorisierung und Authentifizierung für Anwendungsentwickler durch die Bereitstellung von Identity-as-a-Service mit Unterstützung für branchenübliche Protokolle wie OAuth 2.0 und OpenID Connect sowie Open-Source-Bibliotheken für verschiedene Plattformen, damit Sie schnell mit der Programmierung beginnen können. Sie ermöglicht Entwicklern nicht nur das Erstellen von Anwendungen, mit denen alle Microsoft-Identitäten angemeldet werden, sondern auch das Abrufen von Token zum Aufrufen von [Microsoft Graph](https://developer.microsoft.com/graph/), anderen Microsoft-APIs oder von Entwicklern erstellten APIs.
 
 Im Folgenden finden Sie einen kurzen Vergleich der verschiedenen Protokolle, die von der Microsoft Identity Platform verwendet werden:
 

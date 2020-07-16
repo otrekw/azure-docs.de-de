@@ -5,12 +5,12 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19f773fa781c51f64412039201842a7af4c29052
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82787106"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261122"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Programmgesteuertes Skalieren eines Service Fabric-Clusters 
 
@@ -20,7 +20,7 @@ Service Fabric-Cluster, die in Azure ausgeführt werden, basieren auf VM-Skalier
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>Verwalten von Anmeldeinformationen
-Eine Herausforderung beim Schreiben von einem Dienst für die Skalierung besteht darin, dass der Dienst ohne eine interaktive Anmeldung Zugriff auf VM-Skalierungsgruppenressourcen haben muss. Der Zugriff auf den Service Fabric-Cluster ist einfach, wenn der Skalierungsdienst seine eigene Service Fabric-Anwendung ändert, für den Zugriff auf die Skalierungsgruppe jedoch Anmeldeinformationen erforderlich sind. Für die Anmeldung können Sie einen mit der [Azure CLI](https://github.com/azure/azure-cli) erstellten [Dienstprinzipal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) verwenden.
+Eine Herausforderung beim Schreiben von einem Dienst für die Skalierung besteht darin, dass der Dienst ohne eine interaktive Anmeldung Zugriff auf VM-Skalierungsgruppenressourcen haben muss. Der Zugriff auf den Service Fabric-Cluster ist einfach, wenn der Skalierungsdienst seine eigene Service Fabric-Anwendung ändert, für den Zugriff auf die Skalierungsgruppe jedoch Anmeldeinformationen erforderlich sind. Für die Anmeldung können Sie einen mit der [Azure CLI](https://github.com/azure/azure-cli) erstellten [Dienstprinzipal](/cli/azure/create-an-azure-service-principal-azure-cli) verwenden.
 
 Ein Dienstprinzipal kann mit den folgenden Schritten erstellt werden:
 
@@ -59,7 +59,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Alternativ kann die Größe der VM-Skalierungsgruppe auch mit PowerShell-Cmdlets verwaltet werden. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) kann das Objekt der VM-Skalierungsgruppe abrufen. Die aktuelle Kapazität ist über die Eigenschaft `.sku.capacity` verfügbar. Nach der Änderung der Kapazität in den gewünschten Wert kann die VM-Skalierungsgruppe mit dem Befehl [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) in Azure aktualisiert werden.
+Alternativ kann die Größe der VM-Skalierungsgruppe auch mit PowerShell-Cmdlets verwaltet werden. [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) kann das Objekt der VM-Skalierungsgruppe abrufen. Die aktuelle Kapazität ist über die Eigenschaft `.sku.capacity` verfügbar. Nach der Änderung der Kapazität in den gewünschten Wert kann die VM-Skalierungsgruppe mit dem Befehl [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) in Azure aktualisiert werden.
 
 Wie beim manuellen Hinzufügen eines Knotens sollte zum Starten eines neuen Service Fabric-Knotens nur das Hinzufügen einer Skalierungsgruppe erforderlich sein, da die Skalierungsgruppenvorlage Erweiterungen beinhaltet, um dem Service Fabric-Cluster automatisch neue Instanzen hinzuzufügen. 
 
@@ -121,4 +121,4 @@ Für die ersten Schritte mit der Implementierung Ihrer eigenen Logik für automa
 
 - [Manuelles Skalieren oder mit automatischen Skalierungsregeln](./service-fabric-cluster-scale-in-out.md)
 - [Azure-Fluent-Verwaltungsbibliotheken für .NET](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (nützlich für die Interaktion mit den einem Service Fabric-Cluster zugrunde liegenden VM-Skalierungsgruppen)
-- [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (nützlich für die Interaktion mit einem Service Fabric-Cluster und dessen Knoten)
+- [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient) (nützlich für die Interaktion mit einem Service Fabric-Cluster und dessen Knoten)

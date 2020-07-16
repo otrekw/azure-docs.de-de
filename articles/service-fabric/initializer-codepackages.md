@@ -5,12 +5,12 @@ author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
-ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427262"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258981"
 ---
 # <a name="initializer-codepackages"></a>Initialisierer-CodePackages
 
@@ -50,7 +50,7 @@ Sehen wir uns ein vollständiges Beispiel mit Initialisierer-CodePackages an.
 > [!IMPORTANT]
 > Im folgenden Beispiel wird davon ausgegangen, dass Sie mit der Erstellung von [Windows-Containeranwendungen mit Service Fabric und Docker][containers-getting-started-link] vertraut sind.
 >
-> In diesem Beispiel wird auf mcr.microsoft.com/windows/nanoserver:1809 verwiesen. Windows Server-Container sind nicht mit allen Versionen eines Hostbetriebssystems kompatibel. Weitere Informationen finden Sie unter [Versionskompatibilität von Windows-Containern](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+> In diesem Beispiel wird auf mcr.microsoft.com/windows/nanoserver:1809 verwiesen. Windows Server-Container sind nicht mit allen Versionen eines Hostbetriebssystems kompatibel. Weitere Informationen finden Sie unter [Versionskompatibilität von Windows-Containern](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
 Die folgende Datei „ServiceManifest.xml“ basiert auf dem zuvor beschriebenen ServiceManifest-Codeausschnitt. *InitCodePackage0*, *InitCodePackage1* und *WorkloadCodePackage* sind CodePackages, die Container darstellen. Nach der Aktivierung wird *InitCodePackage0* zuerst ausgeführt. Es protokolliert eine Meldung in einer Datei und wird dann beendet. Als nächstes wird *InitCodePackage1* ausgeführt, das auch eine Meldung in einer Datei protokolliert und dann beendet wird. Zum Schluss wird die Ausführung von *WorkloadCodePackage* gestartet. Es protokolliert ebenfalls eine Meldung in einer Datei, gibt den Inhalt der Datei an **stdout** aus und pingt dann endlos.
 
@@ -151,4 +151,3 @@ Weitere Informationen finden Sie in den folgenden Artikeln.
 [application-model-link]: service-fabric-application-model.md
 [hosting-model-link]: service-fabric-hosting-model.md
 [setup-entry-point-link]: service-fabric-run-script-at-service-startup.md
-

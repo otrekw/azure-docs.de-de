@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 11e32c9d1290227e638a314ed8417b1bed906842
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e1c96d0b04140f8c1121cfb74b43969b49cfdda
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75749534"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260523"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Übersicht über die Service Fabric-Programmiermodelle
 
@@ -26,7 +26,7 @@ Beginnen Sie damit, die erste [ausführbare Gastanwendungsdatei](service-fabric-
 
 Standardmäßig werden Dienste von Service Fabric als Prozesse bereitgestellt und aktiviert. Service Fabric kann Dienste auch in [Containern](service-fabric-containers-overview.md) bereitstellen. Service Fabric unterstützt die Bereitstellung von Linux-Containern sowie von Windows-Containern unter Windows Server 2016 und höher. Containerimages können von jedem Containerrepository abgerufen und auf dem Computer bereitgestellt werden. Sie können vorhandene Anwendungen als ausführbare Gastdateien bereitstellen, als zustandslose oder zustandsbehaftete zuverlässige Service Fabric-Dienste oder als Reliable Actors in Containern. Außerdem können Sie Dienste in Prozessen und Dienste in Containern in derselben Anwendung mischen.
 
-[Erfahren Sie mehr über das Ausführen Ihrer Dienste in Containern unter Windows oder Linux](service-fabric-deploy-container.md)
+[Erfahren Sie mehr über das Ausführen Ihrer Dienste in Containern unter Windows oder Linux](./service-fabric-get-started-containers.md)
 
 ## <a name="reliable-services"></a>Reliable Services
 

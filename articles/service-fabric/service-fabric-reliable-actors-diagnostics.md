@@ -5,20 +5,20 @@ author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a38a11d9cf062cd0a45890d43afe9b2530b2b7bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846600"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258460"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnose und Leistungsüberwachung für Reliable Actors
-Die Reliable Actors-Laufzeit gibt [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx)-Ereignisse und [Leistungsindikatoren](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx) aus. Diese bieten Einblicke in den Laufzeitbetrieb und Hilfe bei der Problembehandlung und Leistungsüberwachung.
+Die Reliable Actors-Laufzeit gibt [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)-Ereignisse und [Leistungsindikatoren](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1) aus. Diese bieten Einblicke in den Laufzeitbetrieb und Hilfe bei der Problembehandlung und Leistungsüberwachung.
 
 ## <a name="eventsource-events"></a>EventSource-Ereignisse
 Der EventSource-Anbietername für die Reliable Actors-Laufzeit lautet „Microsoft-ServiceFabric-Actors“. Ereignisse aus dieser Ereignisquelle werden beim [Debuggen der Actor-Anwendung in Visual Studio](service-fabric-debugging-your-application.md) im Fenster für [Diagnoseereignisse](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) angezeigt.
 
-Beispiele für Tools und Technologien, mit deren Hilfe EventSource-Ereignisse erfasst und/oder angezeigt werden können, sind [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), [Semantic Logging](https://msdn.microsoft.com/library/dn774980.aspx) und die [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
+Beispiele für Tools und Technologien, mit deren Hilfe EventSource-Ereignisse erfasst und/oder angezeigt werden können, sind [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), [Semantic Logging](/previous-versions/msp-n-p/dn774980(v=pandp.10)) und die [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
 ### <a name="keywords"></a>Keywords
 Allen Ereignissen, die zu Reliable Actors EventSource gehören, werden ein oder mehrere Schlüsselwörter zugeordnet. Dies ermöglicht das Filtern von erfassten Ereignissen. Die folgenden Schlüsselwort-Bits sind definiert.
@@ -40,7 +40,7 @@ Die Reliable Actors-Laufzeit definiert die folgenden Leistungsindikatorkategorie
 
 Jede der oben genannten Kategorien verfügt über einen oder mehrere Leistungsindikatoren.
 
-Die Anwendung [Windows-Systemmonitor](https://technet.microsoft.com/library/cc749249.aspx) , die standardmäßig im Windows-Betriebssystem verfügbar ist, kann zum Erfassen und Anzeigen von Leistungsindikatordaten verwendet werden. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) ist eine weitere Option für das Erfassen von Leistungsindikatordaten und Hochladen in Azure-Tabellen.
+Die Anwendung [Windows-Systemmonitor](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) , die standardmäßig im Windows-Betriebssystem verfügbar ist, kann zum Erfassen und Anzeigen von Leistungsindikatordaten verwendet werden. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) ist eine weitere Option für das Erfassen von Leistungsindikatordaten und Hochladen in Azure-Tabellen.
 
 ### <a name="performance-counter-instance-names"></a>Namen von Leistungsindikatorinstanzen
 Ein Cluster mit einer großen Anzahl von Actor-Diensten oder Actor-Dienst-Partitionen weist eine große Anzahl von Actor-Leistungsindikatorinstanzen auf. Die Namen der Leistungsindikatorinstanzen können die Identifizierung der speziellen [Partition](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors) und Actor-Methode (falls zutreffend) erleichtern, mit denen die Leistungsindikatorinstanz verknüpft ist.
@@ -50,7 +50,7 @@ Für die Kategorie `Service Fabric Actor`haben die Namen von Leistungsindikatori
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx)-Methode mit dem Formatbezeichner „D“ generiert.
+*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_)-Methode mit dem Formatbezeichner „D“ generiert.
 
 *ActorRuntimeInternalID* ist die Zeichenfolgendarstellung einer 64-Bit-Ganzzahl, die von der Fabric Actors-Laufzeit zur internen Verwendung generiert wird. Sie wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen Namen von Leistungsindikatorinstanzen zu vermeiden. Benutzer sollten nicht versuchen, diesen Teil des Namens der Leistungsindikatorinstanz zu interpretieren.
 
@@ -69,7 +69,7 @@ Für die Kategorie `Service Fabric Actor Method`haben die Namen von Leistungsind
 
 *ActorsRuntimeMethodId* ist die Zeichenfolgendarstellung einer 32-Bit-Ganzzahl, die von der Fabric Actors-Laufzeit zur internen Verwendung generiert wird. Sie wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen Namen von Leistungsindikatorinstanzen zu vermeiden. Benutzer sollten nicht versuchen, diesen Teil des Namens der Leistungsindikatorinstanz zu interpretieren.
 
-*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx)-Methode mit dem Formatbezeichner „D“ generiert.
+*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_)-Methode mit dem Formatbezeichner „D“ generiert.
 
 *ActorRuntimeInternalID* ist die Zeichenfolgendarstellung einer 64-Bit-Ganzzahl, die von der Fabric Actors-Laufzeit zur internen Verwendung generiert wird. Sie wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen Namen von Leistungsindikatorinstanzen zu vermeiden. Benutzer sollten nicht versuchen, diesen Teil des Namens der Leistungsindikatorinstanz zu interpretieren.
 
@@ -161,6 +161,6 @@ Wenn ein Client eine Methode über ein Actor-Proxy-Objekt aufruft, wird eine Anf
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwendung der Service Fabric-Plattform durch Reliable Actors](service-fabric-reliable-actors-platform.md)
-* [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Actor-API-Referenzdokumentation](/previous-versions/azure/dn971626(v=azure.100))
 * [Beispielcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [EventSource-Anbieter in PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [EventSource-Anbieter in PerfView](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

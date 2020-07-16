@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc19c5ea7a45f78110818bc6c8cea8fbe25981c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70072305"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243442"
 ---
 # <a name="policies-in-azure-api-management"></a>Richtlinien in Azure API Management
 
@@ -58,7 +58,7 @@ Die Konfiguration ist in `inbound`, `backend`, `outbound` und `on-error` unterte
 </policies> 
 ```
 
-Wenn bei der Verarbeitung einer Anfrage ein Fehler auftritt, werden alle verbleibenden Schritte in den `inbound`-, `backend`- oder `outbound`-Abschnitten übersprungen und die Ausführung bei den Anweisungen im `on-error`-Abschnitt fortgesetzt. Durch Platzieren von Richtlinienanweisungen im `on-error`-Abschnitt können Sie den Fehler überprüfen, indem Sie die `context.LastError`-Eigenschaft verwenden, die Fehlerantwort mit der `set-body`-Richtlinie untersuchen und anpassen sowie konfigurieren, was geschieht, wenn ein Fehler auftritt. Es gibt Fehlercodes für integrierte Schritte und für Fehler, die während der Verarbeitung von Richtlinienanweisungen auftreten können. Weitere Informationen finden Sie unter [Error handling in API Management policies](/azure/api-management/api-management-error-handling-policies)(in englischer Sprache).
+Wenn bei der Verarbeitung einer Anfrage ein Fehler auftritt, werden alle verbleibenden Schritte in den `inbound`-, `backend`- oder `outbound`-Abschnitten übersprungen und die Ausführung bei den Anweisungen im `on-error`-Abschnitt fortgesetzt. Durch Platzieren von Richtlinienanweisungen im `on-error`-Abschnitt können Sie den Fehler überprüfen, indem Sie die `context.LastError`-Eigenschaft verwenden, die Fehlerantwort mit der `set-body`-Richtlinie untersuchen und anpassen sowie konfigurieren, was geschieht, wenn ein Fehler auftritt. Es gibt Fehlercodes für integrierte Schritte und für Fehler, die während der Verarbeitung von Richtlinienanweisungen auftreten können. Weitere Informationen finden Sie unter [Error handling in API Management policies](./api-management-error-handling-policies.md)(in englischer Sprache).
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>Konfigurieren von Richtlinien
 
@@ -66,7 +66,7 @@ Informationen zum Konfigurieren von Richtlinien finden Sie unter [How to set or 
 
 ## <a name="policy-reference"></a>Richtlinienreferenz
 
-In der [Richtlinienreferenz](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
+In der [Richtlinienreferenz](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
 
 ## <a name="policy-samples"></a>Richtlinienbeispiele
 
@@ -118,17 +118,17 @@ Daraufhin wird ein XML-Ausschnitt in das `inbound` -Element eingefügt, der Anwe
 Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
-+ Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
++ Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
 + [API Management-Richtlinienbeispiele](policy-samples.md)   
 
-[Policy Reference]: api-management-policy-reference.md
+[Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md
 [API]: api-management-howto-add-products.md
-[Operation]: api-management-howto-add-operations.md
+[Operation]: ./mock-api-responses.md
 
-[Advanced policies]: https://msdn.microsoft.com/library/azure/dn894085.aspx
-[Control flow]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
-[Set variable]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
-[Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx
+[Advanced policies]: ./api-management-advanced-policies.md
+[Control flow]: ./api-management-advanced-policies.md#choose
+[Set variable]: ./api-management-advanced-policies.md#set-variable
+[Policy expressions]: ./api-management-policy-expressions.md
 
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png

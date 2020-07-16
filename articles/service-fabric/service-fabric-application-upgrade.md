@@ -3,12 +3,12 @@ title: Service Fabric-Anwendungsupgrade
 description: Dieser Artikel bietet eine Einführung in das Upgrade einer Service Fabric-Anwendung, einschließlich Wahl des Upgrademodus und der Durchführung der Integritätsüberprüfungen.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e7a93dd3ef8a1adf6617dcd57887a0ce694c509
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710319"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247998"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric-Anwendungsupgrade
 Eine Azure Service Fabric Anwendung ist eine Sammlung von Diensten. Während eines Upgrades vergleicht Service Fabric das neue [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) mit der vorherigen Version und ermittelt, welche Dienste in der Anwendung aktualisiert werden müssen. Service Fabric vergleicht die Versionsnummern in den Dienstmanifesten mit den Versionsnummern in der vorherigen Version. Wenn sich ein Dienst nicht geändert hat, wird er nicht aktualisiert.
@@ -37,7 +37,7 @@ Der Modus, den wir für Upgrades von Anwendungen empfehlen, ist der überwachte 
 Der nicht überwachte manuelle Modus benötigt nach jedem Upgrade in einer Updatedomäne einen manuellen Eingriff, um das Upgrade für die nächste Updatedomäne zu starten. Es werden keine Service Fabric-Integritätsprüfungen ausgeführt. Der Administrator überprüft den Zustand oder Status vor dem Upgrade in der nächsten Updatedomäne.
 
 ## <a name="upgrade-default-services"></a>Durchführen eines Upgrades von Standarddiensten
-Einige im [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) definierte Standarddienstparameter können auch als Teil eines Anwendungsupgrades aktualisiert werden. Es können nur die Dienstparameter, die über [Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) geändert werden können, als Teil eines Upgrades geändert werden. Das Ändern von Standarddiensten während des Anwendungsupgrades gestaltet sich wie folgt:
+Einige im [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) definierte Standarddienstparameter können auch als Teil eines Anwendungsupgrades aktualisiert werden. Es können nur die Dienstparameter, die über [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) geändert werden können, als Teil eines Upgrades geändert werden. Das Ändern von Standarddiensten während des Anwendungsupgrades gestaltet sich wie folgt:
 
 1. Standarddienste im neuen Anwendungsmanifest, die im Cluster nicht bereits vorhanden sind, werden erstellt.
 2. Standarddienste, die im vorherigen und im neuen Anwendungsmanifest vorhanden sind, werden aktualisiert. Die Parameter des vorhandenen Diensts werden durch die Parameter des Standarddiensts im neuen Anwendungsmanifest überschrieben. Das Anwendungsupgrade wird bei einem Fehler beim Aktualisieren des Standarddiensts automatisch zurückgesetzt.

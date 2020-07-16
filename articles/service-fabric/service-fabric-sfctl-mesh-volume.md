@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 0e5ba1a311bd0480c56ee40edf01fc13ec01664a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57efca87aefad346fda175b073409868d21564ae
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76905911"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245506"
 ---
 # <a name="sfctl-mesh-volume"></a>sfctl mesh volume
 Ruft Volumeressourcen ab bzw. löscht diese.
@@ -83,4 +83,4 @@ Ruft die Informationen zur Volumeressource mit dem angegebenen Namen ab. Die Inf
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle
-- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](/azure/service-fabric/scripts/sfctl-upgrade-application)
+- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](./scripts/sfctl-upgrade-application.md)

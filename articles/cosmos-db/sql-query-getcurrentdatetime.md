@@ -4,25 +4,26 @@ description: Erfahren Sie mehr über die SQL-Systemfunktion GetCurrentDateTime i
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 07/09/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2ac3235191952702f2acc39a25e948511901050b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4db2ec7bbd05d982af57c05fd46ef7da7c682e15
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555882"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258813"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
- Gibt den aktuellen UTC-Datums-/Uhrzeitwert (koordinierte Weltzeit) als ISO 8601-Zeichenfolge zurück.
+
+Gibt den aktuellen UTC-Datums-/Uhrzeitwert (koordinierte Weltzeit) als ISO 8601-Zeichenfolge zurück.
   
 ## <a name="syntax"></a>Syntax
   
 ```sql
 GetCurrentDateTime ()
 ```
-  
+
 ## <a name="return-types"></a>Rückgabetypen
   
   Gibt den aktuellen UTC-Datums-/Uhrzeitwert als ISO 8601-Zeichenfolgenwert im Format `YYYY-MM-DDThh:mm:ss.fffffffZ` zurück. Die Entsprechungen sind:
@@ -43,7 +44,7 @@ GetCurrentDateTime ()
 
 ## <a name="remarks"></a>Bemerkungen
 
-  GetCurrentDateTime() ist eine nichtdeterministische Funktion. 
+  GetCurrentDateTime() ist eine nichtdeterministische Funktion.
   
   Das zurückgegebene Ergebnis entspricht UTC (koordinierte Weltzeit).
 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: 46601fd91fccb5bd0866bd999cc7643c37c6d582
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86a02fd489ca0eec61b798db7136f963277f6c82
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75551776"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261089"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Bewährte Methoden für Azure Service Fabric-Anwendungen und -Cluster
 
@@ -27,7 +27,7 @@ In diesem Artikel finden Sie Links zu Best Practices für die Verwaltung von Azu
 ## <a name="compute-planning-and-scaling"></a>Computeplanung und -skalierung
 
 * [Bewährte Methoden für die Skalierung von Computeressourcen](service-fabric-best-practices-capacity-scaling.md)
-* [Planen der Computekapazität](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)
+* [Planen der Computekapazität](./service-fabric-cluster-capacity.md)
 
 ## <a name="infrastructure-as-code"></a>Infrastructure-as-Code
 
@@ -44,7 +44,7 @@ In diesem Artikel finden Sie Links zu Best Practices für die Verwaltung von Azu
 ## <a name="checklist"></a>Checkliste
 
 Setzen Sie nach der Implementierung der oben aufgeführten Methoden alle Best Practices in der Checkliste für die Produktionsbereitschaft um:
-* [Azure Service Fabric: Checkliste für die Produktionsbereitschaft](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
+* [Azure Service Fabric: Checkliste für die Produktionsbereitschaft](./service-fabric-production-readiness-checklist.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 28a9f37f58a6c056bf23a85fcf2641f407988891
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649196"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243476"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Verwenden von benannten Werten in Azure API Management-Richtlinien
 
@@ -34,7 +34,7 @@ Jede API Management-Dienstinstanz weist eine Sammlung von Schlüssel-Wert-Paaren
 
 ![Benannte Werte](./media/api-management-howto-properties/named-values.png)
 
-Benannte Werte können Literalzeichenfolgen und [Richtlinienausdrücke](/azure/api-management/api-management-policy-expressions) enthalten. Der Wert von `Expression` ist beispielsweise ein Richtlinienausdruck, der eine Zeichenfolge zurückgibt, die das aktuelle Datum und die Uhrzeit enthält. Der benannte Wert `Credential` ist als Geheimnis markiert, sodass er standardmäßig nicht angezeigt wird.
+Benannte Werte können Literalzeichenfolgen und [Richtlinienausdrücke](./api-management-policy-expressions.md) enthalten. Der Wert von `Expression` ist beispielsweise ein Richtlinienausdruck, der eine Zeichenfolge zurückgibt, die das aktuelle Datum und die Uhrzeit enthält. Der benannte Wert `Credential` ist als Geheimnis markiert, sodass er standardmäßig nicht angezeigt wird.
 
 | Name       | Wert                      | `Secret` | `Tags`          |
 | ---------- | -------------------------- | ------ | ------------- |
@@ -110,8 +110,8 @@ Benannte Werte können zwar Richtlinienausdrücke, aber keine anderen benannten 
 
 -   Weitere Informationen zum Arbeiten mit Richtlinien
     -   [Richtlinien in Azure API Management](api-management-howto-policies.md)
-    -   [Gruppenrichtlinienreferenz](/azure/api-management/api-management-policies)
-    -   [Richtlinienausdrücke](/azure/api-management/api-management-policy-expressions)
+    -   [Gruppenrichtlinienreferenz](./api-management-policies.md)
+    -   [Richtlinienausdrücke](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

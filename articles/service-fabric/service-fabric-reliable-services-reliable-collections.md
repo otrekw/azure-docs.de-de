@@ -3,12 +3,12 @@ title: Einführung in Reliable Collections
 description: Zustandsbehaftete Service Fabric-Dienste bieten zuverlässige Auflistungen, die Ihnen das Schreiben hochverfügbarer, skalierbarer Cloudanwendungen mit kurzer Latenz ermöglichen.
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 6e0f39b994087fe44038e62e85326945589c719a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81398433"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245125"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Einführung in Reliable Collections in zustandsbehafteten Azure Service Fabric-Diensten
 
@@ -40,8 +40,8 @@ Die Reliable Collections-APIs sind eine Weiterentwicklung der APIs für gleichze
 
 Aktuell enthält **Microsoft.ServiceFabric.Data.Collections** drei Sammlungen:
 
-* [Zuverlässiges Wörterbuch](https://msdn.microsoft.com/library/azure/dn971511.aspx): Stellt eine replizierte, transaktionale und asynchrone Auflistung von Schlüssel-Wert-Paaren dar. Ähnlich wie bei **ConcurrentDictionary**können der Schlüssel und der Wert von beliebigem Typ sein.
-* [Zuverlässige Warteschlange](https://msdn.microsoft.com/library/azure/dn971527.aspx): Stellt eine replizierte, transaktionale und asynchrone strenge FIFO-Warteschlange (First In, First Out) dar. Ähnlich wie bei **ConcurrentQueue**kann der Wert von beliebigem Typ sein.
+* [Zuverlässiges Wörterbuch](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2): Stellt eine replizierte, transaktionale und asynchrone Auflistung von Schlüssel-Wert-Paaren dar. Ähnlich wie bei **ConcurrentDictionary**können der Schlüssel und der Wert von beliebigem Typ sein.
+* [Zuverlässige Warteschlange](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1): Stellt eine replizierte, transaktionale und asynchrone strenge FIFO-Warteschlange (First In, First Out) dar. Ähnlich wie bei **ConcurrentQueue**kann der Wert von beliebigem Typ sein.
 * [Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md): Stellt eine replizierte, transaktionale und asynchrone Warteschlange dar, die für einen hohen Durchsatz eine optimale Reihenfolge herstellt. Ähnlich wie bei **ConcurrentQueue** kann der Wert einen beliebigem Typ aufweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -57,4 +57,4 @@ Aktuell enthält **Microsoft.ServiceFabric.Data.Collections** drei Sammlungen:
   * [Konfigurieren des Reliable State Managers](service-fabric-reliable-services-configuration.md)
 * Andere
   * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
-  * [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Entwicklerreferenz für zuverlässige Auflistungen](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

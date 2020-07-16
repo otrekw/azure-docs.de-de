@@ -5,12 +5,12 @@ author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 1d3be958a0649ed3e80df2d63adbdf0b91831dbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b86f68126825f146a50ed21edf2acbda2b5181cf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75639597"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245176"
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services-Lebenszyklus
 > [!div class="op_single_selector"]
@@ -115,7 +115,7 @@ Bei Diensten ohne ordnungsgemäße Abbruchbehandlung können mehrere Probleme au
 
 Da es sich um zustandsbehaftete Dienste handelt, ist es auch wahrscheinlich, dass sie [Reliable Collections](service-fabric-reliable-services-reliable-collections.md) verwenden. Beim Tieferstufen eines primären Replikats wird in Service Fabric als eine der ersten Maßnahmen der Schreibzugriff auf den zugrunde liegenden Zustand entzogen. Dies führt zu weiteren Problemen, die Einfluss auf den Lebenszyklus des Diensts haben können. Die Sammlungen geben Ausnahmen auf der Grundlage des Timings und abhängig davon zurück, ob das Replikat verschoben oder heruntergefahren wird. Diese Ausnahmen müssen ordnungsgemäß behandelt werden. 
 
-Von Service Fabric ausgelöste Ausnahmen sind permanent [(`FabricException`)](https://docs.microsoft.com/java/api/system.fabric.exception) oder vorübergehend [(`FabricTransientException`)](https://docs.microsoft.com/java/api/system.fabric.exception.fabrictransientexception). Bei permanenten Ausnahmen sollte eine Ausnahme ausgelöst werden, und sie sollten protokolliert werden. Vorübergehende Ausnahmen können basierend auf Wiederholungslogik wiederholt werden.
+Von Service Fabric ausgelöste Ausnahmen sind permanent [(`FabricException`)](/java/api/system.fabric.exception) oder vorübergehend [(`FabricTransientException`)](/java/api/system.fabric.exception.fabrictransientexception). Bei permanenten Ausnahmen sollte eine Ausnahme ausgelöst werden, und sie sollten protokolliert werden. Vorübergehende Ausnahmen können basierend auf Wiederholungslogik wiederholt werden.
 
 Ein wichtiger Bestandteil der Tests und Prüfungen von Reliable Services ist die Behandlung von Ausnahmen, die auf die Verwendung von `ReliableCollections` in Verbindung mit Dienstlebenszyklusereignissen zurückzuführen sind. Es wird empfohlen, den Dienst immer unter Last auszuführen. Sie sollten vor der Bereitstellung in der Produktion auch Upgrades und [Chaostests](service-fabric-controlled-chaos.md) ausführen. Mit diesen einfachen Schritten können Sie sicherstellen, dass Ihr Dienst ordnungsgemäß implementiert ist und Lebenszyklusereignisse korrekt behandelt.
 
@@ -130,4 +130,3 @@ Ein wichtiger Bestandteil der Tests und Prüfungen von Reliable Services ist die
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Reliable Services](service-fabric-reliable-services-introduction.md)
 * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start-java.md)
-

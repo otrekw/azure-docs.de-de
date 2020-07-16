@@ -4,12 +4,12 @@ description: Lernen Sie Sicherheitsszenarien für einen Azure Service Fabric-Clu
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080687"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261071"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
 
@@ -27,7 +27,7 @@ Die Knoten-zu-Knoten-Sicherheit dient zum Schutz der Kommunikation zwischen den 
 
 ![Diagramm für die Kommunikation zwischen Knoten][Node-to-Node]
 
-Cluster unter Azure und eigenständige Cluster unter Windows können beide entweder [Zertifikatsicherheit](https://msdn.microsoft.com/library/ff649801.aspx) oder [Windows-Sicherheit](https://msdn.microsoft.com/library/ff649396.aspx) für Windows Server-Computer verwenden.
+Cluster unter Azure und eigenständige Cluster unter Windows können beide entweder [Zertifikatsicherheit](/previous-versions/msp-n-p/ff649801(v=pandp.10)) oder [Windows-Sicherheit](/previous-versions/msp-n-p/ff649396(v=pandp.10)) für Windows Server-Computer verwenden.
 
 ### <a name="node-to-node-certificate-security"></a>Zertifikatsicherheit (Knoten zu Knoten)
 
@@ -54,7 +54,7 @@ Client-zu-Knoten-Sicherheit authentifiziert Clients und schützt die Kommunikati
 
 ![Diagramm für die Kommunikation zwischen Client und Knoten][Client-to-Node]
 
-Sowohl in Azure ausgeführte Cluster als auch eigenständige Cluster unter Windows können entweder die [Zertifikatsicherheit](https://msdn.microsoft.com/library/ff649801.aspx) oder die [Windows-Sicherheit](https://msdn.microsoft.com/library/ff649396.aspx) verwenden. Empfohlen wird jedoch die Verwendung der X.509-Zertifikatauthentifizierung, wann immer dies möglich ist.
+Sowohl in Azure ausgeführte Cluster als auch eigenständige Cluster unter Windows können entweder die [Zertifikatsicherheit](/previous-versions/msp-n-p/ff649801(v=pandp.10)) oder die [Windows-Sicherheit](/previous-versions/msp-n-p/ff649396(v=pandp.10)) verwenden. Empfohlen wird jedoch die Verwendung der X.509-Zertifikatauthentifizierung, wann immer dies möglich ist.
 
 ### <a name="client-to-node-certificate-security"></a>Zertifikatsicherheit (Client zu Knoten)
 
@@ -95,7 +95,7 @@ Legen Sie die Administrator- und Benutzerclientrollen bei der Erstellung des Clu
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509-Zertifikate und Service Fabric
 
-Digitale X.509-Zertifikate werden in der Regel verwendet, um Clients und Server zu authentifizieren. Sie werden auch zum Verschlüsseln und digitalen Signieren von Nachrichten verwendet. Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen. Weitere Informationen zu digitalen X. 509-Zertifikaten finden Sie unter [Verwenden von Zertifikaten](https://msdn.microsoft.com/library/ms731899.aspx). [Key Vault](../key-vault/general/overview.md) dient zum Verwalten von Zertifikaten für Service Fabric-Cluster in Azure.
+Digitale X.509-Zertifikate werden in der Regel verwendet, um Clients und Server zu authentifizieren. Sie werden auch zum Verschlüsseln und digitalen Signieren von Nachrichten verwendet. Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen. Weitere Informationen zu digitalen X. 509-Zertifikaten finden Sie unter [Verwenden von Zertifikaten](/dotnet/framework/wcf/feature-details/working-with-certificates). [Key Vault](../key-vault/general/overview.md) dient zum Verwalten von Zertifikaten für Service Fabric-Cluster in Azure.
 
 Einige wichtige Punkte sind zu beachten:
 

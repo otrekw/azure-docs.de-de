@@ -5,12 +5,12 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8633a5018e6faeaca842a3ecffb4c4921358e191
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614161"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257355"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Schützen der WFC-basierten Kommunikation für einen Dienst
 Sicherheit ist einer der wichtigsten Aspekte der Kommunikation. Das Reliable Services-Anwendungsframework stellt einige fertige Kommunikationsstapel und Tools bereit, die Sie verwenden können, um die Sicherheit zu verbessern. In diesem Artikel erfahren Sie, wie Sie die Sicherheit bei Verwendung von Dienstremoting verbessern können.
@@ -120,4 +120,4 @@ Wir verwenden ein vorhandenes [Beispiel](service-fabric-reliable-services-commun
         client => client.Channel.Add(2, 3)).Result;
     ```
 
-Lesen Sie als Nächstes den Artikel [Web-API mit OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md).
+Lesen Sie als Nächstes den Artikel [Web-API mit OWIN in Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md).

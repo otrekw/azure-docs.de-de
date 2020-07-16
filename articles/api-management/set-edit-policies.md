@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 5670be6d4c45644ac8318702822c37ed82a81caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9249cb1ac64bf61b405bc3537523cc85bca3f00c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205746"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252792"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Festlegen oder Bearbeiten von Azure API Management-Richtlinien
 
@@ -135,5 +135,5 @@ Der Vorgangsbereich wird für den ausgewählten Vorgang konfiguriert.
 Informationen finden Sie in den folgenden verwandten Themen:
 
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
-+ Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
++ Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
 + [API Management-Richtlinienbeispiele](policy-samples.md)

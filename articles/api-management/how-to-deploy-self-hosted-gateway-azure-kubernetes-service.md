@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: abf7e6d7032e7e5dc35b2f4397a5630d45d762de
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204835"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254383"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Bereitstellen für Azure Kubernetes Service
 
@@ -36,7 +36,7 @@ In diesem Artikel werden die Schritte für die Bereitstellung einer selbstgehost
 5. Stellen Sie sicher, dass **Kubernetes** unter **Bereitstellungsskripts** ausgewählt ist.
 6. Wählen Sie den **<Gatewayname>.yml**-Dateilink neben **Bereitstellung** aus, um die Datei herunterzuladen.
 7. Passen Sie die Portzuordnungen und den Containernamen in der YML-Datei nach Bedarf an.
-8. Abhängig von Ihrem Szenario müssen Sie möglicherweise den [Diensttyp](https://docs.microsoft.com/azure/aks/concepts-network#services) ändern. Standardwert: `NodePort`.
+8. Abhängig von Ihrem Szenario müssen Sie möglicherweise den [Diensttyp](../aks/concepts-network.md#services) ändern. Standardwert: `NodePort`.
 9. Wählen Sie das Symbol **Kopieren** rechts neben dem Textfeld **Bereitstellen** aus, um den `kubectl`-Befehl in der Zwischenablage zu speichern.
 10. Fügen Sie den Befehl in das Terminalfenster (oder Befehlsfenster) ein. Beachten Sie, dass der Befehl erwartet, dass die heruntergeladene Umgebungsdatei im aktuellen Verzeichnis vorhanden ist.
 ```console
@@ -63,10 +63,6 @@ contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zum selbstgehosteten Gateway finden Sie unter [Azure API Management: Übersicht über das selbstgehostete Gateway](self-hosted-gateway-overview.md).
-* Erfahren Sie mehr über [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes).
+* Erfahren Sie mehr über [Azure Kubernetes Service](../aks/intro-kubernetes.md).
 * Erfahren Sie mehr zum [Konfigurieren und Beibehalten von Protokollen in der Cloud](how-to-configure-cloud-metrics-logs.md).
 * * Erfahren Sie mehr zum [lokalen Konfigurieren und Beibehalten von Protokollen](how-to-configure-local-metrics-logs.md).
-
-
-
-

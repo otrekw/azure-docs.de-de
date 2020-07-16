@@ -3,12 +3,12 @@ title: Verwenden einer verwalteten Identität mit einer Anwendung
 description: Verwenden von verwalteten Identitäten in Azure Service Fabric-Anwendungscode für den Zugriff auf Azure-Dienste.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461564"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253642"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Nutzen der verwalteten Identität einer Service Fabric-Anwendung für den Zugriff auf Azure-Dienste
 
@@ -371,7 +371,7 @@ Es empfiehlt sich, die Anforderungen, die aufgrund einer Drosselung nicht ausgef
 | 5 | 16 Sekunden warten und erneut versuchen |
 
 ## <a name="resource-ids-for-azure-services"></a>Ressourcen-IDs für Azure-Dienste
-Eine Liste mit Ressourcen, die Azure AD unterstützen, und den dazugehörigen Ressourcen-IDs finden Sie unter [Azure-Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-msi.md).
+Eine Liste mit Ressourcen, die Azure AD unterstützen, und den dazugehörigen Ressourcen-IDs finden Sie unter [Azure-Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

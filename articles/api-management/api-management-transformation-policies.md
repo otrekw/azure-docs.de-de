@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 27bb6abb7ae8eae46bc4dea3708270ecb4b731a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0182c3aa9095ad6f7bf3d8d86f115517e9efb020
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81260903"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249602"
 ---
 # <a name="api-management-transformation-policies"></a>Azure API Management-Transformationsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -82,7 +82,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |parse-date|Ist dieses Attribut auf `false` festgelegt, werden Datumswerte während der Transformation einfach kopiert.|Nein|true|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, on-error
 
@@ -126,7 +126,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |consider-accept-header|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – true – Die Konvertierung anwenden, wenn JSON im Accept-Header der Anforderung angefordert wird.<br />– false – Die Konvertierung immer anwenden.|Nein|true|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, on-error
 
@@ -161,7 +161,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |zu|Die Ersatzzeichenfolge. Geben Sie eine leere Ersatzzeichenfolge an, um die Suchzeichenfolge zu entfernen.|Ja|–|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -192,7 +192,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |redirect-content-urls|Stammelement|Ja|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound, outbound
 
@@ -214,7 +214,7 @@ oder
 ```
 
 > [!NOTE]
-> Back-End-Entitäten können über die Verwaltungs-[API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) oder [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) verwaltet werden.
+> Back-End-Entitäten können über die Verwaltungs-[API](/rest/api/apimanagement/2019-12-01/backend) oder [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) verwaltet werden.
 
 ### <a name="example"></a>Beispiel
 
@@ -269,7 +269,7 @@ In diesem Beispiel leitet die Richtlinie die Anforderung an das Service Fabric-B
 |Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |base-url|Neue Basis-URL für den Back-End-Dienst.|Entweder `base-url` oder `backend-id` muss vorhanden sein.|–|
-|backend-id|Der Bezeichner des Back-Ends, an den die Weiterleitung stattfinden soll (Back-End-Entitäten werden über die [API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) und in [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) verwaltet.)|Entweder `base-url` oder `backend-id` muss vorhanden sein.|–|
+|backend-id|Der Bezeichner des Back-Ends, an den die Weiterleitung stattfinden soll (Back-End-Entitäten werden über die [API](/rest/api/apimanagement/2019-12-01/backend) und in [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) verwaltet.)|Entweder `base-url` oder `backend-id` muss vorhanden sein.|–|
 |sf-partition-key|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt, der über „backend-id“ angegeben wurde. Wird verwendet, um eine bestimmte Partition aus dem Namensauflösungsdienst aufzulösen.|Nein|–|
 |sf-replica-type|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt, der über „backend-id“ angegeben wurde. Steuert, ob die Anforderung das primäre oder sekundäre Replikat einer Partition betreffen soll. |Nein|–|
 |sf-resolve-condition|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt. Bedingung, die angibt, ob der Aufruf des Service Fabric-Back-Ends mit einer neuen Auflösung wiederholt werden muss.|Nein|–|
@@ -277,7 +277,7 @@ In diesem Beispiel leitet die Richtlinie die Anforderung an das Service Fabric-B
 |sf-listener-name|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt, der über „backend-id“ angegeben wurde. Service Fabric Reliable Services ermöglichen die Erstellung mehrerer Listener in einem Dienst. Mit diesem Attribut wird ein bestimmter Listener ausgewählt, wenn eine Reliable Services-Instanz eines Back-Ends über mehrere Listener verfügt. Wenn dieses Attribut nicht angegeben wird, versucht API Management einen Listener ohne Namen zu verwenden. Ein Listener ohne Name ist typisch für Reliable Services mit nur einem Listener. |Nein|–|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, backend
 
@@ -447,7 +447,7 @@ OriginalUrl.
 
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend
 
@@ -523,7 +523,7 @@ OriginalUrl.
 |name|Der Name des zu setzenden Headers.|Ja|–|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -578,7 +578,7 @@ OriginalUrl.
 |name|Gibt den Namen des festzulegenden Abfrageparameters an.|Ja|–|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, backend
 
@@ -656,7 +656,7 @@ OriginalUrl.
 |copy-unmatched-params|Gibt an, ob Abfrageparameter in der eingehenden Anforderung, die in der ursprünglichen URL-Vorlage nicht enthalten sind, der von der Umschreibevorlage festgelegten URL hinzugefügt werden.|Nein|true|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
 
@@ -720,7 +720,7 @@ OriginalUrl.
 |xsl:stylesheet|Stylesheet-Stammelement. Für alle darunter definierten Elemente und Attribute gilt die standardmäßige [XSLT-Spezifikation](https://www.w3.org/TR/xslt)|Ja|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound, outbound
 
@@ -731,5 +731,5 @@ OriginalUrl.
 Weitere Informationen finden Sie in den folgenden Themen:
 
 + [Richtlinien in Azure API Management](api-management-howto-policies.md)
-+ Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
++ Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
 + [API Management-Richtlinienbeispiele](policy-samples.md)

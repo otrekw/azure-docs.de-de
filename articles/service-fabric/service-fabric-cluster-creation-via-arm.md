@@ -3,12 +3,12 @@ title: Erstellen eines Azure Service Fabric-Clusters
 description: Hier erfahren Sie, wie mithilfe von Azure Resource Manager ein sicherer Service Fabric-Cluster in Azure eingerichtet wird.  Sie können eine Standardvorlage oder Ihre eigene Clustervorlage zum Erstellen eines Clusters verwenden.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81458299"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258748"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -33,8 +33,8 @@ Verwenden Sie in diesem Artikel die Service Fabric-RM-Powershell- oder Azure CLI
 * [Azure CLI, Version 2.0 und höher][azure-CLI]
 
 Die Referenzdokumentation für die Service Fabric-Module finden Sie hier:
-* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
-* [az SF CLI module](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
+* [Az.ServiceFabric](/powershell/module/az.servicefabric)
+* [az SF CLI module](/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
