@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d7e2a706f65b5f2948a24400aa63ba39350661
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82025032"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259646"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Bereitstellen auf dedizierten Hosts
 
@@ -28,7 +28,7 @@ Die dedizierte SKU eignet sich für Containerworkloads, die Workloadisolation au
 > Das Verwenden der dedizierten SKU ist nur in der neuesten API-Version (2019-12-01) verfügbar, deren Rollout momentan durchgeführt wird. Geben Sie diese API-Version in Ihrer Bereitstellungsvorlage an.
 >
 
-Ab API-Version 2019-12-01 gibt es eine `sku`-Eigenschaft im Abschnitt mit den Containergruppeneigenschaften einer Bereitstellungsvorlage, die für eine ACI-Bereitstellung erforderlich ist. Derzeit können Sie diese Eigenschaft als Teil einer Azure Resource Manager-Bereitstellungsvorlage für ACI verwenden. Weitere Informationen zum Bereitstellen von ACI-Ressourcen mit einer Vorlage finden Sie im [Tutorial: Bereitstellen einer Gruppe mit mehreren Containern über eine Resource Manager-Vorlage](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Ab API-Version 2019-12-01 gibt es eine `sku`-Eigenschaft im Abschnitt mit den Containergruppeneigenschaften einer Bereitstellungsvorlage, die für eine ACI-Bereitstellung erforderlich ist. Derzeit können Sie diese Eigenschaft als Teil einer Azure Resource Manager-Bereitstellungsvorlage für ACI verwenden. Weitere Informationen zum Bereitstellen von ACI-Ressourcen mit einer Vorlage finden Sie im [Tutorial: Bereitstellen einer Gruppe mit mehreren Containern über eine Resource Manager-Vorlage](./container-instances-multi-container-group.md). 
 
 Die `sku`-Eigenschaft kann einen der folgenden Werte haben:
 * `Standard`: Die standardmäßige ACI-Bereitstellungsauswahl, die immer noch Sicherheit auf Hypervisor-Ebene gewährleistet. 
@@ -137,17 +137,17 @@ Erstellen Sie mithilfe des Befehls [az group create][az-group-create] eine Resso
 az group create --name myResourceGroup --location eastus
 ```
 
-Stellen Sie mit dem Befehl [az group deployment create][az-group-deployment-create] die Vorlage bereit.
+Stellen Sie die Vorlage mit dem Befehl [az deployment group create][az-deployment-group-create] bereit.
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 Innerhalb weniger Sekunden sollten Sie eine erste Antwort von Azure erhalten. Eine erfolgreiche Bereitstellung findet auf einem dedizierten Host statt.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

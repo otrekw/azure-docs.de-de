@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701199"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247420"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "84701199"
 Überwachung, Erkennung, Diagnose und Problembehandlung ermöglichen das Ausführen von Diensten mit minimalen Unterbrechungen für Benutzer. Die Überwachung und Diagnose sind in einer tatsächlichen bereitgestellten Produktionsumgebung zwar wichtig, die Wirksamkeit hängt aber davon ab, ob bei der Entwicklung von Diensten ein ähnliches Modell verwendet wird. Nur so ist sichergestellt, dass die Dienste später tatsächlich funktionieren. Service Fabric erleichtert Dienstentwicklern das Implementieren von Diagnosen, die sowohl in einer lokalen Umgebung auf einem einzelnen Computer als auch in der tatsächlichen Konfiguration in einem Produktionscluster nahtlos verwendet werden können.
 
 ## <a name="event-tracing-for-windows"></a>Ereignisablaufverfolgung für Windows
-[Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) ist die empfohlene Technologie für das Nachverfolgen von Meldungen in Service Fabric. Einige Vorteile der Verwendung von ETW sind wie folgt:
+[Event Tracing for Windows](/windows/win32/etw/event-tracing-portal) (ETW) ist die empfohlene Technologie für das Nachverfolgen von Meldungen in Service Fabric. Einige Vorteile der Verwendung von ETW sind wie folgt:
 
 * **ETW ist schnell.** ETW wurde als Technologie für die Ablaufverfolgung erstellt, die minimale Auswirkungen auf die Codeausführungszeiten hat.
 * **Die ETW-Ablaufverfolgung funktioniert nahtlos in lokalen Entwicklungsumgebungen und in realen Clusterkonfigurationen.** Das heißt, Sie müssen den Ablaufverfolgungscode nicht neu schreiben, wenn Sie den Code in einem echten Cluster bereitstellen.
@@ -56,6 +56,5 @@ Nachdem Sie die benutzerdefinierte ETW-Ablaufverfolgung dem Dienstcode hinzugef�
 ## <a name="next-steps"></a>Nächste Schritte
 Der Ablaufverfolgungscode, den Sie Ihrer Anwendung für die lokale Diagnose hinzugefügt haben, funktioniert auch mit den Tools für die Anzeige dieser Ereignisse, wenn Sie Ihre Anwendung in einem Azure-Cluster ausführen. Sehen Sie sich diese Artikel an, in denen die verschiedenen Optionen für die Tools erläutert werden und beschrieben wird, wie Sie sie einrichten können.
 
-* [Sammeln von Protokollen mit Azure-Diagnose](service-fabric-diagnostics-how-to-setup-wad.md)
+* [Sammeln von Protokollen mit Azure-Diagnose](./service-fabric-diagnostics-event-aggregation-wad.md)
 * [Ereignisaggregation und -sammlung mithilfe von EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md)
-

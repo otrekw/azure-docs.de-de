@@ -3,12 +3,12 @@ title: Aktivieren einer verwalteten Identität in einer Containergruppe
 description: Erfahren Sie, wie Sie in Azure Container Instances eine verwaltete Identität zur Authentifizierung bei anderen Azure-Diensten aktivieren können.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 9bc96ed29039650082bdfa8b7b2b1b48ecb6bd3f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 23f2347593137a4846c8fd22e3b90f22db39bda3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169781"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259621"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Verwenden von verwalteten Identitäten mit Azure Container Instances
 
@@ -392,6 +392,6 @@ In diesem Artikel haben Sie mehr über verwaltete Identitäten in Azure Containe
 > * Gewähren des Zugriffs auf eine Azure Key Vault-Instanz für die Identität
 > * Verwenden der verwalteten Identität zum Zugreifen auf eine Key Vault-Instanz über einen ausgeführten Container
 
-* Erfahren Sie mehr über [verwaltete Identitäten für Azure-Ressourcen](/azure/active-directory/managed-identities-azure-resources/).
+* Erfahren Sie mehr über [verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/index.yml).
 
 * Sehen Sie sich ein [Azure Go SDK-Beispiel](https://medium.com/@samkreter/c98911206328) zur Verwendung einer verwalteten Identität für den Zugriff auf eine Key Vault-Instanz über Azure Container Instances an.

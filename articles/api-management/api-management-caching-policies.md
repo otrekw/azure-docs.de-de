@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 06c4ede12f939e48973d3e0b502d90b848d199bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e58cd8f19ab98601d37df185656038dbd5679eb2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236030"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255046"
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -114,11 +114,11 @@ Weitere Informationen finden Sie unter [Richtlinienausdrücke](api-management-po
 | caching-type               | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein       | `prefer-external` |
 | downstream-caching-type        | Dieses Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> –   none: Downstreamzwischenspeicherung ist unzulässig.<br />–   private: Private Downstreamzwischenspeicherung ist zulässig.<br />–   public: Private und gemeinsam genutzte Downstreamzwischenspeicherung ist zulässig.                                                                                                          | Nein       | none              |
 | must-revalidate                | Wenn die Downstreamzwischenspeicherung aktiviert ist, aktiviert oder deaktiviert dieses Attribut die `must-revalidate`-Cachesteuerungsanweisung in Gatewayantworten.                                                                                                                                                                                                                      | Nein       | true              |
-| vary-by-developer              | Legen Sie diese Option auf `true` fest, um Antworten [pro Abonnementschlüssel](https://docs.microsoft.com/azure/api-management/api-management-subscriptions) zwischenzuspeichern.                                                                                                                                                                                                                                                                                                         | Ja      |         False          |
-| vary-by-developer-groups       | Legen Sie diese Option auf `true` fest, um Antworten [pro Benutzergruppe](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups) zwischenzuspeichern.                                                                                                                                                                                                                                                                                                             | Ja      |       False            |
+| vary-by-developer              | Legen Sie diese Option auf `true` fest, um Antworten [pro Abonnementschlüssel](./api-management-subscriptions.md) zwischenzuspeichern.                                                                                                                                                                                                                                                                                                         | Ja      |         False          |
+| vary-by-developer-groups       | Legen Sie diese Option auf `true` fest, um Antworten [pro Benutzergruppe](./api-management-howto-create-groups.md) zwischenzuspeichern.                                                                                                                                                                                                                                                                                                             | Ja      |       False            |
 
 ### <a name="usage"></a>Verwendung
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte**: inbound
 - **Richtlinienbereiche:** alle Bereiche
@@ -190,7 +190,7 @@ Weitere Informationen finden Sie unter [Richtlinienausdrücke](api-management-po
 | duration         | Lebensdauer der zwischengespeicherten Einträge, angegeben in Sekunden.                                                                                                                                                                                                                                                                                                   | Ja      | –               |
 
 ### <a name="usage"></a>Verwendung
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte:** outbound
 - **Richtlinienbereiche:** alle Bereiche
@@ -211,7 +211,7 @@ Verwenden Sie die `cache-lookup-value`-Richtlinie zum Durchführen einer Cachesu
 ```
 
 ### <a name="example"></a>Beispiel
-Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Benutzerdefiniertes Caching in Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-cache-by-key/).
+Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Benutzerdefiniertes Caching in Azure API Management](./api-management-sample-cache-by-key.md).
 
 ```xml
 <cache-lookup-value
@@ -236,7 +236,7 @@ Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Benut
 | variable-name    | Der Name der [Kontextvariablen](api-management-policy-expressions.md#ContextVariables), der der gesuchte Wert zugewiesen wird, wenn die Suche erfolgreich ist. Wenn die Suche zu keinem Ergebnis führt, wird der Variablen der Wert des `default-value`-Attribut oder `null` zugewiesen, wenn das `default-value`-Attribut ausgelassen wird.                                       | Ja      | –               |
 
 ### <a name="usage"></a>Verwendung
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 - **Richtlinienbereiche:** alle Bereiche
@@ -254,7 +254,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 ```
 
 ### <a name="example"></a>Beispiel
-Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Benutzerdefiniertes Caching in Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-cache-by-key/).
+Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Benutzerdefiniertes Caching in Azure API Management](./api-management-sample-cache-by-key.md).
 
 ```xml
 <cache-store-value
@@ -278,7 +278,7 @@ Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Benut
 | Schlüssel              | Der Cacheschlüssel, unter dem der Wert gespeichert wird.                                                                                                                                                                                                                                                                                                                   | Ja      | –               |
 | value            | Der Wert, der zwischengespeichert werden soll.                                                                                                                                                                                                                                                                                                                                     | Ja      | –               |
 ### <a name="usage"></a>Verwendung
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 - **Richtlinienbereiche:** alle Bereiche
@@ -316,7 +316,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 | Schlüssel              | Der Schlüssel des zuvor zwischengespeicherten Werts, der aus dem Cache entfernt werden soll.                                                                                                                                                                                                                                                                                        | Ja      | –               |
 
 #### <a name="usage"></a>Verwendung
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 - **Richtlinienbereiche:** alle Bereiche
@@ -327,5 +327,5 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 
 + [Richtlinien in Azure API Management](api-management-howto-policies.md)
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
-+ Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
++ Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
 + [API Management-Richtlinienbeispiele](policy-samples.md)

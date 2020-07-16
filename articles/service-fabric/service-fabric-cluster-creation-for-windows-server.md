@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ba6474751913b4994ae840f77577b3c1db6c5f73
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827963"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259286"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Erstellen eines eigenständigen Clusters unter Windows Server
 Mithilfe von Azure Service Fabric können Sie Service Fabric-Cluster auf beliebigen virtuellen oder physischen Computern erstellen, auf denen Windows Server ausgeführt wird. So können Sie Service Fabric-Anwendungen in jeder Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Windows Server-Computer befinden – lokal oder bei einem Cloudanbieter. Service Fabric stellt ein Setuppaket zum Erstellen von Service Fabric-Clustern bereit. Es wird als eigenständiges Paket für Windows Server bezeichnet. Herkömmliche Service Fabric-Cluster in Azure stehen als verwalteter Dienst zur Verfügung, während eigenständige Service Fabric-Cluster Self-Service sind. Weitere Informationen zu den Unterschieden finden Sie unter [Azure-Cluster und eigenständige Service Fabric-Cluster im Vergleich](./service-fabric-deploy-anywhere.md).
@@ -25,10 +25,10 @@ Dieser Artikel führt Sie durch den Vorgang zum Erstellen eines eigenständigen 
 <a id="getsupport"></a>
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Support für das Service Fabric-Paket für Windows Server
-* Befragen Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Service Fabric](https://docs.microsoft.com/answers/topics/azure-service-fabric.html) die Community zum eigenständigen Service Fabric-Paket für Windows Server.
+* Befragen Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Service Fabric](/answers/topics/azure-service-fabric.html) die Community zum eigenständigen Service Fabric-Paket für Windows Server.
 * Erstellen Sie ein Ticket für [Professional Support für Service Fabric](https://support.microsoft.com/oas/default.aspx?prid=16146).  Weitere Informationen zu Professional Support von Microsoft finden Sie [hier](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 * Support für dieses Paket erhalten Sie auch im Rahmen von [Microsoft Premier Support](https://support.microsoft.com/en-us/premier).
-* Weitere Informationen finden Sie unter [Supportoptionen für Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
+* Weitere Informationen finden Sie unter [Supportoptionen für Azure Service Fabric](./service-fabric-support.md).
 * Führen Sie zum Erfassen der Protokolle für den Support den [eigenständigen Service Fabric-Protokollsammler](service-fabric-cluster-standalone-package-contents.md) aus.
 
 <a id="downloadpackage"></a>
@@ -216,7 +216,7 @@ Keine.
 * [Konfigurationseinstellungen für eigenständige Windows-Cluster](service-fabric-cluster-manifest.md)
 * [Hinzufügen oder Entfernen von Knoten für einen eigenständigen Service Fabric-Cluster unter Windows Server](service-fabric-cluster-windows-server-add-remove-nodes.md)
 * [Aktualisieren des eigenständigen Service Fabric-Clusters unter Windows Server](service-fabric-cluster-upgrade-windows-server.md)
-* [Erstellen eines eigenständigen Service Fabric-Clusters mit drei Knoten und Azure-VMs mit Windows Server](service-fabric-cluster-creation-with-windows-azure-vms.md)
+* [Erstellen eines eigenständigen Service Fabric-Clusters mit drei Knoten und Azure-VMs mit Windows Server](./service-fabric-cluster-creation-via-arm.md)
 * [Schützen eines eigenständigen Windows-Clusters mithilfe von Windows-Sicherheit](service-fabric-windows-cluster-windows-security.md)
 * [Schützen des eigenständigen Windows-Clusters mit Zertifikaten](service-fabric-windows-cluster-x509-security.md)
 

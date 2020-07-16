@@ -3,12 +3,12 @@ title: Debuggen von Azure Service Fabric-Apps unter Linux
 description: Erfahren Sie, wie Sie Ihre Service Fabric-Dienste auf einem lokalen Linux-Entwicklungscomputer überwachen und diagnostizieren.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 6f637721d24045f5ca3386ffc31775d469e88537
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991329"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247556"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Linux-Computer
 
@@ -132,4 +132,4 @@ Die Beispiele unter [C# Samples](https://github.com/Azure-Samples/service-fabric
 
 ## <a name="next-steps"></a>Nächste Schritte
 Der Ablaufverfolgungscode, der Ihrer Anwendung hinzugefügt wurde, gilt auch für die Diagnose der Anwendung auf einem Azure-Cluster. Sehen Sie sich diese Artikel an, in denen die verschiedenen Optionen für die Tools und deren Einrichtung erläutert werden.
-* [Sammeln von Protokollen mit Azure-Diagnose](service-fabric-diagnostics-how-to-setup-lad.md)
+* [Sammeln von Protokollen mit Azure-Diagnose](./service-fabric-diagnostics-event-aggregation-lad.md)

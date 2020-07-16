@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 03076a711041812f7587aa1c388b0889b49725d2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 4efa8626e80cbd64cd6216faa1869d7210f32cf2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787132"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261097"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-Knotentypen und VM-Skalierungsgruppen
 
-[VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets) sind eine Azure Computeressource. Sie können Skalierungsgruppen verwenden, um eine Sammlung virtueller Computer als Gruppe bereitzustellen und zu verwalten. Jeder Knotentyp, den Sie in einem Azure Service Fabric-Cluster definieren, richtet genau eine Skalierungsgruppe ein. Mehrere Knotentypen können nicht von derselben Skalierungsgruppe unterstützt werden, und ein Knotentyp darf (in den meisten Fällen) nicht von mehreren Skalierungsgruppen unterstützt werden. Eine Ausnahme bildet die seltene Situation der [vertikalen Skalierung](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) eines Knotentyps, wenn Sie vorübergehend zwei Skalierungsgruppen mit dem gleichen `nodeTypeRef`-Wert haben, während die Replikate aus der ursprünglichen in die aktualisierte Skalierungsgruppe migriert werden.
+[VM-Skalierungsgruppen](../virtual-machine-scale-sets/index.yml) sind eine Azure Computeressource. Sie können Skalierungsgruppen verwenden, um eine Sammlung virtueller Computer als Gruppe bereitzustellen und zu verwalten. Jeder Knotentyp, den Sie in einem Azure Service Fabric-Cluster definieren, richtet genau eine Skalierungsgruppe ein. Mehrere Knotentypen können nicht von derselben Skalierungsgruppe unterstützt werden, und ein Knotentyp darf (in den meisten Fällen) nicht von mehreren Skalierungsgruppen unterstützt werden. Eine Ausnahme bildet die seltene Situation der [vertikalen Skalierung](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) eines Knotentyps, wenn Sie vorübergehend zwei Skalierungsgruppen mit dem gleichen `nodeTypeRef`-Wert haben, während die Replikate aus der ursprünglichen in die aktualisierte Skalierungsgruppe migriert werden.
 
 Die auf jedem virtuellen Computer in der Skalierungsgruppe von der Virtual Machines-Erweiterung *Microsoft.Azure.ServiceFabric* installierte Service Fabric-Laufzeit. Sie können jeden Knotentyp einzeln zentral hoch- oder herunterskalieren, auf jedem Clusterknoten die ausgeführte Betriebssystem-SKU ändern, bei jedem Typ unterschiedliche Portgruppen öffnen und verschiedene Kapazitätsmetriken verwenden.
 

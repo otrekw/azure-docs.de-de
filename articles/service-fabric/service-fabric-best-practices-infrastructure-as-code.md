@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75551827"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253676"
 ---
 # <a name="infrastructure-as-code"></a>Infrastructure-as-Code
 
@@ -44,7 +44,7 @@ New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -
 
 ## <a name="azure-service-fabric-resources"></a>Azure Service Fabric-Ressourcen
 
-Sie können Anwendungen und Dienste mithilfe von Azure Resource Manager in Ihrem Service Fabric-Cluster bereitstellen. Ausführliche Informationen finden Sie unter [Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource). Der folgende Codeausschnitt zeigt bewährte Service Fabric-spezifische Anwendungsressourcen, die Sie in Ihre Resource Manager-Vorlagenressourcen einschließen können.
+Sie können Anwendungen und Dienste mithilfe von Azure Resource Manager in Ihrem Service Fabric-Cluster bereitstellen. Ausführliche Informationen finden Sie unter [Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen](./service-fabric-application-arm-resource.md). Der folgende Codeausschnitt zeigt bewährte Service Fabric-spezifische Anwendungsressourcen, die Sie in Ihre Resource Manager-Vorlagenressourcen einschließen können.
 
 ```json
 {
@@ -73,7 +73,7 @@ Sie können Anwendungen und Dienste mithilfe von Azure Resource Manager in Ihrem
 }
 ```
 
-Um Ihre Anwendung mit Azure Resource Manager bereitzustellen, müssen Sie zunächst ein [Service Fabric-Anwendungspaket (SFPKG) erstellen](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg). Das folgende Python-Skript ist ein Beispiel für die Erstellung einer SFPKG-Datei:
+Um Ihre Anwendung mit Azure Resource Manager bereitzustellen, müssen Sie zunächst ein [Service Fabric-Anwendungspaket (SFPKG) erstellen](./service-fabric-package-apps.md#create-an-sfpkg). Das folgende Python-Skript ist ein Beispiel für die Erstellung einer SFPKG-Datei:
 
 ```python
 # Create SFPKG that needs to be uploaded to Azure Storage Blob Container
@@ -91,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Konfiguration des automatischen Betriebssystemupgrades für virtuelle Azure-Computer 
-Das Upgraden Ihrer virtuellen Computer ist ein vom Benutzer initiierter Vorgang, und es empfiehlt sich, [automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) für die Hostpatchverwaltung von Azure Service Fabric-Clustern zu verwenden. Die Patchorchestrierungsanwendung (POA) ist eine alternative Lösung für das Hosten außerhalb von Azure. Die POA kann zwar auch in Azure verwendet werden, aufgrund des Zusatzaufwands, der durch das Hosten von POA in Azure entsteht, werden für virtuelle Computer jedoch häufig automatische Betriebssystemupgrades über POA bevorzugt. Im Anschluss finden Sie die Resource Manager-Vorlageneigenschaften für Compute-VM-Skalierungsgruppen, um automatische Betriebssystemupgrades zu aktivieren:
+Das Upgraden Ihrer virtuellen Computer ist ein vom Benutzer initiierter Vorgang, und es empfiehlt sich, [automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) für die Hostpatchverwaltung von Azure Service Fabric-Clustern zu verwenden. Die Patchorchestrierungsanwendung (POA) ist eine alternative Lösung für das Hosten außerhalb von Azure. Die POA kann zwar auch in Azure verwendet werden, aufgrund des Zusatzaufwands, der durch das Hosten von POA in Azure entsteht, werden für virtuelle Computer jedoch häufig automatische Betriebssystemupgrades über POA bevorzugt. Im Anschluss finden Sie die Resource Manager-Vorlageneigenschaften für Compute-VM-Skalierungsgruppen, um automatische Betriebssystemupgrades zu aktivieren:
 
 ```json
 "upgradePolicy": {

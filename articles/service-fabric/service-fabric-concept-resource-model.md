@@ -4,12 +4,12 @@ description: Dieser Artikel bietet eine Übersicht über die Verwaltung einer Az
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682644"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258741"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric: Anwendungsressourcenmodell
 
@@ -56,7 +56,7 @@ Ressourcen in Ihrem Cluster können geschützt werden, indem die öffentliche Zu
 
 * Autorisieren des Zugriffs auf Blobs und Warteschlangen mit [Azure Active Directory](../storage/common/storage-auth-aad-app.md)
 * Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mithilfe von [RBAC im Azure-Portal](../storage/common/storage-auth-aad-rbac-portal.md)
-* Delegieren des Zugriffs mithilfe einer [Shared Access Signature](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)
+* Delegieren des Zugriffs mithilfe einer [Shared Access Signature](/rest/api/storageservices/delegate-access-with-shared-access-signature)
 
 Das Beispiel im folgenden Screenshot verwendet den anonymen Lesezugriff für Blobs.
 
@@ -166,13 +166,13 @@ Sie müssen eine Anwendung, die bereits in einem Service Fabric-Cluster bereitge
 
 So löschen Sie eine Anwendung, die mithilfe des Anwendungsressourcenmodells in Resource Manager bereitgestellt wurde
 
-1. Rufen Sie mit dem Cmdlet [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) die Ressourcen-ID für die Anwendung ab:
+1. Rufen Sie mit dem Cmdlet [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) die Ressourcen-ID für die Anwendung ab:
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. Löschen Sie die Anwendungsressourcen mit dem Cmdlet [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0):
+1. Löschen Sie die Anwendungsressourcen mit dem Cmdlet [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0):
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]

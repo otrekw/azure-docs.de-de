@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7be1e90d10a84465d6416f2c13a6e4b6855077b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76713133"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250072"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Sichern von APIs über eine Clientzertifikatauthentifizierung in API Management
 
 API Management bietet die Möglichkeit, den Zugriff auf APIs (d.h. vom Client auf API Management) mithilfe von Clientzertifikaten zu sichern. Sie können eingehende Zertifikate überprüfen und die Zertifikateigenschaften mit den gewünschten Werten vergleichen, indem Sie Richtlinienausdrücke verwenden.
 
-Informationen zum Schützen des Zugriffs auf den Back-End-Dienst einer API mithilfe von Clientzertifikaten (von API Management auf das Back-End) finden Sie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates).
+Informationen zum Schützen des Zugriffs auf den Back-End-Dienst einer API mithilfe von Clientzertifikaten (von API Management auf das Back-End) finden Sie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](./api-management-howto-mutual-certificates.md).
 
 > [!IMPORTANT]
 > Um Clientzertifikate im Tarif „Entwickler“, „Basic“, „Standard“ oder „Premium“ über HTTP/2 empfangen und überprüfen zu können, müssen Sie wie unten gezeigt auf dem Blatt „Benutzerdefinierte Domänen“ die Einstellung „Clientzertifikat aushandeln“ aktivieren.
@@ -99,5 +99,5 @@ Das folgende Beispiel zeigt, wie Sie den Fingerabdruck eines Clientzertifikats a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
--   [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
--   [Hochladen von Zertifikaten](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung](./api-management-howto-mutual-certificates.md)
+-   [Hochladen von Zertifikaten](./api-management-howto-mutual-certificates.md)

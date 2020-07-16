@@ -3,12 +3,12 @@ title: 'Azure Service Fabric-Reverseproxy: sichere Kommunikation'
 description: Konfigurieren eines Reverseproxys für eine sichere End-to-End-Kommunikation in einer Azure Service Fabric-Anwendung.
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b01ce559b3c790164992d6618149afa9df069466
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858524"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256134"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Herstellen einer Verbindung mit einem sicheren Dienst mit dem Reverseproxy
 
@@ -20,7 +20,7 @@ In diesem Artikel wird erläutert, wie eine sichere Verbindung zwischen dem Reve
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Herstellung einer sicheren Verbindung zwischen dem Reverseproxy und Diensten 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Reverseproxy authentifiziert sich bei Diensten:
-Der Reverseproxy identifiziert sich bei Diensten selbst über sein Zertifikat. Für Azure-Cluster wird das Zertifikat mit der ***reverseProxyCertificate***-Eigenschaft im [Ressourcentypenabschnitt](../azure-resource-manager/templates/template-syntax.md) [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) der Resource Manager-Vorlage angegeben. Für eigenständige Cluster wird der Cluster entweder mit der ***ReverseProxyCertificate***- oder der ***ReverseProxyCertificateCommonNames***-Eigenschaft im Abschnitt **Security** der Datei „ClusterConfig.json“ angegeben. Weitere Informationen finden Sie unter [Aktivieren des Reverseproxys auf eigenständigen Clustern](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+Der Reverseproxy identifiziert sich bei Diensten selbst über sein Zertifikat. Für Azure-Cluster wird das Zertifikat mit der ***reverseProxyCertificate***-Eigenschaft im [Ressourcentypenabschnitt](../azure-resource-manager/templates/template-syntax.md) [**Microsoft.ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) der Resource Manager-Vorlage angegeben. Für eigenständige Cluster wird der Cluster entweder mit der ***ReverseProxyCertificate***- oder der ***ReverseProxyCertificateCommonNames***-Eigenschaft im Abschnitt **Security** der Datei „ClusterConfig.json“ angegeben. Weitere Informationen finden Sie unter [Aktivieren des Reverseproxys auf eigenständigen Clustern](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
 
 Die Dienste können die Logik implementieren, um das vom Reverseproxy bereitgestellte Zertifikat zu überprüfen. Die Dienste können die Details des akzeptierten Clientzertifikats als Konfigurationseinstellungen im Konfigurationspaket angeben. Dieses kann zur Laufzeit gelesen und zum Überprüfen des vom Reverseproxy bereitgestellten Zertifikats verwendet werden. Informationen zum Hinzufügen der Konfigurationseinstellungen finden Sie unter [Verwalten von Anwendungsparametern](service-fabric-manage-multiple-environment-app-configuration.md). 
 
@@ -189,5 +189,5 @@ Wenn der Client kein Zertifikat bereitstellt, leitet der Reverseproxy einen leer
 * Weitere Informationen finden Sie unter [Konfigurieren des Reverseproxys für die Verbindung mit sicheren Diensten](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services).
 * Ein Beispiel für die HTTP-Kommunikation zwischen Diensten finden Sie im [Beispielprojekt auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Remoteprozeduraufrufe mit Reliable Services-Remoting](service-fabric-reliable-services-communication-remoting.md)
-* [Web-API, die OWIN in Reliable Services verwendet](service-fabric-reliable-services-communication-webapi.md)
+* [Web-API, die OWIN in Reliable Services verwendet](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Verwalten von Clusterzertifikaten](service-fabric-cluster-security-update-certs-azure.md)

@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690030"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243153"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Datenmodellreferenz zu Azure API Management-Vorlagen
 In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Elemente beschrieben, die in den Datenmodellen für die Entwicklerportalvorlagen in Azure API Management verwendet werden.  
   
- Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](./api-management-developer-portal-templates.md).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -67,7 +67,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |`serviceUrl`|string|Absolute URL des Back-End-Diensts, der diese API implementiert.|  
 |`path`|string|Relative URL, die diese API und all ihre Ressourcenpfade in der Instanz des API Management-Diensts eindeutig identifiziert. Sie wird an die Basis-URL des API-Endpunkts angehängt, die während der Dienstinstanzerstellung angegeben wurde, um eine öffentliche URL für diese API zu erstellen.|  
 |`protocols`|Zahlenarray|Beschreibt, über welche Protokolle die Vorgänge in dieser API aufgerufen werden können. Zulässige Werte sind `1 - http` und `2 - https` oder beide.|  
-|`authenticationSettings`|[Authentifizierungseinstellungen für den Autorisierungsserver](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Die Sammlung von Authentifizierungseinstellungen, die in dieser API enthalten sind.|  
+|`authenticationSettings`|[Authentifizierungseinstellungen für den Autorisierungsserver](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Die Sammlung von Authentifizierungseinstellungen, die in dieser API enthalten sind.|  
 |`subscriptionKeyParameterNames`|Objekt (object)|Eine optionale Eigenschaft, mit der benutzerdefinierte Namen für Abfrage- und/oder Headerparameter angegeben werden können, in denen der Abonnementschlüssel enthalten ist. Wenn diese Eigenschaft vorhanden ist, muss sie mindestens eine der beiden folgenden Eigenschaften enthalten.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="api-summary"></a><a name="APISummary"></a> API-Zusammenfassung  

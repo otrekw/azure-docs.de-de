@@ -3,12 +3,12 @@ title: Verpacken einer Azure Service Fabric-App
 description: Erfahren Sie mehr über das Verpacken einer Azure Service Fabric-Anwendung und die Vorbereitung für die Bereitstellung in einem Cluster.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c00e46915c7bf147d224911ef4988d9fedd691c7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701046"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260961"
 ---
 # <a name="package-an-application"></a>Packen einer Anwendung
 
@@ -211,7 +211,7 @@ Bei dieser Option muss das Anwendungspaket nicht in den Imagespeicher kopiert we
 Die `sfpkg`-Datei ist eine ZIP-Datei, die das ursprüngliche Anwendungspaket enthält und die Erweiterung „.sfpkg“ aufweist.
 Das Anwendungspaket innerhalb der ZIP-Datei kann komprimiert oder unkomprimiert sein. Die Komprimierung des Anwendungspakets innerhalb der ZIP-Datei erfolgt wie [zuvor erwähnt](service-fabric-package-apps.md#compress-a-package) auf Code-, Konfigurations- und Datenpaketebene.
 
-Um eine `sfpkg` zu erstellen, beginnen Sie mit einem Ordner, der das ursprüngliche (komprimierte oder unkomprimierte) Anwendungspaket enthält. Verwenden Sie anschließend ein beliebiges Hilfsprogramm, um den Ordner mit der Erweiterung „.sfpkg“ zu zippen. Verwenden Sie z. B. [ZipFile.CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx).
+Um eine `sfpkg` zu erstellen, beginnen Sie mit einem Ordner, der das ursprüngliche (komprimierte oder unkomprimierte) Anwendungspaket enthält. Verwenden Sie anschließend ein beliebiges Hilfsprogramm, um den Ordner mit der Erweiterung „.sfpkg“ zu zippen. Verwenden Sie z. B. [ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory?view=netcore-3.1#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

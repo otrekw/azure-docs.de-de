@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229226"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256253"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisieren Ihres Clusters mit Service Fabric Explorer
 
@@ -132,7 +132,7 @@ Die folgenden Vorgänge sind möglich:
 * Auslösen und Nachverfolgen der Sicherung einer Partition.
 * Auslösen und Nachverfolgen der Wiederherstellung einer Partition.
 
-Weitere Informationen zum Sicherungs- und Wiederherstellungsdienst finden Sie in der [REST-API-Referenz](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore).
+Weitere Informationen zum Sicherungs- und Wiederherstellungsdienst finden Sie in der [REST-API-Referenz](/rest/api/servicefabric/sfclient-index-backuprestore).
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwalten von Service Fabric-Anwendungen in Visual Studio](service-fabric-manage-application-in-visual-studio.md)
 * [Service Fabric-Anwendungsbereitstellung per PowerShell](service-fabric-deploy-remove-applications.md)

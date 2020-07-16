@@ -4,12 +4,12 @@ description: Bewährte Methoden für die Datenserialisierung und ihre Auswirkung
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: 7dc60c28b56982f82c1ac90db55ac752977ea2d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d502e74139c543d4183a75faa6bea1948d9f3e56
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75457502"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247981"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Auswirkungen der Datenserialisierung auf Anwendungsupgrades
 Bei einem [parallelen Anwendungsupgrade](service-fabric-application-upgrade.md) wird das Upgrade auf eine Teilmenge von Knoten angewendet. Dabei werden die einzelnen Upgradedomänen nacheinander abgearbeitet. Während dieses Vorgangs weisen einige Upgradedomänen die neuere Version Ihrer Anwendung auf und andere Upgradedomänen die ältere Version Ihrer Anwendung. Während der Einführung muss die neue Version der Anwendung die alte Version Ihrer Daten sowie die alte Version der Anwendung die neue Version der Daten lesen können. Wenn das Datenformat nicht aufwärts- und abwärtskompatibel ist, kann das Upgrade nicht erfolgreich durchgeführt werden, oder es gehen möglicherweise sogar Daten verloren oder werden beschädigt. In diesem Artikel wird die Zusammensetzung des Datenformats erörtert und es werden bewährte Methoden zum Sicherstellen der Aufwärts- und Abwärtskompatibilität der Daten vorgestellt.
@@ -26,7 +26,7 @@ Da das Datenformat durch C#-Klassen bestimmt wird, ziehen Änderungen an den Kla
 * Ändern des Klassennamens oder Namespaces
 
 ### <a name="data-contract-as-the-default-serializer"></a>„Datenvertrag“ als Standardserialisierungsprogramm
-Das Serialisierungsprogramm liest im Allgemeinen die Daten und deserialisiert sie in die aktuelle Version, selbst wenn die Daten eine ältere oder *neuere* Version aufweisen. Das Standardserialisierungsprogramm ist der [Datenvertragsserialisierer](https://msdn.microsoft.com/library/ms733127.aspx), der klar definierte Versionsregeln aufweist. Mit Reliable Collections kann das Serialisierungsprogramm überschrieben werden, mit Reliable Actors derzeit jedoch nicht. Der Datenvertragsserialisierer spielt eine wichtige Rolle bei der Aktivierung von parallelen Upgrades. Der Datenvertragsserialisierer ist das für Service Fabric-Anwendungen empfohlene Serialisierungsprogramm.
+Das Serialisierungsprogramm liest im Allgemeinen die Daten und deserialisiert sie in die aktuelle Version, selbst wenn die Daten eine ältere oder *neuere* Version aufweisen. Das Standardserialisierungsprogramm ist der [Datenvertragsserialisierer](/dotnet/framework/wcf/feature-details/using-data-contracts), der klar definierte Versionsregeln aufweist. Mit Reliable Collections kann das Serialisierungsprogramm überschrieben werden, mit Reliable Actors derzeit jedoch nicht. Der Datenvertragsserialisierer spielt eine wichtige Rolle bei der Aktivierung von parallelen Upgrades. Der Datenvertragsserialisierer ist das für Service Fabric-Anwendungen empfohlene Serialisierungsprogramm.
 
 ## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Auswirkungen des Datenformats auf parallele Upgrades
 Während eines parallelen Upgrades gibt es zwei Hauptszenarios, bei denen das Serialisierungsprogramm auf eine ältere oder *neuere* Version Ihrer Daten treffen kann:
@@ -41,7 +41,7 @@ Während eines parallelen Upgrades gibt es zwei Hauptszenarios, bei denen das Se
 
 Die beiden Versionen des Codes und Datenformats müssen aufwärts- und abwärtskompatibel sein. Wenn sie nicht kompatibel sind, kann das parallele Upgrade fehlschlagen, oder es gehen möglicherweise Daten verloren. Das parallele Upgrade kann fehlschlagen, weil der Code oder das Serialisierungsprogramm Ausnahmen oder Fehler ausgibt, wenn er oder es auf die andere Version stößt. Daten können verloren gehen, wenn beispielsweise eine neue Eigenschaft hinzugefügt wurde, das alte Serialisierungsprogramm sie jedoch während der Deserialisierung verwirft.
 
-Datenverträge sind die empfohlene Lösung zum Sicherstellen der Kompatibilität Ihrer Daten. Sie verfügen über klar definierte Versionsregeln zum Hinzufügen, Entfernen und Ändern von Feldern. Sie unterstützen außerdem die Behandlung von unbekannten Feldern, die Hookfunktion für den Serialisierungs- und Deserialisierungsvorgang und den Umgang mit der Klassenvererbung. Weitere Informationen finden Sie unter [Verwenden von Datenverträgen](https://msdn.microsoft.com/library/ms733127.aspx).
+Datenverträge sind die empfohlene Lösung zum Sicherstellen der Kompatibilität Ihrer Daten. Sie verfügen über klar definierte Versionsregeln zum Hinzufügen, Entfernen und Ändern von Feldern. Sie unterstützen außerdem die Behandlung von unbekannten Feldern, die Hookfunktion für den Serialisierungs- und Deserialisierungsvorgang und den Umgang mit der Klassenvererbung. Weitere Informationen finden Sie unter [Verwenden von Datenverträgen](/dotnet/framework/wcf/feature-details/using-data-contracts).
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Ihre Anwendung mit Visual Studio upgraden](service-fabric-application-upgrade-tutorial.md) beschreibt das Upgraden von Anwendungen mit Visual Studio.
@@ -53,4 +53,3 @@ Steuern Sie die Upgrades von Anwendungen mithilfe von [Upgradeparametern](servic
 Erfahren Sie, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen, indem Sie sich mit den [weiterführenden Themen](service-fabric-application-upgrade-advanced.md)beschäftigen.
 
 Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).
-

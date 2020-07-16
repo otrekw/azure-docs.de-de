@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b17befcd86cd56eb5eb385ddc5196cbfce73003c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75639665"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260420"
 ---
 # <a name="actor-events"></a>Actor-Ereignisse
 Actor-Ereignisse bieten eine Möglichkeit zum Senden von Best-Effort-Nachrichten vom Actor an die Clients. Actor-Ereignisse dienen der Actor-Client-Kommunikation und sollten nicht für die Kommunikation zwischen Actors verwendet werden.
@@ -102,7 +102,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ## <a name="next-steps"></a>Nächste Schritte
 * [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
 * [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
-* [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Actor-API-Referenzdokumentation](/previous-versions/azure/dn971626(v=azure.100))
 * [C#-Beispielcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C#-Beispielcode für .NET Core](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
 * [Java-Beispielcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5a5ffdf217483c60836f67213c20ff3afd9043d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43b6f5d4367cfc641183a17fda89cf1381c22a6c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82608914"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258602"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -28,7 +28,7 @@ ms.locfileid: "82608914"
 > Patch Orchestration Application Version 1.2.* wird seit dem 30. April 2019 nicht mehr unterstützt. Führen Sie daher ein Upgrade auf die aktuelle Version durch.
 
 > [!NOTE]
-> Das Durchführen [automatischer Upgrades von Betriebssystemimages in der VM-Skalierungsgruppe](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) ist die bewährte Methode, um das Betriebssystem in Azure gepatcht zu halten. Für automatische Betriebssystemupgrades, die auf VM-Skalierungsgruppen basieren, ist für eine Skalierungsgruppe mindestens die Dauerhaftigkeitsstufe „Silver“ (Silber) erforderlich.
+> Das Durchführen [automatischer Upgrades von Betriebssystemimages in der VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) ist die bewährte Methode, um das Betriebssystem in Azure gepatcht zu halten. Für automatische Betriebssystemupgrades, die auf VM-Skalierungsgruppen basieren, ist für eine Skalierungsgruppe mindestens die Dauerhaftigkeitsstufe „Silver“ (Silber) erforderlich.
 >
 
  Patch Orchestration Application (POA) ist ein Wrapper für den Repair Manager-Dienst von Azure Service Fabric, der die konfigurationsbasierte Planung von Betriebssystempatches für nicht in Azure gehostete Cluster ermöglicht. POA ist für nicht in Azure gehostete Cluster nicht erforderlich, aber die Planung von Patchinstallationen durch Updatedomänen ist erforderlich, um die Service Fabric-Clusterhosts ohne Ausfallzeiten zu patchen.
@@ -82,9 +82,9 @@ Sie können Repair Manager beim Einrichten des Clusters über das Azure-Portal a
 ![Abbildung zur Aktivierung von Repair Manager über das Azure-Portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="the-azure-resource-manager-deployment-model"></a>Azure Resource Manager-Bereitstellungsmodell
-Alternativ können Sie den Repair Manager-Dienst für neue und vorhandene Service Fabric-Cluster über das [Azure Resource Manager-Bereitstellungsmodell](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) aktivieren. Rufen Sie die Vorlage für den Cluster ab, den Sie bereitstellen möchten. Sie können entweder die Beispielvorlagen verwenden oder eine benutzerdefinierte Vorlage für das Azure Resource Manager-Bereitstellungsmodell erstellen. 
+Alternativ können Sie den Repair Manager-Dienst für neue und vorhandene Service Fabric-Cluster über das [Azure Resource Manager-Bereitstellungsmodell](./service-fabric-cluster-creation-via-arm.md) aktivieren. Rufen Sie die Vorlage für den Cluster ab, den Sie bereitstellen möchten. Sie können entweder die Beispielvorlagen verwenden oder eine benutzerdefinierte Vorlage für das Azure Resource Manager-Bereitstellungsmodell erstellen. 
 
-Gehen Sie zum Aktivieren des Repair Manager-Diensts mithilfe einer [Vorlage für das Azure Resource Manager-Bereitstellungsmodell](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) wie folgt vor:
+Gehen Sie zum Aktivieren des Repair Manager-Diensts mithilfe einer [Vorlage für das Azure Resource Manager-Bereitstellungsmodell](./service-fabric-cluster-creation-via-arm.md) wie folgt vor:
 
 1. Überprüfen Sie, ob `apiVersion` für die Ressource *Microsoft.ServiceFabric/clusters* auf *2017-07-01-preview* festgelegt ist. Wenn dies nicht der Fall ist, müssen Sie `apiVersion` auf *2017-07-01-preview* oder höher aktualisieren:
 
@@ -113,11 +113,11 @@ Gehen Sie zum Aktivieren des Repair Manager-Diensts mithilfe einer [Vorlage für
 
 ### <a name="standalone-on-premises-clusters"></a>Eigenständige lokale Cluster
 
-Sie können den Repair Manager-Dienst für einen neuen oder vorhandenen Service Fabric-Cluster über die [Konfigurationseinstellungen für eigenständige Windows-Cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest) aktivieren.
+Sie können den Repair Manager-Dienst für einen neuen oder vorhandenen Service Fabric-Cluster über die [Konfigurationseinstellungen für eigenständige Windows-Cluster](./service-fabric-cluster-manifest.md) aktivieren.
 
 So aktivieren Sie den Repair Manager-Dienst
 
-1. Überprüfen Sie, ob `apiVersion` in den [allgemeinen Clusterkonfigurationen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) wie im Folgenden gezeigt auf *04-2017* oder höher festgelegt ist:
+1. Überprüfen Sie, ob `apiVersion` in den [allgemeinen Clusterkonfigurationen](./service-fabric-cluster-manifest.md#general-cluster-configurations) wie im Folgenden gezeigt auf *04-2017* oder höher festgelegt ist:
 
     ```json
     {
@@ -139,7 +139,7 @@ So aktivieren Sie den Repair Manager-Dienst
     ],
     ```
 
-1. Aktualisieren Sie das Clustermanifest mit diesen Änderungen, und verwenden Sie dabei das aktualisierte Clustermanifest zum [Erstellen eines neuen Clusters](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) oder zum [Aktualisieren der Clusterkonfiguration](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server). 
+1. Aktualisieren Sie das Clustermanifest mit diesen Änderungen, und verwenden Sie dabei das aktualisierte Clustermanifest zum [Erstellen eines neuen Clusters](./service-fabric-cluster-creation-for-windows-server.md) oder zum [Aktualisieren der Clusterkonfiguration](./service-fabric-cluster-upgrade-windows-server.md). 
 
    Nachdem der Cluster mit einem aktualisierten Clustermanifest ausgeführt wurde, können Sie sehen, dass der Repair Manager-Dienst im Cluster ausgeführt wird. Der Name im Abschnitt für Systemdienste im Service Fabric Explorer lautet *fabric:/System/RepairManagerService*.
 
@@ -160,7 +160,7 @@ Sie können das POA-Verhalten entsprechend Ihren Anforderungen konfigurieren. Ü
 |MaxResultsToCache    |Long                              | Die maximale Anzahl von Windows Update-Ergebnissen, die zwischengespeichert werden sollen. <br><br>Der Standardwert ist 3.000, wobei Folgendes angenommen wird: <br> &nbsp;&nbsp;- Es sind 20 Knoten vorhanden. <br> &nbsp;&nbsp;- Jeden Monat können 5 Updates für einen Knoten durchgeführt werden. <br> &nbsp;&nbsp;- Pro Vorgang können 10 Ergebnisse vorliegen. <br> &nbsp;&nbsp;- Es sollen die Ergebnisse für die letzten drei Monate gespeichert werden. |
 |TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy gibt die Richtlinie an, die vom Koordinatordienst zum Installieren von Windows-Updates auf den Service Fabric-Clusterknoten verwendet werden soll.<br><br>Zulässige Werte sind: <br>*NodeWise:* Windows-Updates werden immer nur auf jeweils einem Knoten installiert. <br> *UpgradeDomainWise:* Windows-Updates werden immer nur in jeweils einer Updatedomäne installiert. (Allenfalls kann ein Windows-Update für alle Knoten in einer Updatedomäne verwendet werden.)<br><br> Informationen dazu, welche Richtlinie für Ihren Cluster am besten geeignet ist, finden Sie im Abschnitt [Häufig gestellte Fragen](#frequently-asked-questions).
 |LogsDiskQuotaInMB   |Long  <br> (Standard: *1024*)               | Die maximale Größe der Patch Orchestration Application-Protokolle in MB, die lokal auf jedem Knoten beibehalten werden können.
-| WUQuery               | Zeichenfolge<br>(Standard: *IsInstalled=0*)                | Abfrage zum Abrufen von Windows-Updates. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
+| WUQuery               | Zeichenfolge<br>(Standard: *IsInstalled=0*)                | Abfrage zum Abrufen von Windows-Updates. Weitere Informationen finden Sie unter [WuQuery](/windows/win32/api/wuapi/nf-wuapi-iupdatesearcher-search).
 | InstallWindowsOSOnlyUpdates | *Boolescher Wert* <br> (Standard: false)                 | Verwenden Sie dieses Flag, um zu steuern, welche Updates heruntergeladen und installiert werden sollen. Folgende Werte sind zulässig. <br>TRUE: installiert nur Updates des Windows-Betriebssystems.<br>FALSE: installiert alle verfügbaren Updates auf dem Computer.          |
 | WUOperationTimeOutInMinutes | Int <br>(Standard: *90*)                   | Gibt den Timeoutwert für jeden Windows Update-Vorgang an (Suchen/Herunterladen/Installieren). Wenn der Vorgang nicht innerhalb des angegebenen Timeoutzeitraums abgeschlossen ist, wird er abgebrochen.       |
 | WURescheduleCount     | Int <br> (Standard: *5*)                  | Gibt an, wie oft der Dienst das Windows-Update maximal erneut plant, falls bei dem Vorgang wiederholt ein Fehler auftritt.          |
@@ -174,7 +174,7 @@ Sie können das POA-Verhalten entsprechend Ihren Anforderungen konfigurieren. Ü
 ## <a name="deploy-poa"></a>Bereitstellen von POA
 
 1. Führen Sie alle erforderlichen Schritte zur Vorbereitung des Clusters aus.
-1. Stellen Sie POA wie jede andere Service Fabric-Anwendung bereit. Informationen zum Bereitstellen von POA über PowerShell finden Sie unter [Bereitstellen und Entfernen von Anwendungen mit PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
+1. Stellen Sie POA wie jede andere Service Fabric-Anwendung bereit. Informationen zum Bereitstellen von POA über PowerShell finden Sie unter [Bereitstellen und Entfernen von Anwendungen mit PowerShell](./service-fabric-deploy-remove-applications.md).
 1. Übergeben Sie zum Konfigurieren der Anwendung zum Zeitpunkt der Bereitstellung `ApplicationParameter` an das `New-ServiceFabricApplication`-Cmdlet. Zur Vereinfachung wurde das Skript „Deploy.ps1“ zusammen mit der Anwendung bereitgestellt. So verwenden Sie das Skript
 
     - Stellen Sie mit `Connect-ServiceFabricCluster` eine Verbindung mit einem Service Fabric-Cluster her.
@@ -185,11 +185,11 @@ Sie können das POA-Verhalten entsprechend Ihren Anforderungen konfigurieren. Ü
 
 ## <a name="upgrade-poa"></a>Aktualisieren von POA
 
-Um die POA-Version mithilfe von PowerShell zu aktualisieren, befolgen Sie die Anweisungen unter [Service Fabric-Anwendungsupgrade mithilfe von PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell).
+Um die POA-Version mithilfe von PowerShell zu aktualisieren, befolgen Sie die Anweisungen unter [Service Fabric-Anwendungsupgrade mithilfe von PowerShell](./service-fabric-application-upgrade-tutorial-powershell.md).
 
 ## <a name="remove-poa"></a>Entfernen von POA
 
-Befolgen Sie die Anweisungen unter [Bereitstellen und Entfernen von Anwendungen mit PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications), um die Anwendung zu entfernen.
+Befolgen Sie die Anweisungen unter [Bereitstellen und Entfernen von Anwendungen mit PowerShell](./service-fabric-deploy-remove-applications.md), um die Anwendung zu entfernen.
 
 Zur Vereinfachung wird das Skript „Undeploy.ps1“ zusammen mit der Anwendung bereitgestellt. So verwenden Sie das Skript
 
@@ -240,7 +240,7 @@ Feld | Werte | Details
 OperationResult | 0: Erfolgreich<br> 1: Erfolgreich mit Fehlern<br> 2: Fehlgeschlagen<br> 3 : Abgebrochen<br> 4: Abgebrochen mit Timeout | Gibt das Ergebnis des Gesamtvorgangs an, der normalerweise die Installation eines oder mehrerer Updates beinhaltet.
 ResultCode | Das Gleiche wie bei OperationResult | Dieses Feld gibt das Ergebnis des Installationsvorgangs für ein einzelnes Update an.
 OperationType | 1: Installation<br> 0: Suchen und Herunterladen| „Installation“ ist der einzige Wert für OperationType, der standardmäßig in den Ergebnissen angezeigt wird.
-WindowsUpdateQuery | Der Standardwert ist „IsInstalled=0“. | Die Windows Update-Abfrage, die für die Suche nach Updates verwendet wurde. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
+WindowsUpdateQuery | Der Standardwert ist „IsInstalled=0“. | Die Windows Update-Abfrage, die für die Suche nach Updates verwendet wurde. Weitere Informationen finden Sie unter [WuQuery](/windows/win32/api/wuapi/nf-wuapi-iupdatesearcher-search).
 RebootRequired | TRUE: Neustart war erforderlich<br> FALSE: Neustart war nicht erforderlich | Gibt an, ob ein Neustart erforderlich war, um die Installation von Updates abzuschließen.
 OperationStartTime | Datetime | Gibt den Zeitpunkt an, zu dem der Vorgang (Herunterladen/Installation) gestartet wurde.
 OperationTime | Datetime | Gibt den Zeitpunkt an, zu dem der Vorgang (Herunterladen/Installation) abgeschlossen wurde.
@@ -258,7 +258,7 @@ Wenn der Reverseproxy im Cluster aktiviert ist, können Sie auch von außerhalb 
 
 Sie müssen folgenden Endpunkt aufrufen: *http://&lt;SERVER-URL&gt;:&lt;REVERSEPROXYPORT&gt;/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*.
 
-Befolgen Sie zum Aktivieren des Reverseproxys im Cluster die Anweisungen unter [Reverseproxy in Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy). 
+Befolgen Sie zum Aktivieren des Reverseproxys im Cluster die Anweisungen unter [Reverseproxy in Azure Service Fabric](./service-fabric-reverseproxy.md). 
 
 > 
 > [!WARNING]
@@ -271,17 +271,17 @@ In diesem Abschnitt wird erläutert, wie das Debuggen oder die Diagnose von Prob
 > [!NOTE]
 > Um viele der folgenden angegebenen Verbesserungen zur Selbstdiagnose nutzen zu können, muss POA Version 1.4.0 oder höher installiert sein.
 
-Der Knoten-Agent-NT-Dienst erstellt [Reparaturtasks](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet) zum Installieren von Updates auf den Knoten. Jeder Task wird dann im Koordinatordienst anhand der Richtlinie zur Taskgenehmigung vorbereitet. Die vorbereiteten Tasks werden schließlich in Repair Manager genehmigt. In diesem Dienst wird kein Task genehmigt, wenn der Cluster sich in einem fehlerhaften Zustand befindet. 
+Der Knoten-Agent-NT-Dienst erstellt [Reparaturtasks](/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet) zum Installieren von Updates auf den Knoten. Jeder Task wird dann im Koordinatordienst anhand der Richtlinie zur Taskgenehmigung vorbereitet. Die vorbereiteten Tasks werden schließlich in Repair Manager genehmigt. In diesem Dienst wird kein Task genehmigt, wenn der Cluster sich in einem fehlerhaften Zustand befindet. 
 
 Sie erfahren nun Schritt für Schritt, wie Updates auf einem Knoten durchgeführt werden:
 
 1. Der auf jedem Knoten ausgeführte NodeAgentNTService sucht zum geplanten Zeitpunkt nach verfügbaren Windows-Updates. Wenn Updates verfügbar sind, werden sie auf den Knoten heruntergeladen.
 
-1. Nachdem die Updates heruntergeladen wurden, erstellt der Knoten-Agent-NT-Dienst einen entsprechenden Reparaturtask für den Knoten mit dem Namen *POS___\<unique_id>* . Sie können diese Reparaturtasks mithilfe des Cmdlets [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) oder mithilfe von SFX im Detailbereich des Knotens anzeigen. Nach dem Erstellen des Reparaturtasks wechselt dieser schnell in den [Status *Claimed*](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
+1. Nachdem die Updates heruntergeladen wurden, erstellt der Knoten-Agent-NT-Dienst einen entsprechenden Reparaturtask für den Knoten mit dem Namen *POS___\<unique_id>* . Sie können diese Reparaturtasks mithilfe des Cmdlets [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) oder mithilfe von SFX im Detailbereich des Knotens anzeigen. Nach dem Erstellen des Reparaturtasks wechselt dieser schnell in den [Status *Claimed*](/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
 
 1. Der Koordinatordienst sucht in regelmäßigen Abständen nach Reparaturtasks mit dem Status *Claimed* und aktualisiert sie basierend auf TaskApprovalPolicy in den Status *Preparing*. Wenn TaskApprovalPolicy als NodeWise konfiguriert ist, wird ein Reparaturtask, der einem Knoten entspricht, nur dann vorbereitet, wenn sich derzeit kein anderer Reparaturtask im Status *Preparing*, *Approved*, *Executing* oder *Restoring* befindet. 
 
-   Ebenso sind, wenn TaskApprovalPolicy als UpgradeWise konfiguriert ist, Tasks mit den vorherigen Statuswerten nur für Knoten vorhanden, die zu derselben Updatedomäne gehören. Nachdem ein Reparaturtask in den Status *Preparing* versetzt wurde, wird der entsprechende Service Fabric-Knoten [deaktiviert](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) (Status „Disabled“) und die Absicht auf *Restart* festgelegt.
+   Ebenso sind, wenn TaskApprovalPolicy als UpgradeWise konfiguriert ist, Tasks mit den vorherigen Statuswerten nur für Knoten vorhanden, die zu derselben Updatedomäne gehören. Nachdem ein Reparaturtask in den Status *Preparing* versetzt wurde, wird der entsprechende Service Fabric-Knoten [deaktiviert](/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) (Status „Disabled“) und die Absicht auf *Restart* festgelegt.
 
    POA Version 1.4.0 und höher sendet Ereignisse mit der ClusterPatchingStatus-Eigenschaft an den Koordinatordienst, um die Knoten anzuzeigen, die gepatcht werden. Die Updates werden wie in der folgenden Abbildung gezeigt auf „_poanode_0“ installiert:
 
@@ -300,7 +300,7 @@ Sie erfahren nun Schritt für Schritt, wie Updates auf einem Knoten durchgeführ
 
    [![Abbildung des Status des Windows Update-Vorgangs](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
-   Sie können die Details auch mithilfe von PowerShell ermitteln. Stellen Sie dazu eine Verbindung mit dem Cluster her, und rufen Sie den Status des Reparaturtasks mithilfe von [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) ab. 
+   Sie können die Details auch mithilfe von PowerShell ermitteln. Stellen Sie dazu eine Verbindung mit dem Cluster her, und rufen Sie den Status des Reparaturtasks mithilfe von [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) ab. 
    
    Im folgenden Beispiel befindet sich der Task „POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15“ im Status *DownloadComplete*. Das bedeutet, dass Updates auf den Knoten *poanode_2* heruntergeladen wurden und versucht wird, sie zu installieren, wenn der Task in den Status *Executing* gesetzt ist.
 
@@ -334,7 +334,7 @@ Sie erfahren nun Schritt für Schritt, wie Updates auf einem Knoten durchgeführ
 
 Patch Orchestration Application-Protokolle werden innerhalb der Service Fabric-Laufzeitprotokolle erfasst.
 
-Sie können Protokolle mit einem Diagnosetool oder einer Diagnosepipeline Ihrer Wahl erfassen. In POA werden die folgenden festen Anbieter-IDs verwendet, um Ereignisse über die [Ereignisquelle](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1) zu protokollieren:
+Sie können Protokolle mit einem Diagnosetool oder einer Diagnosepipeline Ihrer Wahl erfassen. In POA werden die folgenden festen Anbieter-IDs verwendet, um Ereignisse über die [Ereignisquelle](/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1) zu protokollieren:
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
@@ -379,7 +379,7 @@ A: POA installiert keine Updates, solange der Cluster sich in einem fehlerhaften
 
 **F: Soll ich TaskApprovalPolicy für meinen Cluster auf „NodeWise“ oder „UpgradeDomainWise“ festlegen?**
 
-A: Die Einstellung „UpgradeDomainWise“ beschleunigt die gesamte Clusterreparatur, weil alle Knoten einer Updatedomäne gleichzeitig gepatcht werden. Während des Vorgangs sind Knoten, die zu einer vollständigen Updatedomäne gehören, nicht verfügbar ([Status *Disabled*](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)).
+A: Die Einstellung „UpgradeDomainWise“ beschleunigt die gesamte Clusterreparatur, weil alle Knoten einer Updatedomäne gleichzeitig gepatcht werden. Während des Vorgangs sind Knoten, die zu einer vollständigen Updatedomäne gehören, nicht verfügbar ([Status *Disabled*](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)).
 
 Im Gegensatz dazu wird mit der Einstellung „NodeWise“ nur jeweils ein Knoten gepatcht, d. h., dass das gesamte Patchen des Clusters mehr Zeit in Anspruch nimmt. Jedoch ist während des Patchvorgangs nur maximal ein Knoten nicht verfügbar (Status *Disabled*).
 
@@ -405,9 +405,9 @@ A: Die zum Patchen eines kompletten Clusters benötigte Zeit hängt von folgende
     - Bei „NodeWise“: ca. 20 Stunden
     - Bei „UpgradeDomainWise“: ca. 5 Stunden
 
-- Der Clusterlast: Bei jedem Patchvorgang muss die Kundenworkload auf andere verfügbare Knoten im Cluster verschoben werden. Knoten, die gerade gepatcht werden, haben während dieser Zeit den [Status *Disabling*](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling). Wenn der Cluster in der Nähe der Spitzenlast ausgeführt wird, dauert die Deaktivierung länger. Daher scheint der gesamte Patchprozess unter solchen Belastungsbedingungen langsam zu sein.
+- Der Clusterlast: Bei jedem Patchvorgang muss die Kundenworkload auf andere verfügbare Knoten im Cluster verschoben werden. Knoten, die gerade gepatcht werden, haben während dieser Zeit den [Status *Disabling*](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling). Wenn der Cluster in der Nähe der Spitzenlast ausgeführt wird, dauert die Deaktivierung länger. Daher scheint der gesamte Patchprozess unter solchen Belastungsbedingungen langsam zu sein.
 
-- Clusterintegritätsfehlern während des Patchens: Der Patchprozess wird durch jede [Beeinträchtigung](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) der [Integrität des Clusters](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction) unterbrochen. Durch dieses Problem erhöht sich die zum Patchen des gesamten Clusters erforderliche Zeit.
+- Clusterintegritätsfehlern während des Patchens: Der Patchprozess wird durch jede [Beeinträchtigung](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) der [Integrität des Clusters](./service-fabric-health-introduction.md) unterbrochen. Durch dieses Problem erhöht sich die zum Patchen des gesamten Clusters erforderliche Zeit.
 
 **F: Warum werden in den über REST-APIs abgerufenen Windows Update-Ergebnissen Updates angezeigt, nicht aber im Windows Update-Verlauf auf dem Computer?**
 
@@ -415,11 +415,11 @@ A: Einige Produktupdates werden nur im jeweiligen Update- oder Patchverlauf ange
 
 **F: Kann POA für das Patchen des Entwicklungsclusters (Einzelknotencluster) verwendet werden?**
 
-A: Nein, POA kann nicht für das Patchen eines Einzelknotenclusters verwendet werden. Diese Einschränkung ist entwurfsbedingt, da es zu Ausfallzeiten bei [Service Fabric-Systemdiensten](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) oder anderen Kunden-Apps kommen kann. Daher würden Reparaturtasks für einen Patch nie in Repair Manager genehmigt werden.
+A: Nein, POA kann nicht für das Patchen eines Einzelknotenclusters verwendet werden. Diese Einschränkung ist entwurfsbedingt, da es zu Ausfallzeiten bei [Service Fabric-Systemdiensten](./service-fabric-technical-overview.md#system-services) oder anderen Kunden-Apps kommen kann. Daher würden Reparaturtasks für einen Patch nie in Repair Manager genehmigt werden.
 
 **F: Wie patche ich Clusterknoten unter Linux?**
 
-A: Informationen zum Orchestrieren von Updates unter Linux finden Sie unter [Automatische Upgrades von Betriebssystemimages mit Azure-VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade).
+A: Informationen zum Orchestrieren von Updates unter Linux finden Sie unter [Automatische Upgrades von Betriebssystemimages mit Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md).
 
 **F: Warum dauert der Updatezyklus so lange?**
 

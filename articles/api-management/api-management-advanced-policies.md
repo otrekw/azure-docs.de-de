@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 5b17b7784691cdf38c45e4f306b2ed14b981a2d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3843ff986fdc37c37690bee9616861f16a334c67
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751259"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243731"
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 
@@ -38,7 +38,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 -   [Anforderungsmethode festlegen](#SetRequestMethod) – dient der Vornahme von Änderungen der HTTP-Anforderungsmethode.
 -   [Statuscode festlegen](#SetStatus) – Ändert den HTTP-Statuscode in den angegebenen Wert.
 -   [Variable festlegen](api-management-advanced-policies.md#set-variable) – Speichert einen Wert in einer benannten [Kontext](api-management-policy-expressions.md#ContextVariables)variablen, um später darauf zugreifen zu können.
--   [Ablaufverfolgung](#Trace) – Hinzufügen von benutzerdefinierten Ablaufverfolgungen zur [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ausgabe, zu Application Insights-Telemetrien und Ressourcenprotokollen.
+-   [Ablaufverfolgung](#Trace) – Hinzufügen von benutzerdefinierten Ablaufverfolgungen zur [API-Inspektor](./api-management-howto-api-inspector.md)-Ausgabe, zu Application Insights-Telemetrien und Ressourcenprotokollen.
 -   [Warten](#Wait) – wartet darauf, dass eingeschlossene Richtlinien für [Send request](api-management-advanced-policies.md#SendRequest) (Sendeanforderung), [Get value from cache](api-management-caching-policies.md#GetFromCacheByKey) (Wert aus dem Cache abrufen) oder [Control flow](api-management-advanced-policies.md#choose) (Ablaufsteuerung) abgeschlossen werden, bevor der Vorgang fortgesetzt wird.
 
 ## <a name="control-flow"></a><a name="choose"></a> Ablaufsteuerung
@@ -140,7 +140,7 @@ In diesem Beispiel wird gezeigt, wie Inhalte gefiltert werden, indem Datenelemen
 
 ### <a name="usage"></a><a name="ChooseUsage"></a> Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -148,7 +148,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 ## <a name="forward-request"></a><a name="ForwardRequest"></a> Anforderung weiterleiten
 
-Mit der `forward-request`-Richtlinie wird die eingehende Anforderung an den Back-End-Dienst weitergeleitet, der im Anforderungs[kontext](api-management-policy-expressions.md#ContextVariables) angegeben ist. Die Back-End-Dienst-URL ist in den API-[Einstellungen](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) angegeben und kann mit der Richtlinie [Back-End-Dienst festlegen](api-management-transformation-policies.md) geändert werden.
+Mit der `forward-request`-Richtlinie wird die eingehende Anforderung an den Back-End-Dienst weitergeleitet, der im Anforderungs[kontext](api-management-policy-expressions.md#ContextVariables) angegeben ist. Die Back-End-Dienst-URL ist in den API-[Einstellungen](./import-and-publish.md) angegeben und kann mit der Richtlinie [Back-End-Dienst festlegen](api-management-transformation-policies.md) geändert werden.
 
 > [!NOTE]
 > Das Entfernen dieser Richtlinie führt dazu, dass die Anforderung nicht an den Back-End-Dienst weitergeleitet wird und dass die Richtlinien im Abschnitt für ausgehenden Datenverkehr sofort ausgewertet werden, nachdem die Richtlinien im Abschnitt für den eingehenden Datenverkehr erfolgreich abgeschlossen wurden.
@@ -259,7 +259,7 @@ Bei dieser Richtlinie auf Vorgangsebene werden Anforderungen nicht an den Back-E
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** backend
 -   **Richtlinienbereiche:** alle Bereiche
@@ -309,7 +309,7 @@ Das folgende Beispiel veranschaulicht das Beschränken der Anzahl der Anforderun
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -320,7 +320,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 Mit der `log-to-eventhub`-Richtlinie werden Nachrichten im angegebenen Format an ein von einem Protokollierungstool definiertes Nachrichtenziel gesendet. Wie anhand des Namens bereits erkennbar ist, wird diese Richtlinie zum Speichern von ausgewählten Anforderungs- oder Antwortkontextinformationen für die Online- oder Offlineanalyse verwendet.
 
 > [!NOTE]
-> Eine Schritt-für-Schritt-Anleitung für die Konfiguration eines Event Hub und von Protokollierungsereignissen finden Sie unter [Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/).
+> Eine Schritt-für-Schritt-Anleitung für die Konfiguration eines Event Hub und von Protokollierungsereignissen finden Sie unter [Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management](./api-management-howto-log-event-hubs.md).
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
@@ -363,7 +363,7 @@ Eine beliebige Zeichenfolge kann als Wert für die Protokollierung in Event Hubs
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -407,7 +407,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, on-error
 
@@ -475,7 +475,7 @@ Im folgenden Beispiel wird mit einem exponentiellen Wiederholungsalgorithmus bis
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden. Beachten Sie, dass Nutzungseinschränkungen von untergeordneten Richtlinien von dieser Richtlinie geerbt werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden. Beachten Sie, dass Nutzungseinschränkungen von untergeordneten Richtlinien von dieser Richtlinie geerbt werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -525,7 +525,7 @@ Mit der `return-response`-Richtlinie wird die Pipelineausführung abgebrochen un
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -550,7 +550,7 @@ Die `send-one-way-request`-Richtlinie sendet die bereitgestellte Anforderung an 
 
 ### <a name="example"></a>Beispiel
 
-Diese Beispielrichtlinie zeigt ein Beispiel für die Verwendung der `send-one-way-request`-Richtlinie zum Senden einer Nachricht an einen Slack-Chatraum, wenn der HTTP-Antwortcode größer als oder gleich 500 ist. Weitere Informationen zu diesem Beispiel finden Sie unter [Verwenden externer Dienste über den Azure API Management-Dienst](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
+Diese Beispielrichtlinie zeigt ein Beispiel für die Verwendung der `send-one-way-request`-Richtlinie zum Senden einer Nachricht an einen Slack-Chatraum, wenn der HTTP-Antwortcode größer als oder gleich 500 ist. Weitere Informationen zu diesem Beispiel finden Sie unter [Verwenden externer Dienste über den Azure API Management-Dienst](./api-management-sample-send-request.md).
 
 ```xml
 <choose>
@@ -599,7 +599,7 @@ Diese Beispielrichtlinie zeigt ein Beispiel für die Verwendung der `send-one-wa
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -625,7 +625,7 @@ Die `send-request`-Richtlinie sendet die bereitgestellte Anforderung an die ange
 
 ### <a name="example"></a>Beispiel
 
-In diesem Beispiel ist eine Möglichkeit dargestellt, wie Sie ein Verweistoken mit einem Autorisierungsserver überprüfen können. Weitere Informationen zu diesem Beispiel finden Sie unter [Verwenden externer Dienste über den Azure API Management-Dienst](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
+In diesem Beispiel ist eine Möglichkeit dargestellt, wie Sie ein Verweistoken mit einem Autorisierungsserver überprüfen können. Weitere Informationen zu diesem Beispiel finden Sie unter [Verwenden externer Dienste über den Azure API Management-Dienst](./api-management-sample-send-request.md).
 
 ```xml
 <inbound>
@@ -686,7 +686,7 @@ In diesem Beispiel ist eine Möglichkeit dargestellt, wie Sie ein Verweistoken m
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -728,7 +728,7 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
 
@@ -747,7 +747,7 @@ Mit der `set-method`-Richtlinie können Sie die HTTP-Anforderungsmethode für ei
 
 ### <a name="example"></a>Beispiel
 
-Diese Beispielrichtlinie, in der die `set-method`-Richtlinie verwendet wird, veranschaulicht ein Beispiel zum Senden einer Nachricht an einen Slack-Chatraum, wenn der HTTP-Antwortcode größer als oder gleich 500 ist. Weitere Informationen zu diesem Beispiel finden Sie unter [Verwenden externer Dienste über den Azure API Management-Dienst](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
+Diese Beispielrichtlinie, in der die `set-method`-Richtlinie verwendet wird, veranschaulicht ein Beispiel zum Senden einer Nachricht an einen Slack-Chatraum, wenn der HTTP-Antwortcode größer als oder gleich 500 ist. Weitere Informationen zu diesem Beispiel finden Sie unter [Verwenden externer Dienste über den Azure API Management-Dienst](./api-management-sample-send-request.md).
 
 ```xml
 <choose>
@@ -783,7 +783,7 @@ Diese Beispielrichtlinie, in der die `set-method`-Richtlinie verwendet wird, ver
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, on-error
 
@@ -802,7 +802,7 @@ Mit der `set-status`-Richtlinie wird der HTTP-Statuscode auf den angegebenen Wer
 
 ### <a name="example"></a>Beispiel
 
-Dieses Beispiel zeigt, wie Sie eine 401-Antwort zurückgeben, wenn das Autorisierungstoken ungültig ist. Weitere Informationen finden Sie unter [Verwenden externer Dienste über den Azure API Management-Dienst](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
+Dieses Beispiel zeigt, wie Sie eine 401-Antwort zurückgeben, wenn das Autorisierungstoken ungültig ist. Weitere Informationen finden Sie unter [Verwenden externer Dienste über den Azure API Management-Dienst](./api-management-sample-send-request.md).
 
 ```xml
 <choose>
@@ -833,7 +833,7 @@ Dieses Beispiel zeigt, wie Sie eine 401-Antwort zurückgeben, wenn das Autorisie
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** outbound, backend, on-error
 -   **Richtlinienbereiche:** alle Bereiche
@@ -871,7 +871,7 @@ Im folgenden Beispiel wird eine set-variable-Richtlinie im Abschnitt für den ei
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 -   **Richtlinienbereiche:** alle Bereiche
@@ -916,9 +916,9 @@ Ausdrücke, die in der `set-variable`-Richtlinie verwendet werden, müssen einen
 
 Die `trace`-Richtlinie fügt der API-Inspektor-Ausgabe, Application Insights-Telemetrien und/oder Ressourcenprotokollen eine benutzerdefinierte Ablaufverfolgung hinzu.
 
--   Die Richtlinie fügt der [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ausgabe eine benutzerdefinierte Ablaufverfolgung hinzu, wenn die Ablaufverfolgung ausgelöst wird, d. h. der `Ocp-Apim-Trace`-Anforderungsheader ist vorhanden und auf „true“ festgelegt, und der `Ocp-Apim-Subscription-Key`-Anforderungsheader ist vorhanden und enthält einen gültigen Schlüssel, der Ablaufverfolgung zulässt.
--   Die Richtlinie erstellt in Application Insights eine [Ablaufverfolgungstelemetrie](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry), wenn die [Application Insights-Integration](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) aktiviert ist und der in der Richtlinie angegebene `severity`-Grad größer oder gleich dem in der Diagnose angegebenen `verbosity`-Grad ist.
--   Die Richtlinie fügt eine Eigenschaft in den Protokolleintrag ein, wenn [Ressourcenprotokolle](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) aktiviert ist und der in der Richtlinie angegebene Schweregrad größer oder gleich dem Ausführlichkeitsgrad ist, der in der Diagnoseeinstellung angegeben ist.
+-   Die Richtlinie fügt der [API-Inspektor](./api-management-howto-api-inspector.md)-Ausgabe eine benutzerdefinierte Ablaufverfolgung hinzu, wenn die Ablaufverfolgung ausgelöst wird, d. h. der `Ocp-Apim-Trace`-Anforderungsheader ist vorhanden und auf „true“ festgelegt, und der `Ocp-Apim-Subscription-Key`-Anforderungsheader ist vorhanden und enthält einen gültigen Schlüssel, der Ablaufverfolgung zulässt.
+-   Die Richtlinie erstellt in Application Insights eine [Ablaufverfolgungstelemetrie](../azure-monitor/app/data-model-trace-telemetry.md), wenn die [Application Insights-Integration](./api-management-howto-app-insights.md) aktiviert ist und der in der Richtlinie angegebene `severity`-Grad größer oder gleich dem in der Diagnose angegebenen `verbosity`-Grad ist.
+-   Die Richtlinie fügt eine Eigenschaft in den Protokolleintrag ein, wenn [Ressourcenprotokolle](./api-management-howto-use-azure-monitor.md#activity-logs) aktiviert ist und der in der Richtlinie angegebene Schweregrad größer oder gleich dem Ausführlichkeitsgrad ist, der in der Diagnoseeinstellung angegeben ist.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
@@ -946,7 +946,7 @@ Die `trace`-Richtlinie fügt der API-Inspektor-Ausgabe, Application Insights-Tel
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | Ablaufverfolgung    | Stammelement                                                                                                                                        | Ja      |
 | message  | Eine Zeichenfolge oder ein Ausdruck, die bzw. der protokolliert werden soll.                                                                                                                 | Ja      |
-| metadata | Fügt der Application Insights-[Ablaufverfolgungstelemetrie](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) eine benutzerdefinierte Eigenschaft hinzu. | Nein        |
+| metadata | Fügt der Application Insights-[Ablaufverfolgungstelemetrie](../azure-monitor/app/data-model-trace-telemetry.md) eine benutzerdefinierte Eigenschaft hinzu. | Nein        |
 
 ### <a name="attributes"></a>Attributes
 
@@ -959,7 +959,7 @@ Die `trace`-Richtlinie fügt der API-Inspektor-Ausgabe, Application Insights-Tel
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -1029,7 +1029,7 @@ Im folgenden Beispiel sind zwei `choose`-Richtlinien als unmittelbar untergeordn
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend
 -   **Richtlinienbereiche:** alle Bereiche
@@ -1040,5 +1040,5 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 
 -   [Richtlinien in Azure API Management](api-management-howto-policies.md)
 -   [Richtlinienausdrücke](api-management-policy-expressions.md)
--   Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
+-   Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
 -   [API Management-Richtlinienbeispiele](policy-samples.md)

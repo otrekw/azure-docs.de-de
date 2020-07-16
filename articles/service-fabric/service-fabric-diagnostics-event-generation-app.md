@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 97c3be391dfbee7301ea47bf7234a9549d373370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1871df962a26def8c12000f8b8bc0cf31bae9a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464726"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247658"
 ---
 # <a name="application-logging"></a>Anwendungsprotokollierung
 
@@ -22,11 +22,11 @@ Beispiele zur Verwendung dieser Vorschläge finden Sie unter [Hinzufügen von Pr
 
 ## <a name="application-insights-sdk"></a>Application Insights SDK
 
-Die umfassende Integration von Application Insights in Service Fabric ist vorkonfiguriert. Benutzer können die KI-NuGet-Pakete von Service Fabric hinzufügen und Daten und Protokolle empfangen, die so erstellt und erfasst wurden, dass sie im Azure-Portal angezeigt werden können. Außerdem wird Benutzern das Hinzufügen ihrer eigenen Telemetriedaten empfohlen, um ihre Anwendungen zu diagnostizieren und zu debuggen, und um nachzuverfolgen, welche Dienste und Teile ihrer Anwendung am häufigsten verwendet werden. Die [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet)-Klasse im SDK bietet viele Methoden zum Nachverfolgen von Telemetriedaten in Ihren Anwendungen. Sehen Sie sich in unserem Tutorial [Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric](service-fabric-tutorial-monitoring-aspnet.md) ein Beispiel zum Instrumentieren und Hinzufügen von Application Insights zu Ihrer Anwendung an.
+Die umfassende Integration von Application Insights in Service Fabric ist vorkonfiguriert. Benutzer können die KI-NuGet-Pakete von Service Fabric hinzufügen und Daten und Protokolle empfangen, die so erstellt und erfasst wurden, dass sie im Azure-Portal angezeigt werden können. Außerdem wird Benutzern das Hinzufügen ihrer eigenen Telemetriedaten empfohlen, um ihre Anwendungen zu diagnostizieren und zu debuggen, und um nachzuverfolgen, welche Dienste und Teile ihrer Anwendung am häufigsten verwendet werden. Die [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet)-Klasse im SDK bietet viele Methoden zum Nachverfolgen von Telemetriedaten in Ihren Anwendungen. Sehen Sie sich in unserem Tutorial [Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric](service-fabric-tutorial-monitoring-aspnet.md) ein Beispiel zum Instrumentieren und Hinzufügen von Application Insights zu Ihrer Anwendung an.
 
 ## <a name="eventsource"></a>EventSource
 
-Wenn Sie eine Service Fabric-Lösung aus einer Vorlage in Visual Studio erstellen, wird eine von **EventSource** abgeleitete Klasse (**ServiceEventSource** oder **ActorEventSource**) generiert. Es wird eine Vorlage erstellt, in der Sie Ereignisse für Ihre Anwendung oder Ihren Dienst hinzufügen können. Der **EventSource**-Name **muss** eindeutig sein. Er sollte auf der Standardvorlage „MyCompany-&lt;Projektmappe&gt;-&lt;Projekt&gt;“ basieren und entsprechend umbenannt werden. Mehrere **EventSource**-Definitionen mit dem gleichen Namen führen zur Laufzeit zu Problemen. Jedes definierte Ereignis muss über einen eindeutigen Bezeichner verfügen. Wenn ein Bezeichner nicht eindeutig ist, tritt ein Laufzeitfehler auf. In einigen Organisationen werden Wertebereiche vorab Bezeichnern zugewiesen, um Konflikte zwischen separaten Entwicklungsteams zu vermeiden. Weitere Informationen finden Sie im [Blog von Vance](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) oder in der [MSDN-Dokumentation](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
+Wenn Sie eine Service Fabric-Lösung aus einer Vorlage in Visual Studio erstellen, wird eine von **EventSource** abgeleitete Klasse (**ServiceEventSource** oder **ActorEventSource**) generiert. Es wird eine Vorlage erstellt, in der Sie Ereignisse für Ihre Anwendung oder Ihren Dienst hinzufügen können. Der **EventSource**-Name **muss** eindeutig sein. Er sollte auf der Standardvorlage „MyCompany-&lt;Projektmappe&gt;-&lt;Projekt&gt;“ basieren und entsprechend umbenannt werden. Mehrere **EventSource**-Definitionen mit dem gleichen Namen führen zur Laufzeit zu Problemen. Jedes definierte Ereignis muss über einen eindeutigen Bezeichner verfügen. Wenn ein Bezeichner nicht eindeutig ist, tritt ein Laufzeitfehler auf. In einigen Organisationen werden Wertebereiche vorab Bezeichnern zugewiesen, um Konflikte zwischen separaten Entwicklungsteams zu vermeiden. Weitere Informationen finden Sie im [Blog von Vance](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource) oder in der [MSDN-Dokumentation](/previous-versions/msp-n-p/dn774985(v=pandp.20)).
 
 ## <a name="aspnet-core-logging"></a>ASP.NET Core-Protokollierung
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 48a83fad3395f6ecf06fb1f1ba95aa1b06a53431
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9df3393a0554d2e65b3918c6760885f89e11ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259135"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254742"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights
 
@@ -51,7 +51,7 @@ Bevor Sie Azure Application Insights verwenden können, müssen Sie zunächst ei
     ![Application Insights-Protokollierung](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> Im Hintergrund wird eine [Protokollierungsentität](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate) in der API Management-Instanz erstellt, die den Instrumentierungsschlüssel der Application Insights-Instanz enthält.
+> Im Hintergrund wird eine [Protokollierungsentität](/rest/api/apimanagement/2019-12-01/logger/createorupdate) in der API Management-Instanz erstellt, die den Instrumentierungsschlüssel der Application Insights-Instanz enthält.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>Aktivieren der Application Insights-Protokollierung für Ihre API
 
@@ -70,7 +70,7 @@ Bevor Sie Azure Application Insights verwenden können, müssen Sie zunächst ei
 > Überschreiben des Standardwerts **0** im Feld **Erste Bytes des Texts** kann die Leistung Ihrer APIs erheblich beeinträchtigen.
 
 > [!NOTE]
-> Im Hintergrund wird eine [Diagnoseentität](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) namens „applicationinsights“ auf API-Ebene erstellt.
+> Im Hintergrund wird eine [Diagnoseentität](/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) namens „applicationinsights“ auf API-Ebene erstellt.
 
 | Einstellungsname                        | Werttyp                        | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -126,5 +126,5 @@ Das Überspringen der Protokollierung von Headern und Textkörpern der Anforderu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-+ Erfahren Sie mehr über [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/).
++ Erfahren Sie mehr über [Azure Application Insights](/azure/application-insights/).
 + Betrachten Sie die [Protokollierung mit Azure Event Hubs](api-management-howto-log-event-hubs.md).

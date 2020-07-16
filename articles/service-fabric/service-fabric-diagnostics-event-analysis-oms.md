@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464742"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257666"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Ereignisanalyse und -visualisierung mit Azure Monitor-Protokollen
  Azure Monitor-Protokolle sammeln und analysieren Telemetriedaten von Anwendungen und Diensten, die in der Cloud gehostet werden. Darüber hinaus sind Analysetools verfügbar, um die Verfügbarkeit und Leistung dieser Anwendungen und Dienste maximieren zu können. In diesem Artikel wird beschrieben, wie Sie Abfragen in Azure Monitor-Protokolle ausführen, um einen Einblick in den Cluster zu erhalten und Probleme zu beheben. Folgende allgemeine Fragen werden berücksichtigt:
@@ -104,6 +104,6 @@ Die Abfragesprache Kusto ist leistungsstark. Eine weitere nützliche Abfrage ist
 
 * Um die Infrastrukturüberwachung, d.h. Leistungsindikatoren, zu aktivieren, wechseln Sie zu [Hinzufügen des Log Analytics-Agents](service-fabric-diagnostics-oms-agent.md). Der Agent sammelt Leistungsindikatoren und fügt sie dem vorhandenen Arbeitsbereich zu.
 * Für lokale Cluster bieten Azure Monitor-Protokolle ein Gateway (HTTP-Weiterleitungsproxy), über das Daten an Azure Monitor-Protokolle gesendet werden können. Weitere Informationen dazu finden Sie unter [Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway](../azure-monitor/platform/gateway.md).
-* Konfigurieren Sie [automatisierte Warnungen](../log-analytics/log-analytics-alerts.md) für die Erkennung und Diagnose.
-* Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokollen vertraut.
-* Eine ausführlichere Übersicht über Azure Monitor-Protokolle und die zugehörigen Optionen finden Sie unter [Was ist Azure Monitor-Protokolle?](../operations-management-suite/operations-management-suite-overview.md).
+* Konfigurieren Sie [automatisierte Warnungen](../azure-monitor/platform/alerts-overview.md) für die Erkennung und Diagnose.
+* Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../azure-monitor/log-query/log-query-overview.md) in Azure Monitor-Protokollen vertraut.
+* Eine ausführlichere Übersicht über Azure Monitor-Protokolle und die zugehörigen Optionen finden Sie unter [Was ist Azure Monitor-Protokolle?](../azure-monitor/overview.md).

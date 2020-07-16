@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 99c63fd04a40b1a4e591f5ad42d8f776e8e5b67c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c2ad99a59e548ff7793455dac21748dd057c5fc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208500"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248695"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Anpassen von Feeds für Windows Virtual Desktop-Benutzer
 
@@ -124,7 +124,7 @@ Sie können den Anzeigenamen für einen veröffentlichten Remotedesktop ändern,
 
 Nachdem Sie den Feed für Benutzer angepasst haben, können Sie sich bei einem Windows Virtual Desktop-Client anmelden, um ihn zu testen. Wechseln Sie dafür zu den Vorgehensweisen für das Herstellen einer Verbindung mit Windows Virtual Desktop:
 
- * [Herstellen einer Verbindung mit Windows 10 oder Windows 7](connect-windows-7-and-10.md)
+ * [Herstellen einer Verbindung mit Windows 10 oder Windows 7](connect-windows-7-10.md)
  * [Herstellen einer Verbindung mit dem Webclient](connect-web.md)
  * [Herstellen einer Verbindung mit dem Android-Client](connect-android.md)
  * [Herstellen einer Verbindung mit dem iOS-Client](connect-ios.md)

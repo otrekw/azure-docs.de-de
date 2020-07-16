@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 981d3134e957e1f19b9cd88ee13a72fc45d79277
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83004743"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252894"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurieren eines benutzerdefinierten Domänennamens
 
@@ -71,8 +71,8 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
     > Platzhalterdomänennamen (etwa `*.contoso.com`) werden in allen Tarifen mit Ausnahme des Verbrauchstarifs unterstützt.
 
     > [!TIP]
-    > Wir empfehlen Ihnen die Nutzung von [Azure Key Vault zur Verwaltung von Zertifikaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates). Legen Sie hierfür die Option „Automatische Verlängerung“ fest.
-    > Sollten Sie das benutzerdefinierte TLS/SSL-Domänenzertifikat mit Azure Key Vault verwalten, stellen Sie sicher, dass das Zertifikat [als ein _Zertifikat_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate) und nicht als ein _Geheimnis_ in Key Vault eingefügt wird.
+    > Wir empfehlen Ihnen die Nutzung von [Azure Key Vault zur Verwaltung von Zertifikaten](../key-vault/certificates/about-certificates.md). Legen Sie hierfür die Option „Automatische Verlängerung“ fest.
+    > Sollten Sie das benutzerdefinierte TLS/SSL-Domänenzertifikat mit Azure Key Vault verwalten, stellen Sie sicher, dass das Zertifikat [als ein _Zertifikat_](/rest/api/keyvault/createcertificate/createcertificate) und nicht als ein _Geheimnis_ in Key Vault eingefügt wird.
     >
     > Zum Abrufen des TLS/SSL-Zertifikats benötigt API Management die Berechtigung zum Auflisten und Abrufen von Geheimnissen für die Azure Key Vault-Instanz, die das Zertifikat enthält. Wenn Sie Azure-Portal verwenden, werden alle notwendigen Konfigurationsschritte automatisch durchgeführt. Wenn Sie Befehlszeilentools oder eine Verwaltungs-API verwenden, müssen diese Berechtigungen manuell erteilt werden. Dazu sind zwei Schritte erforderlich. Verwenden Sie zuerst die Seite „Verwaltete Identitäten“ in Ihrer API Management-Instanz, um sicherzustellen, dass die verwaltete Instanz aktiviert ist. Notieren Sie sich die Prinzipal-ID, die auf der Seite angezeigt wird. Weisen Sie dieser Prinzipal-ID anschließend die Berechtigungsliste und die Berechtigung zum Abrufen geheimer Schlüssel für die Azure Key Vault-Instanz mit dem Zertifikat zu.
     >

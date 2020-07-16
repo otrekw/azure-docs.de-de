@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ce2dbcefa63cc55a66e712664d1436ca24d3a1d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707947"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248508"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Einrichten der Service Fabric Mesh-CLI
 Die Service Fabric Mesh-Befehlszeilenschnittstelle (Command Line Interface, CLI) ist zum Bereitstellen und Verwalten von Ressourcen lokal und in Azure Service Fabric Mesh erforderlich. Die Einrichtung erfolgt folgendermaßen.
@@ -44,7 +44,7 @@ Für die Vorschauversion wird die Azure Service Fabric Mesh CLI als eine Erweite
 
 ## <a name="install-the-service-fabric-cli-sfctl"></a>Installieren der Service Fabric-CLI (sfctl) 
 
-Befolgen Sie die Anleitung unter [Azure Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli). Das Modul **sfctl** kann für die Bereitstellung von Anwendungen basierend auf dem Ressourcenmodell für Service Fabric-Cluster auf Ihrem lokalen Computer verwendet werden. 
+Befolgen Sie die Anleitung unter [Azure Service Fabric CLI](../service-fabric/service-fabric-cli.md). Das Modul **sfctl** kann für die Bereitstellung von Anwendungen basierend auf dem Ressourcenmodell für Service Fabric-Cluster auf Ihrem lokalen Computer verwendet werden. 
 
 ## <a name="install-the-maven-cli"></a>Installieren der Maven-CLI 
 

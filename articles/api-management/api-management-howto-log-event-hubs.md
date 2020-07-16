@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: f594d4467e64ead40ff3c26aaf3e3a44cb673a98
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871256"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250293"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management
 Azure Event Hubs ist ein hochgradig skalierbarer Dateneingangsdienst, der Millionen von Ereignissen pro Sekunde erfassen kann. Auf diese Weise können Sie riesige Datenmengen verarbeiten und analysieren, die von vernetzten Geräten und Anwendungen erzeugt werden. Event Hubs fungiert als „Eingangstür“ für eine Ereignispipeline. Nach der Erfassung in Event Hubs können Sie Daten mit einem beliebigen Echtzeit-Analyseanbieter oder mit Batchverarbeitungs-/Speicheradaptern umwandeln und speichern. Event Hubs entkoppelt die Erzeugung eines Datenstroms von Ereignissen von der Nutzung dieser Ereignisse, sodass  Ereignisconsumer nach einem eigenen Zeitplan auf Ereignisse zugreifen können.
@@ -27,12 +27,12 @@ Dies ist ein Begleitartikel zum Video [Integrate Azure API Management with Event
 
 ## <a name="create-an-azure-event-hub"></a>Erstellen eines Azure Event Hubs
 
-Ausführliche Schritte zum Erstellen eines Event Hubs und zum Abrufen von Verbindungszeichenfolgen, die Sie zum Senden und Empfangen von Ereignis aus dem bzw. im Event Hub benötigen, finden Sie unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+Ausführliche Schritte zum Erstellen eines Event Hubs und zum Abrufen von Verbindungszeichenfolgen, die Sie zum Senden und Empfangen von Ereignis aus dem bzw. im Event Hub benötigen, finden Sie unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md).
 
 ## <a name="create-an-api-management-logger"></a>Erstellen eines API Management-Loggers
-Der Event Hub ist nun vorhanden. Der nächste Schritt besteht darin, einen [Logger](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger) im API Management-Dienst zu konfigurieren, sodass Ereignisse im Event Hub protokolliert werden können.
+Der Event Hub ist nun vorhanden. Der nächste Schritt besteht darin, einen [Logger](/rest/api/apimanagement/2019-12-01/logger) im API Management-Dienst zu konfigurieren, sodass Ereignisse im Event Hub protokolliert werden können.
 
-API Management-Logger werden mit der [API Management-REST-API](https://aka.ms/apimapi)konfiguriert. Ausführliche Anforderungsbeispiele finden Sie unter [Erstellen von Protokollierungen](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate).
+API Management-Logger werden mit der [API Management-REST-API](https://aka.ms/apimapi)konfiguriert. Ausführliche Anforderungsbeispiele finden Sie unter [Erstellen von Protokollierungen](/rest/api/apimanagement/2019-12-01/logger/createorupdate).
 
 ## <a name="configure-log-to-eventhub-policies"></a>Konfigurieren von log-to-eventhub-Richtlinien
 
@@ -69,7 +69,7 @@ Klicken Sie auf **Speichern** , um die aktualisierte Richtlinienkonfiguration zu
 
 ## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>Anzeigen einer Vorschau des Protokolls in Event Hubs mithilfe von Azure Stream Analytics
 
-Sie können eine Vorschau des Protokolls in Event Hubs anzeigen, indem Sie [Azure Stream Analytics-Abfragen](https://docs.microsoft.com/azure/event-hubs/process-data-azure-stream-analytics) verwenden. 
+Sie können eine Vorschau des Protokolls in Event Hubs anzeigen, indem Sie [Azure Stream Analytics-Abfragen](../event-hubs/process-data-azure-stream-analytics.md) verwenden. 
 
 1. Navigieren Sie im Azure-Portal zu dem Event Hub, an den die Protokollierung Ereignisse sendet. 
 2. Wählen Sie unter **Features**die Registerkarte **Daten verarbeiten** aus.
@@ -79,11 +79,11 @@ Sie können eine Vorschau des Protokolls in Event Hubs anzeigen, indem Sie [Azur
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu Azure Event Hubs
   * [Erste Schritte mit Azure Event Hubs](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [Empfangen von Nachrichten mit EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [Empfangen von Nachrichten mit EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
   * [Programmierleitfaden für Event Hubs](../event-hubs/event-hubs-programming-guide.md)
 * Erfahren Sie mehr über die Integration der API-Verwaltung und Event Hubs
-  * [Verweis zu Protokollierungstool](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger)
-  * [log-to-eventhub policy reference](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+  * [Verweis zu Protokollierungstool](/rest/api/apimanagement/2019-12-01/logger)
+  * [log-to-eventhub policy reference](./api-management-advanced-policies.md#log-to-eventhub)
   * [Überwachen von APIs mit Azure API Management, Event Hubs und Moesif](api-management-log-to-eventhub-sample.md)  
 * Erfahren Sie mehr über die [Integration in Azure Application Insights](api-management-howto-app-insights.md).
 

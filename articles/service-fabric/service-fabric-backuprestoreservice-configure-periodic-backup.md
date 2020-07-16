@@ -5,12 +5,12 @@ author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c77f069d93e368652c30cd100b0f99ca55341882
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610147"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261221"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Grundlegendes zur Konfiguration der regelmäßigen Sicherung in Azure Service Fabric
 
@@ -158,23 +158,23 @@ Angenommen es bestehen die folgenden Datensicherungsanforderungen dieser Anwendu
 
 Um diese Datensicherungsanforderungen zu erfüllen, werden die Sicherungsrichtlinien „BP_1“ bis „BP_5“ erstellt und die Sicherungen wie folgt aktiviert.
 1. MyApp_A
-    1. Erstellen Sie die Sicherungsrichtlinie _BP_1_ mit einem häufigkeitsbasierten Sicherungszeitplan, für den die Häufigkeit auf „alle 24 Stunden“ gesetzt wird, und konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie diese Richtlinie mithilfe der API [Anwendungssicherung aktivieren](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) für Anwendung _MyApp_A_. Dadurch können Datensicherungen mit der Sicherungsrichtlinie _BP_1_ für alle Partitionen der _zustandsbehafteten zuverlässigen Dienste_ und _Reliable Actors_ erstellt werden, die zur Anwendung _MyApp_A_ gehören.
+    1. Erstellen Sie die Sicherungsrichtlinie _BP_1_ mit einem häufigkeitsbasierten Sicherungszeitplan, für den die Häufigkeit auf „alle 24 Stunden“ gesetzt wird, und konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie diese Richtlinie mithilfe der API [Anwendungssicherung aktivieren](/rest/api/servicefabric/sfclient-api-enableapplicationbackup) für Anwendung _MyApp_A_. Dadurch können Datensicherungen mit der Sicherungsrichtlinie _BP_1_ für alle Partitionen der _zustandsbehafteten zuverlässigen Dienste_ und _Reliable Actors_ erstellt werden, die zur Anwendung _MyApp_A_ gehören.
 
-    2. Erstellen Sie die Sicherungsrichtlinie _BP_2_ mit einem häufigkeitsbasierten Sicherungszeitplan, für den die Häufigkeit auf „jede Stunde“ gesetzt wird, und konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie die Richtlinie mit der API [Dienstsicherung aktivieren](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) für den Dienst _SvcA3_. Dadurch wird die weitergegebene Richtlinie _BP_1_ durch die explizit aktivierte Sicherungsrichtlinie _BP_2_ für alle Partitionen des Diensts _SvcA3_ überschrieben. Infolgedessen werden für diese Partitionen Datensicherungen mit der Sicherungsrichtlinie _BP_2_ durchgeführt.
+    2. Erstellen Sie die Sicherungsrichtlinie _BP_2_ mit einem häufigkeitsbasierten Sicherungszeitplan, für den die Häufigkeit auf „jede Stunde“ gesetzt wird, und konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie die Richtlinie mit der API [Dienstsicherung aktivieren](/rest/api/servicefabric/sfclient-api-enableservicebackup) für den Dienst _SvcA3_. Dadurch wird die weitergegebene Richtlinie _BP_1_ durch die explizit aktivierte Sicherungsrichtlinie _BP_2_ für alle Partitionen des Diensts _SvcA3_ überschrieben. Infolgedessen werden für diese Partitionen Datensicherungen mit der Sicherungsrichtlinie _BP_2_ durchgeführt.
 
-    3. Erstellen Sie die Sicherungsrichtlinie _BP_3_ mit einem häufigkeitsbasierten Sicherungszeitplan, für den die Häufigkeit auf „alle 24 Stunden“ gesetzt wird, und konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore2_ verwendet. Aktivieren Sie die Richtlinie mit der API [Partitionssicherung aktivieren](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) für die Partition _SvcA1_P2_. Dadurch wird die weitergegebene Richtlinie _BP_1_ durch die explizit aktivierte Sicherungsrichtlinie _BP_3_ für die Partition _SvcA1_P2_ überschrieben.
+    3. Erstellen Sie die Sicherungsrichtlinie _BP_3_ mit einem häufigkeitsbasierten Sicherungszeitplan, für den die Häufigkeit auf „alle 24 Stunden“ gesetzt wird, und konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore2_ verwendet. Aktivieren Sie die Richtlinie mit der API [Partitionssicherung aktivieren](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) für die Partition _SvcA1_P2_. Dadurch wird die weitergegebene Richtlinie _BP_1_ durch die explizit aktivierte Sicherungsrichtlinie _BP_3_ für die Partition _SvcA1_P2_ überschrieben.
 
 2. MyApp_B
-    1. Erstellen Sie die Sicherungsrichtlinie _BP_4_ mit einem zeitbasierten Sicherungszeitplan, für den die Häufigkeit auf „Wöchentlich“, der Ausführungstag auf „Sonntag“ und die Ausführungszeit auf „8:00 Uhr“ gesetzt wird. Konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie die Richtlinie mit der API [Dienstsicherung aktivieren](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) für den Dienst _SvcB1_. Dadurch können Datensicherungen mit der Sicherungsrichtlinie _BP_4_ für alle Partitionen des Diensts _SvcB1_ erstellt werden.
+    1. Erstellen Sie die Sicherungsrichtlinie _BP_4_ mit einem zeitbasierten Sicherungszeitplan, für den die Häufigkeit auf „Wöchentlich“, der Ausführungstag auf „Sonntag“ und die Ausführungszeit auf „8:00 Uhr“ gesetzt wird. Konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie die Richtlinie mit der API [Dienstsicherung aktivieren](/rest/api/servicefabric/sfclient-api-enableservicebackup) für den Dienst _SvcB1_. Dadurch können Datensicherungen mit der Sicherungsrichtlinie _BP_4_ für alle Partitionen des Diensts _SvcB1_ erstellt werden.
 
-    2. Erstellen Sie die Sicherungsrichtlinie _BP_5_ mit einem zeitbasierten Sicherungszeitplan, für den die Häufigkeit auf „Täglich“ und die Ausführungszeit auf „8:00 Uhr“ gesetzt wird. Konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie die Richtlinie mit der API [Partitionssicherung aktivieren](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) für die Partition _SvcB2_P1_. Dadurch können Datensicherungen mit der Sicherungsrichtlinie _BP_5_ für die Partition _SvcB2_P1_ erstellt werden.
+    2. Erstellen Sie die Sicherungsrichtlinie _BP_5_ mit einem zeitbasierten Sicherungszeitplan, für den die Häufigkeit auf „Täglich“ und die Ausführungszeit auf „8:00 Uhr“ gesetzt wird. Konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie die Richtlinie mit der API [Partitionssicherung aktivieren](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) für die Partition _SvcB2_P1_. Dadurch können Datensicherungen mit der Sicherungsrichtlinie _BP_5_ für die Partition _SvcB2_P1_ erstellt werden.
 
 Das folgende Diagramm zeigt explizit aktivierte Sicherungsrichtlinien und weitergegebene Sicherungsrichtlinien.
 
 ![Service Fabric-Anwendungshierarchie][0]
 
 ## <a name="disable-backup"></a>Deaktivieren einer Sicherung
-Sicherungsrichtlinien können deaktiviert werden, wenn keine Notwendigkeit besteht, Daten zu sichern. Die für eine _Anwendung_ aktivierte Sicherungsrichtlinie kann nur für dieselbe _Anwendung_ mit der API [Anwendungssicherung deaktivieren](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) deaktiviert werden. Die für einen _Dienst_ aktivierte Sicherungsrichtlinie kann für denselben _Dienst_ mit der API [Dienstsicherung deaktivieren](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) deaktiviert werden. Und schließlich kann die für eine _Partition_ aktivierte Sicherungsrichtlinie nur für dieselbe _Partition_ mit der API [Partitionssicherung deaktivieren](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) deaktiviert werden.
+Sicherungsrichtlinien können deaktiviert werden, wenn keine Notwendigkeit besteht, Daten zu sichern. Die für eine _Anwendung_ aktivierte Sicherungsrichtlinie kann nur für dieselbe _Anwendung_ mit der API [Anwendungssicherung deaktivieren](/rest/api/servicefabric/sfclient-api-disableapplicationbackup) deaktiviert werden. Die für einen _Dienst_ aktivierte Sicherungsrichtlinie kann für denselben _Dienst_ mit der API [Dienstsicherung deaktivieren](/rest/api/servicefabric/sfclient-api-disableservicebackup) deaktiviert werden. Und schließlich kann die für eine _Partition_ aktivierte Sicherungsrichtlinie nur für dieselbe _Partition_ mit der API [Partitionssicherung deaktivieren](/rest/api/servicefabric/sfclient-api-disablepartitionbackup) deaktiviert werden.
 
 * Durch das Deaktivieren der Sicherungsrichtlinie für eine _Anwendung_ werden alle regelmäßigen Datensicherungen beendet, die aufgrund der Weitergabe der Sicherungsrichtlinie an zustandsbehaftete zuverlässige Dienstpartitionen oder Reliable Actor-Partitionen durchgeführt werden.
 
@@ -192,19 +192,19 @@ Sicherungsrichtlinien können deaktiviert werden, wenn keine Notwendigkeit beste
 ## <a name="suspend--resume-backup"></a>Anhalten und Fortsetzen einer Sicherung
 Bestimmte Situationen können ein vorübergehendes Anhalten der regelmäßigen Datensicherung erfordern. In einer solchen Situation kann, je nach Anforderung, die API zum Anhalten von Sicherungen für eine _Anwendung_, einen _Dienst_ oder eine _Partition_ verwendet werden. Das Aussetzen der regelmäßigen Sicherung ist ab dem Zeitpunkt der Anwendung über die Teilstruktur der Anwendungshierarchie transitiv. 
 
-* Wenn zum Anhalten für eine _Anwendung_ die API [Anwendungssicherung anhalten](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) verwendet wird, werden die regelmäßigen Datensicherungen für alle Dienste und Partitionen unter dieser Anwendung ausgesetzt.
+* Wenn zum Anhalten für eine _Anwendung_ die API [Anwendungssicherung anhalten](/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) verwendet wird, werden die regelmäßigen Datensicherungen für alle Dienste und Partitionen unter dieser Anwendung ausgesetzt.
 
-* Wenn zum Anhalten für einen _Diensts_ die API [Dienstsicherung anhalten](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) verwendet wird, werden die regelmäßigen Datensicherungen für alle Partitionen unter diesem Dienst ausgesetzt.
+* Wenn zum Anhalten für einen _Diensts_ die API [Dienstsicherung anhalten](/rest/api/servicefabric/sfclient-api-suspendservicebackup) verwendet wird, werden die regelmäßigen Datensicherungen für alle Partitionen unter diesem Dienst ausgesetzt.
 
-* Wenn zum Anhalten für eine _Partition_ die API [Partitionssicherung anhalten](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) verwendet wird, werden die regelmäßigen Datensicherungen für die Partitionen unter diesem Dienst ausgesetzt.
+* Wenn zum Anhalten für eine _Partition_ die API [Partitionssicherung anhalten](/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) verwendet wird, werden die regelmäßigen Datensicherungen für die Partitionen unter diesem Dienst ausgesetzt.
 
 Sobald das Anhalten nicht mehr erforderlich ist, kann die regelmäßige Datensicherung über die entsprechende API zum Fortsetzen der Sicherung wiederhergestellt werden. Die regelmäßige Sicherung muss bei derselben _Anwendung_, demselben _Dienst_ bzw. derselben _Partition_ fortgesetzt werden, für die bzw. den sie angehalten wurde.
 
-* Verwenden Sie die API [Anwendungssicherung fortsetzen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup), um die regelmäßige Sicherung für eine _Anwendung_ wieder fortzusetzen, nachdem diese angehalten wurde. 
+* Verwenden Sie die API [Anwendungssicherung fortsetzen](/rest/api/servicefabric/sfclient-api-resumeapplicationbackup), um die regelmäßige Sicherung für eine _Anwendung_ wieder fortzusetzen, nachdem diese angehalten wurde. 
 
-* Verwenden Sie die API [Dienstsicherung fortsetzen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup), um die regelmäßige Sicherung für einen _Dienst_ wieder fortzusetzen, nachdem diese angehalten wurde.
+* Verwenden Sie die API [Dienstsicherung fortsetzen](/rest/api/servicefabric/sfclient-api-resumeservicebackup), um die regelmäßige Sicherung für einen _Dienst_ wieder fortzusetzen, nachdem diese angehalten wurde.
 
-* Verwenden Sie die API [Partitionssicherung fortsetzen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup), um die regelmäßige Sicherung für eine _Partition_ wieder fortzusetzen, nachdem diese angehalten wurde.
+* Verwenden Sie die API [Partitionssicherung fortsetzen](/rest/api/servicefabric/sfclient-api-resumepartitionbackup), um die regelmäßige Sicherung für eine _Partition_ wieder fortzusetzen, nachdem diese angehalten wurde.
 
 ### <a name="difference-between-suspend-and-disable-backups"></a>Unterschied zwischen dem Anhalten und dem Deaktivieren von Sicherungen
 Sicherungen sollten deaktiviert werden, wenn Sicherungen für eine bestimmte Anwendung, einen bestimmten Dienst oder eine bestimmte Partition nicht mehr erforderlich sind. Eine Anforderung zum Deaktivieren der Sicherung kann aufgerufen werden, wenn der Parameter zum Bereinigen von Sicherungen TRUE ist. Das bedeutet, dass alle vorhandenen Sicherungen ebenfalls gelöscht werden. Das Anhalten von Sicherungen wird hingegen in Szenarien eingesetzt, in denen Sicherungen vorübergehend deaktiviert werden sollen, wenn beispielsweise der lokale Datenträger voll ist oder beim Hochladen einer Sicherung aufgrund eines bekannten Netzwerkproblems ein Fehler auftritt usw. 
@@ -217,7 +217,7 @@ Durch unerwartete Ausfälle können auf der Dienstpartition befindliche Daten ve
 Wenn Service Fabric einen Datenverlust auf der Partition erkennt, wird die Schnittstellenmethode `OnDataLossAsync` für die Partition aufgerufen und es wird erwartet, dass für die Partition die erforderliche Aktion zum Beheben des Datenverlusts ausgeführt wird. Wenn in dieser Situation die effektive Sicherungsrichtlinie für die Partition das `AutoRestoreOnDataLoss`-Flag auf `true` gesetzt hat, wird die Wiederherstellung automatisch unter Verwendung der letzten verfügbaren Sicherung für diese Partition ausgelöst.
 
 ## <a name="get-backup-configuration"></a>Abrufen der Sicherungskonfiguration
-Separate APIs werden zur Verfügung gestellt, um Informationen zur Sicherungskonfiguration für eine _Anwendung_, einen _Dienst_ oder eine _Partition_ abzurufen. Zu diesen APIs gehören [Informationen zur Sicherungskonfiguration für eine Anwendung abrufen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [Informationen zur Sicherungskonfiguration für einen Dienst abrufen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo) und [Informationen zur Sicherungskonfiguration für eine Partition abrufen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo). Diese APIs geben in erster Linie die geltende Sicherungsrichtlinie, den Anwendungsumfang der Sicherungsrichtlinie und die Details zum Anhalten von Sicherungen zurück. Im Folgenden finden Sie eine kurze Beschreibung der zurückgegebenen Ergebnisse dieser APIs.
+Separate APIs werden zur Verfügung gestellt, um Informationen zur Sicherungskonfiguration für eine _Anwendung_, einen _Dienst_ oder eine _Partition_ abzurufen. Zu diesen APIs gehören [Informationen zur Sicherungskonfiguration für eine Anwendung abrufen](/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [Informationen zur Sicherungskonfiguration für einen Dienst abrufen](/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo) und [Informationen zur Sicherungskonfiguration für eine Partition abrufen](/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo). Diese APIs geben in erster Linie die geltende Sicherungsrichtlinie, den Anwendungsumfang der Sicherungsrichtlinie und die Details zum Anhalten von Sicherungen zurück. Im Folgenden finden Sie eine kurze Beschreibung der zurückgegebenen Ergebnisse dieser APIs.
 
 - Informationen zur Sicherungskonfiguration für eine Anwendung: Enthält die Details der für die Anwendung geltende Sicherungsrichtlinie und alle überschriebenen Richtlinien für Dienste und Partitionen, die zu der Anwendung gehören. Dazu zählen auch Informationen über das Anhalten regelmäßiger Sicherungen für die Anwendung und deren Dienste sowie für Partitionen.
 
@@ -233,13 +233,13 @@ Zudem unterstützen diese APIs das Paginieren der Ergebnisse. Wenn der Parameter
 
 Im Folgenden finden Sie kurze Informationen zu den unterstützten Varianten.
 
-- [Liste der Anwendungssicherungen abrufen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): Gibt eine Liste der verfügbaren Sicherungen für jede Partition zurück, die zu einer bestimmten Service Fabric-Anwendung gehört.
+- [Liste der Anwendungssicherungen abrufen](/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): Gibt eine Liste der verfügbaren Sicherungen für jede Partition zurück, die zu einer bestimmten Service Fabric-Anwendung gehört.
 
-- [Liste der Dienstsicherungen abrufen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): Gibt eine Liste der verfügbaren Sicherungen für jede Partition zurück, die zu einem bestimmten Service Fabric-Dienst gehört.
+- [Liste der Dienstsicherungen abrufen](/rest/api/servicefabric/sfclient-api-getservicebackuplist): Gibt eine Liste der verfügbaren Sicherungen für jede Partition zurück, die zu einem bestimmten Service Fabric-Dienst gehört.
  
-- [Liste der Partitionssicherungen abrufen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): Gibt eine Liste der verfügbaren Sicherungen für die angegebene Partition zurück.
+- [Liste der Partitionssicherungen abrufen](/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): Gibt eine Liste der verfügbaren Sicherungen für die angegebene Partition zurück.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [REST-API-Referenz zu Sicherung/Wiederherstellung](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [REST-API-Referenz zu Sicherung/Wiederherstellung](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/backup-policy-association-example.png

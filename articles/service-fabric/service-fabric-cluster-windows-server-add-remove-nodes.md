@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: f9bee35ee8e82070b4cf601139b471562ba5e10b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fa8b0970d198f9801c7661b9555db17cdf67b3c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934207"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258725"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Hinzufügen oder Entfernen von Knoten für einen eigenständigen Service Fabric-Cluster unter Windows Server
 Nachdem Sie Ihren [eigenständigen Service Fabric-Cluster auf Windows Server-Computern erstellt haben](service-fabric-cluster-creation-for-windows-server.md), können sich Ihre geschäftlichen Anforderungen ändern, und Sie müssen Knoten zu Ihrem Cluster hinzufügen oder daraus entfernen. Dieser Artikel enthält die ausführlichen Schritte, die hierfür erforderlich sind. Bitte beachten Sie, dass die Funktion für das Hinzufügen/Entfernen von Knoten in lokalen Entwicklungsclustern nicht unterstützt wird.
@@ -142,5 +142,4 @@ Das Ersetzen primärer Knoten muss für jeden Knoten einzeln ausgeführt werden.
 ## <a name="next-steps"></a>Nächste Schritte
 * [Konfigurationseinstellungen für eigenständige Windows-Cluster](service-fabric-cluster-manifest.md)
 * [Schützen des eigenständigen Windows-Clusters mit Zertifikaten](service-fabric-windows-cluster-x509-security.md)
-* [Erstellen eines eigenständigen Service Fabric-Clusters mit drei Knoten und Azure-VMs mit Windows Server](service-fabric-cluster-creation-with-windows-azure-vms.md)
-
+* [Erstellen eines eigenständigen Service Fabric-Clusters mit drei Knoten und Azure-VMs mit Windows Server](./service-fabric-cluster-creation-via-arm.md)

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 3b7cb09d67080d49f53d9dd48b5ed0f8f3a54884
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a912b7a6d918a40aaae54c9b177250dc3c30c84d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701893"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256559"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Ereignisanalyse und Visualisierung mit Application Insights
 
@@ -38,7 +38,7 @@ Application Insights bietet eine eigene Ansicht zum Abfragen sämtlicher eingehe
 
 ![Application Insights-Anforderungsdetails](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-Weitere Informationen zu den Funktionen des Application Insights-Portals finden Sie in der [Dokumentation zum Application Insights-Portal](../azure-monitor/app/app-insights-dashboards.md).
+Weitere Informationen zu den Funktionen des Application Insights-Portals finden Sie in der [Dokumentation zum Application Insights-Portal](../azure-monitor/app/overview-dashboard.md).
 
 ### <a name="configuring-application-insights-with-eventflow"></a>Konfigurieren von Application Insights mit EventFlow
 
@@ -67,11 +67,11 @@ Wenn Sie beim Entwickeln in .NET voraussichtlich einige der Service Fabric-Progr
 
 Wenn Sie Application Insights als Ausgabe für die Ereignisse und Protokolle konfiguriert haben, sollten nach wenigen Minuten Informationen in der Application Insights-Ressource angezeigt werden. Navigieren Sie zur Application Insights-Ressource, um zum Dashboard für die Ressource zu gelangen. Klicken Sie auf der Application Insights-Taskleiste auf **Suchen**, um die zuletzt empfangenen Ablaufverfolgungen anzuzeigen und zu filtern.
 
-*Metrik-Explorer* ist ein nützliches Tool zum Erstellen von benutzerdefinierten Dashboards basierend auf den Metriken, die Ihre Anwendungen, Dienste und Cluster melden. Informationen zum Einrichten einiger benutzerdefinierter Diagramme basierend auf Ihren gesammelten Daten finden Sie unter [Untersuchen von Metriken in Application Insights](../azure-monitor/app/metrics-explorer.md).
+*Metrik-Explorer* ist ein nützliches Tool zum Erstellen von benutzerdefinierten Dashboards basierend auf den Metriken, die Ihre Anwendungen, Dienste und Cluster melden. Informationen zum Einrichten einiger benutzerdefinierter Diagramme basierend auf Ihren gesammelten Daten finden Sie unter [Untersuchen von Metriken in Application Insights](../azure-monitor/platform/metrics-charts.md).
 
-Durch Klicken auf **Analytics** gelangen Sie zum Application Insights Analytics-Portal, in dem Sie Ereignisse und Ablaufverfolgungen in größerem Umfang und mit mehr Optionen abfragen können. Weitere Informationen hierzu finden Sie unter [Analytics in Application Insights](../azure-monitor/app/analytics.md).
+Durch Klicken auf **Analytics** gelangen Sie zum Application Insights Analytics-Portal, in dem Sie Ereignisse und Ablaufverfolgungen in größerem Umfang und mit mehr Optionen abfragen können. Weitere Informationen hierzu finden Sie unter [Analytics in Application Insights](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Richten Sie Warnungen in AI ein](/azure/azure-monitor/platform/alerts-log), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
+* [Richten Sie Warnungen in AI ein](../azure-monitor/platform/alerts-log.md), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
 * Die [intelligente Erkennung in Application Insights](../azure-monitor/app/proactive-diagnostics.md) führt eine proaktive Analyse der an Application Insights gesendeten Telemetriedaten durch, um Sie vor potenziellen Leistungsproblemen zu warnen.

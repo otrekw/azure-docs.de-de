@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6512edd26b59dac11f046e82940db4877728943c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690318"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243591"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Domänenübergreifende API Management-Richtlinien)
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -58,7 +58,7 @@ Verwenden Sie die `cross-domain`-Richtlinie, um die API von browserbasierten Ado
 |cross-domain|Stammelement Untergeordnete Elemente entsprechen der [Adobe-Dateispezifikation für domänenübergreifende Richtlinien](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Ja|
 
 ### <a name="usage"></a>Verwendung
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte**: inbound
 - **Richtlinienbereiche:** alle Bereiche
@@ -141,7 +141,7 @@ In diesem Beispiel wird die Unterstützung von Preflightanforderungen veranschau
 |preflight-result-max-age|Der Header `Access-Control-Max-Age` in der Preflightantwort wird auf den Wert dieses Attributs festgelegt und wirkt sich auf die Fähigkeit des Benutzer-Agents aus, die Preflightantwort zwischenzuspeichern.|Nein|0|
 
 ### <a name="usage"></a>Verwendung
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte**: inbound
 - **Richtlinienbereiche:** alle Bereiche
@@ -178,7 +178,7 @@ Mit dem Rückrufparameter `?cb=XXX` wird ein JSONP-Ergebnis zurückgegeben, und 
 |callback-parameter-name|Der domänenübergreifende JavaScript-Funktionsaufruf mit dem vollqualifizierten Domänennamen, in dem die Funktion liegt, als Präfix.|Ja|–|
 
 ### <a name="usage"></a>Verwendung
-Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte:** outbound
 - **Richtlinienbereiche:** alle Bereiche
@@ -189,5 +189,5 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 
 + [Richtlinien in Azure API Management](api-management-howto-policies.md)
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
-+ Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
++ Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
 + [API Management-Richtlinienbeispiele](policy-samples.md)

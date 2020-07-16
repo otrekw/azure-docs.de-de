@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 55ee4c7498dcda3060d4e4221711793b80132bdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8bf54f9909125030e067bc483ca2fb7e3dc68a7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502286"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253353"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>Implementieren von Features auf Dienstebene in Ihrem Akteurdienst
 
@@ -143,7 +143,7 @@ public class Program
 
 ## <a name="implement-actor-backup-and-restore"></a>Implementieren der Sicherung und Wiederherstellung von Akteuren
 
-Der benutzerdefinierte Actordienst kann eine Methode zum Sichern von Actordaten bereitstellen. Diese nutzt die Vorteile des Remoting-Listeners, der bereits im `ActorService` enthalten ist. Ein Beispiel finden Sie unter [Implementieren von Sicherung und Wiederherstellung von Actors](../synapse-analytics/sql-data-warehouse/backup-and-restore.md).
+Der benutzerdefinierte Actordienst kann eine Methode zum Sichern von Actordaten bereitstellen. Diese nutzt die Vorteile des Remoting-Listeners, der bereits im `ActorService` enthalten ist. Ein Beispiel finden Sie unter [Implementieren von Sicherung und Wiederherstellung von Actors](service-fabric-reliable-actors-backup-and-restore.md).
 
 ## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>Akteur, der einen Remoting V2-Stapel (schnittstellenkompatibel) verwendet
 
@@ -215,7 +215,7 @@ Für diese Änderung wird ein Upgrade in zwei Schritten ausgeführt. Führen Sie
 
 * [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
 * [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
-* [Actors API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Actors API reference documentation](/previous-versions/azure/dn971626(v=azure.100))
 * [.NET-Beispielcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-Beispielcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

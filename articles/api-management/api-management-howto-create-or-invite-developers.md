@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 672f145b638fa6b85f7139f2edb4fc41bb2855d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8f7d7f7707add22d700421b229f6dbe725db465
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81260971"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250457"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Verwalten von Benutzerkonten in Azure API Management
 
-In API Management sind Entwickler die Benutzer der APIs, die Sie mit API Management verfügbar machen. Diese Anleitung beschreibt die Erstellung und Einladung von Entwicklern zur Nutzung Ihrer API und der Produkte, die Sie über die API Management-Instanz bereitgestellt haben. Informationen zum programmgesteuerten Verwalten von Benutzerkonten finden Sie in der Dokumentation zur [Benutzerentität](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user) in der [Referenz zu API Management REST](/rest/api/apimanagement/).
+In API Management sind Entwickler die Benutzer der APIs, die Sie mit API Management verfügbar machen. Diese Anleitung beschreibt die Erstellung und Einladung von Entwicklern zur Nutzung Ihrer API und der Produkte, die Sie über die API Management-Instanz bereitgestellt haben. Informationen zum programmgesteuerten Verwalten von Benutzerkonten finden Sie in der Dokumentation zur [Benutzerentität](/rest/api/apimanagement/2019-12-01/user) in der [Referenz zu API Management REST](/rest/api/apimanagement/).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -68,7 +68,7 @@ Um einen Benutzer zu blockieren, führen Sie die folgenden Schritte aus.
 
 ## <a name="reset-a-user-password"></a>Zurücksetzen des Benutzerkennworts
 
-Informationen zur programmgesteuerten Verwendung von Benutzerkonten finden Sie in der Dokumentation zur Benutzerentität in der Referenz zur [API Management REST-API](/rest/api/apimanagement/). Um das Kennwort eines Benutzerkontos auf einen bestimmten Wert zurückzusetzen, können Sie den Vorgang [Aktualisieren eines Benutzers](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) verwenden und das gewünschte Kennwort angeben.
+Informationen zur programmgesteuerten Verwendung von Benutzerkonten finden Sie in der Dokumentation zur Benutzerentität in der Referenz zur [API Management REST-API](/rest/api/apimanagement/). Um das Kennwort eines Benutzerkontos auf einen bestimmten Wert zurückzusetzen, können Sie den Vorgang [Aktualisieren eines Benutzers](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) verwenden und das gewünschte Kennwort angeben.
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>Nächste Schritte
 Nachdem Sie das Entwicklerkonto erstellt haben, können Sie das Konto zu Rollen zuweisen und Produkte und APIs abonnieren. Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen][How to create and use groups].

@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 6aafa2a3372c431f8afa7fad41051c26c3fe5fcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c534ba54ccea78759628f554707271934ddc9a48
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645564"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258477"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Einführung in Service Fabric Reliable Actors
 Reliable Actors ist ein Service Fabric-Anwendungsframework, das auf dem Muster [Virtueller Akteur](https://research.microsoft.com/en-us/projects/orleans/) basiert. Die Reliable Actors-API bietet ein Singlethread-Programmiermodell, das auf der Skalierbarkeit und Zuverlässigkeit aufbaut, die Service Fabric gewährleistet.
@@ -137,7 +137,7 @@ Die Actors-Laufzeit bietet diese Parallelitätsgarantien in Situationen, in dene
 ## <a name="next-steps"></a>Nächste Schritte
 Beginnen Sie, indem Sie Ihren ersten Reliable Actors-Dienst erstellen:
    * [Erste Schritte mit Reliable Actors in .NET](service-fabric-reliable-actors-get-started.md)
-   * [Erste Schritte mit Reliable Actors in Java](service-fabric-reliable-actors-get-started-java.md)
+   * [Erste Schritte mit Reliable Actors in Java](./service-fabric-create-your-first-linux-application-with-java.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png

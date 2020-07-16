@@ -1,14 +1,14 @@
 ---
 title: Manuelles Installieren oder Aktualisieren von Azure Functions-Bindungserweiterungen
 description: Erfahren Sie, wie Azure Functions-Bindungserweiterungen für bereitgestellte Funktions-App installiert oder aktualisiert werden.
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: e8716f691a5d19ddac7fece47c423e1f7787b9db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f0705e62adc4acb26797b937a6dd8c684a598ebc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75768859"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252622"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Manuelles Installieren oder Aktualisieren von Azure Functions-Bindungserweiterungen aus dem Portal
 

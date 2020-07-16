@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 459360e72c2d35cafedb0291642bf081bfcad96c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 077dc0e8048da39253729d56f1e812cccc69500c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103992"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242915"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinden von Hybridcomputern mit Azure über das Azure-Portal
 
@@ -32,7 +32,7 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
 
 1. Navigieren Sie in Ihrem Browser zum [Azure-Portal](https://aka.ms/hybridmachineportal).
 
-1. Wählen Sie auf der Seite **Computer – Azure Arc** entweder **Hinzufügen** (links oben) oder die Option **Computer erstellen – Azure Arc** (unten im mittleren Bereich) aus. 
+1. Wählen Sie auf der Seite **Computer – Azure Arc** entweder **Hinzufügen** (links oben) oder die Option **Computer erstellen – Azure Arc** (unten im mittleren Bereich) aus.
 
 1. Wählen Sie auf der Seite **Methode auswählen** die Kachel **Computer über ein interaktives Skript hinzufügen** und anschließend **Skript generieren** aus.
 
@@ -49,8 +49,8 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
 
 1. Wählen Sie auf der Seite **Skript generieren** in der Dropdownliste **Betriebssystem** das Betriebssystem aus, unter dem das Skript ausgeführt wird.
 
-1. Falls der Computer über einen Proxyserver kommuniziert, um eine Internetverbindung herzustellen, wählen Sie **Weiter: Proxyserver** aus. 
-1. Geben Sie auf der Registerkarte **Proxyserver** die IP-Adresse des Proxyservers oder den Namen und die Portnummer für die Kommunikation mit dem Proxyserver an. Geben Sie den Wert im Format `http://<proxyURL>:<proxyport>` ein. 
+1. Falls der Computer über einen Proxyserver kommuniziert, um eine Internetverbindung herzustellen, wählen Sie **Weiter: Proxyserver** aus.
+1. Geben Sie auf der Registerkarte **Proxyserver** die IP-Adresse des Proxyservers oder den Namen und die Portnummer für die Kommunikation mit dem Proxyserver an. Geben Sie den Wert im Format `http://<proxyURL>:<proxyport>` ein.
 1. Wählen Sie **Überprüfen + generieren** aus.
 
 1. Überprüfen Sie die auf der Registerkarte **Überprüfen + generieren** zusammengefassten Informationen, und wählen Sie dann **Herunterladen** aus. Sollten noch Änderungen erforderlich sein, wählen Sie **Zurück** aus.
@@ -59,17 +59,17 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
 
 ### <a name="install-manually"></a>Manuelle Installation
 
-Sie können den Azure Connected Machine-Agent manuell installieren, indem Sie das Windows Installer-Paket *AzureConnectedMachineAgent.msi* ausführen. Sie können die neueste Version des [Windows Installer-Pakets für den Windows-Agent](https://aka.ms/AzureConnectedMachineAgent) vom Microsoft Download Center herunterladen. 
+Sie können den Azure Connected Machine-Agent manuell installieren, indem Sie das Windows Installer-Paket *AzureConnectedMachineAgent.msi* ausführen. Sie können die neueste Version des [Windows Installer-Pakets für den Windows-Agent](https://aka.ms/AzureConnectedMachineAgent) vom Microsoft Download Center herunterladen.
 
-> [!NOTE]
-> * Zum Installieren und Deinstallieren des Agents sind *Administratorberechtigungen* erforderlich.
-> * Laden Sie zunächst das Installer-Paket herunter, und kopieren Sie es in einen Ordner auf dem Zielserver, oder verwenden Sie einen freigegebenen Netzwerkordner. Wenn Sie das Installer-Paket ohne Optionen ausführen, wird ein Setup-Assistent zur interaktiven Installation des Agents gestartet.
+>[!NOTE]
+>* Zum Installieren und Deinstallieren des Agents sind *Administratorberechtigungen* erforderlich.
+>* Laden Sie zunächst das Installer-Paket herunter, und kopieren Sie es in einen Ordner auf dem Zielserver, oder verwenden Sie einen freigegebenen Netzwerkordner. Wenn Sie das Installer-Paket ohne Optionen ausführen, wird ein Setup-Assistent zur interaktiven Installation des Agents gestartet.
 
 Wenn der Computer über einen Proxyserver mit dem Dienst kommunizieren muss, muss nach der Installation des Agents ein weiter unten in diesem Artikel beschriebener Befehl ausgeführt werden. Dadurch wird die Systemumgebungsvariable `https_proxy` für den Proxyserver festgelegt.
 
 Wenn Sie nicht mit den Befehlszeilenoptionen für Windows Installer-Pakete vertraut sind, lesen Sie die Artikel [Standardmäßige Installer-Befehlszeilenoptionen](/windows/win32/msi/standard-installer-command-line-options) und [Befehlszeilenoptionen](/windows/win32/msi/command-line-options).
 
-Führen Sie das Installationsprogramm z. B. mit dem Parameter `/?` aus, um die Hilfe- und Kurzübersichtsoption anzuzeigen. 
+Führen Sie das Installationsprogramm z. B. mit dem Parameter `/?` aus, um die Hilfe- und Kurzübersichtsoption anzuzeigen.
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
@@ -113,7 +113,7 @@ Restart-Service -Name himds
 
 Nachdem Sie den Agent installiert haben, müssen Sie den folgenden Befehl ausführen, um den Agent für die Kommunikation mit dem Azure Arc-Dienst zu konfigurieren:
 
-`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>Installieren und Überprüfen des Agents unter Linux
 
@@ -124,7 +124,7 @@ Der Linux-Agent für verbundene Computer wird im bevorzugten Paketformat für di
 
 Durch Einschließen des Parameters `--proxy "{proxy-url}:{proxy-port}"` kann der Agent optional mit Ihren Proxyinformationen konfiguriert werden.
 
-Das Skript enthält auch Logik zum Identifizieren der unterstützten und nicht unterstützten Distributionen, und es überprüft die Berechtigungen, die zum Ausführen der Installation erforderlich sind. 
+Das Skript enthält auch Logik zum Identifizieren der unterstützten und nicht unterstützten Distributionen, und es überprüft die Berechtigungen, die zum Ausführen der Installation erforderlich sind.
 
 Im folgenden Beispiel wird der Agent heruntergeladen und installiert:
 
@@ -132,7 +132,7 @@ Im folgenden Beispiel wird der Agent heruntergeladen und installiert:
 # Download the installation package.
 wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 
-# Install the connected machine agent. 
+# Install the connected machine agent.
 bash ~/Install_linux_azcmagent.sh
 ```
 
@@ -150,7 +150,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 Führen Sie nach Abschluss der Agent-Installation den folgenden Befehl aus, um den Agent für die Kommunikation mit dem Azure Arc-Dienst zu konfigurieren:
 
-`azcmagent connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Überprüfen der Verbindung mit Azure Arc
 

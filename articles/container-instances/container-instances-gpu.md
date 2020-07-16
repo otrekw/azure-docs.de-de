@@ -3,12 +3,12 @@ title: Bereitstellen GPU-fähiger Containerinstanzen
 description: Erfahren Sie, wie Sie Azure-Containerinstanzen zur Ausführung rechenintensiver Container-Apps unter Verwendung von GPU-Ressourcen bereitstellen.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 78b67843978583dd6b0f0aee2c1d8ad0e5a7ca77
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169747"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259584"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Bereitstellen von Containerinstanzen, die GPU-Ressourcen verwenden
 
@@ -225,7 +225,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über das Bereitstellen einer Containergruppe mit einer [YAML-Datei](container-instances-multi-container-yaml.md) oder einer [Resource Manager-Vorlage](container-instances-multi-container-group.md).
-* Erfahren Sie mehr über [GPU-optimierte VM-Größen](../virtual-machines/linux/sizes-gpu.md) in Azure.
+* Erfahren Sie mehr über [GPU-optimierte VM-Größen](../virtual-machines/sizes-gpu.md) in Azure.
 
 
 <!-- IMAGES -->

@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI einen Service Fab
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 1d6edc086233d757269c12e323241bc4bf55249f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14e029622f17e8aae392cc55ba4418b3971a5ad2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611695"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260225"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk
 
@@ -162,7 +162,7 @@ sfctl cluster health
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie nicht direkt mit dem nächsten Artikel fortfahren, sollten Sie [den Cluster löschen](service-fabric-cluster-delete.md), um anfallende Gebühren zu vermeiden.
+Wenn Sie nicht direkt mit dem nächsten Artikel fortfahren, sollten Sie [den Cluster löschen](./service-fabric-tutorial-delete-cluster.md), um anfallende Gebühren zu vermeiden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

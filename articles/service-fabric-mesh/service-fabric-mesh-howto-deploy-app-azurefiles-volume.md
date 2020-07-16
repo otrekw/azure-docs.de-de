@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76718819"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260094"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Einbinden eines auf Azure Files basierenden Volumes in einer Service Fabric Mesh-Anwendung 
 
 In diesem Artikel wird das Einbinden eines auf Azure Files basierenden Volumes in einen Dienst einer Service Fabric Mesh-Anwendung beschrieben.  Bei dem Azure Files-Volumetreiber handelt es sich um einen Docker-Volumetreiber, der verwendet wird, um eine Azure Files-Freigabe in einen Container einzubinden, der zum Speichern eines Dienststatus verwendet wird. Volumes bieten Ihnen einen universellen Dateispeicher und ermöglichen das Lesen und Schreiben von Dateien über normale Datenträger-E/A-Datei-APIs.  Weitere Informationen zu Volumes und Optionen für das Speichern von Anwendungsdaten finden Sie unter [Zustandsspeicherung](service-fabric-mesh-storing-state.md).
 
-Erstellen Sie eine Volumeressource in Ihrer Service Fabric Mesh-Anwendung, und verweisen Sie in Ihrem Dienst auf dieses Volume, um ein Volume in einen Dienst einzubinden.  Das Deklarieren der Volumeressource und das Verweisen auf dieselbe in der Dienstressource kann über [YAML-basierte Ressourcendateien](#declare-a-volume-resource-and-update-the-service-resource-yaml) oder über die [JSON-basierte Bereitstellungsvorlage](#declare-a-volume-resource-and-update-the-service-resource-json) erfolgen. Bevor Sie das Volume einbinden, müssen Sie zunächst ein Azure-Speicherkonto und eine [Dateifreigabe in Azure Files](/azure/storage/files/storage-how-to-create-file-share) erstellen.
+Erstellen Sie eine Volumeressource in Ihrer Service Fabric Mesh-Anwendung, und verweisen Sie in Ihrem Dienst auf dieses Volume, um ein Volume in einen Dienst einzubinden.  Das Deklarieren der Volumeressource und das Verweisen auf dieselbe in der Dienstressource kann über [YAML-basierte Ressourcendateien](#declare-a-volume-resource-and-update-the-service-resource-yaml) oder über die [JSON-basierte Bereitstellungsvorlage](#declare-a-volume-resource-and-update-the-service-resource-json) erfolgen. Bevor Sie das Volume einbinden, müssen Sie zunächst ein Azure-Speicherkonto und eine [Dateifreigabe in Azure Files](../storage/files/storage-how-to-create-file-share.md) erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 > [!NOTE]

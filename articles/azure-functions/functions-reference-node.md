@@ -2,14 +2,14 @@
 title: JavaScript-Entwicklerreferenz für Azure Functions
 description: Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln können.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 51d8c951958dc5fb4b26e92337f96e7a5c758999
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: d71301ef73cd94c13b12e17c923ec73abb8e4aae
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996600"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252724"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -52,7 +52,7 @@ JavaScript-Funktionen müssen über [`module.exports`](https://nodejs.org/api/mo
 
 Standardmäßig sucht die Functions-Runtime in `index.js` nach Ihrer Funktion, wobei sich `index.js` im gleichen übergeordneten Verzeichnis befindet wie die entsprechende Datei `function.json`. Im Standardfall sollte Ihre exportierte Funktion der einzige Export aus der zugehörigen Datei oder der Export mit dem Namen `run` oder `index` sein. Um den Dateispeicherort zu konfigurieren und den Namen Ihrer Funktion zu exportieren, lesen Sie weiter unten die Beschreibung zum [Konfigurieren des Einstiegspunkts Ihrer Funktion](functions-reference-node.md#configure-function-entry-point).
 
-An die exportierte Funktion wird bei der Ausführung eine Reihe von Argumenten übergeben. Das erste angenommene Argument ist immer ein `context`-Objekt. Wenn Ihre Funktion synchron ist (also kein Promise-Objekt zurückgibt), muss das `context`-Objekt übergeben werden, da der Aufruf von `context.done` zur korrekten Verwendung erforderlich ist.
+An die exportierte Funktion wird bei der Ausführung eine Reihe von Argumenten übergeben. Das erste angenommene Argument ist immer ein `context`-Objekt. Wenn Ihre Funktion synchron ist (also keine Zusage zurückgibt), muss das `context`-Objekt übergeben werden, da der Aufruf von `context.done` zur korrekten Verwendung erforderlich ist.
 
 ```javascript
 // You should include context, other arguments are optional
@@ -63,7 +63,7 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 ```
 
 ### <a name="exporting-an-async-function"></a>Exportieren einer Async-Funktion
-Bei der Verwendung der Deklaration [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) oder einfacher JavaScript-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) in Version 2.x der Functions-Runtime müssen Sie den [`context.done`](#contextdone-method)-Rückruf nicht explizit aufrufen, um zu signalisieren, dass Ihre Funktion abgeschlossen wurde. Ihre Funktion wird abgeschlossen, wenn die exportierte asynchrone Funktion/Promise abgeschlossen wird. Bei Funktionen für Version 1.x der Runtime müssen Sie jedoch [`context.done`](#contextdone-method) aufrufen, wenn die Ausführung des Codes abgeschlossen wurde.
+Bei der Verwendung der Deklaration [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) oder einfacher JavaScript-[Zusagen](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) in Version 2.x der Functions-Runtime müssen Sie den [`context.done`](#contextdone-method)-Rückruf nicht explizit aufrufen, um zu signalisieren, dass Ihre Funktion abgeschlossen wurde. Ihre Funktion wird abgeschlossen, wenn die exportierte asynchrone Funktion/Zusage abgeschlossen wird. Bei Funktionen für Version 1.x der Runtime müssen Sie jedoch [`context.done`](#contextdone-method) aufrufen, wenn die Ausführung des Codes abgeschlossen wurde.
 
 Beim folgenden Beispiel handelt es sich um eine einfache Funktion, die ihre Auslösung protokolliert und dann die Ausführung abschließt.
 
@@ -133,7 +133,7 @@ Ausgaben (Bindungen des Typs `direction === "out"`) können von einer Funktion a
 
 Sie können Ausgabebindungen mit einer der folgenden Methoden Daten zuweisen. Achten Sie darauf, dass Sie nicht beide Methoden verwenden.
 
-- **_[Empfohlen für mehrere Ausgaben]_ Zurückgeben eines Objekts.** Bei Verwendung einer asynchronen Funktion (mit Rückgabe einer `Promise`) kann ein Objekt mit zugewiesenen Ausgabedaten zurückgegeben werden. Im folgenden Beispiel werden die Ausgabebindungen in *function.json* mit „httpResponse“ und „queueOutput“ benannt.
+- **_[Empfohlen für mehrere Ausgaben]_ Zurückgeben eines Objekts.** Bei Verwendung einer asynchronen Funktion (mit Rückgabe einer Zusage) kann ein Objekt mit zugewiesenen Ausgabedaten zurückgegeben werden. Im folgenden Beispiel werden die Ausgabebindungen in *function.json* mit „httpResponse“ und „queueOutput“ benannt.
 
   ```javascript
   module.exports = async function(context) {
@@ -148,7 +148,7 @@ Sie können Ausgabebindungen mit einer der folgenden Methoden Daten zuweisen. Ac
   ```
 
   Bei Verwendung einer synchronen Funktion kann dieses Objekt mithilfe von [`context.done`](#contextdone-method) zurückgegeben werden (siehe Beispiel).
-- **_[Empfohlen für eine einzelne Ausgabe]_ Direktes Zurückgeben eines Werts und Verwenden des Bindungsnamens „$return“.** Dies ist nur bei asynchronen Funktionen (mit Rückgabe einer `Promise`) möglich. Siehe dazu das Beispiel unter [Exportieren einer Async-Funktion](#exporting-an-async-function). 
+- **_[Empfohlen für eine einzelne Ausgabe]_ Direktes Zurückgeben eines Werts und Verwenden des Bindungsnamens „$return“.** Dies ist nur bei asynchronen Funktionen (mit Rückgabe einer Zusage) möglich. Siehe dazu das Beispiel unter [Exportieren einer Async-Funktion](#exporting-an-async-function). 
 - **Zuweisen von Werten zu `context.bindings`.** Sie können „context.bindings“ direkt Werte zuweisen.
 
   ```javascript
@@ -644,7 +644,7 @@ Wenn Sie einen dienstabhängigen Client in einer Azure Functions-Anwendung verwe
 
 ### <a name="use-async-and-await"></a>Verwenden von `async` und `await`
 
-Beim Schreiben von Azure Functions in JavaScript sollten Sie Code schreiben, indem Sie die Schlüsselwörter `async` und `await` verwenden. Wenn Sie zum Schreiben von Code `async` und `await` anstelle von Rückrufen oder `.then` und `.catch` mit `Promise` verwenden, können Sie zwei häufige Probleme vermeiden:
+Beim Schreiben von Azure Functions in JavaScript sollten Sie Code schreiben, indem Sie die Schlüsselwörter `async` und `await` verwenden. Wenn Sie zum Schreiben von Code `async` und `await` anstelle von Rückrufen oder `.then` und `.catch` mit Zusagen verwenden, können Sie zwei häufige Probleme vermeiden:
  - Das Auslösen von nicht abgefangenen Ausnahmen, die zu einem [Absturz des Node.js-Prozesses](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly) führen und sich unter Umständen auf die Ausführung anderer Funktionen auswirken.
  - Unerwartetes Verhalten, z. B. fehlende Protokolle aus „context.log“, die durch nicht korrekt erwartete asynchrone Aufrufe verursacht werden.
 

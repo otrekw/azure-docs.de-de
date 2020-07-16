@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645751"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258639"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Service Fabric-Linux-Clusterereignisse in Syslog
 
@@ -113,6 +113,6 @@ Das Beispiel oben ist ein NodeDown-Ereignis. Die vollständige Liste der Ereigni
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Stellen Sie den Log Analytics-Agent auf Ihren Knoten bereit](service-fabric-diagnostics-oms-agent.md), um Leistungsindikatoren zu erfassen und Docker-Statistiken und -Protokolle für Ihre Container zu sammeln.
-* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokolle vertraut.
-* [Erstellen benutzerdefinierter Ansichten in Azure Monitor-Protokollen mithilfe des Ansicht-Designers](../log-analytics/log-analytics-view-designer.md)
-* Referenz zur Vorgehensweise bei der [Integration von Azure Monitor-Protokollen in Syslog](../log-analytics/log-analytics-data-sources-syslog.md).
+* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../azure-monitor/log-query/log-query-overview.md) in Azure Monitor-Protokolle vertraut.
+* [Erstellen benutzerdefinierter Ansichten in Azure Monitor-Protokollen mithilfe des Ansicht-Designers](../azure-monitor/platform/view-designer.md)
+* Referenz zur Vorgehensweise bei der [Integration von Azure Monitor-Protokollen in Syslog](../azure-monitor/platform/data-sources-syslog.md).

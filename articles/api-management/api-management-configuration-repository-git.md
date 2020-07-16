@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: c1a9f3e76622523dde03cc2a639cce33227dff5f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 183a3561a7c01d8f0911a70846384cf8ebc7dd9c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649217"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254842"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
 
@@ -142,7 +142,7 @@ git push
 
 Sobald ein Commit für Ihre lokalen Änderungen ausgeführt wurde und sie in das Serverrepository übertragen wurden, können Sie sie Ihrer API Management-Dienstinstanz bereitstellen.
 
-Informationen zum Ausführen dieses Vorgangs mit der REST-API finden Sie unter [Azure API Management-REST-API-Mandanten-Entität](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/tenantconfiguration).
+Informationen zum Ausführen dieses Vorgangs mit der REST-API finden Sie unter [Azure API Management-REST-API-Mandanten-Entität](/rest/api/apimanagement/2019-12-01/tenantconfiguration).
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Referenz der Datei- und Ordnerstruktur des lokalen Git-Repositorys
 
@@ -172,8 +172,8 @@ Diese Dateien können im lokalen System erstellt, gelöscht, bearbeitet und verw
 > [!NOTE]
 > Die folgenden Entitäten sind im Git-Repository nicht enthalten und können nicht mithilfe von Git konfiguriert werden.
 >
-> * [Benutzer](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
-> * [Abonnements](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
+> * [Benutzer](/rest/api/apimanagement/2019-12-01/user)
+> * [Abonnements](/rest/api/apimanagement/2019-12-01/subscription)
 > * Benannte Werte
 > * Andere Entitäten des Entwicklerportals als Stile
 >
@@ -222,15 +222,15 @@ Die letzte Einstellung, `$ref-policy`, entspricht der globalen Datei mit Richtli
 ### <a name="apis-folder"></a>Ordner „apis“
 Der Ordner `apis` enthält einen Ordner für jede API in der Dienstinstanz, der die folgenden Elemente enthält.
 
-* `apis\<api name>\configuration.json` : Dies ist die Konfiguration der API, und die Datei enthält Informationen zur Back-End-Dienst-URL und zu den Vorgängen. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie [Abrufen einer bestimmten API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) mit `export=true` im Format `application/json` aufrufen.
-* `apis\<api name>\api.description.html`: Dies ist die Beschreibung der API, und sie entspricht der Eigenschaft `description` der [Entität „API“](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty).
-* `apis\<api name>\operations\`: Dieser Ordner enthält `<operation name>.description.html`-Dateien, die den Vorgängen in der API entsprechen. Jede Datei enthält die Beschreibung eines einzelnen Vorgangs in der API, die der `description`-Eigenschaft der [Entität „Operation“](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) in der REST-API entspricht.
+* `apis\<api name>\configuration.json` : Dies ist die Konfiguration der API, und die Datei enthält Informationen zur Back-End-Dienst-URL und zu den Vorgängen. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie [Abrufen einer bestimmten API](/rest/api/apimanagement/2019-12-01/apis/get) mit `export=true` im Format `application/json` aufrufen.
+* `apis\<api name>\api.description.html`: Dies ist die Beschreibung der API, und sie entspricht der Eigenschaft `description` der [Entität „API“](/java/api/com.microsoft.azure.storage.table.entityproperty).
+* `apis\<api name>\operations\`: Dieser Ordner enthält `<operation name>.description.html`-Dateien, die den Vorgängen in der API entsprechen. Jede Datei enthält die Beschreibung eines einzelnen Vorgangs in der API, die der `description`-Eigenschaft der [Entität „Operation“](/rest/api/visualstudio/operations/list#operationproperties) in der REST-API entspricht.
 
 ### <a name="groups-folder"></a>Ordner „groups“
 Der Ordner `groups` enthält einen Ordner für jede in der Dienstinstanz definierte Gruppe.
 
-* `groups\<group name>\configuration.json`: Dies ist die Konfiguration für die Gruppe. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie den Vorgang [Abrufen einer bestimmten Gruppe](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/group/get) aufrufen.
-* `groups\<group name>\description.html`: Dies ist die Beschreibung der Gruppe, und sie entspricht der Eigenschaft `description` der [Entität „Group“](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
+* `groups\<group name>\configuration.json`: Dies ist die Konfiguration für die Gruppe. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie den Vorgang [Abrufen einer bestimmten Gruppe](/rest/api/apimanagement/2019-12-01/group/get) aufrufen.
+* `groups\<group name>\description.html`: Dies ist die Beschreibung der Gruppe, und sie entspricht der Eigenschaft `description` der [Entität „Group“](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>Ordner „policies“
 Der Ordner `policies` enthält die Richtlinienanweisungen für Ihre Dienstinstanz.
@@ -249,8 +249,8 @@ Der Ordner `portalStyles` enthält Konfigurationen und Stylesheets für Anpassun
 ### <a name="products-folder"></a>Ordner „products“
 Der Ordner `products` enthält einen Ordner für jedes in der Dienstinstanz definierte Produkt.
 
-* `products\<product name>\configuration.json`: Dies ist die Konfiguration für das Produkt. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie den Vorgang [Abrufen eines bestimmten Produkts](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/product/get) aufrufen.
-* `products\<product name>\product.description.html`: Dies ist die Beschreibung des Produkts, und sie entspricht der Eigenschaft `description` der [Entität „Product“](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) in der REST-API.
+* `products\<product name>\configuration.json`: Dies ist die Konfiguration für das Produkt. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie den Vorgang [Abrufen eines bestimmten Produkts](/rest/api/apimanagement/2019-12-01/product/get) aufrufen.
+* `products\<product name>\product.description.html`: Dies ist die Beschreibung des Produkts, und sie entspricht der Eigenschaft `description` der [Entität „Product“](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) in der REST-API.
 
 ### <a name="templates"></a>Vorlagen
 Der Ordner `templates` enthält die Konfiguration für die [E-Mail-Vorlagen](api-management-howto-configure-notifications.md) der Dienstinstanz.
@@ -262,8 +262,8 @@ Der Ordner `templates` enthält die Konfiguration für die [E-Mail-Vorlagen](api
 Informationen zu anderen Möglichkeiten für die Verwaltung Ihrer Dienstinstanz finden Sie unter:
 
 * Verwalten der Dienstinstanz mit den folgenden PowerShell-Cmdlets
-  * [Referenz zu PowerShell-Cmdlets für die Dienstbereitstellung](https://docs.microsoft.com/powershell/module/wds)
-  * [Referenz zu PowerShell-Cmdlets für die Dienstverwaltung](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
+  * [Referenz zu PowerShell-Cmdlets für die Dienstbereitstellung](/powershell/module/wds)
+  * [Referenz zu PowerShell-Cmdlets für die Dienstverwaltung](/powershell/azure/servicemanagement/overview)
 * Verwalten der Dienstinstanz mit der REST-API
   * [REST-API-Referenz zu API Management](/rest/api/apimanagement/)
 
@@ -281,7 +281,3 @@ Informationen zu anderen Möglichkeiten für die Verwaltung Ihrer Dienstinstanz 
 [api-management-identity-settings]: ./media/api-management-configuration-repository-git/api-management-identity-settings.png
 [api-management-delegation-settings]: ./media/api-management-configuration-repository-git/api-management-delegation-settings.png
 [api-management-git-icon-enable]: ./media/api-management-configuration-repository-git/api-management-git-icon-enable.png
-
-
-
-

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ac5f6b4d2d197bbd4f4aff9236837eab062b4a63
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190009"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243306"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Verwenden externer Dienste über den Azure API Management-Dienst
 Mit den im Azure API Management-Dienst verfügbaren Richtlinien können Sie zahlreiche nützliche Aufgaben durchführen, ausschließlich basierend auf der eingehenden Anforderung, der ausgehenden Antwort und den grundlegenden Konfigurationsinformationen. Die Interaktionsfähigkeit mit externen Diensten mithilfe von API Management-Richtlinien eröffnet jedoch viele weitere Möglichkeiten.
@@ -27,7 +27,7 @@ Mit den im Azure API Management-Dienst verfügbaren Richtlinien können Sie zah
 Sie haben bereits gesehen, wie es möglich ist, mit dem [Azure Event Hub-Dienst für die Protokollierung, Überwachung und Analyse](api-management-log-to-eventhub-sample.md) zu interagieren. In diesem Artikel werden Richtlinien gezeigt, die eine Interaktion mit beliebigen externen HTTP-basierten Diensten ermöglichen. Diese Richtlinien können zum Auslösen von Remoteereignissen oder zum Abrufen von Informationen verwendet werden, die wiederum zum Verändern der ursprünglichen Anforderung und Antwort genutzt werden.
 
 ## <a name="send-one-way-request"></a>Send-One-Way-Request
-Die einfachste externe Interaktion ist möglicherweise eine Anforderung im „Fire and Forget“-Stil (Auslösen und Vergessen), mit der ein externer Dienst über ein wichtiges Ereignis jeglicher Art benachrichtigt werden kann. Die Richtlinie `choose` zur Ablaufsteuerung kann verwendet werden, um beliebige Bedingungen zu erkennen, die für Sie relevant sind.  Wenn die Bedingung erfüllt ist, können Sie mithilfe der Richtlinie [send-one-way-request](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) eine externe HTTP-Anforderung ausführen. Dabei kann es sich um eine Anforderung an ein Messagingsystem wie Hipchat oder Slack oder an eine E-Mail-API wie SendGrid oder MailChimp handeln. Alternativ können für kritische Supportfälle Anforderungen an beispielsweise PagerDuty gesendet werden. Alle diese Messagingsysteme verfügen über einfache HTTP-APIs, die aufgerufen werden können.
+Die einfachste externe Interaktion ist möglicherweise eine Anforderung im „Fire and Forget“-Stil (Auslösen und Vergessen), mit der ein externer Dienst über ein wichtiges Ereignis jeglicher Art benachrichtigt werden kann. Die Richtlinie `choose` zur Ablaufsteuerung kann verwendet werden, um beliebige Bedingungen zu erkennen, die für Sie relevant sind.  Wenn die Bedingung erfüllt ist, können Sie mithilfe der Richtlinie [send-one-way-request](./api-management-advanced-policies.md#SendOneWayRequest) eine externe HTTP-Anforderung ausführen. Dabei kann es sich um eine Anforderung an ein Messagingsystem wie Hipchat oder Slack oder an eine E-Mail-API wie SendGrid oder MailChimp handeln. Alternativ können für kritische Supportfälle Anforderungen an beispielsweise PagerDuty gesendet werden. Alle diese Messagingsysteme verfügen über einfache HTTP-APIs, die aufgerufen werden können.
 
 ### <a name="alerting-with-slack"></a>Benachrichtigung mit Slack
 Im folgenden Beispiel wird gezeigt, wie eine Nachricht an einen Slack-Chatraum gesendet wird, wenn der Statuscode der HTTP-Antwort größer als oder gleich 500 ist. Ein 500-Bereichsfehler deutet auf ein Problem mit der Back-End-API hin, den der API-Client nicht selbst beheben kann. In der Regel muss über API Management auf die eine oder andere Weise eingegriffen werden.  
@@ -62,7 +62,7 @@ Bei Slack kommen eingehende Webhooks zum Einsatz. Beim Konfigurieren eines einge
 ![Slack-Webhook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
 ### <a name="is-fire-and-forget-good-enough"></a>Reicht „Fire and Forget“ aus?
-Es gibt einige Nachteile bei einer Anforderung im Fire-and-Forget-Stil. Wenn die Anforderung aus irgendeinem Grund nicht erfolgreich ist, wird der Fehler nicht gemeldet. In einer solchen Situation sind die Komplexität eines sekundären Fehlermeldesystems und die zusätzlichen Leistungseinbußen aufgrund der Antwortwartezeiten nicht gerechtfertigt. Bei Szenarien, in denen Sie die Antwort unbedingt überprüfen müssen, ist die [send-request](/azure/api-management/api-management-advanced-policies#SendRequest) -Richtlinie die bessere Option.
+Es gibt einige Nachteile bei einer Anforderung im Fire-and-Forget-Stil. Wenn die Anforderung aus irgendeinem Grund nicht erfolgreich ist, wird der Fehler nicht gemeldet. In einer solchen Situation sind die Komplexität eines sekundären Fehlermeldesystems und die zusätzlichen Leistungseinbußen aufgrund der Antwortwartezeiten nicht gerechtfertigt. Bei Szenarien, in denen Sie die Antwort unbedingt überprüfen müssen, ist die [send-request](./api-management-advanced-policies.md#SendRequest) -Richtlinie die bessere Option.
 
 ## <a name="send-request"></a>send-request
 Die `send-request` -Richtlinie ermöglicht die Nutzung eines externen Diensts zum Durchführen komplexer Verarbeitungsfunktionen und zum Zurückgeben von Daten an den API Management-Dienst, der für die weitere Richtlinienverarbeitung verwendet werden kann.
@@ -213,7 +213,7 @@ Sobald diese Informationen vorliegen, können Sie Anforderungen an alle Back-End
 Diese Anforderungen werden nacheinander ausgeführt, was nicht ideal ist. 
 
 ### <a name="responding"></a>Antworten
-Um die zusammengesetzte Antwort zu generieren, kann die Richtlinie [return-response](/azure/api-management/api-management-advanced-policies#ReturnResponse) verwendet werden. Das `set-body`-Element kann einen Ausdruck verwenden, um ein neues `JObject` mit allen Komponentendarstellungen zu erstellen, die als Eigenschaften eingebettet sind.
+Um die zusammengesetzte Antwort zu generieren, kann die Richtlinie [return-response](./api-management-advanced-policies.md#ReturnResponse) verwendet werden. Das `set-body`-Element kann einen Ausdruck verwenden, um ein neues `JObject` mit allen Komponentendarstellungen zu erstellen, die als Eigenschaften eingebettet sind.
 
 ```xml
 <return-response response-variable-name="existing response variable">
@@ -287,4 +287,3 @@ Bei der Konfiguration des Platzhaltervorgangs können Sie festlegen, dass die Da
 
 ## <a name="summary"></a>Zusammenfassung
 Der Azure API Management-Dienst bietet flexible Richtlinien, die selektiv auf den HTTP-Verkehr angewendet werden können und die Zusammensetzung der Back-End-Dienste ermöglichen. Unabhängig davon, ob Sie das API-Gateway mit Alarmfunktionen, Überprüfungs- und Validierungsfunktionen verbessern möchten oder ob Sie neue zusammengesetzte Ressourcen basierend auf mehreren Back-End-Diensten erstellen möchten, bieten die `send-request` -Richtlinie und verwandte Richtlinien vollkommen neue Möglichkeiten.
-

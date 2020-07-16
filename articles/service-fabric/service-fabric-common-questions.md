@@ -4,12 +4,12 @@ description: Häufig gestellte Fragen zu Service Fabric, einschließlich Funktio
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 056ff2475e0ae8c78887e24e07a3e33f12d7df88
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78254886"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258947"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -22,9 +22,9 @@ Es gibt viele häufig gestellte Fragen zu den Funktionen und zur Verwendung von 
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Wie kann ich ein Rollback für mein Service Fabric-Clusterzertifikat ausführen?
 
-Für das Rollback (Zurücksetzen) eines Upgrades für Ihre Anwendung ist vor dem Commit für die Änderung durch das Service Fabric-Clusterquorum eine Integritätsfehlererkennung erforderlich; für Änderungen mit erfolgtem Commit kann nur ein Rollforward ausgeführt werden. Möglicherweise muss ein Eskalationstechniker über die Kundensupportdienste Ihr Cluster wiederherstellen, wenn eine nicht überwachte wichtige Zertifikatsänderung eingeführt wurde.  Das [Service Fabric-Anwendungsupgrade](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) wendet [Anwendungsupgradeparameter](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master) an und verspricht ein Upgrade ohne Ausfallzeiten.  Entsprechend dem empfohlenen überwachten Modus für Anwendungsupgrades basiert der automatische Fortschritt der Domänenaktualisierung auf bestandenen Integritätsprüfungen. Ein Rollback erfolgt automatisch, wenn die Aktualisierung eines Standarddienstes fehlschlägt.
+Für das Rollback (Zurücksetzen) eines Upgrades für Ihre Anwendung ist vor dem Commit für die Änderung durch das Service Fabric-Clusterquorum eine Integritätsfehlererkennung erforderlich; für Änderungen mit erfolgtem Commit kann nur ein Rollforward ausgeführt werden. Möglicherweise muss ein Eskalationstechniker über die Kundensupportdienste Ihr Cluster wiederherstellen, wenn eine nicht überwachte wichtige Zertifikatsänderung eingeführt wurde.  Das [Service Fabric-Anwendungsupgrade](./service-fabric-application-upgrade.md?branch=master) wendet [Anwendungsupgradeparameter](./service-fabric-application-upgrade-parameters.md?branch=master) an und verspricht ein Upgrade ohne Ausfallzeiten.  Entsprechend dem empfohlenen überwachten Modus für Anwendungsupgrades basiert der automatische Fortschritt der Domänenaktualisierung auf bestandenen Integritätsprüfungen. Ein Rollback erfolgt automatisch, wenn die Aktualisierung eines Standarddienstes fehlschlägt.
  
-Wenn Ihr Cluster noch die klassische Eigenschaft „Zertifikatfingerabdruck“ in der Resource Manager-Vorlage nutzt, empfiehlt es sich, [„Zertifikatfingerabdruck“ in „Allgemeiner Name“](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn) für den Cluster zu ändern, um die modernen Verwaltungsfunktionen für geheime Schlüssel verwenden zu können.
+Wenn Ihr Cluster noch die klassische Eigenschaft „Zertifikatfingerabdruck“ in der Resource Manager-Vorlage nutzt, empfiehlt es sich, [„Zertifikatfingerabdruck“ in „Allgemeiner Name“](./service-fabric-cluster-change-cert-thumbprint-to-cn.md) für den Cluster zu ändern, um die modernen Verwaltungsfunktionen für geheime Schlüssel verwenden zu können.
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Kann ich einen Cluster erstellen, der mehrere Azure-Regionen oder eigene Datencenter umfasst?
 
@@ -41,7 +41,7 @@ Einige Aspekte, die zu berücksichtigen sind:
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Erhalten Service Fabric-Knoten automatisch Betriebssystemupdates?
 
-Sie können das allgemein verfügbare Feature [Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) nutzen.
+Sie können das allgemein verfügbare Feature [Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) nutzen.
 
 Für Cluster, die NICHT in Azure ausgeführt werden, haben wir [eine Anwendung bereitgestellt](service-fabric-patch-orchestration-application.md), mit der die Betriebssysteme unter Ihren Service Fabric-Knoten gepatcht werden können.
 
@@ -126,7 +126,7 @@ Nein. Virtuelle Computer mit niedriger Priorität werden nicht unterstützt.
 Nachfolgend werden die Möglichkeiten für Ihre Anwendung zum Abrufen von Anmeldeinformationen für die Authentifizierung bei Key Vault aufgeführt:
 
 A. Während des Erstellungs-/Packauftrags Ihrer Anwendungen können Sie ein Zertifikat in das Datenpaket Ihrer Service Fabric-App pullen und dieses für die Authentifizierung bei Key Vault verwenden.
-B. Für MSI-fähige Hosts von VM-Skalierungsgruppen können Sie einen einfachen PowerShell-SetupEntryPoint für Ihre Service Fabric-App entwickeln, um [ein Zugriffstoken vom MSI-Endpunkt](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token) abzurufen und dann [Ihre geheimen Schlüssel aus KeyVault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret) abzurufen.
+B. Für MSI-fähige Hosts von VM-Skalierungsgruppen können Sie einen einfachen PowerShell-SetupEntryPoint für Ihre Service Fabric-App entwickeln, um [ein Zugriffstoken vom MSI-Endpunkt](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) abzurufen und dann [Ihre geheimen Schlüssel aus KeyVault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret) abzurufen.
 
 ## <a name="application-design"></a>Anwendungsentwurf
 
@@ -177,9 +177,9 @@ Container bieten eine einfache Möglichkeit zum Paketieren von Diensten und ihre
 
 Wir haben Teile von Service Fabric ([Reliable Services-Framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [Reliable Actors-Framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.NET Core-Integrationsbibliotheken](https://github.com/Azure/service-fabric-aspnetcore), [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer) und die [Service Fabric-Befehlszeilenschnittstelle](https://github.com/Azure/service-fabric-cli)) als Open-Source-Code auf GitHub bereitgestellt und akzeptieren Communitybeiträge für diese Projekte. 
 
-[Vor kurzem haben wir bekannt gegeben](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/), dass wir die Breitstellung der Service Fabric-Laufzeit als Open-Source-Code planen. Aktuell steht auf GitHub das [Service Fabric-Repository](https://github.com/Microsoft/service-fabric/) mit Erstellungs- und Testtools für Linux zur Verfügung. Sie können also das Repository klonen, Service Fabric für Linux erstellen, grundlegende Tests ausführen, Probleme melden und Pull Requests übermitteln. Wir arbeiten mit Hochdruck daran, auch die Windows-Buildumgebung zu migrieren – zusammen mit einer vollständigen CI-Umgebung.
+[Vor kurzem haben wir bekannt gegeben](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric), dass wir die Breitstellung der Service Fabric-Laufzeit als Open-Source-Code planen. Aktuell steht auf GitHub das [Service Fabric-Repository](https://github.com/Microsoft/service-fabric/) mit Erstellungs- und Testtools für Linux zur Verfügung. Sie können also das Repository klonen, Service Fabric für Linux erstellen, grundlegende Tests ausführen, Probleme melden und Pull Requests übermitteln. Wir arbeiten mit Hochdruck daran, auch die Windows-Buildumgebung zu migrieren – zusammen mit einer vollständigen CI-Umgebung.
 
-Folgen Sie dem [Service Fabric-Blog](https://blogs.msdn.microsoft.com/azureservicefabric/), in dem Sie weitere Details finden, sobald sie angekündigt werden.
+Folgen Sie dem [Service Fabric-Blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric), in dem Sie weitere Details finden, sobald sie angekündigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 100cf1f7bf8a0c903cfd61d93d2f923c32cabd11
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645530"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260955"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors-Eintrittsinvarianz
 Die Reliable Actors-Laufzeit erlaubt bei logischen Aufrufen standardmäßig kontextbasierte Eintrittsinvarianz. Dadurch können Actors eintrittsinvariant sein, wenn sie sich in der selben Aufrufkontextkette befinden. Beispiel: Actor A sendet eine Nachricht an Actor B und dieser wiederum sendet eine Nachricht an Actor C. Wenn Actor C Actor A aufruft, wird im Rahmen der Nachrichtenverarbeitung zugelassen, dass die Nachricht eintrittsinvariant ist. Alle weiteren Nachrichten, die zu unterschiedlichen Aufrufkontexten gehören, werden auf Actor A blockiert, bis dieser die Verarbeitung abgeschlossen hat.
@@ -102,4 +102,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr zur Eintrittsinvarianz in der [Referenzdokumentation zur Actor-API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* Erfahren Sie mehr zur Eintrittsinvarianz in der [Referenzdokumentation zur Actor-API](/previous-versions/azure/dn971626(v=azure.100))

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202875"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253693"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Schützen des SPA-Back-Ends mit OAuth 2.0, Azure Active Directory B2C und Azure API Management
 
@@ -458,7 +458,7 @@ Sie müssen dem Bereich mit IP-Einschränkungen CIDR-formatierte Adressblöcke h
 Die obigen Schritte können angepasst und bearbeitet werden, um viele verschiedene Anwendungsfälle von Azure AD B2C mit API Management zu ermöglichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zu [Azure Active Directory und OAuth 2.0](../active-directory/develop/authentication-scenarios.md)
+* Weitere Informationen zu [Azure Active Directory und OAuth 2.0](../active-directory/develop/authentication-vs-authorization.md)
 * Hier finden Sie weitere [Videos](https://azure.microsoft.com/documentation/videos/index/?services=api-management) zu API Management.
 * Weitere Methoden zum Sichern Ihres Back-End-Diensts finden Sie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](api-management-howto-mutual-certificates.md).
 * [Erstellen einer API Management-Dienstinstanz](get-started-create-service-instance.md)

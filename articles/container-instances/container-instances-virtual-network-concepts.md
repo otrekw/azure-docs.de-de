@@ -4,12 +4,12 @@ description: Szenarien, Ressourcen und Einschränkungen für die Bereitstellung 
 ms.topic: article
 ms.date: 04/29/2020
 ms.author: danlep
-ms.openlocfilehash: 77fbdb1720e571027f28b5bdca5c0e3c65c3ded2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: c4e983e7d83e661b4ba50ebe2c6d65bce2f42514
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584194"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259547"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Szenarien und Ressourcen für virtuelle Azure-Netzwerke
 
@@ -67,7 +67,7 @@ Das Subnetz, das Sie für Containergruppen verwenden, darf nur Containergruppen 
 
 Ein Netzwerkprofil ist eine Netzwerkkonfigurationsvorlage für Azure-Ressourcen. Es gibt bestimmte Netzwerkeigenschaften für die Ressource an, z.B. das Subnetz, in dem diese bereitgestellt werden sollen. Wenn Sie den Befehl [az container create][az-container-create] zum ersten Mal zum Bereitstellen einer Containergruppe in einem Subnetz (und somit in einem virtuellen Netzwerk) verwenden, erstellt Azure ein Netzwerkprofil für Sie. Sie können dieses Netzwerkprofil dann für zukünftige Bereitstellungen in dem Subnetz verwenden. 
 
-Sie müssen die vollständige Resource Manager-Ressourcen-ID eines Netzwerkprofils angeben, um eine Resource Manager-Vorlage, YAML-Datei oder programmgesteuerte Methode zum Bereitstellen einer Containergruppe in einem Subnetz verwenden zu können. Sie können ein Profil verwenden, das Sie zuvor mithilfe des Befehls [az container create][az-container-create] erstellt haben, oder ein Profil mithilfe einer Resource Manager-Vorlage erstellen (Informationen dazu finden Sie im [Vorlagenbeispiel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) und in der [Referenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Verwenden Sie den Befehl [az network profile list][az-network-profile-list], um die ID eines zuvor erstellten Profils abzurufen. 
+Sie müssen die vollständige Resource Manager-Ressourcen-ID eines Netzwerkprofils angeben, um eine Resource Manager-Vorlage, YAML-Datei oder programmgesteuerte Methode zum Bereitstellen einer Containergruppe in einem Subnetz verwenden zu können. Sie können ein Profil verwenden, das Sie zuvor mithilfe des Befehls [az container create][az-container-create] erstellt haben, oder ein Profil mithilfe einer Resource Manager-Vorlage erstellen (Informationen dazu finden Sie im [Vorlagenbeispiel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) und in der [Referenz](/azure/templates/microsoft.network/networkprofiles)). Verwenden Sie den Befehl [az network profile list][az-network-profile-list], um die ID eines zuvor erstellten Profils abzurufen. 
 
 In der folgenden Abbildung wurden mehrere Containergruppen für ein Subnetz bereitgestellt, das an Azure Container Instances delegiert wurde. Nachdem Sie eine Containergruppe für ein Subnetz bereitgestellt haben, können Sie zusätzliche Containergruppen für dieses bereitstellen, indem Sie das gleiche Netzwerkprofil angeben.
 
@@ -86,4 +86,3 @@ In der folgenden Abbildung wurden mehrere Containergruppen für ein Subnetz bere
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
-

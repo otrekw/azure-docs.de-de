@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 3c1a6cfa5227369bf1cde4af087019727c22c0c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0899e33e875fea4a1708e593876b7ef771004677
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75462952"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253183"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Gewusst wie: Verwenden der Reliable Services-Kommunikations-APIs
 Azure Service Fabric ist als Plattform vollständig unabhängig von der Kommunikation zwischen Diensten. Alle Protokolle und Stapel von UDP bis HTTP sind zulässig. Es liegt in der Entscheidung des Entwicklers, wie Dienste kommunizieren sollen. Das Reliable Services-Anwendungsframework stellt integrierte Kommunikationsstapel und APIs bereit, die Sie zum Erstellen Ihrer benutzerdefinierten Kommunikationskomponenten verwenden können.
@@ -188,7 +188,7 @@ public CompletableFuture<String> openAsync(CancellationToken cancellationToken)
 Über die von Service Fabric bereitgestellten APIs können Clients und andere Dienste dann diese Adresse anhand des Dienstnamens anfordern. Dies ist wichtig, weil die Dienstadresse nicht statisch ist. Dienste werden im Cluster zum Zwecke des Lastenausgleichs von Ressourcen und der Verfügbarkeit hin und her verschoben. Dies ist der Mechanismus, mit dem Clients die Überwachungsadresse für einen Dienst auflösen können.
 
 > [!NOTE]
-> Eine ausführliche Anleitung mit den Schritten zum Schreiben eines Kommunikationslisteners für C# finden Sie unter [Web-API-Dienste von Service Fabric mit selbstgehostetem OWIN](service-fabric-reliable-services-communication-webapi.md). Für Java können Sie dagegen Ihre eigene HTTP-Serverimplementierung schreiben. Siehe dazu das EchoServer-Anwendungsbeispiel unter https://github.com/Azure-Samples/service-fabric-java-getting-started.
+> Eine ausführliche Anleitung mit den Schritten zum Schreiben eines Kommunikationslisteners für C# finden Sie unter [Web-API-Dienste von Service Fabric mit selbstgehostetem OWIN](./service-fabric-reliable-services-communication-aspnetcore.md). Für Java können Sie dagegen Ihre eigene HTTP-Serverimplementierung schreiben. Siehe dazu das EchoServer-Anwendungsbeispiel unter https://github.com/Azure-Samples/service-fabric-java-getting-started.
 >
 >
 

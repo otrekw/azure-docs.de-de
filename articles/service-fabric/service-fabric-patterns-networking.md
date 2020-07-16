@@ -3,12 +3,12 @@ title: Netzwerkmuster für Azure Service Fabric
 description: In diesem Thema werden häufige Netzwerkmuster für Service Fabric sowie die Vorgehensweise zum Erstellen eines Clusters mithilfe der Netzwerkfeatures von Azure beschrieben.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: b9114be5498bcb7fdec4e105ad6e3ff9fcc03a7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c3664d1890fd318aa1bff508a51cb227bdcc01d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85106617"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258541"
 ---
 # <a name="service-fabric-networking-patterns"></a>Netzwerkmuster für Service Fabric
 Sie können Ihre Azure Service Fabric-Cluster in andere Azure-Netzwerkfeatures integrieren. In diesem Artikel erfahren Sie, wie Sie Cluster erstellen, die folgende Features nutzen:
@@ -598,10 +598,9 @@ Nach der Bereitstellung sehen Sie zwei Lastenausgleichsmodule in der Ressourceng
 
 ## <a name="notes-for-production-workloads"></a>Anmerkungen zu Produktionsworkloads
 
-Die oben genannten GitHub-Vorlagen sind für die Verwendung mit der Standard-SKU für Azure Load Balancer Standard (SLB), der SKU „Basic“, konzipiert. Dieser SLB verfügt über keine SLA. Für Produktionsworkloads sollte daher die Standard-SKU verwendet werden. Weitere Informationen dazu finden Sie unter [Azure Load Balancer Standard: Übersicht](/azure/load-balancer/load-balancer-standard-overview). Jeder Service Fabric Cluster, der die Standard-SKU für SLB verwendet, muss sicherstellen, dass jeder Knotentyp über eine Regel verfügt, die ausgehenden Datenverkehr an Port 443 zulässt. Dies ist erforderlich, um die Clustereinrichtung abzuschließen, und jede Bereitstellung ohne diese Regel schlägt fehl. Im Beispiel oben für einen „nur internen“ Load Balancer muss der Vorlage ein zusätzlicher externer Load Balancer mit einer Regel hinzugefügt werden, die ausgehenden Datenverkehr für Port 443 zulässt.
+Die oben genannten GitHub-Vorlagen sind für die Verwendung mit der Standard-SKU für Azure Load Balancer Standard (SLB), der SKU „Basic“, konzipiert. Dieser SLB verfügt über keine SLA. Für Produktionsworkloads sollte daher die Standard-SKU verwendet werden. Weitere Informationen dazu finden Sie unter [Azure Load Balancer Standard: Übersicht](../load-balancer/load-balancer-overview.md). Jeder Service Fabric Cluster, der die Standard-SKU für SLB verwendet, muss sicherstellen, dass jeder Knotentyp über eine Regel verfügt, die ausgehenden Datenverkehr an Port 443 zulässt. Dies ist erforderlich, um die Clustereinrichtung abzuschließen, und jede Bereitstellung ohne diese Regel schlägt fehl. Im Beispiel oben für einen „nur internen“ Load Balancer muss der Vorlage ein zusätzlicher externer Load Balancer mit einer Regel hinzugefügt werden, die ausgehenden Datenverkehr für Port 443 zulässt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen eines Clusters](service-fabric-cluster-creation-via-arm.md)
 
 Nach der Bereitstellung sehen Sie zwei Lastenausgleichsmodule in der Ressourcengruppe. Wenn Sie die Lastenausgleichsmodule durchsuchen, sehen Sie die öffentliche IP-Adresse und die Verwaltungsendpunkte (Ports 19000 und 19080), die der öffentlichen IP-Adresse zugewiesen sind. Sie können auch die statische interne IP-Adresse und den Anwendungsendpunkt (Port 80) sehen, die dem internen Lastenausgleich zugewiesen sind. Beide Lastenausgleichsmodule verwenden den gleichen VM-Skalierungsgruppen-Back-End-Pool.
-

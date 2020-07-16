@@ -5,12 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392572"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260195"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Verwenden von Systemintegritätsberichten für die Problembehandlung
 Azure Service Fabric-Komponenten erstellen direkt Integritätsberichte für alle Entitäten im Cluster. Im [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden Entitäten basierend auf den Systemberichten erstellt und gelöscht. Darüber hinaus werden sie in einer Hierarchie organisiert, in der Interaktionen zwischen den Entitäten erfasst werden.
@@ -74,17 +74,17 @@ Im Warnungsbericht für den Status des Startknotens sind alle fehlerhaften Start
 * **Nächste Schritte:** Wenn diese Warnung im Cluster angezeigt wird, führen Sie die folgenden Anweisungen aus, um das Problem zu beheben: Für Cluster, auf denen Service Fabric-Version 6.5 oder höher ausgeführt wird: Wenn der Service Fabric-Cluster unter Azure ausgeführt wird, versucht Service Fabric, nachdem der Startknoten heruntergefahren ist, ihn automatisch in einen Nicht-Startknoten zu ändern. Stellen Sie dazu sicher, dass die Anzahl der Nicht-Startknoten im primären Knotentyp nicht kleiner ist als die Anzahl der Down-Startknoten. Fügen Sie zu diesem Zweck bei Bedarf weitere Knoten zum primären Knotentyp hinzu.
 Je nach den Status des Clusters kann es einige Zeit dauern, das Problem zu beheben. Sobald das Problem behoben ist, wird der Warnungsbericht automatisch gelöscht.
 
-Bei eigenständigen Service Fabric-Clustern müssen zum Löschen des Warnungsberichts alle Startknoten fehlerfrei sind. Je nachdem, warum die Startknoten fehlerhaft sind, müssen verschiedene Maßnahmen ergriffen werden: wenn der Startknoten den Status „Down“ hat, müssen Benutzer den Startknoten starten; wenn der Startknoten den Status „Removed“ oder „Unknown“ hat, muss dieser [aus dem Cluster entfernt werden](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes).
+Bei eigenständigen Service Fabric-Clustern müssen zum Löschen des Warnungsberichts alle Startknoten fehlerfrei sind. Je nachdem, warum die Startknoten fehlerhaft sind, müssen verschiedene Maßnahmen ergriffen werden: wenn der Startknoten den Status „Down“ hat, müssen Benutzer den Startknoten starten; wenn der Startknoten den Status „Removed“ oder „Unknown“ hat, muss dieser [aus dem Cluster entfernt werden](./service-fabric-cluster-windows-server-add-remove-nodes.md).
 Der Warnungsbericht wird automatisch gelöscht, wenn alle Startknoten fehlerfrei sind.
 
 Für Cluster, auf denen eine niedrigere Service Fabric-Version als 6.5 ausgeführt wird: In diesem Fall muss der Warnungsbericht manuell gelöscht werden. **Benutzer müssen sicherstellen, dass die Startknoten vor dem Löschen des Berichts fehlerfrei sind**: wenn der Startknoten den Status „Down“ hat, müssen Benutzer den Startknoten starten; wenn der Startknoten den Status „Removed“ oder „Unknown“ hat, muss dieser aus dem Cluster entfernt werden.
-Wenn alle Startknoten fehlerfrei sind, verwenden Sie den folgenden Befehl aus Powershell, um [den Warnungsbericht zu löschen](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport):
+Wenn alle Startknoten fehlerfrei sind, verwenden Sie den folgenden Befehl aus Powershell, um [den Warnungsbericht zu löschen](/powershell/module/servicefabric/send-servicefabricclusterhealthreport):
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
 
 ## Node system health reports
-System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
 
 ### Node up/down
 System.FM reports as OK when the node joins the ring (it's up and running). It reports an error when the node departs the ring (it's down, either for upgrading or simply because it has failed). The health hierarchy built by the health store acts on deployed entities in correlation with System.FM node reports. It considers the node a virtual parent of all deployed entities. The deployed entities on that node are exposed through queries if the node is reported as up by System.FM, with the same instance as the instance associated with the entities. When System.FM reports that the node is down or restarted, as a new instance, the health store automatically cleans up the deployed entities that can exist only on the down node or on the previous instance of the node.
@@ -675,7 +675,7 @@ Andere API-Aufrufe, die unterbrochen werden können, befinden sich in der **IRep
 * **Property:** **PrimaryReplicationQueueStatus** oder **SecondaryReplicationQueueStatus**, je nach Replikatrolle.
 
 ### <a name="slow-naming-operations"></a>Langsame Naming-Vorgänge
-**System.NamingService** liefert Informationen zur Integrität des entsprechenden primären Replikats, wenn ein Benennungsvorgang zu lange dauert. Beispiele für Naming-Vorgänge sind [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) und [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). Weitere Methoden finden Sie unter „FabricClient“. Beispielsweise unter [Dienstverwaltungsmethoden](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) oder [Eigenschaftsverwaltungsmethoden](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient).
+**System.NamingService** liefert Informationen zur Integrität des entsprechenden primären Replikats, wenn ein Benennungsvorgang zu lange dauert. Beispiele für Naming-Vorgänge sind [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) und [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). Weitere Methoden finden Sie unter „FabricClient“. Beispielsweise unter [Dienstverwaltungsmethoden](/dotnet/api/system.fabric.fabricclient.servicemanagementclient) oder [Eigenschaftsverwaltungsmethoden](/dotnet/api/system.fabric.fabricclient.propertymanagementclient).
 
 > [!NOTE]
 > Der Naming-Dienst löst die Dienstnamen in einen Speicherort im Cluster auf. Er ermöglicht es Benutzern, Dienstnamen und -eigenschaften zu verwalten. Hierbei handelt es sich um einen partitionierten, persistenten Service Fabric-Dienst. Eine der Partitionen stellt den *Autoritätsbesitzer* dar, der Metadaten zu allen Service Fabric-Namen und -Diensten enthält. Die Service Fabric-Namen werden verschiedenen Partitionen (so genannten *Namensbesitzer*-Partitionen) zugeordnet, um die Erweiterung des Diensts zu ermöglichen. Weitere Informationen finden Sie unter [Service Fabric-Architektur](service-fabric-architecture.md).
@@ -880,4 +880,3 @@ System.Hosting gibt eine Warnung aus, wenn im Clustermanifest keine Knotenkapazi
 * [Lokales Überwachen und Diagnostizieren von Diensten](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 * [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
-

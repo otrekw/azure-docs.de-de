@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ressourcenprotokolle und Ereignisdaten aus Co
 ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: c76d8a2e7e468c511f0df47ebb240a787f40e026
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169730"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259607"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen
 
@@ -29,7 +29,7 @@ In den folgenden Abschnitten wird beschrieben, wie Sie eine Containergruppe mit 
 Zum Aktivieren der Protokollierung in Ihren Containerinstanzen benötigen Sie Folgendes:
 
 * [Log Analytics-Arbeitsbereich](../azure-monitor/learn/quick-create-workspace.md)
-* [Azure CLI](/cli/azure/install-azure-cli) (oder [Cloud Shell](/azure/cloud-shell/overview))
+* [Azure CLI](/cli/azure/install-azure-cli) (oder [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>Abrufen der Log Analytics-Anmeldeinformationen
 
@@ -153,7 +153,7 @@ ContainerInstanceLog_CL
 
 Weitere Informationen zum Abfragen von Protokollen und Konfigurieren von Warnungen in Azure Monitor-Protokollen finden Sie in den folgenden Themen:
 
-* [Analysieren von Protokolldaten in Azure Monitor](../log-analytics/log-analytics-log-search.md)
+* [Analysieren von Protokolldaten in Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 * [Die neue Oberfläche „Warnungen“ in Azure Monitor](../azure-monitor/platform/alerts-overview.md)
 
 

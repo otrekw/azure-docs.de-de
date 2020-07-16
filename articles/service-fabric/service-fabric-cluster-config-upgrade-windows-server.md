@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 8d0279cc323f7eee87feb2a596a4c2df0b4667e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4817c7b76ccd127d5f310a9d2abcecdb094944dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790846"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246604"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Upgraden der Konfiguration eines eigenständigen Clusters 
 
@@ -53,7 +53,7 @@ TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File
 Einige Konfigurationen können nicht aktualisiert werden, z.B. Endpunkte, Clusternamen, Knoten-IP-Adressen usw. Die neue JSON-Datei für die Clusterkonfiguration wird anhand der alten getestet, und es werden Fehler im PowerShell-Fenster ausgegeben, wenn es Probleme gibt.
 
 ## <a name="upgrade-the-cluster-configuration"></a>Upgraden der Clusterkonfiguration
-Um die Clusterkonfiguration upzugraden, führen Sie den Befehl [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) aus. Das Konfigurationsupgrade wird Upgradedomäne für Upgradedomäne verarbeitet.
+Um die Clusterkonfiguration upzugraden, führen Sie den Befehl [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) aus. Das Konfigurationsupgrade wird Upgradedomäne für Upgradedomäne verarbeitet.
 
 ```powershell
 Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>

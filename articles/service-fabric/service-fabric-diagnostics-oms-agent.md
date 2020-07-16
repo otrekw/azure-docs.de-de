@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79366744"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258692"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Leistungsüberwachung mit Azure Monitor-Protokolle
 
@@ -23,7 +23,7 @@ Dieser Artikel beschreibt, wie Sie Ihrem Cluster den Log Analytics-Agent als VM-
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Hinzufügen der Agent-Erweiterung über die Azure-Befehlszeilenschnittstelle
 
-Den Log Analytics-Agent fügen Sie Ihrem Cluster am besten über die VM-Skalierungsgruppen-APIs hinzu, die für die Azure-Befehlszeilenschnittstelle zur Verfügung stehen. Falls Sie die Azure-Befehlszeilenschnittstelle noch nicht eingerichtet haben, wechseln Sie zum Azure-Portal, und öffnen Sie eine [Cloud Shell](../cloud-shell/overview.md)-Instanz, oder [installieren Sie die Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Den Log Analytics-Agent fügen Sie Ihrem Cluster am besten über die VM-Skalierungsgruppen-APIs hinzu, die für die Azure-Befehlszeilenschnittstelle zur Verfügung stehen. Falls Sie die Azure-Befehlszeilenschnittstelle noch nicht eingerichtet haben, wechseln Sie zum Azure-Portal, und öffnen Sie eine [Cloud Shell](../cloud-shell/overview.md)-Instanz, oder [installieren Sie die Azure CLI](/cli/azure/install-azure-cli).
 
 1. Vergewissern Sie sich nach dem Anfordern Ihrer Cloud Shell, dass Sie in dem Abonnement arbeiten, in dem sich auch Ihre Ressource befindet. Verwenden Sie für diese Überprüfung `az account show`, und vergewissern Sie sich, dass der Wert für „name“ dem Namen des Abonnements Ihres Clusters entspricht.
 
@@ -73,7 +73,7 @@ Jetzt haben Sie den Log Analytics-Agent hinzugefügt und können im Log Analytic
 
 3. Klicken Sie auf **Erweiterte Einstellungen**.
 
-4. Klicken Sie auf **Daten** und dann auf **Windows- oder Linux-Leistungsindikatoren**. Es gibt eine Liste von Standardindikatoren, deren Aktivierung Sie auswählen und für die Sie auch das Sammlungsintervall festlegen können. Sie können auch [weitere Leistungsindikatoren](service-fabric-diagnostics-event-generation-perf.md) hinzufügen, die erfasst werden sollen. Auf das richtige Format wird in diesem [Artikel](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx) verwiesen.
+4. Klicken Sie auf **Daten** und dann auf **Windows- oder Linux-Leistungsindikatoren**. Es gibt eine Liste von Standardindikatoren, deren Aktivierung Sie auswählen und für die Sie auch das Sammlungsintervall festlegen können. Sie können auch [weitere Leistungsindikatoren](service-fabric-diagnostics-event-generation-perf.md) hinzufügen, die erfasst werden sollen. Auf das richtige Format wird in diesem [Artikel](/windows/win32/perfctrs/specifying-a-counter-path) verwiesen.
 
 5. Klicken Sie auf **Speichern** und dann auf **OK**.
 
@@ -92,5 +92,5 @@ Jetzt haben Sie den Log Analytics-Agent hinzugefügt und können im Log Analytic
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfassen Sie relevante [Leistungsindikatoren](service-fabric-diagnostics-event-generation-perf.md). Lesen Sie zum Konfigurieren des Log Analytics-Agents für das Erfassen von bestimmten Leistungsindikatoren [Konfigurieren von Datenquellen](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources).
-* Konfigurieren von Azure Monitor-Protokolle für die Einrichtung von [automatisierten Warnungen](../log-analytics/log-analytics-alerts.md) zur Unterstützung bei der Erkennung und Diagnose
+* Konfigurieren von Azure Monitor-Protokolle für die Einrichtung von [automatisierten Warnungen](../azure-monitor/platform/alerts-overview.md) zur Unterstützung bei der Erkennung und Diagnose
 * Alternativ können Sie Leistungsindikatoren über die [Azure Diagnostics-Erweiterung erfassen und an Application Insights senden](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).

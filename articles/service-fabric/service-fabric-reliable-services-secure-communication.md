@@ -5,12 +5,12 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba68df53f1f21b9ff360772fe1a60c93c8df74d3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609620"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252214"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>Schützen der Dienstremotingkommunikation in einem C#-Dienst
 > [!div class="op_single_selector"]
@@ -200,4 +200,4 @@ Gehen Sie wie folgt vor, um zum Schutz eines Diensts beizutragen, wenn Sie Diens
     ```
 
 
-Lesen Sie als Nächstes den Artikel [Web-API mit OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md).
+Lesen Sie als Nächstes den Artikel [Web-API mit OWIN in Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md).

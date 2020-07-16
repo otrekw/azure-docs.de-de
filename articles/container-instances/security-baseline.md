@@ -7,36 +7,36 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3897ef75be34d4413e06dc5459739baec3afdcec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 996793f2851949f7474312a18ccff04e88db2232
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84268011"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259159"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Azure-Sicherheitsbaseline für Container Instances
 
 Die Azure-Sicherheitsbaseline für Container Instances enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
 
-Die Baseline für diesen Dienst wird von [Azure Security Benchmark-Version 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
+Die Baseline für diesen Dienst wird von [Azure Security Benchmark-Version 1.0](../security/benchmarks/overview.md) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
 
-Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbaselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Netzwerksicherheit
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Netzwerksicherheit](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Netzwerksicherheit](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Schützen von Ressourcen mithilfe von Netzwerksicherheitsgruppen oder Azure Firewall in Virtual Network
 
 **Leitfaden**: Das virtuelle Azure-Netzwerk (Azure Virtual Network) stellt ein sicheres, privates Netzwerk für Ihre Azure- und lokalen Ressourcen bereit. Integrieren Sie Ihre Containergruppen in Azure Container Instances mit einem virtuellen Azure-Netzwerk. 
 
-* [Szenarien und Ressourcen für virtuelle Azure-Netzwerke – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-virtual-network-concepts)
+* [Szenarien und Ressourcen für virtuelle Azure-Netzwerke – Azure Container Instances](./container-instances-virtual-network-concepts.md)
 
-* [Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk](./container-instances-vnet.md)
 
-* [Erstellen einer NSG mit einer Sicherheitskonfiguration](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Erstellen einer NSG mit einer Sicherheitskonfiguration](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Bereitstellen und Konfigurieren von Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Bereitstellen und Konfigurieren von Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
 
 **Azure Security Center-Überwachung**: Ja
@@ -47,9 +47,9 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Leitfaden**: Verwenden Sie Azure Security Center, und befolgen Sie die Empfehlungen für den Netzwerkschutz, um Ihre Netzwerkressourcen in Azure abzusichern. Aktivieren Sie NSG-Flussprotokolle und senden Sie Protokolle an ein Speicherkonto für die Datenverkehrsüberwachung.
 
-* [Aktivieren der NSG-Flussprotokolle](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Aktivieren der NSG-Flussprotokolle](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Schützen von Netzwerkressourcen](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Schützen von Netzwerkressourcen](../security-center/security-center-network-recommendations.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -59,7 +59,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Leitfaden**: Stellen Sie die Azure Web Application Firewall (WAF) vor kritischen Webanwendungen in Azure Container Instances bereit, um den eingehenden Datenverkehr weiteren Überprüfungen zu unterziehen. Aktivieren Sie die Diagnoseeinstellung für WAF, und erfassen Sie Protokolle in ein Speicherkonto, einen Event Hub oder einen Log Analytics-Arbeitsbereich.
 
-* [Bereitstellen von Azure WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [Bereitstellen von Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 
 
@@ -71,13 +71,13 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Leitfaden**: Aktivieren Sie den DDoS-Standardschutz in Ihren virtuellen Azure-Netzwerken, um sie vor DDoS-Angriffe zu schützen. Verwenden Sie die integrierten Informationen zu Bedrohungen in Azure Security Center, um die Kommunikation mit bekannten schädlichen IP-Adressen zu verweigern. Stellen Sie die Azure Firewall an allen Netzwerkgrenzen der Organisation bereit, aktiviert Sie Threat Intelligence, und konfigurieren Sie das Feature so, dass schädlicher Netzwerkdatenverkehr „mit Warnungen gemeldet und verweigert“ wird. Verwenden Sie den Just-in-Time-Netzwerkzugriff in Azure Security Center, um NSGs so zu konfigurieren, dass die Exposition von Endpunkten auf genehmigte IP-Adressen und einen begrenzten Zeitraum eingeschränkt wird. Verwenden Sie die adaptive Netzwerkhärtung in Azure Security Center, um NSG-Konfigurationen zu empfehlen, die Ports und Quell-IPs basierend auf tatsächlichem Datenverkehr und Threat Intelligence einschränken. 
 
-* [Bereitstellen von Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Bereitstellen von Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/threat-protection.md)
 
-* [Grundlegendes zur adaptiven Netzwerkhärtung von Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+* [Grundlegendes zur adaptiven Netzwerkhärtung von Azure Security Center](../security-center/security-center-adaptive-network-hardening.md)
 
-* [Just-in-Time-Netzwerkzugriffssteuerung in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Just-in-Time-Netzwerkzugriffssteuerung in Azure Security Center](../security-center/security-center-just-in-time.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -87,9 +87,9 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Leitfaden**: Wenn Sie bei der Implementierung Ihres virtuellen Netzwerks Netzwerksicherheitsgruppen (NSGs) verwenden, aktivieren Sie NSG-Datenflussprotokolle für die NSG, die an das Subnetz angefügt ist, das an Azure Container Instances delegiert wurde. Erfassen Sie die NSG-Flussprotokolle in einem Azure Storage-Konto, um Flussdatensätze zu generieren. Aktivieren Sie die Azure Network Watcher-Paketerfassung, falls dies für die Untersuchung anomaler Aktivitäten erforderlich ist.
 
-* [Aktivieren der NSG-Flussprotokolle](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Aktivieren der NSG-Flussprotokolle](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Aktivieren von Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [Aktivieren von Network Watcher](../network-watcher/network-watcher-create.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -103,11 +103,11 @@ Stellen Sie die Firewalllösung Ihrer Wahl an allen Netzwerkgrenzen Ihrer Organi
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [Bereitstellen von Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Bereitstellen von Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Konfigurieren von Warnungen mit Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Konfigurieren von Warnungen mit Azure Firewall](../firewall/threat-intel.md)
 
-* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
+* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](./container-instances-vnet.md) 
 
 
 
@@ -119,15 +119,15 @@ Stellen Sie die Firewalllösung Ihrer Wahl an allen Netzwerkgrenzen Ihrer Organi
 
 **Leitfaden**: Stellen Sie Azure Application Gateway für Webanwendungen mit aktiviertem HTTPS/SSL für vertrauenswürdige Zertifikate bereit.
 
-* [Bereitstellen von Application Gateway](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+* [Bereitstellen von Application Gateway](../application-gateway/quick-create-portal.md)
 
-* [Konfigurieren von Application Gateway für die Verwendung von HTTPS](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal) 
+* [Konfigurieren von Application Gateway für die Verwendung von HTTPS](../application-gateway/create-ssl-portal.md) 
 
-* [Grundlegendes zum Lastenausgleich der Ebene 7 mit Azure-Webanwendungsgateways](https://docs.microsoft.com/azure/application-gateway/overview)
+* [Grundlegendes zum Lastenausgleich der Ebene 7 mit Azure-Webanwendungsgateways](../application-gateway/overview.md)
 
-* [Verfügbarmachen einer statischen IP-Adresse für eine Containergruppe](https://docs.microsoft.com/azure/container-instances/container-instances-application-gateway)
+* [Verfügbarmachen einer statischen IP-Adresse für eine Containergruppe](./container-instances-application-gateway.md)
 
-* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](./container-instances-vnet.md)
 
 
 
@@ -141,11 +141,11 @@ Stellen Sie die Firewalllösung Ihrer Wahl an allen Netzwerkgrenzen Ihrer Organi
 
 Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicherheitskonfiguration zu vereinfachen. Mit Anwendungssicherheitsgruppen können Sie die Netzwerksicherheit als natürliche Erweiterung einer Anwendungsstruktur konfigurieren und virtuelle Computer gruppieren sowie auf der Grundlage dieser Gruppen Netzwerksicherheitsrichtlinien definieren. 
 
-* [Grundlegendes zu Diensttags und deren Verwendung](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) 
+* [Grundlegendes zu Diensttags und deren Verwendung](../virtual-network/service-tags-overview.md) 
 
-* [Grundlegendes zu Anwendungssicherheitsgruppen und deren Verwendung](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)
+* [Grundlegendes zu Anwendungssicherheitsgruppen und deren Verwendung](../virtual-network/security-overview.md#application-security-groups)
 
-* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](./container-instances-vnet.md)
 
 
 
@@ -157,11 +157,11 @@ Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicher
 
 **Leitfaden**: Sie können umfangreiche Azure-Bereitstellungen auch mithilfe von Azure Blueprints vereinfachen, indem Sie wichtige Umgebungsartefakte wie Azure Resource Manager-Vorlagen, RBAC-Steuerelemente und Richtlinien in einer einzigen Blaupausendefinition verpacken. Sie können die Blaupause auf neue Abonnements anwenden sowie die Steuerung und Verwaltung durch die Versionsverwaltung optimieren. 
 
-* [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy-Beispiele für Netzwerke](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+* [Azure Policy-Beispiele für Netzwerke](/azure/governance/policy/samples/#network)
 
-* [Erstellen einer Azure-Blaupause](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Erstellen einer Azure-Blaupause](../governance/blueprints/create-blueprint-portal.md)
 
 
 
@@ -177,11 +177,11 @@ Verwenden Sie eine der integrierten Azure Policy-Definitionen zum Tagging, z. B
 
 Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden, um Ressourcen basierend auf ihren Tags zu suchen oder Aktionen auszuführen.
 
-* [Erstellen und Verwenden von Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
-* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](./container-instances-vnet.md)
 
-* [Erstellen einer NSG mit einer Sicherheitskonfiguration](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Erstellen einer NSG mit einer Sicherheitskonfiguration](../virtual-network/tutorial-filter-network-traffic.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -192,9 +192,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen, die sich auf Ihre Containerinstanzen beziehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Erstellen von Warnungen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -202,15 +202,15 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 ## <a name="logging-and-monitoring"></a>Protokollierung und Überwachung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Protokollierung und Überwachung](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Protokollierung und Überwachung](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Verwenden von genehmigten Zeitsynchronisierungsquellen
 
 **Leitfaden**: Microsoft verwaltet Zeitquellen für Azure-Ressourcen. Sie haben jedoch die Möglichkeit, die Zeitsynchronisierungseinstellungen für Ihre Computeressourcen zu verwalten. Führen Sie z. B. einen Zeitsynchronisierungsbefehl in einem laufenden Container aus.
 
-* [Konfigurieren der Zeitsynchronisierung für Azure-Computeressourcen](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [Konfigurieren der Zeitsynchronisierung für Azure-Computeressourcen](../virtual-machines/windows/time-sync.md)
 
-* [Ausführen eines Befehls in einer ausgeführten Azure-Containerinstanz](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [Ausführen eines Befehls in einer ausgeführten Azure-Containerinstanz](./container-instances-exec.md)
 
 
 
@@ -222,7 +222,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Erfassen Sie Protokolle über Azure Monitor, um die von einer Azure-Containergruppe generierten Sicherheitsdaten zu aggregieren. Verwenden Sie Log Analytics-Arbeitsbereiche in Azure Monitor, um Analysen abzufragen und auszuführen, und verwenden Sie Azure Storage-Konten für die langfristige Speicherung/Archivierung.
 
-* [Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen](./container-instances-log-analytics.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -232,7 +232,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Azure Monitor erfasst Ressourcenprotokolle (früher als Diagnoseprotokolle bezeichnet) für benutzergesteuerte Ereignisse in Ihrer Registrierung. Azure Container Instances enthält integrierte Unterstützung für das Senden von Protokollen und Ereignisdaten zu Containergruppen sowie Containerprotokollen an Azure Monitor-Protokolle.
 
-* [Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen](https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs)
+* [Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen](../container-registry/container-registry-diagnostics-audit-logs.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -251,7 +251,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum Ihres Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihrer Organisation fest. Verwenden Sie Azure Storage-Konten für die langfristige/Archivierungsspeicherung.
 
-* [Ändern des Datenaufbewahrungszeitraums](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -261,11 +261,11 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Analysieren und überwachen Sie Protokolle auf anormales Verhalten, und prüfen Sie die Ergebnisse regelmäßig. Verwenden Sie den Log Analytics-Arbeitsbereich von Azure Monitor, um Protokolle zu überprüfen und Abfragen nach Protokolldaten auszuführen. 
 
-* [Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen](./container-instances-log-analytics.md)
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/get-started-portal.md)
 
-* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -275,9 +275,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Verwenden Sie einen Log Analytics-Arbeitsbereich für die Überwachung und Warnung bei anomalen Aktivitäten, die in Sicherheitsprotokollen und Ereignissen gefunden werden. 
 
-* [Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen](./container-instances-log-analytics.md)
 
-* [Warnungen bei Log Analytics-Protokolldaten](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/learn/tutorial-response.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -304,7 +304,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Konfigurieren Sie bei Bedarf die Konsolenprotokollierung in einer ausgeführten Containerinstanz.
 
-* [Ausführen eines Befehls in einer ausgeführten Azure-Containerinstanz](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [Ausführen eines Befehls in einer ausgeführten Azure-Containerinstanz](./container-instances-exec.md)
 
 
 
@@ -314,7 +314,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 ## <a name="identity-and-access-control"></a>Identität und Zugriffssteuerung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Identität und Zugriffssteuerung](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Identität und Zugriffssteuerung](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Verwalten eines Bestands von Administratorkonten
 
@@ -322,11 +322,11 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 Wenn Sie eine Azure-Containerregistrierung mit Azure Container Instances verwenden, verfolgen Sie für jede Azure-Containerregistrierung nach, ob das integrierte Administratorkonto aktiviert oder deaktiviert ist. Deaktivieren Sie das Konto, wenn es nicht verwendet wird.
 
-* [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Azure Container Registry-Administratorkonto](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+* [Azure Container Registry-Administratorkonto](../container-registry/container-registry-authentication.md#admin-account)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -338,7 +338,7 @@ Wenn Sie eine Azure-Containerregistrierung mit Azure Container Instances verwend
 
 Wenn Sie eine Azure-Containerregistrierung mit Azure Container Instances verwenden und das Standardadministratorkonto einer Azure-Containerregistrierung aktiviert ist, werden automatisch komplexe Kennwörter erstellt, die rotiert werden sollten. Deaktivieren Sie das Konto, wenn es nicht verwendet wird.
 
-* [Azure Container Registry-Administratorkonto](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+* [Azure Container Registry-Administratorkonto](../container-registry/container-registry-authentication.md#admin-account)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -350,9 +350,9 @@ Wenn Sie eine Azure-Containerregistrierung mit Azure Container Instances verwend
 
 Wenn Sie eine Azure-Containerregistrierung mit Azure Container Instances verwenden, erstellen Sie Prozeduren zum Aktivieren des integrierten Administratorkontos einer Containerregistrierung. Deaktivieren Sie das Konto, wenn es nicht verwendet wird.
 
-* [Grundlegendes zu Identität und Zugriff im Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Grundlegendes zu Identität und Zugriff im Azure Security Center](../security-center/security-center-identity-access.md)
 
-* [Azure Container Registry-Administratorkonto](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+* [Azure Container Registry-Administratorkonto](../container-registry/container-registry-authentication.md#admin-account)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -362,7 +362,7 @@ Wenn Sie eine Azure-Containerregistrierung mit Azure Container Instances verwend
 
 **Leitfaden**: Verwenden Sie nach Möglichkeit Azure Active Directory SSO, anstatt einzelne eigenständige Anmeldeinformationen pro Dienst zu konfigurieren. Wenden Sie die Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center an.
 
-* [Grundlegendes zu SSO mit Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Grundlegendes zu SSO mit Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -373,9 +373,9 @@ Wenn Sie eine Azure-Containerregistrierung mit Azure Container Instances verwend
 
 **Leitfaden**: Aktivieren Sie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für Azure Active Directory (Azure AD), und befolgen Sie die Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center.
 
-* [Aktivieren von MFA in Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Aktivieren von MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Überwachen von Identität und Zugriff in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Überwachen von Identität und Zugriff in Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -385,9 +385,9 @@ Wenn Sie eine Azure-Containerregistrierung mit Azure Container Instances verwend
 
 **Leitfaden**: Verwenden Sie Arbeitsstationen mit privilegiertem Zugriff (Privileged Access Workstations, PAWs) mit MFA, die für die Anmeldung bei und die Konfiguration von Azure-Ressourcen konfiguriert sind.
 
-* [Informationen zu Arbeitsstationen mit privilegiertem Zugriff](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Informationen zu Arbeitsstationen mit privilegiertem Zugriff](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Aktivieren von MFA in Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Aktivieren von MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -397,9 +397,9 @@ Wenn Sie eine Azure-Containerregistrierung mit Azure Container Instances verwend
 
 **Leitfaden**: Verwenden Sie Azure Active Directory-Sicherheitsberichte (Azure AD) für die Generierung von Protokollen und Warnungen bei verdächtigen oder sicherheitsrelevanten Aktivitäten in der Umgebung. Verwenden Sie Azure Security Center zum Überwachen von identitäts- und zugriffsbezogenen Aktivitäten.
 
-* [Identifizieren von Azure AD-Benutzern, die aufgrund riskanter Aktivitäten gekennzeichnet wurden](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+* [Identifizieren von Azure AD-Benutzern, die aufgrund riskanter Aktivitäten gekennzeichnet wurden](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Überwachen der identitäts- und zugriffsbezogenen Aktivitäten von Benutzern in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Überwachen der identitäts- und zugriffsbezogenen Aktivitäten von Benutzern in Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -409,7 +409,7 @@ Wenn Sie eine Azure-Containerregistrierung mit Azure Container Instances verwend
 
 **Leitfaden**: Verwenden Sie benannte Standorte mit bedingtem Zugriff, um den Zugriff nur über bestimmte logische Gruppierungen von IP-Adressbereichen oder Ländern/Regionen zuzulassen.
 
-* [Konfigurieren benannter Standorte in Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Konfigurieren benannter Standorte in Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -419,7 +419,7 @@ Wenn Sie eine Azure-Containerregistrierung mit Azure Container Instances verwend
 
 **Leitfaden**: Verwenden Sie Azure Active Directory (Azure AD) als zentrales Authentifizierungs- und Autorisierungssystem. Azure AD schützt Daten durch eine starke Verschlüsselung für ruhende und übertragene Daten. Außerdem werden in Azure AD Salts und Hashs verwendet, und Anmeldeinformationen werden sicher gespeichert.
 
-* [Erstellen und Konfigurieren einer Azure AD-Instanz](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Erstellen und Konfigurieren einer Azure AD-Instanz](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -429,9 +429,9 @@ Wenn Sie eine Azure-Containerregistrierung mit Azure Container Instances verwend
 
 **Leitfaden**: Azure Active Directory (Azure AD) enthält Protokolle zum Ermitteln von veralteten Konten. Verwenden Sie zusätzlich Zugriffsüberprüfungen für Azure-Identitäten, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen und Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Benutzer weiterhin Zugriff haben.
 
-* [Grundlegendes zur Azure AD-Berichterstellung](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Grundlegendes zur Azure AD-Berichterstellung](../active-directory/reports-monitoring/index.yml)
 
-* [Was sind Azure AD-Zugriffsüberprüfungen?](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Was sind Azure AD-Zugriffsüberprüfungen?](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -443,7 +443,7 @@ Wenn Sie eine Azure-Containerregistrierung mit Azure Container Instances verwend
 
 Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azure Active Directory-Benutzerkonten erstellen und die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich senden. Sie können gewünschte Warnungen im Log Analytics-Arbeitsbereich konfigurieren.
 
-* [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -453,9 +453,9 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 **Leitfaden**: Mit Azure Active Directory-Funktionen (Azure AD) zum Risiko- und Identitätsschutz können Sie automatische Antworten auf erkannte verdächtige Aktionen im Zusammenhang mit Benutzeridentitäten konfigurieren.
 
-* [Anzeigen riskanter Azure AD-Anmeldungen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Anzeigen riskanter Azure AD-Anmeldungen](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Konfigurieren und Aktivieren von Risikorichtlinien für den Identitätsschutz](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Konfigurieren und Aktivieren von Risikorichtlinien für den Identitätsschutz](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -465,7 +465,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 **Leitfaden**: Derzeit nicht verfügbar. Kunden-Lockbox wird für Azure Container Instances derzeit nicht unterstützt.
 
-* [Unterstützte Dienste und Szenarios bei allgemeiner Verfügbarkeit](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Unterstützte Dienste und Szenarios bei allgemeiner Verfügbarkeit](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -473,7 +473,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 ## <a name="data-protection"></a>Schutz von Daten
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenschutz](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenschutz](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Verwalten eines Bestands an vertraulichen Informationen
 
@@ -481,9 +481,9 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 Versehen Sie Containerregistrierungen mit Tags und Versionen zur Hilfe bei der Nachverfolgung von Images, in denen vertrauliche Informationen gespeichert oder verarbeitet werden.
 
-* [Erstellen und Verwenden von Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
-* [Empfehlungen für das Tagging und die Versionsverwaltung von Containerimages](https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version)
+* [Empfehlungen für das Tagging und die Versionsverwaltung von Containerimages](../container-registry/container-registry-image-tag-version.md)
 
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
@@ -494,20 +494,20 @@ Versehen Sie Containerregistrierungen mit Tags und Versionen zur Hilfe bei der N
 
 **Leitfaden**: Implementieren Sie separate Abonnements oder Verwaltungsgruppen für Entwicklungs-, Test- und Produktionsumgebungen. Ressourcen sollten durch ein VNET/Subnetz getrennt, ordnungsgemäß gekennzeichnet und durch eine NSG oder Azure Firewall gesichert werden. Ressourcen, die vertrauliche Daten speichern oder verarbeiten, müssen ausreichend isoliert werden.
 
-* [Ausführen eines Befehls in einer ausgeführten Azure-Containerinstanz](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [Ausführen eines Befehls in einer ausgeführten Azure-Containerinstanz](./container-instances-exec.md)
 
-* [Erstellen zusätzlicher Azure-Abonnements](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create.md)
 
-* [Erstellen und Verwenden von Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
-* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
-* [Erstellen einer NSG mit einer Sicherheitskonfiguration](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](./container-instances-vnet.md) 
+* [Erstellen einer NSG mit einer Sicherheitskonfiguration](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Bereitstellen von Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Bereitstellen von Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Konfigurieren von „Warnen“ oder „Warnen und ablehnen“ mit Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Konfigurieren von „Warnen“ oder „Warnen und ablehnen“ mit Azure Firewall](../firewall/threat-intel.md)
 
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
@@ -520,11 +520,11 @@ Versehen Sie Containerregistrierungen mit Tags und Versionen zur Hilfe bei der N
 
 Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt Microsoft alle Kundeninhalte als vertraulich und unternimmt große Anstrengungen, um Kundendaten vor Verlust und Gefährdung zu schützen. Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Microsoft eine Reihe von robusten Datenschutzkontrollen und -funktionen implementiert und kümmert sich um deren Verwaltung.
 
-* [Grundlegendes zum Schutz von Kundendaten in Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
-* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
+* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](./container-instances-vnet.md) 
 
-* [Einbinden einer Azure-Dateifreigabe in Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-volume-azure-files)
+* [Einbinden einer Azure-Dateifreigabe in Azure Container Instances](./container-instances-volume-azure-files.md)
 
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
@@ -537,7 +537,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 Befolgen Sie ggf. die Empfehlungen von Azure Security Center zur Verschlüsselung ruhender Daten und zur Verschlüsselung während der Übertragung.
 
-* [Grundlegendes zur Verschlüsselung während der Übertragung mit Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [Grundlegendes zur Verschlüsselung während der Übertragung mit Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -549,7 +549,7 @@ Befolgen Sie ggf. die Empfehlungen von Azure Security Center zur Verschlüsselun
 
 Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt Microsoft alle Kundeninhalte als vertraulich und unternimmt große Anstrengungen, um Kundendaten vor Verlust und Gefährdung zu schützen. Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Microsoft eine Reihe von robusten Datenschutzkontrollen und -funktionen implementiert und kümmert sich um deren Verwaltung.
 
-* [Grundlegendes zum Schutz von Kundendaten in Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -559,7 +559,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Leitfaden**: Verwenden Sie Azure AD-RBAC, um den Zugriff auf Daten und Ressourcen in Azure Container Instances zu steuern. 
 
-* [Konfigurieren von RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Konfigurieren von RBAC in Azure](../role-based-access-control/role-assignments-portal.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -572,7 +572,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt Microsoft alle Kundeninhalte als vertraulich und unternimmt große Anstrengungen, um Kundendaten vor Verlust und Gefährdung zu schützen. Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Microsoft eine Reihe von robusten Datenschutzkontrollen und -funktionen implementiert und kümmert sich um deren Verwaltung.
 
-* [Grundlegendes zum Schutz von Kundendaten in Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -582,9 +582,9 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Leitfaden**: Standardmäßig werden alle Bereitstellungsdaten in Azure Container Instances im Ruhezustand mit von Microsoft verwalteten Schlüsseln verschlüsselt. Optional können Sie die Verschlüsselung mit Ihrem eigenen Schlüssel (vom Kunden verwalteter Schlüssel) verwalten.
 
-* [Grundlegendes zur Verschlüsselung ruhender Daten in Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [Grundlegendes zur Verschlüsselung ruhender Daten in Azure](../security/fundamentals/encryption-atrest.md)
 
-* [Verschlüsseln von Bereitstellungsdaten mit Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-encrypt-data)
+* [Verschlüsseln von Bereitstellungsdaten mit Azure Container Instances](./container-instances-encrypt-data.md)
 
 
 
@@ -596,7 +596,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen zu erstellen, die bei Änderungen an Ihren Containergruppen und -instanzen ausgelöst werden. 
 
-* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -605,15 +605,15 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 ## <a name="vulnerability-management"></a>Verwaltung von Sicherheitsrisiken
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Verwaltung von Sicherheitsrisiken](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Verwaltung von Sicherheitsrisiken](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Ausführen automatisierter Scan-Tools für Sicherheitsrisiken
 
 **Leitfaden**: Implementieren Sie Lösungen zum Überprüfen von Containerimages in einer privaten Registrierung und zum Identifizieren potenzieller Sicherheitsrisiken. Befolgen Sie die Empfehlungen von Azure Security Center zum Durchführen von Sicherheitsrisikobewertungen für Ihre in Azure Container Registry gespeicherten Containerimages. Stellen Sie optional Lösungen von Drittanbietern aus Azure Marketplace bereit, um Imagesicherheitsrisiken zu bewerten.
 
-* [Sicherheitsüberlegungen für Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Sicherheitsüberlegungen für Azure Container Instances](./container-instances-image-security.md)
 
-* [Integration von Security Center in Azure Container Registry](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Integration von Security Center in Azure Container Registry](../security-center/azure-container-registry-integration.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -625,9 +625,9 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von Containerimages. Wenn Sie Containerimages in Azure Container Registry speichern, führen Sie Azure Container Registry-Aufgaben aus, um Updates von Anwendungsimages in einer Containerregistrierung anhand von Sicherheitspatches oder anderen Updates in Basisbetriebssystemimages zu automatisieren.
 
-* [Sicherheitsüberlegungen für Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Sicherheitsüberlegungen für Azure Container Instances](./container-instances-image-security.md)
 
-* [Informationen zu Basisimageupdates für Azure Container Registry-Aufgaben](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [Informationen zu Basisimageupdates für Azure Container Registry-Aufgaben](../container-registry/container-registry-tasks-base-images.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -638,9 +638,9 @@ Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von 
 
 **Leitfaden**: Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von Containerimages. Wenn Sie Containerimages in Azure Container Registry speichern, führen Sie Azure Container Registry-Aufgaben aus, um Updates von Anwendungsimages in einer Containerregistrierung anhand von Sicherheitspatches oder anderen Updates in Basisbetriebssystemimages zu automatisieren.
 
-* [Sicherheitsüberlegungen für Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Sicherheitsüberlegungen für Azure Container Instances](./container-instances-image-security.md)
 
-* [Informationen zu Basisimageaktualisierungen für ACR-Aufgaben](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [Informationen zu Basisimageaktualisierungen für ACR-Aufgaben](../container-registry/container-registry-tasks-base-images.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -650,9 +650,9 @@ Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von 
 
 **Leitfaden**: Exportieren Sie die Imageüberprüfungsergebnisse in regelmäßigen Abständen, und vergleichen Sie die Ergebnisse, um sicherzustellen, dass die Sicherheitsrisiken korrigiert wurden. Wenn Sie Containerimages in Azure Container Registry speichern, integrieren Sie Ihre Registrierung in Azure Security Center, um regelmäßige Überprüfungen von Containerimages auf Sicherheitsrisiken zu ermöglichen. Stellen Sie optional Lösungen von Drittanbietern aus Azure Marketplace bereit, um regelmäßige Scans auf Sicherheitsrisiken von Images auszuführen.
 
-* [Sicherheitsüberlegungen für Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Sicherheitsüberlegungen für Azure Container Instances](./container-instances-image-security.md)
 
-* [Integration von Security Center in Azure Container Registry](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Integration von Security Center in Azure Container Registry](../security-center/azure-container-registry-integration.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -662,9 +662,9 @@ Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von 
 
 **Leitfaden**:  Wenn Sie Containerimages in Azure Container Registry speichern, integrieren Sie Ihre Registrierung in Azure Security Center, um regelmäßige Überprüfungen von Containerimages auf Sicherheitsrisiken zu ermöglichen und Risiken zu klassifizieren. Stellen Sie optional Lösungen von Drittanbietern aus Azure Marketplace bereit, um regelmäßige Scans auf Sicherheitsrisiken von Images und Risikoklassifizierung auszuführen.
 
-* [Sicherheitsüberlegungen für Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Sicherheitsüberlegungen für Azure Container Instances](./container-instances-image-security.md)
 
-* [Integration von Security Center in Azure Container Registry](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Integration von Security Center in Azure Container Registry](../security-center/azure-container-registry-integration.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -672,7 +672,7 @@ Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von 
 
 ## <a name="inventory-and-asset-management"></a>Bestands- und Ressourcenverwaltung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Bestands- und Ressourcenverwaltung](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Bestands- und Ressourcenverwaltung](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1: Verwenden von Azure Asset Discovery
 
@@ -680,11 +680,11 @@ Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von 
 
 Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden können, wird dringend empfohlen, Azure Resource Manager-Ressourcen zu erstellen und zu verwenden.
 
-* [Erstellen von Abfragen mit Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Erstellen von Abfragen mit Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [Anzeigen Ihrer Azure-Abonnements](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Grundlegendes zu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -694,7 +694,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 **Leitfaden**: Wenden Sie Tags auf Azure Container Instances und zugehörige Ressourcen an, die Metadaten erzeugen, um sie logisch in einer Taxonomie zu organisieren.
 
-* [Erstellen und Verwenden von Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -705,11 +705,11 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 **Leitfaden**: Verwenden Sie nach Bedarf Tagging, Verwaltungsgruppen und separate Abonnements zum Organisieren und Nachverfolgen von Ressourcen. Stimmen Sie den Bestand regelmäßig ab, und stellen Sie sicher, dass nicht autorisierte Ressourcen rechtzeitig aus dem Abonnement gelöscht werden.
 
-* [Erstellen zusätzlicher Azure-Abonnements](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create.md)
 
-* [Erstellen und Verwenden von Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -730,11 +730,11 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufragen und zu ermitteln. Stellen Sie sicher, dass alle in der Umgebung vorhandenen Azure-Ressourcen genehmigt sind.
 
-* [Überwachen der Konformität von Azure-Containerregistrierungen mithilfe von Azure Policy](https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy)
+* [Überwachen der Konformität von Azure-Containerregistrierungen mithilfe von Azure Policy](../container-registry/container-registry-azure-policy.md)
 
-* [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Erstellen von Abfragen mit Azure Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Erstellen von Abfragen mit Azure Graph](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -748,14 +748,14 @@ Implementieren Sie Lösungen zum Überprüfen von Containerimages in einer priva
 
 Überwachen Sie Azure Container Instances-Protokolle auf anomales Verhalten, und überprüfen Sie die Ergebnisse regelmäßig. Verwenden Sie den Log Analytics-Arbeitsbereich von Azure Monitor, um Protokolle zu überprüfen und Abfragen nach Protokolldaten auszuführen.
 
-* [Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen](./container-instances-log-analytics.md)
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/get-started-portal.md)
 
-* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
-* [Sicherheitsüberlegungen für Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
-* [Integration von Security Center in Azure Container Registry](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Sicherheitsüberlegungen für Azure Container Instances](./container-instances-image-security.md)
+* [Integration von Security Center in Azure Container Registry](../security-center/azure-container-registry-integration.md)
 
 
 
@@ -767,7 +767,7 @@ Implementieren Sie Lösungen zum Überprüfen von Containerimages in einer priva
 
 **Leitfaden**: Mit Azure Automation haben Sie in Bezug auf die Bereitstellung, Abläufe und Außerbetriebnahme von Workloads und Ressourcen die volle Kontrolle. Sie können eine eigene Lösung zum Entfernen nicht autorisierter Azure-Ressourcen und Softwareanwendungen implementieren.
 
-* [Einführung in Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Einführung in Azure Automation](../automation/automation-intro.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -776,7 +776,7 @@ Implementieren Sie Lösungen zum Überprüfen von Containerimages in einer priva
 ### <a name="68-use-only-approved-applications"></a>6.8: Ausschließliche Verwendung genehmigter Anwendungen
 
 **Leitfaden**: Versehen Sie Containerregistrierungen mit Tags und Versionen, um die Nachverfolgung von Images zu ermöglichen, in denen genehmigte Anwendungen ausgeführt werden.
-* [Empfehlungen für das Tagging und die Versionsverwaltung von Containerimages](https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version)
+* [Empfehlungen für das Tagging und die Versionsverwaltung von Containerimages](../container-registry/container-registry-image-tag-version.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -787,9 +787,9 @@ Implementieren Sie Lösungen zum Überprüfen von Containerimages in einer priva
 
 **Leitfaden**: Verwenden Sie Azure Policy, um einzuschränken, welche Dienste in Ihrer Umgebung bereitgestellt werden können.
 
-* [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -798,7 +798,7 @@ Implementieren Sie Lösungen zum Überprüfen von Containerimages in einer priva
 ### <a name="610-implement-approved-application-list"></a>6.10: Implementieren einer Liste genehmigter Anwendungen
 
 **Leitfaden**: Versehen Sie Containerregistrierungen mit Tags und Versionen, um die Nachverfolgung von Images zu ermöglichen, in denen genehmigte Anwendungen ausgeführt werden.
-* [Empfehlungen für das Tagging und die Versionsverwaltung von Containerimages](https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version)
+* [Empfehlungen für das Tagging und die Versionsverwaltung von Containerimages](../container-registry/container-registry-image-tag-version.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -809,7 +809,7 @@ Implementieren Sie Lösungen zum Überprüfen von Containerimages in einer priva
 
 **Leitfaden**: Verwenden Sie den bedingten Azure-Zugriff, um die Möglichkeiten von Benutzern zur Interaktion mit Azure Resource Manager einzuschränken, indem Sie „Zugriff blockieren“ für die App zur „Verwaltung von Microsoft Azure“ konfigurieren. 
 
-* [Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager zu blockieren](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager zu blockieren](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -821,17 +821,17 @@ Implementieren Sie Lösungen zum Überprüfen von Containerimages in einer priva
 
 Verwalten und überprüfen Sie den Zugriff auf Azure Container Instances-Ressourcen mithilfe verschiedener Azure-Abonnements oder Verwaltungsgruppen, oder isolieren Sie Ressourcen mithilfe von virtuellen Netzwerken und NSGs oder von Azure Firewall.
 
-* [Ausführen eines Befehls in einer ausgeführten Azure-Containerinstanz](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [Ausführen eines Befehls in einer ausgeführten Azure-Containerinstanz](./container-instances-exec.md)
 
-* [Erstellen zusätzlicher Azure-Abonnements](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-* [Erstellen von Verwaltungsgruppen](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Erstellen von Verwaltungsgruppen](../governance/management-groups/create.md)
 
-* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](./container-instances-vnet.md)
 
-* [Erstellen einer NSG mit einer Sicherheitskonfiguration](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Erstellen einer NSG mit einer Sicherheitskonfiguration](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Bereitstellen von Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Bereitstellen von Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
 
 
@@ -843,9 +843,9 @@ Verwalten und überprüfen Sie den Zugriff auf Azure Container Instances-Ressour
 
 **Leitfaden**: Software, die für den Geschäftsbetrieb erforderlich ist, aber ein höheres Risiko für das Unternehmen darstellen kann, sollte innerhalb eines eigenen virtuellen Netzwerks isoliert und mit Azure Firewall oder einer Netzwerksicherheitsgruppe ausreichend geschützt werden.
 
-* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
+* [Bereitstellen in einem virtuellen Netzwerk – Azure Container Instances](./container-instances-vnet.md) 
 
-* [Erstellen einer NSG mit einer Sicherheitskonfiguration](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Erstellen einer NSG mit einer Sicherheitskonfiguration](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -853,7 +853,7 @@ Verwalten und überprüfen Sie den Zugriff auf Azure Container Instances-Ressour
 
 ## <a name="secure-configuration"></a>Sichere Konfiguration
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Sichere Konfiguration](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Sichere Konfiguration](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Einrichten sicherer Konfigurationen für alle Azure-Ressourcen
 
@@ -861,7 +861,7 @@ Verwalten und überprüfen Sie den Zugriff auf Azure Container Instances-Ressour
 
 * [Containergruppen in Azure Container Instances](container-instances-container-groups.md#deployment)
 
-* [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -872,7 +872,7 @@ Verwalten und überprüfen Sie den Zugriff auf Azure Container Instances-Ressour
 
 **Leitfaden**: Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von Containerimages. Wenn Sie Containerimages in Azure Container Registry speichern, führen Sie Azure Container Registry-Aufgaben aus, um Updates von Anwendungsimages in einer Containerregistrierung anhand von Sicherheitspatches oder anderen Updates in Basisbetriebssystemimages zu automatisieren. 
 
-* [Informationen zu Basisimageupdates für Azure Container Registry-Aufgaben](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [Informationen zu Basisimageupdates für Azure Container Registry-Aufgaben](../container-registry/container-registry-tasks-base-images.md)
 
 
 
@@ -884,9 +884,9 @@ Verwalten und überprüfen Sie den Zugriff auf Azure Container Instances-Ressour
 
 **Leitfaden**: Verwenden Sie die Azure-Richtlinien [Verweigern] und [Bereitstellen, falls nicht vorhanden], um sichere Einstellungen in den Azure-Ressourcen zu erzwingen.
 
-* [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Grundlegendes zu Azure Policy-Auswirkungen](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Grundlegendes zu Azure Policy-Auswirkungen](../governance/policy/concepts/effects.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -898,10 +898,10 @@ Verwalten und überprüfen Sie den Zugriff auf Azure Container Instances-Ressour
 
 Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von Containerimages. Wenn Sie Containerimages in Azure Container Registry speichern, führen Sie Azure Container Registry-Aufgaben aus, um Updates von Anwendungsimages in einer Containerregistrierung anhand von Sicherheitspatches oder anderen Updates in Basisbetriebssystemimages zu automatisieren. 
 
-* [Sicherheitsempfehlungen für die Überwachung und Überprüfung von Containern für Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Sicherheitsempfehlungen für die Überwachung und Überprüfung von Containern für Azure Container Instances](./container-instances-image-security.md)
 
-* [Integration von Security Center in Azure Container Registry](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
-* [Informationen zu Basisimageupdates für Azure Container Registry-Aufgaben](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [Integration von Security Center in Azure Container Registry](../security-center/azure-container-registry-integration.md)
+* [Informationen zu Basisimageupdates für Azure Container Registry-Aufgaben](../container-registry/container-registry-tasks-base-images.md)
 
 
 
@@ -913,9 +913,9 @@ Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von 
 
 **Leitfaden**: Speichern und verwalten Sie ARM-Vorlagen, YAML-Dateien und benutzerdefinierte Azure-Richtliniendefinitionen auf sichere Weise per Quellcodeverwaltung.
 
-* [Speichern von Code in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Dokumentation zu Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Dokumentation zu Azure Repos](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -925,11 +925,11 @@ Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von 
 
 **Leitfaden**: Speichern Sie Containerimages in Azure Container Registry, und stellen Sie mithilfe von RBAC sicher, dass nur autorisierte Benutzer auf die Images zugreifen können.
 
-* [Grundlegendes zu RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Grundlegendes zu RBAC in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Grundlegendes zu RBAC für Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [Grundlegendes zu RBAC für Container Registry](../container-registry/container-registry-roles.md)
 
-* [Konfigurieren von RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Konfigurieren von RBAC in Azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -940,7 +940,7 @@ Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von 
 
 **Leitfaden**: Verwenden Sie Azure Policy, um Systemkonfigurationen zu melden, zu überwachen und zu erzwingen. Entwickeln Sie außerdem einen Prozess und eine Pipeline zum Verwalten von Richtlinienausnahmen.
 
-* [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -961,9 +961,9 @@ Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von 
 
 Verwenden Sie Azure Policy, um den Typ der Ressourcen, die in ihren Abonnements erstellt werden können, einzuschränken.
 
-* [Umsetzen von Empfehlungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+* [Umsetzen von Empfehlungen in Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-* [Überwachen der Konformität von Azure-Containerregistrierungen mithilfe von Azure Policy](https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy)
+* [Überwachen der Konformität von Azure-Containerregistrierungen mithilfe von Azure Policy](../container-registry/container-registry-azure-policy.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -973,7 +973,7 @@ Verwenden Sie Azure Policy, um den Typ der Ressourcen, die in ihren Abonnements 
 
 **Leitfaden**: Wenn Sie Containerimages in Azure Container Registry speichern, verwenden Sie Azure Security Center, um Baselineüberprüfungen für Betriebssystem- und Docker-Einstellungen für Container durchzuführen.
 
-* [Grundlegendes zu Azure Security Center-Containerempfehlungen](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
+* [Grundlegendes zu Azure Security Center-Containerempfehlungen](../security-center/container-security.md)
 
 
 **Azure Security Center-Überwachung**: Ja
@@ -984,13 +984,13 @@ Verwenden Sie Azure Policy, um den Typ der Ressourcen, die in ihren Abonnements 
 
 **Anleitung:** Verwenden Sie die verwaltete Dienstidentität in Verbindung mit Azure Key Vault, um die Verwaltung von Geheimnissen für Cloudanwendungen zu vereinfachen und zu schützen.
 
-* [Integrieren mit verwalteten Azure-Identitäten](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
+* [Integrieren mit verwalteten Azure-Identitäten](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-* [Erstellen einer Key Vault-Instanz](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
+* [Erstellen einer Key Vault-Instanz](../key-vault/secrets/quick-create-portal.md)
 
-* [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../key-vault/general/managed-identity.md)
 
-* [Verwenden von verwalteten Identitäten mit Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+* [Verwenden von verwalteten Identitäten mit Azure Container Instances](./container-instances-managed-identity.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1000,9 +1000,9 @@ Verwenden Sie Azure Policy, um den Typ der Ressourcen, die in ihren Abonnements 
 
 **Leitfaden**: Verwenden Sie verwaltete Identitäten, um Azure-Dienste mit einer automatisch verwalteten Identität in Azure AD bereitzustellen. Mithilfe verwalteter Identitäten können Sie die Authentifizierung bei jedem Dienst durchführen, der die Azure AD-Authentifizierung unterstützt, einschließlich Key Vault. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
-* [Konfigurieren von verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+* [Konfigurieren von verwalteten Identitäten](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-* [Verwenden von verwalteten Identitäten mit Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+* [Verwenden von verwalteten Identitäten mit Azure Container Instances](./container-instances-managed-identity.md)
 
 
 
@@ -1022,7 +1022,7 @@ Verwenden Sie Azure Policy, um den Typ der Ressourcen, die in ihren Abonnements 
 
 ## <a name="malware-defense"></a>Schutz vor Schadsoftware
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Schutz vor Schadsoftware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Schutz vor Schadsoftware](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Verwenden einer zentral verwalteten Antischadsoftware
 
@@ -1055,15 +1055,15 @@ Microsoft Antimalware ist auf dem zugrunde liegenden Host für Azure-Dienste (z.
 
 ## <a name="data-recovery"></a>Datenwiederherstellung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenwiederherstellung](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenwiederherstellung](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Sicherstellen regelmäßiger automatisierter Sicherungen
 
 **Leitfaden**: Aktivieren Sie Azure Backup, und konfigurieren Sie die Sicherungsquelle (z. B. eine in Containergruppen eingebundene Dateifreigabe) sowie die gewünschte Häufigkeit und Beibehaltungsdauer. 
 
-* [Aktivieren von Azure Backup](https://docs.microsoft.com/azure/backup/)
+* [Aktivieren von Azure Backup](../backup/index.yml)
 
-* [Einbinden einer Azure-Dateifreigabe in Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-volume-azure-files)
+* [Einbinden einer Azure-Dateifreigabe in Azure Container Instances](./container-instances-volume-azure-files.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -1075,9 +1075,9 @@ Microsoft Antimalware ist auf dem zugrunde liegenden Host für Azure-Dienste (z.
 **Leitfaden**: Sichern Sie kundenseitig verwaltete Schlüssel in Azure Key Vault mithilfe von Azure-Befehlszeilentools oder SDKs.
 
 Sichern Sie optional Containerimages, indem Sie sie aus einer Registrierung in eine andere importieren.
-* [Sichern von Schlüsseltresorschlüsseln in Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [Importieren von Containerimages in eine Containerregistrierung](https://docs.microsoft.com/azure/container-registry/container-registry-import-images)
+* [Importieren von Containerimages in eine Containerregistrierung](../container-registry/container-registry-import-images.md)
 
 
 
@@ -1089,9 +1089,9 @@ Sichern Sie optional Containerimages, indem Sie sie aus einer Registrierung in e
 
 **Leitfaden**: Testen Sie die Wiederherstellung von kundenseitig verwalteten Schlüsseln in Azure Key Vault mithilfe von Azure-Befehlszeilentools oder SDKs.
 
-* [Wiederherstellen von Azure Key Vault-Schlüsseln in Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Wiederherstellen von Azure Key Vault-Schlüsseln in Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [Verschlüsseln von Bereitstellungsdaten – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-encrypt-data)
+* [Verschlüsseln von Bereitstellungsdaten – Azure Container Instances](./container-instances-encrypt-data.md)
 
 
 
@@ -1103,7 +1103,7 @@ Sichern Sie optional Containerimages, indem Sie sie aus einer Registrierung in e
 
 **Leitfaden**: Sie können das vorläufige Löschen in Azure Key Vault aktivieren, um Schlüssel vor dem versehentlichen oder böswilligen Löschen zu schützen.
 
-* [Vorläufiges Löschen für Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Vorläufiges Löschen für Blobspeicher](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -1111,7 +1111,7 @@ Sichern Sie optional Containerimages, indem Sie sie aus einer Registrierung in e
 
 ## <a name="incident-response"></a>Reaktion auf Vorfälle
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Reaktion auf Vorfälle](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Reaktion auf Vorfälle](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1: Erstellen eines Leitfadens für die Reaktion auf Vorfälle
 
@@ -1119,7 +1119,7 @@ Sichern Sie optional Containerimages, indem Sie sie aus einer Registrierung in e
 
 Kunden können außerdem den Computer Security Incident Handling Guide des US-amerikanischen National Institute of Standards and Technology (NIST) nutzen, um einen Plan zur Reaktion auf Incidents auszuarbeiten.
 
-* [Leitfaden zu Planung und Betrieb](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [Leitfaden zu Planung und Betrieb](../security-center/security-center-planning-and-operations-guide.md)
 
 * [Anleitung zum Entwickeln eines Prozesses für die Reaktion auf Sicherheitsvorfälle](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1156,7 +1156,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 **Leitfaden**: Microsoft kontaktiert Sie unter den für Sicherheitsvorfälle angegebenen Kontaktdaten, wenn das Microsoft Security Response Center (MSRC) feststellt, dass Personen unrechtmäßig oder unbefugt auf die Kundendaten zugegriffen haben. Überprüfen Sie die Vorfälle anschließend, um sicherzustellen, dass die Probleme behoben wurden.
 
-* [Festlegen der Kontaktinformationen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Festlegen der Kontaktinformationen in Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1166,9 +1166,9 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 **Leitfaden**: Exportieren Sie die Azure Security Center-Warnungen und -Empfehlungen über die Funktion „Fortlaufender Export“. Über „Fortlaufender Export“ können Sie Warnungen und Empfehlungen entweder manuell oder kontinuierlich exportieren. Sie können den Azure Security Center-Datenconnector verwenden, um die Warnungen an Sentinel zu streamen.
 
-* [Konfigurieren des fortlaufenden Exports](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Konfigurieren des fortlaufenden Exports](../security-center/continuous-export.md)
 
-* [Streamen von Warnungen in Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Streamen von Warnungen in Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1178,7 +1178,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 **Leitfaden**: Verwenden Sie die Funktion „Workflowautomatisierung“ in Azure Security Center, um über „Logic Apps“ automatisch Reaktionen auf Sicherheitswarnungen und -empfehlungen auszulösen.
 
-* [Konfigurieren von Workflowautomatisierung und Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Konfigurieren von Workflowautomatisierung und Logic Apps](../security-center/workflow-automation.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1186,7 +1186,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstests und Red Team-Übungen
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Penetrationstests und Red Team-Übungen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Penetrationstests und Red Team-Übungen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Durchführen regelmäßiger Penetrationstests ihrer Azure-Ressourcen und Sicherstellen der Behebung aller kritischen Sicherheitsergebnisse innerhalb von 60 Tagen
 
@@ -1203,5 +1203,5 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](https://docs.microsoft.com/azure/security/benchmarks/overview).
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](../security/benchmarks/overview.md).
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).

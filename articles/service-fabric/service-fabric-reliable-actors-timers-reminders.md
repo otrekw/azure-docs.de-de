@@ -3,12 +3,12 @@ title: Timer und Erinnerungen für Reliable Actors
 description: Einführung in Timer und Erinnerungen für Service Fabric Reliable Actors, einschließlich Anweisungen für die einzelnen Verwendungszwecke.
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: 67dc5d9706c2176b2fe70d2540be00d0af79fd80
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: a464fda3f8b0f293efd36cf0a064156bd7795d44
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996353"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245946"
 ---
 # <a name="actor-timers-and-reminders"></a>Actor-Timer und -Erinnerungen
 Akteure können regelmäßige Arbeit an sich selbst einplanen, indem sie entweder Timer oder Erinnerungen registrieren. In diesem Artikel wird gezeigt, wie Timer und Erinnerungen verwendet werden können, und es werden die Unterschiede zwischen ihnen erklärt.
@@ -130,7 +130,7 @@ Erinnerungen sind ein Mechanismus zum Auslösen persistenter Rückrufe für eine
 > [!NOTE]
 > Die Zuverlässigkeit von Erinnerungen ist an die Garantien für die Zuverlässigkeit des Zustands des Actor-Zustandsanbieters gebunden. Dies bedeutet, dass für Actors, deren Zustandsdauerhaftigkeit auf *Keine* festgelegt wird, die Erinnerungen nach einem Failover nicht ausgelöst werden.
 
-Zum Registrieren einer Erinnerung ruft ein Actor die in der Basisklasse bereitgestellte [`RegisterReminderAsync`](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks)-Methode auf, wie im folgenden Beispiel gezeigt:
+Zum Registrieren einer Erinnerung ruft ein Actor die in der Basisklasse bereitgestellte [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks)-Methode auf, wie im folgenden Beispiel gezeigt:
 
 ```csharp
 protected override async Task OnActivateAsync()

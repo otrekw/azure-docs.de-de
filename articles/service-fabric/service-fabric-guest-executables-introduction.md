@@ -3,12 +3,12 @@ title: Verpacken einer vorhandenen ausführbaren Datei für Azure Service Fabric
 description: Erfahren Sie, wie Sie ein Paket einer vorhandenen Anwendung als ausführbare Gastanwendungsdatei erstellen, um diese in einem Service Fabric-Cluster bereitzustellen.
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 3d7aab28a32effa2caf7b04b830d72e5e3dfda56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75457831"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247386"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Bereitstellen einer vorhandenen ausführbaren Datei für Service Fabric
 Sie können jede Art von Code, z.B. Node.js, Java oder C++, in Azure Service Fabric als Dienst ausführen. In Service Fabric sind derartige Dienste ausführbare Gastdateien.
@@ -65,8 +65,7 @@ ApplicationPackageRoot enthält die Datei „ApplicationManifest.xml“, mit der
 ## <a name="next-steps"></a>Nächste Schritte
 Entsprechende Informationen und Aufgaben finden Sie in den folgenden Artikeln.
 * [Bereitstellen einer ausführbaren Gastanwendungsdatei](service-fabric-deploy-existing-app.md)
-* [Bereitstellen mehrerer ausführbarer Gastanwendungsdateien](service-fabric-deploy-multiple-apps.md)
+* [Bereitstellen mehrerer ausführbarer Gastanwendungsdateien](./service-fabric-deploy-existing-app.md)
 * [Erstellen Ihrer ersten ausführbaren Gastanwendungsdatei in Visual Studio](quickstart-guest-app.md)
 * [Beispiel für das Packen und Bereitstellen einer ausführbaren Gastdatei](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), einschließlich eines Links zur Vorabversion des Packtools
 * [Beispiel für zwei ausführbare Gastdateien (C# und Node.js), die über den Naming Service mithilfe von REST kommunizieren](https://github.com/Azure-Samples/service-fabric-containers)
-

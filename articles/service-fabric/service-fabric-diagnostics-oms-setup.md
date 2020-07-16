@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609926"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258658"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Einrichten von Azure Monitor-Protokollen für einen Cluster
 
@@ -91,7 +91,7 @@ Azure Resource Manager erkennt, dass es sich bei diesem Befehl um ein Update fü
 
 ## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Bereitstellen von Azure Monitor-Protokollen mit Azure PowerShell
 
-Sie können Ihre Protokollanalyseressource auch über PowerShell mit dem Befehl `New-AzOperationalInsightsWorkspace` bereitstellen. Stellen Sie hierfür sicher, dass [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) installiert ist. Erstellen Sie mithilfe dieses Skripts einen neuen Log Analytics-Arbeitsbereich, und fügen Sie diesem die Service Fabric-Lösung hinzu: 
+Sie können Ihre Protokollanalyseressource auch über PowerShell mit dem Befehl `New-AzOperationalInsightsWorkspace` bereitstellen. Stellen Sie hierfür sicher, dass [Azure PowerShell](/powershell/azure/install-az-ps) installiert ist. Erstellen Sie mithilfe dieses Skripts einen neuen Log Analytics-Arbeitsbereich, und fügen Sie diesem die Service Fabric-Lösung hinzu: 
 
 ```powershell
 
@@ -123,5 +123,5 @@ Mithilfe von PowerShell können Sie zudem weitere Lösungen hinzufügen oder and
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Stellen Sie den Log Analytics-Agent auf Ihren Knoten bereit](service-fabric-diagnostics-oms-agent.md), um Leistungsindikatoren zu erfassen und Docker-Statistiken und -Protokolle für Ihre Container zu sammeln.
-* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokolle vertraut.
+* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../azure-monitor/log-query/log-query-overview.md) in Azure Monitor-Protokolle vertraut.
 * [Erstellen benutzerdefinierter Ansichten in Azure Monitor-Protokollen mithilfe des Ansicht-Designers](../azure-monitor/platform/view-designer.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: d0fbdcb877e91a703306f15fdc7507fd19d534f4
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 3bbfd167e89ae1b5f9b7de1df5fd1cb72c720cb6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204839"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254526"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurieren von Cloudmetriken und Protokollen für selbstgehostete Gateways für Azure API Management
 
@@ -57,14 +57,12 @@ Das selbstgehostete Gateway gibt derzeit die folgenden Metriken über Azure Moni
 
 ## <a name="logs"></a>Protokolle
 
-Das selbstgehostete Gateway sendet aktuell keine [Diagnoseprotokolle](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) an die Cloud. Sie können jedoch [Protokolle auf dem lokalen Datenträger konfigurieren und persistent speichern](how-to-configure-local-metrics-logs.md), auf dem das selbstgehostete Gateway bereitgestellt wird. 
+Das selbstgehostete Gateway sendet aktuell keine [Diagnoseprotokolle](./api-management-howto-use-azure-monitor.md#activity-logs) an die Cloud. Sie können jedoch [Protokolle auf dem lokalen Datenträger konfigurieren und persistent speichern](how-to-configure-local-metrics-logs.md), auf dem das selbstgehostete Gateway bereitgestellt wird. 
 
-Wenn ein Gateway in [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) bereitgestellt ist, können Sie [Azure Monitor für Container](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) aktivieren, um Protokolle aus Ihren Containern zu sammeln und in Log Analytics anzuzeigen. 
+Wenn ein Gateway in [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) bereitgestellt ist, können Sie [Azure Monitor für Container](../azure-monitor/insights/container-insights-overview.md) aktivieren, um Protokolle aus Ihren Containern zu sammeln und in Log Analytics anzuzeigen. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zum selbstgehosteten Gateway finden Sie unter [Azure API Management: Übersicht über das selbstgehostete Gateway](self-hosted-gateway-overview.md).
 * Weitere Informationen zum [Konfigurieren und lokalen Speichern von Protokollen in persistentem Speicher](how-to-configure-local-metrics-logs.md)
-
-

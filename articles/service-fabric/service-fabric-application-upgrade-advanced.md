@@ -3,26 +3,26 @@ title: 'Anwendungsupgrade: Weiterführende Themen'
 description: Dieser Artikel behandelt einige weiterführende Themen in Bezug auf Upgrades von Service Fabric-Anwendungen.
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 98d8213cc50f73ef2c053e1fe5574fe33a2f3cb6
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: cc2fdc8f99b74078bd8d5274cbe52265ab8455ae
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263090"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248083"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric-Anwendungsupgrade: Erweiterte Themen
 
 ## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>Hinzufügen oder Entfernen von Diensttypen während eines Anwendungsupgrades
 
-Wenn einer veröffentlichten Anwendung bei einem Upgrade ein neuer Diensttyp hinzugefügt wird, wird der neue Dienst der bereitgestellten Anwendung hinzugefügt. Ein solches Upgrade hat keine Auswirkungen auf Dienstinstanzen, die bereits Teil der Anwendung waren. Es muss jedoch eine Instanz des hinzugefügten Diensttyps erstellt werden, damit der neue Diensttyp aktiviert wird (siehe [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
+Wenn einer veröffentlichten Anwendung bei einem Upgrade ein neuer Diensttyp hinzugefügt wird, wird der neue Dienst der bereitgestellten Anwendung hinzugefügt. Ein solches Upgrade hat keine Auswirkungen auf Dienstinstanzen, die bereits Teil der Anwendung waren. Es muss jedoch eine Instanz des hinzugefügten Diensttyps erstellt werden, damit der neue Diensttyp aktiviert wird (siehe [New-ServiceFabricService](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
 
-Entsprechend können im Rahmen eines Upgrades Diensttypen auch aus einer Anwendung entfernt werden. Alle Dienstinstanzen des Diensttyps, der entfernt werden soll, müssen jedoch vor dem Upgrade entfernt werden (siehe [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
+Entsprechend können im Rahmen eines Upgrades Diensttypen auch aus einer Anwendung entfernt werden. Alle Dienstinstanzen des Diensttyps, der entfernt werden soll, müssen jedoch vor dem Upgrade entfernt werden (siehe [Remove-ServiceFabricService](/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>Vermeiden von Verbindungsabbrüchen bei geplanten Ausfallzeiten für zustandslose Dienste
 
 Bei geplanten Ausfallzeiten für zustandslose Instanzen (z. B. Anwendungs-/Clusterupgrades oder Knotendeaktivierung) können Verbindungen abgebrochen werden, weil der verfügbar gemachte Endpunkt nach dem Ausfall der Instanz entfernt wird und hierdurch das Schließen der Verbindung erzwungen wird.
 
-Um dies zu vermeiden, konfigurieren Sie das Feature *RequestDrain*, indem Sie der Dienstkonfiguration eine *Verzögerung beim Schließen von Instanzen* hinzufügen, um vorhandene Anforderungen aus dem auszugleichenden Cluster an den verfügbar gemachten Endpunkten zuzulassen. Dies wird dadurch erreicht, dass der von der zustandslosen Instanz angekündigte Endpunkt entfernt wird, *bevor* die Verzögerung vor dem Schließen der Instanz gestartet wird. Diese Verzögerung ermöglicht das ordnungsgemäße Entladen vorhandener Anforderungen, bevor die Instanz tatsächlich ausfällt. Clients werden beim Starten der Verzögerung von einer Rückruffunktion über die Endpunktänderung benachrichtigt, sodass sie den Endpunkt erneut auflösen und damit vermeiden können, dass neue Anforderungen an die Instanz gesendet werden, die ausfällt. Diese Anforderungen könnten von Clients stammen, die [Reverseproxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) oder Auflösungs-APIs des Dienstendpunkts mit dem Benachrichtigungsmodell ([ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) zum Aktualisieren der Endpunkte verwenden.
+Um dies zu vermeiden, konfigurieren Sie das Feature *RequestDrain*, indem Sie der Dienstkonfiguration eine *Verzögerung beim Schließen von Instanzen* hinzufügen, um vorhandene Anforderungen aus dem auszugleichenden Cluster an den verfügbar gemachten Endpunkten zuzulassen. Dies wird dadurch erreicht, dass der von der zustandslosen Instanz angekündigte Endpunkt entfernt wird, *bevor* die Verzögerung vor dem Schließen der Instanz gestartet wird. Diese Verzögerung ermöglicht das ordnungsgemäße Entladen vorhandener Anforderungen, bevor die Instanz tatsächlich ausfällt. Clients werden beim Starten der Verzögerung von einer Rückruffunktion über die Endpunktänderung benachrichtigt, sodass sie den Endpunkt erneut auflösen und damit vermeiden können, dass neue Anforderungen an die Instanz gesendet werden, die ausfällt. Diese Anforderungen könnten von Clients stammen, die [Reverseproxy](./service-fabric-reverseproxy.md) oder Auflösungs-APIs des Dienstendpunkts mit dem Benachrichtigungsmodell ([ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) zum Aktualisieren der Endpunkte verwenden.
 
 ### <a name="service-configuration"></a>Dienstkonfiguration
 
@@ -77,7 +77,7 @@ Es gibt mehrere Möglichkeiten, die Verzögerung auf der Dienstseite zu konfigur
 
 ### <a name="client-configuration"></a>Clientkonfiguration
 
-Um Benachrichtigungen zu erhalten, wenn sich ein Endpunkt geändert hat, sollten Clients einen Rückruf registrieren (siehe [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)).
+Um Benachrichtigungen zu erhalten, wenn sich ein Endpunkt geändert hat, sollten Clients einen Rückruf registrieren (siehe [ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)).
 Die Änderungsbenachrichtigung ist ein Hinweis darauf, dass sich die Endpunkte geändert haben. Der Client sollte die Endpunkte erneut auflösen und die Endpunkte nicht mehr verwenden, die nicht mehr angekündigt werden, da sie bald ausfallen werden.
 
 ### <a name="optional-upgrade-overrides"></a>Optionale Upgradeüberschreibungen
@@ -94,7 +94,7 @@ Die außer Kraft gesetzte Verzögerungsdauer gilt nur für die aufgerufene Upgra
 
 > [!NOTE]
 > * Die Einstellungen zum Ausgleichen von Anforderungen können nicht verhindern, dass der Azure Load Balancer neue Anforderungen an die Endpunkte sendet, auf die der Ausgleich angewendet wird.
-> * Ein beschwerdebasierter Auflösungsmechanismus wird nicht zu einem eleganten Ausgleich von Anforderungen führen, da er nach einem Fehler eine Dienstauflösung auslöst. Wie bereits beschrieben, sollte dies stattdessen erweitert werden, um die Änderungsbenachrichtigungen für den Endpunkt mit [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription) zu abonnieren.
+> * Ein beschwerdebasierter Auflösungsmechanismus wird nicht zu einem eleganten Ausgleich von Anforderungen führen, da er nach einem Fehler eine Dienstauflösung auslöst. Wie bereits beschrieben, sollte dies stattdessen erweitert werden, um die Änderungsbenachrichtigungen für den Endpunkt mit [ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription) zu abonnieren.
 > * Die Einstellungen werden nicht berücksichtigt, wenn es sich um ein Upgrade ohne Auswirkungen handelt, d. h. wenn die Replikate während des Upgrades nicht heruntergefahren werden.
 >
 >
@@ -114,7 +114,7 @@ Die außer Kraft gesetzte Verzögerungsdauer gilt nur für die aufgerufene Upgra
 
 Beim *Monitored*-Modus wendet Service Fabric Integritätsrichtlinien an, um sicherzustellen, dass die Anwendung im Verlauf des Upgrades fehlerfrei ist. Wenn die Integritätsrichtlinien verletzt werden, wird abhängig von der angegebenen *FailureAction* das Upgrade entweder angehalten oder automatisch ein Rollback ausgeführt.
 
-Im *UnmonitoredManual*-Modus hat der Anwendungsadministrator vollständige Kontrolle über den Fortschritt des Upgrades. Dieser Modus ist hilfreich, wenn eine benutzerdefinierte Auswertung von Integritätsrichtlinien durchgeführt werden soll oder wenn unkonventionelle Upgrades durchgeführt werden, bei denen die Überwachung der Systemintegrität vollständig umgangen wird (z.B. wenn die Anwendung bereits Datenverluste aufweist). Ein Upgrade in diesem Modus wird automatisch nach Abschluss jeder Upgradedomäne angehalten. Es muss mit [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) ausdrücklich fortgesetzt werden. Wenn ein Upgrade angehalten wurde und bereit ist, vom Benutzer fortgesetzt zu werden, lautet der Upgradestatus *RollforwardPending* (siehe [UpgradeState](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)).
+Im *UnmonitoredManual*-Modus hat der Anwendungsadministrator vollständige Kontrolle über den Fortschritt des Upgrades. Dieser Modus ist hilfreich, wenn eine benutzerdefinierte Auswertung von Integritätsrichtlinien durchgeführt werden soll oder wenn unkonventionelle Upgrades durchgeführt werden, bei denen die Überwachung der Systemintegrität vollständig umgangen wird (z.B. wenn die Anwendung bereits Datenverluste aufweist). Ein Upgrade in diesem Modus wird automatisch nach Abschluss jeder Upgradedomäne angehalten. Es muss mit [Resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) ausdrücklich fortgesetzt werden. Wenn ein Upgrade angehalten wurde und bereit ist, vom Benutzer fortgesetzt zu werden, lautet der Upgradestatus *RollforwardPending* (siehe [UpgradeState](/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)).
 
 Schließlich eignet sich der *UnmonitoredAuto*-Modus für schnelle Upgradedurchläufe während der Dienstentwicklung oder der Testphase, da keine Benutzereingaben erforderlich sind und keine Richtlinien zur Anwendungsintegrität ausgewertet werden.
 
@@ -205,11 +205,11 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 ## <a name="roll-back-application-upgrades"></a>Ausführen von Rollbacks für Anwendungsupgrades
 
-Während Upgrades in einem von drei Modi ausgeführt werden können (*Monitored*, *UnmonitoredAuto* oder *UnmonitoredManual*), können Rollback nur im Modus *UnmonitoredAuto* oder *UnmonitoredManual* ausgeführt werden. Ein Rollback im *UnmonitoredAuto*-Modus funktioniert genauso wie das Rollforward – lediglich der Standardwert von *UpgradeReplicaSetCheckTimeout* unterscheidet sich (siehe [Parameter für Anwendungsupgrades](service-fabric-application-upgrade-parameters.md)). Ein Rollback im *UnmonitoredManual*-Modus funktioniert genauso wie das Rollforward – das Rollback wird automatisch nach jeder Upgradedomäne angehalten und muss explizit mit [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) fortgesetzt werden.
+Während Upgrades in einem von drei Modi ausgeführt werden können (*Monitored*, *UnmonitoredAuto* oder *UnmonitoredManual*), können Rollback nur im Modus *UnmonitoredAuto* oder *UnmonitoredManual* ausgeführt werden. Ein Rollback im *UnmonitoredAuto*-Modus funktioniert genauso wie das Rollforward – lediglich der Standardwert von *UpgradeReplicaSetCheckTimeout* unterscheidet sich (siehe [Parameter für Anwendungsupgrades](service-fabric-application-upgrade-parameters.md)). Ein Rollback im *UnmonitoredManual*-Modus funktioniert genauso wie das Rollforward – das Rollback wird automatisch nach jeder Upgradedomäne angehalten und muss explizit mit [Resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) fortgesetzt werden.
 
-Rollbacks können automatisch ausgelöst werden, wenn die Integritätsrichtlinien eines Upgrades im *Monitored*-Modus mit einer *FailureAction* mit dem Wert *Rollback* verletzt werden (siehe [Parameter für Anwendungsupgrades](service-fabric-application-upgrade-parameters.md)), oder ausdrücklich mit [Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
+Rollbacks können automatisch ausgelöst werden, wenn die Integritätsrichtlinien eines Upgrades im *Monitored*-Modus mit einer *FailureAction* mit dem Wert *Rollback* verletzt werden (siehe [Parameter für Anwendungsupgrades](service-fabric-application-upgrade-parameters.md)), oder ausdrücklich mit [Start-ServiceFabricApplicationRollback](/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
 
-Während des Rollbacks können der Wert von *UpgradeReplicaSetCheckTimeout* und der Modus weiterhin jederzeit mit [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps) geändert werden.
+Während des Rollbacks können der Wert von *UpgradeReplicaSetCheckTimeout* und der Modus weiterhin jederzeit mit [Update-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps) geändert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Ihre Anwendung mit Visual Studio upgraden](service-fabric-application-upgrade-tutorial.md) beschreibt das Upgraden von Anwendungen mit Visual Studio.

@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
 author: palma21
-ms.openlocfilehash: 6aed6c84439e65646c15367cdad3bf13c5573256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d06852e9d3d61b3e3d368a1d1c6f4107aff1442
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831680"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251313"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)
 
@@ -239,7 +239,7 @@ Im Anschluss finden Sie eine Beispielarchitektur der Bereitstellung:
   * Anforderungen von AKS-Agent-Knoten folgen einer benutzerdefinierten Route, die in dem Subnetz platziert wurde, in dem der AKS-Cluster bereitgestellt ist.
   * Azure Firewall leitet ausgehenden Datenverkehr über ein Front-End mit öffentlicher IP-Adresse aus dem virtuellen Netzwerk.
   * Der Zugriff auf das öffentliche Internet oder andere Azure-Dienste erfolgt sowohl für eingehenden als auch für ausgehenden Datenverkehr über die IP-Adresse des Firewall-Front-Ends.
-  * Optional wird der Zugriff auf die AKS-Steuerungsebene durch [vom API-Server autorisierte IP-Adressbereiche](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges) geschützt. Dies schließt die öffentliche Front-End-IP-Adresse für die Firewall mit ein.
+  * Optional wird der Zugriff auf die AKS-Steuerungsebene durch [vom API-Server autorisierte IP-Adressbereiche](./api-server-authorized-ip-ranges.md) geschützt. Dies schließt die öffentliche Front-End-IP-Adresse für die Firewall mit ein.
 * Interner Datenverkehr
   * Optional können Sie anstelle eines [öffentlichen Lastenausgleichs](load-balancer-standard.md) oder zusätzlich zu einem öffentlichen Lastenausgleich einen [internen Lastenausgleich](internal-lb.md) für internen Datenverkehr verwenden und diesen ebenfalls in einem eigenen Subnetz isolieren.
 
@@ -353,7 +353,7 @@ FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurati
 ```
 
 > [!NOTE]
-> Wenn Sie den sicheren Zugriff auf den AKS-API-Server mit [autorisierten IP-Adressbereichen](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges) verwenden, müssen Sie die öffentliche IP-Adresse der Firewall zum autorisierten IP-Adressbereich hinzufügen.
+> Wenn Sie den sicheren Zugriff auf den AKS-API-Server mit [autorisierten IP-Adressbereichen](./api-server-authorized-ip-ranges.md) verwenden, müssen Sie die öffentliche IP-Adresse der Firewall zum autorisierten IP-Adressbereich hinzufügen.
 
 ### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>Erstellen einer benutzerdefinierten Route mit einem Hop zu Azure Firewall
 
@@ -389,7 +389,7 @@ az network firewall network-rule create -g $RG -f $FWNAME --collection-name 'aks
 az network firewall application-rule create -g $RG -f $FWNAME --collection-name 'aksfwar' -n 'fqdn' --source-addresses '*' --protocols 'http=80' 'https=443' --fqdn-tags "AzureKubernetesService" --action allow --priority 100
 ```
 
-Weitere Informationen zum Azure Firewall-Dienst finden Sie in der [Azure Firewall-Dokumentation](https://docs.microsoft.com/azure/firewall/overview).
+Weitere Informationen zum Azure Firewall-Dienst finden Sie in der [Azure Firewall-Dokumentation](../firewall/overview.md).
 
 ### <a name="associate-the-route-table-to-aks"></a>Zuordnen der Routingtabelle zu AKS
 
@@ -722,7 +722,7 @@ kubectl apply -f example.yaml
 ### <a name="add-a-dnat-rule-to-azure-firewall"></a>Hinzufügen einer DNAT-Regel zu Azure Firewall
 
 > [!IMPORTANT]
-> Wenn Sie Azure Firewall verwenden, um ausgehenden Datenverkehr einzuschränken, und eine benutzerdefinierte Route (UDR) erstellen, um den gesamten ausgehenden Datenverkehr zu erzwingen, stellen Sie sicher, dass Sie in der Firewall eine entsprechende DNAT-Regel erstellen, um ausgehenden Datenverkehr zuzulassen. Durch die Verwendung von Azure Firewall mit einer UDR wird das Setup für eingehenden Datenverkehr aufgrund von asymmetrischem Routing unterbrochen. (Das Problem tritt auf, wenn das AKS-Subnetz über eine Standardroute verfügt, die zur privaten IP-Adresse der Firewall wechselt, Sie aber einen öffentlichen Load Balancer verwenden – Eingangs- oder Kubernetes-Dienst vom Typ LoadBalancer). In diesem Fall wird der eingehende Load Balancer-Datenverkehr über die öffentliche IP-Adresse empfangen, während der Rückpfad über die private IP-Adresse der Firewall verläuft. Die Firewall löscht das zurückgegebene Paket, weil sie zustandsbehaftet ist und nichts über eine vorhandene Sitzung weiß. Informationen zur Integration von Azure Firewall in ihren Eingangs- oder Service Dienst-Load Balancer finden Sie unter [Integrieren von Azure Firewall mit Azure Load Balancer Standard](https://docs.microsoft.com/azure/firewall/integrate-lb).
+> Wenn Sie Azure Firewall verwenden, um ausgehenden Datenverkehr einzuschränken, und eine benutzerdefinierte Route (UDR) erstellen, um den gesamten ausgehenden Datenverkehr zu erzwingen, stellen Sie sicher, dass Sie in der Firewall eine entsprechende DNAT-Regel erstellen, um ausgehenden Datenverkehr zuzulassen. Durch die Verwendung von Azure Firewall mit einer UDR wird das Setup für eingehenden Datenverkehr aufgrund von asymmetrischem Routing unterbrochen. (Das Problem tritt auf, wenn das AKS-Subnetz über eine Standardroute verfügt, die zur privaten IP-Adresse der Firewall wechselt, Sie aber einen öffentlichen Load Balancer verwenden – Eingangs- oder Kubernetes-Dienst vom Typ LoadBalancer). In diesem Fall wird der eingehende Load Balancer-Datenverkehr über die öffentliche IP-Adresse empfangen, während der Rückpfad über die private IP-Adresse der Firewall verläuft. Die Firewall löscht das zurückgegebene Paket, weil sie zustandsbehaftet ist und nichts über eine vorhandene Sitzung weiß. Informationen zur Integration von Azure Firewall in ihren Eingangs- oder Service Dienst-Load Balancer finden Sie unter [Integrieren von Azure Firewall mit Azure Load Balancer Standard](../firewall/integrate-lb.md).
 
 
 Um die eingehende Konnektivität zu konfigurieren, muss eine DNAT-Regel für die Azure Firewall-Instanz geschrieben werden. Zum Testen der Konnektivität mit dem Cluster wird eine Regel definiert, durch die die öffentliche IP-Adresse des Firewall-Front-Ends an die interne IP-Adresse weitergeleitet wird, die durch den internen Dienst verfügbar gemacht wird.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: dd49680da6f52e32ddb52dbdb23ad5e8f627a91e
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204819"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254502"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurieren von lokalen Metriken und Protokollen für selbstgehostete Gateways für Azure API Management
 
@@ -204,7 +204,7 @@ Das selbstgehostete Gateway gibt Protokolle standardmäßig in `stdout` und `std
 kubectl logs <pod-name>
 ```
 
-Wenn Ihr selbstgehostetes Gateway in Azure Kubernetes Service bereitgestellt ist, können Sie [Azure Monitor für Container](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) aktivieren, um `stdout` und `stderr` aus Ihren Workloads zu sammeln und die Protokolle in Log Analytics anzuzeigen. 
+Wenn Ihr selbstgehostetes Gateway in Azure Kubernetes Service bereitgestellt ist, können Sie [Azure Monitor für Container](../azure-monitor/insights/container-insights-overview.md) aktivieren, um `stdout` und `stderr` aus Ihren Workloads zu sammeln und die Protokolle in Log Analytics anzuzeigen. 
 
 Das selbstgehostete Gateway unterstützt auch eine Reihe von Protokollen, einschließlich `localsyslog`, `rfc5424` und `journal`. In der folgenden Tabelle sind alle unterstützten Optionen zusammengefasst. 
 
@@ -236,4 +236,3 @@ Es folgt eine Beispielkonfiguration für die lokale Protokollierung:
 
 * Weitere Informationen zum selbstgehosteten Gateway finden Sie unter [Azure API Management: Übersicht über das selbstgehostete Gateway](self-hosted-gateway-overview.md).
 * Erfahren Sie mehr zum [Konfigurieren und Speichern von Protokollen in der Cloud](how-to-configure-local-metrics-logs.md).
-

@@ -5,12 +5,12 @@ author: amanbha
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: amanbha
-ms.openlocfilehash: b90c5a10c64e273f1c8f48c7bf5713859796db65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d977b6fea71d246610b0e6ef2d9e17d587f1e9ad
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645615"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253540"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>Löschen von Reliable Actors und deren Zustand
 Eine Garbage Collection von deaktivierten Actors bereinigt nur das Actor-Objekt, entfernt jedoch keine Daten, die im Zustands-Manager eines Actors gespeichert sind. Wenn ein Actor reaktiviert wird, werden seine Daten durch den Zustands-Manager wieder zur Verfügung gestellt. Wenn Actors Daten im Zustands-Manager speichern und dann deaktiviert, aber nicht wieder aktiviert werden, kann eine Bereinigung ihrer Daten nötig sein.
@@ -49,7 +49,7 @@ Weitere Informationen zu Reliable Actors finden Sie hier:
 * [Actor-Ereignisse](service-fabric-reliable-actors-events.md)
 * [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
 * [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
-* [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Actor-API-Referenzdokumentation](/previous-versions/azure/dn971626(v=azure.100))
 * [C#-Beispielcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-Beispielcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

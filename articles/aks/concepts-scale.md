@@ -4,12 +4,12 @@ description: Informationen zum Skalieren in Azure Kubernetes Service (AKS) einsc
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 83cbaf49f26a53518b1aa1e211b61af1959642a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41d4088a0942eb408d3d3c9eeb2d13ff38fc0362
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465336"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244513"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Anw
 
 Sie können Replikate (Pods) und Knoten manuell skalieren, um zu testen, wie Ihre Anwendung auf eine Änderung in verfügbaren Ressourcen und Status reagiert. Durch manuelles Skalieren von Ressourcen können Sie auch eine festgelegte Anzahl zu verwendender Ressourcen definieren, wie z.B. die Anzahl der Knoten, um feste Kosten einzuhalten. Zum manuellen Skalieren definieren Sie die Replikat- oder Knotenanzahl. Die Kubernetes-API plant dann das Erstellen zusätzlicher Pods oder Entfernen von Knoten auf Basis dieser Replikat- oder Knotenanzahl.
 
-Beim horizontalen Herunterskalieren von Knoten ruft die Kubernetes-API die relevante Azure-Compute-API auf, die an den von Ihrem Cluster verwendeten Computetyp gebunden ist. Beispielsweise wird für Cluster, die auf VM Scale Sets basieren, die Logik für die Auswahl der zu entfernenden Knoten durch die VM Scale Sets-API bestimmt. Weitere Informationen dazu, wie Knoten beim horizontalen Herunterskalieren für die Entfernung ausgewählt werden, finden Sie in den [Häufig gestellte Fragen zu VMSS](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed).
+Beim horizontalen Herunterskalieren von Knoten ruft die Kubernetes-API die relevante Azure-Compute-API auf, die an den von Ihrem Cluster verwendeten Computetyp gebunden ist. Beispielsweise wird für Cluster, die auf VM Scale Sets basieren, die Logik für die Auswahl der zu entfernenden Knoten durch die VM Scale Sets-API bestimmt. Weitere Informationen dazu, wie Knoten beim horizontalen Herunterskalieren für die Entfernung ausgewählt werden, finden Sie in den [Häufig gestellte Fragen zu VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed).
 
 Informationen zu ersten Schritten mit der manuellen Skalierung von Pods und Knoten finden Sie unter [Skalieren von Anwendungen in AKS][aks-scale].
 
@@ -80,7 +80,7 @@ Um Ihren AKS-Cluster schnell zu skalieren, können Sie ihn in Azure Container In
 
 ![Kubernetes-Burstskalierung in ACI](media/concepts-scale/burst-scaling.png)
 
-Mit ACI können Sie schnell Containerinstanzen ohne zusätzlichen Infrastrukturaufwand bereitstellen. Beim Herstellen der Verbindung mit AKS wird ACI eine sichere logische Erweiterung Ihres AKS-Clusters. Die Komponente zu [virtuellen Knoten][virtual-nodes-cli] (virtual nodes), die unter [Virtual Kubelet][virtual-kubelet] zu finden ist, wird in Ihrem AKS-Cluster installiert, der ACI als virtuellen Kubernetes-Knoten darstellt. Kubernetes kann dann Pods einplanen, die als ACI-Instanzen über virtuelle Knoten ausgeführt werden, nicht direkt in Ihrem AKS-Cluster als Pods auf VM-Knoten. Virtuelle Knoten befinden sich derzeit in AKS in der Vorschau.
+Mit ACI können Sie schnell Containerinstanzen ohne zusätzlichen Infrastrukturaufwand bereitstellen. Beim Herstellen der Verbindung mit AKS wird ACI eine sichere logische Erweiterung Ihres AKS-Clusters. Die Komponente zu [virtuellen Knoten][virtual-nodes-cli] (virtual nodes), die unter [Virtual Kubelet][virtual-kubelet] zu finden ist, wird in Ihrem AKS-Cluster installiert, der ACI als virtuellen Kubernetes-Knoten darstellt. Kubernetes kann dann Pods einplanen, die als ACI-Instanzen über virtuelle Knoten ausgeführt werden, nicht direkt in Ihrem AKS-Cluster als Pods auf VM-Knoten.
 
 Die Anwendung erfordert keine Änderung, um virtuelle Knoten zu verwenden. Bereitstellungen können AKS und ACI übergreifend und ohne Verzögerung skalieren, da die automatische Clusterskalierung neue Knoten im AKS-Cluster bereitstellt.
 
@@ -111,7 +111,7 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-scale]: tutorial-kubernetes-scale.md
 [aks-manually-scale-pods]: tutorial-kubernetes-scale.md#manually-scale-pods
 [aks-manually-scale-nodes]: tutorial-kubernetes-scale.md#manually-scale-aks-nodes
-[aks-cluster-autoscaler]: autoscaler.md
+[aks-cluster-autoscaler]: ./cluster-autoscaler.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-storage]: concepts-storage.md

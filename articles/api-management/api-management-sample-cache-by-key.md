@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b87244b4df155768e815bdba5226fc784866f6b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60780820"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249715"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Benutzerdefiniertes Caching in Azure API Management
-Der Azure API Management-Dienst verfügt über eine integrierte Unterstützung für das [HTTP-Antwort-Caching](api-management-howto-cache.md) mit der Ressourcen-URL als Schlüssel. Der Schlüssel kann durch Anforderungsheader mithilfe der `vary-by` -Eigenschaften geändert werden. Dies ist nützlich, wenn ganze HTTP-Antworten (auch als Darstellungen bezeichnet) zwischengespeichert werden sollen. Die neuen [cache-lookup-value](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) und [cache-store-value](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) bieten die Möglichkeit zum Speichern und Abrufen von zufälligen Datenelementen aus Richtliniendefinitionen. Die neuen Richtlinien [send-request](/azure/api-management/api-management-advanced-policies#SendRequest) -Richtlinie, da Sie nun Antworten von externen Diensten zwischenspeichern können.
+Der Azure API Management-Dienst verfügt über eine integrierte Unterstützung für das [HTTP-Antwort-Caching](api-management-howto-cache.md) mit der Ressourcen-URL als Schlüssel. Der Schlüssel kann durch Anforderungsheader mithilfe der `vary-by` -Eigenschaften geändert werden. Dies ist nützlich, wenn ganze HTTP-Antworten (auch als Darstellungen bezeichnet) zwischengespeichert werden sollen. Die neuen [cache-lookup-value](./api-management-caching-policies.md#GetFromCacheByKey) und [cache-store-value](./api-management-caching-policies.md#StoreToCacheByKey) bieten die Möglichkeit zum Speichern und Abrufen von zufälligen Datenelementen aus Richtliniendefinitionen. Die neuen Richtlinien [send-request](./api-management-advanced-policies.md#SendRequest) -Richtlinie, da Sie nun Antworten von externen Diensten zwischenspeichern können.
 
 ## <a name="architecture"></a>Aufbau
 Der API Management-Dienst verwendet einen freigegebenen Einzelmandanten-Datencache, sodass Sie beim Hochskalieren auf mehrere Einheiten weiterhin Zugriff auf die gleichen zwischengespeicherten Daten erhalten. Wenn Sie jedoch mit einer Bereitstellung arbeiten, die mehrere Regionen umfasst, gibt es in allen Regionen unabhängige Caches. Es ist wichtig, den Cache nicht als Datenspeicher zu behandeln, der als einzige Quelle für einzelne Informationen fungiert. Wenn dies der Fall ist und Sie sich später dazu entschieden haben, die Vorteile der Bereitstellung in mehreren Regionen zu nutzen, könnten Kunden mit Benutzern, die in mehreren Regionen unterwegs sind, den Zugriff auf die zwischengespeicherten Daten verlieren.

@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 38cfab8a3b73eeef28249f53bd2f5c56e26b21a1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854116"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254281"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Bereitstellen eines selbstgehosteten Gateways für Kubernetes
 
@@ -65,7 +65,7 @@ In diesem Artikel werden die Schritte für die Bereitstellung der selbstgehostet
 ### <a name="access-token"></a>Zugriffstoken
 Ohne ein gültiges Zugriffstoken kann ein selbstgehostetes Gateway nicht am Endpunkt des zugeordneten API Management-Diensts auf Konfigurationsdaten zugreifen und diese herunterzuladen. Das Zugriffstoken ist maximal 30 Tage gültig. Es muss neu generiert und der Cluster entweder manuell oder mittels Automatisierung mit einem neuen Token konfiguriert werden, bevor es abläuft. 
 
-Wenn Sie die Tokenaktualisierung automatisieren, generieren Sie über diesen [Vorgang](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway/generatetoken) der Verwaltungs-API ein neues Token. Informationen zur Verwaltung von Kubernetes-Geheimnissen finden Sie auf der [Kubernetes-Website](https://kubernetes.io/docs/concepts/configuration/secret).
+Wenn Sie die Tokenaktualisierung automatisieren, generieren Sie über diesen [Vorgang](/rest/api/apimanagement/2019-12-01/gateway/generatetoken) der Verwaltungs-API ein neues Token. Informationen zur Verwaltung von Kubernetes-Geheimnissen finden Sie auf der [Kubernetes-Website](https://kubernetes.io/docs/concepts/configuration/secret).
 
 ### <a name="namespace"></a>Namespace
 Kubernetes-[Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) helfen bei der Aufteilung eines einzelnen Clusters unter mehreren Teams, Projekten oder Anwendungen. Namespaces stellen einen Bereich für Ressourcen und Namen bereit. Sie können einem Ressourcenkontingent und Zugriffssteuerungsrichtlinien zugeordnet werden.

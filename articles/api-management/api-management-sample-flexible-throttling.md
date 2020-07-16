@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc36211eeb58f18546e4eae24ad003c6b2ae761b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71066754"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243170"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Erweiterte Anforderungsbegrenzung mit Azure API Management
 Die Fähigkeit, eingehende Anforderungen zu begrenzen oder zu drosseln, ist für Azure API Management von großer Bedeutung. Mit API Management lässt sich entweder die Rate der Anforderungen oder die Gesamtzahl der Anforderungen bzw. die Gesamtmenge der übertragenen Daten steuern. Dies ermöglicht es den API-Anbietern, ihre APIs vor Missbrauch zu schützen und mit verschiedenen API-Produkttarifen Mehrwert zu schaffen.
@@ -32,7 +32,7 @@ Bisher konnte die Rate nur auf der Basis eines bestimmten Produktabonnements ged
 > [!NOTE]
 > Im Verbrauchstarif von Azure API Management sind die Richtlinien `rate-limit-by-key` und `quota-by-key` nicht verfügbar. 
 
-Die neuen Richtlinien [rate-limit-by-key](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) und [quota-by-key](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) bieten mehr Flexibilität bei der Steuerung des Datenverkehrs. Mit diesen neuen Richtlinien können Sie in selbst definierten Ausdrücken Schlüssel angeben, die zum Nachverfolgen der Datenverkehrsnutzung verwendet werden. Wie das funktioniert, lässt sich am einfachsten anhand eines Beispiels veranschaulichen. 
+Die neuen Richtlinien [rate-limit-by-key](./api-management-access-restriction-policies.md#LimitCallRateByKey) und [quota-by-key](./api-management-access-restriction-policies.md#SetUsageQuotaByKey) bieten mehr Flexibilität bei der Steuerung des Datenverkehrs. Mit diesen neuen Richtlinien können Sie in selbst definierten Ausdrücken Schlüssel angeben, die zum Nachverfolgen der Datenverkehrsnutzung verwendet werden. Wie das funktioniert, lässt sich am einfachsten anhand eines Beispiels veranschaulichen. 
 
 ## <a name="ip-address-throttling"></a>Drosselung nach IP-Adresse
 Die folgenden Richtlinien beschränken eine einzelne Client-IP-Adresse auf nur 10 Aufrufe pro Minute bei einer Gesamtanzahl von 1.000.000 Aufrufen und 10.000 Kilobyte Bandbreite pro Monat. 
@@ -62,10 +62,10 @@ Wenn ein Endbenutzer authentifiziert ist, kann auf Basis der eindeutigen Identit
 In diesem Beispiel wird veranschaulicht, wie der „Authorization“-Header extrahiert, in ein `JWT`-Objekt konvertiert und der Antragsteller des Tokens verwendet wird, um den Benutzer zu identifizieren. Diesen verwenden wir als Schlüssel zum Begrenzen der Rate. Wenn die Benutzeridentität in `JWT` als einer der anderen Ansprüche gespeichert ist, kann stattdessen dieser Wert verwendet werden.
 
 ## <a name="combined-policies"></a>Kombinierte Richtlinien
-Obwohl die neuen Drosselungsrichtlinien mehr Steuerungsmöglichkeiten bieten als die bisher vorhandenen, lohnt es sich weiterhin, beide Fähigkeiten zu kombinieren. Die Drosselung nach Produktabonnementschlüssel ([Aufrufrate nach Abonnement einschränken](/azure/api-management/api-management-access-restriction-policies#LimitCallRate) und [Nutzungskontingent nach Abonnement festlegen](/azure/api-management/api-management-access-restriction-policies#SetUsageQuota)) gibt Ihnen die Möglichkeit, nach Nutzungsstufen gestaffelte Gebühren für eine API festzulegen und sie so zu monetarisieren. Die feiner differenzierten Steuerungsmöglichkeiten einer Drosselung nach Benutzer können ergänzend genutzt werden, um zu verhindern, dass das Verhalten eines Benutzers die Erfahrung eines anderen beeinträchtigt. 
+Obwohl die neuen Drosselungsrichtlinien mehr Steuerungsmöglichkeiten bieten als die bisher vorhandenen, lohnt es sich weiterhin, beide Fähigkeiten zu kombinieren. Die Drosselung nach Produktabonnementschlüssel ([Aufrufrate nach Abonnement einschränken](./api-management-access-restriction-policies.md#LimitCallRate) und [Nutzungskontingent nach Abonnement festlegen](./api-management-access-restriction-policies.md#SetUsageQuota)) gibt Ihnen die Möglichkeit, nach Nutzungsstufen gestaffelte Gebühren für eine API festzulegen und sie so zu monetarisieren. Die feiner differenzierten Steuerungsmöglichkeiten einer Drosselung nach Benutzer können ergänzend genutzt werden, um zu verhindern, dass das Verhalten eines Benutzers die Erfahrung eines anderen beeinträchtigt. 
 
 ## <a name="client-driven-throttling"></a>Clientgesteuerte Drosselung
-Wenn der Drosselungsschlüssel mithilfe eines [Richtlinienausdrucks](/azure/api-management/api-management-policy-expressions) definiert wird, legt der API-Anbieter Art und Umfang der Drosselung fest. Ein Entwickler möchte jedoch möglicherweise selbst steuern, wie er die Raten für seine Kunden begrenzt. Der API-Anbieter kann dies einrichten. Dazu führt er einen benutzerdefinierten Header ein, der es der Clientanwendung des Entwicklers ermöglicht, den Schlüssel an die API zu kommunizieren.
+Wenn der Drosselungsschlüssel mithilfe eines [Richtlinienausdrucks](./api-management-policy-expressions.md) definiert wird, legt der API-Anbieter Art und Umfang der Drosselung fest. Ein Entwickler möchte jedoch möglicherweise selbst steuern, wie er die Raten für seine Kunden begrenzt. Der API-Anbieter kann dies einrichten. Dazu führt er einen benutzerdefinierten Header ein, der es der Clientanwendung des Entwicklers ermöglicht, den Schlüssel an die API zu kommunizieren.
 
 ```xml
 <rate-limit-by-key calls="100"
@@ -80,4 +80,3 @@ Azure API Management ermöglicht Drosselungen bzw. Begrenzungen nach Rate und Ko
 
 ## <a name="next-steps"></a>Nächste Schritte
 Bitte geben Sie uns Feedback in Form eines GitHub-Issues zu diesem Thema. Wir würden gern von Ihnen hören, welche anderen möglichen Schlüsselwerte sich in Ihren Szenarien anbieten oder bewährt haben.
-

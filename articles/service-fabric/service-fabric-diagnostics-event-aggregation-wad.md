@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff13f8301274ebfc8b31dcbe01ef2a0fe6cd6fcc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846668"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247760"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "85846668"
 
 Bei Verwendung eines Azure Service Fabric-Clusters empfiehlt es sich, die Protokolle aller Knoten an einem zentralen Ort zu sammeln. Das Sammeln der Protokolle an einem zentralen Ort hilft Ihnen bei Analyse und Behandlung von Problemen, die ggf. in Ihrem Cluster oder in den Anwendungen und Diensten des Clusters auftreten.
 
-Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Windows Azure-Diagnose (WAD)-Erweiterung, mit der Protokolle in Azure Storage hochgeladen und an Azure Application Insights oder Event Hubs gesendet werden können. Sie können zudem einen externen Prozess verwenden, um die Ereignisse aus dem Speicher zu lesen und in einem Analyseplattformprodukt wie [Azure Monitor-Protokolle](../log-analytics/log-analytics-service-fabric.md) oder in einer anderen Protokollanalyselösung zu verwenden.
+Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Windows Azure-Diagnose (WAD)-Erweiterung, mit der Protokolle in Azure Storage hochgeladen und an Azure Application Insights oder Event Hubs gesendet werden können. Sie können zudem einen externen Prozess verwenden, um die Ereignisse aus dem Speicher zu lesen und in einem Analyseplattformprodukt wie [Azure Monitor-Protokolle](./service-fabric-diagnostics-oms-setup.md) oder in einer anderen Protokollanalyselösung zu verwenden.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -31,7 +31,7 @@ In diesem Artikel werden folgende Tools verwendet:
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
-* [Azure Resource Manager-Vorlage](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Resource Manager-Vorlage](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
 
 ## <a name="service-fabric-platform-events"></a>Service Fabric-Plattformereignisse
 Service Fabric richtet einige [vorgefertigte Protokollierungskanäle](service-fabric-diagnostics-event-generation-infra.md) ein. Folgende dieser Kanäle sind mit der Erweiterung vorkonfiguriert, um Überwachungs- und Diagnosedaten an eine Speichertabelle oder an einen anderen Speicherort zu senden:
@@ -202,12 +202,12 @@ Da die von der Erweiterung gefüllten Tabellen so lange wachsen, bis das Konting
 ## <a name="log-collection-configurations"></a>Protokollsammlungskonfigurationen
 Protokolle aus zusätzlichen Kanälen sind auch für die Sammlung verfügbar; im Folgenden finden Sie einige der am häufigsten verwendeten Konfigurationen, die Sie in der Vorlage für Cluster vornehmen können, die in Azure ausgeführt werden.
 
-* Betriebskanal – Basis: Standardmäßig aktiviert, von Service Fabric und im Cluster ausgeführte Vorgänge auf höchster Ebene, einschließlich Ereignisse für einen gestarteten Knoten, eine neu bereitgestellte Anwendung, ein Rollback für ein Upgrade usw. Eine Liste von Ereignissen finden Sie unter [Betriebskanal](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
+* Betriebskanal – Basis: Standardmäßig aktiviert, von Service Fabric und im Cluster ausgeführte Vorgänge auf höchster Ebene, einschließlich Ereignisse für einen gestarteten Knoten, eine neu bereitgestellte Anwendung, ein Rollback für ein Upgrade usw. Eine Liste von Ereignissen finden Sie unter [Betriebskanal](./service-fabric-diagnostics-event-generation-operational.md).
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
   ```
-* Betriebskanal – ausführlich: Dies schließt Integritätsberichte und Lastenausgleichsentscheidungen sowie alle Elemente im Basisbetriebskanal ein. Diese Ereignisse werden entweder vom System oder von Ihrem Code mithilfe der APIs zum Melden der Integrität oder Auslastung (beispielsweise [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) oder [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx)) generiert. Diese Ereignisse können Sie in der Diagnoseereignisansicht von Visual Studio anzeigen, indem Sie „Microsoft-ServiceFabric:4:0x4000000000000008“ zur Liste mit den ETW-Anbietern hinzufügen.
+* Betriebskanal – ausführlich: Dies schließt Integritätsberichte und Lastenausgleichsentscheidungen sowie alle Elemente im Basisbetriebskanal ein. Diese Ereignisse werden entweder vom System oder von Ihrem Code mithilfe der APIs zum Melden der Integrität oder Auslastung (beispielsweise [ReportPartitionHealth](/previous-versions/azure/reference/mt645153(v=azure.100)) oder [ReportLoad](/previous-versions/azure/reference/mt161491(v=azure.100))) generiert. Diese Ereignisse können Sie in der Diagnoseereignisansicht von Visual Studio anzeigen, indem Sie „Microsoft-ServiceFabric:4:0x4000000000000008“ zur Liste mit den ETW-Anbietern hinzufügen.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387912"
@@ -296,7 +296,7 @@ Wenn Ihre Ereignisquelle beispielsweise My-Eventsource heißt, fügen Sie folgen
         }
 ```
 
-Um Leistungsindikatoren oder Ereignisprotokolle zu sammeln, ändern Sie die Resource Manager-Vorlage anhand der Beispiele unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure Resource Manager-Vorlagen](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Veröffentlichen Sie die Resource Manager-Vorlage dann erneut.
+Um Leistungsindikatoren oder Ereignisprotokolle zu sammeln, ändern Sie die Resource Manager-Vorlage anhand der Beispiele unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure Resource Manager-Vorlagen](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json). Veröffentlichen Sie die Resource Manager-Vorlage dann erneut.
 
 ## <a name="collect-performance-counters"></a>Erfassen von Leistungsindikatoren
 
@@ -358,7 +358,7 @@ Wenn Sie die Azure-Diagnose richtig konfiguriert haben, enthalten Ihre Speichert
 >[!NOTE]
 >Es gibt derzeit keine Möglichkeit, die an die Tabelle gesendeten Ereignisse zu filtern oder zu optimieren. Wenn Sie keinen Prozess zum Entfernen von Ereignissen aus der Tabelle implementieren, wächst die Tabelle weiter an. Im [Watchdog-Beispiel](https://github.com/Azure-Samples/service-fabric-watchdog-service) finden Sie derzeit ein Beispiel für einen ausgeführten Datenbereinigungsdienst. Die Erstellung eines solchen Diensts wird empfohlen, sofern Sie Protokolle nicht aus einem triftigen Grund länger als 30 oder 90 Tage speichern müssen.
 
-* [Erfahren Sie, wie Sie Leistungsindikatoren oder Protokolle mithilfe der Diagnoseerweiterung sammeln können.](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Erfahren Sie, wie Sie Leistungsindikatoren oder Protokolle mithilfe der Diagnoseerweiterung sammeln können.](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
 * [Ereignisanalyse und Visualisierung mit Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Ereignisanalyse und -visualisierung mit Azure Monitor-Protokollen](service-fabric-diagnostics-event-analysis-oms.md)
 * [Ereignisanalyse und Visualisierung mit Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)

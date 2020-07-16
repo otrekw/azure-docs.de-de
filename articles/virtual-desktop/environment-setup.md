@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d189d5febe54a83cde4fe6cd6aa51e728aa882e6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612366"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259890"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop-Umgebung
 
@@ -66,7 +66,7 @@ Informationen zum Einrichten des Windows Virtual Desktop-Hostpools finden Sie un
 
 Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop finden Sie in einem der folgenden Artikel:
 
-- [Herstellen einer Verbindung mit Windows 10 oder Windows 7](connect-windows-7-and-10.md)
+- [Herstellen einer Verbindung mit Windows 10 oder Windows 7](connect-windows-7-10.md)
 - [Herstellen einer Verbindung mit einem Webbrowser](connect-web.md)
 - [Herstellen einer Verbindung mit dem Android-Client](connect-android.md)
 - [Herstellen einer Verbindung mit dem macOS-Client](connect-macos.md)

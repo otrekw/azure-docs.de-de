@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: 58259b0d19d68c468779a579bd9c86e77106c18d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66fc58941de206d0bff086f44852d0f2a31587f1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083505"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253081"
 ---
 # <a name="reliable-services-overview"></a>Übersicht über Reliable Services
 
@@ -37,7 +37,7 @@ Reliable Services bietet ein einfaches, leistungsfähiges High-Level-Programmier
   * Verwenden von [zuverlässigen Sammlungen](service-fabric-reliable-services-reliable-collections.md)
   * Zugreifen auf viele weitere Funktionen – alle über ein erstklassiges Programmiermodell in verschiedenen Programmiersprachen
 * Ein einfaches Modell für die Ausführung Ihres eigenen Codes, das anderen vertrauten Programmiermodellen ähnelt. Der Code besitzt einen klar definierten Einstiegspunkt und einen leicht zu verwaltenden Lebenszyklus.
-* Ein austauschbares Kommunikationsmodell. Verwenden Sie die gewünschte Transportmethode, z.B. HTTP mit [Web-API](service-fabric-reliable-services-communication-webapi.md), Websockets, benutzerdefinierte TCP-Protokolle oder eine andere Methode. Reliable Services bieten einige nützliche vorkonfigurierte Optionen. Sie können aber auch eigene Optionen bereitstellen.
+* Ein austauschbares Kommunikationsmodell. Verwenden Sie die gewünschte Transportmethode, z.B. HTTP mit [Web-API](./service-fabric-reliable-services-communication-aspnetcore.md), Websockets, benutzerdefinierte TCP-Protokolle oder eine andere Methode. Reliable Services bieten einige nützliche vorkonfigurierte Optionen. Sie können aber auch eigene Optionen bereitstellen.
 * Für zustandsbehaftete Dienste ermöglicht das Reliable Services-Programmiermodell eine konsistente und zuverlässige Speicherung des Zustands direkt innerhalb des Diensts anhand von [Reliable Collections](service-fabric-reliable-services-reliable-collections.md). Reliable Collections sind ein einfacher Satz hoch verfügbarer Auflistungsklassen, die jedem vertraut sind, der bereits mit C#-Auflistungen gearbeitet hat. Bisher benötigten Dienste externe Systeme für die zuverlässige Zustandsverwaltung. Mit Reliable Collections können Sie den Zustand zusammen mit Ihren Berechnungen speichern und dabei von der gleichen Hochverfügbarkeit und Zuverlässigkeit profitieren, die Sie von externen Hochverfügbarkeitsspeichern gewohnt sind. Dieses Modell verbessert auch die Latenz, da Sie die Berechnungen und die für die Funktionsweise erforderlichen Zustände zusammenstellen können.
 
 ## <a name="what-makes-reliable-services-different"></a>Was unterscheidet Reliable Services von anderen Diensten?
@@ -53,7 +53,7 @@ Reliable Services sind nicht wie andere Dienste, die Sie möglicherweise bereits
 
 Ungeachtet dessen, ob der Dienst zustandsbehaftet oder zustandslos ist, bieten Reliable Services einen einfachen Lebenszyklus, mit dem Sie den Code schnell einbinden und beginnen können.  Um einen neuen Dienst einrichten und ausführen zu können, müssen Sie zwei Methoden implementieren:
 
-* **CreateServiceReplicaListeners/CreateServiceInstanceListeners**: Bei dieser Methode definiert der Dienst den bzw. die zu verwendenden Kommunikationsstapel. Der Kommunikationsstapel, z B. [Web-API](service-fabric-reliable-services-communication-webapi.md), definiert den/die lauschenden Endpunkt(e) für den Dienst (sodass er für Clients erreichbar ist). Er definiert auch, wie die angezeigten Nachrichten mit dem Rest des Dienstcodes interagieren.
+* **CreateServiceReplicaListeners/CreateServiceInstanceListeners**: Bei dieser Methode definiert der Dienst den bzw. die zu verwendenden Kommunikationsstapel. Der Kommunikationsstapel, z B. [Web-API](./service-fabric-reliable-services-communication-aspnetcore.md), definiert den/die lauschenden Endpunkt(e) für den Dienst (sodass er für Clients erreichbar ist). Er definiert auch, wie die angezeigten Nachrichten mit dem Rest des Dienstcodes interagieren.
 * **RunAsync**: In dieser Methode führt der Dienst die zugehörige Geschäftslogik aus und startet jegliche Hintergrundtasks, die während der Lebensdauer des Diensts ausgeführt werden sollen. Das bereitgestellte Abbruchtoken dient als Signal, wenn die Arbeit beendet werden soll. Wenn der Dienst beispielsweise Nachrichten aus einer Reliable Queue abrufen und verarbeiten muss, wird dieser Vorgang ausgeführt.
 
 Wenn Sie mit Reliable Services von nicht vertraut sind – lesen Sie weiter! Wenn Sie eine ausführliche exemplarische Vorgehensweise zum Lebenszyklus von Reliable Services suchen, lesen Sie die [Übersicht über den Lebenszyklus von Reliable Services](service-fabric-reliable-services-lifecycle.md).
@@ -68,7 +68,7 @@ Ein Dienst ist *zustandslos*, wenn der Dienstzustand nicht aufrufübergreifend i
 
 Denken Sie beispielsweise an einen Rechner, der keinen Speicher hat und alle Zahlen und durchzuführenden Operationen gleichzeitig erhält.
 
-In diesem Fall kann die Methode `RunAsync()`(C#) oder `runAsync()` (Java) des Diensts leer sein, da der Dienst keine Hintergrundtasks ausführen muss. Wenn der Rechnerdienst erstellt wird, gibt sie einen `ICommunicationListener` (C#) oder `CommunicationListener` Java (z.B. [Web-API](service-fabric-reliable-services-communication-webapi.md)) zurück, der auf einem Port einen Lauschendpunkt öffnet. Dieser Lauschendpunkt wird mit den verschiedenen Berechnungsmethoden verknüpft (Beispiel: „Add(n1, n2)“), die die öffentliche API des Rechners definieren.
+In diesem Fall kann die Methode `RunAsync()`(C#) oder `runAsync()` (Java) des Diensts leer sein, da der Dienst keine Hintergrundtasks ausführen muss. Wenn der Rechnerdienst erstellt wird, gibt sie einen `ICommunicationListener` (C#) oder `CommunicationListener` Java (z.B. [Web-API](./service-fabric-reliable-services-communication-aspnetcore.md)) zurück, der auf einem Port einen Lauschendpunkt öffnet. Dieser Lauschendpunkt wird mit den verschiedenen Berechnungsmethoden verknüpft (Beispiel: „Add(n1, n2)“), die die öffentliche API des Rechners definieren.
 
 Erfolgt ein Aufruf durch einen Client, wird die entsprechende Methode ausgelöst. Der Rechnerdienst führt an den bereitgestellten Daten die erforderlichen Operationen durch und gibt das Ergebnis zurück. Es wird kein Zustand gespeichert.
 

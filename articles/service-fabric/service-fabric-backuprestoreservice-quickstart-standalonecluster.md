@@ -5,12 +5,12 @@ author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 938cbbde9f53c52350ef64715f6c61c4aa961057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07a6260c176165af5ced5ce275b9e4b365707d77
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75526242"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261237"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in einer eigenständigen Service Fabric-Umgebung
 > [!div class="op_single_selector"]
@@ -288,7 +288,7 @@ Um Sicherungen in Service Fabric Explorer anzuzeigen, navigieren Sie zu einer Pa
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Grundlegendes zur Konfiguration der regelmäßigen Sicherung](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [REST-API-Referenz zu Sicherung/Wiederherstellung](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [REST-API-Referenz zu Sicherung/Wiederherstellung](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event.png
 [3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png

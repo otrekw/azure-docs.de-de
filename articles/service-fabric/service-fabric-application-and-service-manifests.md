@@ -3,12 +3,12 @@ title: Beschreibung von Azure Service Fabric-Apps und -Diensten
 description: Beschreibt, wie Manifeste zum Definieren von Service Fabric-Anwendungen und -Diensten verwendet werden.
 ms.topic: conceptual
 ms.date: 8/12/2019
-ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75349965"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248219"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-Anwendungs- und -Dienstmanifeste
 In diesem Artikel wird beschrieben, wie Service Fabric-Anwendungen und -Dienste mit den Dateien „ApplicationManifest.xml“ und „ServiceManifest.xml“ definiert und mit Versionsangaben versehen werden.  Ausführlichere Beispiele finden Sie unter [Beispiele für Anwendungs- und Dienstmanifeste](service-fabric-manifest-examples.md).  Eine Dokumentation des XML-Schemas für diese Manifestdateien finden Sie unter [ServiceFabricServiceModel.xsd – Schemadokumentation](service-fabric-service-model-schema.md).
@@ -157,7 +157,7 @@ Wie bei Dienstmanifesten sind **Version** -Attribute unstrukturierte Zeichenfolg
 
 **Zertifikate** (im vorhergehenden Beispiel nicht festgelegt) deklariert die zum [Einrichten von HTTPS-Endpunkten](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) oder zum [Verschlüsseln der geheimen Schlüssel im Anwendungsmanifest](service-fabric-application-secret-management.md) verwendeten Zertifikate.
 
-**Platzierungseinschränkungen** sind Anweisungen, mit denen Sie definieren, an welcher Stelle Dienste ausgeführt werden sollen. Diese Anweisungen werden an einzelne Dienste angefügt, die Sie für mindestens eine Knoteneigenschaft auswählen. Weitere Informationen finden Sie unter [Syntax von Platzierungseinschränkungen und Knoteneigenschaften](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax).
+**Platzierungseinschränkungen** sind Anweisungen, mit denen Sie definieren, an welcher Stelle Dienste ausgeführt werden sollen. Diese Anweisungen werden an einzelne Dienste angefügt, die Sie für mindestens eine Knoteneigenschaft auswählen. Weitere Informationen finden Sie unter [Syntax von Platzierungseinschränkungen und Knoteneigenschaften](./service-fabric-cluster-resource-manager-cluster-description.md#placement-constraints-and-node-property-syntax).
 
 **Richtlinien** (im vorherigen Beispiel nicht festgelegt) beschreibt die Richtlinien für die Protokollsammlung, das [standardmäßige Ausführungskonto](service-fabric-application-runas-security.md), die [Integrität](service-fabric-health-introduction.md#health-policies) und den [Sicherheitszugriff](service-fabric-application-runas-security.md), die auf Anwendungsebene festzulegen sind. Dazu gehört auch, ob die Dienste Zugriff auf die Service Fabric-Runtime haben.
 
@@ -192,6 +192,3 @@ For more information about other features supported by application manifests, re
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-application-model/cluster-imagestore-apptypes.png
 [cluster-application-instances]: media/service-fabric-application-model/cluster-application-instances.png
-
-
-

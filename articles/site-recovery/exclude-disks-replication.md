@@ -3,12 +3,12 @@ title: Ausschließen von Datenträgern von der Replikation mit Azure Site Recove
 description: Es wird beschrieben, wie Sie Datenträger mit Azure Site Recovery von der Replikation in Azure ausschließen.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 5a8d52bd0cc40b45f92039c537a1b3b63f0bec61
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 778bb030d9768c5fbe1cb8aeba0becfc68c00629
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135694"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245397"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Ausschließen von Datenträgern von der Notfallwiederherstellung
 
@@ -105,29 +105,35 @@ Da Disk3 (SQL-Datenträger „tempdb“) von der Replikation ausgeschlossen wurd
 1. Öffnen Sie eine Eingabeaufforderung.
 2. Führen Sie SQL Server im Wiederherstellungsmodus über die Eingabeaufforderung aus.
 
-        Net start MSSQLSERVER /f / T3608
+    ```console
+    Net start MSSQLSERVER /f / T3608
+    ```
 
 3. Führen Sie den folgenden sqlcmd-Befehl aus, um den tempdb-Pfad in den neuen Pfad zu ändern.
 
-        sqlcmd -A -S SalesDB        **Use your SQL DBname**
-        USE master;     
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
-        GO
-
+    ```sql
+    sqlcmd -A -S SalesDB        **Use your SQL DBname**
+    USE master;     
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
+    GO
+    ```
 
 4. Beenden Sie den Microsoft SQL Server-Dienst.
 
-        Net stop MSSQLSERVER
+    ```console
+    Net stop MSSQLSERVER
+    ```
+
 5. Starten Sie den Microsoft SQL Server-Dienst.
 
-        Net start MSSQLSERVER
-
-
+    ```console
+    Net start MSSQLSERVER
+    ```
 
 ### <a name="vmware-vms-disks-during-failback-to-original-location"></a>VMware-VMs: Datenträger während des Failbacks zum ursprünglichen Standort
 

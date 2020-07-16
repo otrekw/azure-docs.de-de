@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458379"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246570"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Konfigurationseinstellungen für einen eigenständigen Windows-Cluster
 In diesem Artikel werden die Konfigurationseinstellungen für einen eigenständigen Azure Service Fabric-Cluster beschrieben, die in der *ClusterConfig.json*-Datei festgelegt werden können. Sie verwenden diese Datei, um Informationen zu den Knoten des Clusters, den Sicherheitskonfigurationen sowie zur Netzwerktopologie in Bezug auf Fehler- und Upgradedomänen anzugeben.  Nach dem Ändern oder Hinzufügen von Konfigurationseinstellungen können Sie entweder [einen eigenständigen Cluster erstellen](service-fabric-cluster-creation-for-windows-server.md) oder [die Konfiguration eines eigenständigen Clusters aktualisieren](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -89,7 +89,7 @@ Im Abschnitt „diagnosticsStore“ können Sie Parameter konfigurieren, um bei 
 }
 ```
 
-„Metadata“ ist eine Beschreibung Ihres Clusters und kann gemäß Ihrem Setup festgelegt werden. Diese Variablen helfen Ihnen beim Sammeln von ETW-Ablaufprotokollen, Absturzabbildern und Leistungsindikatoren. Weitere Informationen über ETW-Ablaufprotokolle finden Sie unter [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) und [ETW-Ablaufverfolgung](https://msdn.microsoft.com/library/ms751538.aspx). Alle Protokolle einschließlich [Absturzabbildern](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/) und [Leistungsindikatoren](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) können zum Ordner „connectionString“ auf Ihrem Computer geleitet werden. Sie können AzureStorage auch zum Speichern von Diagnosen verwenden. Informationen hierzu finden Sie auch im folgenden Beispielcodeausschnitt:
+„Metadata“ ist eine Beschreibung Ihres Clusters und kann gemäß Ihrem Setup festgelegt werden. Diese Variablen helfen Ihnen beim Sammeln von ETW-Ablaufprotokollen, Absturzabbildern und Leistungsindikatoren. Weitere Informationen über ETW-Ablaufprotokolle finden Sie unter [Tracelog](/windows-hardware/drivers/devtest/tracelog) und [ETW-Ablaufverfolgung](/dotnet/framework/wcf/samples/etw-tracing). Alle Protokolle einschließlich [Absturzabbildern](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) und [Leistungsindikatoren](/windows/win32/perfctrs/performance-counters-portal) können zum Ordner „connectionString“ auf Ihrem Computer geleitet werden. Sie können AzureStorage auch zum Speichern von Diagnosen verwenden. Informationen hierzu finden Sie auch im folgenden Beispielcodeausschnitt:
 
 ```json
 "diagnosticsStore": {
@@ -193,7 +193,7 @@ Um Add-on-Funktionen zu konfigurieren, konfigurieren Sie die API-Version als „
     ]
 }
 ```
-Alle verfügbaren Add-On-Features finden Sie in der [Referenz zur Service Fabric-REST-API](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-addonfeatures).
+Alle verfügbaren Add-On-Features finden Sie in der [Referenz zur Service Fabric-REST-API](/rest/api/servicefabric/sfrp-model-addonfeatures).
 
 ### <a name="container-support"></a>Containerunterstützung
 Um bei eigenständigen Clustern die Containerunterstützung sowohl für Windows Server-Container als auch für Hyper-V-Container zu aktivieren, muss das Add-on-Feature von „DnsService“ aktiviert sein.
@@ -204,4 +204,3 @@ Nachdem Sie die *ClusterConfig.json*-Datei gemäß dem Setup Ihres eigenständig
 Wenn Sie einen eigenständigen Cluster bereitgestellt haben, können Sie auch [die Konfiguration eines eigenständigen Clusters aktualisieren](service-fabric-cluster-config-upgrade-windows-server.md). 
 
 Unter [Visualisieren Ihres Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) ist die entsprechende Vorgehensweise beschrieben.
-

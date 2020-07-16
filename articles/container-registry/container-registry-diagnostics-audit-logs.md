@@ -3,12 +3,12 @@ title: Erfassen und Analysieren von Ressourcenprotokollen
 description: Aufzeichnen und Analysieren von Ressourcenprotokollereignissen für Azure Container Registry wie Authentifizierung, Imagepush und Imagepull.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8757b8bdb67cf75b1ba800658d80b2a44311f1ba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343182"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252486"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry-Protokolle für die Diagnoseauswertung und -überwachung
 
@@ -142,10 +142,9 @@ ContainerRegistryLoginEvents
 
 Ein gängiges Szenario, zusätzlich oder alternativ zum Senden der Protokolle an Log Analytics, ist die Auswahl eines Azure-Speicherkontos als Protokollziel. Um Protokolle in Azure Storage zu archivieren, erstellen Sie ein Speicherkonto, bevor Sie durch die Diagnoseeinstellungen archivieren.
 
-Sie können-Diagnoseprotokollereignisse auch an einen [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) streamen. Event Hubs können mit einem beliebigen Echtzeitanalyse-Anbieter Millionen Ereignisse pro Sekunde erfassen und anschließend transformieren und speichern. 
+Sie können-Diagnoseprotokollereignisse auch an einen [Azure Event Hub](../event-hubs/event-hubs-about.md) streamen. Event Hubs können mit einem beliebigen Echtzeitanalyse-Anbieter Millionen Ereignisse pro Sekunde erfassen und anschließend transformieren und speichern. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über das Verwenden von [Log Analytics](../azure-monitor/log-query/get-started-portal.md) und das Erstellen von [Protokollabfragen](../azure-monitor/log-query/get-started-queries.md).
 * Informationen zu Plattformprotokollen, die auf unterschiedlichen Ebenen von Azure verfügbar sind, finden Sie unter [Übersicht über Protokolle der Azure-Plattform](../azure-monitor/platform/platform-logs-overview.md).
-

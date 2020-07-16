@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 376f9d78f508c245bec2d066863566ace68eff0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f4ee0a6ba028a6359a83f5130aca7c6f05ba08b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204862"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259801"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurieren des Zuweisungstyps für den Hostpool mit persönlichen Desktops
 
@@ -92,5 +92,5 @@ Wenn Sie den Sitzungshost wieder dem Hostpool mit persönlichen Desktops hinzuf�
 
 Nachdem Sie den persönlichen Desktopzuweisungstyp konfiguriert haben, können Sie sich an einem Windows Virtual Desktop-Client anmelden, um ihn als Teil einer Benutzersitzung zu testen. In den nächsten zwei Vorgehensweisen erfahren Sie, wie Sie mit dem ausgewählten Client eine Verbindung zu einer Sitzung herstellen:
 
-- [Herstellen einer Verbindung mit dem Windows-Desktopclient](../connect-windows-7-and-10.md)
+- [Herstellen einer Verbindung mit dem Windows-Desktopclient](connect-windows-7-10-2019.md)
 - [Herstellen einer Verbindung mit dem Webclient](connect-web-2019.md)

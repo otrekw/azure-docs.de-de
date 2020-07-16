@@ -4,12 +4,12 @@ description: Informationen zu häufig gestellten Fragen und Antworten zu Azure S
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252494"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260118"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Häufig gestellte Fragen zu Service Fabric Mesh
 
@@ -121,7 +121,7 @@ Verwenden Sie in Ihrem lokalen Entwicklungscluster `{serviceName}.{applicationNa
 
 Azure Mesh unterstützt zurzeit keine anwendungsübergreifende DNS-Auflösung.
 
-Informationen zu anderen bekannten DNS-Problemen bei der Ausführung eines Service Fabric-Entwicklungsclusters unter Windows 10 finden Sie hier: [Debuggen von Windows-Containern](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) und [Bekannte DNS-Probleme](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
+Informationen zu anderen bekannten DNS-Problemen bei der Ausführung eines Service Fabric-Entwicklungsclusters unter Windows 10 finden Sie hier: [Debuggen von Windows-Containern](../service-fabric/service-fabric-how-to-debug-windows-containers.md) und [Bekannte DNS-Probleme](../service-fabric/service-fabric-dnsservice.md#known-issues).
 
 ### <a name="networking"></a>Netzwerk
 

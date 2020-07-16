@@ -3,12 +3,12 @@ title: Häufige Diagnoseszenarien in Azure Service Fabric
 description: Erfahren Sie mehr über die Problembehandlung für häufig auftretende Überwachungs- und Diagnoseszenarien in Azure Service Fabric-Anwendungen.
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: bc17f00dc46c6e995d18621353c8f10cacf7759c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f92bc02082d8bcd9d917f05c93d3da413f772cd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697685"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257726"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostizieren häufiger Szenarien mit Service Fabric
 
@@ -133,9 +133,9 @@ Nutzen Sie diese Links, um die vollständige Liste der Leistungsindikatoren für
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Suchen von häufigen Codepaket-Aktivierungsfehlern](./service-fabric-diagnostics-code-package-errors.md)
-* [Richten Sie Warnungen in AI ein](/azure/azure-monitor/platform/alerts-log), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
+* [Richten Sie Warnungen in AI ein](../azure-monitor/platform/alerts-log.md), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
 * Die [intelligente Erkennung in Application Insights](../azure-monitor/app/proactive-diagnostics.md) führt eine proaktive Analyse der an AI gesendeten Telemetriedaten aus, um Sie vor potenziellen Leistungsproblemen zu warnen.
-* Erfahren Sie mehr über die [Warnungen](../log-analytics/log-analytics-alerts.md) von Azure Monitor-Protokolle, die bei der Erkennung und Diagnose hilfreich sein können.
+* Erfahren Sie mehr über die [Warnungen](../azure-monitor/platform/alerts-overview.md) von Azure Monitor-Protokolle, die bei der Erkennung und Diagnose hilfreich sein können.
 * Für lokale Cluster bietet Azure Monitor-Protokolle ein Gateway (HTTP-Weiterleitungsproxy), über das Daten an Azure Monitor-Protokolle gesendet werden können. Weitere Informationen dazu finden Sie unter [Verbinden von Computern ohne Internetzugriff mit Azure Monitor-Protokolle über das Log Analytics-Gateway](../azure-monitor/platform/gateway.md).
-* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokolle vertraut.
-* Eine ausführlichere Übersicht über Azure Monitor-Protokolle und die zugehörigen Optionen finden Sie unter [Was ist Azure Monitor-Protokolle?](../operations-management-suite/operations-management-suite-overview.md).
+* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../azure-monitor/log-query/log-query-overview.md) in Azure Monitor-Protokolle vertraut.
+* Eine ausführlichere Übersicht über Azure Monitor-Protokolle und die zugehörigen Optionen finden Sie unter [Was ist Azure Monitor-Protokolle?](../azure-monitor/overview.md).

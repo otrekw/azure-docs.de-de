@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 48350caef6bdaafda9aff7ac776d67b314aeaf8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d66248797d577d6894d1125188735ecf71029b0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614399"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258897"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>Abfragen von EventStore-APIs nach Clusterereignissen
 
@@ -110,7 +110,7 @@ Hier ist zu sehen, dass zwischen `2018-04-03T18:00:00Z` und `2018-04-04T18:00:00
 
 ## <a name="query-the-eventstore-programmatically"></a>Programmgesteuertes Abfragen der EventStore-Komponente
 
-Sie können die EventStore-Komponente auch programmgesteuert über die [Service Fabric-Clientbibliothek](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library) abfragen.
+Sie können die EventStore-Komponente auch programmgesteuert über die [Service Fabric-Clientbibliothek](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library) abfragen.
 
 Nachdem Sie den Service Fabric-Client eingerichtet haben, können Sie Ereignisse abfragen, indem Sie wie folgt auf die EventStore-Komponente zugreifen: `sfhttpClient.EventStore.<request>`.
 
@@ -200,4 +200,3 @@ Fragen Sie das `PartitionReconfigured`-Ereignis ab, um alle Partitionsbewegungen
 *Chaosdienst:*
 
 Es ist ein Ereignis für den Start bzw. die Beendigung des Chaosdiensts vorhanden, das auf der Clusterebene verfügbar gemacht wird. Verwenden Sie die folgende Abfrage, um Ihre letzte Nutzung des Chaosdiensts anzuzeigen: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`.
-

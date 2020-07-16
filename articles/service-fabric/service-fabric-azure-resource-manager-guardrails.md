@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: f8d8d5ae677ea438de4baed7d6636c2087277427
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa1499c57ead28bfcee90a2f224ef9c3bb1d7f58
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602702"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247823"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric-Sicherungsmaßnahmen 
 Wenn Sie einen Service Fabric-Cluster bereitstellen, werden Sicherungsmaßnahmen angewendet, durch die eine Azure Resource Manager-Bereitstellung bei einer ungültigen Clusterkonfiguration fehlschlägt. Die folgenden Abschnitte bieten einen Überblick über häufige Probleme bei der Clusterkonfiguration und die erforderlichen Schritte, um diese Probleme zu beheben. 
@@ -68,7 +68,7 @@ So beheben Sie einen Dauerhaftigkeitskonflikt, der durch eine der oben genannten
 
 ## <a name="seed-node-deletion"></a>Löschung von Startknoten 
 ### <a name="overview"></a>Übersicht
-Ein Service Fabric-Cluster weist eine [Zuverlässigkeitsebene](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster)-Eigenschaft auf, die verwendet wird, um die Anzahl der Systemdienste zu bestimmen, die auf dem primären Knotentyp des Clusters ausgeführt werden. Die Anzahl der erforderlichen Replikate bestimmt die Mindestanzahl der Knoten, die vom primären Knotentyp des Clusters betrieben werden müssen. Wenn die Anzahl der Knoten vom primären Knotentyp unter das erforderliche Minimum für die Zuverlässigkeitsebene fällt, wird der Cluster instabil.  
+Ein Service Fabric-Cluster weist eine [Zuverlässigkeitsebene](./service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)-Eigenschaft auf, die verwendet wird, um die Anzahl der Systemdienste zu bestimmen, die auf dem primären Knotentyp des Clusters ausgeführt werden. Die Anzahl der erforderlichen Replikate bestimmt die Mindestanzahl der Knoten, die vom primären Knotentyp des Clusters betrieben werden müssen. Wenn die Anzahl der Knoten vom primären Knotentyp unter das erforderliche Minimum für die Zuverlässigkeitsebene fällt, wird der Cluster instabil.  
 
 ### <a name="error-messages"></a>Fehlermeldungen 
 Ein Vorgang zum Entfernen des Startknotens wurde erkannt und wird abgelehnt. 
@@ -79,7 +79,7 @@ Ein Vorgang zum Entfernen des Startknotens wurde erkannt und wird abgelehnt.
 Stellen Sie sicher, dass Ihr primärer Knotentyp über genügend virtuelle Computer für die für Ihren Cluster angegebene Zuverlässigkeit verfügt. Sie können keinen virtuellen Computer entfernen, wenn dies die VM-Skalierungsgruppe unter die Mindestanzahl Knoten für die bestimmte Zuverlässigkeitsebene bringen würde.
 * Wenn die Zuverlässigkeitsebene ordnungsgemäß angegeben ist, stellen Sie sicher, dass genügend Knoten vom primären Knotentyp vorhanden sind, wie es für die Zuverlässigkeitsebene erforderlich ist. 
 * Wenn die Zuverlässigkeitsebene falsch ist, leiten Sie eine Änderung der Service Fabric-Ressource ein, um zuerst die Zuverlässigkeitsebene herabzusetzen, bevor Sie Vorgänge für die VM-Skalierungsgruppe einleiten, und warten Sie, bis diese abgeschlossen ist.
-* Wenn die Zuverlässigkeitsebene Bronze ist, führen Sie bitte diese [Schritte](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) aus, um Ihren Cluster ordnungsgemäß abzuskalieren.
+* Wenn die Zuverlässigkeitsebene Bronze ist, führen Sie bitte diese [Schritte](./service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) aus, um Ihren Cluster ordnungsgemäß abzuskalieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erstellen eines Clusters auf virtuellen Computern oder Computern mit Windows Server: [Erstellen eines Service Fabric-Clusters für Windows Server](service-fabric-cluster-creation-for-windows-server.md)
