@@ -3,16 +3,16 @@ title: Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy v10 | Mi
 description: AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Daten in ein oder aus einem Speicherkonto zu kopieren. Dieser Artikel hilft Ihnen, AzCopy herunterzuladen, eine Verbindung mit Ihrem Speicherkonto herzustellen und dann Dateien zu übertragen.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 60f3e725a4df619e3cc8ed7e8878fe2a5e5c3406
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f0d957c05aded6641377b47c3fe383c141480b30
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195195"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504473"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -158,7 +158,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 Geben Sie dann den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
 
 ```azcopy
-azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
+azcopy login --service-principal --certificate-path path-to-certificate-file --application-id application-id --tenant-id=tenant-id
 ```
 
 Ersetzen Sie den Platzhalter `<application-id>` mit der Anwendungs-ID der App-Registrierung Ihres Dienstprinzipals. Ersetzen Sie den Platzhalter `<tenant-id>` mit der Mandanten-ID der Organisation, zu der das Speicherkonto gehört. Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus, um die Mandanten-ID zu finden. 
@@ -300,7 +300,7 @@ Wenn Sie beabsichtigen, [Jenkins](https://jenkins.io/) zum Ausführen von Skript
 
 ## <a name="use-azcopy-in-azure-storage-explorer"></a>Verwenden von AzCopy im Azure Storage-Explorer
 
-[Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwendet AzCopy zum Ausführen aller seiner Datenübertragungsvorgänge. Sie können [Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, wenn Sie die Leistungsvorteile von AzCopy nutzen möchten, aber lieber eine grafische Benutzeroberfläche statt der Befehlszeile verwenden, um mit Ihren Dateien zu interagieren.
+Der [Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwendet AzCopy zum Ausführen aller seiner Datenübertragungsvorgänge. Sie können [Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, wenn Sie die Leistungsvorteile von AzCopy nutzen möchten, aber lieber eine grafische Benutzeroberfläche statt der Befehlszeile verwenden, um mit Ihren Dateien zu interagieren.
 
 Storage-Explorer verwendet Ihren Kontoschlüssel, um Vorgänge auszuführen. Nachdem Sie sich also bei Storage-Explorer anmelden, müssen Sie keine weiteren Autorisierungsdaten angeben.
 

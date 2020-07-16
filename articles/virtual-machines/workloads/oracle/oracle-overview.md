@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/01/2020
+ms.date: 06/05/2020
 ms.author: borisb
-ms.openlocfilehash: d739f9f5c0e1be80005d5f3c6db5aa94ff6cc85d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7c15c96305cc1220d9ca3cdb9062d7ea7acb4e86
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299841"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85098934"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Übersicht über Oracle-Anwendungen und -Lösungen in Azure
 
@@ -43,7 +43,7 @@ Wählen Sie aus einer Vielzahl von Azure-Anwendungen für WebLogic Server, um Ih
 
 ## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Anwendungen unter Oracle Linux und WebLogic Server
 
-Unternehmensanwendungen führen Sie in Azure unter unterstützten Oracle-Betriebssystemen aus. Die folgenden Images von virtuellen Computern sind im Azure Marketplace erhältlich:
+Führen Sie Unternehmensanwendungen in Azure mit unterstützten Oracle Linux-Images aus. Die folgenden Images von virtuellen Computern sind im Azure Marketplace erhältlich:
 
 * Oracle WebLogic Server 12.1.2
 
@@ -53,9 +53,9 @@ Unternehmensanwendungen führen Sie in Azure unter unterstützten Oracle-Betrieb
 
 * Für Hochverfügbarkeit in einer Region konfigurieren Sie [Oracle Data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956), [Active Data Guard mit FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [Sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) oder [Golden Gate](https://www.oracle.com/middleware/technologies/goldengate.html) in Azure-Infrastruktur zusammen mit [Verfügbarkeitszonen](../../../availability-zones/az-overview.md). Sie können diese Konfigurationen auch über mehrere Azure-Regionen verteilt einrichten, um eine höhere Verfügbarkeit und bessere Notfallwiederherstellung zu erreichen.
 
-* Verwenden Sie [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md), um die Notfallwiederherstellung für Ihre Oracle Linux-VMs in Azure sowie für Ihre lokalen oder physischen Server zu orchestrieren und zu verwalten. 
+* Verwenden Sie [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md), um die Notfallwiederherstellung für Ihre Oracle Linux-VMs in Azure sowie für Ihre physischen Server zu organisieren und zu verwalten. 
 
-* Aktivieren Sie Oracle Real Application Cluster (RAC) in Azure mithilfe von [Azure VMWare Solution by CloudSimple](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) oder [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/).
+* Aktivieren Sie Oracle Real Application Cluster (RAC) in Azure mithilfe von [Azure VMware Solution](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) oder [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/).
 
 ## <a name="backup-oracle-workloads"></a>Sichern von Oracle-Workloads
 
@@ -74,7 +74,7 @@ Führen Sie Oracle-Anwendungen in der Azure-Infrastruktur aus mit bestehenden Ve
 
 Verwenden Sie Terraform-Vorlagen, um die Azure-Infrastruktur einzurichten und Oracle-Anwendungen zu installieren. 
 
-Seit Mai 2020 sind die folgenden Oracle-Anwendungen für die Ausführung in Azure zertifiziert, wenn die Azure/Oracle Cloud Interconnect-Lösung verwendet wird:
+Die folgenden Anwendungen wurden von Oracle für die Ausführung in Azure zertifiziert, wenn über die Azure/Oracle Cloud Interconnect-Lösung eine Verbindung mit einer Oracle-Datenbank hergestellt wird:
 
 * E-Business Suite
 * JD Edwards EnterpriseOne
@@ -86,7 +86,7 @@ Stellen Sie außerdem benutzerdefinierte Anwendungen in Azure bereit, die eine V
 
 ### <a name="set-up-oracle-databases-in-oci"></a>Einrichten von Oracle-Datenbanken in OCI
 
-Verwenden Sie Oracle Database Cloud Services (Autonomous Database, RAC, Exadata, DBaaS, Single Node) in Verbindung mit Oracle-Anwendungen, die in Azure ausgeführt werden. Weitere Informationen zu [OCI-Datenbankoptionen](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
+Verwenden Sie Oracle Database-Clouddienste (Autonomous Database, RAC, Exadata, DBaaS, Single Node) in Verbindung mit Oracle-Software, die in Azure ausgeführt wird. Weitere Informationen zu [OCI-Datenbankoptionen](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
 ## <a name="licensing"></a>Lizenzierung

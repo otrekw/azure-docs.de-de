@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 19ca17f66f6818ed4c3ef532e2030cc03f0e73ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85126211"
 ---
 # <a name="security-alerts-schemas"></a>Schemas für Sicherheitswarnungen
 
@@ -171,7 +171,7 @@ Sie können die Sicherheitswarnungen im Aktivitätsprotokoll anzeigen, indem Sie
 
 ### <a name="ms-graph-api"></a>[MS Graph-API](#tab/schema-graphapi)
 
-Microsoft Graph ist das Gateway zu Daten und Intelligence in Microsoft 365. Es bietet ein einheitliches Programmierbarkeitsmodell, mit dem Sie auf die enormen Datenmengen in Office 365, Windows 10 und Enterprise Mobility + Security zugreifen können. Verwenden Sie die Vielzahl von Daten in Microsoft Graph, um Apps für Organisationen und Consumer zu erstellen, die mit Millionen von Benutzern interagieren.
+Microsoft Graph ist das Gateway zu Daten und Intelligence in Microsoft 365. Microsoft Graph bietet ein einheitliches Programmierbarkeitsmodell, mit dem Sie auf die enormen Datenmengen in Microsoft 365, Windows 10 und Enterprise Mobility + Security zugreifen können. Verwenden Sie die Vielzahl von Daten in Microsoft Graph, um Apps für Organisationen und Consumer zu erstellen, die mit Millionen von Benutzern interagieren.
 
 Das Schema und eine JSON-Darstellung für Sicherheitswarnungen, die an MS Graph gesendet werden, sind in der [Microsoft Graph-Dokumentation](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0) verfügbar.
 

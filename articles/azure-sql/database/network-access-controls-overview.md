@@ -1,7 +1,7 @@
 ---
 title: Kontrolle des Netzwerkzugriffs
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Übersicht über die Verwaltung und Steuerung des Netzwerkzugriffs für Azure SQL-Datenbank und Azure Synapse Analytics (ehemals SQL Data Warehouse)
+description: Übersicht über die Verwaltung und Steuerung des Netzwerkzugriffs für Azure SQL-Datenbank und Azure Synapse Analytics (ehemals Azure SQL Data Warehouse)
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,15 +12,14 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 95fa7a22f88d8c6a53a6459e0f5d6a123b2f728b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 435a5fe6f5900ffe742d4459e8e402d2e698ca9f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031871"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085462"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Netzwerk-Zugriffssteuerung für Azure SQL-Datenbank und Azure Synapse Analytics
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Wenn Sie im [Azure-Portal](single-database-create-quickstart.md) eine logische SQL Server-Instanz für Azure SQL-Datenbank und Azure Synapse Analytics erstellen, ist das Ergebnis ein öffentlicher Endpunkt im Format *IhrServername.database.windows.net*.
 
@@ -31,7 +30,7 @@ Mit den folgenden Netzwerkzugriffssteuerungen können Sie den Zugriff auf eine D
 
 Sie können den privaten Zugriff auf die Datenbank über [virtuelle Netzwerke](../../virtual-network/virtual-networks-overview.md) auch wie folgt zulassen:
 
-- Virtual Network-Firewallregeln: Verwenden Sie dieses Feature, um Datenverkehr von einem bestimmten virtuellen Netzwerk innerhalb der Azure-Grenze zuzulassen.
+- Firewallregeln für virtuelle Netzwerke: Verwenden Sie dieses Feature, um Datenverkehr von einem bestimmten virtuellen Netzwerk innerhalb der Azure-Grenze zuzulassen.
 - Private Link: Verwenden Sie dieses Feature zum Erstellen eines privaten Endpunkts für eine [logische SQL Server-Instanz](logical-servers.md) innerhalb eines bestimmten virtuellen Netzwerks.
 
 > [!IMPORTANT]
@@ -51,18 +50,18 @@ Sie können diese Einstellung nach dem Erstellen der Instanz auch wie folgt übe
 
 Wenn die Einstellung auf **EIN** festgelegt ist, erlaubt Ihr Server die Kommunikation von allen Ressourcen innerhalb der Grenzen von Azure, unabhängig davon, ob diese Teil Ihres Abonnements sind.
 
-In vielen Fällen ist die Einstellung **EIN** weniger einschränkend, als es die meisten Kunden wünschen. Sie sollten für diese Einstellung **AUS** festlegen und sie durch strengere IP-Firewallregeln oder Firewallregeln für virtuelle Netzwerke ersetzen. 
+In vielen Fällen ist die Einstellung **EIN** weniger einschränkend, als es die meisten Kunden wünschen. Sie sollten diese Einstellung auf **AUS** festlegen und sie durch strengere IP-Firewallregeln oder Firewallregeln für virtuelle Netzwerke ersetzen. 
 
 Dies wirkt sich jedoch auf die folgenden Features auf virtuellen Computern in Azure aus, die nicht Teil Ihres virtuellen Netzwerks sind und somit über eine Azure-IP-Adresse eine Verbindung mit der Datenbank herstellen:
 
 ### <a name="import-export-service"></a>Import/Export-Dienst
 
-Der Import/Export-Dienst funktioniert nicht, wenn **Azure-Diensten Zugriff auf den Server erlauben** mit **AUS** deaktiviert ist. Sie können dieses Problem jedoch umgehen, indem Sie [„sqlpackage.exe“ manuell auf einem virtuellen Azure-Computer oder den Export mithilfe der DACFx-API direkt in Ihrem Code ausführen](https://docs.microsoft.com/azure/sql-database/import-export-from-vm).
+Der Import/Export-Dienst funktioniert nicht, wenn **Azure-Diensten Zugriff auf den Server erlauben** auf **AUS** festgelegt ist. Sie können dieses Problem jedoch umgehen, indem Sie [„sqlpackage.exe“ manuell auf einem virtuellen Azure-Computer oder den Export mithilfe der DACFx-API direkt in Ihrem Code ausführen](https://docs.microsoft.com/azure/sql-database/import-export-from-vm).
 
 ### <a name="data-sync"></a>Datensynchronisierung
 
 Wenn **Azure-Diensten Zugriff auf den Server erlauben** mit **AUS** deaktiviert ist und Sie das Datensynchronisierungsfeature verwenden möchten, müssen Sie zum [Hinzufügen von IP-Adressen](firewall-create-server-level-portal-quickstart.md) einzelne Firewallregeleinträge auf der Grundlage des **SQL-Diensttags** für die Region erstellen, in der die **Hub**-Datenbank gehostet wird.
-Fügen Sie diese Firewallregeln auf Serverebene bei den Servern hinzu, die sowohl die **Hub-Datenbank** als auch die **Mitgliedsdatenbanken** hosten. (Diese können sich in verschiedenen Regionen befinden.)
+Fügen Sie diese Firewallregeln auf Serverebene den Servern hinzu, die sowohl die **Hub-Datenbank** als auch die **Mitgliedsdatenbanken** hosten. (Diese können sich in verschiedenen Regionen befinden.)
 
 Verwenden Sie das folgende PowerShell-Skript, um die entsprechenden IP-Adressen für das SQL-Diensttag für die Region „USA, Westen“ zu generieren:
 
@@ -83,7 +82,7 @@ PS C:\> $sql.Properties.AddressPrefixes
 > [!TIP]
 > „Get-AzNetworkServiceTag“ gibt trotz Angabe des Parameters „Location“ den globalen Bereich für das SQL-Diensttag zurück. Filtern Sie daher nach der Region, in der die von Ihrer Synchronisierungsgruppe verwendete Hub-Datenbank gehostet wird.
 
-Beachten Sie, dass die Ausgabe des PowerShell-Skripts in CIDR-Notation (Classless Inter-Domain Routing, klassenloses domänenübergreifendes Routing) erfolgt und wie folgt unter Verwendung von [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) in ein Format mit Start- und End-IP-Adresse konvertiert werden muss:
+Beachten Sie, dass die Ausgabe des PowerShell-Skripts in CIDR-Notation (Classless Inter-Domain Routing) erfolgt. Diese muss wie folgt unter Verwendung von [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) in ein Format mit Start- und End-IP-Adresse konvertiert werden:
 
 ```powershell
 PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26
@@ -107,32 +106,32 @@ Diese können nun als individuelle Firewallregeln hinzugefügt werden. Danach k�
 
 ## <a name="ip-firewall-rules"></a>IP-Firewallregeln
 
-Die IP-basierte Firewall ist ein Feature von logischen SQL Server-Instanzen in Azure, das den gesamten Zugriff auf den Datenbankserver verhindert, bis Sie explizit die [IP-Adressen der Clientcomputer hinzufügen](firewall-create-server-level-portal-quickstart.md).
+Die IP-basierte Firewall ist ein Feature der logischen SQL Server-Instanz in Azure, das den gesamten Zugriff auf den Server verhindert, bis Sie explizit die [IP-Adressen](firewall-create-server-level-portal-quickstart.md) der Clientcomputer hinzufügen.
 
-## <a name="virtual-network-firewall-rules"></a>Virtual Network-Firewallregeln
+## <a name="virtual-network-firewall-rules"></a>Firewallregeln für virtuelle Netzwerke
 
 Zusätzlich zu den IP-Regeln können Sie mit der Serverfirewall *Regeln für virtuelle Netzwerke* definieren.  
-Weitere Informationen finden Sie unter [Virtual Network service endpoints and rules for Azure SQL Database](vnet-service-endpoint-rule-overview.md) (VNET-Dienstendpunkte und -Regeln für Azure SQL-Datenbank) oder in diesem Video:
+Weitere Informationen finden Sie unter [Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Server in Azure SQL-Datenbank](vnet-service-endpoint-rule-overview.md) oder in diesem Video:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
 
 ### <a name="azure-networking-terminology"></a>Azure-Netzwerkterminologie
 
-Beachten Sie die folgenden Azure-Netzwerkbegriffe beim Erkunden von Virtual Network-Firewallregeln.
+Beachten Sie die folgenden Azure-Netzwerkbegriffe beim Erkunden von Firewallregeln für virtuelle Netzwerke.
 
 **Virtuelles Netzwerk:** Sie können Ihrem Azure-Abonnement virtuelle Netzwerke zuordnen.
 
 **Subnetz:** Ein virtuelles Netzwerk enthält **Subnetze**. Ihre virtuellen Azure-Computer (VMs) sind Subnetzen zugewiesen. Ein Subnetz kann mehrere VMs oder andere Computeknoten enthalten. Computeknoten, die sich außerhalb Ihres virtuellen Netzwerks befinden, können nicht auf Ihr virtuelles Netzwerk zugreifen, es sei denn, Sie konfigurieren für sie den sicheren Zugriff.
 
-**Virtual Network-Dienstendpunkt:** Ein [VNET-Dienstendpunkt](../../virtual-network/virtual-network-service-endpoints-overview.md) ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. In diesem Artikel beschäftigen wir uns mit dem Typnamen **Microsoft.Sql**, der auf einen Azure-Dienst mit dem Namen „SQL-Datenbank“ verweist.
+**Dienstendpunkt eines virtuellen Netzwerks:** Ein [Dienstendpunkt eines virtuellen Netzwerks](../../virtual-network/virtual-network-service-endpoints-overview.md) ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. In diesem Artikel beschäftigen wir uns mit dem Typnamen **Microsoft.Sql**, der auf einen Azure-Dienst mit dem Namen „SQL-Datenbank“ verweist.
 
-**VNET-Regel:** Bei einer VNET-Regel für Ihren Server handelt es sich um ein Subnetz, das in der Zugriffssteuerungsliste des Servers aufgeführt ist. Um in die Zugriffssteuerungsliste für Ihre SQL-Datenbank-Instanz zu gelangen, muss das Subnetz den Typnamen **Microsoft.Sql** enthalten. Eine solche Regel weist Ihren Server an, Nachrichten von allen Knoten im Subnetz zu akzeptieren.
+**VNET-Regel:** Bei einer VNET-Regel für Ihren Server handelt es sich um ein Subnetz, das in der Zugriffssteuerungsliste des Servers aufgeführt ist. Um auf die Zugriffssteuerungsliste für Ihre SQL-Datenbank-Instanz zu gelangen, muss das Subnetz den Typnamen **Microsoft.Sql** enthalten. Eine solche Regel weist Ihren Server an, Nachrichten von allen Knoten im Subnetz zu akzeptieren.
 
-## <a name="ip-vs-virtual-network-firewall-rules"></a>IP-Firewallregeln im Vergleich zu Virtual Network-Firewallregeln
+## <a name="ip-vs-virtual-network-firewall-rules"></a>IP-Firewallregeln im Vergleich zu Firewallregeln für virtuelle Netzwerke
 
 Die Firewall von Azure SQL-Datenbank ermöglicht Ihnen das Angeben von IP-Adressbereichen, aus denen SQL-Datenbank Nachrichten akzeptiert. Dieser Ansatz eignet sich gut für statische IP-Adressen, die sich außerhalb des privaten Azure-Netzwerks befinden. Doch viele virtuelle Computer (VMs) innerhalb des privaten Azure-Netzwerks sind mit *dynamischen* IP-Adressen konfiguriert. Dynamische IP-Adressen können sich ändern, wenn der virtuelle Computer neu gestartet wird, und damit die IP-basierte Firewallregel ungültig machen. Es wäre töricht, eine dynamische IP-Adresse in einer Firewallregel in einer Produktionsumgebung anzugeben.
 
-Sie können diese Einschränkung umgehen, indem Sie eine *statische* IP-Adresse für Ihre VM abrufen. Einzelheiten finden Sie unter [Konfigurieren von privaten IP-Adressen für einen virtuellen Computer über das Azure-Portal](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). Der Ansatz mit statischen IP-Adressen kann jedoch schwierig zu handhaben und aufwendig sein, wenn er in großem Maßstab befolgt wird.
+Sie können diese Einschränkung umgehen, indem Sie eine *statische* IP-Adresse für Ihre VM abrufen. Einzelheiten finden Sie unter [Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md). Der Ansatz mit statischen IP-Adressen kann jedoch schwierig zu handhaben und aufwendig sein, wenn er in großem Maßstab befolgt wird.
 
 Regeln für virtuelle Netzwerke stellen eine einfachere Alternative zum Einrichten und Verwalten des Zugriffs von einem bestimmten Subnetz mit Ihren virtuellen Computern dar.
 
@@ -147,7 +146,7 @@ Private Link ermöglicht das Herstellen von Verbindungen mit einem Server über 
 
 - Einen Schnellstart zum Erstellen einer IP-Firewallregel auf Serverebene finden Sie unter [Schnellstart: Erstellen einer Azure SQL-Einzeldatenbank](single-database-create-quickstart.md).
 
-- Einen Schnellstart zum Erstellen einer VNET-Firewallregel auf Serverebene finden Sie unter [VNET-Dienstendpunkte und Regeln für Azure SQL-Datenbank](vnet-service-endpoint-rule-overview.md).
+- Einen Schnellstart zum Erstellen einer Firewallregel für ein virtuelles Netzwerk auf Serverebene finden Sie unter [Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Server in Azure SQL-Datenbank](vnet-service-endpoint-rule-overview.md).
 
 - Hilfe beim Herstellen einer Verbindung mit einer Datenbank in SQL-Datenbank über Open-Source-Anwendungen oder Drittanbieteranwendungen finden Sie unter [Clientschnellstart: Codebeispiele für SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee336282.aspx).
 
@@ -160,3 +159,4 @@ Private Link ermöglicht das Herstellen von Verbindungen mit einem Server über 
 <!--Image references-->
 [1]: media/quickstart-create-single-database/new-server2.png
 [2]: media/quickstart-create-single-database/manage-server-firewall.png
+ 

@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 2e399c1a7b0f9bbc2aac375fe8af969a2b9e0e48
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 962d0d6dd51bb30f5df9ca0b609acf932777ebcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887519"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Ausführen von Apache Spark-Aufträgen in ACS
 
-[Apache Spark][apache-spark] ist eine schnelle Engine zur Verarbeitung von umfangreichen Daten. Ab dem [Spark 2.3.0-Release][spark-latest-release] unterstützt Apache Spark die native Integration in Kubernetes-Cluster. Azure Kubernetes Service (AKS) ist eine verwaltete Kubernetes-Umgebung, die in Azure ausgeführt wird. In diesem Dokument werden die Vorbereitung und Ausführung von Apache Spark-Aufträgen in einem Azure Kubernetes Service-Cluster (AKS) ausführlich beschrieben.
+[Apache Spark][apache-spark] ist eine schnelle Engine zur Verarbeitung von umfangreichen Daten. Ab dem [Spark 2.3.0-Release][spark-kubernetes-earliest-version] unterstützt Apache Spark die native Integration in Kubernetes-Cluster. Azure Kubernetes Service (AKS) ist eine verwaltete Kubernetes-Umgebung, die in Azure ausgeführt wird. In diesem Dokument werden die Vorbereitung und Ausführung von Apache Spark-Aufträgen in einem Azure Kubernetes Service-Cluster (AKS) ausführlich beschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -25,6 +25,7 @@ Sie benötigen Folgendes, um die Schritte in diesem Artikel ausführen zu könne
 * [Docker-Hub][docker-hub]-Konto oder [Azure Container Registry][acr-create]
 * Eine Installation der [Azure CLI][azure-cli] auf Ihrem Entwicklungssystem
 * Eine [JDK 8][java-install]-Installation auf Ihrem System
+* [Apache Maven][maven-install] muss auf Ihrem System installiert sein.
 * Eine SBT-Installation ([Scala Build Tool][sbt-install]) auf Ihrem System
 * Auf Ihrem System installierte Git-Befehlszeilentools
 
@@ -340,9 +341,10 @@ Weitere Informationen finden Sie in der Spark-Dokumentation.
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
 [java-install]: https://aka.ms/azure-jdks
+[maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html
-[spark-latest-release]: https://spark.apache.org/releases/spark-release-2-3-0.html
+[spark-kubernetes-earliest-version]: https://spark.apache.org/releases/spark-release-2-3-0.html
 [spark-quickstart]: https://spark.apache.org/docs/latest/quick-start.html
 
 

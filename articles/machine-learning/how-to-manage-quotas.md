@@ -5,31 +5,34 @@ description: Erfahren Sie mehr über Kontingente für Azure Machine Learning-Res
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
 ms.custom: contperfq4
-ms.openlocfilehash: c5862ee90a12240e7293647fae6af4f18f30c164
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: df636ce1200d8c3744681a60532b22c409dd81dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680388"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84430462"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren [Azure Machine Learning](overview-what-is-azure-ml.md)-Benutzer mehr über vorkonfigurierte Grenzwerte für Azure-Ressourcen in ihrem Abonnement. Außerdem finden Sie Anweisungen dazu, wie Sie für jeden Ressourcentyp Kontingenterhöhungen anfordern. Diese Einschränkungen werden eingeführt, um Budgetüberschreitungen aufgrund von Betrug zu vermeiden und Kapazitätseinschränkungen bei Azure Rechnung zu tragen.
+In diesem Artikel erfahren Sie mehr über die vorkonfigurierten Einschränkungen für Azure-Ressourcen für Ihr [Azure Machine Learning](overview-what-is-azure-ml.md)-Abonnement und welche Kontingente Sie verwalten können. Diese Einschränkungen werden eingeführt, um Budgetüberschreitungen aufgrund von Betrug zu vermeiden und Kapazitätseinschränkungen bei Azure Rechnung zu tragen. 
 
 Genau wie bei anderen Azure-Diensten gelten auch für bestimmte Azure Machine Learning-Ressourcen gewisse Grenzwerte. Diese Grenzwerte reichen von Obergrenzen für die Anzahl von [Arbeitsbereichen](concept-workspace.md) bis hin zu Grenzwerten für die tatsächlich zugrunde liegenden Computeressourcen, die für das Modelltraining oder Rückschluss/Bewertung verwendet werden. 
 
 Berücksichtigen Sie diese Grenzwerte beim Entwerfen und Skalieren Ihrer Azure Machine Learning-Ressourcen für Produktionsworkloads. Wenn Ihr Cluster beispielsweise nicht die Zielanzahl von Knoten erreicht, haben Sie möglicherweise den Grenzwert für das Kernkontingent von Azure Machine Learning Compute für Ihr Abonnement erreicht. Wenn Sie ein Limit oder ein Kontingent über den Standardgrenzwert anheben möchten, können Sie eine gebührenfreie Onlinekundensupport-Anforderung öffnen. Die Limits können aufgrund von Azure-Kapazitätseinschränkungen nicht über den Wert unter „Maximales Limit“ in den folgenden Tabellen angehoben werden. Falls die Spalte „Maximales Limit“ nicht vorhanden ist, gelten für die entsprechende Ressource keine anpassbaren Limits.
 
+
+Neben dem Verwalten von Kontingenten erfahren Sie auch, wie Sie [Kosten für Azure Machine Learning planen und verwalten](concept-plan-manage-cost.md).
+
 ## <a name="special-considerations"></a>Besondere Überlegungen
 
-+ Bei einem Kontingent handelt es sich um ein Kreditlimit und keine Kapazitätsgarantie. Wenn Sie einen umfangreichen Kapazitätsbedarf haben, wenden Sie sich an den Azure-Support.
++ Bei einem Kontingent handelt es sich um ein Kreditlimit und keine Kapazitätsgarantie. Wenn Sie einen umfangreichen Kapazitätsbedarf haben, wenden Sie sich an den Azure-Support. Außerdem können Sie [Ihre Kontingente erhöhen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).
 
 + Ihr Kontingent wird auf alle Dienste in Ihren Abonnements verteilt, einschließlich Azure Machine Learning. Die einzige Ausnahme ist Azure Machine Learning Compute, das über ein vom Kerncomputekontingent separates Kontingent verfügt. Berechnen Sie den Kontingentbedarf für alle Dienste, wenn Sie Ihre Kapazitätsanforderungen auswerten.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Sichern und Wiederherstellen von Datenbanken: Azure SQL Edge (Vorschau)'
-description: Informieren Sie sich über die Sicherungs- und Wiederherstellungsfunktionen in Azure SQL Edge (Vorschau).
+description: Erfahren Sie mehr über Sicherungs- und Wiederherstellungsfunktionen in Azure SQL Edge (Vorschau).
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,39 +9,41 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 902576f82faa18fbb0e7c7eaed5c06993bd379cc
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 92a37babbcc0bbba3845267ca2eb0f95b9fceafa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667861"
 ---
-# <a name="backup-and-restore-databases-in-azure-sql-edge-preview"></a>Sichern und Wiederherstellen von Datenbanken in Azure SQL Edge (Vorschau) 
+# <a name="back-up-and-restore-databases-in-azure-sql-edge-preview"></a>Sichern und Wiederherstellen von Datenbanken in Azure SQL Edge (Vorschau) 
 
-Azure SQL Edge basiert auf den neuesten Versionen der Microsoft SQL Server-Datenbank-Engine unter Linux und bietet ähnliche Funktionen zum Sichern und Wiederherstellen von Datenbanken, wie Sie in SQL Server unter Linux und für SQL Server-Instanzen, die in Containern ausgeführt werden, verfügbar sind. Durch die Sicherungs- und Wiederherstellungskomponente wird eine wichtige Vorrichtung zum Schutz von in Azure SQL Edge-Datenbanken gespeicherten Daten bereitgestellt. Um die Gefahr eines schwerwiegenden Datenverlusts zu minimieren, wird empfohlen, Ihre Datenbanken regelmäßig zu sichern, um Änderungen an Ihren Daten zu schützen. Eine gut geplante Sicherungs- und Wiederherstellungsstrategie hilft, Datenbanken vor Datenverlusten zu schützen, die durch eine Vielzahl von Fehlern verursacht werden können. Testen Sie Ihre Strategie, indem Sie einen Sicherungssatz und anschließend Ihre Datenbank wiederherstellen, um sich auf die effektive Reaktion auf einen Notfall vorzubereiten.
+Azure SQL Edge basiert auf der neuesten Version der Datenbank-Engine von Microsoft SQL Server unter Linux. Die Lösung bietet ähnliche Funktionen zum Sichern und Wiederherstellen von Datenbanken, wie Sie in SQL Server unter Linux und für in Containern ausgeführten SQL Server-Instanzen verfügbar sind. Mit der Sicherungs- und Wiederherstellungskomponente wird eine wichtige Vorkehrung zum Schutz von in Azure SQL Edge-Datenbanken gespeicherten Daten bereitgestellt. 
+
+Um die Gefahr eines schwerwiegenden Datenverlusts zu minimieren, sollten Sie Ihre Datenbanken regelmäßig sichern, damit Änderungen an Ihren Daten nicht verloren gehen. Eine gut geplante Sicherungs- und Wiederherstellungsstrategie hilft, Datenbanken vor Datenverlusten zu schützen, die durch eine Vielzahl von Fehlern verursacht werden können. Testen Sie Ihre Strategie, indem Sie einen Sicherungssatz und anschließend Ihre Datenbank wiederherstellen, um sich auf die effektive Reaktion auf einen Notfall vorzubereiten.
 
 Weitere Informationen dazu, warum Sicherungen wichtig sind, finden Sie unter [Sichern und Wiederherstellen von SQL Server-Datenbanken](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases/).
 
-Azure SQL Edge unterstützt die Sicherung und Wiederherstellung mit lokalem Speicher und mit Azure-Blobs. Weitere Informationen zur Sicherung und Wiederherstellung mit Azure Blob Storage finden Sie unter [SQL Server-Sicherung und -Wiederherstellung mit dem Microsoft Azure Blob-Dienst](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service/) und [SQL Server-Sicherung über URLs](/sql/relational-databases/backup-restore/sql-server-backup-to-url).
+Azure SQL Edge ermöglicht die Sicherung in und Wiederherstellung aus lokalem Speicher und Azure-Blobs. Weitere Informationen finden Sie unter [Sicherung und Wiederherstellung von SQL Server mit Azure Blob Storage](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service/) und [SQL Server-Sicherung über URLs](/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 
-## <a name="backing-up-a-database-in-azure-sql-edge"></a>Sichern einer Datenbank in Azure SQL Edge
+## <a name="back-up-a-database-in-azure-sql-edge"></a>Sichern einer Datenbank in Azure SQL Edge
 
-Azure SQL Edge unterstützt die gleichen Sicherungstypen, die von SQL Server unterstützt werden. Eine vollständige Liste der Sicherungstypen, die in SQL Server unterstützt werden, finden Sie unter [Sicherung: Übersicht](/sql/relational-databases/backup-restore/backup-overview-sql-server/).
+Azure SQL Edge unterstützt die gleichen Sicherungstypen wie SQL Server. Eine vollständige Liste finden Sie in der [Übersicht für die Sicherung](/sql/relational-databases/backup-restore/backup-overview-sql-server/).
 
 > [!IMPORTANT] 
-> In Azure SQL Edge erstellte Datenbanken verwenden standardmäßig das einfache Wiederherstellungsmodell. Daher können keine Protokollsicherungen für diese Datenbanken ausgeführt werden. Wenn für diese Datenbanken Protokollsicherungen erforderlich sind, muss ein Administrator das Datenbankwiederherstellungsmodell in das vollständige Wiederherstellungsmodell ändern. Eine vollständige Liste der von SQL Server unterstützten Wiederherstellungsmodelle finden Sie unter [Übersicht über das Wiederherstellungsmodell](/sql/relational-databases/backup-restore/recovery-models-sql-server#RMov).
+> In Azure SQL Edge erstellte Datenbanken verwenden standardmäßig das einfache Wiederherstellungsmodell. Daher können für diese Datenbanken keine Protokollsicherungen erfolgen. Wenn dies erforderlich sein sollte, muss ein Administrator das Modell für die Datenbankwiederherstellung in das vollständige Wiederherstellungsmodell ändern. Eine vollständige Liste der von SQL Server unterstützten Wiederherstellungsmodelle finden Sie in der [Übersicht über das Wiederherstellungsmodell](/sql/relational-databases/backup-restore/recovery-models-sql-server#RMov).
 
-### <a name="backup-to-local-disk"></a>Sicherung auf lokalem Datenträger
+### <a name="back-up-to-local-disk"></a>Sichern auf lokalem Datenträger
 
-Im unten angegebenen Beispiel wird der Transact-SQL-Befehl BACKUP DATABASE verwendet, um eine Datenbanksicherung im Container zu erstellen. Im Rahmen dieses Beispiels wird ein neuer Ordner mit dem Namen „backup“ erstellt, um die Sicherungsdateien zu speichern.
+Im folgenden Beispiel erstellen Sie mit dem Transact-SQL-Befehl `BACKUP DATABASE` eine Datenbanksicherung im Container. Im Rahmen dieses Beispiels erstellen Sie einen neuer Ordner mit dem Namen *backup*, in dem die Sicherungsdateien gespeichert werden.
 
-1. Erstellen Sie einen Ordner für die Sicherungen. Dieser Befehl muss auf dem Host ausgeführt werden, auf dem der Azure SQL Edge-Container ausgeführt wird. Ersetzen Sie im Befehl unten **<AzureSQLEdge_Container_Name>** durch den Namen des Azure SQL Edge-Containers in Ihrer Bereitstellung.
+1. Erstellen Sie einen Ordner für die Sicherungen. Führen Sie diesen Befehl auf dem Host aus, auf dem sich der Azure SQL Edge-Container befindet. Ersetzen Sie im folgenden Befehl **<AzureSQLEdge_Container_Name>** durch den Namen des Azure SQL Edge-Containers in Ihrer Bereitstellung.
 
     ```bash
     sudo docker exec -it <AzureSQLEdge_Container_Name> mkdir /var/opt/mssql/backup
     ```
 
-2. Stellen Sie mithilfe von SQL Server Management Studio (SSMS) oder Azure Data Studio (ADS) eine Verbindung mit der Azure SQL Edge-Instanz her, und führen Sie den Befehl „Backup Database“ aus, um die Sicherung Ihrer Benutzerdatenbank zu erstellen. Im folgenden Beispiel wird eine Sicherung der Datenbank *IronOreSilicaPrediction* erstellt.
+2. Stellen Sie mithilfe von SQL Server Management Studio (SSMS) oder Azure Data Studio eine Verbindung mit der Azure SQL Edge-Instanz her. Führen Sie den Befehl `BACKUP DATABASE` aus, um die Sicherung der Benutzerdatenbank zu erstellen. Im folgenden Beispiel erstellen Sie eine Sicherung der Datenbank *IronOreSilicaPrediction*.
 
     ```sql
     BACKUP DATABASE [IronOreSilicaPrediction] 
@@ -51,7 +53,7 @@ Im unten angegebenen Beispiel wird der Transact-SQL-Befehl BACKUP DATABASE verwe
     GO
     ```
 
-3. Nachdem Sie den Befehl ausgeführt haben und die Sicherung der Datenbank erfolgreich war, werden im Abschnitt „Results“ (Ergebnisse) von SSMS oder ADS Meldungen angezeigt, die den folgenden Meldungen ähneln.
+3. Nachdem Sie den Befehl ausgeführt haben und die Sicherung der Datenbank erfolgreich war, werden im Abschnitt „Ergebnisse“ von SQL Server Management Studio oder Azure Data Studio Meldungen ähnlich den folgenden angezeigt.
 
     ```txt
     10 percent processed.
@@ -71,11 +73,11 @@ Im unten angegebenen Beispiel wird der Transact-SQL-Befehl BACKUP DATABASE verwe
     Completion time: 2020-04-09T23:54:48.4957691-07:00
     ```
 
-### <a name="backup-to-url"></a>Sicherung über URLs
+### <a name="back-up-to-url"></a>Sichern über URL
 
-Azure SQL Edge unterstützt Sicherungen in Seitenblobs und in Blockblobs. Weitere Informationen zu Seitenblobs und Blockblobs finden Sie unter [Sicherung in Blockblobs im Vergleich zu Seitenblobs](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-ver15#blockbloborpageblob). Im folgenden Beispiel wird die Datenbank *IronOreSilicaPrediction* in einem Blockblob gesichert. 
+Azure SQL Edge unterstützt Sicherungen in Seiten- und Blockblobs. Weitere Informationen finden Sie unter [Sicherung: Blockblobs vs. Seitenblobs](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-ver15#blockbloborpageblob). Im folgenden Beispiel wird die Datenbank *IronOreSilicaPrediction* in einem Blockblob gesichert. 
 
-1. Der erste Schritt beim Konfigurieren von Sicherungen für Blockblobs besteht darin, ein SAS-Token (Shared Access Signature) zu generieren, mit dem SQL Server-Anmeldeinformationen für Azure SQL Edge erstellt werden kann. Das Skript erstellt eine Shared Access Signature, die einer gespeicherten Zugriffsrichtlinie zugeordnet ist. Weitere Informationen finden Sie unter [Shared Access Signatures, Teil 1: Grundlegendes zum SAS-Modell](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/). Das Skript schreibt auch den T-SQL-Befehl, der zum Erstellen der Anmeldeinformationen unter SQL Server erforderlich ist. Im folgenden Skript wird davon ausgegangen, dass Sie bereits über ein Azure-Abonnement mit einem Speicherkonto und einen Speichercontainer für die Sicherungen verfügen.
+1. Um Sicherungen in Blockblobs zu konfigurieren, generieren Sie zuerst ein SAS-Token (Shared Access Signature), mit dem SQL Server-Anmeldeinformationen für Azure SQL Edge erstellt werden können. Das Skript erstellt eine SAS, die einer gespeicherten Zugriffsrichtlinie zugeordnet ist. Weitere Informationen finden Sie unter [Shared Access Signatures, Teil 1: Grundlegendes zum SAS-Modell](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/). Das Skript schreibt auch den T-SQL-Befehl, der zum Erstellen der Anmeldeinformationen unter SQL Server erforderlich ist. Im folgenden Skript wird davon ausgegangen, dass Sie bereits über ein Azure-Abonnement mit einem Speicherkonto und einen Speichercontainer für die Sicherungen verfügen.
 
     ```PowerShell
     # Define global variables for the script  
@@ -107,9 +109,9 @@ Azure SQL Edge unterstützt Sicherungen in Seitenblobs und in Blockblobs. Weiter
     Write-Host $tSql
     ```
 
-    Nachdem Sie das Skript erfolgreich ausgeführt haben, kopieren Sie den Befehl CREATE CREDENTIAL in ein Abfragetool, stellen eine Verbindung mit einer SQL Server-Instanz her und führen den Befehl zum Erstellen der Anmeldeinformationen mit der Shared Access Signature aus.
+    Nachdem das Skript erfolgreich ausgeführt wurde, kopieren Sie den Befehl `CREATE CREDENTIAL` in ein Abfragetool. Stellen Sie dann eine Verbindung mit einer Instanz von SQL Server her, und führen Sie den Befehl zur Erstellung der Anmeldeinformationen mit der SAS aus.
 
-2. Stellen Sie mithilfe von SQL Server Management Studio (SSMS) oder Azure Data Studio (ADS) eine Verbindung mit der Azure SQL Edge-Instanz her, und erstellen Sie die Anmeldeinformationen dann mithilfe des Befehls aus dem vorherigen Schritt. Stellen Sie sicher, dass Sie den Befehl CREATE CREDENTIAL durch die tatsächliche Ausgabe aus dem vorherigen Schritt ersetzen.
+2. Stellen Sie mithilfe von SQL Server Management Studio oder Azure Data Studio eine Verbindung mit der Azure SQL Edge-Instanz her, und erstellen Sie die Anmeldeinformationen dann mithilfe des Befehls im vorherigen Schritt. Stellen Sie sicher, dass Sie den Befehl `CREATE CREDENTIAL` durch die tatsächliche Ausgabe im vorherigen Schritt ersetzen.
 
     ```sql
     IF NOT EXISTS  
@@ -129,21 +131,21 @@ Azure SQL Edge unterstützt Sicherungen in Seitenblobs und in Blockblobs. Weiter
     GO
     ```
 
-## <a name="restoring-a-database-in-azure-sql-edge"></a>Wiederherstellen einer Datenbank in Azure SQL Edge
+## <a name="restore-a-database-in-azure-sql-edge"></a>Wiederherstellen einer Datenbank in Azure SQL Edge
 
-Azure SQL Edge unterstützt die Wiederherstellung von einem lokalen Datenträger, von einem Netzwerkspeicherort oder aus einem Azure Blob Storage-Konto. Eine Übersicht über Wiederherstellungsvorgänge in SQL Server finden Sie unter [Übersicht über Wiederherstellungsvorgänge ](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-ver15). Eine Übersicht über das einfache Wiederherstellungsmodell in SQL Server finden Sie unter [Vollständige Datenbankwiederherstellungen (einfaches Wiederherstellungsmodell)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model?view=sql-server-ver15).
+In Azure SQL Edge kann eine Wiederherstellung mithilfe eines lokalen Datenträgers, Netzwerkspeicherorts oder Azure Blob Storage-Kontos erfolgen. Weitere Informationen zur Wiederherstellung finden Sie in der [Übersicht über die Wiederherstellung](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-ver15). Eine Übersicht über das einfache Wiederherstellungsmodell in SQL Server finden Sie unter [Vollständige Datenbankwiederherstellungen (einfaches Wiederherstellungsmodell)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model?view=sql-server-ver15).
 
-### <a name="restore-from-local-disk"></a>Wiederherstellung von lokalem Datenträger
+### <a name="restore-from-a-local-disk"></a>Wiederherstellen von einem lokalem Datenträger
 
-In diesem Beispiel wird die *IronOreSilicaPrediction*-Sicherung, die im vorherigen Beispiel durchgeführt wurde, für die Wiederherstellung als neue Datenbank mit einem anderen Namen verwendet.
+In diesem Beispiel wird die Sicherung *IronOreSilicaPrediction* verwendet, die im vorherigen Beispiel erstellt wurde. Sie stellen sie nun als neue Datenbank mit einem anderen Namen wieder her.
 
-1. Wenn die Datenbanksicherungsdatei nicht bereits im Container vorhanden ist, können Sie den folgenden Befehl verwenden, um die Datei in den Container zu kopieren. Im folgenden Beispiel wird davon ausgegangen, dass die Sicherungsdatei auf dem lokalen Host vorhanden und in den Ordner „/var/opt/mssqlbBackup“ in einen Azure SQL Edge-Container mit dem Namen „sql1“ kopiert wird.
+1. Wenn die Datenbanksicherungsdatei nicht bereits im Container vorhanden ist, können Sie die Datei mit dem folgenden Befehl in den Container kopieren. Im folgenden Beispiel wird davon ausgegangen, dass die Sicherungsdatei auf dem lokalen Host vorhanden ist und in den Ordner „/var/opt/mssqlbBackup“ in einem Azure SQL Edge-Container mit dem Namen *sql1* kopiert wird.
 
     ```bash
     sudo docker cp IronOrePredictDB.bak sql1:/var/opt/mssql/backup
     ```
 
-2. Stellen Sie mithilfe von SQL Server Management Studio (SSMS) oder Azure Data Studio (ADS) eine Verbindung mit der Azure SQL Edge-Instanz her, um den Wiederherstellungsbefehl auszuführen. Im folgenden Beispiel wird **IronOrePredictDB.bak** wiederhergestellt, um eine neue Datenbank **IronOreSilicaPrediction_2** zu erstellen.
+2. Stellen Sie mithilfe von SQL Server Management Studio oder Azure Data Studio eine Verbindung mit der Azure SQL Edge-Instanz her, um den Wiederherstellungsbefehl auszuführen. Im folgenden Beispiel wird **IronOrePredictDB.bak** so wiederhergestellt, dass dabei die neue Datenbank **IronOreSilicaPrediction_2** erstellt wird.
 
     ```sql
     Restore FilelistOnly from disk = N'/var/opt/mssql/backup/IronOrePredictDB.bak'
@@ -154,7 +156,7 @@ In diesem Beispiel wird die *IronOreSilicaPrediction*-Sicherung, die im vorherig
     MOVE 'IronOreSilicaPrediction_log' TO '/var/opt/mssql/data/IronOreSilicaPrediction_Primary_2.ldf'
     ```
 
-3. Nachdem Sie den Wiederherstellungsvorgangbefehl ausgeführt haben und der Wiederherstellungsvorgang erfolgreich war, sehen im Ausgabefenster Meldungen, die den folgenden Meldungen ähneln. 
+3. Nach Ausführung des Wiederherstellungsbefehls wird bei erfolgreichem Wiederherstellungsvorgang im Ausgabefenster eine Meldung ähnlich der folgenden angezeigt. 
 
     ```txt
     Processed 51648 pages for database 'IronOreSilicaPrediction_2', file 'IronOreSilicaPrediction' on file 1.
@@ -164,9 +166,9 @@ In diesem Beispiel wird die *IronOreSilicaPrediction*-Sicherung, die im vorherig
     Completion time: 2020-04-13T23:49:21.1600986-07:00
     ```
 
-### <a name="restore-from-url"></a>Wiederherstellen aus URL
+### <a name="restore-from-url"></a>Wiederherstellen über URL
 
-Azure SQL Edge unterstützt auch das Wiederherstellen einer Datenbank aus einem Azure Storage-Konto. Wiederherstellungen können aus den Blockblob- oder Seitenblobsicherungen ausgeführt werden. Im unten gezeigten Beispiel wird die Datenbanksicherungsdatei *IronOreSilicaPrediction_2020_04_16.bak* aus einem Blockblob wiederhergestellt, um die Datenbank *IronOreSilicaPrediction_3* zu erstellen.
+Azure SQL Edge unterstützt auch das Wiederherstellen einer Datenbank aus einem Azure Storage-Konto. Wiederherstellungen können aus Sicherungen von Blockblobs oder Seitenblobs erfolgen. Im folgenden Beispiel wird die Datenbanksicherungsdatei *IronOreSilicaPrediction_2020_04_16.bak* aus einem Blockblob wiederhergestellt, um die Datenbank *IronOreSilicaPrediction_3* zu erstellen.
 
 ```sql
 RESTORE DATABASE IronOreSilicaPrediction_3

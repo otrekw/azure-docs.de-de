@@ -1,10 +1,9 @@
 ---
-title: Übersicht über Verfügbarkeitsgruppen
-description: Dieser Artikel enthält eine Einführung in SQL Server-Verfügbarkeitsgruppen auf virtuellen Azure-Computern.
+title: Übersicht über SQL Server Always On-Verfügbarkeitsgruppen
+description: Dieser Artikel bietet eine Einführung in SQL Server Always On-Verfügbarkeitsgruppen auf Azure Virtual Machines.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
@@ -15,25 +14,26 @@ ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62dce0204f77ab65473fc1735015e41f483dddb1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f3c7009e5ecb43a809b9a3f703fc5ba289a2fd00
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84036951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669272"
 ---
-# <a name="introducing-sql-server-availability-groups-on-azure-virtual-machines"></a>Einführung in SQL Server-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
+# <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Einführung in SQL Server Always On-Verfügbarkeitsgruppen auf Azure Virtual Machines
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Dieser Artikel enthält eine Einführung in SQL Server-Verfügbarkeitsgruppen in Azure Virtual Machines. 
 
 Always On-Verfügbarkeitsgruppen in Azure Virtual Machines sind vergleichbar mit lokalen Always On-Verfügbarkeitsgruppen. Weitere Informationen finden Sie unter [AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx). 
 
-Das Diagramm veranschaulicht die Komponenten einer vollständigen SQL Server-Verfügbarkeitsgruppe in Azure Virtual Machines.
+Das folgende Diagramm veranschaulicht die Komponenten einer vollständigen SQL Server-Verfügbarkeitsgruppe auf Azure Virtual Machines.
 
 ![Verfügbarkeitsgruppe](./media/availability-group-overview/00-EndstateSampleNoELB.png)
 
-Der wesentliche Unterschied bei einer Verfügbarkeitsgruppe in Azure Virtual Machines ist, dass die virtuellen Azure-Computer einen [Lastenausgleich](../../../load-balancer/load-balancer-overview.md) erfordern. Der Lastenausgleich speichert die IP-Adressen für den Verfügbarkeitsgruppenlistener. Falls Sie über mehrere Verfügbarkeitsgruppen verfügen, benötigt jede Gruppe einen Listener. Ein einzelner Lastenausgleich kann mehrere Listener unterstützen.
+Der wesentliche Unterschied bei einer Verfügbarkeitsgruppe auf Azure Virtual Machines ist, dass diese virtuellen Computer (VMs) einen [Lastenausgleich](../../../load-balancer/load-balancer-overview.md) erfordern. Der Lastenausgleich speichert die IP-Adressen für den Verfügbarkeitsgruppenlistener. Falls Sie über mehrere Verfügbarkeitsgruppen verfügen, benötigt jede Gruppe einen Listener. Ein einzelner Lastenausgleich kann mehrere Listener unterstützen.
 
 Außerdem werden in einem Azure IaaS-VM-Gast-Failovercluster eine einzelne Netzwerkkarte pro Server (Clusterknoten) und ein einzelnes Subnetz empfohlen. Azure-Netzwerktechnologie bietet physische Redundanz, die zusätzliche Netzwerkkarten und Subnetze in einem Azure IaaS-VM-Gastcluster überflüssig macht. Obwohl im Clustervalidierungsbericht eine Warnung ausgegeben wird, dass die Knoten nur in einem einzigen Netzwerk erreichbar sind, kann diese Warnung für Azure IaaS-VM-Gast-Failovercluster einfach ignoriert werden. 
 
@@ -43,19 +43,22 @@ Um für noch mehr Redundanz und Verfügbarkeit zu sorgen, sollten sich die SQL S
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
 | [SQL-VM-Befehlszeilenschnittstelle](availability-group-az-cli-configure.md) | 2016 | 2017 </br>2016   | Ent | Cloudzeuge | Nein | Ja | Ja | Ja | Nein | Nein |
 | [Schnellstartvorlagen](availability-group-quickstart-template-configure.md) | 2016 | 2017</br>2016  | Ent | Cloudzeuge | Nein | Ja | Ja | Ja | Nein | Nein |
-| [Vorlage im Portal](availability-group-azure-marketplace-template-configure.md) | 2016 </br>2012 R2 | 2016</br>2014 | Ent | Dateifreigabe | Nein | Nein | Nein | Nein | Nein | Nein |
 | [Manuell](availability-group-manually-configure-prerequisites-tutorial.md) | All | All | All | All | Ja | Ja | Ja | Ja | Ja | Ja |
 | &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
+
+Die Vorlage **SQL Server Always On Cluster (Vorschau)** wurde aus Azure Marketplace entfernt und ist nicht mehr verfügbar. 
 
 Wenn Sie zur Erstellung einer SQL Server-Verfügbarkeitsgruppe in Azure Virtual Machines bereit sind, sehen Sie sich die folgenden Tutorials an:
 
 ## <a name="manually-with-azure-cli"></a>Manuell über die Azure-Befehlszeilenschnittstelle
-Die empfohlene Option zum Konfigurieren und Bereitstellen einer Verfügbarkeitsgruppe ist die Azure-Befehlszeilenschnittstelle, da diese im Hinblick auf Einfachheit und Geschwindigkeit am besten geeignet ist. Mit der Azure-Befehlszeilenschnittstelle können das Erstellen des Windows-Failoverclusters, das Einbinden der SQL Server-VMs in den Cluster und das Erstellen des Listeners und des internen Lastenausgleichs in weniger als insgesamt 30 Minuten erreicht werden. Diese Option erfordert immer noch eine manuelle Erstellung der Verfügbarkeitsgruppe, alle anderen erforderlichen Schritte für die Konfiguration sind jedoch automatisiert. 
+
+Es wird empfohlen, die Azure CLI zum Konfigurieren und Bereitstellen einer Verfügbarkeitsgruppe zu verwenden, da sie dadurch am einfachsten und schnellsten bereitzustellen ist. Mit der Azure-Befehlszeilenschnittstelle können das Erstellen des Windows-Failoverclusters, das Einbinden der SQL Server-VMs in den Cluster und das Erstellen des Listeners und des internen Lastenausgleichs in weniger als insgesamt 30 Minuten erreicht werden. Diese Option erfordert immer noch eine manuelle Erstellung der Verfügbarkeitsgruppe, alle anderen erforderlichen Schritte für die Konfiguration sind jedoch automatisiert. 
 
 Weitere Informationen finden Sie unter [Verwenden der Azure SQL-VM-Befehlszeilenschnittstelle zum Konfigurieren von Always On-Verfügbarkeitsgruppe für SQL Server auf einem virtuellen Azure-Computer](availability-group-az-cli-configure.md). 
 
 ## <a name="automatically-with-azure-quickstart-templates"></a>Automatisch mit Azure-Schnellstartvorlagen
-In Azure-Schnellstartvorlagen wird der SQL-VM-Ressourcenanbieter genutzt, um den Windows-Failovercluster zu erstellen, SQL Server-VMs in diesen einzubinden, den Listener zu erstellen und den internen Lastenausgleich zu konfigurieren. Diese Option erfordert immer noch eine manuelle Erstellung der Verfügbarkeitsgruppe und des internen Lastenausgleichs, alle anderen erforderlichen Konfigurationsschritte (einschließlich der Konfiguration des internen Lastenausgleichs) sind jedoch automatisiert und vereinfacht. 
+
+In Azure-Schnellstartvorlagen wird der SQL-VM-Ressourcenanbieter genutzt, um den Windows-Failovercluster zu erstellen, SQL Server-VMs in diesen einzubinden, den Listener zu erstellen und den internen Lastenausgleich zu konfigurieren. Diese Option erfordert nach wie vor eine manuelle Erstellung der Verfügbarkeitsgruppe und des internen Lastenausgleichs. Alle anderen erforderlichen Konfigurationsschritte (einschließlich Konfiguration des internen Lastenausgleichs) sind jedoch automatisiert und vereinfacht. 
 
 Weitere Informationen finden Sie unter [Verwenden einer Azure-Schnellstartvorlage zum Konfigurieren von Always On-Verfügbarkeitsgruppen für SQL Server auf einem virtuellen Azure-Computer](availability-group-quickstart-template-configure.md).
 
@@ -65,14 +68,14 @@ Weitere Informationen finden Sie unter [Verwenden einer Azure-Schnellstartvorlag
 [Automatisches Konfigurieren der AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern – Resource Manager](availability-group-azure-marketplace-template-configure.md)
 
 
-## <a name="manually-in-azure-portal"></a>Manuell im Azure-Portal
+## <a name="manually-in-the-azure-portal"></a>Manuell im Azure-Portal
 
 Sie können die virtuellen Computer auch manuell ohne Vorlage erstellen. Schließen Sie zunächst die erforderlichen Vorbereitungen ab, und erstellen Sie anschließend die Verfügbarkeitsgruppe. Weitere Informationen finden Sie in den folgenden Artikeln: 
 
-- [Configure prerequisites for SQL Server Always On availability groups on Azure Virtual Machines](availability-group-manually-configure-prerequisites-tutorial.md) (Konfigurieren der erforderlichen Komponenten für SQL Server Always On-Verfügbarkeitsgruppen in Azure Virtual Machines)
+- [Voraussetzungen für die Erstellung von Always On-Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines](availability-group-manually-configure-prerequisites-tutorial.md)
 
 - [Erstellen einer AlwaysOn-Verfügbarkeitsgruppe zur Verbesserung der Verfügbarkeit und Notfallwiederherstellung](availability-group-manually-configure-tutorial.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurieren einer SQL Server AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern in verschiedenen Regionen](availability-group-manually-configure-multiple-regions.md)
+[Konfigurieren einer SQL Server Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern in verschiedenen Regionen](availability-group-manually-configure-multiple-regions.md)

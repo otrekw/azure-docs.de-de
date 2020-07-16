@@ -4,18 +4,18 @@ description: Abfragen von Advisor-Daten in Azure Resource Graph
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: sagupt
-ms.openlocfilehash: f8ad8fd450bc004d9caa2699922717f38d38b482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0786d1d09ff61ddd9c375c68b7199521e319a4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79503914"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117833"
 ---
 # <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>Abfragen von Advisor-Daten im Resource Graph-Explorer (Azure Resource Graph)
 
 Advisor-Ressourcen sind nun in [Azure Resource Graph](https://azure.microsoft.com/features/resource-graph/) integriert. Dadurch wird eine Grundlage für viele bedarfsgerechte Kundenszenarien mit Advisor-Empfehlungen geschaffen. Im Anschluss finden Sie einige Szenarien, die zuvor nicht im großen Stil möglich waren, nun aber mithilfe von Resource Graph umgesetzt werden können:
 * Gives-Funktion, um komplexe Abfragen für alle Ihre Abonnements im Azure-Portal zu ermöglichen
-* Nach Kategorietyp (z. B. Hochverfügbarkeit, Leistung) und Auswirkungstyp (hoch, mittel, niedrig) zusammengefasste Empfehlungen
+* Nach Kategorietyp (z. B. Zuverlässigkeit, Leistung) und Auswirkungstyp (hoch, mittel, niedrig) zusammengefasste Empfehlungen
 * Alle Empfehlungen für einen bestimmten Empfehlungstyp
 * Anzahl betroffener Ressourcen nach Empfehlungskategorie
 
@@ -37,8 +37,9 @@ Diese Ressourcentypen werden unter einer neuen Tabelle namens „AdvisorResource
 Weitere Informationen zu Advisor-Empfehlungen finden Sie unter:
 * [Einführung in Azure Advisor](advisor-overview.md)
 * [Erste Schritte mit Advisor](advisor-get-started.md)
-* [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md)
-* [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
-* [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
-* [Advisor-Empfehlungen für einen optimalen Betrieb](advisor-operational-excellence-recommendations.md)
+* [Reduzieren der Dienstkosten mithilfe des Azure Advisors](advisor-cost-recommendations.md)
+* [Verbessern der Verfügbarkeit Ihrer Anwendung mit dem Azure Advisor](advisor-high-availability-recommendations.md)
+* [Verbessern der Leistung von Azure-Anwendungen mit dem Azure Advisor](advisor-performance-recommendations.md)
+* [Erhöhen der Sicherheit von Ressourcen mit dem Azure Advisor](advisor-security-recommendations.md)
+* [Sicherstellen des optimalen Betriebs mit dem Azure Advisor](advisor-operational-excellence-recommendations.md)
 * [Advisor-REST-API](https://docs.microsoft.com/rest/api/advisor/)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 3c880cd18e7227a728d7e276e72a5ea8c1e421de
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396632"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514535"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>Sichere Installation und Verwendung des StorSimple-Geräts
 ![Symbol „Warnung“](./media/storsimple-safety/IC740879.png)
@@ -103,10 +103,11 @@ So reduzieren Sie die Wahrscheinlichkeit, dass Verletzungen, Elektroschocks oder
 
 Für die ordnungsgemäße Kühlung des Gestellsystems:
 
-* Stellen Sie sicher, dass der Gestellaufbau die maximale vom Gehäuse erzeugte Umgebungstemperatur von 35 Grad Celsius berücksichtigt.
+* Stellen Sie sicher, dass der Gestellaufbau die maximale vom Gehäuse erzeugte Umgebungstemperatur von 35 Grad Celsius berücksichtigt. Kühlen Sie den Raum, in dem sich das Gestellsystem befindet, und stellen Sie sicher, dass der Luftstrom aus dem Klimaanlagenschacht im Rechenzentrum ausreichend ist.
 * Das System wird mit einer Installation mit niedrigem Druck und hinterer Lüftung betrieben (der hintere Druck durch die Gestelltüren und -hindernisse darf 5 Pascal [0,5 mm auf der Wasserstandsanzeige] nicht überschreiben).
 
 ## <a name="power-cooling-module-pcm-precautions"></a>Vorsichtsmaßnahmen bei der Stromversorgungs- und Kühleinheit (PCM)
+
 Das Gerät ist für den Betrieb mit zwei Kühleinheiten ausgelegt. Jede der Kühleinheiten verfügt über eine Stromversorgung und ein Doppelachsgebläse. In kritischem Zustand lässt das System das Versagen einer Stromzufuhr zu, während der normale Betrieb aufrecht erhalten wird. Zwei Kühleinheiten (und daher Stromzufuhren) müssen immer installiert sein. Ein einzelnes PCM bietet keine redundante Stromversorgung. Aus diesem Grund kann der Ausfall von nur einem PCM zu Ausfallzeiten und Datenverlusten führen.
 
 ![Symbol „Warnung“](./media/storsimple-safety/IC740879.png) ![Symbol „Vorsicht Stromschlag“](./media/storsimple-safety/IC740882.png) **WARNUNG!**
@@ -123,6 +124,7 @@ Für den ordnungsgemäßen Betrieb Ihrer Geräte und um Schäden am Produkt zu v
 * Ein PCM kann nicht entfernt werden, sofern kein Ersatz sofort installiert werden kann. Das Gehäuse darf nicht ohne alle an der richtigen Stelle vorhandenen Module betrieben werden.
 
 ## <a name="electrostatic-discharge-esd-precautions"></a>Vorsichtsmaßnahmen bei der elektrostatischen Entladung (ESD)
+
 ![Symbol „Hinweis“](./media/storsimple-safety/IC740881.png) **HINWEIS:**
 
 Beachten Sie die folgenden, auf ESD bezogenen Vorsichtsmaßnahmen.
@@ -133,6 +135,7 @@ Beachten Sie die folgenden, auf ESD bezogenen Vorsichtsmaßnahmen.
 * ESD-Schäden werden nicht von der Gewährleistung abgedeckt.
 
 ## <a name="battery-disposal-precautions"></a>Vorsichtsmaßnahmen bei der Batterieentsorgung
+
 Das Netzteil verwendet eine speziellen Batterie, um den Inhalt des Arbeitsspeichers während temporärer, kurzfristiger Stromausfälle zu schützen. Die Batterie ist im PCM eingesetzt. Beachten Sie folgende Informationen zum Akku.
 
 ![Warnsymbol](./media/storsimple-safety/IC740879.png) **WARNUNG!**
@@ -150,6 +153,6 @@ Beim Versand oder bei anderweitiger Beförderung der Batterien auf dem Luftweg b
 Nachdem Sie diese Sicherheitshinweise gelesen haben, ist der nächste Schritt, das Gerät zu entpacken, aufzustellen und zu an den Strom anzuschließen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Wenn es sich um ein 8100-Gerät handelt, navigieren Sie zu [Installieren des StorSimple 8100-Geräts](storsimple-8100-hardware-installation.md).
 * Wenn es sich um ein 8600-Gerät handelt, navigieren Sie zu [Installieren des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md).
-

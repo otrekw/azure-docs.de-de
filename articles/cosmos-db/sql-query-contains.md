@@ -4,19 +4,19 @@ description: Erfahren Sie, wie die SQL-Systemfunktion CONTAINS in Azure Cosmos D
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a08fe47122d7e9ddd1c9038bb5f15ebbb0be30fa
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 4877272fc2db521977a4111317118380399d27c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848973"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322702"
 ---
 # <a name="contains-azure-cosmos-db"></a>CONTAINS (Azure Cosmos DB)
 
- Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck den zweiten enthält.  
+Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck den zweiten enthält.  
   
 ## <a name="syntax"></a>Syntax
   
@@ -75,6 +75,8 @@ Sehen Sie sich beispielsweise die beiden Eigenschaften „town“ und „country
 ```
 
 Die erste Abfrage verbraucht wahrscheinlich mehr RUs als die zweite Abfrage, da die Kardinalität von „town“ höher als die von „country“ ist.
+
+Wenn bestimmte Eigenschaften aus Dokumenten in CONTAINS größer als 1 KB sind, müssen diese Dokumente von der Abfrage-Engine geladen werden. In diesem Fall kann die Abfrage-Engine CONTAINS mit einem Index nicht vollständig auswerten. Die RU-Last für CONTAINS wird hoch ausfallen, wenn viele Ihrer Dokumente größer als 1 KB sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

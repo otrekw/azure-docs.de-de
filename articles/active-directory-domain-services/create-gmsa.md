@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 5955f52cda73630f371a46f83ac0fb9a252b80e3
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 923502132fdbe0b4a56c0fc23c19475e9074b8ff
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655482"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040247"
 ---
-# <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Erstellen eines gruppenverwalteten Dienstkontos (gMSA) in Azure AD Domain Services
+# <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Erstellen eines gruppenverwalteten Dienstkontos (gMSA) Azure Active Directory Domain Services
 
 Anwendungen und Dienste benötigen häufig eine Identität, um sich bei anderen Ressourcen zu authentifizieren. Beispielsweise muss sich ein Webdienst unter Umständen bei einem Datenbankdienst authentifizieren. Wenn eine Anwendung oder ein Dienst über mehrere Instanzen verfügt (z.B. eine Webserverfarm), wird das manuelle Erstellen und Konfigurieren der Identitäten für diese Ressourcen zeitaufwändig.
 
 Stattdessen können Sie in der verwalteten Azure AD DS-Domäne (Azure Active Directory Domain Services) ein gruppenverwaltetes Dienstkonto (gMSA) erstellen. Das Windows-Betriebssystem verwaltet die Anmeldeinformationen für ein gMSA automatisch, was die Verwaltung großer Ressourcengruppen vereinfacht.
 
-In diesem Artikel wird gezeigt, wie Sie in einer verwalteten Azure AD DS-Domäne mithilfe von Azure PowerShell ein gruppenverwaltetes Dienstkonto (gMSA) erstellen.
+In diesem Artikel wird gezeigt, wie Sie in einer verwalteten Domäne mithilfe von Azure PowerShell ein gruppenverwaltetes Dienstkonto (gMSA) erstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -35,7 +35,7 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance] aus.
+    * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer von Azure Active Directory Domain Services verwalteten Domäne][create-azure-ad-ds-instance] aus.
 * Eine Windows Server-Verwaltungs-VM, die in die verwaltete Azure AD DS-Domäne eingebunden ist.
     * Führen Sie bei Bedarf das Tutorial zum [Erstellen eines virtuellen Verwaltungscomputers][tutorial-create-management-vm] aus.
 
@@ -49,11 +49,11 @@ Weitere Informationen finden Sie unter [Übersicht über gruppenverwaltete Diens
 
 ## <a name="using-service-accounts-in-azure-ad-ds"></a>Verwenden von Dienstkonten in Azure AD DS
 
-Da verwaltete Azure AD DS-Domänen von Microsoft gesperrt und verwaltet werden, sind bei der Verwendung von Dienstkonten einige Überlegungen erforderlich:
+Da verwaltete Azure Domänen von Microsoft gesperrt und verwaltet werden, sind bei der Verwendung von Dienstkonten einige Überlegungen erforderlich:
 
 * Erstellen Sie Dienstkonten in benutzerdefinierten Organisationseinheiten (OEs) in der verwalteten Domäne.
     * In den integrierten Organisationseinheiten *AADDC Users* und *AADDC Computers* können Sie keine Dienstkonten erstellen.
-    * [Erstellen Sie stattdessen eine benutzerdefinierte Organisationseinheit][create-custom-ou] in der verwalteten Azure AD DS-Domäne, und erstellen Sie anschließend die Dienstkonten in dieser benutzerdefinierten Organisationseinheit.
+    * [Erstellen Sie stattdessen eine benutzerdefinierte Organisationseinheit][create-custom-ou] in der verwalteten Domäne, und erstellen Sie anschließend die Dienstkonten in dieser benutzerdefinierten Organisationseinheit.
 * Der Stammschlüssel der Schlüsselverteilungsdienste (Key Distribution Services, KDS) wird vorab erstellt.
     * Der KDS-Stammschlüssel wird zum Generieren und Abrufen von Kennwörtern für gMSAs verwendet. In Azure AD DS wird der KDS-Stammschlüssel für Sie erstellt.
     * Sie haben keine Berechtigungen zum Erstellen eines anderen KDS-Stammschlüssels und können auch den Standardschlüssel nicht anzeigen.
@@ -65,7 +65,7 @@ Erstellen Sie zunächst mithilfe des Cmdlets [New-ADOrganizationalUnit][New-AdOr
 > [!TIP]
 > Führen Sie diese Schritte zum Erstellen eines gMSA [auf Ihrer Verwaltungs-VM][tutorial-create-management-vm] aus. Diese Verwaltungs-VM muss bereits über die erforderlichen AD PowerShell-Cmdlets und eine Verbindung mit der verwalteten Domäne verfügen.
 
-Im folgenden Beispiel wird eine benutzerdefinierte Organisationseinheit namens *myNewOU* in der verwalteten Azure AD DS-Domäne namens *aaddscontoso.com* erstellt. Verwenden Sie Ihre eigene Organisationseinheit und den Namen der verwalteten Domäne:
+Im folgenden Beispiel wird eine benutzerdefinierte Organisationseinheit namens *myNewOU* in der verwalteten Domäne namens *aaddscontoso.com* erstellt. Verwenden Sie Ihre eigene Organisationseinheit und den Namen der verwalteten Domäne:
 
 ```powershell
 New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"

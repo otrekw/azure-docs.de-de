@@ -5,45 +5,56 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: a44e0e9f2427fc5fcb44a78fb0a1798b219f9200
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249160"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84325132"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Empfangen und Beantworten eingehender HTTPS-Anforderungen in Azure Logic Apps
 
 Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten Anforderungstrigger und der Antwortaktion können Sie automatisierte Tasks und Workflows erstellen, die eingehende HTTPS-Anforderungen empfangen und beantworten. Beispielsweise können Sie mit Ihrer Logik-App Folgendes durchführen:
 
 * Empfangen von und Antworten auf eine HTTPS-Anforderung von Daten in einer lokalen Datenbank.
+
 * Auslösen eines Workflows, wenn ein externes Webhookereignis auftritt
+
 * Empfangen von und Antworten auf HTTPS-Aufrufe aus einer anderen Logik-App.
 
 Der Anforderungstrigger unterstützt [Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) für die Autorisierung eingehender Aufrufe ihrer Logik-App. Weitere Informationen zum Aktivieren dieser Authentifizierung finden Sie unter [Schützen des Zugriffs und der Daten in Azure Logic Apps – Aktivieren der Azure AD OAuth-Authentifizierung](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
-
-> [!NOTE]
-> Der Anforderungstrigger unterstützt für eingehende Aufrufe *ausschließlich* Transport Layer Security (TLS) 1.2. Ausgehende Aufrufe unterstützen TLS 1.0, 1.1 und 1.2. Weitere Informationen finden Sie unter [Lösen des TLS 1.0-Problems](https://docs.microsoft.com/security/solving-tls1-problem).
->
-> Wenn TLS-Handshakefehler auftreten, sollten Sie sicherstellen, dass Sie TLS 1.2 verwenden. 
-> Für eingehende Aufrufe werden folgende Verschlüsselungssammlungen unterstützt:
->
-> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Grundlegende Kenntnisse zu [Logik-Apps](../logic-apps/logic-apps-overview.md). Falls Sie noch nicht mit Logik-Apps gearbeitet haben, sollten Sie zunächst die Schnellstartanleitung zum [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) lesen.
+
+<a name="tls-support"></a>
+
+## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
+
+* Eingehende Anrufe unterstützen *nur* Transport Layer Security 1.2 (TLS). Wenn TLS-Handshakefehler auftreten, sollten Sie sicherstellen, dass Sie TLS 1.2 verwenden. Weitere Informationen finden Sie unter [Lösen des TLS 1.0-Problems](https://docs.microsoft.com/security/solving-tls1-problem). Ausgehende Aufrufe unterstützen TLS 1.0, 1.1 und 1.2, je nach Funktionalität des Zielendpunkts.
+
+* Eingehende Anrufe unterstützen die folgenden Cipher Suites:
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 <a name="add-request"></a>
 

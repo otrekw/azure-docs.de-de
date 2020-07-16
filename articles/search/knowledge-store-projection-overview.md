@@ -1,24 +1,21 @@
 ---
-title: Projektionen in einem Wissensspeicher (Vorschau)
+title: Projektionskonzepte
 titleSuffix: Azure Cognitive Search
-description: Speichern und formen Sie Ihre angereicherten Daten aus der Indizierungspipeline mit KI-Anreicherung in einem Wissensspeicher zur Verwendung in von der Volltextsuche abweichenden Szenarien. „Wissensspeicher“ ist zurzeit als öffentliche Vorschauversion verfügbar.
+description: Speichern und formen Sie Ihre angereicherten Daten aus der Indizierungspipeline mit KI-Anreicherung in einem Wissensspeicher zur Verwendung in von der Volltextsuche abweichenden Szenarien.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.openlocfilehash: 22db4f95bacd926208ac7edf3306cd136d81b00e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942968"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565181"
 ---
-# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Projektionen in einem Wissensspeicher in Azure Cognitive Search
-
-> [!IMPORTANT] 
-> „Wissensspeicher“ ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previewfunktionen werden von der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
+# <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Projektionen eines Wissensspeichers in Azure Cognitive Search
 
 Die kognitive Azure-Suche ermöglicht eine Inhaltsanreicherung über integrierte kognitive Qualifikationen und benutzerdefinierte Qualifikationen als Teil der Indizierung. Anreicherungen erstellen neue Informationen, wo bisher keine vorhanden waren: Extrahieren von Informationen aus Bildern, Erkennen von Stimmungen, Schlüsselausdrücke und Entitäten aus Text, um nur einige zu nennen. Anreicherungen fügen auch Struktur zu undifferenziertem Text hinzu. Alle diese Prozesse führen zu Dokumenten, die die Volltextsuche effektiver machen. In vielen Fällen sind angereicherte Dokumente für von der Suche abweichenden Szenarien nützlich, z. B. für das Knowledge Mining.
 

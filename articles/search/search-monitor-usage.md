@@ -7,111 +7,90 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 353e00f902a7314e5e5b7c8ee03e8b925a510b26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.openlocfilehash: 421fddb819d4d396d3ab8890789e58ccb935cbc0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462325"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806810"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Überwachen von Vorgängen und Aktivitäten von Azure Cognitive Search
 
-In diesem Artikel wird die Überwachung auf Dienstebene (Ressource) und auf Workloadebene (Abfragen und Indizierung) vorgestellt, und es wird ein Framework zum Überwachen des Benutzerzugriffs vorgeschlagen.
+Dieser Artikel bietet eine Übersicht über die Überwachungskonzepte und -tools für Azure Cognitive Search. Für eine ganzheitliche Überwachung können Sie eine Kombination aus integrierten Funktionen und ergänzenden Diensten wie Azure Monitor verwenden.
 
-Dabei verwenden Sie stets eine Kombination aus integrierter Infrastruktur und grundlegenden Diensten wie Azure Monitor sowie Dienst-APIs, die Statistiken, die Anzahl und den Status zurückgeben. Kenntnisse dieses Funktionsbereichs können Ihnen helfen, eine Feedbackschleife einzurichten, mit der Sie Probleme beheben können, sobald sie auftreten.
+Alles in allem können Sie Folgendes nachverfolgen:
 
-## <a name="use-azure-monitor"></a>Verwenden von Azure Monitor
+* Dienst: Integrität/Verfügbarkeit sowie Änderungen an der Dienstkonfiguration
+* Speicher: sowohl verwendet als auch verfügbar, mit Angaben zu den einzelnen Inhaltstypen in Relation zu dem für die Dienstebene zulässigen Kontingent
+* Abfrageaktivität: Volumen, Latenz und gedrosselt oder verworfene Abfragen. Protokollierte Abfrageanforderungen erfordern [Azure Monitor](#add-azure-monitor).
+* Indexaktivität: erfordert die [Diagnoseprotokollierung](#add-azure-monitor) von Azure Monitor.
 
-Viele Dienste, einschließlich Azure Cognitive Search, nutzen [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) für Warnungen, Metriken und die Protokollierung von Diagnosedaten. Bei Azure Cognitive Search wird die integrierte Überwachungsinfrastruktur hauptsächlich für die Überwachung auf Ressourcenebene (Dienstintegrität) und die [Abfrageüberwachung](search-monitor-queries.md) genutzt.
+Ein Suchdienst unterstützt keine benutzerspezifische Authentifizierung, sodass keine Identitätsinformationen in den Protokollen gefunden werden.
 
-Der folgende Screenshot hilft Ihnen, Azure Monitor-Funktionen im Portal zu finden.
+## <a name="built-in-monitoring"></a>Integrierte Überwachung
 
-+ Auf der Registerkarte **Überwachung** der Hauptübersicht werden wichtige Metriken auf einen Blick angezeigt.
-+ Das **Aktivitätsprotokoll** direkt unter der Übersicht enthält Informationen zu Aktionen auf Ressourcenebene: Dienstintegrität und wichtige Benachrichtigungen zu API-Anforderungen.
-+ Unter **Überwachung** weiter unten in der Liste finden Sie konfigurierbare Warnungen, Metriken und Diagnoseprotokolle. Erstellen Sie diese, wenn Sie sie benötigen. Nachdem die Daten gesammelt und gespeichert wurden, können Sie sie abfragen oder visualisieren, um Erkenntnisse zu erhalten.
+Die integrierte Überwachung bezieht sich auf Aktivitäten, die von einem Suchdienst protokolliert werden. Mit Ausnahme der Diagnose ist für diese Überwachungsebene keine Konfiguration erforderlich.
+
+Azure Cognitive Search verwaltet interne Daten in einem rollierenden 30-Tage-Zeitplan für die Berichterstellung zur Dienstintegrität und Abfragemetriken, die Sie im Portal oder über diese [Rest-APIs](#monitoring-apis) finden können.
+
+Auf dem folgenden Screenshot sehen Sie, wie Sie Überwachungsinformationen im Portal finden. Die Daten werden verfügbar, sobald Sie mit der Verwendung des Diensts beginnen. Portalseiten werden alle paar Minuten aktualisiert.
+
+* Auf der Registerkarte **Überwachen** auf der Hauptübersichtsseite werden das Abfragevolumen, die Latenz und die Dienstauslastung angezeigt.
+* Das **Aktivitätsprotokoll** im linken Navigationsbereich ist mit Azure Resource Manager verbunden. Im Aktivitätsprotokoll werden die Aktionen von Resource Manager erfasst: Dienstverfügbarkeit und Status, Kapazitätsänderungen (Replikate und Partitionen) sowie auf den API-Schlüssel bezogene Aktivitäten.
+* In den **Überwachungseinstellungen** weiter unten finden Sie konfigurierbare Warnungen, Metriken und Diagnoseprotokolle. Erstellen Sie diese, wenn Sie sie benötigen. Nachdem die Daten gesammelt und gespeichert wurden, können Sie sie abfragen oder visualisieren, um Erkenntnisse zu erhalten.
 
 ![Azure Monitor-Integration mit einem Suchdienst](./media/search-monitor-usage/azure-monitor-search.png
  "Azure Monitor-Integration mit einem Suchdienst")
 
-### <a name="precision-of-reported-numbers"></a>Genauigkeit der gemeldeten Werte
+> [!NOTE]
+> Da die Portalseiten alle paar Minuten aktualisiert werden, sind die angegebenen Zahlen ungefähre Werte, die Ihnen eine allgemeine Übersicht darüber geben sollen, wie gut Anforderungen in Ihrem System verarbeitet werden. Die tatsächlichen Metriken, z. B. die Abfragen pro Sekunde (QPS), können höher oder niedriger als die auf dieser Seite angezeigte Zahl sein. Wenn die Genauigkeit eine Anforderung ist, sollten Sie unter Umständen APIs einsetzen.
 
-Portalseiten werden alle paar Minuten aktualisiert. Daher sind die im Portal angegebenen Zahlen ungefähre Werte, die Ihnen eine allgemeine Übersicht darüber geben sollen, wie gut Anforderungen in Ihrem System verarbeitet werden. Die tatsächlichen Metriken, z. B. die Abfragen pro Sekunde (QPS), können höher oder niedriger als die auf dieser Seite angezeigte Zahl sein.
+<a name="monitoring-apis"> </a>
 
-## <a name="activity-logs-and-service-health"></a>Aktivitätsprotokolle und Dienstintegrität
+### <a name="apis-useful-for-monitoring"></a>Für die Überwachung nützliche APIs
 
-Im [**Aktivitätsprotokoll**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) werden Informationen von Azure Resource Manager und Änderungen an der Dienstintegrität erfasst. Sie können das Aktivitätsprotokoll auf kritische, Fehler- und Warnungsbedingungen im Zusammenhang mit der Dienstintegrität überwachen.
+Mithilfe der folgenden APIs können Sie dieselben Informationen abrufen, die auf den Registerkarten „Überwachen“ und „Verwendung“ im Portals angezeigt werden.
 
-Für dienstinterne Aufgaben, wie z. B. Abfragen, Indizierung oder Objekterstellung, werden generische Informationsbenachrichtigungen wie *Get Admin Key* (Administratorschlüssel abrufen) oder *Get Query keys* (Abfrageschlüssel abrufen) für jede Anforderung angezeigt – jedoch nicht die jeweilige Aktion selbst. Um weitere Informationen auf dieser Ebene zu erhalten, müssen Sie die Diagnoseprotokollierung konfigurieren.
+* [Abrufen von Dienststatistiken](/rest/api/searchservice/get-service-statistics)
+* [Abrufen von Indexstatistiken](/rest/api/searchservice/get-index-statistics)
+* [Abrufen der Dokumentanzahl](/rest/api/searchservice/count-documents)
+* [Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status)
+
+### <a name="activity-logs-and-service-health"></a>Aktivitätsprotokolle und Dienstintegrität
+
+Auf der Seite [**Aktivitätsprotokoll**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) im Portal werden Informationen aus Azure Resource Manager und zu Änderungen an der Dienstintegrität erfasst. Sie können das Aktivitätsprotokoll auf kritische, Fehler- und Warnungsbedingungen im Zusammenhang mit der Dienstintegrität überwachen.
+
+Zu den üblichen Einträgen zählen Verweise auf API-Schlüssel, d. h. generische informative Benachrichtigungen wie *Get Admin Key* (Administratorschlüssel abrufen) und *Get Query Keys* (Abfrageschlüssel abrufen). Diese Aktivitäten weisen auf Anforderungen hin, die mithilfe des Administratorschlüssels (Objekte erstellen oder löschen) oder des Abfrageschlüssels durchgeführt wurden, jedoch nicht die Anforderung selbst anzeigen. Um weitere Informationen auf dieser Ebene zu erhalten, müssen Sie die Diagnoseprotokollierung konfigurieren.
 
 Auf das **Aktivitätsprotokoll** können Sie im linken Navigationsbereich, über „Benachrichtigungen“ auf der Befehlsleiste oben im Fenster oder über die Seite **Probleme diagnostizieren und beheben** zugreifen.
 
-## <a name="monitor-storage"></a>Überwachen des Speichers
+### <a name="monitor-storage-in-the-usage-tab"></a>Überwachen des Speichers auf der Registerkarte „Verwendung“
 
-Auf den Registerkartenseiten der Übersicht werden Informationen zur Ressourcenverwendung angezeigt. Diese Informationen stehen zur Verfügung, sobald Sie den Dienst verwenden, ohne dass eine Konfiguration erforderlich ist. Die Seite wird alle paar Minuten aktualisiert. 
-
-Wenn Sie Entscheidungen dazu treffen möchten, [welcher Tarif für Produktionsworkloads verwendet werden soll](search-sku-tier.md) oder ob [die Anzahl der aktiven Replikate und Partitionen angepasst wird](search-capacity-planning.md), können Sie diese Metriken heranziehen. Anhand der Metriken können Sie sehen, wie schnell Ressourcen verbraucht werden und wie die vorhandene Last in der aktuellen Konfiguration verarbeitet wird.
-
-Warnungen im Zusammenhang mit dem Speicher sind derzeit nicht verfügbar. Der Speicherverbrauch wird nicht aggregiert oder in der Tabelle **AzureMetrics** in Azure Monitor protokolliert. Sie müssen dazu [eine benutzerdefinierte Lösung erstellen](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-creating), die ressourcenbezogene Benachrichtigungen ausgibt und in der Ihr Code die Speichergröße überprüft und die Antwort verarbeitet. Weitere Informationen zu Speichermetriken finden Sie unter [Abrufen von Dienststatistiken](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
-
-Für die visuelle Überwachung im Portal wird auf der Registerkarte **Verwendung** die Ressourcenverfügbarkeit relativ zu den aktuellen [Limits](search-limits-quotas-capacity.md) angezeigt, die durch die Dienstebene vorgegeben sind. 
+Für die visuelle Überwachung im Portal wird auf der Registerkarte **Verwendung** die Ressourcenverfügbarkeit relativ zu den aktuellen [Limits](search-limits-quotas-capacity.md) angezeigt, die durch die Dienstebene vorgegeben sind. Wenn Sie Entscheidungen dazu treffen möchten, [welcher Tarif für Produktionsworkloads verwendet werden soll](search-sku-tier.md) oder ob [die Anzahl der aktiven Replikate und Partitionen angepasst wird](search-capacity-planning.md), können Sie diese Metriken heranziehen. Anhand der Metriken können Sie sehen, wie schnell Ressourcen verbraucht werden und wie die vorhandene Last in der aktuellen Konfiguration verarbeitet wird.
 
 Die folgende Abbildung bezieht sich auf den kostenlosen Dienst, der auf 3 Objekte pro Typ und auf 50 MB Speicher begrenzt ist. Für einen Dienst mit dem Tarif „Basic“ oder „Standard“ gelten höhere Grenzwerte. Wenn Sie die Anzahl der Partitionen erhöhen, steigt der maximale Speicher proportional an.
 
 ![Verwendungsstatus relativ zu den Tarifgrenzwerten](./media/search-monitor-usage/usage-tab.png
  "Verwendungsstatus relativ zu den Tarifgrenzwerten")
 
-## <a name="monitor-workloads"></a>Überwachen von Workloads
+> [!NOTE]
+> Warnungen im Zusammenhang mit dem Speicher sind derzeit nicht verfügbar. Der Speicherverbrauch wird nicht aggregiert oder in der Tabelle **AzureMetrics** in Azure Monitor protokolliert. Damit Sie Speicherbenachrichtigungen erhalten, müssen Sie [eine benutzerdefinierte Lösung erstellen](../azure-monitor/insights/solutions-creating.md), die ressourcenbezogene Benachrichtigungen ausgibt und in der Ihr Code die Speichergröße überprüft und die Antwort verarbeitet.
 
-Es werden auch Ereignisse im Zusammenhang mit Indizierung und Abfragen protokolliert. In der Tabelle **AzureDiagnostics** in Log Analytics werden operative Daten im Zusammenhang mit Abfragen und Indizierung gesammelt.
+<a name="add-azure-monitor"></a>
 
-Die meisten der protokollierten Daten sind für schreibgeschützte Vorgänge vorgesehen. Bei anderen Erstellungs-/Aktualisierungs-/Löschvorgängen, die nicht im Protokoll erfasst werden, können Sie den Suchdienst nach Systeminformationen abfragen.
+## <a name="add-on-monitoring-with-azure-monitor"></a>Zusätzliches Überwachen mit Azure Monitor
 
-| Vorgangsname | BESCHREIBUNG |
-|---------------|-------------|
-| ServiceStats | Bei diesem Vorgang handelt es sich um einen Routineaufruf zum [Abrufen von Dienststatistiken](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics), der entweder direkt oder implizit erfolgt, um eine Übersicht im Portal aufzufüllen, wenn diese geladen oder aktualisiert wird. |
-| Query.Search |  Abfrageanforderungen für einen Index. Weitere Informationen zu protokollierten Abfragen finden Sie unter [Überwachen von Abfragen](search-monitor-queries.md).|
-| Indexing.Index  | Dieser Vorgang dient dem [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). |
-| indexes.Prototype | Dies ist ein Index, der vom Datenimport-Assistenten erstellt wird. |
-| Indexers.Create | Erstellt explizit oder implizit einen Indexer mithilfe des Datenimport-Assistenten. |
-| Indexers.Get | Gibt jeweils den Namen eines Indexers zurück, wenn der Indexer ausgeführt wird. |
-| Indexers.Status | Gibt jeweils den Status eines Indexers zurück, wenn der Indexer ausgeführt wird. |
-| DataSources.Get | Gibt den Namen der Datenquelle zurück, wenn ein Indexer ausgeführt wird.|
-| Indexes.Get | Gibt den Namen eines Indexes zurück, wenn ein Indexer ausgeführt wird. |
+Viele Dienste, einschließlich Azure Cognitive Search, können mit [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) integriert werden, um zusätzliche Benachrichtigungen zu erhalten, Metriken zu erfassen und Diagnosedaten zu protokollieren. 
 
-### <a name="kusto-queries-about-workloads"></a>Kusto-Abfragen zu Workloads
+[Aktivieren Sie die Diagnoseprotokollierung](search-monitor-logs.md) für einen Suchdienst, wenn Sie die Datenerfassung und den Speicher steuern können möchten. Protokollierte Ereignisse, die von Azure Monitor aufgezeichnet werden, werden in der Tabelle **AzureDiagnostics** gespeichert und bestehen aus operativen Daten zu Abfragen und der Indizierung.
 
-Wenn Sie die Protokollierung aktiviert haben, können Sie **AzureDiagnostics** abfragen, um eine Liste der für Ihren Dienst ausgeführten Vorgänge einschließlich der Ausführungszeit zu erhalten. Sie können Aktivitäten auch korrelieren, um Änderungen an der Leistung zu untersuchen.
+Azure Monitor bietet mehrere Speicheroptionen. Ihre Auswahl bestimmt, wie Sie die Daten nutzen können:
 
-#### <a name="example-list-operations"></a>Beispiel: Auflisten von Vorgängen 
+* Wählen Sie Azure Blob Storage, wenn Sie [Protokolldaten in einem Power BI-Bericht visualisieren möchten](search-monitor-logs-powerbi.md).
+* Wählen Sie Log Analytics, wenn Sie Daten mithilfe von Kusto-Abfragen durchsuchen möchten.
 
-So geben Sie eine Liste der Vorgänge und die Anzahl dieser Vorgänge zurück
-
-```
-AzureDiagnostics
-| summarize count() by OperationName
-```
-
-#### <a name="example-correlate-operations"></a>Beispiel: Korrelieren von Vorgängen
-
-So korrelieren Sie die Abfrageanforderung mit Indizierungsvorgängen und rendern die Datenpunkte in einem Zeitdiagramm, um die Vorgänge abzugleichen
-
-```
-AzureDiagnostics
-| summarize OperationName, Count=count()
-| where OperationName in ('Query.Search', 'Indexing.Index')
-| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
-| render timechart
-```
-
-### <a name="use-search-apis"></a>Verwenden der Such-APIs
-
-Sowohl die REST-API der kognitiven Azure-Suche als auch das .NET SDK bieten programmgesteuerten Zugriff auf Dienstmetriken, Index- und Indexerinformationen und die Anzahl von Dokumenten.
-
-+ [Abrufen von Dienststatistiken](/rest/api/searchservice/get-service-statistics)
-+ [Abrufen von Indexstatistiken](/rest/api/searchservice/get-index-statistics)
-+ [Abrufen der Dokumentanzahl](/rest/api/searchservice/count-documents)
-+ [Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status)
+Azure Monitor verfügt über eine eigene Abrechnungsstruktur, und für die in diesem Abschnitt angesprochenen Diagnoseprotokolle fallen Kosten an. Weitere Informationen finden Sie unter [Nutzung und geschätzte Kosten in Azure Monitor](../azure-monitor/platform/usage-estimated-costs.md).
 
 ## <a name="monitor-user-access"></a>Überwachen des Benutzerzugriffs
 

@@ -7,18 +7,18 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/07/2020
+ms.date: 07/01/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cdea30e7b630b2fa62b004f98cb67fd1994f915
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227714"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024169"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Zuweisen von Azure AD-Rollen in Privileged Identity Management
 
@@ -53,15 +53,13 @@ Führen Sie folgende Schritte aus, um einen Benutzer als für eine Azure AD-Adm
 
     ![Azure AD-Rollen](./media/pim-how-to-add-role-to-user/roles-list.png)
 
-1. Wählen Sie **Mitglied hinzufügen** aus, um die Seite **Neue Zuweisung** zu öffnen.
+1. Wählen Sie **Zuweisungen hinzufügen** aus, um die Seite **Zuweisungen hinzufügen** zu öffnen.
 
-1. Wählen Sie **Rolle auswählen** aus, um die Seite „Rolle auswählen“ zu öffnen.
+1. Wählen Sie **Rolle auswählen** aus, um die Seite **Rolle auswählen** zu öffnen.
 
     ![Bereich „Neue Zuweisung“](./media/pim-how-to-add-role-to-user/select-role.png)
 
-1. Wählen Sie die Rolle aus, die Sie zuweisen möchten, und klicken Sie dann auf **Auswählen**.
-
-1. Wählen Sie ein Mitglied, dem die Rolle zugewiesen werden soll, und dann **Auswählen** aus.
+1. Wählen Sie eine Rolle aus, die Sie zuweisen möchten. Wählen Sie ein Mitglied aus, dem die Rolle zugewiesen werden soll. Wählen Sie dann **Weiter** aus.
 
 1. Wählen Sie in der Liste **Zuweisungstyp** im Bereich **Mitgliedschaftseinstellungen** die Option **Berechtigt** oder **Aktiv** aus.
 
@@ -69,15 +67,11 @@ Führen Sie folgende Schritte aus, um einen Benutzer als für eine Azure AD-Adm
 
     - Für **aktive** Zuweisungen ist es nicht erforderlich, dass das Mitglied eine Aktion durchführt, um die Rolle nutzen zu können. Für Mitglieder, die als „Aktiv“ zugewiesen sind, sind die Berechtigungen immer der Rolle zugewiesen.
 
-1. Wenn die Zuweisung dauerhaft sein soll (dauerhaft berechtigt oder dauerhaft zugewiesen), aktivieren Sie das Kontrollkästchen **Dauerhaft**.
-
-    Je nach Rolleneinstellungen wird das Kontrollkästchen möglicherweise nicht angezeigt oder ist nicht änderbar.
-
-1. Wenn Sie einen bestimmten Zuweisungszeitraum angeben möchten, deaktivieren Sie dieses Kontrollkästchen, und ändern Sie nach Bedarf die Felder für den Start- und/oder den Endzeitpunkt (Datum und Uhrzeit). Wählen Sie abschließend **Fertig** aus.
+1. Wenn Sie eine bestimmte Zuweisungsdauer angeben möchten, fügen Sie ein Start-und ein Enddatum und Zeitfelder hinzu. Wählen Sie abschließend **Zuweisen** aus, um die neue Rollenzuweisung zu erstellen.
 
     ![Mitgliedschaftseinstellungen: Datum und Uhrzeit](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
-1. Wählen Sie **Hinzufügen** aus, um die neue Rollenzuweisung zu erstellen. Eine Benachrichtigung zum Status wird angezeigt.
+1. Nachdem die Rolle zugewiesen wurde, wird eine Benachrichtigung über den Zuweisungsstatus angezeigt.
 
     ![Neue Zuweisung: Benachrichtigung](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 

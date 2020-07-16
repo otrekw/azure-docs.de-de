@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 09468272397925d9afd1d3014f4fcc1d6a222198
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6a292201796ccb08f684d2c44a3cee71442edbfe
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611380"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848672"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication
 
@@ -27,7 +27,7 @@ Wenn Fehler in der NPS-Erweiterung für Azure Multi-Factor Authentication auftre
 
 | Fehlercode | Schritte zur Problembehandlung |
 | ---------- | --------------------- |
-| **CONTACT_SUPPORT** | [Kontaktieren Sie den Support](#contact-microsoft-support), und geben Sie die Liste der Schritte zum Erfassen von Protokollen an. Stellen Sie so viele Informationen wie möglich über das bereit, was vor dem Fehler passiert ist, einschließlich Mandanten-ID und Benutzerprinzipalname (UPN). |
+| **CONTACT_SUPPORT** | [Kontaktieren Sie den Support](#contact-microsoft-support), und geben Sie die Liste der Schritte zum Erfassen von Protokollen an. Stellen Sie so viele Informationen wie möglich über das bereit, was vor dem Fehler passiert ist, einschließlich der Mandanten-ID und des Benutzerprinzipalnamens (UPN). |
 | **CLIENT_CERT_INSTALL_ERROR** | Möglicherweise gibt es ein Problem damit, wie das Clientzertifikat installiert oder Ihrem Mandanten zugeordnet wurde. Befolgen Sie die Anweisungen unter [Behandeln von Problemen mit der MFA NPS-Erweiterung](howto-mfa-nps-extension.md#troubleshooting), um Clientzertifizierungsprobleme zu untersuchen. |
 | **ESTS_TOKEN_ERROR** | Befolgen Sie die Anweisungen unter [Behandeln von Problemen mit der MFA NPS-Erweiterung](howto-mfa-nps-extension.md#troubleshooting), um Clientzertifizierungs- und ADAL-Tokenprobleme zu untersuchen. |
 | **HTTPS_COMMUNICATION_ERROR** | Der NPS-Server kann keine Antworten von Azure MFA empfangen. Stellen Sie sicher, dass Ihre Firewalls bidirektional für Datenverkehr an und von https://adnotifications.windowsazure.com geöffnet sind. |
@@ -43,8 +43,8 @@ Wenn Fehler in der NPS-Erweiterung für Azure Multi-Factor Authentication auftre
 | Fehlercode | Fehlermeldung | Schritte zur Problembehandlung |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | Fehler: userObjectSid lookup failed (Fehler bei der userObjectSid-Suche) | Stellen Sie sicher, dass der Benutzer in Ihrer lokalen Active Directory-Instanz vorhanden ist. Wenden Sie sich bei Verwendung von gesamtstrukturübergreifenden Vertrauensstellungen [an den Support](#contact-microsoft-support), um weitere Hilfe zu erhalten. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Fehler: Alternate LoginId lookup failed (Fehler bei der Suche nach alternativer Anmelde-ID) | Stellen Sie sicher, dass LDAP_ALTERNATE_LOGINID_ATTRIBUTE auf ein [gültiges Active Directory-Attribut](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx) festgelegt ist. <br><br> Wenn LDAP_FORCE_GLOBAL_CATALOG auf „TRUE“ festgelegt, oder LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass Sie einen globalen Katalog konfiguriert haben, und dass das AlternateLoginId-Attribut hinzugefügt wurde. <br><br> Wenn LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass der Wert richtig ist. Wenn mehr als ein Name der Gesamtstruktur vorhanden ist, müssen die Namen durch Semikolons und nicht durch Leerzeichen getrennt werden. <br><br> Wenn diese Schritte das Problem nicht beheben, [wenden Sie sich an den Support](#contact-microsoft-support), um mehr Unterstützung zu erhalten. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Fehler: Alternate LoginId value is empty (Der AlternateLoginId-Wert ist leer) | Stellen Sie sicher, dass das AlternateLoginId-Attribut für den Benutzer konfiguriert ist. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Error: Alternate LoginId lookup failed (Fehler bei der Suche nach alternativer Anmelde-ID) | Stellen Sie sicher, dass LDAP_ALTERNATE_LOGINID_ATTRIBUTE auf ein [gültiges Active Directory-Attribut](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx) festgelegt ist. <br><br> Wenn LDAP_FORCE_GLOBAL_CATALOG auf „TRUE“ festgelegt, oder LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass Sie einen globalen Katalog konfiguriert haben, und dass das AlternateLoginId-Attribut hinzugefügt wurde. <br><br> Wenn LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass der Wert richtig ist. Wenn mehr als ein Name der Gesamtstruktur vorhanden ist, müssen die Namen durch Semikolons und nicht durch Leerzeichen getrennt werden. <br><br> Wenn diese Schritte das Problem nicht beheben, [wenden Sie sich an den Support](#contact-microsoft-support), um mehr Unterstützung zu erhalten. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Error: Alternate LoginId value is empty (Der AlternateLoginId-Wert ist leer) | Stellen Sie sicher, dass das AlternateLoginId-Attribut für den Benutzer konfiguriert ist. |
 
 ## <a name="errors-your-users-may-encounter"></a>Fehler, die bei Ihren Benutzern auftreten können
 
@@ -60,7 +60,7 @@ Wenn Fehler in der NPS-Erweiterung für Azure Multi-Factor Authentication auftre
 | **OathCodePinIncorrect** | Falscher Code und falsche Pin eingegeben. | Dieser Fehler sollte in der NPS-Erweiterung nicht auftreten. Wenn bei Ihrem Benutzer der Fehler auftritt, [wenden Sie sich an den Support](#contact-microsoft-support), um Hilfe bei der Problembehandlung zu erhalten. |
 | **ProofDataNotFound** | Nachweisdaten wurden für die angegebene Authentifizierungsmethode nicht konfiguriert. | Fordern Sie den Benutzer auf, eine andere Überprüfungsmethode auszuprobieren oder eine neue Überprüfungsmethode gemäß der Anleitung in [Verwalten der Einstellungen für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-manage-settings.md) hinzuzufügen. Wenn dieser Fehler weiterhin angezeigt wird, nachdem Sie sichergestellt haben, dass die Überprüfungsmethode ordnungsgemäß eingerichtet ist, [wenden Sie sich an den Support](#contact-microsoft-support). |
 | **SMSAuthFailedWrongCodePinEntered** | Falscher Code und falsche Pin eingegeben. (OneWaySMS) | Dieser Fehler sollte in der NPS-Erweiterung nicht auftreten. Wenn bei Ihrem Benutzer der Fehler auftritt, [wenden Sie sich an den Support](#contact-microsoft-support), um Hilfe bei der Problembehandlung zu erhalten. |
-| **TenantIsBlocked** | Der Mandant wird blockiert. | [Wenden Sie sich an den Support](#contact-microsoft-support), und geben Sie die Verzeichnis-ID von der Azure AD-Eigenschaftenseite im Azure-Portal an. |
+| **TenantIsBlocked** | Der Mandant wird blockiert. | [Wenden Sie sich an den Support](#contact-microsoft-support), und geben Sie die *Mandanten-ID* von der Azure AD-Eigenschaftenseite im Azure-Portal an. |
 | **UserNotFound** | Der angegebene Benutzer wurde nicht gefunden. | Der Mandant wird in Azure AD nicht mehr als aktiv angezeigt. Überprüfen Sie, ob Ihr Abonnement aktiv ist und Sie über die erforderlichen Erstanbieter-Apps verfügen. Stellen Sie außerdem sicher, dass der Mandant im Zertifikatantragsteller den erwarteten Wert aufweist und dass das Zertifikat noch gültig und unter dem Dienstprinzipal registriert ist. |
 
 ## <a name="messages-your-users-may-encounter-that-arent-errors"></a>Meldungen, die den Benutzern angezeigt werden können, aber keine Fehler sind

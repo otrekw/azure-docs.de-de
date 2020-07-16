@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: efb873f8e66c3ab71b5b7345d776629fbe603af3
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888065"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Objektreplikation für Blockblobs (Vorschau)
 
@@ -44,7 +44,7 @@ Nachdem Sie die Objektreplikation konfiguriert haben, überprüft Azure Storage 
 
 Wenn Sie die Objektreplikation konfigurieren, wird über den Azure Storage-Ressourcenanbieter eine Replikationsrichtlinie sowohl für das Quell- als auch für das Zielkonto erstellt. Die Replikationsrichtlinie wird durch eine Richtlinien-ID identifiziert. Die Richtlinie für das Quell- und das Zielkonto muss dieselbe Richtlinien-ID aufweisen, damit die Replikation stattfinden kann.
 
-Ein Speicherkonto kann als Quellkonto für bis zu zwei Zielkonten fungieren. Die Quell- und Zielkonten dürfen sich alle in unterschiedlichen Regionen befinden. Sie können gesonderte Replikationsrichtlinien konfigurieren, um Daten in jedes der Zielkonten zu replizieren.
+Ein Speicherkonto kann als Quellkonto für bis zu zwei Zielkonten fungieren. Und ein Zielkonto darf nicht mehr als zwei Quellkonten aufweisen. Quell- und Zielkonten dürfen sich in unterschiedlichen Regionen befinden. Sie können gesonderte Replikationsrichtlinien konfigurieren, um Daten in jedes der Zielkonten zu replizieren.
 
 ### <a name="replication-rules"></a>Replikationsregeln
 

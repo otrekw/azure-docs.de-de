@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 581963c94129c36acbd8761d93e369281797fa9f
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 6c5e0779ce0dfe2730a60873316c66184e038a35
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654716"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039873"
 ---
-# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Deaktivieren von schwachen Verschlüsselungen und der Kennworthashsynchronisierung zum Schützen einer verwalteten Azure AD Domain Services-Domäne
+# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Deaktivieren von schwachen Verschlüsselungen und der Kennworthashsynchronisierung zum Schützen einer verwalteten Azure Active Directory Domain Services-Domäne
 
 Standardmäßig erlaubt Azure Active Directory Domain Services (Azure AD DS) die Verwendung von Verschlüsselungen wie NTLM v1 und TLS v1. Diese Verschlüsselungen sind möglicherweise für einige Legacyanwendungen erforderlich, gelten jedoch als schwach und können deaktiviert werden, wenn Sie sie nicht benötigen. Wenn Sie über eine lokale Hybridverbindung über Azure AD Connect verfügen, können Sie auch die NTLM-Kennworthashsynchronisierung deaktivieren.
 
@@ -33,7 +33,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie f
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Bei Bedarf [erstellen und konfigurieren Sie eine Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance].
+    * [Erstellen und konfigurieren Sie eine verwaltete Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance], sofern erforderlich.
 * Installieren und konfigurieren Sie Azure PowerShell.
     * Führen Sie bei Bedarf die Anweisungen zum [Installieren des Azure PowerShell-Moduls und Verbinden mit Ihrem Azure-Abonnement](/powershell/azure/install-az-ps) aus.
     * Stellen Sie sicher, dass Sie sich mit dem Cmdlet [Connect-AzAccount][Connect-AzAccount] bei Ihrem Azure-Abonnement anmelden.
@@ -67,17 +67,17 @@ Definieren Sie als Nächstes *DomainSecuritySettings*, um die folgenden Sicherhe
 $securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled"}}
 ```
 
-Wenden Sie schließlich mithilfe des Cmdlets [Set-AzResource][Set-AzResource] die definierten Sicherheitseinstellungen auf die verwaltete Azure AD DS-Domäne an. Geben Sie die Azure AD DS-Ressource aus dem ersten Schritt und die Sicherheitseinstellungen aus dem vorherigen Schritt an.
+Wenden Sie schließlich mithilfe des Cmdlets [Set-AzResource][Set-AzResource] die definierten Sicherheitseinstellungen auf die verwaltete Domäne an. Geben Sie die Azure AD DS-Ressource aus dem ersten Schritt und die Sicherheitseinstellungen aus dem vorherigen Schritt an.
 
 ```powershell
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
 ```
 
-Es dauert einen Moment, bis die Sicherheitseinstellungen auf die verwaltete Azure AD DS-Domäne angewendet werden.
+Es dauert einen Moment, bis die Sicherheitseinstellungen auf die verwaltete Domäne angewendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Synchronisierungsvorgang finden Sie unter [Synchronisieren von Objekten und Anmeldeinformationen in einer verwalteten Azure AD DS-Domäne][synchronization].
+Weitere Informationen zum Synchronisierungsvorgang finden Sie unter [Synchronisieren von Objekten und Anmeldeinformationen in einer verwalteten Domäne][synchronization].
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 6e361d23860ce8f40abba5c246242cf345bb974c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606112"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84886624"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Schemaabweichung im Zuordnungsdatenfluss
 
@@ -37,7 +37,7 @@ Dieses Video bietet eine Einführung in einige der komplexen Lösungen, die Sie 
 
 ## <a name="schema-drift-in-source"></a>Schemaabweichung in der Quelle
 
-Spalten, die Ihrem Datenfluss aus Ihrer Quelldefinition hinzugefügt werden, sind als abweichende Spalten definiert, wenn sie nicht in Ihrer Quellprojektion vorhanden sind. Ihre Quellprojektion können Sie sich auf der Registerkarte „Projektion“ der Quelltransformation ansehen. Wenn Sie ein Dataset für Ihre Quelle auswählen, verwendet ADF automatisch das Schema aus dem Dataset und erstellt ein Projekt auf der Grundlage dieser Datasetschema-Definition.
+Spalten, die Ihrem Datenfluss aus Ihrer Quelldefinition hinzugefügt werden, sind als abweichende Spalten definiert, wenn sie nicht in Ihrer Quellprojektion vorhanden sind. Ihre Quellprojektion können Sie sich auf der Registerkarte „Projektion“ der Quelltransformation ansehen. Wenn Sie ein Dataset für Ihre Quelle auswählen, verwendet ADF automatisch das Schema dieses Datasets und erstellt auf dieser Grundlage eine Projektion der Schemadefinition.
 
 Bei einer Quelltransformation ist die Schemaabweichung definiert als das Lesen von Spalten, die nicht in Ihrem Datasetschema definiert sind. Um Schemaabweichung zu ermöglichen, wählen Sie in Ihrer Quellentransformation **Allow Schema Drift** (Schemaabweichung zulassen) aus.
 

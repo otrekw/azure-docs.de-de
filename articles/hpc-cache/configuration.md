@@ -3,15 +3,15 @@ title: Konfigurieren von Azure HPC Cache-Einstellungen
 description: Erläutert, wie zusätzliche Einstellungen für den Cache konfiguriert werden, z. B. MTU und no-root-squash, und wie auf die Expressmomentaufnahmen von Azure Blob Storage-Zielen zugegriffen wird.
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 88aea7e58aacd9a630771948c6dbc6ed5712a674
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871413"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505306"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurieren zusätzlicher Azure HPC Cache-Einstellungen
 
@@ -22,6 +22,9 @@ In diesem Artikel wird außerdem beschrieben, wie Sie die Momentaufnahmefunktion
 Um die Einstellungen anzuzeigen, öffnen Sie die Seite **Konfiguration** des Caches im Azure-Portal.
 
 ![Screenshot der Seite „Konfiguration“ im Azure-Portal](media/configuration.png)
+
+> [!TIP]
+> Im [Video „Verwalten von Azure HPC Cache“](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) sehen Sie die Konfigurationsseite und deren Einstellungen.
 
 ## <a name="adjust-mtu-value"></a>Anpassen des MTU-Werts
 <!-- linked from troubleshoot-nas article -->

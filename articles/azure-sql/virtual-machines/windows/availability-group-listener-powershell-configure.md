@@ -1,10 +1,9 @@
 ---
-title: Konfigurieren von Verfügbarkeitsgruppenlistenern und einer Load Balancer-Instanz (PowerShell)
+title: Konfigurieren von Verfügbarkeitsgruppenlistenern und Lastenausgleich (PowerShell)
 description: Es wird beschrieben, wie Sie Verfügbarkeitsgruppenlistener unter dem Azure Resource Manager-Modell konfigurieren, indem Sie ein internes Lastenausgleichsmodul mit einer oder mehreren IP-Adressen verwenden.
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: monicar
 ms.assetid: 14b39cde-311c-4ddf-98f3-8694e01a7d3b
 ms.service: virtual-machines-sql
@@ -14,27 +13,26 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 63f8c9a1e47c5885132cb4a613924e9f1ed81166
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8f2a2ecb499a88ac8e33b6d281ccde4e5adffebd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84037221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669381"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern – Resource Manager
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
+In diesem Dokument erfahren Sie, wie Sie PowerShell für eine der folgenden Aufgaben nutzen können:
+- Erstellen eines Lastenausgleichs
+- Hinzufügen von IP-Adressen zu einem Lastenausgleich für SQL Server-Verfügbarkeitsgruppen
 
-Dieses Thema beschreibt Folgendes:
+Ein Verfügbarkeitsgruppenlistener ist der Name eines virtuellen Netzwerks, mit dem Clients eine Verbindung herstellen, um Zugriff auf die Datenbank zu erhalten. Unter Azure Virtual Machines enthält ein Lastenausgleich die IP-Adresse des Listeners. Mit dem Lastenausgleichsmodul wird Datenverkehr auf die Instanz von SQL Server geleitet, die über den Testport lauscht. Normalerweise wird für eine Verfügbarkeitsgruppe ein interner Load Balancer verwendet. Mit einem internen Azure Load Balancer kann auch eine größere Anzahl von IP-Adressen gehostet werden. Für jede IP-Adresse wird ein bestimmter Testport verwendet. 
 
-* Erstellen eines internen Lastenausgleichsmoduls für SQL Server-Verfügbarkeitsgruppen mit PowerShell-Cmdlets
-* Hinzufügen von zusätzlichen IP-Adressen zu einem Load Balancer für die Unterstützung von mehreren Verfügbarkeitsgruppen 
+Die Möglichkeit zum Zuweisen mehrerer IP-Adressen zu einem internen Lastenausgleichsmodul ist neu in Azure und nur im Resource Manager-Modell verfügbar. Für diese Aufgabe benötigen Sie eine SQL Server-Verfügbarkeitsgruppe, die in Azure Virtual Machines unter dem Resource Manager-Modell bereitgestellt wird. Beide virtuellen SQL Server-Computer müssen der gleichen Verfügbarkeitsgruppe angehören. Mithilfe der [Microsoft-Vorlage](availability-group-azure-marketplace-template-configure.md) können Sie die Verfügbarkeitsgruppe in Azure Resource Manager automatisch erstellen. Mit dieser Vorlage wird die Verfügbarkeitsgruppe automatisch erstellt, einschließlich des internen Lastenausgleichsmoduls. Alternativ können Sie auch eine [Always On-Verfügbarkeitsgruppe manuell konfigurieren](availability-group-manually-configure-tutorial.md).
 
-Ein Verfügbarkeitsgruppenlistener ist der Name eines virtuellen Netzwerks, mit dem Clients eine Verbindung herstellen, um Zugriff auf die Datenbank zu erhalten. Auf virtuellen Azure-Computern enthält ein Lastenausgleich die IP-Adresse für den Listener. Mit dem Lastenausgleichsmodul wird Datenverkehr auf die Instanz von SQL Server geleitet, die über den Testport lauscht. Normalerweise wird für eine Verfügbarkeitsgruppe ein interner Load Balancer verwendet. Mit einem internen Azure Load Balancer kann auch eine größere Anzahl von IP-Adressen gehostet werden. Für jede IP-Adresse wird ein bestimmter Testport verwendet. In diesem Dokument wird beschrieben, wie Sie mit PowerShell einen Load Balancer erstellen oder einem vorhandenen Load Balancer für SQL Server-Verfügbarkeitsgruppen IP-Adressen hinzufügen. 
-
-Die Möglichkeit zum Zuweisen von mehreren IP-Adressen zu einem internen Lastenausgleichsmodul ist neu in Azure und nur im Resource Manager-Modell verfügbar. Für diese Aufgabe benötigen Sie eine SQL Server-Verfügbarkeitsgruppe, die auf virtuellen Azure-Computern unter dem Resource Manager-Modell bereitgestellt wird. Beide virtuellen SQL Server-Computer müssen der gleichen Verfügbarkeitsgruppe angehören. Mithilfe der [Microsoft-Vorlage](availability-group-azure-marketplace-template-configure.md) können Sie die Verfügbarkeitsgruppe in Azure Resource Manager automatisch erstellen. Mit dieser Vorlage wird die Verfügbarkeitsgruppe automatisch erstellt, einschließlich des internen Lastenausgleichsmoduls. Alternativ können Sie auch eine [Always On-Verfügbarkeitsgruppe manuell konfigurieren](availability-group-manually-configure-tutorial.md).
-
-Dieses Thema setzt voraus, dass Ihre Verfügbarkeitsgruppen bereits konfiguriert sind.  
+Um die Schritte in diesem Artikel ausführen zu können, müssen die Verfügbarkeitsgruppen bereits konfiguriert sein.  
 
 Verwandte Themen:
 
@@ -49,7 +47,7 @@ Verwandte Themen:
 
 Die Beispiele in diesem Artikel wurden mit Version 5.4.1 des Azure PowerShell-Moduls getestet.
 
-Vergewissern Sie sich, dass Sie mindestens Version 5.4.1 des PowerShell-Moduls verwenden.
+Vergewissern Sie sich, dass Sie mindestens Version 5.4.1 des PowerShell-Moduls verwenden.
 
 Siehe [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
@@ -61,13 +59,13 @@ Wenn Sie den Zugriff mit einer Azure-Netzwerksicherheitsgruppe einschränken, st
 
 ## <a name="determine-the-load-balancer-sku-required"></a>Festlegen der erforderlichen Load Balancer-SKU
 
-[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) ist in 2 SKUs verfügbar: Basic und Standard. Die Verwendung von Load Balancer Standard wird empfohlen. Wenn die virtuellen Computer in einer Verfügbarkeitsgruppe enthalten sind, kann Load Balancer Basic verwendet werden. Wenn die virtuellen Computer sich in einer Verfügbarkeitszone befinden, ist ein Standardlastenausgleich erforderlich. Für Load Balancer Standard müssen für alle virtuellen Computer Standard-IP-Adressen verwendet werden.
+[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) ist in zwei SKUs verfügbar: Basic und Standard. Die Verwendung von Load Balancer Standard wird empfohlen. Wenn die virtuellen Computer in einer Verfügbarkeitsgruppe enthalten sind, kann Load Balancer Basic verwendet werden. Wenn die virtuellen Computer sich in einer Verfügbarkeitszone befinden, ist ein Standardlastenausgleich erforderlich. Für Load Balancer Standard müssen für alle virtuellen Computer Standard-IP-Adressen verwendet werden.
 
 Die aktuelle [Microsoft-Vorlage](availability-group-azure-marketplace-template-configure.md) für eine Verfügbarkeitsgruppe verwendet Load Balancer Basic mit grundlegenden IP-Adressen.
 
    > [!NOTE]
    > Sie müssen einen [Dienstendpunkt](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) konfigurieren, wenn Sie einen Standardlastenausgleich und Azure Storage als Cloudzeugen verwenden. 
-
+   > 
 
 In den Beispielen in diesem Artikel wird Load Balancer Standard angegeben. In den Beispielen ist `-sku Standard` im Skript enthalten.
 
@@ -86,7 +84,7 @@ $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $
 > [!NOTE]
 > Wenn Sie Ihre Verfügbarkeitsgruppe mit der [Microsoft-Vorlage](availability-group-azure-marketplace-template-configure.md) erstellt haben, wurde der interne Load Balancer bereits erstellt.
 
-Mit dem folgenden PowerShell-Skript wird ein internes Lastenausgleichsmodul erstellt, die Lastenausgleichsregeln werden erstellt und eine IP-Adresse für das Lastenausgleichsmodul wird festgelegt. Öffnen Sie Windows PowerShell ISE, und fügen Sie das Skript im Skriptbereich ein, um es auszuführen. Melden Sie sich mithilfe von `Connect-AzAccount` bei PowerShell an. Verwenden Sie bei mehreren Azure-Abonnements `Select-AzSubscription` , um das Abonnement festzulegen. 
+Mit dem folgenden PowerShell-Skript wird ein internes Lastenausgleichsmodul erstellt, die Lastenausgleichsregeln werden erstellt und eine IP-Adresse für das Lastenausgleichsmodul wird festgelegt. Öffnen Sie Windows PowerShell ISE, und fügen Sie das Skript im Bereich „Skript“ ein, um es auszuführen. Melden Sie sich mithilfe von `Connect-AzAccount` bei PowerShell an. Verwenden Sie bei mehreren Azure-Abonnements `Select-AzSubscription` , um das Abonnement festzulegen. 
 
 ```powershell
 # Connect-AzAccount
@@ -137,6 +135,7 @@ foreach($VMName in $VMNames)
 ```
 
 ## <a name="example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a> Beispielskript: Hinzufügen einer IP-Adresse zu einem vorhandenen Lastenausgleich mit PowerShell
+
 Wenn Sie mehrere Verfügbarkeitsgruppen verwenden möchten, fügen Sie dem Load Balancer eine zusätzliche IP-Adresse hinzu. Für jede IP-Adresse sind eine eigene Lastenausgleichsregel, ein Testport und ein Front-End-Port erforderlich.
 
 Der Front-End-Port ist der Port, der von Anwendungen zum Herstellen einer Verbindung mit der SQL Server-Instanz genutzt wird. IP-Adressen für unterschiedliche Verfügbarkeitsgruppen können denselben Front-End-Port verwenden.
@@ -147,7 +146,7 @@ Der Front-End-Port ist der Port, der von Anwendungen zum Herstellen einer Verbin
 * Informationen zu den Grenzwerten für Load Balancer finden Sie im Abschnitt **Private Front-End-IP pro Load Balancer** unter [Netzwerklimits – Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 * Informationen zu den Grenzwerten von Verfügbarkeitsgruppen finden Sie unter [Einschränkungen (Verfügbarkeitsgruppen)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
 
-Mit dem folgenden Skript wird einem vorhandenen Lastenausgleichsmodul eine neue IP-Adresse hinzugefügt. Der interne Load Balancer verwendet den Listenerport für den Front-End-Port des Load Balancers. Dieser Port kann der Port sein, über den SQL Server lauscht. Für Standardinstanzen von SQL Server lautet der Port 1433. Für die Load Balancer-Regel einer Verfügbarkeitsgruppe wird eine Floating IP-Adresse (Direct Server Return) benötigt, sodass der Back-End-Port dem Front-End-Port entspricht. Aktualisieren Sie die Variablen für Ihre Umgebung. 
+Mit dem folgenden Skript wird einem vorhandenen Lastenausgleichsmodul eine neue IP-Adresse hinzugefügt. Das interne Lastenausgleichsmodul verwendet den Listenerport für den Front-End-Port des Lastenausgleichs. Dieser Port kann der Port sein, über den SQL Server lauscht. Für Standardinstanzen von SQL Server lautet der Port 1433. Für die Lastenausgleichsregel einer Verfügbarkeitsgruppe wird eine Floating IP-Adresse (Direct Server Return) benötigt, sodass der Back-End-Port dem Front-End-Port entspricht. Aktualisieren Sie die Variablen für Ihre Umgebung. 
 
 ```powershell
 # Connect-AzAccount
@@ -196,17 +195,17 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. Starten Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit dem primären Replikat her.
 
-1. Navigieren Sie zu **Hochverfügbarkeit mit Always On** | **Verfügbarkeitsgruppen** | **Verfügbarkeitsgruppenlistener**. 
+1. Navigieren Sie zu **Hochverfügbarkeit mit Always On** > **Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppenlistener**. 
 
-1. Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie auf **Eigenschaften**.
+1. Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und wählen Sie **Eigenschaften** aus.
 
-1. Geben Sie im Feld **Port** die Portnummer für den Verfügbarkeitsgruppenlistener an. Verwenden Sie dabei den zuvor verwendeten Wert für „$EndpointPort“ (Standardwert: 1433). Klicken Sie anschließend auf **OK**.
+1. Geben Sie im Feld **Port** die Portnummer für den Verfügbarkeitsgruppenlistener an. Verwenden Sie dabei den zuvor verwendeten Wert für $EndpointPort (Standardwert: 1433). Wählen Sie anschließend **OK** aus.
 
 ## <a name="test-the-connection-to-the-listener"></a>Testen der Verbindung mit dem Listener
 
 Gehen Sie wie folgt vor, um die Verbindung zu testen:
 
-1. Stellen Sie eine RDP-Verbindung mit einem SQL Server her, der sich im gleichen virtuellen Netzwerk befindet, aber nicht für das Replikat zuständig ist. Hierbei kann es sich um den anderen SQL Server im Cluster handeln.
+1. Stellen Sie eine RDP-Verbindung (Remote Desktop Protocol) mit einer SQL Server-Instanz her, die sich im selben virtuellen Netzwerk befindet, aber nicht für das Replikat zuständig ist. Hierbei kann es sich um die andere SQL Server-Instanz im Cluster handeln.
 
 1. Testen Sie die Verbindung mithilfe des **sqlcmd** -Hilfsprogramms. Das folgende Skript stellt beispielsweise über den Listener eine **sqlcmd** -Verbindung mit Windows-Authentifizierung mit dem primären Replikat her:
    
@@ -223,24 +222,29 @@ Gehen Sie wie folgt vor, um die Verbindung zu testen:
 Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, die das primäre Replikat hostet. 
 
 > [!NOTE]
-> Vergewissern Sie sich, dass der angegebene Port in der Firewall beider SQL Server geöffnet ist. Beide Server benötigen eine eingehende Regel für den TCP-Port, den Sie verwenden möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Bearbeiten einer Firewallregel](https://technet.microsoft.com/library/cc753558.aspx) . 
-> 
+> Vergewissern Sie sich, dass der angegebene Port in der Firewall beider SQL Server geöffnet ist. Beide Server benötigen eine eingehende Regel für den TCP-Port, den Sie verwenden möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Bearbeiten einer Firewallregel](https://technet.microsoft.com/library/cc753558.aspx). 
 > 
 
 ## <a name="guidelines-and-limitations"></a>Richtlinien und Einschränkungen
+
 Für Verfügbarkeitsgruppenlistener in Azure mit internem Load Balancer gelten folgenden Richtlinien:
 
 * Bei Verwendung eines internen Load Balancers erfolgt der Zugriff auf den Listener nur innerhalb desselben virtuellen Netzwerks.
 
-* Wenn Sie den Zugriff mit einer Azure-Netzwerksicherheitsgruppe einschränken, stellen Sie sicher, dass die Zulassungsregeln die IP-Adressen des virtuellen SQL Server-Back-End-Computers, die Floating IP-Adressen des Lastenausgleichs für den AG-Listener und die IP-Adresse der Hauptressourcen des Clusters (falls zutreffend) umfassen.
+* Wenn Sie den Zugriff über eine Azure-Netzwerksicherheitsgruppe Zugriff einschränken, stellen Sie sicher, dass die Zulassungsregeln Folgendes umfassen:
+  - Die IP-Adressen der SQL Server-VMs im Back-End
+  - Die Floating IP-Adressen des Lastenausgleichs für den Verfügbarkeitsgruppenlistener
+  - Die IP-Adresse der Hauptressource des Clusters, falls zutreffend
 
 * Erstellen Sie einen Dienstendpunkt, wenn Sie einen Standardlastenausgleich mit Azure Storage als Cloudzeugen verwenden. Weitere Informationen finden Sie unter [Gewähren des Zugriffs über ein virtuelles Netzwerk](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
 
 ## <a name="for-more-information"></a>Weitere Informationen finden Sie unter
+
 Weitere Informationen finden Sie unter [Manuelles Konfigurieren der Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern](availability-group-manually-configure-tutorial.md).
 
 ## <a name="powershell-cmdlets"></a>PowerShell-Cmdlets
-Verwenden Sie die folgenden PowerShell-Cmdlets, um ein internes Lastenausgleichsmodul für virtuelle Azure-Computer zu erstellen.
+
+Verwenden Sie die folgenden PowerShell-Cmdlets, um ein internes Lastenausgleichsmodul für Azure Virtual Machines zu erstellen.
 
 * [New-AzLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) erstellt einen Load Balancer. 
 * [New-AzLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) erstellt eine Front-End-IP-Konfiguration für einen Load Balancer. 

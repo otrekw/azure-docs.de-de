@@ -7,20 +7,20 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d35c81f7bb478d91bd207327ea37c80aa1778142
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f38ef7db114705392bd1d3dc6f9a4562a809e20
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74023148"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023868"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Aktivieren meiner Azure-Ressourcenrollen in Privileged Identity Management
 
@@ -42,13 +42,15 @@ Wenn Sie eine Azure-Ressourcenrolle übernehmen müssen, können Sie in Privileg
 
 1. Wählen Sie **Azure-Ressourcenrollen** aus, um eine Liste der Azure-Ressourcenrollen anzuzeigen, für die Sie berechtigt sind.
 
-   ![Meine Rollen – Azure-Ressourcenrollen-Seite](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
+   ![Meine Rollen – Azure-Ressourcenrollen-Seite](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png)
 
 1. Wechseln Sie in der Liste **Azure-Ressourcenrollen** zur Rolle, die Sie aktivieren möchten.
 
     ![Azure-Ressourcenrollen: Liste meiner berechtigten Rollen](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
 
-1. Wählen Sie **Aktivieren** aus, um den Bereich „Aktivieren“ zu öffnen.
+1. Wählen Sie **Aktivieren** aus, um die Seite „Aktivieren“ zu öffnen.
+
+     ![Geöffneter Aktivierungsbereich mit Umfang, Startzeit, Dauer und Grund](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
 
 1. Wenn Ihre Rolle eine mehrstufige Authentifizierung erfordert, klicken Sie auf **Überprüfen Sie Ihre Identität, bevor Sie den Vorgang fortsetzen**. Sie müssen sich nur einmal pro Sitzung authentifizieren.
 
@@ -72,27 +74,9 @@ Wenn Sie eine Azure-Ressourcenrolle übernehmen müssen, können Sie in Privileg
 
 1. Wählen Sie **Aktivieren**aus.
 
-    Wenn für die Rolle keine Genehmigung erforderlich ist, wird sie aktiviert und der Liste der aktiven Rollen hinzugefügt. Wenn Sie die Rolle verwenden möchten, führen Sie die im nächsten Abschnitt beschriebenen Schritte aus.
-
     Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](pim-resource-roles-approval-workflow.md), werden Sie über eine Benachrichtigung in der oberen rechten Ecke des Browsers darüber informiert, dass die Genehmigung der Anforderung aussteht.
 
     ![Ausstehende Genehmigung für die Aktivierungsanforderung](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
-
-## <a name="use-a-role-immediately-after-activation"></a>Verwenden einer Rolle sofort nach der Aktivierung
-
-Im Falle einer Verzögerung nach der Aktivierung führen Sie diese Schritte nach der Aktivierung aus, um Ihre Azure-Ressourcenrollen sofort zu nutzen.
-
-1. Öffnen Sie Azure AD Privileged Identity Management.
-
-1. Wählen Sie **Meine Rollen** aus, um eine Liste der Azure AD-Rollen und Azure-Ressourcenrollen anzuzeigen, für die Sie berechtigt sind.
-
-1. Wählen Sie **Azure-Ressourcenrollen** aus.
-
-1. Wählen Sie die Registerkarte **Aktive Rollen** aus.
-
-1. Sobald die Rolle aktiv ist, melden Sie sich vom Portal ab und dann erneut an.
-
-    Die Rolle sollte jetzt zur Verwendung zur Verfügung stehen.
 
 ## <a name="view-the-status-of-your-requests"></a>Anzeigen des Status Ihrer Anforderungen
 
@@ -127,9 +111,6 @@ Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich 
 Wenn Sie in Privileged Identity Management eine Rolle aktivieren, wird die Aktivierung möglicherweise nicht sofort an alle Portale weitergegeben, für die diese privilegierte Rolle benötigt wird. In einigen Fällen kann die Web-Zwischenspeicherung im Portal auch dann dazu führen, dass die Änderung nicht sofort wirksam ist, wenn diese weitergegeben wurde. Falls die Aktivierung verzögert ist, sollten Sie Folgendes tun.
 
 1. Melden Sie sich vom Azure-Portal ab und dann wieder an.
-
-    Wenn Sie eine Azure-Ressourcenrolle aktivieren, werden die Phasen Ihrer Aktivierung angezeigt. Nach Abschluss aller Phasen wird der Link **Abmelden** angezeigt. Sie können diesen Link verwenden, um sich abzumelden. Hiermit werden die meisten Fälle von Verzögerungen bei der Aktivierung gelöst.
-
 1. Überprüfen Sie in Privileged Identity Management, ob Sie als Mitglied der Rolle aufgeführt sind.
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 05/29/2020
-ms.openlocfilehash: 47879ab55a91904cdc41d9a486d77d55ed27f706
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.date: 06/10/2020
+ms.openlocfilehash: 9dfa45e463ecd53524e7516160324a80824e4d8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235686"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669527"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Singleton
 
 Weitere Informationen zu Ressourcenlimits für Singletons auf einem Server mit dem DTU-basierten Kaufmodell finden Sie unter [Übersicht über Ressourcenlimits auf einem Server](resource-limits-logical-server.md).
 
-Sie können mit dem [Azure-Portal](single-database-manage.md#azure-portal), [Transact-SQL](single-database-manage.md#transact-sql-t-sql), [PowerShell](single-database-manage.md#powershell), der [Azure CLI](single-database-manage.md#azure-cli) oder der [REST-API](single-database-manage.md#rest-api) Dienstebene, Computegröße und Speichermenge für eine einzelne Datenbank festlegen.
+Sie können mit dem [Azure-Portal](single-database-manage.md#the-azure-portal), [Transact-SQL](single-database-manage.md#transact-sql-t-sql), [PowerShell](single-database-manage.md#powershell), der [Azure CLI](single-database-manage.md#the-azure-cli) oder [REST-API](single-database-manage.md#rest-api) Dienstebene, Computegröße (Dienstziel) und Speichermenge für eine einzelne Datenbank festlegen.
 
 > [!IMPORTANT]
 > Anleitungen und Überlegungen zur Skalierung finden Sie unter [Skalieren eines Singletons](single-database-scale.md).
@@ -36,12 +36,12 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen5-compute-generation-part-1"></a>Computegeneration Gen5 (Teil 1)
 
-|Computegröße|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
+|Computegröße (Dienstziel)|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
 |:--- | --: |--: |--: |--: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Min-Max V-Kerne|0,5 - 1|0,5 - 2|0,5 - 4|0,75 - 6|1,0 - 8|
 |Min-Max-Arbeitsspeicher (GB)|2,02 - 3|2,05 - 6|2,10 - 12|2,25 - 18|3,00 - 24|
-|Min. Verzögerung für automatische Pause (Minuten)|60|60|60|60|60|
+|Min. bis max. Verzögerung für automatische Pause (Minuten)|60-10080|60-10080|60-10080|60-10080|60-10080|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|
 |Maximale Datengröße (GB)|512|1024|1024|1024|1536|
@@ -62,12 +62,12 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen5-compute-generation-part-2"></a>Computegeneration Gen5 (Teil 2)
 
-|Computegröße|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
+|Computegröße (Dienstziel)|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
 |:--- | --: |--: |--: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|
 |Min-Max V-Kerne|1,25 - 10|1,50 - 12|1,75–14|2,00 - 16|
 |Min-Max-Arbeitsspeicher (GB)|3,75 - 30|4,50 - 36|5,25 - 42|6,00 - 48|
-|Min. Verzögerung für automatische Pause (Minuten)|60|60|60|60|
+|Min. bis max. Verzögerung für automatische Pause (Minuten)|60-10080|60-10080|60-10080|60-10080|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|
 |Maximale Datengröße (GB)|1536|3072|3072|3072|
@@ -86,11 +86,38 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 \* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
 
+### <a name="gen5-compute-generation-part-3"></a>Computegeneration Gen5 (Teil 3)
+
+|Computegröße (Dienstziel)|GP_S_Gen5_18|GP_S_Gen5_20|GP_S_Gen5_24|GP_S_Gen5_32|GP_S_Gen5_40|
+|:--- | --: |--: |--: |--: |--:|
+|Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|
+|Min-Max V-Kerne|2,25-18|2,5-20|3-24|4-32|5-40|
+|Min-Max-Arbeitsspeicher (GB)|6,75-54|7,5-60|9-72|12-96|15-120|
+|Min. bis max. Verzögerung für automatische Pause (Minuten)|60-10080|60-10080|60-10080|60-10080|60-10080|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|
+|Maximale Datengröße (GB)|3072|3072|4096|4096|4096|
+|Maximale Protokollgröße (GB)|922|922|1229|1229|1229|
+|Max. Datengröße von TempDB (GB)|576|640|768|1024|1280|
+|Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
+|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
+|Max. Datenrate, IOPS*|5760|6400|7680|10.240|12800|
+|Max. Protokollrate (MBit/s)|30|30|30|30|30|
+|Max. gleichzeitige Worker (Anforderungen)|1350|1500|1800|2400|3000|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
+|Anzahl von Replikaten|1|1|1|1|1|
+|Multi-AZ|–|–|–|–|–|
+|Horizontale Leseskalierung|–|–|–|–|–|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+
 ## <a name="hyperscale---provisioned-compute---gen4"></a>Hyperscale – bereitgestelltes Computing – Gen4
 
 ### <a name="gen4-compute-generation-part-1"></a>Computegeneration Gen4 (Teil 1)
 
-|Leistungsstufe|HS_Gen4_1|HS_Gen4_2|HS_Gen4_3|HS_Gen4_4|HS_Gen4_5|HS_Gen4_6|
+|Computegröße (Dienstziel)|HS_Gen4_1|HS_Gen4_2|HS_Gen4_3|HS_Gen4_4|HS_Gen4_5|HS_Gen4_6|
 |:--- | --: |--: |--: |---: | --: |--: |
 |Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |V-Kerne|1|2|3|4|5|6|
@@ -115,7 +142,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen4-compute-generation-part-2"></a>Computegeneration Gen4 (Teil 2)
 
-|Leistungsstufe|HS_Gen4_7|HS_Gen4_8|HS_Gen4_9|HS_Gen4_10|HS_Gen4_16|HS_Gen4_24|
+|Computegröße (Dienstziel)|HS_Gen4_7|HS_Gen4_8|HS_Gen4_9|HS_Gen4_10|HS_Gen4_16|HS_Gen4_24|
 |:--- | ---: |--: |--: | --: |--: |--: |
 |Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |V-Kerne|7|8|9|10|16|24|
@@ -144,7 +171,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen5-compute-generation-part-1"></a>Computegeneration Gen5 (Teil 1)
 
-|Leistungsstufe|HS_Gen5_2|HS_Gen5_4|HS_Gen5_6|HS_Gen_8|HS_Gen5_10|HS_Gen5_12|HS_Gen5_14|
+|Computegröße (Dienstziel)|HS_Gen5_2|HS_Gen5_4|HS_Gen5_6|HS_Gen_8|HS_Gen5_10|HS_Gen5_12|HS_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|2|4|6|8|10|12|14|
@@ -171,7 +198,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen5-compute-generation-part-2"></a>Computegeneration Gen5 (Teil 2)
 
-|Leistungsstufe|HS_Gen5_16|HS_Gen5_18|HS_Gen5_20|HS_Gen_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|Computegröße (Dienstziel)|HS_Gen5_16|HS_Gen5_18|HS_Gen5_20|HS_Gen_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
 |:--- | --: |--: |--: |--: |---: |--: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|16|18|20|24|32|40|80|
@@ -211,7 +238,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen4-compute-generation-part-1"></a>Computegeneration Gen4 (Teil 1)
 
-|Computegröße|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
+|Computegröße (Dienstziel)|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
 |Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |V-Kerne|1|2|3|4|5|6|
@@ -236,7 +263,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen4-compute-generation-part-2"></a>Computegeneration Gen4 (Teil 2)
 
-|Computegröße|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24
+|Computegröße (Dienstziel)|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
 |Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |V-Kerne|7|8|9|10|16|24|
@@ -263,7 +290,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen5-compute-generation-part-1"></a>Computegeneration Gen5 (Teil 1)
 
-|Computegröße|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
+|Computegröße (Dienstziel)|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|2|4|6|8|10|12|14|
@@ -288,7 +315,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen5-compute-generation-part-2"></a>Computegeneration Gen5 (Teil 2)
 
-|Computegröße|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|Computegröße (Dienstziel)|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|16|18|20|24|32|40|80|
@@ -315,7 +342,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="fsv2-series-compute-generation-preview"></a>Computegeneration der Fsv2-Serie (Vorschau)
 
-|Computegröße|GP_Fsv2_72|
+|Computegröße (Dienstziel)|GP_Fsv2_72|
 |:--- | --: |
 |Computegeneration|Fsv2-Serie|
 |V-Kerne|72|
@@ -346,7 +373,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen4-compute-generation-part-1"></a>Computegeneration Gen4 (Teil 1)
 
-|Computegröße|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
+|Computegröße (Dienstziel)|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |V-Kerne|1|2|3|4|5|6|
@@ -372,7 +399,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen4-compute-generation-part-2"></a>Computegeneration Gen4 (Teil 2)
 
-|Computegröße|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
+|Computegröße (Dienstziel)|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |V-Kerne|7|8|9|10|16|24|
@@ -400,7 +427,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen5-compute-generation-part-1"></a>Computegeneration Gen5 (Teil 1)
 
-|Computegröße|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
+|Computegröße (Dienstziel)|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|2|4|6|8|10|12|14|
@@ -426,7 +453,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen5-compute-generation-part-2"></a>Computegeneration Gen5 (Teil 2)
 
-|Computegröße|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|Computegröße (Dienstziel)|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|16|18|20|24|32|40|80|
@@ -454,7 +481,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="m-series-compute-generation-preview"></a>Computegeneration der M-Serie (Vorschau)
 
-|Computegröße|BC_M_128|
+|Computegröße (Dienstziel)|BC_M_128|
 |:--- | --: |
 |Computegeneration|M-Serie|
 |V-Kerne|128|

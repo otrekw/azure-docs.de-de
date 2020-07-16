@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: b30a2ae8d90a193e23229dc6743c7e92ebf83b52
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 06/03/2020
+ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298719"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324859"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Exportieren von Flows aus Power Automate und Bereitstellen in Azure Logic Apps
 
@@ -30,13 +30,13 @@ Sie können diesen Flow aus [Microsoft Flow](https://flow.microsoft.com) zu [Pow
 
 * Der Flow, den Sie aus Power Automate exportieren möchten.
 
-## <a name="export-a-flow"></a>Exportieren eines Flows
+## <a name="export-your-flow"></a>Exportieren Ihres Flows
 
-1. Melden Sie sich bei [Power Automate](https://flow.microsoft.com) an, und wählen Sie **My Flows** aus. Suchen Sie den Flow und wählen Sie ihn aus. Klicken Sie auf der Symbolleiste auf die Schaltfläche mit den Auslassungszeichen ( **...** ). Klicken Sie auf **Exportieren** > **Logic Apps template (.json)** (Logic Apps-Vorlage (JSON)).
+1. Melden Sie sich bei [Power Automate](https://flow.microsoft.com) an, und wählen Sie **My Flows** aus. Suchen Sie den Flow und wählen Sie ihn aus. Klicken Sie in der Symbolleiste auf die Auslassungspunkte ( **...** ) und dann auf **Exportieren** > **Logic Apps-Vorlage (JSON)** .
 
-   ![Exportieren eines Flows](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
+   ![Exportieren des Flows aus Power Automate](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
-1. Speichern Sie die Vorlage am gewünschten Speicherort.
+1. Speichern Sie die JSON-Datei Ihrer Vorlage am gewünschten Speicherort.
 
 Weitere Informationen finden Sie unter [Verwenden von Azure Logic Apps](https://flow.microsoft.com/blog/grow-up-to-logic-apps/).
 
@@ -44,42 +44,51 @@ Weitere Informationen finden Sie unter [Verwenden von Azure Logic Apps](https://
 
 1. Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Wählen Sie im Azure-Menü **Ressource erstellen** aus. Geben Sie im Suchfeld „Vorlagenbereitstellung“ ein. Klicken Sie zunächst auf **Template deployment (deploy using custom templates)** (Vorlagenbereitstellung (Bereitstellen mithilfe benutzerdefinierter Vorlagen)) und anschließend auf **Erstellen**.
+1. Geben Sie auf der Azure-Startseite in das Suchfeld `custom template` ein. Klicken Sie in den Ergebnissen auf **Benutzerdefinierte Vorlage bereitstellen** > **Erstellen**.
 
-   ![Klicken Sie auf „Vorlagenbereitstellung“.](./media/export-from-microsoft-flow-logic-app-template/select-template-deployment.png)
+   ![Suchen Sie nach „Vorlagenbereitstellung“, und klicken Sie darauf.](./media/export-from-microsoft-flow-logic-app-template/select-template-deployment.png)
 
 1. Wählen Sie unter **Benutzerdefinierte Bereitstellung** die Option **Build your own template in the editor** (Eigene Vorlage im Editor erstellen) aus.
 
    ![Klicken Sie auf „Build your own template in the editor“ (Eigene Vorlage im Editor erstellen).](./media/export-from-microsoft-flow-logic-app-template/build-template-in-editor.png)
 
-1. Klicken Sie auf der Symbolleiste **Vorlage bearbeiten** auf **Datei laden**. Suchen Sie die aus Power Automate exportierte JSON-Vorlage, wählen Sie sie aus, und klicken Sie dann auf **Öffnen**.
+1. Klicken Sie auf der Symbolleiste **Vorlage bearbeiten** auf **Datei laden**.
 
    ![Auswählen der Option „Datei laden“](./media/export-from-microsoft-flow-logic-app-template/load-file.png)
 
+1. Navigieren Sie zum Speicherort der JSON-Vorlagendatei, die Sie aus Power Automate exportiert haben. Wählen Sie die Vorlagendatei aus, und klicken Sie auf **Öffnen**.
+
 1. Nachdem der Editor die JSON-Datei, Parameter und Ressourcen in der Vorlage angezeigt hat, klicken Sie auf **Speichern**.
-  
+
    ![Vorlage speichern](./media/export-from-microsoft-flow-logic-app-template/save-template.png)
 
-1. Geben Sie nun die Eingabeparameter für die Vorlage an:
+1. Geben Sie jetzt weitere Informationen zu Ihrer Logik-App an.
 
-   * Azure-Abonnement für die Abrechnung
-   * Azure-Ressourcengruppe
-   * Speicherort für die Azure-Ressourcengruppe
-   * Name für die Logik-App-Ressource
-   * Speicherort für die Logik-App-Ressource, wenn sie sich von der Azure-Ressourcengruppe unterscheidet
-   * Name für alle zuvor erstellten Verbindungen, die von der Logik-App verwendet werden können
+   1. Wählen Sie die Eingabeparameterwerte für Ihre Vorlage aus, oder geben Sie diese an.
 
-      Wenn Sie Ihre erste Logik-App erstellen, werden alle Verbindungen neu erstellt, sodass Sie die Standardnamen übernehmen können. Andernfalls können Sie die Namen für zuvor erstellte Verbindungen angeben, die Sie in mehreren Logik-Apps verwenden können.
+      | Eigenschaft | BESCHREIBUNG |
+      |----------|-------------|
+      | **Abonnement** | Das für die Abrechnung verwendete Azure-Abonnement |
+      | **Ressourcengruppe** | Die Ressourcengruppe für Ihre Logik-App. Sie können eine bestehende Ressourcengruppe verwenden oder eine neue erstellen. |
+      | **Location** | Die Azure-Region, die verwendet werden soll, wenn Sie eine neue Ressourcengruppe erstellen. |
+      | **Logik-App-Name** | Der Name Ihrer Logik-App-Ressource |
+      | **Standort der Logik-App** | Die Azure-Region, in der eine Logik-App-Ressource erstellt werden soll, wenn sie sich von der Azure-Ressourcengruppe unterscheidet |
+      | <*connection-name*> | Mindestens ein Name für alle zuvor erstellten Verbindungen, die von der Logik-App wiederverwendet werden können <p><p>**Hinweis**: Wenn diese Logik-App Ihre erste ist, werden alle Verbindungen neu erstellt, sodass Sie die Standardnamen übernehmen können. Andernfalls können Sie die Namen für zuvor erstellte Verbindungen angeben, die Sie in mehreren Logik-Apps verwenden können. |
+      |||
 
-   Nachdem Sie diese Informationen für die Vorlage bereitgestellt haben, müssen Sie die Azure Marketplace-Geschäftsbedingungen zum Erstellen der erforderlichen Azure-Ressourcen und der Abrechnung des Azure-Abonnements lesen und diesen zustimmen. Klicken Sie dann auf **Kaufen**.
-  
-   ![Angeben der Eingabeparameter für die Vorlage](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
+      Beispiel:
 
-   Azure stellt die Vorlage als Logik-App für die angegebene Ressourcengruppe bereit. Alle von Power Automate migrierten Logik-Apps werden in deaktiviertem Zustand bereitgestellt.
+      ![Angeben der Eingabeparameter für die Vorlage](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
-1. Autorisieren Sie vor dem Aktivieren der Logik-App alle neuen Verbindungen, indem Sie die folgenden Schritte ausführen:
+   1. Wenn Sie fertig sind, lesen Sie die **Nutzungsbedingungen** zum Erstellen der erforderlichen Azure-Ressourcen und zur entsprechenden Abrechnung Ihres Azure-Abonnements.
 
-   1. Öffnen Sie die erstellte Logik-App. Klicken Sie im Menü der Logik-App auf **Logic app designer** (Logik-App-Designer).
+   1. Wenn Sie einverstanden sind, klicken Sie auf **Ich stimme den oben genannten Geschäftsbedingungen zu** > **Kaufen**.
+
+      Azure stellt die Vorlage als Logik-App für die angegebene Ressourcengruppe bereit.
+
+1. Alle von Power Automate migrierten Logik-Apps werden in deaktiviertem Zustand bereitgestellt. Autorisieren Sie vor dem Aktivieren der Logik-App alle neuen Verbindungen, indem Sie die folgenden Schritte ausführen:
+
+   1. Öffnen Sie im Azure-Portal die erstellte Logik-App. Klicken Sie im Menü der Logik-App auf **Logic app designer** (Logik-App-Designer).
 
       Für jede Verbindung, die eine Autorisierung erfordert, wird ein Warnsymbol angezeigt:
 
@@ -91,7 +100,9 @@ Weitere Informationen finden Sie unter [Verwenden von Azure Logic Apps](https://
 
    1. Melden Sie sich bei jedem Dienst an, oder geben Sie die erforderlichen Anmeldeinformationen zum Autorisieren der Verbindung an.
 
-1. Speichern Sie Ihre Logik-App. Klicken Sie zum Aktivieren der Logik-App im Menü der Logik-App zunächst auf **Übersicht** und dann auf **Aktivieren**.
+   1. Nachdem Sie Ihre Verbindungen aktualisiert haben, klicken Sie in der Symbolleiste des Designers auf **Speichern**.
+
+1. Klicken Sie zum Aktivieren der Logik-App im Menü der Logik-App zunächst auf **Übersicht** und dann auf **Aktivieren**.
 
    ![Aktivieren der Logik-App](./media/export-from-microsoft-flow-logic-app-template/enable-logic-app.png)
 
@@ -99,15 +110,17 @@ Weitere Informationen finden Sie unter [Verwenden von Azure Logic Apps](https://
 
 ## <a name="deploy-template-by-using-visual-studio"></a>Bereitstellen einer Vorlage mithilfe von Visual Studio
 
-Wenn Sie Visual Studio mit den [Voraussetzungen](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites) für das Erstellen von Logik-Apps eingerichtet haben, können Sie die exportierte Vorlage aus Visual Studio in Azure Logic Apps bereitstellen.
+Wenn Sie in Visual Studio alle für das Erstellen von Logik-Apps [erforderlichen Komponenten](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites) eingerichtet haben, können Sie die exportierte Vorlage mithilfe von Visual Studio in Azure Logic Apps bereitstellen.
 
-1. Öffnen Sie in Visual Studio die Vorlagendatei, die Sie aus Power Automate exportiert haben.
+1. Navigieren Sie in Visual Studio zu der JSON-Datei der Logik-App-Vorlage, die Sie aus Power Automate exportiert haben, und öffnen Sie sie.
 
-1. Erstellen Sie in Visual Studio ein Azure-Ressourcengruppenprojekt, und klicken Sie dann auf die **Logik-App**-Vorlage, indem Sie die in [Quickstart: Create automated tasks, processes, and workflows with Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) (Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio) beschriebenen Schritte ausführen. Beispiel:
+1. Erstellen Sie in Visual Studio ein **Azure-Ressourcengruppenprojekt**, das die **Logik-App**-Vorlage verwendet, indem Sie die Anleitung in [Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) befolgen.
+
+   In diesem Beispiel wird eine Visual Studio-Projektmappe namens „ImportedLogicApp“ erstellt.
 
    ![Erstellen eines Azure-Ressourcengruppenprojekts](./media/export-from-microsoft-flow-logic-app-template/create-azure-resource-group-project.png)
 
-1. Öffnen Sie im Projektmappen-Explorer die Datei **LogicApp.json**, sofern sie noch nicht geöffnet ist.
+1. Öffnen Sie nach dem Erstellen der Projektmappe im Projektmappen-Explorer die Datei **LogicApp.json**, sofern sie noch nicht geöffnet ist.
 
 1. Kopieren Sie den Inhalt aus der exportierten Vorlage, und überschreiben Sie den Inhalt in der Datei **LogicApp.json**.
 

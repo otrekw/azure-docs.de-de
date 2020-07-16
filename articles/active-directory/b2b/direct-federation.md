@@ -4,26 +4,25 @@ description: Herstellen eines direkten Verbunds mit einem SAML- oder WS-Verbund-
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/11/2020
+ms.topic: how-to
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 299b0a677e7ca7bea9481d94ecf98c993af0a6ed
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591215"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551538"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkter Verbund mit AD FS und Drittanbietern für Gastbenutzer (Preview)
-|     |
-| --- |
-| Ein direkter Verbund ist eine Public Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+
+> [!NOTE]
+>  Ein direkter Verbund ist eine Public Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 In diesem Artikel wird beschrieben, wie Sie einen direkten Verbund mit einer anderen Organisation für die B2B-Zusammenarbeit einrichten. Sie können einen direkten Verbund mit jeder Organisation einrichten, deren Identitätsanbieter das SAML 2.0- oder WS-Verbund-Protokoll unterstützt.
 Wenn Sie einen direkten Verbund mit dem Identitätsanbieter eines Partners einrichten, können neue Gastbenutzer aus dieser Domäne ihr eigenes, vom Identitätsanbieter verwaltetes Organisationskonto verwenden, um sich bei Ihrem Azure AD-Mandanten anzumelden und mit Ihnen zusammenzuarbeiten. Es ist nicht erforderlich, dass der Gastbenutzer ein separates Azure AD-Konto erstellt.
@@ -221,3 +220,7 @@ So entfernen Sie den direkten Verbund mit einem Identitätsanbieter mit der Powe
    ```powershell
    Remove-AzureADExternalDomainFederation -ExternalDomainName  $domainName
    ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr über die [Umgebung zum Einlösen von Einladungen](redemption-experience.md), wenn sich externe Benutzer mit verschiedenen Identitätsanbietern anmelden.

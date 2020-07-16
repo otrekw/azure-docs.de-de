@@ -3,16 +3,16 @@ title: Bereitstellen der Azure-Dateisynchronisierung | Microsoft-Dokumentation
 description: Informationen über sämtliche Schritte zum Bereitstellen der Azure-Dateisynchronisierung.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d179697707b8190515e8c0e6dee2defa8881c03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1ba623a00c84a7b83afe778c808251e49c7008e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515359"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -23,7 +23,7 @@ Es wird dringend empfohlen, die Anleitungen [Planning for an Azure Files deploym
 * Eine Azure-Dateifreigabe in derselben Region, in der Sie die Azure-Dateisynchronisierung bereitstellen möchten. Weitere Informationen finden Sie unter
     - [Region availability](storage-sync-files-planning.md#azure-file-sync-region-availability) (Regionale Verfügbarkeit, in englischer Sprache) für die Azure-Dateisynchronisierung.
     - Eine Schritt-für-Schritt-Beschreibung zum Erstellen einer Dateifreigabe finden Sie unter [Erstellen einer Dateifreigabe](storage-how-to-create-file-share.md).
-* Mindestens eine unterstützte Instanz von Windows Server oder Windows Server-Cluster für die Synchronisierung mit der Azure-Dateisynchronisierung. Weitere Informationen zu unterstützten Versionen von Windows Server finden Sie unter [Interoperability with Windows Server](storage-sync-files-planning.md#windows-file-server-considerations) (Interoperabilität mit Windows Server, in englischer Sprache).
+* Mindestens eine unterstützte Instanz von Windows Server oder Windows Server-Cluster für die Synchronisierung mit der Azure-Dateisynchronisierung. Weitere Informationen zu unterstützten Versionen von Windows Server und empfohlenen Systemressourcen finden Sie unter [Überlegungen zu Windows-Dateiservern](storage-sync-files-planning.md#windows-file-server-considerations).
 * Das Azure PowerShell-Modul kann mit PowerShell 5.1 oder PowerShell 6+ verwendet werden. Sie können das Azure PowerShell-Modul für Azure-Dateisynchronisierung auf jedem unterstützten System verwenden, auch auf Nicht-Windows-Systemen. Aber das Cmdlet für die Serverregistrierung muss immer direkt für die Windows Server-Instanz ausgeführt werden, die Sie registrieren (entweder direkt oder per PowerShell-Remoting). Unter Windows Server 2012 R2 können Sie anhand des Werts der **PSVersion**-Eigenschaft des **$PSVersionTable**-Objekts überprüfen, ob mindestens PowerShell 5.1\* ausgeführt wird:
 
     ```powershell

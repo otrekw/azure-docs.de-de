@@ -3,15 +3,15 @@ title: Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 description: Erfahren Sie, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 4/17/2020
+ms.date: 6/5/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: b88b6d1ea4b9d9fc2b33849157968ee1c2f8c620
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170459"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465251"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. Sie können in einem Abonnement bis zu 2.000 Aktionsgruppen konfigurieren.
@@ -217,7 +217,12 @@ Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Sp
 Die Preise für unterstützte Länder/Regionen sind auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) aufgeführt.
 
 ### <a name="webhook"></a>Webhook
-Webhooks werden mit den folgenden Regeln abgerufen. Es wird maximal zweimal versucht, den Webhookaufruf durchzuführen, wenn der HTTP-Statuscode 408, 429, 503 oder 504 zurückgegeben wird oder der HTTP-Endpunkt nicht reagiert. Der erste Wiederholungsversuch erfolgt nach 10 Sekunden. Der zweite Wiederholungsversuch erfolgt nach 100 Sekunden. Nach zwei Ausfällen wird der Endpunkt 30 Minuten lang von keiner Aktionsgruppe aufgerufen. 
+Webhooks werden mithilfe der folgenden Regeln verarbeitet:
+- Ein Webhookaufruf wird maximal dreimal versucht.
+- Der Aufruf wird wiederholt, wenn innerhalb des Timeoutzeitraums keine Antwort empfangen wird oder einer der folgenden HTTP-Statuscodes zurückgegeben wird: 408, 429, 503 oder 504
+- Der erste Aufruf wartet 10 Sekunden auf eine Antwort.
+- Der zweite und der dritte Versuch warten 30 Sekunden auf eine Antwort.
+- Nachdem bei allen drei Versuchen, den Webhook aufzurufen, ein Fehler aufgetreten ist, ruft keine der Aktionsgruppen den Endpunkt während der nächsten 15 Minuten auf.
 
 Quell-IP-Adressbereiche
  - 13.72.19.232

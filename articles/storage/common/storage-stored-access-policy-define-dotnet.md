@@ -1,26 +1,27 @@
 ---
-title: Definieren einer gespeicherten Zugriffsrichtlinie mit .NET – Azure Storage
-description: Erfahren Sie, wie Sie eine gespeicherte Zugriffsrichtlinie mithilfe der .NET-Clientbibliothek definieren.
+title: Erstellen einer gespeicherten Zugriffsrichtlinie mit .NET
+titleSuffix: Azure Storage
+description: Erfahren Sie, wie Sie mithilfe der .NET-Clientbibliothek eine gespeicherte Zugriffsrichtlinie erstellen.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 08/06/2019
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 272d676d0a5a55262b1c68d0bae9a9ab229df72c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4a0d69f3687f0dcc174a2d8a1275a2bf55d9ecf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68990606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504388"
 ---
-# <a name="define-a-stored-access-policy-with-net"></a>Definieren einer gespeicherten Zugriffsrichtlinie mit .NET
+# <a name="create-a-stored-access-policy-with-net"></a>Erstellen einer gespeicherten Zugriffsrichtlinie mit .NET
 
 Eine gespeicherte Zugriffsrichtlinie bietet eine zusätzliche Steuerungsebene für Shared Access Signatures (SAS) der Dienstebene auf Serverseite. Das Definieren einer gespeicherten Zugriffsrichtlinie dient zum Gruppieren von Shared Access Signatures und zum Bereitstellen zusätzlicher Einschränkungen für Shared Access Signatures, die von der Richtlinie gebunden werden. Mithilfe der gespeicherten Zugriffsrichtlinie können Sie die Startzeit, die Ablaufzeit oder die Berechtigungen für eine Shared Access Signature ändern oder die Signatur widerrufen, nachdem sie ausgegeben wurde.
   
- Die folgenden Speicherressourcen unterstützen gespeicherte Zugriffsrichtlinien:  
+Die folgenden Azure Storage-Ressourcen unterstützen gespeicherte Zugriffsrichtlinien:  
   
 - Blobcontainer  
 - Dateifreigaben  
@@ -32,9 +33,73 @@ Eine gespeicherte Zugriffsrichtlinie bietet eine zusätzliche Steuerungsebene f�
 >
 > Gespeicherte Zugriffsrichtlinien werden nur für Dienst-SAS unterstützt. Gespeicherte Zugriffsrichtlinien werden für die Konto-SAS oder die SAS für die Benutzerdelegierung nicht unterstützt.  
 
+Weitere Informationen zu gespeicherten Zugriffsrichtlinien finden Sie unter [Definieren einer gespeicherten Zugriffsrichtlinie](/rest/api/storageservices/define-stored-access-policy).
+
 ## <a name="create-a-stored-access-policy"></a>Erstellen einer gespeicherten Zugriffsrichtlinie
 
-Mit dem folgenden Code wird eine gespeicherte Zugriffsrichtlinie für einen Container erstellt. Sie können mit der Zugriffsrichtlinie Einschränkungen für eine Dienst-SAS für den Container oder seine Blobs festlegen.
+Der zugrunde liegende REST-Vorgang zum Erstellen einer gespeicherten Zugriffsrichtlinie ist [Set Container ACL](/rest/api/storageservices/set-container-acl). Sie müssen den Vorgang zum Erstellen einer gespeicherten Zugriffsrichtlinie über einen gemeinsam verwendeten Schlüssel autorisieren, indem Sie die Kontozugriffsschlüssel in einer Verbindungszeichenfolge verwenden. Das Autorisieren des Vorgangs **Set Container ACL** mit Azure AD-Anmeldeinformationen wird nicht unterstützt. Weitere Informationen finden Sie unter [Berechtigungen zum Aufrufen von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+
+In den folgenden Codebeispielen wird eine gespeicherte Zugriffsrichtlinie für einen Container erstellt. Sie können mit der Zugriffsrichtlinie Einschränkungen für eine Dienst-SAS für den Container oder seine Blobs festlegen.
+
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+Rufen Sie eine der folgenden Methoden auf, um mit Version 12 der .NET-Clientbibliothek für Azure Storage eine gespeicherte Zugriffsrichtlinie für einen Container zu erstellen:
+
+- [BlobContainerClient.SetAccessPolicy](/dotnet/api/azure.storage.blobs.blobcontainerclient.setaccesspolicy)
+- [BlobContainerClient.SetAccessPolicyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.setaccesspolicyasync)
+
+Im folgenden Beispiel wird eine gespeicherte Zugriffsrichtlinie erstellt, die einen Tag lang gilt und Lese-/Schreibberechtigungen gewährt:
+
+```csharp
+async static Task CreateStoredAccessPolicyAsync(string containerName)
+{
+    string connectionString = "";
+
+    // Use the connection string to authorize the operation to create the access policy.
+    // Azure AD does not support the Set Container ACL operation that creates the policy.
+    BlobContainerClient containerClient = new BlobContainerClient(connectionString, containerName);
+
+    try
+    {
+        await containerClient.CreateIfNotExistsAsync();
+
+        // Create one or more stored access policies.
+        List<BlobSignedIdentifier> signedIdentifiers = new List<BlobSignedIdentifier>
+        {
+            new BlobSignedIdentifier
+            {
+                Id = "mysignedidentifier",
+                AccessPolicy = new BlobAccessPolicy
+                {
+                    StartsOn = DateTimeOffset.UtcNow.AddHours(-1),
+                    ExpiresOn = DateTimeOffset.UtcNow.AddDays(1),
+                    Permissions = "rw"
+                }
+            }
+        };
+        // Set the container's access policy.
+        await containerClient.SetAccessPolicyAsync(permissions: signedIdentifiers);
+    }
+    catch (RequestFailedException e)
+    {
+        Console.WriteLine(e.ErrorCode);
+        Console.WriteLine(e.Message);
+    }
+    finally
+    {
+        await containerClient.DeleteAsync();
+    }
+}
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
+Rufen Sie eine der folgenden Methoden auf, um mit Version 12 der .NET-Clientbibliothek für Azure Storage eine gespeicherte Zugriffsrichtlinie für einen Container zu erstellen:
+
+- [CloudBlobContainer.SetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
+- [CloudBlobContainer.SetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissionsasync)
+
+Im folgenden Beispiel wird eine gespeicherte Zugriffsrichtlinie erstellt, die einen Tag lang gilt und Lese-, Schreib- und Auflistungsberechtigungen gewährt:
 
 ```csharp
 private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer container, string policyName)
@@ -46,7 +111,7 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
         // When the start time for the SAS is omitted, the start time is assumed to be the time when Azure Storage receives the request.
         SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
         Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.List |
-            SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Create | SharedAccessBlobPermissions.Delete
+            SharedAccessBlobPermissions.Write
     };
 
     // Get the container's existing permissions.
@@ -58,8 +123,10 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 }
 ```
 
+---
+
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](storage-sas-overview.md)
 - [Definieren einer gespeicherten Zugriffsrichtlinie](/rest/api/storageservices/define-stored-access-policy)
-
+- [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md)

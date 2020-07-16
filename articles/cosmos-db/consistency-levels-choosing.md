@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa8a020dc4a7e9d4e7de0671b566755e413caeb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa8f2d14124e7cfc5db0025c295f9b38d96bf56c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921837"
 ---
 # <a name="choose-the-right-consistency-level"></a>Auswählen der richtigen Konsistenzebene 
 
-Verteilte Datenbanken, die auf Replikation für Hochverfügbarkeit, niedrige Latenzzeiten oder beides angewiesen sind, bilden den grundlegenden Kompromiss zwischen Lesekonsistenz und Verfügbarkeit, Latenz und Durchsatz. Die meisten kommerziell verfügbaren verteilten Datenbanken verlangen von Entwicklern, dass sie zwischen den beiden extremen Konsistenzmodellen wählen: *starke* Konsistenz und *letztliche* Konsistenz. Azure Cosmos DB bietet Entwicklern die Auswahl zwischen fünf klar definierten Konsistenzmodellen: *starke Konsistenz*, *begrenzte Veraltung*, *Sitzung*, *Präfixkonsistenz* und *letztliche Konsistenz*. Jedes dieser Konsistenzmodelle ist klar definiert, intuitiv und kann für spezifische reale Szenarien verwendet werden. Jedes der fünf Konsistenzmodelle bietet präzise [Verfügbarkeits- und Leistungskompromisse](consistency-levels-tradeoffs.md) und wird durch umfassende SLAs abgesichert. Die folgenden einfachen Überlegungen helfen Ihnen, in vielen gängigen Szenarien die richtige Wahl zu treffen.
+Verteilte Datenbanken, die auf Replikation für Hochverfügbarkeit, niedrige Latenzzeiten oder beides angewiesen sind, bilden den grundlegenden Kompromiss zwischen Lesekonsistenz und Verfügbarkeit, Latenz und Durchsatz. Die meisten kommerziell verfügbaren verteilten Datenbanken verlangen von Entwicklern, dass sie zwischen den beiden extremen Konsistenzmodellen wählen: *starke* Konsistenz und *letztliche* Konsistenz. Azure Cosmos DB bietet Entwicklern die Auswahl zwischen fünf klar definierten Konsistenzmodellen: *starke Konsistenz*, *begrenzte Veraltung*, *Sitzung*, *Präfixkonsistenz* und *letztliche Konsistenz*. Jedes dieser Konsistenzmodelle ist klar definiert, intuitiv und kann für spezifische reale Szenarien verwendet werden. Jedes der fünf Konsistenzmodelle bietet präzise [Verfügbarkeits- und Leistungskompromisse](consistency-levels-tradeoffs.md) und wird durch umfassende SLAs abgesichert. Sie können eine Standardkonsistenz auf Kontoebene konfigurieren und [auf Anforderungsebene überschreiben](how-to-manage-consistency.md#override-the-default-consistency-level). Die folgenden einfachen Überlegungen helfen Ihnen, in vielen gängigen Szenarien die richtige Wahl zu treffen.
 
 ## <a name="sql-api-and-table-api"></a>SQL-API und Tabellen-API
 

@@ -4,12 +4,12 @@ description: Erfahren Sie mehr zum Verwalten von Zertifikaten in einem Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: ecdeb5c9e30c176e2f3525f8efeb861d9210b202
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195733"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324741"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Zertifikatverwaltung in Service Fabric-Clustern
 
@@ -82,7 +82,8 @@ Dieses Thema wird in der Key Vault-[Dokumentation](../key-vault/create-certifica
     - Sobald der Aussteller (die Zertifizierungsstelle) mit dem signierten Zertifikat antwortet, wird das Ergebnis im Tresor zusammengeführt, woraufhin das Zertifikat für die folgenden Vorgänge zur Verfügung steht:
       - Unter {vaultUri}/certificates/{name}: das Zertifikat einschließlich öffentlichem Schlüssel und Metadaten
       - Unter {vaultUri}/keys/{name}: der für kryptografische Vorgänge verfügbare private Schlüssel des Zertifikats (umbrechen/Umbruch aufheben, signieren/überprüfen)
-      - Unter {vaultUri}/secrets/{name}: Das Zertifikat einschließlich seines privaten Schlüssels, der als ungeschützte PFX- oder PEM-Datei zum Herunterladen zur Verfügung steht. Zur Erinnerung: Ein Tresorzertifikat ist eigentlich eine chronologische Reihe von Zertifikatsinstanzen mit gemeinsamer Richtlinie. Zertifikatversionen werden entsprechend der Attribute für Gültigkeitsdauer und Verlängerung der Richtlinie erstellt. Es wird nachdrücklich empfohlen, dass Tresorzertifikate keine Antragsteller oder Domänen/DNS-Namen gemeinsam haben. Es kann in einem Cluster problematisch sein, Zertifikatinstanzen aus verschiedenen Tresorzertifikaten mit identischen Antragstellern, aber deutlich unterschiedlichen anderen Attributen wie Aussteller, Schlüsselverwendungen usw. bereitzustellen.
+      - Unter {vaultUri}/secrets/{name}: das Zertifikat einschließlich des privaten Schlüssels, herunterladbar als ungeschützte PFX- oder PEM-Datei  
+    Zur Erinnerung: Ein Tresorzertifikat ist eigentlich eine chronologische Reihe von Zertifikatsinstanzen mit einer gemeinsamen Richtlinie. Zertifikatversionen werden entsprechend der Attribute für Gültigkeitsdauer und Verlängerung der Richtlinie erstellt. Es wird nachdrücklich empfohlen, dass Tresorzertifikate keine Antragsteller oder Domänen/DNS-Namen gemeinsam haben. Es kann in einem Cluster problematisch sein, Zertifikatinstanzen aus verschiedenen Tresorzertifikaten mit identischen Antragstellern, aber deutlich unterschiedlichen anderen Attributen wie Aussteller, Schlüsselverwendungen usw. bereitzustellen.
 
 An dieser Stelle befindet sich ein Zertifikat im Tresor, das zur Nutzung bereit steht. Weiter zur:
 
@@ -136,7 +137,7 @@ Die Sequenz ist vollständig skriptfähig bzw. automatisierbar und ermöglicht e
 [!NOTE] Bei diesem Beispiel wird davon ausgegangen, dass sich bereits ein Zertifikat im Tresor befindet. Das Registrieren und Verlängern eines von Key Vault verwalteten Zertifikats erfordert die zuvor in diesem Artikel beschriebenen erforderlichen manuellen Schritte. Verwenden Sie in Produktionsumgebungen von Key Vault verwaltete Zertifikate. Ein Beispielskript speziell für eine Microsoft-interne PKI ist nachstehend angegeben.
 Automatisches Rollover von Zertifikaten ist nur für von einer Zertifizierungsstelle ausgestellte Zertifikate sinnvoll. Der Einsatz selbstsignierter Zertifikate, einschließlich derer, die bei der Bereitstellung eines Service Fabric-Clusters im Azure-Portal generiert werden, ist unsinnig, aber dennoch für lokale/vom Entwickler gehostete Bereitstellungen möglich, indem der Fingerabdruck des Ausstellers als identisch mit dem des Blattzertifikats deklariert wird.
 
-### <a name="starting-point"></a>Ausgangspunkt
+### <a name="starting-point"></a>Startpunkt
 Der Kürze halber gehen wir von folgendem Ausgangszustand aus:
   - Der Service Fabric-Cluster ist vorhanden und wird mit einem von einer Zertifizierungsstelle ausgestellten und per Fingerabdruck deklarierten Zertifikat abgesichert.
   - Das Zertifikat ist in einem Tresor gespeichert und wird als VM-Skalierungsgruppengeheimnis bereitgestellt.

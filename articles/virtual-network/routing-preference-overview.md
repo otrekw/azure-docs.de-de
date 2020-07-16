@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 0ae06a1c3d486b5d5998b4c6d050d86f50910a0a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ba01b89b54dc7209449490059555f531f7616720
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595549"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193361"
 ---
 # <a name="what-is-routing-preference-preview"></a>Was ist Routingpräferenz (Vorschau)?
 
@@ -88,7 +88,7 @@ Der Preisunterschied zwischen beiden Optionen spiegelt sich in den Preisen für 
 
 Unterstützung für Routingpräferenzen ist in den folgenden Regionen für Dienste wie virtuelle Computer und Lastausgleich mit Internetzugriff verfügbar, die eine öffentliche IP-Adresse für den Internetausgang verwenden: Europa (Norden), Europa (Westen), Frankreich (Süden), Vereinigtes Königreich (Süden), USA (Osten), USA (Norden-Mitte), USA (Süden-Mitte), USA (Westen), USA (Westen-Mitte), Asien (Südosten), Deutschland (Westen-Mitte), Schweiz (Westen), Japan (Osten) und Japan (Westen).
 
-Unterstützung für Routingpräferenzen für das Speicherkonto ist in den folgenden Azure-Regionen verfügbar: Frankreich (Süden), USA (Norden-Mitte) und USA (Westen-Mitte).
+Für Speicherkonten wird die Routingpräferenz in den folgenden Azure-Regionen unterstützt: „Frankreich, Süden“, „USA, Norden-Mitte“, „USA, Westen-Mitte“, „Japan, Osten“, „Japan, Westen“, „Deutschland, Westen-Mitte“ und „Schweiz, Westen“.
 ## <a name="limitations"></a>Einschränkungen
 
 * Die Routingpräferenz ist nur mit der Standard-SKU der öffentlichen IP-Adresse kompatibel. Die Basic-SKU der öffentlichen IP-Adresse wird nicht unterstützt.

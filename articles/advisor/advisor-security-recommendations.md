@@ -3,12 +3,12 @@ title: Erhöhen der Sicherheit von Ressourcen mit Azure Advisor
 description: Mithilfe von Azure Advisor können Sie die Sicherheit Ihrer Azure-Bereitstellungen verbessern.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a4b7e9a9d9a7919155db361fd2c96ed98e6e5a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113856"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Erhöhen der Sicherheit von Ressourcen mit Azure Advisor
 
@@ -29,9 +29,9 @@ Weitere Informationen über Empfehlungen zur Sicherheit finden Sie unter [Verwal
 Hier finden Sie weitere Informationen zu Empfehlungen des Advisor:
 * [Einführung in Advisor](advisor-overview.md)
 * [Erste Schritte mit Advisor](advisor-get-started.md)
-* [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md)
-* [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
-* [Advisor-Empfehlungen für Hochverfügbarkeit](advisor-high-availability-recommendations.md)
-* [Advisor-Empfehlungen für einen optimalen Betrieb](advisor-operational-excellence-recommendations.md)
-
+* [Reduzieren der Dienstkosten mithilfe des Azure Advisors](advisor-cost-recommendations.md)
+* [Verbessern der Leistung von Azure-Anwendungen mit dem Azure Advisor](advisor-performance-recommendations.md)
+* [Verbessern der Verfügbarkeit Ihrer Anwendung mit dem Azure Advisor](advisor-high-availability-recommendations.md)
+* [Sicherstellen des optimalen Betriebs mit dem Azure Advisor](advisor-operational-excellence-recommendations.md)
+* [Advisor-REST-API](https://docs.microsoft.com/rest/api/advisor/)
  

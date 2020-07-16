@@ -3,7 +3,6 @@ title: 'Schnellstart: Erstellen einer Linux-basierten SQL Server-VM in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal einen virtuellen Linux-Computer mit SQL Server 2017 erstellen.
 services: virtual-machines-linux
 author: MashaMSFT
-manager: craigg
 ms.date: 10/22/2019
 tags: azure-service-management
 ms.topic: conceptual
@@ -11,14 +10,14 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ac7a836f339e86ce3705d64d04cad143f1043a81
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 41f39c7e60e79e034d4c855a77bfee0f6fa2094d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259523"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669510"
 ---
-# <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Bereitstellen eines virtuellen SQL Server-Computers über das Azure-Portal
+# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Bereitstellen eines virtuellen Linux-Computers, auf dem SQL Server ausgeführt wird, im Azure-Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -28,7 +27,7 @@ ms.locfileid: "84259523"
 In diesem Schnellstarttutorial erstellen Sie über das Azure-Portal eine Linux-VM mit SQL Server 2017. Hier lernen Sie Folgendes: 
 
 
-* [Erstellen eines virtuellen Linux-SQL-Computers aus dem Katalog](#create)
+* [Erstellen eines virtuellen Linux-Computers, auf dem SQL Server ausgeführt wird, über den Katalog](#create)
 * [Herstellen einer Verbindung mit dem neuen virtuellen Computer per SSH](#connect)
 * [Ändern des Systemadministratorkennworts](#password)
 * [Konfigurieren für Remoteverbindungen](#remote)
@@ -125,7 +124,7 @@ Wenn Sie mit Windows arbeiten und nicht über eine BASH-Shell verfügen, install
 
 Weitere Informationen zum Herstellen einer Verbindung mit virtuellen Linux-Computern finden Sie unter [Erstellen einer Linux-VM mit dem Azure-Portal](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal).
 
-> [!Note]
+> [!NOTE]
 > Falls eine PuTTY-Sicherheitswarnung angezeigt wird, dass der Hostschlüssel des Servers nicht in der Registrierung zwischengespeichert wird, wählen Sie eine der folgenden Optionen aus. Wenn Sie diesem Host vertrauen, wählen Sie **Ja** aus, um den Schlüssel dem Cache von PuTTy hinzuzufügen und die Verbindungsherstellung fortzusetzen. Wenn Sie die Verbindung nur einmal herstellen möchten, ohne den Schlüssel dem Cache hinzuzufügen, wählen Sie **Nein** aus. Wenn Sie diesem Host nicht vertrauen, wählen Sie **Abbrechen** aus, um die Verbindungsherstellung abzubrechen.
 
 ## <a name="change-the-sa-password"></a><a id="password"></a> Ändern des Systemadministratorkennworts

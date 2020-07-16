@@ -1,10 +1,9 @@
 ---
-title: Konfigurieren einer Verfügbarkeitsgruppe in einer anderen Region
-description: In diesem Artikel erfahren Sie, wie Sie eine SQL Server-Verfügbarkeitsgruppe auf virtuellen Azure-Computern mit einem Replikat in einer anderen Region konfigurieren.
+title: Konfigurieren einer SQL Server Always On-Verfügbarkeitsgruppe in verschiedenen Regionen
+description: In diesem Artikel erfahren Sie, wie Sie eine SQL Server Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern mit einem Replikat in einer anderen Region konfigurieren.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
@@ -15,17 +14,18 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 996b5a59c5c79a045cd396a24778fe0928682c5a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8ab62a93546719e172eec34168a0692daccf281a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84030031"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669306"
 ---
-# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Konfigurieren einer Verfügbarkeitsgruppe auf virtuellen Azure SQL Server-Computern in verschiedenen Regionen
+# <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Konfigurieren einer SQL Server Always On-Verfügbarkeitsgruppe in verschiedenen Azure-Regionen
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In diesem Artikel erfahren Sie, wie Sie ein SQL Server-Always On-Verfügbarkeitsgruppenreplikat auf virtuellen Azure Computern an einem Azure-Remotestandort konfigurieren. Verwenden Sie diese Konfiguration, um die Notfallwiederherstellung zu unterstützen.
+In diesem Artikel erfahren Sie, wie Sie ein Replikat einer SQL Server Always On-Verfügbarkeitsgruppe auf virtuellen Azure Computern an einem Azure-Remotestandort konfigurieren. Verwenden Sie diese Konfiguration, um die Notfallwiederherstellung zu unterstützen.
 
 Dieser Artikel gilt für Azure Virtual Machines im Resource Manager-Modus.
 
@@ -133,7 +133,7 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 
 1. [Legen Sie die Clusterparameter in PowerShell fest](availability-group-manually-configure-tutorial.md#setparam).
 
-Führen Sie das PowerShell-Skript mit dem Clusternetzwerknamen, der IP-Adresse und dem Testport aus, die Sie für den Lastenausgleich in der neuen Region konfiguriert haben.
+   Führen Sie das PowerShell-Skript mit dem Clusternetzwerknamen, der IP-Adresse und dem Testport aus, die Sie für den Lastenausgleich in der neuen Region konfiguriert haben.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
@@ -170,16 +170,16 @@ Falls Sie die Verbindungszeichenfolgen nicht ändern können, können Sie den Na
 Sie können ein Failover des Replikats auf die Remoteregion durchführen, um die Verbindung zwischen Listener und Remoteregion zu testen. Bei einem asynchronen Replikat können beim Failover Daten verloren gehen. Konfigurieren Sie den Verfügbarkeitsmodus als synchron und den Failovermodus als automatisch, um Datenverluste beim Failover zu vermeiden. Führen Sie die folgenden Schritte durch:
 
 1. Stellen Sie im **Objekt-Explorer** eine Verbindung mit der Instanz von SQL Server her, die als Host für das primäre Replikat fungiert.
-1. Klicken Sie unter **AlwaysOn-Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppen** mit der rechten Maustaste auf Ihre Verfügbarkeitsgruppe, und klicken Sie anschließend auf **Eigenschaften**.
+1. Klicken Sie unter **AlwaysOn-Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppen** mit der rechten Maustaste auf Ihre Verfügbarkeitsgruppe, und wählen **Eigenschaften** aus.
 1. Konfigurieren Sie auf der Seite **Allgemein** unter **Verfügbarkeitsreplikate** das sekundäre Replikat am Notfallwiederherstellungsstandort mit dem Verfügbarkeitsmodus **Synchroner Commit** und dem Failovermodus **Automatisch**.
 1. Wenn Sie zur Erzielung von Hochverfügbarkeit über ein sekundäres Replikat verfügen, das sich am gleichen Standort befindet wie Ihr primäres Replikat, legen Sie dieses Replikat auf **Asynchroner Commit** und **Manuell** fest.
-1. Klicken Sie auf OK.
-1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Verfügbarkeitsgruppe, und klicken Sie anschließend auf **Dashboard anzeigen**.
+1. Wählen Sie „OK“ aus.
+1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Verfügbarkeitsgruppe, und wählen Sie anschließend **Dashboard anzeigen** aus.
 1. Vergewissern Sie sich auf dem Dashboard, dass das Replikat am Notfallwiederherstellungsstandort synchronisiert wird.
-1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Verfügbarkeitsgruppe, und klicken Sie anschließend auf **Failover...** . In SQL Server Management Studio wird ein SQL Server-Failover-Assistent geöffnet.  
-1. Klicken Sie auf **Weiter**, und wählen Sie die SQL Server-Instanz am Notfallwiederherstellungsstandort aus. Klicken Sie erneut auf **Weiter** .
-1. Stellen Sie eine Verbindung mit der SQL Server-Instanz am Notfallwiederherstellungsstandort her, und klicken Sie auf **Weiter**.
-1. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und klicken Sie anschließend auf **Fertig stellen**.
+1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Verfügbarkeitsgruppe, und wählen Sie anschließend **Failover...** aus. In SQL Server Management Studio wird ein SQL Server-Failover-Assistent geöffnet.  
+1. Wählen Sie **Weiter** aus, und wählen Sie die SQL Server-Instanz am Notfallwiederherstellungsstandort aus. Wählen Sie erneut **Weiter** aus.
+1. Stellen Sie eine Verbindung mit der SQL Server-Instanz am Notfallwiederherstellungsstandort her, und wählen Sie **Weiter** aus.
+1. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und wählen Sie anschließend **Fertig stellen** aus.
 
 Verschieben Sie das primäre Replikat nach dem Testen der Verbindung wieder in Ihr primäres Rechenzentrum, und legen Sie den Verfügbarkeitsmodus wieder auf die normalen Betriebseinstellungen fest. Die folgende Tabelle enthält die normalen Betriebseinstellungen für die in diesem Dokument beschriebene Architektur:
 
@@ -197,7 +197,7 @@ Weitere Informationen finden Sie in den folgenden Themen:
 - [Ausführen eines geplanten manuellen Failovers einer Verfügbarkeitsgruppe (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [Ausführen eines erzwungenen manuellen Failovers einer Verfügbarkeitsgruppe (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
-## <a name="additional-links"></a>Weitere Links
+## <a name="next-steps"></a>Nächste Schritte
 
 * [AlwaysOn-Verfügbarkeitsgruppen](https://msdn.microsoft.com/library/hh510230.aspx)
 * [Dokumentation zu virtuellen Computern](https://docs.microsoft.com/azure/virtual-machines/windows/)

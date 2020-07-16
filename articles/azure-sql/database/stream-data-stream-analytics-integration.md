@@ -1,5 +1,5 @@
 ---
-title: Streamen von Daten mithilfe der Stream Analytics-Integration (Vorschau)
+title: Streamen von Daten mithilfe der Azure Stream Analytics-Integration (Vorschauversion)
 description: Verwenden der Azure Stream Analytics-Integration zum Streamen von Daten an Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,16 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: ea129902e5ab30a5d7f7a70c3606d4aa73cd84a5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 90d3507a8867ad3556891f6001f0e15ebda8c4f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84030551"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84345358"
 ---
-# <a name="stream-data-into-azure-sql-database-using-stream-analytics-integration-preview"></a>Streamen von Daten an Azure SQL-Datenbank mithilfe der Stream Analytics-Integration (Vorschau)
-[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
+# <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Streamen von Daten an Azure SQL-Datenbank mithilfe der Azure Stream Analytics-Integration (Vorschauversion)
 
-Benutzer können jetzt mithilfe von [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) Streamingdaten in Echtzeit direkt aus einer SQL-Datenbank im Azure-Portal in einer Tabelle erfassen, verarbeiten, anzeigen und analysieren. Dies ermöglicht eine Vielzahl von Szenarien, wie z.B. vernetzte Fahrzeuge, Remoteüberwachung, Betrugserkennung und vieles mehr. Im Azure-Portal können Sie eine Ereignisquelle (Event Hub/IOT Hub) auswählen, eingehende Echtzeitereignisse anzeigen und eine Tabelle zum Speichern von Ereignissen auswählen. Sie können im Portal auch Abfragen in der Stream Analytics-Abfragesprache schreiben, um eingehende Ereignisse zu transformieren und in der ausgewählten Tabelle zu speichern. Dieser neue Einstiegspunkt wird zusätzlich zu den Erstellungs- und Konfigurationsfunktionen geboten, die bereits in Stream Analytics vorhanden sind. Diese Funktionalität beginnt im Kontext Ihrer Datenbank, sodass Sie schnell einen Stream Analytics-Auftrag einrichten und nahtlos zwischen der Azure SQL-Datenbank und Stream Analytics navigieren können.
+Benutzer können Streamingdaten jetzt in Echtzeit direkt aus einer Datenbank in Azure SQL-Datenbank in einer Tabelle erfassen, verarbeiten, anzeigen und analysieren. Sie müssen dazu lediglich im Azure-Portal den Dienst [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) verwenden. Dies ermöglicht eine Vielzahl von Szenarien, wie z.B. vernetzte Fahrzeuge, Remoteüberwachung, Betrugserkennung und vieles mehr. Im Azure-Portal können Sie eine Ereignisquelle (Event Hub/IOT Hub) auswählen, eingehende Echtzeitereignisse anzeigen und eine Tabelle zum Speichern von Ereignissen auswählen. Sie können im Portal auch Abfragen in der Azure Stream Analytics-Abfragesprache schreiben, um eingehende Ereignisse zu transformieren und in der ausgewählten Tabelle zu speichern. Dieser neue Einstiegspunkt wird zusätzlich zu den Erstellungs- und Konfigurationsfunktionen geboten, die bereits in Stream Analytics vorhanden sind. Diese Funktionalität ermöglicht es Ihnen, direkt im Kontext Ihrer Datenbank einen Stream Analytics-Auftrag einzurichten und nahtlos zwischen der Datenbank in Azure SQL-Datenbank und Stream Analytics zu navigieren.
 
 ![Ablauf in Stream Analytics](./media/stream-data-stream-analytics-integration/stream-analytics-flow.png)
 
@@ -32,7 +31,7 @@ Benutzer können jetzt mithilfe von [Azure Stream Analytics](../../stream-analyt
 - Zusätzliche Benutzerfreundlichkeit mit Vorschau von Daten: Sie können eine Vorschau eingehender Daten aus der Ereignisquelle (Event Hub/IOT Hub) im Kontext der ausgewählten Tabelle anzeigen.
 
 > [!IMPORTANT]
-> Ein Azure Stream Analytics-Auftrag kann Ausgaben an Azure SQL-Datenbank, Azure SQL Managed Instance oder Azure Synapse (zuvor Azure SQL Data Warehouse) übermitteln. Weitere Informationen finden Sie unter [Ausgaben](../../stream-analytics/stream-analytics-define-outputs.md#sql-database).
+> Ein Azure Stream Analytics-Auftrag kann Ergebnisse in Azure SQL-Datenbank, Azure SQL Managed Instance oder Azure Synapse Analytics (zuvor Azure SQL Data Warehouse) ausgeben. Weitere Informationen finden Sie unter [Ausgaben](../../stream-analytics/stream-analytics-define-outputs.md#sql-database).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,7 +48,7 @@ Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen
 
     ![Stream Analytics](./media/stream-data-stream-analytics-integration/stream-analytics.png)
 
-3. Klicken Sie auf **Erstellen**, und geben Sie Ihrem Streamingauftrag einen Namen, um mit dem Erfassen von Streamingdaten in dieser SQL-Datenbank-Instanz zu beginnen. Klicken Sie anschließend auf **Next: Input** (Weiter: Eingabe).
+3. Klicken Sie auf **Erstellen**, und geben Sie Ihrem Streamingauftrag einen Namen, um mit dem Erfassen von Streamingdaten in dieser Datenbank zu beginnen. Klicken Sie anschließend auf **Next: Input** (Weiter: Eingabe).
 
     ![Erstellen eines Stream Analytics-Auftrags](./media/stream-data-stream-analytics-integration/create-job.png)
 
@@ -76,7 +75,7 @@ Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen
 
 6. Es wird eine Abfrageseite mit folgenden Details geöffnet:
 
-   - Ihre **Eingabe** (Eingabeereignisquelle), aus der Daten erfasst werden.  
+   - Ihre **Eingabe** (Eingabeereignisquelle), aus der Daten erfasst werden  
    - Ihre **Ausgabe** (Ausgabetabelle), in der transformierte Daten gespeichert werden.
    - Eine [SAQL-Beispielabfrage](../../stream-analytics/stream-analytics-stream-analytics-query-patterns.md) mit SELECT-Anweisung.
    - **Eingabevorschau**: Zeigt eine Momentaufnahme der neuesten eingehenden Daten aus der Eingabeereignisquelle.
@@ -99,16 +98,16 @@ Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen
    - **Ausgabeschema**: Hier ist das Schema der Tabelle enthalten, die Sie in Schritt 5 (neu oder vorhanden) ausgewählt haben.
 
       - Neu erstellen: Wenn Sie diese Option in Schritt 5 ausgewählt haben, wird das Schema erst angezeigt, wenn Sie den Streamingauftrag starten. Beim Erstellen einer neuen Tabelle wählen Sie den entsprechenden Tabellenindex aus. Weitere Informationen zur Tabellenindizierung finden Sie unter [Beschreibung von gruppierten und nicht gruppierten Indizes](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described/).
-      - Vorhandene verwenden: Wenn Sie diese Option in Schritt 5 ausgewählt haben, wird das Schema der ausgewählten Tabelle angezeigt.
+      - Vorhandene verwenden: Wenn Sie in Schritt 5 diese Option ausgewählt haben, wird das Schema der ausgewählten Tabelle angezeigt.
 
-7. Wenn Sie mit dem Erstellen und Testen der Abfrage fertig sind, wählen Sie **Abfrage speichern** aus. Wählen Sie **Stream Analytics-Auftrag starten** aus, um mit dem Erfassen transformierter Daten in der SQL-Tabelle zu beginnen. Nachdem Sie die folgenden Felder fertiggestellt haben, **starten** Sie den Auftrag.
+7. Wenn Sie das Erstellen und Testen der Abfrage abgeschlossen haben, klicken Sie auf **Abfrage speichern**. Wählen Sie **Stream Analytics-Auftrag starten** aus, um mit dem Erfassen transformierter Daten in der SQL-Tabelle zu beginnen. Nachdem Sie die folgenden Felder fertiggestellt haben, **starten** Sie den Auftrag.
    - **Startzeitpunkt der Ausgabe**: Hiermit wird der Zeitpunkt der ersten Ausgabe des Auftrags definiert.  
      - Jetzt: Der Auftrag wird jetzt gestartet, und neue eingehende Daten werden verarbeitet.
      - Benutzerdefiniert: Der Auftrag wird jetzt gestartet, verarbeitet jedoch Daten ab einem bestimmten Zeitpunkt (der in der Vergangenheit oder der Zukunft liegen kann). Weitere Informationen finden Sie unter [Starten eines Azure Stream Analytics-Auftrags](../../stream-analytics/start-job.md).
    - **Streamingeinheiten**: Die Kosten für Azure Stream Analytics werden nach der Anzahl von Streamingeinheiten berechnet, die für die Verarbeitung der Daten im Dienst erforderlich sind. Weitere Informationen finden Sie unter [Azure Stream Analytics – Preise](https://azure.microsoft.com/pricing/details/stream-analytics/).
    - **Fehlerbehandlung für Ausgabedaten**:  
      - Wiederholung: Wenn ein Fehler auftritt, wiederholt Azure Stream Analytics den Schreibvorgang für das Ereignis unbegrenzt, bis er erfolgreich ist. Für Wiederholungen gilt kein Timeout. Letztendlich wird die Verarbeitung aller nachfolgenden Ereignisse durch das Ereignis blockiert, für das Wiederholungen ausgeführt werden. Diese Option ist die Standardrichtlinie für die Ausgabefehlerbehandlung.
-     - Verwerfen: Azure Stream Analytics verwirft jedes Ausgabeereignis, das zu einem Konvertierungsfehler führt. Die verworfenen Ereignisse können nicht zur späteren erneuten Verarbeitung wiederhergestellt werden. Alle vorübergehenden Fehler (z.B. Netzwerkfehler) werden unabhängig von der Konfiguration der Richtlinien für die Ausgabefehlerbehandlung wiederholt.
+     - Verwerfen: Azure Stream Analytics verwirft jedes Ausgabeereignis, das zu einem Konvertierungsfehler führt. Die verworfenen Ereignisse können nicht zwecks späterer Neuverarbeitung wiederhergestellt werden. Alle vorübergehenden Fehler (z.B. Netzwerkfehler) werden unabhängig von der Konfiguration der Richtlinien für die Ausgabefehlerbehandlung wiederholt.
    - **Ausgabeeinstellungen für SQL-Datenbank**: Eine Option zum Erben des Partitionierungsschemas Ihres vorherigen Abfrageschrittes, um die vollständig parallele Topologie mit mehreren in die Tabelle Schreibenden zu aktivieren. Weitere Informationen finden Sie unter [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](../../stream-analytics/stream-analytics-sql-output-perf.md).
    - **Maximal zulässige Batchanzahl**: Der empfohlene obere Grenzwert für die Anzahl der Sätze, die mit jeder Transaktion zum Masseneinfügen gesendet werden.  
     Weitere Informationen zur Behandlung von Ausgabefehlern finden Sie unter [Ausgabefehlerrichtlinien in Azure Stream Analytics](../../stream-analytics/stream-analytics-output-error-policy.md).  
@@ -119,7 +118,7 @@ Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen
    - **Auftrag starten/beenden**: Wenn der Auftrag ausgeführt wird, können Sie ihn beenden. Wenn der Auftrag beendet wurde, können Sie ihn starten.
    - **Auftrag bearbeiten**: Sie können die Abfrage bearbeiten. Wenn Sie weitere Änderungen am Auftrag vornehmen möchten, fügen Sie weitere Eingaben/Ausgaben hinzu, und öffnen Sie dann den Auftrag in Stream Analytics. Bei Ausführung des Auftrags ist die Bearbeitungsoption deaktiviert.
    - **Vorschau der Ausgabetabelle**: Sie können eine Vorschau der Tabelle im SQL-Abfrage-Editor anzeigen.
-   - **In Stream Analytics öffnen**: Öffnen Sie den Auftrag im Stream Analytics-Dienst, um Details zur Überwachung und zum Debuggen des Auftrags anzuzeigen.
+   - **In Stream Analytics öffnen**: Öffnen Sie den Auftrag in Stream Analytics, um Details zur Überwachung und zum Debuggen des Auftrags anzuzeigen.
 
      ![Stream Analytics-Aufträge](./media/stream-data-stream-analytics-integration/jobs.png)
 
@@ -127,3 +126,4 @@ Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen
 
 - [Azure Stream Analytics-Dokumentation](https://docs.microsoft.com/azure/stream-analytics/)
 - [Lösungsmuster in Azure Stream Analytics](../../stream-analytics/stream-analytics-solution-patterns.md)
+ 

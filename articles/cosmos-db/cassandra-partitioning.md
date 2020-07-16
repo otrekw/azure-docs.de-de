@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2f62af434a49d11cdc1acfc4a09b5bffbd69140b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 5f159ffcea0aa88f354ae503be96a5c571c10adb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316411"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806831"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Partitionierung in der Cassandra-API von Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Aus Entwicklersicht verhält sich die Partitionierung bei der Cassandra-API von 
 
 In Azure Cosmos DB wird jeder Computer, auf dem Partitionen gespeichert sind, als eine [physische Partition](partition-data.md#physical-partitions) bezeichnet. Die physische Partition ähnelt einem virtuellen Computer, einer dedizierten Compute-Einheit oder eine Gruppe physischer Ressourcen. Jede in dieser Compute-Einheit gespeicherte Partition wird in Azure Cosmos DB als [logische Partition](partition-data.md#logical-partitions) bezeichnet. Wenn Sie bereits mit Apache Cassandra vertraut sind, können Sie sich logische Partitionen wie reguläre Partitionen in Cassandra vorstellen. 
 
-Apache Cassandra empfiehlt für die Datenmenge, die in einer Partition gespeichert werden kann, eine Größenbeschränkung von 100 MB. Die Cassandra-API von Azure Cosmos DB ermöglicht bis zu 20 GB pro logischer Partition und bis zu 50 GB an Daten pro physischer Partition. In Azure Cosmos DB wird die in der physischen Partition verfügbare Computekapazität im Gegensatz zu Apache Cassandra mithilfe der speziellen Metrik [Anforderungseinheit](request-units.md) ausgedrückt, sodass Sie Ihre Workload nach Anforderungen pro Sekunde (Lese- oder Schreibvorgänge) und nicht nach Kernen, Arbeitsspeicher oder IOPS definieren. Dies vereinfacht die Kapazitätsplanung, sofern Sie die Kosten der einzelnen Anforderungen verstanden haben. Für jede physische Partition können bis zu 10.000 RUs an Computekapazität bereitgestellt werden. Weitere Informationen zu Skalierbarkeitsoptionen finden Sie im Artikel zur [elastischen Skalierung](manage-scale-cassandra.md) in der Cassandra-API. 
+Apache Cassandra empfiehlt für die Datenmenge, die in einer Partition gespeichert werden kann, eine Größenbeschränkung von 100 MB. Die Cassandra-API für Azure Cosmos DB ermöglicht bis zu 20 GB pro logische Partition und bis zu 30 GB Daten pro physische Partition. In Azure Cosmos DB wird die in der physischen Partition verfügbare Computekapazität im Gegensatz zu Apache Cassandra mithilfe der speziellen Metrik [Anforderungseinheit](request-units.md) ausgedrückt, sodass Sie Ihre Workload nach Anforderungen pro Sekunde (Lese- oder Schreibvorgänge) und nicht nach Kernen, Arbeitsspeicher oder IOPS definieren. Dies vereinfacht die Kapazitätsplanung, sofern Sie die Kosten der einzelnen Anforderungen verstanden haben. Für jede physische Partition können bis zu 10.000 RUs an Computekapazität bereitgestellt werden. Weitere Informationen zu Skalierbarkeitsoptionen finden Sie im Artikel zur [elastischen Skalierung](manage-scale-cassandra.md) in der Cassandra-API. 
 
 In Azure Cosmos DB besteht jede physische Partition aus einem Satz von Replikaten (auch als Replikatgruppen bezeichnet), wobei jede Partition mindestens 4 Replikate aufweist. Bei Apache Cassandra können Sie im Gegensatz dazu zwar einen Replikationsfaktor von 1 festlegen, dies führt jedoch zu einer geringeren Verfügbarkeit, wenn der einzige Knoten mit den Daten ausfällt. In der Cassandra-API lautet der Replikationsfaktor immer 4 (Quorum von 3). Azure Cosmos DB verwaltet Replikatgruppen automatisch, während sie in Apache Cassandra mithilfe verschiedener Tools verwaltet werden müssen. 
 
@@ -53,7 +53,7 @@ CREATE TABLE uprofile.user (
 
 Bei diesem Entwurf wurde das Feld `id` als Primärschlüssel definiert. Der Primärschlüssel fungiert als Bezeichner für den Datensatz in der Tabelle und wird darüber hinaus in Azure Cosmos DB auch als Partitionsschlüssel verwendet. Wenn der Primärschlüssel auf die beschriebene Weise definiert ist, gibt es in jeder Partition nur einen einzelnen Datensatz. Dies führt beim Schreiben von Daten in die Datenbank zu einer perfekt horizontalen und skalierbaren Verteilung und eignet sich damit ideal für Anwendungsfälle mit Schlüsselwertsuchen. Die Anwendung sollte beim Lesen von Daten aus der Tabelle den Primärschlüssel angeben, um die Leseleistung zu maximieren. 
 
-![Partitionen](./media/cassandra-partitioning/cassandra-partitioning.png)
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning.png" alt-text="Partitionen" border="false":::
 
 
 ## <a name="compound-primary-key"></a>Zusammengesetzter Primärschlüssel
@@ -83,11 +83,11 @@ insert into uprofile.user (user, id, message) values ('theo', 2, 'hello again');
 
 Wenn Daten zurückgegeben werden, werden diese, wie in Apache Cassandra erwartet, nach dem Clusteringschlüssel sortiert:
 
-![Partitionen](./media/cassandra-partitioning/select-from-pk.png)
+:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="Partitionen":::
 
 Mit einem solchen Datenmodell können jeder Partition mehrere Datensätze gruppiert nach Benutzer zugewiesen werden. Sie können daher eine Abfrage ausgeben, die durch den `partition key` (in diesem Fall `user`) effizient weitergeleitet wird, um alle Nachrichten für einen bestimmten Benutzer abzurufen. 
 
-![Partitionen](./media/cassandra-partitioning/cassandra-partitioning2.png)
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="Partitionen" border="false":::
 
 
 ## <a name="composite-partition-key"></a>Zusammengesetzter Partitionsschlüssel

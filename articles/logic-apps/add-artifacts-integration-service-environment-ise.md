@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79140895"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830025"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Hinzufügen von Ressourcen zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
 
@@ -26,7 +26,7 @@ Fügen Sie nach dem Erstellen einer [Integrationsdienstumgebung (ISE)](../logic-
 
 * Die ISE, die Sie für die Ausführung Ihrer Logik-Apps erstellt haben. Besitzen Sie keine ISE, [erstellen Sie zuerst eine](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
-* Zum Erstellen, Hinzufügen oder Aktualisieren von Ressourcen, die in einer ISE bereitgestellt werden, muss Ihnen eine der Rollen „Besitzer“ oder „Mitwirkender“ für diese ISE zugewiesen sein, oder Sie benötigen Berechtigungen, die Sie über das mit der ISE verknüpfte Azure-Abonnement oder die Azure-Ressourcengruppe geerbt haben. Personen, die nicht über die Rollen „Besitzer“ oder „Mitwirkender“ oder über geerbte Berechtigungen verfügen, kann eine der Rollen „Mitwirkender für Integrationsdienstumgebungen“ oder „Entwickler für Integrationsdienstumgebungen“ zugewiesen werden. Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?](../role-based-access-control/overview.md).
+* Zum Erstellen, Hinzufügen oder Aktualisieren von Ressourcen, die in einer ISE bereitgestellt werden, muss Ihnen eine der Rollen „Besitzer“ oder „Mitwirkender“ für diese ISE zugewiesen sein, oder Sie benötigen Berechtigungen, die Sie über das mit der ISE verknüpfte Azure-Abonnement oder die Azure-Ressourcengruppe geerbt haben. Personen, die nicht über die Rollen „Besitzer“ oder „Mitwirkender“ oder über geerbte Berechtigungen verfügen, kann eine der Rollen „Mitwirkender für Integrationsdienstumgebungen“ oder „Entwickler für Integrationsdienstumgebungen“ zugewiesen werden. Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md).
 
 <a name="create-logic-apps-environment"></a>
 

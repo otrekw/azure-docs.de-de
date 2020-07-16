@@ -4,14 +4,14 @@ description: Erfahren Sie mehr über die ORDER BY-Klausel von SQL für Azure Cos
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 06/06/2020
 ms.author: tisande
-ms.openlocfilehash: 70702ee4a77e8b3c46de4354f3394bca4080d837
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: c4ae66884602989284a427bdc33de7612bd9a8df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641394"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484337"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY-Klausel in Azure Cosmos DB
 
@@ -215,6 +215,11 @@ Die Ergebnisse sind:
     }
 ]
 ```
+
+> [!Note]
+> Nur Version 3.4.0 oder höher des .NET SDK unterstützt ORDER BY-Klauseln mit gemischten Typen. Wenn Sie also nach einer Kombination aus nicht definierten und definierten Werten sortieren möchten, sollten Sie diese Version (oder höher) verwenden.
+
+Sie können nicht steuern, in welcher Reihenfolge verschiedene Typen in den Ergebnissen angezeigt werden. Im obigen Beispiel wurde gezeigt, wie nicht definierte Werte vor Zeichenfolgenwerten sortiert wurden. Wenn Sie z. B. eine bessere Kontrolle über die Sortierreihenfolge von nicht definierten Werten möchten, können Sie allen nicht definierten Eigenschaften den Zeichenfolgenwert "aaaaaaaaa" oder "zzzzzzzz" zuweisen, um sicherzustellen, dass sie entweder an erster oder letzter Stelle stehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

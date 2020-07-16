@@ -7,25 +7,25 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/28/2019
+ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f95a1a08189668e5b6f88941069566b00a73bce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 433ccecdc5eee5314114d020571761ee82afd6b9
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77499190"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024099"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivieren meiner Azure AD-Rollen in PIM
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) vereinfacht die Art und Weise, in der Unternehmen den privilegierten Zugriff auf Ressourcen in Azure AD und anderen Onlinediensten von Microsoft wie Office 365 oder Microsoft Intune verwalten.  
 
-Wenn Sie für eine Administratorrolle berechtigt sind, können Sie diese Rolle aktivieren, um privilegierte Aufgaben durchzuführen. Wenn Sie z. B. gelegentlich Office 365-Funktionen verwalten, dürfen Ihre privilegierte Rollenadministratoren Ihrer Organisation Sie nicht als permanenten globalen Administrator festlegen, da sich diese Rolle auf andere Dienste auswirkt. Stattdessen gewähren sie Ihnen Berechtigungen für Azure AD-Rollen wie z. B. Exchange Online-Administrator. Sie können eine Aktivierung dieser Rolle anfordern, wenn Sie diese Berechtigungen benötigen, und verfügen damit für einen bestimmten Zeitraum über Administratorkontrolle.
+Wenn Sie für eine Administratorrolle berechtigt sind, müssen Sie diese Rollenzuweisung aktivieren, wenn Sie privilegierte Aufgaben durchführen müssen. Wenn Sie z. B. gelegentlich Office 365-Funktionen verwalten, dürfen Ihre privilegierte Rollenadministratoren Ihrer Organisation Sie nicht als permanenten globalen Administrator festlegen, da sich diese Rolle auf andere Dienste auswirkt. Stattdessen gewähren sie Ihnen Berechtigungen für Azure AD-Rollen wie z. B. Exchange Online-Administrator. Sie können eine Aktivierung dieser Rolle anfordern, wenn Sie diese Berechtigungen benötigen, und verfügen damit für einen bestimmten Zeitraum über Administratorkontrolle.
 
 Dieser Artikel richtet sich an Administratoren, die ihre Azure AD-Rolle in Privileged Identity Management aktivieren müssen.
 
@@ -42,7 +42,7 @@ Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management a
 
 ## <a name="activate-a-role"></a>Aktivieren einer Rolle
 
-Wenn Sie eine Azure AD-Rolle annehmen müssen, können Sie in Privileged Identity Management mithilfe der Navigationsoption **Meine Rollen** die Aktivierung anfordern.
+Wenn Sie eine Azure AD-Rolle annehmen müssen, können Sie in Privileged Identity Management die Aktivierung anfordern, indem Sie die Option **Meine Rollen** öffnen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -56,7 +56,7 @@ Wenn Sie eine Azure AD-Rolle annehmen müssen, können Sie in Privileged Identit
 
     ![Azure AD-Rollen: Liste meiner berechtigten Rollen](./media/pim-how-to-activate-role/activate-link.png)
 
-1. Wählen Sie **Aktivieren** aus, um den Bereich „Aktivieren“ zu öffnen.
+1. Wählen Sie **Aktivieren** aus, um die Seite „Aktivieren“ zu öffnen.
 
     ![Azure AD Rollen: Aktivierungsseite mit Dauer und Bereich](./media/pim-how-to-activate-role/activate-page.png)
 
@@ -76,29 +76,9 @@ Wenn Sie eine Azure AD-Rolle annehmen müssen, können Sie in Privileged Identit
 
 1. Wählen Sie **Aktivieren**aus.
 
-    Wenn für die Rolle keine Genehmigung erforderlich ist, wird sie aktiviert und der Liste der aktiven Rollen hinzugefügt. Wenn Sie die Rolle verwenden möchten, führen Sie die im nächsten Abschnitt beschriebenen Schritte aus.
-
-    ![Vervollständigter Aktivierungsbereich mit Umfang, Startzeit, Dauer und Grund](./media/pim-how-to-activate-role/azure-ad-activation-status.png)
-
     Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](pim-resource-roles-approval-workflow.md), werden Sie über eine Benachrichtigung in der oberen rechten Ecke des Browsers darüber informiert, dass die Genehmigung der Anforderung aussteht.
 
     ![Ausstehende Genehmigung für die Aktivierungsanforderung](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
-
-## <a name="use-a-role-immediately-after-activation"></a>Verwenden einer Rolle sofort nach der Aktivierung
-
-Führen Sie im Falle einer Verzögerung nach der Aktivierung die folgenden Schritte nach der Aktivierung aus, um Ihre Azure AD-Rollen sofort zu verwenden.
-
-1. Öffnen Sie Azure AD Privileged Identity Management.
-
-1. Wählen Sie **Meine Rollen** aus, um eine Liste der Azure AD-Rollen und Azure-Ressourcenrollen anzuzeigen, für die Sie berechtigt sind.
-
-1. Wählen Sie **Azure AD-Rollen** aus.
-
-1. Wählen Sie die Registerkarte **Aktive Rollen** aus.
-
-1. Sobald die Rolle aktiv ist, melden Sie sich vom Portal ab und dann erneut an.
-
-    Die Rolle sollte jetzt zur Verwendung zur Verfügung stehen.
 
 ## <a name="view-the-status-of-your-requests"></a>Anzeigen des Status Ihrer Anforderungen
 
@@ -133,8 +113,6 @@ Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich 
 Wenn Sie in Privileged Identity Management eine Rolle aktivieren, wird die Aktivierung möglicherweise nicht sofort an alle Portale weitergegeben, für die diese privilegierte Rolle benötigt wird. In einigen Fällen kann die Web-Zwischenspeicherung im Portal auch dann dazu führen, dass die Änderung nicht sofort wirksam ist, wenn diese weitergegeben wurde. Falls die Aktivierung verzögert ist, sollten Sie Folgendes tun.
 
 1. Melden Sie sich vom Azure-Portal ab und dann wieder an.
-
-    Wenn Sie eine Azure AD-Rolle aktivieren, werden die Phasen Ihrer Aktivierung angezeigt. Nach Abschluss aller Phasen wird der Link **Abmelden** angezeigt. Sie können diesen Link verwenden, um sich abzumelden. Hiermit werden die meisten Fälle von Verzögerungen bei der Aktivierung gelöst.
 
 1. Überprüfen Sie in Privileged Identity Management, ob Sie als Mitglied der Rolle aufgeführt sind.
 

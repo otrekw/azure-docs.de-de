@@ -1,10 +1,9 @@
 ---
-title: SQL Server auf virtuellen Linux-Computern in Azure – FAQ | Microsoft-Dokumentation
-description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Ausführung von SQL Server auf virtuellen Linux-Computern in Azure.
+title: 'SQL Server auf virtuellen Linux-Computern: häufig gestellte Fragen | Microsoft-Dokumentation'
+description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Ausführung von SQL Server auf virtuellen Linux-Computern.
 services: virtual-machines-linux
 documentationcenter: ''
 author: MashaMSFT
-manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.topic: troubleshooting
@@ -12,21 +11,21 @@ ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f5447e61936b55db353404aae7cb391377d78294
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: afd36eb079b6e5f29fa664050cded3c5ddd17d8e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84035341"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669459"
 ---
-# <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Häufig gestellte Fragen zu SQL Server auf virtuellen Linux-Computern in Azure
+# <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>Häufig gestellte Fragen zu SQL Server auf virtuellen Linux-Computern
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [Windows](../windows/frequently-asked-questions-faq.md)
 > * [Linux](frequently-asked-questions-faq.md)
 
-Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführung von [SQL Server auf virtuellen Linux-Computern in Azure](sql-server-on-linux-vm-what-is-iaas-overview.md).
+Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführung von [SQL Server auf virtuellen Linux-Computern](sql-server-on-linux-vm-what-is-iaas-overview.md).
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
@@ -34,7 +33,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Welche Images im SQL Server Virtual Machine-Katalog sind verfügbar?**
 
-   Azure verwaltet Images virtueller Computer für alle unterstützten Hauptversionen von SQL Server in allen Editionen für Linux und Windows. Weitere Informationen finden Sie in der vollständigen Liste der [Linux-VM-Images](sql-server-on-linux-vm-what-is-iaas-overview.md#create) und [Windows-VM-Images](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo).
+   Azure verwaltet Images virtueller Computer (VMs) für alle unterstützten Hauptversionen von SQL Server in allen Editionen für Linux und Windows. Weitere Informationen finden Sie in der vollständigen Liste der [Linux-VM-Images](sql-server-on-linux-vm-what-is-iaas-overview.md#create) und [Windows-VM-Images](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo).
 
 1. **Werden vorhandene Images im SQL Server Virtual Machine-Katalog aktualisiert?**
 
@@ -42,7 +41,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Welche zugehörigen SQL Server-Pakete werden ebenfalls installiert?**
 
-   Eine Liste der SQL Server-Pakete, die auf SQL Server-Linux-VMs standardmäßig installiert sind, finden Sie unter [installierte Pakete](sql-server-on-linux-vm-what-is-iaas-overview.md#packages).
+   Eine Liste der SQL Server-Pakete, die auf SQL Server-Linux-VMs standardmäßig installiert sind, finden Sie unter [Installierte Pakete](sql-server-on-linux-vm-what-is-iaas-overview.md#packages).
 
 1. **Können Images von virtuellen SQL Server-Computern aus dem Katalog entfernt werden?**
 
@@ -50,9 +49,9 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 ## <a name="creation"></a>Erstellung
 
-1. **Wie erstelle ich einen virtuellen Linux-Computer in Azure mit SQL Server?**
+1. **Wie erstelle ich einen virtuellen Linux-Computer mit SQL Server?**
 
-   Die einfachste Lösung ist die Erstellung eines virtuellen Linux-Computers, der SQL Server enthält. Ein Tutorial für die Anmeldung bei Azure und das Erstellen einer SQL-VM im Portal finden Sie unter [Bereitstellen eines virtuellen Linux-SQL Server-Computers im Azure-Portal](sql-vm-create-portal-quickstart.md). Sie können SQL Server auch manuell auf einem virtuellen Computer mit einer frei lizenzierten Edition (Developer oder Express) oder einer wiederverwendeten lokalen Lizenz installieren. Wenn Sie Ihre eigene Lizenz verwenden, benötigen Sie die [Lizenzmobilität durch Software Assurance für Azure](https://azure.microsoft.com/pricing/license-mobility).
+   Die einfachste Lösung ist die Erstellung eines virtuellen Linux-Computers, der SQL Server enthält. Ein Tutorial für das Registrieren bei Azure und Erstellen einer SQL Server-VM im Portal finden Sie unter [Bereitstellen eines virtuellen Linux-Computers, auf dem SQL Server ausgeführt wird, im Azure-Portal](sql-vm-create-portal-quickstart.md). Sie können SQL Server auch manuell auf einem virtuellen Computer mit einer frei lizenzierten Edition (Developer oder Express) oder einer wiederverwendeten lokalen Lizenz installieren. Wenn Sie Ihre eigene Lizenz verwenden, benötigen Sie die [Lizenzmobilität durch Software Assurance für Azure](https://azure.microsoft.com/pricing/license-mobility).
 
 1. **Warum kann ich RHEL- und SLES-SQL Server-VMs nicht mit einem Azure-Abonnement bereitstellen, das ein Ausgabenlimit aufweist?**
 
@@ -74,13 +73,13 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 ## <a name="administration"></a>Verwaltung
 
-1. **Kann ich einen virtuellen Linux-Computer mit SQL Server mithilfe von SQL Server Management Studio (SSMS) verwalten?**
+1. **Kann ich einen virtuellen Linux-Computer mit ausgeführtem SQL Server mithilfe von SQL Server Management Studio (SSMS) verwalten?**
 
-   Ja, SSMS ist derzeit jedoch ein Tool nur für Windows. Sie müssen eine Remoteverbindung über einen Windows-Computer herstellen, um SSMS für virtuelle Linux-Computer mit SQL Server zu verwenden. Mit dem neuen Tool [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) können lokal unter Linux zahlreiche administrative Aufgaben durchgeführt werden. Ein plattformübergreifendes Tool für die Datenbankverwaltung finden Sie unter [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is).
+   Ja, SSMS ist derzeit jedoch ein Tool nur für Windows. Sie müssen auf einem Windows-Computer eine Remoteverbindung herstellen, um SSMS für Linux-VMs mit ausgeführtem SQL Server zu verwenden. Mit dem neuen Tool [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) können lokal unter Linux zahlreiche administrative Aufgaben durchgeführt werden. Ein plattformübergreifendes Tool für die Datenbankverwaltung finden Sie unter [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is).
 
-1. **Kann ich SQL Server vollständig von einer SQL-VM entfernen?**
+1. **Kann ich SQL Server vollständig von einer SQL Server-VM entfernen?**
 
-   Ja, die Abrechnung basiert jedoch weiterhin auf Ihrer SQL-VM, wie in den [Preisinformationen für virtuelle Azure-Computer mit SQL Server](../windows/pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json) beschrieben. Wenn Sie SQL Server nicht mehr benötigen, können Sie einen neuen virtuellen Computer bereitstellen und die Daten und Anwendungen zu diesem neuen virtuellen Computer migrieren. Anschließend können Sie den virtuellen SQL Server-Computer entfernen.
+   Ja, die Abrechnung basiert jedoch weiterhin auf Ihrer SQL Server-VM, wie in den [Preisinformationen für virtuelle Azure-Computer mit SQL Server](../windows/pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json) beschrieben. Wenn Sie SQL Server nicht mehr benötigen, können Sie einen neuen virtuellen Computer bereitstellen und die Daten und Anwendungen zu diesem neuen virtuellen Computer migrieren. Anschließend können Sie den virtuellen SQL Server-Computer entfernen.
 
 ## <a name="updating-and-patching"></a>Aktualisieren und Patchen
 
@@ -90,20 +89,20 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 ## <a name="general"></a>Allgemein
 
-1. **Werden SQL Server-Lösungen mit Hochverfügbarkeit auf Azure-VMs unterstützt?**
+1. **Werden SQL Server-Lösungen mit hoher Verfügbarkeit auf Azure-VMs unterstützt?**
 
-   Derzeit leider nicht. Für AlwaysOn-Verfügbarkeitsgruppen und Failoverclustering wird eine Clusteringlösung unter Linux benötigt, z.B. Pacemaker. Die unterstützten Linux-Distributionen für SQL Server unterstützen keine Add-Ons für Hochverfügbarkeit in der Cloud.
+   Derzeit leider nicht. Für Always On-Verfügbarkeitsgruppen und Failoverclustering wird eine Clusteringlösung unter Linux benötigt, z. B. Pacemaker. Die unterstützten Linux-Distributionen für SQL Server unterstützen keine Add-Ons für Hochverfügbarkeit in der Cloud.
 
 ## <a name="resources"></a>Ressourcen
 
 **Virtuelle Linux-Computer:**
 
 * [Übersicht über SQL Server auf einem virtuellen Linux-Computer](sql-server-on-linux-vm-what-is-iaas-overview.md)
-* [Bereitstellen eines virtuellen Linux-Computers mit SQL Server](sql-vm-create-portal-quickstart.md)
+* [Bereitstellen von SQL Server auf einer Linux-VM](sql-vm-create-portal-quickstart.md)
 * [SQL Server unter Linux – Dokumentation](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
 
 **Virtuelle Windows-Computer:**
 
 * [Übersicht über SQL Server auf einem virtuellen Windows-Computer](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Bereitstellen eines virtuellen Windows-Computers mit SQL Server](../windows/sql-vm-create-portal-quickstart.md)
+* [Bereitstellen von SQL Server auf einer Windows-VM](../windows/sql-vm-create-portal-quickstart.md)
 * [Häufig gestellte Fragen (Windows)](../windows/frequently-asked-questions-faq.md)

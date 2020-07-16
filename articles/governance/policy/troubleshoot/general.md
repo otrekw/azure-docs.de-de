@@ -3,12 +3,12 @@ title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen von Richtliniendefinitionen, mit dem jeweiligen SDK und dem Add-On für Kubernetes beheben.
 ms.date: 05/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b1cb8ab51ecc00610f1e04532ba3063be5415607
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6d23a148521506adf0c0fc16913a32aab5eb7a30
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234187"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135578"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Problembehandlung mit Azure Policy
 
@@ -28,7 +28,7 @@ Der Ort, an dem Sie Fehlerdetails finden können, hängt von der Aktion ab, die 
 
 #### <a name="issue"></a>Problem
 
-Azure Policy verwendet [Aliase](../concepts/definition-structure.md#aliases) für die Zuordnung zu Resource Manager-Eigenschaften.
+Azure Policy verwendet [Aliase](../concepts/definition-structure.md#aliases) für die Zuordnung zu Azure Resource Manager-Eigenschaften.
 
 #### <a name="cause"></a>Ursache
 
@@ -95,7 +95,7 @@ Eine Richtlinienzuweisung für den Bereich, in dem sich die neue oder aktualisie
 
 #### <a name="resolution"></a>Lösung
 
-Die Fehlermeldung bei einer Richtlinienzuweisung vom Typ „deny“ umfasst die Richtliniendefinition und die Richtlinienzuweisungs-IDs. Wenn die Fehlerinformationen in der Nachricht fehlen, stehen diese auch im [Aktivitätsprotokoll](../../../azure-monitor/platform/activity-log-view.md) zur Verfügung. Diese Informationen geben Ihnen weitere Details, um die Ressourceneinschränkungen zu verstehen und die Ressourceneigenschaften in der Anforderung so anzupassen, dass sie zulässigen Werten entsprechen.
+Die Fehlermeldung bei einer Richtlinienzuweisung vom Typ „deny“ umfasst die Richtliniendefinition und die Richtlinienzuweisungs-IDs. Wenn die Fehlerinformationen in der Nachricht fehlen, stehen diese auch im [Aktivitätsprotokoll](../../../azure-monitor/platform/activity-log.md#view-the-activity-log) zur Verfügung. Diese Informationen geben Ihnen weitere Details, um die Ressourceneinschränkungen zu verstehen und die Ressourceneigenschaften in der Anforderung so anzupassen, dass sie zulässigen Werten entsprechen.
 
 ## <a name="template-errors"></a>Vorlagenfehler
 
@@ -103,7 +103,7 @@ Die Fehlermeldung bei einer Richtlinienzuweisung vom Typ „deny“ umfasst die 
 
 #### <a name="issue"></a>Problem
 
-Azure Policy unterstützt eine Reihe von Resource Manager-Vorlagenfunktionen und Funktionen, die nur in einer Richtliniendefinition verfügbar sind. Resource Manager verarbeitet diese Funktionen im Rahmen einer Bereitstellung und nicht als Teil einer Richtliniendefinition.
+Azure Policy unterstützt eine Reihe von Azure Resource Manager-Vorlagenfunktionen und Funktionen, die nur in einer Richtliniendefinition verfügbar sind. Resource Manager verarbeitet diese Funktionen im Rahmen einer Bereitstellung und nicht als Teil einer Richtliniendefinition.
 
 #### <a name="cause"></a>Ursache
 
@@ -152,6 +152,6 @@ Befolgen Sie die Anweisungen zum [Entfernen des Azure Policy für Kubernetes-Add
 
 Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
-- Erhalten Sie Antworten von Experten über [Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-policy.html).
+- Erhalten Sie Antworten von Experten über [Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-policy.html).
 - Mit [@AzureSupport](https://twitter.com/azuresupport) verbinden – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit durch Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
 - Wenn Sie weitere Hilfe benötigen, können Sie einen Azure-Supportvorgang anlegen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.

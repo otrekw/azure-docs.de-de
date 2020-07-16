@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0285520c2733cd6e190f9055824cdfed0ce4b842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 59a335e41116818e41579488cc6931ed1534c9ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189853"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984884"
 ---
 # <a name="create-python-model-module"></a>Modul „Create Python Model“
 
@@ -25,7 +25,7 @@ Erfahren Sie, wie Sie das „Create Python Model“-Modul verwenden, um anhand e
 Nachdem Sie das Modell erstellt haben, können Sie es mithilfe von [Train Model](train-model.md) wie alle anderen Learner in Azure Machine Learning mit einem Dataset trainieren. Das trainierte Modell kann an [Score Model](score-model.md) übergeben werden, um Vorhersagen zu treffen. Anschließend können Sie das trainierte Modell speichern und den Bewertungsworkflow als Webdienst veröffentlichen.
 
 > [!WARNING]
-> Derzeit ist es nicht möglich, die bewerteten Ergebnisse eines Python-Modells an [Evaluate Model](evaluate-model.md) zu übergeben. Wenn Sie ein Modell auswerten müssen, können Sie ein benutzerdefiniertes Python-Skript schreiben und es mit dem [Execute Python Script](execute-python-script.md)-Modul ausführen.  
+> Derzeit ist es nicht möglich, dieses Modul mit dem Modul **Tune Model Hyperparameters** (Modellhyperparameter abstimmen) zu verbinden oder das bewertete Ergebnis eines Python-Modells an [Evaluate Model](evaluate-model.md) (Modell auswerten) zu übergeben. Wenn Sie die Hyperparameter abstimmen oder ein Modell auswerten müssen, können Sie mit dem Modul [Execute Python Script](execute-python-script.md) (Python-Skript ausführen) ein benutzerdefiniertes Python-Skript schreiben.
 
 
 ## <a name="configure-the-module"></a>Konfigurieren des Moduls

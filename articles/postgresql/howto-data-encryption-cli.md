@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle di
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: 77c464f51bd17921052b3ae1e9fefb49e777d6c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 731827fb63f8b23d21ea2eddaef3fa9b796d14bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181904"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119581"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Datenverschlüsselung für Azure Database for PostgreSQL-Einzelserver mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -22,28 +22,28 @@ Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle die Datenver
 * Sie müssen über ein Azure-Abonnement verfügen und ein Administrator für dieses Abonnement sein.
 * Erstellen Sie einen Schlüsseltresor und einen Schlüssel, der als vom Kunden verwalteter Schlüssel verwendet werden soll. Aktivieren Sie außerdem den Löschschutz und das vorläufige Löschen für den Schlüsseltresor.
 
-    ```azurecli-interactive
-    az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
-    ```
+   ```azurecli-interactive
+   az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
+   ```
 
 * Erstellen Sie in der von Ihnen erstellten Azure Key Vault-Instanz den Schlüssel, der für die Datenverschlüsselung des Azure Database for PostgreSQL-Einzelservers verwendet wird.
 
-    ```azurecli-interactive
-    az keyvault key create --name <key_name> -p software --vault-name <vault_name>
-    ```
+   ```azurecli-interactive
+   az keyvault key create --name <key_name> -p software --vault-name <vault_name>
+   ```
 
 * Damit Sie einen vorhandenen Schlüsseltresor mit einem vom Kunden verwalteten Schlüssel verwenden können, muss er die folgenden Eigenschaften aufweisen:
   * [Vorläufiges Löschen](../key-vault/general/overview-soft-delete.md)
 
-    ```azurecli-interactive
-    az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
-    ```
+      ```azurecli-interactive
+      az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
+      ```
 
   * [Löschschutz](../key-vault/general/overview-soft-delete.md#purge-protection)
 
-    ```azurecli-interactive
-    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
-    ```
+      ```azurecli-interactive
+      az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
+      ```
 
 * Der Schlüssel muss die folgenden Attribute aufweisen, damit er als vom Kunden verwalteter Schlüssel verwendet werden kann:
   * Kein Ablaufdatum
@@ -54,16 +54,16 @@ Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle die Datenver
 
 1. Es gibt zwei Möglichkeiten, die verwaltete Identität für Ihren Azure Database for PostgreSQL-Einzelserver zu erhalten.
 
-    ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>Erstellen Sie einen Azure Database for MySQL-Server mit einer verwalteten Identität.
+    ### <a name="create-an-new-azure-database-for-postgresql-server-with-a-managed-identity"></a>Erstellen Sie einen Azure Database for PostgreSQL-Server mit einer verwalteten Identität.
 
     ```azurecli-interactive
-    az postgres server create --name -g <resource_group> --location <locations> --storage-size <size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled>  --assign-identity
+    az postgres server create --name <server_name> -g <resource_group> --location <location> --storage-size <size>  -u <user> -p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled> --assign-identity
     ```
 
-    ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>Aktualisieren Sie einen vorhandenen Azure Database for MySQL-Server, um eine verwaltete Identität zu erhalten.
+    ### <a name="update-an-existing-the-azure-database-for-postgresql-server-to-get-a-managed-identity"></a>Aktualisieren Sie einen vorhandenen Azure Database for PostgreSQL-Server, um eine verwaltete Identität zu erhalten.
 
     ```azurecli-interactive
-    az postgres server update –name <server name>  -g <resoure_group> --assign-identity
+    az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
 2. Legen Sie die **Schlüsselberechtigungen** (**Get**, **Wrap**, **Unwrap**) für den **Prinzipal** (Name des PostgreSQL-Einzelservers) fest.
@@ -77,7 +77,7 @@ Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle die Datenver
 1. Aktivieren Sie die Datenverschlüsselung für den Azure Database for PostgreSQL-Einzelserver mithilfe des Schlüssels, der in Azure Key Vault erstellt wurde.
 
     ```azurecli-interactive
-    az postgres server key create –name  <server name>  -g <resource_group> --kid <key url>
+    az postgres server key create --name <server_name> -g <resource_group> --kid <key_url>
     ```
 
     Schlüssel-URL: `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
@@ -88,36 +88,37 @@ Nachdem Azure Database for PostgreSQL mit dem vom Kunden verwalteten Schlüssel,
 
 ### <a name="creating-a-restoredreplica-server"></a>Erstellen eines wiederhergestellten/Replikatservers
 
-  *  [Erstellen eines wiederhergestellten Servers](howto-restore-server-cli.md) 
-  *  [Erstellen eines Lesereplikatservers](howto-read-replicas-cli.md) 
+* [Erstellen eines wiederhergestellten Servers](howto-restore-server-cli.md)
+* [Erstellen eines Lesereplikatservers](howto-read-replicas-cli.md)
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>Nach der Serverwiederherstellung – erneutes Überprüfen der Datenverschlüsselung des wiederhergestellten Servers
 
-    ```azurecli-interactive
-    az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
+```
 
 ## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-postgresql-single-server"></a>Zusätzliche Funktionen für den Schlüssel, der für den Azure Database for PostgreSQL-Einzelserver verwendet wird
 
 ### <a name="get-the-key-used"></a>Abrufen des verwendeten Schlüssels
 
-    ```azurecli-interactive
-    az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
+```
 
-    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+Schlüssel-URL: `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>Auflisten des verwendeten Schlüssels
 
-    ```azurecli-interactive
-    az postgres server key list --name  <server name>  -g <resource_group>
-    ```
+```azurecli-interactive
+az postgres server key list --name  <server name>  -g <resource_group>
+```
 
 ### <a name="drop-the-key-being-used"></a>Löschen des verwendeten Schlüssels
 
-    ```azurecli-interactive
-    az postgres server key delete -g <resource_group> --kid <key url> 
-    ```
+```azurecli-interactive
+az postgres server key delete -g <resource_group> --kid <key url> 
+```
+
 ## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Verwenden einer Azure Resource Manager-Vorlage zum Aktivieren von Datenverschlüsselung
 
 Sie können die Datenverschlüsselung nicht nur im Azure-Portal, sondern auch auf Ihrem Azure Database for PostgreSQL-Einzelserver aktivieren, indem Sie Azure Resource Manager-Vorlagen für neue und vorhandene Server verwenden.

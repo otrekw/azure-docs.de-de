@@ -2,7 +2,7 @@
 title: Behandeln von Leistungsproblemen mithilfe von Intelligent Insights
 description: Intelligent Insights hilft Ihnen, Probleme mit der Leistung von Azure SQL-Datenbank und Azure SQL Managed Instance zu beheben.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 2008dd5e1e583a99756f62bc25f27e8f9832646e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/12/2020
+ms.openlocfilehash: 0fd391bfb7ed8944866b80acb31d76ea43c77912
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031911"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986384"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank und Azure SQL Managed Instance mithilfe von Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,6 +25,8 @@ Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Dat
 
 > [!NOTE]
 > Eine Kurzanleitung zur Behandlung von Problemen mit der Leistung unter Verwendung von Intelligent Insights finden Sie im Flussdiagramm [Empfohlene Vorgehensweise bei der Problembehandlung](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) in diesem Dokument.
+>
+> Intelligent Insights ist eine Vorschaufunktion, die in den folgenden Regionen nicht verfügbar ist: „Europa, Westen“, „Europa, Norden“, „USA, Westen 1“ und „USA, Osten 1“.
 
 ## <a name="detectable-database-performance-patterns"></a>Erkennbare Muster bei der Datenbankleistung
 
@@ -202,7 +204,7 @@ Das Diagnoseprotokoll gibt Informationen für bis zu zwei neuen Abfragen mit der
 
 Erwägen Sie den Einsatz von [Query Performance Insight](query-performance-insight-use.md) für Azure SQL-Datenbank.
 
-## <a name="increased-wait-statistic"></a>Statistik bei zunehmenden Wartezeiten
+## <a name="increased-wait-statistic"></a>Erhöhte Wartezeiten
 
 ### <a name="what-is-happening"></a>Was passiert?
 
@@ -283,7 +285,7 @@ Die Änderung der datenbankweit gültigen Konfiguration kann für jede einzelne 
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
-Das Diagnoseprotokoll gibt Änderungen an der datenbankweit gültigen Konfiguration aus, die vor Kurzem erfolgt sind und im Vergleich mit dem Workloadverhalten der vorherigen sieben Tage die Leistungsminderung verursacht haben. Sie können die Änderungen an der Konfiguration auf den vorherigen Wert zurücksetzen. Sie können auch die Werte einzeln optimieren, bis die gewünschte Leistungsstufe erreicht ist. Sie können auch Werte einer datenbankweit gültigen Konfiguration aus einer ähnlichen Datenbank mit zufriedenstellender Leistung kopieren. Wenn Sie die Leistungsprobleme nicht beheben können, stellen Sie die Standardwerte wieder her, und versuchen Sie eine Optimierung ausgehend von dieser Baseline.
+Das Diagnoseprotokoll gibt Änderungen an der datenbankweit gültigen Konfiguration aus, die vor Kurzem erfolgt sind und im Vergleich mit dem Workloadverhalten der vorherigen sieben Tage die Leistungsminderung verursacht haben. Sie können die Änderungen an der Konfiguration auf den vorherigen Wert zurücksetzen. Sie können auch die Werte einzeln optimieren, bis die gewünschte Leistungsstufe erreicht ist. Sie können auch Werte einer datenbankweit gültigen Konfiguration aus einer ähnlichen Datenbank mit zufriedenstellender Leistung kopieren. Wenn Sie die Leistungsprobleme nicht beheben können, stellen Sie die Standardwerte wieder her, und versuchen Sie, eine Optimierung ausgehend von dieser Baseline durchzuführen.
 
 Weitere Informationen zum Optimieren der datenbankweit gültigen Konfiguration und zur T-SQL-Syntax zum Ändern der Konfiguration finden Sie unter [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 

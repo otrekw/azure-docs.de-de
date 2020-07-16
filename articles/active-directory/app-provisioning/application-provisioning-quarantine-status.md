@@ -2,21 +2,21 @@
 title: Anwendungsbereitstellungsstatus „Quarantäne“ | Microsoft-Dokumentation
 description: Wenn Sie eine Anwendung für die automatische Benutzerbereitstellung konfiguriert haben, lesen Sie diesen Artikel, um zu erfahren, was der Bereitstellungsstatus „Quarantäne“ bedeutet und wie Sie ihn löschen können.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/28/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: c1e0039133b7f9a7ae827e348640f6379b7f10ac
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: e5c0b00873cd97b255eff7e001f8b54cf0397462
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593929"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024569"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Anwendungsbereitstellung im Quarantänestatus
 
@@ -75,3 +75,6 @@ Nachdem Sie das Problem behoben haben, können Sie den Bereitstellungsauftrag ne
 - Verwenden Sie Microsoft Graph, um [den Bereitstellungsauftrag neu zu starten](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http). Sie haben vollständige Kontrolle über die Elemente, die Sie neu starten. Sie können auswählen, ob Hinterlegungen (zum Neustarten des Hinterlegungszählers, der in Richtung Quarantänestatus läuft) gelöscht, die Quarantäne (zum Entfernen der Anwendung aus der Quarantäne) oder die Wasserzeichen gelöscht werden soll(en). Verwenden Sie die folgende Anforderung:
  
        `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
+       
+Ersetzen Sie "{id}" durch den Wert der Anwendungs-ID und "{jobId}" durch die [ID des Synchronisierungsauftrags](https://docs.microsoft.com/graph/api/resources/synchronization-configure-with-directory-extension-attributes?view=graph-rest-beta&tabs=http#list-synchronization-jobs-in-the-context-of-the-service-principal). 
+

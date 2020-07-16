@@ -1,10 +1,9 @@
 ---
-title: Verwalten von SQL Server-VMs in Azure über das Azure-Portal | Microsoft-Dokumentation
+title: Verwalten von SQL Server-VMs in Azure im Azure-Portal | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie im Azure-Portal auf die Ressource „Virtuelle SQL-Computer“ für eine in Azure gehostete SQL Server-VM zugreifen.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.topic: article
@@ -13,12 +12,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6cf6fac84abd1d996c77aae7240c0322c5ec53fb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8def7c52f2b1005419a29d35ef122b48f34fdee4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84036861"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669000"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Verwalten von SQL Server-VMs in Azure über das Azure-Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

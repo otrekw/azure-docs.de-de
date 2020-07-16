@@ -4,16 +4,16 @@ description: Überwachen Sie Ihre Web-App mit benutzerdefinierten Metriken in Ec
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: ea0d786d0b8b96941d791bcc8e92fad9a869c5f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10818a531a43b50b86a6d413c7a504e2c19c3986
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670099"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507345"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Überwachung und Diagnose mit einer Latenzzeit von 1 Sekunde
 
-Überprüfen Sie die Funktionsfähigkeit Ihrer Livewebanwendung in der Produktion mithilfe von Live Metrics Stream von [Application Insights](../../azure-monitor/app/app-insights-overview.md). Wählen und filtern Sie Metriken und Leistungsindikatoren für die Überwachung in Echtzeit, ohne dass der Dienst beeinträchtigt wird. Überprüfen Sie Stapelüberwachungen von fehlerhaften Anforderungen und Ausnahmen. Zusammen mit dem [Profiler](../../azure-monitor/app/profiler.md) und dem [Momentaufnahmedebugger](../../azure-monitor/app/snapshot-debugger.md) stellt Live Metrics Stream ein leistungsfähiges und nicht invasives Diagnosetool für Ihre Live-Website dar.
+Überwachen Sie Ihre Livewebanwendung in der Produktion mithilfe von Live Metrics Stream in [Application Insights](../../azure-monitor/app/app-insights-overview.md). Wählen und filtern Sie Metriken und Leistungsindikatoren für die Überwachung in Echtzeit, ohne dass der Dienst beeinträchtigt wird. Überprüfen Sie Stapelüberwachungen von fehlerhaften Anforderungen und Ausnahmen. In Kombination mit [Profiler](../../azure-monitor/app/profiler.md) und dem [Momentaufnahmedebugger](../../azure-monitor/app/snapshot-debugger.md) bietet Live Metrics Stream ein leistungsfähiges und nicht invasives Diagnosetool für Ihre Livewebsite.
 
 Mit Live Metrics Stream haben Sie folgende Möglichkeiten:
 
@@ -25,13 +25,13 @@ Mit Live Metrics Stream haben Sie folgende Möglichkeiten:
 * Überwachen Sie Windows-Leistungsindikatoren live.
 * Identifizieren Sie mühelos einen Server mit Problemen, und filtern Sie nach allen KPIs/dem Livefeed nur für diesen Server.
 
-[![Video zu Live Metrics Stream](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+![Registerkarte „Livemetriken“](./media/live-stream/live-metric.png)
 
 Livemetriken werden derzeit für ASP.NET-, ASP.NET Core-, Azure Functions-, Java- und Node.js-Apps unterstützt.
 
 ## <a name="get-started"></a>Erste Schritte
 
-1. Wenn Sie Application Insights noch nicht in Ihrer Web-App [installiert](../../azure-monitor/azure-monitor-app-hub.yml) haben, holen Sie das jetzt nach.
+1. [Installieren Sie Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) in Ihrer Anwendung.
 2. Zusätzlich zu den Application Insights-Standardpaketen ist [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) erforderlich, um Live Metrics Stream zu aktivieren.
 3. Führen Sie ein **Update auf die neueste Version** des Application Insights-Pakets durch. Klicken Sie in Visual Studio mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Öffnen Sie die Registerkarte **Updates**, und wählen Sie alle Microsoft.ApplicationInsights.*-Pakete aus.
 
@@ -51,7 +51,7 @@ Livemetriken werden derzeit für ASP.NET-, ASP.NET Core-, Azure Functions-, Java
 |---|---|---|
 |Latency|Daten werden innerhalb einer Sekunde angezeigt.|Aggregation innerhalb mehrerer Minuten|
 |Keine Beibehaltung|Daten werden beibehalten, solange sie im Diagramm angezeigt werden, und dann verworfen.|[Daten werden 90 Tage lang beibehalten.](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
-|On-Demand-Streaming|Daten werden beim Öffnen von Live Metrics gestreamt.|Daten werden gesendet, sobald das SDK installiert und aktiviert wird.|
+|On-Demand-Streaming|Daten werden nur gestreamt, während der Bereich „Livemetriken“ geöffnet ist. |Daten werden gesendet, sobald das SDK installiert und aktiviert wird.|
 |Kostenlos|Keine Gebühren für Live Stream-Daten|[Gebührenpflichtig](../../azure-monitor/app/pricing.md)
 |Stichproben|Alle ausgewählten Metriken und Indikatoren werden übertragen. Für Fehler und Stapelüberwachungen werden Stichproben erstellt. Telemetrieprozessoren werden nicht angewendet.|Für Ereignisse können [Stichproben](../../azure-monitor/app/api-filtering-sampling.md) erstellt werden.|
 |Steuerkanal|Filtersteuersignale werden an das SDK gesendet. Es empfiehlt sich, diesen Kanal zu sichern.|Unidirektionale Kommunikation zum Portal|
@@ -62,42 +62,48 @@ Livemetriken werden derzeit für ASP.NET-, ASP.NET Core-, Azure Functions-, Java
 
 Sie können benutzerdefinierte KPIs live überwachen, indem Sie im Portal beliebige Filter auf Application Insights-Telemetrie anwenden. Klicken Sie auf das Filtersteuerelement, das angezeigt wird, wenn Sie den Mauszeiger über eines der Diagramme bewegen. Das folgende Diagramm stellt eine benutzerdefinierte KPI für die Anforderungsanzahl mit Filtern für die Attribute „URL“ und „Dauer“ dar. Überprüfen Sie Ihre Filter in der Streamvorschau, die jederzeit einen Livefeed von Telemetriedaten anzeigt, die den von Ihnen angegeben Kriterien entsprechen.
 
-![Benutzerdefinierte Anforderungs-KPI](./media/live-stream/live-stream-filteredMetric.png)
+![Filter Anforderungsrate](./media/live-stream/filter-request.png)
 
 Sie können einen anderen Wert als die Anzahl überwachen. Die Optionen hängen von der Typ des Streams ab. Bei diesem kann es sich um eine beliebige Application Insights-Telemetrie handeln: Anforderungen, Abhängigkeiten, Ausnahmen, Ablaufverfolgungen, Ereignisse oder Metriken. Sie können auch eine eigene [benutzerdefinierte Messung](../../azure-monitor/app/api-custom-events-metrics.md#properties) verwenden:
 
-![Wertoptionen](./media/live-stream/live-stream-valueoptions.png)
+![Abfrage-Generator für Anforderungsrate mit benutzerdefinierter Metrik](./media/live-stream/query-builder-request.png)
 
 Neben Application Insights-Telemetrie können Sie auch einen beliebigen Windows-Leistungsindikator überwachen, indem Sie diese Streamoptionen auswählen und den Namen des Leistungsindikators angeben.
 
 Livemetriken werden an zwei Punkten aggregiert: lokal auf jedem Server und übergreifend auf allen Servern. Sie können die Standardeinstellung durch die Auswahl anderer Optionen in der entsprechenden Dropdownliste ändern.
 
 ## <a name="sample-telemetry-custom-live-diagnostic-events"></a>Beispieltelemetrie: Benutzerdefinierte Livediagnoseereignisse
-Der Livefeed von Ereignissen zeigt standardmäßig Beispiele für fehlgeschlagene Anforderungen und Abhängigkeitsaufrufe, Ausnahmen, Ereignisse und Ablaufverfolgungen an. Klicken Sie jederzeit auf das Filtersymbol, um die angewendeten Kriterien anzuzeigen. 
+Der Livefeed von Ereignissen zeigt standardmäßig Beispiele für fehlgeschlagene Anforderungen und Abhängigkeitsaufrufe, Ausnahmen, Ereignisse und Ablaufverfolgungen an. Klicken Sie jederzeit auf das Filtersymbol, um die angewendeten Kriterien anzuzeigen.
 
-![Standard-Livefeed](./media/live-stream/live-stream-eventsdefault.png)
+![Filterschaltfläche](./media/live-stream/filter.png)
 
-Wie bei Metriken können Sie beliebige Kriterien für alle Application Insights-Telemetrietypen angeben. In diesem Beispiel wählen wir bestimmte Anforderungsfehler, Ablaufverfolgungen und Ereignisse aus. Wir wählen außerdem alle Ausnahmen und Abhängigkeitsfehler aus.
+Wie bei Metriken können Sie beliebige Kriterien für alle Application Insights-Telemetrietypen angeben. In diesem Beispiel wählen Sie bestimmte Anforderungsfehler und Ereignisse aus.
 
-![Benutzerdefinierter Livefeed](./media/live-stream/live-stream-events.png)
+![Abfrage-Generator](./media/live-stream/query-builder.png)
 
-Hinweis: Aktuell muss für meldungsbasierte Ausnahmekriterien die Meldung für äußere Ausnahmen verwendet werden. Verwenden Sie im vorangehenden Beispiel zum Herausfiltern mit der Meldung für innere Ausnahmen (folgt auf das Trennzeichen „<--“) „Der Client wurde getrennt.“ eine Meldung, die keine Kriterien vom Typ „Fehler beim Lesen des Anforderungsinhalts“ enthält.
+> [!NOTE]
+> Aktuell muss für meldungsbasierte Ausnahmekriterien die Meldung für äußere Ausnahmen verwendet werden. Verwenden Sie im vorangehenden Beispiel zum Herausfiltern mit der Meldung für innere Ausnahmen (folgt auf das Trennzeichen „<--“) „Der Client wurde getrennt.“ eine Meldung, die keine Kriterien vom Typ „Fehler beim Lesen des Anforderungsinhalts“ enthält.
 
 Klicken Sie auf ein Element im Livefeed, um die Details dazu anzuzeigen. Sie können den Feed anhalten, indem Sie auf **Anhalten** klicken, einfach nach unten scrollen oder auf ein Element klicken. Der Livefeed wird fortgesetzt, wenn Sie wieder nach oben scrollen oder auf den Zähler der Elemente klicken, die im angehaltenen Zustand erfasst wurden.
 
-![Auswahl der Live-Fehler](./media/live-stream/live-metrics-eventdetail.png)
+![Auswahl der Live-Fehler](./media/live-stream/sample-telemetry.png)
 
 ## <a name="filter-by-server-instance"></a>Filtern nach Serverinstanz
 
-Wenn Sie eine bestimmte Serverrolleninstanz überwachen möchten, können Sie nach Server filtern.
+Wenn Sie eine bestimmte Serverrolleninstanz überwachen möchten, können Sie nach Server filtern. Klicken Sie zum Filtern unter *Server* auf den gewünschten Servernamen.
 
-![Auswahl der Live-Fehler](./media/live-stream/live-stream-filter.png)
+![Auswahl der Live-Fehler](./media/live-stream/filter-by-server.png)
 
 ## <a name="secure-the-control-channel"></a>Sichern des Steuerkanals
+
+> [!NOTE]
+> Derzeit können Sie nur mithilfe von codebasierter Überwachung einen authentifizierten Kanal einrichten und Server nicht durch codelose Anfügung authentifizieren.
+
 Die von Ihnen angegebenen benutzerdefinierten Filterkriterien werden an die Livemetrikkomponente des Application Insights SDK zurückgesendet. Der Filter können potenziell vertrauliche Informationen wie z.B. Kunden-IDs enthalten. Zum Sichern des Kanals können Sie neben dem Instrumentierungsschlüssel auch einen geheimen API-Schlüssel verwenden.
 ### <a name="create-an-api-key"></a>Erstellen eines API-Schlüssels
 
-![API-Schlüssel erstellen](./media/live-stream/live-metrics-apikeycreate.png)
+![API-Schlüssel > API-Schlüssel erstellen](./media/live-stream/api-key.png)
+![Registerkarte „API-Schlüssel erstellen“ Aktivieren von „SDK-Steuerungskanal authentifizieren“ und anschließendes Klicken auf „Schlüssel generieren“](./media/live-stream/create-api-key.png)
 
 ### <a name="add-api-key-to-configuration"></a>Hinzufügen eines API-Schlüssels zur Konfiguration
 

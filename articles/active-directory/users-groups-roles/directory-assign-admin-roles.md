@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63a4285725db4dcb41affa93261fbbc03d11598e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 70d53bf3d97f27caae7d3dee7cd03a4606d6761c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310749"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921755"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -173,7 +173,7 @@ Verwaltet [Kunden-Lockbox-Anforderungen](https://docs.microsoft.com/office365/ad
 
 Benutzer in dieser Rolle können Desktop Analytics und die Dienste für Office-Anpassung und -Richtlinien verwalten. Bei Desktop Analytics umfasst dies die Möglichkeit, den Assetbestand anzuzeigen, Bereitstellungspläne zu erstellen sowie die Bereitstellung und den Integritätsstatus zu anzuzeigen. Beim Dienst für Office-Anpassung und -Richtlinien ermöglicht diese Rolle den Benutzern die Verwaltung von Office-Richtlinien.
 
-### <a name="device-administrator"></a>[Geräteadministrator](#device-administrators-permissions)
+### <a name="device-administrators"></a>[Geräteadministratoren](#device-administrators-permissions)
 
 Diese Rolle kann nur als zusätzlicher lokaler Administrator in den [Geräteeinstellungen](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/) zugewiesen werden. Benutzer mit dieser Rolle werden auf allen Windows 10-Geräten, die in Azure Active Directory eingebunden sind, als Administratoren für den lokalen Computer festgelegt. Sie haben nicht die Möglichkeit zum Verwalten von Geräteobjekten in Azure Active Directory.
 
@@ -209,7 +209,7 @@ Benutzer mit dieser Rolle besitzen globale Berechtigungen in Microsoft Exchange 
 
 ### <a name="external-id-user-flow-administrator"></a>[Administrator für Benutzerflows mit externer ID](#external-id-user-flow-administrator-permissions)
 
-Benutzer mit dieser Rolle können B2C-Benutzerflows (auch als „integrierte“ Richtlinien bezeichnet) im Azure-Portal erstellen und verwalten. Durch Erstellen oder Bearbeiten von Benutzerflows können diese Benutzer den HTML-/CSS-/JavaScript-Inhalt für Benutzer ändern, die MFA-Anforderungen pro Benutzerflow ändern, Ansprüche im Token ändern und Sitzungseinstellungen für alle Richtlinien in der Azure AD-Organisation anpassen. Auf der anderen Seite bietet diese Rolle nicht die Möglichkeit, Benutzerdaten zu überprüfen oder Änderungen an Attributen vorzunehmen, die im Organisationsschema enthalten sind. Änderungen an Richtlinien des Identity Experience Framework (auch bezeichnet als „Custom“) sind auch außerhalb des Bereichs dieser Rolle möglich.
+Benutzer mit dieser Rolle können Benutzerflows (auch als „integrierte“ Richtlinien bezeichnet) im Azure-Portal erstellen und verwalten. Sie können HTML-/CSS-/JavaScript-Inhalte anpassen, MFA-Anforderungen ändern, Ansprüche im Token auswählen, API-Connectors verwalten und Sitzungseinstellungen für alle Benutzerflows in der Azure AD-Organisation konfigurieren. Auf der anderen Seite bietet diese Rolle nicht die Möglichkeit, Benutzerdaten zu überprüfen oder Änderungen an Attributen vorzunehmen, die im Organisationsschema enthalten sind. Änderungen an Richtlinien des Identity Experience Framework (auch „benutzerdefinierte Richtlinien“ genannt) gehören ebenfalls nicht zum Berechtigungsumfang dieser Rolle.
 
 ### <a name="external-id-user-flow-attribute-administrator"></a>[Administrator für Benutzerflowattribute mit externer ID](#external-id-user-flow-attribute-administrator-permissions)
 
@@ -224,7 +224,7 @@ Dieser Administrator verwaltet den Verbund zwischen Azure AD-Organisationen und
 
 ### <a name="global-administrator--company-administrator"></a>[Globaler Administrator/Unternehmensadministrator](#company-administrator-permissions)
 
-Benutzer mit dieser Rolle besitzen Zugriff auf alle administrativen Features in Azure Active Directory sowie Dienste, die Azure Active Directory-Identitäten nutzen, z.B. Microsoft 365 Security Center, Microsoft 365 Compliance Center, Exchange Online, SharePoint Online oder Skype for Business Online. Die Person, die die Anmeldung für die Azure AD-Organisation vornimmt, wird ein globaler Administrator. In Ihrem Unternehmen können mehrere globale Administratoren vorhanden sein. Globale Administratoren können das Kennwort für alle Benutzer und alle anderen Administratoren zurücksetzen.
+Benutzer mit dieser Rolle besitzen Zugriff auf alle administrativen Features in Azure Active Directory sowie Dienste, die Azure Active Directory-Identitäten nutzen, z.B. Microsoft 365 Security Center, Microsoft 365 Compliance Center, Exchange Online, SharePoint Online oder Skype for Business Online. Zudem können globale Administratoren ihre [Zugriffsrechte erhöhen](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin), um alle Azure-Abonnements und Verwaltungsgruppen zu verwalten. Dadurch erhalten sie mithilfe des entsprechenden Azure AD-Mandanten Vollzugriff auf alle Azure-Ressourcen. Die Person, die die Anmeldung für die Azure AD-Organisation vornimmt, wird ein globaler Administrator. In Ihrem Unternehmen können mehrere globale Administratoren vorhanden sein. Globale Administratoren können das Kennwort für alle Benutzer und alle anderen Administratoren zurücksetzen.
 
 > [!NOTE]
 > In Microsoft Graph-API und Azure AD PowerShell wird diese Rolle als „Unternehmensadministrator“ bezeichnet. Im [Azure-Portal](https://portal.azure.com)ist dies der „globale Administrator“.
@@ -389,7 +389,7 @@ Benutzer mit dieser Rolle können Nutzungsberichtsdaten und das Berichtsdashboar
 
 ### <a name="search-administrator"></a>[Suchadministrator](#search-administrator-permissions)
 
-Benutzer mit dieser Rolle haben Vollzugriff auf alle Microsoft Search-Verwaltungsfunktionen im Microsoft 365 Admin Center. Suchadministratoren können die Rollen „Suchadministrator“ und „Such-Editor“ an Benutzer delegieren und Inhalte wie Lesezeichen, Fragen und Antworten sowie Standorte erstellen und verwalten. Darüber hinaus können diese Benutzer das Nachrichtencenter anzeigen, die Dienstintegrität überwachen und Service Requests erstellen.
+Benutzer mit dieser Rolle haben Vollzugriff auf alle Microsoft Search-Verwaltungsfunktionen im Microsoft 365 Admin Center. Darüber hinaus können diese Benutzer das Nachrichtencenter anzeigen, die Dienstintegrität überwachen und Service Requests erstellen.
 
 ### <a name="search-editor"></a>[Such-Editor](#search-editor-permissions)
 
@@ -1349,8 +1349,7 @@ Kann kommerzielle Käufe für ein Unternehmen, eine Abteilung oder ein Team verw
 | --- | --- |
 | microsoft.commerce.billing/partners/read | Lesen der Partnereigenschaft der O365-Abrechnung. |
 | microsoft.commerce.volumeLicenseServiceCenter/allEntities/allTasks | Verwalten aller Aspekte von Volume Licensing Service Center. |
-| microsoft.directory/organization/basic/update | Aktualisieren der Basiseigenschaften für die Organisation in Azure Active Directory |
-| microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Anzeigen eigener Office 365-Supporttickets |
 | microsoft.office365.webPortal/allEntities/basic/read | Lesen der Basiseigenschaften für alle Ressourcen in microsoft.office365.webPortal. |
 
 

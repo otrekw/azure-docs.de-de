@@ -5,25 +5,22 @@ description: Hier erfahren Sie, wie Daten des Azure Machine Learning-Eingabemode
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: laobri
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 75402c71316f7cc7d068c12a240f3123569a00ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475431"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84432997"
 ---
 # <a name="collect-data-for-models-in-production"></a>Sammeln von Daten für Modelle in der Produktion
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
->[!IMPORTANT]
-> Das Azure Machine Learning Monitoring SDK wird bald eingestellt. Das SDK ist nach wie vor für Entwickler geeignet, die derzeit mit dem SDK die Datendrift in Modellen überwachen. Für neue Kunden wird jedoch die Verwendung der vereinfachten [Datenüberwachung mit Application Insights](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights) empfohlen.
 
 In diesem Artikel wird beschrieben, wie Eingabemodelldaten aus Azure Machine Learning erfasst werden. Darüber hinaus wird gezeigt, wie die Eingabedaten in einem AKS-Cluster (Azure Kubernetes Service) bereitgestellt und die Ausgabedaten in Azure Blob Storage gespeichert werden.
 
@@ -199,7 +196,7 @@ Sie können ein beliebiges Tool Ihrer Wahl verwenden, um die im Blobspeicher erf
 
 1. Geben Sie Ihren Modellpfad in den Filter ein. Erweitern Sie einfach den Filterpfad, wenn Sie sich nur die Dateien für ein bestimmtes Jahr oder einen bestimmten Monat ansehen möchten. Verwenden Sie beispielsweise den folgenden Filterpfad, wenn Sie nur die Daten vom März anzeigen möchten:
 
-   /modeldata/\<Abonnement-ID>/\<Ressourcengruppenname>/\<Arbeitsbereichsname>/\<Webdienstname>/\<Modellname>/\<Modellversion>/\<Bezeichnung>/\<Jahr>/3
+   /modeldata/\<subscriptionid>/\<resourcegroupname>/\<workspacename>/\<webservicename>/\<modelname>/\<modelversion>/\<designation>/\<year>/3
 
 1. Filtern Sie die Daten, die für Sie relevant sind, nach den Werten für **Name**. Wenn Sie Vorhersagen und Eingaben gespeichert haben, müssen Sie für jede jeweils eine separate Abfrage erstellen.
 

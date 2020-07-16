@@ -6,23 +6,23 @@ author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/20/2019
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11c337f4838279771523a1f375b7349387d68f45
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 1bbc1644294a471bbb704d10c5f684d7404eae95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582536"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374575"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Schließen Ihres Geschäfts-, Schul- oder Unikontos in einer nicht verwalteten Azure AD-Organisation
 
-Wenn Sie ein Benutzer in einer nicht verwalteten Azure Active Directory-Organisation (Azure AD-Organisation) sind und Sie die Apps dieser Organisation nicht mehr benötigen bzw. keine Verbindung damit mehr aufrechterhalten müssen, können Sie Ihr Konto jederzeit schließen. Eine nicht verwaltete Organisation verfügt nicht über einen Unternehmensadministrator. Benutzer mit einer nicht verwalteten Organisation können ihre Konten selbst schließen, ohne sich an einen Administrator wenden zu müssen.
+Wenn Sie ein Benutzer in einer Organisation mit einer nicht verwalteten Azure AD-Instanz (Azure Active Directory) sind und Sie die Apps dieser Organisation nicht mehr benötigen bzw. keine Verbindung damit mehr aufrechterhalten müssen, können Sie Ihr Konto jederzeit schließen. Eine nicht verwaltete Organisation verfügt nicht über einen Unternehmensadministrator. Benutzer mit einer nicht verwalteten Organisation können ihre Konten selbst schließen, ohne sich an einen Administrator wenden zu müssen.
 
 Benutzer, die einer nicht verwalteten Organisation zugeordnet sind, werden häufig im Rahmen der Self-Service-Registrierung erstellt. Ein Beispiel hierfür ist ein Information-Worker in einer Organisation, der sich für einen kostenlosen Dienst registriert. Weitere Informationen zur Self-Service-Registrierung finden Sie unter [Was ist die Self-Service-Registrierung für Azure Active Directory?](directory-self-service-signup.md).
 

@@ -2,7 +2,7 @@
 title: Wichtige Unterschiede bei Machine Learning Services (Vorschauversion)
 description: In diesem Artikel werden die wichtigsten Unterschiede zwischen Machine Learning Services in SQL Managed Instance und SQL Server Machine Learning Services beschrieben.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 05/27/2020
-ms.openlocfilehash: 02211a09df2d2744119ea8fbe6f0ecaa63dba020
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: da97938736e7a3719da9d280e60e6a636b86e0e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254747"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Wichtige Unterschiede zwischen Machine Learning Services in Azure SQL Managed Instance und SQL Server
 
@@ -48,7 +48,7 @@ Das [Erweiterbarkeitsframework](https://docs.microsoft.com/sql/advanced-analytic
   | Verwaltete SQL-Instanz | 3.7.1  | 3.5.2 |
   | SQL Server           | 3.5.2  | 3.3.3 |
 
-- Es ist nicht erforderlich, `external scripts enabled` über `sp_configure` zu konfigurieren. Sobald Sie für die Vorschauversion [registriert](machine-learning-services-overview.md#signup) sind, wird Machine Learning für Ihre SQL-Datenbank aktiviert.
+- Es ist nicht erforderlich, `external scripts enabled` über `sp_configure` zu konfigurieren. Nachdem Sie für die Vorschauversion [registriert](machine-learning-services-overview.md#signup) sind, wird für Ihre Azure SQL Managed Instance maschinelles Lernen aktiviert.
 
 ## <a name="packages"></a>Pakete
 

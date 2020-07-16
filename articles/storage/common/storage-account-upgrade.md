@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: 9afbade408d6f95fcd3a61aa1ba65bc09c7a875b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 725c319e4abb6cc65e1e6a900218393ace2d4d16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067227"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629560"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
@@ -60,7 +60,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Angeben einer Zugriffsebene für Blobdaten
 
-Konten vom Typ „Allgemein v2“ unterstützen alle Azure Storage-Dienste und -Datenobjekte, aber Zugriffsebenen sind nur für Blockblobs in Blob Storage verfügbar. Wenn Sie ein Upgrade auf ein Speicherkonto vom Typ „Allgemein v2“ durchführen, können Sie eine Standardkontozugriffsebene („Heiß“ oder „Kalt“) angeben, um zu steuern, in welche Standardebene Ihre Blobdaten hochgeladen werden, wenn kein Parameter für die jeweilige Blobzugriffsebene angegeben wird.
+Konten vom Typ „Allgemein v2“ unterstützen alle Azure-Speicherdienste und -Datenobjekte, aber Zugriffsebenen sind nur für Blockblobs in Blob Storage verfügbar. Wenn Sie ein Upgrade auf ein Speicherkonto vom Typ „Allgemein v2“ durchführen, können Sie eine Standardkontozugriffsebene („Heiß“ oder „Kalt“) angeben, um zu steuern, in welche Standardebene Ihre Blobdaten hochgeladen werden, wenn kein Parameter für die jeweilige Blobzugriffsebene angegeben wird.
 
 Blobzugriffsebenen ermöglichen es, den kostengünstigsten Speicher basierend auf Ihren erwarteten Nutzungsmustern auszuwählen. Blockblobs können in der heißen, der kalten oder der Archivspeicherebene gespeichert werden. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 

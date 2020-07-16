@@ -3,17 +3,17 @@ title: Übertragen von Daten nach oder aus Azure Blob Storage mit AzCopy v10 | M
 description: Dieser Artikel enthält eine Sammlung von AzCopy-Beispielbefehlen, die Sie beim Erstellen von Containern, Kopieren von Dateien und Synchronisieren von Verzeichnissen zwischen lokalen Dateisystemen und Containern unterstützen.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: b676c2647fbf7c93d271e1d7f68653452125e39b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac96008987b0dbed9e3a39f92e608b8ae6c82512
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137194"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513766"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Übertragen von Daten mit AzCopy und Blob Storage
 
@@ -241,7 +241,7 @@ AzCopy verwendet die [Server-zu-Server](https://docs.microsoft.com/rest/api/stor
 > [!NOTE]
 > In diesem Szenario gelten für das aktuelle Release die folgenden Einschränkungen.
 >
-> - An jede Quell-URL muss ein SAS-Token angefügt werden. Wenn Sie Autorisierungsanmeldeinformationen unter Verwendung von Azure AD (Active Directory) angeben, können Sie das SAS-Token bei der Ziel-URL weglassen.
+> - An jede Quell-URL muss ein SAS-Token angefügt werden. Wenn Sie Autorisierungsanmeldeinformationen unter Verwendung von Azure AD (Active Directory) angeben, können Sie das SAS-Token bei der Ziel-URL weglassen. Stellen Sie sicher, dass Sie die richtigen Rollen in Ihrem Zielkonto eingerichtet haben. Weitere Informationen finden Sie unter [Option 1: Verwenden von Azure Active Directory](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory).
 >-  Premium-Blockblob-Speicherkonten unterstützen keine Zugriffsebenen. Lassen Sie die Zugriffsebene eines Blobs im Kopiervorgang aus, indem Sie `s2s-preserve-access-tier` auf `false` festlegen (z. B. `--s2s-preserve-access-tier=false`).
 
 Dieser Abschnitt enthält folgende Beispiele:

@@ -4,26 +4,23 @@ description: Richten Sie einen Verbund mit Facebook ein, damit sich externe Benu
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e9fa9d9e23de9a4ec93cbef6d2696d7bec70d41d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712348"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551241"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Hinzufügen eines Benutzerflows für die Self-Service-Registrierung zu einer App (Vorschau)
-|     |
-| --- |
-| Die Self-Service-Registrierung ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+> [!NOTE]
+> Die Self-Service-Registrierung ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Sie können Benutzerflows für Apps erstellen, die von Ihrer Organisation erstellt werden. Wenn Sie den Benutzerflow einer Anwendung zuordnen, können Sie die Registrierung für diese App aktivieren. Sie können mehrere Anwendungen auswählen, die dem Benutzerflow zugeordnet werden sollen. Nachdem Sie den Benutzerflow den entsprechenden Anwendungen zugewiesen haben, können sich Benutzer, die diese App aufrufen, mit den im Benutzerflow konfigurierten Optionen registrieren und ein Gastkonto erhalten.
 
@@ -109,3 +106,5 @@ Nun können Sie dem Benutzerflow Anwendungen zuordnen.
 
 - [Hinzufügen von Google zu Ihrer Liste der sozialen Netzwerke als Identitätsanbieter](google-federation.md)
 - [Hinzufügen von Facebook zu Ihrer Liste der sozialen Netzwerke als Identitätsanbieter](facebook-federation.md)
+- [Verwenden von API-Connectors zum Anpassen und Erweitern von Benutzerflows über Web-APIs](api-connectors-overview.md)
+- [Hinzufügen eines benutzerdefinierten Genehmigungsworkflows zum Benutzerflow](self-service-sign-up-add-approvals.md)

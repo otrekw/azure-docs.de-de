@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 27229d36dbe9592b6ad6fc2740f7714f99fd6857
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629054"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856832"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Bewerten der Custom Speech-Genauigkeit
 
@@ -23,7 +23,7 @@ In diesem Dokument erfahren Sie, wie Sie die Qualität des Spracherkennungsmodel
 
 ## <a name="what-is-word-error-rate-wer"></a>Was ist die Wort-Fehler-Rate (Word Error Rate, WER)?
 
-Der Branchenstandard zur Messung der Modellgenauigkeit ist die *Wort-Fehler-Rate* (WER). WER ermittelt die Anzahl der bei der Erkennung falsch identifizierten Wörter und dividiert sie durch die Gesamtzahl der Wörter, die im menschenmarkierten Transkript angegeben sind. Diese Zahl wird dann mit 100 % multipliziert, um die WER zu berechnen.
+Der Branchenstandard zur Messung der Modellgenauigkeit ist die *Wort-Fehler-Rate* (WER). Zur Berechnung der WER wird die Anzahl von bei der Erkennung falsch identifizierten Wörtern ermittelt und durch die Gesamtanzahl von Wörtern im menschenmarkierten Transkript (unten als „N“ zu sehen) dividiert. Diese Zahl wird dann mit 100 % multipliziert, um die WER zu berechnen.
 
 ![WER-Formel](./media/custom-speech/custom-speech-wer-formula.png)
 

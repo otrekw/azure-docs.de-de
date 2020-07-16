@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 253ea748462ec09cd9cf4eab14c05be678cfb82d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 36c3515bbdd0f08063ecad2ba26fc7b92a5f0e19
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860901"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970687"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archiv der Neuerungen in Azure Security Center
 
@@ -29,9 +29,37 @@ Auf dieser Seite finden Sie folgende Informationen:
 - Behebung von Programmfehlern
 - Veraltete Funktionen
 
+
+## <a name="january-2020"></a>Januar 2020
+
+### <a name="enhanced-secure-score-preview"></a>Erweiterte Sicherheitsbewertung (Vorschau)
+
+Eine erweiterte Version der Sicherheitsbewertung von Azure Security Center ist jetzt verfügbar und befindet sich in der Vorschauphase. Bei dieser Version werden mehrere Empfehlungen zu Sicherheitssteuerelementen gruppiert, die Ihre anfälligen Angriffsflächen besser widerspiegeln (z. B. Einschränkung des Zugriffs auf Verwaltungsports).
+
+Machen Sie sich mit den Änderungen vertraut, die während der Vorschauphase für die Sicherheitsbewertung vorgenommen werden, und ermitteln Sie andere Lösungen, mit denen Sie Ihre Umgebung noch besser schützen können.
+
+Erfahren Sie mehr über die [erweiterte Sicherheitsbewertung (Vorschau)](secure-score-security-controls.md).
+
+
+
 ## <a name="november-2019"></a>November 2019
 
-### <a name="threat-protection-for-azure-key-vault-in-public-preview-in-north-america-regions"></a>Threat Protection für Azure Key Vault jetzt in Nordamerika als öffentliche Vorschauversion verfügbar
+Updates im November:
+ - [Threat Protection für Azure Key Vault in Nordamerika (Vorschau)](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
+ - [Threat Protection für Azure Storage mit zuverlässigem Malwarescreening](#threat-protection-for-azure-storage-includes-malware-reputation-screening)
+ - [Workflowautomatisierung mit Azure Logic Apps (Vorschau)](#workflow-automation-with-logic-apps-preview)
+ - [Ressourcenübergreifende schnelle Problembehebung allgemein verfügbar](#quick-fix-for-bulk-resources-generally-available)
+ - [Überprüfen von Containerimages auf Sicherheitsrisiken (Vorschau)](#scan-container-images-for-vulnerabilities-preview)
+ - [Zusätzliche Standards zur Einhaltung gesetzlicher Bestimmungen (Vorschau)](#additional-regulatory-compliance-standards-preview)
+ - [Threat Protection-Unterstützung für Azure Kubernetes Service (AKS) (Vorschau)](#threat-protection-for-azure-kubernetes-service-preview)
+ - [Sicherheitsrisikobewertung für virtuelle Computer (Vorschau)](#virtual-machine-vulnerability-assessment-preview)
+ - [Advanced Data Security für SQL-Server auf Azure-VMs (Vorschau)](#advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview)
+ - [Unterstützung für benutzerdefinierte Richtlinien (Vorschau)](#support-for-custom-policies-preview)
+ - [Erweitertes Azure Security Center-Angebot: Plattform für die Community und Partner](#extending-azure-security-center-coverage-with-platform-for-community-and-partners)
+ - [Erweiterte Integration über den Export von Security Center-Empfehlungen und -Warnungen (Vorschau)](#advanced-integrations-with-export-of-recommendations-and-alerts-preview)
+ - [Onboarding lokaler Server in Security Center über Windows Admin Center (Vorschau)](#onboard-on-prem-servers-to-security-center-from-windows-admin-center-preview)
+
+### <a name="threat-protection-for-azure-key-vault-in-north-america-regions-preview"></a>Threat Protection für Azure Key Vault in Nordamerika (Vorschau)
 
 Azure Key Vault ist ein zum Schutz von Daten und zur Verbesserung der Leistung von Cloudanwendungen unabdingbarer Dienst, der die Möglichkeit bietet, Schlüssel, Geheimnisse, Kryptografieschlüssel und Richtlinien zentral in der Cloud zu verwalten. Da in Azure Key Vault vertrauliche und geschäftskritische Daten gespeichert werden, ist für die Schlüsseltresore und die darin gespeicherten Daten höchste Sicherheit erforderlich.
 
@@ -146,6 +174,11 @@ Durch diese neue Funktion können Benutzer für einen WAC-Server das Onboarding 
 
 ## <a name="september-2019"></a>September 2019
 
+Updates im September:
+
+ - [Verbesserte Verwaltung von Regeln mit der adaptiven Anwendungssteuerung](#managing-rules-with-adaptive-application-controls-improvements)
+ - [Steuern von Empfehlungen für die Containersicherheit mit Azure Policy](#control-container-security-recommendation-using-azure-policy)
+
 ### <a name="managing-rules-with-adaptive-application-controls-improvements"></a>Verbesserte Verwaltung von Regeln mit der adaptiven Anwendungssteuerung
 
 Die Funktion zum Verwalten von Regeln für virtuelle Computer mithilfe der adaptiven Anwendungssteuerung wurde verbessert. Die adaptive Anwendungssteuerung ist ein Feature von Azure Security Center, mit dem Sie steuern können, welche Anwendungen auf Ihren virtuellen Computern ausgeführt werden können. Neben der allgemeinen Verbesserung der Regelverwaltung können Sie dank einer neuen Funktion nun steuern, welche Dateitypen geschützt werden, wenn Sie eine neue Regel hinzufügen.
@@ -161,6 +194,12 @@ Die Empfehlungen von Azure Security Center zum Korrigieren von Sicherheitsrisike
 
 
 ## <a name="august-2019"></a>August 2019
+
+Updates im August:
+
+ - [Just-In-Time-Zugriff (JIT) auf virtuelle Computer für Azure Firewall](#just-in-time-jit-vm-access-for-azure-firewall)
+ - [Ein-Klick-Wartung zur Verbesserung Ihres Sicherheitsstatus (Vorschau)](#single-click-remediation-to-boost-your-security-posture-preview)
+ - [Mandantenübergreifende Verwaltung](#cross-tenant-management)
 
 ### <a name="just-in-time-jit-vm-access-for-azure-firewall"></a>Just-In-Time-Zugriff (JIT) auf virtuelle Computer für Azure Firewall 
 

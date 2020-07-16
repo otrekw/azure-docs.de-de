@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 3e1d000ed316a1a92e6dcdab0f9b7d577fd33d8b
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 75c211ea61359c244c6280b9664a4f412b3d2279
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772232"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552018"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -230,11 +230,13 @@ Diesen Schritt bestimmt die Geschäftslogik Ihrer Anwendung. Im Folgenden finden
 
 ## <a name="user-and-application-tokens"></a>Benutzer- und Anwendungstoken
 
-Ihre Anwendung kann Token im Namen eines Benutzers (der übliche Flow) oder direkt von einer Anwendung (über den Flow für Clientanmeldeinformationen ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v2.0](v2-oauth2-client-creds-grant-flow.md)) empfangen. Diese nur für die App geltenden Token geben an, dass der Aufruf von einer Anwendung stammt und nicht von einem Benutzer unterstützt wird. Abgesehen von den folgenden Unterschieden werden diese Token weitgehend auf die gleiche Weise behandelt:
+Ihre Anwendung kann Token für einen Benutzer (der in der Regel behandelte Flow) oder direkt von einer Anwendung (über den [Flow für Clientanmeldeinformationen](v1-oauth2-client-creds-grant-flow.md)) empfangen. Diese nur für die App geltenden Token geben an, dass der Aufruf von einer Anwendung stammt und nicht von einem Benutzer unterstützt wird. Diese Token werden weitgehend gleich behandelt:
 
-* Nur für die App geltende Token enthalten keinen `scp`-Anspruch, stattdessen aber möglicherweise einen `roles`-Anspruch. Hier wird die Anwendungsberechtigung (im Gegensatz zu delegierten Berechtigungen) aufgezeichnet. Weitere Informationen zu delegierten Berechtigungen und Anwendungsberechtigungen finden Sie im Thema über Berechtigungen und die Einwilligung ([v1.0](../azuread-dev/v1-permissions-consent.md), [v2.0](v2-permissions-and-consent.md)).
-* Viele benutzerspezifische Ansprüche fehlen, beispielsweise `name` oder `upn`.
-* Der `sub`- und `oid`-Anspruch sind identisch.
+* Verwenden Sie `roles`, um die Berechtigungen anzuzeigen, die dem Antragsteller des Tokens erteilt wurden (in diesem Fall dem Dienstprinzipal und keinem Benutzer).
+* Verwenden Sie `oid` oder `sub`, um zu überprüfen, ob der aufrufende Dienstprinzipal der erwartete Dienstprinzipal ist.
+
+Wenn Ihre App zwischen reinen App-Zugriffstoken und Zugriffstoken für Benutzer unterscheiden muss, verwenden Sie den optionalen `idtyp`-[Anspruch](active-directory-optional-claims.md).  Durch Hinzufügen des `idtyp`-Anspruchs zum Feld `accessToken` und Überprüfen auf den Wert `app` können Sie reine App-Zugriffstoken erkennen.  ID-Token und Zugriffstoken für Benutzer enthalten den `idtyp`-Anspruch nicht.
+
 
 ## <a name="token-revocation"></a>Widerrufen von Token
 
@@ -254,7 +256,7 @@ Mit der [Konfiguration der Tokenlebensdauer](active-directory-configurable-token
 
 Aktualisierungstoken können vom Server aufgrund einer Änderung der Anmeldeinformationen oder aufgrund der Verwendung oder einer Administratoraktion widerrufen werden.  Aktualisierungstoken werden in zwei Klassen unterteilt: solche, die für vertrauliche Clients ausgestellt werden (die Spalte ganz rechts), und Aktualisierungstoken, die für öffentliche Clients (alle anderen Spalten) ausgestellt werden.   
 
-|   | Kennwortbasiertes Cookie | Kennwortbasiertes Token | Nicht kennwortbasiertes Cookie | Nicht kennwortbasiertes Token | Vertrauliches Clienttoken |
+| Change | Kennwortbasiertes Cookie | Kennwortbasiertes Token | Nicht kennwortbasiertes Cookie | Nicht kennwortbasiertes Token | Vertrauliches Clienttoken |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | Kennwort läuft ab | Bleibt aktiv | Bleibt aktiv | Bleibt aktiv | Bleibt aktiv | Bleibt aktiv |
 | Kennwort wird vom Benutzer geändert | Widerrufen | Widerrufen | Bleibt aktiv | Bleibt aktiv | Bleibt aktiv |

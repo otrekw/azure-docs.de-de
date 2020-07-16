@@ -2,22 +2,21 @@
 title: Zugreifen auf lokale APIs mit dem Azure AD-Anwendungsproxy
 description: Mit dem Anwendungsproxy von Azure Active Directory können native Anwendungen sicher auf APIs und Geschäftslogik zugreifen, die Sie lokal oder in Cloud-VMs hosten.
 services: active-directory
-author: jeevanbisht
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: has-adal-ref
-ms.openlocfilehash: c3efd94e741124d5e662ac17e9c1daaf66d4c1c5
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: a5db76f0258eb08f6b1f8ed102dc29e26c8d8bb0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168808"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206443"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Sicherer Zugriff auf lokale APIs mit dem Azure AD-Anwendungsproxy
 
@@ -35,7 +34,7 @@ Die folgende Abbildung zeigt, wie Sie mit dem Azure AD-Anwendungsproxy APIs sich
 
 ![API-Zugriff über den Azure AD-Anwendungsproxy](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-Der Azure AD-Anwendungsproxy bildet das Rückgrat der Lösung und fungiert dabei als öffentlicher Endpunkt für den API-Zugriff. Er stellt Authentifizierung und Autorisierung bereit. Sie können auf Ihre APIs über eine Vielzahl von Plattformen zugreifen, indem Sie die [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries)-Bibliotheken verwenden.
+Der Azure AD-Anwendungsproxy bildet das Rückgrat der Lösung und fungiert dabei als öffentlicher Endpunkt für den API-Zugriff. Er stellt Authentifizierung und Autorisierung bereit. Sie können über eine Vielzahl von Plattformen auf Ihre APIs zugreifen, indem Sie die [MSAL](/azure/active-directory/develop/active-directory-authentication-libraries)-Bibliotheken (Microsoft Authentication Library, MSAL) verwenden.
 
 Da Authentifizierung und Autorisierung des Azure AD-Anwendungsproxys auf Azure AD aufbauen, können Sie den bedingten Zugriff von Azure AD verwenden, um sicherzustellen, dass nur vertrauenswürdige Geräte auf die über den Anwendungsproxy veröffentlichten APIs zugreifen können. Verwenden Sie Azure AD Join oder Azure AD Hybrid Joined für Desktopcomputer und Intune Managed für Geräte. Sie können auch die Vorteile von Azure Active Directory Premium-Funktionen wie Azure Multi-Factor Authentication und die durch Machine Learning unterstützte Sicherheit von [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection) nutzen.
 
@@ -137,7 +136,7 @@ Sie haben die AppProxyNativeAppSample-App jetzt in Azure Active Directory regist
 
 ## <a name="configure-the-native-app-code"></a>Konfigurieren des Codes der nativen App
 
-Der letzte Schritt besteht im Konfigurieren der nativen App. Der folgende Codeausschnitt aus der Datei *Form1.cs* in der NativeClient-Beispiel-App bewirkt, dass die ADAL-Bibliothek das Token für die Anforderung des API-Aufrufs abruft und als Bearer an den App-Header anfügt.
+Der letzte Schritt besteht im Konfigurieren der nativen App. Der folgende Codeausschnitt aus der Datei *Form1.cs* in der NativeClient-Beispiel-App bewirkt, dass die MSAL-Bibliothek das Token für die Anforderung des API-Aufrufs abruft und als Bearer an den App-Header anfügt.
 
    ```
    // Acquire Access Token from AAD for Proxy Application

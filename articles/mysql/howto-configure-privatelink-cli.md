@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie Private Link für Azure Database for MyS
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: f83f52f1c1800803c5e1d47f1931f7b13b2c11de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78634ee7236c8bc0d256bac7eea521e699c0c39d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79368008"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113270"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Erstellen und Verwalten von Private Link für Azure Database for MySQL über die Befehlszeilenschnittstelle (CLI)
 
@@ -45,7 +45,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>Deaktivieren von Richtlinien für den privaten Endpunkt im Subnetz 
-Azure stellt Ressourcen für ein Subnetz innerhalb eines virtuellen Netzwerks bereit. Daher müssen Sie das Subnetz erstellen oder aktualisieren, um die Netzwerkrichtlinien für den privaten Endpunkt im Subnetz zu deaktivieren. Aktualisieren Sie eine Subnetzkonfiguration mit dem Namen *mySubnet* mit [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+Azure stellt Ressourcen für ein Subnetz innerhalb eines virtuellen Netzwerks bereit. Daher müssen Sie das Subnetz erstellen oder aktualisieren, um die [Netzwerkrichtlinien](../private-link/disable-private-endpoint-network-policy.md) für den privaten Endpunkt im Subnetz zu deaktivieren. Aktualisieren Sie eine Subnetzkonfiguration mit dem Namen *mySubnet* mit [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -68,7 +68,7 @@ Notieren Sie die öffentliche IP-Adresse der VM. Sie verwenden diese Adresse im 
 Erstellen Sie mit dem Befehl „az mysql server create“ eine Azure Database for MySQL-Instanz. Denken Sie daran, dass der Name Ihres MySQL-Servers innerhalb von Azure eindeutig sein muss. Ersetzen Sie daher den Platzhalterwert in Klammern durch Ihren eigenen eindeutigen Wert: 
 
 ```azurecli-interactive
-# Create a logical server in the resource group 
+# Create a server in the resource group 
 az mysql server create \
 --name mydemoserver \
 --resource-group myResourcegroup \
@@ -78,18 +78,21 @@ az mysql server create \
 --sku-name GP_Gen5_2
 ```
 
-Beachten Sie, dass die MySQL-Server-ID ähnlich ist wie ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/servername.``` Sie verwenden die SQL-Server-ID im nächsten Schritt. 
+> [!NOTE]
+> In einigen Fällen befinden sich Azure Database for MySQL und das VNET-Subnetz in unterschiedlichen Abonnements. In diesen Fällen müssen Sie folgende Konfigurationen sicherstellen:
+> - Stellen Sie sicher, dass für beide Abonnements der Ressourcenanbieter **Microsoft.DBforMySQL** registriert ist. Weitere Informationen finden Sie unter [Azure-Ressourcenanbieter und -typen][resource-manager-portal].
 
 ## <a name="create-the-private-endpoint"></a>Erstellen des privaten Endpunkts 
 Erstellen Sie einen privaten Endpunkt für den MySQL-Server in Ihrer Virtual Network-Instanz: 
+
 ```azurecli-interactive
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "<MySQL Server ID>" \  
-    --group-ids mysqlServer \  
+    --private-connection-resource-id $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforMySQL/servers" --query "id") \    
+    --group-id mysqlServer \  
     --connection-name myConnection  
  ```
 
@@ -163,9 +166,9 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
 3. Testen Sie die Verbindung über den privaten Link für den MySQL-Server mit einem beliebigen verfügbaren Client. Im folgenden Beispiel wird für diesen Vorgang [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) verwendet.
 
 
-4. Geben Sie in **Neue Verbindung** die folgenden Informationen ein, oder wählen Sie sie aus:
+4. Geben Sie in **Neue Verbindung** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Verbindungsname| Wählen Sie den gewünschten Verbindungsnamen aus.|
     | Hostname | Select *mydemoserver.privatelink.mysql.database.azure.com* |
@@ -190,3 +193,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen finden Sie unter [Was ist privater Endpunkt in Azure?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

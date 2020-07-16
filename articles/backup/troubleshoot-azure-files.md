@@ -3,12 +3,12 @@ title: Problembehandlung der Sicherung von Azure-Dateifreigaben
 description: Dieser Artikel enthält Informationen zum Behandeln von Problemen in Verbindung mit dem Schutz Ihrer Azure-Dateifreigaben.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 3d04a60b8bab5ba764818eab341ac08836b0dfd1
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116734"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079886"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
 
@@ -25,6 +25,7 @@ Dieser Artikel enthält Informationen zur Problembehandlung, mit denen Sie event
   >Alle Dateifreigaben in einem Speicherkonto können nur unter einem einzelnen Recovery Services-Tresor geschützt werden. Mithilfe [dieses Skripts](scripts/backup-powershell-script-find-recovery-services-vault.md) können Sie nach dem Recovery Services-Tresor suchen, bei dem Ihr Speicherkonto registriert ist.
 
 - Vergewissern Sie sich, dass sich die Dateifreigabe nicht in einem nicht unterstützten Speicherkonto befindet. Sie können die [Unterstützungsmatrix für Sicherungen von Azure-Dateifreigaben](azure-file-share-support-matrix.md) verwenden, um unterstützte Speicherkonten zu finden.
+- Stellen Sie sicher, dass die Kombination aus Speicherkontoname und Ressourcengruppenname eine Gesamtlänge von 84 Zeichen bei neuen Speicherkonten und 77 Zeichen bei klassischen Speicherkonten nicht überschreitet. 
 - Überprüfen Sie die Firewalleinstellungen des Speicherkontos, um sicherzustellen, dass die Option zum Erlauben des Zugriffs auf das Speicherkonto durch vertrauenswürdige Microsoft-Dienste aktiviert ist.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Im Portal tritt ein Fehler mit dem Hinweis auf, dass die Speicherkonten nicht erfolgreich erkannt wurden.
@@ -276,8 +277,6 @@ Fehlercode: BMSUserErrorObjectLocked
 Fehlermeldung: Für das ausgewählte Element wird derzeit ein anderer Vorgang ausgeführt.
 
 Warten Sie, bis dieser andere Vorgang abgeschlossen ist, und versuchen Sie es zu einem späteren Zeitpunkt noch einmal.
-
-Aus der Datei „troubleshoot-azure-files.md“
 
 ## <a name="common-soft-delete-related-errors"></a>Häufige Fehler beim vorläufigen Löschen
 

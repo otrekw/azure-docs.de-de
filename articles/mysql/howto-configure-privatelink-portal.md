@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie Privat Link für Azure Database for MySQL üb
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 4a4824a9f8340b12bca7e18562d723eb24e58b71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5547c78007d38788d71e84f8fbf3ca8b60dc1576
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371918"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101748"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Erstellen und Verwalten von Private Link für Azure Database for MySQL im Portal
 
@@ -41,7 +41,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
     | Adressraum | Geben Sie *10.1.0.0/16* ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie **OK** aus. |
-    | Position | Wählen Sie **Europa, Westen** aus.|
+    | Standort | Wählen Sie **Europa, Westen** aus.|
     | Subnetzname | Geben Sie *mySubnet* ein. |
     | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |
     |||
@@ -112,7 +112,7 @@ In diesem Abschnitt erstellen Sie einen Azure Database for MySQL-Server in Azure
     |Servername  | Geben Sie *myServer* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen.|
     | Administratorbenutzername| Geben Sie einen Administratornamen Ihrer Wahl ein. |
     | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens acht Zeichen lang sein und die festgelegten Anforderungen erfüllen. |
-    | Position | Wählen Sie eine Azure-Region aus, in der sich Ihr MySQL-Server befinden soll. |
+    | Standort | Wählen Sie eine Azure-Region aus, in der sich Ihr MySQL-Server befinden soll. |
     |Version  | Wählen Sie die gewünschte Datenbankversion des MySQL-Servers aus.|
     | Compute + Speicher| Wählen Sie den für den Server erforderlichen Tarif basierend auf der Workload aus. |
     |||
@@ -121,6 +121,10 @@ In diesem Abschnitt erstellen Sie einen Azure Database for MySQL-Server in Azure
 8. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
 9. Wenn die Meldung „Überprüfung erfolgreich“ angezeigt wird, wählen Sie **Erstellen** aus. 
 10. Wenn die Meldung „Überprüfung erfolgreich“ angezeigt wird, wählen Sie „Erstellen“ aus. 
+
+> [!NOTE]
+> In einigen Fällen befinden sich Azure Database for MySQL und das VNET-Subnetz in unterschiedlichen Abonnements. In diesen Fällen müssen Sie folgende Konfigurationen sicherstellen:
+> - Stellen Sie sicher, dass für beide Abonnements der Ressourcenanbieter **Microsoft.DBforMySQL** registriert ist. Weitere Informationen finden Sie unter [Azure-Ressourcenanbieter und -typen][resource-manager-portal].
 
 ## <a name="create-a-private-endpoint"></a>Erstellen eines privaten Endpunkts
 
@@ -167,6 +171,9 @@ In diesem Abschnitt erstellen Sie einen MySQL-Server und fügen diesem einen pri
     |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. |
     |Private DNS-Zone |Auswählen von *(New)privatelink.mysql.database.azure.com* |
     |||
+
+    > [!Note] 
+    > Verwenden Sie die vordefinierte private DNS-Zone für Ihren Dienst, oder geben Sie Ihren bevorzugten DNS-Zonennamen an. Ausführliche Informationen finden Sie unter [DNS-Zonenkonfiguration für Azure-Dienste](../private-link/private-endpoint-dns.md).
 
 1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
 2. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus. 
@@ -248,3 +255,6 @@ Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem MySQL-Server und dem virtuel
 ## <a name="next-steps"></a>Nächste Schritte
 
 In dieser Anleitung haben Sie einen virtuellen Computer in einem virtuellen Netzwerk, eine Azure Database for MySQL und einen privaten Endpunkt für den privaten Zugriff erstellt. Sie haben aus dem Internet eine Verbindung mit einem virtuellen Computer hergestellt und über Private Link sicher mit dem MySQL-Server kommuniziert. Weitere Informationen zu privaten Endpunkten finden Sie unter [Was ist privater Endpunkt in Azure?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

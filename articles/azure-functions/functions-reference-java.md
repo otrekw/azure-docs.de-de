@@ -3,12 +3,12 @@ title: Java-Entwicklerreferenz zu Azure Functions
 description: Erfahren Sie, wie Sie mithilfe von Java Funktionen entwickeln können.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 6ce886fd0ca47d728a115427b354442fd259e714
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 339615ac99f231fd293a7ea15c853d43da8f998a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648235"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057601"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
@@ -50,20 +50,6 @@ mvn archetype:generate \
 
 Informationen zu den ersten Schritten bei der Verwendung dieses Archetyps finden Sie im [Java-Schnellstart](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java). 
 
-## <a name="create-kotlin-functions-preview"></a>Erstellen von Kotlin-Funktionen (Vorschau)
-
-Es gibt auch einen Maven-Archetyp zum Generieren von Kotlin-Funktionen. Dieser Archetyp befindet sich derzeit im Vorschaumodus und wird unter der folgenden_groupId_:_artifactId_ veröffentlicht: [com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/). 
-
-Mit dem folgenden Befehl wird ein neues Java-Funktionsprojekt mit diesem Archetyp generiert:
-
-```
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-kotlin-archetype
-```
-
-Informationen zu den ersten Schritten bei der Verwendung dieses Archetyps finden Sie im [Kotlin-Schnellstart](functions-create-first-kotlin-maven.md).
-
 ## <a name="folder-structure"></a>Ordnerstruktur
 
 Im Folgenden wird die Ordnerstruktur eines Azure Functions-Java-Projekts gezeigt:
@@ -89,8 +75,6 @@ FunctionsProject
  | | | | - lib
  | - pom.xml
 ```
-
-_* Das Kotlin-Projekt sieht sehr ähnlich aus, da es weiterhin zu Maven gehört._
 
 Sie können die freigegebene Datei [host.json](functions-host-json.md) zum Konfigurieren der Funktions-App verwenden. Jede Funktion verfügt über eine eigene Codedatei (JAVA-Datei) sowie über eine eigene Bindungskonfigurationsdatei („function.json“).
 
@@ -391,7 +375,7 @@ Im vorherigen Beispiel ist `queryValue` an den Abfragezeichenfolgen-Parameter `n
 
 ## <a name="execution-context"></a>Ausführungskontext
 
-Der in der `azure-functions-java-library` definierte `ExecutionContext` enthält Hilfsmethoden für die Kommunikation mit der Funktionsruntime.
+Der in der `azure-functions-java-library` definierte `ExecutionContext` enthält Hilfsmethoden für die Kommunikation mit der Funktionsruntime. Weitere Informationen finden Sie im Referenzartikel zur [Schnittstelle „ExecutionContext“](/java/api/com.microsoft.azure.functions.executioncontext).
 
 ### <a name="logger"></a>Protokollierungstool
 

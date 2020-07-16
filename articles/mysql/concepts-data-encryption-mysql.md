@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 24b52042e037e998069550599ca006eded70d1c4
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e2f732a8cf51c51de1b6125717eafb672d7fff74
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849727"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027408"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL-Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel
-
-> [!NOTE]
-> Derzeit müssen Sie den Zugriff anfordern, um diese Funktion verwenden zu können. Wenden Sie sich zu diesem Zweck an AskAzureDBforMySQL@service.microsoft.com.
 
 Datenverschlüsselung mit vom Kunden verwalteten Schlüsseln für Azure Database for MySQL ermöglicht Ihnen BYOK (Bring Your Own Key) für den Schutz von Daten im Ruhezustand. Sie bietet Organisationen auch eine Möglichkeit der Trennung von Aufgaben bei der Verwaltung von Schlüsseln und Daten. Bei der vom Kunden verwalteten Verschlüsselung ist der Kunde vollständig für die Verwaltung des Lebenszyklus von Schlüsseln und der Schlüsselnutzungsberechtigungen sowie für die Überwachung von Vorgängen für Schlüssel verantwortlich, hat damit aber auch vollständige Kontrolle.
 
@@ -129,6 +126,19 @@ Um Probleme bei der Einrichtung von kundenseitig verwalteter Datenverschlüsselu
 * Initiieren Sie die Wiederherstellung oder die Erstellung eines Lesereplikats auf dem Master für Azure Database for MySQL.
 * Der neu erstellte Server (wiederhergestellt oder Replikat) verbleibt im Zustand „Zugriff nicht möglich“, da seiner eindeutigen Identität noch keine Berechtigungen für Azure Key Vault erteilt wurden.
 * Überprüfen Sie auf dem wiederhergestellten Server oder dem Replikatserver erneut den kundenseitig verwalteten Schlüssel in den Einstellungen zur Datenverschlüsselung, um sicherzustellen, dass dem neu erstellten Server die Berechtigungen „wrap“ und „unwrap“ für den in Key Vault gespeicherten Schlüssel erteilt wurden.
+
+## <a name="limitations"></a>Einschränkungen
+
+Bei Azure Database for MySQL gelten für die Unterstützung der Verschlüsselung ruhender Daten mittels kundenseitig verwaltetem Schlüssel nur wenige Einschränkungen:
+
+* Die Unterstützung dieser Funktionalität ist auf die Tarife **Universell** und **Arbeitsspeicheroptimiert** beschränkt.
+* Diese Funktion wird nur in Regionen und auf Servern unterstützt, die eine Speicherkapazität bis zu 16 TB unterstützen. Eine Liste der Azure-Regionen, die Speicher mit bis zu 16 TB unterstützen, finden Sie im Abschnitt zu Speicher in der Dokumentation [hier](concepts-pricing-tiers.md#storage).
+
+    > [!NOTE]
+    > - Für alle neuen MySQL-Server, die in den oben aufgeführten Regionen erstellt wurden, ist die Unterstützung der Verschlüsselung mit kundenseitig verwalteten Schlüsseln **verfügbar**. Server für die Zeitpunktwiederherstellung oder Lesereplikate kommen nicht in Frage, obwohl sie theoretisch „neu“ sind.
+    > - Um zu überprüfen, ob Ihr bereitgestellter Server bis zu 16 TB unterstützt, können Sie im Portal zum Blatt „Tarif“ navigieren und die maximale Speichergröße anzeigen, die Ihr bereitgestellter Server unterstützt. Wenn Sie den Schieberegler auf bis zu 4 TB verschieben können, unterstützt Ihr Server möglicherweise keine Verschlüsselung mit kundenseitig verwalteten Schlüsseln. Die Daten sind jedoch jederzeit mit dienstseitig verwalteten Schlüsseln verschlüsselt. Wenn Sie weitere Fragen haben, wenden Sie sich an AskAzureDBforMySQL@service.microsoft.com.
+
+* Verschlüsselung wird nur mit RSA 2048-Kryptografieschlüsseln unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

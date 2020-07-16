@@ -4,18 +4,18 @@ description: Erfahren Sie mehr über die Auswirkungen von Sicherheits- und Daten
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
-ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: 590ad6a52d768c7e59d8d97691e146205e43cadd
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.topic: conceptual
+ms.date: 06/05/2020
+ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628707"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194969"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Datensicherheits- und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps
 
-Ab dem **1. Mai 2020** wirken sich Änderungen aufgrund der [Datensicherheits- und Datenschutzrichtlinien](https://www.blog.google/technology/safety-security/project-strobe/) von Google möglicherweise auf Ihre Logik-App-Workflows aus, wenn diese den [Gmail-Connector](https://docs.microsoft.com/connectors/gmail/) verwenden. Wenn Ihre Logik-Apps den Gmail-Connector mit einem Gmail-Endbenutzerkonto verwenden (E-Mail-Adresse, die mit @gmail.com oder @googlemail.com endet), können Ihre Logik-Apps nur bestimmte, [von Google genehmigte Trigger, Aktionen und Connectors](#approved-connectors) verwenden. 
+Ab dem **1. Mai 2020** wirken sich Änderungen aufgrund der [Datensicherheits- und Datenschutzrichtlinien](https://www.blog.google/technology/safety-security/project-strobe/) von Google möglicherweise auf Ihre Logik-App-Workflows aus, wenn diese den [Gmail-Connector](https://docs.microsoft.com/connectors/gmail/) verwenden. Wenn Ihre Logik-Apps den Gmail-Connector mit einem Gmail-Endbenutzerkonto verwenden (E-Mail-Adresse, die mit @gmail.com oder @googlemail.com endet), können Ihre Logik-Apps nur bestimmte, [von Google genehmigte Trigger, Aktionen und Connectors](#approved-connectors) verwenden.
 
 > [!NOTE]
 > Wenn Ihre Logik-Apps den Gmail-Connector mit einem G Suite-Geschäftskonto verwenden (E-Mail-Adresse mit benutzerdefinierter Domäne), sind Ihre Logik-Apps nicht betroffen, und es gibt keine Einschränkungen für die Verwendung des Gmail-Connectors.
@@ -36,11 +36,31 @@ Gemäß dieser Richtlinie können Sie, wenn Sie ein Gmail-Endbenutzerkonto verwe
 
 * In Logic Apps integrierte Trigger und Aktionen: Batch, Steuerelement, Datenvorgänge, Datum/Uhrzeit, Flatfile, Liquid, Anforderung, Terminplanung, Variablen und XML
 
+  Von Google nicht genehmigte integrierte Trigger und Aktionen, z. B. HTTP, Azure Functions und Azure Logic Apps, sorgen dafür, dass eine Logik-App nicht mit dem Gmail-Connector kompatibel ist, da die App Daten überall senden und empfangen kann.
+
 * Google-Dienste: Gmail, Google Kalender, Google Kontakte, Google Drive, Google Tabellen und Google Tasks
 
 * Genehmigte Microsoft-Dienste: Dynamics 365, Excel Online, Microsoft Teams, Office 365, OneDrive und SharePoint Online
 
 * Connectors für kundenseitig verwaltete Datenquellen: FTP, RSS, SFTP, SMTP und SQL Server
+
+## <a name="non-compliant-examples"></a>Nicht kompatible Beispiele
+
+Im Folgenden sind einige Beispiele aufgeführt, bei denen der Gmail-Connector mit integrierten Triggern und Aktionen oder verwalteten Connectors verwendet wird, die nicht von Google genehmigt sind:
+
+* Diese Logik-App verwendet den Gmail-Connector mit dem integrierten HTTP-Trigger:
+
+  ![Nicht kompatible Logik-App: Beispiel 1](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-1.png)
+  
+  Diese Logik-App verwendet auch den Google Kalender-Connector, der genehmigt ist.
+
+* Die folgende Logik-App verwendet den Gmail-Connector mit dem Azure Blob Storage-Connector:
+
+  ![Nicht kompatible Logik-App: Beispiel 2](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-2.png)
+
+* Diese Logik-App verwendet den Gmail-Connector mit dem Twitter-Connector:
+
+  ![Nicht kompatible Logik-App: Beispiel 3](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
 Die jeweils aktuellen Informationen finden Sie in der [technischen Referenzdokumentation für den Gmail-Connector](https://docs.microsoft.com/connectors/gmail/).
 

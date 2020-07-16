@@ -1,19 +1,19 @@
 ---
-title: SSL-Konnektivität – Azure Database for MariaDB
+title: SSL/TLS-Konnektivität in Azure Database for MariaDB
 description: Informationen zum Konfigurieren von Azure Database for MariaDB und zugehörigen Anwendungen für die richtige Verwendung von SSL-Verbindungen
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 36532575645d135a7abe7239798b6f2abc4246f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: 4111b0b01690097535412205b60619172e2c100a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79477067"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84416654"
 ---
-# <a name="ssl-connectivity-in-azure-database-for-mariadb"></a>SSL-Konnektivität in Azure Database for MariaDB
+# <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>SSL/TLS-Konnektivität in Azure Database for MariaDB
 Azure Database for MariaDB unterstützt die Verbindung Ihres Datenbankservers mit Clientanwendungen, die Secure Sockets Layer (SSL) verwenden. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.
 
 ## <a name="default-settings"></a>Standardeinstellungen
@@ -25,6 +25,32 @@ Verbindungszeichenfolgen für verschiedene Programmiersprachen werden im Azure-P
 
 Informationen zum Aktivieren oder Deaktivieren von SSL-Verbindungen bei der Anwendungsentwicklung finden Sie unter [Konfigurieren von SSL](howto-configure-ssl.md).
 
+## <a name="tls-enforcement-in-azure-database-for-mariadb"></a>TLS-Erzwingung in Azure Database for MariaDB
+
+Azure Database for MariaDB unterstützt die Verschlüsselung für Clients, die eine Verbindung mit dem Datenbankserver mithilfe von Transport Layer Security (TLS) herstellen. TLS ist ein Standardprotokoll der Branche, das sichere Netzwerkverbindungen zwischen dem Datenbankserver und Clientanwendungen gewährleistet, sodass Sie Konformitätsanforderungen einhalten können.
+
+### <a name="tls-settings"></a>TLS-Einstellungen
+
+Azure Database for MariaDB bietet die Möglichkeit, die TLS-Version für die Clientverbindungen vorzuschreiben. Zum Erzwingen der TLS-Version verwenden Sie die Optionseinstellung **TLS-Mindestversion**. Für diese Optionseinstellung sind die folgenden Werte zulässig:
+
+|  TLS-Mindesteinstellung             | Unterstützte Client-TLS-Version                |
+|:---------------------------------|-------------------------------------:|
+| TLSEnforcementDisabled (Standardwert) | Kein TLS erforderlich                      |
+| TLS1_0                           | TLS 1.0, TLS 1.1, TLS 1.2 und höher         |
+| TLS1_1                           | TLS 1.1, TLS 1.2 und höher              |
+| TLS1_2                           | TLS-Version 1.2 und höher                  |
+
+
+Wenn Sie diese Mindesteinstellung für die TLS-Version beispielsweise auf TLS 1.0 festlegen, bedeutet das, dass Ihr Server Verbindungen von Clients mithilfe von TLS 1.0, 1.1 und 1.2+ zulässt. Alternativ bedeutet die Festlegung auf 1.2, dass Sie nur Verbindungen von Clients mithilfe von TLS 1.2+ zulassen und alle Verbindungen mit TLS 1.0 und TLS 1.1 abgewiesen werden.
+
+> [!Note] 
+> Standardmäßig ist für Azure Database for MariaDB TLS für alle neuen Server deaktiviert. 
+>
+> Aktuell werden von Azure Database for MariaDB die TLS-Versionen TLS 1.0, 1.1 und 1.2 unterstützt. Wenn Sie erst eine bestimmte TLS-Mindestversion erzwungen haben, können Sie nicht mehr zu „deaktiviert“ zurückkehren.
+
+Informationen zum Festlegen der TLS-Einstellung für Ihren Azure Database for MariaDB finden Sie unter [Konfigurieren der TLS-Einstellung](howto-tls-configurations.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [Firewallregeln des Azure Database for MariaDB-Servers](concepts-firewall-rules.md).
-- Erfahren Sie mehr über das [Konfigurieren der SSL-Konnektivität in der Anwendung für eine sichere Verbindung mit Azure Database for MariaDB](howto-configure-ssl.md).
+- Erfahren Sie mehr über das [Konfigurieren von SSL](howto-configure-ssl.md).
+- Erfahren Sie mehr über das [Konfigurieren von TLS](howto-tls-configurations.md).

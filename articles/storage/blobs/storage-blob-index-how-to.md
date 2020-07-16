@@ -5,15 +5,15 @@ author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 04/24/2020
 ms.service: storage
-ms.subservice: common
-ms.topic: conceptual
+ms.subservice: blobs
+ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: cc82b6578b06323d8cf9a09644d50043dba8e554
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 6e3ce99211da35105fd9e118a850110dfd48ece1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774333"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84986281"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Verwenden von Blobindextags (Vorschauversion) zum Verwalten und Suchen von Daten in Azure Blob Storage
 
@@ -22,7 +22,7 @@ Blobindextags kategorisieren Daten in Ihrem Speicherkonto mithilfe von Schlüsse
 Weitere Informationen zum Blobindex finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
 
 > [!NOTE]
-> Der Blobindex befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **Frankreich, Mitte** und **Frankreich, Süden** verfügbar. Weitere Informationen zu dieser Funktion sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
+> Der Blobindex befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **Kanada, Mitte**, **Kanada, Osten**, **Frankreich, Mitte** und **Frankreich, Süden** verfügbar. Weitere Informationen zu dieser Funktion sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 # <a name="portal"></a>[Portal](#tab/azure-portal)
@@ -298,6 +298,6 @@ Richtlinien für die [Lebenszyklusverwaltung](storage-lifecycle-management-conce
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über den Blobindex. Lesen Sie den Artikel [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md ).
+Erfahren Sie mehr über den Blobindex. Sehen Sie sich hierzu [Verwalten und Ermitteln von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md ) an.
 
-Erfahren Sie mehr über die Lebenszyklusverwaltung. Lesen Sie den Artikel [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md).
+Erfahren Sie mehr über die Lebenszyklusverwaltung. Sehen Sie sich hierzu [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md) an.

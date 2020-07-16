@@ -3,18 +3,18 @@ title: Entwerfen von Workflows für Policy-as-Code
 description: Erfahren Sie, wie Sie Workflows entwerfen, um Ihre Azure Policy-Definitionen als Code bereitzustellen und Ressourcen automatisch zu überprüfen.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 972ec40609c340b159d21dde2bf18ab3330bf8cd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 17964459c6c06e6d7df09da4d3f0813350f209ec
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684271"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970942"
 ---
 # <a name="design-policy-as-code-workflows"></a>Entwerfen von Workflows für Policy-as-Code
 
 Je weiter Sie Ihre Cloudgovernance entwickeln, desto mehr werden Sie von der manuellen Verwaltung jeder Richtliniendefinition im Azure-Portal oder über die verschiedenen SDKs zu einem einfacheren und besser wiederholbaren Prozess auf Unternehmensebene wechseln wollen. Im Folgenden finden Sie die beiden vorherrschenden Ansätze für die Verwaltung von umfangreichen Systemen in der Cloud:
 
-- Infrastructure-as-Code: Bei diesem Ansatz werden alle Inhalte, die Ihre Umgebungen definieren – von Resource Manager-Vorlagen über Azure Policy-Definitionen bis hin zu Azure Blueprints – als Quellcode behandelt.
+- Infrastructure-as-Code: Bei diesem Ansatz werden alle Inhalte, die Ihre Umgebungen definieren – von Azure Resource Manager-Vorlagen (ARM-Vorlagen) über Azure Policy-Definitionen bis hin zu Azure Blueprints – als Quellcode behandelt.
 - DevOps: DevOps vereint Personen, Prozesse und Produkte, um hochwertige Continuous Delivery-Prozesse an Endbenutzer zu ermöglichen.
 
 Policy-as-Code ist eine Kombination dieser beiden Ansätze. Im Wesentlichen behalten Sie Ihre Richtliniendefinitionen in der Quellcodeverwaltung und testen und validieren Änderungen, wann immer diese eingeführt werden sollen. Dies sollte jedoch nicht der einzige Aspekt der Einbeziehung von Richtlinien in Infrastructure-as-Code oder DevOps sein.
@@ -115,7 +115,7 @@ Wenn alle Validierungsvorgänge abgeschlossen sind, aktualisieren Sie die Zuweis
 
 ## <a name="process-integrated-evaluations"></a>Verarbeiten von integrierten Auswertungen
 
-Im allgemeinen Workflow für Policy-as-Code werden Richtlinien und Initiativen in großem Umfang für eine Umgebung entwickelt und bereitgestellt. Die Richtlinienauswertung sollte jedoch Teil des Bereitstellungsprozesses jedes Workflows sein, mit dem Ressourcen in Azure erstellt oder bereitgestellt werden. Hierzu gehören beispielsweise das Bereitstellen von Anwendung oder das Ausführen von Resource Manager-Vorlagen zum Erstellen einer Infrastruktur.
+Im allgemeinen Workflow für Policy-as-Code werden Richtlinien und Initiativen in großem Umfang für eine Umgebung entwickelt und bereitgestellt. Die Richtlinienauswertung sollte jedoch Teil des Bereitstellungsprozesses jedes Workflows sein, mit dem Ressourcen in Azure erstellt oder bereitgestellt werden. Hierzu gehören beispielsweise das Bereitstellen von Anwendung oder das Ausführen von ARM-Vorlagen zum Erstellen einer Infrastruktur.
 
 In diesen Fällen sollte nach der Bereitstellung der Anwendung oder Infrastruktur in einem Testabonnement oder einer Testressourcengruppe eine Richtlinienauswertung für diesen Bereitstellungsumfang erfolgen, um die erfolgreiche Validierung aller vorhandenen Richtlinien und Initiativen zu überprüfen. Auch wenn Richtlinien und Initiativen in einer solchen Umgebung möglicherweise mit dem **enforcementMode** _deaktiviert_ konfiguriert sind, ist es nützlich, bereits frühzeitig zu erfahren, ob eine Anwendungs- oder Infrastrukturbereitstellung gegen Richtlinien verstoßen könnte. Diese Richtlinienauswertung sollte daher als Schritt in solche Workflows eingebunden werden und Bereitstellungen, die nicht konforme Ressourcen erstellen, als fehlerhaft auswerten.
 

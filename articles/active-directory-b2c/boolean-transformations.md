@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 007d613a1f170a0ee278a838c92ade2fce9c6dec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c292f939339add06168c55236f8666651e4aace
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201275"
 ---
 # <a name="boolean-claims-transformations"></a>Transformationen von booleschen Ansprüchen
 
@@ -36,7 +36,7 @@ Führt einen And-Vorgang für zwei boolesche Eingabeansprüche aus und legt den 
 
 Die folgende Anspruchstransformation veranschaulicht, wie Sie einen And-Vorgang für zwei boolesche Anspruchstypen (`isEmailNotExist` und `isSocialAccount`) durchführen. `true` wird für den Ausgabeanspruch `presentEmailSelfAsserted` festgelegt, wenn beide Eingabeansprüche den Wert `true` aufweisen. In einem Orchestrierungsschritt können Sie eine Vorbedingung nur verwenden, um eine Seite mit Selbstbestätigung im Voraus einzustellen, wenn eine E-Mail-Adresse eines Social Media-Kontos leer ist.
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isEmailNotExist" TransformationClaimType="inputClaim1" />
@@ -48,7 +48,7 @@ Die folgende Anspruchstransformation veranschaulicht, wie Sie einen And-Vorgang 
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Beispiel
+### <a name="example-of-andclaims"></a>Beispiel für AndClaims
 
 - Eingabeansprüche:
     - **inputClaim1**: TRUE
@@ -72,7 +72,7 @@ Die Anspruchstransformation **AssertBooleanClaimIsEqualToValue** wird immer übe
 
 Die folgende Anspruchstransformation veranschaulicht, wie Sie den Wert eines booleschen Anspruchstyps mit einem `true`-Wert überprüfen. Wenn der Wert des Anspruchstyps `accountEnabled` FALSE ist, wird eine Fehlermeldung ausgelöst.
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertAccountEnabledIsTrue" TransformationMethod="AssertBooleanClaimIsEqualToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="accountEnabled" TransformationClaimType="inputClaim" />
@@ -85,7 +85,8 @@ Die folgende Anspruchstransformation veranschaulicht, wie Sie den Wert eines boo
 
 
 Das `login-NonInteractive`technische Validierungsprofil ruft die `AssertAccountEnabledIsTrue`-Anspruchstransformation auf.
-```XML
+
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -96,7 +97,7 @@ Das `login-NonInteractive`technische Validierungsprofil ruft die `AssertAccountE
 
 Das selbstbestätigte technische Profil ruft das technische Validierungsprofil **login-NonInteractive** auf.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Custom error message if account is disabled.</Item>
@@ -107,7 +108,7 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>Beispiel
+### <a name="example-of-assertbooleanclaimisequaltovalue"></a>Beispiel für AssertBooleanClaimIsEqualToValue
 
 - Eingabeansprüche:
     - **inputClaim**: FALSE
@@ -124,10 +125,9 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
 | InputParameter |valueToCompareTo | boolean | Der Wert, der verglichen werden soll (TRUE oder FALSE). |
 | OutputClaim | compareResult | boolean | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
-
 Die folgende Anspruchstransformation veranschaulicht, wie Sie den Wert eines booleschen Anspruchstyps mit einem `true`-Wert überprüfen. Wenn der Wert des `IsAgeOver21Years`-Anspruchstyps `true` entspricht, gibt die Anspruchstransformation `true`, andernfalls `false` zurück.
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="IsAgeOver21Years" TransformationClaimType="inputClaim" />
@@ -141,7 +141,7 @@ Die folgende Anspruchstransformation veranschaulicht, wie Sie den Wert eines boo
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Beispiel
+### <a name="example-of-comparebooleanclaimtovalue"></a>Beispiel für CompareBooleanClaimToValue
 
 - Eingabeansprüche:
     - **inputClaim**: FALSE
@@ -149,8 +149,6 @@ Die folgende Anspruchstransformation veranschaulicht, wie Sie den Wert eines boo
     - **valueToCompareTo**: TRUE
 - Ausgabeansprüche:
     - **compareResult**: false
-
-
 
 ## <a name="notclaims"></a>NotClaims
 
@@ -163,7 +161,7 @@ Führt einen Not-Vorgang für den booleschen Eingabeanspruch durch und legt den 
 
 Verwenden Sie diese Anspruchstransformation, um die logische Negation für einen Anspruch auszuführen.
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="NotClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userExists" TransformationClaimType="inputClaim" />
@@ -174,7 +172,7 @@ Verwenden Sie diese Anspruchstransformation, um die logische Negation für einen
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Beispiel
+### <a name="example-of-notclaims"></a>Beispiel für NotClaims
 
 - Eingabeansprüche:
     - **inputClaim**: FALSE
@@ -193,7 +191,7 @@ Berechnet einen Or-Vorgang für zwei boolesche Eingabeansprüche und legt den Au
 
 Die folgende Anspruchstransformation veranschaulicht, wie Sie einen `Or`-Vorgang für zwei boolesche Anspruchstypen durchführen. Im Orchestrierungsschritt können Sie eine Vorbedingung verwenden, um eine Seite mit Selbstbestätigung im Voraus einzustellen, wenn einer der Ansprüche den Wert `true` aufweist.
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="OrClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isLastTOSAcceptedNotExists" TransformationClaimType="inputClaim1" />
@@ -205,7 +203,7 @@ Die folgende Anspruchstransformation veranschaulicht, wie Sie einen `Or`-Vorgang
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Beispiel
+### <a name="example-of-orclaims"></a>Beispiel für OrClaims
 
 - Eingabeansprüche:
     - **inputClaim1**: TRUE

@@ -1,14 +1,14 @@
 ---
 title: Azure Policy-Erweiterung für Visual Studio Code
-description: Erfahren Sie, wie Sie die Azure Policy-Erweiterung für Visual Studio Code zum Suchen nach Resource Manager-Aliasen verwenden.
-ms.date: 03/07/2020
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure Policy-Erweiterung für Visual Studio Code nach Azure Resource Manager-Aliassen suchen.
+ms.date: 06/16/2020
 ms.topic: how-to
-ms.openlocfilehash: 0c4e04cc352744fed1c7c2965f8096f0f05c2a50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c91d39414a376b410e52c2ba60ce15ed0c5054f6
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182564"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970755"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Verwenden der Azure Policy-Erweiterung für Visual Studio Code
 
@@ -86,7 +86,7 @@ Bei der ersten Anmeldung werden nur die Ressourcen und Richtlinien des Standarda
 
    - Fensterfußzeile
 
-     Wählen Sie in der Fensterfußzeile am unteren Bildschirmrand das Segment aus, das **Azure: \<Ihr Konto\>** entspricht.
+     Wählen Sie in der Fensterfußzeile am unteren Bildschirmrand das Segment aus, das **Azure: \<your account\>** entspricht.
 
 1. Verwenden Sie das Filterfeld, um Abonnements schnell nach Namen zu finden. Dann aktivieren bzw. deaktivieren Sie die einzelnen Abonnements, um die von der Azure Policy-Erweiterung angezeigten Abonnements festzulegen. Nachdem Sie Abonnements für die Anzeige hinzugefügt oder entfernt haben, klicken Sie auf **OK**.
 
@@ -121,11 +121,14 @@ Kunden mit Hunderten oder Tausenden von Ressourcen in einem einzelnen Abonnement
 
 ## <a name="discover-aliases-for-resource-properties"></a>Ermitteln von Aliasen für Ressourceneigenschaften
 
-Bei Auswahl einer Ressource (unabhängig davon, ob über die Suchschnittstelle oder durch Auswahl in der Strukturansicht) öffnet die Azure Policy-Erweiterung die JSON-Datei, die diese Ressource und alle zugehörigen Resource Manager-Eigenschaftswerte repräsentiert.
+Bei Auswahl einer Ressource (unabhängig davon, ob über die Suchschnittstelle oder durch Auswahl in der Strukturansicht) öffnet die Azure Policy-Erweiterung die JSON-Datei, die diese Ressource und alle zugehörigen Azure Resource Manager-Eigenschaftswerte repräsentiert.
 
 Sobald eine Ressource geöffnet ist, wird beim Zeigen auf den Namen oder den Wert der Resource Manager-Eigenschaft der Azure Policy-Alias angezeigt (sofern vorhanden). In diesem Beispiel ist die Ressource vom Typ `Microsoft.Compute/virtualMachines`, und es wird auf die Eigenschaft **properties.storageProfile.imageReference.offer** gezeigt. Beim Zeigen werden die entsprechenden Aliase eingeblendet.
 
 :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Zeigen in der Azure Policy-Erweiterung zum Einblenden des Resource Manager-Eigenschaftenalias" border="false":::
+
+> [!NOTE]
+> Die VS Code-Erweiterung stellt nur Eigenschaften des Resource Manager-Modus zur Verfügung und zeigt keine Eigenschaften des [Ressourcenanbietermodus](../concepts/definition-structure.md#mode) an.
 
 ## <a name="search-for-and-view-policies-and-assignments"></a>Suchen nach und Anzeigen von Richtlinien und Zuweisungen
 

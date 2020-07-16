@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
-ms.openlocfilehash: b59f933fedd5f1d3ed3f7972b1a1fe653df31be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75893913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84434374"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Behandlung von Problemen beim Upgrade von Microsoft Azure Site Recovery-Anbietern
 
@@ -65,4 +65,16 @@ So lösen Sie das Problem:
 
 1. Verwenden Sie den Task-Manager, um den Fortschritt der Installation zu überwachen. Wenn der Prozess für CX_THIRDPARTY_SETUP.EXE im Task-Manager nicht mehr sichtbar ist, fahren Sie mit dem nächsten Schritt fort.
 1. Stellen Sie sicher, dass „C:\thirdparty“ existiert und dass der Ordner die RRD-Bibliotheken enthält.
-1. Kehren Sie zu dem Ordner zurück, in den Sie das einheitliche Setup heruntergeladen haben, und führen Sie „MicrosoftAzureSiteRecoveryUnifiedSetup.exe“ aus, um das Upgrade abzuschließen. 
+1. Kehren Sie zu dem Ordner zurück, in den Sie das einheitliche Setup heruntergeladen haben, und führen Sie „MicrosoftAzureSiteRecoveryUnifiedSetup.exe“ aus, um das Upgrade abzuschließen.
+
+## <a name="upgrade-failure-due-to-master-target-installation-failure"></a>Upgradefehler aufgrund eines Fehlers bei der Installation des Masterziels
+
+Beim Upgrade des Microsoft Azure Site Recovery-Anbieters (DRA) tritt bei der Installation des Masterziels folgender Fehler auf: „Installation location does not exist and/or it does not have 1 GB free space and/or it does not exist on a fixed drive.“ (Der Installationsspeicherort ist nicht vorhanden und/oder verfügt nicht über 1 GB freien Speicherplatz und/oder befindet sich nicht auf einem Festplattenlaufwerk.).
+
+Dies kann auf einen NULL-Wert für einen Parameter im Registrierungsschlüssel zurückzuführen sein. Gehen Sie wie folgt vor, um dieses Problem zu beheben:
+
+1. Starten Sie den Registrierungs-Editor (regedit.exe), und öffnen Sie den Branch HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4.
+1. Überprüfen Sie den Schlüsselwert für „InstallDirectory“. Wenn er NULL ist, fügen Sie den aktuellen Wert für das Installationsverzeichnis ein.
+1. Öffnen Sie außerdem den Branch HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 im Registrierungs-Editor.
+1. Überprüfen Sie den Schlüsselwert für „InstallDirectory“, und fügen Sie den aktuellen Wert für das Installationsverzeichnis ein.
+1. Führen Sie das Installationsprogramm für das einheitliche Setup erneut aus.

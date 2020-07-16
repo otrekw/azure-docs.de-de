@@ -3,30 +3,30 @@ title: Einführung in Azure Advisor
 description: Nutzen Sie Azure Advisor, um Ihre Azure-Bereitstellungen zu optimieren.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 74048073677cdf0f9f57d84469959a84e78cd6c7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854435"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117776"
 ---
 # <a name="introduction-to-azure-advisor"></a>Einführung in Azure Advisor
 
 Hier erfahren Sie mehr über die wichtigsten Funktionen vom Azure Advisor und erhalten Antworten auf häufig gestellte Fragen.
 
 ## <a name="what-is-advisor"></a>Was ist der Advisor?
-Beim Advisor handelt es sich um einen personalisierten Cloudberater, der Sie mit bewährten Methoden zum Optimieren von Azure-Bereitstellungen unterstützt. Das Tool analysiert die Konfiguration Ihrer Ressourcen und Telemetriedaten zur Nutzung und macht anschließend Vorschläge, wie Sie die Wirtschaftlichkeit, Leistung, Hochverfügbarkeit und Sicherheit Ihrer Azure-Ressourcen steigern können.
+Beim Advisor handelt es sich um einen personalisierten Cloudberater, der Sie mit bewährten Methoden zum Optimieren von Azure-Bereitstellungen unterstützt. Das Tool analysiert die Konfiguration Ihrer Ressourcen und Telemetriedaten zur Nutzung und macht anschließend Vorschläge, wie Sie die Kosteneffizienz, Leistung, Zuverlässigkeit (früher als „Hochverfügbarkeit“ bezeichnet) und Sicherheit Ihrer Azure-Ressourcen steigern können.
 
 Der Advisor ermöglicht Folgendes:
 * Abrufen proaktiver, umsetzbarer und individueller Empfehlungen und bewährter Methoden. 
-* Verbessern der Leistung, Sicherheit und Hochverfügbarkeit Ihrer Ressourcen und Ermitteln von Möglichkeiten der Senkung Ihrer Gesamtausgaben für Azure.
+* Verbessern der Leistung, Sicherheit und Zuverlässigkeit Ihrer Ressourcen und Ermitteln von Möglichkeiten der Senkung Ihrer Gesamtausgaben für Azure.
 * Abrufen von Empfehlungen mit vorgeschlagenen Inlineaktionen.
 
 Der Zugriff auf Advisor erfolgt im [Azure-Portal](https://aka.ms/azureadvisordashboard). Melden Sie sich beim [Portal](https://portal.azure.com) an, und suchen Sie den **Advisor** im Navigationsmenü oder im Menü **Alle Dienste**.
 
 Auf dem Advisor-Dashboard werden personalisierte Empfehlungen für alle Ihre Abonnements angezeigt.  Sie können Filter zum Anzeigen von Empfehlungen für bestimmte Abonnements und Ressourcentypen anwenden.  Die Empfehlungen sind in fünf Kategorien unterteilt: 
 
-* **Hochverfügbarkeit**: Der Ratgeber hilft, die ununterbrochene Verfügbarkeit Ihrer unternehmenskritischen Anwendungen zu gewährleisten und zu verbessern. Weitere Informationen finden Sie unter [Advisor-Empfehlungen für Hochverfügbarkeit](advisor-high-availability-recommendations.md).
+* **Zuverlässigkeit (früher als „Hochverfügbarkeit“ bezeichnet):** Der Ratgeber hilft, die ununterbrochene Verfügbarkeit Ihrer unternehmenskritischen Anwendungen zu gewährleisten und zu verbessern. Weitere Informationen finden Sie unter [Verbessern der Zuverlässigkeit Ihrer Anwendung mit dem Azure Advisor](advisor-high-availability-recommendations.md).
 * **Sicherheit**: Der Ratgeber hilft beim Erkennen von Bedrohungen und Sicherheitsrisiken, die zu Sicherheitslücken führen können. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md).
 * **Leistung**: Der Ratgeber hilft, die Geschwindigkeit Ihrer Anwendungen zu verbessern. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md).
 * **Kosten**: Mit dem Ratgeber können Sie Ihre Gesamtausgaben für Azure senken und optimieren. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md).
@@ -68,7 +68,7 @@ Um eine Empfehlung zurückzustellen oder zu verwerfen, klicken Sie auf den Link 
 Hier finden Sie weitere Informationen zu Empfehlungen des Advisor:
 
 * [Erste Schritte mit Advisor](advisor-get-started.md)
-* [Advisor-Empfehlungen für Hochverfügbarkeit](advisor-high-availability-recommendations.md)
+* [Verbessern der Zuverlässigkeit Ihrer Anwendung mit dem Azure Advisor](advisor-high-availability-recommendations.md)
 * [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
 * [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
 * [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md)

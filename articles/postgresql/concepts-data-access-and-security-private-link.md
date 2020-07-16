@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 4216abdf8cc8aae00e3ba0c57961c4b8b7403672
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 90e0f74f3a17a2c98abfcd886d59344b18619f8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371680"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84508996"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Private Link für Azure Database for PostgreSQL-Einzelserver
 
@@ -45,7 +45,11 @@ Mit Private Link können Sie nun Netzwerkzugriffssteuerungen wie NSGs einrichten
 
 Wenn Sie von lokalen Computern aus eine Verbindung mit dem öffentlichen Endpunkt herstellen, muss Ihre IP-Adresse mithilfe einer Firewallregel auf Serverebene der IP-basierten Firewall hinzugefügt werden. Dieses Modell eignet sich zwar gut, um den Zugriff auf einzelne Computer für Entwicklungs- oder Testworkloads zuzulassen, in einer Produktionsumgebung gestaltet sich die Verwaltung jedoch schwierig.
 
-Mit Private Link können Sie standortübergreifenden Zugriff auf den privaten Endpunkt mittels [ExpressRoute](https://azure.microsoft.com/services/expressroute/), privatem Peering oder [VPN-Tunneln](https://docs.microsoft.com/azure/vpn-gateway/) ermöglichen. Anschließend kann der gesamte Zugriff über einen öffentlichen Endpunkt deaktiviert und auf die Verwendung der IP-basierten Firewall verzichtet werden.
+Mit Private Link können Sie standortübergreifenden Zugriff auf den privaten Endpunkt mittels [ExpressRoute](https://azure.microsoft.com/services/expressroute/), privatem Peering oder [VPN-Tunneln](https://docs.microsoft.com/azure/vpn-gateway/) ermöglichen. Anschließend können Sie den gesamten Zugriff über einen öffentlichen Endpunkt deaktivieren, ohne die IP-basierte Firewall zu verwenden.
+
+> [!NOTE]
+> In einigen Fällen befinden sich Azure Database for PostgreSQL und das VNET-Subnetz in unterschiedlichen Abonnements. In diesen Fällen müssen Sie folgende Konfigurationen sicherstellen:
+> - Stellen Sie sicher, dass für beide Abonnements der Ressourcenanbieter **Microsoft.DBforPostgreSQL** registriert ist. Weitere Informationen finden Sie unter [Azure-Ressourcenanbieter und -typen][resource-manager-portal].
 
 ## <a name="configure-private-link-for-azure-database-for-postgresql-single-server"></a>Konfigurieren von Private Link für Azure Database for PostgreSQL-Einzelserver
 
@@ -129,3 +133,6 @@ Weitere Informationen zu Sicherheitsfeatures für Azure Database for PostgreSQL-
 * Informationen zum Konfigurieren eines VNET-Dienstendpunkts für Ihren Azure Database for PostgreSQL-Einzelserver finden Sie unter [Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for PostgreSQL – Einzelserver](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet).
 
 * Eine Übersicht über die Konnektivität für Azure Database for PostgreSQL-Einzelserver finden Sie unter [Verbindungsarchitektur in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-connectivity-architecture).
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

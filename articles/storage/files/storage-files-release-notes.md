@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 5/19/2020
+ms.date: 6/26/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: e57a0266c762a3735fe1a71428e597dc6c3a5ce0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 54a7f3f50de27747ab15f6895ebfb4f65faf5fdf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85484059"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -25,6 +25,7 @@ Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unter
 
 | Meilenstein | Agent-Versionsnummer | Veröffentlichungsdatum | Status |
 |----|----------------------|--------------|------------------|
+| V10.1-Release: [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 5\. Juni 2020 | Unterstützt – Flighting |
 | Mai 2020 Updaterollup – [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 19. Mai 2020 | Unterstützt |
 | V10-Release: [KB4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 9\. April 2020 | Unterstützt |
 | Updaterollup von Dezember 2019: [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12. Dezember 2019 | Unterstützt |
@@ -41,6 +42,16 @@ Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unter
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-10100"></a>Agent-Version 10.1.0.0
+Die folgenden Versionshinweise gelten für Version 10.1.0.0 des Azure-Dateisynchronisierungs-Agents, die am 5. Juni 2020 veröffentlicht wurde. Sie gelten zusätzlich zu den für die Versionen 10.0.0.0 und 10.0.2.0 angegeben Versionshinweisen.
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Verbesserungen und behobene Probleme
+
+- Unterstützung für private Azure-Endpunkte
+    - Synchronisierungsdatenverkehr zum Speichersynchronisierungsdienst kann jetzt an einen privaten Endpunkt gesendet werden. Dies ermöglicht ein Tunneln über eine ExpressRoute- oder VPN-Verbindung. Weitere Informationen finden Sie unter [Konfigurieren von Netzwerkendpunkten für die Azure-Dateisynchronisierung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints).
+- Die Metrik „Dateien synchronisiert“ zeigt nun bei einer großen Synchronisierung den Fortschritt während der Ausführung an statt am Ende.
+- Verschiedene Verbesserungen in Bezug auf die Zuverlässigkeit bei der Agent-Installation, beim Cloudtiering, bei der Synchronisierung und bei der Telemetrie.
 
 ## <a name="agent-version-10020"></a>Agent-Version 10.0.2.0
 Die folgenden Versionshinweise gelten für Version 10.0.2.0 des Azure-Dateisynchronisierungs-Agents, die am 19. Mai 2020 veröffentlicht wurde. Diese Hinweise gelten zusätzlich zu den Versionshinweisen, die für die Version 10.0.0.0 angegeben sind.
@@ -119,7 +130,7 @@ Folgende Elemente werden nicht synchronisiert, aber der restliche Systembetrieb 
 
 ### <a name="cloud-endpoint"></a>Cloudendpunkt
 - Die Azure-Dateisynchronisierung unterstützt direkte Änderungen an der Azure-Dateifreigabe. Allerdings müssen alle Änderungen, die Sie an der Azure-Dateifreigabe vornehmen, zuerst von einem Azure-Dateisynchronisierungsauftrag zum Erkennen von Änderungen erkannt werden. Ein Auftrag zum Erkennen von Änderungen für einen Cloudendpunkt wird einmal alle 24 Stunden gestartet. Um Dateien, die in der Azure-Dateifreigabe geändert wurden, sofort zu synchronisieren, kann das PowerShell-Cmdlet [Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) verwendet werden, um die Erkennung von Änderungen in der Azure-Dateifreigabe manuell auszulösen. Darüber hinaus bewirken Änderungen, die über das REST-Protokoll an einer Azure-Dateifreigabe vorgenommen wurden, keine Aktualisierung der letzten SMB-Änderungszeit, und die Änderungen sind für eine Synchronisierung nicht zu sehen.
-- Der Speichersynchronisierungsdienst und/oder das Speicherkonto kann in eine andere Ressourcengruppe oder ein anderes Abonnement im vorhandenen Azure AD-Mandanten verschoben werden. Wenn das Speicherkonto verschoben wird, müssen Sie dem Hybrid-Dateisynchronisierungsdienst Zugriff auf das Speicherkonto gewähren (siehe [Sicherstellen, dass die Azure-Dateisynchronisierung Zugriff auf das Speicherkonto besitzt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+- Der Speichersynchronisierungsdienst und/oder das Speicherkonto kann in eine andere Ressourcengruppe, ein anderes Abonnement oder einen anderen Azure AD-Mandanten verschoben werden. Wenn der Speichersynchronisierungsdienst oder das Speicherkonto verschoben wurde, müssen Sie der Anwendung „Microsoft.StorageSync“ Zugriff auf das Speicherkonto gewähren (siehe [Stellen Sie sicher, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
     > [!Note]  
     > Beim Erstellen des Cloudendpunkts müssen sich der Speichersynchronisierungsdienst und das Speicherkonto im selben Azure AD-Mandanten befinden. Nach der Erstellung des Cloudendpunkts können der Speichersynchronisierungsdienst und das Speicherkonto in verschiedene Azure AD Mandanten verschoben werden.

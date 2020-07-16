@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 512ad8f93da53afb618491cd1769645d8edb0b14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bee705e33267a765c1fb5300c0bfe2d04ff2015d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75965844"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099645"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for PostgreSQL – Einzelserver
 
@@ -45,7 +45,7 @@ Eine VNET-Regel weist Ihren Azure Database for PostgreSQL-Server an, Nachrichten
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Vorteile einer VNET-Regel
 
@@ -69,7 +69,7 @@ Würde sich Ihr **Microsoft.Sql**-Server auf einem Knoten in einem Subnetz in Ih
 
 Allerdings gehört der Azure Database for PostgreSQL-Dienst noch nicht zu den Diensten, die einem Subnetz direkt zugewiesen werden können (Stand August 2018).
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>Details zu VNET-Regeln
 
@@ -102,7 +102,7 @@ Sie können mit der [rollenbasierten Zugriffssteuerung (RBAC)][rbac-what-is-813s
 > In einigen Fällen befinden sich Azure Database for PostgreSQL und das VNET-Subnetz in unterschiedlichen Abonnements. In diesen Fällen müssen Sie folgende Konfigurationen sicherstellen:
 > - Beide Abonnements müssen demselben Azure Active Directory-Mandanten zugeordnet sein.
 > - Der Benutzer muss über die erforderlichen Berechtigungen zum Initiieren der Vorgänge verfügen. Dazu gehören z.B. das Aktivieren von Dienstendpunkten und das Hinzufügen eines VNET-Subnetzes auf dem angegebenen Server.
-> - Stellen Sie sicher, dass für beide Abonnements der Ressourcenanbieter **Microsoft.Sql** registriert ist. Weitere Informationen finden Sie unter [Azure-Ressourcenanbieter und -typen][resource-manager-portal].
+> - Stellen Sie sicher, dass für beide Abonnements die Ressourcenanbieter **Microsoft.Sql** und **Microsoft.DBforPostgreSQL** registriert sind. Weitere Informationen finden Sie unter [Azure-Ressourcenanbieter und -typen][resource-manager-portal].
 
 ## <a name="limitations"></a>Einschränkungen
 

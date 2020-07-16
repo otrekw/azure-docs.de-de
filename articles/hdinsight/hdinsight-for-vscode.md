@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2020
-ms.openlocfilehash: de433d85c2f04a7140fbcb918730218ac3a05e54
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.custom: tracking-python
+ms.openlocfilehash: d00e4ad8b0a9f1f50c30144867babcd8c782734d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878628"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087128"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Verwenden von Spark- und Hive-Tools für Visual Studio Code
 
@@ -70,7 +71,7 @@ Führen Sie für Benutzer der nationalen Cloud diese Schritte aus, um zunächst 
 
 ## <a name="connect-to-an-azure-account"></a>Verbinden mit einem Azure-Konto
 
-Bevor Sie Skripts aus Visual Studio Code an Ihre Cluster senden können, müssen Sie entweder eine Verbindung zu Ihrem Azure-Konto herstellen oder einen Cluster verknüpfen. Verwenden Sie die Anmeldeinformationen mit Apache Ambari-Benutzername und -Kennwort oder ein in eine Domäne eingebundenes Konto. Führen Sie diese Schritte aus, um eine Verbindung mit Azure herzustellen:
+Bevor Sie Skripts aus Visual Studio Code an Ihre Cluster übermitteln können, können sich Benutzer entweder beim Azure-Abonnement anmelden oder [einen HDInsight-Cluster verknüpfen](#link-a-cluster). Verwenden Sie zum Herstellen einer Verbindung mit Ihrem HDInsight-Cluster den Ambari-Benutzernamen mit dem zugehörigen Kennwort oder die in eine Domäne eingebundenen Anmeldeinformationen für das ESP-Cluster. Führen Sie diese Schritte aus, um eine Verbindung mit Azure herzustellen:
 
 1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...** , und geben Sie **Azure: Anmelden** ein:
 
@@ -171,7 +172,10 @@ Mit Spark- und Hive-Tools für Visual Studio Code können Sie interaktive Hive-A
 
 ## <a name="submit-interactive-pyspark-queries"></a>Übermitteln interaktiver PySpark-Abfragen
 
-Wenn Sie interaktive PySpark-Abfragen übermitteln möchten, führen Sie die folgenden Schritte aus:
+Benutzer können interaktive PySpark-Abfrage wie folgt ausführen:
+
+### <a name="using-the-pyspark-interactive-command-in-py-file"></a>Mithilfe des interaktiven PySpark-Befehls in einer PY-Datei
+Gehen Sie wie folgt vor, um die Abfragen mithilfe des interaktiven PySpark-Befehls zu übermitteln:
 
 1. Öffnen Sie den Ordner **HDexample**, der [weiter oben](#open-a-work-folder) erläutert ist, erneut (sofern er geschlossen ist).  
 
@@ -193,31 +197,61 @@ Wenn Sie interaktive PySpark-Abfragen übermitteln möchten, führen Sie die fol
         print(sortedCollection[i])
    ```
 
-4. [Stellen Sie eine Verbindung mit Ihrem Azure-Konto her](#connect-to-an-azure-account), oder verknüpfen Sie einen Cluster, sofern dies noch nicht erfolgt ist.
+4. Die Aufforderung, den PySpark-Kernel zu installieren, wird unten rechts im Fenster angezeigt. Sie können auf **Installieren** klicken, um mit der PySpark-Installation fortzufahren, auf **Überspringen**, um diesen Schritt auszulassen.
 
-5. Wählen Sie den gesamten Code aus, klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie **Spark: PySpark Interactive** aus, um die Abfrage zu übermitteln. Oder verwenden Sie die Tastenkombination STRG+ALT+I.
+   ![PySpark-Kernel installieren](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
-   ![PySpark Interactive-Kontextmenü](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
+5. Wenn Sie den Kernel später installieren müssen, können Sie zu **Datei** > **Einstellung** > **Einstellungen** navigieren und **HDInsight: Enable Skip PySpark Installation** (HDInsight: Überspringen der PySpark-Installation aktivieren) in den Einstellungen deaktivieren. 
+    
+    ![PySpark-Kernel installieren](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
-6. Wählen Sie den Cluster aus, wenn Sie keinen Standardcluster angegeben haben. Nach kurzer Zeit werden die **Python Interactive**-Ergebnisse in einer neuen Registerkarte angezeigt. Die Tools unterstützen es auch, dass Sie über das Kontextmenü einen Codeblock anstelle der gesamten Skriptdatei übermitteln:
+6. Wenn die Installation in Schritt 4 erfolgreich war, wird das Nachrichtenfeld „PySpark installed successfully“ (PySpark erfolgreich installiert) in der unteren rechten Ecke des Fensters angezeigt. Klicken Sie auf **Erneut laden**, um das Fenster neu zu laden.
+    ![PySpark erfolgreich installiert](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
+
+7. [Stellen Sie eine Verbindung mit Ihrem Azure-Konto her](#connect-to-an-azure-account), oder verknüpfen Sie einen Cluster, sofern dies noch nicht erfolgt ist.
+
+8. Wählen Sie den gesamten Code aus, klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie **Spark: PySpark Interactive** aus, um die Abfrage zu übermitteln. Oder verwenden Sie die Tastenkombination STRG+ALT+I.
+
+    ![PySpark Interactive-Kontextmenü](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
+
+9. Wählen Sie den Cluster aus, wenn Sie keinen Standardcluster angegeben haben. Nach kurzer Zeit werden die **Python Interactive**-Ergebnisse in einer neuen Registerkarte angezeigt. Klicken Sie auf PySpark, um den Kernel auf **PySpark** umzustellen. Anschließend wird der Code erfolgreich ausgeführt. Die Tools unterstützen es auch, dass Sie über das Kontextmenü einen Codeblock anstelle der gesamten Skriptdatei übermitteln:
 
    ![PySpark Interactive: Python Interactive-Fenster](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-7. Geben Sie **%%info** ein, und drücken Sie dann UMSCHALT+EINGABETASTE, um die Auftragsinformationen anzuzeigen (optional):
+10. Geben Sie **%%info** ein, und drücken Sie dann UMSCHALT+EINGABETASTE, um die Auftragsinformationen anzuzeigen (optional):
 
-   ![PySpark: Auftragsinformationen in der interaktiven Ansicht](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
+    ![PySpark: Auftragsinformationen in der interaktiven Ansicht](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
-8. Das Tool unterstützt auch die **Spark SQL**-Abfrage:
+Das Tool unterstützt auch die **Spark SQL**-Abfrage:
 
-   ![PySpark Interactive Ergebnis anzeigen](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
+   ![PySpark Interactive-Ergebnis anzeigen](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
 
-   Der Übertragungsstatus wird beim Ausführen von Abfragen links neben der unteren Statusleiste angezeigt. Übermitteln Sie keine weiteren Abfragen, wenn der Status **PySpark Kernel (busy)** (PySpark-Kernel (ausgelastet)) lautet.  
 
-   > [!NOTE]
-   >
-   > Wenn **Python Extension Enabled** in den Einstellungen deaktiviert ist (die Option ist standardmäßig aktiviert), werden die übermittelten Ergebnisse für die PySpark-Interaktion im alten Fenster angezeigt:
-   >
-   > ![PySpark Interactive: Python-Erweiterung deaktiviert](./media/hdinsight-for-vscode/pyspark-interactive-python-extension-disabled.png)
+### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>Ausführen einer interaktiven Abfrage in der PY-Datei mithilfe des Kommentars #%%
+
+1. Fügen Sie **#%%** vor dem Py-Code hinzu, um zur Notebook-Oberfläche zu wechseln.
+
+    ![#%% hinzugefügt](./media/hdinsight-for-vscode/run-cell.png)
+
+2. Klicken Sie auf **Zelle ausführen**. Nach kurzer Zeit werden die Python Interactive-Ergebnisse auf einer neuen Registerkarte angezeigt.
+
+   ![Ergebnisse von „Zelle ausführen“](./media/hdinsight-for-vscode/run-cell-get-results.png)
+
+   > [!NOTE]  
+   > Wenn ein Problem mit dem Kernel oder den Einstellungen auftritt, verwenden Sie den Befehl **Python: Select Interpreter to start Jupyter server** (Interpreter auswählen, um Jupyter-Server zu starten) und **Restart IPython kernel** (IPython-Kernel neu starten), und laden Sie Visual Studio Code neu. So können Sie den Fehler beheben.
+
+## <a name="leverage-ipynb-support-from-python-extension"></a>Nutzen der IPYNB-Unterstützung über die Python-Erweiterung
+
+1. Sie können eine Jupyter Notebook-Instanz per Befehl über die Befehlspalette oder durch Erstellen einer neuen IPYNB-Datei in Ihrem Arbeitsbereich erstellen. Weitere Informationen finden Sie unter [Arbeiten mit Jupyter Notebook in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
+
+2. Klicken Sie auf PySpark, um den Kernel auf **PySpark** umzustellen, und klicken Sie dann auf **Zelle ausführen**. Nach einer Weile wird das Ergebnis angezeigt.
+
+   ![Ausführen von IPYNB-Ergebnissen](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
+
+
+> [!NOTE]
+>
+>Version 2020.5.78807 und höher von „ms-python“ wird von dieser Erweiterung nicht unterstützt. Dies ist ein [bekanntes Problem](#known-issues).
 
 ## <a name="submit-pyspark-batch-job"></a>Übermitteln von PySpark-Batchaufträgen
 
@@ -257,6 +291,21 @@ Wenn Sie interaktive PySpark-Abfragen übermitteln möchten, führen Sie die fol
    ![Ergebnisausgabe für die Übermittlung des Python-Auftrags](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
 Nachdem Sie einen Python-Auftrag übermittelt haben, werden Übermittlungsprotokolle im **Ausgabefenster** in Visual Studio Code angezeigt. Die URL der Spark-Benutzeroberfläche und die URL der Yarn-Benutzeroberfläche werden ebenfalls angezeigt. Sie können die URL in einem Webbrowser öffnen, um den Status des Auftrags zu verfolgen.
+
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integrieren in den HDInsight-Identitätsbroker (HIB)
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>Herstellen einer Verbindung mit Ihrem HDInsight ESP-Cluster mit Identitätsbroker (HIB)
+
+Sie können die normalen Schritte zum Anmelden beim Azure-Abonnement ausführen, um eine Verbindung mit Ihrem HDInsight ESP-Cluster mit Identitätsbroker (HIB) herzustellen. Nach der Anmeldung wird die Clusterliste im Azure Explorer angezeigt. Weitere Anweisungen finden Sie unter [Herstellen einer Verbindung mit Ihrem HDInsight-Cluster](#connect-to-an-azure-account).
+
+### <a name="run-a-hivepyspark-job-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Ausführen eines Hive-/PySpark-Auftrags in einem ESP-Cluster in HDInsight mit Identitätsbroker (HIB)
+
+Zum Ausführen eines Hive-Auftrags können Sie die normalen Schritte ausführen, um einen Auftrag an einen HDInsight-ESP-Cluster mit Identitätsbroker zu übermitteln. Weitere Informationen finden Sie unter [Übermitteln von interaktiven Hive-Abfragen und Hive-Batchskripts](#submit-interactive-hive-queries-and-hive-batch-scripts).
+
+Zum Ausführen eines interaktiven PySpark-Auftrags können Sie die normalen Schritte ausführen, um einen Auftrag an einen HDInsight-ESP-Cluster mit Identitätsbroker zu übermitteln. Weitere Informationen finden Sie unter [Übermitteln interaktiver PySpark-Abfragen](#submit-interactive-pyspark-queries).
+
+Zum Ausführen eines PySpark-Batchauftrags können Sie die normalen Schritte ausführen, um einen Auftrag an einen HDInsight-ESP-Cluster mit Identitätsbroker zu übermitteln. Weitere Informationen finden Sie unter [Übermitteln von PySpark-Batchaufträgen](#submit-pyspark-batch-job).
+
 
 ## <a name="apache-livy-configuration"></a>Apache Livy-Konfiguration
 
@@ -416,6 +465,13 @@ Wählen Sie Azure HDInsight-Explorer aus, um ein Data Lake Storage Gen2-Konto zu
 ## <a name="sign-out"></a>Abmelden  
 
 Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie dann **Azure: Abmelden** ein.
+
+## <a name="known-issues"></a>Bekannte Probleme
+### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>Version 2020.5.78807 und höher von „ms-python“ wird von dieser Erweiterung nicht unterstützt 
+
+„Failed to connect to Jupyter notebook.“ (Fehler beim Verbinden mit Jupyter Notebook.) ist ein bekanntes Problem in Python-Version 2020.5.78807 und höher. Es wird empfohlen, dass Benutzer Version **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** von „ms-python“ verwenden, um dieses Problem zu vermeiden.
+
+![Bekannte Probleme](./media/hdinsight-for-vscode/known-issue.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

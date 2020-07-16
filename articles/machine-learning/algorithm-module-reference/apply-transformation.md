@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/05/2020
-ms.openlocfilehash: ccf9d0c3eef50c7dfd838f1929e52506e8984879
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/05/2020
+ms.openlocfilehash: e2b4233f8f59a26e7da532fca48aecbb41857b66
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78395262"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488629"
 ---
 # <a name="apply-transformation-module"></a>Apply Transformation-Modul
 
@@ -32,13 +32,13 @@ Mit dem Designer können Sie Datentransformationen als **Datasets** speichern, d
 
 1. Wählen Sie die Registerkarte **Ausgaben + Protokolle** aus.
 
-1. Wählen Sie das Symbol **Speichern** aus, um die **Ergebnistransformation** zu speichern.
+1. Suchen Sie die Transformationsausgabe, und klicken Sie auf **Register dataset** (Dataset registrieren), um sie als Modul in der Kategorie **Datasets** der Modulpalette zu speichern.
 
 ## <a name="how-to-use-apply-transformation"></a>Verwenden des Moduls „Apply Transformation“  
   
 1. Fügen Sie das Modul **Apply Transformation** (Transformation anwenden) Ihrer Pipeline hinzu. Sie finden dieses Modul im Abschnitt zur **Modellbewertung und -auswertung** der Modulpalette. 
   
-1. Suchen Sie die gespeicherte Transformation, die Sie verwenden möchten, unter **Datasets** > **My Datasets** (Meine Datasets) in der Modulpalette.
+1. Suchen Sie die gespeicherte Transformation, die Sie verwenden möchten, unter **Datasets** in der Modulpalette.
 
 1. Verbinden Sie die Ausgabe der gespeicherten Transformation mit dem linken Eingangsport des Moduls **Apply Transformation** (Transformation anwenden).
 

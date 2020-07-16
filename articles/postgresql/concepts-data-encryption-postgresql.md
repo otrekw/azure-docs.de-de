@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 4ef5d89ea58c5c27f4344633afa2fe8048948719
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1300ef64b6081135c400baa10aa73b8139aec170
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849472"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025589"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem kundenseitig verwalteten Schlüssel
-
-> [!NOTE]
-> Derzeit müssen Sie den Zugriff anfordern, um diese Funktion verwenden zu können. Wenden Sie sich zu diesem Zweck an AskAzureDBforPostgreSQL@service.microsoft.com.
 
 Datenverschlüsselung mit kundenseitig verwalteten Schlüsseln für Azure Database for PostgreSQL-Einzelserver ermöglicht Ihnen BYOK (Bring Your Own Key) für den Schutz von Daten im Ruhezustand. Sie bietet Organisationen auch eine Möglichkeit der Trennung von Aufgaben bei der Verwaltung von Schlüsseln und Daten. Bei der vom Kunden verwalteten Verschlüsselung ist der Kunde vollständig für die Verwaltung des Lebenszyklus von Schlüsseln und der Schlüsselnutzungsberechtigungen sowie für die Überwachung von Vorgängen für Schlüssel verantwortlich, hat damit aber auch vollständige Kontrolle.
 
@@ -44,7 +41,7 @@ Die Datenverschlüsselung für Azure Database for PostgreSQL-Einzelserver bietet
 
 Die mit den KEKs verschlüsselten DEKs werden separat gespeichert. Nur eine Entität mit Zugriff auf den KEK kann diese DEKs entschlüsseln. Weitere Informationen finden Sie unter [Sicherheit bei der Verschlüsselung ruhender Daten](../security/fundamentals/encryption-atrest.md).
 
-## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>Funktionsweise der Datenverschlüsselung mit einem kundenseitig verwalteten Schlüssel
+## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>Datenverschlüsselung mit einem kundenseitig verwalteten Schlüssel
 
 ![Abbildung, die eine Übersicht über BYOK (Bring Your Own Key) zeigt](media/concepts-data-access-and-security-data-encryption/postgresql-data-encryption-overview.png)
 
@@ -63,12 +60,12 @@ Wenn der Server für die Verwendung des in Key Vault gespeicherten vom Kunden ve
 Nachfolgend werden die Anforderungen für die Konfiguration von Key Vault aufgeführt:
 
 * Key Vault und der Azure Database for PostgreSQL-Einzelserver müssen demselben Azure Active Directory-Mandanten (Azure AD) angehören. Mandantenübergreifende Interaktionen zwischen Key Vault und dem Server werden nicht unterstützt. Wenn Sie später Ressourcen verschieben möchten, müssen Sie die Datenverschlüsselung neu konfigurieren.
-* Aktivieren Sie die Funktion zum vorläufigen Löschen in Key Vault, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie der Benutzer nicht in der Zwischenzeit wiederherstellt oder bereinigt. Den Aktionen zum Wiederherstellen und endgültigen Löschen sind über Key Vault-Zugriffsrichtlinien eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert. Sie können sie jedoch über PowerShell oder die Azure CLI aktivieren (beachten Sie, dass Sie sie nicht über das Azure-Portal aktivieren können).
+* Aktivieren Sie das Feature zum vorläufigen Löschen in Key Vault, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie der Benutzer nicht in der Zwischenzeit wiederherstellt oder bereinigt. Den Aktionen zum Wiederherstellen und endgültigen Löschen sind über Key Vault-Zugriffsrichtlinien eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert. Sie können sie jedoch über PowerShell oder die Azure CLI aktivieren (beachten Sie, dass Sie sie nicht über das Azure-Portal aktivieren können).
 * Gewähren Sie dem Azure Database for PostgreSQL-Einzelserver mit den Berechtigungen „get“, „wrapKey“, „unwrapKey“ unter Verwendung der eindeutigen verwalteten Identität Zugriff auf den Schlüsseltresor. Im Azure-Portal wird die eindeutige Identifizierung automatisch erstellt, wenn die Datenverschlüsselung auf dem PostgreSQL-Einzelserver aktiviert wird. Ausführliche, schrittweise Anleitungen für die Verwendung des Azure-Portals finden Sie unter [Datenverschlüsselung für Azure Database for PostgreSQL-Einzelserver mithilfe des Azure-Portals](howto-data-encryption-portal.md).
 
 Nachfolgend werden die Anforderungen für die Konfiguration des vom Kunden verwalteten Schlüssels aufgeführt:
 
-* Der vom Kunden verwaltete Schlüssel, der zum Verschlüsseln des DEK verwendet werden soll, muss ein asymmetrischer RSA 2048-Schlüssel sein.
+* Der vom kundenseitig verwaltete Schlüssel, der zum Verschlüsseln des DEK verwendet werden soll, muss ein asymmetrischer RSA 2048-Schlüssel sein.
 * Das Schlüsselaktivierungsdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Vergangenheit sein. Das Ablaufdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Zukunft sein.
 * Der Schlüssel muss sich im Zustand *Aktiviert* befinden.
 * Wenn Sie einen vorhandenen Schlüssel in Key Vault importieren, müssen Sie ihn in einem der unterstützten Dateiformate (`.pfx`, `.byok`, `.backup`) bereitstellen.
@@ -118,7 +115,7 @@ Konfigurieren Sie die folgenden Azure-Features, um den Datenbankzustand zu über
 * [Azure Resource Health](../service-health/resource-health-overview.md): Eine Datenbank, auf die nicht zugegriffen werden kann und die den Zugriff auf den Kundenschlüssel verloren hat, wird als „Zugriff nicht möglich“ angezeigt, nachdem die erste Verbindung mit der Datenbank verweigert wurde.
 * [Aktivitätsprotokoll:](../service-health/alerts-activity-log-service-notifications.md) Ist der Zugriff auf den Kundenschlüssel im vom Kunden verwalteten Key Vault nicht möglich, werden dem Aktivitätsprotokoll entsprechende Einträge hinzugefügt. Sie können den Zugriff so bald wie möglich wiederherstellen, wenn Sie Warnungen für diese Ereignisse erstellen.
 
-* [Aktionsgruppen](../azure-monitor/platform/action-groups.md): Definieren Sie diese Gruppen, um Benachrichtigungen und Warnungen basierend auf Ihren Einstellungen zu senden.
+* [Aktionsgruppen](../azure-monitor/platform/action-groups.md): Definieren Sie diese Gruppen, um Benachrichtigungen und Warnungen Ihren Einstellungen entsprechend gesendet werden.
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Wiederherstellen und Replizieren mit einem vom Kunden verwalteten Schlüssel in Key Vault
 
@@ -129,6 +126,19 @@ Um Probleme bei der Einrichtung von kundenseitig verwalteter Datenverschlüsselu
 * Initiieren Sie die Wiederherstellung oder die Erstellung eines Lesereplikats auf dem Master des Azure Database for PostgreSQL-Einzelservers.
 * Der neu erstellte Server (wiederhergestellt oder Replikat) verbleibt im Zustand „Zugriff nicht möglich“, da seiner eindeutigen Identität noch keine Berechtigungen für Azure Key Vault erteilt wurden.
 * Überprüfen Sie den vom Kunden verwalteten Schlüssel auf dem wiederhergestellten/Replikatserver in den Datenverschlüsselungseinstellungen erneut. Dadurch wird sichergestellt, dass dem neu erstellten Server die Berechtigungen „Wrap“ und „Unwrap“ für den in Key Vault gespeicherten Schlüssel erteilt werden.
+
+## <a name="limitations"></a>Einschränkungen
+
+Bei Azure Database for PostgreSQL gelten für die Unterstützung der Verschlüsselung ruhender Daten mittels kundenseitig verwaltetem Schlüssel nur wenige Einschränkungen:
+
+* Die Unterstützung dieser Funktionalität ist auf die Tarife **Universell** und **Arbeitsspeicheroptimiert** beschränkt.
+* Diese Funktion wird nur in Regionen und auf Servern unterstützt, die eine Speicherkapazität bis zu 16 TB unterstützen. Eine Liste der Azure-Regionen, die Speicher mit bis zu 16 TB unterstützen, finden Sie im Abschnitt zu Speicher in der Dokumentation [hier](concepts-pricing-tiers.md#storage).
+
+    > [!NOTE]
+    > - Für alle neuen PostgreSQL-Server, die in den oben aufgeführten Regionen erstellt wurden, ist die Unterstützung der Verschlüsselung mit kundenseitig verwalteten Schlüsseln **verfügbar**. Server für die Zeitpunktwiederherstellung oder Lesereplikate kommen nicht in Frage, obwohl sie theoretisch „neu“ sind.
+    > - Um zu überprüfen, ob Ihr bereitgestellter Server bis zu 16 TB unterstützt, können Sie im Portal zum Blatt „Tarif“ navigieren und die maximale Speichergröße anzeigen, die Ihr bereitgestellter Server unterstützt. Wenn Sie den Schieberegler auf bis zu 4 TB verschieben können, unterstützt Ihr Server möglicherweise keine Verschlüsselung mit kundenseitig verwalteten Schlüsseln. Die Daten sind jedoch jederzeit mit dienstseitig verwalteten Schlüsseln verschlüsselt. Wenn Sie weitere Fragen haben, wenden Sie sich an AskAzureDBforPostgreSQL@service.microsoft.com.
+
+* Verschlüsselung wird nur mit RSA 2048-Kryptografieschlüsseln unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

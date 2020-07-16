@@ -4,16 +4,16 @@ description: Informieren Sie sich, wie Sie Azure Active Directory (Azure AD) fü
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/22/2019
-ms.openlocfilehash: 9d607f0ad1ab9d9924cd05ce1a66bee34e4ff18d
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: ff5d2e5546c8b29ed486c587a555f47fa2c7e31b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84229858"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101425"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit MySQL
+# <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit MySQL
 
 Dieser Artikel führt Sie durch die Schritte zum Konfigurieren des Zugriffs auf Azure Active Directory mit Azure Database for MySQL sowie zum Herstellen einer Verbindung mit einem Azure AD-Token.
 
@@ -123,6 +123,15 @@ mysql -h mydb.mysql.database.azure.com \
   --enable-cleartext-plugin \ 
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
+
+Wichtige Aspekte beim Herstellen einer Verbindung:
+
+* `user@tenant.onmicrosoft.com` ist der Name des Azure AD-Benutzers bzw. der Azure AD-Gruppe, mit dem oder der Sie die Verbindung herstellen möchten.
+* Fügen Sie dem Namen des Azure AD-Benutzers oder der Azure AD-Gruppe immer den Servernamen an (z. B. `@mydb`).
+* Stellen Sie sicher, dass Sie die korrekte Schreibweise des Azure AD-Benutzers oder der Azure AD-Gruppe verwenden.
+* Bei Azure AD-Benutzer- und -Gruppennamen wird Groß-/Kleinschreibung beachtet.
+* Wenn Sie sich als Gruppe verbinden, verwenden Sie nur den Gruppennamen (z. B. `GroupName@mydb`).
+* Verwenden Sie `\` als Escapezeichen vor Leerzeichen, falls der Name Leerzeichen enthält.
 
 Beachten Sie die Einstellung „enable-cleartext-plugin“. Sie müssen bei anderen Clients eine ähnliche Konfiguration verwenden, um sicherzustellen, dass das Token ohne Hashing an den Server gesendet wird.
 

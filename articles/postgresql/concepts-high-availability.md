@@ -1,36 +1,75 @@
 ---
 title: Hochverfügbarkeit von Azure Database for PostgreSQL (Einzelserver)
 description: Dieser Artikel enthält Informationen zur Hochverfügbarkeit in Azure Database for PostgreSQL (Einzelserver).
-author: rachel-msft
-ms.author: raagyema
+author: sr-pg20
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 80229ff78c4570db583f1218d5d2f72da2dec388
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/15/2020
+ms.openlocfilehash: 564aa030c442331fbcd965c87da3bfbc03d00d79
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74768570"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85105876"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Hochverfügbarkeitskonzepte von Azure Database for PostgreSQL – Einzelserver
-Der Dienst „Azure Database for PostgreSQL“ bietet eine garantiert hohes Verfügbarkeitsniveau. Die finanziell abgesicherte Vereinbarung zum Servicelevel (SLA) beträgt 99,99 % bei allgemeiner Verfügbarkeit. Es gibt praktisch keine Ausfallzeiten bei der Nutzung dieses Diensts.
+# <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Hochverfügbarkeit in Azure Database for PostgreSQL (Einzelserver)
+Der Dienst Azure Database for PostgreSQL (Einzelserver) bietet eine garantierte hohe Verfügbarkeit mit der finanziell abgesicherten Vereinbarung zum Servicelevel (Service Level Agreement, SLA) über [99,99 %](https://azure.microsoft.com/support/legal/sla/postgresql) Uptime. Azure Database for PostgreSQL bietet Hochverfügbarkeit sowohl bei geplanten Ereignissen wie benutzerseitig initiierten Skalierungscomputevorgängen als auch bei ungeplanten Ereignissen wie Ausfällen von zugrunde liegender Hardware oder Software oder Netzwerkausfällen. Der Dienst kann auch nach den kritischsten Umständen schnell wiederhergestellt werden, wodurch sichergestellt ist, dass es bei dessen Verwendung zu so gut wie keiner Anwendungsdowntime kommt.
 
-## <a name="high-availability"></a>Hochverfügbarkeit
-Das Hochverfügbarkeitsmodell (HA) basiert auf integrierten Failovermechanismen, die bei einer Unterbrechung auf Knotenebene greifen. Eine Unterbrechung auf Knotenebene kann aufgrund eines Hardwarefehlers oder als Reaktion auf eine Dienstbereitstellung auftreten.
+Azure Database for PostgreSQL eignet sich für das Ausführen von unternehmenskritischen Datenbanken, die eine hohe Uptime erfordern. Der Dienst basiert auf der Azure-Architektur und verfügt über inhärente Hochverfügbarkeit, Redundanz und Resilienz, um die Datenbankdowntime aufgrund von geplanten und ungeplanten Ausfällen zu minimieren, ohne dass Sie zusätzliche Komponenten konfigurieren müssen. 
 
-Änderungen, die an einem Datenbankserver von Azure Database for PostgreSQL vorgenommen werden, treten immer im Kontext einer Transaktion auf. Änderungen werden in Azure Storage synchron aufgezeichnet, wenn die Transaktion commitet wird. Tritt eine Unterbrechung auf Knotenebene auf, erstellt der Datenbankserver automatisch einen neuen Knoten und fügt Datenspeicher an den neuen Knoten an. Alle aktiven Verbindungen werden beendet, und für alle In-flight-Transaktionen wird kein Commit ausgeführt.
+## <a name="components-in-azure-database-for-postgresql--single-server"></a>Komponenten in Azure Database for PostgreSQL (Einzelserver)
 
-## <a name="application-retry-logic-is-essential"></a>Wiederholungslogik für die Anwendung ist unerlässlich
-Es ist wichtig, dass PostgreSQL-Datenbankanwendungen so erstellt werden, dass beendete Verbindungen und Transaktionsfehler erkannt und für diese Wiederholungsversuche ausgeführt werden. Wenn die Anwendung Wiederholungsversuche ausführt, wird die Verbindung der Anwendung transparent an die neu erstellte Instanz umgeleitet, die die Aufgaben der fehlerhaften Instanz übernimmt.
+| **Komponente** | **Beschreibung**|
+| ------------ | ----------- |
+| <b>PostgreSQL-Datenbankserver | Azure Database for PostgreSQL bietet Sicherheit, Isolation, Ressourcenschutzvorrichtungen und ein schnelles Neustarten für Datenbankserver. Diese Funktionen ermöglichen das Ausführen von Vorgängen wie Skalierung und Wiederherstellung von Datenbankservern nach einem Ausfall innerhalb weniger Sekunden. <br/> Änderungen an Daten auf dem Datenbankserver finden in der Regel im Rahmen von Datenbanktransaktionen statt. Alle Änderungen an der Datenbank werden synchron in Form von Write-Ahead-Protokollen (Write-Ahead Log, WAL) im Dienst Azure Storage aufgezeichnet, der an den Datenbankserver angefügt ist. Während des [Prüfpunktprozesses](https://www.postgresql.org/docs/11/sql-checkpoint.html) für die Datenbank werden außerdem Datenseiten aus dem Arbeitsspeicher des Datenbankservers in den Speicher geleert. |
+| <b>Remotespeicher | Alle physischen PostgreSQL-Datendateien und WAL-Dateien werden in Azure Storage gespeichert. Dieser Dienst ist so konzipiert, dass er drei Kopien der Daten in einer Region speichert, um die Redundanz, Verfügbarkeit und Zuverlässigkeit der Daten zu gewährleisten. Außerdem ist die Speicherebene unabhängig vom Datenbankserver. Sie kann von einem ausgefallenen Datenbankserver getrennt und innerhalb weniger Sekunden an einen neuen Datenbankserver angefügt werden. Darüber hinaus prüft Azure Storage die Daten kontinuierlich auf Speicherfehler. Wenn eine Blockbeschädigung erkannt wird, wird diese automatisch durch das Instanziieren einer neuen Speicherkopie behoben. |
+| <b>Gateway | Das Gateway fungiert als Datenbankproxy und leitet alle Clientverbindungen an den Datenbankserver weiter. |
 
-Intern wird in Azure ein Gateway verwendet, um die Verbindungen an die neue Instanz umzuleiten. Bei einer Unterbrechung dauert der gesamte Failovervorgang normalerweise wenige Sekunden. Da die Umleitung intern vom Gateway behandelt wird, bleibt die externe Verbindungszeichenfolge für die Clientanwendung unverändert.
+## <a name="planned-downtime-mitigation"></a>Minimierung von geplanter Downtime
+Azure Database for PostgreSQL ist so konzipiert, dass bei geplanten Vorgängen mit Downtime Hochverfügbarkeit gewährleistet ist. 
 
-## <a name="scaling-up-or-down"></a>Zentrales Hoch- oder Herunterskalieren
-Wenn Azure Database for PostgreSQL zentral hoch- oder herunterskaliert wird, wird ähnlich wie beim HA-Modell eine neue Serverinstanz mit der angegebenen Größe erstellt. Der vorhandene Datenspeicher wird von der ursprünglichen Instanz getrennt und an die neue Instanz angefügt.
+![Übersicht über die elastische Skalierung in Azure PostgreSQL](./media/concepts-high-availability/azure-postgresql-elastic-scaling.png)
 
-Während des Skalierungsvorgangs tritt eine Unterbrechung der Datenbankverbindungen auf. Die Verbindung der Clientanwendungen wird getrennt, und offene Transaktionen ohne Commit werden abgebrochen. Sobald die Clientanwendung die Verbindung wiederherstellt oder eine neue Verbindung herstellt, leitet das Gateway die Verbindung an die Instanz mit der neuen Größe weiter. 
+Im Folgenden sind einige Szenarios mit geplanter Wartung aufgeführt:
+
+| **Szenario** | **Beschreibung**|
+| ------------ | ----------- |
+| <b>Hoch-/Herunterskalieren von Computeressourcen | Wenn der Benutzer den Vorgang zum Hoch- bzw. Herunterskalieren von Computeressourcen ausführt, wird ein neuer Datenbankserver mit der skalierten Computekonfiguration bereitgestellt. Im alten Datenbankserver können aktive Prüfpunkte abgeschlossen werden, Clientverbindungen werden entladen, alle nicht committeten Transaktionen werden abgebrochen, und anschließend wird der Server heruntergefahren. Der Speicher wird dann vom alten Datenbankserver getrennt und an den neuen Datenbankserver angefügt. Wenn die Clientanwendung versucht, die Verbindung wiederherzustellen oder eine neue Verbindung herzustellen, leitet das Gateway die Verbindungsanforderung an den neuen Datenbankserver weiter.|
+| <b>Hochskalieren des Speichers | Das Hochskalieren des Speichers ist ein Onlinevorgang, bei dem der Datenbankserver nicht angehalten wird.|
+| <b>Bereitstellung neuer Software (Azure) | Rollouts von neuen Features oder Fehlerbehebungen werden automatisch im Rahmen der geplanten Wartung des Diensts durchgeführt. Weitere Informationen finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification) und im [Portal](https://aka.ms/servicehealthpm).|
+| <b>Upgrades auf Nebenversionen | Azure Database for PostgreSQL patcht Datenbankserver automatisch auf die von Azure festgelegte Nebenversion. Dies erfolgt im Rahmen der geplanten Wartung des Diensts. Dabei kommt es zu einer kurzen Downtime von ein paar Sekunden, nach der der Datenbankserver automatisch mit der neuen Nebenversion neu gestartet wird. Weitere Informationen finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification) und im [Portal](https://aka.ms/servicehealthpm).|
+
+
+##  <a name="unplanned-downtime-mitigation"></a>Minimierung von ungeplanter Downtime
+
+Ungeplante Downtime kann aufgrund von unvorhergesehenen Fehlern auftreten, darunter Fehler an der zugrunde liegenden Hardware, Netzwerkprobleme und Softwarefehler. Wenn der Datenbankserver unerwartet ausfällt, wird automatisch innerhalb weniger Sekunden ein neuer Datenbankserver bereitgestellt. Der Remotespeicher wird automatisch an den neuen Datenbankserver angefügt. Die PostgreSQL-Engine führt den Wiederherstellungsvorgang mithilfe von WAL-Dateien und Datenbankdateien durch und öffnet den Datenbankserver, sodass Clients eine Verbindung herstellen können. Nicht committete Transaktionen gehen verloren und müssen von der Anwendung erneut ausgeführt werden. Ungeplante Downtime kann zwar nicht vermieden werden, Azure Database for PostgreSQL minimiert diese jedoch durch automatisches Ausführen von Wiederherstellungsvorgängen sowohl auf Ebene der Datenbankserver als auch auf der Speicherebene, ohne dass ein menschliches Eingreifen erforderlich ist. 
+
+
+![Übersicht über Hochverfügbarkeit in Azure PostgreSQL](./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png)
+
+### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>Ungeplante Downtime: Fehlerszenarios und Dienstwiederherstellung
+Im Folgenden sind einige Fehlerszenarios und die automatische Wiederherstellung von Azure Database for PostgreSQL im entsprechenden Fall aufgeführt:
+
+| **Szenario** | **Automatische Wiederherstellung** |
+| ---------- | ---------- |
+| <B>Ausfall des Datenbankservers | Wenn der Datenbankserver aufgrund eines Fehlers an der zugrunde liegenden Hardware ausfällt, werden die aktiven Verbindungen getrennt, und alle Transaktionen, die gerade ausgeführt werden, werden abgebrochen. Ein neuer Datenbankserver wird automatisch bereitgestellt, und der Remotedatenspeicher wird an den neuen Datenbankserver angefügt. Sobald die Datenbank wiederhergestellt wurde, können Clients über das Gateway eine Verbindung mit dem neuen Datenbankserver herstellen. <br /> <br /> Anwendungen, die die PostgreSQL-Datenbanken verwenden, müssen so konzipiert sein, dass sie getrennte Verbindungen und Transaktionsfehler erkennen und entsprechende Wiederholungsversuche durchführen.  Wenn die Anwendung einen Wiederholungsversuch durchführt, leitet das Gateway die Verbindung transparent an den neu erstellten Datenbankserver um. |
+| <B>Speicherfehler | Speicherbezogene Probleme wie der Ausfall eines Datenträgers oder physische Blockbeschädigungen haben keine Auswirkungen auf Anwendungen. Da drei Kopien der Daten gespeichert werden, wird die Kopie der Daten vom verbleibenden Speicher bereitgestellt. Blockbeschädigungen werden automatisch behoben. Wenn eine Kopie der Daten verloren geht, wird automatisch eine neue erstellt. |
+
+Im Folgenden sind einige Fehlerszenarios aufgeführt, bei denen für die Wiederherstellung eine Benutzeraktion erforderlich ist:
+
+| **Szenario** | **Plan für die Wiederherstellung** |
+| ---------- | ---------- |
+| <b> Regionsausfall | Regionen fallen nur selten aus. Wenn Sie jedoch Schutz vor einem Regionsausfall benötigen, können Sie ein oder mehrere Lesereplikate in anderen Regionen für die Notfallwiederherstellung konfigurieren. (Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) zum Erstellen und Verwalten von Lesereplikaten.) Bei einem Ausfall auf Regionsebene können Sie das in der anderen Region konfigurierte Lesereplikat manuell durch Höherstufen zu Ihrem Produktionsdatenbankserver machen. |
+| <b> Logische Fehler/Benutzerfehler | Die Wiederherstellung bei Benutzerfehlern, z. B. versehentlich gelöschten Tabellen oder falsch aktualisierten Daten, umfasst das Durchführen einer [Zeitpunktwiederherstellung](https://docs.microsoft.com/azure/postgresql/concepts-backup), bei der die Daten bis zu einem Zeitpunkt kurz vor dem Fehler wiederhergestellt werden.<br> <br>  Wenn Sie anstelle aller Datenbanken auf dem Datenbankserver nur eine Teilmenge von Datenbanken oder bestimmte Tabellen wiederherstellen möchten, können Sie den Datenbankserver in einer neuen Instanz wiederherstellen, die Tabelle(n) über [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html) exportieren und sie dann über [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) in Ihrer Datenbank wiederherstellen. |
+
+
+
+## <a name="summary"></a>Zusammenfassung
+
+Azure Database for PostgreSQL bietet ein schnelles Neustarten von Datenbankservern, redundanten Speicher und effizientes Routing über das Gateway. Für zusätzlichen Schutz von Daten können Sie Sicherungen so konfigurieren, dass sie georepliziert werden, und ein oder mehrere Lesereplikate in anderen Regionen bereitstellen. Mithilfe der inhärenten Hochverfügbarkeitsfunktionen schützt Azure Database for PostgreSQL Ihre Datenbanken vor den häufigsten Arten von Ausfällen und bietet eine branchenführende, finanziell abgesicherte [SLA über 99,99 % Uptime](https://azure.microsoft.com/support/legal/sla/postgresql). Dank all dieser Verfügbarkeits- und Zuverlässigkeitsfunktionen ist Azure die ideale Plattform für das Ausführen Ihrer unternehmenskritischen Anwendungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+- Erfahren Sie mehr über [Azure-Regionen](../availability-zones/az-overview.md).
 - Erfahren Sie mehr über [Behandlung vorübergehender Verbindungsfehler](concepts-connectivity.md)
 - Erfahren Sie, wie Sie [Ihre Daten mit Lesereplikaten replizieren](howto-read-replicas-portal.md)

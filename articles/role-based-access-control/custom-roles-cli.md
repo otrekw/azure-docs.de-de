@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/18/2020
+ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cac0116cf7a068e63cb54698f7273b8c063ff854
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 8fa77f13b99564246c048e7b7a8129f9fc141c47
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734840"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984192"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -41,31 +41,27 @@ Zum Erstellen von benutzerdefinierten Rollen benötigen Sie Folgendes:
 
 ## <a name="list-custom-roles"></a>Auflisten benutzerdefinierter Rollen
 
-Zum Auflisten der benutzerdefinierten Rollen, die zur Zuweisung verfügbar sind, verwenden Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list). In den folgenden Beispielen werden alle benutzerdefinierten Rollen im aktuellen Abonnement aufgelistet.
+Zum Auflisten der benutzerdefinierten Rollen, die zur Zuweisung verfügbar sind, verwenden Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list). Im folgenden Beispiel werden alle benutzerdefinierten Rollen im aktuellen Abonnement aufgelistet.
 
 ```azurecli
-az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "roleType":.roleType}'
+az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
 ```
 
-```azurecli
-az role definition list --output json | jq '.[] | if .roleType == "CustomRole" then {"roleName":.roleName, "roleType":.roleType} else empty end'
-```
-
-```Output
-{
-  "roleName": "My Management Contributor",
-  "type": "CustomRole"
-}
-{
-  "roleName": "My Service Reader Role",
-  "type": "CustomRole"
-}
-{
-  "roleName": "Virtual Machine Operator",
-  "type": "CustomRole"
-}
-
-...
+```json
+[
+  {
+    "roleName": "My Management Contributor",
+    "type": "CustomRole"
+  },
+  {
+    "roleName": "My Service Reader Role",
+    "type": "CustomRole"
+  },
+  {
+    "roleName": "Virtual Machine Operator",
+    "type": "CustomRole"
+  }
+]
 ```
 
 ## <a name="list-a-custom-role-definition"></a>Auflisten einer Definition einer benutzerdefinierten Rolle
@@ -73,7 +69,7 @@ az role definition list --output json | jq '.[] | if .roleType == "CustomRole" t
 Zum Auflisten der Definition einer benutzerdefinierten Rolle verwenden Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list). Dies ist derselbe Befehl, den Sie für eine integrierte Rolle verwenden würden.
 
 ```azurecli
-az role definition list --name <role_name>
+az role definition list --name {roleName}
 ```
 
 Im folgenden Beispiel wird die benutzerdefinierte Rolle *Virtual Machine Operator* aufgelistet:
@@ -82,14 +78,14 @@ Im folgenden Beispiel wird die benutzerdefinierte Rolle *Virtual Machine Operato
 az role definition list --name "Virtual Machine Operator"
 ```
 
-```Output
+```json
 [
   {
     "assignableScopes": [
-      "/subscriptions/11111111-1111-1111-1111-111111111111"
+      "/subscriptions/{subscriptionId}"
     ],
     "description": "Can monitor and restart virtual machines.",
-    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/00000000-0000-0000-0000-000000000000",
+    "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/00000000-0000-0000-0000-000000000000",
     "name": "00000000-0000-0000-0000-000000000000",
     "permissions": [
       {
@@ -121,22 +117,24 @@ az role definition list --name "Virtual Machine Operator"
 Im folgenden Beispiel werden die Aktionen der Rolle *Virtual Machine Operator* aufgelistet:
 
 ```azurecli
-az role definition list --name "Virtual Machine Operator" --output json | jq '.[] | .permissions[0].actions'
+az role definition list --name "Virtual Machine Operator" --output json --query '[].permissions[0].actions'
 ```
 
-```Output
+```json
 [
-  "Microsoft.Storage/*/read",
-  "Microsoft.Network/*/read",
-  "Microsoft.Compute/*/read",
-  "Microsoft.Compute/virtualMachines/start/action",
-  "Microsoft.Compute/virtualMachines/restart/action",
-  "Microsoft.Authorization/*/read",
-  "Microsoft.ResourceHealth/availabilityStatuses/read",
-  "Microsoft.Resources/subscriptions/resourceGroups/read",
-  "Microsoft.Insights/alertRules/*",
-  "Microsoft.Insights/diagnosticSettings/*",
-  "Microsoft.Support/*"
+  [
+    "Microsoft.Storage/*/read",
+    "Microsoft.Network/*/read",
+    "Microsoft.Compute/*/read",
+    "Microsoft.Compute/virtualMachines/start/action",
+    "Microsoft.Compute/virtualMachines/restart/action",
+    "Microsoft.Authorization/*/read",
+    "Microsoft.ResourceHealth/availabilityStatuses/read",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Insights/alertRules/*",
+    "Microsoft.Insights/diagnosticSettings/*",
+    "Microsoft.Support/*"
+  ]
 ]
 ```
 
@@ -145,7 +143,7 @@ az role definition list --name "Virtual Machine Operator" --output json | jq '.[
 Zum Erstellen einer benutzerdefinierten Rolle verwenden Sie [az role definition create](/cli/azure/role/definition#az-role-definition-create). Bei der Rollendefinition kann es sich um eine JSON-Beschreibung oder einen Pfad zu einer Datei mit einer JSON-Beschreibung handeln.
 
 ```azurecli
-az role definition create --role-definition <role_definition>
+az role definition create --role-definition {roleDefinition}
 ```
 
 Im folgenden Beispiel wird eine benutzerdefinierte Rolle mit dem Namen *Virtual Machine Operator* erstellt. Diese benutzerdefinierte Rolle weist den Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* sowie den Zugriff zum Starten, Neustarten und Überwachen virtueller Computer zu. Diese benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden. In diesem Beispiel wird eine JSON-Datei als Eingabe genutzt.
@@ -173,8 +171,8 @@ vmoperator.json
 
   ],
   "AssignableScopes": [
-    "/subscriptions/11111111-1111-1111-1111-111111111111",
-    "/subscriptions/33333333-3333-3333-3333-333333333333"
+    "/subscriptions/{subscriptionId1}",
+    "/subscriptions/{subscriptionId2}"
   ]
 }
 ```
@@ -188,7 +186,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 Zum Aktualisieren einer benutzerdefinierten Rolle verwenden Sie zuerst [az role definition list](/cli/azure/role/definition#az-role-definition-list), um die Rollendefinition abzurufen. Nehmen Sie zweitens die gewünschten Änderungen an der Rollendefinitionsdatei vor. Verwenden Sie zum Schluss [az role definition update](/cli/azure/role/definition#az-role-definition-update), um die aktualisierte Rollendefinition zu speichern.
 
 ```azurecli
-az role definition update --role-definition <role_definition>
+az role definition update --role-definition {roleDefinition}
 ```
 
 Das folgende Beispiel fügt den Vorgang *Microsoft.Insights/diagnosticSettings/* zu `Actions` und eine Verwaltungsgruppe zu `AssignableScopes` für die benutzerdefinierte Rolle *Virtual Machine Operator* hinzu. Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
@@ -217,8 +215,8 @@ vmoperator.json
 
   ],
   "AssignableScopes": [
-    "/subscriptions/11111111-1111-1111-1111-111111111111",
-    "/subscriptions/33333333-3333-3333-3333-333333333333",
+    "/subscriptions/{subscriptionId1}",
+    "/subscriptions/{subscriptionId2}",
     "/providers/Microsoft.Management/managementGroups/marketing-group"
   ]
 }
@@ -233,7 +231,7 @@ az role definition update --role-definition ~/roles/vmoperator.json
 Zum Löschen einer benutzerdefinierten Rolle verwenden Sie [az role definition delete](/cli/azure/role/definition#az-role-definition-delete). Zum Angeben der zu löschenden Rolle verwenden Sie den Rollennamen oder die Rollen-ID. Zum Ermitteln der Rollen-ID verwenden Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list).
 
 ```azurecli
-az role definition delete --name <role_name or role_id>
+az role definition delete --name {roleNameOrId}
 ```
 
 Im folgenden Beispiel wird die benutzerdefinierte Rolle *Virtual Machine Operator* gelöscht.

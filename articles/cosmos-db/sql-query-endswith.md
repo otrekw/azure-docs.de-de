@@ -4,19 +4,19 @@ description: Hier erfahren Sie mehr über die SQL-Systemfunktion ENDSWITH in Azu
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 0cd927af50eca04aa8162d9d8f292077d9e4165c
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3d37786c7364b07228d1d8d6540e7b6d8a174eb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322685"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
 
- Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck mit dem zweiten endet.  
+Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck mit dem zweiten endet.  
   
 ## <a name="syntax"></a>Syntax
   
@@ -75,6 +75,8 @@ Sehen Sie sich beispielsweise die beiden Eigenschaften „town“ und „country
 ```
 
 Die erste Abfrage verbraucht wahrscheinlich mehr RUs als die zweite Abfrage, da die Kardinalität von „town“ höher als die von „country“ ist.
+
+Wenn bestimmte Eigenschaften aus Dokumenten in ENDSWITH größer als 1 KB sind, müssen diese Dokumente von der Abfrage-Engine geladen werden. In diesem Fall kann die Abfrage-Engine ENDSWITH mit einem Index nicht vollständig auswerten. Die RU-Last für ENDSWITH wird hoch ausfallen, wenn viele Ihrer Dokumente größer als 1 KB sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

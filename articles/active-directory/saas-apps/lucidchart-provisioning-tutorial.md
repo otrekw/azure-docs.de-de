@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0c7c1f5f633554a88b74694ed2aeafcd30c13a89
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0aea258ac52e078c48255b39145193272aa65b25
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690611"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367970"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Lucidchart für die automatische Benutzerbereitstellung
 
@@ -162,6 +162,7 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 ## <a name="change-log"></a>Änderungsprotokoll
 
 * 30.04.2020: Unterstützung für das Enterprise-Erweiterungsattribut und das benutzerdefinierte Attribut „CanEdit“ für Benutzer hinzugefügt.
+* 15.06.2020: Das vorläufige Löschen von Benutzern wird aktiviert (Attribut [Aktiv](https://tools.ietf.org/html/rfc7643) wird unterstützt).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

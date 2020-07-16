@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 1e86317999a34e4ab4cb94f93fb788e3e7314cea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fcf3b4c91e87453e2cf605eb717b75ed7d64d95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193053"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85105925"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor
 
@@ -20,8 +20,10 @@ Azure Monitor speichert [Protokolldaten](data-platform-logs.md) in einem Log An
 In diesem Artikel erfahren Sie, wie Sie den Zugriff auf Protokolle sowie die Arbeitsbereiche verwalten, in denen sich diese befinden. Außerdem erfahren Sie, wie Sie Zugriff für Folgendes gewähren: 
 
 * Den Arbeitsbereich (mithilfe von Arbeitsbereichsberechtigungen)
-* Benutzer, die Zugriff auf Protokolldaten von bestimmten Ressourcen benötigen (mithilfe von Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung))
+* Benutzer, die Zugriff auf Protokolldaten von bestimmten Ressourcen benötigen (mithilfe der rollenbasierten Zugriffssteuerung [Role-Based Access Control, RBAC] in Azure, auch [Ressourcenkontext](design-logs-deployment.md#access-mode) genannt)
 * Benutzer, die Zugriff auf Protokolldaten in einer bestimmten Tabelle im Arbeitsbereich benötigen (mithilfe von Azure RBAC)
+
+Weitere Informationen zu den Protokollkonzepten bei RBAC und den Zugriffsstrategien finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](design-logs-deployment.md).
 
 ## <a name="configure-access-control-mode"></a>Konfigurieren des Zugriffssteuerungsmodus
 
@@ -268,6 +270,18 @@ Um eine Rolle mit ausschließlichem Zugriff auf die Tabelle _SecurityBaseline_ z
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
 ```
+In den obigen Beispielen wird eine Whitelist mit Tabellen definiert, die zulässig sind. In diesem Beispiel wird die Definition einer schwarzen Liste gezeigt, wenn ein Benutzer auf alle Tabellen außer der Tabelle _SecurityAlert_ zugreifen kann:
+
+```
+"Actions":  [
+    "Microsoft.OperationalInsights/workspaces/read",
+    "Microsoft.OperationalInsights/workspaces/query/read",
+    "Microsoft.OperationalInsights/workspaces/query/*/read"
+],
+"notActions":  [
+    "Microsoft.OperationalInsights/workspaces/query/SecurityAlert/read"
+],
+```
 
 ### <a name="custom-logs"></a>Benutzerdefinierte Protokolle
 
@@ -290,7 +304,7 @@ Manchmal stammen benutzerdefinierte Protokolle aus Quellen, die nicht direkt ein
 
 * Wenn einem Benutzer globale Leseberechtigung mit den Standardrollen „Leser“ oder „Mitwirkender“ erteilt wird, die die Aktion _\*/read_ beinhalten, überschreibt dies die Zugriffssteuerung pro Tabelle und gewährt Zugriff auf alle Protokolldaten.
 * Wenn einem Benutzer Zugriff pro Tabelle, aber keine anderen Berechtigungen gewährt werden, kann er über die API auf Protokolldaten zugreifen, nicht aber über das Azure-Portal. Verwenden Sie „Log Analytics-Leser“ als Basisrolle zum Bereitstellen des Zugriffs vom Azure-Portal.
-* Administratoren des Abonnements verfügen über Zugriff auf alle Datentypen, und zwar unabhängig von anderen Berechtigungseinstellungen.
+* Administratoren und Eigentümer des Abonnements verfügen über Zugriff auf alle Datentypen, und zwar unabhängig von anderen Berechtigungseinstellungen.
 * Besitzer eines Arbeitsbereichs werden wie alle anderen Benutzer bei der Zugriffssteuerung pro Tabelle behandelt.
 * Es wird empfohlen, Rollen Sicherheitsgruppen anstelle von einzelnen Benutzern zuzuweisen, um die Anzahl der Zuordnungen zu verringern. Dies unterstützt Sie auch bei der Verwendung vorhandener Gruppenverwaltungstools zum Konfigurieren und Überprüfen des Zugriffs.
 

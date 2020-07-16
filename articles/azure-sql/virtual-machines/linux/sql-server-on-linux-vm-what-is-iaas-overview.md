@@ -1,10 +1,9 @@
 ---
-title: Übersicht über SQL Server auf virtuellen Azure-Computern unter Linux | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie vollwertige SQL Server-Editionen auf virtuellen Azure-Computern unter Linux ausführen. Außerdem finden Sie hier direkte Links zu allen Linux-basierten SQL Server-VM-Images sowie zu verwandten Inhalten.
+title: Übersicht über SQL Server auf Azure Virtual Machines für Linux | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie vollwertige SQL Server-Editionen auf Azure Virtual Machines für Linux ausführen. Außerdem finden Sie hier direkte Links zu allen Linux-basierten SQL Server-VM-Images sowie zu verwandten Inhalten.
 services: virtual-machines-linux
 documentationcenter: ''
 author: MashaMSFT
-manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.topic: conceptual
@@ -12,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 61b8982868bf14a7b5a5441049cb7fa21cdd9d6d
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 721f30f5b17b078f3a3905204f6be56db25adead
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266031"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669474"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Übersicht über SQL Server auf virtuellen Azure-Computern (Linux)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,16 +25,16 @@ ms.locfileid: "84266031"
 > * [Windows](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 > * [Linux](sql-server-on-linux-vm-what-is-iaas-overview.md)
 
-Mit SQL Server auf virtuellen Azure-Computern können Sie Vollversionen von SQL Server in der Cloud nutzen, ohne lokale Hardware verwalten zu müssen. Virtuelle SQL Server-Computer vereinfachen außerdem die Lizenzierungskosten, wenn Sie eine nutzungsbasierte Bezahlung verwenden.
+Mit SQL Server auf Azure Virtual Machines können Sie Vollversionen von SQL Server in der Cloud nutzen, ohne lokale Hardware verwalten zu müssen. Virtuelle SQL Server-Computer vereinfachen außerdem die Lizenzierungskosten, wenn Sie eine nutzungsbasierte Bezahlung verwenden.
 
 Virtuelle Azure-Computer werden in verschiedensten [geografischen Regionen](https://azure.microsoft.com/regions/) auf der ganzen Welt ausgeführt. Sie bieten auch eine Vielzahl von [Computergrößen](../../../virtual-machines/windows/sizes.md). Über den Katalog mit VM-Images können Sie virtuelle SQL Server-Computer mit passender Version, passender Edition und passendem Betriebssystem erstellen. Dadurch stellen virtuelle Computer eine gute Wahl für viele verschiedene SQL Server-Workloads dar. 
 
-## <a name="get-started-with-sql-vms"></a><a id="create"></a>Erste Schritte mit virtuellen SQL-Computern
+## <a name="get-started-with-sql-server-vms"></a><a id="create"></a> Erste Schritte mit SQL Server-VMs
 
 Wählen Sie als Erstes ein SQL Server-VM-Image mit der benötigten Version, der benötigten Edition und dem benötigten Betriebssystem aus. Die folgenden Abschnitte enthalten direkte Links zum Azure-Portal für die Katalogimages für virtuelle SQL Server-Computer.
 
 > [!TIP]
-> Weitere Informationen zur Preisgestaltung für SQL-Images finden Sie auf der [Seite mit den Preisinformationen für SQL Server-VMs unter Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+> Weitere Informationen zur Preisgestaltung für SQL Server-Images finden Sie auf der [Seite mit den Preisinformationen für Linux-VMs mit ausgeführtem SQL Server](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 | Version | Betriebssystem | Edition |
 | --- | --- | --- |
@@ -44,7 +43,7 @@ Wählen Sie als Erstes ein SQL Server-VM-Image mit der benötigten Version, der 
 | **SQL Server 2017** | Ubuntu 16.04 LTS |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonUbuntuServer1604LTS), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonUbuntuServer1604LTS) |
 
 > [!NOTE]
-> Informationen zu den verfügbaren Images für virtuelle Windows-Computer mit SQL Server finden Sie in der [Übersicht über SQL Server auf virtuellen Azure-Computern](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
+> Informationen zu den verfügbaren Images für virtuelle Computer mit SQL Server für Windows finden Sie in der [Übersicht über SQL Server auf Azure Virtual Machines (Windows)](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 
 ## <a name="installed-packages"></a><a id="packages"></a> Installierte Pakete
 
@@ -60,7 +59,7 @@ Wenn Sie SQL Server unter Linux konfigurieren, installieren Sie das Datenbank-En
 
 ### <a name="linux-virtual-machines"></a>Virtuelle Linux-Computer
 
-* [Übersicht über virtuelle Computer](../../../virtual-machines/linux/overview.md)
+* [Übersicht über Azure Virtual Machines](../../../virtual-machines/linux/overview.md)
 
 ### <a name="storage"></a>Storage
 
@@ -79,10 +78,10 @@ Wenn Sie SQL Server unter Linux konfigurieren, installieren Sie das Datenbank-En
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Führen Sie erste Schritte mit SQL Server auf virtuellen Azure-Computern unter Linux durch:
+Führen Sie erste Schritte mit SQL Server auf virtuellen Linux-Computern durch:
 
 * [Bereitstellen eines virtuellen Windows-Computers mit SQL Server im Azure-Portal](sql-vm-create-portal-quickstart.md)
 
-Erhalten Sie Antworten auf häufig gestellte Fragen zu virtuellen SQL-Computern unter Linux:
+Antworten auf häufig gestellte Fragen zu SQL Server-VMs unter Linux:
 
-* [Häufig gestellte Fragen zu SQL Server auf virtuellen Linux-Computern in Azure](frequently-asked-questions-faq.md)
+* [SQL Server auf virtuellen Azure-Computern – FAQ](frequently-asked-questions-faq.md)

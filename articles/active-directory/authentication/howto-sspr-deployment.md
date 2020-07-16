@@ -11,19 +11,19 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6151bbd9f056ef95c0875b83c7b6fccb732aebfe
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a56f7248d5782b63befc55c4215360e0f5cb52b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84338565"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planen der Bereitstellung einer Self-Service-Kennwortzurücksetzung (SSPR) von Azure Active Directory
 
 > [!IMPORTANT]
 > Dieser Bereitstellungsplan bietet Anleitungen und bewährte Methoden für die Bereitstellung der Self-Service-Kennwortzurücksetzung (SSPR) von Azure AD.
 >
-> **Wenn Sie ein Endbenutzer sind und wieder Zugriff auf Ihr Konto benötigen, wechseln Sie zu [https://aka.ms/sspr](https://aka.ms/sspr)** .
+> **Wenn Sie ein Endbenutzer sind und keinen Zugriff mehr auf Ihr Konto haben, wechseln Sie zu [https://aka.ms/sspr](https://aka.ms/sspr)** .
 
 Die [Self-Service-Kennwortzurücksetzung (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) ist eine Funktion von Azure Active Directory (AD), die es Benutzern ermöglicht, ihre Kennwörter ohne die Hilfe von IT-Mitarbeitern zurückzusetzen. Die Benutzer können ungeachtet von Tages- oder Nachtzeit und Standort schnell ihre Sperre aufheben und weiterarbeiten. Indem eine Organisation ihren Mitarbeitern erlaubt, die Sperre selbst aufzuheben, kann sie unproduktive Zeit und hohe Supportkosten für die meisten allgemeinen Probleme im Zusammenhang mit Kennwörtern reduzieren.
 

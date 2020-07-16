@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ddcd95356f9b70fec5a74f36f5b80e55ea56b477
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 529e79abbd7fa8f9733254d207af570237044305
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744013"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080816"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Der kognitive Skill „Schlüsselbegriffserkennung“
 
@@ -24,7 +24,7 @@ Diese Funktion ist nützlich, wenn Sie die wichtigsten Gesprächspunkte in dem D
 > [!NOTE]
 > Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400) angegeben.
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/) angegeben.
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -39,24 +39,35 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 | Eingaben                | BESCHREIBUNG |
 |---------------------|-------------|
-| defaultLanguageCode | (Optional) Der Sprachcode, der auf Dokumente angewendet wird, in denen die Sprache nicht explizit angegeben ist.  Wenn kein Standardsprachcode festgelegt ist, wird Englisch (en) als Standardsprachcode verwendet. <br/> Siehe die [vollständige Liste der unterstützten Sprachen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
-| maxKeyPhraseCount   | (Optional) Die maximale Anzahl der Schlüsselbegriffe, die erzeugt werden. |
+| `defaultLanguageCode` | (Optional) Der Sprachcode, der auf Dokumente angewendet wird, in denen die Sprache nicht explizit angegeben ist.  Wenn kein Standardsprachcode festgelegt ist, wird Englisch (en) als Standardsprachcode verwendet. <br/> Siehe die [vollständige Liste der unterstützten Sprachen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
+| `maxKeyPhraseCount`   | (Optional) Die maximale Anzahl der Schlüsselbegriffe, die erzeugt werden. |
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
 | Eingabe  | BESCHREIBUNG |
 |--------------------|-------------|
-| text | Der zu analysierende Text|
-| languageCode  |  Eine Zeichenfolge, die die Sprache der Datensätze angibt. Wenn dieser Parameter nicht angegeben ist, wird der Standardsprachcode zur Analyse der Datensätze verwendet. <br/>Siehe die [vollständige Liste der unterstützten Sprachen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages).|
+| `text` | Der zu analysierende Text|
+| `languageCode`    |  Eine Zeichenfolge, die die Sprache der Datensätze angibt. Wenn dieser Parameter nicht angegeben ist, wird der Standardsprachcode zur Analyse der Datensätze verwendet. <br/>Siehe die [vollständige Liste der unterstützten Sprachen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages).|
 
 ## <a name="skill-outputs"></a>Skillausgaben
 
-| Ausgabe  | BESCHREIBUNG |
+| Output     | BESCHREIBUNG |
 |--------------------|-------------|
-| keyPhrases | Eine Liste mit aus dem Eingabetext extrahierten Schlüsselausdrücken. Die Schlüsselausdrücke werden in der Reihenfolge ihrer Wichtigkeit zurückgegeben. |
+| `keyPhrases` | Eine Liste mit aus dem Eingabetext extrahierten Schlüsselausdrücken. Die Schlüsselausdrücke werden in der Reihenfolge ihrer Wichtigkeit zurückgegeben. |
 
 
 ##  <a name="sample-definition"></a>Beispieldefinition
+
+Gehen Sie von einem SQL-Datensatz mit den folgenden Feldern aus:
+
+```json
+{
+    "content": "Glaciers are huge rivers of ice that ooze their way over land, powered by gravity and their own sheer weight. They accumulate ice from snowfall and lose it through melting. As global temperatures have risen, many of the world’s glaciers have already started to shrink and retreat. Continued warming could see many iconic landscapes – from the Canadian Rockies to the Mount Everest region of the Himalayas – lose almost all their glaciers by the end of the century.",
+    "language": "en"
+}
+```
+
+Ihre Skilldefinition sieht dann möglicherweise folgendermaßen aus:
 
 ```json
  {
@@ -68,7 +79,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
       },
       {
         "name": "languageCode",
-        "source": "/document/languagecode" 
+        "source": "/document/language" 
       }
     ],
     "outputs": [
@@ -80,33 +91,12 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
   }
 ```
 
-##  <a name="sample-input"></a>Beispieleingabe
-
-```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-             "text": "Glaciers are huge rivers of ice that ooze their way over land, powered by gravity and their own sheer weight. They accumulate ice from snowfall and lose it through melting. As global temperatures have risen, many of the world’s glaciers have already started to shrink and retreat. Continued warming could see many iconic landscapes – from the Canadian Rockies to the Mount Everest region of the Himalayas – lose almost all their glaciers by the end of the century.",
-             "language": "en"
-           }
-      }
-    ]
-```
-
-
 ##  <a name="sample-output"></a>Beispielausgabe
 
+Im obigen Beispiel wird die Ausgabe Ihres Skills in einen neuen Knoten in der angereicherten Informationsstruktur namens „document/myKeyPhrases“ geschrieben, da dies der angegebene Wert für `targetName` ist. Wenn Sie keinen Wert für `targetName` angeben, wird „document/keyPhrases“ verwendet.
+
+#### <a name="documentmykeyphrases"></a>document/myKeyPhrases 
 ```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-            "keyPhrases": 
             [
               "world’s glaciers", 
               "huge rivers of ice", 
@@ -115,12 +105,9 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
               "Mount Everest region",
               "Continued warming"
             ]
-           }
-      }
-    ]
-}
 ```
 
+Sie können „document/myKeyPhrase“ als Eingabe für andere Skills oder als Quelle für eine [Ausgabefeldzuordnung](cognitive-search-output-field-mapping.md) verwenden.
 
 ## <a name="errors-and-warnings"></a>Fehler und Warnungen
 Wenn Sie einen nicht unterstützte Sprachcode bereitstellen, tritt ein Fehler auf, und es werden keine Schlüsselbegriffe extrahiert.
@@ -131,3 +118,4 @@ Wenn Ihre Text mehr als 50.000 Zeichen umfasst, werden nur die ersten 50.000 Zei
 
 + [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
++ [Zuordnen von mit KI angereicherten Feldern zu einem durchsuchbaren Index](cognitive-search-output-field-mapping.md)

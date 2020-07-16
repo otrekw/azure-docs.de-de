@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 255e440586af2a5c9115023f45fbf02e25c57ab6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 789d70f77558bbade854ba31fd10ecd2b8e7b853
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692130"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194704"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -292,8 +292,8 @@ Filter umfassen Folgendes:
 | Filtername | Filtertyp | Notizen | Ist erforderlich |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Ein Array von vordefinierten Enumerationswerten. | In der aktuellen Version wird `blockBlob` unterstützt. | Ja |
-| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, die abgeglichen werden sollen. In jeder Regel können bis zu 10 Präfixe definiert werden. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn Sie für eine Regel beispielsweise eine Übereinstimmung mit allen Blobs unter „`https://myaccount.blob.core.windows.net/container1/foo/...`“ erzielen möchten, lautet der prefixMatch-Wert `container1/foo`. | Wenn Sie prefixMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto.  | Nein  |
-| blobIndexMatch | Ein Array von Wörterbuchwerten, die aus dem Blobindextag-Schlüssel und den Wertbedingungen bestehen, die abgeglichen werden sollen. In jeder Regel können bis zu 10 Blobindextag-Bedingungen definiert werden. Wenn Sie beispielsweise alle Blobs mit `Project = Contoso` unter `https://myaccount.blob.core.windows.net/` für eine Regel abgleichen möchten, lautet der blobIndexMatch-Wert `{"name": "Project","op": "==","value": "Contoso"}`. | Wenn Sie blobIndexMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto. | Nein  |
+| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, die abgeglichen werden sollen. In jeder Regel können bis zu 10 Präfixe definiert werden. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn Sie für eine Regel beispielsweise eine Übereinstimmung mit allen Blobs unter „`https://myaccount.blob.core.windows.net/container1/foo/...`“ erzielen möchten, lautet der prefixMatch-Wert `container1/foo`. | Wenn Sie prefixMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto.  | Nein |
+| blobIndexMatch | Ein Array von Wörterbuchwerten, die aus dem Blobindextag-Schlüssel und den Wertbedingungen bestehen, die abgeglichen werden sollen. In jeder Regel können bis zu 10 Blobindextag-Bedingungen definiert werden. Wenn Sie beispielsweise alle Blobs mit `Project = Contoso` unter `https://myaccount.blob.core.windows.net/` für eine Regel abgleichen möchten, lautet der blobIndexMatch-Wert `{"name": "Project","op": "==","value": "Contoso"}`. | Wenn Sie blobIndexMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto. | Nein |
 
 > [!NOTE]
 > Der Blobindex befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **Frankreich, Mitte** und **Frankreich, Süden** verfügbar. Weitere Informationen zu dieser Funktion sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit dem Blobindex (Vorschau)](storage-manage-find-blobs.md).
@@ -357,7 +357,7 @@ Dieses Beispiel zeigt den Übergang von Blockblobs mit dem Präfix `container1/f
 Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur sehr selten oder gar nicht zugegriffen wird. Die folgende Lebenszyklusrichtlinie ist so konfiguriert, dass Daten kurz nach der Erfassung archiviert werden. In diesem Beispiel werden Blockblobs im Speicherkonto im Container `archivecontainer` an eine Archivebene überführt. Die Umstellung wird durch die Ausführung der Aktion für Blobs 0 Tage nach dem Zeitpunkt der letzten Änderung erreicht:
 
 > [!NOTE] 
-> Es wird empfohlen, die Blobs für mehr Effizienz direkt auf die Archivebene hochzuladen. Sie können den Header „x-ms-acess-tier“ für [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) oder [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) mit REST-Version 2018-11-09 und höher oder unsere neuesten Blobspeicher-Clientbibliotheken verwenden. 
+> Es wird empfohlen, die Blobs für mehr Effizienz direkt auf die Archivebene hochzuladen. Sie können den Header „x-ms-access-tier“ für [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) oder [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) mit der REST-Version 2018-11-09 und höher oder unseren neuesten Blobspeicher-Clientbibliotheken verwenden. 
 
 ```json
 {

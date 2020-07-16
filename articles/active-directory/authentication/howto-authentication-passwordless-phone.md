@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b5dbf26bc636107576af15a0217eb16302f63f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450971"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601631"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion)
 
@@ -82,7 +82,7 @@ Der Administrator kann dem Benutzer die Verwendung der kennwortlosen Anmeldung p
 
 ### <a name="ad-fs-integration"></a>AD FS-Integration
 
-Wenn ein Benutzer die Microsoft Authenticator-Anmeldeinformationen ohne Kennwort aktiviert hat, wird die Authentifizierung für diesen Benutzer standardmäßig immer auf das Senden einer Genehmigungsbenachrichtigung festgelegt. Diese Logik verhindert, dass Benutzer in einem Hybridmandanten zur Überprüfung der Anmeldung zu Active Directory-Verbunddiensten (AD FS) weitergeleitet werden, ohne zusätzlichen Schritt zum Klicken auf „Stattdessen Ihr Kennwort verwenden“. Bei diesem Prozess werden auch alle lokalen Richtlinien für bedingten Zugriff und Passthrough-Authentifizierungsflüsse umgangen. 
+Wenn ein Benutzer die Microsoft Authenticator-Anmeldeinformationen ohne Kennwort aktiviert hat, wird die Authentifizierung für diesen Benutzer standardmäßig immer auf das Senden einer Genehmigungsbenachrichtigung festgelegt. Diese Logik verhindert, dass ein Benutzer in einem Hybridmandanten zur Überprüfung der Anmeldung zu Active Directory-Verbunddiensten (AD FS) weitergeleitet wird, ohne dass der Benutzer einen zusätzlichen Schritt zum Klicken auf „Stattdessen Ihr Kennwort verwenden“ ausführt. Bei diesem Prozess werden auch alle lokalen Richtlinien für bedingten Zugriff und Passthrough-Authentifizierungsflüsse umgangen. 
 
 Wenn bei einem Benutzer die Überprüfung der kennwortlosen Anmeldung per Telefon aussteht und er versucht, sich erneut anzumelden, wird der Benutzer möglicherweise zu AD FS weitergeleitet, um stattdessen ein Kennwort einzugeben.  
 
@@ -103,7 +103,7 @@ Endbenutzer, die einer Richtlinie unterliegen, welche die Verwaltung mobiler Anw
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Was bedeutet „kennwortlos“?](concept-authentication-passwordless.md)
+[Wie funktioniert die kennwortlose Authentifizierung?](concept-authentication-passwordless.md)
 
 [Informationen zur Geräteregistrierung](../devices/overview.md#getting-devices-in-azure-ad)
 

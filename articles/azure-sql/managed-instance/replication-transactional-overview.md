@@ -3,7 +3,7 @@ title: Transaktionsreplikation
 titleSuffix: Azure SQL Managed Instance
 description: Erfahren Sie mehr über die Verwendung der SQL Server-Transaktionsreplikation mit Azure SQL Managed Instance.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: e23b772c6f57a2649d626e879d404e76ab2ab380
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 00f456d87bd5791b7d49644cb801dca20431b0b5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219344"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086397"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Transaktionsreplikation mit Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,31 +29,31 @@ Transaktionsreplikation ist ein Feature von Azure SQL Managed Instance und SQL S
 Sie können Transaktionsreplikation auch verwenden, um Änderungen an Azure SQL Managed Instance mithilfe von Push an folgende Ziele zu übertragen:
 
 - Eine SQL Server-Datenbank, entweder lokal oder in Azure-VM
-- Eine Einzel- oder Pooldatenbank in Azure SQL-Datenbank
-- Eine Einzel- oder Pooldatenbank in Azure SQL Managed Instance
+- Eine Datenbank in Azure SQL-Datenbank
+- Eine Instanzdatenbank in Azure SQL Managed Instance
 
   > [!NOTE]
   > Um alle Features von Azure SQL Managed Instance verwenden zu können, müssen Sie die neuesten Versionen von [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) verwenden.
 
 ### <a name="components"></a>Komponenten
 
-Die wichtigsten Komponenten der Transaktionsreplikation (**Herausgeber**, **Verteiler** und **Abonnent**) sind in der folgenden Abbildung dargestellt:  
+Die wichtigsten Komponenten der Transaktionsreplikation (**Verleger**, **Verteiler** und **Abonnent**) sind in der folgenden Abbildung dargestellt:  
 
 ![Replikation zu SQL-Datenbank](./media/replication-transactional-overview/replication-to-sql-database.png)
 
 | Role | Azure SQL-Datenbank | Verwaltete Azure SQL-Instanz |
 | :----| :------------- | :--------------- |
-| **Herausgeber** | Nein | Ja |
+| **Verleger** | Nein | Ja |
 | **Verteiler** | Nein | Ja|
 | **Pull-Abonnent** | Nein | Ja|
 | **Push-Abonnent**| Ja | Ja|
 | &nbsp; | &nbsp; | &nbsp; |
 
-Der **Herausgeber** veröffentlicht an Tabellen (Artikeln) erfolgte Änderungen, indem die Aktualisierungen zum Verteiler gesendet werden. Der Herausgeber kann Azure SQL Managed Instance oder eine SQL Server-Instanz sein.
+Der **Verleger** veröffentlicht an Tabellen (Artikeln) erfolgte Änderungen, indem die Aktualisierungen zum Verteiler gesendet werden. Der Verleger kann Azure SQL Managed Instance oder eine SQL Server-Instanz sein.
 
-Der **Verteiler** sammelt Änderungen an den Artikeln von einem Herausgeber und verteilt sie an die Abonnenten. Der Verteiler kann entweder eine Azure SQL Managed Instance oder eine SQL Server-Instanz (beliebige Version, sofern nicht älter als die Herausgeberversion) sein.
+Der **Verteiler** sammelt Änderungen an den Artikeln von einem Verleger und verteilt sie an die Abonnenten. Der Verteiler kann entweder eine Azure SQL Managed Instance oder eine SQL Server-Instanz (beliebige Version, sofern nicht älter als die Verlegerversion) sein.
 
-Der **Abonnent** empfängt auf dem Herausgeber erfolgte Änderungen. Eine SQL Server-Instanz und Azure SQL Managed Instance können sowohl Push- als auch Pullabonnenten sein. Ein Pullabonnement wird jedoch nicht unterstützt, wenn der Verteiler eine Azure SQL Managed Instance ist und der Abonnent nicht. Eine Datenbank in Azure SQL-Datenbank kann nur ein Pushabonnent sein.
+Der **Abonnent** empfängt auf dem Verleger erfolgte Änderungen. Eine SQL Server-Instanz und Azure SQL Managed Instance können sowohl Push- als auch Pullabonnenten sein. Ein Pullabonnement wird jedoch nicht unterstützt, wenn der Verteiler eine Azure SQL Managed Instance ist und der Abonnent nicht. Eine Datenbank in Azure SQL-Datenbank kann nur ein Pushabonnent sein.
 
 Azure SQL Managed Instance kann als Abonnent der folgenden Versionen von SQL Server fungieren:
 
@@ -84,7 +84,7 @@ Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relation
 
   Die Unterstützungsmatrix für die Transaktionsreplikation für Azure SQL Managed Instance ist identisch mit der für SQL Server.
   
-| **Herausgeber**   | **Verteiler** | **Abonnent** |
+| **Verleger**   | **Verteiler** | **Abonnent** |
 | :------------   | :-------------- | :------------- |
 | SQL Server 2019 | SQL Server 2019 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/>  |
 | SQL Server 2017 | SQL Server 2019 <br/>SQL Server 2017 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
@@ -99,7 +99,7 @@ Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relation
 Die Transaktionsreplikation ist in den folgenden Szenarien nützlich:
 
 - Veröffentlichen von Änderungen an Tabellen in einer Datenbank, die an eine oder mehrere Datenbanken in einer SQL Server-Instanz oder eine Azure SQL-Datenbank-Instanz verteilt werden, die die Änderungen abonniert haben
-- Beibehalten der Synchronisierung mehrerer verteilter Datenbanken
+- Synchronisierthalten mehrerer verteilter Datenbanken
 - Migrieren von Datenbanken aus einer SQL Server-Instanz oder Azure SQL Managed Instance in eine andere Datenbank durch fortlaufendes Veröffentlichen der Änderungen
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Vergleichen von Datensynchronisierung und Transaktionsreplikation
@@ -112,26 +112,26 @@ Die Transaktionsreplikation ist in den folgenden Szenarien nützlich:
 
 ## <a name="common-configurations"></a>Häufig verwendete Konfigurationen
 
-Im Allgemeinen müssen sich Herausgeber und Verteiler gemeinsam entweder in der Cloud oder an einem lokalen Standort befinden. Die folgenden Konfigurationen werden unterstützt:
+Im Allgemeinen müssen sich Verleger und Verteiler gemeinsam entweder in der Cloud oder an einem lokalen Standort befinden. Die folgenden Konfigurationen werden unterstützt:
 
-### <a name="publisher-with-local-distributor-on-sql-managed-instance"></a>Herausgeber mit lokalem Verteiler in SQL Managed Instance
+### <a name="publisher-with-local-distributor-on-sql-managed-instance"></a>Verleger mit lokalem Verteiler in SQL Managed Instance
 
-![Einzelinstanz als Herausgeber und Verteiler](./media/replication-transactional-overview/01-single-instance-asdbmi-pubdist.png)
+![Einzelinstanz als Verleger und Verteiler](./media/replication-transactional-overview/01-single-instance-asdbmi-pubdist.png)
 
-Herausgeber und Verteiler sind in einer einzelnen SQL Managed Instance konfiguriert und verteilen Änderungen an eine andere SQL Managed Instance, SQL-Datenbank- oder SQL Server-Instanz.
+Verleger und Verteiler sind in einer einzelnen SQL Managed Instance konfiguriert und verteilen Änderungen an eine andere SQL Managed Instance, SQL-Datenbank- oder SQL Server-Instanz.
 
-### <a name="publisher-with-remote-distributor-on-sql-managed-instance"></a>Herausgeber mit Remoteverteiler in SQL Managed Instance
+### <a name="publisher-with-remote-distributor-on-sql-managed-instance"></a>Verleger mit Remoteverteiler in SQL Managed Instance
 
 Bei dieser Konfiguration veröffentlicht eine verwaltete Instanz Änderungen in einem Verteiler in einer anderen SQL Managed Instance, die zahlreichen SQL Managed Instances als Quelle dienen und Änderungen an ein oder mehrere Ziele in Azure SQL-Datenbank, Azure SQL Managed Instance oder SQL Server verteilen kann.
 
-![Separate Instanzen als Herausgeber und Verteiler](./media/replication-transactional-overview/02-separate-instances-asdbmi-pubdist.png)
+![Separate Instanzen als Verleger und Verteiler](./media/replication-transactional-overview/02-separate-instances-asdbmi-pubdist.png)
 
-Herausgeber und Verteiler werden in zwei verwalteten Instanzen konfiguriert. Bei dieser Konfiguration gibt es einige Einschränkungen:
+Verleger und Verteiler werden in zwei verwalteten Instanzen konfiguriert. Bei dieser Konfiguration gibt es einige Einschränkungen:
 
 - Beide verwaltete Instanzen befinden sich im gleichen VNET.
 - Die beiden verwalteten Instanzen befinden sich am gleichen Standort.
 
-### <a name="on-premises-publisherdistributor-with-remote-subscriber"></a>Lokaler Herausgeber/Verteiler mit Remoteabonnent
+### <a name="on-premises-publisherdistributor-with-remote-subscriber"></a>Lokaler Verleger/Verteiler mit Remoteabonnent
 
 ![Azure SQL-Datenbank als Abonnent](./media/replication-transactional-overview/03-azure-sql-db-subscriber.png)
 
@@ -142,8 +142,8 @@ Bei dieser Konfiguration ist eine Datenbank in Azure SQL-Datenbank oder Azure SQ
 - Für die Verbindung zwischen Teilnehmern an der Replikation wird SQL-Authentifizierung verwendet.
 - Nutzen Sie für das von der Replikation verwendete Arbeitsverzeichnis eine Azure Storage-Kontofreigabe.
 - Öffnen Sie den ausgehenden TCP-Port 445 in den Sicherheitsregeln des Subnetzes, um auf die Azure-Dateifreigabe zuzugreifen.
-- Öffnen Sie den ausgehenden TCP-Port 1433, wenn sich der Herausgeber/Verteiler in SQL Managed Instance befinden und der Abonnent nicht. Möglicherweise müssen Sie auch die Sicherheitsregel für ausgehenden Datenverkehr der Netzwerksicherheitsgruppe von SQL Managed Instance für `allow_linkedserver_outbound` für das **Zieldiensttag** von Port 1433 von `virtualnetwork` in `internet` ändern.
-- Platzieren Sie sowohl den Herausgeber als auch den Verteiler in der Cloud oder beide lokal.
+- Öffnen Sie den ausgehenden TCP-Port 1433, wenn sich der Verleger/Verteiler in SQL Managed Instance befinden und der Abonnent nicht. Möglicherweise müssen Sie auch die Sicherheitsregel für ausgehenden Datenverkehr der Netzwerksicherheitsgruppe von SQL Managed Instance für `allow_linkedserver_outbound` für das **Zieldiensttag** von Port 1433 von `virtualnetwork` in `internet` ändern.
+- Platzieren Sie sowohl den Verleger als auch den VerteVerlegeriler in der Cloud oder beide lokal.
 - Konfigurieren Sie VPN-Peering zwischen den virtuellen Netzwerken der Replikationsteilnehmer, sofern die virtuellen Netzwerke unterschiedlich sind.
 
 > [!NOTE]
@@ -153,10 +153,10 @@ Bei dieser Konfiguration ist eine Datenbank in Azure SQL-Datenbank oder Azure SQ
 
 [Aktive Georeplikation](../database/active-geo-replication-overview.md) wird bei einer SQL Managed Instance, die Transaktionsreplikation nutzt, nicht unterstützt. Verwenden Sie anstelle der aktiven Georeplikation [Autofailover-Gruppen](../database/auto-failover-group-overview.md). Beachten Sie jedoch, dass die Veröffentlichung aus der primären verwalteten Instanz [manuell gelöscht](transact-sql-tsql-differences-sql-server.md#replication) und nach dem Failover in der sekundären SQL Managed Instance neu erstellt werden muss.
 
-Wenn Georeplikation für eine als **Herausgeber** oder **Verteiler** fungierende SQL Managed Instance in einer [Failovergruppe](../database/auto-failover-group-overview.md) aktiviert ist, muss der SQL Managed Instance-Administrator alle Veröffentlichungen für die alte primäre Instanz bereinigen und nach einem Failover für die neue primäre Instanz erneut konfigurieren. Die folgenden Aktivitäten sind in diesem Szenario erforderlich:
+Wenn Georeplikation für eine als **Verleger** oder **Verteiler** fungierende SQL Managed Instance in einer [Failovergruppe](../database/auto-failover-group-overview.md) aktiviert ist, muss der SQL Managed Instance-Administrator alle Veröffentlichungen für die alte primäre Instanz bereinigen und nach einem Failover für die neue primäre Instanz erneut konfigurieren. Die folgenden Aktivitäten sind in diesem Szenario erforderlich:
 
 1. Beenden aller Replikationsaufträge, die für die Datenbank ausgeführt werden, sofern vorhanden.
-1. Löschen der Abonnementmetadaten vom Herausgeber, indem das folgende Skript für die Herausgeberdatenbank ausgeführt wird:
+1. Löschen der Abonnementmetadaten vom Verleger, indem das folgende Skript für die Verlegerdatenbank ausgeführt wird:
 
    ```sql
    EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
@@ -171,7 +171,7 @@ Wenn Georeplikation für eine als **Herausgeber** oder **Verteiler** fungierende
       @publication = N'<name of publication>';
    ```
 
-1. Erzwingen Sie das Löschen aller Replikationsobjekte aus dem Herausgeber, indem Sie das folgende Skript in der veröffentlichten Datenbank ausführen:
+1. Erzwingen Sie das Löschen aller Replikationsobjekte aus dem Verleger, indem Sie das folgende Skript in der veröffentlichten Datenbank ausführen:
 
    ```sql
    EXEC sp_removedbreplication
@@ -193,8 +193,8 @@ Wenn Georeplikation für eine **Abonnenteninstanz** in einer Failovergruppe akti
 
 Weitere Informationen zum Konfigurieren von Transaktionsreplikation finden Sie in den folgenden Tutorials:
 
-- [Konfigurieren der Replikation zwischen einem SQL Managed Instance-Herausgeber und -Abonnenten](../managed-instance/replication-between-two-instances-configure-tutorial.md)
-- [Konfigurieren der Replikation zwischen einem SQL Managed Instance-Herausgeber, SQL Managed Instance-Verteiler und SQL Server-Abonnenten](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
+- [Konfigurieren der Replikation zwischen einem SQL Managed Instance-Verleger und -Abonnenten](../managed-instance/replication-between-two-instances-configure-tutorial.md)
+- [Konfigurieren der Replikation zwischen einem SQL Managed Instance-Verleger, SQL Managed Instance-Verteiler und SQL Server-Abonnenten](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
 - [Erstellen Sie eine Veröffentlichung](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 - [Erstellen Sie ein Pushabonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) mit dem Servernamen als Abonnent (z. B. `N'azuresqldbdns.database.windows.net` und dem Namen der Datenbank in Azure SQL-Datenbank als Zieldatenbank, z. B. **AdventureWorks**. )
 

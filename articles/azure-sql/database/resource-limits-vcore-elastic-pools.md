@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 05/29/2020
-ms.openlocfilehash: 03884a7d1b834ef8c176434ad4127e1638aabcb1
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.date: 06/10/2020
+ms.openlocfilehash: 4ffd92c0641b74682a74ffd2898e226999ac2dd4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235742"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668456"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-Kaufmodell verwenden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Informationen zu Limits für das DTU-Kaufmodell finden Sie unter [DTU-Ressourcen
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](file-space-manage.md).
 
-Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerShell](elastic-pool-manage.md#powershell), mit der [Azure CLI](elastic-pool-manage.md#azure-cli) oder der [REST-API](elastic-pool-manage.md#rest-api) Dienstebene, Computegröße und Speichermenge festlegen.
+Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerShell](elastic-pool-manage.md#powershell), der [Azure CLI](elastic-pool-manage.md#azure-cli) oder [REST-API](elastic-pool-manage.md#rest-api) Dienstebene, Computegröße (PostgreSQL) und Speichermenge festlegen.
 
 > [!IMPORTANT]
 > Anleitungen und Überlegungen zur Skalierung finden Sie unter [Skalieren eines Pools für elastische Datenbanken](elastic-pool-scale.md).
@@ -40,7 +40,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Universelle Dienstebene: Computeplattform der 4. Generation (Teil 1)
 
-|Computegröße|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
+|Computegröße (Dienstziel)|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
 |Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |V-Kerne|1|2|3|4|5|6|
@@ -72,7 +72,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Universelle Dienstebene: Computeplattform der 4. Generation (Teil 2)
 
-|Computegröße|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
+|Computegröße (Dienstziel)|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |V-Kerne|7|8|9|10|16|24|
@@ -106,7 +106,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Universelle Dienstebene: Computeplattform der 5. Generation (Teil 1)
 
-|Computegröße|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
+|Computegröße (Dienstziel)|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|2|4|6|8|10|12|14|
@@ -138,7 +138,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Universelle Dienstebene: Computeplattform der 5. Generation (Teil 2)
 
-|Computegröße|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|Computegröße (Dienstziel)|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|16|18|20|24|32|40|80|
@@ -172,7 +172,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 ### <a name="fsv2-series-compute-generation-preview"></a>Computegeneration der Fsv2-Serie (Vorschau)
 
-|Computegröße|GP_Fsv2_72|
+|Computegröße (Dienstziel)|GP_Fsv2_72|
 |:--- | --: |
 |Computegeneration|Fsv2-Serie|
 |V-Kerne|72|
@@ -209,7 +209,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Dienstebene „Unternehmenskritisch“: Computeplattform der 4. Generation (Teil 1)
 
-|Computegröße|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
+|Computegröße (Dienstziel)|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|
 |V-Kerne|2|3|4|5|6|
@@ -241,7 +241,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Dienstebene „Unternehmenskritisch“: Computeplattform der 4. Generation (Teil 2)
 
-|Computegröße|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
+|Computegröße (Dienstziel)|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |V-Kerne|7|8|9|10|16|24|
@@ -275,7 +275,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Dienstebene „Unternehmenskritisch“: Computeplattform der 5. Generation (Teil 1)
 
-|Computegröße|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
+|Computegröße (Dienstziel)|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|4|6|8|10|12|14|
@@ -307,7 +307,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Dienstebene „Unternehmenskritisch“: Computeplattform der 5. Generation (Teil 2)
 
-|Computegröße|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|Computegröße (Dienstziel)|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|16|18|20|24|32|40|80|
@@ -341,7 +341,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 ### <a name="m-series-compute-generation-preview"></a>Computegeneration der M-Serie (Vorschau)
 
-|Computegröße|BC_M_128|
+|Computegröße (Dienstziel)|BC_M_128|
 |:--- | --: |
 |Computegeneration|M-Serie|
 |V-Kerne|128|
@@ -378,7 +378,7 @@ Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet wer
 Die folgende Tabelle beschreibt die Eigenschaften von Pooldatenbanken.
 
 > [!NOTE]
-> Die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken entsprechen im Allgemeinen den Grenzwerten einzelner Datenbanken außerhalb von Pools, welche die gleiche Computegröße aufweisen. Auf eine GP_Gen4_1-Datenbank können z.B. max. 200 Worker gleichzeitig zugreifen. Entsprechend können auch maximal 200 Worker auf eine Datenbank in einem GP_Gen4_1-Pool zugreifen. Beachten Sie, dass die Gesamtanzahl gleichzeitiger Worker in einem GP_Gen4_1-Pool 210 beträgt.
+> Die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken entsprechen im Allgemeinen den Grenzwerten einzelner Datenbanken außerhalb von Pools, welche die gleiche Computegröße (das gleiche Dienstziel) aufweisen. Auf eine GP_Gen4_1-Datenbank können z.B. max. 200 Worker gleichzeitig zugreifen. Entsprechend können auch maximal 200 Worker auf eine Datenbank in einem GP_Gen4_1-Pool zugreifen. Beachten Sie, dass die Gesamtanzahl gleichzeitiger Worker in einem GP_Gen4_1-Pool 210 beträgt.
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
@@ -394,4 +394,4 @@ Die folgende Tabelle beschreibt die Eigenschaften von Pooldatenbanken.
 - Informationen zu DTU-Ressourcenlimits für Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits für Pools für elastische Datenbanken, die das DTU-Kaufmodell verwenden](resource-limits-dtu-elastic-pools.md).
 - Informationen zu den Ressourcenlimits für verwaltete Instanzen finden Sie unter [Ressourcenlimits bei verwalteten Instanzen](../managed-instance/resource-limits.md).
 - Informationen zu allgemeinen Azure-Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
-- Informationen zu Ressourcenlimits auf Server- und Abonnementebene auf einem logischen SQL-Server finden Sie unter [Übersicht über Ressourcenlimits für einen logischen SQL-Server](resource-limits-logical-server.md).
+- Informationen zu Ressourcenlimits auf Server- und Abonnementebene auf einem logischen SQL-Server finden Sie unter [Übersicht über Ressourcenlimits auf einem logischen SQL-Server](resource-limits-logical-server.md).

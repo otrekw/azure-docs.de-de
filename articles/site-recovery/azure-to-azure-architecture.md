@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: a9468f437a89a85f28b6ce869b948ca2a4aff7bf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983328"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135860"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Azure zu Azure
 
@@ -34,7 +34,7 @@ Die an der Notfallwiederherstellung beteiligten Komponenten für Azure-VMs werde
 **Cachespeicherkonto** | Sie benötigen ein Cachespeicherkonto im Quellnetzwerk. Während der Replikation werden VM-Änderungen im Cache gespeichert, bevor sie an den Zielspeicher gesendet werden.  Cachespeicherkonten müssen Standardkonten sein.<br/><br/> Ein Cache stellt sicher, dass die Auswirkungen auf die auf dem virtuellen Computer ausgeführten Produktionsanwendungen möglichst gering sind.<br/><br/> [Erfahren Sie mehr](azure-to-azure-support-matrix.md#cache-storage) über die Anforderungen an den Cachespeicher. 
 **Zielressourcen** | Zielressourcen werden während der Replikation und bei einem Failover verwendet. Site Recovery kann standardmäßig Zielressourcen einrichten, Sie können diese aber auch selbst erstellen oder bearbeiten.<br/><br/> Überprüfen Sie in der Zielregion, ob Sie virtuelle Computer erstellen können und ob Ihr Abonnement über ausreichend Ressourcen zur Unterstützung der VM-Größen verfügt, die in der Zielregion benötigt werden. 
 
-![Replikationsquelle und -ziel](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
+![Replikationsquelle und -ziel](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>Zielressourcen
 
@@ -116,7 +116,7 @@ Wenn Sie die Replikation für eine Azure-VM aktivieren, geschieht Folgendes:
 4. Site Recovery verarbeitet die Daten im Cache und sendet sie an das Zielspeicherkonto oder an verwaltete Replikatdatenträger weiter.
 5. Nach der Verarbeitung der Daten werden alle fünf Minuten absturzkonsistente Wiederherstellungspunkte generiert. App-konsistente Wiederherstellungspunkte werden gemäß der Einstellung in der Replikationsrichtlinie generiert.
 
-![Schritt 2: Aktivieren des Replikationsprozesses](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![Schritt 2: Aktivieren des Replikationsprozesses](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **Replikationsprozess**
 
@@ -146,9 +146,9 @@ Einzelheiten zu den Netzwerkverbindungsanforderungen finden Sie unter [Netzwerkk
 
 **Regel** |  **Details** | **Diensttag**
 --- | --- | --- 
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Quellregion. | Storage.\<Regionsname>
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Quellregion. | Storage.\<region-name>
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Active Directory (Azure AD).  | AzureActiveDirectory
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Event Hub-Instanzen in der Zielregion. | EventsHub.\<Regionsname>
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Event Hub-Instanzen in der Zielregion. | EventsHub.\<region-name>
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Site Recovery.  | AzureSiteRecovery
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Key Vault (dies ist nur erforderlich, um die Replikation von VMs, für die ADE aktiviert ist, über das Portal zu aktivieren) | AzureKeyVault
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für den Azure Automation-Controller (dies ist nur erforderlich, um automatische Upgrades für den Mobilitäts-Agent für ein repliziertes Element über das Portal zu aktivieren) | GuestAndHybridManagement
@@ -157,9 +157,9 @@ HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für den Az
 
 **Regel** |  **Details** | **Diensttag**
 --- | --- | --- 
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Zielregion. | Storage.\<Regionsname>
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Zielregion. | Storage.\<region-name>
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure AD.  | AzureActiveDirectory
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Event Hub-Instanzen in der Quellregion. | EventsHub.\<Regionsname>
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Event Hub-Instanzen in der Quellregion. | EventsHub.\<region-name>
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Site Recovery.  | AzureSiteRecovery
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Key Vault (dies ist nur erforderlich, um die Replikation von VMs, für die ADE aktiviert ist, über das Portal zu aktivieren) | AzureKeyVault
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für den Azure Automation-Controller (dies ist nur erforderlich, um automatische Upgrades für den Mobilitäts-Agent für ein repliziertes Element über das Portal zu aktivieren) | GuestAndHybridManagement
@@ -167,11 +167,11 @@ HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für den Az
 
 #### <a name="control-access-with-nsg-rules"></a>Steuern des Zugriffs mit NSG-Regeln
 
-Wenn Sie die VM-Konnektivität durch Filtern des Netzwerkdatenverkehrs zu und aus Azure-Netzwerken/-Subnetzen mithilfe von [NSG-Regeln](https://docs.microsoft.com/azure/virtual-network/security-overview) steuern, beachten Sie die folgenden Voraussetzungen:
+Wenn Sie die VM-Konnektivität durch Filtern des Netzwerkdatenverkehrs zu und aus Azure-Netzwerken/-Subnetzen mithilfe von [NSG-Regeln](../virtual-network/security-overview.md) steuern, beachten Sie die folgenden Voraussetzungen:
 
 - NSG-Regeln für die Azure-Quellregion sollten ausgehenden Zugriff für den Replikationsdatenverkehr zulassen.
 - Es wird empfohlen, die Regeln zunächst in einer Testumgebung zu erstellen, bevor sie in die Produktion übernommen werden.
-- Verwenden Sie [Diensttags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags), anstatt einzelne IP-Adressen zuzulassen.
+- Verwenden Sie [Diensttags](../virtual-network/security-overview.md#service-tags), anstatt einzelne IP-Adressen zuzulassen.
     - Diensttags stellen eine Gruppe von IP-Adresspräfixen dar und vereinfachen die Erstellung von Sicherheitsregeln.
     - Microsoft aktualisiert die Diensttags im Lauf der Zeit automatisch. 
  
@@ -191,7 +191,7 @@ Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Repli
 
 Bei der Initiierung eines Failovers werden die VMs in der Zielressourcengruppe, im virtuellen Zielnetzwerk, im Zielsubnetz und in der Zielverfügbarkeitsgruppe erstellt. Bei einem Failover können Sie einen beliebigen Wiederherstellungspunkt verwenden.
 
-![Failoverprozess](./media/concepts-azure-to-azure-architecture/failover.png)
+![Failoverprozess](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

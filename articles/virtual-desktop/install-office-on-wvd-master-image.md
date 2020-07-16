@@ -4,20 +4,20 @@ description: Erfahren Sie, wie Sie Office auf einem Windows Virtual Desktop-Mast
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b93f26a6799a50868feb1f3350a3dc4a73a0b2e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e213ac7a4d0436cf904a8104cea7e76eabaece4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127853"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85200527"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Installieren von Office für ein VHD-Masterimage
 
-In diesem Artikel erfahren Sie, wie Sie Office 365 ProPlus, OneDrive und andere gängige Anwendungen auf einem VHD-Masterimage (virtuelle Festplatte) für den Upload in Azure installieren. Wenn Ihre Benutzer auf bestimmte Branchenanwendungen zugreifen müssen, wird empfohlen, die Installation durchzuführen, nachdem Sie die Anweisungen in diesem Artikel befolgt haben.
+In diesem Artikel erfahren Sie, wie Sie Microsoft 365 Apps for Enterprise, OneDrive und andere gängige Anwendungen auf einem VHD-Masterimage (virtuelle Festplatte) für den Upload in Azure installieren. Wenn Ihre Benutzer auf bestimmte Branchenanwendungen zugreifen müssen, wird empfohlen, die Installation durchzuführen, nachdem Sie die Anweisungen in diesem Artikel befolgt haben.
 
 In diesem Artikel wird vorausgesetzt, dass Sie bereits eine VM (virtueller Computer) erstellt haben. Wenn Sie das noch nicht getan haben, führen Sie die Anweisungen unter [Vorbereiten und Anpassen eines VHD-Masterimages](set-up-customize-master-image.md#create-a-vm) aus.
 
@@ -28,29 +28,30 @@ In diesem Artikel wird außerdem davon ausgegangen, dass Sie über erhöhte Rech
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Installieren von Office im Modus „Aktivierung gemeinsam genutzter Computer“
 
-Mit der Aktivierung gemeinsam genutzter Computer können Sie Office 365 ProPlus auf einem Computer in Ihrem Unternehmen bereitstellen, auf den mehrere Benutzer zugreifen. Weitere Informationen zur Aktivierung gemeinsam genutzter Computer finden Sie im [Überblick über die Aktivierung gemeinsam genutzter Computer für Office 365 ProPlus](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/).
+Mit der Aktivierung gemeinsam genutzter Computer können Sie Microsoft 365 Apps for Enterprise auf einem Computer in Ihrem Unternehmen bereitstellen, auf den mehrere Benutzer zugreifen. Weitere Informationen zur Aktivierung gemeinsam genutzter Computer finden Sie im [Überblick über die Aktivierung gemeinsam genutzter Computer für Microsoft 365 Apps](/deployoffice/overview-shared-computer-activation).
 
 Verwenden Sie das [Office-Bereitstellungstool](https://www.microsoft.com/download/details.aspx?id=49117), um Office zu installieren. Windows 10 Enterprise (mehrere Sitzungen) unterstützt nur die folgenden Versionen von Office:
-- Office 365 ProPlus
-- Office 365-Business, das ein Microsoft 365 Business-Abonnement enthält
+
+   - Microsoft 365 Apps for Enterprise
+   - Microsoft 365 Apps for Business mit einem Microsoft 365 Business Premium-Abonnement
 
 Für das Office-Bereitstellungstool wird eine XML-Konfigurationsdatei benötigt. Informationen zum Anpassen des folgenden Beispiels finden Sie unter [Konfigurationsoptionen für das Office-Bereitstellungstool](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/).
 
 Mit dieser von uns bereitgestellten XML-Beispieldatei für die Konfiguration wird Folgendes durchgeführt:
 
-- Installieren von Office über den monatlichen Kanal und Bereitstellen von Updates über den monatlichen Kanal bei deren Ausführung.
-- Verwenden der X64-Architektur
-- Deaktivieren automatischer Updates
-- Entfernen aller vorhandenen Installationen von Office und Migrieren der zugehörigen Einstellungen
-- Aktivierung gemeinsam genutzter Computer
+   - Installieren von Office und Bereitstellen von Updates, jeweils über den monatlichen Enterprise-Kanal
+   - Verwenden der X64-Architektur
+   - Deaktivieren automatischer Updates
+   - Entfernen aller vorhandenen Installationen von Office und Migrieren der zugehörigen Einstellungen
+   - Aktivierung gemeinsam genutzter Computer
 
 >[!NOTE]
 >Die Schablonensuchfunktion von Visio funktioniert unter Windows Virtual Desktop möglicherweise nicht wie erwartet.
 
 Folgendes wird dagegen von dieser XML-Beispielkonfigurationsdatei nicht erledigt:
 
-- Installieren von Skype for Business
-- Installieren von OneDrive im Modus „Pro Benutzer“ Weitere Informationen finden Sie unter [Installieren von OneDrive im Modus „Pro Computer“](#install-onedrive-in-per-machine-mode).
+   - Installieren von Skype for Business
+   - Installieren von OneDrive im Modus „Pro Benutzer“ Weitere Informationen finden Sie unter [Installieren von OneDrive im Modus „Pro Computer“](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
 >Die Aktivierung gemeinsam genutzter Computer kann über Gruppenrichtlinienobjekte (GPOs) oder Registrierungseinstellungen eingerichtet werden. Das Gruppenrichtlinienobjekt befindet sich unter **Computerkonfiguration\\Richtlinien\\Administrative Vorlagen\\Microsoft Office 2016 (Computer)\\Lizenzierungseinstellungen**.
@@ -63,11 +64,11 @@ Setup.exe /configure configuration.xml
 
 #### <a name="sample-configurationxml"></a>Beispieldatei „configuration.xml“
 
-Mit dem folgenden XML-Beispielcode wird das monatliche Release installiert.
+Im folgenden XML-Beispiel wird das Release aus dem monatlichen Enterprise-Kanal installiert.
 
 ```xml
 <Configuration>
-  <Add OfficeClientEdition="64" Channel="Monthly">
+  <Add OfficeClientEdition="64" Channel="MonthlyEnterprise">
     <Product ID="O365ProPlusRetail">
       <Language ID="en-US" />
       <Language ID="MatchOS" />
@@ -120,8 +121,8 @@ Hier ist beschrieben, wie Sie OneDrive im Modus „Pro Computer“ installieren:
 
 2. Laden Sie die Datei „OneDriveSetup.exe“ mit diesem Link an Ihren bereitgestellten Speicherort herunter: <https://aka.ms/OneDriveWVD-Installer>.
 
-3. Wenn Sie Office mit OneDrive installiert und **\<ExcludeApp ID="OneDrive" /\>** weggelassen haben, sollten Sie alle vorhandenen OneDrive-Installationen im Modus „Pro Benutzer“ entfernen, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den folgenden Befehl ausführen:
-    
+3. Wenn Sie durch Auslassen von **\<ExcludeApp ID="OneDrive" /\>** Office mit OneDrive installiert haben, deinstallieren Sie alle vorhandenen OneDrive-Einzelbenutzerinstallationen durch Ausführen des folgenden Befehls in einer Eingabeaufforderung mit erhöhten Rechten:
+
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
@@ -156,9 +157,11 @@ Hier ist beschrieben, wie Sie OneDrive im Modus „Pro Computer“ installieren:
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
     ```
 
-## <a name="teams-and-skype"></a>Teams und Skype
+## <a name="microsoft-teams-and-skype-for-business"></a>Microsoft Teams und Skype for Business
 
-Windows Virtual Desktop unterstützt Skype for Business und Teams nicht.
+Windows Virtual Desktop unterstützt Skype for Business nicht.
+
+Hilfe bei der Installation von Microsoft Teams finden Sie unter [Verwenden von Microsoft Teams in Windows Virtual Desktop](teams-on-wvd.md). Die Medienoptimierung für Microsoft Teams in Windows Virtual Desktop ist in der Vorschauversion verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

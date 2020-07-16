@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf904bb2c0d133ea07cd32274fad5b6601da5d9
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: f0cb402741163c657b3e7961eb5a4f9c8e18dafd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148122"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673019"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -40,6 +40,7 @@ Die fortlaufende Zugriffsevaluierung wird implementiert, indem wir Diensten (Res
 
 - Benutzerkonto wird gelöscht oder deaktiviert
 - Kennwort für einen Benutzer wird geändert oder zurückgesetzt
+- MFA ist für den Benutzer aktiviert
 - Administrator sperrt explizit alle Aktualisierungstoken für einen Benutzer
 - Azure AD Identity Protection hat ein erhöhtes Benutzerrisiko erkannt
 
@@ -76,7 +77,7 @@ In CAE-Sitzungen werden wir die Gültigkeitsdauer von Zugriffstoken auf 24 Stund
 1. Dem Ressourcenanbieter wird ein Zugriffstoken präsentiert. Der Ressourcenanbieter wertet die Gültigkeit des Tokens aus und überprüft, ob für den Benutzer ein Sperrereignis vorliegt. Der Ressourcenanbieter verwendet diese Informationen, um den Zugriff auf die Ressource zu gewähren oder zu untersagen.
 1. In diesem Fall verweigert der Ressourcenanbieter den Zugriff und sendet die Anspruchsaufforderung „401+“ an den Client zurück.
 1. Der CAE-fähige Client versteht die Anspruchsaufforderung „401+“. Er umgeht die Caches, geht zurück zu Schritt 1 und sendet das Aktualisierungstoken zusammen mit der Anspruchsaufforderung zurück an Azure AD. Azure AD wertet dann alle Bedingungen erneut aus und fordert in diesem Fall den Benutzer auf, sich erneut zu authentifizieren.
- 
+
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
 ### <a name="what-is-the-lifetime-of-my-access-token"></a>Welche Gültigkeitsdauer hat mein Zugriffstoken?

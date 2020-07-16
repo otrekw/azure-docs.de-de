@@ -9,12 +9,12 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
-ms.openlocfilehash: 4854d5ff9d697a2bf082a788c0e761a2152b0294
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: d29500db5efd0abde4c9555fde9a7e3d5bbe070a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758706"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564981"
 ---
 # <a name="graphics-binding"></a>Grafikbindung
 
@@ -27,7 +27,7 @@ Nach der Einrichtung ermöglicht die Grafikbindung den Zugriff auf diverse Funkt
 In Unity wird die gesamte Bindung von der `RemoteUnityClientInit`-Struktur behandelt, die an `RemoteManagerUnity.InitializeManager` übergeben wird. Zum Festlegen des Grafikmodus muss das Feld `GraphicsApiType` auf die ausgewählte Bindung festgelegt werden. Das Feld wird abhängig davon, ob ein XRDevice vorhanden ist, automatisch gefüllt. Das Verhalten kann mit den folgenden Verhaltensweisen manuell außer Kraft gesetzt werden:
 
 * **HoloLens 2**: Es wird immer die Grafikbindung [Windows Mixed Reality](#windows-mixed-reality) verwendet.
-* **Flat UWP-Desktop-App**: Es wird immer [Simulation](#simulation) verwendet. Um diesen Modus zu verwenden, müssen Sie die Schritte im [Tutorial: Einrichten eines ganz neuen Unity-Projekts](../tutorials/unity/project-setup.md) ausführen.
+* **Flat UWP-Desktop-App**: Es wird immer [Simulation](#simulation) verwendet.
 * **Unity-Editor**: [Simulation](#simulation) wird immer verwendet, es sei denn, ein WMR VR-Headset ist angeschlossen. In diesem Fall wird ARR deaktiviert, um das Debuggen der nicht-ARR-bezogenen Teile der Anwendung zu ermöglichen. Siehe auch [Holographic Remoting](../how-tos/unity/holographic-remoting.md).
 
 Der einzige weitere relevante Teil für Unity ist der Zugriff auf die [Basisbindung](#access). Alle anderen folgenden Abschnitte können übersprungen werden.
@@ -233,4 +233,4 @@ else
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Tutorial: Einrichten eines ganz neuen Unity-Projekts](../tutorials/unity/project-setup.md)
+* [Tutorial: Anzeigen eines remote gerenderten Modells](../tutorials/unity/view-remote-models/view-remote-models.md)

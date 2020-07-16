@@ -2,23 +2,24 @@
 title: Verschieben der Anwendungsauthentifizierung von AD FS in Azure Active Directory
 description: In diesem Artikel wird erläutert, wie Organisationen Anwendungen in Azure AD verschieben können. Der Schwerpunkt liegt hierbei auf SaaS-Anwendungen.
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 04/01/2020
-ms.author: baselden
+ms.author: kenwith
+ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b777cce9b704be558460edf20cf243258c160b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 33b67c836be3395061e33b5988a4bb06fa5ee20f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202297"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608550"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory
 
@@ -397,7 +398,7 @@ Sie können eine [neue bedingte Zugriffsrichtlinie](https://docs.microsoft.com/a
 In dieser Tabelle sind einige nützliche Optionen für „Permit“ („Zulassen“) und „Except“ („außer“) sowie deren Zuordnung zu Azure AD aufgeführt. 
 
 
-| | Konfigurieren der „Permit“-Option („Zulassen“) in Azure AD| Konfigurieren der „Except“-Option („außer“) in Azure AD |
+| Option | Konfigurieren der „Permit“-Option („Zulassen“) in Azure AD| Konfigurieren der „Except“-Option („außer“) in Azure AD |
 | - | - | - |
 | In bestimmten Netzwerken| Die Option wird einem [benannten Standort](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) in Azure AD zugeordnet.| Verwenden Sie für [vertrauenswürdige Standorte](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition) die **Exclude**-Option („außer“). |
 | In bestimmten Gruppen| [Legen Sie eine Benutzer-/Gruppenzuweisung fest.](https://docs.microsoft.com/azure/active-directory/manage-apps/assign-user-or-group-access-portal)| Verwenden Sie in „Benutzer und Gruppen“ die **Exclude**-Option („außer“). |
@@ -462,7 +463,7 @@ Vergewissern Sie sich, dass das einmalige Anmelden je nach Konfiguration Ihrer A
 ‎ |
 | Kennwortbasiertes einmaliges Anmelden| Laden Sie die [My Apps Secure Sign](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[in-Erweiterung](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) herunter, und installieren Sie diese. Mit dieser Erweiterung können Sie alle Cloud-Apps Ihrer Organisation starten, bei denen Sie einen SSO-Prozess verwenden müssen.  
 ‎ |
-| Anwendungsproxy| Stellen Sie sicher, dass Ihr Connector ausgeführt wird und der Anwendung zugewiesen ist. Im Leitfaden zum[Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)[ ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)finden Sie weitere Unterstützung.  
+| Anwendungsproxy| Stellen Sie sicher, dass Ihr Connector ausgeführt wird und der Anwendung zugewiesen ist. Im Leitfaden zum [Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) finden Sie weitere Unterstützung.  
 ‎ |
 
 > [!NOTE]

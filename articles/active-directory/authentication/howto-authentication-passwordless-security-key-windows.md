@@ -11,21 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b8f5d6aaa96c24eb37eb78d237a489f1d25293c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acf7f89ab7c84d74dcd6e3dff2c2c688da1cefea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550615"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Windows 10-Geräten mit Azure Active Directory (Vorschauversion)
 
 In diesem Dokument liegt der Schwerpunkt auf der Aktivierung der auf FIDO2-Sicherheitsschlüsseln basierenden kennwortlosen Authentifizierung bei Windows 10-Geräten. Am Ende dieses Artikels können Sie sich mit Ihrem Azure AD-Konto mithilfe eines FIDO2-Sicherheitsschlüssels sowohl bei Ihren in Azure AD als auch in Azure AD Hybrid eingebundenen Windows 10-Geräten anmelden.
 
-|     |
-| --- |
-| FIDO2-Sicherheitsschlüssel sind eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+> [!NOTE]
+> FIDO2-Sicherheitsschlüssel sind eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
@@ -36,7 +34,7 @@ In diesem Dokument liegt der Schwerpunkt auf der Aktivierung der auf FIDO2-Siche
 | Kompatible [FIDO2-Sicherheitsschlüssel](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN erfordert Windows 10, Version 1809 oder höher. | X | X |
 | [In Azure AD eingebundene Geräte](../devices/concept-azure-ad-join.md) erfordern Windows 10, Version 1903 oder höher | X |   |
-| Auf [in Azure AD Hybrid eingebundenen Geräten](../devices/concept-azure-ad-join-hybrid.md) muss mindestens der Build 18945 von Windows 10 Insider ausgeführt werden. |   | X |
+| [In Azure AD Hybrid eingebundene Geräte](../devices/concept-azure-ad-join-hybrid.md) erfordern Windows 10, Version 2004 oder höher |   | X |
 | Vollständig gepatchte Windows Server 2016/2019-Domänencontroller. |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) Version 1.4.32.0 oder höher |   | X |
 | [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (optional) | X | X |
@@ -60,7 +58,7 @@ Folgende Szenarien werden nicht unterstützt:
 
 In Azure AD eingebundene Geräte, auf denen Sie während der Featurevorschau Pilottests ausführen, müssen Windows 10, Version 1809 oder höher ausführen. Hierfür eignet sich besonders Windows 10 (Version 1903 oder höher).
 
-Auf in Azure AD Hybrid eingebundenen Geräten muss mindestens der Build 18945 von Windows 10 Insider ausgeführt werden.
+Auf in Azure AD Hybrid eingebundenen Geräte muss Windows 10, Version 2004 oder höher, ausgeführt werden.
 
 ## <a name="enable-security-keys-for-windows-sign-in"></a>Aktivieren von Sicherheitsschlüsseln für die Windows-Anmeldung
 

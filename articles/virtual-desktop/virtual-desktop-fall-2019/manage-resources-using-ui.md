@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie ein Benutzeroberflächentool zum Verwalt
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: abe9b060793983e42ab432924ca5d6d7f43d307d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3c3e93cf711d4dadfdc2354a297b0588fb637c80
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614211"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514228"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Bereitstellen eines Verwaltungstools mit einer Azure Resource Manager-Vorlage
 
@@ -40,7 +40,7 @@ Bevor Sie das Verwaltungstool bereitstellen, benötigen Sie einen Azure Active D
 
 - Der Benutzer muss Azure Multi-Factor Authentication (MFA) deaktiviert haben.
 - Er muss über die Berechtigung zum Erstellen von Ressourcen in Ihrem Azure-Abonnement verfügen.
-- Er muss über die Berechtigung zum Erstellen einer Azure AD-Anwendung verfügen. Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Benutzer über die erforderlichen Berechtigungen verfügt, indem Sie die Anweisungen unter [Erforderliche Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) befolgen.
+- Er muss über die Berechtigung zum Erstellen einer Azure AD-Anwendung verfügen. Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Benutzer über die erforderlichen Berechtigungen verfügt, indem Sie die Anweisungen unter [Erforderliche Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) befolgen.
 
 Nachdem Sie das Verwaltungstool bereitgestellt und konfiguriert haben, sollten Sie einen Benutzer auffordern, die Verwaltungsbenutzeroberfläche aufzurufen, um sicherzustellen, dass alles funktioniert. Der Benutzer, der die Verwaltungsbenutzeroberfläche aufruft, muss über eine Rollenzuweisung verfügen, die es ihm erlaubt, den Windows Virtual Desktop-Mandanten anzuzeigen oder zu bearbeiten.
 
@@ -52,7 +52,7 @@ Gehen Sie wie folgt vor, um die Azure Ressource Manager-Vorlage bereitzustellen:
 
 1. Wechseln Sie zur GitHub-Seite [Azure RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
 2. Stellen Sie die Vorlage in Azure bereit.
-    - Wenn Sie die Bereitstellung unter einem Enterprise-Abonnement durchführen, scrollen Sie nach unten, und wählen Sie **Bereitstellung in Azure** aus. 
+    - Wenn Sie die Bereitstellung unter einem Enterprise-Abonnement durchführen, scrollen Sie nach unten, und wählen Sie **Bereitstellung in Azure** aus.
     - Gehen Sie für die Bereitstellung in Azure folgendermaßen vor, wenn Sie die Bereitstellung unter einem Cloud Solution Provider-Abonnement durchführen:
         1. Scrollen Sie nach unten, klicken Sie mit der rechten Maustaste auf **In Azure bereitstellen**, und wählen Sie dann **Link-Adresse kopieren**.
         2. Öffnen Sie einen Text-Editor, z. B. Editor, und fügen Sie den Link ein.
@@ -71,11 +71,13 @@ Nach der Ausführung der GitHub-Azure Resource Manager-Vorlage wird im Azure-Por
 
 Bevor Sie sich anmelden und das Verwaltungstool verwenden, müssen Sie die Einwilligung für die neue Azure AD-Anwendung erteilen, die mit dem Verwaltungstool verknüpft ist. Durch die Einwilligung kann das Verwaltungstool Windows Virtual Desktop-Verwaltungsaufrufe im Namen des Benutzers senden, der derzeit bei dem Tool angemeldet ist.
 
-![Screenshot: Bereitgestellte Berechtigungen nach erfolgter Einwilligung für das Benutzeroberflächen-Verwaltungstool](../media/management-ui-delegated-permissions.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot, in dem bereitgestellte Berechtigungen nach erfolgter Einwilligung für das Benutzeroberflächen-Verwaltungstool gezeigt werden](../media/management-ui-delegated-permissions.png)
 
 Um zu ermitteln, welchen Benutzer Sie für die Anmeldung bei dem Tool verwenden können, öffnen Sie die [Seite für die Benutzereinstellungen Ihrer Azure Active Directory-Instanz](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/), und notieren Sie den Wert für **Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten**.
 
-![Screenshot, in dem angezeigt wird, ob Benutzer die Einwilligung für Anwendungen nur für ihren Benutzer erteilen können.](../media/management-ui-user-consent-allowed.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot, in dem angezeigt wird, ob Benutzer die Einwilligung für Anwendungen nur für ihren Benutzer erteilen können](../media/management-ui-user-consent-allowed.png)
 
 - Wenn der Wert auf **Ja** festgelegt ist, können Sie sich mit einem Benutzerkonto bei Azure Active Directory anmelden und die Einwilligung nur für diesen Benutzer erteilen. Wenn Sie sich jedoch später mit einem anderen Benutzerkonto beim Verwaltungstool anmelden, müssen Sie die gleiche Einwilligung erneut erteilen.
 - Wenn der Wert auf **Nein** festgelegt ist, müssen Sie sich als globaler Administrator bei Azure Active Directory anmelden und eine Administratoreinwilligung für alle Benutzer im Verzeichnis erteilen. Für keine anderen Benutzer wird eine Zustimmungsaufforderung angezeigt.
@@ -86,8 +88,9 @@ Nachdem Sie entschieden haben, welchen Benutzer Sie für die Erteilung der Einwi
 1. Navigieren Sie zu Ihren Azure-Ressourcen, wählen Sie die Azure App Services-Ressource mit dem Namen aus, den Sie in der Vorlage angegeben haben (z. B. Apr3UX), und navigieren Sie zu der damit verknüpften URL, z. B. <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Melden Sie sich mit dem entsprechenden Azure Active Directory-Benutzerkonto an.
 3. Wenn Sie sich als globaler Administrator authentifiziert haben, können Sie nun das Kontrollkästchen**Zustimmung im Namen Ihrer Organisation** aktivieren. Wählen Sie **Akzeptieren** aus, um die Einwilligung zu erteilen.
-   
-   ![Screenshot: Vollständige Einwilligungsseite, die der Benutzer oder Administrator anzeigt](../media/management-ui-consent-page.png)
+
+   > [!div class="mx-imgBorder"]
+   > ![Screenshot, in dem die vollständige Einwilligungsseite gezeigt wird, die der Benutzer oder Administrator anzeigt](../media/management-ui-consent-page.png)
 
 Damit gelangen Sie nun zum Verwaltungstool.
 
@@ -101,7 +104,7 @@ Führen Sie die folgenden Schritte aus, um das Tool zu starten:
 2. Melden Sie sich mit Ihren Windows Virtual Desktop-Anmeldeinformationen an.
 3. Wählen Sie bei der Aufforderung zum Auswählen einer Mandantengruppe in der Dropdownliste den Eintrag **Default Tenant Group** (Standardmandantengruppe) aus.
 4. Wenn Sie eine **Standardmandantengruppe** auswählen, sollte links im Fenster ein Menü angezeigt werden. Suchen Sie in diesem Menü nach dem Namen Ihrer Mandantengruppe, und wählen Sie sie aus.
-  
+
   > [!NOTE]
   > Wenn Sie eine benutzerdefinierte Mandantengruppe festgelegt haben, geben Sie den Namen manuell ein, anstatt eine Auswahl in der Dropdownliste zu treffen.
 

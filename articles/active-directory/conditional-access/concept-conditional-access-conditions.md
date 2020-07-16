@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622950c394d59d8ba504901f5bb0eea6bc04707f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160714"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024445"
 ---
 # <a name="conditional-access-conditions"></a>Bedingter Zugriff: Bedingungen
 
@@ -32,6 +32,10 @@ Beispielsweise kann ein Administrator beim Zugriff auf eine sensible Anwendung n
 
 Für Kunden mit Zugriff auf [Identity Protection](../identity-protection/overview-identity-protection.md) kann das Anmelderisiko im Rahmen einer Richtlinie für bedingten Zugriff ausgewertet werden. Ein Anmelderisiko ist die Möglichkeit, dass eine bestimmte Authentifizierungsanforderung vom Identitätsbesitzer nicht autorisiert wurde. Weitere Informationen zu Anmelderisiken finden Sie in den Artikeln [Was bedeutet Risiko?](../identity-protection/concept-identity-protection-risks.md#sign-in-risk) und [Anleitung: Konfigurieren und Aktivieren von Risikorichtlinien](../identity-protection/howto-identity-protection-configure-risk-policies.md).
 
+## <a name="user-risk"></a>Benutzerrisiko 
+
+Für Kunden mit Zugriff auf [Identity Protection](../identity-protection/overview-identity-protection.md) kann das Benutzerrisiko im Rahmen einer Richtlinie für bedingten Zugriff ausgewertet werden. Ein Benutzerrisiko stellt die Wahrscheinlichkeit dar, dass eine bestimmte Identität oder ein bestimmtes Konto kompromittiert wird. Weitere Informationen zum Benutzerrisiko finden Sie in den Artikeln [Was bedeutet Risiko?](../identity-protection/concept-identity-protection-risks.md#user-risk) und [Anleitung: Konfigurieren und Aktivieren von Risikorichtlinien](../identity-protection/howto-identity-protection-configure-risk-policies.md).
+
 ## <a name="device-platforms"></a>Geräteplattformen
 
 Die Geräteplattform ist durch das Betriebssystem gekennzeichnet, das auf dem Gerät ausgeführt wird. Azure AD identifiziert die Plattform mithilfe der vom Gerät bereitgestellten Informationen, wie z. B. Benutzer-Agent-Zeichenfolgen. Da Benutzer-Agent-Zeichenfolgen geändert werden können, werden diese Informationen nicht überprüft. Die Geräteplattform sollte zusammen mit Microsoft Intune-Richtlinien zur Gerätekonformität oder als Teil einer Blockierungsanweisung verwendet werden. Standardmäßig werden Richtlinien auf alle Geräteplattformen angewendet.
@@ -43,9 +47,6 @@ Für den bedingten Azure AD-Zugriff werden folgende Geräteplattformen unterstü
 - Windows Phone
 - Windows
 - macOS
-
-> [!WARNING]
-> Microsoft ist ein Problem im Zusammenhang mit Richtlinien für bedingten Zugriff und Geräten auf Basis von macOS 10.15.4 bekannt. Weitere Informationen finden Sie im Blogbeitrag [Bekanntes Problem: Bedingter Zugriff blockiert unerwartet native Mail-Clients/andere Apps unter macOS 10.15.4](https://techcommunity.microsoft.com/t5/intune-customer-success/known-issue-conditional-access-unexpectedly-blocking-macos-10-15/ba-p/1322283).
 
 Wenn Sie die ältere Authentifizierung mit der Bedingung **„Andere Clients“** blockieren, können Sie auch die Geräteplattform als Bedingung festlegen.
 
@@ -115,21 +116,17 @@ Installieren Sie die [Erweiterung für Windows 10-Konten](https://chrome.google
 
 Um diese Erweiterung für Chrome-Browser automatisch bereitzustellen, erstellen Sie den folgenden Registrierungsschlüssel:
 
-|    |    |
-| --- | --- |
-| `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name | 1 |
-| type | REG_SZ (Zeichenfolge) |
-| Daten | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
+- Path HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- Name 1
+- Type REG_SZ (Zeichenfolge)
+- Data ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx
 
 Erstellen Sie den folgenden Registrierungsschlüssel, damit Chrome unter **Windows 8.1 und 7** unterstützt wird:
 
-|    |    |
-| --- | --- |
-| `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name | 1 |
-| type | REG_SZ (Zeichenfolge) |
-| Daten | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+- Path HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- Name 1
+- Type REG_SZ (Zeichenfolge)
+- Data {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
 
 Diese Browser unterstützen die Geräteauthentifizierung, sodass das Gerät identifiziert und anhand einer Richtlinie überprüft werden kann. Bei der Geräteüberprüfung tritt ein Fehler auf, wenn der Browser im privaten Modus ausgeführt wird.
 

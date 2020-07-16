@@ -4,7 +4,6 @@ description: Verlängern Sie den Support für SQL Server 2008 und SQL Server 20
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
-manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.topic: conceptual
@@ -14,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62ed33b8344d0d5a79cd956274c5f7ddd62a714a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 48288ed3765fa939fc56a4469f64070315c4c6aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84034251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668745"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Verlängerung des Supports für SQL Server 2008 und SQL Server 2008 R2 mit Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,7 +60,7 @@ SQL Server erfordert App-konsistente Azure Site Recovery-Momentaufnahmen, um d
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-[Database Migration Service](/azure/dms/dms-overview) ist eine Option für Kunden, die von einer lokalen Instanz zu einem virtuellen Azure-Computer migrieren, indem sie SQL Server auf die Version 2012 (oder auf eine höhere Version) upgraden.
+[Azure Database Migration Service](/azure/dms/dms-overview) ist eine Option für Kunden, die von einer lokalen Instanz zu einem virtuellen Azure-Computer migrieren, indem sie SQL Server auf Version 2012 (oder eine höhere Version) upgraden.
 
 ## <a name="disaster-recovery"></a>Notfallwiederherstellung
 
@@ -74,7 +73,7 @@ Für die Notfallwiederherstellung von SQL Server am Ende des Supportlebenszyklu
 ## <a name="security-patching"></a>Sicherheitspatches
 Erweiterte Sicherheitsupdates für virtuelle SQL Server-Computer werden über die Microsoft Update-Kanäle bereitgestellt, sobald die der virtuelle SQL Server-Computer beim SQL-VM-[Ressourcenanbieter](sql-vm-resource-provider-register.md) registriert wurde. Patches können manuell oder automatisch heruntergeladen werden.
 
-*Automatisiertes Patchen* ist standardmäßig aktiviert. Beim automatisierten Patchen kann Azure automatisch Patches für SQL Server und das Betriebssystem anwenden. Sie können einen Wochentag, eine Uhrzeit und eine Dauer für ein Wartungsfenster angeben, wenn die SQL Server-IaaS-Erweiterung installiert wurde. Azure führt das Patchen in diesem Wartungsfenster durch. Für die Zeitplanung des Wartungsfensters wird die Uhrzeit des VM-Gebietsschemas verwendet.  Weitere Informationen finden Sie unter [Automatisches Patchen für SQL Server auf virtuellen Azure-Computern](automated-patching.md).
+*Automatisiertes Patchen* ist standardmäßig aktiviert. Beim automatisierten Patchen kann Azure automatisch Patches für SQL Server und das Betriebssystem anwenden. Sie können einen Wochentag, eine Uhrzeit und eine Dauer für ein Wartungsfenster angeben, wenn die SQL Server-IaaS-Erweiterung installiert wurde. Azure führt das Patchen in diesem Wartungsfenster durch. Für die Zeitplanung des Wartungsfensters wird die Uhrzeit des VM-Gebietsschemas verwendet. Weitere Informationen finden Sie unter [Automatisches Patchen für SQL Server auf virtuellen Azure-Computern](automated-patching.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

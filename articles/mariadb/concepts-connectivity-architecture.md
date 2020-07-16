@@ -5,13 +5,13 @@ author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: b4333513d2ba210f6a472638732cc2781b8d5c0b
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 6/8/2020
+ms.openlocfilehash: d082417fc5b4df7540973d5f6e146030aaad5380
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300834"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107188"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Verbindungsarchitektur in Azure Database for MariaDB
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for MariaDB beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for MariaDB-Instanz weitergeleitet wird.
@@ -43,7 +43,7 @@ Die folgende Tabelle enthält die primären und sekundären IP-Adressen des Azur
 | China, Norden | 139.219.15.17    |
 | China, Norden 2 | 40.73.50.0     |
 | Asien, Osten | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
-| East US | 40.121.158.30, 191.238.6.43  |
+| East US | 40.121.158.30, 191.238.6.43, 40.71.8.203, 40.71.83.113   |
 | USA (Ost) 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | Frankreich, Mitte | 40.79.137.0, 40.79.129.1  |
 | Frankreich, Süden | 40.79.177.0     |
@@ -71,6 +71,17 @@ Die folgende Tabelle enthält die primären und sekundären IP-Adressen des Azur
 | USA (Westen) | 104.42.238.205, 23.99.34.75  |
 | USA, Westen 2 | 13.66.226.202  |
 ||||
+
+## <a name="connection-redirection"></a>Verbindungsumleitung
+
+Azure Database for MariaDB unterstützt eine zusätzliche Verbindungsrichtlinie, **Umleitung**, mit der die Netzwerklatenz zwischen Clientanwendungen und MariaDB-Servern reduziert werden kann. Bei diesem Feature gibt der Server die Back-End-Adresse des Knotens, auf dem der MariaDB-Server gehostet wird, an den Client zurück, nachdem die erste TCP-Sitzung mit dem Azure Database for MariaDB-Server eingerichtet wurde. Anschließend werden alle nachfolgenden Pakete direkt an den Server übertragen, wobei das Gateway umgangen wird. Wenn Pakete direkt an den Server übertragen werden, wird die Leistung von Latenz und Durchsatz verbessert.
+
+Dieses Feature wird von Azure Database for MariaDB-Servern mit den Engine-Versionen 10.2 und 10.3 unterstützt.
+
+Die Umleitungsunterstützung steht in der von Microsoft entwickelten Erweiterung [PHP mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) und in [PECL](https://pecl.php.net/package/mysqlnd_azure) zur Verfügung. Weitere Informationen zur Verwendung der Umleitung in Ihren Anwendungen finden Sie im Artikel [Konfigurieren der Umleitung](./howto-redirection.md).
+
+> [!IMPORTANT]
+> Die Umleitungsunterstützung in der PHP-Erweiterung [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) befindet sich derzeit in der Vorschauphase.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

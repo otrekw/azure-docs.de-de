@@ -4,7 +4,7 @@ description: Richten Sie einen Verbund mit Facebook ein, damit sich externe Benu
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0428671cf41bf148bc76bbd963bdd8fd90fce8e5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0b5e1db2c86f6118c3cd333974c9cfd64f747128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712269"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551434"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Hinzufügen von Facebook als Identitätsanbieter für externe Identitäten
 
@@ -32,7 +32,7 @@ Um ein Facebook-Konto als [Identitätsanbieter](identity-providers.md) verwenden
 
 > [!NOTE]  
 > Verwenden Sie die folgenden URLs in den unten angegebenen Schritten 9 und 16.
-> - Geben Sie `https://login.microsoftonline.com` als **Website-URL** ein.
+> - Geben Sie als **Site-URL** die Adresse Ihrer Anwendung ein, z. B. `https://contoso.com`.
 > - Geben Sie `https://login.microsoftonline.com/te/<tenant-id>/oauth2/authresp` unter **Valid OAuth redirect URIs** (Gültige OAuth-Umleitungs-URIs) ein. Ihre Verzeichnis-ID (`<tenant-ID>`) finden Sie auf dem Azure Active Directory-Übersichtsblatt.
 
 

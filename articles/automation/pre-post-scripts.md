@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7fa2dd335e457307dd6d7e4ecdc787015b742b32
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: f05e705f351d75fdf772d3197b94fcece40d43fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148275"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85100373"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Verwalten von Pre- und Post-Skripts
 
@@ -90,6 +90,9 @@ Ein vollständiges Beispiel mit allen Eigenschaften finden Sie unter: [Abrufen d
 
 > [!NOTE]
 > Das `SoftwareUpdateConfigurationRunContext`-Objekt kann doppelte Einträge für Computer enthalten. Dies kann dazu führen, dass Pre- und Post-Skripts mehrmals auf dem gleichen Computer ausgeführt werden. Verwenden Sie zur Umgehung dieses Verhaltens `Sort-Object -Unique`, um nur eindeutige VM-Namen auszuwählen.
+
+> [!NOTE]
+> Zurzeit werden als Skripts vor oder nach der Bereitstellung nur PowerShell-Runbooks unterstützt. Andere Runbooktypen wie Python, grafisch, PowerShell-Workflow und grafischer PowerShell-Workflow werden derzeit nicht als Skripts vor oder nach der Bereitstellung unterstützt.
 
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Verwenden eines Pre- oder Post-Skripts in einer Bereitstellung
 

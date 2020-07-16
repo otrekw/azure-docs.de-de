@@ -2,13 +2,13 @@
 title: Erstellen einer Parameterdatei
 description: Erstellen einer Parameterdatei zum Übergeben von Werten während der Bereitstellung einer Azure Resource Manager-Vorlage
 ms.topic: conceptual
-ms.date: 04/20/2020
-ms.openlocfilehash: a9845bbb9e14288a01fb7836db260a2baf484395
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 06/19/2020
+ms.openlocfilehash: 7c03e161c7b3a18020de6a06d356720f5e4c31fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873081"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117504"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Erstellen einer Resource Manager-Parameterdatei
 
@@ -182,12 +182,18 @@ Im folgenden Beispiel sind die Formate der unterschiedlichen Parametertypen darg
 }
 ```
 
+## <a name="deploy-template-with-parameter-file"></a>Bereitstellen der Vorlage mit einer Parameterdatei
+
+Siehe:
+
+- [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure CLI](./deploy-powershell.md#pass-parameter-values)
+- [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](./deploy-cli.md#parameters)
+
 ## <a name="file-name"></a>Dateiname
 
 Die allgemeine Konvention für das Benennen der Parameterdatei ist das Hinzufügen von **.parameters** zum Vorlagennamen. Wenn Ihre Vorlage beispielsweise den Namen **azuredeploy.json** hat, ergibt sich für Ihre Parameterdatei der Name **azuredeploy.parameters.json**. Anhand dieser Namenskonvention können Sie die Verbindung zwischen der Vorlage und den Parametern erkennen.
 
 Erstellen Sie mehr als eine Parameterdatei, wenn Sie die Bereitstellung in unterschiedlichen Umgebungen durchführen möchten. Fügen Sie beim Benennen der Parameterdatei Informationen zu ihrem Verwendungszweck hinzu. Verwenden Sie beispielsweise **azuredeploy.parameters-dev.json** und **azuredeploy.parameters-prod.json**.
-
 
 ## <a name="parameter-precedence"></a>Parameterrangfolge
 
@@ -198,6 +204,7 @@ Sie können eine externe Parameterdatei verwenden, indem Sie den URI der Datei b
 ## <a name="parameter-name-conflicts"></a>Parameternamenskonflikte
 
 Wenn Ihre Vorlage einen Parameter enthält, der den gleichen Namen besitzt wie einer der Parameter des PowerShell-Befehls, zeigt PowerShell den Parameter der Vorlage mit dem Postfix **FromTemplate** an. Beispiel: Ein Parameter namens **ResourceGroupName** in Ihrer Vorlage verursacht einen Konflikt mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Sie werden zur Eingabe eines Werts für **ResourceGroupNameFromTemplate** aufgefordert. Sie können diese Verwirrung vermeiden, indem Sie Parameternamen verwenden, die nicht für Bereitstellungsbefehle verwendet werden.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

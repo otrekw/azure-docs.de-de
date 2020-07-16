@@ -5,18 +5,18 @@ description: Erfahren Sie, wie Sie HTTPS aktivieren, um einen über Azure Machin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a58b0120feaba907c62bc646f4f85d9185227fed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb766a81cda822377eeda09cab75d19111523bef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80287338"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84432855"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -87,7 +87,7 @@ Beim Bereitstellen in AKS können Sie einen neuen AKS-Cluster erstellen oder ein
 
 Die **enable_ssl**-Methode kann ein Zertifikat verwenden, das von Microsoft bereitgestellt wird, oder ein von Ihnen erworbenes Zertifikat.
 
-  * Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie den *leaf_domain_label*-Parameter verwenden. Dieser Parameter generiert den DNS-Namen für den Dienst. Der Wert „contoso“ erstellt z. B. den Domänennamen „contoso\<sechs zufällige Zeichen>.\<azureregion>.cloudapp.azure.com“, wobei \<Azureregion> die Region ist, die den Dienst enthält. Optional können Sie den *overwrite_existing_domain*-Parameter zum Überschreiben des vorhandenen *leaf_domain_label* verwenden.
+  * Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie den *leaf_domain_label*-Parameter verwenden. Dieser Parameter generiert den DNS-Namen für den Dienst. Mit dem Wert „contoso“ wird z. B. der Domänenname „contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com“ erstellt, wobei \<azureregion> die Region ist, in der sich der Dienst befindet. Optional können Sie den *overwrite_existing_domain*-Parameter zum Überschreiben des vorhandenen *leaf_domain_label* verwenden.
 
     Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktiviertem TLS den *ssl_enabled*-Parameter auf „True“ fest, wenn zutreffend. Legen Sie den *ssl_certificate*-Parameter auf den Wert der *Zertifikatdatei* fest. Legen Sie den *ssl_key* auf den Wert der *Schlüsseldatei* fest.
 
@@ -172,6 +172,10 @@ TLS/SSL-Zertifikate laufen ab und müssen erneuert werden. In der Regel erfolgt 
 
 Wenn das Zertifikat ursprünglich von Microsoft generiert wurde (bei Verwendung von *leaf_domain_label* zum Erstellen des Diensts), verwenden Sie eines der folgenden Beispiele, um das Zertifikat zu aktualisieren:
 
+> [!IMPORTANT]
+> * Wenn das vorhandene Zertifikat noch gültig ist, verwenden Sie `renew=True` (SDK) oder `--ssl-renew` (CLI), um die Konfiguration für die Erneuerung zu erzwingen. Wenn das vorhandene Zertifikat beispielsweise noch 10 Tage lang gültig ist und Sie nicht `renew=True` verwenden, wird das Zertifikat möglicherweise nicht erneuert.
+> * Bei der ursprünglichen Bereitstellung des Diensts wurde `leaf_domain_label` zum Erstellen eines DNS-Namens nach dem Muster `<leaf-domain-label>######.<azure-region>.cloudapp.azure.net` verwendet. Verwenden Sie den ursprünglichen Wert für `leaf_domain_label`, um den vorhandenen Namen (einschließlich der ursprünglich generierten 6 Ziffern) beizubehalten. Geben Sie die generierten 6 Ziffern nicht an.
+
 **Verwenden des SDK**
 
 ```python
@@ -183,7 +187,7 @@ from azureml.core.compute.aks import SslConfiguration
 aks_target = AksCompute(ws, clustername)
 
 # Update the existing certificate by referencing the leaf domain label
-ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True)
+ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True, renew=True)
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
 ```
@@ -191,7 +195,7 @@ aks_target.update(update_config)
 **Verwenden der Befehlszeilenschnittstelle**
 
 ```azurecli
-az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True
+az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True --ssl-renew
 ```
 
 Weitere Informationen finden Sie in den folgenden Referenzen:

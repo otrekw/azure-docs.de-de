@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: a19a1b6e7416667079ab07fc5440ee8828c26bf4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76294836"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85081065"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Bewerten einer großen Anzahl physischer Server für die Migration zu Azure
 
@@ -47,7 +47,7 @@ Orientieren Sie sich bei der Planung an den in dieser Tabelle zusammengefassten 
 **Planung** | **Einschränkungen**
 --- | --- 
 **Azure Migrate-Projekte** | Bewerten Sie bis zu 35.000 Server in einem Projekt.
-**Azure Migrate-Appliance** | Eine einzelne Appliance kann bis zu 250 Server ermitteln.<br/> Eine einzelne Appliance kann nur einer einzelnen Azure Migrate-Ressource zugeordnet werden.<br/> Einer einzelnen Azure Migrate-Ressource können beliebig viele Appliances zugeordnet werden. <br/><br/> 
+**Azure Migrate-Appliance** | Eine einzelne Appliance kann bis zu 1000 Server ermitteln.<br/> Eine einzelne Appliance kann nur einer einzelnen Azure Migrate-Ressource zugeordnet werden.<br/> Einer einzelnen Azure Migrate-Ressource können beliebig viele Appliances zugeordnet werden. <br/><br/> 
 **Gruppe** | Sie können einer einzelnen Gruppe bis zu 35.000 Server hinzufügen.
 **Azure Migrate-Bewertung** | Sie können bis zu 35.000 Server in einem einzelnen Vorgang bewerten.
 

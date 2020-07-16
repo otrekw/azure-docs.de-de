@@ -3,12 +3,12 @@ title: Erstellen von Wiederherstellungsplänen in Azure Site Recovery
 description: Hier erfahren Sie, wie Sie Wiederherstellungspläne für die Notfallwiederherstellung mit dem Azure Site Recovery-Dienst erstellen und anpassen | Microsoft-Dokumentation
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 6540317324a9f0d9bccc046ecf95824d4128bd09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705835"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485338"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Erstellen und Anpassen von Wiederherstellungsplänen
 
@@ -29,9 +29,9 @@ In diesem Artikel wird beschrieben, wie Sie einen Wiederherstellungsplan für Fa
    Hyper-V (mit VMM verwaltet) zu Azure  | Auswählen des VMM-Servers | Auswählen von Azure
   
     Beachten Sie Folgendes:
-    -  Sie können nur einen Wiederherstellungsplan für das Failover vom Quellstandort zu Azure verwenden. Es ist nicht möglich, einen Wiederherstellungsplan für das Failback von Azure zu verwenden.
-    - Der Quellort muss Computer aufweisen, die für Failover und Wiederherstellung aktiviert sind. 
-    - Ein Wiederherstellungsplan kann Computer mit derselben Quelle und demselben Ziel aufweisen. 
+    - Sie können Wiederherstellungspläne sowohl für das Failover zu als auch das Failback von Azure verwenden.
+    - Der Quellort muss Computer aufweisen, die für Failover und Wiederherstellung aktiviert sind.
+    - Ein Wiederherstellungsplan kann Computer mit derselben Quelle und demselben Ziel aufweisen.
     - Sie können von VMM verwaltete virtuelle VMware- und Hyper-V-Computer nicht in denselben Plan aufnehmen.
     - VMware-VMs und physische Server können sich im selben Plan befinden.
 

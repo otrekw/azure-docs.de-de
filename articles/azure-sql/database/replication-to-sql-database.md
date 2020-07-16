@@ -1,6 +1,6 @@
 ---
-title: SQL Server-Replikation zu Azure SQL-Datenbank
-description: Sie können eine Azure SQL-Datenbank als Pushabonnent in einer unidirektionalen Transaktions- oder Momentaufnahmereplikationstopologie konfigurieren.
+title: Azure SQL Server-Replikation zu Azure SQL-Datenbank
+description: Sie können eine Datenbank in Azure SQL-Datenbank als Pushabonnenten in einer unidirektionalen Transaktionsreplikationstopologie oder Momentaufnahme-Replikationstopologie konfigurieren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: ec0aebc10d47b3e9945e63e818240da7bf2451e4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6f1eb48655c4e38e2cf0520409e5e2b38750baf5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324146"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikation zu Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,13 +29,13 @@ Sie können eine Azure SQL-Datenbank als Pushabonnent in einer unidirektionalen 
 ## <a name="supported-configurations"></a>Unterstützte Konfigurationen
   
 - Azure SQL-Datenbank kann nur Pushabonnent eines SQL Server-Verlegers oder -Verteilers sein.  
-- Der SQL Server, der als Verleger und/oder Verteiler fungiert, kann eine [lokal ausgeführte Instanz von SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads), eine [verwaltete Azure SQL-Instanz](../managed-instance/instance-create-quickstart.md) oder eine [auf einem virtuellen Azure-Computer in der Cloud ausgeführte Instanz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) sein. 
-- Die Verteilungsdatenbank und die Replikations-Agents können nicht in Azure SQL-Datenbank platziert werden.  
+- Die SQL Server-Instanz, die als Verleger und/oder Verteiler fungiert, kann eine [lokal ausgeführte SQL Server-Instanz](https://www.microsoft.com/sql-server/sql-server-downloads), eine [Instanz von Azure SQL Managed Instance](../managed-instance/instance-create-quickstart.md) oder eine [auf einem virtuellen Azure-Computer in der Cloud ausgeführte SQL Server-Instanz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) sein. 
+- Die Verteilungsdatenbank und die Replikations-Agents können sich nicht in einer Datenbank in Azure SQL-Datenbank befinden.  
 - [Momentaufnahmereplikation](/sql/relational-databases/replication/snapshot-replication) und [unidirektionale Transaktionsreplikation](/sql/relational-databases/replication/transactional/transactional-replication) werden unterstützt. Nicht unterstützt werden Peer-zu-Peer-Transaktions- und Mergereplikationen.
 
 ### <a name="versions"></a>Versionen  
 
-Für eine erfolgreiche Replikation zu Azure SQL-Datenbank müssen SQL Server-Verleger und -Verteiler mindestens eine der folgenden Versionen verwenden: 
+Für eine erfolgreiche Replikation in eine Datenbank in Azure SQL-Datenbank müssen die SQL Server-Verleger und -Verteiler (mindestens) eine der folgenden Versionen verwenden:
 
 Das Veröffentlichen in einer Azure SQL-Datenbank von einer SQL Server-Datenbank wird durch die folgenden Versionen von SQL Server unterstützt:
 
@@ -116,7 +116,6 @@ Die folgenden Optionen werden für Azure SQL-Datenbank-Abonnements nicht unterst
 - Konvertieren von hierarchyid in MAX-Datentypen  
 - Konvertieren von spatial in MAX-Datentypen  
 - Kopieren von erweiterten Eigenschaften  
-- Kopieren von Berechtigungen  
 
 ### <a name="limitations-to-be-determined"></a>Zu bestimmende Einschränkungen
 

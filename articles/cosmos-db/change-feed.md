@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: cb3f7f3d641f33e4b4deb1775600595cc382f68e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 223514e8e873d36f8551e18956aafc0a54243990
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119374"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Änderungsfeed in Azure Cosmos DB
 
@@ -67,7 +67,7 @@ Sie können den Änderungsfeed mit den folgenden Optionen verwenden:
 
 Der Änderungsfeed ist für jeden logischen Partitionsschlüssel innerhalb des Containers verfügbar. Er kann für eine parallele Verarbeitung über mehrere Consumer verteilt werden, wie in der folgenden Abbildung gezeigt.
 
-![Verteilte Verarbeitung des Azure Cosmos DB-Änderungsfeeds](./media/change-feed/changefeedvisual.png)
+:::image type="content" source="./media/change-feed/changefeedvisual.png" alt-text="Verteilte Verarbeitung des Azure Cosmos DB-Änderungsfeeds" border="false":::
 
 ## <a name="features-of-change-feed"></a>Features des Änderungsfeeds
 

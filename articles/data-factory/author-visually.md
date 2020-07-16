@@ -10,12 +10,12 @@ ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
 ms.date: 05/15/2020
-ms.openlocfilehash: 79b89c6a6a7598dd3fbdfc5030fd59fe1aab6625
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832778"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343111"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visuelles Erstellen in Azure Data Factory
 
@@ -42,6 +42,12 @@ Bei Ressourcen der obersten Ebene, z. B Pipelines, Datasets und Datenflüssen, 
 ![Erstellungsbereich](media/author-visually/properties-pane.png)
 
 Der Eigenschaftenbereich wird standardmäßig nur bei der Ressourcenerstellung geöffnet. Wenn Sie ihn bearbeiten möchten, klicken Sie oben rechts im Erstellungsbereich auf das Symbol für den Eigenschaftenbereich.
+
+## <a name="management-hub"></a>Verwaltungshub
+
+Der Verwaltungshub, den Sie in der Azure Data Factory-Benutzeroberfläche über die Registerkarte *Verwalten* aufrufen, ist ein Portal mit globalen Verwaltungsaktionen für Ihre Data Factory. Hier können Sie die Verbindungen mit Datenspeichern und externen Compute-Umgebungen, die Konfiguration der Quellcodeverwaltung und die Triggereinstellungen verwalten. Weitere Informationen zu den Funktionen finden Sie unter [Verwaltungshub](author-management-hub.md).
+
+![Verwalten von verknüpften Diensten](media/author-management-hub/management-hub-linked-services.png)
 
 ## <a name="expressions-and-functions"></a>Ausdrücke und Funktionen
 

@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 155816a9cd171b42e1def5cafa09cb9e310d5ee7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771671"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076945"
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-Protokoll für einmaliges Anmelden
 
@@ -46,7 +46,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter | type | BESCHREIBUNG |
 | --- | --- | --- |
 | id | Erforderlich | Azure AD verwendet dieses Attribut, um das `InResponseTo` -Attribut der zurückgegebenen Antwort aufzufüllen. Die ID darf nicht mit einer Zahl beginnen, weshalb dem GUID-String häufig eine Zeichenfolge wie etwa „id“ vorangestellt wird. `id6c1c178c166d486687be4aaf5e482730` ist beispielsweise eine gültige ID. |
 | Version | Erforderlich | Dieser Parameter sollte auf **2.0** festgelegt werden. |
@@ -86,6 +86,8 @@ Wenn `NameIDPolicy` angegeben ist, können Sie sein optionales `Format`-Attribut
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Azure Active Directory kann das Anspruchsformat selbst wählen. Azure Active Directory stellt die NameID als paarweisen Bezeichner aus.
 * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Active Directory stellt den NameID-Anspruch in Form eines zufällig generierten Werts aus, der für den aktuellen SSO-Vorgang eindeutig ist. Dieser Wert ist temporär und kann nicht zur Identifizierung des sich authentifizierenden Benutzers verwendet werden.
 
+Wenn `SPNameQualifier` angegeben wird, enthält Azure AD denselben `SPNameQualifier` in der Antwort.
+
 Das `AllowCreate` -Attribut wird von Azure AD ignoriert.
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
@@ -97,7 +99,7 @@ Das `Scoping`-Element enthält eine Liste mit Identitätsanbietern und ist bei `
 Wenn Sie sich für die Angabe entscheiden, schließen Sie nicht das `ProxyCount`-Attribut, `IDPListOption` oder das `RequesterID`-Element ein, da diese nicht unterstützt werden.
 
 ### <a name="signature"></a>Signatur
-Fügen Sie kein `Signature`-Element in `AuthnRequest`-Elemente ein. Azure AD überprüft keine signierten Authentifizierungsanforderungen. Die Überprüfung des Anforderers erfolgt, indem nur auf registrierte Assertionsverbraucherdienst-URLs reagiert wird.
+Ein `Signature`-Element in `AuthnRequest`-Elementen ist optional. Azure AD überprüft signierte Authentifizierungsanforderungen nicht, wenn eine Signatur vorhanden ist. Die Überprüfung des Anforderers erfolgt, indem nur auf registrierte Assertionsverbraucherdienst-URLs reagiert wird.
 
 ### <a name="subject"></a>Subject
 Fügen Sie kein `Subject`-Element ein. Das Angeben eines „Subject“-Elements für eine Anforderung wird von Azure AD nicht unterstützt, und bei Angabe wird ein Fehler zurückgegeben.
@@ -192,7 +194,7 @@ Zusätzlich zu `ID`, `IssueInstant` und `Version` legt Azure AD im `Assertion`-E
 
 #### <a name="issuer"></a>Issuer (Aussteller)
 
-Dieses Element ist auf `https://sts.windows.net/<TenantIDGUID>/` festgelegt, wobei \<TenantIDGUID> die Mandanten-ID des Azure AD-Mandanten ist.
+Ist auf `https://sts.windows.net/<TenantIDGUID>/` festgelegt, wobei \<TenantIDGUID> die Mandanten-ID des Azure AD-Mandanten ist.
 
 ```
 <Issuer>https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>

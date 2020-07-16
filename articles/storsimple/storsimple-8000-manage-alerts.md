@@ -3,15 +3,15 @@ title: Anzeigen und Verwalten von Warnungen für Geräte der StorSimple 8000-Se
 description: Beschreibt die StorSimple-Warnungsbedingungen und -Schweregrade, die Vorgehensweise zum Konfigurieren von Warnungsbenachrichtigungen sowie die Verwaltung von Warnungen mithilfe des StorSimple-Geräte-Manager-Diensts.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36f416183bd44180bee59142714e924e0ac8fefe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232190"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830042"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Anzeigen und Verwalten von StorSimple-Warnungen mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -120,6 +120,7 @@ In den folgenden Tabellen sind einige Microsoft Azure StorSimple-Warnungen aufge
 * [Leistungswarnungen](#performance-alerts)
 * [Sicherheitswarnungen](#security-alerts)
 * [Warnungen zum Supportpaket](#support-package-alerts)
+* [Gehäuseumgebungswarnungen](#enclosure-environment-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>Warnungen zur Cloudkonnektivität
 
@@ -134,11 +135,11 @@ Was geschieht beim Ausfall der Cloudverbindung des StorSimple-Geräts in der Pro
 
 Wenn die Cloudverbindung für das StorSimple-Gerät in der Produktion ausfällt, können je nach Status des Geräts die folgenden Umstände eintreten:
 
-* **Für die lokalen Daten auf dem Gerät**: Es tritt für einige Zeit keine Unterbrechung auf, und Lesevorgänge werden nach wie vor bedient. Bei ansteigender Anzahl ausstehender EA-Vorgänge und Überschreitung eines Grenzwerts kann es jedoch zu Ausfällen bei Lesevorgängen kommen.
+* **Für die lokalen Daten auf Ihrem Gerät**: Es tritt für einige Zeit keine Unterbrechung auf, und Lesevorgänge werden nach wie vor bedient. Bei ansteigender Anzahl ausstehender EA-Vorgänge und Überschreitung eines Grenzwerts kann es jedoch zu Ausfällen bei Lesevorgängen kommen.
 
     Abhängig von der Menge der Daten auf dem Gerät werden innerhalb der ersten Stunden nach der Unterbrechung der Cloudverbindung auch Schreibvorgänge weiterhin ausgeführt. Die Schreibvorgänge werden dann langsamer, und es treten erste Fehler auf, wenn die Cloudverbindung für mehrere Stunden getrennt ist. (Auf dem Gerät ist temporärer Speicherplatz für Daten vorhanden, die in die Cloud verschoben werden sollen. Dieser Bereich wird geleert, wenn die Daten gesendet werden. Bei einem Verbindungsfehler werden Daten in diesem Speicherbereich nicht in die Cloud übertragen, und ein E/A-Fehler tritt auf.)
 * **Für die in der Cloud gespeicherten Daten**: Für die meisten Cloudverbindungsfehler wird eine Fehlermeldung zurückgegeben. Sobald die Verbindung wiederhergestellt ist, werden die EA-Vorgänge wieder aufgenommen, ohne dass der Benutzer das Volume online schalten muss. In seltenen Fällen ist unter Umständen ein Benutzereingriff erforderlich, um das Volume im Azure-Portal wieder online zu schalten.
-* **Für aktuell ausgeführte Cloudmomentaufnahmen**: Der Vorgang wird innerhalb von 4–5 Stunden mehrfach erneut versucht, und wenn die Verbindung nicht wiederhergestellt wird, tritt ein Fehler bei den Cloudmomentaufnahmen auf.
+* **Für aktuell ausgeführte Cloudmomentaufnahmen**: Der Vorgang wird innerhalb von 4–5 Stunden mehrfach erneut versucht. Wenn die Verbindung nicht wiederhergestellt wird, tritt ein Fehler bei den Cloudmomentaufnahmen auf.
 
 ### <a name="cluster-alerts"></a>Clusterwarnungen
 
@@ -192,8 +193,8 @@ Wenn die Cloudverbindung für das StorSimple-Gerät in der Produktion ausfällt,
 | Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
 |:--- |:--- |:--- |
 | StorSimple-Dienst konnte nicht gestartet werden. |Datenpfadfehler |Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
-| Doppelte IP-Adresse für „Data0“ erkannt. | |Das System hat einen Konflikt für die IP-Adresse „10.0.0.1“ erkannt. Die Netzwerkressource „Data0“ auf dem Gerät *\<Gerät1>* ist offline. Stellen Sie sicher, dass diese IP-Adresse nicht von einer anderen Entität in diesem Netzwerk verwendet wird. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Hilfe bei der Lösung dieses Problems erhalten Sie von Ihrem Netzwerkadministrator. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
-| IPv4- (oder IPv6-) Adresse für „Data0“ ist offline. | |Die Netzwerkressource „Data0“ mit der IP-Adresse „10.0.0.1.“ und der Präfixlänge „22“ auf dem Gerät *\<Gerät1>* ist offline. Stellen Sie sicher, dass die Switchports, mit denen diese Schnittstelle verbunden ist, betriebsbereit sind. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
+| Doppelte IP-Adresse für „Data0“ erkannt. | |Das System hat einen Konflikt für die IP-Adresse „10.0.0.1“ erkannt. Die Netzwerkressource „Data0“ auf dem Gerät *\<device1>* ist offline. Stellen Sie sicher, dass diese IP-Adresse nicht von einer anderen Entität in diesem Netzwerk verwendet wird. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Hilfe bei der Lösung dieses Problems erhalten Sie von Ihrem Netzwerkadministrator. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
+| IPv4- (oder IPv6-) Adresse für „Data0“ ist offline. | |Die Netzwerkressource „Data0“ mit der IP-Adresse „10.0.0.1.“ und der Präfixlänge „22“ auf dem Gerät *\<device1>* ist offline. Stellen Sie sicher, dass die Switchports, mit denen diese Schnittstelle verbunden ist, betriebsbereit sind. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
 | Es konnte keine Verbindung mit dem Authentifizierungsdienst hergestellt werden. |Datenpfadfehler |Die URL für die Authentifizierung ist nicht erreichbar. Stellen Sie sicher, dass Ihre Firewall das für das StorSimple-Gerät angegebene URL-Muster umfasst. Weitere Informationen zu URL-Mustern im Azure-Portal finden Sie unter „https:\//aka.ms/ss-8000-network-reqs“. Wenn Sie Azure Government Cloud verwenden, finden Sie hier Informationen zu URL-Mustern: „https:\//aka.ms/ss8000-gov-network-reqs“.|
 
 ### <a name="performance-alerts"></a>Leistungswarnungen
@@ -219,7 +220,12 @@ Wenn die Cloudverbindung für das StorSimple-Gerät in der Produktion ausfällt,
 |:--- |:--- |:--- |
 | Erstellung des Unterstützungspakets fehlgeschlagen. |StorSimple konnte das Paket nicht generieren. |Wiederholen Sie diesen Vorgang. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. Nachdem das Problem behoben wurde, löschen Sie diese Warnung von der Warnungsseite. |
 
+### <a name="enclosure-environment-alerts"></a>Gehäuseumgebungswarnungen
+
+| Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
+|:--- |:--- |:--- |
+| Hardware component Ambient temperature sensor reports status as failed. (Der Umgebungstemperatursensor für Hardwarekomponenten meldet einen Fehlerzustand.)  | Gehäusetyp: Hauptgehäuse | Diese Warnung wird ausgelöst, wenn die Umgebungstemperatur für StorSimple oberhalb eines akzeptablen Bereichs liegt. Überprüfen Sie die Umgebungstemperatur oder den Luftstrom des Klimaanlagenschachts im Rechenzentrum. Wenn die Temperatur wieder auf einen normalen Wert sinkt, wird die Warnung nach einer Weile automatisch gelöscht. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.   |
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über [StorSimple-Fehler und die Behandlung von Problemen bei der Bereitstellung von Geräten](storsimple-8000-troubleshoot-deployment.md).
-

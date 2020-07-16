@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 483d2152f3af13c82830528ea73e837fe3788ca4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229114"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629383"
 ---
 # <a name="service-updates-in-site-recovery"></a>Dienstupdates in Azure Site Recovery
 
@@ -90,14 +90,13 @@ In diesem Szenario wird dringend empfohlen, automatische Updates zu [aktivieren]
 - Während des Prozesses zur Aktivierung der Replikation.
 - Durch Festlegen der Erweiterungsupdateeinstellungen im Tresor.
 
-Wenn Sie Updates manuell verwalten möchten, gehen Sie folgendermaßen vor:
+Wenn Sie Updates manuell verwalten möchten, können Sie eine der folgenden Optionen auswählen:
 
-1. Klicken Sie im Tresor unter **Replizierte Elemente** auf diese Benachrichtigung am oberen Rand des Bildschirms: 
+1. Wenn ein neuer Agent verfügbar ist, zeigt Site Recovery im Tresor oben auf der Seite eine Benachrichtigung an. Klicken Sie im Tresor unter **Replizierte Elemente** auf diese Benachrichtigung am oberen Rand des Bildschirms: 
     
-    **Ein neues Site Recovery-Replikations-Agent-Update ist verfügbar. Klicken Sie, um es zu installieren ->**
+    **Ein neues Site Recovery-Replikations-Agent-Update ist verfügbar. Klicken Sie, um es zu installieren ->** <br/><br/>Wählen Sie die VMs aus, auf die Sie das Update anwenden möchten, und klicken Sie dann auf **OK**.
 
-4. Wählen Sie die VMs aus, auf die Sie das Update anwenden möchten, und klicken Sie dann auf **OK**.
-
+2. Auf der Übersichtsseite für die VM-Notfallwiederherstellung finden Sie das Feld „Agentstatus“, das den Status „Critical Upgrade“ (Kritisches Update) anzeigt, wenn der Agent bald abläuft. Klicken Sie darauf, und führen Sie die folgende Anleitung aus, um die VM manuell zu aktualisieren.
 
 ## <a name="vmware-vmphysical-server-disaster-recovery-to-azure"></a>Notfallwiederherstellung für VMware-VM/physische Server auf Azure
 

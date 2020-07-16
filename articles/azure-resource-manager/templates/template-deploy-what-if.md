@@ -3,14 +3,14 @@ title: Was-wäre-wenn für Vorlagenbereitstellung (Preview)
 description: Legen Sie vor der Bereitstellung einer Azure Resource Manager-Vorlage fest, welche Änderungen an Ihren Ressourcen vorgenommen werden.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/16/2020
 ms.author: tomfitz
-ms.openlocfilehash: 31ef0f26043c416ff902fe792bae064c63f15b20
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 1e2c83167e7ccc1e3e98b23711fba567ef11ac23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888748"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-Vorlagenbereitstellung: Was-wäre-wenn-Vorgang (Vorschau)
 
@@ -19,19 +19,23 @@ Vor dem Bereitstellen einer ARM-Vorlage (Azure Resource Manager) können Sie ein
 > [!NOTE]
 > Der Was-wäre-wenn-Vorgang befindet sich zurzeit in der Preview-Phase. Als Previewrelease können die Ergebnisse mitunter anzeigen, dass sich eine Ressource ändert, wenn tatsächlich gar keine Änderung stattfindet. Wir arbeiten daran, diese Probleme zu verringern, aber hierzu benötigen wir Ihre Hilfe. Melden Sie diese Probleme bitte unter [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
 
-Sie können den Was-wäre-wenn-Vorgang mit Azure PowerShell-, Azure CLI- oder REST-API-Vorgängen verwenden.
+Sie können den Was-wäre-wenn-Vorgang mit Azure PowerShell-, Azure CLI- oder REST-API-Vorgängen verwenden. Der Was-wäre-wenn-Vorgang wird für Bereitstellungen auf Ressourcengruppen- und Abonnementebene unterstützt.
 
-## <a name="install-powershell-module"></a>Installieren des PowerShell-Moduls
+## <a name="install-azure-powershell-module"></a>Installieren des Azure PowerShell-Moduls
 
-Um Was-wäre-wenn in PowerShell zu verwenden, müssen Sie eine Vorschauversion des Az.Resources-Moduls aus dem PowerShell-Katalog installieren. Stellen Sie vor der Installation des Moduls jedoch sicher, dass Sie über PowerShell Core (6.x oder 7.x) verfügen. Wenn Sie über PowerShell 5.x oder früher verfügen, [aktualisieren Sie Ihre PowerShell-Version](/powershell/scripting/install/installing-powershell). Sie können das Vorschaumodul nicht in PowerShell 5.x oder früher installieren.
+Wenn Sie den Was-wäre-wenn-Vorgang in PowerShell verwenden möchten, benötigen Sie Version **4.2 oder höher des Az-Moduls**.
 
-### <a name="install-preview-version"></a>Installieren der Vorschauversion
+Stellen Sie vor der Installation des erforderlichen Moduls jedoch sicher, dass Sie über PowerShell Core (6.x oder 7.x) verfügen. Wenn Sie über PowerShell 5.x oder früher verfügen, [aktualisieren Sie Ihre PowerShell-Version](/powershell/scripting/install/installing-powershell). Das erforderliche Modul kann nicht in PowerShell 5.x oder früher installiert werden.
 
-Verwenden Sie zum Installieren des Vorschaumoduls:
+### <a name="install-latest-version"></a>Installieren der neuesten Version
+
+Führen Sie folgenden Befehl aus, um das Modul zu installieren:
 
 ```powershell
-Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+Install-Module -Name Az -Force
 ```
+
+Weitere Informationen zum Installieren von Modulen finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/install-az-ps).
 
 ### <a name="uninstall-alpha-version"></a>Deinstallieren einer Alphaversion
 
@@ -97,11 +101,14 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 Resource changes: 1 to modify.
 ```
 
+> [!NOTE]
+> Der Was-wäre-wenn-Vorgang kann die [Reference-Funktion](template-functions-resource.md#reference) nicht auflösen. Jedes Mal, wenn Sie eine Eigenschaft auf einen Vorlagenausdruck festlegen, der die Reference-Funktion enthält, meldet der Was-wäre-wenn-Vorgang, dass sich die Eigenschaft ändern wird. Dieses Verhalten tritt auf, weil der Was-wäre-wenn-Vorgang den aktuellen Eigenschaftswert (z. B. `true` oder `false` bei einem booleschen Wert) mit dem nicht aufgelösten Vorlagenausdruck vergleicht. Natürlich stimmen diese Werte nicht überein. Wenn Sie die Vorlage bereitstellen, ändert sich die Eigenschaft nur, wenn der Vorlagenausdruck zu einem anderen Wert aufgelöst wird.
+
 ## <a name="what-if-commands"></a>Was-wäre-wenn-Befehle
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Wenn Sie vor der Bereitstellung einer Vorlage eine Vorschau der Änderungen anzeigen möchten, fügen Sie den Parameterschalter `-Whatif` zum Bereitstellungsbefehl hinzu.
+Wenn Sie vor der Bereitstellung einer Vorlage eine Vorschau der Änderungen anzeigen möchten, führen Sie [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) oder [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment) aus. Fügen Sie dem Bereitstellungsbefehl den `-Whatif`-Parameter hinzu.
 
 * `New-AzResourceGroupDeployment -Whatif` für Bereitstellungen von Ressourcengruppen
 * `New-AzSubscriptionDeployment -Whatif` und `New-AzDeployment -Whatif` für Bereitstellungen auf Abonnementebene
@@ -111,19 +118,19 @@ Sie können auch den Parameterschalter `-Confirm` verwenden, um eine Vorschau de
 * `New-AzResourceGroupDeployment -Confirm` für Bereitstellungen von Ressourcengruppen
 * `New-AzSubscriptionDeployment -Confirm` und `New-AzDeployment -Confirm` für Bereitstellungen auf Abonnementebene
 
-Die vorangehenden Befehle geben eine Textzusammenfassung zurück, die Sie manuell überprüfen können. Um ein Objekt zu erhalten, das Sie programmgesteuert auf Änderungen überprüfen können, verwenden Sie Folgendes:
+Die vorangehenden Befehle geben eine Textzusammenfassung zurück, die Sie manuell überprüfen können. Führen Sie [Get-AzResourceGroupDeploymentWhatIfResult](/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult) oder [Get-AzSubscriptionDeploymentWhatIfResult](/powershell/module/az.resources/get-azdeploymentwhatifresult) aus, um ein Objekt abzurufen, das programmgesteuert auf Änderungen prüfen kann.
 
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult` für Bereitstellungen von Ressourcengruppen
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult` oder `$results = Get-AzDeploymentWhatIfResult` für Bereitstellungen auf Abonnementebene
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Wenn Sie vor der Bereitstellung einer Vorlage eine Vorschau der Änderungen anzeigen möchten, verwenden Sie `what-if` mit dem Bereitstellungsbefehl.
+Wenn Sie vor der Bereitstellung einer Vorlage eine Vorschau der Änderungen anzeigen möchten, führen Sie [az deployment group what-if](/cli/azure/deployment/group#az-deployment-group-what-if) oder [az deployment sub what-if](/cli/azure/deployment/sub#az-deployment-sub-what-if) aus.
 
 * `az deployment group what-if` für Bereitstellungen von Ressourcengruppen
 * `az deployment sub what-if` für Bereitstellungen auf Abonnementebene
 
-Sie können den Parameterschalter `--confirm-with-what-if` (oder seine Kurzform `-c`) verwenden, um eine Vorschau der Änderungen anzuzeigen und dann zum Fortsetzen der Bereitstellung aufgefordert zu werden.
+Sie können den Parameterschalter `--confirm-with-what-if` (oder seine Kurzform `-c`) verwenden, um eine Vorschau der Änderungen anzuzeigen und dann zum Fortsetzen der Bereitstellung aufgefordert zu werden. Fügen Sie [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) oder [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create) diesen Parameter hinzu.
 
 * `az deployment group create --confirm-with-what-if` oder `-c` für Bereitstellungen von Ressourcengruppen
 * `az deployment sub create --confirm-with-what-if` oder `-c` für Bereitstellungen auf Abonnementebene
@@ -132,6 +139,8 @@ Die vorangehenden Befehle geben eine Textzusammenfassung zurück, die Sie manuel
 
 * `az deployment group what-if --no-pretty-print` für Bereitstellungen von Ressourcengruppen
 * `az deployment sub what-if --no-pretty-print` für Bereitstellungen auf Abonnementebene
+
+Wenn die Ergebnisse ohne Farben zurückgegeben werden sollen, öffnen Sie die [Konfigurationsdatei in der Azure CLI](/cli/azure/azure-cli-configuration). Legen Sie **no_color** auf **yes** fest.
 
 ### <a name="azure-rest-api"></a>Azure-REST-API
 

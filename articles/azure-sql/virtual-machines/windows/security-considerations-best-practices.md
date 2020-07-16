@@ -1,10 +1,9 @@
 ---
-title: Sicherheitsüberlegungen für SQL Server in Azure | Microsoft Docs
-description: Dieses Thema enthält eine allgemeine Anleitung zum Schützen von SQL Server bei der Ausführung auf einem virtuellen Azure-Computer.
+title: Überlegungen zur Sicherheit | Microsoft-Dokumentation
+description: Dieses Thema enthält eine allgemeine Anleitung zum Schützen von SQL Server bei Ausführung auf einem virtuellen Azure-Computer.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 editor: ''
 tags: azure-service-management
 ms.assetid: d710c296-e490-43e7-8ca9-8932586b71da
@@ -15,14 +14,14 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f04620430571a1f86d601eac2b1b662c77499a76
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4421b30d672cc026a033febb34b8b31afa0ef3c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84034281"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668801"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Sicherheitsüberlegungen für SQL Server in Azure Virtual Machines
+# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Überlegungen zur Sicherheit von SQL Server auf Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Dieses Thema enthält allgemeine Sicherheitsrichtlinien, die dazu beitragen sollen, den Zugriff auf SQL Server-Instanzen auf einem virtuellen Azure-Computer (VM) zu schützen.
@@ -31,7 +30,7 @@ Azure erfüllt mehrere Branchenvorgaben und Standards, mit denen Sie eine konfor
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="control-access-to-the-sql-vm"></a>Steuern des Zugriffs auf die SQL-VM
+## <a name="control-access-to-the-sql-virtual-machine"></a>Steuern des Zugriffs auf die SQL-VM
 
 Wenn Sie Ihren virtuellen SQL Server-Computer erstellen, sollten Sie sorgfältig kontrollieren können, welche Personen Zugriff auf den Computer und SQL Server haben. Im Allgemeinen sind folgende Maßnahmen ratsam:
 
@@ -46,7 +45,7 @@ Wenn Sie einen virtuellen SQL Server-Computer mit einem Katalogimage erstellen, 
 
 ![SQL Server Connectivity](./media/security-considerations-best-practices/sql-vm-connectivity-option.png)
 
-Wählen Sie für Ihr Szenario die Option mit den höchsten Einschränkungen, um die bestmögliche Sicherheit zu erzielen. Wenn Sie beispielsweise eine Anwendung ausführen, bei der auf SQL Server auf derselben VM zugegriffen wird, ist **Lokal** die Option mit der höchsten Sicherheit. Bei Ausführung einer Azure-Anwendung, für die Zugriff auf SQL Server erforderlich ist, wird mit **Privat** die Kommunikation mit SQL Server nur innerhalb des angegebenen [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md) geschützt. Falls Sie Zugriff vom Typ **Öffentlich (Internet)** auf die SQL Server-VM benötigen, sollten Sie auf jeden Fall auch die weiteren bewährten Methoden in diesem Thema befolgen, um Ihre Angriffsfläche zu reduzieren.
+Wählen Sie für Ihr Szenario die Option mit den höchsten Einschränkungen, um die bestmögliche Sicherheit zu erzielen. Wenn Sie beispielsweise eine Anwendung ausführen, bei der auf SQL Server auf derselben VM zugegriffen wird, ist **Lokal** die Option mit der höchsten Sicherheit. Bei Ausführung einer Azure-Anwendung, für die Zugriff auf SQL Server erforderlich ist, wird mit **Privat** die Kommunikation mit SQL Server nur innerhalb des angegebenen [virtuellen Azure-Netzwerks](../../../virtual-network/virtual-networks-overview.md) geschützt. Falls Sie Zugriff vom Typ **Öffentlich (Internet)** auf die SQL Server-VM benötigen, sollten Sie auf jeden Fall auch die weiteren bewährten Methoden in diesem Thema befolgen, um Ihre Angriffsfläche zu reduzieren.
 
 Für die ausgewählten Optionen im Portal werden Sicherheitsregeln für eingehenden Datenverkehr für die [Netzwerksicherheitsgruppe](../../../active-directory/identity-protection/security-overview.md) (NSG) der VM verwendet, um den Netzwerkdatenverkehr für Ihren virtuellen Computer zuzulassen oder zu verweigern. Sie können neue NSG-Regeln für eingehenden Datenverkehr ändern oder erstellen, um den Datenverkehr zum SQL Server-Port (Standard: 1433) zuzulassen. Außerdem können Sie bestimmte IP-Adressen angeben, die über diesen Port kommunizieren können.
 
@@ -54,7 +53,7 @@ Für die ausgewählten Optionen im Portal werden Sicherheitsregeln für eingehen
 
 Zusätzlich zu NSG-Regeln zum Einschränken des Netzwerkdatenverkehrs können Sie auch die Windows-Firewall auf dem virtuellen Computer verwenden.
 
-Wenn Sie Endpunkte mit dem klassischen Bereitstellungsmodell verwenden, sollten Sie alle Endpunkte auf dem virtuellen Computer entfernen, sofern Sie sie nicht nutzen. Weitere Informationen zur Verwendung von ACLs für Endpunkte finden Sie unter [Verwalten der ACL für einen Endpunkt](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint) Dies ist nicht für VMs erforderlich, für die der Resource Manager verwendet wird.
+Wenn Sie Endpunkte mit dem klassischen Bereitstellungsmodell verwenden, sollten Sie alle Endpunkte auf dem virtuellen Computer entfernen, sofern Sie sie nicht nutzen. Weitere Informationen zur Verwendung von ACLs für Endpunkte finden Sie unter [Verwalten der ACL für einen Endpunkt](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint) Dies ist nicht für VMs erforderlich, für die Azure Resource Manager verwendet wird.
 
 Erwägen Sie schließlich die Aktivierung von verschlüsselten Verbindungen für die Instanz der SQL Server-Datenbank-Engine auf Ihrem virtuellen Azure-Computer. Konfigurieren Sie die SQL Server-Instanz mit einem signierten Zertifikat. Weitere Informationen finden Sie unter [Aktivieren von verschlüsselten Verbindungen mit der Datenbank-Engine](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) und [Syntax für Verbindungszeichenfolgen](https://msdn.microsoft.com/library/ms254500.aspx).
 
@@ -109,7 +108,7 @@ Weitere Informationen zur Sicherheit von VMs finden Sie in der [Sicherheitsüber
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Best Practices in Bezug auf die Leistung finden Sie unter [Best Practices für die Leistung für SQL Server in Azure Virtual Machines](performance-guidelines-best-practices.md).
+Weitere Informationen zu bewährten Methoden in Bezug auf die Leistung finden Sie unter [Bewährte Methoden für die Leistung von SQL Server auf virtuellen Azure-Computern](performance-guidelines-best-practices.md).
 
 Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie in der [Übersicht zu SQL Server auf virtuellen Azure-Computern](sql-server-on-azure-vm-iaas-what-is-overview.md). Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.md) weitere Informationen.
 

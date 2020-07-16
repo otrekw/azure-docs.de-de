@@ -3,18 +3,18 @@ title: Konzepte – Netzwerkinterkonnektivität
 description: Erfahren Sie mehr über wichtige Aspekte und Anwendungsfälle für Netzwerke und Interkonnektivität in Azure VMware Solution (AVS).
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 82e5497c30bf02313e5ff8ad24167af569a153c2
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 35d886fe0f6a68e522d7f2cf20b450b5d9afc199
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629208"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware Solution (AVS) Vorschau – Netzwerk- und Interkonnektivitätskonzepte
 
 Die Netzwerkinterkonnektivität zwischen Ihren privaten Clouds in Azure VMware Solution (AVS) und lokalen Umgebungen oder virtuellen Netzwerken in Azure ermöglichen es Ihnen, auf Ihre private Cloud zuzugreifen und diese zu nutzen. In diesem Artikel werden einige wichtige Netzwerk- und Verbindungskonzepte erläutert, die die Basis für die Interkonnektivität bilden.
 
-Eine Möglichkeit, Interkonnektivität zu veranschaulichen, besteht darin, die beiden Implementierungsarten von privaten AVS-Clouds zu betrachten. Implementierungen mit allgemeiner reiner Azure-Interkonnektivität und Implementierungen mit vollständiger Interkonnektivität zwischen lokalen Standorten und privaten Clouds.
+AVS bietet zwei Implementierungstypen für private Clouds: Implementierungen mit grundlegender, ausschließlich auf Azure basierender Interkonnektivität und Implementierungen mit vollständiger Interkonnektivität zwischen lokalen Netzwerken und einer privaten Cloud.
 
 Die Anwendungsfälle für private AVS-Clouds umfassen:
 - Neue VMware-VM-Workloads in der Cloud
@@ -58,13 +58,13 @@ Zum Verbinden von lokalen Umgebungen mit Ihrer privaten Cloud in Azure ist eine 
 Sobald die ExpressRoute-Leitungen mit Global Reach verknüpft wurden, wird der Netzwerkdatenverkehr zwischen lokalen Umgebungen und der privaten Cloud über die beiden Leitungen geroutet. Im vorherigen Diagramm ist die Interkonnektivität zwischen lokalen Standorten und privater Cloud dargestellt. Die im Diagramm gezeigte Interkonnektivität unterstützt die folgenden Anwendungsfälle:
 
 - Hot/Cold Cross-vCenter vMotion
-- Verwaltungszugriff vom lokalen Standort auf die private AVS-Cloud
+- Verwaltungszugriff von der lokalen Umgebung auf die private AVS-Cloud
 
 Um vollständige Konnektivität zu gewährleisten, können ein Autorisierungsschlüssel und eine private Peering-ID für Global Reach im Azure-Portal angefordert werden. Sie verwenden den Schlüssel und die ID, um Global Reach zwischen einer ExpressRoute-Leitung in Ihrem Abonnement und der ExpressRoute-Leitung für Ihre neue private Cloud zu aktivieren. Im [Tutorial zum Erstellen einer privaten Cloud](tutorial-create-private-cloud.md) sind die Verfahren zum Anfordern und Verwenden des Schlüssels und der ID beschreiben.
 
-Aufgrund der Routinganforderungen der Lösung müssen die Adressräume für das Netzwerk der privaten Cloud geplant werden, um Überlappungen mit anderen virtuellen Netzwerken und lokalen Netzwerken zu vermeiden. Private AVS-Clouds benötigen mindestens einen `/22`-CIDR-Netzwerk-Adressblock für Subnetze, wie unten gezeigt. Dieses Netzwerk ergänzt ihre lokalen Netzwerke. Um eine Verbindung mit lokalen Umgebungen und virtuellen Netzwerken herzustellen, darf der Netzwerk-Adressblock keine Überlappung aufweisen.
+Aufgrund der Routinganforderungen der Lösung müssen die Adressräume für das Netzwerk der privaten Cloud geplant werden, um Überlappungen mit anderen virtuellen Netzwerken und lokalen Netzwerken zu vermeiden. Private AVS-Clouds benötigen mindestens einen `/22`-CIDR-Netzwerk-Adressblock für Subnetze, wie unten gezeigt. Dieses Netzwerk ergänzt Ihre lokalen Netzwerke. Für die Verbindungsherstellung mit lokalen Umgebungen und virtuellen Netzwerken darf der Netzwerkadressblock keine Überlappung aufweisen.
 
-Beispiel für einen `/22`-CIDR-Netzwerk-Adressblock: `10.10.0.0/22`
+Beispiel für einen CIDR-Netzwerkadressblock vom Typ `/22`: `10.10.0.0/22`
 
 Subnetze:
 

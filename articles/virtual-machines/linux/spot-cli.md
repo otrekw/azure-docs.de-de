@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 03/25/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 3f341271c208cc56a704c836433c33af0129a4ac
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: d6560f11d26200bdd9f39c4cbae643022872d362
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758361"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506071"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>Bereitstellen von Spot-VMs mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -23,7 +23,7 @@ Die Preise für Spot-VMs variieren je nach Region und SKU. Weitere Informationen
 
 Sie haben die Möglichkeit, einen maximalen Preis festzulegen, den Sie pro Stunde für die VM bezahlen möchten. Der maximale Preis für eine Spot-VM kann in US-Dollar (USD) mit bis zu fünf Dezimalstellen festgelegt werden. Der Wert `0.98765` würde beispielsweise einem maximalen Preis von 0,98765 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die VM nicht basierend auf dem Preis entfernt. Der Preis für die VM entspricht dem aktuellen Preis für Spot-VMs oder dem Preis für eine Standard-VM, je nachdem, welcher Preis niedriger ist, solange Kapazität und Kontingente verfügbar sind. Weitere Informationen zum Festlegen des maximalen Preises finden Sie unter [Spot-VMs – Preise](spot-vms.md#pricing).
 
-Der Vorgang zum Erstellen einer VM mit Spot unter Verwendung der Azure-Befehlszeilenschnittstelle ist identisch mit dem im [Schnellstartartikel](/azure/virtual-machines/linux/quick-create-cli) beschriebenen Vorgang. Fügen Sie einfach den Parameter „--priority Spot“ hinzu, und geben Sie einen maximalen Preis oder `-1` an.
+Der Vorgang zum Erstellen einer VM mit Spot unter Verwendung der Azure-Befehlszeilenschnittstelle ist identisch mit dem im [Schnellstartartikel](/azure/virtual-machines/linux/quick-create-cli) beschriebenen Vorgang. Fügen Sie einfach den Parameter „--priority Spot“ hinzu, legen Sie `--eviction-policy` entweder auf die Standardeinstellung „Deallocate“ oder auf `Delete` fest, und geben Sie einen maximalen Preis oder `-1` an. 
 
 
 ## <a name="install-azure-cli"></a>Installieren der Azure-Befehlszeilenschnittstelle
@@ -38,7 +38,7 @@ az login
 
 ## <a name="create-a-spot-vm"></a>Erstellen einer Spot-VM
 
-Dieses Beispiel zeigt, wie Sie eine Linux-Spot-VM bereitstellen, die nicht basierend auf dem Preis entfernt wird. 
+Dieses Beispiel zeigt, wie Sie eine Linux-Spot-VM bereitstellen, die nicht basierend auf dem Preis entfernt wird. Die Entfernungsrichtlinie wird so festgelegt, dass die Zuordnung der VM aufgehoben wird. Dadurch kann sie zu einem späteren Zeitpunkt neu gestartet werden. Wenn Sie die VM und den zugrunde liegenden Datenträger beim Entfernen löschen möchten, legen Sie `--eviction-policy` auf `Delete` fest.
 
 ```azurecli
 az group create -n mySpotGroup -l eastus
@@ -49,8 +49,11 @@ az vm create \
     --admin-username azureuser \
     --generate-ssh-keys \
     --priority Spot \
-    --max-price -1
+    --max-price -1 \
+    --eviction-policy Deallocate
 ```
+
+
 
 Nachdem die VM erstellt wurde, können Sie den maximalen Abrechnungspreis für alle VMs in der Ressourcengruppe abfragen.
 
@@ -63,6 +66,6 @@ az vm list \
 
 **Nächste Schritte**
 
-Sie können eine Spot-VM auch mit [Azure PowerShell](../windows/spot-powershell.md) oder einer [Vorlage](spot-template.md) erstellen.
+Sie können eine Spot-VM auch mit [Azure PowerShell](../windows/spot-powershell.md), dem [Portal](../windows/spot-portal.md) oder einer [Vorlage](spot-template.md) erstellen.
 
 Informationen zu eventuell auftretenden Fehlern finden Sie unter [Fehlercodes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

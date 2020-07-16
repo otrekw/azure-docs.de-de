@@ -1,10 +1,9 @@
 ---
 title: Speicherkonfiguration für SQL Server-VMs | Microsoft Docs
-description: In diesem Thema wird beschrieben, wie Azure den Speicher für SQL Server-VMs während der Bereitstellung konfiguriert (Resource Manager-Bereitstellungsmodell). Außerdem wird erläutert, wie Sie den Speicher für Ihre vorhandenen SQL Server-VMs konfigurieren können.
+description: In diesem Thema wird beschrieben, wie Azure den Speicher für SQL Server-VMs während der Bereitstellung konfiguriert (Azure Resource Manager-Bereitstellungsmodell). Außerdem wird erläutert, wie Sie den Speicher für Ihre vorhandenen SQL Server-VMs konfigurieren können.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: jroth
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
@@ -13,17 +12,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: f5f71f342152a1f7d524053f1a2f82937784dbd1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 21609e38625d0911476c85a9d6e518f5ff7e9e61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84030001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667368"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Speicherkonfiguration für SQL Server-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Wenn Sie in Azure einen virtuellen SQL Server-Computer konfigurieren, unterstützt Sie das Portal beim Automatisieren Ihrer Speicherkonfiguration. Hierzu gehören auch das Anfügen von Speicher an die VM, das Verfügbarmachen dieses Speichers für SQL Server und die anschließende Konfiguration, um eine Optimierung in Bezug auf Ihre besonderen Leistungsanforderungen zu erzielen.
+Wenn Sie in Azure ein Image einer SQL Server-VM konfigurieren, unterstützt Sie das Portal beim Automatisieren Ihrer Speicherkonfiguration. Hierzu gehören auch das Anfügen von Speicher an die VM, das Verfügbarmachen dieses Speichers für SQL Server und die anschließende Konfiguration, um eine Optimierung in Bezug auf Ihre besonderen Leistungsanforderungen zu erzielen.
 
 In diesem Thema wird erläutert, wie der Speicher unter Azure für Ihre SQL Server-VMs konfiguriert wird – sowohl während der Bereitstellung als auch für vorhandene VMs. Diese Konfiguration basiert auf den [bewährten Methoden für die Leistung](performance-guidelines-best-practices.md) für Azure-VMs, auf denen SQL Server ausgeführt wird.
 
@@ -57,7 +56,7 @@ Zusätzlich haben Sie die Möglichkeit, die Zwischenspeicherung für die Datentr
 
 Die Datenträgerzwischenspeicherung für SSD Premium kann die Werte *ReadOnly*, *ReadWrite* oder *None* aufweisen. 
 
-- Zwischenspeicherung vom Typ *ReadOnly* ist sehr vorteilhaft für SQL Server-Datendateien, die in Storage Premium gespeichert sind. Zwischenspeicherung vom Typ *ReadOnly* bringt niedrige Leselatenz, hohe Lese-IOPS und Durchsatz mit sich, da Lesezugriffe aus dem Cache erfolgen, der sich im VM-Arbeitsspeicher und auf der lokalen SSD befindet. Diese Lesezugriffe sind viel schneller als Lesezugriffe vom Datenträger, der aus dem Azure-Blobspeicher stammt. Storage Premium rechnet die aus dem Cache erfüllten Leseanforderungen nicht zur IOPS- und Durchsatzrate des Datenträgers. Aus diesem Grund kann Ihre Anwendung eine höhere Gesamtrate bei IOPS und Durchsatz erzielen. 
+- Zwischenspeicherung vom Typ *ReadOnly* ist sehr vorteilhaft für SQL Server-Datendateien, die in Storage Premium gespeichert sind. Zwischenspeicherung vom Typ *ReadOnly* bringt niedrige Leselatenz, hohe Lese-IOPS und Durchsatz mit sich, da Lesezugriffe aus dem Cache erfolgen, der sich im VM-Arbeitsspeicher und auf der lokalen SSD befindet. Diese Lesezugriffe sind viel schneller als Lesezugriffe vom Datenträger, die aus Azure Blob Storage erfolgen. Storage Premium rechnet die aus dem Cache erfüllten Leseanforderungen nicht zur IOPS- und Durchsatzrate des Datenträgers. Aus diesem Grund kann Ihre Anwendung eine höhere Gesamtrate bei IOPS und Durchsatz erzielen. 
 - Die Cachekonfiguration *None* sollte für die Datenträger verwendet werden, auf denen sich die SQL Server-Protokolldatei befindet, da die Protokolldatei sequenziell geschrieben wird und nicht von *ReadOnly*-Zwischenspeicherung profitiert. 
 - Zwischenspeicherung vom Typ *ReadWrite* sollte nicht zum Hosten von SQL Server-Dateien verwendet werden, da SQL Server keine Datenkonsistenz mit dem *ReadWrite*-Cache unterstützt. Schreibvorgänge vergeuden die Kapazität des *ReadOnly*-Blobcaches, und die Latenzzeiten nehmen geringfügig zu, wenn die Schreibvorgänge durch *ReadOnly*-Blobcacheebenen erfolgen. 
 
@@ -76,7 +75,7 @@ Je nach Ihrer Auswahl führt Azure nach dem Erstellen der VM die folgenden Aufga
 
 Weitere Details dazu, wie unter Azure Speichereinstellungen konfiguriert werden, finden Sie im [Abschnitt zur Speicherkonfiguration](#storage-configuration). Eine vollständige exemplarische Vorgehensweise zur Erstellung einer SQL Server-VM im Azure-Portal finden Sie unter [Tutorial zur Bereitstellung](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md).
 
-### <a name="resource-manage-templates"></a>Resource Manager-Vorlagen
+### <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
 
 Wenn Sie die folgenden Resource Manager-Vorlagen verwenden, werden standardmäßig zwei Premium-Datenträger ohne Speicherpoolkonfiguration angefügt. Sie können diese Vorlagen aber anpassen, um die Anzahl von Premium-Datenträgern zu ändern, die an den virtuellen Computer angefügt sind.
 
@@ -113,7 +112,7 @@ Sie können die Datenträgereinstellungen für die Laufwerke ändern, die währe
 
 ## <a name="storage-configuration"></a>Speicherkonfiguration
 
-Dieser Abschnitt dient als Referenz für die Änderungen der Speicherkonfiguration, die von Azure automatisch vorgenommen werden, während die SQL-VM-Bereitstellung oder -konfiguration im Azure-Portal durchgeführt wird.
+Dieser Abschnitt dient als Referenz für die Änderungen der Speicherkonfiguration, die von Azure automatisch vorgenommen werden, während die SQL Server-VM-Bereitstellung oder -Konfiguration im Azure-Portal durchgeführt wird.
 
 * Azure konfiguriert einen Speicherpool aus dem ausgewählten Speicher Ihrer VM. Im nächsten Abschnitt dieses Themas sind Details zur Speicherpoolkonfiguration angegeben.
 * Bei der automatischen Speicherkonfiguration werden immer P30-Datenträger vom Typ [SSD Premium](../../../virtual-machines/windows/disks-types.md) verwendet. Daher besteht eine 1:1-Zuordnung zwischen der ausgewählten TB-Menge und der Anzahl von Datenträgern, die an die VM angefügt sind.
@@ -148,7 +147,7 @@ In der folgenden Tabelle sind die drei verfügbaren Optionen für den Workloadty
 | **Data Warehousing** |Optimiert den Speicher für Analyse- und Berichterstellungsworkloads |Ablaufverfolgungsflag 610<br/>Ablaufverfolgungsflag 1117 |
 
 > [!NOTE]
-> Beim Bereitstellen eines virtuellen SQL-Computers können Sie den Workloadtyp nur angeben, indem Sie ihn im Schritt für die Speicherkonfiguration auswählen.
+> Beim Bereitstellen eines virtuellen SQL Server-Computers können Sie den Workloadtyp nur angeben, indem Sie ihn im Schritt für die Speicherkonfiguration auswählen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

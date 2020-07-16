@@ -3,12 +3,12 @@ title: 'Konzepte: Speicher'
 description: Erfahren Sie mehr über die wichtigsten Speicherfunktionen in privaten Clouds in der Vorschau von Azure VMware Solution (AVS).
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7e58a829a40d590b7936a58ccdc866211a4f5cb4
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739782"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84604115"
 ---
 # <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Speicherkonzepte von Azure VMware Solution (AVS) Vorschau
 
@@ -32,7 +32,7 @@ vSAN-Datenspeicher verwenden standardmäßig Verschlüsselung ruhender Daten. Di
 
 ## <a name="scaling"></a>Skalierung
 
-Die native Clusterspeicherkapazität wird durch Hinzufügen von Hosts zu einem Cluster skaliert. Für Cluster, die HE-Hosts verwenden, wird die clusterweite Rohkapazität um 15,4 TB mit jedem zusätzlichen Host erhöht. Cluster, die GP-Hosts erstellt werden, wird die Rohkapazität um 7,7 TB mit jedem zusätzlichen Host erhöht. Bei beiden Clustertypen dauert es ungefähr 10 Minuten, bis Hosts einem Cluster hinzugefügt werden. Anweisungen zum Skalieren von Clustern finden Sie im [Tutorial zum Skalieren von privaten Clouds] [tutorial-scale-private-cloud].
+Die native Clusterspeicherkapazität wird durch Hinzufügen von Hosts zu einem Cluster skaliert. Für Cluster, die HE-Hosts verwenden, wird die clusterweite Rohkapazität um 15,4 TB mit jedem zusätzlichen Host erhöht. Cluster, die GP-Hosts erstellt werden, wird die Rohkapazität um 7,7 TB mit jedem zusätzlichen Host erhöht. Bei beiden Clustertypen dauert es ungefähr 10 Minuten, bis Hosts einem Cluster hinzugefügt werden. Anweisungen zum Skalieren von Clustern finden Sie im [Tutorial zum Skalieren von privaten Clouds][tutorial-scale-private-cloud].
 
 ## <a name="azure-storage-integration"></a>Azure-Speicherintegration
 
@@ -45,5 +45,5 @@ Im nächsten Schritt erfahren Sie mehr über [Identitätskonzepte privater Cloud
 <!-- LINKS - external-->
 
 <!-- LINKS - internal -->
-[tutorials-scale-private-cloud]: ./tutorials-scale-private-cloud.md
+[tutorial-scale-private-cloud]: ./tutorial-scale-private-cloud.md
 [concepts-identity]: ./concepts-identity.md

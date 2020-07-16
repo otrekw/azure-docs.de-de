@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 800c3dbeb96dfb87c7b495909e21eca929bec726
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550320"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern von Ressourcenrollen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -90,7 +90,7 @@ Weitere Informationen finden Sie unter [Vergleichen von Gruppen](https://docs.mi
 
     Nachdem Sie die Gruppe oder das Team ausgewählt haben, wird in der Spalte **Untertyp** einer der folgenden Untertypen aufgelistet:
 
-    |  |  |
+    | Untertyp | BESCHREIBUNG |
     | --- | --- |
     | Sicherheit | Gewähren des Zugriffs auf Ressourcen |
     | Distribution | Senden von Benachrichtigungen an eine Gruppe von Personen |

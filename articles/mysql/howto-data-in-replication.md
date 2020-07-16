@@ -4,20 +4,26 @@ description: In diesem Artikel wird beschrieben, wie die Datenreplikation für A
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 3/27/2020
-ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/11/2020
+ms.openlocfilehash: d1012a2afa84270089ae44b1c5d224e65a2e01ae
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474043"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118561"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Gewusst wie: Konfigurieren der Datenreplikation in Azure Database for MySQL
 
-In diesem Artikel erfahren Sie, wie Sie die Datenreplikation in Azure Database for MySQL einrichten, indem Sie Master- und Replikatserver konfigurieren. In diesem Artikel wird davon ausgegangen, dass Sie über ein gewisses Maß an Erfahrung mit MySQL-Servern und -Datenbanken verfügen.
+In diesem Artikel erfahren Sie, wie Sie die [Datenreplikation](concepts-data-in-replication.md) in Azure Database for MySQL einrichten, indem Sie Master- und Replikatserver konfigurieren. In diesem Artikel wird davon ausgegangen, dass Sie über ein gewisses Maß an Erfahrung mit MySQL-Servern und -Datenbanken verfügen.
 
-Um ein Replikat im Azure Database for MySQL-Dienst zu erstellen, synchronisiert die Datenreplikation Daten von einem lokalen MySQL-Masterserver, virtuellen Computern (VMs) oder Clouddatenbankdiensten.
+> [!NOTE]
+> Unvoreingenommene Kommunikation
+>
+> Microsoft setzt sich für Diversität und Inklusion ein. In diesem Artikel wird das Wort _Slave_ (Sklave) verwendet. Laut [Microsoft-Styleguide für unvoreingenommene Kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) sollte dieses Wort jedoch vermieden werden. In diesem Artikel wird es aus Konsistenzgründen verwendet, da das Wort derzeit noch in der Software vorkommt. Sobald die Software so aktualisiert wurde, dass das Wort nicht mehr auftaucht, wird dieser Artikel entsprechend aktualisiert.
+>
+
+Um ein Replikat im Azure Database for MySQL-Dienst zu erstellen, synchronisiert die [Datenreplikation](concepts-data-in-replication.md) Daten von einem lokalen MySQL-Masterserver, virtuellen Computern (VMs) oder Clouddatenbankdiensten. Die Replikation eingehender Daten basiert auf der nativen MySQL-Replikation, die wiederum auf der Position der binären Protokolldatei (binlog) basiert. Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
 
 Überprüfen Sie die [Einschränkungen und Anforderungen](concepts-data-in-replication.md#limitations-and-considerations) der Datenreplikation, bevor Sie die Schritte in diesem Artikel ausführen.
 

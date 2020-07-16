@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/19/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 959f1e3f25602938d769c574ea975c4bba9300e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71258001"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040451"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Netzwerkkonfigurationswarnungen in Azure Active Directory Domain Services
 
-Damit Anwendungen und Dienste ordnungsgemäß mit Azure Active Directory Domain Services (Azure AD DS) kommunizieren können, müssen bestimmte Netzwerkports geöffnet sein und den Datenverkehr zulassen. In Azure steuern Sie den Datenverkehrsfluss mithilfe von Netzwerksicherheitsgruppen. Für den Integritätsstatus einer verwalteten Azure AD DS-Domäne wird eine Warnung angezeigt, wenn die erforderlichen Netzwerksicherheitsgruppen-Regeln nicht vorhanden sind.
+Damit Anwendungen und Dienste ordnungsgemäß mit einer von Azure Active Directory Domain Services (Azure AD DS) verwalteten Domäne kommunizieren können, müssen bestimmte Netzwerkports offen sein und den Datenverkehr zulassen. In Azure steuern Sie den Datenverkehrsfluss mithilfe von Netzwerksicherheitsgruppen. Für den Integritätsstatus einer verwalteten Azure AD DS-Domäne wird eine Warnung angezeigt, wenn die erforderlichen Netzwerksicherheitsgruppen-Regeln nicht vorhanden sind.
 
 Dieser Artikel hilft Ihnen dabei, häufige Warnungen bei Konfigurationsproblemen mit Netzwerksicherheitsgruppen besser zu verstehen und zu beheben.
 
@@ -30,11 +30,11 @@ Dieser Artikel hilft Ihnen dabei, häufige Warnungen bei Konfigurationsproblemen
 
 *Microsoft kann nicht auf die Domänencontroller für diese verwaltete Domäne zugreifen. Dies kann geschehen, wenn eine für Ihr virtuelles Netzwerk konfigurierte Netzwerksicherheitsgruppe (NSG) den Zugriff auf ihre verwaltete Domäne blockiert. Eine weitere mögliche Ursache ist eine benutzerdefinierte Route, die eingehenden Datenverkehr aus dem Internet blockiert.*
 
-Die häufigste Ursache von Netzwerkfehlern für Azure AD DS sind ungültige Netzwerksicherheitsgruppen-Regeln. Die Netzwerksicherheitsgruppe für das virtuelle Netzwerk muss den Zugriff auf bestimmte Ports und Protokolle zulassen. Wenn diese Ports blockiert sind, kann die Azure-Plattform die verwaltete Domäne weder überwachen noch aktualisieren. Auch die Synchronisierung zwischen dem Azure AD-Verzeichnis und der verwalteten Azure AD DS-Domäne ist betroffen. Halten Sie diese Standardports unbedingt offen, um Dienstunterbrechungen zu vermeiden.
+Die häufigste Ursache von Netzwerkfehlern für Azure AD DS sind ungültige Netzwerksicherheitsgruppen-Regeln. Die Netzwerksicherheitsgruppe für das virtuelle Netzwerk muss den Zugriff auf bestimmte Ports und Protokolle zulassen. Wenn diese Ports blockiert sind, kann die Azure-Plattform die verwaltete Domäne weder überwachen noch aktualisieren. Auch die Synchronisierung zwischen dem Azure AD-Verzeichnis und Azure AD DS ist betroffen. Halten Sie diese Standardports unbedingt offen, um Dienstunterbrechungen zu vermeiden.
 
 ## <a name="default-security-rules"></a>Standardsicherheitsregeln
 
-Auf die Netzwerksicherheitsgruppe für eine verwaltete Azure AD DS-Domäne werden die folgenden standardmäßigen Sicherheitsregeln für den eingehenden und ausgehenden Datenverkehr angewendet. Diese Regeln sorgen für die Sicherheit von Azure AD DS und ermöglichen der Azure-Plattform, die verwaltete Domäne zu überwachen, zu verwalten und zu aktualisieren. Sie können auch eine zusätzliche Regel einrichten, die eingehenden Datenverkehr zulässt, wenn Sie [Secure LDAP (LDAPS) konfigurieren][configure-ldaps].
+Auf die Netzwerksicherheitsgruppe für eine verwaltete Domäne werden die folgenden standardmäßigen Sicherheitsregeln für den eingehenden und ausgehenden Datenverkehr angewendet. Diese Regeln sorgen für die Sicherheit von Azure AD DS und ermöglichen der Azure-Plattform, die verwaltete Domäne zu überwachen, zu verwalten und zu aktualisieren.
 
 ### <a name="inbound-security-rules"></a>Eingangssicherheitsregeln
 
@@ -46,6 +46,9 @@ Auf die Netzwerksicherheitsgruppe für eine verwaltete Azure AD DS-Domäne werde
 | 65000    | AllVnetInBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
 | 65001    | AllowAzureLoadBalancerInBound | Any | Any | AzureLoadBalancer | Any | Allow |
 | 65500    | DenyAllInBound | Any | Any | Any | Any | Verweigern |
+
+> [!NOTE]
+> Sie können auch eine zusätzliche Regel einrichten, die eingehenden Datenverkehr zulässt, wenn Sie [Secure LDAP (LDAPS) konfigurieren][configure-ldaps]. Diese zusätzliche Regel ist für die korrekte LDAPS-Kommunikation erforderlich.
 
 ### <a name="outbound-security-rules"></a>Ausgangssicherheitsregeln
 
@@ -68,7 +71,7 @@ Führen Sie die folgenden Schritte aus, um die vorhandenen Sicherheitsregeln zu 
 
     Überprüfen Sie die Eingangs- und Ausgangsregeln, und vergleichen Sie sie mit der Liste der erforderlichen Regeln im vorherigen Abschnitt. Wählen Sie bei Bedarf alle benutzerdefinierten Regeln aus, die den erforderlichen Datenverkehr blockieren, und löschen Sie sie. Wenn eine der erforderlichen Regeln fehlt, fügen Sie eine Regel hinzu, wie im nächsten Abschnitt beschrieben.
 
-    Nachdem Sie Regeln hinzugefügt oder gelöscht haben, um den erforderlichen Datenverkehr zuzulassen, wird die Integrität der verwalteten Azure AD DS-Domäne innerhalb von zwei Stunden automatisch aktualisiert, und die Warnung wird entfernt.
+    Nachdem Sie Regeln hinzugefügt oder gelöscht haben, um den erforderlichen Datenverkehr zuzulassen, wird die Integrität der verwalteten Domäne innerhalb von zwei Stunden automatisch aktualisiert, und die Warnung wird entfernt.
 
 ### <a name="add-a-security-rule"></a>Hinzufügen einer Sicherheitsregel
 

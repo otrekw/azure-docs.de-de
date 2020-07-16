@@ -3,8 +3,8 @@ title: Verwalten des Zugriffs auf SaaS-Apps mithilfe von Mandanteneinschränkung
 description: Hier erfahren Sie, wie Sie mithilfe von Mandanteneinschränkungen auf der Grundlage des verwendeten Azure AD-Mandanten steuern, welcher Benutzer auf Apps zugreifen kann.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c43a1250f4d2be956b028689ee10eb4b968701f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cd302791aa783f1a95d48f666366aa845fcaadbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680140"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763022"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -74,7 +74,7 @@ Fügen Sie für jede eingehende, an „login.microsoftonline.com“, „login.mi
 
 Die Header müssen folgende Elemente enthalten:
 
-- *Restrict-Access-To-Tenants:* Verwenden Sie einen Wert für \<Liste mit zugelassenen Mandanten\>. Hierbei handelt es sich um eine kommagetrennte Liste mit Mandanten, auf die Benutzer zugreifen können sollen. Der Mandant in dieser Liste kann mithilfe jeder bei einem Mandanten registrierten Domäne identifiziert werden. Wenn Sie beispielsweise den Zugriff auf die Mandanten Contoso und Fabrikam zulassen möchten, sieht das Name/Wert-Paar wie folgt aus: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- *Restrict-Access-To-Tenants:* Verwenden Sie den Wert \<permitted tenant list\>. Dabei handelt es sich um eine durch Kommas getrennte Liste mit Mandanten, auf die Benutzer zugreifen können sollen. Der Mandant in dieser Liste kann mithilfe jeder bei einem Mandanten registrierten Domäne identifiziert werden. Wenn Sie beispielsweise den Zugriff auf die Mandanten Contoso und Fabrikam zulassen möchten, sieht das Name/Wert-Paar wie folgt aus: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
 - *Restrict-Access-Context:* Verwenden Sie einen Wert für eine einzelne Verzeichnis-ID, um zu deklarieren, welcher Mandant die Mandanteneinschränkungen festlegt. Wenn Sie z. B. Contoso als den Mandanten deklarieren möchten, der die Mandanteneinschränkungsrichtlinie festlegt, sieht das Name/Wert-Paar wie folgt aus: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
@@ -155,7 +155,7 @@ Fiddler ist ein kostenloser Web Debugging Proxy, mit dem Sie HTTP/HTTPS-Datenver
 
    1. Wählen Sie im Fiddler Web Debugger-Tool das Menü **Rules** (Regeln) und anschließend **Customize Rules...** (Regeln anpassen...) aus, um die Datei „CustomRules“ zu öffnen.
 
-   2. Fügen Sie am Anfang der `OnBeforeRequest`-Funktion die folgenden Zeilen hinzu: Ersetzen Sie \<tenant domain\> durch eine bei Ihrem Mandanten registrierte Domäne (z. B. `contoso.onmicrosoft.com`). Ersetzen Sie \<directory ID\> durch den Azure AD-GUID Ihres Mandanten.
+   2. Fügen Sie am Anfang der `OnBeforeRequest`-Funktion die folgenden Zeilen hinzu: Ersetzen Sie \<tenant domain\> durch eine bei Ihrem Mandanten registrierte Domäne (z. B. `contoso.onmicrosoft.com`). Ersetzen Sie \<directory ID\> durch den Azure AD-GUID Ihres Mandanten.
 
       ```JScript.NET
       if (

@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9810d29750e7c741c84b11b296099a37d67fc595
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267612"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955164"
 ---
 # <a name="monitor-azure-storage"></a>Überwachen von Azure Storage
 
@@ -78,7 +78,9 @@ Alle anderen fehlgeschlagenen, anonymen Anforderungen werden nicht protokolliert
 
 Plattformmetriken und das Aktivitätsprotokoll werden automatisch gesammelt, aber Sie müssen eine Diagnoseeinstellung erstellen, um Ressourcenprotokolle zu sammeln oder außerhalb von Azure Monitor weiterzuleiten. Informationen zum Erstellungsprozess für eine Diagnoseeinstellung über das Azure-Portal, Azure CLI oder PowerShell finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Plattformprotokollen und Metriken in Azure](../../azure-monitor/platform/diagnostic-settings.md).
 
-Beim Erstellen einer Diagnoseeinstellung wählen 0Sie den Speichertyp aus, für den Sie Protokolle aktivieren möchten, z. B. Blob, Warteschlange, Tabelle oder Datei. Wenn Sie die Diagnoseeinstellung im Azure-Portal erstellen, können Sie die Ressource aus einer Liste auswählen. Bei Verwendung von PowerShell oder der Azure-Befehlszeilenschnittstelle (Command Line Interface, CLI) müssen Sie die Ressourcen-ID des Speichertyps verwenden. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Eigenschaften** Ihres Speicherkontos öffnen.
+Beim Erstellen einer Diagnoseeinstellung wählen 0Sie den Speichertyp aus, für den Sie Protokolle aktivieren möchten, z. B. Blob, Warteschlange, Tabelle oder Datei. Data Lake Storage Gen2 wird nicht als Speichertyp angezeigt. Dies liegt daran, dass es sich bei Data Lake Storage Gen2 um eine Reihe von in Blob Storage verfügbaren Funktionen handelt. 
+
+Wenn Sie die Diagnoseeinstellung im Azure-Portal erstellen, können Sie die Ressource aus einer Liste auswählen. Bei Verwendung von PowerShell oder der Azure-Befehlszeilenschnittstelle (Command Line Interface, CLI) müssen Sie die Ressourcen-ID des Speichertyps verwenden. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Eigenschaften** Ihres Speicherkontos öffnen.
 
 Außerdem müssen Sie angeben, für welche Kategorien von Vorgängen Protokolle erfasst werden sollen. Die für Azure Storage vorhandenen Kategorien sind in dieser Tabelle aufgeführt.
 
@@ -343,6 +345,8 @@ Die Daten werden in diesen Tabellen gespeichert.
 |StorageFileLogs | Protokolle, die Aktivitäten in Dateifreigaben beschreiben. |
 |StorageQueueLogs | Protokolle, die Aktivitäten in Warteschlangen beschreiben.|
 |StorageTableLogs| Protokolle, die Aktivitäten in Tabellen beschreiben.|
+
+Protokolle für Data Lake Storage Gen2 werden nicht in einer dedizierten Tabelle angezeigt. Dies liegt daran, dass Data Lake Storage Gen2 kein Dienst ist. Es handelt sich dabei um eine Reihe von Funktionen, die Sie für ein Blob Storage-Konto aktivieren können. Wenn Sie diese Funktionen aktiviert haben, werden die entsprechenden Protokolle weiterhin in der Tabelle StorageBlobLogs angezeigt. 
 
 ### <a name="azure-storage-log-analytics-queries-in-azure-monitor"></a>Azure Storage Log Analytics-Abfragen in Azure Monitor
 

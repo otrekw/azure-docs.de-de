@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.date: 03/13/2020
-ms.custom: seodec18
-ms.openlocfilehash: 7fccd60ef0312748287d4103d8754bce944d4df6
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.topic: how-to
+ms.date: 06/11/2020
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 253d2c80f5a6ff96ba9249eddd127abb74f79a33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266456"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515806"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Einrichten und Verwenden von Computezielen für das Modelltraining 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Azure Machine Learning bietet unterschiedliche Unterstützung für verschiedene 
 
 
 > [!NOTE]
-> Azure Machine Learning Compute kann als dauerhafte Ressource oder dynamisch beim Anfordern einer Ausführung erstellt werden. Bei der ausführungsbasierten Erstellung wird das Computeziel nach Abschluss des Trainingsauftrags entfernt, sodass Sie auf diese Weise erstellte Computeziele nicht wiederverwenden können.
+> Azure Machine Learning Compute-Cluster können als dauerhafte Ressourcen oder dynamisch beim Anfordern einer Ausführung erstellt werden. Bei der ausführungsbasierten Erstellung wird das Computeziel nach Abschluss des Trainingsauftrags entfernt, sodass Sie auf diese Weise erstellte Computeziele nicht wiederverwenden können.
 
 ## <a name="whats-a-run-configuration"></a>Was ist eine Laufzeitkonfiguration?
 
@@ -76,7 +76,8 @@ ML-Pipelines können nicht nur Modelle trainieren, sondern auch Daten vor dem Tr
 Konfigurieren Sie die Computeziele anhand der folgenden Abschnitte:
 
 * [Lokaler Computer](#local)
-* [Azure Machine Learning Compute](#amlcompute)
+* [Azure Machine Learning Compute-Cluster](#amlcompute)
+* [Azure Machine Learning-Computeinstanz](#instance)
 * [Virtuelle Remotecomputer](#vm)
 * [Azure HDInsight](#hdinsight)
 
@@ -91,9 +92,9 @@ Konfigurieren Sie die Computeziele anhand der folgenden Abschnitte:
 
 Nachdem Sie nun die Computeressource angefügt und Ihre Ausführung konfiguriert haben, besteht der nächste Schritt im [Übermitteln der Trainingsausführung](#submit).
 
-### <a name="azure-machine-learning-compute"></a><a id="amlcompute"></a>Azure Machine Learning Compute
+### <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning-Computecluster
 
-Azure Machine Learning Compute ist eine verwaltete Compute-Infrastruktur, die dem Benutzer das einfache Erstellen von Computezielen mit einem oder mehreren Knoten ermöglicht. Das Computeziel wird in Ihrer Arbeitsbereichsregion als Ressource erstellt, die für andere Benutzer im Arbeitsbereich freigegeben werden kann. Es wird automatisch zentral hochskaliert, wenn ein Auftrag übermittelt wird, und kann in einem virtuellen Azure-Netzwerk platziert werden kann. Das Computeziel wird in einer Containerumgebung ausgeführt und packt die Abhängigkeiten Ihres Modells in einem [Docker-Container](https://www.docker.com/why-docker).
+Ein Azure Machine Learning-Computecluster ist eine verwaltete Computeinfrastruktur, die Ihnen das einfache Erstellen von Computezielen mit einem oder mehreren Knoten ermöglicht. Das Computeziel wird in Ihrer Arbeitsbereichsregion als Ressource erstellt, die für andere Benutzer im Arbeitsbereich freigegeben werden kann. Es wird automatisch zentral hochskaliert, wenn ein Auftrag übermittelt wird, und kann in einem virtuellen Azure-Netzwerk platziert werden kann. Das Computeziel wird in einer Containerumgebung ausgeführt und packt die Abhängigkeiten Ihres Modells in einem [Docker-Container](https://www.docker.com/why-docker).
 
 Sie können Azure Machine Learning Compute verwenden, um den Trainingsprozess auf einen Cluster von CPU- oder GPU-Computeknoten in der Cloud zu verteilen. Weitere Informationen zu den VM-Größen mit GPUs finden Sie unter [Für GPU optimierte VM-Größen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
 
@@ -127,6 +128,41 @@ Azure Machine Learning Compute kann in mehreren Ausführungen wiederverwendet we
 Nachdem Sie nun die Computeressource angefügt und Ihre Ausführung konfiguriert haben, besteht der nächste Schritt im [Übermitteln der Trainingsausführung](#submit).
 
 
+### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure Machine Learning-Computeinstanz
+
+Eine [Azure Machine Learning-Computeinstanz](concept-compute-instance.md) ist eine verwaltete Computeinfrastruktur, die Ihnen das einfache Erstellen einer einzelnen VM ermöglicht. Das Computeziel wird in Ihrer Arbeitsbereichsregion erstellt, aber im Gegensatz zu einem Computecluster kann eine Instanz nicht für andere Benutzer in Ihrem Arbeitsbereich freigegeben werden. Außerdem wird die Instanz nicht automatisch herunterskaliert.  Sie müssen die Ressource beenden, um laufende Gebühren zu vermeiden.
+
+Computeinstanzen können mehrere Aufträge parallel ausführen und verfügen über eine Auftragswarteschlange. 
+
+Sie können Aufträge sicher in einer [virtuellen Netzwerkumgebung](how-to-enable-virtual-network.md#compute-instance) ausführen, ohne dass Unternehmen hierfür SSH-Ports öffnen müssen. Der Auftrag wird in einer Containerumgebung ausgeführt und packt die Abhängigkeiten Ihres Modells in einen Docker-Container. 
+
+1. **Erstellen und Anfügen**: 
+    
+    [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb?name=create_instance)]
+
+1. **Konfigurieren**: Erstellen Sie eine Laufzeitkonfiguration.
+    
+    ```python
+    
+    from azureml.core import ScriptRunConfig
+    from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+    
+    src = ScriptRunConfig(source_directory='', script='train.py')
+    
+    # Set compute target to the one created in previous step
+    src.run_config.target = instance
+    
+    # Set environment
+    src.run_config.environment = myenv
+     
+    run = experiment.submit(config=src)
+    ```
+
+Weitere nützliche Befehle für die Computeinstanz finden Sie im Notebook [train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb). Dieses Notebook befindet sich auch im Studio-Ordner **Beispiele** in *training/train-on-computeinstance*.
+
+Nachdem Sie nun das Computeziel angefügt und die Ausführung konfiguriert haben, besteht der nächste Schritt im [Übermitteln der Trainingsausführung](#submit).
+
+
 ### <a name="remote-virtual-machines"></a><a id="vm"></a>Virtuelle Remotecomputer
 
 Azure Machine Learning bietet Ihnen auch die Möglichkeit, eine eigene Computeressource zu verwenden und diese an Ihren Arbeitsbereich anzufügen. Eine Remote-VM, auf die über Azure Machine Learning zugegriffen werden kann, ist ein solcher Ressourcentyp. Die Ressource kann entweder eine Azure-VM, ein Remoteserver in Ihrer Organisation oder lokal sein. Durch Angabe der IP-Adresse und Anmeldeinformationen (Benutzername und Kennwort oder SSH-Schlüssel) können Sie jede VM, auf die zugegriffen werden kann, für Remoteausführungen verwenden.
@@ -155,13 +191,6 @@ Verwenden Sie in diesem Szenario Azure Data Science Virtual Machine (DSVM) als v
                                                    ssh_port=22,
                                                    username='<username>',
                                                    password="<password>")
-
-   # If you authenticate with SSH keys instead, use this code:
-   #                                                  ssh_port=22,
-   #                                                  username='<username>',
-   #                                                  password=None,
-   #                                                  private_key_file="<path-to-file>",
-   #                                                  private_key_passphrase="<passphrase>")
 
    # Attach the compute
    compute = ComputeTarget.attach(ws, compute_target_name, attach_config)
@@ -193,7 +222,7 @@ Azure HDInsight ist eine beliebte Plattform für Big Data-Analysen. Die Plattfor
 
 1. **Anfügen**: Wenn Sie einen HDInsight-Cluster als Computeziel anfügen möchten, müssen Sie den die Ressourcen-ID, den Benutzernamen und das Kennwort für den HDInsight-Cluster angeben. Die Ressourcen-ID des HDInsight-Clusters kann unter Verwendung der Abonnement-ID, des Ressourcengruppennamens und des Namens des HDInsight-Clusters im folgenden Zeichenfolgenformat erstellt werden: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`.
 
-   ```python
+    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
    from azureml.exceptions import ComputeTargetException
 

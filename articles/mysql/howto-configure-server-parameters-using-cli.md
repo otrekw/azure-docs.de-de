@@ -5,16 +5,16 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
-ms.topic: conceptual
-ms.date: 4/1/2020
-ms.openlocfilehash: ca5f80e57f90e4dd26ac2e4a175998ff3de2c102
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.topic: how-to
+ms.date: 6/11/2020
+ms.openlocfilehash: 7c62eb9db2bbde8038f192c9e29a804a0b24cfdb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546435"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101527"
 ---
-# <a name="customize-server-parameters-by-using-azure-cli"></a>Anpassen der Serverparameter mithilfe der Azure-Befehlszeilenschnittstelle
+# <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-cli"></a>Konfigurieren von Serverparametern in Azure Database for MySQL mit der Azure CLI
 Sie können Konfigurationsparameter für einen Azure Database for MySQL-Server mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) auflisten, anzeigen und aktualisieren. Auf Serverebene ist eine Teilmenge der Engine-Konfigurationen verfügbar und kann geändert werden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -50,6 +50,14 @@ Wenn Sie den Wert eines Konfigurationsparameters zurücksetzen möchten, lassen 
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 Dieser Code setzt die Konfiguration **slow\_query\_log** auf den Standardwert **OFF** zurück. 
+
+## <a name="setting-parameters-not-listed"></a>Nicht aufgeführte Einstellungsparameter
+Wenn der Serverparameter, den Sie aktualisieren möchten, nicht im Azure-Portal aufgeführt ist, können Sie den Parameter optional mithilfe von `init_connect` auf Verbindungsebene festlegen. Damit werden die Serverparameter für jeden Client festgelegt, der sich mit dem Server verbindet. 
+
+Aktualisieren Sie den Serverkonfigurationsparameter **init\_connect** des Servers **mydemoserver.mysql.database.azure.com** in der Ressourcengruppe **myresourcegroup**, um Werte wie den Zeichensatz festzulegen.
+```azurecli-interactive
+az mysql server configuration set --name init_connect --resource-group myresourcegroup --server mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
+```
 
 ## <a name="working-with-the-time-zone-parameter"></a>Arbeiten mit dem Zeitzonenparameter
 

@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 764071eeaf368ecf78679632cffbd6964db40aa5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: a5b59942731c8ca7b29de30e160d8370c9cf76ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681031"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807637"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Installieren des Agents für die Azure AD Connect-Cloudbereitstellung
 In diesem Dokument erhalten Sie Informationen zum Installationsvorgang für den Azure AD Connect-Bereitstellungs-Agent (Azure Active Directory) und dessen Erstkonfiguration im Azure-Portal.
@@ -34,7 +34,8 @@ Unter den folgenden Links erhalten Sie Informationen zur Installation und Konfig
 Führen Sie die folgenden Schritte aus, um den Agent zu installieren.
 
 1. Melden Sie sich mit Berechtigungen eines Unternehmensadministrators bei dem Server an, den Sie verwenden werden.
-1. Öffnen Sie das Azure-Portal. Wählen Sie im linken Bereich **Azure Active Directory** aus.
+1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu **Azure Active Directory**.
+1. Wählen Sie im linken Menü die Option **Azure AD Connect** aus.
 1. Wählen Sie **Bereitstellung verwalten (Vorschau)**  > **Alle Agents überprüfen** aus.
 1. Laden Sie den Azure AD Connect-Bereitstellungs-Agent über das Azure-Portal herunter.
 

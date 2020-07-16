@@ -3,12 +3,12 @@ title: Informationen zur Sicherung von Azure-VMs
 description: In diesem Artikel erfahren Sie, wie der Azure Backup-Dienst virtuelle Azure-Computer sichert und wie bewährte Methoden befolgt werden können.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f4b36f57362607a13c09896cd7109596aba0a852
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9838f4993e71f2991500af0e152abee36f996050
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79415968"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322908"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Ein Überblick über die Sicherung von Azure-VMs
 
@@ -89,7 +89,7 @@ In der folgenden Tabelle werden die verschiedenen Typen der Konsistenz von Momen
 **Datenträger** | Die Sicherung der VM-Datenträger erfolgt parallel. Bei einem virtuellen Computer mit vier Datenträgern versucht der Backup-Dienst beispielsweise, alle vier Datenträger parallel zu sichern. Die Sicherung erfolgt inkrementell (nur geänderte Daten).
 **Zeitplanung** |  Um den Sicherungsdatenverkehr zu reduzieren, sichern Sie verschiedene virtuelle Computer zu unterschiedlichen Tageszeiten, und achten Sie darauf, dass keine Überschneidungen auftreten. Wenn Sie VMs gleichzeitig sichern, entstehen Engpässe im Datenverkehr.
 **Vorbereiten von Sicherungen** | Berücksichtigen Sie den zur Vorbereitung der Sicherung erforderlichen Zeitaufwand. Zur Vorbereitungszeit gehören das Installieren oder Aktualisieren der Sicherungserweiterung sowie das Auslösen einer Momentaufnahme in Übereinstimmung mit dem Sicherungszeitplan.
-**Datenübertragung** | Beachten Sie, wieviel Zeit Azure Backup benötigt, um die inkrementellen Änderungen aus der vorherigen Sicherung zu berechnen.<br/><br/> Bei einer inkrementellen Sicherung berechnet Azure Backup die Prüfsumme des Blocks, um die Änderungen zu ermitteln. Wenn ein Block geändert wird, wird er für die Übertragung in den Tresor gekennzeichnet. Der Dienst analysiert die identifizierten Blöcke und versucht, die Menge der zu übertragenden Daten weiter zu minimieren. Nach dem Evaluieren aller geänderten Blöcke überträgt Azure Backup die Änderungen in den Tresor.<br/><br/> Zwischen der Momentaufnahme und dem Kopiervorgang in den Tresor kann es zu einer Verzögerung kommen.<br/><br/> Zu Spitzenzeiten kann es bis zu acht Stunden dauern, bis Sicherungen verarbeitet werden. Bei der täglichen Sicherung beträgt die Sicherungsdauer eines virtuellen Computers weniger als 24 Stunden.
+**Datenübertragung** | Beachten Sie, wieviel Zeit Azure Backup benötigt, um die inkrementellen Änderungen aus der vorherigen Sicherung zu berechnen.<br/><br/> Bei einer inkrementellen Sicherung berechnet Azure Backup die Prüfsumme des Blocks, um die Änderungen zu ermitteln. Wenn ein Block geändert wird, wird er für die Übertragung in den Tresor gekennzeichnet. Der Dienst analysiert die identifizierten Blöcke und versucht, die Menge der zu übertragenden Daten weiter zu minimieren. Nach dem Evaluieren aller geänderten Blöcke überträgt Azure Backup die Änderungen in den Tresor.<br/><br/> Zwischen der Momentaufnahme und dem Kopiervorgang in den Tresor kann es zu einer Verzögerung kommen. Zu Spitzenzeiten kann es bis zu acht Stunden dauern, bis die Momentaufnahmen in den Tresor übertragen werden. Bei der täglichen Sicherung beträgt die Sicherungsdauer eines virtuellen Computers weniger als 24 Stunden.
 **Erste Sicherung** | Die Gesamtdauer der Sicherung von weniger als 24 Stunden gilt für inkrementelle Sicherungen, aber möglicherweise nicht für die erste Sicherung. Wieviel Zeit für die erste Sicherung benötigt wird, hängt von der Datenmenge und dem Zeitpunkt der Sicherungsausführung ab.
 **Wiederherstellen der Warteschlange** | Azure Backup verarbeitet Wiederherstellungsaufträge von mehreren Speicherkonten gleichzeitig, und Wiederherstellungsanforderungen werden in eine Warteschlange eingereiht.
 **Wiederherstellen einer Kopie** | Beim Wiederherstellungsvorgang werden Daten zuerst aus dem Tresor in das Speicherkonto kopiert.<br/><br/> Die gesamte Wiederherstellungszeit hängt von den E/A-Vorgängen pro Sekunde (IOPS) und dem Durchsatz des Speicherkontos ab.<br/><br/> Wählen Sie ein Speicherkonto aus, das nicht mit den Schreib- und Lesevorgängen anderer Anwendungen geladen ist, um die Zeit für das Kopieren zu verringern.

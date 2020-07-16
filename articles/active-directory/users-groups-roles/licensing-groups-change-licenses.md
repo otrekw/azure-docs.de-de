@@ -8,20 +8,20 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 07/07/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94c0d1efa83af53804be89a9e86f4cafd5bc0ae0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74025908"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057754"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Ändern der Lizenzzuweisungen für einen Benutzer oder eine Gruppe in Azure Active Directory
 
@@ -49,7 +49,7 @@ Wenn Sie auf der Seite **Lizenzzuweisungen aktualisieren** feststellen, dass ein
 1. Wählen Sie **Azure Active Directory** > **Benutzer** aus, und öffnen Sie dann die Seite **Profil** für einen Benutzer.
 1. Wählen Sie **Lizenzen**aus.
 1. Wählen Sie **Zuweisungen** aus, um die Lizenzzuweisung für den Benutzer oder die Gruppe zu bearbeiten. Auf der Seite **Zuweisungen** können Sie Lizenzzuweisungskonflikte auflösen.
-1. Aktivieren Sie das Kontrollkästchen für Office 366 E3, und stellen Sie sicher, dass mindestens alle dem Benutzer zugewiesenen E1-Dienste ausgewählt sind.
+1. Aktivieren Sie das Kontrollkästchen für Office 365 E3, und stellen Sie sicher, dass mindestens alle dem Benutzer zugewiesenen E1-Dienste ausgewählt sind.
 1. Deaktivieren Sie das Kontrollkästchen für „Office 365 E1“.
 
     ![Seite „Lizenzzuweisungen“ für einen Benutzer, mit „Office 365 E1“ deaktiviert und „Office 365 E3“ aktiviert](media/licensing-groups-change-licenses/update-user-license-assignments.png)
@@ -64,7 +64,7 @@ Azure AD entfernt die alten Lizenzen und wendet gleichzeitig die neuen Lizenzen 
 1. Wählen Sie **Azure Active Directory** > **Gruppen** aus, und öffnen Sie dann die Seite **Übersicht** für eine Gruppe.
 1. Wählen Sie **Lizenzen**aus.
 1. Wählen Sie den Befehl **Zuweisungen** aus, um die Lizenzzuweisung für den Benutzer oder die Gruppe zu bearbeiten.
-1. Aktivieren Sie das Kontrollkästchen für „Office 365 E3“. Um die Kontinuität des Diensts aufrechtzuerhalten, stellen Sie sicher, dass Sie alle E1-Dienste aktivieren, die dem Benutzer bereits zugewiesen sind.
+1. Aktivieren Sie das Kontrollkästchen für Office 365 E3. Um die Kontinuität des Diensts aufrechtzuerhalten, stellen Sie sicher, dass Sie alle E1-Dienste aktivieren, die dem Benutzer bereits zugewiesen sind.
 1. Deaktivieren Sie das Kontrollkästchen für „Office 365 E1“.
 
     ![Wählen Sie den Befehl „Zuweisungen“ auf einer Benutzer- oder Gruppenlizenzseite aus.](media/licensing-groups-change-licenses/update-group-license-assignments.png)

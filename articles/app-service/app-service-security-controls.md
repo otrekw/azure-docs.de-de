@@ -1,16 +1,16 @@
 ---
-title: Sicherheitskontrollen
+title: Sicherheitskontrollen für Azure App Service
 description: Eine Prüfliste mit Sicherheitskontrollen zur Evaluierung von Azure App Service für Ihre Organisation
 author: msmbaldwin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2586821c4c48f809efb5408c3cdae5e42e3b3fcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b0c336d9d9c463a7ed7acf42eaf292ecce4f1bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671446"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831147"
 ---
 # <a name="security-controls-for-azure-app-service"></a>Sicherheitskontrollen für Azure App Service
 
@@ -39,8 +39,8 @@ In diesem Artikel werden die in Azure App Service integrierten Sicherheitskontro
 
 | Sicherheitskontrolle | Ja/Nein | Notizen |  Dokumentation
 |---|---|--|
-| Authentifizierung| Ja | Kunden können Anwendungen für App Service erstellen, die automatisch in [Azure Active Directory (Azure AD)](../active-directory/index.yml) sowie andere OAuth-kompatible Identitätsanbieter integriert werden. Für den Verwaltungszugriff auf App Service-Ressourcen wird der gesamte Zugriff durch eine Kombination von durch Azure AD authentifizierten Prinzipalen und RBAC-Rollen von Azure Resource Manager gesteuert. | [Authentifizierung und Autorisierung in Azure App Service](overview-authentication-authorization.md)
-| Authorization| Ja | Für Verwaltungszugriff auf App Service-Ressourcen werden sämtliche Zugriffe mit einer Kombination aus Azure AD-authentifizierten Prinzipal- und Azure Resource Manager-RBAC-Rollen gesteuert.  | [Authentifizierung und Autorisierung in Azure App Service](overview-authentication-authorization.md)
+| Authentifizierung| Ja | Kunden können Anwendungen in App Service erstellen, die automatisch in [Azure Active Directory (Azure AD)](../active-directory/index.yml) sowie andere OAuth-kompatible Identitätsanbieter integriert werden. Für den Verwaltungszugriff auf App Service-Ressourcen wird der gesamte Zugriff durch eine Kombination von durch Azure AD authentifizierten Prinzipalen und Azure-RBAC-Rollen gesteuert. | [Authentifizierung und Autorisierung in Azure App Service](overview-authentication-authorization.md)
+| Authorization| Ja | Für den Verwaltungszugriff auf App Service-Ressourcen wird der gesamte Zugriff durch eine Kombination von durch Azure AD authentifizierten Prinzipalen und Azure-RBAC-Rollen gesteuert.  | [Authentifizierung und Autorisierung in Azure App Service](overview-authentication-authorization.md)
 
 ## <a name="data-protection"></a>Schutz von Daten
 

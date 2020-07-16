@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: ad26fca94527864af10bb0051336c372ea65b3e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 4bdcb2b4008f54ff0d84594e6f3b5a7b76944e65
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81413798"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987017"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Kopieren von Daten aus SAP ECC mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -148,6 +148,7 @@ Folgende Eigenschaften werden im Abschnitt `source` der Kopieraktivität unterst
 |:--- |:--- |:--- |
 | `type` | Die `type`-Eigenschaft im Abschnitt `source` der Kopieraktivität muss auf `SapEccSource` festgelegt werden. | Ja |
 | `query` | Die OData-Abfrageoptionen zum Filtern der Daten. Beispiel:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Der SAP ECC-Connector kopiert Daten aus der kombinierten URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Weitere Informationen finden Sie unter [Komponenten der OData-URL](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nein |
+| `httpRequestTimeout` | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout zum Empfangen einer Antwort, nicht um das Timeout zum Lesen von Antwortdaten. Wenn Sie hier nichts angeben, lautet der Standardwert **00:30:00** (30 Minuten). | Nein |
 
 ### <a name="example"></a>Beispiel
 
