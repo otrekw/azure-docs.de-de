@@ -4,15 +4,15 @@ description: include file
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7dbac1f4fad940b817befa3a45447cf7367c28c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84317532"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506043"
 ---
 Mithilfe von Spot-VMs können Sie unsere ungenutzte Kapazität mit signifikanten Kosteneinsparungen nutzen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Spot-VMs hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
 
@@ -21,9 +21,17 @@ Die verfügbare Kapazität kann abhängig von der Größe, Region, Tageszeit usw
 
 ## <a name="eviction-policy"></a>Entfernungsrichtlinie
 
-VMs können basierend auf der Kapazität oder dem von Ihnen festgelegten maximalen Preis entfernt werden. Bei virtuellen Computern wird die Entfernungsrichtlinie so festgelegt, dass *die Zuordnung aufgehoben wird*. Dabei wechseln die entfernten VMs in den Zustand „Beendet (Zuordnung aufgehoben)“, sodass Sie die entfernten VMs zu einem späteren Zeitpunkt erneut bereitstellen können. Die erneute Zuordnung von Spot-VMs ist jedoch auf verfügbare Spot-Kapazität angewiesen. Die virtuellen Computer, deren Zuordnung aufgehoben wurde, werden auf Ihr Kontingent an Spot-vCPUs angerechnet, und die zugrunde liegenden Datenträger werden Ihnen in Rechnung gestellt. 
+VMs können basierend auf der Kapazität oder dem von Ihnen festgelegten maximalen Preis entfernt werden. Wenn Sie eine Spot-VM erstellen, können Sie die Entfernungsrichtlinie auf *Zuordnung aufheben* (Standardeinstellung) oder *Löschen* festlegen. 
 
-Benutzer können sich für den Empfang von Benachrichtigungen in der VM über [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md) anmelden. Dadurch werden Sie benachrichtigt, wenn Ihre virtuellen Computer entfernt werden, und Sie haben vor dem Entfernen 30 Sekunden Zeit, Aufträge abzuschließen und die VMs herunterzufahren. 
+Die Richtlinie *Zuordnung aufheben* versetzt Ihre VM in den Zustand „beendet/Zuordnung aufgehoben“, sodass Sie sie später erneut bereitstellen können. Es gibt jedoch keine Garantie dafür, dass die Zuordnung erfolgreich ist. Die virtuellen Computer, deren Zuordnung aufgehoben wurde, werden auf Ihr Kontingent angerechnet, und die Speicherkosten für die zugrunde liegenden Datenträger werden Ihnen in Rechnung gestellt. 
+
+Wenn Sie möchten, dass Ihr virtueller Computer beim Entfernen gelöscht wird, können Sie die Entfernungsrichtlinie auf *Löschen* festlegen. Die entfernten VMs werden zusammen mit ihren zugrunde liegenden Datenträgern gelöscht, und darum fallen weiter keine Kosten für ihre Speicherung an. 
+
+> [!NOTE]
+>
+> Das Portal unterstützt `Delete` zurzeit nicht als Entfernungsoption. Sie können `Delete` nur mithilfe von PowerShell, der CLI und Vorlagen festlegen.
+
+Sie können sich für den Empfang von Benachrichtigungen in der VM über [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md) anmelden. Dadurch werden Sie benachrichtigt, wenn Ihre virtuellen Computer entfernt werden, und Sie haben vor dem Entfernen 30 Sekunden Zeit, Aufträge abzuschließen und die VMs herunterzufahren. 
 
 
 | Option | Ergebnis |
@@ -37,15 +45,29 @@ Benutzer können sich für den Empfang von Benachrichtigungen in der VM über [A
 | Wenn der maximale Preis auf `-1` festgelegt ist | Die VM wird nicht aus Preisgründen entfernt. Der maximale Preis ist der aktuelle Preis bis hin zum Preis für Standard-VMs. Ihnen wird niemals mehr als der Standardpreis in Rechnung gestellt.| 
 | Ändern des maximalen Preises | Sie müssen die Zuordnung des virtuellen Computers aufheben, um den maximalen Preis zu ändern. Heben Sie die Zuordnung der VM auf, legen Sie einen neuen maximalen Preis fest, und aktualisieren Sie dann die VM. |
 
+
 ## <a name="limitations"></a>Einschränkungen
 
 Die folgenden VM-Größen werden für Spot-VMs nicht unterstützt:
  - B-Serie
  - Promoversionen beliebiger Größe (z. B. Promogrößen Dv2, NV, NC, H)
 
-Spot-VMs können derzeit keine kurzlebigen Betriebssystemdatenträger verwenden.
-
 Mit Ausnahme von Microsoft Azure China 21ViaNet können Spot-VMs in jeder beliebigen Region bereitgestellt werden.
+
+Einige Abonnementkanäle werden nicht unterstützt:
+
+<a name="channel"></a>
+
+| Azure-Kanäle               | Azure-Spot-VM-Verfügbarkeit       |
+|------------------------------|-----------------------------------|
+| Enterprise Agreement         | Ja                               |
+| Nutzungsbasierte Bezahlung                | Ja                               |
+| Clouddienstanbieter | [Kontaktieren Sie Ihren Partner.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Vorteile                     | Nicht verfügbar                     |
+| Sponsoren                    | Ja                               |
+| Kostenlose Testversion                   | Nicht verfügbar                     |
+
+
 
 ## <a name="pricing"></a>Preise
 
@@ -75,23 +97,6 @@ Bei der variablen Preisgestaltung können Sie einen maximalen Preis in US-Dollar
 **F:** Kann ich ein zusätzliches Kontingent für Spot anfordern?
 
 **A:** Ja, Sie können eine Anforderung zur Erhöhung Ihres Kontingents für Spot-VMs über den [Standard-Kontingentanforderungsprozess](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) übermitteln.
-
-
-**F:** Welche Kanäle unterstützen Spot-VMs?
-
-**A:** In der folgenden Tabelle finden Sie Informationen zur Verfügbarkeit von Spot-VMs.
-
-<a name="channel"></a>
-
-| Azure-Kanäle               | Azure-Spot-VM-Verfügbarkeit       |
-|------------------------------|-----------------------------------|
-| Enterprise Agreement         | Ja                               |
-| Nutzungsbasierte Bezahlung                | Ja                               |
-| Clouddienstanbieter | [Kontaktieren Sie Ihren Partner.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Microsoft-Kundenvereinbarung | Ja                               |
-| Vorteile                     | Nicht verfügbar                     |
-| Sponsoren                    | Ja                               |
-| Kostenlose Testversion                   | Nicht verfügbar                     |
 
 
 **F:** Wo kann ich Fragen stellen?

@@ -1,33 +1,33 @@
 ---
-title: Filterung und Vorverarbeitung im Azure Application Insights-SDK | Microsoft Docs
+title: Filterung und Vorverarbeitung im Application Insights-SDK | Microsoft-Dokumentation
 description: Schreiben Sie Telemetrieprozessoren und Telemetrieinitialisierer für das SDK, um die Daten zu filtern oder ihnen Eigenschaften hinzuzufügen, bevor die Telemetriedaten an das Application Insights-Portal gesendet werden.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: 8b81849726ad546a24ce1bb56a139b384eb54c42
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d33aeebfb374f081b4ae5dee7f83ccd04d0835ee
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405361"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075789"
 ---
-# <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filterung und Vorverarbeitung von Telemetriedaten im Application Insights-SDK
+# <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Filtern und Vorverarbeiten von Telemetriedaten im Application Insights-SDK
 
 Sie können Plug-Ins für das Application Insights SDK schreiben und konfigurieren, um anzupassen, wie Telemetriedaten vor dem Senden an den Application Insights-Dienst angereichert und verarbeitet werden.
 
 * [Erstellen von Stichproben](sampling.md) verringert sich der Umfang der Telemetriedaten, ohne Statistiken zu verfälschen. Zusammengehörige Datenpunkte werden dabei zusammengehalten, sodass Sie bei der Diagnose von Problemen zwischen diesen navigieren können. Im Portal wird die Gesamtanzahl multipliziert, um eine Kompensation der Stichproben zu erreichen.
-* Durch das Filtern mit Telemetrieprozessoren können Sie Telemetriedaten im SDK herausfiltern, bevor sie an den Server gesendet werden. Sie können beispielsweise den Umfang der Telemetriedaten verringern, indem Sie Anforderungen von Robots ausschließen. Filtern stellt ein grundlegenderes Verfahren zur Senkung des Datenverkehrs dar als das Erstellen von Stichproben. Sie können so besser steuern, was übertragen wird. Jedoch müssen Sie beachten, dass dies Auswirkungen auf die Statistik hat – wenn Sie z. B. alle erfolgreichen Anforderungen herausfiltern.
+* Durch das Filtern mit Telemetrieprozessoren können Sie Telemetriedaten im SDK herausfiltern, bevor sie an den Server gesendet werden. Sie können beispielsweise den Umfang der Telemetriedaten verringern, indem Sie Anforderungen von Robots ausschließen. Filtern stellt ein grundlegenderes Verfahren zur Senkung des Datenverkehrs dar als das Erstellen von Stichproben. Sie können so besser steuern, was übertragen wird, doch hat dies Auswirkungen auf die Statistik. Sie könnten beispielsweise alle erfolgreichen Anforderungen herausfiltern.
 * [Telemetrieinitialisierer](#add-properties) fügen Eigenschaften zu beliebigen von der App gesendeten Telemetriedaten hinzu oder ändern sie, einschließlich Telemetriedaten von Standardmodulen. Sie könnten z. B. berechnete Werte hinzufügen oder Versionsnummern, nach denen Sie die Daten im Portal filtern.
 * [SDK-API](../../azure-monitor/app/api-custom-events-metrics.md) wird zum Senden benutzerdefinierter Ereignisse und Metriken verwendet.
 
 Vorbereitungen:
 
-* Installieren Sie das für Ihre Anwendung geeignete SDK in Ihrer App: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [Nicht-HTTP/Worker für .NET/.NET Core](worker-service.md) oder [JavaScript](javascript.md)
+* Installieren Sie das für Ihre Anwendung geeignete SDK in Ihrer App: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [Nicht-HTTP/Worker für .NET/.NET Core](worker-service.md) oder [JavaScript](javascript.md).
 
 <a name="filtering"></a>
 
 ## <a name="filtering"></a>Filterung
 
-Mit dieser Technik können Sie direkt kontrollieren, welche Daten in den Telemetriedatenstrom ein- oder daraus ausgeschlossen werden sollen. Filtern Sie Telemetrieelemente vor dem Senden an Application Insights heraus. Sie können sie zusammen mit der Stichprobenerstellung oder einzeln verwenden.
+Mit dieser Technik können Sie direkt kontrollieren, welche Daten in den Telemetriedatenstrom ein- oder daraus ausgeschlossen werden sollen. Filtern Sie Telemetrieelemente vor dem Senden an Application Insights heraus. Sie können die Filterung zusammen mit der Stichprobenerstellung oder einzeln verwenden.
 
 Zum Filtern von Telemetriedaten schreiben Sie einen Telemetrieprozessor und registrieren ihn bei `TelemetryConfiguration`. Alle Telemetriedaten durchlaufen den Prozessor. Dabei können Sie auswählen, welche Daten aus dem Datenstrom gelöscht und welche an den nächsten Prozessor in der Kette weitergegeben werden sollen. Dies schließt Telemetriedaten aus den Standardmodulen wie etwa dem HTTP-Anforderungssammler und der Abhängigkeitserfassung ein sowie von Ihnen selbst überwachte Telemetriedaten. Sie können z. B. Telemetriedaten zu Anforderungen von Robots oder erfolgreiche Abhängigkeitsaufrufe herausfiltern.
 
@@ -42,7 +42,7 @@ Zum Filtern von Telemetriedaten schreiben Sie einen Telemetrieprozessor und regi
 
 1. Implementieren Sie `ITelemetryProcessor`, um einen Filter zu erstellen:
 
-    Beachten Sie, dass Telemetrieprozessoren eine Verarbeitungskette erstellen. Beim Instanziieren eines Telemetrieprozessors erhalten Sie einen Verweis auf den nächsten Prozessor in der Kette. Wenn ein Telemetriedatenpunkt an die Verarbeitungsmethode übergeben wird, führt er seine Aufgaben aus und ruft den nächsten Telemetrieprozessor in der Kette auf (oder nicht).
+    Telemetrieprozessoren erstellen eine Verarbeitungskette. Beim Instanziieren eines Telemetrieprozessors erhalten Sie einen Verweis auf den nächsten Prozessor in der Kette. Wenn ein Telemetriedatenpunkt an die Verarbeitungsmethode übergeben wird, führt er seine Aufgaben aus und ruft den nächsten Telemetrieprozessor in der Kette auf (oder nicht).
 
     ```csharp
     using Microsoft.ApplicationInsights.Channel;
@@ -79,7 +79,9 @@ Zum Filtern von Telemetriedaten schreiben Sie einen Telemetrieprozessor und regi
 
 2. Fügen Sie den Prozessor hinzu.
 
-**ASP.NET-Apps**: Fügen Sie den folgenden Codeausschnitt in „ApplicationInsights.config“ ein:
+**ASP.NET-Apps**
+
+Fügen Sie den folgenden Codeausschnitt in „ApplicationInsights.config“ ein:
 
 ```xml
 <TelemetryProcessors>
@@ -96,7 +98,7 @@ Sie können durch die Bereitstellung von öffentlich benannten Eigenschaften in 
 > Achten Sie darauf, dass die Typnamen und sonstige Eigenschaftennamen in der .config-Datei mit den Klassen- und Eigenschaftennamen im Code übereinstimmen. Wenn die .config-Datei auf einen nicht vorhandenen Typ oder eine nicht vorhandene Eigenschaft verweist, könnte das SDK möglicherweise automatisch keine Telemetriedaten mehr senden.
 >
 
-**Alternativ** können Sie den Filter im Code initialisieren. Fügen Sie in einer geeigneten Initialisierungsklasse, z. B. AppStart in `Global.asax.cs`, Ihren Prozessor in die Kette ein:
+Alternativ können Sie den Filter im Code initialisieren. Fügen Sie in einer geeigneten Initialisierungsklasse, z. B. AppStart in `Global.asax.cs`, Ihren Prozessor in die Kette ein:
 
 ```csharp
 var builder = TelemetryConfiguration.Active.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
@@ -108,14 +110,14 @@ builder.Use((next) => new AnotherProcessor(next));
 builder.Build();
 ```
 
-Nach diesem Punkt erstellte TelemetryClients-Elemente verwenden Ihre Prozessoren.
+Nach diesem Punkt erstellte Telemetrieclients verwenden Ihre Prozessoren.
 
 **ASP.NET Core/Workerdienst-Apps**
 
 > [!NOTE]
 > Das Hinzufügen eines Prozessors mithilfe von `ApplicationInsights.config` oder `TelemetryConfiguration.Active` ist für ASP.NET Core-Anwendungen sowie für das SDK „Microsoft.ApplicationInsights.WorkerService“ ungültig.
 
-Bei Apps, die mit [ASP.NET Core](asp-net-core.md#adding-telemetry-processors) oder [WorkerService](worker-service.md#adding-telemetry-processors) geschrieben wurden, wird ein neuer `TelemetryProcessor`, wie im folgenden Beispiel veranschaulicht, durch Anwenden der Erweiterungsmethode `AddApplicationInsightsTelemetryProcessor` auf `IServiceCollection` hinzugefügt. Diese Methode wird in der Methode `ConfigureServices` Ihrer `Startup.cs`-Klasse aufgerufen.
+Bei Apps, die mit [ASP.NET Core](asp-net-core.md#adding-telemetry-processors) oder [WorkerService](worker-service.md#adding-telemetry-processors) geschrieben wurden, wird ein neuer Telemetrieprozessor, wie im Beispiel veranschaulicht, durch Anwenden der Erweiterungsmethode `AddApplicationInsightsTelemetryProcessor` auf `IServiceCollection` hinzugefügt. Diese Methode wird in der Methode `ConfigureServices` Ihrer `Startup.cs`-Klasse aufgerufen.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -168,10 +170,10 @@ public void Process(ITelemetry item)
 
 #### <a name="filter-out-fast-remote-dependency-calls"></a>Herausfiltern schneller Remoteabhängigkeitsaufrufe
 
-Wenn Sie langsame Aufrufe diagnostizieren möchten, filtern Sie die schnellen Aufrufe heraus.
+Wenn Sie nur langsame Aufrufe diagnostizieren möchten, filtern Sie die schnellen Aufrufe heraus.
 
 > [!NOTE]
-> Dadurch wird die im Portal angezeigte Statistik verfälscht.
+> Durch diese Filterung wird die im Portal angezeigte Statistik verfälscht.
 >
 >
 
@@ -198,7 +200,7 @@ public void Process(ITelemetry item)
 
 **Filtern mithilfe von „ITelemetryInitializer“**
 
-1. Erstellen Sie eine Rückruffunktion für einen Telemetrieinitialisierer. Die Rückruffunktion akzeptiert `ITelemetryItem` als Parameter. Dies ist das Ereignis, das gerade verarbeitet wird. Wenn dieser Rückruf `false` zurückgibt, wird das Telemetrieelement herausgefiltert.  
+1. Erstellen Sie eine Rückruffunktion für einen Telemetrieinitialisierer. Die Rückruffunktion akzeptiert `ITelemetryItem` als Parameter. Dies ist das Ereignis, das gerade verarbeitet wird. Wenn dieser Rückruf `false` zurückgibt, wird das Telemetrieelement herausgefiltert.
 
    ```JS
    var filteringFunction = (envelope) => {
@@ -218,10 +220,9 @@ public void Process(ITelemetry item)
 
 ## <a name="addmodify-properties-itelemetryinitializer"></a>Hinzufügen/Ändern von Eigenschaften von: ITelemetryInitializer
 
+Verwenden Sie Telemetrieinitialisierer, um Telemetriedaten mit zusätzlichen Informationen anzureichern oder die von Standardtelemetriemodulen festgelegten Telemetrieeigenschaften zu überschreiben.
 
-Verwenden Sie Telemetrieinitialisierer, um Telemetriedaten mit zusätzlichen Informationen anzureichern und/oder die von Standardtelemetriemodulen festgelegten Telemetrieeigenschaften zu überschreiben.
-
-Das Application Insights for Web-Paket erfasst beispielsweise Telemetriedaten zu HTTP-Anforderungen. Standardmäßig kennzeichnet es jede Anforderung mit einem Antwortcode >= 400 als fehlerhaft. Wenn 400 jedoch als erfolgreich behandelt werden soll, können Sie einen Telemetrieinitialisierer angeben, der die Success-Eigenschaft festlegt.
+Das Application Insights for Web-Paket erfasst beispielsweise Telemetriedaten über HTTP-Anforderungen. Standardmäßig kennzeichnet es jede Anforderung mit einem Antwortcode >=400 als fehlerhaft. Wenn 400 jedoch als erfolgreich behandelt werden soll, können Sie einen Telemetrieinitialisierer angeben, der die Success-Eigenschaft festlegt.
 
 Wenn Sie einen Telemetrieinitialisierer angeben, wird dieser immer aufgerufen, wenn eine der Track*()-Methoden aufgerufen wird. Dies umfasst auch `Track()`-Methoden, die von den Standardtelemetriemodulen aufgerufen werden. Nach Abmachung legen diese Module keine Eigenschaft fest, die bereits durch einen Initialisierer festgelegt wurde. Telemetrieinitialisierer werden vor Telemetrieprozessoren aufgerufen. Daher sind alle von Initialisierern durchgeführten Anreicherungen für Prozessoren sichtbar.
 
@@ -280,7 +281,7 @@ In "ApplicationInsights.config":
 </ApplicationInsights>
 ```
 
-*Alternativ* können Sie den Initialisierer im Code instanziieren, z.B. in „Global.aspx.cs“:
+Alternativ können Sie den Initialisierer im Code instanziieren, z. B. in „Global.aspx.cs“:
 
 ```csharp
 protected void Application_Start()
@@ -290,14 +291,14 @@ protected void Application_Start()
 }
 ```
 
-[Weitere Informationen zu diesem Beispiel anzeigen.](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
+Weitere Informationen zu diesem Beispiel finden Sie [hier](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole).
 
 **ASP.NET Core/Workerdienst-Apps: Laden des Initialisierers**
 
 > [!NOTE]
 > Das Hinzufügen eines Initialisierers mithilfe von `ApplicationInsights.config` oder `TelemetryConfiguration.Active` ist für ASP.NET Core-Anwendungen sowie für das SDK „Microsoft.ApplicationInsights.WorkerService“ ungültig.
 
-Wenn Sie bei Apps, die mithilfe von [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) oder [WorkerService](worker-service.md#adding-telemetryinitializers) geschrieben wurden, einen neuen `TelemetryInitializer` hinzufügen möchten, wird dieser wie unten gezeigt dem Container für die Abhängigkeitsinjektion hinzugefügt. Dies erfolgt in der Methode `Startup.ConfigureServices`.
+Bei Apps, die mit [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) oder [WorkerService](worker-service.md#adding-telemetryinitializers) geschrieben wurden, wird ein neuer Telemetrieinitialisierer, wie im Beispiel veranschaulicht, durch Hinzufügen zum Container für die Abhängigkeitsinjektion hinzugefügt. Dies erfolgt in der `Startup.ConfigureServices`-Methode.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -351,20 +352,20 @@ Fügen Sie einen Telemetrieinitialisierer unmittelbar nach dem Initialisierungsc
 </script>
 ```
 
-Eine Übersicht der für „telemetryItem“ verfügbaren nicht benutzerdefinierten Eigenschaften finden Sie im [Application Insights-Datenmodell für den Export von Daten](../../azure-monitor/app/export-data-model.md).
+Eine Übersicht über die nicht benutzerdefinierten Eigenschaften, die für das Telemetrieelement verfügbar sind, finden Sie im [Application Insights-Exportdatenmodell](../../azure-monitor/app/export-data-model.md).
 
-Sie können beliebig viele Initialisierer hinzufügen. Diese werden in der Reihenfolge aufgerufen, in der sie hinzugefügt wurden.
+Sie können beliebig viele Initialisierer hinzufügen. Sie werden in der Reihenfolge aufgerufen, in der sie hinzugefügt werden.
 
 ### <a name="opencensus-python-telemetry-processors"></a>OpenCensus Python-Telemetrieprozessoren
 
-Bei Telemetrieprozessoren in OpenCensus Python handelt es sich lediglich um Rückruffunktionen, die aufgerufen werden, um Telemetriedaten zu verarbeiten, bevor sie exportiert werden. Die Rückruffunktion muss einen [Umschlag](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86)-Datentyp als Parameter akzeptieren. Stellen Sie sicher, dass die Rückruffunktion `False` zurückgibt, um die Telemetriedaten aus dem Export herauszufiltern. Das Schema für die Azure Monitor-Datentypen in Umschlägen finden Sie [hier](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py).
+Bei Telemetrieprozessoren in OpenCensus Python handelt es sich lediglich um Rückruffunktionen, die aufgerufen werden, um Telemetriedaten zu verarbeiten, bevor sie exportiert werden. Die Rückruffunktion muss einen [Umschlag](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86)-Datentyp als Parameter akzeptieren. Stellen Sie sicher, dass die Rückruffunktion `False` zurückgibt, um die Telemetriedaten aus dem Export herauszufiltern. Das Schema für die Azure Monitor-Datentypen in Umschlägen finden Sie [auf GitHub](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py).
 
 > [!NOTE]
-> Sie können den `cloud_RoleName` ändern, indem Sie das `ai.cloud.role`-Attribut im Feld `tags` ändern.
+> Sie können `cloud_RoleName` ändern, indem Sie das `ai.cloud.role`-Attribut im Feld `tags` ändern.
 
 ```python
 def callback_function(envelope):
-    envelope.tags['ai.cloud.role'] = 'new_role_name.py'
+    envelope.tags['ai.cloud.role'] = 'new_role_name'
 ```
 
 ```python
@@ -462,11 +463,11 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-Sie können beliebig viele Prozessoren hinzufügen. Diese werden in der Reihenfolge aufgerufen, in der sie hinzugefügt wurden. Wenn ein Prozessor eine Ausnahme auslösen sollte, wirkt sich dies nicht auf die folgenden Prozessoren aus.
+Sie können beliebig viele Prozessoren hinzufügen. Sie werden in der Reihenfolge aufgerufen, in der sie hinzugefügt werden. Wenn ein Prozessor eine Ausnahme auslöst, wirkt sich dies nicht auf die folgenden Prozessoren aus.
 
 ### <a name="example-telemetryinitializers"></a>Beispiel: Telemetrieinitialisierer
 
-#### <a name="add-custom-property"></a>Hinzufügen einer benutzerdefinierten Eigenschaft
+#### <a name="add-a-custom-property"></a>Hinzufügen einer benutzerdefinierten Eigenschaft
 
 Mit dem folgenden Beispielinitialisierer wird allen überwachten Telemetriedaten eine benutzerdefinierte Eigenschaft hinzugefügt:
 
@@ -481,9 +482,9 @@ public void Initialize(ITelemetry item)
 }
 ```
 
-#### <a name="add-cloud-role-name"></a>Hinzufügen eines Cloudrollennamens
+#### <a name="add-a-cloud-role-name"></a>Hinzufügen eines Cloudrollennamens
 
-Mit dem folgenden Beispielinitialisierer wird für alle überwachten Telemetriedaten ein Cloudrollenname festgelegt:
+Mit dem folgenden Beispielinitialisierer wird der Cloudrollenname für alle überwachten Telemetriedaten festgelegt.
 
 ```csharp
 public void Initialize(ITelemetry telemetry)
@@ -527,14 +528,14 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 
 Was ist der Unterschied zwischen Telemetrieprozessoren und Telemetrieinitialisierern?
 
-* Bei den Anwendungsmöglichkeiten gibt es einige Überschneidungen: Mit beiden können Sie Eigenschaften von Telemetriedaten hinzufügen oder ändern. Für diesen Zweck wird jedoch die Verwendung von Initialisierern empfohlen.
+* Die Einsatzmöglichkeiten überlappen sich teilweise. Beide können verwendet werden, um einer Telemetrie Eigenschaften hinzuzufügen oder diese zu ändern. Es wird jedoch empfohlen, für diesen Zweck Initialisierer zu verwenden.
 * Telemetrieinitialisierer werden immer vor Telemetrieprozessoren ausgeführt.
 * Telemetrieinitialisierer können mehrmals aufgerufen werden. Laut Konvention legen sie keine Eigenschaften fest, die bereits festgelegt wurden.
 * Mit Telemetrieprozessoren können Sie ein Telemetrieelement vollständig ersetzen oder verwerfen.
 * Alle registrierten Telemetrieinitialisierer werden für jedes Telemetrieelement garantiert aufgerufen. Bei Telemetrieprozessoren wird mit dem SDK der erste Telemetrieprozessor garantiert aufgerufen. Je nach vorangehenden Telemetrieprozessoren werden die restlichen Prozessoren anschließend aufgerufen oder nicht.
-* Mit Telemetrieinitialisierern können Sie Telemetriedaten mit zusätzlichen Eigenschaften anreichern oder die vorhandenen Daten überschreiben. Mit Telemetrieprozessoren können Telemetriedaten herausgefiltert werden.
+* Mit Telemetrieinitialisierern können Sie Telemetriedaten mit zusätzlichen Eigenschaften anreichern oder die vorhandenen Daten überschreiben. Mit einem Telemetrieprozessor können Telemetriedaten herausgefiltert werden.
 
-## <a name="troubleshooting-applicationinsightsconfig"></a>Behandeln von Problemen mit „ApplicationInsights.config“
+## <a name="troubleshoot-applicationinsightsconfig"></a>Behandeln von Problemen mit „ApplicationInsights.config“
 
 * Vergewissern Sie sich, dass der vollqualifizierte Typname und der Assemblyname korrekt sind.
 * Vergewissern Sie sich, dass sich die Datei „applicationinsights.config“ in Ihrem Ausgabeverzeichnis befindet und auf dem neuesten Stand ist.

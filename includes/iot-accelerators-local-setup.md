@@ -9,10 +9,10 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67178524"
 ---
 ## <a name="download-the-source-code"></a>Herunterladen des Quellcodes
@@ -62,7 +62,7 @@ Wenn Sie die erforderlichen Azure-Ressourcen noch nicht erstellt haben, führen 
      Mit dem Skript werden auf dem lokalen Computer zudem mehrere Umgebungsvariablen mit dem Präfix **PCS** hinzugefügt. Diese Umgebungsvariablen stellen die Details für die Remoteüberwachung bereit, damit sie aus einer Azure Key Vault-Ressource gelesen werden können. Diese Key Vault-Ressource ist die Quelle, aus der die Remoteüberwachung ihre Konfigurationswerte lesen wird.
 
      > [!TIP]
-     > Nach Abschluss des Skripts werden außerdem die Umgebungsvariablen in der Datei **\<Ihr Stammordner\>\\.pcs\\\<Lösungsname\>.env** gespeichert. Sie können sie für zukünftige Bereitstellungen des Solution Accelerators verwenden. Beachten Sie, dass alle auf dem lokalen Computer festgelegten Umgebungsvariablen die Werte in der Datei **services\\scripts\\local\\.env** überschreiben, wenn Sie **docker-compose** ausführen.
+     > Nach Abschluss des Skripts werden die Umgebungsvariablen auch in einer Datei namens **\<your home folder\>\\.pcs\\\<solution name\>.env** gespeichert. Sie können sie für zukünftige Bereitstellungen des Solution Accelerators verwenden. Beachten Sie, dass alle auf dem lokalen Computer festgelegten Umgebungsvariablen die Werte in der Datei **services\\scripts\\local\\.env** überschreiben, wenn Sie **docker-compose** ausführen.
 
 1. Beenden Sie die Befehlszeilenumgebung.
 
@@ -74,6 +74,6 @@ Legen Sie die Umgebungsvariablen für Folgendes fest:
 * **PCS_AAD_APPID** – Die AAD-Anwendungs-ID
 * **PCS_AAD_APPSECRET** – Das AAD-Anwendungsgeheimnis
 
-Konfigurationswerte werden aus dieser Azure Key Vault-Ressource gelesen. Diese Umgebungsvariablen sind möglicherweise in der Datei **\<Ihr Stammordner\>\\.pcs\\\<Lösungsname\>.env** aus der Bereitstellung gespeichert. Beachten Sie, dass die auf dem lokalen Computer festgelegten Umgebungsvariablen die Werte in der Datei **services\\scripts\\local\\.env** überschreiben, wenn Sie **docker-compose** ausführen.
+Konfigurationswerte werden aus dieser Azure Key Vault-Ressource gelesen. Diese Umgebungsvariablen können in der Datei **\<your home folder\>\\.pcs\\\<solution name\>.env** aus der Bereitstellung gespeichert werden. Beachten Sie, dass die auf dem lokalen Computer festgelegten Umgebungsvariablen die Werte in der Datei **services\\scripts\\local\\.env** überschreiben, wenn Sie **docker-compose** ausführen.
 
 Ein Teil der vom Microservice benötigten Konfiguration wird in einer **Key Vault**-Instanz gespeichert, die bei der ersten Bereitstellung erstellt wurde. Die entsprechenden Variablen in Key Vault sollten nach Bedarf geändert werden.

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 73e6e117428808aae39e361a3b119e9b2af1ac27
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 60d5fb524d07590ed28641a6c91b87dbeb7dfc9f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399656"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035475"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -17,7 +17,7 @@ In diesem Artikel wird vorausgesetzt, dass Sie über ein Azure-Konto und über e
 
 ## <a name="install-the-speech-sdk"></a>Installieren des Speech SDK
 
-Zuallererst muss das Speech SDK installiert werden. Folgen Sie je nach Plattform den Anweisungen im Abschnitt <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Abrufen des Speech SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a> des Speech SDK-Artikels.
+Zuallererst muss das Speech SDK installiert werden. Folgen Sie je nach Plattform den Anweisungen im Abschnitt <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Abrufen des Speech SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a> des Artikels _Abrufen des Speech SDK_.
 
 ## <a name="import-dependencies"></a>Importieren von Abhängigkeiten
 
@@ -89,7 +89,7 @@ public class App {
 
 ## <a name="change-source-language"></a>Ändern der Ausgangssprache
 
-Eine häufige Aufgabe bei der Sprachübersetzung ist die Angabe der Eingabesprache (bzw. Ausgangssprache). Im folgenden Beispiel wird gezeigt, wie Sie die Eingabesprache auf Italienisch festlegen. Interagieren Sie in Ihrem Code mit der [`SpeechTranslationConfig`][config]-Instanz, und rufen Sie die `setSpeechRecognitionLanguage`-Methode auf.
+Eine häufige Aufgabe bei der Sprachübersetzung ist die Angabe der Eingabesprache (Quellsprache). Im folgenden Beispiel wird gezeigt, wie Sie die Eingabesprache auf Italienisch festlegen. Interagieren Sie in Ihrem Code mit der [`SpeechTranslationConfig`][config]-Instanz, und rufen Sie die `setSpeechRecognitionLanguage`-Methode auf.
 
 ```java
 static void translateSpeech() {

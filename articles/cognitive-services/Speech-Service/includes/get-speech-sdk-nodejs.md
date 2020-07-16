@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 6dd4dfd0edd334005cc2af51a46f9ca2e634272f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 788c8f8093cbc70857727b5c3f89e1719f3ac171
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81400053"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035587"
 ---
 :::row:::
     :::column span="3":::
-        Das JavaScript Speech SDK ist als npm-Paket verfügbar. Weitere Informationen finden Sie unter <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">microsoft-cognitiveservices-speech-sdk <span class="docon docon-navigate-external x-hidden-focus"></span></a> und im zugehörigen GitHub-Repository <a href="https://github.com/Microsoft/cognitive-services-speech-sdk-js" target="_blank">cognitive-services-speech-sdk-js <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+        Das Speech SDK für JavaScript ist als npm-Paket verfügbar. Weitere Informationen finden Sie unter <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">microsoft-cognitiveservices-speech-sdk <span class="docon docon-navigate-external x-hidden-focus"></span></a> und im zugehörigen GitHub-Repository <a href="https://github.com/Microsoft/cognitive-services-speech-sdk-js" target="_blank">cognitive-services-speech-sdk-js <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
     :::column-end:::
     :::column:::
         <br>
@@ -24,11 +24,11 @@ ms.locfileid: "81400053"
 :::row-end:::
 
 > [!TIP]
-> Da das JavaScript Speech SDK als npm-Paket verfügbar ist, können sowohl Node.js als auch Clientwebbrowser es nutzen. Beachten Sie dabei die verschiedenen architektonischen Auswirkungen der einzelnen Umgebungen. Beispielsweise ist das <a href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank">Dokumentobjektmodell (DOM) <span class="docon docon-navigate-external x-hidden-focus"></span></a> nicht für serverseitige Anwendungen verfügbar, ebenso wie das <a href="https://nodejs.org/api/fs.html" target="_blank">Dateisystem <span class="docon docon-navigate-external x-hidden-focus"></span></a> nicht für clientseitige Anwendungen verfügbar ist.
+> Da das Speech SDK für JavaScript als npm-Paket verfügbar ist, können sowohl Node.js als auch Clientwebbrowser es nutzen. Beachten Sie dabei die verschiedenen architektonischen Auswirkungen der einzelnen Umgebungen. Beispielsweise ist das <a href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank">Dokumentobjektmodell (DOM) <span class="docon docon-navigate-external x-hidden-focus"></span></a> nicht für serverseitige Anwendungen verfügbar, ebenso wie das <a href="https://nodejs.org/api/fs.html" target="_blank">Dateisystem <span class="docon docon-navigate-external x-hidden-focus"></span></a> nicht für clientseitige Anwendungen verfügbar ist.
 
 ### <a name="nodejs-package-manager-npm"></a>Node.js-Paket-Manager (NPM)
 
-Führen Sie den folgenden Befehl `npm install` aus, um das JavaScript Speech SDK zu installieren.
+Führen Sie den folgenden Befehl `npm install` aus, um das Speech SDK für JavaScript zu installieren.
 
 ```nodejs
 npm install microsoft-cognitiveservices-speech-sdk

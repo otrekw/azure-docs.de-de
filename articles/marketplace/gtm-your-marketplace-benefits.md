@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market-Dienste – Ihre Vorteile des kommerziellen Marketplace | Azure Marketplace
+title: Go-To-Market-Dienste – Ihre Vorteile des kommerziellen Marketplace, Azure Marketplace
 description: Go-To-Market-Dienste – Die Microsoft-Ressourcen, die Herausgeber verwenden können, werden in diesem Abschnitt beschrieben.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/23/2020
-ms.author: dsindona
-ms.openlocfilehash: ce8534fae44549c20eceda16e0e12fb0adc52c6f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.topic: article
+ms.date: 07/06/2020
+author: keferna
+ms.author: keferna
+ms.openlocfilehash: c954e3c685a795942f78bdb19b59ca817252d26b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957765"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135517"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
@@ -36,13 +36,13 @@ Die Mindestanforderung für die Veröffentlichung in den Storefronts ist eine MP
 
 Sie erhalten Unterstützung beim Verständnis der für Sie verfügbaren Ressourcen und der Implementierung bewährter Methoden, die Sie auch [eigenständig lesen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/) können.
 
-Ausführliche Beschreibungen aller Programmvorteile finden Sie im [Folienstapel für das Marketplace-Prämienprogramm](https://aka.ms/marketplacerewards).
+Ausführliche Beschreibungen aller Programmvorteile finden Sie in der [Präsentation des Marketplace-Prämienprogramms](https://aka.ms/marketplacerewards).
 
-Die Schritte für den Einstieg sind einfach:
+Der Anfang ist denkbar einfach:
 
 1. Veröffentlichen Sie ein Angebot bei Microsoft AppSource oder im Azure Marketplace.
-2. Navigieren Sie zum Partner Center-[Dashboard](https://partner.microsoft.com/dashboard/directory), und wählen Sie auf der Seite für Marketplace-Prämien die Registerkarte für Verkaufs- und Marketingvorteile **** aus, um die Liste der Vorteile anzuzeigen.
-3. Um einen Verkaufs- und Marketingvorteil zu aktivieren, müssen Sie zunächst einen Marketingkontakt zuweisen. Dieser Kontakt erhält dann weitere Informationen zu Ihren Marketplace-Prämien.
+2. Wechseln Sie im Partner Center zu [Marketplace-Prämien](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace), und wählen Sie **Registrieren für Marketplace-Prämienprogramm**.
+3. Um einen Verkaufs- und Marketingvorteil zu aktivieren, weisen Sie einen Marketingkontakt zu. Dieser Kontakt erhält dann weitere Informationen zu Ihren Marketplace-Prämien.
 4. Zum Hinzufügen oder Aktualisieren Ihrer Marketingkontaktinformationen navigieren Sie auf der Seite für Marketplace-Prämien zum oberen Bereich der Registerkarte für Verkaufs- und Marketingvorteile, und wählen Sie dann **Hinzufügen, aktualisieren oder ändern** aus.  Gehen Sie anschließend wie folgt vor:
 
     1. Wählen Sie in der Liste einen Benutzer aus. Wenn der Benutzer, den Sie zuweisen möchten, nicht in der Liste enthalten ist, können Sie unter **Kontoeinstellungen** neue Benutzer hinzufügen.
@@ -55,8 +55,8 @@ Die Schritte für den Einstieg sind einfach:
 1. Sie können Ihren technischen Vorteil nutzen, um während der Presales-, Entwurfs-, Bereitstellungs- und App-Entwicklungsphasen Ihrer Cloud- und Hybridlösungen technische Unterstützung anzufordern. Zum Anfordern von Unterstützung füllen Sie das Anforderungsformular aus, und wählen Sie dann **Anforderung übermitteln** aus.
 2. Informationen zur Nutzung der Vorteile von Azure Sponsorship erhalten Sie per E-Mail, sobald Sie diese Vorteile entsperren.
 
->[!Note]
->Wenn Ihr Angebot seit mehr als vier Wochen aktiv ist und Sie keine Nachricht erhalten haben, überprüfen Sie in Ihrer Organisation, wer der Besitzer des fraglichen Angebots ist, indem Sie in Partner Center nachsehen. Dieser sollte die Kommunikation und die nächsten Schritte erhalten haben. <br> <br> Wenn Sie den Besitzer nicht ermitteln können oder wenn der Besitzer Ihr Unternehmen verlassen hat, können Sie unter [Hilfe und Support](https://aka.ms/marketplacepublishersupport) ein Supportticket erstellen.
+>[!NOTE]
+>Wenn Ihr Angebot seit mehr als vier Wochen aktiv ist und Sie keine Nachricht erhalten haben, überprüfen Sie in Ihrer Organisation, wer der Besitzer des fraglichen Angebots ist, indem Sie in Partner Center nachsehen. Dieser sollte die Kommunikation und die nächsten Schritte erhalten haben.<br><br>Wenn Sie den Besitzer nicht ermitteln können oder wenn der Besitzer Ihr Unternehmen verlassen hat, können Sie unter [Hilfe und Support](https://aka.ms/marketplacepublishersupport) ein Supportticket erstellen.
 
 Der Umfang der für Sie verfügbaren Aktivitäten erweitert sich mit der Anzahl Ihrer Angebote auf dem Markt. Alle Angebote erhalten im Rahmen einer Self-Service-E-Mail mit Ressourcen und bewährten Methoden eine Basisebene von Optimierungsempfehlungen und Werbung.
 
@@ -74,8 +74,8 @@ Ausführliche Beschreibungen aller dieser Vorteile finden Sie im [Folienstapel f
 
 Wenn Sie Ihr Transact-Angebot im Azure Marketplace oder in Microsoft AppSource veröffentlichen, erhalten Sie zusätzliche Vorteile, während Ihre abgerechneten Umsatztransaktionen oder verkauften Arbeitsplätze über den kommerziellen Marketplace wachsen. 
 
->[!Note]
->Der Schwellenwert für verkaufte Arbeitsplätze gilt nur für Microsoft 365-Apps (SaaS-Anwendungen, die über Integrationen mit Microsoft Teams, Office, Outlook oder SharePoint verfügen), und die Vorteile müssen bis zum 30. Juni 2020 abgeschlossen sein.
+>[!NOTE]
+>Der Schwellenwert für verkaufte Arbeitsplätze gilt nur für Microsoft 365-Apps (SaaS-Anwendungen, die über Integrationen mit Microsoft Teams, Office, Outlook oder SharePoint verfügen), und die Vorteile müssen bis zum 30. Juni 2020 abgeschlossen worden sein.
 
 Diese Vorteile sollen Sie bei Marketing-, Vertriebs- und technischen Aktivitäten unterstützen und Ihnen dadurch dabei helfen, mehr Besucher und mehr Leads zu erhalten und mehr Geschäfte zu verwirklichen.
 
@@ -123,5 +123,3 @@ Wenn Sie Ihr Angebot in [Partner Center](https://partner.microsoft.com/dashboard
 Sehen Sie sich [die für Sie verfügbaren Self-Service-Ressourcen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/) an.
 
 Registrieren Sie sich für das [Communityforum zu Microsoft AppSource und Azure Marketplace](https://aka.ms/MarketplaceCommunity), und informieren Sie sich über relevante Themen, oder nehmen Sie an der Diskussion teil.
-
----

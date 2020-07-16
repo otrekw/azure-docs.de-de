@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
 ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80117168"
 ---
 ## <a name="use-custom-page-content"></a>Verwenden benutzerdefinierter Seiteninhalte
@@ -89,7 +89,7 @@ Wenn Sie eigene HTML- und CSS-Dateien zum Anpassen der Benutzeroberfläche verwe
 
 Erstellen Sie benutzerdefinierte Seiteninhalte mit dem Markennamen Ihres Produkts im Titel.
 
-1. Kopieren Sie den folgenden HTML-Codeausschnitt. Es handelt sich um wohlgeformten HTML5-Code mit dem leeren Element *\<div id="api"\>\</div\>* , das in *\<body\>* -Tags enthalten ist. Dieses Element gibt an, wo Azure AD B2C-Inhalt eingefügt werden soll.
+1. Kopieren Sie den folgenden HTML-Codeausschnitt. Hierbei handelt es sich um einen wohlgeformten HTML5-Ausschnitt mit einem leeren Element namens *\<div id="api"\>\</div\>* , das sich in den *\<body\>* -Tags befindet. Dieses Element gibt an, wo Azure AD B2C-Inhalt eingefügt werden soll.
 
    ```html
    <!DOCTYPE html>

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 128a2e8b200f1323b88aad635f27c1b686ecbed2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72789716"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050446"
 ---
 Das Internet der Dinge (Internet of Things, IoT) ist für Unternehmen weltweit mit neuen Anforderungen in Bezug auf Sicherheit, Datenschutz und Compliance verbunden. Im Gegensatz zur herkömmlichen Cyber-Technologie, bei der es um Software und ihre Implementierung geht, liegt der Schwerpunkt bei IoT darauf, was passiert, wenn die Cyber-Welt und die physische Welt aufeinandertreffen. Zum Schützen von IoT-Lösungen müssen die sichere Bereitstellung von Geräten, die sichere Verbindung zwischen diesen Geräten und der Cloud sowie der sichere Schutz von Daten in der Cloud während der Verarbeitung und Speicherung sichergestellt werden. Dieser Funktionalität stehen aber Geräte mit Ressourcenbeschränkung, die geografische Verteilung von Bereitstellungen und eine große Zahl von Geräten innerhalb einer Lösung entgegen.
 
@@ -101,14 +101,14 @@ Sicherheitsmaßnahmen sind in die Solution Accelerators standardmäßig integrie
 
 Für jeden Solution Accelerator werden Instanzen von Azure-Diensten erstellt, z.B.:
 
-* [**Azure IoT Hub:** ](https://azure.microsoft.com/services/iot-hub/) das Gateway, über das die Cloud mit Geräten verbunden wird. Sie können eine Skalierung auf Millionen von Verbindungen pro Hub durchführen und riesige Datenmengen mit Authentifizierung pro Gerät verarbeiten, um Ihre Lösung zu schützen.
+* [**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): Das Gateway, über das die Cloud mit Geräten verbunden wird. Sie können eine Skalierung auf Millionen von Verbindungen pro Hub durchführen und riesige Datenmengen mit Authentifizierung pro Gerät verarbeiten, um Ihre Lösung zu schützen.
 
 * [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): Ein skalierbarer, vollständig indizierter Datenbankdienst für semistrukturierte Daten, mit dem die Metadaten für die bereitgestellten Geräte verwaltet werden, z.B. Attribute, Konfiguration und Sicherheitseigenschaften. Azure Cosmos DB bietet eine Verarbeitung mit hoher Leistung und hohem Durchsatz, eine schemaagnostische Indizierung von Daten und eine umfassende SQL-Abfrageschnittstelle.
 
-* [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/)Datenstromverarbeitung in Echtzeit in der Cloud, mit der eine schnelle Entwicklung und Bereitstellung einer kostengünstigen Analyselösung ermöglicht wird, mit der Sie in Echtzeit basierend auf Geräte-, Sensor-, Infrastruktur- und Anwendungsdaten wichtige Einblicke erhalten. Die Daten aus diesem vollständig verwalteten Dienst können auf beliebige Volumina skaliert werden, während trotzdem ein hoher Durchsatz, eine geringe Latenz und Resilienz erzielt werden.
+* [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): Datenstromverarbeitung in Echtzeit in der Cloud. Dadurch wird eine schnelle Entwicklung und Bereitstellung einer kostengünstigen Analyselösung ermöglicht, mit der Sie in Echtzeit – basierend auf Geräte-, Sensor-, Infrastruktur- und Anwendungsdaten – wichtige Einblicke erhalten. Die Daten aus diesem vollständig verwalteten Dienst können auf beliebige Volumina skaliert werden, während trotzdem ein hoher Durchsatz, eine geringe Latenz und Resilienz erzielt werden.
 
-* [**Azure App Services:** ](https://azure.microsoft.com/services/app-service/) Cloudplattform für leistungsstarke mobile Apps und Web-Apps, für die eine Verbindung mit cloudbasierten oder lokalen Datenquellen hergestellt werden kann. Entwickeln Sie benutzerfreundliche mobile Apps für iOS, Android und Windows. Profitieren Sie von einer Integration in Ihre SaaS- (Software as a Service) und Unternehmensanwendungen und vom standardmäßigen Zugriff auf Dutzende von cloudbasierten Diensten und Unternehmensanwendungen. Programmieren Sie in Ihrer bevorzugten Sprache und IDE, z.B. .NET, Node.js, PHP, Python oder Java, um schneller als je zuvor Web-Apps und APIs zu entwickeln.
+* [**Azure App Services**](https://azure.microsoft.com/services/app-service/): Eine Cloudplattform für leistungsstarke mobile und Web-Apps, für die eine Verbindung mit cloudbasierten oder lokalen Datenquellen hergestellt werden kann. Entwickeln Sie benutzerfreundliche mobile Apps für iOS, Android und Windows. Profitieren Sie von einer Integration in Ihre SaaS- (Software as a Service) und Unternehmensanwendungen und vom standardmäßigen Zugriff auf Dutzende von cloudbasierten Diensten und Unternehmensanwendungen. Programmieren Sie in Ihrer bevorzugten Sprache und IDE, z.B. .NET, Node.js, PHP, Python oder Java, um schneller als je zuvor Web-Apps und APIs zu entwickeln.
 
 * [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): Das Logic Apps-Feature von Azure App Service dient als Hilfe bei der Integration Ihrer IoT-Lösung in Ihre vorhandenen branchenspezifischen Systeme und bei der Automatisierung von Workflowprozessen. Mit Logik-Apps können Entwickler Workflows entwerfen, die über einen Auslöser gestartet werden und dann eine Reihe von Schritten ausführen – Regeln und Aktionen, für die leistungsfähige Connectors zur Integration in Ihre Geschäftsprozesse eingesetzt werden. Logik-Apps ermöglichen standardmäßig Verbindungen mit einem umfassenden Ökosystem von SaaS-, cloudbasierten und lokalen Anwendungen.
 
-* [**Azure Blob Storage:** ](https://azure.microsoft.com/services/storage/) zuverlässiger, kostengünstiger Cloudspeicher für die Daten, die von Ihren Geräten an die Cloud gesendet werden
+* [**Azure Blob Storage**](https://azure.microsoft.com/services/storage/): Ein zuverlässiger, kostengünstiger Cloudspeicher für die Daten, die von Ihren Geräten an die Cloud gesendet werden.

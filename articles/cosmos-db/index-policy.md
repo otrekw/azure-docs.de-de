@@ -4,14 +4,14 @@ description: In diesem Artikel werden das Konfigurieren und Ändern der Standard
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 06/09/2020
 ms.author: tisande
-ms.openlocfilehash: 68adfb8b4cfb7c665a8e8b162b4698a095bb671e
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: a335da61fac914368b4044a97582ef0060f5de4a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636324"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -30,7 +30,7 @@ Azure Cosmos DB unterstützt zwei Indizierungsmodi:
 - **Keine:** Die Indizierung ist für den Container deaktiviert. Dies wird häufig verwendet, wenn ein Container als reiner Schlüssel-Wert-Speicher verwendet wird, für den keine sekundären Indizes erforderlich sind. Sie kann auch verwendet werden, um die Leistung von Massenvorgängen zu verbessern. Nach Abschluss der Massenvorgänge kann der Indexmodus auf „Konsistent“ festgelegt und dann mit [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) überwacht werden, bis er abgeschlossen ist.
 
 > [!NOTE]
-> Azure Cosmos DB unterstützt auch einen verzögerten Indizierungsmodus. Bei der verzögerten Indizierung werden Updates des Indexes mit einer wesentlich niedrigeren Prioritätsstufe ausgeführt, wenn die Engine keine andere Arbeit ausführt. Dies kann zu **inkonsistenten oder unvollständigen** Abfrageergebnissen führen. Wenn Sie beabsichtigen, einen Cosmos-Container abzufragen, sollten Sie nicht die verzögerte Indizierung verwenden.
+> Azure Cosmos DB unterstützt auch einen verzögerten Indizierungsmodus. Bei der verzögerten Indizierung werden Updates des Indexes mit einer wesentlich niedrigeren Prioritätsstufe ausgeführt, wenn die Engine keine andere Arbeit ausführt. Dies kann zu **inkonsistenten oder unvollständigen** Abfrageergebnissen führen. Wenn Sie beabsichtigen, einen Cosmos-Container abzufragen, sollten Sie nicht die verzögerte Indizierung verwenden. Im Juni 2020 haben wir eine Änderung eingeführt, die es nicht mehr ermöglicht, neue Container auf den verzögerten Indizierungsmodus festzulegen. Wenn Ihr Azure Cosmos DB-Konto bereits mindestens einen Container mit verzögerter Indizierung enthält, wird dieses Konto automatisch von der Änderung ausgenommen. Sie können auch eine Ausnahme anfordern, indem Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) wenden.
 
 Diese Indizierungsrichtlinie ist standardmäßig auf `automatic` festgelegt. Hierzu wird die `automatic`-Eigenschaft der Indizierungsrichtlinie auf `true` festgelegt. Ist diese Eigenschaft auf `true` festgelegt, kann Azure Cosmos DB Dokumente automatisch indizieren, während sie geschrieben werden.
 

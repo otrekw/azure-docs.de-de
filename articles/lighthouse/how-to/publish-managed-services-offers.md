@@ -1,18 +1,18 @@
 ---
 title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
-description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in die delegierte Azure-Ressourcenverwaltung durchführt.
+description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in Azure Lighthouse durchführt.
 ms.date: 05/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 214a71faca59072660f1e1f413cb107d8e8f6fc9
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 19364164617a32a561140e985c8723f8deafe1a7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920889"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133317"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
-In diesem Artikel erfahren Sie, wie Sie ein öffentliches oder privates Angebot für verwaltete Dienste in [Azure Marketplace](https://azuremarketplace.microsoft.com) unter Verwendung des Programms [Kommerzieller Marktplatz](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) in Partner Center veröffentlichen können. Kunden, die das Angebot kaufen, können dann ein Onboarding für Abonnements und Ressourcengruppen für die [delegierte Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) durchführen.
+In diesem Artikel erfahren Sie, wie Sie ein öffentliches oder privates Angebot für verwaltete Dienste in [Azure Marketplace](https://azuremarketplace.microsoft.com) unter Verwendung des Programms [Kommerzieller Marktplatz](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) in Partner Center veröffentlichen können. Kunden, die das Angebot erwerben, delegieren dann Abonnements oder Ressourcengruppen, die Sie dann über [Azure Lighthouse](../overview.md) verwalten können.
 
 ## <a name="publishing-requirements"></a>Veröffentlichungsbedingungen
 
@@ -20,10 +20,10 @@ Sie benötigen ein gültiges [Konto in Partner Center](../../marketplace/partner
 
 Gemäß den [Zertifizierungsanforderungen für Angebote für verwaltete Dienste](/legal/marketplace/certification-policies#7004-business-requirements) müssen Sie über die [Cloudplattform-Kompetenzebene Silver oder Gold](/partner-center/learn-about-competencies) verfügen oder ein [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) sein, um ein Angebot für verwaltete Dienste zu veröffentlichen.
 
-Ihre MPN-ID (Microsoft Partner Network) den von Ihnen veröffentlichten Angeboten [automatisch zugeordnet](../../billing/billing-partner-admin-link-started.md), um ihre Wirksamkeit hinsichtlich der Kundenbindung zu verfolgen.
+Ihre MPN-ID (Microsoft Partner Network) den von Ihnen veröffentlichten Angeboten [automatisch zugeordnet](../../cost-management-billing/manage/link-partner-id.md), um ihre Wirksamkeit hinsichtlich der Kundenbindung zu verfolgen.
 
 > [!NOTE]
-> Wenn Sie ein Angebot nicht im Azure Marketplace veröffentlichen möchten, können Sie das Onboarding von Kunden mithilfe von Azure Resource Manager-Vorlagen manuell durchführen. Weitere Informationen finden Sie unter [Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen](onboard-customer.md).
+> Wenn Sie ein Angebot nicht im Azure Marketplace veröffentlichen möchten, können Sie das Onboarding von Kunden mithilfe von Azure Resource Manager-Vorlagen manuell durchführen. Weitere Informationen finden Sie unter [Onboarding eines Kunden in Azure Lighthouse durchführen](onboard-customer.md).
 
 ## <a name="create-your-offer"></a>Erstellen Ihres Angebots
 
@@ -31,7 +31,7 @@ Ausführliche Anweisungen zum Erstellen Ihres Angebots, einschließlich aller In
 
 Informationen zum allgemeinen Veröffentlichungsprozess finden Sie im [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](../../marketplace/marketplace-publishers-guide.md). Sehen Sie sich darüber hinaus die Informationen zu [Zertifizierungsrichtlinien für den kommerziellen Marketplace](/legal/marketplace/certification-policies) (insbesondere den Abschnitt [Managed Services](/legal/marketplace/certification-policies#700-managed-services) (Verwaltete Dienste)) an.
 
-Wenn ein Kunde Ihr Angebot hinzufügt, kann er ein oder mehrere Abonnements oder Ressourcengruppen delegieren, für die dann [das Onboarding für die delegierte Azure-Ressourcenverwaltung durchgeführt wird](#the-customer-onboarding-process).
+Wenn ein Kunde Ihr Angebot hinzufügt, kann er ein oder mehrere Abonnements oder Ressourcengruppen delegieren, für die dann [das Onboarding in Azure Lighthouse durchgeführt wird](#the-customer-onboarding-process).
 
 > [!IMPORTANT]
 > Jeder Plan in einem Angebot für verwaltete Dienste enthält einen Abschnitt mit **Manifestdetails**, in dem Sie die Azure Active Directory-Entitäten (Azure AD) in Ihrem Mandanten definieren, die Zugriff auf die delegierten Ressourcengruppen und/oder Abonnements für Kunden erhalten sollen, die diesen Plan kaufen. Es ist wichtig, zu bedenken, dass jede Gruppe (bzw. jeder Benutzer oder Dienstprinzipal), die Sie einschließen, über dieselben Berechtigungen für jeden Kunden verfügt, der den Plan kauft. Damit Sie verschiedene Gruppen für die Arbeit mit den einzelnen Kunden zuweisen können, müssen Sie einen gesonderten [privaten Plan](../../marketplace/private-offers.md) veröffentlichen, der jeweils exklusiv für die einzelnen Kunden ist.
@@ -44,7 +44,7 @@ Sie können jederzeit [eine aktualisierte Version Ihres Angebots veröffentliche
 
 ## <a name="the-customer-onboarding-process"></a>Kundenonboarding
 
-Nachdem ein Kunde Ihr Angebot hinzugefügt hat, kann er [bestimmte Abonnements oder Ressourcengruppen delegieren](view-manage-service-providers.md#delegate-resources), für die dann ein Onboarding für die delegierte Azure-Ressourcenverwaltung durchgeführt wird. Wenn ein Kunde ein Angebot angenommen, aber noch keine Ressourcen delegiert hat, wird im Azure-Portal auf der Seite [**Dienstanbieter**](view-manage-service-providers.md) am oberen Rand des Abschnitts **Anbieterangebote** ein Hinweis angezeigt.
+Sobald ein Kunde Ihr Angebot hinzufügt hat, kann er [ein oder mehrere spezifische Abonnements oder Ressourcengruppen delegieren](view-manage-service-providers.md#delegate-resources), für die dann das Onboarding in Azure Lighthouse durchgeführt wird. Wenn ein Kunde ein Angebot angenommen, aber noch keine Ressourcen delegiert hat, wird im Azure-Portal auf der Seite [**Dienstanbieter**](view-manage-service-providers.md) am oberen Rand des Abschnitts **Anbieterangebote** ein Hinweis angezeigt.
 
 > [!IMPORTANT]
 > Die Delegierung muss von einem Konto im Mandanten des Kunden durchgeführt werden, bei dem es sich nicht um ein Gastkonto handelt und das für das Abonnement, für das das Onboarding durchgeführt wird (oder das die Ressourcengruppen enthält, für die das Onboarding durchgeführt wird), über die [integrierte Rolle „Besitzer“](../../role-based-access-control/built-in-roles.md#owner) verfügt. Um alle Benutzer anzuzeigen, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).

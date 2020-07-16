@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 09f08e314a634de13a683440ad9fead97ad8a260
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9b5d1421c36fa5d0568985b7792715533d2540ee
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399580"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035930"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -17,7 +17,7 @@ In diesem Artikel wird vorausgesetzt, dass Sie über ein Azure-Konto und über e
 
 ## <a name="install-the-speech-sdk"></a>Installieren des Speech SDK
 
-Zuallererst muss das Speech SDK installiert werden. Folgen Sie je nach Plattform den Anweisungen im Abschnitt <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Abrufen des Speech SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a> des Speech SDK-Artikels.
+Zuallererst muss das Speech SDK installiert werden. Folgen Sie je nach Plattform den Anweisungen im Abschnitt <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Abrufen des Speech SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a> des Artikels _Abrufen des Speech SDK_.
 
 ## <a name="import-dependencies"></a>Importieren von Abhängigkeiten
 
@@ -80,7 +80,7 @@ int main(int argc, char** argv) {
 
 ## <a name="change-source-language"></a>Ändern der Ausgangssprache
 
-Eine häufige Aufgabe bei der Sprachübersetzung ist die Angabe der Eingabesprache (bzw. Ausgangssprache). Im folgenden Beispiel wird gezeigt, wie Sie die Eingabesprache auf Italienisch festlegen. Interagieren Sie in Ihrem Code mit der [`SpeechTranslationConfig`][config]-Instanz, und rufen Sie die `SetSpeechRecognitionLanguage`-Methode auf.
+Eine häufige Aufgabe bei der Sprachübersetzung ist die Angabe der Eingabesprache (Quellsprache). Im folgenden Beispiel wird gezeigt, wie Sie die Eingabesprache auf Italienisch festlegen. Interagieren Sie in Ihrem Code mit der [`SpeechTranslationConfig`][config]-Instanz, und rufen Sie die `SetSpeechRecognitionLanguage`-Methode auf.
 
 ```cpp
 void translateSpeech() {
@@ -222,7 +222,7 @@ Nach erfolgreicher Spracherkennung und -übersetzung werden alle Übersetzungen 
 Das `TranslationRecognizer`-Objekt macht ein einzelnes `Synthesizing`-Ereignis verfügbar. Das Ereignis wird mehrmals ausgelöst und bietet einen Mechanismus, mit dem das synthetische Audioformat aus dem Übersetzungserkennungsergebnis abgerufen werden kann. Weitere Informationen zum Übersetzen in mehrere Sprachen finden Sie unter [Manuelle Synthese](#manual-synthesis). Geben Sie die Synthesestimme an, indem Sie einen [`SetVoiceName`][voicename] zuweisen und einen Ereignishandler für das `Synthesizing`-Ereignis zum Abrufen der Audioinhalte bereitstellen. Im folgenden Beispiel wird die übersetzte Audiodatei als *WAV*-Datei gespeichert.
 
 > [!IMPORTANT]
-> Die ereignisbasierte Synthese funktioniert nur mit einer einzigen Übersetzung. Fügen Sie deshalb **nur eine**  Zielübersetzungssprache hinzu. Zudem muss die Sprache in [`SetVoiceName`][voicename] mit der Zielübersetzungssprache übereinstimmen. So wird `"de"` beispielsweise `"de-DE-Hedda"` zugeordnet.
+> Die ereignisbasierte Synthese funktioniert nur mit einer einzigen Übersetzung. Fügen Sie deshalb **nur eine** Zielübersetzungssprache hinzu. Zudem muss die Sprache in [`SetVoiceName`][voicename] mit der Zielübersetzungssprache übereinstimmen. So wird `"de"` beispielsweise `"de-DE-Hedda"` zugeordnet.
 
 ```cpp
 void translateSpeech() {

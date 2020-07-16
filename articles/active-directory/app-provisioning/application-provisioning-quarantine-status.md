@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: e5c0b00873cd97b255eff7e001f8b54cf0397462
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: ac5b1f72e4c70e15ccb12ea41e5f080ca0b8a505
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024569"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203024"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Anwendungsbereitstellung im Quarantänestatus
 
@@ -36,7 +36,9 @@ Es gibt drei Möglichkeiten, um zu überprüfen, ob sich eine Anwendung in Quara
 
 - Verwenden Sie die Microsoft Graph-Anforderung [GET synchronizationJob](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http), um den Status des Bereitstellungsauftrags programmgesteuert abzurufen:
 
-        `GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/`
+```microsoft-graph
+        GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
+```
 
 - Prüfen Sie Ihren Posteingang. Wird eine Anwendung unter Quarantäne gestellt, wird eine einmalige Benachrichtigungs-E-Mail gesendet. Wenn sich der Grund für die Quarantäne ändert, wird eine aktualisierte E-Mail mit dem neuen Grund für die Quarantäne gesendet. Wenn keine E-Mail angezeigt wird:
 
@@ -74,7 +76,9 @@ Nachdem Sie das Problem behoben haben, können Sie den Bereitstellungsauftrag ne
 
 - Verwenden Sie Microsoft Graph, um [den Bereitstellungsauftrag neu zu starten](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http). Sie haben vollständige Kontrolle über die Elemente, die Sie neu starten. Sie können auswählen, ob Hinterlegungen (zum Neustarten des Hinterlegungszählers, der in Richtung Quarantänestatus läuft) gelöscht, die Quarantäne (zum Entfernen der Anwendung aus der Quarantäne) oder die Wasserzeichen gelöscht werden soll(en). Verwenden Sie die folgende Anforderung:
  
-       `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
-       
+```microsoft-graph
+        POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
+```
+
 Ersetzen Sie "{id}" durch den Wert der Anwendungs-ID und "{jobId}" durch die [ID des Synchronisierungsauftrags](https://docs.microsoft.com/graph/api/resources/synchronization-configure-with-directory-extension-attributes?view=graph-rest-beta&tabs=http#list-synchronization-jobs-in-the-context-of-the-service-principal). 
 

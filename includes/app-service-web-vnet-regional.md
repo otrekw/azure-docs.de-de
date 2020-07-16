@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604874"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488788"
 ---
 Die Verwendung der regionalen VNET-Integration ermöglicht der App Zugriff auf Folgendes:
 
@@ -56,11 +56,7 @@ Für jede Instanz des Plans wird eine Adresse verwendet. Wenn Sie Ihre App auf f
 
 Wenn Ihre Apps in einem anderen Plan ein VNET erreichen sollen, das bereits mit Apps in einem anderen Plan verbunden ist, müssen Sie ein anderes Subnetz als das von der bereits vorhandenen VNET-Integration verwendete auswählen.
 
-Dieses Feature befindet sich für Linux in der Vorschauphase. Die Linux-Form der Funktion unterstützt nur Aufrufe von RFC 1918-Adressen (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
-
-### <a name="web-or-function-app-for-containers"></a>Web- oder Funktions-App für Container
-
-Wenn Sie Ihre App unter Linux mit den integrierten Images hosten, funktioniert die regionale VNET-Integration ohne weitere Änderungen. Wenn Sie eine Web- oder Funktions-App für Container verwenden, müssen Sie Ihr Docker-Image so ändern, dass die VNET-Integration verwendet wird. Verwenden Sie in Ihrem Docker-Image die Umgebungsvariable PORT als Hauptlauschport des Webservers, anstatt eine hartcodierte Portnummer zu verwenden. Die Umgebungsvariable PORT wird von der Plattform automatisch beim Start des Containers festgelegt. Wenn Sie SSH verwenden, muss der SSH-Daemon so konfiguriert sein, dass er auf den Port mit der Nummer lauscht, die in der SSH_PORT-Umgebungsvariablen angegeben ist, wenn regionale VNET-Integration verwendet wird. Die VNET-Integration mit erforderlichem Gateway unter Linux wird nicht unterstützt.
+Das Feature wird für Windows- und Linux-Web-Apps vollständig unterstützt. Das Verhalten ist in Windows- und Linux-Apps gleich.
 
 ### <a name="service-endpoints"></a>Dienstendpunkte
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 948090d0ee956ca1798d7b0f46bb33276c4d6354
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0d963d6491574bf630061749ba4d3538549fa34
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570195"
 ---
 In diesem Schritt ermitteln Sie, wie viele Azure-Dateifreigaben Sie benötigen. Eine einzelne Windows Server-Instanz (oder ein Cluster) kann bis zu 30 Azure-Dateifreigaben synchronisieren.
 
@@ -58,7 +58,7 @@ Ein weiterer wichtiger Aspekt der Azure-Dateisynchronisierung und einer ausgewog
 > [!IMPORTANT]
 > Der wichtigste Skalierungsvektor für die Azure-Dateisynchronisierung ist die Anzahl der Elemente (Dateien und Ordner), die synchronisiert werden müssen.
 
-Die Azure-Dateisynchronisierung unterstützt die Synchronisierung von bis zu 100.000 Elementen mit einer einzelnen Azure-Dateifreigabe. Dieser Grenzwert kann überschritten werden und gibt nur an, was das Azure-Dateisynchronisierungsteam regelmäßig testet.
+Die Azure-Dateisynchronisierung unterstützt die Synchronisierung von bis zu 100 Millionen Elementen mit einer einzelnen Azure-Dateifreigabe. Dieser Grenzwert kann überschritten werden und gibt nur an, was das Azure-Dateisynchronisierungsteam regelmäßig testet.
 
 Es wird empfohlen, die Anzahl der Elemente pro Synchronisierungsbereich gering zu halten. Dies ist ein wichtiger Faktor, der bei der Zuordnung von Ordnern zu Azure-Dateifreigaben zu berücksichtigen ist.
 

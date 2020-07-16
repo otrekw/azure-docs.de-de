@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 36f416183bd44180bee59142714e924e0ac8fefe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf41232026fcb51e63cb68d6f42b7b66d14022e1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830042"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207782"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Anzeigen und Verwalten von StorSimple-Warnungen mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -199,8 +199,8 @@ Wenn die Cloudverbindung für das StorSimple-Gerät in der Produktion ausfällt,
 
 ### <a name="performance-alerts"></a>Leistungswarnungen
 
-| Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen | |
-|:--- |:--- |:--- | --- |
+| Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
+|:--- |:--- |:--- |
 | Die Gerätelast hat <*Schwellenwert*> überschritten. |Die Reaktionszeiten sind langsamer als erwartet. |Ihr Gerät meldet die Nutzung unter hoher Eingabe-/Ausgabeauslastung. Dies kann dazu führen, dass das Gerät nicht optimal funktioniert. Überprüfen Sie die Workloads des Geräts, und ermitteln Sie, ob einige auf ein anderes Gerät verschoben werden können oder nicht mehr erforderlich sind.|
 | StorSimple-Dienst konnte nicht gestartet werden. |Datenpfadfehler |Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
 

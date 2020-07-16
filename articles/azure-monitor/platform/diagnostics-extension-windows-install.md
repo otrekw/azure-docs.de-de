@@ -7,12 +7,12 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: a964a28b728a2b1741fb555f47fe6e329bc9902a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 10d4c2d6650502510bd160cc452ac2289130263b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655706"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549496"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (WAD)
 Die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Azure-Computern und anderen Computeressourcen sammelt. Dieser Artikel enthält ausführliche Informationen zum Installieren und Konfigurieren der Windows-Diagnoseerweiterung sowie eine Beschreibung der Speicherung von Daten in einem Azure Storage-Konto.
@@ -20,7 +20,7 @@ Die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) ist ein Agent
 Die Diagnoseerweiterung wird als [VM-Erweiterung](../../virtual-machines/extensions/overview.md) in Azure implementiert, sodass die gleichen Installationsoptionen mit Resource Manager-Vorlagen, PowerShell und der Befehlszeilenschnittstelle unterstützt werden. Weitere Informationen finden Sie unter [Erweiterungen und Features für virtuelle Computer für Windows](../../virtual-machines/extensions/features-windows.md).
 
 ## <a name="overview"></a>Übersicht
-Wenn Sie die Windows Azure-Diagnoseerweiterung konfigurieren, müssen Sie ein Speicherkonto angeben, an das alle angegebenen Daten gesendet werden sollen. Sie können optional eines für weitere *Datensenken* hinzufügen, um die Daten an verschiedene Speicherorte zu senden.
+Wenn Sie die Windows Azure-Diagnoseerweiterung konfigurieren, müssen Sie ein Speicherkonto angeben, an das alle angegebenen Daten gesendet werden sollen. Sie können optional eine oder mehrere *Datensenken* hinzufügen, um die Daten an verschiedene Speicherorte zu senden.
 
 - Azure Monitor-Senke: Hiermit werden Gastleistungsdaten an Azure Monitor-Metriken gesendet.
 - Event Hub-Senke: Hiermit werden Gastleistungs- und Protokolldaten an Azure Event Hubs gesendet, um außerhalb von Azure weitergeleitet zu werden. Diese Senke kann im Azure-Portal nicht konfiguriert werden.

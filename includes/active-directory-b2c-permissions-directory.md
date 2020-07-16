@@ -5,14 +5,14 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
-ms.openlocfilehash: 587a4bfed00415499bcca6d6054d4ab25cddf0b8
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f8c972bdb9195008c2983d3993e8d9369749b284
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298918"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85200174"
 ---
-#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[App-Registrierungen](#tab/app-reg-ga/) 
 
 1. Wählen Sie unter **Verwalten** die Option **API-Berechtigungen**.
 1. Wählen Sie unter **Konfigurierte Berechtigungen** die Option **Berechtigung hinzufügen** aus.
@@ -24,11 +24,10 @@ ms.locfileid: "84298918"
     * **Policy** > **Policy.ReadWrite.TrustFramework**: Für CI-/CD-Szenarien (Continuous Integration/Continuous Delivery). Zum Beispiel für die Bereitstellung benutzerdefinierter Richtlinien mit Azure Pipelines.
 1. Wählen Sie **Berechtigungen hinzufügen** aus. Warten Sie einige Minuten, bevor Sie mit dem nächsten Schritt fortfahren.
 1. Wählen Sie **Administratorzustimmung für (Name Ihres Mandanten) erteilen** aus.
-1. Wählen Sie das derzeit angemeldete Administratorkonto aus, oder melden Sie sich mit einem Konto bei Ihrem Azure AD B2C-Mandanten an, dem mindestens die Rolle *Cloudanwendungsadministrator* zugewiesen wurde.
-1. Wählen Sie **Akzeptieren** aus.
+1. Wenn Sie derzeit nicht als globaler Administrator angemeldet sind, melden Sie sich mit einem Konto bei Ihrem Azure AD B2C-Mandanten an, dem mindestens die Rolle *Cloudanwendungsadministrator* zugewiesen wurde, und wählen Sie **Administratorzustimmung für (Name Ihres Mandanten) erteilen** aus.
 1. Wählen Sie **Aktualisieren** aus, und überprüfen Sie dann, ob „Gewährt für...“ unter **Status** angezeigt wird. Es kann einige Minuten dauern, bis die Berechtigungen weitergegeben wurden.
 
-#### <a name="applications"></a>[Anwendungen](#tab/applications/)
+#### <a name="applications-legacy"></a>[Anwendungen (Legacy)](#tab/applications-legacy/)
 
 1. Wählen Sie auf der Übersichtsseite **Registrierte App** die Option **Einstellungen** aus.
 1. Wählen Sie unter **API-Zugriff** die Option **Erforderliche Berechtigungen** aus.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: df577ab2b5e9658fd55324c8fd6fd008621b4d46
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 30f852f1bf4994f525ccb65c3827af8f8ae02f96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545896"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838719"
 ---
 Dieser Artikel enthält Sicherheitsempfehlungen für virtuelle Azure-Computer. Das Befolgen dieser Empfehlungen kann Sie beim Erfüllen der Sicherheitsverpflichtungen unterstützen, die in unserem Modell für gemeinsame Verantwortung beschrieben sind. Die Empfehlungen helfen Ihnen außerdem, die Gesamtsicherheit Ihrer Web-App-Lösungen zu verbessern. Weitere Informationen dazu, wie Microsoft seiner Verantwortung als Dienstanbieter nachkommt, finden Sie unter [Gemeinsame Verantwortung für das Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
 
@@ -38,7 +38,7 @@ Allgemeine Informationen zu Azure Security Center finden Sie unter [Was ist Azur
 | Verschlüsseln Sie Betriebssystemdatenträger. | Mit [Azure Disk Encryption](../articles/security/azure-security-disk-encryption-overview.md) können Sie die Datenträger Ihrer Windows- und Linux-IaaS-VMs verschlüsseln. Ohne die erforderlichen Schlüssel sind die Inhalte verschlüsselter Datenträger unlesbar. Datenträgerverschlüsselung schützt gespeicherte Daten vor nicht autorisiertem Zugriff, der andernfalls nach einem Kopieren des betreffenden Datenträgers möglich wäre.| [Ja](../articles/security-center/security-center-apply-disk-encryption.md) |
 | Verschlüsseln Sie Datenträger. | Mit [Azure Disk Encryption](../articles/security/azure-security-disk-encryption-overview.md) können Sie die Datenträger Ihrer Windows- und Linux-IaaS-VMs verschlüsseln. Ohne die erforderlichen Schlüssel sind die Inhalte verschlüsselter Datenträger unlesbar. Datenträgerverschlüsselung schützt gespeicherte Daten vor nicht autorisiertem Zugriff, der andernfalls nach einem Kopieren des betreffenden Datenträgers möglich wäre.| -  |
 | Beschränken Sie die installierte Software. | Schränken Sie die installierte Software auf das ein, was für die erfolgreiche Anwendung Ihrer Lösung erforderlich ist. Diese Richtlinie trägt dazu bei, die Angriffsfläche Ihrer Lösung zu reduzieren. | - |
-| Verwenden Sie Antivirus-/Antischadsoftware. | In Azure können Sie Antischadsoftware von Sicherheitsanbietern wie Microsoft, Symantec, Trend Micro und Kaspersky verwenden. Diese Software dient dem Schutz Ihrer VMs vor Dateien mit schädlichem Inhalt, Adware und anderen Bedrohungen. Abhängig von Ihren Anwendungsworkloads können Sie Microsoft Antimalware bereitstellen. Verwenden Sie entweder eine standardmäßig sichere Grundkonfiguration oder eine erweiterte benutzerdefinierte Konfiguration. Weitere Informationen finden Sie unter [Microsoft Antimalware für Azure Cloud Services und Virtual Machines](../articles/security/azure-security-antimalware.md). | - |
+| Verwenden Sie Antivirus-/Antischadsoftware. | In Azure können Sie Antischadsoftware von Sicherheitsanbietern wie Microsoft, Symantec, Trend Micro und Kaspersky verwenden. Diese Software dient dem Schutz Ihrer VMs vor Dateien mit schädlichem Inhalt, Adware und anderen Bedrohungen. Abhängig von Ihren Anwendungsworkloads können Sie Microsoft Antimalware bereitstellen. Microsoft Antimalware ist nur für Windows-Computer verfügbar. Verwenden Sie entweder eine standardmäßig sichere Grundkonfiguration oder eine erweiterte benutzerdefinierte Konfiguration. Weitere Informationen finden Sie unter [Microsoft Antimalware für Azure Cloud Services und Virtual Machines](../articles/security/azure-security-antimalware.md). | - |
 | Speichern Sie Schlüssel und Geheimnisse sicher. | Vereinfachen Sie die Verwaltung Ihrer Geheimnisse und Schlüssel, indem Sie für die Anwendungsbesitzer eine sichere, zentral verwaltete Option bereitstellen. Diese Art der Verwaltung verringert das Risiko von versehentlichen Gefährdungen oder Verlusten. Mit Azure Key Vault können Sie Ihre Schlüssel sicher in Hardwaresicherheitsmodulen (Hardware Security Modules, HSMs) speichern, die gemäß FIPS 140-2 Level 2 zertifiziert sind. Wenn Sie FIPS 140-2 Level 3 zum Speichern Ihrer Schlüssel und Geheimnisse verwenden müssen, können Sie [Azure Dedicated HSM](../articles/dedicated-hsm/overview.md) nutzen. | - |
 
 ## <a name="identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung 

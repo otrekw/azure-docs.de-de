@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 1675d63fd3a65beda46042f4a78535bb4e066e62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c23e659463364c5e1a497ead138abb4c696627a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190235"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207497"
 ---
 # <a name="create-a-data-source"></a>Erstellen einer Datenquelle
 
@@ -22,8 +22,49 @@ Das Azure Maps Web SDK speichert Daten in Datenquellen. Die Verwendung von Daten
 
 **GeoJSON-Datenquelle**
 
-Mithilfe der `DataSource`-Klasse speichert und lädt eine GeoJSON-basierte Datenquelle Daten lokal. GeoJSON-Daten können manuell oder mithilfe der Hilfsklassen im [Atlas. Data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)-Namespace erstellt werden. Die `DataSource`-Klasse stellt Funktionen zum Importieren von lokalen oder Remote-GeoJSON-Dateien bereit. Remote-GeoJSON-Dateien müssen auf einem CORs-fähigen Endpunkt gehostet werden. Die `DataSource`-Klasse bietet Funktionen für das Clustering von Punktdaten. Außerdem können Daten ganz einfach mit der `DataSource`-Klasse hinzugefügt, entfernt und aktualisiert werden.
+Mithilfe der `DataSource`-Klasse speichert und lädt eine GeoJSON-basierte Datenquelle Daten lokal. GeoJSON-Daten können manuell oder mithilfe der Hilfsklassen im [Atlas. Data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)-Namespace erstellt werden. Die `DataSource`-Klasse stellt Funktionen zum Importieren von lokalen oder Remote-GeoJSON-Dateien bereit. Remote-GeoJSON-Dateien müssen auf einem CORs-fähigen Endpunkt gehostet werden. Die `DataSource`-Klasse bietet Funktionen für das Clustering von Punktdaten. Außerdem können Daten ganz einfach mit der `DataSource`-Klasse hinzugefügt, entfernt und aktualisiert werden. Der folgende Code zeigt, wie GeoJSON-Daten in Azure Maps erstellt werden können.
 
+```Javascript
+//Create raw GeoJSON object.
+var rawGeoJson = {
+     "type": "Feature",
+     "geometry": {
+         "type": "Point",
+         "coordinates": [-100, 45]
+     },
+     "properties": {
+         "custom-property": "value"
+     }
+};
+
+//Create GeoJSON using helper classes (less error prone).
+var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
+    "custom-property": "value"
+}); 
+```
+
+Nach der Erstellung können Datenquellen über die `map.sources`-Eigenschaft, die ein [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager) ist, der Karte hinzugefügt werden. Der folgende Code zeigt, wie Sie eine `DataSource` erstellen und der Karte hinzufügen.
+
+```javascript
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
+```
+
+Der folgende Code zeigt die verschiedenen Möglichkeiten, wie GeoJSON-Daten einer `DataSource` hinzugefügt werden können.
+
+```Javascript
+//GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
+
+//Add geoJSON object to data source. 
+dataSource.add(geoJsonData);
+
+//Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
+dataSource.importDataFromUrl(geoJsonUrl);
+
+//Overwrite all data in data source.
+dataSource.setShapes(geoJsonData);
+```
 
 > [!TIP]
 > Angenommen, Sie möchten alle Daten in einer `DataSource` überschreiben. Wenn Sie zunächst die Funktion `clear` und dann `add` aufrufen, wird die Karte möglicherweise zweimal gerendert, was zu einer Verzögerung führen kann. Verwenden Sie stattdessen die `setShapes`-Funktion, die alle Daten in der Datenquelle entfernt und ersetzt und nur ein einziges erneutes Rendering der Karte auslöst.
@@ -38,14 +79,6 @@ Eine Vektorkachelquelle beschreibt, wie auf eine Vektorkachelebene zugegriffen w
  - Da die Daten in Vektorform bereitgestellt werden, ist zur Aufbereitung der Daten weniger serverseitige Verarbeitung erforderlich. Als Folge hieraus können die neueren Daten schneller zur Verfügung gestellt werden.
 
 Alle Ebenen, die eine Vektorquelle verwenden, müssen einen `sourceLayer`-Wert angeben.
-
-Nach der Erstellung können Datenquellen über die `map.sources`-Eigenschaft, die ein [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager) ist, der Karte hinzugefügt werden. Der folgende Code zeigt, wie Sie eine `DataSource` erstellen und der Karte hinzufügen.
-
-```javascript
-//Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
-```
 
 Azure Maps hält den offenen Standard [Mapbox Vector Tile Specification](https://github.com/mapbox/vector-tile-spec) ein.
 

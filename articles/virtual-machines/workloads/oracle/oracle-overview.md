@@ -3,7 +3,7 @@ title: Oracle-Lösungen in Microsoft Azure | Microsoft-Dokumentation
 description: Lernen Sie Optionen zum Bereitstellen von Oracle-Anwendungen und -Lösungen in Microsoft Azure kennen, einschließlich der vollständigen Ausführung in einer Azure-Infrastruktur oder der Verwendung von cloudübergreifender Konnektivität mit Oracle Cloud Infrastructure (OCI).
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
+author: rgardler
 tags: azure-resource-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
-ms.author: borisb
-ms.openlocfilehash: 7c15c96305cc1220d9ca3cdb9062d7ea7acb4e86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: e9a61c631e8a74bbbd58bb991848fcf60f81ff6a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85098934"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224433"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Übersicht über Oracle-Anwendungen und -Lösungen in Azure
 

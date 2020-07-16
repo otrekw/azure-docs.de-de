@@ -10,18 +10,18 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 192d3d1a7bd792779b068a9c0c7ac34c7bee1c80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbb79c6c7467306bbc202d317684a5c62835d53c
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80116893"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374870"
 ---
 Wenn Ihre Apps von anderen Personen erstellt werden müssen, müssen Sie die zugehörigen E-Mail-Adressen in der Dokumenterstellungsressource des Azure-Portals hinzufügen.
 
-Wenn Sie der **Besitzer oder Administrator Ihres Azure-Abonnements** sind, können Sie der Ressource einen Mitwirkenden hinzufügen.
+Wenn Sie der Besitzer oder Administrator Ihres Azure-Abonnements sind, können Sie der Ressource einen Mitwirkenden hinzufügen.
 
-Wenn Sie **nicht der Besitzer oder Administrator Ihres Azure-Abonnements** sind, muss Ihr Azure-Konto über `Microsoft.Authorization/roleAssignments/write`-Berechtigungen verfügen.
+Wenn Sie nicht der Besitzer oder Administrator Ihres Azure-Abonnements sind, muss Ihr Azure-Konto über `Microsoft.Authorization/roleAssignments/write`-Berechtigungen verfügen.
 
 Wenn Sie Probleme mit dieser Rollenzuweisung haben, lesen Sie Folgendes:
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/15/2019
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 72d87142f9b9c1f7bcb2b02281851bd1e29bc9c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45b611144d5a62171061febfd4efa98db69bacb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78262235"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84436202"
 ---
 Azure Managed Disks (verwaltete Azure-Datenträger) stellt derzeit vier Datenträgertypen bereit, wobei jeder Typ auf bestimmte Kundenszenarien ausgerichtet ist.
 
@@ -26,7 +26,7 @@ Die folgende Tabelle enthält eine Gegenüberstellung von Ultra-Datenträgern, S
 |Datenträgertyp   |SSD   |SSD   |SSD   |Festplattenlaufwerk   |
 |Szenario   |E/A-intensive Workloads wie [SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), führende Datenbanken (z. B. SQL, Oracle) und andere Workloads mit vielen Transaktionen.   |Produktionsworkloads und leistungsabhängige Workloads   |Webserver, wenig genutzte Unternehmensanwendungen und Dev/Test   |Sicherung, nicht kritisch, sporadischer Zugriff   |
 |Maximale Datenträgergröße   |65.536 Gibibyte (GiB)    |32767 GiB    |32767 GiB   |32767 GiB   |
-|Max. Durchsatz   |2\.000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Max. Durchsatz   |2\.000 MB/s    |900 MB/s   |750 MB/s   |500 MB/s   |
 |Max. IOPS   |160.000    |20.000   |6\.000   |2\.000   |
 
 ## <a name="ultra-disk"></a>Ultra-Datenträger

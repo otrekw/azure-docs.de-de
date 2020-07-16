@@ -4,12 +4,12 @@ description: Erfahren Sie, wie der MARS-Agent die Sicherungsszenarien unterstüt
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 5656c113a6823a1708854a547b199bd16c521b04
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 64f43f42fc23b1ca9591b6a49c3acce6c52c09d6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611482"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134967"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Informationen zum Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -53,7 +53,7 @@ Der MARS-Agent unterstützt die folgenden Wiederherstellungsszenarien:
 
 - **Inkrementelle Sicherungen** (nachfolgende Sicherungen) werden gemäß dem von Ihnen angegebenen Zeitplan ausgeführt. Bei inkrementellen Sicherungen werden geänderte Dateien identifiziert, und es wird eine neue VHD erstellt. Die VHD wird komprimiert und verschlüsselt und dann an den Tresor gesendet. Nach Abschluss der inkrementellen Sicherung wird die neue VHD mit der VHD zusammengeführt, die nach der ersten Replikation erstellt wurde. Durch diese zusammengeführte VHD erhalten Sie den aktuellen Zustand zum Vergleich für die laufende Sicherung.
 
-- Der MARS-Agent kann den Sicherungsauftrag mithilfe des USN-Änderungsjournals (Update Sequence Number, Aktualisierungssequenznummer) im **optimierten Modus** oder durch Überprüfen auf Änderungen in Verzeichnissen oder Dateien durch Scannen des gesamten Volumes im **nicht optimierten Modus** ausführen. Der nicht optimierte Modus ist langsamer, weil der Agent alle Dateien auf dem Volume überprüfen und mit den Metadaten vergleichen muss, um die geänderten Dateien zu bestimmen.  Die **Erstsicherung** wird immer im nicht optimierten Modus ausgeführt. Wenn bei der vorherigen Sicherung ein Fehler aufgetreten ist, wird der nächste geplante Sicherungsauftrag im nicht optimierten Modus ausgeführt.
+- Der MARS-Agent kann den Sicherungsauftrag mithilfe des USN-Änderungsjournals (Update Sequence Number, Aktualisierungssequenznummer) im **optimierten Modus** oder durch Überprüfen auf Änderungen in Verzeichnissen oder Dateien durch Scannen des gesamten Volumes im **nicht optimierten Modus** ausführen. Der nicht optimierte Modus ist langsamer, weil der Agent alle Dateien auf dem Volume überprüfen und mit den Metadaten vergleichen muss, um die geänderten Dateien zu bestimmen.  Die **Erstsicherung** wird immer im nicht optimierten Modus ausgeführt. Wenn bei der vorherigen Sicherung ein Fehler aufgetreten ist, wird der nächste geplante Sicherungsauftrag im nicht optimierten Modus ausgeführt. Weitere Informationen zu diesen Modi und deren Überprüfung finden Sie in [diesem Artikel](backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-job-running-in-unoptimized-mode).
 
 ### <a name="additional-scenarios"></a>Zusätzliche Szenarien
 

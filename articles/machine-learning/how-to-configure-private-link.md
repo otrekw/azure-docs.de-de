@@ -1,21 +1,21 @@
 ---
-title: Konfigurieren von Azure Private Link
+title: Konfigurieren eines privaten Endpunkts (Vorschau)
 titleSuffix: Azure Machine Learning
 description: Verwenden Sie Azure Private Link, um sicher von einem virtuellen Netzwerk aus auf Ihren Azure Machine Learning-Arbeitsbereich zuzugreifen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: ed3b59b9e6aecb91f4ecb9d569b989b6b2396c48
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891366"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134879"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurieren von Azure Private Link für einen Azure Machine Learning-Arbeitsbereich (Vorschauversion)
 
@@ -99,14 +99,13 @@ Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit Azure R
 
 ## <a name="using-a-workspace-over-a-private-endpoint"></a>Verwenden eines Arbeitsbereichs über einen privaten Endpunkt
 
-Da die Kommunikation mit dem Arbeitsbereich nur aus dem virtuellen Netzwerk zulässig ist, müssen alle Entwicklungsumgebungen, in denen der Arbeitsbereich verwendet wird, Mitglieder des virtuellen Netzwerks sein. Dazu gehören beispielsweise virtuelle Computer im virtuellen Netzwerk und Computer, die über ein VPN-Gateway mit dem virtuellen Netzwerk verbunden sind.
+Da die Kommunikation mit dem Arbeitsbereich nur aus dem virtuellen Netzwerk zulässig ist, müssen alle Entwicklungsumgebungen, in denen der Arbeitsbereich verwendet wird, Mitglieder des virtuellen Netzwerks sein. Beispiel: ein virtueller Computer im virtuellen Netzwerk.
 
 > [!IMPORTANT]
 > Um eine vorübergehende Unterbrechung der Konnektivität zu vermeiden, empfiehlt Microsoft, den DNS-Cache auf Computern, die eine Verbindung mit dem Arbeitsbereich herstellen, nach dem Aktivieren von Private Link zu leeren. 
 
 Weitere Informationen zu Azure Virtual Machines finden Sie in der [Dokumentation zu Virtual Machines](/azure/virtual-machines/).
 
-Weitere Informationen zu VPN-Gateways finden Sie unter [Was ist ein VPN-Gateway?](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 
 ## <a name="using-azure-storage"></a>Verwenden von Azure Storage
 

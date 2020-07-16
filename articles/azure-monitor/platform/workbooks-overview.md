@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 29e675f3ae35df9211f58d45ad8450566d67a588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b06f39de9f977a9f777b21a53e93ca744fccdd93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658233"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560159"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor-Arbeitsmappen
 
@@ -31,9 +31,9 @@ Arbeitsmappen sind derzeit mit den folgenden Datenquellen kompatibel:
 * [Metriken](workbooks-data-sources.md#metrics)
 * [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
 * [Warnungen (Vorschau)](workbooks-data-sources.md#alerts-preview)
-* [Workloadintegrität (Vorschau)](workbooks-data-sources.md#workload-health-preview)
-* [Azure Resource Health (Vorschau)](workbooks-data-sources.md#azure-resource-health)
-* [Azure Data Explorer (Vorschau)](workbooks-data-sources.md#azure-data-explorer-preview)
+* [Workloadintegrität](workbooks-data-sources.md#workload-health)
+* [Azure Resource Health](workbooks-data-sources.md#azure-resource-health)
+* [Azure Data Explorer](workbooks-data-sources.md#azure-data-explorer)
 
 ## <a name="visualizations"></a>Visualisierungen
 

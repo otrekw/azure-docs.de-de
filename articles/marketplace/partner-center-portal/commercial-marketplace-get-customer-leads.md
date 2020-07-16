@@ -1,18 +1,18 @@
 ---
 title: Leadverwaltung im kommerziellen Microsoft-Marketplace
 description: Erfahren Sie, wie Sie Kundenleads zu Ihren Angeboten bei Microsoft AppSource und im Azure Marketplace generieren und empfangen.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ca6e9a66d6c4daa4706813f945850b51505adeca
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800930"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133442"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Kundenleads aus Ihrem Angebot im kommerziellen Marketplace
 
@@ -87,10 +87,12 @@ Die Informationen des Kunden werden über mehrere Felder gesendet. Im folgenden 
 
 ## <a name="best-practices-for-lead-management"></a>Bewährte Methoden bei der Leadverwaltung
 
+Im Anschluss finden Sie einige Empfehlungen für die Leadgenerierung in Ihrem Vertriebszyklus:
+
 - **Vorgehensweise:** Definieren Sie einen klaren Vertriebsprozess mit Meilensteinen, KPIs und klarer Teamverantwortung.
 - **Qualifizierung:** Definieren Sie die Voraussetzungen, die angeben, ob ein Lead vollständig qualifiziert wurde. Stellen Sie sicher, dass Vertriebs- oder Marketingmitarbeiter die Leads sorgfältig qualifizieren, bevor diese den vollständigen Vertriebsprozess durchlaufen.
-- **Nachverfolgung:** Vergessen Sie die Nachverfolgung nicht. Eine typische Transaktion erfordert 5 bis 12 Folgeanrufe.
-- **Pflege:** Pflegen Sie Ihre Leads, um langfristig eine höhere Gewinnspanne zu erzielen.
+- **Nachverfolgung:** Vergessen Sie die Nachverfolgung innerhalb von 24 Stunden nicht. Der Lead wird sofort nach der Bereitstellung der Testversion in das CRM Ihrer Wahl aufgenommen. Daraufhin sollten Sie ihm eine E-Mail senden, solange seine Eindrücke noch frisch sind. Fordern Sie die Planung eines Telefonats an, um besser zu verstehen, ob Ihr Produkt eine gute Lösung für sein Problem ist. Eine typische Transaktion erfordert eine Reihe von Folgeanrufen.
+- **Pflege:** Pflegen Sie Ihre Leads, um langfristig eine höhere Gewinnspanne zu erzielen. Seien Sie engagiert, aber überrennen Sie sie nicht. Sie sollten den Leads noch einige E-Mails senden, bevor Sie aufgeben. Bleiben Sie ruhig eine Weile dran. Denken Sie daran: Diese Interessenten haben direkt mit Ihrem Produkt interagiert und Zeit mit einer kostenlosen Testversion verbracht; sie sind potenzielle Kunden erster Wahl.
 
 ## <a name="common-questions-about-lead-management"></a>Häufige Fragen zur Leadverwaltung
 
@@ -107,18 +109,21 @@ Dies hängt vom Typ des zu veröffentlichenden Angebots ab. Für Software-as-a-S
 Suchen Sie in Ihrem Leadziel nach `"MSFT_TEST"`. Dies ist ein Beispieltestlead von Microsoft:
 
 ```
-company = MSFT_TEST_636573304831318844
-country = US
-description = MSFT_TEST_636573304831318844
-email = MSFT_TEST_636573304831318844@test.com
-encoding = UTF-8
-encoding = UTF-8
-first_name = MSFT_TEST_636573304831318844
-last_name = MSFT_TEST_636573304831318844
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|<Offer Name>
-oid = 00Do0000000ZHog
-phone = 1234567890
-title = MSFT_TEST_636573304831318844
+{
+    "UserDetails": {
+      "FirstName": "MSFT_TEST_636573304831318844",
+      "LastName": "MSFT_TEST_636573304831318844",
+      "Email": "MSFT_TEST_636573304831318844@test.com",
+      "Phone": "1234567890",
+      "Country": "US",
+      "Company": "MSFT_TEST_636573304831318844",
+      "Title": "MSFT_TEST_636573304831318844"
+    },
+    "LeadSource": "AzureMarketplace",
+    "ActionCode": "INS",
+    "OfferTitle": "Contoso Test"
+    "Description": "MSFT_TEST_636573304831318844"
+}
 ```
 
 ### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>Ich habe ein Liveangebot, aber warum werden mir keine Leads angezeigt?

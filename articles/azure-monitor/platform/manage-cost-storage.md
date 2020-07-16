@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 06/19/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: cded8fef70e22ffebc412ea37898100cda4bb3df
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4906ea7c3ed3486a4ce089f51916fb8322761fe9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219019"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559545"
 ---
-# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen
+# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen    
 
 > [!NOTE]
 > In diesem Artikel wird beschrieben, wie Sie die Kosten für Azure Monitor-Protokolle ermitteln und steuern. In einem verwandten Artikel, [Überwachen der Nutzung und der geschätzten Kosten](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs), wird erläutert, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden. Alle in diesem Artikel gezeigten Preise und Kosten dienen nur zu Beispielzwecken. 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie das erfasste Datenvolumen und Speicherwa
 
 ## <a name="pricing-model"></a>Preismodell
 
-Die Standardpreise für Log Analytics werden gemäß der **nutzungsbasierten Zahlung** berechnet und basieren auf dem verbrauchten Datenvolumen, und optional wird die längere Datenaufbewahrung berücksichtigt. Das Datenvolumen wird als Größe der gespeicherten Daten gemessen. Jeder Log Analytics-Arbeitsbereich wird als separater Dienst abgerechnet und auf der Rechnung für Ihr Azure-Abonnement aufgeführt. Die bei der Erfassung anfallende Datenmenge kann erheblich sein und hängt von den folgenden Faktoren ab: 
+Die Standardpreise für Log Analytics werden gemäß der **nutzungsbasierten Zahlung** berechnet und basieren auf dem verbrauchten Datenvolumen, und optional wird die längere Datenaufbewahrung berücksichtigt. Das Datenvolumen wird als Größe der gespeicherten Daten in GB (10^9 Bytes) gemessen. Jeder Log Analytics-Arbeitsbereich wird als separater Dienst abgerechnet und auf der Rechnung für Ihr Azure-Abonnement aufgeführt. Die bei der Erfassung anfallende Datenmenge kann erheblich sein und hängt von den folgenden Faktoren ab: 
 
   - Anzahl der aktivierten Verwaltungslösungen und deren Konfiguration
   - Anzahl der überwachten VMs
@@ -40,7 +40,7 @@ Die Standardpreise für Log Analytics werden gemäß der **nutzungsbasierten Zah
   
 Zusätzlich zum Modell der nutzungsbasierten Bezahlung bietet Log Analytics Tarife für die **Kapazitätsreservierung**. Mit diesen Tarifen können Sie Einsparungen von 25 % gegenüber der nutzungsbasierten Zahlung erzielen. Die Preise der Kapazitätsreservierung ermöglichen Ihnen den Kauf einer Reservierung ab 100 GB/Tag. Jeder über die Reservierung hinausgehende Verbrauch wird entsprechend der nutzungsbasierten Bezahlung berechnet. Die Tarife für die Kapazitätsreservierung umfassen einen Verpflichtungszeitraum von 31 Tagen. Während dieses Verpflichtungszeitraums können Sie in einen höheren Tarif für die Kapazitätsreservierung wechseln (hierbei wird der 31-tägige Verpflichtungszeitraum neu gestartet), aber es ist erst nach Ablauf des Verpflichtungszeitraums möglich, zum nutzungsbasierten Modell oder zu einem niedrigeren Tarif für die Kapazitätsreservierung zurückzukehren. Bei den Tarifen für die Kapazitätsreservierung erfolgt die Abrechnung täglich. [Erfahren Sie mehr](https://azure.microsoft.com/pricing/details/monitor/) über Preise der nutzungsbasierten Bezahlung und Kapazitätsreservierung für Log Analytics. 
 
-In allen Tarifen wird das Datenvolume anhand einer Zeichenfolgendarstellung der Daten berechnet, während ihre Speicherung vorbereitet wird. Mehrere [Eigenschaften, die alle Datentypen gemein haben](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties), werden bei der Berechnung der Ereignisgröße nicht berücksichtigt. Dazu gehören `_ResourceId`, `_ItemId`, `_IsBillable` und `_BilledSize`.
+In allen Tarifen wird die Datengröße eines Ereignisses anhand einer Zeichenfolgendarstellung der Eigenschaften berechnet, die in Log Analytics für dieses Ereignis gespeichert werden, unabhängig davon, ob die Daten von einem Agent gesendet oder während des Erfassungsvorgangs hinzugefügt werden. Dies schließt alle [benutzerdefinierten Felder](https://docs.microsoft.com/azure/azure-monitor/platform/custom-fields) ein, die beim Sammeln von Daten hinzugefügt und anschließend in Log Analytics gespeichert werden. Mehrere Eigenschaften, die alle Datentypen gemein haben, einschließlich einiger [Log Analytics-Standardeigenschaften](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties), werden bei der Berechnung der Ereignisgröße nicht berücksichtigt. Dazu gehören `_ResourceId`, `_ItemId`, `_IsBillable`, `_BilledSize` und `Type`. Alle anderen Eigenschaften, die in Log Analytics gespeichert werden, sind in der Berechnung der Ereignisgröße enthalten. Für einige Datentypen fallen keinerlei Gebühren für die Datenerfassung an, wie z. B. AzureActivity, Heartbeat and Usage. Um zu ermitteln, ob ein Ereignis von der Abrechnung für die Datenerfassung ausgeschlossen wurde, können Sie die `_IsBillable`-Eigenschaft verwenden, wie es [unten](#data-volume-for-specific-events) gezeigt ist. Die Nutzung wird in GB (1.0E9 Bytes) angegeben. 
 
 Beachten Sie außerdem, dass für einige Lösungen, z. B. [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) und [Konfigurationsverwaltung](https://azure.microsoft.com/pricing/details/automation/), ein eigenes Preismodell gilt. 
 
@@ -55,7 +55,6 @@ Für die Abrechnung des Verbrauchs in einem Cluster stehen zwei Modi zur Verfüg
 1. **Cluster** (Standardeinstellung): In diesem Fall werden erfasste Daten auf der Clusterebene abgerechnet. Die erfassten Datenmengen aus den einzelnen Arbeitsbereichen, die einem Cluster zugeordnet sind, werden aggregiert, um die tägliche Abrechnung für den Cluster zu berechnen. Beachten Sie, dass die Zuordnungen pro Knoten von [Azure Security Center](https://docs.microsoft.com/azure/security-center/) vor dieser Aggregation von Daten in allen Arbeitsbereichen im Cluster auf Arbeitsbereichsebene angewendet werden. 
 
 2. **Arbeitsbereiche**: Die Kapazitätsreservierungskosten für Ihren Cluster werden proportional den Arbeitsbereichen im Cluster zugeordnet (nach Berücksichtigung der knotenspezifischen Zuordnungen von [Azure Security Center](https://docs.microsoft.com/azure/security-center/) für den jeweiligen Arbeitsbereich). Wenn das gesamte Datenvolumen, das an einem Tag in einem Arbeitsbereich erfasst wird, unter der Kapazitätsreservierung liegt, werden für die einzelnen Arbeitsbereiche jeweils die erfassten Daten mit dem effektiven GB-basierten Kapazitätsreservierungssatz abgerechnet. Hierzu wird ein Teil der Kapazitätsreservierung abgerechnet, und der ungenutzte Teil der Kapazitätsreservierung wird für die Clusterressource in Rechnung gestellt. Wenn das gesamte Datenvolumen, das an einem Tag in einem Arbeitsbereich erfasst wird, über der Kapazitätsreservierung liegt, wird für die einzelnen Arbeitsbereiche jeweils ein Teil der Kapazitätsreservierung (basierend auf dem Anteil der an diesem Tag erfassten Daten) abgerechnet, und für jeden Arbeitsbereich wird jeweils ein Teil der erfassten Daten in Rechnung gestellt, die über die Kapazitätsreservierung hinausgehen. Wenn das gesamte Datenvolumen, das an einem Tag in einem Arbeitsbereich erfasst wird, über der Kapazitätsreservierung liegt, wird nichts für die Clusterressource abgerechnet.
-
 
 In Clusterabrechnungsoptionen wird die Datenaufbewahrung auf der Arbeitsbereichsebene abgerechnet. Beachten Sie, dass die Clusterabrechnung mit der Clustererstellung beginnt, unabhängig davon, ob dem Cluster Arbeitsbereiche zugeordnet wurden. Beachten Sie außerdem, dass Arbeitsbereiche, die einem Cluster zugeordnet sind, nicht mehr über einen Tarif verfügen.
 
@@ -192,10 +191,12 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 Sie können eine tägliche Obergrenze konfigurieren und die tägliche Erfassung für Ihren Arbeitsbereich einschränken. Dabei ist jedoch Vorsicht geboten, da dieses Limit möglichst nicht erreicht werden sollte.  Andernfalls verlieren Sie die Daten des restlichen Tages. Dies kann sich auf Azure-Dienste und -Lösungen auswirken, deren Funktionalität unter Umständen von der Verfügbarkeit aktueller Daten im Arbeitsbereich abhängt.  Infolgedessen kann auch die Integrität von Ressourcen, die IT-Diensten zugrunde liegen, nicht mehr zuverlässig überwacht werden, und es können keine Warnungen empfangen werden.  Die tägliche Obergrenze ist dazu gedacht, einen unerwarteten Anstieg des Datenvolumens aus Ihren verwalteten Ressourcen zu verhindern und den Grenzwert einzuhalten – oder ungeplante Gebühren für Ihren Arbeitsbereich zu vermeiden.  
 
-Kurz nach Erreichen des Tageslimits werden für den Rest des Tages keine kostenpflichtigen Datentypen mehr gesammelt. (Die Standardlatenz beim Anwenden des Tageslimits kann dazu führen, dass das Limit nicht so genau wie das festgelegte Tageslimit angewendet wird.) Im oberen Seitenbereich erscheint ein Warnbanner für den ausgewählten Log Analytics-Arbeitsbereich, und an die Tabelle *Operation* wird unter der Kategorie **LogManagement** ein Vorgangsereignis gesendet. Die Datensammlung wird nach der unter *Daily limit will be set at* (Tageslimit wird festgelegt um) definierten Zurücksetzungszeit fortgesetzt. Es empfiehlt sich, eine Warnungsregel auf der Grundlage dieses Vorgangsereignisses zu definieren und so zu konfigurieren, dass bei Erreichen des Tageslimits für Daten eine Benachrichtigung erfolgt. 
+Die tägliche Obergrenze wird für jeden Arbeitsbereich zu einer anderen Stunde des Tages angewendet. Die Zurücksetzungsstunde wird auf der Seite **Daily Cap** (Tägliche Obergrenze) angezeigt (siehe unten). Diese Zurücksetzungsstunde kann nicht konfiguriert werden. 
+
+Kurz nach Erreichen des Tageslimits werden für den Rest des Tages keine kostenpflichtigen Datentypen mehr gesammelt. (Die Standardlatenz beim Anwenden des Tageslimits führt dazu, dass das Limit nicht genau beim festgelegten Tageslimit angewendet wird.) Im oberen Seitenbereich erscheint ein Warnbanner für den ausgewählten Log Analytics-Arbeitsbereich, und an die Tabelle *Operation* wird unter der Kategorie **LogManagement** ein Vorgangsereignis gesendet. Die Datensammlung wird nach der unter *Daily limit will be set at* (Tageslimit wird festgelegt um) definierten Zurücksetzungszeit fortgesetzt. Es empfiehlt sich, eine Warnungsregel auf der Grundlage dieses Vorgangsereignisses zu definieren und so zu konfigurieren, dass bei Erreichen des Tageslimits für Daten eine Benachrichtigung erfolgt. 
 
 > [!WARNING]
-> Die Sammlung von Daten im Azure Security Center wird durch die tägliche Obergrenze nicht beendet, mit Ausnahme von Arbeitsbereichen, in denen Azure Security Center vor dem 19. Juni 2017 installiert wurde. 
+> Die Sammlung von Daten in Azure Sentinel oder Azure Security Center wird durch die tägliche Obergrenze nicht beendet, mit Ausnahme von Arbeitsbereichen, in denen Azure Security Center vor dem 19. Juni 2017 installiert wurde. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Identifizieren des zu definierenden Tageslimits für Daten
 
@@ -206,10 +207,12 @@ Informieren Sie sich unter [Analysieren der Datennutzung in Log Analytics](usage
 In den folgenden Schritten erfahren Sie, wie Sie ein Tageslimit für die vom Log Analytics-Arbeitsbereich erfasste Datenmenge konfigurieren.  
 
 1. Klicken Sie links in Ihrem Arbeitsbereich auf **Nutzung und geschätzte Kosten**.
-2. Klicken Sie im oberen Bereich der Seite **Nutzung und geschätzte Kosten** für den ausgewählten Arbeitsbereich auf **Datenmengenverwaltung**. 
+2. Klicken Sie im oberen Bereich der Seite **Nutzung und geschätzte Kosten** für den ausgewählten Arbeitsbereich auf **Datenobergrenze**. 
 3. Die tägliche Obergrenze ist standardmäßig **AUS**. Klicken Sie auf **EIN**, um sie zu aktivieren, und legen Sie das Limit für das Datenvolumen in GB/Tag fest.
 
     ![Konfigurieren des Log Analytics-Datenlimits](media/manage-cost-storage/set-daily-volume-cap-01.png)
+    
+Die tägliche Obergrenze kann über ARM konfiguriert werden, indem Sie den Parameter `dailyQuotaGb` unter `WorkspaceCapping` wie [hier](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate#workspacecapping) beschrieben festlegen. 
 
 ### <a name="alert-when-daily-cap-reached"></a>Warnung bei Erreichen der täglichen Obergrenze
 
@@ -250,7 +253,7 @@ Heartbeat
 Zum Abrufen der Anzahl von Knoten, die in den letzten 24 Stunden Daten gesendet haben, verwenden Sie die folgende Abfrage: 
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
@@ -260,7 +263,7 @@ union withsource = tt *
 Eine Liste der Knoten, die Daten senden (und die Menge der von ihnen gesendeten Daten) kann mit der folgenden Abfrage abgerufen werden:
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
@@ -286,7 +289,7 @@ Event
 | summarize count(), Bytes=sum(_BilledSize) by EventID, bin(TimeGenerated, 1d)
 ``` 
 
-Beachten Sie, dass durch die Klausel `where IsBillable = true` Datentypen bestimmter Lösungen herausgefiltert werden, für die keine Erfassungsgebühren anfallen. 
+Beachten Sie, dass durch die Klausel `where _IsBillable = true` Datentypen bestimmter Lösungen herausgefiltert werden, für die keine Erfassungsgebühren anfallen. Weitere Informationen zu `_IsBillable` finden Sie [hier](log-standard-properties.md#_isbillable).
 
 ### <a name="data-volume-by-solution"></a>Datenvolumen nach Lösung
 
@@ -330,11 +333,12 @@ Usage
 Der Datentyp `Usage` enthält keine Informationen auf Computerebene. Um die **Größe** der pro Computer erfassten Daten anzuzeigen, verwenden Sie die `_BilledSize`-[Eigenschaft](log-standard-properties.md#_billedsize), die die Größe in Bytes bereitstellt:
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize BillableDataBytes = sum(_BilledSize) by  computerName | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by  computerName 
+| sort by BillableDataBytes nulls last
 ```
 
 Die `_IsBillable`-[Eigenschaft](log-standard-properties.md#_isbillable) gibt an, ob für die erfassten Daten Gebühren anfallen. 
@@ -342,11 +346,12 @@ Die `_IsBillable`-[Eigenschaft](log-standard-properties.md#_isbillable) gibt an,
 Um die Anzahl von Ereignissen pro Computer anzuzeigen, für die **Gebühren** anfallen, verwenden Sie diese Abfrage: 
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize eventCount = count() by computerName  | sort by eventCount nulls last
+| summarize eventCount = count() by computerName  
+| sort by eventCount nulls last
 ```
 
 > [!TIP]
@@ -357,24 +362,40 @@ union withsource = tt *
 Für Daten von in Azure gehosteten Knoten können Sie die **Größe** der erfassten Daten __pro Computer__ mit der [Eigenschaft](log-standard-properties.md#_resourceid) „_ResourceId“ abrufen, die den vollständigen Pfad zur Ressource enthält:
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | where _IsBillable == true 
-| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by BillableDataBytes nulls last
 ```
 
-Für Daten von in Azure gehosteten Knoten können Sie die **Größe** der erfassten Daten __pro Azure-Abonnement__ durch Analysieren der Eigenschaft `_ResourceId` wie folgt abrufen:
+Für Daten von in Azure gehosteten Knoten können Sie die **Größe** der erfassten Daten __pro Azure-Abonnement__ nach Abonnement-ID mit der Eigenschaft `_ResourceId` wie folgt abrufen:
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | where _IsBillable == true 
-| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
-    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize BillableDataBytes = sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
+| extend subscriptionId = split(_ResourceId, "/")[2] 
+| summarize BillableDataBytes = sum(BillableDataBytes) by subscriptionId | sort by BillableDataBytes nulls last
 ```
 
-Durch Ändern von `subscriptionId` in `resourceGroup` wird die abrechenbare erfasste Datenmenge pro Azure-Ressourcengruppe angezeigt. 
+Ebenso können Sie das Datenvolumen nach Ressourcengruppe wie folgt abrufen:
+
+```kusto
+union * 
+| where TimeGenerated > ago(24h)
+| where _IsBillable == true 
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
+| extend resourceGroup = split(_ResourceId, "/")[4] 
+| summarize BillableDataBytes = sum(BillableDataBytes) by resourceGroup | sort by BillableDataBytes nulls last
+```
+
+Bei Bedarf können Sie auch `_ResourceId` auf folgende Weise noch vollständiger analysieren:
+
+```Kusto
+| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
+    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
+```
 
 > [!TIP]
 > Verwenden Sie diese `union  *`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen [ressourcenintensiv](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) sind. Wenn Sie keine Ergebnisse pro Abonnement, Ressourcengruppe oder Ressourcenname benötigen, dann führen Sie Abfragen nach dem Datentyp „Usage“ aus.
@@ -424,7 +445,7 @@ Hier finden Sie einige Vorschläge zum Verringern der erfassten Protokolle:
 Um eine Liste von Computern abzurufen, die als Knoten berechnet werden, wenn für den Arbeitsbereich der Legacytarif „Pro Knoten“ gilt, suchen Sie Knoten, die **kostenpflichtige Datentypen** senden (einige Datentypen sind kostenlos). Verwenden Sie dazu die `_IsBillable`-[Eigenschaft](log-standard-properties.md#_isbillable) und das linke Feld des vollständig qualifizierten Domänennamens. Dies gibt die Anzahl der Computer mit abgerechneten Daten pro Stunde zurück (was der Granularität entspricht, mit der Knoten gezählt und abgerechnet werden):
 
 ```kusto
-union withsource = tt * 
+union * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
@@ -498,7 +519,7 @@ let daysToEvaluate = 7; // Enter number of previous days look at (reduce if the 
 let SecurityDataTypes=dynamic(["SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent", "Update", "UpdateSummary"]);
 let StartDate = startofday(datetime_add("Day",-1*daysToEvaluate,now()));
 let EndDate = startofday(now());
-union withsource = tt * 
+union * 
 | where TimeGenerated >= StartDate and TimeGenerated < EndDate
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
@@ -542,64 +563,23 @@ Diese Abfrage spiegelt nicht exakt wider, wie der Verbrauch berechnet wird, ist 
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Erstellen einer Warnung für den Fall, dass die Datensammlung hoch ist
 
-In diesem Abschnitt wird beschrieben, wie Sie eine Warnung erstellen, wenn Folgendes gilt:
-- Das Datenvolumen übersteigt eine angegebene Menge.
-- Für das Datenvolumen besteht die Vorhersage, dass eine bestimmte Menge überschritten wird.
+In diesem Abschnitt wird beschrieben, wie Sie über Azure Monitor-[Protokollwarnungen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) eine Warnung erstellen, wenn das Datenvolumen in den letzten 24 Stunden einen angegebenen Wert überschritten hat. 
 
-Azure-Warnungen unterstützen [Protokollwarnungen](alerts-unified-log.md), die Suchabfragen nutzen. 
-
-Für die folgende Abfrage wird ein Ergebnis erzielt, wenn innerhalb der letzten 24 Stunden mehr als 100 GB an Daten gesammelt wurden:
-
-```kusto
-union withsource = $table Usage 
-| where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
-| extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type 
-| where DataGB > 100
-```
-
-Für die folgende Abfrage wird eine einfache Formel verwendet, um vorherzusagen, wenn an einem Tag mehr als 100 GB an Daten gesendet werden: 
-
-```kusto
-union withsource = $table Usage 
-| where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
-| extend Type = $table 
-| summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type 
-| where EstimatedGB > 100
-```
-
-Wenn die Warnung für ein anderes Datenvolumen gelten soll, ändern Sie den Wert 100 in den Abfragen einfach in den gewünschten GB-Wert.
-
-Führen Sie die Schritte unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](alerts-metric.md) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung höher als erwartet ausfällt.
-
-Legen Sie beim Erstellen der Warnung für die erste Abfrage Folgendes fest, wenn mehr als 100 GB an Daten innerhalb von 24 Stunden anfallen:  
+Führen Sie die folgenden Schritte aus, um eine Warnung auszugeben, wenn das in den letzten 24 Stunden erfasste abrechenbare Datenvolumen größer als 50 GB ist: 
 
 - **Definieren der Warnungsbedingung**: Festlegen Ihres Log Analytics-Arbeitsbereichs als Ressourcenziel
 - **Warnungskriterien**:
    - **Signalname**: **Benutzerdefinierte Protokollsuche**
-   - **Suchabfrage** auf `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
+   - **Suchabfrage**: `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50`. Wenn Sie eine andere 
    - **Warnungslogik**: **Basiert auf** *Anzahl von Ergebnissen* und **Bedingung** ist *Größer als* ein **Schwellenwert** von *0*
-   - **Zeitraum**: *1440* Minuten, **Warnungshäufigkeit**: alle *60* Minuten, da die Nutzungsdaten nur einmal pro Stunde aktualisiert werden
+   - **Zeitraum**: *1440* Minuten; **Warnungshäufigkeit**: alle *1440* Minuten zur Ausführung einmal am Tag.
 - **Definieren der Warnungsdetails**:
-   - **Name** auf *Datenvolumen größer als 100 GB in 24 Stunden*
-   - **Schweregrad** auf *Warnung*
+   - **Name**: *Abrechenbares Datenvolumen größer als 50 GB in 24 Stunden*
+   - **Schweregrad**: *Warnung*
 
 Geben Sie eine vorhandene [Aktionsgruppe](action-groups.md) an, oder erstellen Sie eine neue, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt.
 
-Legen Sie beim Erstellen der Warnung für die zweite Abfrage Folgendes fest, wenn die Vorhersage besteht, dass innerhalb von 24 Stunden mehr als 100 GB an Daten anfallen:
-
-- **Definieren der Warnungsbedingung**: Festlegen Ihres Log Analytics-Arbeitsbereichs als Ressourcenziel
-- **Warnungskriterien**:
-   - **Signalname**: **Benutzerdefinierte Protokollsuche**
-   - **Suchabfrage** auf `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
-   - **Warnungslogik**: **Basiert auf** *Anzahl von Ergebnissen* und **Bedingung** ist *Größer als* ein **Schwellenwert** von *0*
-   - **Zeitraum**: *180* Minuten, **Warnungshäufigkeit**: alle *60* Minuten, da die Nutzungsdaten nur einmal pro Stunde aktualisiert werden
-- **Definieren der Warnungsdetails**:
-   - **Name** auf *Erwartetes Datenvolumen von mehr als 100 GB in 24 Stunden*
-   - **Schweregrad** auf *Warnung*
-
-Geben Sie eine vorhandene [Aktionsgruppe](action-groups.md) an, oder erstellen Sie eine neue, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt.
-
-Wenn Sie eine Warnung erhalten, können Sie die Schritte im folgenden Abschnitt verwenden, um per Problembehandlung zu ermitteln, warum die Nutzung höher als erwartet ist.
+Wenn Sie eine Warnung erhalten, verwenden Sie die Schritte in den Abschnitten oben, um per Problembehandlung zu ermitteln, warum die Nutzung höher als erwartet ist.
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>Gebühren für die Datenübertragung mit Log Analytics
 

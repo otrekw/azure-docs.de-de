@@ -5,18 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 12/12/2019
+ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 95639caddfa627290f4e7153d50f9f7799a1f320
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba715d510dc296ffa8f9c0ee58841f284416a118
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75460550"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027329"
 ---
 ## <a name="protect-your-access-keys"></a>Schützen Ihrer Zugriffsschlüssel
 
 Ihre Speicherkonto-Zugriffsschlüssel ähneln einem Stammkennwort für das Speicherkonto. Achten Sie darauf, die Zugriffsschlüssel immer gut zu schützen. Verwenden Sie Azure Key Vault zum sicheren Verwalten und Rotieren Ihrer Schlüssel. Geben Sie Zugriffsschlüssel nicht an andere Benutzer weiter, vermeiden Sie das Hartcodieren, und speichern Sie die Schlüssel nicht als Klartext, auf den andere Benutzer Zugriff haben. Rotieren Sie die Schlüssel, wenn Sie glauben, dass sie möglicherweise gefährdet sind.
 
-Verwenden Sie nach Möglichkeit Azure Active Directory (Azure AD) zum Autorisieren von Anforderungen an Blob Storage und Queue Storage anstelle eines gemeinsam verwendeten Schlüssels. Azure AD bietet überlegene Sicherheit und Benutzerfreundlichkeit gegenüber dem gemeinsam verwendeten Schüssel. Weitere Informationen zur Autorisierung des Datenzugriffs mit Azure AD finden Sie unter [Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](../articles/storage/common/storage-auth-aad.md).
+> [!NOTE]
+> Microsoft empfiehlt nach Möglichkeit die Verwendung von Azure Active Directory (Azure AD) zum Autorisieren von Anforderungen an Blob- und Warteschlangendaten anstelle eines gemeinsam verwendeten Schlüssels. Azure AD bietet überlegene Sicherheit und Benutzerfreundlichkeit gegenüber dem gemeinsam verwendeten Schüssel. Weitere Informationen zur Autorisierung des Datenzugriffs mit Azure AD finden Sie unter [Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](../articles/storage/common/storage-auth-aad.md).

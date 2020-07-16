@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 3784eda2db5f375f04cdde84108a78ae277baf60
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: c93ba19cc70aa6b5df054dcc2e7e06885b02d661
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860663"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367953"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs
 
@@ -24,7 +24,7 @@ Wenn Sie einen Log Analytics-Arbeitsbereich löschen, wird ein vorläufiger Lös
 > [!NOTE]
 > Wenn Sie das vorläufige Löschen außer Kraft setzen und den Arbeitsbereich dauerhaft löschen möchten, führen Sie die Schritte unter [Dauerhaftes Löschen eines Arbeitsbereichs](#permanent-workspace-delete) aus.
 
-Gehen Sie beim Löschen eines Arbeitsbereichs vorsichtig vor, da er unter Umständen wichtige Daten und Konfigurationen enthält, deren Löschung sich negativ auf den Dienstvorgang auswirken kann. Überprüfen Sie die Agents, Lösungen und anderen Azure-Dienste und Quellen, deren Daten in Log Analytics gespeichert werden, z. B.:
+Gehen Sie beim Löschen eines Arbeitsbereichs vorsichtig vor, da er unter Umständen wichtige Daten und Konfigurationen enthält, deren Löschung sich negativ auf den Dienstvorgang auswirken kann. Überprüfen Sie die Agents, Lösungen und anderen Azure-Dienste, deren Daten in Log Analytics gespeichert werden, z. B.:
 
 * Verwaltungslösungen
 * Azure-Automatisierung
@@ -64,21 +64,11 @@ Die Methode des vorläufigen Löschens ist in einigen Szenarien möglicherweise 
 > [!IMPORTANT]
 > Verwenden Sie dauerhafte Löschungen von Arbeitsbereichen mit Vorsicht, da dieser Vorgang nicht rückgängig gemacht werden kann. Sie können dann weder den Arbeitsbereich noch dessen Daten wiederherstellen.
 
-Verwenden Sie zum dauerhaften Löschen Ihres Arbeitsbereichs die [REST-Anforderung zum Löschen von Arbeitsbereichen](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) mit einem Erzwingungstag:
+Fügen Sie das „-force“-Tag hinzu, um Ihren Arbeitsbereich dauerhaft zu löschen:
 
-```rst
-DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
-Authorization: Bearer <token>
+```powershell
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -Force
 ```
-
-Alternativ können Sie den Vorgang über die Azure-REST-Dokumentationswebsite ausführen:
-1.  Navigieren Sie zur [REST-API zum Löschen von Arbeitsbereichen](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete), und klicken Sie auf **Jetzt testen**. 
-2.  Geben Sie die Details des Arbeitsbereichs ein, den Sie dauerhaft löschen möchten.
-3.  Geben Sie einen neuen Parameter *force* mit dem Wert *true* ein.
-4.  Klicken Sie rechts neben dem Wert auf das Plussymbol (+). Dadurch wird *force=true* dem URI in der Anforderung hinzugefügt.
-5.  Klicken Sie auf die Schaltfläche *Ausführen*.
-
-Die Antwort sollte „200 OK“ lauten.
 
 ## <a name="recover-workspace"></a>Wiederherstellen eines Arbeitsbereichs
 Wenn Sie einen Log Analytics-Arbeitsbereich versehentlich oder absichtlich löschen, versetzt der Dienst den Arbeitsbereich in den Zustand des vorläufigen Löschens, sodass von keinem Vorgang darauf zugegriffen werden kann. Der Name des gelöschten Arbeitsbereichs bleibt während des Zeitraums des vorläufigen Löschens erhalten und kann nicht zum Erstellen eines neuen Arbeitsbereichs verwendet werden. Sobald der Zeitraum des vorläufigen Löschens abgelaufen ist, kann der Arbeitsbereich nicht wiederhergestellt werden, er ist für dauerhaftes Löschen geplant, und der Name des Arbeitsbereichs wird freigegeben und kann zum Erstellen eines neuen Arbeitsbereichs verwendet werden.
@@ -114,11 +104,14 @@ Der Arbeitsbereich und alle zugehörigen Daten sind nach dem Wiederherstellungsv
 > [!NOTE]
 > * Beim erneuten Erstellen eines Arbeitsbereichs während des Zeitraums des vorläufigen Löschens wird darauf hingewiesen, dass der Name des Arbeitsbereichs bereits verwendet wird. 
  
-### <a name="troubleshooting"></a>Problembehandlung
-Sie benötigen mindestens die Berechtigungen der Rolle *Log Analytics-Mitwirkender*, um einen Arbeitsbereich zu löschen.<br>
-Wenn Sie beim Erstellen eines Arbeitsbereichs die Fehlermeldung *Dieser Arbeitsbereichsname wird bereits verwendet* oder einen *Konflikt* erhalten, kann dies folgende Gründe haben:
-* Der Name des Arbeitsbereichs ist nicht verfügbar und wird bereits von jemandem in Ihrer Organisation oder von einem anderen Kunden verwendet.
-* Der Arbeitsbereich wurde innerhalb der letzten 14 Tage gelöscht, und der Name wurde für den Zeitraum der vorläufigen Löschung reserviert. Zum Überschreiben der vorübergehenden Löschung und der dauerhaften Löschen des Arbeitsbereichs, um einen neuen, gleichnamigen Arbeitsbereich zu erstellen, gehen Sie folgendermaßen vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:<br>
-   1. [Stellen Sie Ihren Arbeitsbereich wieder her.](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)
-   2. [Löschen Sie Ihren Arbeitsbereich dauerhaft.](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)
-   3. Erstellen Sie einen neuen Arbeitsbereich mit demselben Arbeitsbereichnamen.
+## <a name="troubleshooting"></a>Problembehandlung
+
+Sie benötigen mindestens die Berechtigungen der Rolle *Log Analytics-Mitwirkender*, um einen Arbeitsbereich zu löschen.
+
+* Wenn Sie sich nicht sicher sind, ob sich der gelöschte Arbeitsbereich im Zustand des vorläufigen Löschens befindet und wiederhergestellt werden kann, klicken Sie auf der Seite *Log Analytics-Arbeitsbereiche* auf [Wiederherstellen](#recover-workspace), um eine Liste vorläufig gelöschter Arbeitsbereiche nach Abonnement anzuzeigen. Dauerhaft gelöschte Arbeitsbereiche sind in der Liste nicht enthalten.
+* Wenn Sie beim Erstellen eines Arbeitsbereichs die Fehlermeldung *Dieser Arbeitsbereichsname wird bereits verwendet* oder einen *Konflikt* erhalten, kann dies folgende Gründe haben:
+  * Der Name des Arbeitsbereichs ist nicht verfügbar und wird bereits von jemandem in Ihrer Organisation oder von einem anderen Kunden verwendet.
+  * Der Arbeitsbereich wurde innerhalb der letzten 14 Tage gelöscht, und der Name wurde für den Zeitraum der vorläufigen Löschung reserviert. Zum Überschreiben der vorübergehenden Löschung und der dauerhaften Löschen des Arbeitsbereichs, um einen neuen, gleichnamigen Arbeitsbereich zu erstellen, gehen Sie folgendermaßen vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:<br>
+     1. [Stellen Sie Ihren Arbeitsbereich wieder her.](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)
+     2. [Löschen Sie Ihren Arbeitsbereich dauerhaft.](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)
+     3. Erstellen Sie einen neuen Arbeitsbereich mit demselben Arbeitsbereichnamen.

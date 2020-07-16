@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25aafee59c7f5f7ae59aa2fd7871de8926907f68
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84325132"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261369"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Empfangen und Beantworten eingehender HTTPS-Anforderungen in Azure Logic Apps
 
@@ -24,7 +24,7 @@ Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierte
 
 * Empfangen von und Antworten auf HTTPS-Aufrufe aus einer anderen Logik-App.
 
-Der Anforderungstrigger unterstützt [Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) für die Autorisierung eingehender Aufrufe ihrer Logik-App. Weitere Informationen zum Aktivieren dieser Authentifizierung finden Sie unter [Schützen des Zugriffs und der Daten in Azure Logic Apps – Aktivieren der Azure AD OAuth-Authentifizierung](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
+Der Anforderungstrigger unterstützt [Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) für die Autorisierung eingehender Aufrufe ihrer Logik-App. Weitere Informationen zum Aktivieren dieser Authentifizierung finden Sie unter [Schützen des Zugriffs und der Daten in Azure Logic Apps – Aktivieren der Azure AD OAuth-Authentifizierung](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -157,7 +157,7 @@ Dieser integrierte Trigger erstellt einen manuell aufrufbaren HTTPS-Endpunkt, de
          "account": {
             "name": "Contoso",
             "ID": "12345",
-            "address": { 
+            "address": {
                "number": "1234",
                "street": "Anywhere Street",
                "city": "AnyTown",
@@ -172,9 +172,9 @@ Dieser integrierte Trigger erstellt einen manuell aufrufbaren HTTPS-Endpunkt, de
 1. Gehen Sie folgendermaßen vor, um zu überprüfen, ob der eingehende Aufruf einen Anforderungstext enthält, der dem angegebenen Schema entspricht:
 
    1. Klicken Sie auf der Titelleiste des Anforderungstriggers auf die Schaltfläche mit den Auslassungspunkten ( **...** ).
-   
+
    1. Aktivieren Sie in den Einstellungen des Triggers die **Schemavalidierung**, und wählen Sie **Fertig** aus.
-   
+
       Wenn der Anforderungstext des eingehenden Aufrufs nicht mit dem Schema identisch ist, gibt der Trigger eine `HTTP 400 Bad Request`-Fehlermeldung zurück.
 
 1. Öffnen Sie zum Hinzufügen weiterer Eigenschaften die Liste **Neuen Parameter hinzufügen**, und wählen Sie die Parameter aus, die hinzugefügt werden sollen.
@@ -259,7 +259,7 @@ Ihre Logik-App hält die eingehende Anforderung nur für [begrenzte Zeit](../log
 
    Der Anforderungstrigger ist in diesem Beispiel der Einfachheit halber zugeklappt.
 
-1. Fügen Sie alle Werte hinzu, die für die Antwortnachricht erforderlich sind. 
+1. Fügen Sie alle Werte hinzu, die für die Antwortnachricht erforderlich sind.
 
    Bei einigen Feldern wird durch Klicken die Liste mit dynamischen Inhalten geöffnet. Anschließend können Sie Token auswählen, die die verfügbaren Ausgaben aus vorherigen Schritten des Workflows darstellen. Eigenschaften aus dem Schema, das im vorherigen Beispiel angegeben wurde, werden jetzt in der Liste mit dynamischen Inhalten angezeigt.
 
@@ -271,7 +271,7 @@ Ihre Logik-App hält die eingehende Anforderung nur für [begrenzte Zeit](../log
 
    ![Header: Zur Textansicht wechseln](./media/connectors-native-reqres/switch-to-text-view.png)
 
-   Hier finden Sie weitere Informationen zu den Eigenschaften, die Sie in der Antwortaktion festlegen können. 
+   Hier finden Sie weitere Informationen zu den Eigenschaften, die Sie in der Antwortaktion festlegen können.
 
    | Eigenschaftenname | JSON-Eigenschaftenname | Erforderlich | BESCHREIBUNG |
    |---------------|--------------------|----------|-------------|
@@ -282,7 +282,7 @@ Ihre Logik-App hält die eingehende Anforderung nur für [begrenzte Zeit](../log
 
 1. Um weitere Eigenschaften hinzuzufügen, z. B. das JSON-Schema für den Antworttext, öffnen Sie die Liste **Neuen Parameter hinzufügen**, und wählen Sie die Parameter aus, die hinzugefügt werden sollen.
 
-1. Wenn Sie fertig sind, speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus. 
+1. Wenn Sie fertig sind, speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

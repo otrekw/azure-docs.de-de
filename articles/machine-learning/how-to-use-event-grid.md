@@ -1,5 +1,5 @@
 ---
-title: Auslöserereignisse in ML-Workflows
+title: Auslöserereignisse in ML-Workflows (Vorschau)
 titleSuffix: Azure Machine Learning
 description: Richten Sie in Azure Machine Learning ereignisgesteuerte Anwendungen, Prozesse oder CI/CD-Machine Learning-Workflows ein.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 5aeec1c2dae1d8a8cc11b5e8b3181d9b22069a43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338311"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135969"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Auslösen von Anwendungen, Prozessen oder CI/CD-Workflows basierend auf Azure Machine Learning-Ereignissen (Vorschau)
 

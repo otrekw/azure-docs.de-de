@@ -2,13 +2,13 @@
 title: Unterstützung der VMware-Migration in Azure Migrate
 description: Erfahren Sie etwas über die Unterstützung der Migration virtueller VMware-Computer in Azure Migrate.
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: ed51361ca4d605487a5d273505df21780003bdbb
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.date: 06/08/2020
+ms.openlocfilehash: 7b026d07c6ac1630048d8aee6778215f3a99dddb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140479"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134995"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -19,8 +19,8 @@ Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen un
 
 Es gibt mehrere Möglichkeiten, virtuelle VMware-Computer zu migrieren:
 
-- Migration ohne Agent: Migrieren von VMs, ohne dass darauf Software installiert werden muss Bei der Migration ohne Agent stellen Sie die [Azure Migrate-Appliance](migrate-appliance.md) bereit.
-- Agent-basierte Migration: Installieren eines Agents für die Replikation auf der VM Bei der Agent-basierten Migration müssen Sie eine [Replikationsappliance](migrate-replication-appliance.md) bereitstellen.
+- **Verwendung der Migration ohne Agent**: Migrieren von VMs, ohne dass darauf Software installiert werden muss Bei der Migration ohne Agent stellen Sie die [Azure Migrate-Appliance](migrate-appliance.md) bereit.
+- **Verwendung der Agent-basierten Migration**: Installieren eines Agents für die Replikation auf der VM Bei der Agent-basierten Migration stellen Sie eine [Replikationsappliance](migrate-replication-appliance.md) bereit.
 
 In [diesem Artikel](server-migrate-overview.md) finden Sie Informationen zur Verwendung dieser beiden Methoden.
 
@@ -29,22 +29,31 @@ In [diesem Artikel](server-migrate-overview.md) finden Sie Informationen zur Ver
 - Sie können bis zu 10 VMs gleichzeitig für die Replikation auswählen. Wenn Sie weitere Computer migrieren möchten, replizieren Sie sie in Gruppen von 10.
 - Bei der VMware-Migration ohne Agent können Sie bis zu 300 Replikationsvorgänge gleichzeitig ausführen.
 
-## <a name="agentless-vmware-servers"></a>VMware-Server ohne Agent
+## <a name="agentless-migration"></a>Migration ohne Agent 
+
+In diesem Abschnitt werden die Anforderungen für die Migration ohne Agent zusammengefasst.
+
+### <a name="vmware-requirements-agentless"></a>VMware-Anforderungen (ohne Agent)
+
+In der Tabelle werden die VMware-Hypervisor-Anforderungen zusammengefasst.
 
 **VMware** | **Details**
 --- | ---
 **VMware vCenter Server** | Version 5.5, 6.0, 6.5 oder 6.7
 **VMware vSphere ESXI-Host** | Version 5.5, 6.0, 6.5 oder 6.7
-**vCenter Server-Berechtigungen** | Bei der Migration ohne Agent wird die [Migrate-Appliance](migrate-appliance.md) verwendet. Für die Appliance sind folgende Berechtigungen erforderlich:<br/><br/> - **Datastore.Browse:** Ermöglicht das Durchsuchen von VM-Protokolldateien zur Fehlerbehebung bei der Erstellung und Löschung von Momentaufnahmen.<br/><br/> - **Datastore.LowLevelFileOperations**: Ermöglicht Lese-/Schreib-/Lösch-/Umbenennungsvorgänge im Datenspeicherbrowser, um Probleme bei der Erstellung und Löschung von Momentaufnahmen zu beheben.<br/><br/> - **VirtualMachine.Configuration.DiskChangeTracking:** Ermöglicht die Aktivierung oder Deaktivierung der Änderungsverfolgung von VM-Datenträgern, um geänderte Datenblöcke zwischen Momentaufnahmen abzurufen.<br/><br/> - **VirtualMachine.Configuration.DiskLease:** Ermöglicht Datenträger-Leasevorgänge für eine VM, damit der Datenträger mit dem VMware vSphere Virtual Disk Development Kit (VDDK) gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.AllowDiskAccess**: (insbesondere für vSphere 6.0 und höher) ermöglicht das Öffnen eines Datenträgers auf einem virtuellen Computer für den zufälligen Lesezugriff auf den Datenträger mit dem VDDK.<br/><br/> - **VirtualMachine.Provisioning.AllowReadOnlyDiskAccess:** Ermöglicht das Öffnen eines Datenträgers auf einer VM, damit der Datenträger mit dem VDDK gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.AllowDiskRandomAccess**: Ermöglicht das Öffnen eines Datenträgers auf einer VM, damit der Datenträger mit dem VDDK gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.AllowVirtualMachineDownload:** Ermöglicht Lesevorgänge für Dateien, die einer VM zugeordnet sind, um die Protokolle herunterzuladen und ggf. Fehler zu beheben.<br/><br/> - **VirtualMachine.SnapshotManagement:*** Ermöglicht das Erstellen und Verwalten von VM-Momentaufnahmen zur Replikation.<br/><br/> - **Virtual Machine.Interaction.Power Off:** Ermöglicht das Ausschalten der VM während der Migration zu Azure.
+**vCenter Server-Berechtigungen** | Bei der Migration ohne Agent wird die [Migrate-Appliance](migrate-appliance.md) verwendet. Für die Appliance sind folgende Berechtigungen in vCenter Server erforderlich:<br/><br/> - **Datastore.Browse:** Ermöglicht das Durchsuchen von VM-Protokolldateien zur Fehlerbehebung bei der Erstellung und Löschung von Momentaufnahmen.<br/><br/> - **Datastore.LowLevelFileOperations**: Ermöglicht Lese-/Schreib-/Lösch-/Umbenennungsvorgänge im Datenspeicherbrowser, um Probleme bei der Erstellung und Löschung von Momentaufnahmen zu beheben.<br/><br/> - **VirtualMachine.Configuration.DiskChangeTracking:** Ermöglicht die Aktivierung oder Deaktivierung der Änderungsverfolgung von VM-Datenträgern, um geänderte Datenblöcke zwischen Momentaufnahmen abzurufen.<br/><br/> - **VirtualMachine.Configuration.DiskLease:** Ermöglicht Datenträger-Leasevorgänge für eine VM, damit der Datenträger mit dem VMware vSphere Virtual Disk Development Kit (VDDK) gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.AllowDiskAccess**: (insbesondere für vSphere 6.0 und höher) ermöglicht das Öffnen eines Datenträgers auf einem virtuellen Computer für den zufälligen Lesezugriff auf den Datenträger mit dem VDDK.<br/><br/> - **VirtualMachine.Provisioning.AllowReadOnlyDiskAccess:** Ermöglicht das Öffnen eines Datenträgers auf einer VM, damit der Datenträger mit dem VDDK gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.AllowDiskRandomAccess**: Ermöglicht das Öffnen eines Datenträgers auf einer VM, damit der Datenträger mit dem VDDK gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.AllowVirtualMachineDownload:** Ermöglicht Lesevorgänge für Dateien, die einer VM zugeordnet sind, um die Protokolle herunterzuladen und ggf. Fehler zu beheben.<br/><br/> - **VirtualMachine.SnapshotManagement:*** Ermöglicht das Erstellen und Verwalten von VM-Momentaufnahmen zur Replikation.<br/><br/> - **Virtual Machine.Interaction.Power Off:** Ermöglicht das Ausschalten der VM während der Migration zu Azure.
 
 
 
-## <a name="agentless-vmware-vms"></a>Virtuelle VMware-Computer
+### <a name="vm-requirements-agentless"></a>VM-Anforderungen (ohne Agent)
+
+In der Tabelle werden die Migrationsanforderungen ohne Agent für VMware-VMs zusammengefasst.
 
 **Unterstützung** | **Details**
 --- | ---
-**Unterstützte Betriebssysteme** | Von Azure unterstützte [Windows-](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) und [Linux-](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)Betriebssysteme können mithilfe der Migration ohne Agent migriert werden.
-**Erforderliche Änderungen für Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können. Bei den folgenden Betriebssystemen nimmt Azure Migrate diese Änderungen automatisch vor:<br/> - Red Hat Enterprise Linux 6.5+, 7.0+<br/> - CentOS 6.5+, 7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS, 16.04LTS, 18.04LTS<br/> – Debian 7, 8<br/><br/> Bei anderen Betriebssystemen müssen Sie vor der Migration manuell Anpassungen vornehmen. Die entsprechenden Artikel enthalten Anweisungen zur Vorgehensweise.
+**Unterstützte Betriebssysteme** | Sie können alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)- und [Linux](../virtual-machines/linux/endorsed-distros.md)-Betriebssysteme migrieren, die von Azure unterstützt werden.
+**Windows-VMs in Azure** | Möglicherweise müssen Sie vor der Migration [einige Änderungen](prepare-for-migration.md#verify-required-changes-before-migrating) an VMs vornehmen. 
+**Linux-VMs in Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können.<br/><br/> Bei diesen Linux-Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch:<br/> - Red Hat Enterprise Linux 6.5+, 7.0+<br/> - CentOS 6.5+, 7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS, 16.04LTS, 18.04LTS<br/> – Debian 7, 8. Bei anderen Betriebssystemen nehmen Sie die [erforderlichen Änderungen](prepare-for-migration.md#verify-required-changes-before-migrating) manuell vor.
 **Linux-Start** | Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition („/“) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und nicht auf andere Datenträger erstrecken.
 **UEFI-Start** | Die Migration von VMs mit UEFI-Start wird nicht unterstützt.
 **Datenträgergröße** | 2 TB für den Betriebssystemdatenträger, 8 TB für Datenträger
@@ -63,7 +72,7 @@ In [diesem Artikel](server-migrate-overview.md) finden Sie Informationen zur Ver
 **Gleichzeitige Replikation** | 300 virtuelle Computer pro vCenter Server. Bei mehr virtuellen Computern sind diese in Batches von 300 zu migrieren.
 
 
-## <a name="agentless-azure-migrate-appliance"></a>Azure Migrate-Appliance ohne Agent 
+### <a name="appliance-requirements-agentless"></a>Applianceanforderungen (ohne Agent)
 
 Bei der Migration ohne Agent wird die [Azure Migrate-Appliance](migrate-appliance.md) verwendet. Sie können die Appliance mithilfe einer in vCenter Server importierten OVA-Vorlage oder mit einem [PowerShell-Skript](deploy-appliance-script.md) als VMware-VM bereitstellen.
 
@@ -71,16 +80,22 @@ Bei der Migration ohne Agent wird die [Azure Migrate-Appliance](migrate-applianc
 - Informationen zu den URLs, auf die die Appliance Zugriff benötigt, finden Sie unter [URLs für die öffentliche Cloud](migrate-appliance.md#public-cloud-urls) und [URLs für Azure Government-Clouds](migrate-appliance.md#government-cloud-urls).
 - In Azure Government müssen Sie die Appliance [mithilfe des Skripts](deploy-appliance-script-government.md) bereitstellen.
 
-## <a name="agentless-ports"></a>Ports ohne Agent
+### <a name="port-requirements-agentless"></a>Portanforderungen (ohne Agent)
 
 **Device** | **Connection**
 --- | ---
 Appliance | Ausgehende Verbindungen an Port 443 zum Hochladen von replizierten Daten in Azure und zur Kommunikation mit Azure Migrate-Diensten zum Orchestrieren der Replikation und der Migration.
 vCenter-Server | Eingehende Verbindungen an Port 443 zum Orchestrieren der Replikation durch die Appliance – Erstellen von Momentaufnahmen, Kopieren von Daten, Freigeben von Momentaufnahmen.
-vSphere/EXSI-Host | Eingehend an TCP-Port 902 zum Replizieren der Daten aus Momentaufnahmen durch die Appliance
+vSphere/ESXI-Host | Eingehend an TCP-Port 902 zum Replizieren der Daten aus Momentaufnahmen durch die Appliance
+
+## <a name="agent-based-migration"></a>Agent-basierte Migration 
 
 
-## <a name="agent-based-vmware-servers"></a>Agent-basierte VMware-Server
+In diesem Abschnitt werden die Anforderungen für die Agent-basierte Migration zusammengefasst.
+
+
+### <a name="vmware-requirements-agent-based"></a>VMware-Anforderungen (Agent-basiert)
+
 In dieser Tabelle sind die Unterstützung und Einschränkungen der Bewertung für VMware-Virtualisierungsserver zusammengefasst.
 
 **VMware-Anforderungen** | **Details**
@@ -89,7 +104,7 @@ In dieser Tabelle sind die Unterstützung und Einschränkungen der Bewertung fü
 **VMware vSphere ESXI-Host** | Version 5.5, 6.0, 6.5 oder 6.7
 **vCenter Server-Berechtigungen** | Ein schreibgeschütztes Konto für vCenter Server.
 
-## <a name="agent-based-vmware-vms"></a>Agent-basierte virtuelle VMware-Computer
+### <a name="vm-requirements-agent-based"></a>VM-Anforderungen (Agent-basiert)
 
 Die Tabelle enthält eine Übersicht über die Unterstützung für virtuelle VMware-Computer, die mit der Agent-basierten Migration migriert werden sollen.
 
@@ -119,7 +134,7 @@ Die Tabelle enthält eine Übersicht über die Unterstützung für virtuelle VMw
 
 
 
-## <a name="agent-based-replication-appliance"></a>Agent-basierte Replikationsappliance 
+### <a name="appliance-requirements-agent-based"></a>Applianceanforderungen (Agent-basiert)
 
 Wenn Sie die Replikationsappliance mit der OVA-Vorlage im Azure Migrate-Hub einrichten, wird die Appliance unter Windows Server 2016 ausgeführt und erfüllt die Supportanforderungen. Stellen Sie bei der manuellen Einrichtung der Replikationsappliance auf einem physischen Server sicher, dass sie die Anforderungen erfüllt.
 
@@ -128,7 +143,7 @@ Wenn Sie die Replikationsappliance mit der OVA-Vorlage im Azure Migrate-Hub ein
 - Informationen zu den URLs, auf die die Replikationsappliance Zugriff benötigt, finden Sie unter [URLs für die öffentliche Cloud](migrate-replication-appliance.md#url-access) und [URLs für Azure Government-Clouds](migrate-replication-appliance.md#azure-government-url-access).
 - Überprüfen Sie die [URLs](migrate-replication-appliance.md#port-access), auf die die Replikationsappliance zugreifen können muss.
 
-## <a name="agent-based-ports"></a>Agent-basierte Ports
+### <a name="port-requirements-agent-based"></a>Portanforderungen (Agent-basiert)
 
 **Device** | **Connection**
 --- | ---
@@ -138,23 +153,23 @@ Prozessserver | Der Prozessserver empfängt Replikationsdaten, optimiert und ver
 
 ## <a name="azure-vm-requirements"></a>Azure-VM-Anforderungen
 
-Alle lokalen VMs, die in Azure repliziert werden, müssen die in dieser Tabelle zusammengefassten Azure-VM-Anforderungen erfüllen. Wenn Site Recovery eine Voraussetzungsprüfung für die Replikation durchführt, ist diese nicht erfolgreich, wenn einige der Anforderungen nicht erfüllt sind.
+Alle lokalen VMs, die (mit Agent-basierter Migration oder Migration ohne Agent) in Azure repliziert werden, müssen die in dieser Tabelle zusammengefassten Azure-VM-Anforderungen erfüllen. 
 
-**Komponente** | **Anforderungen** | **Details**
+**Komponente** | **Anforderungen** 
 --- | --- | ---
-Gastbetriebssystem | Überprüft die unterstützten Betriebssysteme der virtuellen VMware-Computer für die Migration.<br/> Sie können alle Workloads migrieren, die unter einem unterstützten Betriebssystem ausgeführt werden. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-Architektur des Gastbetriebssystems | 64 Bit. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-Größe des Betriebssystem-Datenträgers | Bis zu 2.048 GB. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-Anzahl von Betriebssystem-Datenträgern | 1 | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-Anzahl von Datenträgern für Daten | Maximal 64. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-Datenträgergröße | Bis zu 4.095 GB | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-Netzwerkadapter | Es werden mehrere Adapter unterstützt. |
-Freigegebene VHD | Wird nicht unterstützt. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-Fiber-Channel-Datenträger | Wird nicht unterstützt. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-BitLocker | Wird nicht unterstützt. | BitLocker muss deaktiviert sein, bevor Sie die Replikation für einen Computer aktivieren.
-Name des virtuellen Computers | 1 bis 63 Zeichen.<br/> Ist auf Buchstaben, Zahlen und Bindestriche beschränkt.<br/><br/> Der Computername muss mit einem Buchstaben oder einer Ziffer beginnen und enden. |  Aktualisieren Sie den Wert in den Computereigenschaften in Site Recovery.
-Herstellen einer Verbindung nach der Migration: Windows | So stellen Sie nach der Migration eine Verbindung mit Azure-VMs unter Windows her:<br/> – Aktivieren Sie vor der Migration RDP auf dem lokalen virtuellen Computer. Stellen Sie sicher, dass TCP- und UDP-Regeln für das Profil **Öffentlich** hinzugefügt werden und dass RDP unter **Windows-Firewall** > **Zugelassene Apps** für alle Profile zugelassen ist.<br/> Aktivieren Sie bei Site-to-Site-VPN-Zugriff das RDP unter **Windows-Firewall** -> **Zugelassene Apps und Features** für **private Netzwerke und Domänennetzwerke**. Achten Sie außerdem darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](prepare-for-migration.md) |
-Herstellen einer Verbindung nach der Migration: Linux | So stellen Sie nach der Migration per SSH eine Verbindung mit Azure-VMs her:<br/> Überprüfen Sie vor der Migration auf dem lokalen Computer, ob der Secure Shell-Dienst auf „Start“ festgelegt ist und ob die Firewallregeln eine SSH-Verbindung zulassen.<br/> Lassen Sie nach dem Failover auf der Azure-VM eingehende Verbindungen am SSH-Port für die Netzwerksicherheitsgruppen-Regeln auf der VM, für die ein Failover ausgeführt wurde, sowie für das Azure-Subnetz zu, mit dem die VM verbunden ist. Fügen Sie außerdem der VM eine öffentliche IP-Adresse hinzu. |  
+Gastbetriebssystem | Überprüft die unterstützten Betriebssysteme der virtuellen VMware-Computer für die Migration.<br/> Sie können alle Workloads migrieren, die unter einem unterstützten Betriebssystem ausgeführt werden. 
+Architektur des Gastbetriebssystems | 64 Bit. 
+Größe des Betriebssystem-Datenträgers | Bis zu 2.048 GB. 
+Anzahl von Betriebssystem-Datenträgern | 1 
+Anzahl von Datenträgern für Daten | Maximal 64. 
+Datenträgergröße | Bis zu 4.095 GB 
+Netzwerkadapter | Es werden mehrere Adapter unterstützt.
+Freigegebene VHD | Wird nicht unterstützt. 
+Fiber-Channel-Datenträger | Wird nicht unterstützt. 
+BitLocker | Wird nicht unterstützt.<br/><br/> BitLocker muss deaktiviert sein, bevor Sie den Computer migrieren.
+Name des virtuellen Computers | 1 bis 63 Zeichen.<br/><br/> Ist auf Buchstaben, Zahlen und Bindestriche beschränkt.<br/><br/> Der Computername muss mit einem Buchstaben oder einer Ziffer beginnen und enden. 
+Herstellen einer Verbindung nach der Migration: Windows | So stellen Sie nach der Migration eine Verbindung mit Azure-VMs unter Windows her:<br/><br/> – Aktivieren Sie vor der Migration RDP auf dem lokalen virtuellen Computer.<br/><br/> Stellen Sie sicher, dass TCP- und UDP-Regeln für das Profil **Öffentlich** hinzugefügt werden und dass RDP unter **Windows-Firewall** > **Zugelassene Apps** für alle Profile zugelassen ist.<br/><br/> Aktivieren Sie bei Site-to-Site-VPN-Zugriff das RDP unter **Windows-Firewall** -> **Zugelassene Apps und Features** für **private Netzwerke und Domänennetzwerke**.<br/><br/> Achten Sie außerdem darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](prepare-for-migration.md)
+Herstellen einer Verbindung nach der Migration: Linux | So stellen Sie nach der Migration per SSH eine Verbindung mit Azure-VMs her:<br/><br/> Überprüfen Sie vor der Migration auf dem lokalen Computer, ob der Secure Shell-Dienst auf „Start“ festgelegt ist und ob die Firewallregeln eine SSH-Verbindung zulassen.<br/><br/> Lassen Sie nach dem Failover auf der Azure-VM eingehende Verbindungen am SSH-Port für die Netzwerksicherheitsgruppen-Regeln auf der VM, für die ein Failover ausgeführt wurde, sowie für das Azure-Subnetz zu, mit dem die VM verbunden ist.<br/><br/> Fügen Sie außerdem der VM eine öffentliche IP-Adresse hinzu.  
 
 
 ## <a name="next-steps"></a>Nächste Schritte

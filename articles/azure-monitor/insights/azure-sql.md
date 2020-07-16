@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 80c03661970ec218dd8b36664ecb67623068ac5d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116549"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087179"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)
 
@@ -58,11 +58,11 @@ In der folgenden Tabelle werden unterstützte Optionen für zwei Versionen des D
 
 Fügen Sie Azure SQL-Analyse (Vorschau) mithilfe des unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Prozesses Ihrem Log Analytics-Arbeitsbereich hinzu.
 
-### <a name="configure-azure-sql-databases-to-stream-diagnostics-telemetry"></a>Konfigurieren von Azure SQL-Datenbanken zum Streamen von Diagnosetelemetriedaten
+### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>Konfigurieren von Azure SQL-Datenbank zum Streamen von Diagnosetelemetriedaten
 
 Nachdem Sie die Azure SQL-Analyse-Lösung in Ihrem Arbeitsbereich erstellt haben, müssen Sie **jede Ressource konfigurieren**, für die Sie zur Überwachung die zugehörigen Diagnosetelemetriedaten an Azure SQL-Analyse streamen möchten. Befolgen Sie dazu die detaillierten Anweisungen auf dieser Seite:
 
-- Aktivieren Sie die Azure-Diagnose für Ihre Azure SQL-Datenbank, um [Diagnosetelemetriedaten an die Azure SQL-Analyse zu streamen](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
+- Aktivieren Sie die Azure-Diagnose für Ihre Datenbank, um [Diagnosetelemetriedaten an die Azure SQL-Analyse zu streamen](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
 Die oben abgebildete Seite enthält auch Anweisungen zum Aktivieren der Unterstützung für die Überwachung mehrerer Azure-Abonnements über einen einzelnen Azure SQL-Analysearbeitsbereich als zentrale Konsole.
 
@@ -72,7 +72,7 @@ Wenn Sie Azure SQL-Analyse Ihrem Arbeitsbereich hinzufügen, wird die Kachel „
 
 ![Zusammenfassungskachel „Azure SQL Analytics“](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-Nach dem Laden wird auf der Kachel die Anzahl von Datenbanken und Pools für elastische Datenbanken in SQL-Datenbank sowie verwaltete Instanzen und Instanzdatenbanken in einer verwalteten SQL-Instanz angezeigt, von denen Diagnosetelemetriedaten für Azure SQL-Analyse empfangen werden.
+Nach dem Laden werden auf der Kachel die Anzahl von Datenbanken und Pools für elastische Datenbanken in SQL-Datenbank sowie Instanzen und Instanzdatenbanken in einer verwalteten SQL-Instanz angezeigt, von denen Diagnosetelemetriedaten für Azure SQL-Analyse empfangen werden.
 
 ![Kachel „Azure SQL Analytics“](./media/azure-sql/azure-sql-sol-tile-02.png)
 
@@ -106,7 +106,7 @@ Nach Auswahl der Kachel „Azure SQL-Analyse“ für die Datenbank wird das Übe
 
 Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Perspektive. Nach Auswahl der Perspektive wird der Drilldownbericht geöffnet.
 
-Nach dem Auswählen der Ansicht der verwalteten SQL-Instanz werden Details zur Auslastung der verwalteten Instanz, darin enthaltene Datenbanken und Telemetriedaten zu den für die gesamte Instanz ausgeführten Abfragen angezeigt.
+Nach dem Auswählen der Ansicht der verwalteten SQL-Instanz werden Details zur Instanznutzung, Instanzdatenbanken und Telemetriedaten zu den für die gesamte verwaltete Instanz ausgeführten Abfragen angezeigt.
 
 ![Azure SQL-Analyse – Zeitlimits](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
@@ -270,7 +270,7 @@ AzureDiagnostics
 > [!NOTE]
 >
 > - Voraussetzung für die Einrichtung dieser Warnung ist, dass für die überwachte verwaltete Instanz das Streaming des ResourceUsageStats-Protokolls an Azure SQL-Analyse aktiviert ist.
-> - Diese Abfrage erfordert die Einrichtung einer Warnungsregel, die eine Warnung auslöst, wenn Ergebnisse (> 0 Ergebnisse) für die Abfrage vorhanden sind, die angeben, dass die Bedingung in der verwalteten Instanz vorhanden ist. Die Ausgabe ist der prozentuale Speicherverbrauch auf der verwalteten Instanz.
+> - Diese Abfrage erfordert die Einrichtung einer Warnungsregel, die eine Warnung auslöst, wenn Ergebnisse (> 0 Ergebnisse) für die Abfrage vorhanden sind, die angeben, dass die Bedingung auf der verwalteten Instanz vorhanden ist. Die Ausgabe ist der prozentuale Speicherverbrauch auf der verwalteten Instanz.
 
 #### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Durchschnittliche CPU-Auslastung über 95 % in der letzten Stunde
 

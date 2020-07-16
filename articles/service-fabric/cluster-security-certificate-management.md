@@ -4,12 +4,12 @@ description: Erfahren Sie mehr zum Verwalten von Zertifikaten in einem Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb5d19e1cceacfeabc4bc670de98e56d3fbc2596
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324741"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246706"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Zertifikatverwaltung in Service Fabric-Clustern
 
@@ -76,8 +76,8 @@ Diese Schritte sind nachstehend dargestellt. Beachten Sie die Unterschiede bei d
 ![Bereitstellen von per allgemeinem Namen des Antragstellers deklarierten Zertifikaten][Image2]
 
 ### <a name="certificate-enrollment"></a>Zertifikatregistrierung
-Dieses Thema wird in der Key Vault-[Dokumentation](../key-vault/create-certificate.md) ausführlich behandelt. Wir fügen hier aus Gründen der Übersichtlichkeit und zur leichteren Bezugnahme eine Inhaltsangabe ein. Um mit Azure als Kontext fortzufahren und Azure Key Vault als Dienst zur Verwaltung von Geheimnissen zu nutzen, muss eine autorisierte, ein Zertifikat anfordernde Person mindestens die vom Tresorbesitzer erteilten Berechtigungen zur Zertifikatverwaltung für den Tresor haben. Die anfordernde Person registriert sich dann wie folgt in einem Zertifikat:
-    - Sie erstellt eine Zertifikatrichtlinie in Azure Key Vault, die die Domäne/den Antragsteller des Zertifikats, den gewünschten Aussteller, Schlüsseltyp und -länge, die beabsichtigte Schlüsselverwendung und mehr angibt. Weitere Informationen finden Sie unter [Zertifikate in Azure Key Vault](../key-vault/certificate-scenarios.md). 
+Dieses Thema wird in der Key Vault-[Dokumentation](../key-vault/certificates/create-certificate.md) ausführlich behandelt. Wir fügen hier aus Gründen der Übersichtlichkeit und zur leichteren Bezugnahme eine Inhaltsangabe ein. Um mit Azure als Kontext fortzufahren und Azure Key Vault als Dienst zur Verwaltung von Geheimnissen zu nutzen, muss eine autorisierte, ein Zertifikat anfordernde Person mindestens die vom Tresorbesitzer erteilten Berechtigungen zur Zertifikatverwaltung für den Tresor haben. Die anfordernde Person registriert sich dann wie folgt in einem Zertifikat:
+    - Sie erstellt eine Zertifikatrichtlinie in Azure Key Vault, die die Domäne/den Antragsteller des Zertifikats, den gewünschten Aussteller, Schlüsseltyp und -länge, die beabsichtigte Schlüsselverwendung und mehr angibt. Weitere Informationen finden Sie unter [Zertifikate in Azure Key Vault](../key-vault/certificates/certificate-scenarios.md). 
     - Sie erstellt ein Zertifikat im gleichen Tresor mit der oben angegebenen Richtlinie. Dies wiederum generiert ein Schlüsselpaar als Tresorobjekte und eine Zertifikatsignierungsanforderung, die mit dem privaten Schlüssel signiert wird und dann zum Signieren an den benannten Aussteller weitergeleitet wird.
     - Sobald der Aussteller (die Zertifizierungsstelle) mit dem signierten Zertifikat antwortet, wird das Ergebnis im Tresor zusammengeführt, woraufhin das Zertifikat für die folgenden Vorgänge zur Verfügung steht:
       - Unter {vaultUri}/certificates/{name}: das Zertifikat einschließlich öffentlichem Schlüssel und Metadaten
@@ -210,7 +210,7 @@ Wie bereits erwähnt, wird ein Zertifikat, das als Geheimnis einer VM-Skalierung
 
 Alle nachfolgenden Auszüge sollten gleichzeitig bereitgestellt werden. Sie sind einzeln aufgelistet, damit sie einzeln analysiert und erläutert werden können.
 
-Definieren Sie zunächst eine vom Benutzer zugewiesene Identität (Standardwerte sind als Beispiele enthalten). Aktuelle Informationen finden Sie in der [offiziellen Dokumentation](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity):
+Definieren Sie zunächst eine vom Benutzer zugewiesene Identität (Standardwerte sind als Beispiele enthalten). Aktuelle Informationen finden Sie in der [offiziellen Dokumentation](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity):
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -241,7 +241,7 @@ Definieren Sie zunächst eine vom Benutzer zugewiesene Identität (Standardwerte
   ]}
 ```
 
-Gewähren Sie anschließend dieser Identität Zugriff auf die Geheimnisse im Tresor. Aktuelle Informationen finden Sie in der [offiziellen Dokumentation](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy):
+Gewähren Sie anschließend dieser Identität Zugriff auf die Geheimnisse im Tresor. Aktuelle Informationen finden Sie in der [offiziellen Dokumentation](/rest/api/keyvault/vaults/updateaccesspolicy):
 ```json
   "resources":
   [{
@@ -266,7 +266,7 @@ Gewähren Sie anschließend dieser Identität Zugriff auf die Geheimnisse im Tre
 Es folgen die nächsten Schritte:
   - Weisen Sie die vom Benutzer zugewiesene Identität der VM-Skalierungsgruppe zu.
   - Deklarieren Sie die Abhängigkeit der VM-Skalierungsgruppe von der Erstellung der verwalteten Identität und vom Ergebnis der Gewährung des Zugriffs auf den Tresor.
-  - Deklarieren Sie die Key Vault-VM-Erweiterung, und fordern Sie, dass sie beim Start überwachte Zertifikate abruft ([offizielle Dokumentation](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows)).
+  - Deklarieren Sie die Key Vault-VM-Erweiterung, und fordern Sie, dass sie beim Start überwachte Zertifikate abruft ([offizielle Dokumentation](../virtual-machines/extensions/key-vault-windows.md)).
   - Aktualisieren Sie die Definition der Service Fabric-VM-Erweiterung so, dass sie von der Key Vault-VM-Erweiterung abhängt und das Clusterzertifikat in einen allgemeinen Namen konvertiert wird. (Wir nehmen diese Änderungen in einem einzigen Schritt vor, da sie in den Geltungsbereich derselben Ressource fallen.)
 
 ```json
@@ -420,12 +420,12 @@ Die Key Vault-VM-Erweiterung wird als Bereitstellungs-Agent mit einer vorgegeben
 #### <a name="certificate-linking-explained"></a>Erläuterung der Zertifikatverknüpfung
 Möglicherweise ist Ihnen das Flag linkOnRenewal der Key Vault-VM-Erweiterung und die Tatsache aufgefallen, dass es auf FALSE festgelegt ist. Wir befassen uns hier eingehend mit dem von diesem Flag gesteuerten Verhalten und seinen Auswirkungen auf den Betrieb eines Clusters. Beachten Sie, dass dieses Verhalten für Windows spezifisch ist.
 
-Laut zugehöriger [Definition](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows#extension-schema) gilt Folgendes:
+Laut zugehöriger [Definition](../virtual-machines/extensions/key-vault-windows.md#extension-schema) gilt Folgendes:
 ```json
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```
 
-Die zur Herstellung einer TLS-Verbindung verwendeten Zertifikate werden in der Regel [als Handle](https://docs.microsoft.com/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea) über den Security Support Provider von Schannel bezogen, d. h. der Client greift nicht direkt auf den privaten Schlüssel des Zertifikats selbst zu. Schannel unterstützt die Umleitung (Verknüpfung) von Anmeldeinformationen in Form einer Zertifikaterweiterung ([CERT_RENEWAL_PROP_ID](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)). Wenn diese Eigenschaft festgelegt ist, stellt ihr Wert den Fingerabdruck des Zertifikats für „Verlängerung“ dar, sodass Schannel stattdessen versucht, das verknüpfte Zertifikat zu laden. Tatsächlich durchläuft es diese verknüpfte (und hoffentlich azyklische) Liste, bis es am Ende zum „endgültigen“ Zertifikat gelangt, und zwar zu einem ohne Verlängerungskennzeichen. Bei vernünftiger Nutzung ist dieses Feature eine große Erleichterung gegen den Verlust von Verfügbarkeit aufgrund z. B. abgelaufener Zertifikate. In anderen Fällen kann sie die Ursache für Ausfälle sein, die schwer zu diagnostizieren und abzustellen sind. Schannel führt das Durchlaufen von Zertifikaten bezüglich ihrer Verlängerungseigenschaften bedingungslos aus, und zwar unabhängig von Antragsteller, Aussteller oder anderen spezifischen Attributen, die an der Validierung des resultierenden Zertifikats durch den Client beteiligt sind. Es ist in der Tat möglich, dass das resultierende Zertifikat keinen zugehörigen privaten Schlüssel hat oder dass der Schlüssel nicht der ACL seines potenziellen Consumers hinzugefügt wurde. 
+Die zur Herstellung einer TLS-Verbindung verwendeten Zertifikate werden in der Regel [als Handle](/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea) über den Security Support Provider von Schannel bezogen, d. h. der Client greift nicht direkt auf den privaten Schlüssel des Zertifikats selbst zu. Schannel unterstützt die Umleitung (Verknüpfung) von Anmeldeinformationen in Form einer Zertifikaterweiterung ([CERT_RENEWAL_PROP_ID](/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)). Wenn diese Eigenschaft festgelegt ist, stellt ihr Wert den Fingerabdruck des Zertifikats für „Verlängerung“ dar, sodass Schannel stattdessen versucht, das verknüpfte Zertifikat zu laden. Tatsächlich durchläuft es diese verknüpfte (und hoffentlich azyklische) Liste, bis es am Ende zum „endgültigen“ Zertifikat gelangt, und zwar zu einem ohne Verlängerungskennzeichen. Bei vernünftiger Nutzung ist dieses Feature eine große Erleichterung gegen den Verlust von Verfügbarkeit aufgrund z. B. abgelaufener Zertifikate. In anderen Fällen kann sie die Ursache für Ausfälle sein, die schwer zu diagnostizieren und abzustellen sind. Schannel führt das Durchlaufen von Zertifikaten bezüglich ihrer Verlängerungseigenschaften bedingungslos aus, und zwar unabhängig von Antragsteller, Aussteller oder anderen spezifischen Attributen, die an der Validierung des resultierenden Zertifikats durch den Client beteiligt sind. Es ist in der Tat möglich, dass das resultierende Zertifikat keinen zugehörigen privaten Schlüssel hat oder dass der Schlüssel nicht der ACL seines potenziellen Consumers hinzugefügt wurde. 
  
 Wenn die Verknüpfung aktiviert ist, versucht die Key Vault-VM-Erweiterung beim Abrufen eines überwachten Zertifikats aus dem Tresor, übereinstimmende, vorhandene Zertifikate zu finden, um sie über die Erweiterungseigenschaft zur Verlängerung zu verknüpfen. Der Abgleich basiert (ausschließlich) auf dem alternativer Antragstellernamen (Subject Alternative Name, SAN) und funktioniert wie unten dargestellt.
 Angenommen, es gibt die beiden folgenden Zertifikate: A: CN = “Alice's accessories”, SAN = {“alice.universalexports.com”}, renewal = ‘’ B: CN = “Bob's bits”, SAN = {“bob.universalexports.com”, “bob.universalexports.net”}, renewal = ‘’
@@ -492,4 +492,3 @@ Konsultieren Sie für Microsoft-interne PKIs die interne Dokumentation zu den En
 
 [Image1]:./media/security-cluster-certificate-mgmt/certificate-journey-thumbprint.png
 [Image2]:./media/security-cluster-certificate-mgmt/certificate-journey-common-name.png
-

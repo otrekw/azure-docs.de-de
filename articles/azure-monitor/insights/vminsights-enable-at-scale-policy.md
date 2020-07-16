@@ -5,17 +5,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/12/2020
-ms.openlocfilehash: 73c18d45136eea90ad29dc1bd40c4539dddc0ee6
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.date: 06/25/2020
+ms.openlocfilehash: 7d3c4e0f4bd34f996bb39426af39a692a6f79c5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767255"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507176"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Aktivieren von Azure Monitor für VMs mit Azure Policy
 
-In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs für Azure-VMs oder VM-Skalierungsgruppen mithilfe von Azure Policy aktivieren. Am Ende dieses Prozesses haben Sie die Aktivierung der Log Analytics- und Dependency-Agents erfolgreich konfiguriert und nicht konforme virtuelle Computer identifiziert.
+In diesem Artikel erfahren Sie, wie Sie Azure Monitor für VMs mithilfe von Azure Policy für Azure-VMs, Azure-VM-Skalierungsgruppen und Azure Arc-Computer aktivieren. Am Ende dieses Prozesses haben Sie die Aktivierung der Log Analytics- und Dependency-Agents erfolgreich konfiguriert und nicht konforme virtuelle Computer identifiziert.
 
 Um Azure Monitor für VMs für alle Ihre Azure-VMs oder VM-Skalierungsgruppen zu erkennen, zu verwalten und zu aktivieren, können Sie entweder Azure Policy oder Azure PowerShell verwenden. Azure Policy ist die von uns empfohlene Methode, da Sie Richtliniendefinitionen so verwalten können, dass Ihre Abonnements effektiv gesteuert werden, um eine durchgängige Konformität und automatische Aktivierung neu bereitgestellter VMs zu gewährleisten. Aufgaben dieser Richtliniendefinitionen:
 
@@ -46,10 +46,7 @@ Hier können Sie die Abdeckung der Initiative für alle Ihre Verwaltungsgruppen 
 
 Diese Informationen sind nützlich, um Ihr Governance-Szenario für Azure Monitor für VMs an einem zentralen Ort zu planen und zu realisieren. Während Azure Policy eine Konformitätsansicht bereitstellt, sobald eine Richtlinie oder Initiative einem Geltungsbereich zugeordnet ist, können Sie auf dieser neuen Seite feststellen, wo die Richtlinie oder Initiative nicht zugewiesen ist, und sie direkt zuweisen. Bei allen Aktionen wie dem Zuweisen, Anzeigen und Bearbeiten erfolgt eine direkte Umleitung zu Azure Policy. Die Seite **Azure Monitor für VMs – Richtlinienabdeckung** ist eine erweiterte und integrierte Umgebung ausschließlich für die Initiative **Aktivieren von Azure Monitor für VMs**.
 
-Auf dieser Seite können Sie auch Ihren Log Analytics-Arbeitsbereich für Azure Monitor für VMs konfigurieren, in dem folgende Aufgaben ausgeführt werden:
-
-- Installieren Sie die Dienstzuordnungslösung.
-- Aktivieren der Leistungsindikatoren des Betriebssystems, die von den Leistungsdiagrammen, Arbeitsmappen und Ihren benutzerdefinierten Protokollabfragen und Benachrichtigungen verwendet werden.
+Auf dieser Seite können Sie auch Ihren Log Analytics-Arbeitsbereich für Azure Monitor für VMs konfigurieren, wo die *VMInsights*-Lösung installiert wird.
 
 ![Azure Monitor für VMs, Arbeitsbereich konfigurieren](media/vminsights-enable-at-scale-policy/manage-policy-page-02.png)
 
@@ -94,6 +91,21 @@ Die Richtliniendefinitionen für eine Azure-VM sind in der folgenden Tabelle auf
 |Bereitstellen des Dependency-Agents für Windows-VMs |Hiermit stellen Sie den Dependency-Agent für Windows-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
 |Bereitstellen des Log Analytics-Agents für Linux-VMs |Hiermit stellen Sie den Log Analytics-Agent für Linux-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
 |Bereitstellen des Log Analytics-Agents für Windows-VMs |Hiermit stellen Sie den Log Analytics-Agent für Windows-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+
+
+### <a name="policies-for-hybrid-azure-arc-machines"></a>Richtlinien für Azure Arc-Hybridcomputer
+
+Die Richtliniendefinitionen für Azure Arc-Hybridcomputer sind in der folgenden Tabelle aufgeführt.
+
+|Name |BESCHREIBUNG |type |
+|-----|------------|-----|
+| [Vorschau]: Log Analytics agent should be installed on your Linux Azure Arc machines (Log Analytics-Agent muss auf Ihren Linux-basierten Azure Arc-Computern installiert sein) |Bei dieser Richtlinie werden Azure Arc-Hybridcomputer, bei denen es sich um Linux-VMs handelt, als nicht konform gemeldet, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+| [Vorschau]: Log Analytics agent should be installed on your Windows Azure Arc machines (Log Analytics-Agent muss auf Ihren Windows-basierten Azure Arc-Computern installiert sein) |Bei dieser Richtlinie werden Azure Arc-Hybridcomputer, bei denen es sich um Windows-VMs handelt, als nicht konform gemeldet, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+| [Vorschau]: Deploy Dependency agent to hybrid Linux Azure Arc machines (Dependency-Agent für Linux-basierte Azure Arc-Hybridcomputer bereitstellen) |Hiermit stellen Sie den Dependency-Agent für Linux-basierte Azure Arc-Hybridcomputer bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+| [Vorschau]: Deploy Dependency agent to hybrid Windows Azure Arc machines (Dependency-Agent für Windows-basierte Azure Arc-Hybridcomputer bereitstellen) |Hiermit stellen Sie den Dependency-Agent für Windows-basierte Azure Arc-Hybridcomputer bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+| [Vorschau]: Deploy Log Analytics agent to Linux Azure Arc machines (Log Analytics-Agent für Linux-basierte Azure Arc-Computer bereitstellen) |Hiermit stellen Sie den Log Analytics-Agent für Linux-basierte Azure Arc-Hybridcomputer bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+| [Vorschau]: Deploy Log Analytics agent to Windows Azure Arc machines (Log Analytics-Agent für Windows-basierte Azure Arc-Computer bereitstellen) |Hiermit stellen Sie den Log Analytics-Agent für Windows-basierte Azure Arc-Hybridcomputer bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+
 
 ### <a name="policies-for-azure-virtual-machine-scale-sets"></a>Richtlinien für Azure-VM-Skalierungsgruppen
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f05e705f351d75fdf772d3197b94fcece40d43fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 246fcdb27737e99bb677e23216f0305037f54526
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100373"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187454"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Verwalten von Pre- und Post-Skripts
 
@@ -147,7 +147,7 @@ Pre- und Post-Aufgaben werden nicht nativ auf den virtuellen Azure-Computern in 
 * Ein ausführendes Konto
 * Ein Runbook, das Sie ausführen möchten
 
-Verwenden Sie das Cmdlet [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) für die Interaktion mit Ihren Azure-VMs. Ein Beispiel dafür finden Sie im Runbookbeispiel [Updateverwaltung: Ausführen eines Skripts mit dem Befehl „run“](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc).
+Verwenden Sie das Cmdlet [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) für die Interaktion mit Ihren Azure-VMs. Ein Beispiel dafür finden Sie im Runbookbeispiel [Updateverwaltung: Ausführen eines Skripts mit dem Befehl „run“](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc).
 
 ### <a name="interact-with-non-azure-machines"></a>Interagieren mit Azure-fremden Computern
 
@@ -158,7 +158,7 @@ Pre- und Post-Aufgaben werden im Azure-Kontext ausgeführt und haben keinen Zugr
 * Ein Runbook, das Sie lokal ausführen möchten
 * Ein übergeordnetes Runbook
 
-Für die Interaktion mit Azure-fremden Computern wird ein übergeordnetes Runbook im Azure-Kontext ausgeführt. Dieses Runbook ruft mit dem Cmdlet [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) ein untergeordnetes Runbook auf. Sie müssen den `RunOn`-Parameter und den Namen des Hybrid Runbook Workers, auf dem das Skript ausgeführt werden soll, angeben. Weitere Informationen finden Sie im Runbookbeispiel [Update Management – run script locally](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44) (Updateverwaltung – Skript lokal ausführen).
+Für die Interaktion mit Azure-fremden Computern wird ein übergeordnetes Runbook im Azure-Kontext ausgeführt. Dieses Runbook ruft mit dem Cmdlet [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) ein untergeordnetes Runbook auf. Sie müssen den `RunOn`-Parameter und den Namen des Hybrid Runbook Workers, auf dem das Skript ausgeführt werden soll, angeben. Weitere Informationen finden Sie im Runbookbeispiel [Update Management – run script locally](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44) (Updateverwaltung – Skript lokal ausführen).
 
 ## <a name="abort-patch-deployment"></a>Abbrechen der Bereitstellung von Patches
 
@@ -243,7 +243,7 @@ $variable = Get-AutomationVariable -Name $runId
 ```
 
 > [!NOTE]
-> Für nicht grafische PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.
+> Für nicht grafische PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

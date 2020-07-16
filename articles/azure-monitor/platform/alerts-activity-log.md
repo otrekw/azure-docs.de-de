@@ -4,12 +4,12 @@ description: Erstellen von Aktivitätsprotokollwarnungen über das Azure-Portal 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 45345d06e64194224df48a33fab1e74433a1eaac
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 242192118d59f972cebe2837d74c34310cac74aa
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744264"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056258"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -200,6 +200,11 @@ Um eine Aktivitätsprotokoll-Warnungsregel mithilfe einer Azure Resource Manager
 }
 ```
 Der vorherige JSON-Beispielcode kann für diese exemplarische Vorgehensweise z.B. als „sampleActivityLogAlert.json“ gespeichert und mit [Azure Resource Manager im Azure-Portal](../../azure-resource-manager/templates/deploy-portal.md) bereitgestellt werden.
+
+  > [!NOTE]
+  > 
+  > Beachten Sie, dass die höchste Ebene, auf der Aktivitätsprotokollwarnungen definiert werden können, das Abonnement ist.
+  > Das bedeutet, dass es keine Möglichkeit gibt, eine Warnung für mehrere Abonnements zu definieren. Daher sollte die Definition eine Warnung pro Abonnement umfassen.
 
 Bei den folgenden Feldern handelt es sich um die Optionen, die Sie in der Azure Resource Manager-Vorlage für die Bedingungsfelder verwenden können. Beachten Sie, dass „Resource Health“, „Advisor“ und „Service Health“ zusätzliche Eigenschaftenfelder für die jeweiligen speziellen Felder umfassen. 
 1. resourceId:  Die Ressourcen-ID der betroffenen Ressource in dem Aktivitätsprotokollereignis, für das die Warnung generiert werden soll.

@@ -1,19 +1,19 @@
 ---
 title: Erstellen einer Azure Image Builder-Vorlage (Preview)
 description: Erfahren Sie, wie Sie eine Vorlage für die Verwendung mit Azure Image Builder erstellen.
-author: danis
+author: danielsollondon
 ms.author: danis
-ms.date: 03/24/2020
+ms.date: 06/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: f567114613f484f0765a6e007c3f0ba97480a968
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779350"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135069"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Vorschau: Erstellen einer Azure Image Builder-Vorlage 
 
@@ -29,7 +29,7 @@ Das grundlegende Format der Vorlage:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+     },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -61,7 +61,7 @@ Das grundlegende Format der Vorlage:
     "apiVersion": "2019-05-01-preview",
 ```
 
-## <a name="location"></a>Position
+## <a name="location"></a>Standort
 
 „Location“ entspricht der Region, in der das benutzerdefinierte Image erstellt wird. Die Image Builder-Preview unterstützt die folgenden Regionen:
 
@@ -88,7 +88,7 @@ Standardmäßig wird von Image Builder eine Build-VM des Typs „Standard_D1_v2�
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-Standardmäßig ändert Image Builder die Größe des Images nicht. Es wird die Größe des Quellimages verwendet. Sie können die Größe des Betriebssystemdatenträgers erhöhen (Windows und Linux). Dies ist optional, und der Wert „0“ bedeutet, dass die Größe der Größe des Quellimages entspricht. 
+Standardmäßig ändert Image Builder die Größe des Images nicht. Es wird die Größe des Quellimages verwendet. Sie können **nur** die Größe des Betriebssystemdatenträgers erhöhen (Windows und Linux). Dies ist optional, und der Wert „0“ bedeutet, dass die Größe der Größe des Quellimages entspricht. Die Größe des Betriebssystemdatenträgers kann nicht auf einen Wert reduziert werden, der niedriger ist als die Größe des Quellimages.
 
 ```json
  {
@@ -391,7 +391,8 @@ Dateien in der Dateianpassung können mithilfe der [verwalteten Dienstidentität
 
 ### <a name="windows-update-customizer"></a>Windows Update-Anpassung
 Diese Anpassung basiert auf dem [Community Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html) für Packer. Dabei handelt es sich um ein von der Packer-Community verwaltetes Open-Source-Projekt. Microsoft testet und überprüft den Provisioner mit dem Image Builder-Dienst und unterstützt das Untersuchen von Problemen mit dem Dienst sowie das Beheben von Problemen. Das Open-Source-Projekt wird jedoch nicht offiziell von Microsoft unterstützt. Eine ausführliche Dokumentation und Hilfe zu Windows Update Provisioner finden Sie im Projektrepository.
- 
+
+```json
      "customize": [
             {
                 "type": "WindowsUpdate",
@@ -403,7 +404,8 @@ Diese Anpassung basiert auf dem [Community Windows Update Provisioner](https://p
                 "updateLimit": 20
             }
                ], 
-Betriebssystemunterstützung: Windows
+OS support: Windows
+```
 
 Anpassungseigenschaften:
 - **type**: WindowsUpdate.
@@ -521,7 +523,7 @@ Die Imageausgabe ist eine verwaltete Imageressource.
  
 Verteilungseigenschaften:
 - **type:** managedImage 
-- **imageId:** die Ressourcen-ID des Zielimages; das folgende Format wird erwartet: /subscriptions/\<Abonnement-ID>/resourceGroups/\<Ziel-Ressourcengruppenname>/providers/Microsoft.Compute/images/\<Imagename>
+- **imageId:** die Ressourcen-ID des Zielimages; das folgende Format wird erwartet: /subscriptions/\<subscriptionId>/resourceGroups/\<destinationResourceGroupName>/providers/Microsoft.Compute/images/\<imageName>
 - **location:** der Speicherort des verwalteten Images.  
 - **runOutputName:** eindeutiger Name zur Identifikation der Verteilung.  
 - **artifactTags:** optionale vom Benutzer angegebene Schlüssel-Wert-Paar-Tags.
@@ -561,7 +563,7 @@ Bevor Sie ein Image an den Imagekatalog verteilen können, müssen Sie einen Kat
 Verteilungseigenschaften für Kataloge mit freigegebenen Images:
 
 - **type:** sharedImage  
-- **galleryImageId:** ID des Katalogs mit freigegebenen Images. Das Format lautet: /subscriptions/\<Abonnement-ID>/resourceGroups/\<Ressourcengruppenname>/providers/Microsoft.Compute/galleries/\<NameDesKatalogsMitFreigegebenenImages>/images/\<Imagekatalogname>.
+- **galleryImageId:** ID des Katalogs mit freigegebenen Images. Das Format lautet: /subscriptions/\<subscriptionId>/resourceGroups/\<resourceGroupName>/providers/Microsoft.Compute/galleries/\<sharedImageGalleryName>/images/\<imageGalleryName>.
 - **runOutputName:** eindeutiger Name zur Identifikation der Verteilung.  
 - **artifactTags:** optionale vom Benutzer angegebene Schlüssel-Wert-Paar-Tags.
 - **replicationRegions:** Array von Regionen für die Replikation. In einer der hier enthaltenen Regionen muss der Katalog bereitgestellt werden.

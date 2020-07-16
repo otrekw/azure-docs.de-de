@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 5547c78007d38788d71e84f8fbf3ca8b60dc1576
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cdefca11131a16630e600385bf350465fccc228f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101748"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206671"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Erstellen und Verwalten von Private Link für Azure Database for MySQL im Portal
 
@@ -166,7 +166,7 @@ In diesem Abschnitt erstellen Sie einen MySQL-Server und fügen diesem einen pri
     | ------- | ----- |
     |**NETZWERK**| |
     | Virtuelles Netzwerk| Wählen Sie *MyVirtualNetwork* aus. |
-    | Subnet | Wählen Sie *mySubnet* aus. |
+    | Subnet | Wählen Sie *mySubnet* aus. |
     |**PRIVATE DNS-INTEGRATION**||
     |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. |
     |Private DNS-Zone |Auswählen von *(New)privatelink.mysql.database.azure.com* |
@@ -211,7 +211,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 ## <a name="access-the-mysql-server-privately-from-the-vm"></a>Privates Zugreifen auf den MySQL-Server vom virtuellen Computer
 
-1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVM*.
+1. Öffnen Sie auf dem Remotedesktop von *myVM* PowerShell.
 
 2. Geben Sie `nslookup  myServer.privatelink.mysql.database.azure.com` ein. 
 
@@ -248,7 +248,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem MySQL-Server und dem virtuellen Computer abgeschlossen haben, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen:
 
-1. Geben Sie oben im Portal die Zeichenfolge  *myResourceGroup* im Feld **Suchen** ein, und wählen Sie in den Suchergebnissen *myResourceGroup* aus.
+1. Geben Sie oben im Portal im Feld **Suchen** die Zeichenfolge *myResourceGroup* ein, und wählen Sie in den Suchergebnissen den Eintrag *myResourceGroup* aus.
 2. Wählen Sie die Option **Ressourcengruppe löschen**.
 3. Geben Sie „myResourceGroup“ für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
 
