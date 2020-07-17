@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 695fd03d7c1856ad39b7672d826f85bc4c68a99c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 65fc822250ae8284c9f87af262356730ff1d54c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125178"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207514"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Beendigungsbenachrichtigung für Instanzen von Azure-VM-Skalierungsgruppen
 Für Skalierungsgruppeninstanzen kann der Empfang von Beendigungsbenachrichtigungen aktiviert und ein vordefiniertes Verzögerungstimeout für den Beendigungsvorgang festgelegt werden. Die Beendigungsbenachrichtigung wird über „Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md)“ gesendet. Dieser Subdienst sendet Benachrichtigungen über die Durchführung und Verzögerung einschneidender Vorgänge, z. B. Neustarts und erneute Bereitstellungen. In der Lösung wurde der Scheduled Events-Liste mit „Terminate“ ein weiteres Ereignis hinzugefügt. Welche Verzögerung dem Beendigungsereignis zugeordnet wird, hängt von dem Verzögerungslimit ab, das der Benutzer in der Konfiguration des Skalierungsgruppenmodells festlegt.
@@ -178,7 +178,7 @@ Im Folgenden finden Sie den im POST-Anforderungstext erwarteten JSON-Code. Die A
 
 Stellen Sie sicher, dass durch jede VM in der Skalierungsgruppe nur die EventID genehmigt wird, die für die VM relevant ist. Eine VM kann ihren eigenen VM-Namen [über Instanzmetadaten](virtual-machine-scale-sets-instance-ids.md#instance-metadata-vm-name) abrufen. Dieser Name hat das Format „{scale-set-name}_{instance-id}“ und wird im Abschnitt „Ressourcen“ der oben beschriebenen Abfrageantwort angezeigt.
 
-Weitere Informationen finden Sie in den Beispielskripts für das Abfragen und Reagieren auf Ereignisse mit [PowerShell](../virtual-machines/windows/scheduled-events.md#powershell-sample) und [Python](../virtual-machines/linux/scheduled-events.md#python-sample).
+Weitere Informationen finden Sie in den Beispielskripts für das Abfragen und Reagieren auf Ereignisse mit [Python](../virtual-machines/linux/scheduled-events.md#python-sample).
 
 ## <a name="tips-and-best-practices"></a>Tipps und Best Practices
 -   Beendigungsbenachrichtigungen nur für Löschvorgänge – Durch alle Löschvorgänge (manuelles Löschen oder durch Autoskalierung initiiertes, horizontales Herunterskalieren) werden Terminate-Ereignisse generiert, sofern *scheduledEventsProfile* für die Skalierungsgruppe aktiviert wurde. Durch andere Vorgänge wie Neustart, Reimaging, erneute Bereitstellung und Beenden/Zuordnung aufheben werden keine Terminate-Ereignisse generiert. Für VMs mit niedriger Priorität können keine Beendigungsbenachrichtigungen aktiviert werden.

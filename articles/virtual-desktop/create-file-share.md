@@ -4,18 +4,18 @@ description: Richten Sie einen FSLogix-Profilcontainer auf einer Azure-Dateifrei
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 06/02/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1ea47dbc743c980b0509a3da42da13d294bc64fc
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302032"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027391"
 ---
-# <a name="create-an-azure-files-file-share-with-a-domain-controller"></a>Erstellen einer Azure Files-Dateifreigabe mit einem Domänencontroller
+# <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Erstellen eines Profilcontainers mit Azure Files und AD DS
 
 In diesem Artikel erfahren Sie, wie Sie eine Azure-Dateifreigabe erstellen, die von einem Domänencontroller auf einem vorhandenen Windows Virtual Desktop-Hostpool authentifiziert wird. Sie können diese Dateifreigabe zum Speichern von Speicherprofilen verwenden.
 
@@ -43,7 +43,7 @@ So richten Sie ein Speicherkonto ein:
     - Geben Sie einen eindeutigen Namen für Ihr Speicherkonto ein.
     - Für **Speicherort** wird empfohlen, den gleichen Speicherort wie der Windows Virtual Desktop-Hostpool auszuwählen.
     - Wählen Sie für **Leistung** die Option **Standard** aus. (Abhängig von Ihren IOPS-Anforderungen. Weitere Informationen finden Sie unter [Speicheroptionen für FSLogix-Profilcontainer in Windows Virtual Desktop](store-fslogix-profile.md).)
-    - Wählen Sie für **Kontotyp** die Option **StorageV2** aus.
+    - Wählen Sie für **Kontotyp** die Option **StorageV2** oder **FileStorage-** (nur verfügbar, wenn die Leistungsstufe gleich „Premium“ ist) aus.
     - Wählen Sie für **Replikation** die Option **Lokal redundanter Speicher (LRS)** aus.
 
 5. Wenn Sie fertig sind, klicken Sie auf **Überprüfen + erstellen** und dann auf **Erstellen**.
@@ -64,21 +64,22 @@ Gehen Sie wie folgt vor, um eine Dateifreigabe zu erstellen:
 
 4. Klicken Sie auf **Erstellen**.
 
-## <a name="enable-azure-active-directory-authentication"></a>Aktivieren der Azure Active Directory-Authentifizierung
+## <a name="enable-active-directory-authentication"></a>Aktivieren von Active Directory-Authentifizierung
 
-Als Nächstes müssen Sie die Azure Active Directory-Authentifizierung (AD) aktivieren. Zum Aktivieren dieser Richtlinie müssen Sie die Anweisungen in diesem Abschnitt auf einem Computer befolgen, der bereits in die Domäne eingebunden ist. Befolgen Sie diese Anweisungen zum Aktivieren der Authentifizierung auf dem virtuellen Computer, auf dem der Domänencontroller ausgeführt wird:
+Als Nächstes müssen Sie die Active Directory-Authentifizierung (AD) aktivieren. Zum Aktivieren dieser Richtlinie müssen Sie die Anweisungen in diesem Abschnitt auf einem Computer befolgen, der bereits in die Domäne eingebunden ist. Befolgen Sie diese Anweisungen zum Aktivieren der Authentifizierung auf dem virtuellen Computer, auf dem der Domänencontroller ausgeführt wird:
 
 1. Remotedesktopprotokoll im virtuellen Computer, der in die Domäne eingebunden ist
 
 2. Befolgen Sie die Anweisungen unter [Aktivieren der AD DS-Authentifizierung für Ihre Azure-Dateifreigaben](../storage/files/storage-files-identity-ad-ds-enable.md), um das Modul „AzFilesHybrid“ zu installieren und die Authentifizierung zu aktivieren.
 
-3.  Öffnen Sie im Azure-Portal Ihr Speicherkonto, klicken Sie auf **Konfiguration**, und bestätigen Sie dann, dass die Option **Azure Active Directory (AD)** auf **Aktiviert** festgelegt ist.
+3.  Öffnen Sie im Azure-Portal Ihr Speicherkonto, klicken Sie auf **Konfiguration**, und bestätigen Sie dann, dass die Option **Active Directory (AD)** auf **Aktiviert** festgelegt ist.
 
-     ![Screenshot der Konfigurationsseite mit aktiviertem Azure Active Directory (AD)](media/active-directory-enabled.png)
+     > [!div class="mx-imgBorder"]
+     > ![Screenshot der Konfigurationsseite mit aktiviertem Azure Active Directory (AD)](media/active-directory-enabled.png)
 
 ## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>Zuweisen von Berechtigungen für Windows Virtual Desktop-Benutzer
 
-Allen Benutzern, die FSLogix-Profile im Speicherkonto speichern müssen, muss die Rolle „Mitwirkender für Speicherdateidaten-SMB-Freigabe“ zugewiesen werden. 
+Allen Benutzern, die FSLogix-Profile im Speicherkonto speichern müssen, muss die Rolle „Mitwirkender für Speicherdateidaten-SMB-Freigabe“ zugewiesen werden.
 
 Benutzer, die sich bei den Windows Virtual Desktop-Sitzungshosts anmelden, benötigen Zugriffsberechtigungen für den Zugriff auf Ihre Dateifreigabe. Das Gewähren von Zugriff auf eine Azure-Dateifreigabe umfasst das Konfigurieren von Berechtigungen sowohl auf Freigabeebene als auch auf der NTFS-Ebene, ähnlich wie bei einer herkömmlichen Windows-Freigabe.
 
@@ -93,15 +94,17 @@ So weisen Sie rollenbasierte Zugriffssteuerungsberechtigungen (RBAC) zu:
 
 2. Öffnen Sie das Speicherkonto, das Sie unter [Einrichten eines Speicherkontos](#set-up-a-storage-account) erstellt haben.
 
-3. Wählen Sie **Access Control (IAM)** aus.
+3. Wählen Sie **Dateifreigaben** aus, und wählen Sie dann den Namen der Dateifreigabe aus, die Sie verwenden möchten.
 
-4. Wählen Sie **Rollenzuweisung hinzufügen** aus.
+4. Wählen Sie **Access Control (IAM)** aus.
 
-5. Wählen Sie auf der Registerkarte **Rollenzuweisung hinzufügen** für das Administratorkonto **Mitwirkender mit erhöhten Rechten für Speicherdateidaten-SMB-Freigabe** aus.
-   
+5. Wählen Sie **Rollenzuweisung hinzufügen** aus.
+
+6. Wählen Sie auf der Registerkarte **Rollenzuweisung hinzufügen** für das Administratorkonto **Mitwirkender mit erhöhten Rechten für Speicherdateidaten-SMB-Freigabe** aus.
+
      Befolgen Sie dieselben Anweisungen, um Benutzern Berechtigungen für Ihre FSLogix-Profile zuzuweisen. Wenn Sie jedoch zu Schritt 5 gelangen, wählen Sie stattdessen **Mitwirkender für Speicherdateidaten-SMB-Freigabe** aus.
 
-6. Wählen Sie **Speichern** aus.
+7. Wählen Sie **Speichern** aus.
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Zuweisen von Benutzerberechtigungen für die Azure-Dateifreigabe
 
@@ -126,7 +129,7 @@ So rufen Sie den UNC-Pfad ab:
 
 5. Nachdem Sie den URI kopiert haben, führen Sie die folgenden Schritte aus, um ihn in den UNC zu ändern:
 
-    - Entfernung von `https://`
+    - Ersetzen Sie `https://` durch `\\`.
     - Ersetzen Sie den Schrägstrich `/` durch einen umgekehrten Schrägstrich `\`.
     - Fügen Sie den Namen der Dateifreigabe, die Sie unter [Erstellen einer Azure-Dateifreigabe](#create-an-azure-file-share) erstellt haben, zum Ende des UNC-Pfads hinzu.
 
@@ -157,7 +160,7 @@ So konfigurieren Sie NTFS-Berechtigungen:
      ```
 
 3. Führen Sie das folgende Cmdlet aus, um die Zugriffsberechtigungen für die Azure-Dateifreigabe zu überprüfen:
-    
+
     ```powershell
     icacls <mounted-drive-letter>:
     ```
@@ -167,7 +170,7 @@ So konfigurieren Sie NTFS-Berechtigungen:
     Sowohl *NT Authority\Authenticated Users* (NT-Autorität\Authentifizierte Benutzer) als auch *BUILTIN\Users* (Vordefiniert\Benutzer) verfügen standardmäßig über bestimmte Berechtigungen. Mit diesen Standardberechtigungen können diese Benutzer die Profilcontainer anderer Benutzer lesen. Mit den unter [Konfigurieren von Speicherberechtigungen für die Verwendung mit Profilcontainern und Office-Containern](/fslogix/fslogix-storage-config-ht) beschriebenen Berechtigungen können Benutzer jedoch nicht gegenseitig ihre Profilcontainer lesen.
 
 4. Führen Sie die folgenden Cmdlets aus, damit Ihre Windows Virtual Desktop-Benutzer ihre eigenen Profilcontainer erstellen können, während sie den Zugriff auf ihren Profilcontainer durch andere Benutzer blockieren.
-     
+
      ```powershell
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)

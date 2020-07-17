@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 143410f0bf0659161427f4b5391124f53f712972
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611992"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086924"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Häufig gestellte Fragen zu Windows 10 Enterprise mit mehreren Sitzungen
 
@@ -53,7 +53,7 @@ Für Windows 10 Enterprise (mehrere Sitzungen) wird derzeit die Hybrideinbindun
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Wo finde ich das Image für Windows 10 Enterprise (mehrere Sitzungen)?
 
-Windows 10 Enterprise (mehrere Sitzungen) ist über den Azure-Katalog erhältlich. Navigieren Sie zum Azure-Portal, und suchen Sie nach dem Release „Windows 10 Enterprise for Virtual Desktops“. Ein in Office Pro Plus integriertes Image erhalten Sie, indem Sie im Azure-Portal nach „Microsoft Windows 10 + Office 365 ProPlus“ suchen.
+Windows 10 Enterprise (mehrere Sitzungen) ist über den Azure-Katalog erhältlich. Navigieren Sie zum Azure-Portal, und suchen Sie nach dem Release „Windows 10 Enterprise for Virtual Desktops“. Wenn Sie ein in Microsoft 365 Apps for Enterprise integriertes Image wünschen, wechseln Sie in das Azure-Portal, und suchen Sie nach **Microsoft Windows 10 + Microsoft 365 Apps for Enterprise**.
 
 ## <a name="which-windows-10-enterprise-multi-session-image-should-i-use"></a>Welches Image für Windows 10 Enterprise (mehrere Sitzungen) sollte ich verwenden?
 
@@ -61,7 +61,7 @@ Der Azure-Katalog enthält mehrere Releases, z. B. Version 1809 und Version 1
  
 ## <a name="which-windows-10-enterprise-multi-session-versions-are-supported"></a>Welche Versionen von Windows 10 Enterprise (mehrere Sitzungen) werden unterstützt?
 
-Version 1809 und höher von Windows 10 Enterprise (mehrere Sitzungen) werden unterstützt und sind im Azure-Katalog verfügbar. Für diese Releases wird der gleiche Supportrichtlinienansatz wie für Windows 10 Enterprise verfolgt. Dies bedeutet, dass für das Frühlingsrelease 18 Monate und für das Herbstrelease 30 Monate lang Support geleistet wird.
+Version 1809 und höher von Windows 10 Enterprise (mehrere Sitzungen) werden unterstützt und sind im Azure-Katalog verfügbar. Für diese Releases wird demselben Supportrichtlinienansatz wie für Windows 10 Enterprise gefolgt. Dies bedeutet, dass für das März-Release 18 Monate und für das September-Release 30 Monate lang Support geleistet wird.
  
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Welche Profilverwaltungslösung sollte ich für Windows 10 Enterprise (mehrere Sitzungen) verwenden?
 

@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 11/9/2017
+ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c2490d8dc1d828992d309f07de1f75fa61ecb3be
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0848d092c342b29c1839a4dd4cebd0bad62ea3ca
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200958"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023005"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Verwenden umfangreicher VM-Skalierungsgruppen
 Sie können nun [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) mit einer Kapazität von bis zu 1.000 virtuellen Computern erstellen. Eine _umfangreiche VM-Skalierungsgruppe_ ist in diesem Dokument als Skalierungsgruppe mit mehr als 100 virtuellen Computern definiert. Diese Funktion wird über eine Skalierungsgruppeneigenschaft (_singlePlacementGroup=False_) festgelegt. 
@@ -33,6 +33,7 @@ Die effektive Nutzung umfangreicher Skalierungsgruppen durch eine Anwendung hän
 - Skalierungsgruppen, die auf der Grundlage von Azure Marketplace-Images erstellt wurden, können auf bis zu 1.000 virtuelle Computer skaliert werden.
 - Skalierungsgruppen, die auf der Grundlage benutzerdefinierter Images (selbst erstellte und hochgeladene VM-Images) erstellt wurden, können derzeit auf bis zu 600 virtuelle Computer skaliert werden.
 - Umfangreiche Skalierungsgruppen erfordern Azure Managed Disks. Für Skalierungsgruppen, die nicht mit Managed Disks erstellt wurden, sind mehrere Speicherkonten (jeweils eins pro 20 virtuelle Computer) erforderlich. Umfangreiche Skalierungsgruppen wurden exklusiv für die Verwendung mit Managed Disks konzipiert, um die Speicherverwaltung zu vereinfachen und um zu verhindern, dass Abonnementgrenzwerte für Speicherkonten erreicht werden. 
+- Umfangreiche Skalierung (SPG=false) unterstützt keine InfiniBand-Netzwerkfunktionen.
 - Für den Layer-4-Lastenausgleich mit Skalierungsgruppen bestehend aus mehreren Platzierungsgruppen ist die [Standard-SKU von Azure Load Balancer](../load-balancer/load-balancer-standard-overview.md) erforderlich. Mit der Standard-SKU von Azure Load Balancer profitieren Sie von weiteren Vorteilen, z.B. der Möglichkeit zum Durchführen des Lastenausgleichs zwischen mehreren Skalierungsgruppen. Außerdem ist es für die Standard-SKU erforderlich, dass der Skalierungsgruppe eine Netzwerksicherheitsgruppe zugeordnet ist. Andernfalls funktionieren NAT-Pools nicht richtig. Falls Sie die Azure Load Balancer Basic-SKU verwenden müssen, sollten Sie darauf achten, dass die Skalierungsgruppe für die Verwendung einer einzelnen Platzierungsgruppe konfiguriert ist. Dies ist die Standardeinstellung.
 - Layer-7-Lastenausgleich mit Azure Application Gateway wird für alle Skalierungsgruppen unterstützt.
 - Eine Skalierungsgruppe ist mit einem einzelnen Subnetz definiert. Vergewissern Sie sich daher, dass Ihr Subnetz über einen ausreichend großen Adressbereich für alle benötigten virtuellen Computer verfügt. Zur Verbesserung der Zuverlässigkeit und der Leistung der Bereitstellung findet bei Skalierungsgruppen standardmäßig eine Überbereitstellung statt. (Zur Bereitstellungszeit oder beim horizontalen Hochskalieren werden also zusätzliche virtuelle Computer erstellt.) Die Größe des Adressraums sollte daher die geplante Anzahl von virtuellen Computern, auf die Sie skalieren möchten, um etwa 20 Prozent übersteigen.
@@ -42,7 +43,7 @@ Die effektive Nutzung umfangreicher Skalierungsgruppen durch eine Anwendung hän
 ## <a name="creating-a-large-scale-set"></a>Erstellen einer umfangreichen Skalierungsgruppe
 Geben Sie beim Erstellen einer Skalierungsgruppe über das Azure-Portal einfach einen Wert von bis zu 1.000 für die *Anzahl von Instanzen* an. Bei mehr als 100 Instanzen wird *Skalierung auf über 100 Instanzen aktivieren*  auf *Ja* festgelegt, um die Skalierung auf mehrere Platzierungsgruppen zu ermöglichen. 
 
-![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
+![Diese Abbildung zeigt das „Instanzen“-Blatt des Azure-Portals. Es sind Optionen zum Auswählen der Instanzanzahl und der Instanzgröße verfügbar.](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
 Über die [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-cli) kann mit dem Befehl _az vmss create_ eine umfangreiche VM-Skalierungsgruppe erstellt werden. Dieser Befehl legt auf der Grundlage des Arguments _instance-count_ intelligente Standardwerte wie etwa die Subnetzgröße fest:
 
@@ -76,7 +77,7 @@ Wenn Sie eine umfangreiche Skalierungsgruppe mithilfe einer Azure Resource Manag
     }
 ```
 
-Ein vollständiges Beispiel für eine Vorlage für umfangreiche Skalierungsgruppen finden Sie unter [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json).
+Ein vollständiges Beispiel für eine Vorlage für umfangreiche Skalierungsgruppen finden Sie unter [https://github.com/gbowerman/azure-myriad/blob/main/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/main/bigtest/bigbottle.json).
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>Konvertieren einer vorhandenen Skalierungsgruppe in eine Skalierungsgruppe, die mehrere Platzierungsgruppen umfasst
 Wenn eine vorhandene VM-Skalierungsgruppe auf über 100 VMs skalierbar sein soll, müssen Sie die Eigenschaft _singlePlacementGroup_ im Skalierungsgruppenmodell auf _false_ festlegen. Sie können das Ändern dieser Eigenschaft mit dem [Azure-Ressourcen-Explorer](https://resources.azure.com/) testen. Navigieren Sie zu einer vorhandenen Skalierungsgruppe, wählen Sie _Bearbeiten_ aus, und ändern Sie die Eigenschaft _singlePlacementGroup_. Sollte die Eigenschaft nicht angezeigt werden, betrachten Sie die Skalierungsgruppe möglicherweise mit einer älteren Version der Microsoft.Compute-API.

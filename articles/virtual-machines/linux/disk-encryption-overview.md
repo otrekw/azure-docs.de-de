@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c227c6ab24d6b71445354d1b17d238e80bf6313
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 75e469b30632bb7e7e8f6445db78acda784ac5da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655852"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601274"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption für Linux-VMs 
 
@@ -64,7 +64,6 @@ Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk 
 | Canonical | Ubuntu 14.04.5</br>[für Azure optimierter Kernel aktualisiert auf 4.15 oder eine höhere Version](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical:UbuntuServer:14.04.5-LTS:latest | Betriebssystem- und andere Datenträger |
 | Canonical | Ubuntu 14.04.5</br>[für Azure optimierter Kernel aktualisiert auf 4.15 oder eine höhere Version](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | Betriebssystem- und andere Datenträger |
 | RedHat | RHEL 7.7 | 7,7 | RedHat:RHEL:7.7:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
-| RedHat | RHEL 7.7 | 7-RAW | RedHat:RHEL:7-RAW:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RedHat | RHEL 7.7 | 7-LVM | RedHat:RHEL:7-LVM:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RedHat | RHEL 7.6 | 7.6 | RedHat:RHEL:7.6:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RedHat | RHEL 7.5 | 7,5 | RedHat:RHEL:7.5:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
@@ -94,7 +93,7 @@ Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk 
 
 ## <a name="additional-vm-requirements"></a>Weitere VM-Anforderungen
 
-Für Azure Disk Encryption muss das „dm-crypt“-Modul und das „vfat“-Modul im System vorhanden sein. Wenn das „vfat“-Modul aus dem Standardimage entfernt oder dort deaktiviert wird, kann das System nicht mehr das Schlüsselvolume lesen und damit auch nicht den Schlüssel abrufen, der zum Entsperren der Datenträger bei nachfolgenden Neustarts erforderlich ist. Schritte zum Härten des Systems, die das vfat-Modul aus dem System entfernen, sind nicht mit Azure Disk Encryption kompatibel. 
+Für Azure Disk Encryption muss das „dm-crypt“-Modul und das „vfat“-Modul im System vorhanden sein. Wenn das „vfat“-Modul aus dem Standardimage entfernt oder dort deaktiviert wird, kann das System nicht mehr das Schlüsselvolume lesen und damit auch nicht den Schlüssel abrufen, der zum Entsperren der Datenträger bei nachfolgenden Neustarts erforderlich ist. Schritte zum Härten des Systems, die das vfat-Modul aus dem System entfernen oder ein Erweitern der Betriebssystem-Bereitstellungspunkte/-Ordner auf Datenlaufwerken erzwingen, sind nicht mit Azure Disk Encryption kompatibel. 
 
 Vor dem Aktivieren der Verschlüsselung müssen die zu verschlüsselnden Datenträger ordnungsgemäß in „/etc/fstab“ aufgelistet werden. Verwenden Sie die Option "nofail" beim Erstellen von Einträgen, und wählen Sie einen permanenten Blockgerätenamen aus (da Gerätenamen im Format „/dev/sdX“ möglicherweise nicht über Neustarts hinweg mit demselben Datenträger verknüpft sind, insbesondere nach der Verschlüsselung. Weitere Informationen zu diesem Verhalten finden Sie unter: [Behandeln von Problemen mit geänderten Gerätenamen von Linux-VMs](troubleshoot-device-names-problems.md)).
 

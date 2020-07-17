@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d848b92da5d4181832adff8499b3531d020c30c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4e31560126919e4c61b176a6eaa62ee7f9b4a624
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78155517"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85111989"
 ---
 Kurzlebige Betriebssystem-Datenträger werden auf dem lokalen Speicher des virtuellen Computers (VM) erstellt und nicht auf dem externen Azure Storage gespeichert. Kurzlebige Betriebssystem-Datenträger eignen sich gut für zustandslose Workloads, bei denen Anwendungen einzelne VM-Ausfälle tolerieren, sind aber stärker durch den Zeitpunkt der VM-Bereitstellung oder das Reimaging der einzelnen VM-Instanzen betroffen. Mit einem kurzlebigen Betriebssystem-Datenträger erzielen Sie eine geringere Latenzzeit für das Lesen/Schreiben auf dem Betriebssystem-Datenträger und schnelleres VM-Reimaging. 
  
@@ -47,6 +47,9 @@ Die Hauptunterschiede zwischen permanenten und kurzlebigen Betriebssystem-Datent
 Sie können VM- und Instanzimages bis zur Größe des VM-Caches bereitstellen. Windows Server-Standardimages aus dem Marketplace sind beispielsweise etwa 127 GiB groß, was bedeutet, dass Sie eine VM-Größe mit einem Cache von mehr als 127 GiB benötigen. In diesem Fall hat [Standard_DS2_v2](~/articles/virtual-machines/dv2-dsv2-series.md) eine Cachegröße von 86 GiB und ist damit nicht groß genug. Standard_DS3_v2 weist eine Cachegröße von 172 GiB auf und ist damit groß genug. In diesem Fall ist Standard_DS3_v2 die kleinste Größe in der DSv2-Serie, die Sie mit diesem Image verwenden können. Einfache Linux-Images im Marketplace und Windows Server-Images, die mit `[smallsize]` gekennzeichnet sind, liegen in der Regel bei etwa 30 GiB und können die meisten der verfügbaren VM-Größen verwenden.
 
 Kurzlebige Datenträger erfordern außerdem, dass die VM-Größe Storage Premium unterstützt. Die Größen weisen in der Regel (aber nicht immer) ein `s` im Namen auf, z.B. DSv2- und EsV3. Ausführliche Informationen dazu, welche Größen Storage Premium unterstützen, finden Sie unter den [Größen für virtuelle Azure-Computer](../articles/virtual-machines/linux/sizes.md).
+
+## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>Vorschau: kurzlebige Betriebssystem Datenträger können jetzt auf temporären Datenträgern gespeichert werden
+Kurzlebige Betriebssystemdatenträger können jetzt zusätzlich zum VM-Cache auf dem temporären bzw. Ressourcendatenträger einer VM gespeichert werden. Daher können Sie nun kurzlebige Betriebssystemdatenträger mit einer VM verwenden, die keinen Cache oder zu wenig Cache, aber einen temporären bzw. Ressourcendatenträger hat, um den kurzlebigen Betriebssystemdatenträger zu speichern, etwa Dav3, Dav4, Eav4 und Eav3. Hat eine VM ausreichend Cache und temporären Speicherplatz, können Sie nun auch angeben, wo der kurzlebige Betriebssystemdatenträger gespeichert werden soll, indem Sie die neue Eigenschaft [DiffDiskPlacement](https://docs.microsoft.com/rest/api/compute/virtualmachines/list#diffdiskplacement) verwenden. Diese Funktion steht derzeit als Vorschau zur Verfügung. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Um zu beginnen, [fordern Sie Zugriff an](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -198,7 +201,24 @@ A: Ja, können Sie einen verwalteten Datenträger an eine VM anfügen, die einen
 
 **F: Werden alle VM-Größen für kurzlebige Betriebssystem-Datenträger unterstützt?**
 
-A: Nein, alle Storage Premium-VM-Größen werden unterstützt (DS, ES, FS, GS und M), mit Ausnahme der Größen der B-Serie, N-Serie und H-Serie.  
+A: Nein, die meisten Storage Premium-VM-Größen werden unterstützt (DS, ES, FS, GS, M usw.). Um zu ermitteln, ob eine bestimmte VM-Größe kurzlebige Betriebssystemdatenträger unterstützt, können Sie wie folgt vorgehen:
+
+Rufen Sie das PowerShell-Cmdlet `Get-AzComputeResourceSku` auf.
+```azurepowershell-interactive
+ 
+$vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 
+
+foreach($vmSize in $vmSizes)
+{
+   foreach($capability in $vmSize.capabilities)
+   {
+       if($capability.Name -eq 'EphemeralOSDiskSupported' -and $capability.Value -eq 'true')
+       {
+           $vmSize
+       }
+   }
+}
+```
  
 **F: Kann der kurzlebige Betriebssystem-Datenträger für bestehende VMs und Skalierungsgruppen angewendet werden?**
 

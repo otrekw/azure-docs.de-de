@@ -6,15 +6,15 @@ ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: networking
-ms.date: 07/17/2017
+ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 39539f29df48d19b956b8bab6f63da50473453d4
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 0f8075af53752da0e0abc2dec7ab49c28af2e3ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221294"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374728"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netzwerk für Azure-VM-Skalierungsgruppen
 
@@ -146,7 +146,7 @@ Die Ausgabe für einen bestimmten VM-DNS-Namen hat das folgende Format:
 ```
 
 ## <a name="public-ipv4-per-virtual-machine"></a>Öffentliche IPv4-Adresse pro virtuellem Computer
-Virtuelle Computer in Azure-Skalierungsgruppen benötigen im Allgemeinen keine eigene IP-Adresse. In den meisten Szenarien ist es wirtschaftlicher und sicherer, eine öffentliche IP-Adresse einem Load Balancer oder einem einzelnen virtuellen Computer (auch Jumpbox genannt) zuzuweisen, der dann eingehende Verbindungen nach Bedarf an virtuelle Computer in der Skalierungsgruppe weiterleitet (beispielsweise über NAT-Eingangsregeln).
+Virtuelle Computer in Azure-Skalierungsgruppen benötigen im Allgemeinen keine eigene IP-Adresse. In den meisten Szenarien ist es wirtschaftlicher und sicherer, eine öffentliche IP-Adresse einem Load Balancer oder einem einzelnen virtuellen Computer (auch als Jumpbox bezeichnet) zuzuweisen, der dann eingehende Verbindungen nach Bedarf an virtuelle Computer in der Skalierungsgruppe weiterleitet (beispielsweise über NAT-Eingangsregeln).
 
 In einigen Szenarien müssen virtuelle Computer in Skalierungsgruppen jedoch über eine eigene öffentliche IP-Adresse verfügen. Ein Beispiel sind etwa Spiele, bei denen eine Konsole eine direkte Verbindung mit einem virtuellen Cloudcomputer herstellen muss, der die Spielphysik verarbeitet. Ein weiteres Beispiel, bei dem virtuelle Computer regionsübergreifend gegenseitige externe Verbindungen herstellen müssen, sind verteilte Datenbanken.
 
