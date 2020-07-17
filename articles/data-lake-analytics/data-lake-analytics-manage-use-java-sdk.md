@@ -7,14 +7,14 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: b8c7d2ba1c782c3b6ae3034d6a9aab5eb19be954
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6409ac10a524f75709cbbf185efb03359606e88c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70813641"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121366"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Verwalten von Azure Data Lake Analytics mithilfe einer Java-App
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -33,9 +33,9 @@ Der folgende Codeausschnitt enthält Code für die **nicht interaktive** Authent
 ## <a name="create-a-java-application"></a>Erstellen einer Java-Anwendung
 1. Öffnen Sie IntelliJ, und erstellen Sie mithilfe der Vorlage **Befehlszeilen-App** ein Java-Projekt.
 2. Klicken Sie auf der linken Seite des Bildschirms mit der rechten Maustaste auf das Projekt, und klicken Sie dann auf **Frameworksupport hinzufügen**. Wählen Sie **Maven** aus, und klicken Sie auf **OK**.
-3. Öffnen Sie die neu erstellte Datei **pom.xml**, und fügen Sie den folgenden Textausschnitt zwischen dem Tag **\</version>** und dem Tag **\</project>** hinzu:
+3. Öffnen Sie die neu erstellte Datei **pom.xml**, und fügen Sie den folgenden Textausschnitt zwischen dem **\</version>** -Tag und dem **\</project>** -Tag hinzu:
 
-```
+```xml
 <dependencies>
     <dependency>
         <groupId>com.microsoft.azure</groupId>

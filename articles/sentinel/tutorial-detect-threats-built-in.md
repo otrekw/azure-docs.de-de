@@ -1,6 +1,6 @@
 ---
 title: Untersuchen von Warnungen mit Azure Sentinel | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Warnungen mit Azure Sentinel untersucht werden.
+description: Hier erfahren Sie, wie Sie standardmäßig verfügbare integrierte Azure-Bedrohungserkennungsvorlagen verwenden, mit denen Sie bei verdächtigen Vorkommnissen eine Benachrichtigung erhalten.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: df855aa768fdeb279482b8407259be1a644322d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d1ef885ea36e2eee7fd30268fd7b1f4609a70bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77585202"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560041"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>Tutorial: Standardmäßig verfügbare Erkennung von Bedrohungen
 

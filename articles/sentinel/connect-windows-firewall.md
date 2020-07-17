@@ -1,6 +1,6 @@
 ---
 title: Verknüpfen von Windows-Firewalldaten mit Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Windows-Firewalldaten mit Azure Sentinel verknüpfen.
+description: Aktivieren Sie den Windows Firewall-Connector in Azure Sentinel, um auf einfache Weise Firewallereignisse von Windows-Computern mit installierten Log Analytics-Agents zu streamen.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 5d2f68261143c3fc5bbcda0b739af17251eeee63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d33ba0dbb62cd7206829ed9ae580ea2aa3334bcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559485"
 ---
 # <a name="connect-windows-firewall"></a>Herstellen einer Verbindung mit der Windows-Firewall
 

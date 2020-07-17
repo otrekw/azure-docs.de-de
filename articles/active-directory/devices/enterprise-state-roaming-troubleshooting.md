@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae8ce24aeb665a7f99326e83dbe18d020e1b6196
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5043873b18f2d2115fd23e8b52959290393bfb8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672346"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604538"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Problembehandlung bei Enterprise State Roaming-Einstellungen in Azure Active Directory
 
@@ -84,7 +84,7 @@ In bestimmten Fällen werden Daten von Enterprise State Roaming nicht synchronis
 
 ### <a name="event-viewer"></a>Ereignisanzeige
 
-Für eine erweiterte Problembehandlung kann die Ereignisanzeige verwendet werden, um nach bestimmten Fehlern suchen. Diese sind in der folgenden Tabelle dokumentiert. Die Ereignisse finden Sie unter „Ereignisanzeige“ > „Anwendungs- und Dienstprotokolle“ > **Microsoft** > **Windows** > **SettingSync-Azure** und bei identitätsbezogenen Problemen mit der Synchronisierung unter **Microsoft** > **Windows** > **AAD**.
+Für eine erweiterte Problembehandlung kann die Ereignisanzeige verwendet werden, um nach bestimmten Fehlern suchen. Diese sind in der folgenden Tabelle dokumentiert. Die Ereignisse finden Sie unter „Ereignisanzeige“ > **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **SettingSync-Azure** und bei identitätsbezogenen Problemen mit der Synchronisierung unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **AAD**.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 

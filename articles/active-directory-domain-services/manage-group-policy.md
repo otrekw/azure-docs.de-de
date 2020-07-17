@@ -8,24 +8,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 742d716ecdfff6ab67dedc281aa6134020f57add
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d9738d3abfdf30e133ae241c497823be349d25da
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655048"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040077"
 ---
-# <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Verwalten von Gruppenrichtlinien in einer durch Azure AD Domain Services verwalteten Domäne
+# <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Verwalten von Gruppenrichtlinien in einer von Azure Active Directory Domain Services verwalteten Domäne
 
 Einstellungen für Benutzer- und Computerobjekte in Azure Active Directory Domain Services (Azure AD DS) werden häufig über Gruppenrichtlinienobjekte (GPOs) verwaltet. Azure AD DS umfasst integrierte GPOs für die Container *AADDC-Benutzer* und *AADDC-Computer*. Sie können diese integrierten GPOs anpassen, um die Gruppenrichtlinie nach Bedarf für Ihre Umgebung zu konfigurieren. Mitglieder der Gruppe *Azure AD DC-Administratoren* haben Gruppenrichtlinien-Administratorrechte in der Azure AD DS-Domäne und können auch benutzerdefinierte Gruppenrichtlinienobjekte und Organisationseinheiten erstellen. Weitere Informationen zu Gruppenrichtlinien und deren Funktionsweise finden Sie unter [Übersicht über Gruppenrichtlinien][group-policy-overview].
 
 In einer Hybridumgebung werden die in einer lokalen AD DS-Umgebung konfigurierten Gruppenrichtlinien nicht mit Azure AD DS synchronisiert. Um Konfigurationseinstellungen für Benutzer oder Computer in Azure AD DS zu definieren, bearbeiten Sie eines der Standard-Gruppenrichtlinienobjekte, oder erstellen Sie ein benutzerdefiniertes Gruppenrichtlinienobjekt.
 
 In diesem Artikel erfahren Sie, wie Sie die Gruppenrichtlinien-Verwaltungstools installieren, dann die integrierten GPOs bearbeiten und benutzerdefinierte GPOs erstellen.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -36,7 +34,7 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance] aus.
+    * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance] aus.
 * Eine Windows Server-Verwaltungs-VM, die in die verwaltete Azure AD DS-Domäne eingebunden ist.
     * Führen Sie bei Bedarf die [Schritte im Tutorial zum Erstellen einer Windows Server-VM und Einbinden der VM in eine verwaltete Domäne][create-join-windows-vm] aus.
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
@@ -46,7 +44,7 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 >
 > Kopieren Sie z. B. die Version „en-US (Englisch, USA)“ der *ADML*-Dateien in den Ordner `\en-us`.
 >
-> Alternativ können Sie Ihre administrative Vorlage für Gruppenrichtlinien auf den Domänencontrollern, die Teil der verwalteten Azure AD DS-Domäne sind, zentral speichern. Weitere Informationen finden Sie unter [Erstellen und Verwalten des zentralen Speichers für administrative Vorlagendateien für Gruppenrichtlinien in Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
+> Alternativ können Sie Ihre administrative Vorlage für Gruppenrichtlinien auf den Domänencontrollern, die Teil der verwalteten Domäne sind, zentral speichern. Weitere Informationen finden Sie unter [Erstellen und Verwalten des zentralen Speichers für administrative Vorlagendateien für Gruppenrichtlinien in Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
 ## <a name="install-group-policy-management-tools"></a>Installieren der Gruppenrichtlinien-Verwaltungstools
 
@@ -68,17 +66,17 @@ Um Gruppenrichtlinienobjekte (Group Policy Object, GPOs) zu erstellen und zu kon
 
 ## <a name="open-the-group-policy-management-console-and-edit-an-object"></a>Öffnen der Gruppenrichtlinien-Verwaltungskonsole und Bearbeiten eines Objekts
 
-Für Benutzer und Computer in einer von Azure AD DS verwalteten Domäne sind Standard-Gruppenrichtlinienobjekte (GPOs) vorhanden. Wenn das Feature zur Gruppenrichtlinienverwaltung aus dem vorherigen Abschnitt installiert ist, können wir ein vorhandenes Gruppenrichtlinienobjekt anzeigen und bearbeiten. Im nächsten Abschnitt erstellen Sie ein benutzerdefiniertes Gruppenrichtlinienobjekt.
+Für Benutzer und Computer in einer verwalteten Domäne sind Standard-Gruppenrichtlinienobjekte (GPOs) vorhanden. Wenn das Feature zur Gruppenrichtlinienverwaltung aus dem vorherigen Abschnitt installiert ist, können wir ein vorhandenes Gruppenrichtlinienobjekt anzeigen und bearbeiten. Im nächsten Abschnitt erstellen Sie ein benutzerdefiniertes Gruppenrichtlinienobjekt.
 
 > [!NOTE]
-> Zum Verwalten einer Gruppenrichtlinie in einer verwalteten Azure AD DS-Domäne müssen Sie bei einem Benutzerkonto angemeldet sein, das Mitglied der Gruppe *AAD DC-Administrators* ist.
+> Zum Verwalten einer Gruppenrichtlinie in einer verwalteten Domäne müssen Sie bei einem Benutzerkonto angemeldet sein, das Mitglied der Gruppe *AAD DC-Administrators* ist.
 
 1. Klicken Sie auf dem Startbildschirm auf **Verwaltung**. Es wird eine Liste der verfügbaren Verwaltungstools angezeigt, einschließlich der **Gruppenrichtlinienverwaltung**, die im vorherigen Abschnitt installiert wurde.
 1. Wählen Sie **Gruppenrichtlinienverwaltung** aus, um die Gruppenrichtlinien-Verwaltungskonsole (GPMC) zu öffnen.
 
     ![Die Gruppenrichtlinien-Verwaltungskonsole wird geöffnet, um Gruppenrichtlinienobjekte zu bearbeiten.](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
-Es gibt zwei integrierte Gruppenrichtlinienobjekte (GPOs) in einer von Azure AD DS verwalteten Domäne – eines für den Container *AADDC-Computer* und eines für den Container *AADDC-Benutzer*. Sie können diese GPOs anpassen, um Gruppenrichtlinien nach Bedarf innerhalb Ihrer von Azure AD DS verwalteten Domäne zu konfigurieren.
+Es gibt zwei integrierte Gruppenrichtlinienobjekte (GPOs) in einer verwalteten Domäne: eines für den Container *AADDC-Computer* und eines für den Container *AADDC-Benutzer*. Sie können diese GPOs anpassen, um Gruppenrichtlinien nach Bedarf innerhalb Ihrer verwalteten Domäne zu konfigurieren.
 
 1. Erweitern Sie in der **Gruppenrichtlinien-Verwaltungskonsole** den Knoten **Gesamtstruktur: aaddscontoso.com**. Erweitern Sie anschließend die **Domänen**-Knoten.
 
@@ -86,7 +84,7 @@ Es gibt zwei integrierte Gruppenrichtlinienobjekte (GPOs) in einer von Azure AD 
 
     ![Auf die standardmäßigen Container „AADDC-Computer“ und „AADDC-Benutzer“ angewandte integrierte GPOs](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 
-1. Diese integrierten GPOs können angepasst werden, um bestimmte Gruppenrichtlinien für Ihre von Azure AD DS verwaltete Domäne zu konfigurieren. Klicken Sie mit der rechten Maustaste auf eines der Gruppenrichtlinienobjekte (beispielsweise *AADDC-Computer-GPO*), und wählen Sie dann **Bearbeiten...** aus.
+1. Diese integrierten GPOs können angepasst werden, um bestimmte Gruppenrichtlinien für Ihre verwaltete Domäne zu konfigurieren. Klicken Sie mit der rechten Maustaste auf eines der Gruppenrichtlinienobjekte (beispielsweise *AADDC-Computer-GPO*), und wählen Sie dann **Bearbeiten...** aus.
 
     ![Wählen Sie die Option zum Bearbeiten eines der integrierten Gruppenrichtlinienobjekte aus.](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
 
@@ -98,7 +96,7 @@ Es gibt zwei integrierte Gruppenrichtlinienobjekte (GPOs) in einer von Azure AD 
 
 ## <a name="create-a-custom-group-policy-object"></a>Erstellen eines benutzerdefinierten Gruppenrichtlinienobjekts
 
-Um ähnliche Richtlinieneinstellungen zu gruppieren, erstellen Sie häufig zusätzliche GPOs, anstatt alle erforderlichen Einstellungen in dem einzelnen, standardmäßigen GPO anzuwenden. Mit Azure AD DS können Sie Ihre eigenen benutzerdefinierten Gruppenrichtlinienobjekte erstellen oder importieren und diese mit einer benutzerdefinierten Organisationseinheit verknüpfen. Wenn Sie zuerst eine benutzerdefinierte Organisationseinheit erstellen müssen, finden Sie weitere Informationen unter [Erstellen einer benutzerdefinierten Organisationseinheit in einer verwalteten Azure AD DS-Domäne](create-ou.md).
+Um ähnliche Richtlinieneinstellungen zu gruppieren, erstellen Sie häufig zusätzliche GPOs, anstatt alle erforderlichen Einstellungen in dem einzelnen, standardmäßigen GPO anzuwenden. Mit Azure AD DS können Sie Ihre eigenen benutzerdefinierten Gruppenrichtlinienobjekte erstellen oder importieren und diese mit einer benutzerdefinierten Organisationseinheit verknüpfen. Wenn Sie zuerst eine benutzerdefinierte Organisationseinheit erstellen müssen, finden Sie weitere Informationen unter [Erstellen einer benutzerdefinierten Organisationseinheit in einer verwalteten Domäne](create-ou.md).
 
 1. Wählen Sie in der Konsole für die **Gruppenrichtlinienverwaltung** die benutzerdefinierte Organisationseinheit aus, z. B. *MyCustomOU*. Klicken Sie mit der rechten Maustaste auf die Organisationseinheit, und wählen Sie dann **Gruppenrichtlinienobjekt hier erstellen und verknüpfen...** aus.
 

@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 11/01/2019
+ms.date: 06/22/2020
 ms.author: allensu
-ms.openlocfilehash: 6d4fa4451c3db3d6f2a506eabd5676d18b0219f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6260a4b78197329e020bebaa3bc08db5ad792086
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259900"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559312"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Referenz zur Standardregel-Engine für Azure CDN
 
@@ -32,9 +32,16 @@ Legen Sie [Übereinstimmungsbedingungen](cdn-standard-rules-engine-match-conditi
 
  ![Azure CDN-Regelstruktur](./media/cdn-standard-rules-engine-reference/cdn-rules-structure.png)
 
-Jede Regel kann bis zu vier Übereinstimmungsbedingungen und drei Aktionen aufweisen. Jeder Azure CDN-Endpunkt kann bis zu fünf Regeln enthalten. 
+Jede Regel kann bis zu zehn Übereinstimmungsbedingungen und fünf Aktionen aufweisen. Jeder Azure CDN-Endpunkt kann bis zu 25 Regeln enthalten. 
 
-In der aktuellen Einschränkung auf fünf Regeln für einen Azure CDN-Endpunkt ist eine *globale Standardregel* enthalten. Diese globale Regel verfügt über keine Übereinstimmungsbedingungen. Die in einer globalen Regel definierten Aktionen werden immer ausgelöst.
+Dieser Grenzwert schließt eine *globale Standardregel* mit ein. Die globale Regel verfügt über keine Übereinstimmungsbedingungen. Die in einer globalen Regel definierten Aktionen werden immer ausgelöst.
+
+## <a name="limits-and-pricing"></a>Limits und Preise 
+
+Jeder Azure CDN-Endpunkt kann bis zu 25 Regeln enthalten. Jede Regel kann bis zu zehn Übereinstimmungsbedingungen und fünf Aktionen aufweisen. Die Preise für die Regel-Engine folgen den folgenden Dimensionen: 
+- Regeln: 1 US-Dollar pro Regel und Monat 
+- Verarbeitete Anforderungen: 0,60 US-Dollar pro Million Anforderungen
+- Die ersten fünf Regeln bleiben weiterhin kostenlos.
 
 ## <a name="syntax"></a>Syntax
 

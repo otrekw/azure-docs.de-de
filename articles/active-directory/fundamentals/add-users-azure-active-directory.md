@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/12/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d72616422934501e042375edfb10a25aa27c527
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c30730f685945d129ababb27040f34bf8ab2f790
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230434"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603858"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Hinzufügen oder Löschen von Benutzern in Azure Active Directory
 
@@ -44,7 +44,7 @@ Um einen neuen Benutzer hinzuzufügen, führen Sie diese Schritte aus:
 
    - **Benutzername**. Erforderlich. Der Benutzername des neuen Benutzers. Beispiel: `mary@contoso.com`.
 
-     Der Domänenteil des Benutzernamens muss entweder der anfängliche Standarddomänenname sein, *\<IhrDomänenname>.onmicrosoft.com*, oder ein benutzerdefinierter Domänennamen, z. B. *contoso.com*. Weitere Informationen zum Erstellen eines benutzerdefinierten Domänennamens finden Sie unter [Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal](add-custom-domain.md).
+     Der Domänenteil des Benutzernamens muss entweder der anfängliche Standarddomänenname sein, *\<yourdomainname>.onmicrosoft.com*, oder ein benutzerdefinierter Domänennamen, z. B. *contoso.com*. Weitere Informationen zum Erstellen eines benutzerdefinierten Domänennamens finden Sie unter [Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal](add-custom-domain.md).
 
    - **Gruppen**. Optional können Sie den Benutzer einer oder mehreren vorhandenen Gruppen hinzufügen. Sie können den Benutzer auch später zu Gruppen hinzufügen. Weitere Informationen zum Hinzufügen von Benutzern zu Gruppen finden Sie unter [Erstellen einer einfachen Gruppe und Hinzufügen von Mitgliedern mithilfe von Azure Active Directory](active-directory-groups-create-azure-portal.md).
 

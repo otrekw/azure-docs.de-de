@@ -10,20 +10,20 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: a207118af0b07be79c934a9665f47e73c5eecde0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 680e3647e7a5847e132a53986e2cf17150bceac3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589192"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560166"
 ---
 # <a name="language-support-for-computer-vision"></a>Sprachunterstützung für maschinelles Sehen
 
 Einige Features des maschinellen Sehens unterstützen mehrere Sprachen; alle hier nicht erwähnten Features unterstützen nur Englisch.
 
-## <a name="text-recognition"></a>Texterkennung
+## <a name="text-detection-ocr"></a>Texterkennung (OCR)
 
-Maschinelles Sehen kann Text in zahlreichen Sprachen erkennen. Bei Verwendung der OCR- und Lese-APIs muss kein Sprachcode angegeben werden. Unter [Erkennen von gedrucktem und handschriftlichem Text](concept-recognizing-text.md) finden Sie weitere Informationen zu dieser Funktionalität und den Vorteilen der einzelnen APIs.
+Maschinelles Sehen kann Text in zahlreichen Sprachen erkennen. Bei Verwendung der Lese- und OCR-APIs muss kein Sprachcode angegeben werden. Unter [Lesen von Text aus Bildern und Dokumenten](concept-recognizing-text.md) finden Sie weitere Informationen zu dieser Funktionalität und den Vorteilen der einzelnen APIs.
 
 |Sprache| Sprachcode | OCR-API | Lese-API |
 |:-----|:----:|:-----:|:---:|

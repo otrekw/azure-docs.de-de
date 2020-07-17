@@ -1,18 +1,18 @@
 ---
 title: Empfohlene Sicherheitsmaßnahmen
-description: Bei der Verwendung der delegierten Azure-Ressourcenverwaltung ist es wichtig, die Sicherheits-und Zugriffssteuerung zu beachten.
-ms.date: 03/24/2020
+description: Beim Verwenden von Azure Lighthouse müssen Sicherheit und Zugriffssteuerung berücksichtigt werden.
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9b806aaf988fedfde6ce468f3eff948aa8ce344
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c620feabf5bcedc35a36104c3ba305ac9337ff0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80246907"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105420"
 ---
 # <a name="recommended-security-practices"></a>Empfohlene Sicherheitsmaßnahmen
 
-Bei der Verwendung der [delegierten Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) ist es wichtig, die Sicherheits-und Zugriffssteuerung zu beachten. Benutzer in Ihrem Mandanten haben direkten Zugriff auf Kundenabonnements und Ressourcengruppen, weshalb Sie Maßnahmen ergreifen sollten, um die Sicherheit Ihres Mandanten aufrechtzuerhalten. Außerdem sollten Sie sicherstellen, dass Sie nur den Zugriff zulassen, der für die effektive Verwaltung der Ressourcen ihrer Kunden erforderlich ist. Dieses Thema enthält Empfehlungen, die Ihnen dabei helfen sollen.
+Beim Verwenden von [Azure Lighthouse](../overview.md) müssen Sicherheit und Zugriffssteuerung berücksichtigt werden. Benutzer in Ihrem Mandanten haben direkten Zugriff auf Kundenabonnements und Ressourcengruppen, weshalb Sie Maßnahmen ergreifen sollten, um die Sicherheit Ihres Mandanten aufrechtzuerhalten. Außerdem sollten Sie sicherstellen, dass Sie nur den Zugriff zulassen, der für die effektive Verwaltung der Ressourcen ihrer Kunden erforderlich ist. Dieses Thema enthält Empfehlungen, die Ihnen dabei helfen sollen.
 
 ## <a name="require-azure-multi-factor-authentication"></a>Anfordern von Azure Multi-Factor Authentication
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: b0a26b4d3f0f59f8e05c5990bbc64ee55f12f124
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 9c84b35318637f5b89e6c88c0ebb3fd6616533fc
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307223"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023124"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Debuggen von Fehlern beim Erstellen einer Anwendung für benutzerdefinierte Befehle
 
@@ -35,9 +35,9 @@ Wenn eine Anwendung für benutzerdefinierte Befehle gelöscht wird, können benu
 Wenn beim Löschvorgang der LUIS-Anwendung ein Fehler aufgetreten ist, wechseln Sie zu Ihrem [LUIS](https://www.luis.ai/)-Konto, um sie manuell zu löschen.
 
 ### <a name="toomanyrequests"></a>TooManyRequests
-Wenn Sie versuchen, eine große Anzahl von Anwendungen auf einmal zu löschen, werden Ihnen wahrscheinlich Fehler vom Typ „TooManyRequests“ angezeigt. Das bedeutet, dass Ihre Anforderungen an Löschvorgänge durch Azure gedrosselt werden. 
+Wenn Sie versuchen, eine große Anzahl von Anwendungen auf einmal zu löschen, werden Ihnen wahrscheinlich Fehler vom Typ „TooManyRequests“ angezeigt. Diese Fehler bedeuten, dass Ihre Anforderungen von Löschvorgängen durch Azure gedrosselt werden. 
 
-Aktualisieren Sie Ihre Seite und versuchen Sie, weniger Anwendungen zu löschen.
+Aktualisieren Sie Ihre Seite, und versuchen Sie, weniger Anwendungen zu löschen.
 
 ## <a name="errors-when-modifying-an-application"></a>Fehler beim Ändern einer Anwendung
 
@@ -48,7 +48,7 @@ Es ist Ihnen nicht gestattet, einen Parameter zu löschen, wenn er gerade verwen
 Es ist Ihnen nicht gestattet, einen Webendpunkt zu löschen, wenn er gerade verwendet wird. Entfernen Sie alle Aktionen vom Typ **Webendpunkt aufrufen**, die diesen Webendpunkt verwenden, bevor Sie einen Webendpunkt entfernen.
 
 ## <a name="errors-when-training-an-application"></a>Fehler beim Trainieren einer Anwendung
-### <a name="build-in-intents"></a>Integrierte Absichten
+### <a name="built-in-intents"></a>Vordefinierte Absichten
 LUIS verfügt über integrierte „Ja/Nein“-Absichten. Mit Beispielsätzen, die nur „Ja“, „Nein“ enthalten, würde das Training scheitern. 
 
 | Schlüsselwort | Abweichungen | 
@@ -59,7 +59,7 @@ LUIS verfügt über integrierte „Ja/Nein“-Absichten. Mit Beispielsätzen, di
 ### <a name="common-sample-sentences"></a>Allgemeine Beispielsätze
 Benutzerdefinierte Befehle gestatten es nicht, allgemeine Beispielsätze zwischen verschiedenen Befehlen zu teilen. Beim Training einer Anwendung könnte ein Fehler auftreten, wenn einige Beispielsätze in einem Befehl bereits in einem anderen Befehl definiert sind. 
 
-Stellen Sie sicher, dass Sie keine allgemeinen Beispielsätze verwenden, die von verschiedenen Befehlen gemeinsam genutzt werden. 
+Achten Sie darauf, keine allgemeinen Beispielsätze zu verwenden, die von verschiedenen Befehlen gemeinsam genutzt werden. 
 
 Die bewährte Methode für den Ausgleich Ihrer Beispielsätze über verschiedene Befehle hinweg finden Sie unter [LUIS: Bewährte Methode](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices).
 
@@ -82,13 +82,15 @@ Sie können z. B. einen Parameter „{Fahrzeug}“ für die folgenden Beispiels
 | Book a flight | Book a {vehicle} (Reserviere ein {Fahrzeug}) |
 | Book a taxi (Reserviere ein Taxi) | Book a {vehicle} (Reserviere ein {Fahrzeug}) |
 
-Die bewährte Methode für das LUIS-Training finden Sie unter [LUIS: Bewährte Methode](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices).
+Bewährte Methoden für LUIS-Trainings sind unter [LUIS: Bewährte Methode](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices) beschrieben.
 
 ## <a name="cant-update-luis-key"></a>LUIS-Schlüssel kann nicht aktualisiert werden
 ### <a name="reassign-to-e0-authoring-resource"></a>Neuzuweisung zur Erstellungsressource E0
 LUIS unterstützt nicht die Neuzuweisung von LUIS-Anwendungen zur Erstellungsressource E0.
 
-Wenn Sie Ihre Erstellungsressource von F0 in E0 ändern oder zu einer anderen E0-Ressource wechseln müssen, erstellen Sie die Anwendung neu.
+Wenn Sie Ihre Erstellungsressource von F0 in E0 ändern oder zu einer anderen E0-Ressource wechseln müssen, erstellen Sie die Anwendung neu. 
+
+Informationen zum schnellen Exportieren einer vorhandenen Anwendung und zum Importieren der Anwendung in eine neue Anwendung finden Sie unter [Continuous Deployment mit Azure DevOps](./how-to-custom-commands-deploy-cicd.md).
 
 ### <a name="save-button-is-disabled"></a>Die Schaltfläche zum Speichern ist deaktiviert.
 Wenn Sie Ihrer Anwendung nie eine LUIS-Vorhersageressource zuweisen, wird die Schaltfläche „Speichern“ deaktiviert, wenn Sie versuchen, Ihre Erstellungsressource zu ändern, ohne eine Vorhersageressource hinzuzufügen.

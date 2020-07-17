@@ -5,14 +5,14 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 06/17/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 61dd98028b7342290984615ea19b561b48aaeadb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61d9712026daab63a002793adf2e17b9db943f94
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74792241"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976896"
 ---
 # <a name="supported-postgresql-major-versions"></a>Unterstützte PostgreSQL-Hauptversionen
 Microsoft strebt in Azure Database for PostgreSQL (Einzelserver) die Unterstützung von n-2 Versionen der PostgreSQL-Engine an. Das bedeutet, dass die aktuelle Hauptversion (n) und die beiden vorherigen Hauptversionen (-2) unterstützt werden.
@@ -20,16 +20,16 @@ Microsoft strebt in Azure Database for PostgreSQL (Einzelserver) die Unterstütz
 Azure Database for PostgreSQL unterstützt derzeit die folgenden Hauptversionen:
 
 ## <a name="postgresql-version-11"></a>PostgreSQL Version 11
-Das aktuelle Nebenrelease ist 11.5. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/11/static/release-11-5.html).
+Das aktuelle Nebenrelease ist 11.6. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/11/static/release-11-6.html).
 
 ## <a name="postgresql-version-10"></a>PostgreSQL Version 10
-Das aktuelle Nebenrelease ist 10.10. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/10/static/release-10-10.html).
+Das aktuelle Nebenrelease ist 10.11. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/10/static/release-10-11.html).
 
 ## <a name="postgresql-version-96"></a>PostgreSQL Version 9.6
-Das aktuelle Nebenrelease ist 9.6.15. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/9.6/static/release-9-6-15.html).
+Das aktuelle Nebenrelease ist 9.6.16. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/9.6/static/release-9-6-16.html).
 
 ## <a name="postgresql-version-95"></a>PostgreSQL Version 9.5
-Das aktuelle Nebenrelease ist 9.5.19. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/9.5/static/release-9-5-19.html).
+Das aktuelle Nebenrelease ist 9.5.20. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/9.5/static/release-9-5-20.html).
 
 ## <a name="managing-upgrades"></a>Verwalten von Upgrades
 Das PostgreSQL-Projekt gibt regelmäßig kleinere Releases aus, um gemeldete Fehler zu beheben. Azure Database for PostgreSQL führt automatische Patches der Server mit diesen Nebenreleases während der monatlichen Dienstbereitstellung durch. 

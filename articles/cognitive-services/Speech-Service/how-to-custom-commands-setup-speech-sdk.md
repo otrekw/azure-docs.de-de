@@ -1,7 +1,7 @@
 ---
 title: Integrieren in eine Client-App mithilfe des Speech SDK
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel erfahren Sie, wie Sie aus dem Speech SDK, das in einer UWP-Anwendung ausgeführt wird, Anforderungen an eine veröffentlichte Anwendung für benutzerdefinierte Befehlen stellen können.
+description: So stellen Sie Anforderungen an eine veröffentlichte Anwendung für benutzerdefinierte Befehle aus dem Speech SDK, das in einer UWP-Anwendung ausgeführt wird.
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: d87301f09665062a1b56fa33443f1178b42fb42f
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 1d84646fcb6769b7489cc0e03085e95fc47ef56c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307213"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027629"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integrieren in eine Clientanwendung mithilfe des Speech SDK
 
-In diesem Artikel erfahren Sie, wie Sie aus dem Speech SDK, das in einer UWP-Anwendung ausgeführt wird, Anforderungen an eine veröffentlichte Anwendung für benutzerdefinierte Befehlen stellen können. Sie führen die folgenden Aufgaben aus, um eine Verbindung mit der Anwendung für benutzerdefinierte Befehle herzustellen:
+In diesem Artikel erfahren Sie, wie Sie aus dem Speech SDK, das in einer UWP-Anwendung ausgeführt wird, Anforderungen an eine veröffentlichte Anwendung für benutzerdefinierte Befehlen stellen können. Zum Einrichten einer Verbindung mit der Anwendung für benutzerdefinierte Befehle ist Folgendes erforderlich:
 
 - Veröffentlichen einer Anwendung für benutzerdefinierte Befehle und Erhalten eines Anwendungsbezeichners (App-ID)
 - Erstellen einer UWP-Client-App (Universelle Windows-Plattform) mit dem Sprach-SDK, damit Sie mit Ihrer Anwendung für benutzerdefinierte Befehle kommunizieren können
@@ -32,13 +32,19 @@ Eine Anwendung für benutzerdefinierte Befehle ist erforderlich, um diesen Artik
 
 Außerdem benötigen Sie:
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) oder höher. Dieses Handbuch basiert auf Visual Studio 2019.
 > * Azure-Abonnementschlüssel für Spracherkennungsdienste. [Beziehen Sie einen kostenlos](get-started.md), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com)
 > * [Aktivieren Ihres Geräts für die Entwicklung](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>Schritt 1: Veröffentlichen der Anwendung für benutzerdefinierte Befehle
 
-1. Öffnen Sie Ihre zuvor erstellte Anwendung für benutzerdefinierte Befehle (Vorschau), und wählen Sie **Veröffentlichen** aus.
+1. Öffnen Sie Ihre zuvor erstellte Anwendung für benutzerdefinierte Befehle.
+1. Wechseln Sie zu **Einstellungen**, und wählen Sie **LUIS-Ressource** aus.
+1. Wenn **Vorhersageressource** nicht zugewiesen ist, wählen Sie einen Vorhersageschlüssel aus, oder erstellen Sie einen neuen
+
+    Vor dem Veröffentlichen einer Anwendung ist immer ein Abfragevorhersageschlüssel erforderlich. Weitere Informationen zu LUIS-Ressourcen finden Sie unter [Erstellen einer LUIS-Ressource](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription).
+
+1. Wechseln Sie zurück zu den Bearbeitungsbefehlen, und wählen Sie **Veröffentlichen** aus.
 
    > [!div class="mx-imgBorder"]
    > ![Veröffentlichen der Anwendung](media/custom-commands/setup-speech-sdk-publish-application.png)
@@ -131,11 +137,8 @@ Fügen Sie die CodeBehind-Quelle wie folgt hinzu:
    using Microsoft.CognitiveServices.Speech.Audio;
    using Microsoft.CognitiveServices.Speech.Dialog;
    using System;
-   using System.Diagnostics;
    using System.IO;
    using System.Text;
-   using Windows.Foundation;
-   using Windows.Storage.Streams;
    using Windows.UI.Xaml;
    using Windows.UI.Xaml.Controls;
    using Windows.UI.Xaml.Media;
@@ -324,7 +327,7 @@ Fügen Sie die CodeBehind-Quelle wie folgt hinzu:
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
-   connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
+   connector.ActivityReceived += (sender, activityReceivedEventArgs) =>
    {
        NotifyUser(
            $"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");

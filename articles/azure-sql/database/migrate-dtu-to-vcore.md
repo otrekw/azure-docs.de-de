@@ -1,6 +1,6 @@
 ---
-title: Migrieren von DTU zu vCore
-description: Informationen zum Migrieren einer Datenbank in Azure SQL-Datenbank vom DTU- zum vCore-Modell Das Migrieren zu vCore ähnelt dem Up- oder Downgrade zwischen der Standard- und Premium-Tarif.
+title: Migrieren von DTU zu V-Kern
+description: Informationen zum Migrieren einer Datenbank in Azure SQL-Datenbank vom DTU- zum vCore-Modell Das Migrieren zu V-Kern ähnelt dem Up- oder Downgrade zwischen der Standard- und Premium-Dienstebene.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 05/28/2020
-ms.openlocfilehash: 4802e9e6fa2fdd918266d3ddc58b783bdb6bb83e
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 0193e7f7001fb8f63794a379c4d2b8e28abd5c0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85297867"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrieren einer Datenbank in Azure SQL-Datenbank vom DTU- zum vCore-basierten Modell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ Neben der Anzahl der virtuellen Kerne (logischen CPUs) und der Hardwaregeneratio
 - Bei der gleichen Hardwaregeneration und der gleichen Anzahl virtueller Kerne sind die Ressourcengrenzwerte für IOPS- und Transaktionsprotokolldurchsatz bei vCore-Datenbanken oft höher als bei DTU-Datenbanken. Bei E/A-gebundenen Workloads ist es eventuell möglich, die Anzahl der virtuellen Kerne im vCore-Modell zu verringern, um dasselbe Leistungsniveau zu erreichen. Ressourcengrenzen für DTU- und vCore-Datenbanken werden in der Sicht [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) in absoluten Werten verfügbar gemacht. Der Vergleich dieser Werte zwischen der zu migrierenden DTU-Datenbank und einer vCore-Datenbank unter Verwendung eines annähernd übereinstimmenden vCore-Dienstziels hilft Ihnen, das vCore-Dienstziel genauer auszuwählen.
 - Die Zuordnungsabfrage gibt auch die Arbeitsspeichergröße pro Kern für die zu migrierende DTU-Datenbank oder den zu migrierenden Pool für elastische Datenbanken und für jede Hardwaregeneration im vCore-Modell zurück. Die Gewährleistung eines ähnlichen oder größeren Gesamtarbeitsspeichers nach der Migration zu vCore ist wichtig für Workloads, die einen großen Datencache im Arbeitsspeicher benötigen, um eine ausreichende Leistung zu erzielen, oder für Workloads, die für die Abfrageverarbeitung große Speicherzuweisungen erfordern. Bei solchen Workloads kann es je nach tatsächlicher Leistung erforderlich sein, die Anzahl der virtuellen Kerne zu erhöhen, um genügend Gesamtarbeitsspeicher zu erhalten.
 - Bei Wahl des vCore-Dienstziels sollte die [bisherige Ressourcennutzung](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) der DTU-Datenbank berücksichtigt werden. DTU-Datenbanken mit durchweg nicht ausgelasteten CPU-Ressourcen benötigen möglicherweise weniger virtuellen Kerne als die von der Zuordnungsabfrage zurückgegebene Anzahl. Umgekehrt können DTU-Datenbanken, bei denen eine konstant hohe CPU-Auslastung eine unzureichende Leistung bei Workloads verursacht, mehr virtuellen Kerne erfordern, als von der Abfrage zurückgegeben werden.
-- Wenn Sie Datenbanken mit sporadischen oder unvorhersehbaren Nutzungsmustern migrieren, sollten Sie den Computetarif [Serverlos](serverless-tier-overview.md) erwägen.
+- Wenn Sie Datenbanken mit sporadischen oder unvorhersehbaren Nutzungsmustern migrieren, sollten Sie den Computetarif [Serverlos](serverless-tier-overview.md) erwägen.  Beachten Sie, dass die maximale Anzahl gleichzeitiger Worker (Anforderungen) beim Tarif „Serverlos“ 75 % des Limits für bereitgestelltes Computing bei gleicher Anzahl der maximal konfigurierten virtuellen Kerne beträgt.  Außerdem beträgt der maximale verfügbare Arbeitsspeicher beim Tarif „Serverlos“ 3 GB multipliziert mit der maximalen Anzahl konfigurierter virtueller Kerne. Beispielsweise beläuft sich der maximale Arbeitsspeicher auf 120 GB, wenn 40 virtuelle Kerne konfiguriert wurden.   
 - Beim vCore-Modell kann die unterstützte maximale Datenbankgröße je nach Hardwaregeneration variieren. Überprüfen Sie für große Datenbanken die unterstützten Höchstgrößen im vCore-Modell für [einzelne Datenbanken](resource-limits-vcore-single-databases.md) und [Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md).
 - Bei Pools für elastische Datenbanken weisen das [DTU](resource-limits-dtu-elastic-pools.md)- und das [vCore](resource-limits-vcore-elastic-pools.md)-Modell Unterschiede bei der maximal unterstützten Anzahl von Datenbanken pro Pool auf. Dies muss bei der Migration von Pools für elastische Datenbanken mit vielen Datenbanken berücksichtigt werden.
 - Einige Hardwaregenerationen sind möglicherweise nicht in allen Regionen verfügbar. Prüfen Sie die Verfügbarkeit unter [Hardwaregenerationen](service-tiers-vcore.md#hardware-generations).
@@ -105,7 +105,7 @@ Neben der Anzahl der virtuellen Kerne (logischen CPUs) und der Hardwaregeneratio
 > [!IMPORTANT]
 > Bei den genannten Größenrichtlinien für die Migration von DTU zu vCore handelt es sich um Richtwerte, die eine erste Einschätzung des Dienstziels der Zieldatenbank ermöglichen sollen.
 >
-> Die optimale Konfiguration der Zieldatenbank ist auf der Workload abhängig. Zur Erzielung des optimalen Preis-Leistungs-Verhältnisses nach der Migration müssen Sie ggf. sowohl die Flexibilität des vCore-Modells nutzen, um die Anzahl virtueller Kerne, die [Hardwaregeneration](service-tiers-vcore.md#hardware-generations) sowie die [Dienst-](service-tiers-vcore.md#service-tiers) und [Compute](service-tiers-vcore.md#compute-tiers)-Ebene anzupassen, als auch andere Parameter für die Datenbankkonfiguration optimieren (etwa den [maximalen Grad an Parallelität](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)).
+> Die optimale Konfiguration der Zieldatenbank ist workloadabhängig. Zur Erzielung des optimalen Preis-Leistungs-Verhältnisses nach der Migration müssen Sie ggf. sowohl die Flexibilität des vCore-Modells nutzen, um die Anzahl virtueller Kerne, die [Hardwaregeneration](service-tiers-vcore.md#hardware-generations) sowie die [Dienst-](service-tiers-vcore.md#service-tiers) und [Compute](service-tiers-vcore.md#compute-tiers)-Ebene anzupassen, als auch andere Parameter für die Datenbankkonfiguration optimieren (etwa den [maximalen Grad an Parallelität](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)).
 > 
 
 ### <a name="dtu-to-vcore-migration-examples"></a>Beispiele für die Migration von DTU zu vCore
@@ -150,13 +150,13 @@ Die Zuordnungsabfrage gibt das folgende Ergebnis zurück (einige Spalten werden 
 
 |dtu_logical_cpus|dtu_hardware_gen|dtu_memory_per_core_gb|Gen4_vcores|Gen4_memory_per_core_gb|Gen5_vcores|Gen5_memory_per_core_gb|
 |----------------|----------------|----------------------|-----------|-----------------------|-----------|-----------------------|
-|4,00|Gen5|5,40|2,800|7|4,000|5,05|
+|4.00|Gen5|5,40|2,800|7|4,000|5,05|
 
 Wir sehen, dass die DTU-Pool für elastische Datenbanken 4 logische CPUs (virtuelle Kerne) mit 5,4 GB Arbeitsspeicher pro virtuellem Kern hat und Gen5-Hardware nutzt. Die direkte Entsprechung im vCore-Modell ist ein Pool für elastische Datenbanken des Typs **GP_Gen5_4**. Dieses Serviceziel unterstützt jedoch maximal 200 Datenbanken pro Pool, während der Pool für elastische Datenbanken mit 200 Basic-eDTU bis zu 500 Datenbanken unterstützt. Wenn der zu migrierende Pool für elastische Datenbanken mehr als 200 Datenbanken umfasst, muss das entsprechende vCore-Dienstziel **GP_Gen5_6** lauten, das bis zu 500 Datenbanken unterstützt.
 
 ## <a name="migrate-geo-replicated-databases"></a>Migrieren georeplizierter Datenbanken
 
-Die Migration vom DTU- zum vCore-basierten Kaufmodell ähnelt dem Up- oder Downgrade der Georeplikationsbeziehungen zwischen Datenbanken auf der Standard- und Premium-Dienstebene. Sie müssen die Georeplikation während der Migration nicht beenden, es müssen jedoch die folgenden Sequenzierungsregeln eingehalten werden:
+Die Migration vom DTU-basierten zum V-Kern-basierten Modell ähnelt dem Up- oder Downgrade der Georeplikationsbeziehungen zwischen Datenbanken auf der Standard- und Premium-Dienstebene. Sie müssen die Georeplikation während der Migration nicht beenden, es müssen jedoch die folgenden Sequenzierungsregeln eingehalten werden:
 
 - Bei einem Upgrade müssen Sie zuerst das Upgrade für die sekundäre Datenbank und anschließend das Upgrade für die primäre Datenbank durchführen.
 - Drehen Sie bei einem Downgrade die Reihenfolge um: Führen Sie zuerst das Downgrade für die primäre und anschließend das Downgrade für die sekundäre Datenbank durch.

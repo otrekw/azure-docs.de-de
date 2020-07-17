@@ -1,15 +1,15 @@
 ---
 title: Bereitstellen der Lösungsvorlage „Ethereum-Proof-of-Authority-Konsortium“ auf Azure
 description: Verwenden der Lösung „Ethereum-Proof-of-Authority-Konsortium“, um ein Netzwerk mit vielen Elementen für das Ethereum-Konsortium auf Azure bereitzustellen und zu konfigurieren
-ms.date: 12/18/2019
-ms.topic: article
-ms.reviewer: coborn
-ms.openlocfilehash: 7e9af5c501b58f6828360ee280440ea85698bf16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/07/2020
+ms.topic: how-to
+ms.reviewer: ravastra
+ms.openlocfilehash: 859be5d779663e429ef333c8fd8163c0aa60eab5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75387502"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085921"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Bereitstellen der Lösungsvorlage „Ethereum-Proof-of-Authority-Konsortium“ auf Azure
 
@@ -17,15 +17,17 @@ Sie können die Azure-Lösungsvorlage [Ethereum-Proof-of-Authority-Konsortium](h
 
 Die Lösungsvorlage kann von jedem Konsortiummitglied verwendet werden, um mithilfe Microsoft Azure-Dienste für Compute-, Netzwerk- und Speicherfunktionen einen Blockchainnetzwerkspeicherbedarf anzugeben. Der Netzwerkfußabdruck jedes Konsortiummitglieds umfasst einige Validierungsknoten mit Lastenausgleich, über die eine Anwendung oder ein Benutzer interagieren kann, um Ethereum-Transaktionen zu übermitteln.
 
+[!INCLUDE [Preview note](./includes/preview.md)]
+
 ## <a name="choose-an-azure-blockchain-solution"></a>Auswählen einer Azure Blockchain-Lösung
 
 Bevor Sie sich für die Lösungsvorlage „Ethereum-Proof-of-Authority-Konsortium“ entscheiden, sollten Sie Ihr Szenario mit den gängigen Anwendungsfällen der verfügbaren Azure Blockchain-Optionen vergleichen.
 
 Option | Dienstmodell | Gängiger Anwendungsfall
 -------|---------------|-----------------
-Lösungsvorlagen | IaaS | Lösungsvorlagen sind Azure Resource Manager-Vorlagen, die Sie verwenden können, um eine vollständig konfigurierte Blockchainnetzwerktopologie bereitzustellen. Die Vorlagen stellen Microsoft Azure-Dienste für Compute-, Netzwerk- und Speicherfunktionen für einen bestimmten Blockchainnetzwerktyp bereit und konfigurieren diese.
+Lösungsvorlagen | IaaS | Lösungsvorlagen sind Azure Resource Manager-Vorlagen, die Sie verwenden können, um eine vollständig konfigurierte Blockchainnetzwerktopologie bereitzustellen. Die Vorlagen stellen Microsoft Azure-Dienste für Compute-, Netzwerk- und Speicherfunktionen für einen bestimmten Blockchainnetzwerktyp bereit und konfigurieren diese. Lösungsvorlagen werden ohne Vereinbarung zum Servicelevel bereitgestellt. Nutzen Sie die [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) zur Unterstützung.
 [Azure Blockchain Service](../service/overview.md) | PaaS | Mit der Vorschauversion von Azure Blockchain Service wird die Einrichtung, Verwaltung und Governance von Konsortiumblockchainnetzwerken vereinfacht. Setzen Sie Azure Blockchain Service für Lösungen ein, bei denen PaaS, Konsortiumverwaltung oder Datenschutz für Vertrags- und Transaktionsaktivitäten erforderlich ist.
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS und PaaS | Azure Blockchain Workbench (Vorschauversion) ist eine Sammlung mit Azure-Diensten und -Funktionen zum Erstellen und Bereitstellen von Blockchain-Anwendungen, mit denen Geschäftsprozesse und Daten mit anderen Organisationen gemeinsam genutzt werden können. Verwenden Sie Azure Blockchain Workbench, um einen Prototyp für eine Blockchainlösung oder einen Proof of Concept für eine Blockchainanwendung zu erstellen.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS und PaaS | Azure Blockchain Workbench (Vorschauversion) ist eine Sammlung mit Azure-Diensten und -Funktionen zum Erstellen und Bereitstellen von Blockchain-Anwendungen, mit denen Geschäftsprozesse und Daten mit anderen Organisationen gemeinsam genutzt werden können. Verwenden Sie Azure Blockchain Workbench, um einen Prototyp für eine Blockchainlösung oder einen Proof of Concept für eine Blockchainanwendung zu erstellen. Azure Blockchain Workbench wird ohne Vereinbarung zum Servicelevel bereitgestellt. Nutzen Sie die [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) zur Unterstützung.
 
 ## <a name="solution-architecture"></a>Lösungsarchitektur
 
@@ -93,7 +95,7 @@ Authentifizierungsart | Die Methode zur Authentifizierung des virtuellen Compute
 Kennwort | Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers. Alle VMs verfügen anfänglich über das gleiche Kennwort. Sie können das Kennwort nach der Bereitstellung ändern. | 12 bis 72 Zeichen 
 Subscription | Das Abonnement, für das das Konsortiumsnetzwerk bereitgestellt wird. |
 Ressourcengruppe| Die Ressourcengruppe, für die das Konsortiumsnetzwerk bereitgestellt wird. | myResourceGroup
-Position | Die Azure-Region für die Ressourcengruppe. | USA, Westen 2
+Standort | Die Azure-Region für die Ressourcengruppe. | USA, Westen 2
 
 Klicken Sie auf **OK**.
 
@@ -162,7 +164,7 @@ Parameter | BESCHREIBUNG | Beispielwert
 ----------|-------------|--------------
 Überwachung | Option zum Aktivieren der Überwachung | Aktivieren
 Connect to existing Azure Monitor logs (Mit vorhandenen Azure Monitor-Protokollen verbinden) | Option zum Erstellen einer neuen Azure Monitor-Protokollinstanz oder zum Beitritt zu einer vorhandenen Instanz | Neu erstellen
-Position | Die Region, in der die neue Instanz bereitgestellt wird | East US
+Standort | Die Region, in der die neue Instanz bereitgestellt wird | East US
 Existing log analytics workspace ID (Connect to existing Azure Monitor logs = Join Existing) (Vorhandene Log Analytics-Arbeitsbereichs-ID (Mit vorhandener Azure Monitor-Protokollinstanz verbinden = Vorhandener beitreten))|Die Arbeitsbereichs-ID der vorhandenen Azure Monitor-Protokollinstanz||Nicht verfügbar
 Existing log analytics primary key (Connect to existing Azure Monitor logs = Join Existing) (Vorhandener Log Analytics-Primärschlüssel (Mit vorhandener Azure Monitor-Protokollinstanz verbinden = Vorhandener beitreten))|Der Primärschlüssel, der zum Herstellen einer Verbindung mit der vorhandenen Azure Monitor-Protokollinstanz verwendet wird.||Nicht verfügbar
 
@@ -718,6 +720,20 @@ Der Transaktionsdurchsatz hängt stark von den Transaktionstypen und der Netzwer
 ### <a name="how-do-i-subscribe-to-smart-contract-events"></a>Wie kann ich ein Abonnement für Smart Contract-Ereignisse abschließen?
 
 Ethereum Proof-of Authority unterstützt jetzt auch Web-Sockets.  Suchen Sie in der Bereitstellungsausgabe nach der URL und dem Port des Websocket.
+
+## <a name="support-and-feedback"></a>Support und Feedback
+
+Neues zu Azure Blockchain: Mit dem [Azure Blockchain-Blog](https://azure.microsoft.com/blog/topics/blockchain/) bleiben Sie in Bezug auf Blockchain-Dienstangebote und Informationen vom Azure Blockchain-Technikteam immer auf dem Laufenden.
+
+Über das [Azure-Feedbackforum für Blockchain](https://aka.ms/blockchainuservoice) können Sie Produktfeedback senden, neue Features anfordern oder über Ideen abstimmen.
+
+### <a name="community-support"></a>Communityunterstützung
+
+Diskutieren Sie mit Microsoft-Technikern und Azure Blockchain-Communityexperten.
+
+* [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) Der technische Support für Blockchain-Vorlagen ist auf Bereitstellungsprobleme beschränkt.
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

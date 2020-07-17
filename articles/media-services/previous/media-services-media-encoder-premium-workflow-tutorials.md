@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
-ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67d3591a22ba68c0ddb5c4e2b467e133ef20102b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227018"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057465"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Erweiterte Media Encoder Premium Workflow-Tutorials
 ## <a name="overview"></a>Übersicht
@@ -187,7 +187,7 @@ Damit der Workflow die Filename-Ausgabeeigenschaft für einen Ausdruck automatis
 
 Der Ausdrucks-Editor ermöglicht Ihnen die Eingabe eines beliebigen Literalwerts, gemischt mit einer oder mehreren Variablen. Variablen beginnen mit einem Dollarzeichen. Wenn Sie die Taste „$“ drücken, wird im Editor ein Dropdownfeld mit einer Auswahl von verfügbaren Variablen angezeigt. In unserem Fall verwenden wir eine Kombination aus der Ausgabeverzeichnisvariablen und der grundlegenden Eingabedatei-Namensvariablen:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4`
 
 ![Ausgefüllter Expression Editor](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-expression-editor.png)
 
@@ -265,16 +265,16 @@ Wir haben dem Ausgabemedienobjekt mehr als eine Datei hinzugefügt. Daher müsse
 
 Die Benennung der Dateiausgabe kann über Ausdrücke im Designer gesteuert werden. Öffnen Sie den Eigenschaftenbereich für eine der „File Output“-Komponenten, und öffnen Sie den Expression Editor für die File-Eigenschaft. Unsere erste Ausgabedatei wurde mit dem folgenden Ausdruck konfiguriert (siehe Tutorial für den Wechsel von [MXF zu einer Single-Bitrate-MP4-Ausgabe](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)):
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4`
 
 Dies bedeutet, dass unser Dateiname anhand von zwei Variablen bestimmt wird: dem Ausgabeverzeichnis, in das geschrieben wird, und dem Quelldatei-Basisnamen. Das Verzeichnis wird als Eigenschaft im Workflowstamm verfügbar gemacht, und der Name wird durch die eingehende Datei bestimmt. Das Ausgabeverzeichnis verwenden Sie für lokale Tests. Diese Eigenschaft wird vom Workflowmodul überschrieben, wenn der Workflow vom cloudbasierten Medienprozessor in Azure Media Services ausgeführt wird.
 Ändern Sie den ersten Dateibenennungsausdruck in folgenden Ausdruck, um beiden Ausgabedateien einheitliche Ausgabenamen zu geben:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 Ändern Sie den zweiten Ausdruck in:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 Führen Sie einen Zwischentest durch, um sicherzustellen, dass beide MP4-Ausgabedateien richtig generiert werden.
 
@@ -287,7 +287,7 @@ Später beim Generieren einer ISM-Datei für unsere MP4-Ausgabedateien werden wi
 
 Erstellen Sie eine dritte File Output-Komponente, um den ausgehenden Datenstrom vom Muxer auszugeben, und konfigurieren Sie den Ausdruck für die Dateibenennung wie folgt:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4`
 
 ![Audio-Muxer erstellt „File Output“](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-creating-file-output.png)
 
@@ -319,7 +319,7 @@ Das Generieren der Manifestdatei für unsere Gruppe von MP4-Dateien kann auch ü
 
 Konfigurieren Sie wie bei den anderen Dateiausgabekomponenten den ISM-Dateiausgabenamen mit einem Ausdruck:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism`
 
 Der fertige Workflow sieht wie folgt aus:
 
@@ -342,11 +342,11 @@ Im vorherigen Workflow haben wir einen einfachen Ausdruck als Basis für die Gen
 
 Beispielsweise wurde unsere Dateiausgabekomponente für die erste Videodatei mit diesem Ausdruck konfiguriert:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 Für das zweite Ausgabevideo wird folgender Ausdruck verwendet:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 Wäre es nicht klarer, weniger fehleranfällig und benutzerfreundlicher, wenn wir diese Duplizierung teilweise entfernen und dafür die Konfigurierbarkeit verbessern würden? Glücklicherweise ist dies möglich: Dank der Ausdrucksfunktionen des Designers in Kombination mit der Fähigkeit, benutzerdefinierte Eigenschaften in unserem Workflowstamm zu erstellen, erhalten wir eine zusätzliche Ebene an Benutzerfreundlichkeit.
 
@@ -391,7 +391,7 @@ Wenn diese drei Werte geändert werden, werden auch die Werte der entsprechenden
 ### <a name="have-generated-output-file-names-rely-on-published-property-values"></a><a id="MXF_to__multibitrate_MP4_output_files"></a>Generierte Ausgabedateinamen basierend auf veröffentlichten Eigenschaftswerten
 Anstatt die generierten Dateinamen hartzucodieren, können wir den Dateinamenausdruck jetzt für jede Dateiausgabekomponente so ändern, dass er sich auf die im Stamm des Graphen veröffentlichten Bitrateneigenschaften bezieht. Wir beginnen mit der ersten Dateiausgabe, suchen nach der File-Eigenschaft und bearbeiten den Ausdruck wie folgt:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4`
 
 Sie können auf die verschiedenen Parameter in diesem Ausdruck zugreifen, um Eingaben vorzunehmen, indem Sie auf der Tastatur das Dollarzeichen drücken, während Sie sich im Ausdrucksfenster befinden. Einer der verfügbaren Parameter ist unsere video1bitrate-Eigenschaft, die wir zuvor veröffentlicht haben.
 
@@ -401,11 +401,11 @@ Sie können auf die verschiedenen Parameter in diesem Ausdruck zugreifen, um Ein
 
 Gehen Sie für die Dateiausgabe des zweiten Videos genauso vor:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4`
 
 Ebenfalls für die reine Audiodateiausgabe:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4`
 
 Wenn wir die Bitrate für eine Video- oder Audiodatei nun ändern, wird der entsprechende Encoder neu konfiguriert, und die auf der Bitrate basierende Dateibenennungskonvention wird automatisch berücksichtigt.
 
@@ -462,11 +462,11 @@ Im Gegensatz zu unseren MP4-Videos gibt die Komponente „JPG Encoder“ mehr al
 
 *Einführung in Scene Search JPG File Writer*
 
-Konfigurieren Sie die Output Folder Path-Eigenschaft mit dem folgenden Ausdruck: ${ROOT_outputWriteDirectory}
+Konfigurieren Sie die Output Folder Path-Eigenschaft mit dem folgenden Ausdruck: `${ROOT_outputWriteDirectory}`
 
 Konfigurieren Sie die Filename Prefix-Eigenschaft mit:
 
-    ${ROOT_sourceFileBaseName}_thumb_
+`${ROOT_sourceFileBaseName}_thumb_`
 
 Das Präfix bestimmt, wie die Miniaturbilddateien benannt werden. Sie erhalten als Suffix eine Zahl, mit der die Position des Miniaturbilds im Datenstrom angegeben wird.
 
@@ -551,11 +551,11 @@ Wenn wir uns nun den Stamm unseres Workflows ansehen, werden beide Eigenschaften
 
 Für „Trimming Start Time“ für Audio:
 
-    ${ROOT_TrimmingStartTime}
+`${ROOT_TrimmingStartTime}`
 
 Für „Trimming End Time“:
 
-    ${ROOT_TrimmingEndTime}
+`${ROOT_TrimmingEndTime}`
 
 ### <a name="finished-workflow"></a><a id="time_based_trim_finish"></a>Fertiger Workflow
 ![Fertiger Workflow](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
@@ -591,7 +591,7 @@ Skripts werden in Groovy geschrieben. Hierbei handelt es sich um eine dynamisch 
 
 Wir schreiben nun im Kontext von realizeScript ein einfaches Groovy-Skript mit dem Namen „hello world“. Geben Sie im Editor Folgendes ein:
 
-    node.log("hello world");
+`node.log("hello world");`
 
 Führen Sie jetzt einen lokalen Testlauf aus. Sehen Sie sich nach dieser Ausführung die Logs-Eigenschaft an (auf der Registerkarte „System“ der Skriptkomponente).
 

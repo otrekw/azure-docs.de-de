@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79db94298d190f646393410ec73ba1a25bb48270
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560394"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Beheben von häufigen Problemen bei Suchindexern in der kognitiven Azure-Suche
 
@@ -76,7 +76,7 @@ Die kognitive Azure-Suche steht in impliziter Abhängigkeit zur Indizierung von 
 Der Blobindexer [ dokumentiert, welche Dokumentformate explizit unterstützt werden](search-howto-indexing-azure-blob-storage.md#SupportedFormats). Gelegentlich enthält ein Blobspeichercontainer nicht unterstützte Dokumente. Manchmal sind die Dokumente fehlerhaft. Sie können verhindern, dass Ihr Indexer für diese Dokumente beendet wird, indem Sie die [Konfigurationsoptionen](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) ändern:
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -94,7 +94,7 @@ Der Blobindexer [ findet und extrahiert Text aus Blobs in einem Container](searc
 * Der Blobindexer ist so konfiguriert, dass er nur Metadaten indiziert. Zum Extrahieren von Inhalten muss der Blobindexer so konfiguriert sein, dass er [sowohl Inhalte als auch Metadaten extrahiert](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed):
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -111,6 +111,7 @@ api-key: [admin key]
 Indexer finden Dokumente in einer [Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source). Manchmal fehlt ein Datenquellendokument, das indiziert werden sollte, in einem Index. Es gibt mehrere Gründe für das Auftreten dieser Fehler:
 
 * Das Dokument wurde nicht indiziert. Überprüfen Sie das Portal auf eine erfolgreiche Indexerausführung hin.
+* Überprüfen Sie den Wert für die [Änderungsnachverfolgung](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies). Wenn der hohe Grenzwert ein Datum ist, das auf einen späteren Zeitpunkt festgelegt ist, werden alle Dokumente mit einem früheren Datum vom Indexer übersprungen. Sie können den Zustand der Änderungsnachverfolgung des Indexers mithilfe der Felder „initialTrackingState“ und „finalTrackingState“ im [Indexerstatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status#indexer-execution-result) ermitteln.
 * Das Dokument wurde nach der Ausführung des Indexers aktualisiert. Wenn Sie für Ihren Indexer einen [Zeitplan](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule) festgelegt haben, wird er das Dokument schließlich erneut ausführen und abrufen.
 * Die in der Datenquelle angegebene [Abfrage](/rest/api/searchservice/create-data-source) schließt das Dokument aus. Indexer können keine Dokumente indizieren, die nicht zur Datenquelle gehören.
 * Das Dokument wurde durch [Feldzuordnungen](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) oder [KI-Anreicherung](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) geändert und sieht anders als erwartet aus.

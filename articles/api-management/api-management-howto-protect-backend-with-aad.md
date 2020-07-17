@@ -12,12 +12,12 @@ ms.workload: mobile
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: apimpm
-ms.openlocfilehash: 72899e743e167eef5ee7d1be04cb50cafc1f2a95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445507"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243408"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management
 
@@ -146,7 +146,7 @@ In diesem Beispiel ist die Entwicklerkonsole die Client-App. In den folgenden Sc
 
 1. Wenn Sie **v1**-Endpunkte verwenden, fügen Sie einen body-Parameter mit dem Namen **resource** hinzu. Verwenden Sie als Wert für diesen Parameter die **Anwendungs-ID** der Back-End-App. 
 
-1. Wenn Sie **v2**-Endpunkte verwenden, verwenden Sie im Feld **Standardbereich** den Bereich, den Sie für die Back-End-App erstellt haben. Legen Sie auch den Wert für die [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute)-Eigenschaft in Ihrem [Anwendungsmanifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) auf `2` fest.
+1. Wenn Sie **v2**-Endpunkte verwenden, verwenden Sie im Feld **Standardbereich** den Bereich, den Sie für die Back-End-App erstellt haben. Legen Sie auch den Wert für die [`accessTokenAcceptedVersion`](../active-directory/develop/reference-app-manifest.md#accesstokenacceptedversion-attribute)-Eigenschaft in Ihrem [Anwendungsmanifest](../active-directory/develop/reference-app-manifest.md) auf `2` fest.
 
 1. Geben Sie anschließend Clientanmeldeinformationen an. Diese sind die Anmeldeinformationen für die Client-App.
 
@@ -203,7 +203,7 @@ Wenn an diesem Punkt ein Benutzer versucht, einen Aufruf über die Entwicklerkon
 
 Was aber passiert, wenn jemand Ihre API ohne Token oder mit einem ungültigen Token aufruft? Wenn z. B. versucht wird, die API ohne den `Authorization`-Header aufzurufen, wird der Aufruf dennoch durchgeleitet. Dies liegt daran, dass API Management das Zugriffstoken an diesem Punkt nicht überprüft. API Management übergibt den `Authorization`-Header einfach an die Back-End-API.
 
-Verwenden Sie die Richtlinie [JWT überprüfen](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#ValidateJWT), um Anforderungen in API Management vorab zu autorisieren, indem die Zugriffstoken für jede eingehende Anforderung überprüft werden. Wenn für eine Anforderung kein gültiges Token vorliegt, wird sie von API Management blockiert. Fügen Sie beispielsweise die folgende Richtlinie zum Richtlinienabschnitt `<inbound>` der `Echo API` hinzu. Sie überprüft den Zielgruppenanspruch in einem Zugriffstoken und gibt eine Fehlermeldung zurück, wenn das Token nicht gültig ist. Informationen zum Konfigurieren von Richtlinien finden Sie unter [How to set or edit Azure API Management policies](https://docs.microsoft.com/azure/api-management/set-edit-policies) (Festlegen oder Bearbeiten von Azure API Management-Richtlinien).
+Verwenden Sie die Richtlinie [JWT überprüfen](./api-management-access-restriction-policies.md#ValidateJWT), um Anforderungen in API Management vorab zu autorisieren, indem die Zugriffstoken für jede eingehende Anforderung überprüft werden. Wenn für eine Anforderung kein gültiges Token vorliegt, wird sie von API Management blockiert. Fügen Sie beispielsweise die folgende Richtlinie zum Richtlinienabschnitt `<inbound>` der `Echo API` hinzu. Sie überprüft den Zielgruppenanspruch in einem Zugriffstoken und gibt eine Fehlermeldung zurück, wenn das Token nicht gültig ist. Informationen zum Konfigurieren von Richtlinien finden Sie unter [How to set or edit Azure API Management policies](./set-edit-policies.md) (Festlegen oder Bearbeiten von Azure API Management-Richtlinien).
 
 
 ```xml
@@ -228,7 +228,7 @@ In diesem Handbuch wird die Entwicklerkonsole in API Management als Beispielclie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu [Azure Active Directory und OAuth 2.0](../active-directory/develop/authentication-scenarios.md)
+- Weitere Informationen zu [Azure Active Directory und OAuth 2.0](../active-directory/develop/authentication-vs-authorization.md)
 - Hier finden Sie weitere [Videos](https://azure.microsoft.com/documentation/videos/index/?services=api-management) zu API Management.
 - Weitere Methoden zum Sichern Ihres Back-End-Diensts finden Sie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](./api-management-howto-mutual-certificates.md).
 - [Erstellen einer API Management-Dienstinstanz](./get-started-create-service-instance.md)

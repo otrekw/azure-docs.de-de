@@ -3,12 +3,12 @@ title: Ausbildungsmodus – Personalisierung
 description: ''
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 2697ab4b32edbd4841f2b11725fda46e90e7ae7e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5ee8242fbc9ab5bed4e3eed8997feb122b131062
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599306"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087196"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>Verwenden des Ausbildungsmodus zum Trainieren der Personalisierung, ohne Ihre bestehende Anwendung zu beeinträchtigen
 
@@ -30,7 +30,7 @@ Der Ausbildungsmodus gibt Ihnen Vertrauen in den Personalisierungsdienst und sei
 
 Die zwei Hauptgründe für die Verwendung des Ausbildungsmodus sind:
 
-* **Kaltstarts** werden minimiert: Der Ausbildungsmodus hilft dabei, die Kosten für die Lernzeit eines „neuen“ Modells zu verwalten und zu bewerten – wenn es nicht die bestmögliche Leistung erbringt und keinen zufriedenstellenden Effektivitätsgrad von etwa 75-85 % erreicht.
+* **Kaltstarts** werden minimiert: Der Ausbildungsmodus hilft dabei, die Kosten für die Lernzeit eines „neuen“ Modells zu verwalten und zu bewerten – wenn es nicht die bestmögliche Leistung erbringt und keinen zufriedenstellenden Effektivitätsgrad von etwa 60–80 % erreicht.
 * **Überprüfen von Aktions- und Kontextfeatures**: Features, die in Aktionen und Kontext gesendet werden, können unzureichend oder ungenau sein – zu wenig, zu viel, falsch oder zu spezifisch, um die Personalisierung so zu trainieren, dass sie die ideale Effektivitätsrate erreicht. Verwenden Sie [Featureauswertungen](concept-feature-evaluation.md), um Probleme mit Features zu finden und zu beheben.
 
 ## <a name="when-should-you-use-apprentice-mode"></a>Wann sollten Sie den Ausbildungsmodus verwenden?
@@ -68,7 +68,7 @@ Das Lernen im Ausbildungsmodus unterscheidet sich in den folgenden Punkten vom O
 Hinweis zur Effektivität des Ausbildungsmodus:
 
 * Die Effektivität der Personalisierung im Ausbildungsmodus erreicht selten annähernd 100 % der Baseline der Anwendung und überschreitet diese nie.
-* Die bewährten Methoden bestünden darin, nicht zu versuchen, 100 % zu erreichen. Je nach Anwendungsfall sollte jedoch ein Bereich von 75 bis 85 % angestrebt werden.
+* Die bewährten Methoden bestünden darin, nicht zu versuchen, 100 % zu erreichen. Je nach Anwendungsfall sollte jedoch ein Bereich von 60 bis 80 % angestrebt werden.
 
 ## <a name="using-apprentice-mode-to-train-with-historical-data"></a>Verwenden des Ausbildungsmodus zum Trainieren mit Verlaufsdaten
 

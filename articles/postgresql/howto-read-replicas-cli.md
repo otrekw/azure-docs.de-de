@@ -4,20 +4,31 @@ description: Erfahren Sie, wie Sie Lesereplikate für Azure Database for Postgre
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 06/09/2020
+ms.openlocfilehash: b8da326ea48133d2029f385fc55450c00aecf656
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774801"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106610"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Erstellen und Verwalten von Lesereplikaten über die Azure CLI und die REST-API
 
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate in Azure Database for PostgreSQL über die Azure CLI und die REST-API erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Übersicht](concepts-read-replicas.md).
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-replication-support"></a>Azure-Replikationsunterstützung
+[Lesereplikate](concepts-read-replicas.md) und [logische Decodierung](concepts-logical.md) sind beide vom Write-Ahead-Protokoll (WAL) von Postgres abhängig. Diese beiden Features erfordern unterschiedliche Postgres-Protokolliergrade. Die logische Decodierung erfordert einen höheren Protokolliergrad als Lesereplikate.
+
+Um den richtigen Protokolliergrad zu konfigurieren, verwenden Sie den Parameter für die Unterstützung der Azure-Replikation. Für die Unterstützung der Azure-Replikation gibt es drei Einstellungsoptionen:
+
+* **Off**: Speichert am wenigsten Informationen im Write-Ahead-Protokoll. Diese Einstellung ist auf den meisten Azure Database for PostgreSQL-Servern nicht verfügbar.  
+* **Replica**: Ausführlichere Informationen als bei **Off**. Dies ist der mindestens erforderliche Protokolliergrad, damit [Lesereplikate](concepts-read-replicas.md) funktionieren. Auf den meisten Servern ist dies die Standardeinstellung.
+* **Logical**: Noch ausführlichere Informationen als bei **Replica**. Dies ist der mindestens erforderliche Protokolliergrad, damit die logische Decodierung funktioniert. Lesereplikate funktionieren bei dieser Einstellung ebenfalls.
+
+Der Server muss nach einer Änderung dieses Parameters neu gestartet werden. Intern legt dieser Parameter die Postgres-Parameter `wal_level`, `max_replication_slots` und `max_wal_senders` fest.
+
+## <a name="azure-cli"></a>Azure CLI
 Sie können Lesereplikate mithilfe der Azure CLI erstellen und verwalten.
 
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -27,22 +38,20 @@ Sie können Lesereplikate mithilfe der Azure CLI erstellen und verwalten.
 
 
 ### <a name="prepare-the-master-server"></a>Vorbereiten des Masterservers
-Diese Schritte müssen durchgeführt werden, um einen Masterserver in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ vorzubereiten.
 
-Auf dem Masterserver muss der Parameter `azure.replication_support` auf **REPLICA** festgelegt werden. Bei Änderung dieses statischen Parameters ist ein Neustart des Servers erforderlich, damit die Änderung wirksam wird.
+1. Überprüfen Sie den Wert `azure.replication_support` des Masterservers. Er sollte mindestens REPLICA sein, damit Lesereplikate funktionieren.
 
-1. Legen Sie `azure.replication_support` auf „REPLICA“ fest.
+   ```azurecli-interactive
+   az postgres server configuration show --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support
+   ```
+
+2. Wenn `azure.replication_support` nicht mindestens REPLICA ist, legen Sie dies fest. 
 
    ```azurecli-interactive
    az postgres server configuration set --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support --value REPLICA
    ```
 
-> [!NOTE]
-> Wenn Sie bei dem Versuch, „azure.replication_support“ über die Azure CLI festzulegen, die Fehlermeldung „Ungültiger Wert angegeben“ erhalten, ist es wahrscheinlich, dass auf Ihrem Server „REPLICA“ bereits standardmäßig festgelegt ist. Ein Fehler verhindert, dass diese Einstellung auf neueren Servern, auf denen „REPLICA“ der interne Standardwert ist, ordnungsgemäß wiedergegeben wird. <br><br>
-> Sie können die Schritte zum Vorbereiten des Masters überspringen und zum Erstellen des Replikats wechseln. <br><br>
-> Wenn Sie bestätigen möchten, dass sich Ihr Server in dieser Kategorie befindet, besuchen Sie die Replikationsseite des Servers im Azure-Portal. „Replikation deaktivieren“ ist dann abgeblendet, und „Replikat hinzufügen“ ist auf der Symbolleiste aktiviert.
-
-2. Starten Sie den Server neu, um die Änderung zu übernehmen.
+3. Starten Sie den Server neu, um die Änderung zu übernehmen.
 
    ```azurecli-interactive
    az postgres server restart --name mydemoserver --resource-group myresourcegroup
@@ -56,7 +65,7 @@ Der Befehl [az postgres server replica create](/cli/azure/postgres/server/replic
 | --- | --- | --- |
 | resource-group | myresourcegroup |  Die Ressourcengruppe, in der der Replikatserver erstellt wird.  |
 | name | mydemoserver-replica | Der Name des neuen Replikatservers, der erstellt wird. |
-| source-server | mydemoserver | Der Name oder die Ressourcen-ID des vorhandenen Masterservers, von dem die Replikation erfolgt. |
+| source-server | mydemoserver | Der Name oder die Ressourcen-ID des vorhandenen Masterservers, von dem die Replikation erfolgt. Verwenden Sie die Ressourcen-ID, wenn sich Replikat- und Masterressourcengruppen unterscheiden sollen. |
 
 Im folgenden CLI-Beispiel wird das Replikat in der gleichen Region wie der Master erstellt.
 
@@ -109,11 +118,14 @@ az postgres server delete --name myserver --resource-group myresourcegroup
 Sie können Lesereplikate mithilfe der [ Azure-REST-API](/rest/api/azure/) erstellen und verwalten.
 
 ### <a name="prepare-the-master-server"></a>Vorbereiten des Masterservers
-Diese Schritte müssen durchgeführt werden, um einen Masterserver in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ vorzubereiten.
 
-Auf dem Masterserver muss der Parameter `azure.replication_support` auf **REPLICA** festgelegt werden. Bei Änderung dieses statischen Parameters ist ein Neustart des Servers erforderlich, damit die Änderung wirksam wird.
+1. Überprüfen Sie den Wert `azure.replication_support` des Masterservers. Er sollte mindestens REPLICA sein, damit Lesereplikate funktionieren.
 
-1. Legen Sie `azure.replication_support` auf „REPLICA“ fest.
+   ```http
+   GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01
+   ```
+
+2. Wenn `azure.replication_support` nicht mindestens REPLICA ist, legen Sie dies fest.
 
    ```http
    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01

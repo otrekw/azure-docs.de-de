@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 2032ba11c307adda7035d64828d5089da49bedba
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307237"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023022"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>Debuggen von Fehlern beim Ausführen einer Anwendung für benutzerdefinierte Befehle
 
@@ -27,9 +27,8 @@ Wenn Sie Ihre Anwendung für benutzerdefinierte Befehle über eine [Clientanwend
 
 | Fehlercode | Details |
 | ------- | -------- |
-| 401 | AuthenticationFailure: Authentifizierungsfehler beim WebSocket-Upgrade. |
-| 1000 | Maximale Leerlaufzeit der WebSocket-Verbindung wurde überschritten (> 300.000 ms) |
-| 1002 | Vom Server wurde Statuscode '404' zurückgegeben, als Statuscode '101' erwartet wurde. |
+| [401](#error-401) | AuthenticationFailure: Authentifizierungsfehler beim WebSocket-Upgrade. |
+| [1002](#error-1002)] | Vom Server wurde Statuscode '404' zurückgegeben, als Statuscode '101' erwartet wurde. |
 
 ### <a name="error-401"></a>Fehler 401
 - Die in der Clientanwendung angegebene Region stimmt nicht mit der Region der Anwendung für benutzerdefinierte Befehle überein.
@@ -37,9 +36,6 @@ Wenn Sie Ihre Anwendung für benutzerdefinierte Befehle über eine [Clientanwend
 - Der Speech-Ressourcenschlüssel ist ungültig.
     
     Stellen Sie sicher, dass Sie den richtigen Speech-Ressourcenschlüssel verwenden.
-
-### <a name="error-1000"></a>Fehler 1000 
-Verbindungen im Leerlauf werden nach fünf Minuten vom Server beendet. Versuchen Sie, die Verbindung wieder herzustellen.
 
 ### <a name="error-1002"></a>Fehler 1002 
 - Ihre Anwendung für benutzerdefinierte Befehle wird nicht veröffentlicht.
@@ -49,10 +45,12 @@ Verbindungen im Leerlauf werden nach fünf Minuten vom Server beendet. Versuchen
 - Die ID Ihrer Anwendung für benutzerdefinierte Befehle ist ungültig.
 
     Stellen Sie sicher, dass die ID Ihrer Anwendung für benutzerdefinierte Befehle richtig ist.
-
-- Sie versuchen, auf eine Anwendung für benutzerdefinierte Befehle außerhalb Ihrer Speech-Ressource zuzugreifen.
+ Anwendung für benutzerdefinierte Befehle außerhalb Ihrer Speech-Ressource
 
     Stellen Sie sicher, dass die Anwendung für benutzerdefinierte Befehle unter Ihrer Speech-Ressource erstellt wird.
+
+Weitere Informationen zur Behandlung der Verbindungsprobleme finden Sie im Thema [Problembehandlung für den Windows Voice Assistant-Client](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/clients/csharp-wpf#troubleshooting).
+
 
 ## <a name="dialog-is-canceled"></a>Der Dialog ist abgebrochen.
 
@@ -70,14 +68,14 @@ Das Ereignis „CancelledDialog“ besteht aus einem Abbruchcode und einer Besch
 
 | Abbruchcode | Abbruchbeschreibung |
 | ------- | --------------- | ----------- |
-| MaxTurnThresholdReached | Nach der maximal erlaubten Anzahl von Runden wurden keine Fortschritte erzielt. |
-| RecognizerQuotaExceeded | Nutzungskontingent der Erkennung wurde überschritten. |
-| RecognizerConnectionFailed | Fehler beim Herstellen der Verbindung mit der Erkennung. |
-| RecognizerUnauthorized | Auf diese Anwendung kann mit dem aktuellen Abonnement nicht zugegriffen werden. |
-| RecognizerInputExceededAllowedLength | Die Eingabe überschreitet die maximal unterstützte Länge für die Erkennung. |
-| RecognizerNotFound | Die Erkennung wurde nicht gefunden. |
-| RecognizerInvalidQuery | Ungültige Abfrage für die Erkennung. |
-| RecognizerError | Die Erkennung gibt einen Fehler zurück. |
+| [MaxTurnThresholdReached](#no-progress-was-made-after-the-max-number-of-turns-allowed) | Nach der maximal erlaubten Anzahl von Runden wurden keine Fortschritte erzielt. |
+| [RecognizerQuotaExceeded](#recognizer-usage-quota-exceeded) | Nutzungskontingent der Erkennung wurde überschritten. |
+| [RecognizerConnectionFailed](#connection-to-the-recognizer-failed) | Fehler beim Herstellen der Verbindung mit der Erkennung. |
+| [RecognizerUnauthorized](#this-application-cannot-be-accessed-with-the-current-subscription) | Auf diese Anwendung kann mit dem aktuellen Abonnement nicht zugegriffen werden. |
+| [RecognizerInputExceededAllowedLength](#input-exceeds-the-maximum-supported-length) | Die Eingabe überschreitet die maximal unterstützte Länge für die Erkennung. |
+| [RecognizerNotFound](#recognizer-not-found) | Die Erkennung wurde nicht gefunden. |
+| [RecognizerInvalidQuery](#invalid-query-for-the-recognizer) | Ungültige Abfrage für die Erkennung. |
+| [RecognizerError](#recognizer-return-an-error) | Die Erkennung gibt einen Fehler zurück. |
 
 ### <a name="no-progress-was-made-after-the-max-number-of-turns-allowed"></a>Nach der maximal erlaubten Anzahl von Runden wurden keine Fortschritte erzielt.
 Der Dialog wird abgebrochen, wenn ein erforderlicher Slot nach einer bestimmten Anzahl von Runden nicht erfolgreich aktualisiert wurde. Die integrierte maximale Anzahl beträgt 3.

@@ -3,13 +3,13 @@ title: Erstellen eines privaten Azure Kubernetes Service-Clusters
 description: Erfahren Sie, wie Sie einen privaten Azure Kubernetes Service-Cluster (AKS) erstellen.
 services: container-service
 ms.topic: article
-ms.date: 2/21/2020
-ms.openlocfilehash: 49776fb50eabeef8238e54c7a2f3128c99c2514b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 6/18/2020
+ms.openlocfilehash: ebbe2f754aa70c6c65ec7016da29a4a1b0bd7dd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849687"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374524"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters
 
@@ -71,11 +71,11 @@ Das Erstellen eines virtuellen Computers in demselben VNET wie dem des AKS-Clust
 
 Wie bereits erwähnt, ist VNET-Peering eine Möglichkeit für den Zugriff auf Ihren privaten Cluster. Wenn Sie VNET-Peering verwenden möchten, müssen Sie eine Verknüpfung zwischen dem virtuellen Netzwerk und der privaten DNS-Zone einrichten.
     
-1. Wechseln Sie im Azure-Portal zur Ressourcengruppe „MC_*“.  
+1. Wechseln Sie im Azure-Portal zur Knotenressourcengruppe.  
 2. Wählen Sie die private DNS-Zone aus.   
 3. Wählen Sie im linken Bereich den Link **Virtuelles Netzwerk** aus.  
 4. Erstellen Sie eine neue Verknüpfung, um das virtuelle Netzwerk des virtuellen Computers der privaten DNS-Zone hinzuzufügen. Es dauert ein paar Minuten, bis der DNS-Zonenlink verfügbar wird.  
-5. Wechseln Sie im Azure-Portal zurück zur Ressourcengruppe „MC_*“.  
+5. Navigieren Sie im Azure-Portal zu der Ressourcengruppe mit dem VNet Ihres Clusters.  
 6. Wählen Sie im rechten Bereich das virtuelle Netzwerk aus. Der Name des virtuellen Netzwerks hat die Form *aks-vnet-\** .  
 7. Wählen Sie im linken Bereich **Peerings** aus.  
 8. Wählen Sie **Hinzufügen** aus, fügen Sie das virtuelle Netzwerk des virtuellen Computers hinzu, und erstellen Sie dann das Peering.  
@@ -91,7 +91,7 @@ Wie bereits erwähnt, ist VNET-Peering eine Möglichkeit für den Zugriff auf Ih
 
 2. Die private DNS-Zone ist nur mit dem virtuellen Netzwerk verbunden, an das die Clusterknoten angefügt sind (3). Dies bedeutet, dass der private Endpunkt nur von Hosts in diesem verknüpften virtuellen Netzwerk aufgelöst werden kann. In Szenarien, in denen kein benutzerdefinierter DNS im virtuellen Netzwerk konfiguriert ist (Standard), funktioniert dies ohne Probleme, da die Hosts auf 168.63.129.16 für DNS verweisen, das Einträge in der privaten DNS-Zone aufgrund der Verknüpfung auflösen kann.
 
-3. In Szenarien, in denen das virtuelle Netzwerk, das Ihren Cluster enthält, über benutzerdefinierte DNS-Einstellungen verfügt (4), schlägt die Clusterbereitstellung fehl, es sei denn, die private DNS-Zone ist mit dem virtuellen Netzwerk verknüpft, das die benutzerdefinierten DNS-Auflösungen enthält (5). Diese Verknüpfung kann manuell erstellt werden, nachdem die private Zone während der Clusterbereitstellung erstellt wurde, oder über die Automatisierung bei Erkennung der Erstellung der Zone mithilfe von Azure Policy oder anderen ereignisbasierten Bereitstellungsmechanismen (z. B. Azure Event Grid und Azure Functions).
+3. In Szenarien, in denen das virtuelle Netzwerk, das Ihren Cluster enthält, über benutzerdefinierte DNS-Einstellungen verfügt (4), schlägt die Clusterbereitstellung fehl, es sei denn, die private DNS-Zone ist mit dem virtuellen Netzwerk verknüpft, das die benutzerdefinierten DNS-Auflösungen enthält (5). Diese Verknüpfung kann manuell erstellt werden, nachdem die private Zone während der Clusterbereitstellung erstellt wurde, oder über die Automatisierung bei Erkennung der Erstellung der Zone mithilfe von ereignisbasierten Bereitstellungsmechanismen (z. B. Azure Event Grid und Azure Functions).
 
 ## <a name="dependencies"></a>Abhängigkeiten  
 
@@ -100,9 +100,8 @@ Wie bereits erwähnt, ist VNET-Peering eine Möglichkeit für den Zugriff auf Ih
 
 ## <a name="limitations"></a>Einschränkungen 
 * IP-autorisierte Bereiche können nicht auf den privaten API-Serverendpunkt angewandt werden, sie gelten nur für den öffentlichen API-Server.
-* Verfügbarkeitszonen werden derzeit für bestimmte Regionen unterstützt, wie am Anfang dieses Dokuments beschrieben. 
+* [Verfügbarkeitszonen][availability-zones] werden derzeit für bestimmte Regionen unterstützt. 
 * [Die Einschränkungen des Azure Private Link-Diensts][private-link-service] gelten für private Cluster.
-* Keine Unterstützung für virtuelle Knoten in einem privaten Cluster zum Wechseln privater Azure Container Instances (ACI) in einem privaten virtuellen Azure-Netzwerk
 * Keine Unterstützung für Azure DevOps Microsoft-gehostete Agents mit privaten Clustern. Erwägen Sie die Verwendung von [selbstgehosteten Agents][devops-agents]. 
 * Für Kunden, die Azure Container Registry für die Arbeit mit privatem AKS aktivieren müssen, muss ein Peering des virtuellen Netzwerks der Container Registry mit dem virtuellen Netzwerk des Agent-Clusters ausgeführt werden.
 * Keine aktuelle Unterstützung für Azure Dev Spaces
@@ -122,3 +121,4 @@ Wie bereits erwähnt, ist VNET-Peering eine Möglichkeit für den Zugriff auf Ih
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 [devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops
+[availability-zones]: availability-zones.md

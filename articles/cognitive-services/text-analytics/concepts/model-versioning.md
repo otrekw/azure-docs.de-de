@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/21/2020
 ms.author: aahi
-ms.openlocfilehash: 9431ff862dd987a1a806087053014e7c880bf801
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: c9c598d385768e604d9b42e3ea055629e6ae2866
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143259"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108548"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>Versionsverwaltung der Modelle in der Textanalyse-API
 
@@ -37,6 +37,19 @@ Ermitteln Sie anhand der Tabelle unten, welche Modellversionen von den einzelnen
 
 
 Sie finden Details zu den Updates für diese Modelle im Artikel zu den [Neuigkeiten ](../whats-new.md).
+
+## <a name="text-analytics-for-health"></a>Text Analytics for Health
+
+Der Container [Text Analytics for Health](../how-tos/text-analytics-for-health.md) verwaltet gegenüber den oben aufgeführten API-Endpunkten die Modellversionen separat.  Bitte beachten Sie, dass pro Containerimage nur jeweils eine Modellversion verfügbar ist.
+
+| Endpunkt                        | Tag für Containerimage                     | Modellversion |
+|---------------------------------|-----------------------------------------|---------------|
+| `/domains/health`               | `1.1.012640001-amd64-preview` oder aktuellste | `2020-05-08`  |
+| `/domains/health`               | `1.1.012420001-amd64-preview`           | `2020-05-08`  |
+| `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-04-16`  |
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

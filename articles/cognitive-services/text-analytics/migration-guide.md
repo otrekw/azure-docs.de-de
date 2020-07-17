@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 2fd6c908aa95ef22cbf7ea0b62b925d84d66cd28
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143247"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412582"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migration zu Version 3 der Textanalyse-API
 
@@ -44,7 +44,7 @@ Wenn Ihre Anwendung die REST-API nutzt, ändern Sie den Anforderungsendpunkt in 
 ## <a name="feature-changes"></a>Funktionsänderungen
 
 > [!NOTE] 
-> [Entitätskategorien der Version 3](named-entity-types.md) werden derzeit nur für englischen Text zurückgegeben. Die API gibt Ergebnisse der Version 2.1 für Anforderungen in anderen Sprachen zurück, sofern diese in Version 2.1 unterstützt wurden.
+> [Entitätskategorien der Version 3](named-entity-types.md) werden derzeit nur für englischen und spanischen Text zurückgegeben. Die API gibt Ergebnisse der Version 2.1 für Anforderungen in anderen Sprachen zurück, sofern diese in Version 2.1 unterstützt wurden.
 
 In Version 2.1 verwendet die Textanalyse-API einen Endpunkt für die Erkennung benannter Entitäten und die Entitätsverknüpfung. In Version 3 wird die erweiterte Erkennung benannter Entitäten bereitgestellt. Außerdem werden separate Endpunkte für Anforderungen der Erkennung benannter Entitäten und der Entitätsverknüpfung verwendet. Ab v3.1-preview.1 kann die Erkennung benannter Entitäten auch persönliche Informationen (`pii`) und Integritätsinformationen (`phi`) ermitteln. 
 

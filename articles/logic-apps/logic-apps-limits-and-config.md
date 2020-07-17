@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/25/2020
-ms.openlocfilehash: 33e521046889733b2f0a66b839ab5dde46398318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 350c542e1b183c79707c99989b2544fd8faa43ac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412694"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248474"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -180,7 +180,7 @@ Einige Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webho
 
 ### <a name="authentication-limits"></a>Authentifizierungslimits
 
-Hier finden Sie die Limits für eine Logik-App, die mit einem Anforderungstrigger startet und [Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) für die Autorisierung eingehender Aufrufe an den Anforderungstrigger aktiviert:
+Hier finden Sie die Limits für eine Logik-App, die mit einem Anforderungstrigger startet und [Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) für die Autorisierung eingehender Aufrufe an den Anforderungstrigger aktiviert:
 
 | Name | Begrenzung | Notizen |
 | ---- | ----- | ----- |
@@ -302,7 +302,8 @@ Wenn Sie eine Logik-App löschen, werden keine neuen Ausführungen instanziiert.
 Die IP-Adressen, die Azure Logic Apps für eingehende und ausgehende Aufrufe verwendet, hängen von der Region ab, in der sich Ihre Logik-App befindet. Für *alle* Logik-Apps in derselben Region werden dieselben IP-Adressbereiche verwendet. Einige [Power Automate](https://docs.microsoft.com/power-automate/getting-started)-Aufrufe, z. B. **HTTP**- und **HTTP + OpenAPI**-Anforderungen, werden direkt über den Azure Logic Apps-Dienst geleitet und stammen von den hier aufgeführten IP-Adressen. Weitere Informationen zu von Power Automate verwendeten IP-Adressen finden Sie unter [Grenzwerte und Konfiguration in Microsoft Flow](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration).
 
 > [!TIP]
-> Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional [Diensttags](../virtual-network/service-tags-overview.md) verwenden, anstatt die Logic Apps-IP-Adressen für jede Region anzugeben (weiter unten in diesem Abschnitt beschrieben). Diese Tags funktionieren in den Regionen, in denen der Logic Apps-Dienst verfügbar ist:
+> Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional [Diensttags](../virtual-network/service-tags-overview.md) verwenden, anstatt die Logic Apps-IP-Adressen für jede Region anzugeben (weiter unten in diesem Abschnitt beschrieben).
+> Diese Tags funktionieren in den Regionen, in denen der Logic Apps-Dienst verfügbar ist:
 >
 > * **LogicAppsManagement**: Steht für die IP-Adresspräfixe des Logic Apps-Diensts in eingehender Richtung.
 > * **LogicApps**: Steht für die IP-Adresspräfixe des Logic Apps-Diensts in ausgehender Richtung.
@@ -326,7 +327,8 @@ Die IP-Adressen, die Azure Logic Apps für eingehende und ausgehende Aufrufe ver
 In diesem Abschnitt sind nur die IP-Adressen des Azure Logic Apps-Diensts für die eingehende Richtung aufgeführt. Informationen zur Vorgehensweise bei Verwendung von Azure Government finden Sie unter [Azure Government: IP-Adressen für die eingehende Richtung](#azure-government-inbound).
 
 > [!TIP]
-> Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional das [Diensttag](../virtual-network/service-tags-overview.md) **LogicAppsManagement** verwenden, anstatt für jede Region Logic Apps-IP-Adresspräfixe für die eingehende Richtung anzugeben. Dieses Tag funktioniert in allen Regionen, in denen der Logic Apps-Dienst verfügbar ist.
+> Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional das [Diensttag](../virtual-network/service-tags-overview.md) **LogicAppsManagement** verwenden, anstatt für jede Region Logic Apps-IP-Adresspräfixe für die eingehende Richtung anzugeben.
+> Dieses Tag funktioniert in allen Regionen, in denen der Logic Apps-Dienst verfügbar ist.
 
 <a name="multi-tenant-inbound"></a>
 
@@ -386,7 +388,9 @@ In diesem Abschnitt sind nur die IP-Adressen des Azure Logic Apps-Diensts für d
 In diesem Abschnitt sind die IP-Adressen für die ausgehende Richtung aufgeführt, die für den Azure Logic Apps-Dienst und die verwalteten Connectors gelten. Informationen zur Vorgehensweise bei Verwendung von Azure Government finden Sie unter [Azure Government: IP-Adressen für die ausgehende Richtung](#azure-government-outbound).
 
 > [!TIP]
-> Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional das [Diensttag](../virtual-network/service-tags-overview.md) **LogicApps** verwenden, anstatt für jede Region Logic Apps-IP-Adresspräfixe für die ausgehende Richtung anzugeben. Dieses Tag funktioniert in allen Regionen, in denen der Logic Apps-Dienst verfügbar ist. Für verwaltete Connectors müssen Sie weiterhin die IP-Adressen verwenden.
+> Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional das [Diensttag](../virtual-network/service-tags-overview.md) **LogicApps** verwenden, anstatt für jede Region Logic Apps-IP-Adresspräfixe für die ausgehende Richtung anzugeben.
+> Dieses Tag funktioniert in allen Regionen, in denen der Logic Apps-Dienst verfügbar ist.
+> Für verwaltete Connectors müssen Sie weiterhin die IP-Adressen verwenden.
 
 <a name="multi-tenant-outbound"></a>
 
@@ -441,5 +445,5 @@ In diesem Abschnitt sind die IP-Adressen für die ausgehende Richtung aufgeführ
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [Ihre erste Logik-App erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md).  
+* Erfahren Sie, wie Sie [Ihre erste Logik-App erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 * Lernen Sie [allgemeine Beispiele und Szenarien](../logic-apps/logic-apps-examples-and-scenarios.md) kennen.

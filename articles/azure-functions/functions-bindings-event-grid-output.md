@@ -5,17 +5,17 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 4df0faf3f74ef3423dcd42c2c76af8b39a889a92
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: fasttrack-edit, tracking-python
+ms.openlocfilehash: 2eaa2202ac6c2f0fac0f53c6eeb2f5d08c764f1e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773953"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413347"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Event Grid-Ausgabebindung für Azure Functions
 
-Verwenden Sie die Event Grid-Ausgabebindung, um Ereignisse in ein benutzerdefiniertes Thema zu schreiben. Sie müssen einen gültigen [Zugriffsschlüssel für das benutzerdefinierte Thema](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key) besitzen.
+Verwenden Sie die Event Grid-Ausgabebindung, um Ereignisse in ein benutzerdefiniertes Thema zu schreiben. Sie müssen einen gültigen [Zugriffsschlüssel für das benutzerdefinierte Thema](../event-grid/security-authenticate-publishing-clients.md) besitzen.
 
 Informationen zu Setup- und Konfigurationsdetails finden Sie in der [Übersicht](./functions-bindings-event-grid.md).
 
@@ -162,7 +162,7 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [Python-Funktion](functions-reference-python.md), die die Bindung verwendet. Anschließend sendet sie ein Ereignis an das benutzerdefinierte Event Grid-Thema, wie durch `topicEndpointUri` angegeben.
+Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [Python-Funktion](functions-reference-python.md), die die Bindung verwendet. Anschließend sendet sie ein Ereignis an das benutzerdefinierte Thema, wie durch `topicEndpointUri` angegeben.
 
 Bindungsdaten in der Datei *function.json*:
 
@@ -187,7 +187,7 @@ Bindungsdaten in der Datei *function.json*:
 }
 ```
 
-Hier sehen Sie das Python-Beispiel zum Senden eines Ereignisses an ein benutzerdefiniertes Event Grid-Thema durch Festlegen von `EventGridOutputEvent`:
+Hier sehen Sie das Python-Beispiel zum Senden eines Ereignisses an ein benutzerdefiniertes Thema durch Festlegen von `EventGridOutputEvent`:
 
 ```python
 import logging

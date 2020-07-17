@@ -9,20 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: efe76323b4159af01f1eaf470d9c1833edd0a186
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 8d08a0ab8f817d70343686f907ac444af392ea06
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702132"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108930"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installieren und Ausführen von Containern für die Textanalyse
 
 > [!NOTE]
 > * Der Container für Standpunktanalyse v3 ist nun allgemein verfügbar. Die Container für Schlüsselbegriffserkennung und Sprachenerkennung sind als nicht geschlossene öffentliche Vorschau verfügbar.
 > * Entitätsverknüpfung und NER stehen derzeit nicht als Container zur Verfügung.
+> * Zurzeit wird Ihnen die Verwendung von Text Analytics for Health-Containern nicht in Rechnung gestellt.
 
 Container ermöglichen es Ihnen, die Textanalyse-APIs in ihrer eigenen Umgebung auszuführen und eignen sich hervorragend für Ihre spezifischen Anforderungen bezüglich Sicherheit und Datengovernance. Container für die Textanalyse ermöglichen eine erweiterte Verarbeitung von natürlicher Sprache anhand von unformatiertem Text und bieten drei Hauptfunktionen: Standpunktanalyse, Schlüsselbegriffserkennung und Sprachenerkennung. 
 
@@ -59,6 +60,8 @@ In der folgenden Tabelle werden die minimalen und empfohlenen Spezifikationen f�
 |---|---------|-------------|--|--|
 | **Sprachenerkennung, Schlüsselbegriffserkennung**   | 1 Kern, 2 GB Arbeitsspeicher | 1 Kern, 4 GB Arbeitsspeicher |15 | 30|
 | **Standpunktanalyse v3**   | 1 Kern, 2 GB Arbeitsspeicher | 4 Kerne, 8 GB Arbeitsspeicher |15 | 30|
+| **Text Analytics for Health: 1 Dokument/Anforderung**   |  4 Kerne, 10 GB Arbeitsspeicher | 6 Kerne, 12 GB Arbeitsspeicher |15 | 30|
+| **Text Analytics for Health: 10 Dokumente/Anforderungen**   |  6 Kerne, 16 GB Arbeitsspeicher | 8 Kerne, 20 GB Arbeitsspeicher |15 | 30|
 
 CPU-Kernanzahl und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, die im Rahmen des Befehls `docker run` verwendet werden.
 
@@ -80,6 +83,10 @@ In der Microsoft Container Registry stehen Containerimages für die Textanalyse 
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
+# <a name="text-analytics-for-health-preview"></a>[Text Analytics for Health (Vorschau)](#tab/healthcare)
+
+[!INCLUDE [docker-pull-health-container](../includes/docker-pull-health-container.md)]
+
 ***
 
 ## <a name="how-to-use-the-container"></a>Verwenden des Containers
@@ -92,13 +99,6 @@ Wenn sich der Container auf dem [Hostcomputer](#the-host-computer) befindet, kö
 ## <a name="run-the-container-with-docker-run"></a>Ausführen des Containers mit `docker run`
 
 Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/), um die Container auszuführen. Der Container wird so lange ausgeführt, bis Sie ihn beenden.
-
-Ersetzen Sie die folgenden Platzhalter durch Ihre eigenen Werte:
-
-| Platzhalter | Wert | Format oder Beispiel |
-|-------------|-------|---|
-| **{API_KEY}** | Der Schlüssel für Ihre Textanalyseressource. Sie finden ihn im Azure-Portal auf der Seite **Key and endpoint** (Schlüssel und Endpunkt) Ihrer Ressource. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-| **{ENDPOINT_URI}** | Der Endpunkt für den Zugriff auf die Textanalyse-API. Sie finden ihn im Azure-Portal auf der Seite **Key and endpoint** (Schlüssel und Endpunkt) Ihrer Ressource. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 
 > [!IMPORTANT]
 > * In den Docker-Befehlen in den folgenden Abschnitten wird der umgekehrte Schrägstrich (`\`) als Zeilenfortsetzungszeichen verwendet. Ersetzen oder entfernen Sie diesen je nach den Anforderungen des Hostbetriebssystems. 
@@ -116,6 +116,10 @@ Ersetzen Sie die folgenden Platzhalter durch Ihre eigenen Werte:
 # <a name="language-detection-preview"></a>[Sprachenerkennung (Vorschauversion)](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
+
+# <a name="text-analytics-for-health-preview"></a>[Text Analytics for Health (Vorschau)](#tab/healthcare)
+
+[!INCLUDE [docker-run-health-container](../includes/docker-run-health-container.md)]
 
 ***
 
@@ -161,8 +165,8 @@ In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Ins
    * *Standpunktanalyse*
    * *Schlüsselbegriffserkennung (Vorschauversion)* 
    * *Sprachenerkennung (Vorschauversion)*
-   
-* Containerimages werden aus Microsoft Container Registry (MCR) in Azure heruntergeladen.
+   * *Text Analytics for Health (Vorschau)*
+* Containerimages werden aus der Microsoft Container Registry (MCR) oder einem Repository für Vorschaucontainer heruntergeladen.
 * Containerimages werden in Docker ausgeführt.
 * Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in Containern für die Textanalyse über den Host-URI des Containers aufzurufen.
 * Bei der Instanziierung eines Containers müssen Sie Abrechnungsinformationen angeben.

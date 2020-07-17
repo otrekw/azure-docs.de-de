@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 0bc4792b44ccff23a141460c3521d684801c4567
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674260"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243544"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Fehlerbehandlung bei API Management-Richtlinien
 
@@ -51,7 +51,7 @@ Während der Verarbeitung einer Anforderung werden integrierte Schritte zusammen
 Der Richtlinienabschnitt `on-error` kann in jedem Bereich verwendet werden. Zudem können API-Herausgeber benutzerdefiniertes Verhalten konfigurieren, wie etwa das Protokollieren des Fehlers in Event Hubs oder das Erstellen einer neuen Antwort, die an den Aufrufer zurückgegeben werden soll.
 
 > [!NOTE]
-> Der Abschnitt `on-error` ist standardmäßig nicht in den Richtlinien vorhanden. Um einer Richtlinie den Abschnitt `on-error` hinzuzufügen, navigieren Sie im Richtlinien-Editor zur gewünschten Richtlinie, und fügen Sie sie hinzu. Weitere Informationen zum Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/).
+> Der Abschnitt `on-error` ist standardmäßig nicht in den Richtlinien vorhanden. Um einer Richtlinie den Abschnitt `on-error` hinzuzufügen, navigieren Sie im Richtlinien-Editor zur gewünschten Richtlinie, und fügen Sie sie hinzu. Weitere Informationen zum Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-howto-policies.md).
 >
 > Falls kein Abschnitt `on-error` vorhanden sein sollte, erhält der Aufrufer bei einer auftretenden Fehlerbedingung die HTTP-Antwortnachricht 400 oder 500.
 
@@ -189,5 +189,5 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 
 -   [Richtlinien in Azure API Management](api-management-howto-policies.md)
 -   [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
--   Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
+-   Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
 -   [API Management-Richtlinienbeispiele](policy-samples.md)

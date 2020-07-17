@@ -5,15 +5,15 @@ description: In diesem Artikel erfahren Sie, wie Sie ein TLS-/SSL-Zertifikat in 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 11/14/2019
+ms.topic: how-to
+ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 20f588639c54b0a8b7cd304f33b5a9d633a73be6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 125da04c9fafe33c7f3de3a5849e4238b3b45d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976539"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Erstellen von Zertifikaten zum Zulassen des Back-Ends für Azure Application Gateway
 
@@ -74,11 +74,11 @@ Exportieren Sie die CER-Datei mit dem öffentlichen Schlüssel aus Ihrem TLS-/SS
 
 ## <a name="export-trusted-root-certificate-for-v2-sku"></a>Exportieren des vertrauenswürdigen Stammzertifikats (für die v2-SKU)
 
-Sie benötigen ein vertrauenswürdiges Stammzertifikat, um Back-End-Instanzen in der v2-SKU von Application Gateway in die Whitelist aufnehmen zu können. Das Stammzertifikat ist ein Base64-kodiertes X.509-Stammzertifikat (.CER) aus den Zertifikaten des Back-End-Servers. In diesem Beispiel verwenden wir ein TLS-/SSL-Zertifikat als Back-End-Zertifikat, exportieren dessen öffentlichen Schlüssel, und exportieren anschließend das Stammzertifikat der vertrauenswürdigen Zertifizierungsstelle aus dem öffentlichen Schlüssel im Base64-codierten Format, um das vertrauenswürdige Stammzertifikat zu erhalten. Zwischenzertifikate sollten mit dem Serverzertifikat gebündelt und auf dem Back-End-Server installiert werden.
+Sie benötigen ein vertrauenswürdiges Stammzertifikat, um Back-End-Instanzen in der Application Gateway v2-SKU zulassen zu können. Das Stammzertifikat ist ein Base64-kodiertes X.509-Stammzertifikat (.CER) aus den Zertifikaten des Back-End-Servers. In diesem Beispiel verwenden wir ein TLS-/SSL-Zertifikat als Back-End-Zertifikat, exportieren dessen öffentlichen Schlüssel, und exportieren anschließend das Stammzertifikat der vertrauenswürdigen Zertifizierungsstelle aus dem öffentlichen Schlüssel im Base64-codierten Format, um das vertrauenswürdige Stammzertifikat zu erhalten. Zwischenzertifikate sollten mit dem Serverzertifikat gebündelt und auf dem Back-End-Server installiert werden.
 
 Führen Sie die folgenden Schritte durch, um die CER-Datei für Ihr Zertifikat zu exportieren:
 
-1. Führen Sie die Schritte 1 – 9 im Abschnitt **Exportieren des Authentifizierungszertifikats (für die v1-SKU)** durch, um den öffentlichen Schlüssel aus Ihrem Back-End-Zertifikat zu exportieren.
+1. Führen Sie die Schritte 1–8 im vorhergehenden Abschnitt [Exportieren des Authentifizierungszertifikats (für die v1-SKU)](#export-authentication-certificate-for-v1-sku) durch, um den öffentlichen Schlüssel aus Ihrem Back-End-Zertifikat zu exportieren.
 
 2. Öffnen Sie die Datei, wenn der öffentliche Schlüssel exportiert wurde.
 
@@ -106,5 +106,5 @@ Führen Sie die folgenden Schritte durch, um die CER-Datei für Ihr Zertifikat z
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Jetzt verfügen Sie über das Authentifizierungszertifikat und das vertrauenswürdige Sicherheitszertifikat im CER-Format (Base64-kodierte X.509-Zertifikate). Sie können diese Zertifikate zu Application Gateway hinzufügen, um Ihre Back-End-Server für die End-to-End-TLS-Verschlüsselung in die Whitelist aufzunehmen. Weitere Informationen finden Sie unter [Konfigurieren von End-to-End-TLS mit Application Gateway mithilfe von PowerShell](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+Jetzt verfügen Sie über das Authentifizierungszertifikat und das vertrauenswürdige Sicherheitszertifikat im CER-Format (Base64-kodierte X.509-Zertifikate). Sie können diese Zertifikate zu Application Gateway hinzufügen, um die End-to-End-TLS-Verschlüsselung auf Ihren Back-End-Servern zuzulassen. Weitere Informationen finden Sie unter [Konfigurieren von End-to-End-TLS mit Application Gateway mithilfe von PowerShell](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
 

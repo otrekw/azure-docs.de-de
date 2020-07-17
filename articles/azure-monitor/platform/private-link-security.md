@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 95345ba864d498190186e1a366c8551be97c33f5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 14ecd1a35f8aae8365b7c7dc458712acdb894e62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299667"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602583"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Monitor
 
@@ -123,7 +123,7 @@ Nachdem Sie Ihre Ressource mit dem Azure Monitor Private Link-Bereich verbunden 
 
    a.    Wählen Sie das **virtuelle Netzwerk** und das **Subnetz** aus, mit dem Sie Ihre Azure Monitor-Ressourcen verbinden möchten. 
  
-   b.    Wählen Sie für **In private DNS-Zone integrieren** die Option **Ja** aus, und lassen Sie die neue private DNS-Zone automatisch erstellen. 
+   b.    Wählen Sie für **In private DNS-Zone integrieren** die Option **Ja** aus, und lassen Sie die neue private DNS-Zone automatisch erstellen. Die tatsächlichen DNS-Zonen können von den im folgenden Screenshot dargestellten Werten abweichen. 
  
    c.    Klicken Sie auf **Überprüfen + erstellen**.
  
@@ -168,9 +168,8 @@ Der auf diese Weise eingeschränkte Zugriff gilt nur für Daten in der Applicati
 
 > [!NOTE]
 > Um arbeitsbereichsbasierte Application Insights-Ressourcen vollständig zu schützen, müssen Sie den Zugriff sowohl auf die Application Insights-Ressource als auch auf den zugrunde liegenden Log Analytics-Arbeitsbereich sperren.
-
-> [!NOTE]
-> Diagnosefunktionen auf Codeebene (Profiler/Debugger) unterstützen Private Link derzeit nicht.
+>
+> Bei der Diagnose auf Codeebene (Profiler/Debugger) müssen Sie Ihr eigenes Speicherkonto angeben, damit private Links unterstützt werden. Die entsprechende Vorgehensweise finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage).
 
 ## <a name="use-apis-and-command-line"></a>Verwenden von APIs und der Befehlszeile
 
@@ -226,9 +225,13 @@ Damit der Log Analytics-Agent Lösungspakete herunterladen kann, fügen Sie die 
 
 | Cloudumgebung | Agent-Ressource | Ports | Direction |
 |:--|:--|:--|:--|
-|Azure – Öffentlich     | scadvisor.blob.core.windows.net         | 443 | Ausgehend
+|Azure – Öffentlich     | scadvisorcontent.blob.core.windows.net         | 443 | Ausgehend
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Ausgehend
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Ausgehend
+
+### <a name="browser-dns-settings"></a>Browser-DNS-Einstellungen
+
+Wenn Sie eine Verbindung mit den Azure Monitor-Ressourcen über einen privaten Link herstellen, muss der Datenverkehr zu diesen Ressourcen über den privaten Endpunkt erfolgen, der in Ihrem Netzwerk konfiguriert ist. Um den privaten Endpunkt zu aktivieren, aktualisieren Sie Ihre DNS-Einstellungen, wie unter [Herstellen einer Verbindung mit einem privaten Endpunkt](#connect-to-a-private-endpoint) beschrieben. Einige Browser verwenden eigene DNS-Einstellungen anstelle der von Ihnen festgelegten DNS-Einstellungen. Der Browser versucht möglicherweise, eine Verbindung mit öffentlichen Azure Monitor-Endpunkten herzustellen und den privaten Link vollständig zu umgehen. Vergewissern Sie sich, dass die Browsereinstellungen DNS-Einstellungen nicht überschreiben und keine alten Einstellungen zwischenspeichern. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

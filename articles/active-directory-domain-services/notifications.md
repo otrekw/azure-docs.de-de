@@ -9,26 +9,26 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 8c6d59889e572893877f2178cade57e07aa91413
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 149de14ed2430613e9ca6d5d12f8dce6ba425dfe
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654792"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039992"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Konfigurieren von E-Mail-Benachrichtigungen für Probleme in Azure Active Directory Domain Services
 
 Die Integrität einer durch Azure Active Directory Domain Services (Azure AD DS) verwalteten Domäne wird von der Azure-Plattform überwacht. Auf der Seite für den Integritätsstatus im Azure-Portal werden alle Warnungen für die verwaltete Domäne angezeigt. Damit sichergestellt ist, dass rechtzeitig auf Probleme reagiert wird, können E-Mail-Benachrichtigungen konfiguriert werden, um Integritätswarnungen zu melden, sobald diese in der durch Azure AD DS verwalteten Domäne festgestellt werden.
 
-In diesem Artikel erfahren Sie, wie Sie Empfänger von E-Mail-Benachrichtigungen für eine durch Azure AD DS verwaltete Domäne konfigurieren.
+In diesem Artikel erfahren Sie, wie Sie Empfänger von E-Mail-Benachrichtigungen für eine verwaltete Domäne konfigurieren.
 
 ## <a name="email-notification-overview"></a>Übersicht über E-Mail-Benachrichtigungen
 
-Damit Sie über Probleme mit einer durch Azure AD DS verwalteten Domäne informiert werden, können Sie E-Mail-Benachrichtigungen konfigurieren. In diesen E-Mail-Benachrichtigungen sind die durch Azure AD DS verwaltete Domäne, zu der die Warnung gemeldet wurde, der Zeitpunkt der Erkennung sowie ein Link zur Integritätsseite im Azure-Portal angegeben. Sie können dann den genannten Hinweisen zur Problembehandlung folgen, um die Probleme zu beheben.
+Damit Sie über Probleme bei einer verwalteten Domäne informiert werden, können Sie E-Mail-Benachrichtigungen konfigurieren. In diesen E-Mail-Benachrichtigungen sind die verwaltete Domäne, zu der die Warnung gemeldet wurde, der Zeitpunkt der Erkennung sowie ein Link zur Integritätsseite im Azure-Portal angegeben. Sie können dann den genannten Hinweisen zur Problembehandlung folgen, um die Probleme zu beheben.
 
-Im folgenden Beispiel einer E-Mail-Benachrichtigung ist angegeben, dass in der durch Azure AD DS verwalteten Domäne eine kritische Warnung generiert wurde:
+Im folgenden Beispiel einer E-Mail-Benachrichtigung ist angegeben, dass in der verwalteten Domäne eine kritische Warnung generiert wurde:
 
 ![Beispiel für E-Mail-Benachrichtigung](./media/active-directory-domain-services-alerts/email-alert.png)
 
@@ -37,13 +37,13 @@ Im folgenden Beispiel einer E-Mail-Benachrichtigung ist angegeben, dass in der d
 
 ### <a name="why-would-i-receive-email-notifications"></a>In welchen Situationen würde ich E-Mail-Benachrichtigungen erhalten?
 
-Azure AD DS sendet E-Mail-Benachrichtigungen bei wichtigen Updates zur verwalteten Domäne. Diese Benachrichtigungen betreffen ausschließlich dringende Probleme, die Auswirkungen auf den Dienst haben und umgehend behoben werden sollten. Jede E-Mail-Benachrichtigung wird durch eine Warnung in der durch Azure AD DS verwalteten Domäne ausgelöst. Die Warnungen werden auch im Azure-Portal angezeigt und können auf der [Seite zur Integrität von Azure AD DS][check-health] angezeigt werden.
+Azure AD DS sendet E-Mail-Benachrichtigungen bei wichtigen Updates zur verwalteten Domäne. Diese Benachrichtigungen betreffen ausschließlich dringende Probleme, die Auswirkungen auf den Dienst haben und umgehend behoben werden sollten. Jede E-Mail-Benachrichtigung wird durch eine Warnung in der verwalteten Domäne ausgelöst. Die Warnungen werden auch im Azure-Portal angezeigt und können auf der [Seite zur Integrität von Azure AD DS][check-health] angezeigt werden.
 
 Azure AD DS sendet keine E-Mails für Ankündigungen, Aktualisierungen oder Verkaufszwecke.
 
 ### <a name="when-will-i-receive-email-notifications"></a>Wann erhalte ich E-Mail-Benachrichtigungen?
 
-Es wird sofort eine Benachrichtigung gesendet, wenn eine [neue Warnung][troubleshoot-alerts] in einer durch Azure AD DS verwalteten Domäne auftritt. Wenn die Warnung nicht behoben wird, werden alle vier Tage weitere E-Mail-Benachrichtigungen zur Erinnerung gesendet.
+Es wird sofort eine Benachrichtigung gesendet, wenn eine [neue Warnung][troubleshoot-alerts] in einer verwalteten Domäne auftritt. Wenn die Warnung nicht behoben wird, werden alle vier Tage weitere E-Mail-Benachrichtigungen zur Erinnerung gesendet.
 
 ### <a name="who-should-receive-the-email-notifications"></a>Wer sollte die E-Mail-Benachrichtigungen empfangen?
 
@@ -58,23 +58,23 @@ Sie können auch festlegen, dass alle *globalen Administratoren* des Azure AD-Ve
 Führen Sie die folgenden Schritte aus, um die vorhandenen Empfänger von E-Mail-Benachrichtigungen anzuzeigen oder weitere Empfänger hinzuzufügen:
 
 1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus.
-1. Wählen Sie Ihre verwaltete Azure AD DS-Domäne (z. B. *aaddscontoso.com*) aus.
+1. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
 1. Wählen Sie links im Azure AD DS-Ressourcenfenster die Option **Benachrichtigungseinstellungen** aus. Die vorhandenen Empfänger für E-Mail-Benachrichtigungen werden angezeigt.
 1. Um einen E-Mail-Empfänger hinzuzufügen, geben Sie die E-Mail-Adresse in die Tabelle mit zusätzlichen Empfängern ein.
 1. Klicken Sie anschließend im oberen Navigationsbereich auf **Speichern**.
 
 > [!WARNING]
-> Wenn Sie die Benachrichtigungseinstellungen ändern, werden diese für die gesamte durch Azure AD DS verwaltete Domäne aktualisiert – nicht nur für Sie selbst.
+> Wenn Sie die Benachrichtigungseinstellungen ändern, werden diese für die gesamte verwaltete Domäne aktualisiert – nicht nur für Sie selbst.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 ### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>Ich habe eine E-Mail-Benachrichtigung für eine Warnung erhalten, aber nach der Anmeldung im Azure-Portal wurde keine Warnung angezeigt. Was ist passiert?
 
-Wenn eine Warnung behoben wurde, wird sie aus dem Azure-Portal gelöscht. Die wahrscheinlichste Ursache hierfür ist, dass ein anderer Benutzer, der E-Mail-Benachrichtigungen erhält, die Warnung in der durch Azure AD DS verwalteten Domäne behoben hat oder dass sie von der Azure-Plattform automatisch gelöst wurde.
+Wenn eine Warnung behoben wurde, wird sie aus dem Azure-Portal gelöscht. Die wahrscheinlichste Ursache hierfür ist, dass ein anderer Benutzer, der E-Mail-Benachrichtigungen erhält, die Warnung in der verwalteten Domäne behoben hat oder dass sie von der Azure-Plattform automatisch gelöst wurde.
 
 ### <a name="why-can-i-not-edit-the-notification-settings"></a>Warum kann ich die Benachrichtigungseinstellungen nicht bearbeiten?
 
-Wenn Sie im Azure-Portal nicht auf die Seite mit den Benachrichtigungseinstellungen zugreifen können, verfügen Sie nicht über die Berechtigungen zum Bearbeiten der durch Azure AD DS verwalteten Domäne. Wenden Sie sich an einen globalen Administrator, um entweder die Berechtigungen zum Bearbeiten einer Azure AD DS-Ressource zu erhalten oder aus der Empfängerliste entfernt zu werden.
+Wenn Sie im Azure-Portal nicht auf die Seite mit den Benachrichtigungseinstellungen zugreifen können, verfügen Sie nicht über die Berechtigungen zum Bearbeiten der verwalteten Domäne. Sie müssen sich an einen globalen Administrator wenden, um entweder die Berechtigungen zum Bearbeiten einer Azure AD DS-Ressource zu erhalten oder aus der Empfängerliste entfernt zu werden.
 
 ### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Ich empfange anscheinend keine E-Mail-Benachrichtigungen, obwohl ich meine E-Mail-Adresse angegeben habe. Warum?
 
@@ -82,7 +82,7 @@ Wenn Sie im Azure-Portal nicht auf die Seite mit den Benachrichtigungseinstellun
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Behebung von Problemen, die möglicherweise gemeldet werden, finden Sie unter [Beheben von Warnungen in einer durch Azure AD DS verwalteten Domäne][troubleshoot-alerts].
+Weitere Informationen zur Behebung von Problemen, die möglicherweise gemeldet werden, finden Sie unter [Beheben von Warnungen in einer verwalteten Domäne][troubleshoot-alerts].
 
 <!-- INTERNAL LINKS -->
 [check-health]: check-health.md

@@ -4,12 +4,12 @@ description: Übersicht über Smart Contract-Integrationsmuster in Azure Blockch
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: f9626edd5bd655e3de5d0f9648041faf832e3b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74325970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254632"
 ---
 # <a name="smart-contract-integration-patterns"></a>Smart Contract-Integrationsmuster
 
@@ -31,7 +31,7 @@ Funktionen innerhalb der von Azure Blockchain Workbench generierten Webanwendung
 
 Die REST-API wird in erster Linie für interaktive Clients wie Web-, Mobile- und Bot Anwendungen verwendet.
 
-Dieser Abschnitt befasst sich mit Mustern, die sich auf die Aspekte der REST-API konzentrieren und die Transaktionen an einen Distributed Ledger senden, und mit Mustern, die Daten zu Transaktionen aus der *nicht verketteten* SQL-Datenbank von Azure Blockchain Workbench abfragen.
+Dieser Abschnitt befasst sich mit Mustern, die sich auf die Aspekte der REST-API konzentrieren und die Transaktionen an einen Distributed Ledger senden, und mit Mustern, die Daten zu Transaktionen aus der *nicht verketteten* Datenbank von Azure Blockchain Workbench abfragen.
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Senden von Transaktionen an einen verteilten Ledger aus einem externen System
 
@@ -204,7 +204,7 @@ Die Datenintegration ist gut bekannt:
 
 -   Azure Blockchain Workbench speichert Metadaten zu Anwendungen, Workflows, Verträgen und Transaktionen als Teil des normalen Betriebsverhaltens.
 -   Externe Systeme oder Tools stellen mindestens ein Dialogfeld zur Verfügung, um die Erfassung von Informationen zur Datenbank zu erleichtern, z.B. Name des Datenbankservers, Datenbankname, Art der Authentifizierung, Anmeldeinformationen und welche Datenbanksichten verwendet werden sollen.
--   Abfragen werden für SQL-Datenbanksichten zur Erleichterung der nachgeschalteten Nutzung durch externe Systeme, Dienste, Berichterstellung, Entwicklertools und Produktivitätstools des Unternehmens geschrieben.
+-   Abfragen werden für Datenbanksichten zur Erleichterung der nachgeschalteten Nutzung durch externe Systeme, Dienste, Berichterstellung, Entwicklertools und Produktivitätstools des Unternehmens geschrieben.
 
 ## <a name="storage-integration"></a>Speicherintegration
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 14f304e3846cab25691da347732de50924356540
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5a81ceea151b937b63544cbe51cc22de11d25230
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84036581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254938"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Database Advisor: Empfehlungen zur Leistung für Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ Folgende Optionen für Leistungsempfehlungen sind in Azure SQL-Datenbank verfüg
 | **Empfehlungen zum Erstellen eines Index**: Empfiehlt das Erstellen von Indizes, durch die sich die Leistung Ihrer Workload verbessern kann. | Ja | Nein |
 | **Empfehlungen zum Löschen eines Index**: Empfiehlt das tägliche Entfernen redundanter und doppelter Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass diese Option nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. Das Löschen nicht verwendeter Indizes wird bei den Dienstebenen „Premium“ und „Unternehmenskritisch“ nicht unterstützt. | Ja | Nein |
 | **Empfehlungen zum Parametrisieren von Abfragen (Vorschau)** : Empfiehlt die erzwungene Parametrisierung in Fällen, in denen eine oder mehrere Abfragen ständig neu kompiliert werden, aber am Ende immer der gleiche Abfrageausführungsplan daraus hervorgeht. | Ja | Nein |
-| **Empfehlungen zum Beheben von Schemaproblemen (Vorschau)** : Empfehlungen für die Schemakorrektur werden angezeigt, wenn Azure SQL-Datenbank eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer SQL-Datenbank auftreten. Empfehlungen zum Beheben von Schemaproblemen werden in Kürze von Microsoft eingestellt. | Ja | Nein |
+| **Empfehlungen zum Beheben von Schemaproblemen (Vorschau)** : Empfehlungen für die Schemakorrektur werden angezeigt, wenn Azure SQL-Datenbank eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer Datenbank auftreten. Empfehlungen zum Beheben von Schemaproblemen werden in Kürze von Microsoft eingestellt. | Ja | Nein |
 
 ![Leistungsempfehlungen für Azure SQL-Datenbank](./media/database-advisor-implement-performance-recommendations/performance-recommendations-annotated.png)
 
@@ -97,11 +97,11 @@ Nachdem Sie diese Empfehlung angewendet haben, wird innerhalb von Minuten erzwun
 > [!IMPORTANT]
 > Empfehlungen zum Beheben von Schemaproblemen werden in Kürze von Microsoft eingestellt. Wir empfehlen die Verwendung von [Intelligent Insights](intelligent-insights-overview.md) zum Überwachen Ihrer Datenbankleistungsprobleme, einschließlich der Schemaprobleme, die zuvor durch die Empfehlungen zum Beheben von Schemaproblemen abgedeckt wurden.
 
-Empfehlungen zum **Beheben von Schemaproblemen** werden angezeigt, wenn Azure SQL-Datenbank eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer SQL-Datenbank auftreten. Diese Empfehlung wird in der Regel angezeigt, wenn in Ihrer Datenbank innerhalb einer Stunde mehrere schemabezogene Fehler auftreten (ungültiger Spaltenname, ungültiger Objektname usw.).
+Empfehlungen zum **Beheben von Schemaproblemen** werden angezeigt, wenn Azure SQL-Datenbank eine Anomalie bei der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer Datenbank auftreten. Diese Empfehlung wird in der Regel angezeigt, wenn in Ihrer Datenbank innerhalb einer Stunde mehrere schemabezogene Fehler auftreten (ungültiger Spaltenname, ungültiger Objektname usw.).
 
 „Schemaprobleme“ sind eine Klasse von Syntaxfehlern. Sie treten auf, wenn die Definition der SQL-Abfrage und die Definition des Datenbankschemas nicht übereinstimmen. Dies kann z.B. der Fall sein, wenn eine der von der Abfrage erwarteten Spalten in der Zieltabelle fehlt oder umgekehrt.
 
-Die Empfehlung zum „Beheben von Schemaproblemen“ wird angezeigt, wenn Azure SQL-Datenbank eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer SQL-Datenbank auftreten. Die folgende Tabelle zeigt die möglichen Fehler in Bezug auf Schemaprobleme:
+Die Empfehlung zum „Beheben von Schemaproblemen“ wird angezeigt, wenn Azure SQL-Datenbank eine Anomalie bei der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer Datenbank auftreten. Die folgende Tabelle zeigt die möglichen Fehler in Bezug auf Schemaprobleme:
 
 | SQL-Fehlercode | `Message` |
 | --- | --- |

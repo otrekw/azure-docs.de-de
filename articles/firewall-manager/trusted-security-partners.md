@@ -1,33 +1,30 @@
 ---
-title: Was sind vertrauenswürdige Sicherheitspartner in Azure Firewall Manager (Vorschau)?
-description: Erfahren Sie mehr über vertrauenswürdige Sicherheitspartner in Azure Firewall Manager.
+title: Was sind Azure Firewall Manager-Sicherheitspartneranbieter?
+description: Informieren Sie sich über Azure Firewall Manager-Sicherheitspartneranbieter.
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34da82510f96ef7bde65ceec397b048c941e3234
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436773"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563606"
 ---
-# <a name="what-are-trusted-security-partners-preview"></a>Was sind vertrauenswürdige Sicherheitspartner (Vorschau)?
+# <a name="what-are-security-partner-providers"></a>Was sind Sicherheitspartneranbieter?
 
-> [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Mit *Sicherheitspartneranbietern* in Azure Firewall Manager können Sie Ihre vertrauten erstklassigen SECaaS-Angebote (Security-as-a-Service) von Drittanbietern verwenden, um den Internetzugriff für Ihre Benutzer zu schützen.
 
-Mit dem Feature *Vertrauenswürdiger Sicherheitspartner (Vorschau)* in Azure Firewall Manager können Sie Ihre vertrauten erstklassigen SECaaS (Security-as-a-Service)-Angebote von Drittanbietern verwenden, um den Internetzugriff für Ihre Benutzer zu schützen.
-
-Mit einigen schnellen Konfigurationsschritten können Sie einen Hub mit einem unterstützten Sicherheitspartner schützen und den Internetdatenverkehr von Ihren virtuellen Netzwerken (VNETs) oder Filialstandorten innerhalb einer Region weiterleiten und filtern. Dies geschieht mithilfe der automatisierten Routenverwaltung, ohne dass benutzerdefinierte Routen (User Defined Routes, UDRs) eingerichtet und verwaltet werden müssen.
+Mit einigen schnellen Konfigurationsschritten können Sie einen Hub mit einem unterstützten Sicherheitspartner schützen und den Internetdatenverkehr von Ihren virtuellen Netzwerken (VNETs) oder Filialstandorten innerhalb einer Region weiterleiten und filtern. Dazu können Sie die automatisierte Routenverwaltung verwenden, ohne benutzerdefinierte Routen (User Defined Routes, UDRs) einrichten und verwalten zu müssen.
 
 Sie können geschützte, mithilfe eines Sicherheitspartners Ihrer Wahl konfigurierte Hubs in mehreren Azure-Regionen bereitstellen, um Konnektivität und Sicherheit für Benutzer in diesen Regionen rund um die Welt zu gewährleisten. Dank der Möglichkeit, das Angebot des Sicherheitspartners für den Internet-/SaaS-Anwendungsdatenverkehr und die Azure Firewall für privaten Datenverkehr in den geschützten Hubs zu nutzen, können Sie jetzt Ihre Sicherheitsperipherie in Azure aufbauen, die sich in der Nähe ihrer weltweit verteilten Benutzer und Anwendungen befindet.
 
-Die für diese Vorschau unterstützten Sicherheitspartner sind **ZScaler** und **iboss**. Die unterstützten Regionen lauten „WestCentralUS“, „NorthCentralUS“, „WestUS“, „WestUS2“ und „EastUS“.
+Die unterstützten Sicherheitspartner sind **ZScaler**, **Check Point** (Vorschau) und **iboss** (Vorschau).
 
-![Vertrauenswürdige Sicherheitspartner](media/trusted-security-partners/trusted-security-partners.png)
+![Sicherheitspartneranbieter](media/trusted-security-partners/trusted-security-partners.png)
 
 ## <a name="key-scenarios"></a>Wichtige Szenarien
 
@@ -42,18 +39,8 @@ Mithilfe der Sicherheitspartner können Sie den Internetdatenverkehr in folgende
    Nutzen Sie die Azure-Konnektivität und die globale Verteilung, um auf einfache Weise eine NSaaS-Drittanbieterfilterung für Szenarien vom Typ „Filiale-zu-Internet“ hinzuzufügen. Sie können Ihr globales Übertragungsnetzwerk und die Sicherheitsperipherie mithilfe von Azure Virtual WAN erstellen.
 
 Die folgenden Szenarien werden unterstützt:
--   „VNET zu Internet“ über das Partnerangebot eines Drittanbieters
--   „Filiale zu Internet“ über das Partnerangebot eines Drittanbieters
--   „Filiale zu Internet“ über das Partnerangebot eines Drittanbieters – der übrige private Datenverkehr (Spoke-to-Spoke, Spoke-to-Branches, Branch-to-Spokes) über Azure Firewall
-
-Das folgende Szenario wird nicht unterstützt:
-
-- „VNET zu Internet“ über ein Partnerangebot kann nicht mit Azure Firewall für privaten Datenverkehr kombiniert werden. Siehe die folgenden Einschränkungen.
-
-## <a name="current-limitations"></a>Aktuelle Einschränkungen
-
-- Für „VNET zu Internet“ können Azure Firewall für privaten Datenverkehr und ein Partnerangebot für den Internetdatenverkehr nicht kombiniert werden. Sie können Internetdatenverkehr entweder an die Azure Firewall oder an die Sicherheitslösung eines Drittanbieters im geschützten virtuellen Hub senden, aber nicht beides. 
-- Sie können maximal einen Sicherheitspartner pro virtuellem Hub bereitstellen. Wenn Sie den Anbieter ändern möchten, müssen Sie den vorhandenen Partner entfernen und einen neuen hinzufügen.
+- VNet/Filiale zu Internet über einen Sicherheitspartneranbieter und sonstiger Datenverkehr (Spoke zu Spoke, Spoke zu Filiale, Filiale zu Spoke) über Azure Firewall.
+- VNet/Filiale zu Internet über Sicherheitspartneranbieter
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Best Practices für das Filtern von Internetdatenverkehr in geschützten virtuellen Hubs
 
@@ -75,9 +62,8 @@ Bei Office 365 sind Netzwerklatenz und -leistung für eine positive Benutzererfa
 
 Gemäß den [Office 365-Prinzipien für Netzwerkkonnektivität](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) müssen wichtige Office 365-Verbindungen lokal vom Filialstandort oder Mobilgerät des Benutzers direkt über das Internet an den nächstgelegenen Netzwerk-POP (Point-of-Presence) von Microsoft weitergeleitet werden.
 
-Darüber hinaus werden Office 365-Verbindungen aus Gründen des Datenschutzes stark verschlüsselt und nutzen aus Leistungsgründen effiziente, proprietäre Protokolle. Daher ist es weder praktisch noch wirkungsvoll, diese Verbindungen mit herkömmlichen Sicherheitslösungen auf Netzwerkebene zu schützen. Aus diesen Gründen wird dringend empfohlen, dass Kunden Office 365-Datenverkehr direkt von Filialstandorten senden, bevor der übrige Datenverkehr über Azure übertragen wird. Microsoft verfügt über Partnerschaften mit mehreren Anbietern von SD-WAN-Lösungen, die in Azure und Office 365 integriert sind und es Kunden einfach machen, das direkte und lokale Internetbreakout in Office 365 zu aktivieren. Ausführliche Informationen finden Sie unter [Wie richte ich meine Office 365-Richtlinien über Virtual WAN ein?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview).
-
+Darüber hinaus werden Office 365-Verbindungen aus Gründen des Datenschutzes verschlüsselt und nutzen aus Leistungsgründen effiziente, proprietäre Protokolle. Daher ist es weder praktisch noch wirkungsvoll, diese Verbindungen mit herkömmlichen Sicherheitslösungen auf Netzwerkebene zu schützen. Aus diesen Gründen wird dringend empfohlen, dass Kunden Office 365-Datenverkehr direkt von Filialstandorten senden, bevor der übrige Datenverkehr über Azure übertragen wird. Microsoft verfügt über Partnerschaften mit mehreren Anbietern von SD-WAN-Lösungen, die in Azure und Office 365 integriert sind und es Kunden einfach machen, das direkte und lokale Internetbreakout in Office 365 zu aktivieren. Ausführliche Informationen finden Sie unter [Wie richte ich meine Office 365-Richtlinien über Virtual WAN ein?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen des Angebots eines vertrauenswürdigen Sicherheitspartners in einem geschützten Hub unter Verwendung von Azure Firewall Manager](deploy-trusted-security-partner.md)
+[Bereitstellen des Angebots eines Sicherheitspartners in einem geschützten Hub unter Verwendung von Azure Firewall Manager](deploy-trusted-security-partner.md)

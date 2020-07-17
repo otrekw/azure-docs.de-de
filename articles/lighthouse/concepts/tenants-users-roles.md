@@ -1,30 +1,30 @@
 ---
 title: Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien
 description: Erfahren Sie mehr über die Konzepte von Azure Active Directory-Mandanten, -Benutzern und -Rollen sowie deren Verwendung in Azure Lighthouse-Szenarien.
-ms.date: 04/03/2020
+ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7ed5af18efbb0f5b97dcab20093cc45e8bed1d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bcfd1603469ba27971fffa8e7c46f0f696bb6a2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144915"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105386"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien
 
-Vor dem Onboarding von Kunden für die [delegierte Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) ist es wichtig, die Funktionsweise von Azure Active Directory-Mandanten, -Benutzern und -Rollen sowie deren Verwendung in Azure Lighthouse-Szenarien zu verstehen.
+Vor dem Onboarding von Kunden für [Azure Lighthouse](../overview.md) ist es wichtig, die Funktionsweise von Azure Active Directory-Mandanten, -Benutzern und -Rollen sowie deren Verwendung in Azure Lighthouse-Szenarien zu verstehen.
 
-Ein *Mandant* ist eine dedizierte und vertrauenswürdige Instanz von Azure Active Directory (Azure AD). Typischerweise repräsentiert jeder Mandant eine einzelne Organisation. Die delegierte Azure-Ressourcenverwaltung ermöglicht die logische Projektion von Ressourcen von einem Mandanten auf einen anderen Mandanten. Dies ermöglicht es Benutzern im verwaltenden Mandanten (z. B. dem Mandanten eines Dienstanbieters), auf delegierte Ressourcen in einem Kundenmandanten zuzugreifen. [Unternehmen mit mehreren Mandanten können auf diese Weise ihre Verwaltungsabläufe zentralisieren](enterprise.md).
+Ein *Mandant* ist eine dedizierte und vertrauenswürdige Instanz von Azure Active Directory (Azure AD). Typischerweise repräsentiert jeder Mandant eine einzelne Organisation. Die [delegierte Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) ermöglicht die logische Projektion von Ressourcen von einem Mandanten auf einen anderen Mandanten. Dies ermöglicht es Benutzern im verwaltenden Mandanten (z. B. dem Mandanten eines Dienstanbieters), auf delegierte Ressourcen in einem Kundenmandanten zuzugreifen. [Unternehmen mit mehreren Mandanten können auf diese Weise ihre Verwaltungsabläufe zentralisieren](enterprise.md).
 
 Um diese logische Projektion zu erreichen, muss für ein Abonnement (oder mindestens eine Ressourcengruppe in einem Abonnement) im Kundenmandanten ein *Onboarding* für die delegierte Azure-Ressourcenverwaltung durchgeführt werden. Dieser Onboardingprozess kann entweder [über Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) oder durch das [Veröffentlichen eines öffentlichen oder privaten Angebots im Azure Marketplace](../how-to/publish-managed-services-offers.md) erfolgen.
 
 Unabhängig von der gewählten Onboardingmethode müssen Sie *Autorisierungen* definieren. Jede Autorisierung gibt ein Benutzerkonto im verwaltenden Mandanten an, der Zugriff auf die delegierten Ressourcen erhält. Außerdem wird eine integrierte Rolle angegeben, mit der die Berechtigungen dieser Benutzer für die Ressourcen festgelegt werden.
 
-## <a name="role-support-for-azure-delegated-resource-management"></a>Rollenunterstützung für die delegierte Azure-Ressourcenverwaltung
+## <a name="role-support-for-azure-lighthouse"></a>Rollenunterstützung für Azure Lighthouse
 
 Beim Definieren einer Autorisierung muss jedem Benutzerkonto eine der [integrierten Rollen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../../role-based-access-control/built-in-roles.md) zugewiesen werden. Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](../../role-based-access-control/classic-administrators.md) werden nicht unterstützt.
 
-Für die delegierte Azure-Ressourcenverwaltung werden aktuell alle [integrierten Rollen](../../role-based-access-control/built-in-roles.md) unterstützt. Dabei gelten die folgenden Ausnahmen:
+Für die Azure Lighthouse werden aktuell alle [integrierten Rollen](../../role-based-access-control/built-in-roles.md) unterstützt. Dabei gelten die folgenden Ausnahmen:
 
 - Die Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) wird nicht unterstützt.
 - Integrierte Rollen mit der Berechtigung [DataActions](../../role-based-access-control/role-definitions.md#dataactions) werden nicht unterstützt.
@@ -47,5 +47,5 @@ Beim Erstellen Ihrer Autorisierungen empfehlen wir die Einhaltung der folgenden 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [empfohlene Sicherheitsmaßnahmen für die delegierte Azure-Ressourcenverwaltung](recommended-security-practices.md).
-- Onboarding Ihrer Kunden in die delegierte Azure-Ressourcenverwaltung, entweder unter [Verwendung von Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) oder mittels [Veröffentlichung eines privaten oder öffentlichen Angebots für verwaltete Dienste im Azure Marketplace](../how-to/publish-managed-services-offers.md).
+- Weitere Informationen zu [Empfohlene Sicherheitsmaßnahmen für Azure Lighthouse](recommended-security-practices.md).
+- Onboarding Ihrer Kunden in Azure Lighthouse, entweder unter [Verwendung von Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) oder mittels [Veröffentlichung eines privaten oder öffentlichen Angebots für verwaltete Dienste im Azure Marketplace](../how-to/publish-managed-services-offers.md).

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: b1f11a1ff25117c07e61475e7e83fc0c170cd552
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a19f81fab525b44f0b55244281930977e0e1f476
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414648"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254615"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory (Legacy)
 
@@ -542,7 +542,7 @@ Beachten Sie folgende Punkte:
 
 Azure Data Factory unterstützt das Komprimieren und Dekomprimieren während des Kopiervorgangs. Wenn Sie die `compression`-Eigenschaft in einem Eingabedataset angeben, kann die Kopieraktivität die komprimierten Daten aus der Quelle lesen und dekomprimieren. Bei Angabe der Eigenschaft in einem Ausgabedataset kann die Kopieraktivität Daten erst komprimieren und dann in die Senke schreiben. Es folgen einige Beispielszenarios:
 
-* Lesen Sie GZIP-komprimierte Daten aus einem Azure-Blob, dekomprimieren Sie sie, und schreiben Sie die resultierenden Daten in eine Azure SQL-Datenbank. Sie definieren das Azure-Blob-Eingabedataset mit der `compression` `type`-Eigenschaft als GZIP.
+* Lesen Sie GZIP-komprimierte Daten aus einem Azure-Blob, dekomprimieren Sie sie, und schreiben Sie die resultierenden Daten in Azure SQL-Datenbank. Sie definieren das Azure-Blob-Eingabedataset mit der `compression` `type`-Eigenschaft als GZIP.
 * Lesen Sie Daten aus einer Nur-Text-Datei aus einem lokalen Dateisystem, komprimieren Sie sie mithilfe des GZip-Formats, und schreiben Sie die komprimierten Daten in einen Azure-Blob. Sie definieren ein Azure-Blob-Ausgabedataset mit der `compression` `type`-Eigenschaft als GZip.
 * Lesen Sie die ZIP-Datei vom FTP-Server, dekomprimieren Sie sie, um die Dateien zu extrahieren, und stellen Sie die Dateien in Azure Data Lake Store bereit. Sie definieren ein FTP-Eingabedataset mit der `compression` `type`-Eigenschaft als ZipDeflate.
 * Lesen Sie GZIP-komprimierte Daten aus einem Azure-Blob, dekomprimieren Sie sie, komprimieren Sie sie mit BZIP2, und schreiben Sie die resultierenden Daten in einen Azure-Blob. Sie definieren das Azure-Blob-Eingabedataset mit Einstellung von `compression` `type` auf GZIP und das Ausgabedataset mit Einstellung von `compression` `type` auf BZIP2.

@@ -1,18 +1,18 @@
 ---
 title: Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 description: Erfahren Sie, wie Sie Delegierungsaktivitäten von Kundenmandanten für Ihren Verwaltungsmandanten überwachen.
-ms.date: 03/30/2020
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 9a772cc577392558f050211b7f767928ecbb707b
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b30cbc025f97ab76be55f0f83e15603b40092ce3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919128"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105165"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 
-Als Dienstanbieter möchten Sie möglicherweise wissen, wenn Kundenabonnements oder Ressourcengruppen über die [delegierte Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) an Ihren Mandanten delegiert oder zuvor delegierte Ressourcen entfernt werden.
+Als Dienstanbieter möchten Sie möglicherweise wissen, wenn Kundenabonnements oder Ressourcengruppen über [Azure Lighthouse](../overview.md) an Ihren Mandanten delegiert oder zuvor delegierte Ressourcen entfernt werden.
 
 Im Verwaltungsmandanten werden Delegierungsaktivitäten auf Mandantenebene im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md) erfasst. Diese protokollierten Aktivitäten umfassen alle hinzugefügten oder entfernten Delegierungen von allen Kundenmandanten.
 
@@ -57,7 +57,7 @@ Verwenden Sie eine der folgenden Methoden für die Stammbereichszuweisungen.
 New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName "Monitoring Reader"  -ApplicationId $servicePrincipal.ApplicationId 
 ```
 
-#### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -158,5 +158,5 @@ else
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das Onboarding von Kunden für die [delegierte Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md).
+- Erfahren Sie mehr über das Onboarding von Kunden in [Azure Lighthouse](../concepts/azure-delegated-resource-management.md).
 - Erfahren Sie mehr über [Azure Monitor](../../azure-monitor/index.yml) und das [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md).

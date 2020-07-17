@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7fc0b2822195d952c2a4f9c02bf3758c0e2b809a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf731b09115558fc4280fe322d7e952ccb420c03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254870"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure SQL-Datenbank mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -51,8 +51,8 @@ Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **V
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
 1. Eine **Data Factory**. Eine Data Factory kann eine oder mehrere Pipelines enthalten.
-2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus Azure Blob Storage in Azure SQL-Datenbank kopieren, erstellen Sie zwei verknüpfte Dienste, um Ihr Azure Storage-Konto und die Azure SQL-Datenbank mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für die Azure SQL-Datenbank sind, finden Sie im Abschnitt [Eigenschaften des verknüpften Dienstes](#linked-service-properties).
-3. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im letzten Schritt erwähnt wurde, erstellen Sie ein Dataset, um den Blobcontainer und den Ordner mit den Eingabedaten anzugeben. Außerdem erstellen Sie ein weiteres Dataset zum Angeben der SQL-Tabelle in der Azure SQL-Datenbank, in der die aus dem Blobspeicher kopierten Daten enthalten sind. Informationen zu Dataset-Eigenschaften, die spezifisch für Azure Data Lake Store sind, finden Sie im Abschnitt [Dataset-Eigenschaften](#dataset-properties).
+2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus Azure Blob Storage in Azure SQL-Datenbank kopieren, erstellen Sie zwei verknüpfte Dienste, um Ihr Azure Storage-Konto und Azure SQL-Datenbank mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für die Azure SQL-Datenbank sind, finden Sie im Abschnitt [Eigenschaften des verknüpften Dienstes](#linked-service-properties).
+3. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im letzten Schritt erwähnt wurde, erstellen Sie ein Dataset, um den Blobcontainer und den Ordner mit den Eingabedaten anzugeben. Außerdem erstellen Sie ein weiteres Dataset zum Angeben der SQL-Tabelle in Azure SQL-Datenbank, in der die aus dem Blobspeicher kopierten Daten enthalten sind. Informationen zu Dataset-Eigenschaften, die spezifisch für Azure Data Lake Store sind, finden Sie im Abschnitt [Dataset-Eigenschaften](#dataset-properties).
 4. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. Im oben erwähnten Beispiel verwenden Sie „BlobSource“ als Quelle und „SqlSink“ als Senke für die Kopieraktivität. Wenn Sie einen Kopiervorgang von Azure SQL-Datenbank zu Azure Blob Storage durchführen, verwenden Sie entsprechend SqlSource und BlobSink in der Kopieraktivität. Informationen zu den Eigenschaften von Kopieraktivitäten, die spezifisch für die Azure SQL-Datenbank sind, finden Sie im Abschnitt [Eigenschaften der Kopieraktivität](#copy-activity-properties). Ausführliche Informationen zur Verwendung eines Datenspeichers als Quelle oder Senke erhalten Sie, indem Sie im vorherigen Abschnitt auf den Link für Ihren Datenspeicher klicken.
 
 Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format. Beispiele mit JSON-Definitionen für Data Factory-Entitäten für das Kopieren von Daten in und aus Azure SQL-Datenbank finden Sie in diesem Artikel im Abschnitt [JSON-Beispiele](#json-examples-for-copying-data-to-and-from-sql-database).
@@ -60,7 +60,7 @@ Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für di
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Azure SQL-Datenbank verwendet werden:
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
-Ein mit Azure SQL verknüpfter Dienst verbindet eine Azure SQL-Datenbank mit Ihrer Data Factory. Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Azure SQL verknüpften Dienst spezifisch sind.
+Ein verknüpfter Azure SQL-Dienst verknüpft Azure SQL-Datenbank mit Ihrer Data Factory. Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Azure SQL verknüpften Dienst spezifisch sind.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
@@ -71,7 +71,7 @@ Ein mit Azure SQL verknüpfter Dienst verbindet eine Azure SQL-Datenbank mit Ihr
 > Konfigurieren Sie die [Azure SQL-Datenbank-Firewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) und den Datenbankserver, um [Azure-Diensten den Zugriff auf den Server zu ermöglichen](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Gehen Sie wie folgt vor, wenn Sie nicht aus Azure stammende Daten nach Azure SQL-Datenbank kopieren, inklusive Daten aus lokalen Datenquellen mit Data Factory-Gateway: Konfigurieren Sie den entsprechenden IP-Adressbereich für den Computer, der Daten an Azure SQL-Datenbank sendet.
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
-Um ein Dataset zur Darstellung von Eingabe- oder Ausgabedaten in einer Azure SQL-Datenbank anzugeben, legen Sie die Typeigenschaft des Datasets auf **AzureSqlTable** fest. Legen Sie die **linkedServiceName**-Eigenschaft des Datasets auf den Namen des mit Azure SQL verknüpften Diensts fest.
+Um ein Dataset zur Darstellung von Eingabe- oder Ausgabedaten in Azure SQL-Datenbank anzugeben, legen Sie die Typeigenschaft des Datasets auf **AzureSqlTable** fest. Legen Sie die **linkedServiceName**-Eigenschaft des Datasets auf den Namen des mit Azure SQL verknüpften Diensts fest.
 
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
@@ -89,7 +89,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Akt
 
 Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
 
-Wenn Sie Daten aus einer Azure SQL-Datenbank verschieben, legen Sie den Quelltyp in der Kopieraktivität auf **SqlSource**fest. Wenn Sie Daten in eine Azure SQL-Datenbank verschieben, legen Sie den Senkentyp in der Kopieraktivität auf **SqlSink**fest. Dieser Abschnitt enthält eine Liste der Eigenschaften, die von „SqlSource“ und „SqlSink“ unterstützt werden.
+Wenn Sie Daten aus Azure SQL-Datenbank verschieben, legen Sie den Quelltyp in der Kopieraktivität auf **SqlSource** fest. Wenn Sie Daten in Azure SQL-Datenbank verschieben, legen Sie den Senkentyp in der Kopieraktivität auf **SqlSink** fest. Dieser Abschnitt enthält eine Liste der Eigenschaften, die von „SqlSource“ und „SqlSink“ unterstützt werden.
 
 ### <a name="sqlsource"></a>SqlSource
 Wenn die Quelle bei der Kopieraktivität den Typ **SqlSource** hat, sind im Abschnitt **typeProperties** die folgenden Eigenschaften verfügbar:
@@ -183,7 +183,7 @@ Das Beispiel enthält die folgenden Data Factory-Entitäten:
 4. Ein [Ausgabedataset](data-factory-create-datasets.md) vom Typ [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 5. Eine [Pipeline](data-factory-create-pipelines.md) mit einer Kopieraktivität, die [SqlSource](#copy-activity-properties) und [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) verwendet.
 
-Im Beispiel werden Zeitreihendaten (stündlich, täglich usw.) aus einer Tabelle in einer Azure SQL-Datenbank stündlich in ein Blob kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
+Im Beispiel werden Zeitreihendaten (stündlich, täglich usw.) aus einer Tabelle in Azure SQL-Datenbank stündlich in ein Blob kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
 **Mit Azure SQL-Datenbank verknüpfter Dienst:**
 
@@ -375,7 +375,7 @@ Im Beispiel werden folgende Data Factory-Entitäten definiert:
 4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureSqlTable](#dataset-properties)
 5. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) und [SqlSink](#copy-activity-properties) verwendet
 
-In dem Beispiel werden jede Stunde Zeitreihendaten (stündlich, täglich usw.) aus einem Azure-Blob in eine Tabelle in einer Azure SQL-Datenbank kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
+In dem Beispiel werden jede Stunde Zeitreihendaten (stündlich, täglich usw.) aus einem Azure-Blob in eine Tabelle in Azure SQL-Datenbank kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
 **Mit Azure SQL verknüpfter Dienst:**
 

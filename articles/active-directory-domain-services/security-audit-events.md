@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ce910b553e14d09eefa35efc5f2973337dfa1309
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: c86f98fb20af2cd5ac969867cabfdc5dcb62db54
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654675"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039890"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Aktivieren von Sicherheitsüberwachungen für Azure AD Domain Services
 
@@ -25,7 +25,7 @@ Sicherheitsüberwachungen für Azure Active Directory Domain Services (Azure AD 
 Sie können Ereignisse in Azure Storage archivieren und mit Azure Event Hubs Ereignisse an SIEM-Software (Security Information & Event Management) oder eine vergleichbare Lösung streamen oder über das Azure-Portal mithilfe von Azure Log Analytics-Arbeitsbereichen eigene Analysen durchführen.
 
 > [!IMPORTANT]
-> Azure AD DS-Sicherheitsüberwachungen sind nur für Instanzen verfügbar, die auf Azure Resource Manager basieren. Informationen zur Migration finden Sie unter [Migrieren von Azure AD DS vom klassischen VNET-Modell zu Resource Manager][migrate-azure-adds].
+> Azure AD DS-Sicherheitsüberwachungen sind nur für verwaltete Domänen verfügbar, die auf Azure Resource Manager basieren. Informationen zur Migration finden Sie unter [Migrieren von Azure AD DS vom klassischen VNET-Modell zu Resource Manager][migrate-azure-adds].
 
 ## <a name="security-audit-destinations"></a>Ziele der Sicherheitsüberwachung
 
@@ -159,11 +159,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>Beispielabfrage 2
 
-Alle Kontosperrungsereignisse (*4740*) zwischen dem 3. Februar 2020, 9 Uhr, und Mitternacht am 10. Februar 2020 aufsteigend sortiert nach Datum und Uhrzeit anzeigen:
+Alle Kontosperrungsereignisse (*4740*) zwischen dem 3. Juni 2020, 9 Uhr, und dem 10. Juni 2020 um Mitternacht aufsteigend nach Datum und Uhrzeit anzeigen:
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
+| where TimeGenerated >= datetime(2020-06-03 09:00) and TimeGenerated <= datetime(2020-06-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```

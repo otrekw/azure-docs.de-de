@@ -1,6 +1,6 @@
 ---
 title: Verknüpfen von Azure Information Protection mit Azure Sentinel
-description: Erfahren Sie, wie Sie Azure Information Protection-Daten mit Azure Sentinel verknüpfen.
+description: Streamen Sie Protokollierungsinformationen aus Azure Information Protection in Azure Sentinel, indem Sie den Datenconnector „Azure Information Protection“ konfigurieren. 
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 396fd7c4289c9d02d451b26f5fb6299acd31e2a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f06f8d3450f8907aa1be34b738565ac55e5e3d2d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588551"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559134"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Verknüpfen von Daten aus Azure Information Protection
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 4fd893691f68c8b51fa3ef234d7828b1bd70cea5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 367e214a3945ec9d6ed0ffc5b11e6af25dc41503
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465591"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413330"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Textanalyse-API v3: Sprachunterstützung 
 
@@ -57,7 +57,7 @@ ms.locfileid: "84465591"
 #### <a name="named-entity-recognition-ner"></a>[Erkennung benannter Entitäten (NER)](#tab/named-entity-recognition)
 
 > [!NOTE]
-> * Für NER v3 wird derzeit nur Englisch unterstützt. Wenn Sie NER v3 mit einer anderen Sprache aufrufen, gibt die API Ergebnisse für v2.1 zurück, sofern die Sprache in Version 2.1 unterstützt wird.
+> * Für NER v3 werden derzeit nur Englisch und Spanisch unterstützt. Wenn Sie NER v3 mit einer anderen Sprache aufrufen, gibt die API Ergebnisse für v2.1 zurück, sofern die Sprache in Version 2.1 unterstützt wird.
 > * Bei v2.1 wird der vollständige Satz mit den verfügbaren Entitäten nur für die Sprachen Englisch, Chinesisch (Vereinfacht), Französisch, Deutsch und Spanisch zurückgegeben.  Für die anderen unterstützten Sprachen werden die Entitäten für „Person“, „Standort“ und „Organisation“ zurückgegeben.
 
 | Sprache               | Sprachcode | v2.1-Unterstützung | v3-Unterstützung | Ab Modellversion 3: |       Notizen        |
@@ -82,7 +82,7 @@ ms.locfileid: "84465591"
 | Portugiesisch (Portugal) |    `pt-PT`    |     ✓      |            |                                 | `pt` wird ebenfalls akzeptiert. |
 | Portugiesisch (Brasilien)   |    `pt-BR`    |     ✓      |            |                                 |                    |
 | Russisch              |     `ru`      |     ✓      |            |                                 |                    |
-| Spanisch               |     `es`      |     ✓      |            |                                 |                    |
+| Spanisch               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
 | Schwedisch               |     `sv`      |     ✓      |            |                                 |                    |
 | Türkisch               |     `tr`      |     ✓      |            |                                 |                    |
 

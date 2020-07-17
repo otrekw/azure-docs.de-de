@@ -3,12 +3,12 @@ title: Übersicht über die Architektur
 description: Übersicht über die Architektur, die Komponenten und die Prozesse des Azure Backup-Diensts.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26f10f96cac412854f4bb0f732a0aec7f595c8ae
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233974"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055255"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 
@@ -105,9 +105,7 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
 ## <a name="backup-policy-essentials"></a>Grundlagen zu Sicherungsrichtlinien
 
 - Eine Sicherungsrichtlinie wird pro Tresor erstellt.
-- Eine Sicherungsrichtlinie kann für die Sicherung der folgenden Workloads erstellt werden.
-  - Azure VM
-  - SQL Server in Azure-VM
+- Eine Sicherungsrichtlinie kann für die Sicherung der folgenden Workloads erstellt werden: Azure-VMs, SQL in Azure-VMs, SAP HANA in Azure-VMs und Azure-Dateifreigaben. Die Richtlinie für Datei- und Ordnersicherungen mit dem MARS-Agent wird in der MARS-Konsole angegeben.
   - Azure-Dateifreigabe
 - Eine Richtlinie kann einer Vielzahl von Ressourcen zugewiesen werden. Eine Azure-VM-Sicherungsrichtlinie kann verwendet werden, um eine Vielzahl von Azure-VMs zu schützen.
 - Eine Richtlinie besteht aus zwei Komponenten.
@@ -115,9 +113,12 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
   - Aufbewahrung: Diese Komponente gibt an, wie lange jede einzelne Sicherung beibehalten werden soll.
 - Der Zeitplan kann als „täglich“ oder „wöchentlich“ mit einem bestimmten Zeitpunkt definiert werden.
 - Die Aufbewahrung kann für die Sicherungspunkte „täglich“, „wöchentlich“, „monatlich“ oder „jährlich“ definiert werden.
-- „wöchentlich“ bezieht sich auf eine Sicherung an einem bestimmten Tag der Woche, „monatlich“ auf eine Sicherung an einem bestimmten Tag des Monats und „jährlich“ auf eine Sicherung an einem bestimmten Tag des Jahres.
-- Die Aufbewahrung für die Sicherungspunkte „monatlich“ und „jährlich“ wird als „LongTermRetention“ bezeichnet.
-- Wenn ein Tresor erstellt wurde, wird auch eine Richtlinie für Azure-VM-Sicherungen mit dem Namen „DefaultPolicy“ erstellt. Diese kann zum Sichern von Azure-VMs verwendet werden.
+  - „Wöchentlich“ bezieht sich auf eine Sicherung an einem bestimmten Tag der Woche.
+  - „Monatlich“ bezieht sich auf eine Sicherung an einem bestimmten Tag des Monats.
+  - „Jährlich“ bezieht sich auf eine Sicherung an einem bestimmten Tag des Jahres.
+- Die Aufbewahrung für die Sicherungspunkte „monatlich“ und „jährlich“ wird als „Langzeitaufbewahrung“ (Long Term Retention, LTR) bezeichnet.
+- Wenn ein Tresor erstellt wurde, wird auch eine Standardrichtlinie mit dem Namen „DefaultPolicy“ erstellt. Diese kann zum Sichern von Ressourcen verwendet werden.
+- Jede Änderung der Aufbewahrungsdauer für eine Sicherungsrichtlinie wird nicht nur auf neue Wiederherstellungspunkte, sondern auch rückwirkend auf alle älteren Wiederherstellungspunkte angewendet.
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektur: Integrierte Azure-VM-Sicherung
 

@@ -1,0 +1,115 @@
+---
+title: Azure Queue Storage-Referenz
+description: Hier finden Sie die Referenz zur Azure Storage-API, Infodateien und Clientbibliothekspakete.
+author: mhopkins-msft
+ms.author: mhopkins
+ms.date: 06/02/2020
+ms.service: storage
+ms.subservice: queues
+ms.topic: conceptual
+ms.reviewer: ripohane
+ms.openlocfilehash: fbf20b92edf5d8dce8438731c2812a78e457a402
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976658"
+---
+# <a name="azure-queue-storage-reference"></a>Azure Queue Storage-Referenz
+
+Hier finden Sie die Referenz zur Azure Queue Storage-API, Bibliothekspakete, Infodateien und Artikel zu den ersten Schritten.
+
+## <a name="net-client-libraries"></a>.NET-Clientbibliotheken
+
+Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu .NET-APIs für Azure Queue Storage.
+
+|  Version  | Referenzdokumentation | Paket | Schnellstart |
+| :-------: | ----------------------- | ------- | ---------- |
+| 12.x | [Azure.Storage.Queues-Namespace](/dotnet/api/azure.storage.queues) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/) | [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für .NET](/azure/storage/queues/storage-quickstart-queues-dotnet) |
+| 11.x | [Microsoft.Azure.Storage.Queue-Namespace](/dotnet/api/microsoft.azure.storage.queue) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/) | [Schnellstart: Verwenden des Azure Storage SDK v11 für .NET zum Verwalten einer Warteschlange](/azure/storage/queues/storage-quickstart-queues-dotnet-legacy) |
+
+### <a name="storage-management"></a>Speicherverwaltung
+
+Die folgende Tabelle enthält die Referenzdokumentation zu .NET-APIs für die Azure Storage-Verwaltung.
+
+|  Version  | Referenzdokumentation | Paket |
+| :-------: | ----------------------- | ------- |
+| 16.x | [Microsoft.Azure.Management.Storage](/dotnet/api/microsoft.azure.management.storage) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) |
+
+### <a name="data-movement"></a>Datenverschiebung
+
+Die folgende Tabelle enthält die Referenzdokumentation zu .NET-APIs für die Azure Storage-Datenverschiebung.
+
+|  Version  | Referenzdokumentation | Paket |
+| :-------: | ----------------------- | ------- |
+| 1.x | [Datenverschiebung](/dotnet/api/microsoft.azure.storage.datamovement) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) |
+
+## <a name="java-client-libraries"></a>Java-Clientbibliotheken
+
+Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu Java-APIs für Azure Queue Storage.
+
+|  Version  | Referenzdokumentation | Paket | Schnellstart |
+| :-------: | ----------------------- | ------- | ---------- |
+| 12.x | [Azure Storage Queue-Clientbibliothek für Java](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [Maven-Paket](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für Java](/azure/storage/queues/storage-quickstart-queues-java) |
+| 8.x | [com.microsoft.azure.storage.queue](/java/api/com.microsoft.azure.storage.queue) | [Maven-Paket](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Schnellstart: Verwalten von Blobs mit Java SDK, Version 8](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
+
+### <a name="storage-management"></a>Speicherverwaltung
+
+Die folgende Tabelle enthält die Referenzdokumentation zu Java-APIs für die Azure Storage-Verwaltung.
+
+|  Version  | Referenzdokumentation | Paket |
+| :-------: | ----------------------- | ------- |
+| 0.9.x | [com.microsoft.azure.management.storage](/java/api/overview/azure/storage/management) | [Maven-Paket](https://mvnrepository.com/artifact/com.microsoft.azure/azure-svc-mgmt-storage) |
+
+## <a name="python-client-libraries"></a>Python-Clientbibliotheken
+
+Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu Python-APIs für Azure Queue Storage.
+
+|  Version  | Referenzdokumentation | Paket | Schnellstart |
+| :-------: | ----------------------- | ------- | ---------- |
+| 12.x | [Azure Storage-Clientbibliotheken v12 für Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Paket (PyPI)](https://pypi.org/project/azure-storage-queue/) | [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für Python](/azure/storage/queues/storage-quickstart-queues-python) |
+| 2.x | [Azure Storage-Clientbibliotheken v2 für Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Paket (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Verwenden von Azure Queue Storage v2.1 mit Python](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
+
+## <a name="javascript-client-libraries"></a>JavaScript-Clientbibliotheken
+
+Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu JavaScript-APIs für Azure Queue Storage.
+
+|  Version  | Referenzdokumentation | Paket | Schnellstart |
+| :-------: | ----------------------- | ------- | ---------- |
+| 12.x | [Azure Storage Queue-Clientbibliothek für JavaScript](/javascript/api/overview/azure/storage-queue-readme) | [Paket (npm)](https://www.npmjs.com/package/@azure/storage-queue) | [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für JavaScript](/azure/storage/queues/storage-quickstart-queues-nodejs) |
+| 10.x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy) | [Paket (npm)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Warteschlangen aus Node.js erstellen und löschen mit Azure Queue Service](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
+
+## <a name="rest-apis"></a>REST-APIs
+
+Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu REST-APIs für Azure Queue Storage.
+
+| Referenzdokumentation | Übersicht |
+| ----------------------- | -------- |
+| [REST-API des Warteschlangendiensts](/rest/api/storageservices/queue-service-rest-api) | [Konzepte des Warteschlangendiensts](/rest/api/storageservices/queue-service-concepts) |
+
+### <a name="other-rest-reference"></a>Sonstige REST-Referenz
+
+- Mit der [REST-API für den Azure Storage-Import/-Export](/rest/api/storageimportexport/) können Sie Aufträge zum Übertragen von Dateien in und aus dem Blobspeicher importieren und exportieren.
+
+## <a name="other-languages-and-platforms"></a>Andere Sprachen und Plattformen
+
+Die folgende Liste enthält Links zu Bibliotheken für andere Programmiersprachen und Plattformen.
+
+- [C++](https://azure.github.io/azure-storage-cpp)
+- [Ruby](https://azure.github.io/azure-storage-ruby)
+- [PHP](https://azure.github.io/azure-storage-php/)
+- [iOS](https://azure.github.io/azure-storage-ios/)
+- [Android](https://azure.github.io/azure-storage-android)
+
+## <a name="powershell"></a>PowerShell
+
+Die folgende Tabelle enthält Links zur neuesten Version der Referenzen.
+
+| Version | Plattform |
+| ------- | -------- |
+|  3.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
+|  2.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
+
+## <a name="azure-cli"></a>Azure CLI
+
+- [Azure-Befehlszeilenschnittstelle](/cli/azure/storage)

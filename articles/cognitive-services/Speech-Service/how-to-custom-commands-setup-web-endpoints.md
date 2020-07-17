@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 5bdb77d27b01f576ca06aa5b6d3df0572b3b1ea6
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307224"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027680"
 ---
 # <a name="set-up-web-endpoints"></a>Einrichten von Webendpunkten
 
-In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für benutzerdefinierte Befehle einrichten, die es Ihnen ermöglichen, HTTP-Anforderungen von einer Clientanwendung aus zu stellen. Sie führen die folgenden Aufgaben durch:
+In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für benutzerdefinierte Befehle einrichten, die es Ihnen ermöglichen, HTTP-Anforderungen von einer Clientanwendung aus zu stellen. Sie führen die folgenden Aufgaben aus:
 
 - Einrichten von Webendpunkten in einer Anwendung für benutzerdefinierte Befehle
 - Aufrufen von Webendpunkten in einer Anwendung für benutzerdefinierte Befehle
@@ -46,11 +46,12 @@ In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für ben
    | Name | UpdateDeviceState | Der Name für den Webendpunkt. |
    | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | Die URL des Endpunkts, mit dem Ihre App für benutzerdefinierte Befehle kommunizieren soll. |
    | Methode | POST | Die zulässigen Interaktionen (z. B. GET, POST) mit dem Endpunkt.|
-   | Header | Schlüssel: App. Wert: Ein eindeutiger Name für Ihre App. | Die Headerparameter, die in den Anforderungsheader einbezogen werden sollen.|
+   | Header | Schlüssel: app, Wert: Nehmen Sie die ersten 8 Stellen Ihrer applicationId | Die Headerparameter, die in den Anforderungsheader einbezogen werden sollen.|
 
     > [!NOTE]
     > - Der mit [Azure Function](https://docs.microsoft.com/azure/azure-functions/) erstellte Webendpunkt, der sich mit der Datenbank verbindet, die den Gerätezustand von Fernseher und Lüfter speichert.
     > - Der vorgeschlagene Header wird nur für den Beispielendpunkt benötigt.
+    > - Um sicherzustellen, dass der Wert des Headers an Ihrem Beispielendpunkt eindeutig ist, nehmen Sie die ersten 8 Stellen Ihrer applicationId
     > - In der Praxis kann der Webendpunkt der Endpunkt für den [IoT-Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) sein, der Ihre Geräte verwaltet.
 
 1. Klicken Sie auf **Speichern**.
@@ -74,6 +75,8 @@ In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für ben
     > - Die vorgeschlagenen Abfrageparameter werden nur für den Beispielendpunkt benötigt.
 
 1. Wählen Sie in **Bei Erfolg – Auszuführende Aktion** die Option **Sprachantwort senden** aus.
+    
+    Geben Sie im **einfachen Editor** `{SubjectDevice} is {OnOff}` ein.
    
    > [!div class="mx-imgBorder"]
    > ![Aktion für Webendpunkte bei Erfolg aufrufen](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
@@ -86,6 +89,9 @@ In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für ben
    > - Sie können auch direkt auf die Felder in der HTTP-Antwort zugreifen, indem Sie `{YourWebEndpointName.FieldName}` verwenden. Beispiel: `{UpdateDeviceState.TV}`
 
 1. Wählen Sie in **Bei Fehler – Auszuführende Aktion** die Option **Sprachantwort senden** aus.
+
+    Geben Sie im **einfachen Editor** `Sorry, {WebEndpointErrorMessage}`ein.
+
    > [!div class="mx-imgBorder"]
    > ![Aktion für Webendpunkte bei Fehler aufrufen](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
 

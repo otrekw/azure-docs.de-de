@@ -1,33 +1,34 @@
 ---
-title: Prüfliste für die Erstellung von SaaS-Angeboten – Kommerzieller Marketplace für Azure
-description: Die Informationen, die Sie bei der Erstellung von SaaS-Angeboten angeben können. – Kommerzieller Marketplace für Azure
-author: dsindona
-ms.author: dsindona
+title: Prüfliste für die Erstellung von SaaS-Angeboten im kommerziellen Microsoft-Marketplace
+description: Die Informationen, die Sie bei der Erstellung von SaaS-Angeboten im Partner Center angeben können
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: ec276c765c2a574dbbc2fc14b7b23507b4cc4798
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 05/08/2020
+ms.openlocfilehash: c56295f1e56e4ba3b6af9caf8ba38ce1f0552eeb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850010"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101707"
 ---
-# <a name="saas-offer-creation-checklist"></a>Prüfliste für die Erstellung von SaaS-Angeboten
+# <a name="saas-offer-creation-checklist-in-partner-center"></a>Prüfliste für die Erstellung von SaaS-Angeboten im Partner Center
 
-Bei der Erstellung von SaaS-Angeboten werden Sie durch mehrere Seiten geführt. Hier sind die Informationen, die Sie auf den einzelnen Seiten angeben können, sowie Links zu weiteren Informationen über die einzelnen Elemente aufgeführt.
+Bei der Erstellung von SaaS-Angeboten werden Sie durch mehrere Seiten geführt.  Hier sind die Informationen, die Sie auf den einzelnen Seiten angeben können, sowie Links zu weiteren Informationen über die einzelnen Elemente aufgeführt.
 
-Elemente, deren Angabe oder Festlegung erforderlich ist, sind unten aufgeführt. Einige Bereiche sind optional oder bieten Standardwerte, dass Sie nach Bedarf ändern können. Sie müssen diese Abschnitte nicht in der hier aufgeführten Reihenfolge bearbeiten.
+Elemente, deren Angabe oder Festlegung erforderlich ist, sind unten aufgeführt.  Einige Bereiche sind optional oder bieten Standardwerte, dass Sie nach Bedarf ändern können.  Sie müssen diese Abschnitte nicht in der hier aufgeführten Reihenfolge bearbeiten.
+
+>[!Note]
+>Wenn Sie ein transaktionsfähiges SaaS-Angebot erstellen, sollten Sie sicherstellen, dass Sie die Integration von [SaaS-Fulfillment-APIs](./pc-saas-fulfillment-apis.md) implementieren.  Die Integration der APIs ist die einzige Möglichkeit, die reibungslose Transaktionsfähigkeit im Marketplace sicherzustellen.
 
 | **Element**    | **Zweck**  |
 | :---------- | :-------------------|
 | [**Modales Fenster „Neues Angebot“** ](#new-offer-modal) | Erfasst Informationen zur Angebotsidentität.  |
 | [Seite „Angebotseinrichtung“](#offer-setup-page) | Hier können Sie sich für die Verwendung wichtiger Features entscheiden und auswählen, wie Ihr Angebot über Microsoft verkauft werden soll.  |
 | [Seite „Eigenschaften“](#properties-page) | Hier definieren Sie die Kategorien und Branchen, die zum Gruppieren Ihres Angebots in den Marketplaces verwendet werden, die Verträge für Ihr Angebot und die Version Ihrer App. |
-| [Seite „Angebotsliste“](#offer-listing-page) | Hier definieren Sie die Angebotsdetails, die im Marketplace angezeigt werden sollen, einschließlich der Beschreibung des Angebots und der Marketingressourcen. |
-| [Seite „Vorschau“](#preview-page) | Hier definieren Sie eine eingeschränkte Vorschauzielgruppe für das Freigeben Ihres Angebots, bevor Sie das Angebot für die größere Marketplace-Zielgruppe(n) live veröffentlichen. |
-| [Seite „Technische Angebotskonfiguration“](#technical-configuration-page)  | Nur verfügbar, wenn Sie sich für den Vertrieb des Angebots über Microsoft entscheiden. Hier definieren Sie die technischen Informationen (URL-Pfad, Webhook, Mandanten-ID und App-ID) für die Verbindung mit Ihrem Angebot. |
+| [Seite „Angebotsliste“](#offer-listing-page) | Hier definieren Sie die Angebotsdetails, die im Marketplace angezeigt werden sollen, einschließlich der Beschreibung des Angebots und der Marketingressourcen.|
+| [Seite „Vorschau“](#preview-page) | Hier definieren Sie eine eingeschränkte Vorschauzielgruppe für das Freigeben Ihres Angebots, bevor Sie das Angebot für die größere Marketplace-Zielgruppe(n) live veröffentlichen.|
+| [Seite „Technische Angebotskonfiguration“](#technical-configuration-page)  |  Nur verfügbar, wenn Sie sich für den Vertrieb des Angebots über Microsoft entscheiden.  Definieren Sie die technischen Details (URL der Angebotsseite und des Verbindungswebhooks, Azure AD-Mandanten-ID und Azure AD-App-ID), die im Marketplace verwendet werden, um eine Verbindung mit Ihrem Angebot herzustellen.  Diese Parameter sind für die ordnungsgemäße Integration der SaaS-Fulfillment- und Marketplace-APIs für getaktete Abrechnung erforderlich.|
 | [**Modales Fenster „Neuer Plan“** ](#plan-identity-modal) | Erfasst Informationen zur Planidentität.  |
 | [Seite „Planlisting“](#plan-listing-page)  | Nur verfügbar, wenn Sie sich für den Vertrieb des Angebots über Microsoft entscheiden. Hier definieren Sie die Informationen, die zum Auflisten des Plans im Marketplace verwendet werden.  |
 | [Seite „Preise und Verfügbarkeit des Plans“](#plan-pricing--availability-page)  | Nur verfügbar, wenn Sie sich für den Vertrieb des Angebots über Microsoft entscheiden.  Erfasst die Geschäftsmerkmale (Preismodell), Zielgruppe und Marktverfügbarkeit für jeden Plan (Version) Ihres Angebots.  |
@@ -89,7 +90,7 @@ Auf der Listenseite stellen Sie den Text und Bilder bereit, die Kunden beim Aufr
 | Nützliche Links: Titel und URL  | Optional. |
 | Unterstützende Dokumente: Titel und Datei  | Erforderlich, mindestens 1 und maximal 3. Muss im PDF-Dateiformat vorliegen. |
 | Screenshots  | Erforderlich, mindestens 1 und maximal 5 Screenshots; vier oder mehr empfohlen. Muss im PNG-Format 1280 x 720 vorliegen. |
-| Store-Logos (Klein, Mittel, Groß, Breit, Hero)  | Klein (48 x 48) und Groß (216 x 216) erforderlich; andere Größen sind optional, jedoch empfohlen: Mittel (90 x 90), Breit (255 x 115), Hero (815 x 290). Muss im PNG-Format vorliegen. |
+| Store-Logos (Klein, Mittel, Groß, Breit)  | Klein (48 x 48) und Groß (216 x 216) erforderlich; andere Größen sind optional, jedoch empfohlen: Mittel (90 x 90), Breit (255 x 115). Müssen im PNG-Format vorliegen. |
 | Videos: Name, URL und Miniaturansicht  | Optional, empfohlen, maximal 4 Videos. Miniaturansicht muss im PNG-Format 1280 x 720 vorliegen. Video muss in YouTube oder Vimeo gehostet werden. |
 | Kontakte (CSP-Programm, Engineering, Support)  | Kontakt für Engineering und Support erforderlich (Name, E-Mail und Telefonnummer); Kontakt für CSP-Programm optional, jedoch empfohlen. |
 | Support-URL  | Erforderlich. |

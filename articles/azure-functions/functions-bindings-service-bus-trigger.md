@@ -1,17 +1,18 @@
 ---
-title: Azure Service Bus-Bindungen für Azure Functions
+title: Azure Service Bus-Trigger für Azure Functions
 description: Erfahren Sie, wie Sie eine Azure-Funktion ausführen, wenn Azure Service Bus-Nachrichten erstellt werden.
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: b5e7f1b70aca50b4e42d056beb0b17795430091c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.custom: tracking-python
+ms.openlocfilehash: ee4961c6c1bb8cafe25ec2c84affdf0f1789e9f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690705"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603025"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus-Trigger für Azure Functions
 
@@ -312,6 +313,7 @@ Die folgenden Parametertypen sind für die Warteschlangen- oder Themanachricht v
 * `byte[]`: Nützlich für Binärdaten.
 * Ein benutzerdefinierter Typ: Wenn die Nachricht JSON enthält, versucht Azure Functions, die JSON-Daten zu deserialisieren.
 * `BrokeredMessage`: Gibt die deserialisierte Nachricht mit der [BrokeredMessage.GetBody\<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)-Methode zurück.
+* [`MessageReceiver`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet): Wird zum Empfangen und Bestätigen von Nachrichten aus dem Nachrichtencontainer verwendet (erforderlich, wenn [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) auf `false` festgelegt ist).
 
 Diese Parametertypen gelten für Azure Functions Version 1.x. Verwenden Sie für 2.x und höhere Versionen [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) anstelle von `BrokeredMessage`.
 
