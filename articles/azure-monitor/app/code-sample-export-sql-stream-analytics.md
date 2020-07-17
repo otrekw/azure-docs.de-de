@@ -3,15 +3,15 @@ title: Exportieren aus Application Insights nach SQL | Microsoft-Dokumentation
 description: Exportiere Sie Application Insights-Daten kontinuierlich in SQL mit Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 3c8586e8a6950e827d1078ca7d9cc3792fa58ae0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536912"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087228"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Exemplarische Vorgehensweise: Exportieren aus Application Insights in SQL mit Stream Analytics
-In diesem Artikel wird veranschaulicht, wie Sie Ihre Telemetriedaten aus [Azure Application Insights][start] mithilfe von [fortlaufendem Export][export] und [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) in eine Azure SQL-Datenbank verschieben. 
+In diesem Artikel wird veranschaulicht, wie Sie Telemetriedaten aus [Azure Application Insights][start] mithilfe von [fortlaufendem Export][export] und [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) in Azure SQL-Datenbank verschieben. 
 
 Beim fortlaufenden Export werden die Telemetriedaten im JSON-Format in Azure Storage verschoben. Wir analysieren die JSON-Objekte mithilfe von Azure Stream Analytics und erstellen Zeilen in einer Datenbanktabelle.
 
@@ -70,21 +70,21 @@ Durch fortlaufende Exportaktivitäten werden Daten an ein Azure-Speicherkonto ü
    
     Notieren Sie sich den gemeinsamen Teil des Pfadnamens, der sich vom Anwendungsnamen und vom Instrumentierungsschlüssel ableitet. 
 
-Die Ereignisse werden in Blobdateien im JSON-Format geschrieben. Jede Datei kann ein oder mehrere Ereignisse enthalten. Daher möchten wir die Ereignisdaten lesen und die gewünschten Felder herausfiltern. Es gibt viele verschiedene Möglichkeiten zur Nutzung der Daten, aber unser Plan besteht darin, Stream Analytics zu verwenden, um die Daten in eine SQL-Datenbank zu verschieben. Auf diese Weise können wir ganz einfach viele interessante Abfragen ausführen.
+Die Ereignisse werden in Blobdateien im JSON-Format geschrieben. Jede Datei kann ein oder mehrere Ereignisse enthalten. Daher möchten wir die Ereignisdaten lesen und die gewünschten Felder herausfiltern. Es gibt viele verschiedene Möglichkeiten zur Nutzung der Daten, aber unser Plan besteht darin, Stream Analytics zu verwenden, um die Daten in SQL-Datenbank zu verschieben. Auf diese Weise können wir ganz einfach viele interessante Abfragen ausführen.
 
 ## <a name="create-an-azure-sql-database"></a>Erstellen einer Azure-SQL-Datenbank
 Beginnen Sie erneut bei Ihrem Abonnement im [Azure-Portal][portal], und erstellen Sie die Datenbank (und einen neuen Server, sofern noch keiner verfügbar ist), in die die Daten geschrieben werden sollen.
 
 ![Neu, Daten, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
 
-Stellen Sie sicher, dass der Datenbankserver den Zugriff auf Azure-Dienste ermöglicht:
+Stellen Sie sicher, dass der Server Zugriff auf Azure-Dienste ermöglicht:
 
 ![Durchsuchen, Server, Ihr Server, Einstellungen, Firewall, Zugriff auf Azure erlauben](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
-## <a name="create-a-table-in-azure-sql-db"></a>Erstellen einer Tabelle in Azure SQL-Datenbank
+## <a name="create-a-table-in-azure-sql-database"></a>Erstellen einer Tabelle in Azure SQL-Datenbank
 Stellen Sie über Ihr bevorzugtes Verwaltungstool eine Verbindung mit der Datenbank her, die Sie im vorherigen Abschnitt erstellt haben. In dieser exemplarischen Vorgehensweise verwenden wir die [SQL Server-Verwaltungstools](https://msdn.microsoft.com/ms174173.aspx) .
 
-![](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
+![Herstellen einer Verbindung mit Azure SQL-Datenbank](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
 Erstellen Sie eine neue Abfrage, und führen Sie folgende T-SQL-Anweisung aus:
 
@@ -126,7 +126,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ```
 
-![](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
+![Erstellen einer PageViewsTable](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
 In diesem Beispiel verwenden wir Daten aus Seitenaufrufen. Überprüfen Sie zum Anzeigen der anderen verfügbaren Daten die JSON-Ausgabe, und sehen Sie sich das [Exportdatenmodell](../../azure-monitor/app/export-data-model.md)an.
 
@@ -135,7 +135,7 @@ Wählen Sie im [Azure-Portal](https://portal.azure.com/) den Azure Stream Analyt
 
 ![Stream Analytics-Einstellungen](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
-![](./media/code-sample-export-sql-stream-analytics/SA002.png)
+![Neuer Stream Analytics-Auftrag](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 Wählen Sie nach dem Erstellen des neuen Auftrags die Option **Zu Ressource wechseln** aus.
 
@@ -157,7 +157,9 @@ Jetzt benötigen Sie den primären Zugriffsschlüssel aus Ihrem Speicherkonto, d
 
 Das Präfixmuster des Pfads gibt an, wie Stream Analytics die Eingabedateien im Speicher ermittelt. Sie müssen es so einstellen, dass es der Speicherung der Daten durch den fortlaufenden Export entspricht. Legen Sie ihn wie folgt fest:
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```sql
+webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```
 
 In diesem Beispiel:
 
@@ -220,7 +222,7 @@ Wählen Sie SQL als Ausgabe.
 
 ![Wählen Sie in Stream Analytics die Option "Ausgaben".](./media/code-sample-export-sql-stream-analytics/SA006.png)
 
-Geben Sie die SQL-Datenbank an.
+Geben Sie die Datenbank an.
 
 ![Geben Sie Details zu Ihrer Datenbank ein.](./media/code-sample-export-sql-stream-analytics/SA007.png)
 
@@ -235,9 +237,10 @@ Sie können auswählen, ob die Daten ab sofort verarbeitet werden oder ob Sie mi
 
 Nach einigen Minuten wechseln Sie zurück zu den SQL Server-Verwaltungstools, und beobachten Sie den Eingang der Daten. Verwenden Sie beispielsweise eine Abfrage ähnlich der folgenden:
 
-    SELECT TOP 100 *
-    FROM [dbo].[PageViewsTable]
-
+```sql
+SELECT TOP 100 *
+FROM [dbo].[PageViewsTable]
+```
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Exportieren in Power BI mit Stream Analytics](../../azure-monitor/app/export-power-bi.md )

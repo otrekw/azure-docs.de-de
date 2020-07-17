@@ -1,18 +1,14 @@
 ---
 title: Konfigurieren privater Endpunkte für Azure Event Grid-Themen oder -Domänen
 description: In diesem Artikel wird beschrieben, wie private Endpunkte für Azure Event Grid-Themen oder -Domänen konfiguriert werden.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 04/22/2020
-ms.author: spelluru
-ms.openlocfilehash: b72462334fa2311b017be49860ed422dfa35430c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 07/07/2020
+ms.openlocfilehash: ace3f7f59e4f26388652d7bda1a5ee28800a414b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890824"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115334"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Konfigurieren privater Endpunkte für Azure Event Grid-Themen oder -Domänen
 Sie können [private Endpunkte](../private-link/private-endpoint-overview.md) verwenden, um den Eingang von Ereignissen direkt aus Ihrem virtuellen Netzwerk in Ihre Themen und Domänen sicher über einen [privaten Link](../private-link/private-link-overview.md) zu ermöglichen, ohne das öffentliche Internet zu durchlaufen. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihr Thema oder Ihre Domäne. Weitere konzeptionelle Informationen finden Sie unter [Netzwerksicherheit](network-security.md).
@@ -484,4 +480,5 @@ Invoke-RestMethod -Method 'Get'
 Sie können die Verbindung auch dann genehmigen, wenn Sie über die API abgelehnt wurde. Wenn Sie das Azure-Portal verwenden, können Sie einen abgelehnten Endpunkt nicht genehmigen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Konfigurieren von IP-Firewalleinstellungen finden Sie unter [Konfigurieren der IP-Firewall für Azure Event Grid-Themen oder -Domänen](configure-firewall.md).
+* Weitere Informationen zum Konfigurieren von IP-Firewalleinstellungen finden Sie unter [Konfigurieren der IP-Firewall für Azure Event Grid-Themen oder -Domänen](configure-firewall.md).
+* Informationen zum Beheben von Problemen mit der Netzwerkkonnektivität finden Sie unter [Beheben von Netzwerkverbindungsproblemen](troubleshoot-network-connectivity.md).

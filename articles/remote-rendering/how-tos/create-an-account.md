@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 58757dba9a8956d97c19269c2ac913d801f73746
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844504"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057669"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Erstellen eines Azure Remote Rendering-Kontos
 
@@ -28,20 +28,24 @@ Die folgenden Schritte sind erforderlich, um ein Konto für den Azure Remote Ren
     1. Legen Sie „Ressourcenname“ auf den Namen des Kontos fest.
     1. Aktualisieren Sie „Abonnement“, wenn erforderlich.
     1. Legen Sie „Ressourcengruppe“ auf eine Ressourcengruppe Ihrer Wahl fest.
+    1. Wählen Sie eine Region aus der Dropdownliste „Standort“ aus, in der diese Ressource erstellt werden soll. Weitere Informationen finden Sie in den [Kontoregionen](create-an-account.md#account-regions) weiter unten.
 1. Nachdem das Konto erstellt wurde, navigieren Sie zu diesem Konto, und gehen Sie dann folgendermaßen vor:
     1. Notieren Sie sich die Konto-ID auf der Registerkarte *Übersicht*.
     1. Notieren Sie sich auf der Registerkarte *Einstellungen > Zugriffsschlüssel* den „Primärschlüssel“. Dies ist der geheime Kontoschlüssel des Kontos.
+
+### <a name="account-regions"></a>Kontoregionen
+Der Standort, der bei der Kontoerstellung eines Kontos angegeben wird, bestimmt, welcher Region die Kontoressource zugeordnet wird. Dieser kann nach dem Erstellen nicht mehr geändert werden. Das Konto kann jedoch verwendet werden, um eine Verbindung mit einer Remote Rendering-Sitzung in einer beliebigen [unterstützten Region](./../reference/regions.md) herzustellen, unabhängig vom Standort des Kontos.
 
 ### <a name="retrieve-the-account-information"></a>Abrufen der Kontoinformationen
 
 In den Beispielen und Tutorials müssen Sie die Konto-ID und einen Schlüssel angeben. Beispielsweise in der Datei **arrconfig.json**, die für die PowerShell-Beispielskripts verwendet wird:
 
 ```json
-    "accountSettings": {
-        "arrAccountId": "<fill in the account ID from the Azure portal>",
-        "arrAccountKey": "<fill in the account key from the Azure portal>",
-        "region": "<select from available regions>"
-    },
+"accountSettings": {
+    "arrAccountId": "<fill in the account ID from the Azure portal>",
+    "arrAccountKey": "<fill in the account key from the Azure portal>",
+    "region": "<select from available regions>"
+},
 ```
 
 Weitere Informationen zum Ausfüllen der Option *Region* finden Sie in der [Liste der verfügbaren Regionen](../reference/regions.md).
@@ -89,6 +93,7 @@ Es wird davon ausgegangen, dass Sie jetzt über ein Speicherkonto verfügen. Nav
 > Wenn Ihr Remote Rendering-Konto nicht aufgeführt ist, lesen Sie den [Abschnitt zur Problembehandlung](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account).
 
 Wiederholen Sie das Hinzufügen neuer Rollen zwei weitere Male für die jeweilige Auswahl aus der Dropdownliste **Rolle**:
+
 * **Mitwirkender von Speicherkonto**
 * **Mitwirkender an Speicherblobdaten**
 

@@ -4,21 +4,18 @@ description: In diesem Artikel wird beschrieben, wie Sie im Azure-Portal die Üb
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: 506bf076c955beb5c5e57811bbdb42bfedb8cbe3
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.topic: how-to
+ms.date: 6/24/2020
+ms.openlocfilehash: 30ca62305c325943e17ee574873cfbbbaee97f77
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382969"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113036"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Konfigurieren von und Zugreifen auf Überwachungsprotokolle im Azure-Portal
 
 Sie können im Azure-Portal die [Azure Database for MariaDB-Überwachungsprotokolle](concepts-audit-logs.md) und -Diagnoseeinstellungen konfigurieren.
-
-> [!IMPORTANT]
-> Diese Überwachungsprotokollfunktion ist derzeit in der Vorschauphase.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,6 +24,9 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 - [Azure Database for MariaDB-Server](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
 ## <a name="configure-audit-logging"></a>Konfigurieren der Überwachungsprotokollierung
+
+>[!IMPORTANT]
+> Es wird empfohlen, nur die Ereignistypen und Benutzer zu protokollieren, die für Ihre Überwachungszwecke erforderlich sind, um sicherzustellen, dass die Leistung Ihres Servers nicht stark beeinträchtigt wird.
 
 Aktivieren und konfigurieren Sie die Überwachungsprotokollierung.
 

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 05/20/2020
-ms.openlocfilehash: dc93121d7565b95b9bd604160028659f3a741b0c
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 9038630a2623a8b20ddfcf98899ce9a89f16bdc1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860493"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673359"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Fehler beim Bilden eines Quorums durch den Apache ZooKeeper-Server in Azure HDInsight
 
@@ -27,7 +27,7 @@ In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen 
 
 ## <a name="sample-log"></a>Beispielprotokoll
 
-Unter Umständen wird in etwa folgende Fehlermeldung angezeigt:
+Möglicherweise wird eine Fehlermeldung ähnlich der folgenden in Yarn-Protokollen („/var/log/hadoop-yarn/yarn/yarn-yarn*.log“ auf den Hauptknoten) angezeigt:
 
 ```output
 2020-05-05 03:17:18.3916720|Lost contact with Zookeeper. Transitioning to standby in 10000 ms if connection is not reestablished.
@@ -116,6 +116,7 @@ Node count: 133212
 
 ## <a name="cancelledkeyexception-in-the-zookeeper-server-log-doesnt-require-snapshot-cleanup"></a>CancelledKeyException im ZooKeeper-Serverprotokoll erfordert keine Momentaufnahmenbereinigung
 
+* Diese Ausnahme wird auf den ZooKeeper-Servern angezeigt (/var/log/zookeeper/zookeeper-zookeeper-* oder /var/log/hdinsight-zookeeper/zookeeper*-Dateien)
 * Diese Ausnahme bedeutet in der Regel, dass der Client nicht mehr aktiv ist und der Server keine Nachricht senden kann.
 * Diese Ausnahme weist zudem darauf hin, dass der ZooKeeper-Client Sitzungen vorzeitig beendet.
 * Suchen Sie nach den anderen in diesem Dokument beschriebenen Symptomen.

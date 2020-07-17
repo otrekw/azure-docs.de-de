@@ -3,12 +3,12 @@ title: Entwickeln von Azure Functions mithilfe von Visual Studio Code
 description: In diesem Artikel erhalten Sie Informationen über das Entwickeln und Testen von Azure Functions mithilfe der Azure Functions-Erweiterung für Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 2d33b7dddf29d37d174bdb7734e9048bc1658840
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 459162c277a9510297580a99acb8a88b0702a290
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235066"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84732468"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Entwickeln von Azure Functions mithilfe von Visual Studio Code
 
@@ -96,11 +96,15 @@ Abhängig von Ihrer Sprache werden diese anderen Dateien erstellt:
 
 * [Klassenbibliotheksdatei „HttpExample.cs“](functions-dotnet-class-library.md#functions-class-library-project) zur Implementierung der Funktion.
 
+An diesem Punkt können Sie Ihrer Funktion Eingabe- und Ausgabebindungen hinzufügen, indem Sie [einer C#-Klassenbibliotheksfunktion einen Parameter hinzufügen](#add-input-and-output-bindings).
+
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 * Eine Datei „package.json“ im Stammordner.
 
 * Einen Ordner „HttpExample“ mit der [Definitionsdatei „function.json“](functions-reference-node.md#folder-structure) und der [Datei „index.js“](functions-reference-node.md#exporting-a-function), eine Node.js-Datei mit dem Funktionscode.
+
+An diesem Punkt können Sie Ihrer Funktion Eingabe- und Ausgabebindungen hinzufügen, indem Sie [die Datei „function.json“ ändern](#add-input-and-output-bindings).
 
 <!-- # [PowerShell](#tab/powershell)
 
@@ -113,8 +117,6 @@ Abhängig von Ihrer Sprache werden diese anderen Dateien erstellt:
 * An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the \_\_init\_\_.py file, which contains the function code.
      -->
 ---
-
-An diesem Punkt können Sie Ihrer Funktion Eingabe- und Ausgabebindungen hinzufügen, indem Sie [die Datei „function.json“ ändern](#add-a-function-to-your-project) oder indem Sie [einer C#-Klassenbibliotheksfunktion einen Parameter hinzufügen](#add-a-function-to-your-project).
 
 Ferner können Sie [Ihrem Projekt eine neue Funktion hinzufügen](#add-a-function-to-your-project).
 
@@ -267,13 +269,7 @@ Wenn Sie [Continuous Deployment](functions-continuous-deployment.md) einrichten,
 > [!IMPORTANT]
 > Beim Veröffentlichen in einer vorhandenen Funktions-App wird der Inhalt dieser App in Azure überschrieben.
 
-1. Drücken Sie in Visual Studio Code F1, um die Befehlspalette zu öffnen. Suchen Sie in der Befehlspalette nach dem Befehl **Azure Functions: In Funktions-App bereitstellen** aus.
-
-1. Wenn Sie nicht angemeldet sind, werden Sie aufgefordert, sich **bei Azure anzumelden**. Nach der Anmeldung über den Browser wechseln Sie zurück zu Visual Studio Code. Wenn Sie über mehrere Abonnements verfügen, **Wählen Sie ein Abonnement aus**, das Ihre Funktions-App enthält.
-
-1. Wählen Sie Ihre vorhandene Funktions-App in Azure aus. Wenn Sie wegen des Überschreibens aller Dateien in der Funktions-App gewarnt werden, wählen Sie **Bereitstellen** aus, um die Warnung zu bestätigen und fortzufahren.
-
-Das Projekt wird neu erstellt, neu verpackt und in Azure hochgeladen. Das vorhandene Projekt wird durch das neue Paket ersetzt, und die Funktions-App wird neu gestartet.
+[!INCLUDE [functions-republish-vscode](../../includes/functions-republish-vscode.md)]
 
 ## <a name="get-the-url-of-the-deployed-function"></a>Abrufen der URL der bereitgestellten Funktion
 

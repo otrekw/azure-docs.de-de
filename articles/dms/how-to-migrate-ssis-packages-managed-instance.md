@@ -1,5 +1,5 @@
 ---
-title: Migrieren von SSIS-Paketen zu einer verwalteten SQL-Instanz
+title: Migrieren von SSIS-Paketen zu SQL Managed Instance
 titleSuffix: Azure Database Migration Service
 description: Hier erfahren Sie, wie Sie SQL Server Integration Services-Pakete und -Projekte (SSIS) mithilfe von Azure Database Migration Service oder dem Datenmigrations-Assistenten zu einer verwalteten Azure SQL-Instanz migrieren.
 services: database-migration
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: d27905acc60e953ec5ed92e77d7a352c1c3fec8b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 13fcda03f3ccd0c28e1dce594c46b8c0d9449054
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196564"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086567"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>Migrieren von SQL Server Integration Services-Paketen zu einer verwalteten Azure SQL-Instanz
 Wenn Sie SQL Server Integration Services (SSIS) verwenden und Ihre SSIS-Projekte/-Pakete aus der von SQL Server gehosteten SSIS-Quelldatenbank in die von einer verwalteten Azure SQL-Instanz gehostete SSIS-Zieldatenbank migrieren möchten, können Sie den Azure Database Migration Service verwenden.
@@ -85,7 +85,7 @@ Während das Bewerten von SSIS-Quelldatenbanken momentan nicht im Datenmigration
 
     Weitere Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure Portal](https://aka.ms/DMSVnet).
 
-    Weitere Einzelheiten finden Sie im Artikel [Netzwerktopologien für Migrationen von verwalteten Azure SQL-Datenbank-Instanzen mithilfe von Azure Database Migration Service](https://aka.ms/dmsnetworkformi).
+    Weitere Einzelheiten finden Sie im Artikel [Netzwerktopologien für Migrationen von Azure SQL Managed Instance mithilfe von Azure Database Migration Service](https://aka.ms/dmsnetworkformi).
 
 6. Wählen Sie einen Tarif.
 

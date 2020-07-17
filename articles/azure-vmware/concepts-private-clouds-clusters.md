@@ -3,12 +3,12 @@ title: Konzepte – Private Clouds und Cluster
 description: Erfahren Sie mehr über die wichtigsten Funktionen von softwaredefinierten Azure-VMware-Rechenzentren und vSphere-Clustern in Azure VMware Solution von VMware.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f51b76b654a43d690aa5c97fa9df99fad1f47d7a
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 09e1fd45b1dd873509f942ef8b524783acfed4ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739790"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84906988"
 ---
 # <a name="azure-vmware-solution-avs-preview-private-cloud-and-cluster-concepts"></a>Azure VMware Solution (Vorschau): Konzepte – Private Clouds und Cluster
 
@@ -61,10 +61,10 @@ Die allgemeinen Upgraderichtlinien und -prozesse für die AVS-Plattformsoftware 
 
 Die Hostwartung und Lebenszyklusverwaltung haben keine Auswirkungen auf die Kapazität oder Leistung von Clustern in privaten Clouds. Beispiele für die automatisierte Hostwartung sind Firmwareupgrades und Hardwarereparaturen oder der Austausch von Hardware.
 
-Microsoft ist für die Lebenszyklusverwaltung von NSX-T-Appliances wie NSX-T Manager und NSX-T Edges verantwortlich. Microsoft ist auch für das Bootstrapping der Netzwerkkonfiguration zuständig, wie die Erstellung des Tier-0-Gateways und die Aktivierung des Nord-Süd-Routings. Als Administrator der privaten AVS-Cloud sind Sie für die NSX-T-SDN-Konfiguration verantwortlich, z. B. Netzwerksegmente, Regeln für verteilte Firewalls, Tier-1-Gateways und Lastenausgleiche.
+Microsoft ist für die Lebenszyklusverwaltung von NSX-T-Appliances wie NSX-T Manager und NSX-T Edge verantwortlich. Microsoft ist auch für das Bootstrapping der Netzwerkkonfiguration zuständig, wie die Erstellung des Tier-0-Gateways und die Aktivierung des Nord-Süd-Routings. Als Administrator der privaten AVS-Cloud sind Sie für die NSX-T-SDN-Konfiguration verantwortlich, z. B. Netzwerksegmente, Regeln für verteilte Firewalls, Tier-1-Gateways und Lastenausgleiche.
 
 > [!IMPORTANT]
-> Die Konfiguration von NSX-T Edges oder Tier-0-Gateways darf von einem AVS-Administrator nicht geändert werden. Dies kann zu einer Beeinträchtigung des Diensts führen.
+> Die Konfiguration von NSX-T Edge oder Tier-0-Gateways darf von einem AVS-Administrator nicht geändert werden. Dies kann zu einer Beeinträchtigung des Diensts führen.
 
 ## <a name="backup-and-restoration"></a>Sichern und Wiederherstellen
 

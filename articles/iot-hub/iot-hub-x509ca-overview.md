@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cce3a0e6993ea91236a3ce8c8b14eb6c66f72ad1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84717799"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Geräteauthentifizierung mit X.509-Zertifikaten
 
@@ -50,7 +50,7 @@ Der Besitzer eines X.509-Zertifikats kann kryptografisch eine Zwischenzertifizie
 
 ![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
 
-Beim Gerätezertifikat (auch als „untergeordnetes Zertifikat“ bezeichnet) muss der *Antragstellername* auf die **Geräte-ID** festgelegt werden, die bei der Registrierung des IoT-Geräts im Azure IoT Hub verwendet wurde. Diese Einstellung ist für die Authentifizierung erforderlich.
+Beim Gerätezertifikat (auch als „untergeordnetes Zertifikat“ bezeichnet) muss der *Antragstellername* auf die **Geräte-ID** (`CN=deviceId`) festgelegt werden, die bei der Registrierung des IoT-Geräts im Azure IoT Hub verwendet wurde. Diese Einstellung ist für die Authentifizierung erforderlich.
 
 Hier erfahren Sie, wie Sie [eine Zertifikatkette erstellen](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), wie es beim Signieren von Geräten üblich ist.
 

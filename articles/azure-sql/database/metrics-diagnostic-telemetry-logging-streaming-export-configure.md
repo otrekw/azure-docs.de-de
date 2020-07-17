@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 1a7a45433c2db71cbfaf16ab7107f233f1dd0eb9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: efb99e23466e4615dfa1f4a429addcd8c4ac68f5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985515"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085598"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Konfigurieren des Streamingexports von Diagnosetelemetrie aus Azure SQL Database und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ Außerdem erhalten Sie Informationen über die Ziele, an die Sie die Diagnosetel
 
 - [Log Analytics und SQL-Analyse](#stream-into-sql-analytics)
 - [Event Hubs](#stream-into-event-hubs)
-- [Azure Storage](#stream-into-azure-storage)
+- [Azure Storage (in englischer Sprache)](#stream-into-azure-storage)
 
 ## <a name="diagnostic-telemetry-for-export"></a>Diagnosetelemetrie für den Export
 
@@ -133,9 +133,9 @@ Um das Streaming von Diagnosetelemetriedaten für eine Ressource des Pools für 
 > [!IMPORTANT]
 > Neben Diagnosetelemetriedaten für einen Pool für elastische Datenbanken müssen Sie auch Diagnosetelemetriedaten für jede Datenbank in diesem Pool konfigurieren.
 
-### <a name="single-and-pooled-databases-in-azure-sql-database"></a>Einzel- und Pooldatenbanken in Azure SQL-Datenbank
+### <a name="databases-in-azure-sql-database"></a>Datenbanken in Azure SQL-Datenbank
 
-Sie können eine Ressource für eine Einzel- oder Pooldatenbank zum Erfassen der folgenden Diagnosetelemetriedaten einrichten:
+Sie können eine Datenbankressource zum Erfassen der folgenden Diagnosetelemetriedaten einrichten:
 
 | Resource | Überwachte Telemetriedaten |
 | :------------------- | ------------------- |
@@ -146,7 +146,7 @@ Führen Sie zum Aktivieren des Streamings von Diagnosetelemetriedaten für Einze
 1. Navigieren Sie zur **Azure SQL-Datenbank**-Ressource.
 2. Wählen Sie **Diagnoseeinstellungen** aus.
 3. Klicken Sie auf **Diagnose aktivieren**, wenn noch keine Einstellungen vorgenommen wurden, oder auf **Einstellung bearbeiten**, um eine vorhandene Einstellung zu bearbeiten. Sie können bis zu drei parallele Verbindungen zum Streamen von Diagnosetelemetriedaten erstellen.
-4. Klicken Sie auf **Diagnoseeinstellung hinzufügen**, um das parallele Streaming von Diagnosedaten in mehrere Ressourcen zu konfigurieren.
+4. Klicken Sie auf **Add diagnostic setting** (Diagnoseeinstellung hinzufügen), um das parallele Streaming von Diagnosedaten in mehrere Ressourcen zu konfigurieren.
 
    ![Aktivieren der Diagnose für Einzel- und Pooldatenbanken](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-sql-enable.png)
 

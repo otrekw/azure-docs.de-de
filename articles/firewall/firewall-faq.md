@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 07/07/2020
 ms.author: victorh
-ms.openlocfilehash: d1ec04a0c16feb6d404018ff9538b9572e1d71c2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 27cdff24672f70407e8f8f89c6c49a8c2de87d0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649613"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078424"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – Häufig gestellte Fragen
 
@@ -176,7 +176,7 @@ Die anfängliche Durchsatzkapazität von Azure Firewall liegt zwischen 2,5 und 
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Wie lange dauert es, bis Azure Firewall aufskaliert wird?
 
-Azure Firewall wird schrittweise skaliert, wenn der durchschnittliche Durchsatz oder die CPU-Auslastung 60 % beträgt. Das Aufskalieren dauert zwischen fünf und sieben Minuten. Sorgen Sie bei Leistungstests dafür, mindestens 10 bis 15 Minuten zu testen, und initiieren Sie neue Verbindungen, um neu erstellte Firewallknoten nutzen zu können.
+Azure Firewall wird schrittweise skaliert, wenn der durchschnittliche Durchsatz oder die CPU-Auslastung 60 % beträgt. Das Aufskalieren dauert zwischen fünf und sieben Minuten. Sorgen Sie bei Leistungstests dafür, mindestens 10 bis 15 Minuten zu testen, und richten Sie neue Verbindungen ein, um neu erstellte Firewallknoten nutzen zu können.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Lässt Azure Firewall standardmäßig den Zugriff auf Active Directory zu?
 
@@ -211,3 +211,15 @@ Ein TCP-Ping stellt tatsächlich keine Verbindung mit dem Ziel-FQDN her. Der Gru
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Gibt es Beschränkungen bei der Anzahl von IP-Adressen, die von IP-Gruppen unterstützt werden?
 
 Ja. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits).
+
+## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>Kann ich eine IP-Gruppe in eine andere Ressourcengruppe verschieben?
+
+Nein, das Verschieben einer IP-Gruppe in eine andere Ressourcengruppe wird zurzeit nicht unterstützt.
+
+## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Was ist das TCP-Leerlauftimeout für Azure Firewall?
+
+Das Standardverhalten einer Netzwerkfirewall besteht darin, TCP-Verbindungen aufrechtzuerhalten und sie sofort zu schließen, wenn es keine Aktivität gibt. Das TCP-Leerlauftimeout von Azure Firewall beträgt vier Minuten. Diese Einstellung ist nicht konfigurierbar. Wenn die Dauer einer Inaktivitätsperiode den Timeoutwert überschreitet, gibt es keine Garantie dafür, dass die TCP- oder HTTP-Sitzung aufrechterhalten wird. Eine gängige Methode zur Aufrechterhaltung von Verbindungen ist TCP-Keep-Alive. Dadurch bleibt die Verbindung länger aktiv. Weitere Informationen finden Sie in den [.NET-Beispielen](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).
+
+## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>Kann ich die Azure Firewall ohne eine öffentliche IP-Adresse bereitstellen?
+
+Nein, derzeit müssen Sie Azure Firewall mit einer öffentlichen IP-Adresse bereitstellen.

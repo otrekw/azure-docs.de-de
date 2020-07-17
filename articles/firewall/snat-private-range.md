@@ -4,15 +4,15 @@ description: Sie können IP-Adressbereiche für SNAT konfigurieren.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 06/01/2020
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 28ec61c4aefeacb8014e0a5d48d0259cf7fcf7f3
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: be2bf0f9590a23f9def44a1800338c80f69a782c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267023"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610522"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall –Private SNAT-IP-Adressbereiche
 
@@ -35,7 +35,7 @@ Bei einer neuen Firewall lautet der Azure PowerShell-Befehl so:
 `New-AzFirewall -Name $GatewayName -ResourceGroupName $RG -Location $Location -VirtualNetworkName $vnet.Name -PublicIpName $LBPip.Name -PrivateRange @("IANAPrivateRanges","IPRange1", "IPRange2")`
 
 > [!NOTE]
-> „IANAPrivateRanges“ wird auf die aktuellen Standardeinstellungen von Azure Firewall erweitert, während die anderen Bereiche hinzugefügt werden.
+> „IANAPrivateRanges“ wird auf die aktuellen Standardeinstellungen von Azure Firewall erweitert, während die anderen Bereiche hinzugefügt werden. Damit der IANAPrivateRanges-Standard in Ihrer privaten Bereichsspezifikation beibehalten wird, muss er in Ihrer `PrivateRange`-Spezifikation verbleiben, wie in den folgenden Beispielen gezeigt wird.
 
 Weitere Informationen finden Sie unter [New-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall?view=azps-3.3.0).
 

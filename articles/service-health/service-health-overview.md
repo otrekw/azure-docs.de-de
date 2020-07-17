@@ -3,12 +3,12 @@ title: Übersicht über Service Health | Microsoft-Dokumentation
 description: Personalisierte Informationen dazu, wie Ihre Azure-Apps von aktuellen und zukünftigen Problemen und Wartungen der Azure-Dienste betroffen sind.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc1d07fdbba6da3540336438973fb1cfbb0c356b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563424"
 ---
 # <a name="service-health-overview"></a>Service Health-Übersicht
 
@@ -21,7 +21,7 @@ Service Health verfolgt vier Typen von Integritätsereignissen nach, die sich au
 1. **Dienstprobleme**: Probleme in den Azure-Diensten, die Sie momentan betreffen. 
 2. **Geplante Wartung**: Anstehende Wartung, die sich in der Zukunft auf die Verfügbarkeit Ihrer Dienste auswirken kann.  
 3. **Integritätsempfehlungen**: Änderungen in Azure-Diensten, die Ihre Aufmerksamkeit erfordern. Beispiele hierfür sind das Einstellen von Azure-Features oder Upgradeanforderungen (z. B. ein Upgrade auf ein unterstütztes PHP-Framework).
-4. **Sicherheitsempfehlungen (Vorschau)** : Sicherheitsbezogene Benachrichtigungen, die sich auf die Verfügbarkeit Ihrer Azure-Dienste auswirken können.
+4. **Sicherheitsempfehlungen**: Sicherheitsbezogene Benachrichtigungen oder Verstöße, die sich auf die Verfügbarkeit Ihrer Azure-Dienste auswirken können.
 
 > [!NOTE]
 > Um Service Health-Ereignisse anzuzeigen, [müssen Benutzer über die Rolle „Leser“](../role-based-access-control/role-assignments-portal.md) für ein Abonnement verfügen.
@@ -36,11 +36,11 @@ Um Ihr Service Health-Dashboard zu starten, wählen Sie auf dem Dashboard Ihres 
 
 Die Ansicht **Dienstprobleme** zeigt laufende Probleme in Azure-Diensten an, die sich auf Ihre Ressourcen auswirken. Sie können nachvollziehen, wann das Problem aufgetreten ist und welche Dienste und Regionen betroffen sind. Sie können auch das aktuelle Update lesen, um zu verstehen, was Azure unternimmt, um das Problem zu lösen. 
 
-![Verwalten von Dienstproblemen](./media/service-health-overview/azure-service-health-overview-2.png)
+[![Verwalten von Dienstproblemen](./media/service-health-overview/azure-service-health-overview-2.png)](./media/service-health-overview/azure-service-health-overview-2.png#lightbox)
 
 Wählen Sie die Registerkarte **Potenzielle Auswirkung** aus, um die spezifische Liste der Ressourcen in Ihrem Besitz anzuzeigen, die von dem Problem betroffen sein könnten. Sie können eine CSV-Liste dieser Ressourcen herunterladen, um diese für Ihr Team freizugeben.
 
-![Verwalten von Dienstproblemen – Auswirkung](./media/service-health-overview/azure-service-health-overview-4.png)
+[![Verwalten von Dienstproblemen – Auswirkung](./media/service-health-overview/azure-service-health-overview-4.png)](./media/service-health-overview/azure-service-health-overview-4.png#lightbox)
 
 ## <a name="see-emerging-issues-which-may-impact-your-services"></a>Anzeigen von neu auftretenden Problemen, die sich möglicherweise auf Ihre Dienste auswirken
 
@@ -52,7 +52,7 @@ Es gibt Situationen, in denen weitverbreitete Dienstprobleme möglicherweise auf
 
 Sie können einen Link für das Problem abrufen, den Sie in Ihrem Problemverwaltungssystem verwenden können. Sie können PDF- und manchmal CSV-Dateien herunterladen, die Sie für Personen freigeben können, die keinen Zugriff auf das Azure-Portal besitzen.   
 
-![Verwalten von Dienstproblemen – Problemverwaltung](./media/service-health-overview/azure-service-health-overview-3.png)
+[![Verwalten von Dienstproblemen – Problemverwaltung](./media/service-health-overview/azure-service-health-overview-3.png)](./media/service-health-overview/azure-service-health-overview-3.png#lightbox)
 
 ## <a name="get-support-from-microsoft"></a>Hilfe von Microsoft erhalten
 
@@ -62,7 +62,7 @@ Kontaktieren Sie den Support, wenn Ihre Ressource immer noch in schlechtem Zusta
 
 Filtern Sie Service Health, um Ihre geschäftskritischen Abonnements, Regionen und Ressourcentypen anzuzeigen. Speichern Sie den Filter, und heften Sie eine personalisierte Integritätsweltkarte an Ihr Dashboard im Portal an. 
 
-![Filtern der personalisierten Integritätskarte](./media/service-health-overview/azure-service-health-overview-6a.png)
+[![Filtern der personalisierten Integritätskarte](./media/service-health-overview/azure-service-health-overview-6a.png)](./media/service-health-overview/azure-service-health-overview-6a.png#lightbox)
 
 ![Anheften einer personalisierten Integritätskarte](./media/service-health-overview/azure-service-health-overview-6b.png)
 

@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für den Clusteroperator zum Verwalte
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 305d4c15aaf72a47549497902e3027064fbfd608
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 72808f315f28a996a88e6cc56ae232a136726451
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208090"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298020"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)
 
@@ -173,7 +173,7 @@ Weitere Informationen zu verfügbaren Filtern finden Sie unter [Seccomp][seccomp
 
 ## <a name="regularly-update-to-the-latest-version-of-kubernetes"></a>Regelmäßiges Update auf die neueste Version von Kubernetes
 
-**Best Practice-Anleitung:** Führen Sie regelmäßig Upgrades auf die Kubernetes-Version in Ihrem AKS-Cluster durch, um alle neuen Features und Fehlerbehebungen zu erhalten.
+**Best Practice-Anleitung:** Führen Sie regelmäßig Upgrades der Kubernetes-Version in Ihrem AKS-Cluster durch, um alle neuen Features und Fehlerbehebungen zu erhalten.
 
 Kubernetes veröffentlicht neue Features viel schneller als herkömmliche Infrastrukturplattformen. Kubernetes-Updates beinhalten neue Features und Behebungen von Fehlern oder Sicherheitsproblemen. Neue Features durchlaufen normalerweise eine *Alphaversion* und dann eine *Betaversion* bevor sie *stabil* und allgemein verfügbar sind und zur Verwendung in der Produktion empfohlen werden. Dieser Veröffentlichungszyklus sollte es Ihnen ermöglichen, Kubernetes zu aktualisieren, ohne ständig auf Breaking Changes zu treffen oder Ihre Bereitstellungen und Vorlagen anpassen zu müssen.
 

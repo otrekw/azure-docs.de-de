@@ -3,12 +3,12 @@ title: Angeben von Service Fabric-Dienstendpunkten
 description: 'Gewusst wie: Beschreiben von Endpunktressourcen in einem Dienstmanifest, einschließlich der Einrichtung von HTTPS-Endpunkten'
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 88e71d15829e68bde635f5b4d40224b8fa914f40
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 458a10ca118bbb14f22ad9b1ae127c2036573db9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417588"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610743"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Angeben von Ressourcen in einem Dienstmanifest
 ## <a name="overview"></a>Übersicht
@@ -52,8 +52,6 @@ Weitere Informationen zum Verweisen auf Endpunkte aus der Datei mit den Konfigur
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Beispiel: Angeben eines HTTP-Endpunkts für Ihren Dienst
 Das folgende Dienstmanifest definiert eine TCP-Endpunktressource und zwei HTTP-Endpunktressourcen im &lt;Resources&gt;-Element.
-
-HTTP-Endpunkte werden von Service Fabric automatisch mit einer Zugriffssteuerungsliste (ACL) versehen.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -157,6 +155,8 @@ Im Folgenden finden Sie ein Beispiel für ein ApplicationManifest, das die für 
 
 Für Linux-Cluster wird für den **MY**-Speicher standardmäßig der Ordner **/var/lib/sfcerts** verwendet.
 
+## <a name="port-acling-for-http-endpoints"></a>Verwenden von Port-ACLs für HTTP-Endpunkte
+Service Fabric verwendet automatisch ACLs für HTTP(S)-Endpunkte, die standardmäßig angegeben werden. Es erfolgt **keine** automatische Verwendung von ACLs, wenn einem Endpunkt keine [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) zugeordnet ist und Service Fabric für die Ausführung mit einem Konto mit Administratorberechtigungen konfiguriert ist.
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>Außerkraftsetzen von Endpunkten in „ServiceManifest.xml“
 

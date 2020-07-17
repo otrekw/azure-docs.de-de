@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid – Handbuch zur Problembehandlung
 description: Dieser Artikel bietet eine Liste mit Fehlercodes, Fehlermeldungen, Beschreibungen und empfohlenen Aktionen.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.author: spelluru
-ms.openlocfilehash: 3b09b431e827bed4e416913c88d23ee1eddaf17c
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 07/07/2020
+ms.openlocfilehash: ab52cea6ab43763cf2d9dc2b57b7f369072a399e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629013"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119037"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Problembehandlung von Azure Event Grid-Fehlern
 In diesem Handbuch zur Problembehandlung erhalten Sie eine Liste mit Azure Event Grid-Fehlercodes und -Fehlermeldungen sowie deren Beschreibungen und empfohlenen Aktionen, die Sie ausführen sollten, wenn diese Fehler bei Ihnen auftreten. 
@@ -30,6 +26,13 @@ In diesem Handbuch zur Problembehandlung erhalten Sie eine Liste mit Azure Event
 | HttpStatusCode.Conflict <br/>409 | Ein Thema mit dem angegebenen Namen ist bereits vorhanden. Wählen Sie einen anderen Themennamen aus.   | Der benutzerdefinierte Themenname sollte in einer einzelnen Azure-Region eindeutig sein, um einen korrekten Veröffentlichungsvorgang sicherzustellen. Derselbe Name kann in verschiedenen Azure-Regionen verwendet werden. | Wählen Sie einen anderen Namen für das Thema aus. |
 | HttpStatusCode.Conflict <br/> 409 | Eine Domäne mit dem angegebenen Namen ist bereits vorhanden. Wählen Sie einen anderen Domänennamen aus. | Der Domänenname sollte in einer einzelnen Azure-Region eindeutig sein, um einen korrekten Veröffentlichungsvorgang sicherzustellen. Derselbe Name kann in verschiedenen Azure-Regionen verwendet werden. | Wählen Sie einen anderen Namen für die Domäne aus. |
 | HttpStatusCode.Conflict<br/>409 | Kontingentlimit erreicht. Weitere Informationen zu diesen Limits finden Sie unter [Azure Event Grid-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits).  | Für jedes Azure-Abonnement gilt ein Limit hinsichtlich der Anzahl von Azure Event Grid-Ressourcen, die es verwenden kann. Einige oder alle dieses Kontingente wurden überschritten, und es konnten keine Ressourcen mehr erstellt werden. |    Überprüfen Sie Ihre aktuelle Ressourcennutzung, und löschen Sie alle nicht benötigten Ressourcen. Wenn Sie Ihr Kontingent immer noch erhöhen müssen, senden Sie eine E-Mail mit der genauen Anzahl der benötigten Ressourcen an [aeg@microsoft.com](mailto:aeg@microsoft.com). |
+
+## <a name="error-code-403"></a>Fehlercode: 403
+
+| Fehlercode | Fehlermeldung | BESCHREIBUNG | Empfohlene Maßnahme |
+| ---------- | ------------- | ----------- | ------------------ |
+| HttpStatusCode.Forbidden <br/>403 | Die Veröffentlichung in {Topic/Domain} durch Client-{IpAddress} wird aufgrund von IpAddress-Filterregeln abgelehnt. | Für das Thema oder die Domäne sind IP-Firewallregeln konfiguriert, und der Zugriff ist nur auf konfigurierte IP-Adressen beschränkt. | Fügen Sie die IP-Adresse den IP-Firewallregeln hinzu, siehe [Konfigurieren der IP-Firewall.](configure-firewall.md) |
+| HttpStatusCode.Forbidden <br/> 403 | Die Veröffentlichung in {Topic/Domain} durch den Client wird abgelehnt, weil die Anforderung vom privaten Endpunkt stammt und keine passende private Endpunktverbindung für die Ressource gefunden wurde. | Für das Thema oder die Domäne sind private Endpunkte konfiguriert, und die Veröffentlichungsanforderung stammte von einem privaten Endpunkt, der nicht konfiguriert/genehmigt ist. | Konfigurieren Sie einen privaten Endpunkt für das Thema bzw. die Domäne. [Konfigurieren privater Endpunkte](configure-private-endpoints.md) |
 
 ## <a name="troubleshoot-event-subscription-validation"></a>Problembehandlung bei der Überprüfung von Ereignisabonnements
 

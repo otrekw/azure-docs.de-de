@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: cba39b1631988ec33fb349357de3efa6a321fc03
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 80fa5b7264d675317fba3cc12fa5049bdea76906
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84032301"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042576"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Tutorial: Hinzufügen eines Pools für elastische Azure SQL-Datenbank-Instanzen zu einer Failovergruppe
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -268,7 +268,7 @@ Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals.
 1. Wählen Sie im Aufgabenbereich **Failover** aus, um ein Failover für die Failovergruppe mit dem Pool für elastische Datenbanken durchzuführen.
 1. Wählen Sie in der Meldung, dass die TDS-Sitzungen getrennt werden, **Ja** aus.
 
-   ![Failover für die Failovergruppe mit Ihrer SQL-Datenbank](./media/failover-group-add-elastic-pool-tutorial/failover-sql-db.png)
+   ![Failover für die Failovergruppe, die Ihre Datenbank enthält](./media/failover-group-add-elastic-pool-tutorial/failover-sql-db.png)
 
 1. Überprüfen Sie, welcher Server der primäre und welcher der sekundäre ist. Wenn das Failover erfolgreich ausgeführt wurde, sollten die beiden Server die Rollen getauscht haben.
 1. Wählen Sie erneut **Failover** aus, um die Failovergruppe wieder auf die ursprünglichen Einstellungen zurückzusetzen.

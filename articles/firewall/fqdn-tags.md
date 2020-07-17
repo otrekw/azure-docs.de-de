@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 04/24/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: f4fcadb6d930f7863c733dad105432a64127b59b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e29e568786881f663414dcdf3eff72d4d72ab181
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232648"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610607"
 ---
 # <a name="fqdn-tags-overview"></a>Übersicht über FQDN-Tags
 
@@ -36,7 +36,8 @@ Die folgende Tabelle enthält die aktuellen FQDN-Tags, die Sie verwenden können
 |App Service-Umgebung (ASE)|Erlaubt den ausgehenden Zugriff auf den Datenverkehr der ASE-Plattform. Dieses Tag umfasst keine kundenspezifischen Speicher und SQL-Endpunkte, die von ASE erstellt wurden. Diese müssen über [Dienstendpunkte](../virtual-network/tutorial-restrict-network-access-to-resources.md) aktiviert oder manuell hinzugefügt werden.<br><br>Weitere Informationen zur Integration von Azure Firewall in ASE finden Sie unter [Sperren einer App Service-Umgebung](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
 |Azure Backup|Erlaubt den ausgehenden Zugriff auf die Azure Backup-Dienste.|
 |Azure HDInsight|Erlaubt den ausgehenden Zugriff auf den Datenverkehr der HDInsight-Plattform. Dieses Tag umfasst keinen kundenspezifischen Speicher oder SQL-Datenverkehr über HDInsight. Aktivieren Sie diese mit [Dienstendpunkte](../virtual-network/tutorial-restrict-network-access-to-resources.md) oder fügen Sie sie manuell hinzu.|
-|WindowsVirtualDesktop (WVD)|Ermöglicht ausgehenden Datenverkehr von der Windows Virtual Desktop-Plattform. Dieses Tag umfasst nicht die von WVD erstellten bereitstellungsspezifischen Speicher- und Service-Bus-Endpunkte. Zusätzlich sind DNS- und KMS-Netzwerkregeln erforderlich. Weitere Informationen zum Integrieren von Azure Firewall mit WVD finden Sie unter [Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](protect-windows-virtual-desktop.md). 
+|WindowsVirtualDesktop (WVD)|Ermöglicht ausgehenden Datenverkehr von der Windows Virtual Desktop-Plattform. Dieses Tag umfasst nicht die von WVD erstellten bereitstellungsspezifischen Speicher- und Service-Bus-Endpunkte. Zusätzlich sind DNS- und KMS-Netzwerkregeln erforderlich. Weitere Informationen zum Integrieren von Azure Firewall mit WVD finden Sie unter [Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](protect-windows-virtual-desktop.md).|
+|Azure Kubernetes Service (AKS)|Erlaubt ausgehenden Zugriff auf AKS. Weitere Informationen finden Sie unter [Verwenden von Azure Firewall, um AKS-Bereitstellungen (Azure Kubernetes Service) zu schützen](protect-azure-kubernetes-service.md).|
 
 > [!NOTE]
 > Beim Auswählen des FQDN-Tags in einer Anwendungsregel muss das Feld „protocol:port“ auf **https** festgelegt werden.

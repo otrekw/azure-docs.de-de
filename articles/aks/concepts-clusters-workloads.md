@@ -4,12 +4,12 @@ description: Lernen Sie die grundlegenden Cluster- und Workloadkomponenten von K
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 13169628aff2fe4bff64fed36db54d18d4f830b8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208158"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85336634"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -105,9 +105,9 @@ Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf je
 
 Die obigen Regeln für die Arbeitsspeicher- und CPU-Zuteilung werden verwendet, um die Integrität von Agent-Knoten zu gewährleisten. Einige dieser Knoten hosten Systempods, die für die Clusterintegrität wichtig sind. Diese Zuteilungsregeln sorgen auch dafür, dass der Knoten weniger zuteilbaren Arbeitsspeicher und CPU meldet, als wenn sie kein Teil eines Kubernetes-Clusters wären. Die obigen Ressourcenreservierungen können nicht geändert werden.
 
-Wenn ein Knoten beispielsweise 7 GB bietet, werden 34 % des Arbeitsspeichers zusätzlich zum festen Entfernungsschwellenwert von 750 Mi als nicht zuteilbar angegeben.
+Wenn ein Knoten beispielsweise 7 GB bietet, werden 34 % des Arbeitsspeichers einschließlich des festen Entfernungsschwellenwerts von 750 Mi als nicht zuteilbar angegeben.
 
-`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
+`0.75 + (0.25*4) + (0.20*3) = 0.75GB + 1GB + 0.6GB = 2.35GB / 7GB = 33.57% reserved`
 
 Zusätzlich zu den Reservierungen für Kubernetes selbst reserviert das zugrunde liegende Knotenbetriebssystem ebenfalls CPU- und Arbeitsspeicherressourcen für die Aufrechterhaltung der Betriebssystemfunktionen.
 
@@ -204,11 +204,7 @@ Weitere Informationen finden Sie unter [Kubernetes-Bereitstellungen][kubernetes-
 
 Ein häufiger Ansatz für die Verwaltung von Anwendungen in Kubernetes ist die Verwendung von [Helm][helm]. Sie können vorhandene Helm-*Charts* erstellen und verwenden, die eine gepackte Version des Anwendungscodes und der Kubernetes-YAML-Manifeste zum Bereitstellen von Ressourcen enthalten. Diese Helm-Charts können lokal oder in einem Remoterepository gespeichert werden, z.B. einem [Helm-Chart-Repository in Azure Container Registry][acr-helm].
 
-Zur Verwendung von Helm wird eine Serverkomponente namens *Tiller* in Ihrem Kubernetes-Cluster installiert. Tiller verwaltet die Installation von Charts im Cluster. Der Helm-Client selbst wird lokal auf Ihrem Computer installiert oder kann in der [Azure Cloud Shell][azure-cloud-shell] verwendet werden. Sie können im Client nach Helms-Charts suchen oder Helm-Charts erstellen und diese dann in Ihrem Kubernetes-Cluster installieren.
-
-![Helm umfasst eine Clientkomponente und eine serverseitige Tiller-Komponente, die Ressourcen im Kubernetes-Cluster erstellt.](media/concepts-clusters-workloads/use-helm.png)
-
-Weitere Informationen finden Sie unter [Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS)][aks-helm].
+Um Helm zu verwenden, installieren Sie den Helm-Client auf Ihrem Computer, oder verwenden Sie den Helm-Client in [Azure Cloud Shell][azure-cloud-shell]. Sie können im Client nach Helms-Charts suchen oder Helm-Charts erstellen und diese dann in Ihrem Kubernetes-Cluster installieren. Weitere Informationen finden Sie unter [Installieren vorhandener Anwendungen mit Helm in AKS][aks-helm].
 
 ## <a name="statefulsets-and-daemonsets"></a>StatefulSets und DaemonSets
 

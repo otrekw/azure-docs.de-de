@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561866"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676130"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Zuverlässige Ereignisverarbeitung in Azure Functions
 
@@ -91,7 +91,7 @@ Zum Implementieren eines Trennschalters in einem Ereignisprozess sind zwei Kompo
 
 Die Implementierungsdetails können variieren, aber um den Status zwischen Instanzen zu teilen, benötigen Sie einen Speichermechanismus. Sie können sich entschließen, den Zustand in Azure Storage, einem Redis Cache oder einem beliebigen anderen Konto zu speichern, auf das eine Reihe von Funktionen zugreifen kann.
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) oder [dauerhafte Entitäten](./durable/durable-functions-overview.md) sind für die Verwaltung des Workflow- und Zykluszustands natürliche Methoden. Andere Dienste funktionieren möglicherweise auch, aber für dieses Beispiel werden Logik-Apps verwendet. Mithilfe von Logik-Apps können Sie die Ausführung einer Funktion anhalten und neu starten, sodass Sie die Kontrolle erhalten, die erforderlich ist, um das Trennschalter-Muster zu implementieren.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) oder [dauerhafte Funktionen](./durable/durable-functions-overview.md) sind für die Verwaltung des Workflow- und Verbindungsstatus natürliche Methoden. Andere Dienste funktionieren möglicherweise auch, aber für dieses Beispiel werden Logik-Apps verwendet. Mithilfe von Logik-Apps können Sie die Ausführung einer Funktion anhalten und neu starten, sodass Sie die Kontrolle erhalten, die erforderlich ist, um das Trennschalter-Muster zu implementieren.
 
 ### <a name="define-a-failure-threshold-across-instances"></a>Definieren eines Fehlerschwellenwerts über Instanzen hinweg
 
@@ -123,7 +123,7 @@ Bei dieser Vorgehensweise gehen keine Nachrichten verloren, alle Nachrichten wer
 ## <a name="resources"></a>Ressourcen
 
 - [Beispiele für zuverlässige Ereignisverarbeitung](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Azure Durable Functions-Trennschalter](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Azure Durable Entity-Trennschalter](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

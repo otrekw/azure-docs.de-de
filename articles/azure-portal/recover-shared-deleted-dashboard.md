@@ -5,15 +5,15 @@ services: azure-portal
 author: mgblythe
 ms.author: mblythe
 ms.date: 01/21/2020
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: af0c72f0bc5dd8f3a3cbae7b82b1ac56447cbb08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b3cc088a87731d2a118a4fe5183831e4d1bd6cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133288"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763974"
 ---
 # <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Wiederherstellen eines gelöschten Dashboards im Azure-Portal
 
@@ -21,7 +21,7 @@ Wenn Sie in der öffentlichen Azure-Cloud ein _veröffentlichtes_ Dashboard im A
 
 1. Wählen Sie im Menü des Azure-Portals **Ressourcengruppen** und dann die Ressourcengruppe aus, in der Sie das Dashboard veröffentlicht haben (standardmäßig heißt es **Dashboards**).
 
-1. Erweitern Sie unter **Aktivitätsprotokoll**den Vorgang **Dashboard löschen**. Wählen Sie die Registerkarte **Änderungsverlauf** und dann **\<gelöschte Ressource\>** aus.
+1. Erweitern Sie unter **Aktivitätsprotokoll**den Vorgang **Dashboard löschen**. Wählen Sie die Registerkarte **Änderungsverlauf** und dann **\<deleted resource\>** aus.
 
     ![Screenshot der Registerkarte „Änderungsverlauf“](media/recover-shared-deleted-dashboard/change-history-tab.png)
 

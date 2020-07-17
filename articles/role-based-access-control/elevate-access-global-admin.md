@@ -2,25 +2,19 @@
 title: Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
 description: Hier erfahren Sie, wie Sie mit dem Azure-Portal oder der REST-API die Zugriffsrechte für einen globalen Administrator zum Verwalten aller Abonnements und Verwaltungsgruppen in Azure Active Directory erhöhen.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-editor: bagovind
-ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: role-based-access-control
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 06/09/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 6821e3de3bfec891d98e9291a479cbb7537364ca
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: a93901bd95d57b29aeb1464652737a77a1a84376
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733657"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791995"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
 
@@ -55,6 +49,8 @@ Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Admini
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure Active Directory Admin Center](https://aad.portal.azure.com) als globaler Administrator an.
 
+    Wenn Sie Azure AD Privileged Identity Management verwenden, [aktivieren Sie Ihre Rollenzuweisung „Globaler Administrator“](../active-directory/privileged-identity-management/pim-how-to-activate-role.md).
+
 1. Öffnen Sie **Azure Active Directory**.
 
 1. Wählen Sie unter **Verwalten** die Option **Eigenschaften** aus.
@@ -70,7 +66,7 @@ Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Admini
    Wenn Sie **Nein** festlegen, wird die Rolle „Benutzerzugriffsadministrator“ in Azure RBAC aus Ihrem Benutzerkonto entfernt. Sie können dann keine Rollen mehr in allen Azure-Abonnements und Verwaltungsgruppen zuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Sie können nur die Azure-Abonnements und Verwaltungsgruppen anzeigen und verwalten, für die Ihnen der Zugriff gewährt wurde.
 
     > [!NOTE]
-    > Wenn Sie [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md) verwenden, wird dieser Umschalter von Ihrer Rollenzuweisung nicht in **Nein** geändert. Um den Zugriff mit den geringsten Rechten zu gewähren, empfehlen wir Ihnen das Festlegen dieses Umschalters auf **Nein**, bevor Sie Ihre Rollenzuweisung deaktivieren.
+    > Wenn Sie [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) verwenden, ändert die Deaktivierung Ihrer Rollenzuweisung den Umschalter **Zugriffsverwaltung für Azure-Ressourcen** nicht in **Nein**. Um den Zugriff mit den geringsten Rechten zu gewähren, empfehlen wir Ihnen das Festlegen dieses Umschalters auf **Nein**, bevor Sie Ihre Rollenzuweisung deaktivieren.
     
 1. Klicken Sie auf **Speichern**, um Ihre Einstellung zu speichern.
 
@@ -84,7 +80,9 @@ Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Admini
 
 1. Führen Sie die erforderlichen Änderungen für erhöhte Zugriffsrechte durch.
 
-    Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal](role-assignments-portal.md). Wenn Sie Azure AD Privileged Identity Management (PIM) verwenden, lesen Sie [Ermitteln von Azure-Ressourcen zur Verwaltung in PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) oder [Zuweisen von Azure-Ressourcenrollen in PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+    Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal](role-assignments-portal.md). Wenn Sie Privileged Identity Management verwenden, lesen Sie [Ermitteln von Azure-Ressourcen zur Verwaltung ](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) oder [Zuweisen von Azure-Ressourcenrollen](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+
+1. Führen Sie die Schritte im folgenden Abschnitt aus, um die erhöhten Zugriffsrechte zu entfernen.
 
 ### <a name="remove-elevated-access"></a>Entfernen der erhöhten Zugriffsrechte
 
@@ -99,6 +97,13 @@ Führen Sie die folgenden Schritte aus, um die Zuweisung der Rolle „Benutzerzu
     Wenn Sie versuchen, die Rollenzuweisung „Benutzerzugriffsadministrator“ im Bereich „Zugriffssteuerung (IAM)“ zu entfernen, wird die folgende Meldung angezeigt. Um die Rollenzuweisung zu entfernen, müssen Sie den Umschalter wieder auf **Nein** festlegen oder Azure PowerShell, die Azure-Befehlszeilenschnittstelle oder die REST-API verwenden.
 
     ![Entfernen von Rollenzuweisungen im Stammbereich](./media/elevate-access-global-admin/iam-root-remove.png)
+
+1. Melden Sie sich als „Globaler Administrator“ ab.
+
+    Wenn Sie Privileged Identity Management verwenden, aktivieren Sie Ihre Rollenzuweisung „Globaler Administrator“.
+
+    > [!NOTE]
+    > Wenn Sie [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) verwenden, ändert die Deaktivierung Ihrer Rollenzuweisung den Umschalter **Zugriffsverwaltung für Azure-Ressourcen** nicht in **Nein**. Um den Zugriff mit den geringsten Rechten zu gewähren, empfehlen wir Ihnen das Festlegen dieses Umschalters auf **Nein**, bevor Sie Ihre Rollenzuweisung deaktivieren.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -190,24 +195,11 @@ Führen Sie die folgenden grundlegenden Schritte aus, um mithilfe der REST-API d
    POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
    ```
 
-1. Erstellen Sie eine [Rollenzuweisung](/rest/api/authorization/roleassignments), um eine beliebige Rolle in einem beliebigen Bereich zuzuweisen. Das folgende Beispiel zeigt die Eigenschaften für die Zuweisung der Rolle „{roleDefinitionID}“ im Stammbereich (`/`):
+1. Führen Sie die erforderlichen Änderungen für erhöhte Zugriffsrechte durch.
 
-   ```json
-   { 
-     "properties": {
-       "roleDefinitionId": "providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionID}",
-       "principalId": "{objectID}",
-       "scope": "/"
-     },
-     "id": "providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111",
-     "type": "Microsoft.Authorization/roleAssignments",
-     "name": "11111111-1111-1111-1111-111111111111"
-   }
-   ```
+    Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe der REST-API](role-assignments-rest.md).
 
-1. Solange Sie Benutzerzugriffsadministrator sind, können Sie auch Rollenzuweisungen im Stammbereich (`/`) entfernen.
-
-1. Entfernen Sie Ihre Berechtigungen als Benutzerzugriffsadministrator, bis sie wieder benötigt werden.
+1. Führen Sie die Schritte in einem späteren Abschnitt aus, um die erhöhten Zugriffsrechte zu entfernen.
 
 ### <a name="list-role-assignments-at-root-scope-"></a>Auflisten der Rollenzuweisungen im Stammbereich (/)
 

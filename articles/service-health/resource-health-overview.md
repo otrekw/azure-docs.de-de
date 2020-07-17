@@ -3,12 +3,12 @@ title: Übersicht über Azure Resource Health
 description: Übersicht über Azure Resource Health
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 7a1dfe5e93d0e19aeb343d113a24ed882a5b3f69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0d2fdb8e1c8b92dba526650405405db8ae8a776
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80159250"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041573"
 ---
 # <a name="resource-health-overview"></a>Übersicht über Resource Health
  
@@ -18,7 +18,7 @@ Azure Resource Health unterstützt Sie bei der Diagnose und bei Supportanfragen,
 
 ## <a name="resource-definition-and-health-assessment"></a>Ressourcendefinition und Integritätsbewertung
 
-*Eine Ressource* ist eine bestimmte Instanz eines Azure-Diensts, z. B. ein virtueller Computer, eine Web-App oder eine SQL-Datenbank. Resource Health ermittelt anhand von Signalen der verschiedenen Azure-Dienste, ob eine Ressource fehlerfrei ist. Wenn eine Ressource fehlerhaft ist, analysiert Resource Health zusätzliche Informationen, um die Quelle des Problems zu bestimmen. Der Dienst erstellt auch Berichte zu Aktionen, die von Microsoft zum Beheben des Problems ergriffen werden, und gibt Maßnahmen an, die Sie zur Behebung unternehmen können.
+Eine *Ressource* ist eine bestimmte Instanz eines Azure-Diensts, z. B. ein virtueller Computer, eine Web-App oder SQL-Datenbank. Resource Health ermittelt anhand von Signalen der verschiedenen Azure-Dienste, ob eine Ressource fehlerfrei ist. Wenn eine Ressource fehlerhaft ist, analysiert Resource Health zusätzliche Informationen, um die Quelle des Problems zu bestimmen. Der Dienst erstellt auch Berichte zu Aktionen, die von Microsoft zum Beheben des Problems ergriffen werden, und gibt Maßnahmen an, die Sie zur Behebung unternehmen können.
 
 Weitere Informationen zur Bewertung der Integrität entnehmen Sie der Liste von Ressourcentypen und Integritätsprüfungen in [Azure Resource Health](resource-health-checks-resource-types.md).
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: db36033ea524603416f16db27f40d5eefb8bf613
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437116"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974516"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -48,7 +48,7 @@ Ihnen muss mindestens eine Rolle zugewiesen sein, über die Zugriff zum Lesen de
 
 Azure Storage verfügt über zwei Zugriffsebenen: _Verwaltung_ und _Daten_. Auf Abonnements und Speicherkonten wird über die Verwaltungsebene zugegriffen. Auf Container, Blobs und andere Datenressourcen wird über die Datenebene zugegriffen. Wenn Sie beispielsweise eine Liste mit Ihren Speicherkonten aus Azure abrufen möchten, senden Sie eine Anforderung an den Verwaltungsendpunkt. Wenn Sie eine Liste mit den Blobcontainern eines Kontos anzeigen möchten, können Sie eine Anforderung an den entsprechenden Dienstendpunkt senden.
 
-RBAC-Rollen können Berechtigungen für den Zugriff auf die Verwaltungs- oder Datenebene enthalten. Mit der Rolle „Leser“ wird beispielsweise Lesezugriff auf die Ressourcen der Verwaltungsebene gewährt.
+RBAC-Rollen können Berechtigungen für den Zugriff auf die Verwaltungs- oder Datenebene gewähren. Mit der Rolle „Leser“ wird beispielsweise Lesezugriff auf die Ressourcen der Verwaltungsebene gewährt.
 
 Mit der Rolle „Leser“ werden genau genommen keine Berechtigungen für die Datenebene gewährt, und sie ist für den Zugriff darauf nicht erforderlich.
 
@@ -58,7 +58,14 @@ Wenn Sie nicht über eine Rolle verfügen, mit der Berechtigungen für die Verwa
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Wie kann ich vorgehen, wenn ich die benötigten Berechtigungen für die Verwaltungsebene nicht von meinem Administrator erhalten kann?
 
-Für dieses Problem verfügen wir derzeit nicht über eine RBAC-bezogene Lösung. Zur Problemumgehung können Sie einen SAS-URI anfordern, um ihn [an Ihre Ressource anzufügen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
+Wenn Sie auf Blobcontainer oder Warteschlangen zugreifen möchten, können Sie diese Ressourcen mithilfe ihrer Azure-Anmeldeinformationen anfügen.
+
+1. Öffnen Sie das Dialogfeld „Verbinden“.
+2. Wählen Sie „Ressource über Azure Active Directory (Azure AD) hinzufügen“ aus. Klicken Sie auf Weiter.
+3. Wählen Sie das Benutzerkonto und den Mandanten aus, die der Ressource zugeordnet sind, die angefügt werden soll. Klicken Sie auf Weiter.
+4. Wählen Sie den Ressourcentyp aus, geben Sie die URL für die Ressource ein, und geben Sie einen eindeutigen Anzeigenamen für die Verbindung ein. Klicken Sie auf Weiter. Klicken Sie auf „Verbinden“.
+
+Für andere Ressourcentypen verfügen wir derzeit nicht über eine RBAC-bezogene Lösung. Zur Problemumgehung können Sie einen SAS-URI anfordern, um ihn [an Ihre Ressource anzufügen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-built-in-rbac-roles"></a>Empfohlene integrierte RBAC-Rollen
 
@@ -75,7 +82,7 @@ Es gibt mehrere integrierte RBAC-Rollen, die die Berechtigungen bereitstellen k�
 
 Zertifikatfehler treten in der Regel in einer der folgenden Situationen auf:
 
-- Die App ist über einen _transparenten Proxy_ verbunden, d. h., ein Server (z. B. Ihr Firmenserver) fängt HTTPS-Datenverkehr ab, entschlüsselt ihn und verschlüsselt ihn dann mit einem selbstsignierten Zertifikat.
+- Die App wird über einen _transparenten Proxy_ verbunden. Dies bedeutet, dass ein Server (z. B. Ihr Firmenserver) HTTPS-Datenverkehr abfängt, ihn entschlüsselt und ihn dann mit einem selbstsignierten Zertifikat verschlüsselt.
 - Sie führen eine Anwendung aus, die ein selbstsigniertes TLS/SSL-Zertifikat in die empfangenen HTTPS-Nachrichten einfügt. Beispiele für Anwendungen, die Zertifikate einfügen, sind u. a. Antivirenprogramme und Prüfsoftware für den Netzwerkverkehr.
 
 Wenn Storage-Explorer ein selbstsigniertes oder nicht vertrauenswürdiges Zertifikat sieht, kann er nicht mehr erkennen, ob die empfangene HTTPS-Nachricht geändert wurde. Wenn Sie über eine Kopie des selbstsignierten Zertifikats verfügen, können Sie Storage-Explorer anweisen, es als vertrauenswürdig zu behandeln. Führen Sie dazu die folgenden Schritte aus:
@@ -297,6 +304,8 @@ Wenn Sie versehentlich eine ungültige SAS-URL angefügt haben und diese jetzt n
 
 ## <a name="linux-dependencies"></a>Linux-Abhängigkeiten
 
+### <a name="snap"></a>Snap
+
 Storage-Explorer 1.10.0 und höher ist als Snap im Snap Store verfügbar. Das Storage-Explorer-Snap installiert alle seine Abhängigkeiten automatisch, und es wird aktualisiert, wenn eine neue Version des Snaps verfügbar ist. Die Installation des Storage-Explorer-Snaps ist die empfohlene Installationsmethode.
 
 Storage-Explorer erfordert den Einsatz eines Kennwort-Managers, mit dem Sie möglicherweise manuell eine Verbindung herstellen müssen, damit Storage-Explorer ordnungsgemäß funktioniert. Sie können Storage-Explorer mit dem Kennwort-Manager Ihres Systems verbinden, indem Sie den folgenden Befehl ausführen:
@@ -305,57 +314,76 @@ Storage-Explorer erfordert den Einsatz eines Kennwort-Managers, mit dem Sie mög
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
+### <a name="targz-file"></a>.tar.gz-Datei
+
 Sie können die Anwendung auch als „.tar.gz“-Datei herunterladen, aber Sie müssen die Abhängigkeiten manuell installieren.
 
-> [!IMPORTANT]
-> Storage-Explorer, wie im „.tar. gz“-Download bereitgestellt, wird nur für Ubuntu-Verteilungen unterstützt. Andere Verteilungen wurden nicht überprüft und erfordern möglicherweise alternative oder zusätzliche Pakete.
+Storage-Explorer, wie im „.tar. gz“-Download bereitgestellt, wird nur für die folgenden Versionen von Ubuntu unterstützt. Storage-Explorer funktioniert möglicherweise mit anderen Linux-Distributionen, diese werden aber nicht offiziell unterstützt.
 
-Diese Pakete sind die häufigsten Anforderungen für Storage-Explorer unter Linux:
+- Ubuntu 20.04 x64
+- Ubuntu 18.04 x64
+- Ubuntu 16.04 x64
 
-* [.NET Core 2.2-Runtime](/dotnet/core/install/dependencies?tabs=netcore22&pivots=os-linux)
-* `libgconf-2-4`
-* `libgnome-keyring0` oder `libgnome-keyring-dev`
-* `libgnome-keyring-common`
+Für Storage-Explorer muss .NET Core auf dem System installiert sein. Wir empfehlen .NET Core 2.1, aber Storage-Explorer funktioniert auch mit Version 2.2.
 
 > [!NOTE]
-> Storage-Explorer bis Version 1.7.0 erfordert .NET Core 2.0. Wenn Sie bereits eine neuere Version von .NET Core installiert haben, müssen Sie [Storage-Explorer mit Patches versehen](#patching-storage-explorer-for-newer-versions-of-net-core). Wenn Sie Storage-Explorer 1.8.0 oder höher ausführen, können Sie .NET Core bis Version 2.2 verwenden. Die Funktion höherer Versionen als 2.2 wurde bisher nicht überprüft.
+> Storage-Explorer bis Version 1.7.0 erfordert .NET Core 2.0. Wenn Sie bereits eine neuere Version von .NET Core installiert haben, müssen Sie [Storage-Explorer mit Patches versehen](#patching-storage-explorer-for-newer-versions-of-net-core). Wenn Sie Storage-Explorer 1.8.0 oder höher ausführen, benötigen Sie mindestens .NET Core 2.1.
 
-# <a name="ubuntu-1904"></a>[Ubuntu 19.04](#tab/1904)
+# <a name="ubuntu-2004"></a>[Ubuntu 20.04 ](#tab/2004)
 
-1. Laden Sie Storage-Explorer herunter.
-2. Installieren Sie die [.NET Core-Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
-3. Führen Sie den folgenden Befehl aus:
+1. Laden Sie die Storage-Explorer- Datei „.tar.gz“ herunter.
+2. Installieren Sie die [.NET Core-Runtime](https://docs.microsoft.com/dotnet/core/install/linux):
    ```bash
-   sudo apt-get install libgconf-2-4 libgnome-keyring0
+   wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
-1. Laden Sie Storage-Explorer herunter.
-2. Installieren Sie die [.NET Core-Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current).
-3. Führen Sie den folgenden Befehl aus:
+1. Laden Sie die Storage-Explorer- Datei „.tar.gz“ herunter.
+2. Installieren Sie die [.NET Core-Runtime](https://docs.microsoft.com/dotnet/core/install/linux):
    ```bash
-   sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
+   wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
-1. Laden Sie Storage-Explorer herunter.
-2. Installieren Sie die [.NET Core-Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
-3. Führen Sie den folgenden Befehl aus:
+1. Laden Sie die Storage-Explorer- Datei „.tar.gz“ herunter.
+2. Installieren Sie die [.NET Core-Runtime](https://docs.microsoft.com/dotnet/core/install/linux):
    ```bash
-   sudo apt install libgnome-keyring-dev
-   ```
-
-# <a name="ubuntu-1404"></a>[Ubuntu 14.04](#tab/1404)
-
-1. Laden Sie Storage-Explorer herunter.
-2. Installieren Sie die [.NET Core-Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
-3. Führen Sie den folgenden Befehl aus:
-   ```bash
-   sudo apt install libgnome-keyring-dev
+   wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 ---
+
+Viele Bibliotheken, die von Storage-Explorer benötigt werden, werden mit den Standardinstallationen von Ubuntu von Canonical vorinstalliert. In benutzerdefinierten Umgebungen fehlen möglicherweise einige dieser Bibliotheken. Wenn beim Starten von Storage-Explorer Probleme auftreten, sollten Sie sicherstellen, dass die folgenden Pakete auf dem System installiert sind:
+
+- iproute2
+- libasound2
+- libatm1
+- libgconf2-4
+- libnspr4
+- libnss3
+- libpulse0
+- libsecret-1-0
+- libx11-xcb1
+- libxss1
+- libxtables11
+- libxtst6
+- xdg-utils
 
 ### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Versehen von Storage-Explorer mit Patches für neuere Versionen von .NET Core
 

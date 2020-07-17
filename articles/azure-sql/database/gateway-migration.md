@@ -1,33 +1,48 @@
 ---
 title: Hinweis zur Migration des Gatewaydatenverkehrs
-description: Dieser Artikel enthält Informationen zur Migration der IP-Adressen von Azure SQL-Datenbank-Gateways
+description: Dieser Artikel enthält Hinweise zur Migration der IP-Adressen von Azure SQL-Datenbank-Gateways
 services: sql-database
-ms.service: sql-database
-ms.subservice: development
+ms.service: sql-db-mi
+ms.subservice: service
 ms.custom: sqldbrb=1 
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: f5e45a4625b1cf9422f7ef7e10e9080a7878172d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e9bf1f06b1ec1f99da1ce653b4bc72f4638ba451
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84028751"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084952"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Migration des Azure SQL-Datenbank-Datenverkehrs zu neueren Gateways
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Die Azure-Infrastruktur wird kontinuierlich verbessert, und Microsoft aktualisiert immer wieder die Hardware, um das bestmögliche Kundenerlebnis sicherzustellen. In den kommenden Monaten ist geplant, in einigen Regionen Gateways hinzuzufügen, die auf neueren Hardware-Generationen basieren, Datenverkehr zu diesen Gateways zu migrieren und schließlich Gateways außer Betrieb zu nehmen, die auf älterer Hardware basieren.  
+Die Azure-Infrastruktur wird kontinuierlich verbessert, und Microsoft aktualisiert immer wieder die Hardware, um das bestmögliche Kundenerlebnis sicherzustellen. In den kommenden Monaten ist geplant, in einigen Regionen Gateways auf der Basis neuerer Hardwaregenerationen hinzuzufügen, Datenverkehr zu diesen Gateways zu migrieren und schließlich Gateways außer Betrieb zu nehmen, die auf älterer Hardware basieren.  
 
-Kunden werden per E-Mail und im Azure-Portal rechtzeitig vor jeder Änderung der in jeder Region verfügbaren Gateways informiert. Aktuelle Informationen finden Sie in der Tabelle mit den [Gateway-IP-Adressen von Azure SQL-Datenbank](connectivity-architecture.md#gateway-ip-addresses).
+Kunden werden per E-Mail und im Azure-Portal rechtzeitig vor jeder Änderung der in den einzelnen Regionen verfügbaren Gateways informiert. Aktuelle Informationen finden Sie in der Tabelle mit den [Gateway-IP-Adressen von Azure SQL-Datenbank](connectivity-architecture.md#gateway-ip-addresses).
 
-## <a name="impact-of-this-change"></a>Auswirkungen dieser Änderung
+## <a name="status-updates"></a>Statusaktualisierungen
 
-Die erste Datenverkehrsmigration zu neueren Gateways ist für den **14. Oktober 2019** in den folgenden Regionen geplant:
+# <a name="in-progress"></a>[Vorgang wird ausgeführt](#tab/in-progress-ip)
 
+### <a name="august-2020"></a>August 2020
+
+Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
+
+- Australien, Osten: 13.70.112.9
+- Kanada, Mitte: 52.246.152.0, 20.38.144.1 
+- USA, Westen 2: 40.78.240.8
+
+Diese SQL-Gateways sollen ab dem 10. August 2020 Kundendatenverkehr akzeptieren. 
+
+# <a name="completed"></a>[Abgeschlossen](#tab/completed-ip)
+
+Die folgenden Gatewaymigrationen sind abgeschlossen: 
+
+### <a name="october-2019"></a>Oktober 2019
 - Brasilien Süd
 - USA (Westen)
 - Europa, Westen
@@ -42,11 +57,16 @@ Die erste Datenverkehrsmigration zu neueren Gateways ist für den **14. Oktober 
 - USA (Ost) 2
 - Asien, Osten
 
-Bei der Migration des Datenverkehrs wird die öffentliche IP-Adresse geändert, die das DNS für SQL-Datenbank auflöst.
-Sie spüren die Auswirkungen in den folgenden Fällen:
+---
+
+## <a name="impact-of-this-change"></a>Auswirkungen dieser Änderung
+
+Die Migration des Datenverkehrs ändert ggf. die öffentliche IP-Adresse, die das DNS für Ihre Datenbank in Azure SQL-Datenbank auflöst.
+Möglicherweise sind Sie betroffen, wenn Folgendes zutrifft:
 
 - Die IP-Adresse für ein bestimmtes Gateway in Ihrer lokalen Firewall ist hartcodiert.
 - Sie verfügen über Subnetze, die Microsoft.SQL als Dienstendpunkt verwenden, aber nicht mit den Gateway-IP-Adressen kommunizieren können.
+- Sie verwenden [zonenredundante Konfiguration](high-availability-sla.md#zone-redundant-configuration) für Ihre Datenbank.
 
 In den folgenden Fällen spüren Sie die Auswirkungen nicht:
 

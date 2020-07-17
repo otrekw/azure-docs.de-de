@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid – Begriffe
 description: In diesem Artikel werden Azure Event Grid und die zugehörigen Begriffe beschrieben. Zudem werden verschiedene Schlüsselkomponenten von Event Grid definiert.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/03/2018
-ms.author: spelluru
-ms.openlocfilehash: 348d82f704b89b97e11a09b8f88e92831901b3bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 003139374a056da6ddc22dd1453d28761ff58871
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393465"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116487"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Begriffe in Azure Event Grid
 
@@ -41,9 +37,9 @@ Informationen zum Implementieren der unterstützten Event Grid-Quellen finden Si
 
 Das Event Grid-Thema stellt einen Endpunkt bereit, an den die Ereignisquelle Ereignisse sendet. Der Herausgeber erstellt das Thema und legt fest, ob eine Ereignisquelle ein Thema oder mehrere Themen benötigt. Ein Event Grid-Thema wird für eine Sammlung ähnlicher Ereignisse verwendet. Um auf bestimmte Arten von Ereignissen zu reagieren, legen Abonnenten fest, welche Themen sie abonnieren.
 
-Systemthemen sind integrierte Themen, die von Azure-Diensten bereitgestellt werden. Sie können keine Systemthemen in Ihrem Azure-Abonnement ansehen, weil diese dem Herausgeber gehören. Allerdings haben Sie die Möglichkeit, diese zu abonnieren. Dafür stellen Sie Informationen zu der Ressource bereit, deren Ereignisse Sie empfangen möchten. Solange Sie Zugriff auf die Ressource haben, können Sie auch ihre Ereignisse abonnieren.
+Systemthemen sind integrierte Themen, die von Azure-Diensten bereitgestellt werden, z. B. von Azure Storage, Azure Event Hubs und Azure Service Bus. Sie können Systemthemen in Ihrem Azure-Abonnement erstellen und sie abonnieren. Weitere Informationen finden Sie in der [Übersicht über Systemthemen](system-topics.md). 
 
-Benutzerdefinierte Themen sind Anwendungs- und Drittanbieterthemen. Wenn Sie ein benutzerdefiniertes Thema erstellen oder Zugriff darauf erhalten, wird das benutzerdefinierte Thema in Ihrem Abonnement angezeigt.
+Benutzerdefinierte Themen sind Anwendungs- und Drittanbieterthemen. Wenn Sie ein benutzerdefiniertes Thema erstellen oder Zugriff darauf erhalten, wird das benutzerdefinierte Thema in Ihrem Abonnement angezeigt. Weitere Informationen finden Sie unter [Benutzerdefinierte Themen](custom-topics.md).
 
 Beim Entwerfen Ihrer Anwendung können Sie flexibel entscheiden, wie viele Themen erstellt werden sollen. Erstellen Sie für große Lösungen ein benutzerdefiniertes Thema für jede Kategorie von verwandten Ereignissen. Denken Sie beispielsweise an eine Anwendung, die Ereignisse im Zusammenhang mit der Änderung von Benutzerkonten und der Verarbeitung von Bestellungen sendet. Es ist unwahrscheinlich, dass ein Ereignishandler beide Ereigniskategorien benötigt. Erstellen Sie zwei benutzerdefinierte Themen, und lassen Sie Ereignishandler das jeweils relevante Thema abonnieren. Für kleine Lösungen empfiehlt es sich ggf., alle Ereignisse an ein Thema zu senden. Ereignisabonnenten können nach den gewünschten Ereignistypen filtern.
 

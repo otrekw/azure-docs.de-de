@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 74c9f44ff5fbbbb50bba1594d371633fd49857eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d833a4cf26ee8ab69d16cbd1d776ca49a2df4bc4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845041"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738214"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Überwachen von VPN Gateways mit der Problembehandlung von Network Watcher
 
@@ -79,7 +79,7 @@ In diesem Schritt geben wir dem Runbook einen Namen. Im Beispiel ist dies **Get-
 
 ### <a name="step-5"></a>Schritt 5
 
-In diesem Schritt wird das Runbook erstellt. Das folgende Codebeispiel enthält den gesamten Code, der für das Beispiel benötigt wird. Die Elemente im Code, die das Wort \<value\> enthalten, müssen durch die Werte aus Ihrem Abonnement ersetzt werden.
+In diesem Schritt wird das Runbook erstellt. Das folgende Codebeispiel enthält den gesamten Code, der für das Beispiel benötigt wird. Die Elemente im Code, die \<value\> enthalten, müssen durch die Werte aus Ihrem Abonnement ersetzt werden.
 
 Verwenden Sie den folgenden Code, und klicken Sie auf **Speichern**.
 

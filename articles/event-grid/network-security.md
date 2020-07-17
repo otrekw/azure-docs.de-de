@@ -1,25 +1,23 @@
 ---
 title: Netzwerksicherheit für Azure Event Grid-Ressourcen
 description: In diesem Artikel wird beschrieben, wie Sie Zugriff über private Endpunkte konfigurieren.
-services: event-grid
 author: VidyaKukke
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: d6d6d8df8f3c5da762ac672b304ec072a723e7d7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 1887b6b5919a8b0f6e8f570b2471d74d9541df31
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857046"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119241"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Netzwerksicherheit für Azure Event Grid-Ressourcen
 In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen mit Azure Event Grid verwenden: 
 
-- Diensttags für ausgehenden Datenverkehr (Vorschau)
+- Diensttags für ausgehenden Datenverkehr
 - IP-Firewallregeln für eingehenden Datenverkehr (Vorschau)
-- Private Endpunkte für eingehenden Datenverkehr (Vorschau)
+- Private Endpunkte für eingehenden Datenverkehr
 
 
 ## <a name="service-tags"></a>Diensttags
@@ -28,8 +26,8 @@ Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen aus einem bestimmten
 Sie können mithilfe von Diensttags Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md#security-rules)  oder  [Azure Firewall](../firewall/service-tags.md) definieren. Verwenden Sie Diensttags anstelle von spezifischen IP-Adressen, wenn Sie Sicherheitsregeln erstellen. Wenn Sie den Diensttagnamen (z. B. **AzureEventGrid**) im entsprechenden Feld *Quelle*  oder  *Ziel*  einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern.
 
 | Diensttag | Zweck | Eingehend oder ausgehend möglich? | Regional möglich? | Einsatz mit Azure Firewall möglich? |
-| --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| AzureEventGrid | Azure Event Grid: <br/><br/>*Hinweis:* Dieses Tag deckt nur Azure Event Grid-Endpunkte in den Regionen „USA, Süden-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Westen 2“ und „USA, Mitte“ ab. | Beide | Nein | Nein |
+| --- | -------- |:---:|:---:|:---:|
+| AzureEventGrid | Azure Event Grid: | Beide | Nein | Nein |
 
 
 ## <a name="ip-firewall"></a>IP-Firewall 
@@ -37,6 +35,7 @@ Azure Event Grid unterstützt IP-basierte Zugriffssteuerungen zum Veröffentlich
 
 Standardmäßig kann auf Themen und Domänen über das Internet zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IP-Adressen oder IP-Adressbereichen in [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken. Herausgeber, die von einer anderen IP-Adresse stammen, werden abgelehnt und erhalten eine 403-Antwort (Verboten).
 
+Eine schrittweise Anleitung zum Konfigurieren der IP-Firewall für Themen und Domänen finden Sie unter [Konfigurieren der IP-Firewall](configure-firewall.md).
 
 ## <a name="private-endpoints"></a>Private Endpunkte
 Sie können [private Endpunkte](../private-link/private-endpoint-overview.md) verwenden, um den Eingang von Ereignissen direkt aus Ihrem virtuellen Netzwerk in Ihre Themen und Domänen sicher über einen [privaten Link](../private-link/private-link-overview.md) zu ermöglichen, ohne das öffentliche Internet zu durchlaufen. Ein privater Endpunkt ist eine spezielle Netzwerkschnittstelle für einen Azure-Dienst in Ihrem VNET. Wenn Sie einen privaten Endpunkt für Ihr Thema oder Ihre Domäne erstellen, wird eine sichere Verbindung zwischen Clients in Ihrem VNET und der Event Grid-Ressource bereitgestellt. Dem privaten Endpunkt wird eine IP-Adresse aus dem IP-Adressbereich Ihres VNET zugewiesen. Für die Verbindung zwischen dem privaten Endpunkt und dem Event Grid-Dienst wird eine sichere private Verbindung verwendet.
@@ -61,7 +60,7 @@ Wenn Sie die Endpunkt-URL des Themas oder der Domäne außerhalb des VNET mit de
 | Name                                          | type      | Wert                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
-| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure Traffic Manager-Profil\>
+| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure traffic manager profile\>
 
 Sie können den Zugriff für Clients außerhalb des VNET über den öffentlichen Endpunkt mithilfe der [IP-Firewall](#ip-firewall) verweigern oder steuern. 
 
@@ -100,3 +99,5 @@ Das Feature **IP-Firewall** ist sowohl im Basic- als auch im Premium-Tarif von E
 Sie können die IP-Firewall für Ihre Event Grid-Ressource so konfigurieren, dass der Zugriff über das öffentliche Internet auf eine bestimmte Gruppe von IP-Adressen oder IP-Adressbereichen beschränkt wird. Schrittweise Anleitungen dazu finden Sie unter [Konfigurieren der IP-Firewall](configure-firewall.md).
 
 Sie können private Endpunkte konfigurieren, um den Zugriff nur auf ausgewählte virtuelle Netzwerke zu beschränken. Schrittweise Anleitungen dazu finden Sie unter [Konfigurieren privater Endpunkte](configure-private-endpoints.md).
+
+Informationen zum Beheben von Problemen mit der Netzwerkkonnektivität finden Sie unter [Beheben von Netzwerkverbindungsproblemen.](troubleshoot-network-connectivity.md)

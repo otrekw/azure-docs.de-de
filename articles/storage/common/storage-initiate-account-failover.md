@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/11/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 905554d1763bdd3c5990a43c5c8d98f336e1c442
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: cbdeb1c55af157a0bf5160d2420974fd014ea3b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171207"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807593"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Initiieren eines Speicherkontofailovers
 
@@ -44,16 +44,16 @@ Weitere Informationen zur Azure Storage-Redundanz finden Sie unter [Azure Storag
 Führen Sie die folgenden Schritte aus, um ein Kontofailover im Azure-Portal zu initiieren:
 
 1. Navigieren Sie zum Speicherkonto.
-2. Wählen Sie unter **Einstellungen** die Option **Georeplikation** aus. In der folgenden Abbildung sind die Georeplikation und der Failoverstatus eines Speicherkontos dargestellt.
+1. Wählen Sie unter **Einstellungen** die Option **Georeplikation** aus. In der folgenden Abbildung sind die Georeplikation und der Failoverstatus eines Speicherkontos dargestellt.
 
-    ![Screenshot: Georeplikation und Failoverstatus](media/storage-initiate-account-failover/portal-failover-prepare.png)
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-prepare.png" alt-text="Screenshot: Georeplikation und Failoverstatus":::
 
-3. Überprüfen Sie, ob Ihr Speicherkonto als georedundanter Speicher (GRS) oder georedundanter Speicher mit Lesezugriff (RA-GRS) konfiguriert ist. Wenn dies nicht der Fall ist, wählen Sie unter **Einstellungen** die Option **Konfiguration** aus, um das Konto so zu ändern, dass es georedundant ist.
-4. Die Eigenschaft **Letzte Synchronisierungszeit** gibt an, wie weit der sekundäre Endpunkt hinter dem primären Endpunkt zurückliegt. Über **Letzte Synchronisierungszeit** lässt sich der Umfang des Datenverlusts nach Abschluss des Failovers abschätzen. Weitere Informationen zum Überprüfen der Eigenschaft **Letzte Synchronisierungszeit** finden Sie unter [Überprüfen der Eigenschaft „Letzte Synchronisierung“ für ein Speicherkonto](last-sync-time-get.md).
-5. Wählen Sie **Auf Failover vorbereiten** aus.
-6. Lesen Sie die Informationen im Bestätigungsdialogfeld. Geben Sie anschließend **Ja** ein, um das Failover zu bestätigen und zu initiieren.
+1. Überprüfen Sie, ob Ihr Speicherkonto als georedundanter Speicher (GRS) oder georedundanter Speicher mit Lesezugriff (RA-GRS) konfiguriert ist. Wenn dies nicht der Fall ist, wählen Sie unter **Einstellungen** die Option **Konfiguration** aus, um das Konto so zu ändern, dass es georedundant ist.
+1. Die Eigenschaft **Letzte Synchronisierungszeit** gibt an, wie weit der sekundäre Endpunkt hinter dem primären Endpunkt zurückliegt. Über **Letzte Synchronisierungszeit** lässt sich der Umfang des Datenverlusts nach Abschluss des Failovers abschätzen. Weitere Informationen zum Überprüfen der Eigenschaft **Letzte Synchronisierungszeit** finden Sie unter [Überprüfen der Eigenschaft „Letzte Synchronisierung“ für ein Speicherkonto](last-sync-time-get.md).
+1. Wählen Sie **Auf Failover vorbereiten** aus.
+1. Lesen Sie die Informationen im Bestätigungsdialogfeld. Geben Sie anschließend **Ja** ein, um das Failover zu bestätigen und zu initiieren.
 
-    ![Screenshot: Bestätigungsdialogfeld für ein Kontofailover](media/storage-initiate-account-failover/portal-failover-confirm.png)
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Screenshot: Bestätigungsdialogfeld für ein Kontofailover":::
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -94,7 +94,7 @@ Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <
 
 Führen Sie die folgenden Befehle aus, um ein Kontofailover über die Azure-Befehlszeilenschnittstelle zu initiieren:
 
-```azurecli
+```azurecli-interactive
 az storage account show \ --name accountName \ --expand geoReplicationStats
 az storage account failover \ --name accountName
 ```

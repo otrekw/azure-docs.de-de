@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 2197a149235c0dca98a24a57549538b2a4cbb1c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 28d7f6a9fa5d128783f2eb1dfcbcb75775cc499e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74196518"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113104"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Behandeln von Latenzproblemen mithilfe von Storage Analytics-Protokollen
 
@@ -93,7 +93,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Latenzprobleme mithilfe
 
    * Clientlatenz = End-to-End Latency – Server-Latency
 
-          * Example: 8453 – 391 = 8062ms
+        Beispiel: 8453 – 391 = 8062 ms
 
    In der folgenden Tabelle finden Sie Informationen zu „OperationType“ mit hoher Latenz und den Ergebnissen für „RequestStatus“:
 

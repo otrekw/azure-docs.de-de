@@ -2,13 +2,13 @@
 title: Informationen zu Repositorys und Images
 description: Einführung in die grundlegenden Konzepte von Azure-Containerregistrierungen, Repositorys und Containerimages.
 ms.topic: article
-ms.date: 09/10/2019
-ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/16/2020
+ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225802"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390447"
 ---
 # <a name="about-registries-repositories-and-images"></a>Informationen zu Registrierungen, Repositorys und Images
 
@@ -24,13 +24,11 @@ Zusätzlich zu den Docker-Containerimages unterstützt Azure Container Registry 
 
 Die Adresse eines Elements in einer Azure-Containerregistrierung enthält die folgenden Elemente. 
 
-`[loginUrl]/[namespace]/[artifact:][tag]`
+`[loginUrl]/[repository:][tag]`
 
 * **loginUrl**: Der vollqualifizierte Name des Registrierungshosts. Der Registrierungshost in einer Azure-Containerregistrierung hat das Format *meineregistrierung*.azurecr.io (nur Kleinbuchstaben). Sie müssen die loginUrl angeben, wenn Sie Docker oder andere Clienttools verwenden, um Artefakte in eine Azure-Containerregistrierung zu pullen oder pushen. 
-* **namespace**: Schrägstrichgetrennte logische Gruppierung verwandter Images oder Artefakte – z.B. für eine Arbeitsgruppe oder App
-* **artifact**: Der Name eines Repositorys für ein bestimmtes Image oder Artefakt
-* **tag**: Eine bestimmte Version eines in einem Repository gespeicherten Images oder Artefakts
-
+* **Repository**: Name einer logischen Gruppierung mit mindestens einem verknüpften Image oder Artefakt, z. B. die Images für eine Anwendung oder ein Basisbetriebssystem. Kann einen *Namespacepfad* enthalten. 
+* **Tag**: Bezeichner für eine bestimmte Version eines in einem Repository gespeicherten Images oder Artefakts.
 
 Beispielsweise kann der vollständige Name eines Images in einer Azure-Containerregistrierung so aussehen:
 
@@ -40,20 +38,24 @@ Weitere Informationen zu diesen Elementen finden Sie in den folgenden Abschnitte
 
 ## <a name="repository-name"></a>Name des Repositorys
 
-Containerregistrierungen verwalten *Repositorys*, Sammlungen von Containerimages oder andere Artefakte mit dem gleichen Namen, aber anderen Tags. Die folgenden drei Images befinden sich beispielsweise im Repository „acr-helloworld“:
+Ein *Repository* ist eine Sammlung von Containerimages oder anderen Artefakten mit dem gleichen Namen, aber anderen Tags. Die folgenden drei Images befinden sich beispielsweise im Repository „acr-helloworld“:
 
 
 - *acr-helloworld:latest*
 - *acr-helloworld:v1*
 - *acr-helloworld:v2*
 
-Repository-Namen können auch [Namespaces](container-registry-best-practices.md#repository-namespaces) enthalten. Namespaces ermöglichen die Gruppierung von Images mit durch Schrägstrich getrennten Repositorynamen. Beispiel:
+Repository-Namen können auch [Namespaces](container-registry-best-practices.md#repository-namespaces) enthalten. Mit Namespaces können Sie verwandte Repositorys und den Artefaktbesitz in Ihrer Organisation identifizieren, indem Sie durch Schrägstriche getrennte Namen verwenden. Allerdings verwaltet die Registrierung alle Repositorys unabhängig voneinander und nicht als Hierarchie. Beispiele:
 
 - *marketing/campaign10-18/web:v2*
 - *marketing/campaign10-18/api:v3*
 - *marketing/campaign10-18/email-sender:v2*
 - *product-returns/web-submission:20180604*
 - *product-returns/legacy-integrator:20180715*
+
+Repositorynamen dürfen nur alphanumerische Kleinbuchstaben, Punkte, Bindestriche, Unterstriche und Schrägstriche enthalten. 
+
+Vollständige Repositorybenennungsregeln finden Sie in der Spezifikation der [Open Container Initiative-Distribution](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview).
 
 ## <a name="image"></a>Image
 
@@ -63,9 +65,11 @@ Ein Containerimage oder sonstiges Artefakt in einer Registrierung wird einem ode
 
 Das *Tag* für ein Image oder anderes Artefakt gibt die Version an. Einem einzelnen Artefakt in einem Repository kann eines oder mehrere Tags zugewiesen werden, und Tags können auch entfernt werden. Sie können also alle Tags aus einem Image löschen, während die Daten des Images (die Ebenen) in der Registrierung verbleiben.
 
-Das Repository (oder Repository und Namespace) plus ein Tag definieren den Namen eines Images. Sie können Push- und Pull-Vorgänge für Images ausführen, indem Sie deren Namen im Push- oder Pull-Vorgang festlegen.
+Das Repository (oder Repository und Namespace) plus ein Tag definieren den Namen eines Images. Sie können Push- und Pull-Vorgänge für Images ausführen, indem Sie deren Namen im Push- oder Pull-Vorgang festlegen. Das Tag `latest` wird standardmäßig verwendet, wenn Sie keine Angabe in Ihren Docker-Befehlen bereitstellen.
 
 Wie Sie Containerimages mit Tags versehen, hängt von den Szenarien ihrer Entwicklung oder Bereitstellung ab. So werden beispielsweise dauerhafte Tags für die Pflege Ihrer Basisimages und eindeutige Tags für die Bereitstellung von Images empfohlen. Weitere Informationen finden Sie unter [Empfehlungen für das Taggen und die Versionsverwaltung von Containerimages](container-registry-image-tag-version.md).
+
+Informationen zu Benennungsregeln für Tags finden Sie in der [Docker-Dokumentation](https://docs.docker.com/engine/reference/commandline/tag/).
 
 ### <a name="layer"></a>Ebene
 

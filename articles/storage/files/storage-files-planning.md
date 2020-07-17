@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d1d36c6f6413a9438063c6fe30403af095ed9a6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856904"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659635"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
@@ -160,17 +160,12 @@ Neue Dateifreigaben beginnen mit der vollen Anzahl von Guthaben im Burstbucket. 
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
 ## <a name="migration"></a>Migration
-In vielen Fällen werden Sie keine ganz neue Dateifreigabe für Ihre Organisation einrichten, sondern stattdessen eine vorhandene Dateifreigabe von einem lokalen Dateiserver oder NAS-Gerät zu Azure Files migrieren. Es gibt viele Tools, die von Microsoft und Drittanbietern bereitgestellt werden, um eine Migration zu einer Dateifreigabe durchzuführen. Sie können grob in zwei Kategorien unterteilt werden:
+In vielen Fällen werden Sie keine ganz neue Dateifreigabe für Ihre Organisation einrichten, sondern stattdessen eine vorhandene Dateifreigabe von einem lokalen Dateiserver oder NAS-Gerät zu Azure Files migrieren. Für den Erfolg der Migration ist es wichtig, die richtige Migrationsstrategie und das richtige Tool für Ihr Szenario auszuwählen. 
 
-- **Tools, die Dateisystemattribute (z. B. ACLs und Zeitstempel) verwalten**:
-    - **[Azure-Dateisynchronisierung](storage-sync-files-planning.md)** : Azure-Dateisynchronisierung kann als Methode zum Erfassen von Daten in einer Azure-Dateifreigabe verwendet werden, auch wenn die gewünschte Endbereitstellung keine lokale Präsenz verwalten soll. Azure-Dateisynchronisierung kann direkt in vorhandenen Bereitstellungen von Windows Server 2012 R2, Windows Server 2016 und Windows Server 2019 installiert werden. Ein Vorteil der Verwendung von Azure-Dateisynchronisierung als Erfassungsmechanismus besteht darin, dass Endbenutzer die vorhandene Dateifreigabe weiterhin verwenden können. Ein Failover auf die Azure-Dateifreigabe kann erfolgen, nachdem alle Daten im Hintergrund hochgeladen wurden.
-    - **[Robocopy:](https://technet.microsoft.com/library/cc733145.aspx)** Robocopy ist ein bekanntes Kopiertool, das im Lieferumfang von Windows und Windows Server enthalten ist. Robocopy kann zum Übertragen von Daten in Azure Files verwendet werden, indem die Dateifreigabe lokal bereitgestellt wird. Anschließend wird der bereitgestellte Speicherort als Ziel des Robocopy-Befehls verwendet.
-
-- **Tools, die keine Dateisystemattribute verwalten**:
-    - **Data Box**: Data Box bietet einen Offline-Datenübertragungsmechanismus für das physische Übertragen von Daten in Azure. Diese Methode ist darauf ausgelegt, den Durchsatz zu erhöhen und Bandbreite zu sparen, unterstützt jedoch derzeit keine Dateisystemattribute wie Zeitstempel und ACLs.
-    - **[AzCopy:](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** AzCopy ist ein Befehlszeilenprogramm, das zum Kopieren von Daten in und aus Azure Files sowie Azure Blob Storage entwickelt wurde, wobei durch einfache Befehle eine optimale Leistung erzielt wird.
+Der[Artikel zur Migrationsübersicht](storage-files-migration-overview.md) behandelt kurz die Grundlagen und enthält eine Tabelle, die Verweise auf Migrationsleitfäden enthält, die Ihr Szenario wahrscheinlich abdecken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)
 * [Bereitstellen von Azure Files](storage-files-deployment-guide.md)
 * [Bereitstellen der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md)
+* [Ermitteln des Migrationsleitfadens für Ihr Szenario anhand des Artikels zur Migrationsübersicht](storage-files-migration-overview.md)

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: f7f460b01674359847427296e4526fc5771658f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191956"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084714"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernel für Jupyter Notebook in Apache Spark-Clustern in Azure HDInsight
 
@@ -59,8 +59,10 @@ Hier sind einige Vorteile der Verwendung der neuen Kernel mit einem Jupyter-Note
 
     Sie müssen also **keine Anweisungen** wie die folgenden ausführen, um die Kontexte festzulegen:
 
-         sc = SparkContext('yarn-client')
-         sqlContext = HiveContext(sc)
+    ```sql
+    sc = SparkContext('yarn-client')
+    sqlContext = HiveContext(sc)
+    ```
 
     Stattdessen können Sie in Ihrer Anwendung direkt die vordefinierten Kontexte verwenden.
 
@@ -98,8 +100,10 @@ Die `%%sql`-Magic unterstützt verschiedene Parameter, mit denen Sie steuern kö
 
 **Beispiel:**
 
-    %%sql -q -m sample -r 0.1 -n 500 -o query2
-    SELECT * FROM hivesampletable
+```sql
+%%sql -q -m sample -r 0.1 -n 500 -o query2
+SELECT * FROM hivesampletable
+```
 
 Die obige Anweisung führt folgende Aktionen aus:
 
@@ -121,9 +125,11 @@ Wenn Ihr Cluster Azure Storage als Standardspeicherkonto verwendet, werden Jupyt
 
 Der Vorgang des Speicherns von Notebooks im Speicherkonto ist mit [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) kompatibel. Wenn Sie eine SSH-Verbindung mit dem Cluster herstellen, können Sie die Dateiverwaltungsbefehle verwenden:
 
-    hdfs dfs -ls /HdiNotebooks                            # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
-    hdfs dfs –copyToLocal /HdiNotebooks                   # Download the contents of the HdiNotebooks folder
-    hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it's visible from Jupyter
+| Get-Help | BESCHREIBUNG |
+|---------|-------------|
+| `hdfs dfs -ls /HdiNotebooks` | # Alle Elemente im Stammverzeichnis auflisten – alles in diesem Verzeichnis ist auf der Homepage für Jupyter sichtbar. |
+| `hdfs dfs –copyToLocal /HdiNotebooks` | # Herunterladen des Inhalts des Ordners „HdiNotebooks“|
+| `hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks` | # Hochladen eines Notebooks „example.ipynb“ in den Stammordner, damit es aus Jupyter sichtbar ist. |
 
 Unabhängig davon, ob der Cluster Azure Storage oder Azure Data Lake Storage als Standardspeicherkonto verwendet, werden die Notebooks auch auf dem Clusterhauptknoten unter `/var/lib/jupyter` gespeichert.
 
@@ -131,7 +137,7 @@ Unabhängig davon, ob der Cluster Azure Storage oder Azure Data Lake Storage als
 
 Jupyter Notebooks in Spark HDInsight-Clustern werden nur von Google Chrome unterstützt.
 
-## <a name="feedback"></a>Feedback
+## <a name="suggestions"></a>Vorschläge
 
 Die neuen Kernels befinden sich in der Entwicklungsphase und werden mit der Zeit ausreifen. Im Lauf dieser Entwicklung werden unter Umständen auch die APIs geändert. Wir freuen uns über Ihr Feedback zur Verwendung der neuen Kernel. Das Feedback hilft uns bei der Gestaltung des endgültigen Kernelrelease. Kommentare/Feedback können Sie im **Feedbackabschnitt** am Ende dieses Artikels hinterlassen.
 

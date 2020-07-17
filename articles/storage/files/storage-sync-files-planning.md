@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 778a18edafadc0bd043df1e9a5ab1d660fab6525
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 561ec6d59349fca585beda8b1bd60073d2603077
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869718"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552176"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 
@@ -130,13 +130,14 @@ Invoke-AzStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
  
 So testen Sie nur die Systemanforderungen:
 ```powershell
-Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name>
+Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name> -SkipNamespaceChecks
 ```
  
 So zeigen Sie die Ergebnisse in einer CSV-Datei an:
 ```powershell
 $errors = Invoke-AzStorageSyncCompatibilityCheck […]
-$errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
+$validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path
+    C:\results.csv -Encoding utf8
 ```
 
 ### <a name="file-system-compatibility"></a>Dateisystemkompatibilität
@@ -254,9 +255,7 @@ Je nach den Richtlinien Ihres Unternehmens oder gesetzlichen Anforderungen müss
 - Konfigurieren der Azure-Dateisynchronisierung zur Unterstützung Ihres Proxys in Ihrer Umgebung.
 - Drosseln der Netzwerkaktivität aus der Azure-Dateisynchronisierung.
 
-Weitere Informationen zum Konfigurieren der Netzwerkfunktionen der Azure-Dateisynchronisierung finden Sie unter:
-- [Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung](storage-sync-files-firewall-and-proxy.md)
-- [Sicherstellen, dass die Azure-Dateisynchronisierung in Ihrem Rechenzentrum ein guter Nachbar ist](storage-sync-files-server-registration.md)
+Weitere Informationen zu Azure-Dateisynchronisierung und -Netzwerken finden Sie unter [Netzwerküberlegungen zur Azure-Dateisynchronisierung](storage-sync-files-networking-overview.md).
 
 ## <a name="encryption"></a>Verschlüsselung
 Wenn Sie Azure-Dateisynchronisierung verwenden, sind drei verschiedene Verschlüsselungsebenen zu beachten: Verschlüsselung im ruhenden Speicher von Windows Server, Verschlüsselung während der Übertragung zwischen dem Azure-Dateisynchronisierungs-Agent und Azure und Verschlüsselung im Ruhezustand Ihrer Daten in der Azure-Dateifreigabe. 
@@ -358,7 +357,7 @@ Wenn Sie über einen vorhandenen Windows-Dateiserver verfügen, kann die Azure-D
 
 Es ist auch möglich, Data Box zum Migrieren von Daten zu einer Azure-Dateisynchronisierungsbereitstellung zu verwenden. Wenn Kunden Data Box zum Erfassen von Daten verwenden möchten, geschieht dies meist, weil sie glauben, dass dies die Geschwindigkeit ihrer Bereitstellung erhöht oder weil es bei Szenarien mit eingeschränkter Bandbreite hilfreich ist. Obwohl die Verwendung einer Data Box zum Erfassen von Daten in Ihrer Azure-Dateisynchronisierungsbereitstellung die Bandbreitenauslastung verringert, ist es wahrscheinlich in den meisten Szenarien schneller, einen Onlinedatenupload über eine der oben beschriebenen Methoden einzusetzen. Weitere Informationen zum Verwenden von Data Box zum Erfassen von Daten in Ihrer Azure-Dateisynchronisierungsbereitstellung finden Sie unter [Migrieren von Daten in die Azure-Dateisynchronisierung mit Azure Data Box](storage-sync-offline-data-transfer.md).
 
-Ein häufiger Fehler, den Kunden beim Migrieren von Daten in ihre neue Azure-Dateisynchronisierungsbereitstellung machen, besteht darin, Daten direkt in die Azure-Dateifreigabe zu kopieren, anstatt auf ihre Windows-Dateiserver. Obwohl die Azure-Dateisynchronisierung alle neuen Dateien in der Azure-Dateifreigabe identifiziert und sie zurück mit Ihren Windows-Dateifreigaben synchronisiert, ist dies im allgemeinen deutlich langsamer als das Laden von Daten über den Windows-Dateiserver. Viele Azure-Kopiertools wie AzCopy haben den zusätzlichen Nachteil, dass nicht alle wichtigen Metadaten einer Datei (z. B. Zeitstempel und ACLs) kopiert werden.
+Ein häufiger Fehler, den Kunden beim Migrieren von Daten in ihre neue Azure-Dateisynchronisierungsbereitstellung machen, besteht darin, Daten direkt in die Azure-Dateifreigabe zu kopieren, anstatt auf ihre Windows-Dateiserver. Obwohl die Azure-Dateisynchronisierung alle neuen Dateien in der Azure-Dateifreigabe identifiziert und sie zurück mit Ihren Windows-Dateifreigaben synchronisiert, ist dies im allgemeinen deutlich langsamer als das Laden von Daten über den Windows-Dateiserver. Wenn Sie Azure-Kopiertools wie AzCopy nutzen, ist es wichtig, die neueste Version zu verwenden. Überprüfen Sie die [Tabelle zu den Dateikopiertools](storage-files-migration-overview.md#file-copy-tools), um einen Überblick über die Azure-Kopiertools zu erhalten und sicherzustellen, dass Sie alle wichtigen Metadaten einer Datei (z. B. Zeitstempel und ACLs) kopieren können.
 
 ## <a name="antivirus"></a>Virenschutz
 Da für den Virenschutz Dateien auf bekannte Schadsoftware überprüft werden müssen, kann ein Virenschutzprodukt den Rückruf von Tieringdateien verursachen. Ab Version 4.0 der Azure-Dateisynchronisierung-Agents ist für mehrstufige Dateien das sichere Windows-Attribut „FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS“ festgelegt. Es empfiehlt es sich, bei Ihrem Softwareanbieter nachzufragen, wie die Lösung so konfiguriert werden kann, dass das Lesen von Dateien mit diesem festgelegten Attribut übersprungen wird (bei vielen ist dies automatisch der Fall). 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/19/2020
+ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: cf615da14e2749f998f900500cc33da68a625e16
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7b8c6e09616f261c371b010b38d2c0f81376a6f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026281"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944763"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Schreiben von Überwachungsprotokollen in ein Speicherkonto hinter einem VNET oder einer Firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -127,7 +127,7 @@ So konfigurieren Sie die SQL-Überwachung für das Schreiben von Ereignissen in 
    Beispiel für eine Anforderung
 
    ```html
-   PUT https://management.azure.com/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Sql/servers/<azure server name>?api-version=2017-03-01-preview
+     PUT https://management.azure.com/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Sql/servers/<azure server name>/auditingSettings/default?api-version=2017-03-01-preview
    ```
 
    Anforderungstext
@@ -145,6 +145,18 @@ So konfigurieren Sie die SQL-Überwachung für das Schreiben von Ereignissen in 
 
 - [Erstellen oder Aktualisieren der Datenbanküberwachungsrichtlinie (Set-AzSqlDatabaseAudit)](/powershell/module/az.sql/set-azsqldatabaseaudit)
 - [Erstellen oder Aktualisieren der Serverüberwachungsrichtlinie (Set-AzSqlServerAudit)](/powershell/module/az.sql/set-azsqlserveraudit)
+
+## <a name="using-azure-resource-manager-template"></a>Verwenden von Azure Resource Manager-Vorlagen
+
+Sie können die Überwachung so konfigurieren, dass Datenbankereignisse in ein Speicherkonto hinter einem virtuellen Netzwerk und einer Firewall geschrieben werden, indem Sie die [Azure Resource Manager](../../azure-resource-manager/management/overview.md)-Vorlage verwenden, wie im folgenden Beispiel gezeigt:
+
+> [!IMPORTANT]
+> Um ein Speicherkonto hinter einem virtuellen Netzwerk und einer Firewall zu verwenden, müssen Sie den Parameter **isStorageBehindVnet** auf TRUE festlegen.
+
+- [Bereitstellen einer Azure SQL Server-Instanz mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Blobspeicher](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+
+> [!NOTE]
+> Das verknüpften Beispiel befindet sich in einem externen öffentlichen Repository, wird wie besehen ohne Gewähr zur Verfügung gestellt und wird von keinem Microsoft-Supportprogramm/-dienst unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

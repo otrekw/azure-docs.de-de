@@ -1,6 +1,6 @@
 ---
 title: 'SaaS-App: Überwachen der Leistung vieler Datenbanken'
-description: Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
+description: Überwachen und Verwalten der Leistung von Azure SQL-Datenbank in einer mehrinstanzenfähigen SaaS-App
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 458349ec666de7cdb94fca5422143738fea50a26
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 714ddf69bd8bca70019487576830b319bd25a7c0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027971"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042814"
 ---
-# <a name="monitor-and-manage-performance-of-azure-sql-database-and-pools-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung von Azure SQL-Datenbank und Pools in einer mehrinstanzenfähigen SaaS-App
+# <a name="monitor-and-manage-performance-of-azure-sql-database-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung von Azure SQL-Datenbank in einer mehrinstanzenfähigen SaaS-App
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In diesem Tutorial werden verschiedene wichtige Leistungsverwaltungsszenarien in SaaS-Anwendungen überprüft. Um über alle Mandantendatenbanken hinweg Aktivitäten mit einem Lastengenerator zu simulieren, werden die integrierten Überwachungs- und Benachrichtigungsfunktionen der SQL-Datenbank und der Pools für elastische Datenbanken veranschaulicht.

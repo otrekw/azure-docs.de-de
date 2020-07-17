@@ -1,28 +1,28 @@
 ---
 title: IP-Firewallregeln
-description: Hier erfahren Sie, wie Sie IP-Firewallregeln auf Serverebene für eine SQL-Datenbank- oder Azure Synapse Analytics-Firewall konfigurieren. Außerdem erfahren Sie, wie Sie den Zugriff verwalten und IP-Firewallregeln auf Datenbankebene für eine Einzel- oder Pooldatenbank konfigurieren.
+description: Hier erfahren Sie, wie Sie IP-Firewallregeln auf Serverebene für eine Datenbank in SQL-Datenbank oder Azure Synapse Analytics-Firewall konfigurieren. Außerdem erfahren Sie, wie Sie den Zugriff verwalten und IP-Firewallregeln für SQL-Datenbank konfigurieren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and Azure Synapse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 03/18/2019
-ms.openlocfilehash: 4ebb430945a00007f3b7260da87369bf6fd61ae2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/17/2020
+ms.openlocfilehash: e18c0470a2d1be8323c2fe1c0780bfd47f3f64cb
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84028801"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085088"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL-Datenbank- und Azure Synapse-IP-Firewallregeln
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Wenn Sie z. B. einen neuen Server in Azure SQL-Datenbank oder Azure Synapse namens *mysqlserver* erstellen, blockiert eine Firewall auf Serverebene alle Zugriffe auf den öffentlichen Endpunkt für den Server (auf den unter *mysqlserver.database.windows.net* zugegriffen werden kann). Der Einfachheit halber wird *SQL-Datenbank* als Sammelbegriff für SQL-Datenbank und Azure Synapse (vormals Azure SQL Data Warehouse) verwendet.
+Wenn Sie z. B. einen neuen Server in Azure SQL-Datenbank oder Azure Synapse Analytics namens *mysqlserver* erstellen, blockiert eine Firewall auf Serverebene alle Zugriffe auf den öffentlichen Endpunkt für den Server (auf den unter *mysqlserver.database.windows.net* zugegriffen werden kann). Der Einfachheit halber wird *SQL-Datenbank* als Sammelbegriff für SQL-Datenbank und Azure Synapse Analytics (vormals Azure SQL Data Warehouse) verwendet.
 
 > [!IMPORTANT]
 > Dieser Artikel gilt *nicht* für *Azure SQL Managed Instance*. Informationen zur Netzwerkkonfiguration finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Instanz](../managed-instance/connect-application-instance.md).
@@ -102,6 +102,14 @@ Wenn Sie in Azure gehosteten Anwendungen die Verbindungsherstellung mit Ihrer SQ
 
 > [!IMPORTANT]
 > Diese Option konfiguriert die Firewall so, dass alle von Azure ausgehenden Verbindungen zugelassen werden (einschließlich Verbindungen von den Abonnements anderer Kunden). Stellen Sie bei Verwendung dieser Option sicher, dass Ihre Anmelde- und Benutzerberechtigungen den Zugriff auf autorisierte Benutzer beschränken.
+
+## <a name="permissions"></a>Berechtigungen
+
+Um IP-Firewallregeln für die Azure SQL Server-Instanz erstellen und verwalten zu können, müssen Sie über eine der folgenden Rollen verfügen:
+
+- Rolle [Mitwirkender von SQL Server](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
+- Rolle [SQL-Sicherheits-Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager)
+- Besitzer der Ressource, die die Azure SQL Server-Instanz enthält
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>Erstellen und Verwalten von IP-Firewallregeln
 

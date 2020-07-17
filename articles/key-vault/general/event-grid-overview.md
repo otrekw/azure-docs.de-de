@@ -9,16 +9,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 854a489f6381514f80f16665f89042a0e8ed7470
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: cdbd78808d1758b43d2b2fe6e8f7ac03652ff92b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995759"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85296337"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Überwachen von Key Vault mit Azure Event Grid (Vorschau)
 
-Die Key Vault-Integration in Event Grid befindet sich derzeit in der Vorschauphase. Sie ermöglicht es Benutzern, benachrichtigt zu werden, wenn sich der Status eines geheimen Schlüssels, der im Schlüsseltresor (Key Vault) gespeichert ist, geändert hat. Eine Statusänderung ist als Geheimnis, das demnächst abläuft (innerhalb von 30 Tagen bis Ablauf), als Geheimnis, das abgelaufen ist, oder als Geheimnis definiert ist, für das eine neue Version verfügbar ist. Es werden Benachrichtigungen für alle drei Geheimnistypen (Schlüssel, Zertifikat und Geheimnis) unterstützt.
+Die Key Vault-Integration in Event Grid befindet sich derzeit in der Vorschauphase. Sie ermöglicht es Benutzern, benachrichtigt zu werden, wenn sich der Status eines geheimen Schlüssels, der im Schlüsseltresor (Key Vault) gespeichert ist, geändert hat. Eine Statusänderung ist als Geheimnis, das demnächst abläuft (30 Tage vor Ablauf), als Geheimnis, das abgelaufen ist, oder als Geheimnis definiert, für das eine neue Version verfügbar ist. Es werden Benachrichtigungen für alle drei Geheimnistypen (Schlüssel, Zertifikat und Geheimnis) unterstützt.
 
 Anwendungen können auf diese Ereignisse mit modernen serverlosen Architekturen reagieren, ohne dass komplizierter Code oder teure und ineffiziente Abrufdienste erforderlich sind. Ereignisse werden per Push über [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) an Ereignishandler, etwa [Azure Functions](https://azure.microsoft.com/services/functions/) und [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), oder sogar an Ihren eigenen Webhook übertragen, und Sie zahlen nur für das, was Sie tatsächlich nutzen. Informationen zu den Preisen finden Sie unter [Event Grid – Preise](https://azure.microsoft.com/pricing/details/event-grid/).
 
@@ -42,7 +42,7 @@ Anwendungen, die Key Vault-Ereignisse verarbeiten, sollten einige bewährte Meth
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Key Vault – Übersicht](overview.md))
+- [Was ist der Azure-Schlüsseltresor?](overview.md)
 - [Was ist Azure Event Grid?](../../event-grid/overview.md)
 - Gewusst wie: [Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid (Vorschau)](event-grid-tutorial.md)
 - Gewusst wie: [Verwenden von Logic Apps zum Empfangen einer E-Mail bei Statusänderungen von Key Vault-Geheimnissen](event-grid-logicapps.md)

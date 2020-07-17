@@ -1,23 +1,14 @@
 ---
 title: Netzwerksicherheit für Azure Service Bus
 description: In diesem Artikel werden Netzwerksicherheitsfeatures wie Diensttags, IP-Firewallregeln, Dienstendpunkte und private Endpunkte beschrieben.
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2020
-ms.author: aschhab
-ms.openlocfilehash: 95f8c2a3b47b59bab7df909be43dacdb1f9c58f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 731300179ce9a0ff72169cdad5c7c039749b20f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79475988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341144"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Netzwerksicherheit für Azure Service Bus 
 In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen mit Azure Service Bus verwenden: 
@@ -38,8 +29,11 @@ Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen in [Netzwerksic
 | **ServiceBus** | Azure Service Bus-Datenverkehr, der die Dienstebene „Premium“ verwendet. | Ausgehend | Ja | Ja |
 
 
+> [!NOTE]
+> Sie können Diensttags nur für **Premium**-Namespaces verwenden. Wenn Sie einen **Standard**-Namespace verwenden, verwenden Sie die IP-Adresse, die beim Ausführen des folgenden Befehls angezeigt wird: `nslookup <host name for the namespace>`. Beispiel: `nslookup contosons.servicebus.windows.net`. 
+
 ## <a name="ip-firewall"></a>IP-Firewall 
-Standardmäßig kann auf Service Bus-Namespaces über das Internet zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
+Standardmäßig kann auf Service Bus-Namespaces über das Internet zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
 
 Diese Funktion ist in Szenarien hilfreich, in denen Azure Service Bus nur von bestimmten bekannten Websites aus zugänglich sein soll. Mithilfe von Firewallregeln können Sie Regeln konfigurieren, um Datenverkehr von bestimmten IPv4-Adressen zuzulassen. Wenn Sie z. B. Service Bus mit [Azure Express Route] [express-route] verwenden, können Sie eine **Firewallregel** erstellen, um Datenverkehr nur von den IP-Adressen Ihrer lokalen Infrastruktur oder von Adressen eines NAT-Gateways eines Unternehmen zuzulassen. 
 

@@ -3,7 +3,7 @@ title: Ressourceneinschränkungen
 titleSuffix: Azure SQL Managed Instance
 description: Dieser Artikel bietet eine Übersicht über die Ressourceneinschränkungen für Azure SQL Managed Instance.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: b72195c818e418cfca9c88fe666b27b277aa7bda
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 85d347c45e1ca2cd39c7504e44bd3ea063f788d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309100"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708416"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Übersicht über Ressourcenlimits für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ SQL Managed Instance umfasst Merkmale und Ressourcenlimits, die von der zugrunde
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
-| Hardware | Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern | Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz und Intel SP-8160-Prozessoren (Skylake), schnelle NVMe-SSD, virtueller Kern = 1 LP (Hyperthreading) |
+| Hardware | Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern | Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz und Intel SP-8160-Prozessoren (Skylake), schnelle NVMe-SSD, virtueller Kern = 1 LP (Hyperthread) |
 | Anzahl der virtuellen Kerne | 8, 16, 24 virtuelle Kerne | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
 | Max. Arbeitsspeicher (Verhältnis Arbeitsspeicher/Kerne) | 7 GB pro V-Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. | 5,1 GB pro virtuellem Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. |
 | Max. In-Memory-OLTP-Arbeitsspeicher | Grenzwert für Instanzen: 1–1,5 GB pro virtuellem Kern| Grenzwert für Instanzen: 0,8–1,65 GB pro virtuellem Kern |
@@ -82,6 +82,7 @@ SQL Managed Instance umfasst zwei Dienstebenen: [Universell](../database/service
 | E/A-Speicherlatenz (ungefähr) | 5 – 10 ms | 1 – 2 ms |
 | In-Memory-OLTP | Nicht unterstützt | Verfügbar, [Größe hängt von der Anzahl der V-Kerne ab](#in-memory-oltp-available-space) |
 | Max. Sitzungen | 30.000 | 30.000 |
+| Max. gleichzeitige Worker (Anforderungen) | Gen4: 210 * Anzahl der virtuellen Kerne + 800<br>Gen5: 105 * Anzahl der virtuellen Kerne + 800 | Gen4: 210 * Anzahl der virtuellen Kerne + 800<br>Gen5: 105 * Anzahl der virtuellen Kerne + 800 |
 | [Schreibgeschützte Replikate](../database/read-scale-out.md) | 0 | 1 (im Preis inbegriffen) |
 | Computeisolation | Gen5:<br/>– unterstützt für 80 virtuelle Kerne<br/>– für andere Größen nicht unterstützt<br/><br/>Gen4 wird eingestellt und deshalb nicht mehr unterstützt.|Gen5:<br/>– unterstützt für 60, 64, 80 virtuelle Kerne<br/>– für andere Größen nicht unterstützt<br/><br/>Gen4 wird eingestellt und deshalb nicht mehr unterstützt.|
 
@@ -126,6 +127,9 @@ SQL Managed Instance unterstützt aktuell nur die Bereitstellung für folgende A
 
 ## <a name="regional-resource-limitations"></a>Regionale Ressourcenbeschränkungen
 
+> [!Note]
+> Die neuesten Informationen zur Regionsverfügbarkeit für Abonnements finden Sie im [offiziellen COVID-19-Blogbeitrag](https://aka.ms/sqlcapacity).
+
 Unterstützte Abonnementtypen können eine begrenzte Anzahl von Ressourcen pro Region umfassen. Abhängig vom Abonnementtyp gelten für SQL Managed Instance zwei Standardgrenzwerte pro Azure-Region (die bei Bedarf durch das Erstellen einer speziellen [Supportanfrage im Azure-Portal](../database/quota-increase-request.md) erhöht werden können):
 
 - **Subnetzlimit**: Die maximale Anzahl von Subnetzen, wenn Instanzen von SQL Managed Instance in einer einzelnen Region bereitgestellt werden.
@@ -136,7 +140,7 @@ Unterstützte Abonnementtypen können eine begrenzte Anzahl von Ressourcen pro R
 
 In der folgenden Tabelle werden die **standardmäßigen regionalen Grenzwerte** für unterstützte Abonnementtypen angezeigt (standardmäßige Grenzwerte können mithilfe der unten beschriebenen Supportanfrage erweitert werden):
 
-|Abonnementtyp| Max. Anzahl von SQL Managed Instance-Subnetzen | Max. Anzahl von vCore-Einheiten* |
+|Abonnementtyp| Max. Anzahl von SQL Managed Instance-Subnetzen | Max number of vCore units* (Maximale Anzahl von virtuellen Kerneinheiten) |
 | :---| :--- | :--- |
 |Nutzungsbasierte Bezahlung|3|320|
 |CSP |8 (15 in manchen Regionen**)|960 (1440 in manchen Regionen**)|
@@ -146,9 +150,12 @@ In der folgenden Tabelle werden die **standardmäßigen regionalen Grenzwerte** 
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional und MSDN Platforms|2|32|
 
-\* Berücksichtigen Sie bei der Planung von Bereitstellungen, dass die Dienstebene „Unternehmenskritisch“ (Business Critical, BC) viermal (4-mal) mehr v-Kern-Kapazität erfordert als die Dienstebene „Universell“ (General Purpose, GP). Beispiel: 1 virtueller Kern „Universell“ = 1 V-Kern-Einheit, und 1 virtueller Kern „Unternehmenskritisch“ = 4 V-Kern-Einheiten. Um die Nutzungsanalyse hinsichtlich der Standardgrenzwerte zu vereinfachen, fassen Sie die vCore-Einheiten für alle Subnetze in der Region zusammen, in der SQL Managed Instance bereitgestellt wird. Vergleichen Sie die Ergebnisse anschließend mit den Grenzwerten für Instanzeinheiten Ihres Abonnementtyps. Der Grenzwert **Max. Anzahl von vCore-Einheiten** gilt für jedes Abonnement in einer Region. Es gibt keinen Grenzwert pro individuellem Subnetz, außer dass die Summe aller in mehreren Subnetzen bereitgestellten virtuellen Kerne niedriger oder gleich der **maximalen Anzahl von virtuellen Kerneinheiten** sein muss.
+\* Berücksichtigen Sie bei der Planung von Bereitstellungen, dass die Dienstebene „Unternehmenskritisch“ (Business Critical, BC) viermal (4-mal) mehr v-Kern-Kapazität erfordert als die Dienstebene „Universell“ (General Purpose, GP). Beispiel: 1 virtueller Kern „Universell“ = 1 V-Kern-Einheit, und 1 virtueller Kern „Unternehmenskritisch“ = 4 V-Kern-Einheiten. Um die Nutzungsanalyse hinsichtlich der Standardgrenzwerte zu vereinfachen, fassen Sie die vCore-Einheiten für alle Subnetze in der Region zusammen, in der SQL Managed Instance bereitgestellt wird. Vergleichen Sie die Ergebnisse anschließend mit den Grenzwerten für Instanzeinheiten Ihres Abonnementtyps. Der Grenzwert **Max number of vCore units** (Maximale Anzahl von virtuellen Kerneinheiten) gilt für jedes Abonnement in einer Region. Es gibt keinen Grenzwert pro individuellem Subnetz, außer dass die Summe aller in mehreren Subnetzen bereitgestellten virtuellen Kerne niedriger oder gleich der **maximalen Anzahl von virtuellen Kerneinheiten** sein muss.
 
 \*\* Höhere Grenzwerte für Subnetze und virtuelle Kerne sind in den folgenden Regionen verfügbar: „Australien, Osten“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Europa, Westen“, „USA, Westen 2“.
+
+> [!IMPORTANT]
+> Wenn das Limit für virtuelle Kerne und das Subnet 0 ist, bedeutet dies, dass das regionale Standardlimit für Ihren Abonnementtyp nicht festgelegt ist. Sie können auch eine Anforderung für eine Kontingenterhöhung für von Abonnementzugriff in einer bestimmten Region nach demselben Verfahren verwenden, indem Sie die erforderlichen Werte für virtuelle Kerne und Subnetze angeben.
 
 ## <a name="request-a-quota-increase"></a>Anfordern einer Kontingenterhöhung
 

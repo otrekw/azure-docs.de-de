@@ -7,18 +7,18 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: baf309a93f8ba976cb6511c05ba5032ad07a0fc9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874041"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392453"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Hinzufügen von Azure-Rollenzuweisungen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -68,7 +68,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 In Azure RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu.
 
-### <a name="resource-group-without-parameters"></a>Ressourcengruppe (ohne Parameter)
+### <a name="resource-group-scope-without-parameters"></a>Ressourcengruppenbereich (ohne Parameter)
 
 Die folgende Vorlage zeigt eine einfache Möglichkeit zum Hinzufügen einer Rollenzuweisung. Einige Werte werden in der Vorlage angegeben. Die folgende Vorlage veranschaulicht Folgendes:
 
@@ -111,7 +111,7 @@ Das folgende Beispiel veranschaulicht die Zuweisung der Rolle „Leser“ zu ein
 
 ![Rollenzuweisung in einem Ressourcengruppenbereich](./media/role-assignments-template/role-assignment-template.png)
 
-### <a name="resource-group-or-subscription"></a>Ressourcengruppe oder Abonnement
+### <a name="resource-group-or-subscription-scope"></a>Ressourcengruppe oder Abonnementbereich
 
 Die vorherige Vorlage ist nicht sehr flexibel. Die folgende Vorlage enthält Parameter, die in unterschiedlichen Bereichen verwendet werden können. Die folgende Vorlage veranschaulicht Folgendes:
 
@@ -195,7 +195,7 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-### <a name="resource"></a>Resource
+### <a name="resource-scope"></a>Ressourcenumfang
 
 Wenn Sie auf der Ebene einer Ressource eine Rollenzuweisung hinzufügen müssen, ist das Format der Rollenzuweisung anders. Sie stellen den Namespace des Ressourcenanbieters und den Ressourcentyp der Ressource bereit, der die Rolle zugewiesen werden soll. Außerdem fügen Sie den Namen der Ressource in den Namen der Rollenzuweisung ein.
 

@@ -15,12 +15,12 @@ ms.date: 11/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
-ms.openlocfilehash: 448b5c38371024c2eae900f4f87b343ee0a3b36a
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0a8781a5afb8b6df0444ce177be452f84c73413e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172225"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087217"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Tokenbasierte Authentifizierung (HTTP/2) für APNS
 
@@ -53,15 +53,15 @@ Um die tokenbasierte Authentifizierung zu aktivieren, benötigen Sie die folgend
 
 Den Schlüsselbezeichner können Sie auf der Seite **Keys** unter **Zertifikate, Bezeichner und Profile** in Ihrem Apple-Entwicklerkonto abrufen.
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
+![Zertifikate](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
+![Bezeichner](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
 
 ### <a name="application-identifier-and-application-name"></a>Anwendungsbezeichner und Anwendungsname
 
 Anwendungsname und -bezeichner sind ebenfalls auf der Seite **Zertifikate, Bezeichner und Profile** in Entwicklerkonto verfügbar:
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
+![Zertifikate und IDs](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
 ### <a name="configure-via-the-net-sdk-or-the-azure-portal"></a>Konfigurieren über das .NET SDK oder das Azure-Portal
 
@@ -77,9 +77,9 @@ Tokenbasierte Anmeldeinformationen bestehen aus den folgenden Feldern:
 
 * **Schlüssel-ID**: Der Bezeichner des privaten Schlüssels, der im Apple-Entwicklerportal generiert wurde, beispielsweise `2USFGKSKLT`.
 * **Team-ID**: Wird auch als „Präfix“ oder „App-Präfix“ bezeichnet. Dies ist der Bezeichner für die Organisation im Apple-Entwicklerportal, beispielsweise `S4V3D7CHJR`.
-* **Paket-ID**: Wird auch als „App-ID“ bezeichnet. Dies ist der Bündelbezeichner für die Anwendung, beispielsweise `com.microsoft.nhubsample2019`. Beachten Sie, dass Sie einen Schlüssel für viele Apps verwenden können. Dieser Wert wird dem `apns-topic`-HTTP-Header zugeordnet, wenn eine Benachrichtigung gesendet wird, und wird verwendet, um auf die jeweilige Anwendung abzuzielen.
+* **Paket-ID**: Wird auch als „App-ID“ bezeichnet. Dies ist der Bündelbezeichner für die Anwendung, beispielsweise `com.example.myapp`. Beachten Sie, dass Sie einen Schlüssel für viele Apps verwenden können. Dieser Wert wird dem `apns-topic`-HTTP-Header zugeordnet, wenn eine Benachrichtigung gesendet wird, und wird verwendet, um auf die jeweilige Anwendung abzuzielen. Beachten Sie, dass der Wert von `apns-topic` nicht explizit festgelegt werden kann.
 * **Token**: Wird auch als „Schlüssel“ oder „privater Schlüssel“ bezeichnet. Dies wird aus der im Apple-Entwicklerportal generierten P8-Datei abgerufen. Für den Schlüssel muss APNS aktiviert sein (Dies wird beim Generieren des Schlüssels im Apple-Entwicklerportal ausgewählt). Bei dem Wert müssen die PEM-Kopf-/Fußzeile entfernt werden, wenn Sie ihn für das NH-Portal/die API bereitstellen.
-* **Endpunkt**: Dies ist eine Umschaltfläche auf dem Blatt „Notification Hubs-Portal“ und ein Zeichenfolgenfeld in der API. Gültige Werte sind `https://api.push.apple.com` und `https://api.sandbox.push.apple.com`. Notification Hubs verwendet diesen Wert entweder für die Produktions- oder für die Sandbox-Umgebung zum Senden von Benachrichtigungen. Dies muss der `aps-environment`-Berechtigung in der App entsprechen. Andernfalls stimmen die generierten APNS-Gerätetoken nicht mit der Umgebung überein, und die Benachrichtigungen können nicht gesendet werden.
+* **Endpunkt**: Dies ist eine Umschaltfläche auf dem Blatt „Notification Hubs-Portal“ und ein Zeichenfolgenfeld in der API. Gültige Werte sind `https://api.development.push.apple.com:443/3/device` und `https://api.sandbox.push.apple.com:443/3/device`. Notification Hubs verwendet diesen Wert entweder für die Produktions- oder für die Sandbox-Umgebung zum Senden von Benachrichtigungen. Dies muss der `aps-environment`-Berechtigung in der App entsprechen. Andernfalls stimmen die generierten APNS-Gerätetoken nicht mit der Umgebung überein, und die Benachrichtigungen können nicht gesendet werden.
 
 Das folgende Codebeispiel veranschaulicht die richtige Verwendung:
 

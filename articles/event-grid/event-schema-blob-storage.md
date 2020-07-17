@@ -1,18 +1,14 @@
 ---
 title: Azure Blob Storage als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Blob Storage-Ereignisse bereitgestellt werden.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: 8d22f8a2722dc55a13ce8e3752ca69d6e7251070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: a226a46dcc85e2bb4940364d2802397edb2c2397
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115124"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113750"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure Blob Storage als Event Grid-Quelle
 
@@ -52,8 +48,7 @@ Die folgenden Ereignisse werden ausgelöst, wenn Sie einen hierarchischen Namesp
 > [!NOTE]
 > Wenn Sie sicherstellen möchten, dass das Ereignis **Microsoft.Storage.BlobCreated** erst ausgelöst wird, nachdem ein Blockblob vollständig committet wurde, filtern Sie das Ereignis nach dem REST-API-Aufruf `FlushWithClose`. Bei diesem API-Aufruf wird das Ereignis **Microsoft.Storage.BlobCreated** erst ausgelöst, nachdem Daten vollständig in einem Blockblob committet wurden. Informationen zum Erstellen eines Filters finden Sie unter [Filtern von Ereignissen für Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
-<a id="example-event" />
-
+<a name="example-event"></a>
 ### <a name="the-contents-of-an-event-response"></a>Der Inhalt einer Ereignisantwort
 
 Wenn ein Ereignis ausgelöst wird, sendet der Event Grid-Dienst Daten zum Ereignis an den Endpunkt, der über ein entsprechendes Abonnement verfügt.
@@ -318,7 +313,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | contentOffset | number | Das Offset (in Bytes) eines Schreibvorgangs zu dem Zeitpunkt, zu dem die ereignisauslösende Anwendung das Schreiben in die Datei abgeschlossen hat. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden.|
 | destinationUrl |Zeichenfolge | Die URL der Datei, die nach Abschluss des Vorgangs vorhanden ist. Wenn also beispielsweise eine Datei umbenannt wird, enthält die Eigenschaft `destinationUrl` die URL des neuen Dateinamens. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden.|
 | sourceUrl |Zeichenfolge | Die URL der Datei, die vor dem Vorgang vorhanden ist. Wenn also beispielsweise eine Datei umbenannt wird, enthält `sourceUrl` die URL des ursprünglichen Dateinamens vor dem Umbenennungsvorgang. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden. |
-| url | Zeichenfolge | Der Pfad des Blobs. <br>Wenn der Client eine Blob-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.blob.core.windows.net/\<Containername\>/\<Dateiname\>* . <br>Wenn der Client eine Data Lake Storage-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.dfs.core.windows.net/\<Dateisystemname\>/\<Dateiname\>* . |
+| url | Zeichenfolge | Der Pfad des Blobs. <br>Wenn der Client eine Blob-REST-API verwendet, hat die URL die folgende Struktur: *\<storage-account-name\>.blob.core.windows.net/\<container-name\>/\<file-name\>* . <br>Wenn der Client eine Data Lake Storage-REST-API verwendet, hat die URL die folgende Struktur: *\<storage-account-name\>.dfs.core.windows.net/\<file-system-name\>/\<file-name\>* . |
 | recursive | Zeichenfolge | `True`, um den Vorgang für alle untergeordneten Verzeichnisse auszuführen; andernfalls `False`. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden. |
 | sequencer | Zeichenfolge | Ein nicht transparenter Zeichenfolgenwert, der die logische Reihenfolge von Ereignissen für einen bestimmten Blobnamen darstellt.  Benutzer können anhand des standardmäßigen Zeichenfolgenvergleichs die relative Reihenfolge von zwei Ereignissen unter dem gleichen Blobnamen verstehen. |
 | storageDiagnostics | Objekt (object) | Diagnosedaten, die gelegentlich vom Azure Storage-Dienst einbezogen werden. Falls vorhanden, sollten sie vom Ereignisconsumer ignoriert werden. |

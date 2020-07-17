@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b946a360ced05500a4ef89cda7c623d8ae16658e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a06111fbe38f167ddf3512fdb312d7de754a738
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444867"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563578"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Welche Optionen bietet die Azure Firewall Manager-Architektur?
 
@@ -37,14 +37,15 @@ In der folgenden Tabelle werden diese beiden Architekturoptionen miteinander ver
 |**Lokale Konnektivität**     |VPN Gateway mit bis zu 10 Gbit/s und 30 Site-to-Site-Verbindungen; ExpressRoute|Besser skalierbares VPN Gateway mit bis zu 20 Gbit/s und 1000 Site-to-Site-Verbindungen; ExpressRoute|
 |**Automatisierte Branchkonnektivität über SDWAN**      |Nicht unterstützt|Unterstützt|
 |**Hubs pro Region**     |Mehrere virtuelle Netzwerke pro Region|Ein geschützter virtueller Hub pro Region; mehrere Hubs möglich mit mehreren Virtual WANs|
-|**Azure Firewall – mehrere öffentliche IP-Adressen**      |Vom Kunden bereitgestellt|Automatisch generiert; bei allgemeiner Verfügbarkeit erhältlich|
-|**Azure Firewall-Verfügbarkeitszonen**     |Unterstützt|In der Vorschau nicht verfügbar; bei allgemeiner Verfügbarkeit erhältlich|
-|**Erweiterte Internetsicherheit mit Security-as-a-Service-Lösungen von Drittanbietern**     |Vom Kunden hergestellte und verwaltet VPN-Konnektivität mit dem gewünschten Partnerdienst|Automatisiert über Flow für vertrauenswürdigen Sicherheitspartner und Partnerverwaltungslösung|
+|**Azure Firewall – mehrere öffentliche IP-Adressen**      |Vom Kunden bereitgestellt|Automatisch generiert|
+|**Azure Firewall-Verfügbarkeitszonen**     |Unterstützt|Noch nicht verfügbar|
+|**Erweiterte Internetsicherheit mit Security-as-a-Service-Lösungen von Drittanbietern**     |Vom Kunden hergestellte und verwaltet VPN-Konnektivität mit dem gewünschten Partnerdienst|Automatisiert über Flow für Sicherheitspartneranbieter und Partnerverwaltungslösung|
 |**Zentralisierte Routenverwaltung zum Weiterleiten von Datenverkehr an den Hub**     |Kundenseitig verwaltete benutzerdefinierte Route|Unterstützt über BGP|
+|**Unterstützung mehrerer Sicherheitsanbieter**|Unterstützt mit manuell konfiguriertem erzwungenem Tunneling zu Firewalls von Drittanbietern|Automatisierte Unterstützung für zwei Sicherheitsanbieter: Azure Firewall für Filterung des privaten Datenverkehrs und Drittanbieter für Internetfilterung|
 |**Web Application Firewall auf Application Gateway** |Unterstützt in virtuellem Netzwerk|Derzeit in Spoke-Netzwerk unterstützt|
 |**Virtuelles Netzwerkgerät**|Unterstützt in virtuellem Netzwerk|Derzeit in Spoke-Netzwerk unterstützt|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Übersicht über die Bereitstellung von Azure Firewall Manager (Vorschau)](deployment-overview.md)
+- Lesen Sie [Übersicht über die Bereitstellung mit Azure Firewall Manager](deployment-overview.md)
 - Weitere Informationen über [geschützte virtuelle Hubs](secured-virtual-hub.md)

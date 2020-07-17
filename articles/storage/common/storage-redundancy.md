@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/22/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c4d14c21174f9631a1ad72489d4c0bafe013572c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9502194b2020723801469b511f46d3e806290ba5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681336"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213991"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -62,8 +62,8 @@ In der folgenden Tabelle wird gezeigt, welche Typen von Speicherkonten ZRS in we
 |    Speicherkontotyp    |    Unterstützte Regionen    |    Unterstützte Dienste    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 |    Universell v2<sup>1</sup>    | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Norden<br />  Europa, Westen<br /> Frankreich, Mitte<br /> Japan, Osten<br /> Südafrika, Norden<br /> UK, Süden<br /> USA, Mitte<br /> USA, Osten<br /> USA (Ost 2)<br /> USA, Westen 2    |    Blockblobs<br /> Seitenblobs<sup>2</sup><br /> Dateifreigaben (Standard)<br /> Tabellen<br /> Warteschlangen<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Europa, Westen<br /> USA, Osten    |    Nur Blockblobs    |
-|    FileStorage    | Europa, Westen<br /> USA, Osten    |    Nur Azure Files    |
+|    BlockBlobStorage<sup>1</sup>    | Asien, Südosten<br /> Europa, Westen<br /> USA, Osten    |    Nur Blockblobs    |
+|    FileStorage    | Asien, Südosten<br /> Europa, Westen<br /> USA, Osten    |    Nur Azure Files    |
 
 <sup>1</sup> Die Archivspeicherebene wird derzeit nicht für ZRS-Konten unterstützt.<br />
 <sup>2</sup> Speicherkonten, die verwaltete Azure-Datenträger für virtuelle Computer enthalten, verwenden immer LRS. Für nicht verwaltete Azure-Datenträger sollte ebenfalls LRS verwendet werden. Es ist möglich, ein Speicherkonto für nicht verwaltete Azure-Datenträger zu erstellen, das GRS verwendet. Dies wird jedoch aufgrund von potenziellen Konsistenzproblemen mit der asynchronen Georeplikation nicht empfohlen. Weder verwaltete noch nicht verwaltete Datenträger unterstützen ZRS oder GZRS. Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -81,7 +81,7 @@ Azure Storage bietet zwei Optionen für das Kopieren Ihrer Daten in eine sekund�
 - **Georedundanter Speicher (GRS):** Die Daten werden synchron dreimal innerhalb eines einzelnen physischen Standorts in der primären Region mit LRS kopiert. Anschließend werden die Daten asynchron an einen einzelnen physischen Standort in der sekundären Region kopiert.
 - **Geozonenredundanter Speicher (GZRS):** Die Daten werden mit ZRS synchron über drei Azure-Verfügbarkeitszonen hinweg in der primären Region kopiert. Anschließend werden die Daten asynchron an einen einzelnen physischen Standort in der sekundären Region kopiert.
 
-Der Hauptunterschied zwischen GRS und GZRS besteht in der Art, wie Daten in der primären Region repliziert werden. Am sekundären Standort werden die Daten immer dreimal synchron mithilfe von LRS repliziert.
+Der Hauptunterschied zwischen GRS und GZRS besteht in der Art, wie Daten in der primären Region repliziert werden. Am sekundären Standort werden die Daten immer dreimal synchron mithilfe von LRS repliziert. LRS in der sekundären Region schützt Ihre Daten vor Hardwareausfällen.
 
 Mit GRS oder GZRS sind die Daten am sekundären Standort nicht für Lese- oder Schreibzugriffe verfügbar, sofern kein Failover in die sekundäre Region ausgeführt wird. Für den Lesezugriff am sekundären Standort konfigurieren Sie Ihr Speicherkonto für die Verwendung von georedundantem Speicher mit Lesezugriff (RA-GRS) oder geozonenredundantem Speicher mit Lesezugriff (RA-GZRS). Weitere Informationen finden Sie unter [Lesezugriff auf Daten in der sekundären Region](#read-access-to-data-in-the-secondary-region).
 
@@ -120,13 +120,15 @@ Weitere Informationen zu den Preisen finden Sie in den Preisdetails für [Blobs]
 
 ## <a name="read-access-to-data-in-the-secondary-region"></a>Lesezugriff auf Daten in der sekundären Region
 
-Georedundanter Speicher (mit GRS oder GZRS) repliziert Ihre Daten an einen anderen physischen Standort in der sekundären Region, um sie vor regionalen Ausfällen zu schützen. Diese Daten sind jedoch nur dann lesbar, wenn der Kunde oder Microsoft ein Failover von der primären zur sekundären Region initiiert. Wenn Sie Lesezugriff auf die sekundäre Region aktivieren, können Ihre Daten gelesen werden, falls die primäre Region nicht mehr verfügbar ist. Für den Lesezugriff in der sekundären Region aktivieren Sie georedundanten Speicher mit Lesezugriff (RA-GRS) oder geozonenredundanten Speicher mit Lesezugriff (RA-GZRS).
+Georedundanter Speicher (mit GRS oder GZRS) repliziert Ihre Daten an einen anderen physischen Standort in der sekundären Region, um sie vor regionalen Ausfällen zu schützen. Diese Daten sind jedoch nur dann lesbar, wenn der Kunde oder Microsoft ein Failover von der primären zur sekundären Region initiiert. Wenn Sie Lesezugriff auf die sekundäre Region aktivieren, sind Ihre Daten jederzeit auch dann für Lesevorgänge verfügbar, falls die primäre Region nicht mehr verfügbar ist. Für den Lesezugriff in der sekundären Region aktivieren Sie georedundanten Speicher mit Lesezugriff (RA-GRS) oder geozonenredundanten Speicher mit Lesezugriff (RA-GZRS).
 
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Entwerfen von Anwendungen für den Lesezugriff am sekundären Standort
 
-Wenn Ihr Speicherkonto für den Lesezugriff in der sekundären Region konfiguriert ist, können Sie Ihre Anwendungen so entwerfen, dass sie nahtlos zum Lesen von Daten in der sekundären Region wechseln, wenn die primäre Region aus irgendeinem Grund nicht verfügbar ist. Die sekundäre Region ist immer für den Lesezugriff verfügbar, sodass Sie Ihre Anwendung testen können, um sicherzustellen, dass sie bei einem Ausfall am sekundären Standort liest. Weitere Informationen zum Entwerfen von hoch verfügbaren Anwendungen finden Sie unter [Verwenden von Georedundanz zum Entwerfen von hoch verfügbaren Anwendungen](geo-redundant-design.md).
+Wenn Ihr Speicherkonto für den Lesezugriff in der sekundären Region konfiguriert ist, können Sie Ihre Anwendungen so entwerfen, dass sie nahtlos zum Lesen von Daten in der sekundären Region wechseln, wenn die primäre Region aus irgendeinem Grund nicht verfügbar ist. 
 
-Wenn der Lesezugriff auf den sekundären Standort aktiviert ist, können Ihre Daten sowohl vom sekundären Endpunkt als auch vom primären Endpunkt für Ihr Speicherkonto gelesen werden. Der sekundäre Endpunkt fügt das Suffix *–secondary* an den Kontonamen an. Wenn Ihr primärer Endpunkt für Blob Storage z. B. `myaccount.blob.core.windows.net` ist, lautet Ihr sekundärer Endpunkt `myaccount-secondary.blob.core.windows.net`. Die Zugriffsschlüssel für das Speicherkonto sind für die primären und sekundären Endpunkte identisch.
+Die sekundäre Region steht für Lesezugriff zur Verfügung, nachdem Sie RA-GRS oder RA-GZRS aktiviert haben, sodass Sie Ihre Anwendung vorab testen können, um sicherzustellen, dass sie bei einem Ausfall ordnungsgemäß aus der sekundären Region liest. Weitere Informationen zum Entwerfen von hoch verfügbaren Anwendungen finden Sie unter [Verwenden von Georedundanz zum Entwerfen von hoch verfügbaren Anwendungen](geo-redundant-design.md).
+
+Wenn Lesezugriff auf den sekundären Standort aktiviert ist, kann Ihre Anwendung sowohl vom sekundären Endpunkt als auch vom primären Endpunkt gelesen werden. Der sekundäre Endpunkt fügt das Suffix *–secondary* an den Kontonamen an. Wenn Ihr primärer Endpunkt für Blob Storage z. B. `myaccount.blob.core.windows.net` ist, lautet Ihr sekundärer Endpunkt `myaccount-secondary.blob.core.windows.net`. Die Zugriffsschlüssel für das Speicherkonto sind für die primären und sekundären Endpunkte identisch.
 
 ### <a name="check-the-last-sync-time-property"></a>Überprüfen der Eigenschaft für die letzte Synchronisierung
 

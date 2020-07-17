@@ -3,12 +3,12 @@ title: Planen der Bereitstellung eines Azure Service Fabric-Clusters
 description: Erfahren Sie in diesem Artikel, wie Sie die Bereitstellung von Service Fabric-Clusters für eine Produktionsumgebung in Azure planen und vorbereiten.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422282"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610590"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planen und Vorbereiten der Clusterbereitstellung
 
@@ -28,7 +28,7 @@ Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstel
 * Die Zuverlässigkeits- und Dauerhaftigkeitsmerkmale des Clusters
 
 ### <a name="select-the-initial-number-of-node-types"></a>Auswählen der anfänglichen Anzahl von Knotentypen
-Zuerst müssen Sie ermitteln, für welche Zwecke der von Ihnen erstellte Cluster verwendet werden soll. Welche Arten von Anwendungen sollen in diesem Cluster bereitgestellt werden? Weist Ihre Anwendung mehrere Dienste auf, und müssen einige dieser Dienste öffentlich sein oder über Internetzugriff verfügen? Haben Ihre Dienste (aus denen sich Ihre Anwendung zusammensetzt) unterschiedliche Infrastrukturanforderungen, z. B. höhere RAM-Anforderungen oder längere CPU-Zyklen? Ein Service Fabric-Cluster kann aus mehreren Knotentypen bestehen: einem primären Knotentyp und einem oder mehreren nicht primären Knotentypen. Jeder Knotentyp wird einer VM-Skalierungsgruppe zugeordnet. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Es können [Knoteneigenschaften und Platzierungseinschränkungen][placementconstraints] festgelegt werden, um bestimmte Dienste auf bestimmte Knotentypen zu beschränken.  Weitere Informationen hierzu finden Sie im Abschnitt [Die Anzahl von Knotentypen, über die Ihr Cluster anfänglich verfügen muss](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with).
+Zuerst müssen Sie ermitteln, für welche Zwecke der von Ihnen erstellte Cluster verwendet werden soll. Welche Arten von Anwendungen sollen in diesem Cluster bereitgestellt werden? Weist Ihre Anwendung mehrere Dienste auf, und müssen einige dieser Dienste öffentlich sein oder über Internetzugriff verfügen? Haben Ihre Dienste (aus denen sich Ihre Anwendung zusammensetzt) unterschiedliche Infrastrukturanforderungen, z. B. höhere RAM-Anforderungen oder längere CPU-Zyklen? Ein Service Fabric-Cluster kann aus mehreren Knotentypen bestehen: einem primären Knotentyp und einem oder mehreren nicht primären Knotentypen. Jeder Knotentyp wird einer VM-Skalierungsgruppe zugeordnet. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Es können [Knoteneigenschaften und Platzierungseinschränkungen][placementconstraints] festgelegt werden, um bestimmte Dienste auf bestimmte Knotentypen zu beschränken.  Weitere Informationen finden Sie unter [Kapazitätsplanung für Service Fabric-Cluster](service-fabric-cluster-capacity.md).
 
 ### <a name="select-node-properties-for-each-node-type"></a>Auswählen der Knoteneigenschaften für die einzelnen Knotentypen
 Knotentypen definieren die VM-SKU, die Anzahl und die Eigenschaften der virtuellen Computer in der zugehörigen Skalierungsgruppe.
@@ -37,7 +37,7 @@ Die Mindestgröße der VMs für jeden Knotentyp hängt von der [Dauerhaftigkeits
 
 Die Mindestanzahl der VMs für den primären Knotentyp hängt von der von Ihnen ausgewählten [Zuverlässigkeitsstufe][reliability] ab.
 
-Beachten Sie die Mindestempfehlungen für [primäre Knotentypen](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [zustandsbehaftete Workloads für nicht primäre Knotentypen](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads) und [zustandslose Workloads für nicht primäre Knotentypen](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads).
+Beachten Sie die Mindestempfehlungen für [primäre Knotentypen](service-fabric-cluster-capacity.md#primary-node-type), [zustandsbehaftete Workloads für nicht primäre Knotentypen](service-fabric-cluster-capacity.md#stateful-workloads) und [zustandslose Workloads für nicht primäre Knotentypen](service-fabric-cluster-capacity.md#stateless-workloads).
 
 Eine die Mindestanzahl von Knoten überschreitende Anzahl sollte auf der Anzahl der Replikate der Anwendung/Dienste basieren, die mit diesem Knotentyp ausgeführt werden sollen.  Die [Kapazitätsplanung für Service Fabric-Anwendungen](service-fabric-capacity-planning.md) hilft Ihnen, die Ressourcen abzuschätzen, die Sie für die Ausführung Ihrer Anwendungen benötigen. Sie können den Cluster später jederzeit vergrößern oder verkleinern, um ihn an eine sich ändernde Workload von Anwendungen anzupassen. 
 
@@ -123,5 +123,5 @@ Sind Ihre Anwendung und Ihr Cluster bereit für den Produktionsdatenverkehr? Geh
 * [Create a Service Fabric cluster running Linux (Erstellen eines Service Fabric-Clusters unter Linux)](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster

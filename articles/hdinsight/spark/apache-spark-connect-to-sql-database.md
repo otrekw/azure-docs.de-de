@@ -1,32 +1,32 @@
 ---
 title: Verwenden von Apache Spark zum Lesen und Schreiben von Daten in einer Azure SQL-Datenbank
-description: Informationen zum Einrichten einer Verbindung zwischen einem HDInsight Spark-Cluster und einer Azure SQL-Datenbank-Instanz So lesen, schreiben und streamen Sie Daten in eine SQL-Datenbank
+description: Informationen zum Einrichten einer Verbindung zwischen einem HDInsight Spark-Cluster und Azure SQL-Datenbank. So lesen, schreiben und streamen Sie Daten in eine SQL-Datenbank
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: f0bc1890fd5ca9c045caa6325f474e85f1b85622
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022247"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078815"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Verwenden eines HDInsight Spark-Clusters zum Lesen und Schreiben von Daten in einer Azure SQL-Datenbank
 
-Erfahren Sie, wie Sie eine Verbindung zwischen einem Apache Spark-Cluster in Azure HDInsight und einer Azure SQL-Datenbank-Instanz herstellen und dann Daten in der SQL-Datenbank lesen, schreiben und streamen. In diesem Artikel wird ein Jupyter Notebook zum Ausführen der Scala-Codeausschnitte verwendet. Sie können allerdings auch eine eigenständige Anwendung in Scala oder Python erstellen und die gleichen Aufgaben ausführen.
+Erfahren Sie, wie Sie eine Verbindung zwischen einem Apache Spark-Cluster in Azure HDInsight und Azure SQL-Datenbank herstellen. Daten in der SQL-Datenbank lesen, schreiben und streamen. In diesem Artikel wird ein Jupyter Notebook zum Ausführen der Scala-Codeausschnitte verwendet. Sie können allerdings auch eine eigenständige Anwendung in Scala oder Python erstellen und die gleichen Aufgaben ausführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure HDInsight Spark-Cluster.  Befolgen Sie dazu die Anweisungen unter [Erstellen eines Apache Spark-Clusters in HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* Azure SQL-Datenbank. Befolgen Sie dazu die Anweisungen unter [Erstellen einer Azure SQL-Datenbank](../../azure-sql/database/single-database-create-quickstart.md). Stellen Sie sicher, dass Sie eine Datenbank mit dem **AdventureWorksLT**-Beispielschema und den zugehörigen Daten erstellen. Stellen Sie außerdem sicher, dass Sie eine Firewallregel auf Serverebene erstellen, sodass die IP-Adresse des Clients auf die SQL-Datenbank auf dem Server zugreifen kann. Die Anweisungen zum Hinzufügen der Firewallregel sind im gleichen Artikel enthalten. Halten Sie nach dem Erstellen der Azure SQL-Datenbank die folgenden Werte bereit. Sie benötigen sie, um über einen Spark-Cluster eine Verbindung mit der Datenbank herzustellen.
+* Azure SQL-Datenbank. Befolgen Sie dazu die Anweisungen unter [Erstellen einer Datenbank in Azure SQL-Datenbank](../../azure-sql/database/single-database-create-quickstart.md). Stellen Sie sicher, dass Sie eine Datenbank mit dem **AdventureWorksLT**-Beispielschema und den zugehörigen Daten erstellen. Stellen Sie außerdem sicher, dass Sie eine Firewallregel auf Serverebene erstellen, sodass die IP-Adresse des Clients auf die SQL-Datenbank zugreifen kann. Die Anweisungen zum Hinzufügen der Firewallregel sind im gleichen Artikel enthalten. Halten Sie nach dem Erstellen der SQL-Datenbank die folgenden Werte bereit. Sie benötigen sie, um über einen Spark-Cluster eine Verbindung mit der Datenbank herzustellen.
 
-    * Name des Servers, der die Azure SQL-Datenbank hostet.
-    * Name der Azure SQL-Datenbank.
+    * Servername.
+    * Datenbankname.
     * Benutzername/Kennwort des Azure SQL-Datenbankadministrators.
 
 * SQL Server Management Studio (SSMS). Befolgen Sie dazu die Anweisungen unter [Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](../../azure-sql/database/connect-query-ssms.md).
@@ -52,7 +52,7 @@ Erstellen Sie zunächst ein dem Spark-Cluster zugeordnetes Jupyter Notebook. Sie
     Weitere Informationen zu den Kernels finden Sie unter [Verfügbare Kernels für Jupyter Notebooks mit Apache Spark-Clustern unter HDInsight (Linux)](apache-spark-jupyter-notebook-kernels.md).
 
    > [!NOTE]  
-   > In diesem Artikel wird ein Spark-Kernel (Scala) verwendet, da das Streamen von Daten von Spark in eine SQL-Datenbank derzeit nur in Scala und Java unterstützt wird. Das Lesen und Schreiben von Daten in SQL kann zwar auch über Python erfolgen. Aus Gründen der Einheitlichkeit wird in diesem Artikel jedoch Scala für alle drei Vorgänge verwendet.
+   > In diesem Artikel wird ein Spark-Kernel (Scala) verwendet, da das Streamen von Daten von Spark in SQL-Datenbank derzeit nur in Scala und Java unterstützt wird. Das Lesen und Schreiben von Daten in SQL kann zwar auch über Python erfolgen. Aus Gründen der Einheitlichkeit wird in diesem Artikel jedoch Scala für alle drei Vorgänge verwendet.
 
 1. Ein neues Notebook mit dem Standardnamen **Unbenannt** wird geöffnet. Klicken Sie auf den Namen des Notebooks, und geben Sie den gewünschten Namen ein.
 
@@ -64,10 +64,10 @@ Nun können Sie die Anwendung erstellen.
 
 In diesem Abschnitt lesen Sie Daten aus einer Tabelle (z.B. **SalesLT.Address**) in der AdventureWorks-Datenbank.
 
-1. Fügen Sie den folgenden Codeausschnitt in einem neuen Jupyter Notebook in einer Codezelle ein, und ersetzen Sie die Platzhalterwerte durch die Werte für Ihre Azure SQL-Datenbank.
+1. Fügen Sie den folgenden Codeausschnitt in einem neuen Jupyter Notebook in einer Codezelle ein, und ersetzen Sie die Platzhalterwerte durch die Werte für Ihre Datenbank.
 
     ```scala
-    // Declare the values for your Azure SQL database
+    // Declare the values for your database
 
     val jdbcUsername = "<SQL DB ADMIN USER>"
     val jdbcPassword = "<SQL DB ADMIN PWD>"
@@ -89,7 +89,7 @@ In diesem Abschnitt lesen Sie Daten aus einer Tabelle (z.B. **SalesLT.Address**)
     connectionProperties.put("password", s"${jdbcPassword}")
     ```
 
-1. Verwenden Sie den folgenden Codeausschnitt, um einen Dataframe mit den Daten aus einer Tabelle in der Azure SQL-Datenbank zu erstellen. In diesem Codeausschnitt wird die Tabelle `SalesLT.Address` verwendet, die als Bestandteil der **AdventureWorksLT**-Datenbank verfügbar ist. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
+1. Verwenden Sie den folgenden Codeausschnitt, um einen Dataframe mit den Daten aus einer Tabelle in der Datenbank zu erstellen. In diesem Codeausschnitt wird die Tabelle `SalesLT.Address` verwendet, die als Bestandteil der **AdventureWorksLT**-Datenbank verfügbar ist. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
 
     ```scala
     val sqlTableDF = spark.read.jdbc(jdbc_url, "SalesLT.Address", connectionProperties)
@@ -119,12 +119,12 @@ In diesem Abschnitt lesen Sie Daten aus einer Tabelle (z.B. **SalesLT.Address**)
 
 ## <a name="write-data-into-azure-sql-database"></a>Schreiben von Daten in die Azure SQL-Datenbank
 
-In diesem Abschnitt wird über eine im Cluster verfügbare CSV-Datei eine Tabelle in der Azure SQL-Datenbank erstellt und diese mit Daten gefüllt. Die CSV-Beispieldatei (**HVAC.csv**) steht für alle HDInsight-Cluster unter `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv` zur Verfügung.
+In diesem Abschnitt wird über eine im Cluster verfügbare CSV-Datei eine Tabelle in Ihrer Datenbank erstellt und diese dann mit Daten aufgefüllt. Die CSV-Beispieldatei (**HVAC.csv**) steht für alle HDInsight-Cluster unter `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv` zur Verfügung.
 
-1. Fügen Sie den folgenden Codeausschnitt in einem neuen Jupyter Notebook in einer Codezelle ein, und ersetzen Sie die Platzhalterwerte durch die Werte für Ihre Azure SQL-Datenbank.
+1. Fügen Sie den folgenden Codeausschnitt in einem neuen Jupyter Notebook in einer Codezelle ein, und ersetzen Sie die Platzhalterwerte durch die Werte für Ihre Datenbank.
 
     ```scala
-    // Declare the values for your Azure SQL database
+    // Declare the values for your database
 
     val jdbcUsername = "<SQL DB ADMIN USER>"
     val jdbcPassword = "<SQL DB ADMIN PWD>"
@@ -160,7 +160,7 @@ In diesem Abschnitt wird über eine im Cluster verfügbare CSV-Datei eine Tabell
     spark.sql("create table hvactable_hive as select * from temphvactable")
     ```
 
-1. Verwenden Sie schließlich die Hive-Tabelle zum Erstellen einer Tabelle in der Azure SQL-Datenbank. Mit dem folgenden Codeausschnitt wird `hvactable` in der Azure SQL-Datenbank erstellt.
+1. Verwenden Sie schließlich die Hive-Tabelle zum Erstellen einer Tabelle Ihrer Datenbank. Mit dem folgenden Codeausschnitt wird `hvactable` in der Azure SQL-Datenbank erstellt.
 
     ```scala
     spark.table("hvactable_hive").write.jdbc(jdbc_url, "hvactable", connectionProperties)
@@ -170,11 +170,11 @@ In diesem Abschnitt wird über eine im Cluster verfügbare CSV-Datei eine Tabell
 
     a. Starten Sie SSMS, und stellen Sie unter Angabe der entsprechenden Verbindungsdetails (siehe dazu Screenshot unten) eine Verbindung mit der Azure SQL-Datenbank her.
 
-    ![Verbinden mit der SQL-Datenbank über SSMS1](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Verbinden mit der SQL-Datenbank über SSMS1")
+    ![Verbinden mit SQL-Datenbank über SSMS1](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Verbinden mit SQL-Datenbank über SSMS1")
 
-    b. Erweitern Sie im **Objekt-Explorer** die Azure SQL-Datenbank und den Knoten „Tables“, um die erstellte Tabelle **dbo.hvactable** anzuzeigen.
+    b. Erweitern Sie im **Objekt-Explorer** die Datenbank und den Knoten „Tables“, um die erstellte Tabelle **dbo.hvactable** anzuzeigen.
 
-    ![Verbinden mit der SQL-Datenbank über SSMS2](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Verbinden mit der SQL-Datenbank über SSMS2")
+    ![Verbinden mit SQL-Datenbank über SSMS2](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Verbinden mit SQL-Datenbank über SSMS2")
 
 1. Führen Sie eine Abfrage in SSMS aus, um die Spalten in der Tabelle zu sehen.
 
@@ -184,7 +184,7 @@ In diesem Abschnitt wird über eine im Cluster verfügbare CSV-Datei eine Tabell
 
 ## <a name="stream-data-into-azure-sql-database"></a>Streamen von Daten in die Azure SQL-Datenbank
 
-In diesem Abschnitt werden Daten in die Tabelle `hvactable` gestreamt, die Sie im vorherigen Abschnitt in der Azure SQL-Datenbank erstellt haben.
+In diesem Abschnitt werden Daten in die Tabelle `hvactable` gestreamt, die Sie im vorherigen Abschnitt erstellt haben.
 
 1. Stellen Sie in einem ersten Schritt sicher, dass in `hvactable` keine Datensätze vorhanden sind. Führen Sie unter Verwendung von SSMS die folgende Abfrage für die Tabelle aus.
 
@@ -214,7 +214,7 @@ In diesem Abschnitt werden Daten in die Tabelle `hvactable` gestreamt, die Sie i
 
     ![HDInsight Apache Spark – Schematabelle](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Schema der Tabelle")
 
-1. Verwenden Sie schließlich den folgenden Codeausschnitt, um Daten aus der Datei „HVAC.csv“ zu lesen und in die Tabelle `hvactable` in der Azure SQL-Datenbank zu streamen. Fügen Sie den Codeausschnitt in eine Codezelle ein, ersetzen Sie die Platzhalterwerte durch die Werte für Ihre Azure SQL-Datenbank, und drücken Sie dann **UMSCHALT+EINGABE**, um die Codezelle auszuführen.
+1. Verwenden Sie schließlich den folgenden Codeausschnitt, um Daten aus der Datei „HVAC.csv“ zu lesen und in die Tabelle `hvactable` in Ihrer Datenbank zu streamen. Fügen Sie den Codeausschnitt in eine Codezelle ein, ersetzen Sie die Platzhalterwerte durch die Werte für Ihre Datenbank, und drücken Sie dann **UMSCHALT+EINGABE**, um die Codezelle auszuführen.
 
     ```scala
     val WriteToSQLQuery  = readStreamDf.writeStream.foreach(new ForeachWriter[Row] {

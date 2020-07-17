@@ -6,16 +6,16 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 4854fabb3dccc276ec32a596a42263acd07ac276
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010901"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85316066"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>ASP.NET-Sitzungszustandsanbieter für Azure Cache for Redis
 
-Azure Cache for Redis stellt einen Sitzungszustandsanbieter bereit, mit dem Sie den Sitzungszustand im Arbeitsspeicher mit Azure Cache for Redis anstatt in einer SQL Server-Datenbank speichern können. Um den Sitzungszustandsanbieter zu verwenden, konfigurieren Sie zuerst den Cache, und konfigurieren Sie danach Ihre ASP.NET-Anwendung für den Cache mithilfe des NuGet-Pakets für den Azure Cache for Redis-Sitzungszustand.
+Azure Cache for Redis stellt einen Sitzungszustandsanbieter bereit, mit dem Sie den Sitzungszustand im Arbeitsspeicher mit Azure Cache for Redis anstatt in einer SQL Server-Datenbank speichern können. Um den Sitzungszustandsanbieter zu verwenden, konfigurieren Sie zuerst den Cache, und konfigurieren Sie danach Ihre ASP.NET-Anwendung für den Cache mithilfe des NuGet-Pakets für den Azure Cache for Redis-Sitzungszustand. Informationen zu ASP.NET Core-Anwendungen finden Sie unter [Sitzungs- und Zustandsverwaltung in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/app-state).
 
 Im praktischen Einsatz von Cloud-Apps lässt sich das Speichern von Zustandsinformationen für eine Benutzersitzung oft nicht vermeiden. Allerdings beeinträchtigen einige Herangehensweisen die Leistung und Skalierbarkeit stärker als andere. Wenn Sie einen Sitzungszustand speichern müssen, ist es am besten, die Menge der Zustandsinformationen niedrig zu halten und sie in Cookies zu speichern. Wenn das nicht umsetzbar ist, besteht die nächstbeste Lösung darin, den ASP.NET-Sitzungszustand mit einem Anbieter für verteilten In-Memory-Cache zu verwenden. Die schlechteste Lösung im Hinblick auf Leistung und Skalierbarkeit wäre es, einen datenbankbasierten Sitzungszustandsanbieter zu verwenden. Dieses Thema bietet einen Leitfaden zum Verwenden des ASP.NET-Sitzungszustandsanbieters für Azure Cache for Redis. Informationen zu anderen Optionen für den Sitzungszustand finden Sie unter [Optionen für den ASP.NET-Sitzungszustand](#aspnet-session-state-options).
 
@@ -94,7 +94,7 @@ Konfigurieren Sie die Attribute mit den Werten vom Blatt „Cache“ im Microsof
 * **operationTimeoutInMilliseconds** : Diese Einstellung ermöglicht Ihnen, die syncTimeout-Einstellung im StackExchange.Redis-Client zu überschreiben. Wenn Sie sie nicht angegeben, wird die syncTimeout-Standardeinstellung „1000“ verwendet. Weitere Informationen finden Sie unter [StackExchange.Redis-Konfigurationsmodell](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **redisSerializerType:** Mit dieser Einstellung können Sie eine benutzerdefinierte Serialisierung des Sitzungsinhalts, der an Redis gesendet wird, angeben. Der angegebene Typ muss `Microsoft.Web.Redis.ISerializer` implementieren und einen öffentlichen parameterlosen Konstruktor deklarieren. Standardmäßig wird `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` verwendet.
 
-Weitere Informationen über diese Eigenschaften finden Sie im Blogbeitrag mit der ursprünglichen Ankündigung: [Announcing ASP.NET Session State Provider for Redis](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)(in englischer Sprache).
+Weitere Informationen über diese Eigenschaften finden Sie im Blogbeitrag mit der ursprünglichen Ankündigung: [Announcing ASP.NET Session State Provider for Redis](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)(in englischer Sprache).
 
 Vergessen Sie nicht, den Abschnitt mit dem als Standard verwendeten InProc-Sitzungszustandsanbieter in Ihrer web.config-Datei auszukommentieren.
 

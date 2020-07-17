@@ -1,45 +1,31 @@
 ---
 title: Azure Service Bus-Authentifizierung und -Autorisierung | Microsoft-Dokumentation
 description: Authentifizieren Sie Service Bus-Apps mit Shared Access Signature-Authentifizierung (SAS).
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: 18bad0ed-1cee-4a5c-a377-facc4785c8c9
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/22/2019
-ms.author: aschhab
-ms.openlocfilehash: 7234e33c04e742c77630f8d87481c7831fb00bf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 56461c13cf6589b5f66f05837e1bcaa6a49a58c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70013247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337716"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus-Authentifizierung und -Autorisierung
-
-Anwendungen können mithilfe der SAS-Tokenauthentifizierung (Shared Access Signature) Zugriff auf Azure Service Bus-Ressourcen erhalten. Mit SAS legen Anwendungen Service Bus ein Token vor, das mit einem symmetrischen Schlüssel signiert wurde, der sowohl dem Tokenaussteller als auch Service Bus bekannt ist (daher „shared“), und dieser Schlüssel ist direkt einer Regel zugeordnet, die bestimmte Zugriffsrechte erteilt, z.B. die Berechtigung zum Empfangen von/Lauschen auf oder Senden von Nachrichten. SAS-Regeln werden entweder auf dem Namespace oder direkt auf Entitäten wie einer Warteschlange oder einem Thema konfiguriert, sodass eine differenzierte Zugriffssteuerung möglich ist.
-
-SAS-Token können entweder direkt von einem Service Bus-Client oder einem dazwischen liegenden Tokenausstellungs-Endpunkt generiert werden, mit dem der Client interagiert. Ein System könnte z.B. voraussetzen, dass der Client einen durch Active Directory-Autorisierung geschützten Webdienst-Endpunkt aufruft, um seine Identität und seine Systemzugriffsrechte nachzuweisen, und der Webdienst gibt dann das entsprechende Service Bus-Token zurück. Dieses SAS-Token kann problemlos mit dem Service Bus-Tokenanbieter generiert werden, der im Azure SDK enthalten ist. 
-
-> [!IMPORTANT]
-> Wenn Sie die Azure Active Directory-Zugriffssteuerung (auch als Access Control Service oder ACS bezeichnet) mit Service Bus verwenden, beachten Sie, dass die Unterstützung dieser Methode jetzt beschränkt ist und Sie Ihre Anwendung zur Verwendung von SAS migrieren sollten. Weitere Informationen finden Sie in [diesem Blogbeitrag](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/) und [diesem Artikel](service-bus-migrate-acs-sas.md).
+Es gibt zwei Möglichkeiten, den Zugriff auf Azure Service Bus-Ressourcen zu authentifizieren und zu autorisieren: Azure Active Directory (Azure AD) und Shared Access Signatures (SAS). In diesem Artikel erhalten Sie Informationen zur Verwendung dieser beiden Arten von Sicherheitsmechanismen. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Azure Active Directory-Integration (Azure AD) für Service Bus-Ressourcen bietet rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für eine präzise Steuerung des Zugriffs eines Clients auf Ressourcen. Sie können die rollenbasierte Zugriffssteuerung (RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer, eine Gruppe oder einen Anwendungsdienstprinzipal handeln kann. Der Sicherheitsprinzipal wird von Azure AD authentifiziert, um ein OAuth 2.0-Token zurückzugeben. Das Token kann zum Autorisieren einer Anforderung für den Zugriff auf eine Service Bus-Ressource verwendet werden.
+Azure AD-Integration für Service Bus-Ressourcen bietet rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für eine präzise Steuerung des Zugriffs eines Clients auf Ressourcen. Sie können die rollenbasierte Zugriffssteuerung (RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer, eine Gruppe oder einen Anwendungsdienstprinzipal handeln kann. Der Sicherheitsprinzipal wird von Azure AD authentifiziert, um ein OAuth 2.0-Token zurückzugeben. Das Token kann zum Autorisieren einer Anforderung für den Zugriff auf eine Service Bus-Ressource verwendet werden.
 
 Weitere Informationen zur Authentifizierung mit Azure AD finden Sie in den folgenden Artikeln:
 
 - [Authentifizieren mit verwalteten Dienstidentitäten](service-bus-managed-service-identity.md)
 - [Authentifizieren über eine Anwendung](authenticate-application.md)
 
+> [!NOTE]
+> Die [Service Bus REST-API](/rest/api/servicebus/) unterstützt die OAuth-Authentifizierung mit Azure AD.
+
 > [!IMPORTANT]
 > Das Autorisieren von Benutzern oder Anwendungen mithilfe eines von Azure AD zurückgegebenen OAuth 2.0-Tokens bietet mehr Sicherheit und Benutzerfreundlichkeit als die Autorisierung per SAS (Shared Access Signature). Mit Azure AD ist es nicht erforderlich, Token in Ihrem Code zu speichern und potenzielle Sicherheitsrisiken einzugehen. Wir empfehlen, dass Sie Azure AD nach Möglichkeit mit Ihren Azure Service Bus-Anwendungen verwenden. 
-
 
 ## <a name="shared-access-signature"></a>Shared Access Signature (SAS)
 Mit der [SAS-Authentifizierung](service-bus-sas.md) können Sie einem Benutzer Zugriff auf Service Bus-Ressourcen mit spezifischen Rechten gewähren. Die SAS-Authentifizierung in Service Bus umfasst die Konfiguration eines kryptografischen Schlüssels mit den zugehörigen Rechten für eine Service Bus-Ressource. Clients können Zugriff auf diese Ressource erlangen, indem sie ein SAS-Token bereitstellen. Dieses setzt sich aus dem Ressourcen-URI, auf den zugegriffen wird, und einer Ablaufangabe zusammen, die mit dem konfigurierten Schlüssel signiert wird.
@@ -59,10 +45,15 @@ Für den Zugriff auf eine Entität erfordert der Client ein SAS-Token, das mithi
 
 Die Unterstützung der SAS-Authentifizierung für Service Bus ist im Azure .NET SDK, Version 2.0 oder höher, enthalten. SAS umfasst Unterstützung für eine [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Alle APIs, die eine Verbindungszeichenfolge als Parameter akzeptieren, enthalten Unterstützung für SAS-Verbindungszeichenfolgen.
 
+> [!IMPORTANT]
+> Wenn Sie die Azure Active Directory-Zugriffssteuerung (auch als Access Control Service oder ACS bezeichnet) mit Service Bus verwenden, beachten Sie, dass die Unterstützung dieser Methode jetzt beschränkt ist und Sie Ihre Anwendung zur [Verwendung von SAS migrieren](service-bus-migrate-acs-sas.md) oder OAuth 2.0-Authentifizierung mit Azure AD (empfohlen) verwenden sollten. Weitere Informationen zur Einstellung von ACS findenSie in [diesem Blogbeitrag](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/).
+
 ## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zur Authentifizierung mit Azure AD finden Sie in den folgenden Artikeln:
 
-- Weitere Informationen zu SAS finden Sie unter [SAS-Authentifizierung (Shared Access Signature) bei Service Bus](service-bus-sas.md) .
-- [Migrieren vom Azure Active Directory-Access Control Service (ACS) zur SAS-Autorisierung](service-bus-migrate-acs-sas.md).
-- [Änderungen an Namespaces mit ACS-Unterstützung](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/).
-- Die entsprechenden Informationen zur Azure Relay-Authentifizierung und -Autorisierung finden Sie unter [Azure Relay-Authentifizierung und -Autorisierung](../service-bus-relay/relay-authentication-and-authorization.md). 
+- [Authentifizierung mit verwalteten Identitäten](service-bus-managed-service-identity.md)
+- [Authentifizierung aus einer Anwendung](authenticate-application.md)
 
+Weitere Informationen zur Authentifizierung mit SAS finden Sie in den folgenden Artikeln:
+
+- [Authentifizierung mit SAS](service-bus-sas.md)

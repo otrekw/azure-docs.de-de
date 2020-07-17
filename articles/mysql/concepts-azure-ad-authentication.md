@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: a94b2897b3e84688cd7dc5c7bca96a0f7a4449d1
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 12316abd4a738d54e01f88873498e4b299d6053d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556362"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit MySQL
 
@@ -66,8 +66,11 @@ Die Azure Active Directory-Authentifizierung unterstützt die folgenden Methoden
 - Azure Active Directory Integrated
 - Azure Active Directory: universell mit MFA
 - Verwenden von Active Directory Anwendungszertifikaten oder Clientgeheimnissen
+- [Verwaltete Identität](howto-connect-with-managed-identity.md)
 
 Nachdem Sie sich über Active Directory authentifiziert haben, rufen Sie ein Token ab. Dieses Token ist Ihr Kennwort für die Anmeldung.
+
+Beachten Sie, dass Verwaltungsvorgänge, z. B. das Hinzufügen neuer Benutzer, zu diesem Zeitpunkt nur für Azure AD-Benutzerrollen unterstützt werden.
 
 > [!NOTE]
 > Weitere Informationen zum Herstellen einer Verbindung mit einem Active Directory-Token finden Sie unter [Konfigurieren und Anmelden mit Azure AD für Azure Database for MySQL](howto-configure-sign-in-azure-ad-authentication.md).

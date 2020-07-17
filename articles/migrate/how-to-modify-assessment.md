@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: 2cfac978b0a5af20e9e2fa1e32a7361488f20fbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc6f41d7cc08764266ffb6705d1b8937d355199
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68234266"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109721"
 ---
 # <a name="customize-an-assessment"></a>Anpassen einer Bewertung
 
@@ -19,23 +19,30 @@ Dieser Artikel beschreibt, wie Sie mit der Azure Migrate-Serverbewertung erstell
 
 [Azure Migrate](migrate-services-overview.md) ist ein zentraler Hub zum Nachverfolgen der Ermittlung, Bewertung und Migration Ihrer lokalen Apps und Workloads sowie von VMs in der privaten/öffentlichen Cloud zu Azure. Der Hub stellt Azure Migrate-Tools für die Bewertung und Migration sowie Angebote von unabhängigen Drittanbietern (Independent Software Vendors, ISVs) bereit.
 
-Mit dem Tool Azure Migrate-Serverbewertung können Sie Bewertungen für lokale VMware-VMs und Hyper-V-VMs in Vorbereitung auf die Migration zu Azure erstellen.
+Mit dem Tool Azure Migrate-Serverbewertung können Sie Bewertungen für lokale VMware-VMs und Hyper-V-VMs in Vorbereitung auf die Migration zu Azure erstellen. Das Serverbewertungstool bewertet lokale Server für die Migration zu virtuellen Azure IaaS-Computern und Azure VMware Solution (AVS). 
 
 ## <a name="about-assessments"></a>Informationen zu Bewertungen
 
-Mit der Azure Migrate-Serverbewertung können zwei Arten von Bewertungen ausgeführt werden.
+Bewertungen, die Sie mit der Serverbewertung erstellen, sind Momentaufnahmen von Daten zu einem bestimmten Zeitpunkt. Es gibt zwei Arten von Bewertungen, die Sie mit der Azure Server Assessment“ (Azure Migrate-Serverbewertung) erstellen.
 
-**Bewertung** | **Details** | **Daten**
+**Bewertungstyp** | **Details**
+--- | --- 
+**Azure-VM** | Bewertungen zum Migrieren Ihrer lokalen Server zu virtuellen Azure-Computern. <br/><br/> Sie können Ihre lokalen [VMware-VMs](how-to-set-up-appliance-vmware.md), [Hyper-V-VMs](how-to-set-up-appliance-hyper-v.md) und [physischen Server](how-to-set-up-appliance-physical.md) für die Migration zu Azure bewerten, indem Sie diesen Bewertungstyp verwenden.(concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Bewertungen zum Migrieren Ihrer lokalen Server zu [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> Sie können Ihre lokalen [VMware-VMs](how-to-set-up-appliance-vmware.md) für die Migration zu Azure VMware Solution (AVS) bewerten, indem Sie diesen Bewertungstyp verwenden. [Weitere Informationen](concepts-azure-vmware-solution-assessment-calculation.md)
+
+Eine Azure VM-Bewertung in der Serverbewertung bietet zwei Optionen für Größenkriterien:
+
+**Größenkriterien** | **Details** | **Daten**
 --- | --- | ---
-**Leistungsbasiert** | Bewertungen basierend auf gesammelten Leistungsdaten | **Empfohlene VM-Größe**: Basierend auf CPU- und Arbeitsspeicher-Nutzungsdaten<br/><br/> **Empfohlener Datenträgertyp (Verwalteter Datenträger vom Typ Standard oder Premium)** : Basierend auf IOPS und Durchsatz der lokalen Datenträger
-**Wie lokal** | Bewertungen basierend auf lokaler Größenanpassung | **Empfohlene VM-Größe**: Basierend auf der Größe der lokalen VM<br/><br> **Empfohlener Datenträgertyp**: Basierend auf der für die Bewertung ausgewählten Speichertypeinstellung
+**Leistungsbasiert** | Bewertungen, die Empfehlungen auf der Grundlage der erfassten Leistungsdaten aussprechen | **Bewertung vom Typ „Virtueller Azure-Computer“** : Die Empfehlung zur VM-Größe basiert auf CPU- und Speicherauslastungsdaten.<br/><br/> Die Empfehlung zum Datenträgertyp (HDD/SSD Standard oder Premium) basiert auf dem IOPS und dem Durchsatz der lokalen Datenträger.<br/><br/> **Bewertung vom Typ „Azure VMware Solution (AVS)“** : Die Empfehlung zu AVS-Knoten basiert auf CPU- und Speicherauslastungsdaten.
+**Aktuelle lokale Umgebung** | Bewertungen, die keine Leistungsdaten verwenden, um Empfehlungen auszusprechen. | **Bewertung vom Typ „Virtueller Azure-Computer“** : Die Empfehlung zur VM-Größe basiert auf der lokalen VM-Größe<br/><br> Der empfohlene Datenträgertyp basiert auf dem, was Sie in der Speichertypeinstellung für die Bewertung auswählen.<br/><br/> **Bewertung vom Typ „Azure VMware Solution (AVS)“** : Die Empfehlung zu AVS-Knoten basiert auf der lokalen VM-Größe.
 
 
 ## <a name="how-is-an-assessment-done"></a>Wie wird eine Bewertung durchgeführt?
 
-Eine Bewertung in der Azure Migrate-Serverbewertung erfolgt in drei Phasen. Die Bewertung beginnt mit einer Eignungsanalyse, gefolgt von einer Größenanpassung und abschließend einer Schätzung der monatlichen Kosten. Ein Computer gelangt nur in die nächste Phase, wenn er die vorherige besteht. Beispiel: Besteht ein Computer die Azure-Eignungsprüfung nicht, wird er als ungeeignet für Azure markiert, und die Größen- und Kostenschätzungen werden nicht durchgeführt. [Weitere Informationen.](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation)
+Eine Bewertung in der Azure Migrate-Serverbewertung erfolgt in drei Phasen. Die Bewertung beginnt mit einer Eignungsanalyse, gefolgt von einer Größenanpassung und abschließend einer Schätzung der monatlichen Kosten. Ein Computer gelangt nur in die nächste Phase, wenn er die vorherige besteht. Beispiel: Besteht ein Computer die Azure-Eignungsprüfung nicht, wird er als ungeeignet für Azure markiert, und die Größen- und Kostenschätzungen werden nicht durchgeführt. [Weitere Informationen.](./concepts-assessment-calculation.md)
 
-## <a name="whats-in-an-assessment"></a>Was umfasst eine Bewertung?
+## <a name="whats-in-an-azure-vm-assessment"></a>Was umfasst eine Azure VM-Bewertung?
 
 **Eigenschaft** | **Details**
 --- | ---
@@ -53,6 +60,27 @@ Eine Bewertung in der Azure Migrate-Serverbewertung erfolgt in drei Phasen. Die 
 **VM-Betriebszeit** | Wenn Ihre virtuellen Computer nicht rund um die Uhr in Azure aktiv sind, können Sie den Zeitraum angeben (Anzahl der Tage pro Monat und Anzahl der Stunden pro Tag), für den sie voraussichtlich ausgeführt werden, um eine entsprechende Kostenschätzung zu erhalten.<br/> Der Standardwert sind 31 Tage pro Monat und 24 Stunden pro Tag.
 **Azure-Hybridvorteil** | Geben Sie an, ob Sie über die Software Assurance verfügen und den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) nutzen können. Wenn diese Einstellung auf „Ja“ festgelegt ist, werden für virtuelle Windows-Computer Nicht-Windows-Azure-Preise veranschlagt. Die Standardeinstellung ist „Ja“.
 
+## <a name="whats-in-an-azure-vmware-solution-avs-assessment"></a>Was ist eine Bewertung vom Typ „Azure VMware Solution (AVS)“?
+
+Eine AVS-Bewertung mit dem Serverbewertungstool umfasst Folgendes:
+
+
+| **Eigenschaft** | **Details** |
+| - | - |
+| **Zielstandort** | Gibt den Standort der privaten AVS-Cloud an, zu der Sie migrieren möchten.<br/><br/> Die AVS-Bewertung der Serverbewertung unterstützt derzeit die folgenden Zielregionen: „USA, Osten“, „Europa, Westen“, „USA, Westen“. |
+| **Speichertyp** | Gibt die Speicher-Engine an, die in AVS verwendet werden soll.<br/><br/> Beachten Sie, dass die AVS-Bewertungen nur vSAN als Standardspeichertyp unterstützen. |
+**Reservierte Instanzen (RI)** | Mit dieser Eigenschaft können Sie reservierte Instanzen in AVS angeben. RIs werden derzeit für AVS-Knoten nicht unterstützt. |
+**Knotentyp** | Gibt den [AVS-Knotentyp](../azure-vmware/concepts-private-clouds-clusters.md) an, der zum Zuordnen der lokalen VMs verwendet wird. Beachten Sie, dass der Standardknotentyp AV36 ist. <br/><br/> Azure Migrate empfiehlt eine erforderliche Anzahl von Knoten für die VMs, die zu AVS migriert werden sollen. |
+**FTT-Einstellung, RAID-Ebene** | Gibt die anwendbaren Optionen für tolerierbare Fehler (FTT) oder RAID-Kombinationen an. Die ausgewählte FTT-Option in Kombination mit der lokalen VM-Datenträgeranforderung bestimmt den gesamten in AVS erforderlichen vSAN-Speicher. |
+**Größenkriterium** | Legt das Kriterium fest, das zur _Größenanpassung_ virtueller Computer für AVS verwendet werden soll. Sie können eine _leistungsbasierte_ oder _lokale_ Größenanpassung vornehmen, ohne den Leistungsverlauf zu berücksichtigen. |
+**Leistungsverlauf** | Legt die zur Bewertung der Leistungsdaten der Computer zu berücksichtigende Dauer fest. Diese Eigenschaft ist nur anwendbar, wenn als Größenkriterium _leistungsbasiert_ festgelegt ist. |
+**Perzentilwert der Nutzung** | Gibt den für die Größenanpassung zu berücksichtigenden Perzentilwert des festgelegten Leistungsbeispiels. Diese Eigenschaft ist nur anwendbar, wenn eine leistungsbasierte Größenanpassung ausgewählt wurde.|
+**Komfortfaktor** | Bei der Azure Migrate-Serverbewertung wird während der Bewertung ein Puffer (Komfortfaktor) berücksichtigt. Dieser Puffer wird zusätzlich zu den Daten zur Computernutzung für VMs (CPU, Arbeitsspeicher, Datenträger und Netzwerk) angewendet. Beim Komfortfaktor geht es um Bereiche wie saisonale Nutzung, kurzer Leistungsverlauf und voraussichtliche zukünftige Zunahme der Nutzung.<br/><br/> Beispiel: Für einen virtuellen Computer mit zehn Kernen und einer Auslastung von 20 Prozent ergibt sich normalerweise ein virtueller Computer mit zwei Kernen. Bei einem Komfortfaktor von 2.0x ist das Ergebnis dagegen eine VM mit vier Kernen. |
+**Angebot** | Zeigt das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/) an, bei dem Sie registriert sind. Dies wird dann von Azure Migrate bei der Kostenschätzung entsprechend berücksichtigt.|
+**Währung** | Zeigt die Abrechnungswährung für Ihr Konto an. |
+**Rabatt (%)** | Listet alle abonnementspezifischen Rabatte auf, die Sie zusätzlich zum Azure-Angebot erhalten. Die Standardeinstellung ist 0 %. |
+**Azure-Hybridvorteil** | Gibt an, ob Sie über Software Assurance verfügen und den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) nutzen können. Obwohl dies aufgrund des knotenbasierten Preises keine Auswirkungen auf die Preisgestaltung von Azure VMware-Lösungen hat, können Kunden dennoch ihre lokalen Betriebssystemlizenzen (Microsoft-basiert) in AVS mit Azure-Hybridvorteilen anwenden. Andere Anbieter von Softwarebetriebssystemen werden ihre eigenen Lizenzbedingungen wie RHEL zur Verfügung stellen müssen. |
+**vCPU-Überzeichnung** | Gibt das Verhältnis der Anzahl der virtuellen Kerne an, die an einen physischen Kern im AVS-Knoten gebunden sind. Der Standardwert in den Berechnungen beträgt vier virtuelle CPUs (vCPU): Ein physischer Kern in AVS. <br/><br/> API-Benutzer können diesen Wert als ganze Zahl (Integer) festlegen. Beachten Sie, dass eine vCPU-Überzeichnung > 4:1 zu einer Leistungsbeeinträchtigung führen kann, aber für Workloads vom Typ „Webserver“ verwendet werden kann. |
 
 ## <a name="edit-assessment-properties"></a>Bearbeiten von Bewertungseigenschaften
 
@@ -61,7 +89,7 @@ Gehen Sie folgendermaßen vor, um Bewertungseigenschaften nach dem Erstellen ein
 1. Klicken Sie im Azure Migrate-Projekt auf **Server**.
 2. Klicken Sie in **Azure Migrate: Serverbewertung** auf den Bewertungenleistungsindikator.
 3. Klicken Sie in **Bewertung** auf die relevante Bewertung und dann auf **Eigenschaften bearbeiten**.
-5. Passen Sie die Bewertungseigenschaften in Übereinstimmung mit der obigen Tabelle an.
+5. Passen Sie die Bewertungseigenschaften in Übereinstimmung mit den obigen Tabellen an.
 6. Klicken Sie auf **Speichern**, um die Bewertung zu aktualisieren.
 
 
@@ -70,4 +98,5 @@ Sie können Bewertungseigenschaften auch bearbeiten, wenn Sie eine Bewertung ers
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Weitere Informationen](concepts-assessment-calculation.md) zur Berechnung von Bewertungen
+- [Weitere Informationen](concepts-assessment-calculation.md) zur Berechnung von Azure VM-Bewertungen.
+- [Weitere Informationen](concepts-azure-vmware-solution-assessment-calculation.md) zur Berechnung von AVS-Bewertungen.

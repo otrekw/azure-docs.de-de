@@ -5,22 +5,22 @@ author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 05/02/2020
-ms.openlocfilehash: 7f671e2a77a0a00fd1cc4338e29c14f7b8fca4f2
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 06/16/2020
+ms.openlocfilehash: 9c5d6359ce0e79fce2e80911ff78d19cc88162b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208704"
 ---
-# <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Database for PostgreSQL-Computeressourcen mit reservierter Kapazität
+# <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Database for PostgreSQL – Einzelserver-Computeressourcen mit reservierter Kapazität
 
 Mit Azure Database for PostgreSQL können Sie jetzt Geld im Vergleich zur nutzungsbasierten Bezahlung sparen, indem Sie Computeressourcen im Voraus bezahlen. Mit reservierten Azure Database for PostgreSQL-Kapazitäten leisten Sie eine Vorauszahlung für PostgreSQL-Server für einen Zeitraum von einem oder drei Jahren und erhalten dafür einen immensen Rabatt auf die Computekosten. Um reservierte Azure Database for PostgreSQL-Kapazität zu erwerben, müssen Sie die Azure-Region, den Bereitstellungstyp, die Leistungsstufe und die Laufzeit angeben. </br>
 
 Sie müssen die Reservierung nicht bestimmten Azure Database for PostgreSQL-Servern zuweisen. Azure Database for PostgreSQL-Server, die bereits ausgeführt oder neu bereitgestellt werden, profitieren automatisch von dem Reservierungspreisvorteil. Beim Kauf einer Reservierung bezahlen Sie im Voraus die Computekosten für einen Zeitraum von einem oder drei Jahren. Sobald Sie eine Reservierung gekauft haben, werden die Azure Database for PostgreSQL-Computegebühren, die den Reservierungsattributen entsprechen, nicht mehr zu den Preisen der nutzungsbasierten Bezahlung abgerechnet. Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für den PostgreSQL-Datenbankserver ab. Nach Ablauf der Reservierungslaufzeit erlischt der Abrechnungsvorteil, und die Azure Database for PostgreSQL-Server werden mit den Preisen für die nutzungsbasierte Bezahlung in Rechnung gestellt. Reservierungen werden nicht automatisch verlängert. Weitere Informationen zu den Preisen finden Sie unter [Azure Database for PostgreSQL – Preise](https://azure.microsoft.com/pricing/details/postgresql/). </br>
 
 > [!IMPORTANT]
-> Die Preise für reservierte Kapazitäten sind nur für die Azure Database for PostgreSQL-Bereitstellung [auf einem einzelnen Server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) verfügbar und nicht für die [Hyperscale Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus)-Bereitstellung.
+> Die Preise für reservierte Kapazitäten sind für Azure Database for PostgreSQL in den Bereitstellungsoptionen [Einzelserver](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) und [Hyperscale Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) verfügbar. Informationen zu den RI-Preisen für Hyperscale (Citus) finden Sie auf [dieser Seite](concepts-hyperscale-reserved-pricing.md).
 
 Sie können die reservierte Azure Database for PostgreSQL-Kapazität über das [Azure-Portal](https://portal.azure.com/) erwerben. Bezahlen Sie die Reservierung [im Voraus oder monatlich](../cost-management-billing/reservations/monthly-payments-reservations.md). So erwerben Sie reservierte Kapazität:
 
@@ -35,7 +35,7 @@ Einzelheiten zur Berechnung der Reservierung von Kapazitäten für Unternehmensk
 
 Die Größe der Reservierung muss auf der Gesamtmenge der Computeressourcen basieren, die von den bereits vorhandenen oder in Kürze bereitzustellenden Servern innerhalb einer bestimmten Region genutzt werden und die gleiche Leistungsstufe und Hardwaregeneration verwenden.</br>
 
-Nehmen Sie beispielsweise an, Sie führen eine universelle Gen5-PostgreSQL-Datenbank mit 32 virtuellen Kernen sowie zwei arbeitsspeicheroptimierte Gen5-PostgreSQL-Datenbanken mit 16 virtuellen Kernen aus. Außerdem möchten Sie innerhalb des nächsten Monats einen weiteren universellen Gen5-Datenbankserver mit 32 virtuellen Kernen sowie einen arbeitsspeicheroptimierten Gen5-Datenbankserver mit 16 virtuellen Kernen bereitstellen. Sie wissen außerdem, dass Sie diese Ressourcen mindestens 1 Jahr benötigen. In diesem Fall sollten Sie Folgendes erwerben: eine 1-Jahres-Reservierung für eine universelle Gen5-Einzeldatenbank mit 64 virtuellen Kernen (2 × 32) sowie eine 1-Jahres-Reservierung für eine arbeitsspeicheroptimierte Gen5-Einzeldatenbank mit 48 virtuellen Kernen (2 × 16 + 16).
+Nehmen Sie beispielsweise an, Sie führen eine universelle Gen5-PostgreSQL-Datenbank mit 32 virtuellen Kernen sowie zwei arbeitsspeicheroptimierte Gen5-PostgreSQL-Datenbanken mit 16 virtuellen Kernen aus. Außerdem möchten Sie innerhalb des nächsten Monats einen weiteren universellen Gen5-Datenbankserver mit 32 virtuellen Kernen sowie einen arbeitsspeicheroptimierten Gen5-Datenbankserver mit 16 virtuellen Kernen bereitstellen. Sie wissen außerdem, dass Sie diese Ressourcen mindestens ein Jahr benötigen. In diesem Fall sollten Sie Folgendes erwerben: eine einjährige Reservierung für eine universelle Gen5-Einzeldatenbank mit 64 virtuellen Kernen (2 × 32) sowie eine einjährige Reservierung für eine arbeitsspeicheroptimierte Gen5-Einzeldatenbank mit 48 virtuellen Kernen (2 × 16 + 16).
 
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>Kaufen von reservierter Kapazität für Azure Database for PostgreSQL
@@ -43,7 +43,7 @@ Nehmen Sie beispielsweise an, Sie führen eine universelle Gen5-PostgreSQL-Daten
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
 3. Wählen Sie **Hinzufügen** und dann im Bereich „Reservierungen erwerben“ die Option **Azure Database for PostgreSQL** aus, um eine neue Reservierung für Ihre PostgreSQL-Datenbanken zu erwerben.
-4. Füllen Sie die Pflichtfelder aus. Bei vorhandenen oder neuen Datenbanken, die den von Ihnen ausgewählten Attributen entsprechen, wird der Rabatt auf reservierte Kapazitäten angewendet. Die tatsächliche Anzahl der Azure Database for PostgreSQL-Server, die den Rabatt erhalten, hängt vom ausgewählten Bereich und der ausgewählten Menge ab.
+4. Füllen Sie die erforderlichen Felder aus. Bei vorhandenen oder neuen Datenbanken, die den von Ihnen ausgewählten Attributen entsprechen, wird der Rabatt auf reservierte Kapazitäten angewendet. Die tatsächliche Anzahl der Azure Database for PostgreSQL-Server, die den Rabatt erhalten, hängt vom ausgewählten Bereich und der ausgewählten Menge ab.
 
 
 ![Übersicht über Reservierungspreise](media/concepts-reserved-pricing/postgresql-reserved-price.png)
@@ -75,8 +75,7 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Der Rabatt auf die Reservierung virtueller Kerne wird automatisch auf die Anzahl der Azure Database for PostgreSQL-Server angewendet, die dem Reservierungsumfang und den Attributen der Azure Database for PostgreSQL-Kapazitätsreservierung entsprechen. Sie können den Umfang der Azure Database for PostgreSQL-Kapazitätsreservierung über das Azure-Portal, PowerShell, die CLI oder die API aktualisieren. </br></br>
-Informationen zum Verwalten der reservierten Azure Database for PostgreSQL-Kapazität finden Sie im Abschnitt zur Verwaltung der reservierten Azure Database for PostgreSQL-Kapazität.
+Der Rabatt auf die Reservierung virtueller Kerne wird automatisch auf die Anzahl der Azure Database for PostgreSQL-Server angewendet, die dem Reservierungsumfang und den Attributen der Azure Database for PostgreSQL-Kapazitätsreservierung entsprechen. Sie können den Umfang der Azure Database for PostgreSQL-Kapazitätsreservierung über das Azure-Portal, PowerShell, die CLI oder die API aktualisieren.
 
 Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
 

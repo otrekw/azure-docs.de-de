@@ -2,13 +2,13 @@
 title: Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate
 description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate.
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 9374330044bcd0c0c5f2be44688c2b35760d4418
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.date: 06/09/2020
+ms.openlocfilehash: 7b26d4442f9a84375205e7778ae037b565f53438
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996756"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118833"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
@@ -27,12 +27,36 @@ In der Unterstützungsmatrix für Azure Migrate finden Sie die unterstützten ge
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Wie viele VMs können mit einer Appliance ermittelt werden?
 
-Sie können bis zu 10.000 VMware-VMs und bis zu 5.000 Hyper-V-VMs sowie bis zu 250 physische Server mithilfe einer einzigen Appliance ermitteln. Wenn Sie mehr Computer haben, informieren Sie sich über die Skalierung der [Hyper-V-](scale-hyper-v-assessment.md), [VMware-](scale-vmware-assessment.md) oder [physischen](scale-physical-assessment.md) Bewertung.
+Sie können bis zu 10.000 VMware-VMs und bis zu 5.000 Hyper-V-VMs sowie bis zu 1.000 physische Server mithilfe einer einzigen Appliance ermitteln. Wenn Sie mehr Computer haben, informieren Sie sich über die Skalierung der [Hyper-V-](scale-hyper-v-assessment.md), [VMware-](scale-vmware-assessment.md) oder [physischen](scale-physical-assessment.md) Bewertung.
+
+## <a name="how-do-i-choose-the-assessment-type"></a>Wie wähle ich den Bewertungstyp aus?
+
+- Verwenden Sie **Bewertungen vom Typ „Virtueller Azure-Computer“** , wenn Sie Ihre lokalen [virtuellen VMware-Computer](how-to-set-up-appliance-vmware.md), [virtuellen Hyper-V-Computer](how-to-set-up-appliance-hyper-v.md) und [physischen Server](how-to-set-up-appliance-physical.md) für die Migration zu virtuellen Azure-Computern bewerten möchten. [Weitere Informationen](concepts-assessment-calculation.md)
+
+- Verwenden Sie Bewertungen vom Typ **Azure VMware Solution (AVS)** , wenn Sie Ihre lokalen [virtuellen VMware-Computer](how-to-set-up-appliance-vmware.md) für die Migration zu [Azure VMware Solution (AVS)](../azure-vmware/introduction.md) mit diesem Bewertungstyp bewerten möchten. [Weitere Informationen](concepts-azure-vmware-solution-assessment-calculation.md)
+
+- Eine allgemeine Gruppe mit VMware-Computern kann nur zum Ausführen beider Bewertungstypen verwendet werden. Wenn Sie erstmals AVS-Bewertungen in Azure Migrate ausführen, empfiehlt es sich, eine neue Gruppe mit VMware-Computern zu erstellen.
+
+## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Es werden bei der Erstellung einer Bewertung vom Typ „Azure VMware Solution (AVS)“ einige Gruppen nicht angezeigt.
+
+- AVS-Bewertungen können nur für Gruppen durchgeführt werden, die ausschließlich VMware-Computer enthalten. Entfernen Sie alle VMware-fremden Computer aus der Gruppe, wenn Sie eine AVS-Bewertung durchführen möchten.
+- Wenn Sie erstmals AVS-Bewertungen in Azure Migrate ausführen, empfiehlt es sich, eine neue Gruppe mit VMware-Computern zu erstellen.
+
+## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>Wie wähle ich bei einer AVS-Bewertung die FTT-RAID-Stufe aus?
+
+Die in AVS verwendete Speicher-Engine ist vSAN. Die Speicheranforderungen für Ihre virtuellen Computer werden mithilfe von vSAN-Speicherrichtlinien definiert. Diese Richtlinien steuern, wie Speicher dem virtuellen Computer zugeordnet wird, um die erforderliche Dienstebene für Ihre virtuellen Computer zu garantieren. Folgende FTT-RAID-Kombinationen sind verfügbar: 
+
+**Zu tolerierende Fehler (Failures to Tolerate, FTT)** | **RAID-Konfiguration** | **Mindestens erforderliche Hostanzahl** | **Überlegungen zur Größe**
+--- | --- | --- | --- 
+1 | RAID-1 (Spiegelung) | 3 | Von einem virtuellen Computer mit 100 GB werden 200 GB beansprucht.
+1 | RAID-5 (Erasure Coding) | 4 | Von einem virtuellen Computer mit 100 GB werden 133,33 GB beansprucht.
+2 | RAID-1 (Spiegelung) | 5 | Von einem virtuellen Computer mit 100 GB werden 300 GB beansprucht.
+2 | RAID-6 (Erasure Coding) | 6 | Von einem virtuellen Computer mit 100 GB werden 150 GB beansprucht.
+3 | RAID-1 (Spiegelung) | 7 | Von einem virtuellen Computer mit 100 GB werden 400 GB beansprucht.
 
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Einige VM-Typen werden in Azure Government nicht angezeigt
 
 Die für die Bewertung und Migration unterstützten VM-Typen hängen von der Verfügbarkeit am Azure Government-Standort ab. Sie können die VM-Typen in Azure Government [hier anzeigen und vergleichen](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines).
-
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>Die Größe meiner VM hat sich geändert. Kann ich die Bewertung erneut ausführen?
 
@@ -47,7 +71,7 @@ Die Azure Migrate-Appliance sammelt kontinuierlich Informationen zur lokalen Umg
 
 Ja, Azure Migrate erfordert in einer VMware-Umgebung vCenter Server für die Ermittlung. Die Ermittlung von ESXi-Hosts, die nicht von vCenter Server verwaltet werden, wird von Azure Migrate nicht unterstützt.
 
-## <a name="what-are-the-sizing-options"></a>Welche Optionen für die Größenanpassung gibt es?
+## <a name="what-are-the-sizing-options-in-an-azure-vm-assessment"></a>Welche Größenoptionen gibt es bei einer Azure VM-Bewertung?
 
 Bei der lokal orientierten Größenanpassung berücksichtigt Azure Migrate keine VM-Leistungsdaten für die Bewertung. Azure Migrate bewertet VM-Größen auf Grundlage der lokalen Konfiguration. Bei der leistungsbasierten Größenanpassung basiert diese auf Auslastungsdaten.
 
@@ -59,18 +83,18 @@ Entsprechend hängt die Größenanpassung der Datenträger von dem Größenkrite
 - Wenn das leistungsbasierte Größenkriterium und der Speichertyp „Automatisch“ verwendet werden, berücksichtigt Azure Migrate die IOPS- und Durchsatzwerte des Datenträgers, um den Typ des Zieldatenträgers zu ermitteln (Standard oder Premium).
 - Wenn das leistungsbasierte Größenkriterium und der Speichertyp „Premium“ verwendet werden, empfiehlt Azure Migrate eine Premium-Datenträger-SKU basierend auf der Größe des lokalen Datenträgers. Die gleiche Logik wird verwendet, um die Größenanpassung für Datenträger durchzuführen, wenn die lokal orientierte Größenanpassung verwendet wird und der Speichertyp „Standard“ oder „Premium“ lautet.
 
-## <a name="does-performance-history-and-utilization-affect-sizing"></a>Wirken sich Leistungsverlauf und Auslastung auf die Größenanpassung aus?
+## <a name="does-performance-history-and-utilization-affect-sizing-in-an-azure-vm-assessment"></a>Wirken sich Leistungsverlauf und Auslastung auf die Größenanpassung in einer Azure VM-Bewertung aus?
 
-Ja, Leistungsverlauf und Auslastung wirken sich auf die Größenanpassung in Azure Migrate aus.
+Ja, der Leistungsverlauf und die Auslastung wirken sich auf die Größenanpassung in einer Azure VM-Bewertung aus.
 
 ### <a name="performance-history"></a>Leistungsverlauf
 
 Nur bei der leistungsbasierten Größenanpassung sammelt Azure Migrate den Leistungsverlauf von lokalen Computern und nutzt diese Daten dann, um die VM-Größe und den Datenträgertyp in Azure zu empfehlen:
 
 1. Die Appliance erstellt für die lokale Umgebung kontinuierlich Profildaten, um alle 20 Sekunden in Echtzeit Auslastungsdaten erfassen zu können.
-1. Die Appliance führt für die gesammelten 20-Sekunden-Stichproben einen Rollup aus und erstellt daraus alle 15 Minuten einen einzelnen Datenpunkt.
-1. Zum Erstellen des Datenpunkts wählt die Appliance den Spitzenwert aus allen 20-Sekunden-Stichproben aus.
-1. Die Appliance sendet den Datenpunkt an Azure.
+2. Die Appliance führt für die gesammelten 20-Sekunden-Stichproben einen Rollup aus und erstellt daraus alle 15 Minuten einen einzelnen Datenpunkt.
+3. Zum Erstellen des Datenpunkts wählt die Appliance den Spitzenwert aus allen 20-Sekunden-Stichproben aus.
+4. Die Appliance sendet den Datenpunkt an Azure.
 
 ### <a name="utilization"></a>Auslastung
 
@@ -80,11 +104,17 @@ Wenn Sie die Leistungsdauer beispielsweise auf einen Tag und den Perzentilwert a
 
 Die Verwendung des Werts des 95. Perzentils stellt sicher, dass Ausreißer ignoriert werden. Ausreißer können eingeschlossen werden, wenn Azure Migrate das 99. Perzentil verwendet. Wenn Sie die Spitzenauslastung für den Zeitraum erfassen möchten, ohne Ausreißer auszulassen, legen Sie Azure Migrate auf die Verwendung des 99. Perzentils fest.
 
+
 ## <a name="how-are-import-based-assessments-different-from-assessments-with-discovery-source-as-appliance"></a>Worin unterscheiden sich importbasierte Bewertungen von Bewertungen mit der Ermittlungsquelle als Appliance?
 
-Bei importbasierten Bewertungen handelt es sich um Bewertungen, die mit Computern erstellt werden, die mithilfe einer CSV-Datei in Azure Migrate importiert werden. Für den Import sind nur vier Felder erforderlich: Servername, Kerne, Arbeitsspeicher und Betriebssystem. Die folgenden Punkte sind zu berücksichtigen: 
+Bei importbasierten Azure VM-Bewertungen handelt es sich um Bewertungen, die mit Computern erstellt werden, die mithilfe einer CSV-Datei in Azure Migrate importiert werden. Für den Import sind nur vier Felder erforderlich: Servername, Kerne, Arbeitsspeicher und Betriebssystem. Die folgenden Punkte sind zu berücksichtigen: 
  - Das Bereitschaftskriterium ist bei importbasierten Bewertungen für den Starttypparameter weniger streng. Ist der Starttyp nicht angegeben, wird davon ausgegangen, dass der Computer den Starttyp „BIOS“ aufweist und nicht als **Bedingt bereit** gekennzeichnet ist. Bei Bewertungen mit der Ermittlungsquelle als Appliance wird die Bereitschaft als **Bedingt bereit** gekennzeichnet, wenn der Starttyp fehlt. Dieser Unterschied bei der Bereitschaftsberechnung ergibt sich dadurch, dass Benutzer in den frühen Phasen der Migrationsplanung möglicherweise nicht über alle Informationen zu den Computern verfügen, wenn importbasierte Bewertungen durchgeführt werden. 
  - Bei leistungsbasierten Importbewertungen wird der vom Benutzer bereitgestellte Auslastungswert für die Berechnungen zur Größenanpassung verwendet. Da der Auslastungswert vom Benutzer bereitgestellt wird, werden die Optionen für **Leistungsverlauf** und **Perzentilwert der Nutzung** in den Bewertungseigenschaften deaktiviert. Bei Bewertungen mit der Ermittlungsquelle als Appliance wird der ausgewählte Perzentilwert den von der Appliance gesammelten Leistungsdaten entnommen.
+
+## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Warum wird das vorgeschlagene Migrationstool in der importbasierten AVS-Bewertung als unbekannt markiert?
+
+Für Computer, die über eine CSV-Datei importiert wurden, ist das Standardmigrationstool in einer AVS-Bewertung unbekannt. Für VMware-Computer empfiehlt sich jedoch die Verwendung der VMware HCX-Lösung (Hybrid Cloud Extension). [Weitere Informationen](../azure-vmware/hybrid-cloud-extension-installation.md).
+
 
 ## <a name="what-is-dependency-visualization"></a>Was ist die Visualisierung von Abhängigkeiten?
 
@@ -99,14 +129,14 @@ Die Unterschiede zwischen der Visualisierung ohne Agent und der Agent-basierten 
 
 **Anforderung** | **Ohne Agent** | **Agent-basiert**
 --- | --- | ---
-Support | Diese Option befindet sich derzeit in der Vorschauphase und ist nur für VMware-VMs verfügbar. [Lesen](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) Sie den Artikel zu den unterstützten Betriebssystemen. | In der allgemeinen Verfügbarkeit (General Availability, GA).
-Agent | Sie müssen keine Agents auf Computern installieren, die Sie überprüfen möchten. | Auf jedem lokalen Computer, den Sie analysieren möchten, müssen Agents installiert sein: Der [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) und der [Dependency-Agent](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
+Support | Diese Option befindet sich derzeit in der Vorschauphase und ist nur für VMware-VMs verfügbar. [Lesen](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) Sie den Artikel zu den unterstützten Betriebssystemen. | In der allgemeinen Verfügbarkeit (General Availability, GA).
+Agent | Sie müssen keine Agents auf Computern installieren, die Sie überprüfen möchten. | Auf jedem lokalen Computer, den Sie analysieren möchten, müssen Agents installiert sein: Der [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md) und der [Dependency-Agent](../azure-monitor/platform/agents-overview.md#dependency-agent). 
 Voraussetzungen | [Lesen](concepts-dependency-visualization.md#agentless-analysis) Sie den Abschnitt zu Voraussetzungen und Anforderungen für die Bereitstellung. | [Lesen](concepts-dependency-visualization.md#agent-based-analysis) Sie den Abschnitt zu Voraussetzungen und Anforderungen für die Bereitstellung.
-Log Analytics | Nicht erforderlich. | Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnung](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) in [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview). [Weitere Informationen](concepts-dependency-visualization.md#agent-based-analysis)
+Log Analytics | Nicht erforderlich. | Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnung](../azure-monitor/insights/service-map.md) in [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md). [Weitere Informationen](concepts-dependency-visualization.md#agent-based-analysis)
 Funktionsweise | Erfasst TCP-Verbindungsdaten auf Computern, die für die Visualisierung von Abhängigkeiten aktiviert sind. Nach der Ermittlung werden Daten in Abständen von fünf Minuten gesammelt. | Auf einem Computer installierte Agents für die Dienstzuordnung sammeln Daten über TCP-Prozesse und ein-/ausgehende Verbindungen für die einzelnen Prozesse.
 Daten | Servername des Quellcomputers, Prozess, Anwendungsname.<br/><br/> Servername des Zielcomputers, Prozess, Anwendungsname und Port. | Servername des Quellcomputers, Prozess, Anwendungsname.<br/><br/> Servername des Zielcomputers, Prozess, Anwendungsname und Port.<br/><br/> Anzahl der Verbindungen, Wartezeiten und Datenübertragungsinformationen werden gesammelt und stehen für Log Analytics-Abfragen zur Verfügung. 
 Visualisierung | Das Abhängigkeitsdiagramm eines einzelnen Servers kann über eine Dauer von einer Stunde bis hin zu 30 Tagen angezeigt werden. | Abhängigkeitsdiagramm eines einzelnen Servers.<br/><br/> Das Diagramm kann nur über eine Stunde angezeigt werden.<br/><br/> Abhängigkeitsdiagramm für eine Gruppe von Servern.<br/><br/> Hinzufügen und Entfernen von Servern in einer Gruppe aus der Diagrammansicht.
-Datenexport | Kann derzeit nicht im Tabellenformat heruntergeladen werden. | Daten können mit Log Analytics abgefragt werden.
+Datenexport | Die Daten der letzten 30 Tage können im CSV-Format heruntergeladen werden. | Daten können mit Log Analytics abgefragt werden.
 
 
 ## <a name="do-i-need-to-deploy-the-appliance-for-agentless-dependency-analysis"></a>Muss ich die Appliance für die Abhängigkeitsanalyse ohne Agent bereitstellen?
@@ -121,7 +151,7 @@ Nein. Weitere Informationen zu den Preisen von Azure Migrate finden Sie [hier](h
 
 Wenn Sie die Agent-basierte Visualisierung von Abhängigkeiten verwenden möchten, müssen Sie Agents auf alle lokalen Computer, die Sie bewerten möchten, herunterladen und dort installieren:
 
-- [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)
+- [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)
 - [Dependency-Agent](../azure-monitor/platform/agents-overview.md#dependency-agent)
 - Falls Sie über Computer ohne Internetverbindung verfügen, ist es erforderlich, auf diese das Log Analytics-Gateway herunterzuladen und dort zu installieren.
 
@@ -133,7 +163,7 @@ Ja, für die Agent-basierte Visualisierung von Abhängigkeiten können Sie einen
 
 ## <a name="can-i-export-the-dependency-visualization-report"></a>Kann ich den Bericht über die Abhängigkeitsvisualisierung exportieren?
 
-Nein, der Bericht für die Visualisierung von Abhängigkeiten in der Agent-basierten Visualisierung kann nicht exportiert werden. Azure Migrate verwendet jedoch die Dienstzuordnung, sodass Sie die Abhängigkeiten mithilfe der [Service Map-REST-API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) im JSON-Format abrufen können.
+Nein, der Bericht für die Visualisierung von Abhängigkeiten in der Agent-basierten Visualisierung kann nicht exportiert werden. Azure Migrate verwendet jedoch die Dienstzuordnung, sodass Sie die Abhängigkeiten mithilfe der [Service Map-REST-API](/rest/api/servicemap/machines/listconnections) im JSON-Format abrufen können.
 
 ## <a name="can-i-automate-agent-installation"></a>Kann ich die Agent-Installation automatisieren?
 
@@ -145,18 +175,18 @@ Für die Agent-basierte Visualisierung von Abhängigkeiten:
 
 ## <a name="what-operating-systems-does-mma-support"></a>Welche Betriebssysteme unterstützt MMA?
 
-- Überprüfen Sie die Liste der [von MMA unterstützten Windows-Betriebssysteme](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems).
-- Überprüfen Sie die Liste der [von MMA unterstützten Linux-Betriebssysteme](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems).
+- Überprüfen Sie die Liste der [von MMA unterstützten Windows-Betriebssysteme](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems).
+- Überprüfen Sie die Liste der [von MMA unterstützten Linux-Betriebssysteme](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems).
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>Kann ich Abhängigkeiten für mehr als eine Stunde visualisieren?
 
-Sie können für die Agent-basierte Visualisierung entsprechende Abhängigkeiten bis zu einer Stunde visualisieren. Sie können bis zu einem Monat zu einem bestimmten Datum im Verlauf zurückkehren, aber die maximale Dauer der Visualisierung beträgt eine Stunde. Sie können beispielsweise den Zeitraum im Abhängigkeitsdiagramm verwenden, um Abhängigkeiten für den gestrigen Tag anzuzeigen. Sie können die Abhängigkeiten allerdings nur für ein Zeitfenster von einer Stunde anzeigen. Sie können jedoch zum [Abfragen der Abhängigkeitsdaten](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) für einen längeren Zeitraum Azure Monitor-Protokolle verwenden.
+Sie können für die Agent-basierte Visualisierung entsprechende Abhängigkeiten bis zu einer Stunde visualisieren. Sie können bis zu einem Monat zu einem bestimmten Datum im Verlauf zurückkehren, aber die maximale Dauer der Visualisierung beträgt eine Stunde. Sie können beispielsweise den Zeitraum im Abhängigkeitsdiagramm verwenden, um Abhängigkeiten für den gestrigen Tag anzuzeigen. Sie können die Abhängigkeiten allerdings nur für ein Zeitfenster von einer Stunde anzeigen. Sie können jedoch zum [Abfragen der Abhängigkeitsdaten](./how-to-create-group-machine-dependencies.md) für einen längeren Zeitraum Azure Monitor-Protokolle verwenden.
 
 Zur Visualisierung ohne Agents können Sie das Abhängigkeitsdiagramm eines einzelnen Servers für eine Dauer zwischen einer Stunde und 30 Tagen anzeigen.
 
 ## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>Kann ich für Gruppen mit mehr als zehn VMs Abhängigkeiten visualisieren?
 
-Sie können [Abhängigkeiten für Gruppen visualisieren](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies), die bis zu zehn VMs umfassen. Falls eine Gruppe aus mehr als zehn VMs besteht, sollten Sie die Gruppe in kleinere Gruppen aufteilen und die Abhängigkeiten anschließend visualisieren.
+Sie können [Abhängigkeiten für Gruppen visualisieren](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping), die bis zu zehn VMs umfassen. Falls eine Gruppe aus mehr als zehn VMs besteht, sollten Sie die Gruppe in kleinere Gruppen aufteilen und die Abhängigkeiten anschließend visualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: ec58f8df5507fd9c52950e880c062e6cad964b7a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402460"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106984"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
@@ -51,9 +51,12 @@ Da Workerknoten vertrauliche Daten enthalten, legt Microsoft großen Wert darauf
 
 Microsoft bietet technischen Support für Folgendes:
 
+> [!NOTE]
+> Alle von Microsoft/AKS ausgeführten Clusteraktionen werden mit Benutzereinwilligung unter der integrierten Kubernetes-Rolle `aks-service` und der integrierten Rollenbindung `aks-service-rolebinding` durchgeführt. Diese Rolle ermöglicht es AKS, Clusterprobleme zu beheben und zu diagnostizieren, damit können jedoch keine Berechtigungen geändert oder Rollen bzw. Rollenbindungen erstellt oder andere Aktionen mit hohen Berechtigungen ausgeführt werden. Der Rollenzugriff ist nur unter aktiven Support Tickets mit Just-in-time-Zugriff (JIT) aktiviert.
+
 * Konnektivität mit allen Kubernetes-Komponenten, die vom Kubernetes-Dienst bereitgestellt und unterstützt werden (beispielsweise der API-Server).
 * Verwaltung, Betriebszeit, QoS und Vorgänge der Kubernetes-Steuerungsebenendienste (beispielsweise Kubernetes-Masterknoten, API-Server, etcd und kube-dns).
-* Etcd: Der Support beinhaltet automatisierte, transparente Sicherungen sämtlicher etcd-Daten im 30-Minuten-Takt für die Planung der Notfallwiederherstellung und die Wiederherstellung des Clusterzustands. Diese Backups sind nicht direkt für Kunden oder Benutzer verfügbar. Sie stellen die Zuverlässigkeit und Konsistenz der Daten sicher.
+* Etcd: Der Support beinhaltet automatisierte, transparente Sicherungen sämtlicher etcd-Daten im 30-Minuten-Takt für die Planung der Notfallwiederherstellung und die Wiederherstellung des Clusterzustands. Diese Backups sind nicht direkt für Kunden oder Benutzer verfügbar. Sie stellen die Zuverlässigkeit und Konsistenz der Daten sicher. Etcd: Ein On-Demand-Rollback oder eine Wiederherstellung wird als Feature nicht unterstützt.
 * Alle Integrationspunkte im Azure-Cloudanbietertreiber für Kubernetes. Dazu gehören Integrationen in andere Azure-Dienste wie Lastenausgleichsmodule, persistente Volumes oder Netzwerke (Kubernetes und Azure CNI).
 * Fragen oder Probleme zur Anpassung von Komponenten der Steuerungsebene wie Kubernetes-API-Server, etcd und kube-dns.
 * Probleme bei Netzwerken, z. B. Azure CNI, Kubenet oder andere Probleme in Verbindung mit Netzwerkzugriff und -funktionalität. Probleme können DNS-Auflösung, Paketverluste, Routing usw. umfassen. Microsoft unterstützt verschiedene Netzwerkszenarien:

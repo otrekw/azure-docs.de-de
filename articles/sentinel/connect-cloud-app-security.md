@@ -1,6 +1,6 @@
 ---
 title: Verknüpfen von Cloud App Security-Daten mit Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Cloud App Security-Daten mit Azure Sentinel verknüpfen.
+description: Erfahren Sie, wie der MCAS-Connector (Microsoft Cloud App Security) zum Streamen von Warnungen und Cloud Discovery-Protokollen aus MCAS in Azure Sentinel verwendet werden kann. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 266d97e834247088d40837cbec1436e00d0f4be2
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 8439c8f7aa4e75abd727d2ce2e80d98e6fce5411
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422140"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563946"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Verknüpfen von Microsoft Cloud App Security-Daten 
-
-
 
 Mit dem [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS)-Connector können Sie Warnungen und [Cloud Discovery-Protokolle](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) von MCAS in Azure Sentinel streamen. So erhalten Sie Einblicke in Ihre Cloud-Apps, erweiterte Analysen zur Erkennung und Abwehr von Cyberbedrohungen und Kontrolle darüber, wie Ihre Daten übertragen werden.
 
@@ -49,6 +47,8 @@ Wenn Cloud App Security bereitgestellt ist und Daten erhält, können die Warnun
 1. Wählen Sie aus, welche Protokolle in Azure Sentinel gestreamt werden sollen. Sie können **Warnungen** und **Cloud Discovery-Protokolle** (Vorschau) auswählen. 
 
 1. Klicken Sie auf **Apply Changes**.
+
+1. Sie können auswählen, ob die Warnungen von Azure Security Center Incidents in Azure Sentinel generieren sollen. Wählen Sie unter **Incidents erstellen** die Option **Aktiviert** aus, um die Standardanalyseregel zu aktivieren, die automatisch Incidents aus Warnungen erstellt. Anschließend können Sie diese Regel unter **Analytics** auf der Registerkarte **Aktive Regeln** bearbeiten.
 
 1. Geben Sie im Abfragefenster `SecurityAlert` ein, um das entsprechende Schema in Log Analytics für Cloud App Security-Warnungen zu verwenden. Geben Sie für das Cloud Discovery-Protokollschema `McasShadowItReporting` ein.
 

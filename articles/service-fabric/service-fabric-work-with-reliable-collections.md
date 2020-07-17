@@ -3,12 +3,12 @@ title: Arbeiten mit Reliable Collections
 description: Informieren Sie sich über die bewährten Methoden für die Arbeit mit zuverlässigen Sammlungen in einer Azure Service Fabric-Anwendung.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 94836a37a62e3eeffb94d891980cc02694bd973e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81409804"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374694"
 ---
 # <a name="working-with-reliable-collections"></a>Arbeiten mit Reliable Collections
 Service Fabric bietet .NET-Entwicklern über Reliable Collections ein zustandsbehaftetes Programmiermodell. Service Fabric umfasst z. B. Reliable Dictionary- und Reliable Queue-Klassen. Wenn Sie diese Klassen verwenden, wird Ihr Zustand partitioniert (für Skalierbarkeit), repliziert (für Verfügbarkeit) und innerhalb einer Partition durchgeführt (für ACID-Semantik). Sehen wir uns nun die typische Nutzung eines Objekts für ein zuverlässiges Wörterbuch an.
@@ -42,9 +42,14 @@ Für alle Vorgänge für Objekte zuverlässiger Wörterbücher (mit Ausnahme von
 
 Im obigen Code wird das ITransaction-Objekt an eine AddAsync-Methode eines zuverlässigen Wörterbuchs übergeben. Dictionary-Methoden, die einen Schlüssel akzeptieren, wenden intern eine dem Schlüssel zugeordnete Lese-/Schreibsperre an. Wenn die Methode den Wert des Schlüssels ändert, nimmt die Methode eine Schreibsperre für den Schlüssel vor. Wenn die Methode nur aus dem Wert des Schlüssels liest, wird eine Lesesperre für den Schlüssel vorgenommen. Da AddAsync den Wert des Schlüssels in den neuen, übergebenen Wert ändert, wird die Schreibsperre des Schlüssels aktiviert. Wenn also 2 (oder mehr) Threads gleichzeitig versuchen, Werte mit demselben Schlüssel hinzuzufügen, aktiviert ein Thread die Schreibsperre und blockiert die anderen Threads. In der Standardeinstellung blockieren Methoden bis zu 4 Sekunden zum Aktivieren der Sperre. Nach 4 Sekunden lösen die Methoden eine TimeoutException aus. Methodenüberladungen ermöglichen Ihnen, auf Wunsch einen expliziten Timeoutwert festzulegen.
 
-In der Regel schreiben Sie Ihren Code, um auf eine TimeoutException zu reagieren, indem Sie diese abfangen und den gesamten Vorgang wiederholen (wie im obigen Code gezeigt). In meinem einfachen Code gebe ich für Task.Delay stets 100 Millisekunden ein. In der Praxis ist jedoch eine exponentielle Backoffverzögerung eher zu empfehlen.
+In der Regel schreiben Sie Ihren Code, um auf eine TimeoutException zu reagieren, indem Sie diese abfangen und den gesamten Vorgang wiederholen (wie im obigen Code gezeigt). In diesem einfachen Code rufen wir nur Task.Delay alle 100 Millisekunden auf. In der Praxis ist jedoch eine exponentielle Backoffverzögerung eher zu empfehlen.
 
-Sobald die Sperre abgerufen wurde, fügt AddAsync die Schlüssel- und Wertobjektverweise einem internen, temporären Dictionary hinzu, das dem ITransaction-Objekt zugeordnet ist. Dies geschieht, um Sie Ihnen eine Semantik zum Lesen eigener Schreibvorgänge bereitzustellen. Nach dem Aufrufen von AddAsync wird durch Aufrufen von TryGetValueAsync (mit dem gleichen ITransaction-Objekt) der Wert zurückgegeben, auch wenn Sie noch keinen Commit für die Transaktion ausgeführt haben. Als Nächstes serialisiert AddAsync Ihre Schlüssel- und Wertobjekte zu Bytearrays und wendet diese Bytearrays auf eine Protokolldatei auf dem lokalen Knoten an. Schließlich sendet AddAsync Bytearrays an alle sekundären Replikate, sodass diese die gleichen Schlüssel-/Wertinformationen aufweisen. Obwohl die Schlüssel-/Wertinformationen in eine Protokolldatei geschrieben wurden, werden die Informationen erst als Teil des Dictionarys erachtet, wenn ein Commit für die ihnen zugeordnete Transaktion ausgeführt wurde.
+Sobald die Sperre abgerufen wurde, fügt AddAsync die Schlüssel- und Wertobjektverweise einem internen, temporären Dictionary hinzu, das dem ITransaction-Objekt zugeordnet ist. Dies geschieht, um Sie Ihnen eine Semantik zum Lesen eigener Schreibvorgänge bereitzustellen. Nach dem Aufrufen von AddAsync wird durch Aufrufen von TryGetValueAsync mit dem gleichen ITransaction-Objekt der Wert zurückgegeben, auch wenn Sie noch keinen Commit für die Transaktion ausgeführt haben.
+
+> [!NOTE]
+> Wenn TryGetValueAsync mit einer neuen Transaktion aufgerufen wird, wird ein Verweis auf den zuletzt committeten Wert zurückgegeben. Ändern Sie diesen Verweis nicht direkt, da dadurch der Mechanismus zum Beibehalten und Replizieren der Änderungen umgangen wird. Es wird empfohlen, die Werte als schreibgeschützt festlegen, damit die einzige Möglichkeit zum Ändern des Werts für einen Schlüssel zuverlässige Wörterbuch-APIs sind.
+
+Als Nächstes serialisiert AddAsync Ihre Schlüssel- und Wertobjekte zu Bytearrays und wendet diese Bytearrays auf eine Protokolldatei auf dem lokalen Knoten an. Schließlich sendet AddAsync Bytearrays an alle sekundären Replikate, sodass diese die gleichen Schlüssel-/Wertinformationen aufweisen. Obwohl die Schlüssel-/Wertinformationen in eine Protokolldatei geschrieben wurden, werden die Informationen erst als Teil des Dictionarys erachtet, wenn ein Commit für die ihnen zugeordnete Transaktion ausgeführt wurde.
 
 Im obigen Code wird durch den Aufruf von CommitAsync ein Commit für alle Vorgänge der Transaktion ausgeführt. Dabei werden Commit-Informationen an die Protokolldatei auf dem lokalen Knoten angehängt und der Commit-Datensatz außerdem an alle sekundären Replikate gesendet. Nachdem ein Quorum (Mehrheit) der Replikate geantwortet hat, werden alle Datenänderungen als dauerhaft erachtet, und alle Sperren, die mit über das ITransaction-Objekt bearbeiteten Schlüsseln verknüpft sind, werden aufgehoben. So können andere Threads/Transaktionen dieselben Schlüssel und deren Werte bearbeiten.
 

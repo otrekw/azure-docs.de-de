@@ -1,83 +1,168 @@
 ---
-title: 'Leitfaden zur Problembehandlung: Azure Event Hubs | Microsoft-Dokumentation'
-description: Dieser Artikel stellt eine Liste von Azure Event Hubs-Messagingausnahmen und vorgeschlagenen Aktionen zur Verfügung.
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
+title: 'Beheben von Konnektivitätsproblemen: Azure Event Hubs | Microsoft-Dokumentation'
+description: Dieser Artikel bietet Informationen zum Beheben von Konnektivitätsproblemen mit Azure Event Hubs.
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 01/16/2020
-ms.author: shvija
-ms.openlocfilehash: ab3cbdf938409f4eacffa10ae5cb20f8c36b5856
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 15c93873a25e70b0f9a88fc5ea621b90d58e7581
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124668"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322373"
 ---
-# <a name="azure-event-hubs---troubleshooting-guide"></a>Azure Event Hubs: Leitfaden zur Problembehandlung
-In diesem Artikel finden Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme, die bei der Verwendung von Azure EventHubs auftreten können.
+# <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Behandeln von Konnektivitätsproblemen: Azure Event Hubs
+Es gibt verschiedene Gründe dafür, dass Clientanwendungen keine Verbindung mit einem Event Hub herstellen können. Die auftretenden Konnektivitätsprobleme können dauerhaft oder vorübergehend sein. Wenn das Problem immer (dauerhaft) auftritt, können Sie die Verbindungszeichenfolge, die Firewalleinstellungen Ihrer Organisation, IP-Firewalleinstellungen, Netzwerksicherheitseinstellungen (Dienstendpunkte, private Endpunkte usw.) überprüfen. Bei zeitweiligen Problemen kann ein Upgrade auf die neueste Version des SDK, das Ausführen von Befehlen zum Überprüfen von gelöschten Paketen und das Abrufen von Netzwerkablaufverfolgungen bei der Behebung von Problemen hilfreich sein. 
 
-## <a name="connectivity-certificate-or-timeout-issues"></a>Konnektivitäts-, Zertifikat- oder Timeoutprobleme
-Die folgenden Schritte unterstützen Sie bei der Problembehandlung von Konnektivitäts-/Zertifikat-/Timeoutproblemen für alle Dienste unter *.servicebus.windows.net. 
+Dieser Artikel bietet Tipps zum Beheben von Konnektivitätsproblemen mit Azure Event Hubs. 
 
-- Navigieren Sie zu `https://<yournamespacename>.servicebus.windows.net/`, oder verwenden Sie [wget](https://www.gnu.org/software/wget/). Dies hilft bei der Überprüfung, ob Probleme mit der IP-Filterung oder dem virtuellen Netzwerk bzw. der Zertifikatkette vorliegen (häufiges Problem bei Verwendung des Java SDK).
+## <a name="troubleshoot-permanent-connectivity-issues"></a>Behandeln dauerhafter Konnektivitätsprobleme
+Wenn die Anwendung überhaupt keine Verbindung mit Event Hub herstellen kann, führen Sie die in diesem Abschnitt aufgeführten Schritte aus, um das Problem zu beheben. 
 
-    Beispiel für eine erfolgreiche Meldung:
-    
-    ```xml
-    <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
+### <a name="check-if-there-is-a-service-outage"></a>Überprüfen, ob ein Dienstausfall vorliegt
+Überprüfen Sie auf der [Azure-Dienststatuswebsite](https://azure.microsoft.com/status/), ob ein Azure Event Hubs-Dienstausfall vorliegt.
+
+### <a name="verify-the-connection-string"></a>Überprüfen der Verbindungszeichenfolge 
+Vergewissern Sie sich, dass die verwendete Verbindungszeichenfolge richtig ist. Weitere Informationen zum Abrufen der Verbindungszeichenfolge mit dem Azure-Portal, der CLI oder PowerShell finden Sie unter [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md). 
+
+Vergewissern Sie sich bei Kafka-Clients, dass die Dateien „producer.config“ oder „consumer.config“ ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Senden und Empfangen von Nachrichten mit Kafka in Event Hubs](event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs).
+
+### <a name="check-if-the-ports-required-to-communicate-with-event-hubs-are-blocked-by-organizations-firewall"></a>Überprüfen, ob die für die Kommunikation mit Event Hubs erforderlichen Ports durch die Firewall der Organisation blockiert werden
+Überprüfen Sie, ob die für die Kommunikation mit Azure Event Hubs verwendeten Ports in der Firewall Ihrer Organisation blockiert sind. In der folgenden Tabelle finden Sie die ausgehenden Ports, die Sie öffnen müssen, um mit Azure Event Hubs kommunizieren zu können. 
+
+| Protocol | Ports | Details | 
+| -------- | ----- | ------- | 
+| AMQP | 5671 und 5672 | Weitere Informationen finden Sie im [AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden](../service-bus-messaging/service-bus-amqp-protocol-guide.md). | 
+| HTTP, HTTPS | 80, 443 |  |
+| Kafka | 9093 | Weitere Informationen finden Sie unter [Verwenden von Azure Event Hubs aus Apache Kafka-Anwendungen](event-hubs-for-kafka-ecosystem-overview.md).
+
+Dies ist ein Beispielbefehl, mit dem überprüft wird, ob Port 5671 blockiert ist.
+
+```powershell
+tnc <yournamespacename>.servicebus.windows.net -port 5671
+```
+
+Unter Linux:
+
+```shell
+telnet <yournamespacename>.servicebus.windows.net 5671
+```
+
+### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>Überprüfen, ob die IP-Adressen in der Unternehmensfirewall zulässig sind
+Wenn Sie mit Azure arbeiten, müssen Sie manchmal bestimmten IP-Adressbereichen oder URLs in Ihrer Unternehmensfirewall oder Ihrem Proxy erlauben, auf alle Azure-Dienste zuzugreifen, die Sie verwenden oder zu verwenden versuchen. Überprüfen Sie, ob der Datenverkehr für die von Event Hubs verwendeten IP-Adressen zulässig ist. Weitere Informationen zu den von Azure Event Hubs verwendeten IP-Adressen finden Sie unter: [Azure-IP-Bereiche und Diensttags – öffentliche Cloud](https://www.microsoft.com/download/details.aspx?id=56519) und [Diensttag – EventHub](network-security.md#service-tags).
+
+Vergewissern Sie sich außerdem, dass die IP-Adresse für Ihren Namespace zulässig ist. Um die richtigen IP-Adressen zu ermitteln, die für Ihre Verbindungen zulässig sind, führen Sie die folgenden Schritte aus:
+
+1. Führen Sie den folgenden Befehl an einer Eingabeaufforderung aus: 
+
     ```
-    
-    Beispiel für eine Fehlermeldung:
-
-    ```json
-    <Error>
-        <Code>400</Code>
-        <Detail>
-            Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
-        </Detail>
-    </Error>
+    nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-- Führen Sie den folgenden Befehl aus, um zu überprüfen, ob ein Port auf der Firewall blockiert ist. Die verwendeten Ports sind 443 (HTTPS), 5671 (AMQP) und 9093 (Kafka). Abhängig von der verwendeten Bibliothek werden auch andere Ports verwendet. Dies ist der Beispielbefehl, mit dem überprüft wird, ob Port 5671 blockiert ist.
+2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. Sie würde sich nur dann ändern, wenn Sie den Namespace in einem anderen Cluster wiederherstellen.
 
-    ```powershell
-    tnc <yournamespacename>.servicebus.windows.net -port 5671
+Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige zusätzliche Schritte durchführen: 
+
+1. Führen Sie zunächst nslookup für den Namespace aus.
+
     ```
-
-    Unter Linux:
-
-    ```shell
-    telnet <yournamespacename>.servicebus.windows.net 5671
+    nslookup <yournamespace>.servicebus.windows.net
     ```
-- Führen Sie bei zeitweiligen Konnektivitätsproblemen den folgenden Befehl aus, um zu überprüfen, ob gelöschte Pakete vorhanden sind. Mit diesem Befehl wird versucht, jede Sekunde 25 verschiedene TCP-Verbindungen mit dem Dienst herzustellen. Anschließend können Sie überprüfen, wie viele davon erfolgreich/fehlerhaft waren, und außerdem die Latenz der TCP-Verbindung anzeigen. Sie können das `psping`-Tool [hier](/sysinternals/downloads/psping) herunterladen.
+2. Notieren Sie sich den Namen im Abschnitt **non-authoritative answer** (nicht autorisierende Antwort), der in einem der folgenden Formate vorliegt: 
 
-    ```shell
-    .\psping.exe -n 25 -i 1 -q <yournamespacename>.servicebus.windows.net:5671 -nobanner     
     ```
-    Sie können äquivalente Befehle verwenden, wenn Sie andere Tools wie `tnc`, `ping` usw. nutzen. 
-- Rufen Sie eine Netzwerkablaufverfolgung ab, wenn die vorherigen Schritte nicht hilfreich sind, und analysieren Sie diese mit Tools wie [Wireshark](https://www.wireshark.org/). Wenden Sie sich bei Bedarf an den [Microsoft-Support](https://support.microsoft.com/). 
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
+    ```
+3. Führen Sie den Befehl „nslookup“ für jeden Namen mit den Suffixen s1, s2 und s3 aus, um die IP-Adressen aller drei Instanzen zu erhalten, die in drei Verfügbarkeitszonen ausgeführt werden. 
 
-## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Mögliche Probleme im Zusammenhang mit Dienstupgrades/-neustarts
-Upgrades und Neustarts des Back-End-Diensts können sich wie folgt auf Ihre Anwendungen auswirken:
+### <a name="check-if-the-application-needs-to-be-running-in-a-specific-subnet-of-a-vnet"></a>Überprüfen, ob die Anwendung in einem bestimmten Subnetz eines VNET ausgeführt werden muss
+Vergewissern Sie sich, dass Ihre Anwendung in einem Subnetz des virtuellen Netzwerks ausgeführt wird, das Zugriff auf den Namespace besitzt. Wenn dies nicht der Fall ist, führen Sie die Anwendung in dem Subnetz aus, das Zugriff auf den Namespace besitzt, oder fügen Sie die IP-Adresse des Computers, auf dem die Anwendung ausgeführt wird, der [IP-Firewall](event-hubs-ip-filtering.md) hinzu. 
 
-- Anforderungen werden ggf. vorübergehend gedrosselt.
+Wenn Sie einen Dienstendpunkt für ein virtuelles Netzwerk für einen Event Hub-Namespace erstellen, akzeptiert der Namespace nur Datenverkehr aus dem Subnetz, das an den Dienstendpunkt gebunden ist. Es gibt bei diesem Verhalten eine Ausnahme. Sie können bestimmte IP-Adressen in der IP-Firewall hinzufügen, um den Zugriff auf den öffentlichen Endpunkt des Event Hub zu ermöglichen. Weitere Informationen finden Sie unter [Netzwerkdienstendpunkte](event-hubs-service-endpoints.md).
+
+### <a name="check-the-ip-firewall-settings-for-your-namespace"></a>Überprüfen der IP-Firewalleinstellungen für Ihren Namespace
+Überprüfen Sie, ob die IP-Adresse des Computers, auf dem die Anwendung ausgeführt wird, durch die IP-Firewall blockiert wird.  
+
+Standardmäßig kann über das Internet auf Event Hubs-Namespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
+
+Die IP-Firewallregeln werden auf der Event Hubs-Namespaceebene angewendet. Daher gelten die Regeln für alle Clientverbindungen mit einem beliebigen unterstützten Protokoll. Jeder Verbindungsversuch von einer IP-Adresse, die nicht mit einer zulässigen IP-Regel im Event Hubs-Namespace übereinstimmt, wird als nicht autorisiert abgelehnt. In der Antwort wird die IP-Regel nicht erwähnt. IP-Filterregeln werden der Reihe nach angewendet, und die erste Regel, die eine Übereinstimmung mit der IP-Adresse ergibt, bestimmt die Aktion (Zulassen oder Ablehnen).
+
+Weitere Informationen finden Sie unter [Konfigurieren von IP-Firewallregeln für ein Azure Event Hubs-Namespace](event-hubs-ip-filtering.md). Informationen zur Überprüfung, ob Probleme mit der IP-Filterung, dem virtuellen Netzwerk oder der Zertifikatkette vorliegen, finden Sie unter [Beheben von netzwerkbezogenen Problemen](#troubleshoot-network-related-issues).
+
+#### <a name="find-the-ip-addresses-blocked-by-ip-firewall"></a>Ermitteln der durch die IP-Firewall blockierten IP-Adressen
+Aktivieren Sie Diagnoseprotokolle für [Event Hubs-Verbindungsereignisse für virtuelle Netzwerke](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema), indem Sie den Anweisungen unter [Aktivieren von Diagnoseprotokollen](event-hubs-diagnostic-logs.md#enable-diagnostic-logs) folgen. Es wird die IP-Adresse der Verbindung angezeigt, die verweigert wird.
+
+```json
+{
+    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
+    "NamespaceName": "namespace-name",
+    "IPAddress": "1.2.3.4",
+    "Action": "Deny Connection",
+    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
+    "Count": "65",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
+    "Category": "EventHubVNetConnectionEvent"
+}
+```
+
+### <a name="check-if-the-namespace-can-be-accessed-using-only-a-private-endpoint"></a>Überprüfen, ob auf den Namespace nur mit einem privaten Endpunkt zugegriffen werden kann
+Wenn der Event Hubs-Namespace so konfiguriert ist, dass darauf nur über einen privaten Endpunkt zugegriffen werden kann, vergewissern Sie sich, dass die Clientanwendung über den privaten Endpunkt auf den Namespace zugreift. 
+
+Mit dem [Azure Private Link-Dienst](../private-link/private-link-overview.md) können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure Event Hubs zugreifen. Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem VNET und bindet den Dienst dadurch in Ihr VNET ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-/VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine Verbindung mit einer Instanz einer Azure-Ressource herstellen, was ein Höchstmaß an Granularität bei der Zugriffssteuerung ermöglicht.
+
+Weitere Informationen finden Sie unter [Konfigurieren privater Endpunkte](private-link-service.md). 
+
+### <a name="troubleshoot-network-related-issues"></a>Beheben von netzwerkbezogenen Problemen
+Führen Sie die folgenden Schritte aus, um netzwerkbezogene Probleme mit Event Hubs zu beheben: 
+
+Navigieren Sie zu `https://<yournamespacename>.servicebus.windows.net/`, oder verwenden Sie [wget](https://www.gnu.org/software/wget/). Dies hilft bei der Überprüfung, ob Probleme mit der IP-Filterung oder dem virtuellen Netzwerk bzw. der Zertifikatkette vorliegen (häufiges Problem bei Verwendung des Java SDK).
+
+Beispiel für eine **erfolgreiche Meldung**:
+
+```xml
+<feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
+```
+
+Beispiel für eine **Fehlermeldung**:
+
+```json
+<Error>
+    <Code>400</Code>
+    <Detail>
+        Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
+    </Detail>
+</Error>
+```
+
+## <a name="troubleshoot-transient-connectivity-issues"></a>Beheben zeitweiliger Konnektivitätsprobleme
+Wenn vorübergehend Konnektivitätsprobleme auftreten, finden Sie in den folgenden Abschnitten Tipps zur Problembehandlung. 
+
+### <a name="use-the-latest-version-of-the-client-sdk"></a>Verwenden der neuesten Version des SDK
+Einige der vorübergehenden Konnektivitätsprobleme wurden möglicherweise in neueren Versionen des SDK als der von Ihnen verwendeten behoben. Stellen Sie sicher, dass Sie die neueste Version der Client-SDKs in Ihren Anwendungen verwenden. SDKs werden durch neue/aktualisierte Features und Fehlerbehebungen kontinuierlich verbessert. Testen Sie daher immer mit dem neuesten Paket. Überprüfen Sie die Versionshinweise auf behobene Probleme und hinzugefügte/aktualisierte Features. 
+
+Weitere Informationen zu Client-SDKs finden Sie im Artikel [Azure Event Hubs – Client-SDKs](sdks.md). 
+
+### <a name="run-the-command-to-check-dropped-packets"></a>Ausführen der Befehle zum Überprüfen gelöschter Pakete
+Führen Sie bei zeitweiligen Konnektivitätsproblemen den folgenden Befehl aus, um zu überprüfen, ob gelöschte Pakete vorhanden sind. Mit diesem Befehl wird versucht, jede Sekunde 25 verschiedene TCP-Verbindungen mit dem Dienst herzustellen. Anschließend können Sie überprüfen, wie viele davon erfolgreich/fehlerhaft waren, und außerdem die Latenz der TCP-Verbindung anzeigen. Sie können das `psping`-Tool [hier](/sysinternals/downloads/psping) herunterladen.
+
+```shell
+.\psping.exe -n 25 -i 1 -q <yournamespacename>.servicebus.windows.net:5671 -nobanner     
+```
+Sie können äquivalente Befehle verwenden, wenn Sie andere Tools wie `tnc`, `ping` usw. nutzen. 
+
+Rufen Sie eine Netzwerkablaufverfolgung ab, wenn die vorherigen Schritte nicht hilfreich sind, und analysieren Sie diese mit Tools wie [Wireshark](https://www.wireshark.org/). Wenden Sie sich bei Bedarf an den [Microsoft-Support](https://support.microsoft.com/). 
+
+### <a name="service-upgradesrestarts"></a>Dienstupgrades/-neustarts
+Vorübergehende Konnektivitätsprobleme können aufgrund von Upgrades und Neustarts des Back-End-Diensts auftreten. Wenn solche Probleme vorliegen, treten möglicherweise die folgenden Symptome auf: 
+
 - Es gehen möglicherweise weniger Nachrichten/Anforderungen ein.
 - Die Protokolldatei enthält unter Umständen Fehlermeldungen.
 - Die Verbindung zwischen Anwendungen und dem Dienst wird möglicherweise für einige Sekunden getrennt.
+- Anforderungen werden ggf. vorübergehend gedrosselt.
 
-Wenn im Anwendungscode das SDK verwendet wird, ist die Wiederholungsrichtlinie bereits integriert und aktiv. Die Verbindung wird ohne nennenswerte Auswirkungen auf die Anwendung bzw. den Workflow wiederhergestellt.
-
+Wenn im Anwendungscode das SDK verwendet wird, ist die Wiederholungsrichtlinie bereits integriert und aktiv. Die Verbindung wird ohne nennenswerte Auswirkungen auf die Anwendung bzw. den Workflow wiederhergestellt. Versuchen Sie andernfalls nach einigen Minuten erneut, eine Verbindung mit dem Dienst herzustellen, um zu überprüfen, ob die Probleme behoben wurden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie in folgenden Artikeln:
 
-Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
-
-* [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Erstellen eines Event Hubs](event-hubs-create.md)
-* [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
+* [Behandeln von Authentifizierungs- und Autorisierungsproblemen](troubleshoot-authentication-authorization.md)

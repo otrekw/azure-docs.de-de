@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5b0639179c21aefebc44222c9efaa4cd8d9c82f5
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: dc25c853a37de5c310d37e7ee64c6f762283cb0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921902"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077438"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -37,7 +37,7 @@ Datenquellen und -connectors, die im Datenabruf- oder Tabellenimport-Assistenten
 
 <a name="tab1400a">1</a>: Nur für tabellarische Modelle 1400 und höhere.  
 <a name="azprovider">2</a>: Bei Angabe als *Anbieterdatenquelle* in tabellarischen Modellen ab 1200 ist sowohl für In-Memory- als auch für DirectQuery-Modelle der Microsoft OLE DB-Treiber für SQL Server (MSOLEDBSQL; empfohlen), SQL Server Native Client 11.0 oder der .NET Framework-Datenanbieter für SQL Server erforderlich.  
-<a name="azsqlmanaged">3</a>: Verwaltete Azure SQL-Instanz wird unterstützt. Da eine verwaltete Instanz innerhalb von Azure VNet mit einer privaten IP-Adresse ausgeführt wird, muss der öffentliche Endpunkt für die Instanz aktiviert sein. Andernfalls ist ein [lokales Datengateway](analysis-services-gateway.md) erforderlich.  
+<a name="azsqlmanaged">3</a>: Verwaltete Azure SQL-Instanz wird unterstützt. Da SQL Managed Instance innerhalb von Azure-VNET mit einer privaten IP-Adresse ausgeführt wird, muss der öffentliche Endpunkt für die Instanz aktiviert sein. Andernfalls ist ein [lokales Datengateway](analysis-services-gateway.md) erforderlich.  
 <a name="databricks">4</a>: Azure Databricks mit Spark-Connector wird derzeit nicht unterstützt.  
 <a name="gen2">5</a>: Der ADLS Gen2-Connector wird derzeit zwar nicht unterstützt, aber der Azure Blob Storage-Connector kann mit einer ADLS Gen2-Datenquelle verwendet werden.
 

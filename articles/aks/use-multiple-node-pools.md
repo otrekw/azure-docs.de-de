@@ -4,12 +4,12 @@ description: Informationen zum Erstellen und Verwalten mehrerer Knotenpools für
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: bf7e767f1a7b0c657c744c96b308160393e3f326
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 64eaa3fd38a9f3de7e2032ef7ff7a18924353a1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610920"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318435"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -42,7 +42,7 @@ Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS
 > [!Important]
 > Wenn Sie für Ihren AKS-Cluster nur einen Systemknotenpool in einer Produktionsumgebung ausführen, sollten Sie für den Knotenpool mindestens drei Knoten verwenden.
 
-Erstellen Sie zu Beginn einen AKS-Cluster mit einem einzelnen Knotenpool. Im folgenden Beispiel wird der Befehl [az group create][az-group-create] verwendet, um eine Ressourcengruppe namens *myResourceGroup* in der Region *eastus* zu erstellen. Anschließend wird mit dem Befehl [az aks create][az-aks-create] ein AKS-Cluster mit dem Namen *myAKSCluster* erstellt. In einem nachfolgenden Schritt wird die Aktualisierung eines Knotenpools mithilfe von *--kubernetes-version* *1.15.7* veranschaulicht. Sie können eine beliebige [unterstützte Kubernetes-Version][supported-versions] angeben.
+Erstellen Sie zu Beginn einen AKS-Cluster mit einem einzelnen Knotenpool. Im folgenden Beispiel wird der Befehl [az group create][az-group-create] verwendet, um eine Ressourcengruppe namens *myResourceGroup* in der Region *eastus* zu erstellen. Anschließend wird mit dem Befehl [az aks create][az-aks-create] ein AKS-Cluster mit dem Namen *myAKSCluster* erstellt.
 
 > [!NOTE]
 > Die Load Balancer-SKU *Basic* wird bei Verwendung mehrerer Knotenpools **nicht unterstützt**. Standardmäßig werden AKS-Cluster mit der Lastenausgleichs-SKU *Standard* über die Azure-Befehlszeilenschnittstelle und das Azure-Portal erstellt.
@@ -58,7 +58,6 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.15.7 \
     --load-balancer-sku standard
 ```
 
@@ -82,8 +81,7 @@ az aks nodepool add \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --node-count 3 \
-    --kubernetes-version 1.15.5
+    --node-count 3
 ```
 
 > [!NOTE]
@@ -104,7 +102,7 @@ Die folgende Beispielausgabe zeigt, dass *mynodepool* erfolgreich mit drei Knote
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.15.5",
+    "orchestratorVersion": "1.15.7",
     ...
     "vmSize": "Standard_DS2_v2",
     ...
@@ -123,7 +121,7 @@ Die folgende Beispielausgabe zeigt, dass *mynodepool* erfolgreich mit drei Knote
 ```
 
 > [!TIP]
-> Wenn beim Hinzufügen eines Knotenpools keine *VmSize* angegeben ist, lautet die Standardgröße *Standard_DS2_v3* für Windows-Knotenpools und *Standard_DS2_v2* für Linux-Knotenpools. Wenn keine *OrchestratorVersion* angegeben ist, wird standardmäßig die gleiche Version wie für die Steuerungsebene verwendet.
+> Wenn beim Hinzufügen eines Knotenpools keine *VmSize* angegeben ist, lautet die Standardgröße *Standard_D2s_v3* für Windows-Knotenpools und *Standard_DS2_v2* für Linux-Knotenpools. Wenn keine *OrchestratorVersion* angegeben ist, wird standardmäßig die gleiche Version wie für die Steuerungsebene verwendet.
 
 ### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>Hinzufügen eines Knotenpools mit einem eindeutigen Subnetz (Vorschau)
 
@@ -144,7 +142,6 @@ az aks nodepool add \
     --cluster-name myAKSCluster \
     --name mynodepool \
     --node-count 3 \
-    --kubernetes-version 1.15.5
     --vnet-subnet-id <YOUR_SUBNET_RESOURCE_ID>
 ```
 
@@ -153,25 +150,29 @@ az aks nodepool add \
 > [!NOTE]
 > Upgrade- und Skalierungsvorgänge für einen Cluster- oder Knotenpool können nicht gleichzeitig ausgeführt werden. Bei dem Versuch wird ein Fehler zurückgegeben. Stattdessen muss jeder Vorgangstyp für die Zielressource abgeschlossen sein, bevor eine neue Anforderung an dieselbe Ressource gerichtet werden kann. Weitere Informationen hierzu finden Sie in unserem [Leitfaden zur Problembehandlung](https://aka.ms/aks-pending-upgrade).
 
-Beim anfänglichen Erstellen Ihres AKS-Clusters im ersten Schritt wurde für `--kubernetes-version` der Wert *1.15.7* angegeben. Dadurch wurde die Kubernetes-Version sowohl für die Steuerungsebene als auch für den Standardknotenpool festgelegt. Mit den Befehlen in diesem Abschnitt wird gezeigt, wie ein Upgrade für einen einzelnen spezifischen Knotenpool durchgeführt wird.
-
-Die Beziehung zwischen dem Upgrade der Kubernetes-Version der Steuerungsebene und des Knotenpools wird im [Abschnitt weiter unten](#upgrade-a-cluster-control-plane-with-multiple-node-pools) erläutert.
+Mit den Befehlen in diesem Abschnitt wird gezeigt, wie ein Upgrade für einen einzelnen spezifischen Knotenpool durchgeführt wird. Die Beziehung zwischen dem Upgrade der Kubernetes-Version der Steuerungsebene und des Knotenpools wird im [Abschnitt weiter unten](#upgrade-a-cluster-control-plane-with-multiple-node-pools) erläutert.
 
 > [!NOTE]
 > Die Betriebssystem-Imageversion des Knotenpools ist an die Kubernetes-Version des Clusters gebunden. Upgrades für Betriebssystemimages erhalten Sie nur nach einem Clusterupgrade.
 
-Da in diesem Beispiel zwei Knotenpools vorhanden sind, muss [az aks nodepool upgrade][az-aks-nodepool-upgrade] für das Upgrade eines Knotenpools verwendet werden. Führen Sie für *mynodepool* ein Upgrade auf Kubernetes *1.15.7* durch. Verwenden Sie den Befehl [az aks nodepool upgrade][az-aks-nodepool-upgrade], um ein Upgrade für den Knotenpool durchzuführen, wie im folgenden Beispiel gezeigt:
+Da in diesem Beispiel zwei Knotenpools vorhanden sind, muss [az aks nodepool upgrade][az-aks-nodepool-upgrade] für das Upgrade eines Knotenpools verwendet werden. Verwenden Sie [az aks get-upgrades][az-aks-get-upgrades], um die verfügbaren Upgrades anzuzeigen.
+
+```azurecli-interactive
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
+```
+
+Führen Sie für *mynodepool* ein Upgrade durch. Verwenden Sie den Befehl [az aks nodepool upgrade][az-aks-nodepool-upgrade], um ein Upgrade für den Knotenpool durchzuführen, wie im folgenden Beispiel gezeigt:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --kubernetes-version 1.15.7 \
+    --kubernetes-version KUBERNETES_VERSION \
     --no-wait
 ```
 
-Listen Sie den Status Ihrer Knotenpools mit dem Befehl [az aks node pool list][az-aks-nodepool-list] erneut auf. Das folgende Beispiel zeigt, dass *mynodepool* den Zustand *Upgrading* (Wird aktualisiert) auf *1.15.7* aufweist:
+Listen Sie den Status Ihrer Knotenpools mit dem Befehl [az aks node pool list][az-aks-nodepool-list] erneut auf. Das folgende Beispiel zeigt, dass *mynodepool* den Zustand *Upgrading* (Wird aktualisiert) auf *KUBERNETES_VERSION* aufweist:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -184,7 +185,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.15.7",
+    "orchestratorVersion": "KUBERNETES_VERSION",
     ...
     "provisioningState": "Upgrading",
     ...
@@ -812,6 +813,8 @@ In diesem Artikel haben Sie erfahren, wie Sie mehrere Knotenpools in einem AKS-C
 
 Informationen zum Erstellen und Verwenden von Windows Server-Containerknotenpools finden Sie unter [Erstellen eines Windows Server-Containers in AKS][aks-windows].
 
+Verwenden Sie [Näherungsplatzierungsgruppe][reduce-latency-ppg], um die Latenz für Ihre AKS-Anwendungen zu verringern.
+
 <!-- EXTERNAL LINKS -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
@@ -824,6 +827,7 @@ Informationen zum Erstellen und Verwenden von Windows Server-Containerknotenpool
 [aks-windows]: windows-container-cli.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-upgrades]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-upgrades
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
 [az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-list
 [az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
@@ -848,3 +852,4 @@ Informationen zum Erstellen und Verwenden von Windows Server-Containerknotenpool
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
 [az-list-ips]: /cli/azure/vmss?view=azure-cli-latest.md#az-vmss-list-instance-public-ips
+[reduce-latency-ppg]: reduce-latency-ppg.md

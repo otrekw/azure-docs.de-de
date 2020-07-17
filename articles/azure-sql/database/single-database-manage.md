@@ -11,21 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 301d881e2065234bbd1a38e39eb1806d23c6809a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84025651"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254989"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Erstellen und Verwalten von Servern und Einzeldatenbanken in Azure SQL-Datenbank
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Sie können Server und einzelne Datenbanken in Azure SQL-Datenbank mit dem Azure-Portal, PowerShell, der Azure CLI, der REST-API oder Transact-SQL erstellen und verwalten.
 
-## <a name="azure-portal"></a>Azure-Portal
+## <a name="the-azure-portal"></a>Das Azure-Portal
 
-Sie können die Ressourcengruppe für die Azure SQL-Datenbank im Voraus oder beim Erstellen des Servers selbst erstellen.
+Sie können die Ressourcengruppe für Azure SQL-Datenbank vorab oder beim Erstellen des Servers selbst erstellen.
 
 ### <a name="create-a-server"></a>Erstellen eines Servers
 
@@ -44,7 +43,7 @@ Um eine einzelne Azure SQL-Datenbank mithilfe des [Azure-Portals](https://portal
 
 ## <a name="manage-an-existing-server"></a>Verwalten eines vorhandenen Servers
 
-Zum Verwalten eines vorhandenen Servers navigieren Sie mithilfe einer Reihe von Methoden zum Server, z. B. über eine bestimmte Seite der SQL-Datenbank, die Seite der **SQL-Server** oder die Seite **Alle Ressourcen**.
+Zum Verwalten eines vorhandenen Servers navigieren Sie mithilfe einer Reihe von Methoden zum Server, z. B. über eine bestimmte Datenbankseite, die Seite für die **SQL-Server** oder die Seite **Alle Ressourcen**.
 
 Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Datenbanken**, und wählen Sie dann die Datenbank aus, die Sie verwalten möchten. Der folgende Screenshot zeigt, wie Sie beginnen, über die Seite **Übersicht** für eine Datenbank eine Firewall auf Serverebene für eine Datenbank festzulegen.
 
@@ -64,7 +63,7 @@ Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Dat
 Verwenden Sie zum Erstellen und Verwalten von Servern, Einzel- und Pooldatenbanken und Firewalls auf Serverebene mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weiter.
 
 > [!TIP]
-> PowerShell-Beispielskripts finden Sie unter [Verwenden von PowerShell zum Erstellen einer Azure SQL-Einzeldatenbank und Konfigurieren einer Firewallregel auf Serverebene](scripts/create-and-configure-database-powershell.md) und [Überwachen und Skalieren einer SQL-Einzeldatenbank mithilfe von PowerShell](scripts/monitor-and-scale-database-powershell.md).
+> PowerShell-Beispielskripts finden Sie unter [Verwenden von PowerShell zum Erstellen einer Datenbank in SQL-Datenbank und Konfigurieren einer Firewallregel auf Serverebene](scripts/create-and-configure-database-powershell.md) und [Überwachen und Skalieren einer Datenbank in SQL-Datenbank mithilfe von PowerShell](scripts/monitor-and-scale-database-powershell.md).
 
 | Cmdlet | BESCHREIBUNG |
 | --- | --- |
@@ -83,12 +82,12 @@ Verwenden Sie zum Erstellen und Verwalten von Servern, Einzel- und Pooldatenbank
 |[Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule)|Löscht eine Firewallregel von einem Server|
 | New-AzSqlServerVirtualNetworkRule | Erstellt eine [*VNET-Regel*](vnet-service-endpoint-rule-overview.md), die auf einem Subnetz basiert, das einen VNET-Dienstendpunkt darstellt. |
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="the-azure-cli"></a>Die Azure-CLI
 
 Verwenden Sie zum Erstellen und Verwalten der Server, Datenbanken und Firewalls mithilfe der [Azure CLI](/cli/azure) die folgenden [Azure CLI](/cli/azure/sql/db)-Befehle. Führen Sie die CLI mithilfe von [Cloud Shell](/azure/cloud-shell/overview) in Ihrem Browser aus, oder [installieren](/cli/azure/install-azure-cli) Sie sie unter macOS, Linux oder Windows. Informationen zum Erstellen und Verwalten von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](elastic-pool-overview.md).
 
 > [!TIP]
-> Eine Schnellstartanleitung zur Azure CLI finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](az-cli-script-samples-content-guide.md). Azure CLI-Beispielskripts finden Sie unter [Verwenden der CLI zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer SQL-Datenbank-Firewallregel](scripts/create-and-configure-database-cli.md) und [Verwenden der CLI zum Überwachen und Skalieren einer einzelnen Azure SQL-Datenbank](scripts/monitor-and-scale-database-cli.md).
+> Eine Schnellstartanleitung zur Azure CLI finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](az-cli-script-samples-content-guide.md). Azure CLI-Beispielskripts finden Sie unter [Verwenden der CLI zum Erstellen einer Datenbank in Azure SQL-Datenbank und Konfigurieren einer SQL-Datenbank-Firewallregel](scripts/create-and-configure-database-cli.md) und [Verwenden der CLI zum Überwachen und Skalieren einer Datenbank in Azure SQL-Datenbank](scripts/monitor-and-scale-database-cli.md).
 >
 
 | Cmdlet | BESCHREIBUNG |
@@ -127,16 +126,16 @@ Verwenden Sie zum Erstellen der Server, Datenbanken und Firewalls mithilfe von T
 |[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|Erstellt eine neue einzelne Datenbank. Es muss eine Verbindung mit der master-Datenbank bestehen, um eine neue Datenbank zu erstellen.|
 | [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Ändert eine Datenbank oder einen Pool für elastische Datenbanken. |
 |[DROP DATABASE](/sql/t-sql/statements/drop-database-transact-sql)|Löscht eine Datenbank.|
-|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Gibt die Edition (Dienstebene), das Dienstziel (Tarif) und den Namen des Pools für elastische Datenbanken, falls vorhanden, für Azure SQL-Datenbank oder ein Azure Synapse-SQL-Pool zurück. Wenn eine Anmeldung bei der Masterdatenbank auf einem Server in SQL-Datenbank besteht, werden Informationen zu allen Datenbanken zurückgegeben. Für Azure Synapse müssen Sie mit der Masterdatenbank verbunden sein, um eine Anmeldung erstellen zu können.|
-|[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Gibt die CPU-, E/A- und Arbeitsspeichernutzung für eine Azure SQL-Datenbank zurück. Jede Zeile wird für 15 Sekunden beibehalten, auch wenn keine Aktivität in der Datenbank vorhanden ist.|
-|[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Gibt die CPU-Nutzung und Speicherdaten für eine Azure SQL-Datenbank zurück. Die Daten werden in Intervallen von fünf Minuten gesammelt und aggregiert.|
+|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Gibt die Edition (Dienstebene), das Dienstziel (Tarif) und den Namen des Pools für elastische Datenbanken, falls vorhanden, für Azure SQL-Datenbank oder ein Azure Synapse Analytics-SQL-Pool zurück. Wenn eine Anmeldung bei der Masterdatenbank auf einem Server in SQL-Datenbank besteht, werden Informationen zu allen Datenbanken zurückgegeben. Für Azure Synapse Analytics müssen Sie mit der Masterdatenbank verbunden sein, um eine Anmeldung erstellen zu können.|
+|[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Mit diesem Befehl werden die CPU-, E/A- und Arbeitsspeichernutzung für eine Datenbank in Azure SQL-Datenbank zurückgegeben. Jede Zeile wird für 15 Sekunden beibehalten, auch wenn keine Aktivität in der Datenbank vorhanden ist.|
+|[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Gibt die CPU-Nutzung und Speicherdaten für eine Datenbank in Azure SQL-Datenbank zurück. Die Daten werden in Intervallen von fünf Minuten gesammelt und aggregiert.|
 |[sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Enthält Statistiken zu Verbindungsereignissen für SQL-Datenbank und eine Übersicht über erfolgreiche und nicht erfolgreiche Datenbankverbindungen. |
 |[sys.event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Gibt erfolgreiche Datenbankverbindungen, Verbindungsfehler und Deadlocks für Azure SQL-Datenbank zurück. Sie können diese Informationen nutzen, um die Datenbankaktivität mit SQL-Datenbank nachzuverfolgen oder um Probleme zu beheben.|
 |[sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Erstellt oder aktualisiert die Firewalleinstellungen auf Serverebene für den Server. Diese gespeicherte Prozedur ist nur in der master-Datenbank für den Prinzipalanmeldenamen auf Serverebene verfügbar. Eine Firewallregel auf Serverebene kann erst mithilfe von Transact-SQL erstellt werden, nachdem die erste Firewallregel auf Serverebene von einem Benutzer mit Azure-Berechtigungen erstellt wurde.|
-|[sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Gibt Informationen zu den Firewalleinstellungen auf Serverebene im Zusammenhang mit Ihrer Azure SQL-Datenbank zurück.|
+|[sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Gibt Informationen zu den Firewalleinstellungen auf Serverebene im Zusammenhang mit Ihrer Datenbank in Azure SQL-Datenbank zurück.|
 |[sp_delete_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Entfernt Firewalleinstellungen auf Serverebene vom Server. Diese gespeicherte Prozedur ist nur in der master-Datenbank für den Prinzipalanmeldenamen auf Serverebene verfügbar.|
-|[sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Erstellt oder aktualisiert die Firewallregeln auf Datenbankebene für Ihre Azure SQL-Datenbank. Datenbank-Firewallregeln können für die Masterdatenbank und für Benutzerdatenbanken in SQL-Datenbank konfiguriert werden. Datenbank-Firewallregeln sind bei der Verwendung von Benutzern eigenständiger Datenbanken nützlich. |
-|[sys.database_firewall_rules](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Gibt Informationen zu den Firewalleinstellungen auf Datenbankebene im Zusammenhang mit Ihrer Azure SQL-Datenbank zurück. |
+|[sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Mit diesem Befehl werden Firewallregeln auf Datenbankebene für Ihre Datenbank in Azure SQL-Datenbank erstellt oder geändert. Datenbank-Firewallregeln können für die Masterdatenbank und für Benutzerdatenbanken in SQL-Datenbank konfiguriert werden. Datenbank-Firewallregeln sind bei der Verwendung von Benutzern eigenständiger Datenbanken nützlich. |
+|[sys.database_firewall_rules](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Gibt Informationen zu den Firewalleinstellungen auf Datenbankebene im Zusammenhang mit Ihrer Datenbank in Azure SQL-Datenbank zurück. |
 |[sp_delete_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Entfernt eine Firewalleinstellung auf Datenbankebene aus einer Datenbank. |
 
 ## <a name="rest-api"></a>REST-API
@@ -166,3 +165,4 @@ Verwenden Sie zum Erstellen und Verwalten der Server, Datenbanken und Firewalls 
 
 - Weitere Informationen zum Migrieren einer SQL Server-Datenbank zu Azure finden Sie unter [Migrieren zu Azure SQL-Datenbank](migrate-to-database-from-sql-server.md).
 - Informationen zu unterstützten Funktionen finden Sie unter [Features (Funktionen)](features-comparison.md).
+ 

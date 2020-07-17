@@ -8,16 +8,16 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: ccdb2b24499c86a54909b2617abd7e9bf294a261
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.topic: how-to
+ms.date: 06/27/2020
+ms.openlocfilehash: 476f3925886a6de68b49e1861d22e6cfaf594202
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601451"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace-preview"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich (Vorschau)
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Erfahren Sie, wie Sie im Azure Machine Learning Studio Ihr Jupyter Notebook direkt in Ihrem Arbeitsbereich ausführen können. Sie können zwar [Jupyter](https://jupyter.org/) oder [JupyterLab](https://jupyterlab.readthedocs.io) starten, aber Sie können Ihre Notebooks auch bearbeiten und ausführen, ohne den Arbeitsbereich zu verlassen.
@@ -51,10 +51,12 @@ So erstellen Sie ein neues Notebook
 1. Wählen Sie ein Dateiverzeichnis aus.
 1. Klicken Sie auf **Erstellen**.
 
-> [!TIP]
-> Sie können auch Textdateien erstellen.  Wählen Sie **Text** als Dateityp aus, und fügen Sie dem Namen die Erweiterung hinzu (z. B. „myfile.py“ oder „myfile.txt“)  
+Sie können auch Textdateien erstellen.  Wählen Sie **Text** als Dateityp aus, und fügen Sie dem Namen die Erweiterung hinzu (z. B. „myfile.py“ oder „myfile.txt“)  
 
 Sie können auch Ordner und Dateien, einschließlich Notebooks, mit den Tools am oberen Rand der Seite „Notebooks“ hochladen.  Notebooks und die meisten Textdateitypen werden im Vorschaubereich angezeigt.  Für die meisten anderen Dateitypen ist keine Vorschau verfügbar.
+
+> [!IMPORTANT]
+> Inhalte in Notebooks und Skripts können möglicherweise Daten aus Ihren Sitzungen lesen und auf Daten zugreifen, ohne dass sich Ihre Organisation in Azure befindet.  Laden Sie nur Dateien aus vertrauenswürdigen Quellen. Weitere Informationen finden Sie unter [Bewährte Methoden für sicheren Code](concept-secure-code-best-practice.md#azure-ml-studio-notebooks).
 
 ### <a name="clone-samples"></a>Klonen von Beispielen
 
@@ -95,15 +97,37 @@ Kopieren Sie die URL und fügen Sie sie ein, um ein Notebook oder eine Datei fre
 
 Öffnen Sie zum Bearbeiten eines Notebooks ein beliebiges Notebook, das sich im Abschnitt **Benutzerdateien** Ihres Arbeitsbereichs befindet. Klicken Sie auf die Zelle, die Sie bearbeiten möchten. 
 
-Wenn eine Computeinstanz ausgeführt wird, können Sie auch die Codevervollständigung mit [Intellisense](https://code.visualstudio.com/docs/editor/intellisense) in jedem Python-Notebook verwenden.
+Sie können das Notebook bearbeiten, ohne eine Verbindung zu einer Computeinstanz herzustellen.  Wenn Sie die Zellen im Notebook ausführen möchten, wählen oder erstellen Sie eine Computeinstanz.  Wenn Sie eine beendete Computeinstanz auswählen, wird sie automatisch gestartet, wenn Sie die erste Zelle ausführen.
+
+Wenn eine Computeinstanz ausgeführt wird, können Sie auch die Codevervollständigung mit [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) in jedem Python-Notebook verwenden.
 
 Sie können Jupyter oder JupyterLab auch über die Notebook-Symbolleiste starten.  Azure Machine Learning stellt keine Updates und Fehlerbehebungen von Jupyter oder JupyterLab zur Verfügung, da es sich um Open Source-Produkte außerhalb der Zuständigkeit des Microsoft-Supports handelt.
+
+### <a name="use-intellisense"></a>Verwenden von IntelliSense
+
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) ist eine hilfreiche Anwendung zur Codevervollständigung mit Features wie: Auflisten von Elementen, Parameterinformationen, QuickInfo und Wort vervollständigen. Diese Features helfen Ihnen, mehr über den von Ihnen verwendeten Code zu erfahren, die von Ihnen eingegebenen Parameter zu verfolgen und Aufrufe von Eigenschaften und Methoden mit nur wenigen Tastatureingaben hinzuzufügen.  
+
+Wenn Sie Code eingeben, verwenden Sie STRG+LEERTASTE, um IntelliSense auszulösen.
+
+### <a name="save-and-checkpoint-a-notebook"></a>Speichern eines Notebooks und Hinzufügen eines Prüfpunkts
+
+Azure Machine Learning erstellt eine Prüfpunktdatei, wenn Sie eine  *IPYNB* -Datei erstellen.
+
+Wählen Sie in der Notebook-Symbolleiste das Menü und dann **Datei&gt;Save and Checkpoint** (Speichern und Prüfpunkt), um das Notebook manuell zu speichern. Dadurch wird eine dem Notebook zugeordnete Prüfpunktdatei hinzugefügt.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Screenshot des Speichertools auf der Notebook-Symbolleiste":::
+
+Jedes Notebook wird alle 30 Sekunden automatisch gespeichert. Das automatische Speichern aktualisiert nur die ursprüngliche  *IPYNB* -Datei, nicht die Prüfpunktdatei.
+ 
+Wählen Sie **Checkpoints** (Prüfpunkte) im Notebook-Menü aus, um einen benannten Prüfpunkt zu erstellen und das Notebook auf einen gespeicherten Prüfpunkt zurückzusetzen.
+
 
 ### <a name="useful-keyboard-shortcuts"></a>Hilfreiche Tastenkombinationen
 
 |Tastatur  |Aktion  |
 |---------|---------|
 |UMSCHALT+EINGABE     |  Ausführen einer Zelle       |
+|STRG+LEERTASTE | Aktivieren von IntelliSense |
 |STRG+M (Fenster)     |  Aktivieren/Deaktivieren des Abfangens von Registerkarten im Notebook       |
 |STRG+UMSCHALT+M (Mac und Linux)     |    Aktivieren/Deaktivieren des Abfangens von Registerkarten im Notebook     |
 |TAB (bei aktiviertem Abfangen von Registerkarten) | Hinzufügen eines „\t“-Zeichens (Einzug)

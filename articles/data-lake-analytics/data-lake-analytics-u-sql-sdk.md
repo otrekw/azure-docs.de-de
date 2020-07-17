@@ -6,14 +6,14 @@ ms.service: data-lake-analytics
 author: yanacai
 ms.author: yanacai
 ms.reviewer: jasonwhowell
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: 51d9060eaf4b30c696ef2a3b5f798a31e2f2a98a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58521b16e0f4ff133fd032abd4451f785256bbee
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71309681"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110469"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Ausführen und Testen von U-SQL mit dem Azure Data Lake U-SQL SDK
 
@@ -36,7 +36,9 @@ Für das Data Lake-U-SQL-SDK sind die folgenden Komponenten erforderlich:
 
     ![Windows 10 SDK für lokale Testläufe der Data Lake-Tools für Visual Studio](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-  - Installieren Sie [Data Lake-Tools für Visual Studio](https://aka.ms/adltoolsvs). Die vorkonfigurierten Visual C++- und Windows SDK-Dateien finden Sie unter „C:\Programme (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK“. In diesem Fall findet das lokale U-SQL-Compilerskript diese erforderlichen Komponenten nicht automatisch. Sie müssen für das Skripts den CppSDK-Pfad angeben. Sie können die Dateien an einen anderen Speicherort kopieren oder ohne Änderungen verwenden.
+  - Installieren Sie [Data Lake-Tools für Visual Studio](https://aka.ms/adltoolsvs). Sie finden die vorkonfigurierte Visual C++- und Windows SDK-Dateien unter `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
+
+    In diesem Fall findet das lokale U-SQL-Compilerskript diese erforderlichen Komponenten nicht automatisch. Sie müssen für das Skripts den CppSDK-Pfad angeben. Sie können die Dateien an einen anderen Speicherort kopieren oder ohne Änderungen verwenden.
 
 ## <a name="understand-basic-concepts"></a>Grundlegende Konzepte
 
@@ -74,33 +76,35 @@ Bei der lokalen Ausführung des U-SQL-Skripts wird während der Kompilierung ein
 | | |deployed_resources|Bereitstellung von Ressourcen|Dateien für die Bereitstellung von Ressourcen|
 | | |xxxxxxxx.xxx[1..n]\_\*.\*|Ausführungsprotokoll|Protokoll der Ausführungsschritte|
 
-
 ## <a name="use-the-sdk-from-the-command-line"></a>Verwenden des SDK über die Befehlszeile
 
 ### <a name="command-line-interface-of-the-helper-application"></a>Befehlszeilenschnittstelle des Hilfsprogramms
 
 Unter SDK directory\build\runtime ist „LocalRunHelper.exe“ das Befehlszeilen-Hilfsprogramm, das Schnittstellen für die meisten häufig verwendeten Funktionen für lokale Testläufe bereitstellt. Beachten Sie, dass für den Befehl und die Argumentoptionen die Groß-/Kleinschreibung beachtet wird. So rufen Sie es auf:
 
-    LocalRunHelper.exe <command> <Required-Command-Arguments> [Optional-Command-Arguments]
+```console
+LocalRunHelper.exe <command> <Required-Command-Arguments> [Optional-Command-Arguments]
+```
 
 Führen Sie „LocalRunHelper.exe“ ohne Argumente oder mit der Option **help** aus, um die Hilfeinformationen anzuzeigen:
 
-    > LocalRunHelper.exe help
-
-        Command 'help' :  Show usage information
-        Command 'compile' :  Compile the script
-        Required Arguments :
-            -Script param
-                    Script File Path
-        Optional Arguments :
-            -Shallow [default value 'False']
-                    Shallow compile
+```console
+> LocalRunHelper.exe help
+    Command 'help' :  Show usage information
+    Command 'compile' :  Compile the script
+    Required Arguments :
+        -Script param
+                Script File Path
+    Optional Arguments :
+        -Shallow [default value 'False']
+                Shallow compile
+```
 
 In den Hilfeinformationen:
 
--  **Command** gibt den Namen des Befehls an.  
--  **Required Argument** enthält Argumente, die angegeben werden müssen.  
--  **Optional Argument** enthält optionale Argumente und deren Standardwerte.  Optionale boolesche Argumente verfügen nicht über Parameter, und ihre Darstellung ist das Negativ ihres Standardwerts.
+- **Command** gibt den Namen des Befehls an.  
+- **Required Argument** enthält Argumente, die angegeben werden müssen.  
+- **Optional Argument** enthält optionale Argumente und deren Standardwerte.  Optionale boolesche Argumente verfügen nicht über Parameter, und ihre Darstellung ist das Negativ ihres Standardwerts.
 
 ### <a name="return-value-and-logging"></a>Rückgabewert und Protokollierung
 
@@ -112,19 +116,19 @@ Die lokale U-SQL-Ausführung benötigt einen angegebenen Stammordner als Speiche
 
 - Legen Sie die Umgebungsvariable **SCOPE_CPP_SDK** fest.
 
-    Wenn Sie Microsoft Visual C++ und das Windows SDK über die Installation der Data Lake-Tools für Visual Studio installieren, vergewissern Sie sich, dass der folgende Ordner vorhanden ist:
+  Wenn Sie Microsoft Visual C++ und das Windows SDK über die Installation der Data Lake-Tools für Visual Studio installieren, vergewissern Sie sich, dass der folgende Ordner vorhanden ist:
 
-        C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK
+    `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
 
-    Definieren Sie eine neue Umgebungsvariable namens **SCOPE_CPP_SDK**, die auf dieses Verzeichnis verweist. Oder kopieren Sie den Ordner an einen anderen Speicherort, und geben Sie **SCOPE_CPP_SDK** entsprechend an.
+  Definieren Sie eine neue Umgebungsvariable namens **SCOPE_CPP_SDK**, die auf dieses Verzeichnis verweist. Oder kopieren Sie den Ordner an einen anderen Speicherort, und geben Sie **SCOPE_CPP_SDK** entsprechend an.
 
-    Zusätzlich zum Festlegen der Umgebungsvariablen können Sie das Argument **-CppSDK** angeben, wenn Sie die Befehlszeile verwenden. Dieses Argument überschreibt die standardmäßige Umgebungsvariable „CppSDK“.
+  Zusätzlich zum Festlegen der Umgebungsvariablen können Sie das Argument **-CppSDK** angeben, wenn Sie die Befehlszeile verwenden. Dieses Argument überschreibt die standardmäßige Umgebungsvariable „CppSDK“.
 
 - Legen Sie die Umgebungsvariable **LOCALRUN_DATAROOT** fest.
 
-    Definieren Sie eine neue Umgebungsvariable namens **LOCALRUN_DATAROOT**, die auf den Datenstamm verweist.
+  Definieren Sie eine neue Umgebungsvariable namens **LOCALRUN_DATAROOT**, die auf den Datenstamm verweist.
 
-    Zusätzlich zum Festlegen der Umgebungsvariablen können Sie auch das Argument **-DataRoot** mit dem Datenstammpfad angeben, wenn Sie die Befehlszeile verwenden. Dieses Argument überschreibt die standardmäßige Datenstamm-Umgebungsvariable. Sie müssen dieses Argument jeder Befehlszeile hinzufügen, die Sie ausführen, damit Sie die standardmäßige Datenstamm-Umgebungsvariable für alle Vorgänge überschreiben können.
+  Zusätzlich zum Festlegen der Umgebungsvariablen können Sie auch das Argument **-DataRoot** mit dem Datenstammpfad angeben, wenn Sie die Befehlszeile verwenden. Dieses Argument überschreibt die standardmäßige Datenstamm-Umgebungsvariable. Sie müssen dieses Argument jeder Befehlszeile hinzufügen, die Sie ausführen, damit Sie die standardmäßige Datenstamm-Umgebungsvariable für alle Vorgänge überschreiben können.
 
 ### <a name="sdk-command-line-usage-samples"></a>Verwendungsbeispiele für die SDK-Befehlszeile
 
@@ -132,10 +136,11 @@ Die lokale U-SQL-Ausführung benötigt einen angegebenen Stammordner als Speiche
 
 Der Befehl **run** wird verwendet, um das Skript zu kompilieren und dann die kompilierten Ergebnisse auszuführen. Die Befehlszeilenargumente sind eine Kombination der Argumente für **compile** und **execute**.
 
-    LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
+```console
+LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
+```
 
 Im Folgenden sind optionale Argumente für **run** aufgeführt:
-
 
 |Argument|Standardwert|BESCHREIBUNG|
 |--------|-------------|-----------|
@@ -153,10 +158,9 @@ Im Folgenden sind optionale Argumente für **run** aufgeführt:
 |-ScopeCEPTempPath|temp|Der zum Streamen von Daten zu verwendende Pfad|
 |-OptFlags| |Durch Trennzeichen getrennte Liste von Flags für die Optimierung|
 
-
 Hier sehen Sie ein Beispiel:
 
-    LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose
+`LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose`
 
 Neben der Kombination von **compile** und **execute** können Sie die kompilierten ausführbaren Dateien auch separat kompilieren und ausführen.
 
@@ -164,10 +168,11 @@ Neben der Kombination von **compile** und **execute** können Sie die kompiliert
 
 Der Befehl **compile** wird verwendet, um ein U-SQL-Skript in ausführbare Dateien zu kompilieren.
 
-    LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
+```console
+LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
+```
 
 Im Folgenden sind optionale Argumente für **compile** aufgeführt:
-
 
 |Argument|BESCHREIBUNG|
 |--------|-----------|
@@ -184,26 +189,33 @@ Im Folgenden sind optionale Argumente für **compile** aufgeführt:
 | -ScopeCEPTempPath [Standardwert 'temp']|Der zum Streamen von Daten zu verwendende Pfad|
 | -OptFlags [Standardwert '']|Durch Trennzeichen getrennte Liste von Flags für die Optimierung|
 
-
 Im Folgenden finden Sie einige Beispiele zur Verwendung.
 
 Kompilieren eines U-SQL-Skripts:
 
-    LocalRunHelper compile -Script d:\test\test1.usql
+```console
+LocalRunHelper compile -Script d:\test\test1.usql
+```
 
 Kompilieren eines U-SQL-Skripts und Festlegen des Datenstammordners. Beachten Sie, dass damit die festgelegte Umgebungsvariable überschrieben wird.
 
-    LocalRunHelper compile -Script d:\test\test1.usql –DataRoot c:\DataRoot
+```console
+LocalRunHelper compile -Script d:\test\test1.usql –DataRoot c:\DataRoot
+```
 
 Kompilieren eines U-SQL-Skripts und Festlegen eines Arbeitsverzeichnisses, einer Verweisassembly und einer Datenbank:
 
-    LocalRunHelper compile -Script d:\test\test1.usql -WorkDir d:\test\bin -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB
+```console
+LocalRunHelper compile -Script d:\test\test1.usql -WorkDir d:\test\bin -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB
+```
 
 #### <a name="execute-compiled-results"></a>Ausführen von kompilierten Ergebnissen
 
-Der Befehl **execute** wird zum Ausführen von kompilierten Ergebnissen verwendet.   
+Der Befehl **execute** wird zum Ausführen von kompilierten Ergebnissen verwendet.
 
-    LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_arguments]
+```console
+LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_arguments]
+```
 
 Im Folgenden sind optionale Argumente für **execute** aufgeführt:
 
@@ -216,8 +228,9 @@ Im Folgenden sind optionale Argumente für **execute** aufgeführt:
 
 Im Folgenden finden Sie ein Beispiel zur Verwendung:
 
-    LocalRunHelper execute -Algebra d:\test\workdir\C6A101DDCB470506\Script_66AE4909AA0ED06C\__script__.abr –DataRoot c:\DataRoot –Parallel 5
-
+```console
+LocalRunHelper execute -Algebra d:\test\workdir\C6A101DDCB470506\Script_66AE4909AA0ED06C\__script__.abr –DataRoot c:\DataRoot –Parallel 5
+```
 
 ## <a name="use-the-sdk-with-programming-interfaces"></a>Verwenden des SDK mit Programmierschnittstellen
 
@@ -228,15 +241,15 @@ Die Programmierschnittstellen befinden sich alle in der Datei „LocalRunHelper.
 - Erstellen Sie über Datei > Neu > Projekt > Visual C# > Test > Komponententestprojekt ein C#-Komponententestprojekt.
 - Fügen Sie „LocalRunHelper.exe“ als Verweis für das Projekt hinzu. „LocalRunHelper.exe“ finden Sie im NuGet-Paket unter \build\runtime\LocalRunHelper.exe.
 
-    ![Azure Data Lake U-SQL SDK-Verweis hinzufügen](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-add-reference.png)
+   ![Azure Data Lake U-SQL SDK-Verweis hinzufügen](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-add-reference.png)
 
 - Achten Sie darauf, dass Sie die Buildzielplattform als x64 einstellen, da U-SQL SDK **nur** x64 unterstützt. Sie können dies über Projekteigenschaft > Build > Zielplattform einstellen.
 
-    ![Azure Data Lake U-SQL SDK x64-Projekt konfigurieren](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
+   ![Azure Data Lake U-SQL SDK x64-Projekt konfigurieren](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
 
 - Stellen Sie sicher, dass Ihre Testumgebung auf x64 eingestellt ist. In Visual Studio können Sie dies über Test > Testeinstellungen > Standardmäßige Prozessorarchitektur > x64 einstellen.
 
-    ![Azure Data Lake U-SQL SDK x64-Testumgebung](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-test-x64.png)
+   ![Azure Data Lake U-SQL SDK x64-Testumgebung](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-test-x64.png)
 
 - Stellen Sie sicher, dass Sie alle Abhängigkeitsdateien aus NugetPackage\build\runtime\ in das Arbeitsverzeichnis des Projekts kopieren, das sich normalerweise unter ProjectFolder\bin\x64\Debug befindet.
 
@@ -244,91 +257,78 @@ Die Programmierschnittstellen befinden sich alle in der Datei „LocalRunHelper.
 
 Im folgenden finden Sie Beispielcode für den Test des U-SQL-Skripts. Für das Testen müssen Sie Skripts, Eingabedateien und erwartete Ausgabedateien vorbereiten.
 
-    using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System.IO;
-    using System.Text;
-    using System.Security.Cryptography;
-    using Microsoft.Analytics.LocalRun;
-
-    namespace UnitTestProject1
+```usql
+using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
+using System.Text;
+using System.Security.Cryptography;
+using Microsoft.Analytics.LocalRun;
+namespace UnitTestProject1
+{
+    [TestClass]
+    public class USQLUnitTest
     {
-        [TestClass]
-        public class USQLUnitTest
+        [TestMethod]
+        public void TestUSQLScript()
         {
-            [TestMethod]
-            public void TestUSQLScript()
-            {
-                //Specify the local run message output path
-                StreamWriter MessageOutput = new StreamWriter("../../../log.txt");
-
-                LocalRunHelper localrun = new LocalRunHelper(MessageOutput);
-
-                //Configure the DateRoot path, Script Path and CPPSDK path
-                localrun.DataRoot = "../../../";
-                localrun.ScriptPath = "../../../Script/Script.usql";
-                localrun.CppSdkDir = "../../../CppSDK";
-
-                //Run U-SQL script
-                localrun.DoRun();
-
-                //Script output 
-                string Result = Path.Combine(localrun.DataRoot, "Output/result.csv");
-
-                //Expected script output
-                string ExpectedResult = "../../../ExpectedOutput/result.csv";
-
-                Test.Helpers.FileAssert.AreEqual(Result, ExpectedResult);
-
-                //Don't forget to close MessageOutput to get logs into file
-                MessageOutput.Close();
-            }
+            //Specify the local run message output path
+            StreamWriter MessageOutput = new StreamWriter("../../../log.txt");
+            LocalRunHelper localrun = new LocalRunHelper(MessageOutput);
+            //Configure the DateRoot path, Script Path and CPPSDK path
+            localrun.DataRoot = "../../../";
+            localrun.ScriptPath = "../../../Script/Script.usql";
+            localrun.CppSdkDir = "../../../CppSDK";
+            //Run U-SQL script
+            localrun.DoRun();
+            //Script output
+            string Result = Path.Combine(localrun.DataRoot, "Output/result.csv");
+            //Expected script output
+            string ExpectedResult = "../../../ExpectedOutput/result.csv";
+            Test.Helpers.FileAssert.AreEqual(Result, ExpectedResult);
+            //Don't forget to close MessageOutput to get logs into file
+            MessageOutput.Close();
         }
     }
-
-    namespace Test.Helpers
+}
+namespace Test.Helpers
+{
+    public static class FileAssert
     {
-        public static class FileAssert
+        static string GetFileHash(string filename)
         {
-            static string GetFileHash(string filename)
+            Assert.IsTrue(File.Exists(filename));
+            using (var hash = new SHA1Managed())
             {
-                Assert.IsTrue(File.Exists(filename));
-
-                using (var hash = new SHA1Managed())
-                {
-                    var clearBytes = File.ReadAllBytes(filename);
-                    var hashedBytes = hash.ComputeHash(clearBytes);
-                    return ConvertBytesToHex(hashedBytes);
-                }
-            }
-
-            static string ConvertBytesToHex(byte[] bytes)
-            {
-                var sb = new StringBuilder();
-
-                for (var i = 0; i < bytes.Length; i++)
-                {
-                    sb.Append(bytes[i].ToString("x"));
-                }
-                return sb.ToString();
-            }
-
-            public static void AreEqual(string filename1, string filename2)
-            {
-                string hash1 = GetFileHash(filename1);
-                string hash2 = GetFileHash(filename2);
-
-                Assert.AreEqual(hash1, hash2);
+                var clearBytes = File.ReadAllBytes(filename);
+                var hashedBytes = hash.ComputeHash(clearBytes);
+                return ConvertBytesToHex(hashedBytes);
             }
         }
+        static string ConvertBytesToHex(byte[] bytes)
+        {
+            var sb = new StringBuilder();
+            for (var i = 0; i < bytes.Length; i++)
+            {
+                sb.Append(bytes[i].ToString("x"));
+            }
+            return sb.ToString();
+        }
+        public static void AreEqual(string filename1, string filename2)
+        {
+            string hash1 = GetFileHash(filename1);
+            string hash2 = GetFileHash(filename2);
+            Assert.AreEqual(hash1, hash2);
+        }
     }
-
+}
+```
 
 ### <a name="programming-interfaces-in-localrunhelperexe"></a>Programmierschnittstellen in „LocalRunHelper.exe“
 
 „LocalRunHelper.exe“ bietet die Programmierschnittstellen für das lokale Kompilieren, Ausführen usw. von U-SQL. Die Schnittstellen sind wie folgt gelistet.
 
-**Konstruktor**
+### <a name="constructor"></a>Konstruktor
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
@@ -336,7 +336,7 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|für ausgehende Nachrichten, für die Verwendung von „Console“ auf NULL festgelegt|
 
-**Eigenschaften**
+### <a name="properties"></a>Eigenschaften
 
 |Eigenschaft|type|BESCHREIBUNG|
 |--------|----|-----------|
@@ -361,8 +361,7 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 |UseDataBase|Zeichenfolge|Geben Sie die Datenbank an, die für die temporäre Assemblyregistrierung von CodeBehind verwendet wird, standardmäßig „master“|
 |WorkDir|Zeichenfolge|Bevorzugtes Arbeitsverzeichnis|
 
-
-**Methode**
+### <a name="method"></a>Methode
 
 |Methode|BESCHREIBUNG|Rückgabewert|Parameter|
 |------|-----------|------|---------|
@@ -371,10 +370,10 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 |public bool DoRun()|Ausführen des U-SQL-Skripts (Compile + Execute)|Im Erfolgsfall TRUE| |
 |public bool IsValidRuntimeDir(string path)|Überprüfen Sie, ob der angegebene Pfad ein gültiges Runtime-Verzeichnis ist|Bei Gültigkeit TRUE|Der Pfad des Runtime-Verzeichnis|
 
-
 ## <a name="faq-about-common-issue"></a>Häufig gestellte Fragen zu häufigen Problemen
 
-### <a name="error-1"></a>Fehler 1:
+### <a name="error-1"></a>Fehler 1
+
 E_CSC_SYSTEM_INTERNAL: Interner Fehler. Could not load file or assembly 'ScopeEngineManaged.dll' or one of its dependencies (Datei oder Assembly 'ScopeEngineManaged.dll' oder eine der Abhängigkeiten konnten nicht geladen werden). Das angegebene Modul wurde nicht gefunden.
 
 Überprüfen Sie die folgenden Punkte:
@@ -382,11 +381,10 @@ E_CSC_SYSTEM_INTERNAL: Interner Fehler. Could not load file or assembly 'ScopeEn
 - Stellen Sie sicher, dass Sie über eine x64-Umgebung verfügen. Die Buildzielplattform und die Testumgebung sollten auf x64 eingestellt sein, siehe **Schritt 1: Erstellen eines C#-Komponententestprojekts und Konfiguration** weiter oben.
 - Stellen Sie sicher, dass Sie alle Abhängigkeitsdateien aus NugetPackage\build\runtime\ in das Arbeitsverzeichnis des Projekts kopiert haben.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Erlernen von U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL für Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
-* Informationen zum Protokollieren von Diagnoseinformationen finden Sie unter [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md).
-* Eine komplexere Abfrage finden Sie unter [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-* Informationen zum Anzeigen von Auftragsdetails finden Sie unter [Verwenden des Auftragsbrowsers und der Auftragsansicht für Azure Data Lake Analytics-Aufträge](data-lake-analytics-data-lake-tools-view-jobs.md).
-* Weitere Informationen zur Verwendung der Scheitelpunktausführungsansicht finden Sie unter [Verwenden der Scheitelpunktausführungsansicht in Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
+- Informationen zum Erlernen von U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL für Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
+- Informationen zum Protokollieren von Diagnoseinformationen finden Sie unter [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md).
+- Eine komplexere Abfrage finden Sie unter [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
+- Informationen zum Anzeigen von Auftragsdetails finden Sie unter [Verwenden des Auftragsbrowsers und der Auftragsansicht für Azure Data Lake Analytics-Aufträge](data-lake-analytics-data-lake-tools-view-jobs.md).
+- Weitere Informationen zur Verwendung der Scheitelpunktausführungsansicht finden Sie unter [Verwenden der Scheitelpunktausführungsansicht in Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).

@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 03/13/2020
-ms.openlocfilehash: 6d18a8d09749b832984872b57eec8a36abc1b2e2
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 06/09/2020
+ms.openlocfilehash: 23563074bc8bbf02b36e86ff6c78acf3034670a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857697"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84655867"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 
@@ -56,13 +56,13 @@ Verwenden Sie die folgenden Verfahren, um eine selbstgehostete Integration Runti
 
 Führen Sie die unten angegebenen Schritte aus, um über die Azure Data Factory-Benutzeroberfläche eine selbstgehostete IR zu erstellen.
 
-1. Wählen Sie in der Azure Data Factory-Benutzeroberfläche auf der Seite **Erste Schritte** im Bereich ganz links die Registerkarte **Erstellen** aus.
+1. Wählen Sie in der Azure Data Factory-Benutzeroberfläche auf der Seite **Erste Schritte** im Bereich ganz links die Registerkarte [Verwalten](https://docs.microsoft.com/azure/data-factory/author-management-hub) aus.
 
-   ![Schaltfläche „Erstellen“ auf der Startseite](media/doc-common-process/get-started-page-author-button.png)
+   ![Schaltfläche „Verwalten“ auf der Startseite](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Wählen Sie unten im Bereich ganz links die Option **Verbindungen** und dann im Fenster **Verbindungen** die Option **Integration Runtimes** aus. Klicken Sie auf **+ Neu**.
+1. Wählen Sie im linken Bereich **Integration Runtime** und dann **+Neu** aus.
 
-   ![Erstellen einer Integration Runtime](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
+   ![Erstellen einer Integration Runtime](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. Wählen Sie auf der Seite **Integration Runtime-Setup** die Option **Azure, Selbstgehostet** und dann **Weiter** aus. 
 
@@ -97,7 +97,7 @@ Sie können das Setup der selbstgehosteten IR auf einem virtuellen Azure-Compute
 
 Sie können eine Befehlszeile verwenden, um eine vorhandene selbstgehostete IR einzurichten oder zu verwalten. Dies kann besonders hilfreich sein, um die Installation und Registrierung von Knoten für die selbstgehostete IR zu automatisieren.
 
-Die Datei „dmgcmd.exe“ ist im selbstgehosteten Installationsprogramm enthalten. Normalerweise befindet sie sich im Ordner „C:\Programme\Microsoft Integration Runtime\3.0\Shared\“. Diese Anwendung unterstützt verschiedene Parameter und kann über eine Befehlszeile mithilfe von Batchskripts für die Automatisierung aufgerufen werden.
+Die Datei „dmgcmd.exe“ ist im selbstgehosteten Installationsprogramm enthalten. Normalerweise befindet sie sich im Ordner „C:\Programme\Microsoft Integration Runtime\4.0\Shared\“. Diese Anwendung unterstützt verschiedene Parameter und kann über eine Befehlszeile mithilfe von Batchskripts für die Automatisierung aufgerufen werden.
 
 Nutzen Sie die Anwendung wie folgt:
 
@@ -375,9 +375,9 @@ Sie können das Konfigurations-Manager-Tool verwenden, um den HTTP-Proxy anzuzei
 
 Wenn Sie die Option **Systemproxy verwenden** für den HTTP-Proxy auswählen, verwendet die selbstgehostete Integration Runtime die Proxyeinstellungen in „diahost.exe.config“ und „diawp.exe.config“. Falls für diese Dateien kein Proxy angegeben wird, stellt die selbstgehostete Integration Runtime eine direkte Verbindung mit dem Clouddienst her, ohne einen Proxy zu durchlaufen. Das folgende Verfahren enthält Anweisungen für die Aktualisierung der Datei „diahost.exe.config“:
 
-1. Erstellen Sie im Datei-Explorer eine sichere Kopie von „C:\Programme\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config“ als Sicherung der Originaldatei.
+1. Erstellen Sie im Datei-Explorer eine sichere Kopie von „C:\Programme\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config“ als Sicherung der Originaldatei.
 1. Öffnen Sie den Editor als Administrator.
-1. Öffnen Sie im Editor die Textdatei „C:\Programme\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config“.
+1. Öffnen Sie im Editor die Textdatei „C:\Programme\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config“.
 1. Suchen Sie wie im folgenden Code gezeigt nach dem Standardtag **system.net**:
 
     ```xml

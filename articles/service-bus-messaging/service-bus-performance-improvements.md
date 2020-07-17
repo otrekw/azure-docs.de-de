@@ -1,21 +1,14 @@
 ---
 title: Bewährte Methoden zur Verbesserung der Leistung mit Azure Service Bus
 description: Beschreibt, wie Service Bus verwendet wird, um die Leistung beim Austausch von Brokernachrichten zu optimieren.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 03/12/2020
-ms.author: aschhab
-ms.openlocfilehash: 267965ee41280a677050d1676285dda8734bc044
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: e0a6e54c1e941d7b7ff244ac40066a564e2ebbc4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606060"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341095"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
 
@@ -355,7 +348,7 @@ Zielsetzung: Minimieren der End-to-End-Latenz einer Warteschlange oder eines The
 
 Zielsetzung: Maximieren des Durchsatzes einer Warteschlange oder eines Themas mit einer großen Anzahl von Absendern. Jeder Absender sendet Nachrichten mit einer mittleren Rate. Die Anzahl der Empfänger ist klein.
 
-Service Bus ermöglicht bis zu 1000 gleichzeitige Verbindungen mit einer Messagingentität (oder 5000 mithilfe von AMQP). Dieser Grenzwert wird auf Namespace-Ebene erzwungen, und Warteschlangen/Themen/Abonnements werden durch den Grenzwert für gleichzeitige Verbindungen pro Namespace begrenzt. Bei Warteschlangen wird diese Anzahl zwischen Absendern und Empfängern aufgeteilt. Wenn alle 1000 Verbindungen für Absender benötigt werden, ersetzen Sie die Warteschlange durch ein Thema und ein einzelnes Abonnement. Ein Thema akzeptiert bis zu 1000 gleichzeitige Verbindungen von Absendern, während das Abonnement zusätzlich 1000 gleichzeitige Verbindungen von Empfängern akzeptiert. Wenn mehr als 1000 gleichzeitige Absender erforderlich sind, sollten die Absender über HTTP Nachrichten an das Service Bus-Protokoll senden.
+Service Bus ermöglicht bis zu 1.000 gleichzeitige Verbindungen mit einer Messagingentität. Dieser Grenzwert wird auf Namespace-Ebene erzwungen, und Warteschlangen/Themen/Abonnements werden durch den Grenzwert für gleichzeitige Verbindungen pro Namespace begrenzt. Bei Warteschlangen wird diese Anzahl zwischen Absendern und Empfängern aufgeteilt. Wenn alle 1000 Verbindungen für Absender benötigt werden, ersetzen Sie die Warteschlange durch ein Thema und ein einzelnes Abonnement. Ein Thema akzeptiert bis zu 1000 gleichzeitige Verbindungen von Absendern, während das Abonnement zusätzlich 1000 gleichzeitige Verbindungen von Empfängern akzeptiert. Wenn mehr als 1000 gleichzeitige Absender erforderlich sind, sollten die Absender über HTTP Nachrichten an das Service Bus-Protokoll senden.
 
 Führen Sie die folgenden Schritte aus, um den Durchsatz zu maximieren:
 

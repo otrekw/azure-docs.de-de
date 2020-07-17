@@ -6,17 +6,17 @@ author: mabasile-MSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eb2664cdfccd32e193019a8509f66ba184813ae3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 18c72fd5f0ad4505d754efc6015ee626156beec3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683570"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85368123"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Partner für die Azure Synapse Analytics-Datenverwaltung
 
@@ -29,12 +29,12 @@ Um Ihre Data Warehouse-Lösung mit dem Feature „Synapse SQL-Pool“ von Azure 
 | ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein MicroERD**<br>Mit den Tools von Inbrein MicroERD können Sie ein präzises Datenmodell erstellen, die Datenredundanz verringern, die Produktivität steigern und Standards einhalten. Über die Benutzeroberfläche, die basierend auf umfassenden Nutzungserlebnissen entwickelt wurde, können Modellierer einfach und komfortabel mit DB-Modellen arbeiten. Über schnelle funktionale Verbesserungen und Updates können Sie fortlaufend von neuen und verbesserten MicroERD-Funktionen profitieren. |[Produktseite](http://microerd.com/)<br> |
 | ![Infolibrarian](./media/sql-data-warehouse-partner-data-management/infolibrarian-logo.png) |**Infolibrarian (Metadatenverwaltungsserver)**<br>InfoLibrarian katalogisiert, speichert und verwaltet Metadaten, sodass Sie die häufigsten Problemfälle der Datenverwaltung beheben können. Darüber hinaus bietet Infolibrarian Softwarelösungen für Metadatenverwaltung, Data Governance und Asset Management zur Verwaltung und Veröffentlichung von Metadaten aus verschiedenen Tools und Technologien. |[Produktseite](http://www.infolibcorp.com/metadata-management/software-tools)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/infolibrarian.infolibrarian-metadata-management-server)<br> |
 | ![Kyligence](./media/sql-data-warehouse-partner-data-management/kyligence-logo.png) |**Kyligence**<br>Kyligence wurde von den Machern von Apache Kylin gegründet und hat sich zum Ziel gesetzt, die Produktivität seiner Kunden durch die Automatisierung der Datenverwaltung, -ermittlung, -interaktion und der Generierung von Erkenntnissen zu beschleunigen – und zwar vollkommen barrierefrei. Kyligence Cloud ermöglicht die Clusterbereitstellung, verbessert den Datenzugriff und beschleunigt die Datenanalyse erheblich. Durch die um KI erweiterte Big Data-Analyseverwaltungsplattform von Kyligence wird die häufig anspruchsvolle Aufgabe, Data Lakes auf Unternehmensniveau zu entwickeln, schnell und einfach.|[Produktseite](https://kyligence.io/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence)<br> |
-| ![Redpoint Global](./media/sql-data-warehouse-partner-data-management/redpoint-global-logo.png) |**RedPoint Data Management**<br>Mit RedPoint Data Management können Marketingfachleute sämtliche Daten für die kanalübergreifende Kundenbindung heranziehen und strukturierte sowie unstrukturierte Daten verwalten. Durch die Nutzung von Azure Synapse und RedPoint können Sie den Wert Ihrer strukturierten oder unstrukturierten Daten maximieren, um die individualisierten und kontextbezogenen Interaktionen bereitstellen zu können, die für die Bindung der heute auf allen Kanälen aktiven Kunden erforderlich sind. Die Drag & Drop-Benutzeroberfläche macht das Entwerfen und Ausführen der Datenverwaltungsprozesse sehr leicht. |[Produktseite](http://www.redpoint.net/products/data-management-solutions/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redpoint-global.redpoint-rpdm)<br> |
+| ![Redpoint Global](./media/sql-data-warehouse-partner-data-management/redpoint-global-logo.png) |**RedPoint Data Management**<br>Mit RedPoint Data Management können Marketingfachleute sämtliche Daten für die kanalübergreifende Kundenbindung heranziehen und strukturierte sowie unstrukturierte Daten verwalten. Durch die Nutzung von Azure Synapse und RedPoint können Sie den Wert Ihrer strukturierten oder unstrukturierten Daten maximieren, um die individualisierten und kontextbezogenen Interaktionen bereitstellen zu können, die für die Bindung der heute auf allen Kanälen aktiven Kunden erforderlich sind. Die Drag & Drop-Benutzeroberfläche macht das Entwerfen und Ausführen der Datenverwaltungsprozesse sehr leicht. |[Produktseite](https://www.redpointglobal.com/customer-data-management)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redpoint-global.redpoint-rpdm)<br> |
 | ![Sentry One](./media/sql-data-warehouse-partner-data-management/sql-sentry-logo.png) |**SentryOne (DW Sentry)**<br>Mit dem intelligenten Dashboard für Datenverschiebungen und dem Ereigniskalender wissen Sie immer genau, was die Workload beeinträchtigt. So erhalten Sie einen Einblick in Ihre Abfragen und Aufträge, die zum Laden, Sichern oder Wiederherstellen Ihrer Daten ausgeführt werden. So können Sie sicher sein, dass Sie Ihre Azure-Ressourcen optimal nutzen. |[Produktseite](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br>[Azure Marketplace](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br> |
-| ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>SqlDBM ist ein cloudbasiertes Tool zur Datenmodellierung, das Ihnen eine einfache und bequeme Möglichkeit bietet, Ihre Datenbank überall und mit jedem Browser zu entwickeln. Dabei werden alle erforderlichen Datenbankregeln und -objekte wie Datenbankschlüssel, Schemata, Indizes, Spalteneinschränkungen und Beziehungen einbezogen. |[Produktseite](http://sqldbm.com/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
+| ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>SqlDBM ist ein cloudbasiertes Tool zur Datenmodellierung, das Ihnen eine einfache und bequeme Möglichkeit bietet, Ihre Datenbank überall und mit jedem Browser zu entwickeln. Dabei werden alle erforderlichen Datenbankregeln und -objekte wie Datenbankschlüssel, Schemata, Indizes, Spalteneinschränkungen und Beziehungen einbezogen. |[Produktseite](http://sqldbm.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu anderen Partnern finden Sie unter [Business Intelligence-Partner](sql-data-warehouse-partner-business-intelligence.md) und [Partner für die Datenintegration](sql-data-warehouse-partner-data-integration.md).
+Weitere Informationen zu anderen Partnern finden Sie unter [Business Intelligence-Partner](sql-data-warehouse-partner-business-intelligence.md), [Partner für die Datenintegration](sql-data-warehouse-partner-data-integration.md) und [Partner für Machine Learning und KI](sql-data-warehouse-partner-machine-learning-ai.md).
 
 
 

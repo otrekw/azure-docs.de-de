@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: ac9d9fddc45abbcbe4890d1060dcc2c931c72182
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 87c1aa4d65b313f4c068ef11c9d2209e9318ef02
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265164"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482869"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -105,9 +105,9 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Die Leistung variiert abhängig von den Umgebungseinstellungen und der Konfiguration sowie davon, ob es sich um eine anfängliche oder laufende Synchronisierung handelt. Weitere Informationen finden Sie unter [Leistungsmetriken der Azure-Dateisynchronisierung](storage-files-scale-targets.md#azure-file-sync-performance-metrics).
 
 * <a id="afs-conflict-resolution"></a>**Was passiert, wenn dieselbe Datei ungefähr zur gleichen Zeit auf zwei Servern geändert wird?**  
-    Für die Azure-Dateisynchronisierung wird eine einfache Strategie zur Konfliktlösung verwendet: Die Änderungen der Dateien, die gleichzeitig auf zwei Servern vorgenommen werden, werden jeweils beibehalten. Für die zuletzt vorgenommene Änderung wird der ursprüngliche Dateiname beibehalten. Bei der älteren Datei werden der „Quellcomputer“ und die Konfliktnummer an den Namen angefügt. Hierfür wird die folgende Taxonomie verwendet: 
+    Für die Azure-Dateisynchronisierung wird eine einfache Strategie zur Konfliktlösung verwendet: Die Änderungen der Dateien, die gleichzeitig in zwei Endpunkten vorgenommen werden, werden jeweils beibehalten. Für die zuletzt vorgenommene Änderung wird der ursprüngliche Dateiname beibehalten. Die ältere Datei (ermittelt durch LastWriteTime) weist den Endpunktnamen und die Konfliktnummer auf, die an den Dateinamen angefügt werden. Bei Serverendpunkten ist der Endpunktname der Name des Servers. Bei Cloudendpunkten lautet der Endpunktname **Cloud**. Für den Namen wird die folgende Taxonomie verwendet: 
    
-    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
+    \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
     Beim ersten Konflikt für „CompanyReport.docx“ wird beispielsweise „CompanyReport-CentralServer.docx“ verwendet, wenn CentralServer der Ort ist, an dem der ältere Schreibvorgang durchgeführt wurde. Der zweite Konflikt hat dann den Namen „CompanyReport-CentralServer-1.docx“. Die Azure-Dateisynchronisierung unterstützt 100 Konfliktdateien pro Datei. Sobald die maximale Anzahl von Konfliktdateien erreicht ist, kann die Datei nicht mehr synchronisiert werden, bis die Anzahl der Konfliktdateien weniger als 100 beträgt.
 
@@ -133,6 +133,10 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="afs-effective-vfs"></a>
   **Wie wird *freier Speicherplatz auf Volume* interpretiert, wenn ich über mehrere Serverendpunkte auf einem Volume verfüge?**  
   Siehe [Grundlegendes zum Cloudtiering](storage-sync-cloud-tiering.md#afs-effective-vfs).
+  
+* <a id="afs-tiered-files-tiering-disabled"></a>
+  **Ich habe Cloudtiering deaktiviert. Warum befinden sich mehrstufige Dateien am Speicherort des Serverendpunkts?**  
+  Siehe [Grundlegendes zum Cloudtiering](storage-sync-cloud-tiering.md#afs-tiering-disabled).
 
 * <a id="afs-files-excluded"></a>
   **Welche Dateien oder Ordner werden automatisch von der Azure-Dateisynchronisierung ausgeschlossen?**  
@@ -151,16 +155,16 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
     
 * <a id="afs-resource-move"></a>
-  **Kann ich den Speichersynchronisierungsdienst und/oder das Speicherkonto in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben?**  
-   Ja, der Speichersynchronisierungsdienst und/oder das Speicherkonto kann in eine andere Ressourcengruppe oder ein anderes Abonnement im vorhandenen Azure AD-Mandanten verschoben werden. Wenn das Speicherkonto verschoben wird, müssen Sie dem Hybrid-Dateisynchronisierungsdienst Zugriff auf das Speicherkonto gewähren (siehe [Sicherstellen, dass die Azure-Dateisynchronisierung Zugriff auf das Speicherkonto besitzt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+  **Kann ich den Speichersynchronisierungsdienst und/oder das Speicherkonto in eine andere Ressourcengruppe, ein anderes Abonnement oder einen anderen Azure AD-Mandanten verschieben?**  
+   Ja, der Speichersynchronisierungsdienst und/oder das Speicherkonto kann in eine andere Ressourcengruppe, ein anderes Abonnement oder einen anderen Azure AD-Mandanten verschoben werden. Wenn der Speichersynchronisierungsdienst oder das Speicherkonto verschoben wurde, müssen Sie der Anwendung „Microsoft.StorageSync“ Zugriff auf das Speicherkonto gewähren (siehe [Sicherstellen, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
     > [!Note]  
-    > Die Azure-Dateisynchronisierung unterstützt nicht das Verschieben des Abonnements in einen anderen Azure AD-Mandanten.
+    > Beim Erstellen des Cloudendpunkts müssen sich der Speichersynchronisierungsdienst und das Speicherkonto im selben Azure AD-Mandanten befinden. Nach der Erstellung des Cloudendpunkts können der Speichersynchronisierungsdienst und das Speicherkonto in verschiedene Azure AD Mandanten verschoben werden.
     
 * <a id="afs-ntfs-acls"></a>
   **Werden NTFS-ACLs auf Verzeichnis-/Dateiebene in der Azure-Dateisynchronisierung zusammen mit den in Azure Files gespeicherten Daten beibehalten?**
 
-    Ab dem 24. Februar 2020 werden neue und vorhandene ACLs, die durch die Azure-Dateisynchronisierung gestaffelt sind, im NTFS-Format persistent gespeichert, und ACL-Änderungen, die direkt an der Azure-Dateifreigabe vorgenommen werden, werden mit allen Servern in der Synchronisierungsgruppe synchronisiert. Alle Änderungen an den ACLs, die an Azure Files vorgenommen werden, werden über die Azure-Dateisynchronisierung synchronisiert. Stellen Sie beim Kopieren von Daten in Azure Files sicher, dass Sie SMB verwenden, um auf die Freigabe zuzugreifen und die ACLs beizubehalten. Vorhandene REST-basierte Tools wie AzCopy oder Storage-Explorer speichern ACLs nicht persistent.
+    Ab dem 24. Februar 2020 werden neue und vorhandene ACLs, die durch die Azure-Dateisynchronisierung gestaffelt sind, im NTFS-Format persistent gespeichert, und ACL-Änderungen, die direkt an der Azure-Dateifreigabe vorgenommen werden, werden mit allen Servern in der Synchronisierungsgruppe synchronisiert. Alle Änderungen an den ACLs, die an Azure Files vorgenommen werden, werden über die Azure-Dateisynchronisierung synchronisiert. Wenn Sie Daten in Azure Files kopieren, stellen Sie sicher, dass Sie ein Kopiertool verwenden, das die erforderliche „Genauigkeit“ unterstützt, um Attribute, Zeitstempel und ACLs in eine Azure-Dateifreigabe zu kopieren – über SMB oder über REST. Wenn Sie Azure-Kopiertools wie AzCopy nutzen, ist es wichtig, die neueste Version zu verwenden. Überprüfen Sie die [Tabelle zu den Dateikopiertools](storage-files-migration-overview.md#file-copy-tools), um einen Überblick über die Azure-Kopiertools zu erhalten und sicherzustellen, dass Sie alle wichtigen Metadaten einer Datei kopieren können.
 
     Wenn Sie Azure Backup für Ihre von der Datensynchronisierung verwalteten Dateifreigaben aktiviert haben, können Datei-ACLs weiterhin als Teil des Sicherungs- und Wiederherstellungsworkflows wiederhergestellt werden. Dies funktioniert für die gesamte Freigabe oder für einzelne Dateien/Verzeichnisse.
 

@@ -2,7 +2,7 @@
 title: 'Konfigurieren einer minimalen TLS-Version: verwaltete Instanz'
 description: Erfahren Sie, wie Sie die minimale TLS-Version für verwaltete Instanzen konfigurieren.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: ''
 ms.topic: conceptual
@@ -10,17 +10,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: 309649fe099d5226ba6a4972e22a4e3d7ff0e526
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7982cb80c253ec3966319528e39390920c653e38
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267119"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974261"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Konfigurieren der minimalen TLS-Version in Azure SQL Managed Instance
 Die Einstellung der Mindestversion für [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) ermöglicht Kunden die Steuerung der TLS-Version, die von Azure SQL Managed Instance verwendet wird.
 
-Derzeit unterstützen wir TLS 1.0, 1.1 und 1.2. Durch Festlegen einer TLS-Mindestversion wird sichergestellt, dass nachfolgende neuere TLS-Versionen unterstützt werden. Die Auswahl der TLS-Version 1.1 beispielsweise bedeutet, dass nur Verbindungen mit TLS 1.1 und 1.2 akzeptiert werden. Verbindungen mit TLS 1.0 werden abgelehnt. Wenn Sie überprüft haben, ob Ihre Anwendung die TLS-Version 1.2 unterstützt, empfiehlt es sich, die Mindestversion auf 1.2 festzulegen, da diese Version Fehlerbehebungen für Sicherheitsrisiken enthält, die in früheren Versionen gefunden wurden. Gleichzeitig ist 1.2 die höchste TLS-Version, die derzeit in Azure SQL Managed Instance unterstützt wird.
+Derzeit unterstützen wir TLS 1.0, 1.1 und 1.2. Durch Festlegen einer TLS-Mindestversion wird sichergestellt, dass nachfolgende neuere TLS-Versionen unterstützt werden. Die Auswahl der TLS-Version 1.1 beispielsweise bedeutet, dass nur Verbindungen mit TLS 1.1 und 1.2 akzeptiert werden. Verbindungen mit TLS 1.0 werden abgelehnt. Wenn Sie überprüft haben, ob Ihre Anwendung TLS-Version 1.2 unterstützt, empfiehlt es sich, die Mindestversion auf 1.2 festzulegen, da diese Version Fehlerbehebungen für Sicherheitsrisiken enthält, die in früheren Versionen gefunden wurden. Gleichzeitig ist 1.2 die höchste TLS-Version, die derzeit in Azure SQL Managed Instance unterstützt wird.
 
 Kunden mit Anwendungen, die ältere TLS-Versionen erfordern, wird empfohlen, die TLS-Mindestversion gemäß den Anforderungen der Anwendungen festzulegen. Kunden, die Anwendungen mit unverschlüsselten Verbindungen verwenden, wird empfohlen, keine TLS-Mindestversion festzulegen. 
 

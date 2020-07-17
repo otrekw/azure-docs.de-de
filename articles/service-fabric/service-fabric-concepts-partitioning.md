@@ -3,12 +3,12 @@ title: Partitionieren von Service Fabric-Diensten
 description: Beschreibt, wie Sie zustandsbehaftete Service Fabric-Dienste partitionieren. Partitionen ermöglichen die Datenspeicherung auf dem lokalen Computer, damit Daten und Computeleistung zusammen skaliert werden können.
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e395fc31550dfdbedf963db0d648191453d016b2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81115166"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045415"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partitionieren von Service Fabric Reliable Services
 Dieser Artikel enthält eine Einführung in die grundlegenden Konzepte der Partitionierung von Azure Service Fabric Reliable Services. Der in diesem Artikel verwendete Quellcode ist auch unter [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)verfügbar.
@@ -21,11 +21,11 @@ Bei zustandslosen Diensten können Sie sich eine Partition als eine logische Ein
 
 ![Zustandsloser Dienst](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
-Es gibt im Grunde zwei Arten von Lösungen für zustandslose Dienste. Die erste ist ein Dienst, für den der Zustand extern beibehalten wird, z. B. in einer Azure SQL-Datenbank (etwa eine Website, auf der die Sitzungsinformationen und Daten gespeichert sind). Die zweite umfasst Dienste, die ausschließlich für die Berechnung bestimmt sind (etwa ein Rechner oder Bildminiaturansichten) und keinen beständigen Zustand verwalten.
+Es gibt im Grunde zwei Arten von Lösungen für zustandslose Dienste. Die erste ist ein Dienst, für den der Zustand extern beibehalten wird, z. B. in einer Datenbank in Azure SQL-Datenbank (etwa eine Website, auf der die Sitzungsinformationen und Daten gespeichert sind). Die zweite umfasst Dienste, die ausschließlich für die Berechnung bestimmt sind (etwa ein Rechner oder Bildminiaturansichten) und keinen beständigen Zustand verwalten.
 
 In beiden Fällen ist das Partitionieren eines zustandslosen Diensts ein sehr seltenes Szenario, und die Skalierbarkeit und Verfügbarkeit werden normalerweise erreicht, indem weitere Instanzen hinzugefügt werden. Sie sollten die Verwendung mehrerer Partitionen für zustandslose Dienstinstanzen nur erwägen, wenn Sie spezielle Routinganforderungen erfüllen müssen.
 
-Stellen Sie sich beispielsweise einen Fall vor, in dem für Benutzer mit IDs in einem bestimmten Bereich nur eine bestimmte Dienstinstanz verwendet werden sollen. Ein weiteres Beispiel für die mögliche Partitionierung eines zustandslosen Diensts ist, wenn Sie ein Back-End mit echter Partitionierung verwenden, z. B. eine SQL-Datenbank mit Sharding. Sie möchten steuern, welche Dienstinstanz in den Datenbankshard schreiben soll, oder andere Vorbereitungsschritte im zustandslosen Dienst ausführen, für die die gleichen Partitionierungsinformationen wie im Back-End benötigt werden. Diese Arten von Szenarios können auch auf unterschiedliche Arten gelöst werden, und eine Dienstpartitionierung ist nicht unbedingt erforderlich.
+Stellen Sie sich beispielsweise einen Fall vor, in dem für Benutzer mit IDs in einem bestimmten Bereich nur eine bestimmte Dienstinstanz verwendet werden sollen. Ein weiteres Beispiel für die mögliche Partitionierung eines zustandslosen Diensts ist, wenn Sie ein Back-End mit echter Partitionierung verwenden, z. B. eine Datenbank in SQL-Datenbank mit Sharding. Sie möchten steuern, welche Dienstinstanz in den Datenbankshard schreiben soll, oder andere Vorbereitungsschritte im zustandslosen Dienst ausführen, für die die gleichen Partitionierungsinformationen wie im Back-End benötigt werden. Diese Arten von Szenarios können auch auf unterschiedliche Arten gelöst werden, und eine Dienstpartitionierung ist nicht unbedingt erforderlich.
 
 Im restlichen Teil dieser Vorgehensweise geht es um zustandsbehaftete Dienste.
 

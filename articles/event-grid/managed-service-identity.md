@@ -1,21 +1,17 @@
 ---
 title: Ereignisbereitstellung mit verwalteter Dienstidentität
 description: In diesem Artikel wird beschrieben, wie Sie die verwaltete Dienstidentität für ein Azure Event Grid-Thema aktivieren. So können Sie Ereignisse an unterstützte Ziele weiterleiten.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 04/24/2020
-ms.author: spelluru
-ms.openlocfilehash: a13b9339c55d4d70c19ce737e81f34106dd3d6f6
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.date: 07/07/2020
+ms.openlocfilehash: 5138a89101a7e6c1770952028de9c3d478bc3852
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167994"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119190"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Ereignisübermittlung mit einer verwalteten Identität
-In diesem Artikel wird beschrieben, wie Sie die [verwaltete Dienstidentität](../active-directory/managed-identities-azure-resources/overview.md) für ein Azure Event Grid-Thema oder eine Azure Event Grid-Domäne aktivieren. Verwenden Sie diese Methode, um Ereignisse an unterstützte Ziele wie Service Bus-Warteschlangen und -Themen, Event Hubs und Speicherkonten weiterzuleiten.
+In diesem Artikel wird beschrieben, wie Sie die [verwaltete Dienstidentität](../active-directory/managed-identities-azure-resources/overview.md) für Azure Event Grid-Themen oder Azure Event Grid-Domänen aktivieren. Verwenden Sie diese Methode, um Ereignisse an unterstützte Ziele wie Service Bus-Warteschlangen und -Themen, Event Hubs und Speicherkonten weiterzuleiten.
 
 Folgende Schritte werden in diesem Artikel ausführlich behandelt:
 1. Erstellen Sie ein Thema oder eine Domäne mit einer vom System zugewiesenen Identität, oder aktualisieren Sie ein vorhandenes Thema oder eine Domäne, um die Identität zu aktivieren. 
@@ -44,11 +40,16 @@ Entsprechend können Sie den Befehl `az eventgrid domain create` verwenden, um e
 Im letzten Abschnitt haben Sie erfahren, wie Sie die vom System verwaltete Identität beim Erstellen eines Themas oder einer Domäne aktivieren. In diesem Abschnitt erfahren Sie, wie Sie eine vom System verwaltete Identität für ein vorhandenes Thema oder eine vorhandene Domäne aktivieren. 
 
 ### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+Das folgende Verfahren zeigt, wie die vom System verwaltete Identität für ein Thema aktiviert wird. Die Schritte zum Aktivieren einer Identität für eine Domäne sind ähnlich. 
+
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Suchen Sie über die Suchleiste nach **Event Grid-Themen**.
+2. Suchen Sie oben in der Suchleiste nach **Event Grid-Themen**.
 3. Wählen Sie das **Thema** aus, für das Sie die verwaltete Identität aktivieren möchten. 
 4. Wechseln Sie zur Registerkarte **Identität**. 
-5. Aktivieren Sie den Schalter, um die Identität zu aktivieren. 
+5. **Aktivieren** Sie den Schalter, um die Identität zu aktivieren. 
+1. Wählen Sie auf der Symbolleiste **Speichern** aus, um die Einstellung zu speichern. 
+
+    :::image type="content" source="./media/managed-service-identity/identity-existing-topic.png" alt-text="Seite „Identität“ für ein Thema"::: 
 
 Sie können ähnliche Schritte zum Aktivieren der Identität für eine Event Grid-Domäne verwenden.
 

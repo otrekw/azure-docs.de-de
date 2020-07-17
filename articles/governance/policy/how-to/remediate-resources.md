@@ -1,14 +1,14 @@
 ---
 title: Korrigieren nicht konformer Ressourcen
 description: Dieser Leitfaden führt Sie schrittweise durch den Korrekturprozess von Ressourcen, die mit Richtlinien in Azure Policy nicht konform sind.
-ms.date: 02/26/2020
+ms.date: 06/09/2020
 ms.topic: how-to
-ms.openlocfilehash: acdb067e888ecbe68e3221944568b202f2510c41
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849959"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636307"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
@@ -51,9 +51,6 @@ Bei der Erstellung einer Zuweisung über das Portal generiert Azure Policy die v
 - Bei der Verwendung des SDK (z.B. Azure PowerShell)
 - Wenn eine Ressource außerhalb des Zuweisungsbereichs von der Vorlage geändert wird
 - Wenn eine Ressource außerhalb des Zuweisungsbereichs von der Vorlage gelesen wird
-
-> [!NOTE]
-> Azure PowerShell und .NET sind die einzigen SDKs, die diese Funktion derzeit unterstützen.
 
 ### <a name="create-managed-identity-with-powershell"></a>Erstellen einer verwalteten Identität mit PowerShell
 

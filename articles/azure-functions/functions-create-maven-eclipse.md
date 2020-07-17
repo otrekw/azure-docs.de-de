@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 42e9ed7c080c9274fad7eda8e4c8af3631ed41f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80756482"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054728"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Erstellen der ersten Funktion mit Java und Eclipse 
 
@@ -39,12 +39,8 @@ Es wird dringend empfohlen, auch [Version 2 der Azure Functions Core Tools](func
 
 1. Wählen Sie in Eclipse das Menü **File** (Datei) und dann **New -&gt; Maven Project** (Neu -> Maven-Projekt) aus. 
 1. Übernehmen Sie die Standardeinstellungen im Dialogfeld **New Maven Project** (Neues Maven-Projekt), und wählen Sie **Next** (Weiter) aus.
-1. Wählen Sie **Add Archetype** (Archetyp hinzufügen) aus, und fügen Sie die Einträge für [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) hinzu.
-    - Archetypgruppen-ID: com.microsoft.azure
-    - Archetypartefakt-ID: azure-functions-archetype
-    - Version: Überprüfen und Verwenden der neusten Version aus dem [zentralen Repository](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![In Eclipse/Maven erstellen](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Klicken Sie auf **OK** und anschließend auf **Weiter**.  Sie müssen Werte für alle Felder eingeben, einschließlich `resourceGroup`, `appName` und `appRegion` (geben Sie einen anderen appName als **fabrikam-function-20170920120101928** an), und wählen Sie abschließend **Fertig stellen** aus.
+1. Suchen Sie nach [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype), wählen Sie das Element aus, und klicken Sie auf **Next** (Weiter).
+1. Sie müssen Werte für alle Felder eingeben, einschließlich `resourceGroup`, `appName` und `appRegion` (geben Sie einen anderen appName als **fabrikam-function-20170920120101928** an), und wählen Sie abschließend **Fertig stellen** aus.
     ![Erstellung eines Maven-Projekts in Eclipse 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven erstellt die Projektdateien in einem neuen Ordner mit dem Namen _artifactId_. Bei dem generierten Code im Projekt handelt es sich um eine einfache [durch HTTP ausgelöste](/azure/azure-functions/functions-bindings-http-webhook) Funktion, die den Körper der über HTTP ausgelösten Anforderung wiederholt.

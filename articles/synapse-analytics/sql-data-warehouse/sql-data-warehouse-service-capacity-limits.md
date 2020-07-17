@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fbdf0fda51ae35fac4f3f8ae45bfcd788fc406ae
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c0fcbe59aa4393f1266c0840cf05c3dc7b1f6d90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414005"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204981"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Kapazitätsgrenzen in Azure Synapse Analytics (ehemals SQL DW)
 
@@ -31,7 +31,7 @@ Die maximalen Werte, die für verschiedene Komponenten von Azure Synapse Analyti
 | Datenbankverbindung |Maximale Anzahl gleichzeitig geöffneter Sitzungen |1024<br/><br/>Die Anzahl der gleichzeitig geöffneten Sitzungen variiert je nach ausgewählter DWU. DWU600c und höher unterstützt maximal 1024 offene Sitzungen. DWU500c und darunter unterstützt maximal 512 gleichzeitig geöffnete Sitzungen. Beachten Sie, dass die Anzahl der Abfragen begrenzt ist, die gleichzeitig ausgeführt werden können. Wenn der Grenzwert überschritten wird, gelangt die Anforderung in eine interne Warteschlange, in der sie auf die Verarbeitung wartet. |
 | Datenbankverbindung |Maximaler Arbeitsspeicher für vorbereitete Anweisungen |20 MB |
 | [Verwaltung von Arbeitsauslastungen](resource-classes-for-workload-management.md) |Maximale Anzahl gleichzeitiger Abfragen |128<br/><br/>  Maximal werden 128 gleichzeitige Abfragen ausgeführt, und verbleibende Abfragen werden in die Warteschlange eingereiht.<br/><br/>Die Anzahl der gleichzeitigen Abfragen kann abnehmen, wenn Benutzern höhere Ressourcenklassen zugeordnet werden oder die [Data Warehouse-Einheit](memory-concurrency-limits.md)-Einstellung gesenkt wird. Ausführungen einiger Abfragen, z.B. DMV-Abfragen, sind immer zulässig und haben keine Auswirkungen auf das Limit für gleichzeitige Abfragen. Ausführlichere Informationen zur Ausführung gleichzeitiger Abfragen finden Sie im Artikel zu [Parallelitätshöchstwerten](memory-concurrency-limits.md). |
-| [tempdb](sql-data-warehouse-tables-temporary.md) |Maximale GB |399 GB pro DW100c. Daher ist „tempdb“ in DWU1000c 3,99 TB groß. |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |Maximale GB |399 GB pro DW100c. „tempdb“ ist in DWU1000c 3,99 TB groß. |
 ||||
 
 ## <a name="database-objects"></a>Datenbankobjekte
@@ -43,7 +43,7 @@ Die maximalen Werte, die für verschiedene Komponenten von Azure Synapse Analyti
 | Tabelle |Tabellen pro Datenbank | 100.000 |
 | Tabelle |Spaltenanzahl pro Tabelle |1024 Spalten |
 | Tabelle |Bytes pro Spalte |Abhängig von der Spalte [Datentyp](sql-data-warehouse-tables-data-types.md). Grenzwert ist 8.000 für Char-Datentypen, 4.000 für Nvarchar oder 2GB für MAX-Datentypen. |
-| Tabelle |Bytes pro Zeile, definierte Größe |8\.060 Bytes<br/><br/>Die Anzahl von Bytes pro Zeile wird auf die gleiche Weise wie bei SQL Server mit aktivierter Seitenkomprimierung berechnet. Wie bei SQL Server wird die Speicherung von Zeilenüberlaufsdaten unterstützt, sodass **Spalten variabler Länge** aus der Zeile verschoben werden können. Wenn Zeilen variabler Länge aus der Zeile verschoben werden, wird nur der 24-Byte-Stamm im Hauptdatensatz gespeichert. Weitere Informationen finden Sie unter [Zeilenüberlaufdaten mit über 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
+| Tabelle |Bytes pro Zeile, definierte Größe |8\.060 Bytes<br/><br/>Die Anzahl von Bytes pro Zeile wird auf die gleiche Weise wie bei SQL Server mit aktivierter Seitenkomprimierung berechnet. Wie bei SQL Server wird die Speicherung von Zeilenüberlaufsdaten unterstützt, sodass **Spalten variabler Länge** aus der Zeile verschoben werden können. Wenn Zeilen variabler Länge aus der Zeile verschoben werden, wird nur der 24-Byte-Stamm im Hauptdatensatz gespeichert. Weitere Informationen finden Sie unter [Zeilenüberlaufdaten mit über 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
 | Tabelle |Partitionen pro Tabelle |15.000<br/><br/>Um eine hohe Leistung zu erzielen, empfehlen wir, die Anzahl der Partitionen zu minimieren, die Sie zum Erfüllen Ihrer Geschäftsanforderungen benötigen. Mit einer steigenden Anzahl von Partitionen wächst der Verarbeitungsaufwand für Datendefinitionssprache (DDL)- und Datenbearbeitungssprache (DML)-Vorgänge, was zu Leistungseinbußen führt. |
 | Tabelle |Zeichen pro Partitionsbegrenzungswert. |4000 |
 | Index |Nicht gruppierte Indizes pro Tabelle. |50<br/><br/>Gilt nur für Rowstore-Tabellen |

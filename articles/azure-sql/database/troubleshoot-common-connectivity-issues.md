@@ -9,16 +9,15 @@ ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
-manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 4aa8d35e48c28cadecb6acc1f56ca6c44a145719
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: acc61cefbc9d89f11eae5b6549add57871035ddb
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266966"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078968"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Behandeln vorübergehender Verbindungsfehler in SQL-Datenbank und SQL Managed Instance
 
@@ -106,7 +105,7 @@ Um diesen Test in der Praxis umzusetzen, trennen Sie Ihren Computer vom Netzwerk
 - Die weitere Ausführung wird angehalten (über die **Console.ReadLine** -Methode oder über ein Dialogfeld mit der Schaltfläche „OK“). Nachdem der Computer mit dem Netzwerk verbunden wurde, drückt der Benutzer die EINGABETASTE.
 - Es wird erneut versucht, eine Verbindung herzustellen (dieser Versuch sollte erfolgreich sein).
 
-#### <a name="test-by-misspelling-the-database-name-when-connecting"></a>Testen der Logik, indem beim Herstellen der Verbindung ein falscher Datenbankname eingegeben wird
+#### <a name="test-by-misspelling-the-user-name-when-connecting"></a>Testen der Logik, indem beim Herstellen der Verbindung ein falscher Benutzername eingegeben wird
 
 Ihr Programm kann vor dem ersten Verbindungsversuch mit Absicht einen falschen Benutzernamen verwenden. Der Fehler lautet:
 

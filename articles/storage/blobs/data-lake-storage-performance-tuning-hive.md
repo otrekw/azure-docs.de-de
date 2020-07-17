@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 9a54565f320ae45a4a8297a40027c5e6b3b25202
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 522f9215a0b66c5e6bec5abf41e45489efec19ac
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465965"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106310"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Optimieren der Leistung: Hive, HDInsight und Azure Data Lake Storage Gen2
 
@@ -57,17 +57,18 @@ E/A-intensive Workloads können von einem höheren Maß an Parallelität profiti
 
 Die Anzahl von gleichzeitigen Tasks bzw. die Parallelität wird durch die Gesamtmenge an YARN-Arbeitsspeicher begrenzt.  Die Anzahl von YARN-Containern bestimmt, wie viele gleichzeitige Tasks ausgeführt werden können.  Die Menge an YARN-Arbeitsspeicher pro Knoten finden Sie bei Ambari.  Navigieren Sie zu YARN, und zeigen Sie die Registerkarte für die Konfiguration an.  Die Größe des YARN-Arbeitsspeichers wird in diesem Fenster angezeigt.  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+- YARN-Arbeitsspeicher gesamt = Knoten * YARN-Arbeitsspeicher pro Knoten
+- \# der YARN-Container = YARN-Arbeitsspeicher gesamt / Tez-Containergröße
+
 Entscheidend für die Verbesserung der Leistung mit Data Lake Storage Gen2 ist es, die Parallelität so weit wie möglich zu erhöhen.  Tez berechnet automatisch die Anzahl von Tasks, die erstellt werden müssen – darum müssen Sie sich nicht kümmern.   
 
 ## <a name="example-calculation"></a>Beispielberechnung
 
 Angenommen, Sie haben einen D14-Cluster mit 8 Knoten.  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+- YARN-Arbeitsspeicher gesamt = Knoten * YARN-Arbeitsspeicher pro Knoten
+- YARN-Arbeitsspeicher gesamt = 8 Knoten * 96 GB = 768 GB
+- \# der YARN-Container = 768 GB / 3072 MB = 256
 
 ## <a name="further-information-on-hive-tuning"></a>Weitere Informationen zur Hive-Optimierung
 

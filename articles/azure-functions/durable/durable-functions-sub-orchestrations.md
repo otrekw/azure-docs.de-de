@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Orchestrierungen aus Orchestrierungen 
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5625bc2ddfa4b6f527ca16f19f33d257a1834d4b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76261516"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340822"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Untergeordnete Orchestrierungen in Durable Functions (Azure Functions)
 
@@ -18,6 +18,10 @@ Orchestratorfunktionen können nicht nur Aktivitätsfunktionen aufrufen, sondern
 Eine Orchestratorfunktion kann eine andere Orchestratorfunktion mithilfe der Methoden `CallSubOrchestratorAsync` oder `CallSubOrchestratorWithRetryAsync` in .NET oder der Methoden `callSubOrchestrator` oder `callSubOrchestratorWithRetry` in JavaScript aufrufen. Der Artikel zur [Fehlerbehandlung und -kompensierung](durable-functions-error-handling.md#automatic-retry-on-failure) enthält weitere Informationen zur automatischen Wiederholung.
 
 Untergeordnete Orchestratorfunktionen verhalten sich aus Sicht des Aufrufers genauso wie Aktivitätsfunktionen. Sie können einen Wert zurückgeben und eine Ausnahme auslösen, und die übergeordnete Orchestratorfunktion kann sie erwarten. 
+
+> [!NOTE]
+> Unterorchestrierungen werden derzeit in .NET und JavaScript unterstützt.
+
 ## <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird ein IoT-Szenario (Internet der Dinge) veranschaulicht, in dem mehrere Geräte bereitgestellt werden müssen. Die folgende Funktion stellt den Bereitstellungsworkflow dar, der für jedes Gerät ausgeführt werden muss:

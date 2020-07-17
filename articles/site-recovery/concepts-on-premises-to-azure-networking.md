@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236550"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770491"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Herstellen einer Verbindung mit Azure-VMs nach einem Failover aus der lokalen Umgebung 
 
@@ -149,11 +149,21 @@ Geben Sie vor dem Failover die Netzwerkeinstellungen und die IP-Adresse für den
 
 ## <a name="get-new-ip-addresses"></a>Abrufen neuer IP-Adressen
 
-In diesem Szenario erhält die Azure-VM nach einem Failover eine neue IP-Adresse. Ein DNS-Update erfolgt zum Aktualisieren von Einträgen für Computer mit Failover, damit sie auf die IP-Adresse der Azure-VM verweisen.
+In diesem Szenario erhält die Azure-VM nach einem Failover eine neue IP-Adresse. Zum Einrichten einer neuen IP-Adresse für den virtuellen Computer, der nach einem Failover erstellt wird, können Sie die folgenden Schritte ausführen:
 
+1. Wechseln Sie zu **Replizierte Elemente**.
+2. Wählen Sie den gewünschten virtuellen Azure-Computer aus.
+3. Wählen Sie **Compute und Netzwerk** und **Bearbeiten** aus.
 
+     ![Anpassen der Netzwerkkonfigurationen für das Failover](media/azure-to-azure-customize-networking/edit-networking-properties.png)
+
+4. Um Netzwerkeinstellungen für das Failover zu aktualisieren, wählen Sie **Bearbeiten** für die zu konfigurierende NIC aus. Geben Sie auf der nächsten Seite, die geöffnet wird, die entsprechende vorab erstellte IP-Adresse im Testfailover und Failoverstandort an.
+
+    ![Bearbeiten der Konfiguration des Netzwerkadapters](media/azure-to-azure-customize-networking/nic-drilldown.png)
+
+5. Klicken Sie auf **OK**.
+
+Site Recovery berücksichtigt diese Einstellungen nun und stellt sicher, dass die VM bei einem Failover über die entsprechende IP-Adresse mit der ausgewählten Ressource verbunden wird, wenn sie im IP-Zielbereich vorhanden ist. In diesem Szenario muss kein Failover für das gesamte Subnetz ausgeführt werden. Ein DNS-Update ist zum Aktualisieren von Einträgen für Computer mit Failover erforderlich, damit sie auf die IP-Adresse des virtuellen Computers verweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erfahren Sie mehr](site-recovery-active-directory.md) über das Replizieren des lokalen Active Directory und DNS in Azure.
-
-

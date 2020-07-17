@@ -11,15 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: c2c0e6d1d3ffd9ec3091e92530ec5c191f3f7ca6
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 80bc254aafa9c221fcaf724331928b7f30360eac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610845"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Was ist die SQL-Datensynchronisierung für Azure?
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 SQL-Datensynchronisierung ist ein Dienst, der auf Azure SQL-Datenbank basiert und mit dem Sie die ausgewählten Daten bidirektional über mehrere Datenbanken hinweg synchronisieren können, sowohl lokal als auch in der Cloud. 
 
@@ -35,7 +34,7 @@ Für die Datensynchronisierung wird eine Topologie der Art „Nabe und Speiche�
 
 - Die **Hub-Datenbank** muss eine Azure SQL-Datenbank sein.
 - Die **Mitgliedsdatenbanken** können entweder Datenbanken in Azure SQL-Datenbank oder in Instanzen von SQL Server sein.
-- Die **Synchronisierungsdatenbank** enthält die Metadaten und das Protokoll für die Datensynchronisierung. Bei der Synchronisierungsdatenbank muss es sich um eine Azure SQL-Datenbank handeln, die in derselben Region wie die Hub-Datenbank angeordnet ist. Die Synchronisierungsdatenbank wird vom Kunden erstellt und befindet sich in seinem Besitz.
+- Die **Synchronisierungs-Metadatendatenbank** enthält die Metadaten und das Protokoll für die Datensynchronisierung. Bei der Synchronisierungs-Metadatendatenbank muss es sich um eine Azure SQL-Datenbank handeln, die sich in derselben Region wie die Hub-Datenbank befindet. Die Synchronisierungs-Metadatendatenbank wird vom Kunden erstellt und befindet sich in seinem Besitz. Sie können nur eine Synchronisierungs-Metadatendatenbank pro Region und Abonnement verwenden. Die Synchronisierungs-Metadatendatenbank kann nicht gelöscht oder umbenannt werden, wenn Synchronisierungsgruppen oder Synchronisierungs-Agents vorhanden sind. Microsoft empfiehlt, eine neue, leere Datenbank als Synchronisierungs-Metadatendatenbank zu erstellen. Durch die Datensynchronisierung werden Tabellen in Datenbanken erstellt und eine häufige Workload ausgeführt.
 
 > [!NOTE]
 > Wenn Sie eine lokale Datenbank als Mitgliedsdatenbank verwenden, ist es erforderlich, einen [lokalen Synchronisierungs-Agent zu installieren und zu konfigurieren](sql-data-sync-sql-server-configure.md#add-on-prem).
@@ -72,7 +71,7 @@ Die Datensynchronisierung ist für folgende Szenarios nicht die beste Lösung:
 ## <a name="how-it-works"></a>Funktionsweise
 
 - **Nachverfolgen von Datenänderungen:** Bei der Datensynchronisierung werden Änderungen mithilfe von Auslösern für Einfügen, Aktualisieren und Löschen nachverfolgt. Die Änderungen werden in der Benutzerdatenbank in einer Nebentabelle aufgezeichnet. Beachten Sie, dass BULK INSERT standardmäßig keine Trigger auslöst. Wenn FIRE_TRIGGERS nicht angegeben ist, werden keine Einfügungstrigger ausgeführt. Fügen Sie die Option FIRE_TRIGGERS hinzu, damit die Datensynchronisierung diese Einfügungen verfolgen kann. 
-- **Synchronisieren von Daten:** Für die Datensynchronisierung wird ein Hub-Spoke-Modell („Nabe und Speiche“) genutzt. Der Hub (Nabe) wird einzeln mit jedem Mitglied synchronisiert. Änderungen auf dem Hub werden für das Mitglied heruntergeladen, und anschließend werden Änderungen vom Mitglied auf den Hub hochgeladen.
+- **Synchronisieren von Daten:** Für die Datensynchronisierung wird ein Hub-and-Spoke-Modell genutzt. Der Hub wird einzeln mit jedem Mitglied synchronisiert. Änderungen auf dem Hub werden für das Mitglied heruntergeladen, und anschließend werden Änderungen vom Mitglied auf den Hub hochgeladen.
 - **Beheben von Konflikten:** Die Datensynchronisierung bietet zwei Optionen für die Lösung von Konflikten, und zwar *Hub gewinnt* und *Mitglied gewinnt*.
   - Wenn Sie *Hub gewinnt* wählen, werden die Änderungen auf dem Mitglied immer durch die Änderungen des Hub überschrieben.
   - Bei Auswahl von *Mitglied gewinnt* werden die Änderungen auf dem Hub durch die Änderungen auf dem Mitglied überschrieben. Falls mehr als ein Mitglied vorhanden ist, hängt der endgültige Wert davon ab, welches Mitglied zuerst synchronisiert wird.
@@ -194,22 +193,22 @@ Die SQL-Datensynchronisierung ist in allen Regionen verfügbar.
 
 ### <a name="is-a-sql-database-account-required"></a>Ist ein SQL-Datenbank-Konto erforderlich?
 
-Ja. Sie müssen über ein SQL-Datenbankkonto zum Hosten der Hub-Datenbank verfügen.
+Ja. Sie müssen über ein SQL-Datenbank-Konto zum Hosten der Hub-Datenbank verfügen.
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-server-databases-only"></a>Kann ich die Datensynchronisierung verwenden, um Daten ausschließlich für SQL Server-Datenbanken synchronisieren zu lassen?
 
 Nicht direkt. Sie können Daten zwischen SQL Server-Datenbanken jedoch indirekt synchronisieren, indem Sie in Azure eine Hub-Datenbank erstellen und anschließend die lokalen Datenbanken der Synchronisierungsgruppe hinzufügen.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Kann ich die Datensynchronisierung zwischen SQL-Datenbanken verschiedener Abonnements verwenden?
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>Kann ich die Datensynchronisierung verwenden, um Datenbanken in SQL-Datenbank zu synchronisieren, die zu unterschiedlichen Abonnements gehören?
 
-Ja. Sie können Daten zwischen SQL-Datenbanken aus Ressourcengruppen synchronisieren, die zu unterschiedlichen Abonnements gehören.
+Ja. Sie können Daten zwischen Datenbanken aus Ressourcengruppen synchronisieren, die zu unterschiedlichen Abonnements gehören.
 
 - Wenn die Abonnements zum gleichen Mandanten gehören und Sie über Berechtigungen für alle Abonnements verfügen, können Sie die Synchronisierungsgruppe im Azure-Portal konfigurieren.
 - Andernfalls müssen die Synchronisierungsmitglieder unterschiedlicher Abonnements mithilfe von PowerShell hinzugefügt werden.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Kann ich die Datensynchronisierung zwischen SQL-Datenbanken verschiedener Clouds (etwa öffentliche Azure-Cloud und Azure China 21ViaNet) verwenden?
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Kann ich die Datensynchronisierung zum Synchronisieren zwischen Datenbanken in SQL-Datenbank verwenden, die zu verschiedenen Clouds gehören (etwa zur öffentlichen Azure-Cloud und Azure China 21Vianet)?
 
-Ja. Die Synchronisierung zwischen SQL-Datenbanken, die zu verschiedenen Clouds gehören, ist möglich. Sie müssen PowerShell verwenden, um die Synchronisierungsmitglieder der verschiedenen Abonnements hinzuzufügen.
+Ja. Sie können zwischen Datenbanken synchronisieren, die zu verschiedenen Clouds gehören. Sie müssen PowerShell verwenden, um die Synchronisierungsmitglieder hinzuzufügen, die zu den verschiedenen Abonnements gehören.
 
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Kann ich mithilfe der Datensynchronisierung ein Seeding für Daten aus meiner Produktionsdatenbank in eine leere Datenbank ausführen und die Daten dann synchronisieren?
 
@@ -217,9 +216,9 @@ Ja. Erstellen Sie das Schema in der neuen Datenbank mithilfe eines Skripts manue
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Sollte ich die SQL-Datensynchronisierung nutzen, um meine Datenbanken zu sichern und wiederherzustellen?
 
-Es wird nicht empfohlen, die SQL-Datensynchronisierung zum Erstellen einer Sicherung Ihrer Daten zu verwenden. Sie können keine Sicherung und Wiederherstellung auf einen bestimmten Zeitpunkt durchführen, da Synchronisierungen mit der SQL-Datensynchronisierung keine Versionsangaben aufweisen. Zudem werden mit der SQL-Datensynchronisierung keine anderen SQL-Objekte gesichert, z. B. gespeicherte Prozeduren, und es kann kein schneller Wiederherstellungsvorgang durchgeführt werden.
+Es wird nicht empfohlen, die SQL-Datensynchronisierung zum Erstellen einer Sicherung Ihrer Daten zu verwenden. Sie können keine Sicherung und Wiederherstellung für einen bestimmten Zeitpunkt durchführen, da Synchronisierungen mit der SQL-Datensynchronisierung keine Versionsangaben aufweisen. Zudem werden mit der SQL-Datensynchronisierung keine anderen SQL-Objekte gesichert, z. B. gespeicherte Prozeduren, und es kann kein schneller Wiederherstellungsvorgang durchgeführt werden.
 
-Informationen zu einem empfohlenen Sicherungsverfahren finden Sie unter [Kopieren einer Azure SQL-Datenbank](database-copy.md).
+Informationen zu einem empfohlenen Sicherungsverfahren finden Sie unter [Kopieren einer Datenbank in Azure SQL-Datenbank](database-copy.md).
 
 ### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Kann die Datensynchronisierung verschlüsselte Tabellen und Spalten synchronisieren?
 
@@ -236,6 +235,10 @@ Ja. Für die SQL-Datensynchronisierung wird die Sortierung in den folgenden Szen
 ### <a name="is-federation-supported-in-sql-data-sync"></a>Wird der Verbund für die SQL-Datensynchronisierung unterstützt?
 
 Eine Datenbank für den Verbundstamm kann im SQL-Datensynchronisierungsdienst ohne Einschränkungen verwendet werden. Es ist nicht möglich, den Endpunkt der Verbunddatenbank zur aktuellen Version der SQL-Datensynchronisierung hinzuzufügen.
+
+### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>Kann ich die Datensynchronisierung verwenden, um Daten zu synchronisieren, die aus Dynamics 365 unter Verwendung der BYOD-Funktion (Bring Your Own Database) exportiert wurden?
+
+Mit dem BYOD-Feature von Dynamics 365 können Administratoren Datenentitäten aus der Anwendung in ihre eigene Microsoft Azure SQL-Datenbank exportieren. Die Datensynchronisierung kann verwendet werden, um diese Daten mit anderen Datenbanken zu synchronisieren, wenn die Daten mit einem **inkrementellen Pushvorgang** exportiert werden (vollständige Pushvorgänge werden nicht unterstützt) und **Trigger in Zieldatenbank aktivieren** auf **Ja** festgelegt ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -259,3 +262,4 @@ Weitere Informationen zu Azure SQL-Datenbank finden Sie in den folgenden Artikel
 
 - [Übersicht über die SQL-Datenbank](sql-database-paas-overview.md)
 - [Datenbank-Lebenszyklusverwaltung](https://msdn.microsoft.com/library/jj907294.aspx)
+ 
