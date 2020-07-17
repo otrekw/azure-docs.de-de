@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: d265726835620c5b468c8a81570e80c7167b2997
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: dbb1d73fc2b19ef701cb08ced24c634bbbadb235
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084340"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231589"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL-Datenbank Hyperscale – Häufig gestellte Fragen (FAQs)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,12 +45,12 @@ Die auf virtuellen Kernen basierenden Dienstebenen unterscheiden sich im Hinblic
 | **Am besten geeignet für** |All|Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen.|Die meisten geschäftlichen Workloads. Automatische Skalierung der Speichergröße bis zu 100 TB, schnelle vertikale und horizontale Computeskalierung, schnelle Datenbankwiederherstellung.|OLTP-Anwendungen mit hoher Transaktionsrate und geringen Latenzen bei E/A-Vorgängen. Bietet mit mehreren synchron aktualisierten Replikaten höchste Resilienz gegenüber Fehlern und schnelle Failover.|
 |  **Ressourcentyp** ||SQL-Datenbank/SQL Managed Instance | Einzeldatenbank | SQL-Datenbank/SQL Managed Instance |
 | **Computegröße**|SQL-Datenbank* | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne* | 1 bis 80 virtuelle Kerne |
-| |Verwaltete SQL-Instanz | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne | – | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
+| **Computegröße**|Verwaltete SQL-Instanz | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne | – | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
 | **Speichertyp** | All |Storage Premium (remote, pro Instanz) | Entkoppelter Speicher mit lokalem SSD-Cache (pro Instanz) | Äußerst schneller lokaler SSD-Speicher (pro Instanz) |
 | **Speichergröße** | SQL-Datenbank*| 5 GB – 4 TB | Bis zu 100 TB | 5 GB – 4 TB |
-| | Verwaltete SQL-Instanz  | 32 GB – 8 TB | – | 32 GB – 4 TB |
+| **Speichergröße** | Verwaltete SQL-Instanz  | 32 GB – 8 TB | – | 32 GB – 4 TB |
 | **IOPS** | Einzeldatenbank | 500 IOPS pro V-Kern mit maximal 7.000 IOPS | Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Der tatsächliche IOPS-Wert hängt von der Workload ab. | 5\.000 IOPS mit maximal 200.000 IOPS|
-| | Verwaltete SQL-Instanz | Hängt von der Dateigröße ab | – | 1\.375 IOPS/V-Kern |
+| **IOPS** | Verwaltete SQL-Instanz | Hängt von der Dateigröße ab | – | 1\.375 IOPS/V-Kern |
 |**Verfügbarkeit**|All|1 Replikat, keine horizontale Leseskalierung, kein lokaler Cache | Mehrere Replikate, bis zu 4 Replikate mit horizontaler Leseskalierung, teilweise lokaler Cache | 3 Replikate, 1 Replikat mit horizontaler Leseskalierung, zonenredundante Hochverfügbarkeit, vollständiger lokaler Cache |
 |**Sicherungen**|All|RA-GRS, Aufbewahrung 7–35 Tage (standardmäßig 7 Tage)| RA-GRS, Aufbewahrung 7 Tage, konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, Aufbewahrung 7–35 Tage (standardmäßig 7 Tage) |
 

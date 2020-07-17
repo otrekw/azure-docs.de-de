@@ -2,15 +2,15 @@
 title: Lokales Debuggen von Azure-Funktionen mit Event Grid
 description: Informationen zum lokalen Debuggen von Azure-Funktionen, die durch ein Event Grid-Ereignis ausgelöst werden
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: bfb502e42e41ac530851766db87bcebf3c94c371
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d57b230ceecc8e676eea6a1ab0855761e78f723b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340859"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242745"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Lokales Debuggen von Azure-Funktionen mit Event Grid-Trigger
 

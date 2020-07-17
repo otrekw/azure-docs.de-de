@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: eec92672801d33290df1690d8cb17e79d4626192
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2e337628542475c081a59bffd25368de313011f8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042049"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206212"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Regionen, die Verfügbarkeitszonen in Azure unterstützen
 
@@ -24,9 +24,8 @@ In diesem Abschnitt werden die Azure-Dienste und -Regionen aufgeführt, die Verf
 
 Die in den einzelnen Regionen verfügbaren Dienste, einschließlich der demnächst verfügbaren Roadmap zur Verfügbarkeit, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/).
 
-|                                 |Amerika |              |           |           | Europa |              |          |              | Asien-Pazifik |                 |                |
+| Dienst |Amerika: USA (Mitte)|Amerika: East US|Amerika: USA (Ost) 2|Amerika: USA, Westen 2|Europa: Frankreich, Mitte|Europa: Nordeuropa|Europa: UK, Süden|Europa: Europa, Westen|Asien-Pazifik: Japan, Osten|Asien-Pazifik: Asien, Südosten|Asien-Pazifik: Australien (Osten)|
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|-------------|
-|          |USA (Mitte)|East US|USA (Ost) 2|USA, Westen 2|Frankreich, Mitte|Nordeuropa|UK, Süden|Europa, Westen|Japan, Osten|Asien, Südosten|Australien (Osten)|
 | **Compute**                         |            |              |           |           |                |              |          |             |            |                |                |
 | Virtuelle Linux-Computer          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       | &#10003;               |
 | Virtuelle Windows-Computer        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       | &#10003;               |

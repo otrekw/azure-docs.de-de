@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 55fd27d473bd47fd3321bdb2e730e4ef2d35352f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 560f7b958e04b55a7d642c9f95750812b86d32bc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106165"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251721"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)
 
@@ -83,7 +83,7 @@ Innerhalb des Kubernetes-Clusters werden Authentifizierungstoken mithilfe der We
 
 Wie in der obigen Abbildung gezeigt, ruft der API-Server den AKS-Webhookserver auf und führt die folgenden Schritte aus:
 
-1. Die Azure AD-Clientanwendung wird von kubectl zum Anmelden von Benutzern mit dem [OAuth 2.0-Flow für die Geräteautorisierungsgenehmigung](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code) verwendet.
+1. Die Azure AD-Clientanwendung wird von kubectl zum Anmelden von Benutzern mit dem [OAuth 2.0-Flow für die Geräteautorisierungsgenehmigung](../active-directory/develop/v2-oauth2-device-code.md) verwendet.
 2. Azure AD stellt dabei ein access_token, ein id_token und ein refresh_token bereit.
 3. Der Benutzer sendet mit einem access_token aus kubeconfig eine Anforderung an kubectl.
 4. Kubectl sendet das access_token an den API-Server.
